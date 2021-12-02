@@ -2,31 +2,21 @@ import { Component, Prop, h } from '@stencil/core';
 import { format } from '../../utils/utils';
 
 @Component({
-  tag: 'my-component',
+  tag: 'gc-ds-button',
   styleUrl: 'my-component.css',
   shadow: true,
 })
 export class MyComponent {
   /**
-   * The first name
+   * The button label
    */
-  @Prop() first: string;
-
-  /**
-   * The middle name
-   */
-  @Prop() middle: string;
-
-  /**
-   * The last name
-   */
-  @Prop() last: string;
+  @Prop() label: string;
 
   private getText(): string {
-    return format(this.first, this.middle, this.last);
+    return format(this.label);
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return <button>{this.getText()}</button>;
   }
 }

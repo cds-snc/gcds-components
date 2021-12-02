@@ -1,3 +1,11 @@
 :host {
   display: block;
 }
+
+:host button {
+  background-color: var(--gcds-colour-base-red-500);
+  border: none;
+  color: var(--gcds-colour-utils-white);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
