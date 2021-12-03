@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'stencil-starter-project-name',
+  namespace: 'gc-ds-button',
   globalStyle: 'src/styles/global.css',
   outputTargets: [
     {
@@ -13,10 +13,6 @@ export const config: Config = {
     },
     {
       type: 'docs-readme',
-    },
-    {
-      type: 'www',
-      serviceWorker: null, // disable service workers
-    },
+    }
   ],
 };
