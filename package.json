@@ -1,6 +1,6 @@
 {
   "name": "gc-ds-button",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "gc-ds-button proof-of-concept",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
