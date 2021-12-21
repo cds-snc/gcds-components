@@ -1,32 +1,36 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { MyComponent } from './my-component';
 
-describe('my-component', () => {
+describe('gc-ds-button', () => {
   it('renders', async () => {
     const { root } = await newSpecPage({
       components: [MyComponent],
-      html: '<my-component></my-component>',
+      html: '<gc-ds-button></gc-ds-button>',
     });
     expect(root).toEqualHtml(`
-      <my-component>
+      <gc-ds-button>
         <mock:shadow-root>
-          buttonLabel
+          <button>
+            Fallback Button Label
+          </button>
         </mock:shadow-root>
-      </my-component>
+      </mgc-ds-button>
     `);
   });
 
   it('renders with values', async () => {
     const { root } = await newSpecPage({
       components: [MyComponent],
-      html: `<my-component buttonLabel="Example Button"></my-component>`,
+      html: `<gc-ds-button label="Example Button"></gc-ds-button>`,
     });
     expect(root).toEqualHtml(`
-      <my-component buttonLabel="Example Button">
+      <gc-ds-button label="Example Button">
         <mock:shadow-root>
-          Example Button
+          <button>
+            Example Button
+          </button>
         </mock:shadow-root>
-      </my-component>
+      </gc-ds-button>
     `);
   });
 });

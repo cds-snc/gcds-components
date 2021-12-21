@@ -25,12 +25,13 @@
     "@stencil/core": "^2.7.0"
   },
   "devDependencies": {
+    "@axe-core/puppeteer": "^4.3.2",
     "@types/jest": "^26.0.24",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.0.0",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
     "puppeteer": "^10.0.0",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^5.0.0",
     "sass": "^1.43.5"
   },
   "license": "MIT"
