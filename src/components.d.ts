@@ -6,40 +6,96 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface GcDsButton {
+    interface GcdsButton {
+        /**
+          * Disable button if 'true'
+         */
+        "disabled": boolean;
+        /**
+          * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
+         */
+        "download": string | undefined;
+        /**
+          * The href attribute specifies the URL of the page the link goes to
+         */
+        "href": string | undefined;
         /**
           * The button label
          */
         "label": string;
+        /**
+          * The rel attribute specifies the relationship between the current document and the linked document
+         */
+        "rel": string | undefined;
+        /**
+          * The target attribute specifies where to open the linked document
+         */
+        "target": string | undefined;
+        /**
+          * Set button types
+         */
+        "type": 'submit' | 'reset' | 'button';
     }
 }
 declare global {
-    interface HTMLGcDsButtonElement extends Components.GcDsButton, HTMLStencilElement {
+    interface HTMLGcdsButtonElement extends Components.GcdsButton, HTMLStencilElement {
     }
-    var HTMLGcDsButtonElement: {
-        prototype: HTMLGcDsButtonElement;
-        new (): HTMLGcDsButtonElement;
+    var HTMLGcdsButtonElement: {
+        prototype: HTMLGcdsButtonElement;
+        new (): HTMLGcdsButtonElement;
     };
     interface HTMLElementTagNameMap {
-        "gc-ds-button": HTMLGcDsButtonElement;
+        "gcds-button": HTMLGcdsButtonElement;
     }
 }
 declare namespace LocalJSX {
-    interface GcDsButton {
+    interface GcdsButton {
+        /**
+          * Disable button if 'true'
+         */
+        "disabled"?: boolean;
+        /**
+          * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
+         */
+        "download"?: string | undefined;
+        /**
+          * The href attribute specifies the URL of the page the link goes to
+         */
+        "href"?: string | undefined;
         /**
           * The button label
          */
         "label"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * The rel attribute specifies the relationship between the current document and the linked document
+         */
+        "rel"?: string | undefined;
+        /**
+          * The target attribute specifies where to open the linked document
+         */
+        "target"?: string | undefined;
+        /**
+          * Set button types
+         */
+        "type"?: 'submit' | 'reset' | 'button';
     }
     interface IntrinsicElements {
-        "gc-ds-button": GcDsButton;
+        "gcds-button": GcdsButton;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "gc-ds-button": LocalJSX.GcDsButton & JSXBase.HTMLAttributes<HTMLGcDsButtonElement>;
+            "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
         }
     }
 }

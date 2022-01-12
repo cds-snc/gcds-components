@@ -1,21 +1,21 @@
 import { newE2EPage } from '@stencil/core/testing';
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 
-describe('gc-ds-button', () => {
+describe('gcds-button', () => {
   it('renders', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gc-ds-button></gc-ds-button>');
-    const element = await page.find('gc-ds-button');
+    await page.setContent('<gcds-button></gcds-button>');
+    const element = await page.find('gcds-button');
     expect(element).toHaveClass('hydrated');
   });
 
   it('renders changes to the label data', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gc-ds-button></gc-ds-button>');
-    const component = await page.find('gc-ds-button');
-    const element = await page.find('gc-ds-button >>> button');
+    await page.setContent('<gcds-button></gcds-button>');
+    const component = await page.find('gcds-button');
+    const element = await page.find('gcds-button >>> button');
     expect(element.textContent).toEqual(`Fallback Button Label`);
 
     component.setProperty('label', 'Vanilla JS button');
@@ -31,7 +31,7 @@ describe('gc-ds-button', () => {
 describe('gc-ds-button a11y tests', () => {
   it('pass colour contrast', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gc-ds-button></gc-ds-button>');
+    await page.setContent('<gcds-button></gcds-button>');
     
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
     let results = await colorContrastTest;
@@ -41,9 +41,9 @@ describe('gc-ds-button a11y tests', () => {
 
   it('can focus with keyboard', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gc-ds-button></gc-ds-button>');
+    await page.setContent('<gcds-button></gcds-button>');
 
-    const buttonText = await (await page.find('gc-ds-button >>> button')).innerText;
+    const buttonText = await (await page.find('gcds-button >>> button')).innerText;
 
     await page.keyboard.press("Tab");
 

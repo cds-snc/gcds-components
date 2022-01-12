@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'gc-ds-button',
+  namespace: 'gcds',
   globalStyle: 'src/styles/global.css',
   outputTargets: [
     {

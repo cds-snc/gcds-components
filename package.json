@@ -1,7 +1,7 @@
 {
-  "name": "gc-ds-button",
+  "name": "gcds",
   "version": "0.0.9",
-  "description": "gc-ds-button proof-of-concept",
+  "description": "gcds components proof-of-concept",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
