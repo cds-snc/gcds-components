@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 08 Dec 2021 18:59:25 GMT
+ * Generated on Mon, 17 Jan 2022 18:16:32 GMT
  */
 
 :root {
@@ -8,11 +8,11 @@
   --gcds-colour-utils-purple: #7834BC;
   --gcds-colour-utils-white: #ffffff;
   --gcds-colour-utils-black: #000000;
-  --gcds-colour-base-red-100: #ecb6b5;
-  --gcds-colour-base-red-300: #c85c5a;
-  --gcds-colour-base-red-500: #bf3230;
-  --gcds-colour-base-red-700: #a01e1c;
-  --gcds-colour-base-red-900: #7b100e;
+  --gcds-colour-base-red-100: #2f5df3;
+  --gcds-colour-base-red-300: #102f93;
+  --gcds-colour-base-red-500: #051d6b;
+  --gcds-colour-base-red-700: #000e3d;
+  --gcds-colour-base-red-900: #00030a;
   --gcds-colour-base-cyan-100: #d6eff6;
   --gcds-colour-base-cyan-300: #74c1d8;
   --gcds-colour-base-cyan-500: #41b5d9;
