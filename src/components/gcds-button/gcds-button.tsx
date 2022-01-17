@@ -1,5 +1,11 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
+const styleAPI = {
+  'customBorderWeight': 'width',
+  'customBorderStyle': 'style',
+  'customBorderColor': 'colour'
+}
+
 @Component({
   tag: 'gcds-button',
   styleUrl: 'gcds-button.css',
@@ -15,14 +21,37 @@ export class GcdsButton {
   @Prop() label: string;
 
   /**
-   * Set button types
+   * Button props
    */
-  @Prop({ mutable: true }) type: 'submit' | 'reset' | 'button' = undefined;
 
   /**
-   * Disable button if 'true'
+   * Set button types
    */
-  @Prop({ reflect: true }) disabled = false;
+  @Prop({ mutable: true }) type: 'submit' | 'reset' | 'button' | 'link' = 'button';
+
+  /**
+   * Set component states
+   */
+  @Prop() state: 'default' | 'hover' | 'active' | 'focus' | 'disabled' = 'default';
+
+  /**
+   * Set the main style
+   */
+  @Prop() task: 'primary' | 'secondary' | 'danger' = 'primary';
+
+  /**
+   * Set the style variant
+   */
+  @Prop() variant: 'solid' | 'outline' | 'text-only' = 'solid';
+
+  /**
+   * The name attribute specifies the name for a <button> element.
+   */
+  @Prop() name: string | undefined;
+
+  /**
+   * Link props
+   */
 
   /**
    * The href attribute specifies the URL of the page the link goes to
@@ -39,10 +68,33 @@ export class GcdsButton {
    */
   @Prop() target: string | undefined;
 
-  /**
+    /**
    * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
    */
-  @Prop() download: string | undefined;
+     @Prop() download: string | undefined;
+
+  /**
+   * Style props
+   */
+
+  /**
+   * StyleAPI: custom border weight.
+   */
+  @Prop() customBorderWeight: string | undefined;
+
+  /**
+   * StyleAPI: custom border style.
+   */
+  @Prop() customBorderStyle: string | undefined;
+
+  /**
+   * StyleAPI: custom border color.
+   */
+  @Prop() customBorderColor: string | undefined;
+
+  /**
+   * Events
+   */
 
   /**
    * Emitted when the button has focus.
@@ -55,7 +107,7 @@ export class GcdsButton {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   private handleClick = (ev: Event) => {
-    if (!this.disabled && this.type != 'button' && this.type != undefined) {
+    if (this.state !== 'disabled' && this.type != 'button' && this.type != 'link') {
       // Attach button to form
       const form = this.el.closest('form');
       if (form) {
@@ -86,15 +138,27 @@ export class GcdsButton {
     }
   }
 
+  componentDidLoad() {
+    const Tag = this.type != 'link' ? 'button' : 'a';
+    //StyleAPI
+    for (let [key, value] of Object.entries(styleAPI)) {
+      if(this[key] !== undefined) {
+        this.el.shadowRoot.querySelector(Tag).style.setProperty(`--custom-gcds-style-border-${value}`, this[key]);
+      }
+    }
+  }
+
   render() {
 
-    const { type, disabled, href, rel, target, download } = this;
+    const { type, state, name, href, rel, target, download } = this;
 
-    const Tag = type != undefined ? 'button' : 'a';
+    const Tag = type != 'link' ? 'button' : 'a';
+    const disabled = state === 'disabled' ? true : false;
     const attrs = (Tag === 'button')
     ? {
       type,
-      disabled
+      disabled,
+      name
     }
     : {
       href,
@@ -112,9 +176,9 @@ export class GcdsButton {
           onBlur={this.onBlur}
           onFocus={this.onFocus}
         >
-          <slot name="start"></slot>
+          <slot name="left"></slot>
           <slot></slot>
-          <slot name="end"></slot>
+          <slot name="right"></slot>
         </Tag>
       </Host>
     );

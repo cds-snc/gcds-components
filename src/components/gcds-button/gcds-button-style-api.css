@@ -1,0 +1,13 @@
+:root {
+  --gcds-style-border-width: none;
+  --gcds-style-border-style: none;
+  --gcds-style-border-colour: none;
+}
+
+:host button,
+:host a {
+  border-width: var(--custom-gcds-style-border-width, var(--gcds-style-border-width));
+  border-style: var(--custom-gcds-style-border-style, var(--gcds-style-border-style));
+  border-color: var(--custom-gcds-style-border-colour, var(--gcds-style-border-colour));
+}
+

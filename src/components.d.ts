@@ -8,9 +8,17 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface GcdsButton {
         /**
-          * Disable button if 'true'
+          * StyleAPI: custom border color.
          */
-        "disabled": boolean;
+        "customBorderColor": string | undefined;
+        /**
+          * StyleAPI: custom border style.
+         */
+        "customBorderStyle": string | undefined;
+        /**
+          * StyleAPI: custom border weight.
+         */
+        "customBorderWeight": string | undefined;
         /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
@@ -24,17 +32,33 @@ export namespace Components {
          */
         "label": string;
         /**
+          * The name attribute specifies the name for a <button> element.
+         */
+        "name": string | undefined;
+        /**
           * The rel attribute specifies the relationship between the current document and the linked document
          */
         "rel": string | undefined;
+        /**
+          * Set component states
+         */
+        "state": 'default' | 'hover' | 'active' | 'focus' | 'disabled';
         /**
           * The target attribute specifies where to open the linked document
          */
         "target": string | undefined;
         /**
+          * Set the main style
+         */
+        "task": 'primary' | 'secondary' | 'danger';
+        /**
           * Set button types
          */
-        "type": 'submit' | 'reset' | 'button';
+        "type": 'submit' | 'reset' | 'button' | 'link';
+        /**
+          * Set the style variant
+         */
+        "variant": 'solid' | 'outline' | 'text-only';
     }
 }
 declare global {
@@ -51,9 +75,17 @@ declare global {
 declare namespace LocalJSX {
     interface GcdsButton {
         /**
-          * Disable button if 'true'
+          * StyleAPI: custom border color.
          */
-        "disabled"?: boolean;
+        "customBorderColor"?: string | undefined;
+        /**
+          * StyleAPI: custom border style.
+         */
+        "customBorderStyle"?: string | undefined;
+        /**
+          * StyleAPI: custom border weight.
+         */
+        "customBorderWeight"?: string | undefined;
         /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
@@ -67,6 +99,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * The name attribute specifies the name for a <button> element.
+         */
+        "name"?: string | undefined;
+        /**
           * Emitted when the button loses focus.
          */
         "onGcdsBlur"?: (event: CustomEvent<void>) => void;
@@ -79,13 +115,25 @@ declare namespace LocalJSX {
          */
         "rel"?: string | undefined;
         /**
+          * Set component states
+         */
+        "state"?: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
+        /**
           * The target attribute specifies where to open the linked document
          */
         "target"?: string | undefined;
         /**
+          * Set the main style
+         */
+        "task"?: 'primary' | 'secondary' | 'danger';
+        /**
           * Set button types
          */
-        "type"?: 'submit' | 'reset' | 'button';
+        "type"?: 'submit' | 'reset' | 'button' | 'link';
+        /**
+          * Set the style variant
+         */
+        "variant"?: 'solid' | 'outline' | 'text-only';
     }
     interface IntrinsicElements {
         "gcds-button": GcdsButton;
