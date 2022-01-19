@@ -150,7 +150,7 @@ export class GcdsButton {
 
   render() {
 
-    const { type, state, name, href, rel, target, download } = this;
+    const { type, task, variant, state, name, href, rel, target, download } = this;
 
     const Tag = type != 'link' ? 'button' : 'a';
     const disabled = state === 'disabled' ? true : false;
@@ -175,6 +175,7 @@ export class GcdsButton {
           {...attrs}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
+          class={`${task}--${variant}`}
         >
           <slot name="left"></slot>
           <slot></slot>
