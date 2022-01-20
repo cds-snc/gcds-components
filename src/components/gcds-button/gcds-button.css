@@ -8,22 +8,157 @@
   cursor: pointer;
   padding: 0.5rem 1rem;
   text-decoration: none;
+
+  &.primary {
+    &.solid {
+      background-color: var(--gcds-colour-base-blue-grey-900);
+      color: var(--gcds-colour-utils-white);
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.outline {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.text-only {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+  }
+
+  &.secondary {
+    &.solid {
+      background-color: var(--gcds-colour-base-grey-100);
+      color: var(--gcds-colour-base-blue-grey-900);
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.outline {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.text-only {
+      
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+  }
+  
+  &.danger {
+    &.solid {
+      background-color: var(--gcds-colour-base-red-500);
+      color: var(--gcds-colour-utils-white);
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.outline {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.text-only {
+      
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+  }
 }
 
-:host button.primary--solid,
-:host a.primary--solid {
-  background-color: var(--gcds-colour-base-blue-grey-900);
-  color: var(--gcds-colour-utils-white);
-}
-:host button.secondary--solid,
-:host a.secondary--solid {
-  background-color: var(--gcds-colour-base-grey-100);
-  color: var(--gcds-colour-base-blue-grey-900);
-}
-:host button.danger--solid,
-:host a.danger--solid {
-  background-color: var(--gcds-colour-base-red-500);
-  color: var(--gcds-colour-utils-white);
-}
 
 @import 'gcds-button-style-api.css';

@@ -154,6 +154,7 @@ export class GcdsButton {
 
     const Tag = type != 'link' ? 'button' : 'a';
     const disabled = state === 'disabled' ? true : false;
+    const stateClass = state !== "default" ? state : "";
     const attrs = (Tag === 'button')
     ? {
       type,
@@ -175,7 +176,7 @@ export class GcdsButton {
           {...attrs}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          class={`${task}--${variant}`}
+          class={`${task} ${variant} ${stateClass}`}
         >
           <slot name="left"></slot>
           <slot></slot>

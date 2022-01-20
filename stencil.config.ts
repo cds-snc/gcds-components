@@ -1,4 +1,5 @@
 import { Config } from '@stencil/core';
+import { postcss } from '@stencil/postcss';
 
 export const config: Config = {
   namespace: 'gcds',
@@ -15,4 +16,12 @@ export const config: Config = {
       type: 'docs-readme',
     }
   ],
+  plugins: [
+    postcss({
+      plugins: [
+        require('postcss-nested'),
+        // require('cssnano')
+      ]
+    })
+  ]
 };
