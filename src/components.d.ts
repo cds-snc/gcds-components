@@ -8,6 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface GcdsButton {
         /**
+          * StyleAPI: custom background color.
+         */
+        "customBackgroundColor": string | undefined;
+        /**
           * StyleAPI: custom border color.
          */
         "customBorderColor": string | undefined;
@@ -19,6 +23,22 @@ export namespace Components {
           * StyleAPI: custom border weight.
          */
         "customBorderWeight": string | undefined;
+        /**
+          * StyleAPI: custom box shadow.
+         */
+        "customBoxShadow": string | undefined;
+        /**
+          * StyleAPI: custom btext transform.
+         */
+        "customCapitalization": string | undefined;
+        /**
+          * StyleAPI: custom display.
+         */
+        "customDisplay": string | undefined;
+        /**
+          * StyleAPI: custom margin.
+         */
+        "customMargin": string | undefined;
         /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
@@ -75,6 +95,10 @@ declare global {
 declare namespace LocalJSX {
     interface GcdsButton {
         /**
+          * StyleAPI: custom background color.
+         */
+        "customBackgroundColor"?: string | undefined;
+        /**
           * StyleAPI: custom border color.
          */
         "customBorderColor"?: string | undefined;
@@ -86,6 +110,22 @@ declare namespace LocalJSX {
           * StyleAPI: custom border weight.
          */
         "customBorderWeight"?: string | undefined;
+        /**
+          * StyleAPI: custom box shadow.
+         */
+        "customBoxShadow"?: string | undefined;
+        /**
+          * StyleAPI: custom btext transform.
+         */
+        "customCapitalization"?: string | undefined;
+        /**
+          * StyleAPI: custom display.
+         */
+        "customDisplay"?: string | undefined;
+        /**
+          * StyleAPI: custom margin.
+         */
+        "customMargin"?: string | undefined;
         /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */

@@ -1,7 +1,3 @@
-:host {
-  display: block;
-}
-
 :host button,
 :host a {
   border: none;
@@ -9,9 +5,18 @@
   padding: 0.5rem 1rem;
   text-decoration: none;
 
+  border-width: var(--custom-gcds-style-border-width);
+  border-style: var(--custom-gcds-style-border-style);
+  border-color: var(--custom-gcds-style-border-color);
+  margin: var(--custom-gcds-style-margin);
+  display: var(--custom-gcds-style-display);
+  background-color: var(--custom-gcds-style-background-color);
+  box-shadow: var(--custom-gcds-style-box-shadow);
+  text-transform: var(--custom-gcds-style-text-transform);
+
   &.primary {
     &.solid {
-      background-color: var(--gcds-colour-base-blue-grey-900);
+      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-blue-grey-900));
       color: var(--gcds-colour-utils-white);
 
       &:hover, &.hover {
@@ -61,14 +66,14 @@
 
   &.secondary {
     &.solid {
-      background-color: var(--gcds-colour-base-grey-100);
+      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-grey-100));
       color: var(--gcds-colour-base-blue-grey-900);
 
       &:hover, &.hover {
         
       }
       &:focus, &.focus {
-        
+
       }
       &:active, &.active {
         
@@ -111,7 +116,7 @@
   
   &.danger {
     &.solid {
-      background-color: var(--gcds-colour-base-red-500);
+      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-red-500));
       color: var(--gcds-colour-utils-white);
 
       &:hover, &.hover {
@@ -159,6 +164,3 @@
     }
   }
 }
-
-
-@import 'gcds-button-style-api.css';

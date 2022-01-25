@@ -1,9 +1,14 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
 const styleAPI = {
-  'customBorderWeight': 'width',
-  'customBorderStyle': 'style',
-  'customBorderColor': 'colour'
+  'customBorderWeight': 'border-width',
+  'customBorderStyle': 'border-style',
+  'customBorderColor': 'border-color',
+  'customMargin': 'margin',
+  'customDisplay': 'display',
+  'customBackgroundColor': 'background-color',
+  'customBoxShadow': 'box-shadow',
+  'customCapitalization': 'text-transform'
 }
 
 @Component({
@@ -93,6 +98,31 @@ export class GcdsButton {
   @Prop() customBorderColor: string | undefined;
 
   /**
+   * StyleAPI: custom margin.
+   */
+  @Prop() customMargin: string | undefined;
+
+  /**
+   * StyleAPI: custom display.
+   */
+  @Prop() customDisplay: string | undefined;
+
+  /**
+   * StyleAPI: custom background color.
+   */
+  @Prop() customBackgroundColor: string | undefined;
+
+  /**
+   * StyleAPI: custom box shadow.
+   */
+  @Prop() customBoxShadow: string | undefined;
+
+  /**
+   * StyleAPI: custom btext transform.
+   */
+  @Prop() customCapitalization: string | undefined;
+
+  /**
    * Events
    */
 
@@ -143,7 +173,7 @@ export class GcdsButton {
     //StyleAPI
     for (let [key, value] of Object.entries(styleAPI)) {
       if(this[key] !== undefined) {
-        this.el.shadowRoot.querySelector(Tag).style.setProperty(`--custom-gcds-style-border-${value}`, this[key]);
+        this.el.shadowRoot.querySelector(Tag).style.setProperty(`--custom-gcds-style-${value}`, this[key]);
       }
     }
   }
