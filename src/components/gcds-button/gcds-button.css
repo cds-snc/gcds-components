@@ -163,4 +163,54 @@
       }
     }
   }
+
+  &.skip-to-content {
+    &.solid {
+      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-blue-grey-900));
+      color: var(--gcds-colour-utils-white);
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.outline {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.text-only {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+  }
 }

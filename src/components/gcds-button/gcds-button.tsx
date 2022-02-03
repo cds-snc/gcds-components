@@ -42,7 +42,7 @@ export class GcdsButton {
   /**
    * Set the main style
    */
-  @Prop() task: 'primary' | 'secondary' | 'danger' = 'primary';
+  @Prop() task: 'primary' | 'secondary' | 'danger' | 'skip-to-content' = 'primary';
 
   /**
    * Set the style variant
