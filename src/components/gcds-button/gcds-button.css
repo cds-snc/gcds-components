@@ -165,6 +165,14 @@
   }
 
   &.skip-to-content {
+
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    width: 100%;
+    z-index: 3;
+
     &.solid {
       background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-blue-grey-900));
       color: var(--gcds-colour-utils-white);
@@ -173,7 +181,12 @@
         
       }
       &:focus, &.focus {
-        
+        clip: rect(auto,auto,auto,auto);
+        height: inherit;
+        margin: inherit;
+        overflow: inherit;
+        position: static;
+        width: inherit;
       }
       &:active, &.active {
         
@@ -188,7 +201,12 @@
         
       }
       &:focus, &.focus {
-        
+        clip: rect(auto,auto,auto,auto);
+        height: inherit;
+        margin: inherit;
+        overflow: inherit;
+        position: static;
+        width: inherit;
       }
       &:active, &.active {
         
@@ -203,7 +221,12 @@
         
       }
       &:focus, &.focus {
-        
+        clip: rect(auto,auto,auto,auto);
+        height: inherit;
+        margin: inherit;
+        overflow: inherit;
+        position: static;
+        width: inherit;
       }
       &:active, &.active {
         

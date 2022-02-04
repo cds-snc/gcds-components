@@ -70,7 +70,7 @@ export namespace Components {
         /**
           * Set the main style
          */
-        "task": 'primary' | 'secondary' | 'danger';
+        "task": 'primary' | 'secondary' | 'danger' | 'skip-to-content';
         /**
           * Set button types
          */
@@ -165,7 +165,7 @@ declare namespace LocalJSX {
         /**
           * Set the main style
          */
-        "task"?: 'primary' | 'secondary' | 'danger';
+        "task"?: 'primary' | 'secondary' | 'danger' | 'skip-to-content';
         /**
           * Set button types
          */
