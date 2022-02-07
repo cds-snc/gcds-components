@@ -1,5 +1,5 @@
 {
-  "name": "gcds",
+  "name": "gcds-components",
   "version": "0.0.1",
   "description": "gcds components proof-of-concept",
   "main": "dist/index.cjs.js",
