@@ -1,0 +1,19 @@
+name: Run Tests
+on: 
+  pull_request:
+      branches:
+        - main
+
+jobs:
+  build-deploy:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - name: Install
+        run: npm install
+      - name: Compile sass
+        run: gulp compile
+      - name: Run tests
+        run: npm run test

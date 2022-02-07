@@ -1,11 +1,11 @@
 import { format } from './utils';
 
 describe('format', () => {
-  it('returns empty string for no names defined', () => {
-    expect(format(undefined)).toEqual('');
+  it('returns Fallback Button Label', () => {
+    expect(format(undefined)).toEqual('Fallback Button Label');
   });
 
-  it('formats just first names', () => {
-    expect(format('Joseph')).toEqual('Joseph');
+  it('renders label with given string', () => {
+    expect(format('Vanilla JS button')).toEqual(' Vanilla JS button');
   });
 });

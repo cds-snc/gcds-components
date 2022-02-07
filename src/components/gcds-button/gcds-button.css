@@ -1,0 +1,239 @@
+:host button,
+:host a {
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+
+  border-width: var(--custom-gcds-style-border-width);
+  border-style: var(--custom-gcds-style-border-style);
+  border-color: var(--custom-gcds-style-border-color);
+  margin: var(--custom-gcds-style-margin);
+  display: var(--custom-gcds-style-display);
+  background-color: var(--custom-gcds-style-background-color);
+  box-shadow: var(--custom-gcds-style-box-shadow);
+  text-transform: var(--custom-gcds-style-text-transform);
+
+  &.primary {
+    &.solid {
+      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-blue-grey-900));
+      color: var(--gcds-colour-utils-white);
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.outline {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.text-only {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+  }
+
+  &.secondary {
+    &.solid {
+      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-grey-100));
+      color: var(--gcds-colour-base-blue-grey-900);
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.outline {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.text-only {
+      
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+  }
+  
+  &.danger {
+    &.solid {
+      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-red-500));
+      color: var(--gcds-colour-utils-white);
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.outline {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.text-only {
+      
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+  }
+
+  &.skip-to-content {
+
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    width: 100%;
+    z-index: 3;
+
+    &.solid {
+      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-blue-grey-900));
+      color: var(--gcds-colour-utils-white);
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        clip: rect(auto,auto,auto,auto);
+        height: inherit;
+        margin: inherit;
+        overflow: inherit;
+        position: static;
+        width: inherit;
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.outline {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        clip: rect(auto,auto,auto,auto);
+        height: inherit;
+        margin: inherit;
+        overflow: inherit;
+        position: static;
+        width: inherit;
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+    &.text-only {
+
+      &:hover, &.hover {
+        
+      }
+      &:focus, &.focus {
+        clip: rect(auto,auto,auto,auto);
+        height: inherit;
+        margin: inherit;
+        overflow: inherit;
+        position: static;
+        width: inherit;
+      }
+      &:active, &.active {
+        
+      }
+      &:disabled, &.disabled {
+        
+      }
+    }
+  }
+}
