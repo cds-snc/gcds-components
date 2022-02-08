@@ -173,6 +173,13 @@
     width: 100%;
     z-index: 3;
 
+    clip: rect(1px,1px,1px,1px);
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+
     &.solid {
       background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-blue-grey-900));
       color: var(--gcds-colour-utils-white);
