@@ -180,7 +180,7 @@
 :host([data-h2-menu-wrapper]) [data-h2-menu] * {
   vertical-align: middle;
 }
-:host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menulist] {
+:host([data-h2-menu-wrapper]) [data-h2-menu] ::slotted([data-h2-menulist]) {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -503,13 +503,13 @@
 }
 
 @media screen and (min-width: 64em) {
-  [data-h2-menu-wrapper*=top][data-h2-menu-wrapper*=center] [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] {
+  :host([data-h2-menu-wrapper*=top][data-h2-menu-wrapper*=center]) [data-h2-menu] [data-h2-menu-container] > ::slotted([data-h2-menulist]) {
     text-align: center;
   }
 }
 
 @media screen and (min-width: 64em) {
-  [data-h2-menu-wrapper*=top][data-h2-menu-wrapper*=right] [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] {
+  :host([data-h2-menu-wrapper*=top][data-h2-menu-wrapper*=right]) [data-h2-menu] [data-h2-menu-container] > ::slotted([data-h2-menulist]) {
     text-align: right;
   }
   [data-h2-menu-wrapper*=top][data-h2-menu-wrapper*=right] [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] {

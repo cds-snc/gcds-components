@@ -1,0 +1,13 @@
+@media screen and (min-width: 64em) {
+
+    [data-h2-menu-wrapper*=side] > [data-h2-menulist] li {
+      position: relative;
+    }
+    [data-h2-menu-wrapper*=side] > [data-h2-menulist] li > [role=menuitem] {
+      padding: calc(1rem) calc(1.5rem * 3) calc(1rem) 0;
+    }
+    [data-h2-menu-wrapper*=side] > [data-h2-menulist] li > [data-h2-submenu-trigger] {
+      padding: calc(1rem) 1.5rem;
+      top: 1px;
+    }
+}
