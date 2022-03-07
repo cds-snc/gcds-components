@@ -7,13 +7,26 @@
 
 ## Properties
 
-| Property      | Attribute      | Description            | Type                                       | Default     |
-| ------------- | -------------- | ---------------------- | ------------------------------------------ | ----------- |
-| `desktopTask` | `desktop-task` | Desktop layout         | `"sidebar" \| "topbar"`                    | `'topbar'`  |
-| `mobileTask`  | `mobile-task`  | Mobile layout          | `"drawer" \| "toolbar"`                    | `'drawer'`  |
-| `sticky`      | `sticky`       | Sticky navigation flag | `boolean`                                  | `undefined` |
-| `variant`     | `variant`      | Variant                | `"center" \| "left" \| "right" \| "split"` | `'left'`    |
+| Property                         | Attribute             | Description            | Type                                       | Default     |
+| -------------------------------- | --------------------- | ---------------------- | ------------------------------------------ | ----------- |
+| `menuAlignment`                  | `menu-alignment`      | Menu alignment         | `"center" \| "left" \| "right" \| "split"` | `'left'`    |
+| `menuDesktopLayout` _(required)_ | `menu-desktop-layout` | Desktop layout         | `"sidebar" \| "topbar"`                    | `undefined` |
+| `menuMobileLayout` _(required)_  | `menu-mobile-layout`  | Mobile layout          | `"drawer"`                                 | `undefined` |
+| `menuPosition`                   | `menu-position`       | Sticky navigation flag | `"static" \| "sticky"`                     | `'static'`  |
 
+
+## Dependencies
+
+### Depends on
+
+- [gcds-button](../gcds-button)
+
+### Graph
+```mermaid
+graph TD;
+  gcds-site-menu --> gcds-button
+  style gcds-site-menu fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

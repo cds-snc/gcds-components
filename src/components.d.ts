@@ -82,21 +82,21 @@ export namespace Components {
     }
     interface GcdsSiteMenu {
         /**
+          * Menu alignment
+         */
+        "menuAlignment": 'left' | 'center' | 'right' | 'split';
+        /**
           * Desktop layout
          */
-        "desktopTask": 'topbar' | 'sidebar';
+        "menuDesktopLayout": 'topbar' | 'sidebar';
         /**
           * Mobile layout
          */
-        "mobileTask": 'drawer' | 'toolbar';
+        "menuMobileLayout": 'drawer';
         /**
           * Sticky navigation flag
          */
-        "sticky": boolean;
-        /**
-          * Variant
-         */
-        "variant": 'left' | 'center' | 'right' | 'split';
+        "menuPosition": 'static' | 'sticky';
     }
 }
 declare global {
@@ -202,21 +202,21 @@ declare namespace LocalJSX {
     }
     interface GcdsSiteMenu {
         /**
+          * Menu alignment
+         */
+        "menuAlignment"?: 'left' | 'center' | 'right' | 'split';
+        /**
           * Desktop layout
          */
-        "desktopTask"?: 'topbar' | 'sidebar';
+        "menuDesktopLayout": 'topbar' | 'sidebar';
         /**
           * Mobile layout
          */
-        "mobileTask"?: 'drawer' | 'toolbar';
+        "menuMobileLayout": 'drawer';
         /**
           * Sticky navigation flag
          */
-        "sticky"?: boolean;
-        /**
-          * Variant
-         */
-        "variant"?: 'left' | 'center' | 'right' | 'split';
+        "menuPosition"?: 'static' | 'sticky';
     }
     interface IntrinsicElements {
         "gcds-button": GcdsButton;
