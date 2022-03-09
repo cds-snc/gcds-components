@@ -194,7 +194,8 @@ export class GcdsSiteMenu {
     }
 
     for (var i = 0; i < menus.length; i++) {
-      this.el.shadowRoot.querySelector("[data-h2-menu-container").append(menus[i]);
+      var container = this.el.shadowRoot.querySelector("[data-h2-menu-container]");
+      container.insertBefore(menus[i], container.querySelector('[data-optional-right]'));
     }
 
     if (this.menuDesktopLayout == "sidebar") {

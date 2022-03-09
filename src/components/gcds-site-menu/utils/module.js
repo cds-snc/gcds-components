@@ -11,12 +11,12 @@ function h2MenuRemoveEventsHandler(menuWrapper) {
     item.removeEventListener("keydown", h2MenuRightArrowEvent);
     item.removeEventListener("keydown", h2MenuEscapeAndLeftArrowEvent);
   });
-  var menuTriggers = menuWrapper.shadowRoot.querySelectorAll("[data-h2-mobile-menu-trigger]");
-  menuTriggers.forEach(function(trigger) {
-    trigger.removeEventListener("keydown", h2MenuUpDownArrowEvent);
-    trigger.removeEventListener("keydown", h2MenuRightArrowEvent);
-    trigger.removeEventListener("keydown", h2MenuEscapeAndLeftArrowEvent);
-  });
+  var menuTriggers = menuWrapper.shadowRoot.querySelector("[data-h2-mobile-menu-trigger]").shadowRoot.querySelector("button");
+
+  menuTriggers.removeEventListener("keydown", h2MenuUpDownArrowEvent);
+  menuTriggers.removeEventListener("keydown", h2MenuRightArrowEvent);
+  menuTriggers.removeEventListener("keydown", h2MenuEscapeAndLeftArrowEvent);
+
 }
 
 // Close all open submenus.
@@ -106,6 +106,21 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
   var mobileMenuTrigger = null;
   // Set an empty array for the remaining menu items.
   var menuItems = [];
+
+  menuLists.forEach(function(list) {
+    // Check to see if the parentNode is the menu container AND that the data-h2-menu element is mobile activated. If it is, set the activated variable to true, and add the mobile trigger element.
+    if (list.parentNode.hasAttribute("data-h2-menu-container") == true && list.parentNode.parentNode.classList.contains("h2-mobile-menu-active")) {
+      isMenuMobileActivated = true;
+      mobileMenuTrigger = list.closest("[data-h2-menu]").parentNode.host.shadowRoot.querySelector("[data-h2-mobile-menu-trigger]").shadowRoot.querySelector('button');
+    }
+  });
+
+
+  // Add the mobile trigger to the array of menu items if the menu is mobile activated.
+  if (isMenuMobileActivated == true) {
+    menuItems = menuItems.concat(mobileMenuTrigger);
+  }
+  
   // Loop through the menu lists that have been passed.
   menuLists.forEach(function(list) {
     // Get the direct children that are <li> elements.
@@ -131,13 +146,10 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
       }
     });
   });
+
   // Loop through the array of menu lists that have been passed.
   menuLists.forEach(function(list) {
-    // Check to see if the parentNode is the menu container AND that the data-h2-menu element is mobile activated. If it is, set the activated variable to true, and add the mobile trigger element.
-    if (list.parentNode.hasAttribute("data-h2-menu-container") == true && list.parentNode.parentNode.classList.contains("h2-mobile-menu-active")) {
-      isMenuMobileActivated = true;
-      mobileMenuTrigger = list.closest("[data-h2-menu]").parentNode.host.shadowRoot.querySelector("[data-h2-mobile-menu-trigger]").shadowRoot.querySelector('button');
-    }
+  
     // Add the submenu trigger.
     if (list.parentNode.tagName == "LI") {
       var parentNodeListItems = list.parentNode.children;
@@ -155,10 +167,7 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
       menuItems = menuItems.concat(submenuTrigger);
     }
   });
-  // Add the mobile trigger to the array of menu items if the menu is mobile activated.
-  if (isMenuMobileActivated == true) {
-    menuItems = menuItems.concat(mobileMenuTrigger);
-  }
+
   // Return the menu items to the function.
   return menuItems;
 }
@@ -382,11 +391,6 @@ function h2MenuRightArrowEvent(e) {
 function h2MenuUpDownArrowEvent(e) {
   // Assign the trigger and find it's menu. To do this, we need to check to see if the trigger is the mobile menu trigger, because if it is, we need to check different DOM elements than a standard menu trigger.
   var trigger = e.currentTarget;
-  if(trigger.parentNode.host && trigger.parentNode.host.hasAttribute('data-h2-mobile-menu-trigger')){
-    var hostElement = trigger.parentNode.host;
-  } else {
-    var hostElement = trigger.closest('[data-h2-menu]').parentNode.host;
-  }
   var menuLists = [];
   if (trigger.parentNode.host != null && trigger.parentNode.host.hasAttribute("data-h2-mobile-menu-trigger")) {
     var menus = trigger.parentNode.host.parentNode.host.shadowRoot.querySelector("[data-h2-menu-container]").children;
@@ -417,7 +421,6 @@ function h2MenuUpDownArrowEvent(e) {
     }
   }
   var menuListItems = h2MenuGetTargetMenuItemsHandler(menuLists);
-  console.log(menuListItems)
   // Get the keycode of the event.
   var key = e.keyCode || e.which;
   // Get the number of items in the menu.
@@ -425,6 +428,11 @@ function h2MenuUpDownArrowEvent(e) {
   // If the key pressed is down, move focus to the next item.
   if (key == 40) {
     e.preventDefault();
+    if(trigger.parentNode.host && trigger.parentNode.host.hasAttribute('data-h2-mobile-menu-trigger')){
+      var hostElement = trigger.parentNode.host;
+    } else {
+      var hostElement = trigger.closest('[data-h2-menu]').parentNode.host;
+    }
     var currentFocus = hostElement.shadowRoot.activeElement;
     menuListItems.forEach(function(item) {
       if (currentFocus == item) {
@@ -441,6 +449,11 @@ function h2MenuUpDownArrowEvent(e) {
   // If the key pressed is up, move focus to the previous item.
   else if (key == 38) {
     e.preventDefault();
+    if(trigger.parentNode.host && trigger.parentNode.host.hasAttribute('data-h2-mobile-menu-trigger')){
+      var hostElement = trigger.parentNode.host;
+    } else {
+      var hostElement = trigger.closest('[data-h2-menu]').parentNode.host;
+    }
     var currentFocus = hostElement.shadowRoot.activeElement;
     menuListItems.forEach(function(item) {
       if (currentFocus == item) {
@@ -712,10 +725,10 @@ function h2MenuTabExitEvent(e) {
       }
     }
     menuItemIndex = h2MenuGetTargetMenuItemsHandler(menuLists);
-    console.log(menuItemIndex)
     // Check to see if the item that was tabbed on is the first or last item in the list.
     var itemCount = menuItemIndex.length - 1;
     var currentIndex = menuItemIndex.indexOf(trigger);
+    var leftOptional = menuWrapper.querySelector("[slot=left]");
     // If the item was the first item and they tabbed up, close the menu and submenus.
     if (currentIndex === 0) {
       // If they tabbed up...
@@ -740,28 +753,37 @@ function h2MenuTabExitEvent(e) {
       }
     }
     // If the item was the last menu item and they tabbed down, close the menu and submenus.
-    else if (currentIndex == itemCount || currentIndex == itemCount - 1) {
+    else if (currentIndex == itemCount) {
       // If they tabbed down...
       // console.log("you're on the last item in the menu.");
       if (key == 9 && !e.shiftKey) {
-        // Remove event listeners from all menus.
-        h2MenuRemoveEventsHandler(menuWrapper);
-        // Close all submenus.
-        h2MenuCloseOpenSubmenusHandler(menuWrapper);
-        // Close the main menu.
-        menu.classList.remove("h2-mobile-menu-active");
-        menuItemIndex.forEach(function(trigger) {
-          if (trigger.parentNode.host != null) {
-            trigger.parentNode.host.classList.remove("h2-active");
-            trigger.parentNode.host.setAttribute("aria-expanded", false);
-          }
-          trigger.classList.remove("h2-active");
-          trigger.setAttribute("aria-expanded", false);
-        });
-        // documentBody.classList.remove("h2-mobile-menu-body-lock");
-        documentBody.style.overflow = "visible";
+        var rightOptional = menuWrapper.querySelector("[slot=right]");
+        var rightOptionalHasFocusable = hasFocusableElement(rightOptional);
+        if (rightOptionalHasFocusable) {
+          h2MenuCloseSubmenusAndActivateMainMenuHandler(menuWrapper);
+          rightOptional.removeEventListener("fcousout", rightOptionalTabExitEvent);
+          rightOptional.addEventListener("focusout", rightOptionalTabExitEvent);
+        }
+        else {
+          // Remove event listeners from all menus.
+          h2MenuRemoveEventsHandler(menuWrapper);
+          // Close all submenus.
+          h2MenuCloseOpenSubmenusHandler(menuWrapper);
+          // Close the main menu.
+          menu.classList.remove("h2-mobile-menu-active");
+          menuItemIndex.forEach(function(trigger) {
+            if (trigger.parentNode.host != null) {
+              trigger.parentNode.host.classList.remove("h2-active");
+              trigger.parentNode.host.setAttribute("aria-expanded", false);
+            }
+            trigger.classList.remove("h2-active");
+            trigger.setAttribute("aria-expanded", false);
+          });
+          // documentBody.classList.remove("h2-mobile-menu-body-lock");
+          documentBody.style.overflow = "visible";
+        }
       }
-    } 
+    }
     // Otherwise, tab to the next item like normal and close submenus..
     else {
       if (key == 9 && !e.shiftKey || key == 9 && e.shiftKey) {
@@ -839,12 +861,55 @@ function h2MenuMobileMenuToggleEvent(e) {
     // Add tab listeners to tab out of the menu and close submenus.
     var resetAllMenuItems = h2MenuGetAllMenuItemsHandler(menuWrapper);
     // Add mobile trigger to main menu items.
-    //resetAllMenuItems = resetAllMenuItems.concat(trigger);
+    //resetAllMenuItems = resetAllMenuItems.concat(trigger.shadowRoot.querySelector("button"));
     resetAllMenuItems.forEach(function(item) {
       item.removeEventListener("keydown", h2MenuTabExitEvent);
       item.addEventListener("keydown", h2MenuTabExitEvent);
     });
-    resetMainMenuItems[0].focus();
+    // resetMainMenuItems[0].focus();
+  }
+}
+
+// Check if optional content passed to menu has focusable elements
+// This will change TabExit behaviour
+function hasFocusableElement(el) {
+  var focusableElementInventory = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'SELECT'];
+  var hasFocusableElement = false;
+  if(el != null) {
+    // check passed element
+    if (focusableElementInventory.includes(el.nodeName)) {
+      hasFocusableElement = true;
+    }
+    //check children of passed element
+    el.querySelectorAll("*").forEach(function(element) {
+      // check if children are web components
+      if (!!element.shadowRoot) {
+        element.shadowRoot.querySelectorAll('*').forEach(function(shadowElements) {
+          if (focusableElementInventory.includes(shadowElements.nodeName)) {
+            hasFocusableElement = true;
+          }
+        });
+      }
+      else if (focusableElementInventory.includes(element.nodeName)) {
+        hasFocusableElement = true;
+      }
+    });
+  }
+  return hasFocusableElement;
+}
+
+// Check if focus is now out of right optional content to close mobile menu
+function rightOptionalTabExitEvent(e) {
+  var trigger = e.currentTarget;
+  var target = e.relatedTarget;
+  var menuWrapper = trigger.closest("gcds-site-menu");
+  var mobileTrigger = menuWrapper.shadowRoot.querySelector("[data-h2-mobile-menu-trigger]");
+  var menu = menuWrapper.shadowRoot.querySelector("[data-h2-menu]");
+  if (!trigger.contains(target) && menu.classList.contains("h2-mobile-menu-active")) {
+    menu.classList.remove("h2-mobile-menu-active");
+    mobileTrigger.classList.remove("h2-active");
+    mobileTrigger.setAttribute("aria-expanded", false);
+    document.querySelector("body").style.overflow = "visible";
   }
 }
 
