@@ -80,6 +80,7 @@ export namespace Components {
          */
         "variant": 'solid' | 'outline' | 'text-only';
     }
+<<<<<<< HEAD
     interface GcdsSiteMenu {
         /**
           * Menu alignment
@@ -97,6 +98,83 @@ export namespace Components {
           * Sticky navigation flag
          */
         "menuPosition": 'static' | 'sticky';
+=======
+    interface GcdsErrorMessage {
+        /**
+          * Error message for an invalid form field.
+         */
+        "message": string;
+        /**
+          * Id attribute for the error message.
+         */
+        "messageId": string;
+    }
+    interface GcdsHint {
+        /**
+          * Hint displayed below the label and above the input field.
+         */
+        "hint"?: string;
+        /**
+          * Id attribute for the hint.
+         */
+        "hintId": string;
+    }
+    interface GcdsInput {
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage"?: string;
+        /**
+          * Specifies if the label is hidden or not.
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Hint displayed below the label and above the input field.
+         */
+        "inputHint"?: string;
+        /**
+          * Id + name attribute for an input element.
+         */
+        "inputId": string;
+        /**
+          * Default value for an input element.
+         */
+        "inputValue"?: string | number;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Set Input types
+         */
+        "type": 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+    }
+    interface GcdsLabel {
+        /**
+          * Specifies if the label is hidden or not.
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Defines the label's for attribute.
+         */
+        "labelFor": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+>>>>>>> ebe60d1 (feat: develop input stencil component)
     }
 }
 declare global {
@@ -106,6 +184,7 @@ declare global {
         prototype: HTMLGcdsButtonElement;
         new (): HTMLGcdsButtonElement;
     };
+<<<<<<< HEAD
     interface HTMLGcdsSiteMenuElement extends Components.GcdsSiteMenu, HTMLStencilElement {
     }
     var HTMLGcdsSiteMenuElement: {
@@ -115,6 +194,38 @@ declare global {
     interface HTMLElementTagNameMap {
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
+=======
+    interface HTMLGcdsErrorMessageElement extends Components.GcdsErrorMessage, HTMLStencilElement {
+    }
+    var HTMLGcdsErrorMessageElement: {
+        prototype: HTMLGcdsErrorMessageElement;
+        new (): HTMLGcdsErrorMessageElement;
+    };
+    interface HTMLGcdsHintElement extends Components.GcdsHint, HTMLStencilElement {
+    }
+    var HTMLGcdsHintElement: {
+        prototype: HTMLGcdsHintElement;
+        new (): HTMLGcdsHintElement;
+    };
+    interface HTMLGcdsInputElement extends Components.GcdsInput, HTMLStencilElement {
+    }
+    var HTMLGcdsInputElement: {
+        prototype: HTMLGcdsInputElement;
+        new (): HTMLGcdsInputElement;
+    };
+    interface HTMLGcdsLabelElement extends Components.GcdsLabel, HTMLStencilElement {
+    }
+    var HTMLGcdsLabelElement: {
+        prototype: HTMLGcdsLabelElement;
+        new (): HTMLGcdsLabelElement;
+    };
+    interface HTMLElementTagNameMap {
+        "gcds-button": HTMLGcdsButtonElement;
+        "gcds-error-message": HTMLGcdsErrorMessageElement;
+        "gcds-hint": HTMLGcdsHintElement;
+        "gcds-input": HTMLGcdsInputElement;
+        "gcds-label": HTMLGcdsLabelElement;
+>>>>>>> ebe60d1 (feat: develop input stencil component)
     }
 }
 declare namespace LocalJSX {
@@ -222,6 +333,97 @@ declare namespace LocalJSX {
         "gcds-button": GcdsButton;
         "gcds-site-menu": GcdsSiteMenu;
     }
+    interface GcdsErrorMessage {
+        /**
+          * Error message for an invalid form field.
+         */
+        "message"?: string;
+        /**
+          * Id attribute for the error message.
+         */
+        "messageId"?: string;
+    }
+    interface GcdsHint {
+        /**
+          * Hint displayed below the label and above the input field.
+         */
+        "hint"?: string;
+        /**
+          * Id attribute for the hint.
+         */
+        "hintId"?: string;
+    }
+    interface GcdsInput {
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage"?: string;
+        /**
+          * Specifies if the label is hidden or not.
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Hint displayed below the label and above the input field.
+         */
+        "inputHint"?: string;
+        /**
+          * Id + name attribute for an input element.
+         */
+        "inputId"?: string;
+        /**
+          * Default value for an input element.
+         */
+        "inputValue"?: string | number;
+        /**
+          * Form field label
+         */
+        "label"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Set Input types
+         */
+        "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+    }
+    interface GcdsLabel {
+        /**
+          * Specifies if the label is hidden or not.
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Form field label
+         */
+        "label"?: string;
+        /**
+          * Defines the label's for attribute.
+         */
+        "labelFor"?: string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+    }
+    interface IntrinsicElements {
+        "gcds-button": GcdsButton;
+        "gcds-error-message": GcdsErrorMessage;
+        "gcds-hint": GcdsHint;
+        "gcds-input": GcdsInput;
+        "gcds-label": GcdsLabel;
+    }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
@@ -229,6 +431,10 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
+            "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
+            "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
+            "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
         }
     }
 }

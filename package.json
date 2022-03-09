@@ -1,6 +1,6 @@
 {
   "name": "gcds-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "gcds components proof-of-concept",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
@@ -22,7 +22,8 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "^2.7.0"
+    "@stencil/core": "^2.7.0",
+    "stencil": "^0.0.5"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.3.2",

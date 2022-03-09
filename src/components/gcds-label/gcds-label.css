@@ -1,0 +1,32 @@
+:host label {
+  display: block;
+  max-width: 100%;
+  font-family: var(--gcds-font-family-default);
+  font-size: var(--gcds-font-size-400);
+  font-weight: var(--gcds-font-weight-bold);
+  margin: 0 0 5px;
+  color: var(--gcds-colour-base-grey-dark-500);
+
+  &.hidden {
+    overflow: hidden;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+  }
+
+  &.required:before,
+  .required {
+    color: var(--gcds-colour-base-red-dark-500);
+  }
+
+  &.required:before {
+    vertical-align: top;
+    content: "* ";
+    margin-left: -0.67em;
+  }
+
+  .required {
+    margin: 0 0 0 5px;
+  }
+}
