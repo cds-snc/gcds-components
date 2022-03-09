@@ -176,10 +176,6 @@ export namespace Components {
     }
     interface GcdsTextarea {
         /**
-          * Default value for textarea cols.
-         */
-        "cols"?: number;
-        /**
           * Specifies if a textarea element is disabled or not.
          */
         "disabled"?: boolean;
@@ -192,14 +188,6 @@ export namespace Components {
          */
         "hideLabel"?: boolean;
         /**
-          * Hint displayed below the label and above the textarea field.
-         */
-        "hint"?: string;
-        /**
-          * Id + name attribute for a textarea element.
-         */
-        "id": string;
-        /**
           * Form field label
          */
         "label": string;
@@ -208,17 +196,29 @@ export namespace Components {
          */
         "required"?: boolean;
         /**
-          * Default value for textarea rows.
-         */
-        "rows"?: number;
-        /**
           * Sets the maxlength attribute for the textarea element.
          */
         "textareaCharacterCount"?: number;
         /**
-          * Default value for an input element.
+          * Default value for textarea cols.
          */
-        "value": string;
+        "textareaCols"?: number;
+        /**
+          * Hint displayed below the label and above the textarea field.
+         */
+        "textareaHint"?: string;
+        /**
+          * Id + name attribute for a textarea element.
+         */
+        "textareaId": string;
+        /**
+          * Default value for textarea rows.
+         */
+        "textareaRows"?: number;
+        /**
+          * Default value for a textarea element.
+         */
+        "textareaValue"?: string;
     }
 }
 declare global {
@@ -465,10 +465,6 @@ declare namespace LocalJSX {
     }
     interface GcdsTextarea {
         /**
-          * Default value for textarea cols.
-         */
-        "cols"?: number;
-        /**
           * Specifies if a textarea element is disabled or not.
          */
         "disabled"?: boolean;
@@ -481,14 +477,6 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: boolean;
         /**
-          * Hint displayed below the label and above the textarea field.
-         */
-        "hint"?: string;
-        /**
-          * Id + name attribute for a textarea element.
-         */
-        "id"?: string;
-        /**
           * Form field label
          */
         "label"?: string;
@@ -496,10 +484,6 @@ declare namespace LocalJSX {
           * Emitted when the textarea loses focus.
          */
         "onGcdsBlur"?: (event: CustomEvent<void>) => void;
-        /**
-          * Update value based on user input.
-         */
-        "onGcdsChange"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the textarea has focus.
          */
@@ -509,17 +493,29 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Default value for textarea rows.
-         */
-        "rows"?: number;
-        /**
           * Sets the maxlength attribute for the textarea element.
          */
         "textareaCharacterCount"?: number;
         /**
-          * Default value for an input element.
+          * Default value for textarea cols.
          */
-        "value"?: string;
+        "textareaCols"?: number;
+        /**
+          * Hint displayed below the label and above the textarea field.
+         */
+        "textareaHint"?: string;
+        /**
+          * Id + name attribute for a textarea element.
+         */
+        "textareaId"?: string;
+        /**
+          * Default value for textarea rows.
+         */
+        "textareaRows"?: number;
+        /**
+          * Default value for a textarea element.
+         */
+        "textareaValue"?: string;
     }
     interface IntrinsicElements {
         "gcds-button": GcdsButton;

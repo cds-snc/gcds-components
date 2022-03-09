@@ -20,11 +20,13 @@
 ### Used by
 
  - [gcds-input](../gcds-input)
+ - [gcds-textarea](../gcds-textarea)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-input --> gcds-label
+  gcds-textarea --> gcds-label
   style gcds-label fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
