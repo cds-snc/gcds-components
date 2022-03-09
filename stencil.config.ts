@@ -23,5 +23,10 @@ export const config: Config = {
         // require('cssnano')
       ]
     })
-  ]
+  ],
+  testing: {
+    transform: {
+      '^.+\\.(ts|tsx|js|jsx|css)$': "@stencil/core/testing/jest-preprocessor"
+    },
+  }
 };
