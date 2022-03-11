@@ -15,7 +15,8 @@ describe('gcds-input', () => {
             type="text"
             id="input-renders"
             name="input-renders"
-            aria-describedby="label-for-input-renders  "
+            aria-labelledby="label-for-input-renders"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -39,7 +40,8 @@ describe('gcds-input', () => {
             type="email"
             id="type-email"
             name="type-email"
-            aria-describedby="label-for-type-email  "
+            aria-labelledby="label-for-type-email"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -60,7 +62,8 @@ describe('gcds-input', () => {
             type="number"
             id="type-number"
             name="type-number"
-            aria-describedby="label-for-type-number  "
+            aria-labelledby="label-for-type-number"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -81,7 +84,8 @@ describe('gcds-input', () => {
             type="password"
             id="type-password"
             name="type-password"
-            aria-describedby="label-for-type-password  "
+            aria-labelledby="label-for-type-password"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -102,7 +106,8 @@ describe('gcds-input', () => {
             type="search"
             id="type-search"
             name="type-search"
-            aria-describedby="label-for-type-search  "
+            aria-labelledby="label-for-type-search"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -123,7 +128,8 @@ describe('gcds-input', () => {
             type="text"
             id="type-text"
             name="type-text"
-            aria-describedby="label-for-type-text  "
+            aria-labelledby="label-for-type-text"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -144,7 +150,8 @@ describe('gcds-input', () => {
             type="url"
             id="type-url"
             name="type-url"
-            aria-describedby="label-for-type-url  "
+            aria-labelledby="label-for-type-url"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -168,7 +175,8 @@ describe('gcds-input', () => {
             type="text"
             id="input-disabled"
             name="input-disabled"
-            aria-describedby="label-for-input-disabled  "
+            aria-labelledby="label-for-input-disabled"
+            aria-describedby=" "
             aria-invalid="false"
             disabled=""
           />
@@ -195,7 +203,8 @@ describe('gcds-input', () => {
             id="input-with-error"
             class="error"
             name="input-with-error"
-            aria-describedby="label-for-input-with-error  error-message-input-with-error"
+            aria-labelledby="label-for-input-with-error"
+            aria-describedby="error-message-input-with-error "
             aria-invalid="true"
           />
         </mock:shadow-root>
@@ -219,7 +228,8 @@ describe('gcds-input', () => {
             type="text"
             id="input-label-hidden"
             name="input-label-hidden"
-            aria-describedby="label-for-input-label-hidden  "
+            aria-labelledby="label-for-input-label-hidden"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -233,10 +243,10 @@ describe('gcds-input', () => {
   it('renders input hint', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-with-hint" input-hint="This is an input hint." />',
+      html: '<gcds-input label="Label" input-id="input-with-hint" hint="This is an input hint." />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-with-hint" input-hint="This is an input hint.">
+      <gcds-input label="Label" input-id="input-with-hint" hint="This is an input hint.">
         <mock:shadow-root>
           <gcds-label label-for="input-with-hint" label="Label" ></gcds-label>
           <gcds-hint hint-id="input-with-hint" hint="This is an input hint."></gcds-hint>
@@ -244,7 +254,8 @@ describe('gcds-input', () => {
             type="text"
             id="input-with-hint"
             name="input-with-hint"
-            aria-describedby="label-for-input-with-hint hint-input-with-hint "
+            aria-labelledby="label-for-input-with-hint"
+            aria-describedby=" hint-input-with-hint"
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -269,7 +280,8 @@ describe('gcds-input', () => {
             id="input-with-value"
             name="input-with-value"
             value="Input value"
-            aria-describedby="label-for-input-with-value  "
+            aria-labelledby="label-for-input-with-value"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -293,7 +305,8 @@ describe('gcds-input', () => {
             type="text"
             id="input-renders-id"
             name="input-renders-id"
-            aria-describedby="label-for-input-renders-id  "
+            aria-labelledby="label-for-input-renders-id"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -317,7 +330,8 @@ describe('gcds-input', () => {
             type="text"
             id="input-renders-label"
             name="input-renders-label"
-            aria-describedby="label-for-input-renders-label  "
+            aria-labelledby="label-for-input-renders-label"
+            aria-describedby=" "
             aria-invalid="false"
           />
         </mock:shadow-root>
@@ -341,7 +355,8 @@ describe('gcds-input', () => {
             type="text"
             id="input-required"
             name="input-required"
-            aria-describedby="label-for-input-required  "
+            aria-labelledby="label-for-input-required"
+            aria-describedby=" "
             aria-invalid="false"
             required
           />

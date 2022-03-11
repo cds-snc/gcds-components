@@ -71,11 +71,11 @@ describe('gcds-input a11y tests', () => {
     expect(element.getAttribute('id')).toEqual('label-for-contains-label');
   });
 
-  it('input has aria-describedby for label', async () => {
+  it('input has aria-labelledby for label', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-input label="Label" input-id="aria-describedby" />');
+    await page.setContent('<gcds-input label="Label" input-id="aria-labelledby" />');
     const element = await (await page.find('gcds-input >>> input'));
-    expect(element.getAttribute('aria-describedby')).toEqual('label-for-aria-describedby  ');
+    expect(element.getAttribute('aria-labelledby')).toEqual('label-for-aria-labelledby');
   });
 });

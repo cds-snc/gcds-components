@@ -135,7 +135,7 @@ export namespace Components {
         /**
           * Hint displayed below the label and above the input field.
          */
-        "inputHint"?: string;
+        "hint"?: string;
         /**
           * Id + name attribute for an input element.
          */
@@ -143,7 +143,7 @@ export namespace Components {
         /**
           * Default value for an input element.
          */
-        "inputValue"?: string | number;
+        "inputValue"?: string | number | null;
         /**
           * Form field label
          */
@@ -369,7 +369,7 @@ declare namespace LocalJSX {
         /**
           * Hint displayed below the label and above the input field.
          */
-        "inputHint"?: string;
+        "hint"?: string;
         /**
           * Id + name attribute for an input element.
          */
@@ -377,7 +377,7 @@ declare namespace LocalJSX {
         /**
           * Default value for an input element.
          */
-        "inputValue"?: string | number;
+        "inputValue"?: string | number | null;
         /**
           * Form field label
          */

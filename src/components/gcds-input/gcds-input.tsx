@@ -13,11 +13,6 @@ export class GcdsInput {
    */
 
   /**
-   * Set Input types
-   */
-  @Prop() type: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
-
-  /**
    * Specifies if an input element is disabled or not.
    */
   @Prop() disabled?: boolean = false;
@@ -35,7 +30,7 @@ export class GcdsInput {
   /**
    * Hint displayed below the label and above the input field.
    */
-  @Prop() inputHint?: string;
+  @Prop() hint?: string;
 
   /**
    * Id + name attribute for an input element.
@@ -45,7 +40,7 @@ export class GcdsInput {
   /**
    * Default value for an input element.
    */
-  @Prop() inputValue?: string | number;
+  @Prop() inputValue?: string | number | null = '';
 
   /**
    * Form field label
@@ -56,6 +51,12 @@ export class GcdsInput {
    * Specifies if a form field is required or not.
    */
   @Prop() required?: boolean;
+
+  /**
+   * Set Input types
+   */
+  @Prop() type: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
+
 
   /**
    * State
@@ -93,7 +94,7 @@ export class GcdsInput {
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, inputHint, inputId, inputValue, label, required, type } = this;
+    const { disabled, errorMessage, hideLabel, hint, inputId, inputValue, label, required, type } = this;
 
     const attrsInput = {
       disabled,
@@ -114,9 +115,7 @@ export class GcdsInput {
           label-for={inputId}
         />
 
-        {inputHint ? 
-          <gcds-hint hint-id={inputId} hint={inputHint} />
-        : null}
+        {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
 
         {errorMessage ? 
           <gcds-error-message message-id={inputId} message={errorMessage} />
@@ -131,7 +130,8 @@ export class GcdsInput {
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
           value={inputValue ? inputValue : this.value}
-          aria-describedby={`label-for-${inputId} ${inputHint ? `hint-${inputId}` : ''} ${errorMessage ? `error-message-${inputId}` : ''}`}
+          aria-labelledby={`label-for-${inputId}`}
+          aria-describedby={`${errorMessage ? `error-message-${inputId}` : ''} ${hint ? `hint-${inputId}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
         />
       </Host>
