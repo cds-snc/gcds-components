@@ -5,10 +5,10 @@ describe('gcds-input', () => {
   it('renders with minimum required properties', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-renders" />',
+      html: '<gcds-input label="Label" id="input-renders" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-renders">
+      <gcds-input label="Label" id="input-renders">
         <mock:shadow-root>
           <gcds-label label-for="input-renders" label="Label"></gcds-label>
           <input
@@ -30,10 +30,10 @@ describe('gcds-input', () => {
   it('renders type email', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input type="email" label="Label" input-id="type-email" />',
+      html: '<gcds-input type="email" label="Label" id="type-email" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input type="email" label="Label" input-id="type-email">
+      <gcds-input type="email" label="Label" id="type-email">
         <mock:shadow-root>
           <gcds-label label-for="type-email" label="Label"></gcds-label>
           <input
@@ -52,10 +52,10 @@ describe('gcds-input', () => {
   it('renders type number', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input type="number" label="Label" input-id="type-number" />',
+      html: '<gcds-input type="number" label="Label" id="type-number" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input type="number" label="Label" input-id="type-number">
+      <gcds-input type="number" label="Label" id="type-number">
         <mock:shadow-root>
           <gcds-label label-for="type-number" label="Label"></gcds-label>
           <input
@@ -74,10 +74,10 @@ describe('gcds-input', () => {
   it('renders type password', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input type="password" label="Label" input-id="type-password" />',
+      html: '<gcds-input type="password" label="Label" id="type-password" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input type="password" label="Label" input-id="type-password">
+      <gcds-input type="password" label="Label" id="type-password">
         <mock:shadow-root>
           <gcds-label label-for="type-password" label="Label"></gcds-label>
           <input
@@ -96,10 +96,10 @@ describe('gcds-input', () => {
   it('renders type search', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input type="search" label="Label" input-id="type-search" />',
+      html: '<gcds-input type="search" label="Label" id="type-search" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input type="search" label="Label" input-id="type-search">
+      <gcds-input type="search" label="Label" id="type-search">
         <mock:shadow-root>
           <gcds-label label-for="type-search" label="Label"></gcds-label>
           <input
@@ -118,10 +118,10 @@ describe('gcds-input', () => {
   it('renders type text', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input type="text" label="Label" input-id="type-text" />',
+      html: '<gcds-input type="text" label="Label" id="type-text" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input type="text" label="Label" input-id="type-text">
+      <gcds-input type="text" label="Label" id="type-text">
         <mock:shadow-root>
           <gcds-label label-for="type-text" label="Label"></gcds-label>
           <input
@@ -140,10 +140,10 @@ describe('gcds-input', () => {
   it('renders type url', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input type="url" label="Label" input-id="type-url" />',
+      html: '<gcds-input type="url" label="Label" id="type-url" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input type="url" label="Label" input-id="type-url">
+      <gcds-input type="url" label="Label" id="type-url">
         <mock:shadow-root>
           <gcds-label label-for="type-url" label="Label"></gcds-label>
           <input
@@ -165,10 +165,10 @@ describe('gcds-input', () => {
   it('renders disabled', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-disabled" disabled />',
+      html: '<gcds-input label="Label" id="input-disabled" disabled />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-disabled" disabled="">
+      <gcds-input label="Label" id="input-disabled" disabled="">
         <mock:shadow-root>
           <gcds-label label-for="input-disabled" label="Label"></gcds-label>
           <input
@@ -191,10 +191,10 @@ describe('gcds-input', () => {
   it('renders error message', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-with-error" error-message="This is an error message." />',
+      html: '<gcds-input label="Label" id="input-with-error" error-message="This is an error message." />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-with-error" error-message="This is an error message.">
+      <gcds-input label="Label" id="input-with-error" error-message="This is an error message.">
         <mock:shadow-root>
           <gcds-label label-for="input-with-error" label="Label"></gcds-label>
           <gcds-error-message message-id="input-with-error" message="This is an error message."></gcds-error-message>
@@ -218,10 +218,10 @@ describe('gcds-input', () => {
   it('renders with label hidden', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-label-hidden" hide-label />',
+      html: '<gcds-input label="Label" id="input-label-hidden" hide-label />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-label-hidden" hide-label>
+      <gcds-input label="Label" id="input-label-hidden" hide-label>
         <mock:shadow-root>
           <gcds-label label-for="input-label-hidden" label="Label" hide-label></gcds-label>
           <input
@@ -243,10 +243,10 @@ describe('gcds-input', () => {
   it('renders input hint', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-with-hint" hint="This is an input hint." />',
+      html: '<gcds-input label="Label" id="input-with-hint" hint="This is an input hint." />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-with-hint" hint="This is an input hint.">
+      <gcds-input label="Label" id="input-with-hint" hint="This is an input hint.">
         <mock:shadow-root>
           <gcds-label label-for="input-with-hint" label="Label" ></gcds-label>
           <gcds-hint hint-id="input-with-hint" hint="This is an input hint."></gcds-hint>
@@ -269,10 +269,10 @@ describe('gcds-input', () => {
   it('renders input value', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-with-value" input-value="Input value" />',
+      html: '<gcds-input label="Label" id="input-with-value" input-value="Input value" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-with-value" input-value="Input value">
+      <gcds-input label="Label" id="input-with-value" input-value="Input value">
         <mock:shadow-root>
           <gcds-label label-for="input-with-value" label="Label" ></gcds-label>
           <input
@@ -295,10 +295,10 @@ describe('gcds-input', () => {
   it('renders input id', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-renders-id" />',
+      html: '<gcds-input label="Label" id="input-renders-id" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-renders-id">
+      <gcds-input label="Label" id="input-renders-id">
         <mock:shadow-root>
           <gcds-label label-for="input-renders-id" label="Label"></gcds-label>
           <input
@@ -320,10 +320,10 @@ describe('gcds-input', () => {
   it('renders label', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-renders-label" />',
+      html: '<gcds-input label="Label" id="input-renders-label" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-renders-label">
+      <gcds-input label="Label" id="input-renders-label">
         <mock:shadow-root>
           <gcds-label label-for="input-renders-label" label="Label"></gcds-label>
           <input
@@ -345,10 +345,10 @@ describe('gcds-input', () => {
   it('renders required', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-required" required />',
+      html: '<gcds-input label="Label" id="input-required" required />',
     });
     expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-required" required>
+      <gcds-input label="Label" id="input-required" required>
         <mock:shadow-root>
           <gcds-label label-for="input-required" label="Label" required></gcds-label>
           <input

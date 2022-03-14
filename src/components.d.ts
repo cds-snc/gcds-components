@@ -139,7 +139,7 @@ export namespace Components {
         /**
           * Id + name attribute for an input element.
          */
-        "inputId": string;
+        "id": string;
         /**
           * Default value for an input element.
          */
@@ -373,7 +373,7 @@ declare namespace LocalJSX {
         /**
           * Id + name attribute for an input element.
          */
-        "inputId"?: string;
+        "id"?: string;
         /**
           * Default value for an input element.
          */

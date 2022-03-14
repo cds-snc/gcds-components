@@ -3,7 +3,8 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 @Component({
   tag: 'gcds-label',
   styleUrl: 'gcds-label.css',
-  shadow: true,
+  shadow: false,
+  scoped: true,
 })
 export class GcdsLabel {
   @Element() el: HTMLElement;

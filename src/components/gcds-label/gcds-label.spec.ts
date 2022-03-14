@@ -4,8 +4,8 @@ describe('gcds-label', () => {
   it('renders', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-label label="Label Test" label-for="label-test" />');
-    const element = await (await page.find('gcds-label >>> label'));
-    expect(element.textContent).toEqual('Label Test');
+    await page.setContent('<gcds-input label="Label" id="renders-label" />');
+    const element = await (await page.find('gcds-input >>> gcds-label'));
+    expect(element.getAttribute('id')).toEqual('label-for-renders-label');
   });
 });

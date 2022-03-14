@@ -35,7 +35,7 @@ export class GcdsInput {
   /**
    * Id + name attribute for an input element.
    */
-  @Prop() inputId: string;
+  @Prop() id: string;
 
   /**
    * Default value for an input element.
@@ -94,10 +94,11 @@ export class GcdsInput {
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, hint, inputId, inputValue, label, required, type } = this;
+    const { disabled, errorMessage, hideLabel, hint, id, inputValue, label, required, type } = this;
 
     const attrsInput = {
       disabled,
+      id,
       required,
       type,
     };
@@ -112,26 +113,25 @@ export class GcdsInput {
         <gcds-label
           {...attrsLabel}
           hide-label={hideLabel}
-          label-for={inputId}
+          label-for={id}
         />
 
-        {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
+        {hint ? <gcds-hint hint={hint} hint-id={id} /> : null}
 
         {errorMessage ? 
-          <gcds-error-message message-id={inputId} message={errorMessage} />
+          <gcds-error-message message-id={id} message={errorMessage} />
         : null}
 
         <input
           {...attrsInput}
-          id={inputId}
           class={errorMessage ? 'error' : null}
-          name={inputId}
+          name={id}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
           value={inputValue ? inputValue : this.value}
-          aria-labelledby={`label-for-${inputId}`}
-          aria-describedby={`${errorMessage ? `error-message-${inputId}` : ''} ${hint ? `hint-${inputId}` : ''}`}
+          aria-labelledby={`label-for-${id}`}
+          aria-describedby={`${errorMessage ? `error-message-${id}` : ''} ${hint ? `hint-${id}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
         />
       </Host>
