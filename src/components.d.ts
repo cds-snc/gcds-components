@@ -141,10 +141,6 @@ export namespace Components {
          */
         "id": string;
         /**
-          * Default value for an input element.
-         */
-        "inputValue"?: string | number | null;
-        /**
           * Form field label
          */
         "label": string;
@@ -156,6 +152,10 @@ export namespace Components {
           * Set Input types
          */
         "type": 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+        /**
+          * Default value for an input element.
+         */
+        "value": string;
     }
     interface GcdsLabel {
         /**
@@ -375,10 +375,6 @@ declare namespace LocalJSX {
          */
         "id"?: string;
         /**
-          * Default value for an input element.
-         */
-        "inputValue"?: string | number | null;
-        /**
           * Form field label
          */
         "label"?: string;
@@ -386,6 +382,10 @@ declare namespace LocalJSX {
           * Emitted when the input loses focus.
          */
         "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Update value based on user input.
+         */
+        "onGcdsChange"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -398,6 +398,10 @@ declare namespace LocalJSX {
           * Set Input types
          */
         "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+        /**
+          * Default value for an input element.
+         */
+        "value"?: string;
     }
     interface GcdsLabel {
         /**

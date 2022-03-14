@@ -264,32 +264,6 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Input value test
-    */
-  it('renders input value', async () => {
-    const { root } = await newSpecPage({
-      components: [GcdsInput],
-      html: '<gcds-input label="Label" id="input-with-value" input-value="Input value" />',
-    });
-    expect(root).toEqualHtml(`
-      <gcds-input label="Label" id="input-with-value" input-value="Input value">
-        <mock:shadow-root>
-          <gcds-label label-for="input-with-value" label="Label" ></gcds-label>
-          <input
-            type="text"
-            id="input-with-value"
-            name="input-with-value"
-            value="Input value"
-            aria-labelledby="label-for-input-with-value"
-            aria-describedby=" "
-            aria-invalid="false"
-          />
-        </mock:shadow-root>
-      </gcds-input>
-    `);
-  });
-
-  /**
     * Input ID test
     */
   it('renders input id', async () => {
@@ -359,6 +333,32 @@ describe('gcds-input', () => {
             aria-describedby=" "
             aria-invalid="false"
             required
+          />
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+  * Input value test
+  */
+    it('renders input value', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" id="input-with-value" value="Input value" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" id="input-with-value" value="Input value">
+        <mock:shadow-root>
+          <gcds-label label-for="input-with-value" label="Label" ></gcds-label>
+          <input
+            type="text"
+            id="input-with-value"
+            name="input-with-value"
+            value="Input value"
+            aria-labelledby="label-for-input-with-value"
+            aria-describedby=" "
+            aria-invalid="false"
           />
         </mock:shadow-root>
       </gcds-input>

@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'gcds-input',
@@ -40,7 +40,7 @@ export class GcdsInput {
   /**
    * Default value for an input element.
    */
-  @Prop() inputValue?: string | number | null = '';
+  @Prop({ mutable: true }) value: string;
 
   /**
    * Form field label
@@ -56,12 +56,6 @@ export class GcdsInput {
    * Set Input types
    */
   @Prop() type: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
-
-
-  /**
-   * State
-   */
-  @State() value: string;
 
 
   /**
@@ -89,18 +83,24 @@ export class GcdsInput {
   /**
     * Update value based on user input.
     */
+  @Event() gcdsChange: EventEmitter;
+
   handleChange(e) {
-    this.value = e.target.value;
+    let val = e.target && e.target.value;
+
+    this.value = val;
+    this.gcdsChange.emit(this.value);
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, hint, id, inputValue, label, required, type } = this;
+    const { disabled, errorMessage, hideLabel, hint, id, label, required, type, value } = this;
 
     const attrsInput = {
       disabled,
       id,
       required,
       type,
+      value,
     };
 
     const attrsLabel = {
@@ -129,7 +129,6 @@ export class GcdsInput {
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
-          value={inputValue ? inputValue : this.value}
           aria-labelledby={`label-for-${id}`}
           aria-describedby={`${errorMessage ? `error-message-${id}` : ''} ${hint ? `hint-${id}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
