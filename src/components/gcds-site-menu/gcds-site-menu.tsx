@@ -119,11 +119,18 @@ export class GcdsSiteMenu {
       // Apply attrubutes to all li
       mainMenus[i].querySelectorAll("li").forEach((listitem) => {
         listitem.setAttribute("role", "presentation");
+        for (var x = 0; x < listitem.children.length; x++) {
+          if(listitem.children[x].nodeName != "BUTTON" && listitem.children[x].nodeName != "UL" ) {
+            this.setAttributes(listitem.children[x], {"role": "menuitem", "tabindex": "0" });
+          } else if (listitem.children[x].nodeName == "A") {
+            this.setAttributes(listitem.children[x], {"role": "menuitem"})
+          }
+        }
       });
-      // Loop through each a tag
-      mainMenus[i].querySelectorAll("a").forEach((menuitem) => {
+      // Loop through each menuitem tag
+      mainMenus[i].querySelectorAll("[role=menuitem]").forEach((menuitem) => {
         // Apply role attribute
-        menuitem.setAttribute("role", "menuitem");
+        //menuitem.setAttribute("role", "menuitem");
         // Check if a tag has siblings
         if (menuitem.parentNode.children.length > 1) {
           // Apply attributes for sub menus
