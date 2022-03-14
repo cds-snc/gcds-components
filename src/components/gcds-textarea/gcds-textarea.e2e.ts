@@ -5,7 +5,7 @@ describe('gcds-textarea', () => {
   it('renders', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" textarea-value="Textarea Value" />');
+    await page.setContent('<gcds-textarea label="Label" id="textarea-renders" value="Textarea Value" />');
     const element = await (await page.find('gcds-textarea >>> textarea'));
     expect(element.textContent).toEqual('Textarea Value');
   });
@@ -24,7 +24,7 @@ describe('gcds-textarea a11y tests', () => {
   it('aria-invalid', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" error-message="Field required" />');
+    await page.setContent('<gcds-textarea label="Label" id="textarea-renders" error-message="Field required" />');
     const element = await (await page.find('gcds-textarea >>> textarea'));
     expect(element.getAttribute('aria-invalid')).toEqual('true');
   });
@@ -34,7 +34,7 @@ describe('gcds-textarea a11y tests', () => {
   it('colour contrast', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-textarea label="Label" textarea-id="textarea-renders" textarea-value="Testing the contrast" />
+      <gcds-textarea label="Label" id="textarea-renders" value="Testing the contrast" />
     `);
     
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
@@ -49,7 +49,7 @@ describe('gcds-textarea a11y tests', () => {
   // it('textarea keyboard focus', async () => {
   //   const page = await newE2EPage();
   //   await page.setContent(`
-  //     <gcds-textarea label="Label" textarea-id="textarea-renders" />
+  //     <gcds-textarea label="Label" id="textarea-renders" />
   //   `);
 
   //   const textareaField = await (await page.find('gcds-textarea >>> textarea')).innerText;
@@ -65,15 +65,15 @@ describe('gcds-textarea a11y tests', () => {
   it('textarea contains label', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" />');
+    await page.setContent('<gcds-textarea label="Label" id="textarea-renders" />');
     const element = await (await page.find('gcds-textarea >>> gcds-label'));
     expect(element.getAttribute('id')).toEqual('label-for-textarea-renders');
   });
 
-  it('aria-describedby label', async () => {
+  it('input has aria-labelledby for label', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" />');
+    await page.setContent('<gcds-textarea label="Label" id="textarea-renders" />');
     const element = await (await page.find('gcds-textarea >>> textarea'));
     expect(element.getAttribute('aria-labelledby')).toEqual('label-for-textarea-renders');
   });

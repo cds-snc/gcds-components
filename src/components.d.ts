@@ -176,6 +176,10 @@ export namespace Components {
     }
     interface GcdsTextarea {
         /**
+          * Default value for textarea cols.
+         */
+        "cols"?: number;
+        /**
           * Specifies if a textarea element is disabled or not.
          */
         "disabled"?: boolean;
@@ -192,6 +196,10 @@ export namespace Components {
          */
         "hint"?: string;
         /**
+          * Id + name attribute for a textarea element.
+         */
+        "id": string;
+        /**
           * Form field label
          */
         "label": string;
@@ -200,25 +208,17 @@ export namespace Components {
          */
         "required"?: boolean;
         /**
+          * Default value for textarea rows.
+         */
+        "rows"?: number;
+        /**
           * Sets the maxlength attribute for the textarea element.
          */
         "textareaCharacterCount"?: number;
         /**
-          * Default value for textarea cols.
+          * Default value for an input element.
          */
-        "textareaCols"?: number;
-        /**
-          * Id + name attribute for a textarea element.
-         */
-        "textareaId": string;
-        /**
-          * Default value for textarea rows.
-         */
-        "textareaRows"?: number;
-        /**
-          * Default value for a textarea element.
-         */
-        "textareaValue"?: string;
+        "value": string;
     }
 }
 declare global {
@@ -465,6 +465,10 @@ declare namespace LocalJSX {
     }
     interface GcdsTextarea {
         /**
+          * Default value for textarea cols.
+         */
+        "cols"?: number;
+        /**
           * Specifies if a textarea element is disabled or not.
          */
         "disabled"?: boolean;
@@ -481,6 +485,10 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
+          * Id + name attribute for a textarea element.
+         */
+        "id"?: string;
+        /**
           * Form field label
          */
         "label"?: string;
@@ -488,6 +496,10 @@ declare namespace LocalJSX {
           * Emitted when the textarea loses focus.
          */
         "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Update value based on user input.
+         */
+        "onGcdsChange"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the textarea has focus.
          */
@@ -497,25 +509,17 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Default value for textarea rows.
+         */
+        "rows"?: number;
+        /**
           * Sets the maxlength attribute for the textarea element.
          */
         "textareaCharacterCount"?: number;
         /**
-          * Default value for textarea cols.
+          * Default value for an input element.
          */
-        "textareaCols"?: number;
-        /**
-          * Id + name attribute for a textarea element.
-         */
-        "textareaId"?: string;
-        /**
-          * Default value for textarea rows.
-         */
-        "textareaRows"?: number;
-        /**
-          * Default value for a textarea element.
-         */
-        "textareaValue"?: string;
+        "value"?: string;
     }
     interface IntrinsicElements {
         "gcds-button": GcdsButton;

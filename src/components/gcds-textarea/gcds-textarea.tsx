@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'gcds-textarea',
@@ -11,6 +11,11 @@ export class GcdsTextarea {
   /**
    * Textarea props
    */
+
+  /**
+   * Default value for textarea cols.
+   */
+  @Prop() cols?: number = 45;
 
   /**
    * Specifies if a textarea element is disabled or not.
@@ -33,6 +38,11 @@ export class GcdsTextarea {
   @Prop() hint?: string;
 
   /**
+   * Id + name attribute for a textarea element.
+   */
+  @Prop() id: string;
+
+  /**
    * Form field label
    */
   @Prop() label: string;
@@ -43,34 +53,19 @@ export class GcdsTextarea {
   @Prop() required?: boolean;
 
   /**
+   * Default value for textarea rows.
+   */
+  @Prop() rows?: number = 5;
+
+  /**
    * Sets the maxlength attribute for the textarea element.
    */
   @Prop() textareaCharacterCount?: number;
 
   /**
-   * Default value for textarea cols.
+   * Default value for an input element.
    */
-  @Prop() textareaCols?: number = 45;
-
-  /**
-   * Id + name attribute for a textarea element.
-   */
-  @Prop() textareaId: string;
-
-  /**
-   * Default value for textarea rows.
-   */
-  @Prop() textareaRows?: number = 5;
-
-  /**
-   * Default value for a textarea element.
-   */
-  @Prop() textareaValue?: string;
-
-  /**
-   * State
-   */
-  @State() value: string;
+  @Prop({ mutable: true }) value: string;
 
 
   /**
@@ -98,12 +93,17 @@ export class GcdsTextarea {
   /**
     * Update value based on user input.
     */
+  @Event() gcdsChange: EventEmitter;
+
   handleChange(e) {
-    this.textareaValue = e.target.value;
+    let val = e.target && e.target.value;
+
+    this.value = val;
+    this.gcdsChange.emit(this.value);
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, hint, label, required, textareaCharacterCount, textareaCols, textareaId, textareaRows, textareaValue } = this;
+    const { cols, disabled, errorMessage, hideLabel, hint, id, label, required, rows, textareaCharacterCount, value } = this;
 
     
     const attrsLabel = {
@@ -112,8 +112,11 @@ export class GcdsTextarea {
     }
 
     const attrsTextarea = {
+      cols,
       disabled,
+      id,
       required,
+      rows,
     };
 
     return (
@@ -121,35 +124,32 @@ export class GcdsTextarea {
         <gcds-label
           {...attrsLabel}
           hide-label={hideLabel}
-          label-for={textareaId}
+          label-for={id}
         />
 
-        {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
+        {hint ? <gcds-hint hint={hint} hint-id={id} /> : null}
 
         {errorMessage ? 
-          <gcds-error-message message-id={textareaId} message={errorMessage} />
+          <gcds-error-message message-id={id} message={errorMessage} />
         : null}
 
         <textarea
           {...attrsTextarea}
-          id={textareaId}
           class={errorMessage ? 'error' : null}
-          name={textareaId}
-          cols={textareaCols}
-          rows={textareaRows}
+          name={id}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
-          aria-labelledby={`label-for-${textareaId}`}
-          aria-describedby={`${errorMessage ? `error-message-${textareaId}` : ''} ${hint ? `hint-${textareaId}` : ''} ${textareaCharacterCount ? `count-${textareaId}` : ''}`}
+          aria-labelledby={`label-for-${id}`}
+          aria-describedby={`${errorMessage ? `error-message-${id}` : ''} ${hint ? `hint-${id}` : ''} ${textareaCharacterCount ? `count-${id}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
           maxlength={textareaCharacterCount ? textareaCharacterCount : null}
-        >{textareaValue}</textarea>
+        >{value}</textarea>
 
         {textareaCharacterCount ?
-          <p id={`count-${textareaId}`} aria-live="polite">
-            {textareaValue  == undefined ? `${textareaCharacterCount} characters allowed`
-            : `${textareaCharacterCount - textareaValue.length} characters left`}
+          <p id={`count-${id}`} aria-live="polite">
+            {value  == undefined ? `${textareaCharacterCount} characters allowed`
+            : `${textareaCharacterCount - value.length} characters left`}
           </p>
         : null}
       </Host>

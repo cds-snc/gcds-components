@@ -9,25 +9,26 @@
 
 | Property                 | Attribute                  | Description                                                  | Type      | Default     |
 | ------------------------ | -------------------------- | ------------------------------------------------------------ | --------- | ----------- |
+| `cols`                   | `cols`                     | Default value for textarea cols.                             | `number`  | `45`        |
 | `disabled`               | `disabled`                 | Specifies if a textarea element is disabled or not.          | `boolean` | `false`     |
 | `errorMessage`           | `error-message`            | Error message for an invalid textarea element.               | `string`  | `undefined` |
 | `hideLabel`              | `hide-label`               | Specifies if the label is hidden or not.                     | `boolean` | `undefined` |
 | `hint`                   | `hint`                     | Hint displayed below the label and above the textarea field. | `string`  | `undefined` |
+| `id`                     | `id`                       | Id + name attribute for a textarea element.                  | `string`  | `undefined` |
 | `label`                  | `label`                    | Form field label                                             | `string`  | `undefined` |
 | `required`               | `required`                 | Specifies if a form field is required or not.                | `boolean` | `undefined` |
+| `rows`                   | `rows`                     | Default value for textarea rows.                             | `number`  | `5`         |
 | `textareaCharacterCount` | `textarea-character-count` | Sets the maxlength attribute for the textarea element.       | `number`  | `undefined` |
-| `textareaCols`           | `textarea-cols`            | Default value for textarea cols.                             | `number`  | `45`        |
-| `textareaId`             | `textarea-id`              | Id + name attribute for a textarea element.                  | `string`  | `undefined` |
-| `textareaRows`           | `textarea-rows`            | Default value for textarea rows.                             | `number`  | `5`         |
-| `textareaValue`          | `textarea-value`           | Default value for a textarea element.                        | `string`  | `undefined` |
+| `value`                  | `value`                    | Default value for an input element.                          | `string`  | `undefined` |
 
 
 ## Events
 
-| Event       | Description                            | Type                |
-| ----------- | -------------------------------------- | ------------------- |
-| `gcdsBlur`  | Emitted when the textarea loses focus. | `CustomEvent<void>` |
-| `gcdsFocus` | Emitted when the textarea has focus.   | `CustomEvent<void>` |
+| Event        | Description                            | Type                |
+| ------------ | -------------------------------------- | ------------------- |
+| `gcdsBlur`   | Emitted when the textarea loses focus. | `CustomEvent<void>` |
+| `gcdsChange` | Update value based on user input.      | `CustomEvent<any>`  |
+| `gcdsFocus`  | Emitted when the textarea has focus.   | `CustomEvent<void>` |
 
 
 ## Dependencies
