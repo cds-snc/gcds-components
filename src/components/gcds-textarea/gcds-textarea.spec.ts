@@ -14,7 +14,8 @@ describe('gcds-textarea', () => {
           <textarea
             id="textarea-renders"
             name="textarea-renders"
-            aria-describedby="label-for-textarea-renders   "
+            aria-labelledby="label-for-textarea-renders"
+            aria-describedby="  "
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -39,7 +40,8 @@ describe('gcds-textarea', () => {
           <textarea
             id="textarea-disabled"
             name="textarea-disabled"
-            aria-describedby="label-for-textarea-disabled   "
+            aria-labelledby="label-for-textarea-disabled"
+            aria-describedby="  "
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -67,7 +69,8 @@ describe('gcds-textarea', () => {
             id="textarea-with-error"
             class="error"
             name="textarea-with-error"
-            aria-describedby="label-for-textarea-with-error  error-message-textarea-with-error "
+            aria-labelledby="label-for-textarea-with-error"
+            aria-describedby="error-message-textarea-with-error  "
             aria-invalid="true"
             cols="45"
             rows="5"
@@ -92,7 +95,8 @@ describe('gcds-textarea', () => {
           <textarea
             id="textarea-label-hidden"
             name="textarea-label-hidden"
-            aria-describedby="label-for-textarea-label-hidden   "
+            aria-labelledby="label-for-textarea-label-hidden"
+            aria-describedby="  "
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -117,7 +121,8 @@ describe('gcds-textarea', () => {
           <textarea
             id="textarea-renders-label"
             name="textarea-renders-label"
-            aria-describedby="label-for-textarea-renders-label   "
+            aria-labelledby="label-for-textarea-renders-label"
+            aria-describedby="  "
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -142,7 +147,8 @@ describe('gcds-textarea', () => {
           <textarea
             id="textarea-required"
             name="textarea-required"
-            aria-describedby="label-for-textarea-required   "
+            aria-labelledby="label-for-textarea-required"
+            aria-describedby="  "
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -164,11 +170,12 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="character-count-no-value" textarea-character-count="10">
         <mock:shadow-root>
-          <gcds-label label-for="character-count-no-value" label="Label" ></gcds-label>
+          <gcds-label label-for="character-count-no-value" label="Label"></gcds-label>
           <textarea
             id="character-count-no-value"
             name="character-count-no-value"
-            aria-describedby="label-for-character-count-no-value   count-character-count-no-value"
+            aria-labelledby="label-for-character-count-no-value"
+            aria-describedby="  count-character-count-no-value"
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -188,11 +195,12 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="character-count-value" textarea-value="Value Test" textarea-character-count="22">
         <mock:shadow-root>
-          <gcds-label label-for="character-count-value" label="Label" ></gcds-label>
+          <gcds-label label-for="character-count-value" label="Label"></gcds-label>
           <textarea
             id="character-count-value"
             name="character-count-value"
-            aria-describedby="label-for-character-count-value   count-character-count-value"
+            aria-labelledby="label-for-character-count-value"
+            aria-describedby="  count-character-count-value"
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -215,11 +223,12 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-cols" textarea-cols="10">
         <mock:shadow-root>
-          <gcds-label label-for="textarea-cols" label="Label" ></gcds-label>
+          <gcds-label label-for="textarea-cols" label="Label"></gcds-label>
           <textarea
             id="textarea-cols"
             name="textarea-cols"
-            aria-describedby="label-for-textarea-cols   "
+            aria-labelledby="label-for-textarea-cols"
+            aria-describedby="  "
             aria-invalid="false"
             cols="10"
             rows="5"
@@ -235,17 +244,18 @@ describe('gcds-textarea', () => {
   it('renders textarea hint', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
-      html: '<gcds-textarea label="Label" textarea-id="textarea-with-hint" textarea-hint="This is a textarea hint." />',
+      html: '<gcds-textarea label="Label" textarea-id="textarea-with-hint" hint="This is a textarea hint." />',
     });
     expect(root).toEqualHtml(`
-      <gcds-textarea label="Label" textarea-id="textarea-with-hint" textarea-hint="This is a textarea hint.">
+      <gcds-textarea label="Label" textarea-id="textarea-with-hint" hint="This is a textarea hint.">
         <mock:shadow-root>
           <gcds-label label-for="textarea-with-hint" label="Label" ></gcds-label>
-          <gcds-hint hint-id="textarea-with-hint" hint="This is a textarea hint."></gcds-hint>
+          <gcds-hint hint="This is a textarea hint." hint-id="textarea-with-hint"></gcds-hint>
           <textarea
             id="textarea-with-hint"
             name="textarea-with-hint"
-            aria-describedby="label-for-textarea-with-hint hint-textarea-with-hint  "
+            aria-labelledby="label-for-textarea-with-hint"
+            aria-describedby=" hint-textarea-with-hint "
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -270,7 +280,8 @@ describe('gcds-textarea', () => {
           <textarea
             id="textarea-renders-id"
             name="textarea-renders-id"
-            aria-describedby="label-for-textarea-renders-id   "
+            aria-labelledby="label-for-textarea-renders-id"
+            aria-describedby="  "
             aria-invalid="false"
             cols="45"
             rows="5"
@@ -291,11 +302,12 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-rows" textarea-rows="2">
         <mock:shadow-root>
-          <gcds-label label-for="textarea-rows" label="Label" ></gcds-label>
+          <gcds-label label-for="textarea-rows" label="Label"></gcds-label>
           <textarea
             id="textarea-rows"
             name="textarea-rows"
-            aria-describedby="label-for-textarea-rows   "
+            aria-labelledby="label-for-textarea-rows"
+            aria-describedby="  "
             aria-invalid="false"
             cols="45"
             rows="2"
@@ -316,11 +328,12 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-with-value" textarea-value="Textarea value">
         <mock:shadow-root>
-          <gcds-label label-for="textarea-with-value" label="Label" ></gcds-label>
+          <gcds-label label-for="textarea-with-value" label="Label"></gcds-label>
           <textarea
             id="textarea-with-value"
             name="textarea-with-value"
-            aria-describedby="label-for-textarea-with-value   "
+            aria-labelledby="label-for-textarea-with-value"
+            aria-describedby="  "
             aria-invalid="false"
             cols="45"
             rows="5"

@@ -12,11 +12,11 @@
 | `disabled`               | `disabled`                 | Specifies if a textarea element is disabled or not.          | `boolean` | `false`     |
 | `errorMessage`           | `error-message`            | Error message for an invalid textarea element.               | `string`  | `undefined` |
 | `hideLabel`              | `hide-label`               | Specifies if the label is hidden or not.                     | `boolean` | `undefined` |
+| `hint`                   | `hint`                     | Hint displayed below the label and above the textarea field. | `string`  | `undefined` |
 | `label`                  | `label`                    | Form field label                                             | `string`  | `undefined` |
 | `required`               | `required`                 | Specifies if a form field is required or not.                | `boolean` | `undefined` |
 | `textareaCharacterCount` | `textarea-character-count` | Sets the maxlength attribute for the textarea element.       | `number`  | `undefined` |
 | `textareaCols`           | `textarea-cols`            | Default value for textarea cols.                             | `number`  | `45`        |
-| `textareaHint`           | `textarea-hint`            | Hint displayed below the label and above the textarea field. | `string`  | `undefined` |
 | `textareaId`             | `textarea-id`              | Id + name attribute for a textarea element.                  | `string`  | `undefined` |
 | `textareaRows`           | `textarea-rows`            | Default value for textarea rows.                             | `number`  | `5`         |
 | `textareaValue`          | `textarea-value`           | Default value for a textarea element.                        | `string`  | `undefined` |

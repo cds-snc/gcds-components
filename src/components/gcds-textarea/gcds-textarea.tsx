@@ -28,6 +28,11 @@ export class GcdsTextarea {
   @Prop() hideLabel?: boolean;
 
   /**
+   * Hint displayed below the label and above the textarea field.
+   */
+  @Prop() hint?: string;
+
+  /**
    * Form field label
    */
   @Prop() label: string;
@@ -46,11 +51,6 @@ export class GcdsTextarea {
    * Default value for textarea cols.
    */
   @Prop() textareaCols?: number = 45;
-
-  /**
-   * Hint displayed below the label and above the textarea field.
-   */
-  @Prop() textareaHint?: string;
 
   /**
    * Id + name attribute for a textarea element.
@@ -103,7 +103,7 @@ export class GcdsTextarea {
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, label, required, textareaCharacterCount, textareaCols, textareaHint, textareaId, textareaRows, textareaValue } = this;
+    const { disabled, errorMessage, hideLabel, hint, label, required, textareaCharacterCount, textareaCols, textareaId, textareaRows, textareaValue } = this;
 
     
     const attrsLabel = {
@@ -124,9 +124,7 @@ export class GcdsTextarea {
           label-for={textareaId}
         />
 
-        {textareaHint ? 
-          <gcds-hint hint-id={textareaId} hint={textareaHint} />
-        : null}
+        {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
 
         {errorMessage ? 
           <gcds-error-message message-id={textareaId} message={errorMessage} />
@@ -142,7 +140,8 @@ export class GcdsTextarea {
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
-          aria-describedby={`label-for-${textareaId} ${textareaHint ? `hint-${textareaId}` : ''} ${errorMessage ? `error-message-${textareaId}` : ''} ${textareaCharacterCount ? `count-${textareaId}` : ''}`}
+          aria-labelledby={`label-for-${textareaId}`}
+          aria-describedby={`${errorMessage ? `error-message-${textareaId}` : ''} ${hint ? `hint-${textareaId}` : ''} ${textareaCharacterCount ? `count-${textareaId}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
           maxlength={textareaCharacterCount ? textareaCharacterCount : null}
         >{textareaValue}</textarea>

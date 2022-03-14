@@ -188,6 +188,10 @@ export namespace Components {
          */
         "hideLabel"?: boolean;
         /**
+          * Hint displayed below the label and above the textarea field.
+         */
+        "hint"?: string;
+        /**
           * Form field label
          */
         "label": string;
@@ -203,10 +207,6 @@ export namespace Components {
           * Default value for textarea cols.
          */
         "textareaCols"?: number;
-        /**
-          * Hint displayed below the label and above the textarea field.
-         */
-        "textareaHint"?: string;
         /**
           * Id + name attribute for a textarea element.
          */
@@ -477,6 +477,10 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: boolean;
         /**
+          * Hint displayed below the label and above the textarea field.
+         */
+        "hint"?: string;
+        /**
           * Form field label
          */
         "label"?: string;
@@ -500,10 +504,6 @@ declare namespace LocalJSX {
           * Default value for textarea cols.
          */
         "textareaCols"?: number;
-        /**
-          * Hint displayed below the label and above the textarea field.
-         */
-        "textareaHint"?: string;
         /**
           * Id + name attribute for a textarea element.
          */

@@ -46,18 +46,18 @@ describe('gcds-textarea a11y tests', () => {
   /**
    * Textarea keyboard focus
    */
-  it('textarea keyboard focus', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-textarea label="Label" textarea-id="textarea-renders" />
-    `);
+  // it('textarea keyboard focus', async () => {
+  //   const page = await newE2EPage();
+  //   await page.setContent(`
+  //     <gcds-textarea label="Label" textarea-id="textarea-renders" />
+  //   `);
 
-    const textareaField = await (await page.find('gcds-textarea >>> textarea')).innerText;
+  //   const textareaField = await (await page.find('gcds-textarea >>> textarea')).innerText;
 
-    await page.keyboard.press("Tab");
+  //   await page.keyboard.press("Tab");
 
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.textContent)).toEqual(textareaField);
-  });
+  //   expect(await page.evaluate(() => window.document.activeElement.shadowRoot.textContent)).toEqual(textareaField);
+  // });
 
   /**
    * Textarea label test
@@ -75,6 +75,6 @@ describe('gcds-textarea a11y tests', () => {
 
     await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" />');
     const element = await (await page.find('gcds-textarea >>> textarea'));
-    expect(element.getAttribute('aria-describedby')).toEqual('label-for-textarea-renders   ');
+    expect(element.getAttribute('aria-labelledby')).toEqual('label-for-textarea-renders');
   });
 });
