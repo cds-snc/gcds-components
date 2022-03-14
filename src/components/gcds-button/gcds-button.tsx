@@ -21,33 +21,28 @@ export class GcdsButton {
   @Element() el: HTMLElement;
 
   /**
-   * The button label
-   */
-  @Prop() label: string;
-
-  /**
    * Button props
    */
 
   /**
    * Set button types
    */
-  @Prop({ mutable: true }) type: 'submit' | 'reset' | 'button' | 'link' = 'button';
+  @Prop({ mutable: true }) buttonType: 'submit' | 'reset' | 'button' | 'link' = 'button';
 
   /**
    * Set component states
    */
-  @Prop() state: 'default' | 'hover' | 'active' | 'focus' | 'disabled' = 'default';
+  @Prop() interactionState: 'default' | 'hover' | 'active' | 'focus' | 'disabled' = 'default';
 
   /**
    * Set the main style
    */
-  @Prop() task: 'primary' | 'secondary' | 'danger' | 'skip-to-content' = 'primary';
+  @Prop() buttonRole: 'primary' | 'secondary' | 'danger' | 'skip-to-content' = 'primary';
 
   /**
    * Set the style variant
    */
-  @Prop() variant: 'solid' | 'outline' | 'text-only' = 'solid';
+  @Prop() buttonStyle: 'solid' | 'outline' | 'text-only' = 'solid';
 
   /**
    * The name attribute specifies the name for a <button> element.
@@ -137,14 +132,14 @@ export class GcdsButton {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   private handleClick = (ev: Event) => {
-    if (this.state !== 'disabled' && this.type != 'button' && this.type != 'link') {
+    if (this.interactionState !== 'disabled' && this.buttonType != 'button' && this.buttonType != 'link') {
       // Attach button to form
       const form = this.el.closest('form');
       if (form) {
         ev.preventDefault();
 
         const formButton = document.createElement('button');
-        formButton.type = this.type;
+        formButton.type = this.buttonType;
         formButton.style.display = 'none';
         form.appendChild(formButton);
         formButton.click();
@@ -163,13 +158,13 @@ export class GcdsButton {
 
   componentWillLoad() {
     // Default to type 'button' if no identifying properties are passed
-    if(this.type === undefined && this.href === undefined) {
-      this.type = 'button';
+    if(this.buttonType === undefined && this.href === undefined) {
+      this.buttonType = 'button';
     }
   }
 
   componentDidLoad() {
-    const Tag = this.type != 'link' ? 'button' : 'a';
+    const Tag = this.buttonType != 'link' ? 'button' : 'a';
     //StyleAPI
     for (let [key, value] of Object.entries(styleAPI)) {
       if(this[key] !== undefined) {
@@ -180,14 +175,14 @@ export class GcdsButton {
 
   render() {
 
-    const { type, task, variant, state, name, href, rel, target, download } = this;
+    const { buttonType, buttonRole, buttonStyle, interactionState, name, href, rel, target, download } = this;
 
-    const Tag = type != 'link' ? 'button' : 'a';
-    const disabled = state === 'disabled' ? true : false;
-    const stateClass = state !== "default" ? state : "";
+    const Tag = buttonType != 'link' ? 'button' : 'a';
+    const disabled = interactionState === 'disabled' ? true : false;
+    const stateClass = interactionState !== "default" ? interactionState : "";
     const attrs = (Tag === 'button')
     ? {
-      type,
+      buttonType,
       disabled,
       name
     }
@@ -206,7 +201,7 @@ export class GcdsButton {
           {...attrs}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          class={`${task} ${variant} ${stateClass}`}
+          class={`${buttonRole} ${buttonStyle} ${stateClass}`}
         >
           <slot name="left"></slot>
           <slot></slot>
