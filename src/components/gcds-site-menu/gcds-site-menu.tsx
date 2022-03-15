@@ -120,10 +120,10 @@ export class GcdsSiteMenu {
       mainMenus[i].querySelectorAll("li").forEach((listitem) => {
         listitem.setAttribute("role", "presentation");
         for (var x = 0; x < listitem.children.length; x++) {
-          if(listitem.children[x].nodeName != "BUTTON" && listitem.children[x].nodeName != "UL" ) {
-            this.setAttributes(listitem.children[x], {"role": "menuitem", "tabindex": "0" });
-          } else if (listitem.children[x].nodeName == "A") {
+          if(listitem.children[x].nodeName == "A") {
             this.setAttributes(listitem.children[x], {"role": "menuitem"})
+          } else if (listitem.children[x].nodeName != "BUTTON" && listitem.children[x].nodeName != "UL" ) {
+            this.setAttributes(listitem.children[x], {"role": "menuitem", "tabindex": "0" });
           }
         }
       });
