@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Host, Prop, h } from '@stencil/core';
 
 const styleAPI = {
   'customBorderWeight': 'border-width',
@@ -17,7 +17,7 @@ const styleAPI = {
   shadow: true,
 })
 export class GcdsButton {
-  
+  private shadowElement?: HTMLElement;
   @Element() el: HTMLElement;
 
   /**
@@ -131,6 +131,31 @@ export class GcdsButton {
     */
   @Event() gcdsBlur!: EventEmitter<void>;
 
+  componentWillLoad() {
+    // Default to type 'button' if no identifying properties are passed
+    if(this.buttonType === undefined && this.href === undefined) {
+      this.buttonType = 'button';
+    }
+  }
+
+  componentDidLoad() {
+    const Tag = this.buttonType != 'link' ? 'button' : 'a';
+    //StyleAPI
+    for (let [key, value] of Object.entries(styleAPI)) {
+      if(this[key] !== undefined) {
+        this.el.shadowRoot.querySelector(Tag).style.setProperty(`--custom-gcds-style-${value}`, this[key]);
+      }
+    }
+  }
+
+  /**
+    * Focus element
+    */
+  @Method()
+  async focusElement() {
+    this.shadowElement.focus();
+  }
+
   private handleClick = (ev: Event) => {
     if (this.interactionState !== 'disabled' && this.buttonType != 'button' && this.buttonType != 'link') {
       // Attach button to form
@@ -154,23 +179,6 @@ export class GcdsButton {
 
   private onBlur = () => {
     this.gcdsBlur.emit();
-  }
-
-  componentWillLoad() {
-    // Default to type 'button' if no identifying properties are passed
-    if(this.buttonType === undefined && this.href === undefined) {
-      this.buttonType = 'button';
-    }
-  }
-
-  componentDidLoad() {
-    const Tag = this.buttonType != 'link' ? 'button' : 'a';
-    //StyleAPI
-    for (let [key, value] of Object.entries(styleAPI)) {
-      if(this[key] !== undefined) {
-        this.el.shadowRoot.querySelector(Tag).style.setProperty(`--custom-gcds-style-${value}`, this[key]);
-      }
-    }
   }
 
   render() {
@@ -202,6 +210,7 @@ export class GcdsButton {
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           class={`${buttonRole} ${buttonStyle} ${stateClass}`}
+          ref={element => this.shadowElement = element as HTMLElement}
         >
           <slot name="left"></slot>
           <slot></slot>
