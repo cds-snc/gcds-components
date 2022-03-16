@@ -143,26 +143,6 @@ export class GcdsSiteMenu {
         }
       });
     }
-
-    // if (this.menuMobileLayout == 'toolbar') {
-    //   if (mainMenus.length > 1) {
-    //     var displayMenu = mainMenus[0];
-    //     var displayMenuChildren = displayMenu.children;
-
-    //     if (displayMenuChildren.length > 2) {
-    //       for (var i = 0; i < displayMenuChildren.length; i++) {
-    //         if (i >1) {
-    //           displayMenuChildren[i].setAttribute('data-toolbar-child', '');
-    //         }
-    //       }
-    //     }
-
-    //     mainMenus[1].setAttribute('data-toolbar-parent', '');
-    //     for (var i =0; i < mainMenus[1].children.length; i++) {
-    //       mainMenus[1].children[i].setAttribute('data-toolbar-child', '');
-    //     }
-    //   }
-    // }
   }
 
   async componentWillLoad() {
@@ -205,10 +185,6 @@ export class GcdsSiteMenu {
       container.insertBefore(menus[i], container.querySelector('[data-optional-right]'));
     }
 
-    if (this.menuDesktopLayout == "sidebar") {
-      // this.el.shadowRoot.querySelector("nav").style.setProperty(`--page-top-offset`, `${this.el.offsetTop}px`);
-    }
-
     var hostElement = this.el;
     var mobileLayout = this.menuMobileLayout;
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
@@ -237,19 +213,6 @@ export class GcdsSiteMenu {
         }
 
       } else {
-        // var mainMenus = [];
-        // var elementChildren = hostElement.shadowRoot.querySelector("[data-h2-menu-container]").children;
-        // for (var x = 0; x < elementChildren.length; x++){
-        //   if(elementChildren[x].nodeName == "UL") {
-        //     mainMenus = mainMenus.concat(elementChildren[x]);
-        //   }
-        // }
-        // var firstMenuChildren = mainMenus[0].children;
-        // for (var i = 0; i < firstMenuChildren.length; i++) {
-        //   if(i > 1) {
-            
-        //   }
-        // }
 
         if (mobileLayout == "drawer") {
           document.querySelector("body").style.paddingBottom = "3rem";
