@@ -9,7 +9,6 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-renders">
-        <mock:shadow-root>
           <gcds-label label-for="input-renders" label="Label"></gcds-label>
           <input
             type="text"
@@ -19,7 +18,6 @@ describe('gcds-input', () => {
             aria-describedby=" "
             aria-invalid="false"
           />
-        </mock:shadow-root>
       </gcds-input>
     `);
   });
@@ -34,7 +32,6 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input type="email" label="Label" id="type-email">
-        <mock:shadow-root>
           <gcds-label label-for="type-email" label="Label"></gcds-label>
           <input
             type="email"
@@ -44,7 +41,6 @@ describe('gcds-input', () => {
             aria-describedby=" "
             aria-invalid="false"
           />
-        </mock:shadow-root>
       </gcds-input>
     `);
   });
@@ -56,7 +52,6 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input type="number" label="Label" id="type-number">
-        <mock:shadow-root>
           <gcds-label label-for="type-number" label="Label"></gcds-label>
           <input
             type="number"
@@ -66,7 +61,6 @@ describe('gcds-input', () => {
             aria-describedby=" "
             aria-invalid="false"
           />
-        </mock:shadow-root>
       </gcds-input>
     `);
   });
@@ -78,7 +72,6 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input type="password" label="Label" id="type-password">
-        <mock:shadow-root>
           <gcds-label label-for="type-password" label="Label"></gcds-label>
           <input
             type="password"
@@ -88,7 +81,6 @@ describe('gcds-input', () => {
             aria-describedby=" "
             aria-invalid="false"
           />
-        </mock:shadow-root>
       </gcds-input>
     `);
   });
@@ -100,7 +92,6 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input type="search" label="Label" id="type-search">
-        <mock:shadow-root>
           <gcds-label label-for="type-search" label="Label"></gcds-label>
           <input
             type="search"
@@ -110,7 +101,6 @@ describe('gcds-input', () => {
             aria-describedby=" "
             aria-invalid="false"
           />
-        </mock:shadow-root>
       </gcds-input>
     `);
   });
@@ -122,7 +112,6 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input type="text" label="Label" id="type-text">
-        <mock:shadow-root>
           <gcds-label label-for="type-text" label="Label"></gcds-label>
           <input
             type="text"
@@ -132,7 +121,6 @@ describe('gcds-input', () => {
             aria-describedby=" "
             aria-invalid="false"
           />
-        </mock:shadow-root>
       </gcds-input>
     `);
   });
@@ -144,7 +132,6 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input type="url" label="Label" id="type-url">
-        <mock:shadow-root>
           <gcds-label label-for="type-url" label="Label"></gcds-label>
           <input
             type="url"
@@ -154,7 +141,6 @@ describe('gcds-input', () => {
             aria-describedby=" "
             aria-invalid="false"
           />
-        </mock:shadow-root>
       </gcds-input>
     `);
   });
@@ -169,18 +155,16 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-disabled" disabled="">
-        <mock:shadow-root>
-          <gcds-label label-for="input-disabled" label="Label"></gcds-label>
-          <input
-            type="text"
-            id="input-disabled"
-            name="input-disabled"
-            aria-labelledby="label-for-input-disabled"
-            aria-describedby=" "
-            aria-invalid="false"
-            disabled=""
-          />
-        </mock:shadow-root>
+        <gcds-label label-for="input-disabled" label="Label"></gcds-label>
+        <input
+          type="text"
+          id="input-disabled"
+          name="input-disabled"
+          aria-labelledby="label-for-input-disabled"
+          aria-describedby=" "
+          aria-invalid="false"
+          disabled=""
+        />
       </gcds-input>
     `);
   });
@@ -195,19 +179,17 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-with-error" error-message="This is an error message.">
-        <mock:shadow-root>
-          <gcds-label label-for="input-with-error" label="Label"></gcds-label>
-          <gcds-error-message message-id="input-with-error" message="This is an error message."></gcds-error-message>
-          <input
-            type="text"
-            id="input-with-error"
-            class="error"
-            name="input-with-error"
-            aria-labelledby="label-for-input-with-error"
-            aria-describedby="error-message-input-with-error "
-            aria-invalid="true"
-          />
-        </mock:shadow-root>
+        <gcds-label label-for="input-with-error" label="Label"></gcds-label>
+        <gcds-error-message message-id="input-with-error" message="This is an error message."></gcds-error-message>
+        <input
+          type="text"
+          id="input-with-error"
+          class="error"
+          name="input-with-error"
+          aria-labelledby="label-for-input-with-error"
+          aria-describedby="error-message-input-with-error "
+          aria-invalid="true"
+        />
       </gcds-input>
     `);
   });
@@ -222,17 +204,15 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-label-hidden" hide-label>
-        <mock:shadow-root>
-          <gcds-label label-for="input-label-hidden" label="Label" hide-label></gcds-label>
-          <input
-            type="text"
-            id="input-label-hidden"
-            name="input-label-hidden"
-            aria-labelledby="label-for-input-label-hidden"
-            aria-describedby=" "
-            aria-invalid="false"
-          />
-        </mock:shadow-root>
+        <gcds-label label-for="input-label-hidden" label="Label" hide-label></gcds-label>
+        <input
+          type="text"
+          id="input-label-hidden"
+          name="input-label-hidden"
+          aria-labelledby="label-for-input-label-hidden"
+          aria-describedby=" "
+          aria-invalid="false"
+        />
       </gcds-input>
     `);
   });
@@ -247,18 +227,16 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-with-hint" hint="This is an input hint.">
-        <mock:shadow-root>
-          <gcds-label label-for="input-with-hint" label="Label" ></gcds-label>
-          <gcds-hint hint-id="input-with-hint" hint="This is an input hint."></gcds-hint>
-          <input
-            type="text"
-            id="input-with-hint"
-            name="input-with-hint"
-            aria-labelledby="label-for-input-with-hint"
-            aria-describedby=" hint-input-with-hint"
-            aria-invalid="false"
-          />
-        </mock:shadow-root>
+        <gcds-label label-for="input-with-hint" label="Label" ></gcds-label>
+        <gcds-hint hint-id="input-with-hint" hint="This is an input hint."></gcds-hint>
+        <input
+          type="text"
+          id="input-with-hint"
+          name="input-with-hint"
+          aria-labelledby="label-for-input-with-hint"
+          aria-describedby=" hint-input-with-hint"
+          aria-invalid="false"
+        />
       </gcds-input>
     `);
   });
@@ -273,17 +251,15 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-renders-id">
-        <mock:shadow-root>
-          <gcds-label label-for="input-renders-id" label="Label"></gcds-label>
-          <input
-            type="text"
-            id="input-renders-id"
-            name="input-renders-id"
-            aria-labelledby="label-for-input-renders-id"
-            aria-describedby=" "
-            aria-invalid="false"
-          />
-        </mock:shadow-root>
+        <gcds-label label-for="input-renders-id" label="Label"></gcds-label>
+        <input
+          type="text"
+          id="input-renders-id"
+          name="input-renders-id"
+          aria-labelledby="label-for-input-renders-id"
+          aria-describedby=" "
+          aria-invalid="false"
+        />
       </gcds-input>
     `);
   });
@@ -298,17 +274,15 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-renders-label">
-        <mock:shadow-root>
-          <gcds-label label-for="input-renders-label" label="Label"></gcds-label>
-          <input
-            type="text"
-            id="input-renders-label"
-            name="input-renders-label"
-            aria-labelledby="label-for-input-renders-label"
-            aria-describedby=" "
-            aria-invalid="false"
-          />
-        </mock:shadow-root>
+        <gcds-label label-for="input-renders-label" label="Label"></gcds-label>
+        <input
+          type="text"
+          id="input-renders-label"
+          name="input-renders-label"
+          aria-labelledby="label-for-input-renders-label"
+          aria-describedby=" "
+          aria-invalid="false"
+        />
       </gcds-input>
     `);
   });
@@ -323,18 +297,16 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-required" required>
-        <mock:shadow-root>
-          <gcds-label label-for="input-required" label="Label" required></gcds-label>
-          <input
-            type="text"
-            id="input-required"
-            name="input-required"
-            aria-labelledby="label-for-input-required"
-            aria-describedby=" "
-            aria-invalid="false"
-            required
-          />
-        </mock:shadow-root>
+        <gcds-label label-for="input-required" label="Label" required></gcds-label>
+        <input
+          type="text"
+          id="input-required"
+          name="input-required"
+          aria-labelledby="label-for-input-required"
+          aria-describedby=" "
+          aria-invalid="false"
+          required
+        />
       </gcds-input>
     `);
   });
@@ -349,18 +321,16 @@ describe('gcds-input', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-input label="Label" id="input-with-value" value="Input value">
-        <mock:shadow-root>
-          <gcds-label label-for="input-with-value" label="Label" ></gcds-label>
-          <input
-            type="text"
-            id="input-with-value"
-            name="input-with-value"
-            value="Input value"
-            aria-labelledby="label-for-input-with-value"
-            aria-describedby=" "
-            aria-invalid="false"
-          />
-        </mock:shadow-root>
+        <gcds-label label-for="input-with-value" label="Label" ></gcds-label>
+        <input
+          type="text"
+          id="input-with-value"
+          name="input-with-value"
+          value="Input value"
+          aria-labelledby="label-for-input-with-value"
+          aria-describedby=" "
+          aria-invalid="false"
+        />
       </gcds-input>
     `);
   });

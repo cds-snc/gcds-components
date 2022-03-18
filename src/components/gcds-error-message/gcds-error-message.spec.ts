@@ -1,11 +1,20 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+import { GcdsErrorMessage} from './gcds-error-message';
 
 describe('gcds-error-message', () => {
   it('renders', async () => {
-    const page = await newE2EPage();
-
-    await page.setContent('<gcds-error-message message="This field is required" message-id="error-message-test" />');
-    const element = await (await page.find('gcds-error-message >>> p.error-message'));
-    expect(element.textContent).toEqual('This field is required');
+    const { root } = await newSpecPage({
+      components: [GcdsErrorMessage],
+      html: '<gcds-error-message message-id="input-renders" message="This field is required" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-error-message message-id="input-renders" message="This field is required" id="error-message-input-renders">
+        <mock:shadow-root>
+          <p class="error-message" role="alert">
+            <strong>This field is required</strong>
+          </p>
+        </mock:shadow-root>
+      </gcds-error-message>
+    `);
   });
 });

@@ -39,9 +39,9 @@ export class GcdsLabel {
           class={`${hideLabel ? 'hidden' : ''} ${required ? 'required' : ''}`}
         >
           <span>{label}</span>
-          <strong class="required">
-            {required ? '(required)' : null}
-          </strong>
+          {required ?
+            <strong class="required">(required)</strong>
+          : null}
         </label>
       </Host>
     );

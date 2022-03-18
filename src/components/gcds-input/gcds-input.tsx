@@ -3,7 +3,8 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',
-  shadow: true,
+  shadow: false,
+  scoped: true,
 })
 export class GcdsInput {
   @Element() el: HTMLElement;
@@ -38,11 +39,6 @@ export class GcdsInput {
   @Prop() id: string;
 
   /**
-   * Default value for an input element.
-   */
-  @Prop({ mutable: true }) value: string;
-
-  /**
    * Form field label
    */
   @Prop() label: string;
@@ -56,6 +52,11 @@ export class GcdsInput {
    * Set Input types
    */
   @Prop() type: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
+
+  /**
+   * Default value for an input element.
+   */
+  @Prop({ mutable: true }) value: string;
 
 
   /**

@@ -6,7 +6,7 @@ describe('gcds-input', () => {
     const page = await newE2EPage();
 
     await page.setContent('<gcds-input label="Label" id="input-renders" />');
-    const element = await (await page.find('gcds-input >>> input'));
+    const element = await (await page.find('gcds-input input'));
     expect(element.getAttribute('id')).toEqual('input-renders');
   });
 });
@@ -25,7 +25,7 @@ describe('gcds-input a11y tests', () => {
     const page = await newE2EPage();
 
     await page.setContent('<gcds-input label="Label" id="aria-invalid" error-message="Field required" />');
-    const element = await (await page.find('gcds-input >>> input'));
+    const element = await (await page.find('gcds-input input'));
     expect(element.getAttribute('aria-invalid')).toEqual('true');
   });
 
@@ -47,18 +47,18 @@ describe('gcds-input a11y tests', () => {
   /**
    * Input keyboard focus
    */
-  // it('input keyboard focus', async () => {
-  //   const page = await newE2EPage();
-  //   await page.setContent(`
-  //     <gcds-input label="Label" id="keyboard-focus" />
-  //   `);
+  it('input keyboard focus', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gcds-input label="Label" id="keyboard-focus" />
+    `);
 
-  //   const inputField = await (await page.find('gcds-input >>>')).innerText;
+    const inputField = await (await page.find('gcds-input input')).innerText;
 
-  //   await page.keyboard.press("Tab");
+    await page.keyboard.press("Tab");
 
-  //   expect(await page.evaluate(() => window.document.activeElement.shadowRoot.textContent)).toEqual(inputField);
-  // });
+    expect(await page.evaluate(() => window.document.activeElement.textContent)).toEqual(inputField);
+  });
 
   /**
    * Input label test
@@ -67,7 +67,7 @@ describe('gcds-input a11y tests', () => {
     const page = await newE2EPage();
 
     await page.setContent('<gcds-input label="Label" id="contains-label" />');
-    const element = await (await page.find('gcds-input >>> gcds-label'));
+    const element = await (await page.find('gcds-input gcds-label'));
     expect(element.getAttribute('id')).toEqual('label-for-contains-label');
   });
 
@@ -75,7 +75,7 @@ describe('gcds-input a11y tests', () => {
     const page = await newE2EPage();
 
     await page.setContent('<gcds-input label="Label" id="aria-labelledby" />');
-    const element = await (await page.find('gcds-input >>> input'));
+    const element = await (await page.find('gcds-input input'));
     expect(element.getAttribute('aria-labelledby')).toEqual('label-for-aria-labelledby');
   });
 });

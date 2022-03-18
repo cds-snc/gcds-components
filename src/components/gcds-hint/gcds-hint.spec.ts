@@ -1,11 +1,18 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+import { GcdsHint} from './gcds-hint';
 
 describe('gcds-hint', () => {
   it('renders', async () => {
-    const page = await newE2EPage();
-
-    await page.setContent('<gcds-hint hint="Hint Test" hint-id="hint-test" />');
-    const element = await (await page.find('gcds-hint >>> p.hint'));
-    expect(element.textContent).toEqual('Hint Test');
+    const { root } = await newSpecPage({
+      components: [GcdsHint],
+      html: '<gcds-hint hint-id="input-renders" hint="Hint Test" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-hint hint-id="input-renders" hint="Hint Test" id="hint-input-renders">
+        <mock:shadow-root>
+          <p class="hint">Hint Test</p>
+        </mock:shadow-root>
+      </gcds-hint>
+    `);
   });
 });

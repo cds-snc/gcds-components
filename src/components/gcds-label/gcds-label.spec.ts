@@ -1,11 +1,18 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+import { GcdsLabel} from './gcds-label';
 
 describe('gcds-label', () => {
   it('renders', async () => {
-    const page = await newE2EPage();
-
-    await page.setContent('<gcds-input label="Label" id="renders-label" />');
-    const element = await (await page.find('gcds-input >>> gcds-label'));
-    expect(element.getAttribute('id')).toEqual('label-for-renders-label');
+    const { root } = await newSpecPage({
+      components: [GcdsLabel],
+      html: '<gcds-label label-for="input-renders" label="Label" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-label id="label-for-input-renders" label="Label" label-for="input-renders">
+        <label htmlFor="input-renders">
+          <span>Label</span>
+        </label>
+      </gcds-label>
+    `);
   });
 });
