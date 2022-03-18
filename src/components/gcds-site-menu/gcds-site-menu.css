@@ -35,6 +35,7 @@
   background: #0a0a14;
   display: none;
   height: 100vh;
+  top: 0;
   overflow: auto;
 }
 :host([menu-mobile-layout*=toolbar]) [data-h2-menu] {
@@ -503,6 +504,11 @@
     overflow: visible;
     position: relative;
     width: 100%;
+  }
+  :host([menu-desktop-layout*=topbar]) [data-h2-menu] [data-h2-menu-container] {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
   }
   :host([menu-desktop-layout*=topbar]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li {
     display: inline-block;
