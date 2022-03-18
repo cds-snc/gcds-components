@@ -186,12 +186,12 @@ export class GcdsButton {
     const { buttonType, buttonRole, buttonStyle, interactionState, name, href, rel, target, download } = this;
 
     const Tag = buttonType != 'link' ? 'button' : 'a';
-    const disabled = interactionState === 'disabled' ? true : false;
+    const ariaDisabled = interactionState === 'disabled' ? true : false;
     const stateClass = interactionState !== "default" ? interactionState : "";
     const attrs = (Tag === 'button')
     ? {
       buttonType,
-      disabled,
+      ariaDisabled,
       name
     }
     : {
