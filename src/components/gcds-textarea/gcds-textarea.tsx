@@ -3,10 +3,13 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil
 @Component({
   tag: 'gcds-textarea',
   styleUrl: 'gcds-textarea.css',
-  shadow: true,
+  shadow: false,
+  scoped: true,
 })
 export class GcdsTextarea {
   @Element() el: HTMLElement;
+
+  private lang: string;
 
   /**
    * Textarea props
@@ -102,9 +105,23 @@ export class GcdsTextarea {
     this.gcdsChange.emit(this.value);
   }
 
+  async componentWillLoad() {
+    // Define lang attribute
+    if(!this.el.getAttribute('lang')) {
+      if (document.documentElement.getAttribute('lang') == 'en' || !document.documentElement.getAttribute('lang')) {
+        this.lang = 'en';
+      } else {
+        this.lang = 'fr';
+      }
+    } else if(this.el.getAttribute('lang') == 'en') {
+      this.lang = 'en';
+    } else {
+      this.lang = 'fr';
+    }
+  }
+
   render() {
     const { cols, disabled, errorMessage, hideLabel, hint, id, label, required, rows, textareaCharacterCount, value } = this;
-
     
     const attrsLabel = {
       label,
@@ -148,8 +165,13 @@ export class GcdsTextarea {
 
         {textareaCharacterCount ?
           <p id={`count-${id}`} aria-live="polite">
-            {value  == undefined ? `${textareaCharacterCount} characters allowed`
-            : `${textareaCharacterCount - value.length} characters left`}
+            {this.lang == 'en'?
+              value  == undefined ? `${textareaCharacterCount} characters allowed`
+              : `${textareaCharacterCount - value.length} characters left`
+            :
+              value  == undefined ? `${textareaCharacterCount} caractères maximum`
+              : `${textareaCharacterCount - value.length} caractères restants`
+            }
           </p>
         : null}
       </Host>
