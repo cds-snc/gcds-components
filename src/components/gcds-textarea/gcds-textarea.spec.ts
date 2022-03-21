@@ -9,11 +9,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-renders">
-        <gcds-label label-for="textarea-renders" label="Label"></gcds-label>
+        <gcds-label label-for="id-textarea-renders" label="Label"></gcds-label>
         <textarea
-          id="textarea-renders"
-          name="textarea-renders"
-          aria-labelledby="label-for-textarea-renders"
+          id="id-textarea-renders"
+          name="id-textarea-renders"
+          aria-labelledby="label-for-id-textarea-renders"
           aria-describedby="  "
           aria-invalid="false"
           cols="45"
@@ -33,11 +33,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-disabled" disabled="">
-        <gcds-label label-for="textarea-disabled" label="Label"></gcds-label>
+        <gcds-label label-for="id-textarea-disabled" label="Label"></gcds-label>
         <textarea
-          id="textarea-disabled"
-          name="textarea-disabled"
-          aria-labelledby="label-for-textarea-disabled"
+          id="id-textarea-disabled"
+          name="id-textarea-disabled"
+          aria-labelledby="label-for-id-textarea-disabled"
           aria-describedby="  "
           aria-invalid="false"
           cols="45"
@@ -58,14 +58,14 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-with-error" error-message="This is an error message.">
-        <gcds-label label-for="textarea-with-error" label="Label"></gcds-label>
+        <gcds-label label-for="id-textarea-with-error" label="Label"></gcds-label>
         <gcds-error-message message-id="textarea-with-error" message="This is an error message."></gcds-error-message>
         <textarea
-          id="textarea-with-error"
+          id="id-textarea-with-error"
           class="error"
-          name="textarea-with-error"
-          aria-labelledby="label-for-textarea-with-error"
-          aria-describedby="error-message-textarea-with-error  "
+          name="id-textarea-with-error"
+          aria-labelledby="label-for-id-textarea-with-error"
+          aria-describedby=" error-message-id-textarea-with-error "
           aria-invalid="true"
           cols="45"
           rows="5"
@@ -84,11 +84,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-label-hidden" hide-label>
-        <gcds-label label-for="textarea-label-hidden" label="Label" hide-label></gcds-label>
+        <gcds-label label-for="id-textarea-label-hidden" label="Label" hide-label></gcds-label>
         <textarea
-          id="textarea-label-hidden"
-          name="textarea-label-hidden"
-          aria-labelledby="label-for-textarea-label-hidden"
+          id="id-textarea-label-hidden"
+          name="id-textarea-label-hidden"
+          aria-labelledby="label-for-id-textarea-label-hidden"
           aria-describedby="  "
           aria-invalid="false"
           cols="45"
@@ -108,11 +108,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-renders-label">
-        <gcds-label label-for="textarea-renders-label" label="Label"></gcds-label>
+        <gcds-label label-for="id-textarea-renders-label" label="Label"></gcds-label>
         <textarea
-          id="textarea-renders-label"
-          name="textarea-renders-label"
-          aria-labelledby="label-for-textarea-renders-label"
+          id="id-textarea-renders-label"
+          name="id-textarea-renders-label"
+          aria-labelledby="label-for-id-textarea-renders-label"
           aria-describedby="  "
           aria-invalid="false"
           cols="45"
@@ -132,11 +132,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-required" required>
-        <gcds-label label-for="textarea-required" label="Label" required></gcds-label>
+        <gcds-label label-for="id-textarea-required" label="Label" required></gcds-label>
         <textarea
-          id="textarea-required"
-          name="textarea-required"
-          aria-labelledby="label-for-textarea-required"
+          id="id-textarea-required"
+          name="id-textarea-required"
+          aria-labelledby="label-for-id-textarea-required"
           aria-describedby="  "
           aria-invalid="false"
           cols="45"
@@ -157,18 +157,18 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="character-count-no-value" textarea-character-count="10">
-        <gcds-label label-for="character-count-no-value" label="Label"></gcds-label>
+        <gcds-label label-for="id-character-count-no-value" label="Label"></gcds-label>
         <textarea
-          id="character-count-no-value"
-          name="character-count-no-value"
-          aria-labelledby="label-for-character-count-no-value"
-          aria-describedby="  count-character-count-no-value"
+          id="id-character-count-no-value"
+          name="id-character-count-no-value"
+          aria-labelledby="label-for-id-character-count-no-value"
+          aria-describedby="  count-id-character-count-no-value"
           aria-invalid="false"
           cols="45"
           rows="5"
           maxlength="10"
         ></textarea>
-        <p id="count-character-count-no-value" aria-live="polite">10 characters allowed</p>
+        <p id="count-id-character-count-no-value" aria-live="polite">10 characters allowed</p>
       </gcds-textarea>
     `);
   });
@@ -180,18 +180,18 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="character-count-value" value="Value Test" textarea-character-count="22">
-        <gcds-label label-for="character-count-value" label="Label"></gcds-label>
+        <gcds-label label-for="id-character-count-value" label="Label"></gcds-label>
         <textarea
-          id="character-count-value"
-          name="character-count-value"
-          aria-labelledby="label-for-character-count-value"
-          aria-describedby="  count-character-count-value"
+          id="id-character-count-value"
+          name="id-character-count-value"
+          aria-labelledby="label-for-id-character-count-value"
+          aria-describedby="  count-id-character-count-value"
           aria-invalid="false"
           cols="45"
           rows="5"
           maxlength="22"
         >Value Test</textarea>
-        <p id="count-character-count-value" aria-live="polite">12 characters left</p>
+        <p id="count-id-character-count-value" aria-live="polite">12 characters left</p>
       </gcds-textarea>
     `);
   });
@@ -206,11 +206,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-cols" cols="10">
-        <gcds-label label-for="textarea-cols" label="Label"></gcds-label>
+        <gcds-label label-for="id-textarea-cols" label="Label"></gcds-label>
         <textarea
-          id="textarea-cols"
-          name="textarea-cols"
-          aria-labelledby="label-for-textarea-cols"
+          id="id-textarea-cols"
+          name="id-textarea-cols"
+          aria-labelledby="label-for-id-textarea-cols"
           aria-describedby="  "
           aria-invalid="false"
           cols="10"
@@ -230,13 +230,13 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-with-hint" hint="This is a textarea hint.">
-        <gcds-label label-for="textarea-with-hint" label="Label" ></gcds-label>
+        <gcds-label label-for="id-textarea-with-hint" label="Label" ></gcds-label>
         <gcds-hint hint="This is a textarea hint." hint-id="textarea-with-hint"></gcds-hint>
         <textarea
-          id="textarea-with-hint"
-          name="textarea-with-hint"
-          aria-labelledby="label-for-textarea-with-hint"
-          aria-describedby=" hint-textarea-with-hint "
+          id="id-textarea-with-hint"
+          name="id-textarea-with-hint"
+          aria-labelledby="label-for-id-textarea-with-hint"
+          aria-describedby="hint-id-textarea-with-hint  "
           aria-invalid="false"
           cols="45"
           rows="5"
@@ -255,11 +255,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-renders-id">
-        <gcds-label label-for="textarea-renders-id" label="Label"></gcds-label>
+        <gcds-label label-for="id-textarea-renders-id" label="Label"></gcds-label>
         <textarea
-          id="textarea-renders-id"
-          name="textarea-renders-id"
-          aria-labelledby="label-for-textarea-renders-id"
+          id="id-textarea-renders-id"
+          name="id-textarea-renders-id"
+          aria-labelledby="label-for-id-textarea-renders-id"
           aria-describedby="  "
           aria-invalid="false"
           cols="45"
@@ -279,11 +279,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-rows" rows="2">
-        <gcds-label label-for="textarea-rows" label="Label"></gcds-label>
+        <gcds-label label-for="id-textarea-rows" label="Label"></gcds-label>
         <textarea
-          id="textarea-rows"
-          name="textarea-rows"
-          aria-labelledby="label-for-textarea-rows"
+          id="id-textarea-rows"
+          name="id-textarea-rows"
+          aria-labelledby="label-for-id-textarea-rows"
           aria-describedby="  "
           aria-invalid="false"
           cols="45"
@@ -303,11 +303,11 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" id="textarea-with-value" value="Textarea value">
-        <gcds-label label-for="textarea-with-value" label="Label"></gcds-label>
+        <gcds-label label-for="id-textarea-with-value" label="Label"></gcds-label>
         <textarea
-          id="textarea-with-value"
-          name="textarea-with-value"
-          aria-labelledby="label-for-textarea-with-value"
+          id="id-textarea-with-value"
+          name="id-textarea-with-value"
+          aria-labelledby="label-for-id-textarea-with-value"
           aria-describedby="  "
           aria-invalid="false"
           cols="45"

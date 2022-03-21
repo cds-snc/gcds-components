@@ -67,7 +67,7 @@ describe('gcds-textarea a11y tests', () => {
 
     await page.setContent('<gcds-textarea label="Label" id="textarea-renders" />');
     const element = await (await page.find('gcds-textarea gcds-label'));
-    expect(element.getAttribute('id')).toEqual('label-for-textarea-renders');
+    expect(element.getAttribute('id')).toEqual('label-for-id-textarea-renders');
   });
 
   it('input has aria-labelledby for label', async () => {
@@ -75,6 +75,6 @@ describe('gcds-textarea a11y tests', () => {
 
     await page.setContent('<gcds-textarea label="Label" id="textarea-renders" />');
     const element = await (await page.find('gcds-textarea textarea'));
-    expect(element.getAttribute('aria-labelledby')).toEqual('label-for-textarea-renders');
+    expect(element.getAttribute('aria-labelledby')).toEqual('label-for-id-textarea-renders');
   });
 });

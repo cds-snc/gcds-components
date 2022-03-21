@@ -131,7 +131,6 @@ export class GcdsTextarea {
     const attrsTextarea = {
       cols,
       disabled,
-      id,
       required,
       rows,
     };
@@ -141,7 +140,7 @@ export class GcdsTextarea {
         <gcds-label
           {...attrsLabel}
           hide-label={hideLabel}
-          label-for={id}
+          label-for={`id-${id}`}
         />
 
         {hint ? <gcds-hint hint={hint} hint-id={id} /> : null}
@@ -153,18 +152,19 @@ export class GcdsTextarea {
         <textarea
           {...attrsTextarea}
           class={errorMessage ? 'error' : null}
-          name={id}
+          id={`id-${id}`}
+          name={`id-${id}`}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
-          aria-labelledby={`label-for-${id}`}
-          aria-describedby={`${errorMessage ? `error-message-${id}` : ''} ${hint ? `hint-${id}` : ''} ${textareaCharacterCount ? `count-${id}` : ''}`}
+          aria-labelledby={`label-for-id-${id}`}
+          aria-describedby={`${hint ? `hint-id-${id}` : ''} ${errorMessage ? `error-message-id-${id}` : ''} ${textareaCharacterCount ? `count-id-${id}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
           maxlength={textareaCharacterCount ? textareaCharacterCount : null}
         >{value}</textarea>
 
         {textareaCharacterCount ?
-          <p id={`count-${id}`} aria-live="polite">
+          <p id={`count-id-${id}`} aria-live="polite">
             {this.lang == 'en'?
               value  == undefined ? `${textareaCharacterCount} characters allowed`
               : `${textareaCharacterCount - value.length} characters left`
