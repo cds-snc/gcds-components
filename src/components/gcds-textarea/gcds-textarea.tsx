@@ -41,11 +41,6 @@ export class GcdsTextarea {
   @Prop() hint?: string;
 
   /**
-   * Id + name attribute for a textarea element.
-   */
-  @Prop() inputId: string;
-
-  /**
    * Form field label
    */
   @Prop() label: string;
@@ -64,6 +59,11 @@ export class GcdsTextarea {
    * Sets the maxlength attribute for the textarea element.
    */
   @Prop() textareaCharacterCount?: number;
+
+  /**
+   * Id + name attribute for a textarea element.
+   */
+  @Prop() textareaId: string;
 
   /**
    * Default value for an input element.
@@ -121,7 +121,7 @@ export class GcdsTextarea {
   }
 
   render() {
-    const { cols, disabled, errorMessage, hideLabel, hint, inputId, label, required, rows, textareaCharacterCount, value } = this;
+    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value } = this;
     
     const attrsLabel = {
       label,
@@ -140,31 +140,31 @@ export class GcdsTextarea {
         <gcds-label
           {...attrsLabel}
           hide-label={hideLabel}
-          label-for={inputId}
+          label-for={textareaId}
         />
 
-        {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
+        {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
 
         {errorMessage ? 
-          <gcds-error-message message-id={inputId} message={errorMessage} />
+          <gcds-error-message message-id={textareaId} message={errorMessage} />
         : null}
 
         <textarea
           {...attrsTextarea}
           class={errorMessage ? 'error' : null}
-          id={inputId}
-          name={inputId}
+          id={textareaId}
+          name={textareaId}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
-          aria-labelledby={`label-for-${inputId}`}
-          aria-describedby={`${hint ? `hint-${inputId}` : ''} ${errorMessage ? `error-message-${inputId}` : ''} ${textareaCharacterCount ? `count-${inputId}` : ''}`}
+          aria-labelledby={`label-for-${textareaId}`}
+          aria-describedby={`${hint ? `hint-${textareaId}` : ''} ${errorMessage ? `error-message-${textareaId}` : ''} ${textareaCharacterCount ? `count-${textareaId}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
           maxlength={textareaCharacterCount ? textareaCharacterCount : null}
         >{value}</textarea>
 
         {textareaCharacterCount ?
-          <p id={`count-${inputId}`} aria-live="polite">
+          <p id={`count-${textareaId}`} aria-live="polite">
             {this.lang == 'en'?
               value  == undefined ? `${textareaCharacterCount} characters allowed`
               : `${textareaCharacterCount - value.length} characters left`

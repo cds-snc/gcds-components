@@ -196,10 +196,6 @@ export namespace Components {
          */
         "hint"?: string;
         /**
-          * Id + name attribute for a textarea element.
-         */
-        "inputId": string;
-        /**
           * Form field label
          */
         "label": string;
@@ -215,6 +211,10 @@ export namespace Components {
           * Sets the maxlength attribute for the textarea element.
          */
         "textareaCharacterCount"?: number;
+        /**
+          * Id + name attribute for a textarea element.
+         */
+        "textareaId": string;
         /**
           * Default value for an input element.
          */
@@ -485,10 +485,6 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
-          * Id + name attribute for a textarea element.
-         */
-        "inputId"?: string;
-        /**
           * Form field label
          */
         "label"?: string;
@@ -516,6 +512,10 @@ declare namespace LocalJSX {
           * Sets the maxlength attribute for the textarea element.
          */
         "textareaCharacterCount"?: number;
+        /**
+          * Id + name attribute for a textarea element.
+         */
+        "textareaId"?: string;
         /**
           * Default value for an input element.
          */
