@@ -18,11 +18,13 @@
 ### Used by
 
  - [gcds-input](../gcds-input)
+ - [gcds-textarea](../gcds-textarea)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-input --> gcds-error-message
+  gcds-textarea --> gcds-error-message
   style gcds-error-message fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
