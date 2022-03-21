@@ -120,7 +120,7 @@ export namespace Components {
         /**
           * Id + name attribute for an input element.
          */
-        "id": string;
+        "inputId": string;
         /**
           * Form field label
          */
@@ -344,7 +344,7 @@ declare namespace LocalJSX {
         /**
           * Id + name attribute for an input element.
          */
-        "id"?: string;
+        "inputId"?: string;
         /**
           * Form field label
          */
