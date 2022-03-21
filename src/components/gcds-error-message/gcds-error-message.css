@@ -1,0 +1,7 @@
+:host .error-message {
+  margin: 0 0 10px;
+  padding: .2em .6em .3em;
+  background: var(--gcds-colour-base-white-red-500);
+  color: var(--gcds-colour-utils-black);
+  border-left: 4px solid var(--gcds-colour-base-red-dark-500);
+}
