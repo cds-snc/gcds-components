@@ -98,7 +98,6 @@ export class GcdsInput {
 
     const attrsInput = {
       disabled,
-      id,
       required,
       type,
       value,
@@ -114,7 +113,7 @@ export class GcdsInput {
         <gcds-label
           {...attrsLabel}
           hide-label={hideLabel}
-          label-for={id}
+          label-for={`id-${id}`}
         />
 
         {hint ? <gcds-hint hint={hint} hint-id={id} /> : null}
@@ -126,12 +125,13 @@ export class GcdsInput {
         <input
           {...attrsInput}
           class={errorMessage ? 'error' : null}
-          name={id}
+          id={`id-${id}`}
+          name={`id-${id}`}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
-          aria-labelledby={`label-for-${id}`}
-          aria-describedby={`${errorMessage ? `error-message-${id}` : ''} ${hint ? `hint-${id}` : ''}`}
+          aria-labelledby={`label-for-id-${id}`}
+          aria-describedby={`${hint ? `hint-id-${id}` : ''} ${errorMessage ? `error-message-id-${id}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
         />
       </Host>

@@ -7,7 +7,7 @@ describe('gcds-input', () => {
 
     await page.setContent('<gcds-input label="Label" id="input-renders" />');
     const element = await (await page.find('gcds-input input'));
-    expect(element.getAttribute('id')).toEqual('input-renders');
+    expect(element.getAttribute('id')).toEqual('id-input-renders');
   });
 });
 
@@ -68,7 +68,7 @@ describe('gcds-input a11y tests', () => {
 
     await page.setContent('<gcds-input label="Label" id="contains-label" />');
     const element = await (await page.find('gcds-input gcds-label'));
-    expect(element.getAttribute('id')).toEqual('label-for-contains-label');
+    expect(element.getAttribute('id')).toEqual('label-for-id-contains-label');
   });
 
   it('input has aria-labelledby for label', async () => {
@@ -76,6 +76,6 @@ describe('gcds-input a11y tests', () => {
 
     await page.setContent('<gcds-input label="Label" id="aria-labelledby" />');
     const element = await (await page.find('gcds-input input'));
-    expect(element.getAttribute('aria-labelledby')).toEqual('label-for-aria-labelledby');
+    expect(element.getAttribute('aria-labelledby')).toEqual('label-for-id-aria-labelledby');
   });
 });

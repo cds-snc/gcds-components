@@ -22,7 +22,7 @@ export class GcdsHint {
     const { hint, hintId } = this;
 
     return (
-      <Host id={`hint-${hintId}`}>
+      <Host id={`hint-id-${hintId}`}>
         <p class="hint">{hint}</p>
       </Host>
     );

@@ -80,25 +80,6 @@ export namespace Components {
          */
         "variant": 'solid' | 'outline' | 'text-only';
     }
-<<<<<<< HEAD
-    interface GcdsSiteMenu {
-        /**
-          * Menu alignment
-         */
-        "menuAlignment": 'left' | 'center' | 'right' | 'split';
-        /**
-          * Desktop layout
-         */
-        "menuDesktopLayout": 'topbar' | 'sidebar';
-        /**
-          * Mobile layout
-         */
-        "menuMobileLayout": 'drawer';
-        /**
-          * Sticky navigation flag
-         */
-        "menuPosition": 'static' | 'sticky';
-=======
     interface GcdsErrorMessage {
         /**
           * Error message for an invalid form field.
@@ -174,7 +155,24 @@ export namespace Components {
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
->>>>>>> ebe60d1 (feat: develop input stencil component)
+    }
+    interface GcdsSiteMenu {
+        /**
+          * Menu alignment
+         */
+        "menuAlignment": 'left' | 'center' | 'right' | 'split';
+        /**
+          * Desktop layout
+         */
+        "menuDesktopLayout": 'topbar' | 'sidebar';
+        /**
+          * Mobile layout
+         */
+        "menuMobileLayout": 'drawer';
+        /**
+          * Sticky navigation flag
+         */
+        "menuPosition": 'static' | 'sticky';
     }
 }
 declare global {
@@ -184,17 +182,6 @@ declare global {
         prototype: HTMLGcdsButtonElement;
         new (): HTMLGcdsButtonElement;
     };
-<<<<<<< HEAD
-    interface HTMLGcdsSiteMenuElement extends Components.GcdsSiteMenu, HTMLStencilElement {
-    }
-    var HTMLGcdsSiteMenuElement: {
-        prototype: HTMLGcdsSiteMenuElement;
-        new (): HTMLGcdsSiteMenuElement;
-    };
-    interface HTMLElementTagNameMap {
-        "gcds-button": HTMLGcdsButtonElement;
-        "gcds-site-menu": HTMLGcdsSiteMenuElement;
-=======
     interface HTMLGcdsErrorMessageElement extends Components.GcdsErrorMessage, HTMLStencilElement {
     }
     var HTMLGcdsErrorMessageElement: {
@@ -219,13 +206,19 @@ declare global {
         prototype: HTMLGcdsLabelElement;
         new (): HTMLGcdsLabelElement;
     };
+    interface HTMLGcdsSiteMenuElement extends Components.GcdsSiteMenu, HTMLStencilElement {
+    }
+    var HTMLGcdsSiteMenuElement: {
+        prototype: HTMLGcdsSiteMenuElement;
+        new (): HTMLGcdsSiteMenuElement;
+    };
     interface HTMLElementTagNameMap {
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
         "gcds-hint": HTMLGcdsHintElement;
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
->>>>>>> ebe60d1 (feat: develop input stencil component)
+        "gcds-site-menu": HTMLGcdsSiteMenuElement;
     }
 }
 declare namespace LocalJSX {
@@ -310,28 +303,6 @@ declare namespace LocalJSX {
           * Set the style variant
          */
         "variant"?: 'solid' | 'outline' | 'text-only';
-    }
-    interface GcdsSiteMenu {
-        /**
-          * Menu alignment
-         */
-        "menuAlignment"?: 'left' | 'center' | 'right' | 'split';
-        /**
-          * Desktop layout
-         */
-        "menuDesktopLayout": 'topbar' | 'sidebar';
-        /**
-          * Mobile layout
-         */
-        "menuMobileLayout": 'drawer';
-        /**
-          * Sticky navigation flag
-         */
-        "menuPosition"?: 'static' | 'sticky';
-    }
-    interface IntrinsicElements {
-        "gcds-button": GcdsButton;
-        "gcds-site-menu": GcdsSiteMenu;
     }
     interface GcdsErrorMessage {
         /**
@@ -421,12 +392,31 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
     }
+    interface GcdsSiteMenu {
+        /**
+          * Menu alignment
+         */
+        "menuAlignment"?: 'left' | 'center' | 'right' | 'split';
+        /**
+          * Desktop layout
+         */
+        "menuDesktopLayout": 'topbar' | 'sidebar';
+        /**
+          * Mobile layout
+         */
+        "menuMobileLayout": 'drawer';
+        /**
+          * Sticky navigation flag
+         */
+        "menuPosition"?: 'static' | 'sticky';
+    }
     interface IntrinsicElements {
         "gcds-button": GcdsButton;
         "gcds-error-message": GcdsErrorMessage;
         "gcds-hint": GcdsHint;
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
+        "gcds-site-menu": GcdsSiteMenu;
     }
 }
 export { LocalJSX as JSX };
@@ -434,11 +424,11 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
-            "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
+            "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
         }
     }
 }
