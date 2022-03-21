@@ -35,6 +35,19 @@
 | `gcdsFocus` | Emitted when the button has focus.   | `CustomEvent<void>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [gcds-site-menu](../gcds-site-menu)
+
+### Graph
+```mermaid
+graph TD;
+  gcds-site-menu --> gcds-button
+  style gcds-button fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
