@@ -14,7 +14,7 @@
 | `errorMessage`           | `error-message`            | Error message for an invalid textarea element.               | `string`  | `undefined` |
 | `hideLabel`              | `hide-label`               | Specifies if the label is hidden or not.                     | `boolean` | `undefined` |
 | `hint`                   | `hint`                     | Hint displayed below the label and above the textarea field. | `string`  | `undefined` |
-| `id`                     | `id`                       | Id + name attribute for a textarea element.                  | `string`  | `undefined` |
+| `inputId`                | `input-id`                 | Id + name attribute for a textarea element.                  | `string`  | `undefined` |
 | `label`                  | `label`                    | Form field label                                             | `string`  | `undefined` |
 | `required`               | `required`                 | Specifies if a form field is required or not.                | `boolean` | `undefined` |
 | `rows`                   | `rows`                     | Default value for textarea rows.                             | `number`  | `5`         |

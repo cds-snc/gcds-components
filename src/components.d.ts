@@ -198,7 +198,7 @@ export namespace Components {
         /**
           * Id + name attribute for a textarea element.
          */
-        "id": string;
+        "inputId": string;
         /**
           * Form field label
          */
@@ -487,7 +487,7 @@ declare namespace LocalJSX {
         /**
           * Id + name attribute for a textarea element.
          */
-        "id"?: string;
+        "inputId"?: string;
         /**
           * Form field label
          */

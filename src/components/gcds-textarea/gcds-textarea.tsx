@@ -43,7 +43,7 @@ export class GcdsTextarea {
   /**
    * Id + name attribute for a textarea element.
    */
-  @Prop() id: string;
+  @Prop() inputId: string;
 
   /**
    * Form field label
@@ -121,7 +121,7 @@ export class GcdsTextarea {
   }
 
   render() {
-    const { cols, disabled, errorMessage, hideLabel, hint, id, label, required, rows, textareaCharacterCount, value } = this;
+    const { cols, disabled, errorMessage, hideLabel, hint, inputId, label, required, rows, textareaCharacterCount, value } = this;
     
     const attrsLabel = {
       label,
@@ -140,31 +140,31 @@ export class GcdsTextarea {
         <gcds-label
           {...attrsLabel}
           hide-label={hideLabel}
-          label-for={`id-${id}`}
+          label-for={inputId}
         />
 
-        {hint ? <gcds-hint hint={hint} hint-id={id} /> : null}
+        {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
 
         {errorMessage ? 
-          <gcds-error-message message-id={id} message={errorMessage} />
+          <gcds-error-message message-id={inputId} message={errorMessage} />
         : null}
 
         <textarea
           {...attrsTextarea}
           class={errorMessage ? 'error' : null}
-          id={`id-${id}`}
-          name={`id-${id}`}
+          id={inputId}
+          name={inputId}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onInput={(e) => this.handleChange(e)}
-          aria-labelledby={`label-for-id-${id}`}
-          aria-describedby={`${hint ? `hint-id-${id}` : ''} ${errorMessage ? `error-message-id-${id}` : ''} ${textareaCharacterCount ? `count-id-${id}` : ''}`}
+          aria-labelledby={`label-for-${inputId}`}
+          aria-describedby={`${hint ? `hint-${inputId}` : ''} ${errorMessage ? `error-message-${inputId}` : ''} ${textareaCharacterCount ? `count-${inputId}` : ''}`}
           aria-invalid={errorMessage ? 'true' : 'false'}
           maxlength={textareaCharacterCount ? textareaCharacterCount : null}
         >{value}</textarea>
 
         {textareaCharacterCount ?
-          <p id={`count-id-${id}`} aria-live="polite">
+          <p id={`count-${inputId}`} aria-live="polite">
             {this.lang == 'en'?
               value  == undefined ? `${textareaCharacterCount} characters allowed`
               : `${textareaCharacterCount - value.length} characters left`
