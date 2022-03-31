@@ -1,44 +1,63 @@
+:host fieldset {
+  width: 75ch;
+  max-width: 90%;
+  font-family: 'Lato';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #000;
+  border: 0;
+  transition: color ease-in-out .15s;
+
+  &:focus-within {
+    color: #303FC3;
+  }
+
+  &.disabled {
+    color: #707070;
+  }
+
+  &.error:not(:focus-within) {
+    color: #D3080C;
+  }
+}
+
 :host input {
   display: block;
+  min-width: 45px;
   max-width: 100%;
-  width: auto; 
   height: auto;
-  min-height: 37px;
+  min-height: 45px;
   font-family: inherit;
-  font-size: var(--gcds-font-size-400);
-  line-height: 1.4375;
-  padding: 6px 12px;
-  background-color: var(--gcds-colour-utils-white);
+  font-size: inherit;
+  line-height: 1.6;
+  margin: 0 0 25px;
+  padding: 8px 10px;
+  background-color: #FFF;
   background-image: none;
-  color: var(--gcds-colour-base-grey-medium-500);
-  border: 1px solid var(--gcds-colour-base-grey-light-500);
+  color: #000;
+  border: 2px solid currentColor;
   border-radius: 4px;
   box-sizing: border-box;
-  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
-  &:hover {
-    /* Add hover styling? */
+  &:not([size]) {
+    width: 100%;
   }
 
   &:focus {
-    border-color: var(--gcds-colour-base-blue-500);
     outline: 0;
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
-  }
-
-  &:active {
-    /* Add focus styling? */
+    border-color: #303FC3;
+    box-shadow: 0 0 0 2.5px #303FC3;
   }
 
   &:disabled {
-    opacity: 1;
-    background-color: var(--gcds-colour-base-white-grey-500);
     cursor: not-allowed;
+    background-color: #F0F0F0;
+    border-color: #828282;
   }
 
-  &.error {
-    border-color: var(--gcds-colour-base-red-300);
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+  &.error:not(:focus) {
+    border-color: #D3080C;
   }
 }

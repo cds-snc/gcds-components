@@ -49,6 +49,11 @@ export class GcdsInput {
   @Prop() required?: boolean;
 
   /**
+   * Size attribute for an input element.
+   */
+  @Prop() size: number;
+
+  /**
    * Set Input types
    */
   @Prop() type: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
@@ -94,11 +99,12 @@ export class GcdsInput {
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, type, value } = this;
+    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value } = this;
 
     const attrsInput = {
       disabled,
       required,
+      size,
       type,
       value,
     };
@@ -110,30 +116,32 @@ export class GcdsInput {
 
     return (
       <Host>
-        <gcds-label
-          {...attrsLabel}
-          hide-label={hideLabel}
-          label-for={inputId}
-        />
+        <fieldset class={`${disabled ? 'disabled' : ''} ${errorMessage ? 'error' : ''}`}>
+          <gcds-label
+            {...attrsLabel}
+            hide-label={hideLabel}
+            label-for={inputId}
+          />
 
-        {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
+          {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
 
-        {errorMessage ? 
-          <gcds-error-message message-id={inputId} message={errorMessage} />
-        : null}
+          {errorMessage ?
+            <gcds-error-message message-id={inputId} message={errorMessage} />
+          : null}
 
-        <input
-          {...attrsInput}
-          class={errorMessage ? 'error' : null}
-          id={inputId}
-          name={inputId}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
-          onInput={(e) => this.handleChange(e)}
-          aria-labelledby={`label-for-${inputId}`}
-          aria-describedby={`${hint ? `hint-${inputId}` : ''} ${errorMessage ? `error-message-${inputId}` : ''}`}
-          aria-invalid={errorMessage ? 'true' : 'false'}
-        />
+          <input
+            {...attrsInput}
+            class={errorMessage ? 'error' : null}
+            id={inputId}
+            name={inputId}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
+            onInput={(e) => this.handleChange(e)}
+            aria-labelledby={`label-for-${inputId}`}
+            aria-describedby={`${hint ? `hint-${inputId}` : ''} ${errorMessage ? `error-message-${inputId}` : ''}`}
+            aria-invalid={errorMessage ? 'true' : 'false'}
+          />
+        </fieldset>
       </Host>
     );
   }

@@ -1,11 +1,11 @@
 :host label {
   display: block;
   max-width: 100%;
-  font-family: var(--gcds-font-family-default);
-  font-size: var(--gcds-font-size-400);
-  font-weight: var(--gcds-font-weight-bold);
-  margin: 0 0 5px;
-  color: var(--gcds-colour-base-grey-dark-500);
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+  margin: 0 0 4px;
+  color: inherit;
 
   &.hidden {
     overflow: hidden;
@@ -17,7 +17,7 @@
 
   &.required:before,
   .required {
-    color: var(--gcds-colour-base-red-dark-500);
+    color: #D3080C;
   }
 
   &.required:before {

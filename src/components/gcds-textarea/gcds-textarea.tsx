@@ -16,9 +16,9 @@ export class GcdsTextarea {
    */
 
   /**
-   * Default value for textarea cols.
+   * Default value for textarea cols (the min-width for textarea's is 50%).
    */
-  @Prop() cols?: number = 45;
+  @Prop() cols?: number;
 
   /**
    * Specifies if a textarea element is disabled or not.
@@ -137,43 +137,45 @@ export class GcdsTextarea {
 
     return (
       <Host>
-        <gcds-label
-          {...attrsLabel}
-          hide-label={hideLabel}
-          label-for={textareaId}
-        />
+        <fieldset class={`${disabled ? 'disabled' : ''} ${errorMessage ? 'error' : ''}`}>
+          <gcds-label
+            {...attrsLabel}
+            hide-label={hideLabel}
+            label-for={textareaId}
+          />
 
-        {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
+          {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
 
-        {errorMessage ? 
-          <gcds-error-message message-id={textareaId} message={errorMessage} />
-        : null}
+          {errorMessage ?
+            <gcds-error-message message-id={textareaId} message={errorMessage} />
+          : null}
 
-        <textarea
-          {...attrsTextarea}
-          class={errorMessage ? 'error' : null}
-          id={textareaId}
-          name={textareaId}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
-          onInput={(e) => this.handleChange(e)}
-          aria-labelledby={`label-for-${textareaId}`}
-          aria-describedby={`${hint ? `hint-${textareaId}` : ''} ${errorMessage ? `error-message-${textareaId}` : ''} ${textareaCharacterCount ? `count-${textareaId}` : ''}`}
-          aria-invalid={errorMessage ? 'true' : 'false'}
-          maxlength={textareaCharacterCount ? textareaCharacterCount : null}
-        >{value}</textarea>
+          <textarea
+            {...attrsTextarea}
+            class={errorMessage ? 'error' : null}
+            id={textareaId}
+            name={textareaId}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
+            onInput={(e) => this.handleChange(e)}
+            aria-labelledby={`label-for-${textareaId}`}
+            aria-describedby={`${hint ? `hint-${textareaId}` : ''} ${errorMessage ? `error-message-${textareaId}` : ''} ${textareaCharacterCount ? `count-${textareaId}` : ''}`}
+            aria-invalid={errorMessage ? 'true' : 'false'}
+            maxlength={textareaCharacterCount ? textareaCharacterCount : null}
+          >{value}</textarea>
 
-        {textareaCharacterCount ?
-          <p id={`count-${textareaId}`} aria-live="polite">
-            {this.lang == 'en'?
-              value  == undefined ? `${textareaCharacterCount} characters allowed`
-              : `${textareaCharacterCount - value.length} characters left`
-            :
-              value  == undefined ? `${textareaCharacterCount} caractères maximum`
-              : `${textareaCharacterCount - value.length} caractères restants`
-            }
-          </p>
-        : null}
+          {textareaCharacterCount ?
+            <p id={`count-${textareaId}`} aria-live="polite">
+              {this.lang == 'en'?
+                value  == undefined ? `${textareaCharacterCount} characters allowed`
+                : `${textareaCharacterCount - value.length} characters left`
+              :
+                value  == undefined ? `${textareaCharacterCount} caractères maximum`
+                : `${textareaCharacterCount - value.length} caractères restants`
+              }
+            </p>
+          : null}
+        </fieldset>
       </Host>
     );
   }

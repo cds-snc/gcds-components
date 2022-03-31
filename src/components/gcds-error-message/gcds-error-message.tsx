@@ -22,12 +22,12 @@ export class GcdsErrorMessage {
     const { messageId, message } = this;
 
     return (
-      <Host id={`error-message-${messageId}`}>
+      <Host id={`error-message-${messageId}`} class="error-message-container">
         <p
           class="error-message"
           role="alert"
         >
-          <strong>{message}</strong>
+          {message}
         </p>
       </Host>
     );
