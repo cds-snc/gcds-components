@@ -8,10 +8,10 @@ describe('gcds-error-message', () => {
       html: '<gcds-error-message message-id="input-renders" message="This field is required" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-error-message message-id="input-renders" message="This field is required" id="error-message-input-renders">
+      <gcds-error-message message-id="input-renders" message="This field is required" id="error-message-input-renders" class="error-message-container">
         <mock:shadow-root>
           <p class="error-message" role="alert">
-            <strong>This field is required</strong>
+            This field is required
           </p>
         </mock:shadow-root>
       </gcds-error-message>
