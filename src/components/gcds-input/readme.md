@@ -16,6 +16,7 @@
 | `inputId`      | `input-id`      | Id + name attribute for an input element.                 | `string`                                                           | `undefined` |
 | `label`        | `label`         | Form field label                                          | `string`                                                           | `undefined` |
 | `required`     | `required`      | Specifies if a form field is required or not.             | `boolean`                                                          | `undefined` |
+| `size`         | `size`          | Size attribute for an input element.                      | `number`                                                           | `undefined` |
 | `type`         | `type`          | Set Input types                                           | `"email" \| "number" \| "password" \| "search" \| "text" \| "url"` | `'text'`    |
 | `value`        | `value`         | Default value for an input element.                       | `string`                                                           | `undefined` |
 
