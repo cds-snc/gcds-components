@@ -1,4 +1,5 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Host, Watch, Prop, State, h } from '@stencil/core';
+import { inheritAttributes} from '../../utils/utils';
 
 const styleAPI = {
   'customBorderWeight': 'border-width',
@@ -17,7 +18,8 @@ const styleAPI = {
   shadow: true,
 })
 export class GcdsButton {
-  
+  private shadowElement?: HTMLElement;
+
   @Element() el: HTMLElement;
 
   /**
@@ -27,22 +29,54 @@ export class GcdsButton {
   /**
    * Set button types
    */
-  @Prop({ mutable: true }) buttonType: 'submit' | 'reset' | 'button' | 'link' = 'button';
+  @Prop({ mutable: true }) buttonType: 'submit' | 'reset' | 'button' | 'link';
+
+  @Watch('buttonType')
+  validateButtonType(newValue: string) {
+    const values = ['submit', 'reset', 'button', 'link'];
+    if (!values.includes(newValue)) {
+      this.buttonType = 'button';
+    }
+  }
 
   /**
    * Set component states
    */
-  @Prop() interactionState: 'default' | 'hover' | 'active' | 'focus' | 'disabled' = 'default';
+  @Prop({ mutable: true }) interactionState: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
+
+  @Watch('interactionState')
+  validateInteractionState(newValue: string) {
+    const values = ['default', 'hover', 'active', 'focus', 'disabled'];
+    if (!values.includes(newValue)) {
+      this.interactionState = 'default';
+    }
+  }
 
   /**
    * Set the main style
    */
-  @Prop() buttonRole: 'primary' | 'secondary' | 'danger' | 'skip-to-content' = 'primary';
+  @Prop({ mutable: true }) buttonRole: 'primary' | 'secondary' | 'destructive' | 'skip-to-content' = 'primary';
+
+  @Watch('buttonRole')
+  validateButtonRole(newValue: string) {
+    const values = ['primary', 'secondary', 'destructive', 'skip-to-content'];
+    if (!values.includes(newValue)) {
+      this.buttonRole = 'primary';
+    }
+  }
 
   /**
    * Set the style variant
    */
-  @Prop() buttonStyle: 'solid' | 'outline' | 'text-only' = 'solid';
+  @Prop({ mutable: true }) buttonStyle: 'solid' | 'outline' | 'text-only';
+
+  @Watch('buttonStyle')
+  validateButtonStyle(newValue: string) {
+    const values = ['solid', 'outline', 'text-only'];
+    if (!values.includes(newValue)) {
+      this.buttonStyle = 'solid';
+    }
+  }
 
   /**
    * The name attribute specifies the name for a <button> element.
@@ -117,6 +151,8 @@ export class GcdsButton {
    */
   @Prop() customCapitalization: string | undefined;
 
+  @State() inheritedAttributes: Object = {};
+
   /**
    * Events
    */
@@ -130,6 +166,34 @@ export class GcdsButton {
     * Emitted when the button loses focus.
     */
   @Event() gcdsBlur!: EventEmitter<void>;
+
+  componentWillLoad() {
+    // Validate attributes and set defaults
+    this.validateButtonType(this.buttonType);
+    this.validateButtonRole(this.buttonRole);
+    this.validateButtonStyle(this.buttonStyle);
+    this.validateInteractionState(this.interactionState);
+
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'aria-expanded', 'aria-haspopup']);
+  }
+
+  componentDidLoad() {
+    const Tag = this.buttonType != 'link' ? 'button' : 'a';
+    //StyleAPI
+    for (let [key, value] of Object.entries(styleAPI)) {
+      if(this[key] !== undefined) {
+        this.el.shadowRoot.querySelector(Tag).style.setProperty(`--custom-gcds-style-${value}`, this[key]);
+      }
+    }
+  }
+
+  /**
+    * Focus element
+    */
+  @Method()
+  async focusElement() {
+    this.shadowElement.focus();
+  }
 
   private handleClick = (ev: Event) => {
     if (this.interactionState !== 'disabled' && this.buttonType != 'button' && this.buttonType != 'link') {
@@ -146,6 +210,9 @@ export class GcdsButton {
         formButton.remove();
       }
     }
+
+    // Has any inherited attributes changed on click
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'aria-expanded', 'aria-haspopup']);
   }
 
   private onFocus = () => {
@@ -156,33 +223,18 @@ export class GcdsButton {
     this.gcdsBlur.emit();
   }
 
-  componentWillLoad() {
-    // Default to type 'button' if no identifying properties are passed
-    if(this.buttonType === undefined && this.href === undefined) {
-      this.buttonType = 'button';
-    }
-  }
-
-  componentDidLoad() {
-    const Tag = this.buttonType != 'link' ? 'button' : 'a';
-    //StyleAPI
-    for (let [key, value] of Object.entries(styleAPI)) {
-      if(this[key] !== undefined) {
-        this.el.shadowRoot.querySelector(Tag).style.setProperty(`--custom-gcds-style-${value}`, this[key]);
-      }
-    }
-  }
-
   render() {
 
-    const { buttonType, buttonRole, buttonStyle, interactionState, name, href, rel, target, download } = this;
+    const { buttonType, buttonRole, buttonStyle, interactionState, name, href, rel, target, download, inheritedAttributes } = this;
 
     const Tag = buttonType != 'link' ? 'button' : 'a';
     const disabled = interactionState === 'disabled' ? true : false;
-    const stateClass = interactionState !== "default" ? interactionState : "";
+    const stateClass = interactionState !== "default" ? `gcds-button-${interactionState}` : "";
+    const styleClass = `gcds-button-${buttonStyle}`;
+    const roleClass = `gcds-button-${buttonRole}`;
     const attrs = (Tag === 'button')
     ? {
-      buttonType,
+      type: buttonType,
       disabled,
       name
     }
@@ -201,7 +253,9 @@ export class GcdsButton {
           {...attrs}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          class={`${buttonRole} ${buttonStyle} ${stateClass}`}
+          class={`${roleClass} ${styleClass} ${stateClass}`}
+          ref={element => this.shadowElement = element as HTMLElement}
+          {...inheritedAttributes}
         >
           <slot name="left"></slot>
           <slot></slot>

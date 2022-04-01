@@ -8,6 +8,18 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface GcdsButton {
         /**
+          * Set the main style
+         */
+        "buttonRole": 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        /**
+          * Set the style variant
+         */
+        "buttonStyle": 'solid' | 'outline' | 'text-only';
+        /**
+          * Set button types
+         */
+        "buttonType": 'submit' | 'reset' | 'button' | 'link';
+        /**
           * StyleAPI: custom background color.
          */
         "customBackgroundColor": string | undefined;
@@ -44,13 +56,17 @@ export namespace Components {
          */
         "download": string | undefined;
         /**
+          * Focus element
+         */
+        "focusElement": () => Promise<void>;
+        /**
           * The href attribute specifies the URL of the page the link goes to
          */
         "href": string | undefined;
         /**
-          * The button label
+          * Set component states
          */
-        "label": string;
+        "interactionState": 'default' | 'hover' | 'active' | 'focus' | 'disabled';
         /**
           * The name attribute specifies the name for a <button> element.
          */
@@ -60,25 +76,9 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
-          * Set component states
-         */
-        "state": 'default' | 'hover' | 'active' | 'focus' | 'disabled';
-        /**
           * The target attribute specifies where to open the linked document
          */
         "target": string | undefined;
-        /**
-          * Set the main style
-         */
-        "task": 'primary' | 'secondary' | 'danger' | 'skip-to-content';
-        /**
-          * Set button types
-         */
-        "type": 'submit' | 'reset' | 'button' | 'link';
-        /**
-          * Set the style variant
-         */
-        "variant": 'solid' | 'outline' | 'text-only';
     }
     interface GcdsErrorMessage {
         /**
@@ -277,6 +277,18 @@ declare global {
 declare namespace LocalJSX {
     interface GcdsButton {
         /**
+          * Set the main style
+         */
+        "buttonRole"?: 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        /**
+          * Set the style variant
+         */
+        "buttonStyle"?: 'solid' | 'outline' | 'text-only';
+        /**
+          * Set button types
+         */
+        "buttonType"?: 'submit' | 'reset' | 'button' | 'link';
+        /**
           * StyleAPI: custom background color.
          */
         "customBackgroundColor"?: string | undefined;
@@ -317,9 +329,9 @@ declare namespace LocalJSX {
          */
         "href"?: string | undefined;
         /**
-          * The button label
+          * Set component states
          */
-        "label"?: string;
+        "interactionState"?: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
         /**
           * The name attribute specifies the name for a <button> element.
          */
@@ -337,25 +349,9 @@ declare namespace LocalJSX {
          */
         "rel"?: string | undefined;
         /**
-          * Set component states
-         */
-        "state"?: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
-        /**
           * The target attribute specifies where to open the linked document
          */
         "target"?: string | undefined;
-        /**
-          * Set the main style
-         */
-        "task"?: 'primary' | 'secondary' | 'danger' | 'skip-to-content';
-        /**
-          * Set button types
-         */
-        "type"?: 'submit' | 'reset' | 'button' | 'link';
-        /**
-          * Set the style variant
-         */
-        "variant"?: 'solid' | 'outline' | 'text-only';
     }
     interface GcdsErrorMessage {
         /**
