@@ -235,7 +235,7 @@ export class GcdsButton {
     const attrs = (Tag === 'button')
     ? {
       type: buttonType,
-      disabled,
+      ariaDisabled: disabled,
       name
     }
     : {
