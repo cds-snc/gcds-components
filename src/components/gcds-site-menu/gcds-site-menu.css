@@ -1,3 +1,7 @@
+:host([data-h2-menu-wrapper]) {
+  font-family: sans-serif;
+}
+
 .h2-mobile-menu-body-lock {
   overflow: hidden;
 }
@@ -130,7 +134,7 @@
 }
 @media (hover: hover) {
   :host([data-h2-menu-wrapper]) [data-h2-menu] a:hover {
-    color: #5CFFEE !important;
+    color: #0065fe !important;
     transition: color 0.2s ease;
   }
 }
@@ -161,15 +165,15 @@
   outline: none;
 }
 :host([menu-mobile-layout*=toolbar]) [data-h2-menu] {
-  background: rgba(10, 10, 20, 1);
+  background: #EDEDED;
 }
 @media screen and (min-width: 64em) {
   :host([menu-mobile-layout*=drawer]) [data-h2-menu] {
-    background: rgba(10, 10, 20, 0.7);
+    background: #EDEDED;
   }
 
   :host([menu-mobile-layout*=toolbar]) [data-h2-menu] {
-    background: rgba(10, 10, 20, 0.7);
+    background: #EDEDED;
   }
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu].h2-mobile-menu-active {
@@ -346,26 +350,26 @@
   text-align: left;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [role=menuitem] {
-  color: #FFFFFF;
+  color: #000000;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-add-icon],
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-remove-icon] {
-  color: #FFFFFF;
+  color: #000000;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li:not(:first-child) > [role=menuitem] {
-  border-top: 1px solid #613DC1;
+  border-top: 1px solid #EDEDED;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] + [data-h2-menulist] > li > [role=menuitem] {
-  border-top: 1px solid #613DC1;
+  border-top: 1px solid #EDEDED;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > a:hover {
   color: #8ffff3;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-submenu-trigger] {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(167, 167, 167, 0.2);
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] {
-  background-color: #282832;
+  background-color: #dadada;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li:not(:first-child) > [role=menuitem] {
   border-top-color: rgba(255, 255, 255, 0.3);
@@ -373,7 +377,7 @@
   border-top-width: 1px;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [role=menuitem] {
-  color: #FFFFFF;
+  color: #000000;
   margin-left: calc(1.5rem * 1.5);
 }
 
@@ -382,16 +386,16 @@
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-add-icon],
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-remove-icon] {
-  color: #FFFFFF;
+  color: #000000;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > a:hover {
   color: #8ffff3;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] {
-  background-color: #1d1d24;
+  background-color: #EDEDED;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li:not(:first-child) > [role=menuitem] {
   border-top-color: rgba(255, 255, 255, 0.3);
@@ -399,7 +403,7 @@
   border-top-width: 1px;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [role=menuitem] {
-  color: #FFFFFF;
+  color: #000000;
   margin-left: calc(1.5rem * 2);
 }
 :host([menu-mobile-layout*=toolbar]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li {
@@ -407,7 +411,7 @@
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-add-icon],
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-remove-icon] {
-  color: #FFFFFF;
+  color: #000000;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > a:hover {
   color: #8ffff3;
@@ -424,12 +428,12 @@
   border-top-width: 1px;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [role=menuitem] {
-  color: #FFFFFF;
+  color: #000000;
   margin-left: calc(1.5rem * 2.5);
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-add-icon],
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-remove-icon] {
-  color: #FFFFFF;
+  color: #000000;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > a:hover {
   color: #8ffff3;
@@ -446,12 +450,12 @@
   border-top-width: 1px;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [role=menuitem] {
-  color: #FFFFFF;
+  color: #000000;
   margin-left: calc(1.5rem * 3);
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-add-icon],
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-remove-icon] {
-  color: #FFFFFF;
+  color: #000000;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > a:hover {
   color: #8ffff3;
@@ -468,12 +472,12 @@
   border-top-width: 1px;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [role=menuitem] {
-  color: #FFFFFF;
+  color: #000000;
   margin-left: calc(1.5rem * 3.5);
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-add-icon],
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-submenu-trigger] [data-h2-submenu-trigger-remove-icon] {
-  color: #FFFFFF;
+  color: #000000;
 }
 :host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > [data-h2-menulist] > li > a:hover {
   color: #8ffff3;
@@ -506,7 +510,7 @@
     width: 100%;
   }
   :host([menu-desktop-layout*=topbar]) [data-h2-menu] [data-h2-menu-container] {
-    max-width: 80rem;
+    max-width: 68.75rem;
     margin-left: auto;
     margin-right: auto;
   }
@@ -516,7 +520,7 @@
     position: relative;
   }
   :host([menu-desktop-layout*=topbar]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li:not(:last-child) {
-    border-right: 1px solid #613DC1;
+    border-right: 1px solid #EDEDED;
   }
   :host([menu-desktop-layout*=topbar]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [role=menuitem] {
     border: none !important;
@@ -568,10 +572,10 @@
 }
 
 [data-optional-left] {
-  color: #fff;
+  color: #000000;
 }
 [data-optional-right] {
-  color: #fff;
+  color: #000000;
 }
 
 @media screen and (min-width: 64em) {
@@ -595,12 +599,10 @@
   :host([menu-desktop-layout*=topbar]) [data-h2-menu] [data-h2-menu-container] [data-optional-left] {
     display: grid;
     align-content: center;
-    margin-left: 1rem;
   }
   :host([menu-desktop-layout*=topbar]) [data-h2-menu] [data-h2-menu-container] [data-optional-right] {
     display: grid;
     align-content: center;
-    margin-right: 1rem;
   }
 }
 
