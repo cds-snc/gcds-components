@@ -1,7 +1,7 @@
 {
-  "name": "gcds-components",
-  "version": "0.0.4",
-  "description": "gcds components proof-of-concept",
+  "name": "@cdssnc/gcds-components",
+  "version": "0.0.1",
+  "description": "GCDS web components",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -9,7 +9,10 @@
   "types": "dist/custom-elements/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/stencil-starter-project-name/stencil-starter-project-name.esm.js",
+  "unpkg": "dist/gcds/gcds.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist/",
     "loader/"
