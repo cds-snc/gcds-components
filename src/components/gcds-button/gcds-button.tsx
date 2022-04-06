@@ -29,7 +29,7 @@ export class GcdsButton {
   /**
    * Set button types
    */
-  @Prop({ mutable: true }) buttonType: 'submit' | 'reset' | 'button' | 'link';
+  @Prop({ mutable: true }) buttonType: 'submit' | 'reset' | 'button' | 'link' = 'button';
 
   @Watch('buttonType')
   validateButtonType(newValue: string) {
@@ -42,7 +42,7 @@ export class GcdsButton {
   /**
    * Set component states
    */
-  @Prop({ mutable: true }) interactionState: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
+  @Prop({ mutable: true }) interactionState: 'default' | 'hover' | 'active' | 'focus' | 'disabled' = 'default';
 
   @Watch('interactionState')
   validateInteractionState(newValue: string) {
@@ -68,7 +68,7 @@ export class GcdsButton {
   /**
    * Set the style variant
    */
-  @Prop({ mutable: true }) buttonStyle: 'solid' | 'outline' | 'text-only';
+  @Prop({ mutable: true }) buttonStyle: 'solid' | 'outline' | 'text-only' = 'solid';
 
   @Watch('buttonStyle')
   validateButtonStyle(newValue: string) {
@@ -230,8 +230,6 @@ export class GcdsButton {
     const Tag = buttonType != 'link' ? 'button' : 'a';
     const disabled = interactionState === 'disabled' ? true : false;
     const stateClass = interactionState !== "default" ? `gcds-button-${interactionState}` : "";
-    const styleClass = `gcds-button-${buttonStyle}`;
-    const roleClass = `gcds-button-${buttonRole}`;
     const attrs = (Tag === 'button')
     ? {
       type: buttonType,
@@ -253,7 +251,7 @@ export class GcdsButton {
           {...attrs}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          class={`${roleClass} ${styleClass} ${stateClass}`}
+          class={`${buttonRole} ${buttonStyle} ${stateClass}`}
           ref={element => this.shadowElement = element as HTMLElement}
           {...inheritedAttributes}
         >
