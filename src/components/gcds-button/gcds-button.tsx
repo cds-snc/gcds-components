@@ -40,19 +40,6 @@ export class GcdsButton {
   }
 
   /**
-   * Set component states
-   */
-  @Prop({ mutable: true }) interactionState: 'default' | 'hover' | 'active' | 'focus' | 'disabled' = 'default';
-
-  @Watch('interactionState')
-  validateInteractionState(newValue: string) {
-    const values = ['default', 'hover', 'active', 'focus', 'disabled'];
-    if (!values.includes(newValue)) {
-      this.interactionState = 'default';
-    }
-  }
-
-  /**
    * Set the main style
    */
   @Prop({ mutable: true }) buttonRole: 'primary' | 'secondary' | 'destructive' | 'skip-to-content' = 'primary';
@@ -82,6 +69,11 @@ export class GcdsButton {
    * The name attribute specifies the name for a <button> element.
    */
   @Prop() name: string | undefined;
+
+  /**
+   * The disabled attribute for a <button> element.
+   */
+  @Prop() disabled: boolean;
 
   /**
    * Link props
@@ -172,7 +164,6 @@ export class GcdsButton {
     this.validateButtonType(this.buttonType);
     this.validateButtonRole(this.buttonRole);
     this.validateButtonStyle(this.buttonStyle);
-    this.validateInteractionState(this.interactionState);
 
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'aria-expanded', 'aria-haspopup']);
   }
@@ -196,7 +187,7 @@ export class GcdsButton {
   }
 
   private handleClick = (ev: Event) => {
-    if (this.interactionState !== 'disabled' && this.buttonType != 'button' && this.buttonType != 'link') {
+    if (!this.disabled && this.buttonType != 'button' && this.buttonType != 'link') {
       // Attach button to form
       const form = this.el.closest('form');
       if (form) {
@@ -225,11 +216,9 @@ export class GcdsButton {
 
   render() {
 
-    const { buttonType, buttonRole, buttonStyle, interactionState, name, href, rel, target, download, inheritedAttributes } = this;
+    const { buttonType, buttonRole, buttonStyle, disabled, name, href, rel, target, download, inheritedAttributes } = this;
 
     const Tag = buttonType != 'link' ? 'button' : 'a';
-    const disabled = interactionState === 'disabled' ? true : false;
-    const stateClass = interactionState !== "default" ? `gcds-button-${interactionState}` : "";
     const attrs = (Tag === 'button')
     ? {
       type: buttonType,
@@ -251,7 +240,7 @@ export class GcdsButton {
           {...attrs}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          class={`${buttonRole} ${buttonStyle} ${stateClass}`}
+          class={`${buttonRole} ${buttonStyle}`}
           ref={element => this.shadowElement = element as HTMLElement}
           {...inheritedAttributes}
         >

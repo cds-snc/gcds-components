@@ -52,6 +52,10 @@ export namespace Components {
          */
         "customMargin": string | undefined;
         /**
+          * The disabled attribute for a <button> element.
+         */
+        "disabled": boolean;
+        /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download": string | undefined;
@@ -63,10 +67,6 @@ export namespace Components {
           * The href attribute specifies the URL of the page the link goes to
          */
         "href": string | undefined;
-        /**
-          * Set component states
-         */
-        "interactionState": 'default' | 'hover' | 'active' | 'focus' | 'disabled';
         /**
           * The name attribute specifies the name for a <button> element.
          */
@@ -321,6 +321,10 @@ declare namespace LocalJSX {
          */
         "customMargin"?: string | undefined;
         /**
+          * The disabled attribute for a <button> element.
+         */
+        "disabled"?: boolean;
+        /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download"?: string | undefined;
@@ -328,10 +332,6 @@ declare namespace LocalJSX {
           * The href attribute specifies the URL of the page the link goes to
          */
         "href"?: string | undefined;
-        /**
-          * Set component states
-         */
-        "interactionState"?: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
         /**
           * The name attribute specifies the name for a <button> element.
          */
