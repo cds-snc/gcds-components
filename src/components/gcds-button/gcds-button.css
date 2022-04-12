@@ -114,7 +114,7 @@
     }
   }
   
-  &.danger {
+  &.destructive {
     &.solid {
       background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-red-500));
       color: var(--gcds-colour-utils-white);

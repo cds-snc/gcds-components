@@ -236,7 +236,7 @@ export class GcdsSiteMenu {
         aria-label={I18N[this.lang].mobileTriggerLabel}
         aria-haspopup="true"
         data-h2-mobile-menu-trigger
-        type="button" role="button" task="primary">
+        button-type="button" role="button" button-role="primary">
         <span data-h2-mobile-menu-trigger-open-label>Menu</span><span data-h2-mobile-menu-trigger-close-label>{I18N[this.lang].mobileTriggerClose}</span>
       </gcds-button>
       :

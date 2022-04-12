@@ -8,6 +8,18 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface GcdsButton {
         /**
+          * Set the main style
+         */
+        "buttonRole": 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        /**
+          * Set the style variant
+         */
+        "buttonStyle": 'solid' | 'outline' | 'text-only';
+        /**
+          * Set button types
+         */
+        "buttonType": 'submit' | 'reset' | 'button' | 'link';
+        /**
           * StyleAPI: custom background color.
          */
         "customBackgroundColor": string | undefined;
@@ -40,17 +52,21 @@ export namespace Components {
          */
         "customMargin": string | undefined;
         /**
+          * The disabled attribute for a <button> element.
+         */
+        "disabled": boolean;
+        /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download": string | undefined;
         /**
+          * Focus element
+         */
+        "focusElement": () => Promise<void>;
+        /**
           * The href attribute specifies the URL of the page the link goes to
          */
         "href": string | undefined;
-        /**
-          * The button label
-         */
-        "label": string;
         /**
           * The name attribute specifies the name for a <button> element.
          */
@@ -60,25 +76,9 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
-          * Set component states
-         */
-        "state": 'default' | 'hover' | 'active' | 'focus' | 'disabled';
-        /**
           * The target attribute specifies where to open the linked document
          */
         "target": string | undefined;
-        /**
-          * Set the main style
-         */
-        "task": 'primary' | 'secondary' | 'danger' | 'skip-to-content';
-        /**
-          * Set button types
-         */
-        "type": 'submit' | 'reset' | 'button' | 'link';
-        /**
-          * Set the style variant
-         */
-        "variant": 'solid' | 'outline' | 'text-only';
     }
     interface GcdsErrorMessage {
         /**
@@ -281,6 +281,18 @@ declare global {
 declare namespace LocalJSX {
     interface GcdsButton {
         /**
+          * Set the main style
+         */
+        "buttonRole"?: 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        /**
+          * Set the style variant
+         */
+        "buttonStyle"?: 'solid' | 'outline' | 'text-only';
+        /**
+          * Set button types
+         */
+        "buttonType"?: 'submit' | 'reset' | 'button' | 'link';
+        /**
           * StyleAPI: custom background color.
          */
         "customBackgroundColor"?: string | undefined;
@@ -313,6 +325,10 @@ declare namespace LocalJSX {
          */
         "customMargin"?: string | undefined;
         /**
+          * The disabled attribute for a <button> element.
+         */
+        "disabled"?: boolean;
+        /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download"?: string | undefined;
@@ -320,10 +336,6 @@ declare namespace LocalJSX {
           * The href attribute specifies the URL of the page the link goes to
          */
         "href"?: string | undefined;
-        /**
-          * The button label
-         */
-        "label"?: string;
         /**
           * The name attribute specifies the name for a <button> element.
          */
@@ -341,25 +353,9 @@ declare namespace LocalJSX {
          */
         "rel"?: string | undefined;
         /**
-          * Set component states
-         */
-        "state"?: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
-        /**
           * The target attribute specifies where to open the linked document
          */
         "target"?: string | undefined;
-        /**
-          * Set the main style
-         */
-        "task"?: 'primary' | 'secondary' | 'danger' | 'skip-to-content';
-        /**
-          * Set button types
-         */
-        "type"?: 'submit' | 'reset' | 'button' | 'link';
-        /**
-          * Set the style variant
-         */
-        "variant"?: 'solid' | 'outline' | 'text-only';
     }
     interface GcdsErrorMessage {
         /**
