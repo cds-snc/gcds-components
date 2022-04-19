@@ -9,6 +9,8 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil
 export class GcdsInput {
   @Element() el: HTMLElement;
 
+  private lang: string;
+
   /**
    * Input props
    */
@@ -98,8 +100,23 @@ export class GcdsInput {
     this.gcdsChange.emit(this.value);
   }
 
+  async componentWillLoad() {
+    // Define lang attribute
+    if(!this.el.getAttribute('lang')) {
+      if (document.documentElement.getAttribute('lang') == 'en' || !document.documentElement.getAttribute('lang')) {
+        this.lang = 'en';
+      } else {
+        this.lang = 'fr';
+      }
+    } else if(this.el.getAttribute('lang') == 'en') {
+      this.lang = 'en';
+    } else {
+      this.lang = 'fr';
+    }
+  }
+
   render() {
-    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value } = this;
+    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value, lang } = this;
 
     const attrsInput = {
       disabled,
@@ -121,6 +138,7 @@ export class GcdsInput {
             {...attrsLabel}
             hide-label={hideLabel}
             label-for={inputId}
+            lang={lang}
           />
 
           {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}

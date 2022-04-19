@@ -121,7 +121,7 @@ export class GcdsTextarea {
   }
 
   render() {
-    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value } = this;
+    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value, lang } = this;
     
     const attrsLabel = {
       label,
@@ -142,6 +142,7 @@ export class GcdsTextarea {
             {...attrsLabel}
             hide-label={hideLabel}
             label-for={textareaId}
+            lang={lang}
           />
 
           {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
