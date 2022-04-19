@@ -10,7 +10,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-renders">
         <fieldset>
-          <gcds-label label-for="textarea-renders" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-renders" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-renders"
             name="textarea-renders"
@@ -35,7 +35,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-disabled" disabled="">
         <fieldset class="disabled">
-          <gcds-label label-for="textarea-disabled" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-disabled" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-disabled"
             name="textarea-disabled"
@@ -61,7 +61,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-with-error" error-message="This is an error message.">
         <fieldset class="error">
-          <gcds-label label-for="textarea-with-error" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-with-error" label="Label" lang="en"></gcds-label>
           <gcds-error-message message-id="textarea-with-error" message="This is an error message."></gcds-error-message>
           <textarea
             id="textarea-with-error"
@@ -88,7 +88,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-label-hidden" hide-label>
         <fieldset>
-          <gcds-label label-for="textarea-label-hidden" label="Label" hide-label></gcds-label>
+          <gcds-label label-for="textarea-label-hidden" label="Label" hide-label lang="en"></gcds-label>
           <textarea
             id="textarea-label-hidden"
             name="textarea-label-hidden"
@@ -113,7 +113,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-renders-label">
         <fieldset>
-          <gcds-label label-for="textarea-renders-label" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-renders-label" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-renders-label"
             name="textarea-renders-label"
@@ -138,7 +138,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-required" required>
         <fieldset>
-          <gcds-label label-for="textarea-required" label="Label" required></gcds-label>
+          <gcds-label label-for="textarea-required" label="Label" required lang="en"></gcds-label>
           <textarea
             id="textarea-required"
             name="textarea-required"
@@ -164,7 +164,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="character-count-no-value" textarea-character-count="10">
         <fieldset>
-          <gcds-label label-for="character-count-no-value" label="Label"></gcds-label>
+          <gcds-label label-for="character-count-no-value" label="Label" lang="en"></gcds-label>
           <textarea
             id="character-count-no-value"
             name="character-count-no-value"
@@ -188,7 +188,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="character-count-value" value="Value Test" textarea-character-count="22">
         <fieldset>
-          <gcds-label label-for="character-count-value" label="Label"></gcds-label>
+          <gcds-label label-for="character-count-value" label="Label" lang="en"></gcds-label>
           <textarea
             id="character-count-value"
             name="character-count-value"
@@ -215,7 +215,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-cols" cols="10">
         <fieldset>
-          <gcds-label label-for="textarea-cols" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-cols" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-cols"
             name="textarea-cols"
@@ -241,7 +241,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-with-hint" hint="This is a textarea hint.">
         <fieldset>
-          <gcds-label label-for="textarea-with-hint" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-with-hint" label="Label" lang="en"></gcds-label>
           <gcds-hint hint="This is a textarea hint." hint-id="textarea-with-hint"></gcds-hint>
           <textarea
             id="textarea-with-hint"
@@ -267,7 +267,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-renders-id">
         <fieldset>
-          <gcds-label label-for="textarea-renders-id" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-renders-id" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-renders-id"
             name="textarea-renders-id"
@@ -292,7 +292,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-rows" rows="2">
         <fieldset>
-          <gcds-label label-for="textarea-rows" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-rows" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-rows"
             name="textarea-rows"
@@ -317,7 +317,7 @@ describe('gcds-textarea', () => {
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-with-value" value="Textarea value">
         <fieldset>
-          <gcds-label label-for="textarea-with-value" label="Label"></gcds-label>
+          <gcds-label label-for="textarea-with-value" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-with-value"
             name="textarea-with-value"

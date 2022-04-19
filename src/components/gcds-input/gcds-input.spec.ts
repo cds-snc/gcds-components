@@ -10,7 +10,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-renders">
         <fieldset>
-          <gcds-label label-for="input-renders" label="Label"></gcds-label>
+          <gcds-label label-for="input-renders" label="Label" lang="en"></gcds-label>
           <input
             type="text"
             id="input-renders"
@@ -35,7 +35,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input type="email" label="Label" input-id="type-email">
         <fieldset>
-          <gcds-label label-for="type-email" label="Label"></gcds-label>
+          <gcds-label label-for="type-email" label="Label" lang="en"></gcds-label>
           <input
             type="email"
             id="type-email"
@@ -57,7 +57,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input type="number" label="Label" input-id="type-number">
         <fieldset>
-          <gcds-label label-for="type-number" label="Label"></gcds-label>
+          <gcds-label label-for="type-number" label="Label" lang="en"></gcds-label>
           <input
             type="number"
             id="type-number"
@@ -79,7 +79,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input type="password" label="Label" input-id="type-password">
         <fieldset>
-          <gcds-label label-for="type-password" label="Label"></gcds-label>
+          <gcds-label label-for="type-password" label="Label" lang="en"></gcds-label>
           <input
             type="password"
             id="type-password"
@@ -101,7 +101,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input type="search" label="Label" input-id="type-search">
         <fieldset>
-          <gcds-label label-for="type-search" label="Label"></gcds-label>
+          <gcds-label label-for="type-search" label="Label" lang="en"></gcds-label>
           <input
             type="search"
             id="type-search"
@@ -123,7 +123,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input type="text" label="Label" input-id="type-text">
         <fieldset>
-          <gcds-label label-for="type-text" label="Label"></gcds-label>
+          <gcds-label label-for="type-text" label="Label" lang="en"></gcds-label>
           <input
             type="text"
             id="type-text"
@@ -145,7 +145,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input type="url" label="Label" input-id="type-url">
         <fieldset>
-          <gcds-label label-for="type-url" label="Label"></gcds-label>
+          <gcds-label label-for="type-url" label="Label" lang="en"></gcds-label>
           <input
             type="url"
             id="type-url"
@@ -170,7 +170,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-disabled" disabled="">
         <fieldset class="disabled">
-          <gcds-label label-for="input-disabled" label="Label"></gcds-label>
+          <gcds-label label-for="input-disabled" label="Label" lang="en"></gcds-label>
           <input
             type="text"
             id="input-disabled"
@@ -196,7 +196,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-with-error" error-message="This is an error message.">
         <fieldset class="error">
-          <gcds-label label-for="input-with-error" label="Label"></gcds-label>
+          <gcds-label label-for="input-with-error" label="Label" lang="en"></gcds-label>
           <gcds-error-message message-id="input-with-error" message="This is an error message."></gcds-error-message>
           <input
             type="text"
@@ -223,7 +223,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-label-hidden" hide-label>
         <fieldset>
-          <gcds-label label-for="input-label-hidden" label="Label" hide-label></gcds-label>
+          <gcds-label label-for="input-label-hidden" label="Label" hide-label lang="en"></gcds-label>
           <input
             type="text"
             id="input-label-hidden"
@@ -248,7 +248,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-with-hint" hint="This is an input hint.">
         <fieldset>
-          <gcds-label label-for="input-with-hint" label="Label" ></gcds-label>
+          <gcds-label label-for="input-with-hint" label="Label" lang="en"></gcds-label>
           <gcds-hint hint-id="input-with-hint" hint="This is an input hint."></gcds-hint>
           <input
             type="text"
@@ -274,7 +274,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-renders-id">
         <fieldset>
-          <gcds-label label-for="input-renders-id" label="Label"></gcds-label>
+          <gcds-label label-for="input-renders-id" label="Label" lang="en"></gcds-label>
           <input
             type="text"
             id="input-renders-id"
@@ -299,7 +299,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-renders-label">
         <fieldset>
-          <gcds-label label-for="input-renders-label" label="Label"></gcds-label>
+          <gcds-label label-for="input-renders-label" label="Label" lang="en"></gcds-label>
           <input
             type="text"
             id="input-renders-label"
@@ -324,7 +324,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-required" required>
         <fieldset>
-          <gcds-label label-for="input-required" label="Label" required></gcds-label>
+          <gcds-label label-for="input-required" label="Label" required lang="en"></gcds-label>
           <input
             type="text"
             id="input-required"
@@ -350,7 +350,7 @@ describe('gcds-input', () => {
     expect(root).toEqualHtml(`
       <gcds-input label="Label" input-id="input-with-value" value="Input value">
         <fieldset>
-          <gcds-label label-for="input-with-value" label="Label" ></gcds-label>
+          <gcds-label label-for="input-with-value" label="Label" lang="en"></gcds-label>
           <input
             type="text"
             id="input-with-value"
