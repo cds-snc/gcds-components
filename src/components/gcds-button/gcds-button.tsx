@@ -165,7 +165,7 @@ export class GcdsButton {
     this.validateButtonRole(this.buttonRole);
     this.validateButtonStyle(this.buttonStyle);
 
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'aria-expanded', 'aria-haspopup']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
   }
 
   componentDidLoad() {
@@ -203,7 +203,7 @@ export class GcdsButton {
     }
 
     // Has any inherited attributes changed on click
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'aria-expanded', 'aria-haspopup']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
   }
 
   private onFocus = () => {
