@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { assignLanguage } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-input',
@@ -102,17 +103,7 @@ export class GcdsInput {
 
   async componentWillLoad() {
     // Define lang attribute
-    if(!this.el.getAttribute('lang')) {
-      if (document.documentElement.getAttribute('lang') == 'en' || !document.documentElement.getAttribute('lang')) {
-        this.lang = 'en';
-      } else {
-        this.lang = 'fr';
-      }
-    } else if(this.el.getAttribute('lang') == 'en') {
-      this.lang = 'en';
-    } else {
-      this.lang = 'fr';
-    }
+    this.lang = assignLanguage(this.el);
   }
 
   render() {

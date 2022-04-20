@@ -17,3 +17,20 @@ export const inheritAttributes = (el: HTMLElement, attributes: string[] = []) =>
 
   return attributeObject;
 }
+
+export const assignLanguage = (el: HTMLElement) => {
+  let lang = "";
+  if(!el.getAttribute('lang')) {
+    if (document.documentElement.getAttribute('lang') == 'en' || !document.documentElement.getAttribute('lang')) {
+      lang = 'en';
+    } else {
+      lang = 'fr';
+    }
+  } else if(el.getAttribute('lang') == 'en') {
+    lang = 'en';
+  } else {
+    lang = 'fr';
+  }
+
+  return lang;
+}
