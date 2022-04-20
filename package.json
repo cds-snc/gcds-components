@@ -2,6 +2,11 @@
   "name": "@cdssnc/gcds-components",
   "version": "0.0.1",
   "description": "GCDS web components",
+  "author": "Government of Canada / Gouvernement du Canada",
+  "homepage": "https://design.alpha.canada.ca",
+  "bugs": {
+    "url": "https://github.com/cds-snc/gcds-components/issues"
+  },
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
