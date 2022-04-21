@@ -9,6 +9,8 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsLabel {
   @Element() el: HTMLElement;
 
+  private lang: string;
+
   /**
    * Specifies if the label is hidden or not.
    */
@@ -29,8 +31,24 @@ export class GcdsLabel {
    */
   @Prop() required?: boolean;
 
+  async componentWillLoad() {
+    // Define lang attribute
+    if(!this.el.getAttribute('lang')) {
+      if (document.documentElement.getAttribute('lang') == 'en' || !document.documentElement.getAttribute('lang')) {
+        this.lang = 'en';
+      } else {
+        this.lang = 'fr';
+      }
+    } else if(this.el.getAttribute('lang') == 'en') {
+      this.lang = 'en';
+    } else {
+      this.lang = 'fr';
+    }
+  }
+
   render() {
-    const { hideLabel, labelFor, label, required } = this;
+    const { hideLabel, labelFor, label, required, lang } = this;
+    const requiredText = lang == "en" ? "required" : "obligatoire";
 
     return (
       <Host id={`label-for-${labelFor}`}>
@@ -40,7 +58,7 @@ export class GcdsLabel {
         >
           <span>{label}</span>
           {required ?
-            <strong class="required">(required)</strong>
+            <strong class="required">({requiredText})</strong>
           : null}
         </label>
       </Host>

@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { assignLanguage } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-textarea',
@@ -107,21 +108,11 @@ export class GcdsTextarea {
 
   async componentWillLoad() {
     // Define lang attribute
-    if(!this.el.getAttribute('lang')) {
-      if (document.documentElement.getAttribute('lang') == 'en' || !document.documentElement.getAttribute('lang')) {
-        this.lang = 'en';
-      } else {
-        this.lang = 'fr';
-      }
-    } else if(this.el.getAttribute('lang') == 'en') {
-      this.lang = 'en';
-    } else {
-      this.lang = 'fr';
-    }
+    this.lang = assignLanguage(this.el);
   }
 
   render() {
-    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value } = this;
+    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value, lang } = this;
     
     const attrsLabel = {
       label,
@@ -142,6 +133,7 @@ export class GcdsTextarea {
             {...attrsLabel}
             hide-label={hideLabel}
             label-for={textareaId}
+            lang={lang}
           />
 
           {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
