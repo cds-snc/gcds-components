@@ -1,4 +1,4 @@
-[La version française suit.](#système-de-design-gc-composants)
+[La version française suit.](#système-de-design---composants-gc)
 
 # GC Design system components
 
