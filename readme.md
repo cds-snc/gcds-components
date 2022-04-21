@@ -106,7 +106,7 @@ Contribuez au système de design, et enrichissez ainsi les connaissances et ress
 ## Installer le paquet avec npm
 
 ``` js
-npm install gcds-components
+npm install @cdssnc/gcds-components
 ```
 
 ## Cadres d'application pris en charge
