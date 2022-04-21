@@ -81,7 +81,7 @@ All gcds-components should now be ready to use in your Vue app.
 
 --------
 
-# Système de design GC composants
+# Système de design - composants GC
 
 ## Vers la création de services fédéraux modernes, accessibles et esthétiques
 
