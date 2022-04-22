@@ -1,24 +1,24 @@
 :host fieldset {
   width: 100%;
   max-width: 75ch;
-  font-family: 'Lato';
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.4;
-  color: #000;
+  font-family: var(--gcds-font-families-body);
+  font-weight: var(--gcds-font-weights-regular);
+  font-size: var(--gcds-font-sizes-paragraph);
+  line-height: var(--gcds-line-heights-paragraph);
+  color: var(--gcds-textarea-default);
   border: 0;
   transition: color ease-in-out .15s;
 
   &:focus-within {
-    color: #303FC3;
+    color: var(--gcds-textarea-focus);
   }
 
   &.disabled {
-    color: #707070;
+    color: var(--gcds-textarea-disabled-text);
   }
 
   &.error:not(:focus-within) {
-    color: #D3080C;
+    color: var(--gcds-textarea-destructive-default);
   }
 
   .error-message-container {
@@ -34,14 +34,14 @@
   min-height: 45px;
   font-family: inherit;
   font-size: inherit;
-  line-height: 1.6;
-  margin: 0 0 25px;
-  padding: 8px 10px;
-  background-color: #FFF;
+  line-height: var(--gcds-line-heights-paragraph);
+  margin: 0 0 var(--gcds-spacing-400);
+  padding: var(--gcds-spacing-200) var(--gcds-spacing-300);
+  background-color: var(--gcds-color-grayscale-0);
   background-image: none;
-  color: #000;
+  color: var(--gcds-textarea-default);
   border: 2px solid currentColor;
-  border-radius: 4px;
+  border-radius: var(--gcds-spacing-50);
   box-sizing: border-box;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
@@ -51,17 +51,17 @@
 
   &:focus {
     outline: 0;
-    border-color: #303FC3;
-    box-shadow: 0 0 0 2.5px #303FC3;
+    border-color: var(--gcds-textarea-focus);
+    box-shadow: 0 0 0 2.5px var(--gcds-textarea-focus);
   }
 
   &:disabled {
     cursor: not-allowed;
-    background-color: #F0F0F0;
-    border-color: #828282;
+    background-color: var(--gcds-textarea-disabled-background);
+    border-color: var(--gcds-textarea-disabled-text);
   }
 
   &.error:not(:focus) {
-    border-color: #D3080C;
+    border-color: var(--gcds-textarea-destructive-default);
   }
 }

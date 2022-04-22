@@ -5,9 +5,9 @@
 :host .error-message {
   font-size: inherit;
   line-height: inherit;
-  margin: 0 0 8px;
-  padding: 10px 12px;
-  background: #F3E9E8;
-  color: #000;
-  border-left: 2px solid #D3080C;
+  margin: 0 0 var(--gcds-spacing-300);
+  padding: var(--gcds-spacing-200);
+  background: var(--gcds-input-destructive-message-background);
+  color: var(--gcds-color-grayscale-1000);
+  border-left: 2px solid var(--gcds-input-destructive-message-border);
 }
