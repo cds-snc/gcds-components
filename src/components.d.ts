@@ -90,6 +90,54 @@ export namespace Components {
          */
         "messageId": string;
     }
+    interface GcdsGrid {
+        /**
+          * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
+         */
+        "alignContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        /**
+          * Aligns grid items along the block (column) axis
+         */
+        "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Defines grid container size
+         */
+        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines element as grid or inline-grid container
+         */
+        "display"?: 'grid' | 'inline-grid';
+        /**
+          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
+         */
+        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default
+         */
+        "gridTemplateColumns"?: string;
+        "gridTemplateColumnsDesktop"?: string;
+        "gridTemplateColumnsTablet"?: string;
+        /**
+          * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
+         */
+        "justifyContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        /**
+          * Aligns grid items along the inline (row) axis
+         */
+        "justifyItems"?: 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Sets both the align-content + justify-content properties
+         */
+        "placeContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        /**
+          * Sets both the align-items + justify-items properties
+         */
+        "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Set tag for grid container
+         */
+        "tag": string;
+    }
     interface GcdsHint {
         /**
           * Hint displayed below the label and above the input field.
@@ -238,6 +286,12 @@ declare global {
         prototype: HTMLGcdsErrorMessageElement;
         new (): HTMLGcdsErrorMessageElement;
     };
+    interface HTMLGcdsGridElement extends Components.GcdsGrid, HTMLStencilElement {
+    }
+    var HTMLGcdsGridElement: {
+        prototype: HTMLGcdsGridElement;
+        new (): HTMLGcdsGridElement;
+    };
     interface HTMLGcdsHintElement extends Components.GcdsHint, HTMLStencilElement {
     }
     var HTMLGcdsHintElement: {
@@ -271,6 +325,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
+        "gcds-grid": HTMLGcdsGridElement;
         "gcds-hint": HTMLGcdsHintElement;
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
@@ -366,6 +421,54 @@ declare namespace LocalJSX {
           * Id attribute for the error message.
          */
         "messageId"?: string;
+    }
+    interface GcdsGrid {
+        /**
+          * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
+         */
+        "alignContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        /**
+          * Aligns grid items along the block (column) axis
+         */
+        "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Defines grid container size
+         */
+        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines element as grid or inline-grid container
+         */
+        "display"?: 'grid' | 'inline-grid';
+        /**
+          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
+         */
+        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default
+         */
+        "gridTemplateColumns"?: string;
+        "gridTemplateColumnsDesktop"?: string;
+        "gridTemplateColumnsTablet"?: string;
+        /**
+          * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
+         */
+        "justifyContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        /**
+          * Aligns grid items along the inline (row) axis
+         */
+        "justifyItems"?: 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Sets both the align-content + justify-content properties
+         */
+        "placeContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        /**
+          * Sets both the align-items + justify-items properties
+         */
+        "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Set tag for grid container
+         */
+        "tag"?: string;
     }
     interface GcdsHint {
         /**
@@ -528,6 +631,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "gcds-button": GcdsButton;
         "gcds-error-message": GcdsErrorMessage;
+        "gcds-grid": GcdsGrid;
         "gcds-hint": GcdsHint;
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
@@ -541,6 +645,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
             "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
