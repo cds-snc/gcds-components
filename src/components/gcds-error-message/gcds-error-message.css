@@ -7,7 +7,7 @@
   line-height: inherit;
   margin: 0 0 var(--gcds-spacing-300);
   padding: var(--gcds-spacing-200);
-  background: var(--gcds-input-destructive-message-background);
-  color: var(--gcds-color-grayscale-1000);
-  border-left: 2px solid var(--gcds-input-destructive-message-border);
+  background: var(--gcds-error-message-background);
+  color: var(--gcds-error-message-text);
+  border-left: 2px solid var(--gcds-error-message-border);
 }
