@@ -17,7 +17,7 @@
 
   &.required:before,
   .required {
-    color: var(--gcds-input-destructive-default);
+    color: var(--gcds-label-destructive-text);
   }
 
   &.required:before {
