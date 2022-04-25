@@ -28,10 +28,6 @@
   margin-right: 0 !important;
 }
 
-:host([data-h2-menu-wrapper]) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li:not(:first-child) > [role='menuitem'] {
-  margin-right: -5px;
-}
-
 :host([data-h2-menu-wrapper]) [data-h2-mobile-menu-trigger] [data-h2-mobile-menu-trigger-open-label] {
   display: inline;
 }
@@ -908,7 +904,7 @@
     padding: calc(1.5rem / 1.5) 1.5rem;
     position: relative;
     top: auto;
-    right: auto;
+    right: 2.5px;
   }
   :host([menu-desktop-layout*='topbar'][menu-mobile-layout*='toolbar']) [data-h2-menu] [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] {
     max-height: 70vh;
