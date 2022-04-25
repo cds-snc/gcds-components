@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Fri, 22 Apr 2022 16:25:36 GMT
+// Generated on Sat, 23 Apr 2022 22:11:07 GMT
 
 $gcds-color-blue-100: #d4e6f2;
 $gcds-color-blue-200: #aad5f2;
@@ -14,18 +14,27 @@ $gcds-color-blue-900: #0a0e14;
 $gcds-color-grayscale-0: #ffffff;
 $gcds-color-grayscale-100: #f0f0f0;
 $gcds-color-grayscale-200: #ededed;
+$gcds-color-grayscale-250: #d2d2d2;
 $gcds-color-grayscale-300: #c4c3c5;
 $gcds-color-grayscale-400: #bfbfbf;
+$gcds-color-grayscale-450: #828282;
 $gcds-color-grayscale-500: #78757a;
 $gcds-color-grayscale-600: #737373;
 $gcds-color-grayscale-700: #707070;
 $gcds-color-grayscale-800: #6b6b6b;
 $gcds-color-grayscale-900: #6a6d7b;
+$gcds-color-grayscale-950: #595959;
 $gcds-color-grayscale-1000: #000000;
 $gcds-color-red-100: #f3e9e8;
 $gcds-color-red-200: #bc3331;
 $gcds-color-red-300: #d3080c;
 $gcds-color-red-400: #340e0e;
+$gcds-color-yellow-100: #f7b452;
+$gcds-container-100: 28.125rem;
+$gcds-container-200: 37.5rem;
+$gcds-container-300: 56.25rem;
+$gcds-container-400: 80rem;
+$gcds-container-500: 100%;
 $gcds-spacing-50: 0.26rem;
 $gcds-spacing-100: 0.325rem;
 $gcds-spacing-200: 0.43333333333333335rem;
@@ -58,12 +67,12 @@ $gcds-font-weights-semibold: 600;
 $gcds-font-weights-bold: 700;
 $gcds-line-heights-caption: 146.25%;
 $gcds-line-heights-paragraph: 130%;
-$gcds-line-heights-h6: 115.55555555555556%; // 26
-$gcds-line-heights-h5: 102.71604938271605%; // 26
-$gcds-line-heights-h4: 182.60631001371743%; // 52
-$gcds-line-heights-h3: 162.31672001219326%; // 52
-$gcds-line-heights-h2: 144.28152889972733%; // 52
-$gcds-line-heights-h1: 128.25024791086875%; // 52
+$gcds-line-heights-h6: 115.55555555555556%;
+$gcds-line-heights-h5: 102.71604938271605%;
+$gcds-line-heights-h4: 182.60631001371743%;
+$gcds-line-heights-h3: 162.31672001219326%;
+$gcds-line-heights-h2: 144.28152889972733%;
+$gcds-line-heights-h1: 128.25024791086875%;
 $gcds-button-destructive-default: #bc3331;
 $gcds-button-destructive-hover: #340e0e;
 $gcds-button-destructive-active: #bc3331;
@@ -79,23 +88,38 @@ $gcds-button-shared-focus-text: #ffffff;
 $gcds-button-shared-disabled-background: #aad5f2;
 $gcds-button-shared-disabled-border: #396293;
 $gcds-button-shared-disabled-text: #26374a;
+$gcds-error-message-background: #f3e9e8;
+$gcds-error-message-border: #d3080c;
+$gcds-error-message-text: #000000;
 $gcds-heading-1-font-families: Lato;
 $gcds-heading-1-font-sizes: 2.5341081619262695rem;
 $gcds-heading-1-font-weights: 400;
 $gcds-heading-1-line-heights: 128.25024791086875%;
-$gcds-input-destructive-default: #d3080c;
-$gcds-input-destructive-message-background: #f3e9e8;
-$gcds-input-destructive-message-border: #d3080c;
-$gcds-input-destructive-message-text: #000000;
-$gcds-input-default: #000000;
+$gcds-input-default-background: #ffffff;
+$gcds-input-default-text: #000000;
+$gcds-input-destructive: #d3080c;
 $gcds-input-disabled-background: #f0f0f0;
 $gcds-input-disabled-text: #707070;
 $gcds-input-focus: #303fc3;
-$gcds-textarea-destructive-default: #d3080c;
-$gcds-textarea-destructive-message-background: #f3e9e8;
-$gcds-textarea-destructive-message-border: #d3080c;
-$gcds-textarea-destructive-message-text: #000000;
-$gcds-textarea-default: #000000;
+$gcds-label-destructive-text: #d3080c;
+$gcds-site-menu-active-background: #595959;
+$gcds-site-menu-active-text: #ffffff;
+$gcds-site-menu-default-background: #d2d2d2;
+$gcds-site-menu-default-border: #000000;
+$gcds-site-menu-default-text: #000000;
+$gcds-site-menu-focus-background: #303fc3;
+$gcds-site-menu-focus-text: #ffffff;
+$gcds-site-menu-hover-background: #bfbfbf;
+$gcds-site-menu-hover-text: #000000;
+$gcds-site-menu-mobile-background: #ededed;
+$gcds-site-menu-selection-background: #f7b452;
+$gcds-site-menu-selection-text: #000000;
+$gcds-site-menu-submenu-box-shadow: #000000;
+$gcds-site-menu-submenu-trigger-background: #828282;
+$gcds-site-menu-submenu-trigger-text: #000000;
+$gcds-textarea-default-background: #ffffff;
+$gcds-textarea-default-text: #000000;
+$gcds-textarea-destructive: #d3080c;
 $gcds-textarea-disabled-background: #f0f0f0;
 $gcds-textarea-disabled-text: #707070;
 $gcds-textarea-focus: #303fc3;
