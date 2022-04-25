@@ -2,8 +2,12 @@
 :host a {
   border: none;
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  font-family: var(--gcds-font-families-heading), sans-serif;
+  font-size: var(--gcds-font-sizes-paragraph);
+  line-height: var(--gcds-font-sizes-paragraph);
+  padding: 1rem .75rem;
   text-decoration: none;
+  border-radius: 4px;
 
   border-width: var(--custom-gcds-style-border-width);
   border-style: var(--custom-gcds-style-border-style);
@@ -14,158 +18,106 @@
   box-shadow: var(--custom-gcds-style-box-shadow);
   text-transform: var(--custom-gcds-style-text-transform);
 
-  &.primary {
-    &.solid {
-      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-blue-grey-900));
-      color: var(--gcds-colour-utils-white);
+  transition: all .15s ease-in-out;
 
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-        
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
-      }
-    }
-    &.outline {
-
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-        
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
-      }
-    }
-    &.text-only {
-
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-        
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
-      }
-    }
+  /* Shared Styles */
+  &[aria-disabled="true"] {
+    background: var(--gcds-button-shared-disabled-background);
+    border: 1px solid var(--gcds-button-shared-disabled-border);
+    color: var(--gcds-button-shared-disabled-text);
   }
 
-  &.secondary {
-    &.solid {
-      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-grey-100));
-      color: var(--gcds-colour-base-blue-grey-900);
-
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
-      }
-    }
-    &.outline {
-
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-        
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
-      }
-    }
-    &.text-only {
-      
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-        
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
-      }
-    }
+  &:focus {
+    background-color: var(--gcds-button-shared-focus-background);
+    box-shadow: 0 0 0 2px var(--gcds-button-shared-focus-text);
+    outline: 3px solid var(--gcds-button-shared-focus-background);
+    outline-offset: 2px;
+    color: var(--gcds-button-shared-focus-text);
   }
-  
-  &.destructive {
-    &.solid {
-      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-red-500));
-      color: var(--gcds-colour-utils-white);
 
-      &:hover, &.hover {
-        
+  &.outline:not([aria-disabled="true"]) {
+    border: 1px solid currentColor;
+  }
+
+  &.solid:not([aria-disabled="true"]) {
+    color: var(--gcds-button-shared-text);
+  }
+
+  &:not(:focus):not([aria-disabled="true"]) {
+    &.primary {
+      &.solid {
+        background-color:
+          var(--custom-gcds-style-background-color,
+          var(--gcds-button-primary-default));
+        &:hover {
+          background-color: var(--gcds-button-primary-hover);
+        }
+        &:active {
+          background-color: var(--gcds-button-primary-active);
+        }
       }
-      &:focus, &.focus {
-        
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
+      &.outline,
+      &.text-only {
+        color: var(--gcds-button-primary-default);
+        &:hover {
+          color: var(--gcds-button-primary-hover);
+        }
+        &:active {
+          color: var(--gcds-button-primary-active);
+        }
       }
     }
-    &.outline {
 
-      &:hover, &.hover {
-        
+    &.secondary {
+      &.solid {
+        background-color:
+          var(--custom-gcds-style-background-color,
+          var(--gcds-button-secondary-default));
+        &:hover {
+          background-color: var(--gcds-button-secondary-hover);
+        }
+        &:active {
+          background-color: var(--gcds-button-secondary-active);
+        }
       }
-      &:focus, &.focus {
-        
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
+      &.outline,
+      &.text-only {
+        color: var(--gcds-button-secondary-default);
+        &:hover {
+          color: var(--gcds-button-secondary-hover);
+        }
+        &:active {
+          color: var(--gcds-button-secondary-active);
+        }
       }
     }
-    &.text-only {
-      
-      &:hover, &.hover {
-        
+
+    &.destructive {
+      &.solid {
+        background-color:
+          var(--custom-gcds-style-background-color,
+          var(--gcds-button-destructive-default));
+        &:hover {
+          background-color: var(--gcds-button-destructive-hover);
+        }
+        &:active {
+          background-color: var(--gcds-button-destructive-active);
+        }
       }
-      &:focus, &.focus {
-        
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
+      &.outline,
+      &.text-only {
+        color: var(--gcds-button-destructive-default);
+        &:hover {
+          color: var(--gcds-button-destructive-hover);
+        }
+        &:active {
+          color: var(--gcds-button-destructive-active);
+        }
       }
     }
   }
 
   &.skip-to-content {
-
     left: 0;
     position: absolute;
     text-align: center;
@@ -173,73 +125,29 @@
     width: 100%;
     z-index: 3;
 
-    clip: rect(1px,1px,1px,1px);
+    clip: rect(1px, 1px, 1px, 1px);
     height: 1px;
     margin: 0;
     overflow: hidden;
     position: absolute;
     width: 1px;
 
-    &.solid {
-      background-color: var(--custom-gcds-style-background-color, var(--gcds-colour-base-blue-grey-900));
-      color: var(--gcds-colour-utils-white);
-
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-        clip: rect(auto,auto,auto,auto);
-        height: inherit;
-        margin: inherit;
-        overflow: inherit;
-        position: static;
-        width: inherit;
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
-      }
+    &.solid:not(:focus) {
+      background-color:
+        var(--custom-gcds-style-background-color,
+        var(--gcds-button-primary-default));
+      color: var(--gcds-button-shared-text);
     }
-    &.outline {
-
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-        clip: rect(auto,auto,auto,auto);
-        height: inherit;
-        margin: inherit;
-        overflow: inherit;
-        position: static;
-        width: inherit;
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
-      }
-    }
+    &.solid,
+    &.outline,
     &.text-only {
-
-      &:hover, &.hover {
-        
-      }
-      &:focus, &.focus {
-        clip: rect(auto,auto,auto,auto);
+      &:focus {
+        clip: rect(auto, auto, auto, auto);
         height: inherit;
         margin: inherit;
         overflow: inherit;
         position: static;
         width: inherit;
-      }
-      &:active, &.active {
-        
-      }
-      &:disabled, &.disabled {
-        
       }
     }
   }
