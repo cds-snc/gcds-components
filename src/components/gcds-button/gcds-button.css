@@ -25,6 +25,7 @@
     background: var(--gcds-button-shared-disabled-background);
     border: 1px solid var(--gcds-button-shared-disabled-border);
     color: var(--gcds-button-shared-disabled-text);
+    cursor: not-allowed;
   }
 
   &:focus {
