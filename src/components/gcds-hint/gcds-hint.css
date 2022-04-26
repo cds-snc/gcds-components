@@ -1,5 +1,5 @@
 :host .hint {
   font-size: inherit;
   line-height: inherit;
-  margin: 0 0 14px;
+  margin: 0 0 var(--gcds-spacing-300);
 }

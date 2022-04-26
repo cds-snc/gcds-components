@@ -2,24 +2,20 @@
   margin: 0;
   padding: 0;
 
-  /* TO DO: Update with tokens */
   &[class*='container'] {
-    width: 100%;
+    width: var(--gcds-container-500);
   }
   &.container-lg {
-    max-width: 1280px;
+    max-width: var(--gcds-container-400);
   }
   &.container-md {
-    width: 100%;
-    max-width: 900px;
+    max-width: var(--gcds-container-300);
   }
   &.container-sm {
-    width: 100%;
-    max-width: 600px;
+    max-width: var(--gcds-container-200);
   }
   &.container-xs {
-    width: 100%;
-    max-width: 450px;
+    max-width: var(--gcds-container-100);
   }
 
   /* Display */

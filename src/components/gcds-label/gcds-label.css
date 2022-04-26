@@ -2,9 +2,9 @@
   display: block;
   max-width: 100%;
   font-size: inherit;
-  font-weight: 700;
+  font-weight: var(--gcds-font-weights-bold);
   line-height: inherit;
-  margin: 0 0 4px;
+  margin: 0 0 var(--gcds-spacing-50);
   color: inherit;
 
   &.hidden {
@@ -17,16 +17,16 @@
 
   &.required:before,
   .required {
-    color: #D3080C;
+    color: var(--gcds-label-destructive-text);
   }
 
   &.required:before {
     vertical-align: top;
     content: "* ";
-    margin-left: -0.67em;
+    margin-left: calc(var(--gcds-spacing-200) * -1);
   }
 
   .required {
-    margin: 0 0 0 5px;
+    margin: 0 0 0 var(--gcds-spacing-100);
   }
 }
