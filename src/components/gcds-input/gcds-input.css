@@ -6,6 +6,8 @@
   font-size: var(--gcds-font-sizes-paragraph);
   line-height: var(--gcds-line-heights-paragraph);
   color: var(--gcds-input-default-text);
+  margin: 0;
+  padding: 0;
   border: 0;
   transition: color ease-in-out .15s;
 
