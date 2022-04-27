@@ -13,14 +13,19 @@ export class GcdsGrid {
    */
 
   /**
-   * Defines element as grid or inline-grid container
-   */
-  @Prop() display?: 'grid' | 'inline-grid' = 'grid';
-
-  /**
    * Defines grid container size
    */
-  @Prop() container?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'fluid';
+  @Prop() gridContainer?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'fluid';
+
+  /**
+   * Defines element as grid or inline-grid container
+   */
+  @Prop() gridDisplay?: 'grid' | 'inline-grid' = 'grid';
+
+  /**
+   * Set tag for grid container
+   */
+  @Prop() gridTag: string = 'div';
 
   /**
    * Defines the columns of the grid
@@ -68,15 +73,10 @@ export class GcdsGrid {
     */
   @Prop() placeItems?: 'center' | 'end' | 'start' | 'stretch';
 
-  /**
-   * Set tag for grid container
-   */
-  @Prop() tag: string = 'div';
-
   render() {
-    const { alignContent, alignItems, container, display, gap, gridTemplateColumns, gridTemplateColumnsDesktop, gridTemplateColumnsTablet, justifyContent, justifyItems, placeContent, placeItems, tag } = this;
+    const { alignContent, alignItems, gap, gridContainer, gridDisplay, gridTag, gridTemplateColumns, gridTemplateColumnsDesktop, gridTemplateColumnsTablet, justifyContent, justifyItems, placeContent, placeItems } = this;
   
-    const CustomTag = tag;
+    const Tag = gridTag;
 
     // Set gridTemplateColumns based on screen size
     const mediaQueryDesktop = window.matchMedia('(min-width: 991px)');
@@ -94,14 +94,14 @@ export class GcdsGrid {
 
     return (
       <Host>
-        <CustomTag
+        <Tag
           class={`
             gcds-grid
             ${alignContent ? `align-content-${alignContent}` : ''}
             ${alignItems ? `align-items-${alignItems}` : ''}
-            ${container ? `container-${container}` : ''}
-            ${display ? `display-${display}` : ''}
             ${gap ? `gap-${gap}` : ''}
+            ${gridContainer ? `container-${gridContainer}` : ''}
+            ${gridDisplay ? `display-${gridDisplay}` : ''}
             ${justifyContent ? `justify-content-${justifyContent}` : ''}
             ${justifyItems ? `justify-items-${justifyItems}` : ''}
             ${placeContent ? `place-content-${placeContent}` : ''}
@@ -110,7 +110,7 @@ export class GcdsGrid {
           style={handleGridTemplateColumns()}
         >
           <slot />
-        </CustomTag>
+        </Tag>
       </Host>
     );
   }
