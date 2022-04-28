@@ -6,11 +6,11 @@ describe('gcds-grid', () => {
     const { root } = await newSpecPage({
       components: [GcdsGrid],
       html: `
-        <gcds-grid grid-template-columns="1fr 1fr" tag="ul" />
+        <gcds-grid grid-template-columns="1fr 1fr" grid-tag="ul" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-grid grid-template-columns="1fr 1fr" tag="ul">
+      <gcds-grid grid-template-columns="1fr 1fr" grid-tag="ul">
         <mock:shadow-root>
           <ul class="container-fluid display-grid gcds-grid" style="grid-template-columns: 1fr 1fr;">
             <slot></slot>

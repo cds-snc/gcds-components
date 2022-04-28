@@ -15,18 +15,8 @@
     margin: 0;
   }
 
-  &.required:before,
-  .required {
-    color: var(--gcds-label-destructive-text);
-  }
-
-  &.required:before {
-    vertical-align: top;
-    content: "* ";
-    margin-left: calc(var(--gcds-spacing-200) * -1);
-  }
-
   .required {
     margin: 0 0 0 var(--gcds-spacing-100);
+    color: var(--gcds-label-destructive-text);
   }
 }
