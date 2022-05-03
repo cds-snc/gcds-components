@@ -1,4 +1,5 @@
-var compressor = require('node-minify');
+const minify = require('@node-minify/core');
+const uglifyES = require('@node-minify/uglify-es');
 const glob = require("glob");
 
 var getDirectories = function (src, callback) {
@@ -11,8 +12,8 @@ getDirectories('src/components', function (err, res) {
   } else {
     res.forEach(element => {
         if (element.includes(".js") && (!element.includes("i18n") && !element.includes(".min.js"))) {
-            compressor.minify({
-                compressor: 'terser',
+            minify({
+                compressor: uglifyES,
                 input: element,
                 output: `${element.replace(".js", "")}.min.js`,
                 callback: function(err, min) {}

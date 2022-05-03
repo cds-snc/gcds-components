@@ -7,7 +7,7 @@ import {
   h2MenuEnableSubmenuTriggers, 
   h2MenuAddMobileMenuTrigger, 
   h2MenuAddPageAnchor 
-} from "./utils/module.min.js";
+} from "./utils/module.min";
 
 import I18N from './i18n/i18n';
 
