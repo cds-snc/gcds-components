@@ -1,4 +1,5 @@
 // Hydrogen / Component / Scripts
+// Compiles to module.min.js on build
 
 // ===========================================================================================
 
