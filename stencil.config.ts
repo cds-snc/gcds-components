@@ -20,7 +20,7 @@ export const config: Config = {
     postcss({
       plugins: [
         require('postcss-nested'),
-        // require('cssnano')
+        require('cssnano')
       ]
     })
   ],

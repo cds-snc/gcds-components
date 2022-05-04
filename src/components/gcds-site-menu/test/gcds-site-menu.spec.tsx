@@ -1,4 +1,14 @@
 import { newSpecPage } from '@stencil/core/testing';
+
+jest.mock('../utils/module.min', () => ({
+  h2MenuAddUpDownArrowsToMainMenuItems: jest.fn(),
+  h2MenuTabOrder: jest.fn(),
+  h2MenuAddRightArrowToMainMenuItems: jest.fn(),
+  h2MenuEnableSubmenuTriggers: jest.fn(),
+  h2MenuAddMobileMenuTrigger: jest.fn(),
+  h2MenuAddPageAnchor: jest.fn(),
+}));
+
 import './matchMedia.mock';
 import { GcdsSiteMenu } from '../gcds-site-menu';
 

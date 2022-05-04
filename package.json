@@ -15,6 +15,7 @@
     "loader/"
   ],
   "scripts": {
+    "prebuild": "node scripts/minify.js",
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
@@ -27,9 +28,12 @@
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.3.2",
+    "@node-minify/core": "^6.2.0",
+    "@node-minify/uglify-es": "^6.2.0",
     "@stencil/postcss": "^2.1.0",
     "@types/jest": "^26.0.24",
     "cssnano": "^5.0.15",
+    "glob": "^8.0.1",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
     "jest": "^26.6.3",
