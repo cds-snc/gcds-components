@@ -1,13 +1,13 @@
 import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
-import { 
-  h2MenuAddUpDownArrowsToMainMenuItems, 
-  h2MenuTabOrder, 
-  h2MenuAddRightArrowToMainMenuItems, 
-  h2MenuEnableSubmenuTriggers, 
-  h2MenuAddMobileMenuTrigger, 
-  h2MenuAddPageAnchor 
-} from "./utils/module.min";
+import {
+  h2MenuAddUpDownArrowsToMainMenuItems,
+  h2MenuTabOrder,
+  h2MenuAddRightArrowToMainMenuItems,
+  h2MenuEnableSubmenuTriggers,
+  h2MenuAddMobileMenuTrigger,
+  h2MenuAddPageAnchor
+} from "./utils/module";
 
 import I18N from './i18n/i18n';
 
@@ -25,39 +25,39 @@ export class GcdsSiteMenu {
   /**
    * Desktop layout
    */
-   @Prop({ mutable: true }) menuDesktopLayout!: 'topbar' | 'sidebar';
+  @Prop({ mutable: true }) menuDesktopLayout!: 'topbar' | 'sidebar';
 
-   @Watch('menuDesktopLayout')
-   validateDesktopLayout(newValue: string) {
-     if (newValue != 'topbar' && newValue != 'sidebar') {
-       this.menuDesktopLayout = 'topbar';
-     }
-   }
+  @Watch('menuDesktopLayout')
+  validateDesktopLayout(newValue: string) {
+    if (newValue != 'topbar' && newValue != 'sidebar') {
+      this.menuDesktopLayout = 'topbar';
+    }
+  }
 
   /**
    * Mobile layout
    */
-   @Prop({ mutable: true }) menuMobileLayout!: 'drawer'; // | 'toolbar';
+  @Prop({ mutable: true }) menuMobileLayout!: 'drawer'; // | 'toolbar';
 
-   @Watch('menuDesktopLayout')
-   validateMobileLayout(newValue: string) {
-     if (newValue != 'drawer' && newValue != 'toolbar') {
-       this.menuMobileLayout = 'drawer';
-     }
-   }
+  @Watch('menuDesktopLayout')
+  validateMobileLayout(newValue: string) {
+    if (newValue != 'drawer' && newValue != 'toolbar') {
+      this.menuMobileLayout = 'drawer';
+    }
+  }
 
   /**
    * Menu alignment
    */
-   @Prop() menuAlignment: 'left' | 'center' | 'right' | 'split' = 'left';
+  @Prop() menuAlignment: 'left' | 'center' | 'right' | 'split' = 'left';
 
   /**
    * Sticky navigation flag
    */
-   @Prop() menuPosition: 'static' | 'sticky' = 'static';
+  @Prop() menuPosition: 'static' | 'sticky' = 'static';
 
   /**
-   * Method to apply multiple attriibutes to an element 
+   * Method to apply multiple attriibutes to an element
    * @param el - HTML element
    * @param attrs - Object of attributes and values
    */
@@ -117,7 +117,7 @@ export class GcdsSiteMenu {
       mainMenus[i].querySelectorAll("ul").forEach((list) => {
         this.setAttributes(list, {"data-h2-menulist": "", "role": "menu"});
       });
-      // Apply attrubutes to all li
+      // Apply attributes to all li
       mainMenus[i].querySelectorAll("li").forEach((listitem) => {
         listitem.setAttribute("role", "presentation");
         for (var x = 0; x < listitem.children.length; x++) {
@@ -221,8 +221,8 @@ export class GcdsSiteMenu {
 
   render() {
     const sticky = this.menuPosition == 'sticky' ? true : false;
-    const mobileMenutask = this.menuMobileLayout == 'drawer' ? 
-      <gcds-button 
+    const mobileMenutask = this.menuMobileLayout == 'drawer' ?
+      <gcds-button
         aria-expanded="false"
         aria-label={I18N[this.lang].mobileTriggerLabel}
         aria-haspopup="true"
@@ -242,7 +242,7 @@ export class GcdsSiteMenu {
         lang={this.lang}
       >
         {mobileMenutask}
-        <nav 
+        <nav
           aria-label={I18N[this.lang].navLabel}
           data-h2-menu
         >
@@ -260,5 +260,4 @@ export class GcdsSiteMenu {
       </Host>
     );
   }
-
 }
