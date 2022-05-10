@@ -228,6 +228,7 @@ function h2MenuOpenSubmenuHandler(trigger) {
   // Get the trigger's parent and siblings.
   var triggerParent = trigger.closest("li");
   var triggerSiblings = triggerParent.children;
+  var hostElement = trigger.closest("[data-h2-menu]").parentNode.host;
   // Loop through the trigger's siblings to find the menuitem and the submenu trigger.
   for (var i = 0; i < triggerSiblings.length; i++) {
     var child = triggerSiblings[i];
@@ -261,6 +262,19 @@ function h2MenuOpenSubmenuHandler(trigger) {
   });
   // Focus first menu item.
   submenuItems[0].focus();
+
+  // Close any additional submenus
+  if (hostElement.getAttribute('menu-desktop-layout') == "topbar" && !hostElement.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
+    var triggerParentMenu = triggerParent.parentNode;
+    var parentMenuChildren = triggerParentMenu.children;
+    for (var i = 0; i < parentMenuChildren.length; i++) {
+      // Close only top level submenus
+      if (triggerParentMenu.parentNode.hasAttribute("data-h2-menu-container") && triggerParent != parentMenuChildren[i] && parentMenuChildren[i].classList.contains("h2-active")) {
+        parentMenuChildren[i].classList.remove("h2-active");
+        parentMenuChildren[i].querySelector("[role='menuitem']").setAttribute("aria-expanded", "false")
+      }
+    }
+  }
 }
 
 // Close script.

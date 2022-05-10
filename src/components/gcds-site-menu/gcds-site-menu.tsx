@@ -181,8 +181,9 @@ export class GcdsSiteMenu {
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
 
     // Check if loaded in mobile size
-    if (!mediaQuery.matches && mobileLayout == "drawer") {
+    if (!mediaQuery.matches) {
       document.querySelector("body").style.paddingBottom = "3rem";
+      hostElement.shadowRoot.querySelector("[data-h2-menu-container]").setAttribute("data-mobile", "");
     }
 
     // Register event listener
@@ -203,11 +204,14 @@ export class GcdsSiteMenu {
           document.querySelector("body").style.removeProperty("padding-bottom");
         }
 
-      } else {
+        hostElement.shadowRoot.querySelector("[data-h2-menu-container]").removeAttribute("data-mobile");
 
+      } else {
         if (mobileLayout == "drawer") {
           document.querySelector("body").style.paddingBottom = "3rem";
         }
+
+        hostElement.shadowRoot.querySelector("[data-h2-menu-container]").setAttribute("data-mobile", "");
       }
     });
 
