@@ -17,7 +17,7 @@ export class GcdsTextarea {
    */
 
   /**
-   * Default value for textarea cols (the min-width for textarea's is 50%).
+   * Defines width for textarea cols (the min-width for textarea's is 50%).
    */
   @Prop() cols?: number;
 
@@ -113,14 +113,18 @@ export class GcdsTextarea {
 
   render() {
     const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value, lang } = this;
-    
+
+    // Use max-width instead of cols attribute to keep field responsive
+    const style = {
+      maxWidth: `${cols * 1.5}ch`
+    }
+
     const attrsLabel = {
       label,
       required,
     }
 
     const attrsTextarea = {
-      cols,
       disabled,
       required,
       rows,
@@ -154,6 +158,7 @@ export class GcdsTextarea {
             aria-describedby={`${hint ? `hint-${textareaId}` : ''} ${errorMessage ? `error-message-${textareaId}` : ''} ${textareaCharacterCount ? `count-${textareaId}` : ''}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={textareaCharacterCount ? textareaCharacterCount : null}
+            style={cols ? style : null}
           >{value}</textarea>
 
           {textareaCharacterCount ?

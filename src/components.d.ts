@@ -178,9 +178,9 @@ export namespace Components {
          */
         "required"?: boolean;
         /**
-          * Size attribute for an input element.
+          * Size attribute for an input element. Defines max-length as well.
          */
-        "size": number;
+        "size"?: number;
         /**
           * Set Input types
          */
@@ -228,7 +228,7 @@ export namespace Components {
     }
     interface GcdsTextarea {
         /**
-          * Default value for textarea cols (the min-width for textarea's is 50%).
+          * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
         "cols"?: number;
         /**
@@ -522,7 +522,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Size attribute for an input element.
+          * Size attribute for an input element. Defines max-length as well.
          */
         "size"?: number;
         /**
@@ -572,7 +572,7 @@ declare namespace LocalJSX {
     }
     interface GcdsTextarea {
         /**
-          * Default value for textarea cols (the min-width for textarea's is 50%).
+          * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
         "cols"?: number;
         /**
