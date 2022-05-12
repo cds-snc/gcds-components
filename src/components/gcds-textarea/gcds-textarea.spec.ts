@@ -222,8 +222,8 @@ describe('gcds-textarea', () => {
             aria-labelledby="label-for-textarea-cols"
             aria-describedby="  "
             aria-invalid="false"
-            cols="10"
             rows="5"
+            style="max-width: 15ch;"
           ></textarea>
         </fieldset>
       </gcds-textarea>

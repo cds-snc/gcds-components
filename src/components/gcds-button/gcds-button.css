@@ -44,7 +44,8 @@
     color: var(--gcds-button-shared-text);
   }
 
-  &:not(:focus):not([aria-disabled="true"]) {
+  /* Specific Styles */
+  &:not(:focus):not(:active):not([aria-disabled="true"]) {
     &.primary {
       &.solid {
         background-color:
@@ -53,18 +54,12 @@
         &:hover {
           background-color: var(--gcds-button-primary-hover);
         }
-        &:active {
-          background-color: var(--gcds-button-primary-active);
-        }
       }
       &.outline,
       &.text-only {
         color: var(--gcds-button-primary-default);
         &:hover {
           color: var(--gcds-button-primary-hover);
-        }
-        &:active {
-          color: var(--gcds-button-primary-active);
         }
       }
     }
@@ -77,18 +72,12 @@
         &:hover {
           background-color: var(--gcds-button-secondary-hover);
         }
-        &:active {
-          background-color: var(--gcds-button-secondary-active);
-        }
       }
       &.outline,
       &.text-only {
         color: var(--gcds-button-secondary-default);
         &:hover {
           color: var(--gcds-button-secondary-hover);
-        }
-        &:active {
-          color: var(--gcds-button-secondary-active);
         }
       }
     }
@@ -101,18 +90,12 @@
         &:hover {
           background-color: var(--gcds-button-destructive-hover);
         }
-        &:active {
-          background-color: var(--gcds-button-destructive-active);
-        }
       }
       &.outline,
       &.text-only {
         color: var(--gcds-button-destructive-default);
         &:hover {
           color: var(--gcds-button-destructive-hover);
-        }
-        &:active {
-          color: var(--gcds-button-destructive-active);
         }
       }
     }
@@ -139,6 +122,7 @@
         var(--gcds-button-primary-default));
       color: var(--gcds-button-shared-text);
     }
+
     &.solid,
     &.outline,
     &.text-only {
@@ -150,6 +134,25 @@
         position: static;
         width: inherit;
       }
+    }
+  }
+
+  &:active {
+    color: var(--gcds-button-shared-text);
+
+    &.primary {
+      background-color: var(--gcds-button-primary-active);
+      outline-color: var(--gcds-button-primary-active);
+    }
+
+    &.secondary {
+      background-color: var(--gcds-button-secondary-active);
+      outline-color: var(--gcds-button-secondary-active);
+    }
+
+    &.destructive {
+      background-color: var(--gcds-button-destructive-active);
+      outline-color: var(--gcds-button-destructive-active);
     }
   }
 }

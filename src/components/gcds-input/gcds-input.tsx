@@ -53,8 +53,9 @@ export class GcdsInput {
 
   /**
    * Size attribute for an input element.
+   * Defines max-length as well.
    */
-  @Prop() size: number;
+  @Prop() size?: number;
 
   /**
    * Set Input types
@@ -109,10 +110,14 @@ export class GcdsInput {
   render() {
     const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value, lang } = this;
 
+    // Use max-width instead of size attribute to keep field responsive
+    const style = {
+      maxWidth: `${size * 1.5}ch`
+    }
+
     const attrsInput = {
       disabled,
       required,
-      size,
       type,
       value,
     };
@@ -149,6 +154,8 @@ export class GcdsInput {
             aria-labelledby={`label-for-${inputId}`}
             aria-describedby={`${hint ? `hint-${inputId}` : ''} ${errorMessage ? `error-message-${inputId}` : ''}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
+            maxlength={size}
+            style={size ? style : null}
           />
         </fieldset>
       </Host>

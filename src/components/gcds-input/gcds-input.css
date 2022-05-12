@@ -27,6 +27,7 @@
 :host input {
   display: block;
   min-width: 45px;
+  width: 100%;
   max-width: 100%;
   height: auto;
   min-height: 45px;
@@ -42,10 +43,6 @@
   border-radius: var(--gcds-spacing-50);
   box-sizing: border-box;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-
-  &:not([size]) {
-    width: 100%;
-  }
 
   &:focus {
     outline: 0;

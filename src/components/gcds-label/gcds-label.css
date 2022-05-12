@@ -17,6 +17,5 @@
 
   .required {
     margin: 0 0 0 var(--gcds-spacing-100);
-    color: var(--gcds-label-destructive-text);
   }
 }
