@@ -28,5 +28,6 @@ export const config: Config = {
     transform: {
       '^.+\\.(ts|tsx|js|jsx|css)$': "@stencil/core/testing/jest-preprocessor"
     },
-  }
+  },
+  buildEs5: 'prod'
 };

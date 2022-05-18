@@ -9,7 +9,7 @@
 
 | Property                 | Attribute                  | Description                                                            | Type      | Default     |
 | ------------------------ | -------------------------- | ---------------------------------------------------------------------- | --------- | ----------- |
-| `cols`                   | `cols`                     | Default value for textarea cols (the min-width for textarea's is 50%). | `number`  | `undefined` |
+| `cols`                   | `cols`                     | Defines width for textarea cols (the min-width for textarea's is 50%). | `number`  | `undefined` |
 | `disabled`               | `disabled`                 | Specifies if a textarea element is disabled or not.                    | `boolean` | `false`     |
 | `errorMessage`           | `error-message`            | Error message for an invalid textarea element.                         | `string`  | `undefined` |
 | `hideLabel`              | `hide-label`               | Specifies if the label is hidden or not.                               | `boolean` | `undefined` |
