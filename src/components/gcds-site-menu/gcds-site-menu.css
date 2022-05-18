@@ -17,22 +17,10 @@
   [data-optional-right] {
     margin: var(--gcds-spacing-400);
     color: var(--gcds-site-menu-default-text);
-    @media screen and (min-width: 64em) {
-      margin: 0;
-    }
   }
 
   [data-optional-left] {
     font-weight: var(--gcds-font-weights-semibold);
-    @media screen and (min-width: 64em) {
-      margin-right: var(--gcds-spacing-400);
-    }
-  }
-
-  [data-optional-right] {
-    @media screen and (min-width: 64em) {
-      margin-left: var(--gcds-spacing-400);
-    }
   }
 
   img,
@@ -95,7 +83,8 @@
         background-color: var(--gcds-site-menu-default-background);
         box-shadow: inset 0 5px 10px -5px var(--gcds-site-menu-submenu-box-shadow);
 
-        a[aria-haspopup] {
+        [role='menuitem'][aria-haspopup] {
+          flex: 0 0 calc(100% - var(--gcds-spacing-600));
           width: calc(100% - var(--gcds-spacing-600));
         }
 
@@ -123,11 +112,6 @@
     border: 0;
     cursor: pointer;
     transition: background .2s ease-in-out, color .2s ease-in-out;
-
-    @media screen and (min-width: 64em) {
-      position: relative;
-      height: 100%;
-    }
 
     &:active {
       background-color: var(--gcds-site-menu-active-background);
@@ -258,6 +242,25 @@
     height: 100vh;
     overflow: auto;
   }
+
+  :host([menu-mobile-layout*='drawer']),
+  :host([menu-mobile-layout*='toolbar']) {
+    [data-h2-menu] [data-h2-menulist] [data-h2-menulist] li {
+      [role='menuitem'] {
+        padding-left: var(--gcds-spacing-500);
+      }
+
+      [data-h2-menulist] li {
+        [role='menuitem'] {
+          padding-left: var(--gcds-spacing-600);
+        }
+
+        [data-h2-menulist] li [role='menuitem'] {
+          padding-left: var(--gcds-spacing-700);
+        }
+      }
+    }
+  }
 }
 
 :host([menu-mobile-layout*='drawer']) {
@@ -273,27 +276,60 @@
         min-height: var(--gcds-spacing-600);
         padding: var(--gcds-spacing-300) var(--gcds-spacing-400);
       }
-
-      [data-h2-menulist] li {
-        [role='menuitem'] {
-          padding-left: var(--gcds-spacing-500);
-        }
-
-        [data-h2-menulist] li {
-          [role='menuitem'] {
-            padding-left: var(--gcds-spacing-600);
-          }
-
-          [data-h2-menulist] li [role='menuitem'] {
-            padding-left: var(--gcds-spacing-700);
-          }
-        }
-      }
     }
   }
 
   .h2-active > [data-h2-menulist] {
     display: block;
+  }
+}
+
+/* Sidebar */
+@media screen and (min-width: 64em) {
+  :host([menu-desktop-layout*='sidebar']) {
+    [data-h2-menu] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100vh;
+    }
+
+    [data-h2-menulist] {
+      width: 16rem;
+
+      li {
+        display: flex;
+
+        &:first-child {
+          border-top: 1px solid var(--gcds-site-menu-default-border);
+        }
+
+        &:last-child {
+          border-bottom: 1px solid var(--gcds-site-menu-default-border);
+        }
+
+        [role='menuitem'] {
+          flex: 1 1 auto;
+          &[aria-haspopup] {
+            flex: 0 0 calc(100% - var(--gcds-spacing-600));
+            width: calc(100% - var(--gcds-spacing-600));
+          }
+        }
+      }
+
+      [data-h2-menulist] {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        transform: translate(100%);
+        background-color: var(--gcds-site-menu-default-background);
+        box-shadow: inset 5px 0 8px -3px var(--gcds-site-menu-submenu-box-shadow);
+        [data-h2-menulist] {
+          background-color: var(--gcds-site-menu-default-background);
+        }
+      }
+    }
   }
 }
 
@@ -304,6 +340,17 @@
     [data-optional-right] {
       display: grid;
       align-content: center;
+      @media screen and (min-width: 64em) {
+        margin: 0;
+      }
+    }
+
+    [data-optional-left] {
+      margin-right: var(--gcds-spacing-400);
+    }
+
+    [data-optional-right] {
+      margin-left: var(--gcds-spacing-400);
     }
 
     [data-h2-menu] {
@@ -348,6 +395,13 @@
             }
           }
         }
+      }
+    }
+
+    [data-h2-submenu-trigger] {
+      @media screen and (min-width: 64em) {
+        position: relative;
+        height: 100%;
       }
     }
   }

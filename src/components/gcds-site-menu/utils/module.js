@@ -121,7 +121,7 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
   if (isMenuMobileActivated == true) {
     menuItems = menuItems.concat(mobileMenuTrigger);
   }
-  
+
   // Loop through the menu lists that have been passed.
   menuLists.forEach(function(list) {
     // Get the direct children that are <li> elements.
@@ -150,7 +150,7 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
 
   // Loop through the array of menu lists that have been passed.
   menuLists.forEach(function(list) {
-  
+
     // Add the submenu trigger.
     if (list.parentNode.tagName == "LI") {
       var parentNodeListItems = list.parentNode.children;
@@ -263,7 +263,7 @@ function h2MenuOpenSubmenuHandler(trigger) {
   // Focus first menu item.
   submenuItems[0].focus();
 
-  // Close any additional submenus
+  // Close any additional submenus (topbar layout)
   if (hostElement.getAttribute('menu-desktop-layout') == "topbar" && !hostElement.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
     var triggerParentMenu = triggerParent.parentNode;
     var parentMenuChildren = triggerParentMenu.children;
@@ -273,6 +273,19 @@ function h2MenuOpenSubmenuHandler(trigger) {
         parentMenuChildren[i].classList.remove("h2-active");
         parentMenuChildren[i].querySelector("[role='menuitem']").setAttribute("aria-expanded", "false")
       }
+    }
+  }
+
+  // Close any additional submenus (sidebar layout)
+  if (hostElement.getAttribute('menu-desktop-layout') == "sidebar" && !hostElement.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
+    var triggerParentMenu = triggerParent.parentNode;
+    var parentMenuChildren = triggerParentMenu.children;
+
+    for (var i = 0; i < parentMenuChildren.length; i++) {
+        if (triggerParent != parentMenuChildren[i] && parentMenuChildren[i].classList.contains("h2-active")) {
+          parentMenuChildren[i].classList.remove("h2-active");
+          parentMenuChildren[i].querySelector("[role='menuitem']").setAttribute("aria-expanded", "false");
+        }
     }
   }
 }
@@ -414,7 +427,7 @@ function h2MenuUpDownArrowEvent(e) {
       if (child.hasAttribute("data-h2-menulist")) {
         menuLists = menuLists.concat(child);
       }
-    } 
+    }
   } else {
     // Now we need to check if the trigger is a submenu trigger, and if it is, we need to check if it's active, because if it is, we need to target its sibling submenu, not its parent menu.
     if (trigger.hasAttribute("data-h2-submenu-trigger") && trigger.parentNode.classList.contains("h2-active")) {
@@ -432,7 +445,7 @@ function h2MenuUpDownArrowEvent(e) {
         if (child.hasAttribute("data-h2-menulist")) {
           menuLists = menuLists.concat(child);
         }
-      } 
+      }
     }
   }
   var menuListItems = h2MenuGetTargetMenuItemsHandler(menuLists);
@@ -575,7 +588,7 @@ function h2MenuEscapeAndLeftArrowEvent(e) {
     var menu = trigger.parentNode.host.parentNode.host.querySelector("[data-h2-menu]");
   }
   var mobileTrigger = menuWrapper.shadowRoot.querySelector("[data-h2-mobile-menu-trigger]");
-  
+
   if (key == 37 || key == 27) {
     // Prevent default key behaviour.
     e.preventDefault();
@@ -618,17 +631,17 @@ function h2MenuEscapeAndLeftArrowEvent(e) {
             documentBody.style.overflow = "visible";
             mobileTrigger.focus();
           }
-          
+
         }
         else if (trigger.getAttribute("aria-expanded") == "true") {
           h2MenuCloseSubmenuHandler(trigger);
         }
-      } 
+      }
       else {
         var focusItem = null;
         // Handle close logic differently when on main items
         if(triggerParent.classList.contains("h2-active")) {
-          
+
           // Set the key variables based on this context.
           for (var i = 0; i < triggerParent.children.length; i++) {
             var child = triggerParent.children[i];
@@ -655,7 +668,7 @@ function h2MenuEscapeAndLeftArrowEvent(e) {
           focusItem.focus();
         }
       }
-    } 
+    }
     else if (trigger.hasAttribute("data-h2-submenu-trigger")) {
       // console.log("You exited on a submenu trigger.");
       // Figure out if the trigger was the parent one, or if it's one in the active menu by testing to see if the sibling submenu is active or not.
@@ -663,7 +676,7 @@ function h2MenuEscapeAndLeftArrowEvent(e) {
         // Close the submenu and focus the parent trigger.
         h2MenuCloseSubmenuHandler(trigger);
         // submenuTrigger.focus();
-      } 
+      }
       else {
         // console.log("This trigger is a trigger inside the open submenu.");
         // Check to see if you're trying to close the main menu.
@@ -695,7 +708,7 @@ function h2MenuEscapeAndLeftArrowEvent(e) {
             // documentBody.classList.remove("h2-mobile-menu-body-lock");
             documentBody.style.overflow = "visible";
           }
-        } 
+        }
         else {
           // console.log("You're closing a submenu.");
           // Set the key variables based on this context.
@@ -805,7 +818,7 @@ function h2MenuTabExitEvent(e) {
         h2MenuCloseSubmenusAndActivateMainMenuHandler(menuWrapper);
       }
     }
-  } 
+  }
   // Otherwise, tab as normal while closing submenus.
   else {
     if (key == 9 && !e.shiftKey || key == 9 && e.shiftKey) {
@@ -951,7 +964,7 @@ function h2MenuSystemCheck(targetMenu, hydrogenSystemVersion, functionError) {
         if (system.hasAttribute("data-h2-menu-wrapper")) {
           // The system object is also the menu wrapper.
           menus = menus.concat(system);
-        } 
+        }
         var instancedMenus = system.querySelectorAll("[data-h2-menu-wrapper]");
         if (instancedMenus != false || instancedMenus != null) {
           instancedMenus.forEach(function(instance) {
