@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property       | Attribute       | Description                                               | Type                                                               | Default     |
-| -------------- | --------------- | --------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
-| `disabled`     | `disabled`      | Specifies if an input element is disabled or not.         | `boolean`                                                          | `false`     |
-| `errorMessage` | `error-message` | Error message for an invalid input element.               | `string`                                                           | `undefined` |
-| `hideLabel`    | `hide-label`    | Specifies if the label is hidden or not.                  | `boolean`                                                          | `undefined` |
-| `hint`         | `hint`          | Hint displayed below the label and above the input field. | `string`                                                           | `undefined` |
-| `inputId`      | `input-id`      | Id + name attribute for an input element.                 | `string`                                                           | `undefined` |
-| `label`        | `label`         | Form field label                                          | `string`                                                           | `undefined` |
-| `required`     | `required`      | Specifies if a form field is required or not.             | `boolean`                                                          | `undefined` |
-| `size`         | `size`          | Size attribute for an input element.                      | `number`                                                           | `undefined` |
-| `type`         | `type`          | Set Input types                                           | `"email" \| "number" \| "password" \| "search" \| "text" \| "url"` | `'text'`    |
-| `value`        | `value`         | Default value for an input element.                       | `string`                                                           | `undefined` |
+| Property       | Attribute       | Description                                                      | Type                                                               | Default     |
+| -------------- | --------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
+| `disabled`     | `disabled`      | Specifies if an input element is disabled or not.                | `boolean`                                                          | `false`     |
+| `errorMessage` | `error-message` | Error message for an invalid input element.                      | `string`                                                           | `undefined` |
+| `hideLabel`    | `hide-label`    | Specifies if the label is hidden or not.                         | `boolean`                                                          | `undefined` |
+| `hint`         | `hint`          | Hint displayed below the label and above the input field.        | `string`                                                           | `undefined` |
+| `inputId`      | `input-id`      | Id + name attribute for an input element.                        | `string`                                                           | `undefined` |
+| `label`        | `label`         | Form field label                                                 | `string`                                                           | `undefined` |
+| `required`     | `required`      | Specifies if a form field is required or not.                    | `boolean`                                                          | `undefined` |
+| `size`         | `size`          | Size attribute for an input element. Defines max-length as well. | `number`                                                           | `undefined` |
+| `type`         | `type`          | Set Input types                                                  | `"email" \| "number" \| "password" \| "search" \| "text" \| "url"` | `'text'`    |
+| `value`        | `value`         | Default value for an input element.                              | `string`                                                           | `undefined` |
 
 
 ## Events
