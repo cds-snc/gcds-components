@@ -86,12 +86,20 @@ export class GcdsSiteMenu {
     // Create the add icon span
     var addIcon = document.createElement("span");
     this.setAttributes(addIcon, {"aria-hidden": "true", "data-h2-submenu-trigger-add-icon": ""});
-    addIcon.textContent = "+";
+    addIcon.innerHTML = `
+      <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.246399 1.38667L4.85966 5.99993L0.246399 10.6132L1.63321 12L7.63314 6.00007L1.63321 0.000137329L0.246399 1.38667Z" />
+      </svg>
+    `;
 
     // Create the remove icon span
     var removeIcon = document.createElement("span");
     this.setAttributes(removeIcon, {"aria-hidden": "true", "data-h2-submenu-trigger-remove-icon": ""});
-    removeIcon.textContent = "-";
+    removeIcon.innerHTML = `
+    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.63306 10.6135L3.0198 6.00021L7.63306 1.38695L6.24624 0.000139115L0.246312 6.00007L6.24624 12L7.63306 10.6135Z" />
+    </svg>
+  `;
 
     // Put it all together and append button to page
     button.append(a11yText, addIcon, removeIcon);
@@ -124,7 +132,7 @@ export class GcdsSiteMenu {
           if(listitem.children[x].nodeName == "A") {
             this.setAttributes(listitem.children[x], {"role": "menuitem"})
           } else if (listitem.children[x].nodeName != "BUTTON" && listitem.children[x].nodeName != "UL" ) {
-            this.setAttributes(listitem.children[x], {"role": "menuitem", "tabindex": "0" });
+            this.setAttributes(listitem.children[x], {"role": "menuitem", "tabindex": "-1" });
           }
         }
       });
