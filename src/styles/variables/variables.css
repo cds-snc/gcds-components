@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 25 May 2022 21:09:51 GMT
+ * Generated on Wed, 25 May 2022 23:50:16 GMT
  */
 
 :root {
@@ -16,7 +16,7 @@
   --gcds-color-grayscale-0: #ffffff;
   --gcds-color-grayscale-100: #f0f0f0;
   --gcds-color-grayscale-200: #ededed;
-  --gcds-color-grayscale-225: #e8e7e7;
+  --gcds-color-grayscale-225: #e5e5e5;
   --gcds-color-grayscale-250: #d2d2d2;
   --gcds-color-grayscale-300: #c4c3c5;
   --gcds-color-grayscale-400: #bfbfbf;
@@ -116,11 +116,10 @@
   --gcds-site-menu-hover-text: #000000;
   --gcds-site-menu-selection-background: #f7b452;
   --gcds-site-menu-selection-text: #000000;
-  --gcds-site-menu-submenu-background: #d2d2d250;
+  --gcds-site-menu-submenu-background: #e5e5e5;
   --gcds-site-menu-submenu-box-shadow: #00000030;
   --gcds-site-menu-submenu-trigger-text: #000000;
   --gcds-site-menu-submenu-trigger-hover-background: #82828270;
-  --gcds-site-menu-sidebar-submenu-background: #e8e7e7;
   --gcds-textarea-default-background: #ffffff;
   --gcds-textarea-default-text: #000000;
   --gcds-textarea-destructive: #d3080c;
