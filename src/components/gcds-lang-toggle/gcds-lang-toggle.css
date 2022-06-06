@@ -23,7 +23,7 @@
 
     @media screen and (min-width: 64em) {
       span {
-        display: block;
+        display: inherit;
       }
       abbr {
         display: none;

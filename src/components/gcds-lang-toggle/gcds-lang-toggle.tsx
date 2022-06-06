@@ -9,36 +9,28 @@ import { assignLanguage } from '../../utils/utils';
 export class GcdsLangToggle {
 
   private lang: string;
-  private targetHref: string;
 
   @Element() el: HTMLElement;
 
   /**
    * The href attribute specifies the URL of the opposite language page
    */
-  @Prop({ reflect: false }) href!: 'string';
+  @Prop({ reflect: false, mutable: false }) href!: string;
 
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    // Since reflect: false on prop is not working
-    // Remove href from Host element for cleaner display
-    if (this.el.hasAttribute("href")) {
-      this.targetHref = this.href;
-      this.el.removeAttribute("href");
-    }
   }
 
   render() {
-    const { lang, targetHref } = this;
-
+    const { lang, href } = this;
     return (
       <Host>
         {lang === "fr" ? (
           <div>
             <h2>Sélection de la langue</h2>
-            <a href={targetHref} lang="en">
+            <a href={href} lang="en">
               <span>English</span>
               <abbr title="English">en</abbr>
             </a>
@@ -46,7 +38,7 @@ export class GcdsLangToggle {
         ) : (
           <div>
             <h2>Language Selection</h2>
-            <a href={targetHref} lang="fr">
+            <a href={href} lang="fr">
               <span>Français</span>
               <abbr title="Français">fr</abbr>
             </a>

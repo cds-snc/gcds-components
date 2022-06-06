@@ -1,0 +1,44 @@
+gcds-signature {
+  display: block;
+  width: fit-content;
+  margin-bottom: var(--gcds-spacing-100);
+
+  &:not([type='wordmark']) {
+    svg {
+      height: 30px;
+      margin-bottom: var(--gcds-spacing-100);
+    }
+
+    @media screen and (min-width: 64em) {
+      svg {
+        height: 34px;
+      }
+    }
+  }
+
+  &[type='wordmark'] {
+    svg {
+      height: 40px;
+    }
+  }
+
+  &:not([variant='white']) {
+    svg {
+      .fip_text {
+        fill: #000;
+      }
+      .fip_flag {
+        fill: #F00;
+      }
+    }
+  }
+
+  &[variant='white'] {
+    svg {
+      .fip_text,
+      .fip_flag {
+        fill: #FFF;
+      }
+    }
+  }
+}

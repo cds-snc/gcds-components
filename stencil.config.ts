@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { postcss } from '@stencil/postcss';
+import { inlineSvg } from 'stencil-inline-svg';
 
 export const config: Config = {
   namespace: 'gcds',
@@ -22,7 +23,8 @@ export const config: Config = {
         require('postcss-nested'),
         require('cssnano')
       ]
-    })
+    }),
+    inlineSvg()
   ],
   testing: {
     transform: {
