@@ -81,7 +81,7 @@ export class GcdsHeader {
   }
 
   private get renderSignature() {
-    let signVariant = this.signatureVariant ? this.signatureVariant : "white";
+    let signVariant = this.signatureVariant ? this.signatureVariant : "colour";
 
     if (!!this.el.querySelector('[slot="signature"]')) {
       return <slot name="signature"></slot>;

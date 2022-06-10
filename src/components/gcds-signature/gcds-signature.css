@@ -9,6 +9,11 @@ gcds-signature {
       margin-bottom: var(--gcds-spacing-100);
     }
 
+    @media screen and (min-width: 768px) {
+      svg {
+        height: 27px;
+      }
+    }
     @media screen and (min-width: 64em) {
       svg {
         height: 34px;

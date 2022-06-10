@@ -34,7 +34,7 @@
       slot[name="toggle"] {
         grid-area: toggle;
         text-align: right;
-        padding: var(--gcds-spacing-300) var(--gcds-spacing-300) 0;
+        padding: 0 var(--gcds-spacing-300);
       }
 
       .signature,
@@ -46,6 +46,7 @@
       slot[name="search"] {
         grid-area: search;
         max-width: 100%;
+        display: block;
       }
     }
 
