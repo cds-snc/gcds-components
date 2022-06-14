@@ -6,15 +6,6 @@ import SignatureFr from './assets/sig-blk-fr.svg';
 import WordmarkEn from './assets/wmms-spl-en.svg';
 import WordmarkFr from './assets/wmms-spl-fr.svg';
 
-const i18n = {
-  "en": {
-    "link": "https://canada.ca/en.html"
-  },
-  "fr": {
-    "link": "https://canada.ca/fr.html"
-  }
-}
-
 @Component({
   tag: 'gcds-signature',
   styleUrl: 'gcds-signature.css',
@@ -82,10 +73,11 @@ export class GcdsSignature {
 
   render() {
     const { type, hasLink, lang, selectSVG } = this;
+    const linkText = lang == "en" ? "https://canada.ca/en.html" : "https://canada.ca/fr.html";
     return (
       <Host>
         {hasLink && type === 'signature' ? (
-          <a href={i18n[lang].link} innerHTML={selectSVG}></a>
+          <a href={linkText} innerHTML={selectSVG}></a>
         ) : (
           <div innerHTML={selectSVG}></div>
         )}

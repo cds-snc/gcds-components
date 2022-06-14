@@ -8,7 +8,7 @@ describe('gcds-lang-toggle', () => {
       html: `<gcds-lang-toggle href="/fr/" lang="en"></gcds-lang-toggle>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-lang-toggle lang="en">
+      <gcds-lang-toggle href="/fr/" lang="en">
         <mock:shadow-root>
         <div>
           <h2>Language Selection</h2>
@@ -28,7 +28,7 @@ describe('gcds-lang-toggle', () => {
       html: `<gcds-lang-toggle href="/en/" lang="fr"></gcds-lang-toggle>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-lang-toggle lang="fr">
+      <gcds-lang-toggle href="/en/" lang="fr">
         <mock:shadow-root>
         <div>
           <h2>Sélection de la langue</h2>
