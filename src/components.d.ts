@@ -90,6 +90,20 @@ export namespace Components {
          */
         "messageId": string;
     }
+    interface GcdsFooter {
+        /**
+          * Top of page href
+         */
+        "topHref": string;
+        /**
+          * The type of graphic to render
+         */
+        "type": 'compact' | 'full';
+        /**
+          * GcdsSignature - The variant of the Government of Canada wordmark
+         */
+        "wordmarkVariant": 'colour' | 'white';
+    }
     interface GcdsGrid {
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
@@ -324,6 +338,12 @@ declare global {
         prototype: HTMLGcdsErrorMessageElement;
         new (): HTMLGcdsErrorMessageElement;
     };
+    interface HTMLGcdsFooterElement extends Components.GcdsFooter, HTMLStencilElement {
+    }
+    var HTMLGcdsFooterElement: {
+        prototype: HTMLGcdsFooterElement;
+        new (): HTMLGcdsFooterElement;
+    };
     interface HTMLGcdsGridElement extends Components.GcdsGrid, HTMLStencilElement {
     }
     var HTMLGcdsGridElement: {
@@ -381,6 +401,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
+        "gcds-footer": HTMLGcdsFooterElement;
         "gcds-grid": HTMLGcdsGridElement;
         "gcds-header": HTMLGcdsHeaderElement;
         "gcds-hint": HTMLGcdsHintElement;
@@ -480,6 +501,20 @@ declare namespace LocalJSX {
           * Id attribute for the error message.
          */
         "messageId"?: string;
+    }
+    interface GcdsFooter {
+        /**
+          * Top of page href
+         */
+        "topHref"?: string;
+        /**
+          * The type of graphic to render
+         */
+        "type"?: 'compact' | 'full';
+        /**
+          * GcdsSignature - The variant of the Government of Canada wordmark
+         */
+        "wordmarkVariant"?: 'colour' | 'white';
     }
     interface GcdsGrid {
         /**
@@ -728,6 +763,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "gcds-button": GcdsButton;
         "gcds-error-message": GcdsErrorMessage;
+        "gcds-footer": GcdsFooter;
         "gcds-grid": GcdsGrid;
         "gcds-header": GcdsHeader;
         "gcds-hint": GcdsHint;
@@ -745,6 +781,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
             "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
             "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;

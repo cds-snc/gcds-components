@@ -24,6 +24,9 @@ gcds-signature {
   &[type='wordmark'] {
     svg {
       height: 40px;
+      margin-bottom: 2em;
+      margin-top: 20px;
+      width: auto;
     }
   }
 
