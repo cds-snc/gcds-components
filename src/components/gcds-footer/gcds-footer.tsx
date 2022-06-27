@@ -68,6 +68,9 @@ export class GcdsFooter {
     const siteNav = I18N[lang].site.menu;
     return (
       <Host role="contentinfo">
+        <div class="container">
+          <slot name="top"></slot>
+        </div>
         {type === "full" ? 
           (<div class="landscape">
             <nav class="container" aria-label={I18N[lang].gov.heading}>

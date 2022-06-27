@@ -10,6 +10,9 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" type="compact" lang="en">
         <mock:shadow-root>
+          <div class="container">
+            <slot name="top"></slot>
+          </div>
           <div class="brand">
             <div class="container">
               <nav aria-label="About this site">
@@ -62,6 +65,9 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" type="full" lang="en">
         <mock:shadow-root>
+          <div class="container">
+            <slot name="top"></slot>
+          </div>
           <div class="landscape">
             <nav aria-label="About government" class="container">
               <h2>
@@ -168,6 +174,9 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" type="compact" lang="fr">
         <mock:shadow-root>
+          <div class="container">
+            <slot name="top"></slot>
+          </div>
           <div class="brand">
             <div class="container">
               <nav aria-label="À propos de ce site">
@@ -220,6 +229,9 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" type="full" lang="fr">
         <mock:shadow-root>
+          <div class="container">
+            <slot name="top"></slot>
+          </div>
           <div class="landscape">
             <nav aria-label="Au sujet du gouvernement" class="container">
               <h2>
