@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 25 May 2022 23:52:33 GMT
+ * Generated on Wed, 29 Jun 2022 15:38:45 GMT
  */
 
 :root {
@@ -113,13 +113,12 @@
   --gcds-site-menu-focus-background: #303fc3;
   --gcds-site-menu-focus-text: #ffffff;
   --gcds-site-menu-hover-background: #bfbfbf50;
-  --gcds-site-menu-hover-text: #000000;
   --gcds-site-menu-selection-background: #f7b452;
   --gcds-site-menu-selection-text: #000000;
   --gcds-site-menu-submenu-background: #e5e5e5;
   --gcds-site-menu-submenu-box-shadow: #00000030;
   --gcds-site-menu-submenu-trigger-text: #000000;
-  --gcds-site-menu-submenu-trigger-hover-background: #82828270;
+  --gcds-site-menu-sidebar-submenu-background: #e8e7e7;
   --gcds-textarea-default-background: #ffffff;
   --gcds-textarea-default-text: #000000;
   --gcds-textarea-destructive: #d3080c;
