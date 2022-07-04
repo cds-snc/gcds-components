@@ -9,7 +9,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  transition: color ease-in-out .15s;
+  transition: color ease-in-out 0.15s;
 
   &:focus-within {
     color: var(--gcds-textarea-focus);
@@ -46,12 +46,13 @@
   border: 2px solid currentColor;
   border-radius: var(--gcds-spacing-50);
   box-sizing: border-box;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 
   &:focus {
-    outline: 0;
-    border-color: var(--gcds-textarea-focus);
-    box-shadow: 0 0 0 2.5px var(--gcds-textarea-focus);
+    border-color: var(--gcds-input-focus);
+    box-shadow: 0 0 0 2px var(--gcds-color-grayscale-0);
+    outline: 3px solid var(--gcds-input-focus);
+    outline-offset: 2px;
   }
 
   &:disabled {
