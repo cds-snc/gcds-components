@@ -1,0 +1,33 @@
+:host {
+  display: block;
+
+  h2 {
+    clip: rect(1px,1px,1px,1px);
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+  }
+
+  a {
+
+    span {
+      display: none;
+    }
+
+    abbr {
+      text-transform: uppercase;
+      font-size: var(--gcds-font-sizes-h4);
+    }
+
+    @media screen and (min-width: 64em) {
+      span {
+        display: inherit;
+      }
+      abbr {
+        display: none;
+      }
+    }
+  }
+}

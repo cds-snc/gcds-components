@@ -51,11 +51,13 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [gcds-header](../gcds-header)
  - [gcds-site-menu](../gcds-site-menu)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-header --> gcds-button
   gcds-site-menu --> gcds-button
   style gcds-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

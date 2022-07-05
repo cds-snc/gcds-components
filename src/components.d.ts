@@ -90,6 +90,20 @@ export namespace Components {
          */
         "messageId": string;
     }
+    interface GcdsFooter {
+        /**
+          * Top of page href
+         */
+        "topHref": string;
+        /**
+          * The type of graphic to render
+         */
+        "type": 'compact' | 'full';
+        /**
+          * GcdsSignature - The variant of the Government of Canada wordmark
+         */
+        "wordmarkVariant": 'colour' | 'white';
+    }
     interface GcdsGrid {
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
@@ -137,6 +151,24 @@ export namespace Components {
           * Sets both the align-items + justify-items properties
          */
         "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
+    }
+    interface GcdsHeader {
+        /**
+          * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
+         */
+        "langHref": string;
+        /**
+          * GcdsSignature - GCDS signature links to Canada.ca
+         */
+        "signatureHasLink": boolean;
+        /**
+          * GcdsSignature - The variant of the Government of Canada signature
+         */
+        "signatureVariant": 'colour' | 'white';
+        /**
+          * Top navigation - Skip to content href
+         */
+        "skipToHref": string;
     }
     interface GcdsHint {
         /**
@@ -207,6 +239,26 @@ export namespace Components {
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
+    }
+    interface GcdsLangToggle {
+        /**
+          * The href attribute specifies the URL of the opposite language page
+         */
+        "href": string;
+    }
+    interface GcdsSignature {
+        /**
+          * Has link to canada.ca. Only applies to signature
+         */
+        "hasLink": boolean;
+        /**
+          * The type of graphic to render
+         */
+        "type": 'signature' | 'wordmark';
+        /**
+          * The colour variant to render
+         */
+        "variant": 'colour' | 'white';
     }
     interface GcdsSiteMenu {
         /**
@@ -286,11 +338,23 @@ declare global {
         prototype: HTMLGcdsErrorMessageElement;
         new (): HTMLGcdsErrorMessageElement;
     };
+    interface HTMLGcdsFooterElement extends Components.GcdsFooter, HTMLStencilElement {
+    }
+    var HTMLGcdsFooterElement: {
+        prototype: HTMLGcdsFooterElement;
+        new (): HTMLGcdsFooterElement;
+    };
     interface HTMLGcdsGridElement extends Components.GcdsGrid, HTMLStencilElement {
     }
     var HTMLGcdsGridElement: {
         prototype: HTMLGcdsGridElement;
         new (): HTMLGcdsGridElement;
+    };
+    interface HTMLGcdsHeaderElement extends Components.GcdsHeader, HTMLStencilElement {
+    }
+    var HTMLGcdsHeaderElement: {
+        prototype: HTMLGcdsHeaderElement;
+        new (): HTMLGcdsHeaderElement;
     };
     interface HTMLGcdsHintElement extends Components.GcdsHint, HTMLStencilElement {
     }
@@ -310,6 +374,18 @@ declare global {
         prototype: HTMLGcdsLabelElement;
         new (): HTMLGcdsLabelElement;
     };
+    interface HTMLGcdsLangToggleElement extends Components.GcdsLangToggle, HTMLStencilElement {
+    }
+    var HTMLGcdsLangToggleElement: {
+        prototype: HTMLGcdsLangToggleElement;
+        new (): HTMLGcdsLangToggleElement;
+    };
+    interface HTMLGcdsSignatureElement extends Components.GcdsSignature, HTMLStencilElement {
+    }
+    var HTMLGcdsSignatureElement: {
+        prototype: HTMLGcdsSignatureElement;
+        new (): HTMLGcdsSignatureElement;
+    };
     interface HTMLGcdsSiteMenuElement extends Components.GcdsSiteMenu, HTMLStencilElement {
     }
     var HTMLGcdsSiteMenuElement: {
@@ -325,10 +401,14 @@ declare global {
     interface HTMLElementTagNameMap {
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
+        "gcds-footer": HTMLGcdsFooterElement;
         "gcds-grid": HTMLGcdsGridElement;
+        "gcds-header": HTMLGcdsHeaderElement;
         "gcds-hint": HTMLGcdsHintElement;
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
+        "gcds-lang-toggle": HTMLGcdsLangToggleElement;
+        "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
     }
@@ -422,6 +502,20 @@ declare namespace LocalJSX {
          */
         "messageId"?: string;
     }
+    interface GcdsFooter {
+        /**
+          * Top of page href
+         */
+        "topHref"?: string;
+        /**
+          * The type of graphic to render
+         */
+        "type"?: 'compact' | 'full';
+        /**
+          * GcdsSignature - The variant of the Government of Canada wordmark
+         */
+        "wordmarkVariant"?: 'colour' | 'white';
+    }
     interface GcdsGrid {
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
@@ -469,6 +563,24 @@ declare namespace LocalJSX {
           * Sets both the align-items + justify-items properties
          */
         "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
+    }
+    interface GcdsHeader {
+        /**
+          * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
+         */
+        "langHref"?: string;
+        /**
+          * GcdsSignature - GCDS signature links to Canada.ca
+         */
+        "signatureHasLink"?: boolean;
+        /**
+          * GcdsSignature - The variant of the Government of Canada signature
+         */
+        "signatureVariant"?: 'colour' | 'white';
+        /**
+          * Top navigation - Skip to content href
+         */
+        "skipToHref"?: string;
     }
     interface GcdsHint {
         /**
@@ -552,6 +664,26 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
     }
+    interface GcdsLangToggle {
+        /**
+          * The href attribute specifies the URL of the opposite language page
+         */
+        "href": string;
+    }
+    interface GcdsSignature {
+        /**
+          * Has link to canada.ca. Only applies to signature
+         */
+        "hasLink"?: boolean;
+        /**
+          * The type of graphic to render
+         */
+        "type"?: 'signature' | 'wordmark';
+        /**
+          * The colour variant to render
+         */
+        "variant"?: 'colour' | 'white';
+    }
     interface GcdsSiteMenu {
         /**
           * Menu alignment
@@ -631,10 +763,14 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "gcds-button": GcdsButton;
         "gcds-error-message": GcdsErrorMessage;
+        "gcds-footer": GcdsFooter;
         "gcds-grid": GcdsGrid;
+        "gcds-header": GcdsHeader;
         "gcds-hint": GcdsHint;
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
+        "gcds-lang-toggle": GcdsLangToggle;
+        "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
         "gcds-textarea": GcdsTextarea;
     }
@@ -645,10 +781,14 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
+            "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
             "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
+            "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
         }
