@@ -41,7 +41,7 @@
     "postcss-nested": "^5.0.6",
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
-    "puppeteer": "^15.2.0",
+    "puppeteer": "^10.0.0",
     "sass": "^1.43.5"
   },
   "license": "MIT"
