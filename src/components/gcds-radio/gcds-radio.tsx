@@ -2,28 +2,26 @@ import { Component, Element, Prop, Host, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
 
 @Component({
-  tag: 'gcds-checkbox',
-  styleUrl: 'gcds-checkbox.css',
+  tag: 'gcds-radio',
+  styleUrl: 'gcds-radio.css',
   shadow: false,
   scoped: true,
 })
-export class GcdsCheckbox {
+export class GcdsRadio {
 
   @Element() el: HTMLElement;
 
   private lang: string;
 
-  @Prop({ reflect: true, mutable: true }) checkboxId!: string;
+  @Prop({ reflect: true, mutable: true }) radioId!: string;
   @Prop({ reflect: true, mutable: false }) label!: string;
   @Prop({ reflect: true, mutable: false }) name!: string;
 
   @Prop({ reflect: true, mutable: false }) required: boolean;
   @Prop({ reflect: true, mutable: true }) disabled: boolean;
-
-  @Prop({ reflect: true, mutable: false }) value: string;
   @Prop({ reflect: true, mutable: true }) checked: boolean;
+  @Prop({ reflect: true, mutable: false }) value: string;
   @Prop({ reflect: true, mutable: true }) hasError: boolean;
-  @Prop({ reflect: true, mutable: true }) errorMessage: string;
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   async componentWillLoad() {
@@ -32,26 +30,19 @@ export class GcdsCheckbox {
   }
 
   render() {
-
-    const { lang, checkboxId, label, name, required, disabled, value, checked, hint, errorMessage } = this;
+    const { lang, radioId, label, name, required, disabled, value, checked, hint } = this;
 
     const attrsInput = {
       name,
       disabled,
       required,
       value,
-      checked,
+      checked
     };
 
-    const attrsLabel = {
-      label,
-      required,
-    }
-
-    if (hint || errorMessage) {
-      let hintID = hint ? `hint-${checkboxId}` : "";
-      let errorID = errorMessage ? `error-${checkboxId}` : "";
-      attrsInput["aria-describedby"] = `${hintID} ${errorID}`;
+    if (hint) {
+      let hintID = hint ? `hint-${radioId}` : "";
+      attrsInput["aria-describedby"] = `${hintID}`;
     }
 
     return (
@@ -59,17 +50,16 @@ export class GcdsCheckbox {
         <fieldset>
           <input
             {...attrsInput}
-            id={checkboxId}
-            type="checkbox"
+            id={radioId}
+            type="radio"
           />
           <gcds-label
-            {...attrsLabel}
-            label-for={checkboxId}
+            label={label}
+            label-for={radioId}
             lang={lang}
           >
           </gcds-label>
-          {hint ? <gcds-hint hint={hint} hint-id={checkboxId} />: null}
-          {errorMessage ? <gcds-error-message message-id={checkboxId} message={errorMessage} /> : null}
+          {hint ? <gcds-hint hint={hint} hint-id={radioId} />: null}
         </fieldset>
       </Host>
     );

@@ -258,6 +258,17 @@ export namespace Components {
          */
         "href": string;
     }
+    interface GcdsRadio {
+        "checked": boolean;
+        "disabled": boolean;
+        "hasError": boolean;
+        "hint": string;
+        "label": string;
+        "name": string;
+        "radioId": string;
+        "required": boolean;
+        "value": string;
+    }
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -398,6 +409,12 @@ declare global {
         prototype: HTMLGcdsLangToggleElement;
         new (): HTMLGcdsLangToggleElement;
     };
+    interface HTMLGcdsRadioElement extends Components.GcdsRadio, HTMLStencilElement {
+    }
+    var HTMLGcdsRadioElement: {
+        prototype: HTMLGcdsRadioElement;
+        new (): HTMLGcdsRadioElement;
+    };
     interface HTMLGcdsSignatureElement extends Components.GcdsSignature, HTMLStencilElement {
     }
     var HTMLGcdsSignatureElement: {
@@ -427,6 +444,7 @@ declare global {
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
+        "gcds-radio": HTMLGcdsRadioElement;
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
@@ -701,6 +719,17 @@ declare namespace LocalJSX {
          */
         "href": string;
     }
+    interface GcdsRadio {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "hasError"?: boolean;
+        "hint"?: string;
+        "label": string;
+        "name": string;
+        "radioId": string;
+        "required"?: boolean;
+        "value"?: string;
+    }
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -802,6 +831,7 @@ declare namespace LocalJSX {
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
+        "gcds-radio": GcdsRadio;
         "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
         "gcds-textarea": GcdsTextarea;
@@ -821,6 +851,7 @@ declare module "@stencil/core" {
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
