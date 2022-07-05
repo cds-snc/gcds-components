@@ -80,6 +80,18 @@ export namespace Components {
          */
         "target": string | undefined;
     }
+    interface GcdsCheckbox {
+        "checkboxId": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "errorMessage": string;
+        "hasError": boolean;
+        "hint": string;
+        "label": string;
+        "name": string;
+        "required": boolean;
+        "value": string;
+    }
     interface GcdsErrorMessage {
         /**
           * Error message for an invalid form field.
@@ -332,6 +344,12 @@ declare global {
         prototype: HTMLGcdsButtonElement;
         new (): HTMLGcdsButtonElement;
     };
+    interface HTMLGcdsCheckboxElement extends Components.GcdsCheckbox, HTMLStencilElement {
+    }
+    var HTMLGcdsCheckboxElement: {
+        prototype: HTMLGcdsCheckboxElement;
+        new (): HTMLGcdsCheckboxElement;
+    };
     interface HTMLGcdsErrorMessageElement extends Components.GcdsErrorMessage, HTMLStencilElement {
     }
     var HTMLGcdsErrorMessageElement: {
@@ -400,6 +418,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "gcds-button": HTMLGcdsButtonElement;
+        "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
         "gcds-footer": HTMLGcdsFooterElement;
         "gcds-grid": HTMLGcdsGridElement;
@@ -491,6 +510,18 @@ declare namespace LocalJSX {
           * The target attribute specifies where to open the linked document
          */
         "target"?: string | undefined;
+    }
+    interface GcdsCheckbox {
+        "checkboxId": string;
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "hint"?: string;
+        "label": string;
+        "name": string;
+        "required"?: boolean;
+        "value"?: string;
     }
     interface GcdsErrorMessage {
         /**
@@ -762,6 +793,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "gcds-button": GcdsButton;
+        "gcds-checkbox": GcdsCheckbox;
         "gcds-error-message": GcdsErrorMessage;
         "gcds-footer": GcdsFooter;
         "gcds-grid": GcdsGrid;
@@ -780,6 +812,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
+            "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
