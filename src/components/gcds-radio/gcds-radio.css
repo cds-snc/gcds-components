@@ -72,6 +72,7 @@
           top: -8px;
           width: 40px;
           border-radius: 50%;
+          cursor: pointer;
         }
         &:after {
           content: "";
@@ -86,6 +87,7 @@
           background-color: var(--gcds-color-grayscale-1000);
           transition: opacity .2s ease-in-out;
           width: 14px;
+          cursor: pointer;
         }
       }
 
