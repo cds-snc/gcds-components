@@ -29,11 +29,15 @@ export class GcdsCheckbox {
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    if (this.errorMessage) {
+      this.hasError = true;
+    }
   }
 
   render() {
 
-    const { lang, checkboxId, label, name, required, disabled, value, checked, hint, errorMessage } = this;
+    const { lang, checkboxId, label, name, required, disabled, value, checked, hint, errorMessage, hasError } = this;
 
     const attrsInput = {
       name,
@@ -50,13 +54,17 @@ export class GcdsCheckbox {
 
     if (hint || errorMessage) {
       let hintID = hint ? `hint-${checkboxId}` : "";
-      let errorID = errorMessage ? `error-${checkboxId}` : "";
+      let errorID = errorMessage ? `error-message-${checkboxId}` : "";
       attrsInput["aria-describedby"] = `${hintID} ${errorID}`;
+    }
+
+    if (hasError) {
+      attrsInput["aria-invalid"] = "true";
     }
 
     return (
       <Host>
-        <fieldset>
+        <div class={`gcds-checkbox-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
           <input
             {...attrsInput}
             id={checkboxId}
@@ -70,7 +78,7 @@ export class GcdsCheckbox {
           </gcds-label>
           {hint ? <gcds-hint hint={hint} hint-id={checkboxId} />: null}
           {errorMessage ? <gcds-error-message message-id={checkboxId} message={errorMessage} /> : null}
-        </fieldset>
+        </div>
       </Host>
     );
   }
