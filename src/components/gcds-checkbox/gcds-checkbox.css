@@ -26,7 +26,7 @@
         color: #707070; /*--gcds-checkbox-disabled-text*/
         &:before {
           border-color: #707070; /*--gcds-checkbox-disabled-text*/
-          background-color: var($gcds-color-grayscale-100);
+          background-color: var(--gcds-color-grayscale-100);
           cursor: not-allowed;
         }
         &:after {
