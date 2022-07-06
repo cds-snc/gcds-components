@@ -30,7 +30,7 @@ export class GcdsRadio {
   }
 
   render() {
-    const { lang, radioId, label, name, required, disabled, value, checked, hint } = this;
+    const { lang, radioId, label, name, required, disabled, value, checked, hint, hasError } = this;
 
     const attrsInput = {
       name,
@@ -47,7 +47,7 @@ export class GcdsRadio {
 
     return (
       <Host>
-        <fieldset>
+        <div class={`gcds-radio-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
           <input
             {...attrsInput}
             id={radioId}
@@ -60,7 +60,7 @@ export class GcdsRadio {
           >
           </gcds-label>
           {hint ? <gcds-hint hint={hint} hint-id={radioId} />: null}
-        </fieldset>
+        </div>
       </Host>
     );
   }
