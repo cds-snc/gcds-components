@@ -5,7 +5,7 @@
     font-weight: var(--gcds-font-weights-regular);
     font-size: var(--gcds-font-sizes-paragraph);
     line-height: var(--gcds-line-heights-paragraph);
-    color: var(--gcds-input-default-text);
+    color: var(--gcds-checkbox-default-text);
     margin: 0;
     padding: 0;
     border: 0;
@@ -16,16 +16,16 @@
     margin-top: 28px;
 
     &:focus-within {
-      color: #303fc3; /*--gcds-checkbox-focus*/
+      color: var(--gcds-checkbox-focus);
     }
 
     &.gcds-disabled {
-      color: #707070; /*--gcds-checkbox-disabled-text*/
+      color: var(--gcds-checkbox-disabled-text);
 
       input[type=checkbox]+gcds-label {
-        color: #707070; /*--gcds-checkbox-disabled-text*/
+        color: var(--gcds-checkbox-disabled-text);
         &:before {
-          border-color: #707070; /*--gcds-checkbox-disabled-text*/
+          border-color: var(--gcds-checkbox-disabled-border);
           background-color: var(--gcds-color-grayscale-100);
           cursor: not-allowed;
         }
@@ -36,14 +36,14 @@
     }
 
     &.gcds-error:not(:focus-within) {
-      color: #d3080c; /*--gcds-checkbox-distructive*/
+      color: var(--gcds-checkbox-destructive);
 
       input[type=checkbox]+gcds-label {
         &:before {
-          border-color: #d3080c; /*--gcds-checkbox-distructive*/
+          border-color: var(--gcds-checkbox-destructive);
         }
         &:after {
-          color: #d3080c; /*--gcds-checkbox-distructive*/
+          color: var(--gcds-checkbox-destructive);
         }
       }
     }
@@ -63,7 +63,7 @@
       &+gcds-label {
         width: fit-content;
         &:before {
-          border: 2px solid #000;
+          border: 2px solid var(--gcds-color-grayscale-1000);
           content: "";
           height: 40px;
           left: 0;
@@ -79,7 +79,7 @@
           border-left: 0;
           border-top: 0;
           height: 20px;
-          color: #000;
+          color: var(--gcds-color-grayscale-1000);
           left: 13px;
           opacity: 0;
           position: absolute;
@@ -94,12 +94,12 @@
       &:focus+gcds-label {
         &:before {
           box-shadow: 0 0 0 2px #fff;
-          outline: 3px solid #303fc3;  /*--gcds-checkbox-focus*/
+          outline: 3px solid var(--gcds-checkbox-focus);
           outline-offset: 2px;
-          border-color: #303fc3;  /*--gcds-checkbox-focus*/
+          border-color: var(--gcds-checkbox-focus);
         }
         &:after {
-          color: #303fc3;  /*--gcds-checkbox-focus*/
+          color: var(--gcds-checkbox-focus);
         }
       }
     }

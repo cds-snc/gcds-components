@@ -5,7 +5,7 @@
     font-weight: var(--gcds-font-weights-regular);
     font-size: var(--gcds-font-sizes-paragraph);
     line-height: var(--gcds-line-heights-paragraph);
-    color: var(--gcds-input-default-text);
+    color: var(--gcds-radio-default-text);
     margin: 0;
     padding: 0;
     border: 0;
@@ -16,17 +16,17 @@
     margin-top: 28px;
 
     &:focus-within {
-      color: #303fc3; /*--gcds-radio-focus*/
+      color: var(--gcds-radio-focus);
     }
 
     &.gcds-disabled {
-      color: #707070; /*--gcds-radio-disabled-text*/
+      color: var(--gcds-checkbox-disabled-text);
 
       input[type=radio]+gcds-label {
-        color: #707070; /*--gcds-radio-disabled-text*/
+        color: var(--gcds-checkbox-disabled-text);
         &:before {
-          border-color: #707070; /*--gcds-radio-disabled-text*/
-          background-color: var(--gcds-color-grayscale-100);
+          border-color: var(--gcds-checkbox-disabled-border);
+          background-color: var(--gcds-checkbox-disabled-background);
           cursor: not-allowed;
         }
         &:after {
@@ -36,15 +36,15 @@
     }
 
     &.gcds-error:not(:focus-within) {
-      color: #d3080c; /*--gcds-radio-distructive*/
+      color: var(--gcds-radio-destructive);
 
       input[type=radio]+gcds-label {
         &:before {
-          border-color: #d3080c; /*--gcds-radio-distructive*/
+          border-color: var(--gcds-radio-destructive);
         }
         &:after {
-          color: #d3080c; /*--gcds-radio-distructive*/
-          background-color: #d3080c; /*--gcds-radio-distructive*/
+          color: var(--gcds-radio-destructive);
+          background-color: var(--gcds-radio-destructive);
         }
       }
     }
@@ -94,13 +94,13 @@
       &:focus+gcds-label {
         &:before {
           box-shadow: 0 0 0 2px #fff;
-          outline: 3px solid #303fc3;  /*--gcds-radio-focus*/
+          outline: 3px solid var(--gcds-radio-focus);
           outline-offset: 2px;
-          border-color: #303fc3;  /*--gcds-radio-focus*/
+          border-color: var(--gcds-radio-focus);
         }
         &:after {
-          color: #303fc3;  /*--gcds-radio-focus*/
-          background-color: #303fc3;  /*--gcds-radio-focus*/
+          color: var(--gcds-radio-focus);
+          background-color: var(--gcds-radio-focus);
         }
       }
     }
