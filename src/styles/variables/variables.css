@@ -1,9 +1,14 @@
 /**
  * Do not edit directly
- * Generated on Wed, 29 Jun 2022 15:47:20 GMT
+ * Generated on Thu, 07 Jul 2022 18:56:51 GMT
  */
 
 :root {
+  --gcds-brand-default-text: #000000;
+  --gcds-brand-focus: #303fc3;
+  --gcds-brand-disabled-background: #f0f0f0;
+  --gcds-brand-disabled-text: #707070;
+  --gcds-brand-destructive: #d3080c;
   --gcds-color-blue-100: #d4e6f2;
   --gcds-color-blue-200: #aad5f2;
   --gcds-color-blue-300: #4f6592;
@@ -91,6 +96,12 @@
   --gcds-button-shared-disabled-background: #ededed;
   --gcds-button-shared-disabled-border: #bfbfbf;
   --gcds-button-shared-disabled-text: #6b6b6b;
+  --gcds-checkbox-default-text: #000000;
+  --gcds-checkbox-destructive: #d3080c;
+  --gcds-checkbox-disabled-background: #f0f0f0;
+  --gcds-checkbox-disabled-border: #707070;
+  --gcds-checkbox-disabled-text: #707070;
+  --gcds-checkbox-focus: #303fc3;
   --gcds-error-message-background: #f3e9e8;
   --gcds-error-message-border: #d3080c;
   --gcds-error-message-text: #000000;
@@ -105,6 +116,12 @@
   --gcds-input-disabled-text: #707070;
   --gcds-input-focus: #303fc3;
   --gcds-label-destructive-text: #d3080c;
+  --gcds-radio-default-text: #000000;
+  --gcds-radio-destructive: #d3080c;
+  --gcds-radio-disabled-background: #f0f0f0;
+  --gcds-radio-disabled-border: #707070;
+  --gcds-radio-disabled-text: #707070;
+  --gcds-radio-focus: #303fc3;
   --gcds-site-menu-active-background: #595959;
   --gcds-site-menu-active-text: #ffffff;
   --gcds-site-menu-default-background: #ededed;
