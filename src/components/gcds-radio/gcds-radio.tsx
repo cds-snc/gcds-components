@@ -1,4 +1,4 @@
-import { Component, Element, Prop, Host, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Listen, Host, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
 
 @Component({
@@ -12,6 +12,7 @@ export class GcdsRadio {
   @Element() el: HTMLElement;
 
   private lang: string;
+  private shadowElement?: HTMLInputElement;
 
   @Prop({ reflect: true, mutable: true }) radioId!: string;
   @Prop({ reflect: true, mutable: false }) label!: string;
@@ -24,9 +25,28 @@ export class GcdsRadio {
   @Prop({ reflect: true, mutable: true }) hasError: boolean;
   @Prop({ reflect: true, mutable: false }) hint: string;
 
+  /**
+   * Emitted when the radio button is checked
+   */
+  @Event() gcdsRadioChange!: EventEmitter<void>;
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+  }
+
+  private onChange = (name) => {
+    this.gcdsRadioChange.emit(name);
+    this.checked = this.shadowElement.checked;
+  };
+
+  @Listen('gcdsRadioChange', { target: 'document' })
+  gcdsradioChangeEventHandler(event) {
+    if (event.detail == this.name && event.srcElement != this.shadowElement) {
+      if (this.checked) {
+        this.checked = false;
+      }
+    }
   }
 
   render() {
@@ -49,9 +69,11 @@ export class GcdsRadio {
       <Host>
         <div class={`gcds-radio-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
           <input
-            {...attrsInput}
             id={radioId}
             type="radio"
+            {...attrsInput}
+            onChange={() => this.onChange(name)}
+            ref={element => this.shadowElement = element as HTMLInputElement}
           />
           <gcds-label
             label={label}

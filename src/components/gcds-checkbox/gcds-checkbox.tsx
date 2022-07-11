@@ -35,6 +35,10 @@ export class GcdsCheckbox {
     }
   }
 
+  private onChange = () => {
+    this.checked = !this.checked;
+  };
+
   render() {
 
     const { lang, checkboxId, label, name, required, disabled, value, checked, hint, errorMessage, hasError } = this;
@@ -66,9 +70,10 @@ export class GcdsCheckbox {
       <Host>
         <div class={`gcds-checkbox-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
           <input
-            {...attrsInput}
             id={checkboxId}
             type="checkbox"
+            {...attrsInput}
+            onChange={() => this.onChange()}
           />
           <gcds-label
             {...attrsLabel}

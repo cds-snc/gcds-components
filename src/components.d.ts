@@ -726,6 +726,10 @@ declare namespace LocalJSX {
         "hint"?: string;
         "label": string;
         "name": string;
+        /**
+          * Emitted when the radio button is checked
+         */
+        "onGcdsRadioChange"?: (event: CustomEvent<void>) => void;
         "radioId": string;
         "required"?: boolean;
         "value"?: string;
