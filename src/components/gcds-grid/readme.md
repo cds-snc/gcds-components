@@ -24,6 +24,19 @@
 | `placeItems`                 | `place-items`                   | Sets both the align-items + justify-items properties                                                                        | `"center" \| "end" \| "start" \| "stretch"`                                                                                                                                               | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [gcds-verify-banner](../gcds-verify-banner)
+
+### Graph
+```mermaid
+graph TD;
+  gcds-verify-banner --> gcds-grid
+  style gcds-grid fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
