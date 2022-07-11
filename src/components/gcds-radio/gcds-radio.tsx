@@ -98,6 +98,10 @@ export class GcdsRadio {
       attrsInput["aria-describedby"] = `${hintID}`;
     }
 
+    if (hasError) {
+      attrsInput["aria-invalid"] = "true";
+    }
+
     return (
       <Host>
         <div class={`gcds-radio-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
