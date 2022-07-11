@@ -19,13 +19,17 @@
 
 ### Used by
 
+ - [gcds-checkbox](../gcds-checkbox)
  - [gcds-input](../gcds-input)
+ - [gcds-radio](../gcds-radio)
  - [gcds-textarea](../gcds-textarea)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-checkbox --> gcds-label
   gcds-input --> gcds-label
+  gcds-radio --> gcds-label
   gcds-textarea --> gcds-label
   style gcds-label fill:#f9f,stroke:#333,stroke-width:4px
 ```

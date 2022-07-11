@@ -14,15 +14,48 @@ export class GcdsRadio {
   private lang: string;
   private shadowElement?: HTMLInputElement;
 
+  /**
+   * Id attribute for an input element.
+   */
   @Prop({ reflect: true, mutable: true }) radioId!: string;
+
+  /**
+   * Form field label
+   */
   @Prop({ reflect: true, mutable: false }) label!: string;
+
+  /**
+   * Name attribute for an input element.
+   */
   @Prop({ reflect: true, mutable: false }) name!: string;
 
+  /**
+   * Specifies if a form field is required or not.
+   */
   @Prop({ reflect: true, mutable: false }) required: boolean;
+
+  /**
+   * Specifies if an input element is disabled or not.
+   */
   @Prop({ reflect: true, mutable: true }) disabled: boolean;
+
+  /**
+   * Specifies if an input element is checked.
+   */
   @Prop({ reflect: true, mutable: true }) checked: boolean;
+
+  /**
+   * Value for an input element.
+   */
   @Prop({ reflect: true, mutable: false }) value: string;
+
+  /**
+   * Specifies if the input is invalid.
+   */
   @Prop({ reflect: true, mutable: true }) hasError: boolean;
+  /**
+   * Hint displayed below the label.
+   */
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**

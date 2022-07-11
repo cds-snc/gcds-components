@@ -81,15 +81,45 @@ export namespace Components {
         "target": string | undefined;
     }
     interface GcdsCheckbox {
+        /**
+          * Id attribute for an input element.
+         */
         "checkboxId": string;
+        /**
+          * Specifies if an input element is checked.
+         */
         "checked": boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+         */
         "disabled": boolean;
+        /**
+          * Error message for an invalid input element.
+         */
         "errorMessage": string;
+        /**
+          * Specifies if the input is invalid.
+         */
         "hasError": boolean;
+        /**
+          * Hint displayed below the label.
+         */
         "hint": string;
+        /**
+          * Form field label
+         */
         "label": string;
+        /**
+          * Name attribute for an input element.
+         */
         "name": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
         "required": boolean;
+        /**
+          * Value for an input element.
+         */
         "value": string;
     }
     interface GcdsErrorMessage {
@@ -259,14 +289,41 @@ export namespace Components {
         "href": string;
     }
     interface GcdsRadio {
+        /**
+          * Specifies if an input element is checked.
+         */
         "checked": boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+         */
         "disabled": boolean;
+        /**
+          * Specifies if the input is invalid.
+         */
         "hasError": boolean;
+        /**
+          * Hint displayed below the label.
+         */
         "hint": string;
+        /**
+          * Form field label
+         */
         "label": string;
+        /**
+          * Name attribute for an input element.
+         */
         "name": string;
+        /**
+          * Id attribute for an input element.
+         */
         "radioId": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
         "required": boolean;
+        /**
+          * Value for an input element.
+         */
         "value": string;
     }
     interface GcdsSignature {
@@ -530,15 +587,45 @@ declare namespace LocalJSX {
         "target"?: string | undefined;
     }
     interface GcdsCheckbox {
+        /**
+          * Id attribute for an input element.
+         */
         "checkboxId": string;
+        /**
+          * Specifies if an input element is checked.
+         */
         "checked"?: boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+         */
         "disabled"?: boolean;
+        /**
+          * Error message for an invalid input element.
+         */
         "errorMessage"?: string;
+        /**
+          * Specifies if the input is invalid.
+         */
         "hasError"?: boolean;
+        /**
+          * Hint displayed below the label.
+         */
         "hint"?: string;
+        /**
+          * Form field label
+         */
         "label": string;
+        /**
+          * Name attribute for an input element.
+         */
         "name": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
         "required"?: boolean;
+        /**
+          * Value for an input element.
+         */
         "value"?: string;
     }
     interface GcdsErrorMessage {
@@ -720,18 +807,45 @@ declare namespace LocalJSX {
         "href": string;
     }
     interface GcdsRadio {
+        /**
+          * Specifies if an input element is checked.
+         */
         "checked"?: boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+         */
         "disabled"?: boolean;
+        /**
+          * Specifies if the input is invalid.
+         */
         "hasError"?: boolean;
+        /**
+          * Hint displayed below the label.
+         */
         "hint"?: string;
+        /**
+          * Form field label
+         */
         "label": string;
+        /**
+          * Name attribute for an input element.
+         */
         "name": string;
         /**
           * Emitted when the radio button is checked
          */
         "onGcdsRadioChange"?: (event: CustomEvent<void>) => void;
+        /**
+          * Id attribute for an input element.
+         */
         "radioId": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
         "required"?: boolean;
+        /**
+          * Value for an input element.
+         */
         "value"?: string;
     }
     interface GcdsSignature {

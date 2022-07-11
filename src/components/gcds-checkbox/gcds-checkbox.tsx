@@ -13,17 +13,50 @@ export class GcdsCheckbox {
 
   private lang: string;
 
+  /**
+   * Id attribute for an input element.
+   */
   @Prop({ reflect: true, mutable: true }) checkboxId!: string;
+  /**
+   * Form field label
+   */
   @Prop({ reflect: true, mutable: false }) label!: string;
+
+  /**
+   * Name attribute for an input element.
+   */
   @Prop({ reflect: true, mutable: false }) name!: string;
 
+  /**
+   * Specifies if a form field is required or not.
+   */
   @Prop({ reflect: true, mutable: false }) required: boolean;
+  /**
+   * Specifies if an input element is disabled or not.
+   */
   @Prop({ reflect: true, mutable: true }) disabled: boolean;
 
+  /**
+   * Value for an input element.
+   */
   @Prop({ reflect: true, mutable: false }) value: string;
+
+  /**
+   * Specifies if an input element is checked.
+   */
   @Prop({ reflect: true, mutable: true }) checked: boolean;
+
+  /**
+   * Specifies if the input is invalid.
+   */
   @Prop({ reflect: true, mutable: true }) hasError: boolean;
+  /**
+   * Error message for an invalid input element.
+   */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
+  /**
+   * Hint displayed below the label.
+   */
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   async componentWillLoad() {
