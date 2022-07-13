@@ -12,8 +12,8 @@
     transition: color ease-in-out 0.15s;
 
     position: relative;
-    margin-bottom: 20px;
-    margin-top: 28px;
+    margin-bottom: var(--gcds-spacing-400);
+    margin-top: 1.75rem;
 
     &:focus-within {
       color: var(--gcds-checkbox-focus);
@@ -22,7 +22,7 @@
     &.gcds-disabled {
       color: var(--gcds-checkbox-disabled-text);
 
-      input[type=checkbox]+gcds-label {
+      input[type=checkbox] + gcds-label {
         color: var(--gcds-checkbox-disabled-text);
         &:before {
           border-color: var(--gcds-checkbox-disabled-border);
@@ -38,7 +38,7 @@
     &.gcds-error:not(:focus-within) {
       color: var(--gcds-checkbox-destructive);
 
-      input[type=checkbox]+gcds-label {
+      input[type=checkbox] + gcds-label {
         &:before {
           border-color: var(--gcds-checkbox-destructive);
         }
@@ -49,53 +49,52 @@
     }
 
     input[type=checkbox] {
-      height: 40px;
+      height: var(--gcds-spacing-500);
       left: 0;
       opacity: 0;
       position: absolute;
       top: 0;
-      width: 40px;
+      width: var(--gcds-spacing-500);
 
-      &:checked+gcds-label:after {
+      &:checked + gcds-label:after {
         opacity: 1;
       }
 
-      &+gcds-label {
-        width: fit-content;
-        &:before {
-          border: 2px solid var(--gcds-color-grayscale-1000);
-          content: "";
-          height: 40px;
-          left: 0;
-          top: -8px;
-          position: absolute;
-          width: 40px;
+      &+ gcds-label {
+        width: fit-content; 
+        &:before, &:after {
           cursor: pointer;
+          position: absolute;
+          content: "";
+        }
+        &:before {
+          border: 0.125rem solid var(--gcds-color-grayscale-1000);
+          height: var(--gcds-spacing-500);
+          width: var(--gcds-spacing-500);
+          left: 0;
+          top: -0.5rem;
           border-radius: var(--gcds-spacing-50);
         }
         &:after {
-          content: "";
-          border: 5px solid;
+          border: 0.3125rem solid;
           border-left: 0;
           border-top: 0;
-          height: 20px;
+          height: var(--gcds-spacing-400);
+          width: var(--gcds-spacing-300);
           color: var(--gcds-color-grayscale-1000);
-          left: 13px;
+          left: 1rem;
           opacity: 0;
-          position: absolute;
-          top: -2px;
+          top: -0.125rem;
           transform: rotate(40deg);
           transition: opacity .2s ease-in-out;
-          width: 12px;
-          cursor: pointer;
         }
       }
 
-      &:focus+gcds-label {
+      &:focus + gcds-label {
         &:before {
-          box-shadow: 0 0 0 2px #fff;
-          outline: 3px solid var(--gcds-checkbox-focus);
-          outline-offset: 2px;
+          box-shadow: 0 0 0 0.125rem var(--gcds-color-grayscale-0);
+          outline: 0.1875rem solid var(--gcds-checkbox-focus);
+          outline-offset: 0.125rem;
           border-color: var(--gcds-checkbox-focus);
         }
         &:after {
@@ -107,11 +106,11 @@
     gcds-label,
     gcds-hint {
       display: block;
-      padding: 0 0 0 64px;
+      padding: 0 0 0 var(--gcds-spacing-600);
     }
     gcds-error-message {
       display:inline-block;
-      padding: 0 0 0 64px;
+      padding: 0 0 0 var(--gcds-spacing-600);
     }
 
   }
