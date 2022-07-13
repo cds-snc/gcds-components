@@ -164,7 +164,7 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
           parentItem = child;
         }
       }
-      menuItems = menuItems.concat(parentItem);
+      //menuItems = menuItems.concat(parentItem); recon
       menuItems = menuItems.concat(submenuTrigger);
     }
   });
@@ -238,13 +238,13 @@ function h2MenuOpenSubmenuHandler(trigger) {
     if (child.hasAttribute("data-h2-menulist")) {
       submenu = submenu.concat(child);
     }
-    if (child.getAttribute("role") == "menuitem") {
-      menuItem = child;
-    }
+    // if (child.getAttribute("role") == "menuitem") {
+    //   menuItem = child;
+    // } recon
   }
   // Open the submenu.
   triggerParent.classList.add("h2-active");
-  menuItem.setAttribute("aria-expanded", true);
+  //menuItem.setAttribute("aria-expanded", true); recon
   submenuTrigger.setAttribute("aria-expanded", true);
   // Remove all event listeners.
   var menuWrapper = trigger.closest("[data-h2-menu]").parentNode.host;
@@ -308,9 +308,9 @@ function h2MenuCloseSubmenuHandler(trigger) {
     if (child.hasAttribute("data-h2-menulist")) {
       submenu = child;
     }
-    if (child.getAttribute("role") == "menuitem") {
-      menuItem = child;
-    }
+    // if (child.getAttribute("role") == "menuitem") {
+    //   menuItem = child;
+    // } recon
   }
   // Remove all event listeners.
   var menuWrapper = trigger.closest("[data-h2-menu]").parentNode.host;
@@ -373,7 +373,7 @@ function h2MenuCloseSubmenuHandler(trigger) {
   });
   // Close the active submenu.
   triggerParent.classList.remove("h2-active");
-  menuItem.setAttribute("aria-expanded", false);
+  //menuItem.setAttribute("aria-expanded", false); recon
   submenuTrigger.setAttribute("aria-expanded", false);
 }
 
@@ -638,7 +638,6 @@ function h2MenuEscapeAndLeftArrowEvent(e) {
         }
       }
       else {
-        var focusItem = null;
         // Handle close logic differently when on main items
         if(triggerParent.classList.contains("h2-active")) {
 
@@ -647,25 +646,21 @@ function h2MenuEscapeAndLeftArrowEvent(e) {
             var child = triggerParent.children[i];
             if (child.hasAttribute("data-h2-submenu-trigger")) {
               submenuTrigger = child;
-            } else if (child.getAttribute("role") == "menuitem") {
-              focusItem = child;
             }
           }
           // Close the submenu and focus the parent trigger.
           h2MenuCloseSubmenuHandler(submenuTrigger);
-          focusItem.focus();
+          submenuTrigger.focus();
         } else {
           for (var i = 0; i < parentMenuWrapperChildren.length; i++) {
             var child = parentMenuWrapperChildren[i];
             if (child.hasAttribute("data-h2-submenu-trigger")) {
               submenuTrigger = child;
-            } else if (child.getAttribute("role") == "menuitem") {
-              focusItem = child;
             }
           }
           // Close the submenu and focus the parent trigger.
           h2MenuCloseSubmenuHandler(submenuTrigger);
-          focusItem.focus();
+          submenuTrigger.focus();
         }
       }
     }

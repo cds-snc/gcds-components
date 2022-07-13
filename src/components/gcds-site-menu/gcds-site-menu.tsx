@@ -7,7 +7,7 @@ import {
   h2MenuEnableSubmenuTriggers,
   h2MenuAddMobileMenuTrigger,
   h2MenuAddPageAnchor
-} from "./utils/module.min";
+} from "./utils/module"; // REMEMBER TO SET THIS BACK
 
 import I18N from './i18n/i18n';
 
@@ -19,6 +19,7 @@ import I18N from './i18n/i18n';
 export class GcdsSiteMenu {
 
   private lang: string;
+  private submenu = 0;
 
   @Element() el: HTMLElement;
 
@@ -72,15 +73,35 @@ export class GcdsSiteMenu {
    * Method to apply sub menu trigger button
    * @param el - <a> tag
    */
-  private appendSubMenuButton(el) {
+  private configureSubMenuTrigger(el) {
+
+    // Add additional attributes to menuitem element
+    var submenuCount = this.submenu++;
+    if (el.nodeName == "A") {
+      var span = document.createElement("span");
+      this.setAttributes(span, { "id":`submenu-label-${submenuCount}`, "data-trigger-label":""})
+      span.innerText = el.innerText.trim();
+    } else {
+      el.removeAttribute("role");
+      el.removeAttribute("aria-expanded");
+      el.removeAttribute("aria-haspopup");
+      this.setAttributes(el, { "id":`submenu-label-${submenuCount}`, "data-trigger-label":""})
+    }
+    
+
     // Create button element
     var button = document.createElement("button");
-    this.setAttributes(button, {"aria-expanded": "false", "data-h2-submenu-trigger": ""});
+    this.setAttributes(button, {
+      "aria-expanded": "false",
+      "data-h2-submenu-trigger": "",
+      "aria-haspopup":"true",
+      "aria-labelledby": `submenu-label-${submenuCount}`
+    });
 
     // Create the accessibility text span
     var a11yText = document.createElement("span");
     //a11yText.innerHTML = `Open or close ${el.textContent}'s submenu.`;
-    a11yText.innerHTML = I18N[this.lang].submenuButtonText.replace('{$t}', el.textContent);
+    a11yText.innerHTML = I18N[this.lang].submenuButtonText.replace('{$t}', el.textContent.trim());
     a11yText.setAttribute("data-h2-submenu-trigger-accessibility-text", "");
 
     // Create the add icon span
@@ -104,6 +125,10 @@ export class GcdsSiteMenu {
     // Put it all together and append button to page
     button.append(a11yText, addIcon, removeIcon);
     el.parentNode.append(button);
+    if (span) {
+      el.parentNode.prepend(span);
+      el.remove();
+    }
   }
 
   private async configureMenu() {
@@ -121,10 +146,12 @@ export class GcdsSiteMenu {
     for (var i = 0; i < mainMenus.length; i++) {
       // Apply attributes at the highest level
       this.setAttributes(mainMenus[i], {"data-h2-menulist": "", "role": "menu"});
+
       // Apply attributes to any submenu ul
       mainMenus[i].querySelectorAll("ul").forEach((list) => {
         this.setAttributes(list, {"data-h2-menulist": "", "role": "menu"});
       });
+
       // Apply attributes to all li
       mainMenus[i].querySelectorAll("li").forEach((listitem) => {
         listitem.setAttribute("role", "presentation");
@@ -132,23 +159,19 @@ export class GcdsSiteMenu {
           if(listitem.children[x].nodeName == "A") {
             this.setAttributes(listitem.children[x], {"role": "menuitem"})
           } else if (listitem.children[x].nodeName != "BUTTON" && listitem.children[x].nodeName != "UL" ) {
-            this.setAttributes(listitem.children[x], {"role": "menuitem", "tabindex": "-1" });
+            this.setAttributes(listitem.children[x], {"role": "menuitem"});
           }
         }
       });
+
       // Loop through each menuitem tag
       mainMenus[i].querySelectorAll("[role=menuitem]").forEach((menuitem) => {
-        // Apply role attribute
-        //menuitem.setAttribute("role", "menuitem");
         // Check if a tag has siblings
         if (menuitem.parentNode.children.length > 1) {
           // Apply attributes for sub menus
           this.setAttributes(menuitem, {"aria-expanded": "false", "aria-haspopup": "true"});
           // Append sub menu button trigger
-          this.appendSubMenuButton(menuitem);
-          if (menuitem.closest("ul").parentNode.nodeName == "li") {
-            menuitem.setAttribute("tabindex", "-1");
-          }
+          this.configureSubMenuTrigger(menuitem);
         }
       });
     }
@@ -231,6 +254,13 @@ export class GcdsSiteMenu {
     h2MenuAddPageAnchor(this.el);
   }
 
+  private get hasOptionalLeft() {
+    return !!this.el.querySelector('[slot="left"]');
+  }
+  private get hasOptionalRight() {
+    return !!this.el.querySelector('[slot="left"]');
+  }
+
   render() {
     const sticky = this.menuPosition == 'sticky' ? true : false;
     const mobileMenutask = this.menuMobileLayout == 'drawer' ?
@@ -259,13 +289,21 @@ export class GcdsSiteMenu {
           data-h2-menu
         >
           <div data-h2-menu-container>
-            <div data-optional-left>
-              <slot name="left" />
-            </div>
+            {this.hasOptionalLeft ? 
+              <div data-optional-left>
+                <slot name="left" />
+              </div>
+            : 
+              null
+            }
             <slot />
-            <div data-optional-right>
-              <slot name="right" />
-            </div>
+            {this.hasOptionalRight ?
+              <div data-optional-right>
+                <slot name="right" />
+              </div>
+            :
+              null
+            }
           </div>
         </nav>
         <slot name="main" />
