@@ -12,6 +12,10 @@ export namespace Components {
          */
         "buttonRole": 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
         /**
+          * Set the button size
+         */
+        "buttonSize": 'regular' | 'small';
+        /**
           * Set the style variant
          */
         "buttonStyle": 'solid' | 'outline' | 'text-only';
@@ -419,6 +423,10 @@ declare namespace LocalJSX {
           * Set the main style
          */
         "buttonRole"?: 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        /**
+          * Set the button size
+         */
+        "buttonSize"?: 'regular' | 'small';
         /**
           * Set the style variant
          */

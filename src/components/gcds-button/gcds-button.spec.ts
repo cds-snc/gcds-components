@@ -10,7 +10,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button>
         <mock:shadow-root>
-          <button class="primary solid" type="button">
+          <button class="primary solid regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -33,7 +33,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-type="button">
         <mock:shadow-root>
-          <button class="primary solid" type="button">
+          <button class="primary solid regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -52,7 +52,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-type="reset">
         <mock:shadow-root>
-          <button class="primary solid" type="reset">
+          <button class="primary solid regular" type="reset">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -71,7 +71,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-type="submit">
         <mock:shadow-root>
-          <button class="primary solid" type="submit">
+          <button class="primary solid regular" type="submit">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -90,7 +90,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button href="#" button-type="link">
         <mock:shadow-root>
-          <a class="primary solid" href="#">
+          <a class="primary solid regular" href="#">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -113,7 +113,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="primary">
         <mock:shadow-root>
-          <button class="primary solid" type="button">
+          <button class="primary solid regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -132,7 +132,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="secondary">
         <mock:shadow-root>
-          <button class="secondary solid" type="button">
+          <button class="secondary solid regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -151,7 +151,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="destructive">
         <mock:shadow-root>
-          <button class="destructive solid" type="button">
+          <button class="destructive solid regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -174,7 +174,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-style="solid">
         <mock:shadow-root>
-          <button class="primary solid" type="button">
+          <button class="primary solid regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -193,7 +193,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-style="outline">
         <mock:shadow-root>
-          <button class="primary outline" type="button">
+          <button class="primary outline regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -212,7 +212,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-style="text-only">
         <mock:shadow-root>
-          <button class="primary text-only" type="button">
+          <button class="primary text-only regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
