@@ -130,9 +130,16 @@ export class GcdsTextarea {
       rows,
     };
 
+    if (hint || errorMessage || textareaCharacterCount) {
+      let hintID = hint ? `hint-${textareaId}` : "";
+      let errorID = errorMessage ? `error-message-${textareaId}` : "";
+      let countID = textareaCharacterCount ? `count-${textareaId}` : "";
+      attrsTextarea["aria-describedby"] = `${hintID} ${errorID} ${countID}`;
+    }
+
     return (
       <Host>
-        <fieldset class={`${disabled ? 'disabled' : ''} ${errorMessage ? 'error' : ''}`}>
+        <div class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${errorMessage ? 'gcds-error' : ''}`}>
           <gcds-label
             {...attrsLabel}
             hide-label={hideLabel}
@@ -148,14 +155,13 @@ export class GcdsTextarea {
 
           <textarea
             {...attrsTextarea}
-            class={errorMessage ? 'error' : null}
+            class={errorMessage ? 'gcds-error' : null}
             id={textareaId}
             name={textareaId}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
             onInput={(e) => this.handleChange(e)}
             aria-labelledby={`label-for-${textareaId}`}
-            aria-describedby={`${hint ? `hint-${textareaId}` : ''} ${errorMessage ? `error-message-${textareaId}` : ''} ${textareaCharacterCount ? `count-${textareaId}` : ''}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={textareaCharacterCount ? textareaCharacterCount : null}
             style={cols ? style : null}
@@ -172,7 +178,7 @@ export class GcdsTextarea {
               }
             </p>
           : null}
-        </fieldset>
+        </div>
       </Host>
     );
   }

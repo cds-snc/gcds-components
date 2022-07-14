@@ -127,9 +127,15 @@ export class GcdsInput {
       required,
     }
 
+    if (hint || errorMessage) {
+      let hintID = hint ? `hint-${inputId}` : "";
+      let errorID = errorMessage ? `error-message-${inputId}` : "";
+      attrsInput["aria-describedby"] = `${hintID} ${errorID}`;
+    }
+
     return (
       <Host>
-        <fieldset class={`${disabled ? 'disabled' : ''} ${errorMessage ? 'error' : ''}`}>
+        <div class={`gcds-input-wrapper ${disabled ? 'gcds-disabled' : ''} ${errorMessage ? 'gcds-error' : ''}`}>
           <gcds-label
             {...attrsLabel}
             hide-label={hideLabel}
@@ -145,19 +151,18 @@ export class GcdsInput {
 
           <input
             {...attrsInput}
-            class={errorMessage ? 'error' : null}
+            class={errorMessage ? 'gcds-error' : null}
             id={inputId}
             name={inputId}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
             onInput={(e) => this.handleChange(e)}
             aria-labelledby={`label-for-${inputId}`}
-            aria-describedby={`${hint ? `hint-${inputId}` : ''} ${errorMessage ? `error-message-${inputId}` : ''}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={size}
             style={size ? style : null}
           />
-        </fieldset>
+        </div>
       </Host>
     );
   }

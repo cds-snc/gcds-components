@@ -9,17 +9,16 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-renders">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-renders" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-renders"
             name="textarea-renders"
             aria-labelledby="label-for-textarea-renders"
-            aria-describedby="  "
             aria-invalid="false"
             rows="5"
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -34,18 +33,17 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-disabled" disabled="">
-        <fieldset class="disabled">
+        <div class="gcds-textarea-wrapper gcds-disabled">
           <gcds-label label-for="textarea-disabled" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-disabled"
             name="textarea-disabled"
             aria-labelledby="label-for-textarea-disabled"
-            aria-describedby="  "
             aria-invalid="false"
             rows="5"
             disabled=""
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -60,19 +58,19 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-with-error" error-message="This is an error message.">
-        <fieldset class="error">
+        <div class="gcds-textarea-wrapper gcds-error">
           <gcds-label label-for="textarea-with-error" label="Label" lang="en"></gcds-label>
           <gcds-error-message message-id="textarea-with-error" message="This is an error message."></gcds-error-message>
           <textarea
             id="textarea-with-error"
-            class="error"
+            class="gcds-error"
             name="textarea-with-error"
             aria-labelledby="label-for-textarea-with-error"
             aria-describedby=" error-message-textarea-with-error "
             aria-invalid="true"
             rows="5"
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -87,17 +85,16 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-label-hidden" hide-label>
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-label-hidden" label="Label" hide-label lang="en"></gcds-label>
           <textarea
             id="textarea-label-hidden"
             name="textarea-label-hidden"
             aria-labelledby="label-for-textarea-label-hidden"
-            aria-describedby="  "
             aria-invalid="false"
             rows="5"
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -112,17 +109,16 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-renders-label">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-renders-label" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-renders-label"
             name="textarea-renders-label"
             aria-labelledby="label-for-textarea-renders-label"
-            aria-describedby="  "
             aria-invalid="false"
             rows="5"
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -137,18 +133,17 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-required" required>
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-required" label="Label" required lang="en"></gcds-label>
           <textarea
             id="textarea-required"
             name="textarea-required"
             aria-labelledby="label-for-textarea-required"
-            aria-describedby="  "
             aria-invalid="false"
             rows="5"
             required
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -163,7 +158,7 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="character-count-no-value" textarea-character-count="10">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="character-count-no-value" label="Label" lang="en"></gcds-label>
           <textarea
             id="character-count-no-value"
@@ -175,7 +170,7 @@ describe('gcds-textarea', () => {
             maxlength="10"
           ></textarea>
           <p id="count-character-count-no-value" aria-live="polite">10 characters allowed</p>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -187,7 +182,7 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="character-count-value" value="Value Test" textarea-character-count="22">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="character-count-value" label="Label" lang="en"></gcds-label>
           <textarea
             id="character-count-value"
@@ -199,7 +194,7 @@ describe('gcds-textarea', () => {
             maxlength="22"
           >Value Test</textarea>
           <p id="count-character-count-value" aria-live="polite">12 characters left</p>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -214,18 +209,17 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-cols" cols="10">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-cols" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-cols"
             name="textarea-cols"
             aria-labelledby="label-for-textarea-cols"
-            aria-describedby="  "
             aria-invalid="false"
             rows="5"
             style="max-width: 15ch;"
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -240,7 +234,7 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-with-hint" hint="This is a textarea hint.">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-with-hint" label="Label" lang="en"></gcds-label>
           <gcds-hint hint="This is a textarea hint." hint-id="textarea-with-hint"></gcds-hint>
           <textarea
@@ -251,7 +245,7 @@ describe('gcds-textarea', () => {
             aria-invalid="false"
             rows="5"
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -266,17 +260,16 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-renders-id">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-renders-id" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-renders-id"
             name="textarea-renders-id"
             aria-labelledby="label-for-textarea-renders-id"
-            aria-describedby="  "
             aria-invalid="false"
             rows="5"
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -291,17 +284,16 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-rows" rows="2">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-rows" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-rows"
             name="textarea-rows"
             aria-labelledby="label-for-textarea-rows"
-            aria-describedby="  "
             aria-invalid="false"
             rows="2"
           ></textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
@@ -316,17 +308,16 @@ describe('gcds-textarea', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-textarea label="Label" textarea-id="textarea-with-value" value="Textarea value">
-        <fieldset>
+        <div class="gcds-textarea-wrapper">
           <gcds-label label-for="textarea-with-value" label="Label" lang="en"></gcds-label>
           <textarea
             id="textarea-with-value"
             name="textarea-with-value"
             aria-labelledby="label-for-textarea-with-value"
-            aria-describedby="  "
             aria-invalid="false"
             rows="5"
           >Textarea value</textarea>
-        </fieldset>
+        </div>
       </gcds-textarea>
     `);
   });
