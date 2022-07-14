@@ -1,0 +1,113 @@
+:host .banner {
+  /* Is Fixed */
+  &.is-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  /* Max content width */
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xs {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .container-fluid {
+    max-width: var(--gcds-container-500);
+    padding-inline: var(--gcds-spacing-300);
+  }
+
+  .container-lg {
+    max-width: var(--gcds-container-400);
+  }
+
+  .container-md {
+    max-width: var(--gcds-container-300);
+  }
+
+  .container-sm {
+    max-width: var(--gcds-container-200);
+  }
+
+  .container-xs {
+    max-width: var(--gcds-container-100);
+  }
+
+  /* Role */
+  &.role-destructive {
+    background-color: var(--gcds-banner-destructive-background);
+    color: var(--gcds-banner-destructive-text);
+  }
+
+  &.role-primary {
+    background-color: var(--gcds-banner-primary-background);
+    color: var(--gcds-banner-primary-text);
+  }
+
+  &.role-secondary {
+    background-color: var(--gcds-banner-secondary-background);
+  }
+
+  &.role-warning {
+    background-color: var(--gcds-banner-warning-background);
+  }
+
+  /* General Styling */
+  .banner-content {
+    display: flex;
+    padding-block: var(--gcds-spacing-200);
+  }
+
+  .banner-icon {
+    display: flex;
+    margin: var(--gcds-spacing-200) 0 0;
+
+    &.icon-left {
+      margin-right: var(--gcds-spacing-300);
+    }
+
+    &.icon-right {
+      margin-left: var(--gcds-spacing-300);
+    }
+
+    ::slotted(img),
+    ::slotted(svg) {
+      max-height: var(--gcds-spacing-300);
+    }
+  }
+
+  .banner-details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-size: var( --gcds-font-sizes-caption);
+
+    ::slotted(a),
+    ::slotted(gcds-button) {
+      flex: 0 0 auto;
+    }
+
+    p {
+      line-height: var( --gcds-line-heights-paragraph);
+      margin: 0 var(--gcds-spacing-200) 0 0 !important;
+    }
+
+    ::slotted(span),
+    ::slotted(small),
+    ::slotted(a) {
+      font-size: 80% !important;
+    }
+
+    ::slotted(a) {
+      color: inherit;
+    }
+
+    ::slotted(gcds-button) {
+      transform: scale(90%);
+    }
+  }
+}
