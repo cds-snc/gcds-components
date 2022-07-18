@@ -5,6 +5,7 @@
   line-height: var(--gcds-line-heights-paragraph);
   background-color: var(--gcds-site-menu-default-background);
   color: var(--gcds-site-menu-default-text);
+  z-index: 100;
 
   * {
     font-family: inherit;
@@ -441,7 +442,18 @@
 }
 
 @media screen and (max-width: 76.625em) {
-  :host([menu-desktop-layout*='topbar']) [data-h2-menu-container] {
+  :host([menu-desktop-layout*='topbar']) [data-h2-menu-container]:not([data-mobile]) {
     max-width: 90%;
   }
+}
+
+:host [data-sidebar-backdrop] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
+  background-color: #f0f0f0;
+  z-index: 99;
 }

@@ -35,6 +35,10 @@ function h2MenuCloseOpenSubmenusHandler(menuWrapper) {
   submenuLinks.forEach(function(link) {
     link.setAttribute("aria-expanded", false);
   });
+
+  if (menuWrapper.getAttribute("menu-desktop-layout") == "sidebar" && !menuWrapper.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
+    menuWrapper.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+  }
 }
 
 // Close all submenus and re-enable the main menu.
@@ -107,6 +111,8 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
   var mobileMenuTrigger = null;
   // Set an empty array for the remaining menu items.
   var menuItems = [];
+  // set an empty variable for sidebar back button
+  var sidebarbackButton = null;
 
   menuLists.forEach(function(list) {
     // Check to see if the parentNode is the menu container AND that the data-h2-menu element is mobile activated. If it is, set the activated variable to true, and add the mobile trigger element.
@@ -144,6 +150,9 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
         if (child.hasAttribute("data-h2-submenu-trigger")) {
           menuItems = menuItems.concat(child);
         }
+        if (child.hasAttribute("data-back-button") && !child.closest("[data-h2-menu-container]").hasAttribute("data-mobile")) {
+          sidebarbackButton = menuItems.concat(child);
+        }
       }
     });
   });
@@ -169,6 +178,10 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
     }
   });
 
+  // Add back button to last in the list
+  if (sidebarbackButton) {
+    menuItems = menuItems.concat(sidebarbackButton);
+  }
   // Return the menu items to the function.
   return menuItems;
 }
@@ -287,6 +300,9 @@ function h2MenuOpenSubmenuHandler(trigger) {
           parentMenuChildren[i].querySelector("[role='menuitem']").setAttribute("aria-expanded", "false");
         }
     }
+
+    // Show backdrop
+    hostElement.shadowRoot.querySelector("[data-sidebar-backdrop]").removeAttribute("hidden");
   }
 }
 
@@ -375,6 +391,92 @@ function h2MenuCloseSubmenuHandler(trigger) {
   triggerParent.classList.remove("h2-active");
   //menuItem.setAttribute("aria-expanded", false); recon
   submenuTrigger.setAttribute("aria-expanded", false);
+
+  var hostElement = triggerParent.closest("[data-h2-menu]").parentNode.host;
+  if (hostElement.getAttribute("menu-desktop-layout") == "sidebar" && triggerParent.parentNode.parentNode.hasAttribute("data-h2-menu-container") && !triggerParent.parentNode.parentNode.hasAttribute("data-mobile")) {
+    triggerParent.closest("[data-h2-menu]").parentNode.host.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+  }
+}
+
+// Close script.
+function menuBackCloseSubmenuHandler(trigger) {
+  // Figure out which element is being used as the trigger and set the values appropriately to open the submenu.
+  var submenuTrigger = "";
+  var submenu = "";
+  // Get the trigger's parent and siblings.
+  var triggerParent = trigger.closest("[data-h2-menulist").closest("li");
+  var triggerSiblings = triggerParent.children;
+  // Loop through the trigger's siblings to find the menuitem and the submenu trigger.
+  for (var i = 0; i < triggerSiblings.length; i++) {
+    var child = triggerSiblings[i];
+    if (child.hasAttribute("data-h2-submenu-trigger")) {
+      submenuTrigger = child;
+    }
+    if (child.hasAttribute("data-h2-menulist")) {
+      submenu = child;
+    }
+  }
+  // Remove all event listeners.
+  var menuWrapper = trigger.closest("[data-h2-menu]").parentNode.host;
+  h2MenuRemoveEventsHandler(menuWrapper);
+  // Find the parent menulist and check to see if it is nested inside of the menu container. We need to make sure that if it is, we account for the possibility of a sibling menulist item.
+  var parentMenuItems = [];
+  var parentMenu = triggerParent.closest("[data-h2-menulist]");
+  var parentMenuWrapper = parentMenu.parentNode;
+
+  var parentMenuArray = [];
+  parentMenuArray = parentMenuArray.concat(parentMenu);
+  parentMenuItems = h2MenuGetTargetMenuItemsHandler(parentMenuArray);
+  // Check to see if the parentMenuWrapper has a submenu trigger as its child, and if it does, add the trigger to the parentMenuItems.
+  var menuChildren = parentMenuWrapper.children;
+  var parentTrigger = "";
+  var triggerPresence = false;
+  for (var i = 0; i < menuChildren.length; i++) {
+    var child = menuChildren[i];
+    if (child.hasAttribute("data-h2-submenu-trigger")) {
+      triggerPresence = true;
+      parentTrigger = child;
+    }
+  }
+  if (triggerPresence == true) {
+    parentMenuItems = parentMenuItems.concat(parentTrigger);
+  }
+  
+  // Clean and add event listeners.
+  parentMenuItems.forEach(function(item) {
+    item.removeEventListener("keydown", h2MenuRightArrowEvent);
+    item.removeEventListener("keydown", h2MenuUpDownArrowEvent);
+    item.removeEventListener("keydown", h2MenuEscapeAndLeftArrowEvent);
+    item.addEventListener("keydown", h2MenuRightArrowEvent);
+    item.addEventListener("keydown", h2MenuUpDownArrowEvent);
+    item.addEventListener("keydown", h2MenuEscapeAndLeftArrowEvent);
+  });
+  // Close all nested submenus.
+  var nestedSubmenus = triggerParent.querySelectorAll("[data-h2-menulist] li");
+  nestedSubmenus.forEach(function(nestedSubmenu) {
+    nestedSubmenu.classList.remove("h2-active");
+  });
+  var nestedMenuItems = triggerParent.querySelectorAll("[role='menuitem']");
+  nestedMenuItems.forEach(function(nestedMenuItem) {
+    nestedMenuItem.setAttribute("aria-expanded", false);
+  });
+  var nestedSubmenuTriggers = triggerParent.querySelectorAll("[data-h2-submenu-trigger]");
+  nestedSubmenuTriggers.forEach(function(nestedSubmenuTrigger) {
+    nestedSubmenuTrigger.setAttribute("aria-expanded", false);
+  });
+  // Close the active submenu.
+  triggerParent.classList.remove("h2-active");
+
+  // Focus on parent submenu trigger
+  for (var i = 0; i < triggerSiblings.length; i++) {
+    var child = triggerSiblings[i];
+    if (child.hasAttribute("data-h2-submenu-trigger")) {
+      child.focus();
+    }
+  }
+  if (triggerParent.parentNode.parentNode.hasAttribute("data-h2-menu-container")) {
+    triggerParent.closest("[data-h2-menu]").parentNode.host.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+  }
 }
 
 // ===========================================================================================
@@ -382,12 +484,16 @@ function h2MenuCloseSubmenuHandler(trigger) {
 // Decision tree on whether to open or close a submenu on click.
 function h2MenuToggleSubmenuEvent(e) {
   var trigger = e.currentTarget;
-  // Check if the parent <li> is active or not.
-  var triggerParent = trigger.closest("li");
-  if (triggerParent.classList.contains("h2-active")) {
-    h2MenuCloseSubmenuHandler(trigger);
+  if (!trigger.hasAttribute("data-back-button")) {
+    // Check if the parent <li> is active or not.
+    var triggerParent = trigger.closest("li");
+    if (triggerParent.classList.contains("h2-active")) {
+      h2MenuCloseSubmenuHandler(trigger);
+    } else {
+      h2MenuOpenSubmenuHandler(trigger);
+    }
   } else {
-    h2MenuOpenSubmenuHandler(trigger);
+    menuBackCloseSubmenuHandler(trigger);
   }
 }
 
@@ -530,7 +636,7 @@ function h2MenuCloseMenuOnAnchorClickEvent(e) {
     // Check to see if the link's href is a page anchor.
     if (destination.match("^#")) {
       var menuType = "";
-      var menuAttribute = menuWrapper.getAttribute("desktop-task");
+      var menuAttribute = menuWrapper.getAttribute("menu-desktop-layout");
       if (menuAttribute.includes("topbar")) {
         menuType = "top";
       } else if (menuAttribute.includes("sidebar")) {
@@ -544,28 +650,8 @@ function h2MenuCloseMenuOnAnchorClickEvent(e) {
       } else if (menuType == "side") {
         // Remove event listeners from the current menu.
         h2MenuRemoveEventsHandler(menuWrapper);
-        // Find the main menu. Remember that there can in fact be two menus nested in the container.
-        var mainMenus = [];
-        var menuContainer = menu.querySelector("[data-h2-menu-container]");
-        var menuChildren = menuContainer.children;
-        for (var i = 0; i < menuChildren.length; i++) {
-          var child = menuChildren[i];
-          if (child.hasAttribute("data-h2-menulist")) {
-            mainMenus = mainMenus.concat(child);
-          }
-        }
-        // Set the up/down listeners on the main menu items.
-        var mainMenuItems = h2MenuGetTargetMenuItemsHandler(mainMenus);
-        mainMenuItems.forEach(function(item) {
-          item.removeEventListener("keydown", h2MenuUpDownArrowEvent);
-          item.addEventListener("keydown", h2MenuUpDownArrowEvent);
-        });
-        // Set the right listener on the main menu items that have submenus.
-        var mainMenuItemsWithSubmenus = h2MenuGetMenuListItemsWithSubmenusHandler(mainMenus);
-        mainMenuItemsWithSubmenus.forEach(function(item) {
-          item.removeEventListener("keydown", h2MenuRightArrowEvent);
-          item.addEventListener("keydown", h2MenuRightArrowEvent);
-        });
+        // Close all submenus and reset aria values.
+        h2MenuCloseOpenSubmenusHandler(menuWrapper);
       }
     }
   }
@@ -717,6 +803,51 @@ function h2MenuEscapeAndLeftArrowEvent(e) {
           h2MenuCloseSubmenuHandler(submenuTrigger);
           submenuTrigger.focus();
         }
+      }
+    }
+    else if (trigger.hasAttribute("data-back-button")) {
+       // Check to see if you're trying to close the main menu.
+       if (parentMenuWrapper.hasAttribute("data-h2-menu-container")) {
+        // console.log("You're trying to close the main menu.");
+        if (menu.classList.contains("h2-mobile-menu-active")) {
+          // Remove event listeners from all menus.
+          h2MenuRemoveEventsHandler(menuWrapper);
+          // Close all submenus.
+          h2MenuCloseOpenSubmenusHandler(menuWrapper);
+          // Close the main menu and reset aria values.
+          menu.classList.remove("h2-mobile-menu-active");
+          // Get main menu items.
+          var menuChildren = menu.querySelector("[data-h2-menu-container]").children;
+          var mainMenus = [];
+          for (var i = 0; i < menuChildren.length; i++) {
+            var child = menuChildren[i];
+            if (child.hasAttribute("data-h2-menulist")) {
+              mainMenus = mainMenus.concat(child);
+            }
+          }
+          var menuTriggers = h2MenuGetMenuListItemsWithSubmenusHandler(mainMenus);
+          menuTriggers = menuTriggers.concat(mobileTrigger);
+          menuTriggers.forEach(function(trigger) {
+            trigger.classList.remove("h2-active");
+            trigger.setAttribute("aria-expanded", false);
+          });
+          var documentBody = document.querySelector("body");
+          // documentBody.classList.remove("h2-mobile-menu-body-lock");
+          documentBody.style.overflow = "visible";
+        }
+      }
+      else {
+        // console.log("You're closing a submenu.");
+        // Set the key variables based on this context.
+        for (var i = 0; i < parentMenuWrapperChildren.length; i++) {
+          var child = parentMenuWrapperChildren[i];
+          if (child.hasAttribute("data-h2-submenu-trigger")) {
+            submenuTrigger = child;
+          }
+        }
+        // Close the submenu and focus the parent trigger.
+        h2MenuCloseSubmenuHandler(submenuTrigger);
+        submenuTrigger.focus();
       }
     }
   }
@@ -938,70 +1069,8 @@ function rightOptionalTabExitEvent(e) {
 
 // ===========================================================================================
 
-// System check function; this function allows the user to specify a specific target, or a specific version of Hydrogen so that they can target nested instances.
-function h2MenuSystemCheck(targetMenu, hydrogenSystemVersion, functionError) {
-  var menus = [];
-  // Check whether a target menu has been specified.
-  if (targetMenu == "all") {
-    // Because the user is targeting all menus, we need to check if they've specified a version as well.
-    if (hydrogenSystemVersion == "latest") {
-      // The user is using the most recent version of Hydrogen.
-      menus = document.querySelectorAll("[data-h2-menu-wrapper]");
-      return menus;
-    } else {
-      // The user is targeting a specific version of Hydrogen. It's important that we check to see if the wrapper itself has the version value, and if it doesn't check its parents.
-      var system = document.querySelector("[data-h2-system=\"" + hydrogenSystemVersion + "\"]");
-      // Check to see if the system value has actually been found on the page. If it hasn't, return false, otherwise find the menus.
-      if (system == null || system == false) {
-        console.error("Hydrogen (" + functionError + "): no data-h2-system element can be found with the system version (" + hydrogenSystemVersion + ") you've specified.");
-        return false;
-      } else {
-        if (system.hasAttribute("data-h2-menu-wrapper")) {
-          // The system object is also the menu wrapper.
-          menus = menus.concat(system);
-        }
-        var instancedMenus = system.querySelectorAll("[data-h2-menu-wrapper]");
-        if (instancedMenus != false || instancedMenus != null) {
-          instancedMenus.forEach(function(instance) {
-            menus = menus.concat(instance);
-          });
-        }
-        // Check to see if any menus were actually found in this version. If not, return false, otherwise return the array of menus.
-        if (menus == "undefined" || menus == false || menus == null) {
-          return false;
-        } else {
-          return menus;
-        }
-      }
-    }
-  } else if (targetMenu == null || targetMenu == false || targetMenu == "") {
-    // No target menu was specified, so the function can't run.
-    console.error("Hydrogen (" + functionError + "): no target menu element has been specified. Please pass an HTMLelement object, a NodeList of elements, or \"all\".");
-    return false;
-  } else {
-    // The user is passing a target, so we should check to see if it's an HTMLelement, a NodeList, or an incorrect format.
-    if (targetMenu.nodeType == Node.ELEMENT_NODE) {
-      // The user has passed a single HTMLelement.
-      menus = menus.concat(targetMenu);
-      return menus;
-    } else if (NodeList.prototype.isPrototypeOf(target) == true) {
-      // The user has passed a NodeList of elements.
-      targetMenu.forEach(function(target) {
-        menus = menus.concat(target);
-      });
-      return menus;
-    } else {
-      // The user has passed an object that Hydrogen can't pass.
-      console.error("Hydrogen (" + functionError + "): you've passed an invalid menu element. Menus must be a valid HTMLelement object or NodeList of elements.");
-      return false;
-    }
-  }
-}
-
 // Add anchor click events to the menu items.
-function h2MenuAddPageAnchor(targetMenu, hydrogenSystemVersion = "latest") {
-  // Set the system check error value.
-  var functionError = "h2MenuAddPageAnchor";
+function h2MenuAddPageAnchor(targetMenu) {
   // Use the system check function to get the appropriate menu wrappers.
   var menuWrappers = targetMenu;
   // Loop through the available menu wrappers.
@@ -1017,9 +1086,7 @@ function h2MenuAddPageAnchor(targetMenu, hydrogenSystemVersion = "latest") {
 }
 
 // Add mobile menu trigger listeners.
-function h2MenuAddMobileMenuTrigger(targetMenu, hydrogenSystemVersion = "latest") {
-  // Set the system check error value.
-  var functionError = "h2MenuAddMobileMenuTrigger";
+function h2MenuAddMobileMenuTrigger(targetMenu) {
   // Use the system check function to get the appropriate menu wrappers.
   //var menuWrappers = h2MenuSystemCheck(targetMenu, hydrogenSystemVersion, functionError);
   var menuWrappers = targetMenu;
@@ -1035,9 +1102,7 @@ function h2MenuAddMobileMenuTrigger(targetMenu, hydrogenSystemVersion = "latest"
   }
 }
 
-function h2MenuAddUpDownArrowsToMainMenuItems(targetMenu, hydrogenSystemVersion = "latest") {
-  // Set the system check error value.
-  var functionError = "h2MenuAddUpDownArrowsToMainMenuItems";
+function h2MenuAddUpDownArrowsToMainMenuItems(targetMenu) {
   // Use the system check function to get the appropriate menu wrappers.
   var menuWrappers = targetMenu;
   // Loop through the available menu wrappers.
@@ -1066,9 +1131,7 @@ function h2MenuAddUpDownArrowsToMainMenuItems(targetMenu, hydrogenSystemVersion 
   }
 }
 
-function h2MenuTabOrder(targetMenu, hydrogenSystemVersion = "latest") {
-  // Set the system check error value.
-  var functionError = "h2MenuTabOrder";
+function h2MenuTabOrder(targetMenu) {
   // Use the system check function to get the appropriate menu wrappers.
   // var menuWrappers = h2MenuSystemCheck(targetMenu, hydrogenSystemVersion, functionError);
   var menuWrappers = targetMenu;
@@ -1085,8 +1148,6 @@ function h2MenuTabOrder(targetMenu, hydrogenSystemVersion = "latest") {
 }
 
 function h2MenuAddRightArrowToMainMenuItems(targetMenu, hydrogenSystemVersion = "latest") {
-  // Set the system check error value.
-  var functionError = "h2MenuAddRightArrowToMainMenuItems";
   // Use the system check function to get the appropriate menu wrappers.
   //var menuWrappers = h2MenuSystemCheck(targetMenu, hydrogenSystemVersion, functionError);
   var menuWrappers = targetMenu;
@@ -1117,9 +1178,7 @@ function h2MenuAddRightArrowToMainMenuItems(targetMenu, hydrogenSystemVersion = 
   }
 }
 
-function h2MenuEnableSubmenuTriggers(targetMenu, hydrogenSystemVersion = "latest") {
-  // Set the system check error value.
-  var functionError = "h2MenuEnableSubmenuTriggers";
+function h2MenuEnableSubmenuTriggers(targetMenu) {
   // Use the system check function to get the appropriate menu wrappers.
   // var menuWrappers = h2MenuSystemCheck(targetMenu, hydrogenSystemVersion, functionError);
   var menuWrappers = targetMenu;
@@ -1137,6 +1196,29 @@ function h2MenuEnableSubmenuTriggers(targetMenu, hydrogenSystemVersion = "latest
     // Add the event listeners to the submenu triggers.
     if (submenuTriggers != false) {
       submenuTriggers.forEach(function(item) {
+        item.removeEventListener("click", h2MenuToggleSubmenuEvent);
+        item.addEventListener("click", h2MenuToggleSubmenuEvent);
+      });
+    }
+  }
+}
+
+function menuEnableBackButtonTriggers(targetMenu) {
+  var menuWrappers = targetMenu;
+  // Get the submenu triggers from all relevant menu wrappers.
+  if (menuWrappers != false) {
+    // Set an empty array for the submenu triggers.
+    var backButtons = [];
+    // Find all the submenu triggers inside the current wrapper.
+    var wrapperTriggers = menuWrappers.shadowRoot.querySelectorAll("[data-back-button]");
+    if (wrapperTriggers != false) {
+      wrapperTriggers.forEach(function(trigger) {
+        backButtons = backButtons.concat(trigger);
+      });
+    }
+    // Add the event listeners to the submenu triggers.
+    if (backButtons != false) {
+      backButtons.forEach(function(item) {
         item.removeEventListener("click", h2MenuToggleSubmenuEvent);
         item.addEventListener("click", h2MenuToggleSubmenuEvent);
       });
@@ -1167,5 +1249,6 @@ export {
   h2MenuAddUpDownArrowsToMainMenuItems,
   h2MenuTabOrder,
   h2MenuAddRightArrowToMainMenuItems,
-  h2MenuEnableSubmenuTriggers
+  h2MenuEnableSubmenuTriggers,
+  menuEnableBackButtonTriggers
 };

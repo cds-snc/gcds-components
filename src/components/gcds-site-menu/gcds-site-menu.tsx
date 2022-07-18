@@ -5,8 +5,10 @@ import {
   h2MenuTabOrder,
   h2MenuAddRightArrowToMainMenuItems,
   h2MenuEnableSubmenuTriggers,
+  menuEnableBackButtonTriggers,
   h2MenuAddMobileMenuTrigger,
-  h2MenuAddPageAnchor
+  h2MenuAddPageAnchor,
+  h2MenuCloseOpenSubmenusHandler
 } from "./utils/module"; // REMEMBER TO SET THIS BACK
 
 import I18N from './i18n/i18n';
@@ -79,13 +81,13 @@ export class GcdsSiteMenu {
     var submenuCount = this.submenu++;
     if (el.nodeName == "A") {
       var span = document.createElement("span");
-      this.setAttributes(span, { "id":`submenu-label-${submenuCount}`, "data-trigger-label":""})
+      this.setAttributes(span, { "id":`submenu-label-${submenuCount}`, "data-trigger-label":""});
       span.innerText = el.innerText.trim();
     } else {
       el.removeAttribute("role");
       el.removeAttribute("aria-expanded");
       el.removeAttribute("aria-haspopup");
-      this.setAttributes(el, { "id":`submenu-label-${submenuCount}`, "data-trigger-label":""})
+      this.setAttributes(el, { "id":`submenu-label-${submenuCount}`, "data-trigger-label":""});
     }
     
 
@@ -131,9 +133,20 @@ export class GcdsSiteMenu {
     }
   }
 
+  private configureSidebarBackButtons(ul) {
+      var listItem = document.createElement("li");
+      var backButton = document.createElement("button");
+      this.setAttributes(backButton, { "data-back-button":""});
+      this.setAttributes(listItem, { "role":"presentation"});
+      backButton.innerText = "Back";
+      listItem.append(backButton);
+      ul.prepend(listItem);
+  }
+
   private async configureMenu() {
     var mainMenus = [];
     var elementChildren = this.el.children;
+    var desktopLayout = this.menuDesktopLayout;
     // Loop through slotted elements
     for (var i = 0; i < elementChildren.length; i++) {
       // Grab menus
@@ -150,6 +163,9 @@ export class GcdsSiteMenu {
       // Apply attributes to any submenu ul
       mainMenus[i].querySelectorAll("ul").forEach((list) => {
         this.setAttributes(list, {"data-h2-menulist": "", "role": "menu"});
+        if (desktopLayout == "sidebar") {
+          this.configureSidebarBackButtons(list);
+        }
       });
 
       // Apply attributes to all li
@@ -252,6 +268,9 @@ export class GcdsSiteMenu {
     h2MenuEnableSubmenuTriggers(this.el);
     h2MenuAddMobileMenuTrigger(this.el);
     h2MenuAddPageAnchor(this.el);
+    if (this.menuDesktopLayout == "sidebar") {
+      menuEnableBackButtonTriggers(this.el);
+    }
   }
 
   private get hasOptionalLeft() {
@@ -305,7 +324,13 @@ export class GcdsSiteMenu {
               null
             }
           </div>
+          
         </nav>
+        {this.menuDesktopLayout == "sidebar" ?
+          <div data-sidebar-backdrop hidden onClick={() => {h2MenuCloseOpenSubmenusHandler(this.el)}}></div>
+        :
+              null
+        }
         <slot name="main" />
       </Host>
     );
