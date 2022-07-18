@@ -29,7 +29,7 @@ export class GcdsBanner {
     return (
       <Host>
         <div
-          class={`banner role-${bannerRole} ${positionFixed ? 'is-fixed' : ''}`}
+          class={`gcds-banner role-${bannerRole} ${positionFixed ? 'is-fixed' : ''}`}
           role={bannerRole === 'destructive' ? 'alert' : 'status'}
           aria-label="Banner"
         >

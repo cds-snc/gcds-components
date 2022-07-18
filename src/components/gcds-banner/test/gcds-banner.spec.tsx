@@ -10,7 +10,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner>
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-primary" role="status">
+          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
             <div class="banner-content container-lg">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -43,7 +43,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner banner-role="primary">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-primary" role="status">
+          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
             <div class="banner-content container-lg">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -72,7 +72,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner banner-role="secondary">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-secondary" role="status">
+          <div aria-label="Banner" class="gcds-banner role-secondary" role="status">
             <div class="banner-content container-lg">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -101,7 +101,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner banner-role="destructive">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-destructive" role="alert">
+          <div aria-label="Banner" class="gcds-banner role-destructive" role="alert">
             <div class="banner-content container-lg">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -130,7 +130,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner banner-role="warning">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-warning" role="status">
+          <div aria-label="Banner" class="gcds-banner role-warning" role="status">
             <div class="banner-content container-lg">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -163,7 +163,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner position-fixed>
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-primary is-fixed" role="status">
+          <div aria-label="Banner" class="gcds-banner role-primary is-fixed" role="status">
             <div class="banner-content container-lg">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -196,7 +196,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="fluid">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-primary" role="status">
+          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
             <div class="banner-content container-fluid">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -225,7 +225,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="lg">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-primary" role="status">
+          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
             <div class="banner-content container-lg">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -254,7 +254,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="md">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-primary" role="status">
+          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
             <div class="banner-content container-md">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -283,7 +283,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="sm">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-primary" role="status">
+          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
             <div class="banner-content container-sm">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
@@ -312,7 +312,7 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="xs">
         <mock:shadow-root>
-          <div aria-label="Banner" class="banner role-primary" role="status">
+          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
             <div class="banner-content container-xs">
               <figure class="banner-icon icon-left">
                 <slot name="banner-icon-left"></slot>
