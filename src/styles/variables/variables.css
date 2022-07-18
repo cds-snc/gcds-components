@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 08 Jul 2022 13:15:19 GMT
+ * Generated on Mon, 18 Jul 2022 14:45:27 GMT
  */
 
 :root {
@@ -81,6 +81,12 @@
   --gcds-line-heights-h3: 162.31672001219326%;
   --gcds-line-heights-h2: 144.28152889972733%;
   --gcds-line-heights-h1: 128.25024791086875%;
+  --gcds-banner-destructive-background: #d3080c;
+  --gcds-banner-destructive-text: #ffffff;
+  --gcds-banner-primary-background: #26374a;
+  --gcds-banner-primary-text: #ffffff;
+  --gcds-banner-secondary-background: #f0f0f0;
+  --gcds-banner-warning-background: #f7b452;
   --gcds-button-destructive-default: #bc3331;
   --gcds-button-destructive-hover: #340e0e;
   --gcds-button-destructive-active: #bc3331;
