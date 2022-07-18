@@ -1,4 +1,4 @@
-:host fieldset {
+:host .gcds-textarea-wrapper {
   width: 100%;
   max-width: 75ch;
   font-family: var(--gcds-font-families-body);
@@ -15,11 +15,11 @@
     color: var(--gcds-textarea-focus);
   }
 
-  &.disabled {
+  &.gcds-disabled {
     color: var(--gcds-textarea-disabled-text);
   }
 
-  &.error:not(:focus-within) {
+  &.gcds-error:not(:focus-within) {
     color: var(--gcds-textarea-destructive);
   }
 
@@ -61,7 +61,7 @@
     border-color: var(--gcds-textarea-disabled-text);
   }
 
-  &.error:not(:focus) {
+  &.gcds-error:not(:focus) {
     border-color: var(--gcds-textarea-destructive);
   }
 }
