@@ -16,17 +16,17 @@
     margin-top: 1.75rem;
 
     &:focus-within {
-      color: var(--gcds-radio-focus);
+      color: var(--gcds-radio-focus-text);
     }
 
     &.gcds-disabled {
-      color: var(--gcds-checkbox-disabled-text);
+      color: var(--gcds-radio-disabled-text);
 
       input[type=radio]+gcds-label {
-        color: var(--gcds-checkbox-disabled-text);
+        color: var(--gcds-radio-disabled-text);
         &:before {
-          border-color: var(--gcds-checkbox-disabled-border);
-          background-color: var(--gcds-checkbox-disabled-background);
+          border-color: var(--gcds-radio-disabled-border);
+          background-color: var(--gcds-radio-disabled-background);
           cursor: not-allowed;
         }
         &:after {
@@ -36,15 +36,15 @@
     }
 
     &.gcds-error:not(:focus-within) {
-      color: var(--gcds-radio-destructive);
+      color: var(--gcds-radio-destructive-text);
 
       input[type=radio] + gcds-label {
         &:before {
-          border-color: var(--gcds-radio-destructive);
+          border-color: currentcolor;
         }
         &:after {
-          color: var(--gcds-radio-destructive);
-          background-color: var(--gcds-radio-destructive);
+          color: currentcolor;
+          background-color: currentcolor;
         }
       }
     }
@@ -70,7 +70,7 @@
           content: "";
         }
         &:before {
-          border: 0.125rem solid var(--gcds-color-grayscale-1000);
+          border: 0.125rem solid currentcolor;
           height: var(--gcds-spacing-500);
           width: var(--gcds-spacing-500);
           left: 0;
@@ -80,25 +80,26 @@
           border: 0.25rem solid;
           height: 0.875rem;
           width: 0.875rem;
-          color: var(--gcds-color-grayscale-1000);
+          color: currentcolor;
           left: 0.75rem;
           opacity: 0;
           top: 0.1875rem;
-          background-color: var(--gcds-color-grayscale-1000);
+          background-color: currentcolor;
           transition: opacity .2s ease-in-out;
         }
       }
 
       &:focus + gcds-label {
+        color: var(--gcds-radio-focus-text);
         &:before {
-          box-shadow: 0 0 0 0.125rem var(--gcds-color-grayscale-0);
-          outline: 0.1875rem solid var(--gcds-radio-focus);
+          box-shadow: 0 0 0 0.125rem var(--gcds-radio-focus-shadow);
+          outline: 0.1875rem solid currentcolor;
           outline-offset: 0.125rem;
-          border-color: var(--gcds-radio-focus);
+          border-color: currentcolor;
         }
         &:after {
-          color: var(--gcds-radio-focus);
-          background-color: var(--gcds-radio-focus);
+          color: var(--gcds-radio-focus-text);
+          background-color: currentcolor;
         }
       }
     }

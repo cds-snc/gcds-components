@@ -16,7 +16,7 @@
     margin-top: 1.75rem;
 
     &:focus-within {
-      color: var(--gcds-checkbox-focus);
+      color: var(--gcds-checkbox-focus-text);
     }
 
     &.gcds-disabled {
@@ -25,8 +25,8 @@
       input[type=checkbox] + gcds-label {
         color: var(--gcds-checkbox-disabled-text);
         &:before {
-          border-color: var(--gcds-checkbox-disabled-border);
-          background-color: var(--gcds-color-grayscale-100);
+          border-color: currentcolor;
+          background-color: var(--gcds-checkbox-disabled-background);
           cursor: not-allowed;
         }
         &:after {
@@ -36,14 +36,14 @@
     }
 
     &.gcds-error:not(:focus-within) {
-      color: var(--gcds-checkbox-destructive);
+      color: var(--gcds-checkbox-destructive-text);
 
       input[type=checkbox] + gcds-label {
         &:before {
-          border-color: var(--gcds-checkbox-destructive);
+          border-color: currentcolor;
         }
         &:after {
-          color: var(--gcds-checkbox-destructive);
+          color: var(--gcds-checkbox-destructive-text);
         }
       }
     }
@@ -68,7 +68,7 @@
           content: "";
         }
         &:before {
-          border: 0.125rem solid var(--gcds-color-grayscale-1000);
+          border: 0.125rem solid currentcolor;
           height: var(--gcds-spacing-500);
           width: var(--gcds-spacing-500);
           left: 0;
@@ -81,7 +81,7 @@
           border-top: 0;
           height: var(--gcds-spacing-400);
           width: var(--gcds-spacing-300);
-          color: var(--gcds-color-grayscale-1000);
+          color: currentcolor;
           left: 1rem;
           opacity: 0;
           top: -0.125rem;
@@ -92,13 +92,13 @@
 
       &:focus + gcds-label {
         &:before {
-          box-shadow: 0 0 0 0.125rem var(--gcds-color-grayscale-0);
-          outline: 0.1875rem solid var(--gcds-checkbox-focus);
+          box-shadow: 0 0 0 0.125rem var(--gcds-checkbox-focus-shadow);
+          outline: 0.1875rem solid currentcolor;
           outline-offset: 0.125rem;
-          border-color: var(--gcds-checkbox-focus);
+          border-color: currentcolor;
         }
         &:after {
-          color: var(--gcds-checkbox-focus);
+          color: var(--gcds-checkbox-focus-text);
         }
       }
     }
