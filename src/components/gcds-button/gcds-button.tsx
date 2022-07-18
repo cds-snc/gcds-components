@@ -66,6 +66,19 @@ export class GcdsButton {
   }
 
   /**
+   * Set the button size
+   */
+  @Prop({ mutable: true }) buttonSize: 'regular' | 'small' = 'regular';
+
+  @Watch('buttonSize')
+  validateButtonSize(newValue: string) {
+    const values = ['regular', 'small'];
+    if (!values.includes(newValue)) {
+      this.buttonSize = 'regular';
+    }
+  }
+
+  /**
    * The name attribute specifies the name for a <button> element.
    */
   @Prop() name: string | undefined;
@@ -154,7 +167,7 @@ export class GcdsButton {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-   /**
+  /**
     * Emitted when the button loses focus.
     */
   @Event() gcdsBlur!: EventEmitter<void>;
@@ -164,6 +177,7 @@ export class GcdsButton {
     this.validateButtonType(this.buttonType);
     this.validateButtonRole(this.buttonRole);
     this.validateButtonStyle(this.buttonStyle);
+    this.validateButtonSize(this.buttonSize);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
   }
@@ -216,7 +230,7 @@ export class GcdsButton {
 
   render() {
 
-    const { buttonType, buttonRole, buttonStyle, disabled, name, href, rel, target, download, inheritedAttributes } = this;
+    const { buttonType, buttonRole, buttonStyle, buttonSize, disabled, name, href, rel, target, download, inheritedAttributes } = this;
 
     const Tag = buttonType != 'link' ? 'button' : 'a';
     const attrs = (Tag === 'button')
@@ -240,7 +254,7 @@ export class GcdsButton {
           {...attrs}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          class={`${buttonRole} ${buttonStyle}`}
+          class={`${buttonRole} ${buttonStyle} ${buttonSize}`}
           ref={element => this.shadowElement = element as HTMLElement}
           {...inheritedAttributes}
         >
