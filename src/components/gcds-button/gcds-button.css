@@ -155,4 +155,10 @@
       outline-color: var(--gcds-button-destructive-active);
     }
   }
+
+  /* Small button styling */
+  &.small {
+    font-size: 80%;
+    padding: var(--gcds-spacing-200);
+  }
 }

@@ -6,11 +6,29 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface GcdsBanner {
+        /**
+          * Defines banner role.
+         */
+        "bannerRole"?: 'destructive' | 'primary' | 'secondary' | 'warning';
+        /**
+          * Defines the max width of the banner content.
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "positionFixed"?: boolean;
+    }
     interface GcdsButton {
         /**
           * Set the main style
          */
         "buttonRole": 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        /**
+          * Set the button size
+         */
+        "buttonSize": 'regular' | 'small';
         /**
           * Set the style variant
          */
@@ -406,6 +424,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLGcdsBannerElement extends Components.GcdsBanner, HTMLStencilElement {
+    }
+    var HTMLGcdsBannerElement: {
+        prototype: HTMLGcdsBannerElement;
+        new (): HTMLGcdsBannerElement;
+    };
     interface HTMLGcdsButtonElement extends Components.GcdsButton, HTMLStencilElement {
     }
     var HTMLGcdsButtonElement: {
@@ -491,6 +515,7 @@ declare global {
         new (): HTMLGcdsTextareaElement;
     };
     interface HTMLElementTagNameMap {
+        "gcds-banner": HTMLGcdsBannerElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
@@ -508,11 +533,29 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface GcdsBanner {
+        /**
+          * Defines banner role.
+         */
+        "bannerRole"?: 'destructive' | 'primary' | 'secondary' | 'warning';
+        /**
+          * Defines the max width of the banner content.
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "positionFixed"?: boolean;
+    }
     interface GcdsButton {
         /**
           * Set the main style
          */
         "buttonRole"?: 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        /**
+          * Set the button size
+         */
+        "buttonSize"?: 'regular' | 'small';
         /**
           * Set the style variant
          */
@@ -939,6 +982,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
+        "gcds-banner": GcdsBanner;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
         "gcds-error-message": GcdsErrorMessage;
@@ -959,6 +1003,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "gcds-banner": LocalJSX.GcdsBanner & JSXBase.HTMLAttributes<HTMLGcdsBannerElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
