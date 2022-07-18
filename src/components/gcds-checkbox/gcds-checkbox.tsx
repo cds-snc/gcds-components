@@ -1,4 +1,4 @@
-import { Component, Element, Prop, Host, h } from '@stencil/core';
+import { Component, Element, Prop, Watch, Host, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
 
 @Component({
@@ -36,6 +36,13 @@ export class GcdsCheckbox {
    */
   @Prop({ reflect: true, mutable: true }) disabled: boolean;
 
+  @Watch('disabled')
+  validateDisabledCheckbox() {
+    if (this.required) {
+      this.disabled = false;
+    }
+  }
+
   /**
    * Value for an input element.
    */
@@ -50,10 +57,24 @@ export class GcdsCheckbox {
    * Specifies if the input is invalid.
    */
   @Prop({ reflect: true, mutable: true }) hasError: boolean;
+  @Watch('hasError')
+  validateHasError() {
+    if (this.disabled) {
+      this.hasError = false;
+    }
+  }
   /**
    * Error message for an invalid input element.
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
+  @Watch('errorMessage')
+  validateErrorMessage() {
+    if (this.disabled) {
+      this.errorMessage = "";
+    } else if (!this.hasError && this.errorMessage) {
+      this.hasError = true;
+    }
+  }
   /**
    * Hint displayed below the label.
    */
@@ -63,9 +84,10 @@ export class GcdsCheckbox {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    if (this.errorMessage) {
-      this.hasError = true;
-    }
+    this.validateDisabledCheckbox();
+    this.validateHasError();
+    this.validateErrorMessage();
+
   }
 
   private onChange = () => {
