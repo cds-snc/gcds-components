@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsHint} from './gcds-hint';
+import { GcdsHint} from '../gcds-hint';
 
 describe('gcds-hint', () => {
   it('renders', async () => {

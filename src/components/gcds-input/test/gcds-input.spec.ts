@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsInput} from './gcds-input';
+import { GcdsInput} from '../gcds-input';
 
 describe('gcds-input', () => {
   it('renders with minimum required properties', async () => {

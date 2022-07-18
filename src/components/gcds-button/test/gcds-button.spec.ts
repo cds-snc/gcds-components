@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsButton } from './gcds-button';
+import { GcdsButton } from '../gcds-button';
 
 describe('gcds-button', () => {
   it('renders with no passed properties', async () => {

@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsTextarea} from './gcds-textarea';
+import { GcdsTextarea} from '../gcds-textarea';
 
 describe('gcds-textarea', () => {
   it('renders with minimum required properties', async () => {
