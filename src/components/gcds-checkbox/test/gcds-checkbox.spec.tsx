@@ -110,7 +110,7 @@ describe('gcds-checkbox', () => {
         ></gcds-checkbox>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-checkbox checkbox-id="checkbox" disabled="" label="checkbox" name="checkbox">
+      <gcds-checkbox checkbox-id="checkbox" disabled="" error-message="" label="checkbox" name="checkbox">
         <div class="gcds-checkbox-wrapper gcds-disabled">
            <input disabled="" id="checkbox" name="checkbox" type="checkbox">
            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
