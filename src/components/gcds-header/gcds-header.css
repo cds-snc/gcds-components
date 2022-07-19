@@ -10,7 +10,7 @@
   }
 
   .brand {
-    border-bottom: 3px solid #38414d;
+    border-bottom: 3px solid var(--gcds-header-brand-border);
     padding-bottom: var(--gcds-spacing-100);
     margin-top: var(--gcds-spacing-300);
 
@@ -58,7 +58,7 @@
 
         .search,
         slot[name="search"] {
-          width: 30rem;
+          width: var(--gcds-container-100);
         }
       }
     }
