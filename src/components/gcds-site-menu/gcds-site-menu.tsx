@@ -225,6 +225,7 @@ export class GcdsSiteMenu {
 
     var hostElement = this.el;
     var mobileLayout = this.menuMobileLayout;
+    var desktopLayout = this.menuDesktopLayout;
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
 
     // Check if loaded in mobile size
@@ -257,8 +258,12 @@ export class GcdsSiteMenu {
         if (mobileLayout == "drawer") {
           document.querySelector("body").style.paddingBottom = "3rem";
         }
+        if (desktopLayout == "sidebar" && !hostElement.shadowRoot.querySelector("[data-sidebar-backdrop]").hasAttribute("hidden")) {
+          hostElement.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+        }
 
         hostElement.shadowRoot.querySelector("[data-h2-menu-container]").setAttribute("data-mobile", "");
+        h2MenuCloseOpenSubmenusHandler(hostElement);
       }
     });
 
@@ -270,6 +275,12 @@ export class GcdsSiteMenu {
     h2MenuAddPageAnchor(this.el);
     if (this.menuDesktopLayout == "sidebar") {
       menuEnableBackButtonTriggers(this.el);
+    } else {
+      this.el.addEventListener('focusout', () => {
+        if (!this.el.shadowRoot.querySelector('[data-mobile]')) {
+          h2MenuCloseOpenSubmenusHandler(this.el);
+        }
+      });
     }
   }
 
