@@ -9,7 +9,7 @@ import {
   h2MenuAddMobileMenuTrigger,
   h2MenuAddPageAnchor,
   h2MenuCloseOpenSubmenusHandler
-} from "./utils/module"; // REMEMBER TO SET THIS BACK
+} from "./utils/module.min";
 
 import I18N from './i18n/i18n';
 
@@ -138,7 +138,7 @@ export class GcdsSiteMenu {
       var backButton = document.createElement("button");
       this.setAttributes(backButton, { "data-back-button":""});
       this.setAttributes(listItem, { "role":"presentation"});
-      backButton.innerText = "Back";
+      backButton.innerText = I18N[this.lang].back;
       listItem.append(backButton);
       ul.prepend(listItem);
   }

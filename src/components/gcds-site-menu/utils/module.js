@@ -173,7 +173,6 @@ function h2MenuGetTargetMenuItemsHandler(menuLists) {
           parentItem = child;
         }
       }
-      //menuItems = menuItems.concat(parentItem); recon
       menuItems = menuItems.concat(submenuTrigger);
     }
   });
@@ -251,13 +250,9 @@ function h2MenuOpenSubmenuHandler(trigger) {
     if (child.hasAttribute("data-h2-menulist")) {
       submenu = submenu.concat(child);
     }
-    // if (child.getAttribute("role") == "menuitem") {
-    //   menuItem = child;
-    // } recon
   }
   // Open the submenu.
   triggerParent.classList.add("h2-active");
-  //menuItem.setAttribute("aria-expanded", true); recon
   submenuTrigger.setAttribute("aria-expanded", true);
   // Remove all event listeners.
   var menuWrapper = trigger.closest("[data-h2-menu]").parentNode.host;
@@ -309,7 +304,6 @@ function h2MenuOpenSubmenuHandler(trigger) {
 // Close script.
 function h2MenuCloseSubmenuHandler(trigger) {
   // Figure out which element is being used as the trigger and set the values appropriately to open the submenu.
-  var menuItem = "";
   var submenuTrigger = "";
   var submenu = "";
   // Get the trigger's parent and siblings.
@@ -324,9 +318,6 @@ function h2MenuCloseSubmenuHandler(trigger) {
     if (child.hasAttribute("data-h2-menulist")) {
       submenu = child;
     }
-    // if (child.getAttribute("role") == "menuitem") {
-    //   menuItem = child;
-    // } recon
   }
   // Remove all event listeners.
   var menuWrapper = trigger.closest("[data-h2-menu]").parentNode.host;
@@ -389,7 +380,6 @@ function h2MenuCloseSubmenuHandler(trigger) {
   });
   // Close the active submenu.
   triggerParent.classList.remove("h2-active");
-  //menuItem.setAttribute("aria-expanded", false); recon
   submenuTrigger.setAttribute("aria-expanded", false);
 
   var hostElement = triggerParent.closest("[data-h2-menu]").parentNode.host;
