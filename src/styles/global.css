@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 18 Jul 2022 17:57:21 GMT
+ * Generated on Tue, 19 Jul 2022 16:31:10 GMT
  */
 :root {
   --gcds-brand-default-text: #000000;
@@ -12,12 +12,14 @@
   --gcds-color-blue-200: #aad5f2;
   --gcds-color-blue-300: #4f6592;
   --gcds-color-blue-400: #396293;
+  --gcds-color-blue-450: #38414d;
   --gcds-color-blue-500: #303fc3;
   --gcds-color-blue-600: #2a82cf;
   --gcds-color-blue-700: #2b496e;
   --gcds-color-blue-800: #26374a;
   --gcds-color-blue-900: #0a0e14;
   --gcds-color-grayscale-0: #ffffff;
+  --gcds-color-grayscale-50: #f8f8f8;
   --gcds-color-grayscale-100: #f0f0f0;
   --gcds-color-grayscale-200: #ededed;
   --gcds-color-grayscale-225: #e5e5e5;
@@ -33,9 +35,10 @@
   --gcds-color-grayscale-950: #595959;
   --gcds-color-grayscale-1000: #000000;
   --gcds-color-red-100: #f3e9e8;
-  --gcds-color-red-200: #bc3331;
-  --gcds-color-red-300: #d3080c;
-  --gcds-color-red-400: #340e0e;
+  --gcds-color-red-200: #ff0000;
+  --gcds-color-red-300: #bc3331;
+  --gcds-color-red-400: #d3080c;
+  --gcds-color-red-500: #340e0e;
   --gcds-color-yellow-100: #f7b452;
   --gcds-container-100: 28.125rem;
   --gcds-container-200: 37.5rem;
@@ -112,10 +115,15 @@
   --gcds-error-message-background: #f3e9e8;
   --gcds-error-message-border: #d3080c;
   --gcds-error-message-text: #000000;
+  --gcds-footer-brand-background: #f8f8f8;
+  --gcds-footer-brand-text: #000000;
+  --gcds-footer-landscape-background: #26374a;
+  --gcds-footer-landscape-text: #ffffff;
   --gcds-heading-1-font-families: Lato;
   --gcds-heading-1-font-sizes: 2.5341081619262695rem;
   --gcds-heading-1-font-weights: 400;
   --gcds-heading-1-line-heights: 128.25024791086875%;
+  --gcds-header-brand-border: #38414d;
   --gcds-input-default-background: #ffffff;
   --gcds-input-default-text: #000000;
   --gcds-input-destructive: #d3080c;
@@ -130,6 +138,9 @@
   --gcds-radio-disabled-text: #707070;
   --gcds-radio-focus-text: #303fc3;
   --gcds-radio-focus-shadow: #ffffff;
+  --gcds-signature-color-flag: #ff0000;
+  --gcds-signature-color-text: #000000;
+  --gcds-signature-white-default: #ffffff;
   --gcds-site-menu-active-background: #595959;
   --gcds-site-menu-active-text: #ffffff;
   --gcds-site-menu-default-background: #ededed;

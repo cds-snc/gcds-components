@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsLabel} from './gcds-label';
+import { GcdsLabel} from '../gcds-label';
 
 describe('gcds-label', () => {
   it('renders', async () => {
