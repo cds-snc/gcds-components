@@ -5,8 +5,10 @@ import {
   h2MenuTabOrder,
   h2MenuAddRightArrowToMainMenuItems,
   h2MenuEnableSubmenuTriggers,
+  menuEnableBackButtonTriggers,
   h2MenuAddMobileMenuTrigger,
-  h2MenuAddPageAnchor
+  h2MenuAddPageAnchor,
+  h2MenuCloseOpenSubmenusHandler
 } from "./utils/module.min";
 
 import I18N from './i18n/i18n';
@@ -19,6 +21,7 @@ import I18N from './i18n/i18n';
 export class GcdsSiteMenu {
 
   private lang: string;
+  private submenu = 0;
 
   @Element() el: HTMLElement;
 
@@ -72,15 +75,35 @@ export class GcdsSiteMenu {
    * Method to apply sub menu trigger button
    * @param el - <a> tag
    */
-  private appendSubMenuButton(el) {
+  private configureSubMenuTrigger(el) {
+
+    // Add additional attributes to menuitem element
+    var submenuCount = this.submenu++;
+    if (el.nodeName == "A") {
+      var span = document.createElement("span");
+      this.setAttributes(span, { "id":`submenu-label-${submenuCount}`, "data-trigger-label":""});
+      span.innerText = el.innerText.trim();
+    } else {
+      el.removeAttribute("role");
+      el.removeAttribute("aria-expanded");
+      el.removeAttribute("aria-haspopup");
+      this.setAttributes(el, { "id":`submenu-label-${submenuCount}`, "data-trigger-label":""});
+    }
+    
+
     // Create button element
     var button = document.createElement("button");
-    this.setAttributes(button, {"aria-expanded": "false", "data-h2-submenu-trigger": ""});
+    this.setAttributes(button, {
+      "aria-expanded": "false",
+      "data-h2-submenu-trigger": "",
+      "aria-haspopup":"true",
+      "aria-labelledby": `submenu-label-${submenuCount}`
+    });
 
     // Create the accessibility text span
     var a11yText = document.createElement("span");
     //a11yText.innerHTML = `Open or close ${el.textContent}'s submenu.`;
-    a11yText.innerHTML = I18N[this.lang].submenuButtonText.replace('{$t}', el.textContent);
+    a11yText.innerHTML = I18N[this.lang].submenuButtonText.replace('{$t}', el.textContent.trim());
     a11yText.setAttribute("data-h2-submenu-trigger-accessibility-text", "");
 
     // Create the add icon span
@@ -104,11 +127,26 @@ export class GcdsSiteMenu {
     // Put it all together and append button to page
     button.append(a11yText, addIcon, removeIcon);
     el.parentNode.append(button);
+    if (span) {
+      el.parentNode.prepend(span);
+      el.remove();
+    }
+  }
+
+  private configureSidebarBackButtons(ul) {
+      var listItem = document.createElement("li");
+      var backButton = document.createElement("button");
+      this.setAttributes(backButton, { "data-back-button":""});
+      this.setAttributes(listItem, { "role":"presentation"});
+      backButton.innerText = I18N[this.lang].back;
+      listItem.append(backButton);
+      ul.prepend(listItem);
   }
 
   private async configureMenu() {
     var mainMenus = [];
     var elementChildren = this.el.children;
+    var desktopLayout = this.menuDesktopLayout;
     // Loop through slotted elements
     for (var i = 0; i < elementChildren.length; i++) {
       // Grab menus
@@ -121,10 +159,15 @@ export class GcdsSiteMenu {
     for (var i = 0; i < mainMenus.length; i++) {
       // Apply attributes at the highest level
       this.setAttributes(mainMenus[i], {"data-h2-menulist": "", "role": "menu"});
+
       // Apply attributes to any submenu ul
       mainMenus[i].querySelectorAll("ul").forEach((list) => {
         this.setAttributes(list, {"data-h2-menulist": "", "role": "menu"});
+        if (desktopLayout == "sidebar") {
+          this.configureSidebarBackButtons(list);
+        }
       });
+
       // Apply attributes to all li
       mainMenus[i].querySelectorAll("li").forEach((listitem) => {
         listitem.setAttribute("role", "presentation");
@@ -132,23 +175,19 @@ export class GcdsSiteMenu {
           if(listitem.children[x].nodeName == "A") {
             this.setAttributes(listitem.children[x], {"role": "menuitem"})
           } else if (listitem.children[x].nodeName != "BUTTON" && listitem.children[x].nodeName != "UL" ) {
-            this.setAttributes(listitem.children[x], {"role": "menuitem", "tabindex": "-1" });
+            this.setAttributes(listitem.children[x], {"role": "menuitem"});
           }
         }
       });
+
       // Loop through each menuitem tag
       mainMenus[i].querySelectorAll("[role=menuitem]").forEach((menuitem) => {
-        // Apply role attribute
-        //menuitem.setAttribute("role", "menuitem");
         // Check if a tag has siblings
         if (menuitem.parentNode.children.length > 1) {
           // Apply attributes for sub menus
           this.setAttributes(menuitem, {"aria-expanded": "false", "aria-haspopup": "true"});
           // Append sub menu button trigger
-          this.appendSubMenuButton(menuitem);
-          if (menuitem.closest("ul").parentNode.nodeName == "li") {
-            menuitem.setAttribute("tabindex", "-1");
-          }
+          this.configureSubMenuTrigger(menuitem);
         }
       });
     }
@@ -186,6 +225,7 @@ export class GcdsSiteMenu {
 
     var hostElement = this.el;
     var mobileLayout = this.menuMobileLayout;
+    var desktopLayout = this.menuDesktopLayout;
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
 
     // Check if loaded in mobile size
@@ -218,8 +258,12 @@ export class GcdsSiteMenu {
         if (mobileLayout == "drawer") {
           document.querySelector("body").style.paddingBottom = "3rem";
         }
+        if (desktopLayout == "sidebar" && !hostElement.shadowRoot.querySelector("[data-sidebar-backdrop]").hasAttribute("hidden")) {
+          hostElement.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+        }
 
         hostElement.shadowRoot.querySelector("[data-h2-menu-container]").setAttribute("data-mobile", "");
+        h2MenuCloseOpenSubmenusHandler(hostElement);
       }
     });
 
@@ -229,6 +273,22 @@ export class GcdsSiteMenu {
     h2MenuEnableSubmenuTriggers(this.el);
     h2MenuAddMobileMenuTrigger(this.el);
     h2MenuAddPageAnchor(this.el);
+    if (this.menuDesktopLayout == "sidebar") {
+      menuEnableBackButtonTriggers(this.el);
+    } else {
+      this.el.addEventListener('focusout', () => {
+        if (!this.el.shadowRoot.querySelector('[data-mobile]')) {
+          h2MenuCloseOpenSubmenusHandler(this.el);
+        }
+      });
+    }
+  }
+
+  private get hasOptionalLeft() {
+    return !!this.el.querySelector('[slot="left"]');
+  }
+  private get hasOptionalRight() {
+    return !!this.el.querySelector('[slot="left"]');
   }
 
   render() {
@@ -259,15 +319,29 @@ export class GcdsSiteMenu {
           data-h2-menu
         >
           <div data-h2-menu-container>
-            <div data-optional-left>
-              <slot name="left" />
-            </div>
+            {this.hasOptionalLeft ? 
+              <div data-optional-left>
+                <slot name="left" />
+              </div>
+            : 
+              null
+            }
             <slot />
-            <div data-optional-right>
-              <slot name="right" />
-            </div>
+            {this.hasOptionalRight ?
+              <div data-optional-right>
+                <slot name="right" />
+              </div>
+            :
+              null
+            }
           </div>
+          
         </nav>
+        {this.menuDesktopLayout == "sidebar" ?
+          <div data-sidebar-backdrop hidden onClick={() => {h2MenuCloseOpenSubmenusHandler(this.el)}}></div>
+        :
+              null
+        }
         <slot name="main" />
       </Host>
     );

@@ -198,7 +198,7 @@ describe('gcds-site-menu a11y tests', () => {
 
   // Keyboard navigation
 
-  it('Keyboard navigation', async () => {
+  it('Keyboard navigation - topbar', async () => {
     const page = await newE2EPage();
     await page.setViewport({
       width: 1140,
@@ -231,30 +231,154 @@ describe('gcds-site-menu a11y tests', () => {
     </gcds-site-menu>`);
 
     await page.keyboard.press("Tab");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 01");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Menu item 01");
     await page.keyboard.press("ArrowDown");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 02");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Menu item 02");
     await page.keyboard.press("ArrowDown");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 03");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
     await page.keyboard.press("ArrowRight");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("SubMenu item 01");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
     await page.keyboard.press("ArrowDown");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("SubMenu item 02");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 02");
     await page.keyboard.press("ArrowDown");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("SubMenu item 03");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 03");
     await page.keyboard.press("ArrowDown");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 03");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
     await page.keyboard.press("ArrowDown");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Open or close Menu item 03's submenu.+-");
-    await page.keyboard.press("ArrowDown");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("SubMenu item 01");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
     await page.keyboard.press("Escape");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 03");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
     await page.keyboard.press("ArrowRight");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("SubMenu item 01");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
     await page.keyboard.press("ArrowLeft");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 03");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
     await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 01");
+  });
+
+  it('Keyboard navigation - sidebar', async () => {
+    const page = await newE2EPage();
+    await page.setViewport({
+      width: 1140,
+      height: 800
+    });
+    await page.setContent(`
+    <gcds-site-menu menu-desktop-layout="sidebar" menu-mobile-layout="drawer" lang="en">
+      <ul>
+        <li>
+          <a href="/page">Menu item 01</a>
+        </li>
+        <li>
+          <a href="/page">Menu item 02</a>
+        </li>
+        <li>
+          <a href="/page">Menu item 03</a>
+          <ul>
+            <li>
+              <a href="/page">SubMenu item 01</a>
+            </li>
+            <li>
+              <a href="/page">SubMenu item 02</a>
+            </li>
+            <li>
+              <a href="/page">SubMenu item 03</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </gcds-site-menu>`);
+
+    await page.keyboard.press("Tab");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Menu item 01");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Menu item 02");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowRight");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 02");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 03");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Back");
+    await page.keyboard.press("Escape");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowRight");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
+    await page.keyboard.press("ArrowLeft");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowRight");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
+    await page.keyboard.press("ArrowUp");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Back");
+    await page.keyboard.press("Enter");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 01");
+  });
+
+  it('Keyboard navigation - drawer', async () => {
+    const page = await newE2EPage();
+    await page.setViewport({
+      width: 480,
+      height: 800
+    });
+    await page.setContent(`
+    <gcds-site-menu menu-desktop-layout="topbar" menu-mobile-layout="drawer" lang="en">
+      <ul>
+        <li>
+          <a href="/page">Menu item 01</a>
+        </li>
+        <li>
+          <a href="/page">Menu item 02</a>
+        </li>
+        <li>
+          <a href="/page">Menu item 03</a>
+          <ul>
+            <li>
+              <a href="/page">SubMenu item 01</a>
+            </li>
+            <li>
+              <a href="/page">SubMenu item 02</a>
+            </li>
+            <li>
+              <a href="/page">SubMenu item 03</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </gcds-site-menu>`);
+
+    await page.keyboard.press("Tab");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("MenuClose");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Menu item 01");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Menu item 02");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowRight");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 02");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 03");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
+    await page.keyboard.press("Escape");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowRight");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("SubMenu item 01");
+    await page.keyboard.press("ArrowLeft");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Open or close Menu item 03's submenu.");
+    await page.keyboard.press("ArrowDown");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("MenuClose");
     await page.keyboard.press("ArrowDown");
     expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual("Menu item 01");
   });
