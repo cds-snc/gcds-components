@@ -1,10 +1,10 @@
 :host .banner-verify {
   font-size: var( --gcds-font-sizes-caption);
-  background-color: var(--gcds-color-grayscale-100);
+  background-color: var(--gcds-verify-banner-background);
 
   /* Is Fixed */
   &.is-fixed {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     z-index: 9999;
@@ -65,11 +65,11 @@
       flex: 0 0 auto;
       pointer-events: none;
       font-weight: var(--gcds-font-weights-bold);
-      color: var(--gcds-color-blue-500);
+      color: var(--gcds-verify-banner-toggle-text);
       text-decoration: underline;
 
       .svg-container path {
-        fill: var(--gcds-color-blue-500);
+        fill: var(--gcds-verify-banner-toggle-text);
       }
     }
   }
@@ -78,7 +78,7 @@
     margin: 0 auto;
     padding-top: var(--gcds-spacing-400);
     padding-bottom: var(--gcds-spacing-200);
-    border-top: 1px solid var(--gcds-color-grayscale-400);
+    border-top: 1px solid var(--gcds-verify-banner-border);
 
     li {
       list-style: none;

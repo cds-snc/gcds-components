@@ -15,14 +15,14 @@ export class GcdsVerifyBanner {
   private lang: string;
 
   /**
-   * Specifies if the label is hidden or not.
-   */
-  @Prop() isFixed?: boolean;
-
-  /**
    * Defines the max width of the banner content
    */
   @Prop() maxContentWidth?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'lg';
+
+  /**
+   * Defines if the banner's position is fixed.
+   */
+  @Prop() positionFixed?: boolean;
 
   async componentWillLoad() {
     // Define lang attribute
@@ -30,11 +30,11 @@ export class GcdsVerifyBanner {
   }
 
   render() {
-    const { isFixed, lang, maxContentWidth } = this;
+    const { lang, maxContentWidth, positionFixed } = this;
 
     return (
       <Host>
-        <details class={`banner-verify ${isFixed ? 'is-fixed' : ''}`}>
+        <details class={`banner-verify ${positionFixed ? 'is-fixed' : ''}`}>
           <summary
             class={maxContentWidth ? `container-${maxContentWidth}` : ''}
             aria-expanded="false"

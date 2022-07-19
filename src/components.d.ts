@@ -424,13 +424,13 @@ export namespace Components {
     }
     interface GcdsVerifyBanner {
         /**
-          * Specifies if the label is hidden or not.
-         */
-        "isFixed"?: boolean;
-        /**
           * Defines the max width of the banner content
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "positionFixed"?: boolean;
     }
 }
 declare global {
@@ -1000,13 +1000,13 @@ declare namespace LocalJSX {
     }
     interface GcdsVerifyBanner {
         /**
-          * Specifies if the label is hidden or not.
-         */
-        "isFixed"?: boolean;
-        /**
           * Defines the max width of the banner content
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "positionFixed"?: boolean;
     }
     interface IntrinsicElements {
         "gcds-banner": GcdsBanner;
