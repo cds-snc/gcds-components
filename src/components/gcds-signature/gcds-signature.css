@@ -5,27 +5,27 @@ gcds-signature {
 
   &:not([type='wordmark']) {
     svg {
-      height: 30px;
+      height: 1.875rem;
       margin-bottom: var(--gcds-spacing-100);
     }
 
     @media screen and (min-width: 768px) {
       svg {
-        height: 27px;
+        height: 1.6875rem;
       }
     }
     @media screen and (min-width: 64em) {
       svg {
-        height: 34px;
+        height: 2.125rem;
       }
     }
   }
 
   &[type='wordmark'] {
     svg {
-      height: 40px;
-      margin-bottom: 2em;
-      margin-top: 20px;
+      height: var(--gcds-spacing-500);
+      margin-bottom: var(--gcds-spacing-500);
+      margin-top: var(--gcds-spacing-400);
       width: auto;
     }
   }
@@ -33,10 +33,10 @@ gcds-signature {
   &:not([variant='white']) {
     svg {
       .fip_text {
-        fill: #000;
+        fill: var( --gcds-signature-color-text);
       }
       .fip_flag {
-        fill: #F00;
+        fill: var(--gcds-signature-color-flag);
       }
     }
   }
@@ -45,7 +45,7 @@ gcds-signature {
     svg {
       .fip_text,
       .fip_flag {
-        fill: #FFF;
+        fill: var(--gcds-signature-white-default);
       }
     }
   }
