@@ -98,6 +98,48 @@ export namespace Components {
          */
         "target": string | undefined;
     }
+    interface GcdsCheckbox {
+        /**
+          * Id attribute for an input element.
+         */
+        "checkboxId": string;
+        /**
+          * Specifies if an input element is checked.
+         */
+        "checked": boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled": boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage": string;
+        /**
+          * Specifies if the input is invalid.
+         */
+        "hasError": boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint": string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for an input element.
+         */
+        "name": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required": boolean;
+        /**
+          * Value for an input element.
+         */
+        "value": string;
+    }
     interface GcdsErrorMessage {
         /**
           * Error message for an invalid form field.
@@ -264,6 +306,44 @@ export namespace Components {
          */
         "href": string;
     }
+    interface GcdsRadio {
+        /**
+          * Specifies if an input element is checked.
+         */
+        "checked": boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled": boolean;
+        /**
+          * Specifies if the input is invalid.
+         */
+        "hasError": boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint": string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for an input element.
+         */
+        "name": string;
+        /**
+          * Id attribute for an input element.
+         */
+        "radioId": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required": boolean;
+        /**
+          * Value for an input element.
+         */
+        "value": string;
+    }
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -356,6 +436,12 @@ declare global {
         prototype: HTMLGcdsButtonElement;
         new (): HTMLGcdsButtonElement;
     };
+    interface HTMLGcdsCheckboxElement extends Components.GcdsCheckbox, HTMLStencilElement {
+    }
+    var HTMLGcdsCheckboxElement: {
+        prototype: HTMLGcdsCheckboxElement;
+        new (): HTMLGcdsCheckboxElement;
+    };
     interface HTMLGcdsErrorMessageElement extends Components.GcdsErrorMessage, HTMLStencilElement {
     }
     var HTMLGcdsErrorMessageElement: {
@@ -404,6 +490,12 @@ declare global {
         prototype: HTMLGcdsLangToggleElement;
         new (): HTMLGcdsLangToggleElement;
     };
+    interface HTMLGcdsRadioElement extends Components.GcdsRadio, HTMLStencilElement {
+    }
+    var HTMLGcdsRadioElement: {
+        prototype: HTMLGcdsRadioElement;
+        new (): HTMLGcdsRadioElement;
+    };
     interface HTMLGcdsSignatureElement extends Components.GcdsSignature, HTMLStencilElement {
     }
     var HTMLGcdsSignatureElement: {
@@ -425,6 +517,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "gcds-banner": HTMLGcdsBannerElement;
         "gcds-button": HTMLGcdsButtonElement;
+        "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
         "gcds-footer": HTMLGcdsFooterElement;
         "gcds-grid": HTMLGcdsGridElement;
@@ -433,6 +526,7 @@ declare global {
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
+        "gcds-radio": HTMLGcdsRadioElement;
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
@@ -534,6 +628,48 @@ declare namespace LocalJSX {
           * The target attribute specifies where to open the linked document
          */
         "target"?: string | undefined;
+    }
+    interface GcdsCheckbox {
+        /**
+          * Id attribute for an input element.
+         */
+        "checkboxId": string;
+        /**
+          * Specifies if an input element is checked.
+         */
+        "checked"?: boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage"?: string;
+        /**
+          * Specifies if the input is invalid.
+         */
+        "hasError"?: boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint"?: string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for an input element.
+         */
+        "name": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Value for an input element.
+         */
+        "value"?: string;
     }
     interface GcdsErrorMessage {
         /**
@@ -713,6 +849,48 @@ declare namespace LocalJSX {
          */
         "href": string;
     }
+    interface GcdsRadio {
+        /**
+          * Specifies if an input element is checked.
+         */
+        "checked"?: boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies if the input is invalid.
+         */
+        "hasError"?: boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint"?: string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for an input element.
+         */
+        "name": string;
+        /**
+          * Emitted when the radio button is checked
+         */
+        "onGcdsRadioChange"?: (event: CustomEvent<void>) => void;
+        /**
+          * Id attribute for an input element.
+         */
+        "radioId": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Value for an input element.
+         */
+        "value"?: string;
+    }
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -806,6 +984,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "gcds-banner": GcdsBanner;
         "gcds-button": GcdsButton;
+        "gcds-checkbox": GcdsCheckbox;
         "gcds-error-message": GcdsErrorMessage;
         "gcds-footer": GcdsFooter;
         "gcds-grid": GcdsGrid;
@@ -814,6 +993,7 @@ declare namespace LocalJSX {
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
+        "gcds-radio": GcdsRadio;
         "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
         "gcds-textarea": GcdsTextarea;
@@ -825,6 +1005,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gcds-banner": LocalJSX.GcdsBanner & JSXBase.HTMLAttributes<HTMLGcdsBannerElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
+            "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
@@ -833,6 +1014,7 @@ declare module "@stencil/core" {
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;

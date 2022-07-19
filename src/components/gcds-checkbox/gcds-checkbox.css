@@ -1,0 +1,117 @@
+:host {
+  .gcds-checkbox-wrapper {
+    max-width: 90%;
+    font-family: var(--gcds-font-families-body), sans-serif;
+    font-weight: var(--gcds-font-weights-regular);
+    font-size: var(--gcds-font-sizes-paragraph);
+    line-height: var(--gcds-line-heights-paragraph);
+    color: var(--gcds-checkbox-default-text);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: color ease-in-out 0.15s;
+
+    position: relative;
+    margin-bottom: var(--gcds-spacing-400);
+    margin-top: 1.75rem;
+
+    &:focus-within {
+      color: var(--gcds-checkbox-focus-text);
+    }
+
+    &.gcds-disabled {
+      color: var(--gcds-checkbox-disabled-text);
+
+      input[type=checkbox] + gcds-label {
+        color: var(--gcds-checkbox-disabled-text);
+        &:before {
+          border-color: currentcolor;
+          background-color: var(--gcds-checkbox-disabled-background);
+          cursor: not-allowed;
+        }
+        &:after {
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    &.gcds-error:not(:focus-within) {
+      color: var(--gcds-checkbox-destructive-text);
+
+      input[type=checkbox] + gcds-label {
+        &:before {
+          border-color: currentcolor;
+        }
+        &:after {
+          color: var(--gcds-checkbox-destructive-text);
+        }
+      }
+    }
+
+    input[type=checkbox] {
+      height: var(--gcds-spacing-500);
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: var(--gcds-spacing-500);
+
+      &:checked + gcds-label:after {
+        opacity: 1;
+      }
+
+      &+ gcds-label {
+        width: fit-content; 
+        &:before, &:after {
+          cursor: pointer;
+          position: absolute;
+          content: "";
+        }
+        &:before {
+          border: 0.125rem solid currentcolor;
+          height: var(--gcds-spacing-500);
+          width: var(--gcds-spacing-500);
+          left: 0;
+          top: -0.5rem;
+          border-radius: var(--gcds-spacing-50);
+        }
+        &:after {
+          border: 0.3125rem solid;
+          border-left: 0;
+          border-top: 0;
+          height: var(--gcds-spacing-400);
+          width: var(--gcds-spacing-300);
+          color: currentcolor;
+          left: 1rem;
+          opacity: 0;
+          top: -0.125rem;
+          transform: rotate(40deg);
+          transition: opacity .2s ease-in-out;
+        }
+      }
+
+      &:focus + gcds-label {
+        &:before {
+          box-shadow: 0 0 0 0.125rem var(--gcds-checkbox-focus-shadow);
+          outline: 0.1875rem solid currentcolor;
+          outline-offset: 0.125rem;
+          border-color: currentcolor;
+        }
+        &:after {
+          color: var(--gcds-checkbox-focus-text);
+        }
+      }
+    }
+
+    gcds-label,
+    gcds-hint {
+      display: block;
+      padding: 0 0 0 var(--gcds-spacing-600);
+    }
+    gcds-error-message {
+      display:inline-block;
+      padding: 0 0 0 var(--gcds-spacing-600);
+    }
+
+  }
+}

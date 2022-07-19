@@ -1,0 +1,113 @@
+:host {
+  .gcds-radio-wrapper {
+    max-width: 90%;
+    font-family: var(--gcds-font-families-body), sans-serif;
+    font-weight: var(--gcds-font-weights-regular);
+    font-size: var(--gcds-font-sizes-paragraph);
+    line-height: var(--gcds-line-heights-paragraph);
+    color: var(--gcds-radio-default-text);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: color ease-in-out 0.15s;
+
+    position: relative;
+    margin-bottom: var(--gcds-spacing-400);
+    margin-top: 1.75rem;
+
+    &:focus-within {
+      color: var(--gcds-radio-focus-text);
+    }
+
+    &.gcds-disabled {
+      color: var(--gcds-radio-disabled-text);
+
+      input[type=radio]+gcds-label {
+        color: var(--gcds-radio-disabled-text);
+        &:before {
+          border-color: var(--gcds-radio-disabled-border);
+          background-color: var(--gcds-radio-disabled-background);
+          cursor: not-allowed;
+        }
+        &:after {
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    &.gcds-error:not(:focus-within) {
+      color: var(--gcds-radio-destructive-text);
+
+      input[type=radio] + gcds-label {
+        &:before {
+          border-color: currentcolor;
+        }
+        &:after {
+          color: currentcolor;
+          background-color: currentcolor;
+        }
+      }
+    }
+
+    input[type=radio] {
+      height: var(--gcds-spacing-500);
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: var(--gcds-spacing-500);
+
+      &:checked + gcds-label:after {
+        opacity: 1;
+      }
+
+      &+ gcds-label {
+        width: fit-content;
+        &:before, &:after {
+          position: absolute;
+          cursor: pointer;
+          border-radius: var(--gcds-spacing-500);
+          content: "";
+        }
+        &:before {
+          border: 0.125rem solid currentcolor;
+          height: var(--gcds-spacing-500);
+          width: var(--gcds-spacing-500);
+          left: 0;
+          top: -0.5rem;
+        }
+        &:after {
+          border: 0.25rem solid;
+          height: 0.875rem;
+          width: 0.875rem;
+          color: currentcolor;
+          left: 0.75rem;
+          opacity: 0;
+          top: 0.1875rem;
+          background-color: currentcolor;
+          transition: opacity .2s ease-in-out;
+        }
+      }
+
+      &:focus + gcds-label {
+        color: var(--gcds-radio-focus-text);
+        &:before {
+          box-shadow: 0 0 0 0.125rem var(--gcds-radio-focus-shadow);
+          outline: 0.1875rem solid currentcolor;
+          outline-offset: 0.125rem;
+          border-color: currentcolor;
+        }
+        &:after {
+          color: var(--gcds-radio-focus-text);
+          background-color: currentcolor;
+        }
+      }
+    }
+
+    gcds-label,
+    gcds-hint {
+      display: block;
+      padding: 0 0 0 var(--gcds-spacing-600);
+    }
+  }
+}

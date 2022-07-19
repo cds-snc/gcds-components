@@ -11,6 +11,7 @@ export class GcdsLabel {
   @Element() el: HTMLElement;
 
   private lang: string;
+  private focusEl?: HTMLElement;
 
   /**
    * Specifies if the label is hidden or not.
@@ -37,15 +38,34 @@ export class GcdsLabel {
     this.lang = assignLanguage(this.el);
   }
 
+  /**
+   * Click label if host element is clicked
+   */
+  private clickEl() {
+    if (this.focusEl) {
+      this.focusEl.click();
+    }
+  }
+
+  private onClick = (ev: any) => {
+    if (ev.srcElement.tagName == "GCDS-LABEL") {
+      this.clickEl();
+    }
+  };
+
   render() {
     const { hideLabel, labelFor, label, required, lang } = this;
     const requiredText = lang == "en" ? "required" : "obligatoire";
 
     return (
-      <Host id={`label-for-${labelFor}`}>
+      <Host
+        id={`label-for-${labelFor}`}
+        onClick={this.onClick}
+      >
         <label
           htmlFor={labelFor}
           class={`${hideLabel ? 'hidden' : ''} ${required ? 'required' : ''}`}
+          ref={(focusEl) => (this.focusEl = focusEl)}
         >
           <span>{label}</span>
           {required ?
