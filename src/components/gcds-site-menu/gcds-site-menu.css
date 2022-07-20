@@ -361,10 +361,10 @@
         top: 0;
         height: 100%;
         transform: translate(100%);
-        background-color: var(--gcds-site-menu-sidebar-submenu-background);
+        background-color: var(--gcds-site-menu-submenu-background);
         box-shadow: 0px 0px 4px var(--gcds-site-menu-submenu-box-shadow);
         [data-h2-menulist] {
-          background-color: var(--gcds-site-menu-sidebar-submenu-background);
+          background-color: var(--gcds-site-menu-submenu-background);
         }
       }
     }
