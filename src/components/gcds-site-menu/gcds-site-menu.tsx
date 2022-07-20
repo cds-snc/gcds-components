@@ -260,6 +260,7 @@ export class GcdsSiteMenu {
         }
         if (desktopLayout == "sidebar" && !hostElement.shadowRoot.querySelector("[data-sidebar-backdrop]").hasAttribute("hidden")) {
           hostElement.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+          document.querySelector("body").style.removeProperty("overflow");
         }
 
         hostElement.shadowRoot.querySelector("[data-h2-menu-container]").setAttribute("data-mobile", "");

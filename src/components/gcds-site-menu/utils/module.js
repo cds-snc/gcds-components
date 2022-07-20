@@ -38,6 +38,7 @@ function h2MenuCloseOpenSubmenusHandler(menuWrapper) {
 
   if (menuWrapper.getAttribute("menu-desktop-layout") == "sidebar" && !menuWrapper.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
     menuWrapper.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+    document.querySelector("body").style.removeProperty("overflow");
   }
 }
 
@@ -298,6 +299,7 @@ function h2MenuOpenSubmenuHandler(trigger) {
 
     // Show backdrop
     hostElement.shadowRoot.querySelector("[data-sidebar-backdrop]").removeAttribute("hidden");
+    document.querySelector("body").style.overflow = "hidden";
   }
 }
 
@@ -385,6 +387,7 @@ function h2MenuCloseSubmenuHandler(trigger) {
   var hostElement = triggerParent.closest("[data-h2-menu]").parentNode.host;
   if (hostElement.getAttribute("menu-desktop-layout") == "sidebar" && triggerParent.parentNode.parentNode.hasAttribute("data-h2-menu-container") && !triggerParent.parentNode.parentNode.hasAttribute("data-mobile")) {
     triggerParent.closest("[data-h2-menu]").parentNode.host.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+    document.querySelector("body").style.removeProperty("overflow");
   }
 }
 
@@ -466,6 +469,7 @@ function menuBackCloseSubmenuHandler(trigger) {
   }
   if (triggerParent.parentNode.parentNode.hasAttribute("data-h2-menu-container")) {
     triggerParent.closest("[data-h2-menu]").parentNode.host.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
+    document.querySelector("body").style.removeProperty("overflow");
   }
 }
 
