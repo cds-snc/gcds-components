@@ -83,12 +83,16 @@
     li {
       list-style: none;
       margin: 0 0 var(--gcds-spacing-400);
-    }
 
-    h4,
-    p {
-      width: 90%;
-      max-width: var(--gcds-container-200);
+      h4,
+      p {
+        width: 90%;
+        max-width: var(--gcds-container-200);
+      }
+
+      p .svg-container {
+        margin-inline: var(--gcds-spacing-50);
+      }
     }
 
     h4 {

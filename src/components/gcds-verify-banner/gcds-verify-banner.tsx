@@ -3,6 +3,7 @@ import { assignLanguage } from '../../utils/utils';
 
 import CanadaFlag from './assets/canada-flag.svg';
 import ContentToggleArrow from './assets/content-toggle-arrow.svg';
+import Lock from './assets/lock.svg';
 
 @Component({
   tag: 'gcds-verify-banner',
@@ -42,34 +43,52 @@ export class GcdsVerifyBanner {
           >
             <span class='svg-container' innerHTML={CanadaFlag} />
             <p>
-              <small>{lang === 'en' ? 'An official website of the Government of Canada' : 'TO DO french content'}</small>
+              <small>{lang === 'en' ? 'An official website of the Government of Canada.' : 'Les sites Web officiels du gouvernement du Canada'}</small>
               <a class="content-toggle">
-                <small>{lang === 'en' ? 'Find out how to recognize them' : 'TO DO french content'}</small>
+                <small>{lang === 'en' ? 'Learn to recognize one' : 'Comment les reconnaître'}</small>
                 <span class='svg-container' innerHTML={ContentToggleArrow} />
               </a>
             </p>
           </summary>
           <div class={`verify-content ${maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
+            <p><small>{lang === 'en' ? 'It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:' : 'Il peut être difficile de savoir quels sites sont fiables. Avant de partager des renseignements, vérifiez les points suivant pour déterminer s\'il s\'agit bien d\'un site du gouvernement du Canada:'}</small></p>
+            <br/>
             {lang === 'en' ?
               <gcds-grid grid-tag="ul" grid-container="lg" grid-template-columns="1fr" grid-template-columns-tablet={maxContentWidth != 'xs' ? '1fr 1fr' : '1fr'}>
                 <li>
-                  <h4>Official websites use canada.ca or gc.ca</h4>
-                  <p><small>Federal government websites most often either use canada.ca or gc.ca. Before sharing sensitive information, make sure you're on a federal government site.</small></p>
+                  <h4>Canada.ca or gc.ca</h4>
+                  <p><small>Government of Canada website's normally use Canada.ca or gc.ca in the URL.</small></p>
                 </li>
                 <li>
-                  <h4>Secure Government of Canada websites use HTTPS</h4>
-                  <p><small>The https:// ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.</small></p>
+                  <h4>Available in both of Canada's Official Languages</h4>
+                  <p><small>Information will be available in both English and French.</small></p>
+                </li>
+                <li>
+                  <h4>A padlock icon and HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container' innerHTML={Lock} /> in the address bar.</small></p>
+                </li>
+                <li>
+                  <h4>A point of contact</h4>
+                  <p><small>Contact information will have Canada.ca, gc.ca, or the department name in the email address.</small></p>
                 </li>
               </gcds-grid>
             :
               <gcds-grid grid-tag="ul" grid-container="lg" grid-template-columns="1fr" grid-template-columns-tablet={maxContentWidth != 'xs' ? '1fr 1fr' : '1fr'}>
                 <li>
-                  <h4>TO DO french content</h4>
-                  <p><small>TO DO french content</small></p>
+                  <h4>Canada.ca ou gc.ca</h4>
+                  <p><small>On retrouve normalement Canada.ca ou gc.ca dans l'adresse URL d'un site Web du gouvernement du Canada.</small></p>
                 </li>
                 <li>
-                  <h4>TO DO french content</h4>
-                  <p><small>TO DO french content</small></p>
+                  <h4>Offert dans les deux langues officielles</h4>
+                  <p><small>Vérifiez que les renseignements sont accessibles en français et en anglais.</small></p>
+                </li>
+                <li>
+                  <h4>Une icône de cadenas et HTTPS</h4>
+                  <p><small>Lorsqu'un navigateur affiche les sites Web sécuritaires du gouvernement du Canada, on retrouve <strong>https://</strong> et <span class='svg-container' innerHTML={Lock} /> dans la barre URL.</small></p>
+                </li>
+                <li>
+                  <h4>Un point de communication</h4>
+                  <p><small>On retrouve Canada.ca, gc.ca ou le nom du ministère dans l'URL de toute adresse courriel du gouvernement du Canada.</small></p>
                 </li>
               </gcds-grid>
             }
