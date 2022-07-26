@@ -422,6 +422,16 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GcdsVerifyBanner {
+        /**
+          * Defines the max width of the banner content
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "positionFixed"?: boolean;
+    }
 }
 declare global {
     interface HTMLGcdsBannerElement extends Components.GcdsBanner, HTMLStencilElement {
@@ -514,6 +524,12 @@ declare global {
         prototype: HTMLGcdsTextareaElement;
         new (): HTMLGcdsTextareaElement;
     };
+    interface HTMLGcdsVerifyBannerElement extends Components.GcdsVerifyBanner, HTMLStencilElement {
+    }
+    var HTMLGcdsVerifyBannerElement: {
+        prototype: HTMLGcdsVerifyBannerElement;
+        new (): HTMLGcdsVerifyBannerElement;
+    };
     interface HTMLElementTagNameMap {
         "gcds-banner": HTMLGcdsBannerElement;
         "gcds-button": HTMLGcdsButtonElement;
@@ -530,6 +546,7 @@ declare global {
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
+        "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
     }
 }
 declare namespace LocalJSX {
@@ -981,6 +998,16 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface GcdsVerifyBanner {
+        /**
+          * Defines the max width of the banner content
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "positionFixed"?: boolean;
+    }
     interface IntrinsicElements {
         "gcds-banner": GcdsBanner;
         "gcds-button": GcdsButton;
@@ -997,6 +1024,7 @@ declare namespace LocalJSX {
         "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
         "gcds-textarea": GcdsTextarea;
+        "gcds-verify-banner": GcdsVerifyBanner;
     }
 }
 export { LocalJSX as JSX };
@@ -1018,6 +1046,7 @@ declare module "@stencil/core" {
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
+            "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }
     }
 }
