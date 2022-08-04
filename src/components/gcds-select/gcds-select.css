@@ -1,0 +1,68 @@
+:host .gcds-select-wrapper {
+  max-width: 90%;
+  font-family: var(--gcds-font-families-body);
+  font-weight: var(--gcds-font-weights-regular);
+  font-size: var(--gcds-font-sizes-paragraph);
+  line-height: var(--gcds-line-heights-paragraph);
+  color: var(--gcds-select-default-text);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  transition: color ease-in-out .15s;
+
+  &:focus-within {
+    color: var(--gcds-select-focus-text);
+  }
+
+  &.gcds-disabled {
+    color: var(--gcds-select-disabled-text);
+  }
+
+  &.gcds-error:not(:focus-within) {
+    color: var(--gcds-input-destructive);
+
+    select {
+      border-color: var(--gcds-input-destructive);
+    }
+  }
+}
+
+:host select {
+  display: block;
+  min-width: var(--gcds-spacing-500);
+  max-width: 100%;
+  height: auto;
+  min-height: var(--gcds-spacing-500);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--gcds-line-heights-paragraph);
+  margin: 0 0 var(--gcds-spacing-400);
+  padding: var(--gcds-spacing-200) var(--gcds-spacing-500) var(--gcds-spacing-200) var(--gcds-spacing-300);
+  background-color: var(--gcds-select-default-background);
+  color: var(--gcds-select-default-text);
+  border: .125rem solid currentColor;
+  border-radius: var(--gcds-spacing-50);
+  box-sizing: border-box;
+  transition: all ease-in-out .15s;
+
+  /* Select arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg width='16' height='10' viewBox='0 0 16 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0.799988 0.900024L7.79999 7.90003L14.8 0.900024' stroke='currentColor' stroke-width='2'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: calc(100% -  var(--gcds-spacing-300));
+  background-position-y: 50%;
+
+  &:focus {
+    border-color: var(--gcds-select-focus-text);
+    box-shadow: 0 0 0 .125rem var(--gcds-select-focus-shadow);
+    outline: .1875rem solid var(--gcds-select-focus-text);
+    outline-offset: .125rem;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--gcds-select-disabled-background);
+    border-color: var(--gcds-select-disabled-text);
+  }
+}

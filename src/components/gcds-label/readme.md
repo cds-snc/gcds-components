@@ -22,6 +22,7 @@
  - [gcds-checkbox](../gcds-checkbox)
  - [gcds-input](../gcds-input)
  - [gcds-radio](../gcds-radio)
+ - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
 
 ### Graph
@@ -30,6 +31,7 @@ graph TD;
   gcds-checkbox --> gcds-label
   gcds-input --> gcds-label
   gcds-radio --> gcds-label
+  gcds-select --> gcds-label
   gcds-textarea --> gcds-label
   style gcds-label fill:#f9f,stroke:#333,stroke-width:4px
 ```

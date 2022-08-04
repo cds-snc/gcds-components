@@ -19,6 +19,7 @@
 
  - [gcds-checkbox](../gcds-checkbox)
  - [gcds-input](../gcds-input)
+ - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
 
 ### Graph
@@ -26,6 +27,7 @@
 graph TD;
   gcds-checkbox --> gcds-error-message
   gcds-input --> gcds-error-message
+  gcds-select --> gcds-error-message
   gcds-textarea --> gcds-error-message
   style gcds-error-message fill:#f9f,stroke:#333,stroke-width:4px
 ```
