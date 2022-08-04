@@ -344,6 +344,44 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GcdsSelect {
+        /**
+          * The default value is an optional value that gets displayed before the user selects an option.
+         */
+        "defaultValue": string;
+        /**
+          * Specifies if a select element is disabled or not.
+         */
+        "disabled": boolean;
+        /**
+          * Error message for an invalid select element.
+         */
+        "errorMessage": string;
+        /**
+          * Specifies if the select is invalid.
+         */
+        "hasError": boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint": string;
+        /**
+          * Form field label.
+         */
+        "label": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required": boolean;
+        /**
+          * Id attribute for a select element.
+         */
+        "selectId": string;
+        /**
+          * Value for a select element.
+         */
+        "value": string;
+    }
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -506,6 +544,12 @@ declare global {
         prototype: HTMLGcdsRadioElement;
         new (): HTMLGcdsRadioElement;
     };
+    interface HTMLGcdsSelectElement extends Components.GcdsSelect, HTMLStencilElement {
+    }
+    var HTMLGcdsSelectElement: {
+        prototype: HTMLGcdsSelectElement;
+        new (): HTMLGcdsSelectElement;
+    };
     interface HTMLGcdsSignatureElement extends Components.GcdsSignature, HTMLStencilElement {
     }
     var HTMLGcdsSignatureElement: {
@@ -543,6 +587,7 @@ declare global {
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
         "gcds-radio": HTMLGcdsRadioElement;
+        "gcds-select": HTMLGcdsSelectElement;
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
@@ -908,6 +953,48 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface GcdsSelect {
+        /**
+          * The default value is an optional value that gets displayed before the user selects an option.
+         */
+        "defaultValue"?: string;
+        /**
+          * Specifies if a select element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message for an invalid select element.
+         */
+        "errorMessage"?: string;
+        /**
+          * Specifies if the select is invalid.
+         */
+        "hasError"?: boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint"?: string;
+        /**
+          * Form field label.
+         */
+        "label": string;
+        /**
+          * Update value based on user selection.
+         */
+        "onGcdsSelectChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Id attribute for a select element.
+         */
+        "selectId": string;
+        /**
+          * Value for a select element.
+         */
+        "value"?: string;
+    }
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -1021,6 +1108,7 @@ declare namespace LocalJSX {
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
         "gcds-radio": GcdsRadio;
+        "gcds-select": GcdsSelect;
         "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
         "gcds-textarea": GcdsTextarea;
@@ -1043,6 +1131,7 @@ declare module "@stencil/core" {
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
             "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
+            "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
