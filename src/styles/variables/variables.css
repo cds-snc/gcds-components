@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 20 Jul 2022 14:28:23 GMT
+ * Generated on Tue, 02 Aug 2022 22:58:55 GMT
  */
 
 :root {
@@ -138,6 +138,13 @@
   --gcds-radio-disabled-text: #707070;
   --gcds-radio-focus-text: #303fc3;
   --gcds-radio-focus-shadow: #ffffff;
+  --gcds-select-default-background: #ffffff;
+  --gcds-select-default-text: #000000;
+  --gcds-select-destructive: #d3080c;
+  --gcds-select-disabled-background: #f0f0f0;
+  --gcds-select-disabled-text: #707070;
+  --gcds-select-focus-text: #303fc3;
+  --gcds-select-focus-shadow: #ffffff;
   --gcds-signature-color-flag: #ff0000;
   --gcds-signature-color-text: #000000;
   --gcds-signature-white-default: #ffffff;
