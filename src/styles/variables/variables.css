@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 04 Aug 2022 15:00:46 GMT
+ * Generated on Mon, 08 Aug 2022 19:05:56 GMT
  */
 
 :root {
@@ -115,6 +115,10 @@
   --gcds-error-message-background: #f3e9e8;
   --gcds-error-message-border: #d3080c;
   --gcds-error-message-text: #000000;
+  --gcds-fieldset-default-text: #000000;
+  --gcds-fieldset-destructive: #d3080c;
+  --gcds-fieldset-disabled-text: #707070;
+  --gcds-fieldset-focus: #303fc3;
   --gcds-footer-brand-background: #f8f8f8;
   --gcds-footer-brand-text: #000000;
   --gcds-footer-landscape-background: #26374a;
