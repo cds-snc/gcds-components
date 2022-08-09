@@ -45,7 +45,7 @@ export class GcdsFieldset {
   /**
    * Flag to disable fieldset and its contents
    */
-  @Prop({ reflect: true, mutable: false }) disabled: boolean;
+  @Prop({ reflect: true, mutable: true }) disabled: boolean;
 
   @Watch('disabled')
   validateDisabledFieldset() {
