@@ -150,6 +150,32 @@ export namespace Components {
          */
         "messageId": string;
     }
+    interface GcdsFieldset {
+        /**
+          * Flag to disable fieldset and its contents
+         */
+        "disabled": boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage": string;
+        /**
+          * The unique identifier for the component
+         */
+        "fieldsetId": string;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint": string;
+        /**
+          * The title for the contents of the fieldset
+         */
+        "legend": string;
+        /**
+          * Flag the contents are required
+         */
+        "required": boolean;
+    }
     interface GcdsFooter {
         /**
           * Top of page href
@@ -496,6 +522,12 @@ declare global {
         prototype: HTMLGcdsErrorMessageElement;
         new (): HTMLGcdsErrorMessageElement;
     };
+    interface HTMLGcdsFieldsetElement extends Components.GcdsFieldset, HTMLStencilElement {
+    }
+    var HTMLGcdsFieldsetElement: {
+        prototype: HTMLGcdsFieldsetElement;
+        new (): HTMLGcdsFieldsetElement;
+    };
     interface HTMLGcdsFooterElement extends Components.GcdsFooter, HTMLStencilElement {
     }
     var HTMLGcdsFooterElement: {
@@ -579,6 +611,7 @@ declare global {
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
+        "gcds-fieldset": HTMLGcdsFieldsetElement;
         "gcds-footer": HTMLGcdsFooterElement;
         "gcds-grid": HTMLGcdsGridElement;
         "gcds-header": HTMLGcdsHeaderElement;
@@ -742,6 +775,32 @@ declare namespace LocalJSX {
           * Id attribute for the error message.
          */
         "messageId"?: string;
+    }
+    interface GcdsFieldset {
+        /**
+          * Flag to disable fieldset and its contents
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage"?: string;
+        /**
+          * The unique identifier for the component
+         */
+        "fieldsetId": string;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint"?: string;
+        /**
+          * The title for the contents of the fieldset
+         */
+        "legend": string;
+        /**
+          * Flag the contents are required
+         */
+        "required"?: boolean;
     }
     interface GcdsFooter {
         /**
@@ -1100,6 +1159,7 @@ declare namespace LocalJSX {
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
         "gcds-error-message": GcdsErrorMessage;
+        "gcds-fieldset": GcdsFieldset;
         "gcds-footer": GcdsFooter;
         "gcds-grid": GcdsGrid;
         "gcds-header": GcdsHeader;
@@ -1123,6 +1183,7 @@ declare module "@stencil/core" {
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
             "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
             "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
