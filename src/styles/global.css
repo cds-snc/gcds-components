@@ -1,9 +1,8 @@
 /**
  * Do not edit directly
- * Generated on Tue, 02 Aug 2022 22:58:55 GMT
+ * Generated on Mon, 08 Aug 2022 19:27:38 GMT
  */
-
- :root {
+:root {
   --gcds-brand-default-text: #000000;
   --gcds-brand-focus: #303fc3;
   --gcds-brand-disabled-background: #f0f0f0;
@@ -57,7 +56,8 @@
   --gcds-spacing-800: 6.5rem;
   --gcds-spacing-900: 7.800000000000001rem;
   --gcds-spacing-1000: 9.1rem;
-  --gcds-base-font-size: 1.25; /* Sets base font size to 20px */
+  --gcds-base-font-size: 1.25;
+  /* Sets base font size to 20px */
   --gcds-base-line-height: 1.3;
   --gcds-base-scale: 1.125;
   --gcds-font-families-heading: Lato;
@@ -115,6 +115,10 @@
   --gcds-error-message-background: #f3e9e8;
   --gcds-error-message-border: #d3080c;
   --gcds-error-message-text: #000000;
+  --gcds-fieldset-default-text: #000000;
+  --gcds-fieldset-destructive: #d3080c;
+  --gcds-fieldset-disabled-text: #707070;
+  --gcds-fieldset-focus: #303fc3;
   --gcds-footer-brand-background: #f8f8f8;
   --gcds-footer-brand-text: #000000;
   --gcds-footer-landscape-background: #26374a;

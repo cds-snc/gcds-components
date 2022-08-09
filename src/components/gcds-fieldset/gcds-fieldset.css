@@ -1,0 +1,35 @@
+:host {
+  display: block;
+
+  fieldset {
+    border: none;
+    padding-top: 0;
+    color: var(--gcds-fieldset-default-text);
+
+    legend {
+      font-size: var(--gcds-font-sizes-paragraph);
+      font-weight: var(--gcds-font-weights-semibold);
+      color: inherit;
+      margin-bottom: var(--gcds-spacing-50);
+    }
+
+    &:focus-within {
+      color: var(--gcds-fieldset-focus);
+    }
+    &.gcds-error:not(:focus-within) {
+      color: var(--gcds-fieldset-destructive);
+    }
+    &:disabled {
+      color: var(--gcds-fieldset-disabled-text);
+    }
+  }
+
+  .required {
+    margin: 0 0 0 var(--gcds-spacing-100);
+  }
+
+  slot {
+    display: block;
+    margin: 0;
+  }
+}
