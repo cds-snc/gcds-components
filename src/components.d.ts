@@ -156,7 +156,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Error message for an invalid input element.
+          * Error message for invalid form elements in group.
          */
         "errorMessage": string;
         /**
@@ -164,7 +164,7 @@ export namespace Components {
          */
         "fieldsetId": string;
         /**
-          * Hint displayed below the label.
+          * Hint displayed below the legend.
          */
         "hint": string;
         /**
@@ -782,7 +782,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Error message for an invalid input element.
+          * Error message for invalid form elements in group.
          */
         "errorMessage"?: string;
         /**
@@ -790,7 +790,7 @@ declare namespace LocalJSX {
          */
         "fieldsetId": string;
         /**
-          * Hint displayed below the label.
+          * Hint displayed below the legend.
          */
         "hint"?: string;
         /**

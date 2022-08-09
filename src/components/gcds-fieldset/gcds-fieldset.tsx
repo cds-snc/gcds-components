@@ -26,7 +26,7 @@ export class GcdsFieldset {
    */
   @Prop({ reflect: true, mutable: false }) required: boolean;
   /**
-   * Error message for an invalid input element.
+   * Error message for invalid form elements in group.
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
 
@@ -38,7 +38,7 @@ export class GcdsFieldset {
   }
 
   /**
-    * Hint displayed below the label.
+    * Hint displayed below the legend.
     */
   @Prop({ reflect: true, mutable: false }) hint: string;
 
@@ -52,6 +52,19 @@ export class GcdsFieldset {
     if (this.required) {
       this.disabled = false;
     }
+    if (this.disabled == true) {
+      for (var i = 0; i < this.el.children.length; i++) {
+        this.el.children[i].setAttribute("disabled", "");
+      }
+    }
+  }
+  @Watch('disabled')
+  handleDisabledChange(newValue: boolean, _oldValue: boolean) {
+    if (_oldValue && newValue != _oldValue) {
+      for (var i = 0; i < this.el.children.length; i++) {
+        this.el.children[i].removeAttribute("disabled");
+      }
+    }
   }
 
   async componentWillLoad() {
@@ -60,12 +73,6 @@ export class GcdsFieldset {
 
     this.validateDisabledFieldset();
     this.validateErrorFieldset();
-
-    if (this.disabled) {
-      for (var i = 0; i < this.el.children.length; i++) {
-        this.el.children[i].setAttribute("disabled", "");
-      }
-    }
   }
 
   render() {
@@ -94,7 +101,7 @@ export class GcdsFieldset {
                 null
             }
           </legend>
-          {hint ? <gcds-hint hint={hint} hint-id={fieldsetId} />: null}
+          {hint ? <gcds-hint hint={hint} hint-id={fieldsetId} /> : null}
           {errorMessage ? <gcds-error-message message-id={fieldsetId} message={errorMessage} /> : null}
           <slot></slot>
         </fieldset>
