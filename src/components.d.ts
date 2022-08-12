@@ -266,6 +266,24 @@ export namespace Components {
          */
         "hintId": string;
     }
+    interface GcdsIcon {
+        /**
+          * Add margin to the left of the icon
+         */
+        "marginLeft"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Add margin to the right of the icon
+         */
+        "marginRight"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Name of the icon.
+         */
+        "name": string;
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    }
     interface GcdsInput {
         /**
           * Specifies if an input element is disabled or not.
@@ -552,6 +570,12 @@ declare global {
         prototype: HTMLGcdsHintElement;
         new (): HTMLGcdsHintElement;
     };
+    interface HTMLGcdsIconElement extends Components.GcdsIcon, HTMLStencilElement {
+    }
+    var HTMLGcdsIconElement: {
+        prototype: HTMLGcdsIconElement;
+        new (): HTMLGcdsIconElement;
+    };
     interface HTMLGcdsInputElement extends Components.GcdsInput, HTMLStencilElement {
     }
     var HTMLGcdsInputElement: {
@@ -616,6 +640,7 @@ declare global {
         "gcds-grid": HTMLGcdsGridElement;
         "gcds-header": HTMLGcdsHeaderElement;
         "gcds-hint": HTMLGcdsHintElement;
+        "gcds-icon": HTMLGcdsIconElement;
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
@@ -892,6 +917,24 @@ declare namespace LocalJSX {
          */
         "hintId"?: string;
     }
+    interface GcdsIcon {
+        /**
+          * Add margin to the left of the icon
+         */
+        "marginLeft"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Add margin to the right of the icon
+         */
+        "marginRight"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Name of the icon.
+         */
+        "name": string;
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    }
     interface GcdsInput {
         /**
           * Specifies if an input element is disabled or not.
@@ -1164,6 +1207,7 @@ declare namespace LocalJSX {
         "gcds-grid": GcdsGrid;
         "gcds-header": GcdsHeader;
         "gcds-hint": GcdsHint;
+        "gcds-icon": GcdsIcon;
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
@@ -1188,6 +1232,7 @@ declare module "@stencil/core" {
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
             "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
             "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
+            "gcds-icon": LocalJSX.GcdsIcon & JSXBase.HTMLAttributes<HTMLGcdsIconElement>;
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
