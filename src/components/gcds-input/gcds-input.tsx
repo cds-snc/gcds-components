@@ -1,5 +1,6 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, Listen, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
+import { Validator, defaultValidator, ValidatorEntry, getValidator } from '../../validators';
 
 @Component({
   tag: 'gcds-input',
@@ -24,7 +25,7 @@ export class GcdsInput {
   /**
    * Error message for an invalid input element.
    */
-  @Prop() errorMessage?: string;
+  @Prop({ mutable: true }) errorMessage?: string;
 
   /**
    * Specifies if the label is hidden or not.
@@ -67,6 +68,17 @@ export class GcdsInput {
    */
   @Prop({ mutable: true }) value: string;
 
+  /**
+   * Array of validators to run
+   */
+  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+
+  /**
+   * Set event to call validator
+   */
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' = 'blur';
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
   * Events
@@ -87,7 +99,14 @@ export class GcdsInput {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   private onBlur = () => {
+    if (this.validateOn == "blur" && (!this._validator.validate(this.value) && this._validator.errorMessage)) {
+      this.errorMessage = this._validator.errorMessage[this.lang];
+    } else {
+      this.errorMessage = "";
+    }
+
     this.gcdsBlur.emit();
+ 
   }
 
   /**
@@ -102,9 +121,31 @@ export class GcdsInput {
     this.gcdsChange.emit(this.value);
   }
 
+  @Listen("submit")
+  formSubmitHandler(e) {
+    console.log(e);
+
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    if (this.required && this.validator) {
+      this.validator.unshift("requiredInput");
+    } else {
+      this.validator= ["requiredInput"]
+    }
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
+  }
+
+  conponentWillUpdate() {
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
   }
 
   render() {

@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsBanner {
         /**
@@ -303,6 +304,14 @@ export namespace Components {
           * Set Input types
          */
         "type": 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit';
+        /**
+          * Array of validators to run
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Default value for an input element.
          */
@@ -941,6 +950,14 @@ declare namespace LocalJSX {
           * Set Input types
          */
         "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit';
+        /**
+          * Array of validators to run
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Default value for an input element.
          */

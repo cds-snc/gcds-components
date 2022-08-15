@@ -1,0 +1,69 @@
+export interface Validator<A> {
+    validate: (x: A) => boolean;
+    errorMessage?: object;
+}
+
+export interface ValidatorEntry {
+    name: string,
+    options?: any;
+}
+
+export const defaultValidator: Validator<any> = {
+    validate: (_x: any) => true
+}
+
+export function combineValidators<A>(v1: Validator<A>, v2: Validator<A>): Validator<A> {
+    let combined: Validator<A>;
+    combined = {
+        validate: (x: A) => {
+            const res1: boolean = v1.validate(x);
+            const res2: boolean = v2.validate(x);
+            if (!res1) {
+                combined.errorMessage = v1.errorMessage;
+            } else if (!res2) {
+                combined.errorMessage = v2.errorMessage;
+            }
+            return res1 && res2;
+        },
+    }
+    return combined;
+}
+
+export const FruitValidator: Validator<string> = {
+    validate: (value: string) => {
+        let fruits = ['banana', 'apple'];
+        return fruits.find(a => a === value) ? true : false;
+    },
+    errorMessage: { "en": "Error",  "fr": "Error french" }
+}
+
+export function getLengthValidator(min: number, max: number): Validator<string> {
+    // Create errorMessage object
+    let errorMessage = {};
+    if (min && max) {
+        errorMessage["en"] = `You must enter between ${min} and ${max} characters`;
+        errorMessage["fr"] = `French You must enter between ${min} and ${max} characters`;
+    } else if (min) {
+        errorMessage["en"] = `You must enter at least ${min} characters`;
+        errorMessage["fr"] = `French You must enter at least ${min} characters`;
+    } else if (max) {
+        errorMessage["en"] = `You must enter less than ${max} characters`;
+        errorMessage["fr"] = `French You must enter less than ${max} characters`;
+    }
+    return {
+        validate: (value: string) => {
+            value = value || '';
+            if (min && max) {
+                return min <= value.length && value.length <= max;
+            }
+            if (min) {
+                return min <= value.length;
+            }
+            if (max) {
+                return value.length <= max;
+            } 
+            return true;
+        },
+        errorMessage
+    };
+}
