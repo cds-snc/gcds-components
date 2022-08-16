@@ -1,0 +1,99 @@
+@import url('https://unpkg.com/font-awesome/css/font-awesome.min.css');
+
+:host .gcds-icon {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+
+  /* Margin left */
+  &.ml-spacing-50 {
+    margin-left: var(--gcds-spacing-50);
+  }
+  &.ml-spacing-100 {
+    margin-left: var(--gcds-spacing-100);
+  }
+  &.ml-spacing-200 {
+    margin-left: var(--gcds-spacing-200);
+  }
+  &.ml-spacing-300 {
+    margin-left: var(--gcds-spacing-300);
+  }
+  &.ml-spacing-400 {
+    margin-left: var(--gcds-spacing-400);
+  }
+  &.ml-spacing-500 {
+    margin-left: var(--gcds-spacing-500);
+  }
+  &.ml-spacing-600 {
+    margin-left: var(--gcds-spacing-600);
+  }
+  &.ml-spacing-700 {
+    margin-left: var(--gcds-spacing-700);
+  }
+  &.ml-spacing-800 {
+    margin-left: var(--gcds-spacing-800);
+  }
+  &.ml-spacing-900 {
+    margin-left: var(--gcds-spacing-900);
+  }
+  &.ml-spacing-1000 {
+    margin-left: var(--gcds-spacing-1000);
+  }
+
+  /* Margin right */
+  &.mr-spacing-50 {
+    margin-right: var(--gcds-spacing-50);
+  }
+  &.mr-spacing-100 {
+    margin-right: var(--gcds-spacing-100);
+  }
+  &.mr-spacing-200 {
+    margin-right: var(--gcds-spacing-200);
+  }
+  &.mr-spacing-300 {
+    margin-right: var(--gcds-spacing-300);
+  }
+  &.mr-spacing-400 {
+    margin-right: var(--gcds-spacing-400);
+  }
+  &.mr-spacing-500 {
+    margin-right: var(--gcds-spacing-500);
+  }
+  &.mr-spacing-600 {
+    margin-right: var(--gcds-spacing-600);
+  }
+  &.mr-spacing-700 {
+    margin-right: var(--gcds-spacing-700);
+  }
+  &.mr-spacing-800 {
+    margin-right: var(--gcds-spacing-800);
+  }
+  &.mr-spacing-900 {
+    margin-right: var(--gcds-spacing-900);
+  }
+  &.mr-spacing-1000 {
+    margin-right: var(--gcds-spacing-1000);
+  }
+
+  /* Size */
+  &.size-xs {
+    font-size: var(--gcds-font-sizes-caption);
+    line-height: var(--gcds-line-heights-caption);
+  }
+  &.size-sm {
+    font-size: var(--gcds-font-sizes-paragraph);
+    line-height: var(--gcds-line-heights-paragraph);
+  }
+  &.size-md {
+    font-size: var(--gcds-font-sizes-h5);
+    line-height: var(--gcds-line-heights-h5);
+  }
+  &.size-lg {
+    font-size: var(--gcds-font-sizes-h3);
+    line-height: var(--gcds-line-heights-h3);
+  }
+  &.size-xl {
+    font-size: var(--gcds-font-sizes-h1);
+    line-height: var(--gcds-line-heights-h1);
+  }
+}
