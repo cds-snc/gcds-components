@@ -305,11 +305,15 @@ export namespace Components {
          */
         "type": 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
         /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
           * Set event to call validator
          */
-        "validateOn": 'blur' | 'submit';
+        "validateOn": 'blur' | 'submit' | 'other';
         /**
-          * Array of validators to run
+          * Array of validators
          */
         "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
@@ -490,6 +494,18 @@ export namespace Components {
           * Id + name attribute for a textarea element.
          */
         "textareaId": string;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Default value for an input element.
          */
@@ -953,9 +969,9 @@ declare namespace LocalJSX {
         /**
           * Set event to call validator
          */
-        "validateOn"?: 'blur' | 'submit';
+        "validateOn"?: 'blur' | 'submit' | 'other';
         /**
-          * Array of validators to run
+          * Array of validators
          */
         "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
@@ -1156,6 +1172,14 @@ declare namespace LocalJSX {
           * Id + name attribute for a textarea element.
          */
         "textareaId"?: string;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Default value for an input element.
          */

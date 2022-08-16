@@ -1,6 +1,6 @@
-import { Component, Element, Event, Listen, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, Watch, EventEmitter, Method, Host, Prop, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator } from '../../validators';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
   tag: 'gcds-input',
@@ -12,6 +12,8 @@ export class GcdsInput {
   @Element() el: HTMLElement;
 
   private lang: string;
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * Input props
@@ -69,16 +71,22 @@ export class GcdsInput {
   @Prop({ mutable: true }) value: string;
 
   /**
-   * Array of validators to run
+   * Array of validators
    */
   @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+
+
+  @Watch('validator')
+  validateValidator() {
+    if (this.validator && !this.validateOn) {
+      this.validateOn = "blur";
+    }
+  }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' = 'blur';
-
-  _validator: Validator<string> = defaultValidator;
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
   * Events
@@ -99,10 +107,8 @@ export class GcdsInput {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   private onBlur = () => {
-    if (this.validateOn == "blur" && (!this._validator.validate(this.value) && this._validator.errorMessage)) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-    } else {
-      this.errorMessage = "";
+    if (this.validateOn == "blur") {
+      this.validate();
     }
 
     this.gcdsBlur.emit();
@@ -114,6 +120,18 @@ export class GcdsInput {
     */
   @Event() gcdsChange: EventEmitter;
 
+  /**
+    * Call any active validators
+    */
+  @Method()
+  async validate() {
+    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
+      this.errorMessage = this._validator.errorMessage[this.lang];
+    } else {
+      this.errorMessage = "";
+    }
+  }
+
   handleChange(e) {
     let val = e.target && e.target.value;
 
@@ -121,28 +139,19 @@ export class GcdsInput {
     this.gcdsChange.emit(this.value);
   }
 
-  @Listen("submit")
-  formSubmitHandler(e) {
-    console.log(e);
-
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    if (this.required && this.validator) {
-      this.validator.unshift("requiredInput");
-    } else {
-      this.validator= ["requiredInput"]
-    }
+    // Assign required validator if needed
+    requiredValidator(this.el, "input");
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
   }
 
-  conponentWillUpdate() {
+  componentWillUpdate() {
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }

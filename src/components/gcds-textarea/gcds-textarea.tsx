@@ -1,5 +1,6 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, Method, Watch, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
   tag: 'gcds-textarea',
@@ -11,6 +12,8 @@ export class GcdsTextarea {
   @Element() el: HTMLElement;
 
   private lang: string;
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * Textarea props
@@ -29,7 +32,7 @@ export class GcdsTextarea {
   /**
    * Error message for an invalid textarea element.
    */
-  @Prop() errorMessage?: string;
+  @Prop({ mutable: true }) errorMessage?: string;
 
   /**
    * Specifies if the label is hidden or not.
@@ -71,6 +74,22 @@ export class GcdsTextarea {
    */
   @Prop({ mutable: true }) value: string;
 
+  /**
+   * Array of validators
+   */
+  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+
+  @Watch('validator')
+  validateValidator() {
+    if (this.validator && !this.validateOn) {
+      this.validateOn = "blur";
+    }
+  }
+
+  /**
+   * Set event to call validator
+   */
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
   * Events
@@ -91,6 +110,10 @@ export class GcdsTextarea {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   private onBlur = () => {
+    if (this.validateOn == "blur") {
+      this.validate();
+    }
+
     this.gcdsBlur.emit();
   }
 
@@ -98,6 +121,18 @@ export class GcdsTextarea {
     * Update value based on user input.
     */
   @Event() gcdsChange: EventEmitter;
+
+  /**
+  * Call any active validators
+  */
+  @Method()
+  async validate() {
+    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
+      this.errorMessage = this._validator.errorMessage[this.lang];
+    } else {
+      this.errorMessage = "";
+    }
+  }
 
   handleChange(e) {
     let val = e.target && e.target.value;
@@ -109,6 +144,19 @@ export class GcdsTextarea {
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    // Assign required validator if needed
+    requiredValidator(this.el, "input");
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
   }
 
   render() {

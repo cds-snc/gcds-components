@@ -29,6 +29,27 @@ export function combineValidators<A>(v1: Validator<A>, v2: Validator<A>): Valida
     return combined;
 }
 
+export function requiredValidator(element, type) {
+    if (element.required) {
+        switch(type) {
+            case("input"):
+              if (element.validator) {
+                element.validator.unshift("requiredInput");
+              } else {
+                element.validator= ["requiredInput"]
+              }
+              break;
+            case("checkbox"):
+              if (element.validator) {
+                element.validator.unshift("requiredCheck");
+              } else {
+                element.validator= ["requiredCheck"]
+              }
+              break;
+        }
+    }
+}
+
 export const FruitValidator: Validator<string> = {
     validate: (value: string) => {
         let fruits = ['banana', 'apple'];
