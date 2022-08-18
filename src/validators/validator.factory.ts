@@ -1,10 +1,14 @@
-import { requiredInput } from './input-validators/input-validators';
 import { Validator, ValidatorEntry, defaultValidator, combineValidators, FruitValidator, getLengthValidator } from './validator'
+import { requiredInput } from './input-validators/input-validators';
+import { requiredCheck } from './checkbox-validators/checkbox-validators';
+import { requiredFieldset } from './fieldset-validators/fieldset-validators';
 
 export enum ValidatorsName {
     fruit = "fruit",
     length = "length",
     requiredInput = "requiredInput",
+    requiredCheck = "requiredCheck",
+    requiredFieldset = "requiredFieldset",
 }
 
 export function getValidator<A>(list: Array<string | ValidatorEntry | Validator<A>>): Validator<A> {
@@ -25,6 +29,10 @@ export function validatorFactory(name: string, options: any): Validator<any> {
     switch (name) {
         case (ValidatorsName.requiredInput):
             return requiredInput;
+        case (ValidatorsName.requiredCheck):
+            return requiredCheck;
+        case (ValidatorsName.requiredFieldset):
+            return requiredFieldset;
         case (ValidatorsName.fruit):
             return FruitValidator;
         case (ValidatorsName.length):

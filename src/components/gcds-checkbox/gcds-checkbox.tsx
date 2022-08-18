@@ -1,5 +1,6 @@
-import { Component, Element, Prop, Watch, Host, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Prop, Watch, Host, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
   tag: 'gcds-checkbox',
@@ -12,6 +13,8 @@ export class GcdsCheckbox {
   @Element() el: HTMLElement;
 
   private lang: string;
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * Id attribute for an input element.
@@ -73,12 +76,73 @@ export class GcdsCheckbox {
       this.errorMessage = "";
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
+    } else if (this.errorMessage == "") {
+      this.hasError = false;
     }
   }
   /**
    * Hint displayed below the label.
    */
   @Prop({ reflect: true, mutable: false }) hint: string;
+
+  /**
+   * Array of validators
+   */
+  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+
+
+  @Watch('validator')
+  validateValidator() {
+    if (this.validator && !this.validateOn) {
+      this.validateOn = "blur";
+    }
+  }
+
+  /**
+  * Set event to call validator
+  */
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
+
+  /**
+   * Emitted when the checkbox has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  private onFocus = () => {
+    this.gcdsFocus.emit();
+  }
+
+  /**
+   * Emitted when the checkbox loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  private onBlur = () => {
+    if (this.validateOn == "blur") {
+      this.validate();
+    }
+
+    this.gcdsBlur.emit();
+
+  }
+
+  /**
+   * Update value based on user input.
+   */
+  @Event() gcdsChange: EventEmitter;
+
+  /**
+   * Call any active validators
+   */
+  @Method()
+  async validate() {
+    let isChecked = this.checked ? "true" : "false";
+    if (!this._validator.validate(isChecked) && this._validator.errorMessage) {
+      this.errorMessage = this._validator.errorMessage[this.lang];
+    } else {
+      this.errorMessage = "";
+    }
+  }
 
   async componentWillLoad() {
     // Define lang attribute
@@ -88,6 +152,18 @@ export class GcdsCheckbox {
     this.validateHasError();
     this.validateErrorMessage();
 
+    // Assign required validator if needed
+    requiredValidator(this.el, "checkbox");
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
   }
 
   private onChange = () => {
@@ -128,6 +204,8 @@ export class GcdsCheckbox {
             id={checkboxId}
             type="checkbox"
             {...attrsInput}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
             onChange={() => this.onChange()}
           />
           <gcds-label

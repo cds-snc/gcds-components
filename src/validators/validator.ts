@@ -46,6 +46,13 @@ export function requiredValidator(element, type) {
                 element.validator= ["requiredCheck"]
               }
               break;
+            case("fieldset"):
+              if (element.validator) {
+                element.validator.unshift("requiredFieldset");
+              } else {
+                element.validator= ["requiredFieldset"]
+              }
+              break;
         }
     }
 }

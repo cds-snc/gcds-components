@@ -63,6 +63,25 @@ export class GcdsRadio {
    */
   @Event() gcdsRadioChange!: EventEmitter<void>;
 
+  /**
+   * Emitted when the radio has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  private onFocus = () => {
+    this.gcdsFocus.emit();
+  }
+
+  /**
+  * Emitted when the radio loses focus.
+  */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  private onBlur = () => {
+    this.gcdsBlur.emit();
+
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -110,6 +129,8 @@ export class GcdsRadio {
             type="radio"
             {...attrsInput}
             onChange={() => this.onChange(name)}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
             ref={element => this.shadowElement = element as HTMLInputElement}
           />
           <gcds-label

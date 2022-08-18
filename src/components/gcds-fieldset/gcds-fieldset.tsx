@@ -1,5 +1,6 @@
-import { Component, Prop, Element, Host, Watch, h } from '@stencil/core';
+import { Component, Prop, Element, Method, Listen, Host, Watch, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
   tag: 'gcds-fieldset',
@@ -11,6 +12,8 @@ export class GcdsFieldset {
   private lang: string;
 
   @Element() el: HTMLElement;
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * The unique identifier for the component
@@ -67,12 +70,61 @@ export class GcdsFieldset {
     }
   }
 
+  /**
+   * Array of validators
+   */
+  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+
+  @Watch('validator')
+  validateValidator() {
+    if (this.validator && !this.validateOn) {
+      this.validateOn = "blur";
+    }
+  }
+
+  /**
+  * Set event to call validator
+  */
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
+
+  /**
+    * Call any active validators
+    */
+  @Method()
+  async validate() {
+    if (!this._validator.validate(this.fieldsetId) && this._validator.errorMessage) {
+      this.errorMessage = this._validator.errorMessage[this.lang];
+    } else {
+      this.errorMessage = "";
+    }
+  }
+
+  @Listen('gcdsBlur')
+  blurValidate() {
+    if (this.validateOn == "blur" && !this.el.matches(':focus-within')) {
+      this.validate();
+    }
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     this.validateDisabledFieldset();
     this.validateErrorFieldset();
+
+    // Assign required validator if needed
+    requiredValidator(this.el, "fieldset");
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
   }
 
   render() {
