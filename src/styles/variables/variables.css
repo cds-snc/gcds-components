@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 08 Aug 2022 19:27:38 GMT
+ * Generated on Tue, 16 Aug 2022 20:39:24 GMT
  */
 
 :root {
@@ -119,6 +119,21 @@
   --gcds-fieldset-destructive: #d3080c;
   --gcds-fieldset-disabled-text: #707070;
   --gcds-fieldset-focus: #303fc3;
+  --gcds-file-uploader-button-background: #ffffff;
+  --gcds-file-uploader-button-text: #26374a;
+  --gcds-file-uploader-default-text: #000000;
+  --gcds-file-uploader-destructive-background: #f3e9e8;
+  --gcds-file-uploader-destructive-text: #d3080c;
+  --gcds-file-uploader-disabled-background: #f0f0f0;
+  --gcds-file-uploader-disabled-text: #707070;
+  --gcds-file-uploader-file-background: #e5e5e5;
+  --gcds-file-uploader-file-icon-default: #bc3331;
+  --gcds-file-uploader-file-icon-hover: #340e0e;
+  --gcds-file-uploader-file-icon-active: #000000;
+  --gcds-file-uploader-focus-button-background: #303fc3;
+  --gcds-file-uploader-focus-button-shadow: #ffffff;
+  --gcds-file-uploader-focus-button-text: #ffffff;
+  --gcds-file-uploader-focus-text: #303fc3;
   --gcds-footer-brand-background: #f8f8f8;
   --gcds-footer-brand-text: #000000;
   --gcds-footer-landscape-background: #26374a;
