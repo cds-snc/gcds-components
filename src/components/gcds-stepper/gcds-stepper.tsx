@@ -31,13 +31,13 @@ export class GcdsStepper {
 
     return (
       <Host>
-        <nav class="gcds-stepper" role="navigation">
+        <h6 class="gcds-stepper">
           { lang == 'en' ?
-            <h6>Step {currentStep} of {totalSteps}</h6>
+            `Step ${currentStep} of ${totalSteps}`
           :
-            <h6>Étape {currentStep} sur {totalSteps}</h6>
+            `Étape ${currentStep} sur ${totalSteps}`
           }
-        </nav>
+        </h6>
       </Host>
     );
   }
