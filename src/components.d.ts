@@ -137,6 +137,18 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
+        /**
           * Value for an input element.
          */
         "value": string;
@@ -176,6 +188,18 @@ export namespace Components {
           * Flag the contents are required
          */
         "required": boolean;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
     }
     interface GcdsFooter {
         /**
@@ -783,9 +807,29 @@ declare namespace LocalJSX {
          */
         "name": string;
         /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Update value based on user input.
+         */
+        "onGcdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for an input element.
          */
@@ -826,6 +870,14 @@ declare namespace LocalJSX {
           * Flag the contents are required
          */
         "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
     }
     interface GcdsFooter {
         /**
@@ -1028,6 +1080,14 @@ declare namespace LocalJSX {
           * Name attribute for an input element.
          */
         "name": string;
+        /**
+          * Emitted when the radio loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the radio has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the radio button is checked
          */
