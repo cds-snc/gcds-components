@@ -165,7 +165,7 @@ export class GcdsFileUploader {
 
           <div class="file-input">
             <button tabindex="-1">
-              Upload a file
+              { lang == 'en' ? 'Upload a file' : 'Téléverser un fichier'}
               <gcds-icon name="upload" margin-left="spacing-400" />
             </button>
             <input
@@ -178,10 +178,13 @@ export class GcdsFileUploader {
             />
             { value.length > 0 ?
               <p id="summary-uploaded-files">
-                <span>Currently selected: </span> { value.map(file => ( <span>{file} </span> )) }
+                <span>{ lang == 'en' ? 'Currently selected:' : 'Actuellement sélectionné:'} </span>
+                { value.map(file => ( <span>{file} </span> )) }
               </p>
             :
-              <p id="summary-uploaded-files">No file currently selected</p>
+              <p id="summary-uploaded-files">
+                { lang == 'en' ? 'No file currently selected' : 'Aucun fichier actuellement sélectionné' }
+              </p>
             }
           </div>
 
@@ -189,7 +192,7 @@ export class GcdsFileUploader {
             <button
               class="uploaded-file"
               onClick={(e) => this.removeFile(e)}
-              aria-label={`Remove file ${file}`}
+              aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
             >
               <span>{file}</span>
               <gcds-icon name="times-circle" size="md" />
