@@ -18,6 +18,8 @@
 ### Used by
 
  - [gcds-checkbox](../gcds-checkbox)
+ - [gcds-fieldset](../gcds-fieldset)
+ - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
  - [gcds-radio](../gcds-radio)
  - [gcds-select](../gcds-select)
@@ -27,6 +29,8 @@
 ```mermaid
 graph TD;
   gcds-checkbox --> gcds-hint
+  gcds-fieldset --> gcds-hint
+  gcds-file-uploader --> gcds-hint
   gcds-input --> gcds-hint
   gcds-radio --> gcds-hint
   gcds-select --> gcds-hint

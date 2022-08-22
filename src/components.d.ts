@@ -176,6 +176,48 @@ export namespace Components {
          */
         "required": boolean;
     }
+    interface GcdsFileUploader {
+        /**
+          * Defines the file types the file uploader accepts.
+         */
+        "accept": string;
+        /**
+          * Specifies if a file uploader element is disabled or not.
+         */
+        "disabled": boolean;
+        /**
+          * Error message for an invalid file uploader element.
+         */
+        "errorMessage": string;
+        /**
+          * Specifies if the file uploader is invalid.
+         */
+        "hasError": boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint": string;
+        /**
+          * Form field label.
+         */
+        "label": string;
+        /**
+          * Boolean that specifies if the user is allowed to select more than one file.
+         */
+        "multiple": boolean;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required": boolean;
+        /**
+          * Id attribute for a file uploader element.
+         */
+        "uploaderId": string;
+        /**
+          * Value for a file uploader element.
+         */
+        "value": string[];
+    }
     interface GcdsFooter {
         /**
           * Top of page href
@@ -546,6 +588,12 @@ declare global {
         prototype: HTMLGcdsFieldsetElement;
         new (): HTMLGcdsFieldsetElement;
     };
+    interface HTMLGcdsFileUploaderElement extends Components.GcdsFileUploader, HTMLStencilElement {
+    }
+    var HTMLGcdsFileUploaderElement: {
+        prototype: HTMLGcdsFileUploaderElement;
+        new (): HTMLGcdsFileUploaderElement;
+    };
     interface HTMLGcdsFooterElement extends Components.GcdsFooter, HTMLStencilElement {
     }
     var HTMLGcdsFooterElement: {
@@ -636,6 +684,7 @@ declare global {
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
         "gcds-fieldset": HTMLGcdsFieldsetElement;
+        "gcds-file-uploader": HTMLGcdsFileUploaderElement;
         "gcds-footer": HTMLGcdsFooterElement;
         "gcds-grid": HTMLGcdsGridElement;
         "gcds-header": HTMLGcdsHeaderElement;
@@ -826,6 +875,64 @@ declare namespace LocalJSX {
           * Flag the contents are required
          */
         "required"?: boolean;
+    }
+    interface GcdsFileUploader {
+        /**
+          * Defines the file types the file uploader accepts.
+         */
+        "accept"?: string;
+        /**
+          * Specifies if a file uploader element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message for an invalid file uploader element.
+         */
+        "errorMessage"?: string;
+        /**
+          * Specifies if the file uploader is invalid.
+         */
+        "hasError"?: boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint"?: string;
+        /**
+          * Form field label.
+         */
+        "label": string;
+        /**
+          * Boolean that specifies if the user is allowed to select more than one file.
+         */
+        "multiple"?: boolean;
+        /**
+          * Emitted when the uploader loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Update value based on user selection.
+         */
+        "onGcdsFileUploaderChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the uploader has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Remove file and update value.
+         */
+        "onGcdsRemoveFile"?: (event: CustomEvent<any>) => void;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Id attribute for a file uploader element.
+         */
+        "uploaderId": string;
+        /**
+          * Value for a file uploader element.
+         */
+        "value"?: string[];
     }
     interface GcdsFooter {
         /**
@@ -1203,6 +1310,7 @@ declare namespace LocalJSX {
         "gcds-checkbox": GcdsCheckbox;
         "gcds-error-message": GcdsErrorMessage;
         "gcds-fieldset": GcdsFieldset;
+        "gcds-file-uploader": GcdsFileUploader;
         "gcds-footer": GcdsFooter;
         "gcds-grid": GcdsGrid;
         "gcds-header": GcdsHeader;
@@ -1228,6 +1336,7 @@ declare module "@stencil/core" {
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
+            "gcds-file-uploader": LocalJSX.GcdsFileUploader & JSXBase.HTMLAttributes<HTMLGcdsFileUploaderElement>;
             "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
             "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;

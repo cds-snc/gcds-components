@@ -15,6 +15,19 @@
 | `size`              | `size`         | Defines the size of the icon.       | `"inherit" \| "lg" \| "md" \| "sm" \| "xl" \| "xs"`                                                                                                                                       | `'inherit'` |
 
 
+## Dependencies
+
+### Used by
+
+ - [gcds-file-uploader](../gcds-file-uploader)
+
+### Graph
+```mermaid
+graph TD;
+  gcds-file-uploader --> gcds-icon
+  style gcds-icon fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
