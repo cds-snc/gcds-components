@@ -500,6 +500,16 @@ export namespace Components {
          */
         "menuPosition": 'static' | 'sticky';
     }
+    interface GcdsStepper {
+        /**
+          * Defines the current step.
+         */
+        "currentStep": number;
+        /**
+          * Defines the total amount of steps.
+         */
+        "totalSteps": number;
+    }
     interface GcdsTextarea {
         /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
@@ -666,6 +676,12 @@ declare global {
         prototype: HTMLGcdsSiteMenuElement;
         new (): HTMLGcdsSiteMenuElement;
     };
+    interface HTMLGcdsStepperElement extends Components.GcdsStepper, HTMLStencilElement {
+    }
+    var HTMLGcdsStepperElement: {
+        prototype: HTMLGcdsStepperElement;
+        new (): HTMLGcdsStepperElement;
+    };
     interface HTMLGcdsTextareaElement extends Components.GcdsTextarea, HTMLStencilElement {
     }
     var HTMLGcdsTextareaElement: {
@@ -697,6 +713,7 @@ declare global {
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
+        "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
     }
@@ -1236,6 +1253,16 @@ declare namespace LocalJSX {
          */
         "menuPosition"?: 'static' | 'sticky';
     }
+    interface GcdsStepper {
+        /**
+          * Defines the current step.
+         */
+        "currentStep"?: number;
+        /**
+          * Defines the total amount of steps.
+         */
+        "totalSteps"?: number;
+    }
     interface GcdsTextarea {
         /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
@@ -1323,6 +1350,7 @@ declare namespace LocalJSX {
         "gcds-select": GcdsSelect;
         "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
+        "gcds-stepper": GcdsStepper;
         "gcds-textarea": GcdsTextarea;
         "gcds-verify-banner": GcdsVerifyBanner;
     }
@@ -1349,6 +1377,7 @@ declare module "@stencil/core" {
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
+            "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }
