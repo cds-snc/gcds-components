@@ -83,6 +83,27 @@ export class GcdsFileUploader {
    */
   @Prop({ reflect: true, mutable: false }) hint: string;
 
+
+  /**
+  * Events
+  */
+
+  /**
+    * Emitted when the uploader has focus.
+    */
+  @Event() gcdsFocus!: EventEmitter<void>;
+  private onFocus = () => {
+    this.gcdsFocus.emit();
+  }
+
+  /**
+     * Emitted when the uploader loses focus.
+     */
+  @Event() gcdsBlur!: EventEmitter<void>;
+  private onBlur = () => {
+    this.gcdsBlur.emit();
+  }
+
   /**
     * Update value based on user selection.
     */
@@ -173,6 +194,8 @@ export class GcdsFileUploader {
               id={uploaderId}
               name={uploaderId}
               {...attrsInput}
+              onBlur={this.onBlur}
+              onFocus={this.onFocus}
               onChange={(e) => this.handleChange(e)}
               aria-invalid={hasError ? 'true' : 'false'}
             />

@@ -906,9 +906,17 @@ declare namespace LocalJSX {
          */
         "multiple"?: boolean;
         /**
+          * Emitted when the uploader loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
           * Update value based on user selection.
          */
         "onGcdsFileUploaderChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the uploader has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Remove file and update value.
          */
