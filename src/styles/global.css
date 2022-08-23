@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 08 Aug 2022 19:27:38 GMT
+ * Generated on Thu, 18 Aug 2022 16:00:19 GMT
  */
 :root {
   --gcds-brand-default-text: #000000;
@@ -56,8 +56,7 @@
   --gcds-spacing-800: 6.5rem;
   --gcds-spacing-900: 7.800000000000001rem;
   --gcds-spacing-1000: 9.1rem;
-  --gcds-base-font-size: 1.25;
-  /* Sets base font size to 20px */
+  --gcds-base-font-size: 1.25; /* Sets base font size to 20px */
   --gcds-base-line-height: 1.3;
   --gcds-base-scale: 1.125;
   --gcds-font-families-heading: Lato;
@@ -119,6 +118,21 @@
   --gcds-fieldset-destructive: #d3080c;
   --gcds-fieldset-disabled-text: #707070;
   --gcds-fieldset-focus: #303fc3;
+  --gcds-file-uploader-button-background: #ffffff;
+  --gcds-file-uploader-button-text: #26374a;
+  --gcds-file-uploader-default-text: #000000;
+  --gcds-file-uploader-destructive-background: #f3e9e8;
+  --gcds-file-uploader-destructive-text: #d3080c;
+  --gcds-file-uploader-disabled-background: #f0f0f0;
+  --gcds-file-uploader-disabled-text: #707070;
+  --gcds-file-uploader-file-background: #e5e5e5;
+  --gcds-file-uploader-file-icon-default: #bc3331;
+  --gcds-file-uploader-file-icon-hover: #340e0e;
+  --gcds-file-uploader-file-icon-active: #000000;
+  --gcds-file-uploader-focus-button-background: #303fc3;
+  --gcds-file-uploader-focus-button-shadow: #ffffff;
+  --gcds-file-uploader-focus-button-text: #ffffff;
+  --gcds-file-uploader-focus-text: #303fc3;
   --gcds-footer-brand-background: #f8f8f8;
   --gcds-footer-brand-text: #000000;
   --gcds-footer-landscape-background: #26374a;
@@ -165,6 +179,7 @@
   --gcds-site-menu-submenu-background: #e5e5e5;
   --gcds-site-menu-submenu-box-shadow: #00000030;
   --gcds-site-menu-submenu-trigger-text: #000000;
+  --gcds-stepper-text: #707070;
   --gcds-textarea-default-background: #ffffff;
   --gcds-textarea-default-text: #000000;
   --gcds-textarea-destructive: #d3080c;

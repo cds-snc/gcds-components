@@ -1,0 +1,161 @@
+:host .gcds-file-uploader-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 90%;
+  font-family: var(--gcds-font-families-body);
+  font-weight: var(--gcds-font-weights-regular);
+  font-size: var(--gcds-font-sizes-paragraph);
+  line-height: var(--gcds-line-heights-paragraph);
+  color: var(--gcds-file-uploader-default-text);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  transition: color ease-in-out .15s;
+
+  &:focus-within {
+    color: var(--gcds-file-uploader-focus-text);
+  }
+
+  &.gcds-disabled {
+    color: var(--gcds-file-uploader-disabled-text);
+
+    .file-input input,
+    .uploaded-file,
+    .uploaded-file gcds-icon {
+      cursor: not-allowed;
+    }
+
+    .file-input button {
+      background-color: var(--gcds-file-uploader-disabled-background);
+      color: inherit;
+      border-color: var(--gcds-file-uploader-disabled-text);
+    }
+
+    .uploaded-file {
+      outline: 0;
+      background-color: var(--gcds-file-uploader-disabled-background);
+      color: var(--gcds-file-uploader-disabled-text);
+
+      gcds-icon {
+        color: inherit;
+      }
+    }
+  }
+
+  &.gcds-error {
+    &:not(:focus-within) {
+      color: var(--gcds-file-uploader-destructive-text);
+    }
+
+    .uploaded-file:not(:focus) {
+      background-color: var(--gcds-file-uploader-destructive-background);
+      color: var(--gcds-file-uploader-destructive-text);
+    }
+  }
+}
+
+:host .file-input {
+  position: relative;
+  display: inline-block;
+
+  button {
+    font-size: var(--gcds-font-sizes-paragraph);
+    line-height: var(--gcds-line-heights-paragraph);
+    padding: var(--gcds-spacing-400) var(--gcds-spacing-500);
+    background-color: var(--gcds-file-uploader-button-background);
+    color: var(--gcds-file-uploader-button-text);
+    border: .125rem solid var(--gcds-file-uploader-button-text);
+    border-radius: .625rem;
+    transition: all .15s ease-in-out;
+
+    @media only screen and (max-width: 300px) {
+      padding: var(--gcds-spacing-400);
+    }
+  }
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  #summary-uploaded-files {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  &:focus-within button {
+    background-color: var(--gcds-file-uploader-focus-button-background);
+    color: var(--gcds-file-uploader-focus-button-text);
+    box-shadow: 0 0 0 .125rem var(--gcds-file-uploader-focus-button-shadow);
+    outline: .1875rem solid var(--gcds-file-uploader-focus-button-background);
+    outline-offset: .125rem;
+    border-color: var(--gcds-file-uploader-focus-button-text);
+  }
+}
+
+:host .uploaded-file {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--gcds-container-100);
+  background-color: var(--gcds-file-uploader-file-background);
+  color: var(--gcds-file-uploader-default-text);
+  margin: var(--gcds-spacing-300) 0 0;
+  border: 0;
+  border-radius: 2.5rem;
+  outline: .1875rem solid transparent;
+  outline-offset: .125rem;
+  cursor: pointer;
+
+  &:first-of-type {
+    margin-top: var(--gcds-spacing-400);
+  }
+
+  span,
+  gcds-icon {
+    padding: var(--gcds-spacing-400);
+  }
+
+  span {
+    font-size: var(--gcds-font-sizes-paragraph);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 0;
+  }
+
+  gcds-icon {
+    pointer-events: none;
+    color: var(--gcds-file-uploader-file-icon-default);
+    transition: color .15s ease-in-out;
+
+    &:hover {
+      color: var(--gcds-file-uploader-file-icon-hover);
+    }
+
+    &:active {
+      color: var(--gcds-file-uploader-file-icon-active);
+    }
+  }
+
+  &:focus-within {
+    background-color: var(--gcds-file-uploader-focus-button-background);
+    color: var(--gcds-file-uploader-focus-button-text);
+    box-shadow: 0 0 0 .125rem var(--gcds-file-uploader-focus-button-shadow);
+    outline-color: var(--gcds-file-uploader-focus-button-background);
+    border-color: var(--gcds-file-uploader-focus-button-text);
+
+    span,
+    gcds-icon {
+      color: inherit;
+    }
+  }
+}

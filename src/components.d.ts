@@ -197,6 +197,48 @@ export namespace Components {
          */
         "validator": Array<string | ValidatorEntry | Validator<string>>;
     }
+    interface GcdsFileUploader {
+        /**
+          * Defines the file types the file uploader accepts.
+         */
+        "accept": string;
+        /**
+          * Specifies if a file uploader element is disabled or not.
+         */
+        "disabled": boolean;
+        /**
+          * Error message for an invalid file uploader element.
+         */
+        "errorMessage": string;
+        /**
+          * Specifies if the file uploader is invalid.
+         */
+        "hasError": boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint": string;
+        /**
+          * Form field label.
+         */
+        "label": string;
+        /**
+          * Boolean that specifies if the user is allowed to select more than one file.
+         */
+        "multiple": boolean;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required": boolean;
+        /**
+          * Id attribute for a file uploader element.
+         */
+        "uploaderId": string;
+        /**
+          * Value for a file uploader element.
+         */
+        "value": string[];
+    }
     interface GcdsFooter {
         /**
           * Top of page href
@@ -286,6 +328,24 @@ export namespace Components {
           * Id attribute for the hint.
          */
         "hintId": string;
+    }
+    interface GcdsIcon {
+        /**
+          * Add margin to the left of the icon
+         */
+        "marginLeft"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Add margin to the right of the icon
+         */
+        "marginRight"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Name of the icon.
+         */
+        "name": string;
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     }
     interface GcdsInput {
         /**
@@ -469,6 +529,16 @@ export namespace Components {
          */
         "menuPosition": 'static' | 'sticky';
     }
+    interface GcdsStepper {
+        /**
+          * Defines the current step.
+         */
+        "currentStep": number;
+        /**
+          * Defines the total amount of steps.
+         */
+        "totalSteps": number;
+    }
     interface GcdsTextarea {
         /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
@@ -569,6 +639,12 @@ declare global {
         prototype: HTMLGcdsFieldsetElement;
         new (): HTMLGcdsFieldsetElement;
     };
+    interface HTMLGcdsFileUploaderElement extends Components.GcdsFileUploader, HTMLStencilElement {
+    }
+    var HTMLGcdsFileUploaderElement: {
+        prototype: HTMLGcdsFileUploaderElement;
+        new (): HTMLGcdsFileUploaderElement;
+    };
     interface HTMLGcdsFooterElement extends Components.GcdsFooter, HTMLStencilElement {
     }
     var HTMLGcdsFooterElement: {
@@ -592,6 +668,12 @@ declare global {
     var HTMLGcdsHintElement: {
         prototype: HTMLGcdsHintElement;
         new (): HTMLGcdsHintElement;
+    };
+    interface HTMLGcdsIconElement extends Components.GcdsIcon, HTMLStencilElement {
+    }
+    var HTMLGcdsIconElement: {
+        prototype: HTMLGcdsIconElement;
+        new (): HTMLGcdsIconElement;
     };
     interface HTMLGcdsInputElement extends Components.GcdsInput, HTMLStencilElement {
     }
@@ -635,6 +717,12 @@ declare global {
         prototype: HTMLGcdsSiteMenuElement;
         new (): HTMLGcdsSiteMenuElement;
     };
+    interface HTMLGcdsStepperElement extends Components.GcdsStepper, HTMLStencilElement {
+    }
+    var HTMLGcdsStepperElement: {
+        prototype: HTMLGcdsStepperElement;
+        new (): HTMLGcdsStepperElement;
+    };
     interface HTMLGcdsTextareaElement extends Components.GcdsTextarea, HTMLStencilElement {
     }
     var HTMLGcdsTextareaElement: {
@@ -653,10 +741,12 @@ declare global {
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
         "gcds-fieldset": HTMLGcdsFieldsetElement;
+        "gcds-file-uploader": HTMLGcdsFileUploaderElement;
         "gcds-footer": HTMLGcdsFooterElement;
         "gcds-grid": HTMLGcdsGridElement;
         "gcds-header": HTMLGcdsHeaderElement;
         "gcds-hint": HTMLGcdsHintElement;
+        "gcds-icon": HTMLGcdsIconElement;
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
@@ -664,6 +754,7 @@ declare global {
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
+        "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
     }
@@ -875,6 +966,64 @@ declare namespace LocalJSX {
          */
         "validator"?: Array<string | ValidatorEntry | Validator<string>>;
     }
+    interface GcdsFileUploader {
+        /**
+          * Defines the file types the file uploader accepts.
+         */
+        "accept"?: string;
+        /**
+          * Specifies if a file uploader element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message for an invalid file uploader element.
+         */
+        "errorMessage"?: string;
+        /**
+          * Specifies if the file uploader is invalid.
+         */
+        "hasError"?: boolean;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint"?: string;
+        /**
+          * Form field label.
+         */
+        "label": string;
+        /**
+          * Boolean that specifies if the user is allowed to select more than one file.
+         */
+        "multiple"?: boolean;
+        /**
+          * Emitted when the uploader loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Update value based on user selection.
+         */
+        "onGcdsFileUploaderChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the uploader has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Remove file and update value.
+         */
+        "onGcdsRemoveFile"?: (event: CustomEvent<any>) => void;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Id attribute for a file uploader element.
+         */
+        "uploaderId": string;
+        /**
+          * Value for a file uploader element.
+         */
+        "value"?: string[];
+    }
     interface GcdsFooter {
         /**
           * Top of page href
@@ -964,6 +1113,24 @@ declare namespace LocalJSX {
           * Id attribute for the hint.
          */
         "hintId"?: string;
+    }
+    interface GcdsIcon {
+        /**
+          * Add margin to the left of the icon
+         */
+        "marginLeft"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Add margin to the right of the icon
+         */
+        "marginRight"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        /**
+          * Name of the icon.
+         */
+        "name": string;
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     }
     interface GcdsInput {
         /**
@@ -1171,6 +1338,16 @@ declare namespace LocalJSX {
          */
         "menuPosition"?: 'static' | 'sticky';
     }
+    interface GcdsStepper {
+        /**
+          * Defines the current step.
+         */
+        "currentStep"?: number;
+        /**
+          * Defines the total amount of steps.
+         */
+        "totalSteps"?: number;
+    }
     interface GcdsTextarea {
         /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
@@ -1253,10 +1430,12 @@ declare namespace LocalJSX {
         "gcds-checkbox": GcdsCheckbox;
         "gcds-error-message": GcdsErrorMessage;
         "gcds-fieldset": GcdsFieldset;
+        "gcds-file-uploader": GcdsFileUploader;
         "gcds-footer": GcdsFooter;
         "gcds-grid": GcdsGrid;
         "gcds-header": GcdsHeader;
         "gcds-hint": GcdsHint;
+        "gcds-icon": GcdsIcon;
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
@@ -1264,6 +1443,7 @@ declare namespace LocalJSX {
         "gcds-select": GcdsSelect;
         "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
+        "gcds-stepper": GcdsStepper;
         "gcds-textarea": GcdsTextarea;
         "gcds-verify-banner": GcdsVerifyBanner;
     }
@@ -1277,10 +1457,12 @@ declare module "@stencil/core" {
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
+            "gcds-file-uploader": LocalJSX.GcdsFileUploader & JSXBase.HTMLAttributes<HTMLGcdsFileUploaderElement>;
             "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
             "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
             "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
+            "gcds-icon": LocalJSX.GcdsIcon & JSXBase.HTMLAttributes<HTMLGcdsIconElement>;
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
@@ -1288,6 +1470,7 @@ declare module "@stencil/core" {
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
+            "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }

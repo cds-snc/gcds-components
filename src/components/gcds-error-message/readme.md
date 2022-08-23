@@ -18,6 +18,8 @@
 ### Used by
 
  - [gcds-checkbox](../gcds-checkbox)
+ - [gcds-fieldset](../gcds-fieldset)
+ - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
  - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
@@ -26,6 +28,8 @@
 ```mermaid
 graph TD;
   gcds-checkbox --> gcds-error-message
+  gcds-fieldset --> gcds-error-message
+  gcds-file-uploader --> gcds-error-message
   gcds-input --> gcds-error-message
   gcds-select --> gcds-error-message
   gcds-textarea --> gcds-error-message
