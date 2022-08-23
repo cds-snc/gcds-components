@@ -151,6 +151,7 @@ export class GcdsFieldset {
 
     this.validateDisabledFieldset();
     this.validateErrorMessage();
+    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, "fieldset");

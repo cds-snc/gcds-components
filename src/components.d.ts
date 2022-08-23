@@ -211,10 +211,6 @@ export namespace Components {
          */
         "errorMessage": string;
         /**
-          * Specifies if the file uploader is invalid.
-         */
-        "hasError": boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -234,6 +230,18 @@ export namespace Components {
           * Id attribute for a file uploader element.
          */
         "uploaderId": string;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for a file uploader element.
          */
@@ -988,10 +996,6 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Specifies if the file uploader is invalid.
-         */
-        "hasError"?: boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -1027,6 +1031,14 @@ declare namespace LocalJSX {
           * Id attribute for a file uploader element.
          */
         "uploaderId": string;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for a file uploader element.
          */

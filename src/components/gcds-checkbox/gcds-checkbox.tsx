@@ -177,6 +177,7 @@ export class GcdsCheckbox {
     this.validateDisabledCheckbox();
     this.validateHasError();
     this.validateErrorMessage();
+    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, "checkbox");

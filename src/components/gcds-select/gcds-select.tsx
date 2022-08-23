@@ -155,6 +155,7 @@ export class GcdsSelect {
     this.validateDisabledSelect();
     this.validateHasError();
     this.validateErrorMessage();
+    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, "select");

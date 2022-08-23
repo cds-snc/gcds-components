@@ -75,7 +75,6 @@ export class GcdsInput {
    */
   @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
 
-
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
@@ -142,6 +141,8 @@ export class GcdsInput {
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, "input");

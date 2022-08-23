@@ -145,8 +145,11 @@ export class GcdsTextarea {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
+    this.validateValidator();
+
     // Assign required validator if needed
-    requiredValidator(this.el, "input");
+    requiredValidator(this.el, "textarea");
+
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
