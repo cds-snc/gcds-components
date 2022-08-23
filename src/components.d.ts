@@ -473,10 +473,6 @@ export namespace Components {
          */
         "errorMessage": string;
         /**
-          * Specifies if the select is invalid.
-         */
-        "hasError": boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -492,6 +488,18 @@ export namespace Components {
           * Id attribute for a select element.
          */
         "selectId": string;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for a select element.
          */
@@ -1278,10 +1286,6 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Specifies if the select is invalid.
-         */
-        "hasError"?: boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -1289,6 +1293,14 @@ declare namespace LocalJSX {
           * Form field label.
          */
         "label": string;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the select has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Update value based on user selection.
          */
@@ -1301,6 +1313,14 @@ declare namespace LocalJSX {
           * Id attribute for a select element.
          */
         "selectId": string;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for a select element.
          */

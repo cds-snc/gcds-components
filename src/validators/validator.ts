@@ -33,6 +33,7 @@ export function requiredValidator(element, type) {
     if (element.required) {
         switch(type) {
             case("input"):
+            case("select"):
               if (element.validator) {
                 element.validator.unshift("requiredInput");
               } else {
