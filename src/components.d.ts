@@ -117,10 +117,6 @@ export namespace Components {
          */
         "errorMessage": string;
         /**
-          * Specifies if the input is invalid.
-         */
-        "hasError": boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -378,10 +374,6 @@ export namespace Components {
           * Specifies if an input element is disabled or not.
          */
         "disabled": boolean;
-        /**
-          * Specifies if the input is invalid.
-         */
-        "hasError": boolean;
         /**
           * Hint displayed below the label.
          */
@@ -791,10 +783,6 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Specifies if the input is invalid.
-         */
-        "hasError"?: boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -866,6 +854,14 @@ declare namespace LocalJSX {
           * The title for the contents of the fieldset
          */
         "legend": string;
+        /**
+          * Emitted when the fieldset has a validation error.
+         */
+        "onGcdsGroupError"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emitted when the fieldset has a validation error.
+         */
+        "onGcdsGroupErrorClear"?: (event: CustomEvent<void>) => void;
         /**
           * Flag the contents are required
          */
@@ -1064,10 +1060,6 @@ declare namespace LocalJSX {
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
-        /**
-          * Specifies if the input is invalid.
-         */
-        "hasError"?: boolean;
         /**
           * Hint displayed below the label.
          */

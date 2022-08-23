@@ -12,7 +12,7 @@ export const requiredFieldset: Validator<string> = {
     errorMessage: { "en": "Error required",  "fr": "Error required french" }
 }
 
-function validateFieldsetElements(element, nodeList) {
+export function validateFieldsetElements(element, nodeList) {
     let isValid = [];
 
     for (var i = 0; i < nodeList.length; i++) {

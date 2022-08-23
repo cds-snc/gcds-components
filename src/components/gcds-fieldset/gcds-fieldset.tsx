@@ -1,6 +1,7 @@
-import { Component, Prop, Element, Method, Listen, Host, Watch, h } from '@stencil/core';
+import { Component, Prop, Element, Method, Event, EventEmitter, Listen, State, Host, Watch, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import { validateFieldsetElements } from '../../validators/fieldset-validators/fieldset-validators';
 
 @Component({
   tag: 'gcds-fieldset',
@@ -32,11 +33,14 @@ export class GcdsFieldset {
    * Error message for invalid form elements in group.
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
-
   @Watch('errorMessage')
-  validateErrorFieldset() {
+  validateErrorMessage() {
     if (this.disabled) {
       this.errorMessage = "";
+    } else if (!this.hasError && this.errorMessage) {
+      this.hasError = true;
+    } else if (this.errorMessage == "") {
+      this.hasError = false;
     }
   }
 
@@ -85,7 +89,22 @@ export class GcdsFieldset {
   /**
   * Set event to call validator
   */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+
+  /**
+   * State to handle errors
+   */
+  @State() hasError: boolean;
+
+  /**
+    * Emitted when the fieldset has a validation error.
+    */
+  @Event({}) gcdsGroupError!: EventEmitter<string>;
+
+  /**
+    * Emitted when the fieldset has a validation error.
+    */
+  @Event() gcdsGroupErrorClear!: EventEmitter<void>;
 
   /**
     * Call any active validators
@@ -94,15 +113,35 @@ export class GcdsFieldset {
   async validate() {
     if (!this._validator.validate(this.fieldsetId) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
+      this.gcdsGroupError.emit(this.errorMessage);
     } else {
       this.errorMessage = "";
+      this.gcdsGroupErrorClear.emit();
     }
   }
 
   @Listen('gcdsBlur')
   blurValidate() {
-    if (this.validateOn == "blur" && !this.el.matches(':focus-within')) {
+    if (this.validator && this.validateOn == "blur" && !this.el.matches(':focus-within')) {
       this.validate();
+    }
+  }
+
+  /**
+  * Event listener for gcds-fieldset errors
+  */
+  @Listen('gcdsGroupError', { target: 'body'})
+  gcdsParentGroupError(e) {
+    if (e.srcElement.contains(this.el) && validateFieldsetElements(this.el, this.el.children).includes(false)) {
+      this.hasError = true;
+    } else if (e.srcElement.contains(this.el) && !validateFieldsetElements(this.el, this.el.children).includes(false)) {
+      this.hasError = false;
+    }
+  }
+  @Listen('gcdsGroupErrorClear', { target: 'body'})
+  gcdsParentGroupErrorClear(e) {
+    if (e.srcElement.contains(this.el) && this.hasError) {
+      this.hasError = false;
     }
   }
 
@@ -111,7 +150,7 @@ export class GcdsFieldset {
     this.lang = assignLanguage(this.el);
 
     this.validateDisabledFieldset();
-    this.validateErrorFieldset();
+    this.validateErrorMessage();
 
     // Assign required validator if needed
     requiredValidator(this.el, "fieldset");
@@ -128,7 +167,7 @@ export class GcdsFieldset {
   }
 
   render() {
-    const { lang, fieldsetId, legend, required, errorMessage, hint, disabled } = this;
+    const { lang, fieldsetId, legend, required, errorMessage, hasError, hint, disabled } = this;
 
     const fieldsetAttrs = {
       disabled
@@ -138,7 +177,7 @@ export class GcdsFieldset {
     return (
       <Host>
         <fieldset
-          class={errorMessage ? "gcds-error" : null}
+          class={hasError ? "gcds-error" : null}
           id={fieldsetId}
           {...fieldsetAttrs}
           aria-labelledby={hint ? `legend-${fieldsetId} hint-${fieldsetId}` : `legend-${fieldsetId}`}

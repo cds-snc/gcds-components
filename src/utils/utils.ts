@@ -34,3 +34,14 @@ export const assignLanguage = (el: HTMLElement) => {
 
   return lang;
 }
+ // For validation - check if element has a checked checkbox/radio sibling
+export const elementGroupCheck = (name) => {
+  let hasCheck = false;
+  const element = document.querySelectorAll<HTMLFormElement>(`input[name=${name}]`);
+  for (var i = 0; i < element.length; i++) {
+    if (element[i].checked) {
+      hasCheck = true;
+    }
+  }
+  return !hasCheck;
+}
