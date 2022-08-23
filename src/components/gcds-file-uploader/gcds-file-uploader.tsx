@@ -1,5 +1,6 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, Host, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
   tag: 'gcds-file-uploader',
@@ -11,6 +12,8 @@ export class GcdsFileUploader {
   @Element() el: HTMLElement;
 
   private lang: string;
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * Id attribute for a file uploader element.
@@ -55,17 +58,6 @@ export class GcdsFileUploader {
   @Prop({ reflect: true, mutable: false }) multiple: boolean;
 
   /**
-   * Specifies if the file uploader is invalid.
-   */
-  @Prop({ reflect: true, mutable: true }) hasError: boolean;
-  @Watch('hasError')
-  validateHasError() {
-    if (this.disabled) {
-      this.hasError = false;
-    }
-  }
-
-  /**
    * Error message for an invalid file uploader element.
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
@@ -75,6 +67,8 @@ export class GcdsFileUploader {
       this.errorMessage = "";
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
+    } else if (this.errorMessage == "") {
+      this.hasError = false;
     }
   }
 
@@ -83,6 +77,34 @@ export class GcdsFileUploader {
    */
   @Prop({ reflect: true, mutable: false }) hint: string;
 
+  /**
+   * Array of validators
+   */
+   @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+
+
+   @Watch('validator')
+   validateValidator() {
+     if (this.validator && !this.validateOn) {
+       this.validateOn = "blur";
+     }
+   }
+ 
+   /**
+    * Set event to call validator
+    */
+   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+
+  /**
+   * Specifies if the file uploader is invalid.
+   */
+  @State() hasError: boolean;
+  @Watch('hasError')
+  validateHasError() {
+    if (this.disabled) {
+      this.hasError = false;
+    }
+  }
 
   /**
   * Events
@@ -101,6 +123,10 @@ export class GcdsFileUploader {
      */
   @Event() gcdsBlur!: EventEmitter<void>;
   private onBlur = () => {
+    if (this.validateOn == "blur") {
+      this.validate();
+    }
+
     this.gcdsBlur.emit();
   }
 
@@ -118,6 +144,11 @@ export class GcdsFileUploader {
 
     this.value = [...filesContainer];
     this.gcdsFileUploaderChange.emit(this.value);
+
+    // Validate since the input loses focus when dialog opens
+    if (this.validateOn == "blur") {
+      this.validate();
+    }
   };
 
   /**
@@ -136,6 +167,18 @@ export class GcdsFileUploader {
     this.gcdsRemoveFile.emit(this.value);
   };
 
+  /**
+  * Call any active validators
+  */
+  @Method()
+  async validate() {
+    if (!this._validator.validate(this.uploaderId) && this._validator.errorMessage) {
+      this.errorMessage = this._validator.errorMessage[this.lang];
+    } else {
+      this.errorMessage = "";
+    }
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -143,6 +186,20 @@ export class GcdsFileUploader {
     this.validateDisabledSelect();
     this.validateHasError();
     this.validateErrorMessage();
+    this.validateValidator();
+
+    // Assign required validator if needed
+    requiredValidator(this.el, "file");
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
   }
 
   render() {

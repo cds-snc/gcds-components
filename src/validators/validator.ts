@@ -33,11 +33,19 @@ export function requiredValidator(element, type) {
     if (element.required) {
         switch(type) {
             case("input"):
+            case("textarea"):
             case("select"):
               if (element.validator) {
                 element.validator.unshift("requiredInput");
               } else {
                 element.validator= ["requiredInput"]
+              }
+              break;
+            case("file"):
+              if (element.validator) {
+                element.validator.unshift("requiredFileInput");
+              } else {
+                element.validator= ["requiredFileInput"]
               }
               break;
             case("checkbox"):
