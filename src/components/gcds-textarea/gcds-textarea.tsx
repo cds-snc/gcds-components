@@ -89,7 +89,7 @@ export class GcdsTextarea {
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
   * Events

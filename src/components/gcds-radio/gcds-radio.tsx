@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, State, Prop, Listen, Host, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, State, Prop, Listen, Watch, Host, h } from '@stencil/core';
 import { assignLanguage, elementGroupCheck } from '../../utils/utils';
 
 @Component({
@@ -55,9 +55,15 @@ export class GcdsRadio {
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**
-   * Specifies if the input is invalid.
+   * Specifies if the radio is invalid.
    */
    @State() hasError: boolean;
+   @Watch('hasError')
+   validateHasError() {
+     if (this.disabled) {
+       this.hasError = false;
+     }
+   }
    
   /**
    * State to handle when errors are passed down to component

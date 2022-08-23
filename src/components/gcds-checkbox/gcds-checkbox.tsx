@@ -119,7 +119,7 @@ export class GcdsCheckbox {
   @State() parentError: string;
 
   /**
-   * Specifies if the input is invalid.
+   * Specifies if the checkbox is invalid.
    */
   @State() hasError: boolean;
   @Watch('hasError')
