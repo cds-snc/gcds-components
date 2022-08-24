@@ -9,7 +9,7 @@ export const requiredFieldset: Validator<string> = {
 
         return isValid.includes(false) ? false : true;
     },
-    errorMessage: { "en": "Error required",  "fr": "Error required french" }
+    errorMessage: { "en": "Please complete the required field to continue.",  "fr": "Veuillez compléter les champs obligatoires afin de continuer." }
 }
 
 export function validateFieldsetElements(element, nodeList) {

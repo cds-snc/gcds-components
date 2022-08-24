@@ -46,7 +46,7 @@ describe('gcds-select', () => {
       html: `<gcds-select label="select" select-id="select" error-message="This is an error message."></gcds-select>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-select select-id="select" label="select" has-error="" error-message="This is an error message.">
+      <gcds-select select-id="select" label="select" error-message="This is an error message.">
         <div class="gcds-select-wrapper gcds-error">
           <gcds-label label="select" label-for="select" lang="en"></gcds-label>
           <gcds-error-message message="This is an error message." message-id="select"></gcds-error-message>
