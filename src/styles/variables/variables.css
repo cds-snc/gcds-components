@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 18 Aug 2022 21:28:06 GMT
+ * Generated on Mon, 22 Aug 2022 21:51:29 GMT
  */
 
 :root {
@@ -35,12 +35,15 @@
   --gcds-color-grayscale-900: #6a6d7b;
   --gcds-color-grayscale-950: #595959;
   --gcds-color-grayscale-1000: #000000;
+  --gcds-color-green-100: #ecf3ec;
+  --gcds-color-green-200: #005900;
   --gcds-color-red-100: #f3e9e8;
   --gcds-color-red-200: #ff0000;
   --gcds-color-red-300: #bc3331;
   --gcds-color-red-400: #d3080c;
   --gcds-color-red-500: #340e0e;
-  --gcds-color-yellow-100: #f7b452;
+  --gcds-color-yellow-100: #faf3d1;
+  --gcds-color-yellow-200: #f7b452;
   --gcds-container-100: 28.125rem;
   --gcds-container-200: 37.5rem;
   --gcds-container-300: 56.25rem;
@@ -84,6 +87,15 @@
   --gcds-line-heights-h3: 162.31672001219326%;
   --gcds-line-heights-h2: 144.28152889972733%;
   --gcds-line-heights-h1: 128.25024791086875%;
+  --gcds-alert-text: #000000;
+  --gcds-alert-destructive-background: #f3e9e8;
+  --gcds-alert-destructive-icon: #bc3331;
+  --gcds-alert-info-background: #d4e6f2;
+  --gcds-alert-info-icon: #26374a;
+  --gcds-alert-success-background: #ecf3ec;
+  --gcds-alert-success-icon: #005900;
+  --gcds-alert-warning-background: #faf3d1;
+  --gcds-alert-warning-icon: #000000;
   --gcds-banner-destructive-background: #d3080c;
   --gcds-banner-destructive-text: #ffffff;
   --gcds-banner-primary-background: #26374a;
