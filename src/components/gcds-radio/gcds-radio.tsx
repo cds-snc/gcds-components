@@ -174,7 +174,7 @@ export class GcdsRadio {
           >
           </gcds-label>
           {hint ? <gcds-hint hint={hint} hint-id={radioId} />: null}
-          {parentError ? <span id={`parent-error-${radioId}`} hidden>{parentError}</span> : null}
+          {parentError && <span id={`parent-error-${radioId}`} hidden>{parentError}</span>}
         </div>
       </Host>
     );

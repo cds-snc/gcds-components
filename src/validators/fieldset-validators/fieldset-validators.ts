@@ -7,7 +7,7 @@ export const requiredFieldset: Validator<string> = {
 
         let isValid = validateFieldsetElements(el, elChildren);
 
-        return isValid.includes(false) ? false : true;
+        return !isValid.includes(false);
     },
     errorMessage: { "en": "Please complete the required field to continue.",  "fr": "Veuillez compléter les champs obligatoires afin de continuer." }
 }
