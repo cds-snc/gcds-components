@@ -66,13 +66,8 @@ export function requiredValidator(element, type) {
     }
 }
 
-export const FruitValidator: Validator<string> = {
-    validate: (value: string) => {
-        let fruits = ['banana', 'apple'];
-        return fruits.find(a => a === value) ? true : false;
-    },
-    errorMessage: { "en": "Error",  "fr": "Error french" }
-}
+/*
+Example of parameter validator
 
 export function getLengthValidator(min: number, max: number): Validator<string> {
     // Create errorMessage object
@@ -104,3 +99,4 @@ export function getLengthValidator(min: number, max: number): Validator<string> 
         errorMessage
     };
 }
+*/

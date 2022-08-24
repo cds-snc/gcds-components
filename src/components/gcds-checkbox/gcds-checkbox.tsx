@@ -14,7 +14,7 @@ export class GcdsCheckbox {
 
   private lang: string;
 
-  _validator: Validator<string> = defaultValidator;
+  _validator: Validator<any> = defaultValidator;
 
   /**
    * Id attribute for an input element.
@@ -162,8 +162,7 @@ export class GcdsCheckbox {
    */
   @Method()
   async validate() {
-    let isChecked = this.checked ? "true" : "false";
-    if (!this._validator.validate(isChecked) && this._validator.errorMessage) {
+    if (!this._validator.validate(this.checked) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
     } else {
       this.errorMessage = "";

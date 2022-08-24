@@ -13,7 +13,7 @@ export class GcdsFileUploader {
 
   private lang: string;
 
-  _validator: Validator<string> = defaultValidator;
+  _validator: Validator<any> = defaultValidator;
 
   /**
    * Id attribute for a file uploader element.
@@ -172,7 +172,7 @@ export class GcdsFileUploader {
   */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.uploaderId) && this._validator.errorMessage) {
+    if (!this._validator.validate(this.value.length) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
     } else {
       this.errorMessage = "";
