@@ -110,10 +110,6 @@
       padding: 0;
       background-color: transparent;
       border: 0;
-
-      &:focus {
-        background-color: red;
-      }
     }
   }
 
