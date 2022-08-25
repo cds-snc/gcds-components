@@ -1,0 +1,131 @@
+:host .gcds-alert {
+  text-align: left;
+  box-sizing: border-box;
+  color: var(--gcds-alert-text);
+  padding: var(--gcds-spacing-500);
+  border-left: 6px solid transparent;
+
+  /* Is Fixed */
+  &.is-fixed {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    border: 0;
+
+    @media only screen and (min-width: 767px) {
+      padding: var(--gcds-spacing-600);
+    }
+  }
+
+  /* Max content width */
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xs {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .container-fluid {
+    max-width: var(--gcds-container-500);
+    padding-inline: var(--gcds-spacing-300);
+  }
+
+  .container-lg {
+    max-width: var(--gcds-container-400);
+  }
+
+  .container-md {
+    max-width: var(--gcds-container-300);
+  }
+
+  .container-sm {
+    max-width: var(--gcds-container-200);
+  }
+
+  .container-xs {
+    max-width: var(--gcds-container-100);
+
+    .alert-content {
+      margin-inline: 0;
+    }
+  }
+
+  /* Role */
+  &.role-destructive {
+    background-color: var(--gcds-alert-destructive-background);
+    border-color: var(--gcds-alert-destructive-icon);
+
+    .alert-icon {
+      color: var(--gcds-alert-destructive-icon);
+    }
+  }
+
+  &.role-info {
+    background-color: var(--gcds-alert-info-background);
+    border-color: var(--gcds-alert-info-icon);
+
+    .alert-icon {
+      color: var(--gcds-alert-info-icon);
+    }
+  }
+
+  &.role-success {
+    background-color: var(--gcds-alert-success-background);
+    border-color: var(--gcds-alert-success-icon);
+
+    .alert-icon {
+      color: var(--gcds-alert-success-icon);
+    }
+  }
+
+  &.role-warning {
+    background-color: var(--gcds-alert-warning-background);
+    border-color: var(--gcds-alert-warning-icon);
+
+    .alert-icon {
+      color: var(--gcds-alert-warning-icon);
+    }
+  }
+
+  /* Content */
+  .alert-heading {
+    display: flex;
+    align-items: flex-start;
+    font-size: var(--gcds-font-sizes-h5);
+    line-height: var(--gcds-line-heights-h5);
+    margin: 0 0 var(--gcds-spacing-400);
+
+    .alert-icon {
+      margin-right: var(--gcds-spacing-400);
+    }
+
+    span {
+      flex: 1 1 auto;
+    }
+
+    .alert-close-btn {
+      margin-left: var(--gcds-spacing-400);
+      padding: 0;
+      background-color: transparent;
+      border: 0;
+
+      &:focus {
+        background-color: red;
+      }
+    }
+  }
+
+  .alert-content {
+    font-size: var(--gcds-font-sizes-paragraph);
+
+    @media only screen and (min-width: 767px) {
+      margin-inline: var(--gcds-spacing-500);
+    }
+
+    ::slotted(p:last-child) {
+      margin-bottom: 0;
+    }
+  }
+}
