@@ -1,6 +1,6 @@
 import { Validator } from "../validator";
 
-export const requiredInput: Validator<string> = {
+export const requiredField: Validator<string> = {
     validate: (value: string) => {
         return value != null && value.trim() != "" ? true : false;
     },

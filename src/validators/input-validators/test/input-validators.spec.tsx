@@ -1,4 +1,4 @@
-import { requiredInput, requiredFileInput } from "../input-validators";
+import { requiredField, requiredFileInput } from "../input-validators";
 
 describe('Required input validator', () => {
     let results: Array<{value: string, res: boolean}> = [
@@ -8,7 +8,7 @@ describe('Required input validator', () => {
     ];
     results.forEach(i => 
         it(`Should return ${i.res} for ${i.value}`, () => {
-            expect(requiredInput.validate(i.value)).toEqual(i.res);
+            expect(requiredField.validate(i.value)).toEqual(i.res);
         })
     );
 });

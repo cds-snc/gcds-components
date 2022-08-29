@@ -32,13 +32,14 @@ export function combineValidators<A>(v1: Validator<A>, v2: Validator<A>): Valida
 export function requiredValidator(element, type) {
     if (element.required) {
         switch(type) {
+            // Components all validate the "value" property
             case("input"):
             case("textarea"):
             case("select"):
               if (element.validator) {
-                element.validator.unshift("requiredInput");
+                element.validator.unshift("requiredField");
               } else {
-                element.validator= ["requiredInput"]
+                element.validator= ["requiredField"]
               }
               break;
             case("file"):

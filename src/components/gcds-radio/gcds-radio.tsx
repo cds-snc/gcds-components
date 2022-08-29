@@ -117,7 +117,7 @@ export class GcdsRadio {
   * Event listener for gcds-fieldset errors
   */
   @Listen('gcdsGroupError', { target: 'body'})
-  gcdsgroupError(e) {
+  gcdsGroupError(e) {
     if (e.srcElement.contains(this.el) && elementGroupCheck(this.name)) {
       this.hasError = true;
       this.parentError = e.detail;
@@ -127,7 +127,7 @@ export class GcdsRadio {
     }
   }
   @Listen('gcdsGroupErrorClear', { target: 'body'})
-  gcdsgroupErrorClear(e) {
+  gcdsGroupErrorClear(e) {
     if (e.srcElement.contains(this.el) && this.hasError) {
       this.hasError = false;
       this.parentError = "";

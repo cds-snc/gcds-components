@@ -18,9 +18,9 @@ export function validateFieldsetElements(element, nodeList) {
     for (var i = 0; i < nodeList.length; i++) {
         switch(nodeList[i].nodeName) {
             case('GCDS-FIELDSET'):
-                let validfieldsetChildren = validateFieldsetElements(nodeList[i], nodeList[i].children);
-                for (var fc = 0; fc < validfieldsetChildren.length; fc++) {
-                    isValid.push(validfieldsetChildren[fc]);
+                let validFieldsetChildren = validateFieldsetElements(nodeList[i], nodeList[i].children);
+                for (var fc = 0; fc < validFieldsetChildren.length; fc++) {
+                    isValid.push(validFieldsetChildren[fc]);
                 }
                 break;
             case('GCDS-CHECKBOX'):
