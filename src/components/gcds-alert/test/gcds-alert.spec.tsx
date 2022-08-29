@@ -157,6 +157,130 @@ describe('gcds-alert', () => {
   });
 
   /**
+    * Role tests french
+    */
+
+  it('renders alert-role="destructive" in french', async () => {
+    const page = await newSpecPage({
+      components: [GcdsAlert],
+      html: `<gcds-alert lang="fr" alert-heading="Main notification title" alert-role="destructive"></gcds-alert>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-alert lang="fr" alert-heading="Main notification title" alert-role="destructive">
+        <mock:shadow-root>
+          <div aria-label="Ceci est une alerte d'effacement." class="gcds-alert role-destructive is-fixed" role="alert">
+            <div class="alert-container container-lg">
+              <h2 class="alert-heading">
+                <gcds-icon aria-hidden="true" class="alert-icon" size="md" name="exclamation-circle"></gcds-icon>
+
+                <span>Main notification title</span>
+
+                <button class="alert-close-btn" aria-label="Fermer l'alerte.">
+                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+                </button>
+              </h2>
+
+              <div class="alert-content">
+                <slot></slot>
+              </div>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-alert>
+    `);
+  });
+
+  it('renders alert-role="info" in french', async () => {
+    const page = await newSpecPage({
+      components: [GcdsAlert],
+      html: `<gcds-alert lang="fr" alert-heading="Main notification title" alert-role="info"></gcds-alert>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-alert lang="fr" alert-heading="Main notification title" alert-role="info">
+        <mock:shadow-root>
+          <div aria-label="Ceci est une alerte d'information." class="gcds-alert role-info is-fixed" role="alert">
+            <div class="alert-container container-lg">
+              <h2 class="alert-heading">
+                <gcds-icon aria-hidden="true" class="alert-icon" size="md" name="info-circle"></gcds-icon>
+
+                <span>Main notification title</span>
+
+                <button class="alert-close-btn" aria-label="Fermer l'alerte.">
+                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+                </button>
+              </h2>
+
+              <div class="alert-content">
+                <slot></slot>
+              </div>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-alert>
+    `);
+  });
+
+  it('renders alert-role="success in french"', async () => {
+    const page = await newSpecPage({
+      components: [GcdsAlert],
+      html: `<gcds-alert lang="fr" alert-heading="Main notification title" alert-role="success"></gcds-alert>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-alert lang="fr" alert-heading="Main notification title" alert-role="success">
+        <mock:shadow-root>
+          <div aria-label="Ceci est une alerte de succès." class="gcds-alert role-success is-fixed" role="alert">
+            <div class="alert-container container-lg">
+              <h2 class="alert-heading">
+                <gcds-icon aria-hidden="true" class="alert-icon" size="md" name="check-circle"></gcds-icon>
+
+                <span>Main notification title</span>
+
+                <button class="alert-close-btn" aria-label="Fermer l'alerte.">
+                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+                </button>
+              </h2>
+
+              <div class="alert-content">
+                <slot></slot>
+              </div>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-alert>
+    `);
+  });
+
+  it('renders alert-role="warning" in french', async () => {
+    const page = await newSpecPage({
+      components: [GcdsAlert],
+      html: `<gcds-alert lang="fr" alert-heading="Main notification title" alert-role="warning"></gcds-alert>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-alert lang="fr" alert-heading="Main notification title" alert-role="warning">
+        <mock:shadow-root>
+          <div aria-label="Ceci est une alerte d'avertissement." class="gcds-alert role-warning is-fixed" role="alert">
+            <div class="alert-container container-lg">
+              <h2 class="alert-heading">
+                <gcds-icon aria-hidden="true" class="alert-icon" size="md" name="exclamation-triangle"></gcds-icon>
+
+                <span>Main notification title</span>
+
+                <button class="alert-close-btn" aria-label="Fermer l'alerte.">
+                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+                </button>
+              </h2>
+
+              <div class="alert-content">
+                <slot></slot>
+              </div>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-alert>
+    `);
+  });
+
+  /**
     * Fixed position test
     */
 

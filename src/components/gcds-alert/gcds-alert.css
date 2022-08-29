@@ -120,8 +120,18 @@
       margin-inline: var(--gcds-spacing-500);
     }
 
+    ::slotted(*:not(:last-child)) {
+      margin-bottom: var(--gcds-spacing-400);
+    }
+
     ::slotted(p:last-child) {
       margin-bottom: 0;
+    }
+
+    ::slotted(ol),
+    ::slotted(ul) {
+      margin: 0 0 0 var(--gcds-spacing-400);
+      padding: 0;
     }
   }
 }

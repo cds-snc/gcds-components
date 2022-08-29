@@ -36,15 +36,15 @@ export class GcdsAlert {
    */
   @Prop() positionFixed?: boolean = true;
 
-
-  /**
-  * Events
-  */
-
   /**
    * Callback when the close button is clicked.
    */
   @Prop() onDismiss: () => void;
+
+
+  /**
+  * Events
+  */
 
   if ( onDismiss ) {
     onDismiss();
@@ -66,7 +66,12 @@ export class GcdsAlert {
           aria-label={
             lang == 'en' ?
               `This is ${ alertRole == 'info' ? 'an' : 'a'} ${alertRole} alert.`
-            : 'TO DO FRENCH'
+            : `Ceci est une alerte ${
+                alertRole === 'destructive' ? 'd\'effacement'
+                : alertRole === 'info' ? 'd\'information'
+                : alertRole === 'success' ? 'de succès'
+                : alertRole === 'warning' ? 'd\'avertissement'
+                : null }.`
           }
         >
           <div class={`alert-container ${positionFixed && maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
@@ -85,7 +90,7 @@ export class GcdsAlert {
                 <button
                   class="alert-close-btn"
                   onClick={onDismiss ? onDismiss : null}
-                  aria-label={ lang == 'en' ? 'Close alert.' : 'TO DO FRENCH'}
+                  aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
                 >
                   <gcds-icon aria-hidden="true" name="times" size="sm" />
                 </button>
