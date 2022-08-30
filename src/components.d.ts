@@ -17,6 +17,10 @@ export namespace Components {
          */
         "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
         /**
+          * Callback when the close button is clicked.
+         */
+        "dismissHandler": () => void;
+        /**
           * Defines if the alert's close button is displayed or not.
          */
         "hideCloseBtn"?: boolean;
@@ -24,10 +28,6 @@ export namespace Components {
           * Defines the max width of the alert content.
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Callback when the close button is clicked.
-         */
-        "onDismiss": () => void;
         /**
           * Defines if the alert's position is fixed.
          */
@@ -819,6 +819,10 @@ declare namespace LocalJSX {
          */
         "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
         /**
+          * Callback when the close button is clicked.
+         */
+        "dismissHandler"?: () => void;
+        /**
           * Defines if the alert's close button is displayed or not.
          */
         "hideCloseBtn"?: boolean;
@@ -827,9 +831,9 @@ declare namespace LocalJSX {
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
         /**
-          * Callback when the close button is clicked.
+          * Events
          */
-        "onDismiss"?: () => void;
+        "onGcdsDismiss"?: (event: CustomEvent<void>) => void;
         /**
           * Defines if the alert's position is fixed.
          */

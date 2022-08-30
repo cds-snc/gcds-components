@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
 
 @Component({
@@ -6,6 +6,7 @@ import { assignLanguage } from '../../utils/utils';
   styleUrl: 'gcds-alert.css',
   shadow: true,
 })
+
 export class GcdsAlert {
   @Element() el: HTMLElement;
 
@@ -22,6 +23,11 @@ export class GcdsAlert {
   @Prop() alertRole?: 'destructive' | 'info' | 'success' | 'warning' = 'info';
 
   /**
+   * Callback when the close button is clicked.
+   */
+  @Prop() dismissHandler: () => void;
+
+  /**
    * Defines if the alert's close button is displayed or not.
    */
   @Prop() hideCloseBtn?: boolean = false;
@@ -36,18 +42,31 @@ export class GcdsAlert {
    */
   @Prop() positionFixed?: boolean = true;
 
+
   /**
-   * Callback when the close button is clicked.
+  * States
+  */
+
+  /**
+   * Specifies if the alert is open or not.
    */
-  @Prop() onDismiss: () => void;
+  @State() isOpen: boolean = true;
 
 
   /**
   * Events
   */
 
-  if ( onDismiss ) {
-    onDismiss();
+  @Event() gcdsDismiss!: EventEmitter<void>;
+
+  private onDismiss = () => {
+    this.gcdsDismiss.emit();
+
+    if ( this.dismissHandler ) {
+      this.dismissHandler();
+    } else {
+      this.isOpen = false;
+    }
   }
 
   async componentWillLoad() {
@@ -56,52 +75,59 @@ export class GcdsAlert {
   }
 
   render() {
-    const { alertHeading, alertRole, hideCloseBtn, lang, maxContentWidth, onDismiss, positionFixed } = this;
+    const { alertHeading, alertRole, hideCloseBtn, isOpen, lang, maxContentWidth, positionFixed } = this;
 
     return (
       <Host>
-        <div
-          class={`gcds-alert role-${alertRole} ${positionFixed ? 'is-fixed' : ''}`}
-          role="alert"
-          aria-label={
-            lang == 'en' ?
-              `This is ${ alertRole == 'info' ? 'an' : 'a'} ${alertRole} alert.`
-            : `Ceci est une alerte ${
-                alertRole === 'destructive' ? 'd\'effacement'
-                : alertRole === 'info' ? 'd\'information'
-                : alertRole === 'success' ? 'de succès'
-                : alertRole === 'warning' ? 'd\'avertissement'
-                : null }.`
-          }
-        >
-          <div class={`alert-container ${positionFixed && maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
-            <h2 class="alert-heading">
-              <gcds-icon aria-hidden="true" class="alert-icon" size="md" name={
-                alertRole === 'destructive' ? 'exclamation-circle'
-                : alertRole === 'info' ? 'info-circle'
-                : alertRole === 'success' ? 'check-circle'
-                : alertRole === 'warning' ? 'exclamation-triangle'
+        { isOpen ?
+          <div
+            class={`gcds-alert role-${alertRole} ${positionFixed ? 'is-fixed' : ''}`}
+            role="alert"
+            aria-label={
+              lang == 'en' ?
+                `This is ${
+                  alertRole === 'destructive' ? 'a critical'
+                  : alertRole === 'info' ? 'an info'
+                  : alertRole === 'success' ? 'a success'
+                  : alertRole === 'warning' ? 'a warning'
+                  : null } alert.`
+              : `Ceci est une alerte ${
+                  alertRole === 'destructive' ? 'd\'effacement'
+                  : alertRole === 'info' ? 'd\'information'
+                  : alertRole === 'success' ? 'de succès'
+                  : alertRole === 'warning' ? 'd\'avertissement'
+                  : null }.`
+            }
+          >
+            <div class={`alert-container ${positionFixed && maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
+              <h2 class="alert-heading">
+                <gcds-icon aria-hidden="true" class="alert-icon" size="md" name={
+                  alertRole === 'destructive' ? 'exclamation-circle'
+                  : alertRole === 'info' ? 'info-circle'
+                  : alertRole === 'success' ? 'check-circle'
+                  : alertRole === 'warning' ? 'exclamation-triangle'
+                  : null }
+                />
+
+                <span>{alertHeading}</span>
+
+                { !hideCloseBtn ?
+                  <button
+                    class="alert-close-btn"
+                    onClick={this.onDismiss}
+                    aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
+                  >
+                    <gcds-icon aria-hidden="true" name="times" size="sm" />
+                  </button>
                 : null }
-              />
+              </h2>
 
-              <span>{alertHeading}</span>
-
-              { !hideCloseBtn ?
-                <button
-                  class="alert-close-btn"
-                  onClick={onDismiss ? onDismiss : null}
-                  aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
-                >
-                  <gcds-icon aria-hidden="true" name="times" size="sm" />
-                </button>
-              : null }
-            </h2>
-
-            <div class="alert-content">
-              <slot></slot>
+              <div class="alert-content">
+                <slot></slot>
+              </div>
             </div>
           </div>
-        </div>
+        : null }
       </Host>
     );
   }

@@ -44,7 +44,7 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert alert-heading="Main notification title" alert-role="destructive">
         <mock:shadow-root>
-          <div aria-label="This is a destructive alert." class="gcds-alert role-destructive is-fixed" role="alert">
+          <div aria-label="This is a critical alert." class="gcds-alert role-destructive is-fixed" role="alert">
             <div class="alert-container container-lg">
               <h2 class="alert-heading">
                 <gcds-icon aria-hidden="true" class="alert-icon" size="md" name="exclamation-circle"></gcds-icon>
