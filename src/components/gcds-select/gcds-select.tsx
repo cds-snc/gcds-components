@@ -174,7 +174,7 @@ export class GcdsSelect {
   render() {
     const { lang, selectId, label, required, disabled, defaultValue, value, hint, errorMessage, hasError } = this;
 
-    const attrsInput = {
+    const attrsSelect = {
       disabled,
       required,
       value,
@@ -189,7 +189,7 @@ export class GcdsSelect {
       let hintID = hint ? `hint-${selectId}` : "";
       let errorID = errorMessage ? `error-message-${selectId}` : "";
 
-      attrsInput["aria-describedby"] = `${hintID} ${errorID}`;
+      attrsSelect["aria-describedby"] = `${hintID} ${errorID}`;
     }
 
     return (
@@ -208,7 +208,7 @@ export class GcdsSelect {
           : null}
 
           <select
-            {...attrsInput}
+            {...attrsSelect}
             id={selectId}
             name={selectId}
             onBlur={this.onBlur}
