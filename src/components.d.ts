@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsBanner {
         /**
@@ -116,10 +117,6 @@ export namespace Components {
          */
         "errorMessage": string;
         /**
-          * Specifies if the input is invalid.
-         */
-        "hasError": boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -135,6 +132,18 @@ export namespace Components {
           * Specifies if a form field is required or not.
          */
         "required": boolean;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for an input element.
          */
@@ -175,6 +184,18 @@ export namespace Components {
           * Flag the contents are required
          */
         "required": boolean;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
     }
     interface GcdsFileUploader {
         /**
@@ -189,10 +210,6 @@ export namespace Components {
           * Error message for an invalid file uploader element.
          */
         "errorMessage": string;
-        /**
-          * Specifies if the file uploader is invalid.
-         */
-        "hasError": boolean;
         /**
           * Hint displayed below the label.
          */
@@ -213,6 +230,18 @@ export namespace Components {
           * Id attribute for a file uploader element.
          */
         "uploaderId": string;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for a file uploader element.
          */
@@ -364,6 +393,18 @@ export namespace Components {
          */
         "type": 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
         /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
+        /**
           * Default value for an input element.
          */
         "value": string;
@@ -401,10 +442,6 @@ export namespace Components {
           * Specifies if an input element is disabled or not.
          */
         "disabled": boolean;
-        /**
-          * Specifies if the input is invalid.
-         */
-        "hasError": boolean;
         /**
           * Hint displayed below the label.
          */
@@ -444,10 +481,6 @@ export namespace Components {
          */
         "errorMessage": string;
         /**
-          * Specifies if the select is invalid.
-         */
-        "hasError": boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -463,6 +496,18 @@ export namespace Components {
           * Id attribute for a select element.
          */
         "selectId": string;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for a select element.
          */
@@ -551,6 +596,18 @@ export namespace Components {
           * Id + name attribute for a textarea element.
          */
         "textareaId": string;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Default value for an input element.
          */
@@ -833,10 +890,6 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Specifies if the input is invalid.
-         */
-        "hasError"?: boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -849,9 +902,29 @@ declare namespace LocalJSX {
          */
         "name": string;
         /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Update value based on user input.
+         */
+        "onGcdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for an input element.
          */
@@ -889,9 +962,25 @@ declare namespace LocalJSX {
          */
         "legend": string;
         /**
+          * Emitted when the fieldset has a validation error.
+         */
+        "onGcdsGroupError"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emitted when the fieldset has a validation error.
+         */
+        "onGcdsGroupErrorClear"?: (event: CustomEvent<void>) => void;
+        /**
           * Flag the contents are required
          */
         "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
     }
     interface GcdsFileUploader {
         /**
@@ -906,10 +995,6 @@ declare namespace LocalJSX {
           * Error message for an invalid file uploader element.
          */
         "errorMessage"?: string;
-        /**
-          * Specifies if the file uploader is invalid.
-         */
-        "hasError"?: boolean;
         /**
           * Hint displayed below the label.
          */
@@ -946,6 +1031,14 @@ declare namespace LocalJSX {
           * Id attribute for a file uploader element.
          */
         "uploaderId": string;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for a file uploader element.
          */
@@ -1109,6 +1202,14 @@ declare namespace LocalJSX {
          */
         "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
         /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
+        /**
           * Default value for an input element.
          */
         "value"?: string;
@@ -1147,10 +1248,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Specifies if the input is invalid.
-         */
-        "hasError"?: boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -1162,6 +1259,14 @@ declare namespace LocalJSX {
           * Name attribute for an input element.
          */
         "name": string;
+        /**
+          * Emitted when the radio loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the radio has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the radio button is checked
          */
@@ -1193,10 +1298,6 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Specifies if the select is invalid.
-         */
-        "hasError"?: boolean;
-        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -1204,6 +1305,14 @@ declare namespace LocalJSX {
           * Form field label.
          */
         "label": string;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the select has focus.
+         */
+        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Update value based on user selection.
          */
@@ -1216,6 +1325,14 @@ declare namespace LocalJSX {
           * Id attribute for a select element.
          */
         "selectId": string;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Value for a select element.
          */
@@ -1316,6 +1433,14 @@ declare namespace LocalJSX {
           * Id + name attribute for a textarea element.
          */
         "textareaId"?: string;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
         /**
           * Default value for an input element.
          */

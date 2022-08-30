@@ -53,7 +53,7 @@ describe('gcds-checkbox', () => {
     expect(page.root).toEqualHtml(`
       <gcds-checkbox checkbox-id="checkbox" hint="this is a hint" label="checkbox" name="checkbox">
         <div class="gcds-checkbox-wrapper">
-           <input aria-describedby="hint-checkbox " id="checkbox" name="checkbox" type="checkbox">
+           <input aria-describedby="hint-checkbox  " id="checkbox" name="checkbox" type="checkbox">
            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
            <gcds-hint hint="this is a hint" hint-id="checkbox"></gcds-hint>
          </div>
@@ -71,30 +71,11 @@ describe('gcds-checkbox', () => {
         ></gcds-checkbox>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-checkbox checkbox-id="checkbox" error-message="This needs to be checked" has-error="" label="checkbox" name="checkbox">
+      <gcds-checkbox checkbox-id="checkbox" error-message="This needs to be checked" label="checkbox" name="checkbox">
         <div class="gcds-checkbox-wrapper gcds-error">
-           <input aria-describedby=" error-message-checkbox" aria-invalid="true" id="checkbox" name="checkbox" type="checkbox">
+           <input aria-describedby=" error-message-checkbox " aria-invalid="true" id="checkbox" name="checkbox" type="checkbox">
            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
            <gcds-error-message message="This needs to be checked" message-id="checkbox"></gcds-error-message>
-         </div>
-      </gcds-checkbox>
-    `);
-  });
-  it('renders w/ has-error', async () => {
-    const page = await newSpecPage({
-      components: [GcdsCheckbox],
-      html: `<gcds-checkbox
-          label="checkbox"
-          name="checkbox"
-          checkbox-id="checkbox"
-          has-error
-        ></gcds-checkbox>`,
-    });
-    expect(page.root).toEqualHtml(`
-      <gcds-checkbox checkbox-id="checkbox" has-error="" label="checkbox" name="checkbox">
-        <div class="gcds-checkbox-wrapper gcds-error">
-           <input aria-invalid="true" id="checkbox" name="checkbox" type="checkbox">
-           <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
          </div>
       </gcds-checkbox>
     `);

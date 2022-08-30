@@ -23,7 +23,7 @@ describe('gcds-checkbox', () => {
   it('aria-invalid', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-checkbox label="Label" checkbox-id="aria-invalid" has-error />');
+    await page.setContent('<gcds-checkbox label="Label" checkbox-id="aria-invalid" error-message="Has error" />');
     const element = await (await page.find('gcds-checkbox input'));
     expect(element.getAttribute('aria-invalid')).toEqual('true');
   });

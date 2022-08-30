@@ -58,7 +58,7 @@ describe('gcds-file-uploader', () => {
       html: `<gcds-file-uploader label="file-uploader" uploader-id="file-uploader" error-message="This is an error message."></gcds-file-uploader>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" error-message="This is an error message." has-error="">
+      <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" error-message="This is an error message.">
         <div class="gcds-file-uploader-wrapper gcds-error">
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <gcds-error-message message="This is an error message." message-id="file-uploader"></gcds-error-message>

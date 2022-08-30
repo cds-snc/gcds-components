@@ -1,5 +1,6 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, Host, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
   tag: 'gcds-select',
@@ -11,6 +12,8 @@ export class GcdsSelect {
   @Element() el: HTMLElement;
 
   private lang: string;
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * Id attribute for a select element.
@@ -50,17 +53,6 @@ export class GcdsSelect {
   @Prop({ mutable: true }) value: string;
 
   /**
-   * Specifies if the select is invalid.
-   */
-  @Prop({ reflect: true, mutable: true }) hasError: boolean;
-  @Watch('hasError')
-  validateHasError() {
-    if (this.disabled) {
-      this.hasError = false;
-    }
-  }
-
-  /**
    * Error message for an invalid select element.
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
@@ -70,6 +62,8 @@ export class GcdsSelect {
       this.errorMessage = "";
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
+    } else if (this.errorMessage == "") {
+      this.hasError = false;
     }
   }
 
@@ -79,9 +73,73 @@ export class GcdsSelect {
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**
+   * Array of validators
+   */
+  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+
+
+  @Watch('validator')
+  validateValidator() {
+    if (this.validator && !this.validateOn) {
+      this.validateOn = "blur";
+    }
+  }
+
+  /**
+  * Set event to call validator
+  */
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+
+  /**
+   * Specifies if the select is invalid.
+   */
+  @State() hasError: boolean;
+  @Watch('hasError')
+  validateHasError() {
+    if (this.disabled) {
+      this.hasError = false;
+    }
+  }
+
+  /**
     * Update value based on user selection.
     */
   @Event() gcdsSelectChange: EventEmitter;
+
+  /**
+  * Emitted when the select has focus.
+  */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  private onFocus = () => {
+    this.gcdsFocus.emit();
+  }
+
+  /**
+   * Emitted when the select loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  private onBlur = () => {
+    if (this.validateOn == "blur") {
+      this.validate();
+    }
+
+    this.gcdsBlur.emit();
+
+  }
+
+  /**
+   * Call any active validators
+   */
+  @Method()
+  async validate() {
+    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
+      this.errorMessage = this._validator.errorMessage[this.lang];
+    } else {
+      this.errorMessage = "";
+    }
+  }
 
   handleChange = (e) => {
     let val = e.target && e.target.value;
@@ -97,6 +155,20 @@ export class GcdsSelect {
     this.validateDisabledSelect();
     this.validateHasError();
     this.validateErrorMessage();
+    this.validateValidator();
+
+    // Assign required validator if needed
+    requiredValidator(this.el, "select");
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
   }
 
   render() {
@@ -139,6 +211,8 @@ export class GcdsSelect {
             {...attrsInput}
             id={selectId}
             name={selectId}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
             onChange={(e) => this.handleChange(e)}
             aria-invalid={hasError ? 'true' : 'false'}
           >

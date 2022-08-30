@@ -1,5 +1,5 @@
-import { Component, Element, Event, EventEmitter, Prop, Listen, Host, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { Component, Element, Event, EventEmitter, State, Prop, Listen, Watch, Host, h } from '@stencil/core';
+import { assignLanguage, elementGroupCheck } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-radio',
@@ -50,18 +50,49 @@ export class GcdsRadio {
   @Prop({ reflect: true, mutable: false }) value: string;
 
   /**
-   * Specifies if the input is invalid.
-   */
-  @Prop({ reflect: true, mutable: true }) hasError: boolean;
-  /**
    * Hint displayed below the label.
    */
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**
+   * Specifies if the radio is invalid.
+   */
+   @State() hasError: boolean;
+   @Watch('hasError')
+   validateHasError() {
+     if (this.disabled) {
+       this.hasError = false;
+     }
+   }
+   
+  /**
+   * State to handle when errors are passed down to component
+   */
+  @State() parentError: string;
+
+  /**
    * Emitted when the radio button is checked
    */
   @Event() gcdsRadioChange!: EventEmitter<void>;
+
+  /**
+   * Emitted when the radio has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  private onFocus = () => {
+    this.gcdsFocus.emit();
+  }
+
+  /**
+  * Emitted when the radio loses focus.
+  */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  private onBlur = () => {
+    this.gcdsBlur.emit();
+
+  }
 
   async componentWillLoad() {
     // Define lang attribute
@@ -82,8 +113,29 @@ export class GcdsRadio {
     }
   }
 
+  /**
+  * Event listener for gcds-fieldset errors
+  */
+  @Listen('gcdsGroupError', { target: 'body'})
+  gcdsGroupError(e) {
+    if (e.srcElement.contains(this.el) && elementGroupCheck(this.name)) {
+      this.hasError = true;
+      this.parentError = e.detail;
+    } else if (!elementGroupCheck(this.name)) {
+      this.hasError = false;
+      this.parentError = "";
+    }
+  }
+  @Listen('gcdsGroupErrorClear', { target: 'body'})
+  gcdsGroupErrorClear(e) {
+    if (e.srcElement.contains(this.el) && this.hasError) {
+      this.hasError = false;
+      this.parentError = "";
+    }
+  }
+
   render() {
-    const { lang, radioId, label, name, required, disabled, value, checked, hint, hasError } = this;
+    const { lang, radioId, label, name, required, disabled, value, checked, hint, hasError, parentError } = this;
 
     const attrsInput = {
       name,
@@ -93,9 +145,10 @@ export class GcdsRadio {
       checked
     };
 
-    if (hint) {
+    if (hint || parentError) {
       let hintID = hint ? `hint-${radioId}` : "";
-      attrsInput["aria-describedby"] = `${hintID}`;
+      let errorID = parentError ? `parent-error-${radioId}` : "";
+      attrsInput["aria-describedby"] = `${hintID} ${errorID}`;
     }
 
     if (hasError) {
@@ -110,6 +163,8 @@ export class GcdsRadio {
             type="radio"
             {...attrsInput}
             onChange={() => this.onChange(name)}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
             ref={element => this.shadowElement = element as HTMLInputElement}
           />
           <gcds-label
@@ -119,6 +174,7 @@ export class GcdsRadio {
           >
           </gcds-label>
           {hint ? <gcds-hint hint={hint} hint-id={radioId} />: null}
+          {parentError && <span id={`parent-error-${radioId}`} hidden>{parentError}</span>}
         </div>
       </Host>
     );

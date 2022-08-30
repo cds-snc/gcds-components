@@ -53,28 +53,9 @@ describe('gcds-radio', () => {
     expect(page.root).toEqualHtml(`
       <gcds-radio radio-id="radio" hint="this is a hint" label="radio" name="radio">
         <div class="gcds-radio-wrapper">
-           <input aria-describedby="hint-radio" id="radio" name="radio" type="radio">
+           <input aria-describedby="hint-radio " id="radio" name="radio" type="radio">
            <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
            <gcds-hint hint="this is a hint" hint-id="radio"></gcds-hint>
-         </div>
-      </gcds-radio>
-    `);
-  });
-  it('renders w/ has-error', async () => {
-    const page = await newSpecPage({
-      components: [GcdsRadio],
-      html: `<gcds-radio
-          label="radio"
-          name="radio"
-          radio-id="radio"
-          has-error
-        ></gcds-radio>`,
-    });
-    expect(page.root).toEqualHtml(`
-      <gcds-radio radio-id="radio" has-error="" label="radio" name="radio">
-        <div class="gcds-radio-wrapper gcds-error">
-           <input aria-invalid="true" id="radio" name="radio" type="radio">
-           <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
          </div>
       </gcds-radio>
     `);

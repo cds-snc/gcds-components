@@ -18,17 +18,6 @@ describe('gcds-radio', () => {
 
  describe('gcds-radio a11y tests', () => {
   /**
-   * Aria-invalid true if error test
-   */
-  it('aria-invalid', async () => {
-    const page = await newE2EPage();
-
-    await page.setContent('<gcds-radio label="Label" radio-id="aria-invalid" has-error />');
-    const element = await (await page.find('gcds-radio input'));
-    expect(element.getAttribute('aria-invalid')).toEqual('true');
-  });
-
-  /**
    * Colour contrast test
    */
   it('colour contrast', async () => {
