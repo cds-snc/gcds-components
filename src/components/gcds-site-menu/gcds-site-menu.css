@@ -49,6 +49,7 @@
 
       &:active {
         background-color: var(--gcds-site-menu-active-background);
+
         > [role='menuitem'],
         > [data-trigger-label],
         > [data-h2-submenu-trigger] {
@@ -58,6 +59,7 @@
 
       &:focus-within {
         background-color: var(--gcds-site-menu-focus-background);
+
         > [role='menuitem'],
         > [data-trigger-label],
         > [data-h2-submenu-trigger] {
@@ -225,6 +227,7 @@
   :host([menu-desktop-layout*='topbar'][menu-alignment*='right']) [data-h2-menu-container] > [data-h2-menulist] {
     margin-left: auto;
   }
+
   :host([menu-desktop-layout*='topbar'][menu-alignment*='right']) [data-h2-menu] [data-h2-menulist] [data-h2-menulist] {
     left: auto;
     right: 0;
@@ -237,6 +240,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
     > [data-h2-menulist]:first-of-type {
       margin-right: auto;
     }
@@ -283,7 +287,7 @@
           padding-left: var(--gcds-spacing-600);
         }
 
-        [data-h2-menulist] li [role='menuitem'], 
+        [data-h2-menulist] li [role='menuitem'],
         [data-h2-menulist] li [data-trigger-label] {
           padding-left: var(--gcds-spacing-700);
         }
@@ -362,7 +366,8 @@
         height: 100%;
         transform: translate(100%);
         background-color: var(--gcds-site-menu-submenu-background);
-        box-shadow: 0px 0px 4px var(--gcds-site-menu-submenu-box-shadow);
+        box-shadow: 0 0 .25rem var(--gcds-site-menu-submenu-box-shadow);
+
         [data-h2-menulist] {
           background-color: var(--gcds-site-menu-submenu-background);
         }
@@ -385,7 +390,7 @@
     z-index: 99;
     background-color: var(--gcds-site-menu-active-background);
     z-index: 99;
-    opacity: 0.15;
+    opacity: .15;
   }
 }
 
@@ -396,6 +401,7 @@
     [data-optional-right] {
       display: grid;
       align-content: center;
+
       @media screen and (min-width: 64em) {
         margin: 0;
       }
@@ -429,9 +435,11 @@
         li [role='menuitem'] {
           padding: var(--gcds-spacing-300) var(--gcds-spacing-400);
         }
+
         li [data-trigger-label] {
           padding-right: var(--gcds-spacing-600);
         }
+
         [data-h2-menulist] li {
           [role='menuitem'],
           [data-trigger-label] {

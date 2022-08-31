@@ -14,6 +14,7 @@ gcds-signature {
         height: 1.6875rem;
       }
     }
+
     @media screen and (min-width: 64em) {
       svg {
         height: 2.125rem;
@@ -35,6 +36,7 @@ gcds-signature {
       .fip_text {
         fill: var( --gcds-signature-color-text);
       }
+
       .fip_flag {
         fill: var(--gcds-signature-color-flag);
       }

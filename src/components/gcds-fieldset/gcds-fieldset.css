@@ -16,9 +16,11 @@
     &:focus-within {
       color: var(--gcds-fieldset-focus);
     }
+
     &.gcds-error:not(:focus-within) {
       color: var(--gcds-fieldset-destructive);
     }
+
     &:disabled {
       color: var(--gcds-fieldset-disabled-text);
     }

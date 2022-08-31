@@ -7,7 +7,7 @@
   line-height: var(--gcds-font-sizes-paragraph);
   padding: 1rem .75rem;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: var(--gcds-spacing-50);
 
   border-width: var(--custom-gcds-style-border-width);
   border-style: var(--custom-gcds-style-border-style);
@@ -30,9 +30,9 @@
 
   &:focus {
     background-color: var(--gcds-button-shared-focus-background);
-    box-shadow: 0 0 0 2px var(--gcds-button-shared-focus-text);
-    outline: 3px solid var(--gcds-button-shared-focus-background);
-    outline-offset: 2px;
+    box-shadow: 0 0 0 .125rem var(--gcds-button-shared-focus-text);
+    outline: .1875rem solid var(--gcds-button-shared-focus-background);
+    outline-offset: .125rem;
     color: var(--gcds-button-shared-focus-text);
   }
 
@@ -51,13 +51,16 @@
         background-color:
           var(--custom-gcds-style-background-color,
           var(--gcds-button-primary-default));
+
         &:hover {
           background-color: var(--gcds-button-primary-hover);
         }
       }
+
       &.outline,
       &.text-only {
         color: var(--gcds-button-primary-default);
+
         &:hover {
           color: var(--gcds-button-primary-hover);
         }
@@ -69,13 +72,16 @@
         background-color:
           var(--custom-gcds-style-background-color,
           var(--gcds-button-secondary-default));
+
         &:hover {
           background-color: var(--gcds-button-secondary-hover);
         }
       }
+
       &.outline,
       &.text-only {
         color: var(--gcds-button-secondary-default);
+
         &:hover {
           color: var(--gcds-button-secondary-hover);
         }
@@ -87,13 +93,16 @@
         background-color:
           var(--custom-gcds-style-background-color,
           var(--gcds-button-destructive-default));
+
         &:hover {
           background-color: var(--gcds-button-destructive-hover);
         }
       }
+
       &.outline,
       &.text-only {
         color: var(--gcds-button-destructive-default);
+
         &:hover {
           color: var(--gcds-button-destructive-hover);
         }
@@ -105,16 +114,16 @@
     left: 0;
     position: absolute;
     text-align: center;
-    top: 10px;
+    top: 1.6rem;
     width: 100%;
     z-index: 3;
 
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
+    clip: rect(0, 0, 0, 0);
+    height: 0;
     margin: 0;
     overflow: hidden;
     position: absolute;
-    width: 1px;
+    width: 0;
 
     &.solid:not(:focus) {
       background-color:
