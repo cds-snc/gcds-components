@@ -92,7 +92,7 @@
           color: currentcolor;
           left: 1rem;
           opacity: 0;
-          top: -0.125rem;
+          top: .05rem;
           transform: rotate(40deg);
           transition: opacity .2s ease-in-out;
         }
