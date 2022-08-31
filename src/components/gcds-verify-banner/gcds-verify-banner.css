@@ -17,19 +17,24 @@
   .container-xs {
     width: 90%;
   }
+
   .container-fluid {
     max-width: var(--gcds-container-500);
     padding-inline: var(--gcds-spacing-300);
   }
+
   .container-lg {
     max-width: var(--gcds-container-400);
   }
+
   .container-md {
     max-width: var(--gcds-container-300);
   }
+
   .container-sm {
     max-width: var(--gcds-container-200);
   }
+
   .container-xs {
     max-width: var(--gcds-container-100);
   }

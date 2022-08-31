@@ -18,6 +18,8 @@
 | `required`     | `required`      | Specifies if a form field is required or not.                    | `boolean`                                                          | `undefined` |
 | `size`         | `size`          | Size attribute for an input element. Defines max-length as well. | `number`                                                           | `undefined` |
 | `type`         | `type`          | Set Input types                                                  | `"email" \| "number" \| "password" \| "search" \| "text" \| "url"` | `'text'`    |
+| `validateOn`   | `validate-on`   | Set event to call validator                                      | `"blur" \| "other" \| "submit"`                                    | `undefined` |
+| `validator`    | --              | Array of validators                                              | `(string \| ValidatorEntry \| Validator<string>)[]`                | `undefined` |
 | `value`        | `value`         | Default value for an input element.                              | `string`                                                           | `undefined` |
 
 
@@ -28,6 +30,19 @@
 | `gcdsBlur`   | Emitted when the input loses focus. | `CustomEvent<void>` |
 | `gcdsChange` | Update value based on user input.   | `CustomEvent<any>`  |
 | `gcdsFocus`  | Emitted when the input has focus.   | `CustomEvent<void>` |
+
+
+## Methods
+
+### `validate() => Promise<void>`
+
+Call any active validators
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

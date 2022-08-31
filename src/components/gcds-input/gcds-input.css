@@ -9,10 +9,10 @@
   margin: 0;
   padding: 0;
   border: 0;
-  transition: color ease-in-out 0.15s;
+  transition: color ease-in-out .15s;
 
   &:focus-within {
-    color: var(--gcds-input-focus);
+    color: var(--gcds-input-focus-text);
   }
 
   &.gcds-disabled {
@@ -26,11 +26,11 @@
 
 :host input {
   display: block;
-  min-width: 45px;
+  min-width: 2.75rem;
   width: 100%;
   max-width: 100%;
   height: auto;
-  min-height: 45px;
+  min-height: 2.75rem;
   font-family: inherit;
   font-size: inherit;
   line-height: var(--gcds-line-heights-paragraph);
@@ -39,16 +39,16 @@
   background-color: var(--gcds-input-default-background);
   background-image: none;
   color: var(--gcds-input-default-text);
-  border: 2px solid currentColor;
+  border: .125rem solid currentColor;
   border-radius: var(--gcds-spacing-50);
   box-sizing: border-box;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
   &:focus {
-    border-color: var(--gcds-input-focus);
-    box-shadow: 0 0 0 2px var(--gcds-color-grayscale-0);
-    outline: 3px solid var(--gcds-input-focus);
-    outline-offset: 2px;
+    border-color: var(--gcds-input-focus-text);
+    box-shadow: 0 0 0 .125rem var(--gcds-input-focus-shadow);
+    outline: .1875rem solid var(--gcds-input-focus-text);
+    outline-offset: .125rem;
   }
 
   &:disabled {

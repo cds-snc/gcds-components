@@ -32,7 +32,7 @@
   min-width: var(--gcds-spacing-500);
   max-width: 100%;
   height: auto;
-  min-height: var(--gcds-spacing-500);
+  min-height: 2.75rem;
   font-family: inherit;
   font-size: inherit;
   line-height: var(--gcds-line-heights-paragraph);
