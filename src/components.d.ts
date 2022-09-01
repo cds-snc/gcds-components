@@ -19,7 +19,7 @@ export namespace Components {
         /**
           * Callback when the close button is clicked.
          */
-        "dismissHandler": () => void;
+        "dismissHandler": Function;
         /**
           * Defines if the alert's close button is displayed or not.
          */
@@ -821,7 +821,7 @@ declare namespace LocalJSX {
         /**
           * Callback when the close button is clicked.
          */
-        "dismissHandler"?: () => void;
+        "dismissHandler"?: Function;
         /**
           * Defines if the alert's close button is displayed or not.
          */

@@ -25,7 +25,7 @@ export class GcdsAlert {
   /**
    * Callback when the close button is clicked.
    */
-  @Prop() dismissHandler: () => void;
+  @Prop() dismissHandler: Function;
 
   /**
    * Defines if the alert's close button is displayed or not.
@@ -59,11 +59,11 @@ export class GcdsAlert {
 
   @Event() gcdsDismiss!: EventEmitter<void>;
 
-  private onDismiss = () => {
+  private onDismiss = (e) => {
     this.gcdsDismiss.emit();
 
     if ( this.dismissHandler ) {
-      this.dismissHandler();
+      this.dismissHandler(e);
     } else {
       this.isOpen = false;
     }
@@ -114,7 +114,7 @@ export class GcdsAlert {
                 { !hideCloseBtn ?
                   <button
                     class="alert-close-btn"
-                    onClick={this.onDismiss}
+                    onClick={(e) => this.onDismiss(e)}
                     aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
                   >
                     <gcds-icon aria-hidden="true" name="times" size="sm" />
