@@ -1,5 +1,5 @@
 {
-  "name": "gcds-components-test",
+  "name": "gcds-components",
   "version": "0.1.7",
   "description": "gcds components proof-of-concept",
   "main": "dist/index.cjs.js",
@@ -15,7 +15,7 @@
     "loader/"
   ],
   "scripts": {
-    "prebuild": "node scripts/minify.js",
+    "prebuild": "node ../../scripts/minify.js",
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",

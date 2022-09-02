@@ -16,15 +16,10 @@
     "jsx": "react",
     "jsxFactory": "h"
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules"
-  ],
-  "paths": {
-    "gcds-components": [
-      "./packages/web"
-    ],
-    "gcds-react-components": [
-      "./packages/react"
-    ],
-  }
+  ]
 }

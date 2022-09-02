@@ -356,6 +356,7 @@ export namespace Components {
         "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     }
     interface GcdsInput {
+        "changeHandler": Function;
         /**
           * Specifies if an input element is disabled or not.
          */
@@ -364,6 +365,7 @@ export namespace Components {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
+        "focusHandler": Function;
         /**
           * Specifies if the label is hidden or not.
          */
@@ -624,6 +626,38 @@ export namespace Components {
         "positionFixed"?: boolean;
     }
 }
+export interface GcdsButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsButtonElement;
+}
+export interface GcdsCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsCheckboxElement;
+}
+export interface GcdsFieldsetCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsFieldsetElement;
+}
+export interface GcdsFileUploaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsFileUploaderElement;
+}
+export interface GcdsInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsInputElement;
+}
+export interface GcdsRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsRadioElement;
+}
+export interface GcdsSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsSelectElement;
+}
+export interface GcdsTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsTextareaElement;
+}
 declare global {
     interface HTMLGcdsBannerElement extends Components.GcdsBanner, HTMLStencilElement {
     }
@@ -858,11 +892,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsButtonCustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        "onGcdsFocus"?: (event: GcdsButtonCustomEvent<void>) => void;
         /**
           * The rel attribute specifies the relationship between the current document and the linked document
          */
@@ -904,15 +938,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checkbox loses focus.
          */
-        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsCheckboxCustomEvent<void>) => void;
         /**
           * Update value based on user input.
          */
-        "onGcdsChange"?: (event: CustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsCheckboxCustomEvent<any>) => void;
         /**
           * Emitted when the checkbox has focus.
          */
-        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        "onGcdsFocus"?: (event: GcdsCheckboxCustomEvent<void>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -964,11 +998,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the fieldset has a validation error.
          */
-        "onGcdsGroupError"?: (event: CustomEvent<string>) => void;
+        "onGcdsGroupError"?: (event: GcdsFieldsetCustomEvent<string>) => void;
         /**
           * Emitted when the fieldset has a validation error.
          */
-        "onGcdsGroupErrorClear"?: (event: CustomEvent<void>) => void;
+        "onGcdsGroupErrorClear"?: (event: GcdsFieldsetCustomEvent<void>) => void;
         /**
           * Flag the contents are required
          */
@@ -1010,19 +1044,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the uploader loses focus.
          */
-        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
           * Update value based on user selection.
          */
-        "onGcdsFileUploaderChange"?: (event: CustomEvent<any>) => void;
+        "onGcdsFileUploaderChange"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
         /**
           * Emitted when the uploader has focus.
          */
-        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        "onGcdsFocus"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
           * Remove file and update value.
          */
-        "onGcdsRemoveFile"?: (event: CustomEvent<any>) => void;
+        "onGcdsRemoveFile"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1153,6 +1187,7 @@ declare namespace LocalJSX {
         "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     }
     interface GcdsInput {
+        "changeHandler"?: Function;
         /**
           * Specifies if an input element is disabled or not.
          */
@@ -1161,6 +1196,7 @@ declare namespace LocalJSX {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
+        "focusHandler"?: Function;
         /**
           * Specifies if the label is hidden or not.
          */
@@ -1180,15 +1216,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsInputCustomEvent<void>) => void;
         /**
           * Update value based on user input.
          */
-        "onGcdsChange"?: (event: CustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsInputCustomEvent<any>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        "onGcdsFocus"?: (event: GcdsInputCustomEvent<void>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1262,15 +1298,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the radio loses focus.
          */
-        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsRadioCustomEvent<void>) => void;
         /**
           * Emitted when the radio has focus.
          */
-        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        "onGcdsFocus"?: (event: GcdsRadioCustomEvent<void>) => void;
         /**
           * Emitted when the radio button is checked
          */
-        "onGcdsRadioChange"?: (event: CustomEvent<void>) => void;
+        "onGcdsRadioChange"?: (event: GcdsRadioCustomEvent<void>) => void;
         /**
           * Id attribute for an input element.
          */
@@ -1308,15 +1344,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the select loses focus.
          */
-        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
           * Emitted when the select has focus.
          */
-        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        "onGcdsFocus"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
           * Update value based on user selection.
          */
-        "onGcdsSelectChange"?: (event: CustomEvent<any>) => void;
+        "onGcdsSelectChange"?: (event: GcdsSelectCustomEvent<any>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1408,15 +1444,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the textarea loses focus.
          */
-        "onGcdsBlur"?: (event: CustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsTextareaCustomEvent<void>) => void;
         /**
           * Update value based on user input.
          */
-        "onGcdsChange"?: (event: CustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**
           * Emitted when the textarea has focus.
          */
-        "onGcdsFocus"?: (event: CustomEvent<void>) => void;
+        "onGcdsFocus"?: (event: GcdsTextareaCustomEvent<void>) => void;
         /**
           * Specifies if a form field is required or not.
          */

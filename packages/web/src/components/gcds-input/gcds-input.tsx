@@ -70,6 +70,9 @@ export class GcdsInput {
    */
   @Prop({ mutable: true }) value: string;
 
+  @Prop() focusHandler: Function;
+  @Prop() changeHandler: Function;
+
   /**
    * Array of validators
    */
@@ -96,7 +99,11 @@ export class GcdsInput {
     */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
+  private onFocus = (e) => {
+
+    if (this.focusHandler) {
+      this.focusHandler(e);
+    }
     this.gcdsFocus.emit();
   }
 
@@ -132,9 +139,14 @@ export class GcdsInput {
   }
 
   handleChange(e) {
-    let val = e.target && e.target.value;
 
-    this.value = val;
+    if (this.changeHandler) {
+      this.changeHandler(e);
+    } else {
+      let val = e.target && e.target.value;
+      this.value = val;
+    }
+
     this.gcdsChange.emit(this.value);
   }
 
@@ -193,7 +205,6 @@ export class GcdsInput {
             label-for={inputId}
             lang={lang}
           />
-
           {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
 
           {errorMessage ?
@@ -206,7 +217,7 @@ export class GcdsInput {
             id={inputId}
             name={inputId}
             onBlur={this.onBlur}
-            onFocus={this.onFocus}
+            onFocus={(e) => this.onFocus(e)}
             onInput={(e) => this.handleChange(e)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
