@@ -38,11 +38,6 @@
   }
 
   /* Role */
-  &.role-destructive {
-    background-color: var(--gcds-banner-destructive-background);
-    color: var(--gcds-banner-destructive-text);
-  }
-
   &.role-primary {
     background-color: var(--gcds-banner-primary-background);
     color: var(--gcds-banner-primary-text);
@@ -50,10 +45,6 @@
 
   &.role-secondary {
     background-color: var(--gcds-banner-secondary-background);
-  }
-
-  &.role-warning {
-    background-color: var(--gcds-banner-warning-background);
   }
 
   /* General Styling */
