@@ -106,10 +106,28 @@
     }
 
     .alert-close-btn {
-      margin-left: var(--gcds-spacing-400);
+      flex: 0 0 2.75rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      margin: -.75rem -.75rem 0 var(--gcds-spacing-400);
       padding: 0;
       background-color: transparent;
+      box-sizing: border-box;
       border: 0;
+      border-radius: 100%;
+      transition: all .15s ease-in-out;
+
+      @media only screen and (max-width: 550px) {
+        display: none;
+      }
+
+      &:focus {
+        background-color: var(--gcds-alert-button-focus-background);
+        box-shadow: 0 0 0 .125rem var(--gcds-alert-button-focus-text);
+        outline: .1875rem solid var(--gcds-alert-button-focus-background);
+        outline-offset: .125rem;
+        color: var(--gcds-alert-button-focus-text);
+      }
     }
   }
 
