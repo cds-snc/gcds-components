@@ -2,8 +2,8 @@
   "name": "gcds-react-components",
   "version": "0.1.7",
   "author": "Government of Canada / Gouvernement du Canada",
-  "description": "React specific wrapper for gcds-components",
-  "homepage": "https://design.alpha.canada.ca",
+  "description": "React wrapper for gcds-components",
+  "homepage": "https://cds-snc-design.netlify.app/",
   "bugs": {
     "url": "https://github.com/cds-snc/gcds-components/issues"
   },
@@ -26,7 +26,8 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/"
+    "dist/",
+    "gcds.css"
   ],
   "devDependencies": {
     "@types/jest": "23.3.9",
