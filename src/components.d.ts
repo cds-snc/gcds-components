@@ -11,7 +11,7 @@ export namespace Components {
         /**
           * Defines banner role.
          */
-        "bannerRole"?: 'destructive' | 'primary' | 'secondary' | 'warning';
+        "bannerRole"?: 'primary' | 'secondary';
         /**
           * Defines the max width of the banner content.
          */
@@ -780,7 +780,7 @@ declare namespace LocalJSX {
         /**
           * Defines banner role.
          */
-        "bannerRole"?: 'destructive' | 'primary' | 'secondary' | 'warning';
+        "bannerRole"?: 'primary' | 'secondary';
         /**
           * Defines the max width of the banner content.
          */

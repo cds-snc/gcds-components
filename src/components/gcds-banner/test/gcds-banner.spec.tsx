@@ -93,64 +93,6 @@ describe('gcds-banner', () => {
     `);
   });
 
-  it('renders banner-role="destructive" + role="alert"', async () => {
-    const page = await newSpecPage({
-      components: [GcdsBanner],
-      html: `<gcds-banner banner-role="destructive"></gcds-banner>`,
-    });
-    expect(page.root).toEqualHtml(`
-      <gcds-banner banner-role="destructive">
-        <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-destructive" role="alert">
-            <div class="banner-content container-lg">
-              <figure class="banner-icon icon-left">
-                <slot name="banner-icon-left"></slot>
-              </figure>
-
-              <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
-                <slot name="banner-cta"></slot>
-              </div>
-
-              <figure class="banner-icon icon-right">
-                <slot name="banner-icon-right"></slot>
-              </figure>
-            </div>
-          </div>
-        </mock:shadow-root>
-      </gcds-banner>
-    `);
-  });
-
-  it('renders banner-role="warning"', async () => {
-    const page = await newSpecPage({
-      components: [GcdsBanner],
-      html: `<gcds-banner banner-role="warning"></gcds-banner>`,
-    });
-    expect(page.root).toEqualHtml(`
-      <gcds-banner banner-role="warning">
-        <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-warning" role="status">
-            <div class="banner-content container-lg">
-              <figure class="banner-icon icon-left">
-                <slot name="banner-icon-left"></slot>
-              </figure>
-
-              <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
-                <slot name="banner-cta"></slot>
-              </div>
-
-              <figure class="banner-icon icon-right">
-                <slot name="banner-icon-right"></slot>
-              </figure>
-            </div>
-          </div>
-        </mock:shadow-root>
-      </gcds-banner>
-    `);
-  });
-
   /**
     * Fixed position test
     */

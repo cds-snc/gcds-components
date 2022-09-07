@@ -11,7 +11,7 @@ export class GcdsBanner {
   /**
    * Defines banner role.
    */
-  @Prop() bannerRole?: 'destructive' | 'primary' | 'secondary' | 'warning' = 'primary';
+  @Prop() bannerRole?: 'primary' | 'secondary' = 'primary';
 
   /**
    * Defines the max width of the banner content.
@@ -30,7 +30,7 @@ export class GcdsBanner {
       <Host>
         <div
           class={`gcds-banner role-${bannerRole} ${positionFixed ? 'is-fixed' : ''}`}
-          role={bannerRole === 'destructive' ? 'alert' : 'status'}
+          role="status"
           aria-label="Banner"
         >
           <div class={`banner-content ${maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
