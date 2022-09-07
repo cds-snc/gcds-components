@@ -87,6 +87,8 @@
   --gcds-line-heights-h3: 162.31672001219326%;
   --gcds-line-heights-h2: 144.28152889972733%;
   --gcds-line-heights-h1: 128.25024791086875%;
+  --gcds-alert-button-focus-background: #303fc3;
+  --gcds-alert-button-focus-text: #ffffff;
   --gcds-alert-text: #000000;
   --gcds-alert-destructive-background: #f3e9e8;
   --gcds-alert-destructive-icon: #bc3331;
