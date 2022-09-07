@@ -175,6 +175,16 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GcdsDetails {
+        /**
+          * The details title summarizes the panel content.
+         */
+        "detailsTitle": string;
+        /**
+          * Defines if the details panel is open by default or not.
+         */
+        "open"?: boolean;
+    }
     interface GcdsErrorMessage {
         /**
           * Error message for an invalid form field.
@@ -675,6 +685,12 @@ declare global {
         prototype: HTMLGcdsCheckboxElement;
         new (): HTMLGcdsCheckboxElement;
     };
+    interface HTMLGcdsDetailsElement extends Components.GcdsDetails, HTMLStencilElement {
+    }
+    var HTMLGcdsDetailsElement: {
+        prototype: HTMLGcdsDetailsElement;
+        new (): HTMLGcdsDetailsElement;
+    };
     interface HTMLGcdsErrorMessageElement extends Components.GcdsErrorMessage, HTMLStencilElement {
     }
     var HTMLGcdsErrorMessageElement: {
@@ -788,6 +804,7 @@ declare global {
         "gcds-banner": HTMLGcdsBannerElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
+        "gcds-details": HTMLGcdsDetailsElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
         "gcds-fieldset": HTMLGcdsFieldsetElement;
         "gcds-file-uploader": HTMLGcdsFileUploaderElement;
@@ -992,6 +1009,16 @@ declare namespace LocalJSX {
           * Value for an input element.
          */
         "value"?: string;
+    }
+    interface GcdsDetails {
+        /**
+          * The details title summarizes the panel content.
+         */
+        "detailsTitle": string;
+        /**
+          * Defines if the details panel is open by default or not.
+         */
+        "open"?: boolean;
     }
     interface GcdsErrorMessage {
         /**
@@ -1524,6 +1551,7 @@ declare namespace LocalJSX {
         "gcds-banner": GcdsBanner;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
+        "gcds-details": GcdsDetails;
         "gcds-error-message": GcdsErrorMessage;
         "gcds-fieldset": GcdsFieldset;
         "gcds-file-uploader": GcdsFileUploader;
@@ -1552,6 +1580,7 @@ declare module "@stencil/core" {
             "gcds-banner": LocalJSX.GcdsBanner & JSXBase.HTMLAttributes<HTMLGcdsBannerElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
+            "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
             "gcds-file-uploader": LocalJSX.GcdsFileUploader & JSXBase.HTMLAttributes<HTMLGcdsFileUploaderElement>;

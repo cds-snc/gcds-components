@@ -1,0 +1,83 @@
+:host .gcds-details {
+  summary {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: var(--gcds-spacing-100);
+    color: var(--gcds-details-default-text);
+    transition: background-color .15s ease-in-out, color .15s ease-in-out;
+
+    &:focus {
+      outline: 0;
+      background-color: var(--gcds-details-focus-background);
+      color: var(--gcds-details-focus-text);
+    }
+
+    &:active {
+      background-color: var(--gcds-details-active-background);
+      color: var(--gcds-details-active-text);
+    }
+
+    &:before {
+      position: absolute;
+      top: var(--gcds-spacing-300);
+      left: var(--gcds-spacing-100);
+      width: 0;
+      height: 0;
+      content: '';
+      border-top: .4375rem solid transparent;
+      border-bottom: .4375rem solid transparent;
+      border-left: .75rem solid currentColor;
+      transition: transform .15s ease-in-out
+    }
+
+    p {
+      display: inline-block;
+      font-size: var(--gcds-font-sizes-paragraph);
+      line-height: var(--gcds-line-heights-paragraph);
+      margin: 0 0 0 2rem;
+      border-bottom: 1px solid currentColor;
+    }
+  }
+
+  .details-panel {
+    margin: var(--gcds-spacing-400) 0 0 0;
+    padding: var(--gcds-spacing-300) 2.125rem;
+    border-left: .375rem solid var(--gcds-details-default-border);
+
+    ::slotted(*) {
+      font-size: var(--gcds-font-sizes-paragraph);
+      line-height: var(--gcds-line-heights-paragraph);
+      margin-bottom: var(--gcds-spacing-400);
+    }
+
+    ::slotted(*:first-child) {
+      margin-top: 0;
+    }
+
+    ::slotted(*:last-child) {
+      margin-bottom: 0;
+    }
+
+    ::slotted(ol),
+    ::slotted(ul) {
+      margin-left: var(--gcds-spacing-400);
+      padding: 0;
+    }
+
+    ::slotted(small) {
+      font-size: var(--gcds-font-sizes-caption);
+      line-height: var(--gcds-line-heights-caption);
+    }
+  }
+
+  &:hover {
+    summary:not(:focus) {
+      background-color: var(--gcds-details-hover-background);
+    }
+  }
+
+  &[open] summary:before {
+    transform: rotate(90deg);
+  }
+}
