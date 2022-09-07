@@ -25,6 +25,6 @@
     ],
     "gcds-react-components": [
       "./packages/react"
-    ],
+    ]
   }
 }

@@ -42,6 +42,7 @@
     "typescript": "^3.3.4000"
   },
   "dependencies": {
+    "gcds-components": "^0.1.7"
   },
   "peerDependencies": {
     "react": "^17.0.2",

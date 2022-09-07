@@ -16,11 +16,8 @@
   ],
   "scripts": {
     "prebuild": "node scripts/minify.js",
-    "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "build": "npx lerna run build",
+    "test": "npx lerna run test"
   },
   "dependencies": {
     "@stencil/core": "^2.7.0",
@@ -39,11 +36,15 @@
     "gulp-sass": "^5.0.0",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
+    "lerna": "^5.5.0",
     "postcss-nested": "^5.0.6",
     "puppeteer": "^10.0.0",
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
     "workbox-build": "^4.3.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ]
 }
