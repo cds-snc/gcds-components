@@ -7,6 +7,32 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
+    interface GcdsAlert {
+        /**
+          * Defines the alert heading.
+         */
+        "alertHeading": string;
+        /**
+          * Defines alert role.
+         */
+        "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
+        /**
+          * Callback when the close button is clicked.
+         */
+        "dismissHandler": Function;
+        /**
+          * Defines if the alert's close button is displayed or not.
+         */
+        "hideCloseBtn"?: boolean;
+        /**
+          * Defines the max width of the alert content.
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Defines if the alert's position is fixed.
+         */
+        "positionFixed"?: boolean;
+    }
     interface GcdsBanner {
         /**
           * Defines banner role.
@@ -625,6 +651,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLGcdsAlertElement extends Components.GcdsAlert, HTMLStencilElement {
+    }
+    var HTMLGcdsAlertElement: {
+        prototype: HTMLGcdsAlertElement;
+        new (): HTMLGcdsAlertElement;
+    };
     interface HTMLGcdsBannerElement extends Components.GcdsBanner, HTMLStencilElement {
     }
     var HTMLGcdsBannerElement: {
@@ -752,6 +784,7 @@ declare global {
         new (): HTMLGcdsVerifyBannerElement;
     };
     interface HTMLElementTagNameMap {
+        "gcds-alert": HTMLGcdsAlertElement;
         "gcds-banner": HTMLGcdsBannerElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
@@ -776,6 +809,36 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface GcdsAlert {
+        /**
+          * Defines the alert heading.
+         */
+        "alertHeading": string;
+        /**
+          * Defines alert role.
+         */
+        "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
+        /**
+          * Callback when the close button is clicked.
+         */
+        "dismissHandler"?: Function;
+        /**
+          * Defines if the alert's close button is displayed or not.
+         */
+        "hideCloseBtn"?: boolean;
+        /**
+          * Defines the max width of the alert content.
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Events
+         */
+        "onGcdsDismiss"?: (event: CustomEvent<void>) => void;
+        /**
+          * Defines if the alert's position is fixed.
+         */
+        "positionFixed"?: boolean;
+    }
     interface GcdsBanner {
         /**
           * Defines banner role.
@@ -1457,6 +1520,7 @@ declare namespace LocalJSX {
         "positionFixed"?: boolean;
     }
     interface IntrinsicElements {
+        "gcds-alert": GcdsAlert;
         "gcds-banner": GcdsBanner;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
@@ -1484,6 +1548,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
             "gcds-banner": LocalJSX.GcdsBanner & JSXBase.HTMLAttributes<HTMLGcdsBannerElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
