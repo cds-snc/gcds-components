@@ -1,16 +1,35 @@
-# stencil-ds-react-template
+[La version française suit.](#système-de-design---composants-gc)
 
-This is an example repo of building plugins.
+# GC Design system components
 
-## Step 1.
+## Installation
 
-- Update the `package.json` to have the correct package name for this repo.
-- Replace `component-library` under `dependencies` with your core stencil package name.
+### Install from npm
 
-## Step 2.
+``` js
+npm install gcds-react-components
+```
 
-- Build your core stencil package.
+Place the following code in the `index.js` file of your app.
 
-## Step 3.
+``` jsx
+import 'gcds-react-components/gcds.css'
+```
 
-- Run build on this package.
+--------
+
+# Système de design - composants GC
+
+## Installation
+
+### Installer le paquet avec npm
+
+``` js
+npm install gcds-react-components
+```
+
+Insérez le code qui suit dans le fichier index.js de votre application.
+
+``` jsx
+import 'gcds-react-components/gcds.css'
+```
