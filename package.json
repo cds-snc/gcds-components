@@ -15,7 +15,7 @@
     "loader/"
   ],
   "scripts": {
-    "prebuild": "node scripts/minify.js",
+    "compile": "gulp compile",
     "build": "npx lerna run build",
     "test": "npx lerna run test"
   },

@@ -6,7 +6,7 @@ var getDirectories = function (src, callback) {
   glob(src + '/**/*', callback);
 };
 
-getDirectories('packages/web/src/components', function (err, res) {
+getDirectories('src/components', function (err, res) {
   if (err) {
     console.log('Error', err);
   } else {

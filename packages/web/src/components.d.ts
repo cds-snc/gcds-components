@@ -662,6 +662,10 @@ export namespace Components {
         "positionFixed"?: boolean;
     }
 }
+export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsAlertElement;
+}
 export interface GcdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsButtonElement;
@@ -884,7 +888,7 @@ declare namespace LocalJSX {
         /**
           * Events
          */
-        "onGcdsDismiss"?: (event: CustomEvent<void>) => void;
+        "onGcdsDismiss"?: (event: GcdsAlertCustomEvent<void>) => void;
         /**
           * Defines if the alert's position is fixed.
          */

@@ -5,7 +5,7 @@ import { reactOutputTarget as react } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'gcds',
-  globalStyle: 'src/styles/global.css',
+  globalStyle: '../../styles/global.css',
   srcDir: './src',
   outputTargets: [
     react({

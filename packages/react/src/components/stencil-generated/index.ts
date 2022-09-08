@@ -8,9 +8,11 @@ import type { JSX } from 'gcds-components';
 import { defineCustomElements } from 'gcds-components/loader';
 
 defineCustomElements();
+export const GcdsAlert = /*@__PURE__*/createReactComponent<JSX.GcdsAlert, HTMLGcdsAlertElement>('gcds-alert');
 export const GcdsBanner = /*@__PURE__*/createReactComponent<JSX.GcdsBanner, HTMLGcdsBannerElement>('gcds-banner');
 export const GcdsButton = /*@__PURE__*/createReactComponent<JSX.GcdsButton, HTMLGcdsButtonElement>('gcds-button');
 export const GcdsCheckbox = /*@__PURE__*/createReactComponent<JSX.GcdsCheckbox, HTMLGcdsCheckboxElement>('gcds-checkbox');
+export const GcdsDetails = /*@__PURE__*/createReactComponent<JSX.GcdsDetails, HTMLGcdsDetailsElement>('gcds-details');
 export const GcdsErrorMessage = /*@__PURE__*/createReactComponent<JSX.GcdsErrorMessage, HTMLGcdsErrorMessageElement>('gcds-error-message');
 export const GcdsFieldset = /*@__PURE__*/createReactComponent<JSX.GcdsFieldset, HTMLGcdsFieldsetElement>('gcds-fieldset');
 export const GcdsFileUploader = /*@__PURE__*/createReactComponent<JSX.GcdsFileUploader, HTMLGcdsFileUploaderElement>('gcds-file-uploader');
