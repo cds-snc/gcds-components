@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 31 Aug 2022 16:00:04 GMT
+ * Generated on Wed, 07 Sep 2022 15:42:09 GMT
  */
 
 :root {
@@ -87,6 +87,8 @@
   --gcds-line-heights-h3: 162.31672001219326%;
   --gcds-line-heights-h2: 144.28152889972733%;
   --gcds-line-heights-h1: 128.25024791086875%;
+  --gcds-alert-button-focus-background: #303fc3;
+  --gcds-alert-button-focus-text: #ffffff;
   --gcds-alert-text: #000000;
   --gcds-alert-destructive-background: #f3e9e8;
   --gcds-alert-destructive-icon: #bc3331;
@@ -96,12 +98,9 @@
   --gcds-alert-success-icon: #005900;
   --gcds-alert-warning-background: #faf3d1;
   --gcds-alert-warning-icon: #000000;
-  --gcds-banner-destructive-background: #d3080c;
-  --gcds-banner-destructive-text: #ffffff;
   --gcds-banner-primary-background: #26374a;
   --gcds-banner-primary-text: #ffffff;
   --gcds-banner-secondary-background: #f0f0f0;
-  --gcds-banner-warning-background: #f7b452;
   --gcds-button-destructive-default: #bc3331;
   --gcds-button-destructive-hover: #340e0e;
   --gcds-button-destructive-active: #bc3331;
@@ -124,6 +123,13 @@
   --gcds-checkbox-disabled-text: #707070;
   --gcds-checkbox-focus-text: #303fc3;
   --gcds-checkbox-focus-shadow: #ffffff;
+  --gcds-details-default-border: #c4c3c5;
+  --gcds-details-default-text: #2b496e;
+  --gcds-details-active-background: #000000;
+  --gcds-details-active-text: #ffffff;
+  --gcds-details-focus-background: #303fc3;
+  --gcds-details-focus-text: #ffffff;
+  --gcds-details-hover-background: #d4e6f2;
   --gcds-error-message-background: #f3e9e8;
   --gcds-error-message-border: #d3080c;
   --gcds-error-message-text: #000000;

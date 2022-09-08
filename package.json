@@ -1,6 +1,6 @@
 {
-  "name": "gcds-components-test",
-  "version": "0.1.7",
+  "name": "gcds-components-repo",
+  "version": "0.1.9",
   "description": "gcds components proof-of-concept",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",

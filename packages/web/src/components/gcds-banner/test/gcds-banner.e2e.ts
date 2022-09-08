@@ -48,32 +48,4 @@ describe('gcds-banner a11y tests', () => {
 
     expect(results.violations.length).toBe(0);
   });
-
-  it('colour contrast destructive banner', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-banner banner-role="destructive">
-        <span slot="banner-text"> This is an example of a destructive banner.</span>
-      </gcds-banner>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-
-  it('colour contrast warning banner', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-banner banner-role="warning">
-        <span slot="banner-text"> This is an example of a warning banner.</span>
-      </gcds-banner>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
 });
