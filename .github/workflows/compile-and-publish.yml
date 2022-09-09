@@ -1,11 +1,4 @@
 name: Compile Core
-on: 
-  push:
-    branches:
-      - main
-    paths:
-      - 'src/**'
-      - 'package.json'
 
 jobs:
   build-deploy:
