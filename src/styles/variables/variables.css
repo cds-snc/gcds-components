@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 07 Sep 2022 15:42:09 GMT
+ * Generated on Mon, 12 Sep 2022 18:58:56 GMT
  */
 
 :root {
@@ -68,7 +68,7 @@
   --gcds-font-families-monospace: Menlo;
   --gcds-font-families-icons: Glyphicons Halflings;
   --gcds-font-sizes-caption: 1.1111111111111112rem;
-  --gcds-font-sizes-paragraph: 1.25rem;
+  --gcds-font-sizes-text: 1.25rem;
   --gcds-font-sizes-h6: 1.40625rem;
   --gcds-font-sizes-h5: 1.58203125rem;
   --gcds-font-sizes-h4: 1.77978515625rem;
@@ -80,7 +80,7 @@
   --gcds-font-weights-semibold: 600;
   --gcds-font-weights-bold: 700;
   --gcds-line-heights-caption: 146.25%;
-  --gcds-line-heights-paragraph: 130%;
+  --gcds-line-heights-text: 130%;
   --gcds-line-heights-h6: 115.55555555555556%;
   --gcds-line-heights-h5: 102.71604938271605%;
   --gcds-line-heights-h4: 182.60631001371743%;
