@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, State, Prop, Listen, Watch, Host, h } from '@stencil/core';
-import { assignLanguage, elementGroupCheck } from '../../utils/utils';
+import { assignLanguage, elementGroupCheck, inheritAttributes } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-radio',
@@ -55,6 +55,21 @@ export class GcdsRadio {
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**
+   * Custom callback function on click event
+   */
+  @Prop() clickHandler: Function;
+
+  /**
+  * Custom callback function on focus event
+  */
+  @Prop() focusHandler: Function;
+
+  /**
+  * Custom callback function on blur event
+  */
+  @Prop() blurHandler: Function;
+
+  /**
    * Specifies if the radio is invalid.
    */
    @State() hasError: boolean;
@@ -71,6 +86,11 @@ export class GcdsRadio {
   @State() parentError: string;
 
   /**
+   * Set additional HTML attributes not available in component properties
+   */
+  @State() inheritedAttributes: Object = {};
+
+  /**
    * Emitted when the radio button is checked
    */
   @Event() gcdsRadioChange!: EventEmitter<void>;
@@ -80,7 +100,11 @@ export class GcdsRadio {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
+  private onFocus = (e) => {
+    if (this.focusHandler) {
+      this.focusHandler(e);
+    }
+
     this.gcdsFocus.emit();
   }
 
@@ -89,14 +113,19 @@ export class GcdsRadio {
   */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = () => {
+  private onBlur = (e) => {
+    if (this.blurHandler) {
+      this.blurHandler(e);
+    }
+    
     this.gcdsBlur.emit();
-
   }
 
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby']);
   }
 
   private onChange = (name) => {
@@ -163,8 +192,9 @@ export class GcdsRadio {
             type="radio"
             {...attrsInput}
             onChange={() => this.onChange(name)}
-            onBlur={this.onBlur}
-            onFocus={this.onFocus}
+            onBlur={(e) => this.onBlur(e)}
+            onFocus={(e) => this.onFocus(e)}
+            onClick={(e) => { this.clickHandler && this.clickHandler(e) }}
             ref={element => this.shadowElement = element as HTMLInputElement}
           />
           <gcds-label
