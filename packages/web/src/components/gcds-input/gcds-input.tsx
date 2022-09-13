@@ -24,11 +24,27 @@ export class GcdsInput {
    * Specifies if an input element is disabled or not.
    */
   @Prop() disabled?: boolean = false;
+  @Watch('disabled')
+  validateDisabledInput() {
+    if (this.required) {
+      this.disabled = false;
+    }
+  }
 
   /**
    * Error message for an invalid input element.
    */
   @Prop({ mutable: true }) errorMessage?: string;
+  @Watch('errorMessage')
+  validateErrorMessage() {
+    if (this.disabled) {
+      this.errorMessage = "";
+    } else if (!this.hasError && this.errorMessage) {
+      this.hasError = true;
+    } else if (this.errorMessage == "") {
+      this.hasError = false;
+    }
+  }
 
   /**
    * Specifies if the label is hidden or not.
@@ -115,6 +131,17 @@ export class GcdsInput {
   @State() inheritedAttributes: Object = {};
 
   /**
+   * Specifies if the input is invalid.
+   */
+  @State() hasError: boolean;
+  @Watch('hasError')
+  validateHasError() {
+    if (this.disabled) {
+      this.hasError = false;
+    }
+  }
+
+  /**
   * Events
   */
 
@@ -180,6 +207,9 @@ export class GcdsInput {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
+    this.validateDisabledInput();
+    this.validateHasError();
+    this.validateErrorMessage();
     this.validateValidator();
 
     // Assign required validator if needed
@@ -199,7 +229,7 @@ export class GcdsInput {
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value, autocomplete, inheritedAttributes, lang } = this;
+    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value, hasError, autocomplete, inheritedAttributes, lang } = this;
 
     // Use max-width instead of size attribute to keep field responsive
     const style = {
@@ -228,7 +258,7 @@ export class GcdsInput {
 
     return (
       <Host>
-        <div class={`gcds-input-wrapper ${disabled ? 'gcds-disabled' : ''} ${errorMessage ? 'gcds-error' : ''}`}>
+        <div class={`gcds-input-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
           <gcds-label
             {...attrsLabel}
             hide-label={hideLabel}
@@ -243,7 +273,7 @@ export class GcdsInput {
 
           <input
             {...attrsInput}
-            class={errorMessage ? 'gcds-error' : null}
+            class={hasError ? 'gcds-error' : null}
             id={inputId}
             name={inputId}
             onBlur={(e) => this.onBlur(e)}

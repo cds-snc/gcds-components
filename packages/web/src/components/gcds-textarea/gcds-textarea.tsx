@@ -29,11 +29,27 @@ export class GcdsTextarea {
    * Specifies if a textarea element is disabled or not.
    */
   @Prop() disabled?: boolean = false;
+  @Watch('disabled')
+  validateDisabledTextarea() {
+    if (this.required) {
+      this.disabled = false;
+    }
+  }
 
   /**
    * Error message for an invalid textarea element.
    */
   @Prop({ mutable: true }) errorMessage?: string;
+  @Watch('errorMessage')
+  validateErrorMessage() {
+    if (this.disabled) {
+      this.errorMessage = "";
+    } else if (!this.hasError && this.errorMessage) {
+      this.hasError = true;
+    } else if (this.errorMessage == "") {
+      this.hasError = false;
+    }
+  }
 
   /**
    * Specifies if the label is hidden or not.
@@ -113,6 +129,17 @@ export class GcdsTextarea {
   @State() inheritedAttributes: Object = {};
 
   /**
+   * Specifies if the textarea is invalid.
+   */
+  @State() hasError: boolean;
+  @Watch('hasError')
+  validateHasError() {
+    if (this.disabled) {
+      this.hasError = false;
+    }
+  }
+
+  /**
   * Events
   */
 
@@ -178,6 +205,9 @@ export class GcdsTextarea {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
+    this.validateDisabledTextarea();
+    this.validateHasError();
+    this.validateErrorMessage();
     this.validateValidator();
 
     // Assign required validator if needed
@@ -198,7 +228,7 @@ export class GcdsTextarea {
   }
 
   render() {
-    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value, inheritedAttributes, lang } = this;
+    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value, hasError, inheritedAttributes, lang } = this;
 
     // Use max-width instead of cols attribute to keep field responsive
     const style = {
@@ -226,7 +256,7 @@ export class GcdsTextarea {
 
     return (
       <Host>
-        <div class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${errorMessage ? 'gcds-error' : ''}`}>
+        <div class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
           <gcds-label
             {...attrsLabel}
             hide-label={hideLabel}
@@ -242,7 +272,7 @@ export class GcdsTextarea {
 
           <textarea
             {...attrsTextarea}
-            class={errorMessage ? 'gcds-error' : null}
+            class={hasError ? 'gcds-error' : null}
             id={textareaId}
             name={textareaId}
             onBlur={(e) => this.onBlur(e)}
