@@ -1,8 +1,8 @@
 /* Menu */
 :host [data-h2-menu] {
   font-family: var(--gcds-font-families-heading), sans-serif;
-  font-size: var(--gcds-font-sizes-paragraph);
-  line-height: var(--gcds-line-heights-paragraph);
+  font-size: var(--gcds-font-sizes-text);
+  line-height: var(--gcds-line-heights-text);
   background-color: var(--gcds-site-menu-default-background);
   color: var(--gcds-site-menu-default-text);
   z-index: 100;

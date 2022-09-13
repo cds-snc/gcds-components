@@ -83,7 +83,7 @@
     }
 
     p {
-      line-height: var( --gcds-line-heights-paragraph);
+      line-height: var( --gcds-line-heights-text);
       margin: 0 var(--gcds-spacing-200) 0 0 !important;
     }
 

@@ -102,8 +102,8 @@
   }
 
   &.size-sm {
-    font-size: var(--gcds-font-sizes-paragraph);
-    line-height: var(--gcds-line-heights-paragraph);
+    font-size: var(--gcds-font-sizes-text);
+    line-height: var(--gcds-line-heights-text);
   }
 
   &.size-md {
