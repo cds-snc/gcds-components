@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { assignLanguage, inheritAttributes } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
@@ -12,6 +12,7 @@ export class GcdsSelect {
   @Element() el: HTMLElement;
 
   private lang: string;
+  private shadowElement?: HTMLElement;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -91,6 +92,22 @@ export class GcdsSelect {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
+  * Custom callback function on change event
+  */
+  @Prop() changeHandler: Function;
+
+  /**
+  * Custom callback function on focus event
+  */
+  @Prop() focusHandler: Function;
+
+  /**
+  * Custom callback function on blur event
+  */
+  @Prop() blurHandler: Function;
+
+
+  /**
    * Specifies if the select is invalid.
    */
   @State() hasError: boolean;
@@ -102,6 +119,11 @@ export class GcdsSelect {
   }
 
   /**
+   * Set additional HTML attributes not available in component properties
+   */
+  @State() inheritedAttributes: Object = {};
+
+  /**
     * Update value based on user selection.
     */
   @Event() gcdsSelectChange: EventEmitter;
@@ -111,7 +133,11 @@ export class GcdsSelect {
   */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
+  private onFocus = (e) => {
+    if (this.focusHandler) {
+      this.focusHandler(e);
+    }
+
     this.gcdsFocus.emit();
   }
 
@@ -120,9 +146,13 @@ export class GcdsSelect {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = () => {
-    if (this.validateOn == "blur") {
-      this.validate();
+  private onBlur = (e) => {
+    if (this.focusHandler) {
+      this.focusHandler(e);
+    } else {
+      if (this.validateOn == "blur") {
+        this.validate();
+      }
     }
 
     this.gcdsBlur.emit();
@@ -142,9 +172,13 @@ export class GcdsSelect {
   }
 
   handleChange = (e) => {
-    let val = e.target && e.target.value;
+    if (this.changeHandler) {
+      this.changeHandler(e);
+    } else {
+      let val = e.target && e.target.value;
+      this.value = val;
+    }
 
-    this.value = val;
     this.gcdsSelectChange.emit(this.value);
   };
 
@@ -163,6 +197,8 @@ export class GcdsSelect {
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
+
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby']);
   }
 
   componentWillUpdate() {
@@ -172,12 +208,13 @@ export class GcdsSelect {
   }
 
   render() {
-    const { lang, selectId, label, required, disabled, defaultValue, value, hint, errorMessage, hasError } = this;
+    const { lang, selectId, label, required, disabled, defaultValue, value, hint, errorMessage, inheritedAttributes, hasError } = this;
 
     const attrsSelect = {
       disabled,
       required,
       value,
+      ...inheritedAttributes
     };
 
     const attrsLabel = {
@@ -189,7 +226,7 @@ export class GcdsSelect {
       let hintID = hint ? `hint-${selectId}` : "";
       let errorID = errorMessage ? `error-message-${selectId}` : "";
 
-      attrsSelect["aria-describedby"] = `${hintID} ${errorID}`;
+      attrsSelect["aria-describedby"] = `${hintID} ${errorID} ${attrsSelect["aria-describedby"]}`;
     }
 
     return (
@@ -211,10 +248,11 @@ export class GcdsSelect {
             {...attrsSelect}
             id={selectId}
             name={selectId}
-            onBlur={this.onBlur}
-            onFocus={this.onFocus}
+            onBlur={(e) => this.onBlur(e)}
+            onFocus={(e) => this.onFocus(e)}
             onChange={(e) => this.handleChange(e)}
             aria-invalid={hasError ? 'true' : 'false'}
+            ref={element => this.shadowElement = element as HTMLElement}
           >
             { defaultValue ?
               <option value="" disabled selected>{defaultValue}</option>

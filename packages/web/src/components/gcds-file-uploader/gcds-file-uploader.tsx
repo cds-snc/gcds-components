@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { assignLanguage, inheritAttributes } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
@@ -12,6 +12,7 @@ export class GcdsFileUploader {
   @Element() el: HTMLElement;
 
   private lang: string;
+  private shadowElement?: HTMLElement;
 
   _validator: Validator<any> = defaultValidator;
 
@@ -96,6 +97,21 @@ export class GcdsFileUploader {
    @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
+   * Custom callback function on change event
+   */
+    @Prop() changeHandler: Function;
+
+    /**
+    * Custom callback function on focus event
+    */
+    @Prop() focusHandler: Function;
+  
+    /**
+    * Custom callback function on blur event
+    */
+    @Prop() blurHandler: Function;
+
+  /**
    * Specifies if the file uploader is invalid.
    */
   @State() hasError: boolean;
@@ -107,6 +123,11 @@ export class GcdsFileUploader {
   }
 
   /**
+   * Set additional HTML attributes not available in component properties
+   */
+  @State() inheritedAttributes: Object = {};
+
+  /**
   * Events
   */
 
@@ -114,7 +135,11 @@ export class GcdsFileUploader {
     * Emitted when the uploader has focus.
     */
   @Event() gcdsFocus!: EventEmitter<void>;
-  private onFocus = () => {
+  private onFocus = (e) => {
+    if (this.focusHandler) {
+      this.focusHandler(e);
+    }
+
     this.gcdsFocus.emit();
   }
 
@@ -122,9 +147,13 @@ export class GcdsFileUploader {
      * Emitted when the uploader loses focus.
      */
   @Event() gcdsBlur!: EventEmitter<void>;
-  private onBlur = () => {
-    if (this.validateOn == "blur") {
-      this.validate();
+  private onBlur = (e) => {
+    if (this.blurHandler) {
+      this.blurHandler(e);
+    } else {
+      if (this.validateOn == "blur") {
+        this.validate();
+      }
     }
 
     this.gcdsBlur.emit();
@@ -135,20 +164,26 @@ export class GcdsFileUploader {
     */
   @Event() gcdsFileUploaderChange: EventEmitter;
   handleChange = (e) => {
-    let filesContainer: string[] = [];
-    let files = e.target.files;
+    if (this.changeHandler) {
+      this.changeHandler(e);
+    } else {
+      let filesContainer: string[] = [];
+      let files = e.target.files;
 
-    for (let i = 0; i < files.length; i++) {
-      filesContainer.push(files[i].name);
+      for (let i = 0; i < files.length; i++) {
+        filesContainer.push(files[i].name);
+      }
+
+      this.value = [...filesContainer];
+
+      // Validate since the input loses focus when dialog opens
+      if (this.validateOn == "blur") {
+        this.validate();
+      }
     }
-
-    this.value = [...filesContainer];
     this.gcdsFileUploaderChange.emit(this.value);
 
-    // Validate since the input loses focus when dialog opens
-    if (this.validateOn == "blur") {
-      this.validate();
-    }
+
   };
 
   /**
@@ -194,6 +229,8 @@ export class GcdsFileUploader {
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
+
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby']);
   }
 
   componentWillUpdate() {
@@ -203,7 +240,7 @@ export class GcdsFileUploader {
   }
 
   render() {
-    const { accept, disabled, errorMessage, hasError, hint, label, lang, multiple, required, uploaderId, value } = this;
+    const { accept, disabled, errorMessage, hasError, hint, label, lang, multiple, required, uploaderId, value, inheritedAttributes } = this;
 
     const attrsInput = {
       accept,
@@ -211,6 +248,7 @@ export class GcdsFileUploader {
       multiple,
       required,
       value,
+      ...inheritedAttributes
     };
 
     const attrsLabel = {
@@ -223,7 +261,7 @@ export class GcdsFileUploader {
       let errorID = errorMessage ? `error-message-${uploaderId}` : "";
       // let fileSelected = "No file currently selected.";
 
-      attrsInput["aria-describedby"] = `${hintID} ${errorID} summary-uploaded-files`;
+      attrsInput["aria-describedby"] = `${hintID} ${errorID} summary-uploaded-files ${attrsInput["aria-describedby"]}`;
     }
 
     return (
@@ -251,8 +289,8 @@ export class GcdsFileUploader {
               id={uploaderId}
               name={uploaderId}
               {...attrsInput}
-              onBlur={this.onBlur}
-              onFocus={this.onFocus}
+              onBlur={(e) => this.onBlur(e)}
+              onFocus={(e) => this.onFocus(e)}
               onChange={(e) => this.handleChange(e)}
               aria-invalid={hasError ? 'true' : 'false'}
             />
