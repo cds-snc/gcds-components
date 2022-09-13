@@ -4,9 +4,9 @@
   align-items: flex-start;
   max-width: 90%;
   font-family: var(--gcds-font-families-body);
+  font-size: var(--gcds-font-sizes-text);
   font-weight: var(--gcds-font-weights-regular);
-  font-size: var(--gcds-font-sizes-paragraph);
-  line-height: var(--gcds-line-heights-paragraph);
+  line-height: var(--gcds-line-heights-text);
   color: var(--gcds-file-uploader-default-text);
   margin: 0;
   padding: 0;
@@ -60,8 +60,8 @@
   display: inline-block;
 
   button {
-    font-size: var(--gcds-font-sizes-paragraph);
-    line-height: var(--gcds-line-heights-paragraph);
+    font-size: var(--gcds-font-sizes-text);
+    line-height: var(--gcds-line-heights-text);
     padding: var(--gcds-spacing-400) var(--gcds-spacing-500);
     background-color: var(--gcds-file-uploader-button-background);
     color: var(--gcds-file-uploader-button-text);
@@ -125,7 +125,7 @@
   }
 
   span {
-    font-size: var(--gcds-font-sizes-paragraph);
+    font-size: var(--gcds-font-sizes-text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

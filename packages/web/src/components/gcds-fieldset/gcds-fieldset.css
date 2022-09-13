@@ -7,7 +7,7 @@
     color: var(--gcds-fieldset-default-text);
 
     legend {
-      font-size: var(--gcds-font-sizes-paragraph);
+      font-size: var(--gcds-font-sizes-text);
       font-weight: var(--gcds-font-weights-semibold);
       color: inherit;
       margin-bottom: var(--gcds-spacing-50);
