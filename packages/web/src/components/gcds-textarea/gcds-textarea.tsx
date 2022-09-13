@@ -1,5 +1,5 @@
-import { Component, Element, Event, Method, Watch, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { Component, Element, Event, Method, Watch, EventEmitter, Host, State, Prop, h } from '@stencil/core';
+import { assignLanguage, inheritAttributes } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
@@ -12,6 +12,7 @@ export class GcdsTextarea {
   @Element() el: HTMLElement;
 
   private lang: string;
+  private shadowElement?: HTMLElement;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -92,6 +93,26 @@ export class GcdsTextarea {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
+   * Custom callback function on change event
+   */
+  @Prop() changeHandler: Function;
+
+   /**
+    * Custom callback function on focus event
+    */
+  @Prop() focusHandler: Function;
+ 
+   /**
+    * Custom callback function on blur event
+    */
+  @Prop() blurHandler: Function;
+
+  /**
+   * Set additional HTML attributes not available in component properties
+   */
+  @State() inheritedAttributes: Object = {};
+
+  /**
   * Events
   */
 
@@ -100,7 +121,11 @@ export class GcdsTextarea {
     */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
+  private onFocus = (e) => {
+    if (this.focusHandler) {
+      this.focusHandler(e);
+    }
+
     this.gcdsFocus.emit();
   }
 
@@ -109,9 +134,13 @@ export class GcdsTextarea {
     */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = () => {
-    if (this.validateOn == "blur") {
-      this.validate();
+  private onBlur = (e) => {
+    if (this.blurHandler) {
+      this.blurHandler(e);
+    } else {
+      if (this.validateOn == "blur") {
+        this.validate();
+      }
     }
 
     this.gcdsBlur.emit();
@@ -135,9 +164,13 @@ export class GcdsTextarea {
   }
 
   handleChange(e) {
-    let val = e.target && e.target.value;
+    if (this.changeHandler) {
+      this.changeHandler(e);
+    } else {
+      let val = e.target && e.target.value;
+      this.value = val;
+    }
 
-    this.value = val;
     this.gcdsChange.emit(this.value);
   }
 
@@ -154,6 +187,8 @@ export class GcdsTextarea {
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
+
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby', 'placeholder']);
   }
 
   componentWillUpdate() {
@@ -163,7 +198,7 @@ export class GcdsTextarea {
   }
 
   render() {
-    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value, lang } = this;
+    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value, inheritedAttributes, lang } = this;
 
     // Use max-width instead of cols attribute to keep field responsive
     const style = {
@@ -179,13 +214,14 @@ export class GcdsTextarea {
       disabled,
       required,
       rows,
+      ...inheritedAttributes
     };
 
     if (hint || errorMessage || textareaCharacterCount) {
       let hintID = hint ? `hint-${textareaId}` : "";
       let errorID = errorMessage ? `error-message-${textareaId}` : "";
       let countID = textareaCharacterCount ? `count-${textareaId}` : "";
-      attrsTextarea["aria-describedby"] = `${hintID} ${errorID} ${countID}`;
+      attrsTextarea["aria-describedby"] = `${hintID} ${errorID} ${countID} ${attrsTextarea["aria-describedby"]}`;
     }
 
     return (
@@ -209,13 +245,14 @@ export class GcdsTextarea {
             class={errorMessage ? 'gcds-error' : null}
             id={textareaId}
             name={textareaId}
-            onBlur={this.onBlur}
-            onFocus={this.onFocus}
+            onBlur={(e) => this.onBlur(e)}
+            onFocus={(e) => this.onFocus(e)}
             onInput={(e) => this.handleChange(e)}
             aria-labelledby={`label-for-${textareaId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={textareaCharacterCount ? textareaCharacterCount : null}
             style={cols ? style : null}
+            ref={element => this.shadowElement = element as HTMLElement}
           >{value}</textarea>
 
           {textareaCharacterCount ?
