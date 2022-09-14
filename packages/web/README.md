@@ -50,21 +50,15 @@ All gcds-components should now be ready to use in your site.
 
 #### React
 
+``` js
+npm install gcds-components-react
+```
+
 Place the following code in the `index.js` file of your app.
 
 ``` jsx
-import { applyPolyfills, defineCustomElements } from 'gcds-components/loader';
-import 'gcds-components/dist/gcds/gcds.css';
-
-ReactDOM.render(...);
-
-applyPolyfills().then(() => {
-  defineCustomElements(window);
-});
-
+import 'gcds-components-react/gcds.css'
 ```
-
-All gcds-components should now be ready to use in your React app.
 
 #### Vue
 
@@ -132,21 +126,14 @@ Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components 
 
 #### React
 
+npm install gcds-components-react
+```
+
 Insérez le code qui suit dans le fichier `index.js` de votre application.
 
 ``` jsx
-import { applyPolyfills, defineCustomElements } from 'gcds-components/loader';
-import 'gcds-components/dist/gcds/gcds.css';
-
-ReactDOM.render(...);
-
-applyPolyfills().then(() => {
-  defineCustomElements(window);
-});
-
+import 'gcds-components-react/gcds.css'
 ```
-
-Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components dans votre application React.
 
 #### Vue
 
