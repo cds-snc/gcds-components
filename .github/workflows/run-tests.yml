@@ -3,11 +3,11 @@ on:
   pull_request:
       branches:
         - main
-    push:
-      branches:
-        - main
-      paths:
-        - 'styes/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'styles/**'
 
 jobs:
   build-deploy:
