@@ -1,5 +1,5 @@
-import { Component, Element, Event, Watch, EventEmitter, Method, Host, Prop, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { Component, Element, Event, Watch, EventEmitter, State, Method, Host, Prop, h } from '@stencil/core';
+import { assignLanguage, inheritAttributes } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
@@ -12,6 +12,7 @@ export class GcdsInput {
   @Element() el: HTMLElement;
 
   private lang: string;
+  private shadowElement?: HTMLElement;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -23,11 +24,27 @@ export class GcdsInput {
    * Specifies if an input element is disabled or not.
    */
   @Prop() disabled?: boolean = false;
+  @Watch('disabled')
+  validateDisabledInput() {
+    if (this.required) {
+      this.disabled = false;
+    }
+  }
 
   /**
    * Error message for an invalid input element.
    */
   @Prop({ mutable: true }) errorMessage?: string;
+  @Watch('errorMessage')
+  validateErrorMessage() {
+    if (this.disabled) {
+      this.errorMessage = "";
+    } else if (!this.hasError && this.errorMessage) {
+      this.hasError = true;
+    } else if (this.errorMessage == "") {
+      this.hasError = false;
+    }
+  }
 
   /**
    * Specifies if the label is hidden or not.
@@ -70,8 +87,25 @@ export class GcdsInput {
    */
   @Prop({ mutable: true }) value: string;
 
-  @Prop() focusHandler: Function;
+  /**
+   * String to have autocomplete enabled
+   */
+  @Prop() autocomplete: string;
+
+  /**
+   * Custom callback function on change event
+   */
   @Prop() changeHandler: Function;
+
+  /**
+   * Custom callback function on focus event
+   */
+  @Prop() focusHandler: Function;
+
+  /**
+   * Custom callback function on blur event
+   */
+  @Prop() blurHandler: Function;
 
   /**
    * Array of validators
@@ -91,6 +125,22 @@ export class GcdsInput {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
+   * Set additional HTML attributes not available in component properties
+   */
+  @State() inheritedAttributes: Object = {};
+
+  /**
+   * Specifies if the input is invalid.
+   */
+  @State() hasError: boolean;
+  @Watch('hasError')
+  validateHasError() {
+    if (this.disabled) {
+      this.hasError = false;
+    }
+  }
+
+  /**
   * Events
   */
 
@@ -100,10 +150,10 @@ export class GcdsInput {
   @Event() gcdsFocus!: EventEmitter<void>;
 
   private onFocus = (e) => {
-
     if (this.focusHandler) {
       this.focusHandler(e);
     }
+    
     this.gcdsFocus.emit();
   }
 
@@ -112,13 +162,16 @@ export class GcdsInput {
     */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = () => {
-    if (this.validateOn == "blur") {
-      this.validate();
+  private onBlur = (e) => {
+    if (this.blurHandler) {
+      this.blurHandler(e);
+    } else {
+      if (this.validateOn == "blur") {
+        this.validate();
+      }
     }
 
     this.gcdsBlur.emit();
- 
   }
 
   /**
@@ -139,7 +192,6 @@ export class GcdsInput {
   }
 
   handleChange(e) {
-
     if (this.changeHandler) {
       this.changeHandler(e);
     } else {
@@ -154,6 +206,9 @@ export class GcdsInput {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
+    this.validateDisabledInput();
+    this.validateHasError();
+    this.validateErrorMessage();
     this.validateValidator();
 
     // Assign required validator if needed
@@ -162,6 +217,8 @@ export class GcdsInput {
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
+
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby', 'placeholder']);
   }
 
   componentWillUpdate() {
@@ -171,7 +228,7 @@ export class GcdsInput {
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value, lang } = this;
+    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value, hasError, autocomplete, inheritedAttributes, lang } = this;
 
     // Use max-width instead of size attribute to keep field responsive
     const style = {
@@ -183,6 +240,8 @@ export class GcdsInput {
       required,
       type,
       value,
+      autocomplete,
+      ...inheritedAttributes
     };
 
     const attrsLabel = {
@@ -193,12 +252,12 @@ export class GcdsInput {
     if (hint || errorMessage) {
       let hintID = hint ? `hint-${inputId}` : "";
       let errorID = errorMessage ? `error-message-${inputId}` : "";
-      attrsInput["aria-describedby"] = `${hintID} ${errorID}`;
+      attrsInput["aria-describedby"] = `${hintID} ${errorID} ${attrsInput["aria-describedby"] ? attrsInput["aria-describedby"] : ""}`;
     }
 
     return (
       <Host>
-        <div class={`gcds-input-wrapper ${disabled ? 'gcds-disabled' : ''} ${errorMessage ? 'gcds-error' : ''}`}>
+        <div class={`gcds-input-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
           <gcds-label
             {...attrsLabel}
             hide-label={hideLabel}
@@ -213,16 +272,17 @@ export class GcdsInput {
 
           <input
             {...attrsInput}
-            class={errorMessage ? 'gcds-error' : null}
+            class={hasError ? 'gcds-error' : null}
             id={inputId}
             name={inputId}
-            onBlur={this.onBlur}
+            onBlur={(e) => this.onBlur(e)}
             onFocus={(e) => this.onFocus(e)}
             onInput={(e) => this.handleChange(e)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={size}
             style={size ? style : null}
+            ref={element => this.shadowElement = element as HTMLElement}
           />
         </div>
       </Host>

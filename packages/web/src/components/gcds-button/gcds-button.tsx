@@ -79,6 +79,11 @@ export class GcdsButton {
   }
 
   /**
+   * The buttonId attribute specifies the id for a <button> element.
+   */
+  @Prop() buttonId: string;
+
+  /**
    * The name attribute specifies the name for a <button> element.
    */
   @Prop() name: string | undefined;
@@ -156,6 +161,24 @@ export class GcdsButton {
    */
   @Prop() customCapitalization: string | undefined;
 
+  /**
+   * Custom callback function on click event
+   */
+  @Prop() clickHandler: Function;
+
+  /**
+  * Custom callback function on focus event
+  */
+  @Prop() focusHandler: Function;
+
+  /**
+  * Custom callback function on blur event
+  */
+  @Prop() blurHandler: Function;
+
+  /**
+   * Set additional HTML attributes not available in component properties
+   */
   @State() inheritedAttributes: Object = {};
 
   /**
@@ -200,19 +223,23 @@ export class GcdsButton {
     this.shadowElement.focus();
   }
 
-  private handleClick = (ev: Event) => {
-    if (!this.disabled && this.buttonType != 'button' && this.buttonType != 'link') {
-      // Attach button to form
-      const form = this.el.closest('form');
-      if (form) {
-        ev.preventDefault();
+  private handleClick = (e: Event) => {
+    if (this.clickHandler) {
+      this.clickHandler(e);
+    } else {
+      if (!this.disabled && this.buttonType != 'button' && this.buttonType != 'link') {
+        // Attach button to form
+        const form = this.el.closest('form');
+        if (form) {
+          e.preventDefault();
 
-        const formButton = document.createElement('button');
-        formButton.type = this.buttonType;
-        formButton.style.display = 'none';
-        form.appendChild(formButton);
-        formButton.click();
-        formButton.remove();
+          const formButton = document.createElement('button');
+          formButton.type = this.buttonType;
+          formButton.style.display = 'none';
+          form.appendChild(formButton);
+          formButton.click();
+          formButton.remove();
+        }
       }
     }
 
@@ -220,17 +247,25 @@ export class GcdsButton {
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
   }
 
-  private onFocus = () => {
+  private onFocus = (e) => {
+    if (this.focusHandler) {
+      this.focusHandler(e);
+    }
+
     this.gcdsFocus.emit();
   }
 
-  private onBlur = () => {
+  private onBlur = (e) => {
+    if (this.blurHandler) {
+      this.blurHandler(e);
+    }
+
     this.gcdsBlur.emit();
   }
 
   render() {
 
-    const { buttonType, buttonRole, buttonStyle, buttonSize, disabled, name, href, rel, target, download, inheritedAttributes } = this;
+    const { buttonType, buttonRole, buttonStyle, buttonSize, buttonId, disabled, name, href, rel, target, download, inheritedAttributes } = this;
 
     const Tag = buttonType != 'link' ? 'button' : 'a';
     const attrs = (Tag === 'button')
@@ -247,13 +282,13 @@ export class GcdsButton {
     };
 
     return (
-      <Host
-        onClick={this.handleClick}
-      >
+      <Host>
         <Tag
           {...attrs}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
+          id={buttonId}
+          onBlur={(e) => this.onBlur(e)}
+          onFocus={(e) => this.onFocus(e)}
+          onClick={(e) => this.handleClick(e)}
           class={`${buttonRole} ${buttonStyle} ${buttonSize}`}
           ref={element => this.shadowElement = element as HTMLElement}
           {...inheritedAttributes}

@@ -9,9 +9,12 @@
 
 | Property                | Attribute       | Description                                                                                   | Type                                                | Default     |
 | ----------------------- | --------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| `blurHandler`           | --              | Custom callback function on blur event                                                        | `Function`                                          | `undefined` |
+| `changeHandler`         | --              | Custom callback function on change event                                                      | `Function`                                          | `undefined` |
 | `defaultValue`          | `default-value` | The default value is an optional value that gets displayed before the user selects an option. | `string`                                            | `undefined` |
 | `disabled`              | `disabled`      | Specifies if a select element is disabled or not.                                             | `boolean`                                           | `undefined` |
 | `errorMessage`          | `error-message` | Error message for an invalid select element.                                                  | `string`                                            | `undefined` |
+| `focusHandler`          | --              | Custom callback function on focus event                                                       | `Function`                                          | `undefined` |
 | `hint`                  | `hint`          | Hint displayed below the label.                                                               | `string`                                            | `undefined` |
 | `label` _(required)_    | `label`         | Form field label.                                                                             | `string`                                            | `undefined` |
 | `required`              | `required`      | Specifies if a form field is required or not.                                                 | `boolean`                                           | `undefined` |

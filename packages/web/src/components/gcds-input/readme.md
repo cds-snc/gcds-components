@@ -9,10 +9,12 @@
 
 | Property        | Attribute       | Description                                                      | Type                                                               | Default     |
 | --------------- | --------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
-| `changeHandler` | --              |                                                                  | `Function`                                                         | `undefined` |
+| `autocomplete`  | `autocomplete`  | String to have autocomplete enabled                              | `string`                                                           | `undefined` |
+| `blurHandler`   | --              | Custom callback function on blur event                           | `Function`                                                         | `undefined` |
+| `changeHandler` | --              | Custom callback function on change event                         | `Function`                                                         | `undefined` |
 | `disabled`      | `disabled`      | Specifies if an input element is disabled or not.                | `boolean`                                                          | `false`     |
 | `errorMessage`  | `error-message` | Error message for an invalid input element.                      | `string`                                                           | `undefined` |
-| `focusHandler`  | --              |                                                                  | `Function`                                                         | `undefined` |
+| `focusHandler`  | --              | Custom callback function on focus event                          | `Function`                                                         | `undefined` |
 | `hideLabel`     | `hide-label`    | Specifies if the label is hidden or not.                         | `boolean`                                                          | `undefined` |
 | `hint`          | `hint`          | Hint displayed below the label and above the input field.        | `string`                                                           | `undefined` |
 | `inputId`       | `input-id`      | Id + name attribute for an input element.                        | `string`                                                           | `undefined` |

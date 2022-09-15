@@ -9,9 +9,12 @@
 
 | Property                 | Attribute                  | Description                                                            | Type                                                | Default     |
 | ------------------------ | -------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| `blurHandler`            | --                         | Custom callback function on blur event                                 | `Function`                                          | `undefined` |
+| `changeHandler`          | --                         | Custom callback function on change event                               | `Function`                                          | `undefined` |
 | `cols`                   | `cols`                     | Defines width for textarea cols (the min-width for textarea's is 50%). | `number`                                            | `undefined` |
 | `disabled`               | `disabled`                 | Specifies if a textarea element is disabled or not.                    | `boolean`                                           | `false`     |
 | `errorMessage`           | `error-message`            | Error message for an invalid textarea element.                         | `string`                                            | `undefined` |
+| `focusHandler`           | --                         | Custom callback function on focus event                                | `Function`                                          | `undefined` |
 | `hideLabel`              | `hide-label`               | Specifies if the label is hidden or not.                               | `boolean`                                           | `undefined` |
 | `hint`                   | `hint`                     | Hint displayed below the label and above the textarea field.           | `string`                                            | `undefined` |
 | `label`                  | `label`                    | Form field label                                                       | `string`                                            | `undefined` |

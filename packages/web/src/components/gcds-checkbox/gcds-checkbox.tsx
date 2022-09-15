@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Listen, Method, State, Prop, Watch, Host, h } from '@stencil/core';
-import { assignLanguage, elementGroupCheck } from '../../utils/utils';
+import { assignLanguage, elementGroupCheck, inheritAttributes } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
@@ -13,6 +13,7 @@ export class GcdsCheckbox {
   @Element() el: HTMLElement;
 
   private lang: string;
+  private shadowElement?: HTMLElement;
 
   _validator: Validator<any> = defaultValidator;
 
@@ -114,9 +115,29 @@ export class GcdsCheckbox {
   }
 
   /**
+   * Custom callback function on click event
+   */
+  @Prop() clickHandler: Function;
+
+  /**
+  * Custom callback function on focus event
+  */
+  @Prop() focusHandler: Function;
+
+  /**
+  * Custom callback function on blur event
+  */
+  @Prop() blurHandler: Function;
+
+  /**
    * State to handle when errors are passed down to component
    */
   @State() parentError: string;
+
+  /**
+   * Set additional HTML attributes not available in component properties
+   */
+  @State() inheritedAttributes: Object = {};
 
   /**
    * Specifies if the checkbox is invalid.
@@ -134,7 +155,11 @@ export class GcdsCheckbox {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
+  private onFocus = (e) => {
+    if (this.focusHandler) {
+      this.focusHandler(e);
+    }
+
     this.gcdsFocus.emit();
   }
 
@@ -143,9 +168,13 @@ export class GcdsCheckbox {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = () => {
-    if (this.validateOn == "blur") {
-      this.validate();
+  private onBlur = (e) => {
+    if (this.blurHandler) {
+      this.blurHandler(e);
+    } else {
+      if (this.validateOn == "blur") {
+        this.validate();
+      }
     }
 
     this.gcdsBlur.emit();
@@ -184,6 +213,8 @@ export class GcdsCheckbox {
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
+
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby']);
   }
 
   componentWillUpdate() {
@@ -194,11 +225,13 @@ export class GcdsCheckbox {
 
   private onChange = () => {
     this.checked = !this.checked;
+    
+    this.gcdsChange.emit(this.value);
   };
 
   render() {
 
-    const { lang, checkboxId, label, name, required, disabled, value, checked, hint, errorMessage, hasError, parentError } = this;
+    const { lang, checkboxId, label, name, required, disabled, value, checked, hint, errorMessage, hasError, parentError, inheritedAttributes } = this;
 
     const attrsInput = {
       name,
@@ -206,6 +239,7 @@ export class GcdsCheckbox {
       required,
       value,
       checked,
+      ...inheritedAttributes
     };
 
     const attrsLabel = {
@@ -217,7 +251,7 @@ export class GcdsCheckbox {
       let hintID = hint ? `hint-${checkboxId}` : "";
       let errorID = errorMessage ? `error-message-${checkboxId}` : "";
       let parentErrorID = parentError ? `parent-error-${checkboxId}` : "";
-      attrsInput["aria-describedby"] = `${hintID} ${errorID} ${parentErrorID}`;
+      attrsInput["aria-describedby"] = `${hintID} ${errorID} ${parentErrorID} ${attrsInput["aria-describedby"] ? attrsInput["aria-describedby"] : ""}`;
     }
 
     if (hasError) {
@@ -231,9 +265,11 @@ export class GcdsCheckbox {
             id={checkboxId}
             type="checkbox"
             {...attrsInput}
-            onBlur={this.onBlur}
-            onFocus={this.onFocus}
+            onBlur={(e) => this.onBlur(e)}
+            onFocus={(e) => this.onFocus(e)}
             onChange={() => this.onChange()}
+            onClick={(e) => { this.clickHandler && this.clickHandler(e) }}
+            ref={element => this.shadowElement = element as HTMLElement}
           />
           <gcds-label
             {...attrsLabel}

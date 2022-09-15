@@ -9,10 +9,13 @@
 
 | Property                  | Attribute       | Description                                       | Type                                                | Default     |
 | ------------------------- | --------------- | ------------------------------------------------- | --------------------------------------------------- | ----------- |
+| `blurHandler`             | --              | Custom callback function on blur event            | `Function`                                          | `undefined` |
 | `checkboxId` _(required)_ | `checkbox-id`   | Id attribute for an input element.                | `string`                                            | `undefined` |
 | `checked`                 | `checked`       | Specifies if an input element is checked.         | `boolean`                                           | `undefined` |
+| `clickHandler`            | --              | Custom callback function on click event           | `Function`                                          | `undefined` |
 | `disabled`                | `disabled`      | Specifies if an input element is disabled or not. | `boolean`                                           | `undefined` |
 | `errorMessage`            | `error-message` | Error message for an invalid input element.       | `string`                                            | `undefined` |
+| `focusHandler`            | --              | Custom callback function on focus event           | `Function`                                          | `undefined` |
 | `hint`                    | `hint`          | Hint displayed below the label.                   | `string`                                            | `undefined` |
 | `label` _(required)_      | `label`         | Form field label                                  | `string`                                            | `undefined` |
 | `name` _(required)_       | `name`          | Name attribute for an input element.              | `string`                                            | `undefined` |
