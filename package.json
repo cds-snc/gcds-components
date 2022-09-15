@@ -1,47 +1,26 @@
 {
-  "name": "gcds-components",
+  "name": "gcds-components-repo",
   "version": "0.1.9",
-  "description": "gcds components proof-of-concept",
-  "main": "dist/index.cjs.js",
-  "module": "dist/custom-elements/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/custom-elements/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/stencil-starter-project-name/stencil-starter-project-name.esm.js",
-  "files": [
-    "dist/",
-    "loader/"
-  ],
+  "description": "GCDS components repo",
   "scripts": {
-    "prebuild": "node scripts/minify.js",
-    "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
-  },
-  "dependencies": {
-    "@stencil/core": "^2.7.0",
-    "stencil": "^0.0.5"
+    "compile": "gulp compile",
+    "build": "npx lerna run build",
+    "test": "npx lerna run test"
   },
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.3.2",
     "@node-minify/core": "^6.2.0",
     "@node-minify/uglify-es": "^6.2.0",
-    "@stencil/postcss": "^2.1.0",
-    "@types/jest": "^26.0.24",
     "cssnano": "^5.0.15",
     "glob": "^8.0.1",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
-    "jest": "^26.6.3",
-    "jest-cli": "^26.6.3",
-    "postcss-nested": "^5.0.6",
+    "lerna": "^5.5.0",
+    "nx": "^14.6.5",
     "sass": "^1.43.5",
-    "stencil-inline-svg": "^1.1.0",
-    "puppeteer": "^10.0.0"
+    "workbox-build": "^4.3.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ]
 }
