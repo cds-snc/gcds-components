@@ -182,8 +182,6 @@ export class GcdsFileUploader {
       }
     }
     this.gcdsFileUploaderChange.emit(this.value);
-
-
   };
 
   /**

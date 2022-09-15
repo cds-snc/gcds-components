@@ -107,7 +107,6 @@ export class GcdsInput {
    */
   @Prop() blurHandler: Function;
 
-
   /**
    * Array of validators
    */
@@ -154,7 +153,7 @@ export class GcdsInput {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
-
+    
     this.gcdsFocus.emit();
   }
 
