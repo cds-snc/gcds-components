@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 12 Sep 2022 19:40:12 GMT
+ * Generated on Thu, 15 Sep 2022 12:45:27 GMT
  */
 
 :root {
@@ -117,6 +117,7 @@
   --gcds-button-shared-disabled-border: #bfbfbf;
   --gcds-button-shared-disabled-text: #6b6b6b;
   --gcds-checkbox-default-text: #000000;
+  --gcds-checkbox-default-hint: #6a6d7b;
   --gcds-checkbox-destructive-text: #d3080c;
   --gcds-checkbox-disabled-background: #f0f0f0;
   --gcds-checkbox-disabled-border: #707070;
@@ -168,6 +169,7 @@
   --gcds-input-focus-shadow: #ffffff;
   --gcds-label-destructive-text: #d3080c;
   --gcds-radio-default-text: #000000;
+  --gcds-radio-default-hint: #6a6d7b;
   --gcds-radio-destructive-text: #d3080c;
   --gcds-radio-disabled-background: #f0f0f0;
   --gcds-radio-disabled-border: #707070;
