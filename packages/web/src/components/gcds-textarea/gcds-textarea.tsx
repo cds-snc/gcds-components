@@ -251,7 +251,7 @@ export class GcdsTextarea {
       let hintID = hint ? `hint-${textareaId}` : "";
       let errorID = errorMessage ? `error-message-${textareaId}` : "";
       let countID = textareaCharacterCount ? `count-${textareaId}` : "";
-      attrsTextarea["aria-describedby"] = `${hintID} ${errorID} ${countID} ${attrsTextarea["aria-describedby"]}`;
+      attrsTextarea["aria-describedby"] = `${hintID} ${errorID} ${countID} ${attrsTextarea["aria-describedby"] ? attrsTextarea["aria-describedby"] : ""}`;
     }
 
     return (

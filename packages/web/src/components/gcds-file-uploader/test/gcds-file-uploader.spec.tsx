@@ -67,7 +67,7 @@ describe('gcds-file-uploader', () => {
               Upload a file
               <gcds-icon name="upload" margin-left="spacing-400" />
             </button>
-            <input id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="true" aria-describedby=" error-message-file-uploader summary-uploaded-files" />
+            <input id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="true" aria-describedby=" error-message-file-uploader summary-uploaded-files " />
             <p id="summary-uploaded-files">No file currently selected</p>
           </div>
         </div>
@@ -93,7 +93,7 @@ describe('gcds-file-uploader', () => {
               Upload a file
               <gcds-icon name="upload" margin-left="spacing-400" />
             </button>
-            <input id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="false" aria-describedby="hint-file-uploader  summary-uploaded-files" />
+            <input id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="false" aria-describedby="hint-file-uploader  summary-uploaded-files " />
             <p id="summary-uploaded-files">No file currently selected</p>
           </div>
         </div>

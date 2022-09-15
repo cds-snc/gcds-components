@@ -259,7 +259,7 @@ export class GcdsFileUploader {
       let errorID = errorMessage ? `error-message-${uploaderId}` : "";
       // let fileSelected = "No file currently selected.";
 
-      attrsInput["aria-describedby"] = `${hintID} ${errorID} summary-uploaded-files ${attrsInput["aria-describedby"]}`;
+      attrsInput["aria-describedby"] = `${hintID} ${errorID} summary-uploaded-files ${attrsInput["aria-describedby"] ? attrsInput["aria-describedby"] : ""}`;
     }
 
     return (

@@ -252,7 +252,7 @@ export class GcdsInput {
     if (hint || errorMessage) {
       let hintID = hint ? `hint-${inputId}` : "";
       let errorID = errorMessage ? `error-message-${inputId}` : "";
-      attrsInput["aria-describedby"] = `${hintID} ${errorID} ${attrsInput["aria-describedby"]}`;
+      attrsInput["aria-describedby"] = `${hintID} ${errorID} ${attrsInput["aria-describedby"] ? attrsInput["aria-describedby"] : ""}`;
     }
 
     return (
