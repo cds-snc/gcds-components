@@ -17,6 +17,10 @@
 
     &:focus-within {
       color: var(--gcds-checkbox-focus-text);
+
+      gcds-hint {
+        color: currentColor;
+      }
     }
 
     &.gcds-disabled {
@@ -35,6 +39,10 @@
           cursor: not-allowed;
         }
       }
+
+      gcds-hint {
+        color: currentColor;
+      }
     }
 
     &.gcds-error:not(:focus-within) {
@@ -48,6 +56,10 @@
         &:after {
           color: var(--gcds-checkbox-destructive-text);
         }
+      }
+
+      gcds-hint {
+        color: currentColor;
       }
     }
 
@@ -116,6 +128,11 @@
     gcds-hint {
       display: block;
       padding: 0 0 0 var(--gcds-spacing-600);
+    }
+
+    gcds-hint {
+      color: var(--gcds-checkbox-default-hint);
+      font-size: var(--gcds-font-sizes-caption);
     }
 
     gcds-error-message {

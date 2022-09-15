@@ -3,7 +3,8 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 @Component({
   tag: 'gcds-hint',
   styleUrl: 'gcds-hint.css',
-  shadow: true,
+  shadow: false,
+  scoped: true,
 })
 export class GcdsHint {
   @Element() el: HTMLElement;

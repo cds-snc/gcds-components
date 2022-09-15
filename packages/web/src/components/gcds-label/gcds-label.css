@@ -23,5 +23,4 @@
 gcds-checkbox :host label,
 gcds-radio :host label {
   cursor: pointer;
-  font-weight: var(--gcds-font-weights-regular);
 }
