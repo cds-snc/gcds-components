@@ -5,9 +5,8 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from 'gcds-components';
 
-import { defineCustomElements } from 'gcds-components/loader';
 
-defineCustomElements();
+
 export const GcdsAlert = /*@__PURE__*/createReactComponent<JSX.GcdsAlert, HTMLGcdsAlertElement>('gcds-alert');
 export const GcdsBanner = /*@__PURE__*/createReactComponent<JSX.GcdsBanner, HTMLGcdsBannerElement>('gcds-banner');
 export const GcdsButton = /*@__PURE__*/createReactComponent<JSX.GcdsButton, HTMLGcdsButtonElement>('gcds-button');

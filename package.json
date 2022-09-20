@@ -1,10 +1,10 @@
 {
   "name": "gcds-components-repo",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "GCDS components repo",
   "scripts": {
     "compile": "gulp compile",
-    "build": "npx lerna run build",
+    "build": "npm run build --workspaces",
     "test": "npx lerna run test"
   },
   "devDependencies": {
@@ -21,6 +21,7 @@
   },
   "license": "MIT",
   "workspaces": [
-    "packages/*"
+    "packages/web",
+    "packages/react"
   ]
 }
