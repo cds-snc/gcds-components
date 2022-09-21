@@ -11,14 +11,13 @@ export const config: Config = {
     react({
       componentCorePackage: 'gcds-components',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
-      includeDefineCustomElements: true,
     }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
     {
-      type: 'dist-custom-elements-bundle',
+      type: 'dist-custom-elements',
     },
     {
       type: 'docs-readme',

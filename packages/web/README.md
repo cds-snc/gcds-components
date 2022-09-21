@@ -51,7 +51,7 @@ All gcds-components should now be ready to use in your site.
 #### React
 
 ``` js
-npm install gcds-components-react
+npm install gcds-components gcds-components-react
 ```
 
 Place the following code in the `index.js` file of your app.
@@ -126,7 +126,8 @@ Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components 
 
 #### React
 
-npm install gcds-components-react
+``` js
+npm install gcds-components gcds-components-react
 ```
 
 Insérez le code qui suit dans le fichier `index.js` de votre application.

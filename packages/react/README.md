@@ -7,7 +7,7 @@
 ### Install from npm
 
 ``` js
-npm install gcds-components-react
+npm install gcds-components gcds-components-react
 ```
 
 Place the following code in the `index.js` file of your app.
@@ -25,7 +25,7 @@ import 'gcds-components-react/gcds.css'
 ### Installer le paquet avec npm
 
 ``` js
-npm install gcds-components-react
+npm install gcds-components gcds-components-react
 ```
 
 Insérez le code qui suit dans le fichier `index.js` de votre application.
