@@ -285,13 +285,6 @@ export class GcdsSiteMenu {
     }
   }
 
-  private get hasOptionalLeft() {
-    return !!this.el.querySelector('[slot="left"]');
-  }
-  private get hasOptionalRight() {
-    return !!this.el.querySelector('[slot="left"]');
-  }
-
   render() {
     const sticky = this.menuPosition == 'sticky' ? true : false;
     const mobileMenutask = this.menuMobileLayout == 'drawer' ?
