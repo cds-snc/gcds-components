@@ -320,23 +320,14 @@ export class GcdsSiteMenu {
           data-h2-menu
         >
           <div data-h2-menu-container>
-            {this.hasOptionalLeft ? 
-              <div data-optional-left>
-                <slot name="left" />
-              </div>
-            : 
-              null
-            }
+            <div data-optional-left>
+              <slot name="left" />
+            </div>
             <slot />
-            {this.hasOptionalRight ?
-              <div data-optional-right>
-                <slot name="right" />
-              </div>
-            :
-              null
-            }
+            <div data-optional-right>
+              <slot name="right" />
+            </div>
           </div>
-          
         </nav>
         {this.menuDesktopLayout == "sidebar" ?
           <div data-sidebar-backdrop hidden onClick={() => {h2MenuCloseOpenSubmenusHandler(this.el)}}></div>
