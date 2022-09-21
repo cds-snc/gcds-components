@@ -244,6 +244,11 @@
     > [data-h2-menulist]:first-of-type {
       margin-right: auto;
     }
+
+    > [data-h2-menulist]:not(:first-of-type) [data-h2-menulist] {
+      left: auto;
+      right: 0;
+    }
   }
 }
 

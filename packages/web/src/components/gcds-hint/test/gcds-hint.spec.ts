@@ -9,9 +9,7 @@ describe('gcds-hint', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-hint hint-id="input-renders" hint="Hint Test" id="hint-input-renders">
-        <mock:shadow-root>
-          <p class="hint">Hint Test</p>
-        </mock:shadow-root>
+        <p class="hint">Hint Test</p>
       </gcds-hint>
     `);
   });

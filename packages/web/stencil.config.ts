@@ -11,6 +11,7 @@ export const config: Config = {
     react({
       componentCorePackage: 'gcds-components',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
+      includeDefineCustomElements: true,
     }),
     {
       type: 'dist',
