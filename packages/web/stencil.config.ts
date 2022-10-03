@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { postcss } from '@stencil/postcss';
 import { inlineSvg } from 'stencil-inline-svg';
 import { reactOutputTarget as react } from '@stencil/react-output-target';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 
 export const config: Config = {
   namespace: 'gcds',
@@ -12,6 +13,11 @@ export const config: Config = {
       componentCorePackage: 'gcds-components',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
       includeDefineCustomElements: true,
+    }),
+    angularOutputTarget({
+      componentCorePackage: 'gcds-components',
+      directivesProxyFile: '../angular/projects/gcds-components/src/lib/stencil-generated/components.ts',
+      directivesArrayFile: '../angular/projects/gcds-components/src/lib/stencil-generated/index.ts',
     }),
     {
       type: 'dist',

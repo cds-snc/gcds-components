@@ -34,6 +34,7 @@
     "@axe-core/puppeteer": "^4.3.2",
     "@node-minify/core": "^6.2.0",
     "@node-minify/uglify-es": "^6.2.0",
+    "@stencil/angular-output-target": "^0.4.0",
     "@stencil/postcss": "^2.1.0",
     "@types/jest": "^26.0.24",
     "cssnano": "^5.0.15",

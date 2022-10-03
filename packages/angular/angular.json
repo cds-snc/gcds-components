@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "gcds-components": {
+      "projectType": "library",
+      "root": "projects/gcds-components",
+      "sourceRoot": "projects/gcds-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/gcds-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/gcds-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/gcds-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/gcds-components/src/test.ts",
+            "tsConfig": "projects/gcds-components/tsconfig.spec.json",
+            "karmaConfig": "projects/gcds-components/karma.conf.js"
+          }
+        }
+      }
+    }
+  }
+}
