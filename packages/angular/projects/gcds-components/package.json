@@ -1,6 +1,19 @@
 {
   "name": "gcds-components-angular",
   "version": "0.1.12",
+  "author": "Government of Canada / Gouvernement du Canada",
+  "description": "Angular wrapper for gcds-components",
+  "homepage": "https://cds-snc-design.netlify.app/",
+  "bugs": {
+    "url": "https://github.com/cds-snc/gcds-components/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cds-snc/gcds-components"
+  },
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0"

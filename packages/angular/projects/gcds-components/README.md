@@ -1,24 +1,73 @@
-# GcdsComponents
+[La version française suit.](#système-de-design---composants-gc)
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.0.
+# GC Design system components
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project gcds-components` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project gcds-components`.
-> Note: Don't forget to add `--project gcds-components` or else it will be added to the default project in your `angular.json` file. 
+### Install from npm
 
-## Build
+``` js
+npm install gcds-components gcds-components-angular
+```
 
-Run `ng build gcds-components` to build the project. The build artifacts will be stored in the `dist/` directory.
+Place the following code in the `app.module.ts` file of your app.
 
-## Publishing
+``` ts
+import { GcdsComponentsModule } from 'gcds-components-angular';
 
-After building your library with `ng build gcds-components`, go to the dist folder `cd dist/gcds-components` and run `npm publish`.
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...,
+    GcdsComponentsModule
+  ],
+  providers: [],
+  bootstrap: [...]
+})
+export class AppModule { }
+```
 
-## Running unit tests
+Place the following code in the `syles.scss` file of your app.
 
-Run `ng test gcds-components` to execute the unit tests via [Karma](https://karma-runner.github.io).
+``` css
+@import '../node_modules/gcds-components/dist/gcds/gcds.css';
+```
 
-## Further help
+--------
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Système de design - composants GC
+
+## Installation
+
+### Installer le paquet avec npm
+
+``` js
+npm install gcds-components gcds-components-angular
+```
+
+Insérez le code qui suit dans le fichier `app.module.ts` de votre application.
+
+``` ts
+import { GcdsComponentsModule } from 'gcds-components-angular';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...,
+    GcdsComponentsModule
+  ],
+  providers: [],
+  bootstrap: [...]
+})
+export class AppModule { }
+```
+
+Insérez le code qui suit dans le fichier `styles.scss` de votre application.
+
+``` css
+@import '../node_modules/gcds-components/dist/gcds/gcds.css';
+```
