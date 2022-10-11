@@ -23,8 +23,12 @@
     "gcds-components": [
       "./packages/web"
     ],
-    "gcds-react-components": [
+    "gcds-components-react": [
       "./packages/react"
+    ]
+    ],
+    "gcds-components-angular": [
+      "./packages/angular"
     ]
   }
 }
