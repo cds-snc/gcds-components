@@ -25,7 +25,6 @@
     ],
     "gcds-components-react": [
       "./packages/react"
-    ]
     ],
     "gcds-components-angular": [
       "./packages/angular"
