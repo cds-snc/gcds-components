@@ -1,39 +1,41 @@
 {
-  "name": "angular",
-  "version": "0.0.0",
+  "name": "gcds-components-angular",
+  "version": "0.1.13",
+  "author": "Government of Canada / Gouvernement du Canada",
+  "description": "Angular wrapper for gcds-components",
+  "homepage": "https://cds-snc-design.netlify.app/",
+  "bugs": {
+    "url": "https://github.com/cds-snc/gcds-components/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cds-snc/gcds-components"
+  },
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "prebuild": "cd projects/gcds-components && npm i",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "ng": "cd ../.. && ng",
+    "start": "cd ../.. && ng serve",
+    "build": "cd ../.. && ng build",
+    "watch": "cd ../.. && ng build --watch --configuration development"
   },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "^14.2.0",
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
     "@angular/common": "^14.2.0",
-    "@angular/compiler": "^14.2.0",
-    "@angular/core": "^14.2.0",
-    "@angular/forms": "^14.2.0",
-    "@angular/platform-browser": "^14.2.0",
-    "@angular/platform-browser-dynamic": "^14.2.0",
-    "@angular/router": "^14.2.0",
-    "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "@angular/core": "^14.2.0"
   },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.4",
-    "@angular/cli": "~14.2.4",
-    "@angular/compiler-cli": "^14.2.0",
-    "@types/jasmine": "~4.0.0",
-    "jasmine-core": "~4.3.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
-    "ng-packagr": "^14.2.0",
-    "typescript": "~4.7.2"
-  }
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "main": "dist/index.d.js",
+  "module": "dist/fesm2015/gcds-components-angular.mjs",
+  "es2020": "dist/fesm2020/gcds-components-angular.mjs",
+  "esm2020": "dist/esm2020/gcds-components-angular.mjs",
+  "fesm2020": "dist/fesm2020/gcds-components-angular.mjs",
+  "fesm2015": "dist/fesm2015/gcds-components-angular.mjs",
+  "typings": "dist/index.d.ts",
+  "sideEffects": false
 }

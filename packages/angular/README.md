@@ -1,27 +1,73 @@
-# Angular
+[La version française suit.](#système-de-design---composants-gc)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
+# GC Design system components
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Install from npm
 
-## Code scaffolding
+``` js
+npm install gcds-components gcds-components-angular
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Place the following code in the `app.module.ts` file of your app.
 
-## Build
+``` ts
+import { GcdsComponentsModule } from 'gcds-components-angular';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...,
+    GcdsComponentsModule
+  ],
+  providers: [],
+  bootstrap: [...]
+})
+export class AppModule { }
+```
 
-## Running unit tests
+Place the following code in the `syles.scss` file of your app.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+``` css
+@import '../node_modules/gcds-components/dist/gcds/gcds.css';
+```
 
-## Running end-to-end tests
+--------
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Système de design - composants GC
 
-## Further help
+## Installation
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Installer le paquet avec npm
+
+``` js
+npm install gcds-components gcds-components-angular
+```
+
+Insérez le code qui suit dans le fichier `app.module.ts` de votre application.
+
+``` ts
+import { GcdsComponentsModule } from 'gcds-components-angular';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...,
+    GcdsComponentsModule
+  ],
+  providers: [],
+  bootstrap: [...]
+})
+export class AppModule { }
+```
+
+Insérez le code qui suit dans le fichier `styles.scss` de votre application.
+
+``` css
+@import '../node_modules/gcds-components/dist/gcds/gcds.css';
+```

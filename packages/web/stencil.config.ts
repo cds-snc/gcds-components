@@ -16,8 +16,8 @@ export const config: Config = {
     }),
     angularOutputTarget({
       componentCorePackage: 'gcds-components',
-      directivesProxyFile: '../angular/projects/gcds-components/src/lib/stencil-generated/components.ts',
-      directivesArrayFile: '../angular/projects/gcds-components/src/lib/stencil-generated/index.ts',
+      directivesProxyFile: '../angular/src/lib/stencil-generated/components.ts',
+      directivesArrayFile: '../angular/src/lib/stencil-generated/index.ts',
     }),
     {
       type: 'dist',

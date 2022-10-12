@@ -1,6 +1,9 @@
 dist/
 www/
 loader/
+/tmp
+/out-tsc
+/bazel-out
 
 *~
 *.sw[mnpcod]
@@ -11,6 +14,14 @@ loader/
 log.txt
 *.sublime-project
 *.sublime-workspace
+npm-debug.log
+yarn-error.log
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
 
 .stencil/
 .idea/
@@ -19,6 +30,13 @@ log.txt
 .versions/
 node_modules/
 $RECYCLE.BIN/
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
 
 .DS_Store
 Thumbs.db

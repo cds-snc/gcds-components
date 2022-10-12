@@ -8,6 +8,22 @@
       "dom",
       "es2017"
     ],
+    "baseUrl": "./",
+    "paths": {
+      "gcds-components": [
+        "packages/angular/dist"
+      ]
+    },
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "importHelpers": true,
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es2017",
@@ -29,5 +45,11 @@
     "gcds-components-angular": [
       "./packages/angular"
     ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   }
 }
