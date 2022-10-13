@@ -23,7 +23,7 @@ export class GcdsInput {
   /**
    * Specifies if an input element is disabled or not.
    */
-  @Prop() disabled?: boolean = false;
+  @Prop({ mutable: true }) disabled?: boolean = false;
   @Watch('disabled')
   validateDisabledInput() {
     if (this.required) {

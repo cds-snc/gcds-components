@@ -60,6 +60,37 @@ Place the following code in the `index.js` file of your app.
 import 'gcds-components-react/gcds.css'
 ```
 
+### Angular
+
+``` js
+npm install gcds-components gcds-components-angular
+```
+
+Place the following code in the `app.module.ts` file of your app.
+
+``` ts
+import { GcdsComponentsModule } from 'gcds-components-angular';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...,
+    GcdsComponentsModule
+  ],
+  providers: [],
+  bootstrap: [...]
+})
+export class AppModule { }
+```
+
+Place the following code in the `syles.scss` file of your app.
+
+``` css
+@import '../node_modules/gcds-components/dist/gcds/gcds.css';
+```
+
 #### Vue
 
 Place the following code in the `main.js` file of your app.
@@ -134,6 +165,37 @@ Insérez le code qui suit dans le fichier `index.js` de votre application.
 
 ``` jsx
 import 'gcds-components-react/gcds.css'
+```
+
+### Angular
+
+``` js
+npm install gcds-components gcds-components-angular
+```
+
+Insérez le code qui suit dans le fichier `app.module.ts` de votre application.
+
+``` ts
+import { GcdsComponentsModule } from 'gcds-components-angular';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...,
+    GcdsComponentsModule
+  ],
+  providers: [],
+  bootstrap: [...]
+})
+export class AppModule { }
+```
+
+Insérez le code qui suit dans le fichier `styles.scss` de votre application.
+
+``` css
+@import '../node_modules/gcds-components/dist/gcds/gcds.css';
 ```
 
 #### Vue
