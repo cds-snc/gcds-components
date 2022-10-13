@@ -28,6 +28,7 @@
     "@angular/core": "^14.2.0"
   },
   "dependencies": {
+    "gcds-components": "^0.1.13",
     "tslib": "^2.3.0"
   },
   "main": "dist/index.d.js",

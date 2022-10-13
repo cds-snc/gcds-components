@@ -5,7 +5,8 @@
   "scripts": {
     "compile": "gulp compile",
     "build": "npm run build --workspaces",
-    "test": "cd packages/web && npm run test"
+    "test": "cd packages/web && npm run test",
+    "version": "npx lerna version"
   },
   "dependencies": {
     "@angular/animations": "^14.2.0",
