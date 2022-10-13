@@ -1,0 +1,41 @@
+{
+  "name": "gcds-components-angular",
+  "version": "0.1.13",
+  "author": "Government of Canada / Gouvernement du Canada",
+  "description": "Angular wrapper for gcds-components",
+  "homepage": "https://cds-snc-design.netlify.app/",
+  "bugs": {
+    "url": "https://github.com/cds-snc/gcds-components/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cds-snc/gcds-components"
+  },
+  "scripts": {
+    "ng": "cd ../.. && ng",
+    "start": "cd ../.. && ng serve",
+    "build": "cd ../.. && ng build",
+    "watch": "cd ../.. && ng build --watch --configuration development"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^14.2.0",
+    "@angular/core": "^14.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "main": "dist/index.d.js",
+  "module": "dist/fesm2015/gcds-components-angular.mjs",
+  "es2020": "dist/fesm2020/gcds-components-angular.mjs",
+  "esm2020": "dist/esm2020/gcds-components-angular.mjs",
+  "fesm2020": "dist/fesm2020/gcds-components-angular.mjs",
+  "fesm2015": "dist/fesm2015/gcds-components-angular.mjs",
+  "typings": "dist/index.d.ts",
+  "sideEffects": false
+}

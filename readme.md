@@ -25,7 +25,8 @@ Contribute to the system, growing collective knowledge and resources. We're work
 | Package                   | Description                                                                         | Docs             |
 | ------------------------- | ----------------------------------------------------------------------------------- | ---------------- |
 | [`gcds-components`](packages/web/)           | GCDS web components | [Docs](packages/web/README.md) |
-| [`gcds-react-components`](packages/react/)           | GCDS web components with React wrapper | [Docs](packages/react/README.md) |
+| [`gcds-components-react`](packages/react/)           | GCDS web components with React wrapper | [Docs](packages/react/README.md) |
+| [`gcds-components-angular`](packages/angular/)           | GCDS web components with Angular wrapper | [Docs](packages/angular/README.md) |
 
 --------
 
@@ -53,4 +54,5 @@ Contribuez au système de design, et enrichissez ainsi les connaissances et ress
 
 | Paquet                   | Description                                                                         | Docs             |
 | [`gcds-components`](packages/web/)           | GCDS web components | [Docs](packages/web/README.md) |
-| [`gcds-react-components`](packages/react/)           | GCDS web components with React wrapper | [Docs](packages/react/README.md) |
+| [`gcds-components-react`](packages/react/)           | GCDS web components with React wrapper | [Docs](packages/react/README.md) |
+| [`gcds-components-angular`](packages/angular/)           | GCDS web components with Angular wrapper | [Docs](packages/angular/README.md) |
