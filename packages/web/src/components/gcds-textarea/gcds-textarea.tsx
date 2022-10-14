@@ -28,7 +28,7 @@ export class GcdsTextarea {
   /**
    * Specifies if a textarea element is disabled or not.
    */
-  @Prop() disabled?: boolean = false;
+  @Prop({ mutable: true }) disabled?: boolean = false;
   @Watch('disabled')
   validateDisabledTextarea() {
     if (this.required) {

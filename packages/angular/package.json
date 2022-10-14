@@ -28,6 +28,7 @@
     "@angular/core": "^14.2.0"
   },
   "dependencies": {
+    "gcds-components": "^0.1.13",
     "tslib": "^2.3.0"
   },
   "main": "dist/index.d.js",
@@ -37,5 +38,6 @@
   "fesm2020": "dist/fesm2020/gcds-components-angular.mjs",
   "fesm2015": "dist/fesm2015/gcds-components-angular.mjs",
   "typings": "dist/index.d.ts",
-  "sideEffects": false
+  "sideEffects": false,
+  "license": "MIT"
 }
