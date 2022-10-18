@@ -415,6 +415,10 @@ export namespace Components {
     }
     interface GcdsIcon {
         /**
+          * Add icon description.
+         */
+        "label"?: string;
+        /**
           * Add margin to the left of the icon
          */
         "marginLeft"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
@@ -1393,6 +1397,10 @@ declare namespace LocalJSX {
         "hintId"?: string;
     }
     interface GcdsIcon {
+        /**
+          * Add icon description.
+         */
+        "label"?: string;
         /**
           * Add margin to the left of the icon
          */

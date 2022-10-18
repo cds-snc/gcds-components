@@ -9,6 +9,11 @@ export class GcdsIcon {
   @Element() el: HTMLElement;
 
   /**
+   * Add icon description.
+   */
+  @Prop() label?: string;
+
+  /**
    * Add margin to the left of the icon
    */
   @Prop() marginLeft?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
@@ -29,16 +34,21 @@ export class GcdsIcon {
   @Prop() size?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'inherit';
 
   render() {
-    const { marginLeft, marginRight, name, size } = this;
+    const { label, marginLeft, marginRight, name, size } = this;
 
     return (
       <Host>
-        <i class={`
-          gcds-icon fa fa-regular fa-${name}
-          ${marginLeft ? `ml-${marginLeft}` : ''}
-          ${marginRight ? `mr-${marginRight}` : ''}
-          ${size ? `size-${size}` : ''}
-        `}></i>
+        <span
+          class={`
+            gcds-icon fa fa-regular fa-${name}
+            ${marginLeft ? `ml-${marginLeft}` : ''}
+            ${marginRight ? `mr-${marginRight}` : ''}
+            ${size ? `size-${size}` : ''}
+          `}
+          role="img"
+          aria-label={label ? label : false}
+          aria-hidden={label ? 'false' : 'true'}
+        ></span>
       </Host>
     );
   }
