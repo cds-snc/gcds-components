@@ -14,14 +14,14 @@ export class GcdsFooter {
   @Element() el: HTMLElement;
 
   /**
-  * The type of graphic to render
+  * Display mode of the footer
   */
-   @Prop({ reflect: true, mutable: true }) type: 'compact' | 'full';
+   @Prop({ reflect: true, mutable: true }) display: 'compact' | 'full';
 
-   @Watch('type')
-   validateType(newValue: string) {
+   @Watch('display')
+   validateDisplay(newValue: string) {
      if (newValue != 'compact' && newValue != 'full') {
-       this.type = 'compact';
+       this.display = 'compact';
      }
    }
 
@@ -39,7 +39,7 @@ export class GcdsFooter {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    this.validateType;
+    this.validateDisplay;
   }
 
   private get renderSignature() {
@@ -63,7 +63,7 @@ export class GcdsFooter {
   }
 
   render() {
-    const { lang, type, topHref, hasList, renderSignature } = this;
+    const { lang, display, topHref, hasList, renderSignature } = this;
     const govNav = I18N[lang].gov.menu;
     const siteNav = I18N[lang].site.menu;
     return (
@@ -71,7 +71,7 @@ export class GcdsFooter {
         <div class="container">
           <slot name="top"></slot>
         </div>
-        {type === "full" ? 
+        {display === "full" ? 
           (<div class="landscape">
             <nav class="container" aria-label={I18N[lang].gov.heading}>
               <h2>{I18N[lang].gov.heading}</h2>
