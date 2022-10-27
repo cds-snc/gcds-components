@@ -8,16 +8,6 @@
   padding: 1rem .75rem;
   text-decoration: none;
   border-radius: var(--gcds-spacing-50);
-
-  border-width: var(--custom-gcds-style-border-width);
-  border-style: var(--custom-gcds-style-border-style);
-  border-color: var(--custom-gcds-style-border-color);
-  margin: var(--custom-gcds-style-margin);
-  display: var(--custom-gcds-style-display);
-  background-color: var(--custom-gcds-style-background-color);
-  box-shadow: var(--custom-gcds-style-box-shadow);
-  text-transform: var(--custom-gcds-style-text-transform);
-
   transition: all .15s ease-in-out;
 
   /* Shared Styles */
@@ -48,9 +38,7 @@
   &:not(:focus):not(:active):not([aria-disabled="true"]) {
     &.primary {
       &.solid {
-        background-color:
-          var(--custom-gcds-style-background-color,
-          var(--gcds-button-primary-default));
+        background-color: var(--gcds-button-primary-default);
 
         &:hover {
           background-color: var(--gcds-button-primary-hover);
@@ -69,9 +57,7 @@
 
     &.secondary {
       &.solid {
-        background-color:
-          var(--custom-gcds-style-background-color,
-          var(--gcds-button-secondary-default));
+        background-color: var(--gcds-button-secondary-default);
 
         &:hover {
           background-color: var(--gcds-button-secondary-hover);
@@ -90,9 +76,7 @@
 
     &.destructive {
       &.solid {
-        background-color:
-          var(--custom-gcds-style-background-color,
-          var(--gcds-button-destructive-default));
+        background-color: var(--gcds-button-destructive-default);
 
         &:hover {
           background-color: var(--gcds-button-destructive-hover);
@@ -126,9 +110,7 @@
     width: 0;
 
     &.solid:not(:focus) {
-      background-color:
-        var(--custom-gcds-style-background-color,
-        var(--gcds-button-primary-default));
+      background-color: var(--gcds-button-primary-default);
       color: var(--gcds-button-shared-text);
     }
 
