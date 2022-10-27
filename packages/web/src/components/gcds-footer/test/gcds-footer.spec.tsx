@@ -5,10 +5,10 @@ describe('gcds-footer', () => {
   it('renders compact - English', async () => {
     const page = await newSpecPage({
       components: [GcdsFooter],
-      html: `<gcds-footer type="compact" lang="en"></gcds-footer>`,
+      html: `<gcds-footer display="compact" lang="en"></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" type="compact" lang="en">
+      <gcds-footer role="contentinfo" display="compact" lang="en">
         <mock:shadow-root>
           <div class="container">
             <slot name="top"></slot>
@@ -60,10 +60,10 @@ describe('gcds-footer', () => {
   it('renders full - English', async () => {
     const page = await newSpecPage({
       components: [GcdsFooter],
-      html: `<gcds-footer type="full" lang="en"></gcds-footer>`,
+      html: `<gcds-footer display="full" lang="en"></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" type="full" lang="en">
+      <gcds-footer role="contentinfo" display="full" lang="en">
         <mock:shadow-root>
           <div class="container">
             <slot name="top"></slot>
@@ -169,10 +169,10 @@ describe('gcds-footer', () => {
   it('renders compact - French', async () => {
     const page = await newSpecPage({
       components: [GcdsFooter],
-      html: `<gcds-footer type="compact" lang="fr"></gcds-footer>`,
+      html: `<gcds-footer display="compact" lang="fr"></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" type="compact" lang="fr">
+      <gcds-footer role="contentinfo" display="compact" lang="fr">
         <mock:shadow-root>
           <div class="container">
             <slot name="top"></slot>
@@ -224,10 +224,10 @@ describe('gcds-footer', () => {
   it('renders full - French', async () => {
     const page = await newSpecPage({
       components: [GcdsFooter],
-      html: `<gcds-footer type="full" lang="fr"></gcds-footer>`,
+      html: `<gcds-footer display="full" lang="fr"></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" type="full" lang="fr">
+      <gcds-footer role="contentinfo" display="full" lang="fr">
         <mock:shadow-root>
           <div class="container">
             <slot name="top"></slot>

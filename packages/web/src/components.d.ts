@@ -325,13 +325,13 @@ export namespace Components {
     }
     interface GcdsFooter {
         /**
+          * Display mode of the footer
+         */
+        "display": 'compact' | 'full';
+        /**
           * Top of page href
          */
         "topHref": string;
-        /**
-          * The type of graphic to render
-         */
-        "type": 'compact' | 'full';
         /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */
@@ -1308,13 +1308,13 @@ declare namespace LocalJSX {
     }
     interface GcdsFooter {
         /**
+          * Display mode of the footer
+         */
+        "display"?: 'compact' | 'full';
+        /**
           * Top of page href
          */
         "topHref"?: string;
-        /**
-          * The type of graphic to render
-         */
-        "type"?: 'compact' | 'full';
         /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */
