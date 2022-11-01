@@ -67,7 +67,7 @@ export namespace Components {
         /**
           * Set the style variant
          */
-        "buttonStyle": 'solid' | 'outline' | 'text-only';
+        "buttonStyle": 'solid' | 'text-only';
         /**
           * Set button types
          */
@@ -76,38 +76,6 @@ export namespace Components {
           * Custom callback function on click event
          */
         "clickHandler": Function;
-        /**
-          * StyleAPI: custom background color.
-         */
-        "customBackgroundColor": string | undefined;
-        /**
-          * StyleAPI: custom border color.
-         */
-        "customBorderColor": string | undefined;
-        /**
-          * StyleAPI: custom border style.
-         */
-        "customBorderStyle": string | undefined;
-        /**
-          * StyleAPI: custom border weight.
-         */
-        "customBorderWeight": string | undefined;
-        /**
-          * StyleAPI: custom box shadow.
-         */
-        "customBoxShadow": string | undefined;
-        /**
-          * StyleAPI: custom btext transform.
-         */
-        "customCapitalization": string | undefined;
-        /**
-          * StyleAPI: custom display.
-         */
-        "customDisplay": string | undefined;
-        /**
-          * StyleAPI: custom margin.
-         */
-        "customMargin": string | undefined;
         /**
           * The disabled attribute for a <button> element.
          */
@@ -1022,7 +990,7 @@ declare namespace LocalJSX {
         /**
           * Set the style variant
          */
-        "buttonStyle"?: 'solid' | 'outline' | 'text-only';
+        "buttonStyle"?: 'solid' | 'text-only';
         /**
           * Set button types
          */
@@ -1031,38 +999,6 @@ declare namespace LocalJSX {
           * Custom callback function on click event
          */
         "clickHandler"?: Function;
-        /**
-          * StyleAPI: custom background color.
-         */
-        "customBackgroundColor"?: string | undefined;
-        /**
-          * StyleAPI: custom border color.
-         */
-        "customBorderColor"?: string | undefined;
-        /**
-          * StyleAPI: custom border style.
-         */
-        "customBorderStyle"?: string | undefined;
-        /**
-          * StyleAPI: custom border weight.
-         */
-        "customBorderWeight"?: string | undefined;
-        /**
-          * StyleAPI: custom box shadow.
-         */
-        "customBoxShadow"?: string | undefined;
-        /**
-          * StyleAPI: custom btext transform.
-         */
-        "customCapitalization"?: string | undefined;
-        /**
-          * StyleAPI: custom display.
-         */
-        "customDisplay"?: string | undefined;
-        /**
-          * StyleAPI: custom margin.
-         */
-        "customMargin"?: string | undefined;
         /**
           * The disabled attribute for a <button> element.
          */
