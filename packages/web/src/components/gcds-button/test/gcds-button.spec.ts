@@ -185,25 +185,6 @@ describe('gcds-button', () => {
     `);
   });
 
-  it('renders button-style outline', async () => {
-    const { root } = await newSpecPage({
-      components: [GcdsButton],
-      html: `<gcds-button button-style="outline">Button Label</gcds-button>`,
-    });
-    expect(root).toEqualHtml(`
-      <gcds-button button-style="outline">
-        <mock:shadow-root>
-          <button class="primary outline regular" type="button">
-            <slot name="left"></slot>
-            <slot></slot>
-            <slot name="right"></slot>
-          </button>
-        </mock:shadow-root>
-        Button Label
-      </gcds-button>
-    `);
-  });
-
   it('renders button-style text-only', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
@@ -217,6 +198,25 @@ describe('gcds-button', () => {
             <slot></slot>
             <slot name="right"></slot>
           </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
+  it('renders external link with label + icon', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-type="link" button-style="text-only" href="https://google.com" target="_blank">Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-type="link" button-style="text-only" href="https://google.com" target="_blank">
+        <mock:shadow-root>
+          <a class="primary text-only regular" href="https://google.com" target="_blank">
+            <slot name="left"></slot>
+            <slot></slot>
+            <gcds-icon name="external-link" label="Opens in a new tab." margin-left="spacing-200" />
+          </a>
         </mock:shadow-root>
         Button Label
       </gcds-button>
