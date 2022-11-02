@@ -5,7 +5,7 @@
   font-family: var(--gcds-font-families-body), sans-serif;
   font-size: var(--gcds-font-sizes-text);
   line-height: var(--gcds-font-sizes-text);
-  padding: 1rem .75rem;;
+  padding: 1rem .75rem;
   text-decoration: none;
   border-radius: var(--gcds-spacing-50);
   transition: all .15s ease-in-out;

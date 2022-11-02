@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, Method, Host, Watch, Prop, State, h } from '@stencil/core';
+import { assignLanguage } from '../../utils/utils';
 import { inheritAttributes} from '../../utils/utils';
 
 @Component({
@@ -7,6 +8,7 @@ import { inheritAttributes} from '../../utils/utils';
   shadow: true,
 })
 export class GcdsButton {
+  private lang: string;
   private shadowElement?: HTMLElement;
 
   @Element() el: HTMLElement;
@@ -149,6 +151,9 @@ export class GcdsButton {
     this.validateButtonSize(this.buttonSize);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
+
+    // Define lang attribute
+    this.lang = assignLanguage(this.el);
   }
 
   /**
@@ -201,7 +206,7 @@ export class GcdsButton {
 
   render() {
 
-    const { buttonType, buttonRole, buttonStyle, buttonSize, buttonId, disabled, name, href, rel, target, download, inheritedAttributes } = this;
+    const { buttonType, buttonRole, buttonStyle, buttonSize, buttonId, disabled, lang, name, href, rel, target, download, inheritedAttributes } = this;
 
     const Tag = buttonType != 'link' ? 'button' : 'a';
     const attrs = (Tag === 'button')
@@ -231,7 +236,13 @@ export class GcdsButton {
         >
           <slot name="left"></slot>
           <slot></slot>
-          <slot name="right"></slot>
+          { buttonType === 'link' && target === '_blank' ?
+            <gcds-icon
+              name="external-link"
+              label={ lang == 'en' ? 'Opens in a new tab.' : 'S\'ouvre dans un nouvel onglet.' }
+              margin-left="spacing-200"
+            />
+          : <slot name="right"></slot> }
         </Tag>
       </Host>
     );

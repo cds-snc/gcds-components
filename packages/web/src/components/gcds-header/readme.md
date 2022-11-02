@@ -29,6 +29,7 @@ graph TD;
   gcds-header --> gcds-button
   gcds-header --> gcds-lang-toggle
   gcds-header --> gcds-signature
+  gcds-button --> gcds-icon
   style gcds-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
