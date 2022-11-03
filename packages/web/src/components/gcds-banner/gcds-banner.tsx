@@ -39,7 +39,7 @@ export class GcdsBanner {
             </figure>
 
             <div class="banner-details">
-              <p><slot name="banner-text" /></p>
+              <slot name="banner-text" />
               <slot name="banner-cta" />
             </div>
 
