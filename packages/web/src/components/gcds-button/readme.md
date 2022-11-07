@@ -5,30 +5,22 @@
 
 ## Properties
 
-| Property                | Attribute                 | Description                                                                                                                                        | Type                                                             | Default     |
-| ----------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------- |
-| `blurHandler`           | --                        | Custom callback function on blur event                                                                                                             | `Function`                                                       | `undefined` |
-| `buttonId`              | `button-id`               | The buttonId attribute specifies the id for a <button> element.                                                                                    | `string`                                                         | `undefined` |
-| `buttonRole`            | `button-role`             | Set the main style                                                                                                                                 | `"destructive" \| "primary" \| "secondary" \| "skip-to-content"` | `'primary'` |
-| `buttonSize`            | `button-size`             | Set the button size                                                                                                                                | `"regular" \| "small"`                                           | `'regular'` |
-| `buttonStyle`           | `button-style`            | Set the style variant                                                                                                                              | `"outline" \| "solid" \| "text-only"`                            | `'solid'`   |
-| `buttonType`            | `button-type`             | Set button types                                                                                                                                   | `"button" \| "link" \| "reset" \| "submit"`                      | `'button'`  |
-| `clickHandler`          | --                        | Custom callback function on click event                                                                                                            | `Function`                                                       | `undefined` |
-| `customBackgroundColor` | `custom-background-color` | StyleAPI: custom background color.                                                                                                                 | `string`                                                         | `undefined` |
-| `customBorderColor`     | `custom-border-color`     | StyleAPI: custom border color.                                                                                                                     | `string`                                                         | `undefined` |
-| `customBorderStyle`     | `custom-border-style`     | StyleAPI: custom border style.                                                                                                                     | `string`                                                         | `undefined` |
-| `customBorderWeight`    | `custom-border-weight`    | StyleAPI: custom border weight.                                                                                                                    | `string`                                                         | `undefined` |
-| `customBoxShadow`       | `custom-box-shadow`       | StyleAPI: custom box shadow.                                                                                                                       | `string`                                                         | `undefined` |
-| `customCapitalization`  | `custom-capitalization`   | StyleAPI: custom btext transform.                                                                                                                  | `string`                                                         | `undefined` |
-| `customDisplay`         | `custom-display`          | StyleAPI: custom display.                                                                                                                          | `string`                                                         | `undefined` |
-| `customMargin`          | `custom-margin`           | StyleAPI: custom margin.                                                                                                                           | `string`                                                         | `undefined` |
-| `disabled`              | `disabled`                | The disabled attribute for a <button> element.                                                                                                     | `boolean`                                                        | `undefined` |
-| `download`              | `download`                | The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink | `string`                                                         | `undefined` |
-| `focusHandler`          | --                        | Custom callback function on focus event                                                                                                            | `Function`                                                       | `undefined` |
-| `href`                  | `href`                    | The href attribute specifies the URL of the page the link goes to                                                                                  | `string`                                                         | `undefined` |
-| `name`                  | `name`                    | The name attribute specifies the name for a <button> element.                                                                                      | `string`                                                         | `undefined` |
-| `rel`                   | `rel`                     | The rel attribute specifies the relationship between the current document and the linked document                                                  | `string`                                                         | `undefined` |
-| `target`                | `target`                  | The target attribute specifies where to open the linked document                                                                                   | `string`                                                         | `undefined` |
+| Property       | Attribute      | Description                                                                                                                                        | Type                                                             | Default     |
+| -------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------- |
+| `blurHandler`  | --             | Custom callback function on blur event                                                                                                             | `Function`                                                       | `undefined` |
+| `buttonId`     | `button-id`    | The buttonId attribute specifies the id for a <button> element.                                                                                    | `string`                                                         | `undefined` |
+| `buttonRole`   | `button-role`  | Set the main style                                                                                                                                 | `"destructive" \| "primary" \| "secondary" \| "skip-to-content"` | `'primary'` |
+| `buttonSize`   | `button-size`  | Set the button size                                                                                                                                | `"regular" \| "small"`                                           | `'regular'` |
+| `buttonStyle`  | `button-style` | Set the style variant                                                                                                                              | `"solid" \| "text-only"`                                         | `'solid'`   |
+| `buttonType`   | `button-type`  | Set button types                                                                                                                                   | `"button" \| "link" \| "reset" \| "submit"`                      | `'button'`  |
+| `clickHandler` | --             | Custom callback function on click event                                                                                                            | `Function`                                                       | `undefined` |
+| `disabled`     | `disabled`     | The disabled attribute for a <button> element.                                                                                                     | `boolean`                                                        | `undefined` |
+| `download`     | `download`     | The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink | `string`                                                         | `undefined` |
+| `focusHandler` | --             | Custom callback function on focus event                                                                                                            | `Function`                                                       | `undefined` |
+| `href`         | `href`         | The href attribute specifies the URL of the page the link goes to                                                                                  | `string`                                                         | `undefined` |
+| `name`         | `name`         | The name attribute specifies the name for a <button> element.                                                                                      | `string`                                                         | `undefined` |
+| `rel`          | `rel`          | The rel attribute specifies the relationship between the current document and the linked document                                                  | `string`                                                         | `undefined` |
+| `target`       | `target`       | The target attribute specifies where to open the linked document                                                                                   | `string`                                                         | `undefined` |
 
 
 ## Events
@@ -59,9 +51,14 @@ Type: `Promise<void>`
  - [gcds-header](../gcds-header)
  - [gcds-site-menu](../gcds-site-menu)
 
+### Depends on
+
+- [gcds-icon](../gcds-icon)
+
 ### Graph
 ```mermaid
 graph TD;
+  gcds-button --> gcds-icon
   gcds-header --> gcds-button
   gcds-site-menu --> gcds-button
   style gcds-button fill:#f9f,stroke:#333,stroke-width:4px

@@ -71,14 +71,14 @@ export declare interface GcdsButton extends Components.GcdsButton {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonSize', 'buttonStyle', 'buttonType', 'clickHandler', 'customBackgroundColor', 'customBorderColor', 'customBorderStyle', 'customBorderWeight', 'customBoxShadow', 'customCapitalization', 'customDisplay', 'customMargin', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'target'],
+  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonSize', 'buttonStyle', 'buttonType', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'target'],
   methods: ['focusElement']
 })
 @Component({
   selector: 'gcds-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonSize', 'buttonStyle', 'buttonType', 'clickHandler', 'customBackgroundColor', 'customBorderColor', 'customBorderStyle', 'customBorderWeight', 'customBoxShadow', 'customCapitalization', 'customDisplay', 'customMargin', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'target']
+  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonSize', 'buttonStyle', 'buttonType', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'target']
 })
 export class GcdsButton {
   protected el: HTMLElement;

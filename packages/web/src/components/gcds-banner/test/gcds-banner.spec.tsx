@@ -5,7 +5,7 @@ describe('gcds-banner', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner></gcds-banner>`,
+      html: `<gcds-banner><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner>
@@ -17,7 +17,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -27,6 +27,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });
@@ -38,7 +39,7 @@ describe('gcds-banner', () => {
   it('renders banner-role="primary"', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner banner-role="primary"></gcds-banner>`,
+      html: `<gcds-banner banner-role="primary"><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner banner-role="primary">
@@ -50,7 +51,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -60,6 +61,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });
@@ -67,7 +69,7 @@ describe('gcds-banner', () => {
   it('renders banner-role="secondary"', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner banner-role="secondary"></gcds-banner>`,
+      html: `<gcds-banner banner-role="secondary"><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner banner-role="secondary">
@@ -79,7 +81,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -89,6 +91,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });
@@ -100,7 +103,7 @@ describe('gcds-banner', () => {
   it('renders fixed position', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner position-fixed></gcds-banner>`,
+      html: `<gcds-banner position-fixed><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner position-fixed>
@@ -112,7 +115,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -122,6 +125,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });
@@ -133,7 +137,7 @@ describe('gcds-banner', () => {
   it('renders max content width fluid', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner max-content-width="fluid"></gcds-banner>`,
+      html: `<gcds-banner max-content-width="fluid"><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="fluid">
@@ -145,7 +149,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -155,6 +159,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });
@@ -162,7 +167,7 @@ describe('gcds-banner', () => {
   it('renders max content width lg', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner max-content-width="lg"></gcds-banner>`,
+      html: `<gcds-banner max-content-width="lg"><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="lg">
@@ -174,7 +179,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -184,6 +189,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });
@@ -191,7 +197,7 @@ describe('gcds-banner', () => {
   it('renders max content width md', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner max-content-width="md"></gcds-banner>`,
+      html: `<gcds-banner max-content-width="md"><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="md">
@@ -203,7 +209,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -213,6 +219,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });
@@ -220,7 +227,7 @@ describe('gcds-banner', () => {
   it('renders max content width sm', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner max-content-width="sm"></gcds-banner>`,
+      html: `<gcds-banner max-content-width="sm"><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="sm">
@@ -232,7 +239,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -242,6 +249,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });
@@ -249,7 +257,7 @@ describe('gcds-banner', () => {
   it('renders max content width xs', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner max-content-width="xs"></gcds-banner>`,
+      html: `<gcds-banner max-content-width="xs"><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="xs">
@@ -261,7 +269,7 @@ describe('gcds-banner', () => {
               </figure>
 
               <div class="banner-details">
-                <p><slot name="banner-text"></slot></p>
+                <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
@@ -271,6 +279,7 @@ describe('gcds-banner', () => {
             </div>
           </div>
         </mock:shadow-root>
+        <p>This is a banner.</p>
       </gcds-banner>
     `);
   });

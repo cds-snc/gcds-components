@@ -25,6 +25,7 @@
 ```mermaid
 graph TD;
   gcds-site-menu --> gcds-button
+  gcds-button --> gcds-icon
   style gcds-site-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

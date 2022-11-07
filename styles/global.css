@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 15 Sep 2022 12:45:27 GMT
+ * Generated on Mon, 31 Oct 2022 20:15:30 GMT
  */
 :root {
   --gcds-brand-default-text: #000000;
@@ -59,8 +59,7 @@
   --gcds-spacing-800: 6.5rem;
   --gcds-spacing-900: 7.800000000000001rem;
   --gcds-spacing-1000: 9.1rem;
-  --gcds-base-font-size: 1.25;
-  /* Sets base font size to 20px */
+  --gcds-base-font-size: 1.25; /* Sets base font size to 20px */
   --gcds-base-line-height: 1.3;
   --gcds-base-scale: 1.125;
   --gcds-font-families-heading: Lato;
@@ -101,21 +100,21 @@
   --gcds-banner-primary-background: #26374a;
   --gcds-banner-primary-text: #ffffff;
   --gcds-banner-secondary-background: #f0f0f0;
-  --gcds-button-destructive-default: #bc3331;
-  --gcds-button-destructive-hover: #340e0e;
-  --gcds-button-destructive-active: #bc3331;
-  --gcds-button-primary-default: #26374a;
-  --gcds-button-primary-hover: #4f6592;
-  --gcds-button-primary-active: #0a0e14;
-  --gcds-button-secondary-default: #78757a;
-  --gcds-button-secondary-hover: #6a6d7b;
-  --gcds-button-secondary-active: #c4c3c5;
-  --gcds-button-shared-text: #ffffff;
+  --gcds-button-destructive-default-background: #bc3331;
+  --gcds-button-destructive-default-text: #ffffff;
+  --gcds-button-destructive-hover-background: #340e0e;
+  --gcds-button-primary-default-background: #26374a;
+  --gcds-button-primary-default-text: #ffffff;
+  --gcds-button-primary-hover-background: #4f6592;
+  --gcds-button-secondary-default-text: #26374a;
+  --gcds-button-secondary-hover-background: #d4e6f2;
+  --gcds-button-secondary-active-background: #aad5f2;
+  --gcds-button-shared-active-background: #0a0e14;
+  --gcds-button-shared-active-text: #ffffff;
   --gcds-button-shared-focus-background: #303fc3;
   --gcds-button-shared-focus-text: #ffffff;
-  --gcds-button-shared-disabled-background: #ededed;
-  --gcds-button-shared-disabled-border: #bfbfbf;
-  --gcds-button-shared-disabled-text: #6b6b6b;
+  --gcds-button-shared-disabled-background: #f0f0f0;
+  --gcds-button-shared-disabled-text: #707070;
   --gcds-checkbox-default-text: #000000;
   --gcds-checkbox-default-hint: #6a6d7b;
   --gcds-checkbox-destructive-text: #d3080c;
@@ -168,6 +167,9 @@
   --gcds-input-focus-text: #303fc3;
   --gcds-input-focus-shadow: #ffffff;
   --gcds-label-destructive-text: #d3080c;
+  --gcds-link-dark-text: #000000;
+  --gcds-link-destructive-text: #d3080c;
+  --gcds-link-light-text: #ffffff;
   --gcds-radio-default-text: #000000;
   --gcds-radio-default-hint: #6a6d7b;
   --gcds-radio-destructive-text: #d3080c;

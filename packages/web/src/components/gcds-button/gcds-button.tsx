@@ -1,16 +1,6 @@
 import { Component, Element, Event, EventEmitter, Method, Host, Watch, Prop, State, h } from '@stencil/core';
+import { assignLanguage } from '../../utils/utils';
 import { inheritAttributes} from '../../utils/utils';
-
-const styleAPI = {
-  'customBorderWeight': 'border-width',
-  'customBorderStyle': 'border-style',
-  'customBorderColor': 'border-color',
-  'customMargin': 'margin',
-  'customDisplay': 'display',
-  'customBackgroundColor': 'background-color',
-  'customBoxShadow': 'box-shadow',
-  'customCapitalization': 'text-transform'
-}
 
 @Component({
   tag: 'gcds-button',
@@ -18,6 +8,7 @@ const styleAPI = {
   shadow: true,
 })
 export class GcdsButton {
+  private lang: string;
   private shadowElement?: HTMLElement;
 
   @Element() el: HTMLElement;
@@ -55,11 +46,11 @@ export class GcdsButton {
   /**
    * Set the style variant
    */
-  @Prop({ mutable: true }) buttonStyle: 'solid' | 'outline' | 'text-only' = 'solid';
+  @Prop({ mutable: true }) buttonStyle: 'solid' | 'text-only' = 'solid';
 
   @Watch('buttonStyle')
   validateButtonStyle(newValue: string) {
-    const values = ['solid', 'outline', 'text-only'];
+    const values = ['solid', 'text-only'];
     if (!values.includes(newValue)) {
       this.buttonStyle = 'solid';
     }
@@ -112,54 +103,11 @@ export class GcdsButton {
    */
   @Prop() target: string | undefined;
 
-    /**
+  /**
    * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
    */
-     @Prop() download: string | undefined;
+  @Prop() download: string | undefined;
 
-  /**
-   * Style props
-   */
-
-  /**
-   * StyleAPI: custom border weight.
-   */
-  @Prop() customBorderWeight: string | undefined;
-
-  /**
-   * StyleAPI: custom border style.
-   */
-  @Prop() customBorderStyle: string | undefined;
-
-  /**
-   * StyleAPI: custom border color.
-   */
-  @Prop() customBorderColor: string | undefined;
-
-  /**
-   * StyleAPI: custom margin.
-   */
-  @Prop() customMargin: string | undefined;
-
-  /**
-   * StyleAPI: custom display.
-   */
-  @Prop() customDisplay: string | undefined;
-
-  /**
-   * StyleAPI: custom background color.
-   */
-  @Prop() customBackgroundColor: string | undefined;
-
-  /**
-   * StyleAPI: custom box shadow.
-   */
-  @Prop() customBoxShadow: string | undefined;
-
-  /**
-   * StyleAPI: custom btext transform.
-   */
-  @Prop() customCapitalization: string | undefined;
 
   /**
    * Custom callback function on click event
@@ -203,16 +151,9 @@ export class GcdsButton {
     this.validateButtonSize(this.buttonSize);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
-  }
 
-  componentDidLoad() {
-    const Tag = this.buttonType != 'link' ? 'button' : 'a';
-    //StyleAPI
-    for (let [key, value] of Object.entries(styleAPI)) {
-      if(this[key] !== undefined) {
-        this.el.shadowRoot.querySelector(Tag).style.setProperty(`--custom-gcds-style-${value}`, this[key]);
-      }
-    }
+    // Define lang attribute
+    this.lang = assignLanguage(this.el);
   }
 
   /**
@@ -265,7 +206,7 @@ export class GcdsButton {
 
   render() {
 
-    const { buttonType, buttonRole, buttonStyle, buttonSize, buttonId, disabled, name, href, rel, target, download, inheritedAttributes } = this;
+    const { buttonType, buttonRole, buttonStyle, buttonSize, buttonId, disabled, lang, name, href, rel, target, download, inheritedAttributes } = this;
 
     const Tag = buttonType != 'link' ? 'button' : 'a';
     const attrs = (Tag === 'button')
@@ -295,7 +236,13 @@ export class GcdsButton {
         >
           <slot name="left"></slot>
           <slot></slot>
-          <slot name="right"></slot>
+          { buttonType === 'link' && target === '_blank' ?
+            <gcds-icon
+              name="external-link"
+              label={ lang == 'en' ? 'Opens in a new tab.' : 'S\'ouvre dans un nouvel onglet.' }
+              margin-left="spacing-200"
+            />
+          : <slot name="right"></slot> }
         </Tag>
       </Host>
     );

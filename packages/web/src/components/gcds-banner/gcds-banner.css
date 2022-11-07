@@ -49,20 +49,31 @@
 
   /* General Styling */
   .banner-content {
-    display: flex;
     padding-block: var(--gcds-spacing-200);
+
+    @media only screen and (min-width: 551px) {
+      display: flex;
+    }
   }
 
   .banner-icon {
     display: flex;
-    margin: var(--gcds-spacing-200) 0 0;
+    margin: 0;
 
     &.icon-left {
       margin-right: var(--gcds-spacing-300);
+
+      @media only screen and (max-width: 550px) {
+        margin-bottom: var(--gcds-spacing-100);
+      }
     }
 
     &.icon-right {
       margin-left: var(--gcds-spacing-300);
+
+      @media only screen and (max-width: 550px) {
+        margin: var(--gcds-spacing-100) 0 0;
+      }
     }
 
     ::slotted(img),
@@ -82,15 +93,15 @@
       flex: 0 0 auto;
     }
 
-    p {
-      line-height: var( --gcds-line-heights-text);
-      margin: 0 var(--gcds-spacing-200) 0 0 !important;
-    }
-
     ::slotted(span),
     ::slotted(small),
     ::slotted(a) {
       font-size: 80% !important;
+    }
+
+    ::slotted(p) {
+      line-height: var(--gcds-line-heights-text);
+      margin: 0 var(--gcds-spacing-200) 0 0 !important;
     }
 
     ::slotted(a) {
