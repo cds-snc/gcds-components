@@ -3,7 +3,7 @@
   box-sizing: border-box;
   color: var(--gcds-alert-text);
   padding: var(--gcds-spacing-500);
-  border-left: 6px solid transparent;
+  border-left: .375rem solid transparent;
 
   /* Is Fixed */
   &.is-fixed {

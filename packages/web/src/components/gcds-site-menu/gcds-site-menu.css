@@ -96,7 +96,7 @@
         margin: 0;
         padding: 0;
         background-color: var(--gcds-site-menu-default-background);
-        box-shadow: inset 0 5px 10px -5px var(--gcds-site-menu-submenu-box-shadow);
+        box-shadow: inset 0 .3125rem .625rem -0.3125rem var(--gcds-site-menu-submenu-box-shadow);
 
         [data-h2-menulist] {
           background-color: var(--gcds-site-menu-submenu-background);
