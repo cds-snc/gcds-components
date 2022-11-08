@@ -16,6 +16,11 @@ export class GcdsFileUploader {
 
   _validator: Validator<any> = defaultValidator;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Id attribute for a file uploader element.
    */
@@ -81,35 +86,34 @@ export class GcdsFileUploader {
   /**
    * Array of validators
    */
-   @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
 
+  @Watch('validator')
+  validateValidator() {
+    if (this.validator && !this.validateOn) {
+      this.validateOn = "blur";
+    }
+  }
 
-   @Watch('validator')
-   validateValidator() {
-     if (this.validator && !this.validateOn) {
-       this.validateOn = "blur";
-     }
-   }
- 
-   /**
+  /**
     * Set event to call validator
     */
-   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
    * Custom callback function on change event
    */
-    @Prop() changeHandler: Function;
+  @Prop() changeHandler: Function;
 
-    /**
-    * Custom callback function on focus event
-    */
-    @Prop() focusHandler: Function;
-  
-    /**
-    * Custom callback function on blur event
-    */
-    @Prop() blurHandler: Function;
+  /**
+  * Custom callback function on focus event
+  */
+  @Prop() focusHandler: Function;
+
+  /**
+  * Custom callback function on blur event
+  */
+  @Prop() blurHandler: Function;
 
   /**
    * Specifies if the file uploader is invalid.
@@ -127,14 +131,16 @@ export class GcdsFileUploader {
    */
   @State() inheritedAttributes: Object = {};
 
-  /**
-  * Events
-  */
 
   /**
-    * Emitted when the uploader has focus.
-    */
+   * Events
+   */
+
+  /**
+   * Emitted when the uploader has focus.
+   */
   @Event() gcdsFocus!: EventEmitter<void>;
+
   private onFocus = (e) => {
     if (this.focusHandler) {
       this.focusHandler(e);
@@ -144,9 +150,10 @@ export class GcdsFileUploader {
   }
 
   /**
-     * Emitted when the uploader loses focus.
-     */
+   * Emitted when the uploader loses focus.
+   */
   @Event() gcdsBlur!: EventEmitter<void>;
+
   private onBlur = (e) => {
     if (this.blurHandler) {
       this.blurHandler(e);
@@ -160,9 +167,10 @@ export class GcdsFileUploader {
   }
 
   /**
-    * Update value based on user selection.
-    */
+   * Update value based on user selection.
+   */
   @Event() gcdsFileUploaderChange: EventEmitter;
+
   handleChange = (e) => {
     if (this.changeHandler) {
       this.changeHandler(e);
@@ -181,12 +189,13 @@ export class GcdsFileUploader {
         this.validate();
       }
     }
+
     this.gcdsFileUploaderChange.emit(this.value);
   };
 
   /**
-    * Remove file and update value.
-    */
+   * Remove file and update value.
+   */
   @Event() gcdsRemoveFile: EventEmitter;
   removeFile = (e) => {
     let filesContainer = this.value;
@@ -201,8 +210,8 @@ export class GcdsFileUploader {
   };
 
   /**
-  * Call any active validators
-  */
+   * Call any active validators
+   */
   @Method()
   async validate() {
     if (!this._validator.validate(this.value.length) && this._validator.errorMessage) {

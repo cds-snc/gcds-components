@@ -13,6 +13,11 @@ export class GcdsLabel {
   private lang: string;
   private focusEl?: HTMLElement;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Specifies if the label is hidden or not.
    */

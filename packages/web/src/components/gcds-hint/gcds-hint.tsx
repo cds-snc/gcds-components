@@ -9,6 +9,11 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsHint {
   @Element() el: HTMLElement;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Hint displayed below the label and above the input field.
    */

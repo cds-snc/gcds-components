@@ -16,10 +16,14 @@ const i18n = {
   shadow: true,
 })
 export class GcdsHeader {
+  @Element() el: HTMLElement;
 
   private lang: string;
 
-  @Element() el: HTMLElement;
+
+  /**
+   * Props
+   */
 
   /**
   * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
@@ -34,7 +38,7 @@ export class GcdsHeader {
   * GcdsSignature - GCDS signature links to Canada.ca
   */
   @Prop({ reflect: false, mutable: false }) signatureHasLink: boolean = true;
-  
+
   /**
   * Top navigation - Skip to content href
   */
@@ -129,7 +133,7 @@ export class GcdsHeader {
           <slot name="banner"></slot>
         :
           null
-        } 
+        }
         <div class="brand">
           <div class={`brand__container ${!hasSearch ? 'simple' : '' }`}>
             {renderToggle}
@@ -138,16 +142,14 @@ export class GcdsHeader {
           </div>
         </div>
         <slot name="menu"></slot>
-        {hasBreadcrumb ? 
+        {hasBreadcrumb ?
             <div class="container">
               <slot name="breadcrumb"></slot>
             </div>
           :
             null
         }
-        
       </Host>
     );
   }
-
 }

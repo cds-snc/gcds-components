@@ -8,6 +8,11 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsErrorMessage {
   @Element() el: HTMLElement;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Id attribute for the error message.
    */

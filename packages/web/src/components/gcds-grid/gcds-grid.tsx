@@ -8,8 +8,9 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsGrid {
   @Element() el: HTMLElement;
 
+
   /**
-   * Grid props
+   * Props
    */
 
   /**
@@ -62,7 +63,7 @@ export class GcdsGrid {
    * Aligns grid items along the block (column) axis
    */
   @Prop() alignItems?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
-  
+
   /**
     * Aligns grid items along the inline (row) axis
     */
@@ -75,7 +76,7 @@ export class GcdsGrid {
 
   render() {
     const { alignContent, alignItems, gap, gridContainer, gridDisplay, gridTag, gridTemplateColumns, gridTemplateColumnsDesktop, gridTemplateColumnsTablet, justifyContent, justifyItems, placeContent, placeItems } = this;
-  
+
     const Tag = gridTag;
 
     // Set gridTemplateColumns based on screen size

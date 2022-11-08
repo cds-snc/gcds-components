@@ -15,6 +15,11 @@ export class GcdsVerifyBanner {
 
   private lang: string;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Defines the max width of the banner content
    */

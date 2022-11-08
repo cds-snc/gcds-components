@@ -16,6 +16,11 @@ export class GcdsSelect {
 
   _validator: Validator<string> = defaultValidator;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Id attribute for a select element.
    */
@@ -78,7 +83,6 @@ export class GcdsSelect {
    */
   @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
 
-
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
@@ -106,7 +110,6 @@ export class GcdsSelect {
   */
   @Prop() blurHandler: Function;
 
-
   /**
    * Specifies if the select is invalid.
    */
@@ -122,6 +125,11 @@ export class GcdsSelect {
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
+
+
+  /**
+   * Events
+   */
 
   /**
     * Update value based on user selection.
@@ -156,7 +164,6 @@ export class GcdsSelect {
     }
 
     this.gcdsBlur.emit();
-
   }
 
   /**
