@@ -3,16 +3,14 @@ gcds-signature {
   width: fit-content;
   margin-bottom: var(--gcds-spacing-100);
 
+  svg {
+    max-width: 100%;
+  }
+
   &:not([type='wordmark']) {
     svg {
-      height: 1.875rem;
+      height: 1.6875rem;
       margin-bottom: var(--gcds-spacing-100);
-    }
-
-    @media screen and (min-width: 768px) {
-      svg {
-        height: 1.6875rem;
-      }
     }
 
     @media screen and (min-width: 64em) {

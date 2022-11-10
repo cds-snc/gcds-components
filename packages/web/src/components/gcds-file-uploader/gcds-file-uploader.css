@@ -69,8 +69,12 @@
     border-radius: .625rem;
     transition: all .15s ease-in-out;
 
-    @media only screen and (max-width: 300px) {
+    @media only screen and (max-width: 35em) {
       padding: var(--gcds-spacing-400);
+
+      gcds-icon {
+        display: none;
+      }
     }
   }
 

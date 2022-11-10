@@ -13,7 +13,7 @@
     z-index: 9999;
     border: 0;
 
-    @media only screen and (min-width: 767px) {
+    @media only screen and (min-width: 48em) {
       padding: var(--gcds-spacing-600);
     }
   }
@@ -117,7 +117,7 @@
       border-radius: 100%;
       transition: all .15s ease-in-out;
 
-      @media only screen and (max-width: 550px) {
+      @media only screen and (max-width: 35em) {
         display: none;
       }
 
@@ -134,7 +134,7 @@
   .alert-content {
     font-size: var(--gcds-font-sizes-text);
 
-    @media only screen and (min-width: 767px) {
+    @media only screen and (min-width: 48em) {
       margin-inline: var(--gcds-spacing-500);
     }
 

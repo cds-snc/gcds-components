@@ -135,7 +135,7 @@
       padding: 0;
       margin: 0;
 
-      @media screen and (min-width: 480px) and (max-width: 64em) {
+      @media screen and (min-width: 30em) and (max-width: 64em) {
         column-count: 2;
       }
 
