@@ -8,22 +8,26 @@ import I18N from './i18n/i18n';
   shadow: true,
 })
 export class GcdsFooter {
+  @Element() el: HTMLElement;
 
   private lang: string;
 
-  @Element() el: HTMLElement;
+
+  /**
+   * Props
+   */
 
   /**
   * Display mode of the footer
   */
-   @Prop({ reflect: true, mutable: true }) display: 'compact' | 'full';
+  @Prop({ reflect: true, mutable: true }) display: 'compact' | 'full';
 
-   @Watch('display')
-   validateDisplay(newValue: string) {
-     if (newValue != 'compact' && newValue != 'full') {
-       this.display = 'compact';
-     }
-   }
+  @Watch('display')
+  validateDisplay(newValue: string) {
+    if (newValue != 'compact' && newValue != 'full') {
+      this.display = 'compact';
+    }
+  }
 
   /**
   * GcdsSignature - The variant of the Government of Canada wordmark
@@ -66,17 +70,19 @@ export class GcdsFooter {
     const { lang, display, topHref, hasList, renderSignature } = this;
     const govNav = I18N[lang].gov.menu;
     const siteNav = I18N[lang].site.menu;
+
     return (
       <Host role="contentinfo">
         <div class="container">
           <slot name="top"></slot>
         </div>
-        {display === "full" ? 
+
+        {display === "full" ?
           (<div class="landscape">
             <nav class="container" aria-label={I18N[lang].gov.heading}>
               <h2>{I18N[lang].gov.heading}</h2>
               <ul>
-                {Object.keys(govNav).map((value) => 
+                {Object.keys(govNav).map((value) =>
                   <li>
                     <a href={govNav[value].link}>{govNav[value].text}</a>
                   </li>
@@ -84,18 +90,17 @@ export class GcdsFooter {
               </ul>
             </nav>
           </div>)
-        :
-          null
-        }
+        : null }
+
         <div class="brand">
           <div class="container">
-            {hasList ? 
+            {hasList ?
               <slot name="list"></slot>
             :
               (<nav aria-label={I18N[lang].site.heading}>
                 <h2>{I18N[lang].site.heading}</h2>
                 <ul>
-                  {Object.keys(siteNav).map((value) => 
+                  {Object.keys(siteNav).map((value) =>
                     <li>
                       <a href={siteNav[value].link}>{siteNav[value].text}</a>
                     </li>
@@ -103,18 +108,17 @@ export class GcdsFooter {
                 </ul>
               </nav>)
             }
+
             {topHref ?
               (<div class="top">
                 <a href={topHref}>{I18N[lang].topofpage}</a>
               </div>)
-            :
-              null
-            }
+            : null }
+
             {renderSignature}
           </div>
         </div>
       </Host>
     );
   }
-
 }

@@ -7,10 +7,14 @@ import { assignLanguage } from '../../utils/utils';
   shadow: true,
 })
 export class GcdsLangToggle {
+  @Element() el: HTMLElement;
 
   private lang: string;
 
-  @Element() el: HTMLElement;
+
+  /**
+   * Props
+   */
 
   /**
    * The href attribute specifies the URL of the opposite language page
@@ -20,11 +24,11 @@ export class GcdsLangToggle {
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
   }
 
   render() {
     const { lang, href } = this;
+
     return (
       <Host>
         {lang === "fr" ? (

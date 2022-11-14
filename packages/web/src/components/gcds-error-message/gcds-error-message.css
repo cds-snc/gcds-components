@@ -9,5 +9,5 @@
   padding: var(--gcds-spacing-200);
   background: var(--gcds-error-message-background);
   color: var(--gcds-error-message-text);
-  border-left: 2px solid var(--gcds-error-message-border);
+  border-left: .125rem solid var(--gcds-error-message-border);
 }

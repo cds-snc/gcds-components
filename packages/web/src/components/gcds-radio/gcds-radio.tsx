@@ -8,11 +8,15 @@ import { assignLanguage, elementGroupCheck, inheritAttributes } from '../../util
   scoped: true,
 })
 export class GcdsRadio {
-
   @Element() el: HTMLElement;
 
   private lang: string;
   private shadowElement?: HTMLInputElement;
+
+
+  /**
+   * Props
+   */
 
   /**
    * Id attribute for an input element.
@@ -72,14 +76,14 @@ export class GcdsRadio {
   /**
    * Specifies if the radio is invalid.
    */
-   @State() hasError: boolean;
-   @Watch('hasError')
-   validateHasError() {
-     if (this.disabled) {
-       this.hasError = false;
-     }
-   }
-   
+  @State() hasError: boolean;
+  @Watch('hasError')
+  validateHasError() {
+    if (this.disabled) {
+      this.hasError = false;
+    }
+  }
+
   /**
    * State to handle when errors are passed down to component
    */
@@ -89,6 +93,11 @@ export class GcdsRadio {
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
+
+
+  /**
+   * Events
+   */
 
   /**
    * Emitted when the radio button is checked
@@ -117,7 +126,7 @@ export class GcdsRadio {
     if (this.blurHandler) {
       this.blurHandler(e);
     }
-    
+
     this.gcdsBlur.emit();
   }
 
@@ -197,17 +206,19 @@ export class GcdsRadio {
             onClick={(e) => { this.clickHandler && this.clickHandler(e) }}
             ref={element => this.shadowElement = element as HTMLInputElement}
           />
+
           <gcds-label
             label={label}
             label-for={radioId}
             lang={lang}
           >
           </gcds-label>
+
           {hint ? <gcds-hint hint={hint} hint-id={radioId} />: null}
+
           {parentError && <span id={`parent-error-${radioId}`} hidden>{parentError}</span>}
         </div>
       </Host>
     );
   }
-
 }

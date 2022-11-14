@@ -9,17 +9,22 @@ import { validateFieldsetElements } from '../../validators/fieldset-validators/f
   shadow: true,
 })
 export class GcdsFieldset {
+  @Element() el: HTMLElement;
 
   private lang: string;
 
-  @Element() el: HTMLElement;
-
   _validator: Validator<string> = defaultValidator;
+
+
+  /**
+   * Props
+   */
 
   /**
    * The unique identifier for the component
    */
   @Prop({ reflect: true, mutable: false }) fieldsetId!: string;
+
   /**
    * The title for the contents of the fieldset
    */
@@ -29,6 +34,7 @@ export class GcdsFieldset {
    * Flag the contents are required
    */
   @Prop({ reflect: true, mutable: false }) required: boolean;
+
   /**
    * Error message for invalid form elements in group.
    */
@@ -45,8 +51,8 @@ export class GcdsFieldset {
   }
 
   /**
-    * Hint displayed below the legend.
-    */
+   * Hint displayed below the legend.
+   */
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**
@@ -59,12 +65,14 @@ export class GcdsFieldset {
     if (this.required) {
       this.disabled = false;
     }
+
     if (this.disabled == true) {
       for (var i = 0; i < this.el.children.length; i++) {
         this.el.children[i].setAttribute("disabled", "");
       }
     }
   }
+
   @Watch('disabled')
   handleDisabledChange(newValue: boolean, _oldValue: boolean) {
     if (_oldValue && newValue != _oldValue) {
@@ -87,8 +95,8 @@ export class GcdsFieldset {
   }
 
   /**
-  * Set event to call validator
-  */
+   * Set event to call validator
+   */
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
@@ -96,19 +104,24 @@ export class GcdsFieldset {
    */
   @State() hasError: boolean;
 
+
   /**
-    * Emitted when the fieldset has a validation error.
-    */
+   * Events
+   */
+
+  /**
+   * Emitted when the fieldset has a validation error.
+   */
   @Event({}) gcdsGroupError!: EventEmitter<string>;
 
   /**
-    * Emitted when the fieldset has a validation error.
-    */
+   * Emitted when the fieldset has a validation error.
+   */
   @Event() gcdsGroupErrorClear!: EventEmitter<void>;
 
   /**
-    * Call any active validators
-    */
+   * Call any active validators
+   */
   @Method()
   async validate() {
     if (!this._validator.validate(this.fieldsetId) && this._validator.errorMessage) {
@@ -128,8 +141,8 @@ export class GcdsFieldset {
   }
 
   /**
-  * Event listener for gcds-fieldset errors
-  */
+   * Event listener for gcds-fieldset errors
+   */
   @Listen('gcdsGroupError', { target: 'body'})
   gcdsParentGroupError(e) {
     if (e.srcElement.contains(this.el) && validateFieldsetElements(this.el, this.el.children).includes(false)) {
@@ -138,6 +151,7 @@ export class GcdsFieldset {
       this.hasError = false;
     }
   }
+
   @Listen('gcdsGroupErrorClear', { target: 'body'})
   gcdsParentGroupErrorClear(e) {
     if (e.srcElement.contains(this.el) && this.hasError) {
@@ -193,12 +207,13 @@ export class GcdsFieldset {
                 null
             }
           </legend>
+
           {hint ? <gcds-hint hint={hint} hint-id={fieldsetId} /> : null}
+
           {errorMessage ? <gcds-error-message message-id={fieldsetId} message={errorMessage} /> : null}
           <slot></slot>
         </fieldset>
       </Host>
     );
   }
-
 }

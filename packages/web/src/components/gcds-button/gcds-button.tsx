@@ -8,13 +8,14 @@ import { inheritAttributes} from '../../utils/utils';
   shadow: true,
 })
 export class GcdsButton {
+  @Element() el: HTMLElement;
+
   private lang: string;
   private shadowElement?: HTMLElement;
 
-  @Element() el: HTMLElement;
 
   /**
-   * Button props
+   * Props
    */
 
   /**
@@ -25,6 +26,7 @@ export class GcdsButton {
   @Watch('buttonType')
   validateButtonType(newValue: string) {
     const values = ['submit', 'reset', 'button', 'link'];
+
     if (!values.includes(newValue)) {
       this.buttonType = 'button';
     }
@@ -38,6 +40,7 @@ export class GcdsButton {
   @Watch('buttonRole')
   validateButtonRole(newValue: string) {
     const values = ['primary', 'secondary', 'destructive', 'skip-to-content'];
+
     if (!values.includes(newValue)) {
       this.buttonRole = 'primary';
     }
@@ -51,6 +54,7 @@ export class GcdsButton {
   @Watch('buttonStyle')
   validateButtonStyle(newValue: string) {
     const values = ['solid', 'text-only'];
+
     if (!values.includes(newValue)) {
       this.buttonStyle = 'solid';
     }
@@ -64,6 +68,7 @@ export class GcdsButton {
   @Watch('buttonSize')
   validateButtonSize(newValue: string) {
     const values = ['regular', 'small'];
+
     if (!values.includes(newValue)) {
       this.buttonSize = 'regular';
     }
@@ -83,6 +88,7 @@ export class GcdsButton {
    * The disabled attribute for a <button> element.
    */
   @Prop() disabled: boolean;
+
 
   /**
    * Link props
@@ -108,7 +114,6 @@ export class GcdsButton {
    */
   @Prop() download: string | undefined;
 
-
   /**
    * Custom callback function on click event
    */
@@ -128,6 +133,7 @@ export class GcdsButton {
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
+
 
   /**
    * Events
@@ -171,6 +177,7 @@ export class GcdsButton {
       if (!this.disabled && this.buttonType != 'button' && this.buttonType != 'link') {
         // Attach button to form
         const form = this.el.closest('form');
+
         if (form) {
           e.preventDefault();
 
@@ -205,17 +212,14 @@ export class GcdsButton {
   }
 
   render() {
-
     const { buttonType, buttonRole, buttonStyle, buttonSize, buttonId, disabled, lang, name, href, rel, target, download, inheritedAttributes } = this;
 
     const Tag = buttonType != 'link' ? 'button' : 'a';
-    const attrs = (Tag === 'button')
-    ? {
+    const attrs = (Tag === 'button') ? {
       type: buttonType,
       ariaDisabled: disabled,
       name
-    }
-    : {
+    } : {
       href,
       rel,
       target,
@@ -235,7 +239,9 @@ export class GcdsButton {
           {...inheritedAttributes}
         >
           <slot name="left"></slot>
+
           <slot></slot>
+
           { buttonType === 'link' && target === '_blank' ?
             <gcds-icon
               name="external-link"

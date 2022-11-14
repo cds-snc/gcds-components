@@ -8,6 +8,11 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsIcon {
   @Element() el: HTMLElement;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Add icon description.
    */

@@ -8,6 +8,11 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsBanner {
   @Element() el: HTMLElement;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Defines banner role.
    */

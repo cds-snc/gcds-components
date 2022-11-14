@@ -16,8 +16,9 @@ export class GcdsTextarea {
 
   _validator: Validator<string> = defaultValidator;
 
+
   /**
-   * Textarea props
+   * Props
    */
 
   /**
@@ -113,12 +114,12 @@ export class GcdsTextarea {
    */
   @Prop() changeHandler: Function;
 
-   /**
+  /**
     * Custom callback function on focus event
     */
   @Prop() focusHandler: Function;
- 
-   /**
+
+  /**
     * Custom callback function on blur event
     */
   @Prop() blurHandler: Function;
@@ -139,9 +140,10 @@ export class GcdsTextarea {
     }
   }
 
+
   /**
-  * Events
-  */
+   * Events
+   */
 
   /**
     * Emitted when the textarea has focus.

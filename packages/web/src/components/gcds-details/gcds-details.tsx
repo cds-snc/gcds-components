@@ -8,6 +8,11 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsDetails {
   @Element() el: HTMLElement;
 
+
+  /**
+   * Props
+   */
+
   /**
    * The details title summarizes the panel content.
    */

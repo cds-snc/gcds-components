@@ -51,7 +51,7 @@
   .banner-content {
     padding-block: var(--gcds-spacing-200);
 
-    @media only screen and (min-width: 551px) {
+    @media only screen and (min-width: 35em) {
       display: flex;
     }
   }
@@ -63,7 +63,7 @@
     &.icon-left {
       margin-right: var(--gcds-spacing-300);
 
-      @media only screen and (max-width: 550px) {
+      @media only screen and (max-width: 34.99em) {
         margin-bottom: var(--gcds-spacing-100);
       }
     }
@@ -71,7 +71,7 @@
     &.icon-right {
       margin-left: var(--gcds-spacing-300);
 
-      @media only screen and (max-width: 550px) {
+      @media only screen and (max-width: 34.99em) {
         margin: var(--gcds-spacing-100) 0 0;
       }
     }

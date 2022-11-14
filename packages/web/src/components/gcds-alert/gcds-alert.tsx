@@ -12,6 +12,11 @@ export class GcdsAlert {
 
   private lang: string;
 
+
+  /**
+   * Props
+   */
+
   /**
    * Defines the alert heading.
    */
@@ -44,8 +49,8 @@ export class GcdsAlert {
 
 
   /**
-  * States
-  */
+   * States
+   */
 
   /**
    * Specifies if the alert is open or not.
@@ -54,8 +59,8 @@ export class GcdsAlert {
 
 
   /**
-  * Events
-  */
+   * Events
+   */
 
   @Event() gcdsDismiss!: EventEmitter<void>;
 

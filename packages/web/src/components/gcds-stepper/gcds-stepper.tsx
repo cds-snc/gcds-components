@@ -7,9 +7,14 @@ import { assignLanguage } from '../../utils/utils';
   shadow: true,
 })
 export class GcdsStepper {
+  @Element() el: HTMLElement;
+
   private lang: string;
 
-  @Element() el: HTMLElement;
+
+  /**
+   * Props
+   */
 
   /**
    * Defines the current step.

@@ -11,10 +11,14 @@ import WordmarkFr from './assets/wmms-spl-fr.svg';
   styleUrl: 'gcds-signature.css',
 })
 export class GcdsSignature {
+  @Element() el: HTMLElement;
 
   private lang: string;
 
-  @Element() el: HTMLElement;
+
+  /**
+   * Props
+   */
 
   /**
   * The type of graphic to render
@@ -67,13 +71,14 @@ export class GcdsSignature {
           return SignatureEn;
         } else {
           return SignatureFr;
-        }   
+        }
     }
   }
 
   render() {
     const { type, hasLink, lang, selectSVG } = this;
     const linkText = lang == "en" ? "https://canada.ca/en.html" : "https://canada.ca/fr.html";
+
     return (
       <Host>
         {hasLink && type === 'signature' ? (

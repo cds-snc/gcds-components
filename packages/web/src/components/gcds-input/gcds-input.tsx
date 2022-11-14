@@ -16,8 +16,9 @@ export class GcdsInput {
 
   _validator: Validator<string> = defaultValidator;
 
+
   /**
-   * Input props
+   * Props
    */
 
   /**
@@ -140,9 +141,10 @@ export class GcdsInput {
     }
   }
 
+
   /**
-  * Events
-  */
+   * Events
+   */
 
   /**
     * Emitted when the input has focus.
@@ -153,7 +155,7 @@ export class GcdsInput {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
-    
+
     this.gcdsFocus.emit();
   }
 
@@ -264,6 +266,7 @@ export class GcdsInput {
             label-for={inputId}
             lang={lang}
           />
+
           {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
 
           {errorMessage ?

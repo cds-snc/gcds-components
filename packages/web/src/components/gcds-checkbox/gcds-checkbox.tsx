@@ -9,13 +9,17 @@ import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredVali
   scoped: true,
 })
 export class GcdsCheckbox {
-
   @Element() el: HTMLElement;
 
   private lang: string;
   private shadowElement?: HTMLElement;
 
   _validator: Validator<any> = defaultValidator;
+
+
+  /**
+   * Props
+   */
 
   /**
    * Id attribute for an input element.
@@ -71,6 +75,7 @@ export class GcdsCheckbox {
       this.hasError = false;
     }
   }
+
   /**
    * Hint displayed below the label.
    */
@@ -106,6 +111,7 @@ export class GcdsCheckbox {
       this.parentError = "";
     }
   }
+
   @Listen('gcdsGroupErrorClear', { target: 'body'})
   gcdsGroupErrorClear(e) {
     if (e.srcElement.contains(this.el) && this.hasError) {
@@ -150,6 +156,11 @@ export class GcdsCheckbox {
     }
   }
 
+
+  /**
+   * Events
+   */
+
   /**
    * Emitted when the checkbox has focus.
    */
@@ -178,7 +189,6 @@ export class GcdsCheckbox {
     }
 
     this.gcdsBlur.emit();
-
   }
 
   /**
@@ -225,12 +235,11 @@ export class GcdsCheckbox {
 
   private onChange = () => {
     this.checked = !this.checked;
-    
+
     this.gcdsChange.emit(this.value);
   };
 
   render() {
-
     const { lang, checkboxId, label, name, required, disabled, value, checked, hint, errorMessage, hasError, parentError, inheritedAttributes } = this;
 
     const attrsInput = {
@@ -271,18 +280,21 @@ export class GcdsCheckbox {
             onClick={(e) => { this.clickHandler && this.clickHandler(e) }}
             ref={element => this.shadowElement = element as HTMLElement}
           />
+
           <gcds-label
             {...attrsLabel}
             label-for={checkboxId}
             lang={lang}
           >
           </gcds-label>
+
           {hint ? <gcds-hint hint={hint} hint-id={checkboxId} />: null}
+
           {errorMessage ? <gcds-error-message message-id={checkboxId} message={errorMessage} /> : null}
+
           {parentError ? <span id={`parent-error-${checkboxId}`} hidden>{parentError}</span> : null}
         </div>
       </Host>
     );
   }
-
 }
