@@ -427,6 +427,34 @@ export class GcdsLangToggle {
 }
 
 
+export declare interface GcdsPagination extends Components.GcdsPagination {
+  /**
+   * Update value based on user input. 
+   */
+  pageChange: EventEmitter<CustomEvent<void>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['currentPage', 'label', 'nextHref', 'nextLabel', 'onPageChange', 'previousHref', 'previousLabel', 'totalPages', 'type', 'url']
+})
+@Component({
+  selector: 'gcds-pagination',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['currentPage', 'label', 'nextHref', 'nextLabel', 'onPageChange', 'previousHref', 'previousLabel', 'totalPages', 'type', 'url']
+})
+export class GcdsPagination {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['pageChange']);
+  }
+}
+
+
 export declare interface GcdsRadio extends Components.GcdsRadio {
   /**
    * Emitted when the radio button is checked 

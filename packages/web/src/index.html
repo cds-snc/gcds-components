@@ -4,13 +4,224 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
+
+
     <link rel="stylesheet" href="/dist/gcds/gcds.css" />
     <script type="module" src="/dist/gcds/gcds.esm.js"></script>
     <script nomodule src="/dist/gcds.js"></script>
+
+        <link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+    <style>
+    body {
+      font-size: var(--gcds-font-sizes-paragraph);
+      line-height: var(--gcds-line-heights-paragraph);
+      color: var(--gcds-color-grayscale-1000);
+      font-family: var(--gcds-font-families-body), sans-serif;
+      margin: 0;
+      animation: fade .05s normal forwards ease-in-out;
+    }
+
+    [aria-current*=page] {
+      color: red;
+    }
+    </style>
   </head>
   <body>
     <section style="margin: 5rem 0">
-      <gcds-button>Example Button</gcds-button>
+
+      <gcds-input label="URL" hide-label input-id="hrefDisplay" value="http://localhost:3333/src"></gcds-input>
+
+      <gcds-pagination
+        type="list"
+        label="Search results"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="100"
+        current-page="4"
+        id="page"
+      >
+      </gcds-pagination>
+      <gcds-pagination
+        type="list"
+        label="Pagination test"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="7"
+        current-page="4"
+      >
+      </gcds-pagination>
+  <!--
+      <gcds-pagination
+        type="list"
+        label="Pagination test"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="100"
+        current-page="96"
+      >
+      </gcds-pagination>
+
+      <gcds-pagination
+        type="list"
+        label="Pagination test"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="100"
+        current-page="100"
+      >
+      </gcds-pagination>-->
+
+      <script>
+        function changePage(e) {
+        e.preventDefault();
+          var element = e.srcElement;
+          var step = element.innerText;
+          var pagination = element.closest('gcds-pagination');
+
+          if (step == "Previous") {
+            step = Number(pagination.currentPage) - 1;
+          } else if (step == "Next") {
+            step = Number(pagination.currentPage) + 1;
+          }
+
+          element.closest('gcds-pagination').currentPage = step;
+
+          document.querySelector("#hrefDisplay").value = element.href;
+        }
+
+        var pagination = document.querySelectorAll("gcds-pagination");
+
+        for (var i =0; i < pagination.length; i++) {
+          pagination[i].pageChangeHandler = changePage;
+        }
+
+        var page = document.getElementById("page");
+
+        const urlObject = {
+            queryStrings: {
+              "query": "string",
+              "q::offset": "offset_{{10}}",
+              "page::match": "test_{{2}}"
+            },
+            fragment:"red",
+          };
+
+        page.url = urlObject;
+      </script>
+
+      <!--Will render header with just signature-->
+      <gcds-header>
+      </gcds-header>
+
+      <!--Will render header with lang toggle-->
+      <gcds-header
+        lang-href="#"
+      >
+      </gcds-header>
+
+      <!--Will render header with search slot-->
+      <gcds-header
+        lang-href="#"
+      >
+        <div slot="search">
+          <gcds-input type="text" input-id="search" label="search" hide-label></gcds-input>
+        </div>
+      </gcds-header>
+
+      <!--Will render header with search, menu slot-->
+      <gcds-header
+        lang-href="#"
+      >
+        <div slot="search">
+          <gcds-input type="text" input-id="search" label="search" hide-label></gcds-input>
+        </div>
+        <gcds-site-menu slot="menu">
+          <ul>
+            <li><a>Menu 1</a></li>
+            <li><a>Menu 2</a></li>
+            <li><a>Menu 3</a></li>
+          </ul>
+        </gcds-site-menu>
+      </gcds-header>
+
+      <!--Will render header with search, menu and breadcrumb slot-->
+      <gcds-header
+        lang-href="#"
+      >
+        <div slot="search">
+          <gcds-input type="text" input-id="search" label="search" hide-label></gcds-input>
+        </div>
+        <gcds-site-menu slot="menu">
+          <ul>
+            <li><a>Menu 1</a></li>
+            <li><a>Menu 2</a></li>
+            <li><a>Menu 3</a></li>
+          </ul>
+        </gcds-site-menu>
+        <ul slot="breadcrumb">
+          <li><a>bread 1</a></li>
+          <li><a>bread 2</a></li>
+          <li><a>bread 3</a></li>
+        </ul>
+      </gcds-header>
+      
+      <!--Will render header with search, menu, breadcrumb and banner slot-->
+      <gcds-header
+        lang-href="#"
+      >
+        <div slot="search">
+          <gcds-input type="text" input-id="search" label="search" hide-label></gcds-input>
+        </div>
+        <gcds-site-menu slot="menu">
+          <ul>
+            <li><a>Menu 1</a></li>
+            <li><a>Menu 2</a></li>
+            <li><a>Menu 3</a></li>
+          </ul>
+        </gcds-site-menu>
+        <ul slot="breadcrumb">
+          <li><a>bread 1</a></li>
+          <li><a>bread 2</a></li>
+          <li><a>bread 3</a></li>
+        </ul>
+        <gcds-banner slot="banner" banner-role="primary">
+          <p slot="banner-text">Banner text for announcement</p>
+        </gcds-banner>
+      </gcds-header>
+
+
+      <!--Will render small footer-->
+      <gcds-footer
+        display="compact"
+      >
+      </gcds-footer>
+      <!--Will render large footer-->
+      <gcds-footer
+        display="full"
+      >
+      </gcds-footer>
     </section>
   </body>
 </html>
