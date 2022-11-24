@@ -15,9 +15,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
     <style>
+    html {
+      font-size: 16px;
+    }
     body {
       font-size: var(--gcds-font-sizes-paragraph);
       line-height: var(--gcds-line-heights-paragraph);
@@ -33,12 +36,12 @@
     </style>
   </head>
   <body>
-    <section style="margin: 5rem 0">
+    <section style="margin: 5rem 1rem">
 
       <gcds-input label="URL" hide-label input-id="hrefDisplay" value="http://localhost:3333/src"></gcds-input>
 
       <gcds-pagination
-        type="list"
+        display="list"
         label="Search results"
 
         previous-href="#previous"
@@ -46,13 +49,114 @@
         next-href="#next"
         next-label="Next label"
 
-        total-pages="100"
-        current-page="4"
+        total-pages="20"
+        current-page="10"
         id="page"
       >
       </gcds-pagination>
+
+      <br/>
+
       <gcds-pagination
-        type="list"
+        display="list"
+        label="Search results"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="20"
+        current-page="20"
+      >
+      </gcds-pagination>
+
+      <br/>
+
+      <gcds-pagination
+        display="list"
+        label="Search results"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="20"
+        current-page="1"
+      >
+      </gcds-pagination>
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+      
+      <gcds-pagination
+        display="list"
+        label="Search results"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="9"
+        current-page="1"
+      >
+      </gcds-pagination>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <gcds-pagination
+        display="list"
+        label="Search results"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="8"
+        current-page="4"
+      >
+      </gcds-pagination>
+      <gcds-pagination
+        display="list"
+        label="Search results"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="7"
+        current-page="4"
+      >
+      </gcds-pagination>
+      <gcds-pagination
+        display="list"
+        label="Search results"
+
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+
+        total-pages="6"
+        current-page="4"
+      >
+      </gcds-pagination>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <gcds-pagination
+        display="simple"
         label="Pagination test"
 
         previous-href="#previous"
@@ -64,34 +168,20 @@
         current-page="4"
       >
       </gcds-pagination>
-  <!--
+
+      <br/>
+
       <gcds-pagination
-        type="list"
+        display="simple"
         label="Pagination test"
 
         previous-href="#previous"
-        previous-label="Previous label"
         next-href="#next"
-        next-label="Next label"
 
-        total-pages="100"
-        current-page="96"
+        total-pages="7"
+        current-page="4"
       >
       </gcds-pagination>
-
-      <gcds-pagination
-        type="list"
-        label="Pagination test"
-
-        previous-href="#previous"
-        previous-label="Previous label"
-        next-href="#next"
-        next-label="Next label"
-
-        total-pages="100"
-        current-page="100"
-      >
-      </gcds-pagination>-->
 
       <script>
         function changePage(e) {
@@ -121,15 +211,19 @@
 
         const urlObject = {
             queryStrings: {
-              "query": "string",
-              "q::offset": "offset_{{10}}",
-              "page::match": "test_{{2}}"
+              "query": "design system",
+              "idx::offset": 10,
+              "page::match": "page_{{1}}"
             },
             fragment:"red",
           };
 
         page.url = urlObject;
       </script>
+            <br/>
+      <br/>
+      <br/>
+
 
       <!--Will render header with just signature-->
       <gcds-header>

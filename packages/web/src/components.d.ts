@@ -499,19 +499,23 @@ export namespace Components {
     }
     interface GcdsPagination {
         /**
-          * List type - Current page number
+          * List display - Current page number
          */
         "currentPage": number;
         /**
           * Navigation element label
          */
+        "display": "list" | "simple";
+        /**
+          * Navigation element label
+         */
         "label": string;
         /**
-          * Simple type - href for next link
+          * Simple display - href for next link
          */
         "nextHref": string;
         /**
-          * Simple type - lable for next link
+          * Simple display - lable for next link
          */
         "nextLabel": string;
         /**
@@ -519,23 +523,19 @@ export namespace Components {
          */
         "pageChangeHandler": Function;
         /**
-          * Simple type - href for previous link
+          * Simple display - href for previous link
          */
         "previousHref": string;
         /**
-          * Simple type - label for previous link
+          * Simple display - label for previous link
          */
         "previousLabel": string;
         /**
-          * List type - Total number of pages
+          * List display - Total number of pages
          */
         "totalPages": number;
         /**
-          * Navigation element label
-         */
-        "type": "list" | "simple";
-        /**
-          * List type - URL object to create query strings and fragment on links
+          * List display - URL object to create query strings and fragment on links
          */
         "url": PaginationUrl;
     }
@@ -1511,19 +1511,23 @@ declare namespace LocalJSX {
     }
     interface GcdsPagination {
         /**
-          * List type - Current page number
+          * List display - Current page number
          */
         "currentPage"?: number;
         /**
           * Navigation element label
          */
+        "display"?: "list" | "simple";
+        /**
+          * Navigation element label
+         */
         "label": string;
         /**
-          * Simple type - href for next link
+          * Simple display - href for next link
          */
         "nextHref"?: string;
         /**
-          * Simple type - lable for next link
+          * Simple display - lable for next link
          */
         "nextLabel"?: string;
         /**
@@ -1535,23 +1539,19 @@ declare namespace LocalJSX {
          */
         "pageChangeHandler"?: Function;
         /**
-          * Simple type - href for previous link
+          * Simple display - href for previous link
          */
         "previousHref"?: string;
         /**
-          * Simple type - label for previous link
+          * Simple display - label for previous link
          */
         "previousLabel"?: string;
         /**
-          * List type - Total number of pages
+          * List display - Total number of pages
          */
         "totalPages"?: number;
         /**
-          * Navigation element label
-         */
-        "type"?: "list" | "simple";
-        /**
-          * List type - URL object to create query strings and fragment on links
+          * List display - URL object to create query strings and fragment on links
          */
         "url"?: PaginationUrl;
     }
