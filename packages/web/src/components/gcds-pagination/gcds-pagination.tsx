@@ -1,5 +1,7 @@
 import { Component, Element, Prop, Event, EventEmitter, State, Watch, Host, h } from '@stencil/core';
+
 import { assignLanguage } from '../../utils/utils';
+import I18N from './i18n/i18n';
 
 interface PaginationUrl {
   queryStrings: Object;
@@ -329,12 +331,12 @@ export class GcdsPagination {
       onClick: (e) => this.onPageChange(e),
       href: this.url ? this.constructHref(page, end) : "javascript:void(0)",
       ariaLabel: !end ?
-        `Page ${page} of ${this.label}`
+        I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{label}', this.label)
       :
         end == "next" ?
-          `Next page: page ${page} of ${this.label}`
+          `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{label}', this.label)}`
         :
-          `Previous page: page ${page} of ${this.label}`,
+          `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{label}', this.label)}`,
     }
 
     if (page == this.currentPage && !end) {
@@ -342,10 +344,10 @@ export class GcdsPagination {
     }
 
     if (end == "next") {
-      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}>Next<gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon></a></li>);
+      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}>{I18N[this.lang].next}<gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon></a></li>);
     }
     else if (end == "previous") {
-      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}><gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>Previous</a></li>);
+      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}><gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>{I18N[this.lang].previous}</a></li>);
     }
     else {
       return (<li class={this.constructClasses(page, this.currentPage, this.totalPages)}><a {...linkAttrs}>{page}</a></li>);
