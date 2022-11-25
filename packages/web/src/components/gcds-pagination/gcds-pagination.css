@@ -10,31 +10,28 @@
       margin: var(--gcds-spacing-50);
 
       a {
-        color: var(--gcds-color-blue-800);
+        color: var(--var-pagination-default-text);
         font-weight: 800;
         font-family: var(--gcds-font-families-body);
         border-radius: var(--gcds-spacing-50);
 
         &:hover {
-          background: var(--gcds-color-blue-100);
+          background: var(--gcds-pagination-hover-background);
         }
 
         &:focus {
-          color: var(--gcds-color-grayscale-0);
-          background-color: var(--gcds-brand-focus);
+          color: var(--gcds-pagination-focus-text);
+          background-color: var(--gcds-pagination-focus-background);
 
-          box-shadow: 0 0 0 .125rem var(--gcds-color-grayscale-0);
-          outline: .1875rem solid var(--gcds-brand-focus);
+          box-shadow: 0 0 0 .125rem var(--gcds-pagination-focus-shadow);
+          outline: .1875rem solid var(--gcds-pagination-focus-outline);
           outline-offset: .125rem;
         }
 
-        &:active {
-          color: var(--gcds-color-grayscale-0);
-          background: var(--gcds-color-blue-800);
-        }
+        &:active,
         &[aria-current*=page] {
-          color: var(--gcds-color-grayscale-0);
-          background: var(--gcds-color-blue-800);
+          color: var(--gcds-pagination-active-text);
+          background: var(--gcds-pagination-active-background);
         }
       }
     }
@@ -95,7 +92,7 @@
         /* Mobile styling */
         @media screen and (max-width: 42.5rem) {
           a {
-            border: 0.125rem solid var(--gcds-color-blue-800);
+            border: 0.125rem solid var(--gcds-pagination-mobile-list-border);
           }
 
           & > span.gcds-pagination-list-ellipses {
