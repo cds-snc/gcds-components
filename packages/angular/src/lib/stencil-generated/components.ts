@@ -431,26 +431,26 @@ export declare interface GcdsPagination extends Components.GcdsPagination {
   /**
    * Update value based on user input. 
    */
-  pageChange: EventEmitter<CustomEvent<void>>;
+  gcdsPageChange: EventEmitter<CustomEvent<void>>;
 
 }
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['currentPage', 'label', 'nextHref', 'nextLabel', 'onPageChange', 'previousHref', 'previousLabel', 'totalPages', 'type', 'url']
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
 })
 @Component({
   selector: 'gcds-pagination',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['currentPage', 'label', 'nextHref', 'nextLabel', 'onPageChange', 'previousHref', 'previousLabel', 'totalPages', 'type', 'url']
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
 })
 export class GcdsPagination {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pageChange']);
+    proxyOutputs(this, this.el, ['gcdsPageChange']);
   }
 }
 

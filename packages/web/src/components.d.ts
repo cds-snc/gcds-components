@@ -537,7 +537,7 @@ export namespace Components {
         /**
           * List display - URL object to create query strings and fragment on links
          */
-        "url": PaginationUrl;
+        "url": Object;
     }
     interface GcdsRadio {
         /**
@@ -1553,7 +1553,7 @@ declare namespace LocalJSX {
         /**
           * List display - URL object to create query strings and fragment on links
          */
-        "url"?: PaginationUrl;
+        "url"?: Object;
     }
     interface GcdsRadio {
         /**

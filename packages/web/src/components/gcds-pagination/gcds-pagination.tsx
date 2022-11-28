@@ -4,11 +4,6 @@ import { assignLanguage } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import { constructHref, constructClasses } from './utils/render';
 
-interface PaginationUrl {
-  queryStrings: Object;
-  fragment?: string;
-}
-
 @Component({
   tag: 'gcds-pagination',
   styleUrl: 'gcds-pagination.css',
@@ -74,7 +69,7 @@ export class GcdsPagination {
   /**
    * List display - URL object to create query strings and fragment on links
    */
-   @Prop() url: PaginationUrl;
+   @Prop() url: Object;
 
   /**
    * Function to fire when pageChange event is called
