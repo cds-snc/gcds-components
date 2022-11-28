@@ -2,16 +2,551 @@ import { newSpecPage } from '@stencil/core/testing';
 import { GcdsPagination } from '../gcds-pagination';
 
 describe('gcds-pagination', () => {
-  it('renders', async () => {
+  it('render simple label - English', async () => {
     const page = await newSpecPage({
       components: [GcdsPagination],
-      html: `<gcds-pagination></gcds-pagination>`,
+      html: `
+      <gcds-pagination
+        display="simple"
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+        lang="en"
+      ></gcds-pagination>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-pagination>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
+      <gcds-pagination display="simple" lang="en" next-href="#next" next-label="Next label" previous-href="#previous" previous-label="Previous label" role="navigation">
+        <ul class="gcds-pagination-simple">
+          <li>
+            <a aria-label="Previous page: Previous label" href="#previous">
+              <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+              <b>
+                Previous
+              </b>
+              <span>
+                Previous label
+              </span>
+            </a>
+          </li>
+          <li>
+            <a aria-label="Next page: Next label" href="#next">
+              <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              <b>
+                Next
+              </b>
+              <span>
+                Next label
+              </span>
+            </a>
+          </li>
+        </ul>
+      </gcds-pagination>
+    `);
+  });
+  it('render simple no label - English', async () => {
+    const page = await newSpecPage({
+      components: [GcdsPagination],
+      html: `
+      <gcds-pagination
+        display="simple"
+        previous-href="#previous"
+        next-href="#next"
+        lang="en"
+      ></gcds-pagination>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-pagination display="simple" lang="en" next-href="#next" previous-href="#previous" role="navigation">
+        <ul class="gcds-pagination-simple">
+          <li>
+            <a aria-label="Previous page" href="#previous">
+              <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+              <b>
+                Previous
+              </b>
+              <span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a aria-label="Next page" href="#next">
+              <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              <b>
+                Next
+              </b>
+              <span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </gcds-pagination>
+    `);
+  });
+  it('render simple label - French', async () => {
+    const page = await newSpecPage({
+      components: [GcdsPagination],
+      html: `
+      <gcds-pagination
+        display="simple"
+        previous-href="#previous"
+        previous-label="Previous label"
+        next-href="#next"
+        next-label="Next label"
+        lang="fr"
+      ></gcds-pagination>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-pagination display="simple" lang="fr" next-href="#next" next-label="Next label" previous-href="#previous" previous-label="Previous label" role="navigation">
+        <ul class="gcds-pagination-simple">
+          <li>
+            <a aria-label="Page précédente: Previous label" href="#previous">
+              <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+              <b>
+              Précédente
+              </b>
+              <span>
+                Previous label
+              </span>
+            </a>
+          </li>
+          <li>
+            <a aria-label="Page suivante: Next label" href="#next">
+              <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              <b>
+                Suivante
+              </b>
+              <span>
+                Next label
+              </span>
+            </a>
+          </li>
+        </ul>
+      </gcds-pagination>
+    `);
+  });
+  it('render simple no label - French', async () => {
+    const page = await newSpecPage({
+      components: [GcdsPagination],
+      html: `
+      <gcds-pagination
+        display="simple"
+        previous-href="#previous"
+        next-href="#next"
+        lang="fr"
+      ></gcds-pagination>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-pagination display="simple" lang="fr" next-href="#next" previous-href="#previous" role="navigation">
+        <ul class="gcds-pagination-simple">
+          <li>
+            <a aria-label="Page précédente" href="#previous">
+              <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+              <b>
+              Précédente
+              </b>
+              <span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a aria-label="Page suivante" href="#next">
+              <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              <b>
+                Suivante
+              </b>
+              <span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </gcds-pagination>
+    `);
+  });
+  it('render list - under 10 items - English', async () => {
+    const page = await newSpecPage({
+      components: [GcdsPagination],
+      html: `
+      <gcds-pagination
+        display="list"
+        current-page="5"
+        total-pages="9"
+        label="Search results"
+        lang="en"
+      ></gcds-pagination>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-pagination aria-label="Search results" current-page="5" display="list" label="Search results" lang="en" role="navigation" total-pages="9">
+        <div>
+          <ul class="gcds-pagination-list">
+            <li>
+              <a aria-label="Previous page: Page 4 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+                Previous
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 1 of Search results" href="javascript:void(0)">
+                1
+              </a>
+            </li>
+            <li class="gcds-pagination-list-mobile-ellipses-460">
+              <span class="gcds-pagination-list-ellipses">
+                ...
+              </span>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-460">
+              <a aria-label="Page 2 of Search results" href="javascript:void(0)">
+                2
+              </a>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-420">
+              <a aria-label="Page 3 of Search results" href="javascript:void(0)">
+                3
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 4 of Search results" href="javascript:void(0)">
+                4
+              </a>
+            </li>
+            <li>
+              <a aria-current="page" aria-label="Page 5 of Search results" href="javascript:void(0)">
+                5
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 6 of Search results" href="javascript:void(0)">
+                6
+              </a>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-420">
+              <a aria-label="Page 7 of Search results" href="javascript:void(0)">
+                7
+              </a>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-460">
+              <a aria-label="Page 8 of Search results" href="javascript:void(0)">
+                8
+              </a>
+            </li>
+            <li class="gcds-pagination-list-mobile-ellipses-460">
+              <span class="gcds-pagination-list-ellipses">
+                ...
+              </span>
+            </li>
+            <li>
+              <a aria-label="Page 9 of Search results" href="javascript:void(0)">
+                9
+              </a>
+            </li>
+            <li>
+              <a aria-label="Next page: Page 6 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                Next
+                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              </a>
+            </li>
+          </ul>
+          <ul class="gcds-pagination-list-mobile-prevnext">
+            <li>
+              <a aria-label="Previous page: Page 4 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+                Previous
+              </a>
+            </li>
+            <li>
+              <a aria-label="Next page: Page 6 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                Next
+                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              </a>
+            </li>
+          </ul>
+        </div>    
+      </gcds-pagination>
+    `);
+  });
+  it('render list - 20 items - English', async () => {
+    const page = await newSpecPage({
+      components: [GcdsPagination],
+      html: `
+      <gcds-pagination
+        display="list"
+        current-page="10"
+        total-pages="20"
+        label="Search results"
+        lang="en"
+      ></gcds-pagination>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-pagination aria-label="Search results" current-page="10" display="list" label="Search results" lang="en" role="navigation" total-pages="20">
+        <div>
+          <ul class="gcds-pagination-list">
+            <li>
+              <a aria-label="Previous page: Page 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+                Previous
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 1 of Search results" href="javascript:void(0)">
+                1
+              </a>
+            </li>
+            <li>
+              <span class="gcds-pagination-list-ellipses">
+                ...
+              </span>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-420">
+              <a aria-label="Page 8 of Search results" href="javascript:void(0)">
+                8
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 9 of Search results" href="javascript:void(0)">
+                9
+              </a>
+            </li>
+            <li>
+              <a aria-current="page" aria-label="Page 10 of Search results" href="javascript:void(0)">
+                10
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 11 of Search results" href="javascript:void(0)">
+                11
+              </a>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-420">
+              <a aria-label="Page 12 of Search results" href="javascript:void(0)">
+                12
+              </a>
+            </li>
+            <li>
+              <span class="gcds-pagination-list-ellipses">
+                ...
+              </span>
+            </li>
+            <li>
+              <a aria-label="Page 20 of Search results" href="javascript:void(0)">
+                20
+              </a>
+            </li>
+            <li>
+              <a aria-label="Next page: Page 11 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                Next
+                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              </a>
+            </li>
+          </ul>
+          <ul class="gcds-pagination-list-mobile-prevnext">
+            <li>
+              <a aria-label="Previous page: Page 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+                Previous
+              </a>
+            </li>
+            <li>
+              <a aria-label="Next page: Page 11 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                Next
+                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              </a>
+            </li>
+          </ul>
+        </div>  
+      </gcds-pagination>
+    `);
+  });
+  it('render list - under 10 items - French', async () => {
+    const page = await newSpecPage({
+      components: [GcdsPagination],
+      html: `
+      <gcds-pagination
+        display="list"
+        current-page="5"
+        total-pages="9"
+        label="Search results"
+        lang="fr"
+      ></gcds-pagination>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-pagination aria-label="Search results" current-page="5" display="list" label="Search results" lang="fr" role="navigation" total-pages="9">
+        <div>
+          <ul class="gcds-pagination-list">
+            <li>
+              <a aria-label="Page précédente: Page 4 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+                Précédente
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 1 des Search results" href="javascript:void(0)">
+                1
+              </a>
+            </li>
+            <li class="gcds-pagination-list-mobile-ellipses-460">
+              <span class="gcds-pagination-list-ellipses">
+                ...
+              </span>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-460">
+              <a aria-label="Page 2 des Search results" href="javascript:void(0)">
+                2
+              </a>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-420">
+              <a aria-label="Page 3 des Search results" href="javascript:void(0)">
+                3
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 4 des Search results" href="javascript:void(0)">
+                4
+              </a>
+            </li>
+            <li>
+              <a aria-current="page" aria-label="Page 5 des Search results" href="javascript:void(0)">
+                5
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 6 des Search results" href="javascript:void(0)">
+                6
+              </a>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-420">
+              <a aria-label="Page 7 des Search results" href="javascript:void(0)">
+                7
+              </a>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-460">
+              <a aria-label="Page 8 des Search results" href="javascript:void(0)">
+                8
+              </a>
+            </li>
+            <li class="gcds-pagination-list-mobile-ellipses-460">
+              <span class="gcds-pagination-list-ellipses">
+                ...
+              </span>
+            </li>
+            <li>
+              <a aria-label="Page 9 des Search results" href="javascript:void(0)">
+                9
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page suivante: Page 6 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                Suivante
+                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              </a>
+            </li>
+          </ul>
+          <ul class="gcds-pagination-list-mobile-prevnext">
+            <li>
+              <a aria-label="Page précédente: Page 4 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+                Précédente
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page suivante: Page 6 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                Suivante
+                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </gcds-pagination>
+    `);
+  });
+  it('render list - 20 items - French', async () => {
+    const page = await newSpecPage({
+      components: [GcdsPagination],
+      html: `
+      <gcds-pagination
+        display="list"
+        current-page="10"
+        total-pages="20"
+        label="Search results"
+        lang="fr"
+      ></gcds-pagination>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-pagination aria-label="Search results" current-page="10" display="list" label="Search results" lang="fr" role="navigation" total-pages="20">
+        <div>
+          <ul class="gcds-pagination-list">
+            <li>
+              <a aria-label="Page précédente: Page 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+                Précédente
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 1 des Search results" href="javascript:void(0)">
+                1
+              </a>
+            </li>
+            <li>
+              <span class="gcds-pagination-list-ellipses">
+                ...
+              </span>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-420">
+              <a aria-label="Page 8 des Search results" href="javascript:void(0)">
+                8
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 9 des Search results" href="javascript:void(0)">
+                9
+              </a>
+            </li>
+            <li>
+              <a aria-current="page" aria-label="Page 10 des Search results" href="javascript:void(0)">
+                10
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page 11 des Search results" href="javascript:void(0)">
+                11
+              </a>
+            </li>
+            <li class="gcds-pagination-list-breakpoint-420">
+              <a aria-label="Page 12 des Search results" href="javascript:void(0)">
+                12
+              </a>
+            </li>
+            <li>
+              <span class="gcds-pagination-list-ellipses">
+                ...
+              </span>
+            </li>
+            <li>
+              <a aria-label="Page 20 des Search results" href="javascript:void(0)">
+                20
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page suivante: Page 11 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                Suivante
+                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              </a>
+            </li>
+          </ul>
+          <ul class="gcds-pagination-list-mobile-prevnext">
+            <li>
+              <a aria-label="Page précédente: Page 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
+                Précédente
+              </a>
+            </li>
+            <li>
+              <a aria-label="Page suivante: Page 11 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                Suivante
+                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
       </gcds-pagination>
     `);
   });

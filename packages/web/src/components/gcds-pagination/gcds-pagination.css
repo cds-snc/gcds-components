@@ -7,7 +7,7 @@
     list-style: none;
 
     li {
-      margin: var(--gcds-spacing-50);
+      margin: var(--gcds-spacing-100);
 
       a {
         color: var(--var-pagination-default-text);
@@ -32,13 +32,22 @@
         &[aria-current*=page] {
           color: var(--gcds-pagination-active-text);
           background: var(--gcds-pagination-active-background);
+
+          &:focus {
+            color: var(--gcds-pagination-focus-text);
+            background-color: var(--gcds-pagination-focus-background);
+  
+            box-shadow: 0 0 0 .125rem var(--gcds-pagination-focus-shadow);
+            outline: .1875rem solid var(--gcds-pagination-focus-outline);
+            outline-offset: .125rem;
+          }
         }
       }
     }
 
-    @media screen and (max-width: 46rem) {
+    @media screen and (max-width: 22.5rem) {
       li {
-        margin: 0.125rem;
+        margin: var(--gcds-spacing-50);
       }
     }
 
@@ -90,7 +99,7 @@
         }
 
         /* Mobile styling */
-        @media screen and (max-width: 46rem) {
+        @media screen and (max-width: 48rem) {
           a {
             border: 0.125rem solid var(--gcds-pagination-mobile-list-border);
           }
@@ -109,7 +118,7 @@
         }
 
         /* Mobile breakpoints for responsive rendering */
-        @media screen and (max-width: 30.5rem) {
+        @media screen and (max-width: 33.75rem) {
           &.gcds-pagination-list-breakpoint-488 {
             display: none;
           }
@@ -117,7 +126,7 @@
             display: list-item;
           }
         }
-        @media screen and (max-width: 28.75rem) {
+        @media screen and (max-width: 31rem) {
           &.gcds-pagination-list-breakpoint-460 {
             display: none;
             margin:0;
@@ -126,7 +135,7 @@
             display: list-item;
           }
         }
-        @media screen and (max-width: 26.25rem) {
+        @media screen and (max-width: 30rem) {
           &.gcds-pagination-list-breakpoint-420 {
             display: none;
           }
@@ -134,7 +143,7 @@
             display: list-item;
           }
         }
-        @media screen and (max-width: 22.5rem) {
+        @media screen and (max-width: 24.75rem) {
           &.gcds-pagination-list-breakpoint-360 {
             display: none;
           }
@@ -147,10 +156,10 @@
 
     &.gcds-pagination-list-mobile-prevnext {
       display: none;
-      margin-top: var(--gcds-spacing-100);
+      margin-top: var(--gcds-spacing-200);
     }
 
-    @media screen and (max-width: 46rem) {
+    @media screen and (max-width: 48rem) {
       &.gcds-pagination-list-mobile-prevnext {
         display: flex;
       }

@@ -108,13 +108,13 @@ export class GcdsPagination {
     var linkAttrs = {
       onClick: (e) => this.onPageChange(e),
       href: this.url ? constructHref(this.el, page, end) : "javascript:void(0)",
-      ariaLabel: !end ?
+      "aria-label": !end ?
         I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{label}', this.label)
       :
         end == "next" ?
-          `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{label}', this.label)}`
+          `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', ++page).replace('{label}', this.label)}`
         :
-          `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{label}', this.label)}`,
+          `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', --page).replace('{label}', this.label)}`,
     }
 
     if (page == this.currentPage && !end) {
@@ -142,7 +142,7 @@ export class GcdsPagination {
 
     if (this.currentPage != 1) {
       this.listitems.push(this.configurePaginationStep(this.currentPage, "previous"));
-      this.mobilePrevNext.push(this.configurePaginationStep(this.currentStep, "previous", true));
+      this.mobilePrevNext.push(this.configurePaginationStep(this.currentPage, "previous", true));
     }
 
     // Flags to see if ellipses already rendered
@@ -258,7 +258,7 @@ export class GcdsPagination {
     }
     if (this.currentPage != this.totalPages) {
       this.listitems.push(this.configurePaginationStep(this.currentPage, "next"));
-      this.mobilePrevNext.push(this.configurePaginationStep(this.currentStep, "next", true));
+      this.mobilePrevNext.push(this.configurePaginationStep(this.currentPage, "next", true));
     }
   }
 
@@ -305,7 +305,7 @@ export class GcdsPagination {
             <li>
               <a
                 href={previousHref}
-                aria-label={`${I18N[lang].nextPage}: ${previousLabel}`}
+                aria-label={`${I18N[lang].previousPage}${previousLabel ? `: ${previousLabel}` : ""}`}
                 onClick={(e) => this.onPageChange(e)}
               >
                 <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
@@ -320,7 +320,7 @@ export class GcdsPagination {
             <li>
               <a
                 href={nextHref}
-                aria-label={`${I18N[lang].nextPage}: ${nextLabel}`}
+                aria-label={`${I18N[lang].nextPage}${nextLabel ? `: ${nextLabel}` : ""}`}
                 onClick={(e) => this.onPageChange(e)}
               >
                 <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
