@@ -27,7 +27,7 @@ export class GcdsErrorMessage {
     const { messageId, message } = this;
 
     return (
-      <Host id={`error-message-${messageId}`} class="error-message-container">
+      <Host id={`error-message-${messageId}`} class="gcds-error-message-wrapper">
         <p
           class="error-message"
           role="alert"
