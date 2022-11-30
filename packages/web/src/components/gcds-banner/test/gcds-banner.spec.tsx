@@ -10,18 +10,18 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner>
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
-            <div class="banner-content container-lg">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-primary" role="status">
+            <div class="banner__content container-lg">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>
@@ -44,18 +44,18 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner banner-role="primary">
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
-            <div class="banner-content container-lg">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-primary" role="status">
+            <div class="banner__content container-lg">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>
@@ -74,18 +74,18 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner banner-role="secondary">
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-secondary" role="status">
-            <div class="banner-content container-lg">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-secondary" role="status">
+            <div class="banner__content container-lg">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>
@@ -103,23 +103,23 @@ describe('gcds-banner', () => {
   it('renders fixed position', async () => {
     const page = await newSpecPage({
       components: [GcdsBanner],
-      html: `<gcds-banner position-fixed><p>This is a banner.</p></gcds-banner>`,
+      html: `<gcds-banner is-fixed><p>This is a banner.</p></gcds-banner>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-banner position-fixed>
+      <gcds-banner is-fixed>
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-primary is-fixed" role="status">
-            <div class="banner-content container-lg">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-primary banner--is-fixed" role="status">
+            <div class="banner__content container-lg">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>
@@ -142,18 +142,18 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="fluid">
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
-            <div class="banner-content container-fluid">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-primary" role="status">
+            <div class="banner__content container-fluid">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>
@@ -172,18 +172,18 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="lg">
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
-            <div class="banner-content container-lg">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-primary" role="status">
+            <div class="banner__content container-lg">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>
@@ -202,18 +202,18 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="md">
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
-            <div class="banner-content container-md">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-primary" role="status">
+            <div class="banner__content container-md">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>
@@ -232,18 +232,18 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="sm">
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
-            <div class="banner-content container-sm">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-primary" role="status">
+            <div class="banner__content container-sm">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>
@@ -262,18 +262,18 @@ describe('gcds-banner', () => {
     expect(page.root).toEqualHtml(`
       <gcds-banner max-content-width="xs">
         <mock:shadow-root>
-          <div aria-label="Banner" class="gcds-banner role-primary" role="status">
-            <div class="banner-content container-xs">
-              <figure class="banner-icon icon-left">
+          <div aria-label="Banner" class="gcds-banner banner--role-primary" role="status">
+            <div class="banner__content container-xs">
+              <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
 
-              <div class="banner-details">
+              <div class="banner__details">
                 <slot name="banner-text"></slot>
                 <slot name="banner-cta"></slot>
               </div>
 
-              <figure class="banner-icon icon-right">
+              <figure class="banner__icon icon--right">
                 <slot name="banner-icon-right"></slot>
               </figure>
             </div>

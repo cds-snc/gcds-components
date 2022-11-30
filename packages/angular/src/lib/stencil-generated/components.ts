@@ -40,13 +40,13 @@ export declare interface GcdsBanner extends Components.GcdsBanner {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['bannerRole', 'maxContentWidth', 'positionFixed']
+  inputs: ['bannerRole', 'isFixed', 'maxContentWidth']
 })
 @Component({
   selector: 'gcds-banner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bannerRole', 'maxContentWidth', 'positionFixed']
+  inputs: ['bannerRole', 'isFixed', 'maxContentWidth']
 })
 export class GcdsBanner {
   protected el: HTMLElement;

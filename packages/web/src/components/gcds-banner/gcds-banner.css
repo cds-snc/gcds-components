@@ -1,6 +1,6 @@
 :host .gcds-banner {
   /* Is Fixed */
-  &.is-fixed {
+  &.banner-is-fixed {
     position: sticky;
     top: 0;
     width: 100%;
@@ -38,17 +38,17 @@
   }
 
   /* Role */
-  &.role-primary {
+  &.banner--role-primary {
     background-color: var(--gcds-banner-primary-background);
     color: var(--gcds-banner-primary-text);
   }
 
-  &.role-secondary {
+  &.banner--role-secondary {
     background-color: var(--gcds-banner-secondary-background);
   }
 
   /* General Styling */
-  .banner-content {
+  .banner__content {
     padding-block: var(--gcds-spacing-200);
 
     @media only screen and (min-width: 35em) {
@@ -56,11 +56,11 @@
     }
   }
 
-  .banner-icon {
+  .banner__icon {
     display: flex;
     margin: 0;
 
-    &.icon-left {
+    &.icon--left {
       margin-right: var(--gcds-spacing-300);
 
       @media only screen and (max-width: 34.99em) {
@@ -68,7 +68,7 @@
       }
     }
 
-    &.icon-right {
+    &.icon--right {
       margin-left: var(--gcds-spacing-300);
 
       @media only screen and (max-width: 34.99em) {
@@ -82,7 +82,7 @@
     }
   }
 
-  .banner-details {
+  .banner__details {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;

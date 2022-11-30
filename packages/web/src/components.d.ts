@@ -39,13 +39,13 @@ export namespace Components {
          */
         "bannerRole"?: 'primary' | 'secondary';
         /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
           * Defines the max width of the banner content.
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
     interface GcdsButton {
         /**
@@ -962,13 +962,13 @@ declare namespace LocalJSX {
          */
         "bannerRole"?: 'primary' | 'secondary';
         /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
           * Defines the max width of the banner content.
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
     interface GcdsButton {
         /**
