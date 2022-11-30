@@ -20,19 +20,19 @@
   &.gcds-disabled {
     color: var(--gcds-file-uploader-disabled-text);
 
-    .file-input input,
-    .uploaded-file,
-    .uploaded-file gcds-icon {
+    .file-uploader__input input,
+    .file-uploader__uploaded-file,
+    .file-uploader__uploaded-file gcds-icon {
       cursor: not-allowed;
     }
 
-    .file-input button {
+    .file-uploader__input button {
       background-color: var(--gcds-file-uploader-disabled-background);
       color: inherit;
       border-color: var(--gcds-file-uploader-disabled-text);
     }
 
-    .uploaded-file {
+    .file-uploader__uploaded-file {
       outline: 0;
       background-color: var(--gcds-file-uploader-disabled-background);
       color: var(--gcds-file-uploader-disabled-text);
@@ -48,14 +48,14 @@
       color: var(--gcds-file-uploader-destructive-text);
     }
 
-    .uploaded-file:not(:focus) {
+    .file-uploader__uploaded-file:not(:focus) {
       background-color: var(--gcds-file-uploader-destructive-background);
       color: var(--gcds-file-uploader-destructive-text);
     }
   }
 }
 
-:host .file-input {
+:host .file-uploader__input {
   position: relative;
   display: inline-block;
 
@@ -88,7 +88,7 @@
     cursor: pointer;
   }
 
-  #summary-uploaded-files {
+  #file-uploader__summary {
     visibility: hidden;
     height: 0;
     margin: 0;
@@ -105,7 +105,7 @@
   }
 }
 
-:host .uploaded-file {
+:host .file-uploader__uploaded-file {
   display: flex;
   justify-content: space-between;
   width: 100%;
