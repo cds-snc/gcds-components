@@ -40,7 +40,7 @@
     }
   }
 
-  .details-panel {
+  .details__panel {
     margin: var(--gcds-spacing-400) 0 0 0;
     padding: var(--gcds-spacing-300) 2.125rem;
     border-left: .375rem solid var(--gcds-details-default-border);

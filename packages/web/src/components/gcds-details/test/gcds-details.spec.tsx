@@ -12,7 +12,7 @@ describe('gcds-details', () => {
         <mock:shadow-root>
           <details class="gcds-details">
             <summary><p>Learn more about this topic</p></summary>
-            <div class="details-panel">
+            <div class="details__panel">
               <slot></slot>
             </div>
           </details>
@@ -31,7 +31,7 @@ describe('gcds-details', () => {
         <mock:shadow-root>
           <details class="gcds-details" open>
             <summary><p>Learn more about this topic</p></summary>
-            <div class="details-panel">
+            <div class="details__panel">
               <slot></slot>
             </div>
           </details>
