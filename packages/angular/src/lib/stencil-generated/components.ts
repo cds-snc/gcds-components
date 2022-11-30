@@ -18,13 +18,13 @@ export declare interface GcdsAlert extends Components.GcdsAlert {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['alertHeading', 'alertRole', 'dismissHandler', 'hideCloseBtn', 'maxContentWidth', 'positionFixed']
+  inputs: ['alertRole', 'dismissHandler', 'heading', 'hideCloseBtn', 'isFixed', 'maxContentWidth']
 })
 @Component({
   selector: 'gcds-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['alertHeading', 'alertRole', 'dismissHandler', 'hideCloseBtn', 'maxContentWidth', 'positionFixed']
+  inputs: ['alertRole', 'dismissHandler', 'heading', 'hideCloseBtn', 'isFixed', 'maxContentWidth']
 })
 export class GcdsAlert {
   protected el: HTMLElement;

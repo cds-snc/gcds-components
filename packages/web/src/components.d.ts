@@ -9,10 +9,6 @@ import { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
-          * Defines the alert heading.
-         */
-        "alertHeading": string;
-        /**
           * Defines alert role.
          */
         "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
@@ -21,17 +17,21 @@ export namespace Components {
          */
         "dismissHandler": Function;
         /**
+          * Defines the alert heading.
+         */
+        "heading": string;
+        /**
           * Defines if the alert's close button is displayed or not.
          */
         "hideCloseBtn"?: boolean;
         /**
+          * Defines if the alert's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
           * Defines the max width of the alert content.
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the alert's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
     interface GcdsBanner {
         /**
@@ -928,10 +928,6 @@ declare global {
 declare namespace LocalJSX {
     interface GcdsAlert {
         /**
-          * Defines the alert heading.
-         */
-        "alertHeading": string;
-        /**
           * Defines alert role.
          */
         "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
@@ -940,9 +936,17 @@ declare namespace LocalJSX {
          */
         "dismissHandler"?: Function;
         /**
+          * Defines the alert heading.
+         */
+        "heading": string;
+        /**
           * Defines if the alert's close button is displayed or not.
          */
         "hideCloseBtn"?: boolean;
+        /**
+          * Defines if the alert's position is fixed.
+         */
+        "isFixed"?: boolean;
         /**
           * Defines the max width of the alert content.
          */
@@ -951,10 +955,6 @@ declare namespace LocalJSX {
           * Events
          */
         "onGcdsDismiss"?: (event: GcdsAlertCustomEvent<void>) => void;
-        /**
-          * Defines if the alert's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
     interface GcdsBanner {
         /**
