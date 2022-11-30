@@ -100,16 +100,16 @@ export class GcdsPagination {
    */
   private configurePaginationStep(page: number, end?: "next" | "previous" | null, mobile?: boolean) {
 
-    var linkAttrs = {
+    let linkAttrs = {
       onClick: (e) => this.onPageChange(e),
       href: this.url ? constructHref(this.el, page, end) : "javascript:void(0)",
       "aria-label": !end ?
-        I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{label}', this.label)
+        I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{total}', this.totalPages).replace('{label}', this.label)
       :
         end == "next" ?
-          `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', ++page).replace('{label}', this.label)}`
+          `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', ++page).replace('{total}', this.totalPages).replace('{label}', this.label)}`
         :
-          `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', --page).replace('{label}', this.label)}`,
+          `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', --page).replace('{total}', this.totalPages).replace('{label}', this.label)}`,
     }
 
     if (page == this.currentPage && !end) {
@@ -117,10 +117,10 @@ export class GcdsPagination {
     }
 
     if (end == "next") {
-      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}>{I18N[this.lang].next}<gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon></a></li>);
+      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}>{I18N[this.lang].next}<gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon></a></li>);
     }
     else if (end == "previous") {
-      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}><gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>{I18N[this.lang].previous}</a></li>);
+      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}><gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>{I18N[this.lang].previous}</a></li>);
     }
     else {
       return (<li class={constructClasses(page, this.currentPage, this.totalPages)}><a {...linkAttrs}>{page}</a></li>);
@@ -141,10 +141,10 @@ export class GcdsPagination {
     }
 
     // Flags to see if ellipses already rendered
-    var previousEllipses = false;
-    var nextEllipses = false;
+    let previousEllipses = false;
+    let nextEllipses = false;
 
-    for (var i = 1; i <= this.totalPages; i++) {
+    for (let i = 1; i <= this.totalPages; i++) {
 
       // Current page
       if (i == this.currentPage) {
@@ -153,7 +153,7 @@ export class GcdsPagination {
       // Total pages less than 10
       else if (this.totalPages < 10) {
         if (this.totalPages > 6 && this.currentPage > 3 && i == 2) {
-          var breakpoint = "";
+          let breakpoint = "";
           switch(this.currentPage - i) {
             case 2:
               breakpoint = "420"
@@ -168,13 +168,13 @@ export class GcdsPagination {
               breakpoint = "488"
               break;
           }
-          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`}><span class="gcds-pagination-list-ellipses">...</span></li>);
+          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
         }
 
         this.listitems.push(this.configurePaginationStep(i));
 
         if (this.totalPages > 6 && this.currentPage < (this.totalPages - 2) && i == this.totalPages - 1) {
-          var breakpoint = "";
+          let breakpoint = "";
           switch(this.currentPage - i) {
             case -2:
               breakpoint = "420"
@@ -189,7 +189,7 @@ export class GcdsPagination {
               breakpoint = "488"
               break;
           }
-          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`}><span class="gcds-pagination-list-ellipses">...</span></li>);
+          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
         }
       }
       // First or last page
@@ -200,7 +200,7 @@ export class GcdsPagination {
       else if (this.currentPage < 6 && i <= 7) {
         this.listitems.push(this.configurePaginationStep(i));
         if (i==2 && (this.currentPage == 4 || this.currentPage == 5)) {
-          var breakpoint = "";
+          let breakpoint = "";
           switch(this.currentPage - i) {
             case 2:
               breakpoint = "420"
@@ -212,13 +212,13 @@ export class GcdsPagination {
               breakpoint = "488"
               break;
           }
-          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`}><span class="gcds-pagination-list-ellipses">...</span></li>);
+          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
         }
       }
       // Show last numbers within 5
       else if (this.currentPage > this.totalPages - 5 && i >= this.totalPages - 6) {
         if (i == this.totalPages - 1 && (this.currentPage == this.totalPages - 3 || this.currentPage == this.totalPages - 4)) {
-          var breakpoint = "";
+          let breakpoint = "";
           switch(this.currentPage - i) {
             case -2:
               breakpoint = "420"
@@ -230,7 +230,7 @@ export class GcdsPagination {
               breakpoint = "488"
               break;
           }
-          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`}><span class="gcds-pagination-list-ellipses">...</span></li>);
+          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
         }
         this.listitems.push(this.configurePaginationStep(i));
       }
@@ -240,12 +240,12 @@ export class GcdsPagination {
       }
       // Left ellipses
       else if (!previousEllipses && i < (this.currentPage-2)) {
-        this.listitems.push(<li><span class="gcds-pagination-list-ellipses">...</span></li>);
+        this.listitems.push(<li aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
         previousEllipses = true;
       }
       // Right ellipses
       else if (!nextEllipses && i > (this.currentPage+1) && i < this.totalPages - 1) {
-        this.listitems.push(<li><span class="gcds-pagination-list-ellipses">...</span></li>);
+        this.listitems.push(<li aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
         nextEllipses = true;
       }
 
@@ -303,10 +303,10 @@ export class GcdsPagination {
                 aria-label={`${I18N[lang].previousPage}${previousLabel ? `: ${previousLabel}` : ""}`}
                 onClick={(e) => this.onPageChange(e)}
               >
-                <gcds-icon class="gcds-pagination-arrow-left" name="arrow-left"></gcds-icon>
-                <b>
+                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <strong>
                   {I18N[lang].previous}
-                </b>
+                </strong>
                 <span>
                   {previousLabel}
                 </span>
@@ -318,10 +318,10 @@ export class GcdsPagination {
                 aria-label={`${I18N[lang].nextPage}${nextLabel ? `: ${nextLabel}` : ""}`}
                 onClick={(e) => this.onPageChange(e)}
               >
-                <gcds-icon class="gcds-pagination-arrow-right" name="arrow-right"></gcds-icon>
-                <b>
+                <gcds-icon margin-right="spacing-200" name="arrow-right"></gcds-icon>
+                <strong>
                   {I18N[lang].next} 
-                </b>
+                </strong>
                 <span>
                   {nextLabel}
                 </span>

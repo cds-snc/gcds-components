@@ -3,23 +3,23 @@
  * Also looks for ::offset and ::match to increment query string values
  */
 function constructHref(el, page: number, end?: "next" | "previous" | null) {
-  var fragment = "";
-  var qs = "";
+  let fragment = "";
+  let qs = "";
 
   if (el.url) {
-    var count = 0;
+    let count = 0;
     for (const key in el.url.queryStrings) {
-      var queryKey = key;
-      var queryValue = el.url.queryStrings[key];
+      let queryKey = key;
+      let queryValue = el.url.queryStrings[key];
 
       if (key.includes("::")) {
-        var incrementer = key.split("::")[1];
-        var regExp = /\{\{([^)]+)\}\}/;
-        var matches = regExp.exec(el.url.queryStrings[key]);
+        let incrementer = key.split("::")[1];
+        let regExp = /\{\{([^)]+)\}\}/;
+        let matches = regExp.exec(el.url.queryStrings[key]);
 
         // Offeset numbers
         if (incrementer == "offset") {
-          var pageNumber = page;
+          let pageNumber = page;
 
           if (end == "next") {
             ++pageNumber;
@@ -38,7 +38,7 @@ function constructHref(el, page: number, end?: "next" | "previous" | null) {
 
         // Match page number
         if (incrementer == "match") {
-          var pageNumber = page;
+          let pageNumber = page;
 
           if (end == "next") {
             ++pageNumber;
@@ -70,7 +70,7 @@ function constructHref(el, page: number, end?: "next" | "previous" | null) {
 
   }
 
-  var href = `${qs}${fragment}`;
+  let href = `${qs}${fragment}`;
 
   return href;
 }
@@ -122,6 +122,8 @@ function constructClasses(page: number, current: number, total: number) {
         break;
       case 5:
       case -5:
+      case 6:
+      case -6:
         if (page != 1 && page != total ){
           return "gcds-pagination-list-breakpoint-488";
         }

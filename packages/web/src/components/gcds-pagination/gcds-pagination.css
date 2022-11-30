@@ -11,7 +11,7 @@
 
       a {
         color: var(--var-pagination-default-text);
-        font-weight: 800;
+        font-weight: var(--gcds-font-weights-bold);
         font-family: var(--gcds-font-families-body);
         border-radius: var(--gcds-spacing-50);
 
@@ -45,7 +45,7 @@
       }
     }
 
-    @media screen and (max-width: 22.5rem) {
+    @media screen and (max-width: 22.5em) {
       li {
         margin: var(--gcds-spacing-50);
       }
@@ -69,19 +69,10 @@
 
           &.gcds-pagination-end-button,
           &.gcds-pagination-end-button-mobile {
-            padding: 0.7rem 0.5rem;
+            padding: var(--gcds-spacing-300) var(--gcds-spacing-200);
             width: auto;
             min-width: auto;
-            height:auto;
-  
-            gcds-icon {
-              &.gcds-pagination-arrow-left {
-                margin-right: var(--gcds-spacing-200);
-              }
-              &.gcds-pagination-arrow-right {
-                margin-left: var(--gcds-spacing-200);
-              }
-            }
+            height: auto;
           }
         }
 
@@ -89,17 +80,12 @@
           display: none;
         }
 
-        &.gcds-pagination-list-mobile-ellipses,
-        &.gcds-pagination-list-mobile-ellipses-,
-        &.gcds-pagination-list-mobile-ellipses-360,
-        &.gcds-pagination-list-mobile-ellipses-420,
-        &.gcds-pagination-list-mobile-ellipses-460,
-        &.gcds-pagination-list-mobile-ellipses-488 {
+        &[class^='gcds-pagination-list-mobile-ellipses'] {
           display: none;
         }
 
         /* Mobile styling */
-        @media screen and (max-width: 48rem) {
+        @media screen and (max-width: 48em) {
           a {
             border: 0.125rem solid var(--gcds-pagination-mobile-list-border);
           }
@@ -108,6 +94,10 @@
             min-width: auto;
           }
 
+          &:has(> a.gcds-pagination-end-button) {
+            margin: 0;
+          }
+          
           .gcds-pagination-end-button {
             display: none;
           }
@@ -118,7 +108,7 @@
         }
 
         /* Mobile breakpoints for responsive rendering */
-        @media screen and (max-width: 33.75rem) {
+        @media screen and (max-width: 33.75em) {
           &.gcds-pagination-list-breakpoint-488 {
             display: none;
           }
@@ -126,7 +116,7 @@
             display: list-item;
           }
         }
-        @media screen and (max-width: 31rem) {
+        @media screen and (max-width: 31em) {
           &.gcds-pagination-list-breakpoint-460 {
             display: none;
             margin:0;
@@ -135,7 +125,7 @@
             display: list-item;
           }
         }
-        @media screen and (max-width: 30rem) {
+        @media screen and (max-width: 30em) {
           &.gcds-pagination-list-breakpoint-420 {
             display: none;
           }
@@ -143,7 +133,7 @@
             display: list-item;
           }
         }
-        @media screen and (max-width: 24.75rem) {
+        @media screen and (max-width: 24.75em) {
           &.gcds-pagination-list-breakpoint-360 {
             display: none;
           }
@@ -159,7 +149,7 @@
       margin-top: var(--gcds-spacing-200);
     }
 
-    @media screen and (max-width: 48rem) {
+    @media screen and (max-width: 48em) {
       &.gcds-pagination-list-mobile-prevnext {
         display: flex;
       }
@@ -171,7 +161,7 @@
 
         a {
           display: grid;
-          padding: 0.7rem 0.5rem;
+          padding:var(--gcds-spacing-300) var(--gcds-spacing-200);
           text-decoration: none;
           grid-template-areas:
           "icon text"
@@ -180,7 +170,6 @@
 
           & > gcds-icon {
             grid-area: icon;
-            margin-right: var(--gcds-spacing-200);
           }
 
           & > b {

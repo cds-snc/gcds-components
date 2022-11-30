@@ -5,7 +5,7 @@ const I18N = {
     nextPage: "Next page",
     previousPage: "Previous page",
     pageNumber: "Page {#}",
-    pageNumberOf: "Page {#} of {label}"
+    pageNumberOf: "Page {#} of {total} of {label}"
   },
   "fr": {
     next: "Suivante",
@@ -13,7 +13,7 @@ const I18N = {
     nextPage: "Page suivante",
     previousPage: "Page précédente",
     pageNumber: "Page {#}",
-    pageNumberOf: "Page {#} des {label}"
+    pageNumberOf: "Page {#} sur {total} des {label}"
   }
 }
 
