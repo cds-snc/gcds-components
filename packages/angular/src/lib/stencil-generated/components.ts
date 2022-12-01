@@ -268,13 +268,13 @@ export declare interface GcdsGrid extends Components.GcdsGrid {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['alignContent', 'alignItems', 'gap', 'gridContainer', 'gridDisplay', 'gridTag', 'gridTemplateColumns', 'gridTemplateColumnsDesktop', 'gridTemplateColumnsTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems']
+  inputs: ['alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['alignContent', 'alignItems', 'gap', 'gridContainer', 'gridDisplay', 'gridTag', 'gridTemplateColumns', 'gridTemplateColumnsDesktop', 'gridTemplateColumnsTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems']
+  inputs: ['alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 export class GcdsGrid {
   protected el: HTMLElement;

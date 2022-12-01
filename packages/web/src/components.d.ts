@@ -315,27 +315,23 @@ export namespace Components {
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
         /**
-          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
+          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
          */
-        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "columns"?: string;
+        "columnsDesktop"?: string;
+        "columnsTablet"?: string;
         /**
           * Defines grid container size
          */
-        "gridContainer"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
          */
-        "gridDisplay"?: 'grid' | 'inline-grid';
+        "display"?: 'grid' | 'inline-grid';
         /**
-          * Set tag for grid container
+          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gridTag": string;
-        /**
-          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default
-         */
-        "gridTemplateColumns"?: string;
-        "gridTemplateColumnsDesktop"?: string;
-        "gridTemplateColumnsTablet"?: string;
+        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -352,6 +348,10 @@ export namespace Components {
           * Sets both the align-items + justify-items properties
          */
         "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Set tag for grid container
+         */
+        "tag": string;
     }
     interface GcdsHeader {
         /**
@@ -1266,27 +1266,23 @@ declare namespace LocalJSX {
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
         /**
-          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
+          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
          */
-        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "columns"?: string;
+        "columnsDesktop"?: string;
+        "columnsTablet"?: string;
         /**
           * Defines grid container size
          */
-        "gridContainer"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
          */
-        "gridDisplay"?: 'grid' | 'inline-grid';
+        "display"?: 'grid' | 'inline-grid';
         /**
-          * Set tag for grid container
+          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gridTag"?: string;
-        /**
-          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default
-         */
-        "gridTemplateColumns"?: string;
-        "gridTemplateColumnsDesktop"?: string;
-        "gridTemplateColumnsTablet"?: string;
+        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -1303,6 +1299,10 @@ declare namespace LocalJSX {
           * Sets both the align-items + justify-items properties
          */
         "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Set tag for grid container
+         */
+        "tag"?: string;
     }
     interface GcdsHeader {
         /**
