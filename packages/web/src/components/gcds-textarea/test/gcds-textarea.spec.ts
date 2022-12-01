@@ -24,6 +24,57 @@ describe('gcds-textarea', () => {
   });
 
   /**
+    * Character count
+    */
+  it('renders textarea with character count in EN', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="character-count" value="Value Test" character-count="22" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea label="Label" textarea-id="character-count" value="Value Test" character-count="22">
+        <div class="gcds-textarea-wrapper">
+          <gcds-label label-for="character-count" label="Label" lang="en"></gcds-label>
+          <textarea
+            id="character-count"
+            name="character-count"
+            aria-labelledby="label-for-character-count"
+            aria-describedby="  count-character-count "
+            aria-invalid="false"
+            rows="5"
+            maxlength="22"
+          >Value Test</textarea>
+          <p id="count-character-count" aria-live="polite">12 characters left</p>
+        </div>
+      </gcds-textarea>
+    `);
+  });
+
+  it('renders textarea with character count in FR', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" character-count="22" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" character-count="22">
+        <div class="gcds-textarea-wrapper">
+          <gcds-label label-for="character-count" label="Label" lang="fr"></gcds-label>
+          <textarea
+            id="character-count"
+            name="character-count"
+            aria-labelledby="label-for-character-count"
+            aria-describedby="  count-character-count "
+            aria-invalid="false"
+            rows="5"
+            maxlength="22"
+          >Value Test</textarea>
+          <p id="count-character-count" aria-live="polite">12 caractères restants</p>
+        </div>
+      </gcds-textarea>
+    `);
+  });
+
+  /**
     * Disabled test
     */
   it('renders disabled', async () => {
@@ -143,57 +194,6 @@ describe('gcds-textarea', () => {
             rows="5"
             required
           ></textarea>
-        </div>
-      </gcds-textarea>
-    `);
-  });
-
-  /**
-    * Textarea character count
-    */
-  it('renders textarea character count with no value', async () => {
-    const { root } = await newSpecPage({
-      components: [GcdsTextarea],
-      html: '<gcds-textarea label="Label" textarea-id="character-count-no-value" textarea-character-count="10" />',
-    });
-    expect(root).toEqualHtml(`
-      <gcds-textarea label="Label" textarea-id="character-count-no-value" textarea-character-count="10">
-        <div class="gcds-textarea-wrapper">
-          <gcds-label label-for="character-count-no-value" label="Label" lang="en"></gcds-label>
-          <textarea
-            id="character-count-no-value"
-            name="character-count-no-value"
-            aria-labelledby="label-for-character-count-no-value"
-            aria-describedby="  count-character-count-no-value "
-            aria-invalid="false"
-            rows="5"
-            maxlength="10"
-          ></textarea>
-          <p id="count-character-count-no-value" aria-live="polite">10 characters allowed</p>
-        </div>
-      </gcds-textarea>
-    `);
-  });
-
-  it('renders textarea character count with value', async () => {
-    const { root } = await newSpecPage({
-      components: [GcdsTextarea],
-      html: '<gcds-textarea label="Label" textarea-id="character-count-value" value="Value Test" textarea-character-count="22" />',
-    });
-    expect(root).toEqualHtml(`
-      <gcds-textarea label="Label" textarea-id="character-count-value" value="Value Test" textarea-character-count="22">
-        <div class="gcds-textarea-wrapper">
-          <gcds-label label-for="character-count-value" label="Label" lang="en"></gcds-label>
-          <textarea
-            id="character-count-value"
-            name="character-count-value"
-            aria-labelledby="label-for-character-count-value"
-            aria-describedby="  count-character-count-value "
-            aria-invalid="false"
-            rows="5"
-            maxlength="22"
-          >Value Test</textarea>
-          <p id="count-character-count-value" aria-live="polite">12 characters left</p>
         </div>
       </gcds-textarea>
     `);

@@ -653,6 +653,10 @@ export namespace Components {
          */
         "changeHandler": Function;
         /**
+          * Sets the maxlength attribute for the textarea element.
+         */
+        "characterCount"?: number;
+        /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
         "cols"?: number;
@@ -688,10 +692,6 @@ export namespace Components {
           * Default value for textarea rows.
          */
         "rows"?: number;
-        /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "textareaCharacterCount"?: number;
         /**
           * Id + name attribute for a textarea element.
          */
@@ -1632,6 +1632,10 @@ declare namespace LocalJSX {
          */
         "changeHandler"?: Function;
         /**
+          * Sets the maxlength attribute for the textarea element.
+         */
+        "characterCount"?: number;
+        /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
         "cols"?: number;
@@ -1679,10 +1683,6 @@ declare namespace LocalJSX {
           * Default value for textarea rows.
          */
         "rows"?: number;
-        /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "textareaCharacterCount"?: number;
         /**
           * Id + name attribute for a textarea element.
          */

@@ -581,14 +581,14 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['blurHandler', 'changeHandler', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaCharacterCount', 'textareaId', 'validateOn', 'validator', 'value'],
+  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
   selector: 'gcds-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'changeHandler', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaCharacterCount', 'textareaId', 'validateOn', 'validator', 'value']
+  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value']
 })
 export class GcdsTextarea {
   protected el: HTMLElement;

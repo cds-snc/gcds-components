@@ -22,6 +22,11 @@ export class GcdsTextarea {
    */
 
   /**
+   * Sets the maxlength attribute for the textarea element.
+   */
+  @Prop() characterCount?: number;
+
+  /**
    * Defines width for textarea cols (the min-width for textarea's is 50%).
    */
   @Prop() cols?: number;
@@ -76,11 +81,6 @@ export class GcdsTextarea {
    * Default value for textarea rows.
    */
   @Prop() rows?: number = 5;
-
-  /**
-   * Sets the maxlength attribute for the textarea element.
-   */
-  @Prop() textareaCharacterCount?: number;
 
   /**
    * Id + name attribute for a textarea element.
@@ -230,7 +230,7 @@ export class GcdsTextarea {
   }
 
   render() {
-    const { cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaCharacterCount, textareaId, value, hasError, inheritedAttributes, lang } = this;
+    const { characterCount, cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaId, value, hasError, inheritedAttributes, lang } = this;
 
     // Use max-width instead of cols attribute to keep field responsive
     const style = {
@@ -249,10 +249,10 @@ export class GcdsTextarea {
       ...inheritedAttributes
     };
 
-    if (hint || errorMessage || textareaCharacterCount) {
+    if (hint || errorMessage || characterCount) {
       let hintID = hint ? `hint-${textareaId}` : "";
       let errorID = errorMessage ? `error-message-${textareaId}` : "";
-      let countID = textareaCharacterCount ? `count-${textareaId}` : "";
+      let countID = characterCount ? `count-${textareaId}` : "";
       attrsTextarea["aria-describedby"] = `${hintID} ${errorID} ${countID} ${attrsTextarea["aria-describedby"] ? attrsTextarea["aria-describedby"] : ""}`;
     }
 
@@ -282,19 +282,19 @@ export class GcdsTextarea {
             onInput={(e) => this.handleChange(e)}
             aria-labelledby={`label-for-${textareaId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
-            maxlength={textareaCharacterCount ? textareaCharacterCount : null}
+            maxlength={characterCount ? characterCount : null}
             style={cols ? style : null}
             ref={element => this.shadowElement = element as HTMLElement}
           >{value}</textarea>
 
-          {textareaCharacterCount ?
+          {characterCount ?
             <p id={`count-${textareaId}`} aria-live="polite">
               {this.lang == 'en'?
-                value  == undefined ? `${textareaCharacterCount} characters allowed`
-                : `${textareaCharacterCount - value.length} characters left`
+                value  == undefined ? `${characterCount} characters allowed`
+                : `${characterCount - value.length} characters left`
               :
-                value  == undefined ? `${textareaCharacterCount} caractères maximum`
-                : `${textareaCharacterCount - value.length} caractères restants`
+                value  == undefined ? `${characterCount} caractères maximum`
+                : `${characterCount - value.length} caractères restants`
               }
             </p>
           : null}
