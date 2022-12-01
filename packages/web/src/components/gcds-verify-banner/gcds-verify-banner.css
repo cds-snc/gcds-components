@@ -1,9 +1,9 @@
-:host .banner-verify {
+:host .gcds-verify-banner {
   font-size: var( --gcds-font-sizes-caption);
   background-color: var(--gcds-verify-banner-background);
 
   /* Is Fixed */
-  &.is-fixed {
+  &.verify-banner--is-fixed {
     position: sticky;
     top: 0;
     width: 100%;
@@ -40,7 +40,7 @@
   }
 
   summary,
-  .verify-content {
+  .verify-banner__content {
     font-size: 90%;
   }
 
@@ -66,7 +66,7 @@
       margin: 0;
     }
 
-    .content-toggle {
+    .verify-banner__toggle {
       flex: 0 0 auto;
       pointer-events: none;
       font-weight: var(--gcds-font-weights-bold);
@@ -79,7 +79,7 @@
     }
   }
 
-  .verify-content {
+  .verify-banner__content {
     margin: 0 auto;
     padding-top: var(--gcds-spacing-400);
     padding-bottom: var(--gcds-spacing-200);
@@ -110,7 +110,7 @@
     }
   }
 
-  &[open] summary .content-toggle svg {
+  &[open] summary .verify-banner__toggle svg {
     transform: rotate(-180deg);
   }
 }

@@ -715,13 +715,13 @@ export namespace Components {
     }
     interface GcdsVerifyBanner {
         /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
           * Defines the max width of the banner content
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
 }
 export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
@@ -1702,13 +1702,13 @@ declare namespace LocalJSX {
     }
     interface GcdsVerifyBanner {
         /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
           * Defines the max width of the banner content
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;

@@ -21,14 +21,14 @@ export class GcdsVerifyBanner {
    */
 
   /**
+   * Defines if the banner's position is fixed.
+   */
+  @Prop() isFixed?: boolean;
+
+  /**
    * Defines the max width of the banner content
    */
   @Prop() maxContentWidth?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'lg';
-
-  /**
-   * Defines if the banner's position is fixed.
-   */
-  @Prop() positionFixed?: boolean;
 
   async componentWillLoad() {
     // Define lang attribute
@@ -36,11 +36,11 @@ export class GcdsVerifyBanner {
   }
 
   render() {
-    const { lang, maxContentWidth, positionFixed } = this;
+    const { isFixed, lang, maxContentWidth } = this;
 
     return (
       <Host>
-        <details class={`banner-verify ${positionFixed ? 'is-fixed' : ''}`}>
+        <details class={`gcds-verify-banner ${isFixed ? 'verify-banner--is-fixed' : ''}`}>
           <summary
             class={maxContentWidth ? `container-${maxContentWidth}` : ''}
             aria-expanded="false"
@@ -48,18 +48,18 @@ export class GcdsVerifyBanner {
           >
             <span class='svg-container' innerHTML={CanadaFlag} />
             <p>
-              <small>{lang === 'en' ? 'An official website of the Government of Canada.' : 'Les sites Web officiels du gouvernement du Canada'}</small>
-              <a class="content-toggle">
+              <small>{lang === 'en' ? 'An official website of the Government of Canada.' : 'Les sites Web officiels du gouvernement du Canada.'}</small>
+              <a class="verify-banner__toggle">
                 <small>{lang === 'en' ? 'Learn to recognize one' : 'Comment les reconnaître'}</small>
                 <span class='svg-container' innerHTML={ContentToggleArrow} />
               </a>
             </p>
           </summary>
-          <div class={`verify-content ${maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
+          <div class={`verify-banner__content ${maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
             <p><small>{lang === 'en' ? 'It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:' : 'Il peut être difficile de savoir quels sites sont fiables. Avant de partager des renseignements, vérifiez les points suivant pour déterminer s\'il s\'agit bien d\'un site du gouvernement du Canada:'}</small></p>
             <br/>
             {lang === 'en' ?
-              <gcds-grid grid-tag="ul" grid-container="lg" grid-template-columns="1fr" grid-template-columns-tablet={maxContentWidth != 'xs' ? '1fr 1fr' : '1fr'}>
+              <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet={maxContentWidth != 'xs' ? '1fr 1fr' : '1fr'}>
                 <li>
                   <h4>Canada.ca or gc.ca</h4>
                   <p><small>Government of Canada website's normally use Canada.ca or gc.ca in the URL.</small></p>
@@ -78,7 +78,7 @@ export class GcdsVerifyBanner {
                 </li>
               </gcds-grid>
             :
-              <gcds-grid grid-tag="ul" grid-container="lg" grid-template-columns="1fr" grid-template-columns-tablet={maxContentWidth != 'xs' ? '1fr 1fr' : '1fr'}>
+              <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet={maxContentWidth != 'xs' ? '1fr 1fr' : '1fr'}>
                 <li>
                   <h4>Canada.ca ou gc.ca</h4>
                   <p><small>On retrouve normalement Canada.ca ou gc.ca dans l'adresse URL d'un site Web du gouvernement du Canada.</small></p>

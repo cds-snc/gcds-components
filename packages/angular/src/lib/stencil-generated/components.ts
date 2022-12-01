@@ -604,13 +604,13 @@ export declare interface GcdsVerifyBanner extends Components.GcdsVerifyBanner {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['maxContentWidth', 'positionFixed']
+  inputs: ['isFixed', 'maxContentWidth']
 })
 @Component({
   selector: 'gcds-verify-banner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['maxContentWidth', 'positionFixed']
+  inputs: ['isFixed', 'maxContentWidth']
 })
 export class GcdsVerifyBanner {
   protected el: HTMLElement;
