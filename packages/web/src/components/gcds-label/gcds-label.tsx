@@ -69,12 +69,12 @@ export class GcdsLabel {
       >
         <label
           htmlFor={labelFor}
-          class={`${hideLabel ? 'hidden' : ''} ${required ? 'required' : ''}`}
+          class={`gcds-label ${hideLabel ? 'label--hidden' : ''}`}
           ref={(focusEl) => (this.focusEl = focusEl)}
         >
           <span>{label}</span>
           {required ?
-            <strong class="required">({requiredText})</strong>
+            <strong class="label--required">({requiredText})</strong>
           : null}
         </label>
       </Host>
