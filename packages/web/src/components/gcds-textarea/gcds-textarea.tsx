@@ -288,7 +288,7 @@ export class GcdsTextarea {
           >{value}</textarea>
 
           {characterCount ?
-            <p id={`count-${textareaId}`} aria-live="polite">
+            <p id={`textarea__count-${textareaId}`} aria-live="polite">
               {this.lang == 'en'?
                 value  == undefined ? `${characterCount} characters allowed`
                 : `${characterCount - value.length} characters left`
