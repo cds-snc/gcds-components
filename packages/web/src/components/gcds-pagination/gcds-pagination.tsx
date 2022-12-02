@@ -123,7 +123,7 @@ export class GcdsPagination {
       return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}><gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>{I18N[this.lang].previous}</a></li>);
     }
     else {
-      return (<li class={constructClasses(page, this.currentPage, this.totalPages)}><a {...linkAttrs}>{page}</a></li>);
+      return (<li class={page != 1 && page != this.totalPages ?  constructClasses(page, this.currentPage, this.totalPages) : "" }><a {...linkAttrs}>{page}</a></li>);
     }
 
   }
@@ -146,111 +146,40 @@ export class GcdsPagination {
 
     for (let i = 1; i <= this.totalPages; i++) {
 
-      // Current page
+      if (i == 2 && this.currentPage < 6 && this.currentPage > 3 && this.totalPages > 9) {
+        this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
+      } else if (i == 2 && this.totalPages < 10 && this.totalPages > 6 && this.currentPage > 3) {
+        this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
+      }
+
       if (i == this.currentPage) {
         this.listitems.push(this.configurePaginationStep(i));
-      }
-      // Total pages less than 10
-      else if (this.totalPages < 10) {
-        if (this.totalPages > 6 && this.currentPage > 3 && i == 2) {
-          let breakpoint = "";
-          switch(this.currentPage - i) {
-            case 2:
-              breakpoint = "420"
-              break;
-            case 3:
-              breakpoint = "460"
-              break;
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-              breakpoint = "488"
-              break;
-          }
-          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
-        }
-
+      } else if (i == 1 || i == this.totalPages) {
         this.listitems.push(this.configurePaginationStep(i));
-
-        if (this.totalPages > 6 && this.currentPage < (this.totalPages - 2) && i == this.totalPages - 1) {
-          let breakpoint = "";
-          switch(this.currentPage - i) {
-            case -2:
-              breakpoint = "420"
-              break;
-            case -3:
-              breakpoint = "460"
-              break;
-            case -4:
-            case -5:
-            case -6:
-            case -7:
-              breakpoint = "488"
-              break;
-          }
-          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
-        }
-      }
-      // First or last page
-      else if (i == 1 || i == this.totalPages) {
+      } else if (i >= (this.currentPage-2) && i <= (this.currentPage+2)) {
         this.listitems.push(this.configurePaginationStep(i));
-      }
-      // Up to 7 when less than 6
-      else if (this.currentPage < 6 && i <= 7) {
+      } else if ((this.currentPage <= 5 && i <= 7) || (this.currentPage >= this.totalPages - 4 && i >= this.totalPages - 6)) {
         this.listitems.push(this.configurePaginationStep(i));
-        if (i==2 && (this.currentPage == 4 || this.currentPage == 5)) {
-          let breakpoint = "";
-          switch(this.currentPage - i) {
-            case 2:
-              breakpoint = "420"
-              break;
-            case 3:
-              breakpoint = "460"
-              break;
-            case 4:
-              breakpoint = "488"
-              break;
-          }
-          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
-        }
-      }
-      // Show last numbers within 5
-      else if (this.currentPage > this.totalPages - 5 && i >= this.totalPages - 6) {
-        if (i == this.totalPages - 1 && (this.currentPage == this.totalPages - 3 || this.currentPage == this.totalPages - 4)) {
-          let breakpoint = "";
-          switch(this.currentPage - i) {
-            case -2:
-              breakpoint = "420"
-              break;
-            case -3:
-              breakpoint = "460"
-              break;
-            case -4:
-              breakpoint = "488"
-              break;
-          }
-          this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses-${breakpoint}`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
-        }
+      } else if ((this.currentPage == 5 && i == 2) || (this.currentPage == this.totalPages -4 && i == this.totalPages - 1)) {
         this.listitems.push(this.configurePaginationStep(i));
-      }
-      // Previous and next page
-      else if (i >= (this.currentPage-2) && i <= (this.currentPage+2)) {
+      } else if (this.totalPages < 10) {
         this.listitems.push(this.configurePaginationStep(i));
-      }
-      // Left ellipses
-      else if (!previousEllipses && i < (this.currentPage-2)) {
+      } else if (!previousEllipses && i < (this.currentPage-2)) {
         this.listitems.push(<li aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
         previousEllipses = true;
-      }
-      // Right ellipses
-      else if (!nextEllipses && i > (this.currentPage+1) && i < this.totalPages - 1) {
+      } else if (!nextEllipses && i > (this.currentPage+2) && i < this.totalPages) {
         this.listitems.push(<li aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
         nextEllipses = true;
       }
 
-      
+      if (i == this.totalPages - 1 && this.currentPage > this.totalPages - 5 && this.currentPage < this.totalPages - 2 && this.totalPages > 9) {
+        this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
+      } else if (i == this.totalPages - 1 && this.totalPages < 10 && this.totalPages > 6 && this.currentPage < this.totalPages - 2) {
+        this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
+      }
+
     }
+
     if (this.currentPage != this.totalPages) {
       this.listitems.push(this.configurePaginationStep(this.currentPage, "next"));
       this.mobilePrevNext.push(this.configurePaginationStep(this.currentPage, "next", true));
@@ -283,7 +212,7 @@ export class GcdsPagination {
         {display === "list" ?
           <div>
             <ul
-              class="gcds-pagination-list"
+              class="gcds-pagination-list list--ellipses-start"
             >
               {this.listitems}
             </ul>

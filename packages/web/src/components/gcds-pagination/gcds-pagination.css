@@ -47,7 +47,7 @@
 
     @media screen and (max-width: 22.5em) {
       li {
-        margin: var(--gcds-spacing-50);
+        margin: 0.125rem;
       }
     }
 
@@ -80,7 +80,7 @@
           display: none;
         }
 
-        &[class^='gcds-pagination-list-mobile-ellipses'] {
+        &.gcds-pagination-list-mobile-ellipses {
           display: none;
         }
 
@@ -112,7 +112,8 @@
           &.gcds-pagination-list-breakpoint-488 {
             display: none;
           }
-          &.gcds-pagination-list-mobile-ellipses-488 {
+          &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-488),
+          &.gcds-pagination-list-breakpoint-488 + .gcds-pagination-list-mobile-ellipses {
             display: list-item;
           }
         }
@@ -121,7 +122,8 @@
             display: none;
             margin:0;
           }
-          &.gcds-pagination-list-mobile-ellipses-460 {
+          &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-460),
+          &.gcds-pagination-list-breakpoint-460 + .gcds-pagination-list-mobile-ellipses {
             display: list-item;
           }
         }
@@ -129,7 +131,8 @@
           &.gcds-pagination-list-breakpoint-420 {
             display: none;
           }
-          &.gcds-pagination-list-mobile-ellipses-420 {
+          &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-420),
+          &.gcds-pagination-list-breakpoint-420 + .gcds-pagination-list-mobile-ellipses {
             display: list-item;
           }
         }
@@ -137,7 +140,8 @@
           &.gcds-pagination-list-breakpoint-360 {
             display: none;
           }
-          &.gcds-pagination-list-mobile-ellipses-360 {
+          &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-360),
+          &.gcds-pagination-list-breakpoint-360 + .gcds-pagination-list-mobile-ellipses {
             display: list-item;
           }
         }
