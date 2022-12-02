@@ -212,7 +212,7 @@ export class GcdsPagination {
         {display === "list" ?
           <div>
             <ul
-              class="gcds-pagination-list list--ellipses-start"
+              class="gcds-pagination-list"
             >
               {this.listitems}
             </ul>
