@@ -9,7 +9,7 @@ describe('gcds-hint', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-hint hint-id="input-renders" hint="Hint Test" id="hint-input-renders">
-        <p class="hint">Hint Test</p>
+        <p class="gcds-hint">Hint Test</p>
       </gcds-hint>
     `);
   });

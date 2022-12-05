@@ -268,7 +268,7 @@ export class GcdsFileUploader {
       let errorID = errorMessage ? `error-message-${uploaderId}` : "";
       // let fileSelected = "No file currently selected.";
 
-      attrsInput["aria-describedby"] = `${hintID} ${errorID} summary-uploaded-files ${attrsInput["aria-describedby"] ? attrsInput["aria-describedby"] : ""}`;
+      attrsInput["aria-describedby"] = `${hintID} ${errorID} file-uploader__summary ${attrsInput["aria-describedby"] ? attrsInput["aria-describedby"] : ""}`;
     }
 
     return (
@@ -286,7 +286,7 @@ export class GcdsFileUploader {
             <gcds-error-message message-id={uploaderId} message={errorMessage} />
           : null}
 
-          <div class="file-input">
+          <div class="file-uploader__input">
             <button tabindex="-1">
               { lang == 'en' ? 'Upload a file' : 'Téléverser un fichier'}
               <gcds-icon name="upload" margin-left="spacing-400" />
@@ -302,12 +302,12 @@ export class GcdsFileUploader {
               aria-invalid={hasError ? 'true' : 'false'}
             />
             { value.length > 0 ?
-              <p id="summary-uploaded-files">
+              <p id="file-uploader__summary">
                 <span>{ lang == 'en' ? 'Currently selected:' : 'Actuellement sélectionné:'} </span>
                 { value.map(file => ( <span>{file} </span> )) }
               </p>
             :
-              <p id="summary-uploaded-files">
+              <p id="file-uploader__summary">
                 { lang == 'en' ? 'No file currently selected' : 'Aucun fichier actuellement sélectionné' }
               </p>
             }
@@ -315,7 +315,7 @@ export class GcdsFileUploader {
 
           { value.length > 0 ? value.map(file => (
             <button
-              class="uploaded-file"
+              class="file-uploader__uploaded-file"
               onClick={(e) => this.removeFile(e)}
               aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
             >

@@ -1,4 +1,4 @@
-:host label {
+:host .gcds-label {
   display: block;
   max-width: 100%;
   font-size: inherit;
@@ -7,7 +7,7 @@
   margin: 0 0 var(--gcds-spacing-50);
   color: inherit;
 
-  &.hidden {
+  &.label--hidden {
     overflow: hidden;
     opacity: 0;
     width: 0;
@@ -15,7 +15,7 @@
     margin: 0;
   }
 
-  .required {
+  .label--required {
     margin: 0 0 0 var(--gcds-spacing-100);
   }
 }

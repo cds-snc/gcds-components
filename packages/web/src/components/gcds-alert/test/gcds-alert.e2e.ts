@@ -24,7 +24,7 @@ describe('gcds-alert a11y tests', () => {
   it('colour contrast destructive alert', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-alert alert-heading="Main notification title" alert-role="destructive">
+      <gcds-alert heading="Main notification title" alert-role="destructive">
         <p>Testing slot content.</p>
       </gcds-alert>
     `);
@@ -38,7 +38,7 @@ describe('gcds-alert a11y tests', () => {
   it('colour contrast info alert', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-alert alert-heading="Main notification title" alert-role="info">
+      <gcds-alert heading="Main notification title" alert-role="info">
         <p>Testing slot content.</p>
       </gcds-alert>
     `);
@@ -52,7 +52,7 @@ describe('gcds-alert a11y tests', () => {
   it('colour contrast success alert', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-alert alert-heading="Main notification title" alert-role="success">
+      <gcds-alert heading="Main notification title" alert-role="success">
         <p>Testing slot content.</p>
       </gcds-alert>
     `);
@@ -66,7 +66,7 @@ describe('gcds-alert a11y tests', () => {
   it('colour contrast warning alert', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-alert alert-heading="Main notification title" alert-role="warning">
+      <gcds-alert heading="Main notification title" alert-role="warning">
         <p>Testing slot content.</p>
       </gcds-alert>
     `);

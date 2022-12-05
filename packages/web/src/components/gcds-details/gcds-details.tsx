@@ -30,7 +30,7 @@ export class GcdsDetails {
       <Host>
         <details class="gcds-details" open={open ? true : false}>
           <summary><p>{ detailsTitle }</p></summary>
-          <div class="details-panel">
+          <div class="details__panel">
             <slot></slot>
           </div>
         </details>

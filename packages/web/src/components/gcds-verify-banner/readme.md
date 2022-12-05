@@ -9,8 +9,8 @@
 
 | Property          | Attribute           | Description                                 | Type                                      | Default     |
 | ----------------- | ------------------- | ------------------------------------------- | ----------------------------------------- | ----------- |
+| `isFixed`         | `is-fixed`          | Defines if the banner's position is fixed.  | `boolean`                                 | `undefined` |
 | `maxContentWidth` | `max-content-width` | Defines the max width of the banner content | `"fluid" \| "lg" \| "md" \| "sm" \| "xs"` | `'lg'`      |
-| `positionFixed`   | `position-fixed`    | Defines if the banner's position is fixed.  | `boolean`                                 | `undefined` |
 
 
 ## Dependencies
