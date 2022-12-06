@@ -17,7 +17,7 @@
     .brand__container {
       display: grid;
       grid-gap: var(--gcds-spacing-200);
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 0.1fr;
       grid-template-areas:
         "signature toggle"
         "search search";
@@ -55,6 +55,7 @@
         grid-template-areas:
           "toggle toggle"
           "signature search";
+        grid-template-columns: 1fr 1fr;
 
         .search,
         slot[name="search"] {

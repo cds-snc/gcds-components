@@ -62,18 +62,14 @@
 
     &.icon--left {
       margin-right: var(--gcds-spacing-300);
-
-      @media only screen and (max-width: 34.99em) {
-        margin-bottom: var(--gcds-spacing-100);
-      }
     }
 
     &.icon--right {
       margin-left: var(--gcds-spacing-300);
+    }
 
-      @media only screen and (max-width: 34.99em) {
-        margin: var(--gcds-spacing-100) 0 0;
-      }
+    @media only screen and (max-width: 34.99em) {
+      display: none;
     }
 
     ::slotted(img),
