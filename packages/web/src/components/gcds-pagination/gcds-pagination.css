@@ -118,7 +118,7 @@
             display: list-item;
           }
         }
-        @media screen and (max-width: 32em) {
+        @media screen and (max-width: 32.5em) {
           &.gcds-pagination-list-breakpoint-460 {
             display: none;
             margin: 0;
