@@ -73,7 +73,7 @@
 
   &:hover {
     summary:not(:focus) {
-      background-color: var(--gcds-details-hover-background);
+      color: var(--gcds-details-hover-text);
     }
   }
 
