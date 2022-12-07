@@ -45,7 +45,7 @@
       }
     }
 
-    @media screen and (max-width: 22.5em) {
+    @media screen and (max-width: 24em) {
       li {
         margin: 0.125rem;
       }
@@ -85,7 +85,7 @@
         }
 
         /* Mobile styling */
-        @media screen and (max-width: 48em) {
+        @media screen and (max-width: 49em) {
           a {
             border: 0.125rem solid var(--gcds-pagination-mobile-list-border);
           }
@@ -108,38 +108,42 @@
         }
 
         /* Mobile breakpoints for responsive rendering */
-        @media screen and (max-width: 33.75em) {
+        @media screen and (max-width: 34.75em) {
           &.gcds-pagination-list-breakpoint-488 {
             display: none;
           }
+
           &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-488),
           &.gcds-pagination-list-breakpoint-488 + .gcds-pagination-list-mobile-ellipses {
             display: list-item;
           }
         }
-        @media screen and (max-width: 31em) {
+        @media screen and (max-width: 32em) {
           &.gcds-pagination-list-breakpoint-460 {
             display: none;
-            margin:0;
+            margin: 0;
           }
+
           &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-460),
           &.gcds-pagination-list-breakpoint-460 + .gcds-pagination-list-mobile-ellipses {
             display: list-item;
           }
         }
-        @media screen and (max-width: 30em) {
+        @media screen and (max-width: 31em) {
           &.gcds-pagination-list-breakpoint-420 {
             display: none;
           }
+
           &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-420),
           &.gcds-pagination-list-breakpoint-420 + .gcds-pagination-list-mobile-ellipses {
             display: list-item;
           }
         }
-        @media screen and (max-width: 24.75em) {
+        @media screen and (max-width: 25.75em) {
           &.gcds-pagination-list-breakpoint-360 {
             display: none;
           }
+
           &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-360),
           &.gcds-pagination-list-breakpoint-360 + .gcds-pagination-list-mobile-ellipses {
             display: list-item;
@@ -153,7 +157,7 @@
       margin-top: var(--gcds-spacing-200);
     }
 
-    @media screen and (max-width: 48em) {
+    @media screen and (max-width: 49em) {
       &.gcds-pagination-list-mobile-prevnext {
         display: flex;
       }

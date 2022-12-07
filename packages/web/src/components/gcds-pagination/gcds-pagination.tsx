@@ -116,14 +116,41 @@ export class GcdsPagination {
       linkAttrs['aria-current'] = "page";
     }
 
-    if (end == "next") {
-      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}>{I18N[this.lang].next}<gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon></a></li>);
-    }
-    else if (end == "previous") {
-      return(<li><a  {...linkAttrs} class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}><gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>{I18N[this.lang].previous}</a></li>);
+    if (end) {
+      return(
+        <li>
+          {end === "next" ?
+            <a
+              {...linkAttrs}
+              class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}
+            >
+              {I18N[this.lang].next}
+              <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+            </a>
+          :
+            <a
+              {...linkAttrs}
+              class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}
+            >
+              <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+              {I18N[this.lang].previous}
+            </a>
+          }
+        </li>
+      );
     }
     else {
-      return (<li class={page != 1 && page != this.totalPages ?  constructClasses(page, this.currentPage, this.totalPages) : "" }><a {...linkAttrs}>{page}</a></li>);
+      return (
+        <li
+          class={page != 1 && page != this.totalPages ?  constructClasses(page, this.currentPage, this.totalPages) : "" }
+        >
+          <a
+            {...linkAttrs}
+          >
+            {page}
+          </a>
+        </li>
+      );
     }
 
   }
@@ -146,36 +173,85 @@ export class GcdsPagination {
 
     for (let i = 1; i <= this.totalPages; i++) {
 
+      // Left side mobile ellipses
       if (i == 2 && this.currentPage < 6 && this.currentPage > 3 && this.totalPages > 9) {
-        this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
-      } else if (i == 2 && this.totalPages < 10 && this.totalPages > 6 && this.currentPage > 3) {
-        this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
+        this.listitems.push(
+          <li
+            class={`gcds-pagination-list-mobile-ellipses`}
+            aria-hidden="true"
+          >
+            <span class="gcds-pagination-list-ellipses">...</span>
+          </li>
+        );
+      } 
+      else if (i == 2 && this.totalPages < 10 && this.totalPages > 5 && this.currentPage > 3) {
+        this.listitems.push(
+          <li 
+            class={`gcds-pagination-list-mobile-ellipses`}
+            aria-hidden="true"
+          >
+            <span class="gcds-pagination-list-ellipses">...</span>
+          </li>
+        );
       }
 
-      if (i == this.currentPage) {
+      if (
+        i == this.currentPage ||
+        (i == 1 || i == this.totalPages) ||
+        (i >= (this.currentPage-2) && i <= (this.currentPage+2)) ||
+        this.totalPages < 10
+      ) {
         this.listitems.push(this.configurePaginationStep(i));
-      } else if (i == 1 || i == this.totalPages) {
+      }
+      else if ((this.currentPage <= 5 && i <= 7) || (this.currentPage >= this.totalPages - 4 && i >= this.totalPages - 6)) {
         this.listitems.push(this.configurePaginationStep(i));
-      } else if (i >= (this.currentPage-2) && i <= (this.currentPage+2)) {
+      }
+      else if ((this.currentPage == 5 && i == 2) || (this.currentPage == this.totalPages -4 && i == this.totalPages - 1)) {
         this.listitems.push(this.configurePaginationStep(i));
-      } else if ((this.currentPage <= 5 && i <= 7) || (this.currentPage >= this.totalPages - 4 && i >= this.totalPages - 6)) {
-        this.listitems.push(this.configurePaginationStep(i));
-      } else if ((this.currentPage == 5 && i == 2) || (this.currentPage == this.totalPages -4 && i == this.totalPages - 1)) {
-        this.listitems.push(this.configurePaginationStep(i));
-      } else if (this.totalPages < 10) {
-        this.listitems.push(this.configurePaginationStep(i));
-      } else if (!previousEllipses && i < (this.currentPage-2)) {
-        this.listitems.push(<li aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
+      }
+      else if (!previousEllipses && i < (this.currentPage-2)) {
+        this.listitems.push(
+          <li
+            aria-hidden="true"
+          >
+            <span class="gcds-pagination-list-ellipses">...</span>
+          </li>
+        );
+
         previousEllipses = true;
-      } else if (!nextEllipses && i > (this.currentPage+2) && i < this.totalPages) {
-        this.listitems.push(<li aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
+      }
+      else if (!nextEllipses && i > (this.currentPage+2) && i < this.totalPages) {
+        this.listitems.push(
+          <li
+            aria-hidden="true"
+          >
+            <span class="gcds-pagination-list-ellipses">...</span>
+          </li>
+        );
+
         nextEllipses = true;
       }
 
+      // Right side mobile ellipses
       if (i == this.totalPages - 1 && this.currentPage > this.totalPages - 5 && this.currentPage < this.totalPages - 2 && this.totalPages > 9) {
-        this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
-      } else if (i == this.totalPages - 1 && this.totalPages < 10 && this.totalPages > 6 && this.currentPage < this.totalPages - 2) {
-        this.listitems.push(<li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true"><span class="gcds-pagination-list-ellipses">...</span></li>);
+        this.listitems.push(
+          <li
+            class={`gcds-pagination-list-mobile-ellipses`}
+            aria-hidden="true"
+          >
+            <span class="gcds-pagination-list-ellipses">...</span>
+          </li>
+        );
+      }
+      else if (i == this.totalPages - 1 && this.totalPages < 10 && this.totalPages > 5 && this.currentPage < this.totalPages - 2) {
+        this.listitems.push(
+          <li
+            class={`gcds-pagination-list-mobile-ellipses`}
+            aria-hidden="true"
+          >
+            <span class="gcds-pagination-list-ellipses">...</span>
+          </li>
+        );
       }
 
     }

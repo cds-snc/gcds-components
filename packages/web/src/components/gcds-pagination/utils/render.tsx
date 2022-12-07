@@ -7,12 +7,16 @@ function constructHref(el, page: number, end?: "next" | "previous" | null) {
   let qs = "";
 
   if (el.url) {
+
     let count = 0;
+
     for (const key in el.url.queryStrings) {
+
       let queryKey = key;
       let queryValue = el.url.queryStrings[key];
 
       if (key.includes("::")) {
+
         let incrementer = key.split("::")[1];
         let regExp = /\{\{([^)]+)\}\}/;
         let matches = regExp.exec(el.url.queryStrings[key]);
@@ -38,6 +42,7 @@ function constructHref(el, page: number, end?: "next" | "previous" | null) {
 
         // Match page number
         if (incrementer == "match") {
+
           let pageNumber = page;
 
           if (end == "next") {
@@ -79,40 +84,48 @@ function constructHref(el, page: number, end?: "next" | "previous" | null) {
  * Function to constuct classes to help with mobile sizing
  */
 function constructClasses(page: number, current: number, total: number) {
-  if (total <= 6) {
+
+  if (total <= 5) {
     return "";
   }
   else if (current == 1 || current == total) {
     if (current - page == 4 || current - page == -4) {
       return "gcds-pagination-list-breakpoint-360";
-    } else if (current - page == 5 || current - page == -5) {
+    }
+    else if (current - page == 5 || current - page == -5) {
       return "gcds-pagination-list-breakpoint-420";
-    } else if (current - page > 5 || current - page < -5) {
+    }
+    else if (current - page > 5 || current - page < -5) {
       return "gcds-pagination-list-breakpoint-488";
     }
   }
   else if (current == 2 || current == (total-1)) {
     if (current - page == 3 || current - page == -3) {
       return "gcds-pagination-list-breakpoint-360";
-    } else if (current - page == 4 || current - page == -4) {
+    }
+    else if (current - page == 4 || current - page == -4) {
       return "gcds-pagination-list-breakpoint-420";
-    } else if (current - page > 4 || current - page < -4) {
+    }
+    else if (current - page > 4 || current - page < -4) {
       return "gcds-pagination-list-breakpoint-488";
     }
   }
   else if ((current > 2 && current < (total-1)) && (total < 10 && current == 5)) {
     if (current - page == 2 || current - page == -2) {
       return "gcds-pagination-list-breakpoint-420";
-    } else if (current - page >= 3 || current - page <= -3) {
+    }
+    else if (current - page >= 3 || current - page <= -3) {
       return "gcds-pagination-list-breakpoint-488";
     }
   }
   else if (current > 2 && current < (total-1)) {
     if (current - page == 2 || current - page == -2) {
       return "gcds-pagination-list-breakpoint-420";
-    } else if (current - page == 3 || current - page == -3) {
+    }
+    else if (current - page == 3 || current - page == -3) {
       return "gcds-pagination-list-breakpoint-460";
-    } else if (current - page > 3 || current - page < -3) {
+    }
+    else if (current - page > 3 || current - page < -3) {
       return "gcds-pagination-list-breakpoint-488";
     }
   }
