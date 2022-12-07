@@ -18,6 +18,7 @@ export const DIRECTIVES = [
   d.GcdsInput,
   d.GcdsLabel,
   d.GcdsLangToggle,
+  d.GcdsPagination,
   d.GcdsRadio,
   d.GcdsSelect,
   d.GcdsSignature,
