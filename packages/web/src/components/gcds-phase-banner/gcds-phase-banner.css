@@ -1,4 +1,4 @@
-:host .gcds-banner {
+:host .gcds-phase-banner {
   /* Is Fixed */
   &.banner-is-fixed {
     position: sticky;

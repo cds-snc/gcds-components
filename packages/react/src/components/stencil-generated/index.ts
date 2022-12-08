@@ -9,7 +9,6 @@ import { defineCustomElements } from 'gcds-components/loader';
 
 defineCustomElements();
 export const GcdsAlert = /*@__PURE__*/createReactComponent<JSX.GcdsAlert, HTMLGcdsAlertElement>('gcds-alert');
-export const GcdsBanner = /*@__PURE__*/createReactComponent<JSX.GcdsBanner, HTMLGcdsBannerElement>('gcds-banner');
 export const GcdsButton = /*@__PURE__*/createReactComponent<JSX.GcdsButton, HTMLGcdsButtonElement>('gcds-button');
 export const GcdsCheckbox = /*@__PURE__*/createReactComponent<JSX.GcdsCheckbox, HTMLGcdsCheckboxElement>('gcds-checkbox');
 export const GcdsDetails = /*@__PURE__*/createReactComponent<JSX.GcdsDetails, HTMLGcdsDetailsElement>('gcds-details');
@@ -25,6 +24,7 @@ export const GcdsInput = /*@__PURE__*/createReactComponent<JSX.GcdsInput, HTMLGc
 export const GcdsLabel = /*@__PURE__*/createReactComponent<JSX.GcdsLabel, HTMLGcdsLabelElement>('gcds-label');
 export const GcdsLangToggle = /*@__PURE__*/createReactComponent<JSX.GcdsLangToggle, HTMLGcdsLangToggleElement>('gcds-lang-toggle');
 export const GcdsPagination = /*@__PURE__*/createReactComponent<JSX.GcdsPagination, HTMLGcdsPaginationElement>('gcds-pagination');
+export const GcdsPhaseBanner = /*@__PURE__*/createReactComponent<JSX.GcdsPhaseBanner, HTMLGcdsPhaseBannerElement>('gcds-phase-banner');
 export const GcdsRadio = /*@__PURE__*/createReactComponent<JSX.GcdsRadio, HTMLGcdsRadioElement>('gcds-radio');
 export const GcdsSelect = /*@__PURE__*/createReactComponent<JSX.GcdsSelect, HTMLGcdsSelectElement>('gcds-select');
 export const GcdsSignature = /*@__PURE__*/createReactComponent<JSX.GcdsSignature, HTMLGcdsSignatureElement>('gcds-signature');
