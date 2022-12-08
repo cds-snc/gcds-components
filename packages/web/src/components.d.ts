@@ -497,6 +497,48 @@ export namespace Components {
          */
         "href": string;
     }
+    interface GcdsPagination {
+        /**
+          * List display - Current page number
+         */
+        "currentPage": number;
+        /**
+          * Navigation element label
+         */
+        "display": "list" | "simple";
+        /**
+          * Navigation element label
+         */
+        "label": string;
+        /**
+          * Simple display - href for next link
+         */
+        "nextHref": string;
+        /**
+          * Simple display - lable for next link
+         */
+        "nextLabel": string;
+        /**
+          * Function to fire when pageChange event is called
+         */
+        "pageChangeHandler": Function;
+        /**
+          * Simple display - href for previous link
+         */
+        "previousHref": string;
+        /**
+          * Simple display - label for previous link
+         */
+        "previousLabel": string;
+        /**
+          * List display - Total number of pages
+         */
+        "totalPages": number;
+        /**
+          * List display - URL object to create query strings and fragment on links
+         */
+        "url": Object;
+    }
     interface GcdsRadio {
         /**
           * Custom callback function on blur event
@@ -748,6 +790,10 @@ export interface GcdsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsInputElement;
 }
+export interface GcdsPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsPaginationElement;
+}
 export interface GcdsRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsRadioElement;
@@ -857,6 +903,12 @@ declare global {
         prototype: HTMLGcdsLangToggleElement;
         new (): HTMLGcdsLangToggleElement;
     };
+    interface HTMLGcdsPaginationElement extends Components.GcdsPagination, HTMLStencilElement {
+    }
+    var HTMLGcdsPaginationElement: {
+        prototype: HTMLGcdsPaginationElement;
+        new (): HTMLGcdsPaginationElement;
+    };
     interface HTMLGcdsRadioElement extends Components.GcdsRadio, HTMLStencilElement {
     }
     var HTMLGcdsRadioElement: {
@@ -916,6 +968,7 @@ declare global {
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
+        "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-radio": HTMLGcdsRadioElement;
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-signature": HTMLGcdsSignatureElement;
@@ -1456,6 +1509,52 @@ declare namespace LocalJSX {
          */
         "href": string;
     }
+    interface GcdsPagination {
+        /**
+          * List display - Current page number
+         */
+        "currentPage"?: number;
+        /**
+          * Navigation element label
+         */
+        "display"?: "list" | "simple";
+        /**
+          * Navigation element label
+         */
+        "label": string;
+        /**
+          * Simple display - href for next link
+         */
+        "nextHref"?: string;
+        /**
+          * Simple display - lable for next link
+         */
+        "nextLabel"?: string;
+        /**
+          * Update value based on user input.
+         */
+        "onGcdsPageChange"?: (event: GcdsPaginationCustomEvent<void>) => void;
+        /**
+          * Function to fire when pageChange event is called
+         */
+        "pageChangeHandler"?: Function;
+        /**
+          * Simple display - href for previous link
+         */
+        "previousHref"?: string;
+        /**
+          * Simple display - label for previous link
+         */
+        "previousLabel"?: string;
+        /**
+          * List display - Total number of pages
+         */
+        "totalPages"?: number;
+        /**
+          * List display - URL object to create query strings and fragment on links
+         */
+        "url"?: Object;
+    }
     interface GcdsRadio {
         /**
           * Custom callback function on blur event
@@ -1727,6 +1826,7 @@ declare namespace LocalJSX {
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
+        "gcds-pagination": GcdsPagination;
         "gcds-radio": GcdsRadio;
         "gcds-select": GcdsSelect;
         "gcds-signature": GcdsSignature;
@@ -1756,6 +1856,7 @@ declare module "@stencil/core" {
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;

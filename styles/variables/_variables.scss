@@ -1,9 +1,11 @@
 
 // Do not edit directly
-// Generated on Fri, 25 Nov 2022 13:37:22 GMT
+// Generated on Thu, 08 Dec 2022 17:05:32 GMT
 
 $gcds-brand-default-text: #000000;
 $gcds-brand-focus: #303fc3;
+$gcds-brand-active-text: #ffffff;
+$gcds-brand-active-background: #0a0e14;
 $gcds-brand-disabled-background: #f0f0f0;
 $gcds-brand-disabled-text: #707070;
 $gcds-brand-destructive: #d3080c;
@@ -13,7 +15,7 @@ $gcds-color-blue-300: #4f6592;
 $gcds-color-blue-400: #396293;
 $gcds-color-blue-450: #38414d;
 $gcds-color-blue-500: #303fc3;
-$gcds-color-blue-600: #2a82cf;
+$gcds-color-blue-600: #2675ba;
 $gcds-color-blue-700: #2b496e;
 $gcds-color-blue-800: #26374a;
 $gcds-color-blue-900: #0a0e14;
@@ -124,11 +126,11 @@ $gcds-checkbox-focus-text: #303fc3;
 $gcds-checkbox-focus-shadow: #ffffff;
 $gcds-details-default-border: #c4c3c5;
 $gcds-details-default-text: #2b496e;
-$gcds-details-active-background: #000000;
+$gcds-details-active-background: #0a0e14;
 $gcds-details-active-text: #ffffff;
 $gcds-details-focus-background: #303fc3;
 $gcds-details-focus-text: #ffffff;
-$gcds-details-hover-background: #d4e6f2;
+$gcds-details-hover-text: #2675ba;
 $gcds-error-message-background: #f3e9e8;
 $gcds-error-message-border: #d3080c;
 $gcds-error-message-text: #000000;
@@ -152,9 +154,12 @@ $gcds-file-uploader-focus-button-shadow: #ffffff;
 $gcds-file-uploader-focus-button-text: #ffffff;
 $gcds-file-uploader-focus-text: #303fc3;
 $gcds-footer-brand-background: #f8f8f8;
-$gcds-footer-brand-nav: #26374a;
-$gcds-footer-brand-text: #000000;
-$gcds-footer-brand-hover-nav: #303fc3;
+$gcds-footer-brand-text: #26374a;
+$gcds-footer-brand-hover-text: #2675ba;
+$gcds-footer-brand-focus-background: #303fc3;
+$gcds-footer-brand-focus-text: #ffffff;
+$gcds-footer-brand-active-text: #ffffff;
+$gcds-footer-brand-active-background: #0a0e14;
 $gcds-footer-landscape-background: #26374a;
 $gcds-footer-landscape-text: #ffffff;
 $gcds-header-brand-border: #38414d;
@@ -166,6 +171,12 @@ $gcds-input-disabled-text: #707070;
 $gcds-input-focus-text: #303fc3;
 $gcds-input-focus-shadow: #ffffff;
 $gcds-label-destructive-text: #d3080c;
+$gcds-lang-toggle-default-text: #26374a;
+$gcds-lang-toggle-hover-text: #2675ba;
+$gcds-lang-toggle-focus-background: #303fc3;
+$gcds-lang-toggle-focus-text: #ffffff;
+$gcds-lang-toggle-active-text: #ffffff;
+$gcds-lang-toggle-active-background: #0a0e14;
 $gcds-link-dark-text: #000000;
 $gcds-link-destructive-text: #d3080c;
 $gcds-link-light-text: #ffffff;

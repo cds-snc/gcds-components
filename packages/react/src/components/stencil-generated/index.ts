@@ -24,6 +24,7 @@ export const GcdsIcon = /*@__PURE__*/createReactComponent<JSX.GcdsIcon, HTMLGcds
 export const GcdsInput = /*@__PURE__*/createReactComponent<JSX.GcdsInput, HTMLGcdsInputElement>('gcds-input');
 export const GcdsLabel = /*@__PURE__*/createReactComponent<JSX.GcdsLabel, HTMLGcdsLabelElement>('gcds-label');
 export const GcdsLangToggle = /*@__PURE__*/createReactComponent<JSX.GcdsLangToggle, HTMLGcdsLangToggleElement>('gcds-lang-toggle');
+export const GcdsPagination = /*@__PURE__*/createReactComponent<JSX.GcdsPagination, HTMLGcdsPaginationElement>('gcds-pagination');
 export const GcdsRadio = /*@__PURE__*/createReactComponent<JSX.GcdsRadio, HTMLGcdsRadioElement>('gcds-radio');
 export const GcdsSelect = /*@__PURE__*/createReactComponent<JSX.GcdsSelect, HTMLGcdsSelectElement>('gcds-select');
 export const GcdsSignature = /*@__PURE__*/createReactComponent<JSX.GcdsSignature, HTMLGcdsSignatureElement>('gcds-signature');
