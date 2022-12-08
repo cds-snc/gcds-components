@@ -44,7 +44,7 @@
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
     "postcss-nested": "^5.0.6",
-    "puppeteer": "^10.0.0",
+    "puppeteer": "^13.0.0",
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
     "workbox-build": "^4.3.1"
