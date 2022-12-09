@@ -1,5 +1,5 @@
 :host {
-  .gcds-checkbox-wrapper {
+  .gcds-checkbox {
     max-width: 90%;
     font-family: var(--gcds-font-families-body), sans-serif;
     font-weight: var(--gcds-font-weights-regular);
@@ -23,7 +23,7 @@
       }
     }
 
-    &.gcds-disabled {
+    &.gcds-checkbox--disabled {
       color: var(--gcds-checkbox-disabled-text);
 
       input[type=checkbox] + gcds-label {
@@ -45,7 +45,7 @@
       }
     }
 
-    &.gcds-error:not(:focus-within) {
+    &.gcds-checkbox--error:not(:focus-within) {
       color: var(--gcds-checkbox-destructive-text);
 
       input[type=checkbox] + gcds-label {
