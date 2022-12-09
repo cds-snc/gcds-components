@@ -2,14 +2,14 @@
   display: block;
   margin: 0 0 var(--gcds-spacing-500) !important;
 
-  .container {
+  .gcds-header__container {
     justify-content: space-between;
     width: 90%;
     max-width: var(--gcds-container-400);
     margin: 0 auto;
   }
 
-  .brand {
+  .gcds-header__brand {
     border-bottom: .1875rem solid var(--gcds-header-brand-border);
     padding-bottom: var(--gcds-spacing-100);
     margin-top: var(--gcds-spacing-300);
@@ -25,24 +25,24 @@
       max-width: var(--gcds-container-400);
       margin: 0 auto;
 
-      &.simple {
+      &.container--simple {
         grid-template-areas:
           "signature toggle";
       }
 
-      .toggle,
+      .brand__toggle,
       slot[name="toggle"] {
         grid-area: toggle;
         text-align: right;
         padding: 0 var(--gcds-spacing-300);
       }
 
-      .signature,
+      .brand__signature,
       slot[name="signature"] {
         grid-area: signature;
       }
 
-      .search,
+      .brand__search,
       slot[name="search"] {
         grid-area: search;
         max-width: 100%;
@@ -57,7 +57,7 @@
           "signature search";
         grid-template-columns: 1fr 1fr;
 
-        .search,
+        .brand__search,
         slot[name="search"] {
           width: var(--gcds-container-100);
         }
@@ -65,7 +65,7 @@
     }
   }
 
-  .topnav {
+  .gcds-header__topnav {
     text-align: center;
     position: absolute;
     width: 100%;

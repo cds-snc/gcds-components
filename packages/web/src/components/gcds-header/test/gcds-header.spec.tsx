@@ -10,9 +10,9 @@ describe('gcds-header', () => {
     expect(page.root).toEqualHtml(`
       <gcds-header role="banner">
         <mock:shadow-root>
-          <div class="brand">
-            <div class="brand__container simple">
-              <div class="signature">
+          <div class="gcds-header__brand">
+            <div class="brand__container container--simple">
+              <div class="brand__signature">
                 <gcds-signature has-link="" lang="en" type="signature" variant="colour"></gcds-signature>
               </div>
             </div>
@@ -31,17 +31,17 @@ describe('gcds-header', () => {
     expect(page.root).toEqualHtml(`
       <gcds-header lang-href="/fr/" role="banner" signature-has-link="true" signature-variant="colour" skip-to-href="#main">
         <mock:shadow-root>
-          <nav class="topnav">
+          <nav class="gcds-header__topnav">
             <gcds-button button-role="skip-to-content" button-type="link" href="#main">
               Skip to main content
             </gcds-button>
           </nav>
-          <div class="brand">
-            <div class="brand__container simple">
-              <section class="toggle">
+          <div class="gcds-header__brand">
+            <div class="brand__container container--simple">
+              <section class="brand__toggle">
                 <gcds-lang-toggle href="/fr/" lang="en"></gcds-lang-toggle>
               </section>
-              <div class="signature">
+              <div class="brand__signature">
                 <gcds-signature has-link="" lang="en" type="signature" variant="colour"></gcds-signature>
               </div>
             </div>
@@ -67,9 +67,9 @@ describe('gcds-header', () => {
       <gcds-header role="banner">
         <mock:shadow-root>
           <slot name="banner"></slot>
-          <div class="brand">
+          <div class="gcds-header__brand">
             <div class="brand__container">
-              <div class="signature">
+              <div class="brand__signature">
                 <gcds-signature has-link="" lang="en" type="signature" variant="colour"></gcds-signature>
               </div>
               <slot name="search"></slot>
@@ -104,7 +104,7 @@ describe('gcds-header', () => {
         <mock:shadow-root>
           <slot name="topnav"></slot>
           <slot name="banner"></slot>
-          <div class="brand">
+          <div class="gcds-header__brand">
             <div class="brand__container">
               <slot name="toggle"></slot>
               <slot name="signature"></slot>
