@@ -195,7 +195,7 @@ export class GcdsRadio {
 
     return (
       <Host>
-        <div class={`gcds-radio-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
+        <div class={`gcds-radio ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-radio--error' : ''}`}>
           <input
             id={radioId}
             type="radio"
