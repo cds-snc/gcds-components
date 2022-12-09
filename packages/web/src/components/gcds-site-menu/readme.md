@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property                         | Attribute             | Description            | Type                                       | Default     |
-| -------------------------------- | --------------------- | ---------------------- | ------------------------------------------ | ----------- |
-| `menuAlignment`                  | `menu-alignment`      | Menu alignment         | `"center" \| "left" \| "right" \| "split"` | `'left'`    |
-| `menuDesktopLayout` _(required)_ | `menu-desktop-layout` | Desktop layout         | `"sidebar" \| "topbar"`                    | `undefined` |
-| `menuMobileLayout` _(required)_  | `menu-mobile-layout`  | Mobile layout          | `"drawer"`                                 | `undefined` |
-| `menuPosition`                   | `menu-position`       | Sticky navigation flag | `"static" \| "sticky"`                     | `'static'`  |
+| Property                     | Attribute        | Description            | Type                                       | Default     |
+| ---------------------------- | ---------------- | ---------------------- | ------------------------------------------ | ----------- |
+| `alignment`                  | `alignment`      | Menu alignment         | `"center" \| "left" \| "right" \| "split"` | `'left'`    |
+| `desktopLayout` _(required)_ | `desktop-layout` | Desktop layout         | `"sidebar" \| "topbar"`                    | `undefined` |
+| `mobileLayout` _(required)_  | `mobile-layout`  | Mobile layout          | `"drawer"`                                 | `undefined` |
+| `position`                   | `position`       | Sticky navigation flag | `"static" \| "sticky"`                     | `'static'`  |
 
 
 ## Dependencies
