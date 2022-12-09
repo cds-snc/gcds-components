@@ -20,9 +20,9 @@ describe('gcds-site-menu', () => {
       html: `<gcds-site-menu lang="en"></gcds-site-menu>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-site-menu data-h2-menu-wrapper lang="en" menu-desktop-layout="topbar" menu-mobile-layout="drawer">
+      <gcds-site-menu data-h2-menu-wrapper lang="en" desktop-layout="topbar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" button-type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
@@ -52,9 +52,9 @@ describe('gcds-site-menu', () => {
       html: `<gcds-site-menu lang="fr"></gcds-site-menu>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-site-menu data-h2-menu-wrapper lang="fr" menu-desktop-layout="topbar" menu-mobile-layout="drawer">
+      <gcds-site-menu data-h2-menu-wrapper lang="fr" desktop-layout="topbar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Utiliser la touche Entrée pour ouvrir ou fermer le menu principal." data-h2-mobile-menu-trigger role="button" button-role="primary" button-type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Utiliser la touche Entrée pour ouvrir ou fermer le menu principal." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
@@ -108,9 +108,9 @@ describe('gcds-site-menu', () => {
         </gcds-site-menu>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-site-menu data-h2-menu-wrapper lang="en" menu-desktop-layout="topbar" menu-mobile-layout="drawer">
+      <gcds-site-menu data-h2-menu-wrapper lang="en" desktop-layout="topbar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" button-type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
@@ -187,7 +187,7 @@ describe('gcds-site-menu', () => {
     const page = await newSpecPage({
       components: [GcdsSiteMenu],
       html: `
-        <gcds-site-menu menu-desktop-layout="sidebar" lang="en">
+        <gcds-site-menu desktop-layout="sidebar" lang="en">
           <ul>
             <li>
               <a href="/page">Menu item 01</a>
@@ -213,9 +213,9 @@ describe('gcds-site-menu', () => {
         </gcds-site-menu>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-site-menu data-h2-menu-wrapper lang="en" menu-desktop-layout="sidebar" menu-mobile-layout="drawer">
+      <gcds-site-menu data-h2-menu-wrapper lang="en" desktop-layout="sidebar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" button-type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
@@ -298,7 +298,7 @@ describe('gcds-site-menu', () => {
     const page = await newSpecPage({
       components: [GcdsSiteMenu],
       html: `
-        <gcds-site-menu menu-desktop-layout="sidebar" lang="fr">
+        <gcds-site-menu desktop-layout="sidebar" lang="fr">
           <ul>
             <li>
               <a href="/page">Menu item 01</a>
@@ -324,9 +324,9 @@ describe('gcds-site-menu', () => {
         </gcds-site-menu>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-site-menu data-h2-menu-wrapper lang="fr" menu-desktop-layout="sidebar" menu-mobile-layout="drawer">
+      <gcds-site-menu data-h2-menu-wrapper lang="fr" desktop-layout="sidebar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Utiliser la touche Entrée pour ouvrir ou fermer le menu principal." data-h2-mobile-menu-trigger role="button" button-role="primary" button-type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Utiliser la touche Entrée pour ouvrir ou fermer le menu principal." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>

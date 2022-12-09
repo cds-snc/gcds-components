@@ -56,7 +56,7 @@ export class GcdsHeader {
       return (
       <nav class="gcds-header__topnav">
         <gcds-button
-          button-type="link"
+          type="link"
           button-role="skip-to-content"
           href={this.skipToHref}
         >

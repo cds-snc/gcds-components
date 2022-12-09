@@ -661,19 +661,19 @@ export namespace Components {
         /**
           * Menu alignment
          */
-        "menuAlignment": 'left' | 'center' | 'right' | 'split';
+        "alignment": 'left' | 'center' | 'right' | 'split';
         /**
           * Desktop layout
          */
-        "menuDesktopLayout": 'topbar' | 'sidebar';
+        "desktopLayout": 'topbar' | 'sidebar';
         /**
           * Mobile layout
          */
-        "menuMobileLayout": 'drawer';
+        "mobileLayout": 'drawer';
         /**
           * Sticky navigation flag
          */
-        "menuPosition": 'static' | 'sticky';
+        "position": 'static' | 'sticky';
     }
     interface GcdsStepper {
         /**
@@ -1697,19 +1697,19 @@ declare namespace LocalJSX {
         /**
           * Menu alignment
          */
-        "menuAlignment"?: 'left' | 'center' | 'right' | 'split';
+        "alignment"?: 'left' | 'center' | 'right' | 'split';
         /**
           * Desktop layout
          */
-        "menuDesktopLayout": 'topbar' | 'sidebar';
+        "desktopLayout": 'topbar' | 'sidebar';
         /**
           * Mobile layout
          */
-        "menuMobileLayout": 'drawer';
+        "mobileLayout": 'drawer';
         /**
           * Sticky navigation flag
          */
-        "menuPosition"?: 'static' | 'sticky';
+        "position"?: 'static' | 'sticky';
     }
     interface GcdsStepper {
         /**

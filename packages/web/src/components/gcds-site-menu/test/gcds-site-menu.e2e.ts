@@ -31,7 +31,7 @@ describe('gcds-site-menu', () => {
     </gcds-site-menu>`);
 
     const element = await page.find('gcds-site-menu');
-    expect(element).toHaveAttribute('menu-desktop-layout');
+    expect(element).toHaveAttribute('desktop-layout');
   });
 });
 
@@ -51,7 +51,7 @@ describe('gcds-site-menu a11y tests', () => {
       height: 800
     });
     await page.setContent(`
-    <gcds-site-menu menu-desktop-layout="topbar" lang="en">
+    <gcds-site-menu desktop-layout="topbar" lang="en">
       <ul>
         <li>
           <a href="/page">Menu item 01</a>
@@ -88,7 +88,7 @@ describe('gcds-site-menu a11y tests', () => {
       height: 800
     });
     await page.setContent(`
-    <gcds-site-menu menu-desktop-layout="sidebar" lang="en">
+    <gcds-site-menu desktop-layout="sidebar" lang="en">
       <ul>
         <li>
           <a href="/page">Menu item 01</a>
@@ -125,7 +125,7 @@ describe('gcds-site-menu a11y tests', () => {
       height: 800
     });
     await page.setContent(`
-    <gcds-site-menu menu-desktop-layout="topbar" menu-mobile-layout="drawer" lang="en">
+    <gcds-site-menu desktop-layout="topbar" mobile-layout="drawer" lang="en">
       <ul>
         <li>
           <a href="/page">Menu item 01</a>
@@ -165,7 +165,7 @@ describe('gcds-site-menu a11y tests', () => {
   it('Accessible buttons', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-    <gcds-site-menu menu-desktop-layout="topbar" menu-mobile-layout="drawer" lang="en">
+    <gcds-site-menu desktop-layout="topbar" mobile-layout="drawer" lang="en">
       <ul>
         <li>
           <a href="/page">Menu item 01</a>
@@ -205,7 +205,7 @@ describe('gcds-site-menu a11y tests', () => {
       height: 800
     });
     await page.setContent(`
-    <gcds-site-menu menu-desktop-layout="topbar" menu-mobile-layout="drawer" lang="en">
+    <gcds-site-menu desktop-layout="topbar" mobile-layout="drawer" lang="en">
       <ul>
         <li>
           <a href="/page">Menu item 01</a>
@@ -263,7 +263,7 @@ describe('gcds-site-menu a11y tests', () => {
       height: 800
     });
     await page.setContent(`
-    <gcds-site-menu menu-desktop-layout="sidebar" menu-mobile-layout="drawer" lang="en">
+    <gcds-site-menu desktop-layout="sidebar" mobile-layout="drawer" lang="en">
       <ul>
         <li>
           <a href="/page">Menu item 01</a>
@@ -327,7 +327,7 @@ describe('gcds-site-menu a11y tests', () => {
       height: 800
     });
     await page.setContent(`
-    <gcds-site-menu menu-desktop-layout="topbar" menu-mobile-layout="drawer" lang="en">
+    <gcds-site-menu desktop-layout="topbar" mobile-layout="drawer" lang="en">
       <ul>
         <li>
           <a href="/page">Menu item 01</a>
