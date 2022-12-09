@@ -36,27 +36,6 @@ export class GcdsAlert {
 }
 
 
-export declare interface GcdsBanner extends Components.GcdsBanner {}
-
-@ProxyCmp({
-  defineCustomElementFn: undefined,
-  inputs: ['bannerRole', 'isFixed', 'maxContentWidth']
-})
-@Component({
-  selector: 'gcds-banner',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['bannerRole', 'isFixed', 'maxContentWidth']
-})
-export class GcdsBanner {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
 export declare interface GcdsButton extends Components.GcdsButton {
   /**
    * Emitted when the button has focus. 
@@ -451,6 +430,27 @@ export class GcdsPagination {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['gcdsPageChange']);
+  }
+}
+
+
+export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['bannerRole', 'isFixed', 'maxContentWidth']
+})
+@Component({
+  selector: 'gcds-phase-banner',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['bannerRole', 'isFixed', 'maxContentWidth']
+})
+export class GcdsPhaseBanner {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 

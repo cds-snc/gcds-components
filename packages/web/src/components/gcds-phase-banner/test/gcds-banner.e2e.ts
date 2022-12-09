@@ -1,12 +1,12 @@
 import { newE2EPage } from '@stencil/core/testing';
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 
-describe('gcds-banner', () => {
+describe('gcds-phase-banner', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-banner></gcds-banner>');
+    await page.setContent('<gcds-phase-banner></gcds-phase-banner>');
 
-    const element = await page.find('gcds-banner');
+    const element = await page.find('gcds-phase-banner');
     expect(element).toHaveClass('hydrated');
   });
 });
@@ -17,16 +17,16 @@ describe('gcds-banner', () => {
    * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
    */
 
-describe('gcds-banner a11y tests', () => {
+describe('gcds-phase-banner a11y tests', () => {
   /**
    * Colour contrast test
    */
   it('colour contrast primary banner', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-banner>
+      <gcds-phase-banner>
         <span slot="banner-text"> This is an example of a primary banner.</span>
-      </gcds-banner>
+      </gcds-phase-banner>
     `);
 
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
@@ -38,9 +38,9 @@ describe('gcds-banner a11y tests', () => {
   it('colour contrast secondary banner', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-banner banner-role="secondary">
+      <gcds-phase-banner banner-role="secondary">
         <span slot="banner-text"> This is an example of a secondary banner.</span>
-      </gcds-banner>
+      </gcds-phase-banner>
     `);
 
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();

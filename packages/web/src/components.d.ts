@@ -33,20 +33,6 @@ export namespace Components {
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
-    interface GcdsBanner {
-        /**
-          * Defines banner role.
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "isFixed"?: boolean;
-        /**
-          * Defines the max width of the banner content.
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-    }
     interface GcdsButton {
         /**
           * Custom callback function on blur event
@@ -539,6 +525,20 @@ export namespace Components {
          */
         "url": Object;
     }
+    interface GcdsPhaseBanner {
+        /**
+          * Defines banner role.
+         */
+        "bannerRole"?: 'primary' | 'secondary';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
+          * Defines the max width of the banner content.
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+    }
     interface GcdsRadio {
         /**
           * Custom callback function on blur event
@@ -813,12 +813,6 @@ declare global {
         prototype: HTMLGcdsAlertElement;
         new (): HTMLGcdsAlertElement;
     };
-    interface HTMLGcdsBannerElement extends Components.GcdsBanner, HTMLStencilElement {
-    }
-    var HTMLGcdsBannerElement: {
-        prototype: HTMLGcdsBannerElement;
-        new (): HTMLGcdsBannerElement;
-    };
     interface HTMLGcdsButtonElement extends Components.GcdsButton, HTMLStencilElement {
     }
     var HTMLGcdsButtonElement: {
@@ -909,6 +903,12 @@ declare global {
         prototype: HTMLGcdsPaginationElement;
         new (): HTMLGcdsPaginationElement;
     };
+    interface HTMLGcdsPhaseBannerElement extends Components.GcdsPhaseBanner, HTMLStencilElement {
+    }
+    var HTMLGcdsPhaseBannerElement: {
+        prototype: HTMLGcdsPhaseBannerElement;
+        new (): HTMLGcdsPhaseBannerElement;
+    };
     interface HTMLGcdsRadioElement extends Components.GcdsRadio, HTMLStencilElement {
     }
     var HTMLGcdsRadioElement: {
@@ -953,7 +953,6 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "gcds-alert": HTMLGcdsAlertElement;
-        "gcds-banner": HTMLGcdsBannerElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-details": HTMLGcdsDetailsElement;
@@ -969,6 +968,7 @@ declare global {
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
+        "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radio": HTMLGcdsRadioElement;
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-signature": HTMLGcdsSignatureElement;
@@ -1008,20 +1008,6 @@ declare namespace LocalJSX {
           * Events
          */
         "onGcdsDismiss"?: (event: GcdsAlertCustomEvent<void>) => void;
-    }
-    interface GcdsBanner {
-        /**
-          * Defines banner role.
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "isFixed"?: boolean;
-        /**
-          * Defines the max width of the banner content.
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
     interface GcdsButton {
         /**
@@ -1555,6 +1541,20 @@ declare namespace LocalJSX {
          */
         "url"?: Object;
     }
+    interface GcdsPhaseBanner {
+        /**
+          * Defines banner role.
+         */
+        "bannerRole"?: 'primary' | 'secondary';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
+          * Defines the max width of the banner content.
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+    }
     interface GcdsRadio {
         /**
           * Custom callback function on blur event
@@ -1811,7 +1811,6 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;
-        "gcds-banner": GcdsBanner;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
         "gcds-details": GcdsDetails;
@@ -1827,6 +1826,7 @@ declare namespace LocalJSX {
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
         "gcds-pagination": GcdsPagination;
+        "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radio": GcdsRadio;
         "gcds-select": GcdsSelect;
         "gcds-signature": GcdsSignature;
@@ -1841,7 +1841,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
-            "gcds-banner": LocalJSX.GcdsBanner & JSXBase.HTMLAttributes<HTMLGcdsBannerElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
@@ -1857,6 +1856,7 @@ declare module "@stencil/core" {
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
+            "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;

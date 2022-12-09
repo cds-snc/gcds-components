@@ -1,11 +1,11 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
 @Component({
-  tag: 'gcds-banner',
-  styleUrl: 'gcds-banner.css',
+  tag: 'gcds-phase-banner',
+  styleUrl: 'gcds-phase-banner.css',
   shadow: true,
 })
-export class GcdsBanner {
+export class GcdsPhaseBanner {
   @Element() el: HTMLElement;
 
 
@@ -34,7 +34,7 @@ export class GcdsBanner {
     return (
       <Host>
         <div
-          class={`gcds-banner banner--role-${bannerRole} ${isFixed ? 'banner--is-fixed' : ''}`}
+          class={`gcds-phase-banner banner--role-${bannerRole} ${isFixed ? 'banner--is-fixed' : ''}`}
           role="status"
           aria-label="Banner"
         >

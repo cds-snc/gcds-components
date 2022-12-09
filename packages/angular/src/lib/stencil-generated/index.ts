@@ -3,7 +3,6 @@ import * as d from './components';
 
 export const DIRECTIVES = [
   d.GcdsAlert,
-  d.GcdsBanner,
   d.GcdsButton,
   d.GcdsCheckbox,
   d.GcdsDetails,
@@ -19,6 +18,7 @@ export const DIRECTIVES = [
   d.GcdsLabel,
   d.GcdsLangToggle,
   d.GcdsPagination,
+  d.GcdsPhaseBanner,
   d.GcdsRadio,
   d.GcdsSelect,
   d.GcdsSignature,
