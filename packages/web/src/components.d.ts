@@ -47,17 +47,9 @@ export namespace Components {
          */
         "buttonRole": 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
         /**
-          * Set the button size
-         */
-        "buttonSize": 'regular' | 'small';
-        /**
           * Set the style variant
          */
         "buttonStyle": 'solid' | 'text-only';
-        /**
-          * Set button types
-         */
-        "buttonType": 'submit' | 'reset' | 'button' | 'link';
         /**
           * Custom callback function on click event
          */
@@ -91,9 +83,17 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
+          * Set the button size
+         */
+        "size": 'regular' | 'small';
+        /**
           * The target attribute specifies where to open the linked document
          */
         "target": string | undefined;
+        /**
+          * Set button types
+         */
+        "type": 'submit' | 'reset' | 'button' | 'link';
     }
     interface GcdsCheckbox {
         /**
@@ -1023,17 +1023,9 @@ declare namespace LocalJSX {
          */
         "buttonRole"?: 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
         /**
-          * Set the button size
-         */
-        "buttonSize"?: 'regular' | 'small';
-        /**
           * Set the style variant
          */
         "buttonStyle"?: 'solid' | 'text-only';
-        /**
-          * Set button types
-         */
-        "buttonType"?: 'submit' | 'reset' | 'button' | 'link';
         /**
           * Custom callback function on click event
          */
@@ -1071,9 +1063,17 @@ declare namespace LocalJSX {
          */
         "rel"?: string | undefined;
         /**
+          * Set the button size
+         */
+        "size"?: 'regular' | 'small';
+        /**
           * The target attribute specifies where to open the linked document
          */
         "target"?: string | undefined;
+        /**
+          * Set button types
+         */
+        "type"?: 'submit' | 'reset' | 'button' | 'link';
     }
     interface GcdsCheckbox {
         /**
