@@ -106,6 +106,25 @@ export class GcdsCheckbox {
 }
 
 
+export declare interface GcdsDateModified extends Components.GcdsDateModified {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined
+})
+@Component({
+  selector: 'gcds-date-modified',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class GcdsDateModified {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface GcdsDetails extends Components.GcdsDetails {}
 
 @ProxyCmp({

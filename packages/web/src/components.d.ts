@@ -157,6 +157,8 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GcdsDateModified {
+    }
     interface GcdsDetails {
         /**
           * The details title summarizes the panel content.
@@ -825,6 +827,12 @@ declare global {
         prototype: HTMLGcdsCheckboxElement;
         new (): HTMLGcdsCheckboxElement;
     };
+    interface HTMLGcdsDateModifiedElement extends Components.GcdsDateModified, HTMLStencilElement {
+    }
+    var HTMLGcdsDateModifiedElement: {
+        prototype: HTMLGcdsDateModifiedElement;
+        new (): HTMLGcdsDateModifiedElement;
+    };
     interface HTMLGcdsDetailsElement extends Components.GcdsDetails, HTMLStencilElement {
     }
     var HTMLGcdsDetailsElement: {
@@ -955,6 +963,7 @@ declare global {
         "gcds-alert": HTMLGcdsAlertElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
+        "gcds-date-modified": HTMLGcdsDateModifiedElement;
         "gcds-details": HTMLGcdsDetailsElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
         "gcds-fieldset": HTMLGcdsFieldsetElement;
@@ -1144,6 +1153,8 @@ declare namespace LocalJSX {
           * Value for an input element.
          */
         "value"?: string;
+    }
+    interface GcdsDateModified {
     }
     interface GcdsDetails {
         /**
@@ -1813,6 +1824,7 @@ declare namespace LocalJSX {
         "gcds-alert": GcdsAlert;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
+        "gcds-date-modified": GcdsDateModified;
         "gcds-details": GcdsDetails;
         "gcds-error-message": GcdsErrorMessage;
         "gcds-fieldset": GcdsFieldset;
@@ -1843,6 +1855,7 @@ declare module "@stencil/core" {
             "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
+            "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
