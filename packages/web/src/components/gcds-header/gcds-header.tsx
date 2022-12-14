@@ -54,7 +54,10 @@ export class GcdsHeader {
       return <slot name="topnav"></slot>;
     } else if(this.skipToHref) {
       return (
-      <nav class="gcds-header__topnav">
+      <nav
+        aria-label={i18n[this.lang].skip}
+        class="gcds-header__topnav"
+      >
         <gcds-button
           type="link"
           button-role="skip-to-content"
