@@ -9,7 +9,7 @@ describe('gcds-date-modified', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-modified lang="en">
-        <dl>
+        <dl class="gcds-date-modified">
           <dt>
             Date modified:
           </dt>
@@ -29,7 +29,7 @@ describe('gcds-date-modified', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-modified lang="fr">
-        <dl>
+        <dl class="gcds-date-modified">
           <dt>
             Date de modification:
           </dt>

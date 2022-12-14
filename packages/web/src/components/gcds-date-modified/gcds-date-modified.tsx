@@ -20,7 +20,7 @@ export class GcdsDateModified {
   render() {
     return (
       <Host>
-        <dl>
+        <dl class="gcds-date-modified">
           <dt>
             {this.lang == "en" ? 
               "Date modified:"
