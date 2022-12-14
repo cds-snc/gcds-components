@@ -31,7 +31,7 @@ describe('gcds-date-modified', () => {
       <gcds-date-modified lang="fr">
         <dl class="gcds-date-modified">
           <dt>
-            Date de modification:
+            Date de modification :
           </dt>
           <dd>
             <time>

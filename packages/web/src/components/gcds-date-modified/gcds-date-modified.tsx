@@ -25,7 +25,7 @@ export class GcdsDateModified {
             {this.lang == "en" ? 
               "Date modified:"
             : 
-              "Date de modification:"
+              "Date de modification :"
             }
             </dt>
           <dd>
