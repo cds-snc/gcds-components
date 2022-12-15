@@ -1,13 +1,13 @@
 /**
  * Do not edit directly
- * Generated on Fri, 25 Nov 2022 13:37:22 GMT
+ * Generated on Mon, 12 Dec 2022 17:00:19 GMT
  */
 
 :root {
   --gcds-brand-default-text: #000000;
   --gcds-brand-focus: #303fc3;
   --gcds-brand-disabled-background: #f0f0f0;
-  --gcds-brand-disabled-text: #707070;
+  --gcds-brand-disabled-text: #747a82;
   --gcds-brand-destructive: #d3080c;
   --gcds-color-blue-100: #d4e6f2;
   --gcds-color-blue-200: #aad5f2;
@@ -20,20 +20,11 @@
   --gcds-color-blue-800: #26374a;
   --gcds-color-blue-900: #0a0e14;
   --gcds-color-grayscale-0: #ffffff;
-  --gcds-color-grayscale-50: #f8f8f8;
   --gcds-color-grayscale-100: #f0f0f0;
-  --gcds-color-grayscale-200: #ededed;
-  --gcds-color-grayscale-225: #e5e5e5;
-  --gcds-color-grayscale-250: #d2d2d2;
-  --gcds-color-grayscale-300: #c4c3c5;
-  --gcds-color-grayscale-400: #bfbfbf;
-  --gcds-color-grayscale-450: #828282;
-  --gcds-color-grayscale-500: #78757a;
-  --gcds-color-grayscale-600: #737373;
-  --gcds-color-grayscale-700: #707070;
-  --gcds-color-grayscale-800: #6b6b6b;
-  --gcds-color-grayscale-900: #6a6d7b;
-  --gcds-color-grayscale-950: #595959;
+  --gcds-color-grayscale-300: #e0e2e5;
+  --gcds-color-grayscale-500: #b6babf;
+  --gcds-color-grayscale-700: #747a82;
+  --gcds-color-grayscale-900: #545961;
   --gcds-color-grayscale-1000: #000000;
   --gcds-color-green-100: #ecf3ec;
   --gcds-color-green-200: #005900;
@@ -115,16 +106,16 @@
   --gcds-button-shared-focus-background: #303fc3;
   --gcds-button-shared-focus-text: #ffffff;
   --gcds-button-shared-disabled-background: #f0f0f0;
-  --gcds-button-shared-disabled-text: #707070;
+  --gcds-button-shared-disabled-text: #747a82;
   --gcds-checkbox-default-text: #000000;
-  --gcds-checkbox-default-hint: #6a6d7b;
+  --gcds-checkbox-default-hint: #545961;
   --gcds-checkbox-destructive-text: #d3080c;
   --gcds-checkbox-disabled-background: #f0f0f0;
-  --gcds-checkbox-disabled-border: #707070;
-  --gcds-checkbox-disabled-text: #707070;
+  --gcds-checkbox-disabled-border: #747a82;
+  --gcds-checkbox-disabled-text: #747a82;
   --gcds-checkbox-focus-text: #303fc3;
   --gcds-checkbox-focus-shadow: #ffffff;
-  --gcds-details-default-border: #c4c3c5;
+  --gcds-details-default-border: #e0e2e5;
   --gcds-details-default-text: #2b496e;
   --gcds-details-active-background: #000000;
   --gcds-details-active-text: #ffffff;
@@ -136,7 +127,7 @@
   --gcds-error-message-text: #000000;
   --gcds-fieldset-default-text: #000000;
   --gcds-fieldset-destructive: #d3080c;
-  --gcds-fieldset-disabled-text: #707070;
+  --gcds-fieldset-disabled-text: #747a82;
   --gcds-fieldset-focus: #303fc3;
   --gcds-file-uploader-button-background: #ffffff;
   --gcds-file-uploader-button-text: #26374a;
@@ -144,8 +135,8 @@
   --gcds-file-uploader-destructive-background: #f3e9e8;
   --gcds-file-uploader-destructive-text: #d3080c;
   --gcds-file-uploader-disabled-background: #f0f0f0;
-  --gcds-file-uploader-disabled-text: #707070;
-  --gcds-file-uploader-file-background: #e5e5e5;
+  --gcds-file-uploader-disabled-text: #747a82;
+  --gcds-file-uploader-file-background: #e0e2e5;
   --gcds-file-uploader-file-icon-default: #bc3331;
   --gcds-file-uploader-file-icon-hover: #340e0e;
   --gcds-file-uploader-file-icon-active: #000000;
@@ -153,7 +144,7 @@
   --gcds-file-uploader-focus-button-shadow: #ffffff;
   --gcds-file-uploader-focus-button-text: #ffffff;
   --gcds-file-uploader-focus-text: #303fc3;
-  --gcds-footer-brand-background: #f8f8f8;
+  --gcds-footer-brand-background: #f0f0f0;
   --gcds-footer-brand-nav: #26374a;
   --gcds-footer-brand-text: #000000;
   --gcds-footer-brand-hover-nav: #303fc3;
@@ -164,7 +155,7 @@
   --gcds-input-default-text: #000000;
   --gcds-input-destructive: #d3080c;
   --gcds-input-disabled-background: #f0f0f0;
-  --gcds-input-disabled-text: #707070;
+  --gcds-input-disabled-text: #747a82;
   --gcds-input-focus-text: #303fc3;
   --gcds-input-focus-shadow: #ffffff;
   --gcds-label-destructive-text: #d3080c;
@@ -181,45 +172,45 @@
   --gcds-pagination-active-background: #26374a;
   --gcds-pagination-mobile-list-border: #26374a;
   --gcds-radio-default-text: #000000;
-  --gcds-radio-default-hint: #6a6d7b;
+  --gcds-radio-default-hint: #545961;
   --gcds-radio-destructive-text: #d3080c;
   --gcds-radio-disabled-background: #f0f0f0;
-  --gcds-radio-disabled-border: #707070;
-  --gcds-radio-disabled-text: #707070;
+  --gcds-radio-disabled-border: #747a82;
+  --gcds-radio-disabled-text: #747a82;
   --gcds-radio-focus-text: #303fc3;
   --gcds-radio-focus-shadow: #ffffff;
   --gcds-select-default-background: #ffffff;
   --gcds-select-default-text: #000000;
   --gcds-select-destructive: #d3080c;
   --gcds-select-disabled-background: #f0f0f0;
-  --gcds-select-disabled-text: #707070;
+  --gcds-select-disabled-text: #747a82;
   --gcds-select-focus-text: #303fc3;
   --gcds-select-focus-shadow: #ffffff;
   --gcds-signature-color-flag: #ff0000;
   --gcds-signature-color-text: #000000;
   --gcds-signature-white-default: #ffffff;
-  --gcds-site-menu-active-background: #595959;
+  --gcds-site-menu-active-background: #545961;
   --gcds-site-menu-active-text: #ffffff;
-  --gcds-site-menu-default-background: #ededed;
+  --gcds-site-menu-default-background: #f0f0f0;
   --gcds-site-menu-default-border: #00000030;
   --gcds-site-menu-default-text: #000000;
   --gcds-site-menu-focus-background: #303fc3;
   --gcds-site-menu-focus-text: #ffffff;
-  --gcds-site-menu-hover-background: #bfbfbf50;
+  --gcds-site-menu-hover-background: #e0e2e550;
   --gcds-site-menu-selection-background: #f7b452;
   --gcds-site-menu-selection-text: #000000;
-  --gcds-site-menu-submenu-background: #e5e5e5;
+  --gcds-site-menu-submenu-background: #e0e2e5;
   --gcds-site-menu-submenu-box-shadow: #00000030;
   --gcds-site-menu-submenu-trigger-text: #000000;
-  --gcds-stepper-text: #707070;
+  --gcds-stepper-text: #747a82;
   --gcds-textarea-default-background: #ffffff;
   --gcds-textarea-default-text: #000000;
   --gcds-textarea-destructive: #d3080c;
   --gcds-textarea-disabled-background: #f0f0f0;
-  --gcds-textarea-disabled-text: #707070;
+  --gcds-textarea-disabled-text: #747a82;
   --gcds-textarea-focus-text: #303fc3;
   --gcds-textarea-focus-shadow: #ffffff;
   --gcds-verify-banner-background: #f0f0f0;
-  --gcds-verify-banner-border: #bfbfbf;
+  --gcds-verify-banner-border: #e0e2e5;
   --gcds-verify-banner-toggle-text: #303fc3;
 }

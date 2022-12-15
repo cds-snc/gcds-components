@@ -1,4 +1,6 @@
 :host .gcds-banner {
+  font-family: var(--gcds-font-families-body);
+
   /* Is Fixed */
   &.is-fixed {
     position: sticky;
@@ -86,7 +88,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    font-size: var( --gcds-font-sizes-caption);
+    font-size: var(--gcds-font-sizes-caption);
 
     ::slotted(a),
     ::slotted(gcds-button) {

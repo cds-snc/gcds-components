@@ -1,11 +1,13 @@
 :host .gcds-details {
+  font-family: var(--gcds-font-families-body);
+
   summary {
     position: relative;
     cursor: pointer;
     display: inline-block;
     padding: var(--gcds-spacing-100);
     color: var(--gcds-details-default-text);
-    transition: background-color .15s ease-in-out, color .15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 
     &:focus {
       outline: 0;
@@ -25,10 +27,10 @@
       width: 0;
       height: 0;
       content: '';
-      border-top: .4375rem solid transparent;
-      border-bottom: .4375rem solid transparent;
-      border-left: .75rem solid currentColor;
-      transition: transform .15s ease-in-out
+      border-top: 0.4375rem solid transparent;
+      border-bottom: 0.4375rem solid transparent;
+      border-left: 0.75rem solid currentColor;
+      transition: transform 0.15s ease-in-out;
     }
 
     p {
@@ -41,9 +43,9 @@
   }
 
   .details-panel {
-    margin: var(--gcds-spacing-400) 0 0 0;
-    padding: var(--gcds-spacing-300) 2.125rem;
-    border-left: .375rem solid var(--gcds-details-default-border);
+    margin: var(--gcds-spacing-200) 0 0 0;
+    padding: var(--gcds-spacing-300) 1.95rem;
+    border-left: 0.375rem solid var(--gcds-details-default-border);
 
     ::slotted(*) {
       font-size: var(--gcds-font-sizes-text);
