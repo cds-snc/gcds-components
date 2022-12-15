@@ -18,11 +18,6 @@ export class GcdsAlert {
    */
 
   /**
-   * Defines the alert heading.
-   */
-  @Prop() alertHeading!: string;
-
-  /**
    * Defines alert role.
    */
   @Prop() alertRole?: 'destructive' | 'info' | 'success' | 'warning' = 'info';
@@ -33,19 +28,24 @@ export class GcdsAlert {
   @Prop() dismissHandler: Function;
 
   /**
+   * Defines the alert heading.
+   */
+  @Prop() heading!: string;
+
+  /**
    * Defines if the alert's close button is displayed or not.
    */
   @Prop() hideCloseBtn?: boolean = false;
 
   /**
+   * Defines if the alert's position is fixed.
+   */
+  @Prop() isFixed?: boolean = true;
+
+  /**
    * Defines the max width of the alert content.
    */
   @Prop() maxContentWidth?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'lg';
-
-  /**
-   * Defines if the alert's position is fixed.
-   */
-  @Prop() positionFixed?: boolean = true;
 
 
   /**
@@ -80,13 +80,13 @@ export class GcdsAlert {
   }
 
   render() {
-    const { alertHeading, alertRole, hideCloseBtn, isOpen, lang, maxContentWidth, positionFixed } = this;
+    const { alertRole, heading, hideCloseBtn, isFixed, isOpen, lang, maxContentWidth } = this;
 
     return (
       <Host>
         { isOpen ?
           <div
-            class={`gcds-alert role-${alertRole} ${positionFixed ? 'is-fixed' : ''}`}
+            class={`gcds-alert alert--role-${alertRole} ${isFixed ? 'alert--is-fixed' : ''}`}
             role="alert"
             aria-label={
               lang == 'en' ?
@@ -104,9 +104,9 @@ export class GcdsAlert {
                   : null }.`
             }
           >
-            <div class={`alert-container ${positionFixed && maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
-              <h2 class="alert-heading">
-                <gcds-icon aria-hidden="true" class="alert-icon" size="md" name={
+            <div class={`${isFixed && maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
+              <h2 class="alert__heading">
+                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name={
                   alertRole === 'destructive' ? 'exclamation-circle'
                   : alertRole === 'info' ? 'info-circle'
                   : alertRole === 'success' ? 'check-circle'
@@ -114,11 +114,11 @@ export class GcdsAlert {
                   : null }
                 />
 
-                <span>{alertHeading}</span>
+                <span>{heading}</span>
 
                 { !hideCloseBtn ?
                   <button
-                    class="alert-close-btn"
+                    class="alert__close-btn"
                     onClick={(e) => this.onDismiss(e)}
                     aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
                   >
@@ -127,7 +127,7 @@ export class GcdsAlert {
                 : null }
               </h2>
 
-              <div class="alert-content">
+              <div class="alert__content">
                 <slot></slot>
               </div>
             </div>

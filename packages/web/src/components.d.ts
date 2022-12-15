@@ -9,10 +9,6 @@ import { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
-          * Defines the alert heading.
-         */
-        "alertHeading": string;
-        /**
           * Defines alert role.
          */
         "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
@@ -21,31 +17,21 @@ export namespace Components {
          */
         "dismissHandler": Function;
         /**
+          * Defines the alert heading.
+         */
+        "heading": string;
+        /**
           * Defines if the alert's close button is displayed or not.
          */
         "hideCloseBtn"?: boolean;
         /**
+          * Defines if the alert's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
           * Defines the max width of the alert content.
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the alert's position is fixed.
-         */
-        "positionFixed"?: boolean;
-    }
-    interface GcdsBanner {
-        /**
-          * Defines banner role.
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines the max width of the banner content.
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
     interface GcdsButton {
         /**
@@ -315,27 +301,23 @@ export namespace Components {
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
         /**
-          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
+          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
          */
-        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "columns"?: string;
+        "columnsDesktop"?: string;
+        "columnsTablet"?: string;
         /**
           * Defines grid container size
          */
-        "gridContainer"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
          */
-        "gridDisplay"?: 'grid' | 'inline-grid';
+        "display"?: 'grid' | 'inline-grid';
         /**
-          * Set tag for grid container
+          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gridTag": string;
-        /**
-          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default
-         */
-        "gridTemplateColumns"?: string;
-        "gridTemplateColumnsDesktop"?: string;
-        "gridTemplateColumnsTablet"?: string;
+        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -352,6 +334,10 @@ export namespace Components {
           * Sets both the align-items + justify-items properties
          */
         "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Set tag for grid container
+         */
+        "tag": string;
     }
     interface GcdsHeader {
         /**
@@ -496,6 +482,62 @@ export namespace Components {
           * The href attribute specifies the URL of the opposite language page
          */
         "href": string;
+    }
+    interface GcdsPagination {
+        /**
+          * List display - Current page number
+         */
+        "currentPage": number;
+        /**
+          * Navigation element label
+         */
+        "display": "list" | "simple";
+        /**
+          * Navigation element label
+         */
+        "label": string;
+        /**
+          * Simple display - href for next link
+         */
+        "nextHref": string;
+        /**
+          * Simple display - lable for next link
+         */
+        "nextLabel": string;
+        /**
+          * Function to fire when pageChange event is called
+         */
+        "pageChangeHandler": Function;
+        /**
+          * Simple display - href for previous link
+         */
+        "previousHref": string;
+        /**
+          * Simple display - label for previous link
+         */
+        "previousLabel": string;
+        /**
+          * List display - Total number of pages
+         */
+        "totalPages": number;
+        /**
+          * List display - URL object to create query strings and fragment on links
+         */
+        "url": Object;
+    }
+    interface GcdsPhaseBanner {
+        /**
+          * Defines banner role.
+         */
+        "bannerRole"?: 'primary' | 'secondary';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
+          * Defines the max width of the banner content.
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
     interface GcdsRadio {
         /**
@@ -653,6 +695,10 @@ export namespace Components {
          */
         "changeHandler": Function;
         /**
+          * Sets the maxlength attribute for the textarea element.
+         */
+        "characterCount"?: number;
+        /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
         "cols"?: number;
@@ -689,10 +735,6 @@ export namespace Components {
          */
         "rows"?: number;
         /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "textareaCharacterCount"?: number;
-        /**
           * Id + name attribute for a textarea element.
          */
         "textareaId": string;
@@ -715,13 +757,13 @@ export namespace Components {
     }
     interface GcdsVerifyBanner {
         /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
           * Defines the max width of the banner content
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
 }
 export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
@@ -748,6 +790,10 @@ export interface GcdsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsInputElement;
 }
+export interface GcdsPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsPaginationElement;
+}
 export interface GcdsRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsRadioElement;
@@ -766,12 +812,6 @@ declare global {
     var HTMLGcdsAlertElement: {
         prototype: HTMLGcdsAlertElement;
         new (): HTMLGcdsAlertElement;
-    };
-    interface HTMLGcdsBannerElement extends Components.GcdsBanner, HTMLStencilElement {
-    }
-    var HTMLGcdsBannerElement: {
-        prototype: HTMLGcdsBannerElement;
-        new (): HTMLGcdsBannerElement;
     };
     interface HTMLGcdsButtonElement extends Components.GcdsButton, HTMLStencilElement {
     }
@@ -857,6 +897,18 @@ declare global {
         prototype: HTMLGcdsLangToggleElement;
         new (): HTMLGcdsLangToggleElement;
     };
+    interface HTMLGcdsPaginationElement extends Components.GcdsPagination, HTMLStencilElement {
+    }
+    var HTMLGcdsPaginationElement: {
+        prototype: HTMLGcdsPaginationElement;
+        new (): HTMLGcdsPaginationElement;
+    };
+    interface HTMLGcdsPhaseBannerElement extends Components.GcdsPhaseBanner, HTMLStencilElement {
+    }
+    var HTMLGcdsPhaseBannerElement: {
+        prototype: HTMLGcdsPhaseBannerElement;
+        new (): HTMLGcdsPhaseBannerElement;
+    };
     interface HTMLGcdsRadioElement extends Components.GcdsRadio, HTMLStencilElement {
     }
     var HTMLGcdsRadioElement: {
@@ -901,7 +953,6 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "gcds-alert": HTMLGcdsAlertElement;
-        "gcds-banner": HTMLGcdsBannerElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-details": HTMLGcdsDetailsElement;
@@ -916,6 +967,8 @@ declare global {
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
+        "gcds-pagination": HTMLGcdsPaginationElement;
+        "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radio": HTMLGcdsRadioElement;
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-signature": HTMLGcdsSignatureElement;
@@ -928,10 +981,6 @@ declare global {
 declare namespace LocalJSX {
     interface GcdsAlert {
         /**
-          * Defines the alert heading.
-         */
-        "alertHeading": string;
-        /**
           * Defines alert role.
          */
         "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
@@ -940,9 +989,17 @@ declare namespace LocalJSX {
          */
         "dismissHandler"?: Function;
         /**
+          * Defines the alert heading.
+         */
+        "heading": string;
+        /**
           * Defines if the alert's close button is displayed or not.
          */
         "hideCloseBtn"?: boolean;
+        /**
+          * Defines if the alert's position is fixed.
+         */
+        "isFixed"?: boolean;
         /**
           * Defines the max width of the alert content.
          */
@@ -951,24 +1008,6 @@ declare namespace LocalJSX {
           * Events
          */
         "onGcdsDismiss"?: (event: GcdsAlertCustomEvent<void>) => void;
-        /**
-          * Defines if the alert's position is fixed.
-         */
-        "positionFixed"?: boolean;
-    }
-    interface GcdsBanner {
-        /**
-          * Defines banner role.
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines the max width of the banner content.
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
     interface GcdsButton {
         /**
@@ -1266,27 +1305,23 @@ declare namespace LocalJSX {
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
         /**
-          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
+          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
          */
-        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "columns"?: string;
+        "columnsDesktop"?: string;
+        "columnsTablet"?: string;
         /**
           * Defines grid container size
          */
-        "gridContainer"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
          */
-        "gridDisplay"?: 'grid' | 'inline-grid';
+        "display"?: 'grid' | 'inline-grid';
         /**
-          * Set tag for grid container
+          * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gridTag"?: string;
-        /**
-          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default
-         */
-        "gridTemplateColumns"?: string;
-        "gridTemplateColumnsDesktop"?: string;
-        "gridTemplateColumnsTablet"?: string;
+        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -1303,6 +1338,10 @@ declare namespace LocalJSX {
           * Sets both the align-items + justify-items properties
          */
         "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Set tag for grid container
+         */
+        "tag"?: string;
     }
     interface GcdsHeader {
         /**
@@ -1455,6 +1494,66 @@ declare namespace LocalJSX {
           * The href attribute specifies the URL of the opposite language page
          */
         "href": string;
+    }
+    interface GcdsPagination {
+        /**
+          * List display - Current page number
+         */
+        "currentPage"?: number;
+        /**
+          * Navigation element label
+         */
+        "display"?: "list" | "simple";
+        /**
+          * Navigation element label
+         */
+        "label": string;
+        /**
+          * Simple display - href for next link
+         */
+        "nextHref"?: string;
+        /**
+          * Simple display - lable for next link
+         */
+        "nextLabel"?: string;
+        /**
+          * Update value based on user input.
+         */
+        "onGcdsPageChange"?: (event: GcdsPaginationCustomEvent<void>) => void;
+        /**
+          * Function to fire when pageChange event is called
+         */
+        "pageChangeHandler"?: Function;
+        /**
+          * Simple display - href for previous link
+         */
+        "previousHref"?: string;
+        /**
+          * Simple display - label for previous link
+         */
+        "previousLabel"?: string;
+        /**
+          * List display - Total number of pages
+         */
+        "totalPages"?: number;
+        /**
+          * List display - URL object to create query strings and fragment on links
+         */
+        "url"?: Object;
+    }
+    interface GcdsPhaseBanner {
+        /**
+          * Defines banner role.
+         */
+        "bannerRole"?: 'primary' | 'secondary';
+        /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
+          * Defines the max width of the banner content.
+         */
+        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
     interface GcdsRadio {
         /**
@@ -1632,6 +1731,10 @@ declare namespace LocalJSX {
          */
         "changeHandler"?: Function;
         /**
+          * Sets the maxlength attribute for the textarea element.
+         */
+        "characterCount"?: number;
+        /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
         "cols"?: number;
@@ -1680,10 +1783,6 @@ declare namespace LocalJSX {
          */
         "rows"?: number;
         /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "textareaCharacterCount"?: number;
-        /**
           * Id + name attribute for a textarea element.
          */
         "textareaId"?: string;
@@ -1702,17 +1801,16 @@ declare namespace LocalJSX {
     }
     interface GcdsVerifyBanner {
         /**
+          * Defines if the banner's position is fixed.
+         */
+        "isFixed"?: boolean;
+        /**
           * Defines the max width of the banner content
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "positionFixed"?: boolean;
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;
-        "gcds-banner": GcdsBanner;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
         "gcds-details": GcdsDetails;
@@ -1727,6 +1825,8 @@ declare namespace LocalJSX {
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
+        "gcds-pagination": GcdsPagination;
+        "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radio": GcdsRadio;
         "gcds-select": GcdsSelect;
         "gcds-signature": GcdsSignature;
@@ -1741,7 +1841,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
-            "gcds-banner": LocalJSX.GcdsBanner & JSXBase.HTMLAttributes<HTMLGcdsBannerElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
@@ -1756,6 +1855,8 @@ declare module "@stencil/core" {
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
+            "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;

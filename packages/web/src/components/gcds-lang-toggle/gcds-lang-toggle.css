@@ -1,8 +1,8 @@
 :host {
   display: block;
+  font-size: var(--gcds-font-sizes-text);
 
   h2 {
-    height: 0;
     margin: 0;
     overflow: hidden;
     position: absolute;
@@ -10,16 +10,37 @@
   }
 
   a {
+    color: var(--gcds-lang-toggle-default-text);
+    padding: var(--gcds-spacing-300);
+
     span {
       display: none;
     }
 
     abbr {
       text-transform: uppercase;
-      font-size: var(--gcds-font-sizes-h4);
+      text-decoration: none;
     }
 
-    @media screen and (min-width: 64em) {
+    &:hover {
+      color: var(--gcds-lang-toggle-hover-text);
+    }
+
+    &:focus {
+      color: var(--gcds-lang-toggle-focus-text);
+      background-color: var(--gcds-lang-toggle-focus-background);
+    }
+
+    &:active {
+      color: var(--gcds-lang-toggle-active-text);
+      background-color: var(--gcds-lang-toggle-active-background);
+    }
+  }
+
+  @media screen and (min-width: 64em) {
+    a {
+      padding: 0;
+    
       span {
         display: inherit;
       }
@@ -27,6 +48,6 @@
       abbr {
         display: none;
       }
-    }
+  }
   }
 }

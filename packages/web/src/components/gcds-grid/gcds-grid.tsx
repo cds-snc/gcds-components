@@ -14,33 +14,33 @@ export class GcdsGrid {
    */
 
   /**
+   * Defines the columns of the grid
+   * Option to set different layouts for desktop | tablet | default (includes mobile)
+   */
+  @Prop() columns?: string;
+  @Prop() columnsTablet?: string;
+  @Prop() columnsDesktop?: string;
+
+  /**
    * Defines grid container size
    */
-  @Prop() gridContainer?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'fluid';
+  @Prop() container?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'fluid';
 
   /**
    * Defines element as grid or inline-grid container
    */
-  @Prop() gridDisplay?: 'grid' | 'inline-grid' = 'grid';
-
-  /**
-   * Set tag for grid container
-   */
-  @Prop() gridTag: string = 'div';
-
-  /**
-   * Defines the columns of the grid
-   * Option to set different layouts for desktop | tablet | default
-   */
-  @Prop() gridTemplateColumns?: string;
-  @Prop() gridTemplateColumnsTablet?: string;
-  @Prop() gridTemplateColumnsDesktop?: string;
+  @Prop() display?: 'grid' | 'inline-grid' = 'grid';
 
   /**
    * Shorthand for column-gap + row-gap
    * Specifies the width of the gutters between columns and rows
    */
   @Prop() gap?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+
+  /**
+   * Set tag for grid container
+   */
+  @Prop() tag: string = 'div';
 
   /**
    * If total grid size is less than the size of its grid container,
@@ -75,21 +75,21 @@ export class GcdsGrid {
   @Prop() placeItems?: 'center' | 'end' | 'start' | 'stretch';
 
   render() {
-    const { alignContent, alignItems, gap, gridContainer, gridDisplay, gridTag, gridTemplateColumns, gridTemplateColumnsDesktop, gridTemplateColumnsTablet, justifyContent, justifyItems, placeContent, placeItems } = this;
+    const { alignContent, alignItems, columns, columnsDesktop, columnsTablet, container, display, gap, justifyContent, justifyItems, placeContent, placeItems, tag } = this;
 
-    const Tag = gridTag;
+    const Tag = tag;
 
     // Set gridTemplateColumns based on screen size
     const mediaQueryDesktop = window.matchMedia('(min-width: 991px)');
     const mediaQueryTablet = window.matchMedia('(min-width: 768px)');
 
-    function handleGridTemplateColumns() {
-      if (gridTemplateColumnsDesktop && mediaQueryDesktop.matches) {
-        return {gridTemplateColumns: gridTemplateColumnsDesktop}
-      } else if (gridTemplateColumnsTablet && mediaQueryTablet.matches) {
-        return {gridTemplateColumns: gridTemplateColumnsTablet}
+    function handleColumns() {
+      if (columnsDesktop && mediaQueryDesktop.matches) {
+        return {gridTemplateColumns: columnsDesktop}
+      } else if (columnsTablet && mediaQueryTablet.matches) {
+        return {gridTemplateColumns: columnsTablet}
       } else {
-        return {gridTemplateColumns: gridTemplateColumns}
+        return {gridTemplateColumns: columns}
       }
     }
 
@@ -101,14 +101,14 @@ export class GcdsGrid {
             ${alignContent ? `align-content-${alignContent}` : ''}
             ${alignItems ? `align-items-${alignItems}` : ''}
             ${gap ? `gap-${gap}` : ''}
-            ${gridContainer ? `container-${gridContainer}` : ''}
-            ${gridDisplay ? `display-${gridDisplay}` : ''}
+            ${container ? `container-${container}` : ''}
+            ${display ? `display-${display}` : ''}
             ${justifyContent ? `justify-content-${justifyContent}` : ''}
             ${justifyItems ? `justify-items-${justifyItems}` : ''}
             ${placeContent ? `place-content-${placeContent}` : ''}
             ${placeItems ? `place-items-${placeItems}` : ''}
           `}
-          style={handleGridTemplateColumns()}
+          style={handleColumns()}
         >
           <slot />
         </Tag>

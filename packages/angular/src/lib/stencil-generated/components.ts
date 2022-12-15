@@ -18,13 +18,13 @@ export declare interface GcdsAlert extends Components.GcdsAlert {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['alertHeading', 'alertRole', 'dismissHandler', 'hideCloseBtn', 'maxContentWidth', 'positionFixed']
+  inputs: ['alertRole', 'dismissHandler', 'heading', 'hideCloseBtn', 'isFixed', 'maxContentWidth']
 })
 @Component({
   selector: 'gcds-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['alertHeading', 'alertRole', 'dismissHandler', 'hideCloseBtn', 'maxContentWidth', 'positionFixed']
+  inputs: ['alertRole', 'dismissHandler', 'heading', 'hideCloseBtn', 'isFixed', 'maxContentWidth']
 })
 export class GcdsAlert {
   protected el: HTMLElement;
@@ -32,27 +32,6 @@ export class GcdsAlert {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['gcdsDismiss']);
-  }
-}
-
-
-export declare interface GcdsBanner extends Components.GcdsBanner {}
-
-@ProxyCmp({
-  defineCustomElementFn: undefined,
-  inputs: ['bannerRole', 'maxContentWidth', 'positionFixed']
-})
-@Component({
-  selector: 'gcds-banner',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['bannerRole', 'maxContentWidth', 'positionFixed']
-})
-export class GcdsBanner {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
   }
 }
 
@@ -268,13 +247,13 @@ export declare interface GcdsGrid extends Components.GcdsGrid {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['alignContent', 'alignItems', 'gap', 'gridContainer', 'gridDisplay', 'gridTag', 'gridTemplateColumns', 'gridTemplateColumnsDesktop', 'gridTemplateColumnsTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems']
+  inputs: ['alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['alignContent', 'alignItems', 'gap', 'gridContainer', 'gridDisplay', 'gridTag', 'gridTemplateColumns', 'gridTemplateColumnsDesktop', 'gridTemplateColumnsTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems']
+  inputs: ['alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 export class GcdsGrid {
   protected el: HTMLElement;
@@ -419,6 +398,55 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
   inputs: ['href']
 })
 export class GcdsLangToggle {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsPagination extends Components.GcdsPagination {
+  /**
+   * Update value based on user input. 
+   */
+  gcdsPageChange: EventEmitter<CustomEvent<void>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
+})
+@Component({
+  selector: 'gcds-pagination',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
+})
+export class GcdsPagination {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsPageChange']);
+  }
+}
+
+
+export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['bannerRole', 'isFixed', 'maxContentWidth']
+})
+@Component({
+  selector: 'gcds-phase-banner',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['bannerRole', 'isFixed', 'maxContentWidth']
+})
+export class GcdsPhaseBanner {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -581,14 +609,14 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['blurHandler', 'changeHandler', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaCharacterCount', 'textareaId', 'validateOn', 'validator', 'value'],
+  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
   selector: 'gcds-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'changeHandler', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaCharacterCount', 'textareaId', 'validateOn', 'validator', 'value']
+  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value']
 })
 export class GcdsTextarea {
   protected el: HTMLElement;
@@ -604,13 +632,13 @@ export declare interface GcdsVerifyBanner extends Components.GcdsVerifyBanner {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['maxContentWidth', 'positionFixed']
+  inputs: ['isFixed', 'maxContentWidth']
 })
 @Component({
   selector: 'gcds-verify-banner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['maxContentWidth', 'positionFixed']
+  inputs: ['isFixed', 'maxContentWidth']
 })
 export class GcdsVerifyBanner {
   protected el: HTMLElement;
