@@ -72,7 +72,7 @@ describe('gcds-radio', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radio radio-id="radio" disabled="" label="radio" name="radio">
-        <div class="gcds-disabled gcds-radio">
+        <div class="gcds-radio--disabled gcds-radio">
            <input disabled="" id="radio" name="radio" type="radio">
            <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
          </div>
