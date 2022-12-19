@@ -11,7 +11,7 @@
   transition: all .15s ease-in-out;
 
   /* Button Role Styles */
-  &.destructive {
+  &.button--role-destructive {
     background-color: var(--gcds-button-destructive-default-background);
     color: var(--gcds-button-destructive-default-text);
 
@@ -24,7 +24,7 @@
     }
   }
 
-  &.primary {
+  &.button--role-primary {
     background-color: var(--gcds-button-primary-default-background);
     color: var(--gcds-button-primary-default-text);
 
@@ -37,8 +37,8 @@
     }
   }
 
-  &.secondary,
-  &.text-only {
+  &.button--role-secondary,
+  &.button--text-only {
     background-color: transparent;
     color: var(--gcds-button-secondary-default-text);
     border: .125rem solid currentColor;
@@ -62,7 +62,7 @@
     }
   }
 
-  &.text-only {
+  &.button--text-only {
     &:not([aria-disabled="true"]) {
       text-decoration: underline;
       text-underline-position: under;
@@ -73,7 +73,7 @@
     }
   }
 
-  &.skip-to-content {
+  &.button--role-skip-to-content {
     position: absolute;
     top: 1.6rem;
     left: 0;
@@ -108,7 +108,7 @@
     color: var(--gcds-button-shared-focus-text) ;
   }
 
-  &.solid:not(.secondary):active {
+  &.button--solid:not(.secondary):active {
     background-color: var(--gcds-button-shared-active-background);
     color: var(--gcds-button-shared-active-text);
 
@@ -118,7 +118,7 @@
   }
 
   /* Small button styling */
-  &.small {
+  &.button--small {
     font-size: 80%;
     padding: var(--gcds-spacing-200);
   }

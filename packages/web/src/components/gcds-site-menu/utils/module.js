@@ -36,7 +36,7 @@ function h2MenuCloseOpenSubmenusHandler(menuWrapper) {
     link.setAttribute("aria-expanded", false);
   });
 
-  if (menuWrapper.getAttribute("menu-desktop-layout") == "sidebar" && !menuWrapper.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
+  if (menuWrapper.getAttribute("desktop-layout") == "sidebar" && !menuWrapper.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
     menuWrapper.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
     document.querySelector("body").style.removeProperty("overflow");
   }
@@ -273,7 +273,7 @@ function h2MenuOpenSubmenuHandler(trigger) {
   submenuItems[0].focus();
 
   // Close any additional submenus (topbar layout)
-  if (hostElement.getAttribute('menu-desktop-layout') == "topbar" && !hostElement.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
+  if (hostElement.getAttribute('desktop-layout') == "topbar" && !hostElement.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
     var triggerParentMenu = triggerParent.parentNode;
     var parentMenuChildren = triggerParentMenu.children;
     for (var i = 0; i < parentMenuChildren.length; i++) {
@@ -286,7 +286,7 @@ function h2MenuOpenSubmenuHandler(trigger) {
   }
 
   // Close any additional submenus (sidebar layout)
-  if (hostElement.getAttribute('menu-desktop-layout') == "sidebar" && !hostElement.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
+  if (hostElement.getAttribute('desktop-layout') == "sidebar" && !hostElement.shadowRoot.querySelector("[data-h2-menu-container]").hasAttribute("data-mobile")) {
     var triggerParentMenu = triggerParent.parentNode;
     var parentMenuChildren = triggerParentMenu.children;
 
@@ -385,7 +385,7 @@ function h2MenuCloseSubmenuHandler(trigger) {
   submenuTrigger.setAttribute("aria-expanded", false);
 
   var hostElement = triggerParent.closest("[data-h2-menu]").parentNode.host;
-  if (hostElement.getAttribute("menu-desktop-layout") == "sidebar" && triggerParent.parentNode.parentNode.hasAttribute("data-h2-menu-container") && !triggerParent.parentNode.parentNode.hasAttribute("data-mobile")) {
+  if (hostElement.getAttribute("desktop-layout") == "sidebar" && triggerParent.parentNode.parentNode.hasAttribute("data-h2-menu-container") && !triggerParent.parentNode.parentNode.hasAttribute("data-mobile")) {
     triggerParent.closest("[data-h2-menu]").parentNode.host.shadowRoot.querySelector("[data-sidebar-backdrop]").setAttribute("hidden", "");
     document.querySelector("body").style.removeProperty("overflow");
   }
@@ -630,7 +630,7 @@ function h2MenuCloseMenuOnAnchorClickEvent(e) {
     // Check to see if the link's href is a page anchor.
     if (destination.match("^#")) {
       var menuType = "";
-      var menuAttribute = menuWrapper.getAttribute("menu-desktop-layout");
+      var menuAttribute = menuWrapper.getAttribute("desktop-layout");
       if (menuAttribute.includes("topbar")) {
         menuType = "top";
       } else if (menuAttribute.includes("sidebar")) {

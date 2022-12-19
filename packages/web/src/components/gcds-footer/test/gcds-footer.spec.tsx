@@ -10,11 +10,11 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="en">
         <mock:shadow-root>
-          <div class="container">
+          <div class="top__container">
             <slot name="top"></slot>
           </div>
-          <div class="brand">
-            <div class="container">
+          <div class="gcds-footer__brand">
+            <div class="brand__container">
               <nav aria-label="About this site">
                 <h2>
                   About this site
@@ -47,7 +47,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <div class="wordmark">
+              <div class="brand__wordmark">
                 <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>
@@ -65,11 +65,11 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="full" lang="en">
         <mock:shadow-root>
-          <div class="container">
+          <div class="top__container">
             <slot name="top"></slot>
           </div>
-          <div class="landscape">
-            <nav aria-label="About government" class="container">
+          <div class="gcds-footer__landscape">
+            <nav aria-label="About government" class="landscape__container">
               <h2>
                 About government
               </h2>
@@ -122,8 +122,8 @@ describe('gcds-footer', () => {
               </ul>
             </nav>
           </div>
-          <div class="brand">
-            <div class="container">
+          <div class="gcds-footer__brand">
+            <div class="brand__container">
               <nav aria-label="About this site">
                 <h2>
                   About this site
@@ -156,7 +156,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <div class="wordmark">
+              <div class="brand__wordmark">
                 <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>
@@ -174,11 +174,11 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="fr">
         <mock:shadow-root>
-          <div class="container">
+          <div class="top__container">
             <slot name="top"></slot>
           </div>
-          <div class="brand">
-            <div class="container">
+          <div class="gcds-footer__brand">
+            <div class="brand__container">
               <nav aria-label="À propos de ce site">
                 <h2>
                   À propos de ce site
@@ -211,7 +211,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <div class="wordmark">
+              <div class="brand__wordmark">
                 <gcds-signature lang="fr" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>
@@ -229,11 +229,11 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="full" lang="fr">
         <mock:shadow-root>
-          <div class="container">
+          <div class="top__container">
             <slot name="top"></slot>
           </div>
-          <div class="landscape">
-            <nav aria-label="Au sujet du gouvernement" class="container">
+          <div class="gcds-footer__landscape">
+            <nav aria-label="Au sujet du gouvernement" class="landscape__container">
               <h2>
                 Au sujet du gouvernement
               </h2>
@@ -286,8 +286,8 @@ describe('gcds-footer', () => {
               </ul>
             </nav>
           </div>
-          <div class="brand">
-            <div class="container">
+          <div class="gcds-footer__brand">
+            <div class="brand__container">
               <nav aria-label="À propos de ce site">
                 <h2>
                   À propos de ce site
@@ -320,7 +320,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <div class="wordmark">
+              <div class="brand__wordmark">
                 <gcds-signature lang="fr" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>

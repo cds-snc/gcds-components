@@ -217,18 +217,18 @@
 
 /* Center */
 @media screen and (min-width: 64em) {
-  :host([menu-desktop-layout*='topbar'][menu-alignment*='center']) [data-h2-menu-container] {
+  :host([desktop-layout*='topbar'][alignment*='center']) [data-h2-menu-container] {
     justify-content: space-between;
   }
 }
 
 /* Right */
 @media screen and (min-width: 64em) {
-  :host([menu-desktop-layout*='topbar'][menu-alignment*='right']) [data-h2-menu-container] > [data-h2-menulist] {
+  :host([desktop-layout*='topbar'][alignment*='right']) [data-h2-menu-container] > [data-h2-menulist] {
     margin-left: auto;
   }
 
-  :host([menu-desktop-layout*='topbar'][menu-alignment*='right']) [data-h2-menu] [data-h2-menulist] [data-h2-menulist] {
+  :host([desktop-layout*='topbar'][alignment*='right']) [data-h2-menu] [data-h2-menulist] [data-h2-menulist] {
     left: auto;
     right: 0;
   }
@@ -236,7 +236,7 @@
 
 /* Split */
 @media screen and (min-width: 64em) {
-  :host([menu-desktop-layout*='topbar'][menu-alignment*='split']) [data-h2-menu] [data-h2-menu-container] {
+  :host([desktop-layout*='topbar'][alignment*='split']) [data-h2-menu] [data-h2-menu-container] {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -256,7 +256,7 @@
 
 /* Sticky */
 @media screen and (min-width: 64em) {
-  :host([menu-desktop-layout*='topbar'][menu-sticky]) [data-h2-menu] {
+  :host([desktop-layout*='topbar'][menu-sticky]) [data-h2-menu] {
     position: sticky;
     top: 0;
     left: 0;
@@ -267,8 +267,8 @@
 
 /* Drawer */
 @media only screen and (max-width:  63.99em) {
-  :host([menu-mobile-layout*='drawer']) [data-h2-menu],
-  :host([menu-mobile-layout*='toolbar']) [data-h2-menu] {
+  :host([mobile-layout*='drawer']) [data-h2-menu],
+  :host([mobile-layout*='toolbar']) [data-h2-menu] {
     z-index: 9990;
     position: fixed;
     top: 0;
@@ -278,8 +278,8 @@
     overflow: auto;
   }
 
-  :host([menu-mobile-layout*='drawer']),
-  :host([menu-mobile-layout*='toolbar']) {
+  :host([mobile-layout*='drawer']),
+  :host([mobile-layout*='toolbar']) {
     [data-h2-menu] [data-h2-menulist] [data-h2-menulist] li {
       [role='menuitem'],
       [data-trigger-label] {
@@ -301,7 +301,7 @@
   }
 }
 
-:host([menu-mobile-layout*='drawer']) {
+:host([mobile-layout*='drawer']) {
   [data-h2-menu] {
     display: none;
 
@@ -330,7 +330,7 @@
 
 /* Sidebar */
 @media screen and (min-width: 64em) {
-  :host([menu-desktop-layout*='sidebar']) {
+  :host([desktop-layout*='sidebar']) {
     [data-h2-menu] {
       position: fixed;
       top: 0;
@@ -401,7 +401,7 @@
 
 /* Topbar */
 @media screen and (min-width: 64em) {
-  :host([menu-desktop-layout*='topbar']) {
+  :host([desktop-layout*='topbar']) {
     [data-optional-left],
     [data-optional-right] {
       display: grid;
@@ -493,7 +493,7 @@
     }
   }
 
-  :host([menu-desktop-layout*='topbar'][menu-mobile-layout*='drawer']) [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] {
+  :host([desktop-layout*='topbar'][mobile-layout*='drawer']) [data-h2-menu-container] > [data-h2-menulist] > li > [data-h2-menulist] {
     position: absolute;
     bottom: 0;
     width: 25vw;
@@ -504,7 +504,7 @@
 }
 
 @media screen and (max-width: 76.625em) {
-  :host([menu-desktop-layout*='topbar']) [data-h2-menu-container]:not([data-mobile]) {
+  :host([desktop-layout*='topbar']) [data-h2-menu-container]:not([data-mobile]) {
     max-width: 90%;
   }
 }

@@ -32,36 +32,36 @@ export class GcdsSiteMenu {
   /**
    * Desktop layout
    */
-  @Prop({ mutable: true }) menuDesktopLayout!: 'topbar' | 'sidebar';
+  @Prop({ mutable: true }) desktopLayout!: 'topbar' | 'sidebar';
 
-  @Watch('menuDesktopLayout')
+  @Watch('desktopLayout')
   validateDesktopLayout(newValue: string) {
     if (newValue != 'topbar' && newValue != 'sidebar') {
-      this.menuDesktopLayout = 'topbar';
+      this.desktopLayout = 'topbar';
     }
   }
 
   /**
    * Mobile layout
    */
-  @Prop({ mutable: true }) menuMobileLayout!: 'drawer'; // | 'toolbar';
+  @Prop({ mutable: true }) mobileLayout!: 'drawer'; // | 'toolbar';
 
-  @Watch('menuDesktopLayout')
+  @Watch('mobileLayout')
   validateMobileLayout(newValue: string) {
     if (newValue != 'drawer' && newValue != 'toolbar') {
-      this.menuMobileLayout = 'drawer';
+      this.mobileLayout = 'drawer';
     }
   }
 
   /**
    * Menu alignment
    */
-  @Prop() menuAlignment: 'left' | 'center' | 'right' | 'split' = 'left';
+  @Prop() alignment: 'left' | 'center' | 'right' | 'split' = 'left';
 
   /**
    * Sticky navigation flag
    */
-  @Prop() menuPosition: 'static' | 'sticky' = 'static';
+  @Prop() position: 'static' | 'sticky' = 'static';
 
   /**
    * Method to apply multiple attriibutes to an element
@@ -159,7 +159,7 @@ export class GcdsSiteMenu {
   private async configureMenu() {
     var mainMenus = [];
     var elementChildren = this.el.children;
-    var desktopLayout = this.menuDesktopLayout;
+    var desktopLayout = this.desktopLayout;
 
     // Loop through slotted elements
     for (var i = 0; i < elementChildren.length; i++) {
@@ -213,8 +213,8 @@ export class GcdsSiteMenu {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    this.validateDesktopLayout(this.menuDesktopLayout);
-    this.validateMobileLayout(this.menuMobileLayout);
+    this.validateDesktopLayout(this.desktopLayout);
+    this.validateMobileLayout(this.mobileLayout);
 
     // Add required attributes to slotted <ul>
     await this.configureMenu();
@@ -240,8 +240,8 @@ export class GcdsSiteMenu {
     }
 
     var hostElement = this.el;
-    var mobileLayout = this.menuMobileLayout;
-    var desktopLayout = this.menuDesktopLayout;
+    var mobileLayout = this.mobileLayout;
+    var desktopLayout = this.desktopLayout;
 
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
 
@@ -292,7 +292,7 @@ export class GcdsSiteMenu {
     h2MenuAddMobileMenuTrigger(this.el);
     h2MenuAddPageAnchor(this.el);
 
-    if (this.menuDesktopLayout == "sidebar") {
+    if (this.desktopLayout == "sidebar") {
       menuEnableBackButtonTriggers(this.el);
     } else {
       this.el.addEventListener('focusout', () => {
@@ -304,14 +304,14 @@ export class GcdsSiteMenu {
   }
 
   render() {
-    const sticky = this.menuPosition == 'sticky' ? true : false;
-    const mobileMenutask = this.menuMobileLayout == 'drawer' ?
+    const sticky = this.position == 'sticky' ? true : false;
+    const mobileMenutask = this.mobileLayout == 'drawer' ?
       <gcds-button
         aria-expanded="false"
         aria-label={I18N[this.lang].mobileTriggerLabel}
         aria-haspopup="true"
         data-h2-mobile-menu-trigger
-        button-type="button" role="button" button-role="primary">
+        type="button" role="button" button-role="primary">
         <span data-h2-mobile-menu-trigger-open-label>Menu</span><span data-h2-mobile-menu-trigger-close-label>{I18N[this.lang].mobileTriggerClose}</span>
       </gcds-button>
       : '';
@@ -319,8 +319,8 @@ export class GcdsSiteMenu {
     return (
       <Host
         data-h2-menu-wrapper
-        menu-desktop-layout={this.menuDesktopLayout}
-        menu-mobile-layout={this.menuMobileLayout}
+        desktop-layout={this.desktopLayout}
+        mobile-layout={this.mobileLayout}
         menu-sticky={sticky}
         lang={this.lang}
       >
@@ -341,7 +341,7 @@ export class GcdsSiteMenu {
           </div>
         </nav>
 
-        {this.menuDesktopLayout == "sidebar" ?
+        {this.desktopLayout == "sidebar" ?
           <div data-sidebar-backdrop hidden onClick={() => {h2MenuCloseOpenSubmenusHandler(this.el)}}></div>
         : null }
 

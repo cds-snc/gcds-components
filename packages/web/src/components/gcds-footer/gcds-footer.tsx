@@ -52,7 +52,7 @@ export class GcdsFooter {
     if (!!this.el.querySelector('[slot="signature"]')) {
       return <slot name="wordmark"></slot>;
     } else {
-      return (<div class="wordmark">
+      return (<div class="brand__wordmark">
           <gcds-signature
             type="wordmark"
             variant={signVariant}
@@ -73,13 +73,13 @@ export class GcdsFooter {
 
     return (
       <Host role="contentinfo">
-        <div class="container">
+        <div class="top__container">
           <slot name="top"></slot>
         </div>
 
         {display === "full" ?
-          (<div class="landscape">
-            <nav class="container" aria-label={I18N[lang].gov.heading}>
+          (<div class="gcds-footer__landscape">
+            <nav class="landscape__container" aria-label={I18N[lang].gov.heading}>
               <h2>{I18N[lang].gov.heading}</h2>
               <ul>
                 {Object.keys(govNav).map((value) =>
@@ -92,8 +92,8 @@ export class GcdsFooter {
           </div>)
         : null }
 
-        <div class="brand">
-          <div class="container">
+        <div class="gcds-footer__brand">
+          <div class="brand__container">
             {hasList ?
               <slot name="list"></slot>
             :
@@ -110,7 +110,7 @@ export class GcdsFooter {
             }
 
             {topHref ?
-              (<div class="top">
+              (<div class="brand__skip-to-top">
                 <a href={topHref}>{I18N[lang].topofpage}</a>
               </div>)
             : null }

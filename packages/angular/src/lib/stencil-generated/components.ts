@@ -50,14 +50,14 @@ export declare interface GcdsButton extends Components.GcdsButton {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonSize', 'buttonStyle', 'buttonType', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'target'],
+  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonStyle', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type'],
   methods: ['focusElement']
 })
 @Component({
   selector: 'gcds-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonSize', 'buttonStyle', 'buttonType', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'target']
+  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonStyle', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type']
 })
 export class GcdsButton {
   protected el: HTMLElement;
@@ -553,13 +553,13 @@ export declare interface GcdsSiteMenu extends Components.GcdsSiteMenu {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['menuAlignment', 'menuDesktopLayout', 'menuMobileLayout', 'menuPosition']
+  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position']
 })
 @Component({
   selector: 'gcds-site-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['menuAlignment', 'menuDesktopLayout', 'menuMobileLayout', 'menuPosition']
+  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position']
 })
 export class GcdsSiteMenu {
   protected el: HTMLElement;

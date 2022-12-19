@@ -192,7 +192,7 @@ export class GcdsFieldset {
     return (
       <Host>
         <fieldset
-          class={hasError ? "gcds-error" : null}
+          class={hasError ? "gcds-fieldset--error" : null}
           id={fieldsetId}
           {...fieldsetAttrs}
           aria-labelledby={hint ? `legend-${fieldsetId} hint-${fieldsetId}` : `legend-${fieldsetId}`}
@@ -202,7 +202,7 @@ export class GcdsFieldset {
           >
             {legend}
             {required ?
-                <strong class="required">({requiredText})</strong>
+                <strong class="legend__required">({requiredText})</strong>
               :
                 null
             }

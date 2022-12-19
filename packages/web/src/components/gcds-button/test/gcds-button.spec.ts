@@ -10,7 +10,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button>
         <mock:shadow-root>
-          <button class="primary solid regular" type="button">
+          <button class="button--regular button--role-primary button--solid" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -28,12 +28,12 @@ describe('gcds-button', () => {
   it('renders type button', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
-      html: `<gcds-button button-type="button">Button Label</gcds-button>`,
+      html: `<gcds-button type="button">Button Label</gcds-button>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-button button-type="button">
+      <gcds-button type="button">
         <mock:shadow-root>
-          <button class="primary solid regular" type="button">
+          <button class="button--role-primary button--solid button--regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -47,12 +47,12 @@ describe('gcds-button', () => {
   it('renders type reset', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
-      html: `<gcds-button button-type="reset">Button Label</gcds-button>`,
+      html: `<gcds-button type="reset">Button Label</gcds-button>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-button button-type="reset">
+      <gcds-button type="reset">
         <mock:shadow-root>
-          <button class="primary solid regular" type="reset">
+          <button class="button--role-primary button--solid button--regular" type="reset">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -66,12 +66,12 @@ describe('gcds-button', () => {
   it('renders type submit', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
-      html: `<gcds-button button-type="submit">Button Label</gcds-button>`,
+      html: `<gcds-button type="submit">Button Label</gcds-button>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-button button-type="submit">
+      <gcds-button type="submit">
         <mock:shadow-root>
-          <button class="primary solid regular" type="submit">
+          <button class="button--role-primary button--solid button--regular" type="submit">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -85,12 +85,12 @@ describe('gcds-button', () => {
   it('renders type link', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
-      html: `<gcds-button button-type="link" href="#">Link Label</gcds-button>`,
+      html: `<gcds-button type="link" href="#">Link Label</gcds-button>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-button href="#" button-type="link">
+      <gcds-button href="#" type="link">
         <mock:shadow-root>
-          <a class="primary solid regular" href="#">
+          <a class="button--role-primary button--solid button--regular" href="#">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -113,7 +113,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="primary">
         <mock:shadow-root>
-          <button class="primary solid regular" type="button">
+          <button class="button--role-primary button--solid button--regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -132,7 +132,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="secondary">
         <mock:shadow-root>
-          <button class="secondary solid regular" type="button">
+          <button class="button--role-secondary button--solid button--regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -151,7 +151,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="destructive">
         <mock:shadow-root>
-          <button class="destructive solid regular" type="button">
+          <button class="button--role-destructive button--solid button--regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -174,7 +174,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-style="solid">
         <mock:shadow-root>
-          <button class="primary solid regular" type="button">
+          <button class="button--role-primary button--solid button--regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -193,7 +193,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-style="text-only">
         <mock:shadow-root>
-          <button class="primary text-only regular" type="button">
+          <button class="button--role-primary button--text-only button--regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -207,12 +207,12 @@ describe('gcds-button', () => {
   it('renders external link with label + icon', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
-      html: `<gcds-button button-type="link" button-style="text-only" href="https://google.com" target="_blank">Button Label</gcds-button>`,
+      html: `<gcds-button type="link" button-style="text-only" href="https://google.com" target="_blank">Button Label</gcds-button>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-button button-type="link" button-style="text-only" href="https://google.com" target="_blank">
+      <gcds-button type="link" button-style="text-only" href="https://google.com" target="_blank">
         <mock:shadow-root>
-          <a class="primary text-only regular" href="https://google.com" target="_blank">
+          <a class="button--role-primary button--text-only button--regular" href="https://google.com" target="_blank">
             <slot name="left"></slot>
             <slot></slot>
             <gcds-icon name="external-link" label="Opens in a new tab." margin-left="spacing-200" />

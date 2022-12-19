@@ -269,7 +269,7 @@ export class GcdsCheckbox {
 
     return (
       <Host>
-        <div class={`gcds-checkbox-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
+        <div class={`gcds-checkbox ${disabled ? 'gcds-checkbox--disabled' : ''} ${hasError ? 'gcds-checkbox--error' : ''}`}>
           <input
             id={checkboxId}
             type="checkbox"

@@ -103,7 +103,7 @@ describe('gcds-button a11y tests', () => {
   // Links have discernible text
   it('Link name', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-button button-type="link" href="#" button-role="primary" button-style="solid">Button Label</gcds-button>');
+    await page.setContent('<gcds-button type="link" href="#" button-role="primary" button-style="solid">Button Label</gcds-button>');
     
     const colorContrastTest = new AxePuppeteer(page).withRules('link-name').analyze();
     let results = await colorContrastTest;
@@ -125,7 +125,7 @@ describe('gcds-button a11y tests', () => {
 
   it('Keyboard focus: link', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-button button-type="link" href="#">Link Label</gcds-button>');
+    await page.setContent('<gcds-button type="link" href="#">Link Label</gcds-button>');
 
     const linkText = await (await page.find('gcds-button >>> a')).innerText;
 
