@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  margin-top: var(--gcds-spacing-500);
+
+  .gcds-date-modified {
+
+    dt,
+    dd {
+      display: inline;
+    }
+  
+    dd {
+      margin-left: var(--gcds-spacing-50);
+    }
+  }
+
+}
