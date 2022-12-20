@@ -10,7 +10,6 @@
 | Property          | Attribute          | Description                                                      | Type                  | Default     |
 | ----------------- | ------------------ | ---------------------------------------------------------------- | --------------------- | ----------- |
 | `display`         | `display`          | Display mode of the footer                                       | `"compact" \| "full"` | `undefined` |
-| `topHref`         | `top-href`         | Top of page href                                                 | `string`              | `undefined` |
 | `wordmarkVariant` | `wordmark-variant` | GcdsSignature - The variant of the Government of Canada wordmark | `"colour" \| "white"` | `undefined` |
 
 

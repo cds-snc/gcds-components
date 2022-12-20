@@ -245,13 +245,13 @@ export declare interface GcdsFooter extends Components.GcdsFooter {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['display', 'topHref', 'wordmarkVariant']
+  inputs: ['display', 'wordmarkVariant']
 })
 @Component({
   selector: 'gcds-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['display', 'topHref', 'wordmarkVariant']
+  inputs: ['display', 'wordmarkVariant']
 })
 export class GcdsFooter {
   protected el: HTMLElement;

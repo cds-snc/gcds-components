@@ -285,10 +285,6 @@ export namespace Components {
          */
         "display": 'compact' | 'full';
         /**
-          * Top of page href
-         */
-        "topHref": string;
-        /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */
         "wordmarkVariant": 'colour' | 'white';
@@ -1297,10 +1293,6 @@ declare namespace LocalJSX {
           * Display mode of the footer
          */
         "display"?: 'compact' | 'full';
-        /**
-          * Top of page href
-         */
-        "topHref"?: string;
         /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */

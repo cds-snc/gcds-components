@@ -1,48 +1,101 @@
 const I18N = {
     "en": {
         gov: {
-            heading: "About government",
+            heading: "Government of Canada",
             menu: {
-                contact: {
-                    text: "Contact us",
-                    link: "https://canada.ca/en/contact.html"
+                contacts: {
+                    text: "All Contacts",
+                    link: "https://www.canada.ca/en/contact.html"
                 },
-                departments: {
+                dept: {
                     text: "Departments and agencies",
                     link: "https://www.canada.ca/en/government/dept.html"
                 },
-                publicservice: {
-                    text: "Public service and military",
-                    link: "https://www.canada.ca/en/government/publicservice.html"
-                },
-                news: {
-                    text: "News",
-                    link: "https://www.canada.ca/en/news.html"
-                },
-                treaties: {
-                    text: "Treaties, laws and regulations",
-                    link: "https://www.canada.ca/en/government/system/laws.html"
-                },
-                govwide: {
-                    text: "Government-wide reporting",
-                    link: "https://www.canada.ca/en/transparency/reporting.html"
-                },
-                pm: {
-                    text: "Prime Minister",
-                    link: "http://pm.gc.ca/en"
-                },
-                aboutgov: {
+                about: {
                     text: "About government",
                     link: "https://www.canada.ca/en/government/system.html"
-                },
-                opengov: {
-                    text: "Open government",
-                    link: "http://open.canada.ca/en"
                 }
+            }
+        },
+        themes: {
+            heading: "Themes and topics",
+            menu: {
+                jobs: {
+                    text: "Jobs",
+                    link: "https://www.canada.ca/en/services/jobs.html"
+                },
+                immigration: {
+                    text: "Immigration and citizenship",
+                    link: "https://www.canada.ca/en/services/immigration-citizenship.html"
+                },
+                travel: {
+                    text: "Travel and tourism",
+                    link: "https://travel.gc.ca/"
+                },
+                business: {
+                    text: "Business",
+                    link: "https://www.canada.ca/en/services/business.html"
+                },
+                benefits: {
+                    text: "Benefits",
+                    link: "https://www.canada.ca/en/services/benefits.html"
+                },
+                health: {
+                    text: "Health",
+                    link: "https://www.canada.ca/en/services/health.html"
+                },
+                taxes: {
+                    text: "Taxes",
+                    link: "https://www.canada.ca/en/services/taxes.html"
+                },
+                enviro: {
+                    text: "Environment and natural resources",
+                    link: "https://www.canada.ca/en/services/environment.html"
+                },
+                defence: {
+                    text: "National security and defence",
+                    link: "https://www.canada.ca/en/services/defence.html"
+                },
+                culture: {
+                    text: "Culture, history and sport",
+                    link: "https://www.canada.ca/en/services/culture.html"
+                },
+                policing: {
+                    text: "Policing, justice and emergencies",
+                    link: "https://www.canada.ca/en/services/policing.html"
+                },
+                transport: {
+                    text: "Transport and infrastructure",
+                    link: "https://www.canada.ca/en/services/transport.html"
+                },
+                world: {
+                    text: "Canada and the world",
+                    link: "https://international.gc.ca/world-monde/index.aspx?lang=eng"
+                },
+                finance: {
+                    text: "Money and finance",
+                    link: "https://www.canada.ca/en/services/finance.html"
+                },
+                science: {
+                    text: "Science and innovation",
+                    link: "https://www.canada.ca/en/services/science.html"
+                },
+                indigenous: {
+                    text: "Indigenous peoples",
+                    link: "https://www.canada.ca/en/services/indigenous-peoples.html"
+                },
+                veterans: {
+                    text: "Veterans and military",
+                    link: "https://www.canada.ca/en/services/veterans.html"
+                },
+                youth: {
+                    text: "Youth",
+                    link: "https://www.canada.ca/en/services/youth.html"
+                },
             },
         },
         site: {
-            heading: "About this site",
+            heading: "Government of Canada Corporate",
             menu: {
                 social: {
                     text: "Social media",
@@ -70,48 +123,101 @@ const I18N = {
     },
     "fr": {
         gov: {
-            heading: "Au sujet du gouvernement",
+            heading: "Gouvernement du Canada",
             menu: {
-                contact: {
-                    text: "Contactez-nous",
+                contacts: {
+                    text: "Toutes les coordonnées",
                     link: "https://www.canada.ca/fr/contact.html"
                 },
-                departments: {
+                dept: {
                     text: "Ministères et organismes",
                     link: "https://www.canada.ca/fr/gouvernement/min.html"
                 },
-                publicservice: {
-                    text: "Fonction publique et force militaire",
-                    link: "https://www.canada.ca/fr/gouvernement/fonctionpublique.html"
-                },
-                news: {
-                    text: "Nouvelles",
-                    link: "https://www.canada.ca/fr/nouvelles.html"
-                },
-                treaties: {
-                    text: "Traités, lois et règlements",
-                    link: "https://www.canada.ca/fr/gouvernement/systeme/lois.html"
-                },
-                govwide: {
-                    text: "Rapports à l'échelle du gouvernement",
-                    link: "https://www.canada.ca/fr/transparence/rapports.html"
-                },
-                pm: {
-                    text: "Premier ministre",
-                    link: "http://pm.gc.ca/fr"
-                },
-                aboutgov: {
+                about: {
                     text: "À propos du gouvernement",
                     link: "https://www.canada.ca/fr/gouvernement/systeme.html"
-                },
-                opengov: {
-                    text: "Gouvernement ouvert",
-                    link: "http://ouvert.canada.ca/"
                 }
+            }
+        },
+        themes: {
+            heading: "Thèmes et sujets",
+            menu: {
+                jobs: {
+                    text: "Emplois",
+                    link: "https://www.canada.ca/fr/services/emplois.html"
+                },
+                immigration: {
+                    text: "Immigration et citoyenneté",
+                    link: "https://www.canada.ca/fr/services/immigration-citoyennete.html"
+                },
+                travel: {
+                    text: "Voyage et tourisme",
+                    link: "https://voyage.gc.ca/"
+                },
+                business: {
+                    text: "Entreprises",
+                    link: "https://www.canada.ca/fr/services/entreprises.html"
+                },
+                benefits: {
+                    text: "Prestations",
+                    link: "https://www.canada.ca/fr/services/prestations.html"
+                },
+                health: {
+                    text: "Santé",
+                    link: "https://www.canada.ca/fr/services/sante.html"
+                },
+                taxes: {
+                    text: "Impôts",
+                    link: "https://www.canada.ca/fr/services/impots.html"
+                },
+                enviro: {
+                    text: "Environnement et ressources naturelles",
+                    link: "https://www.canada.ca/fr/services/environnement.html"
+                },
+                defence: {
+                    text: "Sécurité nationale et défense",
+                    link: "https://www.canada.ca/fr/services/defense.html"
+                },
+                culture: {
+                    text: "Culture, histoire et sport",
+                    link: "https://www.canada.ca/fr/services/culture.html"
+                },
+                policing: {
+                    text: "Services de police, justice et urgences",
+                    link: "https://www.canada.ca/fr/services/police.html"
+                },
+                transport: {
+                    text: "Transport et infrastructure",
+                    link: "https://www.canada.ca/fr/services/transport.html"
+                },
+                world: {
+                    text: " Le Canada et le monde",
+                    link: "https://www.international.gc.ca/world-monde/index.aspx?lang=fra"
+                },
+                finance: {
+                    text: "Argent et finance",
+                    link: "https://www.canada.ca/fr/services/finance.html"
+                },
+                science: {
+                    text: "Science et innovation",
+                    link: "https://www.canada.ca/fr/services/science.html"
+                },
+                indigenous: {
+                    text: "Autochtones",
+                    link: "https://www.canada.ca/fr/services/autochtones.html"
+                },
+                veterans: {
+                    text: "Vétérans et militaires",
+                    link: "https://www.canada.ca/fr/services/veterans.html"
+                },
+                youth: {
+                    text: "Jeunesse",
+                    link: "https://www.canada.ca/fr/services/jeunesse.html"
+                },
             },
         },
         site: {
-            heading: "À propos de ce site",
+            heading: "Organisation du gouvernement du Canada",
             menu: {
                 social: {
                     text: "Médias sociaux",

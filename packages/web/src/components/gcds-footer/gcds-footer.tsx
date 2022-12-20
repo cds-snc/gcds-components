@@ -34,11 +34,6 @@ export class GcdsFooter {
   */
   @Prop({ reflect: false, mutable: false }) wordmarkVariant: 'colour' | 'white';
 
-  /**
-  * Top of page href
-  */
-  @Prop({ reflect: false, mutable: false }) topHref: string;
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -66,9 +61,14 @@ export class GcdsFooter {
     return !!this.el.querySelector('[slot="list"]');
   }
 
+  private get hasContextual() {
+    return !!this.el.querySelector('[slot="contextual"]');
+  }
+
   render() {
-    const { lang, display, topHref, hasList, renderSignature } = this;
+    const { lang, display, hasList, hasContextual, renderSignature } = this;
     const govNav = I18N[lang].gov.menu;
+    const themeNav = I18N[lang].themes.menu;
     const siteNav = I18N[lang].site.menu;
 
     return (
@@ -78,17 +78,38 @@ export class GcdsFooter {
         </div>
 
         {display === "full" ?
-          (<div class="gcds-footer__landscape">
-            <nav class="landscape__container" aria-label={I18N[lang].gov.heading}>
-              <h2>{I18N[lang].gov.heading}</h2>
-              <ul>
-                {Object.keys(govNav).map((value) =>
-                  <li>
-                    <a href={govNav[value].link}>{govNav[value].text}</a>
-                  </li>
-                )}
-              </ul>
-            </nav>
+          (<div>
+            {hasContextual && 
+              <div class="gcds-footer__contextual">
+                <div class="contextual__container">
+                  <slot name="contextual"></slot>
+                </div>
+              </div>
+            }
+            <div class="gcds-footer__landscape">
+              <div class="landscape__container">
+                <nav class="landscape__govnav" aria-label={I18N[lang].gov.heading}>
+                  <h3>{I18N[lang].gov.heading}</h3>
+                  <ul>
+                    {Object.keys(govNav).map((value) =>
+                      <li>
+                        <a href={govNav[value].link}>{govNav[value].text}</a>
+                      </li>
+                    )}
+                  </ul>
+                </nav>
+                <nav class="landscape__themenav" aria-label={I18N[lang].themes.heading}>
+                  <h4>{I18N[lang].themes.heading}</h4>
+                  <ul>
+                    {Object.keys(themeNav).map((value) =>
+                      <li>
+                        <a href={themeNav[value].link}>{themeNav[value].text}</a>
+                      </li>
+                    )}
+                  </ul>
+                </nav>
+              </div>
+            </div>
           </div>)
         : null }
 
@@ -108,12 +129,6 @@ export class GcdsFooter {
                 </ul>
               </nav>)
             }
-
-            {topHref ?
-              (<div class="brand__skip-to-top">
-                <a href={topHref}>{I18N[lang].topofpage}</a>
-              </div>)
-            : null }
 
             {renderSignature}
           </div>
