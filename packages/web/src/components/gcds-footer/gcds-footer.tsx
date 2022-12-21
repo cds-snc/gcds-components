@@ -76,39 +76,35 @@ export class GcdsFooter {
         <div class="top__container">
           <slot name="top"></slot>
         </div>
-
+        {hasContextual && 
+          <div class="gcds-footer__contextual">
+            <div class="contextual__container">
+              <slot name="contextual"></slot>
+            </div>
+          </div>}
         {display === "full" ?
-          (<div>
-            {hasContextual && 
-              <div class="gcds-footer__contextual">
-                <div class="contextual__container">
-                  <slot name="contextual"></slot>
-                </div>
-              </div>
-            }
-            <div class="gcds-footer__landscape">
-              <div class="landscape__container">
-                <nav class="landscape__govnav" aria-label={I18N[lang].gov.heading}>
-                  <h3>{I18N[lang].gov.heading}</h3>
-                  <ul>
-                    {Object.keys(govNav).map((value) =>
-                      <li>
-                        <a href={govNav[value].link}>{govNav[value].text}</a>
-                      </li>
-                    )}
-                  </ul>
-                </nav>
-                <nav class="landscape__themenav" aria-label={I18N[lang].themes.heading}>
-                  <h4>{I18N[lang].themes.heading}</h4>
-                  <ul>
-                    {Object.keys(themeNav).map((value) =>
-                      <li>
-                        <a href={themeNav[value].link}>{themeNav[value].text}</a>
-                      </li>
-                    )}
-                  </ul>
-                </nav>
-              </div>
+          (<div class="gcds-footer__landscape">
+            <div class="landscape__container">
+              <nav class="landscape__govnav" aria-label={I18N[lang].gov.heading}>
+                <h3>{I18N[lang].gov.heading}</h3>
+                <ul>
+                  {Object.keys(govNav).map((value) =>
+                    <li>
+                      <a href={govNav[value].link}>{govNav[value].text}</a>
+                    </li>
+                  )}
+                </ul>
+              </nav>
+              <nav class="landscape__themenav" aria-label={I18N[lang].themes.heading}>
+                <h4>{I18N[lang].themes.heading}</h4>
+                <ul>
+                  {Object.keys(themeNav).map((value) =>
+                    <li>
+                      <a href={themeNav[value].link}>{themeNav[value].text}</a>
+                    </li>
+                  )}
+                </ul>
+              </nav>
             </div>
           </div>)
         : null }
