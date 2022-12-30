@@ -33,6 +33,22 @@ export namespace Components {
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
+    interface GcdsBreadcrumbs {
+        /**
+          * Defines if the default canada.ca link should be displayed or not.
+         */
+        "hideCanadaLink": boolean;
+    }
+    interface GcdsBreadcrumbsItem {
+        /**
+          * Specifies the href of the breadcrumb item.
+         */
+        "href": string | undefined;
+        /**
+          * Defines if the breadcrumb item is the current page or not.
+         */
+        "isCurrentPage"?: boolean;
+    }
     interface GcdsButton {
         /**
           * Custom callback function on blur event
@@ -815,6 +831,18 @@ declare global {
         prototype: HTMLGcdsAlertElement;
         new (): HTMLGcdsAlertElement;
     };
+    interface HTMLGcdsBreadcrumbsElement extends Components.GcdsBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLGcdsBreadcrumbsElement: {
+        prototype: HTMLGcdsBreadcrumbsElement;
+        new (): HTMLGcdsBreadcrumbsElement;
+    };
+    interface HTMLGcdsBreadcrumbsItemElement extends Components.GcdsBreadcrumbsItem, HTMLStencilElement {
+    }
+    var HTMLGcdsBreadcrumbsItemElement: {
+        prototype: HTMLGcdsBreadcrumbsItemElement;
+        new (): HTMLGcdsBreadcrumbsItemElement;
+    };
     interface HTMLGcdsButtonElement extends Components.GcdsButton, HTMLStencilElement {
     }
     var HTMLGcdsButtonElement: {
@@ -961,6 +989,8 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "gcds-alert": HTMLGcdsAlertElement;
+        "gcds-breadcrumbs": HTMLGcdsBreadcrumbsElement;
+        "gcds-breadcrumbs-item": HTMLGcdsBreadcrumbsItemElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
@@ -1017,6 +1047,22 @@ declare namespace LocalJSX {
           * Events
          */
         "onGcdsDismiss"?: (event: GcdsAlertCustomEvent<void>) => void;
+    }
+    interface GcdsBreadcrumbs {
+        /**
+          * Defines if the default canada.ca link should be displayed or not.
+         */
+        "hideCanadaLink"?: boolean;
+    }
+    interface GcdsBreadcrumbsItem {
+        /**
+          * Specifies the href of the breadcrumb item.
+         */
+        "href": string | undefined;
+        /**
+          * Defines if the breadcrumb item is the current page or not.
+         */
+        "isCurrentPage"?: boolean;
     }
     interface GcdsButton {
         /**
@@ -1822,6 +1868,8 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;
+        "gcds-breadcrumbs": GcdsBreadcrumbs;
+        "gcds-breadcrumbs-item": GcdsBreadcrumbsItem;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
         "gcds-date-modified": GcdsDateModified;
@@ -1853,6 +1901,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
+            "gcds-breadcrumbs": LocalJSX.GcdsBreadcrumbs & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsElement>;
+            "gcds-breadcrumbs-item": LocalJSX.GcdsBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsItemElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
