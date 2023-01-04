@@ -5,7 +5,12 @@
 
   h2,
   h4 {
-    display: none;
+    clip: rect(1px,1px,1px,1px);
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
   }
 
   [class$="__container"] {
@@ -24,8 +29,8 @@
   }
 
   .gcds-footer__contextual {
-    background-color: #33465c; /* --gcds-footer-contextual-background */
-    color: var(--gcds-footer-landscape-text);
+    background-color: var(--gcds-footer-contextual-background);
+    color: var(--gcds-footer-contextual-text);
     padding: var(--gcds-spacing-300) 0;
   }
 
