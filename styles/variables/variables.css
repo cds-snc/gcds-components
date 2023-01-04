@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 03 Jan 2023 21:36:20 GMT
+ * Generated on Wed, 04 Jan 2023 15:42:02 GMT
  */
 
 :root {
@@ -155,6 +155,8 @@
   --gcds-footer-brand-active-background: #000000;
   --gcds-footer-landscape-background: #26374a;
   --gcds-footer-landscape-text: #ffffff;
+  --gcds-footer-contextual-background: #31455c;
+  --gcds-footer-contextual-text: #ffffff;
   --gcds-header-brand-border: #26374a;
   --gcds-input-default-background: #ffffff;
   --gcds-input-default-text: #000000;
