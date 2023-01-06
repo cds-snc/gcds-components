@@ -3,8 +3,8 @@
   font-family: var(--gcds-font-families-body), sans-serif;
   font-size: 0.875rem;
 
-  h2,
-  h4 {
+  .brand__header,
+  .themenav__header {
     clip: rect(1px,1px,1px,1px);
     height: 1px;
     margin: 0;
@@ -185,10 +185,6 @@
 
         @media screen and (min-width: 64em) {
           display: inline-block;
-        }
-
-        &:before {
-          display: none;
         }
 
         @media screen and (min-width: 64em) {

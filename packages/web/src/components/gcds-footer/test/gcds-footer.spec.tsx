@@ -10,15 +10,12 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="en">
         <mock:shadow-root>
-          <div class="top__container">
-            <slot name="top"></slot>
-          </div>
           <div class="gcds-footer__brand">
             <div class="brand__container">
               <nav aria-label="Government of Canada Corporate">
-                <h2>
+                <h3 class="brand__header">
                   Government of Canada Corporate
-                </h2>
+                </h3>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/en/social.html">
@@ -65,9 +62,6 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="full" lang="en">
         <mock:shadow-root>
-          <div class="top__container">
-            <slot name="top"></slot>
-          </div>
           <div class="gcds-footer__landscape">
             <div class="landscape__container">
               <nav aria-label="Government of Canada" class="landscape__govnav">
@@ -93,7 +87,7 @@ describe('gcds-footer', () => {
                 </ul>
               </nav>
               <nav aria-label="Themes and topics" class="landscape__themenav">
-                <h4>
+                <h4 class="themenav__header">
                   Themes and topics
                 </h4>
                 <ul>
@@ -194,9 +188,9 @@ describe('gcds-footer', () => {
           <div class="gcds-footer__brand">
             <div class="brand__container">
               <nav aria-label="Government of Canada Corporate">
-                <h2>
+                <h3 class="brand__header">
                   Government of Canada Corporate
-                </h2>
+                </h3>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/en/social.html">
@@ -243,15 +237,12 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="fr">
         <mock:shadow-root>
-          <div class="top__container">
-            <slot name="top"></slot>
-          </div>
           <div class="gcds-footer__brand">
             <div class="brand__container">
               <nav aria-label="Organisation du gouvernement du Canada">
-                <h2>
+                <h3 class="brand__header">
                   Organisation du gouvernement du Canada
-                </h2>
+                </h3>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/fr/sociaux.html">
@@ -298,9 +289,6 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="full" lang="fr">
         <mock:shadow-root>
-          <div class="top__container">
-            <slot name="top"></slot>
-          </div>
           <div class="gcds-footer__landscape">
             <div class="landscape__container">
               <nav aria-label="Gouvernement du Canada" class="landscape__govnav">
@@ -326,7 +314,7 @@ describe('gcds-footer', () => {
                 </ul>
               </nav>
               <nav aria-label="Thèmes et sujets" class="landscape__themenav">
-                <h4>
+                <h4 class="themenav__header">
                   Thèmes et sujets
                 </h4>
                 <ul>
@@ -427,9 +415,9 @@ describe('gcds-footer', () => {
           <div class="gcds-footer__brand">
             <div class="brand__container">
               <nav aria-label="Organisation du gouvernement du Canada">
-                <h2>
+                <h3 class="brand__header">
                   Organisation du gouvernement du Canada
-                </h2>
+                </h3>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/fr/sociaux.html">
@@ -467,6 +455,4 @@ describe('gcds-footer', () => {
       </gcds-footer>
     `);
   });
-
-
 });

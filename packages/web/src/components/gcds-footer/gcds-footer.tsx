@@ -73,9 +73,6 @@ export class GcdsFooter {
 
     return (
       <Host role="contentinfo">
-        <div class="top__container">
-          <slot name="top"></slot>
-        </div>
         {hasContextual && 
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
@@ -96,7 +93,7 @@ export class GcdsFooter {
                 </ul>
               </nav>
               <nav class="landscape__themenav" aria-label={I18N[lang].themes.heading}>
-                <h4>{I18N[lang].themes.heading}</h4>
+                <h4 class="themenav__header">{I18N[lang].themes.heading}</h4>
                 <ul>
                   {Object.keys(themeNav).map((value) =>
                     <li>
@@ -115,7 +112,7 @@ export class GcdsFooter {
               <slot name="list"></slot>
             :
               (<nav aria-label={I18N[lang].site.heading}>
-                <h2>{I18N[lang].site.heading}</h2>
+                <h3 class="brand__header">{I18N[lang].site.heading}</h3>
                 <ul>
                   {Object.keys(siteNav).map((value) =>
                     <li>
