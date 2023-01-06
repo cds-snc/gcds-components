@@ -3,6 +3,8 @@ import * as d from './components';
 
 export const DIRECTIVES = [
   d.GcdsAlert,
+  d.GcdsBreadcrumbs,
+  d.GcdsBreadcrumbsItem,
   d.GcdsButton,
   d.GcdsCheckbox,
   d.GcdsDateModified,

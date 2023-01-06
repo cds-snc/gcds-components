@@ -1,0 +1,10 @@
+:host .gcds-breadcrumbs {
+  ol {
+    font-size: var(--gcds-font-sizes-text);
+    font-weight: var(--gcds-font-weights-medium);
+    line-height: var(--gcds-line-heights-text);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
