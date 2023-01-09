@@ -36,6 +36,48 @@ export class GcdsAlert {
 }
 
 
+export declare interface GcdsBreadcrumbs extends Components.GcdsBreadcrumbs {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['hideCanadaLink']
+})
+@Component({
+  selector: 'gcds-breadcrumbs',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['hideCanadaLink']
+})
+export class GcdsBreadcrumbs {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsItem {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['href', 'isCurrentPage']
+})
+@Component({
+  selector: 'gcds-breadcrumbs-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['href', 'isCurrentPage']
+})
+export class GcdsBreadcrumbsItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface GcdsButton extends Components.GcdsButton {
   /**
    * Emitted when the button has focus. 
@@ -50,14 +92,14 @@ export declare interface GcdsButton extends Components.GcdsButton {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonSize', 'buttonStyle', 'buttonType', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'target'],
+  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonStyle', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type'],
   methods: ['focusElement']
 })
 @Component({
   selector: 'gcds-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonSize', 'buttonStyle', 'buttonType', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'target']
+  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonStyle', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type']
 })
 export class GcdsButton {
   protected el: HTMLElement;
@@ -102,6 +144,25 @@ export class GcdsCheckbox {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange']);
+  }
+}
+
+
+export declare interface GcdsDateModified extends Components.GcdsDateModified {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined
+})
+@Component({
+  selector: 'gcds-date-modified',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class GcdsDateModified {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 
@@ -553,13 +614,13 @@ export declare interface GcdsSiteMenu extends Components.GcdsSiteMenu {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['menuAlignment', 'menuDesktopLayout', 'menuMobileLayout', 'menuPosition']
+  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position']
 })
 @Component({
   selector: 'gcds-site-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['menuAlignment', 'menuDesktopLayout', 'menuMobileLayout', 'menuPosition']
+  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position']
 })
 export class GcdsSiteMenu {
   protected el: HTMLElement;

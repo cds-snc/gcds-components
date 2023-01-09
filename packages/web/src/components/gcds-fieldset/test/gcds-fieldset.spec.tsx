@@ -31,7 +31,7 @@ describe('gcds-fieldset', () => {
           <fieldset aria-labelledby="legend-field" id="field">
             <legend id="legend-field">
               Fieldset legend
-              <strong class="required">
+              <strong class="legend__required">
                 (required)
               </strong>
             </legend>
@@ -68,7 +68,7 @@ describe('gcds-fieldset', () => {
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend" error-message="Fieldset error">
         <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field" class="gcds-error" id="field">
+          <fieldset aria-labelledby="legend-field" class="gcds-fieldset--error" id="field">
             <legend id="legend-field">
               Fieldset legend
             </legend>

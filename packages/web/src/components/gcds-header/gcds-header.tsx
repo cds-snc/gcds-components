@@ -54,9 +54,12 @@ export class GcdsHeader {
       return <slot name="topnav"></slot>;
     } else if(this.skipToHref) {
       return (
-      <nav class="topnav">
+      <nav
+        aria-label={i18n[this.lang].skip}
+        class="gcds-header__topnav"
+      >
         <gcds-button
-          button-type="link"
+          type="link"
           button-role="skip-to-content"
           href={this.skipToHref}
         >
@@ -73,7 +76,7 @@ export class GcdsHeader {
       return <slot name="toggle"></slot>;
     } else if(this.langHref) {
       return (
-        <section class="toggle">
+        <section class="brand__toggle">
           <gcds-lang-toggle
             lang={this.lang}
             href={this.langHref}
@@ -91,7 +94,7 @@ export class GcdsHeader {
       return <slot name="signature"></slot>;
     } else {
       return (
-      <div class="signature">
+      <div class="brand__signature">
         <gcds-signature
           type="signature"
           variant={signVariant}
@@ -134,8 +137,8 @@ export class GcdsHeader {
         :
           null
         }
-        <div class="brand">
-          <div class={`brand__container ${!hasSearch ? 'simple' : '' }`}>
+        <div class="gcds-header__brand">
+          <div class={`brand__container ${!hasSearch ? 'container--simple' : '' }`}>
             {renderToggle}
             {renderSignature}
             {renderSearch}
@@ -143,7 +146,7 @@ export class GcdsHeader {
         </div>
         <slot name="menu"></slot>
         {hasBreadcrumb ?
-            <div class="container">
+            <div class="gcds-header__container">
               <slot name="breadcrumb"></slot>
             </div>
           :

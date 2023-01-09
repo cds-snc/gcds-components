@@ -21,14 +21,14 @@ export class GcdsButton {
   /**
    * Set button types
    */
-  @Prop({ mutable: true }) buttonType: 'submit' | 'reset' | 'button' | 'link' = 'button';
+  @Prop({ mutable: true }) type: 'submit' | 'reset' | 'button' | 'link' = 'button';
 
-  @Watch('buttonType')
-  validateButtonType(newValue: string) {
+  @Watch('type')
+  validateType(newValue: string) {
     const values = ['submit', 'reset', 'button', 'link'];
 
     if (!values.includes(newValue)) {
-      this.buttonType = 'button';
+      this.type = 'button';
     }
   }
 
@@ -63,14 +63,14 @@ export class GcdsButton {
   /**
    * Set the button size
    */
-  @Prop({ mutable: true }) buttonSize: 'regular' | 'small' = 'regular';
+  @Prop({ mutable: true }) size: 'regular' | 'small' = 'regular';
 
-  @Watch('buttonSize')
-  validateButtonSize(newValue: string) {
+  @Watch('size')
+  validateSize(newValue: string) {
     const values = ['regular', 'small'];
 
     if (!values.includes(newValue)) {
-      this.buttonSize = 'regular';
+      this.size = 'regular';
     }
   }
 
@@ -151,10 +151,10 @@ export class GcdsButton {
 
   componentWillLoad() {
     // Validate attributes and set defaults
-    this.validateButtonType(this.buttonType);
+    this.validateType(this.type);
     this.validateButtonRole(this.buttonRole);
     this.validateButtonStyle(this.buttonStyle);
-    this.validateButtonSize(this.buttonSize);
+    this.validateSize(this.size);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
 
@@ -174,7 +174,7 @@ export class GcdsButton {
     if (this.clickHandler) {
       this.clickHandler(e);
     } else {
-      if (!this.disabled && this.buttonType != 'button' && this.buttonType != 'link') {
+      if (!this.disabled && this.type != 'button' && this.type != 'link') {
         // Attach button to form
         const form = this.el.closest('form');
 
@@ -182,7 +182,7 @@ export class GcdsButton {
           e.preventDefault();
 
           const formButton = document.createElement('button');
-          formButton.type = this.buttonType;
+          formButton.type = this.type;
           formButton.style.display = 'none';
           form.appendChild(formButton);
           formButton.click();
@@ -212,11 +212,11 @@ export class GcdsButton {
   }
 
   render() {
-    const { buttonType, buttonRole, buttonStyle, buttonSize, buttonId, disabled, lang, name, href, rel, target, download, inheritedAttributes } = this;
+    const { type, buttonRole, buttonStyle, size, buttonId, disabled, lang, name, href, rel, target, download, inheritedAttributes } = this;
 
-    const Tag = buttonType != 'link' ? 'button' : 'a';
+    const Tag = type != 'link' ? 'button' : 'a';
     const attrs = (Tag === 'button') ? {
-      type: buttonType,
+      type: type,
       ariaDisabled: disabled,
       name
     } : {
@@ -234,7 +234,7 @@ export class GcdsButton {
           onBlur={(e) => this.onBlur(e)}
           onFocus={(e) => this.onFocus(e)}
           onClick={(e) => this.handleClick(e)}
-          class={`${buttonRole} ${buttonStyle} ${buttonSize}`}
+          class={`button--role-${buttonRole} button--${buttonStyle} button--${size}`}
           ref={element => this.shadowElement = element as HTMLElement}
           {...inheritedAttributes}
         >
@@ -242,7 +242,7 @@ export class GcdsButton {
 
           <slot></slot>
 
-          { buttonType === 'link' && target === '_blank' ?
+          { type === 'link' && target === '_blank' ?
             <gcds-icon
               name="external-link"
               label={ lang == 'en' ? 'Opens in a new tab.' : 'S\'ouvre dans un nouvel onglet.' }

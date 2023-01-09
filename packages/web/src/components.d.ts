@@ -33,6 +33,22 @@ export namespace Components {
          */
         "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
+    interface GcdsBreadcrumbs {
+        /**
+          * Defines if the default canada.ca link should be displayed or not.
+         */
+        "hideCanadaLink": boolean;
+    }
+    interface GcdsBreadcrumbsItem {
+        /**
+          * Specifies the href of the breadcrumb item.
+         */
+        "href": string | undefined;
+        /**
+          * Defines if the breadcrumb item is the current page or not.
+         */
+        "isCurrentPage"?: boolean;
+    }
     interface GcdsButton {
         /**
           * Custom callback function on blur event
@@ -47,17 +63,9 @@ export namespace Components {
          */
         "buttonRole": 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
         /**
-          * Set the button size
-         */
-        "buttonSize": 'regular' | 'small';
-        /**
           * Set the style variant
          */
         "buttonStyle": 'solid' | 'text-only';
-        /**
-          * Set button types
-         */
-        "buttonType": 'submit' | 'reset' | 'button' | 'link';
         /**
           * Custom callback function on click event
          */
@@ -91,9 +99,17 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
+          * Set the button size
+         */
+        "size": 'regular' | 'small';
+        /**
           * The target attribute specifies where to open the linked document
          */
         "target": string | undefined;
+        /**
+          * Set button types
+         */
+        "type": 'submit' | 'reset' | 'button' | 'link';
     }
     interface GcdsCheckbox {
         /**
@@ -156,6 +172,8 @@ export namespace Components {
           * Value for an input element.
          */
         "value": string;
+    }
+    interface GcdsDateModified {
     }
     interface GcdsDetails {
         /**
@@ -661,19 +679,19 @@ export namespace Components {
         /**
           * Menu alignment
          */
-        "menuAlignment": 'left' | 'center' | 'right' | 'split';
+        "alignment": 'left' | 'center' | 'right' | 'split';
         /**
           * Desktop layout
          */
-        "menuDesktopLayout": 'topbar' | 'sidebar';
+        "desktopLayout": 'topbar' | 'sidebar';
         /**
           * Mobile layout
          */
-        "menuMobileLayout": 'drawer';
+        "mobileLayout": 'drawer';
         /**
           * Sticky navigation flag
          */
-        "menuPosition": 'static' | 'sticky';
+        "position": 'static' | 'sticky';
     }
     interface GcdsStepper {
         /**
@@ -813,6 +831,18 @@ declare global {
         prototype: HTMLGcdsAlertElement;
         new (): HTMLGcdsAlertElement;
     };
+    interface HTMLGcdsBreadcrumbsElement extends Components.GcdsBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLGcdsBreadcrumbsElement: {
+        prototype: HTMLGcdsBreadcrumbsElement;
+        new (): HTMLGcdsBreadcrumbsElement;
+    };
+    interface HTMLGcdsBreadcrumbsItemElement extends Components.GcdsBreadcrumbsItem, HTMLStencilElement {
+    }
+    var HTMLGcdsBreadcrumbsItemElement: {
+        prototype: HTMLGcdsBreadcrumbsItemElement;
+        new (): HTMLGcdsBreadcrumbsItemElement;
+    };
     interface HTMLGcdsButtonElement extends Components.GcdsButton, HTMLStencilElement {
     }
     var HTMLGcdsButtonElement: {
@@ -824,6 +854,12 @@ declare global {
     var HTMLGcdsCheckboxElement: {
         prototype: HTMLGcdsCheckboxElement;
         new (): HTMLGcdsCheckboxElement;
+    };
+    interface HTMLGcdsDateModifiedElement extends Components.GcdsDateModified, HTMLStencilElement {
+    }
+    var HTMLGcdsDateModifiedElement: {
+        prototype: HTMLGcdsDateModifiedElement;
+        new (): HTMLGcdsDateModifiedElement;
     };
     interface HTMLGcdsDetailsElement extends Components.GcdsDetails, HTMLStencilElement {
     }
@@ -953,8 +989,11 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "gcds-alert": HTMLGcdsAlertElement;
+        "gcds-breadcrumbs": HTMLGcdsBreadcrumbsElement;
+        "gcds-breadcrumbs-item": HTMLGcdsBreadcrumbsItemElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
+        "gcds-date-modified": HTMLGcdsDateModifiedElement;
         "gcds-details": HTMLGcdsDetailsElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
         "gcds-fieldset": HTMLGcdsFieldsetElement;
@@ -1009,6 +1048,22 @@ declare namespace LocalJSX {
          */
         "onGcdsDismiss"?: (event: GcdsAlertCustomEvent<void>) => void;
     }
+    interface GcdsBreadcrumbs {
+        /**
+          * Defines if the default canada.ca link should be displayed or not.
+         */
+        "hideCanadaLink"?: boolean;
+    }
+    interface GcdsBreadcrumbsItem {
+        /**
+          * Specifies the href of the breadcrumb item.
+         */
+        "href": string | undefined;
+        /**
+          * Defines if the breadcrumb item is the current page or not.
+         */
+        "isCurrentPage"?: boolean;
+    }
     interface GcdsButton {
         /**
           * Custom callback function on blur event
@@ -1023,17 +1078,9 @@ declare namespace LocalJSX {
          */
         "buttonRole"?: 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
         /**
-          * Set the button size
-         */
-        "buttonSize"?: 'regular' | 'small';
-        /**
           * Set the style variant
          */
         "buttonStyle"?: 'solid' | 'text-only';
-        /**
-          * Set button types
-         */
-        "buttonType"?: 'submit' | 'reset' | 'button' | 'link';
         /**
           * Custom callback function on click event
          */
@@ -1071,9 +1118,17 @@ declare namespace LocalJSX {
          */
         "rel"?: string | undefined;
         /**
+          * Set the button size
+         */
+        "size"?: 'regular' | 'small';
+        /**
           * The target attribute specifies where to open the linked document
          */
         "target"?: string | undefined;
+        /**
+          * Set button types
+         */
+        "type"?: 'submit' | 'reset' | 'button' | 'link';
     }
     interface GcdsCheckbox {
         /**
@@ -1144,6 +1199,8 @@ declare namespace LocalJSX {
           * Value for an input element.
          */
         "value"?: string;
+    }
+    interface GcdsDateModified {
     }
     interface GcdsDetails {
         /**
@@ -1697,19 +1754,19 @@ declare namespace LocalJSX {
         /**
           * Menu alignment
          */
-        "menuAlignment"?: 'left' | 'center' | 'right' | 'split';
+        "alignment"?: 'left' | 'center' | 'right' | 'split';
         /**
           * Desktop layout
          */
-        "menuDesktopLayout": 'topbar' | 'sidebar';
+        "desktopLayout": 'topbar' | 'sidebar';
         /**
           * Mobile layout
          */
-        "menuMobileLayout": 'drawer';
+        "mobileLayout": 'drawer';
         /**
           * Sticky navigation flag
          */
-        "menuPosition"?: 'static' | 'sticky';
+        "position"?: 'static' | 'sticky';
     }
     interface GcdsStepper {
         /**
@@ -1811,8 +1868,11 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;
+        "gcds-breadcrumbs": GcdsBreadcrumbs;
+        "gcds-breadcrumbs-item": GcdsBreadcrumbsItem;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
+        "gcds-date-modified": GcdsDateModified;
         "gcds-details": GcdsDetails;
         "gcds-error-message": GcdsErrorMessage;
         "gcds-fieldset": GcdsFieldset;
@@ -1841,8 +1901,11 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
+            "gcds-breadcrumbs": LocalJSX.GcdsBreadcrumbs & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsElement>;
+            "gcds-breadcrumbs-item": LocalJSX.GcdsBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsItemElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
+            "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;

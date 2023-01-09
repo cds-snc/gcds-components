@@ -1,5 +1,5 @@
 :host {
-  .gcds-radio-wrapper {
+  .gcds-radio {
     max-width: 90%;
     font-family: var(--gcds-font-families-body), sans-serif;
     font-weight: var(--gcds-font-weights-regular);
@@ -23,7 +23,7 @@
       }
     }
 
-    &.gcds-disabled {
+    &.gcds-radio--disabled {
       color: var(--gcds-radio-disabled-text);
 
       input[type=radio]+gcds-label {
@@ -45,7 +45,7 @@
       }
     }
 
-    &.gcds-error:not(:focus-within) {
+    &.gcds-radio--error:not(:focus-within) {
       color: var(--gcds-radio-destructive-text);
 
       input[type=radio] + gcds-label {
