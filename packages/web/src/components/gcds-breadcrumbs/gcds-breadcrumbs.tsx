@@ -33,7 +33,7 @@ export class GcdsBreadcrumbs {
     return (
       <Host>
         <nav
-          aria-label={lang == 'en' ? 'Breadcrumb' : 'Fil d\'Ariane'}
+          aria-label={lang == 'en' ? 'Breadcrumb' : 'Chemin de navigation'}
           class="gcds-breadcrumbs"
         >
           <ol>
