@@ -34,6 +34,11 @@ export class GcdsFooter {
   */
   @Prop({ reflect: false, mutable: false }) wordmarkVariant: 'colour' | 'white';
 
+  /**
+  * Heading for contextual slot and nav landmark
+  */
+  @Prop({ reflect: false, mutable: false }) contextualHeading: string;
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -47,7 +52,7 @@ export class GcdsFooter {
     if (!!this.el.querySelector('[slot="signature"]')) {
       return <slot name="wordmark"></slot>;
     } else {
-      return (<div class="brand__wordmark">
+      return (<div class="sub__wordmark">
           <gcds-signature
             type="wordmark"
             variant={signVariant}
@@ -66,23 +71,28 @@ export class GcdsFooter {
   }
 
   render() {
-    const { lang, display, hasList, hasContextual, renderSignature } = this;
+    const { lang, display, contextualHeading, hasList, hasContextual, renderSignature } = this;
     const govNav = I18N[lang].gov.menu;
     const themeNav = I18N[lang].themes.menu;
     const siteNav = I18N[lang].site.menu;
 
     return (
       <Host role="contentinfo">
-        {hasContextual && 
+        {(hasContextual && contextualHeading) && 
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
-              <slot name="contextual"></slot>
+              <nav aria-label={contextualHeading}>
+                <h3 class="contextual__header">
+                  {contextualHeading}
+                </h3>
+                <slot name="contextual"></slot>
+              </nav>
             </div>
           </div>}
         {display === "full" ?
-          (<div class="gcds-footer__landscape">
-            <div class="landscape__container">
-              <nav class="landscape__govnav" aria-label={I18N[lang].gov.heading}>
+          (<div class="gcds-footer__main">
+            <div class="main__container">
+              <nav class="main__govnav" aria-label={I18N[lang].gov.heading}>
                 <h3>{I18N[lang].gov.heading}</h3>
                 <ul>
                   {Object.keys(govNav).map((value) =>
@@ -92,7 +102,7 @@ export class GcdsFooter {
                   )}
                 </ul>
               </nav>
-              <nav class="landscape__themenav" aria-label={I18N[lang].themes.heading}>
+              <nav class="main__themenav" aria-label={I18N[lang].themes.heading}>
                 <h4 class="themenav__header">{I18N[lang].themes.heading}</h4>
                 <ul>
                   {Object.keys(themeNav).map((value) =>
@@ -106,13 +116,13 @@ export class GcdsFooter {
           </div>)
         : null }
 
-        <div class="gcds-footer__brand">
-          <div class="brand__container">
+        <div class="gcds-footer__sub">
+          <div class="sub__container">
             {hasList ?
               <slot name="list"></slot>
             :
               (<nav aria-label={I18N[lang].site.heading}>
-                <h3 class="brand__header">{I18N[lang].site.heading}</h3>
+                <h3 class="sub__header">{I18N[lang].site.heading}</h3>
                 <ul>
                   {Object.keys(siteNav).map((value) =>
                     <li>

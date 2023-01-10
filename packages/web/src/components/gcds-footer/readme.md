@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property          | Attribute          | Description                                                      | Type                  | Default     |
-| ----------------- | ------------------ | ---------------------------------------------------------------- | --------------------- | ----------- |
-| `display`         | `display`          | Display mode of the footer                                       | `"compact" \| "full"` | `undefined` |
-| `wordmarkVariant` | `wordmark-variant` | GcdsSignature - The variant of the Government of Canada wordmark | `"colour" \| "white"` | `undefined` |
+| Property            | Attribute            | Description                                                      | Type                  | Default     |
+| ------------------- | -------------------- | ---------------------------------------------------------------- | --------------------- | ----------- |
+| `contextualHeading` | `contextual-heading` | Heading for contextual slot and nav landmark                     | `string`              | `undefined` |
+| `display`           | `display`            | Display mode of the footer                                       | `"compact" \| "full"` | `undefined` |
+| `wordmarkVariant`   | `wordmark-variant`   | GcdsSignature - The variant of the Government of Canada wordmark | `"colour" \| "white"` | `undefined` |
 
 
 ## Dependencies

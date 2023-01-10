@@ -297,6 +297,10 @@ export namespace Components {
     }
     interface GcdsFooter {
         /**
+          * Heading for contextual slot and nav landmark
+         */
+        "contextualHeading": string;
+        /**
           * Display mode of the footer
          */
         "display": 'compact' | 'full';
@@ -1335,6 +1339,10 @@ declare namespace LocalJSX {
         "value"?: string[];
     }
     interface GcdsFooter {
+        /**
+          * Heading for contextual slot and nav landmark
+         */
+        "contextualHeading"?: string;
         /**
           * Display mode of the footer
          */
