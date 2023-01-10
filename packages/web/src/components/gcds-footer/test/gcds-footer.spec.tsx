@@ -10,10 +10,10 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="en">
         <mock:shadow-root>
-          <div class="gcds-footer__brand">
-            <div class="brand__container">
+          <div class="gcds-footer__sub">
+            <div class="sub__container">
               <nav aria-label="Government of Canada Corporate">
-                <h3 class="brand__header">
+                <h3 class="sub__header">
                   Government of Canada Corporate
                 </h3>
                 <ul>
@@ -44,7 +44,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <div class="brand__wordmark">
+              <div class="sub__wordmark">
                 <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>
@@ -62,9 +62,9 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="full" lang="en">
         <mock:shadow-root>
-          <div class="gcds-footer__landscape">
-            <div class="landscape__container">
-              <nav aria-label="Government of Canada" class="landscape__govnav">
+          <div class="gcds-footer__main">
+            <div class="main__container">
+              <nav aria-label="Government of Canada" class="main__govnav">
                 <h3>
                   Government of Canada
                 </h3>
@@ -86,7 +86,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <nav aria-label="Themes and topics" class="landscape__themenav">
+              <nav aria-label="Themes and topics" class="main__themenav">
                 <h4 class="themenav__header">
                   Themes and topics
                 </h4>
@@ -185,10 +185,10 @@ describe('gcds-footer', () => {
               </nav>
             </div>
           </div>
-          <div class="gcds-footer__brand">
-            <div class="brand__container">
+          <div class="gcds-footer__sub">
+            <div class="sub__container">
               <nav aria-label="Government of Canada Corporate">
-                <h3 class="brand__header">
+                <h3 class="sub__header">
                   Government of Canada Corporate
                 </h3>
                 <ul>
@@ -219,7 +219,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <div class="brand__wordmark">
+              <div class="sub__wordmark">
                 <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>
@@ -237,10 +237,10 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="fr">
         <mock:shadow-root>
-          <div class="gcds-footer__brand">
-            <div class="brand__container">
+          <div class="gcds-footer__sub">
+            <div class="sub__container">
               <nav aria-label="Organisation du gouvernement du Canada">
-                <h3 class="brand__header">
+                <h3 class="sub__header">
                   Organisation du gouvernement du Canada
                 </h3>
                 <ul>
@@ -271,7 +271,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <div class="brand__wordmark">
+              <div class="sub__wordmark">
                 <gcds-signature lang="fr" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>
@@ -289,9 +289,9 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="full" lang="fr">
         <mock:shadow-root>
-          <div class="gcds-footer__landscape">
-            <div class="landscape__container">
-              <nav aria-label="Gouvernement du Canada" class="landscape__govnav">
+          <div class="gcds-footer__main">
+            <div class="main__container">
+              <nav aria-label="Gouvernement du Canada" class="main__govnav">
                 <h3>
                   Gouvernement du Canada
                 </h3>
@@ -313,7 +313,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <nav aria-label="Thèmes et sujets" class="landscape__themenav">
+              <nav aria-label="Thèmes et sujets" class="main__themenav">
                 <h4 class="themenav__header">
                   Thèmes et sujets
                 </h4>
@@ -412,10 +412,10 @@ describe('gcds-footer', () => {
               </nav>
             </div>
           </div>
-          <div class="gcds-footer__brand">
-            <div class="brand__container">
+          <div class="gcds-footer__sub">
+            <div class="sub__container">
               <nav aria-label="Organisation du gouvernement du Canada">
-                <h3 class="brand__header">
+                <h3 class="sub__header">
                   Organisation du gouvernement du Canada
                 </h3>
                 <ul>
@@ -446,7 +446,7 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <div class="brand__wordmark">
+              <div class="sub__wordmark">
                 <gcds-signature lang="fr" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>
