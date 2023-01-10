@@ -68,7 +68,7 @@ describe('gcds-footer', () => {
                 <h3>
                   Government of Canada
                 </h3>
-                <ul>
+                <ul class="govnav__list">
                   <li>
                     <a href="https://www.canada.ca/en/contact.html">
                       All Contacts
@@ -90,7 +90,7 @@ describe('gcds-footer', () => {
                 <h4 class="themenav__header">
                   Themes and topics
                 </h4>
-                <ul>
+                <ul class="themenav__list">
                   <li>
                     <a href="https://www.canada.ca/en/services/jobs.html">
                       Jobs
@@ -295,7 +295,7 @@ describe('gcds-footer', () => {
                 <h3>
                   Gouvernement du Canada
                 </h3>
-                <ul>
+                <ul class="govnav__list">
                   <li>
                     <a href="https://www.canada.ca/fr/contact.html">
                       Toutes les coordonnées
@@ -317,7 +317,7 @@ describe('gcds-footer', () => {
                 <h4 class="themenav__header">
                   Thèmes et sujets
                 </h4>
-                <ul>
+                <ul class="themenav__list">
                   <li>
                     <a href="https://www.canada.ca/fr/services/emplois.html">
                       Emplois
@@ -448,6 +448,212 @@ describe('gcds-footer', () => {
               </nav>
               <div class="sub__wordmark">
                 <gcds-signature lang="fr" type="wordmark" variant="colour"></gcds-signature>
+              </div>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-footer>
+    `);
+  });
+
+  it('renders full with contextual - English', async () => {
+    const page = await newSpecPage({
+      components: [GcdsFooter],
+      html: `<gcds-footer
+        display="full"
+        lang="en"
+        contextual-heading="Heading"
+        contextual-links='{ "Link 1": "#red", "Link 2": "#green", "Link 3": "#blue" }'
+      ></gcds-footer>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-footer contextual-heading="Heading" contextual-links="{ &quot;Link 1&quot;: &quot;#red&quot;, &quot;Link 2&quot;: &quot;#green&quot;, &quot;Link 3&quot;: &quot;#blue&quot; }" display="full" lang="en" role="contentinfo">
+        <mock:shadow-root>
+          <div class="gcds-footer__contextual">
+            <div class="contextual__container">
+              <nav aria-label="Heading">
+                <h3 class="contextual__header">
+                  Heading
+                </h3>
+                <ul class="contextual__list">
+                  <li>
+                    <a href="#red">
+                      Link 1
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#green">
+                      Link 2
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#blue">
+                      Link 3
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="gcds-footer__main">
+            <div class="main__container">
+              <nav aria-label="Government of Canada" class="main__govnav">
+                <h3>
+                  Government of Canada
+                </h3>
+                <ul class="govnav__list">
+                  <li>
+                    <a href="https://www.canada.ca/en/contact.html">
+                      All Contacts
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/government/dept.html">
+                      Departments and agencies
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/government/system.html">
+                      About government
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <nav aria-label="Themes and topics" class="main__themenav">
+                <h4 class="themenav__header">
+                  Themes and topics
+                </h4>
+                <ul class="themenav__list">
+                  <li>
+                    <a href="https://www.canada.ca/en/services/jobs.html">
+                      Jobs
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/immigration-citizenship.html">
+                      Immigration and citizenship
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://travel.gc.ca/">
+                      Travel and tourism
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/business.html">
+                      Business
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/benefits.html">
+                      Benefits
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/health.html">
+                      Health
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/taxes.html">
+                      Taxes
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/environment.html">
+                      Environment and natural resources
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/defence.html">
+                      National security and defence
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/culture.html">
+                      Culture, history and sport
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/policing.html">
+                      Policing, justice and emergencies
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/transport.html">
+                      Transport and infrastructure
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">
+                      Canada and the world
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/finance.html">
+                      Money and finance
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/science.html">
+                      Science and innovation
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/indigenous-peoples.html">
+                      Indigenous peoples
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/veterans.html">
+                      Veterans and military
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/services/youth.html">
+                      Youth
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="gcds-footer__sub">
+            <div class="sub__container">
+              <nav aria-label="Government of Canada Corporate">
+                <h3 class="sub__header">
+                  Government of Canada Corporate
+                </h3>
+                <ul>
+                  <li>
+                    <a href="https://www.canada.ca/en/social.html">
+                      Social media
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/mobile.html">
+                      Mobile applications
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/government/about.html">
+                      About Canada.ca
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/transparency/terms.html">
+                      Terms and conditions
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/transparency/privacy.html">
+                      Privacy
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <div class="sub__wordmark">
+                <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
               </div>
             </div>
           </div>

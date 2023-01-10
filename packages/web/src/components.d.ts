@@ -301,6 +301,10 @@ export namespace Components {
          */
         "contextualHeading": string;
         /**
+          * Object of list items
+         */
+        "contextualLinks": string | object;
+        /**
           * Display mode of the footer
          */
         "display": 'compact' | 'full';
@@ -1344,9 +1348,13 @@ declare namespace LocalJSX {
          */
         "contextualHeading"?: string;
         /**
+          * Object of list items
+         */
+        "contextualLinks"?: string | object;
+        /**
           * Display mode of the footer
          */
-        "display"?: 'compact' | 'full';
+        "display": 'compact' | 'full';
         /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */
