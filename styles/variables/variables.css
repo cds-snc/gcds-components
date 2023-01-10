@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 04 Jan 2023 15:42:02 GMT
+ * Generated on Tue, 10 Jan 2023 14:51:43 GMT
  */
 
 :root {
@@ -8,30 +8,32 @@
   --gcds-brand-focus: #303fc3;
   --gcds-brand-active-text: #ffffff;
   --gcds-brand-active-background: #000000;
-  --gcds-brand-disabled-background: #f0f0f0;
-  --gcds-brand-disabled-text: #747a82;
+  --gcds-brand-disabled-background: #d6d9dd;
+  --gcds-brand-disabled-text: #545961;
   --gcds-brand-destructive: #a62a1e;
-  --gcds-color-blue-100: #d7e5f5;
-  --gcds-color-blue-700: #425a76;
+  --gcds-color-blue-100: #eaecf0;
+  --gcds-color-blue-500: #b1b6bd; /* Must contrast 3:1 with white */
+  --gcds-color-blue-700: #425a76; /* Must contrast 7:1 with white */
   --gcds-color-blue-800: #31455c;
   --gcds-color-blue-900: #26374a;
   --gcds-color-blue-focus: #303fc3;
   --gcds-color-grayscale-0: #ffffff;
-  --gcds-color-grayscale-100: #f0f0f0;
-  --gcds-color-grayscale-300: #e0e2e5;
-  --gcds-color-grayscale-500: #b6babf;
-  --gcds-color-grayscale-700: #747a82;
-  --gcds-color-grayscale-900: #545961;
+  --gcds-color-grayscale-100: #d6d9dd;
+  --gcds-color-grayscale-300: #a8adb4;
+  --gcds-color-grayscale-500: #7d828b; /* Must contrast 3:1 with white */
+  --gcds-color-grayscale-700: #545961; /* Must contrast 7:1 with white */
+  --gcds-color-grayscale-900: #2f3238;
   --gcds-color-grayscale-1000: #000000;
-  --gcds-color-green-100: #ecf3ec;
-  --gcds-color-green-200: #005900;
+  --gcds-color-green-100: #e6f6ec;
+  --gcds-color-green-500: #289f58; /* Must contrast 3:1 with white */
+  --gcds-color-green-700: #03662a; /* Must contrast 7:1 with white */
   --gcds-color-red-100: #fbddda;
-  --gcds-color-red-500: #d44335;
-  --gcds-color-red-700: #a62a1e;
+  --gcds-color-red-500: #c24438; /* Must contrast 3:1 with white */
+  --gcds-color-red-700: #a62a1e; /* Must contrast 7:1 with white */
   --gcds-color-red-900: #822117;
   --gcds-color-red-flag: #ff0000;
-  --gcds-color-yellow-100: #faf3d1;
-  --gcds-color-yellow-200: #f7b452;
+  --gcds-color-yellow-100: #faedd1;
+  --gcds-color-yellow-500: #b3800f; /* Must contrast 3:1 with white */
   --gcds-container-100: 28.125rem;
   --gcds-container-200: 37.5rem;
   --gcds-container-300: 56.25rem;
@@ -81,15 +83,15 @@
   --gcds-alert-text: #000000;
   --gcds-alert-destructive-background: #fbddda;
   --gcds-alert-destructive-icon: #822117;
-  --gcds-alert-info-background: #d7e5f5;
+  --gcds-alert-info-background: #eaecf0;
   --gcds-alert-info-icon: #26374a;
-  --gcds-alert-success-background: #ecf3ec;
-  --gcds-alert-success-icon: #005900;
-  --gcds-alert-warning-background: #faf3d1;
+  --gcds-alert-success-background: #e6f6ec;
+  --gcds-alert-success-icon: #03662a;
+  --gcds-alert-warning-background: #faedd1;
   --gcds-alert-warning-icon: #000000;
   --gcds-banner-primary-background: #26374a;
   --gcds-banner-primary-text: #ffffff;
-  --gcds-banner-secondary-background: #f0f0f0;
+  --gcds-banner-secondary-background: #d6d9dd;
   --gcds-breadcrumbs-default-text: #26374a;
   --gcds-breadcrumbs-focus-background: #303fc3;
   --gcds-breadcrumbs-focus-text: #ffffff;
@@ -101,23 +103,23 @@
   --gcds-button-primary-default-text: #ffffff;
   --gcds-button-primary-hover-background: #425a76;
   --gcds-button-secondary-default-text: #26374a;
-  --gcds-button-secondary-hover-background: #d7e5f5;
-  --gcds-button-secondary-active-background: #d7e5f5;
+  --gcds-button-secondary-hover-background: #eaecf0;
+  --gcds-button-secondary-active-background: #eaecf0;
   --gcds-button-shared-active-background: #000000;
   --gcds-button-shared-active-text: #ffffff;
   --gcds-button-shared-focus-background: #303fc3;
   --gcds-button-shared-focus-text: #ffffff;
-  --gcds-button-shared-disabled-background: #f0f0f0;
-  --gcds-button-shared-disabled-text: #747a82;
+  --gcds-button-shared-disabled-background: #d6d9dd;
+  --gcds-button-shared-disabled-text: #545961;
   --gcds-checkbox-default-text: #000000;
-  --gcds-checkbox-default-hint: #545961;
+  --gcds-checkbox-default-hint: #2f3238;
   --gcds-checkbox-destructive-text: #a62a1e;
-  --gcds-checkbox-disabled-background: #f0f0f0;
-  --gcds-checkbox-disabled-border: #747a82;
-  --gcds-checkbox-disabled-text: #747a82;
+  --gcds-checkbox-disabled-background: #d6d9dd;
+  --gcds-checkbox-disabled-border: #545961;
+  --gcds-checkbox-disabled-text: #545961;
   --gcds-checkbox-focus-text: #303fc3;
   --gcds-checkbox-focus-shadow: #ffffff;
-  --gcds-details-default-border: #e0e2e5;
+  --gcds-details-default-border: #a8adb4;
   --gcds-details-default-text: #26374a;
   --gcds-details-active-background: #000000;
   --gcds-details-active-text: #ffffff;
@@ -129,24 +131,24 @@
   --gcds-error-message-text: #000000;
   --gcds-fieldset-default-text: #000000;
   --gcds-fieldset-destructive: #a62a1e;
-  --gcds-fieldset-disabled-text: #747a82;
+  --gcds-fieldset-disabled-text: #545961;
   --gcds-fieldset-focus: #303fc3;
   --gcds-file-uploader-button-background: #ffffff;
   --gcds-file-uploader-button-text: #26374a;
   --gcds-file-uploader-default-text: #000000;
   --gcds-file-uploader-destructive-background: #fbddda;
   --gcds-file-uploader-destructive-text: #a62a1e;
-  --gcds-file-uploader-disabled-background: #f0f0f0;
-  --gcds-file-uploader-disabled-text: #747a82;
-  --gcds-file-uploader-file-background: #e0e2e5;
-  --gcds-file-uploader-file-icon-default: #d44335;
+  --gcds-file-uploader-disabled-background: #d6d9dd;
+  --gcds-file-uploader-disabled-text: #545961;
+  --gcds-file-uploader-file-background: #a8adb4;
+  --gcds-file-uploader-file-icon-default: #c24438;
   --gcds-file-uploader-file-icon-hover: #822117;
   --gcds-file-uploader-file-icon-active: #000000;
   --gcds-file-uploader-focus-button-background: #303fc3;
   --gcds-file-uploader-focus-button-shadow: #ffffff;
   --gcds-file-uploader-focus-button-text: #ffffff;
   --gcds-file-uploader-focus-text: #303fc3;
-  --gcds-footer-brand-background: #f0f0f0;
+  --gcds-footer-brand-background: #d6d9dd;
   --gcds-footer-brand-text: #26374a;
   --gcds-footer-brand-hover-text: #31455c;
   --gcds-footer-brand-focus-background: #303fc3;
@@ -161,8 +163,8 @@
   --gcds-input-default-background: #ffffff;
   --gcds-input-default-text: #000000;
   --gcds-input-destructive: #a62a1e;
-  --gcds-input-disabled-background: #f0f0f0;
-  --gcds-input-disabled-text: #747a82;
+  --gcds-input-disabled-background: #d6d9dd;
+  --gcds-input-disabled-text: #545961;
   --gcds-input-focus-text: #303fc3;
   --gcds-input-focus-shadow: #ffffff;
   --gcds-label-destructive-text: #a62a1e;
@@ -176,7 +178,7 @@
   --gcds-link-destructive-text: #a62a1e;
   --gcds-link-light-text: #ffffff;
   --gcds-pagination-default-text: #26374a;
-  --gcds-pagination-hover-background: #d7e5f5;
+  --gcds-pagination-hover-background: #eaecf0;
   --gcds-pagination-focus-background: #303fc3;
   --gcds-pagination-focus-text: #ffffff;
   --gcds-pagination-focus-shadow: #ffffff;
@@ -185,45 +187,45 @@
   --gcds-pagination-active-background: #26374a;
   --gcds-pagination-mobile-list-border: #26374a;
   --gcds-radio-default-text: #000000;
-  --gcds-radio-default-hint: #545961;
+  --gcds-radio-default-hint: #2f3238;
   --gcds-radio-destructive-text: #a62a1e;
-  --gcds-radio-disabled-background: #f0f0f0;
-  --gcds-radio-disabled-border: #747a82;
-  --gcds-radio-disabled-text: #747a82;
+  --gcds-radio-disabled-background: #d6d9dd;
+  --gcds-radio-disabled-border: #545961;
+  --gcds-radio-disabled-text: #545961;
   --gcds-radio-focus-text: #303fc3;
   --gcds-radio-focus-shadow: #ffffff;
   --gcds-select-default-background: #ffffff;
   --gcds-select-default-text: #000000;
   --gcds-select-destructive: #a62a1e;
-  --gcds-select-disabled-background: #f0f0f0;
-  --gcds-select-disabled-text: #747a82;
+  --gcds-select-disabled-background: #d6d9dd;
+  --gcds-select-disabled-text: #545961;
   --gcds-select-focus-text: #303fc3;
   --gcds-select-focus-shadow: #ffffff;
   --gcds-signature-color-flag: #ff0000;
   --gcds-signature-color-text: #000000;
   --gcds-signature-white-default: #ffffff;
-  --gcds-site-menu-active-background: #545961;
+  --gcds-site-menu-active-background: #2f3238;
   --gcds-site-menu-active-text: #ffffff;
-  --gcds-site-menu-default-background: #f0f0f0;
+  --gcds-site-menu-default-background: #d6d9dd;
   --gcds-site-menu-default-border: #00000030;
   --gcds-site-menu-default-text: #000000;
   --gcds-site-menu-focus-background: #303fc3;
   --gcds-site-menu-focus-text: #ffffff;
-  --gcds-site-menu-hover-background: #e0e2e550;
-  --gcds-site-menu-selection-background: #f7b452;
+  --gcds-site-menu-hover-background: #a8adb450;
+  --gcds-site-menu-selection-background: #b3800f;
   --gcds-site-menu-selection-text: #000000;
-  --gcds-site-menu-submenu-background: #e0e2e5;
+  --gcds-site-menu-submenu-background: #a8adb4;
   --gcds-site-menu-submenu-box-shadow: #00000030;
   --gcds-site-menu-submenu-trigger-text: #000000;
   --gcds-stepper-text: #545961;
   --gcds-textarea-default-background: #ffffff;
   --gcds-textarea-default-text: #000000;
   --gcds-textarea-destructive: #a62a1e;
-  --gcds-textarea-disabled-background: #f0f0f0;
-  --gcds-textarea-disabled-text: #747a82;
+  --gcds-textarea-disabled-background: #d6d9dd;
+  --gcds-textarea-disabled-text: #545961;
   --gcds-textarea-focus-text: #303fc3;
   --gcds-textarea-focus-shadow: #ffffff;
-  --gcds-verify-banner-background: #f0f0f0;
-  --gcds-verify-banner-border: #e0e2e5;
+  --gcds-verify-banner-background: #d6d9dd;
+  --gcds-verify-banner-border: #a8adb4;
   --gcds-verify-banner-toggle-text: #26374a;
 }
