@@ -3,8 +3,9 @@
 
   fieldset {
     border: none;
-    padding-top: 0;
+    padding: 0;
     color: var(--gcds-fieldset-default-text);
+    font-family: var(--gcds-font-families-body);
 
     legend {
       font-size: var(--gcds-font-sizes-text);

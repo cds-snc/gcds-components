@@ -1,9 +1,10 @@
 :host .gcds-alert {
   text-align: left;
+  font-family: var(--gcds-font-families-body);
   box-sizing: border-box;
   color: var(--gcds-alert-text);
   padding: var(--gcds-spacing-500);
-  border-left: .375rem solid transparent;
+  border-left: 0.375rem solid transparent;
 
   /* Is Fixed */
   &.alert--is-fixed {
@@ -93,6 +94,7 @@
   .alert__heading {
     display: flex;
     align-items: flex-start;
+    font-family: var(--gcds-font-families-heading);
     font-size: var(--gcds-font-sizes-h5);
     line-height: var(--gcds-line-heights-h5);
     margin: 0 0 var(--gcds-spacing-400);
@@ -109,13 +111,13 @@
       flex: 0 0 2.75rem;
       width: 2.75rem;
       height: 2.75rem;
-      margin: -.75rem -.75rem 0 var(--gcds-spacing-400);
+      margin: -0.75rem -0.75rem 0 var(--gcds-spacing-400);
       padding: 0;
       background-color: transparent;
       box-sizing: border-box;
       border: 0;
       border-radius: 100%;
-      transition: all .15s ease-in-out;
+      transition: all 0.15s ease-in-out;
 
       @media only screen and (max-width: 35em) {
         display: none;
@@ -123,9 +125,9 @@
 
       &:focus {
         background-color: var(--gcds-alert-button-focus-background);
-        box-shadow: 0 0 0 .125rem var(--gcds-alert-button-focus-text);
-        outline: .1875rem solid var(--gcds-alert-button-focus-background);
-        outline-offset: .125rem;
+        box-shadow: 0 0 0 0.125rem var(--gcds-alert-button-focus-text);
+        outline: 0.1875rem solid var(--gcds-alert-button-focus-background);
+        outline-offset: 0.125rem;
         color: var(--gcds-alert-button-focus-text);
       }
     }
