@@ -46,7 +46,7 @@ describe('gcds-breadcrumbs', () => {
     expect(page.root).toEqualHtml(`
       <gcds-breadcrumbs lang="fr">
         <mock:shadow-root>
-          <nav aria-label="Fil d\'Ariane" class="gcds-breadcrumbs">
+          <nav aria-label="Chemin de navigation" class="gcds-breadcrumbs">
             <ol>
               <gcds-breadcrumbs-item href="https://www.canada.ca/fr.html">
                 Canada.ca
