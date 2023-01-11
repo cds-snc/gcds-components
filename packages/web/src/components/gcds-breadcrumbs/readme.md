@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property            | Attribute         | Description                                                | Type      | Default     |
-| ------------------- | ----------------- | ---------------------------------------------------------- | --------- | ----------- |
-| `href` _(required)_ | `href`            | Specifies the href of the breadcrumb item.                 | `string`  | `undefined` |
-| `isCurrentPage`     | `is-current-page` | Defines if the breadcrumb item is the current page or not. | `boolean` | `false`     |
+| Property        | Attribute         | Description                                                | Type      | Default     |
+| --------------- | ----------------- | ---------------------------------------------------------- | --------- | ----------- |
+| `href`          | `href`            | Specifies the href of the breadcrumb item.                 | `string`  | `undefined` |
+| `isCurrentPage` | `is-current-page` | Defines if the breadcrumb item is the current page or not. | `boolean` | `false`     |
 
 
 ## Dependencies

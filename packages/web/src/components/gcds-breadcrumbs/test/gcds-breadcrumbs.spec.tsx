@@ -17,7 +17,7 @@ describe('gcds-breadcrumbs', () => {
       <gcds-breadcrumbs>
         <mock:shadow-root>
           <nav aria-label="Breadcrumb" class="gcds-breadcrumbs">
-            <ol>
+            <ol class="has-canada-link">
               <gcds-breadcrumbs-item href="https://www.canada.ca/en.html">
                 Canada.ca
               </gcds-breadcrumbs-item>
@@ -47,7 +47,7 @@ describe('gcds-breadcrumbs', () => {
       <gcds-breadcrumbs lang="fr">
         <mock:shadow-root>
           <nav aria-label="Chemin de navigation" class="gcds-breadcrumbs">
-            <ol>
+            <ol class="has-canada-link">
               <gcds-breadcrumbs-item href="https://www.canada.ca/fr.html">
                 Canada.ca
               </gcds-breadcrumbs-item>
