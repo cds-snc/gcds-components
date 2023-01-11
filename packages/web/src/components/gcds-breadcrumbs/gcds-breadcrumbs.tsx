@@ -33,10 +33,10 @@ export class GcdsBreadcrumbs {
     return (
       <Host>
         <nav
-          aria-label={lang == 'en' ? 'Breadcrumb' : 'Fil d\'Ariane'}
+          aria-label={lang == 'en' ? 'Breadcrumb' : 'Chemin de navigation'}
           class="gcds-breadcrumbs"
         >
-          <ol>
+          <ol class={hideCanadaLink ? '' : 'has-canada-link'}>
             { !hideCanadaLink ?
               <gcds-breadcrumbs-item
                 href={`https://www.canada.ca/${lang == 'en' ? 'en' : 'fr'}.html`}

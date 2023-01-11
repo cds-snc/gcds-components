@@ -44,10 +44,6 @@ export namespace Components {
           * Specifies the href of the breadcrumb item.
          */
         "href": string | undefined;
-        /**
-          * Defines if the breadcrumb item is the current page or not.
-         */
-        "isCurrentPage"?: boolean;
     }
     interface GcdsButton {
         /**
@@ -1063,10 +1059,6 @@ declare namespace LocalJSX {
           * Specifies the href of the breadcrumb item.
          */
         "href": string | undefined;
-        /**
-          * Defines if the breadcrumb item is the current page or not.
-         */
-        "isCurrentPage"?: boolean;
     }
     interface GcdsButton {
         /**

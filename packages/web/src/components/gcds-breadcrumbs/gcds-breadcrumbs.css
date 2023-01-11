@@ -1,4 +1,6 @@
 :host .gcds-breadcrumbs {
+  overflow-x: hidden;
+
   ol {
     font-size: var(--gcds-font-sizes-text);
     font-weight: var(--gcds-font-weights-medium);
@@ -6,5 +8,10 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    &.has-canada-link gcds-breadcrumbs-item:first-child,
+    &:not(.has-canada-link) ::slotted(:first-child) {
+      margin: 0 0 0 calc(-1 * var(--gcds-spacing-400));
+    }
   }
 }

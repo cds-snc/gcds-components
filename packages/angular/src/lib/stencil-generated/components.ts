@@ -61,13 +61,13 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['href', 'isCurrentPage']
+  inputs: ['href']
 })
 @Component({
   selector: 'gcds-breadcrumbs-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['href', 'isCurrentPage']
+  inputs: ['href']
 })
 export class GcdsBreadcrumbsItem {
   protected el: HTMLElement;

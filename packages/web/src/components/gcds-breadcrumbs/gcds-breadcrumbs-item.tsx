@@ -18,21 +18,13 @@ export class GcdsBreadcrumbsItem {
    */
   @Prop() href!: string | undefined;
 
-  /**
-   * Defines if the breadcrumb item is the current page or not.
-   */
-  @Prop() isCurrentPage?: boolean = false;
-
   render() {
-    const { href, isCurrentPage } = this;
+    const { href } = this;
 
     return (
       <Host>
         <li class="gcds-breadcrumbs-item">
-          <a
-            href={href}
-            aria-current={isCurrentPage ? 'page' : false}
-          >
+          <a href={href}>
             <slot></slot>
           </a>
         </li>

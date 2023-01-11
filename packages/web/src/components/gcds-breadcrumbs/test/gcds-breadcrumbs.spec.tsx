@@ -7,7 +7,7 @@ describe('gcds-breadcrumbs', () => {
       components: [GcdsBreadcrumbs],
       html: `
         <gcds-breadcrumbs>
-          <gcds-breadcrumbs-item is-current-page href="/contact">
+          <gcds-breadcrumbs-item href="/contact">
             Contact
           </gcds-breadcrumbs-item>
         </gcds-breadcrumbs>
@@ -17,7 +17,7 @@ describe('gcds-breadcrumbs', () => {
       <gcds-breadcrumbs>
         <mock:shadow-root>
           <nav aria-label="Breadcrumb" class="gcds-breadcrumbs">
-            <ol>
+            <ol class="has-canada-link">
               <gcds-breadcrumbs-item href="https://www.canada.ca/en.html">
                 Canada.ca
               </gcds-breadcrumbs-item>
@@ -25,7 +25,7 @@ describe('gcds-breadcrumbs', () => {
             </ol>
           </nav>
         </mock:shadow-root>
-        <gcds-breadcrumbs-item is-current-page href="/contact">
+        <gcds-breadcrumbs-item href="/contact">
           Contact
         </gcds-breadcrumbs-item>
       </gcds-breadcrumbs>
@@ -37,7 +37,7 @@ describe('gcds-breadcrumbs', () => {
       components: [GcdsBreadcrumbs],
       html: `
         <gcds-breadcrumbs lang="fr">
-          <gcds-breadcrumbs-item is-current-page href="/contact">
+          <gcds-breadcrumbs-item href="/contact">
             Contact
           </gcds-breadcrumbs-item>
         </gcds-breadcrumbs>
@@ -46,8 +46,8 @@ describe('gcds-breadcrumbs', () => {
     expect(page.root).toEqualHtml(`
       <gcds-breadcrumbs lang="fr">
         <mock:shadow-root>
-          <nav aria-label="Fil d\'Ariane" class="gcds-breadcrumbs">
-            <ol>
+          <nav aria-label="Chemin de navigation" class="gcds-breadcrumbs">
+            <ol class="has-canada-link">
               <gcds-breadcrumbs-item href="https://www.canada.ca/fr.html">
                 Canada.ca
               </gcds-breadcrumbs-item>
@@ -55,7 +55,7 @@ describe('gcds-breadcrumbs', () => {
             </ol>
           </nav>
         </mock:shadow-root>
-        <gcds-breadcrumbs-item is-current-page href="/contact">
+        <gcds-breadcrumbs-item href="/contact">
           Contact
         </gcds-breadcrumbs-item>
       </gcds-breadcrumbs>
@@ -67,7 +67,7 @@ describe('gcds-breadcrumbs', () => {
       components: [GcdsBreadcrumbs],
       html: `
         <gcds-breadcrumbs hide-canada-link>
-          <gcds-breadcrumbs-item is-current-page href="/contact">
+          <gcds-breadcrumbs-item href="/contact">
             Contact
           </gcds-breadcrumbs-item>
         </gcds-breadcrumbs>
@@ -82,7 +82,7 @@ describe('gcds-breadcrumbs', () => {
             </ol>
           </nav>
         </mock:shadow-root>
-        <gcds-breadcrumbs-item is-current-page href="/contact">
+        <gcds-breadcrumbs-item href="/contact">
           Contact
         </gcds-breadcrumbs-item>
       </gcds-breadcrumbs>
