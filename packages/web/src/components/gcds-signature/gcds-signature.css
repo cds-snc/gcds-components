@@ -23,7 +23,7 @@ gcds-signature {
   &[type='wordmark'] {
     svg {
       height: var(--gcds-spacing-500);
-      margin-bottom: var(--gcds-spacing-500);
+      margin-bottom: var(--gcds-spacing-400);
       margin-top: var(--gcds-spacing-400);
       width: auto;
     }

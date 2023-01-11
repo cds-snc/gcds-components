@@ -297,13 +297,17 @@ export namespace Components {
     }
     interface GcdsFooter {
         /**
+          * Heading for contextual slot and nav landmark
+         */
+        "contextualHeading": string;
+        /**
+          * Object of list items
+         */
+        "contextualLinks": string | object;
+        /**
           * Display mode of the footer
          */
         "display": 'compact' | 'full';
-        /**
-          * Top of page href
-         */
-        "topHref": string;
         /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */
@@ -1340,13 +1344,17 @@ declare namespace LocalJSX {
     }
     interface GcdsFooter {
         /**
+          * Heading for contextual slot and nav landmark
+         */
+        "contextualHeading"?: string;
+        /**
+          * Object of list items
+         */
+        "contextualLinks"?: string | object;
+        /**
           * Display mode of the footer
          */
-        "display"?: 'compact' | 'full';
-        /**
-          * Top of page href
-         */
-        "topHref"?: string;
+        "display": 'compact' | 'full';
         /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */
