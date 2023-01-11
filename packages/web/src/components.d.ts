@@ -35,10 +35,6 @@ export namespace Components {
     }
     interface GcdsBreadcrumbs {
         /**
-          * Sets the title for the current page.
-         */
-        "currentPageTitle": string;
-        /**
           * Defines if the default canada.ca link should be displayed or not.
          */
         "hideCanadaLink": boolean;
@@ -47,11 +43,7 @@ export namespace Components {
         /**
           * Specifies the href of the breadcrumb item.
          */
-        "href"?: string | undefined;
-        /**
-          * Defines if the breadcrumb item is the current page or not.
-         */
-        "isCurrentPage"?: boolean;
+        "href": string | undefined;
     }
     interface GcdsButton {
         /**
@@ -1054,10 +1046,6 @@ declare namespace LocalJSX {
     }
     interface GcdsBreadcrumbs {
         /**
-          * Sets the title for the current page.
-         */
-        "currentPageTitle": string;
-        /**
           * Defines if the default canada.ca link should be displayed or not.
          */
         "hideCanadaLink"?: boolean;
@@ -1066,11 +1054,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the href of the breadcrumb item.
          */
-        "href"?: string | undefined;
-        /**
-          * Defines if the breadcrumb item is the current page or not.
-         */
-        "isCurrentPage"?: boolean;
+        "href": string | undefined;
     }
     interface GcdsButton {
         /**

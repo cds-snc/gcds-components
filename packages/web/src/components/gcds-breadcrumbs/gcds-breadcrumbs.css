@@ -11,7 +11,7 @@
 
     &.has-canada-link gcds-breadcrumbs-item:first-child,
     &:not(.has-canada-link) ::slotted(:first-child) {
-      margin: 0 0 0 calc(-1 * (var(--gcds-spacing-400) + var(--gcds-spacing-100)));
+      margin: 0 0 0 calc(-1 * var(--gcds-spacing-400));
     }
   }
 }

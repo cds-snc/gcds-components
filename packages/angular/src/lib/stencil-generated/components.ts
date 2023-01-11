@@ -40,13 +40,13 @@ export declare interface GcdsBreadcrumbs extends Components.GcdsBreadcrumbs {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['currentPageTitle', 'hideCanadaLink']
+  inputs: ['hideCanadaLink']
 })
 @Component({
   selector: 'gcds-breadcrumbs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['currentPageTitle', 'hideCanadaLink']
+  inputs: ['hideCanadaLink']
 })
 export class GcdsBreadcrumbs {
   protected el: HTMLElement;
@@ -61,13 +61,13 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['href', 'isCurrentPage']
+  inputs: ['href']
 })
 @Component({
   selector: 'gcds-breadcrumbs-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['href', 'isCurrentPage']
+  inputs: ['href']
 })
 export class GcdsBreadcrumbsItem {
   protected el: HTMLElement;

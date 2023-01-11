@@ -2,7 +2,7 @@
   position: relative;
   display: inline-block;
   margin: var(--gcds-spacing-200) 0;
-  padding: var(--gcds-spacing-50) var(--gcds-spacing-50) var(--gcds-spacing-50) var(--gcds-spacing-450);
+  padding: 0 0 0 var(--gcds-spacing-400);
 
   &:before {
     position: absolute;
@@ -16,6 +16,7 @@
     display: inline-block;
     color: var(--gcds-breadcrumbs-default-text);
     outline: 0;
+    padding: var(--gcds-spacing-50);
     transition: background .35s ease-in-out, color .35s ease-in-out;
     white-space: normal;
   }

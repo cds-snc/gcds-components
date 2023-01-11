@@ -17,11 +17,6 @@ export class GcdsBreadcrumbs {
    */
 
   /**
-   * Sets the title for the current page.
-   */
-  @Prop() currentPageTitle!: string;
-
-  /**
    * Defines if the default canada.ca link should be displayed or not.
    */
   @Prop({ reflect: false, mutable: false }) hideCanadaLink: boolean = false;
@@ -33,7 +28,7 @@ export class GcdsBreadcrumbs {
   }
 
   render() {
-    const { currentPageTitle, hideCanadaLink, lang } = this;
+    const { hideCanadaLink, lang } = this;
 
     return (
       <Host>
@@ -51,10 +46,6 @@ export class GcdsBreadcrumbs {
             : null }
 
             <slot></slot>
-
-            { currentPageTitle ?
-              <gcds-breadcrumbs-item is-current-page>{currentPageTitle}</gcds-breadcrumbs-item>
-            : null }
           </ol>
         </nav>
       </Host>
