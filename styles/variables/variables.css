@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 12 Jan 2023 18:18:26 GMT
+ * Generated on Thu, 12 Jan 2023 21:07:22 GMT
  */
 
 :root {
@@ -40,19 +40,19 @@
   --gcds-container-lg: 64rem;
   --gcds-container-xl: 75rem;
   --gcds-container-full: 100%;
-  --gcds-spacing-50: 0.26rem;
-  --gcds-spacing-100: 0.325rem;
-  --gcds-spacing-200: 0.43333333333333335rem;
-  --gcds-spacing-300: 0.65rem;
-  --gcds-spacing-400: 1.3rem;
-  --gcds-spacing-500: 2.6rem;
-  --gcds-spacing-600: 3.9000000000000004rem;
-  --gcds-spacing-700: 5.2rem;
-  --gcds-spacing-800: 6.5rem;
-  --gcds-spacing-900: 7.800000000000001rem;
-  --gcds-spacing-1000: 9.1rem;
+  --gcds-spacing-50: 0.24rem;
+  --gcds-spacing-100: 0.3rem;
+  --gcds-spacing-200: 0.39999999999999997rem;
+  --gcds-spacing-300: 0.6rem;
+  --gcds-spacing-400: 1.2rem;
+  --gcds-spacing-500: 2.4rem;
+  --gcds-spacing-600: 3.5999999999999996rem;
+  --gcds-spacing-700: 4.8rem;
+  --gcds-spacing-800: 6rem;
+  --gcds-spacing-900: 7.199999999999999rem;
+  --gcds-spacing-1000: 8.4rem;
   --gcds-base-font-size: 1.25; /* Sets base font size to 20px */
-  --gcds-base-line-height: 1.3;
+  --gcds-base-line-height: 1.2;
   --gcds-base-scale: 1.125;
   --gcds-font-families-heading: Lato;
   --gcds-font-families-body: Noto Sans;
@@ -71,14 +71,14 @@
   --gcds-font-weights-medium: 500;
   --gcds-font-weights-semibold: 600;
   --gcds-font-weights-bold: 700;
-  --gcds-line-heights-caption: 146.25%;
-  --gcds-line-heights-text: 130%;
-  --gcds-line-heights-h6: 115.55555555555556%;
-  --gcds-line-heights-h5: 102.71604938271605%;
-  --gcds-line-heights-h4: 182.60631001371743%;
-  --gcds-line-heights-h3: 162.31672001219326%;
-  --gcds-line-heights-h2: 144.28152889972733%;
-  --gcds-line-heights-h1: 128.25024791086875%;
+  --gcds-line-heights-caption: 135%;
+  --gcds-line-heights-text: 120%;
+  --gcds-line-heights-h6: 124.44444444444444%;
+  --gcds-line-heights-h5: 126.41975308641975%;
+  --gcds-line-heights-h4: 126.41975308641973%;
+  --gcds-line-heights-h3: 124.85901539399482%;
+  --gcds-line-heights-h2: 122.08437060746162%;
+  --gcds-line-heights-h1: 118.38484422541731%;
   --gcds-alert-button-focus-background: #303fc3;
   --gcds-alert-button-focus-text: #ffffff;
   --gcds-alert-text: #000000;
