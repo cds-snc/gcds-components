@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 12 Jan 2023 21:13:27 GMT
+ * Generated on Thu, 12 Jan 2023 21:19:33 GMT
  */
 
 :root {
@@ -11,8 +11,8 @@
   --gcds-brand-disabled-background: #d6d9dd;
   --gcds-brand-disabled-text: #545961;
   --gcds-brand-destructive: #a62a1e;
-  --gcds-color-blue-100: #eaecf0;
-  --gcds-color-blue-500: #b1b6bd; /* Must contrast 3:1 with white */
+  --gcds-color-blue-100: #d7e5f5;
+  --gcds-color-blue-500: #6584a6; /* Must contrast 3:1 with white */
   --gcds-color-blue-700: #425a76; /* Must contrast 7:1 with white */
   --gcds-color-blue-800: #31455c;
   --gcds-color-blue-900: #26374a;
@@ -88,7 +88,7 @@
   --gcds-alert-text: #000000;
   --gcds-alert-destructive-background: #fbddda;
   --gcds-alert-destructive-icon: #822117;
-  --gcds-alert-info-background: #eaecf0;
+  --gcds-alert-info-background: #d7e5f5;
   --gcds-alert-info-icon: #26374a;
   --gcds-alert-success-background: #e6f6ec;
   --gcds-alert-success-icon: #03662a;
@@ -108,8 +108,8 @@
   --gcds-button-primary-default-text: #ffffff;
   --gcds-button-primary-hover-background: #425a76;
   --gcds-button-secondary-default-text: #26374a;
-  --gcds-button-secondary-hover-background: #eaecf0;
-  --gcds-button-secondary-active-background: #eaecf0;
+  --gcds-button-secondary-hover-background: #d7e5f5;
+  --gcds-button-secondary-active-background: #d7e5f5;
   --gcds-button-shared-active-background: #000000;
   --gcds-button-shared-active-text: #ffffff;
   --gcds-button-shared-focus-background: #303fc3;
@@ -183,7 +183,7 @@
   --gcds-link-destructive-text: #a62a1e;
   --gcds-link-light-text: #ffffff;
   --gcds-pagination-default-text: #26374a;
-  --gcds-pagination-hover-background: #eaecf0;
+  --gcds-pagination-hover-background: #d7e5f5;
   --gcds-pagination-focus-background: #303fc3;
   --gcds-pagination-focus-text: #ffffff;
   --gcds-pagination-focus-shadow: #ffffff;
