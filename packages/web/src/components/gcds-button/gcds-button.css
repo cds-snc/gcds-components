@@ -1,13 +1,14 @@
 :host button,
 :host a {
-  border: none;
   cursor: pointer;
-  font-family: var(--gcds-font-families-body), sans-serif;
-  font-size: var(--gcds-font-sizes-text);
-  line-height: var(--gcds-font-sizes-text);
-  padding: 1rem .75rem;
+  font-family: var(--gcds-button-font-family), sans-serif;
+  font-size: var(--gcds-button-font-size);
+  font-weight: var(--gcds-button-font-weight);
+  line-height: var(--gcds-button-line-height);
+  padding: var(--gcds-button-padding);
+  border: var(--gcds-button-border-width) solid;
   text-decoration: none;
-  border-radius: var(--gcds-spacing-50);
+  border-radius: var(--gcds-button-border-radius);
   transition: all .15s ease-in-out;
 
   /* Button Role Styles */
@@ -39,9 +40,9 @@
 
   &.button--role-secondary,
   &.button--text-only {
-    background-color: transparent;
+    background-color: var(--gcds-button-secondary-default-background);
     color: var(--gcds-button-secondary-default-text);
-    border: .125rem solid currentColor;
+    border: var(--gcds-button-border-width) solid currentColor;
 
     &.active,
     &:hover {
@@ -75,7 +76,7 @@
 
   &.button--role-skip-to-content {
     position: absolute;
-    top: 1.6rem;
+    top: var(--gcds-button-skip-position-top);
     left: 0;
     width: inherit;
     z-index: 3;
@@ -95,7 +96,7 @@
     background-color: var(--gcds-button-shared-disabled-background);
     color: var(--gcds-button-shared-disabled-text);
     cursor: not-allowed;
-    border: .125rem solid currentColor;
+    border: var(--gcds-button-border-width) solid currentColor;
     pointer-events: none;
   }
 
@@ -103,8 +104,8 @@
   &:focus-visible {
     background-color: var(--gcds-button-shared-focus-background);
     box-shadow: 0 0 0 .125rem var(--gcds-button-shared-focus-text);
-    outline: .1875rem solid var(--gcds-button-shared-focus-background);
-    outline-offset: .125rem;
+    outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-outline-color);
+    outline-offset: var(--gcds-button-focus-outline-offset);
     color: var(--gcds-button-shared-focus-text) ;
   }
 
@@ -119,7 +120,7 @@
 
   /* Small button styling */
   &.button--small {
-    font-size: 80%;
-    padding: var(--gcds-spacing-200);
+    font-size: var(--gcds-button-small-font-size);
+    padding: var(--gcds-button-small-padding);
   }
 }
