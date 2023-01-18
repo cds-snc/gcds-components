@@ -5,6 +5,7 @@
 :host .error-message {
   font-family: var(--gcds-error-message-font-family);
   font-size: var(--gcds-error-message-font-size);
+  font-weight: var(--gcds-error-message-font-weight);
   line-height: var(--gcds-error-message-line-height);
   margin: var(--gcds-error-message-margin);
   padding: var(--gcds-error-message-padding);
