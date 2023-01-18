@@ -74,7 +74,7 @@ export class GcdsLabel {
         >
           <span>{label}</span>
           {required ?
-            <strong class="label--required">({requiredText})</strong>
+            <span class="label--required">({requiredText})</span>
           : null}
         </label>
       </Host>
