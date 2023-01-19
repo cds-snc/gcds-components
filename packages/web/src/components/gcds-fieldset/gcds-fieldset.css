@@ -5,13 +5,13 @@
     border: none;
     padding: 0;
     color: var(--gcds-fieldset-default-text);
-    font-family: var(--gcds-font-families-body);
+    font-family: var(--gcds-fieldset-font-family);
 
     legend {
-      font-size: var(--gcds-font-sizes-text);
-      font-weight: var(--gcds-font-weights-semibold);
+      font-size: var(--gcds-fieldset-font-size);
+      font-weight: var(--gcds-fieldset-font-weight);
       color: inherit;
-      margin-bottom: var(--gcds-spacing-50);
+      margin-bottom: var(--gcds-fieldset-legend-margin-bottom);
     }
 
     &:focus-within {
@@ -28,7 +28,7 @@
   }
 
   .legend__required {
-    margin: 0 0 0 var(--gcds-spacing-100);
+    margin: var(--gcds-fieldset-legend-required-margin);
   }
 
   slot {
