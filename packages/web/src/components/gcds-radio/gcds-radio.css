@@ -1,19 +1,16 @@
 :host {
   .gcds-radio {
     max-width: 90%;
-    font-family: var(--gcds-font-families-body), sans-serif;
-    font-weight: var(--gcds-font-weights-regular);
-    font-size: var(--gcds-font-sizes-text);
-    line-height: var(--gcds-line-heights-text);
+    font-family: var(--gcds-radio-font-family);
+    font-size: var(--gcds-radio-font-size);
+    font-weight: var(--gcds-radio-font-weight);
+    line-height: var(--gcds-radio-line-height);
     color: var(--gcds-radio-default-text);
-    margin: 0;
+    margin: var(--gcds-radio-margin);
     padding: 0;
     border: 0;
     transition: color ease-in-out .15s;
-
     position: relative;
-    margin-bottom: var(--gcds-spacing-400);
-    margin-top: 1.75rem;
 
     &:focus-within {
       color: var(--gcds-radio-focus-text);
@@ -65,12 +62,12 @@
     }
 
     input[type=radio] {
-      height: 2.75rem;
+      height: var(--gcds-radio-input-height);
+      width: var(--gcds-radio-input-width);
       left: 0;
       opacity: 0;
       position: absolute;
-      top: -0.5rem;
-      width: 2.75rem;
+      top: var(--gcds-radio-position-top);
 
       &:checked + gcds-label:after {
         opacity: 1;
@@ -83,26 +80,26 @@
         &:after {
           position: absolute;
           cursor: pointer;
-          border-radius: var(--gcds-spacing-500);
+          border-radius: var(--gcds-radio-border-radius);
           content: "";
           box-sizing: border-box;
         }
 
         &:before {
-          border: .125rem solid currentcolor;
-          height: 2.75rem;
-          width: 2.75rem;
+          border: var(--gcds-radio-input-border-width) solid currentcolor;
+          height: var(--gcds-radio-input-height);
+          width: var(--gcds-radio-input-width);
           left: 0;
-          top: -0.5rem;
+          top: var(--gcds-radio-position-top);
         }
 
         &:after {
-          height: 1rem;
-          width: 1rem;
+          height: var(--gcds-radio-check-height);
+          width: var(--gcds-radio-check-width);
           color: currentcolor;
-          left: .875rem;
+          left: var(--gcds-radio-check-position-left);
           opacity: 0;
-          top: .375rem;
+          top: var(--gcds-radio-check-position-top);
           background-color: currentcolor;
           transition: opacity .2s ease-in-out;
         }
@@ -112,9 +109,9 @@
         color: var(--gcds-radio-focus-text);
 
         &:before {
-          box-shadow: 0 0 0 .125rem var(--gcds-radio-focus-shadow);
-          outline: .1875rem solid currentcolor;
-          outline-offset: .125rem;
+          box-shadow: 0 0 0 var(--gcds-radio-focus-shadow-width) var(--gcds-radio-focus-shadow-color);
+          outline: var( --gcds-radio-focus-outline-width) solid currentcolor;
+          outline-offset: var(--gcds-radio-focus-outline-offset);
           border-color: currentcolor;
         }
 
@@ -128,12 +125,12 @@
     gcds-label,
     gcds-hint {
       display: block;
-      padding: 0 0 0 var(--gcds-spacing-600);
+      padding: var(--gcds-radio-label-padding);
     }
 
     gcds-hint {
-      color: var(--gcds-radio-default-hint);
-      font-size: var(--gcds-font-sizes-caption);
+      color: var(--gcds-radio-hint-text); 
+      font-size: var(--gcds-radio-hint-font-size);
     }
   }
 }

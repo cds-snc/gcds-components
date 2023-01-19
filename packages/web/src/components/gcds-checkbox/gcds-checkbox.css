@@ -127,7 +127,7 @@
     }
 
     gcds-hint {
-      color: var(--gcds-checkbox-default-hint);
+      color: var(--gcds-checkbox-hint-text);
       font-size: var(--gcds-checkbox-hint-font-size);
     }
 
