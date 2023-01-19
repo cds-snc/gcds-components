@@ -1,6 +1,9 @@
 :host {
   display: block;
-  font-size: var(--gcds-font-sizes-text);
+  font-family: var(--gcds-lang-toggle-font-family);
+  font-size: var(--gcds-lang-toggle-font-size);
+  font-weight: var(--gcds-lang-toggle-font-weight);
+  line-height: var(--gcds-lang-toggle-line-height);
 
   h2 {
     margin: 0;
@@ -11,7 +14,7 @@
 
   a {
     color: var(--gcds-lang-toggle-default-text);
-    padding: var(--gcds-spacing-300);
+    padding: var(--gcds-lang-toggle-padding);
 
     span {
       display: none;
@@ -48,6 +51,6 @@
       abbr {
         display: none;
       }
-  }
+    }
   }
 }
