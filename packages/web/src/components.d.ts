@@ -775,13 +775,13 @@ export namespace Components {
     }
     interface GcdsVerifyBanner {
         /**
+          * Defines the container width of the verify banner content
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
           * Defines if the banner's position is fixed.
          */
         "isFixed"?: boolean;
-        /**
-          * Defines the max width of the banner content
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
 }
 export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
@@ -1858,13 +1858,13 @@ declare namespace LocalJSX {
     }
     interface GcdsVerifyBanner {
         /**
+          * Defines the container width of the verify banner content
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
           * Defines if the banner's position is fixed.
          */
         "isFixed"?: boolean;
-        /**
-          * Defines the max width of the banner content
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;

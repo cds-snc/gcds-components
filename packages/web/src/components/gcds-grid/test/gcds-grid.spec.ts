@@ -12,7 +12,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr 1fr" tag="ul">
         <mock:shadow-root>
-          <ul class="container-fluid display-grid gcds-grid" style="grid-template-columns: 1fr 1fr;">
+          <ul class="container-full display-grid gcds-grid" style="grid-template-columns: 1fr 1fr;">
             <slot></slot>
           </ul>
         </mock:shadow-root>
