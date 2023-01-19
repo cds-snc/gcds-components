@@ -91,7 +91,7 @@
     margin: 0 auto;
     padding-block-start: var(--gcds-verify-banner-content-padding-block-start);
     padding-block-end: var(--gcds-verify-banner-content-padding-block-end);
-    border-top: var(--gcds-verify-banner-content-border-width) solid var(--gcds-verify-banner-content-border-color);
+    border-block-start: var(--gcds-verify-banner-content-border-width) solid var(--gcds-verify-banner-content-border-color);
 
     li {
       list-style: none;

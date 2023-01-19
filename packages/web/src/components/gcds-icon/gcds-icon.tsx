@@ -21,12 +21,12 @@ export class GcdsIcon {
   /**
    * Add margin to the left of the icon
    */
-  @Prop() marginLeft?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+  @Prop() marginLeft?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
 
   /**
    * Add margin to the right of the icon
    */
-  @Prop() marginRight?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+  @Prop() marginRight?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
 
   /**
    * Name of the icon.
