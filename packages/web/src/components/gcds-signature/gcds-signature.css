@@ -1,7 +1,7 @@
 gcds-signature {
   display: block;
   width: fit-content;
-  margin-bottom: var(--gcds-spacing-100);
+  margin-bottom: var(--gcds-signature-margin-bottom);
 
   svg {
     max-width: 100%;
@@ -9,8 +9,8 @@ gcds-signature {
 
   &:not([type='wordmark']) {
     svg {
-      height: 1.6875rem;
-      margin-bottom: var(--gcds-spacing-100);
+      height: var(--gcds-signature-signature-height);
+      margin-bottom: var(--gcds-signature-signature-margin-bottom);
     }
 
     @media screen and (min-width: 64em) {
@@ -22,9 +22,9 @@ gcds-signature {
 
   &[type='wordmark'] {
     svg {
-      height: var(--gcds-spacing-500);
-      margin-bottom: var(--gcds-spacing-400);
-      margin-top: var(--gcds-spacing-400);
+      height: var(--gcds-signature-wordmark-height);
+      margin-bottom: var(--gcds-signature-wordmark-margin-bottom);
+      margin-top: var(--gcds-signature-wordmark-margin-top);
       width: auto;
     }
   }
