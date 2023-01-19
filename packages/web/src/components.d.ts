@@ -327,7 +327,7 @@ export namespace Components {
         /**
           * Defines grid container size
          */
-        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
          */
@@ -335,7 +335,7 @@ export namespace Components {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "gap"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -1370,7 +1370,7 @@ declare namespace LocalJSX {
         /**
           * Defines grid container size
          */
-        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
          */
@@ -1378,7 +1378,7 @@ declare namespace LocalJSX {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "gap"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */

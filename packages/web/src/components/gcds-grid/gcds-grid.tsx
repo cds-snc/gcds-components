@@ -24,7 +24,7 @@ export class GcdsGrid {
   /**
    * Defines grid container size
    */
-  @Prop() container?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'fluid';
+  @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' = 'full';
 
   /**
    * Defines element as grid or inline-grid container
@@ -35,7 +35,7 @@ export class GcdsGrid {
    * Shorthand for column-gap + row-gap
    * Specifies the width of the gutters between columns and rows
    */
-  @Prop() gap?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+  @Prop() gap?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
 
   /**
    * Set tag for grid container
