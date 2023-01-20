@@ -1,7 +1,7 @@
 :host button,
 :host a {
   cursor: pointer;
-  font-family: var(--gcds-button-font-family), sans-serif;
+  font-family: var(--gcds-button-font-family);
   font-size: var(--gcds-button-font-size);
   font-weight: var(--gcds-button-font-weight);
   line-height: var(--gcds-button-line-height);
