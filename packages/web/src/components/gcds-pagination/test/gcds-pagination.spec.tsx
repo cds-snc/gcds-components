@@ -20,7 +20,7 @@ describe('gcds-pagination', () => {
         <ul class="gcds-pagination-simple">
           <li>
             <a aria-label="Previous page: Previous label" href="#previous">
-              <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               <strong>
                 Previous
               </strong>
@@ -31,7 +31,7 @@ describe('gcds-pagination', () => {
           </li>
           <li>
             <a aria-label="Next page: Next label" href="#next">
-              <gcds-icon margin-right="spacing-200" name="arrow-right"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
               <strong>
                 Next
               </strong>
@@ -60,7 +60,7 @@ describe('gcds-pagination', () => {
         <ul class="gcds-pagination-simple">
           <li>
             <a aria-label="Previous page" href="#previous">
-              <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               <strong>
                 Previous
               </strong>
@@ -70,7 +70,7 @@ describe('gcds-pagination', () => {
           </li>
           <li>
             <a aria-label="Next page" href="#next">
-              <gcds-icon margin-right="spacing-200" name="arrow-right"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
               <strong>
                 Next
               </strong>
@@ -100,7 +100,7 @@ describe('gcds-pagination', () => {
         <ul class="gcds-pagination-simple">
           <li>
             <a aria-label="Page précédente: Previous label" href="#previous">
-              <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               <strong>
               Précédente
               </strong>
@@ -111,7 +111,7 @@ describe('gcds-pagination', () => {
           </li>
           <li>
             <a aria-label="Page suivante: Next label" href="#next">
-              <gcds-icon margin-right="spacing-200" name="arrow-right"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
               <strong>
                 Suivante
               </strong>
@@ -140,7 +140,7 @@ describe('gcds-pagination', () => {
         <ul class="gcds-pagination-simple">
           <li>
             <a aria-label="Page précédente" href="#previous">
-              <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               <strong>
                 Précédente
               </strong>
@@ -150,7 +150,7 @@ describe('gcds-pagination', () => {
           </li>
           <li>
             <a aria-label="Page suivante" href="#next">
-              <gcds-icon margin-right="spacing-200" name="arrow-right"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
               <strong>
                 Suivante
               </strong>
@@ -180,7 +180,7 @@ describe('gcds-pagination', () => {
           <ul class="gcds-pagination-list">
             <li>
               <a aria-label="Previous page: Page 4 of 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 Previous
               </a>
             </li>
@@ -242,21 +242,21 @@ describe('gcds-pagination', () => {
             <li>
               <a aria-label="Next page: Page 6 of 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
                 Next
-                <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>
           <ul class="gcds-pagination-list-mobile-prevnext">
             <li>
               <a aria-label="Previous page: Page 4 of 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 Previous
               </a>
             </li>
             <li>
               <a aria-label="Next page: Page 6 of 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
                 Next
-                <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>
@@ -282,7 +282,7 @@ describe('gcds-pagination', () => {
           <ul class="gcds-pagination-list">
             <li>
               <a aria-label="Previous page: Page 9 of 20 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 Previous
               </a>
             </li>
@@ -334,21 +334,21 @@ describe('gcds-pagination', () => {
             <li>
               <a aria-label="Next page: Page 11 of 20 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
                 Next
-                <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>
           <ul class="gcds-pagination-list-mobile-prevnext">
             <li>
               <a aria-label="Previous page: Page 9 of 20 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 Previous
               </a>
             </li>
             <li>
               <a aria-label="Next page: Page 11 of 20 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
                 Next
-                <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>
@@ -374,7 +374,7 @@ describe('gcds-pagination', () => {
           <ul class="gcds-pagination-list">
             <li>
               <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 Précédente
               </a>
             </li>
@@ -436,21 +436,21 @@ describe('gcds-pagination', () => {
             <li>
               <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
                 Suivante
-                <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>
           <ul class="gcds-pagination-list-mobile-prevnext">
             <li>
               <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 Précédente
               </a>
             </li>
             <li>
               <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
                 Suivante
-                <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>
@@ -476,7 +476,7 @@ describe('gcds-pagination', () => {
           <ul class="gcds-pagination-list">
             <li>
               <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 Précédente
               </a>
             </li>
@@ -528,21 +528,21 @@ describe('gcds-pagination', () => {
             <li>
               <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
                 Suivante
-                <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>
           <ul class="gcds-pagination-list-mobile-prevnext">
             <li>
               <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 Précédente
               </a>
             </li>
             <li>
               <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
                 Suivante
-                <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>
