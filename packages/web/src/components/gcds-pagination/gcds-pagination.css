@@ -7,13 +7,15 @@
     list-style: none;
 
     li {
-      margin: var(--gcds-spacing-100);
+      margin: var(--gcds-pagination-listitem-margin);
 
       a {
         color: var(--var-pagination-default-text);
-        font-weight: var(--gcds-font-weights-bold);
-        font-family: var(--gcds-font-families-body);
-        border-radius: var(--gcds-spacing-50);
+        font-weight: var(--gcds-pagination-font-weight);
+        font-family: var(--gcds-pagination-font-families);
+        font-size: var(--gcds-pagination-font-size);
+        line-height: var(--gcds-pagination-line-height);
+        border-radius: var(--gcds-pagination-border-radius);
 
         &:hover {
           background: var(--gcds-pagination-hover-background);
@@ -22,10 +24,9 @@
         &:focus {
           color: var(--gcds-pagination-focus-text);
           background-color: var(--gcds-pagination-focus-background);
-
-          box-shadow: 0 0 0 .125rem var(--gcds-pagination-focus-shadow);
-          outline: .1875rem solid var(--gcds-pagination-focus-outline);
-          outline-offset: .125rem;
+          box-shadow: 0 0 0 var(--gcds-pagination-focus-shadow-width) var(--gcds-pagination-focus-shadow-color);
+          outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-outline-color);
+          outline-offset: var(--gcds-pagination-focus-outline-offset);
         }
 
         &:active,
@@ -36,10 +37,9 @@
           &:focus {
             color: var(--gcds-pagination-focus-text);
             background-color: var(--gcds-pagination-focus-background);
-  
-            box-shadow: 0 0 0 .125rem var(--gcds-pagination-focus-shadow);
-            outline: .1875rem solid var(--gcds-pagination-focus-outline);
-            outline-offset: .125rem;
+            box-shadow: 0 0 0 var(--gcds-pagination-focus-shadow-width) var(--gcds-pagination-focus-shadow-color);
+            outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-outline-color);
+            outline-offset: var(--gcds-pagination-focus-outline-offset);
           }
         }
       }
@@ -47,7 +47,7 @@
 
     @media screen and (max-width: 24em) {
       li {
-        margin: 0.125rem;
+        margin: var(--gcds-pagination-mobile-list-item-margin);
       }
     }
 
@@ -69,7 +69,7 @@
 
           &.gcds-pagination-end-button,
           &.gcds-pagination-end-button-mobile {
-            padding: var(--gcds-spacing-300) var(--gcds-spacing-200);
+            padding: var(--gcds-pagination-list-end-button-padding);
             width: auto;
             min-width: auto;
             height: auto;
@@ -87,7 +87,7 @@
         /* Mobile styling */
         @media screen and (max-width: 49em) {
           a {
-            border: 0.125rem solid var(--gcds-pagination-mobile-list-border);
+            border: var(--gcds-pagination-border-width) solid var(--gcds-pagination-border-color);
           }
 
           & > span.gcds-pagination-list-ellipses {
@@ -154,7 +154,7 @@
 
     &.gcds-pagination-list-mobile-prevnext {
       display: none;
-      margin-top: var(--gcds-spacing-200);
+      margin-top: var(--gcds-pagination-mobile-list-prevnext-margin-top);
     }
 
     @media screen and (max-width: 49em) {
@@ -165,11 +165,11 @@
 
     &.gcds-pagination-simple {
       li {
-        margin-bottom: var(--gcds-spacing-200);
+        margin-bottom: var(--gcds-pagination-simple-listitem-margin-bottom);
 
         a {
           display: grid;
-          padding:var(--gcds-spacing-300) var(--gcds-spacing-200);
+          padding: var(--gcds-pagination-simple-padding);
           text-decoration: none;
           grid-template-areas:
           "icon text"
@@ -186,7 +186,7 @@
 
           & > span {
             grid-area: label;
-            font-weight: var(--gcds-font-weights-regular);
+            font-weight: var(--gcds-pagination-simple-label-font-weight);
             text-decoration: underline;
           }
         }
