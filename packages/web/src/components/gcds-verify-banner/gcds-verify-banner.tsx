@@ -21,14 +21,14 @@ export class GcdsVerifyBanner {
    */
 
   /**
-   * Defines if the banner's position is fixed.
-   */
-  @Prop() isFixed?: boolean;
-
-  /**
    * Defines the container width of the verify banner content
    */
   @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' = 'xl';
+
+  /**
+   * Defines if the banner's position is fixed.
+   */
+  @Prop() isFixed?: boolean;
 
   async componentWillLoad() {
     // Define lang attribute

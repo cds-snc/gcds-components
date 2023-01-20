@@ -201,7 +201,7 @@ describe('gcds-verify-banner', () => {
   });
 
   /**
-    * Max content width tests
+    * Container width tests
     */
 
   it('renders container width full', async () => {
