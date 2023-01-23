@@ -65,7 +65,7 @@
       left: 0;
       opacity: 0;
       position: absolute;
-      top: var(--gcds-checkbox-position-top);
+      top: var(--gcds-checkbox-top);
 
       &:checked + gcds-label:after {
         opacity: 1;
@@ -87,7 +87,7 @@
           height: var(--gcds-checkbox-input-height);
           width: var(--gcds-checkbox-input-width);
           left: 0;
-          top: var(--gcds-checkbox-position-top);
+          top: var(--gcds-checkbox-top);
           border-radius: var(--gcds-checkbox-input-border-radius);
         }
 
@@ -98,9 +98,9 @@
           height: var(--gcds-checkbox-check-height);
           width: var(--gcds-checkbox-check-width);
           color: currentcolor;
-          left: var(--gcds-checkbox-check-position-left);
+          left: var(--gcds-checkbox-check-left);
           opacity: 0;
-          top: var(--gcds-checkbox-check-position-top);
+          top: var(--gcds-checkbox-check-top);
           transform: rotate(40deg);
           transition: opacity .2s ease-in-out;
         }
@@ -108,9 +108,9 @@
 
       &:focus + gcds-label {
         &:before {
-          box-shadow: 0 0 0 var(--gcds-checkbox-focus-shadow-width) var(--gcds-checkbox-focus-shadow-color);
+          box-shadow: 0 0 0 var(--gcds-checkbox-input-border-width) var(--gcds-checkbox-focus-shadow-color);
           outline: var( --gcds-checkbox-focus-outline-width) solid currentcolor;
-          outline-offset: var(--gcds-checkbox-focus-outline-offset);
+          outline-offset: var(--gcds-checkbox-input-border-width);
           border-color: currentcolor;
         }
 

@@ -14,6 +14,7 @@
   /* Button Role Styles */
   &.button--role-destructive {
     background-color: var(--gcds-button-destructive-default-background);
+    border-color: var(--gcds-button-destructive-default-background);
     color: var(--gcds-button-destructive-default-text);
 
     &:hover {
@@ -27,6 +28,7 @@
 
   &.button--role-primary {
     background-color: var(--gcds-button-primary-default-background);
+    border-color: var(--gcds-button-primary-default-background);
     color: var(--gcds-button-primary-default-text);
 
     &:hover {
@@ -76,7 +78,7 @@
 
   &.button--role-skip-to-content {
     position: absolute;
-    top: var(--gcds-button-skip-position-top);
+    top: var(--gcds-button-skip-top);
     left: 0;
     width: inherit;
     z-index: 3;
@@ -102,11 +104,12 @@
 
   &:focus,
   &:focus-visible {
+    border-color: var(--gcds-button-shared-focus-background);
     background-color: var(--gcds-button-shared-focus-background);
-    box-shadow: 0 0 0 .125rem var(--gcds-button-shared-focus-text);
-    outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-outline-color);
-    outline-offset: var(--gcds-button-focus-outline-offset);
-    color: var(--gcds-button-shared-focus-text) ;
+    box-shadow: 0 0 0 var(--gcds-button-border-width) var(--gcds-button-shared-focus-text);
+    outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+    outline-offset: var(--gcds-button-border-width);
+    color: var(--gcds-button-shared-focus-text);
   }
 
   &.button--solid:not(.secondary):active {
@@ -114,7 +117,7 @@
     color: var(--gcds-button-shared-active-text);
 
     &:focus {
-      outline-color: var(--gcds-button-shared-active-background);
+      outline-color: var(--gcds-button-shared-focus-background);
     }
   }
 

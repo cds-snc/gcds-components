@@ -24,9 +24,9 @@
         &:focus {
           color: var(--gcds-pagination-focus-text);
           background-color: var(--gcds-pagination-focus-background);
-          box-shadow: 0 0 0 var(--gcds-pagination-focus-shadow-width) var(--gcds-pagination-focus-shadow-color);
-          outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-outline-color);
-          outline-offset: var(--gcds-pagination-focus-outline-offset);
+          box-shadow: 0 0 0 var(--gcds-pagination-border-width) var(--gcds-pagination-focus-shadow-color);
+          outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-background);
+          outline-offset: var(--gcds-pagination-border-width);
         }
 
         &:active,
@@ -37,9 +37,9 @@
           &:focus {
             color: var(--gcds-pagination-focus-text);
             background-color: var(--gcds-pagination-focus-background);
-            box-shadow: 0 0 0 var(--gcds-pagination-focus-shadow-width) var(--gcds-pagination-focus-shadow-color);
-            outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-outline-color);
-            outline-offset: var(--gcds-pagination-focus-outline-offset);
+            box-shadow: 0 0 0 var(--gcds-pagination-border-width) var(--gcds-pagination-focus-shadow-color);
+            outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-background);
+            outline-offset: var(--gcds-pagination-border-width);
           }
         }
       }
@@ -88,6 +88,10 @@
         @media screen and (max-width: 49em) {
           a {
             border: var(--gcds-pagination-border-width) solid var(--gcds-pagination-border-color);
+
+            &:focus {
+              border-color: var(--gcds-pagination-focus-background);
+            }
           }
 
           & > span.gcds-pagination-list-ellipses {

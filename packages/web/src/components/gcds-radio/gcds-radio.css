@@ -67,7 +67,7 @@
       left: 0;
       opacity: 0;
       position: absolute;
-      top: var(--gcds-radio-position-top);
+      top: var(--gcds-radio-top);
 
       &:checked + gcds-label:after {
         opacity: 1;
@@ -90,16 +90,16 @@
           height: var(--gcds-radio-input-height);
           width: var(--gcds-radio-input-width);
           left: 0;
-          top: var(--gcds-radio-position-top);
+          top: var(--gcds-radio-top);
         }
 
         &:after {
           height: var(--gcds-radio-check-height);
           width: var(--gcds-radio-check-width);
           color: currentcolor;
-          left: var(--gcds-radio-check-position-left);
+          left: var(--gcds-radio-check-left);
           opacity: 0;
-          top: var(--gcds-radio-check-position-top);
+          top: var(--gcds-radio-check-top);
           background-color: currentcolor;
           transition: opacity .2s ease-in-out;
         }
@@ -109,9 +109,9 @@
         color: var(--gcds-radio-focus-text);
 
         &:before {
-          box-shadow: 0 0 0 var(--gcds-radio-focus-shadow-width) var(--gcds-radio-focus-shadow-color);
+          box-shadow: 0 0 0 var(--gcds-radio-input-border-width) var(--gcds-radio-focus-shadow-color);
           outline: var( --gcds-radio-focus-outline-width) solid currentcolor;
-          outline-offset: var(--gcds-radio-focus-outline-offset);
+          outline-offset: var(--gcds-radio-input-border-width);
           border-color: currentcolor;
         }
 

@@ -70,6 +70,6 @@
     position: absolute;
     width: 100%;
     margin-inline: auto;
-    top: var(--gcds-header-topnav-position-top);
+    top: var(--gcds-header-topnav-top);
   }
 }
