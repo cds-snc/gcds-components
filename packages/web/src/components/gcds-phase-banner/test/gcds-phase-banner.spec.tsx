@@ -11,7 +11,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner>
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <div class="banner__content container-lg">
+            <div class="banner__content container-xl">
               <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
@@ -45,7 +45,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner banner-role="primary">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <div class="banner__content container-lg">
+            <div class="banner__content container-xl">
               <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
@@ -75,7 +75,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner banner-role="secondary">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-secondary" role="status">
-            <div class="banner__content container-lg">
+            <div class="banner__content container-xl">
               <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
@@ -109,7 +109,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner is-fixed>
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary banner--is-fixed" role="status">
-            <div class="banner__content container-lg">
+            <div class="banner__content container-xl">
               <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
@@ -131,19 +131,19 @@ describe('gcds-phase-banner', () => {
   });
 
   /**
-    * Max content width tests
+    * Container width tests
     */
 
-  it('renders max content width fluid', async () => {
+  it('renders container width full', async () => {
     const page = await newSpecPage({
       components: [GcdsPhaseBanner],
-      html: `<gcds-phase-banner max-content-width="fluid"><p>This is a banner.</p></gcds-phase-banner>`,
+      html: `<gcds-phase-banner container="full"><p>This is a banner.</p></gcds-phase-banner>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-phase-banner max-content-width="fluid">
+      <gcds-phase-banner container="full">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <div class="banner__content container-fluid">
+            <div class="banner__content container-full">
               <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left"></slot>
               </figure>
@@ -164,13 +164,43 @@ describe('gcds-phase-banner', () => {
     `);
   });
 
-  it('renders max content width lg', async () => {
+  it('renders container width xl', async () => {
     const page = await newSpecPage({
       components: [GcdsPhaseBanner],
-      html: `<gcds-phase-banner max-content-width="lg"><p>This is a banner.</p></gcds-phase-banner>`,
+      html: `<gcds-phase-banner container="xl"><p>This is a banner.</p></gcds-phase-banner>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-phase-banner max-content-width="lg">
+      <gcds-phase-banner container="xl">
+        <mock:shadow-root>
+          <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
+            <div class="banner__content container-xl">
+              <figure class="banner__icon icon--left">
+                <slot name="banner-icon-left"></slot>
+              </figure>
+
+              <div class="banner__details">
+                <slot name="banner-text"></slot>
+                <slot name="banner-cta"></slot>
+              </div>
+
+              <figure class="banner__icon icon--right">
+                <slot name="banner-icon-right"></slot>
+              </figure>
+            </div>
+          </div>
+        </mock:shadow-root>
+        <p>This is a banner.</p>
+      </gcds-phase-banner>
+    `);
+  });
+
+  it('renders container width lg', async () => {
+    const page = await newSpecPage({
+      components: [GcdsPhaseBanner],
+      html: `<gcds-phase-banner container="lg"><p>This is a banner.</p></gcds-phase-banner>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-phase-banner container="lg">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
             <div class="banner__content container-lg">
@@ -194,13 +224,13 @@ describe('gcds-phase-banner', () => {
     `);
   });
 
-  it('renders max content width md', async () => {
+  it('renders container width md', async () => {
     const page = await newSpecPage({
       components: [GcdsPhaseBanner],
-      html: `<gcds-phase-banner max-content-width="md"><p>This is a banner.</p></gcds-phase-banner>`,
+      html: `<gcds-phase-banner container="md"><p>This is a banner.</p></gcds-phase-banner>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-phase-banner max-content-width="md">
+      <gcds-phase-banner container="md">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
             <div class="banner__content container-md">
@@ -224,13 +254,13 @@ describe('gcds-phase-banner', () => {
     `);
   });
 
-  it('renders max content width sm', async () => {
+  it('renders container width sm', async () => {
     const page = await newSpecPage({
       components: [GcdsPhaseBanner],
-      html: `<gcds-phase-banner max-content-width="sm"><p>This is a banner.</p></gcds-phase-banner>`,
+      html: `<gcds-phase-banner container="sm"><p>This is a banner.</p></gcds-phase-banner>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-phase-banner max-content-width="sm">
+      <gcds-phase-banner container="sm">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
             <div class="banner__content container-sm">
@@ -254,13 +284,13 @@ describe('gcds-phase-banner', () => {
     `);
   });
 
-  it('renders max content width xs', async () => {
+  it('renders container width xs', async () => {
     const page = await newSpecPage({
       components: [GcdsPhaseBanner],
-      html: `<gcds-phase-banner max-content-width="xs"><p>This is a banner.</p></gcds-phase-banner>`,
+      html: `<gcds-phase-banner container="xs"><p>This is a banner.</p></gcds-phase-banner>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-phase-banner max-content-width="xs">
+      <gcds-phase-banner container="xs">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
             <div class="banner__content container-xs">

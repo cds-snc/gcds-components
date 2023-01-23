@@ -246,7 +246,7 @@ export class GcdsButton {
             <gcds-icon
               name="external-link"
               label={ lang == 'en' ? 'Opens in a new tab.' : 'S\'ouvre dans un nouvel onglet.' }
-              margin-left="spacing-200"
+              margin-left="200"
             />
           : <slot name="right"></slot> }
         </Tag>

@@ -1,10 +1,10 @@
 :host .gcds-textarea-wrapper {
   width: 100%;
   max-width: 75ch;
-  font-family: var(--gcds-font-families-body);
-  font-weight: var(--gcds-font-weights-regular);
-  font-size: var(--gcds-font-sizes-text);
-  line-height: var(--gcds-line-heights-text);
+  font-family: var(--gcds-textarea-font-family);
+  font-size: var(--gcds-textarea-font-size);
+  font-weight: var(--gcds-textarea-font-weight);
+  line-height: var(--gcds-textarea-line-height);
   color: var(--gcds-textarea-default-text);
   margin: 0;
   padding: 0;
@@ -34,25 +34,26 @@
   width: 100%;
   max-width: 100%;
   height: auto;
-  min-height: 2.75rem;
+  min-height: var(--gcds-textarea-min-height);
   font-family: inherit;
   font-size: inherit;
-  line-height: var(--gcds-line-heights-text);
-  margin: 0 0 var(--gcds-spacing-400);
-  padding: var(--gcds-spacing-200) var(--gcds-spacing-300);
+  font-weight: inherit;
+  line-height: inherit;
+  margin: var(--gcds-textarea-margin);
+  padding: var(--gcds-textarea-padding);
   background-color: var(--gcds-textarea-default-background);
   background-image: none;
   color: var(--gcds-textarea-default-text);
-  border: .125rem solid currentColor;
-  border-radius: var(--gcds-spacing-50);
+  border: var(--gcds-textarea-border-width) solid currentColor;
+  border-radius: var(--gcds-textarea-border-radius);
   box-sizing: border-box;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
   &:focus {
     border-color: var(--gcds-textarea-focus-text);
-    box-shadow: 0 0 0 .125rem var(--gcds-textarea-focus-shadow);
-    outline: .1875rem solid var(--gcds-textarea-focus-text);
-    outline-offset: .125rem;
+    box-shadow: 0 0 0 var(--gcds-textarea-border-width) var(--gcds-textarea-focus-shadow);
+    outline: var(--gcds-textarea-outline-width) solid var(--gcds-textarea-focus-text);
+    outline-offset: var(--gcds-textarea-border-width);
   }
 
   &:disabled {

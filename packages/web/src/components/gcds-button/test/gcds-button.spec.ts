@@ -215,7 +215,7 @@ describe('gcds-button', () => {
           <a class="button--role-primary button--text-only button--regular" href="https://google.com" target="_blank">
             <slot name="left"></slot>
             <slot></slot>
-            <gcds-icon name="external-link" label="Opens in a new tab." margin-left="spacing-200" />
+            <gcds-icon name="external-link" label="Opens in a new tab." margin-left="200" />
           </a>
         </mock:shadow-root>
         Button Label

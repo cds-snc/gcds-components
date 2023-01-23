@@ -1,13 +1,13 @@
 :host .gcds-breadcrumbs-item {
   position: relative;
   display: inline-block;
-  margin: var(--gcds-spacing-200) 0;
-  padding: 0 0 0 var(--gcds-spacing-400);
+  margin: var(--gcds-breadcrumbs-item-margin);
+  padding: var(--gcds-breadcrumbs-item-padding);
 
   &:before {
     position: absolute;
-    top: .25rem;
-    left: var(--gcds-spacing-50);
+    top: var(--gcds-breadcrumbs-item-arrow-top);
+    left: var(--gcds-breadcrumbs-item-arrow-left);
     content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='0.4rem' height='0.8rem' viewBox='0 0 8 14'><path fill='26374a' d='M7.7,6.3c0.4,0.4,0.4,1,0,1.4l-6,6c-0.4,0.4-1,0.4-1.4,0s-0.4-1,0-1.4L5.6,7L0.3,1.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0 L7.7,6.3L7.7,6.3z'/></svg>");
     transition: filter .35s ease-in-out;
   }
@@ -16,7 +16,7 @@
     display: inline-block;
     color: var(--gcds-breadcrumbs-default-text);
     outline: 0;
-    padding: var(--gcds-spacing-50);
+    padding: var(--gcds-breadcrumbs-item-link-padding);
     transition: background .35s ease-in-out, color .35s ease-in-out;
     white-space: normal;
   }

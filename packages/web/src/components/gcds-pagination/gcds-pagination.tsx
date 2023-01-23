@@ -125,14 +125,14 @@ export class GcdsPagination {
               class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}
             >
               {I18N[this.lang].next}
-              <gcds-icon margin-left="spacing-200" name="arrow-right"></gcds-icon>
+              <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
             </a>
           :
             <a
               {...linkAttrs}
               class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}
             >
-              <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+              <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               {I18N[this.lang].previous}
             </a>
           }
@@ -183,10 +183,10 @@ export class GcdsPagination {
             <span class="gcds-pagination-list-ellipses">...</span>
           </li>
         );
-      } 
+      }
       else if (i == 2 && this.totalPages < 10 && this.totalPages > 5 && this.currentPage > 3) {
         this.listitems.push(
-          <li 
+          <li
             class={`gcds-pagination-list-mobile-ellipses`}
             aria-hidden="true"
           >
@@ -308,7 +308,7 @@ export class GcdsPagination {
                 aria-label={`${I18N[lang].previousPage}${previousLabel ? `: ${previousLabel}` : ""}`}
                 onClick={(e) => this.onPageChange(e)}
               >
-                <gcds-icon margin-right="spacing-200" name="arrow-left"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                 <strong>
                   {I18N[lang].previous}
                 </strong>
@@ -323,9 +323,9 @@ export class GcdsPagination {
                 aria-label={`${I18N[lang].nextPage}${nextLabel ? `: ${nextLabel}` : ""}`}
                 onClick={(e) => this.onPageChange(e)}
               >
-                <gcds-icon margin-right="spacing-200" name="arrow-right"></gcds-icon>
+                <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
                 <strong>
-                  {I18N[lang].next} 
+                  {I18N[lang].next}
                 </strong>
                 <span>
                   {nextLabel}
