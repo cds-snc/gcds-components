@@ -112,7 +112,7 @@
   color: var(--gcds-file-uploader-default-text);
   margin: var(--gcds-file-uploader-file-margin);
   border: 0;
-  border-radius:var(--gcds-file-uploader-file-border-radius);
+  border-radius: var(--gcds-file-uploader-file-border-radius);
   outline: var(--gcds-file-uploader-button-outline-width) solid transparent;
   outline-offset: var(--gcds-file-uploader-file-outline-offset);
   cursor: pointer;
