@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 23 Jan 2023 16:20:38 GMT
+ * Generated on Tue, 24 Jan 2023 19:57:12 GMT
  */
 
 :root {
@@ -18,6 +18,7 @@
   --gcds-color-blue-900: #26374a;
   --gcds-color-blue-focus: #303fc3;
   --gcds-color-grayscale-0: #ffffff;
+  --gcds-color-grayscale-50: #f1f2f3;
   --gcds-color-grayscale-100: #d6d9dd;
   --gcds-color-grayscale-300: #a8adb4;
   --gcds-color-grayscale-500: #7d828b; /* Must contrast 3:1 with white */
@@ -87,13 +88,17 @@
   --gcds-alert-button-focus-text: #ffffff;
   --gcds-alert-text: #000000;
   --gcds-alert-destructive-background: #fbddda;
-  --gcds-alert-destructive-icon: #822117;
+  --gcds-alert-destructive-icon: #c24438;
+  --gcds-alert-destructive-text: #000000;
   --gcds-alert-info-background: #d7e5f5;
-  --gcds-alert-info-icon: #26374a;
+  --gcds-alert-info-icon: #6584a6;
+  --gcds-alert-info-text: #000000;
   --gcds-alert-success-background: #e6f6ec;
-  --gcds-alert-success-icon: #03662a;
+  --gcds-alert-success-icon: #289f58;
+  --gcds-alert-success-text: #000000;
   --gcds-alert-warning-background: #faedd1;
-  --gcds-alert-warning-icon: #000000;
+  --gcds-alert-warning-icon: #b3800f;
+  --gcds-alert-warning-text: #000000;
   --gcds-breadcrumbs-default-text: #26374a;
   --gcds-breadcrumbs-focus-background: #303fc3;
   --gcds-breadcrumbs-focus-text: #ffffff;
@@ -199,7 +204,7 @@
   --gcds-file-uploader-focus-button-text: #ffffff;
   --gcds-file-uploader-focus-text: #303fc3;
   --gcds-file-uploader-line-height: 120%;
-  --gcds-footer-brand-background: #d6d9dd;
+  --gcds-footer-brand-background: #f1f2f3;
   --gcds-footer-brand-text: #26374a;
   --gcds-footer-brand-hover-text: #31455c;
   --gcds-footer-brand-focus-background: #303fc3;
@@ -353,7 +358,7 @@
   --gcds-signature-white-default: #ffffff;
   --gcds-site-menu-active-background: #2f3238;
   --gcds-site-menu-active-text: #ffffff;
-  --gcds-site-menu-default-background: #d6d9dd;
+  --gcds-site-menu-default-background: #f1f2f3;
   --gcds-site-menu-default-border: #00000030;
   --gcds-site-menu-default-text: #000000;
   --gcds-site-menu-focus-background: #303fc3;
