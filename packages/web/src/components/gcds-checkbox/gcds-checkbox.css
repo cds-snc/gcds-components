@@ -60,8 +60,8 @@
     }
 
     input[type=checkbox] {
-      height: var(--gcds-checkbox-input-height);
-      width: var(--gcds-checkbox-input-width);
+      height: var(--gcds-checkbox-input-height-and-width);
+      width: var(--gcds-checkbox-input-height-and-width);
       left: 0;
       opacity: 0;
       position: absolute;
@@ -84,15 +84,15 @@
 
         &:before {
           border: var(--gcds-checkbox-input-border-width) solid currentcolor;
-          height: var(--gcds-checkbox-input-height);
-          width: var(--gcds-checkbox-input-width);
+          height: var(--gcds-checkbox-input-height-and-width);
+          width: var(--gcds-checkbox-input-height-and-width);
           left: 0;
           top: var(--gcds-checkbox-top);
           border-radius: var(--gcds-checkbox-input-border-radius);
         }
 
         &:after {
-          border: var(--gcds-checkbox-check-border-width) solid; 
+          border: var(--gcds-checkbox-check-border-width) solid;
           border-left: 0;
           border-top: 0;
           height: var(--gcds-checkbox-check-height);

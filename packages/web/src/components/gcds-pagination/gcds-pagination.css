@@ -158,7 +158,7 @@
 
     &.gcds-pagination-list-mobile-prevnext {
       display: none;
-      margin-top: var(--gcds-pagination-mobile-list-prevnext-margin-top);
+      margin: var(--gcds-pagination-mobile-list-prevnext-margin);
     }
 
     @media screen and (max-width: 49em) {
@@ -169,7 +169,7 @@
 
     &.gcds-pagination-simple {
       li {
-        margin-bottom: var(--gcds-pagination-simple-listitem-margin-bottom);
+        margin: var(--gcds-pagination-simple-listitem-margin);
 
         a {
           display: grid;

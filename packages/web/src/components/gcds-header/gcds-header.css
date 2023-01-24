@@ -11,8 +11,8 @@
 
   .gcds-header__brand {
     border-bottom: var(--gcds-header-brand-border-width) solid var(--gcds-header-brand-border-color);
-    padding-bottom: var(--gcds-header-brand-padding-bottom);
-    margin-top: var(--gcds-header-brand-margin-top);
+    padding: var(--gcds-header-brand-padding);
+    margin: var(--gcds-header-brand-margin);
 
     .brand__container {
       display: grid;
@@ -34,7 +34,7 @@
       slot[name="toggle"] {
         grid-area: toggle;
         text-align: right;
-        padding: 0 var(--gcds-header-brand-toggle-padding);
+        padding: var(--gcds-header-brand-toggle-padding);
       }
 
       .brand__signature,

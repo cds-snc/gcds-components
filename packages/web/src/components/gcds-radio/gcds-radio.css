@@ -87,15 +87,15 @@
 
         &:before {
           border: var(--gcds-radio-input-border-width) solid currentcolor;
-          height: var(--gcds-radio-input-height);
-          width: var(--gcds-radio-input-width);
+          height: var(--gcds-radio-input-height-and-width);
+          width: var(--gcds-radio-input-height-and-width);
           left: 0;
           top: var(--gcds-radio-top);
         }
 
         &:after {
-          height: var(--gcds-radio-check-height);
-          width: var(--gcds-radio-check-width);
+          height: var(--gcds-radio-check-height-and-width);
+          width: var(--gcds-radio-check-height-and-width);
           color: currentcolor;
           left: var(--gcds-radio-check-left);
           opacity: 0;
