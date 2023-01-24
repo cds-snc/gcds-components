@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 24 Jan 2023 19:57:12 GMT
+ * Generated on Tue, 24 Jan 2023 20:46:48 GMT
  */
 
 :root {
@@ -84,6 +84,16 @@
   --gcds-line-heights-h3: 124.85901539399482%;
   --gcds-line-heights-h2: 122.08437060746162%;
   --gcds-line-heights-h1: 118.38484422541731%;
+  --gcds-font-h1: 700 2.5341081619262695rem/118.38484422541731% Lato;
+  --gcds-font-h2: 700 2.2525405883789062rem/122.08437060746162% Lato;
+  --gcds-font-h3: 700 2.00225830078125rem/124.85901539399482% Lato;
+  --gcds-font-h4: 700 1.77978515625rem/126.41975308641973% Lato;
+  --gcds-font-h5: 700 1.58203125rem/126.41975308641975% Lato;
+  --gcds-font-h6: 700 1.40625rem/124.44444444444444% Lato;
+  --gcds-font-label: 500 1.25rem/120% Noto Sans;
+  --gcds-font-caption: 400 1.1111111111111112rem/135% Noto Sans;
+  --gcds-font-text: 400 1.25rem/120% Noto Sans;
+  --gcds-font-text-long: 400 1.25rem/150% Noto Sans;
   --gcds-alert-button-focus-background: #303fc3;
   --gcds-alert-button-focus-text: #ffffff;
   --gcds-alert-text: #000000;
