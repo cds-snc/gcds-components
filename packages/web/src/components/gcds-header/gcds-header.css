@@ -10,7 +10,7 @@
   }
 
   .gcds-header__brand {
-    border-bottom: var(--gcds-header-brand-border-width) solid var(--gcds-header-brand-border-color);
+    border-block-end: var(--gcds-header-brand-border-width) solid var(--gcds-header-brand-border-color);
     padding: var(--gcds-header-brand-padding);
     margin: var(--gcds-header-brand-margin);
 
