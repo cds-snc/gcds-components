@@ -289,7 +289,7 @@ export class GcdsFileUploader {
           <div class="file-uploader__input">
             <button tabindex="-1">
               { lang == 'en' ? 'Upload a file' : 'Téléverser un fichier'}
-              <gcds-icon name="upload" margin-left="spacing-400" />
+              <gcds-icon name="upload" margin-left="200" />
             </button>
             <input
               type="file"
@@ -320,7 +320,7 @@ export class GcdsFileUploader {
               aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
             >
               <span>{file}</span>
-              <gcds-icon name="times-circle" size="md" />
+              <gcds-icon name="times-circle" size="lg" />
             </button>
           )) : null }
         </div>

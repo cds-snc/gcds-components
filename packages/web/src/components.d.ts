@@ -327,7 +327,7 @@ export namespace Components {
         /**
           * Defines grid container size
          */
-        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
          */
@@ -335,7 +335,7 @@ export namespace Components {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "gap"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -393,11 +393,11 @@ export namespace Components {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "marginLeft"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "marginRight"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * Name of the icon.
          */
@@ -549,13 +549,13 @@ export namespace Components {
          */
         "bannerRole"?: 'primary' | 'secondary';
         /**
+          * Defines the container width of the phase banner content
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
           * Defines if the banner's position is fixed.
          */
         "isFixed"?: boolean;
-        /**
-          * Defines the max width of the banner content.
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
     interface GcdsRadio {
         /**
@@ -775,13 +775,13 @@ export namespace Components {
     }
     interface GcdsVerifyBanner {
         /**
+          * Defines the container width of the verify banner content
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
           * Defines if the banner's position is fixed.
          */
         "isFixed"?: boolean;
-        /**
-          * Defines the max width of the banner content
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
 }
 export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
@@ -1370,7 +1370,7 @@ declare namespace LocalJSX {
         /**
           * Defines grid container size
          */
-        "container"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
          */
@@ -1378,7 +1378,7 @@ declare namespace LocalJSX {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "gap"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -1436,11 +1436,11 @@ declare namespace LocalJSX {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "marginLeft"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: 'spacing-50'| 'spacing-100'| 'spacing-200'| 'spacing-300' | 'spacing-400' | 'spacing-500' | 'spacing-600' | 'spacing-700' | 'spacing-800' | 'spacing-900' | 'spacing-1000';
+        "marginRight"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * Name of the icon.
          */
@@ -1604,13 +1604,13 @@ declare namespace LocalJSX {
          */
         "bannerRole"?: 'primary' | 'secondary';
         /**
+          * Defines the container width of the phase banner content
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
           * Defines if the banner's position is fixed.
          */
         "isFixed"?: boolean;
-        /**
-          * Defines the max width of the banner content.
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
     interface GcdsRadio {
         /**
@@ -1858,13 +1858,13 @@ declare namespace LocalJSX {
     }
     interface GcdsVerifyBanner {
         /**
+          * Defines the container width of the verify banner content
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
           * Defines if the banner's position is fixed.
          */
         "isFixed"?: boolean;
-        /**
-          * Defines the max width of the banner content
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;

@@ -19,17 +19,17 @@ export class GcdsPhaseBanner {
   @Prop() bannerRole?: 'primary' | 'secondary' = 'primary';
 
   /**
+   * Defines the container width of the phase banner content
+   */
+  @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' = 'xl';
+
+  /**
    * Defines if the banner's position is fixed.
    */
   @Prop() isFixed?: boolean;
 
-  /**
-   * Defines the max width of the banner content.
-   */
-  @Prop() maxContentWidth?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'lg';
-
   render() {
-    const { bannerRole, isFixed, maxContentWidth } = this;
+    const { bannerRole, container, isFixed } = this;
 
     return (
       <Host>
@@ -38,7 +38,7 @@ export class GcdsPhaseBanner {
           role="status"
           aria-label="Banner"
         >
-          <div class={`banner__content ${maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
+          <div class={`banner__content ${container ? `container-${container}` : ''}`}>
             <figure class="banner__icon icon--left">
               <slot name="banner-icon-left" />
             </figure>

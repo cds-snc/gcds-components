@@ -1,9 +1,9 @@
 :host .gcds-select-wrapper {
   max-width: 90%;
-  font-family: var(--gcds-font-families-body);
-  font-weight: var(--gcds-font-weights-regular);
-  font-size: var(--gcds-font-sizes-text);
-  line-height: var(--gcds-line-heights-text);
+  font-family: var(--gcds-select-font-family);
+  font-size: var(--gcds-select-font-size);
+  font-weight: var(--gcds-select-font-weight);
+  line-height: var(--gcds-select-line-height);
   color: var(--gcds-select-default-text);
   margin: 0;
   padding: 0;
@@ -29,19 +29,20 @@
 
 :host select {
   display: block;
-  min-width: var(--gcds-spacing-500);
+  min-width: var(--gcds-select-min-width-and-height);
   max-width: 100%;
   height: auto;
-  min-height: 2.75rem;
+  min-height: var(--gcds-select-min-width-and-height);
   font-family: inherit;
   font-size: inherit;
-  line-height: var(--gcds-line-heights-text);
-  margin: 0 0 var(--gcds-spacing-400);
-  padding: var(--gcds-spacing-200) var(--gcds-spacing-500) var(--gcds-spacing-200) var(--gcds-spacing-300);
+  font-weight: inherit;
+  line-height: inherit;
+  margin: var(--gcds-select-margin);
+  padding: var(--gcds-select-padding);
   background-color: var(--gcds-select-default-background);
   color: var(--gcds-select-default-text);
-  border: .125rem solid currentColor;
-  border-radius: var(--gcds-spacing-50);
+  border: var(--gcds-select-border-width) solid currentColor;
+  border-radius: var(--gcds-select-border-radius);
   box-sizing: border-box;
   transition: all ease-in-out .15s;
 
@@ -50,14 +51,14 @@
   -moz-appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg width='16' height='10' viewBox='0 0 16 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0.799988 0.900024L7.79999 7.90003L14.8 0.900024' stroke='currentColor' stroke-width='2'/></svg>");
   background-repeat: no-repeat;
-  background-position-x: calc(100% -  var(--gcds-spacing-300));
+  background-position-x: var(--gcds-select-arrow-position-x);
   background-position-y: 50%;
 
   &:focus {
     border-color: var(--gcds-select-focus-text);
-    box-shadow: 0 0 0 .125rem var(--gcds-select-focus-shadow);
-    outline: .1875rem solid var(--gcds-select-focus-text);
-    outline-offset: .125rem;
+    box-shadow: 0 0 0 var(--gcds-select-border-width) var(--gcds-select-focus-shadow);
+    outline: var(--gcds-select-outline-width) solid var(--gcds-select-focus-text);
+    outline-offset: var(--gcds-select-border-width);
   }
 
   &:disabled {

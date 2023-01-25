@@ -1,7 +1,8 @@
 :host .gcds-stepper {
-  font-size: var(--gcds-font-sizes-h6);
-  font-weight: var(--gcds-font-weights-semibold);
-  line-height: var(--gcds-line-heights-h6);
-  margin: 0 0 var(--gcds-spacing-300);
+  font-family: var(--gcds-stepper-font-family);
+  font-size: var(--gcds-stepper-font-size);
+  font-weight: var(--gcds-stepper-font-weight);
+  line-height: var(--gcds-stepper-line-height);
+  margin: var(--gcds-stepper-margin);
   color: var(--gcds-stepper-text);
 }

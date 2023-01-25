@@ -1,10 +1,10 @@
 :host .gcds-input-wrapper {
   width: 75ch;
   max-width: 90%;
-  font-family: var(--gcds-font-families-body);
-  font-weight: var(--gcds-font-weights-regular);
-  font-size: var(--gcds-font-sizes-text);
-  line-height: var(--gcds-line-heights-text);
+  font-family: var(--gcds-input-font-family);
+  font-size: var(--gcds-input-font-size);
+  font-weight: var(--gcds-input-font-weight);
+  line-height: var(--gcds-input-line-height);
   color: var(--gcds-input-default-text);
   margin: 0;
   padding: 0;
@@ -26,29 +26,30 @@
 
 :host input {
   display: block;
-  min-width: 2.75rem;
+  min-width: var(--gcds-input-min-width-and-height);
   width: 100%;
   max-width: 100%;
   height: auto;
-  min-height: 2.75rem;
+  min-height: var(--gcds-input-min-width-and-height);
   font-family: inherit;
   font-size: inherit;
-  line-height: var(--gcds-line-heights-text);
-  margin: 0 0 var(--gcds-spacing-400);
-  padding: var(--gcds-spacing-200) var(--gcds-spacing-300);
+  font-weight: inherit;
+  line-height: inherit;
+  margin: var(--gcds-input-margin);
+  padding: var(--gcds-input-padding);
   background-color: var(--gcds-input-default-background);
   background-image: none;
   color: var(--gcds-input-default-text);
-  border: .125rem solid currentColor;
-  border-radius: var(--gcds-spacing-50);
+  border: var(--gcds-input-border-width) solid currentColor;
+  border-radius: var(--gcds-input-border-radius);
   box-sizing: border-box;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
   &:focus {
     border-color: var(--gcds-input-focus-text);
-    box-shadow: 0 0 0 .125rem var(--gcds-input-focus-shadow);
-    outline: .1875rem solid var(--gcds-input-focus-text);
-    outline-offset: .125rem;
+    box-shadow: 0 0 0 var(--gcds-input-border-width) var(--gcds-input-focus-shadow);
+    outline: var(--gcds-input-outline-width) solid var(--gcds-input-focus-text);
+    outline-offset: var(--gcds-input-border-width);
   }
 
   &:disabled {

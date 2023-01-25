@@ -3,23 +3,27 @@
   padding: 0;
 
   &[class*='container'] {
-    width: var(--gcds-container-500);
+    width: var(--gcds-grid-container-full);
+  }
+
+  &.container-xl {
+    max-width: var(--gcds-grid-container-xl);
   }
 
   &.container-lg {
-    max-width: var(--gcds-container-400);
+    max-width: var(--gcds-grid-container-lg);
   }
 
   &.container-md {
-    max-width: var(--gcds-container-300);
+    max-width: var(--gcds-grid-container-md);
   }
 
   &.container-sm {
-    max-width: var(--gcds-container-200);
+    max-width: var(--gcds-grid-container-sm);
   }
 
   &.container-xs {
-    max-width: var(--gcds-container-100);
+    max-width: var(--gcds-grid-container-xs);
   }
 
   /* Display */
@@ -31,48 +35,64 @@
     display: inline-grid;
   }
 
-  &.gap-spacing-50 {
-    gap: var(--gcds-spacing-50);
+  &.gap-50 {
+    gap: var(--gcds-grid-gap-50);
   }
 
-  &.gap-spacing-100 {
-    gap: var(--gcds-spacing-100);
+  &.gap-100 {
+    gap: var(--gcds-grid-gap-100);
   }
 
-  &.gap-spacing-200 {
-    gap: var(--gcds-spacing-200);
+  &.gap-150 {
+    gap: var(--gcds-grid-gap-150);
   }
 
-  &.gap-spacing-300 {
-    gap: var(--gcds-spacing-300);
+  &.gap-200 {
+    gap: var(--gcds-grid-gap-200);
   }
 
-  &.gap-spacing-400 {
-    gap: var(--gcds-spacing-400);
+  &.gap-250 {
+    gap: var(--gcds-grid-gap-250);
   }
 
-  &.gap-spacing-500 {
-    gap: var(--gcds-spacing-500);
+  &.gap-300 {
+    gap: var(--gcds-grid-gap-300);
   }
 
-  &.gap-spacing-600 {
-    gap: var(--gcds-spacing-600);
+  &.gap-400 {
+    gap: var(--gcds-grid-gap-400);
   }
 
-  &.gap-spacing-700 {
-    gap: var(--gcds-spacing-700);
+  &.gap-450 {
+    gap: var(--gcds-grid-gap-450);
   }
 
-  &.gap-spacing-800 {
-    gap: var(--gcds-spacing-800);
+  &.gap-500 {
+    gap: var(--gcds-grid-gap-500);
   }
 
-  &.gap-spacing-900 {
-    gap: var(--gcds-spacing-900);
+  &.gap-550 {
+    gap: var(--gcds-grid-gap-550);
   }
 
-  &.gap-spacing-1000 {
-    gap: var(--gcds-spacing-1000);
+  &.gap-600 {
+    gap: var(--gcds-grid-gap-600);
+  }
+
+  &.gap-700 {
+    gap: var(--gcds-grid-gap-700);
+  }
+
+  &.gap-800 {
+    gap: var(--gcds-grid-gap-800);
+  }
+
+  &.gap-900 {
+    gap: var(--gcds-grid-gap-900);
+  }
+
+  &.gap-1000 {
+    gap: var(--gcds-grid-gap-1000);
   }
 
   /* Align content */

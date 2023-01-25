@@ -3,11 +3,13 @@
 }
 
 :host .error-message {
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0 0 var(--gcds-spacing-300);
-  padding: var(--gcds-spacing-200);
+  font-family: var(--gcds-error-message-font-family);
+  font-size: var(--gcds-error-message-font-size);
+  font-weight: var(--gcds-error-message-font-weight);
+  line-height: var(--gcds-error-message-line-height);
+  margin: var(--gcds-error-message-margin);
+  padding: var(--gcds-error-message-padding);
   background: var(--gcds-error-message-background);
   color: var(--gcds-error-message-text);
-  border-left: .125rem solid var(--gcds-error-message-border);
+  border-inline-start: var(--gcds-error-message-border-width) solid var(--gcds-error-message-border-color);
 }

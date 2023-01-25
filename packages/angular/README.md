@@ -29,7 +29,7 @@ import { GcdsComponentsModule } from 'gcds-components-angular';
 export class AppModule { }
 ```
 
-Place the following code in the `syles.scss` file of your app.
+Place the following code in the `styles.scss` file of your app.
 
 ``` css
 @import '../node_modules/gcds-components/dist/gcds/gcds.css';
