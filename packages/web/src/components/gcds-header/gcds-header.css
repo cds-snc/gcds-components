@@ -1,28 +1,28 @@
 :host {
   display: block;
-  margin: 0 0 var(--gcds-spacing-500) !important;
+  margin: var(--gcds-header-margin);
 
   .gcds-header__container {
     justify-content: space-between;
     width: 90%;
-    max-width: var(--gcds-container-400);
+    max-width: var(--gcds-header-container-max-width);
     margin: 0 auto;
   }
 
   .gcds-header__brand {
-    border-bottom: .1875rem solid var(--gcds-header-brand-border);
-    padding-bottom: var(--gcds-spacing-100);
-    margin-top: var(--gcds-spacing-300);
+    border-block-end: var(--gcds-header-brand-border-width) solid var(--gcds-header-brand-border-color);
+    padding: var(--gcds-header-brand-padding);
+    margin: var(--gcds-header-brand-margin);
 
     .brand__container {
       display: grid;
-      grid-gap: var(--gcds-spacing-200);
+      grid-gap: var(--gcds-header-brand-grid-gap);
       grid-template-columns: 1fr 0.1fr;
       grid-template-areas:
         "signature toggle"
         "search search";
       width: 90%;
-      max-width: var(--gcds-container-400);
+      max-width: var(--gcds-header-container-max-width);
       margin: 0 auto;
 
       &.container--simple {
@@ -34,7 +34,7 @@
       slot[name="toggle"] {
         grid-area: toggle;
         text-align: right;
-        padding: 0 var(--gcds-spacing-300);
+        padding: var(--gcds-header-brand-toggle-padding);
       }
 
       .brand__signature,
@@ -59,7 +59,7 @@
 
         .brand__search,
         slot[name="search"] {
-          width: var(--gcds-container-100);
+          width: var(--gcds-header-search-width);
         }
       }
     }
@@ -70,6 +70,6 @@
     position: absolute;
     width: 100%;
     margin-inline: auto;
-    top: var(--gcds-spacing-400);
+    top: var(--gcds-header-topnav-top);
   }
 }

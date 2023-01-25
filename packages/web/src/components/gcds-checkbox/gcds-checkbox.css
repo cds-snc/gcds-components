@@ -1,19 +1,15 @@
 :host {
   .gcds-checkbox {
     max-width: 90%;
-    font-family: var(--gcds-font-families-body), sans-serif;
-    font-weight: var(--gcds-font-weights-regular);
-    font-size: var(--gcds-font-sizes-text);
-    line-height: var(--gcds-line-heights-text);
+    font-family: var(--gcds-checkbox-font-family);
+    font-size: var(--gcds-checkbox-font-size);
+    font-weight: var(--gcds-checkbox-font-weight);
+    line-height: var(--gcds-checkbox-line-height);
     color: var(--gcds-checkbox-default-text);
-    margin: 0;
+    margin: var(--gcds-checkbox-margin);
     padding: 0;
-    border: 0;
     transition: color ease-in-out 0.15s;
-
     position: relative;
-    margin-bottom: var(--gcds-spacing-400);
-    margin-top: 1.75rem;
 
     &:focus-within {
       color: var(--gcds-checkbox-focus-text);
@@ -64,12 +60,12 @@
     }
 
     input[type=checkbox] {
-      height: 2.75rem;
+      height: var(--gcds-checkbox-input-height-and-width);
+      width: var(--gcds-checkbox-input-height-and-width);
       left: 0;
       opacity: 0;
       position: absolute;
-      top: -0.5rem;
-      width: 2.75rem;
+      top: var(--gcds-checkbox-top);
 
       &:checked + gcds-label:after {
         opacity: 1;
@@ -87,24 +83,24 @@
         }
 
         &:before {
-          border: .125rem solid currentcolor;
-          height: 2.75rem;
-          width: 2.75rem;
+          border: var(--gcds-checkbox-input-border-width) solid currentcolor;
+          height: var(--gcds-checkbox-input-height-and-width);
+          width: var(--gcds-checkbox-input-height-and-width);
           left: 0;
-          top: -0.5rem;
-          border-radius: var(--gcds-spacing-50);
+          top: var(--gcds-checkbox-top);
+          border-radius: var(--gcds-checkbox-input-border-radius);
         }
 
         &:after {
-          border: .3125rem solid;
+          border: var(--gcds-checkbox-check-border-width) solid;
           border-left: 0;
           border-top: 0;
-          height: var(--gcds-spacing-400);
-          width: var(--gcds-spacing-300);
+          height: var(--gcds-checkbox-check-height);
+          width: var(--gcds-checkbox-check-width);
           color: currentcolor;
-          left: 1rem;
+          left: var(--gcds-checkbox-check-left);
           opacity: 0;
-          top: .05rem;
+          top: var(--gcds-checkbox-check-top);
           transform: rotate(40deg);
           transition: opacity .2s ease-in-out;
         }
@@ -112,9 +108,9 @@
 
       &:focus + gcds-label {
         &:before {
-          box-shadow: 0 0 0 .125rem var(--gcds-checkbox-focus-shadow);
-          outline: 0.1875rem solid currentcolor;
-          outline-offset: 0.125rem;
+          box-shadow: 0 0 0 var(--gcds-checkbox-input-border-width) var(--gcds-checkbox-focus-shadow-color);
+          outline: var( --gcds-checkbox-focus-outline-width) solid currentcolor;
+          outline-offset: var(--gcds-checkbox-input-border-width);
           border-color: currentcolor;
         }
 
@@ -127,17 +123,18 @@
     gcds-label,
     gcds-hint {
       display: block;
-      padding: 0 0 0 var(--gcds-spacing-600);
+      padding: var(--gcds-checkbox-label-padding);
     }
 
     gcds-hint {
-      color: var(--gcds-checkbox-default-hint);
-      font-size: var(--gcds-font-sizes-caption);
+      color: var(--gcds-checkbox-hint-text);
+      font-size: var(--gcds-checkbox-hint-font-size);
+      line-height: var(--gcds-checkbox-hint-line-height);
     }
 
     gcds-error-message {
       display:inline-block;
-      padding: 0 0 0 var(--gcds-spacing-600);
+      padding: var(--gcds-checkbox-error-padding);
     }
   }
 }

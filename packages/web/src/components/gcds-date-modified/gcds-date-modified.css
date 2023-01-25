@@ -1,6 +1,11 @@
 :host {
   display: block;
-  margin-top: var(--gcds-spacing-500);
+  font-family: var(--gcds-date-modified-font-family);
+  font-size: var(--gcds-date-modified-font-size);
+  font-weight: var(--gcds-date-modified-font-weight);
+  line-height: var(--gcds-date-modified-line-height);
+  color: var(--gcds-date-modified-text);
+  margin: var(--gcds-date-modified-margin);
 
   .gcds-date-modified {
 
@@ -10,7 +15,7 @@
     }
   
     dd {
-      margin-left: var(--gcds-spacing-50);
+      margin: var(--gcds-date-modified-description-margin);
     }
   }
 
