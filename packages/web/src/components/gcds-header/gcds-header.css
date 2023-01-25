@@ -1,6 +1,6 @@
 :host {
   display: block;
-  margin: 0 0 var(--gcds-spacing-500) !important;/* --gcds-header-margin */
+  margin: var(--gcds-header-margin);
 
   .gcds-header__container {
     justify-content: space-between;
