@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Thu, 26 Jan 2023 17:42:51 GMT
+// Generated on Thu, 26 Jan 2023 17:59:53 GMT
 
 $gcds-brand-default-text: #000000;
 $gcds-brand-focus: #303fc3;
@@ -92,8 +92,40 @@ $gcds-font-label: 500 1.25rem/120% Noto Sans;
 $gcds-font-caption: 400 1.1111111111111112rem/135% Noto Sans;
 $gcds-font-text: 400 1.25rem/120% Noto Sans;
 $gcds-font-text-long: 400 1.25rem/150% Noto Sans;
+$gcds-alert-border-width: 0.375rem;
+$gcds-alert-button-border-radius: 0.375rem;
+$gcds-alert-button-border-width: .125rem;
+$gcds-alert-button-active-border-color: #000000;
+$gcds-alert-button-default-background: #ffffff;
+$gcds-alert-button-default-text: #000000;
 $gcds-alert-button-focus-background: #303fc3;
 $gcds-alert-button-focus-text: #ffffff;
+$gcds-alert-button-icon-padding: 0.75rem;
+$gcds-alert-button-icon-width-and-height: 1.125rem;
+$gcds-alert-button-margin: 0 0 0 0.9375rem;
+$gcds-alert-button-mobile-margin: 0.9375rem 0 0;
+$gcds-alert-container-xs: 20rem;
+$gcds-alert-container-sm: 30rem;
+$gcds-alert-container-md: 48rem;
+$gcds-alert-container-lg: 64rem;
+$gcds-alert-container-xl: 75rem;
+$gcds-alert-container-full: 100%;
+$gcds-alert-content-heading-font-family: Lato;
+$gcds-alert-content-heading-font-size: 1.58203125rem;
+$gcds-alert-content-heading-font-weight: 700;
+$gcds-alert-content-heading-line-height: 126.41975308641975%;
+$gcds-alert-content-heading-margin: 0.1875rem 0 0.5625rem;
+$gcds-alert-content-heading-mobile-margin: 0 0 0.5625rem;
+$gcds-alert-content-slotted-list-margin: 1.5rem;
+$gcds-alert-content-slotted-margin: 0.5625rem;
+$gcds-alert-font-family: Noto Sans;
+$gcds-alert-font-size: 1.25rem;
+$gcds-alert-font-weight: 400;
+$gcds-alert-icon-font-size: 2.25rem;
+$gcds-alert-icon-margin: 0 0.9375rem 0 0;
+$gcds-alert-icon-mobile-margin: 0 0 0.9375rem;
+$gcds-alert-line-height: 120%;
+$gcds-alert-padding: 0.75rem 0.9375rem;
 $gcds-alert-text: #000000;
 $gcds-alert-destructive-background: #fbddda;
 $gcds-alert-destructive-icon: #c24438;
