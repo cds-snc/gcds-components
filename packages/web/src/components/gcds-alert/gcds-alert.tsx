@@ -23,6 +23,11 @@ export class GcdsAlert {
   @Prop() alertRole?: 'destructive' | 'info' | 'success' | 'warning' = 'info';
 
   /**
+   * Defines the max width of the alert content.
+   */
+  @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' = 'full';
+
+  /**
    * Callback when the close button is clicked.
    */
   @Prop() dismissHandler: Function;
@@ -38,14 +43,14 @@ export class GcdsAlert {
   @Prop() hideCloseBtn?: boolean = false;
 
   /**
-   * Defines if the alert's position is fixed.
+   * Defines if the alert's role icon is displayed or not.
    */
-  @Prop() isFixed?: boolean = true;
+  @Prop() hideRoleIcon?: boolean = false;
 
   /**
-   * Defines the max width of the alert content.
+   * Defines if the alert's position is fixed.
    */
-  @Prop() maxContentWidth?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs' = 'lg';
+  @Prop({ mutable: true }) isFixed?: boolean = false;
 
 
   /**
@@ -80,7 +85,7 @@ export class GcdsAlert {
   }
 
   render() {
-    const { alertRole, heading, hideCloseBtn, isFixed, isOpen, lang, maxContentWidth } = this;
+    const { alertRole, container, heading, hideCloseBtn, hideRoleIcon, isFixed, isOpen, lang } = this;
 
     return (
       <Host>
@@ -104,32 +109,31 @@ export class GcdsAlert {
                   : null }.`
             }
           >
-            <div class={`${isFixed && maxContentWidth ? `container-${maxContentWidth}` : ''}`}>
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name={
+            <div class={`alert__container ${isFixed && container ? `container-${container}` : ''}`}>
+              {( !hideRoleIcon &&
+                <gcds-icon aria-hidden="true" class="alert__icon" name={
                   alertRole === 'destructive' ? 'exclamation-circle'
                   : alertRole === 'info' ? 'info-circle'
                   : alertRole === 'success' ? 'check-circle'
                   : alertRole === 'warning' ? 'exclamation-triangle'
                   : null }
                 />
-
-                <span>{heading}</span>
-
-                { !hideCloseBtn ?
-                  <button
-                    class="alert__close-btn"
-                    onClick={(e) => this.onDismiss(e)}
-                    aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
-                  >
-                    <gcds-icon aria-hidden="true" name="times" size="sm" />
-                  </button>
-                : null }
-              </h2>
+              )}
 
               <div class="alert__content">
+                <h5 class="alert__heading">{heading}</h5>
                 <slot></slot>
               </div>
+
+              {( !hideCloseBtn &&
+                <button
+                  class="alert__close-btn"
+                  onClick={(e) => this.onDismiss(e)}
+                  aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
+                >
+                  <gcds-icon aria-hidden="true" name="times" size="sm" />
+                </button>
+              )}
             </div>
           </div>
         : null }

@@ -10,21 +10,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title">
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -44,21 +41,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" alert-role="destructive">
         <mock:shadow-root>
-          <div aria-label="This is a critical alert." class="gcds-alert alert--role-destructive alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="exclamation-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="This is a critical alert." class="gcds-alert alert--role-destructive" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -74,21 +68,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" alert-role="info">
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -104,21 +95,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" alert-role="success">
         <mock:shadow-root>
-          <div aria-label="This is a success alert." class="gcds-alert alert--role-success alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="check-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="This is a success alert." class="gcds-alert alert--role-success" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -134,21 +122,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" alert-role="warning">
         <mock:shadow-root>
-          <div aria-label="This is a warning alert." class="gcds-alert alert--role-warning alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="exclamation-triangle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="This is a warning alert." class="gcds-alert alert--role-warning" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -168,21 +153,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert lang="fr" heading="Main notification title" alert-role="destructive">
         <mock:shadow-root>
-          <div aria-label="Ceci est une alerte d'effacement." class="gcds-alert alert--role-destructive alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="exclamation-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="Ceci est une alerte d'effacement." class="gcds-alert alert--role-destructive" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Fermer l'alerte.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -198,21 +180,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert lang="fr" heading="Main notification title" alert-role="info">
         <mock:shadow-root>
-          <div aria-label="Ceci est une alerte d'information." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="Ceci est une alerte d'information." class="gcds-alert alert--role-info" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Fermer l'alerte.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -220,7 +199,7 @@ describe('gcds-alert', () => {
     `);
   });
 
-  it('renders alert-role="success in french"', async () => {
+  it('renders alert-role="success" in french', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
       html: `<gcds-alert lang="fr" heading="Main notification title" alert-role="success"></gcds-alert>`,
@@ -228,21 +207,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert lang="fr" heading="Main notification title" alert-role="success">
         <mock:shadow-root>
-          <div aria-label="Ceci est une alerte de succès." class="gcds-alert alert--role-success alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="check-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="Ceci est une alerte de succès." class="gcds-alert alert--role-success" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Fermer l'alerte.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -258,21 +234,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert lang="fr" heading="Main notification title" alert-role="warning">
         <mock:shadow-root>
-          <div aria-label="Ceci est une alerte d'avertissement." class="gcds-alert alert--role-warning alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="exclamation-triangle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="Ceci est une alerte d'avertissement." class="gcds-alert alert--role-warning" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Fermer l'alerte.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -284,29 +257,26 @@ describe('gcds-alert', () => {
     * Fixed position test
     */
 
-  it('renders with position fixed by default', async () => {
+  it('renders with position fixed', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert heading="Main notification title"></gcds-alert>`,
+      html: `<gcds-alert heading="Main notification title" is-fixed></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert heading="Main notification title">
+      <gcds-alert heading="Main notification title" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+            <div class="alert__container container-full">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -317,26 +287,23 @@ describe('gcds-alert', () => {
   it('renders without position fixed', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert is-fixed="false" heading="Main notification title"></gcds-alert>`,
+      html: `<gcds-alert heading="Main notification title"></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert is-fixed="false" heading="Main notification title">
+      <gcds-alert heading="Main notification title">
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
-            <div>
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -345,32 +312,29 @@ describe('gcds-alert', () => {
   });
 
   /**
-    * Max content width tests
+    * Container width tests
     */
 
-  it('renders max content width fluid', async () => {
+  it('renders container width full if position is fixed', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert heading="Main notification title" max-content-width="fluid"></gcds-alert>`,
+      html: `<gcds-alert heading="Main notification title" container="full" is-fixed></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert heading="Main notification title" max-content-width="fluid">
+      <gcds-alert heading="Main notification title" container="full" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-fluid">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+            <div class="alert__container container-full">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -378,29 +342,26 @@ describe('gcds-alert', () => {
     `);
   });
 
-  it('renders max content width lg', async () => {
+  it('renders container width xl if position is fixed', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert heading="Main notification title" max-content-width="lg"></gcds-alert>`,
+      html: `<gcds-alert heading="Main notification title" container="xl" is-fixed></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert heading="Main notification title" max-content-width="lg">
+      <gcds-alert heading="Main notification title" container="xl" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+            <div class="alert__container container-xl">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -408,29 +369,26 @@ describe('gcds-alert', () => {
     `);
   });
 
-  it('renders max content width md', async () => {
+  it('renders container width lg if position is fixed', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert heading="Main notification title" max-content-width="md"></gcds-alert>`,
+      html: `<gcds-alert heading="Main notification title" container="lg" is-fixed></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert heading="Main notification title" max-content-width="md">
+      <gcds-alert heading="Main notification title" container="lg" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-md">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+            <div class="alert__container container-lg">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -438,29 +396,26 @@ describe('gcds-alert', () => {
     `);
   });
 
-  it('renders max content width sm', async () => {
+  it('renders container width md if position is fixed', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert heading="Main notification title" max-content-width="sm"></gcds-alert>`,
+      html: `<gcds-alert heading="Main notification title" container="md" is-fixed></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert heading="Main notification title" max-content-width="sm">
+      <gcds-alert heading="Main notification title" container="md" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-sm">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+            <div class="alert__container container-md">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -468,29 +423,53 @@ describe('gcds-alert', () => {
     `);
   });
 
-  it('renders max content width xs', async () => {
+  it('renders container width sm if position is fixed', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert heading="Main notification title" max-content-width="xs"></gcds-alert>`,
+      html: `<gcds-alert heading="Main notification title" container="sm" is-fixed></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert heading="Main notification title" max-content-width="xs">
+      <gcds-alert heading="Main notification title" container="sm" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-xs">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+            <div class="alert__container container-sm">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-alert>
+    `);
+  });
+
+  it('renders container width xs if position is fixed', async () => {
+    const page = await newSpecPage({
+      components: [GcdsAlert],
+      html: `<gcds-alert heading="Main notification title" container="xs" is-fixed></gcds-alert>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-alert heading="Main notification title" container="xs" is-fixed>
+        <mock:shadow-root>
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
+            <div class="alert__container container-xs">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
+
+              <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
+                <slot></slot>
+              </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -510,17 +489,43 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" hide-close-btn>
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-              </h2>
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-alert>
+    `);
+  });
+
+  /**
+    * Hide role icon test
+    */
+
+  it('renders with role icon hidden', async () => {
+    const page = await newSpecPage({
+      components: [GcdsAlert],
+      html: `<gcds-alert heading="Main notification title" hide-role-icon></gcds-alert>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-alert heading="Main notification title" hide-role-icon>
+        <mock:shadow-root>
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
+            <div class="alert__container">
+              <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
+                <slot></slot>
+              </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
@@ -544,21 +549,18 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title">
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="container-lg">
-              <h2 class="alert__heading">
-                <gcds-icon aria-hidden="true" class="alert__icon" size="md" name="info-circle"></gcds-icon>
-
-                <span>Main notification title</span>
-
-                <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
-                </button>
-              </h2>
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
+            <div class="alert__container">
+              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle"></gcds-icon>
 
               <div class="alert__content">
+                <h5 class="alert__heading">Main notification title</h5>
                 <slot></slot>
               </div>
+
+              <button class="alert__close-btn" aria-label="Close alert.">
+                <gcds-icon aria-hidden="true" name="times" size="sm"></gcds-icon>
+              </button>
             </div>
           </div>
         </mock:shadow-root>
