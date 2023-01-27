@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 26 Jan 2023 17:59:53 GMT
+ * Generated on Fri, 27 Jan 2023 02:18:39 GMT
  */
 
 :root {
@@ -516,6 +516,7 @@
   --gcds-signature-wordmark-height: 3rem;
   --gcds-site-menu-active-background: #2f3238;
   --gcds-site-menu-active-text: #ffffff;
+  --gcds-site-menu-container-max-width: 75rem;
   --gcds-site-menu-default-background: #f1f2f3;
   --gcds-site-menu-default-border: #00000030;
   --gcds-site-menu-default-text: #000000;
