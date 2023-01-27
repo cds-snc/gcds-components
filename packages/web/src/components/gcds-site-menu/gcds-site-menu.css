@@ -426,7 +426,7 @@
 
     [data-h2-menu-container] {
       display: flex;
-      max-width: var(--gcds-container-xl);
+      max-width: var(--gcds-site-menu-container-max-width);
       margin-inline: auto;
 
       > [data-h2-menulist] {
