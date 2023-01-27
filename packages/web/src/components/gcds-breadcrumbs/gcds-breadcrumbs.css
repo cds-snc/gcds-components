@@ -12,7 +12,7 @@
 
     &.has-canada-link gcds-breadcrumbs-item:first-child,
     &:not(.has-canada-link) ::slotted(:first-child) {
-      margin: var(--gcds-breadcrumbs-item-first-child-margin);
+      margin: var(--gcds-breadcrumbs-item-first-child-margin) !important;
     }
   }
 }
