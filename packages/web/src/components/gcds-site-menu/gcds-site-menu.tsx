@@ -64,7 +64,7 @@ export class GcdsSiteMenu {
   @Prop() position: 'static' | 'sticky' = 'static';
 
   /**
-   * Method to apply multiple attriibutes to an element
+   * Method to apply multiple attributes to an element
    * @param el - HTML element
    * @param attrs - Object of attributes and values
    */
