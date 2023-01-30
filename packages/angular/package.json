@@ -1,6 +1,6 @@
 {
   "name": "gcds-components-angular",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Angular wrapper for gcds-components",
   "homepage": "https://cds-snc-design.netlify.app/",
