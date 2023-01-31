@@ -1,7 +1,8 @@
 /**
  * Do not edit directly
- * Generated on Fri, 27 Jan 2023 02:18:39 GMT
+ * Generated on Tue, 31 Jan 2023 01:34:08 GMT
  */
+
 :root {
   --gcds-brand-default-text: #000000;
   --gcds-brand-focus: #303fc3;
@@ -105,6 +106,7 @@
   --gcds-alert-button-icon-width-and-height: 1.125rem;
   --gcds-alert-button-margin: 0 0 0 0.9375rem;
   --gcds-alert-button-mobile-margin: 0.9375rem 0 0;
+  --gcds-alert-button-outline-width: 0.1875rem;
   --gcds-alert-container-xs: 20rem;
   --gcds-alert-container-sm: 30rem;
   --gcds-alert-container-md: 48rem;

@@ -13,6 +13,10 @@ export namespace Components {
          */
         "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
         /**
+          * Defines the max width of the alert content.
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
           * Callback when the close button is clicked.
          */
         "dismissHandler": Function;
@@ -25,13 +29,13 @@ export namespace Components {
          */
         "hideCloseBtn"?: boolean;
         /**
+          * Defines if the alert's role icon is displayed or not.
+         */
+        "hideRoleIcon"?: boolean;
+        /**
           * Defines if the alert's position is fixed.
          */
         "isFixed"?: boolean;
-        /**
-          * Defines the max width of the alert content.
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
     }
     interface GcdsBreadcrumbs {
         /**
@@ -1024,6 +1028,10 @@ declare namespace LocalJSX {
          */
         "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
         /**
+          * Defines the max width of the alert content.
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
           * Callback when the close button is clicked.
          */
         "dismissHandler"?: Function;
@@ -1036,13 +1044,13 @@ declare namespace LocalJSX {
          */
         "hideCloseBtn"?: boolean;
         /**
+          * Defines if the alert's role icon is displayed or not.
+         */
+        "hideRoleIcon"?: boolean;
+        /**
           * Defines if the alert's position is fixed.
          */
         "isFixed"?: boolean;
-        /**
-          * Defines the max width of the alert content.
-         */
-        "maxContentWidth"?: 'fluid' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Events
          */
