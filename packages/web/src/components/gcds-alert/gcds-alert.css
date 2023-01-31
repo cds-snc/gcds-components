@@ -154,6 +154,7 @@
     border-radius: var(--gcds-alert-button-border-radius);
     margin: var(--gcds-alert-button-margin);
     padding: 0;
+    cursor: pointer;
     transition: all 0.15s ease-in-out;
 
     @media only screen and (width < 36em) {
@@ -169,15 +170,18 @@
       padding: var(--gcds-alert-button-icon-padding);
     }
 
-    &:active {
+    &:active,
+    &:hover {
       border-color: var(--gcds-alert-button-active-border-color);
     }
 
     &:focus {
+      border-color: var(--gcds-alert-button-focus-background);
       background-color: var(--gcds-alert-button-focus-background);
+      box-shadow: 0 0 0 var(--gcds-alert-button-border-width) var(--gcds-alert-button-focus-text);
+      outline: var(--gcds-alert-button-outline-width) solid var(--gcds-alert-button-focus-background);
+      outline-offset: var(--gcds-alert-button-border-width);
       color: var(--gcds-alert-button-focus-text);
-      border-color: currentColor;
-      outline: 0;
     }
   }
 }
