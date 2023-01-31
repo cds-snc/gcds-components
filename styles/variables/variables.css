@@ -1,16 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Tue, 31 Jan 2023 19:39:47 GMT
+ * Generated on Tue, 31 Jan 2023 23:11:38 GMT
  */
 
 :root {
-  --gcds-brand-default-text: #000000;
-  --gcds-brand-focus: #303fc3;
-  --gcds-brand-active-text: #ffffff;
-  --gcds-brand-active-background: #000000;
-  --gcds-brand-disabled-background: #d6d9dd;
-  --gcds-brand-disabled-text: #545961;
-  --gcds-brand-destructive: #a62a1e;
   --gcds-color-blue-100: #d7e5f5;
   --gcds-color-blue-500: #6584a6; /* Must contrast 3:1 with white */
   --gcds-color-blue-700: #425a76; /* Must contrast 7:1 with white */
@@ -59,9 +52,9 @@
   --gcds-base-font-size: 1.25; /* Sets base font size to 20px */
   --gcds-base-line-height: 1.2; /* Sets base line height to 24px */
   --gcds-base-scale: 1.125;
-  --gcds-font-families-heading: Lato;
-  --gcds-font-families-body: Noto Sans;
-  --gcds-font-families-monospace: Menlo;
+  --gcds-font-families-heading: "Lato", sans-serif;
+  --gcds-font-families-body: "Noto Sans", sans-serif;
+  --gcds-font-families-monospace: "Menlo", sans-serif;
   --gcds-font-families-icons: FontAwesome;
   --gcds-font-sizes-caption: 1.1111111111111112rem;
   --gcds-font-sizes-text: 1.25rem;
@@ -84,16 +77,33 @@
   --gcds-line-heights-h3: 124.85901539399482%;
   --gcds-line-heights-h2: 122.08437060746162%;
   --gcds-line-heights-h1: 118.38484422541731%;
-  --gcds-font-h1: 700 2.5341081619262695rem/118.38484422541731% Lato;
-  --gcds-font-h2: 700 2.2525405883789062rem/122.08437060746162% Lato;
-  --gcds-font-h3: 700 2.00225830078125rem/124.85901539399482% Lato;
-  --gcds-font-h4: 700 1.77978515625rem/126.41975308641973% Lato;
-  --gcds-font-h5: 700 1.58203125rem/126.41975308641975% Lato;
-  --gcds-font-h6: 700 1.40625rem/124.44444444444444% Lato;
-  --gcds-font-label: 500 1.25rem/120% Noto Sans;
-  --gcds-font-caption: 400 1.1111111111111112rem/135% Noto Sans;
-  --gcds-font-text: 400 1.25rem/120% Noto Sans;
-  --gcds-font-text-long: 400 1.25rem/150% Noto Sans;
+  --gcds-font-h1: 700 2.5341081619262695rem/118.38484422541731% "Lato", sans-serif;
+  --gcds-font-h2: 700 2.2525405883789062rem/122.08437060746162% "Lato", sans-serif;
+  --gcds-font-h3: 700 2.00225830078125rem/124.85901539399482% "Lato", sans-serif;
+  --gcds-font-h4: 700 1.77978515625rem/126.41975308641973% "Lato", sans-serif;
+  --gcds-font-h5: 700 1.58203125rem/126.41975308641975% "Lato", sans-serif;
+  --gcds-font-h6: 700 1.40625rem/124.44444444444444% "Lato", sans-serif;
+  --gcds-font-label: 500 1.25rem/120% "Noto Sans", sans-serif;
+  --gcds-font-caption: 400 1.1111111111111112rem/135% "Noto Sans", sans-serif;
+  --gcds-font-text: 400 1.25rem/120% "Noto Sans", sans-serif;
+  --gcds-font-text-long: 400 1.25rem/150% "Noto Sans", sans-serif;
+  --gcds-active-background: #000000;
+  --gcds-active-text: #ffffff;
+  --gcds-border-default: #7d828b; /* Global color: border default */
+  --gcds-danger-background: #fbddda; /* Global color: danger background */
+  --gcds-danger-border: #c24438; /* Global color: danger border */
+  --gcds-danger-text: #a62a1e; /* Global color: danger text */
+  --gcds-disabled-background: #d6d9dd; /* Global color: disabled background */
+  --gcds-disabled-text: #7d828b; /* Global color: disabled text */
+  --gcds-focus-background: #303fc3; /* Global color: focus background */
+  --gcds-focus-text: #ffffff; /* Global color: focus text */
+  --gcds-focus-text-form: #303fc3; /* Global color: focus text form elements */
+  --gcds-link-default: #26374a; /* Global color: link default */
+  --gcds-link-hover: #31455c; /* Global color: link hover */
+  --gcds-link-light: #ffffff; /* Global color: link light */
+  --gcds-text-light: #ffffff; /* Global color: text light */
+  --gcds-text-primary: #000000; /* Global color: text primary */
+  --gcds-text-secondary: #545961; /* Global color: text secondary */
   --gcds-alert-border-width: 0.375rem;
   --gcds-alert-button-border-radius: 0.375rem;
   --gcds-alert-button-border-width: .125rem;
@@ -113,7 +123,7 @@
   --gcds-alert-container-lg: 64rem;
   --gcds-alert-container-xl: 75rem;
   --gcds-alert-container-full: 100%;
-  --gcds-alert-content-heading-font-family: Lato;
+  --gcds-alert-content-heading-font-family: "Lato", sans-serif;
   --gcds-alert-content-heading-font-size: 1.58203125rem;
   --gcds-alert-content-heading-font-weight: 700;
   --gcds-alert-content-heading-line-height: 126.41975308641975%;
@@ -121,7 +131,7 @@
   --gcds-alert-content-heading-mobile-margin: 0 0 0.5625rem;
   --gcds-alert-content-slotted-list-margin: 1.5rem;
   --gcds-alert-content-slotted-margin: 0.5625rem;
-  --gcds-alert-font-family: Noto Sans;
+  --gcds-alert-font-family: "Noto Sans", sans-serif;
   --gcds-alert-font-size: 1.25rem;
   --gcds-alert-font-weight: 400;
   --gcds-alert-icon-font-size: 2.25rem;
@@ -145,10 +155,10 @@
   --gcds-breadcrumbs-default-text: #26374a;
   --gcds-breadcrumbs-focus-background: #303fc3;
   --gcds-breadcrumbs-focus-text: #ffffff;
-  --gcds-breadcrumbs-font-family: Noto Sans;
+  --gcds-breadcrumbs-font-family: "Noto Sans", sans-serif;
   --gcds-breadcrumbs-font-size: 1.25rem;
   --gcds-breadcrumbs-font-weight: 400;
-  --gcds-breadcrumbs-hover-text: #425a76;
+  --gcds-breadcrumbs-hover-text: #31455c;
   --gcds-breadcrumbs-item-arrow-top: 0.1875rem;
   --gcds-breadcrumbs-item-arrow-left: 0.1875rem;
   --gcds-breadcrumbs-item-first-child-margin: 0 0 0 -1.5rem;
@@ -161,7 +171,7 @@
   --gcds-button-destructive-default-background: #a62a1e;
   --gcds-button-destructive-default-text: #ffffff;
   --gcds-button-destructive-hover-background: #822117;
-  --gcds-button-font-family: Noto Sans;
+  --gcds-button-font-family: "Noto Sans", sans-serif;
   --gcds-button-font-size: 1.25rem;
   --gcds-button-font-weight: 400;
   --gcds-button-line-height: 120%;
@@ -179,7 +189,7 @@
   --gcds-button-shared-focus-outline-width: 0.1875rem;
   --gcds-button-shared-focus-text: #ffffff;
   --gcds-button-shared-disabled-background: #d6d9dd;
-  --gcds-button-shared-disabled-text: #545961;
+  --gcds-button-shared-disabled-text: #7d828b;
   --gcds-button-skip-top: 1.5rem;
   --gcds-button-small-font-size: 80%;
   --gcds-button-small-padding: 0.75rem;
@@ -192,13 +202,12 @@
   --gcds-checkbox-default-hint: #2f3238;
   --gcds-checkbox-destructive-text: #a62a1e;
   --gcds-checkbox-disabled-background: #d6d9dd;
-  --gcds-checkbox-disabled-border: #545961;
-  --gcds-checkbox-disabled-text: #545961;
+  --gcds-checkbox-disabled-border: #7d828b;
+  --gcds-checkbox-disabled-text: #7d828b;
   --gcds-checkbox-error-padding: 0 0 0 3.75rem;
   --gcds-checkbox-focus-text: #303fc3;
   --gcds-checkbox-focus-outline-width: 0.1875rem;
-  --gcds-checkbox-focus-shadow-color: #ffffff;
-  --gcds-checkbox-font-family: Noto Sans;
+  --gcds-checkbox-font-family: "Noto Sans", sans-serif;
   --gcds-checkbox-font-size: 1.25rem;
   --gcds-checkbox-font-weight: 400;
   --gcds-checkbox-input-border-radius: 0.1875rem;
@@ -212,7 +221,7 @@
   --gcds-checkbox-margin: 2.25rem 0 1.5rem;
   --gcds-checkbox-top: -0.75rem;
   --gcds-date-modified-description-margin: 0 0 0 0.1875rem;
-  --gcds-date-modified-font-family: Noto Sans;
+  --gcds-date-modified-font-family: "Noto Sans", sans-serif;
   --gcds-date-modified-font-size: 1.25rem;
   --gcds-date-modified-font-weight: 400;
   --gcds-date-modified-line-height: 120%;
@@ -222,7 +231,7 @@
   --gcds-details-active-text: #ffffff;
   --gcds-details-focus-background: #303fc3;
   --gcds-details-focus-text: #ffffff;
-  --gcds-details-font-family: Noto Sans;
+  --gcds-details-font-family: "Noto Sans", sans-serif;
   --gcds-details-font-size: 1.25rem;
   --gcds-details-font-size-small: 1.1111111111111112rem;
   --gcds-details-font-weight: 400;
@@ -241,9 +250,9 @@
   --gcds-details-summary-padding: 0.375rem;
   --gcds-details-summary-text-margin: 0 0 0 2.25rem;
   --gcds-error-message-background: #fbddda;
-  --gcds-error-message-border-color: #a62a1e;
+  --gcds-error-message-border-color: #c24438;
   --gcds-error-message-border-width: .125rem;
-  --gcds-error-message-font-family: Noto Sans;
+  --gcds-error-message-font-family: "Noto Sans", sans-serif;
   --gcds-error-message-font-size: 1.25rem;
   --gcds-error-message-font-weight: 400;
   --gcds-error-message-line-height: 120%;
@@ -251,10 +260,10 @@
   --gcds-error-message-padding: 0.75rem;
   --gcds-error-message-text: #000000;
   --gcds-fieldset-default-text: #000000;
-  --gcds-fieldset-destructive: #a62a1e;
-  --gcds-fieldset-disabled-text: #545961;
-  --gcds-fieldset-focus: #303fc3;
-  --gcds-fieldset-font-family: Noto Sans;
+  --gcds-fieldset-destructive-text: #a62a1e;
+  --gcds-fieldset-disabled-text: #7d828b;
+  --gcds-fieldset-focus-text: #303fc3;
+  --gcds-fieldset-font-family: "Noto Sans", sans-serif;
   --gcds-fieldset-font-size: 1.25rem;
   --gcds-fieldset-font-weight: 600;
   --gcds-fieldset-legend-margin: 0 0 0.1875rem;
@@ -270,8 +279,8 @@
   --gcds-file-uploader-destructive-background: #fbddda;
   --gcds-file-uploader-destructive-text: #a62a1e;
   --gcds-file-uploader-disabled-background: #d6d9dd;
-  --gcds-file-uploader-disabled-text: #545961;
-  --gcds-file-uploader-font-family: Noto Sans;
+  --gcds-file-uploader-disabled-text: #7d828b;
+  --gcds-file-uploader-font-family: "Noto Sans", sans-serif;
   --gcds-file-uploader-font-size: 1.25rem;
   --gcds-file-uploader-font-weight: 400;
   --gcds-file-uploader-file-background: #d6d9dd;
@@ -286,7 +295,6 @@
   --gcds-file-uploader-file-outline-width: 0.1875rem;
   --gcds-file-uploader-file-padding: 0.9375rem 1.5rem;
   --gcds-file-uploader-focus-button-background: #303fc3;
-  --gcds-file-uploader-focus-button-shadow: #ffffff;
   --gcds-file-uploader-focus-button-text: #ffffff;
   --gcds-file-uploader-focus-text: #303fc3;
   --gcds-file-uploader-line-height: 120%;
@@ -295,7 +303,7 @@
   --gcds-footer-contextual-background: #31455c;
   --gcds-footer-contextual-padding: 1.125rem 0;
   --gcds-footer-contextual-text: #ffffff;
-  --gcds-footer-font-family: Noto Sans;
+  --gcds-footer-font-family: "Noto Sans", sans-serif;
   --gcds-footer-font-size: 85%;
   --gcds-footer-font-weight: 400;
   --gcds-footer-line-height: 120%;
@@ -309,8 +317,8 @@
   --gcds-footer-main-nav-first-after-width: 2.25rem;
   --gcds-footer-main-text: #ffffff;
   --gcds-footer-main-themenav-padding: 0.75rem 0 1.125rem;
-  --gcds-footer-sub-active-text: #ffffff;
   --gcds-footer-sub-active-background: #000000;
+  --gcds-footer-sub-active-text: #ffffff;
   --gcds-footer-sub-background: #f1f2f3;
   --gcds-footer-sub-focus-background: #303fc3;
   --gcds-footer-sub-focus-text: #ffffff;
@@ -355,7 +363,7 @@
   --gcds-header-container-max-width: 75rem;
   --gcds-header-margin: 0 0 0.75rem;
   --gcds-header-topnav-top: 1.5rem;
-  --gcds-hint-font-family: Noto Sans;
+  --gcds-hint-font-family: "Noto Sans", sans-serif;
   --gcds-hint-font-size: 1.25rem;
   --gcds-hint-font-weight: 400;
   --gcds-hint-line-height: 120%;
@@ -390,12 +398,11 @@
   --gcds-input-border-width: .125rem;
   --gcds-input-default-background: #ffffff;
   --gcds-input-default-text: #000000;
-  --gcds-input-destructive: #a62a1e;
+  --gcds-input-destructive-text: #a62a1e;
   --gcds-input-disabled-background: #d6d9dd;
-  --gcds-input-disabled-text: #545961;
+  --gcds-input-disabled-text: #7d828b;
   --gcds-input-focus-text: #303fc3;
-  --gcds-input-focus-shadow: #ffffff;
-  --gcds-input-font-family: Noto Sans;
+  --gcds-input-font-family: "Noto Sans", sans-serif;
   --gcds-input-font-size: 1.25rem;
   --gcds-input-font-weight: 400;
   --gcds-input-line-height: 120%;
@@ -403,26 +410,23 @@
   --gcds-input-min-width-and-height: 3rem;
   --gcds-input-outline-width: 0.1875rem;
   --gcds-input-padding: 0.75rem;
-  --gcds-label-font-family: Noto Sans;
+  --gcds-label-font-family: "Noto Sans", sans-serif;
   --gcds-label-font-size: 1.25rem;
   --gcds-label-font-weight: 500;
   --gcds-label-line-height: 120%;
   --gcds-label-margin: 0 0 0.375rem;
   --gcds-label-required-margin: 0 0 0 0.375rem;
-  --gcds-lang-toggle-active-text: #ffffff;
   --gcds-lang-toggle-active-background: #000000;
+  --gcds-lang-toggle-active-text: #ffffff;
   --gcds-lang-toggle-default-text: #26374a;
   --gcds-lang-toggle-focus-background: #303fc3;
   --gcds-lang-toggle-focus-text: #ffffff;
-  --gcds-lang-toggle-font-family: Noto Sans;
+  --gcds-lang-toggle-font-family: "Noto Sans", sans-serif;
   --gcds-lang-toggle-font-size: 1.25rem;
   --gcds-lang-toggle-font-weight: 400;
-  --gcds-lang-toggle-hover-text: #425a76;
+  --gcds-lang-toggle-hover-text: #31455c;
   --gcds-lang-toggle-line-height: 120%;
   --gcds-lang-toggle-padding: 1.125rem;
-  --gcds-link-dark-text: #000000;
-  --gcds-link-destructive-text: #a62a1e;
-  --gcds-link-light-text: #ffffff;
   --gcds-pagination-active-text: #ffffff;
   --gcds-pagination-active-background: #26374a;
   --gcds-pagination-border-color: #26374a;
@@ -432,9 +436,8 @@
   --gcds-pagination-hover-background: #d7e5f5;
   --gcds-pagination-focus-background: #303fc3;
   --gcds-pagination-focus-text: #ffffff;
-  --gcds-pagination-focus-shadow-color: #ffffff;
   --gcds-pagination-focus-outline-width: 0.1875rem;
-  --gcds-pagination-font-family: Noto Sans;
+  --gcds-pagination-font-family: "Noto Sans", sans-serif;
   --gcds-pagination-font-size: 1.25rem;
   --gcds-pagination-font-weight: 700;
   --gcds-pagination-line-height: 120%;
@@ -453,7 +456,7 @@
   --gcds-phase-banner-container-xl: 75rem;
   --gcds-phase-banner-container-full: 100%;
   --gcds-phase-banner-details-cta-margin: 0 0 0 0.9375rem;
-  --gcds-phase-banner-font-family: Noto Sans;
+  --gcds-phase-banner-font-family: "Noto Sans", sans-serif;
   --gcds-phase-banner-font-size: 1.1111111111111112rem;
   --gcds-phase-banner-font-weight: 400;
   --gcds-phase-banner-icon-margin: 1.125rem;
@@ -472,12 +475,11 @@
   --gcds-radio-default-text: #000000;
   --gcds-radio-destructive-text: #a62a1e;
   --gcds-radio-disabled-background: #d6d9dd;
-  --gcds-radio-disabled-border: #545961;
-  --gcds-radio-disabled-text: #545961;
+  --gcds-radio-disabled-border: #7d828b;
+  --gcds-radio-disabled-text: #7d828b;
   --gcds-radio-focus-text: #303fc3;
   --gcds-radio-focus-outline-width: 0.1875rem;
-  --gcds-radio-focus-shadow-color: #ffffff;
-  --gcds-radio-font-family: Noto Sans;
+  --gcds-radio-font-family: "Noto Sans", sans-serif;
   --gcds-radio-font-size: 1.25rem;
   --gcds-radio-font-weight: 400;
   --gcds-radio-input-border-width: 0.125rem;
@@ -494,12 +496,11 @@
   --gcds-select-border-width: .125rem;
   --gcds-select-default-background: #ffffff;
   --gcds-select-default-text: #000000;
-  --gcds-select-destructive: #a62a1e;
+  --gcds-select-destructive-text: #a62a1e;
   --gcds-select-disabled-background: #d6d9dd;
-  --gcds-select-disabled-text: #545961;
+  --gcds-select-disabled-text: #7d828b;
   --gcds-select-focus-text: #303fc3;
-  --gcds-select-focus-shadow: #ffffff;
-  --gcds-select-font-family: Noto Sans;
+  --gcds-select-font-family: "Noto Sans", sans-serif;
   --gcds-select-font-size: 1.25rem;
   --gcds-select-font-weight: 400;
   --gcds-select-line-height: 120%;
@@ -529,7 +530,7 @@
   --gcds-site-menu-submenu-background: #a8adb4;
   --gcds-site-menu-submenu-box-shadow: #00000030;
   --gcds-site-menu-submenu-trigger-text: #000000;
-  --gcds-stepper-font-family: Lato;
+  --gcds-stepper-font-family: "Lato", sans-serif;
   --gcds-stepper-font-size: 1.40625rem;
   --gcds-stepper-font-weight: 600;
   --gcds-stepper-line-height: 124.44444444444444%;
@@ -539,12 +540,11 @@
   --gcds-textarea-border-width: .125rem;
   --gcds-textarea-default-background: #ffffff;
   --gcds-textarea-default-text: #000000;
-  --gcds-textarea-destructive: #a62a1e;
+  --gcds-textarea-destructive-text: #a62a1e;
   --gcds-textarea-disabled-background: #d6d9dd;
-  --gcds-textarea-disabled-text: #545961;
+  --gcds-textarea-disabled-text: #7d828b;
   --gcds-textarea-focus-text: #303fc3;
-  --gcds-textarea-focus-shadow: #ffffff;
-  --gcds-textarea-font-family: Noto Sans;
+  --gcds-textarea-font-family: "Noto Sans", sans-serif;
   --gcds-textarea-font-size: 1.25rem;
   --gcds-textarea-font-weight: 400;
   --gcds-textarea-line-height: 120%;
@@ -567,7 +567,7 @@
   --gcds-verify-banner-content-list-svg-margin: 0.1875rem;
   --gcds-verify-banner-content-padding-block-start: 1.5rem;
   --gcds-verify-banner-content-padding-block-end: 0.75rem;
-  --gcds-verify-banner-font-family: Noto Sans;
+  --gcds-verify-banner-font-family: "Noto Sans", sans-serif;
   --gcds-verify-banner-font-size: 1.1111111111111112rem;
   --gcds-verify-banner-font-weight: 400;
   --gcds-verify-banner-line-height: 120%;
