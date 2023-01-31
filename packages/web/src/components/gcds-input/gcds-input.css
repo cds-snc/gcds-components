@@ -47,7 +47,6 @@
 
   &:focus {
     border-color: var(--gcds-input-focus-text);
-    box-shadow: 0 0 0 var(--gcds-input-border-width) var(--gcds-input-focus-shadow);
     outline: var(--gcds-input-outline-width) solid var(--gcds-input-focus-text);
     outline-offset: var(--gcds-input-border-width);
   }

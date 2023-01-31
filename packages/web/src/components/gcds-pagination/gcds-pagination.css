@@ -24,23 +24,14 @@
         &:focus {
           color: var(--gcds-pagination-focus-text);
           background-color: var(--gcds-pagination-focus-background);
-          box-shadow: 0 0 0 var(--gcds-pagination-border-width) var(--gcds-pagination-focus-shadow-color);
           outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-background);
           outline-offset: var(--gcds-pagination-border-width);
         }
 
-        &:active,
-        &[aria-current*=page] {
+        &:active:not(:focus),
+        &[aria-current*=page]:not(:focus) {
           color: var(--gcds-pagination-active-text);
           background: var(--gcds-pagination-active-background);
-
-          &:focus {
-            color: var(--gcds-pagination-focus-text);
-            background-color: var(--gcds-pagination-focus-background);
-            box-shadow: 0 0 0 var(--gcds-pagination-border-width) var(--gcds-pagination-focus-shadow-color);
-            outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-background);
-            outline-offset: var(--gcds-pagination-border-width);
-          }
         }
       }
     }
@@ -58,7 +49,6 @@
       margin: 0 auto;
 
       li {
-
         a,
         & > span.gcds-pagination-list-ellipses {
           height: 2.75rem;
@@ -101,7 +91,7 @@
           &:has(> a.gcds-pagination-end-button) {
             margin: 0;
           }
-          
+
           .gcds-pagination-end-button {
             display: none;
           }

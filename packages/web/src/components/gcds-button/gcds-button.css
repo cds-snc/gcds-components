@@ -104,12 +104,11 @@
 
   &:focus,
   &:focus-visible {
-    border-color: var(--gcds-button-shared-focus-background);
     background-color: var(--gcds-button-shared-focus-background);
-    box-shadow: 0 0 0 var(--gcds-button-border-width) var(--gcds-button-shared-focus-text);
+    border-color: var(--gcds-button-shared-focus-background);
+    color: var(--gcds-button-shared-focus-text);
     outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
     outline-offset: var(--gcds-button-border-width);
-    color: var(--gcds-button-shared-focus-text);
   }
 
   &.button--solid:not(.secondary):active {

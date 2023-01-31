@@ -56,7 +56,6 @@
 
   &:focus {
     border-color: var(--gcds-select-focus-text);
-    box-shadow: 0 0 0 var(--gcds-select-border-width) var(--gcds-select-focus-shadow);
     outline: var(--gcds-select-outline-width) solid var(--gcds-select-focus-text);
     outline-offset: var(--gcds-select-border-width);
   }

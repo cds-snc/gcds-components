@@ -108,10 +108,8 @@
 
       &:focus + gcds-label {
         &:before {
-          box-shadow: 0 0 0 var(--gcds-checkbox-input-border-width) var(--gcds-checkbox-focus-shadow-color);
           outline: var( --gcds-checkbox-focus-outline-width) solid currentcolor;
           outline-offset: var(--gcds-checkbox-input-border-width);
-          border-color: currentcolor;
         }
 
         &:after {

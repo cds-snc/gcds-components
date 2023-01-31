@@ -51,7 +51,6 @@
 
   &:focus {
     border-color: var(--gcds-textarea-focus-text);
-    box-shadow: 0 0 0 var(--gcds-textarea-border-width) var(--gcds-textarea-focus-shadow);
     outline: var(--gcds-textarea-outline-width) solid var(--gcds-textarea-focus-text);
     outline-offset: var(--gcds-textarea-border-width);
   }
