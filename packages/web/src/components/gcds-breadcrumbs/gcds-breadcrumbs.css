@@ -4,7 +4,7 @@
   ol {
     font: var(--gcds-breadcrumbs-font);
     list-style: none;
-    margin: 0;
+    margin: var(--gcds-breadcrumbs-margin);
     padding: 0;
 
     &.has-canada-link gcds-breadcrumbs-item:first-child,

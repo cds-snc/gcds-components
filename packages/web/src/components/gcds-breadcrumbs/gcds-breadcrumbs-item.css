@@ -1,8 +1,7 @@
-:host .gcds-breadcrumbs-item {
+:host {
   position: relative;
   display: inline-block;
-  margin: var(--gcds-breadcrumbs-item-margin);
-  padding: var(--gcds-breadcrumbs-item-padding);
+  padding: var(--gcds-breadcrumbs-item-padding) !important;
 
   &:before {
     position: absolute;
@@ -21,7 +20,7 @@
     white-space: normal;
   }
 
-  &:focus-within:not(:hover) {
+  &(:focus-within:not(:hover)) {
     background-color: var(--gcds-breadcrumbs-focus-background);
     color: var(--gcds-breadcrumbs-focus-text);
 
