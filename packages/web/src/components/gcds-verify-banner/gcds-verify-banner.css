@@ -1,7 +1,5 @@
 :host .gcds-verify-banner {
-  font-family: var(--gcds-verify-banner-font-family);
-  font-size: var(--gcds-verify-banner-font-size);
-  font-weight: var(--gcds-verify-banner-font-weight);
+  font: var(--gcds-verify-banner-font);
   background-color: var(--gcds-verify-banner-background);
   color: var(--gcds-verify-banner-text);
 

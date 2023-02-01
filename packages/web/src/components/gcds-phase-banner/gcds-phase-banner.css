@@ -1,7 +1,5 @@
 :host .gcds-phase-banner {
-  font-family: var(--gcds-phase-banner-font-family);
-  font-size: var(--gcds-phase-banner-font-size);
-  font-weight: var(--gcds-phase-banner-font-weight);
+  font: var(--gcds-phase-banner-font);
   line-height: var(--gcds-phase-banner-line-height);
 
   /* Is Fixed */
@@ -105,7 +103,7 @@
     }
 
     ::slotted(p) {
-      line-height: var(--gcds-phase-banner-line-height);
+      font: var(--gcds-phase-banner-font);
       margin: 0;
     }
 

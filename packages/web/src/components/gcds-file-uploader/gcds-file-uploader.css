@@ -3,10 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   max-width: 90%;
-  font-family: var(--gcds-file-uploader-font-family);
-  font-size: var(--gcds-file-uploader-font-size);
-  font-weight: var(--gcds-file-uploader-font-weight);
-  line-height: var(--gcds-file-uploader-line-height);
+  font: var(--gcds-file-uploader-font);
   color: var(--gcds-file-uploader-default-text);
   margin: 0;
   padding: 0;
@@ -103,10 +100,7 @@
   justify-content: space-between;
   width: 100%;
   max-width: var(--gcds-file-uploader-file-max-width);
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
+  font: inherit;
   background-color: var(--gcds-file-uploader-file-background);
   color: var(--gcds-file-uploader-default-text);
   margin: var(--gcds-file-uploader-file-margin);

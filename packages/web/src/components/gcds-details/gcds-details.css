@@ -1,5 +1,5 @@
 :host .gcds-details {
-  font-family: var(--gcds-details-font-family);
+  font: var(--gcds-details-font);
 
   summary {
     position: relative;
@@ -35,9 +35,7 @@
 
     p {
       display: inline-block;
-      font-size: var(--gcds-details-font-size);
-      font-weight: var(--gcds-details-font-weight);
-      line-height: var(--gcds-details-line-height);
+      font: var(--gcds-details-font);
       margin: var(--gcds-details-summary-text-margin);
       border-block-end: var(--gcds-details-summary-border-width) solid currentColor;
     }
@@ -49,8 +47,7 @@
     border-inline-start: var(--gcds-details-panel-border-width) solid var(--gcds-details-panel-border-color);
 
     ::slotted(*) {
-      font-size: var(--gcds-details-font-size);
-      line-height: var(--gcds-details-line-height);
+      font: var(--gcds-details-font);
       margin: 0 0 var( --gcds-details-panel-slotted-margin);
     }
 
@@ -69,7 +66,7 @@
     }
 
     ::slotted(small) {
-      font-size: var(--gcds-details-font-size-small);
+      font: var(--gcds-details-font-small);
     }
   }
 

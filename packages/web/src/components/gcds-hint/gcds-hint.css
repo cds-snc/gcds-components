@@ -1,7 +1,4 @@
 :host .gcds-hint {
-  font-family: var(--gcds-hint-font-family);
-  font-size: var(--gcds-hint-font-size);
-  font-weight: var(--gcds-hint-font-weight);
-  line-height: var(--gcds-hint-line-height);
+  font: var(--gcds-hint-font);
   margin: var(--gcds-hint-margin);
 }

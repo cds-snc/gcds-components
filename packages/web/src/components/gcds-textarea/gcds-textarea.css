@@ -1,10 +1,7 @@
 :host .gcds-textarea-wrapper {
   width: 100%;
   max-width: 75ch;
-  font-family: var(--gcds-textarea-font-family);
-  font-size: var(--gcds-textarea-font-size);
-  font-weight: var(--gcds-textarea-font-weight);
-  line-height: var(--gcds-textarea-line-height);
+  font: var(--gcds-textarea-font);
   color: var(--gcds-textarea-default-text);
   margin: 0;
   padding: 0;
@@ -20,7 +17,7 @@
   }
 
   &.gcds-error:not(:focus-within) {
-    color: var(--gcds-textarea-destructive);
+    color: var(--gcds-textarea-destructive-text);
   }
 
   .error-message-container {
@@ -35,10 +32,7 @@
   max-width: 100%;
   height: auto;
   min-height: var(--gcds-textarea-min-height);
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
+  font: inherit;
   margin: var(--gcds-textarea-margin);
   padding: var(--gcds-textarea-padding);
   background-color: var(--gcds-textarea-default-background);
@@ -62,6 +56,6 @@
   }
 
   &.gcds-error:not(:focus) {
-    border-color: var(--gcds-textarea-destructive);
+    border-color: var(--gcds-textarea-destructive-text);
   }
 }

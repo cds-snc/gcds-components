@@ -1,10 +1,7 @@
 :host .gcds-label {
   display: block;
   max-width: 100%;
-  font-family: var(--gcds-label-font-family);
-  font-size: var(--gcds-label-font-size);
-  font-weight: var(--gcds-label-font-weight);
-  line-height: var(--gcds-label-line-height);
+  font: var(--gcds-label-font);
   margin: var(--gcds-label-margin);
   color: inherit;
 

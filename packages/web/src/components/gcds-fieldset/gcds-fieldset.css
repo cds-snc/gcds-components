@@ -5,21 +5,19 @@
     border: none;
     padding: 0;
     color: var(--gcds-fieldset-default-text);
-    font-family: var(--gcds-fieldset-font-family);
 
     legend {
-      font-size: var(--gcds-fieldset-font-size);
-      font-weight: var(--gcds-fieldset-font-weight);
+      font: inherit;
       color: inherit;
       margin: var(--gcds-fieldset-legend-margin);
     }
 
     &:focus-within {
-      color: var(--gcds-fieldset-focus);
+      color: var(--gcds-fieldset-focus-text);
     }
 
     &.gcds-fieldset--error:not(:focus-within) {
-      color: var(--gcds-fieldset-destructive);
+      color: var(--gcds-fieldset-destructive-text);
     }
 
     &:disabled {

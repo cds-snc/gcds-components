@@ -11,10 +11,7 @@
 
       a {
         color: var(--var-pagination-default-text);
-        font-weight: var(--gcds-pagination-font-weight);
-        font-family: var(--gcds-pagination-font-families);
-        font-size: var(--gcds-pagination-font-size);
-        line-height: var(--gcds-pagination-line-height);
+        font: var(--gcds-pagination-font);
         border-radius: var(--gcds-pagination-border-radius);
 
         &:hover {

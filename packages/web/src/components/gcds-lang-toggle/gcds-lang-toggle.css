@@ -1,9 +1,6 @@
 :host {
   display: block;
-  font-family: var(--gcds-lang-toggle-font-family);
-  font-size: var(--gcds-lang-toggle-font-size);
-  font-weight: var(--gcds-lang-toggle-font-weight);
-  line-height: var(--gcds-lang-toggle-line-height);
+  font: var(--gcds-lang-toggle-font);
 
   h2 {
     margin: 0;
@@ -43,7 +40,7 @@
   @media screen and (min-width: 64em) {
     a {
       padding: 0;
-    
+
       span {
         display: inherit;
       }

@@ -1,10 +1,7 @@
 :host {
   .gcds-radio {
     max-width: 90%;
-    font-family: var(--gcds-radio-font-family);
-    font-size: var(--gcds-radio-font-size);
-    font-weight: var(--gcds-radio-font-weight);
-    line-height: var(--gcds-radio-line-height);
+    font: var(--gcds-radio-font);
     color: var(--gcds-radio-default-text);
     margin: var(--gcds-radio-margin);
     padding: 0;
@@ -127,9 +124,8 @@
     }
 
     gcds-hint {
+      font: var(--gcds-radio-hint-font);
       color: var(--gcds-radio-hint-text);
-      font-size: var(--gcds-radio-hint-font-size);
-      line-height: var(--gcds-radio-hint-line-height);
     }
   }
 }

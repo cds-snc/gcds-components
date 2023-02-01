@@ -1,10 +1,7 @@
 :host button,
 :host a {
   cursor: pointer;
-  font-family: var(--gcds-button-font-family);
-  font-size: var(--gcds-button-font-size);
-  font-weight: var(--gcds-button-font-weight);
-  line-height: var(--gcds-button-line-height);
+  font: var(--gcds-button-font);
   padding: var(--gcds-button-padding);
   border: var(--gcds-button-border-width) solid;
   text-decoration: none;
@@ -122,7 +119,7 @@
 
   /* Small button styling */
   &.button--small {
-    font-size: var(--gcds-button-small-font-size);
+    font: var(--gcds-button-small-font);
     padding: var(--gcds-button-small-padding);
   }
 }

@@ -2,10 +2,7 @@
   overflow-x: hidden;
 
   ol {
-    font-family: var(--gcds-breadcrumbs-font-family);
-    font-size: var(--gcds-breadcrumbs-font-size);
-    font-weight: var(--gcds-breadcrumbs-font-weight);
-    line-height: var(--gcds-breadcrumbs-line-height);
+    font: var(--gcds-breadcrumbs-font);
     list-style: none;
     margin: 0;
     padding: 0;

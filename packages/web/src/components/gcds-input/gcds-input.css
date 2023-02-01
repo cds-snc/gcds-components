@@ -1,10 +1,7 @@
 :host .gcds-input-wrapper {
   width: 75ch;
   max-width: 90%;
-  font-family: var(--gcds-input-font-family);
-  font-size: var(--gcds-input-font-size);
-  font-weight: var(--gcds-input-font-weight);
-  line-height: var(--gcds-input-line-height);
+  font: var(--gcds-input-font);
   color: var(--gcds-input-default-text);
   margin: 0;
   padding: 0;
@@ -20,7 +17,7 @@
   }
 
   &.gcds-error:not(:focus-within) {
-    color: var(--gcds-input-destructive);
+    color: var(--gcds-input-destructive-text);
   }
 }
 
@@ -31,10 +28,7 @@
   max-width: 100%;
   height: auto;
   min-height: var(--gcds-input-min-width-and-height);
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
+  font: inherit;
   margin: var(--gcds-input-margin);
   padding: var(--gcds-input-padding);
   background-color: var(--gcds-input-default-background);
@@ -58,6 +52,6 @@
   }
 
   &.gcds-error:not(:focus) {
-    border-color: var(--gcds-input-destructive);
+    border-color: var(--gcds-input-destructive-text);
   }
 }
