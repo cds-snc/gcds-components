@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 01 Feb 2023 01:19:54 GMT
+ * Generated on Wed, 01 Feb 2023 04:06:21 GMT
  */
 
  :root {
@@ -34,6 +34,7 @@
   --gcds-container-lg: 64rem;
   --gcds-container-xl: 75rem;
   --gcds-container-full: 100%;
+  --gcds-spacing-0: 0;
   --gcds-spacing-50: 0.1875rem;
   --gcds-spacing-100: 0.375rem;
   --gcds-spacing-150: 0.5625rem;
@@ -306,6 +307,7 @@
   --gcds-grid-container-lg: 64rem;
   --gcds-grid-container-xl: 75rem;
   --gcds-grid-container-full: 100%;
+  --gcds-grid-gap-0: 0;
   --gcds-grid-gap-50: 0.1875rem;
   --gcds-grid-gap-100: 0.375rem;
   --gcds-grid-gap-150: 0.5625rem;
@@ -344,6 +346,7 @@
   --gcds-icon-line-height-md: 126.41975308641975%;
   --gcds-icon-line-height-lg: 124.85901539399482%;
   --gcds-icon-line-height-xl: 118.38484422541731%;
+  --gcds-icon-margin-0: 0;
   --gcds-icon-margin-50: 0.1875rem;
   --gcds-icon-margin-100: 0.375rem;
   --gcds-icon-margin-150: 0.5625rem;

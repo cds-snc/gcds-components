@@ -339,7 +339,7 @@ export namespace Components {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "gap"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -397,11 +397,11 @@ export namespace Components {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginLeft"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginRight"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * Name of the icon.
          */
@@ -1386,7 +1386,7 @@ declare namespace LocalJSX {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "gap"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -1444,11 +1444,11 @@ declare namespace LocalJSX {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginLeft"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginRight"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
         /**
           * Name of the icon.
          */

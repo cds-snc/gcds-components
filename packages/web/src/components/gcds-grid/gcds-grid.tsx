@@ -35,7 +35,7 @@ export class GcdsGrid {
    * Shorthand for column-gap + row-gap
    * Specifies the width of the gutters between columns and rows
    */
-  @Prop() gap?: '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+  @Prop() gap?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
 
   /**
    * Set tag for grid container
