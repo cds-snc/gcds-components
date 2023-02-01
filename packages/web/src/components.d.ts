@@ -1420,7 +1420,7 @@ declare namespace LocalJSX {
         /**
           * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
          */
-        "langHref"?: string;
+        "langHref": string;
         /**
           * GcdsSignature - GCDS signature links to Canada.ca
          */
@@ -1432,7 +1432,7 @@ declare namespace LocalJSX {
         /**
           * Top navigation - Skip to content href
          */
-        "skipToHref"?: string;
+        "skipToHref": string;
     }
     interface GcdsHint {
         /**

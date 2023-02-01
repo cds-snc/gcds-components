@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 01 Feb 2023 20:25:51 GMT
+ * Generated on Wed, 01 Feb 2023 21:09:11 GMT
  */
 
 :root {
@@ -56,7 +56,7 @@
   --gcds-font-families-heading: "Lato", sans-serif;
   --gcds-font-families-body: "Noto Sans", sans-serif;
   --gcds-font-families-monospace: "Menlo", sans-serif;
-  --gcds-font-families-icons: "Font Awesome 6 Free";
+  --gcds-font-families-icons: "Font Awesome 6 Free", FontAwesome;
   --gcds-font-sizes-caption: 1.1111111111111112rem;
   --gcds-font-sizes-text: 1.25rem;
   --gcds-font-sizes-h6: 1.40625rem;
@@ -275,9 +275,6 @@
   --gcds-file-uploader-file-outline-offset: .125rem;
   --gcds-file-uploader-file-outline-width: 0.1875rem;
   --gcds-file-uploader-file-padding: 0.75rem 0.75rem 0.75rem 1.5rem;
-  --gcds-file-uploader-file-hover-background: #a62a1e;
-  --gcds-file-uploader-file-active-background: #000000;
-  --gcds-file-uploader-file-focus-background: #303fc3;
   --gcds-file-uploader-focus-button-background: #303fc3;
   --gcds-file-uploader-focus-button-text: #ffffff;
   --gcds-file-uploader-focus-text: #303fc3;
@@ -346,7 +343,7 @@
   --gcds-header-topnav-top: 1.5rem;
   --gcds-hint-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-hint-margin: 0 0 0.75rem;
-  --gcds-icon-font-family: "Font Awesome 6 Free";
+  --gcds-icon-font-family: "Font Awesome 6 Free", FontAwesome;
   --gcds-icon-font-size-caption: 1.1111111111111112rem;
   --gcds-icon-font-size-text: 1.25rem;
   --gcds-icon-font-size-h6: 1.40625rem;
@@ -371,6 +368,22 @@
   --gcds-icon-fixed-width-h3: 1.2485901539399482;
   --gcds-icon-fixed-width-h2: 1.2208437060746162;
   --gcds-icon-fixed-width-h1: 1.183848442254173;
+  --gcds-icon-margin-0: 0;
+  --gcds-icon-margin-50: 0.1875rem;
+  --gcds-icon-margin-100: 0.375rem;
+  --gcds-icon-margin-150: 0.5625rem;
+  --gcds-icon-margin-200: 0.75rem;
+  --gcds-icon-margin-250: 0.9375rem;
+  --gcds-icon-margin-300: 1.125rem;
+  --gcds-icon-margin-400: 1.5rem;
+  --gcds-icon-margin-450: 2.25rem;
+  --gcds-icon-margin-500: 3rem;
+  --gcds-icon-margin-550: 3.75rem;
+  --gcds-icon-margin-600: 4.5rem;
+  --gcds-icon-margin-700: 6rem;
+  --gcds-icon-margin-800: 7.5rem;
+  --gcds-icon-margin-900: 9rem;
+  --gcds-icon-margin-1000: 10.5rem;
   --gcds-input-border-radius: 0.1875rem;
   --gcds-input-border-width: 0.125rem;
   --gcds-input-danger-text: #a62a1e;

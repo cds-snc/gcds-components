@@ -125,7 +125,6 @@
 
     gcds-hint {
       font: var(--gcds-radio-hint-font);
-      color: var(--gcds-radio-hint-text);
     }
   }
 }

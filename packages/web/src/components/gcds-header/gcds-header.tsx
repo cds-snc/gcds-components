@@ -28,7 +28,7 @@ export class GcdsHeader {
   /**
   * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
   */
-  @Prop({ reflect: false, mutable: false }) langHref: string;
+  @Prop({ reflect: false, mutable: false }) langHref!: string;
 
   /**
   * GcdsSignature - The variant of the Government of Canada signature
@@ -42,7 +42,7 @@ export class GcdsHeader {
   /**
   * Top navigation - Skip to content href
   */
-  @Prop({ reflect: false, mutable: false }) skipToHref: string;
+  @Prop({ reflect: false, mutable: false }) skipToHref!: string;
 
   async componentWillLoad() {
     // Define lang attribute
