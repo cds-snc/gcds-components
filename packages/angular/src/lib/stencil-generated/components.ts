@@ -371,13 +371,13 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['label', 'marginLeft', 'marginRight', 'name', 'size']
+  inputs: ['iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'padding', 'size']
 })
 @Component({
   selector: 'gcds-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['label', 'marginLeft', 'marginRight', 'name', 'size']
+  inputs: ['iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'padding', 'size']
 })
 export class GcdsIcon {
   protected el: HTMLElement;
