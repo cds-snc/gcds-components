@@ -104,6 +104,7 @@
   background-color: var(--gcds-file-uploader-file-background);
   color: var(--gcds-file-uploader-default-text);
   margin: var(--gcds-file-uploader-file-margin);
+  padding: var(--gcds-file-uploader-file-padding);
   border: 0;
   border-radius: var(--gcds-file-uploader-file-border-radius);
   outline: var(--gcds-file-uploader-button-outline-width) solid transparent;
@@ -112,11 +113,6 @@
 
   &:first-of-type {
     margin: var(--gcds-file-uploader-file-margin-first-of-type);
-  }
-
-  span,
-  gcds-icon {
-    padding: var(--gcds-file-uploader-file-padding);
   }
 
   span {
@@ -128,16 +124,25 @@
 
   gcds-icon {
     pointer-events: none;
-    color: var(--gcds-file-uploader-file-icon-default);
+    color: var(--gcds-file-uploader-file-icon-text);
+    background-color: var(--gcds-file-uploader-file-icon-background-default);
     transition: color .15s ease-in-out;
+    border-radius: var(--gcds-file-uploader-file-border-radius);
 
-    &:hover {
-      color: var(--gcds-file-uploader-file-icon-hover);
-    }
+    /* Centering icon in a min-target box */
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    &:active {
-      color: var(--gcds-file-uploader-file-icon-active);
-    }
+  &:hover gcds-icon {
+    background-color: var(--gcds-file-uploader-file-icon-background-hover);
+  }
+
+  &:active gcds-icon {
+    background-color: var(--gcds-file-uploader-file-icon-background-active);
   }
 
   &:focus-within {

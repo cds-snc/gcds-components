@@ -4,24 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
+
+    <!-- Utility framework -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cds-snc/gcds-utilities/dist/utilities.css" />
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/dist/gcds/gcds.css" />
-    <script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
-    <script type="module" src="/dist/gcds/gcds.esm.js"></script>
-    <script nomodule src="/dist/gcds.js"></script>
-
-    <link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
 
-    <!-- Utility framework -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cds-snc/gcds-utilities/dist/utilities.css" />
+    <!-- Font awesome 6 kit for this demo page. Anyone can create a free kit for open source. -->
+    <script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
+
+    <!-- Local components -->
+    <link rel="stylesheet" href="/dist/gcds/gcds.css" />
+    <script type="module" src="/dist/gcds/gcds.esm.js"></script>
+    <script nomodule src="/dist/gcds.js"></script>
 
 
     <style>
@@ -29,8 +33,8 @@
         font-size: 16px;
       }
       body {
-        font-size: var(--gcds-font-sizes-paragraph);
-        line-height: var(--gcds-line-heights-paragraph);
+        font-size: var(--gcds-font-sizes-text);
+        line-height: var(--gcds-line-heights-text);
         color: var(--gcds-color-grayscale-1000);
         font-family: var(--gcds-font-families-body), sans-serif;
         margin: 0;
@@ -213,11 +217,12 @@
       <!-- ------------- Icons ------------- -->
 
       <h3 class="mt-700 mb-400 bb-1">Icons</h3>
-      <gcds-icon name="times" size="xs" margin-right="200"></gcds-icon>
-      <gcds-icon name="times" size="sm" margin-right="200"></gcds-icon>
-      <gcds-icon name="times" size="md" margin-right="200"></gcds-icon>
-      <gcds-icon name="times" size="lg" margin-right="200"></gcds-icon>
-      <gcds-icon name="times" size="xl"></gcds-icon>
+      <gcds-icon name="close" size="caption" margin-right="200"></gcds-icon>
+      <gcds-icon name="cloud" size="text" margin-right="200"></gcds-icon>
+      <gcds-icon name="info-circle" size="h3" margin-right="200"></gcds-icon>
+      <gcds-icon name="tree" size="h2" margin-right="200"></gcds-icon>
+      <gcds-icon name="folder" size="h1"></gcds-icon>
+      <gcds-icon name="folder" icon-style="regular" size="h1"></gcds-icon>
 
       <!-- ------------- Pagination ------------- -->
 

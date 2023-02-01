@@ -391,17 +391,21 @@ export namespace Components {
     }
     interface GcdsIcon {
         /**
+          * Style of the icon.
+         */
+        "iconStyle"?: 'regular' | 'solid';
+        /**
           * Add icon description.
          */
         "label"?: string;
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginLeft"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginRight"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * Name of the icon.
          */
@@ -409,7 +413,11 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+        "padding"?: 'none' | 'fixed-width';
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1';
     }
     interface GcdsInput {
         /**
@@ -1438,17 +1446,21 @@ declare namespace LocalJSX {
     }
     interface GcdsIcon {
         /**
+          * Style of the icon.
+         */
+        "iconStyle"?: 'regular' | 'solid';
+        /**
           * Add icon description.
          */
         "label"?: string;
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginLeft"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginRight"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * Name of the icon.
          */
@@ -1456,7 +1468,11 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+        "padding"?: 'none' | 'fixed-width';
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1';
     }
     interface GcdsInput {
         /**

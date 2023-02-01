@@ -8,10 +8,14 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsIcon {
   @Element() el: HTMLElement;
 
-
   /**
    * Props
    */
+
+  /**
+   * Style of the icon.
+   */
+  @Prop() iconStyle?: 'regular' | 'solid' = 'solid';
 
   /**
    * Add icon description.
@@ -21,12 +25,12 @@ export class GcdsIcon {
   /**
    * Add margin to the left of the icon
    */
-  @Prop() marginLeft?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+  @Prop() marginLeft?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
 
   /**
    * Add margin to the right of the icon
    */
-  @Prop() marginRight?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+  @Prop() marginRight?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
 
   /**
    * Name of the icon.
@@ -36,19 +40,25 @@ export class GcdsIcon {
   /**
    * Defines the size of the icon.
    */
-  @Prop() size?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'inherit';
+  @Prop() padding?: 'none' | 'fixed-width' = 'none';
+
+  /**
+   * Defines the size of the icon.
+   */
+  @Prop() size?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1' = 'text';
 
   render() {
-    const { label, marginLeft, marginRight, name, size } = this;
+    const { iconStyle, label, marginLeft, marginRight, name, padding, size } = this;
 
     return (
       <Host>
         <span
           class={`
-            gcds-icon fa fa-regular fa-${name}
+            gcds-icon fa fa-${iconStyle} fa-${name}
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
             ${size ? `size-${size}` : ''}
+            padding-${padding}
           `}
           role="img"
           aria-label={label ? label : false}
