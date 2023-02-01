@@ -50,13 +50,13 @@
   }
 
   /* Role */
-  &.alert--role-destructive {
-    background-color: var(--gcds-alert-destructive-background);
-    border-color: var(--gcds-alert-destructive-icon);
-    color: var(--gcds-alert-destructive-text);
+  &.alert--role-danger {
+    background-color: var(--gcds-alert-danger-background);
+    border-color: var(--gcds-alert-danger-icon);
+    color: var(--gcds-alert-danger-text);
 
     .alert__icon {
-      color: var(--gcds-alert-destructive-icon);
+      color: var(--gcds-alert-danger-icon);
     }
   }
 

@@ -16,10 +16,10 @@
   }
 
   &.gcds-error:not(:focus-within) {
-    color: var(--gcds-select-destructive-text);
+    color: var(--gcds-select-danger-text);
 
     select {
-      border-color: var(--gcds-select-destructive-text);
+      border-color: var(--gcds-select-danger-text);
     }
   }
 }

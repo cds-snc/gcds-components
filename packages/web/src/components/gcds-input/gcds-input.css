@@ -17,7 +17,7 @@
   }
 
   &.gcds-error:not(:focus-within) {
-    color: var(--gcds-input-destructive-text);
+    color: var(--gcds-input-danger-text);
   }
 }
 
@@ -52,6 +52,6 @@
   }
 
   &.gcds-error:not(:focus) {
-    border-color: var(--gcds-input-destructive-text);
+    border-color: var(--gcds-input-danger-text);
   }
 }

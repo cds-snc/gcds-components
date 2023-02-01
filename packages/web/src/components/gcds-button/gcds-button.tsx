@@ -35,11 +35,11 @@ export class GcdsButton {
   /**
    * Set the main style
    */
-  @Prop({ mutable: true }) buttonRole: 'primary' | 'secondary' | 'destructive' | 'skip-to-content' = 'primary';
+  @Prop({ mutable: true }) buttonRole: 'primary' | 'secondary' | 'danger' | 'skip-to-content' = 'primary';
 
   @Watch('buttonRole')
   validateButtonRole(newValue: string) {
-    const values = ['primary', 'secondary', 'destructive', 'skip-to-content'];
+    const values = ['primary', 'secondary', 'danger', 'skip-to-content'];
 
     if (!values.includes(newValue)) {
       this.buttonRole = 'primary';

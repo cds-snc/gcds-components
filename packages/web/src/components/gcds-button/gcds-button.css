@@ -9,16 +9,16 @@
   transition: all .15s ease-in-out;
 
   /* Button Role Styles */
-  &.button--role-destructive {
-    background-color: var(--gcds-button-destructive-default-background);
-    border-color: var(--gcds-button-destructive-default-background);
-    color: var(--gcds-button-destructive-default-text);
+  &.button--role-danger {
+    background-color: var(--gcds-button-danger-default-background);
+    border-color: var(--gcds-button-danger-default-background);
+    color: var(--gcds-button-danger-default-text);
 
     &:hover {
-      background-color: var(--gcds-button-destructive-hover-background);
+      background-color: var(--gcds-button-danger-hover-background);
 
       &:focus {
-        outline-color: var(--gcds-button-destructive-hover-background);
+        outline-color: var(--gcds-button-danger-hover-background);
       }
     }
   }

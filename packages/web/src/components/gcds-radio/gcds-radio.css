@@ -40,7 +40,7 @@
     }
 
     &.gcds-radio--error:not(:focus-within) {
-      color: var(--gcds-radio-destructive-text);
+      color: var(--gcds-radio-danger-text);
 
       input[type=radio] + gcds-label {
         &:before {

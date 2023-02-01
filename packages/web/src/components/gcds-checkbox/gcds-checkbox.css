@@ -39,7 +39,7 @@
     }
 
     &.gcds-checkbox--error:not(:focus-within) {
-      color: var(--gcds-checkbox-destructive-text);
+      color: var(--gcds-checkbox-danger-text);
 
       input[type=checkbox] + gcds-label {
         &:before {
@@ -47,7 +47,7 @@
         }
 
         &:after {
-          color: var(--gcds-checkbox-destructive-text);
+          color: var(--gcds-checkbox-danger-text);
         }
       }
 

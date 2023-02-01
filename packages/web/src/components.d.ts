@@ -11,7 +11,7 @@ export namespace Components {
         /**
           * Defines alert role.
          */
-        "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
+        "alertRole"?: 'danger' | 'info' | 'success' | 'warning';
         /**
           * Defines the max width of the alert content.
          */
@@ -61,7 +61,7 @@ export namespace Components {
         /**
           * Set the main style
          */
-        "buttonRole": 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        "buttonRole": 'primary' | 'secondary' | 'danger' | 'skip-to-content';
         /**
           * Set the style variant
          */
@@ -1026,7 +1026,7 @@ declare namespace LocalJSX {
         /**
           * Defines alert role.
          */
-        "alertRole"?: 'destructive' | 'info' | 'success' | 'warning';
+        "alertRole"?: 'danger' | 'info' | 'success' | 'warning';
         /**
           * Defines the max width of the alert content.
          */
@@ -1080,7 +1080,7 @@ declare namespace LocalJSX {
         /**
           * Set the main style
          */
-        "buttonRole"?: 'primary' | 'secondary' | 'destructive' | 'skip-to-content';
+        "buttonRole"?: 'primary' | 'secondary' | 'danger' | 'skip-to-content';
         /**
           * Set the style variant
          */

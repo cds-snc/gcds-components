@@ -20,7 +20,7 @@ export class GcdsAlert {
   /**
    * Defines alert role.
    */
-  @Prop() alertRole?: 'destructive' | 'info' | 'success' | 'warning' = 'info';
+  @Prop() alertRole?: 'danger' | 'info' | 'success' | 'warning' = 'info';
 
   /**
    * Defines the max width of the alert content.
@@ -96,13 +96,13 @@ export class GcdsAlert {
             aria-label={
               lang == 'en' ?
                 `This is ${
-                  alertRole === 'destructive' ? 'a critical'
+                  alertRole === 'danger' ? 'a critical'
                   : alertRole === 'info' ? 'an info'
                   : alertRole === 'success' ? 'a success'
                   : alertRole === 'warning' ? 'a warning'
                   : null } alert.`
               : `Ceci est une alerte ${
-                  alertRole === 'destructive' ? 'd\'effacement'
+                  alertRole === 'danger' ? 'd\'effacement'
                   : alertRole === 'info' ? 'd\'information'
                   : alertRole === 'success' ? 'de succès'
                   : alertRole === 'warning' ? 'd\'avertissement'
@@ -112,7 +112,7 @@ export class GcdsAlert {
             <div class={`alert__container ${isFixed && container ? `container-${container}` : ''}`}>
               {( !hideRoleIcon &&
                 <gcds-icon aria-hidden="true" class="alert__icon" name={
-                  alertRole === 'destructive' ? 'exclamation-circle'
+                  alertRole === 'danger' ? 'exclamation-circle'
                   : alertRole === 'info' ? 'info-circle'
                   : alertRole === 'success' ? 'check-circle'
                   : alertRole === 'warning' ? 'exclamation-triangle'

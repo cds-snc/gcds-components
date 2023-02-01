@@ -17,7 +17,7 @@
   }
 
   &.gcds-error:not(:focus-within) {
-    color: var(--gcds-textarea-destructive-text);
+    color: var(--gcds-textarea-danger-text);
   }
 
   .error-message-container {
@@ -56,6 +56,6 @@
   }
 
   &.gcds-error:not(:focus) {
-    border-color: var(--gcds-textarea-destructive-text);
+    border-color: var(--gcds-textarea-danger-text);
   }
 }

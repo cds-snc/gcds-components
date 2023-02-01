@@ -17,7 +17,7 @@
     }
 
     &.gcds-fieldset--error:not(:focus-within) {
-      color: var(--gcds-fieldset-destructive-text);
+      color: var(--gcds-fieldset-danger-text);
     }
 
     &:disabled {

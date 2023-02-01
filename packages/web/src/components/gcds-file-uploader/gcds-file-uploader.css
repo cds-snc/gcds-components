@@ -42,12 +42,12 @@
 
   &.gcds-error {
     &:not(:focus-within) {
-      color: var(--gcds-file-uploader-destructive-text);
+      color: var(--gcds-file-uploader-danger-text);
     }
 
     .file-uploader__uploaded-file:not(:focus) {
-      background-color: var(--gcds-file-uploader-destructive-background);
-      color: var(--gcds-file-uploader-destructive-text);
+      background-color: var(--gcds-file-uploader-danger-background);
+      color: var(--gcds-file-uploader-danger-text);
     }
   }
 }
