@@ -1,8 +1,5 @@
 :host .gcds-alert {
-  font-family: var(--gcds-alert-font-family);
-  font-size: var(--gcds-alert-font-size);
-  font-weight: var(--gcds-alert-font-weight);
-  line-height: var( --gcds-alert-line-height);
+  font: var(--gcds-alert-font);
   text-align: left;
   box-sizing: border-box;
   color: var(--gcds-alert-text);
@@ -116,10 +113,7 @@
     flex: 1 1 auto;
 
     .alert__heading {
-      font-family: var(--gcds-alert-content-heading-font-family);
-      font-size: var(--gcds-alert-content-heading-font-size);
-      font-weight: var(--gcds-alert-content-heading-font-weight);
-      line-height: var(--gcds-alert-content-heading-line-height);
+      font: var(--gcds-alert-content-heading-font);
       margin: var(--gcds-alert-content-heading-margin);
 
       @media only screen and (width < 36em) {
