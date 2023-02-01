@@ -7,6 +7,10 @@
   color: inherit;
 
   /* Margin left */
+  &.ml-0 {
+    margin-inline-start: var(--gcds-icon-margin-0);
+  }
+
   &.ml-50 {
     margin-inline-start: var(--gcds-icon-margin-50);
   }
@@ -68,6 +72,10 @@
   }
 
   /* Margin right */
+  &.mr-0 {
+    margin-inline-end: var(--gcds-icon-margin-0);
+  }
+
   &.mr-50 {
     margin-inline-end: var(--gcds-icon-margin-50);
   }

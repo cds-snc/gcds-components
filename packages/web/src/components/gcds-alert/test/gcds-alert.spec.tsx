@@ -33,15 +33,15 @@ describe('gcds-alert', () => {
     * Role tests
     */
 
-  it('renders alert-role="destructive"', async () => {
+  it('renders alert-role="danger"', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert heading="Main notification title" alert-role="destructive"></gcds-alert>`,
+      html: `<gcds-alert heading="Main notification title" alert-role="danger"></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert heading="Main notification title" alert-role="destructive">
+      <gcds-alert heading="Main notification title" alert-role="danger">
         <mock:shadow-root>
-          <div aria-label="This is a critical alert." class="gcds-alert alert--role-destructive" role="alert">
+          <div aria-label="This is a critical alert." class="gcds-alert alert--role-danger" role="alert">
             <div class="alert__container">
               <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle"></gcds-icon>
 
@@ -145,15 +145,15 @@ describe('gcds-alert', () => {
     * Role tests french
     */
 
-  it('renders alert-role="destructive" in french', async () => {
+  it('renders alert-role="danger" in french', async () => {
     const page = await newSpecPage({
       components: [GcdsAlert],
-      html: `<gcds-alert lang="fr" heading="Main notification title" alert-role="destructive"></gcds-alert>`,
+      html: `<gcds-alert lang="fr" heading="Main notification title" alert-role="danger"></gcds-alert>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-alert lang="fr" heading="Main notification title" alert-role="destructive">
+      <gcds-alert lang="fr" heading="Main notification title" alert-role="danger">
         <mock:shadow-root>
-          <div aria-label="Ceci est une alerte d'effacement." class="gcds-alert alert--role-destructive" role="alert">
+          <div aria-label="Ceci est une alerte d'effacement." class="gcds-alert alert--role-danger" role="alert">
             <div class="alert__container">
               <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle"></gcds-icon>
 

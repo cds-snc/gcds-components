@@ -1,10 +1,7 @@
 :host button,
 :host a {
   cursor: pointer;
-  font-family: var(--gcds-button-font-family);
-  font-size: var(--gcds-button-font-size);
-  font-weight: var(--gcds-button-font-weight);
-  line-height: var(--gcds-button-line-height);
+  font: var(--gcds-button-font);
   padding: var(--gcds-button-padding);
   border: var(--gcds-button-border-width) solid;
   text-decoration: none;
@@ -12,16 +9,16 @@
   transition: all .15s ease-in-out;
 
   /* Button Role Styles */
-  &.button--role-destructive {
-    background-color: var(--gcds-button-destructive-default-background);
-    border-color: var(--gcds-button-destructive-default-background);
-    color: var(--gcds-button-destructive-default-text);
+  &.button--role-danger {
+    background-color: var(--gcds-button-danger-default-background);
+    border-color: var(--gcds-button-danger-default-background);
+    color: var(--gcds-button-danger-default-text);
 
     &:hover {
-      background-color: var(--gcds-button-destructive-hover-background);
+      background-color: var(--gcds-button-danger-hover-background);
 
       &:focus {
-        outline-color: var(--gcds-button-destructive-hover-background);
+        outline-color: var(--gcds-button-danger-hover-background);
       }
     }
   }
@@ -104,12 +101,11 @@
 
   &:focus,
   &:focus-visible {
-    border-color: var(--gcds-button-shared-focus-background);
     background-color: var(--gcds-button-shared-focus-background);
-    box-shadow: 0 0 0 var(--gcds-button-border-width) var(--gcds-button-shared-focus-text);
+    border-color: var(--gcds-button-shared-focus-background);
+    color: var(--gcds-button-shared-focus-text);
     outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
     outline-offset: var(--gcds-button-border-width);
-    color: var(--gcds-button-shared-focus-text);
   }
 
   &.button--solid:not(.secondary):active {
@@ -123,7 +119,7 @@
 
   /* Small button styling */
   &.button--small {
-    font-size: var(--gcds-button-small-font-size);
+    font: var(--gcds-button-small-font);
     padding: var(--gcds-button-small-padding);
   }
 }

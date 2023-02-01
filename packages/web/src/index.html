@@ -20,6 +20,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
 
+    <!-- Utility framework -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cds-snc/gcds-utilities/dist/utilities.css" />
+
+
     <style>
       html {
         font-size: 16px;
@@ -35,30 +39,226 @@
     </style>
   </head>
   <body style="margin: 0">
-    <gcds-button button-role="skip-to-content">Skip to whatever this is</gcds-button>
-    <gcds-header></gcds-header>
-    <gcds-grid container="md" gap="spacing-400">
-      <gcds-alert alert-heading="Heading" alert-role="success">
-        <p>Example</p>
-      </gcds-alert>
-      <gcds-banner banner-text="Example">
-        <p slot="banner-text">Example</p>
-      </gcds-banner>
-      <gcds-button button-role="secondary">Cancel</gcds-button>
-      <gcds-button button-role="primary">Next</gcds-button>
-      <gcds-button button-role="destructive">No!</gcds-button>
-      <gcds-fieldset fieldset-id="fieldset-id" legend="Choose ingredients for your smoothie">
-        <gcds-checkbox checkbox-id="bananas" label="Bananas" name="bananas"></gcds-checkbox>
-        <gcds-checkbox checkbox-id="melon" label="Melon" name="melon"></gcds-checkbox>
-        <gcds-checkbox checkbox-id="papaya" label="Papaya" name="papaya"></gcds-checkbox>
-      </gcds-fieldset>
-      <gcds-input label="What is your mood today?" hint="I hope it's good"></gcds-input>
-      <gcds-input label="Whatever you enter in this field, it will be wrong" error-message="It's not you, it's me"></gcds-input>
-      <gcds-details details-title="If you open me, I contain special content">beans</gcds-details>
-      <gcds-file-uploader uploaderId="cat-id" label="Upload a cute cat picture"></gcds-file-uploader>
-      <gcds-pagination label="pages"></gcds-pagination>
-    </gcds-grid>
+    <!-- ------------- Verify banner ------------- -->
 
-    <gcds-footer></gcds-footer>
+    <gcds-verify-banner></gcds-verify-banner>
+
+    <!-- ------------- Header ------------- -->
+
+    <gcds-header
+      lang="en"
+      lang-href="en"
+      signature-variant="colour"
+      skip-to-href="#"
+    >
+      <!-- ------------- Site Menu ------------- -->
+
+      <gcds-site-menu slot="menu" alignment="right">
+        <h6 slot="left">GC Design System</h6>
+        <ul>
+          <li>
+            <a href="">Installation</a>
+          </li>
+          <li>
+            <a href="">Foundations</a>
+          </li>
+          <li>
+            <a href="">Components</a>
+          </li>
+          <li>
+            <a href="">Contact us</a>
+          </li>
+        </ul>
+      </gcds-site-menu>
+
+      <!-- ------------- Breadcrumbs ------------- -->
+
+      <!-- Breadcrumb with canada.ca link -->
+      <gcds-breadcrumbs slot="breadcrumb">
+        <gcds-breadcrumbs-item href="#">Design System</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="#">Components</gcds-breadcrumbs-item>
+      </gcds-breadcrumbs>
+
+      <!-- Breadcrumb with outcanada.ca link -->
+      <!-- <gcds-breadcrumbs hide-canada-link slot="breadcrumb">
+        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
+      </gcds-breadcrumbs> -->
+    </gcds-header>
+
+    <section class="container-xl mx-auto py-600">
+      <h1 class="text-center mb-500">GC Design System</h1>
+
+      <h2>Components</h2>
+
+      <!-- ------------- Alerts ------------- -->
+
+      <h3 class="mt-500 mb-400 bb-1">Alerts</h3>
+      <gcds-alert heading="Success alert" alert-role="success" container="xl">
+        <p>Example content</p>
+      </gcds-alert>
+      <gcds-alert heading="Info alert" alert-role="info" container="xl">
+        <p>Example content</p>
+      </gcds-alert>
+      <gcds-alert heading="Warning alert" alert-role="warning" container="xl">
+        <p>Example content</p>
+      </gcds-alert>
+      <gcds-alert heading="Danger alert" alert-role="danger" container="xl">
+        <p>Example content</p>
+      </gcds-alert>
+
+      <!-- ------------- Buttons ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-1">Buttons</h3>
+      <gcds-button button-role="primary">Primary</gcds-button>
+      <gcds-button button-role="secondary">Secondary</gcds-button>
+      <gcds-button button-role="danger">Danger</gcds-button>
+      <gcds-button button-role="skip-to-content">Skip to content</gcds-button>
+      <gcds-button type="link" button-style="text-only" href="#">Link</gcds-button>
+      <gcds-button
+        type="link"
+        button-style="text-only"
+        href="#"
+        target="_blank"
+      >
+        External Link
+      </gcds-button>
+
+      <!-- ------------- Details ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-1">Details</h3>
+      <gcds-details details-title="Find out more">
+        <p>Details about stuff.</p>
+      </gcds-details>
+
+      <!-- ------------- Stepper + Form Elements ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-1">Form elements (including stepper)</h3>
+      <gcds-stepper current-step="1" total-steps="3"></gcds-stepper>
+      <form>
+        <gcds-input
+          input-id="form-name"
+          label="Name"
+          hint="Please enter your full name."
+          required
+        ></gcds-input>
+
+        <gcds-input
+          input-id="form-number"
+          type="number"
+          size="10"
+          label="Phone number"
+          hint="Please enter a 10 digits number."
+          required
+        ></gcds-input>
+
+        <gcds-textarea
+          textarea-id="form-message"
+          label="Message"
+          hint="This is a hint."
+          character-count="400"
+        ></gcds-textarea>
+
+        <gcds-checkbox
+          checkbox-id="form-checkbox"
+          label="Do you like pizza?"
+          checked=""
+          hint="This answer is yes."
+        ></gcds-checkbox>
+
+        <gcds-radio
+          radio-id="form-radio"
+          label="Radio label"
+          hint="This is a hint."
+        ></gcds-radio>
+
+        <gcds-select
+          select-id="form-select"
+          label="Name"
+          hint="Please enter your full name."
+          error-message="Example error message."
+          default-value="Please select an option"
+        >
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </gcds-select>
+
+        <gcds-file-uploader
+          uploader-id="form-uploader"
+          label="Upload"
+          hint="You can upload multiple files, but they have to be png's."
+          accept="image/png"
+          multiple
+        ></gcds-file-uploader>
+      </form>
+
+      <!-- ------------- Grid ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-1">Grid</h3>
+      <gcds-grid
+        tag="article"
+        columns-desktop="1fr 1fr 1fr 1fr"
+        columns-tablet="1fr 1fr"
+        columns="1fr"
+        gap="500"
+      >
+        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+      </gcds-grid>
+
+      <!-- ------------- Icons ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-1">Icons</h3>
+      <gcds-icon name="times" size="xs" margin-right="200"></gcds-icon>
+      <gcds-icon name="times" size="sm" margin-right="200"></gcds-icon>
+      <gcds-icon name="times" size="md" margin-right="200"></gcds-icon>
+      <gcds-icon name="times" size="lg" margin-right="200"></gcds-icon>
+      <gcds-icon name="times" size="xl"></gcds-icon>
+
+      <!-- ------------- Pagination ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-1">Pagination</h3>
+      <gcds-pagination
+        display="list"
+        label="List pagination"
+        type="list"
+        total-pages="22"
+        current-page="8"
+        url={}
+        pageChangeHandler={}
+      ></gcds-pagination>
+      <!-- <gcds-pagination
+        display="list"
+        label="Simple Pagination"
+        type="simple"
+        previous-href="#"
+        previous-label="Previous"
+        next-href="#"
+        next-label="Previous"
+      ></gcds-pagination> -->
+
+      <!-- ------------- Phase Banner ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-1">Phase banner</h3>
+      <gcds-phase-banner banner-role="primary">
+        <gcds-icon name="tree" size="sm" slot="banner-icon-left"></gcds-icon>
+        <p slot="banner-text">Exciting announcement.</p>
+      </gcds-phase-banner>
+
+      <!-- ------------- Date Modified ------------- -->
+
+      <gcds-date-modified>2023-01-26</gcds-date-modified>
+    </section>
+
+    <gcds-footer
+      display="full"
+      contextual-heading="Additional content"
+      contextual-links='{ "Components": "#","Tokens": "#", "Foundations": "#"}'
+    >
+    </gcds-footer>
   </body>
 </html>

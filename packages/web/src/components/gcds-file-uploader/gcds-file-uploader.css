@@ -3,10 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   max-width: 90%;
-  font-family: var(--gcds-file-uploader-font-family);
-  font-size: var(--gcds-file-uploader-font-size);
-  font-weight: var(--gcds-file-uploader-font-weight);
-  line-height: var(--gcds-file-uploader-line-height);
+  font: var(--gcds-file-uploader-font);
   color: var(--gcds-file-uploader-default-text);
   margin: 0;
   padding: 0;
@@ -45,12 +42,12 @@
 
   &.gcds-error {
     &:not(:focus-within) {
-      color: var(--gcds-file-uploader-destructive-text);
+      color: var(--gcds-file-uploader-danger-text);
     }
 
     .file-uploader__uploaded-file:not(:focus) {
-      background-color: var(--gcds-file-uploader-destructive-background);
-      color: var(--gcds-file-uploader-destructive-text);
+      background-color: var(--gcds-file-uploader-danger-background);
+      color: var(--gcds-file-uploader-danger-text);
     }
   }
 }
@@ -92,9 +89,8 @@
   &:focus-within button {
     background-color: var(--gcds-file-uploader-focus-button-background);
     color: var(--gcds-file-uploader-focus-button-text);
-    box-shadow: 0 0 0 var(--gcds-file-uploader-button-border-width) var(--gcds-file-uploader-focus-button-shadow);
     outline: var(--gcds-file-uploader-button-outline-width) solid var(--gcds-file-uploader-focus-button-background);
-    border-color: var(--gcds-file-uploader-focus-button-text);
+    border-color: currentColor;
   }
 }
 
@@ -104,10 +100,7 @@
   justify-content: space-between;
   width: 100%;
   max-width: var(--gcds-file-uploader-file-max-width);
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
+  font: inherit;
   background-color: var(--gcds-file-uploader-file-background);
   color: var(--gcds-file-uploader-default-text);
   margin: var(--gcds-file-uploader-file-margin);
@@ -150,9 +143,7 @@
   &:focus-within {
     background-color: var(--gcds-file-uploader-focus-button-background);
     color: var(--gcds-file-uploader-focus-button-text);
-    box-shadow: 0 0 0 var(--gcds-file-uploader-file-outline-offset) var(--gcds-file-uploader-focus-button-shadow);
     outline-color: var(--gcds-file-uploader-focus-button-background);
-    border-color: var(--gcds-file-uploader-focus-button-text);
 
     span,
     gcds-icon {

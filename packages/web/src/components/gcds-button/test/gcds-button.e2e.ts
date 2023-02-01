@@ -30,7 +30,7 @@ describe('gcds-button a11y tests', () => {
       <gcds-button button-role="primary" button-style="text-only">Button Label</gcds-button>
       <gcds-button button-role="primary" button-style="text-only" disabled>Button Label</gcds-button>
     `);
-    
+
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
     let results = await colorContrastTest;
 
@@ -49,26 +49,26 @@ describe('gcds-button a11y tests', () => {
       <gcds-button button-role="secondary" button-style="text-only">Button Label</gcds-button>
       <gcds-button button-role="secondary" button-style="text-only" disabled>Button Label</gcds-button>
     `);
-    
+
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
     let results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });
 
-  it('Colour contrast: destructive button-role, button-styles', async () => {
+  it('Colour contrast: danger button-role, button-styles', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-button button-role="destructive">Button Label</gcds-button>
-      <gcds-button button-role="destructive" disabled>Button Label</gcds-button>
+      <gcds-button button-role="danger">Button Label</gcds-button>
+      <gcds-button button-role="danger" disabled>Button Label</gcds-button>
 
-      <gcds-button button-role="destructive" button-style="outline">Button Label</gcds-button>
-      <gcds-button button-role="destructive" button-style="outline" disabled>Button Label</gcds-button>
+      <gcds-button button-role="danger" button-style="outline">Button Label</gcds-button>
+      <gcds-button button-role="danger" button-style="outline" disabled>Button Label</gcds-button>
 
-      <gcds-button button-role="destructive" button-style="text-only">Button Label</gcds-button>
-      <gcds-button button-role="destructive" button-style="text-only" disabled>Button Label</gcds-button>
+      <gcds-button button-role="danger" button-style="text-only">Button Label</gcds-button>
+      <gcds-button button-role="danger" button-style="text-only" disabled>Button Label</gcds-button>
     `);
-    
+
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
     let results = await colorContrastTest;
 
@@ -82,7 +82,7 @@ describe('gcds-button a11y tests', () => {
     `);
 
     await page.keyboard.press("Tab");
-    
+
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
     let results = await colorContrastTest;
 
@@ -93,7 +93,7 @@ describe('gcds-button a11y tests', () => {
   it('Button name', async () => {
     const page = await newE2EPage();
     await page.setContent('<gcds-button button-role="primary" button-style="solid">Button Label</gcds-button>');
-    
+
     const colorContrastTest = new AxePuppeteer(page).withRules('button-name').analyze();
     let results = await colorContrastTest;
 
@@ -104,7 +104,7 @@ describe('gcds-button a11y tests', () => {
   it('Link name', async () => {
     const page = await newE2EPage();
     await page.setContent('<gcds-button type="link" href="#" button-role="primary" button-style="solid">Button Label</gcds-button>');
-    
+
     const colorContrastTest = new AxePuppeteer(page).withRules('link-name').analyze();
     let results = await colorContrastTest;
 

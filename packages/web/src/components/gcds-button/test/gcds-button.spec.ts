@@ -143,15 +143,15 @@ describe('gcds-button', () => {
     `);
   });
 
-  it('renders button-role destructive', async () => {
+  it('renders button-role danger', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
-      html: `<gcds-button button-role="destructive">Button Label</gcds-button>`,
+      html: `<gcds-button button-role="danger">Button Label</gcds-button>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-button button-role="destructive">
+      <gcds-button button-role="danger">
         <mock:shadow-root>
-          <button class="button--role-destructive button--solid button--regular" type="button">
+          <button class="button--role-danger button--solid button--regular" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>

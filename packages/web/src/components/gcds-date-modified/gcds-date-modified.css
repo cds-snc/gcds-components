@@ -1,19 +1,15 @@
 :host {
   display: block;
-  font-family: var(--gcds-date-modified-font-family);
-  font-size: var(--gcds-date-modified-font-size);
-  font-weight: var(--gcds-date-modified-font-weight);
-  line-height: var(--gcds-date-modified-line-height);
+  font: var(--gcds-date-modified-font);
   color: var(--gcds-date-modified-text);
   margin: var(--gcds-date-modified-margin);
 
   .gcds-date-modified {
-
     dt,
     dd {
       display: inline;
     }
-  
+
     dd {
       margin: var(--gcds-date-modified-description-margin);
     }

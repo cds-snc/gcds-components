@@ -21,10 +21,10 @@ describe('gcds-alert a11y tests', () => {
   /**
    * Colour contrast test
    */
-  it('colour contrast destructive alert', async () => {
+  it('colour contrast danger alert', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-alert heading="Main notification title" alert-role="destructive">
+      <gcds-alert heading="Main notification title" alert-role="danger">
         <p>Testing slot content.</p>
       </gcds-alert>
     `);

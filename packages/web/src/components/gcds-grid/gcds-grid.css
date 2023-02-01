@@ -35,6 +35,10 @@
     display: inline-grid;
   }
 
+  &.gap-0 {
+    gap: var(--gcds-grid-gap-0);
+  }
+
   &.gap-50 {
     gap: var(--gcds-grid-gap-50);
   }

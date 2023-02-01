@@ -1,10 +1,7 @@
 :host {
   .gcds-checkbox {
     max-width: 90%;
-    font-family: var(--gcds-checkbox-font-family);
-    font-size: var(--gcds-checkbox-font-size);
-    font-weight: var(--gcds-checkbox-font-weight);
-    line-height: var(--gcds-checkbox-line-height);
+    font: var(--gcds-checkbox-font);
     color: var(--gcds-checkbox-default-text);
     margin: var(--gcds-checkbox-margin);
     padding: 0;
@@ -42,7 +39,7 @@
     }
 
     &.gcds-checkbox--error:not(:focus-within) {
-      color: var(--gcds-checkbox-destructive-text);
+      color: var(--gcds-checkbox-danger-text);
 
       input[type=checkbox] + gcds-label {
         &:before {
@@ -50,7 +47,7 @@
         }
 
         &:after {
-          color: var(--gcds-checkbox-destructive-text);
+          color: var(--gcds-checkbox-danger-text);
         }
       }
 
@@ -108,10 +105,8 @@
 
       &:focus + gcds-label {
         &:before {
-          box-shadow: 0 0 0 var(--gcds-checkbox-input-border-width) var(--gcds-checkbox-focus-shadow-color);
           outline: var( --gcds-checkbox-focus-outline-width) solid currentcolor;
           outline-offset: var(--gcds-checkbox-input-border-width);
-          border-color: currentcolor;
         }
 
         &:after {
@@ -128,7 +123,7 @@
 
     gcds-hint {
       color: var(--gcds-checkbox-hint-text);
-      font-size: var(--gcds-checkbox-hint-font-size);
+      font: var(--gcds-checkbox-hint-font);
       line-height: var(--gcds-checkbox-hint-line-height);
     }
 

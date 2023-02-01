@@ -1,9 +1,6 @@
 :host {
   display: block;
-  font-size: var(--gcds-footer-font-size);
-  font-family: var(--gcds-footer-font-family);
-  font-weight: var(--gcds-footer-font-weight);
-  line-height: var(--gcds-footer-line-height);
+  font: var(--gcds-footer-font);
 
   .sub__header,
   .themenav__header {
@@ -73,7 +70,6 @@
     color: var(--gcds-footer-main-text);
 
     nav {
-
       &:first-of-type::after {
         border-bottom: var(--gcds-footer-main-nav-first-after-border-width) solid var(--gcds-footer-main-nav-first-after-border-color);
         content: "";
@@ -158,12 +154,12 @@
         &:hover {
           color: var(--gcds-footer-sub-hover-text);
         }
-    
+
         &:focus {
           color: var(--gcds-footer-sub-focus-text);
           background-color: var(--gcds-footer-sub-focus-background);
         }
-    
+
         &:active {
           color: var(--gcds-footer-sub-active-text);
           background-color: var(--gcds-footer-sub-active-background);
