@@ -50,7 +50,7 @@ export class GcdsInput {
   /**
    * Specifies if the label is hidden or not.
    */
-  @Prop() hideLabel?: boolean;
+  @Prop() hideLabel?: boolean = false;
 
   /**
    * Hint displayed below the label and above the input field.
@@ -60,17 +60,17 @@ export class GcdsInput {
   /**
    * Id + name attribute for an input element.
    */
-  @Prop() inputId: string;
+  @Prop() inputId!: string;
 
   /**
    * Form field label
    */
-  @Prop() label: string;
+  @Prop() label!: string;
 
   /**
    * Specifies if a form field is required or not.
    */
-  @Prop() required?: boolean;
+  @Prop() required?: boolean = false;
 
   /**
    * Size attribute for an input element.
@@ -81,17 +81,17 @@ export class GcdsInput {
   /**
    * Set Input types
    */
-  @Prop() type: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
+  @Prop() type?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
 
   /**
    * Default value for an input element.
    */
-  @Prop({ mutable: true }) value: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * String to have autocomplete enabled
    */
-  @Prop() autocomplete: string;
+  @Prop() autocomplete?: 'on' | 'off' = 'off';;
 
   /**
    * Custom callback function on change event

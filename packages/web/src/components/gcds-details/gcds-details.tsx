@@ -21,7 +21,7 @@ export class GcdsDetails {
   /**
    * Defines if the details panel is open by default or not.
    */
-  @Prop() open?: boolean;
+  @Prop() open?: boolean = false;
 
   render() {
     const { detailsTitle, open } = this;

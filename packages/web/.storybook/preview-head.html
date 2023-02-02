@@ -1,0 +1,318 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
+<!-- Font Awesome (Icons) -->
+<link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- GC Design System -->
+<link rel="stylesheet" href="https://unpkg.com/gcds-components/dist/gcds/gcds.css">
+<script type="module" src="https://unpkg.com/gcds-components/dist/gcds/gcds.esm.js"></script>
+<script nomodule src="https://unpkg.com/gcds-components/dist/gcds/gcds.js"></script>
+
+<style>
+  body {
+    font-family: var(--gcds-font-families-body);
+    font-size: var(--gcds-font-sizes-text);
+  }
+
+  .css-zgt7u1 {
+    padding: 0 !important;
+  }
+
+  /* .css-zgt7u1 {
+    padding: 20px !important;
+  } */
+
+  /* .sbdocs-title {
+    display: none;
+  } */
+
+  /* Component Preview */
+  .css-kdwx3d {
+    font-size: 0;
+    color: var(--gcds-color-grayscale-0);
+  }
+
+  .css-kdwx3d .innerZoomElementWrapper gcds-alert,
+  .css-kdwx3d .innerZoomElementWrapper gcds-breadcrumbs,
+  .css-kdwx3d .innerZoomElementWrapper gcds-button,
+  .css-kdwx3d .innerZoomElementWrapper gcds-checkbox,
+  .css-kdwx3d .innerZoomElementWrapper gcds-date-modified,
+  .css-kdwx3d .innerZoomElementWrapper gcds-details,
+  .css-kdwx3d .innerZoomElementWrapper gcds-error-message,
+  .css-kdwx3d .innerZoomElementWrapper gcds-fieldset,
+  .css-kdwx3d .innerZoomElementWrapper gcds-file-uploader,
+  .css-kdwx3d .innerZoomElementWrapper gcds-footer,
+  .css-kdwx3d .innerZoomElementWrapper gcds-grid,
+  .css-kdwx3d .innerZoomElementWrapper gcds-header,
+  .css-kdwx3d .innerZoomElementWrapper gcds-hint,
+  .css-kdwx3d .innerZoomElementWrapper gcds-icon,
+  .css-kdwx3d .innerZoomElementWrapper gcds-input,
+  .css-kdwx3d .innerZoomElementWrapper gcds-label,
+  .css-kdwx3d .innerZoomElementWrapper gcds-lang-toggle,
+  .css-kdwx3d .innerZoomElementWrapper gcds-pagination,
+  .css-kdwx3d .innerZoomElementWrapper gcds-phase-banner,
+  .css-kdwx3d .innerZoomElementWrapper gcds-radio,
+  .css-kdwx3d .innerZoomElementWrapper gcds-select,
+  .css-kdwx3d .innerZoomElementWrapper gcds-signature,
+  .css-kdwx3d .innerZoomElementWrapper gcds-site-menu,
+  .css-kdwx3d .innerZoomElementWrapper gcds-stepper,
+  .css-kdwx3d .innerZoomElementWrapper gcds-textarea,
+  .css-kdwx3d .innerZoomElementWrapper gcds-verify-banner {
+    font-size: var(--gcds-font-sizes-text);
+    color: var(--gcds-color-grayscale-1000);
+  }
+
+  /* Get code button */
+  .css-2w67r7 {
+    color: var(--gcds-color-grayscale-0) !important;
+    font-size: 0 !important;
+    font-family: var(--gcds-font-families-body), sans-serif !important;
+    border-radius: var(--gcds-spacing-50) !important;
+    margin: var(--gcds-spacing-150) !important;
+  }
+
+  .css-2w67r7:not(:focus) {
+    border: 0.125rem solid var(--gcds-color-grayscale-1000) !important;
+  }
+
+  .css-2w67r7:before {
+    content: 'Get code | Afficher le code';
+    font-size: .75rem;
+    color: var(--gcds-button-secondary-default-text) !important;
+    padding: var(--gcds-spacing-50);
+  }
+
+  .css-2w67r7:focus {
+    background-color: var(--gcds-button-shared-focus-background) !important;
+    box-shadow: 0 0 0 .125rem var(--gcds-button-shared-focus-text) !important;
+    outline: var(--gcds-spacing-50) solid var(--gcds-button-shared-focus-background) !important;
+    outline-offset: .125rem !important;
+    color: var(--gcds-button-shared-focus-text) !important;
+  }
+
+  .css-2w67r7:focus:before {
+    color: var(--gcds-button-shared-focus-text) !important;
+  }
+
+  /* Copy code button */
+  .css-1az4em2 {
+    background-color: transparent !important;
+  }
+
+  .css-17vdvg6 {
+    color: rgba(0, 0, 0, 0.85) !important;
+    font-size: 0 !important;
+    border: 0.125rem solid var(--gcds-color-grayscale-0) !important;
+    border-radius: var(--gcds-spacing-50) !important;
+    font-family: var(--gcds-font-families-body), sans-serif !important;
+    margin: var(--gcds-spacing-150) !important;
+  }
+
+  .css-17vdvg6:before {
+    content: 'Copy | Copie';
+    font-size: .75rem;
+    color: var(--gcds-color-grayscale-0);
+    padding: var(--gcds-spacing-50);
+  }
+
+  .css-17vdvg6:focus {
+    background-color: var(--gcds-button-shared-focus-background) !important;
+    box-shadow: 0 0 0 .125rem var(--gcds-button-shared-focus-text) !important;
+    outline: var(--gcds-spacing-50) solid var(--gcds-button-shared-focus-background) !important;
+    outline-offset: .125rem !important;
+    color: var(--gcds-button-shared-focus-text) !important;
+  }
+
+  .css-17vdvg6:focus:before {
+    color: var(--gcds-button-shared-focus-text) !important;
+  }
+
+  /* Change props table headings */
+  .docblock-argstable-head tr th span {
+    font-size: 0;
+    color: transparent !important;
+  }
+
+  .docblock-argstable-head tr th span:before {
+    font-size: 0.8125rem;
+    color: var(--gcds-color-grayscale-1000) !important;
+  }
+
+  .docblock-argstable-head th:nth-child(1) span:before {
+    content: 'Property | Propriété';
+  }
+
+  .docblock-argstable-head th:nth-child(2) span:before {
+    content: 'Data type | Type de donnée';
+  }
+
+  .docblock-argstable-head th:nth-child(3) span:before {
+    content: 'Default value | Valeur par défaut';
+  }
+
+  .docblock-argstable-head th:nth-child(4) span:before {
+    content: 'Values | Valeurs';
+  }
+
+  /* Table Styling */
+
+  .docblock-argstable-head tr th,
+  .docblock-argstable-body tr td.css-11nj37o,
+  .docblock-argstable-body tr .css-11nj37o~td {
+    background-color: var(--gcds-color-grayscale-0) !important;
+    border-radius: 0 !important;
+    color: var(--gcds-color-grayscale-1000) !important;
+    font-weight: var(--gcds-font-weights-bold);
+    padding-block-start: var(--gcds-spacing-400);
+  }
+
+  .css-tm6i3o.css-tm6i3o {
+    border-collapse: initial !important;
+  }
+
+  .css-22iagm.css-22iagm tbody {
+    box-shadow: none !important;
+  }
+
+  /* .css-22iagm.css-22iagm th:first-of-type,
+  .css-22iagm.css-22iagm th:last-of-type,
+  .css-22iagm.css-22iagm th,
+  .css-22iagm.css-22iagm td:first-of-type,
+  .css-22iagm.css-22iagm td,
+  .css-22iagm.css-22iagm td:last-of-type {
+    padding: var(--gcds-spacing-150) !important;
+  } */
+
+  .docblock-argstable-body .css-hj75sh td {
+    background-color: transparent !important;
+    color: var(--gcds-color-grayscale-1000) !important;
+  }
+
+  .docblock-argstable-body .css-hj75sh td:first-of-type {
+    padding-block-start: var(--gcds-spacing-450) !important;
+  }
+
+  .docblock-argstable-head th:nth-child(1),
+  .docblock-argstable-body td:nth-child(1) {
+    width: 25% !important;
+  }
+
+  .docblock-argstable-head th:nth-child(2),
+  .docblock-argstable-body td:nth-child(2) {
+    width: 35% !important;
+  }
+
+  .docblock-argstable-head th:nth-child(3),
+  .docblock-argstable-body td:nth-child(3) {
+    width: 35% !important;
+  }
+
+  .docblock-argstable-head th:nth-child(4),
+  .docblock-argstable-body td:nth-child(4) {
+    width: 10% !important;
+  }
+
+  /* Style props table as code */
+  .docblock-argstable-body tr {
+    border: 0 !important;
+  }
+
+  .docblock-argstable-body td {
+    vertical-align: middle !important;
+    background-color: #262626 !important;
+    color: var(--gcds-color-grayscale-0);
+    border-bottom: 0.0625rem solid var(--gcds-color-grayscale-700) !important;
+  }
+
+  .docblock-argstable-body td span.css-a2cl28 {
+    color: var(--gcds-color-grayscale-0);
+  }
+
+  /* Required props */
+  /* .css-1ywjlcj:after {
+    content: '(required)'
+  } */
+
+  /* Style props form elements */
+  .css-16nkwz2,
+  .css-1yjel1o,
+  .css-172ajqq,
+  .css-1vhwtr2 {
+    font-family: var(--gcds-font-families-body) !important;
+  }
+
+  .css-1yjel1o {
+    font-weight: var(--gcds-font-weights-semibold) !important;
+    letter-spacing: .75px;
+    background-color: transparent !important;
+    color: var(--gcds-color-grayscale-0) !important;
+    border: 0 !important;
+  }
+
+  .sto-f2g3hl,
+  .css-f2g3hl,
+  .css-172ajqq,
+  .css-e3ijes {
+    background-color: var(--gcds-color-grayscale-700) !important;
+    border: 0.0625rem solid var(--gcds-color-grayscale-0) !important;
+    padding: var(--gcds-spacing-50) !important;
+  }
+
+  .sto-f2g3hl span,
+  .css-f2g3hl span,
+  .css-172ajqq span,
+  .css-e3ijes span {
+    color: var(--gcds-color-grayscale-0) !important;
+  }
+
+  .sto-f2g3hl input:checked~span:last-of-type,
+  .sto-f2g3hl input:not(:checked)~span:first-of-type,
+  .css-f2g3hl input:checked~span:last-of-type,
+  .css-f2g3hl input:not(:checked)~span:first-of-type,
+  .css-172ajqq input:checked~span:last-of-type,
+  .css-172ajqq input:not(:checked)~span:first-of-type,
+  .css-e3ijes input:checked~span:last-of-type,
+  .css-e3ijes input:not(:checked)~span:first-of-type {
+    background: var(--gcds-color-grayscale-0) !important;
+    color: var(--gcds-color-grayscale-1000) !important;
+  }
+
+  /* Canvas preview */
+  body.sb-show-main #root-inner {
+    font-size: 0;
+    color: var(--gcds-color-grayscale-0);
+  }
+
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-alert,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-breadcrumbs,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-button,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-checkbox,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-date-modified,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-details,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-error-message,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-fieldset,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-file-uploader,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-footer,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-grid,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-header,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-hint,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-icon,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-input,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-label,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-lang-toggle,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-pagination,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-phase-banner,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-radio,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-select,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-signature,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-site-menu,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-stepper,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-textarea,
+  body.sb-show-main #root-inner .innerZoomElementWrapper gcds-verify-banner {
+    font-size: var(--gcds-font-sizes-text);
+    color: var(--gcds-color-grayscale-1000);
+  }
+</style>

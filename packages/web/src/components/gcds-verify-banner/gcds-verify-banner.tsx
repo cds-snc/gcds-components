@@ -28,7 +28,7 @@ export class GcdsVerifyBanner {
   /**
    * Defines if the banner's position is fixed.
    */
-  @Prop() isFixed?: boolean;
+  @Prop() isFixed?: boolean = false;
 
   async componentWillLoad() {
     // Define lang attribute
