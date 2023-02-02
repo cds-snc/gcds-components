@@ -3,7 +3,6 @@
 
   ul {
     padding: 0;
-    width: fit-content;
     list-style: none;
 
     li {
@@ -44,6 +43,7 @@
       display: flex;
       flex-direction: row;
       margin: 0 auto;
+      width: fit-content;
 
       li {
         a,
@@ -157,28 +157,46 @@
     &.gcds-pagination-simple {
       li {
         margin: var(--gcds-pagination-simple-listitem-margin);
+        justify-content: space-between;
+        width: fit-content;
+        display: inline-block;
 
         a {
           display: grid;
           padding: var(--gcds-pagination-simple-padding);
-          text-decoration: none;
-          grid-template-areas:
-          "icon text"
-          "icon label";
-          grid-template-columns: 0.25fr 1fr;
 
           & > gcds-icon {
             grid-area: icon;
           }
 
-          & > b {
+          & > .gcds-pagination-simple-text {
             grid-area: text;
+            margin: 0 0 var(--gcds-spacing-50)
           }
 
           & > span {
             grid-area: label;
             font-weight: var(--gcds-pagination-simple-label-font-weight);
             text-decoration: underline;
+          }
+        }
+
+        &:first-of-type {
+          a {
+            grid-template-areas:
+              "icon text"
+              "icon label";
+            grid-template-columns: 0.25fr 1fr;
+          }
+        }
+        &:last-of-type {
+          float: right;
+
+          a {
+            grid-template-areas:
+              "text icon"
+              "label icon";
+            grid-template-columns: 1fr 0.25fr ;
           }
         }
       }
