@@ -128,13 +128,7 @@
     background-color: var(--gcds-file-uploader-file-icon-background-default);
     transition: color .15s ease-in-out;
     border-radius: var(--gcds-file-uploader-file-border-radius);
-
-    /* Centering icon in a min-target box */
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: var(--gcds-file-uploader-file-icon-padding);
   }
 
   &:hover gcds-icon {

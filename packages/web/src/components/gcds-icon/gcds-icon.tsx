@@ -58,7 +58,7 @@ export class GcdsIcon {
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
             ${size ? `size-${size}` : ''}
-            padding-${padding}
+            ${padding != 'none' ? `padding-${padding}` : ''}
           `}
           role="img"
           aria-label={label ? label : false}
