@@ -7,6 +7,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-controls",
+    "@whitespace/storybook-addon-html",
   ],
   "framework": "@storybook/web-components"
 }

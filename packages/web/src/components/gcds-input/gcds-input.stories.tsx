@@ -6,7 +6,7 @@ export default {
   parameters: {
     actions: {
       argTypesRegex: '^on.*',
-      handles: ['click']
+      handles: ['change', 'focus', 'blur']
     }
   },
 
@@ -102,8 +102,20 @@ export default {
     },
 
     // Events
-    onClick: {
-      action: 'onClick',
+    onChange: {
+      action: 'change',
+      table: {
+        category: 'Events | Événements',
+      }
+    },
+    onFocus: {
+      action: 'focus',
+      table: {
+        category: 'Events | Événements',
+      }
+    },
+    onBlur: {
+      action: 'blur',
       table: {
         category: 'Events | Événements',
       }

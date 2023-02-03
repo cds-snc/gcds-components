@@ -48,6 +48,7 @@
     "@storybook/manager-webpack4": "^6.5.16",
     "@storybook/web-components": "^6.5.16",
     "@types/jest": "^26.0.24",
+    "@whitespace/storybook-addon-html": "^5.1.1",
     "babel-loader": "^8.3.0",
     "cssnano": "^5.0.15",
     "glob": "^8.0.1",
@@ -57,7 +58,9 @@
     "jest-cli": "^26.6.3",
     "lit-html": "^2.6.1",
     "postcss-nested": "^5.0.6",
+    "prettier": "^2.8.3",
     "puppeteer": "^13.0.0",
+    "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
     "workbox-build": "^4.3.1"

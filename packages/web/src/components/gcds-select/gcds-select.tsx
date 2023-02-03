@@ -34,12 +34,12 @@ export class GcdsSelect {
   /**
    * Specifies if a form field is required or not.
    */
-  @Prop({ reflect: true, mutable: false }) required: boolean;
+  @Prop({ reflect: true, mutable: false }) required?: boolean = false;
 
   /**
    * Specifies if a select element is disabled or not.
    */
-  @Prop({ reflect: true, mutable: true }) disabled: boolean;
+  @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
 
   @Watch('disabled')
   validateDisabledSelect() {
@@ -51,17 +51,17 @@ export class GcdsSelect {
   /**
    * The default value is an optional value that gets displayed before the user selects an option.
    */
-  @Prop({ reflect: true, mutable: false }) defaultValue: string;
+  @Prop({ reflect: true, mutable: false }) defaultValue?: string;
 
   /**
    * Value for a select element.
    */
-  @Prop({ mutable: true }) value: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Error message for an invalid select element.
    */
-  @Prop({ reflect: true, mutable: true }) errorMessage: string;
+  @Prop({ reflect: true, mutable: true }) errorMessage?: string;
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
@@ -76,7 +76,7 @@ export class GcdsSelect {
   /**
    * Hint displayed below the label.
    */
-  @Prop({ reflect: true, mutable: false }) hint: string;
+  @Prop({ reflect: true, mutable: false }) hint?: string;
 
   /**
    * Array of validators
