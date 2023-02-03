@@ -171,7 +171,7 @@
 
           & > .gcds-pagination-simple-text {
             grid-area: text;
-            margin: 0 0 var(--gcds-spacing-50)
+            margin: var(--gcds-pagination-simple-listitem-text-margin)
           }
 
           & > span {
@@ -197,6 +197,16 @@
               "text icon"
               "label icon";
             grid-template-columns: 1fr 0.25fr ;
+          }
+        }
+      }
+
+      @media screen and (max-width: 25.75em) {
+        li {
+          display: block;
+
+          &:last-of-type {
+            float: none;
           }
         }
       }
