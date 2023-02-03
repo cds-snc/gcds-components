@@ -1,27 +1,31 @@
 :host {
-  position: relative;
-  display: inline-block;
-  padding: var(--gcds-breadcrumbs-item-padding) !important;
-
-  &:before {
-    position: absolute;
-    top: var(--gcds-breadcrumbs-item-arrow-top);
-    left: var(--gcds-breadcrumbs-item-arrow-left);
-    content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='0.4rem' height='0.8rem' viewBox='0 0 8 14'><path fill='26374a' d='M7.7,6.3c0.4,0.4,0.4,1,0,1.4l-6,6c-0.4,0.4-1,0.4-1.4,0s-0.4-1,0-1.4L5.6,7L0.3,1.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0 L7.7,6.3L7.7,6.3z'/></svg>");
-    transition: filter .35s ease-in-out;
-  }
-
-  a {
+  &(.gcds-breadcrumbs-item) {
+    position: relative;
     display: inline-block;
-    color: var(--gcds-breadcrumbs-default-text);
-    outline: 0;
-    padding: var(--gcds-breadcrumbs-item-link-padding);
-    text-underline-position: under;
-    transition: background .35s ease-in-out, color .35s ease-in-out;
-    white-space: normal;
+    padding: var(--gcds-breadcrumbs-item-padding) !important;
+  
+    &:before {
+      position: absolute;
+      top: var(--gcds-breadcrumbs-item-arrow-top);
+      left: var(--gcds-breadcrumbs-item-arrow-left);
+      content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='0.4rem' height='0.8rem' viewBox='0 0 8 14'><path fill='26374a' d='M7.7,6.3c0.4,0.4,0.4,1,0,1.4l-6,6c-0.4,0.4-1,0.4-1.4,0s-0.4-1,0-1.4L5.6,7L0.3,1.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0 L7.7,6.3L7.7,6.3z'/></svg>");
+      transition: filter .35s ease-in-out;
+    }
+  
+    a {
+      display: inline-block;
+      color: var(--gcds-breadcrumbs-default-text);
+      outline: 0;
+      margin: var(--gcds-breadcrumbs-item-margin);
+      padding: var(--gcds-breadcrumbs-item-link-padding);
+      text-underline-position: under;
+      transition: background .35s ease-in-out, color .35s ease-in-out;
+      white-space: normal;
+    }
   }
+  
 
-  &(:focus-within:not(:hover)) {
+  &(:focus-within) {
     background-color: var(--gcds-breadcrumbs-focus-background);
     color: var(--gcds-breadcrumbs-focus-text);
 
@@ -34,8 +38,8 @@
     }
   }
 
-  &:hover {
-    a {
+  &(:not(:focus-within)) {
+    a:hover {
       color: var(--gcds-breadcrumbs-hover-text);
     }
   }

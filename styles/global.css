@@ -160,12 +160,12 @@
   --gcds-breadcrumbs-focus-text: #ffffff;
   --gcds-breadcrumbs-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-breadcrumbs-hover-text: #26374a;
-  --gcds-breadcrumbs-item-arrow-top: 0.1875rem;
+  --gcds-breadcrumbs-item-arrow-top: 0.9375rem;
   --gcds-breadcrumbs-item-arrow-left: 0.1875rem;
   --gcds-breadcrumbs-item-first-child-margin: 0 0 0 -1.5rem;
+  --gcds-breadcrumbs-item-margin: 0.75rem 0;
   --gcds-breadcrumbs-item-link-padding: 0.1875rem;
   --gcds-breadcrumbs-item-padding: 0 0 0 1.5rem;
-  --gcds-breadcrumbs-margin: 0.75rem 0;
   --gcds-button-border-radius: 0.375rem;
   --gcds-button-border-width: 0.125rem;
   --gcds-button-danger-default-background: #a62a1e;
