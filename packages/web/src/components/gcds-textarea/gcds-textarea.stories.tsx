@@ -1,5 +1,3 @@
-import { html } from 'lit-html';
-
 export default {
   title: 'Components/Textarea',
 
@@ -107,7 +105,7 @@ export default {
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-textarea
   textarea-id="${args.textareaId}"
@@ -127,7 +125,7 @@ const Template = (args) => html`
   textareaId="${args.textareaId}"
   label="${args.label}"
   hint="${args.hint}"
-  error-message="${args.errorMessage}"
+  errorMessage="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   rows="${args.rows}"

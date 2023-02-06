@@ -1,5 +1,3 @@
-import { html } from 'lit-html';
-
 export default {
   title: 'Components/Input',
 
@@ -123,7 +121,7 @@ export default {
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-input
   input-id="${args.inputId}"
@@ -146,7 +144,7 @@ const Template = (args) => html`
   label="${args.label}"
   type="${args.type}"
   hint="${args.hint}"
-  error-message="${args.errorMessage}"
+  errorMessage="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   size="${args.size}"

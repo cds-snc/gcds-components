@@ -1,5 +1,3 @@
-import { html } from 'lit-html';
-
 export default {
   title: 'Components/Verify banner',
 
@@ -24,7 +22,7 @@ export default {
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-verify-banner
   container="${args.container}"
