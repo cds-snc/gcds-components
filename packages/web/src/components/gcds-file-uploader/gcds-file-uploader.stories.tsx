@@ -1,5 +1,5 @@
 export default {
-  title: 'Components/Input',
+  title: 'Components/File Uploader',
 
   parameters: {
     actions: {
@@ -10,6 +10,13 @@ export default {
 
   argTypes: {
     // Props
+    accept: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     disabled: {
       control: 'boolean',
       table: {
@@ -25,31 +32,12 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
-    hideLabel: {
-      name: 'hide-label',
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
     hint: {
       control: 'text',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' }
       },
-    },
-    inputId: {
-      name: 'input-id',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-      type: {
-        required: true
-      }
     },
     label: {
       control: 'text',
@@ -61,6 +49,13 @@ export default {
         required: true
       }
     },
+    multiple: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: '-' }
+      },
+    },
     required: {
       control: 'boolean',
       table: {
@@ -68,19 +63,15 @@ export default {
         defaultValue: { summary: false }
       },
     },
-    size: {
-      control: 'number',
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['email', 'number', 'password', 'search', 'text', 'url'],
+    uploaderId: {
+      name: 'uploader-id',
+      control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'text' }
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
       }
     },
     value: {
@@ -89,14 +80,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '-' }
       },
-    },
-    autocomplete: {
-      control: { type: 'select' },
-      options: ['on', 'off'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'off' }
-      }
     },
 
     // Events
@@ -123,49 +106,43 @@ export default {
 
 const Template = (args) => `
 // Web Component (Angular, Vue)
-<gcds-input
-  input-id="${args.inputId}"
+<gcds-file-uploader
+  uploader-id="${args.uploaderId}"
   label="${args.label}"
-  type="${args.type}"
   hint="${args.hint}"
   error-message="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
-  size="${args.size}"
   value="${args.value}"
-  autocomplete="${args.autocomplete}"
-  hide-label="${args.hideLabel}"
+  accept="${args.accept}"
+  multiple="${args.multiple}"
 >
-</gcds-input>
+</gcds-file-uploader>
 
 // React code
-<GcdsInput
-  inputId="${args.inputId}"
+<GcdsFileUploader
+  uploaderId="${args.uploaderId}"
   label="${args.label}"
-  type="${args.type}"
   hint="${args.hint}"
   errorMessage="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
-  size="${args.size}"
   value="${args.value}"
-  autocomplete="${args.autocomplete}"
-  hideLabel="${args.hideLabel}"
+  accept="${args.accept}"
+  multiple="${args.multiple}"
 >
-</GcdsInput>
+</GcdsFileUploader>
 `;
 
 export const Default = Template.bind({});
 Default.args = {
-  inputId: '',
-  label: 'Input label',
-  type: 'text',
+  uploaderId: '',
+  label: 'File uploader label',
   hint: 'This is a hint.',
   errorMessage: '',
   required: false,
   disabled: false,
-  size: '',
   value: '',
-  autocomplete: 'off',
-  hideLabel: false,
+  accept: '',
+  multiple: true,
 };

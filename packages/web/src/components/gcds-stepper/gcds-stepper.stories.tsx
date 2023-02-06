@@ -1,5 +1,3 @@
-import { html } from 'lit-html';
-
 export default {
   title: 'Components/Stepper',
 
@@ -30,7 +28,7 @@ export default {
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-stepper
   current-step="${args.currentStep}"

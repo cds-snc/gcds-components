@@ -25,14 +25,19 @@
     padding: 20px !important;
   } */
 
-  /* .sbdocs-title {
+  .sbdocs-title {
     display: none;
-  } */
+  }
 
   /* Component Preview */
   .docs-story {
     font-size: 0;
     color: var(--gcds-color-grayscale-0);
+  }
+
+  .docs-story .hydrated {
+    font-size: var(--gcds-font-sizes-text);
+    color: var(--gcds-color-grayscale-1000);
   }
 
   /* Get code button */
@@ -251,8 +256,13 @@
   }
 
   /* Canvas preview */
-  body.sb-show-main #root-inner {
+  body.sb-show-main #root {
     font-size: 0;
     color: var(--gcds-color-grayscale-0);
+  }
+
+  body.sb-show-main #root .hydrated {
+    font-size: var(--gcds-font-sizes-text);
+    color: var(--gcds-color-grayscale-1000);
   }
 </style>

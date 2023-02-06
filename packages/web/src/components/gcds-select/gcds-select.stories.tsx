@@ -1,5 +1,3 @@
-import { html } from 'lit-html';
-
 export default {
   title: 'Components/Select',
 
@@ -100,7 +98,7 @@ export default {
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-select
   select-id="${args.selectId}"
@@ -122,10 +120,11 @@ const Template = (args) => html`
   selectId="${args.selectId}"
   label="${args.label}"
   hint="${args.hint}"
-  error-message="${args.errorMessage}"
+  errorMessage="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   value="${args.value}"
+  defaultValue="${args.defaultValue}"
 >
   <option>Option 1</option>
   <option>Option 2</option>
