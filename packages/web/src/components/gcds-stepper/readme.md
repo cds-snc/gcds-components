@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                        | Type     | Default     |
-| ------------- | -------------- | ---------------------------------- | -------- | ----------- |
-| `currentStep` | `current-step` | Defines the current step.          | `number` | `undefined` |
-| `totalSteps`  | `total-steps`  | Defines the total amount of steps. | `number` | `undefined` |
+| Property                   | Attribute      | Description                        | Type     | Default     |
+| -------------------------- | -------------- | ---------------------------------- | -------- | ----------- |
+| `currentStep` _(required)_ | `current-step` | Defines the current step.          | `number` | `undefined` |
+| `totalSteps` _(required)_  | `total-steps`  | Defines the total amount of steps. | `number` | `undefined` |
 
 
 ----------------------------------------------

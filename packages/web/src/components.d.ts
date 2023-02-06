@@ -339,7 +339,7 @@ export namespace Components {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "gap"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -359,7 +359,7 @@ export namespace Components {
         /**
           * Set tag for grid container
          */
-        "tag": string;
+        "tag"?: string;
     }
     interface GcdsHeader {
         /**
@@ -397,11 +397,11 @@ export namespace Components {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginLeft"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginRight"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * Name of the icon.
          */
@@ -415,7 +415,7 @@ export namespace Components {
         /**
           * String to have autocomplete enabled
          */
-        "autocomplete": string;
+        "autocomplete"?: 'on' | 'off';
         /**
           * Custom callback function on blur event
          */
@@ -463,7 +463,7 @@ export namespace Components {
         /**
           * Set Input types
          */
-        "type": 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+        "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
         /**
           * Call any active validators
          */
@@ -479,7 +479,7 @@ export namespace Components {
         /**
           * Default value for an input element.
          */
-        "value": string;
+        "value"?: string;
     }
     interface GcdsLabel {
         /**
@@ -619,15 +619,15 @@ export namespace Components {
         /**
           * The default value is an optional value that gets displayed before the user selects an option.
          */
-        "defaultValue": string;
+        "defaultValue"?: string;
         /**
           * Specifies if a select element is disabled or not.
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * Error message for an invalid select element.
          */
-        "errorMessage": string;
+        "errorMessage"?: string;
         /**
           * Custom callback function on focus event
          */
@@ -635,7 +635,7 @@ export namespace Components {
         /**
           * Hint displayed below the label.
          */
-        "hint": string;
+        "hint"?: string;
         /**
           * Form field label.
          */
@@ -643,7 +643,7 @@ export namespace Components {
         /**
           * Specifies if a form field is required or not.
          */
-        "required": boolean;
+        "required"?: boolean;
         /**
           * Id attribute for a select element.
          */
@@ -663,7 +663,7 @@ export namespace Components {
         /**
           * Value for a select element.
          */
-        "value": string;
+        "value"?: string;
     }
     interface GcdsSignature {
         /**
@@ -775,7 +775,7 @@ export namespace Components {
         /**
           * Default value for an input element.
          */
-        "value": string;
+        "value"?: string;
     }
     interface GcdsVerifyBanner {
         /**
@@ -1386,7 +1386,7 @@ declare namespace LocalJSX {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "gap"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -1444,11 +1444,11 @@ declare namespace LocalJSX {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginLeft"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
+        "marginRight"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
         /**
           * Name of the icon.
          */
@@ -1462,7 +1462,7 @@ declare namespace LocalJSX {
         /**
           * String to have autocomplete enabled
          */
-        "autocomplete"?: string;
+        "autocomplete"?: 'on' | 'off';
         /**
           * Custom callback function on blur event
          */
@@ -1494,11 +1494,11 @@ declare namespace LocalJSX {
         /**
           * Id + name attribute for an input element.
          */
-        "inputId"?: string;
+        "inputId": string;
         /**
           * Form field label
          */
-        "label"?: string;
+        "label": string;
         /**
           * Emitted when the input loses focus.
          */
@@ -1780,11 +1780,11 @@ declare namespace LocalJSX {
         /**
           * Defines the current step.
          */
-        "currentStep"?: number;
+        "currentStep": number;
         /**
           * Defines the total amount of steps.
          */
-        "totalSteps"?: number;
+        "totalSteps": number;
     }
     interface GcdsTextarea {
         /**
@@ -1826,7 +1826,7 @@ declare namespace LocalJSX {
         /**
           * Form field label
          */
-        "label"?: string;
+        "label": string;
         /**
           * Emitted when the textarea loses focus.
          */
@@ -1850,7 +1850,7 @@ declare namespace LocalJSX {
         /**
           * Id + name attribute for a textarea element.
          */
-        "textareaId"?: string;
+        "textareaId": string;
         /**
           * Set event to call validator
          */

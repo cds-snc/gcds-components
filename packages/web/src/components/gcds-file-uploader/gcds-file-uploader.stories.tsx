@@ -1,5 +1,5 @@
 export default {
-  title: 'Components/Select',
+  title: 'Components/File Uploader',
 
   parameters: {
     actions: {
@@ -10,6 +10,13 @@ export default {
 
   argTypes: {
     // Props
+    accept: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     disabled: {
       control: 'boolean',
       table: {
@@ -32,17 +39,6 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
-    selectId: {
-      name: 'select-id',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-      type: {
-        required: true
-      }
-    },
     label: {
       control: 'text',
       table: {
@@ -53,6 +49,13 @@ export default {
         required: true
       }
     },
+    multiple: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: '-' }
+      },
+    },
     required: {
       control: 'boolean',
       table: {
@@ -60,15 +63,18 @@ export default {
         defaultValue: { summary: false }
       },
     },
-    value: {
+    uploaderId: {
+      name: 'uploader-id',
       control: 'text',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' }
       },
+      type: {
+        required: true
+      }
     },
-    defaultValue: {
-      name: 'default-value',
+    value: {
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -100,46 +106,43 @@ export default {
 
 const Template = (args) => `
 // Web Component (Angular, Vue)
-<gcds-select
-  select-id="${args.selectId}"
+<gcds-file-uploader
+  uploader-id="${args.uploaderId}"
   label="${args.label}"
   hint="${args.hint}"
   error-message="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   value="${args.value}"
-  default-value="${args.defaultValue}"
+  accept="${args.accept}"
+  multiple="${args.multiple}"
 >
-  <option>Option 1</option>
-  <option>Option 2</option>
-  <option>Option 3</option>
-</gcds-select>
+</gcds-file-uploader>
 
 // React code
-<GcdsSelect
-  selectId="${args.selectId}"
+<GcdsFileUploader
+  uploaderId="${args.uploaderId}"
   label="${args.label}"
   hint="${args.hint}"
   errorMessage="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   value="${args.value}"
-  defaultValue="${args.defaultValue}"
+  accept="${args.accept}"
+  multiple="${args.multiple}"
 >
-  <option>Option 1</option>
-  <option>Option 2</option>
-  <option>Option 3</option>
-</GcdsSelect>
+</GcdsFileUploader>
 `;
 
 export const Default = Template.bind({});
 Default.args = {
-  selectId: '',
-  label: 'Select label',
+  uploaderId: '',
+  label: 'File uploader label',
   hint: 'This is a hint.',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  defaultValue: 'Choose an option.',
+  accept: '',
+  multiple: true,
 };

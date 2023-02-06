@@ -351,14 +351,19 @@
     padding: 20px !important;
   } */
 
-  /* .sbdocs-title {
+  .sbdocs-title {
     display: none;
-  } */
+  }
 
   /* Component Preview */
   .docs-story {
     font-size: 0;
     color: var(--gcds-color-grayscale-0);
+  }
+
+  .docs-story .hydrated {
+    font-size: var(--gcds-font-sizes-text);
+    color: var(--gcds-color-grayscale-1000);
   }
 
   /* Get code button */
@@ -577,9 +582,14 @@
   }
 
   /* Canvas preview */
-  body.sb-show-main #root-inner {
+  body.sb-show-main #root {
     font-size: 0;
     color: var(--gcds-color-grayscale-0);
+  }
+
+  body.sb-show-main #root .hydrated {
+    font-size: var(--gcds-font-sizes-text);
+    color: var(--gcds-color-grayscale-1000);
   }</style><style>#root[hidden],
       #docs-root[hidden] {
         display: none !important;
@@ -603,4 +613,4 @@
           
       
           
-            window['STORIES'] = [{"titlePrefix":"","directory":"./src","files":"**/*.stories.mdx","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.mdx)$"},{"titlePrefix":"","directory":"./src","files":"**/*.stories.@(js|jsx|ts|tsx)","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$"}];</script><script src="runtime~main.26d368e9.iframe.bundle.js"></script><script src="vendors~main.767c5a62.iframe.bundle.js"></script><script src="main.30535fe9.iframe.bundle.js"></script></body></html>
+            window['STORIES'] = [{"titlePrefix":"","directory":"./src","files":"**/*.stories.mdx","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.mdx)$"},{"titlePrefix":"","directory":"./src","files":"**/*.stories.@(js|jsx|ts|tsx)","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$"}];</script><script src="runtime~main.5d81badc.iframe.bundle.js"></script><script src="vendors~main.1227bc82.iframe.bundle.js"></script><script src="main.1dc7a835.iframe.bundle.js"></script></body></html>
