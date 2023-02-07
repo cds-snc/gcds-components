@@ -6,6 +6,9 @@
   border: var(--gcds-button-border-width) solid;
   text-decoration: none;
   border-radius: var(--gcds-button-border-radius);
+  display: inline-block;
+  width: fit-content;
+  text-align: center;
   transition: all .15s ease-in-out;
 
   /* Button Role Styles */
