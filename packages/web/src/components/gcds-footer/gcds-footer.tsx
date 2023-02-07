@@ -40,10 +40,10 @@ export class GcdsFooter {
   @Prop({ reflect: false, mutable: false }) contextualHeading: string;
 
   /**
-  * Object of list items
+  * Object of list items for contextual band. Format: { link-label: link-href }
   */
   @Prop({ reflect: false, mutable: true }) contextualLinks: string | object;
-  linksObject: object;
+  contextualLinksObject: object;
 
   /**
    * Convert contextual links prop to object
@@ -52,11 +52,29 @@ export class GcdsFooter {
   @Watch('contextualLinks')
   contextualLinksChanged(newContextualLinks: string | object) {
     if (typeof newContextualLinks == "string") {
-      this.linksObject = JSON.parse(newContextualLinks);
+      this.contextualLinksObject = JSON.parse(newContextualLinks);
     } else if (typeof newContextualLinks == "object") {
-      this.linksObject = newContextualLinks;
+      this.contextualLinksObject = newContextualLinks;
     }
+  }
 
+  /**
+  * Object of list items for sub-footer. Format: { link-label: link-href }
+  */
+  @Prop({ reflect: false, mutable: true }) subLinks: string | object;
+  subLinksObject: object;
+
+  /**
+   * Convert sub links prop to object
+   * (Object props get treated as string when using Stencil components without a framework)
+   */
+  @Watch('subLinks')
+  subLinksChanged(newSubLinks: string | object) {
+    if (typeof newSubLinks == "string") {
+      this.subLinksObject = JSON.parse(newSubLinks);
+    } else if (typeof newSubLinks == "object") {
+      this.subLinksObject = newSubLinks;
+    }
   }
 
   async componentWillLoad() {
@@ -66,9 +84,15 @@ export class GcdsFooter {
     this.validateDisplay;
 
     if (this.contextualLinks && typeof this.contextualLinks == "string") {
-      this.linksObject = JSON.parse(this.contextualLinks);
+      this.contextualLinksObject = JSON.parse(this.contextualLinks);
     } else if (this.contextualLinks && typeof this.contextualLinks == "object") {
-      this.linksObject = this.contextualLinks;
+      this.contextualLinksObject = this.contextualLinks;
+    }
+
+    if (this.subLinks && typeof this.subLinks == "string") {
+      this.subLinksObject = JSON.parse(this.subLinks);
+    } else if (this.subLinks && typeof this.subLinks == "object") {
+      this.subLinksObject = this.subLinks;
     }
   }
 
@@ -88,21 +112,18 @@ export class GcdsFooter {
     }
   }
 
-  private get hasList() {
-    return !!this.el.querySelector('[slot="list"]');
-  }
-
   render() {
-    const { lang, display, contextualHeading, linksObject, hasList, renderSignature } = this;
+    const { lang, display, contextualHeading, contextualLinksObject, subLinks, subLinksObject, renderSignature } = this;
     const govNav = I18N[lang].gov.menu;
     const themeNav = I18N[lang].themes.menu;
     const siteNav = I18N[lang].site.menu;
 
     let contextualLinkCount = 0;
+    let subLinkCount = 0;
 
     return (
       <Host role="contentinfo">
-        {(linksObject && contextualHeading) &&
+        {(contextualLinksObject && contextualHeading) &&
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
               <nav aria-label={contextualHeading}>
@@ -110,13 +131,13 @@ export class GcdsFooter {
                   {contextualHeading}
                 </h3>
                 <ul class="contextual__list">
-                  {Object.keys(linksObject).map((key) => {
+                  {Object.keys(contextualLinksObject).map((key) => {
                     if (contextualLinkCount < 3) {
                       contextualLinkCount++;
 
                       return (
                         <li>
-                          <a href={linksObject[key]}>
+                          <a href={contextualLinksObject[key]}>
                             {key}
                           </a>
                         </li>
@@ -156,20 +177,34 @@ export class GcdsFooter {
 
         <div class="gcds-footer__sub">
           <div class="sub__container">
-            {hasList ?
-              <slot name="list"></slot>
-            :
-              (<nav aria-label={I18N[lang].site.heading}>
-                <h3 class="sub__header">{I18N[lang].site.heading}</h3>
-                <ul>
-                  {Object.keys(siteNav).map((value) =>
-                    <li>
-                      <a href={siteNav[value].link}>{siteNav[value].text}</a>
-                    </li>
-                  )}
-                </ul>
-              </nav>)
-            }
+            <nav aria-label={I18N[lang].site.heading}>
+              <h3 class="sub__header">{I18N[lang].site.heading}</h3>
+              <ul>
+                {subLinks ?
+                  Object.keys(subLinksObject).map((key) => {
+                    if (subLinkCount < 5) {
+                      subLinkCount++;
+
+                      return (
+                        <li>
+                          <a href={subLinksObject[key]}>
+                            {key}
+                          </a>
+                        </li>
+                      );
+                    }
+                  })
+                :
+                  Object.keys(siteNav).map((value) => {
+                    return (
+                      <li>
+                        <a href={siteNav[value].link}>{siteNav[value].text}</a>
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </nav>
 
             {renderSignature}
           </div>
