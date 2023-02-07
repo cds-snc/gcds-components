@@ -16,7 +16,6 @@ export class GcdsFileUploader {
 
   _validator: Validator<any> = defaultValidator;
 
-
   /**
    * Props
    */
@@ -51,7 +50,7 @@ export class GcdsFileUploader {
   /**
    * Value for a file uploader element.
    */
-  @Prop({  reflect: true, mutable: true }) value: string[] = [];
+  @Prop({ reflect: true, mutable: true }) value: string[] = [];
 
   /**
    * Defines the file types the file uploader accepts.
@@ -70,10 +69,10 @@ export class GcdsFileUploader {
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
-      this.errorMessage = "";
+      this.errorMessage = '';
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
-    } else if (this.errorMessage == "") {
+    } else if (this.errorMessage == '') {
       this.hasError = false;
     }
   }
@@ -91,13 +90,13 @@ export class GcdsFileUploader {
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
-      this.validateOn = "blur";
+      this.validateOn = 'blur';
     }
   }
 
   /**
-    * Set event to call validator
-    */
+   * Set event to call validator
+   */
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
@@ -106,13 +105,13 @@ export class GcdsFileUploader {
   @Prop() changeHandler: Function;
 
   /**
-  * Custom callback function on focus event
-  */
+   * Custom callback function on focus event
+   */
   @Prop() focusHandler: Function;
 
   /**
-  * Custom callback function on blur event
-  */
+   * Custom callback function on blur event
+   */
   @Prop() blurHandler: Function;
 
   /**
@@ -131,7 +130,6 @@ export class GcdsFileUploader {
    */
   @State() inheritedAttributes: Object = {};
 
-
   /**
    * Events
    */
@@ -141,37 +139,37 @@ export class GcdsFileUploader {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = (e) => {
+  private onFocus = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
 
     this.gcdsFocus.emit();
-  }
+  };
 
   /**
    * Emitted when the uploader loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = (e) => {
+  private onBlur = e => {
     if (this.blurHandler) {
       this.blurHandler(e);
     } else {
-      if (this.validateOn == "blur") {
+      if (this.validateOn == 'blur') {
         this.validate();
       }
     }
 
     this.gcdsBlur.emit();
-  }
+  };
 
   /**
    * Update value based on user selection.
    */
   @Event() gcdsFileUploaderChange: EventEmitter;
 
-  handleChange = (e) => {
+  handleChange = e => {
     if (this.changeHandler) {
       this.changeHandler(e);
     } else {
@@ -185,7 +183,7 @@ export class GcdsFileUploader {
       this.value = [...filesContainer];
 
       // Validate since the input loses focus when dialog opens
-      if (this.validateOn == "blur") {
+      if (this.validateOn == 'blur') {
         this.validate();
       }
     }
@@ -197,7 +195,7 @@ export class GcdsFileUploader {
    * Remove file and update value.
    */
   @Event() gcdsRemoveFile: EventEmitter;
-  removeFile = (e) => {
+  removeFile = e => {
     let filesContainer = this.value;
     const file = filesContainer.indexOf(e.target.textContent);
 
@@ -217,7 +215,7 @@ export class GcdsFileUploader {
     if (!this._validator.validate(this.value.length) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
     } else {
-      this.errorMessage = "";
+      this.errorMessage = '';
     }
   }
 
@@ -231,7 +229,7 @@ export class GcdsFileUploader {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, "file");
+    requiredValidator(this.el, 'file');
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
@@ -255,18 +253,18 @@ export class GcdsFileUploader {
       multiple,
       required,
       value,
-      ...inheritedAttributes
+      ...inheritedAttributes,
     };
 
     const attrsLabel = {
       label,
       required,
-    }
+    };
 
     if (hint || errorMessage) {
-      let hintID = hint ? `hint-${uploaderId}` : "";
-      let errorID = errorMessage ? ` error-message-${uploaderId}` : "";
-      attrsInput["aria-describedby"] = `${hintID}${errorID} file-uploader__summary${attrsInput["aria-describedby"] ? ` ${attrsInput["aria-describedby"]}` : ""}`;
+      let hintID = hint ? `hint-${uploaderId}` : '';
+      let errorID = errorMessage ? ` error-message-${uploaderId}` : '';
+      attrsInput['aria-describedby'] = `${hintID}${errorID} file-uploader__summary${attrsInput['aria-describedby'] ? ` ${attrsInput['aria-describedby']}` : ''}`;
     }
 
     return (
@@ -309,7 +307,7 @@ export class GcdsFileUploader {
             ? value.map(file => (
                 <button class="file-uploader__uploaded-file" onClick={e => this.removeFile(e)} aria-label={lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}`}>
                   <span>{file}</span>
-                  <gcds-icon name="times" size="text" fixed-width />
+                  <gcds-icon name="times-circle" size="text" />
                 </button>
               ))
             : null}

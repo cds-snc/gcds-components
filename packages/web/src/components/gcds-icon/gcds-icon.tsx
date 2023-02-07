@@ -25,12 +25,12 @@ export class GcdsIcon {
   /**
    * Add margin to the left of the icon
    */
-  @Prop() marginLeft?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+  @Prop() marginLeft?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
 
   /**
    * Add margin to the right of the icon
    */
-  @Prop() marginRight?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+  @Prop() marginRight?: '0' | '50'| '100'| '150'| '200'| '250'| '300' | '400' | '450'| '500' | '550'| '600' | '700' | '800' | '900' | '1000';
 
   /**
    * Name of the icon.
@@ -40,7 +40,7 @@ export class GcdsIcon {
   /**
    * If the icon should render as a fixed-width square, or their natural width.
    */
-  @Prop() fixedWidth: boolean;
+  @Prop() fixedWidth: boolean = false;
 
   /**
    * Defines the size of the icon.

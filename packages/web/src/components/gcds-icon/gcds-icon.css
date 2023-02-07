@@ -136,7 +136,7 @@
     margin-inline-end: var(--gcds-icon-margin-1000);
   }
 
-  /* Padding */
+  /* Fixed width */
   &.fixed-width {
     text-align: center;
   }
