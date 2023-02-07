@@ -1,3 +1,5 @@
+import { langProp } from '../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Verify banner',
 
@@ -19,6 +21,7 @@ export default {
         defaultValue: { summary: false }
       },
     },
+    ...langProp,
   },
 };
 
@@ -27,12 +30,14 @@ const Template = (args) => `
 <gcds-verify-banner
   container="${args.container}"
   is-fixed="${args.isFixed}"
+  lang="${args.lang}"
 ></gcds-verify-banner>
 
 // React code
 <GcdsVerifyBanner
   container="${args.container}"
   isFixed="${args.isFixed}"
+  lang="${args.lang}"
 ></GcdsVerifyBanner>
 `;
 
@@ -40,4 +45,5 @@ export const Example = Template.bind({});
 Example.args = {
   container: 'xl',
   isFixed: false,
+  lang: 'en',
 };

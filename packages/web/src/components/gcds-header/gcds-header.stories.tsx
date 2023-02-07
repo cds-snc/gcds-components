@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Header',
@@ -44,14 +44,7 @@ export default {
         defaultValue: { summary: 'colour' }
       },
     },
-    lang: {
-      control: 'radio',
-      options: ['en', 'fr'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'en' }
-      },
-    },
+    ...langProp,
 
     // Slots
     menu: {
@@ -65,7 +58,7 @@ export default {
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-header
   lang-href="${args.langHref}"
@@ -74,7 +67,7 @@ const Template = (args) => html`
   signature-variant="${args.signatureVariant}"
   lang="${args.lang}"
 >
-  ${args.menu && html`<div slot="menu">${args.menu}</div>`}
+  ${args.menu && `<div slot="menu">${args.menu}</div>`}
 </gcds-header>
 
 // React code
@@ -85,16 +78,16 @@ const Template = (args) => html`
   signatureVariant="${args.signatureVariant}"
   lang="${args.lang}"
 >
-  ${args.menu && html`<div slot="menu">${args.menu}</div>`}
+  ${args.menu && `<div slot="menu">${args.menu}</div>`}
 </GcdsHeader>
 `;
 
 export const Default = Template.bind({});
 Default.args = {
-  langHref: "#",
-  skipToHref: "#",
+  langHref: '#',
+  skipToHref: '#',
   signatureHasLink: true,
-  signatureVariant: "colour",
+  signatureVariant: 'colour',
   menu: '',
   lang: 'en'
 };

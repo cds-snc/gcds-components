@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Footer',
@@ -32,18 +32,11 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
-    lang: {
-      control: 'radio',
-      options: ['en', 'fr'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'en' }
-      },
-    },
+    ...langProp,
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-footer
   display="${args.display}"

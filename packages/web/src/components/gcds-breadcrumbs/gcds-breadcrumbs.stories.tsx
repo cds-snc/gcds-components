@@ -1,3 +1,5 @@
+import { langProp } from '../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Breadcrumbs',
 
@@ -21,6 +23,7 @@ export default {
         required: true
       }
     },
+    ...langProp,
 
     // Slots
     default: {
@@ -38,6 +41,7 @@ const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-breadcrumbs
   hide-canada-link="${args.hideCanadaLink}"
+  lang="${args.lang}"
 >
   <gcds-breadcrumbs-item href="${args.href}">Travel and tourism</gcds-breadcrumbs-item>
   <gcds-breadcrumbs-item href="${args.href}">Immigration and citizenship</gcds-breadcrumbs-item>
@@ -46,6 +50,7 @@ const Template = (args) => `
 // React code
 <GcdsBreadcrumbs
   hideCanadaLink="${args.hideCanadaLink}"
+  lang="${args.lang}"
 >
   <GcdsBreadcrumbsItem href="${args.href}">Travel and tourism</GcdsBreadcrumbsItem>
   <GcdsBreadcrumbsItem href="${args.href}">Immigration and citizenship</GcdsBreadcrumbsItem>
@@ -56,6 +61,7 @@ export const Example = Template.bind({});
 Example.args = {
   hideCanadaLink: false,
   href: '#',
+  lang: 'en',
   // default: `
   //   <gcds-breadcrumbs-item>Travel and tourism</gcds-breadcrumbs-item>
   //   <gcds-breadcrumbs-item>Immigration and citizenship</gcds-breadcrumbs-item>

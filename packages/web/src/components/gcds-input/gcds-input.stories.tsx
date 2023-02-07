@@ -1,3 +1,5 @@
+import { formProps, langProp } from '../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Input',
 
@@ -10,34 +12,12 @@ export default {
 
   argTypes: {
     // Props
-    disabled: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
-    errorMessage: {
-      name: 'error-message',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
     hideLabel: {
       name: 'hide-label',
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
-      },
-    },
-    hint: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
       },
     },
     inputId: {
@@ -50,23 +30,6 @@ export default {
       type: {
         required: true
       }
-    },
-    label: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-      type: {
-        required: true
-      }
-    },
-    required: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
     },
     size: {
       control: 'number',
@@ -83,13 +46,6 @@ export default {
         defaultValue: { summary: 'text' }
       }
     },
-    value: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
     autocomplete: {
       control: { type: 'select' },
       options: ['on', 'off'],
@@ -98,6 +54,8 @@ export default {
         defaultValue: { summary: 'off' }
       }
     },
+    ...formProps,
+    ...langProp,
 
     // Events
     onChange: {
@@ -135,6 +93,7 @@ const Template = (args) => `
   value="${args.value}"
   autocomplete="${args.autocomplete}"
   hide-label="${args.hideLabel}"
+  lang="${args.lang}"
 >
 </gcds-input>
 
@@ -151,6 +110,7 @@ const Template = (args) => `
   value="${args.value}"
   autocomplete="${args.autocomplete}"
   hideLabel="${args.hideLabel}"
+  lang="${args.lang}"
 >
 </GcdsInput>
 `;
@@ -168,4 +128,5 @@ Default.args = {
   value: '',
   autocomplete: 'off',
   hideLabel: false,
+  lang: 'en',
 };

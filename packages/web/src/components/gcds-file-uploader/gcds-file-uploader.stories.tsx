@@ -1,3 +1,5 @@
+import { formProps, langProp } from '../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/File Uploader',
 
@@ -17,50 +19,11 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
-    disabled: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
-    errorMessage: {
-      name: 'error-message',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    hint: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    label: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-      type: {
-        required: true
-      }
-    },
     multiple: {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: '-' }
-      },
-    },
-    required: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
       },
     },
     uploaderId: {
@@ -74,13 +37,8 @@ export default {
         required: true
       }
     },
-    value: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
+    ...formProps,
+    ...langProp,
 
     // Events
     onChange: {
@@ -116,6 +74,7 @@ const Template = (args) => `
   value="${args.value}"
   accept="${args.accept}"
   multiple="${args.multiple}"
+  lang="${args.lang}"
 >
 </gcds-file-uploader>
 
@@ -130,6 +89,7 @@ const Template = (args) => `
   value="${args.value}"
   accept="${args.accept}"
   multiple="${args.multiple}"
+  lang="${args.lang}"
 >
 </GcdsFileUploader>
 `;
@@ -145,4 +105,5 @@ Default.args = {
   value: '',
   accept: '',
   multiple: true,
+  lang: 'en',
 };

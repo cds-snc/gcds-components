@@ -1,39 +1,17 @@
-import { html } from 'lit-html';
+import { formProps, langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Checkbox',
 
   parameters: {
     actions: {
-      argTypesRegex: '^on.*',
+      argTypesRegex: '^gcds.*',
       handles: ['change', 'focus', 'blur']
     }
   },
 
   argTypes: {
     // Props
-    disabled: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
-    errorMessage: {
-      name: 'error-message',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    hint: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
     checkboxId: {
       name: 'checkbox-id',
       control: 'text',
@@ -55,30 +33,6 @@ export default {
         required: true
       }
     },
-    label: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-      type: {
-        required: true
-      }
-    },
-    required: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
-    value: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
     checked: {
       control: 'boolean',
       table: {
@@ -86,29 +40,23 @@ export default {
         defaultValue: { summary: false }
       },
     },
-    lang: {
-      control: 'radio',
-      options: ['en', 'fr'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'en' }
-      },
-    },
+    ...formProps,
+    ...langProp,
 
     // Events
-    onChange: {
+    gcdsChange: {
       action: 'change',
       table: {
         category: 'Events | Événements',
       }
     },
-    onFocus: {
+    gcdsFocus: {
       action: 'focus',
       table: {
         category: 'Events | Événements',
       }
     },
-    onBlur: {
+    gcdsBlur: {
       action: 'blur',
       table: {
         category: 'Events | Événements',
@@ -117,7 +65,7 @@ export default {
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-checkbox
   checkbox-id="${args.checkboxId}"

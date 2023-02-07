@@ -1,12 +1,16 @@
-import { html } from 'lit-html';
+import { formProps, langProp } from '../../utils/storybook/component-properties';
+
+// Remove unused form properties
+delete formProps["label"];
+delete formProps["value"];
 
 export default {
   title: 'Components/Fieldset',
 
   parameters: {
     actions: {
-      argTypesRegex: '^on.*',
-      handles: ['change', 'focus', 'blur']
+      argTypesRegex: '^gcds.*',
+      handles: ['GroupError', 'GroupErrorClear']
     }
   },
 
@@ -33,53 +37,18 @@ export default {
         required: true
       }
     },
-    disabled: {
-        control: 'boolean',
-        table: {
-          type: { summary: 'boolean' },
-          defaultValue: { summary: false }
-        },
-      },
-      errorMessage: {
-        name: 'error-message',
-        control: 'text',
-        table: {
-          type: { summary: 'string' },
-          defaultValue: { summary: '-' }
-        },
-      },
-      hint: {
-        control: 'text',
-        table: {
-          type: { summary: 'string' },
-          defaultValue: { summary: '-' }
-        },
-      },
-      required: {
-        control: 'boolean',
-        table: {
-          type: { summary: 'boolean' },
-          defaultValue: { summary: false }
-        },
-      },
-      lang: {
-        control: 'radio',
-        options: ['en', 'fr'],
-        table: {
-          type: { summary: 'string' },
-          defaultValue: { summary: 'en' }
-        },
-      },
+    ...formProps,
+    ...langProp,
 
     // Events
     gcdsGroupError: {
-      action: 'change',
+      action: 'GroupError',
       table: {
         category: 'Events | Événements',
       }
     },
     gcdsGroupErrorClear: {
-      action: 'change',
+      action: 'GroupErrorClear',
       table: {
         category: 'Events | Événements',
       }
@@ -87,7 +56,7 @@ export default {
   },
 };
 
-const Template = (args) => html`
+const Template = (args) => `
 // Web Component (Angular, Vue)
 <gcds-fieldset
   fieldset-id="${args.fieldsetId}"

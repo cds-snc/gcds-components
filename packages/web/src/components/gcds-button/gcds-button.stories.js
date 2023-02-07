@@ -64,6 +64,17 @@ export default {
         category: 'Slots | Fentes',
       }
     },
+    href: {
+      control: 'text',
+      if: { arg: 'type', truthy: "link" },
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
 
     // Events
     onClick: {
