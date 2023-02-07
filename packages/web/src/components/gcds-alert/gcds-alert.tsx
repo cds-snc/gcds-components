@@ -111,7 +111,7 @@ export class GcdsAlert {
           >
             <div class={`alert__container ${isFixed && container ? `container-${container}` : ''}`}>
               {( !hideRoleIcon &&
-                <gcds-icon aria-hidden="true" class="alert__icon" size="h5" name={
+                <gcds-icon aria-hidden="true" class="alert__icon" name={
                   alertRole === 'danger' ? 'exclamation-circle'
                   : alertRole === 'info' ? 'info-circle'
                   : alertRole === 'success' ? 'check-circle'
@@ -131,7 +131,7 @@ export class GcdsAlert {
                   onClick={(e) => this.onDismiss(e)}
                   aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
                 >
-                  <gcds-icon aria-hidden="true" name="times" size="text" />
+                  <gcds-icon aria-hidden="true" name="times" size="sm" />
                 </button>
               )}
             </div>

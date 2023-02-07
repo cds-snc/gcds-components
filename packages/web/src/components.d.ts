@@ -395,14 +395,6 @@ export namespace Components {
     }
     interface GcdsIcon {
         /**
-          * If the icon should render as a fixed-width square, or their natural width.
-         */
-        "fixedWidth": boolean;
-        /**
-          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-         */
-        "iconStyle"?: 'regular' | 'solid';
-        /**
           * Add icon description.
          */
         "label"?: string;
@@ -421,7 +413,7 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1';
+        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     }
     interface GcdsInput {
         /**
@@ -1454,14 +1446,6 @@ declare namespace LocalJSX {
     }
     interface GcdsIcon {
         /**
-          * If the icon should render as a fixed-width square, or their natural width.
-         */
-        "fixedWidth"?: boolean;
-        /**
-          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-         */
-        "iconStyle"?: 'regular' | 'solid';
-        /**
           * Add icon description.
          */
         "label"?: string;
@@ -1480,7 +1464,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1';
+        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     }
     interface GcdsInput {
         /**

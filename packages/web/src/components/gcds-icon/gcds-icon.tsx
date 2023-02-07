@@ -14,11 +14,6 @@ export class GcdsIcon {
    */
 
   /**
-   * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-   */
-  @Prop() iconStyle?: 'regular' | 'solid' = 'solid';
-
-  /**
    * Add icon description.
    */
   @Prop() label?: string;
@@ -39,27 +34,21 @@ export class GcdsIcon {
   @Prop() name!: string;
 
   /**
-   * If the icon should render as a fixed-width square, or their natural width.
-   */
-  @Prop() fixedWidth: boolean = false;
-
-  /**
    * Defines the size of the icon.
    */
-  @Prop() size?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1' = 'text';
+  @Prop() size?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'inherit';
 
   render() {
-    const { iconStyle, label, marginLeft, marginRight, name, fixedWidth, size } = this;
+    const { label, marginLeft, marginRight, name, size } = this;
 
     return (
       <Host>
         <span
           class={`
-            gcds-icon fa fa-${iconStyle} fa-${name}
+            gcds-icon fa fa-regular fa-${name}
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
             ${size ? `size-${size}` : ''}
-            ${fixedWidth ? `fixed-width` : ''}
           `}
           role="img"
           aria-label={label ? label : false}
