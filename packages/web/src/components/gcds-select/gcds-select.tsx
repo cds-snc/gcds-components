@@ -231,9 +231,9 @@ export class GcdsSelect {
 
     if (hint || errorMessage) {
       let hintID = hint ? `hint-${selectId}` : "";
-      let errorID = errorMessage ? `error-message-${selectId}` : "";
+      let errorID = errorMessage ? ` error-message-${selectId}` : "";
 
-      attrsSelect["aria-describedby"] = `${hintID} ${errorID} ${attrsSelect["aria-describedby"] ? attrsSelect["aria-describedby"] : ""}`;
+      attrsSelect["aria-describedby"] = `${hintID}${errorID}${attrsSelect["aria-describedby"] ? ` ${attrsSelect["aria-describedby"]}` : ""}`;
     }
 
     return (

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 02 Feb 2023 14:10:40 GMT
+ * Generated on Tue, 07 Feb 2023 16:08:15 GMT
  */
 
 :root {
@@ -161,7 +161,7 @@
   --gcds-breadcrumbs-focus-text: #ffffff;
   --gcds-breadcrumbs-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-breadcrumbs-hover-text: #26374a;
-  --gcds-breadcrumbs-item-arrow-top: 0.1875rem;
+  --gcds-breadcrumbs-item-arrow-top: 0.9375rem;
   --gcds-breadcrumbs-item-arrow-left: 0.1875rem;
   --gcds-breadcrumbs-item-first-child-margin: 0 0 0 -1.5rem;
   --gcds-breadcrumbs-item-link-padding: 0.1875rem;
@@ -419,7 +419,7 @@
   --gcds-pagination-focus-background: #303fc3;
   --gcds-pagination-focus-text: #ffffff;
   --gcds-pagination-focus-outline-width: 0.1875rem;
-  --gcds-pagination-font: 700 1.25rem/120% "Noto Sans", sans-serif;
+  --gcds-pagination-font: 500 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-pagination-list-end-button-padding: 0.75rem 0.5625rem;
   --gcds-pagination-listitem-margin: 0.375rem;
   --gcds-pagination-mobile-list-border: #425a76;
@@ -427,6 +427,7 @@
   --gcds-pagination-mobile-list-prevnext-margin: 0.75rem auto 0;
   --gcds-pagination-simple-label-font-weight: 400;
   --gcds-pagination-simple-listitem-margin: 0.375rem 0.375rem 0.75rem;
+  --gcds-pagination-simple-listitem-text-margin: 0 0 0.1875rem;
   --gcds-pagination-simple-padding: 0.75rem 0.5625rem;
   --gcds-phase-banner-container-xs: 20rem;
   --gcds-phase-banner-container-sm: 30rem;

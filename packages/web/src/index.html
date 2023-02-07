@@ -171,11 +171,24 @@
           hint="This answer is yes."
         ></gcds-checkbox>
 
-        <gcds-radio
-          radio-id="form-radio"
-          label="Radio label"
-          hint="This is a hint."
-        ></gcds-radio>
+        <gcds-fieldset
+          fieldset-id="fieldset"
+          legend="Radio button group"
+          hint="They are in a fieldset"
+        >
+          <gcds-radio
+            radio-id="form-radio"
+            label="Radio 1 label"
+            hint="This is a hint."
+            name="radio"
+          ></gcds-radio>
+          <gcds-radio
+            radio-id="form-radio1"
+            label="Radio 2 label"
+            hint="This is a hint."
+            name="radio"
+          ></gcds-radio>
+        </gcds-fieldset>
 
         <gcds-select
           select-id="form-select"
@@ -250,15 +263,15 @@
         url={}
         pageChangeHandler={}
       ></gcds-pagination>
-      <!-- <gcds-pagination
-        display="list"
+
+      <gcds-pagination
+        display="simple"
         label="Simple Pagination"
-        type="simple"
         previous-href="#"
         previous-label="Previous"
         next-href="#"
-        next-label="Previous"
-      ></gcds-pagination> -->
+        next-label="Next page"
+      ></gcds-pagination>
 
       <!-- ------------- Phase Banner ------------- -->
 

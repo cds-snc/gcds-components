@@ -265,10 +265,8 @@ export class GcdsFileUploader {
 
     if (hint || errorMessage) {
       let hintID = hint ? `hint-${uploaderId}` : "";
-      let errorID = errorMessage ? `error-message-${uploaderId}` : "";
-      // let fileSelected = "No file currently selected.";
-
-      attrsInput["aria-describedby"] = `${hintID} ${errorID} file-uploader__summary ${attrsInput["aria-describedby"] ? attrsInput["aria-describedby"] : ""}`;
+      let errorID = errorMessage ? ` error-message-${uploaderId}` : "";
+      attrsInput["aria-describedby"] = `${hintID}${errorID} file-uploader__summary${attrsInput["aria-describedby"] ? ` ${attrsInput["aria-describedby"]}` : ""}`;
     }
 
     return (
