@@ -274,21 +274,15 @@ export class GcdsFileUploader {
     return (
       <Host>
         <div class={`gcds-file-uploader-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
-          <gcds-label
-            {...attrsLabel}
-            label-for={uploaderId}
-            lang={lang}
-          />
+          <gcds-label {...attrsLabel} label-for={uploaderId} lang={lang} />
 
-          {hint ? <gcds-hint hint={hint} hint-id={uploaderId} />: null}
+          {hint ? <gcds-hint hint={hint} hint-id={uploaderId} /> : null}
 
-          {errorMessage ?
-            <gcds-error-message message-id={uploaderId} message={errorMessage} />
-          : null}
+          {errorMessage ? <gcds-error-message message-id={uploaderId} message={errorMessage} /> : null}
 
           <div class="file-uploader__input">
             <button tabindex="-1">
-              { lang == 'en' ? 'Upload a file' : 'Téléverser un fichier'}
+              {lang == 'en' ? 'Upload a file' : 'Téléverser un fichier'}
               <gcds-icon name="upload" margin-left="200" />
             </button>
             <input
@@ -296,33 +290,31 @@ export class GcdsFileUploader {
               id={uploaderId}
               name={uploaderId}
               {...attrsInput}
-              onBlur={(e) => this.onBlur(e)}
-              onFocus={(e) => this.onFocus(e)}
-              onChange={(e) => this.handleChange(e)}
+              onBlur={e => this.onBlur(e)}
+              onFocus={e => this.onFocus(e)}
+              onChange={e => this.handleChange(e)}
               aria-invalid={hasError ? 'true' : 'false'}
             />
-            { value.length > 0 ?
+            {value.length > 0 ? (
               <p id="file-uploader__summary">
-                <span>{ lang == 'en' ? 'Currently selected:' : 'Actuellement sélectionné:'} </span>
-                { value.map(file => ( <span>{file} </span> )) }
+                <span>{lang == 'en' ? 'Currently selected:' : 'Actuellement sélectionné:'} </span>
+                {value.map(file => (
+                  <span>{file} </span>
+                ))}
               </p>
-            :
-              <p id="file-uploader__summary">
-                { lang == 'en' ? 'No file currently selected' : 'Aucun fichier actuellement sélectionné' }
-              </p>
-            }
+            ) : (
+              <p id="file-uploader__summary">{lang == 'en' ? 'No file currently selected' : 'Aucun fichier actuellement sélectionné'}</p>
+            )}
           </div>
 
-          { value.length > 0 ? value.map(file => (
-            <button
-              class="file-uploader__uploaded-file"
-              onClick={(e) => this.removeFile(e)}
-              aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
-            >
-              <span>{file}</span>
-              <gcds-icon name="times" size="text" padding="fixed-width" /> 
-            </button>
-          )) : null }
+          {value.length > 0
+            ? value.map(file => (
+                <button class="file-uploader__uploaded-file" onClick={e => this.removeFile(e)} aria-label={lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}`}>
+                  <span>{file}</span>
+                  <gcds-icon name="times" size="text" fixed-width />
+                </button>
+              ))
+            : null}
         </div>
       </Host>
     );

@@ -40,7 +40,7 @@ export class GcdsIcon {
   /**
    * Defines the size of the icon.
    */
-  @Prop() padding?: 'none' | 'fixed-width' = 'none';
+  @Prop() fixedWidth: boolean;
 
   /**
    * Defines the size of the icon.
@@ -48,7 +48,7 @@ export class GcdsIcon {
   @Prop() size?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1' = 'text';
 
   render() {
-    const { iconStyle, label, marginLeft, marginRight, name, padding, size } = this;
+    const { iconStyle, label, marginLeft, marginRight, name, fixedWidth, size } = this;
 
     return (
       <Host>
@@ -58,7 +58,7 @@ export class GcdsIcon {
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
             ${size ? `size-${size}` : ''}
-            ${padding != 'none' ? `padding-${padding}` : ''}
+            ${fixedWidth ? `fixed-width` : ''}
           `}
           role="img"
           aria-label={label ? label : false}

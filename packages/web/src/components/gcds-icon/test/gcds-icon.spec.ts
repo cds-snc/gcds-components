@@ -103,12 +103,12 @@ describe('gcds-icon', () => {
   it('renders fixed width icons', async () => {
     const { root } = await newSpecPage({
       components: [GcdsIcon],
-      html: '<gcds-icon name="angle-down" size="h3" padding="fixed-width"/>',
+      html: '<gcds-icon name="angle-down" size="h3" fixed-width/>',
     });
     expect(root).toEqualHtml(`
-      <gcds-icon name="angle-down" size="h3" padding="fixed-width">
+      <gcds-icon name="angle-down" size="h3" fixed-width>
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon fa fa-solid fa-angle-down size-h3 padding-fixed-width"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon fa fa-solid fa-angle-down size-h3 fixed-width"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);

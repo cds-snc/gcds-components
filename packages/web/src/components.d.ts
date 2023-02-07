@@ -391,6 +391,10 @@ export namespace Components {
     }
     interface GcdsIcon {
         /**
+          * Defines the size of the icon.
+         */
+        "fixedWidth": boolean;
+        /**
           * Style of the icon.
          */
         "iconStyle"?: 'regular' | 'solid';
@@ -410,10 +414,6 @@ export namespace Components {
           * Name of the icon.
          */
         "name": string;
-        /**
-          * Defines the size of the icon.
-         */
-        "padding"?: 'none' | 'fixed-width';
         /**
           * Defines the size of the icon.
          */
@@ -1446,6 +1446,10 @@ declare namespace LocalJSX {
     }
     interface GcdsIcon {
         /**
+          * Defines the size of the icon.
+         */
+        "fixedWidth"?: boolean;
+        /**
           * Style of the icon.
          */
         "iconStyle"?: 'regular' | 'solid';
@@ -1465,10 +1469,6 @@ declare namespace LocalJSX {
           * Name of the icon.
          */
         "name": string;
-        /**
-          * Defines the size of the icon.
-         */
-        "padding"?: 'none' | 'fixed-width';
         /**
           * Defines the size of the icon.
          */

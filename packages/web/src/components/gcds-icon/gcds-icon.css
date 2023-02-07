@@ -1,4 +1,4 @@
-@import url('font-awesome.min.css');
+@import url('../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
 
 :host .gcds-icon {
   font-family: var(--gcds-icon-font-family);
@@ -137,39 +137,39 @@
   }
 
   /* Padding */
-  &.padding-fixed-width {
+  &.fixed-width {
     text-align: center;
   }
 
-  &.size-caption.padding-fixed-width {
+  &.size-caption.fixed-width {
     width: calc(var(--gcds-icon-fixed-width-caption) * 1em);
   }
 
-  &.size-text.padding-fixed-width {
+  &.size-text.fixed-width {
     width: calc(var(--gcds-icon-fixed-width-text) * 1em);
   }
 
-  &.size-h6.padding-fixed-width {
+  &.size-h6.fixed-width {
     width: calc(var(--gcds-icon-fixed-width-h6) * 1em);
   }
 
-  &.size-h5.padding-fixed-width {
+  &.size-h5.fixed-width {
     width: calc(var(--gcds-icon-fixed-width-h5) * 1em);
   }
 
-  &.size-h4.padding-fixed-width {
+  &.size-h4.fixed-width {
     width: calc(var(--gcds-icon-fixed-width-h4) * 1em);
   }
 
-  &.size-h3.padding-fixed-width {
+  &.size-h3.fixed-width {
     width: calc(var(--gcds-icon-fixed-width-h3) * 1em);
   }
 
-  &.size-h2.padding-fixed-width {
+  &.size-h2.fixed-width {
     width: calc(var(--gcds-icon-fixed-width-h2) * 1em);
   }
 
-  &.size-h1.padding-fixed-width {
+  &.size-h1.fixed-width {
     width: calc(var(--gcds-icon-fixed-width-h1) * 1em);
   }
 
