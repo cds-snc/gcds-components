@@ -13,7 +13,7 @@ export class GcdsIcon {
    */
 
   /**
-   * Style of the icon.
+   * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
    */
   @Prop() iconStyle?: 'regular' | 'solid' = 'solid';
 
@@ -38,7 +38,7 @@ export class GcdsIcon {
   @Prop() name!: string;
 
   /**
-   * Defines the size of the icon.
+   * If the icon should render as a fixed-width square, or their natural width.
    */
   @Prop() fixedWidth: boolean;
 

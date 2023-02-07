@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property            | Attribute      | Description                         | Type                                                                                                                                         | Default     |
-| ------------------- | -------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `iconStyle`         | `icon-style`   | Style of the icon.                  | `"regular" \| "solid"`                                                                                                                       | `'solid'`   |
-| `label`             | `label`        | Add icon description.               | `string`                                                                                                                                     | `undefined` |
-| `marginLeft`        | `margin-left`  | Add margin to the left of the icon  | `"0" \| "100" \| "1000" \| "150" \| "200" \| "250" \| "300" \| "400" \| "450" \| "50" \| "500" \| "550" \| "600" \| "700" \| "800" \| "900"` | `undefined` |
-| `marginRight`       | `margin-right` | Add margin to the right of the icon | `"0" \| "100" \| "1000" \| "150" \| "200" \| "250" \| "300" \| "400" \| "450" \| "50" \| "500" \| "550" \| "600" \| "700" \| "800" \| "900"` | `undefined` |
-| `name` _(required)_ | `name`         | Name of the icon.                   | `string`                                                                                                                                     | `undefined` |
-| `padding`           | `padding`      | Defines the size of the icon.       | `"fixed-width" \| "none"`                                                                                                                    | `'none'`    |
-| `size`              | `size`         | Defines the size of the icon.       | `"caption" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "inherit" \| "text"`                                                           | `'text'`    |
+| Property            | Attribute      | Description                                                                         | Type                                                                                                                                         | Default     |
+| ------------------- | -------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `fixedWidth`        | `fixed-width`  | If the icon should render as a fixed-width square, or their natural width.          | `boolean`                                                                                                                                    | `undefined` |
+| `iconStyle`         | `icon-style`   | Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation. | `"regular" \| "solid"`                                                                                                                       | `'solid'`   |
+| `label`             | `label`        | Add icon description.                                                               | `string`                                                                                                                                     | `undefined` |
+| `marginLeft`        | `margin-left`  | Add margin to the left of the icon                                                  | `"0" \| "100" \| "1000" \| "150" \| "200" \| "250" \| "300" \| "400" \| "450" \| "50" \| "500" \| "550" \| "600" \| "700" \| "800" \| "900"` | `undefined` |
+| `marginRight`       | `margin-right` | Add margin to the right of the icon                                                 | `"0" \| "100" \| "1000" \| "150" \| "200" \| "250" \| "300" \| "400" \| "450" \| "50" \| "500" \| "550" \| "600" \| "700" \| "800" \| "900"` | `undefined` |
+| `name` _(required)_ | `name`         | Name of the icon.                                                                   | `string`                                                                                                                                     | `undefined` |
+| `size`              | `size`         | Defines the size of the icon.                                                       | `"caption" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "inherit" \| "text"`                                                           | `'text'`    |
 
 
 ## Dependencies
