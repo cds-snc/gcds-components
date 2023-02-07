@@ -312,15 +312,15 @@ export class GcdsFileUploader {
           </div>
 
           { value.length > 0 ? value.map(file => (
-              <button
-                class="file-uploader__uploaded-file"
-                onClick={e => this.removeFile(e)}
-                aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
-              >
-                <span>{file}</span>
-                <gcds-icon name="times-circle" size="text" />
-              </button>
-            )) : null }
+            <button
+              class="file-uploader__uploaded-file"
+              onClick={(e) => this.removeFile(e)}
+              aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
+            >
+              <span>{file}</span>
+              <gcds-icon name="times-circle" size="text" />
+            </button>
+          )) : null }
         </div>
       </Host>
     );
