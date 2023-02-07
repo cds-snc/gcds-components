@@ -661,4 +661,50 @@ describe('gcds-footer', () => {
       </gcds-footer>
     `);
   });
+
+  it('renders with sub links - English', async () => {
+    const page = await newSpecPage({
+      components: [GcdsFooter],
+      html: `<gcds-footer
+          display="compact"
+          lang="en"
+          sub-links='{ "Link 1": "#red", "Link 2": "#green", "Link 3": "#blue" }'
+        ></gcds-footer>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-footer role="contentinfo" display="compact" lang="en" sub-links="{ &quot;Link 1&quot;: &quot;#red&quot;, &quot;Link 2&quot;: &quot;#green&quot;, &quot;Link 3&quot;: &quot;#blue&quot; }">
+        <mock:shadow-root>
+          <div class="gcds-footer__sub">
+            <div class="sub__container">
+              <nav aria-label="Government of Canada Corporate">
+                <h3 class="sub__header">
+                  Government of Canada Corporate
+                </h3>
+                <ul>
+                  <li>
+                    <a href="#red">
+                      Link 1
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#green">
+                      Link 2
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#blue">
+                      Link 3
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <div class="sub__wordmark">
+                <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
+              </div>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-footer>
+    `);
+  });
 });
