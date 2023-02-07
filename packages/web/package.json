@@ -26,7 +26,6 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.2.1",
     "@stencil/core": "^2.7.0",
     "@stencil/react-output-target": "^0.3.1",
     "stencil": "^0.0.5"
