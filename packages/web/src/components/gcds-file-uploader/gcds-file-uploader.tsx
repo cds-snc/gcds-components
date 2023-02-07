@@ -318,7 +318,7 @@ export class GcdsFileUploader {
               aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
             >
               <span>{file}</span>
-              <gcds-icon name="times-circle" size="lg" />
+              <gcds-icon name="times-circle" size="text" />
             </button>
           )) : null }
         </div>

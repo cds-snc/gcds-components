@@ -1,4 +1,4 @@
-@import url('https://unpkg.com/font-awesome/css/font-awesome.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css');
 
 :host .gcds-icon {
   font-family: var(--gcds-icon-font-family);
@@ -136,29 +136,81 @@
     margin-inline-end: var(--gcds-icon-margin-1000);
   }
 
+  /* Fixed width */
+  &.fixed-width {
+    text-align: center;
+  }
+
+  &.size-caption.fixed-width {
+    width: calc(var(--gcds-icon-fixed-width-caption) * 1em);
+  }
+
+  &.size-text.fixed-width {
+    width: calc(var(--gcds-icon-fixed-width-text) * 1em);
+  }
+
+  &.size-h6.fixed-width {
+    width: calc(var(--gcds-icon-fixed-width-h6) * 1em);
+  }
+
+  &.size-h5.fixed-width {
+    width: calc(var(--gcds-icon-fixed-width-h5) * 1em);
+  }
+
+  &.size-h4.fixed-width {
+    width: calc(var(--gcds-icon-fixed-width-h4) * 1em);
+  }
+
+  &.size-h3.fixed-width {
+    width: calc(var(--gcds-icon-fixed-width-h3) * 1em);
+  }
+
+  &.size-h2.fixed-width {
+    width: calc(var(--gcds-icon-fixed-width-h2) * 1em);
+  }
+
+  &.size-h1.fixed-width {
+    width: calc(var(--gcds-icon-fixed-width-h1) * 1em);
+  }
+
   /* Size */
-  &.size-xs {
-    font-size: var(--gcds-icon-font-size-xs);
-    line-height: var(--gcds-icon-line-height-xs);
+  &.size-caption {
+    font-size: var(--gcds-font-sizes-caption);
+    line-height: var(--gcds-line-heights-caption);
   }
 
-  &.size-sm {
-    font-size: var(--gcds-icon-font-size-sm);
-    line-height: var(--gcds-icon-line-height-sm);
+  &.size-text {
+    font-size: var(--gcds-font-sizes-text);
+    line-height: var(--gcds-line-heights-text);
   }
 
-  &.size-md {
-    font-size: var(--gcds-icon-font-size-md);
-    line-height: var(--gcds-icon-line-height-md);
+  &.size-h6 {
+    font-size: var(--gcds-font-sizes-h6);
+    line-height: var(--gcds-line-heights-h6);
   }
 
-  &.size-lg {
-    font-size: var(--gcds-icon-font-size-lg);
-    line-height: var(--gcds-icon-line-height-lg);
+  &.size-h5 {
+    font-size: var(--gcds-font-sizes-h5);
+    line-height: var(--gcds-line-heights-h5);
   }
 
-  &.size-xl {
-    font-size: var(--gcds-icon-font-size-xl);
-    line-height: var(--gcds-icon-line-height-xl);
+  &.size-h4 {
+    font-size: var(--gcds-font-sizes-h4);
+    line-height: var(--gcds-line-heights-h4);
+  }
+
+  &.size-h3 {
+    font-size: var(--gcds-font-sizes-h3);
+    line-height: var(--gcds-line-heights-h3);
+  }
+
+  &.size-h2 {
+    font-size: var(--gcds-font-sizes-h2);
+    line-height: var(--gcds-line-heights-h2);
+  }
+
+  &.size-h1 {
+    font-size: var(--gcds-font-sizes-h1);
+    line-height: var(--gcds-line-heights-h1);
   }
 }

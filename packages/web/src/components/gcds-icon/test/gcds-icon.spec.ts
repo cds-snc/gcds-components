@@ -10,7 +10,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="angle-down">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon fa fa-regular fa-angle-down size-inherit"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon fa fa-solid fa-angle-down size-text"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -24,7 +24,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="angle-down" margin-left="100">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon fa fa-regular fa-angle-down size-inherit ml-100"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon fa fa-solid fa-angle-down size-text ml-100"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -38,7 +38,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="angle-down" margin-right="100">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon fa fa-regular fa-angle-down size-inherit mr-100"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon fa fa-solid fa-angle-down size-text mr-100"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -47,12 +47,12 @@ describe('gcds-icon', () => {
   it('renders size', async () => {
     const { root } = await newSpecPage({
       components: [GcdsIcon],
-      html: '<gcds-icon name="angle-down" size="md" />',
+      html: '<gcds-icon name="angle-down" size="h3" />',
     });
     expect(root).toEqualHtml(`
-      <gcds-icon name="angle-down" size="md">
+      <gcds-icon name="angle-down" size="h3">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon fa fa-regular fa-angle-down size-md"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon fa fa-solid fa-angle-down size-h3"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -66,7 +66,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="angle-down">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon fa fa-regular fa-angle-down size-inherit"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon fa fa-solid fa-angle-down size-text"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -80,7 +80,35 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="angle-down" label="This is a description">
         <mock:shadow-root>
-          <span aria-hidden="false" aria-label="This is a description" role="img" class="gcds-icon fa fa-regular fa-angle-down size-inherit"></span>
+          <span aria-hidden="false" aria-label="This is a description" role="img" class="gcds-icon fa fa-solid fa-angle-down size-text"></span>
+        </mock:shadow-root>
+      </gcds-icon>
+    `);
+  });
+
+  it('renders icon style', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsIcon],
+      html: '<gcds-icon name="angle-down" size="h3" icon-style="regular"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-icon name="angle-down" size="h3" icon-style="regular">
+        <mock:shadow-root>
+          <span aria-hidden="true" role="img" class="gcds-icon fa fa-regular fa-angle-down size-h3"></span>
+        </mock:shadow-root>
+      </gcds-icon>
+    `);
+  });
+
+  it('renders fixed width icons', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsIcon],
+      html: '<gcds-icon name="angle-down" size="h3" fixed-width/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-icon name="angle-down" size="h3" fixed-width>
+        <mock:shadow-root>
+          <span aria-hidden="true" role="img" class="gcds-icon fa fa-solid fa-angle-down size-h3 fixed-width"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
