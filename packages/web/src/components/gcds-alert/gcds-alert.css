@@ -100,8 +100,6 @@
 
   .alert__icon {
     display: inline-block;
-    font-size: var(--gcds-alert-icon-font-size);
-    line-height: var(--gcds-alert-icon-font-size);
     margin: var(--gcds-alert-icon-margin);
 
     @media only screen and (width < 36em) {
