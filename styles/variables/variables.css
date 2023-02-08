@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 06 Feb 2023 19:21:05 GMT
+ * Generated on Wed, 08 Feb 2023 19:49:02 GMT
  */
 
 :root {
@@ -56,7 +56,7 @@
   --gcds-font-families-heading: "Lato", sans-serif;
   --gcds-font-families-body: "Noto Sans", sans-serif;
   --gcds-font-families-monospace: "Menlo", sans-serif;
-  --gcds-font-families-icons: FontAwesome;
+  --gcds-font-families-icons: "Font Awesome 6 Free", FontAwesome;
   --gcds-font-sizes-caption: 1.1111111111111112rem;
   --gcds-font-sizes-text: 1.25rem;
   --gcds-font-sizes-h6: 1.40625rem;
@@ -134,7 +134,7 @@
   --gcds-alert-container-xl: 75rem;
   --gcds-alert-container-full: 100%;
   --gcds-alert-content-heading-font: 700 1.58203125rem/126.41975308641975% "Lato", sans-serif;
-  --gcds-alert-content-heading-margin: 0.1875rem 0 0.5625rem;
+  --gcds-alert-content-heading-margin: 0 0 0.5625rem;
   --gcds-alert-content-heading-mobile-margin: 0 0 0.5625rem;
   --gcds-alert-content-slotted-list-margin: 1.5rem;
   --gcds-alert-content-slotted-margin: 0.5625rem;
@@ -265,15 +265,17 @@
   --gcds-file-uploader-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-file-uploader-file-background: #d6d9dd;
   --gcds-file-uploader-file-border-radius: 3rem;
-  --gcds-file-uploader-file-icon-default: #c24438;
-  --gcds-file-uploader-file-icon-hover: #822117;
-  --gcds-file-uploader-file-icon-active: #000000;
+  --gcds-file-uploader-file-icon-background-default: #c24438;
+  --gcds-file-uploader-file-icon-background-hover: #822117;
+  --gcds-file-uploader-file-icon-background-active: #000000;
+  --gcds-file-uploader-file-icon-text: #ffffff;
+  --gcds-file-uploader-file-icon-padding: 0.5625rem;
   --gcds-file-uploader-file-margin: 0.75rem 0 0;
   --gcds-file-uploader-file-margin-first-of-type: 1.125rem 0 0;
   --gcds-file-uploader-file-max-width: 30rem;
   --gcds-file-uploader-file-outline-offset: .125rem;
   --gcds-file-uploader-file-outline-width: 0.1875rem;
-  --gcds-file-uploader-file-padding: 0.9375rem 1.5rem;
+  --gcds-file-uploader-file-padding: 0.75rem 0.75rem 0.75rem 1.5rem;
   --gcds-file-uploader-focus-button-background: #303fc3;
   --gcds-file-uploader-focus-button-text: #ffffff;
   --gcds-file-uploader-focus-text: #303fc3;
@@ -342,17 +344,31 @@
   --gcds-header-topnav-top: 1.5rem;
   --gcds-hint-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-hint-margin: 0 0 0.75rem;
-  --gcds-icon-font-family: FontAwesome;
-  --gcds-icon-font-size-xs: 1.1111111111111112rem;
-  --gcds-icon-font-size-sm: 1.25rem;
-  --gcds-icon-font-size-md: 1.58203125rem;
-  --gcds-icon-font-size-lg: 2.00225830078125rem;
-  --gcds-icon-font-size-xl: 2.5341081619262695rem;
-  --gcds-icon-line-height-xs: 135%;
-  --gcds-icon-line-height-sm: 120%;
-  --gcds-icon-line-height-md: 126.41975308641975%;
-  --gcds-icon-line-height-lg: 124.85901539399482%;
-  --gcds-icon-line-height-xl: 118.38484422541731%;
+  --gcds-icon-font-family: "Font Awesome 6 Free", FontAwesome;
+  --gcds-icon-font-size-caption: 1.1111111111111112rem;
+  --gcds-icon-font-size-text: 1.25rem;
+  --gcds-icon-font-size-h6: 1.40625rem;
+  --gcds-icon-font-size-h5: 1.58203125rem;
+  --gcds-icon-font-size-h4: 1.77978515625rem;
+  --gcds-icon-font-size-h3: 2.00225830078125rem;
+  --gcds-icon-font-size-h2: 2.2525405883789062rem;
+  --gcds-icon-font-size-h1: 2.5341081619262695rem;
+  --gcds-icon-line-height-caption: 135%;
+  --gcds-icon-line-height-text: 120%;
+  --gcds-icon-line-height-h6: 124.44444444444444%;
+  --gcds-icon-line-height-h5: 126.41975308641975%;
+  --gcds-icon-line-height-h4: 126.41975308641973%;
+  --gcds-icon-line-height-h3: 124.85901539399482%;
+  --gcds-icon-line-height-h2: 122.08437060746162%;
+  --gcds-icon-line-height-h1: 118.38484422541731%;
+  --gcds-icon-fixed-width-caption: 1.35;
+  --gcds-icon-fixed-width-text: 1.2;
+  --gcds-icon-fixed-width-h6: 1.2444444444444445;
+  --gcds-icon-fixed-width-h5: 1.2641975308641975;
+  --gcds-icon-fixed-width-h4: 1.2641975308641973;
+  --gcds-icon-fixed-width-h3: 1.2485901539399482;
+  --gcds-icon-fixed-width-h2: 1.2208437060746162;
+  --gcds-icon-fixed-width-h1: 1.183848442254173;
   --gcds-icon-margin-0: 0;
   --gcds-icon-margin-50: 0.1875rem;
   --gcds-icon-margin-100: 0.375rem;
