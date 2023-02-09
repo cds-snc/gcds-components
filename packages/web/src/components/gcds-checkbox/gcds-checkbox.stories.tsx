@@ -1,33 +1,19 @@
 import { formProps, langProp } from '../../utils/storybook/component-properties';
 
 export default {
-  title: 'Components/File Uploader',
+  title: 'Components/Checkbox',
 
   parameters: {
     actions: {
-      argTypesRegex: '^on.*',
+      argTypesRegex: '^gcds.*',
       handles: ['change', 'focus', 'blur']
     }
   },
 
   argTypes: {
     // Props
-    accept: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    multiple: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    uploaderId: {
-      name: 'uploader-id',
+    checkboxId: {
+      name: 'checkbox-id',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -37,23 +23,40 @@ export default {
         required: true
       }
     },
+    name: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
+    checked: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
     ...formProps,
     ...langProp,
 
     // Events
-    onChange: {
+    gcdsChange: {
       action: 'change',
       table: {
         category: 'Events | Événements',
       }
     },
-    onFocus: {
+    gcdsFocus: {
       action: 'focus',
       table: {
         category: 'Events | Événements',
       }
     },
-    onBlur: {
+    gcdsBlur: {
       action: 'blur',
       table: {
         category: 'Events | Événements',
@@ -64,46 +67,46 @@ export default {
 
 const Template = (args) => `
 // Web Component (Angular, Vue)
-<gcds-file-uploader
-  uploader-id="${args.uploaderId}"
+<gcds-checkbox
+  checkbox-id="${args.checkboxId}"
   label="${args.label}"
+  name="${args.name}"
   hint="${args.hint}"
   error-message="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   value="${args.value}"
-  accept="${args.accept}"
-  multiple="${args.multiple}"
+  checked="${args.checked}"
   lang="${args.lang}"
 >
-</gcds-file-uploader>
+</gcds-checkbox>
 
 // React code
-<GcdsFileUploader
-  uploaderId="${args.uploaderId}"
+<GcdsCheckbox
+  checkboxId="${args.checkboxId}"
   label="${args.label}"
+  name="${args.name}"
   hint="${args.hint}"
-  errorMessage="${args.errorMessage}"
+  error-message="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   value="${args.value}"
-  accept="${args.accept}"
-  multiple="${args.multiple}"
+  checked="${args.checked}"
   lang="${args.lang}"
 >
-</GcdsFileUploader>
+</GcdsCheckbox>
 `;
 
 export const Default = Template.bind({});
 Default.args = {
-  uploaderId: '',
-  label: 'File uploader label',
+  checkboxId: 'checkbox',
+  label: 'Checkbox label',
+  name: 'checkbox',
   hint: 'This is a hint.',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  accept: '',
-  multiple: true,
-  lang: 'en',
+  checked: false,
+  lang: 'en'
 };

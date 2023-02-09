@@ -309,9 +309,9 @@ export class GcdsPagination {
                 onClick={(e) => this.onPageChange(e)}
               >
                 <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-                <strong>
+                <div class="gcds-pagination-simple-text">
                   {I18N[lang].previous}
-                </strong>
+                </div>
                 <span>
                   {previousLabel}
                 </span>
@@ -323,13 +323,13 @@ export class GcdsPagination {
                 aria-label={`${I18N[lang].nextPage}${nextLabel ? `: ${nextLabel}` : ""}`}
                 onClick={(e) => this.onPageChange(e)}
               >
-                <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
-                <strong>
+                <div class="gcds-pagination-simple-text">
                   {I18N[lang].next}
-                </strong>
+                </div>
                 <span>
                   {nextLabel}
                 </span>
+                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
               </a>
             </li>
           </ul>

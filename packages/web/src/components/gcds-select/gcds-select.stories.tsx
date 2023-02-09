@@ -1,3 +1,5 @@
+import { formProps, langProp } from '../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Select',
 
@@ -10,28 +12,6 @@ export default {
 
   argTypes: {
     // Props
-    disabled: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
-    errorMessage: {
-      name: 'error-message',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    hint: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
     selectId: {
       name: 'select-id',
       control: 'text',
@@ -43,30 +23,6 @@ export default {
         required: true
       }
     },
-    label: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-      type: {
-        required: true
-      }
-    },
-    required: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
-    value: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
     defaultValue: {
       name: 'default-value',
       control: 'text',
@@ -75,6 +31,8 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
+    ...formProps,
+    ...langProp,
 
     // Events
     onChange: {
@@ -109,10 +67,11 @@ const Template = (args) => `
   disabled="${args.disabled}"
   value="${args.value}"
   default-value="${args.defaultValue}"
+  lang="${args.lang}"
 >
-  <option>Option 1</option>
-  <option>Option 2</option>
-  <option>Option 3</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
 </gcds-select>
 
 // React code
@@ -125,10 +84,11 @@ const Template = (args) => `
   disabled="${args.disabled}"
   value="${args.value}"
   defaultValue="${args.defaultValue}"
+  lang="${args.lang}"
 >
-  <option>Option 1</option>
-  <option>Option 2</option>
-  <option>Option 3</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
 </GcdsSelect>
 `;
 
@@ -142,4 +102,5 @@ Default.args = {
   disabled: false,
   value: '',
   defaultValue: 'Choose an option.',
+  lang: 'en',
 };

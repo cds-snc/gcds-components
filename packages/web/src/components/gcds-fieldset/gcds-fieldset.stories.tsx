@@ -1,33 +1,33 @@
 import { formProps, langProp } from '../../utils/storybook/component-properties';
 
+// Remove unused form properties
+delete formProps["label"];
+delete formProps["value"];
+
 export default {
-  title: 'Components/File Uploader',
+  title: 'Components/Fieldset',
 
   parameters: {
     actions: {
-      argTypesRegex: '^on.*',
-      handles: ['change', 'focus', 'blur']
+      argTypesRegex: '^gcds.*',
+      handles: ['GroupError', 'GroupErrorClear']
     }
   },
 
   argTypes: {
     // Props
-    accept: {
+    fieldsetId: {
+      name: 'fieldset-id',
       control: 'text',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' }
       },
+      type: {
+        required: true
+      }
     },
-    multiple: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    uploaderId: {
-      name: 'uploader-id',
+    legend: {
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -41,69 +41,58 @@ export default {
     ...langProp,
 
     // Events
-    onChange: {
-      action: 'change',
+    gcdsGroupError: {
+      action: 'GroupError',
       table: {
         category: 'Events | Événements',
       }
     },
-    onFocus: {
-      action: 'focus',
+    gcdsGroupErrorClear: {
+      action: 'GroupErrorClear',
       table: {
         category: 'Events | Événements',
       }
-    },
-    onBlur: {
-      action: 'blur',
-      table: {
-        category: 'Events | Événements',
-      }
-    },
+    }
   },
 };
 
 const Template = (args) => `
 // Web Component (Angular, Vue)
-<gcds-file-uploader
-  uploader-id="${args.uploaderId}"
-  label="${args.label}"
+<gcds-fieldset
+  fieldset-id="${args.fieldsetId}"
+  legend="${args.legend}"
   hint="${args.hint}"
   error-message="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
-  value="${args.value}"
-  accept="${args.accept}"
-  multiple="${args.multiple}"
   lang="${args.lang}"
 >
-</gcds-file-uploader>
+  <gcds-radio radio-id="r1" name="radio" label="Radio button 1"></gcds-radio>
+  <gcds-radio radio-id="r2" name="radio" label="Radio button 2"></gcds-radio>
+</gcds-fieldset>
 
 // React code
-<GcdsFileUploader
-  uploaderId="${args.uploaderId}"
-  label="${args.label}"
+<GcdsFieldset
+  fieldsetId="${args.fieldsetId}"
+  legend="${args.legend}"
   hint="${args.hint}"
-  errorMessage="${args.errorMessage}"
+  error-message="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
-  value="${args.value}"
-  accept="${args.accept}"
-  multiple="${args.multiple}"
   lang="${args.lang}"
 >
-</GcdsFileUploader>
+  <GcdsRadio radioId="r1" name="radio" label="Radio button 1"></GcdsRadio>
+  <GcdsRadio radioId="r2" name="radio" label="Radio button 2"></GcdsRadio>
+</GcdsFieldset>
 `;
 
 export const Default = Template.bind({});
 Default.args = {
-  uploaderId: '',
-  label: 'File uploader label',
+  fieldsetId: 'fieldset',
+  legend: 'Fieldset legend',
   hint: 'This is a hint.',
   errorMessage: '',
   required: false,
   disabled: false,
-  value: '',
-  accept: '',
-  multiple: true,
-  lang: 'en',
+  lang: 'en'
 };

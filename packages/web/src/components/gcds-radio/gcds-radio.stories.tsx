@@ -1,33 +1,22 @@
 import { formProps, langProp } from '../../utils/storybook/component-properties';
 
+// Removed unused form property
+delete formProps["errorMessage"];
+
 export default {
-  title: 'Components/File Uploader',
+  title: 'Components/Radio',
 
   parameters: {
     actions: {
-      argTypesRegex: '^on.*',
-      handles: ['change', 'focus', 'blur']
+      argTypesRegex: '^gcds.*',
+      handles: ['RadioChange', 'focus', 'blur']
     }
   },
 
   argTypes: {
     // Props
-    accept: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    multiple: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: '-' }
-      },
-    },
-    uploaderId: {
-      name: 'uploader-id',
+    radioId: {
+      name: 'radio-id',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -37,23 +26,40 @@ export default {
         required: true
       }
     },
+    name: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
+    checked: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
     ...formProps,
     ...langProp,
 
     // Events
-    onChange: {
-      action: 'change',
+    gcdsRadioChange: {
+      action: 'RadioChnage',
       table: {
         category: 'Events | Événements',
       }
     },
-    onFocus: {
+    gcdsFocus: {
       action: 'focus',
       table: {
         category: 'Events | Événements',
       }
     },
-    onBlur: {
+    gcdsBlur: {
       action: 'blur',
       table: {
         category: 'Events | Événements',
@@ -64,46 +70,43 @@ export default {
 
 const Template = (args) => `
 // Web Component (Angular, Vue)
-<gcds-file-uploader
-  uploader-id="${args.uploaderId}"
+<gcds-radio
+  radio-id="${args.radioId}"
   label="${args.label}"
+  name="${args.name}"
   hint="${args.hint}"
-  error-message="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   value="${args.value}"
-  accept="${args.accept}"
-  multiple="${args.multiple}"
+  checked="${args.checked}"
   lang="${args.lang}"
 >
-</gcds-file-uploader>
+</gcds-radio>
 
 // React code
-<GcdsFileUploader
-  uploaderId="${args.uploaderId}"
+<GcdsRadio
+  radioId="${args.radioId}"
   label="${args.label}"
+  name="${args.name}"
   hint="${args.hint}"
-  errorMessage="${args.errorMessage}"
   required="${args.required}"
   disabled="${args.disabled}"
   value="${args.value}"
-  accept="${args.accept}"
-  multiple="${args.multiple}"
+  checked="${args.checked}"
   lang="${args.lang}"
 >
-</GcdsFileUploader>
+</GcdsRadio>
 `;
 
 export const Default = Template.bind({});
 Default.args = {
-  uploaderId: '',
-  label: 'File uploader label',
+  radioId: 'radio',
+  label: 'Radio label',
+  name: 'radio',
   hint: 'This is a hint.',
-  errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  accept: '',
-  multiple: true,
-  lang: 'en',
+  checked: false,
+  lang: 'en'
 };

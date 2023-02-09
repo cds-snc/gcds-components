@@ -301,13 +301,17 @@ export namespace Components {
          */
         "contextualHeading": string;
         /**
-          * Object of list items
+          * Object of list items for contextual band. Format: { link-label: link-href }
          */
         "contextualLinks": string | object;
         /**
           * Display mode of the footer
          */
         "display": 'compact' | 'full';
+        /**
+          * Object of list items for sub-footer. Format: { link-label: link-href }
+         */
+        "subLinks": string | object;
         /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */
@@ -391,6 +395,14 @@ export namespace Components {
     }
     interface GcdsIcon {
         /**
+          * If the icon should render as a fixed-width square, or their natural width.
+         */
+        "fixedWidth": boolean;
+        /**
+          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
+         */
+        "iconStyle"?: 'regular' | 'solid';
+        /**
           * Add icon description.
          */
         "label"?: string;
@@ -409,7 +421,7 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+        "size"?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1';
     }
     interface GcdsInput {
         /**
@@ -1348,13 +1360,17 @@ declare namespace LocalJSX {
          */
         "contextualHeading"?: string;
         /**
-          * Object of list items
+          * Object of list items for contextual band. Format: { link-label: link-href }
          */
         "contextualLinks"?: string | object;
         /**
           * Display mode of the footer
          */
         "display": 'compact' | 'full';
+        /**
+          * Object of list items for sub-footer. Format: { link-label: link-href }
+         */
+        "subLinks"?: string | object;
         /**
           * GcdsSignature - The variant of the Government of Canada wordmark
          */
@@ -1438,6 +1454,14 @@ declare namespace LocalJSX {
     }
     interface GcdsIcon {
         /**
+          * If the icon should render as a fixed-width square, or their natural width.
+         */
+        "fixedWidth"?: boolean;
+        /**
+          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
+         */
+        "iconStyle"?: 'regular' | 'solid';
+        /**
           * Add icon description.
          */
         "label"?: string;
@@ -1456,7 +1480,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+        "size"?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1';
     }
     interface GcdsInput {
         /**

@@ -7,7 +7,7 @@
     color: var(--gcds-fieldset-default-text);
 
     legend {
-      font: inherit;
+      font: var(--gcds-fieldset-font);
       color: inherit;
       margin: var(--gcds-fieldset-legend-margin);
     }

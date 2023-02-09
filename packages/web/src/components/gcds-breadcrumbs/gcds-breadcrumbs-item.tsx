@@ -22,12 +22,10 @@ export class GcdsBreadcrumbsItem {
     const { href } = this;
 
     return (
-      <Host>
-        <li class="gcds-breadcrumbs-item">
-          <a href={href}>
-            <slot></slot>
-          </a>
-        </li>
+      <Host role="listitem" class="gcds-breadcrumbs-item">
+        <a href={href}>
+          <slot></slot>
+        </a>
       </Host>
     );
   }

@@ -1,3 +1,5 @@
+import { langProp } from '../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Stepper',
 
@@ -25,6 +27,7 @@ export default {
         required: true
       }
     },
+    ...langProp,
   },
 };
 
@@ -33,17 +36,20 @@ const Template = (args) => `
 <gcds-stepper
   current-step="${args.currentStep}"
   total-steps="${args.totalSteps}"
+  lang="${args.lang}"
 ></gcds-stepper>
 
 // React code
 <GcdsStepper
   currentStep="${args.currentStep}"
   totalSteps="${args.totalSteps}"
+  lang="${args.lang}"
 ></GcdsStepper>
 `;
 
 export const Example = Template.bind({});
 Example.args = {
   currentStep: 1,
-  totalSteps: 5
+  totalSteps: 5,
+  lang: 'en'
 };

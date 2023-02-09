@@ -1,3 +1,5 @@
+import { formProps, langProp } from '../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Textarea',
 
@@ -10,34 +12,12 @@ export default {
 
   argTypes: {
     // Props
-    disabled: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
-    errorMessage: {
-      name: 'error-message',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
     hideLabel: {
       name: 'hide-label',
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
-      },
-    },
-    hint: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
       },
     },
     textareaId: {
@@ -51,23 +31,6 @@ export default {
         required: true
       }
     },
-    label: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-      type: {
-        required: true
-      }
-    },
-    required: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-    },
     rows: {
       control: 'number',
       table: {
@@ -75,13 +38,8 @@ export default {
         defaultValue: { summary: '5' }
       },
     },
-    value: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
+    ...formProps,
+    ...langProp,
 
     // Events
     onChange: {
@@ -117,6 +75,7 @@ const Template = (args) => `
   rows="${args.rows}"
   value="${args.value}"
   hide-label="${args.hideLabel}"
+  lang="${args.lang}"
 >
 </gcds-textarea>
 
@@ -131,6 +90,7 @@ const Template = (args) => `
   rows="${args.rows}"
   value="${args.value}"
   hideLabel="${args.hideLabel}"
+  lang="${args.lang}"
 >
 </GcdsTextarea>
 `;
@@ -146,4 +106,5 @@ Default.args = {
   rows: '',
   value: '',
   hideLabel: false,
+  lang: 'en',
 };

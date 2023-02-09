@@ -11,7 +11,7 @@ getDirectories('src/components', function (err, res) {
     console.log('Error', err);
   } else {
     res.forEach(element => {
-        if (element.includes(".js") && (!element.includes("i18n") && !element.includes(".min.js"))) {
+        if (element.includes(".js") && (!element.includes("i18n") && !element.includes(".min.js") && !element.includes("stories"))) {
             minify({
                 compressor: uglifyES,
                 input: element,
