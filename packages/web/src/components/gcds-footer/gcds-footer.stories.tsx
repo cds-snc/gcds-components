@@ -27,6 +27,16 @@ export default {
     contextualLinks: {
       name: 'contextual-links',
       control: 'text',
+      description: '{ "link-label": "link-href" }',
+      table: {
+        type: { summary: 'string/object' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    subLinks: {
+      name: 'sub-links',
+      control: 'text',
+      description: '{ "link-label": "link-href" }',
       table: {
         type: { summary: 'string/object' },
         defaultValue: { summary: '-' }
@@ -41,7 +51,8 @@ const Template = (args) => `
 <gcds-footer
   display="${args.display}"
   contextual-heading="${args.contextualHeading}"
-  contextual-links="${args.contextualLinks}"
+  contextual-links='${args.contextualLinks}'
+  sub-links='${args.subLinks}'
   lang="${args.lang}"
 >
 </gcds-footer>
@@ -50,7 +61,8 @@ const Template = (args) => `
 <GcdsFooter
   display="${args.display}"
   contextualHeading="${args.contextualHeading}"
-  contextualLinks="${args.contextualLinks}"
+  contextualLinks='${args.contextualLinks}'
+  subLinks='${args.subLinks}'
   lang="${args.lang}"
 >
 </GcdsFooter>
@@ -61,5 +73,6 @@ Default.args = {
   display: 'compact',
   contextualHeading: '',
   contextualLinks: '',
+  subLinks: '',
   lang: 'en'
 };
