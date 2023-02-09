@@ -10,12 +10,12 @@ export const config: Config = {
   srcDir: './src',
   outputTargets: [
     react({
-      componentCorePackage: 'gcds-components',
+      componentCorePackage: '@cdssnc/gcds-components',
       proxiesFile: '../react/src/components/stencil-generated/index.ts',
       includeDefineCustomElements: true,
     }),
     angularOutputTarget({
-      componentCorePackage: 'gcds-components',
+      componentCorePackage: '@cdssnc/gcds-components',
       directivesProxyFile: '../angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular/src/lib/stencil-generated/index.ts',
     }),

@@ -1,9 +1,9 @@
 {
-  "name": "gcds-components-react",
-  "version": "0.1.17",
+  "name": "@cdssnc/gcds-components-react",
+  "version": "0.9.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "React wrapper for gcds-components",
-  "homepage": "https://cds-snc-design.netlify.app/",
+  "homepage": "https://cds-design-snc.netlify.app/",
   "bugs": {
     "url": "https://github.com/cds-snc/gcds-components/issues"
   },
@@ -42,7 +42,7 @@
     "typescript": "^4.2.0"
   },
   "dependencies": {
-    "gcds-components": "^0.1.17"
+    "@cdssnc/gcds-components": "^0.1.17"
   },
   "peerDependencies": {
     "react": "^17.0.2",

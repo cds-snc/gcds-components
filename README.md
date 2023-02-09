@@ -1,58 +1,60 @@
 [La version française suit.](#système-de-design---composants-gc)
 
-# GC Design system components
+# GC Design System Components
 
-## Public servants building modern, accessible, beautiful government services
+GC Design System Components is a monorepo managing the web components of the GC Design System. Web components are encapsulated, reusable custom elements you can use within your web sites/apps. Along with the `gcds-components` packages, there are additional packages for React and Angular to ease integration into those popular frameworks.
+<br/>
+<br/>
 
-### Ship modern products faster with less work
+## Tools
 
-Spend less time doing repetitive work and more time shipping a product that meets the needs of people using your service.
+We are using [Stencil.js](https://stenciljs.com/) to build our web components.
+<br/>
+<br/>
 
-### An accessible, seamless Canada.ca
+## Documentation
 
-Build accessible and predictable products your clients can trust. They'll know they're in the right place and can easily get the help they need.
+You can find the full documentation for GC Design System Components on [https://articles.alpha.canada.ca/cds-intranet-employee-guide/cds-teams/designsystem]().
+<br/>
+<br/>
 
-### Human-centred design
+## Local installation
 
-Find ready-made solutions to common problems so you can design content, visual, and interactive elements for task success for all clients.
+- Clone the repo git clone `https://github.com/cds-snc/gcds-components`.
+- Run `npm install` to install all Node.js dependencies.
+- Run `npm install –workspaces` to install all Node.js dependencies for the web, React and Angular packages.
+- Change into the `/packages/web` directory.
+- Run `npm run build` to compile web components.
 
-### Grow your skills and knowledge in the open
+To test the angular/react packages locally make sure to link the packages to the web packages using `npm link`
+<br/>
+<br/>
 
-Contribute to the system, growing collective knowledge and resources. We're working in the open to learn from each other.
+## Compiling all packages
+
+In the root directory, run `npm run build`. All three packages will be compiled.
+<br/>
+<br/>
 
 ## Packages
 
 | Package                   | Description                                                                         | Docs             |
 | ------------------------- | ----------------------------------------------------------------------------------- | ---------------- |
-| [`gcds-components`](packages/web/)           | GCDS web components | [Docs](packages/web/README.md) |
-| [`gcds-components-react`](packages/react/)           | GCDS web components with React wrapper | [Docs](packages/react/README.md) |
-| [`gcds-components-angular`](packages/angular/)           | GCDS web components with Angular wrapper | [Docs](packages/angular/README.md) |
+| [`@cdssnc/gcds-components`](packages/web/)           | GC Design System Components – Web | [Docs](packages/web/README.md) |
+| [`@cdssnc/gcds-components-react`](packages/react/)           | GC Design System Components – React | [Docs](packages/react/README.md) |
+| [`@cdssnc/gcds-components-angular`](packages/angular/)           | GC Design System Components – Angular  | [Docs](packages/angular/README.md) |
+
+## How to contribute
+
+If you are interested in contributing to GC Design System Components, please read our [contributing guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
+<br/>
+<br/>
+
+## License
+
+Code released under the [MIT License](https://github.com/cds-snc/gcds-components/blob/main/LICENSE).
+<br/>
+<br/>
 
 --------
-
-# Système de design - composants GC
-
-## Vers la création de services fédéraux modernes, accessibles et esthétiques
-
-### Créez des produits modernes rapidement et facilement
-
-Passez moins de temps à effectuer des tâches répétitives, et plus de temps à expédier un produit qui répond aux besoins de vos usagers.
-
-### Tirez profit d'un site Canada.ca accessible
-
-Développez des produits accessibles et intuitifs qui inspirent confiance. Vos usagers sentiront qu'ils sont au bon endroit pour obtenir l'aide dont ils ont besoin.
-
-### Placez l'humain au centre de votre conception
-
-Concevez du contenu, des visuels et des interactions qui permettent aux usagers d'accomplir leur objectif grâce à des solutions toutes faites à des problèmes courants.
-
-### Développez votre savoir-faire avec la communauté
-
-Contribuez au système de design, et enrichissez ainsi les connaissances et ressources collectives. Nous travaillons sur une plateforme publique pour pouvoir apprendre les uns des autres.
-
-## Paquets
-
-| Paquet                   | Description                                                                         | Docs             |
-| [`gcds-components`](packages/web/)           | GCDS web components | [Docs](packages/web/README.md) |
-| [`gcds-components-react`](packages/react/)           | GCDS web components with React wrapper | [Docs](packages/react/README.md) |
-| [`gcds-components-angular`](packages/angular/)           | GCDS web components with Angular wrapper | [Docs](packages/angular/README.md) |
+ 
