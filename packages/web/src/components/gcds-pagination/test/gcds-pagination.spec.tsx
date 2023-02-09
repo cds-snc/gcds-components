@@ -21,9 +21,9 @@ describe('gcds-pagination', () => {
           <li>
             <a aria-label="Previous page: Previous label" href="#previous">
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-              <strong>
+              <div class="gcds-pagination-simple-text">
                 Previous
-              </strong>
+              </div>
               <span>
                 Previous label
               </span>
@@ -31,13 +31,13 @@ describe('gcds-pagination', () => {
           </li>
           <li>
             <a aria-label="Next page: Next label" href="#next">
-              <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
-              <strong>
+              <div class="gcds-pagination-simple-text">
                 Next
-              </strong>
+              </div>
               <span>
                 Next label
               </span>
+              <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
             </a>
           </li>
         </ul>
@@ -61,21 +61,21 @@ describe('gcds-pagination', () => {
           <li>
             <a aria-label="Previous page" href="#previous">
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-              <strong>
+              <div class="gcds-pagination-simple-text">
                 Previous
-              </strong>
+              </div>
               <span>
               </span>
             </a>
           </li>
           <li>
             <a aria-label="Next page" href="#next">
-              <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
-              <strong>
+              <div class="gcds-pagination-simple-text">
                 Next
-              </strong>
+              </div>
               <span>
               </span>
+              <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
             </a>
           </li>
         </ul>
@@ -101,9 +101,9 @@ describe('gcds-pagination', () => {
           <li>
             <a aria-label="Page précédente: Previous label" href="#previous">
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-              <strong>
+              <div class="gcds-pagination-simple-text">
               Précédente
-              </strong>
+              </div>
               <span>
                 Previous label
               </span>
@@ -111,13 +111,13 @@ describe('gcds-pagination', () => {
           </li>
           <li>
             <a aria-label="Page suivante: Next label" href="#next">
-              <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
-              <strong>
+              <div class="gcds-pagination-simple-text">
                 Suivante
-              </strong>
+              </div>
               <span>
                 Next label
               </span>
+              <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
             </a>
           </li>
         </ul>
@@ -141,21 +141,21 @@ describe('gcds-pagination', () => {
           <li>
             <a aria-label="Page précédente" href="#previous">
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-              <strong>
+              <div class="gcds-pagination-simple-text">
                 Précédente
-              </strong>
+              </div>
               <span>
               </span>
             </a>
           </li>
           <li>
             <a aria-label="Page suivante" href="#next">
-              <gcds-icon margin-right="200" name="arrow-right"></gcds-icon>
-              <strong>
+              <div class="gcds-pagination-simple-text">
                 Suivante
-              </strong>
+              </div>
               <span>
               </span>
+              <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
             </a>
           </li>
         </ul>

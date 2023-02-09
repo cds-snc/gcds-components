@@ -196,7 +196,7 @@ describe('gcds-input', () => {
             class="gcds-error"
             name="input-with-error"
             aria-labelledby="label-for-input-with-error"
-            aria-describedby=" error-message-input-with-error "
+            aria-describedby=" error-message-input-with-error"
             aria-invalid="true"
           />
         </div>
@@ -246,7 +246,7 @@ describe('gcds-input', () => {
             id="input-with-hint"
             name="input-with-hint"
             aria-labelledby="label-for-input-with-hint"
-            aria-describedby="hint-input-with-hint  "
+            aria-describedby="hint-input-with-hint"
             aria-invalid="false"
           />
         </div>

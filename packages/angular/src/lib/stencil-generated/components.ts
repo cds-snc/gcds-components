@@ -287,13 +287,13 @@ export declare interface GcdsFooter extends Components.GcdsFooter {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'wordmarkVariant']
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant']
 })
 @Component({
   selector: 'gcds-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'wordmarkVariant']
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant']
 })
 export class GcdsFooter {
   protected el: HTMLElement;
@@ -371,13 +371,13 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['label', 'marginLeft', 'marginRight', 'name', 'size']
+  inputs: ['fixedWidth', 'iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size']
 })
 @Component({
   selector: 'gcds-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['label', 'marginLeft', 'marginRight', 'name', 'size']
+  inputs: ['fixedWidth', 'iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size']
 })
 export class GcdsIcon {
   protected el: HTMLElement;
