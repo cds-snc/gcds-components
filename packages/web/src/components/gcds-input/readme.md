@@ -9,7 +9,7 @@
 
 | Property               | Attribute       | Description                                                      | Type                                                               | Default     |
 | ---------------------- | --------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
-| `autocomplete`         | `autocomplete`  | String to have autocomplete enabled                              | `"off" \| "on"`                                                    | `'off'`     |
+| `autocomplete`         | `autocomplete`  | String to have autocomplete enabled                              | `"off" \| "on"`                                                    | `undefined` |
 | `blurHandler`          | --              | Custom callback function on blur event                           | `Function`                                                         | `undefined` |
 | `changeHandler`        | --              | Custom callback function on change event                         | `Function`                                                         | `undefined` |
 | `disabled`             | `disabled`      | Specifies if an input element is disabled or not.                | `boolean`                                                          | `false`     |

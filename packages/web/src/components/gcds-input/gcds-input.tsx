@@ -91,7 +91,7 @@ export class GcdsInput {
   /**
    * String to have autocomplete enabled
    */
-  @Prop() autocomplete?: 'on' | 'off' = 'off';;
+  @Prop() autocomplete?: 'on' | 'off';
 
   /**
    * Custom callback function on change event

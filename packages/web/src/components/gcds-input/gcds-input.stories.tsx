@@ -51,7 +51,7 @@ export default {
       options: ['on', 'off'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'off' }
+        defaultValue: { summary: '-' }
       }
     },
     ...formProps,
