@@ -79,6 +79,14 @@ export default {
         category: 'Slots | Fentes',
       }
     },
+    banner: {
+      control: {
+        type: 'text',
+      },
+      table: {
+        category: 'Slots | Fentes',
+      }
+    },
   },
 };
 
@@ -95,6 +103,7 @@ const Template = (args) => `
   ${args.breadcrumb && `<div slot="breadcrumb">${args.breadcrumb}</div>`}
   ${args.search && `<div slot="search">${args.search}</div>`}
   ${args.toggle && `<div slot="toggle">${args.toggle}</div>`}
+  ${args.banner && `<div slot="banner">${args.banner}</div>`}
 </gcds-header>
 
 // React code
@@ -109,6 +118,7 @@ const Template = (args) => `
   ${args.breadcrumb && `<div slot="menu">${args.breadcrumb}</div>`}
   ${args.search && `<div slot="menu">${args.search}</div>`}
   ${args.toggle && `<div slot="toggle">${args.toggle}</div>`}
+  ${args.banner && `<div slot="banner">${args.banner}</div>`}
 </GcdsHeader>
 `;
 
@@ -122,5 +132,6 @@ Default.args = {
   breadcrumb: '',
   search: '',
   toggle: '',
+  banner: '',
   lang: 'en'
 };
