@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                              | Type                                             | Default     |
-| ----------- | ----------- | -------------------------------------------------------- | ------------------------------------------------ | ----------- |
-| `container` | `container` | Defines the container width of the verify banner content | `"full" \| "lg" \| "md" \| "sm" \| "xl" \| "xs"` | `'xl'`      |
-| `isFixed`   | `is-fixed`  | Defines if the banner's position is fixed.               | `boolean`                                        | `undefined` |
+| Property    | Attribute   | Description                                              | Type                                             | Default |
+| ----------- | ----------- | -------------------------------------------------------- | ------------------------------------------------ | ------- |
+| `container` | `container` | Defines the container width of the verify banner content | `"full" \| "lg" \| "md" \| "sm" \| "xl" \| "xs"` | `'xl'`  |
+| `isFixed`   | `is-fixed`  | Defines if the banner's position is fixed.               | `boolean`                                        | `false` |
 
 
 ## Dependencies

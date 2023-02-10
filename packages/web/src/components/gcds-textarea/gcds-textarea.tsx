@@ -60,7 +60,7 @@ export class GcdsTextarea {
   /**
    * Specifies if the label is hidden or not.
    */
-  @Prop() hideLabel?: boolean;
+  @Prop() hideLabel?: boolean = false;
 
   /**
    * Hint displayed below the label and above the textarea field.
@@ -70,12 +70,12 @@ export class GcdsTextarea {
   /**
    * Form field label
    */
-  @Prop() label: string;
+  @Prop() label!: string;
 
   /**
     * Specifies if a form field is required or not.
     */
-  @Prop() required?: boolean;
+  @Prop() required?: boolean = false;
 
   /**
    * Default value for textarea rows.
@@ -85,12 +85,12 @@ export class GcdsTextarea {
   /**
    * Id + name attribute for a textarea element.
    */
-  @Prop() textareaId: string;
+  @Prop() textareaId!: string;
 
   /**
    * Default value for an input element.
    */
-  @Prop({ mutable: true }) value: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Array of validators

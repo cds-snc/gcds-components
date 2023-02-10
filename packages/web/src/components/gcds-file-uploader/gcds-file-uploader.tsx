@@ -34,12 +34,12 @@ export class GcdsFileUploader {
   /**
    * Specifies if a form field is required or not.
    */
-  @Prop({ reflect: true, mutable: false }) required: boolean;
+  @Prop({ reflect: true, mutable: false }) required: boolean = false;
 
   /**
    * Specifies if a file uploader element is disabled or not.
    */
-  @Prop({ reflect: true, mutable: true }) disabled: boolean;
+  @Prop({ reflect: true, mutable: true }) disabled: boolean = false;
 
   @Watch('disabled')
   validateDisabledSelect() {

@@ -19,12 +19,12 @@ export class GcdsStepper {
   /**
    * Defines the current step.
    */
-  @Prop() currentStep: number;
+  @Prop() currentStep!: number;
 
   /**
    * Defines the total amount of steps.
    */
-  @Prop() totalSteps: number;
+  @Prop() totalSteps!: number;
 
   async componentWillLoad() {
     // Define lang attribute
