@@ -4,6 +4,10 @@
 
 GC Design System Components – Angular provides the [GC Design System Components](https://github.com/cds-snc/gcds-components/tree/main/packages/web) within a Angular wrapper to ease integration of the components into Angular apps.
 
+## Documentation
+
+You can find the full documentation for GC Design System Components on [https://cds-design-snc.netlify.app/]().
+
 ## Installation
 
 ### Install from npm
