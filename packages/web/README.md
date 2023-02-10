@@ -6,7 +6,7 @@ GC Design System Web Components are encapsulated reusable custom elements to use
 
 ## Documentation
 
-You can find the full documentation for GC Design System Components on [https://articles.alpha.canada.ca/cds-intranet-employee-guide/cds-teams/designsystem]().
+You can find the full documentation for GC Design System Components on [https://cds-design-snc.netlify.app/]().
 
 ## Installation
 
