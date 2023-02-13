@@ -14,7 +14,7 @@ We are using [Stencil.js](https://stenciljs.com/) to build our web components.
 
 ## Documentation
 
-You can find the full documentation for GC Design System Components on [https://cds-design-snc.netlify.app/en/]().
+You can find the full documentation for GC Design System Components on [https://cds-design-snc.netlify.app/en/](https://cds-design-snc.netlify.app/en/).
 <br/>
 <br/>
 
