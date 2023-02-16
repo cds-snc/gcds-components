@@ -41,8 +41,8 @@ const Template = (args) => `
 ></GcdsVerifyBanner>
 `;
 
-export const Example = Template.bind({});
-Example.args = {
+export const Default = Template.bind({});
+Default.args = {
   container: 'xl',
   isFixed: false,
   lang: 'en',
