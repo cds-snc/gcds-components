@@ -58,19 +58,19 @@ export default {
     ...langProp,
 
     // Events
-    onChange: {
+    gcdsChange: {
       action: 'change',
       table: {
         category: 'Events | Événements',
       }
     },
-    onFocus: {
+    gcdsFocus: {
       action: 'focus',
       table: {
         category: 'Events | Événements',
       }
     },
-    onBlur: {
+    gcdsBlur: {
       action: 'blur',
       table: {
         category: 'Events | Événements',

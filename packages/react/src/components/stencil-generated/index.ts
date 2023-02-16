@@ -3,9 +3,9 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import type { JSX } from 'gcds-components';
+import type { JSX } from '@cdssnc/gcds-components';
 
-import { defineCustomElements } from 'gcds-components/loader';
+import { defineCustomElements } from '@cdssnc/gcds-components/loader';
 
 defineCustomElements();
 export const GcdsAlert = /*@__PURE__*/createReactComponent<JSX.GcdsAlert, HTMLGcdsAlertElement>('gcds-alert');

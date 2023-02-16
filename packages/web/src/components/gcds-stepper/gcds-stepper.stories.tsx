@@ -47,8 +47,8 @@ const Template = (args) => `
 ></GcdsStepper>
 `;
 
-export const Example = Template.bind({});
-Example.args = {
+export const Default = Template.bind({});
+Default.args = {
   currentStep: 1,
   totalSteps: 5,
   lang: 'en'

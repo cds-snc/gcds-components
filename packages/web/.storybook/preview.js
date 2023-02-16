@@ -7,6 +7,9 @@ defineCustomElements();
 
 export const parameters = {
   docs: {
+    source: {
+      state: 'open',
+    },
     theme: gcdsTheme,
   },
 };

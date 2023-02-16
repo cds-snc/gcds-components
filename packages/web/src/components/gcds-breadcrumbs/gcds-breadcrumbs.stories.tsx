@@ -57,8 +57,8 @@ const Template = (args) => `
 </GcdsBreadcrumbs>
 `;
 
-export const Example = Template.bind({});
-Example.args = {
+export const Default = Template.bind({});
+Default.args = {
   hideCanadaLink: false,
   href: '#',
   lang: 'en',

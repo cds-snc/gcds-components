@@ -52,8 +52,8 @@ const Template = (args) => `
 </GcdsDetails>
 `;
 
-export const Example = Template.bind({});
-Example.args = {
+export const Default = Template.bind({});
+Default.args = {
   detailsTitle: 'Find out more',
   open: false,
   default: 'Extra content',
