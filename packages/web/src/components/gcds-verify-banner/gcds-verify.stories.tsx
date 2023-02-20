@@ -31,14 +31,16 @@ const Template = (args) => `
   container="${args.container}"
   is-fixed="${args.isFixed}"
   lang="${args.lang}"
-></gcds-verify-banner>
+>
+</gcds-verify-banner>
 
 // React code
 <GcdsVerifyBanner
   container="${args.container}"
   isFixed="${args.isFixed}"
   lang="${args.lang}"
-></GcdsVerifyBanner>
+>
+</GcdsVerifyBanner>
 `;
 
 export const Default = Template.bind({});

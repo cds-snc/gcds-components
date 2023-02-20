@@ -90,7 +90,7 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-header
   lang-href="${args.langHref}"
@@ -99,11 +99,11 @@ const Template = (args) => `
   signature-variant="${args.signatureVariant}"
   lang="${args.lang}"
 >
-  ${args.menu && `<div slot="menu">${args.menu}</div>`}
-  ${args.breadcrumb && `<div slot="breadcrumb">${args.breadcrumb}</div>`}
-  ${args.search && `<div slot="search">${args.search}</div>`}
-  ${args.toggle && `<div slot="toggle">${args.toggle}</div>`}
-  ${args.banner && `<div slot="banner">${args.banner}</div>`}
+  ${args.menu ? `<div slot="menu">${args.menu}</div>` : null}
+  ${args.breadcrumb ? `<div slot="breadcrumb">${args.breadcrumb}</div>` : null}
+  ${args.search ? `<div slot="search">${args.search}</div>` : null}
+  ${args.toggle ? `<div slot="toggle">${args.toggle}</div>` : null}
+  ${args.banner ? `<div slot="banner">${args.banner}</div>` : null}
 </gcds-header>
 
 // React code
@@ -114,13 +114,13 @@ const Template = (args) => `
   signatureVariant="${args.signatureVariant}"
   lang="${args.lang}"
 >
-  ${args.menu && `<div slot="menu">${args.menu}</div>`}
-  ${args.breadcrumb && `<div slot="menu">${args.breadcrumb}</div>`}
-  ${args.search && `<div slot="menu">${args.search}</div>`}
-  ${args.toggle && `<div slot="toggle">${args.toggle}</div>`}
-  ${args.banner && `<div slot="banner">${args.banner}</div>`}
+  ${args.menu ? `<div slot="menu">${args.menu}</div>` : null}
+  ${args.breadcrumb ? `<div slot="menu">${args.breadcrumb}</div>` : null}
+  ${args.search ? `<div slot="menu">${args.search}</div>` : null}
+  ${args.toggle ? `<div slot="toggle">${args.toggle}</div>` : null}
+  ${args.banner ? `<div slot="banner">${args.banner}</div>` : null}
 </GcdsHeader>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {

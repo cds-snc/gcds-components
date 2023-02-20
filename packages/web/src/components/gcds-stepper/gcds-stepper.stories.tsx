@@ -37,14 +37,16 @@ const Template = (args) => `
   current-step="${args.currentStep}"
   total-steps="${args.totalSteps}"
   lang="${args.lang}"
-></gcds-stepper>
+>
+</gcds-stepper>
 
 // React code
 <GcdsStepper
   currentStep="${args.currentStep}"
   totalSteps="${args.totalSteps}"
   lang="${args.lang}"
-></GcdsStepper>
+>
+</GcdsStepper>
 `;
 
 export const Default = Template.bind({});
