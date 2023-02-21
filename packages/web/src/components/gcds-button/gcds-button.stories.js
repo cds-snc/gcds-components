@@ -65,9 +65,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'button' }
       },
-      type: {
-        required: true
-      }
     },
 
     // Link props

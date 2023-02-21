@@ -1,8 +1,4 @@
-import { formProps, langProp } from '../../utils/storybook/component-properties';
-
-// Remove unused form properties
-delete formProps["label"];
-delete formProps["value"];
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Fieldset',
@@ -37,7 +33,35 @@ export default {
         required: true
       }
     },
-    ...formProps,
+    disabled: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    errorMessage: {
+      name: 'error-message',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    hint: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    required: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
     ...langProp,
 
     // Events
@@ -90,7 +114,7 @@ export const Default = Template.bind({});
 Default.args = {
   fieldsetId: 'fieldset',
   legend: 'Fieldset legend',
-  hint: 'This is a hint.',
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,

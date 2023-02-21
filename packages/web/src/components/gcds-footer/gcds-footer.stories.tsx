@@ -12,9 +12,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'compact' }
       },
-      type: {
-        required: true
-      }
     },
     contextualHeading: {
       name: 'contextual-heading',

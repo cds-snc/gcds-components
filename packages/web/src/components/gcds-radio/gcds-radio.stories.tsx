@@ -1,7 +1,4 @@
-import { formProps, langProp } from '../../utils/storybook/component-properties';
-
-// Removed unused form property
-delete formProps["errorMessage"];
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Radio',
@@ -43,7 +40,44 @@ export default {
         defaultValue: { summary: false }
       },
     },
-    ...formProps,
+    disabled: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    hint: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    label: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
+    required: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    value: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     ...langProp,
 
     // Events
@@ -103,7 +137,7 @@ Default.args = {
   radioId: 'radio',
   label: 'Radio label',
   name: 'radio',
-  hint: 'This is a hint.',
+  hint: '',
   required: false,
   disabled: false,
   value: '',
