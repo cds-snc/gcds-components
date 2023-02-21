@@ -45,11 +45,6 @@
     color: var(--gcds-text-light);
   }
 
-  .docs-story .hydrated {
-    font-size: var(--gcds-font-sizes-text);
-    color: var(--gcds-text-primary);
-  }
-
   /* Get code button */
   .css-2w67r7 {
     color: var(--gcds-text-light) !important;
@@ -284,7 +279,7 @@
   }
 
   body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:first-of-type,
-  body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:first-of-type .hydrated {
+  body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:first-of-type:not([error-message]) .hydrated {
     font-size: var(--gcds-font-sizes-text);
     color: var(--gcds-text-primary);
   }
