@@ -2,7 +2,7 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'gcds-icon',
-  styleUrl: 'gcds-icon.css',
+  styleUrl: 'gcds-icon.scss',
   shadow: true,
 })
 export class GcdsIcon {

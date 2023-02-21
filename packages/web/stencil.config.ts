@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { postcss } from '@stencil/postcss';
+import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
 import { reactOutputTarget as react } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
@@ -37,7 +38,8 @@ export const config: Config = {
         require('cssnano')
       ]
     }),
-    inlineSvg()
+    inlineSvg(),
+    sass()
   ],
   testing: {
     transform: {
