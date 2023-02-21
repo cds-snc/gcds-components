@@ -25,23 +25,23 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-verify-banner
-  container="${args.container}"
-  is-fixed="${args.isFixed}"
-  lang="${args.lang}"
+  ${args.container != "xl" ? `container="${args.container}"` : null}
+  ${args.isFixed ? `is-fixed` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-verify-banner>
 
 // React code
 <GcdsVerifyBanner
-  container="${args.container}"
-  isFixed="${args.isFixed}"
-  lang="${args.lang}"
+  ${args.container != "xl" ? `container="${args.container}"` : null}
+  ${args.isFixed ? `isFixed` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsVerifyBanner>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {

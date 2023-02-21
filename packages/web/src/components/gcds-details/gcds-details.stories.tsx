@@ -34,11 +34,11 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-details
   details-title="${args.detailsTitle}"
-  open="${args.open}"
+  ${args.open ? `open` : null}
 >
   ${args.default}
 </gcds-details>
@@ -46,11 +46,11 @@ const Template = (args) => `
 // React code
 <GcdsDetails
   detailsTitle="${args.detailsTitle}"
-  open="${args.open}"
+  ${args.open ? `open` : null}
 >
   ${args.default}
 </GcdsDetails>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {

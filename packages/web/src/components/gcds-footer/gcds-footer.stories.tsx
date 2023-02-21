@@ -46,27 +46,27 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-footer
-  display="${args.display}"
-  contextual-heading="${args.contextualHeading}"
-  contextual-links='${args.contextualLinks}'
-  sub-links='${args.subLinks}'
-  lang="${args.lang}"
+  ${args.display != "compact" ? `display="${args.display}"` : null}
+  ${args.contextualHeading && args.contextualLinks ? `contextual-heading="${args.contextualHeading}"` : null}
+  ${args.contextualHeading && args.contextualLinks ? `contextual-links='${args.contextualLinks}'` : null}
+  ${args.subLinks ? `sub-links='${args.subLinks}'` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-footer>
 
 // React code
 <GcdsFooter
-  display="${args.display}"
-  contextualHeading="${args.contextualHeading}"
-  contextualLinks='${args.contextualLinks}'
-  subLinks='${args.subLinks}'
-  lang="${args.lang}"
+  ${args.display != "compact" ? `display="${args.display}"` : null}
+  ${args.contextualHeading && args.contextualLinks ? `contextualHeading="${args.contextualHeading}"` : null}
+  ${args.contextualHeading && args.contextualLinks ? `contextualLinks='${args.contextualLinks}'` : null}
+  ${args.subLinks ? `subLinks='${args.subLinks}'` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsFooter>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {

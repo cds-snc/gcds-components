@@ -142,41 +142,41 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-button
-  type="${args.type}"
-  button-role="${args.buttonRole}"
-  button-style="${args.buttonStyle}"
-  button-id="${args.buttonId}"
-  size="${args.size}"
-  disabled="${args.disabled}"
-  name="${args.name}"
-  href="${args.href}"
-  rel="${args.rel}"
-  target="${args.target}"
-  download="${args.download}"
+  ${args.type != "button" ? `type="${args.type}"`: null}
+  ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null}
+  ${args.buttonStyle != "solid" ? `button-style="${args.buttonStyle}"` : null}
+  ${args.buttonId ? `button-id="${args.buttonId}"` : null}
+  ${args.size != "regular" ? `size="${args.size}"` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.name ? `name="${args.name}"` : null}
+  ${args.type == "link" && args.href ? `href="${args.href}"` : null}
+  ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null}
+  ${args.type == "link" && args.target ? `target="${args.target}"` : null}
+  ${args.type == "link" && args.download ? `download="${args.download}"` : null}
 >
   ${args.default}
 </gcds-button>
 
 // React code
 <GcdsButton
-  type="${args.type}"
-  buttonRole="${args.buttonRole}"
-  buttonStyle="${args.buttonStyle}"
-  buttonId="${args.buttonId}"
-  size="${args.size}"
-  disabled="${args.disabled}"
-  name="${args.name}"
-  href="${args.href}"
-  rel="${args.rel}"
-  target="${args.target}"
-  download="${args.download}"
+  ${args.type != "button" ? `type="${args.type}"` : null}
+  ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null}
+  ${args.buttonStyle != "solid" ? `buttonStyle="${args.buttonStyle}"` : null}
+  ${args.buttonId ? `buttonId="${args.buttonId}"` : null}
+  ${args.size != "regular" ? `size="${args.size}"` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.name ? `name="${args.name}"` : null}
+  ${args.type == "link" && args.href ? `href="${args.href}"` : null}
+  ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null}
+  ${args.type == "link" && args.target ? `target="${args.target}"` : null}
+  ${args.type == "link" && args.download ? `download="${args.download}"` : null}
 >
   ${args.default}
 </GcdsButton>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {

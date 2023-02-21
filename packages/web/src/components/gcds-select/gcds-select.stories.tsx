@@ -56,18 +56,18 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-select
   select-id="${args.selectId}"
   label="${args.label}"
-  hint="${args.hint}"
-  error-message="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  default-value="${args.defaultValue}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.defaultValue ? `default-value="${args.defaultValue}"` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
@@ -78,23 +78,23 @@ const Template = (args) => `
 <GcdsSelect
   selectId="${args.selectId}"
   label="${args.label}"
-  hint="${args.hint}"
-  errorMessage="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  defaultValue="${args.defaultValue}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.defaultValue ? `defaultValue="${args.defaultValue}"` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
   <option value="3">Option 3</option>
 </GcdsSelect>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  selectId: '',
+  selectId: 'select',
   label: 'Select label',
   hint: 'This is a hint.',
   errorMessage: '',

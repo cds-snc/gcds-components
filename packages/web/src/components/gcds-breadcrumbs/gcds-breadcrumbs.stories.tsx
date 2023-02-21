@@ -37,11 +37,11 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-breadcrumbs
-  hide-canada-link="${args.hideCanadaLink}"
-  lang="${args.lang}"
+  ${args.hideCanadaLink ? `hide-canada-link` : null }
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <gcds-breadcrumbs-item href="${args.href}">Travel and tourism</gcds-breadcrumbs-item>
   <gcds-breadcrumbs-item href="${args.href}">Immigration and citizenship</gcds-breadcrumbs-item>
@@ -49,13 +49,13 @@ const Template = (args) => `
 
 // React code
 <GcdsBreadcrumbs
-  hideCanadaLink="${args.hideCanadaLink}"
-  lang="${args.lang}"
+  ${args.hideCanadaLink ? `hideCanadaLink` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <GcdsBreadcrumbsItem href="${args.href}">Travel and tourism</GcdsBreadcrumbsItem>
   <GcdsBreadcrumbsItem href="${args.href}">Immigration and citizenship</GcdsBreadcrumbsItem>
 </GcdsBreadcrumbs>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {

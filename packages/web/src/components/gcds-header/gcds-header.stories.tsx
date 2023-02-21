@@ -32,7 +32,7 @@ export default {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: true }
       },
     },
     signatureVariant: {
@@ -95,9 +95,9 @@ const Template = (args) => (`
 <gcds-header
   lang-href="${args.langHref}"
   skip-to-href="${args.skipToHref}"
-  signature-has-link="${args.signatureHasLink}"
-  signature-variant="${args.signatureVariant}"
-  lang="${args.lang}"
+  ${!args.signatureHasLink ? `signature-has-link="${args.signatureHasLink}"` : null}
+  ${args.signatureVariant != "colour" ? `signature-variant="${args.signatureVariant}"` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   ${args.menu ? `<div slot="menu">${args.menu}</div>` : null}
   ${args.breadcrumb ? `<div slot="breadcrumb">${args.breadcrumb}</div>` : null}
@@ -110,9 +110,9 @@ const Template = (args) => (`
 <GcdsHeader
   langHref="${args.langHref}"
   skipToHref="${args.skipToHref}"
-  signatureHasLink="${args.signatureHasLink}"
-  signatureVariant="${args.signatureVariant}"
-  lang="${args.lang}"
+  ${!args.signatureHasLink ? `signatureHasLink="${args.signatureHasLink}"` : null}
+  ${args.signatureVariant != "colour" ? `signatureVariant="${args.signatureVariant}"` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   ${args.menu ? `<div slot="menu">${args.menu}</div>` : null}
   ${args.breadcrumb ? `<div slot="menu">${args.breadcrumb}</div>` : null}

@@ -68,18 +68,18 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-radio
   radio-id="${args.radioId}"
   label="${args.label}"
   name="${args.name}"
-  hint="${args.hint}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  checked="${args.checked}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.checked ? `checked` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-radio>
 
@@ -88,15 +88,15 @@ const Template = (args) => `
   radioId="${args.radioId}"
   label="${args.label}"
   name="${args.name}"
-  hint="${args.hint}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  checked="${args.checked}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.checked ? `checked` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsRadio>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
