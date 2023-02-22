@@ -284,7 +284,7 @@ export class GcdsFileUploader {
             <gcds-error-message message-id={uploaderId} message={errorMessage} />
           : null}
 
-          <div class="file-uploader__input">
+          <div class={`file-uploader__input ${value.length > 0 ? "uploaded-files" : ''}`}>
             <button tabindex="-1">
               { lang == 'en' ? 'Upload a file' : 'Téléverser un fichier'}
               <gcds-icon name="upload" margin-left="200" />
@@ -312,14 +312,16 @@ export class GcdsFileUploader {
           </div>
 
           { value.length > 0 ? value.map(file => (
-            <button
+            <div
               class="file-uploader__uploaded-file"
-              onClick={(e) => this.removeFile(e)}
               aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
             >
               <span>{file}</span>
-              <gcds-icon name="times-circle" size="text" />
-            </button>
+              <button onClick={(e) => this.removeFile(e)}>
+                { lang == 'en' ? 'Remove' : 'Supprimer' }
+                <gcds-icon name="times" size="text" margin-left="200" />
+              </button>
+            </div>
           )) : null }
         </div>
       </Host>

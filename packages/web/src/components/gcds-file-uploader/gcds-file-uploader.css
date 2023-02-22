@@ -27,15 +27,18 @@
       background-color: var(--gcds-file-uploader-disabled-background);
       color: inherit;
       border-color: var(--gcds-file-uploader-disabled-text);
+      outline: 0;
     }
 
     .file-uploader__uploaded-file {
-      outline: 0;
-      background-color: var(--gcds-file-uploader-disabled-background);
-      color: var(--gcds-file-uploader-disabled-text);
+      color: inherit;
 
-      gcds-icon {
+      button {
         color: inherit;
+
+        &:focus {
+          background: transparent;
+        }
       }
     }
   }
@@ -46,8 +49,7 @@
     }
 
     .file-uploader__uploaded-file:not(:focus) {
-      background-color: var(--gcds-file-uploader-danger-background);
-      color: var(--gcds-file-uploader-danger-text);
+      border-color: var(--gcds-file-uploader-file-danger-border-color);
     }
   }
 }
@@ -55,6 +57,10 @@
 :host .file-uploader__input {
   position: relative;
   display: inline-block;
+
+  &.uploaded-files {
+    margin: var(--gcds-file-uploader-button-margin);
+  }
 
   button {
     font-family: inherit;
@@ -101,18 +107,14 @@
   width: 100%;
   max-width: var(--gcds-file-uploader-file-max-width);
   font: inherit;
-  background-color: var(--gcds-file-uploader-file-background);
+  font-weight: var(--gcds-file-uploader-button-font-weight);
   color: var(--gcds-file-uploader-default-text);
-  margin: var(--gcds-file-uploader-file-margin);
   padding: var(--gcds-file-uploader-file-padding);
-  border: 0;
-  border-radius: var(--gcds-file-uploader-file-border-radius);
-  outline: var(--gcds-file-uploader-button-outline-width) solid transparent;
-  outline-offset: var(--gcds-file-uploader-file-outline-offset);
+  border: var(--gcds-file-uploader-file-border-width) solid var(--gcds-file-uploader-file-border-color);
   cursor: pointer;
 
-  &:first-of-type {
-    margin: var(--gcds-file-uploader-file-margin-first-of-type);
+  &:not(:last-of-type) {
+    border-block-end: 0;
   }
 
   span {
@@ -122,31 +124,24 @@
     padding-inline-end: 0;
   }
 
-  gcds-icon {
-    pointer-events: none;
-    color: var(--gcds-file-uploader-file-icon-text);
-    background-color: var(--gcds-file-uploader-file-icon-background-default);
-    transition: color .15s ease-in-out;
-    border-radius: var(--gcds-file-uploader-file-border-radius);
-    padding: var(--gcds-file-uploader-file-icon-padding);
-  }
+  button {
+    display: flex;
+    align-items: center;
+    font: inherit;
+    background: transparent;
+    color: var(--gcds-file-uploader-file-button-default-text);
+    margin: var(--gcds-file-uploader-file-button-margin);
+    padding: var(--gcds-file-uploader-file-button-padding);
+    outline: 0;
+    transition: color .35s;
 
-  &:hover gcds-icon {
-    background-color: var(--gcds-file-uploader-file-icon-background-hover);
-  }
+    &:hover {
+      color: var(--gcds-file-uploader-file-button-hover-text);
+    }
 
-  &:active gcds-icon {
-    background-color: var(--gcds-file-uploader-file-icon-background-active);
-  }
-
-  &:focus-within {
-    background-color: var(--gcds-file-uploader-focus-button-background);
-    color: var(--gcds-file-uploader-focus-button-text);
-    outline-color: var(--gcds-file-uploader-focus-button-background);
-
-    span,
-    gcds-icon {
-      color: inherit;
+    &:focus {
+      background-color: var(--gcds-file-uploader-focus-button-background);
+      color: var(--gcds-file-uploader-focus-button-text);
     }
   }
 }
