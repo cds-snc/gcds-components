@@ -19,10 +19,8 @@ jobs:
       - name: Install repo
         run: npm install
       - name: Install web package
-        run: |
-          cd packages/web
-          npm install
-          cd ../..
+        working-directory: ./packages/web
+        run: npm i
       - name: Compile sass
         run: gulp compile
       - name: Run tests
