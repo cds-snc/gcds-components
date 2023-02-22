@@ -17,8 +17,12 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
       - name: Install
-        run: npm install
+        run: |
+          cd packages/web
+          npm install
       - name: Compile sass
-        run: gulp compile
+        run: |
+          cd ../..
+          gulp compile
       - name: Run tests
         run: npm run test
