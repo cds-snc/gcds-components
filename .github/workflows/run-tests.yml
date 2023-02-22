@@ -16,7 +16,9 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
-      - name: Install
+      - name: Install repo
+        run: npm install
+      - name: Install web package
         run: |
           cd packages/web
           npm install
