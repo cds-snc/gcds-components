@@ -1,4 +1,4 @@
-import { formProps, langProp } from '../../utils/storybook/component-properties';
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Input',
@@ -54,7 +54,52 @@ export default {
         defaultValue: { summary: '-' }
       }
     },
-    ...formProps,
+    disabled: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    errorMessage: {
+      name: 'error-message',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    hint: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    label: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
+    required: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    value: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     ...langProp,
 
     // Events
@@ -79,21 +124,21 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-input
   input-id="${args.inputId}"
   label="${args.label}"
-  type="${args.type}"
-  hint="${args.hint}"
-  error-message="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  size="${args.size}"
-  value="${args.value}"
-  autocomplete="${args.autocomplete}"
-  hide-label="${args.hideLabel}"
-  lang="${args.lang}"
+  ${args.type != "text" ? `type="${args.type}"` : null}
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.size ? `size="${args.size}"` : null}
+  ${args.autocomplete != "off" ? `autocomplete="${args.autocomplete}"` : null}
+  ${args.hideLabel ? `hide-label` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-input>
 
@@ -101,26 +146,26 @@ const Template = (args) => `
 <GcdsInput
   inputId="${args.inputId}"
   label="${args.label}"
-  type="${args.type}"
-  hint="${args.hint}"
-  errorMessage="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  size="${args.size}"
-  value="${args.value}"
-  autocomplete="${args.autocomplete}"
-  hideLabel="${args.hideLabel}"
-  lang="${args.lang}"
+  ${args.type != "text" ? `type="${args.type}"` : null}
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.size ? `size="${args.size}"` : null}
+  ${args.autocomplete != "off" ? `autocomplete="${args.autocomplete}"` : null}
+  ${args.hideLabel ? ` hideLabel` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsInput>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  inputId: '',
+  inputId: 'input',
   label: 'Input label',
   type: 'text',
-  hint: 'This is a hint.',
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,

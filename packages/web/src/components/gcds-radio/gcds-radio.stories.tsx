@@ -1,7 +1,4 @@
-import { formProps, langProp } from '../../utils/storybook/component-properties';
-
-// Removed unused form property
-delete formProps["errorMessage"];
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Radio',
@@ -43,7 +40,44 @@ export default {
         defaultValue: { summary: false }
       },
     },
-    ...formProps,
+    disabled: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    hint: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    label: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
+    required: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    value: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     ...langProp,
 
     // Events
@@ -68,18 +102,18 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-radio
   radio-id="${args.radioId}"
   label="${args.label}"
   name="${args.name}"
-  hint="${args.hint}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  checked="${args.checked}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.checked ? `checked` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-radio>
 
@@ -88,22 +122,22 @@ const Template = (args) => `
   radioId="${args.radioId}"
   label="${args.label}"
   name="${args.name}"
-  hint="${args.hint}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  checked="${args.checked}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.checked ? `checked` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsRadio>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
   radioId: 'radio',
   label: 'Radio label',
   name: 'radio',
-  hint: 'This is a hint.',
+  hint: '',
   required: false,
   disabled: false,
   value: '',

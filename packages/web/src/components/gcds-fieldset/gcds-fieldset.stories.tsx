@@ -1,8 +1,4 @@
-import { formProps, langProp } from '../../utils/storybook/component-properties';
-
-// Remove unused form properties
-delete formProps["label"];
-delete formProps["value"];
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Fieldset',
@@ -37,7 +33,35 @@ export default {
         required: true
       }
     },
-    ...formProps,
+    disabled: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    errorMessage: {
+      name: 'error-message',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    hint: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    required: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
     ...langProp,
 
     // Events
@@ -56,16 +80,16 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-fieldset
   fieldset-id="${args.fieldsetId}"
   legend="${args.legend}"
-  hint="${args.hint}"
-  error-message="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <gcds-radio radio-id="r1" name="radio" label="Radio button 1"></gcds-radio>
   <gcds-radio radio-id="r2" name="radio" label="Radio button 2"></gcds-radio>
@@ -75,22 +99,22 @@ const Template = (args) => `
 <GcdsFieldset
   fieldsetId="${args.fieldsetId}"
   legend="${args.legend}"
-  hint="${args.hint}"
-  error-message="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <GcdsRadio radioId="r1" name="radio" label="Radio button 1"></GcdsRadio>
   <GcdsRadio radioId="r2" name="radio" label="Radio button 2"></GcdsRadio>
 </GcdsFieldset>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
   fieldsetId: 'fieldset',
   legend: 'Fieldset legend',
-  hint: 'This is a hint.',
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,

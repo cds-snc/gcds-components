@@ -31,21 +31,23 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-stepper
   current-step="${args.currentStep}"
   total-steps="${args.totalSteps}"
-  lang="${args.lang}"
-></gcds-stepper>
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+>
+</gcds-stepper>
 
 // React code
 <GcdsStepper
   currentStep="${args.currentStep}"
   totalSteps="${args.totalSteps}"
-  lang="${args.lang}"
-></GcdsStepper>
-`;
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+>
+</GcdsStepper>
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {

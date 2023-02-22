@@ -1,4 +1,4 @@
-import { formProps, langProp } from '../../utils/storybook/component-properties';
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Textarea',
@@ -38,7 +38,52 @@ export default {
         defaultValue: { summary: '5' }
       },
     },
-    ...formProps,
+    disabled: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    errorMessage: {
+      name: 'error-message',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    hint: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    label: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
+    required: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    value: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     ...langProp,
 
     // Events
@@ -63,19 +108,19 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-textarea
   textarea-id="${args.textareaId}"
   label="${args.label}"
-  hint="${args.hint}"
-  error-message="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  rows="${args.rows}"
-  value="${args.value}"
-  hide-label="${args.hideLabel}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.rows ? `rows="${args.rows}"` : null}
+  ${args.hideLabel ? `hide-label` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-textarea>
 
@@ -83,23 +128,23 @@ const Template = (args) => `
 <GcdsTextarea
   textareaId="${args.textareaId}"
   label="${args.label}"
-  hint="${args.hint}"
-  errorMessage="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  rows="${args.rows}"
-  value="${args.value}"
-  hideLabel="${args.hideLabel}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.rows ? `rows="${args.rows}"` : null}
+  ${args.hideLabel ? `hideLabel` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsTextarea>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  textareaId: '',
+  textareaId: 'textarea',
   label: 'Textarea label',
-  hint: 'This is a hint.',
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,

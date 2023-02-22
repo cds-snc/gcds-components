@@ -1,4 +1,4 @@
-import { formProps, langProp } from '../../utils/storybook/component-properties';
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Checkbox',
@@ -40,7 +40,52 @@ export default {
         defaultValue: { summary: false }
       },
     },
-    ...formProps,
+    disabled: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    errorMessage: {
+      name: 'error-message',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    hint: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    label: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
+    required: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    value: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     ...langProp,
 
     // Events
@@ -65,19 +110,19 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-checkbox
   checkbox-id="${args.checkboxId}"
   label="${args.label}"
   name="${args.name}"
-  hint="${args.hint}"
-  error-message="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  checked="${args.checked}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.checked ? `checked` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-checkbox>
 
@@ -86,23 +131,23 @@ const Template = (args) => `
   checkboxId="${args.checkboxId}"
   label="${args.label}"
   name="${args.name}"
-  hint="${args.hint}"
-  error-message="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  checked="${args.checked}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.checked ? `checked` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsCheckbox>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
   checkboxId: 'checkbox',
   label: 'Checkbox label',
   name: 'checkbox',
-  hint: 'This is a hint.',
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,

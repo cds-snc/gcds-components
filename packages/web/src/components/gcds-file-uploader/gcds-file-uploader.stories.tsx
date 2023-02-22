@@ -1,4 +1,4 @@
-import { formProps, langProp } from '../../utils/storybook/component-properties';
+import { langProp } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/File uploader',
@@ -37,7 +37,52 @@ export default {
         required: true
       }
     },
-    ...formProps,
+    disabled: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    errorMessage: {
+      name: 'error-message',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    hint: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    label: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
+    required: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    value: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     ...langProp,
 
     // Events
@@ -62,19 +107,19 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-file-uploader
   uploader-id="${args.uploaderId}"
   label="${args.label}"
-  hint="${args.hint}"
-  error-message="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  accept="${args.accept}"
-  multiple="${args.multiple}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.accept ? `accept="${args.accept}"` : null}
+  ${args.multiple ? `multiple` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-file-uploader>
 
@@ -82,28 +127,28 @@ const Template = (args) => `
 <GcdsFileUploader
   uploaderId="${args.uploaderId}"
   label="${args.label}"
-  hint="${args.hint}"
-  errorMessage="${args.errorMessage}"
-  required="${args.required}"
-  disabled="${args.disabled}"
-  value="${args.value}"
-  accept="${args.accept}"
-  multiple="${args.multiple}"
-  lang="${args.lang}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.accept ? `accept="${args.accept}"` : null}
+  ${args.multiple ? `multiple` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsFileUploader>
-`;
+`).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  uploaderId: '',
+  uploaderId: 'uploader',
   label: 'File uploader label',
-  hint: 'This is a hint.',
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
   accept: '',
-  multiple: true,
+  multiple: false,
   lang: 'en',
 };
