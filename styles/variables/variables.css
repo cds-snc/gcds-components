@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 08 Feb 2023 19:49:02 GMT
+ * Generated on Wed, 22 Feb 2023 16:40:36 GMT
  */
 
 :root {
@@ -172,8 +172,8 @@
   --gcds-button-danger-default-background: #a62a1e;
   --gcds-button-danger-default-text: #ffffff;
   --gcds-button-danger-hover-background: #822117;
-  --gcds-button-font: 400 1.25rem/120% "Noto Sans", sans-serif;
-  --gcds-button-padding: 1.125rem 0.75rem;
+  --gcds-button-font: 500 1.25rem/120% "Noto Sans", sans-serif;
+  --gcds-button-padding: 0.75rem;
   --gcds-button-primary-default-background: #26374a;
   --gcds-button-primary-default-text: #ffffff;
   --gcds-button-primary-hover-background: #425a76;
@@ -181,6 +181,9 @@
   --gcds-button-secondary-default-text: #425a76;
   --gcds-button-secondary-hover-background: #d7e5f5;
   --gcds-button-secondary-active-background: #d7e5f5;
+  --gcds-button-text-only-default-background: transparent;
+  --gcds-button-text-only-default-text: #425a76;
+  --gcds-button-text-only-hover-text: #26374a;
   --gcds-button-shared-active-background: #000000;
   --gcds-button-shared-active-text: #ffffff;
   --gcds-button-shared-focus-background: #303fc3;
@@ -213,8 +216,8 @@
   --gcds-checkbox-margin: 2.25rem 0 1.5rem;
   --gcds-checkbox-top: -0.75rem;
   --gcds-date-modified-description-margin: 0 0 0 0.1875rem;
-  --gcds-date-modified-font: 400 1.25rem/120% "Noto Sans", sans-serif;
-  --gcds-date-modified-margin: 3rem 0 0;
+  --gcds-date-modified-font: 400 1.1111111111111112rem/135% "Noto Sans", sans-serif;
+  --gcds-date-modified-margin: 3rem 0 1.5rem;
   --gcds-date-modified-text: #000000;
   --gcds-details-default-text: #425a76;
   --gcds-details-active-background: #000000;
@@ -255,27 +258,23 @@
   --gcds-file-uploader-button-border-width: 0.125rem;
   --gcds-file-uploader-button-font-weight: 500;
   --gcds-file-uploader-button-outline-width: 0.1875rem;
-  --gcds-file-uploader-button-padding: 1.125rem 0.75rem;
+  --gcds-file-uploader-button-margin: 0 0 1.125rem;
+  --gcds-file-uploader-button-padding: 0.75rem;
   --gcds-file-uploader-button-text: #425a76;
-  --gcds-file-uploader-danger-background: #fbddda;
   --gcds-file-uploader-danger-text: #a62a1e;
   --gcds-file-uploader-default-text: #000000;
   --gcds-file-uploader-disabled-background: #d6d9dd;
   --gcds-file-uploader-disabled-text: #7d828b;
   --gcds-file-uploader-font: 400 1.25rem/120% "Noto Sans", sans-serif;
-  --gcds-file-uploader-file-background: #d6d9dd;
-  --gcds-file-uploader-file-border-radius: 3rem;
-  --gcds-file-uploader-file-icon-background-default: #c24438;
-  --gcds-file-uploader-file-icon-background-hover: #822117;
-  --gcds-file-uploader-file-icon-background-active: #000000;
-  --gcds-file-uploader-file-icon-text: #ffffff;
-  --gcds-file-uploader-file-icon-padding: 0.5625rem;
-  --gcds-file-uploader-file-margin: 0.75rem 0 0;
-  --gcds-file-uploader-file-margin-first-of-type: 1.125rem 0 0;
+  --gcds-file-uploader-file-border-color: #7d828b;
+  --gcds-file-uploader-file-border-width: 0.125rem;
+  --gcds-file-uploader-file-button-default-text: #a62a1e;
+  --gcds-file-uploader-file-button-hover-text: #822117;
+  --gcds-file-uploader-file-button-margin: 0 0 0 2.25rem;
+  --gcds-file-uploader-file-button-padding: 0.75rem 0.1875rem;
+  --gcds-file-uploader-file-danger-border-color: #c24438;
   --gcds-file-uploader-file-max-width: 30rem;
-  --gcds-file-uploader-file-outline-offset: .125rem;
-  --gcds-file-uploader-file-outline-width: 0.1875rem;
-  --gcds-file-uploader-file-padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+  --gcds-file-uploader-file-padding: 0.75rem 1.125rem;
   --gcds-file-uploader-focus-button-background: #303fc3;
   --gcds-file-uploader-focus-button-text: #ffffff;
   --gcds-file-uploader-focus-text: #303fc3;
@@ -291,7 +290,7 @@
   --gcds-footer-main-background: #26374a;
   --gcds-footer-main-govnav-padding: 1.125rem 0;
   --gcds-footer-main-nav-first-after-border-color: #ffffff;
-  --gcds-footer-main-nav-first-after-border-width: 0.375rem;
+  --gcds-footer-main-nav-first-after-border-width: 0.25rem;
   --gcds-footer-main-nav-first-after-width: 2.25rem;
   --gcds-footer-main-text: #ffffff;
   --gcds-footer-main-themenav-padding: 0.75rem 0 1.125rem;
@@ -398,7 +397,7 @@
   --gcds-input-min-width-and-height: 3rem;
   --gcds-input-outline-width: 0.1875rem;
   --gcds-input-padding: 0.75rem;
-  --gcds-label-font: 500 1.25rem/120% "Noto Sans", sans-serif;
+  --gcds-label-font: 600 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-label-margin: 0 0 0.375rem;
   --gcds-label-required-margin: 0 0 0 0.375rem;
   --gcds-lang-toggle-active-background: #000000;
