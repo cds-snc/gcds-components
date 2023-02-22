@@ -9,14 +9,10 @@ jobs:
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
       - name: Install repo
         run: npm install
-      - name: Install web package
-        run: |
-          cd packages/web
-          npm install
+      - name: Install packages
+        run: npm install --workspaces
       - name: Compile sass
-        run: |
-          cd ../..
-          gulp compile
+        run: gulp compile
       - name: Run tests
         run: npm run test
       - name: Compile components
