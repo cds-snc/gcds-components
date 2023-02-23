@@ -3,7 +3,7 @@
   cursor: pointer;
   font: var(--gcds-button-font);
   padding: var(--gcds-button-padding);
-  border: var(--gcds-button-border-width) solid;
+  border: var(--gcds-button-border-width) solid transparent;
   text-decoration: none;
   border-radius: var(--gcds-button-border-radius);
   display: inline-block;
@@ -14,7 +14,6 @@
   /* Button Role Styles */
   &.button--role-danger {
     background-color: var(--gcds-button-danger-default-background);
-    border-color: var(--gcds-button-danger-default-background);
     color: var(--gcds-button-danger-default-text);
 
     &:hover {
@@ -28,7 +27,6 @@
 
   &.button--role-primary {
     background-color: var(--gcds-button-primary-default-background);
-    border-color: var(--gcds-button-primary-default-background);
     color: var(--gcds-button-primary-default-text);
 
     &:hover {
@@ -40,14 +38,13 @@
     }
   }
 
-  &.button--role-secondary,
-  &.button--text-only {
+  &.button--role-secondary {
     background-color: var(--gcds-button-secondary-default-background);
     color: var(--gcds-button-secondary-default-text);
     border: var(--gcds-button-border-width) solid currentColor;
 
-    &.active,
     &:hover {
+      background-color: var(--gcds-button-secondary-hover-background);
       border-color: var(--gcds-button-secondary-default-text);
       color: var(--gcds-button-secondary-default-text);
 
@@ -55,24 +52,25 @@
         outline-color: var(--gcds-button-secondary-default-text);
       }
     }
-
-    &:hover {
-      background-color: var(--gcds-button-secondary-hover-background);
-    }
-
-    &:active {
-      background-color: var(--gcds-button-secondary-active-background);
-    }
   }
 
   &.button--text-only {
+    background-color: var(--gcds-button-text-only-default-background);
+    color: var(--gcds-button-text-only-default-text);
+    border-radius: 0;
+
     &:not([aria-disabled="true"]) {
       text-decoration: underline;
       text-underline-position: under;
     }
 
-    &:not(:active):not(:hover):not([aria-disabled="true"]) {
-      border-color: transparent;
+    &:focus:not(:active) {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: var(--gcds-button-text-only-default-background);
+      color: var(--gcds-button-text-only-hover-text);
     }
   }
 
@@ -105,13 +103,16 @@
   &:focus,
   &:focus-visible {
     background-color: var(--gcds-button-shared-focus-background);
-    border-color: var(--gcds-button-shared-focus-background);
     color: var(--gcds-button-shared-focus-text);
     outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
     outline-offset: var(--gcds-button-border-width);
+
+    &:not(:hover) {
+      border-color: var(--gcds-button-shared-focus-background);
+    }
   }
 
-  &.button--solid:not(.secondary):active {
+  &:active {
     background-color: var(--gcds-button-shared-active-background);
     color: var(--gcds-button-shared-active-text);
 
