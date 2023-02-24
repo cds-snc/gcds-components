@@ -1232,11 +1232,11 @@ declare namespace LocalJSX {
         /**
           * Error message for an invalid form field.
          */
-        "message": string;
+        "message"?: string;
         /**
           * Id attribute for the error message.
          */
-        "messageId": string;
+        "messageId"?: string;
     }
     interface GcdsFieldset {
         /**
