@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components-angular",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Angular wrapper for gcds-components",
   "homepage": "https://cds-design-snc.netlify.app/",
@@ -26,7 +26,7 @@
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0",
-    "@cdssnc/gcds-components": "^0.9.0"
+    "@cdssnc/gcds-components": "^0.9.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"
