@@ -1,4 +1,4 @@
-import { langProp } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Select',
@@ -77,6 +77,7 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
+    ...validatorProps,
     ...langProp,
 
     // Events
@@ -112,6 +113,7 @@ const Template = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.defaultValue ? `default-value="${args.defaultValue}"` : null}
+  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <option value="1">Option 1</option>
@@ -129,6 +131,7 @@ const Template = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.defaultValue ? `defaultValue="${args.defaultValue}"` : null}
+  ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <option value="1">Option 1</option>
@@ -147,5 +150,6 @@ Default.args = {
   disabled: false,
   value: '',
   defaultValue: 'Choose an option.',
+  validateOn: 'blur',
   lang: 'en',
 };

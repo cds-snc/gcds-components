@@ -1,4 +1,4 @@
-import { langProp } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Textarea',
@@ -84,6 +84,7 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
+    ...validatorProps,
     ...langProp,
 
     // Events
@@ -120,6 +121,7 @@ const Template = (args) => (`
   ${args.value ? `value="${args.value}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
   ${args.hideLabel ? `hide-label` : null}
+  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-textarea>
@@ -135,6 +137,7 @@ const Template = (args) => (`
   ${args.value ? `value="${args.value}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
   ${args.hideLabel ? `hideLabel` : null}
+  ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsTextarea>
@@ -151,5 +154,6 @@ Default.args = {
   rows: '',
   value: '',
   hideLabel: false,
+  validateOn: 'blur',
   lang: 'en',
 };

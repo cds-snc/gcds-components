@@ -1,4 +1,4 @@
-import { langProp } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Fieldset',
@@ -62,6 +62,7 @@ export default {
         defaultValue: { summary: false }
       },
     },
+    ...validatorProps,
     ...langProp,
 
     // Events
@@ -89,6 +90,7 @@ const Template = (args) => (`
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <gcds-radio radio-id="r1" name="radio" label="Radio button 1"></gcds-radio>
@@ -103,6 +105,7 @@ const Template = (args) => (`
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <GcdsRadio radioId="r1" name="radio" label="Radio button 1"></GcdsRadio>
@@ -118,5 +121,6 @@ Default.args = {
   errorMessage: '',
   required: false,
   disabled: false,
+  validateOn: 'blur',
   lang: 'en'
 };
