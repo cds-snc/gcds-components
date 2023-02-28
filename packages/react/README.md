@@ -1,4 +1,4 @@
-[La version française suit.](#système-de-design---composants-gc)
+[La version française suit.](#composants-de-système-de-design-gc-—-react)
 
 # GC Design System Components – React
 
@@ -11,6 +11,8 @@ You can find the full documentation for GC Design System Components on [https://
 ## Installation
 
 ### Install from npm
+
+Navigate to the root folder of your project and run:
 
 ``` js
 npm install @cdssnc/gcds-components @cdssnc/gcds-components-react
@@ -32,11 +34,19 @@ Code released under the [MIT License](https://github.com/cds-snc/gcds-components
 
 --------
 
-# Système de design - composants GC
+# Composants de Système de design GC — React
+
+Composants de Système de design GC — React fournit des [composants de Système de design GC](../web/README.md) dans un encapsulateur React afin de faciliter l’intégration dans les applications React.
+
+## Documentation
+
+Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://cds-design-snc.netlify.app/fr/](https://cds-design-snc.netlify.app/fr/).
 
 ## Installation
 
 ### Installer le paquet avec npm
+
+Naviguez jusqu'au dossier racine de votre projet et exécutez :
 
 ``` js
 npm install @cdssnc/gcds-components @cdssnc/gcds-components-react
@@ -47,3 +57,11 @@ Insérez le code qui suit dans le fichier `index.js` de votre application.
 ``` jsx
 import '@cdssnc/gcds-components-react/gcds.css'
 ```
+
+## Apportez votre contribution
+
+Si vous souhaitez contribuer aux unités de style de Système de design GC, veuillez lire nos [lignes directrices sur la contribution](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
+
+## Licence
+
+Code publié en vertu de la [licence MIT](https://github.com/cds-snc/gcds-components/blob/main/LICENSE) (en anglais).
