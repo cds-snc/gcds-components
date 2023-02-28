@@ -18,8 +18,10 @@ jobs:
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
       - name: Install repo
         run: npm install
-      - name: Install web package
-        working-directory: ./packages/web
+      - name: FA dependency
+        run: |
+          npm i @fortawesome/fontawesome-free
+          mv ./node_modules/@fortawesome ./packages/web/node_modules
         run: npm i
       - name: Compile sass
         run: gulp compile
