@@ -19,7 +19,7 @@ export class GcdsLangToggle {
   /**
    * The href attribute specifies the URL of the opposite language page
    */
-  @Prop({ reflect: false, mutable: false }) href!: string;
+  @Prop({ reflect: true, mutable: false }) href!: string;
 
   async componentWillLoad() {
     // Define lang attribute

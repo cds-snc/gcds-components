@@ -183,6 +183,9 @@ export class GcdsButton {
 
           const formButton = document.createElement('button');
           formButton.type = this.type;
+          if (this.name) {
+            formButton.name = this.name;
+          }
           formButton.style.display = 'none';
           form.appendChild(formButton);
           formButton.click();
