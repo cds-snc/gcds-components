@@ -111,7 +111,7 @@ describe('gcds-textarea', () => {
       <gcds-textarea label="Label" textarea-id="textarea-with-error" error-message="This is an error message.">
         <div class="gcds-textarea-wrapper gcds-error">
           <gcds-label label-for="textarea-with-error" label="Label" lang="en"></gcds-label>
-          <gcds-error-message message-id="textarea-with-error" message="This is an error message."></gcds-error-message>
+          <gcds-error-message messageid="textarea-with-error" message="This is an error message."></gcds-error-message>
           <textarea
             id="textarea-with-error"
             class="gcds-error"

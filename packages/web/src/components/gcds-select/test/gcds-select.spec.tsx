@@ -49,7 +49,7 @@ describe('gcds-select', () => {
       <gcds-select select-id="select" label="select" error-message="This is an error message.">
         <div class="gcds-select-wrapper gcds-error">
           <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-          <gcds-error-message message="This is an error message." message-id="select"></gcds-error-message>
+          <gcds-error-message message="This is an error message." messageid="select"></gcds-error-message>
           <select id="select" name="select" aria-invalid="true" aria-describedby=" error-message-select">
           </select>
         </div>

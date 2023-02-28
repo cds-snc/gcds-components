@@ -61,7 +61,7 @@ describe('gcds-file-uploader', () => {
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" error-message="This is an error message.">
         <div class="gcds-file-uploader-wrapper gcds-error">
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
-          <gcds-error-message message="This is an error message." message-id="file-uploader"></gcds-error-message>
+          <gcds-error-message message="This is an error message." messageid="file-uploader"></gcds-error-message>
           <div class="file-uploader__input">
             <button tabindex="-1">
               Upload a file

@@ -281,7 +281,7 @@ export class GcdsFileUploader {
           {hint ? <gcds-hint hint={hint} hint-id={uploaderId} />: null}
 
           {errorMessage ?
-            <gcds-error-message message-id={uploaderId} message={errorMessage} />
+            <gcds-error-message messageId={uploaderId} message={errorMessage} />
           : null}
 
           <div class={`file-uploader__input ${value.length > 0 ? "uploaded-files" : ''}`}>

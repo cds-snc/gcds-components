@@ -75,7 +75,7 @@ describe('gcds-checkbox', () => {
         <div class="gcds-checkbox gcds-checkbox--error">
            <input aria-describedby=" error-message-checkbox" aria-invalid="true" id="checkbox" name="checkbox" type="checkbox">
            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
-           <gcds-error-message message="This needs to be checked" message-id="checkbox"></gcds-error-message>
+           <gcds-error-message message="This needs to be checked" messageid="checkbox"></gcds-error-message>
          </div>
       </gcds-checkbox>
     `);

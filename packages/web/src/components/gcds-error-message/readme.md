@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                              | Type     | Default     |
-| ----------- | ------------ | ---------------------------------------- | -------- | ----------- |
-| `message`   | `message`    | Error message for an invalid form field. | `string` | `undefined` |
-| `messageId` | `message-id` | Id attribute for the error message.      | `string` | `undefined` |
+| Property                 | Attribute    | Description                              | Type     | Default     |
+| ------------------------ | ------------ | ---------------------------------------- | -------- | ----------- |
+| `message` _(required)_   | `message`    | Error message for an invalid form field. | `string` | `undefined` |
+| `messageId` _(required)_ | `message-id` | Id attribute for the error message.      | `string` | `undefined` |
 
 
 ## Dependencies

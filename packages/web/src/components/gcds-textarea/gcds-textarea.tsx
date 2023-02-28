@@ -269,7 +269,7 @@ export class GcdsTextarea {
           {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
 
           {errorMessage ?
-            <gcds-error-message message-id={textareaId} message={errorMessage} />
+            <gcds-error-message messageId={textareaId} message={errorMessage} />
           : null}
 
           <textarea

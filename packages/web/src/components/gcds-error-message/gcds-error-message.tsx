@@ -16,12 +16,12 @@ export class GcdsErrorMessage {
   /**
    * Id attribute for the error message.
    */
-  @Prop() messageId: string;
+  @Prop() messageId!: string;
 
   /**
    * Error message for an invalid form field.
    */
-  @Prop() message: string;
+  @Prop() message!: string;
 
   render() {
     const { messageId, message } = this;

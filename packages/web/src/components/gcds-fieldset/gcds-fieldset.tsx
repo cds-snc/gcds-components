@@ -210,7 +210,7 @@ export class GcdsFieldset {
 
           {hint ? <gcds-hint hint={hint} hint-id={fieldsetId} /> : null}
 
-          {errorMessage ? <gcds-error-message message-id={fieldsetId} message={errorMessage} /> : null}
+          {errorMessage ? <gcds-error-message messageId={fieldsetId} message={errorMessage} /> : null}
           <slot></slot>
         </fieldset>
       </Host>
