@@ -1,4 +1,4 @@
-[La version française suit.](#composants-de-système-de-design-gc-—-web)
+[La version française suit.](#composants-de-système-de-design-gc--angular)
 
 # GC Design System Components – Angular
 
