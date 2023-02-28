@@ -22,7 +22,6 @@ jobs:
         run: |
           npm i @fortawesome/fontawesome-free
           mv ./node_modules/@fortawesome ./packages/web/node_modules
-        run: npm i
       - name: Compile sass
         run: gulp compile
       - name: Run tests
