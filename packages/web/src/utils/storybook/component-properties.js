@@ -58,7 +58,20 @@ const langProp = {
     },
   };
 
+const validatorProps = {
+  validateOn: {
+    name: 'validate-on',
+    control: { type: 'select' },
+    options: ['blur', 'other'],
+    table: {
+      type: { summary: 'string' },
+      defaultValue: { summary: 'blur' }
+    },
+  },
+};
+
 module.exports = {
-    formProps,
-    langProp
+  formProps,
+  validatorProps,
+  langProp
 };

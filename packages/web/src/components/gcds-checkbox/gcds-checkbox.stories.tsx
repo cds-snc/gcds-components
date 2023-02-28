@@ -1,4 +1,4 @@
-import { langProp } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Checkbox',
@@ -86,6 +86,7 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
+    ...validatorProps,
     ...langProp,
 
     // Events
@@ -122,6 +123,7 @@ const Template = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
+  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-checkbox>
@@ -137,6 +139,7 @@ const Template = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
+  ${args.validateOn != "blur" ? `validate)n="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsCheckbox>
@@ -153,5 +156,6 @@ Default.args = {
   disabled: false,
   value: '',
   checked: false,
+  validateOn: 'blur',
   lang: 'en'
 };

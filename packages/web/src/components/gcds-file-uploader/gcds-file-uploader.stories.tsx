@@ -1,4 +1,4 @@
-import { langProp } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/File uploader',
@@ -83,6 +83,7 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
+    ...validatorProps,
     ...langProp,
 
     // Events
@@ -119,6 +120,7 @@ const Template = (args) => (`
   ${args.value ? `value="${args.value}"` : null}
   ${args.accept ? `accept="${args.accept}"` : null}
   ${args.multiple ? `multiple` : null}
+  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-file-uploader>
@@ -134,6 +136,7 @@ const Template = (args) => (`
   ${args.value ? `value="${args.value}"` : null}
   ${args.accept ? `accept="${args.accept}"` : null}
   ${args.multiple ? `multiple` : null}
+  ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsFileUploader>
@@ -150,5 +153,6 @@ Default.args = {
   value: '',
   accept: '',
   multiple: false,
+  validateOn: 'blur',
   lang: 'en',
 };

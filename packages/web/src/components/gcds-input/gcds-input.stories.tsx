@@ -1,4 +1,4 @@
-import { langProp } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Input',
@@ -100,6 +100,7 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
+    ...validatorProps,
     ...langProp,
 
     // Events
@@ -138,6 +139,7 @@ const Template = (args) => (`
   ${args.size ? `size="${args.size}"` : null}
   ${args.autocomplete != "off" ? `autocomplete="${args.autocomplete}"` : null}
   ${args.hideLabel ? `hide-label` : null}
+  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-input>
@@ -155,6 +157,7 @@ const Template = (args) => (`
   ${args.size ? `size="${args.size}"` : null}
   ${args.autocomplete != "off" ? `autocomplete="${args.autocomplete}"` : null}
   ${args.hideLabel ? ` hideLabel` : null}
+  ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsInput>
@@ -173,5 +176,6 @@ Default.args = {
   value: '',
   autocomplete: 'off',
   hideLabel: false,
+  validateOn: 'blur',
   lang: 'en',
 };
