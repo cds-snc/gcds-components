@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 22 Feb 2023 16:40:36 GMT
+ * Generated on Wed, 01 Mar 2023 15:58:53 GMT
  */
 
 :root {
@@ -16,6 +16,7 @@
   --gcds-color-grayscale-300: #a8adb4;
   --gcds-color-grayscale-500: #7d828b; /* Must contrast 3:1 with white */
   --gcds-color-grayscale-700: #545961; /* Must contrast 7:1 with white */
+  --gcds-color-grayscale-800: #43474e;
   --gcds-color-grayscale-900: #2f3238;
   --gcds-color-grayscale-1000: #000000;
   --gcds-color-green-100: #e6f6ec;
@@ -103,7 +104,7 @@
   --gcds-danger-border: #c24438; /* Global color: danger border */
   --gcds-danger-text: #a62a1e; /* Global color: danger text */
   --gcds-disabled-background: #d6d9dd; /* Global color: disabled background */
-  --gcds-disabled-text: #7d828b; /* Global color: disabled text */
+  --gcds-disabled-text: #545961; /* Global color: disabled text */
   --gcds-focus-background: #303fc3; /* Global color: focus background */
   --gcds-focus-text: #ffffff; /* Global color: focus text */
   --gcds-focus-text-form: #303fc3; /* Global color: focus text form elements */
@@ -112,7 +113,7 @@
   --gcds-link-light: #ffffff; /* Global color: link light */
   --gcds-text-light: #ffffff; /* Global color: text light */
   --gcds-text-primary: #000000; /* Global color: text primary */
-  --gcds-text-secondary: #545961; /* Global color: text secondary */
+  --gcds-text-secondary: #43474e; /* Global color: text secondary */
   --gcds-outline-width: 0.1875rem; /* Global outline: width */
   --gcds-alert-border-width: 0.375rem;
   --gcds-alert-button-border-radius: 0.375rem;
@@ -190,7 +191,7 @@
   --gcds-button-shared-focus-outline-width: 0.1875rem;
   --gcds-button-shared-focus-text: #ffffff;
   --gcds-button-shared-disabled-background: #d6d9dd;
-  --gcds-button-shared-disabled-text: #7d828b;
+  --gcds-button-shared-disabled-text: #545961;
   --gcds-button-skip-top: 1.5rem;
   --gcds-button-small-font: 400 80%/120% "Noto Sans", sans-serif;
   --gcds-button-small-padding: 0.75rem;
@@ -202,8 +203,8 @@
   --gcds-checkbox-danger-text: #a62a1e;
   --gcds-checkbox-default-text: #000000;
   --gcds-checkbox-disabled-background: #d6d9dd;
-  --gcds-checkbox-disabled-border: #7d828b;
-  --gcds-checkbox-disabled-text: #7d828b;
+  --gcds-checkbox-disabled-border: #545961;
+  --gcds-checkbox-disabled-text: #545961;
   --gcds-checkbox-error-padding: 0 0 0 3.75rem;
   --gcds-checkbox-focus-text: #303fc3;
   --gcds-checkbox-focus-outline-width: 0.1875rem;
@@ -248,7 +249,7 @@
   --gcds-error-message-text: #000000;
   --gcds-fieldset-danger-text: #a62a1e;
   --gcds-fieldset-default-text: #000000;
-  --gcds-fieldset-disabled-text: #7d828b;
+  --gcds-fieldset-disabled-text: #545961;
   --gcds-fieldset-focus-text: #303fc3;
   --gcds-fieldset-font: 600 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-fieldset-legend-margin: 0 0 0.1875rem;
@@ -264,10 +265,11 @@
   --gcds-file-uploader-danger-text: #a62a1e;
   --gcds-file-uploader-default-text: #000000;
   --gcds-file-uploader-disabled-background: #d6d9dd;
-  --gcds-file-uploader-disabled-text: #7d828b;
+  --gcds-file-uploader-disabled-text: #545961;
   --gcds-file-uploader-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-file-uploader-file-border-color: #7d828b;
   --gcds-file-uploader-file-border-width: 0.125rem;
+  --gcds-file-uploader-file-button-border-width: 0.0625rem;
   --gcds-file-uploader-file-button-default-text: #a62a1e;
   --gcds-file-uploader-file-button-hover-text: #822117;
   --gcds-file-uploader-file-button-margin: 0 0 0 2.25rem;
@@ -390,7 +392,7 @@
   --gcds-input-default-background: #ffffff;
   --gcds-input-default-text: #000000;
   --gcds-input-disabled-background: #d6d9dd;
-  --gcds-input-disabled-text: #7d828b;
+  --gcds-input-disabled-text: #545961;
   --gcds-input-focus-text: #303fc3;
   --gcds-input-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-input-margin: 0 0 1.5rem;
@@ -451,8 +453,8 @@
   --gcds-radio-danger-text: #a62a1e;
   --gcds-radio-default-text: #000000;
   --gcds-radio-disabled-background: #d6d9dd;
-  --gcds-radio-disabled-border: #7d828b;
-  --gcds-radio-disabled-text: #7d828b;
+  --gcds-radio-disabled-border: #545961;
+  --gcds-radio-disabled-text: #545961;
   --gcds-radio-focus-text: #303fc3;
   --gcds-radio-focus-outline-width: 0.1875rem;
   --gcds-radio-font: 400 1.25rem/120% "Noto Sans", sans-serif;
@@ -469,7 +471,7 @@
   --gcds-select-default-background: #ffffff;
   --gcds-select-default-text: #000000;
   --gcds-select-disabled-background: #d6d9dd;
-  --gcds-select-disabled-text: #7d828b;
+  --gcds-select-disabled-text: #545961;
   --gcds-select-focus-text: #303fc3;
   --gcds-select-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-select-margin: 0 0 1.5rem;
@@ -500,14 +502,14 @@
   --gcds-site-menu-submenu-trigger-text: #000000;
   --gcds-stepper-font: 600 1.40625rem/124.44444444444444% "Lato", sans-serif;
   --gcds-stepper-margin: 0 0 1.125rem;
-  --gcds-stepper-text: #545961;
+  --gcds-stepper-text: #43474e;
   --gcds-textarea-border-radius: 0.1875rem;
   --gcds-textarea-border-width: 0.125rem;
   --gcds-textarea-danger-text: #a62a1e;
   --gcds-textarea-default-background: #ffffff;
   --gcds-textarea-default-text: #000000;
   --gcds-textarea-disabled-background: #d6d9dd;
-  --gcds-textarea-disabled-text: #7d828b;
+  --gcds-textarea-disabled-text: #545961;
   --gcds-textarea-focus-text: #303fc3;
   --gcds-textarea-font: 400 1.25rem/120% "Noto Sans", sans-serif;
   --gcds-textarea-margin: 0 0 1.5rem;
