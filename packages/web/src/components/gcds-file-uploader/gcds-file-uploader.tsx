@@ -318,7 +318,7 @@ export class GcdsFileUploader {
             >
               <span>{file}</span>
               <button onClick={(e) => this.removeFile(e)}>
-                { lang == 'en' ? 'Remove' : 'Supprimer' }
+                <span>{ lang == 'en' ? 'Remove' : 'Supprimer' }</span>
                 <gcds-icon name="times" size="text" margin-left="200" />
               </button>
             </div>
