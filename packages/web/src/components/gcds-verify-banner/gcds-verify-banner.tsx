@@ -1,5 +1,5 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { Component, Element, Host, Prop, State, h } from '@stencil/core';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 
 import CanadaFlag from './assets/canada-flag.svg';
 import ContentToggleArrow from './assets/content-toggle-arrow.svg';
@@ -12,8 +12,6 @@ import Lock from './assets/lock.svg';
 })
 export class GcdsVerifyBanner {
   @Element() el: HTMLElement;
-
-  private lang: string;
 
 
   /**
@@ -30,9 +28,28 @@ export class GcdsVerifyBanner {
    */
   @Prop() isFixed?: boolean = false;
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
   }
 
   render() {

@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-alert',
@@ -9,9 +9,6 @@ import { assignLanguage } from '../../utils/utils';
 
 export class GcdsAlert {
   @Element() el: HTMLElement;
-
-  private lang: string;
-
 
   /**
    * Props
@@ -62,6 +59,10 @@ export class GcdsAlert {
    */
   @State() isOpen: boolean = true;
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
 
   /**
    * Events
@@ -79,9 +80,23 @@ export class GcdsAlert {
     }
   }
 
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
   }
 
   render() {

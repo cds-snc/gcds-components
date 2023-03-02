@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, State, Prop, Listen, Watch, Host, h } from '@stencil/core';
-import { assignLanguage, elementGroupCheck, inheritAttributes } from '../../utils/utils';
+import { assignLanguage, elementGroupCheck, inheritAttributes, observerConfig } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-radio',
@@ -10,7 +10,6 @@ import { assignLanguage, elementGroupCheck, inheritAttributes } from '../../util
 export class GcdsRadio {
   @Element() el: HTMLElement;
 
-  private lang: string;
   private shadowElement?: HTMLInputElement;
 
 
@@ -94,6 +93,12 @@ export class GcdsRadio {
    */
   @State() inheritedAttributes: Object = {};
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+
+
 
   /**
    * Events
@@ -130,9 +135,23 @@ export class GcdsRadio {
     this.gcdsBlur.emit();
   }
 
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby']);
   }

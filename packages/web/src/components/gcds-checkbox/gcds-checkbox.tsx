@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Listen, Method, State, Prop, Watch, Host, h } from '@stencil/core';
-import { assignLanguage, elementGroupCheck, inheritAttributes } from '../../utils/utils';
+import { assignLanguage, elementGroupCheck, inheritAttributes, observerConfig } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
@@ -11,7 +11,6 @@ import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredVali
 export class GcdsCheckbox {
   @Element() el: HTMLElement;
 
-  private lang: string;
   private shadowElement?: HTMLElement;
 
   _validator: Validator<any> = defaultValidator;
@@ -156,6 +155,10 @@ export class GcdsCheckbox {
     }
   }
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
 
   /**
    * Events
@@ -208,9 +211,23 @@ export class GcdsCheckbox {
     }
   }
 
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
 
     this.validateDisabledCheckbox();
     this.validateHasError();

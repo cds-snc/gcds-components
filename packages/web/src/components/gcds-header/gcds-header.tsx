@@ -1,5 +1,5 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { Component, Element, Host, Prop, h, State } from '@stencil/core';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 
 const i18n = {
   "en": {
@@ -17,9 +17,6 @@ const i18n = {
 })
 export class GcdsHeader {
   @Element() el: HTMLElement;
-
-  private lang: string;
-
 
   /**
    * Props
@@ -44,9 +41,28 @@ export class GcdsHeader {
   */
   @Prop({ reflect: false, mutable: false }) skipToHref!: string;
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
   }
 
   private get renderTopNav() {

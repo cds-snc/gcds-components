@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Method, Host, Watch, Prop, State, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 import { inheritAttributes} from '../../utils/utils';
 
 @Component({
@@ -10,7 +10,6 @@ import { inheritAttributes} from '../../utils/utils';
 export class GcdsButton {
   @Element() el: HTMLElement;
 
-  private lang: string;
   private shadowElement?: HTMLElement;
 
 
@@ -134,6 +133,11 @@ export class GcdsButton {
    */
   @State() inheritedAttributes: Object = {};
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+
 
   /**
    * Events
@@ -149,6 +153,18 @@ export class GcdsButton {
     */
   @Event() gcdsBlur!: EventEmitter<void>;
 
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   componentWillLoad() {
     // Validate attributes and set defaults
     this.validateType(this.type);
@@ -160,6 +176,8 @@ export class GcdsButton {
 
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
   }
 
   /**
