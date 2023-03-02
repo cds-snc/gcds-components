@@ -201,8 +201,10 @@ export class GcdsFileUploader {
    */
   @Event() gcdsRemoveFile: EventEmitter;
   removeFile = (e) => {
+    e.preventDefault();
+    
     let filesContainer = this.value;
-    const file = filesContainer.indexOf(e.target.textContent);
+    const file = filesContainer.indexOf(e.target.closest('.file-uploader__uploaded-file').childNodes[0].textContent);
 
     if (file > -1) {
       filesContainer.splice(file, 1);
@@ -336,7 +338,7 @@ export class GcdsFileUploader {
               <span>{file}</span>
               <button onClick={(e) => this.removeFile(e)}>
                 { lang == 'en' ? 'Remove' : 'Supprimer' }
-                <gcds-icon name="times" size="text" margin-left="200" />
+                <gcds-icon name="times" size="text" margin-left="200"></gcds-icon>
               </button>
             </div>
           )) : null }
