@@ -81,6 +81,12 @@ export class GcdsPagination {
   * Language of rendered component
   */
   @State() lang: string;
+  @Watch('lang')
+  watchLang() {
+    if (this.display == "list") {
+      this.configureListPagination();
+    }
+  }
 
   /*
    * Events
