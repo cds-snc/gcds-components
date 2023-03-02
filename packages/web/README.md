@@ -1,8 +1,8 @@
-[La version française suit.](#composants-de-système-de-design-gc--web)
+[La version française suit.](#composants-de-système-de-design-gc)
 
-# GC Design System Components – Web
+# GC Design System Components
 
-GC Design System Web Components are encapsulated reusable custom elements to use within your web sites/apps built using the [GC Design System Tokens](https://github.com/cds-snc/gcds-tokens).
+GC Design System Components are encapsulated reusable custom elements to use within your web sites/apps built using the [GC Design System Tokens](https://github.com/cds-snc/gcds-tokens).
 
 ## Documentation
 
@@ -86,9 +86,9 @@ Code released under the [MIT License](https://github.com/cds-snc/gcds-components
 
 --------
 
-# Composants de Système de design GC — Web
+# Composants de Système de design GC
 
-Composants de Système de design GC — Web fournit des éléments personnalisables, encapsulés et réutilisables. Ils peuvent être employés dans vos sites et applications Web créés à l’aide des [unités de style de Système de design GC](https://github.com/cds-snc/gcds-tokens).
+Composants de Système de design GC fournit des éléments personnalisables, encapsulés et réutilisables. Ils peuvent être employés dans vos sites et applications Web créés à l’aide des [unités de style de Système de design GC](https://github.com/cds-snc/gcds-tokens).
 
 ## Documentation
 
