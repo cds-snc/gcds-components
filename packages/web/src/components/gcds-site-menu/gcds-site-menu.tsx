@@ -66,6 +66,21 @@ export class GcdsSiteMenu {
   * Language of rendered component
   */
   @State() lang: string;
+  @Watch('lang')
+  watchLang() {
+    // Update text in submenu triggers
+    this.el.shadowRoot.querySelectorAll('span[data-h2-submenu-trigger-accessibility-text]').forEach((span) => {
+      var spanText = span.parentNode.parentNode.querySelector('span').textContent;
+      span.innerHTML = I18N[this.lang].submenuButtonText.replace('{$t}', spanText.trim());
+    });
+
+    // Update text in back buttons in sidebar
+    if (this.desktopLayout == "sidebar") {
+      this.el.shadowRoot.querySelectorAll('button[data-back-button]').forEach((button) => {
+        button.innerHTML = I18N[this.lang].back;
+      });
+    }
+  }
 
   /**
    * Method to apply multiple attributes to an element
