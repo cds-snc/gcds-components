@@ -1,10 +1,11 @@
 import { Validator, ValidatorEntry, defaultValidator, combineValidators } from './validator'
-import { requiredField, requiredFileInput } from './input-validators/input-validators';
+import { requiredField, requiredEmailField, requiredFileInput } from './input-validators/input-validators';
 import { requiredCheck } from './checkbox-validators/checkbox-validators';
 import { requiredFieldset } from './fieldset-validators/fieldset-validators';
 
 export enum ValidatorsName {
     requiredField = "requiredField",
+    requiredEmailField = "requiredEmailField",
     requiredCheck = "requiredCheck",
     requiredFieldset = "requiredFieldset",
     requiredFileInput = "requiredFileInput",
@@ -28,6 +29,8 @@ export function validatorFactory(name: string, options: any): Validator<any> {
     switch (name) {
         case (ValidatorsName.requiredField):
             return requiredField;
+        case (ValidatorsName.requiredEmailField):
+            return requiredEmailField;
         case (ValidatorsName.requiredCheck):
             return requiredCheck;
         case (ValidatorsName.requiredFieldset):
