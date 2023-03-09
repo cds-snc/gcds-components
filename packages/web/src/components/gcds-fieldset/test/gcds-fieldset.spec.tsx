@@ -72,7 +72,7 @@ describe('gcds-fieldset', () => {
             <legend id="legend-field">
               Fieldset legend
             </legend>
-            <gcds-error-message message="Fieldset error" messageid="field"></gcds-error-message>
+            <gcds-error-message message="Fieldset error" messageId="field"></gcds-error-message>
             <slot></slot>
           </fieldset>
         </mock:shadow-root>
