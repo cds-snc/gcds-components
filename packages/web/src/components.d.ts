@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Validator, ValidatorEntry } from "./validators";
+import { IGcdsError, Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -1531,6 +1531,10 @@ declare namespace LocalJSX {
           * Update value based on user input.
          */
         "onGcdsChange"?: (event: GcdsInputCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsError"?: (event: GcdsInputCustomEvent<IGcdsError>) => void;
         /**
           * Emitted when the input has focus.
          */

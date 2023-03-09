@@ -29,11 +29,12 @@
 
 ## Events
 
-| Event        | Description                         | Type                |
-| ------------ | ----------------------------------- | ------------------- |
-| `gcdsBlur`   | Emitted when the input loses focus. | `CustomEvent<void>` |
-| `gcdsChange` | Update value based on user input.   | `CustomEvent<any>`  |
-| `gcdsFocus`  | Emitted when the input has focus.   | `CustomEvent<void>` |
+| Event        | Description                                    | Type                      |
+| ------------ | ---------------------------------------------- | ------------------------- |
+| `gcdsBlur`   | Emitted when the input loses focus.            | `CustomEvent<void>`       |
+| `gcdsChange` | Update value based on user input.              | `CustomEvent<any>`        |
+| `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<IGcdsError>` |
+| `gcdsFocus`  | Emitted when the input has focus.              | `CustomEvent<void>`       |
 
 
 ## Methods

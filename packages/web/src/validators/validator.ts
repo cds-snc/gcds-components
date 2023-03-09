@@ -8,6 +8,11 @@ export interface ValidatorEntry {
     options?: any;
 }
 
+export interface IGcdsError {
+    id: string,
+    message: string
+}
+
 export const defaultValidator: Validator<any> = {
     validate: (_x: any) => true
 }

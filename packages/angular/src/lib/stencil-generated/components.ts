@@ -387,7 +387,7 @@ export class GcdsIcon {
   }
 }
 
-
+import type { IGcdsError as IGcdsInputIGcdsError } from '@cdssnc/gcds-components';
 export declare interface GcdsInput extends Components.GcdsInput {
   /**
    * Emitted when the input has focus. 
@@ -401,6 +401,10 @@ export declare interface GcdsInput extends Components.GcdsInput {
    * Update value based on user input. 
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has a validation error. 
+   */
+  gcdsError: EventEmitter<CustomEvent<IGcdsInputIGcdsError>>;
 
 }
 
@@ -420,7 +424,7 @@ export class GcdsInput {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError']);
   }
 }
 
