@@ -1,5 +1,5 @@
-import { Component, Host, Element, Watch, Prop, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { Component, Host, Element, Watch, State, Prop, h } from '@stencil/core';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 
 import SignatureEn from './assets/sig-blk-en.svg';
 import SignatureFr from './assets/sig-blk-fr.svg';
@@ -12,9 +12,6 @@ import WordmarkFr from './assets/wmms-spl-fr.svg';
 })
 export class GcdsSignature {
   @Element() el: HTMLElement;
-
-  private lang: string;
-
 
   /**
    * Props
@@ -49,12 +46,31 @@ export class GcdsSignature {
   */
   @Prop({ mutable: true }) hasLink: boolean;
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     this.validateType;
     this.validateVariant;
+
+    this.updateLang();
   }
 
   private get selectSVG() {

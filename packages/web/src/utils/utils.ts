@@ -34,6 +34,13 @@ export const assignLanguage = (el: HTMLElement) => {
 
   return lang;
 }
+
+export const observerConfig = {
+    attributes: true,
+    attributeOldValue: true,
+    attributeFilter: ['lang']
+  };
+
  // For validation - check if element has a checked checkbox/radio sibling
 export const elementGroupCheck = (name) => {
   let hasCheck = false;

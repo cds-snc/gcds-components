@@ -1,5 +1,5 @@
 import { Component, Prop, Element, Method, Event, EventEmitter, Listen, State, Host, Watch, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 import { validateFieldsetElements } from '../../validators/fieldset-validators/fieldset-validators';
 
@@ -11,7 +11,6 @@ import { validateFieldsetElements } from '../../validators/fieldset-validators/f
 export class GcdsFieldset {
   @Element() el: HTMLElement;
 
-  private lang: string;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -104,6 +103,10 @@ export class GcdsFieldset {
    */
   @State() hasError: boolean;
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
 
   /**
    * Events
@@ -159,9 +162,23 @@ export class GcdsFieldset {
     }
   }
 
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
 
     this.validateDisabledFieldset();
     this.validateErrorMessage();
@@ -210,7 +227,7 @@ export class GcdsFieldset {
 
           {hint ? <gcds-hint hint={hint} hint-id={fieldsetId} /> : null}
 
-          {errorMessage ? <gcds-error-message message-id={fieldsetId} message={errorMessage} /> : null}
+          {errorMessage ? <gcds-error-message messageId={fieldsetId} message={errorMessage} /> : null}
           <slot></slot>
         </fieldset>
       </Host>

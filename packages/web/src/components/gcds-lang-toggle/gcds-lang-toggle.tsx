@@ -1,5 +1,5 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { Component, Element, Host, Prop, State, h } from '@stencil/core';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-lang-toggle',
@@ -9,9 +9,6 @@ import { assignLanguage } from '../../utils/utils';
 export class GcdsLangToggle {
   @Element() el: HTMLElement;
 
-  private lang: string;
-
-
   /**
    * Props
    */
@@ -19,11 +16,30 @@ export class GcdsLangToggle {
   /**
    * The href attribute specifies the URL of the opposite language page
    */
-  @Prop({ reflect: false, mutable: false }) href!: string;
+  @Prop({ reflect: true, mutable: false }) href!: string;
+
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
 
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
   }
 
   render() {

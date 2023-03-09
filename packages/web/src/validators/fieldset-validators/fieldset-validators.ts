@@ -57,11 +57,8 @@ export function validateFieldsetElements(element, nodeList) {
             case('GCDS-INPUT'):
             case('GCDS-TEXTAREA'):
             case('GCDS-SELECT'):
-            if (nodeList[i].value.trim() != "") {
-                isValid.push(true);
-            } else {
-                isValid.push(false);
-            }
+            case('GCDS-FILE-UPLOADER'):
+                // Do nothing for now
                 break;
         }
     }

@@ -189,7 +189,7 @@ describe('gcds-input', () => {
       <gcds-input label="Label" input-id="input-with-error" error-message="This is an error message.">
         <div class="gcds-input-wrapper gcds-error">
           <gcds-label label-for="input-with-error" label="Label" lang="en"></gcds-label>
-          <gcds-error-message message-id="input-with-error" message="This is an error message."></gcds-error-message>
+          <gcds-error-message messageId="input-with-error" message="This is an error message."></gcds-error-message>
           <input
             type="text"
             id="input-with-error"

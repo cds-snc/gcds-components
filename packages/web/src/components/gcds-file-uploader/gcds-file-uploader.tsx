@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h } from '@stencil/core';
-import { assignLanguage, inheritAttributes } from '../../utils/utils';
+import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
@@ -11,7 +11,6 @@ import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredVali
 export class GcdsFileUploader {
   @Element() el: HTMLElement;
 
-  private lang: string;
   private shadowElement?: HTMLElement;
 
   _validator: Validator<any> = defaultValidator;
@@ -131,6 +130,10 @@ export class GcdsFileUploader {
    */
   @State() inheritedAttributes: Object = {};
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
 
   /**
    * Events
@@ -198,8 +201,10 @@ export class GcdsFileUploader {
    */
   @Event() gcdsRemoveFile: EventEmitter;
   removeFile = (e) => {
+    e.preventDefault();
+    
     let filesContainer = this.value;
-    const file = filesContainer.indexOf(e.target.textContent);
+    const file = filesContainer.indexOf(e.target.closest('.file-uploader__uploaded-file').childNodes[0].textContent);
 
     if (file > -1) {
       filesContainer.splice(file, 1);
@@ -221,9 +226,23 @@ export class GcdsFileUploader {
     }
   }
 
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
 
     this.validateDisabledSelect();
     this.validateHasError();
@@ -281,7 +300,7 @@ export class GcdsFileUploader {
           {hint ? <gcds-hint hint={hint} hint-id={uploaderId} />: null}
 
           {errorMessage ?
-            <gcds-error-message message-id={uploaderId} message={errorMessage} />
+            <gcds-error-message messageId={uploaderId} message={errorMessage} />
           : null}
 
           <div class={`file-uploader__input ${value.length > 0 ? "uploaded-files" : ''}`}>
