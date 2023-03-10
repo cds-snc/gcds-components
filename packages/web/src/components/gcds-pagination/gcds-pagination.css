@@ -9,7 +9,7 @@
       margin: var(--gcds-pagination-listitem-margin);
 
       a {
-        color: var(--var-pagination-default-text);
+        color: var(--gcds-pagination-default-text);
         font: var(--gcds-pagination-font);
         border-radius: var(--gcds-pagination-border-radius);
 
