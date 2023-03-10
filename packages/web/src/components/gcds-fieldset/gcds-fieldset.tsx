@@ -1,6 +1,6 @@
 import { Component, Prop, Element, Method, Event, EventEmitter, Listen, State, Host, Watch, h } from '@stencil/core';
 import { assignLanguage } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator, IGcdsError } from '../../validators';
 import { validateFieldsetElements } from '../../validators/fieldset-validators/fieldset-validators';
 
 @Component({
@@ -127,6 +127,7 @@ export class GcdsFieldset {
     if (!this._validator.validate(this.fieldsetId) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsGroupError.emit(this.errorMessage);
+      this.gcdsError.emit({ id: `#${this.fieldsetId}`, message: this.errorMessage });
     } else {
       this.errorMessage = "";
       this.gcdsGroupErrorClear.emit();
@@ -156,6 +157,24 @@ export class GcdsFieldset {
   gcdsParentGroupErrorClear(e) {
     if (e.srcElement.contains(this.el) && this.hasError) {
       this.hasError = false;
+    }
+  }
+
+  /**
+    * Emitted when the input has a validation error.
+    */
+  @Event() gcdsError!: EventEmitter<IGcdsError>;
+
+  @Listen("submit", { target: 'document' })
+  submitListener(e) {
+    if (e.srcElement == this.el.closest("form")) {
+      if (this.validateOn && this.validateOn != "other") {
+        this.validate();
+      }
+
+      if (this.hasError) {
+        e.preventDefault();
+      }
     }
   }
 

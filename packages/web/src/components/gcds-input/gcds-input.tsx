@@ -202,7 +202,7 @@ export class GcdsInput {
   @Listen("submit", { target: 'document' })
   submitListener(e) {
     if (e.srcElement == this.el.closest("form")) {
-      if (this.validateOn == "submit") {
+      if (this.validateOn && this.validateOn != "other") {
         this.validate();
       }
 

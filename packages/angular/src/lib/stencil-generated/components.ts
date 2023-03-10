@@ -110,7 +110,7 @@ export class GcdsButton {
   }
 }
 
-
+import type { IGcdsError as IGcdsCheckboxIGcdsError } from '@cdssnc/gcds-components';
 export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
   /**
    * Emitted when the checkbox has focus. 
@@ -124,6 +124,10 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
    * Update value based on user input. 
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has a validation error. 
+   */
+  gcdsError: EventEmitter<CustomEvent<IGcdsCheckboxIGcdsError>>;
 
 }
 
@@ -143,7 +147,7 @@ export class GcdsCheckbox {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError']);
   }
 }
 
@@ -208,7 +212,7 @@ export class GcdsErrorMessage {
   }
 }
 
-
+import type { IGcdsError as IGcdsFieldsetIGcdsError } from '@cdssnc/gcds-components';
 export declare interface GcdsFieldset extends Components.GcdsFieldset {
   /**
    * Emitted when the fieldset has a validation error. 
@@ -218,6 +222,10 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
    * Emitted when the fieldset has a validation error. 
    */
   gcdsGroupErrorClear: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the input has a validation error. 
+   */
+  gcdsError: EventEmitter<CustomEvent<IGcdsFieldsetIGcdsError>>;
 
 }
 
@@ -237,11 +245,11 @@ export class GcdsFieldset {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsGroupError', 'gcdsGroupErrorClear']);
+    proxyOutputs(this, this.el, ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError']);
   }
 }
 
-
+import type { IGcdsError as IGcdsFileUploaderIGcdsError } from '@cdssnc/gcds-components';
 export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   /**
    * Emitted when the uploader has focus. 
@@ -259,6 +267,10 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
    * Remove file and update value. 
    */
   gcdsRemoveFile: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has a validation error. 
+   */
+  gcdsError: EventEmitter<CustomEvent<IGcdsFileUploaderIGcdsError>>;
 
 }
 
@@ -278,7 +290,7 @@ export class GcdsFileUploader {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsFileUploaderChange', 'gcdsRemoveFile']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsFileUploaderChange', 'gcdsRemoveFile', 'gcdsError']);
   }
 }
 
@@ -555,7 +567,7 @@ export class GcdsRadio {
   }
 }
 
-
+import type { IGcdsError as IGcdsSelectIGcdsError } from '@cdssnc/gcds-components';
 export declare interface GcdsSelect extends Components.GcdsSelect {
   /**
    * Update value based on user selection. 
@@ -569,6 +581,10 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
    * Emitted when the select loses focus. 
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the input has a validation error. 
+   */
+  gcdsError: EventEmitter<CustomEvent<IGcdsSelectIGcdsError>>;
 
 }
 
@@ -588,7 +604,7 @@ export class GcdsSelect {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsSelectChange', 'gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, this.el, ['gcdsSelectChange', 'gcdsFocus', 'gcdsBlur', 'gcdsError']);
   }
 }
 
@@ -655,7 +671,7 @@ export class GcdsStepper {
   }
 }
 
-
+import type { IGcdsError as IGcdsTextareaIGcdsError } from '@cdssnc/gcds-components';
 export declare interface GcdsTextarea extends Components.GcdsTextarea {
   /**
    * Emitted when the textarea has focus. 
@@ -669,6 +685,10 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
    * Update value based on user input. 
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has a validation error. 
+   */
+  gcdsError: EventEmitter<CustomEvent<IGcdsTextareaIGcdsError>>;
 
 }
 
@@ -688,7 +708,7 @@ export class GcdsTextarea {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError']);
   }
 }
 
