@@ -6,7 +6,7 @@ GC Design System Components are encapsulated reusable custom elements to use wit
 
 ## Documentation
 
-You can find the full documentation for GC Design System Components on [https://cds-design-snc.netlify.app/]().
+You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
 
 ## Installation
 
@@ -92,7 +92,7 @@ Composants de Système de design GC fournit des éléments personnalisables, enc
 
 ## Documentation
 
-Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://cds-design-snc.netlify.app/fr/](https://cds-design-snc.netlify.app/fr/).
+Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
 
 ## Installation
 
