@@ -3,7 +3,7 @@ gcds-signature {
   width: fit-content;
   margin: var(--gcds-signature-margin);
 
-  .test {
+  .gcds-signature {
     display: flex;
   }
 
