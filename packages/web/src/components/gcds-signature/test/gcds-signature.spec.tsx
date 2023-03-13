@@ -15,7 +15,7 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="en" type="signature">
-        <div>
+        <div class="gcds-signature">
           Government of Canada
         </div>
       </gcds-signature>
@@ -41,7 +41,7 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="fr" type="signature">
-        <div>
+        <div class="gcds-signature">
           Gouvernement du Canada
         </div>
       </gcds-signature>
@@ -68,7 +68,7 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="en" type="wordmark">
-        <div>
+        <div class="gcds-signature">
           Symbol of the Government of Canada
         </div>
       </gcds-signature>
@@ -81,7 +81,7 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="fr" type="wordmark">
-        <div>
+        <div class="gcds-signature">
           Symbole du Gouvernement du Canada
         </div>
       </gcds-signature>
