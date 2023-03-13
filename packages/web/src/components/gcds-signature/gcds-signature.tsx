@@ -100,7 +100,7 @@ export class GcdsSignature {
         {hasLink && type === 'signature' ? (
           <a href={linkText} innerHTML={selectSVG}></a>
         ) : (
-          <div innerHTML={selectSVG}></div>
+          <div class="test" innerHTML={selectSVG}></div>
         )}
       </Host>
     );

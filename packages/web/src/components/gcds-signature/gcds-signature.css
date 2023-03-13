@@ -3,6 +3,10 @@ gcds-signature {
   width: fit-content;
   margin: var(--gcds-signature-margin);
 
+  .test {
+    display: flex;
+  }
+
   svg {
     max-width: 100%;
   }
@@ -23,7 +27,7 @@ gcds-signature {
   &[type='wordmark'] {
     svg {
       height: var(--gcds-signature-wordmark-height);
-      margin: var(--gcds-signature-wordmark-margin);
+      margin: var(--gcds-spacing-450) 0;
       width: auto;
     }
   }

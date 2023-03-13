@@ -4,7 +4,7 @@
 
   .sub__header,
   .themenav__header {
-    clip: rect(1px,1px,1px,1px);
+    clip: rect(1px, 1px, 1px, 1px);
     height: 1px;
     margin: 0;
     overflow: hidden;
@@ -12,7 +12,7 @@
     width: 1px;
   }
 
-  [class$="__container"] {
+  [class$='__container'] {
     justify-content: space-between;
     width: 90%;
     max-width: var(--gcds-footer-container-width);
@@ -27,7 +27,7 @@
     }
   }
 
-  [class$="__list"] {
+  [class$='__list'] {
     list-style: none;
     padding: var(--gcds-footer-list-padding);
     display: grid;
@@ -45,13 +45,13 @@
   }
 
   @media screen and (min-width: 48em) {
-    [class$="__list"] {
+    [class$='__list'] {
       grid-template-columns: 1fr 1fr;
     }
   }
 
   @media screen and (min-width: 64em) {
-    [class$="__list"] {
+    [class$='__list'] {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
@@ -72,7 +72,7 @@
     nav {
       &:first-of-type::after {
         border-bottom: var(--gcds-footer-main-nav-first-after-border-width) solid var(--gcds-footer-main-nav-first-after-border-color);
-        content: "";
+        content: '';
         display: block;
         width: var(--gcds-footer-main-nav-first-after-width);
       }
@@ -112,14 +112,16 @@
       display: grid;
       grid-gap: var(--gcds-footer-sub-grid-gap);
       grid-template-columns: 3fr 1fr;
-      grid-template-areas: "list wordmark";
+      grid-template-areas: 'list wordmark';
 
       nav {
         grid-area: list;
         padding: var(--gcds-footer-sub-nav-padding);
+        display: flex;
+        align-items: center;
       }
 
-      slot[name="wordmark"],
+      slot[name='wordmark'],
       .sub__wordmark {
         grid-area: wordmark;
         display: flex;
@@ -145,24 +147,33 @@
 
         @media screen and (min-width: 64em) {
           display: inline-block;
+
+          gcds-signature {
+            margin: 0 0 0 auto;
+          }
         }
       }
 
       a {
         color: var(--gcds-footer-sub-text);
+        text-decoration: underline;
+        text-underline-offset: 0.1em;
+        text-decoration-color: currentColor;
+        text-decoration-thickness: var(--gcds-border-width-sm);
 
         &:hover {
           color: var(--gcds-footer-sub-hover-text);
+          text-decoration-thickness: var(--gcds-border-width-md);
         }
 
         &:focus {
           color: var(--gcds-footer-sub-focus-text);
           background-color: var(--gcds-footer-sub-focus-background);
-        }
-
-        &:active {
-          color: var(--gcds-footer-sub-active-text);
-          background-color: var(--gcds-footer-sub-active-background);
+          border-radius: var(--gcds-border-radius-sm);
+          text-decoration: none;
+          box-shadow: 0 0 0 var(--gcds-border-width-md) var(--gcds-color-grayscale-0);
+          outline-offset: var(--gcds-border-width-md);
+          outline: var(--gcds-spacing-50) solid var(--gcds-focus-background);
         }
       }
     }
@@ -176,17 +187,18 @@
         display: block;
 
         @media screen and (min-width: 64em) {
+          margin-bottom: 0;
           display: inline-block;
         }
 
         @media screen and (min-width: 64em) {
           &:first-of-type:before {
-            content: "";
+            content: '';
             margin: 0;
           }
 
           &:before {
-            content: "\2022";
+            content: '\2022';
             margin: var(--gcds-footer-sub-listitem-before-margin);
             display: inline;
           }
@@ -194,7 +206,7 @@
 
         a {
           text-decoration: none;
-          transition: color .15s;
+          transition: color 0.15s;
         }
       }
     }
