@@ -27,7 +27,7 @@ gcds-signature {
   &[type='wordmark'] {
     svg {
       height: var(--gcds-signature-wordmark-height);
-      margin: var(--gcds-spacing-450) 0;
+      margin: var(--gcds-signature-wordmark-margin);
       width: auto;
     }
   }
