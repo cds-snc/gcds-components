@@ -41,6 +41,16 @@
       &:not(:hover) {
         text-decoration: none;
       }
+
+      &:focus {
+        color: var(--gcds-footer-link-focus-text);
+        background-color: var(--gcds-footer-link-focus-background);
+        border-radius: var(--gcds-footer-link-focus-radius);
+        text-decoration: none;
+        box-shadow: var(--gcds-footer-link-focus-box-shadow);
+        outline-offset: var(--gcds-footer-link-focus-outline-offset);
+        outline: var(--gcds-footer-link-focus-outline);
+      }
     }
   }
 
@@ -149,31 +159,30 @@
           display: inline-block;
 
           gcds-signature {
-            margin: 0 0 0 auto;
+            margin: var(--gcds-footer-sub-signature-lg-margin);
           }
         }
       }
 
       a {
         color: var(--gcds-footer-sub-text);
-        text-decoration: underline;
-        text-underline-offset: 0.1em;
-        text-decoration-color: currentColor;
-        text-decoration-thickness: var(--gcds-border-width-sm);
+        text-decoration: none;
 
         &:hover {
           color: var(--gcds-footer-sub-hover-text);
-          text-decoration-thickness: var(--gcds-border-width-md);
+          text-underline-offset: 0.2em;
+          text-decoration: underline;
+          text-decoration-thickness: var(--gcds-footer-sub-hover-decoration-thickness);
         }
 
         &:focus {
-          color: var(--gcds-footer-sub-focus-text);
-          background-color: var(--gcds-footer-sub-focus-background);
-          border-radius: var(--gcds-border-radius-sm);
+          color: var(--gcds-footer-link-focus-text);
+          background-color: var(--gcds-footer-link-focus-background);
+          border-radius: var(--gcds-footer-link-focus-radius);
           text-decoration: none;
-          box-shadow: 0 0 0 var(--gcds-border-width-md) var(--gcds-color-grayscale-0);
-          outline-offset: var(--gcds-border-width-md);
-          outline: var(--gcds-spacing-50) solid var(--gcds-focus-background);
+          box-shadow: var(--gcds-footer-link-focus-box-shadow);
+          outline-offset: var(--gcds-footer-link-focus-outline-offset);
+          outline: var(--gcds-footer-link-focus-outline);
         }
       }
     }
