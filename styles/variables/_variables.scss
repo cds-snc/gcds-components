@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Mon, 13 Mar 2023 22:21:54 GMT
+// Generated on Tue, 14 Mar 2023 21:47:29 GMT
 
 $gcds-color-blue-100: #d7e5f5;
 $gcds-color-blue-500: #6584a6; // Must contrast 3:1 with white
@@ -297,18 +297,24 @@ $gcds-footer-main-themenav-padding: 0.75rem 0 1.125rem;
 $gcds-footer-sub-active-background: #000000;
 $gcds-footer-sub-active-text: #ffffff;
 $gcds-footer-sub-background: #f1f2f3;
-$gcds-footer-sub-focus-background: #303fc3;
-$gcds-footer-sub-focus-text: #ffffff;
 $gcds-footer-sub-grid-gap: 0.75rem;
 $gcds-footer-sub-hover-text: #26374a;
+$gcds-footer-sub-hover-decoration-thickness: 0.125rem;
 $gcds-footer-sub-listitem-before-margin: 0 1.125rem;
 $gcds-footer-sub-nav-padding: 3rem 0;
 $gcds-footer-sub-signature-lg-width: 10.937rem;
 $gcds-footer-sub-signature-lg-min-width: auto;
+$gcds-footer-sub-signature-lg-margin: 0 0 0 auto;
 $gcds-footer-sub-signature-margin: 0 0 1.5rem auto;
 $gcds-footer-sub-md-width: 7rem;
 $gcds-footer-sub-sm-width: 100%;
 $gcds-footer-sub-text: #31455c;
+$gcds-footer-link-focus-text: #ffffff;
+$gcds-footer-link-focus-background: #303fc3;
+$gcds-footer-link-focus-radius: 0.1875rem;
+$gcds-footer-link-focus-box-shadow: 0 0 0 0.125rem #ffffff;
+$gcds-footer-link-focus-outline-offset: 0.125rem;
+$gcds-footer-link-focus-outline: 0.1875rem solid #303fc3;
 $gcds-grid-container-xs: 20rem;
 $gcds-grid-container-sm: 30rem;
 $gcds-grid-container-md: 48rem;
