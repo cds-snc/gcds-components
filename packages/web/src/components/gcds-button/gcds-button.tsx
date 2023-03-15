@@ -172,7 +172,7 @@ export class GcdsButton {
     this.validateButtonStyle(this.buttonStyle);
     this.validateSize(this.size);
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
 
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -213,7 +213,7 @@ export class GcdsButton {
     }
 
     // Has any inherited attributes changed on click
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-label', 'aria-expanded', 'aria-haspopup', 'aria-controls']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
   private onFocus = (e) => {

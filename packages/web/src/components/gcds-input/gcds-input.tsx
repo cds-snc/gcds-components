@@ -238,7 +238,7 @@ export class GcdsInput {
       this._validator = getValidator(this.validator);
     }
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby', 'placeholder']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['placeholder']);
   }
 
   componentWillUpdate() {

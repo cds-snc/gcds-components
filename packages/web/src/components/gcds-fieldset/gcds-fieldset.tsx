@@ -138,6 +138,7 @@ export class GcdsFieldset {
 
   @Listen('gcdsBlur')
   blurValidate() {
+    console.log("red")
     if (this.validator && this.validateOn == "blur" && !this.el.matches(':focus-within')) {
       this.validate();
     }
