@@ -3,6 +3,10 @@ gcds-signature {
   width: fit-content;
   margin: var(--gcds-signature-margin);
 
+  .gcds-signature {
+    display: flex;
+  }
+
   svg {
     max-width: 100%;
   }
