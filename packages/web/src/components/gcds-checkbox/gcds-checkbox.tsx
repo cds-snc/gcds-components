@@ -241,7 +241,7 @@ export class GcdsCheckbox {
       this._validator = getValidator(this.validator);
     }
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
   componentWillUpdate() {

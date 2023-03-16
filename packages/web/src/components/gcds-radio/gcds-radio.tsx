@@ -153,7 +153,7 @@ export class GcdsRadio {
 
     this.updateLang();
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
   private onChange = (name) => {
