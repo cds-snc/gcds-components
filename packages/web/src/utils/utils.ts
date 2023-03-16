@@ -5,7 +5,7 @@ export function format(label: string): string {
 export const inheritAttributes = (el: HTMLElement, shadowElement: HTMLElement, attributes: string[] = []) => {
   const attributeObject = {};
 
-  // Chech for any aria or data attributes
+  // Check for any aria or data attributes
   for (let i = 0; i < el.attributes.length; i++) {
     let attr = el.attributes[i];
     if (attr.name.includes("aria-") || attr.name.includes("data-")) {
