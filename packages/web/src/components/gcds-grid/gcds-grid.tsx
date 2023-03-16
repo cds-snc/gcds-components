@@ -79,6 +79,7 @@ export class GcdsGrid {
 
     const Tag = tag;
 
+    // Set CSS variables in style attribute based on passed column properties
     function handleColumns() {
       let responsiveColumns = {};
 
