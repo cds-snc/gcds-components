@@ -79,18 +79,21 @@ export class GcdsGrid {
 
     const Tag = tag;
 
-    // Set gridTemplateColumns based on screen size
-    const mediaQueryDesktop = window.matchMedia('(min-width: 991px)');
-    const mediaQueryTablet = window.matchMedia('(min-width: 768px)');
-
+    // Set CSS variables in style attribute based on passed column properties
     function handleColumns() {
-      if (columnsDesktop && mediaQueryDesktop.matches) {
-        return {gridTemplateColumns: columnsDesktop}
-      } else if (columnsTablet && mediaQueryTablet.matches) {
-        return {gridTemplateColumns: columnsTablet}
-      } else {
-        return {gridTemplateColumns: columns}
+      let responsiveColumns = {};
+
+      if (columnsDesktop) {
+        responsiveColumns["--gcds-grid-columns-desktop"] = columnsDesktop;
       }
+      if (columnsTablet) {
+        responsiveColumns["--gcds-grid-columns-tablet"] = columnsTablet;
+      }
+      if (columns) {
+        responsiveColumns["--gcds-grid-columns"] = columns
+      }
+
+      return responsiveColumns;
     }
 
     return (
