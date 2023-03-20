@@ -56,8 +56,14 @@ export function requiredValidator(element, type, subtype?) {
                   break;
               }
               break;
-            case("textarea"):
             case("select"):
+              if (element.validator) {
+                element.validator.unshift("requiredSelectField");
+              } else {
+                element.validator= ["requiredSelectField"]
+              }
+              break;
+            case("textarea"):
               if (element.validator) {
                 element.validator.unshift("requiredField");
               } else {

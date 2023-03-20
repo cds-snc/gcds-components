@@ -4,5 +4,5 @@ export const requiredCheck: Validator<boolean> = {
     validate: (value: boolean) => {
         return value;
     },
-    errorMessage: { "en": "You must check the box to continue.",  "fr": "Veuillez compléter les champs obligatoires afin de continuer." }
+    errorMessage: { "en": "You must check the box to continue.",  "fr": "Vous devez cocher la case pour continuer." }
 }
