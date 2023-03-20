@@ -3,7 +3,7 @@
   "version": "0.9.1",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Web components for the GCDS",
-  "homepage": "https://cds-design-snc.netlify.app/",
+  "homepage": "https://design-system.alpha.canada.ca/",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -19,7 +19,6 @@
   "scripts": {
     "prebuild": "node ../../scripts/minify.js",
     "build": "stencil build --docs",
-    "postbuild": "cp ./dist/gcds/gcds.css ../react/gcds.css || copy ./dist/gcds/gcds.css ../react/gcds.css",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",

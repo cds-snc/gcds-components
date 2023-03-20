@@ -1,6 +1,7 @@
 :host .gcds-grid {
   margin: 0;
   padding: 0;
+  grid-template-columns: var(--gcds-grid-columns, 1fr);
 
   &[class*='container'] {
     width: var(--gcds-grid-container-full);
@@ -239,5 +240,16 @@
 
   &.place-items-stretch {
     place-items: stretch;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  :host .gcds-grid {
+    grid-template-columns: var(--gcds-grid-columns-tablet, var(--gcds-grid-columns, 1fr));
+  }
+}
+@media screen and (min-width: 64em) {
+  :host .gcds-grid {
+    grid-template-columns: var(--gcds-grid-columns-desktop, var(--gcds-grid-columns-tablet, var(--gcds-grid-columns, 1fr)));
   }
 }

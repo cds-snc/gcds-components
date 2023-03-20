@@ -59,7 +59,7 @@
 
         .brand__search,
         slot[name="search"] {
-          width: var(--gcds-header-search-width);
+          width: var(--gcds-header-brand-search-width);
         }
       }
     }

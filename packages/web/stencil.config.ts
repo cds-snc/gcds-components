@@ -45,6 +45,7 @@ export const config: Config = {
     transform: {
       '^.+\\.(ts|tsx|js|jsx|css)$': "@stencil/core/testing/jest-preprocessor"
     },
+    setupFiles: ['./src/utils/test/setupMock.js']
   },
   buildEs5: 'prod'
 };

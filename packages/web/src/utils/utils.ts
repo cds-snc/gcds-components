@@ -5,6 +5,16 @@ export function format(label: string): string {
 export const inheritAttributes = (el: HTMLElement, shadowElement: HTMLElement, attributes: string[] = []) => {
   const attributeObject = {};
 
+  // Check for any aria or data attributes
+  for (let i = 0; i < el.attributes.length; i++) {
+    let attr = el.attributes[i];
+    if (attr.name.includes("aria-") || attr.name.includes("data-")) {
+      attributeObject[attr.name] = attr.value;
+      el.removeAttribute(attr.name);
+    }
+  }
+
+  // Check for attributes defined by component
   attributes.forEach(attr => {
     if (el.hasAttribute(attr) || (shadowElement && shadowElement.hasAttribute(attr))) {
       const value = el.getAttribute(attr) || shadowElement.getAttribute(attr);
@@ -34,6 +44,13 @@ export const assignLanguage = (el: HTMLElement) => {
 
   return lang;
 }
+
+export const observerConfig = {
+    attributes: true,
+    attributeOldValue: true,
+    attributeFilter: ['lang']
+  };
+
  // For validation - check if element has a checked checkbox/radio sibling
 export const elementGroupCheck = (name) => {
   let hasCheck = false;

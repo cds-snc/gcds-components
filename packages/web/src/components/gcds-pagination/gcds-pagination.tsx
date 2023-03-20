@@ -1,6 +1,6 @@
 import { Component, Element, Prop, Event, EventEmitter, State, Watch, Host, h } from '@stencil/core';
 
-import { assignLanguage } from '../../utils/utils';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import { constructHref, constructClasses } from './utils/render';
 
@@ -13,7 +13,6 @@ import { constructHref, constructClasses } from './utils/render';
 export class GcdsPagination {
   @Element() el: HTMLElement;
 
-  private lang: string;
   private listitems = [];
   private mobilePrevNext = [];
 
@@ -77,6 +76,17 @@ export class GcdsPagination {
   @Prop() pageChangeHandler: Function;
 
   @State() currentStep: number;
+
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+  @Watch('lang')
+  watchLang() {
+    if (this.display == "list") {
+      this.configureListPagination();
+    }
+  }
 
   /*
    * Events
@@ -262,9 +272,23 @@ export class GcdsPagination {
     }
   }
 
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
 
     if (this.display == "list") {
       this.configureListPagination();

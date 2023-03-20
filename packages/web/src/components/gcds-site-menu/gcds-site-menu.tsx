@@ -1,5 +1,5 @@
-import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
-import { assignLanguage } from '../../utils/utils';
+import { Component, Element, Host, Prop, Watch, State, h } from '@stencil/core';
+import { assignLanguage, observerConfig } from '../../utils/utils';
 
 import {
   h2MenuAddUpDownArrowsToMainMenuItems,
@@ -21,7 +21,6 @@ import I18N from './i18n/i18n';
 export class GcdsSiteMenu {
   @Element() el: HTMLElement;
 
-  private lang: string;
   private submenu = 0;
 
 
@@ -62,6 +61,26 @@ export class GcdsSiteMenu {
    * Sticky navigation flag
    */
   @Prop() position: 'static' | 'sticky' = 'static';
+
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+  @Watch('lang')
+  watchLang() {
+    // Update text in submenu triggers
+    this.el.shadowRoot.querySelectorAll('span[data-h2-submenu-trigger-accessibility-text]').forEach((span) => {
+      var spanText = span.parentNode.parentNode.querySelector('span').textContent;
+      span.innerHTML = I18N[this.lang].submenuButtonText.replace('{$t}', spanText.trim());
+    });
+
+    // Update text in back buttons in sidebar
+    if (this.desktopLayout == "sidebar") {
+      this.el.shadowRoot.querySelectorAll('button[data-back-button]').forEach((button) => {
+        button.innerHTML = I18N[this.lang].back;
+      });
+    }
+  }
 
   /**
    * Method to apply multiple attributes to an element
@@ -209,9 +228,23 @@ export class GcdsSiteMenu {
     }
   }
 
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
 
     this.validateDesktopLayout(this.desktopLayout);
     this.validateMobileLayout(this.mobileLayout);

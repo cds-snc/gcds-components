@@ -3,7 +3,7 @@
   "version": "0.9.1",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Angular wrapper for gcds-components",
-  "homepage": "https://cds-design-snc.netlify.app/",
+  "homepage": "https://design-system.alpha.canada.ca/",
   "bugs": {
     "url": "https://github.com/cds-snc/gcds-components/issues"
   },

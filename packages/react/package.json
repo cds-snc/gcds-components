@@ -3,58 +3,39 @@
   "version": "0.9.1",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "React wrapper for gcds-components",
-  "homepage": "https://cds-design-snc.netlify.app/",
+  "homepage": "https://design-system.alpha.canada.ca/",
   "bugs": {
     "url": "https://github.com/cds-snc/gcds-components/issues"
   },
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/cds-snc/gcds-components"
+    "url": "git+https://github.com/cds-snc/gcds-components.git"
   },
   "scripts": {
-    "build": "npm run clean && npm run compile",
-    "clean": "rm -rf dist",
-    "compile": "npm run tsc",
-    "tsc": "tsc -p .",
-    "rollup": "rollup -c"
+    "build": "npm run tsc",
+    "tsc": "tsc -p ."
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
   "files": [
-    "dist/",
-    "gcds.css"
+    "dist"
   ],
-  "devDependencies": {
-    "@types/jest": "23.3.14",
-    "@types/node": "^15.12.2",
-    "@types/react": "^17.0.34",
-    "@types/react-dom": "^17.0.11",
-    "jest": "^23.0.0",
-    "jest-dom": "^3.0.2",
-    "np": "^6.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.2.0"
-  },
   "dependencies": {
     "@cdssnc/gcds-components": "^0.9.1"
   },
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
-    "testPathIgnorePatterns": [
-      "node_modules",
-      "dist"
-    ]
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.9.5"
   },
   "license": "MIT"
 }

@@ -1,5 +1,5 @@
 import { Component, Element, Event, Method, Watch, EventEmitter, Host, State, Prop, h, Listen } from '@stencil/core';
-import { assignLanguage, inheritAttributes } from '../../utils/utils';
+import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator, IGcdsError } from '../../validators';
 
 @Component({
@@ -11,7 +11,6 @@ import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredVali
 export class GcdsTextarea {
   @Element() el: HTMLElement;
 
-  private lang: string;
   private shadowElement?: HTMLElement;
 
   _validator: Validator<string> = defaultValidator;
@@ -140,6 +139,11 @@ export class GcdsTextarea {
     }
   }
 
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+
 
   /**
    * Events
@@ -221,10 +225,24 @@ export class GcdsTextarea {
       }
     }
   }
+  
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
 
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.updateLang();
 
     this.validateDisabledTextarea();
     this.validateHasError();
@@ -239,7 +257,7 @@ export class GcdsTextarea {
       this._validator = getValidator(this.validator);
     }
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['aria-describedby', 'placeholder']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['placeholder']);
   }
 
   componentWillUpdate() {
@@ -288,7 +306,7 @@ export class GcdsTextarea {
           {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
 
           {errorMessage ?
-            <gcds-error-message message-id={textareaId} message={errorMessage} />
+            <gcds-error-message messageId={textareaId} message={errorMessage} />
           : null}
 
           <textarea
