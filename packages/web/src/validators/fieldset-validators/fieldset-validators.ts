@@ -18,7 +18,7 @@ export const requiredFieldset: Validator<string> = {
 export function validateFieldsetElements(element, nodeList) {
   let isValid = [];
 
-  for (var i = 0; i < nodeList.length; i++) {
+  for (let i = 0; i < nodeList.length; i++) {
     switch(nodeList[i].nodeName) {
       case('GCDS-FIELDSET'):
         let validFieldsetChildren = validateFieldsetElements(nodeList[i], nodeList[i].children);
