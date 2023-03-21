@@ -110,7 +110,7 @@ export class GcdsButton {
   }
 }
 
-import type { IGcdsError as IGcdsCheckboxIGcdsError } from '@cdssnc/gcds-components';
+import type { GcdsErrorInterface as IGcdsCheckboxGcdsErrorInterface } from '@cdssnc/gcds-components';
 export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
   /**
    * Emitted when the checkbox has focus. 
@@ -127,7 +127,7 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
   /**
    * Emitted when the input has a validation error. 
    */
-  gcdsError: EventEmitter<CustomEvent<IGcdsCheckboxIGcdsError>>;
+  gcdsError: EventEmitter<CustomEvent<IGcdsCheckboxGcdsErrorInterface>>;
 
 }
 
@@ -212,7 +212,7 @@ export class GcdsErrorMessage {
   }
 }
 
-import type { IGcdsError as IGcdsFieldsetIGcdsError } from '@cdssnc/gcds-components';
+import type { GcdsErrorInterface as IGcdsFieldsetGcdsErrorInterface } from '@cdssnc/gcds-components';
 export declare interface GcdsFieldset extends Components.GcdsFieldset {
   /**
    * Emitted when the fieldset has a validation error. 
@@ -225,7 +225,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
   /**
    * Emitted when the input has a validation error. 
    */
-  gcdsError: EventEmitter<CustomEvent<IGcdsFieldsetIGcdsError>>;
+  gcdsError: EventEmitter<CustomEvent<IGcdsFieldsetGcdsErrorInterface>>;
 
 }
 
@@ -249,7 +249,7 @@ export class GcdsFieldset {
   }
 }
 
-import type { IGcdsError as IGcdsFileUploaderIGcdsError } from '@cdssnc/gcds-components';
+import type { GcdsErrorInterface as IGcdsFileUploaderGcdsErrorInterface } from '@cdssnc/gcds-components';
 export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   /**
    * Emitted when the uploader has focus. 
@@ -270,7 +270,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   /**
    * Emitted when the input has a validation error. 
    */
-  gcdsError: EventEmitter<CustomEvent<IGcdsFileUploaderIGcdsError>>;
+  gcdsError: EventEmitter<CustomEvent<IGcdsFileUploaderGcdsErrorInterface>>;
 
 }
 
@@ -399,7 +399,7 @@ export class GcdsIcon {
   }
 }
 
-import type { IGcdsError as IGcdsInputIGcdsError } from '@cdssnc/gcds-components';
+import type { GcdsErrorInterface as IGcdsInputGcdsErrorInterface } from '@cdssnc/gcds-components';
 export declare interface GcdsInput extends Components.GcdsInput {
   /**
    * Emitted when the input has focus. 
@@ -416,7 +416,7 @@ export declare interface GcdsInput extends Components.GcdsInput {
   /**
    * Emitted when the input has a validation error. 
    */
-  gcdsError: EventEmitter<CustomEvent<IGcdsInputIGcdsError>>;
+  gcdsError: EventEmitter<CustomEvent<IGcdsInputGcdsErrorInterface>>;
 
 }
 
@@ -567,7 +567,7 @@ export class GcdsRadio {
   }
 }
 
-import type { IGcdsError as IGcdsSelectIGcdsError } from '@cdssnc/gcds-components';
+import type { GcdsErrorInterface as IGcdsSelectGcdsErrorInterface } from '@cdssnc/gcds-components';
 export declare interface GcdsSelect extends Components.GcdsSelect {
   /**
    * Update value based on user selection. 
@@ -584,7 +584,7 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
   /**
    * Emitted when the input has a validation error. 
    */
-  gcdsError: EventEmitter<CustomEvent<IGcdsSelectIGcdsError>>;
+  gcdsError: EventEmitter<CustomEvent<IGcdsSelectGcdsErrorInterface>>;
 
 }
 
@@ -671,7 +671,7 @@ export class GcdsStepper {
   }
 }
 
-import type { IGcdsError as IGcdsTextareaIGcdsError } from '@cdssnc/gcds-components';
+import type { GcdsErrorInterface as IGcdsTextareaGcdsErrorInterface } from '@cdssnc/gcds-components';
 export declare interface GcdsTextarea extends Components.GcdsTextarea {
   /**
    * Emitted when the textarea has focus. 
@@ -688,7 +688,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
   /**
    * Emitted when the input has a validation error. 
    */
-  gcdsError: EventEmitter<CustomEvent<IGcdsTextareaIGcdsError>>;
+  gcdsError: EventEmitter<CustomEvent<IGcdsTextareaGcdsErrorInterface>>;
 
 }
 

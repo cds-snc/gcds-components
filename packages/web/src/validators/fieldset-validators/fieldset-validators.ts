@@ -9,7 +9,10 @@ export const requiredFieldset: Validator<string> = {
 
     return !isValid.includes(false);
   },
-  errorMessage: { "en": "Choose an option to continue.",  "fr": "Choisissez une option pour continuer." }
+  errorMessage: {
+    "en": "Choose an option to continue.",
+    "fr": "Choisissez une option pour continuer."
+  }
 }
 
 export function validateFieldsetElements(element, nodeList) {
@@ -19,9 +22,7 @@ export function validateFieldsetElements(element, nodeList) {
     switch(nodeList[i].nodeName) {
       case('GCDS-FIELDSET'):
         let validFieldsetChildren = validateFieldsetElements(nodeList[i], nodeList[i].children);
-        for (var fc = 0; fc < validFieldsetChildren.length; fc++) {
-            isValid.push(validFieldsetChildren[fc]);
-        }
+        isValid = isValid.concat(validFieldsetChildren);
         break;
       case('GCDS-CHECKBOX'):
       case('GCDS-RADIO'):
@@ -35,23 +36,15 @@ export function validateFieldsetElements(element, nodeList) {
         // Check if there is more than one input with this name
         if (sameNameInputs.length > 1) {
           // Validate as group
-          for (var c = 0; c < sameNameInputs.length; c++) {
+          for (let c = 0; c < sameNameInputs.length; c++) {
             if (sameNameInputs[c].hasAttribute("checked")) {
               childGroupValid = true;
             }
           }
-          if (childGroupValid) {
-            isValid.push(true);
-          } else {
-            isValid.push(false);
-          }
+          isValid.push(childGroupValid);
         } else {
           // Validate as single input
-          if (nodeList[i].hasAttribute('checked')) {
-            isValid.push(true);
-          } else {
-            isValid.push(false);
-          }
+          isValid.push(nodeList[i].hasAttribute('checked') ? true : false);
         }
         break;
       case('GCDS-INPUT'):

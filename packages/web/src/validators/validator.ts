@@ -8,7 +8,7 @@ export interface ValidatorEntry {
     options?: any;
 }
 
-export interface IGcdsError {
+export interface GcdsErrorInterface {
     id: string,
     message: string
 }
