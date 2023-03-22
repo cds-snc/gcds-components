@@ -1,6 +1,6 @@
-import { Component, Element, Event, Watch, EventEmitter, State, Method, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, Watch, EventEmitter, State, Method, Host, Prop, h, Listen } from '@stencil/core';
 import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator, GcdsErrorInterface } from '../../validators';
 
 @Component({
   tag: 'gcds-input',
@@ -192,8 +192,27 @@ export class GcdsInput {
   async validate() {
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
+      this.gcdsError.emit({ id: `#${this.inputId}`, message: this.errorMessage });
     } else {
       this.errorMessage = "";
+    }
+  }
+
+  /**
+    * Emitted when the input has a validation error.
+    */
+  @Event() gcdsError!: EventEmitter<GcdsErrorInterface>;
+
+  @Listen("submit", { target: 'document' })
+  submitListener(e) {
+    if (e.target == this.el.closest("form")) {
+      if (this.validateOn && this.validateOn != "other") {
+        this.validate();
+      }
+
+      if (this.hasError) {
+        e.preventDefault();
+      }
     }
   }
 
@@ -232,7 +251,7 @@ export class GcdsInput {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, "input");
+    requiredValidator(this.el, "input", this.type);
 
     if (this.validator) {
       this._validator = getValidator(this.validator);

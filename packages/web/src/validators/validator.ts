@@ -8,6 +8,11 @@ export interface ValidatorEntry {
     options?: any;
 }
 
+export interface GcdsErrorInterface {
+    id: string,
+    message: string
+}
+
 export const defaultValidator: Validator<any> = {
     validate: (_x: any) => true
 }
@@ -29,13 +34,36 @@ export function combineValidators<A>(v1: Validator<A>, v2: Validator<A>): Valida
     return combined;
 }
 
-export function requiredValidator(element, type) {
+export function requiredValidator(element, type, subtype?) {
     if (element.required) {
         switch(type) {
             // Components all validate the "value" property
             case("input"):
-            case("textarea"):
+              switch(subtype) {
+                case("email"):
+                  if (element.validator) {
+                    element.validator.unshift("requiredEmailField");
+                  } else {
+                    element.validator= ["requiredEmailField"]
+                  }
+                  break;
+                default:
+                  if (element.validator) {
+                    element.validator.unshift("requiredField");
+                  } else {
+                    element.validator= ["requiredField"]
+                  }
+                  break;
+              }
+              break;
             case("select"):
+              if (element.validator) {
+                element.validator.unshift("requiredSelectField");
+              } else {
+                element.validator= ["requiredSelectField"]
+              }
+              break;
+            case("textarea"):
               if (element.validator) {
                 element.validator.unshift("requiredField");
               } else {

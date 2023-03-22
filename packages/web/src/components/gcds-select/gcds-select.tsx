@@ -1,6 +1,6 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h, Listen } from '@stencil/core';
 import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator, GcdsErrorInterface } from '../../validators';
 
 @Component({
   tag: 'gcds-select',
@@ -177,8 +177,27 @@ export class GcdsSelect {
   async validate() {
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
+      this.gcdsError.emit({ id: `#${this.selectId}`, message: this.errorMessage });
     } else {
       this.errorMessage = "";
+    }
+  }
+
+  /**
+    * Emitted when the input has a validation error.
+    */
+  @Event() gcdsError!: EventEmitter<GcdsErrorInterface>;
+
+  @Listen("submit", { target: 'document' })
+  submitListener(e) {
+    if (e.target == this.el.closest("form")) {
+      if (this.validateOn && this.validateOn != "other") {
+        this.validate();
+      }
+
+      if (this.hasError) {
+        e.preventDefault();
+      }
     }
   }
 
