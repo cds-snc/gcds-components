@@ -11,18 +11,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title">
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -42,18 +44,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" alert-role="danger">
         <mock:shadow-root>
           <div aria-label="This is a critical alert." class="gcds-alert alert--role-danger" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -69,18 +73,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" alert-role="info">
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -96,18 +102,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" alert-role="success">
         <mock:shadow-root>
           <div aria-label="This is a success alert." class="gcds-alert alert--role-success" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -123,18 +131,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" alert-role="warning">
         <mock:shadow-root>
           <div aria-label="This is a warning alert." class="gcds-alert alert--role-warning" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -154,18 +164,20 @@ describe('gcds-alert', () => {
       <gcds-alert lang="fr" heading="Main notification title" alert-role="danger">
         <mock:shadow-root>
           <div aria-label="Ceci est une alerte d'effacement." class="gcds-alert alert--role-danger" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Fermer l'alerte.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -181,18 +193,20 @@ describe('gcds-alert', () => {
       <gcds-alert lang="fr" heading="Main notification title" alert-role="info">
         <mock:shadow-root>
           <div aria-label="Ceci est une alerte d'information." class="gcds-alert alert--role-info" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Fermer l'alerte.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -208,18 +222,20 @@ describe('gcds-alert', () => {
       <gcds-alert lang="fr" heading="Main notification title" alert-role="success">
         <mock:shadow-root>
           <div aria-label="Ceci est une alerte de succès." class="gcds-alert alert--role-success" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Fermer l'alerte.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -235,18 +251,20 @@ describe('gcds-alert', () => {
       <gcds-alert lang="fr" heading="Main notification title" alert-role="warning">
         <mock:shadow-root>
           <div aria-label="Ceci est une alerte d'avertissement." class="gcds-alert alert--role-warning" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Fermer l'alerte.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -266,18 +284,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="alert__container container-full">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -293,18 +313,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title">
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -324,18 +346,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" container="full" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="alert__container container-full">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -351,18 +375,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" container="xl" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="alert__container container-xl">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="xl">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -378,18 +404,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" container="lg" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="alert__container container-lg">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="lg">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -405,18 +433,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" container="md" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="alert__container container-md">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="md">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -432,18 +462,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" container="sm" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="alert__container container-sm">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="sm">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -459,18 +491,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" container="xs" is-fixed>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
-            <div class="alert__container container-xs">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="xs">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -490,14 +524,16 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" hide-close-btn>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
               </div>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -517,16 +553,18 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title" hide-role-icon>
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
-            <div class="alert__container">
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
-              </div>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
 
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
+              </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
       </gcds-alert>
@@ -550,18 +588,20 @@ describe('gcds-alert', () => {
       <gcds-alert heading="Main notification title">
         <mock:shadow-root>
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
-            <div class="alert__container">
-              <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+            <gcds-container centered="" container="full">
+              <div class="alert__container">
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
 
-              <div class="alert__content">
-                <h5 class="alert__heading">Main notification title</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">Main notification title</h5>
+                  <slot></slot>
+                </div>
+
+                <button class="alert__close-btn" aria-label="Close alert.">
+                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                </button>
               </div>
-
-              <button class="alert__close-btn" aria-label="Close alert.">
-                <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
-              </button>
-            </div>
+            </gcds-container>
           </div>
         </mock:shadow-root>
         <p>Testing slot content.</p>

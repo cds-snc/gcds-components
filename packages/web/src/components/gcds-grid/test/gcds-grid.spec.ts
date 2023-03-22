@@ -12,7 +12,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns-desktop="1fr 1fr 1fr 1fr" columns-tablet="1fr 1fr 1fr" columns="1fr 1fr" tag="ul">
         <mock:shadow-root>
-          <ul class="container-full display-grid gcds-grid" style="--gcds-grid-columns-desktop: 1fr 1fr 1fr 1fr; --gcds-grid-columns-tablet: 1fr 1fr 1fr; --gcds-grid-columns: 1fr 1fr;">
+          <ul class="display-grid gcds-grid" style="--gcds-grid-columns-desktop: 1fr 1fr 1fr 1fr; --gcds-grid-columns-tablet: 1fr 1fr 1fr; --gcds-grid-columns: 1fr 1fr;">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -29,7 +29,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns-tablet="1fr 1fr 1fr" columns="1fr 1fr" tag="ul">
         <mock:shadow-root>
-          <ul class="container-full display-grid gcds-grid" style="--gcds-grid-columns-tablet: 1fr 1fr 1fr; --gcds-grid-columns: 1fr 1fr;">
+          <ul class="display-grid gcds-grid" style="--gcds-grid-columns-tablet: 1fr 1fr 1fr; --gcds-grid-columns: 1fr 1fr;">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -46,7 +46,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr 1fr" tag="ul">
         <mock:shadow-root>
-          <ul class="container-full display-grid gcds-grid" style="--gcds-grid-columns: 1fr 1fr;">
+          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr 1fr;">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -63,7 +63,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid tag="ul">
         <mock:shadow-root>
-          <ul class="container-full display-grid gcds-grid" style>
+          <ul class="display-grid gcds-grid" style>
             <slot></slot>
           </ul>
         </mock:shadow-root>
