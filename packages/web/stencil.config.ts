@@ -7,7 +7,7 @@ import { angularOutputTarget } from '@stencil/angular-output-target';
 
 export const config: Config = {
   namespace: 'gcds',
-  globalStyle: '../../styles/global.css',
+  globalStyle: './node_modules/@cdssnc/gcds-tokens/build/web/variables.css',
   srcDir: './src',
   outputTargets: [
     react({
