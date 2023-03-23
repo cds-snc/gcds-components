@@ -38,20 +38,22 @@ export class GcdsPhaseBanner {
           role="status"
           aria-label="Banner"
         >
-          <div class={`banner__content ${container ? `container-${container}` : ''}`}>
-            <figure class="banner__icon icon--left">
-              <slot name="banner-icon-left" />
-            </figure>
+          <gcds-container container={container} centered>
+            <div class="banner__content">
+              <figure class="banner__icon icon--left">
+                <slot name="banner-icon-left" />
+              </figure>
 
-            <div class="banner__details">
-              <slot name="banner-text" />
-              <slot name="banner-cta" />
+              <div class="banner__details">
+                <slot name="banner-text" />
+                <slot name="banner-cta" />
+              </div>
+
+              <figure class="banner__icon icon--right">
+                <slot name="banner-icon-right" />
+              </figure>
             </div>
-
-            <figure class="banner__icon icon--right">
-              <slot name="banner-icon-right" />
-            </figure>
-          </div>
+          </gcds-container>
         </div>
       </Host>
     );

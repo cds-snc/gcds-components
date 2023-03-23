@@ -1,0 +1,35 @@
+:host .gcds-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  /* Container width */
+  &[class*='container'] {
+    width: var(--gcds-grid-container-full);
+  }
+
+  &.container-xl {
+    max-width: var(--gcds-grid-container-xl);
+  }
+
+  &.container-lg {
+    max-width: var(--gcds-grid-container-lg);
+  }
+
+  &.container-md {
+    max-width: var(--gcds-grid-container-md);
+  }
+
+  &.container-sm {
+    max-width: var(--gcds-grid-container-sm);
+  }
+
+  &.container-xs {
+    max-width: var(--gcds-grid-container-xs);
+  }
+
+  /* Container centered */
+  &.container-centered {
+    margin: 0 auto;
+  }
+}

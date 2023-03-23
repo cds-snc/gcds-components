@@ -173,6 +173,20 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GcdsContainer {
+        /**
+          * Defines if container is centered or not
+         */
+        "centered"?: boolean;
+        /**
+          * Defines container size
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Set tag for container
+         */
+        "tag"?: string;
+    }
     interface GcdsDateModified {
     }
     interface GcdsDetails {
@@ -326,6 +340,10 @@ export namespace Components {
           * Aligns grid items along the block (column) axis
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Defines if grid container is centered or not
+         */
+        "centered"?: boolean;
         /**
           * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
          */
@@ -871,6 +889,12 @@ declare global {
         prototype: HTMLGcdsCheckboxElement;
         new (): HTMLGcdsCheckboxElement;
     };
+    interface HTMLGcdsContainerElement extends Components.GcdsContainer, HTMLStencilElement {
+    }
+    var HTMLGcdsContainerElement: {
+        prototype: HTMLGcdsContainerElement;
+        new (): HTMLGcdsContainerElement;
+    };
     interface HTMLGcdsDateModifiedElement extends Components.GcdsDateModified, HTMLStencilElement {
     }
     var HTMLGcdsDateModifiedElement: {
@@ -1009,6 +1033,7 @@ declare global {
         "gcds-breadcrumbs-item": HTMLGcdsBreadcrumbsItemElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
+        "gcds-container": HTMLGcdsContainerElement;
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
         "gcds-details": HTMLGcdsDetailsElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
@@ -1220,6 +1245,20 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface GcdsContainer {
+        /**
+          * Defines if container is centered or not
+         */
+        "centered"?: boolean;
+        /**
+          * Defines container size
+         */
+        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        /**
+          * Set tag for container
+         */
+        "tag"?: string;
+    }
     interface GcdsDateModified {
     }
     interface GcdsDetails {
@@ -1397,6 +1436,10 @@ declare namespace LocalJSX {
           * Aligns grid items along the block (column) axis
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Defines if grid container is centered or not
+         */
+        "centered"?: boolean;
         /**
           * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
          */
@@ -1928,6 +1971,7 @@ declare namespace LocalJSX {
         "gcds-breadcrumbs-item": GcdsBreadcrumbsItem;
         "gcds-button": GcdsButton;
         "gcds-checkbox": GcdsCheckbox;
+        "gcds-container": GcdsContainer;
         "gcds-date-modified": GcdsDateModified;
         "gcds-details": GcdsDetails;
         "gcds-error-message": GcdsErrorMessage;
@@ -1961,6 +2005,7 @@ declare module "@stencil/core" {
             "gcds-breadcrumbs-item": LocalJSX.GcdsBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsItemElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
+            "gcds-container": LocalJSX.GcdsContainer & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;

@@ -15,40 +15,6 @@
     border: 0;
   }
 
-  /* Container width */
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container-xs {
-    width: var(--gcds-alert-container-full);
-    margin: 0 auto;
-  }
-
-  .container-full {
-    max-width: var(--gcds-alert-container-full);
-  }
-
-  .container-xl {
-    max-width: var(--gcds-alert-container-xl);
-  }
-
-  .container-lg {
-    max-width: var(--gcds-alert-container-lg);
-  }
-
-  .container-md {
-    max-width: var(--gcds-alert-container-md);
-  }
-
-  .container-sm {
-    max-width: var(--gcds-alert-container-sm);
-  }
-
-  .container-xs {
-    max-width: var(--gcds-alert-container-xs);
-  }
-
   /* Role */
   &.alert--role-danger {
     background-color: var(--gcds-alert-danger-background);

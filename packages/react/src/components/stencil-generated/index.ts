@@ -13,6 +13,7 @@ export const GcdsBreadcrumbs = /*@__PURE__*/createReactComponent<JSX.GcdsBreadcr
 export const GcdsBreadcrumbsItem = /*@__PURE__*/createReactComponent<JSX.GcdsBreadcrumbsItem, HTMLGcdsBreadcrumbsItemElement>('gcds-breadcrumbs-item');
 export const GcdsButton = /*@__PURE__*/createReactComponent<JSX.GcdsButton, HTMLGcdsButtonElement>('gcds-button');
 export const GcdsCheckbox = /*@__PURE__*/createReactComponent<JSX.GcdsCheckbox, HTMLGcdsCheckboxElement>('gcds-checkbox');
+export const GcdsContainer = /*@__PURE__*/createReactComponent<JSX.GcdsContainer, HTMLGcdsContainerElement>('gcds-container');
 export const GcdsDateModified = /*@__PURE__*/createReactComponent<JSX.GcdsDateModified, HTMLGcdsDateModifiedElement>('gcds-date-modified');
 export const GcdsDetails = /*@__PURE__*/createReactComponent<JSX.GcdsDetails, HTMLGcdsDetailsElement>('gcds-details');
 export const GcdsErrorMessage = /*@__PURE__*/createReactComponent<JSX.GcdsErrorMessage, HTMLGcdsErrorMessageElement>('gcds-error-message');

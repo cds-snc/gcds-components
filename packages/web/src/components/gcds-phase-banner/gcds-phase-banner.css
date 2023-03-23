@@ -10,40 +10,6 @@
     z-index: 9999;
   }
 
-  /* Max content width */
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container-xs {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .container-full {
-    max-width: var(--gcds-phase-banner-container-full);
-  }
-
-  .container-xl {
-    max-width: var(--gcds-phase-banner-container-xl);
-  }
-
-  .container-lg {
-    max-width: var(--gcds-phase-banner-container-lg);
-  }
-
-  .container-md {
-    max-width: var(--gcds-phase-banner-container-md);
-  }
-
-  .container-sm {
-    max-width: var(--gcds-phase-banner-container-sm);
-  }
-
-  .container-xs {
-    max-width: var(--gcds-phase-banner-container-xs);
-  }
-
   /* Role */
   &.banner--role-primary {
     background-color: var(--gcds-phase-banner-primary-background);
