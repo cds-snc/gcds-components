@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { GcdsErrorInterface, Validator, ValidatorEntry } from "./validators";
+import { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -1223,7 +1223,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has a validation error.
          */
-        "onGcdsError"?: (event: GcdsCheckboxCustomEvent<GcdsErrorInterface>) => void;
+        "onGcdsError"?: (event: GcdsCheckboxCustomEvent<object>) => void;
         /**
           * Emitted when the checkbox has focus.
          */
@@ -1305,7 +1305,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has a validation error.
          */
-        "onGcdsError"?: (event: GcdsFieldsetCustomEvent<GcdsErrorInterface>) => void;
+        "onGcdsError"?: (event: GcdsFieldsetCustomEvent<object>) => void;
         /**
           * Emitted when the fieldset has a validation error.
          */
@@ -1371,7 +1371,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has a validation error.
          */
-        "onGcdsError"?: (event: GcdsFileUploaderCustomEvent<GcdsErrorInterface>) => void;
+        "onGcdsError"?: (event: GcdsFileUploaderCustomEvent<object>) => void;
         /**
           * Update value based on user selection.
          */
@@ -1589,7 +1589,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has a validation error.
          */
-        "onGcdsError"?: (event: GcdsInputCustomEvent<GcdsErrorInterface>) => void;
+        "onGcdsError"?: (event: GcdsInputCustomEvent<object>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -1801,7 +1801,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has a validation error.
          */
-        "onGcdsError"?: (event: GcdsSelectCustomEvent<GcdsErrorInterface>) => void;
+        "onGcdsError"?: (event: GcdsSelectCustomEvent<object>) => void;
         /**
           * Emitted when the select has focus.
          */
@@ -1925,7 +1925,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has a validation error.
          */
-        "onGcdsError"?: (event: GcdsTextareaCustomEvent<GcdsErrorInterface>) => void;
+        "onGcdsError"?: (event: GcdsTextareaCustomEvent<object>) => void;
         /**
           * Emitted when the textarea has focus.
          */

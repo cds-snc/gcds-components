@@ -29,12 +29,12 @@
 
 ## Events
 
-| Event        | Description                                    | Type                              |
-| ------------ | ---------------------------------------------- | --------------------------------- |
-| `gcdsBlur`   | Emitted when the textarea loses focus.         | `CustomEvent<void>`               |
-| `gcdsChange` | Update value based on user input.              | `CustomEvent<any>`                |
-| `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<GcdsErrorInterface>` |
-| `gcdsFocus`  | Emitted when the textarea has focus.           | `CustomEvent<void>`               |
+| Event        | Description                                    | Type                  |
+| ------------ | ---------------------------------------------- | --------------------- |
+| `gcdsBlur`   | Emitted when the textarea loses focus.         | `CustomEvent<void>`   |
+| `gcdsChange` | Update value based on user input.              | `CustomEvent<any>`    |
+| `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
+| `gcdsFocus`  | Emitted when the textarea has focus.           | `CustomEvent<void>`   |
 
 
 ## Methods

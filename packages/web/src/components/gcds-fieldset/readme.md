@@ -21,11 +21,11 @@
 
 ## Events
 
-| Event                 | Description                                       | Type                              |
-| --------------------- | ------------------------------------------------- | --------------------------------- |
-| `gcdsError`           | Emitted when the input has a validation error.    | `CustomEvent<GcdsErrorInterface>` |
-| `gcdsGroupError`      | Emitted when the fieldset has a validation error. | `CustomEvent<string>`             |
-| `gcdsGroupErrorClear` | Emitted when the fieldset has a validation error. | `CustomEvent<void>`               |
+| Event                 | Description                                       | Type                  |
+| --------------------- | ------------------------------------------------- | --------------------- |
+| `gcdsError`           | Emitted when the input has a validation error.    | `CustomEvent<object>` |
+| `gcdsGroupError`      | Emitted when the fieldset has a validation error. | `CustomEvent<string>` |
+| `gcdsGroupErrorClear` | Emitted when the fieldset has a validation error. | `CustomEvent<void>`   |
 
 
 ## Methods
