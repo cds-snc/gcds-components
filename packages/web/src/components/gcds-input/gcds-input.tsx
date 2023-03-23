@@ -1,6 +1,6 @@
 import { Component, Element, Event, Watch, EventEmitter, State, Method, Host, Prop, h, Listen } from '@stencil/core';
 import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator, GcdsErrorInterface } from '../../validators';
+import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 
 @Component({
   tag: 'gcds-input',
@@ -201,7 +201,7 @@ export class GcdsInput {
   /**
     * Emitted when the input has a validation error.
     */
-  @Event() gcdsError!: EventEmitter<GcdsErrorInterface>;
+  @Event() gcdsError!: EventEmitter<object>;
 
   @Listen("submit", { target: 'document' })
   submitListener(e) {
