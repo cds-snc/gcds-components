@@ -16,6 +16,9 @@
     "dist/",
     "loader/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "node ../../scripts/minify.js",
     "build": "stencil build --docs",
