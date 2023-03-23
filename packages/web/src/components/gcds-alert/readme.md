@@ -29,11 +29,13 @@
 
 ### Depends on
 
+- [gcds-container](../gcds-container)
 - [gcds-icon](../gcds-icon)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-alert --> gcds-container
   gcds-alert --> gcds-icon
   style gcds-alert fill:#f9f,stroke:#333,stroke-width:4px
 ```

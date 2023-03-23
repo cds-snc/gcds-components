@@ -124,32 +124,34 @@ export class GcdsAlert {
                   : null }.`
             }
           >
-            <div class={`alert__container ${isFixed && container ? `container-${container}` : ''}`}>
-              {( !hideRoleIcon &&
-                <gcds-icon aria-hidden="true" class="alert__icon" size="h5" name={
-                  alertRole === 'danger' ? 'exclamation-circle'
-                  : alertRole === 'info' ? 'info-circle'
-                  : alertRole === 'success' ? 'check-circle'
-                  : alertRole === 'warning' ? 'exclamation-triangle'
-                  : null }
-                />
-              )}
+            <gcds-container container={isFixed ? container : 'full'} centered>
+              <div class="alert__container">
+                {( !hideRoleIcon &&
+                  <gcds-icon aria-hidden="true" class="alert__icon" size="h5" name={
+                    alertRole === 'danger' ? 'exclamation-circle'
+                    : alertRole === 'info' ? 'info-circle'
+                    : alertRole === 'success' ? 'check-circle'
+                    : alertRole === 'warning' ? 'exclamation-triangle'
+                    : null }
+                    />
+                )}
 
-              <div class="alert__content">
-                <h5 class="alert__heading">{heading}</h5>
-                <slot></slot>
+                <div class="alert__content">
+                  <h5 class="alert__heading">{heading}</h5>
+                  <slot></slot>
+                </div>
+
+                {( !hideCloseBtn &&
+                  <button
+                    class="alert__close-btn"
+                    onClick={(e) => this.onDismiss(e)}
+                    aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
+                  >
+                    <gcds-icon aria-hidden="true" name="times" size="text" />
+                  </button>
+                )}
               </div>
-
-              {( !hideCloseBtn &&
-                <button
-                  class="alert__close-btn"
-                  onClick={(e) => this.onDismiss(e)}
-                  aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
-                >
-                  <gcds-icon aria-hidden="true" name="times" size="text" />
-                </button>
-              )}
-            </div>
+            </gcds-container>
           </div>
         : null }
       </Host>

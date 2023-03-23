@@ -24,7 +24,12 @@ export class GcdsGrid {
   /**
    * Defines grid container size
    */
-  @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' = 'full';
+  @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+
+  /**
+   * Defines if grid container is centered or not
+   */
+  @Prop() centered?: boolean = false;
 
   /**
    * Defines element as grid or inline-grid container
@@ -75,9 +80,21 @@ export class GcdsGrid {
   @Prop() placeItems?: 'center' | 'end' | 'start' | 'stretch';
 
   render() {
-    const { alignContent, alignItems, columns, columnsDesktop, columnsTablet, container, display, gap, justifyContent, justifyItems, placeContent, placeItems, tag } = this;
+    const { alignContent, alignItems, columns, columnsDesktop, columnsTablet, container, centered, display, gap, justifyContent, justifyItems, placeContent, placeItems, tag } = this;
 
     const Tag = tag;
+    const classNames = `
+      gcds-grid
+      ${alignContent ? `align-content-${alignContent}` : ''}
+      ${alignItems ? `align-items-${alignItems}` : ''}
+      ${gap ? `gap-${gap}` : ''}
+      ${display ? `display-${display}` : ''}
+      ${justifyContent ? `justify-content-${justifyContent}` : ''}
+      ${justifyItems ? `justify-items-${justifyItems}` : ''}
+      ${placeContent ? `place-content-${placeContent}` : ''}
+      ${placeItems ? `place-items-${placeItems}` : ''}
+    `;
+
 
     // Set CSS variables in style attribute based on passed column properties
     function handleColumns() {
@@ -98,23 +115,17 @@ export class GcdsGrid {
 
     return (
       <Host>
-        <Tag
-          class={`
-            gcds-grid
-            ${alignContent ? `align-content-${alignContent}` : ''}
-            ${alignItems ? `align-items-${alignItems}` : ''}
-            ${gap ? `gap-${gap}` : ''}
-            ${container ? `container-${container}` : ''}
-            ${display ? `display-${display}` : ''}
-            ${justifyContent ? `justify-content-${justifyContent}` : ''}
-            ${justifyItems ? `justify-items-${justifyItems}` : ''}
-            ${placeContent ? `place-content-${placeContent}` : ''}
-            ${placeItems ? `place-items-${placeItems}` : ''}
-          `}
-          style={handleColumns()}
-        >
-          <slot />
-        </Tag>
+        { container ?
+          <gcds-container container={container} centered={centered}>
+            <Tag class={classNames} style={handleColumns()}>
+              <slot />
+            </Tag>
+          </gcds-container>
+        :
+          <Tag class={classNames} style={handleColumns()}>
+            <slot />
+          </Tag>
+        }
       </Host>
     );
   }

@@ -152,6 +152,27 @@ export class GcdsCheckbox {
 }
 
 
+export declare interface GcdsContainer extends Components.GcdsContainer {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['centered', 'container', 'tag']
+})
+@Component({
+  selector: 'gcds-container',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['centered', 'container', 'tag']
+})
+export class GcdsContainer {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface GcdsDateModified extends Components.GcdsDateModified {}
 
 @ProxyCmp({
@@ -320,13 +341,13 @@ export declare interface GcdsGrid extends Components.GcdsGrid {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
+  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
+  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 export class GcdsGrid {
   protected el: HTMLElement;
