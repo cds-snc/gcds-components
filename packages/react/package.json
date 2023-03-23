@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components-react",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "React wrapper for gcds-components",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -28,7 +28,7 @@
     "dist"
   ],
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.9.1"
+    "@cdssnc/gcds-components": "^0.9.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
