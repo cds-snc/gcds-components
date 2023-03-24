@@ -3,11 +3,6 @@ on:
   pull_request:
       branches:
         - main
-  push:
-    branches:
-      - main
-    paths:
-      - 'styles/**'
 
 jobs:
   build-deploy:
@@ -15,14 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
-        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
-      - name: Install repo
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+      - uses: actions/setup-node@a4fcaaf314b117a40d694a35ee36461f8ff3c6e6
+        with:
+          node-version: 16.13.0
+      - name: Install gcds-components
         run: npm install
-      - name: FA dependency
-        run: |
-          npm i @fortawesome/fontawesome-free
-          mv ./node_modules/@fortawesome ./packages/web/node_modules
-      - name: Compile sass
-        run: gulp compile
+        working-directory: ./packages/web
       - name: Run tests
         run: npm run test
