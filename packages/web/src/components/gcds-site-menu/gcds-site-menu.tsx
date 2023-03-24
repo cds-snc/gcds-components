@@ -289,7 +289,7 @@ export class GcdsSiteMenu {
       if (e.matches) {
         // Set mobile menu to default if window size changes to desktop
         var elementNav = hostElement.shadowRoot.querySelector('nav');
-        var mobileTrigger = hostElement.shadowRoot.querySelector('[data-h2-mobile-menu-trigger]');
+        var mobileTrigger = hostElement.shadowRoot.querySelector('.mobile-menu-trigger');
 
         if (elementNav.classList.contains("h2-mobile-menu-active")) {
           elementNav.classList.remove("h2-mobile-menu-active");
@@ -343,7 +343,7 @@ export class GcdsSiteMenu {
         aria-expanded="false"
         aria-label={I18N[this.lang].mobileTriggerLabel}
         aria-haspopup="true"
-        data-h2-mobile-menu-trigger
+        class="mobile-menu-trigger"
         type="button" role="button" button-role="primary">
         <span data-h2-mobile-menu-trigger-open-label>Menu</span><span data-h2-mobile-menu-trigger-close-label>{I18N[this.lang].mobileTriggerClose}</span>
       </gcds-button>

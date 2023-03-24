@@ -191,7 +191,7 @@
 }
 
 /* Mobile Menu Trigger */
-:host [data-h2-mobile-menu-trigger] {
+:host .mobile-menu-trigger {
   z-index: 9999;
   position: fixed;
   bottom: 0;
