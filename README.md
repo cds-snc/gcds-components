@@ -81,7 +81,7 @@ Toute la documentation sur les composants de Système de design GC est accessibl
 - Copiez le référentiel `git clone https://github.com/cds-snc/gcds-components`.
 - Exécutez ensuite `npm install` pour installer toutes les dépendances Node.js.
 - Exécutez `npm install –-workspaces` pour installer toutes les dépendances Node.js des paquets Web, React et Angular.
-- Allez dans le répertoire `/packages/Web`.
+- Allez dans le répertoire `/packages/web`.
 - Finalement, exécutez `npm run build` pour compiler les composants Web.
 
 Pour tester localement les paquets Angular/React, assurez-vous de connecter les paquets au paquet Web en utilisant `npm link`.
