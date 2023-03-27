@@ -22,7 +22,7 @@ describe('gcds-site-menu', () => {
     expect(page.root).toEqualHtml(`
       <gcds-site-menu data-h2-menu-wrapper lang="en" desktop-layout="topbar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." class="mobile-menu-trigger" role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
@@ -54,7 +54,7 @@ describe('gcds-site-menu', () => {
     expect(page.root).toEqualHtml(`
       <gcds-site-menu data-h2-menu-wrapper lang="fr" desktop-layout="topbar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Utiliser la touche Entrée pour ouvrir ou fermer le menu principal." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Utiliser la touche Entrée pour ouvrir ou fermer le menu principal." class="mobile-menu-trigger" role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
@@ -110,7 +110,7 @@ describe('gcds-site-menu', () => {
     expect(page.root).toEqualHtml(`
       <gcds-site-menu data-h2-menu-wrapper lang="en" desktop-layout="topbar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." class="mobile-menu-trigger" role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
@@ -215,7 +215,7 @@ describe('gcds-site-menu', () => {
     expect(page.root).toEqualHtml(`
       <gcds-site-menu data-h2-menu-wrapper lang="en" desktop-layout="sidebar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Use the enter key to open or close the main menu." class="mobile-menu-trigger" role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
@@ -326,7 +326,7 @@ describe('gcds-site-menu', () => {
     expect(page.root).toEqualHtml(`
       <gcds-site-menu data-h2-menu-wrapper lang="fr" desktop-layout="sidebar" mobile-layout="drawer">
         <mock:shadow-root>
-          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Utiliser la touche Entrée pour ouvrir ou fermer le menu principal." data-h2-mobile-menu-trigger role="button" button-role="primary" type="button">
+          <gcds-button aria-expanded="false" aria-haspopup="true" aria-label="Utiliser la touche Entrée pour ouvrir ou fermer le menu principal." class="mobile-menu-trigger" role="button" button-role="primary" type="button">
             <span data-h2-mobile-menu-trigger-open-label>
               Menu
             </span>
