@@ -6,8 +6,9 @@
   border: var(--gcds-button-border-width) solid transparent;
   text-decoration: none;
   border-radius: var(--gcds-button-border-radius);
+  box-sizing: border-box;
   display: inline-block;
-  width: fit-content;
+  width: var(--gcds-button-width);
   text-align: center;
   transition: all .15s ease-in-out;
 
@@ -125,5 +126,13 @@
   &.button--small {
     font: var(--gcds-button-small-font);
     padding: var(--gcds-button-small-padding);
+  }
+}
+
+@media screen and (max-width: 30rem) {
+  :host button:not(.button--text-only),
+  :host a:not(.button--text-only) {
+    width: var(--gcds-button-mobile-width);
+    margin: var(--gcds-button-mobile-margin);
   }
 }
