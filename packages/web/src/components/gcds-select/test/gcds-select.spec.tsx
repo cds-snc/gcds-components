@@ -50,7 +50,7 @@ describe('gcds-select', () => {
         <div class="gcds-select-wrapper gcds-error">
           <gcds-label label="select" label-for="select" lang="en"></gcds-label>
           <gcds-error-message message="This is an error message." messageId="select"></gcds-error-message>
-          <select id="select" name="select" aria-invalid="true" aria-describedby=" error-message-select">
+          <select id="select" name="select" aria-invalid="true" aria-describedby="error-message-select ">
           </select>
         </div>
       </gcds-select>
@@ -70,7 +70,7 @@ describe('gcds-select', () => {
         <div class="gcds-select-wrapper">
           <gcds-label label="select" label-for="select" lang="en"></gcds-label>
           <gcds-hint hint="This is a hint." hint-id="select"></gcds-hint>
-          <select id="select" name="select" aria-invalid="false" aria-describedby="hint-select">
+          <select id="select" name="select" aria-invalid="false" aria-describedby="hint-select ">
           </select>
         </div>
       </gcds-select>

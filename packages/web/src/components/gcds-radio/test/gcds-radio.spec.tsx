@@ -53,7 +53,7 @@ describe('gcds-radio', () => {
     expect(page.root).toEqualHtml(`
       <gcds-radio radio-id="radio" hint="this is a hint" label="radio" name="radio">
         <div class="gcds-radio">
-           <input aria-describedby="hint-radio" id="radio" name="radio" type="radio">
+           <input aria-describedby="hint-radio " id="radio" name="radio" type="radio">
            <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
            <gcds-hint hint="this is a hint" hint-id="radio"></gcds-hint>
          </div>

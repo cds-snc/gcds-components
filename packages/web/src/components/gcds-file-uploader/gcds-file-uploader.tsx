@@ -293,7 +293,8 @@ export class GcdsFileUploader {
       multiple,
       required,
       value,
-      ...inheritedAttributes
+      ...inheritedAttributes,
+      "aria-describedby": `${inheritedAttributes["aria-describedby"] ? `${inheritedAttributes["aria-describedby"]} ` : ''}file-uploader__summary`
     };
 
     const attrsLabel = {
@@ -302,9 +303,9 @@ export class GcdsFileUploader {
     }
 
     if (hint || errorMessage) {
-      let hintID = hint ? `hint-${uploaderId}` : "";
-      let errorID = errorMessage ? ` error-message-${uploaderId}` : "";
-      attrsInput["aria-describedby"] = `${hintID}${errorID} file-uploader__summary${attrsInput["aria-describedby"] ? ` ${attrsInput["aria-describedby"]}` : ""}`;
+      let hintID = hint ? `hint-${uploaderId} ` : "";
+      let errorID = errorMessage ? `error-message-${uploaderId} ` : "";
+      attrsInput["aria-describedby"] = `${hintID}${errorID}${attrsInput["aria-describedby"]}`;
     }
 
     return (
