@@ -1,6 +1,6 @@
 import {defineCustomElements} from '../loader';
 
-import './../../../styles/global.css';
+import '../dist/gcds/gcds.css';
 import gcdsTheme from './gcds-theme';
 
 defineCustomElements();

@@ -1,0 +1,39 @@
+name: Publish storybook
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/web/src/**'
+      - 'packages/web/.storybook/**'
+
+env:
+  NODE_OPTIONS: --max-old-space-size=6144
+
+jobs:
+  build-deploy:
+    name: Publish storybook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+      - uses: actions/setup-node@a4fcaaf314b117a40d694a35ee36461f8ff3c6e6
+        with:
+          node-version: 16.13.0
+      - name: Install repo
+        run: npm install
+      - name: Install gcds-components
+        run: npm install
+        working-directory: ./packages/web
+      - name: Build gcds-components
+        run: npm run build
+        working-directory: ./packages/web
+      - name: Build storybook
+        run: npm run build-storybook
+        working-directory: ./packages/web
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@bd8c6b06eba6b3d25d72b7a1767993c0aeee42e7 # v3.9.2
+        with:
+          publish_dir: ./docs
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: storybook
