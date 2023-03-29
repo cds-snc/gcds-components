@@ -20,7 +20,7 @@
       padding: var(--gcds-breadcrumbs-item-link-padding);
       text-underline-offset: 0.2em;
       text-decoration-color: currentColor;
-      text-decoration-thickness: var(--gcds-border-width-sm);
+      text-decoration-thickness: var(--gcds-breadcrumbs-default-decoration-thickness);
       transition: background 0.15s ease-in-out, color 0.15s ease-in-out;
       white-space: normal;
     }
@@ -29,12 +29,12 @@
   &(:focus) {
     a {
       border-radius: var(--gcds-border-radius-sm);
-      background-color: var(--gcds-focus-background);
-      color: var(--gcds-focus-text);
+      background-color: var(--gcds-breadcrumbs-focus-background);
+      color: var(--gcds-breadcrumbs-focus-text);
       text-decoration: none;
-      box-shadow: 0 0 0 var(--gcds-border-width-md) var(--gcds-color-grayscale-0);
-      outline-offset: var(--gcds-border-width-md);
-      outline: var(--gcds-spacing-50) solid var(--gcds-focus-background);
+      box-shadow: var(--gcds-breadcrumbs-focus-box-shadow);
+      outline-offset: var(--gcds-breadcrumbs-focus-outline-offset);
+      outline: var(--gcds-breadcrumbs-focus-outline);
     }
 
     &:before {
@@ -45,7 +45,7 @@
   &(:not(:focus)) {
     a:hover {
       color: var(--gcds-breadcrumbs-hover-text);
-      text-decoration-thickness: var(--gcds-border-width-md);
+      text-decoration-thickness: var(--gcds-breadcrumbs-hover-decoration-thickness);
     }
   }
 }
