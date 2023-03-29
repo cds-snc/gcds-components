@@ -287,10 +287,10 @@ export class GcdsTextarea {
     };
 
     if (hint || errorMessage || characterCount) {
-      let hintID = hint ? `hint-${textareaId}` : "";
-      let errorID = errorMessage ? ` error-message-${textareaId}` : "";
-      let countID = characterCount ? ` textarea__count-${textareaId}` : "";
-      attrsTextarea["aria-describedby"] = `${hintID}${errorID}${countID}${attrsTextarea["aria-describedby"] ? ` ${attrsTextarea["aria-describedby"]}` : ""}`;
+      let hintID = hint ? `hint-${textareaId} ` : "";
+      let errorID = errorMessage ? `error-message-${textareaId} ` : "";
+      let countID = characterCount ? `textarea__count-${textareaId} ` : "";
+      attrsTextarea["aria-describedby"] = `${hintID}${errorID}${countID}${attrsTextarea["aria-describedby"] ? `${attrsTextarea["aria-describedby"]}` : ""}`;
     }
 
     return (

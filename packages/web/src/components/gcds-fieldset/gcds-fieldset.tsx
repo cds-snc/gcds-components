@@ -1,5 +1,5 @@
 import { Component, Prop, Element, Method, Event, EventEmitter, Listen, State, Host, Watch, h } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, inheritAttributes } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 import { validateFieldsetElements } from '../../validators/fieldset-validators/fieldset-validators';
 
@@ -10,6 +10,8 @@ import { validateFieldsetElements } from '../../validators/fieldset-validators/f
 })
 export class GcdsFieldset {
   @Element() el: HTMLElement;
+
+  private shadowElement?: HTMLElement;
 
 
   _validator: Validator<string> = defaultValidator;
@@ -107,6 +109,11 @@ export class GcdsFieldset {
   * Language of rendered component
   */
   @State() lang: string;
+
+  /**
+   * Set additional HTML attributes not available in component properties
+   */
+  @State() inheritedAttributes: Object = {};
 
   /**
    * Events
@@ -209,6 +216,8 @@ export class GcdsFieldset {
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
+
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
   componentWillUpdate() {
@@ -218,10 +227,15 @@ export class GcdsFieldset {
   }
 
   render() {
-    const { lang, fieldsetId, legend, required, errorMessage, hasError, hint, disabled } = this;
+    const { lang, fieldsetId, legend, required, errorMessage, hasError, hint, disabled, inheritedAttributes } = this;
 
     const fieldsetAttrs = {
-      disabled
+      disabled,
+      ...inheritedAttributes
+    }
+
+    if (errorMessage) {
+        fieldsetAttrs["aria-describedby"] = `error-message-${fieldsetId} ${fieldsetAttrs["aria-describedby"] ? ` ${fieldsetAttrs["aria-describedby"]}` : ""}`;
     }
 
     const requiredText = lang == "en" ? "required" : "obligatoire";
@@ -232,6 +246,7 @@ export class GcdsFieldset {
           id={fieldsetId}
           {...fieldsetAttrs}
           aria-labelledby={hint ? `legend-${fieldsetId} hint-${fieldsetId}` : `legend-${fieldsetId}`}
+          ref={element => this.shadowElement = element as HTMLElement}
         >
           <legend
             id={`legend-${fieldsetId}`}

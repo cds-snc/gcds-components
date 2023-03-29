@@ -192,20 +192,21 @@ export class GcdsRadio {
   }
 
   render() {
-    const { lang, radioId, label, name, required, disabled, value, checked, hint, hasError, parentError } = this;
+    const { lang, radioId, label, name, required, disabled, value, checked, hint, hasError, parentError, inheritedAttributes } = this;
 
     const attrsInput = {
       name,
       disabled,
       required,
       value,
-      checked
+      checked,
+      ...inheritedAttributes
     };
 
     if (hint || parentError) {
-      let hintID = hint ? `hint-${radioId}` : "";
-      let errorID = parentError ? ` parent-error-${radioId}` : "";
-      attrsInput["aria-describedby"] = `${hintID}${errorID}`;
+      let hintID = hint ? `hint-${radioId} ` : "";
+      let errorID = parentError ? `parent-error-${radioId} ` : "";
+      attrsInput["aria-describedby"] = `${hintID}${errorID}${attrsInput["aria-describedby"] ? `${attrsInput["aria-describedby"]}` : ""}`;
     }
 
     if (hasError) {

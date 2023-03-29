@@ -68,7 +68,7 @@ describe('gcds-fieldset', () => {
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend" error-message="Fieldset error">
         <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field" class="gcds-fieldset--error" id="field">
+          <fieldset aria-describedby="error-message-field " aria-labelledby="legend-field" class="gcds-fieldset--error" id="field">
             <legend id="legend-field">
               Fieldset legend
             </legend>

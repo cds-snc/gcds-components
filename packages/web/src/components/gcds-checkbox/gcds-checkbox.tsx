@@ -293,10 +293,10 @@ export class GcdsCheckbox {
     }
 
     if (hint || errorMessage || parentError) {
-      let hintID = hint ? `hint-${checkboxId}` : "";
-      let errorID = errorMessage ? ` error-message-${checkboxId}` : "";
-      let parentErrorID = parentError ? ` parent-error-${checkboxId}` : "";
-      attrsInput["aria-describedby"] = `${hintID}${errorID}${parentErrorID}${attrsInput["aria-describedby"] ? ` ${attrsInput["aria-describedby"]}` : ""}`;
+      let hintID = hint ? `hint-${checkboxId} ` : "";
+      let errorID = errorMessage ? `error-message-${checkboxId} ` : "";
+      let parentErrorID = parentError ? `parent-error-${checkboxId} ` : "";
+      attrsInput["aria-describedby"] = `${hintID}${errorID}${parentErrorID}${attrsInput["aria-describedby"] ? `${attrsInput["aria-describedby"]}` : ""}`;
     }
 
     if (hasError) {
