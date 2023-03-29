@@ -10,14 +10,13 @@
     transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 
     &:focus {
-      outline: 0;
-      background-color: var(--gcds-details-focus-background);
-      color: var(--gcds-details-focus-text);
-    }
-
-    &:active {
-      background-color: var(--gcds-details-active-background);
-      color: var(--gcds-details-active-text);
+      border-radius: var(--gcds-border-radius-sm);
+      background-color: var(--gcds-focus-background);
+      color: var(--gcds-focus-text);
+      text-decoration: none;
+      box-shadow: 0 0 0 var(--gcds-border-width-md) var(--gcds-color-grayscale-0);
+      outline-offset: var(--gcds-border-width-md);
+      outline: var(--gcds-spacing-50) solid var(--gcds-focus-background);
     }
 
     &:before {
@@ -37,18 +36,21 @@
       display: inline-block;
       font: var(--gcds-details-font);
       margin: var(--gcds-details-summary-text-margin);
-      border-block-end: var(--gcds-details-summary-border-width) solid currentColor;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: var(--gcds-border-width-sm);
     }
   }
 
   .details__panel {
-    margin: var(--gcds-details-panel-margin);
+    margin: var(--gcds-spacing-200) 0 0 0;
     padding: var(--gcds-details-panel-padding);
     border-inline-start: var(--gcds-details-panel-border-width) solid var(--gcds-details-panel-border-color);
 
     ::slotted(*) {
       font: var(--gcds-details-font);
-      margin: 0 0 var( --gcds-details-panel-slotted-margin);
+      margin: 0 0 var(--gcds-details-panel-slotted-margin);
     }
 
     ::slotted(*:first-child) {
@@ -61,7 +63,7 @@
 
     ::slotted(ol),
     ::slotted(ul) {
-      margin-inline-start: var( --gcds-details-panel-slotted-margin);
+      margin-inline-start: var(--gcds-details-panel-slotted-margin);
       padding: 0;
     }
 
@@ -72,7 +74,11 @@
 
   &:hover {
     summary:not(:focus) {
-      color: var(--gcds-details-hover-text);
+      p {
+        color: var(--gcds-hover-default);
+        text-underline-offset: 0.2em;
+        text-decoration-thickness: var(--gcds-border-width-md);
+      }
     }
   }
 

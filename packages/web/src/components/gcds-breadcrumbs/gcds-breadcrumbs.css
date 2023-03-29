@@ -1,6 +1,4 @@
 :host .gcds-breadcrumbs {
-  overflow-x: hidden;
-
   ol {
     font: var(--gcds-breadcrumbs-font);
     list-style: none;
@@ -10,6 +8,12 @@
     &.has-canada-link gcds-breadcrumbs-item:first-child,
     &:not(.has-canada-link) ::slotted(:first-child) {
       margin: var(--gcds-breadcrumbs-item-first-child-margin) !important;
+    }
+
+    &.has-canada-link gcds-breadcrumbs-item:first-child {
+      &:before {
+        display: none;
+      }
     }
   }
 }
