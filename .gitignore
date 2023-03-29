@@ -4,6 +4,7 @@ loader/
 /tmp
 /out-tsc
 /bazel-out
+docs/
 
 *~
 *.sw[mnpcod]
