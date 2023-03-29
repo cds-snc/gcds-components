@@ -28,7 +28,7 @@
 
   &(:focus) {
     a {
-      border-radius: var(--gcds-border-radius-sm);
+      border-radius: var(--gcds-breadcrumbs-focus-border-radius);
       background-color: var(--gcds-breadcrumbs-focus-background);
       color: var(--gcds-breadcrumbs-focus-text);
       text-decoration: none;
