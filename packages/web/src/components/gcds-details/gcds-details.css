@@ -10,13 +10,16 @@
     transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 
     &:focus {
-      border-radius: var(--gcds-border-radius-sm);
-      background-color: var(--gcds-focus-background);
-      color: var(--gcds-focus-text);
-      text-decoration: none;
-      box-shadow: 0 0 0 var(--gcds-border-width-md) var(--gcds-color-grayscale-0);
-      outline-offset: var(--gcds-border-width-md);
-      outline: var(--gcds-spacing-50) solid var(--gcds-focus-background);
+      border-radius: var(--gcds-details-focus-border-radius);
+      background-color: var(--gcds-details-focus-background);
+      color: var(--gcds-details-focus-text);
+      box-shadow: var(--gcds-details-focus-box-shadow);
+      outline-offset: var(--gcds-details-focus-outline-offset);
+      outline: var(--gcds-details-focus-outline);
+
+      p {
+        text-decoration: none;
+      }
     }
 
     &:before {
@@ -39,7 +42,7 @@
       text-decoration: underline;
       text-underline-offset: 0.2em;
       text-decoration-color: currentColor;
-      text-decoration-thickness: var(--gcds-border-width-sm);
+      text-decoration-thickness: var(--gcds-details-default-decoration-thickness);
     }
   }
 
@@ -74,10 +77,14 @@
 
   &:hover {
     summary:not(:focus) {
+      &:before {
+        color: var(--gcds-details-hover-text);
+      }
+
       p {
-        color: var(--gcds-hover-default);
+        color: var(--gcds-details-hover-text);
         text-underline-offset: 0.2em;
-        text-decoration-thickness: var(--gcds-border-width-md);
+        text-decoration-thickness: var(--gcds-details-hover-decoration-thickness);
       }
     }
   }
