@@ -10,14 +10,16 @@
     transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 
     &:focus {
-      outline: 0;
+      border-radius: var(--gcds-details-focus-border-radius);
       background-color: var(--gcds-details-focus-background);
       color: var(--gcds-details-focus-text);
-    }
+      box-shadow: var(--gcds-details-focus-box-shadow);
+      outline-offset: var(--gcds-details-focus-outline-offset);
+      outline: var(--gcds-details-focus-outline);
 
-    &:active {
-      background-color: var(--gcds-details-active-background);
-      color: var(--gcds-details-active-text);
+      p {
+        text-decoration: none;
+      }
     }
 
     &:before {
@@ -37,18 +39,21 @@
       display: inline-block;
       font: var(--gcds-details-font);
       margin: var(--gcds-details-summary-text-margin);
-      border-block-end: var(--gcds-details-summary-border-width) solid currentColor;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: var(--gcds-details-default-decoration-thickness);
     }
   }
 
   .details__panel {
-    margin: var(--gcds-details-panel-margin);
+    margin: var(--gcds-spacing-200) 0 0 0;
     padding: var(--gcds-details-panel-padding);
     border-inline-start: var(--gcds-details-panel-border-width) solid var(--gcds-details-panel-border-color);
 
     ::slotted(*) {
       font: var(--gcds-details-font);
-      margin: 0 0 var( --gcds-details-panel-slotted-margin);
+      margin: 0 0 var(--gcds-details-panel-slotted-margin);
     }
 
     ::slotted(*:first-child) {
@@ -61,7 +66,7 @@
 
     ::slotted(ol),
     ::slotted(ul) {
-      margin-inline-start: var( --gcds-details-panel-slotted-margin);
+      margin-inline-start: var(--gcds-details-panel-slotted-margin);
       padding: 0;
     }
 
@@ -72,7 +77,15 @@
 
   &:hover {
     summary:not(:focus) {
-      color: var(--gcds-details-hover-text);
+      &:before {
+        color: var(--gcds-details-hover-text);
+      }
+
+      p {
+        color: var(--gcds-details-hover-text);
+        text-underline-offset: 0.2em;
+        text-decoration-thickness: var(--gcds-details-hover-decoration-thickness);
+      }
     }
   }
 
