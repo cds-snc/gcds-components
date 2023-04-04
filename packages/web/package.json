@@ -11,7 +11,7 @@
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/stencil-starter-project-name/stencil-starter-project-name.esm.js",
+  "unpkg": "dist/gcds/gcds.esm.js",
   "files": [
     "dist/",
     "loader/"
@@ -42,8 +42,6 @@
     "@babel/core": "^7.20.12",
     "@cdssnc/gcds-tokens": "^1.0.5",
     "@fortawesome/fontawesome-free": "^6.3.0",
-    "@node-minify/core": "^6.2.0",
-    "@node-minify/uglify-es": "^6.2.0",
     "@stencil/angular-output-target": "^0.4.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^3.0.0-0",
@@ -58,7 +56,6 @@
     "@types/jest": "^26.0.24",
     "babel-loader": "^8.3.0",
     "cssnano": "^5.0.15",
-    "glob": "^8.0.1",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
     "jest": "^26.6.3",
