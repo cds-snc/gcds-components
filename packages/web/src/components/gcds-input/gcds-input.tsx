@@ -195,6 +195,7 @@ export class GcdsInput {
       this.gcdsError.emit({ id: `#${this.inputId}`, message: this.errorMessage });
     } else {
       this.errorMessage = "";
+      this.gcdsValid.emit({ id: `#${this.inputId}` })
     }
   }
 
@@ -202,6 +203,11 @@ export class GcdsInput {
     * Emitted when the input has a validation error.
     */
   @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+    * Emitted when the input has a validation error.
+    */
+  @Event() gcdsValid!: EventEmitter<object>;
 
   @Listen("submit", { target: 'document' })
   submitListener(e) {

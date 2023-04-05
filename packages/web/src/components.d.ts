@@ -209,6 +209,24 @@ export namespace Components {
          */
         "messageId": string;
     }
+    interface GcdsErrorSummary {
+        /**
+          * Object of list items for error list. Format: { link-href: link-label }
+         */
+        "errorLinks": string | object;
+        /**
+          * Set error summary heading
+         */
+        "heading"?: string;
+        /**
+          * Specifies if the error summary should listen for GcdsError event to generate error list.
+         */
+        "listen"?: boolean;
+        /**
+          * Set error summary message
+         */
+        "message"?: string;
+    }
     interface GcdsFieldset {
         /**
           * Flag to disable fieldset and its contents
@@ -913,6 +931,12 @@ declare global {
         prototype: HTMLGcdsErrorMessageElement;
         new (): HTMLGcdsErrorMessageElement;
     };
+    interface HTMLGcdsErrorSummaryElement extends Components.GcdsErrorSummary, HTMLStencilElement {
+    }
+    var HTMLGcdsErrorSummaryElement: {
+        prototype: HTMLGcdsErrorSummaryElement;
+        new (): HTMLGcdsErrorSummaryElement;
+    };
     interface HTMLGcdsFieldsetElement extends Components.GcdsFieldset, HTMLStencilElement {
     }
     var HTMLGcdsFieldsetElement: {
@@ -1037,6 +1061,7 @@ declare global {
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
         "gcds-details": HTMLGcdsDetailsElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
+        "gcds-error-summary": HTMLGcdsErrorSummaryElement;
         "gcds-fieldset": HTMLGcdsFieldsetElement;
         "gcds-file-uploader": HTMLGcdsFileUploaderElement;
         "gcds-footer": HTMLGcdsFooterElement;
@@ -1280,6 +1305,24 @@ declare namespace LocalJSX {
           * Id attribute for the error message.
          */
         "messageId": string;
+    }
+    interface GcdsErrorSummary {
+        /**
+          * Object of list items for error list. Format: { link-href: link-label }
+         */
+        "errorLinks"?: string | object;
+        /**
+          * Set error summary heading
+         */
+        "heading"?: string;
+        /**
+          * Specifies if the error summary should listen for GcdsError event to generate error list.
+         */
+        "listen"?: boolean;
+        /**
+          * Set error summary message
+         */
+        "message"?: string;
     }
     interface GcdsFieldset {
         /**
@@ -1594,6 +1637,10 @@ declare namespace LocalJSX {
           * Emitted when the input has focus.
          */
         "onGcdsFocus"?: (event: GcdsInputCustomEvent<void>) => void;
+        /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsInputCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1975,6 +2022,7 @@ declare namespace LocalJSX {
         "gcds-date-modified": GcdsDateModified;
         "gcds-details": GcdsDetails;
         "gcds-error-message": GcdsErrorMessage;
+        "gcds-error-summary": GcdsErrorSummary;
         "gcds-fieldset": GcdsFieldset;
         "gcds-file-uploader": GcdsFileUploader;
         "gcds-footer": GcdsFooter;
@@ -2009,6 +2057,7 @@ declare module "@stencil/core" {
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            "gcds-error-summary": LocalJSX.GcdsErrorSummary & JSXBase.HTMLAttributes<HTMLGcdsErrorSummaryElement>;
             "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
             "gcds-file-uploader": LocalJSX.GcdsFileUploader & JSXBase.HTMLAttributes<HTMLGcdsFileUploaderElement>;
             "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
