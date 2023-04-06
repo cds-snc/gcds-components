@@ -17,6 +17,7 @@ export const GcdsContainer = /*@__PURE__*/createReactComponent<JSX.GcdsContainer
 export const GcdsDateModified = /*@__PURE__*/createReactComponent<JSX.GcdsDateModified, HTMLGcdsDateModifiedElement>('gcds-date-modified');
 export const GcdsDetails = /*@__PURE__*/createReactComponent<JSX.GcdsDetails, HTMLGcdsDetailsElement>('gcds-details');
 export const GcdsErrorMessage = /*@__PURE__*/createReactComponent<JSX.GcdsErrorMessage, HTMLGcdsErrorMessageElement>('gcds-error-message');
+export const GcdsErrorSummary = /*@__PURE__*/createReactComponent<JSX.GcdsErrorSummary, HTMLGcdsErrorSummaryElement>('gcds-error-summary');
 export const GcdsFieldset = /*@__PURE__*/createReactComponent<JSX.GcdsFieldset, HTMLGcdsFieldsetElement>('gcds-fieldset');
 export const GcdsFileUploader = /*@__PURE__*/createReactComponent<JSX.GcdsFileUploader, HTMLGcdsFileUploaderElement>('gcds-file-uploader');
 export const GcdsFooter = /*@__PURE__*/createReactComponent<JSX.GcdsFooter, HTMLGcdsFooterElement>('gcds-footer');

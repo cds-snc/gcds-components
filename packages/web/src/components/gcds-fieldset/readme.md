@@ -23,9 +23,10 @@
 
 | Event                 | Description                                       | Type                  |
 | --------------------- | ------------------------------------------------- | --------------------- |
-| `gcdsError`           | Emitted when the input has a validation error.    | `CustomEvent<object>` |
+| `gcdsError`           | Emitted when the fieldset has a validation error. | `CustomEvent<object>` |
 | `gcdsGroupError`      | Emitted when the fieldset has a validation error. | `CustomEvent<string>` |
 | `gcdsGroupErrorClear` | Emitted when the fieldset has a validation error. | `CustomEvent<void>`   |
+| `gcdsValid`           | Emitted when the fieldset has a validation error. | `CustomEvent<object>` |
 
 
 ## Methods

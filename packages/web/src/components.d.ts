@@ -1254,6 +1254,10 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsCheckboxCustomEvent<void>) => void;
         /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsCheckboxCustomEvent<object>) => void;
+        /**
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
@@ -1346,7 +1350,7 @@ declare namespace LocalJSX {
          */
         "legend": string;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the fieldset has a validation error.
          */
         "onGcdsError"?: (event: GcdsFieldsetCustomEvent<object>) => void;
         /**
@@ -1357,6 +1361,10 @@ declare namespace LocalJSX {
           * Emitted when the fieldset has a validation error.
          */
         "onGcdsGroupErrorClear"?: (event: GcdsFieldsetCustomEvent<void>) => void;
+        /**
+          * Emitted when the fieldset has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsFieldsetCustomEvent<object>) => void;
         /**
           * Flag the contents are required
          */
@@ -1427,6 +1435,10 @@ declare namespace LocalJSX {
           * Remove file and update value.
          */
         "onGcdsRemoveFile"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsFileUploaderCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1846,7 +1858,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the select has a validation error.
          */
         "onGcdsError"?: (event: GcdsSelectCustomEvent<object>) => void;
         /**
@@ -1857,6 +1869,10 @@ declare namespace LocalJSX {
           * Update value based on user selection.
          */
         "onGcdsSelectChange"?: (event: GcdsSelectCustomEvent<any>) => void;
+        /**
+          * Emitted when the select has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsSelectCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1970,13 +1986,17 @@ declare namespace LocalJSX {
          */
         "onGcdsChange"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the textarea has a validation error.
          */
         "onGcdsError"?: (event: GcdsTextareaCustomEvent<object>) => void;
         /**
           * Emitted when the textarea has focus.
          */
         "onGcdsFocus"?: (event: GcdsTextareaCustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsTextareaCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
          */

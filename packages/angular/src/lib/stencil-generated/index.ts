@@ -11,6 +11,7 @@ export const DIRECTIVES = [
   d.GcdsDateModified,
   d.GcdsDetails,
   d.GcdsErrorMessage,
+  d.GcdsErrorSummary,
   d.GcdsFieldset,
   d.GcdsFileUploader,
   d.GcdsFooter,
