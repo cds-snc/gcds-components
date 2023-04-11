@@ -1,3 +1,69 @@
-:host {
+:host .gcds-error-summary {
   display: block;
+  padding: var( --gcds-error-summary-padding);
+  margin: var(--gcds-error-summary-margin);
+  border: var(--gcds-error-summary-border-width) solid var(--gcds-error-summary-border-color);
+  transition: background 0.15s ease-in-out, border 0.15s ease-in-out, color 0.15s ease-in-out;
+
+  &:focus,
+  &:has(:focus-within) {
+    border-color: var(--gcds-error-summary-focus-color);
+
+    .summary__heading,
+    .summary__message {
+      color: var(--gcds-error-summary-focus-color);
+    }
+
+  }
+
+  .summary__heading {
+    font: var(--gcds-error-summary-heading-font);
+    margin: 0;
+    padding-block-end: var(--gcds-error-summary-heading-padding-bottom);
+  }
+
+  .summary__message {
+    font: var(--gcds-error-summary-message-font);
+    margin: 0;
+    max-width: var(--gcds-error-summary-max-width);
+    padding: var(--gcds-error-summary-message-padding);
+  }
+
+  .summary__errorlist {
+    padding: 0;
+    margin: var(--gcds-error-summary-list-margin);
+
+    .summary__listitem {
+      max-width: var(--gcds-error-summary-max-width);
+
+      &:not(:last-child) {
+        padding: var(--gcds-error-summary-list-item-padding);
+      }
+
+      .summary__link {
+        color: var(--gcds-error-summary-link-color);
+        text-decoration-thickness: var(--gcds-error-summary-link-thickness);
+
+        &:hover {
+          text-decoration-thickness: var(--gcds-error-summary-hover-link-thickness);
+        }
+
+        &:focus {
+          border-radius: var(--gcds-error-summary-focus-link-border-radius);
+          background-color: var(--gcds-error-summary-focus-link-background-color);
+          color: var(--gcds-error-summary-focus-link-text);
+          text-decoration: none;
+          box-shadow: var(--gcds-error-summary-focus-link-box-shadow);
+          outline-offset: var--gcds-error-summary-focus-link-outline-offset();
+          outline: var(--gcds-error-summary-focus-link-outline);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 30rem) {
+  :host .gcds-error-summary {
+    padding: var(--gcds-error-summary-mobile-padding);
+  }
 }

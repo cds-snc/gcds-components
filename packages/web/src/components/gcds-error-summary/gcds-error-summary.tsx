@@ -161,31 +161,32 @@ export class GcdsErrorSummary {
           role="alert"
           tabindex="-1"
           ref={element => this.shadowElement = element as HTMLElement}
+          class="gcds-error-summary"
         >
-          <h2>
+          <h2 class="summary__heading">
             {heading ?
               heading
             :
               "There was a problem"
             }
           </h2>
-          <p>
+          <p class="summary__message">
             {message ?
               message
             :
               "Errors were found on this page:"
             }
           </p>
-          <ol>
-          {Object.keys(errorQueue).length > 0 && Object.keys(errorQueue).map((key) => {
-            return (
-              <li>
-                <a href={key}>
-                  {errorQueue[key]}
-                </a>
-              </li>
-            );
-          })}
+          <ol class="summary__errorlist">
+            {Object.keys(errorQueue).length > 0 && Object.keys(errorQueue).map((key) => {
+              return (
+                <li class="summary__listitem">
+                  <a class="summary__link" href={key}>
+                    {errorQueue[key]}
+                  </a>
+                </li>
+              );
+            })}
           </ol>
         </div>
       </Host>
