@@ -1,8 +1,8 @@
 :host .gcds-error-summary {
-  display: block;
   padding: var( --gcds-error-summary-padding);
   margin: var(--gcds-error-summary-margin);
   border: var(--gcds-error-summary-border-width) solid var(--gcds-error-summary-border-color);
+  color: var(--gcds-error-summary-text);
   transition: background 0.15s ease-in-out, border 0.15s ease-in-out, color 0.15s ease-in-out;
   display: none;
 
@@ -59,7 +59,7 @@
           color: var(--gcds-error-summary-focus-link-text);
           text-decoration: none;
           box-shadow: var(--gcds-error-summary-focus-link-box-shadow);
-          outline-offset: var--gcds-error-summary-focus-link-outline-offset();
+          outline-offset: var(--gcds-error-summary-focus-link-outline-offset);
           outline: var(--gcds-error-summary-focus-link-outline);
         }
       }
