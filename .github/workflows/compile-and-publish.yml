@@ -19,6 +19,6 @@ jobs:
         run: npm run test
       - name: Compile components
         run: npm run build
-      - uses: JS-DevTools/npm-publish@1641d030cee266f093503c555ee9303ae7aede16
+      - uses: JS-DevTools/npm-publish@b992c2e1ba643d38b8a937a5c70587fdd70fbc21
         with:
           token: ${{ secrets.NPM_TOKEN }}
