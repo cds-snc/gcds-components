@@ -4,6 +4,11 @@
   margin: var(--gcds-error-summary-margin);
   border: var(--gcds-error-summary-border-width) solid var(--gcds-error-summary-border-color);
   transition: background 0.15s ease-in-out, border 0.15s ease-in-out, color 0.15s ease-in-out;
+  display: none;
+
+  &.gcds-show {
+    display: block;
+  }
 
   &:focus,
   &:has(:focus-within) {

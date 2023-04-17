@@ -24,7 +24,7 @@ export class GcdsErrorSummary {
   /**
    * Specifies if the error summary should listen for GcdsError event to generate error list.
    */
-  @Prop() listen?: boolean = true;
+  @Prop({ mutable: true }) listen?: boolean = true;
   @Watch('listen')
   listenChanged(){
     if (this.errorLinks) {
@@ -100,7 +100,11 @@ export class GcdsErrorSummary {
         const sortedErrorList = this.sortErrors();
 
         this.errorQueue = { ...sortedErrorList };
-        this.shadowElement.focus();
+
+        // Time out to let list render
+        setTimeout(() => {
+          this.shadowElement.focus();
+        }, 50);
       }, 100);
     }
   }
@@ -161,7 +165,7 @@ export class GcdsErrorSummary {
           role="alert"
           tabindex="-1"
           ref={element => this.shadowElement = element as HTMLElement}
-          class="gcds-error-summary"
+          class={`gcds-error-summary ${Object.keys(errorQueue).length > 0 ? 'gcds-show' : ''}`}
         >
           <h2 class="summary__heading">
             {heading ?
@@ -192,5 +196,4 @@ export class GcdsErrorSummary {
       </Host>
     );
   }
-
 }

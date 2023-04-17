@@ -10,7 +10,7 @@ describe('gcds-fieldset', () => {
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend">
         <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field" id="field">
+          <fieldset aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field">
               Fieldset legend
             </legend>
@@ -28,7 +28,7 @@ describe('gcds-fieldset', () => {
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend" required>
         <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field" id="field">
+          <fieldset aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field">
               Fieldset legend
               <strong class="legend__required">
@@ -49,7 +49,7 @@ describe('gcds-fieldset', () => {
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend" hint="Fieldset hint">
         <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field hint-field" id="field">
+          <fieldset aria-labelledby="legend-field hint-field" id="field" tabindex="-1">
             <legend id="legend-field">
               Fieldset legend
             </legend>
@@ -68,7 +68,7 @@ describe('gcds-fieldset', () => {
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend" error-message="Fieldset error">
         <mock:shadow-root>
-          <fieldset aria-describedby="error-message-field " aria-labelledby="legend-field" class="gcds-fieldset--error" id="field">
+          <fieldset aria-describedby="error-message-field " aria-labelledby="legend-field" class="gcds-fieldset--error" id="field" tabindex="-1">
             <legend id="legend-field">
               Fieldset legend
             </legend>
@@ -90,7 +90,7 @@ describe('gcds-fieldset', () => {
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend">
         <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field" id="field">
+          <fieldset aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field">
               Fieldset legend
             </legend>

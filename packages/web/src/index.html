@@ -138,14 +138,12 @@
 
       <!-- ------------- Stepper + Form Elements ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Form elements (including stepper)</h3>
+      <h3 class="mt-700 mb-400 bb-1">Form elements (including stepper and error summary)</h3>
       <gcds-stepper current-step="1" total-steps="3"></gcds-stepper>
       <form novalidate>
             
         <gcds-error-summary
-            heading="Heading"
-            message="Message"
-            listen
+          listen
         ></gcds-error-summary>
 
         <gcds-input
@@ -177,12 +175,13 @@
           label="Message"
           hint="This is a hint."
           character-count="400"
+          required
         ></gcds-textarea>
 
         <gcds-checkbox
           checkbox-id="form-checkbox"
           label="Do you like pizza?"
-          checked=""
+          required
           hint="This answer is yes."
         ></gcds-checkbox>
 
@@ -209,7 +208,7 @@
           select-id="form-select"
           label="Name"
           hint="Please enter your full name."
-          error-message="Example error message."
+          required
           default-value="Please select an option"
         >
           <option>Option 1</option>
@@ -223,6 +222,7 @@
           hint="You can upload multiple files, but they have to be png's."
           accept="image/png"
           multiple
+          required
         ></gcds-file-uploader>
 
         <gcds-button type="submit">
