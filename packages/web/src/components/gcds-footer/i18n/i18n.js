@@ -119,6 +119,7 @@ const I18N = {
                 }
             }
         },
+        about: "About this site",
         topofpage: "Top of page",
     },
     "fr": {
@@ -241,6 +242,7 @@ const I18N = {
                 }
             }
         },
+        about: "À propos de ce site",
         topofpage: "Haut de la page",
     }
 }
