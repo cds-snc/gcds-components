@@ -19,7 +19,7 @@ export class GcdsErrorSummary {
   /**
    * Set error summary message
    */
-  @Prop({ reflect: true }) message?: string;
+  @Prop({ reflect: true }) subHeading?: string;
 
   /**
    * Specifies if the error summary should listen for GcdsError event to generate error list.
@@ -158,7 +158,7 @@ export class GcdsErrorSummary {
   }
 
   render() {
-    const { heading, message, errorQueue } = this;
+    const { heading, subHeading, errorQueue } = this;
     return (
       <Host>
         <div
@@ -174,9 +174,9 @@ export class GcdsErrorSummary {
               "There was a problem"
             }
           </h2>
-          <p class="summary__message">
-            {message ?
-              message
+          <p class="summary__sub-heading">
+            {subHeading ?
+              subHeading
             :
               "Errors were found on this page:"
             }

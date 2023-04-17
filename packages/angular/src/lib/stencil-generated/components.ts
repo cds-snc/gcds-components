@@ -242,13 +242,13 @@ export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['errorLinks', 'heading', 'listen', 'message']
+  inputs: ['errorLinks', 'heading', 'listen', 'subHeading']
 })
 @Component({
   selector: 'gcds-error-summary',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['errorLinks', 'heading', 'listen', 'message']
+  inputs: ['errorLinks', 'heading', 'listen', 'subHeading']
 })
 export class GcdsErrorSummary {
   protected el: HTMLElement;

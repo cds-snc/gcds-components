@@ -225,7 +225,7 @@ export namespace Components {
         /**
           * Set error summary message
          */
-        "message"?: string;
+        "subHeading"?: string;
     }
     interface GcdsFieldset {
         /**
@@ -1326,7 +1326,7 @@ declare namespace LocalJSX {
         /**
           * Set error summary message
          */
-        "message"?: string;
+        "subHeading"?: string;
     }
     interface GcdsFieldset {
         /**

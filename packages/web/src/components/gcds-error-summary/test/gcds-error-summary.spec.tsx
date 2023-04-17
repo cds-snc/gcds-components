@@ -14,7 +14,7 @@ describe('gcds-error-summary', () => {
             <h2 class="summary__heading">
               There was a problem
             </h2>
-            <p class="summary__message">
+            <p class="summary__sub-heading">
               Errors were found on this page:
             </p>
             <ol class="summary__errorlist"></ol>
@@ -35,7 +35,7 @@ describe('gcds-error-summary', () => {
             <h2 class="summary__heading">
               There was a problem
             </h2>
-            <p class="summary__message">
+            <p class="summary__sub-heading">
               Errors were found on this page:
             </p>
             <ol class="summary__errorlist"></ol>
@@ -44,23 +44,23 @@ describe('gcds-error-summary', () => {
       </gcds-error-summary>
     `);
   });
-  it('renders - custom headin/message', async () => {
+  it('renders - custom headin/sub-heading', async () => {
     const page = await newSpecPage({
       components: [GcdsErrorSummary],
       html: `<gcds-error-summary
         heading="This is a heading"
-        message="This is the message"
+        sub-heading="This is the sub-heading"
       ></gcds-error-summary>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-error-summary heading="This is a heading" message="This is the message">
+      <gcds-error-summary heading="This is a heading" sub-heading="This is the sub-heading">
         <mock:shadow-root>
           <div class="gcds-error-summary" role="alert" tabindex="-1">
             <h2 class="summary__heading">
               This is a heading
             </h2>
-            <p class="summary__message">
-              This is the message
+            <p class="summary__sub-heading">
+              This is the sub-heading
             </p>
             <ol class="summary__errorlist"></ol>
           </div>
@@ -82,7 +82,7 @@ describe('gcds-error-summary', () => {
             <h2 class="summary__heading">
               There was a problem
             </h2>
-            <p class="summary__message">
+            <p class="summary__sub-heading">
               Errors were found on this page:
             </p>
             <ol class="summary__errorlist">
@@ -114,7 +114,7 @@ describe('gcds-error-summary', () => {
             <h2 class="summary__heading">
               There was a problem
             </h2>
-            <p class="summary__message">
+            <p class="summary__sub-heading">
               Errors were found on this page:
             </p>
             <ol class="summary__errorlist"></ol>
