@@ -3,7 +3,8 @@
   font: var(--gcds-footer-font);
 
   .sub__header,
-  .themenav__header {
+  .themenav__header,
+  .gcds-footer__header {
     clip: rect(1px, 1px, 1px, 1px);
     height: 1px;
     margin: 0;
