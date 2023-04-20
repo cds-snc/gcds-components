@@ -10,7 +10,7 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "gcds-components": [
+      "@cdssnc/gcds-components-angular": [
         "packages/angular/dist"
       ]
     },

@@ -3,6 +3,7 @@
   "version": "0.1.13",
   "description": "GCDS components repo",
   "scripts": {
+    "ng": "ng",
     "compile": "gulp compile",
     "build": "npm run build --workspaces",
     "test": "cd packages/web && npm run test",
@@ -27,10 +28,8 @@
     "@angular/compiler-cli": "^15.0.0",
     "@node-minify/core": "^6.2.0",
     "@node-minify/uglify-es": "^6.2.0",
-    "@types/jasmine": "~4.0.0",
     "cssnano": "^5.0.15",
     "glob": "^8.0.1",
-    "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
