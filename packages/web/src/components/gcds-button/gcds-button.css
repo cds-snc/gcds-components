@@ -30,12 +30,16 @@
     background-color: var(--gcds-button-primary-default-background);
     color: var(--gcds-button-primary-default-text);
 
-    &:hover {
-      background-color: var(--gcds-button-primary-hover-background);
+    &:focus {
+      background-color: blue;
 
-      &:focus {
-        outline-color: var(--gcds-button-primary-hover-background);
+      &:active {
+        background-color: red;
       }
+    }
+
+    &:hover {
+      background-color: blue;
     }
   }
 
