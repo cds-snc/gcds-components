@@ -1,4 +1,4 @@
-import { langProp } from '../../utils/storybook/component-properties';
+import { langProp } from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Stepper',
@@ -49,9 +49,9 @@ const Template = (args) => (`
 </GcdsStepper>
 `).replace(/\s\snull\n/g, '');
 
-export const Default = Template.bind({});
-Default.args = {
+export const Example = Template.bind({});
+Example.args = {
+  lang: 'en',
   currentStep: 1,
   totalSteps: 5,
-  lang: 'en'
 };

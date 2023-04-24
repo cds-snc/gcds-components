@@ -1,20 +1,26 @@
 <style>
-  .sto-1fifpoi {
-    display: none !important;
-  }
-
-  .sto-10ro1m {
-    top: 0 !important;
-    height: 100% !important;
-  }
-
-
   /* Sidebar */
+  .sto-svjevy {
+    background-color: #26374a;
+  }
+
   .sto-n74dov,
   .sto-78lapn,
   .sto-1q7pov5,
   .sidebar-subheading,
-  .sidebar-item {
+  .sidebar-item,
+  .sto-a6lbgo,
+  .sto-14341e,
+  .sto-1n24b8z,
+  .sto-ppqi8s,
+  .sto-1ynn5n4,
+  .sto-gq2js,
+  .sto-gq2jsk,
+  .sto-kghvzr,
+  .sto-1c1e91q,
+  .sto-1g7lonc,
+  .sto-6k7l9s,
+  .sto-11olp77 {
     color: #fff !important;
   }
 
@@ -31,14 +37,19 @@
     background-color: #6584a6 !important;
   }
 
-  /* Main container */
-  div[role="main"].sto-sqdry3 {
-    top: 0 !important;
-    height: 100% !important;
+  /* Hide stories from sidebar, except playground story */
+  .sto-smj4ij[data-nodetype="story"]:not([data-item-id*="playground"]) {
+    display: none;
   }
 
+  /* Main container */
+  /* div[role="main"].sto-sqdry3 {
+    top: 0 !important;
+    height: 100% !important;
+  } */
+
   /* Canvas controls styling */
-  .sto-a2cl28 {
+  /* .sto-a2cl28 {
     color: #fff !important;
   }
 
@@ -59,5 +70,5 @@
   .sto-f2g3hl input:not(:checked)~span:first-of-type {
     background: #fff !important;
     color: #000 !important;
-  }
+  } */
 </style>

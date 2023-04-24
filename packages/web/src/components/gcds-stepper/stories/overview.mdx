@@ -1,0 +1,15 @@
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
+import * as StepperStories from './gcds-stepper.stories';
+
+<Meta of={StepperStories} name="Overview" />
+
+# Stepper
+
+<Canvas
+  of={StepperStories.Example}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls sort="requiredFirst" />

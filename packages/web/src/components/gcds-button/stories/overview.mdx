@@ -1,0 +1,68 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as ButtonStories from './gcds-button.stories';
+
+
+<style>
+  {`
+    .intro-boxes {
+      background-color: var(--gcds-color-grayscale-50);
+      margin-block-start: var(--gcds-spacing-450);
+      margin-block-end: var(--gcds-spacing-500);
+      padding: var(--gcds-spacing-400);
+    }
+
+    .intro-boxes li {
+      list-style: none;
+      background-color: var(--gcds-color-grayscale-0);
+      padding: var(--gcds-spacing-400);
+    }
+  `}
+</style>
+
+<Meta of={ButtonStories} name="Overview" />
+
+# Button<br/>`<gcds-button>`
+
+_Also called: call to action, CTA, link._
+
+A button is an interactive object that highlights an important or common action.
+
+<Canvas
+  of={ButtonStories.ButtonsOverview}
+  story={{ inline: true }}
+/>
+
+<div className="intro-boxes">
+  <gcds-grid tag="ul" columns="1fr" columns-tablet="1fr 1fr" gap="400">
+    <li>
+      ### GitHub
+
+      Want to dive into the code?
+
+      <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-button" target="_blank">View button code</gcds-button>
+    </li>
+    <li>
+      ### Figma
+
+      Visit our Figma library to explore design assets.
+
+      <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?node-id=817-4607&t=CvcydrJWvNLwlAvY-0" target="_blank">View button in Figma</gcds-button>
+    </li>
+    <li>
+      ### Documentation
+
+      GC Design System pairs code with designs and guidance based on federal standards and accessibility best practice.
+
+      <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/button/" target="_blank">View button guidance</gcds-button>
+    </li>
+    <li>
+      ### Accessibility
+
+      ...
+
+      <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/">???</gcds-button>
+    </li>
+  </gcds-grid>
+</div>
+
+
