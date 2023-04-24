@@ -1,5 +1,6 @@
 import { Component, Host, Element, Prop, Watch, State, Listen, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-error-summary',
@@ -158,7 +159,7 @@ export class GcdsErrorSummary {
   }
 
   render() {
-    const { heading, subHeading, errorQueue } = this;
+    const { heading, subHeading, errorQueue, lang } = this;
     return (
       <Host>
         <div
@@ -171,14 +172,14 @@ export class GcdsErrorSummary {
             {heading ?
               heading
             :
-              "There was a problem"
+              i18n[lang].heading
             }
           </h2>
           <p class="summary__sub-heading">
             {subHeading ?
               subHeading
             :
-              "Errors were found on this page:"
+              i18n[lang].subheading
             }
           </p>
           <ol class="summary__errorlist">
