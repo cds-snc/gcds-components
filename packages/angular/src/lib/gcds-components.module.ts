@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { DIRECTIVES } from './stencil-generated';
 
-import { defineCustomElements } from 'gcds-components/loader';
+import { defineCustomElements } from '@cdssnc/gcds-components/loader';
 
 defineCustomElements(window);
 

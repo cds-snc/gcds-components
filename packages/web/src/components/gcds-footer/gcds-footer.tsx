@@ -139,6 +139,7 @@ export class GcdsFooter {
 
     return (
       <Host role="contentinfo">
+        <h2 class="gcds-footer__header">{I18N[lang].about}</h2>
         {(contextualLinksObject && contextualHeading) &&
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
