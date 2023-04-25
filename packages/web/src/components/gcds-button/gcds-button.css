@@ -133,6 +133,20 @@
       padding: 0;
       width: 0;
     }
+
+    &:focus {
+      background-color: var(--gcds-button-shared-focus-background);
+      color: var(--gcds-button-shared-focus-text);
+      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline-offset: var(--gcds-button-border-width);
+      border-color: var(--gcds-button-shared-focus-background);
+      text-decoration: none;
+    }
+
+    &:active {
+      background-color: var(--gcds-button-shared-active-background);
+      border-color: var(--gcds-button-shared-active-background);
+    }
   }
 
   /* Shared Styles */
