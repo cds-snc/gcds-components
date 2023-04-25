@@ -115,7 +115,7 @@ export class GcdsErrorSummary {
   */
   sortErrors() {
     let sortable = [];
-      for (var id in this.errorLinksObject) {
+      for (let id in this.errorLinksObject) {
         sortable.push([id, this.errorLinksObject[id], document.querySelector(id).getBoundingClientRect().y]);
       }
 
@@ -129,6 +129,18 @@ export class GcdsErrorSummary {
       })
 
       return objSorted;
+  }
+
+  /*
+  * Focus element on error link click with label visible
+  */
+  focusElement(event, id) {
+    event.preventDefault();
+
+    let element = document.querySelector(id);
+
+    element.closest('form').querySelector(`[for=${id.replace('#', '')}]`).scrollIntoView();
+    element.focus();
   }
 
   /*
@@ -169,24 +181,16 @@ export class GcdsErrorSummary {
           class={`gcds-error-summary ${Object.keys(errorQueue).length > 0 ? 'gcds-show' : ''}`}
         >
           <h2 class="summary__heading">
-            {heading ?
-              heading
-            :
-              i18n[lang].heading
-            }
+            {heading ?? i18n[lang].heading}
           </h2>
           <p class="summary__sub-heading">
-            {subHeading ?
-              subHeading
-            :
-              i18n[lang].subheading
-            }
+            {subHeading ?? i18n[lang].subheading}
           </p>
           <ol class="summary__errorlist">
             {Object.keys(errorQueue).length > 0 && Object.keys(errorQueue).map((key) => {
               return (
                 <li class="summary__listitem">
-                  <a class="summary__link" href={key}>
+                  <a onClick={(e) => this.focusElement(e, key)} class="summary__link" href={key}>
                     {errorQueue[key]}
                   </a>
                 </li>
