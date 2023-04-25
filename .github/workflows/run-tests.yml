@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
-        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
-      - uses: actions/setup-node@d98fa1113850e562f83c7fc3a89c0ecd7a87fbed
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+      - uses: actions/setup-node@5b32c9063c6eb277dacbf3e916a8bc5d2617c5b7
         with:
           node-version: 16.13.0
       - name: Install gcds-components
