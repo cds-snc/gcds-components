@@ -137,10 +137,11 @@ export class GcdsFieldset {
     if (!this._validator.validate(this.fieldsetId) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsGroupError.emit(this.errorMessage);
-      this.gcdsError.emit({ id: `#${this.fieldsetId}`, message: this.errorMessage });
+      this.gcdsError.emit({ id: `#${this.fieldsetId}`, message: `${this.legend} - ${this.errorMessage}` });
     } else {
       this.errorMessage = "";
       this.gcdsGroupErrorClear.emit();
+      this.gcdsValid.emit({ id: `#${this.fieldsetId}` })
     }
   }
 
@@ -171,9 +172,14 @@ export class GcdsFieldset {
   }
 
   /**
-    * Emitted when the input has a validation error.
+    * Emitted when the fieldset has a validation error.
     */
   @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+    * Emitted when the fieldset has a validation error.
+    */
+  @Event() gcdsValid!: EventEmitter<object>;
 
   @Listen("submit", { target: 'document' })
   submitListener(e) {
@@ -246,6 +252,7 @@ export class GcdsFieldset {
           id={fieldsetId}
           {...fieldsetAttrs}
           aria-labelledby={hint ? `legend-${fieldsetId} hint-${fieldsetId}` : `legend-${fieldsetId}`}
+          tabindex="-1"
           ref={element => this.shadowElement = element as HTMLElement}
         >
           <legend

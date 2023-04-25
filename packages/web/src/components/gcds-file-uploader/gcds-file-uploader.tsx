@@ -221,9 +221,10 @@ export class GcdsFileUploader {
   async validate() {
     if (!this._validator.validate(this.value.length) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.uploaderId}`, message: this.errorMessage });
+      this.gcdsError.emit({ id: `#${this.uploaderId}`, message: `${this.label} - ${this.errorMessage}` });
     } else {
       this.errorMessage = "";
+      this.gcdsValid.emit({ id: `#${this.uploaderId}` })
     }
   }
 
@@ -231,6 +232,11 @@ export class GcdsFileUploader {
     * Emitted when the input has a validation error.
     */
   @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+    * Emitted when the input has a validation error.
+    */
+  @Event() gcdsValid!: EventEmitter<object>;
 
   @Listen("submit", { target: 'document' })
   submitListener(e) {

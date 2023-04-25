@@ -209,6 +209,24 @@ export namespace Components {
          */
         "messageId": string;
     }
+    interface GcdsErrorSummary {
+        /**
+          * Object of list items for error list. Format: { link-href: link-label }
+         */
+        "errorLinks": string | object;
+        /**
+          * Set error summary heading
+         */
+        "heading"?: string;
+        /**
+          * Specifies if the error summary should listen for GcdsError event to generate error list.
+         */
+        "listen"?: boolean;
+        /**
+          * Set error summary message
+         */
+        "subHeading"?: string;
+    }
     interface GcdsFieldset {
         /**
           * Flag to disable fieldset and its contents
@@ -913,6 +931,12 @@ declare global {
         prototype: HTMLGcdsErrorMessageElement;
         new (): HTMLGcdsErrorMessageElement;
     };
+    interface HTMLGcdsErrorSummaryElement extends Components.GcdsErrorSummary, HTMLStencilElement {
+    }
+    var HTMLGcdsErrorSummaryElement: {
+        prototype: HTMLGcdsErrorSummaryElement;
+        new (): HTMLGcdsErrorSummaryElement;
+    };
     interface HTMLGcdsFieldsetElement extends Components.GcdsFieldset, HTMLStencilElement {
     }
     var HTMLGcdsFieldsetElement: {
@@ -1037,6 +1061,7 @@ declare global {
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
         "gcds-details": HTMLGcdsDetailsElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
+        "gcds-error-summary": HTMLGcdsErrorSummaryElement;
         "gcds-fieldset": HTMLGcdsFieldsetElement;
         "gcds-file-uploader": HTMLGcdsFileUploaderElement;
         "gcds-footer": HTMLGcdsFooterElement;
@@ -1229,6 +1254,10 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsCheckboxCustomEvent<void>) => void;
         /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsCheckboxCustomEvent<object>) => void;
+        /**
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
@@ -1281,6 +1310,24 @@ declare namespace LocalJSX {
          */
         "messageId": string;
     }
+    interface GcdsErrorSummary {
+        /**
+          * Object of list items for error list. Format: { link-href: link-label }
+         */
+        "errorLinks"?: string | object;
+        /**
+          * Set error summary heading
+         */
+        "heading"?: string;
+        /**
+          * Specifies if the error summary should listen for GcdsError event to generate error list.
+         */
+        "listen"?: boolean;
+        /**
+          * Set error summary message
+         */
+        "subHeading"?: string;
+    }
     interface GcdsFieldset {
         /**
           * Flag to disable fieldset and its contents
@@ -1303,7 +1350,7 @@ declare namespace LocalJSX {
          */
         "legend": string;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the fieldset has a validation error.
          */
         "onGcdsError"?: (event: GcdsFieldsetCustomEvent<object>) => void;
         /**
@@ -1314,6 +1361,10 @@ declare namespace LocalJSX {
           * Emitted when the fieldset has a validation error.
          */
         "onGcdsGroupErrorClear"?: (event: GcdsFieldsetCustomEvent<void>) => void;
+        /**
+          * Emitted when the fieldset has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsFieldsetCustomEvent<object>) => void;
         /**
           * Flag the contents are required
          */
@@ -1384,6 +1435,10 @@ declare namespace LocalJSX {
           * Remove file and update value.
          */
         "onGcdsRemoveFile"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsFileUploaderCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1595,6 +1650,10 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsInputCustomEvent<void>) => void;
         /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsInputCustomEvent<object>) => void;
+        /**
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
@@ -1799,7 +1858,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the select has a validation error.
          */
         "onGcdsError"?: (event: GcdsSelectCustomEvent<object>) => void;
         /**
@@ -1810,6 +1869,10 @@ declare namespace LocalJSX {
           * Update value based on user selection.
          */
         "onGcdsSelectChange"?: (event: GcdsSelectCustomEvent<any>) => void;
+        /**
+          * Emitted when the select has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsSelectCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1923,13 +1986,17 @@ declare namespace LocalJSX {
          */
         "onGcdsChange"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the textarea has a validation error.
          */
         "onGcdsError"?: (event: GcdsTextareaCustomEvent<object>) => void;
         /**
           * Emitted when the textarea has focus.
          */
         "onGcdsFocus"?: (event: GcdsTextareaCustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsTextareaCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1975,6 +2042,7 @@ declare namespace LocalJSX {
         "gcds-date-modified": GcdsDateModified;
         "gcds-details": GcdsDetails;
         "gcds-error-message": GcdsErrorMessage;
+        "gcds-error-summary": GcdsErrorSummary;
         "gcds-fieldset": GcdsFieldset;
         "gcds-file-uploader": GcdsFileUploader;
         "gcds-footer": GcdsFooter;
@@ -2009,6 +2077,7 @@ declare module "@stencil/core" {
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            "gcds-error-summary": LocalJSX.GcdsErrorSummary & JSXBase.HTMLAttributes<HTMLGcdsErrorSummaryElement>;
             "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
             "gcds-file-uploader": LocalJSX.GcdsFileUploader & JSXBase.HTMLAttributes<HTMLGcdsFileUploaderElement>;
             "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
