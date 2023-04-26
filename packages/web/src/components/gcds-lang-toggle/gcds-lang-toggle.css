@@ -12,6 +12,10 @@
   a {
     color: var(--gcds-lang-toggle-default-text);
     padding: var(--gcds-lang-toggle-padding);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: var(--gcds-lang-toggle-default-decoration-thickness);
 
     span {
       display: none;
@@ -24,16 +28,17 @@
 
     &:hover {
       color: var(--gcds-lang-toggle-hover-text);
+      text-decoration-thickness: var(--gcds-lang-toggle-hover-decoration-thickness);
     }
 
     &:focus {
       color: var(--gcds-lang-toggle-focus-text);
       background-color: var(--gcds-lang-toggle-focus-background);
-    }
-
-    &:active {
-      color: var(--gcds-lang-toggle-active-text);
-      background-color: var(--gcds-lang-toggle-active-background);
+      border-radius: var(--gcds-lang-toggle-focus-border-radius);
+      text-decoration: none;
+      box-shadow: var(--gcds-lang-toggle-focus-box-shadow);
+      outline-offset: var(--gcds-lang-toggle-focus-outline-offset);
+      outline: var(--gcds-lang-toggle-focus-outline);
     }
   }
 

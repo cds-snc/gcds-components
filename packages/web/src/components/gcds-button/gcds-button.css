@@ -10,7 +10,7 @@
   display: inline-block;
   width: var(--gcds-button-width);
   text-align: center;
-  transition: all .15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 
   /* Button Role Styles */
   &.button--role-danger {
@@ -19,10 +19,19 @@
 
     &:hover {
       background-color: var(--gcds-button-danger-hover-background);
+    }
 
-      &:focus {
-        outline-color: var(--gcds-button-danger-hover-background);
-      }
+    &:focus {
+      background-color: var(--gcds-button-shared-focus-background);
+      color: var(--gcds-button-shared-focus-text);
+      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline-offset: var(--gcds-button-border-width);
+      border-color: var(--gcds-button-shared-focus-background);
+    }
+
+    &:active {
+      background-color: var(--gcds-button-shared-active-background);
+      border-color: var(--gcds-button-shared-active-background);
     }
   }
 
@@ -32,10 +41,19 @@
 
     &:hover {
       background-color: var(--gcds-button-primary-hover-background);
+    }
 
-      &:focus {
-        outline-color: var(--gcds-button-primary-hover-background);
-      }
+    &:focus {
+      background-color: var(--gcds-button-shared-focus-background);
+      color: var(--gcds-button-shared-focus-text);
+      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline-offset: var(--gcds-button-border-width);
+      border-color: var(--gcds-button-shared-focus-background);
+    }
+
+    &:active {
+      background-color: var(--gcds-button-shared-active-background);
+      border-color: var(--gcds-button-shared-active-background);
     }
   }
 
@@ -48,30 +66,55 @@
       background-color: var(--gcds-button-secondary-hover-background);
       border-color: var(--gcds-button-secondary-default-text);
       color: var(--gcds-button-secondary-default-text);
+    }
 
-      &:focus {
-        outline-color: var(--gcds-button-secondary-default-text);
+    &:focus {
+      background-color: var(--gcds-button-shared-focus-background);
+      color: var(--gcds-button-shared-focus-text);
+      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline-offset: var(--gcds-button-border-width);
+      border-color: var(--gcds-button-shared-focus-background);
+
+      &:hover {
+        border-color: var(--gcds-button-shared-focus-background);
       }
+    }
+
+    &:active {
+      background-color: var(--gcds-button-shared-active-background);
+      border-color: var(--gcds-button-shared-active-background) !important;
     }
   }
 
   &.button--text-only {
     background-color: var(--gcds-button-text-only-default-background);
     color: var(--gcds-button-text-only-default-text);
-    border-radius: 0;
 
-    &:not([aria-disabled="true"]) {
+    &:not([aria-disabled='true']) {
       text-decoration: underline;
-      text-underline-position: under;
-    }
-
-    &:focus:not(:active) {
-      outline: none;
+      text-underline-offset: 0.2em;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: var(--gcds-border-width-sm);
     }
 
     &:hover {
       background-color: var(--gcds-button-text-only-default-background);
       color: var(--gcds-button-text-only-hover-text);
+      text-decoration-thickness: var(--gcds-border-width-md);
+    }
+
+    &:focus {
+      background-color: var(--gcds-button-shared-focus-background);
+      color: var(--gcds-button-shared-focus-text);
+      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline-offset: var(--gcds-button-border-width);
+      border-color: var(--gcds-button-shared-focus-background);
+      text-decoration: none;
+    }
+
+    &:active {
+      background-color: var(--gcds-button-shared-active-background);
+      border-color: var(--gcds-button-shared-active-background);
     }
   }
 
@@ -90,36 +133,29 @@
       padding: 0;
       width: 0;
     }
+
+    &:focus {
+      background-color: var(--gcds-button-shared-focus-background);
+      color: var(--gcds-button-shared-focus-text);
+      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline-offset: var(--gcds-button-border-width);
+      border-color: var(--gcds-button-shared-focus-background);
+      text-decoration: none;
+    }
+
+    &:active {
+      background-color: var(--gcds-button-shared-active-background);
+      border-color: var(--gcds-button-shared-active-background);
+    }
   }
 
   /* Shared Styles */
-  &[aria-disabled="true"] {
+  &[aria-disabled='true'] {
     background-color: var(--gcds-button-shared-disabled-background);
     color: var(--gcds-button-shared-disabled-text);
     cursor: not-allowed;
     border: var(--gcds-button-border-width) solid currentColor;
     pointer-events: none;
-  }
-
-  &:focus,
-  &:focus-visible {
-    background-color: var(--gcds-button-shared-focus-background);
-    color: var(--gcds-button-shared-focus-text);
-    outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
-    outline-offset: var(--gcds-button-border-width);
-
-    &:not(:hover) {
-      border-color: var(--gcds-button-shared-focus-background);
-    }
-  }
-
-  &:active {
-    background-color: var(--gcds-button-shared-active-background);
-    color: var(--gcds-button-shared-active-text);
-
-    &:focus {
-      outline-color: var(--gcds-button-shared-focus-background);
-    }
   }
 
   /* Small button styling */
