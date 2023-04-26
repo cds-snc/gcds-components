@@ -138,8 +138,14 @@ export class GcdsErrorSummary {
     event.preventDefault();
 
     let element = document.querySelector(id);
+    
+    let target = `[for=${id.replace('#', '')}]`;
 
-    element.closest('form').querySelector(`[for=${id.replace('#', '')}]`).scrollIntoView();
+    if (element.nodeName == "FIELDSET") {
+      target = `#legend-${id.replace('#', '')}`
+    }
+    
+    element.closest('form').querySelector(target).scrollIntoView();
     element.focus();
   }
 

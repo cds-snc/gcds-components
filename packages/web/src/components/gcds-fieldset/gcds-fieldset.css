@@ -1,12 +1,12 @@
 :host {
   display: block;
 
-  fieldset {
+  .gcds-fieldset {
     border: none;
     padding: 0;
     color: var(--gcds-fieldset-default-text);
 
-    legend {
+    & > legend {
       font: var(--gcds-fieldset-font);
       color: inherit;
       margin: var(--gcds-fieldset-legend-margin);
