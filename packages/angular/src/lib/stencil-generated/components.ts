@@ -1,30 +1,21 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from '@angular/core';
+
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
 import { Components } from '@cdssnc/gcds-components';
 
 
-
-
-export declare interface GcdsAlert extends Components.GcdsAlert {
-  /**
-   * Events 
-   */
-  gcdsDismiss: EventEmitter<CustomEvent<void>>;
-
-}
-
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['alertRole', 'container', 'dismissHandler', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed']
 })
 @Component({
   selector: 'gcds-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['alertRole', 'container', 'dismissHandler', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['alertRole', 'container', 'dismissHandler', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed'],
 })
 export class GcdsAlert {
   protected el: HTMLElement;
@@ -36,17 +27,23 @@ export class GcdsAlert {
 }
 
 
-export declare interface GcdsBreadcrumbs extends Components.GcdsBreadcrumbs {}
+export declare interface GcdsAlert extends Components.GcdsAlert {
+  /**
+   * Events
+   */
+  gcdsDismiss: EventEmitter<CustomEvent<void>>;
+}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['hideCanadaLink']
 })
 @Component({
   selector: 'gcds-breadcrumbs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['hideCanadaLink']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['hideCanadaLink'],
 })
 export class GcdsBreadcrumbs {
   protected el: HTMLElement;
@@ -57,17 +54,18 @@ export class GcdsBreadcrumbs {
 }
 
 
-export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsItem {}
+export declare interface GcdsBreadcrumbs extends Components.GcdsBreadcrumbs {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['href']
 })
 @Component({
   selector: 'gcds-breadcrumbs-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['href']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['href'],
 })
 export class GcdsBreadcrumbsItem {
   protected el: HTMLElement;
@@ -78,20 +76,10 @@ export class GcdsBreadcrumbsItem {
 }
 
 
-export declare interface GcdsButton extends Components.GcdsButton {
-  /**
-   * Emitted when the button has focus. 
-   */
-  gcdsFocus: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the button loses focus. 
-   */
-  gcdsBlur: EventEmitter<CustomEvent<void>>;
+export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsItem {}
 
-}
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonStyle', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type'],
   methods: ['focusElement']
 })
@@ -99,7 +87,8 @@ export declare interface GcdsButton extends Components.GcdsButton {
   selector: 'gcds-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonStyle', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'buttonStyle', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type'],
 })
 export class GcdsButton {
   protected el: HTMLElement;
@@ -111,32 +100,19 @@ export class GcdsButton {
 }
 
 
-export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
+export declare interface GcdsButton extends Components.GcdsButton {
   /**
-   * Emitted when the checkbox has focus. 
+   * Emitted when the button has focus.
    */
   gcdsFocus: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the checkbox loses focus. 
+   * Emitted when the button loses focus.
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
-  /**
-   * Update value based on user input. 
-   */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
-  /**
-   * Emitted when the input has a validation error. 
-   */
-  gcdsError: EventEmitter<CustomEvent<object>>;
-  /**
-   * Emitted when the input has a validation error. 
-   */
-  gcdsValid: EventEmitter<CustomEvent<object>>;
-
 }
 
+
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['blurHandler', 'checkboxId', 'checked', 'clickHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
@@ -144,7 +120,8 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
   selector: 'gcds-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'checkboxId', 'checked', 'clickHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['blurHandler', 'checkboxId', 'checked', 'clickHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
 })
 export class GcdsCheckbox {
   protected el: HTMLElement;
@@ -156,17 +133,39 @@ export class GcdsCheckbox {
 }
 
 
-export declare interface GcdsContainer extends Components.GcdsContainer {}
+export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
+  /**
+   * Emitted when the checkbox has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the checkbox loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Update value based on user input.
+   */
+  gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
+}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['centered', 'container', 'tag']
 })
 @Component({
   selector: 'gcds-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['centered', 'container', 'tag']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['centered', 'container', 'tag'],
 })
 export class GcdsContainer {
   protected el: HTMLElement;
@@ -177,15 +176,17 @@ export class GcdsContainer {
 }
 
 
-export declare interface GcdsDateModified extends Components.GcdsDateModified {}
+export declare interface GcdsContainer extends Components.GcdsContainer {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined
 })
 @Component({
   selector: 'gcds-date-modified',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
 })
 export class GcdsDateModified {
   protected el: HTMLElement;
@@ -196,17 +197,18 @@ export class GcdsDateModified {
 }
 
 
-export declare interface GcdsDetails extends Components.GcdsDetails {}
+export declare interface GcdsDateModified extends Components.GcdsDateModified {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['detailsTitle', 'open']
 })
 @Component({
   selector: 'gcds-details',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['detailsTitle', 'open']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['detailsTitle', 'open'],
 })
 export class GcdsDetails {
   protected el: HTMLElement;
@@ -217,17 +219,18 @@ export class GcdsDetails {
 }
 
 
-export declare interface GcdsErrorMessage extends Components.GcdsErrorMessage {}
+export declare interface GcdsDetails extends Components.GcdsDetails {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['message', 'messageId']
 })
 @Component({
   selector: 'gcds-error-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['message', 'messageId']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['message', 'messageId'],
 })
 export class GcdsErrorMessage {
   protected el: HTMLElement;
@@ -238,17 +241,18 @@ export class GcdsErrorMessage {
 }
 
 
-export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
+export declare interface GcdsErrorMessage extends Components.GcdsErrorMessage {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['errorLinks', 'heading', 'listen', 'subHeading']
 })
 @Component({
   selector: 'gcds-error-summary',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['errorLinks', 'heading', 'listen', 'subHeading']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['errorLinks', 'heading', 'listen', 'subHeading'],
 })
 export class GcdsErrorSummary {
   protected el: HTMLElement;
@@ -259,28 +263,10 @@ export class GcdsErrorSummary {
 }
 
 
-export declare interface GcdsFieldset extends Components.GcdsFieldset {
-  /**
-   * Emitted when the fieldset has a validation error. 
-   */
-  gcdsGroupError: EventEmitter<CustomEvent<string>>;
-  /**
-   * Emitted when the fieldset has a validation error. 
-   */
-  gcdsGroupErrorClear: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the fieldset has a validation error. 
-   */
-  gcdsError: EventEmitter<CustomEvent<object>>;
-  /**
-   * Emitted when the fieldset has a validation error. 
-   */
-  gcdsValid: EventEmitter<CustomEvent<object>>;
+export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
 
-}
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'],
   methods: ['validate']
 })
@@ -288,7 +274,8 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
   selector: 'gcds-fieldset',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'],
 })
 export class GcdsFieldset {
   protected el: HTMLElement;
@@ -300,36 +287,27 @@ export class GcdsFieldset {
 }
 
 
-export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
+export declare interface GcdsFieldset extends Components.GcdsFieldset {
   /**
-   * Emitted when the uploader has focus. 
+   * Emitted when the fieldset has a validation error.
    */
-  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  gcdsGroupError: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when the uploader loses focus. 
+   * Emitted when the fieldset has a validation error.
    */
-  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  gcdsGroupErrorClear: EventEmitter<CustomEvent<void>>;
   /**
-   * Update value based on user selection. 
-   */
-  gcdsFileUploaderChange: EventEmitter<CustomEvent<any>>;
-  /**
-   * Remove file and update value. 
-   */
-  gcdsRemoveFile: EventEmitter<CustomEvent<any>>;
-  /**
-   * Emitted when the input has a validation error. 
+   * Emitted when the fieldset has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
   /**
-   * Emitted when the input has a validation error. 
+   * Emitted when the fieldset has a validation error.
    */
   gcdsValid: EventEmitter<CustomEvent<object>>;
-
 }
 
+
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['accept', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'multiple', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
@@ -337,7 +315,8 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   selector: 'gcds-file-uploader',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'multiple', 'required', 'uploaderId', 'validateOn', 'validator', 'value']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['accept', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'multiple', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsFileUploader {
   protected el: HTMLElement;
@@ -349,17 +328,43 @@ export class GcdsFileUploader {
 }
 
 
-export declare interface GcdsFooter extends Components.GcdsFooter {}
+export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
+  /**
+   * Emitted when the uploader has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the uploader loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Update value based on user selection.
+   */
+  gcdsFileUploaderChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Remove file and update value.
+   */
+  gcdsRemoveFile: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
+}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant']
 })
 @Component({
   selector: 'gcds-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
 })
 export class GcdsFooter {
   protected el: HTMLElement;
@@ -370,17 +375,18 @@ export class GcdsFooter {
 }
 
 
-export declare interface GcdsGrid extends Components.GcdsGrid {}
+export declare interface GcdsFooter extends Components.GcdsFooter {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
 })
 export class GcdsGrid {
   protected el: HTMLElement;
@@ -391,17 +397,18 @@ export class GcdsGrid {
 }
 
 
-export declare interface GcdsHeader extends Components.GcdsHeader {}
+export declare interface GcdsGrid extends Components.GcdsGrid {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref']
 })
 @Component({
   selector: 'gcds-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
 })
 export class GcdsHeader {
   protected el: HTMLElement;
@@ -412,17 +419,18 @@ export class GcdsHeader {
 }
 
 
-export declare interface GcdsHint extends Components.GcdsHint {}
+export declare interface GcdsHeader extends Components.GcdsHeader {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['hint', 'hintId']
 })
 @Component({
   selector: 'gcds-hint',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['hint', 'hintId']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['hint', 'hintId'],
 })
 export class GcdsHint {
   protected el: HTMLElement;
@@ -433,17 +441,18 @@ export class GcdsHint {
 }
 
 
-export declare interface GcdsIcon extends Components.GcdsIcon {}
+export declare interface GcdsHint extends Components.GcdsHint {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['fixedWidth', 'iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size']
 })
 @Component({
   selector: 'gcds-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['fixedWidth', 'iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['fixedWidth', 'iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size'],
 })
 export class GcdsIcon {
   protected el: HTMLElement;
@@ -454,32 +463,10 @@ export class GcdsIcon {
 }
 
 
-export declare interface GcdsInput extends Components.GcdsInput {
-  /**
-   * Emitted when the input has focus. 
-   */
-  gcdsFocus: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the input loses focus. 
-   */
-  gcdsBlur: EventEmitter<CustomEvent<void>>;
-  /**
-   * Update value based on user input. 
-   */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
-  /**
-   * Emitted when the input has a validation error. 
-   */
-  gcdsError: EventEmitter<CustomEvent<object>>;
-  /**
-   * Emitted when the input has a validation error. 
-   */
-  gcdsValid: EventEmitter<CustomEvent<object>>;
+export declare interface GcdsIcon extends Components.GcdsIcon {}
 
-}
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
@@ -487,7 +474,8 @@ export declare interface GcdsInput extends Components.GcdsInput {
   selector: 'gcds-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
 })
 export class GcdsInput {
   protected el: HTMLElement;
@@ -499,17 +487,39 @@ export class GcdsInput {
 }
 
 
-export declare interface GcdsLabel extends Components.GcdsLabel {}
+export declare interface GcdsInput extends Components.GcdsInput {
+  /**
+   * Emitted when the input has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the input loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Update value based on user input.
+   */
+  gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
+}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['hideLabel', 'label', 'labelFor', 'required']
 })
 @Component({
   selector: 'gcds-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['hideLabel', 'label', 'labelFor', 'required']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['hideLabel', 'label', 'labelFor', 'required'],
 })
 export class GcdsLabel {
   protected el: HTMLElement;
@@ -520,17 +530,18 @@ export class GcdsLabel {
 }
 
 
-export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
+export declare interface GcdsLabel extends Components.GcdsLabel {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['href']
 })
 @Component({
   selector: 'gcds-lang-toggle',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['href']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['href'],
 })
 export class GcdsLangToggle {
   protected el: HTMLElement;
@@ -541,23 +552,18 @@ export class GcdsLangToggle {
 }
 
 
-export declare interface GcdsPagination extends Components.GcdsPagination {
-  /**
-   * Update value based on user input. 
-   */
-  gcdsPageChange: EventEmitter<CustomEvent<void>>;
+export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
-}
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
 })
 @Component({
   selector: 'gcds-pagination',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url'],
 })
 export class GcdsPagination {
   protected el: HTMLElement;
@@ -569,17 +575,23 @@ export class GcdsPagination {
 }
 
 
-export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
+export declare interface GcdsPagination extends Components.GcdsPagination {
+  /**
+   * Update value based on user input.
+   */
+  gcdsPageChange: EventEmitter<CustomEvent<void>>;
+}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['bannerRole', 'container', 'isFixed']
 })
 @Component({
   selector: 'gcds-phase-banner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bannerRole', 'container', 'isFixed']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['bannerRole', 'container', 'isFixed'],
 })
 export class GcdsPhaseBanner {
   protected el: HTMLElement;
@@ -590,31 +602,18 @@ export class GcdsPhaseBanner {
 }
 
 
-export declare interface GcdsRadio extends Components.GcdsRadio {
-  /**
-   * Emitted when the radio button is checked 
-   */
-  gcdsRadioChange: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the radio has focus. 
-   */
-  gcdsFocus: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the radio loses focus. 
-   */
-  gcdsBlur: EventEmitter<CustomEvent<void>>;
+export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
 
-}
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['blurHandler', 'checked', 'clickHandler', 'disabled', 'focusHandler', 'hint', 'label', 'name', 'radioId', 'required', 'value']
 })
 @Component({
   selector: 'gcds-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'checked', 'clickHandler', 'disabled', 'focusHandler', 'hint', 'label', 'name', 'radioId', 'required', 'value']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['blurHandler', 'checked', 'clickHandler', 'disabled', 'focusHandler', 'hint', 'label', 'name', 'radioId', 'required', 'value'],
 })
 export class GcdsRadio {
   protected el: HTMLElement;
@@ -626,32 +625,23 @@ export class GcdsRadio {
 }
 
 
-export declare interface GcdsSelect extends Components.GcdsSelect {
+export declare interface GcdsRadio extends Components.GcdsRadio {
   /**
-   * Update value based on user selection. 
+   * Emitted when the radio button is checked
    */
-  gcdsSelectChange: EventEmitter<CustomEvent<any>>;
+  gcdsRadioChange: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the select has focus. 
+   * Emitted when the radio has focus.
    */
   gcdsFocus: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the select loses focus. 
+   * Emitted when the radio loses focus.
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the select has a validation error. 
-   */
-  gcdsError: EventEmitter<CustomEvent<object>>;
-  /**
-   * Emitted when the select has a validation error. 
-   */
-  gcdsValid: EventEmitter<CustomEvent<object>>;
-
 }
 
+
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['blurHandler', 'changeHandler', 'defaultValue', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'required', 'selectId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
@@ -659,7 +649,8 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
   selector: 'gcds-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'changeHandler', 'defaultValue', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'required', 'selectId', 'validateOn', 'validator', 'value']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['blurHandler', 'changeHandler', 'defaultValue', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'required', 'selectId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsSelect {
   protected el: HTMLElement;
@@ -671,17 +662,39 @@ export class GcdsSelect {
 }
 
 
-export declare interface GcdsSignature extends Components.GcdsSignature {}
+export declare interface GcdsSelect extends Components.GcdsSelect {
+  /**
+   * Update value based on user selection.
+   */
+  gcdsSelectChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the select has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the select loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the select has a validation error.
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the select has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
+}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['hasLink', 'type', 'variant']
 })
 @Component({
   selector: 'gcds-signature',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['hasLink', 'type', 'variant']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['hasLink', 'type', 'variant'],
 })
 export class GcdsSignature {
   protected el: HTMLElement;
@@ -692,17 +705,18 @@ export class GcdsSignature {
 }
 
 
-export declare interface GcdsSiteMenu extends Components.GcdsSiteMenu {}
+export declare interface GcdsSignature extends Components.GcdsSignature {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position']
 })
 @Component({
   selector: 'gcds-site-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position'],
 })
 export class GcdsSiteMenu {
   protected el: HTMLElement;
@@ -713,17 +727,18 @@ export class GcdsSiteMenu {
 }
 
 
-export declare interface GcdsStepper extends Components.GcdsStepper {}
+export declare interface GcdsSiteMenu extends Components.GcdsSiteMenu {}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['currentStep', 'totalSteps']
 })
 @Component({
   selector: 'gcds-stepper',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['currentStep', 'totalSteps']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['currentStep', 'totalSteps'],
 })
 export class GcdsStepper {
   protected el: HTMLElement;
@@ -734,32 +749,10 @@ export class GcdsStepper {
 }
 
 
-export declare interface GcdsTextarea extends Components.GcdsTextarea {
-  /**
-   * Emitted when the textarea has focus. 
-   */
-  gcdsFocus: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the textarea loses focus. 
-   */
-  gcdsBlur: EventEmitter<CustomEvent<void>>;
-  /**
-   * Update value based on user input. 
-   */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
-  /**
-   * Emitted when the textarea has a validation error. 
-   */
-  gcdsError: EventEmitter<CustomEvent<object>>;
-  /**
-   * Emitted when the textarea has a validation error. 
-   */
-  gcdsValid: EventEmitter<CustomEvent<object>>;
+export declare interface GcdsStepper extends Components.GcdsStepper {}
 
-}
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
@@ -767,7 +760,8 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
   selector: 'gcds-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsTextarea {
   protected el: HTMLElement;
@@ -779,17 +773,39 @@ export class GcdsTextarea {
 }
 
 
-export declare interface GcdsVerifyBanner extends Components.GcdsVerifyBanner {}
+export declare interface GcdsTextarea extends Components.GcdsTextarea {
+  /**
+   * Emitted when the textarea has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the textarea loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Update value based on user input.
+   */
+  gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the textarea has a validation error.
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the textarea has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
+}
+
 
 @ProxyCmp({
-  defineCustomElementFn: undefined,
   inputs: ['container', 'isFixed']
 })
 @Component({
   selector: 'gcds-verify-banner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['container', 'isFixed']
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['container', 'isFixed'],
 })
 export class GcdsVerifyBanner {
   protected el: HTMLElement;
@@ -798,3 +814,8 @@ export class GcdsVerifyBanner {
     this.el = r.nativeElement;
   }
 }
+
+
+export declare interface GcdsVerifyBanner extends Components.GcdsVerifyBanner {}
+
+

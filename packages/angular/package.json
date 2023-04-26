@@ -15,29 +15,14 @@
     "url": "https://github.com/cds-snc/gcds-components"
   },
   "scripts": {
-    "ng": "cd ../.. && ng",
-    "start": "cd ../.. && ng serve",
-    "build": "cd ../.. && ng build",
-    "watch": "cd ../.. && ng build --watch --configuration development"
+    "build": "cd ../.. && ng build @cdssnc/gcds-components-angular"
   },
-  "files": [
-    "dist"
-  ],
   "peerDependencies": {
-    "@angular/common": "^14.2.0",
-    "@angular/core": "^14.2.0",
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0",
     "@cdssnc/gcds-components": "^0.9.4"
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  },
-  "main": "dist/index.d.js",
-  "module": "dist/fesm2015/gcds-components-angular.mjs",
-  "es2020": "dist/fesm2020/gcds-components-angular.mjs",
-  "esm2020": "dist/esm2020/gcds-components-angular.mjs",
-  "fesm2020": "dist/fesm2020/gcds-components-angular.mjs",
-  "fesm2015": "dist/fesm2015/gcds-components-angular.mjs",
-  "typings": "dist/index.d.ts",
-  "sideEffects": false,
-  "license": "MIT"
+  }
 }
