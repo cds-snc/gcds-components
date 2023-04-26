@@ -9,14 +9,11 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend">
-        <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field" id="field" tabindex="-1">
-            <legend id="legend-field">
-              Fieldset legend
-            </legend>
-            <slot></slot>
-          </fieldset>
-        </mock:shadow-root>
+        <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
+          <legend id="legend-field">
+            Fieldset legend
+          </legend>
+        </fieldset>
       </gcds-fieldset>
     `);
   });
@@ -27,17 +24,14 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend" required>
-        <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field" id="field" tabindex="-1">
-            <legend id="legend-field">
-              Fieldset legend
-              <strong class="legend__required">
-                (required)
-              </strong>
-            </legend>
-            <slot></slot>
-          </fieldset>
-        </mock:shadow-root>
+        <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
+          <legend id="legend-field">
+            Fieldset legend
+            <strong class="legend__required">
+              (required)
+            </strong>
+          </legend>
+        </fieldset>
       </gcds-fieldset>
     `);
   });
@@ -48,15 +42,12 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend" hint="Fieldset hint">
-        <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field hint-field" id="field" tabindex="-1">
-            <legend id="legend-field">
-              Fieldset legend
-            </legend>
-            <gcds-hint hint="Fieldset hint" hint-id="field"></gcds-hint>
-            <slot></slot>
-          </fieldset>
-        </mock:shadow-root>
+          <fieldset class="gcds-fieldset" aria-labelledby="legend-field hint-field" id="field" tabindex="-1">
+          <legend id="legend-field">
+            Fieldset legend
+          </legend>
+          <gcds-hint hint="Fieldset hint" hint-id="field"></gcds-hint>
+        </fieldset>
       </gcds-fieldset>
     `);
   });
@@ -67,15 +58,12 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend" error-message="Fieldset error">
-        <mock:shadow-root>
-          <fieldset aria-describedby="error-message-field " aria-labelledby="legend-field" class="gcds-fieldset--error" id="field" tabindex="-1">
-            <legend id="legend-field">
-              Fieldset legend
-            </legend>
-            <gcds-error-message message="Fieldset error" messageId="field"></gcds-error-message>
-            <slot></slot>
-          </fieldset>
-        </mock:shadow-root>
+        <fieldset aria-describedby="error-message-field " aria-labelledby="legend-field" class="gcds-fieldset gcds-fieldset--error" id="field" tabindex="-1">
+          <legend id="legend-field">
+            Fieldset legend
+          </legend>
+          <gcds-error-message message="Fieldset error" messageId="field"></gcds-error-message>
+        </fieldset>
       </gcds-fieldset>
     `);
   });
@@ -89,15 +77,12 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset fieldset-id="field" legend="Fieldset legend">
-        <mock:shadow-root>
-          <fieldset aria-labelledby="legend-field" id="field" tabindex="-1">
-            <legend id="legend-field">
-              Fieldset legend
-            </legend>
-            <slot></slot>
-          </fieldset>
-        </mock:shadow-root>
-        <gcds-radio label="Radio button" name="radio" radio-id="radio"></gcds-radio>
+        <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
+          <legend id="legend-field">
+            Fieldset legend
+          </legend>
+          <gcds-radio label="Radio button" name="radio" radio-id="radio"></gcds-radio>
+        </fieldset>
       </gcds-fieldset>
     `);
   });
