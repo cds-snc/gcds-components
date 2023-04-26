@@ -128,7 +128,7 @@ export class GcdsCheckbox {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -150,6 +150,10 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
    * Emitted when the input has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
 }
 
 
@@ -241,6 +245,28 @@ export declare interface GcdsErrorMessage extends Components.GcdsErrorMessage {}
 
 
 @ProxyCmp({
+  inputs: ['errorLinks', 'heading', 'listen', 'subHeading']
+})
+@Component({
+  selector: 'gcds-error-summary',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['errorLinks', 'heading', 'listen', 'subHeading'],
+})
+export class GcdsErrorSummary {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
+
+
+@ProxyCmp({
   inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'],
   methods: ['validate']
 })
@@ -256,7 +282,7 @@ export class GcdsFieldset {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError']);
+    proxyOutputs(this, this.el, ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -271,9 +297,13 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
    */
   gcdsGroupErrorClear: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the fieldset has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the fieldset has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
 }
 
 
@@ -293,7 +323,7 @@ export class GcdsFileUploader {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsFileUploaderChange', 'gcdsRemoveFile', 'gcdsError']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsFileUploaderChange', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -319,6 +349,10 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
    * Emitted when the input has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
 }
 
 
@@ -448,7 +482,7 @@ export class GcdsInput {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -470,6 +504,10 @@ export declare interface GcdsInput extends Components.GcdsInput {
    * Emitted when the input has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
 }
 
 
@@ -619,7 +657,7 @@ export class GcdsSelect {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsSelectChange', 'gcdsFocus', 'gcdsBlur', 'gcdsError']);
+    proxyOutputs(this, this.el, ['gcdsSelectChange', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -638,9 +676,13 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the select has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the select has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
 }
 
 
@@ -726,7 +768,7 @@ export class GcdsTextarea {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -745,9 +787,13 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the textarea has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the textarea has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
 }
 
 

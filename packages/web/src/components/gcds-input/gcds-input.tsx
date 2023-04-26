@@ -192,9 +192,10 @@ export class GcdsInput {
   async validate() {
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.inputId}`, message: this.errorMessage });
+      this.gcdsError.emit({ id: `#${this.inputId}`, message: `${this.label} - ${this.errorMessage}` });
     } else {
       this.errorMessage = "";
+      this.gcdsValid.emit({ id: `#${this.inputId}` })
     }
   }
 
@@ -202,6 +203,11 @@ export class GcdsInput {
     * Emitted when the input has a validation error.
     */
   @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+    * Emitted when the input has a validation error.
+    */
+  @Event() gcdsValid!: EventEmitter<object>;
 
   @Listen("submit", { target: 'document' })
   submitListener(e) {

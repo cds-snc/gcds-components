@@ -17,9 +17,6 @@
   "scripts": {
     "build": "cd ../.. && ng build @cdssnc/gcds-components-angular"
   },
-  "files": [
-    "dist"
-  ],
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0",

@@ -10,6 +10,7 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="en">
         <mock:shadow-root>
+          <h2 class="gcds-footer__header">About this site</h2>
           <div class="gcds-footer__sub">
             <div class="sub__container">
               <nav aria-label="Government of Canada Corporate">
@@ -62,6 +63,7 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="full" lang="en">
         <mock:shadow-root>
+          <h2 class="gcds-footer__header">About this site</h2>
           <div class="gcds-footer__main">
             <div class="main__container">
               <nav aria-label="Government of Canada" class="main__govnav">
@@ -237,6 +239,7 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="fr">
         <mock:shadow-root>
+          <h2 class="gcds-footer__header">À propos de ce site</h2>
           <div class="gcds-footer__sub">
             <div class="sub__container">
               <nav aria-label="Organisation du gouvernement du Canada">
@@ -289,6 +292,7 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="full" lang="fr">
         <mock:shadow-root>
+          <h2 class="gcds-footer__header">À propos de ce site</h2>
           <div class="gcds-footer__main">
             <div class="main__container">
               <nav aria-label="Gouvernement du Canada" class="main__govnav">
@@ -469,6 +473,7 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer contextual-heading="Heading" contextual-links="{ &quot;Link 1&quot;: &quot;#red&quot;, &quot;Link 2&quot;: &quot;#green&quot;, &quot;Link 3&quot;: &quot;#blue&quot; }" display="full" lang="en" role="contentinfo">
         <mock:shadow-root>
+          <h2 class="gcds-footer__header">About this site</h2>
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
               <nav aria-label="Heading">
@@ -674,6 +679,7 @@ describe('gcds-footer', () => {
     expect(page.root).toEqualHtml(`
       <gcds-footer role="contentinfo" display="compact" lang="en" sub-links="{ &quot;Link 1&quot;: &quot;#red&quot;, &quot;Link 2&quot;: &quot;#green&quot;, &quot;Link 3&quot;: &quot;#blue&quot; }">
         <mock:shadow-root>
+          <h2 class="gcds-footer__header">About this site</h2>
           <div class="gcds-footer__sub">
             <div class="sub__container">
               <nav aria-label="Government of Canada Corporate">
