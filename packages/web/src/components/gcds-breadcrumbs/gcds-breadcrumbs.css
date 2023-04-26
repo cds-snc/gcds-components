@@ -2,8 +2,9 @@
   ol {
     font: var(--gcds-breadcrumbs-font);
     list-style: none;
-    margin: 0;
-    padding: 0;
+    overflow-x: hidden;
+    margin: var(--gcds-breadcrumbs-margin);
+    padding: var(--gcds-breadcrumbs-padding);
 
     &.has-canada-link gcds-breadcrumbs-item:first-child,
     &:not(.has-canada-link) ::slotted(:first-child) {
