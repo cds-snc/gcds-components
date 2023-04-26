@@ -24,8 +24,8 @@
     "dist"
   ],
   "peerDependencies": {
-    "@angular/common": "^14.2.0",
-    "@angular/core": "^14.2.0",
+    "@angular/common": "^14.2.0 || ^15.0.0",
+    "@angular/core": "^14.2.0 || ^15.0.0",
     "@cdssnc/gcds-components": "^0.9.4"
   },
   "dependencies": {
