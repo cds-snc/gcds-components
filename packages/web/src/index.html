@@ -138,9 +138,14 @@
 
       <!-- ------------- Stepper + Form Elements ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Form elements (including stepper)</h3>
+      <h3 class="mt-700 mb-400 bb-1">Form elements (including stepper and error summary)</h3>
       <gcds-stepper current-step="1" total-steps="3"></gcds-stepper>
-      <form>
+      <form novalidate>
+            
+        <gcds-error-summary
+          listen
+        ></gcds-error-summary>
+
         <gcds-input
           input-id="form-name"
           label="Name"
@@ -170,12 +175,13 @@
           label="Message"
           hint="This is a hint."
           character-count="400"
+          required
         ></gcds-textarea>
 
         <gcds-checkbox
           checkbox-id="form-checkbox"
           label="Do you like pizza?"
-          checked=""
+          required
           hint="This answer is yes."
         ></gcds-checkbox>
 
@@ -183,6 +189,7 @@
           fieldset-id="fieldset"
           legend="Radio button group"
           hint="They are in a fieldset"
+          required
         >
           <gcds-radio
             radio-id="form-radio"
@@ -197,12 +204,31 @@
             name="radio"
           ></gcds-radio>
         </gcds-fieldset>
+        <gcds-fieldset
+          fieldset-id="fieldset2"
+          legend="Checkbox group"
+          hint="Select all that apply."
+          required
+        >
+          <gcds-checkbox
+            checkbox-id="form-checkbox-group1"
+            label="checkbox 1 label"
+            hint="This is a hint."
+            name="checkbox"
+          ></gcds-checkbox>
+          <gcds-checkbox
+            checkbox-id="form-checkbox-group2"
+            label="checkbox 2 label"
+            hint="This is a hint."
+            name="checkbox"
+          ></gcds-checkbox>
+        </gcds-fieldset>
 
         <gcds-select
           select-id="form-select"
           label="Name"
           hint="Please enter your full name."
-          error-message="Example error message."
+          required
           default-value="Please select an option"
         >
           <option>Option 1</option>
@@ -216,7 +242,12 @@
           hint="You can upload multiple files, but they have to be png's."
           accept="image/png"
           multiple
+          required
         ></gcds-file-uploader>
+
+        <gcds-button type="submit">
+            Submit
+        </gcds-button>
       </form>
 
       <!-- ------------- Grid ------------- -->

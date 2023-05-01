@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Web components for the GCDS",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@stencil/core": "^2.7.0",
-    "@stencil/react-output-target": "^0.3.1",
+    "@stencil/react-output-target": "^0.5.0",
     "@storybook/addons": "^6.5.16",
     "@storybook/theming": "^6.5.16",
     "stencil": "^0.0.5"
@@ -40,11 +40,11 @@
   "devDependencies": {
     "@axe-core/puppeteer": "^4.3.2",
     "@babel/core": "^7.20.12",
-    "@cdssnc/gcds-tokens": "^1.0.5",
+    "@cdssnc/gcds-tokens": "^1.1.1",
     "@fortawesome/fontawesome-free": "^6.3.0",
     "@node-minify/core": "^6.2.0",
     "@node-minify/uglify-es": "^6.2.0",
-    "@stencil/angular-output-target": "^0.4.0",
+    "@stencil/angular-output-target": "^0.6.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^3.0.0-0",
     "@storybook/addon-actions": "^6.5.16",
@@ -54,7 +54,7 @@
     "@storybook/builder-webpack4": "^6.5.16",
     "@storybook/html": "^6.5.16",
     "@storybook/manager-webpack4": "^6.5.16",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/testing-library": "^0.1.0",
     "@types/jest": "^26.0.24",
     "babel-loader": "^8.3.0",
     "cssnano": "^5.0.15",

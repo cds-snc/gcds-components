@@ -191,9 +191,10 @@ export class GcdsTextarea {
   async validate() {
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.textareaId}`, message: this.errorMessage });
+      this.gcdsError.emit({ id: `#${this.textareaId}`, message: `${this.label} - ${this.errorMessage}` });
     } else {
       this.errorMessage = "";
+      this.gcdsValid.emit({ id: `#${this.textareaId}` })
     }
   }
 
@@ -209,9 +210,14 @@ export class GcdsTextarea {
   }
 
   /**
-    * Emitted when the input has a validation error.
+    * Emitted when the textarea has a validation error.
     */
   @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+    * Emitted when the textarea has a validation error.
+    */
+  @Event() gcdsValid!: EventEmitter<object>;
 
   @Listen("submit", { target: 'document' })
   submitListener(e) {

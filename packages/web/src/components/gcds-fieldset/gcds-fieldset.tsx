@@ -6,7 +6,8 @@ import { validateFieldsetElements } from '../../validators/fieldset-validators/f
 @Component({
   tag: 'gcds-fieldset',
   styleUrl: 'gcds-fieldset.css',
-  shadow: true,
+  shadow: false,
+  scoped: true,
 })
 export class GcdsFieldset {
   @Element() el: HTMLElement;
@@ -137,10 +138,11 @@ export class GcdsFieldset {
     if (!this._validator.validate(this.fieldsetId) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsGroupError.emit(this.errorMessage);
-      this.gcdsError.emit({ id: `#${this.fieldsetId}`, message: this.errorMessage });
+      this.gcdsError.emit({ id: `#${this.fieldsetId}`, message: `${this.legend} - ${this.errorMessage}` });
     } else {
       this.errorMessage = "";
       this.gcdsGroupErrorClear.emit();
+      this.gcdsValid.emit({ id: `#${this.fieldsetId}` });
     }
   }
 
@@ -156,24 +158,27 @@ export class GcdsFieldset {
    */
   @Listen('gcdsGroupError', { target: 'body'})
   gcdsParentGroupError(e) {
-    if (e.srcElement.contains(this.el) && validateFieldsetElements(this.el, this.el.children).includes(false)) {
+    if (e.srcElement == this.el && validateFieldsetElements(this.el, this.el.children).includes(false)) {
       this.hasError = true;
-    } else if (e.srcElement.contains(this.el) && !validateFieldsetElements(this.el, this.el.children).includes(false)) {
-      this.hasError = false;
     }
   }
 
   @Listen('gcdsGroupErrorClear', { target: 'body'})
   gcdsParentGroupErrorClear(e) {
-    if (e.srcElement.contains(this.el) && this.hasError) {
+    if (e.srcElement == this.el && this.hasError) {
       this.hasError = false;
     }
   }
 
   /**
-    * Emitted when the input has a validation error.
+    * Emitted when the fieldset has a validation error.
     */
   @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+    * Emitted when the fieldset has a validation error.
+    */
+  @Event() gcdsValid!: EventEmitter<object>;
 
   @Listen("submit", { target: 'document' })
   submitListener(e) {
@@ -242,10 +247,11 @@ export class GcdsFieldset {
     return (
       <Host>
         <fieldset
-          class={hasError ? "gcds-fieldset--error" : null}
+          class={`gcds-fieldset ${hasError ? "gcds-fieldset--error" : ''}`}
           id={fieldsetId}
           {...fieldsetAttrs}
           aria-labelledby={hint ? `legend-${fieldsetId} hint-${fieldsetId}` : `legend-${fieldsetId}`}
+          tabindex="-1"
           ref={element => this.shadowElement = element as HTMLElement}
         >
           <legend

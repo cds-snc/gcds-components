@@ -206,9 +206,10 @@ export class GcdsCheckbox {
   async validate() {
     if (!this._validator.validate(this.checked) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.checkboxId}`, message: this.errorMessage });
+      this.gcdsError.emit({ id: `#${this.checkboxId}`, message: `${this.label} - ${this.errorMessage}` });
     } else {
       this.errorMessage = "";
+      this.gcdsValid.emit({ id: `#${this.checkboxId}`});
     }
   }
 
@@ -216,6 +217,11 @@ export class GcdsCheckbox {
     * Emitted when the input has a validation error.
     */
   @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+    * Emitted when the input has a validation error.
+    */
+  @Event() gcdsValid!: EventEmitter<object>;
 
   @Listen("submit", { target: 'document' })
   submitListener(e) {
