@@ -179,14 +179,14 @@ export class GcdsErrorSummary {
   }
 
   render() {
-    const { heading, subHeading, errorQueue, lang, hasSubmitted } = this;
+    const { heading, subHeading, errorQueue, lang, hasSubmitted, errorLinks } = this;
     return (
       <Host>
         <div
           role="alert"
           tabindex="-1"
           ref={element => this.shadowElement = element as HTMLElement}
-          class={`gcds-error-summary ${hasSubmitted && Object.keys(errorQueue).length > 0 ? 'gcds-show' : ''}`}
+          class={`gcds-error-summary ${(hasSubmitted || errorLinks) && Object.keys(errorQueue).length > 0 ? 'gcds-show' : ''}`}
         >
           <h2 class="summary__heading">
             {heading ?? i18n[lang].heading}
@@ -195,7 +195,7 @@ export class GcdsErrorSummary {
             {subHeading ?? i18n[lang].subheading}
           </p>
           <ol class="summary__errorlist">
-            {(hasSubmitted && Object.keys(errorQueue).length > 0) && Object.keys(errorQueue).map((key) => {
+            {((hasSubmitted || errorLinks) && Object.keys(errorQueue).length > 0) && Object.keys(errorQueue).map((key) => {
               return (
                 <li class="summary__listitem">
                   <a onClick={(e) => this.focusElement(e, key)} class="summary__link" href={key}>
