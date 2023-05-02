@@ -58,7 +58,7 @@
           background-color: var(--gcds-error-summary-focus-link-background-color);
           color: var(--gcds-error-summary-focus-link-text);
           text-decoration: none;
-          box-shadow: var(--gcds-error-summary-focus-link-box-shadow);
+          box-shadow: none;
           outline-offset: var(--gcds-error-summary-focus-link-outline-offset);
           outline: var(--gcds-error-summary-focus-link-outline);
         }
