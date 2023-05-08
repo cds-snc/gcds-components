@@ -1,0 +1,27 @@
+:host {
+  display: block;
+
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .gcds-site-menu__container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+
+    .menu-container__list {
+      display: flex;
+      width: fit-content;
+
+      &.menu-list--right {
+        margin-left: auto;
+      }
+
+      &.menu-list--center {
+        margin-inline: auto;
+      }
+    }
+  }
+}

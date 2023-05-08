@@ -556,6 +556,50 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 
 @ProxyCmp({
+  inputs: ['heading']
+})
+@Component({
+  selector: 'gcds-menu-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['heading'],
+})
+export class GcdsMenuGroup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsMenuGroup extends Components.GcdsMenuGroup {}
+
+
+@ProxyCmp({
+  inputs: ['current', 'href']
+})
+@Component({
+  selector: 'gcds-menu-link',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['current', 'href'],
+})
+export class GcdsMenuLink {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsMenuLink extends Components.GcdsMenuLink {}
+
+
+@ProxyCmp({
   inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
 })
 @Component({
@@ -687,6 +731,28 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
 
 
 @ProxyCmp({
+  inputs: ['label', 'position']
+})
+@Component({
+  selector: 'gcds-sidebar-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['label', 'position'],
+})
+export class GcdsSidebarMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsSidebarMenu extends Components.GcdsSidebarMenu {}
+
+
+@ProxyCmp({
   inputs: ['hasLink', 'type', 'variant']
 })
 @Component({
@@ -728,6 +794,28 @@ export class GcdsSiteMenu {
 
 
 export declare interface GcdsSiteMenu extends Components.GcdsSiteMenu {}
+
+
+@ProxyCmp({
+  inputs: ['alignment', 'label', 'position']
+})
+@Component({
+  selector: 'gcds-site-menu1',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['alignment', 'label', 'position'],
+})
+export class GcdsSiteMenu1 {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsSiteMenu1 extends Components.GcdsSiteMenu1 {}
 
 
 @ProxyCmp({

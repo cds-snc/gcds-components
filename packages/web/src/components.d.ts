@@ -553,6 +553,22 @@ export namespace Components {
          */
         "href": string;
     }
+    interface GcdsMenuGroup {
+        /**
+          * heading for the menu group
+         */
+        "heading": string;
+    }
+    interface GcdsMenuLink {
+        /**
+          * Current page flag
+         */
+        "current": boolean;
+        /**
+          * Link href
+         */
+        "href": string;
+    }
     interface GcdsPagination {
         /**
           * List display - Current page number
@@ -713,6 +729,16 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface GcdsSidebarMenu {
+        /**
+          * Label for navigation landmark
+         */
+        "label": string;
+        /**
+          * Sticky navigation flag
+         */
+        "position": 'static' | 'sticky';
+    }
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -740,6 +766,20 @@ export namespace Components {
           * Mobile layout
          */
         "mobileLayout": 'drawer';
+        /**
+          * Sticky navigation flag
+         */
+        "position": 'static' | 'sticky';
+    }
+    interface GcdsSiteMenu1 {
+        /**
+          * Menu alignment
+         */
+        "alignment": 'left' | 'center' | 'right' | 'split';
+        /**
+          * Label for navigation landmark
+         */
+        "label": string;
         /**
           * Sticky navigation flag
          */
@@ -997,6 +1037,18 @@ declare global {
         prototype: HTMLGcdsLangToggleElement;
         new (): HTMLGcdsLangToggleElement;
     };
+    interface HTMLGcdsMenuGroupElement extends Components.GcdsMenuGroup, HTMLStencilElement {
+    }
+    var HTMLGcdsMenuGroupElement: {
+        prototype: HTMLGcdsMenuGroupElement;
+        new (): HTMLGcdsMenuGroupElement;
+    };
+    interface HTMLGcdsMenuLinkElement extends Components.GcdsMenuLink, HTMLStencilElement {
+    }
+    var HTMLGcdsMenuLinkElement: {
+        prototype: HTMLGcdsMenuLinkElement;
+        new (): HTMLGcdsMenuLinkElement;
+    };
     interface HTMLGcdsPaginationElement extends Components.GcdsPagination, HTMLStencilElement {
     }
     var HTMLGcdsPaginationElement: {
@@ -1021,6 +1073,12 @@ declare global {
         prototype: HTMLGcdsSelectElement;
         new (): HTMLGcdsSelectElement;
     };
+    interface HTMLGcdsSidebarMenuElement extends Components.GcdsSidebarMenu, HTMLStencilElement {
+    }
+    var HTMLGcdsSidebarMenuElement: {
+        prototype: HTMLGcdsSidebarMenuElement;
+        new (): HTMLGcdsSidebarMenuElement;
+    };
     interface HTMLGcdsSignatureElement extends Components.GcdsSignature, HTMLStencilElement {
     }
     var HTMLGcdsSignatureElement: {
@@ -1032,6 +1090,12 @@ declare global {
     var HTMLGcdsSiteMenuElement: {
         prototype: HTMLGcdsSiteMenuElement;
         new (): HTMLGcdsSiteMenuElement;
+    };
+    interface HTMLGcdsSiteMenu1Element extends Components.GcdsSiteMenu1, HTMLStencilElement {
+    }
+    var HTMLGcdsSiteMenu1Element: {
+        prototype: HTMLGcdsSiteMenu1Element;
+        new (): HTMLGcdsSiteMenu1Element;
     };
     interface HTMLGcdsStepperElement extends Components.GcdsStepper, HTMLStencilElement {
     }
@@ -1072,12 +1136,16 @@ declare global {
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
+        "gcds-menu-group": HTMLGcdsMenuGroupElement;
+        "gcds-menu-link": HTMLGcdsMenuLinkElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radio": HTMLGcdsRadioElement;
         "gcds-select": HTMLGcdsSelectElement;
+        "gcds-sidebar-menu": HTMLGcdsSidebarMenuElement;
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
+        "gcds-site-menu1": HTMLGcdsSiteMenu1Element;
         "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
@@ -1702,6 +1770,22 @@ declare namespace LocalJSX {
          */
         "href": string;
     }
+    interface GcdsMenuGroup {
+        /**
+          * heading for the menu group
+         */
+        "heading": string;
+    }
+    interface GcdsMenuLink {
+        /**
+          * Current page flag
+         */
+        "current"?: boolean;
+        /**
+          * Link href
+         */
+        "href": string;
+    }
     interface GcdsPagination {
         /**
           * List display - Current page number
@@ -1894,6 +1978,16 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface GcdsSidebarMenu {
+        /**
+          * Label for navigation landmark
+         */
+        "label"?: string;
+        /**
+          * Sticky navigation flag
+         */
+        "position"?: 'static' | 'sticky';
+    }
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -1921,6 +2015,20 @@ declare namespace LocalJSX {
           * Mobile layout
          */
         "mobileLayout": 'drawer';
+        /**
+          * Sticky navigation flag
+         */
+        "position"?: 'static' | 'sticky';
+    }
+    interface GcdsSiteMenu1 {
+        /**
+          * Menu alignment
+         */
+        "alignment"?: 'left' | 'center' | 'right' | 'split';
+        /**
+          * Label for navigation landmark
+         */
+        "label"?: string;
         /**
           * Sticky navigation flag
          */
@@ -2053,12 +2161,16 @@ declare namespace LocalJSX {
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
+        "gcds-menu-group": GcdsMenuGroup;
+        "gcds-menu-link": GcdsMenuLink;
         "gcds-pagination": GcdsPagination;
         "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radio": GcdsRadio;
         "gcds-select": GcdsSelect;
+        "gcds-sidebar-menu": GcdsSidebarMenu;
         "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
+        "gcds-site-menu1": GcdsSiteMenu1;
         "gcds-stepper": GcdsStepper;
         "gcds-textarea": GcdsTextarea;
         "gcds-verify-banner": GcdsVerifyBanner;
@@ -2088,12 +2200,16 @@ declare module "@stencil/core" {
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            "gcds-menu-group": LocalJSX.GcdsMenuGroup & JSXBase.HTMLAttributes<HTMLGcdsMenuGroupElement>;
+            "gcds-menu-link": LocalJSX.GcdsMenuLink & JSXBase.HTMLAttributes<HTMLGcdsMenuLinkElement>;
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
+            "gcds-sidebar-menu": LocalJSX.GcdsSidebarMenu & JSXBase.HTMLAttributes<HTMLGcdsSidebarMenuElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
+            "gcds-site-menu1": LocalJSX.GcdsSiteMenu1 & JSXBase.HTMLAttributes<HTMLGcdsSiteMenu1Element>;
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
