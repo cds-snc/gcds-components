@@ -39,7 +39,7 @@ export namespace Components {
     }
     interface GcdsBreadcrumbs {
         /**
-          * Defines if the default canada.ca link should be displayed or not.
+          * Defines if the default canada.ca link is displayed or omitted.
          */
         "hideCanadaLink": boolean;
     }
@@ -1120,7 +1120,7 @@ declare namespace LocalJSX {
     }
     interface GcdsBreadcrumbs {
         /**
-          * Defines if the default canada.ca link should be displayed or not.
+          * Defines if the default canada.ca link is displayed or omitted.
          */
         "hideCanadaLink"?: boolean;
     }

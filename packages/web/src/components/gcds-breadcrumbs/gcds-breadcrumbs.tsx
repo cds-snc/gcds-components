@@ -14,7 +14,7 @@ export class GcdsBreadcrumbs {
    */
 
   /**
-   * Defines if the default canada.ca link should be displayed or not.
+   * Defines if the default canada.ca link is displayed or omitted.
    */
   @Prop({ reflect: false, mutable: false }) hideCanadaLink: boolean = false;
 
