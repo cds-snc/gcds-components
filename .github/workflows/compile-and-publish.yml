@@ -28,7 +28,7 @@ jobs:
       - uses: JS-DevTools/npm-publish@c196e53609e852c243616a87994e8961a9903ba4
         with:
           token: ${{ secrets.NPM_TOKEN }}
-        working-directory: ./packages/web
+          package: ./packages/web
       - name: Install @cdssnc/gcds-components-react
         run: npm install
         working-directory: ./packages/react
@@ -38,7 +38,7 @@ jobs:
       - uses: JS-DevTools/npm-publish@c196e53609e852c243616a87994e8961a9903ba4
         with:
           token: ${{ secrets.NPM_TOKEN }}
-        working-directory: ./packages/react
+          package: ./packages/react
       - name: Install @cdssnc/gcds-components-angular
         run: npm install
         working-directory: ./packages/angular
@@ -48,4 +48,4 @@ jobs:
       - uses: JS-DevTools/npm-publish@c196e53609e852c243616a87994e8961a9903ba4
         with:
           token: ${{ secrets.NPM_TOKEN }}
-        working-directory: ./packages/angular/dist
+          package: ./packages/angular/dist
