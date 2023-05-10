@@ -6,7 +6,7 @@
     <title>Stencil Component Starter</title>
 
     <!-- Utility framework -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cds-snc/gcds-utilities/dist/utilities.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cds-snc/gcds-utilities/dist/gcds-utility.css" />
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -91,7 +91,7 @@
       </gcds-breadcrumbs> -->
     </gcds-header>
 
-    <section class="container-xl mx-auto py-600">
+    <gcds-container container="xl" centered tag="main">
       <h1 class="text-center mb-500">GC Design System</h1>
 
       <h2>Components</h2>
@@ -141,7 +141,7 @@
       <h3 class="mt-700 mb-400 bb-1">Form elements (including stepper and error summary)</h3>
       <gcds-stepper current-step="1" total-steps="3"></gcds-stepper>
       <form novalidate>
-            
+
         <gcds-error-summary
           listen
         ></gcds-error-summary>
@@ -152,7 +152,7 @@
           hint="Please enter your full name."
           required
         ></gcds-input>
-        
+
         <gcds-input
           input-id="form-email"
           label="Email"
@@ -323,7 +323,7 @@
       <!-- ------------- Date Modified ------------- -->
 
       <gcds-date-modified>2023-01-26</gcds-date-modified>
-    </section>
+    </gcds-container>
 
     <gcds-footer
       display="full"
