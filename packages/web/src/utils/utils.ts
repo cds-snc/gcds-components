@@ -62,3 +62,48 @@ export const elementGroupCheck = (name) => {
   }
   return !hasCheck;
 }
+
+export const UpDownArrowMenuMovement = (key, children) => {
+  let currentIndex = children.indexOf(document.activeElement);
+  console.log(`${document.activeElement.nodeName} - ${currentIndex}`)
+
+  if (key == 40) {
+
+    if (currentIndex + 1 > children.length - 1) {
+
+      if (children[0].nodeName == "GCDS-MENU-LINK") {
+        (children[0] as HTMLGcdsMenuLinkElement).focusLink();
+      } else if (children[0].nodeName == "GCDS-MENU-GROUP") {
+        (children[0] as HTMLGcdsMenuGroupElement).focusTrigger();
+      }
+
+    } else {
+
+      if (children[currentIndex + 1].nodeName == "GCDS-MENU-LINK") {
+        (children[currentIndex + 1] as HTMLGcdsMenuLinkElement).focusLink();
+      } else if (children[currentIndex + 1].nodeName == "GCDS-MENU-GROUP") {
+        (children[currentIndex + 1] as HTMLGcdsMenuGroupElement).focusTrigger();
+      }
+
+    }
+  } else if (key == 38) {
+
+    if (currentIndex - 1 < 0) {
+
+      if (children[children.length - 1].nodeName == "GCDS-MENU-LINK") {
+        (children[children.length - 1] as HTMLGcdsMenuLinkElement).focusLink();
+      } else if (children[children.length - 1].nodeName == "GCDS-MENU-GROUP") {
+        (children[children.length - 1] as HTMLGcdsMenuGroupElement).focusTrigger();
+      }
+
+    } else {
+
+      if (children[currentIndex - 1].nodeName == "GCDS-MENU-LINK") {
+        (children[currentIndex - 1] as HTMLGcdsMenuLinkElement).focusLink();
+      } else if (children[currentIndex - 1].nodeName == "GCDS-MENU-GROUP") {
+        (children[currentIndex - 1] as HTMLGcdsMenuGroupElement).focusTrigger();
+      }
+
+    }
+  }
+}

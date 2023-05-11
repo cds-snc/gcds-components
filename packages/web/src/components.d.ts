@@ -554,16 +554,23 @@ export namespace Components {
         "href": string;
     }
     interface GcdsMenuGroup {
+        "focusTrigger": () => Promise<void>;
         /**
           * heading for the menu group
          */
         "heading": string;
+        /**
+          * Has the menu group been expanded
+         */
+        "open": boolean;
+        "toggleMenu": () => Promise<void>;
     }
     interface GcdsMenuLink {
         /**
           * Current page flag
          */
         "current": boolean;
+        "focusLink": () => Promise<void>;
         /**
           * Link href
          */
@@ -784,6 +791,7 @@ export namespace Components {
           * Sticky navigation flag
          */
         "position": 'static' | 'sticky';
+        "updateMenuItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
     }
     interface GcdsStepper {
         /**
@@ -1775,6 +1783,10 @@ declare namespace LocalJSX {
           * heading for the menu group
          */
         "heading": string;
+        /**
+          * Has the menu group been expanded
+         */
+        "open"?: boolean;
     }
     interface GcdsMenuLink {
         /**

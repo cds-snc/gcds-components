@@ -1,14 +1,15 @@
-import { Component, Element, Host, Prop, State, h } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Method, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-menu-link',
   styleUrl: 'gcds-menu-link.css',
-  shadow: false,
-  scoped: true,
+  shadow: true
 })
 export class GcdsMenuLink {
   @Element() el: HTMLElement;
+
+  private linkElement: HTMLElement
 
   /**
    * Link href
@@ -24,6 +25,11 @@ export class GcdsMenuLink {
   * Language of rendered component
   */
   @State() lang: string;
+
+  @Method()
+  focusLink() {
+    this.linkElement.focus();
+  }
 
   /*
   * Observe lang attribute change
@@ -62,7 +68,7 @@ export class GcdsMenuLink {
           href={href}
           {...linkAttrs}
           role="menuitem"
-          part="link"
+          ref={element => this.linkElement = element as HTMLElement}
         >
           <slot></slot>
         </a>

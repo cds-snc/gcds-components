@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, h } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Method, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 
 @Component({
@@ -18,9 +18,35 @@ export class GcdsMenuGroup {
   @Prop({ reflect: true }) heading!: string;
 
   /**
+   * Has the menu group been expanded
+   */
+  @Prop({ reflect: true, mutable: true }) open: boolean = false;
+
+  /**
   * Language of rendered component
   */
   @State() lang: string;
+
+  /**
+  * Style of menu to render based on parent
+  */
+  @State() menuStyle: string;
+
+  @Method()
+  focusTrigger() {
+    this.triggerElement.focus();
+  }
+
+  @Method()
+  async toggleMenu() {
+    this.open = !this.open
+
+    for (let i = 0; i < this.el.children.length; i++) {
+      if (this.el.children[i].nodeName == "GCDS-MENU-GROUP" && (this.el.children[i].hasAttribute("open"))) {
+        (this.el.children[i] as HTMLGcdsMenuGroupElement).toggleMenu();
+      }
+    }
+  }
 
   /*
   * Observe lang attribute change
@@ -33,33 +59,49 @@ export class GcdsMenuGroup {
     });
     observer.observe(this.el, observerConfig);
   }
-  
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
+
+    if (this.el.parentNode.nodeName == "GCDS-SITE-MENU1") {
+        this.menuStyle = "dropdown"
+    } else {
+        this.menuStyle = "expandable"
+    }
+
+    // if (this.menuStyle == "dropdown") {
+    //   for (let i = 0; i < this.el.children.length; i++) {
+    //     if (this.el.children[i].nodeName == "GCDS-MENU-GROUP") {
+    //       this.el.children[i].remove();
+    //     }
+    //   }
+    // }
   }
 
   render() {
-    const { heading } = this;
+    const { heading, open } = this;
     return (
       <Host
         role="presentation"
+        open={open}
       >
         <button
           aria-haspopup="true"
-          aria-expanded="false"
+          aria-expanded={open.toString()}
           role="menuitem"
           ref={element => this.triggerElement = element as HTMLElement}
-          class="gcds-menu-group__trigger"
+          class={`gcds-menu-group__trigger gcds-trigger--${this.menuStyle}`}
+          onClick={() => this.toggleMenu()}
         >
           {heading}
         </button>
         <ul
           role="menu"
           ref={element => this.listElement = element as HTMLElement}
-          class="gcds-menu-group__list"
+          class={`gcds-menu-group__list gcds-menu--${this.menuStyle}`}
         >
           <slot></slot>
         </ul>

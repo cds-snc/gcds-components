@@ -1,13 +1,19 @@
 gcds-site-menu1 {
   & > :host {
-
-    a {
-      padding: var(--gcds-spacing-300)
+    & > a {
+      padding: var(--gcds-spacing-300);
     }
   }
 }
 
 :host {
-  display: block;
+  display: flex;
+
+  a {
+    padding: var(--gcds-spacing-250);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 20rem;
+  }
 }
 
