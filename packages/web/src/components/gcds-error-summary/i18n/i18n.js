@@ -4,7 +4,7 @@ const I18N = {
     subheading: "Errors were found on this page:"
   },
   "fr": {
-    heading: "Il y avait un problème",
+    heading: "Un problème est survenu",
     subheading: "Des erreurs ont été trouvées sur cette page :"
   }
 }

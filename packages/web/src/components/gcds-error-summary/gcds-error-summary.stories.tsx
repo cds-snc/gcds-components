@@ -62,7 +62,11 @@ const Template = (args) => (`
 export const Default = Template.bind({});
 Default.args = {
   listen: true,
-  errorLinks: '',
+  errorLinks: `{
+    "error-href-1": "Error message",
+    "error-href-2": "Error message",
+    "error-href-3": "Error message"
+  }`,
   heading: '',
   subHeading: '',
   lang: 'en'
