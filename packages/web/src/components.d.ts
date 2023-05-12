@@ -745,6 +745,7 @@ export namespace Components {
           * Sticky navigation flag
          */
         "position": 'static' | 'sticky';
+        "updateMenuItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
     }
     interface GcdsSignature {
         /**
@@ -907,6 +908,10 @@ export interface GcdsFileUploaderCustomEvent<T> extends CustomEvent<T> {
 export interface GcdsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsInputElement;
+}
+export interface GcdsMenuGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsMenuGroupElement;
 }
 export interface GcdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1783,6 +1788,10 @@ declare namespace LocalJSX {
           * heading for the menu group
          */
         "heading": string;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onGcdsClick"?: (event: GcdsMenuGroupCustomEvent<void>) => void;
         /**
           * Has the menu group been expanded
          */

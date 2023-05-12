@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, Method, h } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Method, Event, EventEmitter, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 
 @Component({
@@ -10,7 +10,6 @@ export class GcdsMenuGroup {
   @Element() el: HTMLElement;
 
   private triggerElement?: HTMLElement;
-  private listElement?: HTMLElement;
 
   /**
    * heading for the menu group
@@ -23,6 +22,11 @@ export class GcdsMenuGroup {
   @Prop({ reflect: true, mutable: true }) open: boolean = false;
 
   /**
+   * Emitted when the button has focus.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
+
+  /**
   * Language of rendered component
   */
   @State() lang: string;
@@ -33,7 +37,7 @@ export class GcdsMenuGroup {
   @State() menuStyle: string;
 
   @Method()
-  focusTrigger() {
+  async focusTrigger() {
     this.triggerElement.focus();
   }
 
@@ -72,13 +76,9 @@ export class GcdsMenuGroup {
         this.menuStyle = "expandable"
     }
 
-    // if (this.menuStyle == "dropdown") {
-    //   for (let i = 0; i < this.el.children.length; i++) {
-    //     if (this.el.children[i].nodeName == "GCDS-MENU-GROUP") {
-    //       this.el.children[i].remove();
-    //     }
-    //   }
-    // }
+    if (this.el.parentNode.nodeName == "GCDS-MENU-GROUP" && this.el.closest("gcds-site-menu1")) {
+      this.el.remove();
+    }
   }
 
   render() {
@@ -94,13 +94,15 @@ export class GcdsMenuGroup {
           role="menuitem"
           ref={element => this.triggerElement = element as HTMLElement}
           class={`gcds-menu-group__trigger gcds-trigger--${this.menuStyle}`}
-          onClick={() => this.toggleMenu()}
+          onClick={() => {
+            this.toggleMenu();
+            this.gcdsClick.emit();
+          }}
         >
           {heading}
         </button>
         <ul
           role="menu"
-          ref={element => this.listElement = element as HTMLElement}
           class={`gcds-menu-group__list gcds-menu--${this.menuStyle}`}
         >
           <slot></slot>

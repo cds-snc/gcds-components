@@ -27,7 +27,7 @@ export class GcdsMenuLink {
   @State() lang: string;
 
   @Method()
-  focusLink() {
+  async focusLink() {
     this.linkElement.focus();
   }
 
