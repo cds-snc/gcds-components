@@ -98,7 +98,7 @@
 
       <!-- ------------- Alerts ------------- -->
 
-      <h3 class="mt-500 mb-400 bb-1">Alerts</h3>
+      <h3 class="mt-500 mb-400 bb-sm">Alerts</h3>
       <gcds-alert heading="Success alert" alert-role="success" container="xl">
         <p>Example content</p>
       </gcds-alert>
@@ -112,9 +112,10 @@
         <p>Example content</p>
       </gcds-alert>
 
+
       <!-- ------------- Buttons ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Buttons</h3>
+      <h3 class="mt-700 mb-400 bb-sm">Buttons</h3>
       <gcds-button button-role="primary">Primary</gcds-button>
       <gcds-button button-role="secondary">Secondary</gcds-button>
       <gcds-button button-role="danger">Danger</gcds-button>
@@ -129,16 +130,31 @@
         External Link
       </gcds-button>
 
+      <!-- ------------- Containers ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-sm">Containers</h3>
+      <gcds-container container="full">
+        <div class="p-200 b-sm">I'm a responsive container. My size is only limited by the size of my parent container.</div>
+      </gcds-container>
+      <br/>
+      <gcds-container container="lg" centered>
+        <div class="p-200 b-sm">I'm a large, centred container. My max size is 64rem (1024px).</div>
+      </gcds-container>
+      <br/>
+      <gcds-container container="xs">
+        <div class="p-200 b-sm">I'm an extra-small container. My max size is 20rem (320px).</div>
+      </gcds-container>
+
       <!-- ------------- Details ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Details</h3>
+      <h3 class="mt-700 mb-400 bb-sm">Details</h3>
       <gcds-details details-title="Find out more">
         <p>Details about stuff.</p>
       </gcds-details>
 
       <!-- ------------- Stepper + Form Elements ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Form elements (including stepper and error summary)</h3>
+      <h3 class="mt-700 mb-400 bb-sm">Form elements (including stepper and error summary)</h3>
       <gcds-stepper current-step="1" total-steps="3"></gcds-stepper>
       <form novalidate>
 
@@ -252,7 +268,7 @@
 
       <!-- ------------- Grid ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Grid</h3>
+      <h3 class="mt-700 mb-400 bb-sm">Grid</h3>
       <gcds-grid
         tag="article"
         columns-desktop="1fr 1fr 1fr 1fr"
@@ -268,7 +284,7 @@
 
       <!-- ------------- Icons ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Icons</h3>
+      <h3 class="mt-700 mb-400 bb-sm">Icons</h3>
       <gcds-icon name="close" size="caption" margin-right="200"></gcds-icon>
       <gcds-icon name="cloud" size="text" margin-right="200"></gcds-icon>
       <gcds-icon name="info-circle" size="h3" margin-right="200"></gcds-icon>
@@ -292,7 +308,7 @@
 
       <!-- ------------- Pagination ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Pagination</h3>
+      <h3 class="mt-700 mb-400 bb-sm">Pagination</h3>
       <gcds-pagination
         display="list"
         label="List pagination"
@@ -314,7 +330,7 @@
 
       <!-- ------------- Phase Banner ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-1">Phase banner</h3>
+      <h3 class="mt-700 mb-400 bb-sm">Phase banner</h3>
       <gcds-phase-banner banner-role="primary">
         <gcds-icon name="tree" size="sm" slot="banner-icon-left"></gcds-icon>
         <p slot="banner-text">Exciting announcement.</p>
