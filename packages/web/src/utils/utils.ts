@@ -197,14 +197,57 @@ async function closeMenuGroup(groupTrigger, menu) {
 */
 export async function getMenuItems(el) {
   let indexedItems: Array<any> = Array.from(el.children);
-  let length = indexedItems.length;
 
-  for (let i = 0; i < length; i++) {
-    if (indexedItems[i].nodeName == "GCDS-MENU-GROUP" && (indexedItems[i] as HTMLGcdsMenuGroupElement).open) {
-      let groupChildren = await getMenuItems(indexedItems[i]);
-      indexedItems.splice(i +1, 0, ...groupChildren);
+  indexedItems.forEach(async (item) => {
+    if (item.nodeName == "GCDS-MENU-GROUP" && (item as HTMLGcdsMenuGroupElement).open) {
+      let groupChildren = await getMenuItems(item);
+      indexedItems.splice(indexedItems.indexOf(item) + 1, 0, ...groupChildren);
+    } else if (item.hasAttribute("slot")) {
+      indexedItems.splice(indexedItems.indexOf(item), 1);
+    }
+  });
+
+  return indexedItems;
+}
+
+/**
+* Create mobile menu element in passed menu
+* @param {HTMLElement} menu
+*/
+export async function configureMobileMenu(menu: HTMLElement) {
+  let children = Array.from(menu.children);
+
+  let menuGroup = document.createElement("gcds-menu-group") as HTMLGcdsMenuGroupElement;
+  menuGroup.heading = "Menu";
+  menuGroup.classList.add('gcds-mobile-menu');
+
+  for (let element of children) {
+    if (!element.hasAttribute("slot")) {
+      menuGroup.appendChild(element);
     }
   }
 
-  return indexedItems;
+  menu.appendChild(menuGroup);
+}
+
+/**
+* Unpack menu items from mobile menu in passed menu
+* @param {HTMLElement} menu
+*/
+export async function unpackMobileMenu(menu: HTMLElement) {
+  let mobileMenuChildren = [];
+  let mobileMenu: Element;
+
+  for (let item of Array.from(menu.children)) {
+    if (!item.hasAttribute("slot")) {
+      mobileMenuChildren = Array.from(item.children);
+      mobileMenu = item;
+    }
+  }
+
+  for (let element of mobileMenuChildren) {
+    menu.appendChild(element);
+  }
+
+  mobileMenu.remove();
 }

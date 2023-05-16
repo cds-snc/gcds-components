@@ -1,5 +1,5 @@
 import { Component, Element, Host, Prop, State, Listen, Method, h } from '@stencil/core';
-import { assignLanguage, handleKeyDownMenu, observerConfig, getMenuItems } from '../../utils/utils';
+import { assignLanguage, handleKeyDownMenu, observerConfig, getMenuItems, configureMobileMenu, unpackMobileMenu } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-site-menu1',
@@ -34,6 +34,11 @@ export class GcdsSiteMenu1 {
   */
   @State() menuItems = [];
 
+  /**
+  * Current size state based on widnow size
+  */
+  @State() menuSize: 'desktop' | 'mobile';
+
   @Listen("focusout", { target: "document" })
   async focusOutListener(e) {
     if (!this.el.contains(e.relatedTarget)) {
@@ -48,7 +53,7 @@ export class GcdsSiteMenu1 {
 
   @Listen("keydown", { target: 'document' })
   async keyDownListener(e) {
-    if (this.el.contains(document.activeElement)) {
+    if (this.el.contains(document.activeElement) && !document.activeElement.hasAttribute("slot")) {
       handleKeyDownMenu(e, this.el, this.menuItems);
     }
   }
@@ -86,6 +91,17 @@ export class GcdsSiteMenu1 {
     observer.observe(this.el, observerConfig);
   }
 
+  /*
+  * Pass new window size: desktop or mobile
+  */
+  @Method()
+  async updateMenuSize(size) {
+    this.menuSize = size;
+  }
+
+  /*
+  * Update item queue for keyboard navigation based on passed element
+  */
   @Method()
   async updateMenuItemQueue(el, includeElement?: boolean) {
     if (includeElement) {
@@ -94,7 +110,6 @@ export class GcdsSiteMenu1 {
     } else {
       this.menuItems = await getMenuItems(el);
     }
-    console.log(this.menuItems)
   }
   
   async componentWillLoad() {
@@ -103,7 +118,34 @@ export class GcdsSiteMenu1 {
 
     this.updateLang();
 
+    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
+
+    if (mediaQuery.matches) {
+      this.menuSize = 'desktop';
+    } else {
+      this.menuSize = 'mobile';
+      await configureMobileMenu(this.el);
+    }
+  }
+
+  async componentDidLoad() {
+    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
+    const menu = this.el as HTMLGcdsSiteMenu1Element;
+
     await this.updateMenuItemQueue(this.el);
+    console.log(this.menuItems)
+
+    mediaQuery.addEventListener("change", async function(e) {
+      if (e.matches) {
+        menu.updateMenuSize("desktop");
+        await unpackMobileMenu(menu);
+        await menu.updateMenuItemQueue(menu);
+      } else {
+        menu.updateMenuSize("mobile");
+        await configureMobileMenu(menu);
+        await menu.updateMenuItemQueue(menu);
+      }
+    });
   }
 
   render() {
@@ -113,6 +155,7 @@ export class GcdsSiteMenu1 {
         role="navigation"
         aria-label={label}
       >
+        <slot name="left"></slot>
         <div class="gcds-site-menu__container">
           <ul
             role="menu"
@@ -121,8 +164,8 @@ export class GcdsSiteMenu1 {
             <slot></slot>
           </ul>
         </div>
+        <slot name="right"></slot>
       </Host>
     );
   }
-
 }

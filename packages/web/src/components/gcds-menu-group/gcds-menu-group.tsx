@@ -76,7 +76,7 @@ export class GcdsMenuGroup {
         this.menuStyle = "expandable"
     }
 
-    if (this.el.parentNode.nodeName == "GCDS-MENU-GROUP" && this.el.closest("gcds-site-menu1")) {
+    if (this.el.parentNode.nodeName == "GCDS-MENU-GROUP" && !(this.el.parentNode as HTMLElement).classList.contains("gcds-mobile-menu") && this.el.closest("gcds-site-menu1")) {
       this.el.remove();
     }
   }

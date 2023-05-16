@@ -746,6 +746,7 @@ export namespace Components {
          */
         "position": 'static' | 'sticky';
         "updateMenuItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
+        "updateMenuSize": (size: any) => Promise<void>;
     }
     interface GcdsSignature {
         /**
@@ -793,6 +794,7 @@ export namespace Components {
          */
         "position": 'static' | 'sticky';
         "updateMenuItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
+        "updateMenuSize": (size: any) => Promise<void>;
     }
     interface GcdsStepper {
         /**

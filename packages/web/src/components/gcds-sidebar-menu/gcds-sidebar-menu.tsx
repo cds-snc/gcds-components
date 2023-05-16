@@ -1,5 +1,5 @@
 import { Component, Element, Host, Prop, State, Listen, Method, h } from '@stencil/core';
-import { assignLanguage, observerConfig, handleKeyDownMenu, getMenuItems } from '../../utils/utils';
+import { assignLanguage, observerConfig, handleKeyDownMenu, getMenuItems, configureMobileMenu, unpackMobileMenu } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-sidebar-menu',
@@ -29,12 +29,15 @@ export class GcdsSidebarMenu {
   */
   @State() menuItems = [];
 
+  /**
+  * Current size based on widnow size
+  */
+  @State() menuSize: 'desktop' | 'mobile';
+
   @Listen("keydown", {target: 'document'})
   async keyDownListener(e) {
-    if (this.el.contains(document.activeElement)) {
-
+    if (this.el.contains(document.activeElement) && !document.activeElement.hasAttribute("slot")) {
       handleKeyDownMenu(e, this.el, this.menuItems);
-
     }
   }
 
@@ -45,7 +48,7 @@ export class GcdsSidebarMenu {
         await this.updateMenuItemQueue(this.el);
         (e.target as HTMLGcdsMenuGroupElement).focusTrigger();
       } else {
-        await this.updateMenuItemQueue(this.el, true);
+        await this.updateMenuItemQueue(e.target, true);
         if (e.target.children[0].nodeName == "GCDS-MENU-GROUP") {
           setTimeout(() => {
             (e.target.children[0] as HTMLGcdsMenuGroupElement).focusTrigger();
@@ -71,6 +74,17 @@ export class GcdsSidebarMenu {
     observer.observe(this.el, observerConfig);
   }
 
+  /*
+  * Pass new window size: desktop or mobile
+  */
+  @Method()
+  async updateMenuSize(size) {
+    this.menuSize = size;
+  }
+
+  /*
+  * Update item queue for keyboard navigation based on passed element
+  */
   @Method()
   async updateMenuItemQueue(el, includeElement?: boolean) {
     if (includeElement) {
@@ -79,7 +93,6 @@ export class GcdsSidebarMenu {
     } else {
       this.menuItems = await getMenuItems(el);
     }
-    console.log(this.menuItems)
   }
   
   async componentWillLoad() {
@@ -88,7 +101,33 @@ export class GcdsSidebarMenu {
 
     this.updateLang();
 
+    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
+
+    if (mediaQuery.matches) {
+      this.menuSize = 'desktop';
+    } else {
+      this.menuSize = 'mobile';
+      await configureMobileMenu(this.el);
+    }
+  }
+
+  async componentDidLoad() {
+    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
+    const menu = this.el as HTMLGcdsSiteMenu1Element;
+
     await this.updateMenuItemQueue(this.el);
+
+    mediaQuery.addEventListener("change", async function(e) {
+      if (e.matches) {
+        menu.updateMenuSize("desktop");
+        await unpackMobileMenu(menu);
+        await menu.updateMenuItemQueue(menu);
+      } else {
+        menu.updateMenuSize("mobile");
+        await configureMobileMenu(menu);
+        await menu.updateMenuItemQueue(menu);
+      }
+    });
   }
 
   render() {
@@ -98,14 +137,15 @@ export class GcdsSidebarMenu {
         role="navigation"
         aria-label={label}
       >
+        <slot name="top"></slot>
         <ul
           role="menu"
           class="gcds-sidebar-menu__list"
         >
           <slot></slot>
         </ul>
+        <slot name="bottom"></slot>
       </Host>
     );
   }
-
 }
