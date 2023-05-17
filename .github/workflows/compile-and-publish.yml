@@ -85,3 +85,9 @@ jobs:
 
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
         working-directory: ${{ matrix.package }}
+
+      - name: Slack notify on failure
+        if: failure()
+        run: |
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
+          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}        
