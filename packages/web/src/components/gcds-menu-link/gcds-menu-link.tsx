@@ -26,6 +26,8 @@ export class GcdsMenuLink {
   */
   @State() lang: string;
 
+  @State() menuStyle: string;
+
   @Method()
   async focusLink() {
     this.linkElement.focus();
@@ -48,6 +50,12 @@ export class GcdsMenuLink {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
+
+    if (this.el.closest("gcds-site-menu1")) {
+        this.menuStyle = "sitemenu"
+    } else {
+        this.menuStyle = "sidebar"
+    }
   }
 
   render() {
@@ -62,6 +70,7 @@ export class GcdsMenuLink {
     return (
       <Host
         role="presentation"
+        class={`gcds-menu-link--${this.menuStyle}`}
       >
         <a
           class="gcds-menu-link"

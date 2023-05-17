@@ -53,7 +53,7 @@ export class GcdsSiteMenu1 {
 
   @Listen("keydown", { target: 'document' })
   async keyDownListener(e) {
-    if (this.el.contains(document.activeElement) && !document.activeElement.hasAttribute("slot")) {
+    if (this.el.contains(document.activeElement)) {
       handleKeyDownMenu(e, this.el, this.menuItems);
     }
   }
@@ -133,7 +133,6 @@ export class GcdsSiteMenu1 {
     const menu = this.el as HTMLGcdsSiteMenu1Element;
 
     await this.updateMenuItemQueue(this.el);
-    console.log(this.menuItems)
 
     mediaQuery.addEventListener("change", async function(e) {
       if (e.matches) {

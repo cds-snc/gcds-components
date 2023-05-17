@@ -36,7 +36,7 @@ export class GcdsSidebarMenu {
 
   @Listen("keydown", {target: 'document'})
   async keyDownListener(e) {
-    if (this.el.contains(document.activeElement) && !document.activeElement.hasAttribute("slot")) {
+    if (this.el.contains(document.activeElement)) {
       handleKeyDownMenu(e, this.el, this.menuItems);
     }
   }

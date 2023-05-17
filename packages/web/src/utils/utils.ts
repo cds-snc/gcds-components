@@ -202,8 +202,6 @@ export async function getMenuItems(el) {
     if (item.nodeName == "GCDS-MENU-GROUP" && (item as HTMLGcdsMenuGroupElement).open) {
       let groupChildren = await getMenuItems(item);
       indexedItems.splice(indexedItems.indexOf(item) + 1, 0, ...groupChildren);
-    } else if (item.hasAttribute("slot")) {
-      indexedItems.splice(indexedItems.indexOf(item), 1);
     }
   });
 

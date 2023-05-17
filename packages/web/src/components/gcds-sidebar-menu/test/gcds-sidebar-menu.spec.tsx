@@ -1,6 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { GcdsSidebarMenu } from '../gcds-sidebar-menu';
 
+import './matchMedia.mock';
+
 describe('gcds-sidebar-menu', () => {
   it('renders', async () => {
     const page = await newSpecPage({

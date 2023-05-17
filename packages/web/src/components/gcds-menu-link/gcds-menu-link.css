@@ -1,5 +1,5 @@
-gcds-site-menu1 {
-  & > :host {
+@media screen and (min-width: 64em) {
+  :host(.gcds-menu-link--sitemenu) {
     & > a {
       padding: var(--gcds-spacing-300);
     }
