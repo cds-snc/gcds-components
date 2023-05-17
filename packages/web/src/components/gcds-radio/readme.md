@@ -37,12 +37,16 @@
 
 - [gcds-label](../gcds-label)
 - [gcds-hint](../gcds-hint)
+- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-radio --> gcds-label
   gcds-radio --> gcds-hint
+  gcds-radio --> gcds-menu-group
+  gcds-label --> gcds-menu-group
+  gcds-menu-group --> gcds-menu-group
   style gcds-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -556,7 +556,7 @@ export namespace Components {
     interface GcdsMenuGroup {
         "focusTrigger": () => Promise<void>;
         /**
-          * heading for the menu group
+          * Heading for the menu group, labels the button trigger
          */
         "heading": string;
         /**
@@ -1762,7 +1762,7 @@ declare namespace LocalJSX {
     }
     interface GcdsMenuGroup {
         /**
-          * heading for the menu group
+          * Heading for the menu group, labels the button trigger
          */
         "heading": string;
         /**
@@ -1980,7 +1980,7 @@ declare namespace LocalJSX {
         /**
           * Label for navigation landmark
          */
-        "label"?: string;
+        "label": string;
         /**
           * Sticky navigation flag
          */
@@ -2008,7 +2008,7 @@ declare namespace LocalJSX {
         /**
           * Label for navigation landmark
          */
-        "label"?: string;
+        "label": string;
         /**
           * Sticky navigation flag
          */

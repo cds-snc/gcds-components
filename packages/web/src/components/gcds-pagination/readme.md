@@ -33,11 +33,14 @@
 ### Depends on
 
 - [gcds-icon](../gcds-icon)
+- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-pagination --> gcds-icon
+  gcds-pagination --> gcds-menu-group
+  gcds-menu-group --> gcds-menu-group
   style gcds-pagination fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

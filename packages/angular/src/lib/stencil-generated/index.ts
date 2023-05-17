@@ -31,7 +31,6 @@ export const DIRECTIVES = [
   d.GcdsSidebarMenu,
   d.GcdsSignature,
   d.GcdsSiteMenu,
-  d.GcdsSiteMenu1,
   d.GcdsStepper,
   d.GcdsTextarea,
   d.GcdsVerifyBanner

@@ -8,9 +8,11 @@ describe('gcds-menu-link', () => {
       html: `<gcds-menu-link></gcds-menu-link>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-menu-link>
+      <gcds-menu-link class="gcds-menu-link--sidebar" role="presentation">
         <mock:shadow-root>
-          <slot></slot>
+          <a class="gcds-menu-link" role="menuitem">
+            <slot></slot>
+          </a>
         </mock:shadow-root>
       </gcds-menu-link>
     `);

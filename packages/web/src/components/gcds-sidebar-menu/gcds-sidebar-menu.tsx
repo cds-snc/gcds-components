@@ -12,7 +12,7 @@ export class GcdsSidebarMenu {
   /**
    * Label for navigation landmark
    */
-  @Prop() label: string;
+  @Prop() label!: string;
 
   /**
    * Sticky navigation flag
@@ -138,6 +138,9 @@ export class GcdsSidebarMenu {
         aria-label={label}
       >
         <slot name="top"></slot>
+        <h2 class="gcds-sidebar-menu__heading">
+          {label}
+        </h2>
         <ul
           role="menu"
           class="gcds-sidebar-menu__list"

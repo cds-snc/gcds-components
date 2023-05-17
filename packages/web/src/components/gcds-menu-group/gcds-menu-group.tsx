@@ -12,7 +12,7 @@ export class GcdsMenuGroup {
   private triggerElement?: HTMLElement;
 
   /**
-   * heading for the menu group
+   * Heading for the menu group, labels the button trigger
    */
   @Prop({ reflect: true }) heading!: string;
 
@@ -45,6 +45,7 @@ export class GcdsMenuGroup {
   async toggleMenu() {
     this.open = !this.open
 
+    // Close any child menu-groups
     for (let i = 0; i < this.el.children.length; i++) {
       if (this.el.children[i].nodeName == "GCDS-MENU-GROUP" && (this.el.children[i].hasAttribute("open"))) {
         (this.el.children[i] as HTMLGcdsMenuGroupElement).toggleMenu();

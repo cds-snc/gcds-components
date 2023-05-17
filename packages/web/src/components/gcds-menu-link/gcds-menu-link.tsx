@@ -52,9 +52,13 @@ export class GcdsMenuLink {
     this.updateLang();
 
     if (this.el.closest("gcds-site-menu")) {
-        this.menuStyle = "sitemenu"
+        if (this.el.parentNode.nodeName == "GCDS-SITE-MENU") {
+          this.menuStyle = "sitemenu"
+        } else {
+          this.menuStyle = "dropdown"
+        }
     } else {
-        this.menuStyle = "sidebar"
+      this.menuStyle = "sidebar"
     }
   }
 

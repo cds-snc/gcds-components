@@ -556,29 +556,37 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 
 @ProxyCmp({
-  inputs: ['heading']
+  inputs: ['heading', 'open'],
+  methods: ['focusTrigger', 'toggleMenu']
 })
 @Component({
   selector: 'gcds-menu-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['heading'],
+  inputs: ['heading', 'open'],
 })
 export class GcdsMenuGroup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsClick']);
   }
 }
 
 
-export declare interface GcdsMenuGroup extends Components.GcdsMenuGroup {}
+export declare interface GcdsMenuGroup extends Components.GcdsMenuGroup {
+  /**
+   * Emitted when the button has focus.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
+}
 
 
 @ProxyCmp({
-  inputs: ['current', 'href']
+  inputs: ['current', 'href'],
+  methods: ['focusLink']
 })
 @Component({
   selector: 'gcds-menu-link',
@@ -731,7 +739,8 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
 
 
 @ProxyCmp({
-  inputs: ['label', 'position']
+  inputs: ['label', 'position'],
+  methods: ['updateMenuSize', 'updateMenuItemQueue']
 })
 @Component({
   selector: 'gcds-sidebar-menu',
@@ -775,14 +784,15 @@ export declare interface GcdsSignature extends Components.GcdsSignature {}
 
 
 @ProxyCmp({
-  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position']
+  inputs: ['alignment', 'label', 'position'],
+  methods: ['updateMenuSize', 'updateMenuItemQueue']
 })
 @Component({
   selector: 'gcds-site-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position'],
+  inputs: ['alignment', 'label', 'position'],
 })
 export class GcdsSiteMenu {
   protected el: HTMLElement;
@@ -794,28 +804,6 @@ export class GcdsSiteMenu {
 
 
 export declare interface GcdsSiteMenu extends Components.GcdsSiteMenu {}
-
-
-@ProxyCmp({
-  inputs: ['alignment', 'label', 'position']
-})
-@Component({
-  selector: 'gcds-site-menu1',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignment', 'label', 'position'],
-})
-export class GcdsSiteMenu1 {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsSiteMenu1 extends Components.GcdsSiteMenu1 {}
 
 
 @ProxyCmp({

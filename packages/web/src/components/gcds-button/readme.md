@@ -49,18 +49,19 @@ Type: `Promise<void>`
 ### Used by
 
  - [gcds-header](../gcds-header)
- - [gcds-site-menu](../gcds-site-menu)
 
 ### Depends on
 
 - [gcds-icon](../gcds-icon)
+- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-button --> gcds-icon
+  gcds-button --> gcds-menu-group
+  gcds-menu-group --> gcds-menu-group
   gcds-header --> gcds-button
-  gcds-site-menu --> gcds-button
   style gcds-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

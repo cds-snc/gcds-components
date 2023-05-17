@@ -57,51 +57,7 @@
     >
       <!-- ------------- Site Menu ------------- -->
 
-      <gcds-site-menu slot="menu" desktop-layout="topbar" alignment="right" position="sticky">
-        <h6 slot="left">GC Design System</h6>
-        <ul>
-          <li>
-            <a href="">Installation</a>
-          </li>
-          <li>
-            <a href="">Foundations</a>
-          </li>
-          <li>
-            <a href="">Components</a>
-            <ul>
-                <li>
-                    <a href="#red">
-                        red
-                    </a>
-                </li>
-            </ul>
-          </li>
-          <li>
-            <a href="">Contact us</a>
-          </li>
-        </ul>
-      </gcds-site-menu>
-
-      <!-- ------------- Breadcrumbs ------------- -->
-
-      <!-- Breadcrumb with canada.ca link -->
-      <gcds-breadcrumbs slot="breadcrumb">
-        <gcds-breadcrumbs-item href="#">Design System</gcds-breadcrumbs-item>
-        <gcds-breadcrumbs-item href="#">Components</gcds-breadcrumbs-item>
-      </gcds-breadcrumbs>
-
-      <!-- Breadcrumb with outcanada.ca link -->
-      <!-- <gcds-breadcrumbs hide-canada-link slot="breadcrumb">
-        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
-        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
-        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
-      </gcds-breadcrumbs> -->
-    </gcds-header>
-
-    <section class="container-xl mx-auto py-600">
-      <h1 class="text-center mb-500">GC Design System</h1>
-
-      <gcds-site-menu1 label="topbar" alignment="right" lang="en">
+      <gcds-site-menu slot="menu" label="topbar" alignment="right" lang="en">
         <gcds-menu-link
           href="#red"
           slot="left"
@@ -162,7 +118,28 @@
             </gcds-menu-link>
           </gcds-menu-group>
         </gcds-menu-group>
-      </gcds-site-menu1>
+      </gcds-site-menu>
+
+      <!-- ------------- Breadcrumbs ------------- -->
+
+      <!-- Breadcrumb with canada.ca link -->
+      <gcds-breadcrumbs slot="breadcrumb">
+        <gcds-breadcrumbs-item href="#">Design System</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="#">Components</gcds-breadcrumbs-item>
+      </gcds-breadcrumbs>
+
+      <!-- Breadcrumb with outcanada.ca link -->
+      <!-- <gcds-breadcrumbs hide-canada-link slot="breadcrumb">
+        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
+      </gcds-breadcrumbs> -->
+    </gcds-header>
+
+    <section class="container-xl mx-auto py-600">
+      <h1 class="text-center mb-500">GC Design System</h1>
+
+       <!-- ------------- Sidebar menu ------------- -->
 
       <gcds-sidebar-menu label="Sidebar">
         <gcds-menu-link

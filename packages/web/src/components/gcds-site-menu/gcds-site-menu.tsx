@@ -12,7 +12,7 @@ export class GcdsSiteMenu {
   /**
    * Label for navigation landmark
    */
-  @Prop() label: string;
+  @Prop() label!: string;
 
   /**
    * Menu alignment
