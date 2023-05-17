@@ -113,7 +113,7 @@ export class GcdsSidebarMenu {
 
   async componentDidLoad() {
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-    const menu = this.el as HTMLGcdsSiteMenu1Element;
+    const menu = this.el as HTMLGcdsSidebarMenuElement;
 
     await this.updateMenuItemQueue(this.el);
 

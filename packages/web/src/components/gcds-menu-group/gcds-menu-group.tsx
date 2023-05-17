@@ -70,13 +70,13 @@ export class GcdsMenuGroup {
 
     this.updateLang();
 
-    if (this.el.parentNode.nodeName == "GCDS-SITE-MENU1") {
+    if (this.el.parentNode.nodeName == "GCDS-SITE-MENU") {
         this.menuStyle = "dropdown"
     } else {
         this.menuStyle = "expandable"
     }
 
-    if (this.el.parentNode.nodeName == "GCDS-MENU-GROUP" && !(this.el.parentNode as HTMLElement).classList.contains("gcds-mobile-menu") && this.el.closest("gcds-site-menu1")) {
+    if (this.el.parentNode.nodeName == "GCDS-MENU-GROUP" && !(this.el.parentNode as HTMLElement).classList.contains("gcds-mobile-menu") && this.el.closest("gcds-site-menu")) {
       this.el.remove();
     }
   }

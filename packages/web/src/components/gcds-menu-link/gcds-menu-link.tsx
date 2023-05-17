@@ -51,7 +51,7 @@ export class GcdsMenuLink {
 
     this.updateLang();
 
-    if (this.el.closest("gcds-site-menu1")) {
+    if (this.el.closest("gcds-site-menu")) {
         this.menuStyle = "sitemenu"
     } else {
         this.menuStyle = "sidebar"

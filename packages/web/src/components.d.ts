@@ -768,24 +768,6 @@ export namespace Components {
          */
         "alignment": 'left' | 'center' | 'right' | 'split';
         /**
-          * Desktop layout
-         */
-        "desktopLayout": 'topbar' | 'sidebar';
-        /**
-          * Mobile layout
-         */
-        "mobileLayout": 'drawer';
-        /**
-          * Sticky navigation flag
-         */
-        "position": 'static' | 'sticky';
-    }
-    interface GcdsSiteMenu1 {
-        /**
-          * Menu alignment
-         */
-        "alignment": 'left' | 'center' | 'right' | 'split';
-        /**
           * Label for navigation landmark
          */
         "label": string;
@@ -1106,12 +1088,6 @@ declare global {
         prototype: HTMLGcdsSiteMenuElement;
         new (): HTMLGcdsSiteMenuElement;
     };
-    interface HTMLGcdsSiteMenu1Element extends Components.GcdsSiteMenu1, HTMLStencilElement {
-    }
-    var HTMLGcdsSiteMenu1Element: {
-        prototype: HTMLGcdsSiteMenu1Element;
-        new (): HTMLGcdsSiteMenu1Element;
-    };
     interface HTMLGcdsStepperElement extends Components.GcdsStepper, HTMLStencilElement {
     }
     var HTMLGcdsStepperElement: {
@@ -1160,7 +1136,6 @@ declare global {
         "gcds-sidebar-menu": HTMLGcdsSidebarMenuElement;
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-site-menu": HTMLGcdsSiteMenuElement;
-        "gcds-site-menu1": HTMLGcdsSiteMenu1Element;
         "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
@@ -2031,24 +2006,6 @@ declare namespace LocalJSX {
          */
         "alignment"?: 'left' | 'center' | 'right' | 'split';
         /**
-          * Desktop layout
-         */
-        "desktopLayout": 'topbar' | 'sidebar';
-        /**
-          * Mobile layout
-         */
-        "mobileLayout": 'drawer';
-        /**
-          * Sticky navigation flag
-         */
-        "position"?: 'static' | 'sticky';
-    }
-    interface GcdsSiteMenu1 {
-        /**
-          * Menu alignment
-         */
-        "alignment"?: 'left' | 'center' | 'right' | 'split';
-        /**
           * Label for navigation landmark
          */
         "label"?: string;
@@ -2193,7 +2150,6 @@ declare namespace LocalJSX {
         "gcds-sidebar-menu": GcdsSidebarMenu;
         "gcds-signature": GcdsSignature;
         "gcds-site-menu": GcdsSiteMenu;
-        "gcds-site-menu1": GcdsSiteMenu1;
         "gcds-stepper": GcdsStepper;
         "gcds-textarea": GcdsTextarea;
         "gcds-verify-banner": GcdsVerifyBanner;
@@ -2232,7 +2188,6 @@ declare module "@stencil/core" {
             "gcds-sidebar-menu": LocalJSX.GcdsSidebarMenu & JSXBase.HTMLAttributes<HTMLGcdsSidebarMenuElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
-            "gcds-site-menu1": LocalJSX.GcdsSiteMenu1 & JSXBase.HTMLAttributes<HTMLGcdsSiteMenu1Element>;
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
