@@ -1,24 +1,93 @@
-name: Compile Core
+name: Publish packages
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lerna.json'
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  CDN_BUCKET: gc-design-system-production-cdn
+  CDN_REGION: ca-central-1
 
 jobs:
   build-deploy:
-    name: Compile Core
+    name: Publish packages
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "@cdssnc/gcds-components"
+            package: "./packages/web"
+            dist: "./packages/web"
+
+          - name: "@cdssnc/gcds-components-react"
+            package: "./packages/react"
+            dist: "./packages/react"
+
+          - name: "@cdssnc/gcds-components-angular"
+            package: "./packages/angular"
+            dist: "./packages/angular/dist"
     steps:
       - name: Git Checkout
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+
+      - name: Setup Node
+        uses: actions/setup-node@5b32c9063c6eb277dacbf3e916a8bc5d2617c5b7
+        with:
+          node-version: 16.13.0
+
       - name: Install repo
         run: npm install
-      - name: FA dependency
-        run: |
-          npm i @fortawesome/fontawesome-free
-          mv ./node_modules/@fortawesome ./packages/web/node_modules
-      - name: Compile sass
-        run: gulp compile
-      - name: Run tests
-        run: npm run test
-      - name: Compile components
+
+      - name: Install ${{ matrix.name }}
+        run: npm install
+        working-directory: ${{ matrix.package }}
+
+      - name: Build ${{ matrix.name }}
         run: npm run build
-      - uses: JS-DevTools/npm-publish@c196e53609e852c243616a87994e8961a9903ba4
+        working-directory: ${{ matrix.package }}
+
+      - name: Publish ${{ matrix.name }}
+        uses: JS-DevTools/npm-publish@c196e53609e852c243616a87994e8961a9903ba4
+        id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
+          package: ${{ matrix.dist }}
+
+      - name: Configure AWS credentials using OIDC
+        if: steps.publish.outputs.id != ''
+        uses: aws-actions/configure-aws-credentials@e1e17a757e536f70e52b5a12b2e8d1d1c60e04ef # v2.0.0
+        with:
+          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
+          role-session-name: CDNPublish
+          aws-region: ${{ env.CDN_REGION }}
+
+      - name: Update CDN ${{ matrix.name }}
+        if: steps.publish.outputs.id != ''
+        run: |
+          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
+
+          mkdir -p ./tmp \
+            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+            && cd ./tmp/node_modules
+
+          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
+          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
+          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
+          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
+
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
+        working-directory: ${{ matrix.package }}
+
+      - name: Slack notify on failure
+        if: failure()
+        run: |
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
+          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}        
