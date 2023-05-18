@@ -1,4 +1,6 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Host, Prop, State, h } from '@stencil/core';
+import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-phase-banner',
@@ -7,7 +9,6 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 })
 export class GcdsPhaseBanner {
   @Element() el: HTMLElement;
-
 
   /**
    * Props
@@ -28,15 +29,45 @@ export class GcdsPhaseBanner {
    */
   @Prop() isFixed?: boolean;
 
+
+  /**
+  * Language of rendered component
+  */
+  @State() lang: string;
+
+
+  /**
+   * Events
+   */
+
+  /*
+  * Observe lang attribute change
+  */
+  updateLang() {
+    const observer = new MutationObserver((mutations) => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
+  async componentWillLoad() {
+    // Define lang attribute
+    this.lang = assignLanguage(this.el);
+
+    this.updateLang();
+  }
+
   render() {
-    const { bannerRole, container, isFixed } = this;
+    const { bannerRole, container, isFixed, lang } = this;
 
     return (
       <Host>
         <div
           class={`gcds-phase-banner banner--role-${bannerRole} ${isFixed ? 'banner--is-fixed' : ''}`}
           role="status"
-          aria-label="Banner"
+          aria-label={i18n[lang].label}
         >
           <gcds-container container={container} centered>
             <div class="banner__content">
