@@ -1,5 +1,6 @@
 import { Component, Element, Host, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-date-modified',
@@ -35,16 +36,12 @@ export class GcdsDateModified {
   }
 
   render() {
+    const { lang } = this;
+
     return (
       <Host>
         <dl class="gcds-date-modified">
-          <dt>
-            {this.lang == "en" ? 
-              "Date modified:"
-            : 
-              "Date de modification :"
-            }
-            </dt>
+          <dt>{i18n[lang].term}</dt>
           <dd>
             <time>
               <slot></slot>

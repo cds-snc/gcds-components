@@ -1,5 +1,6 @@
 import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-lang-toggle',
@@ -47,23 +48,13 @@ export class GcdsLangToggle {
 
     return (
       <Host>
-        {lang === "fr" ? (
-          <div>
-            <h2>Sélection de la langue</h2>
-            <a href={href} lang="en">
-              <span>English</span>
-              <abbr title="English">en</abbr>
-            </a>
-          </div>
-        ) : (
-          <div>
-            <h2>Language Selection</h2>
-            <a href={href} lang="fr">
-              <span>Français</span>
-              <abbr title="Français">fr</abbr>
-            </a>
-          </div>
-        )}
+        <div>
+          <h2>{i18n[lang].heading}</h2>
+          <a href={href} lang={i18n[lang].abbreviation}>
+            <span>{i18n[lang].language}</span>
+            <abbr title={i18n[lang].language}>{i18n[lang].abbreviation}</abbr>
+          </a>
+        </div>
       </Host>
     );
   }

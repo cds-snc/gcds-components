@@ -2,6 +2,7 @@ import { Component, Prop, Element, Method, Event, EventEmitter, Listen, State, H
 import { assignLanguage, observerConfig, inheritAttributes } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
 import { validateFieldsetElements } from '../../validators/fieldset-validators/fieldset-validators';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-fieldset',
@@ -192,7 +193,7 @@ export class GcdsFieldset {
       }
     }
   }
-  
+
   /*
   * Observe lang attribute change
   */
@@ -243,7 +244,6 @@ export class GcdsFieldset {
         fieldsetAttrs["aria-describedby"] = `error-message-${fieldsetId} ${fieldsetAttrs["aria-describedby"] ? ` ${fieldsetAttrs["aria-describedby"]}` : ""}`;
     }
 
-    const requiredText = lang == "en" ? "required" : "obligatoire";
     return (
       <Host>
         <fieldset
@@ -259,10 +259,8 @@ export class GcdsFieldset {
           >
             {legend}
             {required ?
-                <strong class="legend__required">({requiredText})</strong>
-              :
-                null
-            }
+              <strong class="legend__required">({i18n[lang].required})</strong>
+            : null }
           </legend>
 
           {hint ? <gcds-hint hint={hint} hint-id={fieldsetId} /> : null}
