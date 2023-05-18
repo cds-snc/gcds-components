@@ -554,6 +554,9 @@ export namespace Components {
         "href": string;
     }
     interface GcdsMenuGroup {
+        /**
+          * Focus button element
+         */
         "focusTrigger": () => Promise<void>;
         /**
           * Heading for the menu group, labels the button trigger
@@ -563,6 +566,9 @@ export namespace Components {
           * Has the menu group been expanded
          */
         "open": boolean;
+        /**
+          * Toggle the menu open or closed
+         */
         "toggleMenu": () => Promise<void>;
     }
     interface GcdsMenuLink {
@@ -570,6 +576,9 @@ export namespace Components {
           * Current page flag
          */
         "current": boolean;
+        /**
+          * Focus the link element
+         */
         "focusLink": () => Promise<void>;
         /**
           * Link href

@@ -154,16 +154,16 @@ export class GcdsSiteMenu {
         role="navigation"
         aria-label={label}
       >
-        <slot name="left"></slot>
         <div class="gcds-site-menu__container">
+          <slot name="left"></slot>
           <ul
             role="menu"
             class={`menu-container__list menu-list--${alignment}`}
           >
             <slot></slot>
           </ul>
+          <slot name="right"></slot>
         </div>
-        <slot name="right"></slot>
       </Host>
     );
   }
