@@ -36,11 +36,17 @@ export class GcdsMenuGroup {
   */
   @State() menuStyle: string;
 
+  /**
+  * Focus button element
+  */
   @Method()
   async focusTrigger() {
     this.triggerElement.focus();
   }
 
+  /**
+  * Toggle the menu open or closed
+  */
   @Method()
   async toggleMenu() {
     this.open = !this.open

@@ -28,6 +28,9 @@ export class GcdsMenuLink {
 
   @State() menuStyle: string;
 
+  /**
+  * Focus the link element
+  */
   @Method()
   async focusLink() {
     this.linkElement.focus();
@@ -52,11 +55,11 @@ export class GcdsMenuLink {
     this.updateLang();
 
     if (this.el.closest("gcds-site-menu")) {
-        if (this.el.parentNode.nodeName == "GCDS-SITE-MENU") {
-          this.menuStyle = "sitemenu"
-        } else {
-          this.menuStyle = "dropdown"
-        }
+      if (this.el.parentNode.nodeName == "GCDS-SITE-MENU") {
+        this.menuStyle = "sitemenu"
+      } else {
+        this.menuStyle = "dropdown"
+      }
     } else {
       this.menuStyle = "sidebar"
     }
