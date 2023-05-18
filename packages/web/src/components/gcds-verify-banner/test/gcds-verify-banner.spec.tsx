@@ -40,8 +40,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
@@ -87,8 +87,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Vérifiez que les renseignements sont accessibles en français et en anglais.</small></p>
                 </li>
                 <li>
-                  <h4>Une icône de cadenas et HTTPS</h4>
-                  <p><small>Lorsqu'un navigateur affiche les sites Web sécuritaires du gouvernement du Canada, on retrouve <strong>https://</strong> et <span class='svg-container'>Lock</span> dans la barre URL.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Lorsqu'un navigateur affiche les sites Web sécuritaires du gouvernement du Canada, on retrouve <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>Un point de communication</h4>
@@ -138,8 +138,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
@@ -185,8 +185,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
@@ -236,8 +236,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
@@ -283,8 +283,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
@@ -330,8 +330,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
@@ -377,8 +377,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
@@ -424,8 +424,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
@@ -471,8 +471,8 @@ describe('gcds-verify-banner', () => {
                   <p><small>Information will be available in both English and French.</small></p>
                 </li>
                 <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container'>Lock</span> in the address bar.</small></p>
+                  <h4>HTTPS</h4>
+                  <p><small>Secure Government of Canada websites use <strong>https://</strong>.</small></p>
                 </li>
                 <li>
                   <h4>A point of contact</h4>
