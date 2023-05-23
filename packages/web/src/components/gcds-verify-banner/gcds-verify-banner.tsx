@@ -4,7 +4,6 @@ import i18n from './i18n/i18n';
 
 import CanadaFlag from './assets/canada-flag.svg';
 import ContentToggleArrow from './assets/content-toggle-arrow.svg';
-import Lock from './assets/lock.svg';
 
 @Component({
   tag: 'gcds-verify-banner',
@@ -76,7 +75,12 @@ export class GcdsVerifyBanner {
           <div class={`verify-banner__content ${container ? `container-${container}` : ''}`}>
             <p><small>{i18n[lang].content.description}</small></p>
             <br/>
-            <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet={container === 'xs' || container === 'sm' ? '1fr' : '1fr 1fr'}>
+            <gcds-grid
+              tag="ul"
+              container="lg"
+              columns="1fr"
+              columns-tablet={container === 'xs' || container === 'sm' ? '1fr' : '1fr 1fr'}
+            >
               <li>
                 <h4>{i18n[lang].content.url.heading}</h4>
                 <p><small>{i18n[lang].content.url.text}</small></p>

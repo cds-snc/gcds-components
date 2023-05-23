@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 
 jest.mock('../assets/canada-flag.svg', () => ("Canada Flag"));
 jest.mock('../assets/content-toggle-arrow.svg', () => ("Content Toggle Arrow"));
-jest.mock('../assets/lock.svg', () => ("Lock"));
 
 import { GcdsVerifyBanner } from '../gcds-verify-banner';
 
