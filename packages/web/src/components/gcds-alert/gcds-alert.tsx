@@ -1,5 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-alert',
@@ -109,19 +110,11 @@ export class GcdsAlert {
             class={`gcds-alert alert--role-${alertRole} ${isFixed ? 'alert--is-fixed' : ''}`}
             role="alert"
             aria-label={
-              lang == 'en' ?
-                `This is ${
-                  alertRole === 'danger' ? 'a critical'
-                  : alertRole === 'info' ? 'an info'
-                  : alertRole === 'success' ? 'a success'
-                  : alertRole === 'warning' ? 'a warning'
-                  : null } alert.`
-              : `Ceci est une alerte ${
-                  alertRole === 'danger' ? 'd\'effacement'
-                  : alertRole === 'info' ? 'd\'information'
-                  : alertRole === 'success' ? 'de succès'
-                  : alertRole === 'warning' ? 'd\'avertissement'
-                  : null }.`
+              alertRole === 'danger' ? i18n[lang].label.danger
+              : alertRole === 'info' ? i18n[lang].label.info
+              : alertRole === 'success' ? i18n[lang].label.success
+              : alertRole === 'warning' ? i18n[lang].label.warning
+              : null
             }
           >
             <gcds-container container={isFixed ? container : 'full'} centered>
@@ -145,7 +138,7 @@ export class GcdsAlert {
                   <button
                     class="alert__close-btn"
                     onClick={(e) => this.onDismiss(e)}
-                    aria-label={ lang == 'en' ? 'Close alert.' : 'Fermer l\'alerte.'}
+                    aria-label={ i18n[lang].closeBtn }
                   >
                     <gcds-icon aria-hidden="true" name="times" size="text" />
                   </button>

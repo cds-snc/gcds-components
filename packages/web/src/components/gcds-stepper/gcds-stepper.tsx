@@ -1,5 +1,6 @@
 import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-stepper',
@@ -54,11 +55,7 @@ export class GcdsStepper {
     return (
       <Host>
         <h6 class="gcds-stepper">
-          { lang == 'en' ?
-            `Step ${currentStep} of ${totalSteps}`
-          :
-            `Étape ${currentStep} sur ${totalSteps}`
-          }
+          {`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}
         </h6>
       </Host>
     );
