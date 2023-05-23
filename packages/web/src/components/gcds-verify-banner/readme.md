@@ -18,15 +18,12 @@
 ### Depends on
 
 - [gcds-grid](../gcds-grid)
-- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-verify-banner --> gcds-grid
-  gcds-verify-banner --> gcds-menu-group
   gcds-grid --> gcds-container
-  gcds-menu-group --> gcds-menu-group
   style gcds-verify-banner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

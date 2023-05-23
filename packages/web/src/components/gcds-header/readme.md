@@ -22,7 +22,6 @@
 - [gcds-button](../gcds-button)
 - [gcds-lang-toggle](../gcds-lang-toggle)
 - [gcds-signature](../gcds-signature)
-- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
@@ -30,12 +29,7 @@ graph TD;
   gcds-header --> gcds-button
   gcds-header --> gcds-lang-toggle
   gcds-header --> gcds-signature
-  gcds-header --> gcds-menu-group
   gcds-button --> gcds-icon
-  gcds-button --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
-  gcds-lang-toggle --> gcds-menu-group
-  gcds-signature --> gcds-menu-group
   style gcds-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

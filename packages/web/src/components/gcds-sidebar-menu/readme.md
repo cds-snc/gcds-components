@@ -46,7 +46,6 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   gcds-sidebar-menu --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
   style gcds-sidebar-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

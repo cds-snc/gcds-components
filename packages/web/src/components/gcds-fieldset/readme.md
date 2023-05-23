@@ -48,15 +48,12 @@ Type: `Promise<void>`
 
 - [gcds-hint](../gcds-hint)
 - [gcds-error-message](../gcds-error-message)
-- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-fieldset --> gcds-hint
   gcds-fieldset --> gcds-error-message
-  gcds-fieldset --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
   style gcds-fieldset fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

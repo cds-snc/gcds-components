@@ -21,15 +21,11 @@
 ### Depends on
 
 - [gcds-signature](../gcds-signature)
-- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-footer --> gcds-signature
-  gcds-footer --> gcds-menu-group
-  gcds-signature --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
   style gcds-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

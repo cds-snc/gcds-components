@@ -26,15 +26,9 @@
  - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
 
-### Depends on
-
-- [gcds-menu-group](../gcds-menu-group)
-
 ### Graph
 ```mermaid
 graph TD;
-  gcds-label --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
   gcds-checkbox --> gcds-label
   gcds-file-uploader --> gcds-label
   gcds-input --> gcds-label

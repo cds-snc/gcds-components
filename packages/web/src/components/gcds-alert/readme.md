@@ -31,15 +31,12 @@
 
 - [gcds-container](../gcds-container)
 - [gcds-icon](../gcds-icon)
-- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-alert --> gcds-container
   gcds-alert --> gcds-icon
-  gcds-alert --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
   style gcds-alert fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

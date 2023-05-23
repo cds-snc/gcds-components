@@ -17,7 +17,7 @@
 
 ### `focusLink() => Promise<void>`
 
-
+Focus the link element
 
 #### Returns
 
@@ -25,20 +25,6 @@ Type: `Promise<void>`
 
 
 
-
-## Dependencies
-
-### Depends on
-
-- [gcds-menu-group](../gcds-menu-group)
-
-### Graph
-```mermaid
-graph TD;
-  gcds-menu-link --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
-  style gcds-menu-link fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

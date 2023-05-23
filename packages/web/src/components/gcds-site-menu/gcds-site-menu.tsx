@@ -1,5 +1,6 @@
 import { Component, Element, Host, Prop, State, Listen, Method, h } from '@stencil/core';
-import { assignLanguage, handleKeyDownMenu, observerConfig, getMenuItems, configureMobileMenu, unpackMobileMenu } from '../../utils/utils';
+import { assignLanguage, observerConfig } from '../../utils/utils';
+import { handleKeyDownMenu, getMenuItems, configureMobileMenu, unpackMobileMenu } from '../../utils/menus/utils';
 
 @Component({
   tag: 'gcds-site-menu',

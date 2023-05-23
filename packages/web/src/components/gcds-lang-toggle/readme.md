@@ -18,15 +18,9 @@
 
  - [gcds-header](../gcds-header)
 
-### Depends on
-
-- [gcds-menu-group](../gcds-menu-group)
-
 ### Graph
 ```mermaid
 graph TD;
-  gcds-lang-toggle --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
   gcds-header --> gcds-lang-toggle
   style gcds-lang-toggle fill:#f9f,stroke:#333,stroke-width:4px
 ```

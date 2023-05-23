@@ -53,14 +53,11 @@ Type: `Promise<void>`
 ### Depends on
 
 - [gcds-icon](../gcds-icon)
-- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-button --> gcds-icon
-  gcds-button --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
   gcds-header --> gcds-button
   style gcds-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -58,7 +58,6 @@ Type: `Promise<void>`
 - [gcds-hint](../gcds-hint)
 - [gcds-error-message](../gcds-error-message)
 - [gcds-icon](../gcds-icon)
-- [gcds-menu-group](../gcds-menu-group)
 
 ### Graph
 ```mermaid
@@ -67,9 +66,6 @@ graph TD;
   gcds-file-uploader --> gcds-hint
   gcds-file-uploader --> gcds-error-message
   gcds-file-uploader --> gcds-icon
-  gcds-file-uploader --> gcds-menu-group
-  gcds-label --> gcds-menu-group
-  gcds-menu-group --> gcds-menu-group
   style gcds-file-uploader fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
