@@ -9,84 +9,95 @@ export async function handleKeyDownMenu(event, menu, queue) {
   let currentIndex = queue.indexOf(document.activeElement);
   let activeElement = queue[currentIndex];
 
-  // Down arrow
-  if (key == 40) {
-    event.preventDefault();
-    // If on last item, jump to first item
-    if (currentIndex + 1 > queue.length - 1) {
-      if (queue[0].nodeName == "GCDS-MENU-LINK") {
-        (queue[0] as HTMLGcdsMenuLinkElement).focusLink();
-      } else if (queue[0].nodeName == "GCDS-MENU-GROUP") {
-        (queue[0] as HTMLGcdsMenuGroupElement).focusTrigger();
-      }
-    // Jump to next item
-    } else {
-      if (queue[currentIndex + 1].nodeName == "GCDS-MENU-LINK") {
-        (queue[currentIndex + 1] as HTMLGcdsMenuLinkElement).focusLink();
-      } else if (queue[currentIndex + 1].nodeName == "GCDS-MENU-GROUP") {
-        (queue[currentIndex + 1] as HTMLGcdsMenuGroupElement).focusTrigger();
-      }
-    }
-  // Up arrow
-  } else if (key == 38) {
-    event.preventDefault();
-    // If on first item, jump to last item
-    if (currentIndex - 1 < 0) {
-      if (queue[queue.length - 1].nodeName == "GCDS-MENU-LINK") {
-        (queue[queue.length - 1] as HTMLGcdsMenuLinkElement).focusLink();
-      } else if (queue[queue.length - 1].nodeName == "GCDS-MENU-GROUP") {
-        (queue[queue.length - 1] as HTMLGcdsMenuGroupElement).focusTrigger();
-      }
-    // Jump to previous item
-    } else {
-      if (queue[currentIndex - 1].nodeName == "GCDS-MENU-LINK") {
-        (queue[currentIndex - 1] as HTMLGcdsMenuLinkElement).focusLink();
-      } else if (queue[currentIndex - 1].nodeName == "GCDS-MENU-GROUP") {
-        (queue[currentIndex - 1] as HTMLGcdsMenuGroupElement).focusTrigger();
-      }
-    }
-  // Right arrow
-  } else if (key == 39) {
-    event.preventDefault();
-    // If current item is group-menu trigger
-    if (activeElement.nodeName == "GCDS-MENU-GROUP" && !activeElement.hasAttribute("open")) {
-      await openMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
-    }
-  // Left || ESC
-  } else if (key == 37 || key == 27) {
-    event.preventDefault();
-    // Currently focusing a gcds-menu-group
-    if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
-      await closeMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
-    // Currently focus within a gcds-menu-group
-    } else if (activeElement.parentNode.nodeName == "GCDS-MENU-GROUP") {
-      await closeMenuGroup(activeElement.parentNode as HTMLGcdsMenuGroupElement, menu);
-    }
-  // Tab
-  // Does not do anything in sidebar
-  } else if (key == 9 && menu.nodeName != "GCDS-SIDEBAR-MENU") {
-    // On open menu trigger
-    if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
+  switch(key) {
+    // Down arrow
+    case 40:
       event.preventDefault();
-      await (activeElement as HTMLGcdsMenuGroupElement).toggleMenu();
-    // In open menu group
-    } else if(activeElement.parentNode.nodeName == "GCDS-MENU-GROUP") {
-      event.preventDefault();
-      await closeMenuGroup(activeElement.parentNode as HTMLGcdsMenuGroupElement, menu);
-    }
-  // Enter || Spacebar
-  } else if (key == 13 || key == 32) {
-    if (activeElement.nodeName == "GCDS-MENU-GROUP") {
-      event.preventDefault();
-      if (activeElement.hasAttribute("open")) {
-        await closeMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
+      // If on last item, jump to first item
+      if (currentIndex + 1 > queue.length - 1) {
+        await focusElement(0, queue);
+      // Jump to next item
       } else {
+        await focusElement(currentIndex + 1, queue);
+      }
+      break;
+
+    // Up arrow
+    case 38:
+      event.preventDefault();
+      // If on first item, jump to last item
+      if (currentIndex - 1 < 0) {
+        await focusElement(queue.length - 1, queue);
+      // Jump to previous item
+      } else {
+        await focusElement(currentIndex - 1, queue);
+      }
+      break;
+
+    // Right arrow
+    case 39:
+      event.preventDefault();
+      // If current item is group-menu trigger
+      if (activeElement.nodeName == "GCDS-MENU-GROUP" && !activeElement.hasAttribute("open")) {
         await openMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
       }
-    }
+      break;
+
+    // Left arrow || ESC
+    case 37:
+    case 27:
+      event.preventDefault();
+      // Currently focusing a gcds-menu-group
+      if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
+        await closeMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
+      // Currently focus within a gcds-menu-group
+      } else if (activeElement.parentNode.nodeName == "GCDS-MENU-GROUP") {
+        await closeMenuGroup(activeElement.parentNode as HTMLGcdsMenuGroupElement, menu);
+      }
+      break;
+
+    // Tab - only in site-menu
+    case 9:
+      if (menu.nodeName != "GCDS-SIDEBAR-MENU") {
+        // On open menu trigger
+        if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
+          event.preventDefault();
+          await (activeElement as HTMLGcdsMenuGroupElement).toggleMenu();
+        // In open menu group
+        } else if(activeElement.parentNode.nodeName == "GCDS-MENU-GROUP") {
+          event.preventDefault();
+          await closeMenuGroup(activeElement.parentNode as HTMLGcdsMenuGroupElement, menu);
+        }
+      }
+      break;
+
+    // ENTER || SPACEBAR
+    case 13:
+    case 32:
+      if (activeElement.nodeName == "GCDS-MENU-GROUP") {
+        event.preventDefault();
+        if (activeElement.hasAttribute("open")) {
+          await closeMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
+        } else {
+          await openMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
+        }
+      }
+      break;
   }
 };
-  
+
+/**
+* Focus menu element
+* @param {Number} index
+* @param {any[]} queue
+*/
+async function focusElement(index, queue) {
+  if (queue[index].nodeName == "GCDS-MENU-LINK") {
+    (queue[index] as HTMLGcdsMenuLinkElement).focusLink();
+  } else if (queue[index].nodeName == "GCDS-MENU-GROUP") {
+    (queue[index] as HTMLGcdsMenuGroupElement).focusTrigger();
+  }
+}
   
 /**
 * Open menu group

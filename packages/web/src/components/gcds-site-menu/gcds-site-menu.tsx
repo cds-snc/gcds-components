@@ -163,7 +163,6 @@ export class GcdsSiteMenu {
           >
             <slot></slot>
           </ul>
-          <slot name="right"></slot>
         </div>
       </Host>
     );

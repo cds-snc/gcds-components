@@ -26,6 +26,9 @@ export class GcdsMenuLink {
   */
   @State() lang: string;
 
+  /**
+  * Style of menu to render based on parent
+  */
   @State() menuStyle: string;
 
   /**
