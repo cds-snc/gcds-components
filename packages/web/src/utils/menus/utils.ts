@@ -15,10 +15,10 @@ export async function handleKeyDownMenu(event, menu, queue) {
       event.preventDefault();
       // If on last item, jump to first item
       if (currentIndex + 1 > queue.length - 1) {
-        await focusElement(0, queue);
+        await focusMenuItem(0, queue);
       // Jump to next item
       } else {
-        await focusElement(currentIndex + 1, queue);
+        await focusMenuItem(currentIndex + 1, queue);
       }
       break;
 
@@ -27,20 +27,17 @@ export async function handleKeyDownMenu(event, menu, queue) {
       event.preventDefault();
       // If on first item, jump to last item
       if (currentIndex - 1 < 0) {
-        await focusElement(queue.length - 1, queue);
+        await focusMenuItem(queue.length - 1, queue);
       // Jump to previous item
       } else {
-        await focusElement(currentIndex - 1, queue);
+        await focusMenuItem(currentIndex - 1, queue);
       }
       break;
 
     // Right arrow
     case 'ArrowRight':
       event.preventDefault();
-      // If current item is group-menu trigger
-      if (activeElement.nodeName == "GCDS-MENU-GROUP" && !activeElement.hasAttribute("open")) {
-        await openMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
-      }
+      await toggleMenuGroup(activeElement, menu);
       break;
 
     // Left arrow || ESC
@@ -49,10 +46,10 @@ export async function handleKeyDownMenu(event, menu, queue) {
       event.preventDefault();
       // Currently focusing a gcds-menu-group
       if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
-        await closeMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
+        await toggleMenuGroup(activeElement, menu);
       // Currently focus within a gcds-menu-group
       } else if (activeElement.parentNode.nodeName == "GCDS-MENU-GROUP") {
-        await closeMenuGroup(activeElement.parentNode as HTMLGcdsMenuGroupElement, menu);
+        await toggleMenuGroup(activeElement.parentNode, menu);
       }
       break;
 
@@ -62,11 +59,11 @@ export async function handleKeyDownMenu(event, menu, queue) {
         // On open menu trigger
         if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
           event.preventDefault();
-          await (activeElement as HTMLGcdsMenuGroupElement).toggleMenu();
+          await toggleMenuGroup(activeElement, menu);
         // In open menu group
         } else if(activeElement.parentNode.nodeName == "GCDS-MENU-GROUP") {
           event.preventDefault();
-          await closeMenuGroup(activeElement.parentNode as HTMLGcdsMenuGroupElement, menu);
+          await toggleMenuGroup(activeElement.parentNode, menu);
         }
       }
       break;
@@ -76,11 +73,7 @@ export async function handleKeyDownMenu(event, menu, queue) {
     case ' ':
       if (activeElement.nodeName == "GCDS-MENU-GROUP") {
         event.preventDefault();
-        if (activeElement.hasAttribute("open")) {
-          await closeMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
-        } else {
-          await openMenuGroup(activeElement as HTMLGcdsMenuGroupElement, menu);
-        }
+        await toggleMenuGroup(activeElement, menu);
       }
       break;
   }
@@ -91,49 +84,43 @@ export async function handleKeyDownMenu(event, menu, queue) {
 * @param {Number} index
 * @param {any[]} queue
 */
-async function focusElement(index, queue) {
+async function focusMenuItem(index, queue) {
   if (queue[index].nodeName == "GCDS-MENU-LINK") {
     (queue[index] as HTMLGcdsMenuLinkElement).focusLink();
   } else if (queue[index].nodeName == "GCDS-MENU-GROUP") {
     (queue[index] as HTMLGcdsMenuGroupElement).focusTrigger();
   }
 }
-  
+
 /**
-* Open menu group
-* @param {Element} groupTrigger
+* 
+* @param {Element} group
 * @param {Element} menu
 */
-async function openMenuGroup(groupTrigger, menu) {
-  await groupTrigger.toggleMenu();
+async function toggleMenuGroup(group, menu) {
+  const menuGroup = group as HTMLGcdsMenuGroupElement;
 
-  if (groupTrigger.children[0].nodeName == "GCDS-MENU-GROUP") {
-    setTimeout(() => {
-      (groupTrigger.children[0] as HTMLGcdsMenuGroupElement).focusTrigger();
-    }, 10);
-  } else if (groupTrigger.children[0].nodeName == "GCDS-MENU-LINK") {
-    setTimeout(() => {
-      (groupTrigger.children[0] as HTMLGcdsMenuLinkElement).focusLink();
-    }, 10);
-  }
-
-  if (menu.nodeName == "GCDS-SIDEBAR-MENU") {
+  // Close menu group
+  if (menuGroup.hasAttribute("open")) {
+    await menuGroup.toggleMenu();
+    menuGroup.focusTrigger();
+  
     menu.updateMenuItemQueue(menu);
-  } else {
-    menu.updateMenuItemQueue(groupTrigger, true);
-  }
-}
-  
-/**
-* Close menu group
-* @param {Element} groupTrigger
-* @param {Element} menu
-*/
-async function closeMenuGroup(groupTrigger, menu) {
-  await groupTrigger.toggleMenu();
-  groupTrigger.focusTrigger();
 
-  menu.updateMenuItemQueue(menu);
+  // Open menu group
+  } else {
+    await menuGroup.toggleMenu();
+
+    setTimeout(async () => {
+      await focusMenuItem(0, menuGroup.children);
+    }, 10)
+  
+    if (menu.nodeName == "GCDS-SIDEBAR-MENU") {
+      menu.updateMenuItemQueue(menu);
+    } else {
+      menu.updateMenuItemQueue(menuGroup, true);
+    }
+  }
 }
   
 /**
