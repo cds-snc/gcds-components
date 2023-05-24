@@ -57,22 +57,67 @@
     >
       <!-- ------------- Site Menu ------------- -->
 
-      <gcds-site-menu slot="menu" alignment="right">
-        <h6 slot="left">GC Design System</h6>
-        <ul>
-          <li>
-            <a href="">Installation</a>
-          </li>
-          <li>
-            <a href="">Foundations</a>
-          </li>
-          <li>
-            <a href="">Components</a>
-          </li>
-          <li>
-            <a href="">Contact us</a>
-          </li>
-        </ul>
+      <gcds-site-menu slot="menu" label="topbar" alignment="right" lang="en">
+        <gcds-menu-link
+          href="#red"
+          slot="home"
+        >
+          Home
+        </gcds-menu-link>
+        <gcds-menu-link
+          href="#red"
+        >
+          Installation
+        </gcds-menu-link>
+        <gcds-menu-link
+          href="#red"
+
+        >
+          Foundations
+        </gcds-menu-link>
+        <gcds-menu-link
+          href="#red"
+        >
+          Components
+        </gcds-menu-link>
+        <gcds-menu-group
+          heading="Contact us"
+        >
+          <gcds-menu-link
+            href="#red"
+          >
+            Form
+          </gcds-menu-link>
+          <gcds-menu-link
+            href="#red"
+          >
+            GitHub
+          </gcds-menu-link>
+          <gcds-menu-link
+            href="#red"
+          >
+            Slack
+          </gcds-menu-link>
+                    <gcds-menu-group
+            heading="Sub level"
+            >
+            <gcds-menu-link
+                href="#red"
+            >
+                Site
+            </gcds-menu-link>
+            <gcds-menu-link
+                href="#red"
+            >
+                GitHub
+            </gcds-menu-link>
+            <gcds-menu-link
+                href="#red"
+            >
+                Slack
+            </gcds-menu-link>
+          </gcds-menu-group>
+        </gcds-menu-group>
       </gcds-site-menu>
 
       <!-- ------------- Breadcrumbs ------------- -->
@@ -93,6 +138,60 @@
 
     <gcds-container container="xl" centered tag="main">
       <h1 class="text-center mb-500">GC Design System</h1>
+
+       <!-- ------------- Sidebar menu ------------- -->
+
+      <gcds-sidebar-menu label="Sidebar">
+        <gcds-menu-link
+          href="#red"
+        >
+          Installation
+        </gcds-menu-link>
+        <gcds-menu-link
+          href="#red"
+        >
+          Foundations
+        </gcds-menu-link>
+        <gcds-menu-link
+          href="#red"
+        >
+          Components
+        </gcds-menu-link>
+
+        <gcds-menu-group
+          heading="Contact"
+        >
+          <gcds-menu-link
+            href="#red"
+          >
+            Site
+          </gcds-menu-link>
+          <gcds-menu-link
+            href="#red"
+          >
+            GitHub
+          </gcds-menu-link>
+          <gcds-menu-group
+            heading="Sub level"
+            >
+            <gcds-menu-link
+                href="#red"
+            >
+                Site
+            </gcds-menu-link>
+            <gcds-menu-link
+                href="#red"
+            >
+                GitHub
+            </gcds-menu-link>
+            <gcds-menu-link
+                href="#red"
+            >
+                Slack
+            </gcds-menu-link>
+          </gcds-menu-group>
+        </gcds-menu-group>
+      </gcds-sidebar-menu>
 
       <h2>Components</h2>
 

@@ -3,22 +3,17 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import { handleKeyDownMenu, getMenuItems, configureMobileMenu, unpackMobileMenu } from '../../utils/menus/utils';
 
 @Component({
-  tag: 'gcds-site-menu',
-  styleUrl: 'gcds-site-menu.css',
+  tag: 'gcds-sidebar-menu',
+  styleUrl: 'gcds-sidebar-menu.css',
   shadow: true,
 })
-export class GcdsSiteMenu {
+export class GcdsSidebarMenu {
   @Element() el: HTMLElement;
 
   /**
    * Label for navigation landmark
    */
   @Prop() label!: string;
-
-  /**
-   * Menu alignment
-   */
-  @Prop() alignment: 'left' | 'center' | 'right' | 'split' = 'left';
 
   /**
    * Sticky navigation flag
@@ -36,23 +31,11 @@ export class GcdsSiteMenu {
   @State() menuItems = [];
 
   /**
-  * Current size state based on widnow size
+  * Current size based on widnow size
   */
   @State() menuSize: 'desktop' | 'mobile';
 
-  @Listen("focusout", { target: "document" })
-  async focusOutListener(e) {
-    if (!this.el.contains(e.relatedTarget)) {
-      for (let i = 0; i < this.el.children.length; i++) {
-        if (this.el.children[i].nodeName == "GCDS-MENU-GROUP" && (this.el.children[i].hasAttribute("open"))) {
-          await (this.el.children[i] as HTMLGcdsMenuGroupElement).toggleMenu();
-          await this.updateMenuItemQueue(this.el);
-        }
-      }
-    }
-  }
-
-  @Listen("keydown", { target: 'document' })
+  @Listen("keydown", {target: 'document'})
   async keyDownListener(e) {
     if (this.el.contains(document.activeElement)) {
       handleKeyDownMenu(e, this.el, this.menuItems);
@@ -131,7 +114,7 @@ export class GcdsSiteMenu {
 
   async componentDidLoad() {
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-    const menu = this.el as HTMLGcdsSiteMenuElement;
+    const menu = this.el as HTMLGcdsSidebarMenuElement;
 
     await this.updateMenuItemQueue(this.el);
 
@@ -149,17 +132,18 @@ export class GcdsSiteMenu {
   }
 
   render() {
-    const { label, alignment } = this;
+    const { label } = this;
     return (
       <Host>
         <nav
           aria-label={label}
-          class="gcds-site-menu__container"
         >
-          <slot name="home"></slot>
+          <h2 class="gcds-sidebar-menu__heading">
+            {label}
+          </h2>
           <ul
             role="menu"
-            class={`menu-container__list menu-list--${alignment}`}
+            class="gcds-sidebar-menu__list"
           >
             <slot></slot>
           </ul>

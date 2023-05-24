@@ -1,26 +1,26 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsSiteMenu } from '../gcds-site-menu';
+import { GcdsSidebarMenu } from '../gcds-sidebar-menu';
 
 import '../../../utils/test/matchMedia.mock';
 
-describe('gcds-site-menu', () => {
+describe('gcds-sidebar-menu', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [GcdsSiteMenu],
-      html: `<gcds-site-menu></gcds-site-menu>`,
+      components: [GcdsSidebarMenu],
+      html: `<gcds-sidebar-menu></gcds-sidebar-menu>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-site-menu>
+      <gcds-sidebar-menu>
         <mock:shadow-root>
-          <nav class="gcds-site-menu__container">
-            <slot name="home"></slot>
-            <ul class="menu-container__list menu-list--left" role="menu">
+          <nav>
+            <h2 class="gcds-sidebar-menu__heading"></h2>
+            <ul class="gcds-sidebar-menu__list" role="menu">
               <slot></slot>
             </ul>
           </nav>
         </mock:shadow-root>
         <gcds-menu-group class="gcds-mobile-menu"></gcds-menu-group>
-      </gcds-site-menu>
+      </gcds-sidebar-menu>
     `);
   });
 });

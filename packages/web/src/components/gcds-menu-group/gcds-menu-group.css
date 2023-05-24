@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  position: relative;
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .gcds-menu-group__list {
+    padding: var(--gcds-spacing-200);
+    border: 1px solid black;
+  }
+
+  .gcds-menu-group__trigger[aria-expanded="false"] + .gcds-menu-group__list {
+    display: none;
+  }
+
+  .gcds-menu-group__trigger {
+    padding: var(--gcds-spacing-250);
+    border: none;
+    background: transparent;
+    width: 100%;
+    max-width: 20rem;
+    text-align: left;
+  }
+
+  .gcds-trigger--dropdown {
+    padding: var(--gcds-spacing-300);
+  }
+
+  .gcds-menu--dropdown {
+    width: 20rem;
+    position: absolute;
+  }
+}
