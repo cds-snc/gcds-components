@@ -10,16 +10,14 @@ describe('gcds-site-menu', () => {
       html: `<gcds-site-menu></gcds-site-menu>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-site-menu role="navigation">
+      <gcds-site-menu>
         <mock:shadow-root>
-
-          <div class="gcds-site-menu__container">
-            <slot name="left"></slot>
+          <nav class="gcds-site-menu__container">
+            <slot name="home"></slot>
             <ul class="menu-container__list menu-list--left" role="menu">
               <slot></slot>
             </ul>
-            <slot name="right"></slot>
-          </div>
+          </nav>
         </mock:shadow-root>
         <gcds-menu-group class="gcds-mobile-menu"></gcds-menu-group>
       </gcds-site-menu>

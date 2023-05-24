@@ -151,19 +151,19 @@ export class GcdsSiteMenu {
   render() {
     const { label, alignment } = this;
     return (
-      <Host
-        role="navigation"
-        aria-label={label}
-      >
-        <div class="gcds-site-menu__container">
-          <slot name="left"></slot>
+      <Host>
+        <nav
+          aria-label={label}
+          class="gcds-site-menu__container"
+        >
+          <slot name="home"></slot>
           <ul
             role="menu"
             class={`menu-container__list menu-list--${alignment}`}
           >
             <slot></slot>
           </ul>
-        </div>
+        </nav>
       </Host>
     );
   }

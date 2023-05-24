@@ -134,21 +134,20 @@ export class GcdsSidebarMenu {
   render() {
     const { label } = this;
     return (
-      <Host
-        role="navigation"
-        aria-label={label}
-      >
-        <slot name="top"></slot>
-        <h2 class="gcds-sidebar-menu__heading">
-          {label}
-        </h2>
-        <ul
-          role="menu"
-          class="gcds-sidebar-menu__list"
+      <Host>
+        <nav
+          aria-label={label}
         >
-          <slot></slot>
-        </ul>
-        <slot name="bottom"></slot>
+          <h2 class="gcds-sidebar-menu__heading">
+            {label}
+          </h2>
+          <ul
+            role="menu"
+            class="gcds-sidebar-menu__list"
+          >
+            <slot></slot>
+          </ul>
+        </nav>
       </Host>
     );
   }
