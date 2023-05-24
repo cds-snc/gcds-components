@@ -5,13 +5,13 @@
 * @param {any[]} queue
 */
 export async function handleKeyDownMenu(event, menu, queue) {
-  let key = event.keyCode || event.which;
-  let currentIndex = queue.indexOf(document.activeElement);
-  let activeElement = queue[currentIndex];
+  const key = event.key;
+  const currentIndex = queue.indexOf(document.activeElement);
+  const activeElement = queue[currentIndex];
 
   switch(key) {
     // Down arrow
-    case 40:
+    case 'ArrowDown':
       event.preventDefault();
       // If on last item, jump to first item
       if (currentIndex + 1 > queue.length - 1) {
@@ -23,7 +23,7 @@ export async function handleKeyDownMenu(event, menu, queue) {
       break;
 
     // Up arrow
-    case 38:
+    case 'ArrowUp':
       event.preventDefault();
       // If on first item, jump to last item
       if (currentIndex - 1 < 0) {
@@ -35,7 +35,7 @@ export async function handleKeyDownMenu(event, menu, queue) {
       break;
 
     // Right arrow
-    case 39:
+    case 'ArrowRight':
       event.preventDefault();
       // If current item is group-menu trigger
       if (activeElement.nodeName == "GCDS-MENU-GROUP" && !activeElement.hasAttribute("open")) {
@@ -44,8 +44,8 @@ export async function handleKeyDownMenu(event, menu, queue) {
       break;
 
     // Left arrow || ESC
-    case 37:
-    case 27:
+    case 'ArrowLeft':
+    case 'Escape':
       event.preventDefault();
       // Currently focusing a gcds-menu-group
       if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
@@ -57,7 +57,7 @@ export async function handleKeyDownMenu(event, menu, queue) {
       break;
 
     // Tab - only in site-menu
-    case 9:
+    case 'Tab':
       if (menu.nodeName != "GCDS-SIDEBAR-MENU") {
         // On open menu trigger
         if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
@@ -72,8 +72,8 @@ export async function handleKeyDownMenu(event, menu, queue) {
       break;
 
     // ENTER || SPACEBAR
-    case 13:
-    case 32:
+    case 'Enter':
+    case ' ':
       if (activeElement.nodeName == "GCDS-MENU-GROUP") {
         event.preventDefault();
         if (activeElement.hasAttribute("open")) {
