@@ -1,8 +1,9 @@
-name: Publish storybook
+name: Publish storybook - staging
 on: 
+  workflow_dispatch:
   push:
     branches:
-      - main
+      - staging
     paths:
       - 'packages/web/src/**'
       - 'packages/web/.storybook/**'
@@ -12,7 +13,7 @@ env:
 
 jobs:
   build-deploy:
-    name: Publish storybook
+    name: Publish storybook - staging
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
@@ -37,4 +38,4 @@ jobs:
           publish_dir: ./docs
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: storybook
-          keep_files: true
+          destination_dir: staging
