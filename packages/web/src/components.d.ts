@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+export { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -593,7 +594,7 @@ export namespace Components {
         /**
           * List display - URL object to create query strings and fragment on links
          */
-        "url": Object;
+        "url": string | object;
     }
     interface GcdsPhaseBanner {
         /**
@@ -1746,7 +1747,7 @@ declare namespace LocalJSX {
         /**
           * List display - URL object to create query strings and fragment on links
          */
-        "url"?: Object;
+        "url"?: string | object;
     }
     interface GcdsPhaseBanner {
         /**
