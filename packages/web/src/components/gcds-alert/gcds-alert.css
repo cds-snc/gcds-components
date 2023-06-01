@@ -130,7 +130,7 @@
 
     &:active,
     &:hover {
-      border-color: var(--gcds-alert-button-active-border-color);
+      border-color: currentColor;
     }
 
     &:focus {
