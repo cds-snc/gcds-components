@@ -68,7 +68,21 @@ export class GcdsPagination {
   /**
    * List display - URL object to create query strings and fragment on links
    */
-   @Prop() url: Object;
+   @Prop() url: string | object;
+   urlObject: object;
+
+  /**
+   * Convert url prop to object
+   * (Object props get treated as string when using Stencil components without a framework)
+   */
+  @Watch('url')
+  urlChanged(newUrl: string | object) {
+    if (typeof newUrl == "string") {
+      this.urlObject = JSON.parse(newUrl);
+    } else if (typeof newUrl == "object") {
+      this.urlObject = newUrl;
+    }
+  }
 
   /**
    * Function to fire when pageChange event is called
@@ -112,7 +126,7 @@ export class GcdsPagination {
 
     let linkAttrs = {
       onClick: (e) => this.onPageChange(e),
-      href: this.url ? constructHref(this.el, page, end) : "javascript:void(0)",
+      href: this.urlObject ? constructHref(this.urlObject, page, end) : "javascript:void(0)",
       "aria-label": !end ?
         I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{total}', this.totalPages).replace('{label}', this.label)
       :
@@ -290,6 +304,12 @@ export class GcdsPagination {
 
     this.updateLang();
 
+    if (this.url && typeof this.url == "string") {
+      this.urlObject = JSON.parse(this.url);
+    } else if (this.url && typeof this.url == "object") {
+      this.urlObject = this.url;
+    }
+
     if (this.display == "list") {
       this.configureListPagination();
     }
@@ -326,36 +346,40 @@ export class GcdsPagination {
           <ul
             class="gcds-pagination-simple"
           >
-            <li>
-              <a
-                href={previousHref}
-                aria-label={`${I18N[lang].previousPage}${previousLabel ? `: ${previousLabel}` : ""}`}
-                onClick={(e) => this.onPageChange(e)}
-              >
-                <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-                <div class="gcds-pagination-simple-text">
-                  {I18N[lang].previous}
-                </div>
-                <span>
-                  {previousLabel}
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                href={nextHref}
-                aria-label={`${I18N[lang].nextPage}${nextLabel ? `: ${nextLabel}` : ""}`}
-                onClick={(e) => this.onPageChange(e)}
-              >
-                <div class="gcds-pagination-simple-text">
-                  {I18N[lang].next}
-                </div>
-                <span>
-                  {nextLabel}
-                </span>
-                <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
-              </a>
-            </li>
+            {previousHref &&
+              <li class="gcds-pagination-simple-previous">
+                <a
+                  href={previousHref}
+                  aria-label={`${I18N[lang].previousPage}${previousLabel ? `: ${previousLabel}` : ""}`}
+                  onClick={(e) => this.onPageChange(e)}
+                >
+                  <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
+                  <div class="gcds-pagination-simple-text">
+                    {I18N[lang].previous}
+                  </div>
+                  <span>
+                    {previousLabel}
+                  </span>
+                </a>
+              </li>
+            }
+            {nextHref && 
+              <li class="gcds-pagination-simple-next">
+                <a
+                  href={nextHref}
+                  aria-label={`${I18N[lang].nextPage}${nextLabel ? `: ${nextLabel}` : ""}`}
+                  onClick={(e) => this.onPageChange(e)}
+                >
+                  <div class="gcds-pagination-simple-text">
+                    {I18N[lang].next}
+                  </div>
+                  <span>
+                    {nextLabel}
+                  </span>
+                  <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
+                </a>
+              </li>
+            }
           </ul>
         }
       </Host>
