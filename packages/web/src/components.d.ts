@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+export { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -110,6 +111,28 @@ export namespace Components {
           * Set button types
          */
         "type": 'submit' | 'reset' | 'button' | 'link';
+    }
+    interface GcdsCard {
+        /**
+          * The card title attribute specifies the title that appears on the card
+         */
+        "cardTitle": string;
+        /**
+          * The description attribute specifies the body of text that appears on the card
+         */
+        "description": string;
+        /**
+          * The href attribute specifies the URL of the page the link goes to
+         */
+        "href": string;
+        /**
+          * The img alt attribute specifies the alt text for the image provided, if none, image will be decorative
+         */
+        "imgAlt": string;
+        /**
+          * The img src attribute specifies the path to the image
+         */
+        "imgSrc": string;
     }
     interface GcdsCheckbox {
         /**
@@ -901,6 +924,12 @@ declare global {
         prototype: HTMLGcdsButtonElement;
         new (): HTMLGcdsButtonElement;
     };
+    interface HTMLGcdsCardElement extends Components.GcdsCard, HTMLStencilElement {
+    }
+    var HTMLGcdsCardElement: {
+        prototype: HTMLGcdsCardElement;
+        new (): HTMLGcdsCardElement;
+    };
     interface HTMLGcdsCheckboxElement extends Components.GcdsCheckbox, HTMLStencilElement {
     }
     var HTMLGcdsCheckboxElement: {
@@ -1056,6 +1085,7 @@ declare global {
         "gcds-breadcrumbs": HTMLGcdsBreadcrumbsElement;
         "gcds-breadcrumbs-item": HTMLGcdsBreadcrumbsItemElement;
         "gcds-button": HTMLGcdsButtonElement;
+        "gcds-card": HTMLGcdsCardElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-container": HTMLGcdsContainerElement;
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
@@ -1195,6 +1225,28 @@ declare namespace LocalJSX {
           * Set button types
          */
         "type"?: 'submit' | 'reset' | 'button' | 'link';
+    }
+    interface GcdsCard {
+        /**
+          * The card title attribute specifies the title that appears on the card
+         */
+        "cardTitle": string;
+        /**
+          * The description attribute specifies the body of text that appears on the card
+         */
+        "description": string;
+        /**
+          * The href attribute specifies the URL of the page the link goes to
+         */
+        "href": string;
+        /**
+          * The img alt attribute specifies the alt text for the image provided, if none, image will be decorative
+         */
+        "imgAlt"?: string;
+        /**
+          * The img src attribute specifies the path to the image
+         */
+        "imgSrc"?: string;
     }
     interface GcdsCheckbox {
         /**
@@ -2037,6 +2089,7 @@ declare namespace LocalJSX {
         "gcds-breadcrumbs": GcdsBreadcrumbs;
         "gcds-breadcrumbs-item": GcdsBreadcrumbsItem;
         "gcds-button": GcdsButton;
+        "gcds-card": GcdsCard;
         "gcds-checkbox": GcdsCheckbox;
         "gcds-container": GcdsContainer;
         "gcds-date-modified": GcdsDateModified;
@@ -2072,6 +2125,7 @@ declare module "@stencil/core" {
             "gcds-breadcrumbs": LocalJSX.GcdsBreadcrumbs & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsElement>;
             "gcds-breadcrumbs-item": LocalJSX.GcdsBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsItemElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
+            "gcds-card": LocalJSX.GcdsCard & JSXBase.HTMLAttributes<HTMLGcdsCardElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-container": LocalJSX.GcdsContainer & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;

@@ -1,0 +1,29 @@
+:host {
+  display: block;
+
+  a {
+    border: 1px solid black;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+
+    img {
+      width: 100%;
+    }
+
+    p {
+      padding: 0 1rem;
+      max-width: 65ch;
+    }
+
+    .gcds-card__title {
+      text-decoration: underline;
+      font: var(--gcds-font-h6);
+    }
+
+    .gcds-card__description {
+      color: #333;
+    }
+  }
+}
