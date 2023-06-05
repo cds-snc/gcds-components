@@ -20,7 +20,7 @@
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0",
-    "@cdssnc/gcds-components": "^0.10.2"
+    "@cdssnc/gcds-components": "^0.10.3"
   },
   "dependencies": {
     "tslib": "^2.3.0"
