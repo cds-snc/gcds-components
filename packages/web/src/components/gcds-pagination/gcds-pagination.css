@@ -28,6 +28,7 @@
         &[aria-current*=page]:not(:focus) {
           color: var(--gcds-pagination-active-text);
           background: var(--gcds-pagination-active-background);
+          border-color: var(--gcds-pagination-active-background);
         }
       }
     }
@@ -74,7 +75,7 @@
         /* Mobile styling */
         @media screen and (max-width: 49em) {
           a {
-            border: var(--gcds-pagination-border-width) solid var(--gcds-pagination-border-color);
+            border: var(--gcds-pagination-border-width) solid currentColor;
 
             &:focus {
               border-color: var(--gcds-pagination-focus-background);
