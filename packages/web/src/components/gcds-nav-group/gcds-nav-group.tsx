@@ -2,22 +2,22 @@ import { Component, Element, Host, Prop, State, Method, Event, EventEmitter, h }
 import { assignLanguage, observerConfig } from '../../utils/utils';
 
 @Component({
-  tag: 'gcds-menu-group',
-  styleUrl: 'gcds-menu-group.css',
+  tag: 'gcds-nav-group',
+  styleUrl: 'gcds-nav-group.css',
   shadow: true,
 })
-export class GcdsMenuGroup {
+export class GcdsNavGroup {
   @Element() el: HTMLElement;
 
   private triggerElement?: HTMLElement;
 
   /**
-   * Heading for the menu group, labels the button trigger
+   * Heading for the nav group, labels the button trigger
    */
   @Prop({ reflect: true }) heading!: string;
 
   /**
-   * Has the menu group been expanded
+   * Has the nav group been expanded
    */
   @Prop({ reflect: true, mutable: true }) open: boolean = false;
 
@@ -32,9 +32,9 @@ export class GcdsMenuGroup {
   @State() lang: string;
 
   /**
-  * Style of menu to render based on parent
+  * Style of nav to render based on parent
   */
-  @State() menuStyle: string;
+  @State() navStyle: string;
 
   /**
   * Focus button element
@@ -45,16 +45,16 @@ export class GcdsMenuGroup {
   }
 
   /**
-  * Toggle the menu open or closed
+  * Toggle the nav open or closed
   */
   @Method()
-  async toggleMenu() {
+  async toggleNav() {
     this.open = !this.open
 
-    // Close any child menu-groups
+    // Close any child nav-groups
     for (let i = 0; i < this.el.children.length; i++) {
-      if (this.el.children[i].nodeName == "GCDS-MENU-GROUP" && (this.el.children[i].hasAttribute("open"))) {
-        (this.el.children[i] as HTMLGcdsMenuGroupElement).toggleMenu();
+      if (this.el.children[i].nodeName == "GCDS-NAV-GROUP" && (this.el.children[i].hasAttribute("open"))) {
+        (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
       }
     }
   }
@@ -77,13 +77,13 @@ export class GcdsMenuGroup {
 
     this.updateLang();
 
-    if (this.el.parentNode.nodeName == "GCDS-SITE-MENU") {
-        this.menuStyle = "dropdown"
+    if (this.el.parentNode.nodeName == "GCDS-TOP-NAV") {
+        this.navStyle = "dropdown"
     } else {
-        this.menuStyle = "expandable"
+        this.navStyle = "expandable"
     }
 
-    if (this.el.parentNode.nodeName == "GCDS-MENU-GROUP" && !(this.el.parentNode as HTMLElement).classList.contains("gcds-mobile-menu") && this.el.closest("gcds-site-menu")) {
+    if (this.el.parentNode.nodeName == "GCDS-NAV-GROUP" && !(this.el.parentNode as HTMLElement).classList.contains("gcds-mobile-nav") && this.el.closest("gcds-top-nav")) {
       this.el.remove();
     }
   }
@@ -100,22 +100,22 @@ export class GcdsMenuGroup {
           aria-expanded={open.toString()}
           role="menuitem"
           ref={element => this.triggerElement = element as HTMLElement}
-          class={`gcds-menu-group__trigger gcds-trigger--${this.menuStyle}`}
+          class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
           onClick={() => {
-            this.toggleMenu();
+            this.toggleNav();
             this.gcdsClick.emit();
           }}
         >
+          <gcds-icon name={open ? "angle-up" : "angle-down"}></gcds-icon>
           {heading}
         </button>
         <ul
           role="menu"
-          class={`gcds-menu-group__list gcds-menu--${this.menuStyle}`}
+          class={`gcds-nav-group__list gcds-nav--${this.navStyle}`}
         >
           <slot></slot>
         </ul>
       </Host>
     );
   }
-
 }
