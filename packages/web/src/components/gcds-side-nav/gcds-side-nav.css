@@ -1,0 +1,23 @@
+@layer reset, defaults;
+
+@layer reset {
+  :host * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+@layer defaults {
+  :host {
+    display: block;
+    width: 100%;
+    max-width: var(--gcds-side-nav-max-width);
+
+    .gcds-side-nav__heading {
+      font: var(--gcds-side-nav-heading-font);
+      margin-block-end: var(--gcds-side-nav-heading-margin);
+      padding: var(--gcds-side-nav-heading-padding);
+    }
+  }
+}
