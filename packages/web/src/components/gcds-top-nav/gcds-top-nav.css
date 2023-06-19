@@ -1,0 +1,36 @@
+@layer reset, defaults;
+
+@layer reset {
+  :host * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+@layer defaults {
+  :host {
+    display: block;
+    background-color: var(--gcds-top-nav-background);
+
+    .gcds-top-nav__container {
+      display: flex;
+      align-items: flex-end;
+      max-width: var(--gcds-top-nav-max-width);
+      margin-inline: auto;
+
+      .nav-container__list {
+        display: flex;
+        align-items: flex-end;
+        width: fit-content;
+
+        &.nav-list--right {
+          margin-inline-start: auto;
+        }
+
+        &.nav-list--center {
+          margin-inline: auto;
+        }
+      }
+    }
+  }
+}
