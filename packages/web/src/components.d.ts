@@ -133,6 +133,10 @@ export namespace Components {
           * The img src attribute specifies the path to the image
          */
         "imgSrc": string;
+        /**
+          * The tag attribute specifies the tag text that appears above the card title
+         */
+        "tag": string;
     }
     interface GcdsCheckbox {
         /**
@@ -1234,7 +1238,7 @@ declare namespace LocalJSX {
         /**
           * The description attribute specifies the body of text that appears on the card
          */
-        "description": string;
+        "description"?: string;
         /**
           * The href attribute specifies the URL of the page the link goes to
          */
@@ -1247,6 +1251,10 @@ declare namespace LocalJSX {
           * The img src attribute specifies the path to the image
          */
         "imgSrc"?: string;
+        /**
+          * The tag attribute specifies the tag text that appears above the card title
+         */
+        "tag"?: string;
     }
     interface GcdsCheckbox {
         /**

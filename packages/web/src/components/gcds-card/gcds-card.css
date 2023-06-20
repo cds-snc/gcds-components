@@ -1,29 +1,56 @@
-:host {
-  display: block;
+@layer reset, defaults, slot;
 
-  a {
-    border: 1px solid black;
+@layer reset {
+  :host * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+@layer defaults {
+  :host {
     display: block;
-    height: 100%;
-    overflow: hidden;
-    text-decoration: none;
-
-    img {
-      width: 100%;
-    }
-
-    p {
-      padding: 0 1rem;
-      max-width: 65ch;
-    }
-
-    .gcds-card__title {
-      text-decoration: underline;
-      font: var(--gcds-font-h6);
-    }
-
-    .gcds-card__description {
+  
+    .gcds-card {
+      border: 1px solid var(--gcds-color-grayscale-100);
+      border-radius: var(--gcds-border-radius-md);
+      background-color: var(--gcds-color-grayscale-0);
+      display: block;
+      padding: var(--gcds-spacing-400);
+      height: 100%;
       color: #333;
+
+      *:not(slot):not(.gcds-card__spacer) {
+        display: block;
+        margin-bottom: var(--gcds-spacing-400);
+      }
+
+      .gcds-card__image {
+        width: 100%;
+      }
+  
+      .gcds-card__title {
+        text-decoration: underline;
+        font: var(--gcds-font-h6);
+      }
+  
+      .gcds-card__description {
+        max-width: 65ch;
+      }
+    }
+  }
+}
+
+@layer slot {
+  :host {
+    .gcds-card:has(slot) {
+      display: flex;
+      flex-direction: column;
+
+      .gcds-card__spacer {
+        flex: 1;
+      }
     }
   }
 }

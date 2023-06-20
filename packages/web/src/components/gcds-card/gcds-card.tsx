@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Element, Component, Host, Prop, h, Fragment } from '@stencil/core';
 
 @Component({
   tag: 'gcds-card',
@@ -6,6 +6,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class GcdsCard {
+  @Element() el: HTMLElement;
 
   /**
    * The card title attribute specifies the title that appears on the card
@@ -20,7 +21,12 @@ export class GcdsCard {
   /**
    * The description attribute specifies the body of text that appears on the card
    */
-  @Prop({ reflect: true }) description!: string;
+  @Prop({ reflect: true }) description: string;
+
+  /**
+   * The tag attribute specifies the tag text that appears above the card title
+   */
+  @Prop({ reflect: true }) tag: string;
 
   /**
    * The img src attribute specifies the path to the image
@@ -32,21 +38,45 @@ export class GcdsCard {
    */
   @Prop({ reflect: true }) imgAlt: string;
 
+  private get hasCardFooter() {
+    return !!this.el.querySelector('[slot="footer"]');
+  }
+
   render() {
-    const { cardTitle, href, description, imgSrc, imgAlt } = this;
+    const { cardTitle, href, description, tag, imgSrc, imgAlt, hasCardFooter } = this;
     return (
       <Host>
-        <a href={href}>
+        <div class="gcds-card">
           {imgSrc &&
-            <img src={imgSrc} alt={imgAlt ? imgAlt : ""} />
+            <img 
+              src={imgSrc}
+              alt={imgAlt ? imgAlt : ""}
+              class="gcds-card__image"
+            />
           }
-          <p class="gcds-card__title">
+          {tag &&
+            <span class="gcds-card__tag">
+              {tag}
+            </span>
+          }
+          <a
+            href={href}
+            class="gcds-card__title"
+          >
             {cardTitle}
-          </p>
-          <p class="gcds-card__description">
-            {description}
-          </p>
-        </a>
+          </a>
+          {description &&
+            <p class="gcds-card__description">
+              {description}
+            </p>
+          }
+          {hasCardFooter &&
+            <>
+              <div class="gcds-card__spacer"></div>
+              <slot name="footer"></slot>
+            </>
+          }
+        </div>
       </Host>
     );
   }
