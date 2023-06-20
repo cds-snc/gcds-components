@@ -1,4 +1,4 @@
-@layer reset, defaults, slot;
+@layer reset, defaults, slot, state.hover, state.focus;
 
 @layer reset {
   :host * {
@@ -13,26 +13,35 @@
     display: block;
   
     .gcds-card {
-      border: 1px solid var(--gcds-color-grayscale-100);
-      border-radius: var(--gcds-border-radius-md);
-      background-color: var(--gcds-color-grayscale-0);
+      border: 1px solid var(--gcds-color-grayscale-100); /* --gcds-card-border */
+      border-radius: var(--gcds-border-radius-md); /* --gcds-card-border-radius */
+      background-color: var(--gcds-color-grayscale-0); /* --gcds-card-background-color */
       display: block;
-      padding: var(--gcds-spacing-400);
+      padding: var(--gcds-spacing-400); /* --gcds-card-padding */
       height: 100%;
-      color: #333;
+      color: var(--gcds-text-primary); /* --gcds-card-color */
 
       *:not(slot):not(.gcds-card__spacer) {
         display: block;
-        margin-bottom: var(--gcds-spacing-400);
+        margin: 0 0 var(--gcds-spacing-400); /* --gcds-card-margin */
       }
 
       .gcds-card__image {
         width: 100%;
       }
+
+      .gcds-card__tag {
+        font: var(--gcds-font-caption); /* --gcds-card-tag-font */
+        color: var(--gcds-text-secondary); /* --gcds-card-tag-color */
+      }
   
       .gcds-card__title {
-        text-decoration: underline;
-        font: var(--gcds-font-h6);
+        color: var(--gcds-button-text-only-default-text); /* --gcds-card-title-color */
+        font: var(--gcds-font-h6); /* --gcds-card-title-font */
+        text-underline-offset: var(--gcds-border-width-md);
+        text-decoration-color: currentColor;
+        text-decoration-thickness: var(--gcds-border-width-sm);  /* --gcds-card-decoration-thickness */
+        width: fit-content;
       }
   
       .gcds-card__description {
@@ -51,6 +60,44 @@
       .gcds-card__spacer {
         flex: 1;
       }
+
+      ::slotted(*) {
+        color: var(--gcds-text-secondary);  /* --gcds-card-slot-color */
+      }
+    }
+  }
+}
+
+@layer state.hover {
+  :host {
+    .gcds-card--link:hover {
+      background-color: var(--gcds-color-grayscale-50); /* --gcds-card-hover-background-color */
+      cursor: pointer;
+      box-shadow: 0 var(--gcds-spacing-50) var(--gcds-spacing-200) var(--gcds-spacing-50) var(--gcds-color-grayscale-100);  /* --gcds-card-hover-box-shadow */
+
+      .gcds-card__title {
+        color: var(--gcds-link-hover);  /* --gcds-card-hover-title-color */
+        text-decoration-thickness: var(--gcds-border-width-md);  /* --gcds-card-hover-title-decoration-thickness */
+      }
+    }
+
+    .gcds-card__title:hover {
+      color: var(--gcds-link-hover);  /* --gcds-card-hover-title-color */
+      text-decoration-thickness: var(--gcds-border-width-md);  /* --gcds-card-hover-title-decoration-thickness */
+    }
+  }
+}
+
+@layer state.focus {
+  :host {
+    .gcds-card__title:focus {
+      background-color: var(--gcds-focus-background); /* --gcds-card-focus-title-background-color */
+      border-radius: var(--gcds-border-radius-sm); /* --gcds-card-focus-title-border-radius */
+      box-shadow: 0var(--gcds-details-focus-box-shadow);  /* --gcds-card-focus-title-box-shadow */
+      color: var(--gcds-details-focus-text);  /* --gcds-card-focus-title-color */
+      outline: var(--gcds-details-focus-outline); /* --gcds-card-focus-title-outline */
+      outline-offset: var(--gcds-details-focus-outline-offset);  /* --gcds-card-focus-title-outline-offset */
+      text-decoration: none;
     }
   }
 }

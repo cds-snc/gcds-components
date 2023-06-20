@@ -11,6 +11,11 @@ export class GcdsCard {
   /**
    * The card title attribute specifies the title that appears on the card
    */
+  @Prop({ reflect: true }) type: 'link' | 'action' = 'link';
+
+  /**
+   * The card title attribute specifies the title that appears on the card
+   */
   @Prop({ reflect: true }) cardTitle!: string;
 
   /**
@@ -43,10 +48,15 @@ export class GcdsCard {
   }
 
   render() {
-    const { cardTitle, href, description, tag, imgSrc, imgAlt, hasCardFooter } = this;
+    const { type, cardTitle, href, description, tag, imgSrc, imgAlt, hasCardFooter } = this;
+
+
     return (
       <Host>
-        <div class="gcds-card">
+        <div 
+          class={`gcds-card gcds-card--${type}`}
+          onClick={() => type == 'link' && window.location.replace(href)}
+        >
           {imgSrc &&
             <img 
               src={imgSrc}

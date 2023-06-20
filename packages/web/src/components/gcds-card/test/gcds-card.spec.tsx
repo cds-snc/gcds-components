@@ -2,28 +2,97 @@ import { newSpecPage } from '@stencil/core/testing';
 import { GcdsCard } from '../gcds-card';
 
 describe('gcds-card', () => {
-  it('renders', async () => {
+  it('renders - type link', async () => {
     const page = await newSpecPage({
       components: [GcdsCard],
       html: `<gcds-card
+        type="link"
         card-title="Card"
-        description="This is the card description"
         href="#card"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-card card-title="Card" description="This is the card description" href="#card">
-        <mock:shadow-root>
-          <a href="#card">
-            <p class="gcds-card__title">
-              Card
-            </p>
-            <p class="gcds-card__description">
-              This is the card description
-            </p>
+    <gcds-card card-title="Card" href="#card" type="link">
+      <mock:shadow-root>
+        <div class="gcds-card gcds-card--link">
+          <a class="gcds-card__title" href="#card">
+            Card
           </a>
-        </mock:shadow-root>
-      </gcds-card>
+        </div>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
+
+  it('renders - type action', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        type="action"
+        card-title="Card"
+        href="#card"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" type="action">
+      <mock:shadow-root>
+        <div class="gcds-card gcds-card--action">
+          <a class="gcds-card__title" href="#card">
+            Card
+          </a>
+        </div>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
+
+  it('renders w/ tag', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        type="link"
+        card-title="Card"
+        href="#card"
+        tag="Tag"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" tag="Tag" type="link">
+      <mock:shadow-root>
+        <div class="gcds-card gcds-card--link">
+          <span class="gcds-card__tag">Tag</span>
+          <a class="gcds-card__title" href="#card">
+            Card
+          </a>
+        </div>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
+
+  it('renders w/ description', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        type="link"
+        card-title="Card"
+        href="#card"
+        description="This is the card description"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" description="This is the card description" type="link">
+      <mock:shadow-root>
+        <div class="gcds-card gcds-card--link">
+          <a class="gcds-card__title" href="#card">
+            Card
+          </a>
+          <p class="gcds-card__description">
+            This is the card description
+          </p>
+        </div>
+      </mock:shadow-root>
+    </gcds-card
     `);
   });
 
@@ -32,25 +101,74 @@ describe('gcds-card', () => {
       components: [GcdsCard],
       html: `<gcds-card
         card-title="Card"
-        description="This is the card description"
         href="#card"
-        img-src="https://www.canada.ca/content/dam/themes/business/features/1017_05_22_BBF_NL_Button_360x203.jpg"
+        img-src="https://picsum.photos/480/270"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-card card-title="Card" description="This is the card description" href="#card"  img-src="https://www.canada.ca/content/dam/themes/business/features/1017_05_22_BBF_NL_Button_360x203.jpg">
-        <mock:shadow-root>
-          <a href="#card">
-            <img alt="" src="https://www.canada.ca/content/dam/themes/business/features/1017_05_22_BBF_NL_Button_360x203.jpg">
-            <p class="gcds-card__title">
-              Card
-            </p>
-            <p class="gcds-card__description">
-              This is the card description
-            </p>
+    <gcds-card card-title="Card" href="#card" img-src="https://picsum.photos/480/270" type="link">
+      <mock:shadow-root>
+        <div class="gcds-card gcds-card--link">
+          <img alt="" class="gcds-card__image" src="https://picsum.photos/480/270">
+          <a class="gcds-card__title" href="#card">
+            Card
           </a>
-        </mock:shadow-root>
-      </gcds-card>
+        </div>
+      </mock:shadow-root>
+    </gcds-card>
+    `);
+  });
+
+  it('renders w/ img and alt', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        card-title="Card"
+        href="#card"
+        img-src="https://picsum.photos/480/270"
+        img-alt="Alt text for image from picsum"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" img-src="https://picsum.photos/480/270" img-alt="Alt text for image from picsum" type="link">
+      <mock:shadow-root>
+        <div class="gcds-card gcds-card--link">
+          <img alt="Alt text for image from picsum" class="gcds-card__image" src="https://picsum.photos/480/270">
+          <a class="gcds-card__title" href="#card">
+            Card
+          </a>
+        </div>
+      </mock:shadow-root>
+    </gcds-card>
+    `);
+  });
+
+  it('renders w/ footer slot', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        type="link"
+        card-title="Card"
+        href="#card"
+      >
+        <p slot="footer">Additional Metadata</p>
+      </gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" type="link">
+      <mock:shadow-root>
+        <div class="gcds-card gcds-card--link">
+          <a class="gcds-card__title" href="#card">
+            Card
+          </a>
+          <div class="gcds-card__spacer"></div>
+          <slot name="footer"></slot>
+        </div>
+      </mock:shadow-root>
+      <p slot="footer">
+        Additional Metadata
+      </p>
+    </gcds-card
     `);
   });
 });

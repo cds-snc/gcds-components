@@ -21,9 +21,12 @@ describe('gcds-card a11y tests', () => {
     const page = await newE2EPage();
     await page.setContent(`<gcds-card
       card-title="Card"
+      tag="Tag"
       description="This is the card description"
       href="#card"
-    ></gcds-card>`);
+    >
+      <p slot="footer">Metadata</p>
+    </gcds-card>`);
 
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
     let results = await colorContrastTest;
@@ -53,11 +56,11 @@ describe('gcds-card a11y tests', () => {
       href="#card"
     ></gcds-card>`);
 
-    const linkText = await (await page.find('gcds-card >>> a')).innerText;
+    const linkText = await (await page.find('gcds-card >>> .gcds-card__title')).innerText;
 
     await page.keyboard.press("Tab");
 
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.textContent)).toEqual(linkText);
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual(linkText);
   });
 
   it('Alt text - no img-alt prop', async () => {
@@ -66,7 +69,7 @@ describe('gcds-card a11y tests', () => {
       card-title="Card"
       description="This is the card description"
       href="#card"
-      img-src="https://www.canada.ca/content/dam/themes/business/features/1017_05_22_BBF_NL_Button_360x203.jpg"
+      img-src="https://picsum.photos/480/270"
     ></gcds-card>`);
 
     const imgAltTest = new AxePuppeteer(page).withRules('image-alt').analyze();
@@ -81,7 +84,7 @@ describe('gcds-card a11y tests', () => {
       card-title="Card"
       description="This is the card description"
       href="#card"
-      img-src="https://www.canada.ca/content/dam/themes/business/features/1017_05_22_BBF_NL_Button_360x203.jpg"
+      img-src="https://picsum.photos/480/270"
       img-alt="Alt text for image test"
     ></gcds-card>`);
 
