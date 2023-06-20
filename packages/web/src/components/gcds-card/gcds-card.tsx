@@ -50,12 +50,10 @@ export class GcdsCard {
   render() {
     const { type, cardTitle, href, description, tag, imgSrc, imgAlt, hasCardFooter } = this;
 
-
     return (
       <Host>
         <div 
           class={`gcds-card gcds-card--${type}`}
-          onClick={() => type == 'link' && window.location.replace(href)}
         >
           {imgSrc &&
             <img 
