@@ -139,7 +139,7 @@ export default {
   },
 };
 
-const TemplateAll = (args) => (`
+const TemplatePlayground = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-button
   ${args.type != "button" ? `type="${args.type}"`: null}
@@ -174,51 +174,87 @@ const TemplateAll = (args) => (`
 </GcdsButton>
 `).replace(/\s\snull\n/g, '');
 
-const TemplateOverview = () => (`
+const TemplatePreview = () => (`
   // Web Component (Angular, Vue)
   <gcds-button>
-    Primary label
+    Primary
   </gcds-button>
   <gcds-button button-role="secondary">
-    Secondary label
+    Secondary
   </gcds-button>
   <gcds-button button-role="danger">
-    Danger label
+    Danger
   </gcds-button>
   <gcds-button button-role="skip-to-content">
-    Skip-to-content label
+    Skip-to-content
   </gcds-button>
   <gcds-button button-style="text-only">
-    Text-only label
+    Text-only
   </gcds-button>
 
   // React code
   <GcdsButton>
-    Primary label
+    Primary
   </GcdsButton>
   <GcdsButton buttonRole="secondary">
-    Secondary label
+    Secondary
   </GcdsButton>
   <GcdsButton buttonRole="danger">
-    Danger label
+    Danger
   </GcdsButton>
   <GcdsButton buttonRole="skip-to-content">
-    Skip-to-content label
+    Skip-to-content
   </GcdsButton>
   <GcdsButton buttonStyle="text-only">
-    Text-only label
+    Text-only
   </GcdsButton>
 `).replace(/ null/g, '');
 
-const TemplateBasic = (args) => (`
+const TemplateTypes = () => (`
   // Web Component (Angular, Vue)
-  <gcds-button ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.buttonStyle != "solid" ? `button-style="${args.buttonStyle}"` : null}>
-    ${args.default}
+  <gcds-button>
+    Button
+  </gcds-button>
+  <gcds-button type="link">
+    Link
+  </gcds-button>
+  <gcds-button type="reset">
+    Reset
+  </gcds-button>
+  <gcds-button type="submit">
+    Submit
   </gcds-button>
 
   // React code
-  <GcdsButton ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.buttonStyle != "solid" ? `button-style="${args.buttonStyle}"` : null}>
-    ${args.default}
+  <GcdsButton>
+    Button
+  </GcdsButton>
+  <GcdsButton type="link">
+    Link
+  </GcdsButton>
+  <GcdsButton type="reset">
+    Reset
+  </GcdsButton>
+  <GcdsButton type="submit">
+    Submit
+  </GcdsButton>
+`).replace(/ null/g, '');
+
+const TemplateStyles = () => (`
+  // Web Component (Angular, Vue)
+  <gcds-button>
+    Solid
+  </gcds-button>
+  <gcds-button button-style="text-only">
+    Text-only
+  </gcds-button>
+
+  // React code
+  <GcdsButton>
+    Solid
+  </GcdsButton>
+  <GcdsButton buttonStyle="text-only">
+    Text-only
   </GcdsButton>
 `).replace(/ null/g, '');
 
@@ -258,36 +294,19 @@ const TemplateSize = (args) => (`
   </GcdsButton>
 `).replace(/ null/g, '');
 
-// ------ Overview button with all props ------
+// ------ Buttons overview ------
 
-export const Playground = TemplateAll.bind({});
-Playground.args = {
-  type: 'button',
-  buttonRole: 'primary',
-  buttonStyle: 'solid',
-  buttonId: '',
-  size: 'regular',
-  disabled: false,
-  name: '',
-  // href: '',
-  // rel: '',
-  // target: '',
-  // download: '',
-  default: 'Button label',
-};
+export const Preview = TemplatePreview.bind({});
 
-// ------ Overview of all buttons ------
+// ------ Buttons types ------
 
-export const ButtonsOverview = TemplateOverview.bind({});
+export const PreviewTypes = TemplateTypes.bind({});
 
-// ------ Primary button ------
+// ------ Buttons styles ------
 
-export const Primary = TemplateBasic.bind({});
-Primary.args = {
-  buttonRole: 'primary',
-  buttonStyle: 'solid',
-  default: 'Primary default',
-};
+export const PreviewStyles = TemplateStyles.bind({});
+
+// ------ Button primary ------
 
 export const PrimaryState = TemplateState.bind({});
 PrimaryState.args = {
@@ -306,14 +325,7 @@ PrimarySize.args = {
   small: 'Primary small',
 };
 
-// ------ Secondary button ------
-
-export const Secondary = TemplateBasic.bind({});
-Secondary.args = {
-  buttonRole: 'secondary',
-  buttonStyle: 'solid',
-  default: 'Secondary default',
-};
+// ------ Button secondary ------
 
 export const SecondaryState = TemplateState.bind({});
 SecondaryState.args = {
@@ -332,14 +344,7 @@ SecondarySize.args = {
   small: 'Secondary small',
 };
 
-// ------ Danger button ------
-
-export const Danger = TemplateBasic.bind({});
-Danger.args = {
-  buttonRole: 'danger',
-  buttonStyle: 'solid',
-  default: 'Danger default',
-};
+// ------ Button danger ------
 
 export const DangerState = TemplateState.bind({});
 DangerState.args = {
@@ -358,14 +363,7 @@ DangerSize.args = {
   small: 'Danger small',
 };
 
-// ------ Skip-to-content button ------
-
-export const SkipToContent = TemplateBasic.bind({});
-SkipToContent.args = {
-  buttonRole: 'skip-to-content',
-  buttonStyle: 'solid',
-  default: 'Skip-to-content default',
-};
+// ------ Button skip-to-content ------
 
 export const SkipToContentState = TemplateState.bind({});
 SkipToContentState.args = {
@@ -384,14 +382,7 @@ SkipToContentSize.args = {
   small: 'Skip-to-content small',
 };
 
-// ------ Text-only button ------
-
-export const TextOnly = TemplateBasic.bind({});
-TextOnly.args = {
-  buttonRole: 'primary',
-  buttonStyle: 'text-only',
-  default: 'Text-only default',
-};
+// ------ Button text-only ------
 
 export const TextOnlyState = TemplateState.bind({});
 TextOnlyState.args = {
@@ -408,4 +399,22 @@ TextOnlySize.args = {
   size: 'small',
   default: 'Text-only default',
   small: 'Text-only small',
+};
+
+// ------ Button playground ------
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
+  type: 'button',
+  buttonRole: 'primary',
+  buttonStyle: 'solid',
+  buttonId: '',
+  size: 'regular',
+  disabled: false,
+  name: '',
+  // href: '',
+  // rel: '',
+  // target: '',
+  // download: '',
+  default: 'Button label',
 };

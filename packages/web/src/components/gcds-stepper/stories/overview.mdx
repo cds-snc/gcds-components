@@ -1,15 +1,60 @@
-import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
-import * as StepperStories from './gcds-stepper.stories';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Stepper from './gcds-stepper.stories';
 
-<Meta of={StepperStories} name="Overview" />
+<Meta of={Stepper} name="Overview" />
 
-# Stepper
+# Stepper<br/>`<gcds-stepper>`
+
+_Also called: progress indicator, steps._
+
+A stepper is a progress tracker for a multi-step process.
 
 <Canvas
-  of={StepperStories.Example}
+  of={Stepper.Default}
   story={{ inline: true }}
-  sourceState="shown"
-  type="dynamic"
 />
 
-<Controls sort="requiredFirst" />
+<div className="intro-boxes">
+  <gcds-grid tag="ul" columns="1fr" columns-tablet="1fr 1fr 1fr" gap="400">
+    <li>
+      ### Get started
+
+      Install the component package and try it out.
+
+      <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/installation/" target="_blank">Start developing</gcds-button>
+    </li>
+    <li>
+      ### Find guidance
+
+      Learn how to use this and other components.
+
+      <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/stepper/" target="_blank">Get guidance</gcds-button>
+    </li>
+    <li>
+      ### Explore GCDS
+
+     Dive into the code or check out or Figma library.
+
+      <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-stepper" target="_blank">Github</gcds-button>
+
+      <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=2945-10028&t=Dyi1mgmKYrfdddvj-0" target="_blank">Figma</gcds-button>
+    </li>
+  </gcds-grid>
+</div>
+
+## Examples
+<br/>
+
+### Default
+
+<Canvas
+  of={Stepper.Default}
+  story={{ inline: true }}
+/>
+
+### French
+
+<Canvas
+  of={Stepper.French}
+  story={{ inline: true }}
+/>

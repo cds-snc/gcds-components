@@ -33,8 +33,8 @@
   "dependencies": {
     "@stencil/core": "^3.0.0",
     "@stencil/react-output-target": "^0.5.0",
-    "@storybook/addons": "^7.0.0-rc.8",
-    "@storybook/theming": "^7.0.0-rc.8",
+    "@storybook/addons": "^7.0.22",
+    "@storybook/theming": "^7.0.22",
     "stencil": "^0.0.5"
   },
   "devDependencies": {
@@ -49,13 +49,14 @@
     "@stencil/angular-output-target": "^0.6.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^3.0.0-0",
-    "@storybook/addon-actions": "^7.0.0-rc.8",
-    "@storybook/addon-essentials": "^7.0.0-rc.8",
-    "@storybook/addon-interactions": "^7.0.0-rc.8",
-    "@storybook/addon-links": "^7.0.0-rc.8",
-    "@storybook/html": "^7.0.0-rc.8",
-    "@storybook/html-webpack5": "^7.0.0-rc.8",
-    "@storybook/testing-library": "^0.0.14-next.1",
+    "@storybook/addon-actions": "^7.0.22",
+    "@storybook/addon-essentials": "^7.0.22",
+    "@storybook/addon-interactions": "^7.0.22",
+    "@storybook/addon-links": "^7.0.22",
+    "@storybook/blocks": "^7.0.22",
+    "@storybook/html": "^7.0.22",
+    "@storybook/html-webpack5": "^7.0.22",
+    "@storybook/testing-library": "^0.1.0",
     "@types/jest": "^26.0.24",
     "babel-loader": "^8.3.0",
     "cssnano": "^5.0.15",
@@ -73,7 +74,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
-    "storybook": "^7.0.0-rc.8",
+    "storybook": "^7.0.22",
     "workbox-build": "^4.3.1"
   },
   "license": "MIT"

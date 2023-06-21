@@ -42,7 +42,6 @@ const Template = (args) => (`
 >
   ${args.default}
 </gcds-details>
-
 // React code
 <GcdsDetails
   detailsTitle="${args.detailsTitle}"
@@ -52,9 +51,29 @@ const Template = (args) => (`
 </GcdsDetails>
 `).replace(/\s\snull\n/g, '');
 
+// ------ Details default ------
+
 export const Default = Template.bind({});
 Default.args = {
-  detailsTitle: 'Find out more',
+  detailsTitle: 'Learn more about this topic',
   open: false,
-  default: 'Extra content',
+  default: 'Additional information.',
+};
+
+// ------ Details open ------
+
+export const Open = Template.bind({});
+Open.args = {
+  detailsTitle: 'Learn more about this topic',
+  open: true,
+  default: 'Additional information.',
+};
+
+// ------ Details playground ------
+
+export const Playground = Template.bind({});
+Playground.args = {
+  detailsTitle: 'Learn more about this topic',
+  open: false,
+  default: 'Additional information.',
 };

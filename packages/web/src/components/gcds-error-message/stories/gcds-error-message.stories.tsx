@@ -27,24 +27,33 @@ export default {
   },
 };
 
-const Template = (args) => `
+const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-error-message
   message-id="${args.messageId}"
   message="${args.message}"
 >
 </gcds-error-message>
-
 // React code
 <GcdsErrorMessage
   messageId="${args.messageId}"
   message="${args.message}"
 >
 </GcdsErrorMessage>
-`;
+`).replace(/\s\snull\n/g, '');
+
+// ------ Error message default ------
 
 export const Default = Template.bind({});
 Default.args = {
+  messageId: 'message-id',
+  message: 'This is an error message.',
+};
+
+// ------ Error message playground ------
+
+export const Playground = Template.bind({});
+Playground.args = {
   messageId: '',
   message: 'This is an error message.',
 };

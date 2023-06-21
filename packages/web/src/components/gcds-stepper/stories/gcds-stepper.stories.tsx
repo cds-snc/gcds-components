@@ -49,8 +49,28 @@ const Template = (args) => (`
 </GcdsStepper>
 `).replace(/\s\snull\n/g, '');
 
-export const Example = Template.bind({});
-Example.args = {
+// ------ Stepper default ------
+
+export const Default = Template.bind({});
+Default.args = {
+  lang: 'en',
+  currentStep: 1,
+  totalSteps: 5,
+};
+
+// ------ Stepper french ------
+
+export const French = Template.bind({});
+French.args = {
+  lang: 'fr',
+  currentStep: 1,
+  totalSteps: 5,
+};
+
+// ------ Stepper playground ------
+
+export const Playground = Template.bind({});
+Playground.args = {
   lang: 'en',
   currentStep: 1,
   totalSteps: 5,

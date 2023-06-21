@@ -1,0 +1,62 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as DetailsStories from './gcds-details.stories';
+
+<Meta of={DetailsStories} name="Overview" />
+
+# Details<br/>`<gcds-details>`
+
+_Also called: accordion, collapse._
+
+Details is an interactive switch for a person to expand or collapse content.
+
+<Canvas
+  of={DetailsStories.Default}
+  story={{ inline: true }}
+/>
+
+<div className="intro-boxes">
+  <gcds-grid tag="ul" columns="1fr" columns-tablet="1fr 1fr 1fr" gap="400">
+    <li>
+      ### Get started
+
+      Install the component package and try it out.
+
+      <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/installation/" target="_blank">Start developing</gcds-button>
+    </li>
+    <li>
+      ### Find guidance
+
+      Learn how to use this and other components.
+
+      <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/details/" target="_blank">Get guidance</gcds-button>
+    </li>
+    <li>
+      ### Explore GCDS
+
+     Dive into the code or check out or Figma library.
+
+      <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-details" target="_blank">Github</gcds-button>
+
+      <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=1098-2756&t=F3H5RiCgHr8mzB1X-0" target="_blank">Figma</gcds-button>
+    </li>
+  </gcds-grid>
+</div>
+
+## Examples
+<br/>
+
+### State
+
+#### Default
+
+<Canvas
+  of={DetailsStories.Default}
+  story={{ inline: true }}
+/>
+
+#### Open
+
+<Canvas
+  of={DetailsStories.Open}
+  story={{ inline: true }}
+/>
