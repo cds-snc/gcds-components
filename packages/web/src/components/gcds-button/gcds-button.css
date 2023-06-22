@@ -94,13 +94,13 @@
       text-decoration: underline;
       text-underline-offset: 0.2em;
       text-decoration-color: currentColor;
-      text-decoration-thickness: var(--gcds-border-width-sm);
+      text-decoration-thickness: var(--gcds-button-text-only-default-decoration-thickness);
     }
 
     &:hover {
       background-color: var(--gcds-button-text-only-default-background);
       color: var(--gcds-button-text-only-hover-text);
-      text-decoration-thickness: var(--gcds-border-width-md);
+      text-decoration-thickness: var(--gcds-button-text-only-hover-decoration-thickness);
     }
 
     &:focus {
