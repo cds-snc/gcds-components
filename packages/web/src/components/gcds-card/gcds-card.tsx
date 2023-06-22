@@ -19,6 +19,11 @@ export class GcdsCard {
   @Prop({ reflect: true }) cardTitle!: string;
 
   /**
+   * The card title attribute specifies the title that appears on the card
+   */
+  @Prop() titleElement: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
+
+  /**
    * The href attribute specifies the URL of the page the link goes to
    */
   @Prop({ reflect: true }) href!: string;
@@ -48,7 +53,9 @@ export class GcdsCard {
   }
 
   render() {
-    const { type, cardTitle, href, description, tag, imgSrc, imgAlt, hasCardFooter } = this;
+    const { type, cardTitle, titleElement, href, description, tag, imgSrc, imgAlt, hasCardFooter } = this;
+
+    const Element = titleElement;
 
     return (
       <Host>
@@ -67,12 +74,21 @@ export class GcdsCard {
               {tag}
             </span>
           }
-          <a
-            href={href}
-            class="gcds-card__title"
-          >
-            {cardTitle}
-          </a>
+          {Element != 'a' ?
+           <Element class="gcds-card__title">
+              <a href={href}>
+                {cardTitle}
+              </a>
+            </Element>
+          :
+            <a
+              href={href}
+              class="gcds-card__title"
+            >
+              {cardTitle}
+            </a>
+          }
+
           {description &&
             <p class="gcds-card__description">
               {description}

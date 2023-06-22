@@ -46,6 +46,31 @@ describe('gcds-card', () => {
     `);
   });
 
+  it('renders w/ h3 element', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        type="link"
+        card-title="Card"
+        href="#card"
+        title-element="h3"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" title-element="h3" type="link">
+      <mock:shadow-root>
+        <div class="gcds-card gcds-card--link">
+          <h3 class="gcds-card__title">
+            <a href="#card">
+                Card
+            </a>
+          </h3>
+        </div>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
+
   it('renders w/ tag', async () => {
     const page = await newSpecPage({
       components: [GcdsCard],

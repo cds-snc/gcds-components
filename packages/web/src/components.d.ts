@@ -140,6 +140,10 @@ export namespace Components {
         /**
           * The card title attribute specifies the title that appears on the card
          */
+        "titleElement": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+        /**
+          * The card title attribute specifies the title that appears on the card
+         */
         "type": 'link' | 'action';
     }
     interface GcdsCheckbox {
@@ -1259,6 +1263,10 @@ declare namespace LocalJSX {
           * The tag attribute specifies the tag text that appears above the card title
          */
         "tag"?: string;
+        /**
+          * The card title attribute specifies the title that appears on the card
+         */
+        "titleElement"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**
           * The card title attribute specifies the title that appears on the card
          */

@@ -60,6 +60,14 @@ export default {
         defaultValue: { summary: 'link' }
       },
     },
+    titleElement: {
+      control: 'radio',
+      options: ['h3', 'h4', 'h5', 'h6', 'a'],
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'a' }
+      },
+    },
 
     // Slots
     footer: {
@@ -79,6 +87,7 @@ const Template = (args) => (`
   card-title="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}
   ${args.type != 'link' ? `type="action"` : null}
+  ${args.titleElement != 'a' ? `title-element="${args.titleElement}"` : null}
   ${args.tag ? `tag="${args.tag}"` : null}
   ${args.description ? `description="${args.description}"` : null}
   ${args.imgSrc ? `img-src="${args.imgSrc}"` : null}
@@ -92,6 +101,7 @@ const Template = (args) => (`
   cardTitle="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}
   ${args.type != 'link' ? `type="action"` : null}
+  ${args.titleElement != 'a' ? `titleElement="${args.titleElement}"` : null}
   ${args.tag ? `tag="${args.tag}"` : null}
   ${args.description ? `description="${args.description}"` : null}
   ${args.imgSrc ? `imgSrc="${args.imgSrc}"` : null}
@@ -106,6 +116,7 @@ Default.args = {
   cardTitle: 'Title of the article',
   href: '#',
   type: 'link',
+  titleElement: 'a',
   tag: '',
   description: '',
   imgSrc: '',
