@@ -628,7 +628,7 @@ export namespace Components {
         /**
           * List display - URL object to create query strings and fragment on links
          */
-        "url": Object;
+        "url": string | object;
     }
     interface GcdsPhaseBanner {
         /**
@@ -1822,7 +1822,7 @@ declare namespace LocalJSX {
         /**
           * List display - URL object to create query strings and fragment on links
          */
-        "url"?: Object;
+        "url"?: string | object;
     }
     interface GcdsPhaseBanner {
         /**

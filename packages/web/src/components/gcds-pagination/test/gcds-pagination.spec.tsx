@@ -18,7 +18,7 @@ describe('gcds-pagination', () => {
     expect(page.root).toEqualHtml(`
       <gcds-pagination display="simple" lang="en" next-href="#next" next-label="Next label" previous-href="#previous" previous-label="Previous label" role="navigation">
         <ul class="gcds-pagination-simple">
-          <li>
+          <li class="gcds-pagination-simple-previous">
             <a aria-label="Previous page: Previous label" href="#previous">
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               <div class="gcds-pagination-simple-text">
@@ -29,7 +29,7 @@ describe('gcds-pagination', () => {
               </span>
             </a>
           </li>
-          <li>
+          <li class="gcds-pagination-simple-next">
             <a aria-label="Next page: Next label" href="#next">
               <div class="gcds-pagination-simple-text">
                 Next
@@ -58,7 +58,7 @@ describe('gcds-pagination', () => {
     expect(page.root).toEqualHtml(`
       <gcds-pagination display="simple" lang="en" next-href="#next" previous-href="#previous" role="navigation">
         <ul class="gcds-pagination-simple">
-          <li>
+          <li class="gcds-pagination-simple-previous">
             <a aria-label="Previous page" href="#previous">
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               <div class="gcds-pagination-simple-text">
@@ -68,7 +68,7 @@ describe('gcds-pagination', () => {
               </span>
             </a>
           </li>
-          <li>
+          <li class="gcds-pagination-simple-next">
             <a aria-label="Next page" href="#next">
               <div class="gcds-pagination-simple-text">
                 Next
@@ -98,7 +98,7 @@ describe('gcds-pagination', () => {
     expect(page.root).toEqualHtml(`
       <gcds-pagination display="simple" lang="fr" next-href="#next" next-label="Next label" previous-href="#previous" previous-label="Previous label" role="navigation">
         <ul class="gcds-pagination-simple">
-          <li>
+          <li class="gcds-pagination-simple-previous">
             <a aria-label="Page précédente: Previous label" href="#previous">
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               <div class="gcds-pagination-simple-text">
@@ -109,7 +109,7 @@ describe('gcds-pagination', () => {
               </span>
             </a>
           </li>
-          <li>
+          <li class="gcds-pagination-simple-next">
             <a aria-label="Page suivante: Next label" href="#next">
               <div class="gcds-pagination-simple-text">
                 Suivante
@@ -138,7 +138,7 @@ describe('gcds-pagination', () => {
     expect(page.root).toEqualHtml(`
       <gcds-pagination display="simple" lang="fr" next-href="#next" previous-href="#previous" role="navigation">
         <ul class="gcds-pagination-simple">
-          <li>
+          <li class="gcds-pagination-simple-previous">
             <a aria-label="Page précédente" href="#previous">
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
               <div class="gcds-pagination-simple-text">
@@ -148,7 +148,7 @@ describe('gcds-pagination', () => {
               </span>
             </a>
           </li>
-          <li>
+          <li class="gcds-pagination-simple-next">
             <a aria-label="Page suivante" href="#next">
               <div class="gcds-pagination-simple-text">
                 Suivante

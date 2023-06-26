@@ -1,5 +1,5 @@
 name: Publish storybook - staging
-on: 
+on:
   workflow_dispatch:
   push:
     branches:

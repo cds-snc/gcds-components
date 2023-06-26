@@ -5,27 +5,27 @@
 
   /* Container width */
   &[class*='container'] {
-    width: var(--gcds-grid-container-full);
+    width: var(--gcds-container-full);
   }
 
   &.container-xl {
-    max-width: var(--gcds-grid-container-xl);
+    max-width: var(--gcds-container-xl);
   }
 
   &.container-lg {
-    max-width: var(--gcds-grid-container-lg);
+    max-width: var(--gcds-container-lg);
   }
 
   &.container-md {
-    max-width: var(--gcds-grid-container-md);
+    max-width: var(--gcds-container-md);
   }
 
   &.container-sm {
-    max-width: var(--gcds-grid-container-sm);
+    max-width: var(--gcds-container-sm);
   }
 
   &.container-xs {
-    max-width: var(--gcds-grid-container-xs);
+    max-width: var(--gcds-container-xs);
   }
 
   /* Container centered */

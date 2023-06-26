@@ -130,7 +130,7 @@ export class GcdsAlert {
                 )}
 
                 <div class="alert__content">
-                  <h5 class="alert__heading">{heading}</h5>
+                  <p class="alert__heading"><strong>{heading}</strong></p>
                   <slot></slot>
                 </div>
 
