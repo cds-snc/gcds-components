@@ -19,7 +19,7 @@ export class GcdsCard {
   @Prop({ reflect: true }) cardTitle!: string;
 
   /**
-   * The card title element attribute specifies HTML element the title renders as
+   * The title element attribute specifies HTML element the title renders as
    */
   @Prop() titleElement: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
 
