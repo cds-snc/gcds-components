@@ -9,7 +9,7 @@ export class GcdsCard {
   @Element() el: HTMLElement;
 
   /**
-   * The type attribute specifies the how the card renders as a link
+   * The type attribute specifies how the card renders as a link
    */
   @Prop({ reflect: true }) type: 'link' | 'action' = 'link';
 
