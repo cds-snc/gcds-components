@@ -47,7 +47,7 @@
       }
   
       .gcds-card__description {
-        max-width: 65ch;
+        max-width: var(--gcds-card-description-max-width);
       }
     }
   }
