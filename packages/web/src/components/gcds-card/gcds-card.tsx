@@ -9,7 +9,7 @@ export class GcdsCard {
   @Element() el: HTMLElement;
 
   /**
-   * The card title attribute specifies the title that appears on the card
+   * The type attribute specifies the how the card renders as a link
    */
   @Prop({ reflect: true }) type: 'link' | 'action' = 'link';
 
@@ -19,7 +19,7 @@ export class GcdsCard {
   @Prop({ reflect: true }) cardTitle!: string;
 
   /**
-   * The card title attribute specifies the title that appears on the card
+   * The card title element attribute specifies HTML element the title renders as
    */
   @Prop() titleElement: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
 

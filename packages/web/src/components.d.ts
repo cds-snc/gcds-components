@@ -138,11 +138,11 @@ export namespace Components {
          */
         "tag": string;
         /**
-          * The card title attribute specifies the title that appears on the card
+          * The card title element attribute specifies HTML element the title renders as
          */
         "titleElement": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**
-          * The card title attribute specifies the title that appears on the card
+          * The type attribute specifies the how the card renders as a link
          */
         "type": 'link' | 'action';
     }
@@ -1264,11 +1264,11 @@ declare namespace LocalJSX {
          */
         "tag"?: string;
         /**
-          * The card title attribute specifies the title that appears on the card
+          * The card title element attribute specifies HTML element the title renders as
          */
         "titleElement"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**
-          * The card title attribute specifies the title that appears on the card
+          * The type attribute specifies the how the card renders as a link
          */
         "type"?: 'link' | 'action';
     }
