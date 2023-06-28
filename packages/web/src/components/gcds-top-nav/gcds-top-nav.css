@@ -5,30 +5,45 @@
     margin: 0;
     box-sizing: border-box;
   }
+
+  :host ul {
+    padding: 0;
+  }
 }
 
 @layer defaults {
   :host {
     display: block;
-    background-color: var(--gcds-top-nav-background);
+
+    @media only screen and (width >= 64em) {
+      background-color: var(--gcds-top-nav-background);
+    }
 
     .gcds-top-nav__container {
       display: flex;
-      align-items: flex-end;
+      flex-direction: column;
+      width: 90%;
       max-width: var(--gcds-top-nav-max-width);
       margin-inline: auto;
 
-      .nav-container__list {
-        display: flex;
+      @media only screen and (width >= 64em) {
+        flex-direction: row;
         align-items: flex-end;
-        width: fit-content;
+      }
 
-        &.nav-list--right {
-          margin-inline-start: auto;
-        }
+      .nav-container__list {
+        @media only screen and (width >= 64em) {
+          display: flex;
+          align-items: flex-end;
+          width: fit-content;
 
-        &.nav-list--center {
-          margin-inline: auto;
+          &.nav-list--right {
+            margin-inline-start: auto;
+          }
+
+          &.nav-list--center {
+            margin-inline: auto;
+          }
         }
       }
     }

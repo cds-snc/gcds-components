@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, State, Listen, Method, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import { handleKeyDownNav, getNavItems, configureMobileNav, unpackMobileNav } from '../../utils/menus/utils';
+import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 
 @Component({
   tag: 'gcds-top-nav',
@@ -125,7 +125,6 @@ export class GcdsTopNav {
       this.navSize = 'desktop';
     } else {
       this.navSize = 'mobile';
-      await configureMobileNav(this.el);
     }
   }
 
@@ -138,11 +137,9 @@ export class GcdsTopNav {
     mediaQuery.addEventListener("change", async function(e) {
       if (e.matches) {
         nav.updateNavSize("desktop");
-        await unpackMobileNav(nav);
         await nav.updateNavItemQueue(nav);
       } else {
         nav.updateNavSize("mobile");
-        await configureMobileNav(nav);
         await nav.updateNavItemQueue(nav);
       }
     });
@@ -156,13 +153,20 @@ export class GcdsTopNav {
           aria-label={label}
           class="gcds-top-nav__container"
         >
-          <slot name="home"></slot>
-          <ul
-            role="menu"
-            class={`nav-container__list nav-list--${alignment}`}
+          <gcds-nav-group
+            heading="Menu"
+            toggle-icon-closed="bars"
+            toggle-icon-open="close"
+            class="gcds-mobile-nav gcds-mobile-nav-topnav"
           >
-            <slot></slot>
-          </ul>
+            <slot name="home"></slot>
+            <ul
+              role="menu"
+              class={`nav-container__list nav-list--${alignment}`}
+            >
+              <slot></slot>
+            </ul>
+          </gcds-nav-group>
         </nav>
       </Host>
     );

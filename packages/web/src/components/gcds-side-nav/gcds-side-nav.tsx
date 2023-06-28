@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, State, Listen, Method, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import { handleKeyDownNav, getNavItems, configureMobileNav, unpackMobileNav } from '../../utils/menus/utils';
+import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 
 @Component({
   tag: 'gcds-side-nav',
@@ -108,7 +108,6 @@ export class GcdsSideNav {
       this.navSize = 'desktop';
     } else {
       this.navSize = 'mobile';
-      await configureMobileNav(this.el);
     }
   }
 
@@ -121,11 +120,9 @@ export class GcdsSideNav {
     mediaQuery.addEventListener("change", async function(e) {
       if (e.matches) {
         nav.updateNavSize("desktop");
-        await unpackMobileNav(nav);
         await nav.updateNavItemQueue(nav);
       } else {
         nav.updateNavSize("mobile");
-        await configureMobileNav(nav);
         await nav.updateNavItemQueue(nav);
       }
     });
@@ -139,12 +136,15 @@ export class GcdsSideNav {
           aria-label={label}
         >
           <h2 class="gcds-side-nav__heading">{label}</h2>
-          <ul
+          <gcds-nav-group
+            heading="Menu"
+            toggle-icon-closed="bars"
+            toggle-icon-open="close"
+            class="gcds-mobile-nav"
             role="menu"
-            class="gcds-side-nav__list"
           >
             <slot></slot>
-          </ul>
+          </gcds-nav-group>
         </nav>
       </Host>
     );

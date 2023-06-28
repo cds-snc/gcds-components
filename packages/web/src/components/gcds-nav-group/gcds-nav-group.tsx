@@ -94,6 +94,7 @@ export class GcdsNavGroup {
       <Host
         role="presentation"
         open={open}
+        class={open && "gcds-nav-group-expanded"}
       >
         <button
           aria-haspopup="true"
@@ -106,7 +107,7 @@ export class GcdsNavGroup {
             this.gcdsClick.emit();
           }}
         >
-          <gcds-icon name={open ? "angle-up" : "angle-down"}></gcds-icon>
+          <gcds-icon name={open ? 'angle-up' : 'angle-down'}></gcds-icon>
           {heading}
         </button>
         <ul

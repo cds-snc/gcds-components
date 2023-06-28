@@ -14,12 +14,11 @@ describe('gcds-side-nav', () => {
         <mock:shadow-root>
           <nav>
             <h2 class="gcds-side-nav__heading"></h2>
-            <ul class="gcds-side-nav__list" role="menu">
+            <gcds-nav-group class="gcds-mobile-nav" heading="Menu" role="menu" toggle-icon-closed="bars" toggle-icon-open="close">
               <slot></slot>
-            </ul>
+            </gcds-nav-group>
           </nav>
         </mock:shadow-root>
-        <gcds-nav-group class="gcds-mobile-nav"></gcds-nav-group>
       </gcds-side-nav>
     `);
   });
