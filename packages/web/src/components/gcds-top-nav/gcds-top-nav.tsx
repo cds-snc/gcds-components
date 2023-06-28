@@ -155,8 +155,6 @@ export class GcdsTopNav {
         >
           <gcds-nav-group
             heading="Menu"
-            toggle-icon-closed="bars"
-            toggle-icon-open="close"
             class="gcds-mobile-nav gcds-mobile-nav-topnav"
           >
             <slot name="home"></slot>

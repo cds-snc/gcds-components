@@ -138,8 +138,6 @@ export class GcdsSideNav {
           <h2 class="gcds-side-nav__heading">{label}</h2>
           <gcds-nav-group
             heading="Menu"
-            toggle-icon-closed="bars"
-            toggle-icon-open="close"
             class="gcds-mobile-nav"
             role="menu"
           >

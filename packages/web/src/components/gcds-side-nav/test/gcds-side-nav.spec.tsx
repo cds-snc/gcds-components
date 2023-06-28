@@ -14,7 +14,7 @@ describe('gcds-side-nav', () => {
         <mock:shadow-root>
           <nav>
             <h2 class="gcds-side-nav__heading"></h2>
-            <gcds-nav-group class="gcds-mobile-nav" heading="Menu" role="menu" toggle-icon-closed="bars" toggle-icon-open="close">
+            <gcds-nav-group class="gcds-mobile-nav" heading="Menu" role="menu">
               <slot></slot>
             </gcds-nav-group>
           </nav>
