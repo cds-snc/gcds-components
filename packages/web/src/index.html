@@ -130,6 +130,84 @@
         External Link
       </gcds-button>
 
+      <!-- ------------- Cards ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-sm">Cards</h3>
+
+      <gcds-grid
+        tag="div"
+        columns-desktop="1fr 1fr 1fr"
+        columns-tablet="1fr 1fr"
+        columns="1fr"
+        gap="250"
+      >
+        <gcds-card
+          card-title="Link card number 1"
+          title-element="h4"
+          href="#red"
+          description="This is a card"
+          tag="Core"
+          img-src="https://picsum.photos/480/270"
+        >
+        </gcds-card>
+
+        <gcds-card
+          card-title="Link card number 2 with a really long title for some reason"
+          title-element="h4"
+          href="#red"
+          description="This is a card with an img and possibly more"
+          img-src="https://picsum.photos/480/270"
+        >
+        </gcds-card>
+
+        <gcds-card
+          card-title="Link card number 3"
+          title-element="h4"
+          href="#red"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
+          img-src="https://picsum.photos/480/270"
+        >
+        </gcds-card>
+      </gcds-grid>
+
+      <gcds-grid
+        tag="div"
+        columns-desktop="1fr 1fr"
+        columns-tablet="1fr"
+        columns="1fr"
+        gap="250"
+        class="d-block mt-250"
+      >
+        <gcds-card
+          type="action"
+          card-title="Action card number 1"
+          title-element="h4"
+          href="#red"
+          description="Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
+          img-src="https://picsum.photos/480/270"
+        >
+          <gcds-button type="button" button-role="secondary" slot="footer">Action</gcds-button>
+        </gcds-card>
+        <gcds-card
+          type="action"
+          card-title="Action card number 2"
+          title-element="h4"
+          href="#red"
+          description="This is a card with an img and possibly more"
+          img-src="https://picsum.photos/480/270"
+        >
+          <gcds-button type="button" button-role="secondary" slot="footer">Action</gcds-button>
+        </gcds-card>
+      </gcds-grid>
+
+      <gcds-card
+        class="mt-400"
+        card-title="Card not in column"
+        href="#red"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
+      >
+      </gcds-card>
+
       <!-- ------------- Containers ------------- -->
 
       <h3 class="mt-700 mb-400 bb-sm">Containers</h3>
