@@ -26,7 +26,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+// Web Component code (Angular, Vue)
 <gcds-verify-banner
   ${args.container != "xl" ? `container="${args.container}"` : null}
   ${args.isFixed ? `is-fixed` : null}

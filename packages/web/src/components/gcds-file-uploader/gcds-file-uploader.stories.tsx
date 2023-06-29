@@ -109,7 +109,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+// Web Component code (Angular, Vue)
 <gcds-file-uploader
   uploader-id="${args.uploaderId}"
   label="${args.label}"

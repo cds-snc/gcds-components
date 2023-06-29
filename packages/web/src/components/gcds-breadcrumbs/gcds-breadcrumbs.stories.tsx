@@ -38,7 +38,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+// Web Component code (Angular, Vue)
 <gcds-breadcrumbs
   ${args.hideCanadaLink ? `hide-canada-link` : null }
   ${args.lang != "en" ? `lang="${args.lang}"` : null}

@@ -103,7 +103,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+// Web Component code (Angular, Vue)
 <gcds-radio
   radio-id="${args.radioId}"
   label="${args.label}"

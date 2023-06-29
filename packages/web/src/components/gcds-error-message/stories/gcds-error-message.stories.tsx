@@ -28,7 +28,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+// Web Component code (Angular, Vue)
 <gcds-error-message
   message-id="${args.messageId}"
   message="${args.message}"
@@ -42,6 +42,14 @@ const Template = (args) => (`
 </GcdsErrorMessage>
 `).replace(/\s\snull\n/g, '');
 
+const TemplatePlayground = (args) => (`
+<gcds-error-message
+  message-id="${args.messageId}"
+  message="${args.message}"
+>
+</gcds-error-message>
+`).replace(/\s\snull\n/g, '');
+
 // ------ Error message default ------
 
 export const Default = Template.bind({});
@@ -52,7 +60,7 @@ Default.args = {
 
 // ------ Error message playground ------
 
-export const Playground = Template.bind({});
+export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   messageId: '',
   message: 'This is an error message.',

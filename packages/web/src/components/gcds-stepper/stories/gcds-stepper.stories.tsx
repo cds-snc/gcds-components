@@ -32,7 +32,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+// Web Component code (Angular, Vue)
 <gcds-stepper
   current-step="${args.currentStep}"
   total-steps="${args.totalSteps}"
@@ -47,6 +47,15 @@ const Template = (args) => (`
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsStepper>
+`).replace(/\s\snull\n/g, '');
+
+const TemplatePlayground = (args) => (`
+<gcds-stepper
+  current-step="${args.currentStep}"
+  total-steps="${args.totalSteps}"
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+>
+</gcds-stepper>
 `).replace(/\s\snull\n/g, '');
 
 // ------ Stepper default ------
@@ -69,7 +78,7 @@ French.args = {
 
 // ------ Stepper playground ------
 
-export const Playground = Template.bind({});
+export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   lang: 'en',
   currentStep: 1,

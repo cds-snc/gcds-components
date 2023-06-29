@@ -110,7 +110,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+// Web Component code (Angular, Vue)
 <gcds-textarea
   textarea-id="${args.textareaId}"
   label="${args.label}"

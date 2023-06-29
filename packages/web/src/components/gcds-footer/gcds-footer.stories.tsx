@@ -44,7 +44,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+// Web Component code (Angular, Vue)
 <gcds-footer
   ${args.display != "compact" ? `display="${args.display}"` : null}
   ${args.contextualHeading && args.contextualLinks ? `contextual-heading="${args.contextualHeading}"` : null}
