@@ -1,15 +1,15 @@
 import { Meta, Canvas, Controls } from '@storybook/blocks';
-import * as ButtonStories from './gcds-button.stories';
+import * as Button from './gcds-button.stories';
 
-<Meta of={ButtonStories} name="Events & properties" />
+<Meta of={Button} name="Events & properties" />
 
 # Events & properties
 
 <Canvas
-  of={ButtonStories.Default}
+  of={Button.Default}
   story={{ inline: true }}
   sourceState="shown"
   type="dynamic"
 />
 
-<Controls of={ButtonStories.Default} sort="requiredFirst" />
+<Controls of={Button.Default} sort="requiredFirst" />

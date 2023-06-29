@@ -34,10 +34,25 @@
   /* ----- PROPERTIES PAGE ----- */
 
   /* Component Preview */
+  .text-with-border {
+    margin: var(--gcds-spacing-0);
+    padding: var(--gcds-spacing-400);
+    border: 1px dashed var(--gcds-text-primary);
+  }
+
   .docs-story,
-  .sb-show-main #storybook-root {
+  .sb-show-main #storybook-root,
+  .docs-story .sb-story gcdscontainer .text-with-border {
     font-size: 0;
     color: var(--gcds-text-light);
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .docs-story .hydrated,
+  .sb-show-main #storybook-root .hydrated {
+    font-size:var(--gcds-font-sizes-text) !important;
+    color: var(--gcds-text-primary) !important;
   }
 
   .sbdocs-preview .docs-story .hydrated + .hydrated,
@@ -206,20 +221,4 @@
   .css-ikdg6z {
     background-color: var(--gcds-color-grayscale-50);
   }
-
-  /* body.sb-show-main #root {
-    font-size: 0;
-    color: var(--gcds-text-light);
-  }
-
-  body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:not(:first-of-type),
-  body.sb-show-main .docs-story div[id^="story--components"] > div > *:not(.hydrated) {
-    display: none;
-  }
-
-  body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:first-of-type,
-  body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:first-of-type:not([error-message]) .hydrated {
-    font-size: var(--gcds-font-sizes-text);
-    color: var(--gcds-text-primary);
-  } */
 </style>

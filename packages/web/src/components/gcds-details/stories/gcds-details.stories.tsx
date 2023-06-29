@@ -36,29 +36,20 @@ export default {
 
 const Template = (args) => (`
 // Web Component code (Angular, Vue)
-<gcds-details
-  details-title="${args.detailsTitle}"
-  ${args.open ? `open` : null}
->
+<gcds-details details-title="${args.detailsTitle}" ${args.open ? `open` : null}>
   ${args.default}
 </gcds-details>
 // React code
-<GcdsDetails
-  detailsTitle="${args.detailsTitle}"
-  ${args.open ? `open` : null}
->
+<GcdsDetails detailsTitle="${args.detailsTitle}" ${args.open ? `open` : null}>
   ${args.default}
 </GcdsDetails>
-`).replace(/\s\snull\n/g, '');
+`).replace(/ null/g, '');
 
 const TemplatePlayground = (args) => (`
-<gcds-details
-  details-title="${args.detailsTitle}"
-  ${args.open ? `open` : null}
->
+<gcds-details details-title="${args.detailsTitle}" ${args.open ? `open` : null}>
   ${args.default}
 </gcds-details>
-`).replace(/\s\snull\n/g, '');
+`).replace(/ null/g, '');
 
 // ------ Details default ------
 

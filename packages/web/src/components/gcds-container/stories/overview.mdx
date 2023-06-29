@@ -1,35 +1,70 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
-import * as Details from './gcds-details.stories';
+import * as Container from './gcds-container.stories';
 
-<Meta of={Details} name="Overview" />
+<Meta of={Container} name="Overview" />
 
-# Details<br/>`<gcds-details>`
+# Container<br/>`<gcds-container>`
 
-_Also called: accordion, collapse._
+_Also called: wrapper, box._
 
-Details is an interactive switch for a person to expand or collapse content.
+A box to group content by limiting the width.
 
 <Canvas
-  of={Details.Default}
+  of={Container.Default}
   story={{ inline: true }}
 />
 
 ## Examples
 <br/>
 
-### State
+### Container sizes
 
-#### Default
+#### Size: full
 
 <Canvas
-  of={Details.Default}
+  of={Container.SizeFull}
   story={{ inline: true }}
 />
 
-#### Open
+#### Size: xl
 
 <Canvas
-  of={Details.Open}
+  of={Container.SizeXl}
+  story={{ inline: true }}
+/>
+
+#### Size: lg
+
+<Canvas
+  of={Container.SizeLg}
+  story={{ inline: true }}
+/>
+
+#### Size: md
+
+<Canvas
+  of={Container.SizeMd}
+  story={{ inline: true }}
+/>
+
+#### Size: sm
+
+<Canvas
+  of={Container.SizeSm}
+  story={{ inline: true }}
+/>
+
+#### Size: xs
+
+<Canvas
+  of={Container.SizeXs}
+  story={{ inline: true }}
+/>
+
+### Centered
+
+<Canvas
+  of={Container.Centered}
   story={{ inline: true }}
 />
 
