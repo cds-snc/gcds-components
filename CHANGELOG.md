@@ -2,16 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## v0.11.0
 
 ### New features
 
-- Card component
-  - New `gcds-card` component to display related pieces of information as a single unit.
+- Card component (`gcds-card`)
+  - New `gcds-card` component to display related pieces of information as a single unit
+
+### Breaking changes
+
+- Container component (`gcds-container`)
+  - `container` property has been renamed `size`
 
 ### Minor
 
 - https://github.com/cds-snc/gcds-components/pull/183 - [b64db5d](https://github.com/cds-snc/gcds-components/commit/b64db5d0877adfdd38d400b2a0687d039760b08d) - Add `gcds-card` component to library
+
+### Patch
+
+- https://github.com/cds-snc/gcds-components/pull/188 - [41cc32e](https://github.com/cds-snc/gcds-components/commit/41cc32eedde3e22ed029f90d472d25f953702a63) - Add margin + padding props to `gcds-container`
 
 ## v0.10.3
 
