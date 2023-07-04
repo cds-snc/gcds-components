@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('gcds-menu-group', () => {
+describe('gcds-nav-link', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-menu-group></gcds-menu-group>');
+    await page.setContent('<gcds-nav-link></gcds-nav-link>');
 
-    const element = await page.find('gcds-menu-group');
+    const element = await page.find('gcds-nav-link');
     expect(element).toHaveClass('hydrated');
   });
 });

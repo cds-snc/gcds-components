@@ -1,13 +1,13 @@
 import { Component, Element, Host, Prop, State, Listen, Method, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import { handleKeyDownMenu, getMenuItems, configureMobileMenu, unpackMobileMenu } from '../../utils/menus/utils';
+import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 
 @Component({
-  tag: 'gcds-site-menu',
-  styleUrl: 'gcds-site-menu.css',
+  tag: 'gcds-top-nav',
+  styleUrl: 'gcds-top-nav.css',
   shadow: true,
 })
-export class GcdsSiteMenu {
+export class GcdsTopNav {
   @Element() el: HTMLElement;
 
   /**
@@ -16,9 +16,9 @@ export class GcdsSiteMenu {
   @Prop() label!: string;
 
   /**
-   * Menu alignment
+   * Nav alignment
    */
-  @Prop() alignment: 'left' | 'center' | 'right' | 'split' = 'left';
+  @Prop() alignment: 'left' | 'center' | 'right' = 'left';
 
   /**
    * Sticky navigation flag
@@ -31,22 +31,22 @@ export class GcdsSiteMenu {
   @State() lang: string;
 
   /**
-  * Queue of menu items for keyboard navigation
+  * Queue of nav items for keyboard navigation
   */
-  @State() menuItems = [];
+  @State() navItems = [];
 
   /**
   * Current size state based on widnow size
   */
-  @State() menuSize: 'desktop' | 'mobile';
+  @State() navSize: 'desktop' | 'mobile';
 
   @Listen("focusout", { target: "document" })
   async focusOutListener(e) {
     if (!this.el.contains(e.relatedTarget)) {
       for (let i = 0; i < this.el.children.length; i++) {
-        if (this.el.children[i].nodeName == "GCDS-MENU-GROUP" && (this.el.children[i].hasAttribute("open"))) {
-          await (this.el.children[i] as HTMLGcdsMenuGroupElement).toggleMenu();
-          await this.updateMenuItemQueue(this.el);
+        if (this.el.children[i].nodeName == "GCDS-NAV-GROUP" && (this.el.children[i].hasAttribute("open"))) {
+          await (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
+          await this.updateNavItemQueue(this.el);
         }
       }
     }
@@ -55,7 +55,7 @@ export class GcdsSiteMenu {
   @Listen("keydown", { target: 'document' })
   async keyDownListener(e) {
     if (this.el.contains(document.activeElement)) {
-      handleKeyDownMenu(e, this.el, this.menuItems);
+      handleKeyDownNav(e, this.el, this.navItems);
     }
   }
 
@@ -63,17 +63,17 @@ export class GcdsSiteMenu {
   async gcdsClickListener(e) {
     if (this.el.contains(e.target)) {
       if (e.target.hasAttribute("open")) {
-        await this.updateMenuItemQueue(this.el);
-        (e.target as HTMLGcdsMenuGroupElement).focusTrigger();
+        await this.updateNavItemQueue(this.el);
+        (e.target as HTMLGcdsNavGroupElement).focusTrigger();
       } else {
-        await this.updateMenuItemQueue(e.target, true);
-        if (e.target.children[0].nodeName == "GCDS-MENU-GROUP") {
+        await this.updateNavItemQueue(e.target, true);
+        if (e.target.children[0].nodeName == "GCDS-NAV-GROUP") {
           setTimeout(() => {
-            (e.target.children[0] as HTMLGcdsMenuGroupElement).focusTrigger();
+            (e.target.children[0] as HTMLGcdsNavGroupElement).focusTrigger();
           }, 10);
-        } else if (e.target.children[0].nodeName == "GCDS-MENU-LINK") {
+        } else if (e.target.children[0].nodeName == "GCDS-NAV-LINK") {
           setTimeout(() => {
-            (e.target.children[0] as HTMLGcdsMenuLinkElement).focusLink();
+            (e.target.children[0] as HTMLGcdsNavLinkElement).focusLink();
           }, 10);
         }
       }
@@ -96,23 +96,23 @@ export class GcdsSiteMenu {
   * Pass new window size: desktop or mobile
   */
   @Method()
-  async updateMenuSize(size) {
-    this.menuSize = size;
+  async updateNavSize(size) {
+    this.navSize = size;
   }
 
   /*
   * Update item queue for keyboard navigation based on passed element
   */
   @Method()
-  async updateMenuItemQueue(el, includeElement?: boolean) {
+  async updateNavItemQueue(el, includeElement?: boolean) {
     if (includeElement) {
-      let childElements = await getMenuItems(el);
-      this.menuItems = [el, ...childElements];
+      let childElements = await getNavItems(el);
+      this.navItems = [el, ...childElements];
     } else {
-      this.menuItems = await getMenuItems(el);
+      this.navItems = await getNavItems(el);
     }
   }
-  
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -122,28 +122,25 @@ export class GcdsSiteMenu {
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
 
     if (mediaQuery.matches) {
-      this.menuSize = 'desktop';
+      this.navSize = 'desktop';
     } else {
-      this.menuSize = 'mobile';
-      await configureMobileMenu(this.el);
+      this.navSize = 'mobile';
     }
   }
 
   async componentDidLoad() {
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-    const menu = this.el as HTMLGcdsSiteMenuElement;
+    const nav = this.el as HTMLGcdsTopNavElement;
 
-    await this.updateMenuItemQueue(this.el);
+    await this.updateNavItemQueue(this.el);
 
     mediaQuery.addEventListener("change", async function(e) {
       if (e.matches) {
-        menu.updateMenuSize("desktop");
-        await unpackMobileMenu(menu);
-        await menu.updateMenuItemQueue(menu);
+        nav.updateNavSize("desktop");
+        await nav.updateNavItemQueue(nav);
       } else {
-        menu.updateMenuSize("mobile");
-        await configureMobileMenu(menu);
-        await menu.updateMenuItemQueue(menu);
+        nav.updateNavSize("mobile");
+        await nav.updateNavItemQueue(nav);
       }
     });
   }
@@ -154,15 +151,20 @@ export class GcdsSiteMenu {
       <Host>
         <nav
           aria-label={label}
-          class="gcds-site-menu__container"
+          class="gcds-top-nav__container"
         >
-          <slot name="home"></slot>
-          <ul
-            role="menu"
-            class={`menu-container__list menu-list--${alignment}`}
+          <gcds-nav-group
+            heading="Menu"
+            class="gcds-mobile-nav gcds-mobile-nav-topnav"
           >
-            <slot></slot>
-          </ul>
+            <slot name="home"></slot>
+            <ul
+              role="menu"
+              class={`nav-container__list nav-list--${alignment}`}
+            >
+              <slot></slot>
+            </ul>
+          </gcds-nav-group>
         </nav>
       </Host>
     );

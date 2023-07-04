@@ -1,10 +1,10 @@
 /**
-* Handle event for keyboard control of menu
+* Handle event for keyboard control of nav
 * @param {Event} event
-* @param {Element} menu
+* @param {Element} nav
 * @param {any[]} queue
 */
-export async function handleKeyDownMenu(event, menu, queue) {
+export async function handleKeyDownNav(event, nav, queue) {
   const key = event.key;
   const currentIndex = queue.indexOf(document.activeElement);
   const activeElement = queue[currentIndex];
@@ -15,10 +15,10 @@ export async function handleKeyDownMenu(event, menu, queue) {
       event.preventDefault();
       // If on last item, jump to first item
       if (currentIndex + 1 > queue.length - 1) {
-        await focusMenuItem(0, queue);
+        await focusNavItem(0, queue);
       // Jump to next item
       } else {
-        await focusMenuItem(currentIndex + 1, queue);
+        await focusNavItem(currentIndex + 1, queue);
       }
       break;
 
@@ -27,43 +27,43 @@ export async function handleKeyDownMenu(event, menu, queue) {
       event.preventDefault();
       // If on first item, jump to last item
       if (currentIndex - 1 < 0) {
-        await focusMenuItem(queue.length - 1, queue);
+        await focusNavItem(queue.length - 1, queue);
       // Jump to previous item
       } else {
-        await focusMenuItem(currentIndex - 1, queue);
+        await focusNavItem(currentIndex - 1, queue);
       }
       break;
 
     // Right arrow
     case 'ArrowRight':
       event.preventDefault();
-      await toggleMenuGroup(activeElement, menu);
+      await toggleNavGroup(activeElement, nav);
       break;
 
     // Left arrow || ESC
     case 'ArrowLeft':
     case 'Escape':
       event.preventDefault();
-      // Currently focusing a gcds-menu-group
-      if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
-        await toggleMenuGroup(activeElement, menu);
-      // Currently focus within a gcds-menu-group
-      } else if (activeElement.parentNode.nodeName == "GCDS-MENU-GROUP") {
-        await toggleMenuGroup(activeElement.parentNode, menu);
+      // Currently focusing a gcds-nav-group
+      if (activeElement.nodeName == "GCDS-NAV-GROUP" && activeElement.hasAttribute("open")) {
+        await toggleNavGroup(activeElement, nav);
+      // Currently focus within a gcds-nav-group
+      } else if (activeElement.parentNode.nodeName == "GCDS-NAV-GROUP") {
+        await toggleNavGroup(activeElement.parentNode, nav);
       }
       break;
 
-    // Tab - only in site-menu
+    // Tab - only in top-nav
     case 'Tab':
-      if (menu.nodeName != "GCDS-SIDEBAR-MENU") {
-        // On open menu trigger
-        if (activeElement.nodeName == "GCDS-MENU-GROUP" && activeElement.hasAttribute("open")) {
+      if (nav.nodeName != "GCDS-SIDE-NAV") {
+        // On open nav trigger
+        if (activeElement.nodeName == "GCDS-NAV-GROUP" && activeElement.hasAttribute("open")) {
           event.preventDefault();
-          await toggleMenuGroup(activeElement, menu);
-        // In open menu group
-        } else if(activeElement.parentNode.nodeName == "GCDS-MENU-GROUP") {
+          await toggleNavGroup(activeElement, nav);
+        // In open nav group
+        } else if(activeElement.parentNode.nodeName == "GCDS-NAV-GROUP") {
           event.preventDefault();
-          await toggleMenuGroup(activeElement.parentNode, menu);
+          await toggleNavGroup(activeElement.parentNode, nav);
         }
       }
       break;
@@ -71,115 +71,72 @@ export async function handleKeyDownMenu(event, menu, queue) {
     // ENTER || SPACEBAR
     case 'Enter':
     case ' ':
-      if (activeElement.nodeName == "GCDS-MENU-GROUP") {
+      if (activeElement.nodeName == "GCDS-NAV-GROUP") {
         event.preventDefault();
-        await toggleMenuGroup(activeElement, menu);
+        await toggleNavGroup(activeElement, nav);
       }
       break;
   }
 };
 
 /**
-* Focus menu element
+* Focus nav element
 * @param {Number} index
 * @param {any[]} queue
 */
-async function focusMenuItem(index, queue) {
-  if (queue[index].nodeName == "GCDS-MENU-LINK") {
-    (queue[index] as HTMLGcdsMenuLinkElement).focusLink();
-  } else if (queue[index].nodeName == "GCDS-MENU-GROUP") {
-    (queue[index] as HTMLGcdsMenuGroupElement).focusTrigger();
+async function focusNavItem(index, queue) {
+  if (queue[index].nodeName == "GCDS-NAV-LINK") {
+    (queue[index] as HTMLGcdsNavLinkElement).focusLink();
+  } else if (queue[index].nodeName == "GCDS-NAV-GROUP") {
+    (queue[index] as HTMLGcdsNavGroupElement).focusTrigger();
   }
 }
 
 /**
-* 
+*
 * @param {Element} group
-* @param {Element} menu
+* @param {Element} nav
 */
-async function toggleMenuGroup(group, menu) {
-  const menuGroup = group as HTMLGcdsMenuGroupElement;
+async function toggleNavGroup(group, nav) {
+  const navGroup = group as HTMLGcdsNavGroupElement;
 
-  // Close menu group
-  if (menuGroup.hasAttribute("open")) {
-    await menuGroup.toggleMenu();
-    menuGroup.focusTrigger();
-  
-    menu.updateMenuItemQueue(menu);
+  // Close nav group
+  if (navGroup.hasAttribute("open")) {
+    await navGroup.toggleNav();
+    navGroup.focusTrigger();
 
-  // Open menu group
+    nav.updateNavItemQueue(nav);
+
+  // Open nav group
   } else {
-    await menuGroup.toggleMenu();
+    await navGroup.toggleNav();
 
     setTimeout(async () => {
-      await focusMenuItem(0, menuGroup.children);
+      await focusNavItem(0, navGroup.children);
     }, 10)
-  
-    if (menu.nodeName == "GCDS-SIDEBAR-MENU") {
-      menu.updateMenuItemQueue(menu);
+
+    if (nav.nodeName == "GCDS-SIDE-NAV") {
+      nav.updateNavItemQueue(nav);
     } else {
-      menu.updateMenuItemQueue(menuGroup, true);
+      nav.updateNavItemQueue(navGroup, true);
     }
   }
 }
-  
+
 /**
 * Return array of child elements of passed element
 * @param {Element} el
 * @return {any[]} indexedItems
 */
-export async function getMenuItems(el) {
+export async function getNavItems(el) {
   let indexedItems: Array<any> = Array.from(el.children);
 
   indexedItems.forEach(async (item) => {
-    if (item.nodeName == "GCDS-MENU-GROUP" && (item as HTMLGcdsMenuGroupElement).open) {
-      let groupChildren = await getMenuItems(item);
+    if (item.nodeName == "GCDS-NAV-GROUP" && (item as HTMLGcdsNavGroupElement).open) {
+      let groupChildren = await getNavItems(item);
       indexedItems.splice(indexedItems.indexOf(item) + 1, 0, ...groupChildren);
     }
   });
 
   return indexedItems;
-}
-
-  /**
-* Create mobile menu element in passed menu
-* @param {HTMLElement} menu
-*/
-export async function configureMobileMenu(menu: HTMLElement) {
-    console.log(menu)
-  let children = Array.from(menu.children);
-
-  let menuGroup = document.createElement("gcds-menu-group") as HTMLGcdsMenuGroupElement;
-  menuGroup.heading = "Menu";
-  menuGroup.classList.add('gcds-mobile-menu');
-
-  for (let element of children) {
-    if (!element.hasAttribute("slot")) {
-      menuGroup.appendChild(element);
-    }
-  }
-
-  menu.appendChild(menuGroup);
-}
-
-/**
-* Unpack menu items from mobile menu in passed menu
-* @param {HTMLElement} menu
-*/
-export async function unpackMobileMenu(menu: HTMLElement) {
-  let mobileMenuChildren = [];
-  let mobileMenu: Element;
-
-  for (let item of Array.from(menu.children)) {
-    if (!item.hasAttribute("slot")) {
-      mobileMenuChildren = Array.from(item.children);
-      mobileMenu = item;
-    }
-  }
-
-  for (let element of mobileMenuChildren) {
-    menu.appendChild(element);
-  }
-
-  mobileMenu.remove();
 }

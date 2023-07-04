@@ -2,11 +2,11 @@ import { Component, Element, Host, Prop, State, Method, h } from '@stencil/core'
 import { assignLanguage, observerConfig } from '../../utils/utils';
 
 @Component({
-  tag: 'gcds-menu-link',
-  styleUrl: 'gcds-menu-link.css',
+  tag: 'gcds-nav-link',
+  styleUrl: 'gcds-nav-link.css',
   shadow: true
 })
-export class GcdsMenuLink {
+export class GcdsNavLink {
   @Element() el: HTMLElement;
 
   private linkElement: HTMLElement
@@ -27,9 +27,9 @@ export class GcdsMenuLink {
   @State() lang: string;
 
   /**
-  * Style of menu to render based on parent
+  * Style of nav to render based on parent
   */
-  @State() menuStyle: string;
+  @State() navStyle: string;
 
   /**
   * Focus the link element
@@ -50,21 +50,21 @@ export class GcdsMenuLink {
     });
     observer.observe(this.el, observerConfig);
   }
-  
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
 
-    if (this.el.closest("gcds-site-menu")) {
-      if (this.el.parentNode.nodeName == "GCDS-SITE-MENU") {
-        this.menuStyle = "sitemenu"
+    if (this.el.closest("gcds-top-nav")) {
+      if (this.el.parentNode.nodeName == "GCDS-TOP-NAV") {
+        this.navStyle = this.el.slot == "home" ? "topnav gcds-nav-link--home" : "topnav";
       } else {
-        this.menuStyle = "dropdown"
+        this.navStyle = "dropdown";
       }
     } else {
-      this.menuStyle = "sidebar"
+      this.navStyle = "sidenav";
     }
   }
 
@@ -80,10 +80,10 @@ export class GcdsMenuLink {
     return (
       <Host
         role="presentation"
-        class={`gcds-menu-link--${this.menuStyle}`}
+        class={`gcds-nav-link--${this.navStyle}`}
       >
         <a
-          class="gcds-menu-link"
+          class="gcds-nav-link"
           href={href}
           {...linkAttrs}
           role="menuitem"

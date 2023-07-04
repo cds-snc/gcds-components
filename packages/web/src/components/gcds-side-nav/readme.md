@@ -1,4 +1,4 @@
-# gcds-sidebar-menu
+# gcds-side-nav
 
 
 
@@ -15,7 +15,7 @@
 
 ## Methods
 
-### `updateMenuItemQueue(el: any, includeElement?: boolean) => Promise<void>`
+### `updateNavItemQueue(el: any, includeElement?: boolean) => Promise<void>`
 
 
 
@@ -25,7 +25,7 @@ Type: `Promise<void>`
 
 
 
-### `updateMenuSize(size: any) => Promise<void>`
+### `updateNavSize(size: any) => Promise<void>`
 
 
 
@@ -40,13 +40,14 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [gcds-menu-group](../gcds-menu-group)
+- [gcds-nav-group](../gcds-nav-group)
 
 ### Graph
 ```mermaid
 graph TD;
-  gcds-sidebar-menu --> gcds-menu-group
-  style gcds-sidebar-menu fill:#f9f,stroke:#333,stroke-width:4px
+  gcds-side-nav --> gcds-nav-group
+  gcds-nav-group --> gcds-icon
+  style gcds-side-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
