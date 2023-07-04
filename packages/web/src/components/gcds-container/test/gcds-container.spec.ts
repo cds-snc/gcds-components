@@ -12,7 +12,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-container>
         <mock:shadow-root>
-          <div class="gcds-container container-full">
+          <div class="gcds-container size-full">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -24,13 +24,13 @@ describe('gcds-grid', () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container container="xl" />
+        <gcds-container size="xl" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container container="xl">
+      <gcds-container size="xl">
         <mock:shadow-root>
-          <div class="gcds-container container-xl">
+          <div class="gcds-container size-xl">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -42,13 +42,13 @@ describe('gcds-grid', () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container container="lg" />
+        <gcds-container size="lg" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container container="lg">
+      <gcds-container size="lg">
         <mock:shadow-root>
-          <div class="gcds-container container-lg">
+          <div class="gcds-container size-lg">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -60,13 +60,13 @@ describe('gcds-grid', () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container container="md" />
+        <gcds-container size="md" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container container="md">
+      <gcds-container size="md">
         <mock:shadow-root>
-          <div class="gcds-container container-md">
+          <div class="gcds-container size-md">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -78,13 +78,13 @@ describe('gcds-grid', () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container container="sm" />
+        <gcds-container size="sm" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container container="sm">
+      <gcds-container size="sm">
         <mock:shadow-root>
-          <div class="gcds-container container-sm">
+          <div class="gcds-container size-sm">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -96,13 +96,13 @@ describe('gcds-grid', () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container container="xs" />
+        <gcds-container size="xs" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container container="xs">
+      <gcds-container size="xs">
         <mock:shadow-root>
-          <div class="gcds-container container-xs">
+          <div class="gcds-container size-xs">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -114,13 +114,13 @@ describe('gcds-grid', () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container container="lg" centered />
+        <gcds-container size="lg" centered />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container container="lg" centered>
+      <gcds-container size="lg" centered>
         <mock:shadow-root>
-          <div class="gcds-container container-lg container-centered">
+          <div class="gcds-container size-lg container-centered">
             <slot></slot>
           </div>
         </mock:shadow-root>

@@ -11,7 +11,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner>
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <gcds-container container="xl" centered="">
+            <gcds-container size="xl" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -47,7 +47,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner banner-role="primary">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <gcds-container container="xl" centered="">
+            <gcds-container size="xl" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -79,7 +79,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner banner-role="secondary">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-secondary" role="status">
-            <gcds-container container="xl" centered="">
+            <gcds-container size="xl" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -115,7 +115,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner is-fixed>
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary banner--is-fixed" role="status">
-            <gcds-container container="xl" centered="">
+            <gcds-container size="xl" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -151,7 +151,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner container="full">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <gcds-container container="full" centered="">
+            <gcds-container size="full" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -183,7 +183,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner container="xl">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <gcds-container container="xl" centered="">
+            <gcds-container size="xl" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -215,7 +215,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner container="lg">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <gcds-container container="lg" centered="">
+            <gcds-container size="lg" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -247,7 +247,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner container="md">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <gcds-container container="md" centered="">
+            <gcds-container size="md" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -279,7 +279,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner container="sm">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <gcds-container container="sm" centered="">
+            <gcds-container size="sm" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>
@@ -311,7 +311,7 @@ describe('gcds-phase-banner', () => {
       <gcds-phase-banner container="xs">
         <mock:shadow-root>
           <div aria-label="Banner" class="gcds-phase-banner banner--role-primary" role="status">
-            <gcds-container container="xs" centered="">
+            <gcds-container size="xs" centered="">
               <div class="banner__content">
                 <figure class="banner__icon icon--left">
                   <slot name="banner-icon-left"></slot>

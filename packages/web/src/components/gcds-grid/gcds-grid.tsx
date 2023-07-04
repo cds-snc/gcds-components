@@ -116,7 +116,7 @@ export class GcdsGrid {
     return (
       <Host>
         { container ?
-          <gcds-container container={container} centered={centered}>
+          <gcds-container size={container} centered={centered}>
             <Tag class={classNames} style={handleColumns()}>
               <slot />
             </Tag>
