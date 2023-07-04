@@ -69,7 +69,7 @@ export class GcdsPhaseBanner {
           role="status"
           aria-label={i18n[lang].label}
         >
-          <gcds-container container={container} centered>
+          <gcds-container size={container} centered>
             <div class="banner__content">
               <figure class="banner__icon icon--left">
                 <slot name="banner-icon-left" />
