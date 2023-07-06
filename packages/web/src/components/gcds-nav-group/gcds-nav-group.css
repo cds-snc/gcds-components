@@ -35,6 +35,10 @@
     .gcds-nav-group__trigger[aria-expanded="false"] + .gcds-nav-group__list {
       display: none;
     }
+
+    .gcds-nav-group__trigger-desc {
+      display: none;
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 import { Component, Element, Host, Prop, State, Listen, Method, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
+import I18N from './i18n/i18n';
 
 @Component({
   tag: 'gcds-top-nav',
@@ -176,17 +177,18 @@ export class GcdsTopNav {
   }
 
   render() {
-    const { label, alignment } = this;
+    const { label, alignment, lang } = this;
     return (
       <Host>
         <nav
-          aria-label={label}
+          aria-label={`${label}${I18N[lang].navLabel}`}
           class="gcds-top-nav__container"
         >
           <gcds-nav-group
             heading="Menu"
             class="gcds-mobile-nav gcds-mobile-nav-topnav"
             ref={element => this.mobile = element as HTMLGcdsNavGroupElement}
+            lang={lang}
           >
             <slot name="home"></slot>
             <ul

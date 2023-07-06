@@ -1,5 +1,6 @@
 import { Component, Element, Host, Prop, State, Method, Event, EventEmitter, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import I18N from './i18n/i18n';
 
 @Component({
   tag: 'gcds-nav-group',
@@ -94,7 +95,7 @@ export class GcdsNavGroup {
   }
 
   render() {
-    const { heading, open } = this;
+    const { heading, open, lang } = this;
     return (
       <Host
         role="presentation"
@@ -104,6 +105,8 @@ export class GcdsNavGroup {
         <button
           aria-haspopup="true"
           aria-expanded={open.toString()}
+          role="menuitem"
+          aria-describedby="trigger-controls"
           ref={element => this.triggerElement = element as HTMLElement}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
           onClick={() => {
@@ -113,13 +116,18 @@ export class GcdsNavGroup {
         >
           <gcds-icon name={open ? 'angle-up' : 'angle-down'}></gcds-icon>
           {heading}
+
         </button>
         <ul
           role="menu"
+          aria-label={heading}
           class={`gcds-nav-group__list gcds-nav--${this.navStyle}`}
         >
           <slot></slot>
         </ul>
+        <span aria-hidden="true" id={`trigger-controls`} class="gcds-nav-group__trigger-desc">
+          {I18N[lang].submenu.replace('{$t}', heading)}
+        </span>
       </Host>
     );
   }
