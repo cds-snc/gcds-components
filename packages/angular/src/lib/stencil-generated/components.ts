@@ -557,16 +557,16 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 @ProxyCmp({
   inputs: ['heading', 'open'],
-  methods: ['focusTrigger', 'toggleMenu']
+  methods: ['focusTrigger', 'toggleNav']
 })
 @Component({
-  selector: 'gcds-menu-group',
+  selector: 'gcds-nav-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['heading', 'open'],
 })
-export class GcdsMenuGroup {
+export class GcdsNavGroup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -576,7 +576,7 @@ export class GcdsMenuGroup {
 }
 
 
-export declare interface GcdsMenuGroup extends Components.GcdsMenuGroup {
+export declare interface GcdsNavGroup extends Components.GcdsNavGroup {
   /**
    * Emitted when the button has focus.
    */
@@ -589,13 +589,13 @@ export declare interface GcdsMenuGroup extends Components.GcdsMenuGroup {
   methods: ['focusLink']
 })
 @Component({
-  selector: 'gcds-menu-link',
+  selector: 'gcds-nav-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['current', 'href'],
 })
-export class GcdsMenuLink {
+export class GcdsNavLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -604,7 +604,7 @@ export class GcdsMenuLink {
 }
 
 
-export declare interface GcdsMenuLink extends Components.GcdsMenuLink {}
+export declare interface GcdsNavLink extends Components.GcdsNavLink {}
 
 
 @ProxyCmp({
@@ -740,16 +740,16 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
 
 @ProxyCmp({
   inputs: ['label', 'position'],
-  methods: ['updateMenuSize', 'updateMenuItemQueue']
+  methods: ['getNavSize', 'updateNavSize', 'updateNavItemQueue']
 })
 @Component({
-  selector: 'gcds-sidebar-menu',
+  selector: 'gcds-side-nav',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['label', 'position'],
 })
-export class GcdsSidebarMenu {
+export class GcdsSideNav {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -758,7 +758,7 @@ export class GcdsSidebarMenu {
 }
 
 
-export declare interface GcdsSidebarMenu extends Components.GcdsSidebarMenu {}
+export declare interface GcdsSideNav extends Components.GcdsSideNav {}
 
 
 @ProxyCmp({
@@ -781,29 +781,6 @@ export class GcdsSignature {
 
 
 export declare interface GcdsSignature extends Components.GcdsSignature {}
-
-
-@ProxyCmp({
-  inputs: ['alignment', 'label', 'position'],
-  methods: ['updateMenuSize', 'updateMenuItemQueue']
-})
-@Component({
-  selector: 'gcds-site-menu',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignment', 'label', 'position'],
-})
-export class GcdsSiteMenu {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsSiteMenu extends Components.GcdsSiteMenu {}
 
 
 @ProxyCmp({
@@ -871,6 +848,29 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
    */
   gcdsValid: EventEmitter<CustomEvent<object>>;
 }
+
+
+@ProxyCmp({
+  inputs: ['alignment', 'label', 'position'],
+  methods: ['getNavSize', 'updateNavSize', 'updateNavItemQueue']
+})
+@Component({
+  selector: 'gcds-top-nav',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['alignment', 'label', 'position'],
+})
+export class GcdsTopNav {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsTopNav extends Components.GcdsTopNav {}
 
 
 @ProxyCmp({

@@ -6,7 +6,7 @@
 */
 export async function handleKeyDownNav(event, nav, queue) {
   const key = event.key;
-  const currentIndex = queue.indexOf(document.activeElement);
+  const currentIndex = queue.indexOf(document.activeElement == nav ? document.activeElement.shadowRoot.activeElement : document.activeElement);
   const activeElement = queue[currentIndex];
 
   switch(key) {
@@ -37,7 +37,9 @@ export async function handleKeyDownNav(event, nav, queue) {
     // Right arrow
     case 'ArrowRight':
       event.preventDefault();
-      await toggleNavGroup(activeElement, nav);
+      if (activeElement.nodeName == "GCDS-NAV-GROUP") {
+        await toggleNavGroup(activeElement, nav);
+      }
       break;
 
     // Left arrow || ESC
@@ -50,6 +52,8 @@ export async function handleKeyDownNav(event, nav, queue) {
       // Currently focus within a gcds-nav-group
       } else if (activeElement.parentNode.nodeName == "GCDS-NAV-GROUP") {
         await toggleNavGroup(activeElement.parentNode, nav);
+      } else if ((activeElement.parentNode == nav) && await (activeElement.parentNode as HTMLGcdsTopNavElement).getNavSize() == "mobile") {
+        await toggleNavGroup(queue[queue.length -1], nav)
       }
       break;
 
@@ -112,13 +116,13 @@ async function toggleNavGroup(group, nav) {
     await navGroup.toggleNav();
 
     setTimeout(async () => {
-      await focusNavItem(0, navGroup.children);
+      await focusNavItem(0, document.activeElement == nav ? nav.children : navGroup.children);
     }, 10)
 
     if (nav.nodeName == "GCDS-SIDE-NAV") {
       nav.updateNavItemQueue(nav);
     } else {
-      nav.updateNavItemQueue(navGroup, true);
+      nav.updateNavItemQueue(document.activeElement == nav ? nav : navGroup, document.activeElement == nav ? false : true);
     }
   }
 }

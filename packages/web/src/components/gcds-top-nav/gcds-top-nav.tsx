@@ -10,6 +10,8 @@ import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 export class GcdsTopNav {
   @Element() el: HTMLElement;
 
+  private mobile?: HTMLGcdsNavGroupElement;
+
   /**
    * Label for navigation landmark
    */
@@ -43,10 +45,16 @@ export class GcdsTopNav {
   @Listen("focusout", { target: "document" })
   async focusOutListener(e) {
     if (!this.el.contains(e.relatedTarget)) {
-      for (let i = 0; i < this.el.children.length; i++) {
-        if (this.el.children[i].nodeName == "GCDS-NAV-GROUP" && (this.el.children[i].hasAttribute("open"))) {
-          await (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
-          await this.updateNavItemQueue(this.el);
+      if (this.navSize == "mobile") {
+        if (this.mobile.hasAttribute("open")) {
+          await this.mobile.toggleNav();
+        }
+      } else {
+        for (let i = 0; i < this.el.children.length; i++) {
+          if (this.el.children[i].nodeName == "GCDS-NAV-GROUP" && (this.el.children[i].hasAttribute("open"))) {
+            await (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
+            await this.updateNavItemQueue(this.el);
+          }
         }
       }
     }
@@ -66,7 +74,12 @@ export class GcdsTopNav {
         await this.updateNavItemQueue(this.el);
         (e.target as HTMLGcdsNavGroupElement).focusTrigger();
       } else {
-        await this.updateNavItemQueue(e.target, true);
+        if (e.target == this.el && this.navSize == "mobile") {
+          await this.updateNavItemQueue(e.target);
+        } else {
+          await this.updateNavItemQueue(e.target, true);
+        }
+
         if (e.target.children[0].nodeName == "GCDS-NAV-GROUP") {
           setTimeout(() => {
             (e.target.children[0] as HTMLGcdsNavGroupElement).focusTrigger();
@@ -93,6 +106,14 @@ export class GcdsTopNav {
   }
 
   /*
+  * Get current navSize state
+  */
+  @Method()
+  async getNavSize() {
+    return this.navSize;
+  }
+
+  /*
   * Pass new window size: desktop or mobile
   */
   @Method()
@@ -110,6 +131,10 @@ export class GcdsTopNav {
       this.navItems = [el, ...childElements];
     } else {
       this.navItems = await getNavItems(el);
+    }
+
+    if (el == this.el && this.navSize == "mobile") {
+      this.navItems = [...this.navItems, this.mobile];
     }
   }
 
@@ -131,6 +156,7 @@ export class GcdsTopNav {
   async componentDidLoad() {
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
     const nav = this.el as HTMLGcdsTopNavElement;
+    const mobileTrigger = this.mobile;
 
     await this.updateNavItemQueue(this.el);
 
@@ -138,6 +164,10 @@ export class GcdsTopNav {
       if (e.matches) {
         nav.updateNavSize("desktop");
         await nav.updateNavItemQueue(nav);
+
+        if (mobileTrigger.hasAttribute("open")) {
+          mobileTrigger.toggleNav();
+        } 
       } else {
         nav.updateNavSize("mobile");
         await nav.updateNavItemQueue(nav);
@@ -156,6 +186,7 @@ export class GcdsTopNav {
           <gcds-nav-group
             heading="Menu"
             class="gcds-mobile-nav gcds-mobile-nav-topnav"
+            ref={element => this.mobile = element as HTMLGcdsNavGroupElement}
           >
             <slot name="home"></slot>
             <ul

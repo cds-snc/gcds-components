@@ -10,6 +10,8 @@ import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 export class GcdsSideNav {
   @Element() el: HTMLElement;
 
+  private mobile?: HTMLGcdsNavGroupElement;
+
   /**
    * Label for navigation landmark
    */
@@ -35,6 +37,17 @@ export class GcdsSideNav {
   */
   @State() navSize: 'desktop' | 'mobile';
 
+  @Listen("focusout", { target: "document" })
+  async focusOutListener(e) {
+    if (!this.el.contains(e.relatedTarget)) {
+      if (this.navSize == "mobile") {
+        if (this.mobile.hasAttribute("open")) {
+          await this.mobile.toggleNav();
+        }
+      }
+    }
+  }
+
   @Listen("keydown", {target: 'document'})
   async keyDownListener(e) {
     if (this.el.contains(document.activeElement)) {
@@ -49,7 +62,7 @@ export class GcdsSideNav {
         await this.updateNavItemQueue(this.el);
         (e.target as HTMLGcdsNavGroupElement).focusTrigger();
       } else {
-        await this.updateNavItemQueue(e.target, true);
+        await this.updateNavItemQueue(this.el);
         if (e.target.children[0].nodeName == "GCDS-NAV-GROUP") {
           setTimeout(() => {
             (e.target.children[0] as HTMLGcdsNavGroupElement).focusTrigger();
@@ -76,6 +89,14 @@ export class GcdsSideNav {
   }
 
   /*
+  * Get current navSize state
+  */
+  @Method()
+  async getNavSize() {
+    return this.navSize;
+  }
+
+  /*
   * Pass new window size: desktop or mobile
   */
   @Method()
@@ -93,6 +114,10 @@ export class GcdsSideNav {
       this.navItems = [el, ...childElements];
     } else {
       this.navItems = await getNavItems(el);
+    }
+
+    if (this.navSize == "mobile") {
+      this.navItems = [...this.navItems, this.mobile];
     }
   }
 
@@ -114,6 +139,7 @@ export class GcdsSideNav {
   async componentDidLoad() {
     const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
     const nav = this.el as HTMLGcdsSideNavElement;
+    const mobileTrigger = this.mobile;
 
     await this.updateNavItemQueue(this.el);
 
@@ -121,6 +147,10 @@ export class GcdsSideNav {
       if (e.matches) {
         nav.updateNavSize("desktop");
         await nav.updateNavItemQueue(nav);
+
+        if (mobileTrigger.hasAttribute("open")) {
+          mobileTrigger.toggleNav();
+        } 
       } else {
         nav.updateNavSize("mobile");
         await nav.updateNavItemQueue(nav);
@@ -140,6 +170,7 @@ export class GcdsSideNav {
             heading="Menu"
             class="gcds-mobile-nav"
             role="menu"
+            ref={element => this.mobile = element as HTMLGcdsNavGroupElement}
           >
             <slot></slot>
           </gcds-nav-group>

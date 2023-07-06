@@ -57,6 +57,11 @@ export class GcdsNavGroup {
         (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
       }
     }
+
+    // Focus trigger button if closing nav group
+    if (this.open == false) {
+      this.triggerElement.focus();
+    }
   }
 
   /*
@@ -99,7 +104,6 @@ export class GcdsNavGroup {
         <button
           aria-haspopup="true"
           aria-expanded={open.toString()}
-          role="menuitem"
           ref={element => this.triggerElement = element as HTMLElement}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
           onClick={() => {

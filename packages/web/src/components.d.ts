@@ -746,6 +746,7 @@ export namespace Components {
         "value"?: string;
     }
     interface GcdsSideNav {
+        "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
          */
@@ -856,6 +857,7 @@ export namespace Components {
           * Nav alignment
          */
         "alignment": 'left' | 'center' | 'right';
+        "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
          */

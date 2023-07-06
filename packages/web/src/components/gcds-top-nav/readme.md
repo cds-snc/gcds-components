@@ -16,6 +16,16 @@
 
 ## Methods
 
+### `getNavSize() => Promise<"desktop" | "mobile">`
+
+
+
+#### Returns
+
+Type: `Promise<"desktop" | "mobile">`
+
+
+
 ### `updateNavItemQueue(el: any, includeElement?: boolean) => Promise<void>`
 
 
