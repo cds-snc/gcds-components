@@ -4,6 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 
+  /* Container border */
+  &.container-border {
+    border: var(--gcds-container-border);
+  }
+
   /* Container centered */
   &.container-centered {
     margin-inline: auto !important;

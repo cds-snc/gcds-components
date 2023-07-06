@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
-export { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -209,6 +208,10 @@ export namespace Components {
         "value": string;
     }
     interface GcdsContainer {
+        /**
+          * Defines if container has a border or not.
+         */
+        "border"?: boolean;
         /**
           * Defines if container is centered or not.
          */
@@ -1359,6 +1362,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface GcdsContainer {
+        /**
+          * Defines if container has a border or not.
+         */
+        "border"?: boolean;
         /**
           * Defines if container is centered or not.
          */
