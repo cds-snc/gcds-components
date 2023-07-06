@@ -3,6 +3,13 @@ export default {
 
   argTypes: {
     // Props
+    border: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      }
+    },
     centered: {
       control: 'boolean',
       table: {
@@ -10,7 +17,23 @@ export default {
         defaultValue: { summary: false }
       }
     },
-    container: {
+    margin: {
+      control: { type: 'select' },
+      options: ['0', '50', '100', '150', '200', '250', '300', '400', '450', '500', '550', '600', '700', '800', '900', '1000'],
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    padding: {
+      control: { type: 'select' },
+      options: ['0', '50', '100', '150', '200', '250', '300', '400', '450', '500', '550', '600', '700', '800', '900', '1000'],
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    size: {
       control: { type: 'select' },
       options: ['full', 'xl', 'lg', 'md', 'sm', 'xs'],
       table: {
@@ -39,93 +62,126 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component code (Angular, Vue)
-<gcds-container ${args.container != "full" ? `container="${args.container}"`: null} ${args.centered ? "centered" : null} ${args.tag != "div" ? `tag="${args.tag}"`: null}>
+// Web component code (Angular, Vue)
+<gcds-container ${args.size != "full" ? `size="${args.size}"`: null} ${args.border ? "border" : null} ${args.centered ? "centered" : null} ${args.tag != "div" ? `tag="${args.tag}"`: null} ${args.margin ? `margin="${args.margin}"` : null} ${args.padding ? `padding="${args.padding}"` : null}>
   ${args.default ? args.default : null}
 </gcds-container>
+
 // React code
-<GcdsContainer ${args.container != "full" ? `container="${args.container}"`: null} ${args.centered ? `centered` : null} ${args.tag != "div" ? `tag="${args.tag}"`: null}>
+<GcdsContainer ${args.size != "full" ? `size="${args.size}"`: null} ${args.border ? "border" : null} ${args.centered ? `centered` : null} ${args.tag != "div" ? `tag="${args.tag}"`: null} ${args.margin ? `margin="${args.margin}"` : null} ${args.padding ? `padding="${args.padding}"` : null}>
   ${args.default ? args.default : null}
 </GcdsContainer>
 `).replace(/ null/g, '');
 
 const TemplatePlayground = (args) => (`
 <gcds-container
-  ${args.container != "full" ? `container="${args.container}"`: null}
+  ${args.size != "full" ? `size="${args.size}"`: null}
+  ${args.border ? "border" : null}
   ${args.centered ? "centered" : null}
   ${args.tag != "div" ? `tag="${args.tag}"`: null}
+  ${args.margin ? `margin="${args.margin}"` : null}
+  ${args.padding ? `padding="${args.padding}"` : null}
 >
   ${args.default ? args.default : null}
 </gcds-container>
-`).replace(/\s\snull\n/g, '');
+`);
 
 // ------ Container default ------
 
 export const Default = Template.bind({});
 Default.args = {
-  container: 'md',
+  size: 'md',
+  border: true,
   tag: 'div',
-  default: '<p class="text-with-border">This is a responsive container, you can replace this text with any content or other components.</p>',
+  padding: '400',
+  default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };
 
 // ------ Container sizes ------
 
 export const SizeFull = Template.bind({});
 SizeFull.args = {
-  container: 'full',
+  size: 'full',
+  border: true,
   tag: 'div',
-  default: '<p class="text-with-border">This container size is full.</p>',
+  padding: '400',
+  default: '<p>This is a responsive container, the size is set to "full". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeXl = Template.bind({});
 SizeXl.args = {
-  container: 'xl',
+  size: 'xl',
+  border: true,
   tag: 'div',
-  default: '<p class="text-with-border">This container size is xl.</p>',
+  padding: '400',
+  default: '<p>This is a responsive container, the size is set to "xl". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeLg = Template.bind({});
 SizeLg.args = {
-  container: 'lg',
+  size: 'lg',
+  border: true,
   tag: 'div',
-  default: '<p class="text-with-border">This container size is lg.</p>',
+  padding: '400',
+  default: '<p>This is a responsive container, the size is set to "lg". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeMd = Template.bind({});
 SizeMd.args = {
-  container: 'md',
+  size: 'md',
+  border: true,
   tag: 'div',
-  default: ' <p class="text-with-border">This container size is md.</p>',
+  padding: '400',
+  default: '<p>This is a responsive container, the size is set to "md". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeSm = Template.bind({});
 SizeSm.args = {
-  container: 'sm',
+  size: 'sm',
+  border: true,
   tag: 'div',
-  default: '<p class="text-with-border">This container size is sm.</p>',
+  padding: '400',
+  default: '<p>This is a responsive container, the size is set to "sm". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeXs = Template.bind({});
 SizeXs.args = {
-  container: 'xs',
+  size: 'xs',
+  border: true,
   tag: 'div',
-  default: '<p class="text-with-border">This container size is xs.</p>',
+  padding: '400',
+  default: '<p>This is a responsive container, the size is set to "xs". You can replace this text with any content or other components.</p>',
 };
 
 // ------ Container centered ------
 
 export const Centered = Template.bind({});
 Centered.args = {
-  container: 'sm',
+  size: 'sm',
+  border: true,
   centered: true,
   tag: 'div',
-  default: '<p class="text-with-border">This container is centered.</p>',
+  padding: '400',
+  default: '<p>This container is centered.</p>',
+};
+
+// ------ Container events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
+  size: 'md',
+  border: true,
+  tag: 'div',
+  padding: '400',
+  default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };
 
 // ------ Container playground ------
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  container: 'full',
-  default: '<p class="text-with-border">This is a responsive container, you can replace this text with any content or other components.</p>',
+  size: 'full',
+  border: true,
+  padding: '400',
+  default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };

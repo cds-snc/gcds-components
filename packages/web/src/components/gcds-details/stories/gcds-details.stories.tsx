@@ -35,10 +35,11 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component code (Angular, Vue)
+// Web component code (Angular, Vue)
 <gcds-details details-title="${args.detailsTitle}" ${args.open ? `open` : null}>
   ${args.default}
 </gcds-details>
+
 // React code
 <GcdsDetails detailsTitle="${args.detailsTitle}" ${args.open ? `open` : null}>
   ${args.default}
@@ -49,7 +50,7 @@ const TemplatePlayground = (args) => (`
 <gcds-details details-title="${args.detailsTitle}" ${args.open ? `open` : null}>
   ${args.default}
 </gcds-details>
-`).replace(/ null/g, '');
+`);
 
 // ------ Details default ------
 
@@ -66,6 +67,15 @@ export const Open = Template.bind({});
 Open.args = {
   detailsTitle: 'Learn more about this topic',
   open: true,
+  default: 'Additional information.',
+};
+
+// ------ Details events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
+  detailsTitle: 'Learn more about this topic',
+  open: false,
   default: 'Additional information.',
 };
 

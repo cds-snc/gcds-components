@@ -1,4 +1,4 @@
-import { langProp, validatorProps } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Input',
@@ -126,7 +126,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component code (Angular, Vue)
+// Web component code (Angular, Vue)
 <gcds-input
   input-id="${args.inputId}"
   label="${args.label}"
@@ -163,11 +163,182 @@ const Template = (args) => (`
 </GcdsInput>
 `).replace(/\s\snull\n/g, '');
 
+const TemplatePlayground = (args) => (`
+<gcds-input
+  input-id="${args.inputId}"
+  label="${args.label}"
+  ${args.type != "text" ? `type="${args.type}"` : null}
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.size ? `size="${args.size}"` : null}
+  ${args.autocomplete != "off" ? `autocomplete="${args.autocomplete}"` : null}
+  ${args.hideLabel ? `hide-label` : null}
+  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+>
+</gcds-input>
+`);
+
+// ------ Input default ------
+
 export const Default = Template.bind({});
 Default.args = {
-  inputId: 'input',
-  label: 'Input label',
+  inputId: 'example-default',
   type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  size: '',
+  value: '',
+  lang: 'en',
+  autocomplete: 'off',
+  hideLabel: false,
+  validateOn: 'blur',
+};
+
+// ------ Input states ------
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  inputId: 'example-disabled',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: true,
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  inputId: 'example-error',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  errorMessage: 'Error message or validation message.',
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+export const Required = Template.bind({});
+Required.args = {
+  inputId: 'example-required',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  required: true,
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+// ------ Input types ------
+
+export const Email = Template.bind({});
+Email.args = {
+  inputId: 'example-email',
+  type: 'email',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+export const Number = Template.bind({});
+Number.args = {
+  inputId: 'example-number',
+  type: 'number',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+export const Password = Template.bind({});
+Password.args = {
+  inputId: 'example-password',
+  type: 'password',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+export const Search = Template.bind({});
+Search.args = {
+  inputId: 'example-search',
+  type: 'search',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+export const Text = Template.bind({});
+Text.args = {
+  inputId: 'example-text',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+export const Url = Template.bind({});
+Url.args = {
+  inputId: 'example-url',
+  type: 'url',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  autocomplete: 'off',
+  validateOn: 'blur',
+};
+
+// ------ Input events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
+  inputId: 'example-default',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  size: '',
+  value: '',
+  lang: 'en',
+  autocomplete: 'off',
+  hideLabel: false,
+  validateOn: 'blur',
+};
+
+// ------ Input playground ------
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
+  inputId: 'input',
+  type: 'text',
+  label: 'Input label',
   hint: '',
   errorMessage: '',
   required: false,

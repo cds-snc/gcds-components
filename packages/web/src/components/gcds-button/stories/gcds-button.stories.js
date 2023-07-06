@@ -140,122 +140,99 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component code (Angular, Vue)
-<gcds-button
-  ${args.type != "button" ? `type="${args.type}"`: null}
-  ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null}
-  ${args.buttonStyle != "solid" ? `button-style="${args.buttonStyle}"` : null}
-  ${args.buttonId ? `button-id="${args.buttonId}"` : null}
-  ${args.size != "regular" ? `size="${args.size}"` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.name ? `name="${args.name}"` : null}
-  ${args.type == "link" && args.href ? `href="${args.href}"` : null}
-  ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null}
-  ${args.type == "link" && args.target ? `target="${args.target}"` : null}
-  ${args.type == "link" && args.download ? `download="${args.download}"` : null}
->
+// Web component code (Angular, Vue)
+<gcds-button ${args.type != "button" ? `type="${args.type}"`: null} ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.buttonStyle != "solid" ? `button-style="${args.buttonStyle}"` : null} ${args.buttonId ? `button-id="${args.buttonId}"` : null} ${args.size != "regular" ? `size="${args.size}"` : null} ${args.disabled ? `disabled` : null} ${args.name ? `name="${args.name}"` : null} ${args.type == "link" && args.href ? `href="${args.href}"` : null} ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null} ${args.type == "link" && args.target ? `target="${args.target}"` : null} ${args.type == "link" && args.download ? `download="${args.download}"` : null}>
   ${args.default}
 </gcds-button>
+
 // React code
-<GcdsButton
-  ${args.type != "button" ? `type="${args.type}"` : null}
-  ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null}
-  ${args.buttonStyle != "solid" ? `buttonStyle="${args.buttonStyle}"` : null}
-  ${args.buttonId ? `buttonId="${args.buttonId}"` : null}
-  ${args.size != "regular" ? `size="${args.size}"` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.name ? `name="${args.name}"` : null}
-  ${args.type == "link" && args.href ? `href="${args.href}"` : null}
-  ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null}
-  ${args.type == "link" && args.target ? `target="${args.target}"` : null}
-  ${args.type == "link" && args.download ? `download="${args.download}"` : null}
->
+<GcdsButton ${args.type != "button" ? `type="${args.type}"` : null} ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.buttonStyle != "solid" ? `buttonStyle="${args.buttonStyle}"` : null} ${args.buttonId ? `buttonId="${args.buttonId}"` : null} ${args.size != "regular" ? `size="${args.size}"` : null} ${args.disabled ? `disabled` : null} ${args.name ? `name="${args.name}"` : null} ${args.type == "link" && args.href ? `href="${args.href}"` : null} ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null} ${args.type == "link" && args.target ? `target="${args.target}"` : null} ${args.type == "link" && args.download ? `download="${args.download}"` : null}>
   ${args.default}
 </GcdsButton>
-`).replace(/\s\snull\n/g, '');
+`).replace(/ null/g, '');
 
 const TemplatePreview = () => (`
-  // Web Component code (Angular, Vue)
-  <gcds-button>
-    Primary
-  </gcds-button>
-  <gcds-button button-role="secondary">
-    Secondary
-  </gcds-button>
-  <gcds-button button-role="danger">
-    Danger
-  </gcds-button>
-  <gcds-button button-role="skip-to-content">
-    Skip-to-content
-  </gcds-button>
-  <gcds-button button-style="text-only">
-    Text-only
-  </gcds-button>
+// Web component code (Angular, Vue)
+<gcds-button>
+  Primary
+</gcds-button>
+<gcds-button button-role="secondary">
+  Secondary
+</gcds-button>
+<gcds-button button-role="danger">
+  Danger
+</gcds-button>
+<gcds-button button-role="skip-to-content">
+  Skip-to-content
+</gcds-button>
+<gcds-button button-style="text-only">
+  Text-only
+</gcds-button>
 
-  // React code
-  <GcdsButton>
-    Primary
-  </GcdsButton>
-  <GcdsButton buttonRole="secondary">
-    Secondary
-  </GcdsButton>
-  <GcdsButton buttonRole="danger">
-    Danger
-  </GcdsButton>
-  <GcdsButton buttonRole="skip-to-content">
-    Skip-to-content
-  </GcdsButton>
-  <GcdsButton buttonStyle="text-only">
-    Text-only
-  </GcdsButton>
-`).replace(/ null/g, '');
+// React code
+<GcdsButton>
+  Primary
+</GcdsButton>
+<GcdsButton buttonRole="secondary">
+  Secondary
+</GcdsButton>
+<GcdsButton buttonRole="danger">
+  Danger
+</GcdsButton>
+<GcdsButton buttonRole="skip-to-content">
+  Skip-to-content
+</GcdsButton>
+<GcdsButton buttonStyle="text-only">
+  Text-only
+</GcdsButton>
+`);
 
 const TemplateTypes = () => (`
-  // Web Component code (Angular, Vue)
-  <gcds-button>
-    Button
-  </gcds-button>
-  <gcds-button type="link">
-    Link
-  </gcds-button>
-  <gcds-button type="reset">
-    Reset
-  </gcds-button>
-  <gcds-button type="submit">
-    Submit
-  </gcds-button>
+// Web component code (Angular, Vue)
+<gcds-button>
+  Button
+</gcds-button>
+<gcds-button type="link">
+  Link
+</gcds-button>
+<gcds-button type="reset">
+  Reset
+</gcds-button>
+<gcds-button type="submit">
+  Submit
+</gcds-button>
 
-  // React code
-  <GcdsButton>
-    Button
-  </GcdsButton>
-  <GcdsButton type="link">
-    Link
-  </GcdsButton>
-  <GcdsButton type="reset">
-    Reset
-  </GcdsButton>
-  <GcdsButton type="submit">
-    Submit
-  </GcdsButton>
-`).replace(/ null/g, '');
+// React code
+<GcdsButton>
+  Button
+</GcdsButton>
+<GcdsButton type="link">
+  Link
+</GcdsButton>
+<GcdsButton type="reset">
+  Reset
+</GcdsButton>
+<GcdsButton type="submit">
+  Submit
+</GcdsButton>
+`);
 
 const TemplateTwoButtons = (args) => (`
-  // Web Component code (Angular, Vue)
-  <gcds-button ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.btnOneStyle != "solid" ? `button-style="${args.btnOneStyle}"` : null} ${args.btnOneSize != "regular" ? `size="${args.btnOneSize}"` : null} ${args.btnOneDisabled ? `disabled` : null}>
-    ${args.btnOneText}
-  </gcds-button>
-  <gcds-button ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.btnTwoStyle != "solid" ? `button-style="${args.btnTwoStyle}"` : null} ${args.btnTwoSize != "regular" ? `size="${args.btnTwoSize}"` : null} ${args.btnTwoDisabled ? `disabled` : null}>
-    ${args.btnTwoText}
-  </gcds-button>
+// Web component code (Angular, Vue)
+<gcds-button ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.btnOneStyle != "solid" ? `button-style="${args.btnOneStyle}"` : null} ${args.btnOneSize != "regular" ? `size="${args.btnOneSize}"` : null} ${args.btnOneDisabled ? `disabled` : null}>
+  ${args.btnOneText}
+</gcds-button>
+<gcds-button ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.btnTwoStyle != "solid" ? `button-style="${args.btnTwoStyle}"` : null} ${args.btnTwoSize != "regular" ? `size="${args.btnTwoSize}"` : null} ${args.btnTwoDisabled ? `disabled` : null}>
+  ${args.btnTwoText}
+</gcds-button>
 
-  // React code
-  <GcdsButton ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.btnOneStyle != "solid" ? `button-style="${args.btnOneStyle}"` : null} ${args.btnOneSize != "regular" ? `size="${args.btnOneSize}"` : null} ${args.btnOneDisabled ? `disabled` : null}>
-    ${args.btnOneText}
-  </GcdsButton>
-  <GcdsButton ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.btnTwoStyle != "solid" ? `button-style="${args.btnTwoStyle}"` : null} ${args.btnTwoSize != "regular" ? `size="${args.btnTwoSize}"` : null} ${args.btnTwoDisabled ? `disabled` : null}>
-    ${args.btnTwoText}
-  </GcdsButton>
+// React code
+<GcdsButton ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.btnOneStyle != "solid" ? `button-style="${args.btnOneStyle}"` : null} ${args.btnOneSize != "regular" ? `size="${args.btnOneSize}"` : null} ${args.btnOneDisabled ? `disabled` : null}>
+  ${args.btnOneText}
+</GcdsButton>
+<GcdsButton ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.btnTwoStyle != "solid" ? `button-style="${args.btnTwoStyle}"` : null} ${args.btnTwoSize != "regular" ? `size="${args.btnTwoSize}"` : null} ${args.btnTwoDisabled ? `disabled` : null}>
+  ${args.btnTwoText}
+</GcdsButton>
 `).replace(/ null/g, '');
 
 const TemplatePlayground = (args) => (`
@@ -274,25 +251,7 @@ const TemplatePlayground = (args) => (`
 >
   ${args.default}
 </gcds-button>
-`).replace(/\s\snull\n/g, '');
-
-// ------ Button default ------
-
-export const Default = Template.bind({});
-Default.args = {
-  type: 'button',
-  buttonRole: 'primary',
-  buttonStyle: 'solid',
-  buttonId: '',
-  size: 'regular',
-  disabled: false,
-  name: '',
-  href: '',
-  rel: '',
-  target: '',
-  download: '',
-  default: 'Button label',
-};
+`);
 
 // ------ Buttons overview ------
 
@@ -443,6 +402,24 @@ TextOnlySize.args = {
   btnTwoText: 'Text-only small',
   btnTwoSize: 'small',
   btnTwoStyle: 'text-only',
+};
+
+// ------ Button events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
+  type: 'button',
+  buttonRole: 'primary',
+  buttonStyle: 'solid',
+  buttonId: '',
+  size: 'regular',
+  disabled: false,
+  name: '',
+  href: '',
+  rel: '',
+  target: '',
+  download: '',
+  default: 'Button label',
 };
 
 // ------ Button playground ------

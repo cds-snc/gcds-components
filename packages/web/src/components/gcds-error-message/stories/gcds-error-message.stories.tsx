@@ -28,12 +28,13 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component code (Angular, Vue)
+// Web component code (Angular, Vue)
 <gcds-error-message
   message-id="${args.messageId}"
   message="${args.message}"
 >
 </gcds-error-message>
+
 // React code
 <GcdsErrorMessage
   messageId="${args.messageId}"
@@ -48,12 +49,20 @@ const TemplatePlayground = (args) => (`
   message="${args.message}"
 >
 </gcds-error-message>
-`).replace(/\s\snull\n/g, '');
+`);
 
 // ------ Error message default ------
 
 export const Default = Template.bind({});
 Default.args = {
+  messageId: 'message-id',
+  message: 'This is an error message.',
+};
+
+// ------ Error message events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
   messageId: 'message-id',
   message: 'This is an error message.',
 };

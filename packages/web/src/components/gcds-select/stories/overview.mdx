@@ -1,0 +1,79 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Select from './gcds-select.stories';
+
+<Meta of={Select} name="Overview" />
+
+# Select<br/>`<gcds-select>`
+
+_Also called: dropdown, select menu._
+
+A list of options with a single-option choice.
+
+<Canvas
+  of={Select.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### State
+
+#### Default
+
+<Canvas
+  of={Select.Default}
+  story={{ inline: true }}
+/>
+
+#### Required
+
+<Canvas
+  of={Select.Required}
+  story={{ inline: true }}
+/>
+
+
+#### Error
+
+<Canvas
+  of={Select.Error}
+  story={{ inline: true }}
+/>
+
+#### Disabled
+
+<Canvas
+  of={Select.Disabled}
+  story={{ inline: true }}
+/>
+
+### Default value
+
+#### Select with default value
+
+<Canvas
+  of={Select.Default}
+  story={{ inline: true }}
+/>
+
+#### Select without default value
+
+<Canvas
+  of={Select.WithoutDefaultValue}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<div>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/select/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-select" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=856-2826&mode=design&t=S19QCPw1uQKzztyY-0" target="_blank">Figma</gcds-button>
+  </li>
+</div>

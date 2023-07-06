@@ -6,11 +6,6 @@
 <!-- Font Awesome (Icons) -->
 <link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-<!-- GC Design System -->
-<link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css">
-<script type="module" src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"></script>
-<script nomodule src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"></script>
-
 <style>
   body {
     font-family: var(--gcds-font-families-body);
@@ -34,12 +29,6 @@
   /* ----- PROPERTIES PAGE ----- */
 
   /* Component Preview */
-  .text-with-border {
-    margin: var(--gcds-spacing-0);
-    padding: var(--gcds-spacing-400);
-    border: 1px dashed var(--gcds-text-primary);
-  }
-
   .docs-story,
   .sb-show-main #storybook-root,
   .docs-story .sb-story gcdscontainer .text-with-border {
@@ -53,16 +42,6 @@
   .sb-show-main #storybook-root .hydrated {
     font-size:var(--gcds-font-sizes-text) !important;
     color: var(--gcds-text-primary) !important;
-  }
-
-  .sbdocs-preview .docs-story .hydrated + .hydrated,
-  .sb-show-main #storybook-root .hydrated + .hydrated {
-    margin: 0 0 0 var(--gcds-spacing-400);
-  }
-
-  /* Hide show code button */
-  .css-1k7cati {
-    /* display: none !important; */
   }
 
   /* Change props table headings */
@@ -147,7 +126,8 @@
   }
 
   .docblock-argstable-body td .css-um6g9i,
-  .docblock-argstable-body td .css-1qot2ot {
+  .docblock-argstable-body td .css-1qot2ot,
+  .docblock-argstable-body td .css-4q52yj {
     background-color: var(--gcds-color-grayscale-700) !important;
     color: var(--gcds-text-light);
     border: var(--gcds-border-width-sm) solid currentColor;
@@ -220,5 +200,19 @@
   /* Canvas preview */
   .css-ikdg6z {
     background-color: var(--gcds-color-grayscale-50);
+  }
+
+  /* ----- COMPONENT SPECIFIC ----- */
+
+  /* gcds-button */
+  .sbdocs-preview .docs-story gcds-button.hydrated + gcds-button.hydrated,
+  .sb-show-main #storybook-root gcds-button.hydrated + gcds-button.hydrated {
+    margin: 0 0 0 var(--gcds-spacing-400);
+  }
+
+  /* gcds-container */
+  .docs-story .sb-story gcds-container *,
+  .sb-show-main #storybook-root gcds-container * {
+    margin: var(--gcds-spacing-0);
   }
 </style>
