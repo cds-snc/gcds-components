@@ -120,7 +120,6 @@ export class GcdsNavGroup {
         >
           <gcds-icon name={open ? 'angle-up' : 'angle-down'}></gcds-icon>
           {heading}
-
         </button>
         <ul
           role="menu"
