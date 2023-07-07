@@ -85,6 +85,10 @@ export class GcdsNavGroup {
 
     if (this.el.parentNode.nodeName == "GCDS-TOP-NAV") {
         this.navStyle = "dropdown"
+
+        if (this.open) {
+          this.open = false;
+        }
     } else {
         this.navStyle = "expandable"
     }
