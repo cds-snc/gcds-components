@@ -9,6 +9,23 @@ describe('gcds-nav-group', () => {
     const element = await page.find('gcds-nav-group');
     expect(element).toHaveClass('hydrated');
   });
+
+  it('renders w/ gcds-nav-links', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gcds-nav-group heading="Nav group">
+        <gcds-nav-link href="#link1">Nav Link 1</gcds-nav-link>
+        <gcds-nav-link href="#link2">Nav Link 2</gcds-nav-link>
+        <gcds-nav-link href="#link3">Nav Link 3</gcds-nav-link>
+      </gcds-nav-group>
+    `);
+
+    await page.keyboard.press("Tab");
+    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Nav group");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Tab");
+    expect(await page.evaluate(() => window.document.activeElement.nodeName)).toEqual("GCDS-NAV-LINK");
+  });
 });
 
 /*
