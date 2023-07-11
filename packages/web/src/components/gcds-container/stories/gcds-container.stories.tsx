@@ -62,12 +62,12 @@ export default {
 };
 
 const Template = (args) => (`
-// Web component code (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-container ${args.size != "full" ? `size="${args.size}"`: null} ${args.border ? "border" : null} ${args.centered ? "centered" : null} ${args.tag != "div" ? `tag="${args.tag}"`: null} ${args.margin ? `margin="${args.margin}"` : null} ${args.padding ? `padding="${args.padding}"` : null}>
   ${args.default ? args.default : null}
 </gcds-container>
 
-// React code
+<!-- React code -->
 <GcdsContainer ${args.size != "full" ? `size="${args.size}"`: null} ${args.border ? "border" : null} ${args.centered ? `centered` : null} ${args.tag != "div" ? `tag="${args.tag}"`: null} ${args.margin ? `margin="${args.margin}"` : null} ${args.padding ? `padding="${args.padding}"` : null}>
   ${args.default ? args.default : null}
 </GcdsContainer>
@@ -170,9 +170,10 @@ Centered.args = {
 export const Props = Template.bind({});
 Props.args = {
   size: 'md',
-  border: true,
   tag: 'div',
   padding: '400',
+  border: true,
+  centered: false,
   default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };
 
@@ -181,7 +182,9 @@ Props.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   size: 'full',
-  border: true,
+  tag: 'div',
   padding: '400',
+  centered: false,
+  border: true,
   default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };

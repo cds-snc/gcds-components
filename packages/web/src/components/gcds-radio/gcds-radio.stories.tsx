@@ -103,7 +103,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component code (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-radio
   radio-id="${args.radioId}"
   label="${args.label}"
@@ -117,7 +117,7 @@ const Template = (args) => (`
 >
 </gcds-radio>
 
-// React code
+<!-- React code -->
 <GcdsRadio
   radioId="${args.radioId}"
   label="${args.label}"

@@ -26,11 +26,11 @@ export default {
 };
 
 const Template = (args) => (`
-// Web component code (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-verify-banner ${args.container != "xl" ? `container="${args.container}"` : null} ${args.isFixed ? `is-fixed` : null} ${args.lang != "en" ? `lang="${args.lang}"` : null}>
 </gcds-verify-banner>
 
-// React code
+<!-- React code -->
 <GcdsVerifyBanner ${args.container != "xl" ? `container="${args.container}"` : null} ${args.isFixed ? `isFixed` : null} ${args.lang != "en" ? `lang="${args.lang}"` : null}>
 </GcdsVerifyBanner>
 `).replace(/ null/g, '');

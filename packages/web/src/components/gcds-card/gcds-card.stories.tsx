@@ -82,7 +82,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-card
   card-title="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}
@@ -96,7 +96,7 @@ const Template = (args) => (`
   ${args.footer ? `<div slot="footer">${args.footer}</div>` : null}
 </gcds-card>
 
-// React code
+<!-- React code -->
 <GcdsCard
   cardTitle="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}

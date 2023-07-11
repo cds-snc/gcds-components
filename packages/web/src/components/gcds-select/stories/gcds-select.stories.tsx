@@ -103,7 +103,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web component code (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-select
   select-id="${args.selectId}"
   label="${args.label}"
@@ -121,7 +121,7 @@ const Template = (args) => (`
   <option value="3">Option 3</option>
 </gcds-select>
 
-// React code
+<!-- React code -->
 <GcdsSelect
   selectId="${args.selectId}"
   label="${args.label}"

@@ -28,20 +28,12 @@
 
   /* ----- PROPERTIES PAGE ----- */
 
-  /* Component Preview */
-  .docs-story,
-  .sb-show-main #storybook-root,
-  .docs-story .sb-story gcdscontainer .text-with-border {
+  /* Component Preview - hide React code */
+  .sb-show-main #storybook-docs .sb-story > div > *:not(.hydrated)  {
     font-size: 0;
     color: var(--gcds-text-light);
     padding: 0 !important;
     border: none !important;
-  }
-
-  .docs-story .hydrated,
-  .sb-show-main #storybook-root .hydrated {
-    font-size:var(--gcds-font-sizes-text) !important;
-    color: var(--gcds-text-primary) !important;
   }
 
   /* Change props table headings */

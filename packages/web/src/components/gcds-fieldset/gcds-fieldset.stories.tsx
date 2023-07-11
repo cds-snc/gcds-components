@@ -82,7 +82,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component code (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-fieldset
   fieldset-id="${args.fieldsetId}"
   legend="${args.legend}"
@@ -97,7 +97,7 @@ const Template = (args) => (`
   <gcds-radio radio-id="r2" name="radio" label="Radio button 2"></gcds-radio>
 </gcds-fieldset>
 
-// React code
+<!-- React code -->
 <GcdsFieldset
   fieldsetId="${args.fieldsetId}"
   legend="${args.legend}"

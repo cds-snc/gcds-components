@@ -32,11 +32,11 @@ export default {
 };
 
 const Template = (args) => (`
-// Web component code (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-stepper current-step="${args.currentStep}" total-steps="${args.totalSteps}" ${args.lang != "en" ? `lang="${args.lang}"` : null}>
 </gcds-stepper>
 
-// React code
+<!-- React code -->
 <GcdsStepper currentStep="${args.currentStep}" totalSteps="${args.totalSteps}" ${args.lang != "en" ? `lang="${args.lang}"` : null}>
 </GcdsStepper>
 `).replace(/ null/g, '');
