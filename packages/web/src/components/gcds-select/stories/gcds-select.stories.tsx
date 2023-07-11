@@ -127,7 +127,7 @@ const Template = (args) => (`
   label="${args.label}"
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.value ? `value="${args.value}"` : null}
-  ${args.defaultValue ? `default-value="${args.defaultValue}"` : null}
+  ${args.defaultValue ? `defaultValue="${args.defaultValue}"` : null}
   ${args.required ? `required` : null}
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.disabled ? `disabled` : null}
