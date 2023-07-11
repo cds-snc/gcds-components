@@ -22,6 +22,8 @@ describe('gcds-nav-group', () => {
 
     await page.keyboard.press("Tab");
     expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Nav group");
+    
+    await page.waitForChanges();
     await page.keyboard.press("Enter");
     await page.keyboard.press("Tab");
     expect(await page.evaluate(() => window.document.activeElement.nodeName)).toEqual("GCDS-NAV-LINK");

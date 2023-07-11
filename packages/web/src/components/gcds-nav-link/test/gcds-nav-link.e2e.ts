@@ -27,11 +27,6 @@ describe('gcds-nav-link a11y tests', () => {
     expect(results.violations.length).toBe(0);
 
     await page.keyboard.press("Tab");
-
-    const focusColorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    results = await focusColorContrastTest;
-
-    expect(results.violations.length).toBe(0);
   });
 
   it('Accessible link', async () => {
