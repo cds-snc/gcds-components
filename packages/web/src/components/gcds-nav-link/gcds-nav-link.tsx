@@ -67,15 +67,15 @@ export class GcdsNavLink {
   }
 
   private onClick = (e) => {
-    this.gcdsClick.emit();
+    this.gcdsClick.emit(e);
   }
 
   private onFocus = (e) => {
-    this.gcdsFocus.emit();
+    this.gcdsFocus.emit(e);
   }
 
   private onBlur = (e) => {
-    this.gcdsBlur.emit();
+    this.gcdsBlur.emit(e);
   }
 
   async componentWillLoad() {
