@@ -13,6 +13,15 @@
 | `href` _(required)_ | `href`    | Link href         | `string`  | `undefined` |
 
 
+## Events
+
+| Event       | Description                             | Type                |
+| ----------- | --------------------------------------- | ------------------- |
+| `gcdsBlur`  | Emitted when the link loses focus.      | `CustomEvent<void>` |
+| `gcdsClick` | Emitted when the link has been clicked. | `CustomEvent<void>` |
+| `gcdsFocus` | Emitted when the link has focus.        | `CustomEvent<void>` |
+
+
 ## Methods
 
 ### `focusLink() => Promise<void>`

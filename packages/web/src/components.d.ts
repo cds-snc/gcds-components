@@ -908,6 +908,10 @@ export interface GcdsNavGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsNavGroupElement;
 }
+export interface GcdsNavLinkCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsNavLinkElement;
+}
 export interface GcdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsPaginationElement;
@@ -1794,6 +1798,18 @@ declare namespace LocalJSX {
           * Link href
          */
         "href": string;
+        /**
+          * Emitted when the link loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsNavLinkCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsNavLinkCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsNavLinkCustomEvent<void>) => void;
     }
     interface GcdsPagination {
         /**

@@ -600,11 +600,25 @@ export class GcdsNavLink {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
 
-export declare interface GcdsNavLink extends Components.GcdsNavLink {}
+export declare interface GcdsNavLink extends Components.GcdsNavLink {
+  /**
+   * Emitted when the link has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+}
 
 
 @ProxyCmp({

@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, Method, h } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Method, Event, EventEmitter, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 
 @Component({
@@ -20,6 +20,21 @@ export class GcdsNavLink {
    * Current page flag
    */
   @Prop({ reflect: true }) current: boolean;
+
+  /**
+   * Emitted when the link has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+    * Emitted when the link loses focus.
+    */
+  @Event() gcdsBlur!: EventEmitter<void>;
 
   /**
   * Language of rendered component
@@ -49,6 +64,18 @@ export class GcdsNavLink {
       }
     });
     observer.observe(this.el, observerConfig);
+  }
+
+  private onClick = (e) => {
+    this.gcdsClick.emit();
+  }
+
+  private onFocus = (e) => {
+    this.gcdsFocus.emit();
+  }
+
+  private onBlur = (e) => {
+    this.gcdsBlur.emit();
   }
 
   async componentWillLoad() {
@@ -87,6 +114,9 @@ export class GcdsNavLink {
           href={href}
           {...linkAttrs}
           role="menuitem"
+          onBlur={(e) => this.onBlur(e)}
+          onFocus={(e) => this.onFocus(e)}
+          onClick={(e) => this.onClick(e)}
           ref={element => this.linkElement = element as HTMLElement}
         >
           <slot></slot>
