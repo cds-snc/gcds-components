@@ -127,4 +127,64 @@ describe('gcds-grid', () => {
       </gcds-container>
     `);
   });
+
+  /**
+   * Spacing tests
+   */
+  it('renders container with margin', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsContainer],
+      html: `
+        <gcds-container margin="400" />
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-container margin="400">
+        <mock:shadow-root>
+          <div class="gcds-container size-full m-400">
+            <slot></slot>
+          </div>
+        </mock:shadow-root>
+      </gcds-container>
+    `);
+  });
+
+  it('renders container with padding', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsContainer],
+      html: `
+        <gcds-container padding="400" />
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-container padding="400">
+        <mock:shadow-root>
+          <div class="gcds-container size-full p-400">
+            <slot></slot>
+          </div>
+        </mock:shadow-root>
+      </gcds-container>
+    `);
+  });
+
+  /**
+   * Border test
+   */
+  it('renders container with border', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsContainer],
+      html: `
+        <gcds-container border />
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-container border>
+        <mock:shadow-root>
+          <div class="gcds-container size-full container-border">
+            <slot></slot>
+          </div>
+        </mock:shadow-root>
+      </gcds-container>
+    `);
+  });
 });

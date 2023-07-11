@@ -14,6 +14,11 @@ export class GcdsContainer {
    */
 
   /**
+   * Defines if container has a border or not.
+   */
+  @Prop() border?: boolean = false;
+
+  /**
    * Defines if container is centered or not.
    */
   @Prop() centered?: boolean = false;
@@ -39,7 +44,7 @@ export class GcdsContainer {
   @Prop() tag?: string = 'div';
 
   render() {
-    const { centered, margin, padding, size, tag } = this;
+    const { border, centered, margin, padding, size, tag } = this;
 
     const Tag = tag;
 
@@ -48,6 +53,7 @@ export class GcdsContainer {
         <Tag
           class={`
             gcds-container
+            ${border ? `container-border` : ''}
             ${centered ? `container-centered` : ''}
             ${margin ? `m-${margin}` : ''}
             ${padding ? `p-${padding}` : ''}
