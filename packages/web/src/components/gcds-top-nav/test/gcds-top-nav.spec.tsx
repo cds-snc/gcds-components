@@ -13,7 +13,7 @@ describe('gcds-top-nav', () => {
       <gcds-top-nav label="top-nav">
         <mock:shadow-root>
           <nav aria-label="top-nav - Use the enter key to select a menu item and travel to its page. Use the left and right arrow keys to navigate between menu and submenu items. Use the right arrow key to open submenus when they are available. Use the left arrow or escape keys to close a menu." class="gcds-top-nav__container">
-            <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" heading="Menu" lang="en">
+            <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en">
               <slot name="home"></slot>
               <ul class="nav-container__list nav-list--left" role="menu">
                 <slot></slot>
@@ -33,7 +33,7 @@ describe('gcds-top-nav', () => {
       <gcds-top-nav label="top-nav" lang="fr">
         <mock:shadow-root>
           <nav aria-label="top-nav - Utiliser la touche d'entrée pour sélectionner un élément du menu et voyager à la page indiquée. Utiliser les flèches gauches et droites pour naviguer entre les éléments et les sous-éléments du menu. Ouvrir les sous-éléments du menu avec la flèche droite lorsqu'il sont disponible. Fermer le menu avec la flèche gauche ou la touche d'échappement." class="gcds-top-nav__container">
-            <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" heading="Menu" lang="fr">
+            <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" menuLabel="Menu" closeTrigger="Fermer" openTrigger="Menu" lang="fr">
               <slot name="home"></slot>
               <ul class="nav-container__list nav-list--left" role="menu">
                 <slot></slot>
@@ -54,7 +54,7 @@ describe('gcds-top-nav', () => {
       <gcds-top-nav label="top-nav" alignment="center">
         <mock:shadow-root>
           <nav aria-label="top-nav - Use the enter key to select a menu item and travel to its page. Use the left and right arrow keys to navigate between menu and submenu items. Use the right arrow key to open submenus when they are available. Use the left arrow or escape keys to close a menu." class="gcds-top-nav__container">
-            <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" heading="Menu" lang="en">
+            <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en">
               <slot name="home"></slot>
               <ul class="nav-container__list nav-list--center" role="menu">
                 <slot></slot>
@@ -74,7 +74,7 @@ describe('gcds-top-nav', () => {
       <gcds-top-nav label="top-nav" alignment="right">
         <mock:shadow-root>
           <nav aria-label="top-nav - Use the enter key to select a menu item and travel to its page. Use the left and right arrow keys to navigate between menu and submenu items. Use the right arrow key to open submenus when they are available. Use the left arrow or escape keys to close a menu." class="gcds-top-nav__container">
-            <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" heading="Menu" lang="en">
+            <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en">
               <slot name="home"></slot>
               <ul class="nav-container__list nav-list--right" role="menu">
                 <slot></slot>

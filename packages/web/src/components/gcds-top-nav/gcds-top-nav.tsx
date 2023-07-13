@@ -168,7 +168,7 @@ export class GcdsTopNav {
 
         if (mobileTrigger.hasAttribute("open")) {
           mobileTrigger.toggleNav();
-        } 
+        }
       } else {
         nav.updateNavSize("mobile");
         await nav.updateNavItemQueue(nav);
@@ -178,6 +178,7 @@ export class GcdsTopNav {
 
   render() {
     const { label, alignment, lang } = this;
+
     return (
       <Host>
         <nav
@@ -185,7 +186,9 @@ export class GcdsTopNav {
           class="gcds-top-nav__container"
         >
           <gcds-nav-group
-            heading="Menu"
+            menuLabel="Menu"
+            closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
+            openTrigger="Menu"
             class="gcds-mobile-nav gcds-mobile-nav-topnav"
             ref={element => this.mobile = element as HTMLGcdsNavGroupElement}
             lang={lang}

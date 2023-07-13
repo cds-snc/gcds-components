@@ -9,7 +9,6 @@
 @layer defaults {
   :host a {
     display: flex;
-    max-width: var(--gcds-nav-link-default-max-width);
     font: var(---gcds-nav-link-font);
     text-decoration: underline solid currentColor var( --gcds-nav-link-default-decoration-thickness);
     text-underline-offset: var(--gcds-nav-link-default-underline-offset);
@@ -18,6 +17,14 @@
     padding: var(--gcds-nav-link-padding);
     border-inline: var(--gcds-nav-link-border-width) solid transparent;
     transition: all 0.25s ease-in-out;
+
+    @media only screen and (width < 64em) {
+      min-width: 50%;
+    }
+
+    @media only screen and (width > 48em) {
+      max-width: var(--gcds-nav-link-default-max-width);
+    }
 
     &[aria-current="page"] {
       text-decoration: none;

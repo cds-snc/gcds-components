@@ -129,6 +129,11 @@
       display: none;
     }
 
+    @media only screen and (48em < width < 64em) {
+      width: auto;
+      align-self: flex-start;
+    }
+
     gcds-icon {
       display: none;
     }
