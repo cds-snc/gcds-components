@@ -40,7 +40,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-error-summary
   ${args.listen && !args.errorLinks ? `listen` : null}
   ${args.errorLinks ? `error-links='${args.errorLinks}'` : null}
@@ -49,7 +49,7 @@ const Template = (args) => (`
 >
 </gcds-error-summary>
 
-// React code
+<!-- React code -->
 <GcdsErrorSummary
   ${args.listen && !args.errorLinks ? `listen` : null}
   ${args.errorLinks ? `errorLinks='${args.errorLinks}'` : null}

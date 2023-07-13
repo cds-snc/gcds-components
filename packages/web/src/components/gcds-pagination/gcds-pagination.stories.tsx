@@ -80,7 +80,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-pagination
   ${args.display != "list" ? `display="${args.display}"` : null}
   label="${args.label}"
@@ -98,7 +98,7 @@ const Template = (args) => (`
 >
 </gcds-pagination>
 
-// React code
+<!-- React code -->
 <GcdsPagination
   ${args.display != "list" ? `display="${args.display}"` : null}
   label="${args.label}"

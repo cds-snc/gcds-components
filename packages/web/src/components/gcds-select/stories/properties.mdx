@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as Select from './gcds-select.stories';
+
+<Meta of={Select} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={Select.Props}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Select.Props} sort="requiredFirst" />

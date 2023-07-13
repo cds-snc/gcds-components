@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as Breadcrumbs from './gcds-breadcrumbs.stories';
+
+<Meta of={Breadcrumbs} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={Breadcrumbs.Props}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Breadcrumbs.Props} sort="requiredFirst" />

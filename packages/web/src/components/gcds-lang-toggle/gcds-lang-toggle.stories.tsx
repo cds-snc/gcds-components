@@ -21,14 +21,14 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-lang-toggle
   href="${args.href}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-lang-toggle>
 
-// React code
+<!-- React code -->
 <GcdsLangToggle
   href="${args.href}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
