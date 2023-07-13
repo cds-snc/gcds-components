@@ -563,6 +563,10 @@ export namespace Components {
          */
         "heading": string;
         /**
+          * Label for the expanded button trigger
+         */
+        "labelTriggerClose"?: string;
+        /**
           * Has the nav group been expanded
          */
         "open": boolean;
@@ -1780,6 +1784,10 @@ declare namespace LocalJSX {
           * Heading for the nav group, labels the button trigger
          */
         "heading": string;
+        /**
+          * Label for the expanded button trigger
+         */
+        "labelTriggerClose"?: string;
         /**
           * Emitted when the button has focus.
          */

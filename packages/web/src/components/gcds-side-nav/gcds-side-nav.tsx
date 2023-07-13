@@ -151,7 +151,7 @@ export class GcdsSideNav {
 
         if (mobileTrigger.hasAttribute("open")) {
           mobileTrigger.toggleNav();
-        } 
+        }
       } else {
         nav.updateNavSize("mobile");
         await nav.updateNavItemQueue(nav);
@@ -169,6 +169,7 @@ export class GcdsSideNav {
           <h2 class="gcds-side-nav__heading">{label}</h2>
           <gcds-nav-group
             heading="Menu"
+            label-trigger-close={lang == 'fr' ? 'Fermer' : 'Close'}
             class="gcds-mobile-nav"
             role="menu"
             ref={element => this.mobile = element as HTMLGcdsNavGroupElement}

@@ -18,6 +18,11 @@ export class GcdsNavGroup {
   @Prop({ reflect: true }) heading!: string;
 
   /**
+   *  Label for the expanded button trigger
+   */
+  @Prop({ reflect: true }) labelTriggerClose?: string;
+
+  /**
    * Has the nav group been expanded
    */
   @Prop({ reflect: true, mutable: true }) open: boolean = false;
@@ -99,7 +104,7 @@ export class GcdsNavGroup {
   }
 
   render() {
-    const { heading, open, lang } = this;
+    const { heading, labelTriggerClose, open, lang } = this;
     return (
       <Host
         role="presentation"
@@ -119,7 +124,7 @@ export class GcdsNavGroup {
           }}
         >
           <gcds-icon name={open ? 'angle-up' : 'angle-down'}></gcds-icon>
-          {heading}
+          { labelTriggerClose && open ? labelTriggerClose : heading}
         </button>
         <ul
           role="menu"
