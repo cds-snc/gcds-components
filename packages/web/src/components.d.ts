@@ -555,21 +555,25 @@ export namespace Components {
     }
     interface GcdsNavGroup {
         /**
+          * Label for the expanded button trigger
+         */
+        "closeTrigger"?: string;
+        /**
           * Focus button element
          */
         "focusTrigger": () => Promise<void>;
         /**
-          * Heading for the nav group, labels the button trigger
+          * Label for the nav group menu
          */
-        "heading": string;
-        /**
-          * Label for the expanded button trigger
-         */
-        "labelTriggerClose"?: string;
+        "menuLabel": string;
         /**
           * Has the nav group been expanded
          */
         "open": boolean;
+        /**
+          * Label for the collapsed button trigger
+         */
+        "openTrigger": string;
         /**
           * Toggle the nav open or closed
          */
@@ -1781,13 +1785,13 @@ declare namespace LocalJSX {
     }
     interface GcdsNavGroup {
         /**
-          * Heading for the nav group, labels the button trigger
-         */
-        "heading": string;
-        /**
           * Label for the expanded button trigger
          */
-        "labelTriggerClose"?: string;
+        "closeTrigger"?: string;
+        /**
+          * Label for the nav group menu
+         */
+        "menuLabel": string;
         /**
           * Emitted when the button has focus.
          */
@@ -1796,6 +1800,10 @@ declare namespace LocalJSX {
           * Has the nav group been expanded
          */
         "open"?: boolean;
+        /**
+          * Label for the collapsed button trigger
+         */
+        "openTrigger": string;
     }
     interface GcdsNavLink {
         /**

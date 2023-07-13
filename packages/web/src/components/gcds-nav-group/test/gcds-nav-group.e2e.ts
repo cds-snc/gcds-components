@@ -4,7 +4,7 @@ const { AxePuppeteer } = require('@axe-core/puppeteer');
 describe('gcds-nav-group', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-nav-group heading="Nav group"></gcds-nav-group>');
+    await page.setContent('<gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>');
 
     const element = await page.find('gcds-nav-group');
     expect(element).toHaveClass('hydrated');
@@ -13,7 +13,7 @@ describe('gcds-nav-group', () => {
   it('renders w/ gcds-nav-links', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-nav-group heading="Nav group">
+      <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group">
         <gcds-nav-link href="#link1">Nav Link 1</gcds-nav-link>
         <gcds-nav-link href="#link2">Nav Link 2</gcds-nav-link>
         <gcds-nav-link href="#link3">Nav Link 3</gcds-nav-link>
@@ -22,7 +22,7 @@ describe('gcds-nav-group', () => {
 
     await page.keyboard.press("Tab");
     expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Nav group");
-    
+
     await page.waitForChanges();
     await page.keyboard.press("Enter");
     await page.keyboard.press("Tab");
@@ -39,7 +39,7 @@ describe('gcds-nav-group a11y tests', () => {
   it('Colour contrast', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-nav-group heading="Nav group"></gcds-nav-group>
+      <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>
     `);
 
     const defaultColorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
@@ -58,7 +58,7 @@ describe('gcds-nav-group a11y tests', () => {
   it('Accessible button', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-nav-group heading="Nav group"></gcds-nav-group>
+      <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>
     `);
 
     const buttonNameTest = new AxePuppeteer(page).withRules('button-name').analyze();

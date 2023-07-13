@@ -178,6 +178,7 @@ export class GcdsTopNav {
 
   render() {
     const { label, alignment, lang } = this;
+
     return (
       <Host>
         <nav
@@ -185,8 +186,9 @@ export class GcdsTopNav {
           class="gcds-top-nav__container"
         >
           <gcds-nav-group
-            heading="Menu"
-            label-trigger-close={lang == 'fr' ? 'Fermer' : 'Close'}
+            menuLabel="Menu"
+            closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
+            openTrigger="Menu"
             class="gcds-mobile-nav gcds-mobile-nav-topnav"
             ref={element => this.mobile = element as HTMLGcdsNavGroupElement}
             lang={lang}

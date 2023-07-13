@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property               | Attribute             | Description                                          | Type      | Default     |
-| ---------------------- | --------------------- | ---------------------------------------------------- | --------- | ----------- |
-| `heading` _(required)_ | `heading`             | Heading for the nav group, labels the button trigger | `string`  | `undefined` |
-| `labelTriggerClose`    | `label-trigger-close` | Label for the expanded button trigger                | `string`  | `undefined` |
-| `open`                 | `open`                | Has the nav group been expanded                      | `boolean` | `false`     |
+| Property                   | Attribute       | Description                            | Type      | Default     |
+| -------------------------- | --------------- | -------------------------------------- | --------- | ----------- |
+| `closeTrigger`             | `close-trigger` | Label for the expanded button trigger  | `string`  | `undefined` |
+| `menuLabel` _(required)_   | `menu-label`    | Label for the nav group menu           | `string`  | `undefined` |
+| `open`                     | `open`          | Has the nav group been expanded        | `boolean` | `false`     |
+| `openTrigger` _(required)_ | `open-trigger`  | Label for the collapsed button trigger | `string`  | `undefined` |
 
 
 ## Events

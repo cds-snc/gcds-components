@@ -1,9 +1,9 @@
 const I18N = {
   "en": {
-      submenu: ". Open or close {$t} submenu."
+      submenu: ". Open or close {$t}."
   },
   "fr": {
-      submenu: ". Ouvrir ou fermer l'élément du sous-menu {$t}."
+      submenu: ". Ouvrir ou fermer {$t}."
   }
 }
 

@@ -556,7 +556,7 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 
 @ProxyCmp({
-  inputs: ['heading', 'labelTriggerClose', 'open'],
+  inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'],
   methods: ['focusTrigger', 'toggleNav']
 })
 @Component({
@@ -564,7 +564,7 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['heading', 'labelTriggerClose', 'open'],
+  inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'],
 })
 export class GcdsNavGroup {
   protected el: HTMLElement;

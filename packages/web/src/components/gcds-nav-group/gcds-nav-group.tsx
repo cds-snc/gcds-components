@@ -13,14 +13,19 @@ export class GcdsNavGroup {
   private triggerElement?: HTMLElement;
 
   /**
-   * Heading for the nav group, labels the button trigger
-   */
-  @Prop({ reflect: true }) heading!: string;
-
-  /**
    *  Label for the expanded button trigger
    */
-  @Prop({ reflect: true }) labelTriggerClose?: string;
+  @Prop({ reflect: true }) closeTrigger?: string;
+
+  /**
+   * Label for the nav group menu
+   */
+  @Prop({ reflect: true }) menuLabel!: string;
+
+  /**
+   *  Label for the collapsed button trigger
+   */
+  @Prop({ reflect: true }) openTrigger!: string;
 
   /**
    * Has the nav group been expanded
@@ -104,7 +109,8 @@ export class GcdsNavGroup {
   }
 
   render() {
-    const { heading, labelTriggerClose, open, lang } = this;
+    const { closeTrigger, menuLabel, open, openTrigger, lang } = this;
+
     return (
       <Host
         role="presentation"
@@ -124,17 +130,17 @@ export class GcdsNavGroup {
           }}
         >
           <gcds-icon name={open ? 'angle-up' : 'angle-down'}></gcds-icon>
-          { labelTriggerClose && open ? labelTriggerClose : heading}
+          { closeTrigger && open ? closeTrigger : openTrigger}
         </button>
         <ul
           role="menu"
-          aria-label={heading}
+          aria-label={menuLabel}
           class={`gcds-nav-group__list gcds-nav--${this.navStyle}`}
         >
           <slot></slot>
         </ul>
         <span aria-hidden="true" id={`trigger-controls`} class="gcds-nav-group__trigger-desc">
-          {I18N[lang].submenu.replace('{$t}', heading)}
+          {I18N[lang].submenu.replace('{$t}', menuLabel)}
         </span>
       </Host>
     );
