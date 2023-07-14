@@ -12,7 +12,7 @@ import i18n from './i18n/i18n';
 export class GcdsFileUploader {
   @Element() el: HTMLElement;
 
-  private shadowElement?: HTMLElement;
+  private shadowElement?: HTMLInputElement;
 
   _validator: Validator<any> = defaultValidator;
 
@@ -220,7 +220,7 @@ export class GcdsFileUploader {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value.length) && this._validator.errorMessage) {
+    if (!this._validator.validate(this.shadowElement.files) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsError.emit({ id: `#${this.uploaderId}`, message: `${this.label} - ${this.errorMessage}` });
     } else {
@@ -344,6 +344,7 @@ export class GcdsFileUploader {
               onFocus={(e) => this.onFocus(e)}
               onChange={(e) => this.handleChange(e)}
               aria-invalid={hasError ? 'true' : 'false'}
+              ref={element => this.shadowElement = element as HTMLInputElement}
             />
             { value.length > 0 ?
               <p id="file-uploader__summary">
