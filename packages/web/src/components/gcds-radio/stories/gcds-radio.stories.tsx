@@ -1,19 +1,19 @@
-import { langProp, validatorProps } from '../../utils/storybook/component-properties';
+import { langProp } from '../../../utils/storybook/component-properties';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Components/Radio',
 
   parameters: {
     actions: {
       argTypesRegex: '^gcds.*',
-      handles: ['change', 'focus', 'blur']
+      handles: ['RadioChange', 'focus', 'blur']
     }
   },
 
   argTypes: {
     // Props
-    checkboxId: {
-      name: 'checkbox-id',
+    radioId: {
+      name: 'radio-id',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -47,14 +47,6 @@ export default {
         defaultValue: { summary: false }
       },
     },
-    errorMessage: {
-      name: 'error-message',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      },
-    },
     hint: {
       control: 'text',
       table: {
@@ -86,12 +78,11 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
-    ...validatorProps,
     ...langProp,
 
     // Events
-    gcdsChange: {
-      action: 'change',
+    gcdsRadioChange: {
+      action: 'RadioChnage',
       table: {
         category: 'Events | Événements',
       }
@@ -113,49 +104,43 @@ export default {
 
 const Template = (args) => (`
 <!-- Web component code (Angular, Vue) -->
-<gcds-checkbox
-  checkbox-id="${args.checkboxId}"
+<gcds-radio
+  radio-id="${args.radioId}"
   label="${args.label}"
   name="${args.name}"
   ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
-  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-</gcds-checkbox>
+</gcds-radio>
 
 <!-- React code -->
-<GcdsCheckbox
-  checkboxId="${args.checkboxId}"
+<GcdsRadio
+  radioId="${args.radioId}"
   label="${args.label}"
   name="${args.name}"
   ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
-  ${args.validateOn != "blur" ? `validate)n="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-</GcdsCheckbox>
+</GcdsRadio>
 `).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  checkboxId: 'checkbox',
-  label: 'Checkbox label',
-  name: 'checkbox',
+  radioId: 'radio',
+  label: 'Radio label',
+  name: 'radio',
   hint: '',
-  errorMessage: '',
   required: false,
   disabled: false,
   value: '',
   checked: false,
-  validateOn: 'blur',
   lang: 'en'
 };

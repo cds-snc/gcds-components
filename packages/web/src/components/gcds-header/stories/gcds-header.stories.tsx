@@ -1,4 +1,4 @@
-import { langProp } from '../../utils/storybook/component-properties';
+import { langProp } from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Header',
