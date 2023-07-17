@@ -75,7 +75,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
-    "storybook": "^7.0.22",
+    "storybook": "^v7.1.0-rc.2",
     "workbox-build": "^4.3.1"
   },
   "license": "MIT"
