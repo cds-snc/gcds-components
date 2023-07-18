@@ -1,29 +1,33 @@
-import { langProp, validatorProps } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../../utils/storybook/component-properties';
 
 export default {
-  title: 'Components/Fieldset',
+  title: 'Components/File uploader',
 
   parameters: {
     actions: {
-      argTypesRegex: '^gcds.*',
-      handles: ['GroupError', 'GroupErrorClear']
+      argTypesRegex: '^on.*',
+      handles: ['change', 'focus', 'blur']
     }
   },
 
   argTypes: {
     // Props
-    fieldsetId: {
-      name: 'fieldset-id',
+    accept: {
       control: 'text',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' }
       },
-      type: {
-        required: true
-      }
     },
-    legend: {
+    multiple: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: '-' }
+      },
+    },
+    uploaderId: {
+      name: 'uploader-id',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -55,6 +59,16 @@ export default {
         defaultValue: { summary: '-' }
       },
     },
+    label: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+      type: {
+        required: true
+      }
+    },
     required: {
       control: 'boolean',
       table: {
@@ -62,65 +76,83 @@ export default {
         defaultValue: { summary: false }
       },
     },
+    value: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' }
+      },
+    },
     ...validatorProps,
     ...langProp,
 
     // Events
-    gcdsGroupError: {
-      action: 'GroupError',
+    gcdsChange: {
+      action: 'change',
       table: {
         category: 'Events | Événements',
       }
     },
-    gcdsGroupErrorClear: {
-      action: 'GroupErrorClear',
+    gcdsFocus: {
+      action: 'focus',
       table: {
         category: 'Events | Événements',
       }
-    }
+    },
+    gcdsBlur: {
+      action: 'blur',
+      table: {
+        category: 'Events | Événements',
+      }
+    },
   },
 };
 
 const Template = (args) => (`
 <!-- Web component code (Angular, Vue) -->
-<gcds-fieldset
-  fieldset-id="${args.fieldsetId}"
-  legend="${args.legend}"
+<gcds-file-uploader
+  uploader-id="${args.uploaderId}"
+  label="${args.label}"
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.accept ? `accept="${args.accept}"` : null}
+  ${args.multiple ? `multiple` : null}
   ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  <gcds-radio radio-id="r1" name="radio" label="Radio button 1"></gcds-radio>
-  <gcds-radio radio-id="r2" name="radio" label="Radio button 2"></gcds-radio>
-</gcds-fieldset>
+</gcds-file-uploader>
 
 <!-- React code -->
-<GcdsFieldset
-  fieldsetId="${args.fieldsetId}"
-  legend="${args.legend}"
+<GcdsFileUploader
+  uploaderId="${args.uploaderId}"
+  label="${args.label}"
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.accept ? `accept="${args.accept}"` : null}
+  ${args.multiple ? `multiple` : null}
   ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  <GcdsRadio radioId="r1" name="radio" label="Radio button 1"></GcdsRadio>
-  <GcdsRadio radioId="r2" name="radio" label="Radio button 2"></GcdsRadio>
-</GcdsFieldset>
+</GcdsFileUploader>
 `).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  fieldsetId: 'fieldset',
-  legend: 'Fieldset legend',
+  uploaderId: 'uploader',
+  label: 'File uploader label',
   hint: '',
   errorMessage: '',
   required: false,
   disabled: false,
+  value: '',
+  accept: '',
+  multiple: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };

@@ -1,4 +1,4 @@
-import { langProp, validatorProps } from '../../utils/storybook/component-properties';
+import { langProp, validatorProps } from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Textarea',

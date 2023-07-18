@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as Footer from './gcds-footer.stories';
+
+<Meta of={Footer} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={Footer.Default}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Footer.Default} sort="requiredFirst" />
