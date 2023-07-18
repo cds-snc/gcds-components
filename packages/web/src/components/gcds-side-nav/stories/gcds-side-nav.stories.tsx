@@ -1,5 +1,7 @@
+import { langProp } from '../../../utils/storybook/component-properties';
+
 export default {
-  title: 'Components/Top navigation',
+  title: 'Components/Side navigation',
 
   argTypes: {
     // Props
@@ -14,14 +16,6 @@ export default {
         required: true
       }
     },
-    alignment: {
-      control: { type: 'radio' },
-      options: ['right', 'left', 'center'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'right' }
-      },
-    },
     position: {
       control: { type: 'radio' },
       options: ['static', 'sticky'],
@@ -30,67 +24,61 @@ export default {
         defaultValue: { summary: 'static' }
       },
     },
-
-    // Slots
-    home: {
-      control: {
-        type: 'text',
-      },
-      table: {
-        category: 'Slots | Fentes',
-      }
-    },
+    ...langProp,
   },
 };
 
 const Template = (args) => (`
 // Web Component (Angular, Vue)
-<gcds-top-nav
+<gcds-side-nav
   label="${args.label}"
-  alignment="${args.alignment}"
   ${args.position != 'static' ? `position=${args.position}` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  ${args.home ?
-    `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link>
-    `
-  : null}
   <gcds-nav-link href="#">Installation</gcds-nav-link>
   <gcds-nav-link href="#">Foundations</gcds-nav-link>
   <gcds-nav-link href="#">Components</gcds-nav-link>
 
-  <gcds-nav-group heading="Contact us">
+  <gcds-nav-group open-trigger="Contact us" menu-label="Contact">
     <gcds-nav-link href="#">Form</gcds-nav-link>
     <gcds-nav-link href="#">GitHub</gcds-nav-link>
     <gcds-nav-link href="#">Slack</gcds-nav-link>
+
+    <gcds-nav-group open-trigger="Sub level 2" menu-label="sublevel">
+      <gcds-nav-link href="#">Link</gcds-nav-link>
+      <gcds-nav-link href="#">Link</gcds-nav-link>
+      <gcds-nav-link href="#">Link</gcds-nav-link>
+    </gcds-nav-group>
   </gcds-nav-group>
-</gcds-top-nav>
+</gcds-side-nav>
 
 // React code
-<GcdsTopNav
+<GcdsSideNav
   label="${args.label}"
-  alignment="${args.alignment}"
   ${args.position != 'static' ? `position=${args.position}` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  ${args.home ?
-    `<GcdsNavLink href="#home" slot="home">${args.home}</GcdsNavLink>
-    `
-  : null}
   <GcdsNavLink href="#">Installation</GcdsNavLink>
   <GcdsNavLink href="#">Foundations</GcdsNavLink>
   <GcdsNavLink href="#">Components</GcdsNavLink>
 
-  <GcdsNavGroup heading="Contact us">
+  <GcdsNavGroup openTrigger="Contact us" menuLabel="Contact">
     <GcdsNavLink href="#">Form</GcdsNavLink>
     <GcdsNavLink href="#">GitHub</GcdsNavLink>
     <GcdsNavLink href="#">Slack</GcdsNavLink>
+
+    <GcdsNavGroup openTrigger="Sub level 2" menuLabel="sublevel">
+      <GcdsNavLink href="#">Link</GcdsNavLink>
+      <GcdsNavLink href="#">Link</GcdsNavLink>
+      <GcdsNavLink href="#">Link</GcdsNavLink>
+    </GcdsNavGroup>
   </GcdsNavGroup>
-</GcdsTopNav>
+</GcdsSideNav>
 `).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Top navigation',
-  alignment: 'right',
+  label: 'Side navigation',
   position: 'static',
-  home: '',
+  lang: 'en'
 };
