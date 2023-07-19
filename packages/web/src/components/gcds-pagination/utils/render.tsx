@@ -2,78 +2,76 @@
  * Function to constuct href attribute from url object
  * Also looks for ::offset and ::match to increment query string values
  */
-function constructHref(el, page: number, end?: "next" | "previous" | null) {
+function constructHref(url, page: number, end?: "next" | "previous" | null) {
   let fragment = "";
   let qs = "";
 
-  if (el.url) {
+  let count = 0;
 
-    let count = 0;
+  for (const key in url.queryStrings) {
 
-    for (const key in el.url.queryStrings) {
+    let queryKey = key;
+    let queryValue = url.queryStrings[key];
 
-      let queryKey = key;
-      let queryValue = el.url.queryStrings[key];
+    if (key.includes("::")) {
 
-      if (key.includes("::")) {
+      let incrementer = key.split("::")[1];
+      let regExp = /\{\{([^)]+)\}\}/;
+      let matches = regExp.exec(url.queryStrings[key]);
 
-        let incrementer = key.split("::")[1];
-        let regExp = /\{\{([^)]+)\}\}/;
-        let matches = regExp.exec(el.url.queryStrings[key]);
+      // Offeset numbers
+      if (incrementer == "offset") {
+        let pageNumber = page;
 
-        // Offeset numbers
-        if (incrementer == "offset") {
-          let pageNumber = page;
-
-          if (end == "next") {
-            ++pageNumber;
-          }
-          else if (end == "previous") {
-            --pageNumber;
-          }
-
-          queryValue = matches ?
-            el.url.queryStrings[key].replace(`{{${matches[1]}}}`, `${((pageNumber-1) * Number(matches[1]))}`)
-          :
-            ((pageNumber-1) * el.url.queryStrings[key]);
-
-          queryKey = queryKey.replace("::offset", "");
+        if (end == "next") {
+        ++pageNumber;
+        }
+        else if (end == "previous") {
+        --pageNumber;
         }
 
-        // Match page number
-        if (incrementer == "match") {
+        queryValue = matches ?
+        url.queryStrings[key].replace(`{{${matches[1]}}}`, `${((pageNumber-1) * Number(matches[1]))}`)
+        :
+        ((pageNumber-1) * url.queryStrings[key]);
+
+        queryKey = queryKey.replace("::offset", "");
+      }
+
+      // Match page number
+      if (incrementer == "match") {
 
           let pageNumber = page;
 
           if (end == "next") {
-            ++pageNumber;
+          ++pageNumber;
           }
           else if (end == "previous") {
-            --pageNumber;
+          --pageNumber;
           }
 
           queryValue = matches ?
-            el.url.queryStrings[key].replace(`{{${matches[1]}}}`, `${(pageNumber * Number(matches[1]))}`)
+          url.queryStrings[key].replace(`{{${matches[1]}}}`, `${(pageNumber * Number(matches[1]))}`)
           :
-            (pageNumber * el.url.queryStrings[key]);
+          (pageNumber * url.queryStrings[key]);
 
           queryKey = queryKey.replace("::match", "");
-        }
       }
-
-      if (count == 0) {
-        qs += `?${queryKey}=${queryValue}`
-      } else {
-        qs += `&${queryKey}=${queryValue}`
-      }
-      ++count;
     }
 
-    if (el.url.fragment) {
-      fragment = `#${el.url.fragment}`;
+    if (count == 0) {
+      qs += `?${queryKey}=${queryValue}`
+    } else {
+      qs += `&${queryKey}=${queryValue}`
     }
-
+    ++count;
   }
+
+  if (url.fragment) {
+      fragment = `#${url.fragment}`;
+  }
+
+  
 
   let href = `${qs}${fragment}`;
 

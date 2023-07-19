@@ -46,7 +46,7 @@ describe('gcds-label', () => {
       <gcds-label id="label-for-input-renders" label="Label" label-for="input-renders" required="">
         <label class="gcds-label" htmlFor="input-renders">
           <span>Label</span>
-          <span class="label--required">(required)</span>
+          <span aria-hidden="true" class="label--required">(required)</span>
         </label>
       </gcds-label>
     `);
@@ -61,7 +61,7 @@ describe('gcds-label', () => {
       <gcds-label id="label-for-input-renders" label="Label" label-for="input-renders" lang="fr" required="">
         <label class="gcds-label" htmlFor="input-renders">
           <span>Label</span>
-          <span class="label--required">(obligatoire)</span>
+          <span aria-hidden="true" class="label--required">(obligatoire)</span>
         </label>
       </gcds-label>
     `);

@@ -7,11 +7,14 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                             | Type                                             | Default  |
-| ----------- | ----------- | --------------------------------------- | ------------------------------------------------ | -------- |
-| `centered`  | `centered`  | Defines if container is centered or not | `boolean`                                        | `false`  |
-| `container` | `container` | Defines container size                  | `"full" \| "lg" \| "md" \| "sm" \| "xl" \| "xs"` | `'full'` |
-| `tag`       | `tag`       | Set tag for container                   | `string`                                         | `'div'`  |
+| Property   | Attribute  | Description                                                                                                       | Type                                                                                                                                         | Default     |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `border`   | `border`   | Defines if container has a border or not.                                                                         | `boolean`                                                                                                                                    | `false`     |
+| `centered` | `centered` | Defines if container is centered or not.                                                                          | `boolean`                                                                                                                                    | `false`     |
+| `margin`   | `margin`   | Defines the container's margin. Note that left and right margin will not be applied if the container is centered. | `"0" \| "100" \| "1000" \| "150" \| "200" \| "250" \| "300" \| "400" \| "450" \| "50" \| "500" \| "550" \| "600" \| "700" \| "800" \| "900"` | `undefined` |
+| `padding`  | `padding`  | Defines the container's padding.                                                                                  | `"0" \| "100" \| "1000" \| "150" \| "200" \| "250" \| "300" \| "400" \| "450" \| "50" \| "500" \| "550" \| "600" \| "700" \| "800" \| "900"` | `undefined` |
+| `size`     | `size`     | Defines container size.                                                                                           | `"full" \| "lg" \| "md" \| "sm" \| "xl" \| "xs"`                                                                                             | `'full'`    |
+| `tag`      | `tag`      | Set tag for container.                                                                                            | `string`                                                                                                                                     | `'div'`     |
 
 
 ## Dependencies

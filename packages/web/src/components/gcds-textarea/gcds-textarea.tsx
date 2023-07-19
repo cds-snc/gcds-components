@@ -1,6 +1,7 @@
 import { Component, Element, Event, Method, Watch, EventEmitter, Host, State, Prop, h, Listen } from '@stencil/core';
 import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-textarea',
@@ -231,7 +232,7 @@ export class GcdsTextarea {
       }
     }
   }
-  
+
   /*
   * Observe lang attribute change
   */
@@ -332,12 +333,10 @@ export class GcdsTextarea {
 
           {characterCount ?
             <p id={`textarea__count-${textareaId}`} aria-live="polite">
-              {this.lang == 'en'?
-                value  == undefined ? `${characterCount} characters allowed`
-                : `${characterCount - value.length} characters left`
+              {
+                value  == undefined ? `${characterCount} ${i18n[lang].characters.allowed}`
               :
-                value  == undefined ? `${characterCount} caractères maximum`
-                : `${characterCount - value.length} caractères restants`
+                `${characterCount - value.length} ${i18n[lang].characters.left}`
               }
             </p>
           : null}

@@ -5,11 +5,15 @@ import gcdsTheme from './gcds-theme';
 
 defineCustomElements();
 
-export const parameters = {
-  docs: {
-    source: {
-      state: 'open',
+const preview = {
+  parameters: {
+    docs: {
+      // source: {
+      //   state: 'open',
+      // },
+      theme: gcdsTheme,
     },
-    theme: gcdsTheme,
   },
 };
+
+export default preview;

@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, Method, Host, Watch, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import { inheritAttributes} from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-button',
@@ -266,7 +267,7 @@ export class GcdsButton {
           { type === 'link' && target === '_blank' ?
             <gcds-icon
               name="external-link"
-              label={ lang == 'en' ? 'Opens in a new tab.' : 'S\'ouvre dans un nouvel onglet.' }
+              label={i18n[lang].label}
               margin-left="200"
             />
           : <slot name="right"></slot> }

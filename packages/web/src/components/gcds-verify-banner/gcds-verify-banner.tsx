@@ -1,9 +1,9 @@
 import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 import CanadaFlag from './assets/canada-flag.svg';
 import ContentToggleArrow from './assets/content-toggle-arrow.svg';
-import Lock from './assets/lock.svg';
 
 @Component({
   tag: 'gcds-verify-banner',
@@ -65,55 +65,39 @@ export class GcdsVerifyBanner {
           >
             <span class='svg-container' innerHTML={CanadaFlag} />
             <p>
-              <small>{lang === 'en' ? 'An official website of the Government of Canada.' : 'Les sites Web officiels du gouvernement du Canada.'}</small>
+              <small>{i18n[lang].summary.text}</small>
               <a class="verify-banner__toggle">
-                <small>{lang === 'en' ? 'Learn to recognize one' : 'Comment les reconnaître'}</small>
+                <small>{i18n[lang].summary.link}</small>
                 <span class='svg-container' innerHTML={ContentToggleArrow} />
               </a>
             </p>
           </summary>
           <div class={`verify-banner__content ${container ? `container-${container}` : ''}`}>
-            <p><small>{lang === 'en' ? 'It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:' : 'Il peut être difficile de savoir quels sites sont fiables. Avant de partager des renseignements, vérifiez les points suivant pour déterminer s\'il s\'agit bien d\'un site du gouvernement du Canada:'}</small></p>
+            <p><small>{i18n[lang].content.description}</small></p>
             <br/>
-            {lang === 'en' ?
-              <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet={container === 'xs' || container === 'sm' ? '1fr' : '1fr 1fr'}>
-                <li>
-                  <h4>Canada.ca or gc.ca</h4>
-                  <p><small>Government of Canada website's normally use Canada.ca or gc.ca in the URL.</small></p>
-                </li>
-                <li>
-                  <h4>Available in both of Canada's Official Languages</h4>
-                  <p><small>Information will be available in both English and French.</small></p>
-                </li>
-                <li>
-                  <h4>A padlock icon and HTTPS</h4>
-                  <p><small>Secure Government of Canada websites use <strong>https://</strong> and <span class='svg-container' innerHTML={Lock} /> in the address bar.</small></p>
-                </li>
-                <li>
-                  <h4>A point of contact</h4>
-                  <p><small>Contact information will have Canada.ca, gc.ca, or the department name in the email address.</small></p>
-                </li>
-              </gcds-grid>
-            :
-              <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet={container === 'xs' || container === 'sm' ? '1fr' : '1fr 1fr'}>
-                <li>
-                  <h4>Canada.ca ou gc.ca</h4>
-                  <p><small>On retrouve normalement Canada.ca ou gc.ca dans l'adresse URL d'un site Web du gouvernement du Canada.</small></p>
-                </li>
-                <li>
-                  <h4>Offert dans les deux langues officielles</h4>
-                  <p><small>Vérifiez que les renseignements sont accessibles en français et en anglais.</small></p>
-                </li>
-                <li>
-                  <h4>Une icône de cadenas et HTTPS</h4>
-                  <p><small>Lorsqu'un navigateur affiche les sites Web sécuritaires du gouvernement du Canada, on retrouve <strong>https://</strong> et <span class='svg-container' innerHTML={Lock} /> dans la barre URL.</small></p>
-                </li>
-                <li>
-                  <h4>Un point de communication</h4>
-                  <p><small>On retrouve Canada.ca, gc.ca ou le nom du ministère dans l'URL de toute adresse courriel du gouvernement du Canada.</small></p>
-                </li>
-              </gcds-grid>
-            }
+            <gcds-grid
+              tag="ul"
+              container="lg"
+              columns="1fr"
+              columns-tablet={container === 'xs' || container === 'sm' ? '1fr' : '1fr 1fr'}
+            >
+              <li>
+                <h4>{i18n[lang].content.url.heading}</h4>
+                <p><small>{i18n[lang].content.url.text}</small></p>
+              </li>
+              <li>
+                <h4>{i18n[lang].content.languages.heading}</h4>
+                <p><small>{i18n[lang].content.languages.text}</small></p>
+              </li>
+              <li>
+                <h4>{i18n[lang].content.https.heading}</h4>
+                <p><small>{i18n[lang].content.https.text} <strong>https://</strong>.</small></p>
+              </li>
+              <li>
+                <h4>{i18n[lang].content.contact.heading}</h4>
+                <p><small>{i18n[lang].content.contact.text}</small></p>
+              </li>
+            </gcds-grid>
           </div>
         </details>
       </Host>

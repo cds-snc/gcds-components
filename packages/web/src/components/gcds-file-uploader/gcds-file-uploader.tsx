@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h, Listen } from '@stencil/core';
 import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
 import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-file-uploader',
@@ -11,7 +12,7 @@ import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredVali
 export class GcdsFileUploader {
   @Element() el: HTMLElement;
 
-  private shadowElement?: HTMLElement;
+  private shadowElement?: HTMLInputElement;
 
   _validator: Validator<any> = defaultValidator;
 
@@ -202,7 +203,7 @@ export class GcdsFileUploader {
   @Event() gcdsRemoveFile: EventEmitter;
   removeFile = (e) => {
     e.preventDefault();
-    
+
     let filesContainer = this.value;
     const file = filesContainer.indexOf(e.target.closest('.file-uploader__uploaded-file').childNodes[0].textContent);
 
@@ -219,7 +220,7 @@ export class GcdsFileUploader {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value.length) && this._validator.errorMessage) {
+    if (!this._validator.validate(this.shadowElement.files) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsError.emit({ id: `#${this.uploaderId}`, message: `${this.label} - ${this.errorMessage}` });
     } else {
@@ -250,7 +251,7 @@ export class GcdsFileUploader {
       }
     }
   }
-  
+
   /*
   * Observe lang attribute change
   */
@@ -331,7 +332,7 @@ export class GcdsFileUploader {
 
           <div class={`file-uploader__input ${value.length > 0 ? "uploaded-files" : ''}`}>
             <button tabindex="-1">
-              { lang == 'en' ? 'Upload a file' : 'Téléverser un fichier'}
+              {i18n[lang].button.upload}
               <gcds-icon name="upload" margin-left="200" />
             </button>
             <input
@@ -343,27 +344,26 @@ export class GcdsFileUploader {
               onFocus={(e) => this.onFocus(e)}
               onChange={(e) => this.handleChange(e)}
               aria-invalid={hasError ? 'true' : 'false'}
+              ref={element => this.shadowElement = element as HTMLInputElement}
             />
             { value.length > 0 ?
               <p id="file-uploader__summary">
-                <span>{ lang == 'en' ? 'Currently selected:' : 'Actuellement sélectionné:'} </span>
+                <span>{i18n[lang].summary.selected} </span>
                 { value.map(file => ( <span>{file} </span> )) }
               </p>
             :
-              <p id="file-uploader__summary">
-                { lang == 'en' ? 'No file currently selected' : 'Aucun fichier actuellement sélectionné' }
-              </p>
+              <p id="file-uploader__summary">{ i18n[lang].summary.unselected }</p>
             }
           </div>
 
           { value.length > 0 ? value.map(file => (
             <div
               class="file-uploader__uploaded-file"
-              aria-label={ lang == 'en' ? `Remove file ${file}` : `Supprimer le fichier ${file}` }
+              aria-label={`${i18n[lang].removeFile} ${file}.`}
             >
               <span>{file}</span>
               <button onClick={(e) => this.removeFile(e)}>
-                <span>{ lang == 'en' ? 'Remove' : 'Supprimer' }</span>
+                <span>{i18n[lang].button.remove}</span>
                 <gcds-icon name="times" size="text" margin-left="200" />
               </button>
             </div>

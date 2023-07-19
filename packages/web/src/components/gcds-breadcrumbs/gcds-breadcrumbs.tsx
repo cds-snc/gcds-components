@@ -1,5 +1,6 @@
 import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-breadcrumbs',
@@ -48,13 +49,13 @@ export class GcdsBreadcrumbs {
     return (
       <Host>
         <nav
-          aria-label={lang == 'en' ? 'Breadcrumb' : 'Chemin de navigation'}
+          aria-label={i18n[lang].label}
           class="gcds-breadcrumbs"
         >
           <ol class={hideCanadaLink ? '' : 'has-canada-link'}>
             { !hideCanadaLink ?
               <gcds-breadcrumbs-item
-                href={`https://www.canada.ca/${lang == 'en' ? 'en' : 'fr'}.html`}
+                href={`https://www.canada.ca/${lang == 'fr' ? 'fr' : 'en'}.html`}
               >
                 Canada.ca
               </gcds-breadcrumbs-item>

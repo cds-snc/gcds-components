@@ -1,5 +1,6 @@
 import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-label',
@@ -78,7 +79,6 @@ export class GcdsLabel {
 
   render() {
     const { hideLabel, labelFor, label, required, lang } = this;
-    const requiredText = lang == "en" ? "required" : "obligatoire";
 
     return (
       <Host
@@ -92,7 +92,7 @@ export class GcdsLabel {
         >
           <span>{label}</span>
           {required ?
-            <span class="label--required">({requiredText})</span>
+            <span aria-hidden="true" class="label--required">({i18n[lang].required})</span>
           : null}
         </label>
       </Host>

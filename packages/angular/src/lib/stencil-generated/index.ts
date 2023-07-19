@@ -6,6 +6,7 @@ export const DIRECTIVES = [
   d.GcdsBreadcrumbs,
   d.GcdsBreadcrumbsItem,
   d.GcdsButton,
+  d.GcdsCard,
   d.GcdsCheckbox,
   d.GcdsContainer,
   d.GcdsDateModified,

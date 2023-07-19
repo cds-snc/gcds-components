@@ -26,9 +26,9 @@ All gcds-components should now be ready to use in your site.
 <script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
 
 <!-- GC Design System -->
-<link rel="stylesheet" href="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.css">
-<script type="module" src="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"></script>
-<script nomodule src="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.js"></script>
+<link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css">
+<script type="module" src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"></script>
+<script nomodule src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"></script>
 ```
 
 Note: `<script type="module">` requires a server to load properly, if developing locally, please use `<script nomodule>`.
@@ -113,9 +113,9 @@ Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components 
 <script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
 
 <!-- GC Système de design -->
-<link rel="stylesheet" href="https://unpkg.com/gcds-components/dist/gcds/gcds.css">
-<script type="module" src="https://unpkg.com/gcds-components/dist/gcds/gcds.esm.js"></script>
-<script nomodule src="https://unpkg.com/gcds-components/dist/gcds/gcds.js"></script>
+<link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css">
+<script type="module" src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"></script>
+<script nomodule src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"></script>
 ```
 
 Remarque : Il faut un serveur pour que `<script type="module">` se charge correctement. Si vous développez localement, utilisez plutôt `<script nomodule>`.
