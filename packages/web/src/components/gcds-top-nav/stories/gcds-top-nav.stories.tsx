@@ -58,14 +58,13 @@ const Template = (args) => (`
     `
   : null}
   <gcds-nav-link href="#">Installation</gcds-nav-link>
-  <gcds-nav-link href="#">Foundations</gcds-nav-link>
-  <gcds-nav-link href="#">Components</gcds-nav-link>
-
   <gcds-nav-group  open-trigger="Contact" menu-label="Contact">
     <gcds-nav-link href="#">Form</gcds-nav-link>
     <gcds-nav-link href="#">GitHub</gcds-nav-link>
     <gcds-nav-link href="#">Slack</gcds-nav-link>
   </gcds-nav-group>
+  <gcds-nav-link href="#">Foundations</gcds-nav-link>
+  <gcds-nav-link href="#">Components</gcds-nav-link>
 </gcds-top-nav>
 
 <!-- React code -->
@@ -79,14 +78,13 @@ const Template = (args) => (`
     `
   : null}
   <GcdsNavLink href="#">Installation</GcdsNavLink>
-  <GcdsNavLink href="#">Foundations</GcdsNavLink>
-  <GcdsNavLink href="#">Components</GcdsNavLink>
-
   <GcdsNavGroup  openTrigger="Contact" menuLabel="Contact">
     <GcdsNavLink href="#">Form</GcdsNavLink>
     <GcdsNavLink href="#">GitHub</GcdsNavLink>
     <GcdsNavLink href="#">Slack</GcdsNavLink>
   </GcdsNavGroup>
+  <GcdsNavLink href="#">Foundations</GcdsNavLink>
+  <GcdsNavLink href="#">Components</GcdsNavLink>
 </GcdsTopNav>
 `).replace(/\s\snull\n/g, '');
 
