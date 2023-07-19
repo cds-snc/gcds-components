@@ -92,7 +92,7 @@ export class GcdsLabel {
         >
           <span>{label}</span>
           {required ?
-            <span class="label--required">({i18n[lang].required})</span>
+            <span aria-hidden="true" class="label--required">({i18n[lang].required})</span>
           : null}
         </label>
       </Host>

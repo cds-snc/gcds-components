@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as Header from './gcds-header.stories';
+
+<Meta of={Header} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={Header.Default}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Header.Default} sort="requiredFirst" />

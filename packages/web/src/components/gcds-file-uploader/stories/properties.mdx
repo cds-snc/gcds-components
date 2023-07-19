@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as FileUploader from './gcds-file-uploader.stories';
+
+<Meta of={FileUploader} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={FileUploader.Default}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={FileUploader.Default} sort="requiredFirst" />

@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as LangToggle from './gcds-lang-toggle.stories';
+
+<Meta of={LangToggle} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={LangToggle.Default}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={LangToggle.Default} sort="requiredFirst" />

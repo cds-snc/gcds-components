@@ -113,6 +113,28 @@ export declare interface GcdsButton extends Components.GcdsButton {
 
 
 @ProxyCmp({
+  inputs: ['cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'tag', 'titleElement', 'type']
+})
+@Component({
+  selector: 'gcds-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'tag', 'titleElement', 'type'],
+})
+export class GcdsCard {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsCard extends Components.GcdsCard {}
+
+
+@ProxyCmp({
   inputs: ['blurHandler', 'checkboxId', 'checked', 'clickHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
@@ -158,14 +180,14 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['centered', 'container', 'tag']
+  inputs: ['border', 'centered', 'margin', 'padding', 'size', 'tag']
 })
 @Component({
   selector: 'gcds-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['centered', 'container', 'tag'],
+  inputs: ['border', 'centered', 'margin', 'padding', 'size', 'tag'],
 })
 export class GcdsContainer {
   protected el: HTMLElement;

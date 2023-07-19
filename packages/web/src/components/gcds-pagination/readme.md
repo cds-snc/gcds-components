@@ -18,7 +18,7 @@
 | `previousHref`       | `previous-href`  | Simple display - href for previous link                                 | `string`             | `undefined` |
 | `previousLabel`      | `previous-label` | Simple display - label for previous link                                | `string`             | `undefined` |
 | `totalPages`         | `total-pages`    | List display - Total number of pages                                    | `number`             | `undefined` |
-| `url`                | --               | List display - URL object to create query strings and fragment on links | `Object`             | `undefined` |
+| `url`                | `url`            | List display - URL object to create query strings and fragment on links | `object \| string`   | `undefined` |
 
 
 ## Events

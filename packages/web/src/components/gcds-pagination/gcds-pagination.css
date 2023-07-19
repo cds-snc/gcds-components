@@ -182,7 +182,7 @@
           }
         }
 
-        &:first-of-type {
+        &.gcds-pagination-simple-previous {
           a {
             grid-template-areas:
               "icon text"
@@ -190,7 +190,7 @@
             grid-template-columns: 0.25fr 1fr;
           }
         }
-        &:last-of-type {
+        &.gcds-pagination-simple-next {
           float: right;
 
           a {

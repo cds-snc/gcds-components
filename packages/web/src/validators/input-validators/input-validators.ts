@@ -18,8 +18,8 @@ export const requiredEmailField: Validator<string> = {
   }
 }
 
-export const requiredFileInput: Validator<number> = {
-  validate: (value: number) => value > 0,
+export const requiredFileInput: Validator<FileList> = {
+  validate: (value: FileList) => value.length > 0,
   errorMessage: {
     "en": "You must upload a file to continue.",
     "fr": "Vous devez téléverser un fichier pour continuer."

@@ -8,7 +8,7 @@
     <!-- Utility framework -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cds-snc/gcds-utilities/dist/gcds-utility.css" />
 
-
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
@@ -91,7 +91,7 @@
       </gcds-breadcrumbs> -->
     </gcds-header>
 
-    <gcds-container container="xl" centered tag="main">
+    <gcds-container size="xl" centered tag="main">
       <h1 class="text-center mb-500">GC Design System</h1>
 
       <h2>Components</h2>
@@ -99,16 +99,16 @@
       <!-- ------------- Alerts ------------- -->
 
       <h3 class="mt-500 mb-400 bb-sm">Alerts</h3>
-      <gcds-alert heading="Success alert" alert-role="success" container="xl">
+      <gcds-alert heading="Success alert" alert-role="success">
         <p>Example content</p>
       </gcds-alert>
-      <gcds-alert heading="Info alert" alert-role="info" container="xl">
+      <gcds-alert heading="Info alert" alert-role="info">
         <p>Example content</p>
       </gcds-alert>
-      <gcds-alert heading="Warning alert" alert-role="warning" container="xl">
+      <gcds-alert heading="Warning alert" alert-role="warning">
         <p>Example content</p>
       </gcds-alert>
-      <gcds-alert heading="Danger alert" alert-role="danger" container="xl">
+      <gcds-alert heading="Danger alert" alert-role="danger">
         <p>Example content</p>
       </gcds-alert>
 
@@ -130,19 +130,97 @@
         External Link
       </gcds-button>
 
+      <!-- ------------- Cards ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-sm">Cards</h3>
+
+      <gcds-grid
+        tag="div"
+        columns-desktop="1fr 1fr 1fr"
+        columns-tablet="1fr 1fr"
+        columns="1fr"
+        gap="250"
+      >
+        <gcds-card
+          card-title="Link card number 1"
+          title-element="h4"
+          href="#red"
+          description="This is a card"
+          tag="Core"
+          img-src="https://picsum.photos/480/270"
+        >
+        </gcds-card>
+
+        <gcds-card
+          card-title="Link card number 2 with a really long title for some reason"
+          title-element="h4"
+          href="#red"
+          description="This is a card with an img and possibly more"
+          img-src="https://picsum.photos/480/270"
+        >
+        </gcds-card>
+
+        <gcds-card
+          card-title="Link card number 3"
+          title-element="h4"
+          href="#red"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
+          img-src="https://picsum.photos/480/270"
+        >
+        </gcds-card>
+      </gcds-grid>
+
+      <gcds-grid
+        tag="div"
+        columns-desktop="1fr 1fr"
+        columns-tablet="1fr"
+        columns="1fr"
+        gap="250"
+        class="d-block mt-250"
+      >
+        <gcds-card
+          type="action"
+          card-title="Action card number 1"
+          title-element="h4"
+          href="#red"
+          description="Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
+          img-src="https://picsum.photos/480/270"
+        >
+          <gcds-button type="button" button-role="secondary" slot="footer">Action</gcds-button>
+        </gcds-card>
+        <gcds-card
+          type="action"
+          card-title="Action card number 2"
+          title-element="h4"
+          href="#red"
+          description="This is a card with an img and possibly more"
+          img-src="https://picsum.photos/480/270"
+        >
+          <gcds-button type="button" button-role="secondary" slot="footer">Action</gcds-button>
+        </gcds-card>
+      </gcds-grid>
+
+      <gcds-card
+        class="mt-400"
+        card-title="Card not in column"
+        href="#red"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
+      >
+      </gcds-card>
+
       <!-- ------------- Containers ------------- -->
 
       <h3 class="mt-700 mb-400 bb-sm">Containers</h3>
-      <gcds-container container="full">
-        <div class="p-200 b-sm">I'm a responsive container. My size is only limited by the size of my parent container.</div>
+      <gcds-container size="full" border padding="400">
+        <p>I'm a responsive container. My size is only limited by the size of my parent container.</p>
       </gcds-container>
       <br/>
-      <gcds-container container="lg" centered>
-        <div class="p-200 b-sm">I'm a large, centred container. My max size is 64rem (1024px).</div>
+      <gcds-container size="lg" centered border padding="400">
+        <p>I'm a large, centred container. My max size is 64rem (1024px).</p>
       </gcds-container>
       <br/>
-      <gcds-container container="xs">
-        <div class="p-200 b-sm">I'm an extra-small container. My max size is 20rem (320px).</div>
+      <gcds-container size="xs" border padding="400">
+        <p>I'm an extra-small container. My max size is 20rem (320px).</p>
       </gcds-container>
 
       <!-- ------------- Details ------------- -->
@@ -285,26 +363,26 @@
       <!-- ------------- Icons ------------- -->
 
       <h3 class="mt-700 mb-400 bb-sm">Icons</h3>
-      <gcds-icon name="close" size="caption" margin-right="200"></gcds-icon>
-      <gcds-icon name="cloud" size="text" margin-right="200"></gcds-icon>
-      <gcds-icon name="info-circle" size="h3" margin-right="200"></gcds-icon>
+      <gcds-icon name="tree" size="caption" margin-right="200"></gcds-icon>
+      <gcds-icon name="tree" size="text" margin-right="200"></gcds-icon>
+      <gcds-icon name="tree" size="h6" margin-right="200"></gcds-icon>
+      <gcds-icon name="tree" size="h5" margin-right="200"></gcds-icon>
+      <gcds-icon name="tree" size="h4" margin-right="200"></gcds-icon>
+      <gcds-icon name="tree" size="h3" margin-right="200"></gcds-icon>
       <gcds-icon name="tree" size="h2" margin-right="200"></gcds-icon>
-      <gcds-icon name="folder" size="h1"></gcds-icon>
-      <gcds-icon name="folder" icon-style="regular" size="h1"></gcds-icon>
-      </br>
+      <gcds-icon name="tree" size="h1" margin-right="200"></gcds-icon>
+
+      <h4 class="mt-500 mb-300">Fixed width icons (square ratio)</h4>
       <gcds-icon name="tree" size="text" fixed-width></gcds-icon>
       <gcds-icon name="folder" size="text" fixed-width></gcds-icon>
       <gcds-icon name="fire" size="text" fixed-width></gcds-icon>
       <gcds-icon name="utensils" size="text" fixed-width></gcds-icon>
-      <gcds-icon name="arrow-left" size="text" fixed-width margin-left="500"></gcds-icon>
-      <span>Fixed width icons. Square ratio.</span>
-      </br>
+
+      <h4 class="mt-500 mb-300">Variable width icons (auto width)</h4>
       <gcds-icon name="tree" size="text"></gcds-icon>
       <gcds-icon name="folder" size="text"></gcds-icon>
       <gcds-icon name="fire" size="text"></gcds-icon>
       <gcds-icon name="utensils" size="text"></gcds-icon>
-      <gcds-icon name="arrow-left" size="text" margin-left="500"></gcds-icon>
-      <span>Variable width icons. Auto width.</span>
 
       <!-- ------------- Pagination ------------- -->
 
@@ -315,7 +393,7 @@
         type="list"
         total-pages="22"
         current-page="8"
-        url={}
+        url='{"queryStrings": { "querystring::offset": 10 }, "fragment": "main" }'
         pageChangeHandler={}
       ></gcds-pagination>
 
