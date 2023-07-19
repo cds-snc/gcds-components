@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as NavGroup from './gcds-nav-group.stories';
+
+<Meta of={NavGroup} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={NavGroup.Default}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={NavGroup.Default} sort="requiredFirst" />

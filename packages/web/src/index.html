@@ -55,25 +55,19 @@
       signature-variant="colour"
       skip-to-href="#"
     >
-      <!-- ------------- Site Menu ------------- -->
+      <!-- ------------- Top Nav ------------- -->
 
-      <gcds-site-menu slot="menu" alignment="right">
-        <h6 slot="left">GC Design System</h6>
-        <ul>
-          <li>
-            <a href="">Installation</a>
-          </li>
-          <li>
-            <a href="">Foundations</a>
-          </li>
-          <li>
-            <a href="">Components</a>
-          </li>
-          <li>
-            <a href="">Contact us</a>
-          </li>
-        </ul>
-      </gcds-site-menu>
+      <gcds-top-nav slot="menu" label="topbar" alignment="right" lang="en">
+        <gcds-nav-link href="#red" slot="home">Home</gcds-nav-link>
+        <gcds-nav-link href="#red">Installation</gcds-nav-link>
+        <gcds-nav-link href="#red">Foundations</gcds-nav-link>
+        <gcds-nav-link href="#red" current >Components</gcds-nav-link>
+        <gcds-nav-group menu-label="Contact us submenu"  open-trigger="Contact us">
+          <gcds-nav-link href="#red">Form</gcds-nav-link>
+          <gcds-nav-link href="#red">GitHub</gcds-nav-link>
+          <gcds-nav-link href="#red">Slack</gcds-nav-link>
+        </gcds-nav-group>
+      </gcds-top-nav>
 
       <!-- ------------- Breadcrumbs ------------- -->
 
@@ -93,6 +87,23 @@
 
     <gcds-container size="xl" centered tag="main">
       <h1 class="text-center mb-500">GC Design System</h1>
+
+      <!-- ------------- Side nav ------------- -->
+
+      <gcds-side-nav label="Sidenav">
+        <gcds-nav-link href="#red">Installation</gcds-nav-link>
+        <gcds-nav-link href="#red" current>Foundations</gcds-nav-link>
+        <gcds-nav-link href="#red">Components</gcds-nav-link>
+        <gcds-nav-group menu-label="Contact submenu" open-trigger="Contact">
+          <gcds-nav-link href="#red">Site</gcds-nav-link>
+          <gcds-nav-link href="#red">GitHub</gcds-nav-link>
+          <gcds-nav-group menu-label="Sub level submenu" open-trigger="Sub level">
+            <gcds-nav-link href="#red">Site</gcds-nav-link>
+            <gcds-nav-link href="#red">GitHub</gcds-nav-link>
+            <gcds-nav-link href="#red">Slack</gcds-nav-link>
+          </gcds-nav-group>
+        </gcds-nav-group>
+      </gcds-side-nav>
 
       <h2>Components</h2>
 
