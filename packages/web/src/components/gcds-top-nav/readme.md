@@ -11,7 +11,6 @@
 | -------------------- | ----------- | ----------------------------- | ------------------------------- | ----------- |
 | `alignment`          | `alignment` | Nav alignment                 | `"center" \| "left" \| "right"` | `'left'`    |
 | `label` _(required)_ | `label`     | Label for navigation landmark | `string`                        | `undefined` |
-| `position`           | `position`  | Sticky navigation flag        | `"static" \| "sticky"`          | `'static'`  |
 
 
 ## Methods

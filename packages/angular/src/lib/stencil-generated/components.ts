@@ -753,7 +753,7 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
 
 
 @ProxyCmp({
-  inputs: ['label', 'position'],
+  inputs: ['label'],
   methods: ['getNavSize', 'updateNavSize', 'updateNavItemQueue']
 })
 @Component({
@@ -761,7 +761,7 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['label', 'position'],
+  inputs: ['label'],
 })
 export class GcdsSideNav {
   protected el: HTMLElement;
@@ -865,7 +865,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
 
 
 @ProxyCmp({
-  inputs: ['alignment', 'label', 'position'],
+  inputs: ['alignment', 'label'],
   methods: ['getNavSize', 'updateNavSize', 'updateNavItemQueue']
 })
 @Component({
@@ -873,7 +873,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignment', 'label', 'position'],
+  inputs: ['alignment', 'label'],
 })
 export class GcdsTopNav {
   protected el: HTMLElement;

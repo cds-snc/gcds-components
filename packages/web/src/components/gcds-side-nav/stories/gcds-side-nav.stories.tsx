@@ -16,14 +16,14 @@ export default {
         required: true
       }
     },
-    position: {
-      control: { type: 'radio' },
-      options: ['static', 'sticky'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'static' }
-      },
-    },
+    // position: {
+    //   control: { type: 'radio' },
+    //   options: ['static', 'sticky'],
+    //   table: {
+    //     type: { summary: 'string' },
+    //     defaultValue: { summary: 'static' }
+    //   },
+    // },
     ...langProp,
   },
 };
@@ -32,7 +32,6 @@ const Template = (args) => (`
 // Web Component (Angular, Vue)
 <gcds-side-nav
   label="${args.label}"
-  ${args.position != 'static' ? `position=${args.position}` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <gcds-nav-link href="#">Installation</gcds-nav-link>
@@ -55,7 +54,6 @@ const Template = (args) => (`
 // React code
 <GcdsSideNav
   label="${args.label}"
-  ${args.position != 'static' ? `position=${args.position}` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   <GcdsNavLink href="#">Installation</GcdsNavLink>
@@ -79,6 +77,5 @@ const Template = (args) => (`
 export const Default = Template.bind({});
 Default.args = {
   label: 'Side navigation',
-  position: 'static',
   lang: 'en'
 };

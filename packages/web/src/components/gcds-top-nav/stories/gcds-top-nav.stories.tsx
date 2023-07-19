@@ -24,14 +24,14 @@ export default {
         defaultValue: { summary: 'right' }
       },
     },
-    position: {
-      control: { type: 'radio' },
-      options: ['static', 'sticky'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'static' }
-      },
-    },
+    // position: {
+    //   control: { type: 'radio' },
+    //   options: ['static', 'sticky'],
+    //   table: {
+    //     type: { summary: 'string' },
+    //     defaultValue: { summary: 'static' }
+    //   },
+    // },
     ...langProp,
 
     // Slots
@@ -51,7 +51,6 @@ const Template = (args) => (`
 <gcds-top-nav
   label="${args.label}"
   alignment="${args.alignment}"
-  ${args.position != 'static' ? `position=${args.position}` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   ${args.home ?
@@ -73,7 +72,6 @@ const Template = (args) => (`
 <GcdsTopNav
   label="${args.label}"
   alignment="${args.alignment}"
-  ${args.position != 'static' ? `position=${args.position}` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
   ${args.home ?
@@ -96,7 +94,6 @@ export const Default = Template.bind({});
 Default.args = {
   label: 'Top navigation',
   alignment: 'right',
-  position: 'static',
   home: '',
   lang: 'en'
 };

@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property             | Attribute  | Description                   | Type                   | Default     |
-| -------------------- | ---------- | ----------------------------- | ---------------------- | ----------- |
-| `label` _(required)_ | `label`    | Label for navigation landmark | `string`               | `undefined` |
-| `position`           | `position` | Sticky navigation flag        | `"static" \| "sticky"` | `'static'`  |
+| Property             | Attribute | Description                   | Type     | Default     |
+| -------------------- | --------- | ----------------------------- | -------- | ----------- |
+| `label` _(required)_ | `label`   | Label for navigation landmark | `string` | `undefined` |
 
 
 ## Methods

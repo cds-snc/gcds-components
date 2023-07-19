@@ -759,10 +759,6 @@ export namespace Components {
           * Label for navigation landmark
          */
         "label": string;
-        /**
-          * Sticky navigation flag
-         */
-        "position": 'static' | 'sticky';
         "updateNavItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
     }
@@ -870,10 +866,6 @@ export namespace Components {
           * Label for navigation landmark
          */
         "label": string;
-        /**
-          * Sticky navigation flag
-         */
-        "position": 'static' | 'sticky';
         "updateNavItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
     }
@@ -2024,10 +2016,6 @@ declare namespace LocalJSX {
           * Label for navigation landmark
          */
         "label": string;
-        /**
-          * Sticky navigation flag
-         */
-        "position"?: 'static' | 'sticky';
     }
     interface GcdsSignature {
         /**
@@ -2148,10 +2136,6 @@ declare namespace LocalJSX {
           * Label for navigation landmark
          */
         "label": string;
-        /**
-          * Sticky navigation flag
-         */
-        "position"?: 'static' | 'sticky';
     }
     interface GcdsVerifyBanner {
         /**

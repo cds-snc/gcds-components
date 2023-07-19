@@ -21,7 +21,7 @@ export class GcdsSideNav {
   /**
    * Sticky navigation flag
    */
-  @Prop() position: 'static' | 'sticky' = 'static';
+  // @Prop() position: 'static' | 'sticky' = 'static';
 
   /**
   * Language of rendered component
