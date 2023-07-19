@@ -47,7 +47,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-top-nav
   label="${args.label}"
   alignment="${args.alignment}"
@@ -68,7 +68,7 @@ const Template = (args) => (`
   </gcds-nav-group>
 </gcds-top-nav>
 
-// React code
+<!-- React code -->
 <GcdsTopNav
   label="${args.label}"
   alignment="${args.alignment}"

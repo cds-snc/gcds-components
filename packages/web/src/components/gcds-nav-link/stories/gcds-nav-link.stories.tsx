@@ -36,7 +36,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-nav-link
   href="${args.href}"
   ${args.current ? `current` : null}
@@ -45,7 +45,7 @@ const Template = (args) => (`
 </gcds-nav-link>
 
 
-// React code
+<!-- React code -->
 <GcdsNavLink
   href="${args.href}"
   ${args.current ? `current` : null}

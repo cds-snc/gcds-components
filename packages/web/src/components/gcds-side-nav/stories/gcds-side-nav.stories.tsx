@@ -29,7 +29,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-side-nav
   label="${args.label}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
@@ -51,7 +51,7 @@ const Template = (args) => (`
   </gcds-nav-group>
 </gcds-side-nav>
 
-// React code
+<!-- React code -->
 <GcdsSideNav
   label="${args.label}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}

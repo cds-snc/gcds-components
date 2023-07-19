@@ -48,7 +48,7 @@ export default {
 };
 
 const Template = (args) => (`
-// Web Component (Angular, Vue)
+<!-- Web component code (Angular, Vue) -->
 <gcds-nav-group
   menu-label="${args.menuLabel}"
   open-trigger="${args.openTrigger}"
@@ -61,7 +61,7 @@ const Template = (args) => (`
   <gcds-nav-link href="#">Slack</gcds-nav-link>
 </gcds-nav-group>
 
-// React code
+<!-- React code -->
 <GcdsNavGroup
   menuLabel="${args.menuLabel}"
   openTrigger="${args.openTrigger}"
