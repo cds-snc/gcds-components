@@ -34,10 +34,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@a9893b0cfb0821c9c7b5fec28a6a2e6cdd5e20a4
         with:
-          node-version: 16.13.0
-
-      - name: Install repo
-        run: npm install
+          node-version: 18
 
       - name: Install ${{ matrix.name }}
         run: npm install
@@ -107,10 +104,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@a9893b0cfb0821c9c7b5fec28a6a2e6cdd5e20a4
         with:
-          node-version: 16.13.0
+          node-version: 18
 
-      - name: Install repo
+      - name: Install gcds-components
         run: npm install
+        working-directory: ./packages/web
+
+      - name: Build gcds-components
+        run: npm run build
+        working-directory: ./packages/web
 
       - name: Install ${{ matrix.name }}
         run: npm install
