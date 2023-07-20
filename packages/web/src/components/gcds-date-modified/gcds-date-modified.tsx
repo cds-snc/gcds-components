@@ -1,4 +1,4 @@
-import { Component, Element, Host, State, h } from '@stencil/core';
+import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -10,6 +10,16 @@ import i18n from './i18n/i18n';
 })
 export class GcdsDateModified {
   @Element() el: HTMLElement;
+
+  /**
+   * Props
+   */
+
+  /**
+   * Set date modified type. Default is date.
+   */
+  @Prop({ mutable: true }) type: 'date' | 'version' = 'date';
+
 
   /**
   * Language of rendered component
@@ -36,16 +46,20 @@ export class GcdsDateModified {
   }
 
   render() {
-    const { lang } = this;
+    const { lang, type } = this;
 
     return (
       <Host>
         <dl class="gcds-date-modified">
-          <dt>{i18n[lang].term}</dt>
+          <dt>{ type === 'version' ? 'Version ' : i18n[lang].term }</dt>
           <dd>
-            <time>
+            { type === 'version' ?
               <slot></slot>
-            </time>
+            :
+              <time>
+                <slot></slot>
+              </time>
+            }
           </dd>
         </dl>
       </Host>

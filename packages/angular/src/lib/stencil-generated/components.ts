@@ -202,13 +202,14 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
 
 
 @ProxyCmp({
+  inputs: ['type']
 })
 @Component({
   selector: 'gcds-date-modified',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['type'],
 })
 export class GcdsDateModified {
   protected el: HTMLElement;

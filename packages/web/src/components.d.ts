@@ -234,6 +234,10 @@ export namespace Components {
         "tag"?: string;
     }
     interface GcdsDateModified {
+        /**
+          * Set date modified type. Default is date.
+         */
+        "type": 'date' | 'version';
     }
     interface GcdsDetails {
         /**
@@ -1461,6 +1465,10 @@ declare namespace LocalJSX {
         "tag"?: string;
     }
     interface GcdsDateModified {
+        /**
+          * Set date modified type. Default is date.
+         */
+        "type"?: 'date' | 'version';
     }
     interface GcdsDetails {
         /**
