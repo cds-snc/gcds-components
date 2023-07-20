@@ -272,10 +272,6 @@ export namespace Components {
           * Specifies if the error summary should listen for GcdsError event to generate error list.
          */
         "listen"?: boolean;
-        /**
-          * Set error summary message
-         */
-        "subHeading"?: string;
     }
     interface GcdsFieldset {
         /**
@@ -1503,10 +1499,6 @@ declare namespace LocalJSX {
           * Specifies if the error summary should listen for GcdsError event to generate error list.
          */
         "listen"?: boolean;
-        /**
-          * Set error summary message
-         */
-        "subHeading"?: string;
     }
     interface GcdsFieldset {
         /**
