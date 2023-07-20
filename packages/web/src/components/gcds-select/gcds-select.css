@@ -15,12 +15,8 @@
     color: var(--gcds-select-disabled-text);
   }
 
-  &.gcds-error:not(:focus-within) {
-    color: var(--gcds-select-danger-text);
-
-    select {
-      border-color: var(--gcds-select-danger-text);
-    }
+  &.gcds-error:not(:focus-within) select {
+    border-color: var(--gcds-select-danger-border);
   }
 }
 
