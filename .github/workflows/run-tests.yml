@@ -12,11 +12,14 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        
       - uses: actions/setup-node@a9893b0cfb0821c9c7b5fec28a6a2e6cdd5e20a4
         with:
-          node-version: 16.13.0
+          node-version: 18
+
       - name: Install gcds-components
         run: npm install
         working-directory: ./packages/web
+
       - name: Run tests
         run: npm run test
