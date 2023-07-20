@@ -6,115 +6,34 @@
 <!-- Font Awesome (Icons) -->
 <link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-<!-- GC Design System -->
-<link rel="stylesheet" href="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.css">
-<script type="module" src="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"></script>
-<script nomodule src="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.js"></script>
-
 <style>
   body {
     font-family: var(--gcds-font-families-body);
     font-size: var(--gcds-font-sizes-text);
   }
 
-  /* Remove top bar */
-  .css-zgt7u1 {
-    padding: 0 !important;
+  /* ----- OVERVIEW PAGE ----- */
+  .intro-boxes {
+    background-color: var(--gcds-color-grayscale-50);
+    margin-block-start: var(--gcds-spacing-450) !important;
+    margin-block-end: var(--gcds-spacing-500) !important;
+    padding: var(--gcds-spacing-400);
   }
 
-  .css-ro7k99 {
-    padding-block: 0 !important;
+  .intro-boxes li {
+    list-style: none;
+    background-color: var(--gcds-color-grayscale-0);
+    padding: var(--gcds-spacing-400);
   }
 
-  .sbdocs-title {
-    display: none;
-  }
+  /* ----- PROPERTIES PAGE ----- */
 
-  /* preview bar */
-  .css-1dqz6wl {
-    display: none !important;
-  }
-
-  .css-pvgpy {
-    padding-block-start: 0 !important;
-  }
-
-  /* Component Preview */
-  .docs-story {
+  /* Component Preview - hide React code */
+  .sb-show-main #storybook-docs .sb-story > div > *:not(.hydrated)  {
     font-size: 0;
     color: var(--gcds-text-light);
-  }
-
-  /* Get code button */
-  .css-2w67r7 {
-    color: var(--gcds-text-light) !important;
-    font-size: 0 !important;
-    font-family: var(--gcds-font-families-body), sans-serif !important;
-    border-radius: var(--gcds-spacing-50) !important;
-    margin: var(--gcds-spacing-150) !important;
-  }
-
-  .css-2w67r7:not(:focus) {
-    border: var(--gcds-border-width-md) solid var(--gcds-color-grayscale-1000) !important;
-  }
-
-  .css-2w67r7:before {
-    font-size: .75rem;
-    color: var(--gcds-button-secondary-default-text) !important;
-    padding: var(--gcds-spacing-50);
-  }
-
-  .css-2w67r7:before {
-    content: 'Get code | Afficher le code';
-  }
-
-  .docblock-code-toggle--expanded.css-2w67r7:before {
-    content: 'Hide code | Masquer le code';
-  }
-
-  .css-2w67r7:focus {
-    background-color: var(--gcds-button-shared-focus-background) !important;
-    box-shadow: 0 0 0 var(--gcds-border-width-md) var(--gcds-button-shared-focus-text) !important;
-    outline: var(--gcds-spacing-50) solid var(--gcds-button-shared-focus-background) !important;
-    outline-offset: var(--gcds-border-width-md) !important;
-    color: var(--gcds-button-shared-focus-text) !important;
-  }
-
-  .css-2w67r7:focus:before {
-    color: var(--gcds-button-shared-focus-text) !important;
-  }
-
-  /* Copy code button */
-  .css-1az4em2 {
-    background-color: transparent !important;
-  }
-
-  .css-17vdvg6 {
-    color: rgba(0, 0, 0, 0.85) !important;
-    font-size: 0 !important;
-    border: var(--gcds-border-width-md) solid var(--gcds-color-grayscale-0) !important;
-    border-radius: var(--gcds-spacing-50) !important;
-    font-family: var(--gcds-font-families-body), sans-serif !important;
-    margin: var(--gcds-spacing-150) !important;
-  }
-
-  .css-17vdvg6:before {
-    content: 'Copy | Copie';
-    font-size: .75rem;
-    color: var(--gcds-text-light);
-    padding: var(--gcds-spacing-50);
-  }
-
-  .css-17vdvg6:focus {
-    background-color: var(--gcds-button-shared-focus-background) !important;
-    box-shadow: 0 0 0 var(--gcds-border-width-md) var(--gcds-button-shared-focus-text) !important;
-    outline: var(--gcds-spacing-50) solid var(--gcds-button-shared-focus-background) !important;
-    outline-offset: var(--gcds-border-width-md) !important;
-    color: var(--gcds-button-shared-focus-text) !important;
-  }
-
-  .css-17vdvg6:focus:before {
-    color: var(--gcds-button-shared-focus-text) !important;
+    padding: 0 !important;
+    border: none !important;
   }
 
   /* Change props table headings */
@@ -145,7 +64,6 @@
   }
 
   /* Table Styling */
-
   .docblock-argstable-head tr th,
   .docblock-argstable-body tr td.css-11nj37o,
   .docblock-argstable-body tr .css-11nj37o~td {
@@ -160,25 +78,17 @@
     border-collapse: initial !important;
   }
 
-  .css-22iagm.css-22iagm tbody {
+  .css-quknxc.css-quknxc tbody {
     box-shadow: none !important;
   }
 
-  /* .css-22iagm.css-22iagm th:first-of-type,
-  .css-22iagm.css-22iagm th:last-of-type,
-  .css-22iagm.css-22iagm th,
-  .css-22iagm.css-22iagm td:first-of-type,
-  .css-22iagm.css-22iagm td,
-  .css-22iagm.css-22iagm td:last-of-type {
-    padding: var(--gcds-spacing-150) !important;
-  } */
-
-  .docblock-argstable-body .css-hj75sh td {
+  .docblock-argstable-body .css-1oi7qoy td {
     background-color: transparent !important;
     color: var(--gcds-text-primary) !important;
+    border: 0 !important;
   }
 
-  .docblock-argstable-body .css-hj75sh td:first-of-type {
+  .docblock-argstable-body .css-1oi7qoy td:first-of-type {
     padding-block-start: var(--gcds-spacing-450) !important;
   }
 
@@ -207,6 +117,14 @@
     border: 0 !important;
   }
 
+  .docblock-argstable-body td .css-um6g9i,
+  .docblock-argstable-body td .css-1qot2ot,
+  .docblock-argstable-body td .css-4q52yj {
+    background-color: var(--gcds-color-grayscale-700) !important;
+    color: var(--gcds-text-light);
+    border: var(--gcds-border-width-sm) solid currentColor;
+  }
+
   .docblock-argstable-body td {
     vertical-align: middle !important;
     background-color: #262626 !important;
@@ -218,20 +136,15 @@
     color: var(--gcds-text-light);
   }
 
-  /* Required props */
-  /* .css-1ywjlcj:after {
-    content: '(required)'
-  } */
-
   /* Style props form elements */
   .css-16nkwz2,
-  .css-1yjel1o,
+  .css-je0wjx,
   .css-172ajqq,
   .css-1vhwtr2 {
     font-family: var(--gcds-font-families-body) !important;
   }
 
-  .css-1yjel1o {
+  .css-je0wjx {
     font-weight: var(--gcds-font-weights-semibold) !important;
     letter-spacing: .75px;
     background-color: transparent !important;
@@ -239,7 +152,7 @@
     border: 0 !important;
   }
 
-  .sto-f2g3hl,
+  .css-tvcum3,
   .css-f2g3hl,
   .css-172ajqq,
   .css-e3ijes {
@@ -248,15 +161,20 @@
     padding: var(--gcds-spacing-50) !important;
   }
 
-  .sto-f2g3hl span,
+  .css-tvcum3 span,
   .css-f2g3hl span,
   .css-172ajqq span,
-  .css-e3ijes span {
+  .css-e3ijes spa,
+  .css-130cftl {
     color: var(--gcds-text-light) !important;
   }
 
-  .sto-f2g3hl input:checked~span:last-of-type,
-  .sto-f2g3hl input:not(:checked)~span:first-of-type,
+  .css-6wu5zk svg path {
+    fill: var(--gcds-text-light) !important;
+  }
+
+  .css-tvcum3 input:checked~span:last-of-type,
+  .css-tvcum3 input:not(:checked)~span:first-of-type,
   .css-f2g3hl input:checked~span:last-of-type,
   .css-f2g3hl input:not(:checked)~span:first-of-type,
   .css-172ajqq input:checked~span:last-of-type,
@@ -267,20 +185,30 @@
     color: var(--gcds-text-primary) !important;
   }
 
+  .css-184lgrq {
+    background-color: var(--gcds-color-grayscale-700) !important;
+  }
+
   /* Canvas preview */
-  body.sb-show-main #root {
-    font-size: 0;
-    color: var(--gcds-text-light);
+  .css-ikdg6z {
+    background-color: var(--gcds-color-grayscale-50);
   }
 
-  body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:not(:first-of-type),
-  body.sb-show-main .docs-story div[id^="story--components"] > div > *:not(.hydrated) {
-    display: none;
+  /* ----- COMPONENT SPECIFIC ----- */
+
+  /* gcds-button */
+  .sbdocs-preview .docs-story gcds-button.hydrated + gcds-button.hydrated,
+  .sb-show-main #storybook-root gcds-button.hydrated + gcds-button.hydrated {
+    margin: 0 0 0 var(--gcds-spacing-400);
   }
 
-  body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:first-of-type,
-  body.sb-show-main .docs-story div[id^="story--components"] > div > .hydrated:first-of-type:not([error-message]) .hydrated {
-    font-size: var(--gcds-font-sizes-text);
-    color: var(--gcds-text-primary);
+  /* gcds-container */
+  .docs-story .sb-story gcds-container *,
+  .sb-show-main #storybook-root gcds-container * {
+    margin: var(--gcds-spacing-0);
+  }
+
+  #story--components-top-navigation--default {
+    height: 300px;
   }
 </style>

@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as Pagination from './gcds-pagination.stories';
+
+<Meta of={Pagination} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={Pagination.Default}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Pagination.Default} sort="requiredFirst" />

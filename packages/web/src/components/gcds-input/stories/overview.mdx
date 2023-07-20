@@ -1,0 +1,107 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Input from './gcds-input.stories';
+
+<Meta of={Input} name="Overview" />
+
+# Input<br/>`<gcds-input>`
+
+_Also called: text input, input field._
+
+An input is a space to enter short-form information in response to a question or instruction.
+
+<Canvas
+  of={Input.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### State
+
+#### Default
+
+<Canvas
+  of={Input.Default}
+  story={{ inline: true }}
+/>
+
+#### Required
+
+<Canvas
+  of={Input.Required}
+  story={{ inline: true }}
+/>
+
+
+#### Error
+
+<Canvas
+  of={Input.Error}
+  story={{ inline: true }}
+/>
+
+#### Disabled
+
+<Canvas
+  of={Input.Disabled}
+  story={{ inline: true }}
+/>
+
+### Type
+
+#### Email
+
+<Canvas
+  of={Input.Email}
+  story={{ inline: true }}
+/>
+
+#### Number
+
+<Canvas
+  of={Input.Number}
+  story={{ inline: true }}
+/>
+
+#### Password
+
+<Canvas
+  of={Input.Password}
+  story={{ inline: true }}
+/>
+
+#### Search
+
+<Canvas
+  of={Input.Search}
+  story={{ inline: true }}
+/>
+
+#### Text
+
+<Canvas
+  of={Input.Text}
+  story={{ inline: true }}
+/>
+
+#### Url
+
+<Canvas
+  of={Input.Url}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/Input/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-input" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=855-2811&mode=design&t=Uh3QQccqF8jOzbFR-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>
