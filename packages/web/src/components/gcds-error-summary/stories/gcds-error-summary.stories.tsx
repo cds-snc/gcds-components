@@ -28,13 +28,6 @@ export default {
         defaultValue: { summary: '-' }
       }
     },
-    subHeading: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
-    },
     ...langProp
   },
 };
@@ -45,7 +38,6 @@ const Template = (args) => (`
   ${args.listen && !args.errorLinks ? `listen` : null}
   ${args.errorLinks ? `error-links='${args.errorLinks}'` : null}
   ${args.heading ? `heading="${args.heading}"` : null}
-  ${args.subHeading ? `sub-heading="${args.subHeading}"` : null}
 >
 </gcds-error-summary>
 
@@ -54,7 +46,6 @@ const Template = (args) => (`
   ${args.listen && !args.errorLinks ? `listen` : null}
   ${args.errorLinks ? `errorLinks='${args.errorLinks}'` : null}
   ${args.heading ? `heading="${args.heading}"` : null}
-  ${args.subHeading ? `subHeading="${args.subHeading}"` : null}
 >
 </GcdsErrorSummary>
 `).replace(/\s\snull\n/g, '');
@@ -68,6 +59,5 @@ Default.args = {
     "error-href-3": "Error message"
   }`,
   heading: '',
-  subHeading: '',
   lang: 'en'
 };
