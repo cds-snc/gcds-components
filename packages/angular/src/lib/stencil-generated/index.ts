@@ -23,13 +23,16 @@ export const DIRECTIVES = [
   d.GcdsInput,
   d.GcdsLabel,
   d.GcdsLangToggle,
+  d.GcdsNavGroup,
+  d.GcdsNavLink,
   d.GcdsPagination,
   d.GcdsPhaseBanner,
   d.GcdsRadio,
   d.GcdsSelect,
+  d.GcdsSideNav,
   d.GcdsSignature,
-  d.GcdsSiteMenu,
   d.GcdsStepper,
   d.GcdsTextarea,
+  d.GcdsTopNav,
   d.GcdsVerifyBanner
 ];

@@ -22,6 +22,7 @@ describe('gcds-date-modified', () => {
       </gcds-date-modified>
     `);
   });
+
   it('renders - French', async () => {
     const page = await newSpecPage({
       components: [GcdsDateModified],
@@ -37,6 +38,25 @@ describe('gcds-date-modified', () => {
             <time>
               2022-03-03
             </time>
+          </dd>
+        </dl>
+      </gcds-date-modified>
+    `);
+  });
+
+  it('renders type version', async () => {
+    const page = await newSpecPage({
+      components: [GcdsDateModified],
+      html: `<gcds-date-modified type="version">1.2.3</gcds-date-modified>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-date-modified type="version">
+        <dl class="gcds-date-modified">
+          <dt>
+            Version
+          </dt>
+          <dd>
+            1.2.3
           </dd>
         </dl>
       </gcds-date-modified>

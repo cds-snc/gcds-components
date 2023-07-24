@@ -202,13 +202,14 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
 
 
 @ProxyCmp({
+  inputs: ['type']
 })
 @Component({
   selector: 'gcds-date-modified',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['type'],
 })
 export class GcdsDateModified {
   protected el: HTMLElement;
@@ -267,14 +268,14 @@ export declare interface GcdsErrorMessage extends Components.GcdsErrorMessage {}
 
 
 @ProxyCmp({
-  inputs: ['errorLinks', 'heading', 'listen', 'subHeading']
+  inputs: ['errorLinks', 'heading', 'listen']
 })
 @Component({
   selector: 'gcds-error-summary',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['errorLinks', 'heading', 'listen', 'subHeading'],
+  inputs: ['errorLinks', 'heading', 'listen'],
 })
 export class GcdsErrorSummary {
   protected el: HTMLElement;
@@ -578,6 +579,72 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 
 @ProxyCmp({
+  inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'],
+  methods: ['focusTrigger', 'toggleNav']
+})
+@Component({
+  selector: 'gcds-nav-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'],
+})
+export class GcdsNavGroup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsClick']);
+  }
+}
+
+
+export declare interface GcdsNavGroup extends Components.GcdsNavGroup {
+  /**
+   * Emitted when the button has focus.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+  inputs: ['current', 'href'],
+  methods: ['focusLink']
+})
+@Component({
+  selector: 'gcds-nav-link',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['current', 'href'],
+})
+export class GcdsNavLink {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
+  }
+}
+
+
+export declare interface GcdsNavLink extends Components.GcdsNavLink {
+  /**
+   * Emitted when the link has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
   inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
 })
 @Component({
@@ -709,6 +776,29 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
 
 
 @ProxyCmp({
+  inputs: ['label'],
+  methods: ['getNavSize', 'updateNavSize', 'updateNavItemQueue']
+})
+@Component({
+  selector: 'gcds-side-nav',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['label'],
+})
+export class GcdsSideNav {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsSideNav extends Components.GcdsSideNav {}
+
+
+@ProxyCmp({
   inputs: ['hasLink', 'type', 'variant']
 })
 @Component({
@@ -728,28 +818,6 @@ export class GcdsSignature {
 
 
 export declare interface GcdsSignature extends Components.GcdsSignature {}
-
-
-@ProxyCmp({
-  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position']
-})
-@Component({
-  selector: 'gcds-site-menu',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignment', 'desktopLayout', 'mobileLayout', 'position'],
-})
-export class GcdsSiteMenu {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsSiteMenu extends Components.GcdsSiteMenu {}
 
 
 @ProxyCmp({
@@ -817,6 +885,29 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
    */
   gcdsValid: EventEmitter<CustomEvent<object>>;
 }
+
+
+@ProxyCmp({
+  inputs: ['alignment', 'label'],
+  methods: ['getNavSize', 'updateNavSize', 'updateNavItemQueue']
+})
+@Component({
+  selector: 'gcds-top-nav',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['alignment', 'label'],
+})
+export class GcdsTopNav {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsTopNav extends Components.GcdsTopNav {}
 
 
 @ProxyCmp({

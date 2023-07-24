@@ -18,11 +18,6 @@ export class GcdsErrorSummary {
   @Prop({ reflect: true }) heading?: string;
 
   /**
-   * Set error summary message
-   */
-  @Prop({ reflect: true }) subHeading?: string;
-
-  /**
    * Specifies if the error summary should listen for GcdsError event to generate error list.
    */
   @Prop({ mutable: true }) listen?: boolean = true;
@@ -140,13 +135,13 @@ export class GcdsErrorSummary {
     event.preventDefault();
 
     let element = document.querySelector(id);
-    
+
     let target = `[for=${id.replace('#', '')}]`;
 
     if (element.nodeName == "FIELDSET") {
       target = `#legend-${id.replace('#', '')}`
     }
-    
+
     element.closest('form').querySelector(target).scrollIntoView();
     element.focus();
   }
@@ -179,7 +174,7 @@ export class GcdsErrorSummary {
   }
 
   render() {
-    const { heading, subHeading, errorQueue, lang, hasSubmitted, errorLinks } = this;
+    const { heading, errorQueue, lang, hasSubmitted, errorLinks } = this;
     return (
       <Host>
         <div
@@ -191,9 +186,6 @@ export class GcdsErrorSummary {
           <h2 class="summary__heading">
             {heading ?? i18n[lang].heading}
           </h2>
-          <p class="summary__sub-heading">
-            {subHeading ?? i18n[lang].subheading}
-          </p>
           <ol class="summary__errorlist">
             {((hasSubmitted || errorLinks) && Object.keys(errorQueue).length > 0) && Object.keys(errorQueue).map((key) => {
               return (

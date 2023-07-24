@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.12.0
+
+### New features
+
+- Navigation components (`gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` and `gcds-nav-link`)
+  - Navigation components to provide options for main navigation landmarks
+- Date modified type (`gcds-date-modified`)
+  - Added `type` prop to chose between displaying "Date modified" and "Version"
+
+### Breaking changes
+
+- Site menu component (`gcds-site-menu`)
+  - `gcds-site-menu` has been removed from the component library, replaced with `gcds-top-nav`
+- Error summary (`gcds-error-summary`)
+  - `sub-heading` prop has been removed from the `gcds-error-summary`
+
+### Minor
+
+- https://github.com/cds-snc/gcds-components/pull/201 - [a922e5f](https://github.com/cds-snc/gcds-components/commit/a922e5fab3a690b4d2a1bc6cd81192a3265a9c63) - Add `gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` and `gcds-nav-link` components to library
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Update form error styling
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Remove `sub-heading` from `gcds-error-summary`
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Add `type` prop to `gcds-date-modified` to display "Version" number if needed
+
+### Patch
+
+- https://github.com/cds-snc/gcds-components/pull/205 - [51b30a8](https://github.com/cds-snc/gcds-components/commit/51b30a8a3d5db9f0e91f6f4e9a2d85c26ab2568c) - Add `experimentalImportInjection` to build to help integration of components with bundlers like Vite
+- https://github.com/cds-snc/gcds-components/pull/205 - [51b30a8](https://github.com/cds-snc/gcds-components/commit/51b30a8a3d5db9f0e91f6f4e9a2d85c26ab2568c) - Fix `onChange` event for `gcds-checkbox`
+
 ## v0.11.0
 
 ### New features

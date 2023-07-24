@@ -38,21 +38,13 @@
       }
     }
 
-    &.gcds-checkbox--error:not(:focus-within) {
-      color: var(--gcds-checkbox-danger-text);
-
-      input[type=checkbox] + gcds-label {
-        &:before {
-          border-color: currentcolor;
-        }
-
-        &:after {
-          color: var(--gcds-checkbox-danger-text);
-        }
+    &.gcds-checkbox--error:not(:focus-within) input[type=checkbox] + gcds-label {
+      &:before {
+        border-color: var(--gcds-checkbox-danger-border);
       }
 
-      gcds-hint {
-        color: currentColor;
+      &:after {
+        color: var(--gcds-checkbox-danger-border);
       }
     }
 
