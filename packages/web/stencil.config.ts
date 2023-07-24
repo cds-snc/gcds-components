@@ -47,5 +47,8 @@ export const config: Config = {
     },
     setupFiles: ['./src/utils/test/setupMock.js']
   },
-  buildEs5: 'prod'
+  buildEs5: 'prod',
+  extras: {
+    experimentalImportInjection: true
+  }
 };
