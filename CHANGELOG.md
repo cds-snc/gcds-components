@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 - Navigation components (`gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` and `gcds-nav-link`)
   - Navigation components to provide options for main navigation landmarks
+- Date modified type (`gcds-date-modified`)
+  - Added `type` prop to chose between displaying "Date modified" and "Version"
 
 ### Breaking changes
 
