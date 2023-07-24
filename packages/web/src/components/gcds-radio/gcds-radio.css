@@ -39,22 +39,14 @@
       }
     }
 
-    &.gcds-radio--error:not(:focus-within) {
-      color: var(--gcds-radio-danger-text);
-
-      input[type=radio] + gcds-label {
-        &:before {
-          border-color: currentcolor;
-        }
-
-        &:after {
-          color: currentcolor;
-          background-color: currentcolor;
-        }
+    &.gcds-radio--error:not(:focus-within) input[type=radio] + gcds-label {
+      &:before {
+        border-color: var(--gcds-radio-danger-border);
       }
 
-      gcds-hint {
-        color: currentColor;
+      &:after {
+        color: var(--gcds-radio-danger-border);
+        background-color: var(--gcds-radio-danger-border);
       }
     }
 

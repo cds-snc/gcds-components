@@ -1,0 +1,64 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as DateModified from './gcds-date-modified.stories';
+
+<Meta of={DateModified} name="Overview" />
+
+# Date modified<br/>`<gcds-date-modified>`
+
+_Also called: version date, last updated._
+
+A timestamp of the last page update.
+
+<Canvas
+  of={DateModified.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### Type
+
+#### Date
+
+<Canvas
+  of={DateModified.Default}
+  story={{ inline: true }}
+/>
+
+#### Version
+
+<Canvas
+  of={DateModified.Version}
+  story={{ inline: true }}
+/>
+
+### Language
+
+#### English
+
+<Canvas
+  of={DateModified.Default}
+  story={{ inline: true }}
+/>
+
+#### French
+
+<Canvas
+  of={DateModified.French}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/date-modified/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-date-modified" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=7073-18041&mode=design&t=N2AdZ3oA66KLrrGc-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>

@@ -43,14 +43,8 @@
     }
   }
 
-  &.gcds-error {
-    &:not(:focus-within) {
-      color: var(--gcds-file-uploader-danger-text);
-    }
-
-    .file-uploader__uploaded-file:not(:focus) {
-      border-color: var(--gcds-file-uploader-file-danger-border-color);
-    }
+  &.gcds-error .file-uploader__uploaded-file:not(:focus) {
+    border-color: var(--gcds-file-uploader-file-danger-border-color);
   }
 }
 

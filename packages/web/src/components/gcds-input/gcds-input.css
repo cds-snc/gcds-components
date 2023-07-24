@@ -15,10 +15,6 @@
   &.gcds-disabled {
     color: var(--gcds-input-disabled-text);
   }
-
-  &.gcds-error:not(:focus-within) {
-    color: var(--gcds-input-danger-text);
-  }
 }
 
 :host input {
@@ -52,6 +48,6 @@
   }
 
   &.gcds-error:not(:focus) {
-    border-color: var(--gcds-input-danger-text);
+    border-color: var(--gcds-input-danger-border);
   }
 }
