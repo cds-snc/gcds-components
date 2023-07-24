@@ -278,7 +278,7 @@ export class GcdsCheckbox {
   private onChange = () => {
     this.checked = !this.checked;
 
-    this.gcdsChange.emit(this.value);
+    this.gcdsChange.emit(this.checked);
   };
 
   render() {
