@@ -68,11 +68,6 @@ export class GcdsNavGroup {
         (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
       }
     }
-
-    // Focus trigger button if closing nav group
-    if (this.open == false) {
-      this.triggerElement.focus();
-    }
   }
 
   /*

@@ -59,20 +59,13 @@ export class GcdsSideNav {
   @Listen("gcdsClick", { target: 'document' })
   async gcdsClickListener(e) {
     if (this.el.contains(e.target)) {
-      if (e.target.hasAttribute("open")) {
+      // Update tab queue when clicking mobile menu
+      if (e.target == this.el && this.navSize == "mobile") {
+        await this.updateNavItemQueue(e.target);
+
+      // Update tab queue when clicking dropdown
+      } else if (e.target.nodeName == "GCDS-NAV-GROUP" && !e.target.hasAttribute("open")) {
         await this.updateNavItemQueue(this.el);
-        (e.target as HTMLGcdsNavGroupElement).focusTrigger();
-      } else {
-        await this.updateNavItemQueue(this.el);
-        if (e.target.children[0].nodeName == "GCDS-NAV-GROUP") {
-          setTimeout(() => {
-            (e.target.children[0] as HTMLGcdsNavGroupElement).focusTrigger();
-          }, 10);
-        } else if (e.target.children[0].nodeName == "GCDS-NAV-LINK") {
-          setTimeout(() => {
-            (e.target.children[0] as HTMLGcdsNavLinkElement).focusLink();
-          }, 10);
-        }
       }
     }
   }
