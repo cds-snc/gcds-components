@@ -106,6 +106,9 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install repo
+        run: npm install
+
       - name: Install gcds-components
         run: npm install
         working-directory: ./packages/web
