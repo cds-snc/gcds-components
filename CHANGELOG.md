@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.12.1
+
+### Patch
+
+- https://github.com/cds-snc/gcds-components/pull/208 - [5668c65](https://github.com/cds-snc/gcds-components/commit/5668c657db12d2a0e8bfa607f4b5a4620cbb0570) - Accessibility fixes for `gcds-file-uploader` and navigation components
+
 ## v0.12.0
 
 ### New features

@@ -12,7 +12,7 @@ describe('gcds-file-uploader', () => {
         <div class="gcds-file-uploader-wrapper">
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
-            <button tabindex="-1">
+            <button type="button" tabindex="-1">
               Upload a file
               <gcds-icon name="upload" margin-left="200" />
             </button>
@@ -37,7 +37,7 @@ describe('gcds-file-uploader', () => {
         <div class="gcds-file-uploader-wrapper gcds-disabled">
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
-            <button tabindex="-1">
+            <button type="button" tabindex="-1">
               Upload a file
               <gcds-icon name="upload" margin-left="200" />
             </button>
@@ -63,7 +63,7 @@ describe('gcds-file-uploader', () => {
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <gcds-error-message message="This is an error message." messageId="file-uploader"></gcds-error-message>
           <div class="file-uploader__input">
-            <button tabindex="-1">
+            <button type="button" tabindex="-1">
               Upload a file
               <gcds-icon name="upload" margin-left="200" />
             </button>
@@ -89,7 +89,7 @@ describe('gcds-file-uploader', () => {
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <gcds-hint hint="This is a hint." hint-id="file-uploader"></gcds-hint>
           <div class="file-uploader__input">
-            <button tabindex="-1">
+            <button type="button" tabindex="-1">
               Upload a file
               <gcds-icon name="upload" margin-left="200" />
             </button>
@@ -114,7 +114,7 @@ describe('gcds-file-uploader', () => {
         <div class="gcds-file-uploader-wrapper">
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
-            <button tabindex="-1">
+            <button type="button" tabindex="-1">
               Upload a file
               <gcds-icon name="upload" margin-left="200" />
             </button>
@@ -139,7 +139,7 @@ describe('gcds-file-uploader', () => {
         <div class="gcds-file-uploader-wrapper">
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
-            <button tabindex="-1">
+            <button type="button" tabindex="-1">
               Upload a file
               <gcds-icon name="upload" margin-left="200" />
             </button>
@@ -164,7 +164,7 @@ describe('gcds-file-uploader', () => {
         <div class="gcds-file-uploader-wrapper">
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en" required=""></gcds-label>
           <div class="file-uploader__input">
-            <button tabindex="-1">
+            <button type="button" tabindex="-1">
               Upload a file
               <gcds-icon name="upload" margin-left="200" />
             </button>
