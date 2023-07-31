@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as Search from './gcds-search.stories';
+
+<Meta of={Search} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={Search.Props}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Search.Props} sort="requiredFirst" />

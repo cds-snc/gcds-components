@@ -23,6 +23,7 @@
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
  - [gcds-radio](../gcds-radio)
+ - [gcds-search](../gcds-search)
  - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
 
@@ -33,6 +34,7 @@ graph TD;
   gcds-file-uploader --> gcds-label
   gcds-input --> gcds-label
   gcds-radio --> gcds-label
+  gcds-search --> gcds-label
   gcds-select --> gcds-label
   gcds-textarea --> gcds-label
   style gcds-label fill:#f9f,stroke:#333,stroke-width:4px

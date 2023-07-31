@@ -106,6 +106,8 @@ export class GcdsSearch {
               type="search"
               id="search"
               list="srch-list"
+              size={34}
+              maxLength={170}
               onChange={() => this.gcdsChange.emit()}
               onFocus={() => this.gcdsFocus.emit()}
               onBlur={() => this.gcdsBlur.emit()}
@@ -129,6 +131,7 @@ export class GcdsSearch {
             </gcds-button>
           </form>
         </section>
+
       </Host>
     );
   }
