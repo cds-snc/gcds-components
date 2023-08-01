@@ -34,7 +34,6 @@
       slot[name="toggle"] {
         grid-area: toggle;
         text-align: right;
-        padding: var(--gcds-header-brand-toggle-padding);
       }
 
       .brand__signature,
@@ -42,11 +41,11 @@
         grid-area: signature;
       }
 
-      .brand__search,
-      slot[name="search"] {
+      .brand__search {
         grid-area: search;
         max-width: 100%;
         display: block;
+
       }
     }
 
@@ -59,7 +58,8 @@
 
         .brand__search,
         slot[name="search"] {
-          width: var(--gcds-header-brand-search-width);
+          width: fit-content;
+          margin-inline-start: auto;
         }
       }
     }

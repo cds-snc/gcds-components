@@ -123,7 +123,7 @@ export class GcdsHeader {
 
   private get renderSearch() {
     if (!!this.el.querySelector('[slot="search"]')) {
-      return <slot name="search"></slot>;
+      return <div class="brand__search"><slot name="search"></slot></div>;
     } else {
       return;
     }

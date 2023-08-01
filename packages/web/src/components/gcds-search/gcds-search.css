@@ -13,6 +13,7 @@
       }
       .gcds-search__form {
         display: flex;
+        margin: 0 0 var(--gcds-spacing-50) !important;
       }
       input.gcds-search__input {
         width: 100%;
