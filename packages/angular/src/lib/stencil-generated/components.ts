@@ -731,14 +731,14 @@ export declare interface GcdsRadio extends Components.GcdsRadio {
 
 
 @ProxyCmp({
-  inputs: ['action', 'method', 'name', 'placeholder']
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested']
 })
 @Component({
   selector: 'gcds-search',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'method', 'name', 'placeholder'],
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested'],
 })
 export class GcdsSearch {
   protected el: HTMLElement;

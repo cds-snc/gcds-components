@@ -758,6 +758,14 @@ export namespace Components {
           * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
          */
         "placeholder": string;
+        /**
+          * Set the name of the search input
+         */
+        "searchId": string;
+        /**
+          * Set a list of predefined search terms
+         */
+        "suggested": Array<string>;
     }
     interface GcdsSelect {
         /**
@@ -2098,6 +2106,14 @@ declare namespace LocalJSX {
           * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
          */
         "placeholder"?: string;
+        /**
+          * Set the name of the search input
+         */
+        "searchId"?: string;
+        /**
+          * Set a list of predefined search terms
+         */
+        "suggested"?: Array<string>;
     }
     interface GcdsSelect {
         /**

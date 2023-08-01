@@ -13,6 +13,8 @@
 | `method`      | `method`      | Set the form method of the search form                                             | `"get" \| "post"` | `"get"`          |
 | `name`        | `name`        | Set the name of the search input                                                   | `string`          | `"q"`            |
 | `placeholder` | `placeholder` | Set the placeholder and label for the search input. Becomes "Search [placeholder]" | `string`          | `"Canada.ca"`    |
+| `searchId`    | `search-id`   | Set the name of the search input                                                   | `string`          | `"search"`       |
+| `suggested`   | --            | Set a list of predefined search terms                                              | `string[]`        | `undefined`      |
 
 
 ## Events
@@ -30,13 +32,16 @@
 ### Depends on
 
 - [gcds-label](../gcds-label)
+- [gcds-button](../gcds-button)
 - [gcds-icon](../gcds-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-search --> gcds-label
+  gcds-search --> gcds-button
   gcds-search --> gcds-icon
+  gcds-button --> gcds-icon
   style gcds-search fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

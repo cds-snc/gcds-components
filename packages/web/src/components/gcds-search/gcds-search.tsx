@@ -32,6 +32,16 @@ export class GcdsSearch {
   @Prop() name: string = "q";
 
   /**
+  * Set the name of the search input
+  */
+  @Prop() searchId: string = "search";
+
+  /**
+  * Set a list of predefined search terms
+  */
+  @Prop() suggested: Array<string>;
+
+  /**
   * Emitted when the search input value has changed.
   */
   @Event() gcdsChange!: EventEmitter<object>;
@@ -74,7 +84,7 @@ export class GcdsSearch {
   }
 
   render() {
-    const { placeholder, action, method, name, lang } = this;
+    const { placeholder, action, method, name, lang, searchId, suggested } = this;
 
     let labelText = `${I18N[lang].searchLabel.replace("{$}", placeholder)}`
 
@@ -98,14 +108,14 @@ export class GcdsSearch {
           >
             <gcds-label
               label={labelText}
-              label-for="search"
+              label-for={searchId}
               hide-label
             >
             </gcds-label>
             <input
               type="search"
-              id="search"
-              list="srch-list"
+              id={searchId}
+              list="search-list"
               size={34}
               maxLength={170}
               onChange={() => this.gcdsChange.emit()}
@@ -115,17 +125,20 @@ export class GcdsSearch {
               class="gcds-search__input"
             ></input>
 
-            <datalist id="srch-list">
-              <slot></slot>
-            </datalist>
+            {suggested &&
+              <datalist id="search-list">
+                {suggested.map((k,v) => <option value={k} key={v} />)}
+              </datalist>
+            }
             
             <gcds-button
               type="submit"
               class="gcds-search__button"
+              exportparts="button"
             >
               <gcds-icon
                 name="search"
-                label="search"
+                label={I18N[lang].search}
                 fixed-width
               ></gcds-icon>
             </gcds-button>
