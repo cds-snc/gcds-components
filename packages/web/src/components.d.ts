@@ -992,10 +992,6 @@ export interface GcdsRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsRadioElement;
 }
-export interface GcdsSearchCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGcdsSearchElement;
-}
 export interface GcdsSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsSelectElement;
@@ -1161,12 +1157,6 @@ declare global {
         prototype: HTMLGcdsRadioElement;
         new (): HTMLGcdsRadioElement;
     };
-    interface HTMLGcdsSearchElement extends Components.GcdsSearch, HTMLStencilElement {
-    }
-    var HTMLGcdsSearchElement: {
-        prototype: HTMLGcdsSearchElement;
-        new (): HTMLGcdsSearchElement;
-    };
     interface HTMLGcdsSelectElement extends Components.GcdsSelect, HTMLStencilElement {
     }
     var HTMLGcdsSelectElement: {
@@ -1236,7 +1226,6 @@ declare global {
         "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radio": HTMLGcdsRadioElement;
-        "gcds-search": HTMLGcdsSearchElement;
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-side-nav": HTMLGcdsSideNavElement;
         "gcds-signature": HTMLGcdsSignatureElement;
@@ -2352,7 +2341,6 @@ declare namespace LocalJSX {
         "gcds-pagination": GcdsPagination;
         "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radio": GcdsRadio;
-        "gcds-search": GcdsSearch;
         "gcds-select": GcdsSelect;
         "gcds-side-nav": GcdsSideNav;
         "gcds-signature": GcdsSignature;
@@ -2392,7 +2380,6 @@ declare module "@stencil/core" {
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
-            "gcds-search": LocalJSX.GcdsSearch & JSXBase.HTMLAttributes<HTMLGcdsSearchElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
