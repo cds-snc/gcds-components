@@ -1,6 +1,6 @@
 import { Component, Host, Prop, Element, State, Event, EventEmitter, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import I18N from './i18n/i18n'
+import I18N from './i18n/I18N'
 
 @Component({
   tag: 'gcds-search',
