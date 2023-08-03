@@ -9,7 +9,7 @@ describe('gcds-search', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-search>
-        <section class="gcds-search">
+        <div class="gcds-search">
           <h2 class="gcds-search__header">
             Search
           </h2>
@@ -20,7 +20,7 @@ describe('gcds-search', () => {
               <gcds-icon fixed-width="" label="Search" name="search"></gcds-icon>
             </gcds-button>
           </form>
-        </section>
+        </div>
       </gcds-search>
     `);
   });
@@ -31,7 +31,7 @@ describe('gcds-search', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-search lang="fr">
-      <section class="gcds-search">
+      <div class="gcds-search">
           <h2 class="gcds-search__header">
             Recherche
           </h2>
@@ -42,7 +42,7 @@ describe('gcds-search', () => {
               <gcds-icon fixed-width="" label="Recherche" name="search"></gcds-icon>
             </gcds-button>
           </form>
-        </section>
+        </div>
       </gcds-search>
     `);
   });
@@ -59,7 +59,7 @@ describe('gcds-search', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-search action="submit.html" method="post" name="s" placeholder="Text.ca" search-id="searchForm">
-        <section class="gcds-search">
+        <div class="gcds-search">
           <h2 class="gcds-search__header">
             Search
           </h2>
@@ -70,7 +70,7 @@ describe('gcds-search', () => {
               <gcds-icon fixed-width="" label="Search" name="search"></gcds-icon>
             </gcds-button>
           </form>
-        </section>
+        </div>
       </gcds-search>
     `);
   });

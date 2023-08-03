@@ -101,7 +101,7 @@ export class GcdsSearch {
 
     return (
       <Host>
-        <section class="gcds-search">
+        <div class="gcds-search">
           <h2 class="gcds-search__header">{I18N[lang].search}</h2>
           <form
             action={formAction}
@@ -147,7 +147,7 @@ export class GcdsSearch {
               ></gcds-icon>
             </gcds-button>
           </form>
-        </section>
+        </div>
 
       </Host>
     );
