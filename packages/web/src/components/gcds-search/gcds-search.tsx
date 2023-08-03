@@ -42,6 +42,10 @@ export class GcdsSearch {
   @Prop() suggested: Array<string>;
 
   /**
+  * Events
+  */
+
+  /**
   * Emitted when the search input value has changed.
   */
   @Event() gcdsChange!: EventEmitter<object>;

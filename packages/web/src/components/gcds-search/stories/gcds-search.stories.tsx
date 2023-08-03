@@ -37,6 +37,14 @@ export default {
         defaultValue: { summary: 'get' }
       },
     },
+    searchId: {
+      name: 'search-id',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'search' }
+      }
+    },
     ...langProp
   },
 };
@@ -48,6 +56,7 @@ const Template = (args) => (`
   ${args.method != 'get' ? `method="${args.method}"` : null}
   ${args.name != 'q' ? `name="${args.name}"` : null}
   ${args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null}
+  ${args.searchId != 'search' ? `search-id="${args.searchId}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-search>
@@ -58,6 +67,7 @@ const Template = (args) => (`
   ${args.method != 'get' ? `method="${args.method}"` : null}
   ${args.name != 'q' ? `name="${args.name}"` : null}
   ${args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null}
+  ${args.searchId != 'search' ? `searchId="${args.searchId}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsSearch>
@@ -69,12 +79,13 @@ const TemplatePlayground = (args) => (`
   ${args.method != 'get' ? `method="${args.method}"` : null}
   ${args.name != 'q' ? `name="${args.name}"` : null}
   ${args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null}
+  ${args.searchId != 'search' ? `search-id="${args.searchId}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-search>
 `);
 
-// ------ Error message default ------
+// ------ Search default ------
 
 export const Default = Template.bind({});
 Default.args = {
@@ -82,10 +93,35 @@ Default.args = {
   method: 'get',
   name: 'q',
   placeholder: 'Canada.ca',
+  searchId: 'search',
   lang: 'en'
 };
 
-// ------ Error message events & props ------
+// ------ Search default ------
+
+export const French = Template.bind({});
+French.args = {
+  action: '/sr/srb.html',
+  method: 'get',
+  name: 'q',
+  placeholder: 'Canada.ca',
+  searchId: 'search',
+  lang: 'fr'
+};
+
+// ------ Search default ------
+
+export const Custom = Template.bind({});
+Custom.args = {
+  action: 'search.html',
+  method: 'post',
+  name: 'search',
+  placeholder: 'sitename',
+  searchId: 'searchform',
+  lang: 'en'
+};
+
+// ------ Search events & props ------
 
 export const Props = Template.bind({});
 Props.args = {
@@ -93,10 +129,11 @@ Props.args = {
   method: 'get',
   name: 'q',
   placeholder: 'Canada.ca',
+  searchId: 'search',
   lang: 'en'
 };
 
-// ------ Error message playground ------
+// ------ Search playground ------
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
@@ -104,5 +141,6 @@ Playground.args = {
   method: 'get',
   name: 'q',
   placeholder: 'Canada.ca',
+  searchId: 'search',
   lang: 'en'
 };
