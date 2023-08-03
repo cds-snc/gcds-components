@@ -731,6 +731,46 @@ export declare interface GcdsRadio extends Components.GcdsRadio {
 
 
 @ProxyCmp({
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested']
+})
+@Component({
+  selector: 'gcds-search',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested'],
+})
+export class GcdsSearch {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']);
+  }
+}
+
+
+export declare interface GcdsSearch extends Components.GcdsSearch {
+  /**
+   * Emitted when the search input value has changed.
+   */
+  gcdsChange: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the search input value has gained focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the search input has lost focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the search form has submitted.
+   */
+  gcdsSubmit: EventEmitter<CustomEvent<object>>;
+}
+
+
+@ProxyCmp({
   inputs: ['blurHandler', 'changeHandler', 'defaultValue', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'required', 'selectId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })

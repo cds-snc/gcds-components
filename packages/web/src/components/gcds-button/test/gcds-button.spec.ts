@@ -10,7 +10,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button>
         <mock:shadow-root>
-          <button class="button--regular button--role-primary button--solid" type="button">
+          <button class="button--regular button--role-primary button--solid" part="button" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -33,7 +33,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button type="button">
         <mock:shadow-root>
-          <button class="button--role-primary button--solid button--regular" type="button">
+          <button class="button--role-primary button--solid button--regular" part="button" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -52,7 +52,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button type="reset">
         <mock:shadow-root>
-          <button class="button--role-primary button--solid button--regular" type="reset">
+          <button class="button--role-primary button--solid button--regular" part="button" type="reset">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -71,7 +71,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button type="submit">
         <mock:shadow-root>
-          <button class="button--role-primary button--solid button--regular" type="submit">
+          <button class="button--role-primary button--solid button--regular" part="button" type="submit">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -90,7 +90,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button href="#" type="link">
         <mock:shadow-root>
-          <a class="button--role-primary button--solid button--regular" href="#">
+          <a class="button--role-primary button--solid button--regular" part="button" href="#">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -113,7 +113,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="primary">
         <mock:shadow-root>
-          <button class="button--role-primary button--solid button--regular" type="button">
+          <button class="button--role-primary button--solid button--regular" part="button" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -132,7 +132,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="secondary">
         <mock:shadow-root>
-          <button class="button--role-secondary button--solid button--regular" type="button">
+          <button class="button--role-secondary button--solid button--regular" part="button" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -151,7 +151,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-role="danger">
         <mock:shadow-root>
-          <button class="button--role-danger button--solid button--regular" type="button">
+          <button class="button--role-danger button--solid button--regular" part="button" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -174,7 +174,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-style="solid">
         <mock:shadow-root>
-          <button class="button--role-primary button--solid button--regular" type="button">
+          <button class="button--role-primary button--solid button--regular" part="button" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -193,7 +193,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button button-style="text-only">
         <mock:shadow-root>
-          <button class="button--role-primary button--text-only button--regular" type="button">
+          <button class="button--role-primary button--text-only button--regular" part="button" type="button">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -212,7 +212,7 @@ describe('gcds-button', () => {
     expect(root).toEqualHtml(`
       <gcds-button type="link" button-style="text-only" href="https://google.com" target="_blank">
         <mock:shadow-root>
-          <a class="button--role-primary button--text-only button--regular" href="https://google.com" target="_blank">
+          <a class="button--role-primary button--text-only button--regular" href="https://google.com" part="button" target="_blank">
             <slot name="left"></slot>
             <slot></slot>
             <gcds-icon name="external-link" label="Opens in a new tab." margin-left="200" />

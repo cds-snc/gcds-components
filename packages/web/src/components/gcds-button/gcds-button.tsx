@@ -259,6 +259,7 @@ export class GcdsButton {
           class={`button--role-${buttonRole} button--${buttonStyle} button--${size}`}
           ref={element => this.shadowElement = element as HTMLElement}
           {...inheritedAttributes}
+          part="button"
         >
           <slot name="left"></slot>
 

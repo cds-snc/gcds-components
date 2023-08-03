@@ -49,6 +49,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [gcds-header](../gcds-header)
+ - [gcds-search](../gcds-search)
 
 ### Depends on
 
@@ -59,6 +60,7 @@ Type: `Promise<void>`
 graph TD;
   gcds-button --> gcds-icon
   gcds-header --> gcds-button
+  gcds-search --> gcds-button
   style gcds-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

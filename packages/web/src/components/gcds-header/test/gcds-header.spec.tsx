@@ -72,7 +72,9 @@ describe('gcds-header', () => {
               <div class="brand__signature">
                 <gcds-signature has-link="" lang="en" type="signature" variant="colour"></gcds-signature>
               </div>
-              <slot name="search"></slot>
+              <div class="brand__search">
+                <slot name="search"></slot>
+              </div>
             </div>
           </div>
           <slot name="menu"></slot>
@@ -108,7 +110,9 @@ describe('gcds-header', () => {
             <div class="brand__container">
               <slot name="toggle"></slot>
               <slot name="signature"></slot>
-              <slot name="search"></slot>
+              <div class="brand__search">
+                <slot name="search"></slot>
+              </div>
             </div>
           </div>
           <slot name="menu"></slot>

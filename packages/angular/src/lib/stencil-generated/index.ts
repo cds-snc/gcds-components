@@ -28,6 +28,7 @@ export const DIRECTIVES = [
   d.GcdsPagination,
   d.GcdsPhaseBanner,
   d.GcdsRadio,
+  d.GcdsSearch,
   d.GcdsSelect,
   d.GcdsSideNav,
   d.GcdsSignature,

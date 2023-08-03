@@ -34,6 +34,7 @@ export const GcdsNavLink = /*@__PURE__*/createReactComponent<JSX.GcdsNavLink, HT
 export const GcdsPagination = /*@__PURE__*/createReactComponent<JSX.GcdsPagination, HTMLGcdsPaginationElement>('gcds-pagination');
 export const GcdsPhaseBanner = /*@__PURE__*/createReactComponent<JSX.GcdsPhaseBanner, HTMLGcdsPhaseBannerElement>('gcds-phase-banner');
 export const GcdsRadio = /*@__PURE__*/createReactComponent<JSX.GcdsRadio, HTMLGcdsRadioElement>('gcds-radio');
+export const GcdsSearch = /*@__PURE__*/createReactComponent<JSX.GcdsSearch, HTMLGcdsSearchElement>('gcds-search');
 export const GcdsSelect = /*@__PURE__*/createReactComponent<JSX.GcdsSelect, HTMLGcdsSelectElement>('gcds-select');
 export const GcdsSideNav = /*@__PURE__*/createReactComponent<JSX.GcdsSideNav, HTMLGcdsSideNavElement>('gcds-side-nav');
 export const GcdsSignature = /*@__PURE__*/createReactComponent<JSX.GcdsSignature, HTMLGcdsSignatureElement>('gcds-signature');
