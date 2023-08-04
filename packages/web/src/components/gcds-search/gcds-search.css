@@ -27,8 +27,6 @@
         color: var(--gcds-search-default-text);
         border: var(--gcds-search-border-width) solid currentColor;
         border-radius: var(--gcds-search-border-radius);
-        border-start-end-radius: 0;
-        border-end-end-radius: 0;
         box-sizing: border-box;
         transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
       }
@@ -55,14 +53,14 @@
         border-color: var(--gcds-search-focus-text);
         outline: var(--gcds-search-outline-width) solid var(--gcds-search-focus-text);
         outline-offset: var(--gcds-search-border-width);
-        border-radius: var(--gcds-search-border-radius);
+        border-radius: var(--gcds-search-focus-border-radius);
         box-shadow: var(--gcds-search-focus-box-shadow);
         z-index: 30;
       }
     }
 
     ::part(button):focus {
-      border-radius: var(--gcds-search-border-radius);
+      border-radius: var(--gcds-search-focus-border-radius);
       box-shadow:  var(--gcds-search-focus-box-shadow);
     }
   }
