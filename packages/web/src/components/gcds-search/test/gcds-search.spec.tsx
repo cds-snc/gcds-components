@@ -36,8 +36,8 @@ describe('gcds-search', () => {
             Recherche
           </h2>
           <form action="https://www.canada.ca/fr/sr/srb.html" class="gcds-search__form" method="get" role="search">
-            <gcds-label hide-label="" label="Recherche dans Canada.ca" label-for="search"></gcds-label>
-            <input class="gcds-search__input" id="search" list="search-list" maxlength="170" name="q" placeholder="Recherche dans Canada.ca" size="34" type="search">
+            <gcds-label hide-label="" label="Rechercher dans Canada.ca" label-for="search"></gcds-label>
+            <input class="gcds-search__input" id="search" list="search-list" maxlength="170" name="q" placeholder="Rechercher dans Canada.ca" size="34" type="search">
             <gcds-button class="gcds-search__button" exportparts="button" type="submit">
               <gcds-icon fixed-width="" label="Recherche" name="search"></gcds-icon>
             </gcds-button>
