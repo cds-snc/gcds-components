@@ -22,15 +22,10 @@
       font: var(--gcds-nav-group-trigger-font);
       text-align: left;
       padding: var(--gcds-nav-group-trigger-padding);
-      margin-left: var(--gcds-spacing-50);
-      text-decoration: underline solid currentColor var(--gcds-nav-link-default-decoration-thickness);
-      text-underline-offset: var(--gcds-nav-link-default-underline-offset);
-      text-decoration-color: transparent;
       background: transparent;
       color: var(--gcds-nav-group-trigger-text);
       border: none;
       cursor: pointer;
-      transition: all 0.25s ease-in-out;
 
       @media only screen and (width >= 64em) {
         max-width: var(--gcds-nav-group-trigger-max-width);
@@ -57,6 +52,11 @@
     .gcds-trigger--dropdown {
       padding: var(--gcds-nav-group-top-nav-trigger-padding);
       border-block-end: var(--gcds-nav-group-top-nav-trigger-border-width) solid transparent;
+      margin-left: var(--gcds-nav-group-top-nav-trigger-margin-left);
+      text-decoration: underline solid currentColor var(--gcds-nav-group-top-nav-trigger-decoration-thickness);
+      text-underline-offset: var(--gcds-nav-group-top-nav-trigger-underline-offset);
+      text-decoration-color: transparent;
+      transition: all 0.25s ease-in-out;
 
       gcds-icon {
         order: 2;
