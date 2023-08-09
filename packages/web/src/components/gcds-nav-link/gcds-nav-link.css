@@ -38,7 +38,7 @@
   @media only screen and (width >= 64em) {
     :host(.gcds-nav-link--topnav) > a {
       color: var(--gcds-nav-link-top-nav-text);
-      margin: 0 0 0 var(--gcds-spacing-50);
+      margin: var(--gcds-nav-link-top-nav-margin);
       padding: var(--gcds-nav-link-top-nav-padding);
       border-inline: 0;
       border-block-end: var(--gcds-nav-link-border-width) solid transparent;
@@ -110,6 +110,6 @@
     border-color: var(--gcds-nav-link-focus-background);
     text-decoration: none;
     border-radius: var(--gcds-nav-link-focus-border-radius);
-    box-shadow: 0 0 0 0.125rem #ffffff;
+    box-shadow: var(--gcds-nav-link-focus-box-shadow);
   }
 }
