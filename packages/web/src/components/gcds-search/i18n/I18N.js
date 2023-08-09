@@ -5,7 +5,7 @@ const I18N = {
   },
   "fr": {
     search: "Recherche",
-    searchLabel: "Recherche dans {$}",
+    searchLabel: "Rechercher dans {$}",
   }
 }
 
