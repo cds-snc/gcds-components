@@ -25,11 +25,6 @@
     @media only screen and (width > 48em) {
       max-width: var(--gcds-nav-link-default-max-width);
     }
-
-    &[aria-current="page"] {
-      text-decoration: none;
-      pointer-events: none;
-    }
   }
 }
 
@@ -42,6 +37,7 @@
       padding: var(--gcds-nav-link-top-nav-padding);
       border-inline: 0;
       border-block-end: var(--gcds-nav-link-border-width) solid transparent;
+      z-index: 300;
 
       &:not(:hover) {
         text-decoration-color: transparent;
@@ -65,6 +61,7 @@
   @media (hover: hover) {
     :host a:hover {
       text-decoration-thickness: var(--gcds-nav-link-hover-decoration-thickness);
+      color: #0535D2;
     }
 
     :host(.gcds-nav-link--sidenav) > a:hover,
@@ -83,21 +80,7 @@
 }
 
 @layer state.active {
-  :host a[aria-current="page"] {
-    font-weight: var(--gcds-nav-link-active-font-weight);
-    background-color: var(--gcds-nav-link-active-background);
-    color: var(--gcds-nav-link-active-text);
-    border-inline-start-color: var(--gcds-nav-link-active-border-color);
-  }
 
-  :host(.gcds-nav-link--topnav) > a[aria-current="page"] {
-    @media only screen and (width >= 64em) {
-      font: var(--gcds-nav-link-font);
-      background-color: transparent;
-      color: var(--gcds-nav-link-top-nav-text);
-      border-block-end-color: var(--gcds-nav-link-active-border-color);
-    }
-  }
 }
 
 @layer state.focus {
@@ -106,8 +89,8 @@
     color: var(--gcds-nav-link-focus-text);
     outline: var(--gcds-nav-link-focus-outline);
     outline-offset: var(--gcds-nav-link-focus-outline-offset);
-    border-color: var(--gcds-nav-link-focus-background);
     text-decoration: none;
     border-radius: var(--gcds-nav-link-focus-border-radius);
+    box-shadow: 0 0 0 0.125rem #ffffff;
   }
 }
