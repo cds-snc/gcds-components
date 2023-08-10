@@ -48,7 +48,7 @@
     .gcds-trigger--dropdown {
       padding: var(--gcds-nav-group-top-nav-trigger-padding);
       border-block-end: var(--gcds-nav-group-top-nav-trigger-border-width) solid transparent;
-      margin-left: var(--gcds-nav-group-top-nav-trigger-margin-left);
+      margin-inline-start: var(--gcds-nav-group-top-nav-trigger-margin-inline-start);
       text-decoration: underline solid currentColor var(--gcds-nav-group-top-nav-trigger-decoration-thickness);
       text-underline-offset: var(--gcds-nav-group-top-nav-trigger-underline-offset);
       text-decoration-color: transparent;

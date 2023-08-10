@@ -65,7 +65,7 @@
   @media (hover: hover) {
     :host a:hover {
       text-decoration-thickness: var(--gcds-nav-link-hover-decoration-thickness);
-      color: #0535d2;
+      color: var(--gcds-nav-link-hover-text);
     }
 
     :host(.gcds-nav-link--sidenav) > a:hover,
