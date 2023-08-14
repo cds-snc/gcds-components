@@ -942,9 +942,20 @@ export namespace Components {
         "updateNavSize": (size: any) => Promise<void>;
     }
     interface GcdsTopicMenu {
+        /**
+          * Close all theme menus
+         */
         "closeAllMenus": () => Promise<void>;
+        "getNavSize": () => Promise<"desktop" | "mobile">;
+        /**
+          * Toggle open theme and topic menu
+         */
         "toggleNav": () => Promise<void>;
+        /**
+          * Update keyboard focus queue
+         */
         "updateNavItemQueue": (parent: any) => Promise<void>;
+        "updateNavSize": (size: any) => Promise<void>;
     }
     interface GcdsVerifyBanner {
         /**
