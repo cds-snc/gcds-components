@@ -848,24 +848,6 @@ export namespace Components {
          */
         "variant": 'colour' | 'white';
     }
-    interface GcdsSiteMenu {
-        /**
-          * Menu alignment
-         */
-        "alignment": 'left' | 'center' | 'right' | 'split';
-        /**
-          * Desktop layout
-         */
-        "desktopLayout": 'topbar' | 'sidebar';
-        /**
-          * Mobile layout
-         */
-        "mobileLayout": 'drawer';
-        /**
-          * Sticky navigation flag
-         */
-        "position": 'static' | 'sticky';
-    }
     interface GcdsStepper {
         /**
           * Defines the current step.
@@ -958,6 +940,11 @@ export namespace Components {
         "label": string;
         "updateNavItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
+    }
+    interface GcdsTopicMenu {
+        "closeAllMenus": () => Promise<void>;
+        "toggleNav": () => Promise<void>;
+        "updateNavItemQueue": (parent: any) => Promise<void>;
     }
     interface GcdsVerifyBanner {
         /**
@@ -1203,12 +1190,6 @@ declare global {
         prototype: HTMLGcdsSignatureElement;
         new (): HTMLGcdsSignatureElement;
     };
-    interface HTMLGcdsSiteMenuElement extends Components.GcdsSiteMenu, HTMLStencilElement {
-    }
-    var HTMLGcdsSiteMenuElement: {
-        prototype: HTMLGcdsSiteMenuElement;
-        new (): HTMLGcdsSiteMenuElement;
-    };
     interface HTMLGcdsStepperElement extends Components.GcdsStepper, HTMLStencilElement {
     }
     var HTMLGcdsStepperElement: {
@@ -1226,6 +1207,12 @@ declare global {
     var HTMLGcdsTopNavElement: {
         prototype: HTMLGcdsTopNavElement;
         new (): HTMLGcdsTopNavElement;
+    };
+    interface HTMLGcdsTopicMenuElement extends Components.GcdsTopicMenu, HTMLStencilElement {
+    }
+    var HTMLGcdsTopicMenuElement: {
+        prototype: HTMLGcdsTopicMenuElement;
+        new (): HTMLGcdsTopicMenuElement;
     };
     interface HTMLGcdsVerifyBannerElement extends Components.GcdsVerifyBanner, HTMLStencilElement {
     }
@@ -1264,10 +1251,10 @@ declare global {
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-side-nav": HTMLGcdsSideNavElement;
         "gcds-signature": HTMLGcdsSignatureElement;
-        "gcds-site-menu": HTMLGcdsSiteMenuElement;
         "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
+        "gcds-topic-menu": HTMLGcdsTopicMenuElement;
         "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
     }
 }
@@ -2234,24 +2221,6 @@ declare namespace LocalJSX {
          */
         "variant"?: 'colour' | 'white';
     }
-    interface GcdsSiteMenu {
-        /**
-          * Menu alignment
-         */
-        "alignment"?: 'left' | 'center' | 'right' | 'split';
-        /**
-          * Desktop layout
-         */
-        "desktopLayout": 'topbar' | 'sidebar';
-        /**
-          * Mobile layout
-         */
-        "mobileLayout": 'drawer';
-        /**
-          * Sticky navigation flag
-         */
-        "position"?: 'static' | 'sticky';
-    }
     interface GcdsStepper {
         /**
           * Defines the current step.
@@ -2358,6 +2327,8 @@ declare namespace LocalJSX {
          */
         "label": string;
     }
+    interface GcdsTopicMenu {
+    }
     interface GcdsVerifyBanner {
         /**
           * Defines the container width of the verify banner content
@@ -2399,10 +2370,10 @@ declare namespace LocalJSX {
         "gcds-select": GcdsSelect;
         "gcds-side-nav": GcdsSideNav;
         "gcds-signature": GcdsSignature;
-        "gcds-site-menu": GcdsSiteMenu;
         "gcds-stepper": GcdsStepper;
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
+        "gcds-topic-menu": GcdsTopicMenu;
         "gcds-verify-banner": GcdsVerifyBanner;
     }
 }
@@ -2440,10 +2411,10 @@ declare module "@stencil/core" {
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
-            "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-top-nav": LocalJSX.GcdsTopNav & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;
+            "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
             "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }
     }
