@@ -15,6 +15,7 @@
 
         &:hover {
           background: var(--gcds-pagination-hover-background);
+          color: var(--gcds-pagination-hover-text);
         }
 
         &:focus {
