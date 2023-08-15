@@ -1,5 +1,6 @@
-import { Component, Host, State, Method, Element, Listen, h } from '@stencil/core';
+import { Component, Host, State, Method, Element, Listen, Fragment, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import I18N from './i18n/i18n';
 
 @Component({
   tag: 'gcds-topic-menu',
@@ -339,6 +340,7 @@ export class GcdsTopicMenu {
   }
 
   render() {
+    const { lang } = this;
     return (
       <Host>
         <nav class="gcweb-menu">
@@ -350,10 +352,21 @@ export class GcdsTopicMenu {
           <button
             aria-haspopup="true"
             aria-expanded={this.open.toString()}
+            aria-label={I18N[lang].buttonLabel}
             onClick={async () => await this.toggleNav()}
             ref={element => this.menuButton = element as HTMLElement}
           >
-            Menu
+            {this.lang == 'en' ?
+              <>
+                <span class="gcds-topic-menu__main">Main </span>
+                Menu
+              </>
+            :
+              <>
+                Menu
+                <span class="gcds-topic-menu__main"> principal</span>
+              </>
+            }
             <gcds-icon
               name="chevron-down"
               margin-left="150"

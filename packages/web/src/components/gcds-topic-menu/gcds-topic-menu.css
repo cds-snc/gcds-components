@@ -1,6 +1,7 @@
 :host {
   display: block;
 
+  .gcds-topic-menu__main,
   .gcds-topic-menu__header {
     display: block;
     width: 0;
@@ -11,9 +12,9 @@
 
   .gcweb-menu {
     color: #284162;
-    width: 100%;
+    width: 90%;
     max-width: 71.25rem;
-    margin: 0 auto;
+    margin-inline: auto;
 
     button[aria-haspopup=true] {
       background-color: #26374a;

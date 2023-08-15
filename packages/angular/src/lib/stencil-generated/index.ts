@@ -35,5 +35,6 @@ export const DIRECTIVES = [
   d.GcdsStepper,
   d.GcdsTextarea,
   d.GcdsTopNav,
+  d.GcdsTopicMenu,
   d.GcdsVerifyBanner
 ];

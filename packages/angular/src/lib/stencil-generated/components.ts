@@ -951,6 +951,28 @@ export declare interface GcdsTopNav extends Components.GcdsTopNav {}
 
 
 @ProxyCmp({
+  methods: ['closeAllMenus', 'toggleNav', 'updateNavSize', 'getNavSize', 'updateNavItemQueue']
+})
+@Component({
+  selector: 'gcds-topic-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class GcdsTopicMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsTopicMenu extends Components.GcdsTopicMenu {}
+
+
+@ProxyCmp({
   inputs: ['container', 'isFixed']
 })
 @Component({
