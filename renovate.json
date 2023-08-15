@@ -8,5 +8,5 @@
       "before 6am on the first day of the month"
     ]
   },
-  "baseBranches": ["staging"]
+  "baseBranches": ["develop"]
 }
