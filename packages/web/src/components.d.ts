@@ -848,24 +848,6 @@ export namespace Components {
          */
         "variant": 'colour' | 'white';
     }
-    interface GcdsSiteMenu {
-        /**
-          * Menu alignment
-         */
-        "alignment": 'left' | 'center' | 'right' | 'split';
-        /**
-          * Desktop layout
-         */
-        "desktopLayout": 'topbar' | 'sidebar';
-        /**
-          * Mobile layout
-         */
-        "mobileLayout": 'drawer';
-        /**
-          * Sticky navigation flag
-         */
-        "position": 'static' | 'sticky';
-    }
     interface GcdsStepper {
         /**
           * Defines the current step.
@@ -1203,12 +1185,6 @@ declare global {
         prototype: HTMLGcdsSignatureElement;
         new (): HTMLGcdsSignatureElement;
     };
-    interface HTMLGcdsSiteMenuElement extends Components.GcdsSiteMenu, HTMLStencilElement {
-    }
-    var HTMLGcdsSiteMenuElement: {
-        prototype: HTMLGcdsSiteMenuElement;
-        new (): HTMLGcdsSiteMenuElement;
-    };
     interface HTMLGcdsStepperElement extends Components.GcdsStepper, HTMLStencilElement {
     }
     var HTMLGcdsStepperElement: {
@@ -1264,7 +1240,6 @@ declare global {
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-side-nav": HTMLGcdsSideNavElement;
         "gcds-signature": HTMLGcdsSignatureElement;
-        "gcds-site-menu": HTMLGcdsSiteMenuElement;
         "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
@@ -2234,24 +2209,6 @@ declare namespace LocalJSX {
          */
         "variant"?: 'colour' | 'white';
     }
-    interface GcdsSiteMenu {
-        /**
-          * Menu alignment
-         */
-        "alignment"?: 'left' | 'center' | 'right' | 'split';
-        /**
-          * Desktop layout
-         */
-        "desktopLayout": 'topbar' | 'sidebar';
-        /**
-          * Mobile layout
-         */
-        "mobileLayout": 'drawer';
-        /**
-          * Sticky navigation flag
-         */
-        "position"?: 'static' | 'sticky';
-    }
     interface GcdsStepper {
         /**
           * Defines the current step.
@@ -2399,7 +2356,6 @@ declare namespace LocalJSX {
         "gcds-select": GcdsSelect;
         "gcds-side-nav": GcdsSideNav;
         "gcds-signature": GcdsSignature;
-        "gcds-site-menu": GcdsSiteMenu;
         "gcds-stepper": GcdsStepper;
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
@@ -2440,7 +2396,6 @@ declare module "@stencil/core" {
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
-            "gcds-site-menu": LocalJSX.GcdsSiteMenu & JSXBase.HTMLAttributes<HTMLGcdsSiteMenuElement>;
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-top-nav": LocalJSX.GcdsTopNav & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;
