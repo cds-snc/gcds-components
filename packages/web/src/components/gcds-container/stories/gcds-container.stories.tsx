@@ -73,6 +73,82 @@ const Template = (args) => (`
 </GcdsContainer>
 `).replace(/ null/g, '');
 
+const TemplateMargin = () => (`
+<!-- Web component code (Angular, Vue) -->
+<gcds-container size="md" border margin="0">Margin 0</gcds-container>
+<gcds-container size="md" border margin="50">Margin 50</gcds-container>
+<gcds-container size="md" border margin="100">Margin 100</gcds-container>
+<gcds-container size="md" border margin="150">Margin 150</gcds-container>
+<gcds-container size="md" border margin="200">Margin 200</gcds-container>
+<gcds-container size="md" border margin="250">Margin 250</gcds-container>
+<gcds-container size="md" border margin="300">Margin 300</gcds-container>
+<gcds-container size="md" border margin="400">Margin 400</gcds-container>
+<gcds-container size="md" border margin="450">Margin 450</gcds-container>
+<gcds-container size="md" border margin="500">Margin 500</gcds-container>
+<gcds-container size="md" border margin="550">Margin 550</gcds-container>
+<gcds-container size="md" border margin="600">Margin 600</gcds-container>
+<gcds-container size="md" border margin="700">Margin 700</gcds-container>
+<gcds-container size="md" border margin="800">Margin 800</gcds-container>
+<gcds-container size="md" border margin="900">Margin 900</gcds-container>
+<gcds-container size="md" border margin="1000">Margin 1000</gcds-container>
+
+<!-- React code -->
+<GcdsContainer size="md" border margin="0">Margin 0</GcdsContainer>
+<GcdsContainer size="md" border margin="50">Margin 50</GcdsContainer>
+<GcdsContainer size="md" border margin="100">Margin 100</GcdsContainer>
+<GcdsContainer size="md" border margin="150">Margin 150</GcdsContainer>
+<GcdsContainer size="md" border margin="200">Margin 200</GcdsContainer>
+<GcdsContainer size="md" border margin="250">Margin 250</GcdsContainer>
+<GcdsContainer size="md" border margin="300">Margin 300</GcdsContainer>
+<GcdsContainer size="md" border margin="400">Margin 400</GcdsContainer>
+<GcdsContainer size="md" border margin="450">Margin 450</GcdsContainer>
+<GcdsContainer size="md" border margin="500">Margin 500</GcdsContainer>
+<GcdsContainer size="md" border margin="550">Margin 550</GcdsContainer>
+<GcdsContainer size="md" border margin="600">Margin 600</GcdsContainer>
+<GcdsContainer size="md" border margin="700">Margin 700</GcdsContainer>
+<GcdsContainer size="md" border margin="800">Margin 800</GcdsContainer>
+<GcdsContainer size="md" border margin="900">Margin 900</GcdsContainer>
+<GcdsContainer size="md" border margin="1000">Margin 1000</GcdsContainer>
+`).replace(/ null/g, '');
+
+const TemplatePadding = () => (`
+<!-- Web component code (Angular, Vue) -->
+<gcds-container size="md" border padding="0">Padding 0</gcds-container>
+<gcds-container size="md" border padding="50">Padding 50</gcds-container>
+<gcds-container size="md" border padding="100">Padding 100</gcds-container>
+<gcds-container size="md" border padding="150">Padding 150</gcds-container>
+<gcds-container size="md" border padding="200">Padding 200</gcds-container>
+<gcds-container size="md" border padding="250">Padding 250</gcds-container>
+<gcds-container size="md" border padding="300">Padding 300</gcds-container>
+<gcds-container size="md" border padding="400">Padding 400</gcds-container>
+<gcds-container size="md" border padding="450">Padding 450</gcds-container>
+<gcds-container size="md" border padding="500">Padding 500</gcds-container>
+<gcds-container size="md" border padding="550">Padding 550</gcds-container>
+<gcds-container size="md" border padding="600">Padding 600</gcds-container>
+<gcds-container size="md" border padding="700">Padding 700</gcds-container>
+<gcds-container size="md" border padding="800">Padding 800</gcds-container>
+<gcds-container size="md" border padding="900">Padding 900</gcds-container>
+<gcds-container size="md" border padding="1000">Padding 1000</gcds-container>
+
+<!-- React code -->
+<GcdsContainer size="md" border padding="0">Padding 0</GcdsContainer>
+<GcdsContainer size="md" border padding="50">Padding 50</GcdsContainer>
+<GcdsContainer size="md" border padding="100">Padding 100</GcdsContainer>
+<GcdsContainer size="md" border padding="150">Padding 150</GcdsContainer>
+<GcdsContainer size="md" border padding="200">Padding 200</GcdsContainer>
+<GcdsContainer size="md" border padding="250">Padding 250</GcdsContainer>
+<GcdsContainer size="md" border padding="300">Padding 300</GcdsContainer>
+<GcdsContainer size="md" border padding="400">Padding 400</GcdsContainer>
+<GcdsContainer size="md" border padding="450">Padding 450</GcdsContainer>
+<GcdsContainer size="md" border padding="500">Padding 500</GcdsContainer>
+<GcdsContainer size="md" border padding="550">Padding 550</GcdsContainer>
+<GcdsContainer size="md" border padding="600">Padding 600</GcdsContainer>
+<GcdsContainer size="md" border padding="700">Padding 700</GcdsContainer>
+<GcdsContainer size="md" border padding="800">Padding 800</GcdsContainer>
+<GcdsContainer size="md" border padding="900">Padding 900</GcdsContainer>
+<GcdsContainer size="md" border padding="1000">Padding 1000</GcdsContainer>
+`).replace(/ null/g, '');
+
 const TemplatePlayground = (args) => (`
 <gcds-container
   ${args.size != "full" ? `size="${args.size}"`: null}
@@ -92,6 +168,7 @@ export const Default = Template.bind({});
 Default.args = {
   size: 'md',
   border: true,
+  centered: false,
   tag: 'div',
   padding: '400',
   default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
@@ -165,6 +242,18 @@ Centered.args = {
   default: '<p>This container is centered.</p>',
 };
 
+// ------ Container margin ------
+
+export const Margin = TemplateMargin.bind({});
+Margin.args = {
+};
+
+// ------ Container padding ------
+
+export const Padding = TemplatePadding.bind({});
+Padding.args = {
+};
+
 // ------ Container events & props ------
 
 export const Props = Template.bind({});
@@ -172,8 +261,8 @@ Props.args = {
   size: 'md',
   tag: 'div',
   padding: '400',
-  border: true,
   centered: false,
+  border: true,
   default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };
 
