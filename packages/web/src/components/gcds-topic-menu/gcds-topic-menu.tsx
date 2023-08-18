@@ -215,7 +215,9 @@ export class GcdsTopicMenu {
   * Focus menu link
   */
   private focusMenuLink(queue, activeElement, nextStep) {
-    if (activeElement.hasAttribute('aria-haspopup') && !activeElement.hasAttribute('data-keep-expanded')) {
+    if (activeElement.closest('ul').hasAttribute('data-top-menu') && activeElement.hasAttribute('aria-haspopup') && !activeElement.hasAttribute('data-keep-expanded')) {
+      this.closeAllMenus();
+    } else if (activeElement.hasAttribute('aria-haspopup') && !activeElement.hasAttribute('data-keep-expanded')) {
       activeElement.setAttribute('aria-expanded', 'false');
     }
 
@@ -259,7 +261,6 @@ export class GcdsTopicMenu {
 
   async componentDidLoad() {
     let hostElement = this.el;
-
     let menuEnterTimer;
 
     for (let x = 0; x < this.themeList.children.length; x++) {

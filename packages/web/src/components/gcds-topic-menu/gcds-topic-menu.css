@@ -29,6 +29,7 @@
       width: 90%;
       max-width: 71.25rem;
       margin-inline: auto;
+      position: relative;
 
       button[aria-haspopup=true] {
         background-color: #26374a;
@@ -52,8 +53,16 @@
         display: none;
       }
 
-      [aria-haspopup=true][aria-expanded=true]+[role=menu] {
+      button[aria-haspopup=true][aria-expanded=true]+[role=menu] {
         z-index: 9999;
+
+        [role=menuitem] {
+          z-index: 9999;
+          position: relative;
+        }
+      }
+      [aria-haspopup=true][aria-expanded=true]+[role=menu] {
+        z-index: 9998;
       }
 
       /* First level - Theme list */
@@ -64,6 +73,7 @@
         padding: 0;
         position: absolute;
         margin: 0;
+        width: 100%;
 
         &>li {
           border-left: #444 solid 1px;
@@ -86,10 +96,10 @@
           color: #000;
           left: 360px;
           margin-bottom: 25px;
-          min-height: 815px;
+          min-height: 49.8125rem;
           padding: 0 39px 24px 39px;
           top: 0;
-          width: 810px;
+          width: calc(100% - 22.25rem);
 
           li {
             border: none;
@@ -100,6 +110,7 @@
               padding: 6px 0;
               text-decoration: underline;
               border-bottom: none;
+              border-right: none;
               width: auto;
 
               &[aria-haspopup=true],
@@ -130,6 +141,10 @@
               left: 400px;
               position: absolute;
               top: 4.5em;
+
+              [aria-expanded=true] {
+                background: transparent;
+              }
     
               [role=menu] {
                 list-style: disc;
@@ -169,12 +184,35 @@
               }
             }
           }
+          @media screen and (min-width: 992px) and (max-width: 1199px) {
+            li {
+              width: auto;
+            }
+
+            li:last-child {
+              left: auto;
+              margin-top: 1em;
+              position: relative;
+              top: auto;
+            }
+  
+            [role=menu] {
+              margin-bottom: 0;
+              padding-bottom: 0;
+              position: relative;
+  
+              li:last-child {
+                margin-top: 0;
+              }
+            }
+          }
         }
       }
 
       [role=menuitem],
       [role=menuitem]:visited {
         border-bottom: 1px solid #555;
+        border-right: 1px solid #fff;
         color: #fff;
         font-size: 18px;
         text-decoration: none;
@@ -289,9 +327,7 @@
   
             li:first-child,
             li:last-child {
-              [role=menuitem] {
-                background-color: #e1e1e1;
-              }
+              background-color: #e1e1e1;
             }
           }
         }
@@ -357,6 +393,7 @@
         box-shadow: var(--gcds-details-focus-box-shadow);
         outline-offset: var(--gcds-details-focus-outline-offset);
         outline: var(--gcds-details-focus-outline);
+        border-right: none;
       }
     }
   }
