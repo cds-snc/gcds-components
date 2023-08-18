@@ -209,8 +209,6 @@ export class GcdsTopicMenu {
     }
 
     this.navItems = focusableElements;
-
-    console.log(this.navItems)
   }
 
   /**
