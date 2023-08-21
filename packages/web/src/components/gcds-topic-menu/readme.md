@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description               | Type      | Default |
+| -------- | --------- | ------------------------- | --------- | ------- |
+| `home`   | `home`    | Sets the homepage styling | `boolean` | `false` |
+
+
 ## Methods
 
 ### `closeAllMenus() => Promise<void>`

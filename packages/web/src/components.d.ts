@@ -948,6 +948,10 @@ export namespace Components {
         "closeAllMenus": () => Promise<void>;
         "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
+          * Sets the homepage styling
+         */
+        "home": boolean;
+        /**
           * Toggle open theme and topic menu
          */
         "toggleNav": () => Promise<void>;
@@ -2339,6 +2343,10 @@ declare namespace LocalJSX {
         "label": string;
     }
     interface GcdsTopicMenu {
+        /**
+          * Sets the homepage styling
+         */
+        "home"?: boolean;
     }
     interface GcdsVerifyBanner {
         /**

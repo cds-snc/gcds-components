@@ -60,7 +60,7 @@ French.args = {
 
 export const Home = Template.bind({});
 Home.args = {
-  home: false,
+  home: true,
   lang: 'fr'
 };
 

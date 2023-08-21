@@ -951,6 +951,7 @@ export declare interface GcdsTopNav extends Components.GcdsTopNav {}
 
 
 @ProxyCmp({
+  inputs: ['home'],
   methods: ['closeAllMenus', 'toggleNav', 'updateNavSize', 'getNavSize', 'updateNavItemQueue']
 })
 @Component({
@@ -958,7 +959,7 @@ export declare interface GcdsTopNav extends Components.GcdsTopNav {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['home'],
 })
 export class GcdsTopicMenu {
   protected el: HTMLElement;

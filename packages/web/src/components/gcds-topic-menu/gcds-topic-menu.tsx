@@ -1,4 +1,4 @@
-import { Component, Host, State, Method, Element, Listen, Fragment, h } from '@stencil/core';
+import { Component, Host, State, Method, Element, Listen, Fragment, Prop, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
 
@@ -14,6 +14,19 @@ export class GcdsTopicMenu {
 
   private themeList?: HTMLElement;
   private menuButton?: HTMLElement;
+
+  /**
+  * Props
+  */
+
+  /**
+  * Sets the homepage styling
+  */
+  @Prop() home: boolean = false;
+
+  /**
+  * States
+  */
 
   /**
   * Open state of menu
@@ -339,10 +352,10 @@ export class GcdsTopicMenu {
   }
 
   render() {
-    const { lang } = this;
+    const { home, lang } = this;
     return (
       <Host>
-        <nav class="gcweb-menu">
+        <nav class="gcds-topic-menu">
           <h2
             class="gcds-topic-menu__header"
           >
@@ -354,6 +367,7 @@ export class GcdsTopicMenu {
             aria-label={I18N[lang].buttonLabel}
             onClick={async () => await this.toggleNav()}
             ref={element => this.menuButton = element as HTMLElement}
+            class={home && 'gcds-topic-menu--home'}
           >
             {this.lang == 'en' ?
               <>

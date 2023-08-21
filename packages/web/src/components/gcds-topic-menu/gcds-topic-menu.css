@@ -24,7 +24,7 @@
       display: none;
     }
 
-    .gcweb-menu {
+    .gcds-topic-menu {
       color: #284162;
       width: 90%;
       max-width: 71.25rem;
@@ -40,6 +40,12 @@
         text-transform: uppercase;
         cursor: pointer;
         font-size: 20px;
+
+        &.gcds-topic-menu--home {
+          background-color: #fff;
+          border-color: #fff;
+          color: #284162;
+        }
 
         &:hover,
         &[aria-expanded="true"] {
@@ -233,7 +239,7 @@
 
 @layer mobile {
   :host {
-    .gcweb-menu {
+    .gcds-topic-menu {
       @media screen and (max-width: 991px) {
         .visible-sm-inline {
           display: inline-block;
@@ -384,7 +390,7 @@
 
 @layer focus {
   :host {
-    .gcweb-menu {
+    .gcds-topic-menu {
       button[aria-haspopup=true]:focus,
       [role=menuitem]:focus {
         border-radius: var(--gcds-details-focus-border-radius);
