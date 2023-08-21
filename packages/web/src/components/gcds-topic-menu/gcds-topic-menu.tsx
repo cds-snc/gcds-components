@@ -10,7 +10,7 @@ import I18N from './i18n/i18n';
 export class GcdsTopicMenu {
   @Element() el: HTMLGcdsTopicMenuElement;
 
-  private test;
+  private listItems;
 
   private themeList?: HTMLElement;
   private menuButton?: HTMLElement;
@@ -269,13 +269,14 @@ export class GcdsTopicMenu {
 
     return await fetch(`https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-${this.lang}.html`)
       .then(response => response.text())
-      .then(data => this.test = data);
+      .then(data => this.listItems = data);
   }
 
   async componentDidLoad() {
     let hostElement = this.el;
     let menuEnterTimer;
 
+    // Since we load the HTML, loop through elements and add event listeners to add functionality 
     for (let x = 0; x < this.themeList.children.length; x++) {
       let themeLink = this.themeList.children[x].querySelector("a");
 
@@ -283,6 +284,7 @@ export class GcdsTopicMenu {
       themeLink.addEventListener("click", async function(e) {
         e.preventDefault();
 
+        // Open topic lists
         if (await hostElement.getNavSize() == 'desktop') {
           await hostElement.closeAllMenus();
           themeLink.setAttribute('aria-expanded', 'true');
@@ -306,6 +308,7 @@ export class GcdsTopicMenu {
 
       // Hover actions
       themeLink.addEventListener("mouseenter", async function() {
+        // Change active theme if hovering on menuitem
         if (await hostElement.getNavSize() == 'desktop') {
           menuEnterTimer = setTimeout(async function() {
             await hostElement.closeAllMenus();
@@ -313,6 +316,7 @@ export class GcdsTopicMenu {
           }, 400);
         }
       });
+      // Cancel hover timer if mouseut before completes
       themeLink.addEventListener("mouseleave", function() {
         clearTimeout(menuEnterTimer);
       });
@@ -327,11 +331,15 @@ export class GcdsTopicMenu {
             mostRequested.setAttribute('aria-expanded', 'false');
           } else {
             mostRequested.setAttribute('aria-expanded', 'true');
+            let mostRequestedList = mostRequested.parentNode.querySelector('ul');
+            mostRequestedList.children[0].querySelector('a').focus();
+            await hostElement.updateNavItemQueue(mostRequestedList);
           }
         }
       });
     }
 
+    // Mobile responsiveness
     const mediaQuery = window.matchMedia('screen and (max-width: 991px)');
     const nav = this.el as HTMLGcdsTopicMenuElement;
 
@@ -390,7 +398,7 @@ export class GcdsTopicMenu {
             role="menu"
             aria-orientation="vertical"
             data-top-menu
-            innerHTML={this.test}
+            innerHTML={this.listItems}
             ref={element => this.themeList = element as HTMLElement}
           ></ul>
         </nav>
