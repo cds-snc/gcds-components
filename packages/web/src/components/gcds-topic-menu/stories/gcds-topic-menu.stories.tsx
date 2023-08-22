@@ -61,7 +61,7 @@ French.args = {
 export const Home = Template.bind({});
 Home.args = {
   home: true,
-  lang: 'fr'
+  lang: 'en'
 };
 
 // ------ Theme and topic menu events & props ------

@@ -43,7 +43,7 @@
 
         &.gcds-topic-menu--home {
           background-color: var(--gcds-topic-menu-button-home-background);
-          border-color: var(--gcds-topic-menu-button-home-border);
+          border-color: var(--gcds-topic-menu-button-home-border-color);
           color: var(--gcds-topic-menu-button-home-text);
         }
 
@@ -195,7 +195,7 @@
 
             li:last-child {
               left: auto;
-              margin-block-start: var(--gcds-topic-menu-tablet-mostrequested-item-last-margin-block-start);
+              margin-block-start: var(--gcds-topic-menu-mostrequested-item-last-margin-block-start);
               position: relative;
               top: auto;
             }
