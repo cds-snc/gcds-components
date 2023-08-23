@@ -52,6 +52,16 @@ const Template = (args) => (`
 </GcdsSignature>
 `).replace(/\s\snull\n/g, '');
 
+const TemplatePlayground = (args) => (`
+<gcds-signature
+  type="${args.type}"
+  has-link="${args.hasLink}"
+  variant="${args.variant}"
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+>
+</gcds-signature>
+`);
+
 export const Default = Template.bind({});
 Default.args = {
   type: 'signature',
@@ -105,5 +115,13 @@ WordmarkWhite.args = {
   type: 'wordmark',
   hasLink: 'false',
   variant: 'white',
+  lang: 'en'
+};
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
+  type: 'signature',
+  hasLink: 'false',
+  variant: 'colour',
   lang: 'en'
 };
