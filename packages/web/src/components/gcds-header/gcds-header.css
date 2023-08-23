@@ -39,6 +39,10 @@
       .brand__signature,
       slot[name="signature"] {
         grid-area: signature;
+
+        gcds-signature {
+          margin: var( --gcds-header-brand-signature-margin);
+        }
       }
 
       .brand__search {
