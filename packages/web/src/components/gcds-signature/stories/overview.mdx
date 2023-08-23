@@ -1,0 +1,111 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Signature from './gcds-signature.stories';
+
+<Meta of={Signature} name="Overview" />
+
+# Signature<br/>`<gcds-signature>`
+
+_Also called: wordmark._
+
+The signature is the Government of Canada landmark identifier found in the header or footer.
+
+<Canvas
+  of={Signature.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### Type property
+
+#### Signature Type
+
+<Canvas
+  of={Signature.Default}
+  story={{ inline: true }}
+/>
+
+#### Wordmark Type
+
+<Canvas
+  of={Signature.Wordmark}
+  story={{ inline: true }}
+/>
+
+### Language
+
+#### English Signature
+
+<Canvas
+  of={Signature.Default}
+  story={{ inline: true }}
+/>
+
+#### French Signature
+
+<Canvas
+  of={Signature.SignatureFrench}
+  story={{ inline: true }}
+/>
+
+#### English Wordmark
+
+<Canvas
+  of={Signature.Wordmark}
+  story={{ inline: true }}
+/>
+
+#### French Wordmark
+
+<Canvas
+  of={Signature.WordmarkFrench}
+  story={{ inline: true }}
+/>
+
+
+### hasLink property
+
+#### hasLink = false
+
+<Canvas
+  of={Signature.Default}
+  story={{ inline: true }}
+/>
+
+#### hasLink = true
+
+<Canvas
+  of={Signature.HasLinkTrue}
+  story={{ inline: true }}
+/>
+
+### Colour variants
+
+#### Signature variant = colour
+
+<Canvas
+  of={Signature.Default}
+  story={{ inline: true }}
+/>
+
+#### Wordmark variant = colour
+
+<Canvas
+  of={Signature.Wordmark}
+  story={{ inline: true }}
+/>
+
+#### Signature variant = white
+
+<Canvas
+  of={Signature.SignatureWhite}
+  story={{ inline: true }}
+/>
+
+#### Wordmark variant = white
+
+<Canvas
+  of={Signature.WordmarkWhite}
+  story={{ inline: true }}
+/>
