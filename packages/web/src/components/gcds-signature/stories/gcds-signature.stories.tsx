@@ -59,3 +59,51 @@ Default.args = {
   variant: 'colour',
   lang: 'en'
 };
+
+export const Wordmark = Template.bind({});
+Wordmark.args = {
+  type: 'wordmark',
+  hasLink: 'false',
+  variant: 'colour',
+  lang: 'en'
+};
+
+export const SignatureFrench = Template.bind({});
+SignatureFrench.args = {
+  type: 'signature',
+  hasLink: 'false',
+  variant: 'colour',
+  lang: 'fr'
+};
+
+export const WordmarkFrench = Template.bind({});
+WordmarkFrench.args = {
+  type: 'wordmark',
+  hasLink: 'false',
+  variant: 'colour',
+  lang: 'fr'
+};
+
+export const HasLinkTrue = Template.bind({});
+HasLinkTrue.args = {
+  type: 'signature',
+  hasLink: 'true',
+  variant: 'colour',
+  lang: 'en'
+};
+
+export const SignatureWhite = Template.bind({});
+SignatureWhite.args = {
+  type: 'signature',
+  hasLink: 'false',
+  variant: 'white',
+  lang: 'en'
+};
+
+export const WordmarkWhite = Template.bind({});
+WordmarkWhite.args = {
+  type: 'wordmark',
+  hasLink: 'false',
+  variant: 'white',
+  lang: 'en'
+};
