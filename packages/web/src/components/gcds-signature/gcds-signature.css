@@ -1,7 +1,6 @@
 gcds-signature {
   display: block;
   width: fit-content;
-  margin: var(--gcds-signature-margin);
 
   .gcds-signature {
     display: flex;
@@ -14,7 +13,6 @@ gcds-signature {
   &:not([type='wordmark']) {
     svg {
       height: var(--gcds-signature-signature-height);
-      margin: var(--gcds-signature-signature-margin);
     }
 
     @media screen and (min-width: 64em) {
@@ -27,7 +25,6 @@ gcds-signature {
   &[type='wordmark'] {
     svg {
       height: var(--gcds-signature-wordmark-height);
-      margin: var(--gcds-signature-wordmark-margin);
       width: auto;
     }
   }
