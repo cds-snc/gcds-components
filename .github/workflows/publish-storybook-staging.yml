@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - staging
+      - develop
     paths:
       - 'packages/web/src/**'
       - 'packages/web/.storybook/**'

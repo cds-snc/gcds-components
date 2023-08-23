@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  transition: color ease-in-out .15s;
+  transition: color ease-in-out 0.15s;
 
   &:focus-within {
     color: var(--gcds-file-uploader-focus-text);
@@ -46,6 +46,11 @@
   &.gcds-error .file-uploader__uploaded-file:not(:focus) {
     border-color: var(--gcds-file-uploader-file-danger-border-color);
   }
+
+  &.gcds-error .file-uploader__uploaded-file:focus-within,
+  .file-uploader__uploaded-file:focus-within {
+    border-color: var(--gcds-file-uploader-file-focus-border-color);
+  }
 }
 
 :host .file-uploader__input {
@@ -66,7 +71,7 @@
     color: var(--gcds-file-uploader-button-text);
     border: var(--gcds-file-uploader-button-border-width) solid var(--gcds-file-uploader-button-text);
     border-radius: var(--gcds-file-uploader-button-border-radius);
-    transition: all .15s ease-in-out;
+    transition: all 0.15s ease-in-out;
   }
 
   input {
@@ -86,11 +91,20 @@
     overflow: hidden;
   }
 
+  &:hover button {
+    background-color: var(--gcds-file-uploader-hover-button-background);
+  }
+
   &:focus-within button {
     background-color: var(--gcds-file-uploader-focus-button-background);
     color: var(--gcds-file-uploader-focus-button-text);
     outline: var(--gcds-file-uploader-button-outline-width) solid var(--gcds-file-uploader-focus-button-background);
     border-color: currentColor;
+  }
+
+  &:active button {
+    background-color: var(--gcds-file-uploader-active-button-background);
+    color: var(--gcds-file-uploader-active-button-text);
   }
 }
 
@@ -123,28 +137,36 @@
     align-items: center;
     font: inherit;
     background: transparent;
+    border-radius: var(--gcds-file-uploader-file-button-border-radius);
     color: var(--gcds-file-uploader-file-button-default-text);
     margin: var(--gcds-file-uploader-file-button-margin);
     padding: var(--gcds-file-uploader-file-button-padding);
     outline: 0;
-    transition: color .35s;
+    transition: color 0.35s;
 
     &:not(:focus) span {
-      border-block-end: var(--gcds-file-uploader-file-button-border-width) solid currentColor;
-      transition: box-shadow .35s;
+      transition: box-shadow 0.35s;
+      overflow: visible;
+      text-decoration: underline;
+      text-underline-offset: var(--gcds-file-uploader-file-button-underline-offset);
+      text-decoration-thickness: var(--gcds-file-uploader-file-button-default-decoration-thickness);
     }
 
     &:hover {
       color: var(--gcds-file-uploader-file-button-hover-text);
+    }
 
-      &:not(:focus) span {
-        box-shadow: inset 0 calc(-1 * var(--gcds-file-uploader-file-button-border-width)) 0 currentColor;
-      }
+    &:hover span {
+      text-decoration-thickness: var(--gcds-file-uploader-file-button-hover-decoration-thickness);
     }
 
     &:focus {
       background-color: var(--gcds-file-uploader-focus-button-background);
       color: var(--gcds-file-uploader-focus-button-text);
+      outline: var(--gcds-file-uploader-focus-button-outline-width) solid var(--gcds-file-uploader-focus-button-background);
+      outline-offset: var(--gcds-file-uploader-focus-button-outline-offset);
+      border-color: var(--gcds-file-uploader-focus-button-background);
+      text-decoration-color: transparent;
     }
   }
 }

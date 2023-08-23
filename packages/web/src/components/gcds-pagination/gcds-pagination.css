@@ -15,6 +15,7 @@
 
         &:hover {
           background: var(--gcds-pagination-hover-background);
+          color: var(--gcds-pagination-hover-text);
         }
 
         &:focus {
@@ -22,13 +23,16 @@
           background-color: var(--gcds-pagination-focus-background);
           outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-background);
           outline-offset: var(--gcds-pagination-border-width);
+          text-decoration: none;
         }
 
         &:active:not(:focus),
-        &[aria-current*=page]:not(:focus) {
+        &[aria-current*='page']:not(:focus) {
           color: var(--gcds-pagination-active-text);
           background: var(--gcds-pagination-active-background);
           border-color: var(--gcds-pagination-active-background);
+          text-decoration: none;
+          pointer-events: none;
         }
       }
     }
@@ -172,21 +176,20 @@
 
           & > .gcds-pagination-simple-text {
             grid-area: text;
-            margin: var(--gcds-pagination-simple-listitem-text-margin)
+            margin: var(--gcds-pagination-simple-listitem-text-margin);
           }
 
           & > span {
             grid-area: label;
             font-weight: var(--gcds-pagination-simple-label-font-weight);
-            text-decoration: underline;
           }
         }
 
         &.gcds-pagination-simple-previous {
           a {
             grid-template-areas:
-              "icon text"
-              "icon label";
+              'icon text'
+              'icon label';
             grid-template-columns: 0.25fr 1fr;
           }
         }
@@ -195,9 +198,9 @@
 
           a {
             grid-template-areas:
-              "text icon"
-              "label icon";
-            grid-template-columns: 1fr 0.25fr ;
+              'text icon'
+              'label icon';
+            grid-template-columns: 1fr 0.25fr;
           }
         }
       }
