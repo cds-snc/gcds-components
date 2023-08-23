@@ -69,11 +69,11 @@
     }
   }
 
-  .gcds-header__topnav {
+  .gcds-header__skip-to-nav {
     text-align: center;
     position: absolute;
     width: 100%;
     margin-inline: auto;
-    top: var(--gcds-header-topnav-top);
+    top: var(--gcds-header-skiptonav-top);
   }
 }
