@@ -13,6 +13,21 @@ export default {
         defaultValue: { summary: 'signature' }
       },
     },
+    hasLink: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+    },
+    variant: {
+      control: 'radio',
+      options: ['colour', 'white'],
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'colour' }
+      },
+    },
     ...langProp
   },
 };
@@ -21,6 +36,8 @@ const Template = (args) => (`
 <!-- Web component code (Angular, Vue) -->
 <gcds-signature
   type="${args.type}"
+  has-link="${args.hasLink}"
+  variant="${args.variant}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </gcds-signature>
@@ -28,6 +45,8 @@ const Template = (args) => (`
 <!-- React code -->
 <GcdsSignature
   type="${args.type}"
+  hasLink="${args.hasLink}"
+  variant="${args.variant}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsSignature>
@@ -36,5 +55,7 @@ const Template = (args) => (`
 export const Default = Template.bind({});
 Default.args = {
   type: 'signature',
+  hasLink: 'false',
+  variant: 'colour',
   lang: 'en'
 };
