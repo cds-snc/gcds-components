@@ -1,0 +1,48 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as LangToggle from './gcds-lang-toggle.stories';
+
+<Meta of={LangToggle} name="Overview" />
+
+# Language toggle<br/>`<gcds-lang-toggle>`
+
+_Also called: language switch, language selector._
+
+The language toggle is a link to the same content in the other Official Language.
+
+<Canvas
+  of={LangToggle.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### Language
+
+#### English
+
+<Canvas
+  of={LangToggle.Default}
+  story={{ inline: true }}
+/>
+
+#### French
+
+<Canvas
+  of={LangToggle.French}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/language-toggle/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-lang-toggle" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=1780-5094&mode=design&t=0xvOOptEga94UT0o-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>
