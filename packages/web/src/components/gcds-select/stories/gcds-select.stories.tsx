@@ -119,6 +119,11 @@ const Template = (args) => (`
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
   <option value="3">Option 3</option>
+  <option value="4">Option 4</option>
+  <option value="5">Option 5</option>
+  <option value="6">Option 6</option>
+  <option value="7">Option 7</option>
+  <option value="8">Option 8</option>
 </gcds-select>
 
 <!-- React code -->
@@ -137,6 +142,11 @@ const Template = (args) => (`
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
   <option value="3">Option 3</option>
+  <option value="4">Option 4</option>
+  <option value="5">Option 5</option>
+  <option value="6">Option 6</option>
+  <option value="7">Option 7</option>
+  <option value="8">Option 8</option>
 </GcdsSelect>
 `).replace(/\s\snull\n/g, '');
 
@@ -156,6 +166,11 @@ const TemplatePlayground = (args) => (`
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
   <option value="3">Option 3</option>
+  <option value="4">Option 4</option>
+  <option value="5">Option 5</option>
+  <option value="6">Option 6</option>
+  <option value="7">Option 7</option>
+  <option value="8">Option 8</option>
 </gcds-select>
 `);
 
@@ -165,9 +180,9 @@ export const Default = Template.bind({});
 Default.args = {
   selectId: 'example-default',
   label: 'Label',
-  hint: 'Hint / example message.',
+  hint: 'Hint / Example message.',
   value: '',
-  defaultValue: 'Choose an option.',
+  defaultValue: 'Select option.',
   errorMessage: '',
   required: false,
   disabled: false,
@@ -181,8 +196,8 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   selectId: 'example-disabled',
   label: 'Label',
-  hint: 'Hint / example message.',
-  defaultValue: 'Choose an option.',
+  hint: 'Hint / Example message.',
+  defaultValue: 'Select option.',
   disabled: true,
   lang: 'en',
   validateOn: 'blur',
@@ -192,8 +207,8 @@ export const Error = Template.bind({});
 Error.args = {
   selectId: 'example-error',
   label: 'Label',
-  hint: 'Hint / example message.',
-  defaultValue: 'Choose an option.',
+  hint: 'Hint / Example message.',
+  defaultValue: 'Select option.',
   errorMessage: 'Error message or validation message.',
   lang: 'en',
   validateOn: 'blur',
@@ -203,8 +218,8 @@ export const Required = Template.bind({});
 Required.args = {
   selectId: 'example-required',
   label: 'Label',
-  hint: 'Hint / example message.',
-  defaultValue: 'Choose an option.',
+  hint: 'Hint / Example message.',
+  defaultValue: 'Select option.',
   required: true,
   lang: 'en',
   validateOn: 'blur',
@@ -216,7 +231,7 @@ export const WithoutDefaultValue = Template.bind({});
 WithoutDefaultValue.args = {
   selectId: 'example-default',
   label: 'Label',
-  hint: 'Hint / example message.',
+  hint: 'Hint / Example message.',
   lang: 'en',
   validateOn: 'blur',
 };
@@ -227,9 +242,9 @@ export const Props = Template.bind({});
 Props.args = {
   selectId: 'example-default',
   label: 'Label',
-  hint: 'Hint / example message.',
+  hint: 'Hint / Example message.',
   value: '',
-  defaultValue: 'Choose an option.',
+  defaultValue: 'Select option.',
   errorMessage: '',
   required: false,
   disabled: false,
@@ -243,9 +258,9 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   selectId: 'example-playground',
   label: 'Label',
-  hint: 'Hint / example message.',
+  hint: 'Hint / Example message.',
   value: '',
-  defaultValue: 'Choose an option.',
+  defaultValue: 'Select option.',
   errorMessage: '',
   required: false,
   disabled: false,

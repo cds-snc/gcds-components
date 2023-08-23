@@ -53,18 +53,15 @@ const Template = (args) => (`
   alignment="${args.alignment}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  ${args.home ?
-    `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link>
-    `
-  : null}
-  <gcds-nav-link href="#">Installation</gcds-nav-link>
-  <gcds-nav-group  open-trigger="Contact" menu-label="Contact">
-    <gcds-nav-link href="#">Form</gcds-nav-link>
-    <gcds-nav-link href="#">GitHub</gcds-nav-link>
-    <gcds-nav-link href="#">Slack</gcds-nav-link>
+  ${args.home ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> ` : null}
+  <gcds-nav-link href="#">Nav link</gcds-nav-link>
+  <gcds-nav-group  open-trigger="Nav group label" menu-label="Nav group label">
+    <gcds-nav-link href="#">Nav link</gcds-nav-link>
+    <gcds-nav-link href="#">Nav link</gcds-nav-link>
+    <gcds-nav-link href="#">Nav link</gcds-nav-link>
   </gcds-nav-group>
-  <gcds-nav-link href="#">Foundations</gcds-nav-link>
-  <gcds-nav-link href="#">Components</gcds-nav-link>
+  <gcds-nav-link href="#">Nav link</gcds-nav-link>
+  <gcds-nav-link href="#">Nav link</gcds-nav-link>
 </gcds-top-nav>
 
 <!-- React code -->
@@ -73,18 +70,15 @@ const Template = (args) => (`
   alignment="${args.alignment}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  ${args.home ?
-    `<GcdsNavLink href="#home" slot="home">${args.home}</GcdsNavLink>
-    `
-  : null}
-  <GcdsNavLink href="#">Installation</GcdsNavLink>
-  <GcdsNavGroup  openTrigger="Contact" menuLabel="Contact">
-    <GcdsNavLink href="#">Form</GcdsNavLink>
-    <GcdsNavLink href="#">GitHub</GcdsNavLink>
-    <GcdsNavLink href="#">Slack</GcdsNavLink>
+  ${args.home ? `<GcdsNavLink href="#home" slot="home">${args.home}</GcdsNavLink> ` : null}
+  <GcdsNavLink href="#">Nav link</GcdsNavLink>
+  <GcdsNavGroup  openTrigger="Nav group label" menuLabel="Nav group label">
+    <GcdsNavLink href="#">Nav link</GcdsNavLink>
+    <GcdsNavLink href="#">Nav link</GcdsNavLink>
+    <GcdsNavLink href="#">Nav link</GcdsNavLink>
   </GcdsNavGroup>
-  <GcdsNavLink href="#">Foundations</GcdsNavLink>
-  <GcdsNavLink href="#">Components</GcdsNavLink>
+  <GcdsNavLink href="#">Nav link</GcdsNavLink>
+  <GcdsNavLink href="#">Nav link</GcdsNavLink>
 </GcdsTopNav>
 `).replace(/\s\snull\n/g, '');
 
@@ -92,6 +86,6 @@ export const Default = Template.bind({});
 Default.args = {
   label: 'Top navigation',
   alignment: 'right',
-  home: '',
+  home: 'Home nav link',
   lang: 'en'
 };

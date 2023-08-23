@@ -148,9 +148,9 @@ const Template = (args) => (`
 export const Default = Template.bind({});
 Default.args = {
   checkboxId: 'checkbox',
-  label: 'Checkbox label',
+  label: 'Label',
   name: 'checkbox',
-  hint: '',
+  hint: 'Description or example to make the option clearer.',
   errorMessage: '',
   required: false,
   disabled: false,

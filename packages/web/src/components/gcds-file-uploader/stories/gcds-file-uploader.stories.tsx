@@ -145,8 +145,8 @@ const Template = (args) => (`
 export const Default = Template.bind({});
 Default.args = {
   uploaderId: 'uploader',
-  label: 'File uploader label',
-  hint: '',
+  label: 'Label',
+  hint: 'Hint / Example message.',
   errorMessage: '',
   required: false,
   disabled: false,

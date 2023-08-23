@@ -54,9 +54,9 @@ export const Default = Template.bind({});
 Default.args = {
   listen: true,
   errorLinks: `{
-    "error-href-1": "Error message",
-    "error-href-2": "Error message",
-    "error-href-3": "Error message"
+    "error-href-1": "Error summary item.",
+    "error-href-2": "Error summary item.",
+    "error-href-3": "Error summary item."
   }`,
   heading: '',
   lang: 'en'
