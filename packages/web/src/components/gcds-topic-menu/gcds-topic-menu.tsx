@@ -49,6 +49,16 @@ export class GcdsTopicMenu {
   @State() navSize: 'desktop' | 'mobile';
 
   /**
+  * Listen for focusout of theme and topic menu to close menu
+  */
+  @Listen("focusout", { target: "document" })
+  async focusOutListener(e) {
+    if (!this.el.contains(e.relatedTarget)) {
+      this.toggleNav();
+    }
+  }
+
+  /**
   * Keyboard controls of theme and topic menu
   */
   @Listen("keydown", {target: 'document'})
