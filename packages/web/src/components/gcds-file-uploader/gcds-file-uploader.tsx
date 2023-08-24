@@ -333,7 +333,6 @@ export class GcdsFileUploader {
           <div class={`file-uploader__input ${value.length > 0 ? "uploaded-files" : ''}`}>
             <button type="button" tabindex="-1" onClick={() => this.shadowElement.click()}>
               {i18n[lang].button.upload}
-              <gcds-icon name="upload" margin-left="200" />
             </button>
             <input
               type="file"

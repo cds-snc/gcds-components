@@ -56,7 +56,7 @@ export const Default = Template.bind({});
 Default.args = {
   lang: 'en',
   currentStep: 1,
-  totalSteps: 5,
+  totalSteps: 4,
 };
 
 // ------ Stepper french ------
@@ -65,7 +65,7 @@ export const French = Template.bind({});
 French.args = {
   lang: 'fr',
   currentStep: 1,
-  totalSteps: 5,
+  totalSteps: 4,
 };
 
 // ------ Stepper events & props ------
@@ -74,7 +74,7 @@ export const Props = Template.bind({});
 Props.args = {
   lang: 'en',
   currentStep: 1,
-  totalSteps: 5,
+  totalSteps: 4,
 };
 
 // ------ Stepper playground ------
@@ -83,5 +83,5 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   lang: 'en',
   currentStep: 1,
-  totalSteps: 5,
+  totalSteps: 4,
 };

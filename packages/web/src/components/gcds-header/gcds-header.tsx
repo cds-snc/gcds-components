@@ -65,14 +65,14 @@ export class GcdsHeader {
     this.updateLang();
   }
 
-  private get renderTopNav() {
-    if (!!this.el.querySelector('[slot="topnav"]')) {
-      return <slot name="topnav"></slot>;
+  private get renderSkipToNav() {
+    if (!!this.el.querySelector('[slot="skip-to-nav"]')) {
+      return <slot name="skip-to-nav"></slot>;
     } else if(this.skipToHref) {
       return (
       <nav
         aria-label={i18n[this.lang].skip}
-        class="gcds-header__topnav"
+        class="gcds-header__skip-to-nav"
       >
         <gcds-button
           type="link"
@@ -142,12 +142,12 @@ export class GcdsHeader {
   }
 
   render() {
-    const { renderTopNav, renderToggle, renderSignature, renderSearch, hasSearch, hasBanner, hasBreadcrumb } = this;
+    const { renderSkipToNav, renderToggle, renderSignature, renderSearch, hasSearch, hasBanner, hasBreadcrumb } = this;
     return (
       <Host
         role="banner"
       >
-        {renderTopNav}
+        {renderSkipToNav}
         {hasBanner ?
           <slot name="banner"></slot>
         :

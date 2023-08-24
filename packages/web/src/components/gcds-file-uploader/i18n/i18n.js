@@ -2,7 +2,7 @@ const I18N = {
   "en": {
     button: {
       remove: "Remove",
-      upload: "Upload a file",
+      upload: "Choose file",
     },
     summary: {
       selected: "Currently selected:",
@@ -13,7 +13,7 @@ const I18N = {
   "fr": {
     button: {
       remove: "Supprimer",
-      upload: "Téléverser un fichier",
+      upload: "Choisir un fichier",
     },
     summary: {
       selected: "Actuellement sélectionné:",

@@ -31,7 +31,7 @@ describe('gcds-header', () => {
     expect(page.root).toEqualHtml(`
       <gcds-header lang-href="/fr/" role="banner" signature-has-link="true" signature-variant="colour" skip-to-href="#main">
         <mock:shadow-root>
-          <nav aria-label="Skip to main content" class="gcds-header__topnav">
+          <nav aria-label="Skip to main content" class="gcds-header__skip-to-nav">
             <gcds-button button-role="skip-to-content" type="link" href="#main">
               Skip to main content
             </gcds-button>
@@ -92,7 +92,7 @@ describe('gcds-header', () => {
       components: [GcdsHeader],
       html: `
       <gcds-header>
-        <ul slot="topnav"></ul>
+        <ul slot="skip-to-nav"></ul>
         <div slot="banner"></div>
         <img slot="signature"/>
         <a href="/fr/" slot="toggle">Toggle</a>
@@ -104,7 +104,7 @@ describe('gcds-header', () => {
     expect(page.root).toEqualHtml(`
       <gcds-header role="banner">
         <mock:shadow-root>
-          <slot name="topnav"></slot>
+          <slot name="skip-to-nav"></slot>
           <slot name="banner"></slot>
           <div class="gcds-header__brand">
             <div class="brand__container">
@@ -117,7 +117,7 @@ describe('gcds-header', () => {
           </div>
           <slot name="menu"></slot>
         </mock:shadow-root>
-        <ul slot="topnav"></ul>
+        <ul slot="skip-to-nav"></ul>
         <div slot="banner"></div>
         <img slot="signature"/>
         <a href="/fr/" slot="toggle">

@@ -13,8 +13,7 @@ describe('gcds-file-uploader', () => {
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
             <button type="button" tabindex="-1">
-              Upload a file
-              <gcds-icon name="upload" margin-left="200" />
+              Choose file
             </button>
             <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="false" />
             <p id="file-uploader__summary">No file currently selected.</p>
@@ -38,8 +37,7 @@ describe('gcds-file-uploader', () => {
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
             <button type="button" tabindex="-1">
-              Upload a file
-              <gcds-icon name="upload" margin-left="200" />
+              Choose file
             </button>
             <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader" type="file" value="" disabled="" aria-invalid="false" />
             <p id="file-uploader__summary">No file currently selected.</p>
@@ -64,8 +62,7 @@ describe('gcds-file-uploader', () => {
           <gcds-error-message message="This is an error message." messageId="file-uploader"></gcds-error-message>
           <div class="file-uploader__input">
             <button type="button" tabindex="-1">
-              Upload a file
-              <gcds-icon name="upload" margin-left="200" />
+              Choose file
             </button>
             <input id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="true" aria-describedby="error-message-file-uploader file-uploader__summary" />
             <p id="file-uploader__summary">No file currently selected.</p>
@@ -90,8 +87,7 @@ describe('gcds-file-uploader', () => {
           <gcds-hint hint="This is a hint." hint-id="file-uploader"></gcds-hint>
           <div class="file-uploader__input">
             <button type="button" tabindex="-1">
-              Upload a file
-              <gcds-icon name="upload" margin-left="200" />
+              Choose file
             </button>
             <input id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="false" aria-describedby="hint-file-uploader file-uploader__summary" />
             <p id="file-uploader__summary">No file currently selected.</p>
@@ -115,8 +111,7 @@ describe('gcds-file-uploader', () => {
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
             <button type="button" tabindex="-1">
-              Upload a file
-              <gcds-icon name="upload" margin-left="200" />
+              Choose file
             </button>
             <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="false" />
             <p id="file-uploader__summary">No file currently selected.</p>
@@ -140,8 +135,7 @@ describe('gcds-file-uploader', () => {
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
             <button type="button" tabindex="-1">
-              Upload a file
-              <gcds-icon name="upload" margin-left="200" />
+              Choose file
             </button>
             <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="false" />
             <p id="file-uploader__summary">No file currently selected.</p>
@@ -165,8 +159,7 @@ describe('gcds-file-uploader', () => {
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en" required=""></gcds-label>
           <div class="file-uploader__input">
             <button type="button" tabindex="-1">
-              Upload a file
-              <gcds-icon name="upload" margin-left="200" />
+              Choose file
             </button>
             <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader" type="file" value="" aria-invalid="false" required="" />
             <p id="file-uploader__summary">No file currently selected.</p>

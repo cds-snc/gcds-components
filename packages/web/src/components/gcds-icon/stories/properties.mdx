@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as Icon from './gcds-icon.stories';
+
+<Meta of={Icon} name="Events & properties" />
+
+# Events & properties
+
+<Canvas
+  of={Icon.Props}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Icon.Props} sort="requiredFirst" />

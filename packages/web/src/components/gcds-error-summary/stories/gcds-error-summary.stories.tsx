@@ -50,14 +50,54 @@ const Template = (args) => (`
 </GcdsErrorSummary>
 `).replace(/\s\snull\n/g, '');
 
+const TemplatePlayground = (args) => (`
+<gcds-error-summary
+  ${args.listen && !args.errorLinks ? `listen` : null}
+  ${args.errorLinks ? `error-links='${args.errorLinks}'` : null}
+  ${args.heading ? `heading="${args.heading}"` : null}
+>
+</gcds-error-summary>
+`);
+
+// ------ Error summary default ------
+
 export const Default = Template.bind({});
 Default.args = {
   listen: true,
   errorLinks: `{
-    "error-href-1": "Error message",
-    "error-href-2": "Error message",
-    "error-href-3": "Error message"
+    "error-href-1": "Error summary item.",
+    "error-href-2": "Error summary item.",
+    "error-href-3": "Error summary item."
   }`,
   heading: '',
   lang: 'en'
 };
+
+// ------ Error summary events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
+  listen: true,
+  errorLinks: `{
+    "error-href-1": "Error summary item.",
+    "error-href-2": "Error summary item.",
+    "error-href-3": "Error summary item."
+  }`,
+  heading: '',
+  lang: 'en'
+};
+
+// ------ Error summary playground ------
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
+  listen: true,
+  errorLinks: `{
+    "error-href-1": "Error summary item.",
+    "error-href-2": "Error summary item.",
+    "error-href-3": "Error summary item."
+  }`,
+  heading: '',
+  lang: 'en'
+};
+
