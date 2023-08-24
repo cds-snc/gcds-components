@@ -209,6 +209,7 @@ Error.args = {
   label: 'Label',
   hint: 'Hint / Example message.',
   defaultValue: 'Select option.',
+  required: true,
   errorMessage: 'Error message or validation message.',
   lang: 'en',
   validateOn: 'blur',
