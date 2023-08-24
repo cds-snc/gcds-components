@@ -1,4 +1,4 @@
-@layer reset, default, mobile, focus;
+@layer reset, default, mobile, xs-mobile, focus;
 
 @layer reset {
   :host * {
@@ -381,6 +381,16 @@
         button[aria-haspopup=true][aria-expanded=true]+[role=menu] {
           border-inline-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-mobile-themelist-border);
         }
+      }
+    }
+  }
+}
+
+@layer xs-mobile {
+  @media screen and (max-width: 47.9375rem){
+    :host {
+      .gcds-topic-menu>[role=menu] {
+        margin-inline: calc(((100vw - 100%) / 2) * -1);
       }
     }
   }

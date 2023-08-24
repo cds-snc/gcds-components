@@ -281,7 +281,6 @@ export class GcdsTopicMenu {
     try {
       const response = await fetch(`https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-${this.lang}.html`);
       this.listItems = await response.text();
-      console.log(this.listItems)
     } catch (error) {
       this.listItems = backup[this.lang];
     }
