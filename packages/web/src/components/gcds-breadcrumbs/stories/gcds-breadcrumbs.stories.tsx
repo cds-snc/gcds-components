@@ -40,14 +40,14 @@ export default {
 const Template = (args) => (`
 <!-- Web component code (Angular, Vue) -->
 <gcds-breadcrumbs ${args.hideCanadaLink ? `hide-canada-link` : null } ${args.lang != "en" ? `lang="${args.lang}"` : null}>
-  <gcds-breadcrumbs-item href="${args.href}">Travel and tourism</gcds-breadcrumbs-item>
-  <gcds-breadcrumbs-item href="${args.href}">Immigration and citizenship</gcds-breadcrumbs-item>
+  <gcds-breadcrumbs-item href="${args.href}">Home page</gcds-breadcrumbs-item>
+  <gcds-breadcrumbs-item href="${args.href}">Parent page link</gcds-breadcrumbs-item>
 </gcds-breadcrumbs>
 
 <!-- React code -->
 <GcdsBreadcrumbs ${args.hideCanadaLink ? `hideCanadaLink` : null} ${args.lang != "en" ? `lang="${args.lang}"` : null}>
-  <GcdsBreadcrumbsItem href="${args.href}">Travel and tourism</GcdsBreadcrumbsItem>
-  <GcdsBreadcrumbsItem href="${args.href}">Immigration and citizenship</GcdsBreadcrumbsItem>
+  <GcdsBreadcrumbsItem href="${args.href}">Home page</GcdsBreadcrumbsItem>
+  <GcdsBreadcrumbsItem href="${args.href}">Parent page link</GcdsBreadcrumbsItem>
 </GcdsBreadcrumbs>
 `).replace(/ null/g, '');
 
@@ -56,8 +56,8 @@ const TemplatePlayground = (args) => (`
   ${args.hideCanadaLink ? `hide-canada-link` : null }
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  <gcds-breadcrumbs-item href="${args.href}">Travel and tourism</gcds-breadcrumbs-item>
-  <gcds-breadcrumbs-item href="${args.href}">Immigration and citizenship</gcds-breadcrumbs-item>
+  <gcds-breadcrumbs-item href="${args.href}">Home page</gcds-breadcrumbs-item>
+  <gcds-breadcrumbs-item href="${args.href}">Parent page link</gcds-breadcrumbs-item>
 </gcds-breadcrumbs>
 `);
 

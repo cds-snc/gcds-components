@@ -1,0 +1,39 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as ErrorSummary from './gcds-error-summary.stories';
+
+<Meta of={ErrorSummary} name="Overview" />
+
+# Error summary<br/>`<gcds-error-summary>`
+
+_Also called: error list._
+
+An error summary is a list of user errors in a form.
+
+<Canvas
+  of={ErrorSummary.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### Default
+
+<Canvas
+  of={ErrorSummary.Default}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/error-summary/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-error-summary" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=1579-4801&mode=design&t=2zIFVk9gcrqwM0Qj-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>

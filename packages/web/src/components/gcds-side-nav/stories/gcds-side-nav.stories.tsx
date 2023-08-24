@@ -34,19 +34,19 @@ const Template = (args) => (`
   label="${args.label}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  <gcds-nav-link href="#">Installation</gcds-nav-link>
-  <gcds-nav-link href="#">Foundations</gcds-nav-link>
-  <gcds-nav-link href="#">Components</gcds-nav-link>
+  <gcds-nav-link href="#">Nav link</gcds-nav-link>
+  <gcds-nav-link href="#">Nav link</gcds-nav-link>
+  <gcds-nav-link href="#">Nav link</gcds-nav-link>
 
-  <gcds-nav-group open-trigger="Contact us" menu-label="Contact">
-    <gcds-nav-link href="#">Form</gcds-nav-link>
-    <gcds-nav-link href="#">GitHub</gcds-nav-link>
-    <gcds-nav-link href="#">Slack</gcds-nav-link>
+  <gcds-nav-group open-trigger="Nav group label" menu-label="Nav group label">
+    <gcds-nav-link href="#">Nav link</gcds-nav-link>
+    <gcds-nav-link href="#">Nav link</gcds-nav-link>
+    <gcds-nav-link href="#">Nav link</gcds-nav-link>
 
-    <gcds-nav-group open-trigger="Sub level 2" menu-label="sublevel">
-      <gcds-nav-link href="#">Link</gcds-nav-link>
-      <gcds-nav-link href="#">Link</gcds-nav-link>
-      <gcds-nav-link href="#">Link</gcds-nav-link>
+    <gcds-nav-group open-trigger="Nav group label" menu-label="Nav group label sublevel">
+      <gcds-nav-link href="#">Nav link</gcds-nav-link>
+      <gcds-nav-link href="#">Nav link</gcds-nav-link>
+      <gcds-nav-link href="#">Nav link</gcds-nav-link>
     </gcds-nav-group>
   </gcds-nav-group>
 </gcds-side-nav>
@@ -56,19 +56,19 @@ const Template = (args) => (`
   label="${args.label}"
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  <GcdsNavLink href="#">Installation</GcdsNavLink>
-  <GcdsNavLink href="#">Foundations</GcdsNavLink>
-  <GcdsNavLink href="#">Components</GcdsNavLink>
+  <GcdsNavLink href="#">Nav link</GcdsNavLink>
+  <GcdsNavLink href="#">Nav link</GcdsNavLink>
+  <GcdsNavLink href="#">Nav link</GcdsNavLink>
 
-  <GcdsNavGroup openTrigger="Contact us" menuLabel="Contact">
-    <GcdsNavLink href="#">Form</GcdsNavLink>
-    <GcdsNavLink href="#">GitHub</GcdsNavLink>
-    <GcdsNavLink href="#">Slack</GcdsNavLink>
+  <GcdsNavGroup openTrigger="Nav group label" menuLabel="Nav group label">
+    <GcdsNavLink href="#">Nav link</GcdsNavLink>
+    <GcdsNavLink href="#">Nav link</GcdsNavLink>
+    <GcdsNavLink href="#">Nav link</GcdsNavLink>
 
-    <GcdsNavGroup openTrigger="Sub level 2" menuLabel="sublevel">
-      <GcdsNavLink href="#">Link</GcdsNavLink>
-      <GcdsNavLink href="#">Link</GcdsNavLink>
-      <GcdsNavLink href="#">Link</GcdsNavLink>
+    <GcdsNavGroup openTrigger="Nav group label" menuLabel="Nav group label sublevel">
+      <GcdsNavLink href="#">Nav link</GcdsNavLink>
+      <GcdsNavLink href="#">Nav link</GcdsNavLink>
+      <GcdsNavLink href="#">Nav link</GcdsNavLink>
     </GcdsNavGroup>
   </GcdsNavGroup>
 </GcdsSideNav>
@@ -76,6 +76,6 @@ const Template = (args) => (`
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Side navigation',
+  label: 'Label',
   lang: 'en'
 };

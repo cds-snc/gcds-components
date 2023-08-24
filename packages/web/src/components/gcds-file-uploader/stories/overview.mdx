@@ -1,0 +1,143 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as FileUploader from './gcds-file-uploader.stories';
+
+<Meta of={FileUploader} name="Overview" />
+
+# File uploader<br/>`<gcds-file-uploader>`
+
+_Also called: file upload, file input, dropzone._
+
+A file uploader is a space to select and add supporting documentation.
+
+<Canvas
+  of={FileUploader.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### State
+
+#### Default
+
+<Canvas
+  of={FileUploader.Default}
+  story={{ inline: true }}
+/>
+
+#### Required
+
+<Canvas
+  of={FileUploader.Required}
+  story={{ inline: true }}
+/>
+
+
+#### Error
+
+<Canvas
+  of={FileUploader.Error}
+  story={{ inline: true }}
+/>
+
+#### Disabled
+
+<Canvas
+  of={FileUploader.Disabled}
+  story={{ inline: true }}
+/>
+
+### Multiple files
+
+#### Default
+
+By default the user can only choose one file.
+
+<Canvas
+  of={FileUploader.Default}
+  story={{ inline: true }}
+/>
+
+#### Multiple files
+
+Setting `multiple` to `true` allows the user to choose multiple files.
+
+<Canvas
+  of={FileUploader.Multiple}
+  story={{ inline: true }}
+/>
+
+### Accepted file formats
+
+#### Default
+
+By default all file formats are allowed.
+
+<Canvas
+  of={FileUploader.Default}
+  story={{ inline: true }}
+/>
+
+#### Images only
+
+<Canvas
+  of={FileUploader.AcceptImages}
+  story={{ inline: true }}
+/>
+
+#### JPG only
+
+<Canvas
+  of={FileUploader.AcceptJpg}
+  story={{ inline: true }}
+/>
+
+#### PNG only
+
+<Canvas
+  of={FileUploader.AcceptPng}
+  story={{ inline: true }}
+/>
+
+#### SVG only
+
+<Canvas
+  of={FileUploader.AcceptSvg}
+  story={{ inline: true }}
+/>
+
+#### PDF only
+
+<Canvas
+  of={FileUploader.AcceptPdf}
+  story={{ inline: true }}
+/>
+
+#### Audio only
+
+<Canvas
+  of={FileUploader.AcceptAudio}
+  story={{ inline: true }}
+/>
+
+#### Videos only
+
+<Canvas
+  of={FileUploader.AcceptVideos}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/select/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-select" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=856-2826&mode=design&t=S19QCPw1uQKzztyY-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>
