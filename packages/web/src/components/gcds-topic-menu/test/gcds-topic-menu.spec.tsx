@@ -13,7 +13,7 @@ describe('gcds-topic-menu', () => {
       <gcds-topic-menu>
         <mock:shadow-root>
           <nav class="gcds-topic-menu">
-            <h2 class="gcds-topic-menu__header">
+            <h2 class="gcds-topic-menu__heading">
               Menu
             </h2>
             <button aria-expanded="false" aria-haspopup="true" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.">
@@ -93,7 +93,7 @@ describe('gcds-topic-menu', () => {
       <gcds-topic-menu lang="fr">
         <mock:shadow-root>
           <nav class="gcds-topic-menu">
-            <h2 class="gcds-topic-menu__header">
+            <h2 class="gcds-topic-menu__heading">
               Menu
             </h2>
             <button aria-expanded="false" aria-haspopup="true" aria-label="Appuyez sur la barre d'espacement pour ouvrir ou sur la touche d'échappement pour fermer le menu. Utilisez les flèches haut et bas pour choisir un élément de sous-menu. Appuyez sur la touche Entrée ou sur la flèche vers la droite pour le développer, ou sur la flèche vers la gauche ou la touche Échap pour le réduire. Utilisez les flèches haut et bas pour choisir un élément de ce niveau et la touche Entrée pour y accéder.">
@@ -173,7 +173,7 @@ describe('gcds-topic-menu', () => {
       <gcds-topic-menu home>
         <mock:shadow-root>
           <nav class="gcds-topic-menu">
-            <h2 class="gcds-topic-menu__header">
+            <h2 class="gcds-topic-menu__heading">
               Menu
             </h2>
             <button aria-expanded="false" aria-haspopup="true" class="gcds-topic-menu--home" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.">

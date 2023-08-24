@@ -12,7 +12,7 @@
     display: block;
 
     .gcds-topic-menu__main,
-    .gcds-topic-menu__header {
+    .gcds-topic-menu__heading {
       display: inherit;
       width: 0;
       height: 0;

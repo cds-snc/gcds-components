@@ -291,7 +291,7 @@ export class GcdsTopicMenu {
       let themeLink = this.themeList.children[x].querySelector("a");
 
       // Click
-      themeLink.addEventListener("click", async function(e) {
+      themeLink.addEventListener("click", async (e) => {
         e.preventDefault();
 
         // Open topic lists
@@ -317,7 +317,7 @@ export class GcdsTopicMenu {
       });
 
       // Hover actions
-      themeLink.addEventListener("mouseenter", async function() {
+      themeLink.addEventListener("mouseenter", async () => {
         // Change active theme if hovering on menuitem
         if (await hostElement.getNavSize() == 'desktop') {
           menuEnterTimer = setTimeout(async function() {
@@ -327,16 +327,15 @@ export class GcdsTopicMenu {
         }
       });
       // Cancel hover timer if mouseut before completes
-      themeLink.addEventListener("mouseleave", function() {
+      themeLink.addEventListener("mouseleave", () => {
         clearTimeout(menuEnterTimer);
       });
 
       // Most requested click
-      this.themeList.children[x].querySelector('ul').querySelector('[aria-haspopup]').addEventListener("click", async function(e) {
+      let mostRequested = this.themeList.children[x].querySelector('ul').querySelector('[aria-haspopup]');
+      mostRequested.addEventListener("click", async (e) => {
         e.preventDefault();
         if (await hostElement.getNavSize() == 'mobile') {
-          let mostRequested = this as HTMLElement;
-
           if (mostRequested.getAttribute('aria-expanded') == 'true') {
             mostRequested.setAttribute('aria-expanded', 'false');
           } else {
@@ -353,7 +352,7 @@ export class GcdsTopicMenu {
     const mediaQuery = window.matchMedia('screen and (max-width: 991px)');
     const nav = this.el as HTMLGcdsTopicMenuElement;
 
-    mediaQuery.addEventListener("change", async function(e) {
+    mediaQuery.addEventListener("change", async (e) => {
       if (e.matches) {
         nav.updateNavSize("mobile");
 
@@ -375,7 +374,7 @@ export class GcdsTopicMenu {
       <Host>
         <nav class="gcds-topic-menu">
           <h2
-            class="gcds-topic-menu__header"
+            class="gcds-topic-menu__heading"
           >
             Menu
           </h2>
