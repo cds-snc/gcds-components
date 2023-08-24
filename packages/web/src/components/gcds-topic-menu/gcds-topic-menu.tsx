@@ -1,6 +1,7 @@
 import { Component, Host, State, Method, Element, Listen, Fragment, Prop, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
+import backup from './backup/backup';
 
 @Component({
   tag: 'gcds-topic-menu',
@@ -277,9 +278,13 @@ export class GcdsTopicMenu {
       this.navSize = 'desktop';
     }
 
-    return await fetch(`https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-${this.lang}.html`)
-      .then(response => response.text())
-      .then(data => this.listItems = data);
+    try {
+      const response = await fetch(`https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-${this.lang}.html`);
+      this.listItems = await response.text();
+      console.log(this.listItems)
+    } catch (error) {
+      this.listItems = backup[this.lang];
+    }
   }
 
   async componentDidLoad() {
