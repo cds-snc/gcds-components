@@ -121,8 +121,8 @@ export const Default = Template.bind({});
 Default.args = {
   display: 'list',
   label: 'Pagination',
-  currentPage: '5',
-  totalPages: '10',
+  currentPage: '9',
+  totalPages: '15',
   url: '',
   previousHref: '#previous',
   previousLabel: '',

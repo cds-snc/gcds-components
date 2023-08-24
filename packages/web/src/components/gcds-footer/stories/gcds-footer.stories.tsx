@@ -67,9 +67,9 @@ const Template = (args) => (`
 
 export const Default = Template.bind({});
 Default.args = {
-  display: 'compact',
-  contextualHeading: '',
-  contextualLinks: '',
+  display: 'full',
+  contextualHeading: 'Contextual navigation',
+  contextualLinks: '{ "Why GC Notify": "#", "Features": "#", "Activity on GC Notify": "#" }',
   subLinks: '',
   lang: 'en'
 };

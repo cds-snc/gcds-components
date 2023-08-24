@@ -93,8 +93,17 @@ const Template = (args) => (`
   ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  <gcds-radio radio-id="r1" name="radio" label="Radio button 1"></gcds-radio>
-  <gcds-radio radio-id="r2" name="radio" label="Radio button 2"></gcds-radio>
+  <gcds-input input-id="form-input" label="Input label" hint="Hint / Example message." size="6"></gcds-input>
+  <gcds-select select-id="form-select" label="Select label" hint="Hint / Example message." default-value="Select option.">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+    <option value="6">Option 6</option>
+    <option value="7">Option 7</option>
+    <option value="8">Option 8</option>
+  </gcds-select>
 </gcds-fieldset>
 
 <!-- React code -->
@@ -108,16 +117,25 @@ const Template = (args) => (`
   ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
-  <GcdsRadio radioId="r1" name="radio" label="Radio button 1"></GcdsRadio>
-  <GcdsRadio radioId="r2" name="radio" label="Radio button 2"></GcdsRadio>
+  <GcdsInput inputId="form-input" label="Input label" hint="Hint / Example message." size="6"></GcdsInput>
+  <GcdsSelect selectId="form-select" label="Select label" hint="Hint / Example message." defaultValue="Select option.">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+    <option value="6">Option 6</option>
+    <option value="7">Option 7</option>
+    <option value="8">Option 8</option>
+  </GcdsSelect>
 </GcdsFieldset>
 `).replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
   fieldsetId: 'fieldset',
-  legend: 'Fieldset legend',
-  hint: '',
+  legend: 'Legend',
+  hint: 'Hint / Example message.',
   errorMessage: '',
   required: false,
   disabled: false,

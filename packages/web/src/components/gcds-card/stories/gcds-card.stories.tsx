@@ -113,12 +113,12 @@ const Template = (args) => (`
 
 export const Default = Template.bind({});
 Default.args = {
-  cardTitle: 'Title of the article',
+  cardTitle: 'Card title link',
   href: '#',
   type: 'link',
   titleElement: 'a',
-  tag: '',
-  description: '',
+  tag: 'Tag',
+  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: '',
   imgAlt: '',
   footer: '',

@@ -118,6 +118,14 @@ WordmarkWhite.args = {
   lang: 'en'
 };
 
+export const Props = Template.bind({});
+Props.args = {
+  type: 'signature',
+  hasLink: 'false',
+  variant: 'colour',
+  lang: 'en'
+};
+
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   type: 'signature',

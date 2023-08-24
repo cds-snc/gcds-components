@@ -146,8 +146,8 @@ const Template = (args) => (`
 export const Default = Template.bind({});
 Default.args = {
   textareaId: 'textarea',
-  label: 'Textarea label',
-  hint: '',
+  label: 'Label',
+  hint: 'Hint / Example message.',
   errorMessage: '',
   required: false,
   disabled: false,
