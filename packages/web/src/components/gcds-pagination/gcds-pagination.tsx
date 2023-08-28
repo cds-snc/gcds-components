@@ -157,7 +157,7 @@ export class GcdsPagination {
               class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}
             >
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-              {I18N[this.lang].previous}
+              {mobile ? I18N[this.lang].previousMobile : I18N[this.lang].previous}
             </a>
           }
         </li>
