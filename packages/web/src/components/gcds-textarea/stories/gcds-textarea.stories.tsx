@@ -31,6 +31,14 @@ export default {
         required: true
       }
     },
+    characterCount: {
+      name: 'character-count',
+      control: 'number',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '-' }
+      },
+    },
     rows: {
       control: 'number',
       table: {
@@ -119,6 +127,7 @@ const Template = (args) => (`
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
+  ${args.characterCount ? `character-count="${args.characterCount}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
   ${args.hideLabel ? `hide-label` : null}
   ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
@@ -135,6 +144,7 @@ const Template = (args) => (`
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
+  ${args.characterCount ? `characterCount="${args.characterCount}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
   ${args.hideLabel ? `hideLabel` : null}
   ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
@@ -143,11 +153,118 @@ const Template = (args) => (`
 </GcdsTextarea>
 `).replace(/\s\snull\n/g, '');
 
+const TemplatePlayground = (args) => (`
+<gcds-textarea
+  textarea-id="${args.textareaId}"
+  label="${args.label}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.characterCount ? `character-count="${args.characterCount}"` : null}
+  ${args.rows ? `rows="${args.rows}"` : null}
+  ${args.hideLabel ? `hide-label` : null}
+  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+>
+</gcds-textarea>
+`);
+
+// ------ Textarea default ------
+
 export const Default = Template.bind({});
 Default.args = {
   textareaId: 'textarea',
   label: 'Label',
   hint: 'Hint / Example message.',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+// ------ Textarea states ------
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  textareaId: 'textarea',
+  label: 'Label',
+  hint: 'Hint / Example message.',
+  disabled: true,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  textareaId: 'textarea',
+  label: 'Label',
+  hint: 'Hint / Example message.',
+  errorMessage: 'Error message or validation message.',
+  required: true,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const Required = Template.bind({});
+Required.args = {
+  textareaId: 'textarea',
+  label: 'Label',
+  hint: 'Hint / Example message.',
+  required: true,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+// ------ Textarea character count ------
+
+export const Character = Template.bind({});
+Character.args = {
+  textareaId: 'textarea',
+  label: 'Label',
+  hint: 'Hint / Example message.',
+  characterCount: 200,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+// ------ Textarea rows ------
+
+export const Rows = Template.bind({});
+Rows.args = {
+  textareaId: 'textarea',
+  label: 'Label',
+  hint: 'Hint / Example message.',
+  rows: 10,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+// ------ Textarea events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
+  textareaId: 'textarea',
+  label: 'Label',
+  hint: 'Hint / Example message.',
+  characterCount: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  rows: '',
+  value: '',
+  hideLabel: false,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+// ------ Textarea playground ------
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
+  textareaId: 'textarea',
+  label: 'Label',
+  hint: 'Hint / Example message.',
+  characterCount: '',
   errorMessage: '',
   required: false,
   disabled: false,
