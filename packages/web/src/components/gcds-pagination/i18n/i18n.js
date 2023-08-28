@@ -2,6 +2,7 @@ const I18N = {
   "en": {
     next: "Next",
     previous: "Previous",
+    previousMobile: "Prev",
     nextPage: "Next page",
     previousPage: "Previous page",
     pageNumber: "Page {#}",
@@ -9,7 +10,8 @@ const I18N = {
   },
   "fr": {
     next: "Suivante",
-    previous: "Précédente",
+    previous: "Précédent",
+    previousMobile: "Préc.",
     nextPage: "Page suivante",
     previousPage: "Page précédente",
     pageNumber: "Page {#}",
