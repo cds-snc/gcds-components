@@ -117,14 +117,6 @@ jobs:
         run: npm run build
         working-directory: ./packages/web
 
-      - name: Install gcds-components
-        run: npm install
-        working-directory: ./packages/web
-
-      - name: Build gcds-components
-        run: npm run build
-        working-directory: ./packages/web
-
       - name: Install ${{ matrix.name }}
         run: npm install
         working-directory: ${{ matrix.package }}
