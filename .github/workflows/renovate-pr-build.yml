@@ -82,5 +82,5 @@ jobs:
         working-directory: ./packages/web
 
       - name: Build Storybook
-        run: npm run storybook
+        run: npm run build-storybook
         working-directory: ./packages/web
