@@ -59,19 +59,9 @@
 
       <gcds-search slot="search"></gcds-search>
 
-      <!-- ------------- Top Nav ------------- -->
+      <!-- ------------- Theme & topic menu ------------- -->
 
-      <gcds-top-nav slot="menu" label="topbar" alignment="right" lang="en">
-        <gcds-nav-link href="#red" slot="home">Home</gcds-nav-link>
-        <gcds-nav-link href="#red">Installation</gcds-nav-link>
-        <gcds-nav-link href="#red">Foundations</gcds-nav-link>
-        <gcds-nav-link href="#red" current >Components</gcds-nav-link>
-        <gcds-nav-group menu-label="Contact us submenu"  open-trigger="Contact us">
-          <gcds-nav-link href="#red">Form</gcds-nav-link>
-          <gcds-nav-link href="#red">GitHub</gcds-nav-link>
-          <gcds-nav-link href="#red">Slack</gcds-nav-link>
-        </gcds-nav-group>
-      </gcds-top-nav>
+      <gcds-topic-menu slot="menu"></gcds-topic-menu>
 
       <!-- ------------- Breadcrumbs ------------- -->
 
@@ -91,23 +81,6 @@
 
     <gcds-container size="xl" centered tag="main">
       <h1 class="text-center mb-500">GC Design System</h1>
-
-      <!-- ------------- Side nav ------------- -->
-
-      <gcds-side-nav label="Sidenav">
-        <gcds-nav-link href="#red">Installation</gcds-nav-link>
-        <gcds-nav-link href="#red" current>Foundations</gcds-nav-link>
-        <gcds-nav-link href="#red">Components</gcds-nav-link>
-        <gcds-nav-group menu-label="Contact submenu" open-trigger="Contact">
-          <gcds-nav-link href="#red">Site</gcds-nav-link>
-          <gcds-nav-link href="#red">GitHub</gcds-nav-link>
-          <gcds-nav-group menu-label="Sub level submenu" open-trigger="Sub level">
-            <gcds-nav-link href="#red">Site</gcds-nav-link>
-            <gcds-nav-link href="#red">GitHub</gcds-nav-link>
-            <gcds-nav-link href="#red">Slack</gcds-nav-link>
-          </gcds-nav-group>
-        </gcds-nav-group>
-      </gcds-side-nav>
 
       <h2>Components</h2>
 
@@ -428,6 +401,38 @@
         <gcds-icon name="tree" size="sm" slot="banner-icon-left"></gcds-icon>
         <p slot="banner-text">Exciting announcement.</p>
       </gcds-phase-banner>
+
+      <!-- ------------- Side nav ------------- -->
+
+      <gcds-side-nav class="mt-700" label="Sidenav">
+        <gcds-nav-link href="#red">Installation</gcds-nav-link>
+        <gcds-nav-link href="#red" current>Foundations</gcds-nav-link>
+        <gcds-nav-link href="#red">Components</gcds-nav-link>
+        <gcds-nav-group menu-label="Contact submenu" open-trigger="Contact">
+          <gcds-nav-link href="#red">Site</gcds-nav-link>
+          <gcds-nav-link href="#red">GitHub</gcds-nav-link>
+          <gcds-nav-group menu-label="Sub level submenu" open-trigger="Sub level">
+            <gcds-nav-link href="#red">Site</gcds-nav-link>
+            <gcds-nav-link href="#red">GitHub</gcds-nav-link>
+            <gcds-nav-link href="#red">Slack</gcds-nav-link>
+          </gcds-nav-group>
+        </gcds-nav-group>
+      </gcds-side-nav>
+
+      <!-- ------------- Top nav ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-sm">Top navigation</h3>
+      <gcds-top-nav label="topbar" alignment="right" lang="en">
+        <gcds-nav-link href="#red" slot="home">Home</gcds-nav-link>
+        <gcds-nav-link href="#red">Installation</gcds-nav-link>
+        <gcds-nav-link href="#red">Foundations</gcds-nav-link>
+        <gcds-nav-link href="#red" current >Components</gcds-nav-link>
+        <gcds-nav-group menu-label="Contact us submenu"  open-trigger="Contact us">
+          <gcds-nav-link href="#red">Form</gcds-nav-link>
+          <gcds-nav-link href="#red">GitHub</gcds-nav-link>
+          <gcds-nav-link href="#red">Slack</gcds-nav-link>
+        </gcds-nav-group>
+      </gcds-top-nav>
 
       <!-- ------------- Date Modified ------------- -->
 
