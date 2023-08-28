@@ -3,7 +3,7 @@ import * as Search from './gcds-search.stories';
 
 <Meta of={Search} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Search.Props}

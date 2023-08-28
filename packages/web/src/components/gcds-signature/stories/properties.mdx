@@ -3,7 +3,7 @@ import * as Signature from './gcds-signature.stories';
 
 <Meta of={Signature} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Signature.Props}

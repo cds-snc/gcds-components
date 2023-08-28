@@ -3,7 +3,7 @@ import * as ErrorSummary from './gcds-error-summary.stories';
 
 <Meta of={ErrorSummary} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={ErrorSummary.Props}

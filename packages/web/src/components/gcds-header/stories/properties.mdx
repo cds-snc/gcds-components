@@ -3,7 +3,7 @@ import * as Header from './gcds-header.stories';
 
 <Meta of={Header} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Header.Default}

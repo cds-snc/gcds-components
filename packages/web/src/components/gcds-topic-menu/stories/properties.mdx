@@ -3,7 +3,7 @@ import * as TopicMenu from './gcds-topic-menu.stories';
 
 <Meta of={TopicMenu} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={TopicMenu.Props}

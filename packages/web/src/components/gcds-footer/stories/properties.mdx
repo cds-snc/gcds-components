@@ -3,7 +3,7 @@ import * as Footer from './gcds-footer.stories';
 
 <Meta of={Footer} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Footer.Default}
