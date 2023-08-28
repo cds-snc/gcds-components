@@ -1,7 +1,7 @@
 import { Component, Host, State, Method, Element, Listen, Fragment, Prop, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
-import backup from './backup/backup';
+import backup from './backup/backup.min';
 
 @Component({
   tag: 'gcds-topic-menu',
