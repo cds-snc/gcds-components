@@ -941,6 +941,26 @@ export namespace Components {
         "updateNavItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
     }
+    interface GcdsTopicMenu {
+        /**
+          * Close all theme menus
+         */
+        "closeAllMenus": () => Promise<void>;
+        "getNavSize": () => Promise<"desktop" | "mobile">;
+        /**
+          * Sets the homepage styling
+         */
+        "home": boolean;
+        /**
+          * Toggle open theme and topic menu
+         */
+        "toggleNav": () => Promise<void>;
+        /**
+          * Update keyboard focus queue
+         */
+        "updateNavItemQueue": (parent: any) => Promise<void>;
+        "updateNavSize": (size: any) => Promise<void>;
+    }
     interface GcdsVerifyBanner {
         /**
           * Defines the container width of the verify banner content
@@ -1203,6 +1223,12 @@ declare global {
         prototype: HTMLGcdsTopNavElement;
         new (): HTMLGcdsTopNavElement;
     };
+    interface HTMLGcdsTopicMenuElement extends Components.GcdsTopicMenu, HTMLStencilElement {
+    }
+    var HTMLGcdsTopicMenuElement: {
+        prototype: HTMLGcdsTopicMenuElement;
+        new (): HTMLGcdsTopicMenuElement;
+    };
     interface HTMLGcdsVerifyBannerElement extends Components.GcdsVerifyBanner, HTMLStencilElement {
     }
     var HTMLGcdsVerifyBannerElement: {
@@ -1243,6 +1269,7 @@ declare global {
         "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
+        "gcds-topic-menu": HTMLGcdsTopicMenuElement;
         "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
     }
 }
@@ -2315,6 +2342,12 @@ declare namespace LocalJSX {
          */
         "label": string;
     }
+    interface GcdsTopicMenu {
+        /**
+          * Sets the homepage styling
+         */
+        "home"?: boolean;
+    }
     interface GcdsVerifyBanner {
         /**
           * Defines the container width of the verify banner content
@@ -2359,6 +2392,7 @@ declare namespace LocalJSX {
         "gcds-stepper": GcdsStepper;
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
+        "gcds-topic-menu": GcdsTopicMenu;
         "gcds-verify-banner": GcdsVerifyBanner;
     }
 }
@@ -2399,6 +2433,7 @@ declare module "@stencil/core" {
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-top-nav": LocalJSX.GcdsTopNav & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;
+            "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
             "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }
     }

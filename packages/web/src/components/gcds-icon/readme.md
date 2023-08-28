@@ -28,6 +28,7 @@
  - [gcds-nav-group](../gcds-nav-group)
  - [gcds-pagination](../gcds-pagination)
  - [gcds-search](../gcds-search)
+ - [gcds-topic-menu](../gcds-topic-menu)
 
 ### Graph
 ```mermaid
@@ -38,6 +39,7 @@ graph TD;
   gcds-nav-group --> gcds-icon
   gcds-pagination --> gcds-icon
   gcds-search --> gcds-icon
+  gcds-topic-menu --> gcds-icon
   style gcds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
