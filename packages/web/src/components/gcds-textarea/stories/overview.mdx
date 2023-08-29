@@ -1,0 +1,77 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Textarea from './gcds-textarea.stories';
+
+<Meta of={Textarea} name="Overview" />
+
+# Text area<br/>`<gcds-textarea>`
+
+_Also called: text box._
+
+A text area is a space to enter long-form information in response to a question or instruction.
+
+<Canvas
+  of={Textarea.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### State
+
+#### Default
+
+<Canvas
+  of={Textarea.Default}
+  story={{ inline: true }}
+/>
+
+#### Required
+
+<Canvas
+  of={Textarea.Required}
+  story={{ inline: true }}
+/>
+
+
+#### Error
+
+<Canvas
+  of={Textarea.Error}
+  story={{ inline: true }}
+/>
+
+#### Disabled
+
+<Canvas
+  of={Textarea.Disabled}
+  story={{ inline: true }}
+/>
+
+### Character count
+
+<Canvas
+  of={Textarea.Character}
+  story={{ inline: true }}
+/>
+
+### Rows
+
+<Canvas
+  of={Textarea.Rows}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/textarea/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-textarea" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=3-599&mode=design&t=QAnscflvCekHDxMd-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>
