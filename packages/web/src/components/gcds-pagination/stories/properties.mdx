@@ -3,7 +3,7 @@ import * as Pagination from './gcds-pagination.stories';
 
 <Meta of={Pagination} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Pagination.Default}
