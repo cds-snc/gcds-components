@@ -54,7 +54,7 @@ export class GcdsTopicMenu {
   */
   @Listen("focusout", { target: "document" })
   async focusOutListener(e) {
-    if (!this.el.contains(e.relatedTarget)) {
+    if (!this.el.contains(e.relatedTarget) && this.open) {
       this.toggleNav();
     }
   }
