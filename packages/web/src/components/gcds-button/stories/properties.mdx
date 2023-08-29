@@ -3,7 +3,7 @@ import * as Button from './gcds-button.stories';
 
 <Meta of={Button} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Button.Props}

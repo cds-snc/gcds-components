@@ -3,7 +3,7 @@ import * as Breadcrumbs from './gcds-breadcrumbs.stories';
 
 <Meta of={Breadcrumbs} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Breadcrumbs.Props}

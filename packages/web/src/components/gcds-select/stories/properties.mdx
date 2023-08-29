@@ -3,7 +3,7 @@ import * as Select from './gcds-select.stories';
 
 <Meta of={Select} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Select.Props}

@@ -3,7 +3,7 @@ import * as NavLink from './gcds-nav-link.stories';
 
 <Meta of={NavLink} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={NavLink.Default}

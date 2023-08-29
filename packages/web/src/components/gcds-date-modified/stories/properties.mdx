@@ -3,7 +3,7 @@ import * as DateModified from './gcds-date-modified.stories';
 
 <Meta of={DateModified} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={DateModified.Props}

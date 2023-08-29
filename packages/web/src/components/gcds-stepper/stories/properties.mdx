@@ -3,7 +3,7 @@ import * as Stepper from './gcds-stepper.stories';
 
 <Meta of={Stepper} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Stepper.Props}
