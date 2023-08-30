@@ -411,7 +411,7 @@ export namespace Components {
         /**
           * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
          */
-        "columns"?: string;
+        "columns": string;
         "columnsDesktop"?: string;
         "columnsTablet"?: string;
         /**
@@ -1734,7 +1734,7 @@ declare namespace LocalJSX {
         /**
           * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
          */
-        "columns"?: string;
+        "columns": string;
         "columnsDesktop"?: string;
         "columnsTablet"?: string;
         /**
