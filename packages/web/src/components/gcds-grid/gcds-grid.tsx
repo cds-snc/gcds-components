@@ -17,7 +17,7 @@ export class GcdsGrid {
    * Defines the columns of the grid
    * Option to set different layouts for desktop | tablet | default (includes mobile)
    */
-  @Prop() columns?: string;
+  @Prop() columns!: string;
   @Prop() columnsTablet?: string;
   @Prop() columnsDesktop?: string;
 
