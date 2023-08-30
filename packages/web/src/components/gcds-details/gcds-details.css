@@ -1,13 +1,21 @@
-:host .gcds-details {
-  font: var(--gcds-details-font);
-
-  summary {
+:host {
+  .details__summary {
     position: relative;
     cursor: pointer;
     display: inline-block;
-    padding: var(--gcds-details-summary-padding);
+    /* padding: var(--gcds-details-summary-padding); */
+    padding: 0.375rem 0.375rem 0.375rem 2.25rem;
     color: var(--gcds-details-default-text);
     transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    border-color: transparent;
+    background-color: transparent;
+    font: var(--gcds-details-font);
+    /* margin: var(--gcds-details-summary-text-margin); */
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: var(--gcds-details-default-decoration-thickness);
+    text-align: start;
 
     &:focus {
       border-radius: var(--gcds-details-focus-border-radius);
@@ -16,10 +24,7 @@
       box-shadow: var(--gcds-details-focus-box-shadow);
       outline-offset: var(--gcds-details-focus-outline-offset);
       outline: var(--gcds-details-focus-outline);
-
-      p {
-        text-decoration: none;
-      }
+      text-decoration: none;
     }
 
     &:before {
@@ -35,14 +40,12 @@
       transition: transform 0.15s ease-in-out;
     }
 
-    p {
-      display: inline-block;
-      font: var(--gcds-details-font);
-      margin: var(--gcds-details-summary-text-margin);
-      text-decoration: underline;
-      text-underline-offset: 0.2em;
-      text-decoration-color: currentColor;
-      text-decoration-thickness: var(--gcds-details-default-decoration-thickness);
+    &[aria-expanded=false] + .details__panel {
+      display: none;
+    }
+
+    &[aria-expanded=true]::before {
+      transform: rotate(90deg);
     }
   }
 
