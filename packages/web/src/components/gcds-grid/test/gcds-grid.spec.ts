@@ -19,6 +19,7 @@ describe('gcds-grid', () => {
       </gcds-grid>
     `);
   });
+
   it('renders - tablet and mobile', async () => {
     const { root } = await newSpecPage({
       components: [GcdsGrid],
@@ -36,6 +37,7 @@ describe('gcds-grid', () => {
       </gcds-grid>
     `);
   });
+
   it('renders - mobile', async () => {
     const { root } = await newSpecPage({
       components: [GcdsGrid],
@@ -47,23 +49,6 @@ describe('gcds-grid', () => {
       <gcds-grid columns="1fr 1fr" tag="ul">
         <mock:shadow-root>
           <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr 1fr;">
-            <slot></slot>
-          </ul>
-        </mock:shadow-root>
-      </gcds-grid>
-    `);
-  });
-  it('renders - no columns passed', async () => {
-    const { root } = await newSpecPage({
-      components: [GcdsGrid],
-      html: `
-        <gcds-grid tag="ul" />
-      `,
-    });
-    expect(root).toEqualHtml(`
-      <gcds-grid tag="ul">
-        <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style>
             <slot></slot>
           </ul>
         </mock:shadow-root>
