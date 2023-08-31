@@ -1,13 +1,27 @@
-:host .gcds-details {
-  font: var(--gcds-details-font);
-
-  summary {
+:host {
+  .details__summary {
     position: relative;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     padding: var(--gcds-details-summary-padding);
     color: var(--gcds-details-default-text);
     transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    border-color: transparent;
+    background-color: transparent;
+    font: var(--gcds-details-font);
+    text-decoration: underline var(--gcds-details-default-decoration-thickness);
+    text-underline-offset: 0.2em;
+    text-align: start;
+
+    &:hover:not(:focus) {
+      color: var(--gcds-details-hover-text);
+      text-underline-offset: 0.2em;
+      text-decoration-thickness: var(--gcds-details-hover-decoration-thickness);
+
+      &:before {
+        color: var(--gcds-details-hover-text);
+      }
+    }
 
     &:focus {
       border-radius: var(--gcds-details-focus-border-radius);
@@ -16,10 +30,7 @@
       box-shadow: var(--gcds-details-focus-box-shadow);
       outline-offset: var(--gcds-details-focus-outline-offset);
       outline: var(--gcds-details-focus-outline);
-
-      p {
-        text-decoration: none;
-      }
+      text-decoration: none;
     }
 
     &:before {
@@ -35,19 +46,17 @@
       transition: transform 0.15s ease-in-out;
     }
 
-    p {
-      display: inline-block;
-      font: var(--gcds-details-font);
-      margin: var(--gcds-details-summary-text-margin);
-      text-decoration: underline;
-      text-underline-offset: 0.2em;
-      text-decoration-color: currentColor;
-      text-decoration-thickness: var(--gcds-details-default-decoration-thickness);
+    &[aria-expanded=false] + .details__panel {
+      display: none;
+    }
+
+    &[aria-expanded=true]::before {
+      transform: rotate(90deg);
     }
   }
 
   .details__panel {
-    margin: var(--gcds-spacing-200) 0 0 0;
+    margin: var(--gcds-details-panel-margin);
     padding: var(--gcds-details-panel-padding);
     border-inline-start: var(--gcds-details-panel-border-width) solid var(--gcds-details-panel-border-color);
 
@@ -73,23 +82,5 @@
     ::slotted(small) {
       font: var(--gcds-details-font-small);
     }
-  }
-
-  &:hover {
-    summary:not(:focus) {
-      &:before {
-        color: var(--gcds-details-hover-text);
-      }
-
-      p {
-        color: var(--gcds-details-hover-text);
-        text-underline-offset: 0.2em;
-        text-decoration-thickness: var(--gcds-details-hover-decoration-thickness);
-      }
-    }
-  }
-
-  &[open] summary:before {
-    transform: rotate(90deg);
   }
 }
