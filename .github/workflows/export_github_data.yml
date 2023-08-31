@@ -8,7 +8,7 @@ jobs:
   export-data:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3ba5ee6fac7e0e30e2ea884e236f282d3a775891
+      - uses: actions/checkout@97a652b80035363df47baee5031ec8670b8878ac
       - name: Export Data
         uses: cds-snc/github-repository-metadata-exporter@main
         with:
