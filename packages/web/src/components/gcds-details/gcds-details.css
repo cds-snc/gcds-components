@@ -9,10 +9,8 @@
     border-color: transparent;
     background-color: transparent;
     font: var(--gcds-details-font);
-    text-decoration: underline;
+    text-decoration: underline var(--gcds-details-default-decoration-thickness);
     text-underline-offset: 0.2em;
-    text-decoration-color: currentColor;
-    text-decoration-thickness: var(--gcds-details-default-decoration-thickness);
     text-align: start;
 
     &:hover:not(:focus) {
