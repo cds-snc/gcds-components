@@ -60,7 +60,7 @@
     "@storybook/testing-library": "^0.1.0",
     "@types/jest": "^26.0.24",
     "babel-loader": "^8.3.0",
-    "cssnano": "^5.0.15",
+    "cssnano": "^6.0.0",
     "glob": "^8.0.1",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
