@@ -2,7 +2,7 @@
   .details__summary {
     position: relative;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     padding: var(--gcds-details-summary-padding);
     color: var(--gcds-details-default-text);
     transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;

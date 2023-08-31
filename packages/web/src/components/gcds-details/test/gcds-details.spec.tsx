@@ -10,10 +10,10 @@ describe('gcds-details', () => {
     expect(page.root).toEqualHtml(`
       <gcds-details details-title="Learn more about this topic">
         <mock:shadow-root>
-          <button class="details__summary" aria-expanded="false">
+          <button id="details__summary" class="details__summary" aria-expanded="false" aria-controls="details__panel">
             Learn more about this topic
           </button>
-          <div class="details__panel">
+          <div id="details__panel" class="details__panel" aria-labelledby="details__summary">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -29,10 +29,10 @@ describe('gcds-details', () => {
     expect(page.root).toEqualHtml(`
       <gcds-details details-title="Learn more about this topic" open>
         <mock:shadow-root>
-          <button class="details__summary" aria-expanded="true">
+        <button id="details__summary" class="details__summary" aria-expanded="true" aria-controls="details__panel">
             Learn more about this topic
           </button>
-          <div class="details__panel">
+          <div id="details__panel" class="details__panel" aria-labelledby="details__summary">
             <slot></slot>
           </div>
         </mock:shadow-root>
