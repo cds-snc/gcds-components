@@ -115,7 +115,6 @@ export class GcdsNavGroup {
         <button
           aria-haspopup="true"
           aria-expanded={open.toString()}
-          role="menuitem"
           aria-describedby="trigger-controls"
           ref={element => this.triggerElement = element as HTMLElement}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
