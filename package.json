@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.0",
-    "@angular/cli": "~16.0.0",
+    "@angular/cli": "~16.2.1",
     "@angular/compiler-cli": "^16.2.3",
     "cssnano": "^6.0.0",
     "glob": "^8.0.1",
