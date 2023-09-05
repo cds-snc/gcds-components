@@ -35,7 +35,7 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "lerna": "^7.0.0",
     "ng-packagr": "^15.0.0",
-    "nx": "^14.6.5",
+    "nx": "^16.0.0",
     "sass": "^1.43.5",
     "typescript": "~4.9.0",
     "workbox-build": "^7.0.0"
