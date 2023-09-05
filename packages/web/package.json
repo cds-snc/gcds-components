@@ -69,7 +69,7 @@
     "lit-html": "^2.6.1",
     "postcss-nested": "^6.0.0",
     "prettier": "^3.0.0",
-    "puppeteer": "^13.0.0",
+    "puppeteer": "^21.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-syntax-highlighter": "^15.5.0",
