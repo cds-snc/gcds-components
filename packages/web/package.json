@@ -39,7 +39,7 @@
     "stencil": "^0.0.5"
   },
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.3.2",
+    "@axe-core/puppeteer": "^4.7.3",
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
