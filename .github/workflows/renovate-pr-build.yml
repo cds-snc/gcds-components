@@ -1,0 +1,86 @@
+name: Renovate pull request
+on: 
+  pull_request:
+      branches:
+        - develop
+      types:
+        - labeled
+        - opened
+        - synchronize
+        - reopened
+
+jobs:
+  build-packages:
+    name: Build all packages
+    if: contains(github.event.pull_request.labels.*.name, 'Renovate')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+        
+      - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
+        with:
+          node-version: 18
+
+      - name: Install repo
+        run: npm install
+
+      - name: Install gcds-components
+        run: npm install
+        working-directory: ./packages/web
+
+      - name: Build gcds-components
+        run: npm run build
+        working-directory: ./packages/web
+
+      - name: Gcds-components link
+        run: npm link
+        working-directory: ./packages/web
+
+      - name: Install gcds-components-react
+        run: npm install
+        working-directory: ./packages/react
+
+      - name: Link @cdssnc/gcds-components
+        run: npm link @cdssnc/gcds-components
+        working-directory: ./packages/react
+
+      - name: Build gcds-components-react
+        run: npm run build
+        working-directory: ./packages/react
+
+      - name: Install gcds-components-angular
+        run: npm install
+        working-directory: ./packages/angular
+
+      - name: Link @cdssnc/gcds-components
+        run: npm link @cdssnc/gcds-components
+        working-directory: ./packages/angular
+
+      - name: Build gcds-components-angular
+        run: npm run build
+        working-directory: ./packages/angular
+
+  build-storybook:
+    name: Build storybook
+    if: contains(github.event.pull_request.labels.*.name, 'Renovate')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+        
+      - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
+        with:
+          node-version: 18
+
+      - name: Install gcds-components
+        run: npm install
+        working-directory: ./packages/web
+
+      - name: Build gcds-components
+        run: npm run build
+        working-directory: ./packages/web
+
+      - name: Build Storybook
+        run: npm run build-storybook
+        working-directory: ./packages/web

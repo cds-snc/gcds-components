@@ -1,6 +1,5 @@
 import { Component, Element, Host, Prop, State, Method, Event, EventEmitter, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import I18N from './i18n/i18n';
 
 @Component({
   tag: 'gcds-nav-group',
@@ -104,7 +103,15 @@ export class GcdsNavGroup {
   }
 
   render() {
-    const { closeTrigger, menuLabel, open, openTrigger, lang } = this;
+    const { closeTrigger, menuLabel, open, openTrigger } = this;
+
+    let roleAttr = {
+      role: "menuitem"
+    };
+
+    if (this.el.classList.contains("gcds-mobile-nav")) {
+      delete roleAttr["role"];
+    }
 
     return (
       <Host
@@ -115,8 +122,7 @@ export class GcdsNavGroup {
         <button
           aria-haspopup="true"
           aria-expanded={open.toString()}
-          role="menuitem"
-          aria-describedby="trigger-controls"
+          {...roleAttr}
           ref={element => this.triggerElement = element as HTMLElement}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
           onClick={() => {
@@ -134,9 +140,6 @@ export class GcdsNavGroup {
         >
           <slot></slot>
         </ul>
-        <span aria-hidden="true" id={`trigger-controls`} class="gcds-nav-group__trigger-desc">
-          {I18N[lang].submenu.replace('{$t}', menuLabel)}
-        </span>
       </Host>
     );
   }

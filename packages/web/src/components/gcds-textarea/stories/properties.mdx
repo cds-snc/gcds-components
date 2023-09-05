@@ -3,13 +3,13 @@ import * as Textarea from './gcds-textarea.stories';
 
 <Meta of={Textarea} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
-  of={Textarea.Default}
+  of={Textarea.Props}
   story={{ inline: true }}
   sourceState="shown"
   type="dynamic"
 />
 
-<Controls of={Textarea.Default} sort="requiredFirst" />
+<Controls of={Textarea.Props} sort="requiredFirst" />

@@ -3,7 +3,7 @@ import * as Input from './gcds-input.stories';
 
 <Meta of={Input} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={Input.Props}

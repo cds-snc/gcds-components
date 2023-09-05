@@ -29,10 +29,10 @@ jobs:
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
 
       - name: Setup Node
-        uses: actions/setup-node@a9893b0cfb0821c9c7b5fec28a6a2e6cdd5e20a4
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
         with:
           node-version: 18
 
@@ -45,7 +45,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@be39bf074cd386f38a375dd3d35464bf56735502
+        uses: JS-DevTools/npm-publish@0897172f266b017b55f0d68271c4d9124eb20c69
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -53,7 +53,7 @@ jobs:
 
       - name: Configure AWS credentials using OIDC
         if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@e1e17a757e536f70e52b5a12b2e8d1d1c60e04ef # v2.0.0
+        uses: aws-actions/configure-aws-credentials@04b98b3f9e85f563fb061be8751a0352327246b0 # v3.0.1
         with:
           role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
           role-session-name: CDNPublish
@@ -99,23 +99,15 @@ jobs:
             dist: "./packages/angular/dist"
     steps:
       - name: Git Checkout
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
 
       - name: Setup Node
-        uses: actions/setup-node@a9893b0cfb0821c9c7b5fec28a6a2e6cdd5e20a4
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
         with:
           node-version: 18
 
       - name: Install repo
         run: npm install
-
-      - name: Install gcds-components
-        run: npm install
-        working-directory: ./packages/web
-
-      - name: Build gcds-components
-        run: npm run build
-        working-directory: ./packages/web
 
       - name: Install gcds-components
         run: npm install
@@ -134,7 +126,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@be39bf074cd386f38a375dd3d35464bf56735502
+        uses: JS-DevTools/npm-publish@0897172f266b017b55f0d68271c4d9124eb20c69
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -142,7 +134,7 @@ jobs:
 
       - name: Configure AWS credentials using OIDC
         if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@e1e17a757e536f70e52b5a12b2e8d1d1c60e04ef # v2.0.0
+        uses: aws-actions/configure-aws-credentials@04b98b3f9e85f563fb061be8751a0352327246b0 # v3.0.1
         with:
           role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
           role-session-name: CDNPublish

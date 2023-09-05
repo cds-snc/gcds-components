@@ -3,7 +3,7 @@ import * as ErrorMessage from './gcds-error-message.stories';
 
 <Meta of={ErrorMessage} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={ErrorMessage.Props}

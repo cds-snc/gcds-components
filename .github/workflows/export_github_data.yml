@@ -1,0 +1,25 @@
+name: GitHub repository metadata exporter
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 7 * * *"
+
+jobs:
+  export-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Audit DNS requests
+        uses: cds-snc/dns-proxy-action@main
+        env:
+          DNS_PROXY_FORWARDTOSENTINEL: "true"
+          DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+          DNS_PROXY_LOGANALYTICSSHAREDKEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - name: Export Data
+        uses: cds-snc/github-repository-metadata-exporter@main
+        with:
+          github-app-id: ${{ secrets.SRE_BOT_RO_APP_ID }}
+          github-app-installation-id: ${{ secrets.SRE_BOT_RO_INSTALLATION_ID }}
+          github-app-private-key: ${{ secrets.SRE_BOT_RO_PRIVATE_KEY }}
+          log-analytics-workspace-id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+          log-analytics-workspace-key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}

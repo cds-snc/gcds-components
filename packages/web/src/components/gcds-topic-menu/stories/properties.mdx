@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as TopicMenu from './gcds-topic-menu.stories';
+
+<Meta of={TopicMenu} name="Events & properties" />
+
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
+
+<Canvas
+  of={TopicMenu.Props}
+  story={{ height: "60rem", inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={TopicMenu.Props} sort="requiredFirst" />

@@ -10,12 +10,12 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+      uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
       with:
         fetch-depth: 0 # retrieve all history
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@67fbcbb121271f7775d2e7715933280b06314838 # tag=v1.7.0
+      uses: aws-actions/configure-aws-credentials@04b98b3f9e85f563fb061be8751a0352327246b0 # v3.0.1
       with:
         aws-access-key-id: ${{ secrets.AWS_S3_BACKUP_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_S3_BACKUP_SECRET_ACCESS_KEY }}
@@ -31,3 +31,9 @@ jobs:
     - name: Upload to S3 bucket
       run: |
         aws s3 sync . s3://${{ secrets.AWS_S3_BACKUP_BUCKET }} --exclude='*' --include='${{ github.repository }}/*'
+
+    - name: Notify Slack channel if this job failed
+      if: ${{ failure() }}
+      run: |
+        json='{"text":"S3 backup failed in <https://github.com/${{ github.repository }}>!"}'
+        curl -X POST -H 'Content-type: application/json' --data "$json"  ${{ secrets.SLACK_NOTIFY_WEBHOOK }}

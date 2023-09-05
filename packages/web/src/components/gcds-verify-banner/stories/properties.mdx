@@ -3,7 +3,7 @@ import * as VerifyBanner from './gcds-verify-banner.stories';
 
 <Meta of={VerifyBanner} name="Events & properties" />
 
-# Events & properties
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
   of={VerifyBanner.Props}

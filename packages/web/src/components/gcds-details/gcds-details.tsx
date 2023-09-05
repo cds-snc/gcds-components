@@ -21,19 +21,29 @@ export class GcdsDetails {
   /**
    * Defines if the details panel is open by default or not.
    */
-  @Prop() open?: boolean = false;
+  @Prop({mutable: true, reflect: true}) open?: boolean = false;
 
   render() {
     const { detailsTitle, open } = this;
 
     return (
       <Host>
-        <details class="gcds-details" open={open ? true : false}>
-          <summary><p>{ detailsTitle }</p></summary>
-          <div class="details__panel">
-            <slot></slot>
-          </div>
-        </details>
+        <button
+          aria-expanded={open.toString()}
+          aria-controls="details__panel"
+          onClick={() => this.open = !open}
+          class="details__summary"
+          id="details__summary"
+        >
+          { detailsTitle }
+        </button>
+        <div
+          id="details__panel"
+          class="details__panel"
+          aria-labelledby="details__summary"
+        >
+          <slot></slot>
+        </div>
       </Host>
     );
   }
