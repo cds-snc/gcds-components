@@ -59,7 +59,7 @@
     "@storybook/html-webpack5": "^7.0.22",
     "@storybook/testing-library": "^0.1.0",
     "@types/jest": "^26.0.24",
-    "babel-loader": "^8.3.0",
+    "babel-loader": "^9.0.0",
     "cssnano": "^6.0.0",
     "glob": "^8.0.1",
     "gulp": "^4.0.2",
