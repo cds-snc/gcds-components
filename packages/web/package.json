@@ -76,7 +76,7 @@
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
     "storybook": "^v7.1.0-rc.2",
-    "workbox-build": "^4.3.1"
+    "workbox-build": "^7.0.0"
   },
   "license": "MIT"
 }
