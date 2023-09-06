@@ -86,6 +86,7 @@ Props.args = {
   hideCanadaLink: false,
   href: '#',
   lang: 'en',
+  default: '',
 };
 
 // ------ Breadcrumbs playground ------
@@ -95,4 +96,5 @@ Playground.args = {
   hideCanadaLink: false,
   href: '#',
   lang: 'en',
+  default: '',
 };
