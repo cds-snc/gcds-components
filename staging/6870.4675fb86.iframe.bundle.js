@@ -1,1 +1,0 @@
-(self.webpackChunk_cdssnc_gcds_components=self.webpackChunk_cdssnc_gcds_components||[]).push([[6870],{"./dist/esm-es5/index.js":()=>{}}]);
