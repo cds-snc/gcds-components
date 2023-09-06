@@ -34,8 +34,7 @@
     "@stencil/react-output-target": "^0.5.3",
     "@storybook/addon-a11y": "^7.4.0",
     "@storybook/addons": "^7.4.0",
-    "@storybook/theming": "^7.4.0",
-    "stencil": "^0.0.5"
+    "@storybook/theming": "^7.4.0"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.7.3",
