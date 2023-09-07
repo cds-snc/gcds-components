@@ -104,7 +104,7 @@ export class GcdsTopicMenu {
           // Most requested link - desktop
           } else if (activeElement.hasAttribute('aria-haspopup') && this.navSize == "desktop") {
             await this.focusMenuLink(this.navItems, activeElement, currentIndex + 1);
-          
+
           // Most requested link - mobile
           } else if (activeElement.hasAttribute('aria-haspopup') && this.navSize == "mobile") {
             await this.updateNavItemQueue(activeElement.parentNode.children[1])
@@ -121,9 +121,9 @@ export class GcdsTopicMenu {
           break;
 
         case "ArrowLeft":
-        case "Escape":
+        case "Escape": {
           e.preventDefault();
-          let parentList = activeElement.closest('ul');
+          const parentList = activeElement.closest('ul');
 
           // In most requested menu
           if (parentList.parentNode.querySelector('a').hasAttribute('data-keep-expanded')) {
@@ -150,6 +150,7 @@ export class GcdsTopicMenu {
             await this.toggleNav();
           }
           break;
+        }
 
         case "Tab":
           await this.toggleNav();
@@ -164,7 +165,7 @@ export class GcdsTopicMenu {
   @Method()
   async closeAllMenus() {
     for (let x = 0; x < this.themeList.children.length; x++) {
-      let themeLink = this.themeList.children[x].querySelector("a");
+      const themeLink = this.themeList.children[x].querySelector("a");
       themeLink.setAttribute('aria-expanded', 'false');
     }
   }
@@ -217,10 +218,10 @@ export class GcdsTopicMenu {
   */
   @Method()
   async updateNavItemQueue(parent) {
-    let focusableElements = [];
+    const focusableElements = [];
 
     for (let x = 0; x < parent.children.length; x++) {
-      let link = parent.children[x].querySelector('a');
+      const link = parent.children[x].querySelector('a');
       if (link) {
         focusableElements.push(link);
 
@@ -287,12 +288,12 @@ export class GcdsTopicMenu {
   }
 
   async componentDidLoad() {
-    let hostElement = this.el;
+    const hostElement = this.el;
     let menuEnterTimer;
 
-    // Since we load the HTML, loop through elements and add event listeners to add functionality 
+    // Since we load the HTML, loop through elements and add event listeners to add functionality
     for (let x = 0; x < this.themeList.children.length; x++) {
-      let themeLink = this.themeList.children[x].querySelector("a");
+      const themeLink = this.themeList.children[x].querySelector("a");
 
       // Click
       themeLink.addEventListener("click", async (e) => {
@@ -317,7 +318,7 @@ export class GcdsTopicMenu {
             }, 50);
           }
         }
-        
+
       });
 
       // Hover actions
@@ -336,7 +337,7 @@ export class GcdsTopicMenu {
       });
 
       // Most requested click
-      let mostRequested = this.themeList.children[x].querySelector('ul').querySelector('[aria-haspopup]');
+      const mostRequested = this.themeList.children[x].querySelector('ul').querySelector('[aria-haspopup]');
       mostRequested.addEventListener("click", async (e) => {
         e.preventDefault();
         if (await hostElement.getNavSize() == 'mobile') {
@@ -344,7 +345,7 @@ export class GcdsTopicMenu {
             mostRequested.setAttribute('aria-expanded', 'false');
           } else {
             mostRequested.setAttribute('aria-expanded', 'true');
-            let mostRequestedList = mostRequested.parentNode.querySelector('ul');
+            const mostRequestedList = mostRequested.parentNode.querySelector('ul');
             mostRequestedList.children[0].querySelector('a').focus();
             await hostElement.updateNavItemQueue(mostRequestedList);
           }

@@ -27,7 +27,7 @@ return fileList;
 };
 
 describe('Required input validator', () => {
-  let results: Array<{value: string, res: boolean}> = [
+  const results: Array<{value: string, res: boolean}> = [
     {value: "Text field value", res: true},
     {value: "", res: false},
     {value: " ", res: false},
@@ -39,7 +39,7 @@ describe('Required input validator', () => {
   );
 });
 describe('Required file input validator', () => {
-  let results: Array<{value: FileList, res: boolean}> = [
+  const results: Array<{value: FileList, res: boolean}> = [
     {value: createMockFileList([{ body: 'test', mimeType: 'text/plain', name: 'test1.txt' }, { body: 'test', mimeType: 'text/plain', name: 'test2.txt' }]), res: true},
     {value: createMockFileList([{ body: 'test', mimeType: 'text/plain', name: 'test1.txt' }]), res: true},
     {value: createMockFileList([]), res: false},

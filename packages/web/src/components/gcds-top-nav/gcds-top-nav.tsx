@@ -117,7 +117,7 @@ export class GcdsTopNav {
   @Method()
   async updateNavItemQueue(el, includeElement?: boolean) {
     if (includeElement) {
-      let childElements = await getNavItems(el);
+      const childElements = await getNavItems(el);
       this.navItems = [el, ...childElements];
     } else {
       this.navItems = await getNavItems(el);

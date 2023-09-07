@@ -81,7 +81,7 @@ export async function handleKeyDownNav(event, nav, queue) {
       }
       break;
   }
-};
+}
 
 /**
 * Focus nav element
@@ -133,11 +133,11 @@ async function toggleNavGroup(group, nav) {
 * @return {any[]} indexedItems
 */
 export async function getNavItems(el) {
-  let indexedItems: Array<any> = Array.from(el.children);
+  const indexedItems: Array<unknown> = Array.from(el.children);
 
   indexedItems.forEach(async (item) => {
     if (item.nodeName == "GCDS-NAV-GROUP" && (item as HTMLGcdsNavGroupElement).open) {
-      let groupChildren = await getNavItems(item);
+      const groupChildren = await getNavItems(item);
       indexedItems.splice(indexedItems.indexOf(item) + 1, 0, ...groupChildren);
     }
   });

@@ -1,7 +1,7 @@
 import { requiredCheck } from "../checkbox-validators";
 
 describe('Required checkbox validator', () => {
-    let results: Array<{value: boolean, res: boolean}> = [
+    const results: Array<{value: boolean, res: boolean}> = [
         {value: true, res: true},
         {value: false, res: false},
     ];

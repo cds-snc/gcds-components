@@ -14,7 +14,7 @@ export class GcdsFileUploader {
 
   private shadowElement?: HTMLInputElement;
 
-  _validator: Validator<any> = defaultValidator;
+  _validator: Validator<unknown> = defaultValidator;
 
 
   /**
@@ -179,8 +179,8 @@ export class GcdsFileUploader {
     if (this.changeHandler) {
       this.changeHandler(e);
     } else {
-      let filesContainer: string[] = [];
-      let files = e.target.files;
+      const filesContainer: string[] = [];
+      const files = e.target.files;
 
       for (let i = 0; i < files.length; i++) {
         filesContainer.push(files[i].name);
@@ -204,7 +204,7 @@ export class GcdsFileUploader {
   removeFile = (e) => {
     e.preventDefault();
 
-    let filesContainer = this.value;
+    const filesContainer = this.value;
     const file = filesContainer.indexOf(e.target.closest('.file-uploader__uploaded-file').childNodes[0].textContent);
 
     if (file > -1) {
@@ -310,8 +310,8 @@ export class GcdsFileUploader {
     }
 
     if (hint || errorMessage) {
-      let hintID = hint ? `hint-${uploaderId} ` : "";
-      let errorID = errorMessage ? `error-message-${uploaderId} ` : "";
+      const hintID = hint ? `hint-${uploaderId} ` : "";
+      const errorID = errorMessage ? `error-message-${uploaderId} ` : "";
       attrsInput["aria-describedby"] = `${hintID}${errorID}${attrsInput["aria-describedby"]}`;
     }
 

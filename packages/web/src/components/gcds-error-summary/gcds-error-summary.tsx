@@ -111,8 +111,8 @@ export class GcdsErrorSummary {
   * Sort error object based on the order form compoennts appear in the form
   */
   sortErrors() {
-    let sortable = [];
-      for (let id in this.errorLinksObject) {
+    const sortable = [];
+      for (const id in this.errorLinksObject) {
         sortable.push([id, this.errorLinksObject[id], document.querySelector(id).getBoundingClientRect().y]);
       }
 
@@ -120,7 +120,7 @@ export class GcdsErrorSummary {
         return a[2] - b[2];
       });
 
-      let objSorted = {}
+      const objSorted = {}
       sortable.forEach(function(item){
         objSorted[item[0]]=item[1]
       })
@@ -134,7 +134,7 @@ export class GcdsErrorSummary {
   focusElement(event, id) {
     event.preventDefault();
 
-    let element = document.querySelector(id);
+    const element = document.querySelector(id);
 
     let target = `[for=${id.replace('#', '')}]`;
 

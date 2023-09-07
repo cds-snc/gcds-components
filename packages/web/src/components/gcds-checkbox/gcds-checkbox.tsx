@@ -13,7 +13,7 @@ export class GcdsCheckbox {
 
   private shadowElement?: HTMLElement;
 
-  _validator: Validator<any> = defaultValidator;
+  _validator: Validator<unknown> = defaultValidator;
 
 
   /**
@@ -235,7 +235,7 @@ export class GcdsCheckbox {
       }
     }
   }
-  
+
   /*
   * Observe lang attribute change
   */
@@ -299,9 +299,9 @@ export class GcdsCheckbox {
     }
 
     if (hint || errorMessage || parentError) {
-      let hintID = hint ? `hint-${checkboxId} ` : "";
-      let errorID = errorMessage ? `error-message-${checkboxId} ` : "";
-      let parentErrorID = parentError ? `parent-error-${checkboxId} ` : "";
+      const hintID = hint ? `hint-${checkboxId} ` : "";
+      const errorID = errorMessage ? `error-message-${checkboxId} ` : "";
+      const parentErrorID = parentError ? `parent-error-${checkboxId} ` : "";
       attrsInput["aria-describedby"] = `${hintID}${errorID}${parentErrorID}${attrsInput["aria-describedby"] ? `${attrsInput["aria-describedby"]}` : ""}`;
     }
 

@@ -1,3 +1,3 @@
-const fs = require('fs');
+import { copyFileSync } from 'fs';
 
-fs.copyFileSync('./dist/gcds/gcds.css', '../react/gcds.css');
+copyFileSync('./dist/gcds/gcds.css', '../react/gcds.css');

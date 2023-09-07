@@ -7,7 +7,7 @@ export const inheritAttributes = (el: HTMLElement, shadowElement: HTMLElement, a
 
   // Check for any aria or data attributes
   for (let i = 0; i < el.attributes.length; i++) {
-    let attr = el.attributes[i];
+    const attr = el.attributes[i];
     if (attr.name.includes("aria-") || attr.name.includes("data-")) {
       attributeObject[attr.name] = attr.value;
       el.removeAttribute(attr.name);
@@ -55,7 +55,7 @@ export const observerConfig = {
 export const elementGroupCheck = (name) => {
   let hasCheck = false;
   const element = document.querySelectorAll<HTMLFormElement>(`input[name=${name}]`);
-  for (var i = 0; i < element.length; i++) {
+  for (let i = 0; i < element.length; i++) {
     if (element[i].checked) {
       hasCheck = true;
     }

@@ -62,7 +62,7 @@ describe('gcds-nav-group a11y tests', () => {
     `);
 
     const buttonNameTest = new AxePuppeteer(page).withRules('button-name').analyze();
-    let results = await buttonNameTest;
+    const results = await buttonNameTest;
 
     expect(results.violations.length).toBe(0);
   });

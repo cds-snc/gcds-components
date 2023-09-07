@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Global jest mock for MutationObservers
 const mutationObserverMock = jest.fn(function MutationObserver(callback) {
   this.observe = jest.fn();

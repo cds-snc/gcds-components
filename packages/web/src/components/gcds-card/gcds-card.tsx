@@ -59,11 +59,11 @@ export class GcdsCard {
 
     return (
       <Host>
-        <div 
+        <div
           class={`gcds-card gcds-card--${type}`}
         >
           {imgSrc &&
-            <img 
+            <img
               src={imgSrc}
               alt={imgAlt ? imgAlt : ""}
               class="gcds-card__image"
@@ -75,7 +75,7 @@ export class GcdsCard {
             </span>
           }
           {Element != 'a' ?
-           <Element class="gcds-card__title">
+            <Element class="gcds-card__title">
               <a href={href}>
                 {cardTitle}
               </a>

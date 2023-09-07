@@ -29,7 +29,7 @@ describe('gcds-card a11y tests', () => {
     </gcds-card>`);
 
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });
@@ -43,7 +43,7 @@ describe('gcds-card a11y tests', () => {
     ></gcds-card>`);
 
     const linkNameTest = new AxePuppeteer(page).withRules('link-name').analyze();
-    let results = await linkNameTest;
+    const results = await linkNameTest;
 
     expect(results.violations.length).toBe(0);
   });
@@ -73,7 +73,7 @@ describe('gcds-card a11y tests', () => {
     ></gcds-card>`);
 
     const imgAltTest = new AxePuppeteer(page).withRules('image-alt').analyze();
-    let results = await imgAltTest;
+    const results = await imgAltTest;
 
     expect(results.violations.length).toBe(0);
   });
@@ -89,7 +89,7 @@ describe('gcds-card a11y tests', () => {
     ></gcds-card>`);
 
     const imgAltTest = new AxePuppeteer(page).withRules('image-alt').analyze();
-    let results = await imgAltTest;
+    const results = await imgAltTest;
 
     expect(results.violations.length).toBe(0);
   });

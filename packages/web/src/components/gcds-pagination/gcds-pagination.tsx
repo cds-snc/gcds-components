@@ -124,7 +124,7 @@ export class GcdsPagination {
    */
   private configurePaginationStep(page: number, end?: "next" | "previous" | null, mobile?: boolean) {
 
-    let linkAttrs = {
+    const linkAttrs = {
       onClick: (e) => this.onPageChange(e),
       href: this.urlObject ? constructHref(this.urlObject, page, end) : "javascript:void(0)",
       "aria-label": !end ?
@@ -363,7 +363,7 @@ export class GcdsPagination {
                 </a>
               </li>
             }
-            {nextHref && 
+            {nextHref &&
               <li class="gcds-pagination-simple-next">
                 <a
                   href={nextHref}

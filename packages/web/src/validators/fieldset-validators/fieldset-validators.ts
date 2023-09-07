@@ -5,7 +5,7 @@ export const requiredFieldset: Validator<string> = {
     const el = document.querySelector(`#${id}`);
     const elChildren = el.children;
 
-    let isValid = validateFieldsetElements(el, elChildren);
+    const isValid = validateFieldsetElements(el, elChildren);
 
     return !isValid.includes(false);
   },
@@ -20,15 +20,16 @@ export function validateFieldsetElements(element, nodeList) {
 
   for (let i = 0; i < nodeList.length; i++) {
     switch(nodeList[i].nodeName) {
-      case('GCDS-FIELDSET'):
-        let validFieldsetChildren = validateFieldsetElements(nodeList[i], nodeList[i].children);
+      case('GCDS-FIELDSET'): {
+        const validFieldsetChildren = validateFieldsetElements(nodeList[i], nodeList[i].children);
         isValid = isValid.concat(validFieldsetChildren);
         break;
-      case('GCDS-CHECKBOX'):
-      case('GCDS-RADIO'):
+      }
 
+      case('GCDS-CHECKBOX'):
+      case('GCDS-RADIO'): {
         // Radio/checkbox can share name property
-        let inputName = nodeList[i].getAttribute('name');
+        const inputName = nodeList[i].getAttribute('name');
         // Find all inputs with shared name
         const sameNameInputs = element.querySelectorAll(`[name=${inputName}]`);
         let childGroupValid = false;
@@ -47,12 +48,14 @@ export function validateFieldsetElements(element, nodeList) {
           isValid.push(nodeList[i].hasAttribute('checked') ? true : false);
         }
         break;
+      }
+
       case('GCDS-INPUT'):
       case('GCDS-TEXTAREA'):
       case('GCDS-SELECT'):
       case('GCDS-FILE-UPLOADER'):
-          // Do nothing for now
-          break;
+        // Do nothing for now
+        break;
     }
   }
 

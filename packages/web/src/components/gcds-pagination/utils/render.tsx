@@ -15,9 +15,9 @@ function constructHref(url, page: number, end?: "next" | "previous" | null) {
 
     if (key.includes("::")) {
 
-      let incrementer = key.split("::")[1];
-      let regExp = /\{\{([^)]+)\}\}/;
-      let matches = regExp.exec(url.queryStrings[key]);
+      const incrementer = key.split("::")[1];
+      const regExp = /\{\{([^)]+)\}\}/;
+      const matches = regExp.exec(url.queryStrings[key]);
 
       // Offeset numbers
       if (incrementer == "offset") {
@@ -73,7 +73,7 @@ function constructHref(url, page: number, end?: "next" | "previous" | null) {
 
   
 
-  let href = `${qs}${fragment}`;
+  const href = `${qs}${fragment}`;
 
   return href;
 }
