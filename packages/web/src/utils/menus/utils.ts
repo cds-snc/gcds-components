@@ -9,14 +9,14 @@ export async function handleKeyDownNav(event, nav, queue) {
   const currentIndex = queue.indexOf(document.activeElement == nav ? document.activeElement.shadowRoot.activeElement : document.activeElement);
   const activeElement = queue[currentIndex];
 
-  switch(key) {
+  switch (key) {
     // Down arrow
     case 'ArrowDown':
       event.preventDefault();
       // If on last item, jump to first item
       if (currentIndex + 1 > queue.length - 1) {
         await focusNavItem(0, queue);
-      // Jump to next item
+        // Jump to next item
       } else {
         await focusNavItem(currentIndex + 1, queue);
       }
@@ -28,7 +28,7 @@ export async function handleKeyDownNav(event, nav, queue) {
       // If on first item, jump to last item
       if (currentIndex - 1 < 0) {
         await focusNavItem(queue.length - 1, queue);
-      // Jump to previous item
+        // Jump to previous item
       } else {
         await focusNavItem(currentIndex - 1, queue);
       }
@@ -49,11 +49,11 @@ export async function handleKeyDownNav(event, nav, queue) {
       // Currently focusing a gcds-nav-group
       if (activeElement.nodeName == "GCDS-NAV-GROUP" && activeElement.hasAttribute("open")) {
         await toggleNavGroup(activeElement, nav);
-      // Currently focus within a gcds-nav-group
+        // Currently focus within a gcds-nav-group
       } else if (activeElement.parentNode.nodeName == "GCDS-NAV-GROUP") {
         await toggleNavGroup(activeElement.parentNode, nav);
       } else if ((activeElement.parentNode == nav) && await (activeElement.parentNode as HTMLGcdsTopNavElement).getNavSize() == "mobile") {
-        await toggleNavGroup(queue[queue.length -1], nav)
+        await toggleNavGroup(queue[queue.length - 1], nav)
       }
       break;
 
@@ -64,8 +64,8 @@ export async function handleKeyDownNav(event, nav, queue) {
         if (activeElement.nodeName == "GCDS-NAV-GROUP" && activeElement.hasAttribute("open")) {
           event.preventDefault();
           await toggleNavGroup(activeElement, nav);
-        // In open nav group
-        } else if(activeElement.parentNode.nodeName == "GCDS-NAV-GROUP") {
+          // In open nav group
+        } else if (activeElement.parentNode.nodeName == "GCDS-NAV-GROUP") {
           event.preventDefault();
           await toggleNavGroup(activeElement.parentNode, nav);
         }
@@ -111,7 +111,7 @@ async function toggleNavGroup(group, nav) {
 
     nav.updateNavItemQueue(nav);
 
-  // Open nav group
+    // Open nav group
   } else {
     await navGroup.toggleNav();
 
