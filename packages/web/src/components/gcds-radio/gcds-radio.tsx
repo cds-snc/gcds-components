@@ -204,8 +204,8 @@ export class GcdsRadio {
     };
 
     if (hint || parentError) {
-      let hintID = hint ? `hint-${radioId} ` : "";
-      let errorID = parentError ? `parent-error-${radioId} ` : "";
+      const hintID = hint ? `hint-${radioId} ` : "";
+      const errorID = parentError ? `parent-error-${radioId} ` : "";
       attrsInput["aria-describedby"] = `${hintID}${errorID}${attrsInput["aria-describedby"] ? `${attrsInput["aria-describedby"]}` : ""}`;
     }
 

@@ -70,7 +70,7 @@ export class GcdsFieldset {
     }
 
     if (this.disabled == true) {
-      for (var i = 0; i < this.el.children.length; i++) {
+      for (let i = 0; i < this.el.children.length; i++) {
         this.el.children[i].setAttribute("disabled", "");
       }
     }
@@ -79,7 +79,7 @@ export class GcdsFieldset {
   @Watch('disabled')
   handleDisabledChange(newValue: boolean, _oldValue: boolean) {
     if (_oldValue && newValue != _oldValue) {
-      for (var i = 0; i < this.el.children.length; i++) {
+      for (let i = 0; i < this.el.children.length; i++) {
         this.el.children[i].removeAttribute("disabled");
       }
     }

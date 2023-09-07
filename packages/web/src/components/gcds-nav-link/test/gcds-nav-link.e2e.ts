@@ -22,7 +22,7 @@ describe('gcds-nav-link a11y tests', () => {
     await page.setContent(`<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`);
 
     const defaultColorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await defaultColorContrastTest;
+    const results = await defaultColorContrastTest;
 
     expect(results.violations.length).toBe(0);
 
@@ -34,7 +34,7 @@ describe('gcds-nav-link a11y tests', () => {
     await page.setContent(`<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`);
 
     const buttonNameTest = new AxePuppeteer(page).withRules('link-name').analyze();
-    let results = await buttonNameTest;
+    const results = await buttonNameTest;
 
     expect(results.violations.length).toBe(0);
   });

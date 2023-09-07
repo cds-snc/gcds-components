@@ -70,7 +70,7 @@ const validatorProps = {
   },
 };
 
-module.exports = {
+export default {
   formProps,
   validatorProps,
   langProp

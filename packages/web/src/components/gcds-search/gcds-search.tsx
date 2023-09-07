@@ -90,14 +90,14 @@ export class GcdsSearch {
   render() {
     const { placeholder, action, method, name, lang, searchId, suggested } = this;
 
-    let labelText = `${I18N[lang].searchLabel.replace("{$}", placeholder)}`
+    const labelText = `${I18N[lang].searchLabel.replace("{$}", placeholder)}`
 
     const attrsInput = {
       name,
       placeholder: labelText
     };
 
-    let formAction = action === '/sr/srb.html' ? `https://www.canada.ca/${lang}/sr/srb.html` : action;
+    const formAction = action === '/sr/srb.html' ? `https://www.canada.ca/${lang}/sr/srb.html` : action;
 
     return (
       <Host>
@@ -134,7 +134,7 @@ export class GcdsSearch {
                 {suggested.map((k,v) => <option value={k} key={v} />)}
               </datalist>
             }
-            
+
             <gcds-button
               type="submit"
               class="gcds-search__button"

@@ -32,7 +32,7 @@ describe('gcds-button a11y tests', () => {
     `);
 
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });
@@ -51,7 +51,7 @@ describe('gcds-button a11y tests', () => {
     `);
 
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });
@@ -70,7 +70,7 @@ describe('gcds-button a11y tests', () => {
     `);
 
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   })
@@ -84,7 +84,7 @@ describe('gcds-button a11y tests', () => {
     await page.keyboard.press("Tab");
 
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   })
@@ -95,7 +95,7 @@ describe('gcds-button a11y tests', () => {
     await page.setContent('<gcds-button button-role="primary" button-style="solid">Button Label</gcds-button>');
 
     const colorContrastTest = new AxePuppeteer(page).withRules('button-name').analyze();
-    let results = await colorContrastTest;
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });
@@ -106,7 +106,7 @@ describe('gcds-button a11y tests', () => {
     await page.setContent('<gcds-button type="link" href="#" button-role="primary" button-style="solid">Button Label</gcds-button>');
 
     const colorContrastTest = new AxePuppeteer(page).withRules('link-name').analyze();
-    let results = await colorContrastTest;
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });

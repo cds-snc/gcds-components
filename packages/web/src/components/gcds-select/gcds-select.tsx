@@ -211,7 +211,7 @@ export class GcdsSelect {
     if (this.changeHandler) {
       this.changeHandler(e);
     } else {
-      let val = e.target && e.target.value;
+      const val = e.target && e.target.value;
       this.value = val;
     }
 
@@ -273,8 +273,8 @@ export class GcdsSelect {
     }
 
     if (hint || errorMessage) {
-      let hintID = hint ? `hint-${selectId} ` : "";
-      let errorID = errorMessage ? `error-message-${selectId} ` : "";
+      const hintID = hint ? `hint-${selectId} ` : "";
+      const errorID = errorMessage ? `error-message-${selectId} ` : "";
 
       attrsSelect["aria-describedby"] = `${hintID}${errorID}${attrsSelect["aria-describedby"] ? `${attrsSelect["aria-describedby"]}` : ""}`;
     }

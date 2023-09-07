@@ -20,14 +20,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr 1fr">
                 <li>
@@ -67,14 +67,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>Les sites Web officiels du gouvernement du Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Comment les reconnaître</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
-              <p><small>Il peut être difficile de savoir quels sites sont fiables. Avant de partager des renseignements, vérifiez les points suivant pour déterminer s\'il s\'agit bien d\'un site du gouvernement du Canada:</small></p>
+              <p><small>Il peut être difficile de savoir quels sites sont fiables. Avant de partager des renseignements, vérifiez les points suivant pour déterminer s'il s'agit bien d'un site du gouvernement du Canada:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr 1fr">
                 <li>
@@ -118,14 +118,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr 1fr">
                 <li>
@@ -165,14 +165,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr 1fr">
                 <li>
@@ -216,14 +216,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-full">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr 1fr">
                 <li>
@@ -263,14 +263,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr 1fr">
                 <li>
@@ -310,14 +310,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-lg">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr 1fr">
                 <li>
@@ -357,14 +357,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-md">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr 1fr">
                 <li>
@@ -404,14 +404,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-sm">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr">
                 <li>
@@ -451,14 +451,14 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xs">
-              <p><small>It can be hard to know what sites to trust. Here\'s how to identify a Government of Canada website before you share any info:</small></p>
+              <p><small>It can be hard to know what sites to trust. Here's how to identify a Government of Canada website before you share any info:</small></p>
               <br/>
               <gcds-grid tag="ul" container="lg" columns="1fr" columns-tablet="1fr">
                 <li>

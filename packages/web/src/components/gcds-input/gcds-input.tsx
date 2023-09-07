@@ -226,7 +226,7 @@ export class GcdsInput {
     if (this.changeHandler) {
       this.changeHandler(e);
     } else {
-      let val = e.target && e.target.value;
+      const val = e.target && e.target.value;
       this.value = val;
     }
 
@@ -295,8 +295,8 @@ export class GcdsInput {
     }
 
     if (hint || errorMessage) {
-      let hintID = hint ? `hint-${inputId} ` : "";
-      let errorID = errorMessage ? `error-message-${inputId} ` : "";
+      const hintID = hint ? `hint-${inputId} ` : "";
+      const errorID = errorMessage ? `error-message-${inputId} ` : "";
       attrsInput["aria-describedby"] = `${hintID}${errorID}${attrsInput["aria-describedby"] ? ` ${attrsInput["aria-describedby"]}` : ""}`;
     }
 

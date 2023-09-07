@@ -105,7 +105,7 @@ export class GcdsNavGroup {
   render() {
     const { closeTrigger, menuLabel, open, openTrigger } = this;
 
-    let roleAttr = {
+    const roleAttr = {
       role: "menuitem"
     };
 

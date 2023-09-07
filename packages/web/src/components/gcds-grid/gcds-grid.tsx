@@ -98,7 +98,7 @@ export class GcdsGrid {
 
     // Set CSS variables in style attribute based on passed column properties
     function handleColumns() {
-      let responsiveColumns = {};
+      const responsiveColumns = {};
 
       if (columnsDesktop) {
         responsiveColumns["--gcds-grid-columns-desktop"] = columnsDesktop;

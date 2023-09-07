@@ -38,7 +38,7 @@ describe('gcds-textarea a11y tests', () => {
     `);
     
     const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   }); 

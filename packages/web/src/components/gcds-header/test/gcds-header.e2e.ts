@@ -26,7 +26,7 @@ describe('gcds-header a11y tests', () => {
     `);
     
     const topLevelTest = new AxePuppeteer(page).withRules('landmark-banner-is-top-level').analyze();
-    let results = await topLevelTest;
+    const results = await topLevelTest;
 
     expect(results.violations.length).toBe(0);
   });

@@ -27,7 +27,7 @@ describe('gcds-lang-toggle a11y tests', () => {
     `);
     
     const linkNameTest = new AxePuppeteer(page).withRules('link-name').analyze();
-    let results = await linkNameTest;
+    const results = await linkNameTest;
 
     expect(results.violations.length).toBe(0);
   });

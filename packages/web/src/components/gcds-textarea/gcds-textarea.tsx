@@ -203,7 +203,7 @@ export class GcdsTextarea {
     if (this.changeHandler) {
       this.changeHandler(e);
     } else {
-      let val = e.target && e.target.value;
+      const val = e.target && e.target.value;
       this.value = val;
     }
 
@@ -294,9 +294,9 @@ export class GcdsTextarea {
     };
 
     if (hint || errorMessage || characterCount) {
-      let hintID = hint ? `hint-${textareaId} ` : "";
-      let errorID = errorMessage ? `error-message-${textareaId} ` : "";
-      let countID = characterCount ? `textarea__count-${textareaId} ` : "";
+      const hintID = hint ? `hint-${textareaId} ` : "";
+      const errorID = errorMessage ? `error-message-${textareaId} ` : "";
+      const countID = characterCount ? `textarea__count-${textareaId} ` : "";
       attrsTextarea["aria-describedby"] = `${hintID}${errorID}${countID}${attrsTextarea["aria-describedby"] ? `${attrsTextarea["aria-describedby"]}` : ""}`;
     }
 

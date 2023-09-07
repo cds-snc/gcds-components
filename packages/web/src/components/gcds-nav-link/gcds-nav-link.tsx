@@ -98,7 +98,7 @@ export class GcdsNavLink {
   render() {
     const { current, href } = this;
 
-    let linkAttrs = {};
+    const linkAttrs = {};
 
     if (current) {
       linkAttrs["aria-current"] = "page";
