@@ -20,10 +20,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
@@ -67,10 +67,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>Les sites Web officiels du gouvernement du Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Comment les reconnaître</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
@@ -118,10 +118,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
@@ -165,10 +165,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
@@ -216,10 +216,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-full">
@@ -263,10 +263,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xl">
@@ -310,10 +310,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-lg">
@@ -357,10 +357,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-md">
@@ -404,10 +404,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-sm">
@@ -451,10 +451,10 @@ describe('gcds-verify-banner', () => {
               <span class='svg-container'>Canada Flag</span>
               <p>
                 <small>An official website of the Government of Canada.</small>
-                <a class="verify-banner__toggle">
+                <button class="verify-banner__toggle">
                   <small>Learn to recognize one</small>
                   <span class='svg-container'>Content Toggle Arrow</span>
-                </a>
+                </button>
               </p>
             </summary>
             <div class="verify-banner__content container-xs">

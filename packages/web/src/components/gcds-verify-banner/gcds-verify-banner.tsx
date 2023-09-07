@@ -66,10 +66,10 @@ export class GcdsVerifyBanner {
             <span class='svg-container' innerHTML={CanadaFlag} />
             <p>
               <small>{i18n[lang].summary.text}</small>
-              <a class="verify-banner__toggle">
+              <button class="verify-banner__toggle">
                 <small>{i18n[lang].summary.link}</small>
                 <span class='svg-container' innerHTML={ContentToggleArrow} />
-              </a>
+              </button>
             </p>
           </summary>
           <div class={`verify-banner__content ${container ? `container-${container}` : ''}`}>

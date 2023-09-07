@@ -14,7 +14,7 @@ export class GcdsFileUploader {
 
   private shadowElement?: HTMLInputElement;
 
-  _validator: Validator<any> = defaultValidator;
+  _validator: Validator<unknown> = defaultValidator;
 
 
   /**

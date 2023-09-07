@@ -113,9 +113,9 @@ export class GcdsFooter {
   }
 
   private get renderSignature() {
-    let signVariant = this.wordmarkVariant ? this.wordmarkVariant : "colour";
+    const signVariant = this.wordmarkVariant ? this.wordmarkVariant : "colour";
 
-    if (!!this.el.querySelector('[slot="signature"]')) {
+    if (this.el.querySelector('[slot="signature"]')) {
       return <slot name="wordmark"></slot>;
     } else {
       return (<div class="sub__wordmark">

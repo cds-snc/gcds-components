@@ -8,7 +8,7 @@ interface MockFile {
 }
 
 const createFileFromMockFile = (file: MockFile): File => {
-const blob = new Blob([file.body], { type: file.mimeType }) as any;
+const blob = new Blob([file.body], { type: file.mimeType }) as unknown;
 blob['lastModifiedDate'] = new Date();
 blob['name'] = file.name;
 return blob as File;
@@ -32,7 +32,7 @@ describe('Required input validator', () => {
     {value: "", res: false},
     {value: " ", res: false},
   ];
-  results.forEach(i => 
+  results.forEach(i =>
     it(`Should return ${i.res} for ${i.value}`, () => {
       expect(requiredField.validate(i.value)).toEqual(i.res);
     })
@@ -44,7 +44,7 @@ describe('Required file input validator', () => {
     {value: createMockFileList([{ body: 'test', mimeType: 'text/plain', name: 'test1.txt' }]), res: true},
     {value: createMockFileList([]), res: false},
   ];
-  results.forEach(i => 
+  results.forEach(i =>
     it(`Should return ${i.res} for ${i.value}`, () => {
       expect(requiredFileInput.validate(i.value)).toEqual(i.res);
     })

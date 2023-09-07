@@ -66,7 +66,7 @@ export class GcdsHeader {
   }
 
   private get renderSkipToNav() {
-    if (!!this.el.querySelector('[slot="skip-to-nav"]')) {
+    if (this.el.querySelector('[slot="skip-to-nav"]')) {
       return <slot name="skip-to-nav"></slot>;
     } else if(this.skipToHref) {
       return (
@@ -88,7 +88,7 @@ export class GcdsHeader {
   }
 
   private get renderToggle() {
-    if (!!this.el.querySelector('[slot="toggle"]')) {
+    if (this.el.querySelector('[slot="toggle"]')) {
       return <slot name="toggle"></slot>;
     } else if(this.langHref) {
       return (
@@ -104,9 +104,9 @@ export class GcdsHeader {
   }
 
   private get renderSignature() {
-    let signVariant = this.signatureVariant ? this.signatureVariant : "colour";
+    const signVariant = this.signatureVariant ? this.signatureVariant : "colour";
 
-    if (!!this.el.querySelector('[slot="signature"]')) {
+    if (this.el.querySelector('[slot="signature"]')) {
       return <slot name="signature"></slot>;
     } else {
       return (
@@ -122,7 +122,7 @@ export class GcdsHeader {
   }
 
   private get renderSearch() {
-    if (!!this.el.querySelector('[slot="search"]')) {
+    if (this.el.querySelector('[slot="search"]')) {
       return <div class="brand__search"><slot name="search"></slot></div>;
     } else {
       return;
