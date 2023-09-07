@@ -133,7 +133,7 @@ async function toggleNavGroup(group, nav) {
 * @return {any[]} indexedItems
 */
 export async function getNavItems(el) {
-  const indexedItems: Array<unknown> = Array.from(el.children);
+  const indexedItems: Array<any> = Array.from(el.children);
 
   indexedItems.forEach(async (item) => {
     if (item.nodeName == "GCDS-NAV-GROUP" && (item as HTMLGcdsNavGroupElement).open) {

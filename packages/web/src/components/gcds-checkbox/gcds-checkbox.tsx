@@ -13,7 +13,7 @@ export class GcdsCheckbox {
 
   private shadowElement?: HTMLElement;
 
-  _validator: Validator<unknown> = defaultValidator;
+  _validator: Validator<any> = defaultValidator;
 
 
   /**
