@@ -36,8 +36,7 @@
     "@stencil/react-output-target": "^0.5.3",
     "@storybook/addon-a11y": "^7.4.0",
     "@storybook/addons": "^7.4.0",
-    "@storybook/theming": "^7.4.0",
-    "stencil": "^0.0.5"
+    "@storybook/theming": "^7.4.0"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.7.3",
@@ -57,7 +56,7 @@
     "@storybook/html": "^7.4.0",
     "@storybook/html-webpack5": "^7.4.0",
     "@storybook/testing-library": "^0.2.0",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
     "babel-loader": "^9.0.0",
@@ -66,8 +65,8 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
-    "jest": "^26.6.3",
-    "jest-cli": "^26.6.3",
+    "jest": "^27.0.3",
+    "jest-cli": "^27.4.5",
     "lit-html": "^2.6.1",
     "postcss-nested": "^6.0.0",
     "prettier": "^3.0.0",
