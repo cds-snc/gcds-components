@@ -1,6 +1,15 @@
-import { Component, Host, Prop, Element, State, Event, EventEmitter, h } from '@stencil/core';
+import {
+  Component,
+  Host,
+  Prop,
+  Element,
+  State,
+  Event,
+  EventEmitter,
+  h,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import I18N from './i18n/I18N'
+import I18N from './i18n/I18N';
 
 @Component({
   tag: 'gcds-search',
@@ -12,69 +21,69 @@ export class GcdsSearch {
   @Element() el: HTMLElement;
 
   /**
-  * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
-  */
-  @Prop() placeholder: string = "Canada.ca";
+   * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
+   */
+  @Prop() placeholder: string = 'Canada.ca';
 
   /**
-  * Sets the action for the search form. Default will be canada.ca global search
-  */
-  @Prop() action: string = "/sr/srb.html";
+   * Sets the action for the search form. Default will be canada.ca global search
+   */
+  @Prop() action: string = '/sr/srb.html';
 
   /**
-  * Set the form method of the search form
-  */
-  @Prop() method: "get" | "post" = "get";
+   * Set the form method of the search form
+   */
+  @Prop() method: 'get' | 'post' = 'get';
 
   /**
-  * Set the name of the search input
-  */
-  @Prop() name: string = "q";
+   * Set the name of the search input
+   */
+  @Prop() name: string = 'q';
 
   /**
-  * Set the name of the search input
-  */
-  @Prop() searchId: string = "search";
+   * Set the name of the search input
+   */
+  @Prop() searchId: string = 'search';
 
   /**
-  * Set a list of predefined search terms
-  */
+   * Set a list of predefined search terms
+   */
   @Prop() suggested: Array<string>;
 
   /**
-  * Events
-  */
+   * Events
+   */
 
   /**
-  * Emitted when the search input value has changed.
-  */
+   * Emitted when the search input value has changed.
+   */
   @Event() gcdsChange!: EventEmitter<object>;
 
   /**
-  * Emitted when the search input value has gained focus.
-  */
+   * Emitted when the search input value has gained focus.
+   */
   @Event() gcdsFocus!: EventEmitter<object>;
 
   /**
-  * Emitted when the search input has lost focus.
-  */
+   * Emitted when the search input has lost focus.
+   */
   @Event() gcdsBlur!: EventEmitter<object>;
 
   /**
-  * Emitted when the search form has submitted.
-  */
+   * Emitted when the search form has submitted.
+   */
   @Event() gcdsSubmit!: EventEmitter<object>;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -88,16 +97,20 @@ export class GcdsSearch {
   }
 
   render() {
-    const { placeholder, action, method, name, lang, searchId, suggested } = this;
+    const { placeholder, action, method, name, lang, searchId, suggested } =
+      this;
 
-    const labelText = `${I18N[lang].searchLabel.replace("{$}", placeholder)}`
+    const labelText = `${I18N[lang].searchLabel.replace('{$}', placeholder)}`;
 
     const attrsInput = {
       name,
-      placeholder: labelText
+      placeholder: labelText,
     };
 
-    const formAction = action === '/sr/srb.html' ? `https://www.canada.ca/${lang}/sr/srb.html` : action;
+    const formAction =
+      action === '/sr/srb.html'
+        ? `https://www.canada.ca/${lang}/sr/srb.html`
+        : action;
 
     return (
       <Host>
@@ -114,8 +127,7 @@ export class GcdsSearch {
               label={labelText}
               label-for={searchId}
               hide-label
-            >
-            </gcds-label>
+            ></gcds-label>
             <input
               type="search"
               id={searchId}
@@ -129,11 +141,13 @@ export class GcdsSearch {
               class="gcds-search__input"
             ></input>
 
-            {suggested &&
+            {suggested && (
               <datalist id="search-list">
-                {suggested.map((k,v) => <option value={k} key={v} />)}
+                {suggested.map((k, v) => (
+                  <option value={k} key={v} />
+                ))}
               </datalist>
-            }
+            )}
 
             <gcds-button
               type="submit"
@@ -148,9 +162,7 @@ export class GcdsSearch {
             </gcds-button>
           </form>
         </div>
-
       </Host>
     );
   }
-
 }

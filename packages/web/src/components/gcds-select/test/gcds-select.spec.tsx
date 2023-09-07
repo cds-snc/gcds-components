@@ -19,8 +19,8 @@ describe('gcds-select', () => {
   });
 
   /**
-    * Disabled test
-    */
+   * Disabled test
+   */
   it('renders disabled', async () => {
     const page = await newSpecPage({
       components: [GcdsSelect],
@@ -38,8 +38,8 @@ describe('gcds-select', () => {
   });
 
   /**
-    * Error message test
-    */
+   * Error message test
+   */
   it('renders error message', async () => {
     const page = await newSpecPage({
       components: [GcdsSelect],
@@ -58,8 +58,8 @@ describe('gcds-select', () => {
   });
 
   /**
-    * Select hint test
-    */
+   * Select hint test
+   */
   it('renders hint', async () => {
     const page = await newSpecPage({
       components: [GcdsSelect],
@@ -78,8 +78,8 @@ describe('gcds-select', () => {
   });
 
   /**
-    * Select ID test
-    */
+   * Select ID test
+   */
   it('renders select id', async () => {
     const page = await newSpecPage({
       components: [GcdsSelect],
@@ -97,8 +97,8 @@ describe('gcds-select', () => {
   });
 
   /**
-    * Select label test
-    */
+   * Select label test
+   */
   it('renders select label', async () => {
     const page = await newSpecPage({
       components: [GcdsSelect],
@@ -116,8 +116,8 @@ describe('gcds-select', () => {
   });
 
   /**
-    * Select required test
-    */
+   * Select required test
+   */
   it('renders required', async () => {
     const page = await newSpecPage({
       components: [GcdsSelect],
@@ -135,8 +135,8 @@ describe('gcds-select', () => {
   });
 
   /**
-    * Select with options test
-    */
+   * Select with options test
+   */
   it('renders select with options', async () => {
     const page = await newSpecPage({
       components: [GcdsSelect],
@@ -163,8 +163,8 @@ describe('gcds-select', () => {
   });
 
   /**
-    * Select with options and default value test
-    */
+   * Select with options and default value test
+   */
   it('renders select with options and default value', async () => {
     const page = await newSpecPage({
       components: [GcdsSelect],

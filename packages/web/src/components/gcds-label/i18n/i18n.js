@@ -1,10 +1,10 @@
 const I18N = {
-  "en": {
-    required: "required",
+  en: {
+    required: 'required',
   },
-  "fr": {
-    required: "obligatoire",
-  }
-}
+  fr: {
+    required: 'obligatoire',
+  },
+};
 
 export default I18N;

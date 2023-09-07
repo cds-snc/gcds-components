@@ -13,7 +13,6 @@ export class GcdsLabel {
 
   private focusEl?: HTMLElement;
 
-
   /**
    * Props
    */
@@ -39,15 +38,15 @@ export class GcdsLabel {
   @Prop() required?: boolean;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -72,7 +71,7 @@ export class GcdsLabel {
   }
 
   private onClick = (ev: any) => {
-    if (ev.srcElement.tagName == "GCDS-LABEL") {
+    if (ev.srcElement.tagName == 'GCDS-LABEL') {
       this.clickEl();
     }
   };
@@ -81,19 +80,18 @@ export class GcdsLabel {
     const { hideLabel, labelFor, label, required, lang } = this;
 
     return (
-      <Host
-        id={`label-for-${labelFor}`}
-        onClick={this.onClick}
-      >
+      <Host id={`label-for-${labelFor}`} onClick={this.onClick}>
         <label
           htmlFor={labelFor}
           class={`gcds-label ${hideLabel ? 'label--hidden' : ''}`}
-          ref={(focusEl) => (this.focusEl = focusEl)}
+          ref={focusEl => (this.focusEl = focusEl)}
         >
           <span>{label}</span>
-          {required ?
-            <span aria-hidden="true" class="label--required">({i18n[lang].required})</span>
-          : null}
+          {required ? (
+            <span aria-hidden="true" class="label--required">
+              ({i18n[lang].required})
+            </span>
+          ) : null}
         </label>
       </Host>
     );

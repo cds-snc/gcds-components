@@ -1,9 +1,15 @@
 import { newSpecPage } from '@stencil/core/testing';
 
-jest.mock('../assets/sig-blk-en.svg', () => ("Government of Canada"));
-jest.mock('../assets/sig-blk-fr.svg', () => ("Gouvernement du Canada"));
-jest.mock('../assets/wmms-spl-en.svg', () => ("Symbol of the Government of Canada"));
-jest.mock('../assets/wmms-spl-fr.svg', () => ("Symbole du Gouvernement du Canada"));
+jest.mock('../assets/sig-blk-en.svg', () => 'Government of Canada');
+jest.mock('../assets/sig-blk-fr.svg', () => 'Gouvernement du Canada');
+jest.mock(
+  '../assets/wmms-spl-en.svg',
+  () => 'Symbol of the Government of Canada',
+);
+jest.mock(
+  '../assets/wmms-spl-fr.svg',
+  () => 'Symbole du Gouvernement du Canada',
+);
 
 import { GcdsSignature } from '../gcds-signature';
 

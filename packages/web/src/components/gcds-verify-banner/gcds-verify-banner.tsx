@@ -13,7 +13,6 @@ import ContentToggleArrow from './assets/content-toggle-arrow.svg';
 export class GcdsVerifyBanner {
   @Element() el: HTMLElement;
 
-
   /**
    * Props
    */
@@ -29,15 +28,15 @@ export class GcdsVerifyBanner {
   @Prop() isFixed?: boolean = false;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -57,45 +56,67 @@ export class GcdsVerifyBanner {
 
     return (
       <Host>
-        <details class={`gcds-verify-banner ${isFixed ? 'verify-banner--is-fixed' : ''}`}>
+        <details
+          class={`gcds-verify-banner ${
+            isFixed ? 'verify-banner--is-fixed' : ''
+          }`}
+        >
           <summary
             class={container ? `container-${container}` : ''}
             aria-expanded="false"
             role="button"
           >
-            <span class='svg-container' innerHTML={CanadaFlag} />
+            <span class="svg-container" innerHTML={CanadaFlag} />
             <p>
               <small>{i18n[lang].summary.text}</small>
               <button class="verify-banner__toggle">
                 <small>{i18n[lang].summary.link}</small>
-                <span class='svg-container' innerHTML={ContentToggleArrow} />
+                <span class="svg-container" innerHTML={ContentToggleArrow} />
               </button>
             </p>
           </summary>
-          <div class={`verify-banner__content ${container ? `container-${container}` : ''}`}>
-            <p><small>{i18n[lang].content.description}</small></p>
-            <br/>
+          <div
+            class={`verify-banner__content ${
+              container ? `container-${container}` : ''
+            }`}
+          >
+            <p>
+              <small>{i18n[lang].content.description}</small>
+            </p>
+            <br />
             <gcds-grid
               tag="ul"
               container="lg"
               columns="1fr"
-              columns-tablet={container === 'xs' || container === 'sm' ? '1fr' : '1fr 1fr'}
+              columns-tablet={
+                container === 'xs' || container === 'sm' ? '1fr' : '1fr 1fr'
+              }
             >
               <li>
                 <h4>{i18n[lang].content.url.heading}</h4>
-                <p><small>{i18n[lang].content.url.text}</small></p>
+                <p>
+                  <small>{i18n[lang].content.url.text}</small>
+                </p>
               </li>
               <li>
                 <h4>{i18n[lang].content.languages.heading}</h4>
-                <p><small>{i18n[lang].content.languages.text}</small></p>
+                <p>
+                  <small>{i18n[lang].content.languages.text}</small>
+                </p>
               </li>
               <li>
                 <h4>{i18n[lang].content.https.heading}</h4>
-                <p><small>{i18n[lang].content.https.text} <strong>https://</strong>.</small></p>
+                <p>
+                  <small>
+                    {i18n[lang].content.https.text} <strong>https://</strong>.
+                  </small>
+                </p>
               </li>
               <li>
                 <h4>{i18n[lang].content.contact.heading}</h4>
-                <p><small>{i18n[lang].content.contact.text}</small></p>
+                <p>
+                  <small>{i18n[lang].content.contact.text}</small>
+                </p>
               </li>
             </gcds-grid>
           </div>

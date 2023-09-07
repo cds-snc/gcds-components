@@ -1,6 +1,28 @@
-import { Component, Element, Event, Method, Watch, EventEmitter, Host, State, Prop, h, Listen } from '@stencil/core';
-import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import {
+  Component,
+  Element,
+  Event,
+  Method,
+  Watch,
+  EventEmitter,
+  Host,
+  State,
+  Prop,
+  h,
+  Listen,
+} from '@stencil/core';
+import {
+  assignLanguage,
+  inheritAttributes,
+  observerConfig,
+} from '../../utils/utils';
+import {
+  Validator,
+  defaultValidator,
+  ValidatorEntry,
+  getValidator,
+  requiredValidator,
+} from '../../validators';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -15,7 +37,6 @@ export class GcdsTextarea {
   private shadowElement?: HTMLElement;
 
   _validator: Validator<string> = defaultValidator;
-
 
   /**
    * Props
@@ -49,10 +70,10 @@ export class GcdsTextarea {
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
-      this.errorMessage = "";
+      this.errorMessage = '';
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
-    } else if (this.errorMessage == "") {
+    } else if (this.errorMessage == '') {
       this.hasError = false;
     }
   }
@@ -73,8 +94,8 @@ export class GcdsTextarea {
   @Prop() label!: string;
 
   /**
-    * Specifies if a form field is required or not.
-    */
+   * Specifies if a form field is required or not.
+   */
   @Prop() required?: boolean = false;
 
   /**
@@ -95,12 +116,14 @@ export class GcdsTextarea {
   /**
    * Array of validators
    */
-  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+  @Prop({ mutable: true }) validator: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
 
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
-      this.validateOn = "blur";
+      this.validateOn = 'blur';
     }
   }
 
@@ -115,13 +138,13 @@ export class GcdsTextarea {
   @Prop() changeHandler: Function;
 
   /**
-    * Custom callback function on focus event
-    */
+   * Custom callback function on focus event
+   */
   @Prop() focusHandler: Function;
 
   /**
-    * Custom callback function on blur event
-    */
+   * Custom callback function on blur event
+   */
   @Prop() blurHandler: Function;
 
   /**
@@ -141,61 +164,63 @@ export class GcdsTextarea {
   }
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
-
 
   /**
    * Events
    */
 
   /**
-    * Emitted when the textarea has focus.
-    */
+   * Emitted when the textarea has focus.
+   */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = (e) => {
+  private onFocus = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
 
     this.gcdsFocus.emit();
-  }
+  };
 
   /**
-    * Emitted when the textarea loses focus.
-    */
+   * Emitted when the textarea loses focus.
+   */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = (e) => {
+  private onBlur = e => {
     if (this.blurHandler) {
       this.blurHandler(e);
     } else {
-      if (this.validateOn == "blur") {
+      if (this.validateOn == 'blur') {
         this.validate();
       }
     }
 
     this.gcdsBlur.emit();
-  }
+  };
 
   /**
-    * Update value based on user input.
-    */
+   * Update value based on user input.
+   */
   @Event() gcdsChange: EventEmitter;
 
   /**
-  * Call any active validators
-  */
+   * Call any active validators
+   */
   @Method()
   async validate() {
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.textareaId}`, message: `${this.label} - ${this.errorMessage}` });
+      this.gcdsError.emit({
+        id: `#${this.textareaId}`,
+        message: `${this.label} - ${this.errorMessage}`,
+      });
     } else {
-      this.errorMessage = "";
-      this.gcdsValid.emit({ id: `#${this.textareaId}` })
+      this.errorMessage = '';
+      this.gcdsValid.emit({ id: `#${this.textareaId}` });
     }
   }
 
@@ -211,19 +236,19 @@ export class GcdsTextarea {
   }
 
   /**
-    * Emitted when the textarea has a validation error.
-    */
+   * Emitted when the textarea has a validation error.
+   */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-    * Emitted when the textarea has a validation error.
-    */
+   * Emitted when the textarea has a validation error.
+   */
   @Event() gcdsValid!: EventEmitter<object>;
 
-  @Listen("submit", { target: 'document' })
+  @Listen('submit', { target: 'document' })
   submitListener(e) {
-    if (e.target == this.el.closest("form")) {
-      if (this.validateOn && this.validateOn != "other") {
+    if (e.target == this.el.closest('form')) {
+      if (this.validateOn && this.validateOn != 'other') {
         this.validate();
       }
 
@@ -234,10 +259,10 @@ export class GcdsTextarea {
   }
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -257,14 +282,15 @@ export class GcdsTextarea {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, "textarea");
-
+    requiredValidator(this.el, 'textarea');
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['placeholder']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
+      'placeholder',
+    ]);
   }
 
   componentWillUpdate() {
@@ -274,35 +300,58 @@ export class GcdsTextarea {
   }
 
   render() {
-    const { characterCount, cols, disabled, errorMessage, hideLabel, hint, label, required, rows, textareaId, value, hasError, inheritedAttributes, lang } = this;
+    const {
+      characterCount,
+      cols,
+      disabled,
+      errorMessage,
+      hideLabel,
+      hint,
+      label,
+      required,
+      rows,
+      textareaId,
+      value,
+      hasError,
+      inheritedAttributes,
+      lang,
+    } = this;
 
     // Use max-width instead of cols attribute to keep field responsive
     const style = {
-      maxWidth: `${cols * 1.5}ch`
-    }
+      maxWidth: `${cols * 1.5}ch`,
+    };
 
     const attrsLabel = {
       label,
       required,
-    }
+    };
 
     const attrsTextarea = {
       disabled,
       required,
       rows,
-      ...inheritedAttributes
+      ...inheritedAttributes,
     };
 
     if (hint || errorMessage || characterCount) {
-      const hintID = hint ? `hint-${textareaId} ` : "";
-      const errorID = errorMessage ? `error-message-${textareaId} ` : "";
-      const countID = characterCount ? `textarea__count-${textareaId} ` : "";
-      attrsTextarea["aria-describedby"] = `${hintID}${errorID}${countID}${attrsTextarea["aria-describedby"] ? `${attrsTextarea["aria-describedby"]}` : ""}`;
+      const hintID = hint ? `hint-${textareaId} ` : '';
+      const errorID = errorMessage ? `error-message-${textareaId} ` : '';
+      const countID = characterCount ? `textarea__count-${textareaId} ` : '';
+      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${
+        attrsTextarea['aria-describedby']
+          ? `${attrsTextarea['aria-describedby']}`
+          : ''
+      }`;
     }
 
     return (
       <Host>
-        <div class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
+        <div
+          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${
+            hasError ? 'gcds-error' : ''
+          }`}
+        >
           <gcds-label
             {...attrsLabel}
             hide-label={hideLabel}
@@ -312,34 +361,36 @@ export class GcdsTextarea {
 
           {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
 
-          {errorMessage ?
+          {errorMessage ? (
             <gcds-error-message messageId={textareaId} message={errorMessage} />
-          : null}
+          ) : null}
 
           <textarea
             {...attrsTextarea}
             class={hasError ? 'gcds-error' : null}
             id={textareaId}
             name={textareaId}
-            onBlur={(e) => this.onBlur(e)}
-            onFocus={(e) => this.onFocus(e)}
-            onInput={(e) => this.handleChange(e)}
+            onBlur={e => this.onBlur(e)}
+            onFocus={e => this.onFocus(e)}
+            onInput={e => this.handleChange(e)}
             aria-labelledby={`label-for-${textareaId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={characterCount ? characterCount : null}
             style={cols ? style : null}
-            ref={element => this.shadowElement = element as HTMLElement}
-          >{value}</textarea>
+            ref={element => (this.shadowElement = element as HTMLElement)}
+          >
+            {value}
+          </textarea>
 
-          {characterCount ?
+          {characterCount ? (
             <p id={`textarea__count-${textareaId}`} aria-live="polite">
-              {
-                value  == undefined ? `${characterCount} ${i18n[lang].characters.allowed}`
-              :
-                `${characterCount - value.length} ${i18n[lang].characters.left}`
-              }
+              {value == undefined
+                ? `${characterCount} ${i18n[lang].characters.allowed}`
+                : `${characterCount - value.length} ${
+                    i18n[lang].characters.left
+                  }`}
             </p>
-          : null}
+          ) : null}
         </div>
       </Host>
     );

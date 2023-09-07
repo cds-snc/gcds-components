@@ -6,7 +6,7 @@ import i18n from './i18n/i18n';
   tag: 'gcds-date-modified',
   styleUrl: 'gcds-date-modified.css',
   shadow: false,
-  scoped: true
+  scoped: true,
 })
 export class GcdsDateModified {
   @Element() el: HTMLElement;
@@ -20,17 +20,16 @@ export class GcdsDateModified {
    */
   @Prop({ mutable: true }) type: 'date' | 'version' = 'date';
 
-
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -51,15 +50,15 @@ export class GcdsDateModified {
     return (
       <Host>
         <dl class="gcds-date-modified">
-          <dt>{ type === 'version' ? 'Version ' : i18n[lang].term }</dt>
+          <dt>{type === 'version' ? 'Version ' : i18n[lang].term}</dt>
           <dd>
-            { type === 'version' ?
+            {type === 'version' ? (
               <slot></slot>
-            :
+            ) : (
               <time>
                 <slot></slot>
               </time>
-            }
+            )}
           </dd>
         </dl>
       </Host>

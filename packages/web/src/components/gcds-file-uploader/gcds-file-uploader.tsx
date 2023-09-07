@@ -1,6 +1,28 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h, Listen } from '@stencil/core';
-import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Prop,
+  Watch,
+  State,
+  Method,
+  Host,
+  h,
+  Listen,
+} from '@stencil/core';
+import {
+  assignLanguage,
+  inheritAttributes,
+  observerConfig,
+} from '../../utils/utils';
+import {
+  Validator,
+  defaultValidator,
+  ValidatorEntry,
+  getValidator,
+  requiredValidator,
+} from '../../validators';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -15,7 +37,6 @@ export class GcdsFileUploader {
   private shadowElement?: HTMLInputElement;
 
   _validator: Validator<unknown> = defaultValidator;
-
 
   /**
    * Props
@@ -51,7 +72,7 @@ export class GcdsFileUploader {
   /**
    * Value for a file uploader element.
    */
-  @Prop({  reflect: true, mutable: true }) value: string[] = [];
+  @Prop({ reflect: true, mutable: true }) value: string[] = [];
 
   /**
    * Defines the file types the file uploader accepts.
@@ -70,10 +91,10 @@ export class GcdsFileUploader {
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
-      this.errorMessage = "";
+      this.errorMessage = '';
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
-    } else if (this.errorMessage == "") {
+    } else if (this.errorMessage == '') {
       this.hasError = false;
     }
   }
@@ -86,18 +107,20 @@ export class GcdsFileUploader {
   /**
    * Array of validators
    */
-  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+  @Prop({ mutable: true }) validator: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
 
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
-      this.validateOn = "blur";
+      this.validateOn = 'blur';
     }
   }
 
   /**
-    * Set event to call validator
-    */
+   * Set event to call validator
+   */
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
@@ -106,13 +129,13 @@ export class GcdsFileUploader {
   @Prop() changeHandler: Function;
 
   /**
-  * Custom callback function on focus event
-  */
+   * Custom callback function on focus event
+   */
   @Prop() focusHandler: Function;
 
   /**
-  * Custom callback function on blur event
-  */
+   * Custom callback function on blur event
+   */
   @Prop() blurHandler: Function;
 
   /**
@@ -132,8 +155,8 @@ export class GcdsFileUploader {
   @State() inheritedAttributes: Object = {};
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /**
@@ -145,37 +168,37 @@ export class GcdsFileUploader {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = (e) => {
+  private onFocus = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
 
     this.gcdsFocus.emit();
-  }
+  };
 
   /**
    * Emitted when the uploader loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = (e) => {
+  private onBlur = e => {
     if (this.blurHandler) {
       this.blurHandler(e);
     } else {
-      if (this.validateOn == "blur") {
+      if (this.validateOn == 'blur') {
         this.validate();
       }
     }
 
     this.gcdsBlur.emit();
-  }
+  };
 
   /**
    * Update value based on user selection.
    */
   @Event() gcdsFileUploaderChange: EventEmitter;
 
-  handleChange = (e) => {
+  handleChange = e => {
     if (this.changeHandler) {
       this.changeHandler(e);
     } else {
@@ -189,7 +212,7 @@ export class GcdsFileUploader {
       this.value = [...filesContainer];
 
       // Validate since the input loses focus when dialog opens
-      if (this.validateOn == "blur") {
+      if (this.validateOn == 'blur') {
         this.validate();
       }
     }
@@ -201,11 +224,14 @@ export class GcdsFileUploader {
    * Remove file and update value.
    */
   @Event() gcdsRemoveFile: EventEmitter;
-  removeFile = (e) => {
+  removeFile = e => {
     e.preventDefault();
 
     const filesContainer = this.value;
-    const file = filesContainer.indexOf(e.target.closest('.file-uploader__uploaded-file').childNodes[0].textContent);
+    const file = filesContainer.indexOf(
+      e.target.closest('.file-uploader__uploaded-file').childNodes[0]
+        .textContent,
+    );
 
     if (file > -1) {
       filesContainer.splice(file, 1);
@@ -220,29 +246,35 @@ export class GcdsFileUploader {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.shadowElement.files) && this._validator.errorMessage) {
+    if (
+      !this._validator.validate(this.shadowElement.files) &&
+      this._validator.errorMessage
+    ) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.uploaderId}`, message: `${this.label} - ${this.errorMessage}` });
+      this.gcdsError.emit({
+        id: `#${this.uploaderId}`,
+        message: `${this.label} - ${this.errorMessage}`,
+      });
     } else {
-      this.errorMessage = "";
-      this.gcdsValid.emit({ id: `#${this.uploaderId}` })
+      this.errorMessage = '';
+      this.gcdsValid.emit({ id: `#${this.uploaderId}` });
     }
   }
 
   /**
-    * Emitted when the input has a validation error.
-    */
+   * Emitted when the input has a validation error.
+   */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-    * Emitted when the input has a validation error.
-    */
+   * Emitted when the input has a validation error.
+   */
   @Event() gcdsValid!: EventEmitter<object>;
 
-  @Listen("submit", { target: 'document' })
+  @Listen('submit', { target: 'document' })
   submitListener(e) {
-    if (e.target == this.el.closest("form")) {
-      if (this.validateOn && this.validateOn != "other") {
+    if (e.target == this.el.closest('form')) {
+      if (this.validateOn && this.validateOn != 'other') {
         this.validate();
       }
 
@@ -253,10 +285,10 @@ export class GcdsFileUploader {
   }
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -276,7 +308,7 @@ export class GcdsFileUploader {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, "file");
+    requiredValidator(this.el, 'file');
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
@@ -292,7 +324,20 @@ export class GcdsFileUploader {
   }
 
   render() {
-    const { accept, disabled, errorMessage, hasError, hint, label, lang, multiple, required, uploaderId, value, inheritedAttributes } = this;
+    const {
+      accept,
+      disabled,
+      errorMessage,
+      hasError,
+      hint,
+      label,
+      lang,
+      multiple,
+      required,
+      uploaderId,
+      value,
+      inheritedAttributes,
+    } = this;
 
     const attrsInput = {
       accept,
@@ -301,37 +346,51 @@ export class GcdsFileUploader {
       required,
       value,
       ...inheritedAttributes,
-      "aria-describedby": `${inheritedAttributes["aria-describedby"] ? `${inheritedAttributes["aria-describedby"]} ` : ''}file-uploader__summary`
+      'aria-describedby': `${
+        inheritedAttributes['aria-describedby']
+          ? `${inheritedAttributes['aria-describedby']} `
+          : ''
+      }file-uploader__summary`,
     };
 
     const attrsLabel = {
       label,
       required,
-    }
+    };
 
     if (hint || errorMessage) {
-      const hintID = hint ? `hint-${uploaderId} ` : "";
-      const errorID = errorMessage ? `error-message-${uploaderId} ` : "";
-      attrsInput["aria-describedby"] = `${hintID}${errorID}${attrsInput["aria-describedby"]}`;
+      const hintID = hint ? `hint-${uploaderId} ` : '';
+      const errorID = errorMessage ? `error-message-${uploaderId} ` : '';
+      attrsInput[
+        'aria-describedby'
+      ] = `${hintID}${errorID}${attrsInput['aria-describedby']}`;
     }
 
     return (
       <Host>
-        <div class={`gcds-file-uploader-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
-          <gcds-label
-            {...attrsLabel}
-            label-for={uploaderId}
-            lang={lang}
-          />
+        <div
+          class={`gcds-file-uploader-wrapper ${
+            disabled ? 'gcds-disabled' : ''
+          } ${hasError ? 'gcds-error' : ''}`}
+        >
+          <gcds-label {...attrsLabel} label-for={uploaderId} lang={lang} />
 
-          {hint ? <gcds-hint hint={hint} hint-id={uploaderId} />: null}
+          {hint ? <gcds-hint hint={hint} hint-id={uploaderId} /> : null}
 
-          {errorMessage ?
+          {errorMessage ? (
             <gcds-error-message messageId={uploaderId} message={errorMessage} />
-          : null}
+          ) : null}
 
-          <div class={`file-uploader__input ${value.length > 0 ? "uploaded-files" : ''}`}>
-            <button type="button" tabindex="-1" onClick={() => this.shadowElement.click()}>
+          <div
+            class={`file-uploader__input ${
+              value.length > 0 ? 'uploaded-files' : ''
+            }`}
+          >
+            <button
+              type="button"
+              tabindex="-1"
+              onClick={() => this.shadowElement.click()}
+            >
               {i18n[lang].button.upload}
             </button>
             <input
@@ -339,34 +398,40 @@ export class GcdsFileUploader {
               id={uploaderId}
               name={uploaderId}
               {...attrsInput}
-              onBlur={(e) => this.onBlur(e)}
-              onFocus={(e) => this.onFocus(e)}
-              onChange={(e) => this.handleChange(e)}
+              onBlur={e => this.onBlur(e)}
+              onFocus={e => this.onFocus(e)}
+              onChange={e => this.handleChange(e)}
               aria-invalid={hasError ? 'true' : 'false'}
-              ref={element => this.shadowElement = element as HTMLInputElement}
+              ref={element =>
+                (this.shadowElement = element as HTMLInputElement)
+              }
             />
-            { value.length > 0 ?
+            {value.length > 0 ? (
               <p id="file-uploader__summary">
                 <span>{i18n[lang].summary.selected} </span>
-                { value.map(file => ( <span>{file} </span> )) }
+                {value.map(file => (
+                  <span>{file} </span>
+                ))}
               </p>
-            :
-              <p id="file-uploader__summary">{ i18n[lang].summary.unselected }</p>
-            }
+            ) : (
+              <p id="file-uploader__summary">{i18n[lang].summary.unselected}</p>
+            )}
           </div>
 
-          { value.length > 0 ? value.map(file => (
-            <div
-              class="file-uploader__uploaded-file"
-              aria-label={`${i18n[lang].removeFile} ${file}.`}
-            >
-              <span>{file}</span>
-              <button onClick={(e) => this.removeFile(e)}>
-                <span>{i18n[lang].button.remove}</span>
-                <gcds-icon name="times" size="text" margin-left="200" />
-              </button>
-            </div>
-          )) : null }
+          {value.length > 0
+            ? value.map(file => (
+                <div
+                  class="file-uploader__uploaded-file"
+                  aria-label={`${i18n[lang].removeFile} ${file}.`}
+                >
+                  <span>{file}</span>
+                  <button onClick={e => this.removeFile(e)}>
+                    <span>{i18n[lang].button.remove}</span>
+                    <gcds-icon name="times" size="text" margin-left="200" />
+                  </button>
+                </div>
+              ))
+            : null}
         </div>
       </Host>
     );

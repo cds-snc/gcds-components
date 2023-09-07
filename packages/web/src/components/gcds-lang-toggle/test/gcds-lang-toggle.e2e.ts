@@ -17,7 +17,6 @@ describe('gcds-lang-toggle', () => {
  */
 
 describe('gcds-lang-toggle a11y tests', () => {
-
   // Links have discernible text
   it('Link name', async () => {
     const page = await newE2EPage();
@@ -25,8 +24,10 @@ describe('gcds-lang-toggle a11y tests', () => {
       <gcds-lang-toggle href="/fr/" lang="en"></gcds-lang-toggle>
       <gcds-lang-toggle href="/en/" lang="fr"></gcds-lang-toggle>
     `);
-    
-    const linkNameTest = new AxePuppeteer(page).withRules('link-name').analyze();
+
+    const linkNameTest = new AxePuppeteer(page)
+      .withRules('link-name')
+      .analyze();
     const results = await linkNameTest;
 
     expect(results.violations.length).toBe(0);

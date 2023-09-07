@@ -8,18 +8,18 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     current: {
       name: 'current',
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
 
@@ -30,12 +30,13 @@ export default {
       },
       table: {
         category: 'Slots | Fentes',
-      }
+      },
     },
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-nav-link
   href="${args.href}"
@@ -52,11 +53,11 @@ const Template = (args) => (`
 >
   ${args.default}
 </GcdsNavLink>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
   href: '#link',
   current: false,
-  default: "Nav link"
+  default: 'Nav link',
 };

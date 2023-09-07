@@ -42,7 +42,9 @@ describe('gcds-pagination', () => {
     `);
 
     const element = await page.find('[aria-current*=page]');
-    expect(element.getAttribute("href")).toEqual("?query=design system&idx=10&page=page_2#red");
+    expect(element.getAttribute('href')).toEqual(
+      '?query=design system&idx=10&page=page_2#red',
+    );
   });
 });
 
@@ -71,8 +73,10 @@ describe('gcds-pagination a11y tests', () => {
         previous-label="Previous"
       ></gcds-pagination>
     `);
-    
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -96,8 +100,10 @@ describe('gcds-pagination a11y tests', () => {
         previous-label="Previous"
       ></gcds-pagination>
     `);
-    
-    const colorContrastTest = new AxePuppeteer(page).withRules('link-name').analyze();
+
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('link-name')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);

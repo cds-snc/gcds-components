@@ -8,7 +8,6 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsDetails {
   @Element() el: HTMLElement;
 
-
   /**
    * Props
    */
@@ -21,7 +20,7 @@ export class GcdsDetails {
   /**
    * Defines if the details panel is open by default or not.
    */
-  @Prop({mutable: true, reflect: true}) open?: boolean = false;
+  @Prop({ mutable: true, reflect: true }) open?: boolean = false;
 
   render() {
     const { detailsTitle, open } = this;
@@ -31,11 +30,11 @@ export class GcdsDetails {
         <button
           aria-expanded={open.toString()}
           aria-controls="details__panel"
-          onClick={() => this.open = !open}
+          onClick={() => (this.open = !open)}
           class="details__summary"
           id="details__summary"
         >
-          { detailsTitle }
+          {detailsTitle}
         </button>
         <div
           id="details__panel"

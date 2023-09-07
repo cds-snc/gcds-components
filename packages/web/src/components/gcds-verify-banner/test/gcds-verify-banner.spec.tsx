@@ -1,10 +1,9 @@
 import { newSpecPage } from '@stencil/core/testing';
 
-jest.mock('../assets/canada-flag.svg', () => ("Canada Flag"));
-jest.mock('../assets/content-toggle-arrow.svg', () => ("Content Toggle Arrow"));
+jest.mock('../assets/canada-flag.svg', () => 'Canada Flag');
+jest.mock('../assets/content-toggle-arrow.svg', () => 'Content Toggle Arrow');
 
 import { GcdsVerifyBanner } from '../gcds-verify-banner';
-
 
 describe('gcds-verify-banner', () => {
   it('renders in EN', async () => {
@@ -102,8 +101,8 @@ describe('gcds-verify-banner', () => {
   });
 
   /**
-    * Fixed position test
-    */
+   * Fixed position test
+   */
 
   it('renders with position fixed', async () => {
     const page = await newSpecPage({
@@ -200,8 +199,8 @@ describe('gcds-verify-banner', () => {
   });
 
   /**
-    * Container width tests
-    */
+   * Container width tests
+   */
 
   it('renders container width full', async () => {
     const page = await newSpecPage({

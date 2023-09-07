@@ -1,6 +1,28 @@
-import { Component, Prop, Element, Method, Event, EventEmitter, Listen, State, Host, Watch, h } from '@stencil/core';
-import { assignLanguage, observerConfig, inheritAttributes } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import {
+  Component,
+  Prop,
+  Element,
+  Method,
+  Event,
+  EventEmitter,
+  Listen,
+  State,
+  Host,
+  Watch,
+  h,
+} from '@stencil/core';
+import {
+  assignLanguage,
+  observerConfig,
+  inheritAttributes,
+} from '../../utils/utils';
+import {
+  Validator,
+  defaultValidator,
+  ValidatorEntry,
+  getValidator,
+  requiredValidator,
+} from '../../validators';
 import { validateFieldsetElements } from '../../validators/fieldset-validators/fieldset-validators';
 import i18n from './i18n/i18n';
 
@@ -15,9 +37,7 @@ export class GcdsFieldset {
 
   private shadowElement?: HTMLElement;
 
-
   _validator: Validator<string> = defaultValidator;
-
 
   /**
    * Props
@@ -45,10 +65,10 @@ export class GcdsFieldset {
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
-      this.errorMessage = "";
+      this.errorMessage = '';
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
-    } else if (this.errorMessage == "") {
+    } else if (this.errorMessage == '') {
       this.hasError = false;
     }
   }
@@ -71,7 +91,7 @@ export class GcdsFieldset {
 
     if (this.disabled == true) {
       for (let i = 0; i < this.el.children.length; i++) {
-        this.el.children[i].setAttribute("disabled", "");
+        this.el.children[i].setAttribute('disabled', '');
       }
     }
   }
@@ -80,7 +100,7 @@ export class GcdsFieldset {
   handleDisabledChange(newValue: boolean, _oldValue: boolean) {
     if (_oldValue && newValue != _oldValue) {
       for (let i = 0; i < this.el.children.length; i++) {
-        this.el.children[i].removeAttribute("disabled");
+        this.el.children[i].removeAttribute('disabled');
       }
     }
   }
@@ -88,12 +108,14 @@ export class GcdsFieldset {
   /**
    * Array of validators
    */
-  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+  @Prop({ mutable: true }) validator: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
 
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
-      this.validateOn = "blur";
+      this.validateOn = 'blur';
     }
   }
 
@@ -108,8 +130,8 @@ export class GcdsFieldset {
   @State() hasError: boolean;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /**
@@ -136,12 +158,18 @@ export class GcdsFieldset {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.fieldsetId) && this._validator.errorMessage) {
+    if (
+      !this._validator.validate(this.fieldsetId) &&
+      this._validator.errorMessage
+    ) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsGroupError.emit(this.errorMessage);
-      this.gcdsError.emit({ id: `#${this.fieldsetId}`, message: `${this.legend} - ${this.errorMessage}` });
+      this.gcdsError.emit({
+        id: `#${this.fieldsetId}`,
+        message: `${this.legend} - ${this.errorMessage}`,
+      });
     } else {
-      this.errorMessage = "";
+      this.errorMessage = '';
       this.gcdsGroupErrorClear.emit();
       this.gcdsValid.emit({ id: `#${this.fieldsetId}` });
     }
@@ -149,7 +177,11 @@ export class GcdsFieldset {
 
   @Listen('gcdsBlur')
   blurValidate() {
-    if (this.validator && this.validateOn == "blur" && !this.el.matches(':focus-within')) {
+    if (
+      this.validator &&
+      this.validateOn == 'blur' &&
+      !this.el.matches(':focus-within')
+    ) {
       this.validate();
     }
   }
@@ -157,14 +189,17 @@ export class GcdsFieldset {
   /**
    * Event listener for gcds-fieldset errors
    */
-  @Listen('gcdsGroupError', { target: 'body'})
+  @Listen('gcdsGroupError', { target: 'body' })
   gcdsParentGroupError(e) {
-    if (e.srcElement == this.el && validateFieldsetElements(this.el, this.el.children).includes(false)) {
+    if (
+      e.srcElement == this.el &&
+      validateFieldsetElements(this.el, this.el.children).includes(false)
+    ) {
       this.hasError = true;
     }
   }
 
-  @Listen('gcdsGroupErrorClear', { target: 'body'})
+  @Listen('gcdsGroupErrorClear', { target: 'body' })
   gcdsParentGroupErrorClear(e) {
     if (e.srcElement == this.el && this.hasError) {
       this.hasError = false;
@@ -172,19 +207,19 @@ export class GcdsFieldset {
   }
 
   /**
-    * Emitted when the fieldset has a validation error.
-    */
+   * Emitted when the fieldset has a validation error.
+   */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-    * Emitted when the fieldset has a validation error.
-    */
+   * Emitted when the fieldset has a validation error.
+   */
   @Event() gcdsValid!: EventEmitter<object>;
 
-  @Listen("submit", { target: 'document' })
+  @Listen('submit', { target: 'document' })
   submitListener(e) {
-    if (e.target == this.el.closest("form")) {
-      if (this.validateOn && this.validateOn != "other") {
+    if (e.target == this.el.closest('form')) {
+      if (this.validateOn && this.validateOn != 'other') {
         this.validate();
       }
 
@@ -195,10 +230,10 @@ export class GcdsFieldset {
   }
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -217,7 +252,7 @@ export class GcdsFieldset {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, "fieldset");
+    requiredValidator(this.el, 'fieldset');
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
@@ -233,39 +268,57 @@ export class GcdsFieldset {
   }
 
   render() {
-    const { lang, fieldsetId, legend, required, errorMessage, hasError, hint, disabled, inheritedAttributes } = this;
+    const {
+      lang,
+      fieldsetId,
+      legend,
+      required,
+      errorMessage,
+      hasError,
+      hint,
+      disabled,
+      inheritedAttributes,
+    } = this;
 
     const fieldsetAttrs = {
       disabled,
-      ...inheritedAttributes
-    }
+      ...inheritedAttributes,
+    };
 
     if (errorMessage) {
-        fieldsetAttrs["aria-describedby"] = `error-message-${fieldsetId} ${fieldsetAttrs["aria-describedby"] ? ` ${fieldsetAttrs["aria-describedby"]}` : ""}`;
+      fieldsetAttrs['aria-describedby'] = `error-message-${fieldsetId} ${
+        fieldsetAttrs['aria-describedby']
+          ? ` ${fieldsetAttrs['aria-describedby']}`
+          : ''
+      }`;
     }
 
     return (
       <Host>
         <fieldset
-          class={`gcds-fieldset ${hasError ? "gcds-fieldset--error" : ''}`}
+          class={`gcds-fieldset ${hasError ? 'gcds-fieldset--error' : ''}`}
           id={fieldsetId}
           {...fieldsetAttrs}
-          aria-labelledby={hint ? `legend-${fieldsetId} hint-${fieldsetId}` : `legend-${fieldsetId}`}
+          aria-labelledby={
+            hint
+              ? `legend-${fieldsetId} hint-${fieldsetId}`
+              : `legend-${fieldsetId}`
+          }
           tabindex="-1"
-          ref={element => this.shadowElement = element as HTMLElement}
+          ref={element => (this.shadowElement = element as HTMLElement)}
         >
-          <legend
-            id={`legend-${fieldsetId}`}
-          >
+          <legend id={`legend-${fieldsetId}`}>
             {legend}
-            {required ?
+            {required ? (
               <strong class="legend__required">({i18n[lang].required})</strong>
-            : null }
+            ) : null}
           </legend>
 
           {hint ? <gcds-hint hint={hint} hint-id={fieldsetId} /> : null}
 
-          {errorMessage ? <gcds-error-message messageId={fieldsetId} message={errorMessage} /> : null}
+          {errorMessage ? (
+            <gcds-error-message messageId={fieldsetId} message={errorMessage} />
+          ) : null}
           <slot></slot>
         </fieldset>
       </Host>

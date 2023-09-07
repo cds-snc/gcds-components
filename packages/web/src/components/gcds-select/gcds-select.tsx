@@ -1,6 +1,28 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, State, Method, Host, h, Listen } from '@stencil/core';
-import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Prop,
+  Watch,
+  State,
+  Method,
+  Host,
+  h,
+  Listen,
+} from '@stencil/core';
+import {
+  assignLanguage,
+  inheritAttributes,
+  observerConfig,
+} from '../../utils/utils';
+import {
+  Validator,
+  defaultValidator,
+  ValidatorEntry,
+  getValidator,
+  requiredValidator,
+} from '../../validators';
 
 @Component({
   tag: 'gcds-select',
@@ -14,7 +36,6 @@ export class GcdsSelect {
   private shadowElement?: HTMLElement;
 
   _validator: Validator<string> = defaultValidator;
-
 
   /**
    * Props
@@ -64,10 +85,10 @@ export class GcdsSelect {
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
-      this.errorMessage = "";
+      this.errorMessage = '';
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
-    } else if (this.errorMessage == "") {
+    } else if (this.errorMessage == '') {
       this.hasError = false;
     }
   }
@@ -80,33 +101,35 @@ export class GcdsSelect {
   /**
    * Array of validators
    */
-  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+  @Prop({ mutable: true }) validator: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
 
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
-      this.validateOn = "blur";
+      this.validateOn = 'blur';
     }
   }
 
   /**
-  * Set event to call validator
-  */
+   * Set event to call validator
+   */
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
-  * Custom callback function on change event
-  */
+   * Custom callback function on change event
+   */
   @Prop() changeHandler: Function;
 
   /**
-  * Custom callback function on focus event
-  */
+   * Custom callback function on focus event
+   */
   @Prop() focusHandler: Function;
 
   /**
-  * Custom callback function on blur event
-  */
+   * Custom callback function on blur event
+   */
   @Prop() blurHandler: Function;
 
   /**
@@ -126,49 +149,48 @@ export class GcdsSelect {
   @State() inheritedAttributes: Object = {};
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
-
 
   /**
    * Events
    */
 
   /**
-    * Update value based on user selection.
-    */
+   * Update value based on user selection.
+   */
   @Event() gcdsSelectChange: EventEmitter;
 
   /**
-  * Emitted when the select has focus.
-  */
+   * Emitted when the select has focus.
+   */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = (e) => {
+  private onFocus = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
 
     this.gcdsFocus.emit();
-  }
+  };
 
   /**
    * Emitted when the select loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = (e) => {
+  private onBlur = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     } else {
-      if (this.validateOn == "blur") {
+      if (this.validateOn == 'blur') {
         this.validate();
       }
     }
 
     this.gcdsBlur.emit();
-  }
+  };
 
   /**
    * Call any active validators
@@ -177,27 +199,30 @@ export class GcdsSelect {
   async validate() {
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.selectId}`, message: `${this.label} - ${this.errorMessage}` });
+      this.gcdsError.emit({
+        id: `#${this.selectId}`,
+        message: `${this.label} - ${this.errorMessage}`,
+      });
     } else {
-      this.errorMessage = "";
-      this.gcdsValid.emit({ id: `#${this.selectId}` })
+      this.errorMessage = '';
+      this.gcdsValid.emit({ id: `#${this.selectId}` });
     }
   }
 
   /**
-    * Emitted when the select has a validation error.
-    */
+   * Emitted when the select has a validation error.
+   */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-    * Emitted when the select has a validation error.
-    */
+   * Emitted when the select has a validation error.
+   */
   @Event() gcdsValid!: EventEmitter<object>;
 
-  @Listen("submit", { target: 'document' })
+  @Listen('submit', { target: 'document' })
   submitListener(e) {
-    if (e.target == this.el.closest("form")) {
-      if (this.validateOn && this.validateOn != "other") {
+    if (e.target == this.el.closest('form')) {
+      if (this.validateOn && this.validateOn != 'other') {
         this.validate();
       }
 
@@ -207,7 +232,7 @@ export class GcdsSelect {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     if (this.changeHandler) {
       this.changeHandler(e);
     } else {
@@ -219,10 +244,10 @@ export class GcdsSelect {
   };
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -242,7 +267,7 @@ export class GcdsSelect {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, "select");
+    requiredValidator(this.el, 'select');
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
@@ -258,55 +283,73 @@ export class GcdsSelect {
   }
 
   render() {
-    const { lang, selectId, label, required, disabled, defaultValue, value, hint, errorMessage, inheritedAttributes, hasError } = this;
+    const {
+      lang,
+      selectId,
+      label,
+      required,
+      disabled,
+      defaultValue,
+      value,
+      hint,
+      errorMessage,
+      inheritedAttributes,
+      hasError,
+    } = this;
 
     const attrsSelect = {
       disabled,
       required,
       value,
-      ...inheritedAttributes
+      ...inheritedAttributes,
     };
 
     const attrsLabel = {
       label,
       required,
-    }
+    };
 
     if (hint || errorMessage) {
-      const hintID = hint ? `hint-${selectId} ` : "";
-      const errorID = errorMessage ? `error-message-${selectId} ` : "";
+      const hintID = hint ? `hint-${selectId} ` : '';
+      const errorID = errorMessage ? `error-message-${selectId} ` : '';
 
-      attrsSelect["aria-describedby"] = `${hintID}${errorID}${attrsSelect["aria-describedby"] ? `${attrsSelect["aria-describedby"]}` : ""}`;
+      attrsSelect['aria-describedby'] = `${hintID}${errorID}${
+        attrsSelect['aria-describedby']
+          ? `${attrsSelect['aria-describedby']}`
+          : ''
+      }`;
     }
 
     return (
       <Host>
-        <div class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
-          <gcds-label
-            {...attrsLabel}
-            label-for={selectId}
-            lang={lang}
-          />
+        <div
+          class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${
+            hasError ? 'gcds-error' : ''
+          }`}
+        >
+          <gcds-label {...attrsLabel} label-for={selectId} lang={lang} />
 
-          {hint ? <gcds-hint hint={hint} hint-id={selectId} />: null}
+          {hint ? <gcds-hint hint={hint} hint-id={selectId} /> : null}
 
-          {errorMessage ?
+          {errorMessage ? (
             <gcds-error-message messageId={selectId} message={errorMessage} />
-          : null}
+          ) : null}
 
           <select
             {...attrsSelect}
             id={selectId}
             name={selectId}
-            onBlur={(e) => this.onBlur(e)}
-            onFocus={(e) => this.onFocus(e)}
-            onChange={(e) => this.handleChange(e)}
+            onBlur={e => this.onBlur(e)}
+            onFocus={e => this.onFocus(e)}
+            onChange={e => this.handleChange(e)}
             aria-invalid={hasError ? 'true' : 'false'}
-            ref={element => this.shadowElement = element as HTMLElement}
+            ref={element => (this.shadowElement = element as HTMLElement)}
           >
-            { defaultValue ?
-              <option value="" disabled selected>{defaultValue}</option>
-            : null }
+            {defaultValue ? (
+              <option value="" disabled selected>
+                {defaultValue}
+              </option>
+            ) : null}
 
             <slot></slot>
           </select>

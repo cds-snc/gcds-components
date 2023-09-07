@@ -12,17 +12,16 @@ describe('gcds-side-nav', () => {
 });
 
 /*
-* Accessibility tests
-* Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
-*/
+ * Accessibility tests
+ * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
+ */
 
 describe('gcds-side-nav a11y tests', () => {
-
   it('Colour contrast: topbar', async () => {
     const page = await newE2EPage();
     await page.setViewport({
       width: 1140,
-      height: 800
+      height: 800,
     });
     await page.setContent(`
       <gcds-top-nav label="top-nav" alignment="right" lang="en">
@@ -35,10 +34,11 @@ describe('gcds-side-nav a11y tests', () => {
           <gcds-nav-link href="#red">GitHub</gcds-nav-link>
           <gcds-nav-link href="#red">Slack</gcds-nav-link>
         </gcds-nav-group>
-      </gcds-top-nav>`
-    );
+      </gcds-top-nav>`);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
