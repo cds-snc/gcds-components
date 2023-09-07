@@ -1,0 +1,76 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Header from './gcds-header.stories';
+
+<Meta of={Header} name="Overview" />
+
+# Header<br/>`<gcds-header>`
+
+_Also called: global header, brand header._
+
+The header is the responsive Government of Canada branded header landmark.
+
+<Canvas
+  of={Header.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### Default
+
+<Canvas
+  of={Header.Default}
+  story={{ inline: true }}
+/>
+
+### Slots
+
+#### Skip-to-nav
+
+<Canvas
+  of={Header.SkipTo}
+  story={{ inline: true }}
+/>
+
+#### Banner
+
+<Canvas
+  of={Header.Banner}
+  story={{ inline: true }}
+/>
+
+#### Toggle
+
+<Canvas
+  of={Header.Toggle}
+  story={{ inline: true }}
+/>
+
+#### Menu
+
+<Canvas
+  of={Header.Menu}
+  story={{ inline: true }}
+/>
+
+#### Breadcrumb
+
+<Canvas
+  of={Header.Breadcrumbs}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/header/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-header" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=2043-5684&mode=design&t=6AQy5Cmm6YcqHAJm-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>
