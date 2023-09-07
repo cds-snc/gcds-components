@@ -1,0 +1,82 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Pagination from './gcds-pagination.stories';
+
+<Meta of={Pagination} name="Overview" />
+
+# Pagination<br/>`<gcds-pagination>`
+
+_Also called: page index, page navigation._
+
+Pagination is a division of content into multiple linked pages.
+
+<Canvas
+  of={Pagination.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### Display
+
+#### English
+
+#### Simple
+
+<Canvas
+  of={Pagination.SimpleEn}
+  story={{ inline: true }}
+/>
+
+#### List
+
+<Canvas
+  of={Pagination.ListEn}
+  story={{ inline: true }}
+/>
+
+#### French
+
+##### Simple
+
+<Canvas
+  of={Pagination.SimpleFr}
+  story={{ inline: true }}
+/>
+
+##### List
+
+<Canvas
+  of={Pagination.ListFr}
+  story={{ inline: true }}
+/>
+
+## Url object
+
+### ::offset
+
+<Canvas
+  of={Pagination.UrlOffset}
+  story={{ inline: true }}
+/>
+
+### ::match
+
+<Canvas
+  of={Pagination.UrlMatch}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/pagination/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-pagination" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=1431-4617&mode=design&t=6AQy5Cmm6YcqHAJm-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>

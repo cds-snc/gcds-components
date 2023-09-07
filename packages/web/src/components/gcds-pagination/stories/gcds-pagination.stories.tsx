@@ -117,8 +117,126 @@ const Template = (args) => (`
 </GcdsPagination>
 `).replace(/\s\snull\n/g, '');
 
+const TemplatePlayground = (args) => (`
+<!-- Web component code (Angular, Vue) -->
+<gcds-pagination
+  ${args.display != "list" ? `display="${args.display}"` : null}
+  label="${args.label}"
+  ${args.display == "list" ?
+  `${args.totalPages ? `total-pages="${args.totalPages}"` : null}
+  ${args.currentPage ? `current-page="${args.currentPage}"` : null}
+  ${args.url ? `url='${args.url}'` : null}`
+  :
+  `${args.previousHref ? `previous-href="${args.previousHref}"` : null}
+  ${args.previousLabel ? `previous-label="${args.previousLabel}"` : null}
+  ${args.nextHref ? `next-href="${args.nextHref}"` : null}
+  ${args.nextLabel ? `next-label="${args.nextLabel}"` : null}`
+  }
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+>
+</gcds-pagination>
+`).replace(/\s\snull\n/g, '');
+
 export const Default = Template.bind({});
 Default.args = {
+  display: 'list',
+  label: 'Pagination',
+  currentPage: '9',
+  totalPages: '15',
+  url: '',
+  previousHref: '#previous',
+  previousLabel: '',
+  nextHref: '#next',
+  nextLabel: '',
+  lang: 'en'
+};
+
+export const SimpleEn = Template.bind({});
+SimpleEn.args = {
+  display: 'simple',
+  label: 'Pagination',
+  currentPage: '',
+  totalPages: '',
+  url: '',
+  previousHref: '#previous',
+  previousLabel: 'Title of page',
+  nextHref: '#next',
+  nextLabel: '3 of 3',
+  lang: 'en'
+};
+
+export const SimpleFr = Template.bind({});
+SimpleFr.args = {
+  display: 'simple',
+  label: 'Pagination',
+  currentPage: '',
+  totalPages: '',
+  url: '',
+  previousHref: '#previous',
+  previousLabel: 'Titre de la page',
+  nextHref: '#next',
+  nextLabel: '3 du 3',
+  lang: 'fr'
+};
+
+export const ListEn = Template.bind({});
+ListEn.args = {
+  display: 'list',
+  label: 'Pagination',
+  currentPage: '9',
+  totalPages: '15',
+  url: '',
+  previousHref: '',
+  previousLabel: '',
+  nextHref: '',
+  nextLabel: '',
+  lang: 'en'
+};
+
+export const ListFr = Template.bind({});
+ListFr.args = {
+  display: 'list',
+  label: 'Pagination',
+  currentPage: '9',
+  totalPages: '15',
+  url: '',
+  previousHref: '',
+  previousLabel: '',
+  nextHref: '',
+  nextLabel: '',
+  lang: 'fr'
+};
+
+export const UrlOffset = Template.bind({});
+UrlOffset.args = {
+  display: 'list',
+  label: 'Pagination',
+  currentPage: '9',
+  totalPages: '15',
+  url: '{"queryStrings": { "querystring::offset": 10 }, "fragment": "main" }',
+  previousHref: '',
+  previousLabel: '',
+  nextHref: '',
+  nextLabel: '',
+  lang: 'en'
+};
+
+export const UrlMatch = Template.bind({});
+UrlMatch.args = {
+  display: 'list',
+  label: 'Pagination',
+  currentPage: '9',
+  totalPages: '15',
+  url: '{"queryStrings": { "querystring::match": 10 }, "fragment": "main" }',
+  previousHref: '',
+  previousLabel: '',
+  nextHref: '',
+  nextLabel: '',
+  lang: 'en'
+};
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
   display: 'list',
   label: 'Pagination',
   currentPage: '9',
