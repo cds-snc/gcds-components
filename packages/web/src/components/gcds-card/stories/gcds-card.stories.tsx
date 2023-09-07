@@ -111,6 +111,22 @@ const Template = (args) => (`
 </GcdsCard>
 `).replace(/\s\snull\n/g, '');
 
+const TemplatePlayground = (args) => (`
+<!-- Web component code (Angular, Vue) -->
+<gcds-card
+  card-title="${args.cardTitle}"
+  ${args.href ? `href="${args.href}"` : null}
+  ${args.type != 'link' ? `type="action"` : null}
+  ${args.titleElement != 'a' ? `title-element="${args.titleElement}"` : null}
+  ${args.tag ? `tag="${args.tag}"` : null}
+  ${args.description ? `description="${args.description}"` : null}
+  ${args.imgSrc ? `img-src="${args.imgSrc}"` : null}
+  ${args.imgAlt ? `img-alt="${args.imgAlt}"` : null}
+>
+  ${args.footer ? `<div slot="footer">${args.footer}</div>` : null}
+</gcds-card>
+`).replace(/\s\snull\n/g, '');
+
 export const Default = Template.bind({});
 Default.args = {
   cardTitle: 'Card title link',
@@ -118,6 +134,58 @@ Default.args = {
   type: 'link',
   titleElement: 'a',
   tag: 'Tag',
+  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  imgSrc: '',
+  imgAlt: '',
+  footer: '',
+};
+
+export const Link = Template.bind({});
+Link.args = {
+  cardTitle: 'Card title link',
+  href: '#',
+  type: 'link',
+  titleElement: 'a',
+  tag: '',
+  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  imgSrc: '',
+  imgAlt: '',
+  footer: '',
+};
+
+export const Action = Template.bind({});
+Action.args = {
+  cardTitle: 'Card title link',
+  href: '#',
+  type: 'action',
+  titleElement: 'a',
+  tag: '',
+  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  imgSrc: '',
+  imgAlt: '',
+  footer: 'Action button/link',
+};
+
+export const Image = Template.bind({});
+Image.args = {
+  cardTitle: 'Card title link',
+  href: '#',
+  type: 'link',
+  titleElement: 'a',
+  tag: '',
+  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  imgSrc: 'https://picsum.photos/480/270',
+  imgAlt: 'An image with the card component',
+  footer: '',
+};
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
+  cardTitle: 'Card title link',
+  href: '#',
+  type: 'link',
+  titleElement: 'a',
+  tag: '',
   description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: '',
   imgAlt: '',
