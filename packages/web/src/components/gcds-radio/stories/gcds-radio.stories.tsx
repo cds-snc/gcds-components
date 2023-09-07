@@ -132,8 +132,63 @@ const Template = (args) => (`
 </GcdsRadio>
 `).replace(/\s\snull\n/g, '');
 
+const TemplatePlayground = (args) => (`
+<!-- Web component code (Angular, Vue) -->
+<gcds-radio
+  radio-id="${args.radioId}"
+  label="${args.label}"
+  name="${args.name}"
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.checked ? `checked` : null}
+  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+>
+</gcds-radio>
+`).replace(/\s\snull\n/g, '');
+
 export const Default = Template.bind({});
 Default.args = {
+  radioId: 'radio',
+  label: 'Label',
+  name: 'radioDefault',
+  hint: 'Description or example to make the option clearer.',
+  required: false,
+  disabled: false,
+  value: '',
+  checked: false,
+  lang: 'en'
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  radioId: 'radioCDisabled',
+  label: 'Label',
+  name: 'radio',
+  hint: 'Description or example to make the option clearer.',
+  required: false,
+  disabled: true,
+  value: '',
+  checked: false,
+  lang: 'en'
+};
+
+export const Checked = Template.bind({});
+Checked.args = {
+  radioId: 'radioChecked',
+  label: 'Label',
+  name: 'radio',
+  hint: 'Description or example to make the option clearer.',
+  required: false,
+  disabled: false,
+  value: '',
+  checked: true,
+  lang: 'en'
+};
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
   radioId: 'radio',
   label: 'Label',
   name: 'radio',
