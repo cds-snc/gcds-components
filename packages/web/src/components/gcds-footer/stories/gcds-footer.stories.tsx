@@ -98,6 +98,7 @@ Default.args = {
 
 export const DisplayCompact = Template.bind({});
 DisplayCompact.args = {
+  display: 'compact',
   lang: 'en'
 };
 
@@ -117,7 +118,7 @@ DisplayContextual.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  display: 'full',
+  display: 'compact',
   contextualHeading: 'Contextual navigation',
   contextualLinks: '{ "Why GC Notify": "#", "Features": "#", "Activity on GC Notify": "#" }',
   subLinks: '',

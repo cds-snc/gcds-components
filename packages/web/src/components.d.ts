@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+export { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -1708,7 +1709,7 @@ declare namespace LocalJSX {
         /**
           * Display mode of the footer
          */
-        "display": 'compact' | 'full';
+        "display"?: 'compact' | 'full';
         /**
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */

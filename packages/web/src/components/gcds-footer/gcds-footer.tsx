@@ -17,14 +17,7 @@ export class GcdsFooter {
   /**
   * Display mode of the footer
   */
-  @Prop({ reflect: true, mutable: true }) display!: 'compact' | 'full';
-
-  @Watch('display')
-  validateDisplay(newValue: string) {
-    if (newValue != 'compact' && newValue != 'full') {
-      this.display = 'compact';
-    }
-  }
+  @Prop({ reflect: true, mutable: true }) display: 'compact' | 'full' = 'compact';
 
   /**
   * GcdsSignature - The variant of the Government of Canada wordmark
@@ -96,8 +89,6 @@ export class GcdsFooter {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
-
-    this.validateDisplay;
 
     if (this.contextualLinks && typeof this.contextualLinks == "string") {
       this.contextualLinksObject = JSON.parse(this.contextualLinks);
