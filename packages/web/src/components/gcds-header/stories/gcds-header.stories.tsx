@@ -214,6 +214,20 @@ Breadcrumbs.args = {
   lang: 'en'
 };
 
+export const All = Template.bind({});
+All.args = {
+  langHref: '#',
+  skipToHref: '#',
+  signatureHasLink: true,
+  signatureVariant: 'colour',
+  skipTo: 'Skip-to-nav slot',
+  banner: 'Banner slot',
+  toggle: 'Toggle slot',
+  menu: 'Menu slot',
+  breadcrumb: 'Breadcrumbs slot',
+  lang: 'en'
+};
+
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   langHref: '#',
