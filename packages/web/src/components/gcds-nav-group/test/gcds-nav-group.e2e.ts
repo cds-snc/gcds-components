@@ -4,7 +4,9 @@ const { AxePuppeteer } = require('@axe-core/puppeteer');
 describe('gcds-nav-group', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>');
+    await page.setContent(
+      '<gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>',
+    );
 
     const element = await page.find('gcds-nav-group');
     expect(element).toHaveClass('hydrated');
@@ -20,13 +22,19 @@ describe('gcds-nav-group', () => {
       </gcds-nav-group>
     `);
 
-    await page.keyboard.press("Tab");
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent.trim())).toEqual("Nav group");
+    await page.keyboard.press('Tab');
+    expect(
+      await page.evaluate(() =>
+        window.document.activeElement.shadowRoot.activeElement.textContent.trim(),
+      ),
+    ).toEqual('Nav group');
 
     await page.waitForChanges();
-    await page.keyboard.press("Enter");
-    await page.keyboard.press("Tab");
-    expect(await page.evaluate(() => window.document.activeElement.nodeName)).toEqual("GCDS-NAV-LINK");
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+    expect(
+      await page.evaluate(() => window.document.activeElement.nodeName),
+    ).toEqual('GCDS-NAV-LINK');
   });
 });
 
@@ -42,14 +50,18 @@ describe('gcds-nav-group a11y tests', () => {
       <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>
     `);
 
-    const defaultColorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const defaultColorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     let results = await defaultColorContrastTest;
 
     expect(results.violations.length).toBe(0);
 
-    await page.keyboard.press("Tab");
+    await page.keyboard.press('Tab');
 
-    const focusColorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const focusColorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     results = await focusColorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -61,7 +73,9 @@ describe('gcds-nav-group a11y tests', () => {
       <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>
     `);
 
-    const buttonNameTest = new AxePuppeteer(page).withRules('button-name').analyze();
+    const buttonNameTest = new AxePuppeteer(page)
+      .withRules('button-name')
+      .analyze();
     const results = await buttonNameTest;
 
     expect(results.violations.length).toBe(0);

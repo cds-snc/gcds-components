@@ -11,11 +11,10 @@ describe('gcds-alert', () => {
   });
 });
 
-
 /**
-   * Accessibility tests
-   * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
-   */
+ * Accessibility tests
+ * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
+ */
 
 describe('gcds-alert a11y tests', () => {
   /**
@@ -29,7 +28,9 @@ describe('gcds-alert a11y tests', () => {
       </gcds-alert>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -43,7 +44,9 @@ describe('gcds-alert a11y tests', () => {
       </gcds-alert>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -57,7 +60,9 @@ describe('gcds-alert a11y tests', () => {
       </gcds-alert>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -71,7 +76,9 @@ describe('gcds-alert a11y tests', () => {
       </gcds-alert>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);

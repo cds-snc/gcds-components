@@ -1,6 +1,17 @@
-import { Component, Element, Event, EventEmitter, Method, Host, Watch, Prop, State, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Host,
+  Watch,
+  Prop,
+  State,
+  h,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import { inheritAttributes} from '../../utils/utils';
+import { inheritAttributes } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -13,7 +24,6 @@ export class GcdsButton {
 
   private shadowElement?: HTMLElement;
 
-
   /**
    * Props
    */
@@ -21,8 +31,8 @@ export class GcdsButton {
   /**
    * Set button types
    */
+  // prettier-ignore
   @Prop({ mutable: true }) type: 'submit' | 'reset' | 'button' | 'link' = 'button';
-
   @Watch('type')
   validateType(newValue: string) {
     const values = ['submit', 'reset', 'button', 'link'];
@@ -35,7 +45,11 @@ export class GcdsButton {
   /**
    * Set the main style
    */
-  @Prop({ mutable: true }) buttonRole: 'primary' | 'secondary' | 'danger' | 'skip-to-content' = 'primary';
+  @Prop({ mutable: true }) buttonRole:
+    | 'primary'
+    | 'secondary'
+    | 'danger'
+    | 'skip-to-content' = 'primary';
 
   @Watch('buttonRole')
   validateButtonRole(newValue: string) {
@@ -89,7 +103,6 @@ export class GcdsButton {
    */
   @Prop() disabled: boolean;
 
-
   /**
    * Link props
    */
@@ -120,13 +133,13 @@ export class GcdsButton {
   @Prop() clickHandler: Function;
 
   /**
-  * Custom callback function on focus event
-  */
+   * Custom callback function on focus event
+   */
   @Prop() focusHandler: Function;
 
   /**
-  * Custom callback function on blur event
-  */
+   * Custom callback function on blur event
+   */
   @Prop() blurHandler: Function;
 
   /**
@@ -135,10 +148,9 @@ export class GcdsButton {
   @State() inheritedAttributes: Object = {};
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
-
 
   /**
    * Events
@@ -150,15 +162,15 @@ export class GcdsButton {
   @Event() gcdsFocus!: EventEmitter<void>;
 
   /**
-    * Emitted when the button loses focus.
-    */
+   * Emitted when the button loses focus.
+   */
   @Event() gcdsBlur!: EventEmitter<void>;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -182,8 +194,8 @@ export class GcdsButton {
   }
 
   /**
-    * Focus element
-    */
+   * Focus element
+   */
   @Method()
   async focusElement() {
     this.shadowElement.focus();
@@ -215,49 +227,66 @@ export class GcdsButton {
 
     // Has any inherited attributes changed on click
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-  }
+  };
 
-  private onFocus = (e) => {
+  private onFocus = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
 
     this.gcdsFocus.emit();
-  }
+  };
 
-  private onBlur = (e) => {
+  private onBlur = e => {
     if (this.blurHandler) {
       this.blurHandler(e);
     }
 
     this.gcdsBlur.emit();
-  }
+  };
 
   render() {
-    const { type, buttonRole, buttonStyle, size, buttonId, disabled, lang, name, href, rel, target, download, inheritedAttributes } = this;
-
-    const Tag = type != 'link' ? 'button' : 'a';
-    const attrs = (Tag === 'button') ? {
-      type: type,
-      ariaDisabled: disabled,
-      name
-    } : {
+    const {
+      type,
+      buttonRole,
+      buttonStyle,
+      size,
+      buttonId,
+      disabled,
+      lang,
+      name,
       href,
       rel,
       target,
-      download
-    };
+      download,
+      inheritedAttributes,
+    } = this;
+
+    const Tag = type != 'link' ? 'button' : 'a';
+    const attrs =
+      Tag === 'button'
+        ? {
+            type: type,
+            ariaDisabled: disabled,
+            name,
+          }
+        : {
+            href,
+            rel,
+            target,
+            download,
+          };
 
     return (
       <Host>
         <Tag
           {...attrs}
           id={buttonId}
-          onBlur={(e) => this.onBlur(e)}
-          onFocus={(e) => this.onFocus(e)}
-          onClick={(e) => this.handleClick(e)}
+          onBlur={e => this.onBlur(e)}
+          onFocus={e => this.onFocus(e)}
+          onClick={e => this.handleClick(e)}
           class={`button--role-${buttonRole} button--${buttonStyle} button--${size}`}
-          ref={element => this.shadowElement = element as HTMLElement}
+          ref={element => (this.shadowElement = element as HTMLElement)}
           {...inheritedAttributes}
           part="button"
         >
@@ -265,13 +294,15 @@ export class GcdsButton {
 
           <slot></slot>
 
-          { type === 'link' && target === '_blank' ?
+          {type === 'link' && target === '_blank' ? (
             <gcds-icon
               name="external-link"
               label={i18n[lang].label}
               margin-left="200"
             />
-          : <slot name="right"></slot> }
+          ) : (
+            <slot name="right"></slot>
+          )}
         </Tag>
       </Host>
     );

@@ -20,15 +20,15 @@ export class GcdsLangToggle {
   @Prop({ reflect: true, mutable: false }) href!: string;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }

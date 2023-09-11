@@ -1,4 +1,7 @@
-import { langProp, validatorProps } from '../../../utils/storybook/component-properties';
+import {
+  langProp,
+  validatorProps,
+} from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Fieldset',
@@ -6,8 +9,8 @@ export default {
   parameters: {
     actions: {
       argTypesRegex: '^gcds.*',
-      handles: ['GroupError', 'GroupErrorClear']
-    }
+      handles: ['GroupError', 'GroupErrorClear'],
+    },
   },
 
   argTypes: {
@@ -17,27 +20,27 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     legend: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     disabled: {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
     errorMessage: {
@@ -45,21 +48,21 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     hint: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     required: {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
     ...validatorProps,
@@ -70,18 +73,19 @@ export default {
       action: 'GroupError',
       table: {
         category: 'Events | Événements',
-      }
+      },
     },
     gcdsGroupErrorClear: {
       action: 'GroupErrorClear',
       table: {
         category: 'Events | Événements',
-      }
-    }
+      },
+    },
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-fieldset
   fieldset-id="${args.fieldsetId}"
@@ -90,8 +94,8 @@ const Template = (args) => (`
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
-  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <gcds-input input-id="form-input" label="Input label" hint="Hint / Example message." size="6"></gcds-input>
   <gcds-select select-id="form-select" label="Select label" hint="Hint / Example message." default-value="Select option.">
@@ -114,8 +118,8 @@ const Template = (args) => (`
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
-  ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <GcdsInput inputId="form-input" label="Input label" hint="Hint / Example message." size="6"></GcdsInput>
   <GcdsSelect selectId="form-select" label="Select label" hint="Hint / Example message." defaultValue="Select option.">
@@ -129,7 +133,7 @@ const Template = (args) => (`
     <option value="8">Option 8</option>
   </GcdsSelect>
 </GcdsFieldset>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -140,5 +144,5 @@ Default.args = {
   required: false,
   disabled: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };

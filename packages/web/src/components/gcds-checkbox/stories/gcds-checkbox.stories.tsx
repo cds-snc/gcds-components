@@ -1,4 +1,7 @@
-import { langProp, validatorProps } from '../../../utils/storybook/component-properties';
+import {
+  langProp,
+  validatorProps,
+} from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Checkbox',
@@ -6,8 +9,8 @@ export default {
   parameters: {
     actions: {
       argTypesRegex: '^gcds.*',
-      handles: ['change', 'focus', 'blur']
-    }
+      handles: ['change', 'focus', 'blur'],
+    },
   },
 
   argTypes: {
@@ -17,34 +20,34 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     name: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     checked: {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
     disabled: {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
     errorMessage: {
@@ -52,38 +55,38 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     hint: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     label: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     required: {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
     value: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     ...validatorProps,
@@ -94,24 +97,25 @@ export default {
       action: 'change',
       table: {
         category: 'Events | Événements',
-      }
+      },
     },
     gcdsFocus: {
       action: 'focus',
       table: {
         category: 'Events | Événements',
-      }
+      },
     },
     gcdsBlur: {
       action: 'blur',
       table: {
         category: 'Events | Événements',
-      }
+      },
     },
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-checkbox
   checkbox-id="${args.checkboxId}"
@@ -123,8 +127,8 @@ const Template = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
-  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-checkbox>
 
@@ -139,11 +143,11 @@ const Template = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
-  ${args.validateOn != "blur" ? `validate)n="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.validateOn != 'blur' ? `validate)n="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsCheckbox>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -157,5 +161,5 @@ Default.args = {
   value: '',
   checked: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };

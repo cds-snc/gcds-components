@@ -17,7 +17,6 @@ describe('gcds-button', () => {
  */
 
 describe('gcds-button a11y tests', () => {
-
   it('Colour contrast: Primary button-role, button-styles', async () => {
     const page = await newE2EPage();
     await page.setContent(`
@@ -31,7 +30,9 @@ describe('gcds-button a11y tests', () => {
       <gcds-button button-role="primary" button-style="text-only" disabled>Button Label</gcds-button>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -50,7 +51,9 @@ describe('gcds-button a11y tests', () => {
       <gcds-button button-role="secondary" button-style="text-only" disabled>Button Label</gcds-button>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -69,11 +72,13 @@ describe('gcds-button a11y tests', () => {
       <gcds-button button-role="danger" button-style="text-only" disabled>Button Label</gcds-button>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
-  })
+  });
 
   it('Colour contrast: Button focus state', async () => {
     const page = await newE2EPage();
@@ -81,20 +86,26 @@ describe('gcds-button a11y tests', () => {
       <gcds-button>Button Label</gcds-button>
     `);
 
-    await page.keyboard.press("Tab");
+    await page.keyboard.press('Tab');
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
-  })
+  });
 
   // Buttons have discernible text
   it('Button name', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-button button-role="primary" button-style="solid">Button Label</gcds-button>');
+    await page.setContent(
+      '<gcds-button button-role="primary" button-style="solid">Button Label</gcds-button>',
+    );
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('button-name').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('button-name')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -103,9 +114,13 @@ describe('gcds-button a11y tests', () => {
   // Links have discernible text
   it('Link name', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-button type="link" href="#" button-role="primary" button-style="solid">Button Label</gcds-button>');
+    await page.setContent(
+      '<gcds-button type="link" href="#" button-role="primary" button-style="solid">Button Label</gcds-button>',
+    );
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('link-name').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('link-name')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -116,21 +131,33 @@ describe('gcds-button a11y tests', () => {
     const page = await newE2EPage();
     await page.setContent('<gcds-button>Button Label</gcds-button>');
 
-    const buttonText = await (await page.find('gcds-button >>> button')).innerText;
+    const buttonText = await (
+      await page.find('gcds-button >>> button')
+    ).innerText;
 
-    await page.keyboard.press("Tab");
+    await page.keyboard.press('Tab');
 
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.textContent)).toEqual(buttonText);
+    expect(
+      await page.evaluate(
+        () => window.document.activeElement.shadowRoot.textContent,
+      ),
+    ).toEqual(buttonText);
   });
 
   it('Keyboard focus: link', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-button type="link" href="#">Link Label</gcds-button>');
+    await page.setContent(
+      '<gcds-button type="link" href="#">Link Label</gcds-button>',
+    );
 
     const linkText = await (await page.find('gcds-button >>> a')).innerText;
 
-    await page.keyboard.press("Tab");
+    await page.keyboard.press('Tab');
 
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.textContent)).toEqual(linkText);
+    expect(
+      await page.evaluate(
+        () => window.document.activeElement.shadowRoot.textContent,
+      ),
+    ).toEqual(linkText);
   });
 });

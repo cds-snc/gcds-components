@@ -1,6 +1,28 @@
-import { Component, Element, Event, Watch, EventEmitter, State, Method, Host, Prop, h, Listen } from '@stencil/core';
-import { assignLanguage, inheritAttributes, observerConfig } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import {
+  Component,
+  Element,
+  Event,
+  Watch,
+  EventEmitter,
+  State,
+  Method,
+  Host,
+  Prop,
+  h,
+  Listen,
+} from '@stencil/core';
+import {
+  assignLanguage,
+  inheritAttributes,
+  observerConfig,
+} from '../../utils/utils';
+import {
+  Validator,
+  defaultValidator,
+  ValidatorEntry,
+  getValidator,
+  requiredValidator,
+} from '../../validators';
 
 @Component({
   tag: 'gcds-input',
@@ -14,7 +36,6 @@ export class GcdsInput {
   private shadowElement?: HTMLElement;
 
   _validator: Validator<string> = defaultValidator;
-
 
   /**
    * Props
@@ -38,10 +59,10 @@ export class GcdsInput {
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
-      this.errorMessage = "";
+      this.errorMessage = '';
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
-    } else if (this.errorMessage == "") {
+    } else if (this.errorMessage == '') {
       this.hasError = false;
     }
   }
@@ -80,6 +101,7 @@ export class GcdsInput {
   /**
    * Set Input types
    */
+  // prettier-ignore
   @Prop() type?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
 
   /**
@@ -110,12 +132,14 @@ export class GcdsInput {
   /**
    * Array of validators
    */
-  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+  @Prop({ mutable: true }) validator: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
 
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
-      this.validateOn = "blur";
+      this.validateOn = 'blur';
     }
   }
 
@@ -141,78 +165,80 @@ export class GcdsInput {
   }
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
-
 
   /**
    * Events
    */
 
   /**
-    * Emitted when the input has focus.
-    */
+   * Emitted when the input has focus.
+   */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = (e) => {
+  private onFocus = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
 
     this.gcdsFocus.emit();
-  }
+  };
 
   /**
-    * Emitted when the input loses focus.
-    */
+   * Emitted when the input loses focus.
+   */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = (e) => {
+  private onBlur = e => {
     if (this.blurHandler) {
       this.blurHandler(e);
     } else {
-      if (this.validateOn == "blur") {
+      if (this.validateOn == 'blur') {
         this.validate();
       }
     }
 
     this.gcdsBlur.emit();
-  }
+  };
 
   /**
-    * Update value based on user input.
-    */
+   * Update value based on user input.
+   */
   @Event() gcdsChange: EventEmitter;
 
   /**
-    * Call any active validators
-    */
+   * Call any active validators
+   */
   @Method()
   async validate() {
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.inputId}`, message: `${this.label} - ${this.errorMessage}` });
+      this.gcdsError.emit({
+        id: `#${this.inputId}`,
+        message: `${this.label} - ${this.errorMessage}`,
+      });
     } else {
-      this.errorMessage = "";
-      this.gcdsValid.emit({ id: `#${this.inputId}` })
+      this.errorMessage = '';
+      this.gcdsValid.emit({ id: `#${this.inputId}` });
     }
   }
 
   /**
-    * Emitted when the input has a validation error.
-    */
+   * Emitted when the input has a validation error.
+   */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-    * Emitted when the input has a validation error.
-    */
+   * Emitted when the input has a validation error.
+   */
   @Event() gcdsValid!: EventEmitter<object>;
 
-  @Listen("submit", { target: 'document' })
+  @Listen('submit', { target: 'document' })
   submitListener(e) {
-    if (e.target == this.el.closest("form")) {
-      if (this.validateOn && this.validateOn != "other") {
+    if (e.target == this.el.closest('form')) {
+      if (this.validateOn && this.validateOn != 'other') {
         this.validate();
       }
 
@@ -234,10 +260,10 @@ export class GcdsInput {
   }
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -257,13 +283,15 @@ export class GcdsInput {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, "input", this.type);
+    requiredValidator(this.el, 'input', this.type);
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
     }
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, ['placeholder']);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
+      'placeholder',
+    ]);
   }
 
   componentWillUpdate() {
@@ -273,12 +301,27 @@ export class GcdsInput {
   }
 
   render() {
-    const { disabled, errorMessage, hideLabel, hint, inputId, label, required, size, type, value, hasError, autocomplete, inheritedAttributes, lang } = this;
+    const {
+      disabled,
+      errorMessage,
+      hideLabel,
+      hint,
+      inputId,
+      label,
+      required,
+      size,
+      type,
+      value,
+      hasError,
+      autocomplete,
+      inheritedAttributes,
+      lang,
+    } = this;
 
     // Use max-width instead of size attribute to keep field responsive
     const style = {
-      maxWidth: `${size * 1.5}ch`
-    }
+      maxWidth: `${size * 1.5}ch`,
+    };
 
     const attrsInput = {
       disabled,
@@ -286,23 +329,31 @@ export class GcdsInput {
       type,
       value,
       autocomplete,
-      ...inheritedAttributes
+      ...inheritedAttributes,
     };
 
     const attrsLabel = {
       label,
       required,
-    }
+    };
 
     if (hint || errorMessage) {
-      const hintID = hint ? `hint-${inputId} ` : "";
-      const errorID = errorMessage ? `error-message-${inputId} ` : "";
-      attrsInput["aria-describedby"] = `${hintID}${errorID}${attrsInput["aria-describedby"] ? ` ${attrsInput["aria-describedby"]}` : ""}`;
+      const hintID = hint ? `hint-${inputId} ` : '';
+      const errorID = errorMessage ? `error-message-${inputId} ` : '';
+      attrsInput['aria-describedby'] = `${hintID}${errorID}${
+        attrsInput['aria-describedby']
+          ? ` ${attrsInput['aria-describedby']}`
+          : ''
+      }`;
     }
 
     return (
       <Host>
-        <div class={`gcds-input-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''}`}>
+        <div
+          class={`gcds-input-wrapper ${disabled ? 'gcds-disabled' : ''} ${
+            hasError ? 'gcds-error' : ''
+          }`}
+        >
           <gcds-label
             {...attrsLabel}
             hide-label={hideLabel}
@@ -312,23 +363,23 @@ export class GcdsInput {
 
           {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
 
-          {errorMessage ?
+          {errorMessage ? (
             <gcds-error-message messageId={inputId} message={errorMessage} />
-          : null}
+          ) : null}
 
           <input
             {...attrsInput}
             class={hasError ? 'gcds-error' : null}
             id={inputId}
             name={inputId}
-            onBlur={(e) => this.onBlur(e)}
-            onFocus={(e) => this.onFocus(e)}
-            onInput={(e) => this.handleChange(e)}
+            onBlur={e => this.onBlur(e)}
+            onFocus={e => this.onFocus(e)}
+            onInput={e => this.handleChange(e)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={size}
             style={size ? style : null}
-            ref={element => this.shadowElement = element as HTMLElement}
+            ref={element => (this.shadowElement = element as HTMLElement)}
           />
         </div>
       </Host>

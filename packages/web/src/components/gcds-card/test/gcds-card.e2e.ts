@@ -28,7 +28,9 @@ describe('gcds-card a11y tests', () => {
       <p slot="footer">Metadata</p>
     </gcds-card>`);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
@@ -42,7 +44,9 @@ describe('gcds-card a11y tests', () => {
       href="#card"
     ></gcds-card>`);
 
-    const linkNameTest = new AxePuppeteer(page).withRules('link-name').analyze();
+    const linkNameTest = new AxePuppeteer(page)
+      .withRules('link-name')
+      .analyze();
     const results = await linkNameTest;
 
     expect(results.violations.length).toBe(0);
@@ -56,11 +60,18 @@ describe('gcds-card a11y tests', () => {
       href="#card"
     ></gcds-card>`);
 
-    const linkText = await (await page.find('gcds-card >>> .gcds-card__title')).innerText;
+    const linkText = await (
+      await page.find('gcds-card >>> .gcds-card__title')
+    ).innerText;
 
-    await page.keyboard.press("Tab");
+    await page.keyboard.press('Tab');
 
-    expect(await page.evaluate(() => window.document.activeElement.shadowRoot.activeElement.textContent)).toEqual(linkText);
+    expect(
+      await page.evaluate(
+        () =>
+          window.document.activeElement.shadowRoot.activeElement.textContent,
+      ),
+    ).toEqual(linkText);
   });
 
   it('Alt text - no img-alt prop', async () => {

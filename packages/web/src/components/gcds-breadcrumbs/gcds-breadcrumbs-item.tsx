@@ -8,7 +8,6 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsBreadcrumbsItem {
   @Element() el: HTMLElement;
 
-
   /**
    * Props
    */

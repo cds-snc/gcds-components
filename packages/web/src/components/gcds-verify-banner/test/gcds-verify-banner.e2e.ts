@@ -11,11 +11,10 @@ describe('gcds-verify-banner', () => {
   });
 });
 
-
 /**
-   * Accessibility tests
-   * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
-   */
+ * Accessibility tests
+ * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
+ */
 
 describe('gcds-verify-banner a11y tests', () => {
   /**
@@ -27,7 +26,9 @@ describe('gcds-verify-banner a11y tests', () => {
       <gcds-verify-banner></gcds-verify-banner>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
     const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);

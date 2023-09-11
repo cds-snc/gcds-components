@@ -1,5 +1,6 @@
 import { Component, Host, Element, Watch, State, Prop, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 import SignatureEn from './assets/sig-blk-en.svg';
 import SignatureFr from './assets/sig-blk-fr.svg';
@@ -18,8 +19,8 @@ export class GcdsSignature {
    */
 
   /**
-  * The type of graphic to render
-  */
+   * The type of graphic to render
+   */
   @Prop({ reflect: true, mutable: true }) type: 'signature' | 'wordmark';
 
   @Watch('type')
@@ -30,8 +31,8 @@ export class GcdsSignature {
   }
 
   /**
-  * The colour variant to render
-  */
+   * The colour variant to render
+   */
   @Prop({ reflect: true, mutable: true }) variant: 'colour' | 'white';
 
   @Watch('variant')
@@ -42,20 +43,20 @@ export class GcdsSignature {
   }
 
   /**
-  * Has link to canada.ca. Only applies to signature
-  */
+   * Has link to canada.ca. Only applies to signature
+   */
   @Prop({ mutable: true }) hasLink: boolean;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -74,7 +75,7 @@ export class GcdsSignature {
   }
 
   private get selectSVG() {
-    switch(this.type) {
+    switch (this.type) {
       case 'wordmark':
         if (this.lang == 'en') {
           return WordmarkEn;
@@ -93,13 +94,12 @@ export class GcdsSignature {
 
   render() {
     const { type, hasLink, lang, selectSVG } = this;
-    const linkText = lang == "en" ? "https://canada.ca/en.html" : "https://canada.ca/fr.html";
 
     return (
       <Host>
         {hasLink && type === 'signature' ? (
           // eslint-disable-next-line jsx-a11y/anchor-has-content
-          <a href={linkText} innerHTML={selectSVG}></a>
+          <a href={i18n[lang].link} innerHTML={selectSVG}></a>
         ) : (
           <div class="gcds-signature" innerHTML={selectSVG}></div>
         )}

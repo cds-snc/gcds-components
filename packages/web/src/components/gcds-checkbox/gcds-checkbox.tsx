@@ -1,6 +1,29 @@
-import { Component, Element, Event, EventEmitter, Listen, Method, State, Prop, Watch, Host, h } from '@stencil/core';
-import { assignLanguage, elementGroupCheck, inheritAttributes, observerConfig } from '../../utils/utils';
-import { Validator, defaultValidator, ValidatorEntry, getValidator, requiredValidator } from '../../validators';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Listen,
+  Method,
+  State,
+  Prop,
+  Watch,
+  Host,
+  h,
+} from '@stencil/core';
+import {
+  assignLanguage,
+  elementGroupCheck,
+  inheritAttributes,
+  observerConfig,
+} from '../../utils/utils';
+import {
+  Validator,
+  defaultValidator,
+  ValidatorEntry,
+  getValidator,
+  requiredValidator,
+} from '../../validators';
 
 @Component({
   tag: 'gcds-checkbox',
@@ -14,7 +37,6 @@ export class GcdsCheckbox {
   private shadowElement?: HTMLElement;
 
   _validator: Validator<unknown> = defaultValidator;
-
 
   /**
    * Props
@@ -67,10 +89,10 @@ export class GcdsCheckbox {
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
-      this.errorMessage = "";
+      this.errorMessage = '';
     } else if (!this.hasError && this.errorMessage) {
       this.hasError = true;
-    } else if (this.errorMessage == "") {
+    } else if (this.errorMessage == '') {
       this.hasError = false;
     }
   }
@@ -83,39 +105,41 @@ export class GcdsCheckbox {
   /**
    * Array of validators
    */
-  @Prop({ mutable: true }) validator: Array<string | ValidatorEntry | Validator<string>>;
+  @Prop({ mutable: true }) validator: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
 
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
-      this.validateOn = "blur";
+      this.validateOn = 'blur';
     }
   }
 
   /**
-  * Set event to call validator
-  */
+   * Set event to call validator
+   */
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
-  * Event listener for gcds-fieldset errors
-  */
-  @Listen('gcdsGroupError', { target: 'body'})
+   * Event listener for gcds-fieldset errors
+   */
+  @Listen('gcdsGroupError', { target: 'body' })
   gcdsGroupError(e) {
     if (e.srcElement.contains(this.el) && elementGroupCheck(this.name)) {
       this.hasError = true;
       this.parentError = e.detail;
     } else if (!elementGroupCheck(this.name)) {
       this.hasError = false;
-      this.parentError = "";
+      this.parentError = '';
     }
   }
 
-  @Listen('gcdsGroupErrorClear', { target: 'body'})
+  @Listen('gcdsGroupErrorClear', { target: 'body' })
   gcdsGroupErrorClear(e) {
     if (e.srcElement.contains(this.el) && this.hasError) {
       this.hasError = false;
-      this.parentError = "";
+      this.parentError = '';
     }
   }
 
@@ -125,13 +149,13 @@ export class GcdsCheckbox {
   @Prop() clickHandler: Function;
 
   /**
-  * Custom callback function on focus event
-  */
+   * Custom callback function on focus event
+   */
   @Prop() focusHandler: Function;
 
   /**
-  * Custom callback function on blur event
-  */
+   * Custom callback function on blur event
+   */
   @Prop() blurHandler: Function;
 
   /**
@@ -156,8 +180,8 @@ export class GcdsCheckbox {
   }
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /**
@@ -169,30 +193,30 @@ export class GcdsCheckbox {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = (e) => {
+  private onFocus = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
 
     this.gcdsFocus.emit();
-  }
+  };
 
   /**
    * Emitted when the checkbox loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = (e) => {
+  private onBlur = e => {
     if (this.blurHandler) {
       this.blurHandler(e);
     } else {
-      if (this.validateOn == "blur") {
+      if (this.validateOn == 'blur') {
         this.validate();
       }
     }
 
     this.gcdsBlur.emit();
-  }
+  };
 
   /**
    * Update value based on user input.
@@ -204,29 +228,35 @@ export class GcdsCheckbox {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.checked) && this._validator.errorMessage) {
+    if (
+      !this._validator.validate(this.checked) &&
+      this._validator.errorMessage
+    ) {
       this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({ id: `#${this.checkboxId}`, message: `${this.label} - ${this.errorMessage}` });
+      this.gcdsError.emit({
+        id: `#${this.checkboxId}`,
+        message: `${this.label} - ${this.errorMessage}`,
+      });
     } else {
-      this.errorMessage = "";
-      this.gcdsValid.emit({ id: `#${this.checkboxId}`});
+      this.errorMessage = '';
+      this.gcdsValid.emit({ id: `#${this.checkboxId}` });
     }
   }
 
   /**
-    * Emitted when the input has a validation error.
-    */
+   * Emitted when the input has a validation error.
+   */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-    * Emitted when the input has a validation error.
-    */
+   * Emitted when the input has a validation error.
+   */
   @Event() gcdsValid!: EventEmitter<object>;
 
-  @Listen("submit", { target: 'document' })
+  @Listen('submit', { target: 'document' })
   submitListener(e) {
-    if (e.target == this.el.closest("form")) {
-      if (this.validateOn && this.validateOn != "other") {
+    if (e.target == this.el.closest('form')) {
+      if (this.validateOn && this.validateOn != 'other') {
         this.validate();
       }
 
@@ -237,10 +267,10 @@ export class GcdsCheckbox {
   }
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -260,7 +290,7 @@ export class GcdsCheckbox {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, "checkbox");
+    requiredValidator(this.el, 'checkbox');
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
@@ -282,7 +312,21 @@ export class GcdsCheckbox {
   };
 
   render() {
-    const { lang, checkboxId, label, name, required, disabled, value, checked, hint, errorMessage, hasError, parentError, inheritedAttributes } = this;
+    const {
+      lang,
+      checkboxId,
+      label,
+      name,
+      required,
+      disabled,
+      value,
+      checked,
+      hint,
+      errorMessage,
+      hasError,
+      parentError,
+      inheritedAttributes,
+    } = this;
 
     const attrsInput = {
       name,
@@ -290,51 +334,66 @@ export class GcdsCheckbox {
       required,
       value,
       checked,
-      ...inheritedAttributes
+      ...inheritedAttributes,
     };
 
     const attrsLabel = {
       label,
       required,
-    }
+    };
 
     if (hint || errorMessage || parentError) {
-      const hintID = hint ? `hint-${checkboxId} ` : "";
-      const errorID = errorMessage ? `error-message-${checkboxId} ` : "";
-      const parentErrorID = parentError ? `parent-error-${checkboxId} ` : "";
-      attrsInput["aria-describedby"] = `${hintID}${errorID}${parentErrorID}${attrsInput["aria-describedby"] ? `${attrsInput["aria-describedby"]}` : ""}`;
+      const hintID = hint ? `hint-${checkboxId} ` : '';
+      const errorID = errorMessage ? `error-message-${checkboxId} ` : '';
+      const parentErrorID = parentError ? `parent-error-${checkboxId} ` : '';
+      attrsInput['aria-describedby'] = `${hintID}${errorID}${parentErrorID}${
+        attrsInput['aria-describedby']
+          ? `${attrsInput['aria-describedby']}`
+          : ''
+      }`;
     }
 
     if (hasError) {
-      attrsInput["aria-invalid"] = "true";
+      attrsInput['aria-invalid'] = 'true';
     }
 
     return (
       <Host>
-        <div class={`gcds-checkbox ${disabled ? 'gcds-checkbox--disabled' : ''} ${hasError ? 'gcds-checkbox--error' : ''}`}>
+        <div
+          class={`gcds-checkbox ${disabled ? 'gcds-checkbox--disabled' : ''} ${
+            hasError ? 'gcds-checkbox--error' : ''
+          }`}
+        >
           <input
             id={checkboxId}
             type="checkbox"
             {...attrsInput}
-            onBlur={(e) => this.onBlur(e)}
-            onFocus={(e) => this.onFocus(e)}
+            onBlur={e => this.onBlur(e)}
+            onFocus={e => this.onFocus(e)}
             onChange={() => this.onChange()}
-            onClick={(e) => { this.clickHandler && this.clickHandler(e) }}
-            ref={element => this.shadowElement = element as HTMLElement}
+            onClick={e => {
+              this.clickHandler && this.clickHandler(e);
+            }}
+            ref={element => (this.shadowElement = element as HTMLElement)}
           />
 
           <gcds-label
             {...attrsLabel}
             label-for={checkboxId}
             lang={lang}
-          >
-          </gcds-label>
+          ></gcds-label>
 
-          {hint ? <gcds-hint hint={hint} hint-id={checkboxId} />: null}
+          {hint ? <gcds-hint hint={hint} hint-id={checkboxId} /> : null}
 
-          {errorMessage ? <gcds-error-message messageId={checkboxId} message={errorMessage} /> : null}
+          {errorMessage ? (
+            <gcds-error-message messageId={checkboxId} message={errorMessage} />
+          ) : null}
 
-          {parentError ? <span id={`parent-error-${checkboxId}`} hidden>{parentError}</span> : null}
+          {parentError ? (
+            <span id={`parent-error-${checkboxId}`} hidden>
+              {parentError}
+            </span>
+          ) : null}
         </div>
       </Host>
     );

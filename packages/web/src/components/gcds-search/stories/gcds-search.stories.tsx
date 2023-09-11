@@ -10,31 +10,31 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '/sr/srb.html' }
-      }
+        defaultValue: { summary: '/sr/srb.html' },
+      },
     },
     name: {
       name: 'name',
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'q' }
-      }
+        defaultValue: { summary: 'q' },
+      },
     },
     placeholder: {
       name: 'placeholder',
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'Canada.ca' }
-      }
+        defaultValue: { summary: 'Canada.ca' },
+      },
     },
     method: {
       control: 'radio',
       options: ['get', 'post'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'get' }
+        defaultValue: { summary: 'get' },
       },
     },
     searchId: {
@@ -42,20 +42,23 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'search' }
-      }
+        defaultValue: { summary: 'search' },
+      },
     },
-    ...langProp
+    ...langProp,
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-search
   ${args.action != '/sr/srb.html' ? `action="${args.action}"` : null}
   ${args.method != 'get' ? `method="${args.method}"` : null}
   ${args.name != 'q' ? `name="${args.name}"` : null}
-  ${args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null}
+  ${
+    args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null
+  }
   ${args.searchId != 'search' ? `search-id="${args.searchId}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -66,24 +69,28 @@ const Template = (args) => (`
   ${args.action != '/sr/srb.html' ? `action="${args.action}"` : null}
   ${args.method != 'get' ? `method="${args.method}"` : null}
   ${args.name != 'q' ? `name="${args.name}"` : null}
-  ${args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null}
+  ${
+    args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null
+  }
   ${args.searchId != 'search' ? `searchId="${args.searchId}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsSearch>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args => `
 <gcds-search
   ${args.action != '/sr/srb.html' ? `action="${args.action}"` : null}
   ${args.method != 'get' ? `method="${args.method}"` : null}
   ${args.name != 'q' ? `name="${args.name}"` : null}
-  ${args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null}
+  ${
+    args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null
+  }
   ${args.searchId != 'search' ? `search-id="${args.searchId}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-search>
-`);
+`;
 
 // ------ Search default ------
 
@@ -94,7 +101,7 @@ Default.args = {
   name: 'q',
   placeholder: 'Canada.ca',
   searchId: 'search',
-  lang: 'en'
+  lang: 'en',
 };
 
 // ------ Search default ------
@@ -106,7 +113,7 @@ French.args = {
   name: 'q',
   placeholder: 'Canada.ca',
   searchId: 'search',
-  lang: 'fr'
+  lang: 'fr',
 };
 
 // ------ Search default ------
@@ -118,7 +125,7 @@ Custom.args = {
   name: 'search',
   placeholder: 'sitename',
   searchId: 'searchform',
-  lang: 'en'
+  lang: 'en',
 };
 
 // ------ Search events & props ------
@@ -130,7 +137,7 @@ Props.args = {
   name: 'q',
   placeholder: 'Canada.ca',
   searchId: 'search',
-  lang: 'en'
+  lang: 'en',
 };
 
 // ------ Search playground ------
@@ -142,5 +149,5 @@ Playground.args = {
   name: 'q',
   placeholder: 'Canada.ca',
   searchId: 'search',
-  lang: 'en'
+  lang: 'en',
 };

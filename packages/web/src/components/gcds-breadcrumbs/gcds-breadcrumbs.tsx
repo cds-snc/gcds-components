@@ -20,15 +20,15 @@ export class GcdsBreadcrumbs {
   @Prop({ reflect: false, mutable: false }) hideCanadaLink: boolean = false;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -48,18 +48,13 @@ export class GcdsBreadcrumbs {
 
     return (
       <Host>
-        <nav
-          aria-label={i18n[lang].label}
-          class="gcds-breadcrumbs"
-        >
+        <nav aria-label={i18n[lang].label} class="gcds-breadcrumbs">
           <ol class={hideCanadaLink ? '' : 'has-canada-link'}>
-            { !hideCanadaLink ?
-              <gcds-breadcrumbs-item
-                href={`https://www.canada.ca/${lang == 'fr' ? 'fr' : 'en'}.html`}
-              >
+            {!hideCanadaLink ? (
+              <gcds-breadcrumbs-item href={i18n[lang].link}>
                 Canada.ca
               </gcds-breadcrumbs-item>
-            : null }
+            ) : null}
 
             <slot></slot>
           </ol>

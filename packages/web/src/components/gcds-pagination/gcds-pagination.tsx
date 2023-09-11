@@ -1,4 +1,14 @@
-import { Component, Element, Prop, Event, EventEmitter, State, Watch, Host, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Prop,
+  Event,
+  EventEmitter,
+  State,
+  Watch,
+  Host,
+  h,
+} from '@stencil/core';
 
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
@@ -8,7 +18,7 @@ import { constructHref, constructClasses } from './utils/render';
   tag: 'gcds-pagination',
   styleUrl: 'gcds-pagination.css',
   shadow: false,
-  scoped: true
+  scoped: true,
 })
 export class GcdsPagination {
   @Element() el: HTMLElement;
@@ -23,7 +33,7 @@ export class GcdsPagination {
   /**
    * Navigation element label
    */
-  @Prop() display: "list" | "simple" = "list";
+  @Prop() display: 'list' | 'simple' = 'list';
 
   /**
    * Navigation element label
@@ -68,8 +78,8 @@ export class GcdsPagination {
   /**
    * List display - URL object to create query strings and fragment on links
    */
-   @Prop() url: string | object;
-   urlObject: object;
+  @Prop() url: string | object;
+  urlObject: object;
 
   /**
    * Convert url prop to object
@@ -77,9 +87,9 @@ export class GcdsPagination {
    */
   @Watch('url')
   urlChanged(newUrl: string | object) {
-    if (typeof newUrl == "string") {
+    if (typeof newUrl == 'string') {
       this.urlObject = JSON.parse(newUrl);
-    } else if (typeof newUrl == "object") {
+    } else if (typeof newUrl == 'object') {
       this.urlObject = newUrl;
     }
   }
@@ -92,12 +102,12 @@ export class GcdsPagination {
   @State() currentStep: number;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
   @Watch('lang')
   watchLang() {
-    if (this.display == "list") {
+    if (this.display == 'list') {
       this.configureListPagination();
     }
   }
@@ -111,72 +121,92 @@ export class GcdsPagination {
    */
   @Event() gcdsPageChange: EventEmitter<void>;
 
-  private onPageChange = (e) => {
+  private onPageChange = e => {
     if (this.pageChangeHandler) {
       this.pageChangeHandler(e);
     }
 
     this.gcdsPageChange.emit();
-  }
+  };
 
   /**
    * Function to constuct <li> and <a> tags for display="list" pagination
    */
-  private configurePaginationStep(page: number, end?: "next" | "previous" | null, mobile?: boolean) {
-
+  private configurePaginationStep(
+    page: number,
+    end?: 'next' | 'previous' | null,
+    mobile?: boolean,
+  ) {
     const linkAttrs = {
-      onClick: (e) => this.onPageChange(e),
-      href: this.urlObject ? constructHref(this.urlObject, page, end) : "javascript:void(0)",
-      "aria-label": !end ?
-        I18N[this.lang].pageNumberOf.replace('{#}', page).replace('{total}', this.totalPages).replace('{label}', this.label)
-      :
-        end == "next" ?
-          `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', ++page).replace('{total}', this.totalPages).replace('{label}', this.label)}`
-        :
-          `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf.replace('{#}', --page).replace('{total}', this.totalPages).replace('{label}', this.label)}`,
-    }
+      'onClick': e => this.onPageChange(e),
+      'href': this.urlObject
+        ? constructHref(this.urlObject, page, end)
+        : 'javascript:void(0)',
+      'aria-label': !end
+        ? I18N[this.lang].pageNumberOf
+            .replace('{#}', page)
+            .replace('{total}', this.totalPages)
+            .replace('{label}', this.label)
+        : end == 'next'
+        ? `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf
+            .replace('{#}', ++page)
+            .replace('{total}', this.totalPages)
+            .replace('{label}', this.label)}`
+        : `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf
+            .replace('{#}', --page)
+            .replace('{total}', this.totalPages)
+            .replace('{label}', this.label)}`,
+    };
 
     if (page == this.currentPage && !end) {
-      linkAttrs['aria-current'] = "page";
+      linkAttrs['aria-current'] = 'page';
     }
 
     if (end) {
-      return(
+      return (
         <li>
-          {end === "next" ?
+          {end === 'next' ? (
             <a
               {...linkAttrs}
-              class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}
+              class={
+                !mobile
+                  ? 'gcds-pagination-end-button'
+                  : 'gcds-pagination-end-button-mobile'
+              }
             >
               {I18N[this.lang].next}
               <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
             </a>
-          :
+          ) : (
             <a
               {...linkAttrs}
-              class={!mobile ? "gcds-pagination-end-button" : "gcds-pagination-end-button-mobile"}
+              class={
+                !mobile
+                  ? 'gcds-pagination-end-button'
+                  : 'gcds-pagination-end-button-mobile'
+              }
             >
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-              {mobile ? I18N[this.lang].previousMobile : I18N[this.lang].previous}
+              {mobile
+                ? I18N[this.lang].previousMobile
+                : I18N[this.lang].previous}
             </a>
-          }
+          )}
         </li>
       );
-    }
-    else {
+    } else {
       return (
         <li
-          class={page != 1 && page != this.totalPages ?  constructClasses(page, this.currentPage, this.totalPages) : "" }
+          class={
+            page != 1 && page != this.totalPages
+              ? constructClasses(page, this.currentPage, this.totalPages)
+              : ''
+          }
         >
-          <a
-            {...linkAttrs}
-          >
-            {page}
-          </a>
+          <a {...linkAttrs}>{page}</a>
         </li>
       );
     }
-
   }
 
   /**
@@ -187,8 +217,12 @@ export class GcdsPagination {
     this.mobilePrevNext = [];
 
     if (this.currentPage != 1) {
-      this.listitems.push(this.configurePaginationStep(this.currentPage, "previous"));
-      this.mobilePrevNext.push(this.configurePaginationStep(this.currentPage, "previous", true));
+      this.listitems.push(
+        this.configurePaginationStep(this.currentPage, 'previous'),
+      );
+      this.mobilePrevNext.push(
+        this.configurePaginationStep(this.currentPage, 'previous', true),
+      );
     }
 
     // Flags to see if ellipses already rendered
@@ -196,101 +230,112 @@ export class GcdsPagination {
     let nextEllipses = false;
 
     for (let i = 1; i <= this.totalPages; i++) {
-
       // Left side mobile ellipses
-      if (i == 2 && this.currentPage < 6 && this.currentPage > 3 && this.totalPages > 9) {
+      if (
+        i == 2 &&
+        this.currentPage < 6 &&
+        this.currentPage > 3 &&
+        this.totalPages > 9
+      ) {
         this.listitems.push(
-          <li
-            class={`gcds-pagination-list-mobile-ellipses`}
-            aria-hidden="true"
-          >
+          <li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true">
             <span class="gcds-pagination-list-ellipses">...</span>
-          </li>
+          </li>,
         );
-      }
-      else if (i == 2 && this.totalPages < 10 && this.totalPages > 5 && this.currentPage > 3) {
+      } else if (
+        i == 2 &&
+        this.totalPages < 10 &&
+        this.totalPages > 5 &&
+        this.currentPage > 3
+      ) {
         this.listitems.push(
-          <li
-            class={`gcds-pagination-list-mobile-ellipses`}
-            aria-hidden="true"
-          >
+          <li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true">
             <span class="gcds-pagination-list-ellipses">...</span>
-          </li>
+          </li>,
         );
       }
 
       if (
         i == this.currentPage ||
-        (i == 1 || i == this.totalPages) ||
-        (i >= (this.currentPage-2) && i <= (this.currentPage+2)) ||
+        i == 1 ||
+        i == this.totalPages ||
+        (i >= this.currentPage - 2 && i <= this.currentPage + 2) ||
         this.totalPages < 10
       ) {
         this.listitems.push(this.configurePaginationStep(i));
-      }
-      else if ((this.currentPage <= 5 && i <= 7) || (this.currentPage >= this.totalPages - 4 && i >= this.totalPages - 6)) {
+      } else if (
+        (this.currentPage <= 5 && i <= 7) ||
+        (this.currentPage >= this.totalPages - 4 && i >= this.totalPages - 6)
+      ) {
         this.listitems.push(this.configurePaginationStep(i));
-      }
-      else if ((this.currentPage == 5 && i == 2) || (this.currentPage == this.totalPages -4 && i == this.totalPages - 1)) {
+      } else if (
+        (this.currentPage == 5 && i == 2) ||
+        (this.currentPage == this.totalPages - 4 && i == this.totalPages - 1)
+      ) {
         this.listitems.push(this.configurePaginationStep(i));
-      }
-      else if (!previousEllipses && i < (this.currentPage-2)) {
+      } else if (!previousEllipses && i < this.currentPage - 2) {
         this.listitems.push(
-          <li
-            aria-hidden="true"
-          >
+          <li aria-hidden="true">
             <span class="gcds-pagination-list-ellipses">...</span>
-          </li>
+          </li>,
         );
 
         previousEllipses = true;
-      }
-      else if (!nextEllipses && i > (this.currentPage+2) && i < this.totalPages) {
+      } else if (
+        !nextEllipses &&
+        i > this.currentPage + 2 &&
+        i < this.totalPages
+      ) {
         this.listitems.push(
-          <li
-            aria-hidden="true"
-          >
+          <li aria-hidden="true">
             <span class="gcds-pagination-list-ellipses">...</span>
-          </li>
+          </li>,
         );
 
         nextEllipses = true;
       }
 
       // Right side mobile ellipses
-      if (i == this.totalPages - 1 && this.currentPage > this.totalPages - 5 && this.currentPage < this.totalPages - 2 && this.totalPages > 9) {
+      if (
+        i == this.totalPages - 1 &&
+        this.currentPage > this.totalPages - 5 &&
+        this.currentPage < this.totalPages - 2 &&
+        this.totalPages > 9
+      ) {
         this.listitems.push(
-          <li
-            class={`gcds-pagination-list-mobile-ellipses`}
-            aria-hidden="true"
-          >
+          <li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true">
             <span class="gcds-pagination-list-ellipses">...</span>
-          </li>
+          </li>,
+        );
+      } else if (
+        i == this.totalPages - 1 &&
+        this.totalPages < 10 &&
+        this.totalPages > 5 &&
+        this.currentPage < this.totalPages - 2
+      ) {
+        this.listitems.push(
+          <li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true">
+            <span class="gcds-pagination-list-ellipses">...</span>
+          </li>,
         );
       }
-      else if (i == this.totalPages - 1 && this.totalPages < 10 && this.totalPages > 5 && this.currentPage < this.totalPages - 2) {
-        this.listitems.push(
-          <li
-            class={`gcds-pagination-list-mobile-ellipses`}
-            aria-hidden="true"
-          >
-            <span class="gcds-pagination-list-ellipses">...</span>
-          </li>
-        );
-      }
-
     }
 
     if (this.currentPage != this.totalPages) {
-      this.listitems.push(this.configurePaginationStep(this.currentPage, "next"));
-      this.mobilePrevNext.push(this.configurePaginationStep(this.currentPage, "next", true));
+      this.listitems.push(
+        this.configurePaginationStep(this.currentPage, 'next'),
+      );
+      this.mobilePrevNext.push(
+        this.configurePaginationStep(this.currentPage, 'next', true),
+      );
     }
   }
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -304,86 +349,82 @@ export class GcdsPagination {
 
     this.updateLang();
 
-    if (this.url && typeof this.url == "string") {
+    if (this.url && typeof this.url == 'string') {
       this.urlObject = JSON.parse(this.url);
-    } else if (this.url && typeof this.url == "object") {
+    } else if (this.url && typeof this.url == 'object') {
       this.urlObject = this.url;
     }
 
-    if (this.display == "list") {
+    if (this.display == 'list') {
       this.configureListPagination();
     }
   }
 
   componentDidUpdate() {
-    if (this.display == "list") {
+    if (this.display == 'list') {
       this.configureListPagination();
     }
   }
 
   render() {
-    const { display, label, previousHref, previousLabel, nextHref, nextLabel, lang } = this;
+    const {
+      display,
+      label,
+      previousHref,
+      previousLabel,
+      nextHref,
+      nextLabel,
+      lang,
+    } = this;
 
     return (
-      <Host
-        role="navigation"
-        aria-label={label}
-      >
-        {display === "list" ?
+      <Host role="navigation" aria-label={label}>
+        {display === 'list' ? (
           <div>
-            <ul
-              class="gcds-pagination-list"
-            >
-              {this.listitems}
-            </ul>
-            <ul
-              class="gcds-pagination-list-mobile-prevnext"
-            >
+            <ul class="gcds-pagination-list">{this.listitems}</ul>
+            <ul class="gcds-pagination-list-mobile-prevnext">
               {this.mobilePrevNext}
             </ul>
           </div>
-        :
-          <ul
-            class="gcds-pagination-simple"
-          >
-            {previousHref &&
+        ) : (
+          <ul class="gcds-pagination-simple">
+            {previousHref && (
               <li class="gcds-pagination-simple-previous">
                 <a
                   href={previousHref}
-                  aria-label={`${I18N[lang].previousPage}${previousLabel ? `: ${previousLabel}` : ""}`}
-                  onClick={(e) => this.onPageChange(e)}
+                  aria-label={`${I18N[lang].previousPage}${
+                    previousLabel ? `: ${previousLabel}` : ''
+                  }`}
+                  onClick={e => this.onPageChange(e)}
                 >
                   <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     {I18N[lang].previous}
                   </div>
-                  <span>
-                    {previousLabel}
-                  </span>
+                  <span>{previousLabel}</span>
                 </a>
               </li>
-            }
-            {nextHref &&
+            )}
+            {nextHref && (
               <li class="gcds-pagination-simple-next">
                 <a
                   href={nextHref}
-                  aria-label={`${I18N[lang].nextPage}${nextLabel ? `: ${nextLabel}` : ""}`}
-                  onClick={(e) => this.onPageChange(e)}
+                  aria-label={`${I18N[lang].nextPage}${
+                    nextLabel ? `: ${nextLabel}` : ''
+                  }`}
+                  onClick={e => this.onPageChange(e)}
                 >
                   <div class="gcds-pagination-simple-text">
                     {I18N[lang].next}
                   </div>
-                  <span>
-                    {nextLabel}
-                  </span>
+                  <span>{nextLabel}</span>
                   <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
                 </a>
               </li>
-            }
+            )}
           </ul>
-        }
+        )}
       </Host>
     );
   }
-
 }

@@ -15,8 +15,8 @@ export class GcdsFooter {
    */
 
   /**
-  * Display mode of the footer
-  */
+   * Display mode of the footer
+   */
   @Prop({ reflect: true, mutable: true }) display!: 'compact' | 'full';
 
   @Watch('display')
@@ -27,18 +27,18 @@ export class GcdsFooter {
   }
 
   /**
-  * GcdsSignature - The variant of the Government of Canada wordmark
-  */
+   * GcdsSignature - The variant of the Government of Canada wordmark
+   */
   @Prop({ reflect: false, mutable: false }) wordmarkVariant: 'colour' | 'white';
 
   /**
-  * Heading for contextual slot and nav landmark
-  */
+   * Heading for contextual slot and nav landmark
+   */
   @Prop({ reflect: false, mutable: false }) contextualHeading: string;
 
   /**
-  * Object of list items for contextual band. Format: { link-label: link-href }
-  */
+   * Object of list items for contextual band. Format: { link-label: link-href }
+   */
   @Prop({ reflect: false, mutable: true }) contextualLinks: string | object;
   contextualLinksObject: object;
 
@@ -48,16 +48,16 @@ export class GcdsFooter {
    */
   @Watch('contextualLinks')
   contextualLinksChanged(newContextualLinks: string | object) {
-    if (typeof newContextualLinks == "string") {
+    if (typeof newContextualLinks == 'string') {
       this.contextualLinksObject = JSON.parse(newContextualLinks);
-    } else if (typeof newContextualLinks == "object") {
+    } else if (typeof newContextualLinks == 'object') {
       this.contextualLinksObject = newContextualLinks;
     }
   }
 
   /**
-  * Object of list items for sub-footer. Format: { link-label: link-href }
-  */
+   * Object of list items for sub-footer. Format: { link-label: link-href }
+   */
   @Prop({ reflect: false, mutable: true }) subLinks: string | object;
   subLinksObject: object;
 
@@ -67,23 +67,23 @@ export class GcdsFooter {
    */
   @Watch('subLinks')
   subLinksChanged(newSubLinks: string | object) {
-    if (typeof newSubLinks == "string") {
+    if (typeof newSubLinks == 'string') {
       this.subLinksObject = JSON.parse(newSubLinks);
-    } else if (typeof newSubLinks == "object") {
+    } else if (typeof newSubLinks == 'object') {
       this.subLinksObject = newSubLinks;
     }
   }
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -99,37 +99,50 @@ export class GcdsFooter {
 
     this.validateDisplay;
 
-    if (this.contextualLinks && typeof this.contextualLinks == "string") {
+    if (this.contextualLinks && typeof this.contextualLinks == 'string') {
       this.contextualLinksObject = JSON.parse(this.contextualLinks);
-    } else if (this.contextualLinks && typeof this.contextualLinks == "object") {
+    } else if (
+      this.contextualLinks &&
+      typeof this.contextualLinks == 'object'
+    ) {
       this.contextualLinksObject = this.contextualLinks;
     }
 
-    if (this.subLinks && typeof this.subLinks == "string") {
+    if (this.subLinks && typeof this.subLinks == 'string') {
       this.subLinksObject = JSON.parse(this.subLinks);
-    } else if (this.subLinks && typeof this.subLinks == "object") {
+    } else if (this.subLinks && typeof this.subLinks == 'object') {
       this.subLinksObject = this.subLinks;
     }
   }
 
   private get renderSignature() {
-    const signVariant = this.wordmarkVariant ? this.wordmarkVariant : "colour";
+    const signVariant = this.wordmarkVariant ? this.wordmarkVariant : 'colour';
 
     if (this.el.querySelector('[slot="signature"]')) {
       return <slot name="wordmark"></slot>;
     } else {
-      return (<div class="sub__wordmark">
+      return (
+        <div class="sub__wordmark">
           <gcds-signature
             type="wordmark"
             variant={signVariant}
             lang={this.lang}
           ></gcds-signature>
-        </div>);
+        </div>
+      );
     }
   }
 
   render() {
-    const { lang, display, contextualHeading, contextualLinksObject, subLinks, subLinksObject, renderSignature } = this;
+    const {
+      lang,
+      display,
+      contextualHeading,
+      contextualLinksObject,
+      subLinks,
+      subLinksObject,
+      renderSignature,
+    } = this;
     const govNav = I18N[lang].gov.menu;
     const themeNav = I18N[lang].themes.menu;
     const siteNav = I18N[lang].site.menu;
@@ -140,23 +153,19 @@ export class GcdsFooter {
     return (
       <Host role="contentinfo">
         <h2 class="gcds-footer__header">{I18N[lang].about}</h2>
-        {(contextualLinksObject && contextualHeading) &&
+        {contextualLinksObject && contextualHeading && (
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
               <nav aria-label={contextualHeading}>
-                <h3 class="contextual__header">
-                  {contextualHeading}
-                </h3>
+                <h3 class="contextual__header">{contextualHeading}</h3>
                 <ul class="contextual__list">
-                  {Object.keys(contextualLinksObject).map((key) => {
+                  {Object.keys(contextualLinksObject).map(key => {
                     if (contextualLinkCount < 3) {
                       contextualLinkCount++;
 
                       return (
                         <li>
-                          <a href={contextualLinksObject[key]}>
-                            {key}
-                          </a>
+                          <a href={contextualLinksObject[key]}>{key}</a>
                         </li>
                       );
                     }
@@ -164,62 +173,64 @@ export class GcdsFooter {
                 </ul>
               </nav>
             </div>
-          </div>}
-        {display === "full" ?
-          (<div class="gcds-footer__main">
+          </div>
+        )}
+        {display === 'full' ? (
+          <div class="gcds-footer__main">
             <div class="main__container">
               <nav class="main__govnav" aria-label={I18N[lang].gov.heading}>
                 <h3>{I18N[lang].gov.heading}</h3>
                 <ul class="govnav__list">
-                  {Object.keys(govNav).map((value) =>
+                  {Object.keys(govNav).map(value => (
                     <li>
                       <a href={govNav[value].link}>{govNav[value].text}</a>
                     </li>
-                  )}
+                  ))}
                 </ul>
               </nav>
-              <nav class="main__themenav" aria-label={I18N[lang].themes.heading}>
+              <nav
+                class="main__themenav"
+                aria-label={I18N[lang].themes.heading}
+              >
                 <h4 class="themenav__header">{I18N[lang].themes.heading}</h4>
                 <ul class="themenav__list">
-                  {Object.keys(themeNav).map((value) =>
+                  {Object.keys(themeNav).map(value => (
                     <li>
                       <a href={themeNav[value].link}>{themeNav[value].text}</a>
                     </li>
-                  )}
+                  ))}
                 </ul>
               </nav>
             </div>
-          </div>)
-        : null }
+          </div>
+        ) : null}
 
         <div class="gcds-footer__sub">
           <div class="sub__container">
             <nav aria-label={I18N[lang].site.heading}>
               <h3 class="sub__header">{I18N[lang].site.heading}</h3>
               <ul>
-                {subLinks ?
-                  Object.keys(subLinksObject).map((key) => {
-                    if (subLinkCount < 5) {
-                      subLinkCount++;
+                {subLinks
+                  ? Object.keys(subLinksObject).map(key => {
+                      if (subLinkCount < 5) {
+                        subLinkCount++;
 
+                        return (
+                          <li>
+                            <a href={subLinksObject[key]}>{key}</a>
+                          </li>
+                        );
+                      }
+                    })
+                  : Object.keys(siteNav).map(value => {
                       return (
                         <li>
-                          <a href={subLinksObject[key]}>
-                            {key}
+                          <a href={siteNav[value].link}>
+                            {siteNav[value].text}
                           </a>
                         </li>
                       );
-                    }
-                  })
-                :
-                  Object.keys(siteNav).map((value) => {
-                    return (
-                      <li>
-                        <a href={siteNav[value].link}>{siteNav[value].text}</a>
-                      </li>
-                    );
-                  })
-                }
+                    })}
               </ul>
             </nav>
 

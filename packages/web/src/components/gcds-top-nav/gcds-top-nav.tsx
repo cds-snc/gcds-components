@@ -1,4 +1,13 @@
-import { Component, Element, Host, Prop, State, Listen, Method, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Host,
+  Prop,
+  State,
+  Listen,
+  Method,
+  h,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 import I18N from './i18n/i18n';
@@ -29,30 +38,33 @@ export class GcdsTopNav {
   // @Prop() position: 'static' | 'sticky' = 'static';
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /**
-  * Queue of nav items for keyboard navigation
-  */
+   * Queue of nav items for keyboard navigation
+   */
   @State() navItems = [];
 
   /**
-  * Current size state based on widnow size
-  */
+   * Current size state based on widnow size
+   */
   @State() navSize: 'desktop' | 'mobile';
 
-  @Listen("focusout", { target: "document" })
+  @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
     if (!this.el.contains(e.relatedTarget)) {
-      if (this.navSize == "mobile") {
-        if (this.mobile.hasAttribute("open")) {
+      if (this.navSize == 'mobile') {
+        if (this.mobile.hasAttribute('open')) {
           await this.mobile.toggleNav();
         }
       } else {
         for (let i = 0; i < this.el.children.length; i++) {
-          if (this.el.children[i].nodeName == "GCDS-NAV-GROUP" && (this.el.children[i].hasAttribute("open"))) {
+          if (
+            this.el.children[i].nodeName == 'GCDS-NAV-GROUP' &&
+            this.el.children[i].hasAttribute('open')
+          ) {
             await (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
             await this.updateNavItemQueue(this.el);
           }
@@ -61,22 +73,25 @@ export class GcdsTopNav {
     }
   }
 
-  @Listen("keydown", { target: 'document' })
+  @Listen('keydown', { target: 'document' })
   async keyDownListener(e) {
     if (this.el.contains(document.activeElement)) {
       handleKeyDownNav(e, this.el, this.navItems);
     }
   }
 
-  @Listen("gcdsClick", { target: 'document' })
+  @Listen('gcdsClick', { target: 'document' })
   async gcdsClickListener(e) {
     if (this.el.contains(e.target)) {
       // Update tab queue when clicking mobile menu
-      if (e.target == this.el && this.navSize == "mobile") {
+      if (e.target == this.el && this.navSize == 'mobile') {
         await this.updateNavItemQueue(e.target);
 
-      // Update tab queue when clicking dropdown
-      } else if (e.target.nodeName == "GCDS-NAV-GROUP" && !e.target.hasAttribute("open")) {
+        // Update tab queue when clicking dropdown
+      } else if (
+        e.target.nodeName == 'GCDS-NAV-GROUP' &&
+        !e.target.hasAttribute('open')
+      ) {
         await this.updateNavItemQueue(e.target, true);
         (e.target as HTMLGcdsNavGroupElement).focusTrigger();
       }
@@ -84,10 +99,10 @@ export class GcdsTopNav {
   }
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -96,24 +111,24 @@ export class GcdsTopNav {
   }
 
   /*
-  * Get current navSize state
-  */
+   * Get current navSize state
+   */
   @Method()
   async getNavSize() {
     return this.navSize;
   }
 
   /*
-  * Pass new window size: desktop or mobile
-  */
+   * Pass new window size: desktop or mobile
+   */
   @Method()
   async updateNavSize(size) {
     this.navSize = size;
   }
 
   /*
-  * Update item queue for keyboard navigation based on passed element
-  */
+   * Update item queue for keyboard navigation based on passed element
+   */
   @Method()
   async updateNavItemQueue(el, includeElement?: boolean) {
     if (includeElement) {
@@ -123,7 +138,7 @@ export class GcdsTopNav {
       this.navItems = await getNavItems(el);
     }
 
-    if (el == this.el && this.navSize == "mobile") {
+    if (el == this.el && this.navSize == 'mobile') {
       this.navItems = [...this.navItems, this.mobile];
     }
   }
@@ -150,16 +165,16 @@ export class GcdsTopNav {
 
     await this.updateNavItemQueue(this.el);
 
-    mediaQuery.addEventListener("change", async function(e) {
+    mediaQuery.addEventListener('change', async function (e) {
       if (e.matches) {
-        nav.updateNavSize("desktop");
+        nav.updateNavSize('desktop');
         await nav.updateNavItemQueue(nav);
 
-        if (mobileTrigger.hasAttribute("open")) {
+        if (mobileTrigger.hasAttribute('open')) {
           mobileTrigger.toggleNav();
         }
       } else {
-        nav.updateNavSize("mobile");
+        nav.updateNavSize('mobile');
         await nav.updateNavItemQueue(nav);
       }
     });
@@ -179,7 +194,7 @@ export class GcdsTopNav {
             closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
             openTrigger="Menu"
             class="gcds-mobile-nav gcds-mobile-nav-topnav"
-            ref={element => this.mobile = element as HTMLGcdsNavGroupElement}
+            ref={element => (this.mobile = element as HTMLGcdsNavGroupElement)}
             lang={lang}
           >
             <slot name="home"></slot>

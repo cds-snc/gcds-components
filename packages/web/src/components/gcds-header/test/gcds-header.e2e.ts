@@ -17,15 +17,16 @@ describe('gcds-header', () => {
  */
 
 describe('gcds-header a11y tests', () => {
-
   // Banner is top level
   it('Top level banner', async () => {
     const page = await newE2EPage();
     await page.setContent(`
       <gcds-header></gcds-header>
     `);
-    
-    const topLevelTest = new AxePuppeteer(page).withRules('landmark-banner-is-top-level').analyze();
+
+    const topLevelTest = new AxePuppeteer(page)
+      .withRules('landmark-banner-is-top-level')
+      .analyze();
     const results = await topLevelTest;
 
     expect(results.violations.length).toBe(0);
