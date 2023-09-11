@@ -285,6 +285,19 @@ const TemplateTwoButtons = args =>
 </GcdsButton>
 `.replace(/ null/g, '');
 
+const TemplateBtnIcon = args =>
+  `
+<!-- Web component code (Angular, Vue) -->
+<gcds-button>
+  ${args.default} <gcds-icon name="${args.iconName}"></gcds-icon>
+</gcds-button>
+
+<!-- React code -->
+<GcdsButton>
+  ${args.default} <GcdsIcon name="${args.iconName}"></GcdsIcon>
+</GcdsButton>
+`.replace(/ null/g, '');
+
 const TemplatePlayground = args => `
 <gcds-button
   ${args.type != 'button' ? `type="${args.type}"` : null}
@@ -452,6 +465,14 @@ TextOnlySize.args = {
   btnTwoText: 'Text-only small',
   btnTwoSize: 'small',
   btnTwoStyle: 'text-only',
+};
+
+// ------ Button text-only ------
+
+export const BtnWithIcon = TemplateBtnIcon.bind({});
+BtnWithIcon.args = {
+  default: 'Close ',
+  iconName: 'times',
 };
 
 // ------ Button events & props ------
