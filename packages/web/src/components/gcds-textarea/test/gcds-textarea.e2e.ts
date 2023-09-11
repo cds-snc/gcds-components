@@ -5,17 +5,18 @@ describe('gcds-textarea', () => {
   it('renders', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" value="Textarea Value" />');
-    const element = await (await page.find('gcds-textarea textarea'));
+    await page.setContent(
+      '<gcds-textarea label="Label" textarea-id="textarea-renders" value="Textarea Value" />',
+    );
+    const element = await await page.find('gcds-textarea textarea');
     expect(element.textContent).toEqual('Textarea Value');
   });
 });
 
-
 /**
-   * Accessibility tests
-   * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
-   */
+ * Accessibility tests
+ * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
+ */
 
 describe('gcds-textarea a11y tests', () => {
   /**
@@ -24,8 +25,10 @@ describe('gcds-textarea a11y tests', () => {
   it('aria-invalid', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" error-message="Field required" />');
-    const element = await (await page.find('gcds-textarea textarea'));
+    await page.setContent(
+      '<gcds-textarea label="Label" textarea-id="textarea-renders" error-message="Field required" />',
+    );
+    const element = await await page.find('gcds-textarea textarea');
     expect(element.getAttribute('aria-invalid')).toEqual('true');
   });
   /**
@@ -36,12 +39,14 @@ describe('gcds-textarea a11y tests', () => {
     await page.setContent(`
       <gcds-textarea label="Label" textarea-id="textarea-renders" value="Testing the contrast" />
     `);
-    
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
-  }); 
+  });
 
   /**
    * Textarea keyboard focus
@@ -52,11 +57,15 @@ describe('gcds-textarea a11y tests', () => {
       <gcds-textarea label="Label" textarea-id="textarea-renders" />
     `);
 
-    const textareaField = await (await page.find('gcds-textarea textarea')).innerText;
+    const textareaField = await (
+      await page.find('gcds-textarea textarea')
+    ).innerText;
 
-    await page.keyboard.press("Tab");
+    await page.keyboard.press('Tab');
 
-    expect(await page.evaluate(() => window.document.activeElement.textContent)).toEqual(textareaField);
+    expect(
+      await page.evaluate(() => window.document.activeElement.textContent),
+    ).toEqual(textareaField);
   });
 
   /**
@@ -65,16 +74,22 @@ describe('gcds-textarea a11y tests', () => {
   it('textarea contains label', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" />');
-    const element = await (await page.find('gcds-textarea gcds-label'));
+    await page.setContent(
+      '<gcds-textarea label="Label" textarea-id="textarea-renders" />',
+    );
+    const element = await await page.find('gcds-textarea gcds-label');
     expect(element.getAttribute('id')).toEqual('label-for-textarea-renders');
   });
 
   it('input has aria-labelledby for label', async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<gcds-textarea label="Label" textarea-id="textarea-renders" />');
-    const element = await (await page.find('gcds-textarea textarea'));
-    expect(element.getAttribute('aria-labelledby')).toEqual('label-for-textarea-renders');
+    await page.setContent(
+      '<gcds-textarea label="Label" textarea-id="textarea-renders" />',
+    );
+    const element = await await page.find('gcds-textarea textarea');
+    expect(element.getAttribute('aria-labelledby')).toEqual(
+      'label-for-textarea-renders',
+    );
   });
 });

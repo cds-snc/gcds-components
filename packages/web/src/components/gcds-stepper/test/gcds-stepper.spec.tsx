@@ -17,8 +17,8 @@ describe('gcds-stepper', () => {
   });
 
   /**
-    * Renders current + total steps
-    */
+   * Renders current + total steps
+   */
   it('renders steps', async () => {
     const page = await newSpecPage({
       components: [GcdsStepper],
@@ -34,8 +34,8 @@ describe('gcds-stepper', () => {
   });
 
   /**
-    * Renders stepper in french
-    */
+   * Renders stepper in french
+   */
   it('renders stepper in french', async () => {
     const page = await newSpecPage({
       components: [GcdsStepper],

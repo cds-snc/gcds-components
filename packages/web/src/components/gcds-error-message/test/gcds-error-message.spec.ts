@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsErrorMessage} from '../gcds-error-message';
+import { GcdsErrorMessage } from '../gcds-error-message';
 
 describe('gcds-error-message', () => {
   it('renders', async () => {

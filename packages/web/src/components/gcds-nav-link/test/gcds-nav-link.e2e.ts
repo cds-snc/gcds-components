@@ -19,22 +19,30 @@ describe('gcds-nav-link', () => {
 describe('gcds-nav-link a11y tests', () => {
   it('Colour contrast', async () => {
     const page = await newE2EPage();
-    await page.setContent(`<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`);
+    await page.setContent(
+      `<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`,
+    );
 
-    const defaultColorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await defaultColorContrastTest;
+    const defaultColorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
+    const results = await defaultColorContrastTest;
 
     expect(results.violations.length).toBe(0);
 
-    await page.keyboard.press("Tab");
+    await page.keyboard.press('Tab');
   });
 
   it('Accessible link', async () => {
     const page = await newE2EPage();
-    await page.setContent(`<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`);
+    await page.setContent(
+      `<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`,
+    );
 
-    const buttonNameTest = new AxePuppeteer(page).withRules('link-name').analyze();
-    let results = await buttonNameTest;
+    const buttonNameTest = new AxePuppeteer(page)
+      .withRules('link-name')
+      .analyze();
+    const results = await buttonNameTest;
 
     expect(results.violations.length).toBe(0);
   });

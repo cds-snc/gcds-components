@@ -1,26 +1,26 @@
 const I18N = {
-  "en": {
+  en: {
     button: {
-      remove: "Remove",
-      upload: "Choose file",
+      remove: 'Remove',
+      upload: 'Choose file',
     },
     summary: {
-      selected: "Currently selected:",
-      unselected: "No file currently selected.",
+      selected: 'Currently selected:',
+      unselected: 'No file currently selected.',
     },
-    removeFile: "Remove file",
+    removeFile: 'Remove file',
   },
-  "fr": {
+  fr: {
     button: {
-      remove: "Supprimer",
-      upload: "Choisir un fichier",
+      remove: 'Supprimer',
+      upload: 'Choisir un fichier',
     },
     summary: {
-      selected: "Actuellement sélectionné:",
-      unselected: "Aucun fichier actuellement sélectionné.",
+      selected: 'Actuellement sélectionné:',
+      unselected: 'Aucun fichier actuellement sélectionné.',
     },
-    removeFile: "Supprimer le fichier",
-  }
-}
+    removeFile: 'Supprimer le fichier',
+  },
+};
 
 export default I18N;

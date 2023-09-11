@@ -22,7 +22,7 @@ describe('gcds-fieldset', () => {
     `);
 
     const element = await page.find('gcds-fieldset');
-    const elementChild = await element.find('gcds-radio')
+    const elementChild = await element.find('gcds-radio');
     expect(elementChild).toHaveAttribute('disabled');
   });
 });

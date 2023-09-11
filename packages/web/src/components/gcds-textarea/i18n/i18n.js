@@ -1,16 +1,16 @@
 const I18N = {
-  "en": {
+  en: {
     characters: {
-      allowed: "characters allowed",
-      left: "characters left",
+      allowed: 'characters allowed',
+      left: 'characters left',
     },
   },
-  "fr": {
+  fr: {
     characters: {
-      allowed: "caractères maximum",
-      left: "caractères restants",
+      allowed: 'caractères maximum',
+      left: 'caractères restants',
     },
-  }
-}
+  },
+};
 
 export default I18N;

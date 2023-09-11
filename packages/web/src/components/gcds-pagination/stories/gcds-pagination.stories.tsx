@@ -10,60 +10,60 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     display: {
       control: 'radio',
       options: ['list', 'simple'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'list' }
+        defaultValue: { summary: 'list' },
       },
     },
     nextHref: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     nextLabel: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     previousHref: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     previousLabel: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     totalPages: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     currentPage: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     url: {
@@ -72,50 +72,51 @@ export default {
       description: '{ "queryStrings": { "key": "value" }, "fragment": string }',
       table: {
         type: { summary: 'string/object' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     ...langProp,
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-pagination
-  ${args.display != "list" ? `display="${args.display}"` : null}
+  ${args.display != 'list' ? `display="${args.display}"` : null}
   label="${args.label}"
-  ${args.display == "list" ?
-  `${args.totalPages ? `total-pages="${args.totalPages}"` : null}
+  ${
+    args.display == 'list'
+      ? `${args.totalPages ? `total-pages="${args.totalPages}"` : null}
   ${args.currentPage ? `current-page="${args.currentPage}"` : null}
   ${args.url ? `url='${args.url}'` : null}`
-  :
-  `${args.previousHref ? `previous-href="${args.previousHref}"` : null}
+      : `${args.previousHref ? `previous-href="${args.previousHref}"` : null}
   ${args.previousLabel ? `previous-label="${args.previousLabel}"` : null}
   ${args.nextHref ? `next-href="${args.nextHref}"` : null}
   ${args.nextLabel ? `next-label="${args.nextLabel}"` : null}`
   }
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-pagination>
 
 <!-- React code -->
 <GcdsPagination
-  ${args.display != "list" ? `display="${args.display}"` : null}
+  ${args.display != 'list' ? `display="${args.display}"` : null}
   label="${args.label}"
-  ${args.display == "list" ?
-  `${args.totalPages ? `totalPages="${args.totalPages}"` : null}
+  ${
+    args.display == 'list'
+      ? `${args.totalPages ? `totalPages="${args.totalPages}"` : null}
   ${args.currentPage ? `currentPage="${args.currentPage}"` : null}
   ${args.url ? `url='${args.url}'` : null}`
-  :
-  `${args.previousHref ? `previousHref="${args.previousHref}"` : null}
+      : `${args.previousHref ? `previousHref="${args.previousHref}"` : null}
   ${args.previousLabel ? `previousLabel="${args.previousLabel}"` : null}
   ${args.nextHref ? `nextHref="${args.nextHref}"` : null}
   ${args.nextLabel ? `nextLabel="${args.nextLabel}"` : null}`
   }
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsPagination>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 const TemplatePlayground = (args) => (`
 <!-- Web component code (Angular, Vue) -->

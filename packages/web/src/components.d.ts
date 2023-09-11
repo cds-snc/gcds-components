@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+export { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -61,7 +62,10 @@ export namespace Components {
         /**
           * Set the main style
          */
-        "buttonRole": 'primary' | 'secondary' | 'danger' | 'skip-to-content';
+        "buttonRole": | 'primary'
+    | 'secondary'
+    | 'danger'
+    | 'skip-to-content';
         /**
           * Set the style variant
          */
@@ -201,7 +205,9 @@ export namespace Components {
         /**
           * Array of validators
          */
-        "validator": Array<string | ValidatorEntry | Validator<string>>;
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Value for an input element.
          */
@@ -219,11 +225,41 @@ export namespace Components {
         /**
           * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
          */
-        "margin"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "margin"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * Defines the container's padding.
          */
-        "padding"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "padding"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * Defines container size.
          */
@@ -309,7 +345,9 @@ export namespace Components {
         /**
           * Array of validators
          */
-        "validator": Array<string | ValidatorEntry | Validator<string>>;
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
     }
     interface GcdsFileUploader {
         /**
@@ -367,7 +405,9 @@ export namespace Components {
         /**
           * Array of validators
          */
-        "validator": Array<string | ValidatorEntry | Validator<string>>;
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Value for a file uploader element.
          */
@@ -399,7 +439,13 @@ export namespace Components {
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
          */
-        "alignContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        "alignContent"?: | 'center'
+    | 'end'
+    | 'space-around'
+    | 'space-between'
+    | 'space-evenly'
+    | 'start'
+    | 'stretch';
         /**
           * Aligns grid items along the block (column) axis
          */
@@ -425,11 +471,32 @@ export namespace Components {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "gap"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
-        "justifyContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        "justifyContent"?: | 'center'
+    | 'end'
+    | 'space-around'
+    | 'space-between'
+    | 'space-evenly'
+    | 'start'
+    | 'stretch';
         /**
           * Aligns grid items along the inline (row) axis
          */
@@ -437,7 +504,13 @@ export namespace Components {
         /**
           * Sets both the align-content + justify-content properties
          */
-        "placeContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        "placeContent"?: | 'center'
+    | 'end'
+    | 'space-around'
+    | 'space-between'
+    | 'space-evenly'
+    | 'start'
+    | 'stretch';
         /**
           * Sets both the align-items + justify-items properties
          */
@@ -459,7 +532,8 @@ export namespace Components {
         /**
           * GcdsSignature - The variant of the Government of Canada signature
          */
-        "signatureVariant": 'colour' | 'white';
+        "signatureVariant": | 'colour'
+    | 'white';
         /**
           * Top navigation - Skip to content href
          */
@@ -491,11 +565,41 @@ export namespace Components {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "marginLeft"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "marginRight"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * Name of the icon.
          */
@@ -503,7 +607,15 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1';
+        "size"?: | 'inherit'
+    | 'caption'
+    | 'text'
+    | 'h6'
+    | 'h5'
+    | 'h4'
+    | 'h3'
+    | 'h2'
+    | 'h1';
     }
     interface GcdsInput {
         /**
@@ -569,7 +681,9 @@ export namespace Components {
         /**
           * Array of validators
          */
-        "validator": Array<string | ValidatorEntry | Validator<string>>;
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Default value for an input element.
          */
@@ -647,7 +761,7 @@ export namespace Components {
         /**
           * Navigation element label
          */
-        "display": "list" | "simple";
+        "display": 'list' | 'simple';
         /**
           * Navigation element label
          */
@@ -749,7 +863,7 @@ export namespace Components {
         /**
           * Set the form method of the search form
          */
-        "method": "get" | "post";
+        "method": 'get' | 'post';
         /**
           * Set the name of the search input
          */
@@ -819,7 +933,9 @@ export namespace Components {
         /**
           * Array of validators
          */
-        "validator": Array<string | ValidatorEntry | Validator<string>>;
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Value for a select element.
          */
@@ -922,7 +1038,9 @@ export namespace Components {
         /**
           * Array of validators
          */
-        "validator": Array<string | ValidatorEntry | Validator<string>>;
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Default value for an input element.
          */
@@ -1332,7 +1450,10 @@ declare namespace LocalJSX {
         /**
           * Set the main style
          */
-        "buttonRole"?: 'primary' | 'secondary' | 'danger' | 'skip-to-content';
+        "buttonRole"?: | 'primary'
+    | 'secondary'
+    | 'danger'
+    | 'skip-to-content';
         /**
           * Set the style variant
          */
@@ -1492,7 +1613,9 @@ declare namespace LocalJSX {
         /**
           * Array of validators
          */
-        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Value for an input element.
          */
@@ -1510,11 +1633,41 @@ declare namespace LocalJSX {
         /**
           * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
          */
-        "margin"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "margin"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * Defines the container's padding.
          */
-        "padding"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "padding"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * Defines container size.
          */
@@ -1612,7 +1765,9 @@ declare namespace LocalJSX {
         /**
           * Array of validators
          */
-        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
     }
     interface GcdsFileUploader {
         /**
@@ -1690,7 +1845,9 @@ declare namespace LocalJSX {
         /**
           * Array of validators
          */
-        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Value for a file uploader element.
          */
@@ -1722,7 +1879,13 @@ declare namespace LocalJSX {
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
          */
-        "alignContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        "alignContent"?: | 'center'
+    | 'end'
+    | 'space-around'
+    | 'space-between'
+    | 'space-evenly'
+    | 'start'
+    | 'stretch';
         /**
           * Aligns grid items along the block (column) axis
          */
@@ -1748,11 +1911,32 @@ declare namespace LocalJSX {
         /**
           * Shorthand for column-gap + row-gap Specifies the width of the gutters between columns and rows
          */
-        "gap"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "gap"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
-        "justifyContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        "justifyContent"?: | 'center'
+    | 'end'
+    | 'space-around'
+    | 'space-between'
+    | 'space-evenly'
+    | 'start'
+    | 'stretch';
         /**
           * Aligns grid items along the inline (row) axis
          */
@@ -1760,7 +1944,13 @@ declare namespace LocalJSX {
         /**
           * Sets both the align-content + justify-content properties
          */
-        "placeContent"?: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch';
+        "placeContent"?: | 'center'
+    | 'end'
+    | 'space-around'
+    | 'space-between'
+    | 'space-evenly'
+    | 'start'
+    | 'stretch';
         /**
           * Sets both the align-items + justify-items properties
          */
@@ -1782,7 +1972,8 @@ declare namespace LocalJSX {
         /**
           * GcdsSignature - The variant of the Government of Canada signature
          */
-        "signatureVariant"?: 'colour' | 'white';
+        "signatureVariant"?: | 'colour'
+    | 'white';
         /**
           * Top navigation - Skip to content href
          */
@@ -1814,11 +2005,41 @@ declare namespace LocalJSX {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "marginLeft"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+        "marginRight"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
         /**
           * Name of the icon.
          */
@@ -1826,7 +2047,15 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'inherit' | 'caption' | 'text' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1';
+        "size"?: | 'inherit'
+    | 'caption'
+    | 'text'
+    | 'h6'
+    | 'h5'
+    | 'h4'
+    | 'h3'
+    | 'h2'
+    | 'h1';
     }
     interface GcdsInput {
         /**
@@ -1908,7 +2137,9 @@ declare namespace LocalJSX {
         /**
           * Array of validators
          */
-        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Default value for an input element.
          */
@@ -1990,7 +2221,7 @@ declare namespace LocalJSX {
         /**
           * Navigation element label
          */
-        "display"?: "list" | "simple";
+        "display"?: 'list' | 'simple';
         /**
           * Navigation element label
          */
@@ -2108,7 +2339,7 @@ declare namespace LocalJSX {
         /**
           * Set the form method of the search form
          */
-        "method"?: "get" | "post";
+        "method"?: 'get' | 'post';
         /**
           * Set the name of the search input
          */
@@ -2210,7 +2441,9 @@ declare namespace LocalJSX {
         /**
           * Array of validators
          */
-        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Value for a select element.
          */
@@ -2326,7 +2559,9 @@ declare namespace LocalJSX {
         /**
           * Array of validators
          */
-        "validator"?: Array<string | ValidatorEntry | Validator<string>>;
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Default value for an input element.
          */

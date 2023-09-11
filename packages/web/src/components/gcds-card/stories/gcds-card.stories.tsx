@@ -8,56 +8,56 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     href: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     tag: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     description: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     imgSrc: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     imgAlt: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     type: {
       control: 'radio',
       options: ['link', 'action'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'link' }
+        defaultValue: { summary: 'link' },
       },
     },
     titleElement: {
@@ -65,7 +65,7 @@ export default {
       options: ['h3', 'h4', 'h5', 'h6', 'a'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'a' }
+        defaultValue: { summary: 'a' },
       },
     },
 
@@ -76,12 +76,13 @@ export default {
       },
       table: {
         category: 'Slots | Fentes',
-      }
+      },
     },
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-card
   card-title="${args.cardTitle}"
@@ -109,7 +110,7 @@ const Template = (args) => (`
 >
   ${args.footer ? `<div slot="footer">${args.footer}</div>` : null}
 </GcdsCard>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 const TemplatePlayground = (args) => (`
 <!-- Web component code (Angular, Vue) -->
@@ -134,7 +135,8 @@ Default.args = {
   type: 'link',
   titleElement: 'a',
   tag: 'Tag',
-  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  description:
+    'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: '',
   imgAlt: '',
   footer: '',

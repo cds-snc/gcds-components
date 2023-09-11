@@ -9,7 +9,6 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsHint {
   @Element() el: HTMLElement;
 
-
   /**
    * Props
    */

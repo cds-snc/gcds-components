@@ -24,8 +24,8 @@ describe('gcds-file-uploader', () => {
   });
 
   /**
-    * Disabled test
-    */
+   * Disabled test
+   */
   it('renders disabled', async () => {
     const page = await newSpecPage({
       components: [GcdsFileUploader],
@@ -48,8 +48,8 @@ describe('gcds-file-uploader', () => {
   });
 
   /**
-    * Error message test
-    */
+   * Error message test
+   */
   it('renders error message', async () => {
     const page = await newSpecPage({
       components: [GcdsFileUploader],
@@ -73,8 +73,8 @@ describe('gcds-file-uploader', () => {
   });
 
   /**
-    * File uploader hint test
-    */
+   * File uploader hint test
+   */
   it('renders hint', async () => {
     const page = await newSpecPage({
       components: [GcdsFileUploader],
@@ -98,8 +98,8 @@ describe('gcds-file-uploader', () => {
   });
 
   /**
-    * File uploader ID test
-    */
+   * File uploader ID test
+   */
   it('renders file-uploader id', async () => {
     const page = await newSpecPage({
       components: [GcdsFileUploader],
@@ -122,8 +122,8 @@ describe('gcds-file-uploader', () => {
   });
 
   /**
-    * File uploader label test
-    */
+   * File uploader label test
+   */
   it('renders file-uploader label', async () => {
     const page = await newSpecPage({
       components: [GcdsFileUploader],
@@ -146,8 +146,8 @@ describe('gcds-file-uploader', () => {
   });
 
   /**
-    * File uploader required test
-    */
+   * File uploader required test
+   */
   it('renders file-uploader id', async () => {
     const page = await newSpecPage({
       components: [GcdsFileUploader],

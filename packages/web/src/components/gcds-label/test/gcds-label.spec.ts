@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsLabel} from '../gcds-label';
+import { GcdsLabel } from '../gcds-label';
 
 describe('gcds-label', () => {
   it('renders', async () => {
@@ -17,8 +17,8 @@ describe('gcds-label', () => {
   });
 
   /**
-    * Hidden label tests
-    */
+   * Hidden label tests
+   */
   it('renders hidden label', async () => {
     const { root } = await newSpecPage({
       components: [GcdsLabel],
@@ -34,8 +34,8 @@ describe('gcds-label', () => {
   });
 
   /**
-    * Required tests
-    */
+   * Required tests
+   */
 
   it('renders required label in EN', async () => {
     const { root } = await newSpecPage({

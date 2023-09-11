@@ -7,30 +7,64 @@ export default {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      }
+        defaultValue: { summary: false },
+      },
     },
     centered: {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      }
+        defaultValue: { summary: false },
+      },
     },
     margin: {
       control: { type: 'select' },
-      options: ['0', '50', '100', '150', '200', '250', '300', '400', '450', '500', '550', '600', '700', '800', '900', '1000'],
+      options: [
+        '0',
+        '50',
+        '100',
+        '150',
+        '200',
+        '250',
+        '300',
+        '400',
+        '450',
+        '500',
+        '550',
+        '600',
+        '700',
+        '800',
+        '900',
+        '1000',
+      ],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     padding: {
       control: { type: 'select' },
-      options: ['0', '50', '100', '150', '200', '250', '300', '400', '450', '500', '550', '600', '700', '800', '900', '1000'],
+      options: [
+        '0',
+        '50',
+        '100',
+        '150',
+        '200',
+        '250',
+        '300',
+        '400',
+        '450',
+        '500',
+        '550',
+        '600',
+        '700',
+        '800',
+        '900',
+        '1000',
+      ],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     size: {
@@ -38,15 +72,15 @@ export default {
       options: ['full', 'xl', 'lg', 'md', 'sm', 'xs'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'full' }
+        defaultValue: { summary: 'full' },
       },
     },
     tag: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'div' }
-      }
+        defaultValue: { summary: 'div' },
+      },
     },
 
     // Slots
@@ -56,24 +90,38 @@ export default {
       },
       table: {
         category: 'Slots | Fentes',
-      }
+      },
     },
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
-<gcds-container ${args.size != "full" ? `size="${args.size}"`: null} ${args.border ? "border" : null} ${args.centered ? "centered" : null} ${args.tag != "div" ? `tag="${args.tag}"`: null} ${args.margin ? `margin="${args.margin}"` : null} ${args.padding ? `padding="${args.padding}"` : null}>
+<gcds-container ${args.size != 'full' ? `size="${args.size}"` : null} ${
+    args.border ? 'border' : null
+  } ${args.centered ? 'centered' : null} ${
+    args.tag != 'div' ? `tag="${args.tag}"` : null
+  } ${args.margin ? `margin="${args.margin}"` : null} ${
+    args.padding ? `padding="${args.padding}"` : null
+  }>
   ${args.default ? args.default : null}
 </gcds-container>
 
 <!-- React code -->
-<GcdsContainer ${args.size != "full" ? `size="${args.size}"`: null} ${args.border ? "border" : null} ${args.centered ? `centered` : null} ${args.tag != "div" ? `tag="${args.tag}"`: null} ${args.margin ? `margin="${args.margin}"` : null} ${args.padding ? `padding="${args.padding}"` : null}>
+<GcdsContainer ${args.size != 'full' ? `size="${args.size}"` : null} ${
+    args.border ? 'border' : null
+  } ${args.centered ? `centered` : null} ${
+    args.tag != 'div' ? `tag="${args.tag}"` : null
+  } ${args.margin ? `margin="${args.margin}"` : null} ${
+    args.padding ? `padding="${args.padding}"` : null
+  }>
   ${args.default ? args.default : null}
 </GcdsContainer>
-`).replace(/ null/g, '');
+`.replace(/ null/g, '');
 
-const TemplateMargin = () => (`
+const TemplateMargin = () =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-container size="md" border margin="0">Margin 0</gcds-container>
 <gcds-container size="md" border margin="50">Margin 50</gcds-container>
@@ -109,9 +157,10 @@ const TemplateMargin = () => (`
 <GcdsContainer size="md" border margin="800">Margin 800</GcdsContainer>
 <GcdsContainer size="md" border margin="900">Margin 900</GcdsContainer>
 <GcdsContainer size="md" border margin="1000">Margin 1000</GcdsContainer>
-`).replace(/ null/g, '');
+`.replace(/ null/g, '');
 
-const TemplatePadding = () => (`
+const TemplatePadding = () =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-container size="md" border padding="0">Padding 0</gcds-container>
 <gcds-container size="md" border padding="50">Padding 50</gcds-container>
@@ -147,20 +196,20 @@ const TemplatePadding = () => (`
 <GcdsContainer size="md" border padding="800">Padding 800</GcdsContainer>
 <GcdsContainer size="md" border padding="900">Padding 900</GcdsContainer>
 <GcdsContainer size="md" border padding="1000">Padding 1000</GcdsContainer>
-`).replace(/ null/g, '');
+`.replace(/ null/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args => `
 <gcds-container
-  ${args.size != "full" ? `size="${args.size}"`: null}
-  ${args.border ? "border" : null}
-  ${args.centered ? "centered" : null}
-  ${args.tag != "div" ? `tag="${args.tag}"`: null}
+  ${args.size != 'full' ? `size="${args.size}"` : null}
+  ${args.border ? 'border' : null}
+  ${args.centered ? 'centered' : null}
+  ${args.tag != 'div' ? `tag="${args.tag}"` : null}
   ${args.margin ? `margin="${args.margin}"` : null}
   ${args.padding ? `padding="${args.padding}"` : null}
 >
   ${args.default ? args.default : null}
 </gcds-container>
-`);
+`;
 
 // ------ Container default ------
 
@@ -171,7 +220,8 @@ Default.args = {
   centered: false,
   tag: 'div',
   padding: '400',
-  default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };
 
 // ------ Container sizes ------
@@ -182,7 +232,8 @@ SizeFull.args = {
   border: true,
   tag: 'div',
   padding: '400',
-  default: '<p>This is a responsive container, the size is set to "full". You can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, the size is set to "full". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeXl = Template.bind({});
@@ -191,7 +242,8 @@ SizeXl.args = {
   border: true,
   tag: 'div',
   padding: '400',
-  default: '<p>This is a responsive container, the size is set to "xl". You can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, the size is set to "xl". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeLg = Template.bind({});
@@ -200,7 +252,8 @@ SizeLg.args = {
   border: true,
   tag: 'div',
   padding: '400',
-  default: '<p>This is a responsive container, the size is set to "lg". You can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, the size is set to "lg". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeMd = Template.bind({});
@@ -209,7 +262,8 @@ SizeMd.args = {
   border: true,
   tag: 'div',
   padding: '400',
-  default: '<p>This is a responsive container, the size is set to "md". You can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, the size is set to "md". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeSm = Template.bind({});
@@ -218,7 +272,8 @@ SizeSm.args = {
   border: true,
   tag: 'div',
   padding: '400',
-  default: '<p>This is a responsive container, the size is set to "sm". You can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, the size is set to "sm". You can replace this text with any content or other components.</p>',
 };
 
 export const SizeXs = Template.bind({});
@@ -227,7 +282,8 @@ SizeXs.args = {
   border: true,
   tag: 'div',
   padding: '400',
-  default: '<p>This is a responsive container, the size is set to "xs". You can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, the size is set to "xs". You can replace this text with any content or other components.</p>',
 };
 
 // ------ Container centered ------
@@ -245,14 +301,12 @@ Centered.args = {
 // ------ Container margin ------
 
 export const Margin = TemplateMargin.bind({});
-Margin.args = {
-};
+Margin.args = {};
 
 // ------ Container padding ------
 
 export const Padding = TemplatePadding.bind({});
-Padding.args = {
-};
+Padding.args = {};
 
 // ------ Container events & props ------
 
@@ -263,7 +317,8 @@ Props.args = {
   padding: '400',
   centered: false,
   border: true,
-  default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };
 
 // ------ Container playground ------
@@ -275,5 +330,6 @@ Playground.args = {
   padding: '400',
   centered: false,
   border: true,
-  default: '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
+  default:
+    '<p>This is a responsive container, you can replace this text with any content or other components.</p>',
 };

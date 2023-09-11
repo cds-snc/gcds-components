@@ -53,56 +53,50 @@ export class GcdsCard {
   }
 
   render() {
-    const { type, cardTitle, titleElement, href, description, tag, imgSrc, imgAlt, hasCardFooter } = this;
+    const {
+      type,
+      cardTitle,
+      titleElement,
+      href,
+      description,
+      tag,
+      imgSrc,
+      imgAlt,
+      hasCardFooter,
+    } = this;
 
     const Element = titleElement;
 
     return (
       <Host>
-        <div 
-          class={`gcds-card gcds-card--${type}`}
-        >
-          {imgSrc &&
-            <img 
+        <div class={`gcds-card gcds-card--${type}`}>
+          {imgSrc && (
+            <img
               src={imgSrc}
-              alt={imgAlt ? imgAlt : ""}
+              alt={imgAlt ? imgAlt : ''}
               class="gcds-card__image"
             />
-          }
-          {tag &&
-            <span class="gcds-card__tag">
-              {tag}
-            </span>
-          }
-          {Element != 'a' ?
-           <Element class="gcds-card__title">
-              <a href={href}>
-                {cardTitle}
-              </a>
+          )}
+          {tag && <span class="gcds-card__tag">{tag}</span>}
+          {Element != 'a' ? (
+            <Element class="gcds-card__title">
+              <a href={href}>{cardTitle}</a>
             </Element>
-          :
-            <a
-              href={href}
-              class="gcds-card__title"
-            >
+          ) : (
+            <a href={href} class="gcds-card__title">
               {cardTitle}
             </a>
-          }
+          )}
 
-          {description &&
-            <p class="gcds-card__description">
-              {description}
-            </p>
-          }
-          {hasCardFooter &&
+          {description && <p class="gcds-card__description">{description}</p>}
+          {hasCardFooter && (
             <>
               <div class="gcds-card__spacer"></div>
               <slot name="footer"></slot>
             </>
-          }
+          )}
         </div>
       </Host>
     );
   }
-
 }

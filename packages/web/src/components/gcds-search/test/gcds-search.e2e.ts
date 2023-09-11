@@ -11,11 +11,10 @@ describe('gcds-search', () => {
   });
 });
 
-
 /**
-   * Accessibility tests
-   * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
-   */
+ * Accessibility tests
+ * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
+ */
 
 describe('gcds-search a11y tests', () => {
   /**
@@ -26,9 +25,11 @@ describe('gcds-search a11y tests', () => {
     await page.setContent(`
       <gcds-search />
     `);
-    
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });
@@ -41,9 +42,11 @@ describe('gcds-search a11y tests', () => {
     await page.setContent(`
       <gcds-search />
     `);
-    
-    const colorContrastTest = new AxePuppeteer(page).withRules('button-name').analyze();
-    let results = await colorContrastTest;
+
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('button-name')
+      .analyze();
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });

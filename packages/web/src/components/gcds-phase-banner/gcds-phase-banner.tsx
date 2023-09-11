@@ -29,22 +29,20 @@ export class GcdsPhaseBanner {
    */
   @Prop() isFixed?: boolean;
 
-
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
-
 
   /**
    * Events
    */
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -65,7 +63,9 @@ export class GcdsPhaseBanner {
     return (
       <Host>
         <div
-          class={`gcds-phase-banner banner--role-${bannerRole} ${isFixed ? 'banner--is-fixed' : ''}`}
+          class={`gcds-phase-banner banner--role-${bannerRole} ${
+            isFixed ? 'banner--is-fixed' : ''
+          }`}
           role="status"
           aria-label={i18n[lang].label}
         >

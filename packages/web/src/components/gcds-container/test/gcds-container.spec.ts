@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsContainer} from '../gcds-container';
+import { GcdsContainer } from '../gcds-container';
 
 describe('gcds-grid', () => {
   it('renders container size full by default', async () => {

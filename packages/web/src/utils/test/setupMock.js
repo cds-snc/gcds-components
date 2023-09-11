@@ -1,15 +1,18 @@
+/* eslint-disable no-undef */
 // Global jest mock for MutationObservers
 const mutationObserverMock = jest.fn(function MutationObserver(callback) {
   this.observe = jest.fn();
   this.disconnect = jest.fn();
-  this.trigger = (mockedMutationsList) => {
+  this.trigger = mockedMutationsList => {
     callback(mockedMutationsList, this);
   };
 });
 global.MutationObserver = mutationObserverMock;
 
-global.fetch = jest.fn(() => Promise.resolve({
-  text: () => Promise.resolve(`
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    text: () =>
+      Promise.resolve(`
     <li role="presentation">
       <a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="gc-mnu-jobs" aria-expanded="false" href="#">
         Jobs and the workplace
@@ -30,5 +33,6 @@ global.fetch = jest.fn(() => Promise.resolve({
         </li>
       </ul>
     </li>
-  `)
-}));
+  `),
+  }),
+);

@@ -9,14 +9,15 @@ export default {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
-    ...langProp
+    ...langProp,
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-topic-menu
   ${args.home ? `home` : null}
@@ -30,22 +31,22 @@ const Template = (args) => (`
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsTopicMenu>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args => `
 <gcds-topic-menu
   ${args.home ? `home` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-topic-menu>
-`);
+`;
 
 // ------ Theme and topic menu - English ------
 
 export const English = Template.bind({});
 English.args = {
   home: false,
-  lang: 'en'
+  lang: 'en',
 };
 
 // ------ Theme and topic menu - French ------
@@ -53,7 +54,7 @@ English.args = {
 export const French = Template.bind({});
 French.args = {
   home: false,
-  lang: 'fr'
+  lang: 'fr',
 };
 
 // ------ Theme and topic menu - Home ------
@@ -61,7 +62,7 @@ French.args = {
 export const Home = Template.bind({});
 Home.args = {
   home: true,
-  lang: 'en'
+  lang: 'en',
 };
 
 // ------ Theme and topic menu events & props ------
@@ -69,7 +70,7 @@ Home.args = {
 export const Props = Template.bind({});
 Props.args = {
   home: false,
-  lang: 'en'
+  lang: 'en',
 };
 
 // ------ Theme and topic menu playground ------
@@ -77,5 +78,5 @@ Props.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   home: false,
-  lang: 'en'
+  lang: 'en',
 };

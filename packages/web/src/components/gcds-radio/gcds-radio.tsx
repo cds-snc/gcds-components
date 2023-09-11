@@ -1,5 +1,21 @@
-import { Component, Element, Event, EventEmitter, State, Prop, Listen, Watch, Host, h } from '@stencil/core';
-import { assignLanguage, elementGroupCheck, inheritAttributes, observerConfig } from '../../utils/utils';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  State,
+  Prop,
+  Listen,
+  Watch,
+  Host,
+  h,
+} from '@stencil/core';
+import {
+  assignLanguage,
+  elementGroupCheck,
+  inheritAttributes,
+  observerConfig,
+} from '../../utils/utils';
 
 @Component({
   tag: 'gcds-radio',
@@ -11,7 +27,6 @@ export class GcdsRadio {
   @Element() el: HTMLElement;
 
   private shadowElement?: HTMLInputElement;
-
 
   /**
    * Props
@@ -63,13 +78,13 @@ export class GcdsRadio {
   @Prop() clickHandler: Function;
 
   /**
-  * Custom callback function on focus event
-  */
+   * Custom callback function on focus event
+   */
   @Prop() focusHandler: Function;
 
   /**
-  * Custom callback function on blur event
-  */
+   * Custom callback function on blur event
+   */
   @Prop() blurHandler: Function;
 
   /**
@@ -94,11 +109,9 @@ export class GcdsRadio {
   @State() inheritedAttributes: Object = {};
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
-
-
 
   /**
    * Events
@@ -114,32 +127,32 @@ export class GcdsRadio {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = (e) => {
+  private onFocus = e => {
     if (this.focusHandler) {
       this.focusHandler(e);
     }
 
     this.gcdsFocus.emit();
-  }
+  };
 
   /**
-  * Emitted when the radio loses focus.
-  */
+   * Emitted when the radio loses focus.
+   */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = (e) => {
+  private onBlur = e => {
     if (this.blurHandler) {
       this.blurHandler(e);
     }
 
     this.gcdsBlur.emit();
-  }
+  };
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -156,7 +169,7 @@ export class GcdsRadio {
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
-  private onChange = (name) => {
+  private onChange = name => {
     this.gcdsRadioChange.emit(name);
     this.checked = this.shadowElement.checked;
   };
@@ -171,28 +184,41 @@ export class GcdsRadio {
   }
 
   /**
-  * Event listener for gcds-fieldset errors
-  */
-  @Listen('gcdsGroupError', { target: 'body'})
+   * Event listener for gcds-fieldset errors
+   */
+  @Listen('gcdsGroupError', { target: 'body' })
   gcdsGroupError(e) {
     if (e.srcElement.contains(this.el) && elementGroupCheck(this.name)) {
       this.hasError = true;
       this.parentError = e.detail;
     } else if (!elementGroupCheck(this.name)) {
       this.hasError = false;
-      this.parentError = "";
+      this.parentError = '';
     }
   }
-  @Listen('gcdsGroupErrorClear', { target: 'body'})
+  @Listen('gcdsGroupErrorClear', { target: 'body' })
   gcdsGroupErrorClear(e) {
     if (e.srcElement.contains(this.el) && this.hasError) {
       this.hasError = false;
-      this.parentError = "";
+      this.parentError = '';
     }
   }
 
   render() {
-    const { lang, radioId, label, name, required, disabled, value, checked, hint, hasError, parentError, inheritedAttributes } = this;
+    const {
+      lang,
+      radioId,
+      label,
+      name,
+      required,
+      disabled,
+      value,
+      checked,
+      hint,
+      hasError,
+      parentError,
+      inheritedAttributes,
+    } = this;
 
     const attrsInput = {
       name,
@@ -200,43 +226,56 @@ export class GcdsRadio {
       required,
       value,
       checked,
-      ...inheritedAttributes
+      ...inheritedAttributes,
     };
 
     if (hint || parentError) {
-      let hintID = hint ? `hint-${radioId} ` : "";
-      let errorID = parentError ? `parent-error-${radioId} ` : "";
-      attrsInput["aria-describedby"] = `${hintID}${errorID}${attrsInput["aria-describedby"] ? `${attrsInput["aria-describedby"]}` : ""}`;
+      const hintID = hint ? `hint-${radioId} ` : '';
+      const errorID = parentError ? `parent-error-${radioId} ` : '';
+      attrsInput['aria-describedby'] = `${hintID}${errorID}${
+        attrsInput['aria-describedby']
+          ? `${attrsInput['aria-describedby']}`
+          : ''
+      }`;
     }
 
     if (hasError) {
-      attrsInput["aria-invalid"] = "true";
+      attrsInput['aria-invalid'] = 'true';
     }
 
     return (
       <Host>
-        <div class={`gcds-radio ${disabled ? 'gcds-radio--disabled' : ''} ${hasError ? 'gcds-radio--error' : ''}`}>
+        <div
+          class={`gcds-radio ${disabled ? 'gcds-radio--disabled' : ''} ${
+            hasError ? 'gcds-radio--error' : ''
+          }`}
+        >
           <input
             id={radioId}
             type="radio"
             {...attrsInput}
             onChange={() => this.onChange(name)}
-            onBlur={(e) => this.onBlur(e)}
-            onFocus={(e) => this.onFocus(e)}
-            onClick={(e) => { this.clickHandler && this.clickHandler(e) }}
-            ref={element => this.shadowElement = element as HTMLInputElement}
+            onBlur={e => this.onBlur(e)}
+            onFocus={e => this.onFocus(e)}
+            onClick={e => {
+              this.clickHandler && this.clickHandler(e);
+            }}
+            ref={element => (this.shadowElement = element as HTMLInputElement)}
           />
 
           <gcds-label
             label={label}
             label-for={radioId}
             lang={lang}
-          >
-          </gcds-label>
+          ></gcds-label>
 
-          {hint ? <gcds-hint hint={hint} hint-id={radioId} />: null}
+          {hint ? <gcds-hint hint={hint} hint-id={radioId} /> : null}
 
-          {parentError && <span id={`parent-error-${radioId}`} hidden>{parentError}</span>}
+          {parentError && (
+            <span id={`parent-error-${radioId}`} hidden>
+              {parentError}
+            </span>
+          )}
         </div>
       </Host>
     );

@@ -1,4 +1,13 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  State,
+  h,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -7,7 +16,6 @@ import i18n from './i18n/i18n';
   styleUrl: 'gcds-alert.css',
   shadow: true,
 })
-
 export class GcdsAlert {
   @Element() el: HTMLElement;
 
@@ -50,7 +58,6 @@ export class GcdsAlert {
    */
   @Prop({ mutable: true }) isFixed?: boolean = false;
 
-
   /**
    * States
    */
@@ -61,8 +68,8 @@ export class GcdsAlert {
   @State() isOpen: boolean = true;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /**
@@ -71,21 +78,21 @@ export class GcdsAlert {
 
   @Event() gcdsDismiss!: EventEmitter<void>;
 
-  private onDismiss = (e) => {
+  private onDismiss = e => {
     this.gcdsDismiss.emit();
 
-    if ( this.dismissHandler ) {
+    if (this.dismissHandler) {
       this.dismissHandler(e);
     } else {
       this.isOpen = false;
     }
-  }
+  };
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -101,44 +108,70 @@ export class GcdsAlert {
   }
 
   render() {
-    const { alertRole, container, heading, hideCloseBtn, hideRoleIcon, isFixed, isOpen, lang } = this;
+    const {
+      alertRole,
+      container,
+      heading,
+      hideCloseBtn,
+      hideRoleIcon,
+      isFixed,
+      isOpen,
+      lang,
+    } = this;
 
     return (
       <Host>
-        { isOpen ?
+        {isOpen ? (
           <div
-            class={`gcds-alert alert--role-${alertRole} ${isFixed ? 'alert--is-fixed' : ''}`}
+            class={`gcds-alert alert--role-${alertRole} ${
+              isFixed ? 'alert--is-fixed' : ''
+            }`}
             role="alert"
             aria-label={
-              alertRole === 'danger' ? i18n[lang].label.danger
-              : alertRole === 'info' ? i18n[lang].label.info
-              : alertRole === 'success' ? i18n[lang].label.success
-              : alertRole === 'warning' ? i18n[lang].label.warning
-              : null
+              alertRole === 'danger'
+                ? i18n[lang].label.danger
+                : alertRole === 'info'
+                ? i18n[lang].label.info
+                : alertRole === 'success'
+                ? i18n[lang].label.success
+                : alertRole === 'warning'
+                ? i18n[lang].label.warning
+                : null
             }
           >
             <gcds-container size={isFixed ? container : 'full'} centered>
               <div class="alert__container">
-                {( !hideRoleIcon &&
-                  <gcds-icon aria-hidden="true" class="alert__icon" size="h5" name={
-                    alertRole === 'danger' ? 'exclamation-circle'
-                    : alertRole === 'info' ? 'info-circle'
-                    : alertRole === 'success' ? 'check-circle'
-                    : alertRole === 'warning' ? 'exclamation-triangle'
-                    : null }
-                    />
+                {!hideRoleIcon && (
+                  <gcds-icon
+                    aria-hidden="true"
+                    class="alert__icon"
+                    size="h5"
+                    name={
+                      alertRole === 'danger'
+                        ? 'exclamation-circle'
+                        : alertRole === 'info'
+                        ? 'info-circle'
+                        : alertRole === 'success'
+                        ? 'check-circle'
+                        : alertRole === 'warning'
+                        ? 'exclamation-triangle'
+                        : null
+                    }
+                  />
                 )}
 
                 <div class="alert__content">
-                  <p class="alert__heading"><strong>{heading}</strong></p>
+                  <p class="alert__heading">
+                    <strong>{heading}</strong>
+                  </p>
                   <slot></slot>
                 </div>
 
-                {( !hideCloseBtn &&
+                {!hideCloseBtn && (
                   <button
                     class="alert__close-btn"
-                    onClick={(e) => this.onDismiss(e)}
-                    aria-label={ i18n[lang].closeBtn }
+                    onClick={e => this.onDismiss(e)}
+                    aria-label={i18n[lang].closeBtn}
                   >
                     <gcds-icon aria-hidden="true" name="times" size="text" />
                   </button>
@@ -146,7 +179,7 @@ export class GcdsAlert {
               </div>
             </gcds-container>
           </div>
-        : null }
+        ) : null}
       </Host>
     );
   }
