@@ -139,7 +139,7 @@ const Template = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
-  ${args.validateOn != "blur" ? `validate)n="${args.validateOn}"` : null}
+  ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != "en" ? `lang="${args.lang}"` : null}
 >
 </GcdsCheckbox>

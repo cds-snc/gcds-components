@@ -163,7 +163,7 @@ Action.args = {
   description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: '',
   imgAlt: '',
-  footer: 'Action button/link',
+  footer: '<a href="#">Action link</a>',
 };
 
 export const Image = Template.bind({});
