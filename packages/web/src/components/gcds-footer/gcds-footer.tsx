@@ -17,7 +17,7 @@ export class GcdsFooter {
   /**
    * Display mode of the footer
    */
-  @Prop({ reflect: true, mutable: true }) display: 'compact' | 'full' =
+  @Prop({ reflect: true, mutable: true }) display?: 'compact' | 'full' =
     'compact';
 
   /**
