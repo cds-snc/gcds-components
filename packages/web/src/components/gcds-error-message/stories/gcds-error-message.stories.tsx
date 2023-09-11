@@ -8,26 +8,27 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
     message: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
       type: {
-        required: true
-      }
+        required: true,
+      },
     },
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-error-message
   message-id="${args.messageId}"
@@ -41,15 +42,15 @@ const Template = (args) => (`
   message="${args.message}"
 >
 </GcdsErrorMessage>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args => `
 <gcds-error-message
   message-id="${args.messageId}"
   message="${args.message}"
 >
 </gcds-error-message>
-`);
+`;
 
 // ------ Error message default ------
 

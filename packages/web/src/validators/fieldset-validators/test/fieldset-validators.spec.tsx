@@ -1,15 +1,15 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { requiredFieldset } from "../fieldset-validators";
+import { requiredFieldset } from '../fieldset-validators';
 
-import { GcdsFieldset } from "../../../components/gcds-fieldset/gcds-fieldset";
-import { GcdsRadio } from "../../../components/gcds-radio/gcds-radio";
-import { GcdsCheckbox } from "../../../components/gcds-checkbox/gcds-checkbox";
+import { GcdsFieldset } from '../../../components/gcds-fieldset/gcds-fieldset';
+import { GcdsRadio } from '../../../components/gcds-radio/gcds-radio';
+import { GcdsCheckbox } from '../../../components/gcds-checkbox/gcds-checkbox';
 
 describe('gcds-fieldset invalid - Radio buttons', () => {
-    it('renders', async () => {
-      await newSpecPage({
-        components: [GcdsFieldset, GcdsRadio],
-        html: `
+  it('renders', async () => {
+    await newSpecPage({
+      components: [GcdsFieldset, GcdsRadio],
+      html: `
         <gcds-fieldset
             fieldset-id="test-fieldset"
             legend="Fieldset legend"
@@ -36,15 +36,15 @@ describe('gcds-fieldset invalid - Radio buttons', () => {
                 radio-id="radio4"
             ></gcds-radio>
         </gcds-fieldset>`,
-      });
-      expect(requiredFieldset.validate("test-fieldset")).toEqual(false);
     });
+    expect(requiredFieldset.validate('test-fieldset')).toEqual(false);
+  });
 });
 describe('gcds-fieldset valid - Radio buttons', () => {
-    it('renders', async () => {
-      await newSpecPage({
-        components: [GcdsFieldset, GcdsRadio],
-        html: `
+  it('renders', async () => {
+    await newSpecPage({
+      components: [GcdsFieldset, GcdsRadio],
+      html: `
         <gcds-fieldset
             fieldset-id="test-fieldset"
             legend="Fieldset legend"
@@ -72,15 +72,15 @@ describe('gcds-fieldset valid - Radio buttons', () => {
                 radio-id="radio4"
             ></gcds-radio>
         </gcds-fieldset>`,
-      });
-      expect(requiredFieldset.validate("test-fieldset")).toEqual(true);
     });
+    expect(requiredFieldset.validate('test-fieldset')).toEqual(true);
+  });
 });
 describe('gcds-fieldset invalid - Checkboxes', () => {
-    it('renders', async () => {
-      await newSpecPage({
-        components: [GcdsFieldset, GcdsCheckbox],
-        html: `
+  it('renders', async () => {
+    await newSpecPage({
+      components: [GcdsFieldset, GcdsCheckbox],
+      html: `
         <gcds-fieldset
             fieldset-id="test-fieldset"
             legend="Fieldset legend"
@@ -107,15 +107,15 @@ describe('gcds-fieldset invalid - Checkboxes', () => {
                 name="check"
             ></gcds-checkbox>
         </gcds-fieldset>`,
-      });
-      expect(requiredFieldset.validate("test-fieldset")).toEqual(false);
     });
+    expect(requiredFieldset.validate('test-fieldset')).toEqual(false);
+  });
 });
 describe('gcds-fieldset valid - Checkboxes', () => {
-    it('renders', async () => {
-      await newSpecPage({
-        components: [GcdsFieldset, GcdsCheckbox],
-        html: `
+  it('renders', async () => {
+    await newSpecPage({
+      components: [GcdsFieldset, GcdsCheckbox],
+      html: `
         <gcds-fieldset
             fieldset-id="test-fieldset"
             legend="Fieldset legend"
@@ -143,7 +143,7 @@ describe('gcds-fieldset valid - Checkboxes', () => {
                 name="check"
             ></gcds-checkbox>
         </gcds-fieldset>`,
-      });
-      expect(requiredFieldset.validate("test-fieldset")).toEqual(true);
     });
+    expect(requiredFieldset.validate('test-fieldset')).toEqual(true);
+  });
 });

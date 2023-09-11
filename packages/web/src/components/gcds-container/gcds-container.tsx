@@ -8,7 +8,6 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsContainer {
   @Element() el: HTMLElement;
 
-
   /**
    * Props
    */
@@ -26,12 +25,44 @@ export class GcdsContainer {
   /**
    * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
    */
-  @Prop() margin?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+  @Prop() margin?:
+    | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
 
   /**
    *  Defines the container's padding.
    */
-  @Prop() padding?: '0' | '50' | '100' | '150' | '200' | '250' | '300' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900' | '1000';
+  @Prop() padding?:
+    | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
 
   /**
    * Defines container size.

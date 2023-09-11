@@ -29,26 +29,23 @@ export const config: Config = {
     },
     {
       type: 'docs-readme',
-    }
+    },
   ],
   plugins: [
     postcss({
-      plugins: [
-        require('postcss-nested'),
-        require('cssnano')
-      ]
+      plugins: [require('postcss-nested'), require('cssnano')],
     }),
     inlineSvg(),
-    sass()
+    sass(),
   ],
   testing: {
     transform: {
-      '^.+\\.(ts|tsx|js|jsx|css)$': "@stencil/core/testing/jest-preprocessor"
+      '^.+\\.(ts|tsx|js|jsx|css)$': '@stencil/core/testing/jest-preprocessor',
     },
-    setupFiles: ['./src/utils/test/setupMock.js']
+    setupFiles: ['./src/utils/test/setupMock.js'],
   },
   buildEs5: 'prod',
   extras: {
-    experimentalImportInjection: true
-  }
+    experimentalImportInjection: true,
+  },
 };

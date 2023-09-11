@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsTextarea} from '../gcds-textarea';
+import { GcdsTextarea } from '../gcds-textarea';
 
 describe('gcds-textarea', () => {
   it('renders with minimum required properties', async () => {
@@ -24,8 +24,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Character count
-    */
+   * Character count
+   */
   it('renders textarea with character count in EN', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -75,8 +75,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Disabled test
-    */
+   * Disabled test
+   */
   it('renders disabled', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -100,8 +100,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Error message test
-    */
+   * Error message test
+   */
   it('renders error message', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -127,8 +127,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Hide label
-    */
+   * Hide label
+   */
   it('renders with label hidden', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -151,8 +151,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Label test
-    */
+   * Label test
+   */
   it('renders label', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -175,8 +175,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Required test
-    */
+   * Required test
+   */
   it('renders required', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -200,8 +200,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Textarea cols test
-    */
+   * Textarea cols test
+   */
   it('renders textarea cols', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -225,8 +225,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Textarea hint test
-    */
+   * Textarea hint test
+   */
   it('renders textarea hint', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -251,8 +251,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Textarea ID test
-    */
+   * Textarea ID test
+   */
   it('renders textarea id', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -275,8 +275,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Textarea rows test
-    */
+   * Textarea rows test
+   */
   it('renders textarea rows', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -299,8 +299,8 @@ describe('gcds-textarea', () => {
   });
 
   /**
-    * Textarea value test
-    */
+   * Textarea value test
+   */
   it('renders textarea value', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],

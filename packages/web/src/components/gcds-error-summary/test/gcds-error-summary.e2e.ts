@@ -58,31 +58,46 @@ describe('gcds-error-summary', () => {
 
     await page.waitForChanges();
 
-    await page.click("gcds-button");
+    await page.click('gcds-button');
 
     await page.waitForChanges();
 
-    expect(await page.evaluate(() => document.querySelector("gcds-error-summary").shadowRoot.querySelector(".gcds-error-summary").classList.contains("gcds-show"))).toBe(true);
-    expect(await page.evaluate(() => document.querySelector("gcds-error-summary").shadowRoot.querySelector(".summary__errorlist").childNodes.length)).toEqual(5);
-
+    expect(
+      await page.evaluate(() =>
+        document
+          .querySelector('gcds-error-summary')
+          .shadowRoot.querySelector('.gcds-error-summary')
+          .classList.contains('gcds-show'),
+      ),
+    ).toBe(true);
+    expect(
+      await page.evaluate(
+        () =>
+          document
+            .querySelector('gcds-error-summary')
+            .shadowRoot.querySelector('.summary__errorlist').childNodes.length,
+      ),
+    ).toEqual(5);
   });
 });
 
 describe('gcds-input a11y tests', () => {
-    /**
-     * Colour contrast test
-     */
-    it('colour contrast', async () => {
-      const page = await newE2EPage();
-      await page.setContent(`
+  /**
+   * Colour contrast test
+   */
+  it('colour contrast', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
         <gcds-error-summary error-links='{"#link1":"This is the first error","#link2":"This is the second error"}'></gcds-error-summary>
       `);
-      
-      const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-      let results = await colorContrastTest;
-  
-      expect(results.violations.length).toBe(0);
-    }); 
+
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
+    const results = await colorContrastTest;
+
+    expect(results.violations.length).toBe(0);
+  });
 
   /**
    * Links have discernible text
@@ -102,12 +117,12 @@ describe('gcds-input a11y tests', () => {
 
     await page.waitForChanges();
 
-    await page.click("gcds-button");
+    await page.click('gcds-button');
 
     await page.waitForChanges();
 
     const linkTest = new AxePuppeteer(page).withRules('link-name').analyze();
-    let results = await linkTest;
+    const results = await linkTest;
 
     expect(results.violations.length).toBe(0);
   });

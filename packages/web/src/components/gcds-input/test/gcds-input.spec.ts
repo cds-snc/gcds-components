@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsInput} from '../gcds-input';
+import { GcdsInput } from '../gcds-input';
 
 describe('gcds-input', () => {
   it('renders with minimum required properties', async () => {
@@ -24,8 +24,8 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Type tests
-    */
+   * Type tests
+   */
   it('renders type email', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
@@ -153,8 +153,8 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Disabled test
-    */
+   * Disabled test
+   */
   it('renders disabled', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
@@ -178,8 +178,8 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Error message test
-    */
+   * Error message test
+   */
   it('renders error message', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
@@ -205,8 +205,8 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Hide label
-    */
+   * Hide label
+   */
   it('renders with label hidden', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
@@ -229,8 +229,8 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Input hint test
-    */
+   * Input hint test
+   */
   it('renders input hint', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
@@ -255,8 +255,8 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Input ID test
-    */
+   * Input ID test
+   */
   it('renders input id', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
@@ -279,8 +279,8 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Input label test
-    */
+   * Input label test
+   */
   it('renders label', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
@@ -303,8 +303,8 @@ describe('gcds-input', () => {
   });
 
   /**
-    * Required test
-    */
+   * Required test
+   */
   it('renders required', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
@@ -328,9 +328,9 @@ describe('gcds-input', () => {
   });
 
   /**
-  * Input value test
-  */
-    it('renders input value', async () => {
+   * Input value test
+   */
+  it('renders input value', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
       html: '<gcds-input label="Label" input-id="input-with-value" value="Input value" />',

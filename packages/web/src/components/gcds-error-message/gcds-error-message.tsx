@@ -8,7 +8,6 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 export class GcdsErrorMessage {
   @Element() el: HTMLElement;
 
-
   /**
    * Props
    */
@@ -27,11 +26,11 @@ export class GcdsErrorMessage {
     const { messageId, message } = this;
 
     return (
-      <Host id={`error-message-${messageId}`} class="gcds-error-message-wrapper">
-        <p
-          class="error-message"
-          role="alert"
-        >
+      <Host
+        id={`error-message-${messageId}`}
+        class="gcds-error-message-wrapper"
+      >
+        <p class="error-message" role="alert">
           {message}
         </p>
       </Host>

@@ -10,7 +10,7 @@ export default {
       options: ['date', 'version'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'date' }
+        defaultValue: { summary: 'date' },
       },
     },
     ...langProp,
@@ -22,31 +22,36 @@ export default {
       },
       table: {
         category: 'Slots | Fentes',
-      }
+      },
     },
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
-<gcds-date-modified ${args.type != "date" ? `type="${args.type}"`: null} ${args.lang != "en" ? `lang="${args.lang}"` : null}>
+<gcds-date-modified ${args.type != 'date' ? `type="${args.type}"` : null} ${
+    args.lang != 'en' ? `lang="${args.lang}"` : null
+  }>
   ${args.default}
 </gcds-date-modified>
 
 <!-- React code -->
-<GcdsDateModified ${args.type != "date" ? `type="${args.type}"`: null} ${args.lang != "en" ? `lang="${args.lang}"` : null}>
+<GcdsDateModified ${args.type != 'date' ? `type="${args.type}"` : null} ${
+    args.lang != 'en' ? `lang="${args.lang}"` : null
+  }>
   ${args.default}
 </GcdsDateModified>
-`).replace(/ null/g, '');
+`.replace(/ null/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args => `
 <gcds-date-modified
-  ${args.type != "date" ? `type="${args.type}"`: null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.type != 'date' ? `type="${args.type}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.default}
 </gcds-date-modified>
-`);
+`;
 
 // ------ Date modified default ------
 
