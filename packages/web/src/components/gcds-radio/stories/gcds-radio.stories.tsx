@@ -133,7 +133,8 @@ const Template = args =>
 </GcdsRadio>
 `.replace(/\s\snull\n/g, '');
 
-const TemplateError = (args) => (`
+const TemplateError = args =>
+  `
 <gcds-fieldset
   legend="Fieldset legend"
   fieldset-id="fieldset"
@@ -147,7 +148,7 @@ const TemplateError = (args) => (`
     name="${args.name}"
     ${args.hint ? `hint="${args.hint}"` : null}
     ${args.value ? `value="${args.value}1"` : null}
-    ${args.lang != "en" ? `lang="${args.lang}"` : null}
+    ${args.lang != 'en' ? `lang="${args.lang}"` : null}
   >
   </gcds-radio>
   <gcds-radio
@@ -156,13 +157,14 @@ const TemplateError = (args) => (`
     name="${args.name}"
     ${args.hint ? `hint="${args.hint}"` : null}
     ${args.value ? `value="${args.value}2"` : null}
-    ${args.lang != "en" ? `lang="${args.lang}"` : null}
+    ${args.lang != 'en' ? `lang="${args.lang}"` : null}
   >
   </gcds-radio>
 </gcds-fieldset>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-radio
   radio-id="${args.radioId}"
@@ -173,10 +175,10 @@ const TemplatePlayground = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-radio>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -188,7 +190,7 @@ Default.args = {
   disabled: false,
   value: '',
   checked: false,
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Disabled = Template.bind({});
@@ -201,7 +203,7 @@ Disabled.args = {
   disabled: true,
   value: '',
   checked: false,
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Checked = Template.bind({});
@@ -214,7 +216,7 @@ Checked.args = {
   disabled: false,
   value: '',
   checked: true,
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Error = TemplateError.bind({});
@@ -227,7 +229,7 @@ Error.args = {
   disabled: false,
   value: '',
   checked: false,
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});

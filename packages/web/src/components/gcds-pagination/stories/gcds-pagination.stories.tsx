@@ -118,25 +118,26 @@ const Template = args =>
 </GcdsPagination>
 `.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-pagination
-  ${args.display != "list" ? `display="${args.display}"` : null}
+  ${args.display != 'list' ? `display="${args.display}"` : null}
   label="${args.label}"
-  ${args.display == "list" ?
-  `${args.totalPages ? `total-pages="${args.totalPages}"` : null}
+  ${
+    args.display == 'list'
+      ? `${args.totalPages ? `total-pages="${args.totalPages}"` : null}
   ${args.currentPage ? `current-page="${args.currentPage}"` : null}
   ${args.url ? `url='${args.url}'` : null}`
-  :
-  `${args.previousHref ? `previous-href="${args.previousHref}"` : null}
+      : `${args.previousHref ? `previous-href="${args.previousHref}"` : null}
   ${args.previousLabel ? `previous-label="${args.previousLabel}"` : null}
   ${args.nextHref ? `next-href="${args.nextHref}"` : null}
   ${args.nextLabel ? `next-label="${args.nextLabel}"` : null}`
   }
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-pagination>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -149,7 +150,7 @@ Default.args = {
   previousLabel: '',
   nextHref: '#next',
   nextLabel: '',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const SimpleEn = Template.bind({});
@@ -163,7 +164,7 @@ SimpleEn.args = {
   previousLabel: 'Title of page',
   nextHref: '#next',
   nextLabel: '3 of 3',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const SimpleFr = Template.bind({});
@@ -177,7 +178,7 @@ SimpleFr.args = {
   previousLabel: 'Titre de la page',
   nextHref: '#next',
   nextLabel: '3 du 3',
-  lang: 'fr'
+  lang: 'fr',
 };
 
 export const ListEn = Template.bind({});
@@ -191,7 +192,7 @@ ListEn.args = {
   previousLabel: '',
   nextHref: '',
   nextLabel: '',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const ListFr = Template.bind({});
@@ -205,7 +206,7 @@ ListFr.args = {
   previousLabel: '',
   nextHref: '',
   nextLabel: '',
-  lang: 'fr'
+  lang: 'fr',
 };
 
 export const UrlOffset = Template.bind({});
@@ -219,7 +220,7 @@ UrlOffset.args = {
   previousLabel: '',
   nextHref: '',
   nextLabel: '',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const UrlMatch = Template.bind({});
@@ -233,7 +234,7 @@ UrlMatch.args = {
   previousLabel: '',
   nextHref: '',
   nextLabel: '',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -247,5 +248,5 @@ Playground.args = {
   previousLabel: '',
   nextHref: '#next',
   nextLabel: '',
-  lang: 'en'
+  lang: 'en',
 };

@@ -112,7 +112,8 @@ const Template = args =>
 </GcdsCard>
 `.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-card
   card-title="${args.cardTitle}"
@@ -126,7 +127,7 @@ const TemplatePlayground = (args) => (`
 >
   ${args.footer ? `<div slot="footer">${args.footer}</div>` : null}
 </gcds-card>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -149,7 +150,8 @@ Link.args = {
   type: 'link',
   titleElement: 'a',
   tag: '',
-  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  description:
+    'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: '',
   imgAlt: '',
   footer: '',
@@ -162,7 +164,8 @@ Action.args = {
   type: 'action',
   titleElement: 'a',
   tag: '',
-  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  description:
+    'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: '',
   imgAlt: '',
   footer: '<a href="#">Action link</a>',
@@ -175,7 +178,8 @@ Image.args = {
   type: 'link',
   titleElement: 'a',
   tag: '',
-  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  description:
+    'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: 'https://picsum.photos/480/270',
   imgAlt: 'An image with the card component',
   footer: '',
@@ -188,7 +192,8 @@ Playground.args = {
   type: 'link',
   titleElement: 'a',
   tag: '',
-  description: 'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  description:
+    'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: '',
   imgAlt: '',
   footer: '',

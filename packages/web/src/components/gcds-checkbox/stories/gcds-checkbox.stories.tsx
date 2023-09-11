@@ -149,7 +149,8 @@ const Template = args =>
 </GcdsCheckbox>
 `.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-checkbox
   checkbox-id="${args.checkboxId}"
@@ -161,11 +162,11 @@ const TemplatePlayground = (args) => (`
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.checked ? `checked` : null}
-  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-checkbox>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -179,7 +180,7 @@ Default.args = {
   value: '',
   checked: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Required = Template.bind({});
@@ -194,7 +195,7 @@ Required.args = {
   value: '',
   checked: false,
   validateOn: 'other',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Disabled = Template.bind({});
@@ -209,7 +210,7 @@ Disabled.args = {
   value: '',
   checked: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Error = Template.bind({});
@@ -224,7 +225,7 @@ Error.args = {
   value: '',
   checked: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Checked = Template.bind({});
@@ -239,7 +240,7 @@ Checked.args = {
   value: '',
   checked: true,
   validateOn: 'other',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});

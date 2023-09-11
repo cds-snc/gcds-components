@@ -135,7 +135,8 @@ const Template = args =>
 </GcdsFieldset>
 `.replace(/\s\snull\n/g, '');
 
-const TemplateRequired = (args) => (`
+const TemplateRequired = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-fieldset
   fieldset-id="${args.fieldsetId}"
@@ -144,8 +145,8 @@ const TemplateRequired = (args) => (`
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
-  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <gcds-checkbox
     checkbox-id="check1"
@@ -171,8 +172,8 @@ const TemplateRequired = (args) => (`
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
-  ${args.validateOn != "blur" ? `validateOn="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <GcdsCheckbox
     checkboxId="check1"
@@ -189,9 +190,10 @@ const TemplateRequired = (args) => (`
   >
   </GcdsCheckbox>
 </GcdsFieldset>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-fieldset
   fieldset-id="${args.fieldsetId}"
@@ -200,8 +202,8 @@ const TemplatePlayground = (args) => (`
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
-  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <gcds-input input-id="form-input" label="Input label" hint="Hint / Example message." size="6"></gcds-input>
   <gcds-select select-id="form-select" label="Select label" hint="Hint / Example message." default-value="Select option.">
@@ -215,7 +217,7 @@ const TemplatePlayground = (args) => (`
     <option value="8">Option 8</option>
   </gcds-select>
 </gcds-fieldset>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -226,7 +228,7 @@ Default.args = {
   required: false,
   disabled: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Required = TemplateRequired.bind({});
@@ -238,7 +240,7 @@ Required.args = {
   required: true,
   disabled: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Disabled = Template.bind({});
@@ -250,7 +252,7 @@ Disabled.args = {
   required: false,
   disabled: true,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Error = Template.bind({});
@@ -262,7 +264,7 @@ Error.args = {
   required: false,
   disabled: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -274,5 +276,5 @@ Playground.args = {
   required: false,
   disabled: false,
   validateOn: 'blur',
-  lang: 'en'
+  lang: 'en',
 };
