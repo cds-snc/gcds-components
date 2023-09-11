@@ -17,7 +17,8 @@ export class GcdsFooter {
   /**
    * Display mode of the footer
    */
-  @Prop({ reflect: true, mutable: true }) display: 'compact' | 'full' = 'compact';
+  @Prop({ reflect: true, mutable: true }) display: 'compact' | 'full' =
+    'compact';
 
   /**
    * GcdsSignature - The variant of the Government of Canada wordmark

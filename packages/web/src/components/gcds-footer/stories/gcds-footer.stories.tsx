@@ -82,27 +82,44 @@ const Template = args =>
 </GcdsFooter>
 `.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-footer
-  ${args.display != "compact" ? `display="${args.display}"` : null}
-  ${args.contextualHeading && args.contextualLinks ? `contextual-heading="${args.contextualHeading}"` : null}
-  ${args.contextualHeading && args.contextualLinks ? `contextual-links='${args.contextualLinks}'` : null}
+  ${args.display != 'compact' ? `display="${args.display}"` : null}
+  ${
+    args.contextualHeading && args.contextualLinks
+      ? `contextual-heading="${args.contextualHeading}"`
+      : null
+  }
+  ${
+    args.contextualHeading && args.contextualLinks
+      ? `contextual-links='${args.contextualLinks}'`
+      : null
+  }
   ${args.subLinks ? `sub-links='${args.subLinks}'` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-footer>
 
 <!-- React code -->
 <GcdsFooter
-  ${args.display != "compact" ? `display="${args.display}"` : null}
-  ${args.contextualHeading && args.contextualLinks ? `contextualHeading="${args.contextualHeading}"` : null}
-  ${args.contextualHeading && args.contextualLinks ? `contextualLinks='${args.contextualLinks}'` : null}
+  ${args.display != 'compact' ? `display="${args.display}"` : null}
+  ${
+    args.contextualHeading && args.contextualLinks
+      ? `contextualHeading="${args.contextualHeading}"`
+      : null
+  }
+  ${
+    args.contextualHeading && args.contextualLinks
+      ? `contextualLinks='${args.contextualLinks}'`
+      : null
+  }
   ${args.subLinks ? `subLinks='${args.subLinks}'` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsFooter>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -111,19 +128,19 @@ Default.args = {
   contextualLinks:
     '{ "Why GC Notify": "#", "Features": "#", "Activity on GC Notify": "#" }',
   subLinks: '',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const DisplayCompact = Template.bind({});
 DisplayCompact.args = {
   display: 'compact',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const DisplayFull = Template.bind({});
 DisplayFull.args = {
   display: 'full',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const DisplayContextual = Template.bind({});
@@ -132,7 +149,7 @@ DisplayContextual.args = {
   contextualHeading: 'Contextual navigation',
   contextualLinks:
     '{ "Why GC Notify": "#", "Features": "#", "Activity on GC Notify": "#" }',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -142,5 +159,5 @@ Playground.args = {
   contextualLinks:
     '{ "Why GC Notify": "#", "Features": "#", "Activity on GC Notify": "#" }',
   subLinks: '',
-  lang: 'en'
+  lang: 'en',
 };

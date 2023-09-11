@@ -94,7 +94,7 @@ export default {
       },
       table: {
         category: 'Slots | Fentes',
-      }
+      },
     },
   },
 };
@@ -150,14 +150,23 @@ const Template = args =>
 </GcdsHeader>
 `.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-header
   lang-href="${args.langHref}"
   skip-to-href="${args.skipToHref}"
-  ${!args.signatureHasLink ? `signature-has-link="${args.signatureHasLink}"` : null}
-  ${args.signatureVariant != "colour" ? `signature-variant="${args.signatureVariant}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${
+    !args.signatureHasLink
+      ? `signature-has-link="${args.signatureHasLink}"`
+      : null
+  }
+  ${
+    args.signatureVariant != 'colour'
+      ? `signature-variant="${args.signatureVariant}"`
+      : null
+  }
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.menu ? `<div slot="menu">${args.menu}</div>` : null}
   ${args.breadcrumb ? `<div slot="breadcrumb">${args.breadcrumb}</div>` : null}
@@ -165,7 +174,7 @@ const TemplatePlayground = (args) => (`
   ${args.toggle ? `<div slot="toggle">${args.toggle}</div>` : null}
   ${args.banner ? `<div slot="banner">${args.banner}</div>` : null}
 </gcds-header>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
@@ -178,7 +187,7 @@ Default.args = {
   search: '',
   toggle: '',
   banner: '',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const SkipTo = Template.bind({});
@@ -188,7 +197,7 @@ SkipTo.args = {
   signatureHasLink: true,
   signatureVariant: 'colour',
   skipTo: 'Skip-to-nav slot',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Banner = Template.bind({});
@@ -198,7 +207,7 @@ Banner.args = {
   signatureHasLink: true,
   signatureVariant: 'colour',
   banner: 'Banner slot',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Toggle = Template.bind({});
@@ -208,7 +217,7 @@ Toggle.args = {
   signatureHasLink: true,
   signatureVariant: 'colour',
   toggle: 'Toggle slot',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Menu = Template.bind({});
@@ -218,7 +227,7 @@ Menu.args = {
   signatureHasLink: true,
   signatureVariant: 'colour',
   menu: 'Menu slot',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Breadcrumbs = Template.bind({});
@@ -228,7 +237,7 @@ Breadcrumbs.args = {
   signatureHasLink: true,
   signatureVariant: 'colour',
   breadcrumb: 'Breadcrumbs slot',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const All = Template.bind({});
@@ -242,7 +251,7 @@ All.args = {
   toggle: 'Toggle slot',
   menu: 'Menu slot',
   breadcrumb: 'Breadcrumbs slot',
-  lang: 'en'
+  lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -256,5 +265,5 @@ Playground.args = {
   search: '',
   toggle: '',
   banner: '',
-  lang: 'en'
+  lang: 'en',
 };
