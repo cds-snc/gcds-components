@@ -425,7 +425,7 @@ export namespace Components {
         /**
           * Display mode of the footer
          */
-        "display": 'compact' | 'full';
+        "display"?: 'compact' | 'full';
         /**
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
@@ -1865,7 +1865,7 @@ declare namespace LocalJSX {
         /**
           * Display mode of the footer
          */
-        "display": 'compact' | 'full';
+        "display"?: 'compact' | 'full';
         /**
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
