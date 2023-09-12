@@ -1,0 +1,54 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as NavLink from './gcds-nav-link.stories';
+
+<Meta of={NavLink} name="Overview" />
+
+# NavLink<br/>`<gcds-nav-link>`
+
+<Canvas
+  of={NavLink.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### State
+
+#### Default
+
+<Canvas
+  of={NavLink.Default}
+  story={{ inline: true }}
+/>
+
+#### Current
+
+<Canvas
+  of={NavLink.Current}
+  story={{ inline: true }}
+/>
+
+### In top navigation
+
+#### Default
+
+<Canvas
+  of={NavLink.DefaultTopNav}
+  story={{ inline: true }}
+/>
+
+#### Current
+
+<Canvas
+  of={NavLink.CurrentTopNav}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-nav-link" target="_blank">Github</gcds-button>
+  </li>
+</ul>

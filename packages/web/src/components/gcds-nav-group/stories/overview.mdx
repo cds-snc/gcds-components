@@ -1,0 +1,61 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as NavGroup from './gcds-nav-group.stories';
+
+<Meta of={NavGroup} name="Overview" />
+
+# NavGroup<br/>`<gcds-nav-group>`
+
+<Canvas
+  of={NavGroup.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### State
+
+#### Default
+
+<Canvas
+  of={NavGroup.Default}
+  story={{ inline: true }}
+/>
+
+#### Open
+
+<Canvas
+  of={NavGroup.Open}
+  story={{ inline: true }}
+/>
+
+### Labels
+
+#### Open / close triggers
+
+<Canvas
+  of={NavGroup.Triggers}
+  story={{ inline: true }}
+/>
+
+#### Menu
+
+<Canvas
+  of={NavGroup.Menu}
+  story={{ inline: true }}
+/>
+
+### In top navigation
+
+<Canvas
+  of={NavGroup.TopNav}
+  story={{ inline: true, height: '20rem' }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-nav-group" target="_blank">Github</gcds-button>
+  </li>
+</ul>

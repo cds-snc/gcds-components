@@ -6,10 +6,10 @@ import * as TopNav from './gcds-top-nav.stories';
 {!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
-  of={TopNav.Default}
+  of={TopNav.Props}
   story={{ inline: true }}
   sourceState="shown"
   type="dynamic"
 />
 
-<Controls of={TopNav.Default} sort="requiredFirst" />
+<Controls of={TopNav.Props} sort="requiredFirst" />
