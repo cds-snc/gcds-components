@@ -5,8 +5,8 @@ export default {
 
   argTypes: {
     // Props
-    openLabel: {
-      name: 'open-label',
+    menuLabel: {
+      name: 'menu-label',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -127,7 +127,16 @@ const TemplatePlayground = args =>
 
 export const Default = Template.bind({});
 Default.args = {
-  menuLabel: '',
+  menuLabel: 'Sub-menu',
+  openTrigger: 'Navigation group',
+  closeTrigger: '',
+  open: false,
+  lang: 'en',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  menuLabel: 'Sub-menu',
   openTrigger: 'Navigation group',
   closeTrigger: '',
   open: false,
@@ -136,7 +145,7 @@ Default.args = {
 
 export const Open = Template.bind({});
 Open.args = {
-  menuLabel: '',
+  menuLabel: 'Open sub-menu',
   openTrigger: 'Navigation group',
   closeTrigger: '',
   open: true,
@@ -145,7 +154,7 @@ Open.args = {
 
 export const Triggers = Template.bind({});
 Triggers.args = {
-  menuLabel: '',
+  menuLabel: 'Triggers sub-menu',
   openTrigger: 'Open the nav group',
   closeTrigger: 'Close the nav group',
   open: false,
@@ -163,7 +172,7 @@ Menu.args = {
 
 export const TopNav = TemplateTopNav.bind({});
 TopNav.args = {
-  menuLabel: '',
+  menuLabel: 'Topnav sub-menu',
   openTrigger: 'Navigation group',
   closeTrigger: '',
   open: false,

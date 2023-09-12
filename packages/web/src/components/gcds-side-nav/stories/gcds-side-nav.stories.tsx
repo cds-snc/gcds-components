@@ -106,6 +106,12 @@ Default.args = {
   lang: 'en',
 };
 
+export const Props = Template.bind({});
+Props.args = {
+  label: 'Label',
+  lang: 'en',
+};
+
 export const Label = Template.bind({});
 Label.args = {
   label: 'Side navigation label',

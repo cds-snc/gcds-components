@@ -6,10 +6,10 @@ import * as SideNav from './gcds-side-nav.stories';
 {!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
-  of={SideNav.Default}
+  of={SideNav.Props}
   story={{ inline: true }}
   sourceState="shown"
   type="dynamic"
 />
 
-<Controls of={SideNav.Default} sort="requiredFirst" />
+<Controls of={SideNav.Props} sort="requiredFirst" />
