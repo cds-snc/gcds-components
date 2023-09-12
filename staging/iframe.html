@@ -340,11 +340,71 @@
   /* ----- PROPERTIES PAGE ----- */
 
   /* Component Preview - hide React code */
-  .sb-show-main #storybook-docs .sb-story > div > *:not(.hydrated)  {
+  .sb-show-main #storybook-docs .sb-story>div>*:not(.hydrated) {
     font-size: 0;
     color: var(--gcds-text-light);
     padding: 0 !important;
     border: none !important;
+  }
+
+  /* Copy & hide code btns */
+  .docs-story>.css-1wjen9k {
+    padding-block-end: var(--gcds-spacing-700);
+  }
+
+  .docs-story .css-25bv1u,
+  .css-3s4ai0 .css-111a2cx {
+    right: auto !important;
+    left: 0 !important;
+  }
+
+  .css-3s4ai0 {
+    padding-block-end: var(--gcds-spacing-550);
+  }
+
+  .css-3s4ai0 .css-111a2cx {
+    background-color: transparent !important;
+  }
+
+  .docs-story .docblock-code-toggle,
+  .css-3s4ai0 .css-otxova {
+    border: var(--gcds-button-border-width) solid currentColor !important;
+    border-radius: var(--gcds-button-border-radius) !important;
+    box-sizing: border-box;
+    font: var(--gcds-button-font) !important;
+    font-size: .875rem !important;
+    margin: 0 var(--gcds-spacing-150) var(--gcds-spacing-250) var(--gcds-spacing-300) !important;
+    padding: var(--gcds-spacing-200) var(--gcds-spacing-150) !important;
+    transition: all 0.15s ease-in-out 0s;
+  }
+
+  .docs-story .docblock-code-toggle {
+    color: var(--gcds-button-secondary-default-text) !important;
+  }
+
+  .css-3s4ai0 .css-otxova {
+    background-color: #262626 !important;
+    color: var(--gcds-text-light) !important;
+  }
+
+  .docs-story .docblock-code-toggle:hover:not(:focus) {
+    background-color: var(--gcds-button-secondary-hover-background);
+    border-color: var(--gcds-button-secondary-default-text);
+    color: var(--gcds-button-secondary-default-text);
+  }
+
+  .css-3s4ai0 .css-otxova:hover:not(:focus) {
+    background-color: rgba(255, 255, 255, .2) !important;
+  }
+
+  .docs-story .docblock-code-toggle:focus,
+  .css-3s4ai0 .css-otxova:focus {
+    background-color: var(--gcds-focus-background) !important;
+    border-color: var(--gcds-focus-background) !important;
+    color: var(--gcds-focus-text) !important;
+    outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-focus-background) !important;
+    outline-offset: var(--gcds-button-border-width) !important;
+    box-shadow: none !important;
   }
 
   /* Change props table headings */
@@ -428,7 +488,7 @@
     border: 0 !important;
   }
 
-  .docblock-argstable-body td  .css-1jvt1oy,
+  .docblock-argstable-body td .css-1jvt1oy,
   .docblock-argstable-body td .css-um6g9i,
   .docblock-argstable-body td .css-1qot2ot,
   .docblock-argstable-body td .css-4q52yj {
@@ -509,8 +569,8 @@
   /* ----- COMPONENT SPECIFIC ----- */
 
   /* gcds-button */
-  .sbdocs-preview .docs-story gcds-button.hydrated + gcds-button.hydrated,
-  .sb-show-main #storybook-root gcds-button.hydrated + gcds-button.hydrated {
+  .sbdocs-preview .docs-story gcds-button.hydrated+gcds-button.hydrated,
+  .sb-show-main #storybook-root gcds-button.hydrated+gcds-button.hydrated {
     margin: 0 0 0 var(--gcds-spacing-400);
   }
 
