@@ -45,7 +45,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@0897172f266b017b55f0d68271c4d9124eb20c69
+        uses: JS-DevTools/npm-publish@fe72237be0920f7a0cafd6a966c9b929c9466e9b
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -126,7 +126,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@0897172f266b017b55f0d68271c4d9124eb20c69
+        uses: JS-DevTools/npm-publish@fe72237be0920f7a0cafd6a966c9b929c9466e9b
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
