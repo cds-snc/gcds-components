@@ -53,7 +53,7 @@ jobs:
 
       - name: Configure AWS credentials using OIDC
         if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@04b98b3f9e85f563fb061be8751a0352327246b0 # v3.0.1
+        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
         with:
           role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
           role-session-name: CDNPublish
@@ -134,7 +134,7 @@ jobs:
 
       - name: Configure AWS credentials using OIDC
         if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@04b98b3f9e85f563fb061be8751a0352327246b0 # v3.0.1
+        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
         with:
           role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
           role-session-name: CDNPublish
