@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute  | Description                                      | Type                        | Default      |
-| --------- | ---------- | ------------------------------------------------ | --------------------------- | ------------ |
-| `hasLink` | `has-link` | Has link to canada.ca. Only applies to signature | `boolean`                   | `undefined`  |
-| `type`    | `type`     | The type of graphic to render                    | `"signature" \| "wordmark"` | `'wordmark'` |
-| `variant` | `variant`  | The colour variant to render                     | `"colour" \| "white"`       | `'colour'`   |
+| Property  | Attribute  | Description                                      | Type                        | Default       |
+| --------- | ---------- | ------------------------------------------------ | --------------------------- | ------------- |
+| `hasLink` | `has-link` | Has link to canada.ca. Only applies to signature | `boolean`                   | `false`       |
+| `type`    | `type`     | The type of graphic to render                    | `"signature" \| "wordmark"` | `'signature'` |
+| `variant` | `variant`  | The colour variant to render                     | `"colour" \| "white"`       | `'colour'`    |
 
 
 ## Dependencies

@@ -47,7 +47,7 @@ export class GcdsSignature {
   /**
    * Has link to canada.ca. Only applies to signature
    */
-  @Prop({ mutable: true }) hasLink: boolean;
+  @Prop({ mutable: true }) hasLink: boolean = false;
 
   /**
    * Language of rendered component

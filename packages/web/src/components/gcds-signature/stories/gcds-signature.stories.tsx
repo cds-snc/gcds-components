@@ -37,7 +37,7 @@ const Template = args =>
 <!-- Web component code (Angular, Vue) -->
 <gcds-signature
   ${args.type != 'signature' ? `type="${args.type}"` : null}
-  has-link="${args.hasLink}"
+  ${args.hasLink != 'false' ? `has-link="${args.hasLink}"` : null}
   ${args.variant != 'colour' ? `variant="${args.variant}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -46,7 +46,7 @@ const Template = args =>
 <!-- React code -->
 <GcdsSignature
   ${args.type != 'signature' ? `type="${args.type}"` : null}
-  hasLink="${args.hasLink}"
+  ${args.hasLink != 'false' ? `hasLink="${args.hasLink}"` : null}
   ${args.variant != 'colour' ? `variant="${args.variant}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
