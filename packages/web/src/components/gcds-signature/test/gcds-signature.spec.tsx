@@ -20,7 +20,7 @@ describe('gcds-signature', () => {
       html: `<gcds-signature type="signature" lang="en"></gcds-signature>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-signature lang="en" type="signature">
+      <gcds-signature lang="en" type="signature" variant="colour">
         <div class="gcds-signature">
           Government of Canada
         </div>
@@ -33,7 +33,7 @@ describe('gcds-signature', () => {
       html: `<gcds-signature type="signature" lang="en" has-link="true"></gcds-signature>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-signature lang="en" type="signature" has-link="true">
+      <gcds-signature lang="en" type="signature" has-link="true" variant="colour">
         <a href="https://canada.ca/en.html">
           Government of Canada
         </a>
@@ -46,7 +46,7 @@ describe('gcds-signature', () => {
       html: `<gcds-signature type="signature" lang="fr"></gcds-signature>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-signature lang="fr" type="signature">
+      <gcds-signature lang="fr" type="signature" variant="colour">
         <div class="gcds-signature">
           Gouvernement du Canada
         </div>
@@ -59,7 +59,7 @@ describe('gcds-signature', () => {
       html: `<gcds-signature type="signature" lang="fr" has-link="true"></gcds-signature>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-signature lang="fr" type="signature" has-link="true">
+      <gcds-signature lang="fr" type="signature" has-link="true" variant="colour">
         <a href="https://canada.ca/fr.html">
           Gouvernement du Canada
         </a>
@@ -73,7 +73,7 @@ describe('gcds-signature', () => {
       html: `<gcds-signature type="wordmark" lang="en"></gcds-signature>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-signature lang="en" type="wordmark">
+      <gcds-signature lang="en" type="wordmark" variant="colour">
         <div class="gcds-signature">
           Symbol of the Government of Canada
         </div>
@@ -86,7 +86,7 @@ describe('gcds-signature', () => {
       html: `<gcds-signature type="wordmark" lang="fr"></gcds-signature>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-signature lang="fr" type="wordmark">
+      <gcds-signature lang="fr" type="wordmark" variant="colour">
         <div class="gcds-signature">
           Symbole du Gouvernement du Canada
         </div>

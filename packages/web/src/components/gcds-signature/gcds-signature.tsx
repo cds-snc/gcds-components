@@ -21,7 +21,8 @@ export class GcdsSignature {
   /**
    * The type of graphic to render
    */
-  @Prop({ reflect: true, mutable: true }) type: 'signature' | 'wordmark';
+  @Prop({ reflect: true, mutable: true }) type: 'signature' | 'wordmark' =
+    'signature';
 
   @Watch('type')
   validateType(newValue: string) {
@@ -33,7 +34,8 @@ export class GcdsSignature {
   /**
    * The colour variant to render
    */
-  @Prop({ reflect: true, mutable: true }) variant: 'colour' | 'white';
+  @Prop({ reflect: true, mutable: true }) variant: 'colour' | 'white' =
+    'colour';
 
   @Watch('variant')
   validateVariant(newValue: string) {
@@ -45,7 +47,7 @@ export class GcdsSignature {
   /**
    * Has link to canada.ca. Only applies to signature
    */
-  @Prop({ mutable: true }) hasLink: boolean;
+  @Prop({ mutable: true }) hasLink: boolean = false;
 
   /**
    * Language of rendered component
