@@ -1,0 +1,174 @@
+:host link,
+:host a {
+  cursor: pointer;
+  font: var(--gcds-link-font);
+  padding: var(--gcds-link-padding);
+  border: var(--gcds-link-border-width) solid transparent;
+  text-decoration: none;
+  border-radius: var(--gcds-link-border-radius);
+  box-sizing: border-box;
+  display: inline-block;
+  width: var(--gcds-link-width);
+  text-align: center;
+  transition: all 0.15s ease-in-out;
+
+  /* link Role Styles */
+  &.link--role-danger {
+    background-color: var(--gcds-link-danger-default-background);
+    color: var(--gcds-link-danger-default-text);
+
+    &:hover {
+      background-color: var(--gcds-link-danger-hover-background);
+    }
+
+    &:focus {
+      background-color: var(--gcds-link-shared-focus-background);
+      color: var(--gcds-link-shared-focus-text);
+      outline: var(--gcds-link-shared-focus-outline-width) solid var(--gcds-link-shared-focus-background);
+      outline-offset: var(--gcds-link-border-width);
+      border-color: var(--gcds-link-shared-focus-background);
+    }
+
+    &:active {
+      background-color: var(--gcds-link-shared-active-background);
+      border-color: var(--gcds-link-shared-active-background);
+    }
+  }
+
+  &.link--role-primary {
+    background-color: var(--gcds-link-primary-default-background);
+    color: var(--gcds-link-primary-default-text);
+
+    &:hover {
+      background-color: var(--gcds-link-primary-hover-background);
+    }
+
+    &:focus {
+      background-color: var(--gcds-link-shared-focus-background);
+      color: var(--gcds-link-shared-focus-text);
+      outline: var(--gcds-link-shared-focus-outline-width) solid var(--gcds-link-shared-focus-background);
+      outline-offset: var(--gcds-link-border-width);
+      border-color: var(--gcds-link-shared-focus-background);
+    }
+
+    &:active {
+      background-color: var(--gcds-link-shared-active-background);
+      border-color: var(--gcds-link-shared-active-background);
+    }
+  }
+
+  &.link--role-secondary {
+    background-color: var(--gcds-link-secondary-default-background);
+    color: var(--gcds-link-secondary-default-text);
+    border: var(--gcds-link-border-width) solid currentColor;
+
+    &:hover {
+      background-color: var(--gcds-link-secondary-hover-background);
+      border-color: var(--gcds-link-secondary-default-text);
+      color: var(--gcds-link-secondary-default-text);
+    }
+
+    &:focus {
+      background-color: var(--gcds-link-shared-focus-background);
+      color: var(--gcds-link-shared-focus-text);
+      outline: var(--gcds-link-shared-focus-outline-width) solid var(--gcds-link-shared-focus-background);
+      outline-offset: var(--gcds-link-border-width);
+      border-color: var(--gcds-link-shared-focus-background);
+
+      &:hover {
+        border-color: var(--gcds-link-shared-focus-background);
+      }
+    }
+
+    &:active {
+      background-color: var(--gcds-link-shared-active-background);
+      border-color: var(--gcds-link-shared-active-background) !important;
+    }
+  }
+
+  &.link--text-only {
+    background-color: var(--gcds-link-text-only-default-background);
+    color: var(--gcds-link-text-only-default-text);
+
+    &:not([aria-disabled='true']) {
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: var(--gcds-link-text-only-default-decoration-thickness);
+    }
+
+    &:hover {
+      background-color: var(--gcds-link-text-only-default-background);
+      color: var(--gcds-link-text-only-hover-text);
+      text-decoration-thickness: var(--gcds-link-text-only-hover-decoration-thickness);
+    }
+
+    &:focus {
+      background-color: var(--gcds-link-shared-focus-background);
+      color: var(--gcds-link-shared-focus-text);
+      outline: var(--gcds-link-shared-focus-outline-width) solid var(--gcds-link-shared-focus-background);
+      outline-offset: var(--gcds-link-border-width);
+      border-color: var(--gcds-link-shared-focus-background);
+      text-decoration: none;
+    }
+
+    &:active {
+      background-color: var(--gcds-link-shared-active-background);
+      border-color: var(--gcds-link-shared-active-background);
+    }
+  }
+
+  &.link--role-skip-to-content {
+    position: absolute;
+    top: var(--gcds-link-skip-top);
+    left: 0;
+    width: inherit;
+    z-index: 3;
+
+    &:not(:focus) {
+      clip: rect(0, 0, 0, 0);
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      width: 0;
+    }
+
+    &:focus {
+      background-color: var(--gcds-link-shared-focus-background);
+      color: var(--gcds-link-shared-focus-text);
+      outline: var(--gcds-link-shared-focus-outline-width) solid var(--gcds-link-shared-focus-background);
+      outline-offset: var(--gcds-link-border-width);
+      border-color: var(--gcds-link-shared-focus-background);
+      text-decoration: none;
+    }
+
+    &:active {
+      background-color: var(--gcds-link-shared-active-background);
+      border-color: var(--gcds-link-shared-active-background);
+    }
+  }
+
+  /* Shared Styles */
+  &[aria-disabled='true'] {
+    background-color: var(--gcds-link-shared-disabled-background);
+    color: var(--gcds-link-shared-disabled-text);
+    cursor: not-allowed;
+    border: var(--gcds-link-border-width) solid currentColor;
+    pointer-events: none;
+  }
+
+  /* Small link styling */
+  &.link--small {
+    font: var(--gcds-link-small-font);
+    padding: var(--gcds-link-small-padding);
+  }
+}
+
+@media screen and (max-width: 30rem) {
+  :host link:not(.link--text-only),
+  :host a:not(.link--text-only) {
+    width: var(--gcds-link-mobile-width);
+    margin: var(--gcds-link-mobile-margin);
+  }
+}
