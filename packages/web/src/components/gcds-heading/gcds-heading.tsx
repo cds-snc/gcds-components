@@ -3,8 +3,7 @@ import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 @Component({
   tag: 'gcds-heading',
   styleUrl: 'gcds-heading.css',
-  shadow: false,
-  scoped: true,
+  shadow: true,
 })
 export class GcdsHeading {
   @Element() el: HTMLElement;
