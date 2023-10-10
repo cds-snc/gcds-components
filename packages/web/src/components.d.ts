@@ -713,6 +713,64 @@ export namespace Components {
          */
         "href": string;
     }
+    interface GcdsLink {
+        /**
+          * Custom callback function on blur event
+         */
+        "blurHandler": Function;
+        /**
+          * Custom callback function on click event
+         */
+        "clickHandler": Function;
+        /**
+          * The disabled attribute for a <link> element.
+         */
+        "disabled": boolean;
+        /**
+          * Sets the display behavior of the link
+         */
+        "display": string | undefined;
+        /**
+          * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
+         */
+        "download": string | undefined;
+        /**
+          * Whether the link is external or not
+         */
+        "external": false;
+        /**
+          * Custom callback function on focus event
+         */
+        "focusHandler": Function;
+        /**
+          * The href attribute specifies the URL of the page the link goes to
+         */
+        "href": string | undefined;
+        /**
+          * The linkId attribute specifies the id for a <link> element.
+         */
+        "linkId": string;
+        /**
+          * The name attribute specifies the name for a <link> element.
+         */
+        "name": string | undefined;
+        /**
+          * The rel attribute specifies the relationship between the current document and the linked document
+         */
+        "rel": string | undefined;
+        /**
+          * Set the link size
+         */
+        "size": 'regular' | 'small';
+        /**
+          * The target attribute specifies where to open the linked document
+         */
+        "target": string | undefined;
+        /**
+          * The type specifies the media type of the linked document
+         */
+        "type": string | undefined;
+    }
     interface GcdsNavGroup {
         /**
           * Label for the expanded button trigger
@@ -1114,6 +1172,10 @@ export interface GcdsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsInputElement;
 }
+export interface GcdsLinkCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsLinkElement;
+}
 export interface GcdsNavGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsNavGroupElement;
@@ -1269,6 +1331,12 @@ declare global {
         prototype: HTMLGcdsLangToggleElement;
         new (): HTMLGcdsLangToggleElement;
     };
+    interface HTMLGcdsLinkElement extends Components.GcdsLink, HTMLStencilElement {
+    }
+    var HTMLGcdsLinkElement: {
+        prototype: HTMLGcdsLinkElement;
+        new (): HTMLGcdsLinkElement;
+    };
     interface HTMLGcdsNavGroupElement extends Components.GcdsNavGroup, HTMLStencilElement {
     }
     var HTMLGcdsNavGroupElement: {
@@ -1375,6 +1443,7 @@ declare global {
         "gcds-input": HTMLGcdsInputElement;
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
+        "gcds-link": HTMLGcdsLinkElement;
         "gcds-nav-group": HTMLGcdsNavGroupElement;
         "gcds-nav-link": HTMLGcdsNavLinkElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
@@ -2169,6 +2238,72 @@ declare namespace LocalJSX {
          */
         "href": string;
     }
+    interface GcdsLink {
+        /**
+          * Custom callback function on blur event
+         */
+        "blurHandler"?: Function;
+        /**
+          * Custom callback function on click event
+         */
+        "clickHandler"?: Function;
+        /**
+          * The disabled attribute for a <link> element.
+         */
+        "disabled"?: boolean;
+        /**
+          * Sets the display behavior of the link
+         */
+        "display"?: string | undefined;
+        /**
+          * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
+         */
+        "download"?: string | undefined;
+        /**
+          * Whether the link is external or not
+         */
+        "external"?: false;
+        /**
+          * Custom callback function on focus event
+         */
+        "focusHandler"?: Function;
+        /**
+          * The href attribute specifies the URL of the page the link goes to
+         */
+        "href"?: string | undefined;
+        /**
+          * The linkId attribute specifies the id for a <link> element.
+         */
+        "linkId"?: string;
+        /**
+          * The name attribute specifies the name for a <link> element.
+         */
+        "name"?: string | undefined;
+        /**
+          * Emitted when the link loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsLinkCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsLinkCustomEvent<void>) => void;
+        /**
+          * The rel attribute specifies the relationship between the current document and the linked document
+         */
+        "rel"?: string | undefined;
+        /**
+          * Set the link size
+         */
+        "size"?: 'regular' | 'small';
+        /**
+          * The target attribute specifies where to open the linked document
+         */
+        "target"?: string | undefined;
+        /**
+          * The type specifies the media type of the linked document
+         */
+        "type"?: string | undefined;
+    }
     interface GcdsNavGroup {
         /**
           * Label for the expanded button trigger
@@ -2615,6 +2750,7 @@ declare namespace LocalJSX {
         "gcds-input": GcdsInput;
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
+        "gcds-link": GcdsLink;
         "gcds-nav-group": GcdsNavGroup;
         "gcds-nav-link": GcdsNavLink;
         "gcds-pagination": GcdsPagination;
@@ -2656,6 +2792,7 @@ declare module "@stencil/core" {
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            "gcds-link": LocalJSX.GcdsLink & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
             "gcds-nav-group": LocalJSX.GcdsNavGroup & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
             "gcds-nav-link": LocalJSX.GcdsNavLink & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;

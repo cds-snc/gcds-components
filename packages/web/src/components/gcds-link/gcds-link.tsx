@@ -3,7 +3,6 @@ import {
   Element,
   Event,
   EventEmitter,
-  Method,
   Host,
   Watch,
   Prop,
@@ -27,38 +26,6 @@ export class GcdsLink {
   /**
    * Props
    */
-
-  /**
-   * Set the main style
-   */
-  @Prop({ mutable: true }) linkRole:
-    | 'primary'
-    | 'secondary'
-    | 'danger'
-    | 'skip-to-content' = 'primary';
-
-  @Watch('linkRole')
-  validatelinkRole(newValue: string) {
-    const values = ['primary', 'secondary', 'danger', 'skip-to-content'];
-
-    if (!values.includes(newValue)) {
-      this.linkRole = 'primary';
-    }
-  }
-
-  /**
-   * Set the style variant
-   */
-  @Prop({ mutable: true }) linkStyle: 'solid' | 'text-only' = 'solid';
-
-  @Watch('linkStyle')
-  validatelinkStyle(newValue: string) {
-    const values = ['solid', 'text-only'];
-
-    if (!values.includes(newValue)) {
-      this.linkStyle = 'solid';
-    }
-  }
 
   /**
    * Set the link size
@@ -94,6 +61,11 @@ export class GcdsLink {
    */
 
   /**
+   * Sets the display behavior of the link
+   */
+  @Prop() display: string | undefined;
+
+  /**
    * The href attribute specifies the URL of the page the link goes to
    */
   @Prop() href: string | undefined;
@@ -109,9 +81,19 @@ export class GcdsLink {
   @Prop() target: string | undefined;
 
   /**
+   * Whether the link is external or not
+   */
+  @Prop() external: false;
+
+  /**
    * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
    */
   @Prop() download: string | undefined;
+
+  /**
+   * The type specifies the media type of the linked document
+   */
+  @Prop() type: string | undefined;
 
   /**
    * Custom callback function on click event
@@ -166,8 +148,6 @@ export class GcdsLink {
 
   componentWillLoad() {
     // Validate attributes and set defaults
-    this.validatelinkRole(this.linkRole);
-    this.validatelinkStyle(this.linkStyle);
     this.validateSize(this.size);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
@@ -178,80 +158,29 @@ export class GcdsLink {
     this.updateLang();
   }
 
-  /**
-   * Focus element
-   */
-  @Method()
-  async focusElement() {
-    this.shadowElement.focus();
-  }
-
-  private handleClick = (e: Event) => {
-    if (this.clickHandler) {
-      this.clickHandler(e);
-    } else {
-      // if (!this.disabled && this.type != 'link' && this.type != 'link') {
-      //   // Attach link to form
-      //   const form = this.el.closest('form');
-      //
-      //   if (form) {
-      //     e.preventDefault();
-      //
-      //     const formlink = document.createElement('link');
-      //     formlink.type = this.type;
-      //     if (this.name) {
-      //       formlink.name = this.name;
-      //     }
-      //     formlink.style.display = 'none';
-      //     form.appendChild(formlink);
-      //     formlink.click();
-      //     formlink.remove();
-      //   }
-      // }
-    }
-
-    // Has any inherited attributes changed on click
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-  };
-
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
-    this.gcdsFocus.emit();
-  };
-
-  private onBlur = e => {
-    if (this.blurHandler) {
-      this.blurHandler(e);
-    }
-
-    this.gcdsBlur.emit();
-  };
-
   render() {
     const {
-      linkRole,
-      linkStyle,
       size,
       linkId,
-      // disabled,
       lang,
-      // name,
+      display,
       href,
       rel,
       target,
+      external,
       download,
+      type,
       inheritedAttributes,
     } = this;
 
     const Tag = 'a';
     const attrs = {
+      display,
       href,
       rel,
       target,
       download,
+      type,
     };
 
     return (
@@ -259,11 +188,9 @@ export class GcdsLink {
         <Tag
           {...attrs}
           id={linkId}
-          onBlur={e => this.onBlur(e)}
-          onFocus={e => this.onFocus(e)}
-          onClick={e => this.handleClick(e)}
-          class={`link--role-${linkRole} link--${linkStyle} link--${size}`}
+          class={`link--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
+          target={target === '_blank' || external ? '_blank' : target}
           {...inheritedAttributes}
           part="link"
         >
@@ -271,7 +198,7 @@ export class GcdsLink {
 
           <slot></slot>
 
-          {target === '_blank' ? (
+          {target === '_blank' || external ? (
             <gcds-icon
               name="external-link"
               label={i18n[lang].label}

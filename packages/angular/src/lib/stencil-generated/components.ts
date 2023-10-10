@@ -579,6 +579,39 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 
 @ProxyCmp({
+  inputs: ['blurHandler', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'linkId', 'linkRole', 'linkStyle', 'name', 'rel', 'size', 'target'],
+  methods: ['focusElement']
+})
+@Component({
+  selector: 'gcds-link',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['blurHandler', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'linkId', 'linkRole', 'linkStyle', 'name', 'rel', 'size', 'target'],
+})
+export class GcdsLink {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur']);
+  }
+}
+
+
+export declare interface GcdsLink extends Components.GcdsLink {
+  /**
+   * Emitted when the link has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
   inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'],
   methods: ['focusTrigger', 'toggleNav']
 })

@@ -23,6 +23,7 @@ export const DIRECTIVES = [
   d.GcdsInput,
   d.GcdsLabel,
   d.GcdsLangToggle,
+  d.GcdsLink,
   d.GcdsNavGroup,
   d.GcdsNavLink,
   d.GcdsPagination,
