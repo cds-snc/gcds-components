@@ -41,6 +41,12 @@ export class GcdsLink {
     }
   }
 
+  private handleClick = (e: Event) => {
+    if (this.clickHandler) {
+      this.clickHandler(e);
+    }
+  };
+
   /**
    * The linkId attribute specifies the id for a <link> element.
    */
@@ -68,7 +74,7 @@ export class GcdsLink {
   /**
    * The href attribute specifies the URL of the page the link goes to
    */
-  @Prop() href: string | undefined;
+  @Prop() href = '#';
 
   /**
    * The rel attribute specifies the relationship between the current document and the linked document
@@ -99,16 +105,6 @@ export class GcdsLink {
    * Custom callback function on click event
    */
   @Prop() clickHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -183,14 +179,18 @@ export class GcdsLink {
       type,
     };
 
+    const isExternal = target === '_blank' || external;
+
     return (
       <Host>
         <Tag
           {...attrs}
           id={linkId}
+          onClick={e => this.handleClick(e)}
           class={`link--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
-          target={target === '_blank' || external ? '_blank' : target}
+          target={isExternal ? '_blank' : target}
+          rel={isExternal ? 'noopener' : rel}
           {...inheritedAttributes}
           part="link"
         >

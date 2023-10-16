@@ -579,15 +579,14 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'linkId', 'linkRole', 'linkStyle', 'name', 'rel', 'size', 'target'],
-  methods: ['focusElement']
+  inputs: ['blurHandler', 'clickHandler', 'disabled', 'display', 'download', 'external', 'focusHandler', 'href', 'linkId', 'name', 'rel', 'size', 'target', 'type']
 })
 @Component({
   selector: 'gcds-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'linkId', 'linkRole', 'linkStyle', 'name', 'rel', 'size', 'target'],
+  inputs: ['blurHandler', 'clickHandler', 'disabled', 'display', 'download', 'external', 'focusHandler', 'href', 'linkId', 'name', 'rel', 'size', 'target', 'type'],
 })
 export class GcdsLink {
   protected el: HTMLElement;

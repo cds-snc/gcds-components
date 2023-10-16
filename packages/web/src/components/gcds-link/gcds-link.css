@@ -36,4 +36,8 @@
     border-color: var(--gcds-button-shared-active-background);
   }
 
+  /* Small link styling */
+  &.link--small {
+   font: var(--gcds-link-small-font);
+  }
 }

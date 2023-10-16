@@ -715,10 +715,6 @@ export namespace Components {
     }
     interface GcdsLink {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
           * Custom callback function on click event
          */
         "clickHandler": Function;
@@ -739,13 +735,9 @@ export namespace Components {
          */
         "external": false;
         /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
-        /**
           * The href attribute specifies the URL of the page the link goes to
          */
-        "href": string | undefined;
+        "href": string;
         /**
           * The linkId attribute specifies the id for a <link> element.
          */
@@ -2240,10 +2232,6 @@ declare namespace LocalJSX {
     }
     interface GcdsLink {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
           * Custom callback function on click event
          */
         "clickHandler"?: Function;
@@ -2264,13 +2252,9 @@ declare namespace LocalJSX {
          */
         "external"?: false;
         /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
-        /**
           * The href attribute specifies the URL of the page the link goes to
          */
-        "href"?: string | undefined;
+        "href"?: string;
         /**
           * The linkId attribute specifies the id for a <link> element.
          */
