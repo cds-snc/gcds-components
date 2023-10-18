@@ -131,7 +131,9 @@ export class GcdsLink {
     // Validate attributes and set defaults
     this.validateSize(this.size);
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
+      'referrerpolicy',
+    ]);
 
     // Define lang attribute
     this.lang = assignLanguage(this.el);
