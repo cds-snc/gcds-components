@@ -48,21 +48,6 @@ export class GcdsLink {
   };
 
   /**
-   * The linkId attribute specifies the id for a <link> element.
-   */
-  @Prop() linkId: string;
-
-  /**
-   * The name attribute specifies the name for a <link> element.
-   */
-  @Prop() name: string | undefined;
-
-  /**
-   * The disabled attribute for a <link> element.
-   */
-  @Prop() disabled: boolean;
-
-  /**
    * Link props
    */
 
@@ -157,7 +142,6 @@ export class GcdsLink {
   render() {
     const {
       size,
-      linkId,
       lang,
       display,
       href,
@@ -185,7 +169,6 @@ export class GcdsLink {
       <Host>
         <Tag
           {...attrs}
-          id={linkId}
           onClick={e => this.handleClick(e)}
           class={`link--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
@@ -204,7 +187,14 @@ export class GcdsLink {
               label={i18n[lang].label}
               margin-left="200"
             />
-          ) : (
+          ) : download ? (
+            <gcds-icon
+              name="download"
+              label={i18n[lang].label}
+              margin-left="200"
+            />
+          )
+            : (
             <slot name="right"></slot>
           )}
         </Tag>

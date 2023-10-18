@@ -719,10 +719,6 @@ export namespace Components {
          */
         "clickHandler": Function;
         /**
-          * The disabled attribute for a <link> element.
-         */
-        "disabled": boolean;
-        /**
           * Sets the display behavior of the link
          */
         "display": string | undefined;
@@ -738,14 +734,6 @@ export namespace Components {
           * The href attribute specifies the URL of the page the link goes to
          */
         "href": string;
-        /**
-          * The linkId attribute specifies the id for a <link> element.
-         */
-        "linkId": string;
-        /**
-          * The name attribute specifies the name for a <link> element.
-         */
-        "name": string | undefined;
         /**
           * The rel attribute specifies the relationship between the current document and the linked document
          */
@@ -2236,10 +2224,6 @@ declare namespace LocalJSX {
          */
         "clickHandler"?: Function;
         /**
-          * The disabled attribute for a <link> element.
-         */
-        "disabled"?: boolean;
-        /**
           * Sets the display behavior of the link
          */
         "display"?: string | undefined;
@@ -2255,14 +2239,6 @@ declare namespace LocalJSX {
           * The href attribute specifies the URL of the page the link goes to
          */
         "href"?: string;
-        /**
-          * The linkId attribute specifies the id for a <link> element.
-         */
-        "linkId"?: string;
-        /**
-          * The name attribute specifies the name for a <link> element.
-         */
-        "name"?: string | undefined;
         /**
           * Emitted when the link loses focus.
          */
