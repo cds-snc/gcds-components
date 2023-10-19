@@ -33,6 +33,7 @@ export const DIRECTIVES = [
   d.GcdsSideNav,
   d.GcdsSignature,
   d.GcdsStepper,
+  d.GcdsText,
   d.GcdsTextarea,
   d.GcdsTopNav,
   d.GcdsTopicMenu,
