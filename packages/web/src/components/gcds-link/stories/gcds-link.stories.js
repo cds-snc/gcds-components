@@ -19,7 +19,8 @@ export default {
       },
     },
     display: {
-      control: 'text',
+      control: 'select',
+      options: ['inline', 'inline-block', 'block'],
     },
     href: {
       control: 'text',
@@ -36,7 +37,8 @@ export default {
       },
     },
     target: {
-      control: 'text',
+      control: 'select',
+      options: ['_blank', '_self', '_parent', '_top'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
@@ -51,7 +53,6 @@ export default {
     },
     download: {
       control: 'text',
-      if: { arg: 'download' },
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
@@ -88,6 +89,7 @@ export default {
 const Template = args =>
   `
 <!-- Web component code (Angular, Vue) -->
+This is an example of
 <gcds-link ${
   args.display ? `display="${args.display}"` : null
   } ${args.href ? `href="${args.href}"` : null
@@ -97,8 +99,8 @@ const Template = args =>
   } ${args.external ? `external` : null
   } ${args.download ? `download="${args.download}"` : null
   } ${args.type ? `type="${args.type}"` : null
-  }>  ${args.default}
-</gcds-link>
+  }> ${args.default}</gcds-link>
+ link.
 
 <!-- React code -->
 <GcdsLink ${
@@ -111,8 +113,7 @@ const Template = args =>
   } ${args.download ? `download="${args.download}"` : null
   } ${args.type ? `type="${args.type}"` : null
   }>
-${args.default}
-</GcdsLink>
+${args.default}</GcdsLink>
 `.replace(/ null/g, '');
 
 const TemplatePlayground = args => `
@@ -142,7 +143,7 @@ Default.args = {
   external: false,
   download: '',
   type: '',
-  default: 'Link text',
+  default: 'a GCDS Link component',
 };
 
 // ------ Link events & props ------
@@ -156,46 +157,47 @@ Props.args = {
   external: false,
   download: '',
   type: '',
-  default: 'Link text',
+  default: 'a GCDS Link component',
 };
 
 export const External = Template.bind({});
 External.args = {
-  display: '',
-  href: '',
+  href: 'http://design-system.alpha.canada.ca',
   rel: '',
   target: '',
   size: '',
   external: true,
   download: '',
   type: '',
-  default: 'This is an external link',
+  default: 'an external',
 };
 
 export const Download = Template.bind({});
 Download.args = {
-  display: 'none',
   href: 'test.jpg',
-  rel: '',
   target: '_self',
   size: 'regular',
-  external: true,
   download: 'file.pdf',
   type: 'image/jpg',
-  default: 'This is an download link',
+  default: 'a file download',
+};
+
+export const Email = Template.bind({});
+Email.args = {
+  href: 'mailto:test@test.com?subject=Test%20Email',
+  default: 'an email address',
+};
+
+export const Phone = Template.bind({});
+Phone.args = {
+  href: 'tel:1234567890',
+  default: 'a phone number',
 };
 
 export const Sizes = Template.bind({});
 Sizes.args = {
-  display: '',
-  href: '',
-  rel: '',
-  target: '',
   size: 'small',
-  external: false,
-  download: '',
-  type: '',
-  default: 'Link text',
+  default: 'a small',
 };
 
 // ------ Link playground ------

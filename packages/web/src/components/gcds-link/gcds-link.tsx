@@ -54,7 +54,7 @@ export class GcdsLink {
   /**
    * Sets the display behavior of the link
    */
-  @Prop() display: string | undefined;
+  @Prop() display: 'block' | 'inline' | 'inline-block' = 'inline';
 
   /**
    * The href attribute specifies the URL of the page the link goes to
@@ -186,17 +186,29 @@ export class GcdsLink {
           {target === '_blank' || external ? (
             <gcds-icon
               name="external-link"
-              label={i18n[lang].label}
+              label={i18n[lang].external}
               margin-left="200"
             />
           ) : download ? (
             <gcds-icon
               name="download"
-              label={i18n[lang].label}
-              margin-left="200"
+              label={i18n[lang].download}
+              margin-left="100"
             />
-          )
-            : (
+          ) : href.toLowerCase().startsWith('mailto:') ? (
+            <gcds-icon
+              iconStyle="regular"
+              name="envelope"
+              label={i18n[lang].email}
+              margin-left="100"
+            />
+          ) : href.toLowerCase().startsWith('tel:') ? (
+            <gcds-icon
+              name="phone"
+              label={i18n[lang].phone}
+              margin-left="100"
+            />
+          ) : (
             <slot name="right"></slot>
           )}
         </Tag>
