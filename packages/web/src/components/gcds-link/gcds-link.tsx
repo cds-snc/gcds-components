@@ -41,6 +41,8 @@ export class GcdsLink {
     }
   }
 
+  // TODO: Do we need to validate display, rel, target, etc?
+
   private handleClick = (e: Event) => {
     if (this.clickHandler) {
       this.clickHandler(e);
