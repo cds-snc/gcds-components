@@ -10,7 +10,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link>
         <mock:shadow-root>
-          <a class="link--regular" part="link" href="#">
+          <a class="link--regular" display="inline" part="link" href="#">
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
@@ -33,7 +33,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="https://google.com" target="_blank">
         <mock:shadow-root>
-          <a class="link--regular" href="https://google.com" part="link" target="_blank" rel="noopener">
+          <a class="link--regular" display="inline" href="https://google.com" part="link" target="_blank" rel="noopener">
             <slot name="left"></slot>
             <slot></slot>
             <gcds-icon name="external-link" label="Opens in a new tab." margin-left="200" />
@@ -52,7 +52,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="https://google.com" download>
         <mock:shadow-root>
-          <a class="link--regular" href="https://google.com" part="link" download>
+          <a class="link--regular" display="inline" href="https://google.com" part="link" download>
             <slot name="left"></slot>
             <slot></slot>
             <slot name="right"></slot>
