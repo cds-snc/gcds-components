@@ -219,14 +219,13 @@ export class GcdsText {
     } = this;
 
     return (
-      <Host>
+      <Host class={`${display != 'block' ? `d-${display}` : ''}`}>
         <p
           class={`
             gcds-text
             ${textRole ? `role-${textRole}` : ''}
             ${textStyle === 'italic' ? 'italic' : ''}
             ${characterLimit ? 'limit' : ''}
-            ${display != 'block' ? `d-${display}` : ''}
             ${marginTop ? `mt-${marginTop}` : ''}
             ${marginBottom ? `mb-${marginBottom}` : ''}
           `}

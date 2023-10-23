@@ -14,6 +14,7 @@ variants.weight;
     color: var(--gcds-text-role-primary);
 
     .gcds-text {
+      display: inherit;
       box-sizing: border-box;
       margin: 0;
     }
@@ -31,7 +32,7 @@ variants.weight;
 }
 
 @layer variants.display {
-  :host .gcds-text {
+  :host {
     &.d-block {
       display: block;
     }

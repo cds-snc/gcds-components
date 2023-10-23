@@ -152,9 +152,9 @@ describe('gcds-text', () => {
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-text display="flex">
+      <gcds-text class="d-flex" display="flex">
         <mock:shadow-root>
-          <p class="gcds-text d-flex limit role-primary">
+          <p class="gcds-text limit role-primary">
             <slot></slot>
           </p>
         </mock:shadow-root>
