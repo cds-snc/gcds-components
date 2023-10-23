@@ -883,6 +883,28 @@ export declare interface GcdsStepper extends Components.GcdsStepper {}
 
 
 @ProxyCmp({
+  inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole', 'textStyle', 'weight']
+})
+@Component({
+  selector: 'gcds-text',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole', 'textStyle', 'weight'],
+})
+export class GcdsText {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsText extends Components.GcdsText {}
+
+
+@ProxyCmp({
   inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })

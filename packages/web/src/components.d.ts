@@ -974,6 +974,75 @@ export namespace Components {
          */
         "totalSteps": number;
     }
+    interface GcdsText {
+        /**
+          * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length.
+         */
+        "characterLimit"?: boolean;
+        /**
+          * Specifies the display behaviour of the text.
+         */
+        "display"?: | 'block'
+    | 'flex'
+    | 'inline'
+    | 'inline-block'
+    | 'inline-flex'
+    | 'none';
+        /**
+          * Adds margin below the text.
+         */
+        "marginBottom"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
+        /**
+          * Adds margin above the text.
+         */
+        "marginTop"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
+        /**
+          * Sets the appropriate HTML tags for the selected size.
+         */
+        "size"?: 'body' | 'caption';
+        /**
+          * Sets the main style of the text.
+         */
+        "textRole"?: 'light' | 'primary' | 'secondary';
+        /**
+          * Indicates if the text should be styled italic or normal.
+         */
+        "textStyle"?: 'italic' | 'normal';
+        /**
+          * Determines the font weight for the text.
+         */
+        "weight"?: 'bold' | 'regular';
+    }
     interface GcdsTextarea {
         /**
           * Custom callback function on blur event
@@ -1329,6 +1398,12 @@ declare global {
         prototype: HTMLGcdsStepperElement;
         new (): HTMLGcdsStepperElement;
     };
+    interface HTMLGcdsTextElement extends Components.GcdsText, HTMLStencilElement {
+    }
+    var HTMLGcdsTextElement: {
+        prototype: HTMLGcdsTextElement;
+        new (): HTMLGcdsTextElement;
+    };
     interface HTMLGcdsTextareaElement extends Components.GcdsTextarea, HTMLStencilElement {
     }
     var HTMLGcdsTextareaElement: {
@@ -1385,6 +1460,7 @@ declare global {
         "gcds-side-nav": HTMLGcdsSideNavElement;
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-stepper": HTMLGcdsStepperElement;
+        "gcds-text": HTMLGcdsTextElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
         "gcds-topic-menu": HTMLGcdsTopicMenuElement;
@@ -2479,6 +2555,75 @@ declare namespace LocalJSX {
          */
         "totalSteps": number;
     }
+    interface GcdsText {
+        /**
+          * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length.
+         */
+        "characterLimit"?: boolean;
+        /**
+          * Specifies the display behaviour of the text.
+         */
+        "display"?: | 'block'
+    | 'flex'
+    | 'inline'
+    | 'inline-block'
+    | 'inline-flex'
+    | 'none';
+        /**
+          * Adds margin below the text.
+         */
+        "marginBottom"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
+        /**
+          * Adds margin above the text.
+         */
+        "marginTop"?: | '0'
+    | '50'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | '1000';
+        /**
+          * Sets the appropriate HTML tags for the selected size.
+         */
+        "size"?: 'body' | 'caption';
+        /**
+          * Sets the main style of the text.
+         */
+        "textRole"?: 'light' | 'primary' | 'secondary';
+        /**
+          * Indicates if the text should be styled italic or normal.
+         */
+        "textStyle"?: 'italic' | 'normal';
+        /**
+          * Determines the font weight for the text.
+         */
+        "weight"?: 'bold' | 'regular';
+    }
     interface GcdsTextarea {
         /**
           * Custom callback function on blur event
@@ -2625,6 +2770,7 @@ declare namespace LocalJSX {
         "gcds-side-nav": GcdsSideNav;
         "gcds-signature": GcdsSignature;
         "gcds-stepper": GcdsStepper;
+        "gcds-text": GcdsText;
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
         "gcds-topic-menu": GcdsTopicMenu;
@@ -2666,6 +2812,7 @@ declare module "@stencil/core" {
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
+            "gcds-text": LocalJSX.GcdsText & JSXBase.HTMLAttributes<HTMLGcdsTextElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-top-nav": LocalJSX.GcdsTopNav & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;
             "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;

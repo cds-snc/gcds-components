@@ -1,0 +1,82 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Text from './gcds-text.stories';
+
+<Meta of={Text} name="Overview" />
+
+# Text<br/>`<gcds-text>`
+
+_Also called: text block, copy, caption, body text, paragraph._
+
+Text is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.
+
+<Canvas of={Text.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+### Role
+
+#### Primary
+
+<Canvas of={Text.Primary} story={{ inline: true }} />
+
+#### Secondary
+
+<Canvas of={Text.Secondary} story={{ inline: true }} />
+
+#### Light
+
+<Canvas of={Text.Light} story={{ inline: true }} />
+
+### Size
+
+#### Text size body.
+
+<Canvas of={Text.SizeBody} story={{ inline: true }} />
+
+#### Text size caption.
+
+<Canvas of={Text.SizeCaption} story={{ inline: true }} />
+
+### Character limit
+
+#### Text with character limit
+
+<Canvas of={Text.CharacterLimit} story={{ inline: true }} />
+
+#### Text without character limit
+
+<Canvas of={Text.NoCharacterLimit} story={{ inline: true }} />
+
+### Text style
+
+#### Text style normal.
+
+<Canvas of={Text.StyleNormal} story={{ inline: true }} />
+
+#### Text style italic.
+
+<Canvas of={Text.StyleItalic} story={{ inline: true }} />
+
+### Text weight
+
+#### Text weight regular.
+
+<Canvas of={Text.WeightRegular} story={{ inline: true }} />
+
+#### Text weight bold.
+
+<Canvas of={Text.WeightBold} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/text/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-text" target="_blank">Github</gcds-button>
+  </li>
+</ul>

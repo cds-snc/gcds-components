@@ -1,32 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
     <title>Stencil Component Starter</title>
 
     <!-- Utility framework -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cds-snc/gcds-utilities/dist/gcds-utility.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/cds-snc/gcds-utilities/dist/gcds-utility.css"
+    />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Font awesome 6 kit for this demo page. Anyone can create a free kit for open source. -->
-    <script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/892cb27850.js"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Local components -->
     <link rel="stylesheet" href="/dist/gcds/gcds.css" />
     <script type="module" src="/dist/gcds/gcds.esm.js"></script>
     <script nomodule src="/dist/gcds.js"></script>
-
 
     <style>
       html {
@@ -102,7 +122,6 @@
         <p>Example content</p>
       </gcds-alert>
 
-
       <!-- ------------- Buttons ------------- -->
 
       <h3 class="mt-700 mb-400 bb-sm">Buttons</h3>
@@ -110,7 +129,9 @@
       <gcds-button button-role="secondary">Secondary</gcds-button>
       <gcds-button button-role="danger">Danger</gcds-button>
       <gcds-button button-role="skip-to-content">Skip to content</gcds-button>
-      <gcds-button type="link" button-style="text-only" href="#">Link</gcds-button>
+      <gcds-button type="link" button-style="text-only" href="#"
+        >Link</gcds-button
+      >
       <gcds-button
         type="link"
         button-style="text-only"
@@ -176,7 +197,9 @@
           description="Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
           img-src="https://picsum.photos/480/270"
         >
-          <gcds-button type="button" button-role="secondary" slot="footer">Action</gcds-button>
+          <gcds-button type="button" button-role="secondary" slot="footer"
+            >Action</gcds-button
+          >
         </gcds-card>
         <gcds-card
           type="action"
@@ -186,7 +209,9 @@
           description="This is a card with an img and possibly more"
           img-src="https://picsum.photos/480/270"
         >
-          <gcds-button type="button" button-role="secondary" slot="footer">Action</gcds-button>
+          <gcds-button type="button" button-role="secondary" slot="footer"
+            >Action</gcds-button
+          >
         </gcds-card>
       </gcds-grid>
 
@@ -202,13 +227,16 @@
 
       <h3 class="mt-700 mb-400 bb-sm">Containers</h3>
       <gcds-container size="full" border padding="400">
-        <p>I'm a responsive container. My size is only limited by the size of my parent container.</p>
+        <p>
+          I'm a responsive container. My size is only limited by the size of my
+          parent container.
+        </p>
       </gcds-container>
-      <br/>
+      <br />
       <gcds-container size="lg" centered border padding="400">
         <p>I'm a large, centred container. My max size is 64rem (1024px).</p>
       </gcds-container>
-      <br/>
+      <br />
       <gcds-container size="xs" border padding="400">
         <p>I'm an extra-small container. My max size is 20rem (320px).</p>
       </gcds-container>
@@ -222,13 +250,12 @@
 
       <!-- ------------- Stepper + Form Elements ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Form elements (including stepper and error summary)</h3>
+      <h3 class="mt-700 mb-400 bb-sm">
+        Form elements (including stepper and error summary)
+      </h3>
       <gcds-stepper current-step="1" total-steps="3"></gcds-stepper>
       <form novalidate>
-
-        <gcds-error-summary
-          listen
-        ></gcds-error-summary>
+        <gcds-error-summary listen></gcds-error-summary>
 
         <gcds-input
           input-id="form-name"
@@ -329,9 +356,7 @@
           required
         ></gcds-file-uploader>
 
-        <gcds-button type="submit">
-            Submit
-        </gcds-button>
+        <gcds-button type="submit"> Submit </gcds-button>
       </form>
 
       <!-- ------------- Grid ------------- -->
@@ -344,11 +369,89 @@
         columns="1fr"
         gap="500"
       >
-        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p>
+          Lorem Ipsum has been the industry's standard dummy text ever since the
+          1500s, when an unknown printer took a galley of type and scrambled it
+          to make a type specimen book. It has survived not only five centuries,
+          but also the leap into electronic typesetting, remaining essentially
+          unchanged.
+        </p>
+        <p>
+          Lorem Ipsum has been the industry's standard dummy text ever since the
+          1500s, when an unknown printer took a galley of type and scrambled it
+          to make a type specimen book. It has survived not only five centuries,
+          but also the leap into electronic typesetting, remaining essentially
+          unchanged.
+        </p>
+        <p>
+          Lorem Ipsum has been the industry's standard dummy text ever since the
+          1500s, when an unknown printer took a galley of type and scrambled it
+          to make a type specimen book. It has survived not only five centuries,
+          but also the leap into electronic typesetting, remaining essentially
+          unchanged.
+        </p>
+        <p>
+          Lorem Ipsum has been the industry's standard dummy text ever since the
+          1500s, when an unknown printer took a galley of type and scrambled it
+          to make a type specimen book. It has survived not only five centuries,
+          but also the leap into electronic typesetting, remaining essentially
+          unchanged.
+        </p>
       </gcds-grid>
+
+      <!-- ------------- Text ------------- -->
+
+      <h3 class="mt-700 mb-400 bb-sm">Text</h3>
+      <gcds-text margin-bottom="400"
+        >This text is primary text using the default body size with regular
+        weight and normal text style. The margin bottom is set to "400". The
+        character limit is set to "true" (default value) which means that the
+        text will take up a maximum of 65 characters per line.</gcds-text
+      >
+
+      <gcds-text character-limit="false" margin-bottom="400"
+        >This text is primary text using the default body size with regular
+        weight and normal text style. The margin bottom is set to "400". The
+        characters limit is set to "false" which means that the text will take
+        up all available space.</gcds-text
+      >
+
+      <gcds-text text-role="secondary" size="caption" margin-bottom="400"
+        >This text is secondary text using the caption size with regular weight
+        and normal text style. The margin bottom is set to "400". The character
+        limit is set to "true" (default value) which means that the text will
+        take up a maximum of 65 characters per line.</gcds-text
+      >
+
+      <div class="bg-dark mb-400 p-200">
+        <gcds-text text-role="light"
+          >This text is light text using the default body size with regular
+          weight and normal text style. The character limit is set to "true"
+          (default value) which means that the text will take up a maximum of 65
+          characters per line.</gcds-text
+        >
+      </div>
+
+      <gcds-text weight="bold" margin-bottom="400"
+        >This text is primary text using the default body size with bold weight
+        and normal text style. The margin bottom is set to "400". The character
+        limit is set to "true" (default value) which means that the text will
+        take up a maximum of 65 characters per line.</gcds-text
+      >
+
+      <gcds-text size="caption" weight="bold" margin-bottom="400"
+        >This text is primary text using the caption size with bold weight and
+        normal text style. The margin bottom is set to "400". The character
+        limit is set to "true" (default value) which means that the text will
+        take up a maximum of 65 characters per line.</gcds-text
+      >
+
+      <gcds-text text-style="italic" margin-bottom="400"
+        >This text is primary text using the default body size with regular
+        weight and italic text style. The margin bottom is set to "400". The
+        character limit is set to "true" (default value) which means that the
+        text will take up a maximum of 65 characters per line.</gcds-text
+      >
 
       <!-- ------------- Icons ------------- -->
 
@@ -384,7 +487,7 @@
         total-pages="22"
         current-page="8"
         url='{"queryStrings": { "querystring::offset": 10 }, "fragment": "main" }'
-        pageChangeHandler={}
+        pageChangeHandler="{}"
       ></gcds-pagination>
 
       <gcds-pagination
@@ -413,7 +516,10 @@
         <gcds-nav-group menu-label="Contact submenu" open-trigger="Contact">
           <gcds-nav-link href="#red">Site</gcds-nav-link>
           <gcds-nav-link href="#red">GitHub</gcds-nav-link>
-          <gcds-nav-group menu-label="Sub level submenu" open-trigger="Sub level">
+          <gcds-nav-group
+            menu-label="Sub level submenu"
+            open-trigger="Sub level"
+          >
             <gcds-nav-link href="#red">Site</gcds-nav-link>
             <gcds-nav-link href="#red">GitHub</gcds-nav-link>
             <gcds-nav-link href="#red">Slack</gcds-nav-link>
@@ -428,8 +534,11 @@
         <gcds-nav-link href="#red" slot="home">Home</gcds-nav-link>
         <gcds-nav-link href="#red">Installation</gcds-nav-link>
         <gcds-nav-link href="#red">Foundations</gcds-nav-link>
-        <gcds-nav-link href="#red" current >Components</gcds-nav-link>
-        <gcds-nav-group menu-label="Contact us submenu"  open-trigger="Contact us">
+        <gcds-nav-link href="#red" current>Components</gcds-nav-link>
+        <gcds-nav-group
+          menu-label="Contact us submenu"
+          open-trigger="Contact us"
+        >
           <gcds-nav-link href="#red">Form</gcds-nav-link>
           <gcds-nav-link href="#red">GitHub</gcds-nav-link>
           <gcds-nav-link href="#red">Slack</gcds-nav-link>
