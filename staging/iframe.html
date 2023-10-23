@@ -340,7 +340,7 @@
   /* ----- PROPERTIES PAGE ----- */
 
   /* Component Preview - hide React code */
-  .sb-show-main #storybook-docs .sb-story>div>*:not(.hydrated) {
+  .sb-show-main #storybook-docs .sb-story > div > *:not(.hydrated) {
     font-size: 0;
     color: var(--gcds-text-light);
     padding: 0 !important;
@@ -348,7 +348,7 @@
   }
 
   /* Copy & hide code btns */
-  .docs-story>.css-1wjen9k {
+  .docs-story > .css-1wjen9k {
     padding-block-end: var(--gcds-spacing-700);
   }
 
@@ -372,8 +372,9 @@
     border-radius: var(--gcds-button-border-radius) !important;
     box-sizing: border-box;
     font: var(--gcds-button-font) !important;
-    font-size: .875rem !important;
-    margin: 0 var(--gcds-spacing-150) var(--gcds-spacing-250) var(--gcds-spacing-300) !important;
+    font-size: 0.875rem !important;
+    margin: 0 var(--gcds-spacing-150) var(--gcds-spacing-250)
+      var(--gcds-spacing-300) !important;
     padding: var(--gcds-spacing-200) var(--gcds-spacing-150) !important;
     transition: all 0.15s ease-in-out 0s;
   }
@@ -394,7 +395,7 @@
   }
 
   .css-3s4ai0 .css-otxova:hover:not(:focus) {
-    background-color: rgba(255, 255, 255, .2) !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
   }
 
   .docs-story .docblock-code-toggle:focus,
@@ -402,7 +403,8 @@
     background-color: var(--gcds-focus-background) !important;
     border-color: var(--gcds-focus-background) !important;
     color: var(--gcds-focus-text) !important;
-    outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-focus-background) !important;
+    outline: var(--gcds-button-shared-focus-outline-width) solid
+      var(--gcds-focus-background) !important;
     outline-offset: var(--gcds-button-border-width) !important;
     box-shadow: none !important;
   }
@@ -437,7 +439,7 @@
   /* Table Styling */
   .docblock-argstable-head tr th,
   .docblock-argstable-body tr td.css-11nj37o,
-  .docblock-argstable-body tr .css-11nj37o~td {
+  .docblock-argstable-body tr .css-11nj37o ~ td {
     background-color: var(--gcds-color-grayscale-0) !important;
     border-radius: 0 !important;
     color: var(--gcds-text-primary) !important;
@@ -501,7 +503,8 @@
     vertical-align: middle !important;
     background-color: #262626 !important;
     color: var(--gcds-text-light);
-    border-bottom: var(--gcds-border-width-sm) solid var(--gcds-color-grayscale-700) !important;
+    border-bottom: var(--gcds-border-width-sm) solid
+      var(--gcds-color-grayscale-700) !important;
   }
 
   .docblock-argstable-body td span.css-a2cl28 {
@@ -518,7 +521,7 @@
 
   .css-je0wjx {
     font-weight: var(--gcds-font-weights-semibold) !important;
-    letter-spacing: .75px;
+    letter-spacing: 0.75px;
     background-color: transparent !important;
     color: var(--gcds-text-light) !important;
     border: 0 !important;
@@ -545,14 +548,14 @@
     fill: var(--gcds-text-light) !important;
   }
 
-  .css-tvcum3 input:checked~span:last-of-type,
-  .css-tvcum3 input:not(:checked)~span:first-of-type,
-  .css-f2g3hl input:checked~span:last-of-type,
-  .css-f2g3hl input:not(:checked)~span:first-of-type,
-  .css-172ajqq input:checked~span:last-of-type,
-  .css-172ajqq input:not(:checked)~span:first-of-type,
-  .css-e3ijes input:checked~span:last-of-type,
-  .css-e3ijes input:not(:checked)~span:first-of-type {
+  .css-tvcum3 input:checked ~ span:last-of-type,
+  .css-tvcum3 input:not(:checked) ~ span:first-of-type,
+  .css-f2g3hl input:checked ~ span:last-of-type,
+  .css-f2g3hl input:not(:checked) ~ span:first-of-type,
+  .css-172ajqq input:checked ~ span:last-of-type,
+  .css-172ajqq input:not(:checked) ~ span:first-of-type,
+  .css-e3ijes input:checked ~ span:last-of-type,
+  .css-e3ijes input:not(:checked) ~ span:first-of-type {
     background: var(--gcds-color-grayscale-0) !important;
     color: var(--gcds-text-primary) !important;
   }
@@ -566,11 +569,16 @@
     background-color: var(--gcds-color-grayscale-50);
   }
 
+  /* Code preview white space */
+  .language-html {
+    white-space: break-spaces !important;
+  }
+
   /* ----- COMPONENT SPECIFIC ----- */
 
   /* gcds-button */
-  .sbdocs-preview .docs-story gcds-button.hydrated+gcds-button.hydrated,
-  .sb-show-main #storybook-root gcds-button.hydrated+gcds-button.hydrated {
+  .sbdocs-preview .docs-story gcds-button.hydrated + gcds-button.hydrated,
+  .sb-show-main #storybook-root gcds-button.hydrated + gcds-button.hydrated {
     margin: 0 0 0 var(--gcds-spacing-400);
   }
 
@@ -609,6 +617,12 @@
     padding: var(--gcds-spacing-450);
   }
 
+  /* gcds-text */
+  .sbdocs-preview .docs-story #story--components-text--light {
+    background: var(--gcds-color-grayscale-900);
+    padding: var(--gcds-spacing-450);
+  }
+
   /* gcds-top-nav */
   #story--components-top-navigation--default {
     height: 300px;
@@ -642,8 +656,8 @@
             window['DOCS_OPTIONS'] = {"defaultName":"Stories","autodocs":false};</script><script type="module">import './sb-preview/runtime.js';
 
       
-      import './runtime~main.e7b9f448.iframe.bundle.js';
+      import './runtime~main.312c5463.iframe.bundle.js';
       
       import './2070.13f72b5e.iframe.bundle.js';
       
-      import './main.86b52474.iframe.bundle.js';</script></body></html>
+      import './main.841b888c.iframe.bundle.js';</script></body></html>
