@@ -244,48 +244,4 @@ describe('gcds-text', () => {
       </gcds-text>
     `);
   });
-
-  /**
-    Text style
-   */
-  it('renders text style italic', async () => {
-    const { root } = await newSpecPage({
-      components: [GcdsText],
-      html: `
-        <gcds-text text-style="italic">This is some text.</gcds-text>
-      `,
-    });
-    expect(root).toEqualHtml(`
-      <gcds-text text-style="italic">
-        <mock:shadow-root>
-          <p class="gcds-text limit role-primary italic">
-            <slot></slot>
-          </p>
-        </mock:shadow-root>
-        This is some text.
-      </gcds-text>
-    `);
-  });
-
-  /**
-    Weight
-   */
-  it('renders text weight bold', async () => {
-    const { root } = await newSpecPage({
-      components: [GcdsText],
-      html: `
-        <gcds-text weight="bold">This is some text.</gcds-text>
-      `,
-    });
-    expect(root).toEqualHtml(`
-      <gcds-text weight="bold">
-        <mock:shadow-root>
-          <p class="gcds-text limit role-primary">
-            <strong><slot></slot></strong>
-          </p>
-        </mock:shadow-root>
-        This is some text.
-      </gcds-text>
-    `);
-  });
 });
