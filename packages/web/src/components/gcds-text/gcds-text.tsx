@@ -167,34 +167,6 @@ export class GcdsText {
     }
   }
 
-  /**
-   * Indicates if the text should be styled italic or normal.
-   */
-  @Prop({ mutable: true }) textStyle?: 'italic' | 'normal' = 'normal';
-
-  @Watch('textStyle')
-  validateTextStyle(newValue: string) {
-    const values = ['italic', 'normal'];
-
-    if (!values.includes(newValue)) {
-      this.textStyle = 'normal';
-    }
-  }
-
-  /**
-   * Determines the font weight for the text.
-   */
-  @Prop({ mutable: true }) weight?: 'bold' | 'regular' = 'regular';
-
-  @Watch('weight')
-  validateWeight(newValue: string) {
-    const values = ['bold', 'regular'];
-
-    if (!values.includes(newValue)) {
-      this.weight = 'regular';
-    }
-  }
-
   componentWillLoad() {
     // Validate attributes and set defaults
     this.validateTextRole(this.textRole);
@@ -202,21 +174,11 @@ export class GcdsText {
     this.validateMarginTop(this.marginTop);
     this.validateMarginBottom(this.marginBottom);
     this.validateSize(this.size);
-    this.validateTextStyle(this.textStyle);
-    this.validateWeight(this.weight);
   }
 
   render() {
-    const {
-      characterLimit,
-      display,
-      marginTop,
-      marginBottom,
-      size,
-      textRole,
-      textStyle,
-      weight,
-    } = this;
+    const { characterLimit, display, marginTop, marginBottom, size, textRole } =
+      this;
 
     return (
       <Host class={`${display != 'block' ? `d-${display}` : ''}`}>
@@ -224,7 +186,6 @@ export class GcdsText {
           class={`
             gcds-text
             ${textRole ? `role-${textRole}` : ''}
-            ${textStyle === 'italic' ? 'italic' : ''}
             ${characterLimit ? 'limit' : ''}
             ${marginTop ? `mt-${marginTop}` : ''}
             ${marginBottom ? `mb-${marginBottom}` : ''}
@@ -232,18 +193,8 @@ export class GcdsText {
         >
           {size === 'caption' ? (
             <small>
-              {weight === 'bold' ? (
-                <strong>
-                  <slot />
-                </strong>
-              ) : (
-                <slot />
-              )}
-            </small>
-          ) : weight === 'bold' ? (
-            <strong>
               <slot />
-            </strong>
+            </small>
           ) : (
             <slot />
           )}

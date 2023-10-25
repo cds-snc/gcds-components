@@ -95,23 +95,6 @@ export default {
         defaultValue: { summary: 'primary' },
       },
     },
-    textStyle: {
-      name: 'text-style',
-      control: { type: 'select' },
-      options: ['italic', 'normal'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'normal' },
-      },
-    },
-    weight: {
-      control: { type: 'select' },
-      options: ['bold', 'regular'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'regular' },
-      },
-    },
 
     // Slots
     default: {
@@ -134,9 +117,7 @@ const Template = args =>
     !args.characterLimit ? `character-limit="${args.characterLimit}"` : null
   } ${args.display != 'block' ? `display="${args.display}"` : null} ${
     args.marginTop ? `margin-top="${args.marginTop}"` : null
-  } ${args.marginBottom ? `margin-bottom="${args.marginBottom}"` : null} ${
-    args.textStyle != 'normal' ? `text-style="${args.textStyle}"` : null
-  } ${args.weight != 'regular' ? `weight="${args.weight}"` : null}>
+  } ${args.marginBottom ? `margin-bottom="${args.marginBottom}"` : null}>
   ${args.default}
 </gcds-text>
 
@@ -147,9 +128,7 @@ const Template = args =>
     !args.characterLimit ? `characterLimit="${args.characterLimit}"` : null
   } ${args.display != 'block' ? `display="${args.display}"` : null} ${
     args.marginTop ? `marginTop="${args.marginTop}"` : null
-  } ${args.marginBottom ? `marginBottom="${args.marginBottom}"` : null} ${
-    args.textStyle != 'normal' ? `textStyle="${args.textStyle}"` : null
-  } ${args.weight != 'regular' ? `weight="${args.weight}"` : null}>
+  } ${args.marginBottom ? `marginBottom="${args.marginBottom}"` : null}>
   ${args.default}
 </GcdsText>
 `.replace(/ null/g, '');
@@ -162,8 +141,6 @@ const TemplatePlayground = args => `
   ${args.display != 'block' ? `display="${args.display}"` : null}
   ${args.marginTop ? `margin-top="${args.marginTop}"` : null}
   ${args.marginBottom ? `margin-bottom="${args.marginBottom}"` : null}
-  ${args.textStyle != 'normal' ? `text-style="${args.textStyle}"` : null}
-  ${args.weight != 'regular' ? `weight="${args.weight}"` : null}
 >
   ${args.default}
 </gcds-text>
@@ -177,8 +154,6 @@ Default.args = {
   display: 'block',
   size: 'body',
   textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -191,8 +166,6 @@ Primary.args = {
   display: 'block',
   size: 'body',
   textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -203,8 +176,6 @@ Secondary.args = {
   display: 'block',
   size: 'body',
   textRole: 'secondary',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -215,8 +186,6 @@ Light.args = {
   display: 'block',
   size: 'body',
   textRole: 'light',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -229,8 +198,6 @@ SizeBody.args = {
   display: 'block',
   size: 'body',
   textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -241,8 +208,6 @@ SizeCaption.args = {
   display: 'block',
   size: 'caption',
   textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -255,8 +220,6 @@ CharacterLimit.args = {
   display: 'block',
   size: 'body',
   textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -267,60 +230,6 @@ NoCharacterLimit.args = {
   display: 'block',
   size: 'body',
   textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
-  default:
-    'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
-};
-
-// ------ Text style ------
-
-export const StyleNormal = Template.bind({});
-StyleNormal.args = {
-  characterLimit: true,
-  display: 'block',
-  size: 'body',
-  textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
-  default:
-    'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
-};
-
-export const StyleItalic = Template.bind({});
-StyleItalic.args = {
-  characterLimit: true,
-  display: 'block',
-  size: 'body',
-  textRole: 'primary',
-  textStyle: 'italic',
-  weight: 'regular',
-  default:
-    'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
-};
-
-// ------ Text weight ------
-
-export const WeightRegular = Template.bind({});
-WeightRegular.args = {
-  characterLimit: true,
-  display: 'block',
-  size: 'body',
-  textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
-  default:
-    'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
-};
-
-export const WeightBold = Template.bind({});
-WeightBold.args = {
-  characterLimit: true,
-  display: 'block',
-  size: 'body',
-  textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'bold',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -333,8 +242,6 @@ Props.args = {
   display: 'block',
   size: 'body',
   textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
@@ -347,8 +254,6 @@ Playground.args = {
   display: 'block',
   size: 'body',
   textRole: 'primary',
-  textStyle: 'normal',
-  weight: 'regular',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };

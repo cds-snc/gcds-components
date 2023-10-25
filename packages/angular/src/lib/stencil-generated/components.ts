@@ -904,14 +904,14 @@ export declare interface GcdsStepper extends Components.GcdsStepper {}
 
 
 @ProxyCmp({
-  inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole', 'textStyle', 'weight']
+  inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole']
 })
 @Component({
   selector: 'gcds-text',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole', 'textStyle', 'weight'],
+  inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole'],
 })
 export class GcdsText {
   protected el: HTMLElement;

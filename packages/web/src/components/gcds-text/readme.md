@@ -15,8 +15,6 @@
 | `marginTop`      | `margin-top`      | Adds margin above the text.                                                                                         | `"0" \| "100" \| "1000" \| "150" \| "200" \| "250" \| "300" \| "400" \| "450" \| "50" \| "500" \| "550" \| "600" \| "700" \| "800" \| "900"` | `undefined` |
 | `size`           | `size`            | Sets the appropriate HTML tags for the selected size.                                                               | `"body" \| "caption"`                                                                                                                        | `'body'`    |
 | `textRole`       | `text-role`       | Sets the main style of the text.                                                                                    | `"light" \| "primary" \| "secondary"`                                                                                                        | `'primary'` |
-| `textStyle`      | `text-style`      | Indicates if the text should be styled italic or normal.                                                            | `"italic" \| "normal"`                                                                                                                       | `'normal'`  |
-| `weight`         | `weight`          | Determines the font weight for the text.                                                                            | `"bold" \| "regular"`                                                                                                                        | `'regular'` |
 
 
 ----------------------------------------------

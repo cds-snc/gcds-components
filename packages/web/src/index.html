@@ -403,54 +403,54 @@
 
       <h3 class="mt-700 mb-400 bb-sm">Text</h3>
       <gcds-text margin-bottom="400"
-        >This text is primary text using the default body size with regular
-        weight and normal text style. The margin bottom is set to "400". The
-        character limit is set to "true" (default value) which means that the
-        text will take up a maximum of 65 characters per line.</gcds-text
+        >This text is primary text using the default body size. The margin
+        bottom is set to "400". The character limit is set to "true" (default
+        value) which means that the text will take up a maximum of 65 characters
+        per line.</gcds-text
       >
 
       <gcds-text character-limit="false" margin-bottom="400"
-        >This text is primary text using the default body size with regular
-        weight and normal text style. The margin bottom is set to "400". The
-        characters limit is set to "false" which means that the text will take
-        up all available space.</gcds-text
+        >This text is primary text using the default body size. The margin
+        bottom is set to "400". The characters limit is set to "false" which
+        means that the text will take up all available space.</gcds-text
       >
 
-      <gcds-text text-role="secondary" size="caption" margin-bottom="400"
-        >This text is secondary text using the caption size with regular weight
-        and normal text style. The margin bottom is set to "400". The character
-        limit is set to "true" (default value) which means that the text will
-        take up a maximum of 65 characters per line.</gcds-text
+      <gcds-text text-role="secondary" margin-bottom="400"
+        >This text is secondary text using the default body size. The margin
+        bottom is set to "400". The character limit is set to "true" (default
+        value) which means that the text will take up a maximum of 65 characters
+        per line.</gcds-text
       >
 
       <div class="bg-dark mb-400 p-200">
         <gcds-text text-role="light"
-          >This text is light text using the default body size with regular
-          weight and normal text style. The character limit is set to "true"
-          (default value) which means that the text will take up a maximum of 65
-          characters per line.</gcds-text
+          >This text is light text using the default body size. The character
+          limit is set to "true" (default value) which means that the text will
+          take up a maximum of 65 characters per line.</gcds-text
         >
       </div>
 
-      <gcds-text weight="bold" margin-bottom="400"
-        >This text is primary text using the default body size with bold weight
-        and normal text style. The margin bottom is set to "400". The character
-        limit is set to "true" (default value) which means that the text will
-        take up a maximum of 65 characters per line.</gcds-text
+      <gcds-text size="caption" margin-bottom="400"
+        >This text is primary text using the caption size. The margin bottom is
+        set to "400". The character limit is set to "true" (default value) which
+        means that the text will take up a maximum of 65 characters per
+        line.</gcds-text
       >
 
-      <gcds-text size="caption" weight="bold" margin-bottom="400"
-        >This text is primary text using the caption size with bold weight and
-        normal text style. The margin bottom is set to "400". The character
-        limit is set to "true" (default value) which means that the text will
-        take up a maximum of 65 characters per line.</gcds-text
+      <gcds-text margin-bottom="400"
+        >This text is primary text using the default body size
+        <strong>with some bold text included</strong>. The margin bottom is set
+        to "400". The character limit is set to "true" (default value) which
+        means that the text will take up a maximum of 65 characters per
+        line.</gcds-text
       >
 
-      <gcds-text text-style="italic" margin-bottom="400"
-        >This text is primary text using the default body size with regular
-        weight and italic text style. The margin bottom is set to "400". The
-        character limit is set to "true" (default value) which means that the
-        text will take up a maximum of 65 characters per line.</gcds-text
+      <gcds-text margin-bottom="400"
+        >This text is primary text using the default body size
+        <em>with some italic text included</em>. The margin bottom is set to
+        "400". The character limit is set to "true" (default value) which means
+        that the text will take up a maximum of 65 characters per
+        line.</gcds-text
       >
 
       <!-- ------------- Icons ------------- -->
@@ -512,7 +512,9 @@
       <h3 class="mt-700 mb-400 bb-sm">Screen reader only</h3>
       <gcds-text>There is invisible text below this</gcds-text>
       <gcds-sr-only>
-        <gcds-text>This text is only available to assistive technologies.</gcds-text>
+        <gcds-text
+          >This text is only available to assistive technologies.</gcds-text
+        >
       </gcds-sr-only>
 
       <!-- ------------- Side nav ------------- -->

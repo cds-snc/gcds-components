@@ -231,19 +231,13 @@ variants.weight;
 }
 
 @layer variants.style {
-  :host .gcds-text.italic,
-  :host .gcds-text ::slotted(em),
-  :host .gcds-text.italic small,
-  :host .gcds-text.italic small ::slotted(em) {
+  :host .gcds-text ::slotted(em) {
     font-style: italic;
   }
 }
 
 @layer variants.weight {
-  :host .gcds-text {
-    strong,
-    ::slotted(strong) {
-      font-weight: var(--gcds-text-weight-bold);
-    }
+  :host .gcds-text ::slotted(strong) {
+    font-weight: var(--gcds-text-weight-bold);
   }
 }

@@ -1036,14 +1036,6 @@ export namespace Components {
           * Sets the main style of the text.
          */
         "textRole"?: 'light' | 'primary' | 'secondary';
-        /**
-          * Indicates if the text should be styled italic or normal.
-         */
-        "textStyle"?: 'italic' | 'normal';
-        /**
-          * Determines the font weight for the text.
-         */
-        "weight"?: 'bold' | 'regular';
     }
     interface GcdsTextarea {
         /**
@@ -2626,14 +2618,6 @@ declare namespace LocalJSX {
           * Sets the main style of the text.
          */
         "textRole"?: 'light' | 'primary' | 'secondary';
-        /**
-          * Indicates if the text should be styled italic or normal.
-         */
-        "textStyle"?: 'italic' | 'normal';
-        /**
-          * Determines the font weight for the text.
-         */
-        "weight"?: 'bold' | 'regular';
     }
     interface GcdsTextarea {
         /**
