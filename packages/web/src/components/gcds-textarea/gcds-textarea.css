@@ -37,12 +37,13 @@
   border: var(--gcds-textarea-border-width) solid currentColor;
   border-radius: var(--gcds-textarea-border-radius);
   box-sizing: border-box;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, outline ease-in-out .15s;
 
   &:focus {
     border-color: var(--gcds-textarea-focus-text);
     outline: var(--gcds-textarea-outline-width) solid var(--gcds-textarea-focus-text);
     outline-offset: var(--gcds-textarea-border-width);
+    box-shadow: var(--gcds-textarea-focus-box-shadow);
   }
 
   &:disabled {
