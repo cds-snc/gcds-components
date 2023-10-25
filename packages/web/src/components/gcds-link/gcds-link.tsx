@@ -157,7 +157,6 @@ export class GcdsLink {
       inheritedAttributes,
     } = this;
 
-    const Tag = 'a';
     const attrs = {
       display,
       href,
@@ -171,9 +170,12 @@ export class GcdsLink {
 
     return (
       <Host>
-        <Tag
+        <a
+          role="link"
+          tabIndex={0}
           {...attrs}
           onClick={e => this.handleClick(e)}
+          onKeyDown={e => this.handleClick(e)}
           class={`link--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
@@ -213,7 +215,7 @@ export class GcdsLink {
           ) : (
             <slot name="right"></slot>
           )}
-        </Tag>
+        </a>
       </Host>
     );
   }
