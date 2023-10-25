@@ -964,6 +964,8 @@ export namespace Components {
          */
         "variant": 'colour' | 'white';
     }
+    interface GcdsSrOnly {
+    }
     interface GcdsStepper {
         /**
           * Defines the current step.
@@ -1392,6 +1394,12 @@ declare global {
         prototype: HTMLGcdsSignatureElement;
         new (): HTMLGcdsSignatureElement;
     };
+    interface HTMLGcdsSrOnlyElement extends Components.GcdsSrOnly, HTMLStencilElement {
+    }
+    var HTMLGcdsSrOnlyElement: {
+        prototype: HTMLGcdsSrOnlyElement;
+        new (): HTMLGcdsSrOnlyElement;
+    };
     interface HTMLGcdsStepperElement extends Components.GcdsStepper, HTMLStencilElement {
     }
     var HTMLGcdsStepperElement: {
@@ -1459,6 +1467,7 @@ declare global {
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-side-nav": HTMLGcdsSideNavElement;
         "gcds-signature": HTMLGcdsSignatureElement;
+        "gcds-sr-only": HTMLGcdsSrOnlyElement;
         "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-text": HTMLGcdsTextElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
@@ -2545,6 +2554,8 @@ declare namespace LocalJSX {
          */
         "variant"?: 'colour' | 'white';
     }
+    interface GcdsSrOnly {
+    }
     interface GcdsStepper {
         /**
           * Defines the current step.
@@ -2769,6 +2780,7 @@ declare namespace LocalJSX {
         "gcds-select": GcdsSelect;
         "gcds-side-nav": GcdsSideNav;
         "gcds-signature": GcdsSignature;
+        "gcds-sr-only": GcdsSrOnly;
         "gcds-stepper": GcdsStepper;
         "gcds-text": GcdsText;
         "gcds-textarea": GcdsTextarea;
@@ -2811,6 +2823,7 @@ declare module "@stencil/core" {
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
+            "gcds-sr-only": LocalJSX.GcdsSrOnly & JSXBase.HTMLAttributes<HTMLGcdsSrOnlyElement>;
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             "gcds-text": LocalJSX.GcdsText & JSXBase.HTMLAttributes<HTMLGcdsTextElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;

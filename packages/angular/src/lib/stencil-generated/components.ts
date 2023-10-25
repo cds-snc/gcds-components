@@ -861,6 +861,27 @@ export declare interface GcdsSignature extends Components.GcdsSignature {}
 
 
 @ProxyCmp({
+})
+@Component({
+  selector: 'gcds-sr-only',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class GcdsSrOnly {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsSrOnly extends Components.GcdsSrOnly {}
+
+
+@ProxyCmp({
   inputs: ['currentStep', 'totalSteps']
 })
 @Component({

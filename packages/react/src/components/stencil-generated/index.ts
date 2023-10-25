@@ -38,6 +38,7 @@ export const GcdsSearch = /*@__PURE__*/createReactComponent<JSX.GcdsSearch, HTML
 export const GcdsSelect = /*@__PURE__*/createReactComponent<JSX.GcdsSelect, HTMLGcdsSelectElement>('gcds-select');
 export const GcdsSideNav = /*@__PURE__*/createReactComponent<JSX.GcdsSideNav, HTMLGcdsSideNavElement>('gcds-side-nav');
 export const GcdsSignature = /*@__PURE__*/createReactComponent<JSX.GcdsSignature, HTMLGcdsSignatureElement>('gcds-signature');
+export const GcdsSrOnly = /*@__PURE__*/createReactComponent<JSX.GcdsSrOnly, HTMLGcdsSrOnlyElement>('gcds-sr-only');
 export const GcdsStepper = /*@__PURE__*/createReactComponent<JSX.GcdsStepper, HTMLGcdsStepperElement>('gcds-stepper');
 export const GcdsText = /*@__PURE__*/createReactComponent<JSX.GcdsText, HTMLGcdsTextElement>('gcds-text');
 export const GcdsTextarea = /*@__PURE__*/createReactComponent<JSX.GcdsTextarea, HTMLGcdsTextareaElement>('gcds-textarea');

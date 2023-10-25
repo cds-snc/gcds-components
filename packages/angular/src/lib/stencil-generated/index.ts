@@ -32,6 +32,7 @@ export const DIRECTIVES = [
   d.GcdsSelect,
   d.GcdsSideNav,
   d.GcdsSignature,
+  d.GcdsSrOnly,
   d.GcdsStepper,
   d.GcdsText,
   d.GcdsTextarea,
