@@ -134,8 +134,8 @@
 }
 
 @media screen and (max-width: 30rem) {
-  :host button:not(.button--text-only),
-  :host a:not(.button--text-only) {
+  :host button,
+  :host a {
     width: var(--gcds-button-mobile-width);
     margin: var(--gcds-button-mobile-margin);
   }
