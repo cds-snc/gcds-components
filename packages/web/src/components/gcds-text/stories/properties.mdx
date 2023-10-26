@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as Text from './gcds-text.stories';
+
+<Meta of={Text} name="Events & properties" />
+
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
+
+<Canvas
+  of={Text.Props}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Text.Props} sort="requiredFirst" />

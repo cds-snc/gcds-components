@@ -1,0 +1,24 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as SROnly from './gcds-sr-only.stories';
+
+<Meta of={SROnly} name="Overview" />
+
+# Screen reader only<br/>`<gcds-sr-only>`
+
+_Also called: visually hidden, assistive text._
+
+<Canvas
+  of={SROnly.Default}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/screen-reader-only/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-sr-only" target="_blank">Github</gcds-button>
+  </li>
+</ul>

@@ -893,6 +893,27 @@ export declare interface GcdsSignature extends Components.GcdsSignature {}
 
 
 @ProxyCmp({
+})
+@Component({
+  selector: 'gcds-sr-only',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class GcdsSrOnly {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsSrOnly extends Components.GcdsSrOnly {}
+
+
+@ProxyCmp({
   inputs: ['currentStep', 'totalSteps']
 })
 @Component({
@@ -912,6 +933,28 @@ export class GcdsStepper {
 
 
 export declare interface GcdsStepper extends Components.GcdsStepper {}
+
+
+@ProxyCmp({
+  inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole']
+})
+@Component({
+  selector: 'gcds-text',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole'],
+})
+export class GcdsText {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsText extends Components.GcdsText {}
 
 
 @ProxyCmp({

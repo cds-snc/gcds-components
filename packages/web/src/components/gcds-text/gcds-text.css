@@ -1,0 +1,243 @@
+@layer reset,
+defaults,
+variants.display,
+variants.limit,
+variants.margin,
+variants.role,
+variants.size,
+variants.style,
+variants.weight;
+
+@layer reset {
+  :host {
+    display: block;
+    color: var(--gcds-text-role-primary);
+
+    .gcds-text {
+      display: inherit;
+      box-sizing: border-box;
+      margin: 0;
+    }
+  }
+}
+
+@layer defaults {
+  :host .gcds-text {
+    font: var(--gcds-text-size-body-desktop);
+
+    @media only screen and (width < 48em) {
+      font: var(--gcds-text-size-body-mobile);
+    }
+  }
+}
+
+@layer variants.display {
+  :host {
+    &.d-block {
+      display: block;
+    }
+
+    &.d-flex {
+      display: flex;
+    }
+
+    &.d-inline {
+      display: inline;
+    }
+
+    &.d-inline-block {
+      display: inline-block;
+    }
+
+    &.d-inline-flex {
+      display: inline-flex;
+    }
+
+    &.d-none {
+      display: none;
+    }
+  }
+}
+
+@layer variants.limit {
+  :host .gcds-text {
+    &.limit {
+      max-width: var(--gcds-text-character-limit);
+    }
+  }
+}
+
+@layer variants.margin {
+  :host .gcds-text {
+    /* Margin top */
+    &.mt-0 {
+      margin-block-start: var(--gcds-text-spacing-0);
+    }
+
+    &.mt-50 {
+      margin-block-start: var(--gcds-text-spacing-50);
+    }
+
+    &.mt-100 {
+      margin-block-start: var(--gcds-text-spacing-100);
+    }
+
+    &.mt-150 {
+      margin-block-start: var(--gcds-text-spacing-150);
+    }
+
+    &.mt-200 {
+      margin-block-start: var(--gcds-text-spacing-200);
+    }
+
+    &.mt-250 {
+      margin-block-start: var(--gcds-text-spacing-250);
+    }
+
+    &.mt-300 {
+      margin-block-start: var(--gcds-text-spacing-300);
+    }
+
+    &.mt-400 {
+      margin-block-start: var(--gcds-text-spacing-400);
+    }
+
+    &.mt-450 {
+      margin-block-start: var(--gcds-text-spacing-450);
+    }
+
+    &.mt-500 {
+      margin-block-start: var(--gcds-text-spacing-500);
+    }
+
+    &.mt-550 {
+      margin-block-start: var(--gcds-text-spacing-550);
+    }
+
+    &.mt-600 {
+      margin-block-start: var(--gcds-text-spacing-600);
+    }
+
+    &.mt-700 {
+      margin-block-start: var(--gcds-text-spacing-700);
+    }
+
+    &.mt-800 {
+      margin-block-start: var(--gcds-text-spacing-800);
+    }
+
+    &.mt-900 {
+      margin-block-start: var(--gcds-text-spacing-900);
+    }
+
+    &.mt-1000 {
+      margin-block-start: var(--gcds-text-spacing-1000);
+    }
+
+    /* Margin bottom */
+    &.mb-0 {
+      margin-block-end: var(--gcds-text-spacing-0);
+    }
+
+    &.mb-50 {
+      margin-block-end: var(--gcds-text-spacing-50);
+    }
+
+    &.mb-100 {
+      margin-block-end: var(--gcds-text-spacing-100);
+    }
+
+    &.mb-150 {
+      margin-block-end: var(--gcds-text-spacing-150);
+    }
+
+    &.mb-200 {
+      margin-block-end: var(--gcds-text-spacing-200);
+    }
+
+    &.mb-250 {
+      margin-block-end: var(--gcds-text-spacing-250);
+    }
+
+    &.mb-300 {
+      margin-block-end: var(--gcds-text-spacing-300);
+    }
+
+    &.mb-400 {
+      margin-block-end: var(--gcds-text-spacing-400);
+    }
+
+    &.mb-450 {
+      margin-block-end: var(--gcds-text-spacing-450);
+    }
+
+    &.mb-500 {
+      margin-block-end: var(--gcds-text-spacing-500);
+    }
+
+    &.mb-550 {
+      margin-block-end: var(--gcds-text-spacing-550);
+    }
+
+    &.mb-600 {
+      margin-block-end: var(--gcds-text-spacing-600);
+    }
+
+    &.mb-700 {
+      margin-block-end: var(--gcds-text-spacing-700);
+    }
+
+    &.mb-800 {
+      margin-block-end: var(--gcds-text-spacing-800);
+    }
+
+    &.mb-900 {
+      margin-block-end: var(--gcds-text-spacing-900);
+    }
+
+    &.mb-1000 {
+      margin-block-end: var(--gcds-text-spacing-1000);
+    }
+  }
+}
+
+@layer variants.role {
+  :host .gcds-text {
+    &.role-primary {
+      color: var(--gcds-text-role-primary);
+    }
+
+    &.role-secondary {
+      color: var(--gcds-text-role-secondary);
+    }
+
+    &.role-light {
+      color: var(--gcds-text-role-light);
+    }
+  }
+}
+
+@layer variants.size {
+  :host .gcds-text {
+    small,
+    ::slotted(small) {
+      font: var(--gcds-text-size-caption-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-text-size-caption-mobile);
+      }
+    }
+  }
+}
+
+@layer variants.style {
+  :host .gcds-text ::slotted(em) {
+    font-style: italic;
+  }
+}
+
+@layer variants.weight {
+  :host .gcds-text ::slotted(strong) {
+    font-weight: var(--gcds-text-weight-bold);
+  }
+}

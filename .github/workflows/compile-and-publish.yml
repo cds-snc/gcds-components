@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
 
       - name: Setup Node
-        uses: actions/setup-node@72c43c2d8fa01b0e1ca5fc3f8cb258c8d8bd286d
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
         with:
           node-version: 18
 
@@ -45,7 +45,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@7f426c9ea8cd6f53975623a350c34e3a3707739c
+        uses: JS-DevTools/npm-publish@6fd3bc8dad0cb1a484731fe6486a03193f98f037
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -102,7 +102,7 @@ jobs:
         uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
 
       - name: Setup Node
-        uses: actions/setup-node@72c43c2d8fa01b0e1ca5fc3f8cb258c8d8bd286d
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
         with:
           node-version: 18
 
@@ -126,7 +126,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@7f426c9ea8cd6f53975623a350c34e3a3707739c
+        uses: JS-DevTools/npm-publish@6fd3bc8dad0cb1a484731fe6486a03193f98f037
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
