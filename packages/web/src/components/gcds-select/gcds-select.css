@@ -48,6 +48,7 @@
     border-color: var(--gcds-select-focus-text);
     outline: var(--gcds-select-outline-width) solid var(--gcds-select-focus-text);
     outline-offset: var(--gcds-select-border-width);
+    box-shadow: var(--gcds-select-focus-box-shadow);
   }
 
   &:disabled {

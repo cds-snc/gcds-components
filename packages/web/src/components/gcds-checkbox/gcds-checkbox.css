@@ -78,6 +78,7 @@
           left: 0;
           top: var(--gcds-checkbox-top);
           border-radius: var(--gcds-checkbox-input-border-radius);
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, outline ease-in-out .15s;
         }
 
         &:after {
@@ -99,6 +100,8 @@
         &:before {
           outline: var( --gcds-checkbox-focus-outline-width) solid currentcolor;
           outline-offset: var(--gcds-checkbox-input-border-width);
+          box-shadow: var(--gcds-checkbox-focus-box-shadow);
+          background: var(--gcds-checkbox-focus-background);
         }
 
         &:after {
