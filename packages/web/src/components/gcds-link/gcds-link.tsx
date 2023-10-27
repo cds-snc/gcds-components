@@ -191,8 +191,6 @@ export class GcdsLink {
           {...inheritedAttributes}
           part="link"
         >
-          <slot name="left"></slot>
-
           <slot></slot>
 
           {target === '_blank' || external ? (
