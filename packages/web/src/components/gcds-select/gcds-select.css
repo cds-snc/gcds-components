@@ -6,6 +6,10 @@
   padding: 0;
   border: 0;
   transition: color ease-in-out .15s;
+  
+  slot {
+    display: inherit;
+  }
 
   &:focus-within {
     color: var(--gcds-select-focus-text);

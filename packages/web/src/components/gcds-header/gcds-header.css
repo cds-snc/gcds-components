@@ -2,6 +2,10 @@
   display: block;
   margin: var(--gcds-header-margin) !important;
 
+  slot {
+    display: inherit;
+  }
+
   .gcds-header__container {
     justify-content: space-between;
     width: 90%;

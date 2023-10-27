@@ -22,6 +22,10 @@
       text-decoration-thickness: var(--gcds-breadcrumbs-default-decoration-thickness);
       transition: background 0.15s ease-in-out, color 0.15s ease-in-out;
       white-space: normal;
+
+      slot {
+        display: inherit;
+      }
     }
   }
 
