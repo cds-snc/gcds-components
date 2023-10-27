@@ -4,13 +4,12 @@
 
   &:not([aria-disabled='true']) {
     text-decoration: underline;
-    text-underline-offset: 0.2em;
+    text-underline-offset: var(--gcds-link-underline-offset);
     text-decoration-color: currentColor;
-    text-decoration-thickness: var(--gcds-link-default-decoration-thickness);
+    text-decoration-thickness: var(--gcds-link-decoration-thickness);
   }
 
   &:hover {
-    background-color: var(--gcds-link-default-background);
     color: var(--gcds-link-hover);
     text-decoration-thickness: var(--gcds-link-hover-decoration-thickness);
   }

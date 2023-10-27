@@ -41,6 +41,15 @@ export class GcdsLink {
     }
   }
 
+  @Watch('display')
+  validateDisplay(newValue: string) {
+    const values = ['block', 'inline', 'inline-block', 'inherit'];
+
+    if (!values.includes(newValue)) {
+      this.display = 'block';
+    }
+  }
+
   // TODO: Do we need to validate display, rel, target, etc?
 
   private handleClick = (e: Event) => {
@@ -158,7 +167,6 @@ export class GcdsLink {
     } = this;
 
     const attrs = {
-      display,
       href,
       rel,
       target,
@@ -170,13 +178,14 @@ export class GcdsLink {
 
     return (
       <Host>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
         <a
           role="link"
           tabIndex={0}
           {...attrs}
           onClick={e => this.handleClick(e)}
           onKeyDown={e => this.handleClick(e)}
-          class={`link--${size}`}
+          class={`link--${size} ${display != 'block' ? `d-${display}` : ''}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
           rel={isExternal ? 'noopener' : rel}
