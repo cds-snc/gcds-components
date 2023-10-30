@@ -43,7 +43,7 @@ export class GcdsLink {
 
   @Watch('display')
   validateDisplay(newValue: string) {
-    const values = ['block', 'inline', 'inline-block', 'inherit'];
+    const values = ['block', 'inline', 'inline-block'];
 
     if (!values.includes(newValue)) {
       this.display = 'block';
