@@ -42,14 +42,6 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
-    characterCount: {
-      name: 'character-count',
-      control: 'number',
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '-' }
-      },
-    },
     rows: {
       control: 'number',
       table: {
@@ -165,6 +157,8 @@ const Template = args =>
 </GcdsTextarea>
 `.replace(/\s\snull\n/g, '');
 
+// ------ Textarea default ------
+
 const TemplatePlayground = args => `
 <gcds-textarea
   textarea-id="${args.textareaId}"
@@ -182,26 +176,6 @@ const TemplatePlayground = args => `
 >
 </gcds-textarea>
 `;
-
-// ------ Textarea default ------
-
-const TemplatePlayground = (args) => (`
-<gcds-textarea
-  textarea-id="${args.textareaId}"
-  label="${args.label}"
-  ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.value ? `value="${args.value}"` : null}
-  ${args.characterCount ? `character-count="${args.characterCount}"` : null}
-  ${args.rows ? `rows="${args.rows}"` : null}
-  ${args.hideLabel ? `hide-label` : null}
-  ${args.validateOn != "blur" ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
->
-</gcds-textarea>
-`);
 
 // ------ Textarea default ------
 
