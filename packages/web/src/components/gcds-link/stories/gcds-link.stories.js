@@ -41,7 +41,7 @@ export default {
       options: ['_blank', '_self', '_parent', '_top'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+        defaultValue: { summary: '_self' },
       },
     },
     external: {
@@ -62,7 +62,7 @@ export default {
       control: { type: 'text' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'button' },
+        defaultValue: { summary: '-' },
       },
     },
 
@@ -90,45 +90,40 @@ const Template = args =>
   `
 <!-- Web component code (Angular, Vue) -->
 This is an example of
-<gcds-link ${
-  args.display ? `display="${args.display}"` : null
-  } ${args.href ? `href="${args.href}"` : null
-  } ${args.rel ? `rel="${args.rel}"` : null
-  } ${args.target ? `target="${args.target}"` : null
-  } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null
-  } ${args.external ? `external` : null
-  } ${args.download ? `download="${args.download}"` : null
-  } ${args.type ? `type="${args.type}"` : null
+<gcds-link ${args.display ? `display="${args.display}"` : null} ${
+    args.href ? `href="${args.href}"` : null
+  } ${args.rel ? `rel="${args.rel}"` : null} ${
+    args.target ? `target="${args.target}"` : null
+  } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
+    args.external ? `external` : null
+  } ${args.download ? `download="${args.download}"` : null} ${
+    args.type ? `type="${args.type}"` : null
   }> ${args.default}</gcds-link>
  link.
 
 <!-- React code -->
-<GcdsLink ${
-  args.display ? `display="${args.display}"` : null
-  } ${args.href ? `href="${args.href}"` : null
-  } ${args.rel ? `rel="${args.rel}"` : null
-  } ${args.target ? `target="${args.target}"` : null
-  } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null
-  } ${args.external ? `external` : null
-  } ${args.download ? `download="${args.download}"` : null
-  } ${args.type ? `type="${args.type}"` : null
+<GcdsLink ${args.display ? `display="${args.display}"` : null} ${
+    args.href ? `href="${args.href}"` : null
+  } ${args.rel ? `rel="${args.rel}"` : null} ${
+    args.target ? `target="${args.target}"` : null
+  } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
+    args.external ? `external` : null
+  } ${args.download ? `download="${args.download}"` : null} ${
+    args.type ? `type="${args.type}"` : null
   }>
 ${args.default}</GcdsLink>
 `.replace(/ null/g, '');
 
 const TemplatePlayground = args => `
-<gcds-link ${
-  args.display ? `display="${args.display}"` : null
-} ${args.href ? `href="${args.href}"` : null
-} ${args.rel ? `rel="${args.rel}"` : null
-} ${args.target ? `target="${args.target}"` : null
-} ${args.size != 'regular' && args.size ? `size="${args.size}"` : null
-} ${  args.external ? `external` : null
-} ${args.download ? `download="${args.download}"` : null
-} ${args.type ? `type="${args.type}"` : null
+<gcds-link ${args.display ? `display="${args.display}"` : null} ${
+  args.href ? `href="${args.href}"` : null
+} ${args.rel ? `rel="${args.rel}"` : null} ${
+  args.target ? `target="${args.target}"` : null
+} ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
+  args.external ? `external` : null
+} ${args.download ? `download="${args.download}"` : null} ${
+  args.type ? `type="${args.type}"` : null
 }>  ${args.default}
-</gcds-link>
-  ${args.default}
 </gcds-link>
 `;
 
