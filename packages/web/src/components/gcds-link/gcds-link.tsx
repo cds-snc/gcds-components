@@ -50,7 +50,16 @@ export class GcdsLink {
     }
   }
 
-  // TODO: Do we need to validate display, rel, target, etc?
+  // @Watch('target')
+  // validateTarget(newValue: string) {
+  //   const values = ['_blank', '_self', '_parent', '_top'];
+  //
+  //   // TODO: if value is a valid string?
+  //   if (!values.includes(newValue)) {
+  //     this.target = '_self';
+  //   }
+  // }
+
   /**
    * Link props
    */
@@ -63,7 +72,7 @@ export class GcdsLink {
   /**
    * The href attribute specifies the URL of the page the link goes to
    */
-  @Prop() href = '#';
+  @Prop() href!: string;
 
   /**
    * The rel attribute specifies the relationship between the current document and the linked document
@@ -187,7 +196,7 @@ export class GcdsLink {
           class={`link--${size} ${display != 'block' ? `d-${display}` : ''}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
-          rel={isExternal ? 'noopener' : rel}
+          rel={isExternal ? 'noopener noreferrer' : rel}
           {...inheritedAttributes}
           part="link"
         >
