@@ -12,7 +12,7 @@ export default {
     // Props
     size: {
       control: { type: 'radio' },
-      options: ['regular', 'small'],
+      options: ['regular', 'small', 'inherit'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'regular' },
