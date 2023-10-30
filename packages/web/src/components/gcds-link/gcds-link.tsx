@@ -100,11 +100,6 @@ export class GcdsLink {
   @Prop() type: string | undefined;
 
   /**
-   * Custom callback function on click event
-   */
-  @Prop() clickHandler: Function;
-
-  /**
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
@@ -127,12 +122,6 @@ export class GcdsLink {
    * Emitted when the link loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
-
-  private handleClick = (e: Event) => {
-    if (this.clickHandler) {
-      this.clickHandler(e);
-    }
-  };
 
   /*
    * Observe lang attribute change
@@ -191,8 +180,6 @@ export class GcdsLink {
           role="link"
           tabIndex={0}
           {...attrs}
-          onClick={e => this.handleClick(e)}
-          onKeyDown={e => this.handleClick(e)}
           class={`link--${size} ${display != 'block' ? `d-${display}` : ''}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
