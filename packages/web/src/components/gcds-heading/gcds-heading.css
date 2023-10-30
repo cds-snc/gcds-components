@@ -16,73 +16,79 @@ variants;
       box-sizing: border-box;
       margin: 0;
     }
+
+    slot {
+      display: inherit;
+    }
   }
 }
 
 @layer defaults {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    text-wrap: balance;
-  }
-
-  h1.gcds-heading {
-    font: var(--gcds-heading-h1-desktop);
-
-    @media only screen and (width < 48em) {
-      font: var(--gcds-heading-h1-mobile);
+  :host {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-wrap: balance;
     }
 
-    &:after {
-      content: '';
-      display: block;
-      width: var(--gcds-heading-h1-border-width);
-      margin-block-start: var(--gcds-heading-h1-border-margin);
-      height: var(--gcds-heading-h1-border-height);
-      background-color: var(--gcds-heading-h1-border-background);
+    h1.gcds-heading {
+      font: var(--gcds-heading-h1-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-heading-h1-mobile);
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        width: var(--gcds-heading-h1-border-width);
+        margin-block-start: var(--gcds-heading-h1-border-margin);
+        height: var(--gcds-heading-h1-border-height);
+        background-color: var(--gcds-heading-h1-border-background);
+      }
     }
-  }
 
-  h2.gcds-heading {
-    font: var(--gcds-heading-h2-desktop);
+    h2.gcds-heading {
+      font: var(--gcds-heading-h2-desktop);
 
-    @media only screen and (width < 48em) {
-      font: var(--gcds-heading-h2-mobile);
+      @media only screen and (width < 48em) {
+        font: var(--gcds-heading-h2-mobile);
+      }
     }
-  }
 
-  h3.gcds-heading {
-    font: var(--gcds-heading-h3-desktop);
+    h3.gcds-heading {
+      font: var(--gcds-heading-h3-desktop);
 
-    @media only screen and (width < 48em) {
-      font: var(--gcds-heading-h3-mobile);
+      @media only screen and (width < 48em) {
+        font: var(--gcds-heading-h3-mobile);
+      }
     }
-  }
 
-  h4.gcds-heading {
-    font: var(--gcds-heading-h4-desktop);
+    h4.gcds-heading {
+      font: var(--gcds-heading-h4-desktop);
 
-    @media only screen and (width < 48em) {
-      font: var(--gcds-heading-h4-mobile);
+      @media only screen and (width < 48em) {
+        font: var(--gcds-heading-h4-mobile);
+      }
     }
-  }
 
-  h5.gcds-heading {
-    font: var(--gcds-heading-h5-desktop);
+    h5.gcds-heading {
+      font: var(--gcds-heading-h5-desktop);
 
-    @media only screen and (width < 48em) {
-      font: var(--gcds-heading-h5-mobile);
+      @media only screen and (width < 48em) {
+        font: var(--gcds-heading-h5-mobile);
+      }
     }
-  }
 
-  h6.gcds-heading {
-    font: var(--gcds-heading-h6-desktop);
+    h6.gcds-heading {
+      font: var(--gcds-heading-h6-desktop);
 
-    @media only screen and (width < 48em) {
-      font: var(--gcds-heading-h6-mobile);
+      @media only screen and (width < 48em) {
+        font: var(--gcds-heading-h6-mobile);
+      }
     }
   }
 }

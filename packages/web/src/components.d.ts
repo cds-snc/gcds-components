@@ -545,7 +545,7 @@ export namespace Components {
          */
         "characterLimit"?: boolean;
         /**
-          * Adds margin below the heading.
+          * Adds margin below the heading. The default margin-botttom is 400.
          */
         "marginBottom"?: | '0'
     | '50'
@@ -564,7 +564,7 @@ export namespace Components {
     | '900'
     | '1000';
         /**
-          * Adds margin above the heading.
+          * Adds margin above the heading. The default margin-top for h1 is set to 0, while for h2 to h6 headings, it's 500.
          */
         "marginTop"?: | '0'
     | '50'
@@ -2117,7 +2117,7 @@ declare namespace LocalJSX {
          */
         "characterLimit"?: boolean;
         /**
-          * Adds margin below the heading.
+          * Adds margin below the heading. The default margin-botttom is 400.
          */
         "marginBottom"?: | '0'
     | '50'
@@ -2136,7 +2136,7 @@ declare namespace LocalJSX {
     | '900'
     | '1000';
         /**
-          * Adds margin above the heading.
+          * Adds margin above the heading. The default margin-top for h1 is set to 0, while for h2 to h6 headings, it's 500.
          */
         "marginTop"?: | '0'
     | '50'

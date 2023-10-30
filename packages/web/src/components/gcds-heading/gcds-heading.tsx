@@ -33,7 +33,8 @@ export class GcdsHeading {
   @Prop() characterLimit?: boolean = true;
 
   /**
-   * Adds margin above the heading.
+   * Adds margin above the heading. The default margin-top for h1 is set to 0,
+   * while for h2 to h6 headings, it's 500.
    */
   @Prop({ mutable: true }) marginTop?:
     | '0'
@@ -51,7 +52,7 @@ export class GcdsHeading {
     | '700'
     | '800'
     | '900'
-    | '1000' = '500';
+    | '1000';
 
   @Watch('marginTop')
   validateMarginTop(newValue: string) {
@@ -74,13 +75,17 @@ export class GcdsHeading {
       '1000',
     ];
 
-    if (this.marginTop && !values.includes(newValue)) {
-      this.marginTop = '500';
+    if (!this.marginTop || (this.marginTop && !values.includes(newValue))) {
+      if (this.tag !== 'h1') {
+        this.marginTop = '500';
+      } else {
+        this.marginTop = '0';
+      }
     }
   }
 
   /**
-   * Adds margin below the heading.
+   * Adds margin below the heading. The default margin-botttom is 400.
    */
   @Prop({ mutable: true }) marginBottom?:
     | '0'

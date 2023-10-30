@@ -45,7 +45,7 @@ export default {
       ],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+        defaultValue: { summary: 'h1: 0, h2-h6: 500' },
       },
     },
     marginBottom: {

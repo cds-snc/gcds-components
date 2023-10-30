@@ -12,7 +12,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h1">
         <mock:shadow-root>
-          <h1 class="gcds-heading limit">
+          <h1 class="gcds-heading limit mt-0 mb-400">
             <slot></slot>
           </h1>
         </mock:shadow-root>
@@ -31,7 +31,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit">
+          <h2 class="gcds-heading limit mt-500 mb-400">
             <slot></slot>
           </h2>
         </mock:shadow-root>
@@ -50,7 +50,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h3">
         <mock:shadow-root>
-          <h3 class="gcds-heading limit">
+          <h3 class="gcds-heading limit mt-500 mb-400">
             <slot></slot>
           </h3>
         </mock:shadow-root>
@@ -69,7 +69,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h4">
         <mock:shadow-root>
-          <h4 class="gcds-heading limit">
+          <h4 class="gcds-heading limit mt-500 mb-400">
             <slot></slot>
           </h4>
         </mock:shadow-root>
@@ -88,7 +88,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h5">
         <mock:shadow-root>
-          <h5 class="gcds-heading limit">
+          <h5 class="gcds-heading limit mt-500 mb-400">
             <slot></slot>
           </h5>
         </mock:shadow-root>
@@ -107,7 +107,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h6">
         <mock:shadow-root>
-          <h6 class="gcds-heading limit">
+          <h6 class="gcds-heading limit mt-500 mb-400">
             <slot></slot>
           </h6>
         </mock:shadow-root>
@@ -129,9 +129,47 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2" margin-top="400">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit mt-400">
+          <h2 class="gcds-heading limit mt-400 mb-400">
             <slot></slot>
           </h2>
+        </mock:shadow-root>
+        Margin top
+      </gcds-heading>
+    `);
+  });
+
+  it('renders default margin top if incorrect value is passed', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsHeading],
+      html: `
+        <gcds-heading tag="h2" margin-top="22">Margin top</gcds-heading>
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-heading tag="h2" margin-top="22">
+        <mock:shadow-root>
+          <h2 class="gcds-heading limit mt-500 mb-400">
+            <slot></slot>
+          </h2>
+        </mock:shadow-root>
+        Margin top
+      </gcds-heading>
+    `);
+  });
+
+  it('renders default margin top for h1 if incorrect value is passed', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsHeading],
+      html: `
+        <gcds-heading tag="h1" margin-top="22">Margin top</gcds-heading>
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-heading tag="h1" margin-top="22">
+        <mock:shadow-root>
+          <h1 class="gcds-heading limit mt-0 mb-400">
+            <slot></slot>
+          </h1>
         </mock:shadow-root>
         Margin top
       </gcds-heading>
@@ -142,17 +180,77 @@ describe('gcds-heading', () => {
     const { root } = await newSpecPage({
       components: [GcdsHeading],
       html: `
-        <gcds-heading tag="h2" margin-bottom="400">Margin bottom</gcds-heading>
+        <gcds-heading tag="h2" margin-bottom="200">Margin bottom</gcds-heading>
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-heading tag="h2" margin-bottom="400">
+      <gcds-heading tag="h2" margin-bottom="200">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit mb-400">
+          <h2 class="gcds-heading limit mt-500 mb-200">
             <slot></slot>
           </h2>
         </mock:shadow-root>
         Margin bottom
+      </gcds-heading>
+    `);
+  });
+
+  it('renders default margin bottom if incorrect value is passed', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsHeading],
+      html: `
+        <gcds-heading tag="h2" margin-bottom="22">Margin bottom</gcds-heading>
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-heading tag="h2" margin-bottom="22">
+        <mock:shadow-root>
+          <h2 class="gcds-heading limit mt-500 mb-400">
+            <slot></slot>
+          </h2>
+        </mock:shadow-root>
+        Margin bottom
+      </gcds-heading>
+    `);
+  });
+
+  /**
+   * Character limits
+   */
+  it('renders heading with character limits', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsHeading],
+      html: `
+        <gcds-heading tag="h2">Character limits</gcds-heading>
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-heading tag="h2">
+        <mock:shadow-root>
+          <h2 class="gcds-heading limit mt-500 mb-400">
+            <slot></slot>
+          </h2>
+        </mock:shadow-root>
+        Character limits
+      </gcds-heading>
+    `);
+  });
+
+  it('renders heading without character limits', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsHeading],
+      html: `
+        <gcds-heading tag="h2" character-limit="false">No character limits</gcds-heading>
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-heading tag="h2" character-limit="false">
+        <mock:shadow-root>
+          <h2 class="gcds-heading mt-500 mb-400">
+            <slot></slot>
+          </h2>
+        </mock:shadow-root>
+        No character limits
       </gcds-heading>
     `);
   });
