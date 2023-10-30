@@ -44,6 +44,8 @@ describe('gcds-link', () => {
     `);
   });
 
+  // TODO: add variants for testing french labels
+  // examples where?
   it('renders download attribute', async () => {
     const { root } = await newSpecPage({
       components: [GcdsLink],
@@ -62,4 +64,6 @@ describe('gcds-link', () => {
       </gcds-link>
     `);
   });
+
+  // TODO: add test for link sizes
 });

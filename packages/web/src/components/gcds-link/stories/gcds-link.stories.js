@@ -41,8 +41,7 @@ export default {
       },
     },
     target: {
-      control: 'select',
-      options: ['_blank', '_self', '_parent', '_top'],
+      control: 'text',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '_self' },
@@ -194,10 +193,18 @@ Phone.args = {
   default: 'a phone number',
 };
 
-export const Sizes = Template.bind({});
-Sizes.args = {
+// TODO: Would it be better to spend more time and have the two links appear in one canvas?
+
+export const SizeSmall = Template.bind({});
+SizeSmall.args = {
   size: 'small',
   default: 'a small',
+};
+
+export const SizeRegular = Template.bind({});
+SizeRegular.args = {
+  size: 'regular',
+  default: 'a regular',
 };
 
 // ------ Link playground ------
