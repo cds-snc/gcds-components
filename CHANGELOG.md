@@ -4,6 +4,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.15.0
+
+### New features
+
+- Text component (`gcds-text`)
+  - New `gcds-text` to render text content in GCDS style
+- Screen reader only component (`gcds-sr-only`)
+  - New `gcds-sr-only` to hide text content only available to assistive technologies
+
+### Minor
+
+- https://github.com/cds-snc/gcds-components/pull/311 - [39c2135](https://github.com/cds-snc/gcds-components/commit/39c2135f3f9eb6ef3fcfa834cb0ab8cfdbc1c498) - Add `gcds-text` to component library
+- https://github.com/cds-snc/gcds-components/pull/315 - [8117534](https://github.com/cds-snc/gcds-components/commit/8117534ffe52c998be9e09002f1dbbe1ec528f48) - Add `gcds-sr-only` to component library
+
+### Patch
+
+- https://github.com/cds-snc/gcds-components/pull/272 - [c48d92f](https://github.com/cds-snc/gcds-components/commit/c48d92f3eb1dc13b368e3140d9f289d66b843638) - Update media query in `gcds-pagination`
+- https://github.com/cds-snc/gcds-components/pull/291 - [d4d6f9f](https://github.com/cds-snc/gcds-components/commit/d4d6f9fbb79437a06f2316b5e1ffea5c55110f38) - Remove nav landmark label to prevent confusion in `gcds-header`
+- https://github.com/cds-snc/gcds-components/pull/294 - [e6a550a](https://github.com/cds-snc/gcds-components/commit/e6a550a0f5695d65bb8c9ee2f42f55f7abaacd7e) - Set default property values in `gcds-signature`
+- https://github.com/cds-snc/gcds-components/pull/316 - [00e5ce2](https://github.com/cds-snc/gcds-components/commit/00e5ce2fd8507b162265538e6770a78452c82c2f) - Remove `text-style` and `weight` properties from `gcds-text`
+- https://github.com/cds-snc/gcds-components/pull/317 - [ac5d6e7](https://github.com/cds-snc/gcds-components/commit/ac5d6e7db5b0ec3155441ff33d243c27d6322854) - Add box-shadow on focus to components for consistent focus state
+- https://github.com/cds-snc/gcds-components/pull/318 - [2bf8fde](https://github.com/cds-snc/gcds-components/commit/2bf8fdeedc18726f176bc4b1a54203ee41c04036) - Add slot styles to help patch Chrome accessibility issues to components that use text based slots
+
 ## v0.14.0
 
 ### New features
