@@ -124,21 +124,12 @@ export class GcdsNavGroup {
   render() {
     const { closeTrigger, menuLabel, open, openTrigger } = this;
 
-<<<<<<< HEAD
-    let roleAttr = {
-      role: "menuitem"
-    };
-
-    if (this.el.classList.contains("gcds-mobile-nav")) {
-      delete roleAttr["role"];
-=======
     const roleAttr = {
       role: 'menuitem',
     };
 
     if (this.el.classList.contains('gcds-mobile-nav')) {
       delete roleAttr['role'];
->>>>>>> develop
     }
 
     return (
@@ -151,11 +142,7 @@ export class GcdsNavGroup {
           aria-haspopup="true"
           aria-expanded={open.toString()}
           {...roleAttr}
-<<<<<<< HEAD
-          ref={element => this.triggerElement = element as HTMLElement}
-=======
           ref={element => (this.triggerElement = element as HTMLElement)}
->>>>>>> develop
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
           onClick={() => {
             this.toggleNav();

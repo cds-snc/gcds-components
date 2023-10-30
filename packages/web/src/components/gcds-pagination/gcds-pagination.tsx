@@ -187,13 +187,9 @@ export class GcdsPagination {
               }
             >
               <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-<<<<<<< HEAD
-              {mobile ? I18N[this.lang].previousMobile : I18N[this.lang].previous}
-=======
               {mobile
                 ? I18N[this.lang].previousMobile
                 : I18N[this.lang].previous}
->>>>>>> develop
             </a>
           )}
         </li>

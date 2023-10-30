@@ -31,16 +31,10 @@
       position: relative;
       font: var(--gcds-topic-menu-font);
 
-<<<<<<< HEAD
-      button[aria-haspopup=true] {
-        background-color: var(--gcds-topic-menu-button-background);
-        border: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-button-border);
-=======
       button[aria-haspopup='true'] {
         background-color: var(--gcds-topic-menu-button-background);
         border: var(--gcds-topic-menu-border-width) solid
           var(--gcds-topic-menu-button-border);
->>>>>>> develop
         color: var(--gcds-topic-menu-button-text);
         margin-inline-start: 0;
         padding: var(--gcds-topic-menu-button-padding);
@@ -55,27 +49,13 @@
         }
 
         &:hover,
-<<<<<<< HEAD
-        &[aria-expanded="true"] {
-=======
         &[aria-expanded='true'] {
->>>>>>> develop
           background-color: var(--gcds-topic-menu-button-expanded-background);
           border-color: var(--gcds-topic-menu-button-expanded-border-color);
           color: var(--gcds-topic-menu-button-expanded-text);
         }
       }
 
-<<<<<<< HEAD
-      [aria-haspopup=true][aria-expanded=false]+[role=menu] {
-        display: none;
-      }
-
-      button[aria-haspopup=true][aria-expanded=true]+[role=menu] {
-        z-index: 9999;
-
-        [role=menuitem] {
-=======
       [aria-haspopup='true'][aria-expanded='false'] + [role='menu'] {
         display: none;
       }
@@ -84,25 +64,16 @@
         z-index: 9999;
 
         [role='menuitem'] {
->>>>>>> develop
           z-index: 9999;
           position: relative;
         }
       }
-<<<<<<< HEAD
-      [aria-haspopup=true][aria-expanded=true]+[role=menu] {
-=======
       [aria-haspopup='true'][aria-expanded='true'] + [role='menu'] {
->>>>>>> develop
         z-index: 9998;
       }
 
       /* First level - Theme list */
-<<<<<<< HEAD
-      [role=menu] {
-=======
       [role='menu'] {
->>>>>>> develop
         background-color: var(--gcds-topic-menu-themelist-background);
         color: var(--gcds-topic-menu-themelist-text);
         list-style: none;
@@ -111,17 +82,6 @@
         margin: 0;
         width: var(--gcds-topic-menu-themelist-width);
 
-<<<<<<< HEAD
-        &>li {
-          border-inline-start: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-themelist-item-border);
-
-          &:first-child {
-            border-block-start: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-themelist-item-border);
-          }
-
-          &:last-child {
-            border-block-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-themelist-item-border);
-=======
         & > li {
           border-inline-start: var(--gcds-topic-menu-border-width) solid
             var(--gcds-topic-menu-themelist-item-border);
@@ -134,21 +94,14 @@
           &:last-child {
             border-block-end: var(--gcds-topic-menu-border-width) solid
               var(--gcds-topic-menu-themelist-item-border);
->>>>>>> develop
           }
         }
 
         /* Second level - Topic list */
-<<<<<<< HEAD
-        [role=menu] {
-          background-color: var(--gcds-topic-menu-topiclist-background);
-          border-block-start: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-topiclist-border);
-=======
         [role='menu'] {
           background-color: var(--gcds-topic-menu-topiclist-background);
           border-block-start: var(--gcds-topic-menu-border-width) solid
             var(--gcds-topic-menu-topiclist-border);
->>>>>>> develop
           -webkit-box-shadow: var(--gcds-topic-menu-topiclist-box-shadow);
           box-shadow: var(--gcds-topic-menu-topiclist-box-shadow);
           color: var(--gcds-topic-menu-topiclist-text);
@@ -163,11 +116,7 @@
             border: none;
             width: 45%;
 
-<<<<<<< HEAD
-            [role=menuitem] {
-=======
             [role='menuitem'] {
->>>>>>> develop
               color: var(--gcds-topic-menu-topiclist-menuitem-text);
               padding: var(--gcds-topic-menu-topiclist-menuitem-padding);
               text-decoration: underline;
@@ -175,13 +124,8 @@
               border-inline-end: none;
               width: auto;
 
-<<<<<<< HEAD
-              &[aria-haspopup=true],
-              &[aria-haspopup=true]:hover {
-=======
               &[aria-haspopup='true'],
               &[aria-haspopup='true']:hover {
->>>>>>> develop
                 color: var(--gcds-topic-menu-topiclist-menuitem-popup-text);
                 font: var(--gcds-topic-menu-topiclist-menuitem-popup-font);
                 text-decoration: none;
@@ -189,30 +133,19 @@
 
               &:hover {
                 color: var(--gcds-topic-menu-topiclist-menuitem-hover-text);
-<<<<<<< HEAD
-                text-decoration-thickness: var(--gcds-topic-menu-topiclist-menuitem-hover-text-decoration-thickness);
-=======
                 text-decoration-thickness: var(
                   --gcds-topic-menu-topiclist-menuitem-hover-text-decoration-thickness
                 );
->>>>>>> develop
               }
             }
 
             &:first-child {
-<<<<<<< HEAD
-              margin-block-end: var(--gcds-topic-menu-topiclist-item-first-margin-block-end);
-              width: 100%;
-    
-              [role=menuitem] {
-=======
               margin-block-end: var(
                 --gcds-topic-menu-topiclist-item-first-margin-block-end
               );
               width: 100%;
 
               [role='menuitem'] {
->>>>>>> develop
                 font: var(--gcds-topic-menu-topiclist-item-first-font);
                 text-decoration: underline;
               }
@@ -222,19 +155,11 @@
               position: absolute;
               top: var(--gcds-topic-menu-topiclist-item-last-top);
 
-<<<<<<< HEAD
-              [aria-expanded=true] {
-                background: transparent;
-              }
-    
-              [role=menu] {
-=======
               [aria-expanded='true'] {
                 background: transparent;
               }
 
               [role='menu'] {
->>>>>>> develop
                 list-style: disc;
                 padding-block-start: 0;
               }
@@ -242,11 +167,7 @@
           }
 
           /* Third level - Most requested list */
-<<<<<<< HEAD
-          [role=menu] {
-=======
           [role='menu'] {
->>>>>>> develop
             background: transparent;
             -webkit-box-shadow: none;
             box-shadow: none;
@@ -260,27 +181,16 @@
               width: var(--gcds-topic-menu-mostrequested-item-width);
 
               &:first-child {
-<<<<<<< HEAD
-                margin-block-end: var(--gcds-topic-menu-mostrequested-item-first-margin-block-end);
-  
-                [role=menuitem] {
-=======
                 margin-block-end: var(
                   --gcds-topic-menu-mostrequested-item-first-margin-block-end
                 );
 
                 [role='menuitem'] {
->>>>>>> develop
                   font: var(--gcds-topic-menu-mostrequested-item-first-font);
                   text-decoration: underline;
                   width: auto;
                 }
               }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> develop
               &:last-child {
                 left: auto;
                 position: relative;
@@ -295,18 +205,6 @@
 
             li:last-child {
               left: auto;
-<<<<<<< HEAD
-              margin-block-start: var(--gcds-topic-menu-mostrequested-item-last-margin-block-start);
-              position: relative;
-              top: auto;
-            }
-  
-            [role=menu] {
-              margin-block-end: 0;
-              padding-block-end: 0;
-              position: relative;
-  
-=======
               margin-block-start: var(
                 --gcds-topic-menu-mostrequested-item-last-margin-block-start
               );
@@ -319,7 +217,6 @@
               padding-block-end: 0;
               position: relative;
 
->>>>>>> develop
               li:last-child {
                 margin-block-start: 0;
               }
@@ -328,19 +225,12 @@
         }
       }
 
-<<<<<<< HEAD
-      [role=menuitem],
-      [role=menuitem]:visited {
-        border-block-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-menuitem-border-block-end);
-        border-inline-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-menuitem-border-inline-end);
-=======
       [role='menuitem'],
       [role='menuitem']:visited {
         border-block-end: var(--gcds-topic-menu-border-width) solid
           var(--gcds-topic-menu-menuitem-border-block-end);
         border-inline-end: var(--gcds-topic-menu-border-width) solid
           var(--gcds-topic-menu-menuitem-border-inline-end);
->>>>>>> develop
         color: var(--gcds-topic-menu-menuitem-text);
         font: var(--gcds-topic-menu-menuitem-font);
         text-decoration: none;
@@ -348,19 +238,12 @@
         padding: var(--gcds-topic-menu-menuitem-padding);
         width: var(--gcds-topic-menu-menuitem-width);
         box-sizing: border-box;
-<<<<<<< HEAD
-        text-underline-offset: var(--gcds-topic-menu-menuitem-text-underline-offset);
-
-        &:hover,
-        &[aria-expanded="true"] {
-=======
         text-underline-offset: var(
           --gcds-topic-menu-menuitem-text-underline-offset
         );
 
         &:hover,
         &[aria-expanded='true'] {
->>>>>>> develop
           background-color: var(--gcds-topic-menu-menuitem-expanded-background);
           color: var(--gcds-topic-menu-menuitem-expanded-text);
         }
@@ -380,15 +263,6 @@
         .hidden-sm {
           display: none;
         }
-<<<<<<< HEAD
-  
-        [role=menu] {
-          margin-block-end: var(--gcds-topic-menu-mobile-themelist-margin-block-start);
-          width: auto;
-          position: static;
-  
-          [role=menu] {
-=======
 
         [role='menu'] {
           margin-block-end: var(
@@ -398,7 +272,6 @@
           position: static;
 
           [role='menu'] {
->>>>>>> develop
             border-block-start: none;
             -webkit-box-shadow: none;
             box-shadow: none;
@@ -406,34 +279,6 @@
             min-height: auto;
             padding: 0;
             width: auto;
-<<<<<<< HEAD
-  
-            li {
-              width: auto;
-
-              [role=menuitem] {
-                border-block-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-mobile-topiclist-menuitem-border-block-end);
-                padding: var(--gcds-topic-menu-mobile-topiclist-menuitem-padding);
-  
-                &:hover {
-                  color: var(--gcds-topic-menu-mobile-topiclist-menuitem-hover-text);
-                  background-color: transparent;
-                }
-  
-                &[aria-haspopup] {
-                  font: var(--gcds-topic-menu-mobile-topiclist-menuitem-haspopup-font);
-                }
-              }
-            }
-  
-            li:first-child {
-              margin-block-end: 0;
-  
-              [role=menuitem] {
-                border-block-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-mobile-topiclist-item-first-menuitem-border);
-                color: var(--gcds-topic-menu-mobile-topiclist-item-first-menuitem-text);
-                font: var(--gcds-topic-menu-mobile-topiclist-menuitem-haspopup-font);
-=======
 
             li {
               width: auto;
@@ -476,70 +321,14 @@
                 font: var(
                   --gcds-topic-menu-mobile-topiclist-menuitem-haspopup-font
                 );
->>>>>>> develop
                 text-decoration: underline;
                 width: auto;
               }
             }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> develop
             li:last-child {
               left: auto;
               position: static;
               top: auto;
-<<<<<<< HEAD
-  
-              [role=menuitem] {
-                color: var(--gcds-topic-menu-mobile-topiclist-item-last-menuitem-text);
-                text-decoration: none;
-                border-block-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-mobile-mostrequested-border);
-
-                &:hover {
-                  color: var(--gcds-topic-menu-mobile-topiclist-item-last-menuitem-hover-text);
-                  text-decoration: underline;
-                }
-              }
-  
-              [role=menu] {
-                list-style: none;
-                padding-block-start: 0;
-  
-                li {
-                  width: auto;
-
-                  [role=menuitem] {
-                    border-block-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-mobile-mostrequested-border);
-
-                    &:hover {
-                      color: var(--gcds-topic-menu-mobile-mostrequested-hover-text);
-                      text-decoration: underline;
-                    }
-                  }
-                  
-
-                }
-              }
-            }
-  
-            li:first-child,
-            li:last-child {
-              background-color: var(--gcds-topic-menu-mobile-mostrequested-background);
-            }
-          }
-        }
-  
-        [role=menuitem] {
-          width: auto;
-        }
-
-        [aria-expanded=true] {
-          &:not(button)+[role=menu] {
-            li {
-              margin-inline-start: var(--gcds-topic-menu-mobile-item-expanded-margin-inline-start);
-=======
 
               [role='menuitem'] {
                 color: var(
@@ -598,56 +387,25 @@
               margin-inline-start: var(
                 --gcds-topic-menu-mobile-item-expanded-margin-inline-start
               );
->>>>>>> develop
 
               &:first-child,
               &:last-child {
                 margin-inline-start: 0;
 
-<<<<<<< HEAD
-                [role=menuitem] {
-                  padding-inline-start: var(--gcds-topic-menu-mobile-item-expanded-padding-inline-start);
-=======
                 [role='menuitem'] {
                   padding-inline-start: var(
                     --gcds-topic-menu-mobile-item-expanded-padding-inline-start
                   );
->>>>>>> develop
                 }
               }
 
               &:last-child {
-<<<<<<< HEAD
-                [role=menu] [role=menuitem] {
-=======
                 [role='menu'] [role='menuitem'] {
->>>>>>> develop
                   padding-inline-start: 0;
                 }
               }
             }
 
-<<<<<<< HEAD
-            [role=menu] li {
-              margin-inline-start: var(--gcds-topic-menu-mobile-mostrequested-expanded-margin-inline-start);
-            }
-          }
-
-          &+[role=menu] [role=menu] [role=menu] {
-            background-color: var(--gcds-topic-menu-mobile-mostrequested-background);
-          }
-        }
-  
-        [aria-haspopup]:not(button)::before {
-          content: "\25BA\a0";
-        }
-        [aria-haspopup][aria-expanded=true]:not(button)::before {
-          content: "\25BC\a0";
-        }
-  
-        button[aria-haspopup=true][aria-expanded=true]+[role=menu] {
-          border-inline-end: var(--gcds-topic-menu-border-width) solid var(--gcds-topic-menu-mobile-themelist-border);
-=======
             [role='menu'] li {
               margin-inline-start: var(
                 --gcds-topic-menu-mobile-mostrequested-expanded-margin-inline-start
@@ -672,7 +430,6 @@
         button[aria-haspopup='true'][aria-expanded='true'] + [role='menu'] {
           border-inline-end: var(--gcds-topic-menu-border-width) solid
             var(--gcds-topic-menu-mobile-themelist-border);
->>>>>>> develop
         }
       }
     }
@@ -680,15 +437,9 @@
 }
 
 @layer xs-mobile {
-<<<<<<< HEAD
-  @media screen and (max-width: 47.9375rem){
-    :host {
-      .gcds-topic-menu>[role=menu] {
-=======
   @media screen and (max-width: 47.9375rem) {
     :host {
       .gcds-topic-menu > [role='menu'] {
->>>>>>> develop
         margin-inline: calc(((100vw - 100%) / 2) * -1);
       }
     }
@@ -698,14 +449,9 @@
 @layer focus {
   :host {
     .gcds-topic-menu {
-<<<<<<< HEAD
-      button[aria-haspopup=true]:focus,
-      [role=menuitem]:focus {
-=======
       button[aria-haspopup='true']:focus,
       [role='menuitem']:focus {
         border-color: var(--gcds-topic-menu-focus-background);
->>>>>>> develop
         border-radius: var(--gcds-topic-menu-focus-border-radius);
         background-color: var(--gcds-topic-menu-focus-background);
         color: var(--gcds-topic-menu-focus-text);

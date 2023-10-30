@@ -279,27 +279,6 @@ Props.args = {
   label: 'Label',
   hint: 'Hint / Example message.',
   characterCount: '',
-<<<<<<< HEAD
-  errorMessage: '',
-  required: false,
-  disabled: false,
-  rows: '',
-  value: '',
-  hideLabel: false,
-  validateOn: 'blur',
-  lang: 'en',
-};
-
-// ------ Textarea playground ------
-
-export const Playground = TemplatePlayground.bind({});
-Playground.args = {
-  textareaId: 'textarea',
-  label: 'Label',
-  hint: 'Hint / Example message.',
-  characterCount: '',
-=======
->>>>>>> develop
   errorMessage: '',
   required: false,
   disabled: false,

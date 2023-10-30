@@ -9,16 +9,6 @@ export default {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-<<<<<<< HEAD
-        defaultValue: { summary: false }
-      },
-    },
-    ...langProp
-  },
-};
-
-const Template = (args) => (`
-=======
         defaultValue: { summary: false },
       },
     },
@@ -28,7 +18,6 @@ const Template = (args) => (`
 
 const Template = args =>
   `
->>>>>>> develop
 <!-- Web component code (Angular, Vue) -->
 <gcds-topic-menu
   ${args.home ? `home` : null}
@@ -42,36 +31,22 @@ const Template = args =>
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsTopicMenu>
-<<<<<<< HEAD
-`).replace(/\s\snull\n/g, '');
-
-const TemplatePlayground = (args) => (`
-=======
 `.replace(/\s\snull\n/g, '');
 
 const TemplatePlayground = args => `
->>>>>>> develop
 <gcds-topic-menu
   ${args.home ? `home` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-topic-menu>
-<<<<<<< HEAD
-`);
-=======
 `;
->>>>>>> develop
 
 // ------ Theme and topic menu - English ------
 
 export const English = Template.bind({});
 English.args = {
   home: false,
-<<<<<<< HEAD
-  lang: 'en'
-=======
   lang: 'en',
->>>>>>> develop
 };
 
 // ------ Theme and topic menu - French ------
@@ -79,11 +54,7 @@ English.args = {
 export const French = Template.bind({});
 French.args = {
   home: false,
-<<<<<<< HEAD
-  lang: 'fr'
-=======
   lang: 'fr',
->>>>>>> develop
 };
 
 // ------ Theme and topic menu - Home ------
@@ -91,11 +62,7 @@ French.args = {
 export const Home = Template.bind({});
 Home.args = {
   home: true,
-<<<<<<< HEAD
-  lang: 'en'
-=======
   lang: 'en',
->>>>>>> develop
 };
 
 // ------ Theme and topic menu events & props ------
@@ -103,11 +70,7 @@ Home.args = {
 export const Props = Template.bind({});
 Props.args = {
   home: false,
-<<<<<<< HEAD
-  lang: 'en'
-=======
   lang: 'en',
->>>>>>> develop
 };
 
 // ------ Theme and topic menu playground ------
@@ -115,9 +78,5 @@ Props.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   home: false,
-<<<<<<< HEAD
-  lang: 'en'
-=======
   lang: 'en',
->>>>>>> develop
 };
