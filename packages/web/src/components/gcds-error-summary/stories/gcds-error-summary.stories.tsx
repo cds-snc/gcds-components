@@ -9,7 +9,7 @@ export default {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: true }
+        defaultValue: { summary: true },
       },
     },
     errorLinks: {
@@ -18,21 +18,22 @@ export default {
       description: '{ "error-href": "error message" }',
       table: {
         type: { summary: 'string/object' },
-        defaultValue: { summary: '-' }
+        defaultValue: { summary: '-' },
       },
     },
     heading: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
-    ...langProp
+    ...langProp,
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
 <gcds-error-summary
   ${args.listen && !args.errorLinks ? `listen` : null}
@@ -48,16 +49,16 @@ const Template = (args) => (`
   ${args.heading ? `heading="${args.heading}"` : null}
 >
 </GcdsErrorSummary>
-`).replace(/\s\snull\n/g, '');
+`.replace(/\s\snull\n/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args => `
 <gcds-error-summary
   ${args.listen && !args.errorLinks ? `listen` : null}
   ${args.errorLinks ? `error-links='${args.errorLinks}'` : null}
   ${args.heading ? `heading="${args.heading}"` : null}
 >
 </gcds-error-summary>
-`);
+`;
 
 // ------ Error summary default ------
 
@@ -70,7 +71,7 @@ Default.args = {
     "error-href-3": "Error summary item."
   }`,
   heading: '',
-  lang: 'en'
+  lang: 'en',
 };
 
 // ------ Error summary events & props ------
@@ -84,7 +85,7 @@ Props.args = {
     "error-href-3": "Error summary item."
   }`,
   heading: '',
-  lang: 'en'
+  lang: 'en',
 };
 
 // ------ Error summary playground ------
@@ -98,6 +99,5 @@ Playground.args = {
     "error-href-3": "Error summary item."
   }`,
   heading: '',
-  lang: 'en'
+  lang: 'en',
 };
-

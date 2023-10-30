@@ -60,6 +60,10 @@
     padding: var(--gcds-details-panel-padding);
     border-inline-start: var(--gcds-details-panel-border-width) solid var(--gcds-details-panel-border-color);
 
+    slot {
+      display: inherit;
+    }
+
     ::slotted(*) {
       font: var(--gcds-details-font);
       margin: 0 0 var(--gcds-details-panel-slotted-margin);

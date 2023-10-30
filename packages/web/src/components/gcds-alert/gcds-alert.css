@@ -6,6 +6,10 @@
   padding: var(--gcds-alert-padding);
   border-inline-start: var(--gcds-alert-border-width) solid transparent;
 
+  slot {
+    display: inherit;
+  }
+
   /* Is Fixed */
   &.alert--is-fixed {
     position: sticky;

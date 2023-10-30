@@ -23,6 +23,7 @@
           background-color: var(--gcds-pagination-focus-background);
           outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-background);
           outline-offset: var(--gcds-pagination-border-width);
+          box-shadow: var(--gcds-pagination-focus-box-shadow);
           text-decoration: none;
         }
 
@@ -77,7 +78,7 @@
         }
 
         /* Mobile styling */
-        @media screen and (max-width: 49em) {
+        @media screen and (max-width: 55.625em) {
           a {
             border: var(--gcds-pagination-border-width) solid currentColor;
 
@@ -153,7 +154,7 @@
       margin: var(--gcds-pagination-mobile-list-prevnext-margin);
     }
 
-    @media screen and (max-width: 49em) {
+    @media screen and (max-width: 55.625em) {
       &.gcds-pagination-list-mobile-prevnext {
         display: flex;
       }

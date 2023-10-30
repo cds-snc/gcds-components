@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsGrid} from '../gcds-grid';
+import { GcdsGrid } from '../gcds-grid';
 
 describe('gcds-grid', () => {
   it('renders - desktop, tablet and mobile', async () => {

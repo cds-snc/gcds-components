@@ -11,11 +11,10 @@ describe('gcds-phase-banner', () => {
   });
 });
 
-
 /**
-   * Accessibility tests
-   * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
-   */
+ * Accessibility tests
+ * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
+ */
 
 describe('gcds-phase-banner a11y tests', () => {
   /**
@@ -29,8 +28,10 @@ describe('gcds-phase-banner a11y tests', () => {
       </gcds-phase-banner>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });
@@ -43,8 +44,10 @@ describe('gcds-phase-banner a11y tests', () => {
       </gcds-phase-banner>
     `);
 
-    const colorContrastTest = new AxePuppeteer(page).withRules('color-contrast').analyze();
-    let results = await colorContrastTest;
+    const colorContrastTest = new AxePuppeteer(page)
+      .withRules('color-contrast')
+      .analyze();
+    const results = await colorContrastTest;
 
     expect(results.violations.length).toBe(0);
   });

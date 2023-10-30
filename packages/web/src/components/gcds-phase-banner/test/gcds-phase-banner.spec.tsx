@@ -35,8 +35,8 @@ describe('gcds-phase-banner', () => {
   });
 
   /**
-    * Role tests
-    */
+   * Role tests
+   */
 
   it('renders banner-role="primary"', async () => {
     const page = await newSpecPage({
@@ -103,8 +103,8 @@ describe('gcds-phase-banner', () => {
   });
 
   /**
-    * Fixed position test
-    */
+   * Fixed position test
+   */
 
   it('renders fixed position', async () => {
     const page = await newSpecPage({
@@ -139,8 +139,8 @@ describe('gcds-phase-banner', () => {
   });
 
   /**
-    * Container width tests
-    */
+   * Container width tests
+   */
 
   it('renders container width full', async () => {
     const page = await newSpecPage({

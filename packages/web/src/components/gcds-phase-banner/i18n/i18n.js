@@ -1,10 +1,10 @@
 const I18N = {
-  "en": {
-    label: "Banner",
+  en: {
+    label: 'Banner',
   },
-  "fr": {
-    label: "Bannière",
-  }
-}
+  fr: {
+    label: 'Bannière',
+  },
+};
 
 export default I18N;

@@ -12,6 +12,10 @@
   text-align: center;
   transition: all 0.15s ease-in-out;
 
+  slot {
+    display: inherit;
+  }
+
   /* Button Role Styles */
   &.button--role-danger {
     background-color: var(--gcds-button-danger-default-background);
@@ -27,6 +31,7 @@
       outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
+      box-shadow: var(--gcds-button-shared-focus-box-shadow);
     }
 
     &:active {
@@ -49,6 +54,7 @@
       outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
+      box-shadow: var(--gcds-button-shared-focus-box-shadow);
     }
 
     &:active {
@@ -74,6 +80,7 @@
       outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
+      box-shadow: var(--gcds-button-shared-focus-box-shadow);
 
       &:hover {
         border-color: var(--gcds-button-shared-focus-background);
@@ -109,6 +116,7 @@
       outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
+      box-shadow: var(--gcds-button-shared-focus-box-shadow);
       text-decoration: none;
     }
 
@@ -140,6 +148,7 @@
       outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
+      box-shadow: var(--gcds-button-shared-focus-box-shadow);
       text-decoration: none;
     }
 

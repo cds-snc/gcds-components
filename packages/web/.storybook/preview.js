@@ -1,4 +1,4 @@
-import {defineCustomElements} from '../loader';
+import {defineCustomElements} from '../dist/esm/loader';
 
 import '../dist/gcds/gcds.css';
 import gcdsTheme from './gcds-theme';

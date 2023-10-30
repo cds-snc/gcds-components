@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GcdsIcon} from '../gcds-icon';
+import { GcdsIcon } from '../gcds-icon';
 
 describe('gcds-icon', () => {
   it('renders', async () => {

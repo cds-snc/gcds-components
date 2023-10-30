@@ -74,6 +74,9 @@
 
     .verify-banner__toggle {
       flex: 0 0 auto;
+      border: 0;
+      background: none;
+      padding: 0;
       pointer-events: none;
       font-weight: var(--gcds-verify-banner-toggle-font-weight);
       color: var(--gcds-verify-banner-toggle-text);

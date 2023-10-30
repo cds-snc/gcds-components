@@ -1,0 +1,62 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Fieldset from './gcds-fieldset.stories';
+
+<Meta of={Fieldset} name="Overview" />
+
+# Fieldset<br/>`<gcds-fieldset>`
+
+_Also called: form field._
+
+A fieldset is a group of multiple form components or elements.
+
+<Canvas
+  of={Fieldset.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### State
+
+#### Default
+
+<Canvas
+  of={Fieldset.Default}
+  story={{ inline: true }}
+/>
+
+#### Required
+
+<Canvas
+  of={Fieldset.Required}
+  story={{ inline: true }}
+/>
+
+#### Error
+
+<Canvas
+  of={Fieldset.Error}
+  story={{ inline: true }}
+/>
+
+#### Disabled
+
+<Canvas
+  of={Fieldset.Disabled}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/fieldset/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-fieldset" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=2328-7660&mode=design&t=6AQy5Cmm6YcqHAJm-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>

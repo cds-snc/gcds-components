@@ -80,6 +80,7 @@
           width: var(--gcds-radio-input-height-and-width);
           left: 0;
           top: var(--gcds-radio-top);
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, outline ease-in-out .15s;
         }
 
         &:after {
@@ -100,6 +101,8 @@
         &:before {
           outline: var( --gcds-radio-focus-outline-width) solid currentcolor;
           outline-offset: var(--gcds-radio-input-border-width);
+          box-shadow: var(--gcds-radio-focus-box-shadow);
+          background: var(--gcds-radio-focus-background);
         }
 
         &:after {

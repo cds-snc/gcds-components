@@ -22,8 +22,8 @@ describe('gcds-button', () => {
   });
 
   /*
-  * Type tests
-  */
+   * Type tests
+   */
 
   it('renders type button', async () => {
     const { root } = await newSpecPage({
@@ -102,8 +102,8 @@ describe('gcds-button', () => {
   });
 
   /*
-  * Task tests
-  */
+   * Task tests
+   */
 
   it('renders button-role primary', async () => {
     const { root } = await newSpecPage({
@@ -163,8 +163,8 @@ describe('gcds-button', () => {
   });
 
   /*
-  * Variant tests
-  */
+   * Variant tests
+   */
 
   it('renders button-style solid', async () => {
     const { root } = await newSpecPage({

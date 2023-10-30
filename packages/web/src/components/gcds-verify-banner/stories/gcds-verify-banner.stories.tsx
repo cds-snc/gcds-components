@@ -10,7 +10,7 @@ export default {
       options: ['full', 'xl', 'lg', 'md', 'sm', 'xs'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'xl' }
+        defaultValue: { summary: 'xl' },
       },
     },
     isFixed: {
@@ -18,31 +18,40 @@ export default {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
     ...langProp,
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
-<gcds-verify-banner ${args.container != "xl" ? `container="${args.container}"` : null} ${args.isFixed ? `is-fixed` : null} ${args.lang != "en" ? `lang="${args.lang}"` : null}>
+<gcds-verify-banner ${
+    args.container != 'xl' ? `container="${args.container}"` : null
+  } ${args.isFixed ? `is-fixed` : null} ${
+    args.lang != 'en' ? `lang="${args.lang}"` : null
+  }>
 </gcds-verify-banner>
 
 <!-- React code -->
-<GcdsVerifyBanner ${args.container != "xl" ? `container="${args.container}"` : null} ${args.isFixed ? `isFixed` : null} ${args.lang != "en" ? `lang="${args.lang}"` : null}>
+<GcdsVerifyBanner ${
+    args.container != 'xl' ? `container="${args.container}"` : null
+  } ${args.isFixed ? `isFixed` : null} ${
+    args.lang != 'en' ? `lang="${args.lang}"` : null
+  }>
 </GcdsVerifyBanner>
-`).replace(/ null/g, '');
+`.replace(/ null/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplatePlayground = args => `
 <gcds-verify-banner
-  ${args.container != "xl" ? `container="${args.container}"` : null}
+  ${args.container != 'xl' ? `container="${args.container}"` : null}
   ${args.isFixed ? `is-fixed` : null}
-  ${args.lang != "en" ? `lang="${args.lang}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-verify-banner>
-`);
+`;
 
 // ------ Verify banner default ------
 

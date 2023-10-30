@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property               | Attribute            | Description                                                                 | Type                  | Default     |
-| ---------------------- | -------------------- | --------------------------------------------------------------------------- | --------------------- | ----------- |
-| `contextualHeading`    | `contextual-heading` | Heading for contextual slot and nav landmark                                | `string`              | `undefined` |
-| `contextualLinks`      | `contextual-links`   | Object of list items for contextual band. Format: { link-label: link-href } | `object \| string`    | `undefined` |
-| `display` _(required)_ | `display`            | Display mode of the footer                                                  | `"compact" \| "full"` | `undefined` |
-| `subLinks`             | `sub-links`          | Object of list items for sub-footer. Format: { link-label: link-href }      | `object \| string`    | `undefined` |
-| `wordmarkVariant`      | `wordmark-variant`   | GcdsSignature - The variant of the Government of Canada wordmark            | `"colour" \| "white"` | `undefined` |
+| Property            | Attribute            | Description                                                                 | Type                  | Default     |
+| ------------------- | -------------------- | --------------------------------------------------------------------------- | --------------------- | ----------- |
+| `contextualHeading` | `contextual-heading` | Heading for contextual slot and nav landmark                                | `string`              | `undefined` |
+| `contextualLinks`   | `contextual-links`   | Object of list items for contextual band. Format: { link-label: link-href } | `object \| string`    | `undefined` |
+| `display`           | `display`            | Display mode of the footer                                                  | `"compact" \| "full"` | `'compact'` |
+| `subLinks`          | `sub-links`          | Object of list items for sub-footer. Format: { link-label: link-href }      | `object \| string`    | `undefined` |
+| `wordmarkVariant`   | `wordmark-variant`   | GcdsSignature - The variant of the Government of Canada wordmark            | `"colour" \| "white"` | `undefined` |
 
 
 ## Dependencies

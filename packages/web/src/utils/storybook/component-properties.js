@@ -3,7 +3,7 @@ const formProps = {
     control: 'boolean',
     table: {
       type: { summary: 'boolean' },
-      defaultValue: { summary: false }
+      defaultValue: { summary: false },
     },
   },
   errorMessage: {
@@ -11,52 +11,52 @@ const formProps = {
     control: 'text',
     table: {
       type: { summary: 'string' },
-      defaultValue: { summary: '-' }
+      defaultValue: { summary: '-' },
     },
   },
   hint: {
     control: 'text',
     table: {
       type: { summary: 'string' },
-      defaultValue: { summary: '-' }
+      defaultValue: { summary: '-' },
     },
   },
   label: {
     control: 'text',
     table: {
       type: { summary: 'string' },
-      defaultValue: { summary: '-' }
+      defaultValue: { summary: '-' },
     },
     type: {
-      required: true
-    }
+      required: true,
+    },
   },
   required: {
     control: 'boolean',
     table: {
       type: { summary: 'boolean' },
-      defaultValue: { summary: false }
+      defaultValue: { summary: false },
     },
   },
   value: {
     control: 'text',
     table: {
       type: { summary: 'string' },
-      defaultValue: { summary: '-' }
+      defaultValue: { summary: '-' },
     },
   },
 };
 
 const langProp = {
-    lang: {
-      control: 'radio',
-      options: ['en', 'fr'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'en' }
-      },
+  lang: {
+    control: 'radio',
+    options: ['en', 'fr'],
+    table: {
+      type: { summary: 'string' },
+      defaultValue: { summary: 'en' },
     },
-  };
+  },
+};
 
 const validatorProps = {
   validateOn: {
@@ -65,13 +65,13 @@ const validatorProps = {
     options: ['blur', 'other'],
     table: {
       type: { summary: 'string' },
-      defaultValue: { summary: 'blur' }
+      defaultValue: { summary: 'blur' },
     },
   },
 };
 
-module.exports = {
+export default {
   formProps,
   validatorProps,
-  langProp
+  langProp,
 };

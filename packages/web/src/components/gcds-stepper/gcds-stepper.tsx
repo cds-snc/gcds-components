@@ -10,7 +10,6 @@ import i18n from './i18n/i18n';
 export class GcdsStepper {
   @Element() el: HTMLElement;
 
-
   /**
    * Props
    */
@@ -26,15 +25,15 @@ export class GcdsStepper {
   @Prop() totalSteps!: number;
 
   /**
-  * Language of rendered component
-  */
+   * Language of rendered component
+   */
   @State() lang: string;
 
   /*
-  * Observe lang attribute change
-  */
+   * Observe lang attribute change
+   */
   updateLang() {
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
         this.lang = this.el.lang;
       }
@@ -54,9 +53,7 @@ export class GcdsStepper {
 
     return (
       <Host>
-        <h6 class="gcds-stepper">
-          {`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}
-        </h6>
+        <h6 class="gcds-stepper">{`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}</h6>
       </Host>
     );
   }

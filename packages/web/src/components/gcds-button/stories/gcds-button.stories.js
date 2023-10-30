@@ -4,7 +4,7 @@ export default {
   parameters: {
     actions: {
       argTypesRegex: '^on.*',
-      handles: ['click', 'change', 'focus', 'blur']
+      handles: ['click', 'change', 'focus', 'blur'],
     },
   },
 
@@ -16,7 +16,7 @@ export default {
       options: ['primary', 'secondary', 'danger', 'skip-to-content'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'primary' }
+        defaultValue: { summary: 'primary' },
       },
     },
     buttonStyle: {
@@ -25,14 +25,14 @@ export default {
       options: ['solid', 'text-only'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'solid' }
-      }
+        defaultValue: { summary: 'solid' },
+      },
     },
     disabled: {
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: false },
       },
     },
     buttonId: {
@@ -40,22 +40,22 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     name: {
       control: 'text',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     size: {
       control: { type: 'select' },
       options: ['regular', 'small'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'regular' }
+        defaultValue: { summary: 'regular' },
       },
     },
     type: {
@@ -63,7 +63,7 @@ export default {
       options: ['submit', 'reset', 'button', 'link'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'button' }
+        defaultValue: { summary: 'button' },
       },
     },
 
@@ -73,32 +73,32 @@ export default {
       if: { arg: 'type', eq: 'link' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     href: {
       control: 'text',
       if: { arg: 'type', eq: 'link' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     rel: {
       control: 'text',
       if: { arg: 'type', eq: 'link' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
     target: {
       control: 'text',
       if: { arg: 'type', eq: 'link' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' }
-      }
+        defaultValue: { summary: '-' },
+      },
     },
 
     // Slots
@@ -108,7 +108,7 @@ export default {
       },
       table: {
         category: 'Slots | Fentes',
-      }
+      },
     },
 
     // Events
@@ -116,42 +116,67 @@ export default {
       action: 'click',
       table: {
         category: 'Events | Événements',
-      }
+      },
     },
     gcdsChange: {
       action: 'change',
       table: {
         category: 'Events | Événements',
-      }
+      },
     },
     gcdsFocus: {
       action: 'focus',
       table: {
         category: 'Events | Événements',
-      }
+      },
     },
     gcdsBlur: {
       action: 'blur',
       table: {
         category: 'Events | Événements',
-      }
+      },
     },
   },
 };
 
-const Template = (args) => (`
+const Template = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
-<gcds-button ${args.type != "button" ? `type="${args.type}"`: null} ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.buttonStyle != "solid" ? `button-style="${args.buttonStyle}"` : null} ${args.buttonId ? `button-id="${args.buttonId}"` : null} ${args.size != "regular" ? `size="${args.size}"` : null} ${args.disabled ? `disabled` : null} ${args.name ? `name="${args.name}"` : null} ${args.type == "link" && args.href ? `href="${args.href}"` : null} ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null} ${args.type == "link" && args.target ? `target="${args.target}"` : null} ${args.type == "link" && args.download ? `download="${args.download}"` : null}>
+<gcds-button ${args.type != 'button' ? `type="${args.type}"` : null} ${
+    args.buttonRole != 'primary' ? `button-role="${args.buttonRole}"` : null
+  } ${
+    args.buttonStyle != 'solid' ? `button-style="${args.buttonStyle}"` : null
+  } ${args.buttonId ? `button-id="${args.buttonId}"` : null} ${
+    args.size != 'regular' ? `size="${args.size}"` : null
+  } ${args.disabled ? `disabled` : null} ${
+    args.name ? `name="${args.name}"` : null
+  } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${
+    args.type == 'link' && args.rel ? `rel="${args.rel}"` : null
+  } ${args.type == 'link' && args.target ? `target="${args.target}"` : null} ${
+    args.type == 'link' && args.download ? `download="${args.download}"` : null
+  }>
   ${args.default}
 </gcds-button>
 
 <!-- React code -->
-<GcdsButton ${args.type != "button" ? `type="${args.type}"` : null} ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.buttonStyle != "solid" ? `buttonStyle="${args.buttonStyle}"` : null} ${args.buttonId ? `buttonId="${args.buttonId}"` : null} ${args.size != "regular" ? `size="${args.size}"` : null} ${args.disabled ? `disabled` : null} ${args.name ? `name="${args.name}"` : null} ${args.type == "link" && args.href ? `href="${args.href}"` : null} ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null} ${args.type == "link" && args.target ? `target="${args.target}"` : null} ${args.type == "link" && args.download ? `download="${args.download}"` : null}>
+<GcdsButton ${args.type != 'button' ? `type="${args.type}"` : null} ${
+    args.buttonRole != 'primary' ? `buttonRole="${args.buttonRole}"` : null
+  } ${
+    args.buttonStyle != 'solid' ? `buttonStyle="${args.buttonStyle}"` : null
+  } ${args.buttonId ? `buttonId="${args.buttonId}"` : null} ${
+    args.size != 'regular' ? `size="${args.size}"` : null
+  } ${args.disabled ? `disabled` : null} ${
+    args.name ? `name="${args.name}"` : null
+  } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${
+    args.type == 'link' && args.rel ? `rel="${args.rel}"` : null
+  } ${args.type == 'link' && args.target ? `target="${args.target}"` : null} ${
+    args.type == 'link' && args.download ? `download="${args.download}"` : null
+  }>
   ${args.default}
 </GcdsButton>
-`).replace(/ null/g, '');
+`.replace(/ null/g, '');
 
-const TemplatePreview = () => (`
+const TemplatePreview = () => `
 <!-- Web component code (Angular, Vue) -->
 <gcds-button>
   Primary
@@ -185,9 +210,9 @@ const TemplatePreview = () => (`
 <GcdsButton buttonStyle="text-only">
   Text-only
 </GcdsButton>
-`);
+`;
 
-const TemplateTypes = () => (`
+const TemplateTypes = () => `
 <!-- Web component code (Angular, Vue) -->
 <gcds-button>
   Button
@@ -215,43 +240,81 @@ const TemplateTypes = () => (`
 <GcdsButton type="submit">
   Submit
 </GcdsButton>
-`);
+`;
 
-const TemplateTwoButtons = (args) => (`
+const TemplateTwoButtons = args =>
+  `
 <!-- Web component code (Angular, Vue) -->
-<gcds-button ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.btnOneStyle != "solid" ? `button-style="${args.btnOneStyle}"` : null} ${args.btnOneSize != "regular" ? `size="${args.btnOneSize}"` : null} ${args.btnOneDisabled ? `disabled` : null}>
+<gcds-button ${
+    args.buttonRole != 'primary' ? `button-role="${args.buttonRole}"` : null
+  } ${
+    args.btnOneStyle != 'solid' ? `button-style="${args.btnOneStyle}"` : null
+  } ${args.btnOneSize != 'regular' ? `size="${args.btnOneSize}"` : null} ${
+    args.btnOneDisabled ? `disabled` : null
+  }>
   ${args.btnOneText}
 </gcds-button>
-<gcds-button ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null} ${args.btnTwoStyle != "solid" ? `button-style="${args.btnTwoStyle}"` : null} ${args.btnTwoSize != "regular" ? `size="${args.btnTwoSize}"` : null} ${args.btnTwoDisabled ? `disabled` : null}>
+<gcds-button ${
+    args.buttonRole != 'primary' ? `button-role="${args.buttonRole}"` : null
+  } ${
+    args.btnTwoStyle != 'solid' ? `button-style="${args.btnTwoStyle}"` : null
+  } ${args.btnTwoSize != 'regular' ? `size="${args.btnTwoSize}"` : null} ${
+    args.btnTwoDisabled ? `disabled` : null
+  }>
   ${args.btnTwoText}
 </gcds-button>
 
 <!-- React code -->
-<GcdsButton ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.btnOneStyle != "solid" ? `buttonStyle="${args.btnOneStyle}"` : null} ${args.btnOneSize != "regular" ? `size="${args.btnOneSize}"` : null} ${args.btnOneDisabled ? `disabled` : null}>
+<GcdsButton ${
+    args.buttonRole != 'primary' ? `buttonRole="${args.buttonRole}"` : null
+  } ${
+    args.btnOneStyle != 'solid' ? `buttonStyle="${args.btnOneStyle}"` : null
+  } ${args.btnOneSize != 'regular' ? `size="${args.btnOneSize}"` : null} ${
+    args.btnOneDisabled ? `disabled` : null
+  }>
   ${args.btnOneText}
 </GcdsButton>
-<GcdsButton ${args.buttonRole != "primary" ? `buttonRole="${args.buttonRole}"` : null} ${args.btnTwoStyle != "solid" ? `buttonStyle="${args.btnTwoStyle}"` : null} ${args.btnTwoSize != "regular" ? `size="${args.btnTwoSize}"` : null} ${args.btnTwoDisabled ? `disabled` : null}>
+<GcdsButton ${
+    args.buttonRole != 'primary' ? `buttonRole="${args.buttonRole}"` : null
+  } ${
+    args.btnTwoStyle != 'solid' ? `buttonStyle="${args.btnTwoStyle}"` : null
+  } ${args.btnTwoSize != 'regular' ? `size="${args.btnTwoSize}"` : null} ${
+    args.btnTwoDisabled ? `disabled` : null
+  }>
   ${args.btnTwoText}
 </GcdsButton>
-`).replace(/ null/g, '');
+`.replace(/ null/g, '');
 
-const TemplatePlayground = (args) => (`
+const TemplateBtnIcon = args =>
+  `
+<!-- Web component code (Angular, Vue) -->
+<gcds-button>
+  ${args.default} <gcds-icon name="${args.iconName}"></gcds-icon>
+</gcds-button>
+
+<!-- React code -->
+<GcdsButton>
+  ${args.default} <GcdsIcon name="${args.iconName}"></GcdsIcon>
+</GcdsButton>
+`.replace(/ null/g, '');
+
+const TemplatePlayground = args => `
 <gcds-button
-  ${args.type != "button" ? `type="${args.type}"`: null}
-  ${args.buttonRole != "primary" ? `button-role="${args.buttonRole}"` : null}
-  ${args.buttonStyle != "solid" ? `button-style="${args.buttonStyle}"` : null}
+  ${args.type != 'button' ? `type="${args.type}"` : null}
+  ${args.buttonRole != 'primary' ? `button-role="${args.buttonRole}"` : null}
+  ${args.buttonStyle != 'solid' ? `button-style="${args.buttonStyle}"` : null}
   ${args.buttonId ? `button-id="${args.buttonId}"` : null}
-  ${args.size != "regular" ? `size="${args.size}"` : null}
+  ${args.size != 'regular' ? `size="${args.size}"` : null}
   ${args.disabled ? `disabled` : null}
   ${args.name ? `name="${args.name}"` : null}
-  ${args.type == "link" && args.href ? `href="${args.href}"` : null}
-  ${args.type == "link" && args.rel ? `rel="${args.rel}"` : null}
-  ${args.type == "link" && args.target ? `target="${args.target}"` : null}
-  ${args.type == "link" && args.download ? `download="${args.download}"` : null}
+  ${args.type == 'link' && args.href ? `href="${args.href}"` : null}
+  ${args.type == 'link' && args.rel ? `rel="${args.rel}"` : null}
+  ${args.type == 'link' && args.target ? `target="${args.target}"` : null}
+  ${args.type == 'link' && args.download ? `download="${args.download}"` : null}
 >
   ${args.default}
 </gcds-button>
-`);
+`;
 
 // ------ Buttons overview ------
 
@@ -402,6 +465,14 @@ TextOnlySize.args = {
   btnTwoText: 'Text-only small',
   btnTwoSize: 'small',
   btnTwoStyle: 'text-only',
+};
+
+// ------ Button text-only ------
+
+export const BtnWithIcon = TemplateBtnIcon.bind({});
+BtnWithIcon.args = {
+  default: 'Close ',
+  iconName: 'times',
 };
 
 // ------ Button events & props ------

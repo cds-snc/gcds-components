@@ -1,0 +1,55 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Footer from './gcds-footer.stories';
+
+<Meta of={Footer} name="Overview" />
+
+# Footer<br/>`<gcds-footer>`
+
+_Also called: site footer._
+
+The footer is the responsive Government of Canada branded footer landmark.
+
+<Canvas
+  of={Footer.Default}
+  story={{ inline: true }}
+/>
+
+## Examples
+<br/>
+
+### Display
+
+#### Compact / default
+
+<Canvas
+  of={Footer.DisplayCompact}
+  story={{ inline: true }}
+/>
+
+### Full
+
+<Canvas
+  of={Footer.DisplayFull}
+  story={{ inline: true }}
+/>
+
+#### Display with contextual links
+
+<Canvas
+  of={Footer.DisplayContextual}
+  story={{ inline: true }}
+/>
+
+## Resources
+
+<ul>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/footer/" target="_blank">Guidance</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-footer" target="_blank">Github</gcds-button>
+  </li>
+  <li>
+    <gcds-button type="link" button-style="text-only" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=1802-4983&mode=design&t=6AQy5Cmm6YcqHAJm-0" target="_blank">Figma</gcds-button>
+  </li>
+</ul>
