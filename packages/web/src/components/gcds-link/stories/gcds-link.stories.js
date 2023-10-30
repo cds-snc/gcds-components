@@ -20,7 +20,11 @@ export default {
     },
     display: {
       control: 'select',
-      options: ['inline', 'inline-block', 'block'],
+      options: ['inline', 'inline-block', 'block', 'inherit'],
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'inline' },
+      },
     },
     href: {
       control: 'text',
