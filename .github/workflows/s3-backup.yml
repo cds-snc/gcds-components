@@ -10,20 +10,12 @@ jobs:
     steps:
 
     - name: Checkout
-<<<<<<< HEAD
-      uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
-=======
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
->>>>>>> develop
       with:
         fetch-depth: 0 # retrieve all history
 
     - name: Configure AWS credentials
-<<<<<<< HEAD
-      uses: aws-actions/configure-aws-credentials@04b98b3f9e85f563fb061be8751a0352327246b0 # v3.0.1
-=======
       uses: aws-actions/configure-aws-credentials@010d0da01d0b5a38af31e9c3470dbfdabdecca3a # v4.0.1
->>>>>>> develop
       with:
         aws-access-key-id: ${{ secrets.AWS_S3_BACKUP_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_S3_BACKUP_SECRET_ACCESS_KEY }}
