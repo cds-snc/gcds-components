@@ -17,6 +17,10 @@ variants.weight;
       display: inherit;
       box-sizing: border-box;
       margin: 0;
+
+      slot {
+        display: inherit;
+      }
     }
   }
 }

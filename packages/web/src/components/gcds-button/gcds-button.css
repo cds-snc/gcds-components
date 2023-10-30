@@ -12,6 +12,10 @@
   text-align: center;
   transition: all 0.15s ease-in-out;
 
+  slot {
+    display: inherit;
+  }
+
   /* Button Role Styles */
   &.button--role-danger {
     background-color: var(--gcds-button-danger-default-background);

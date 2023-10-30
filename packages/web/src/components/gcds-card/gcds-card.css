@@ -87,6 +87,10 @@
         content: "";
       }
     }
+
+    slot {
+      display: inherit;
+    }
   }
 }
 
