@@ -113,6 +113,8 @@ export class GcdsLink {
    * Events
    */
 
+  // TODO: Clarify all the necessary events
+
   /**
    * Emitted when the link has focus.
    */
@@ -208,14 +210,14 @@ export class GcdsLink {
               label={i18n[lang].email}
               margin-left="100"
             />
-          ) : href.toLowerCase().startsWith('tel:') ? (
-            <gcds-icon
-              name="phone"
-              label={i18n[lang].phone}
-              margin-left="100"
-            />
           ) : (
-            <slot name="right"></slot>
+            href.toLowerCase().startsWith('tel:') && (
+              <gcds-icon
+                name="phone"
+                label={i18n[lang].phone}
+                margin-left="100"
+              />
+            )
           )}
         </a>
       </Host>

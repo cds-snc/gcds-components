@@ -80,6 +80,7 @@ export default {
       },
     },
 
+    // TODO: Clarify if this is needed or not
     // Events
     gcdsClick: {
       action: 'click',
