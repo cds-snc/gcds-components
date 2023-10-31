@@ -715,10 +715,6 @@ export namespace Components {
     }
     interface GcdsLink {
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler": Function;
-        /**
           * Sets the display behavior of the link
          */
         "display": 'block' | 'inline' | 'inline-block';
@@ -741,7 +737,7 @@ export namespace Components {
         /**
           * Set the link size
          */
-        "size": 'regular' | 'small';
+        "size": 'regular' | 'small' | 'inherit';
         /**
           * The target attribute specifies where to open the linked document
          */
@@ -2297,10 +2293,6 @@ declare namespace LocalJSX {
     }
     interface GcdsLink {
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler"?: Function;
-        /**
           * Sets the display behavior of the link
          */
         "display"?: 'block' | 'inline' | 'inline-block';
@@ -2315,11 +2307,15 @@ declare namespace LocalJSX {
         /**
           * The href attribute specifies the URL of the page the link goes to
          */
-        "href"?: string;
+        "href": string;
         /**
           * Emitted when the link loses focus.
          */
         "onGcdsBlur"?: (event: GcdsLinkCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsLinkCustomEvent<void>) => void;
         /**
           * Emitted when the link has focus.
          */
@@ -2331,7 +2327,7 @@ declare namespace LocalJSX {
         /**
           * Set the link size
          */
-        "size"?: 'regular' | 'small';
+        "size"?: 'regular' | 'small' | 'inherit';
         /**
           * The target attribute specifies where to open the linked document
          */

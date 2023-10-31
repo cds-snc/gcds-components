@@ -579,21 +579,21 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'clickHandler', 'disabled', 'display', 'download', 'external', 'focusHandler', 'href', 'linkId', 'name', 'rel', 'size', 'target', 'type']
+  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type']
 })
 @Component({
   selector: 'gcds-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'clickHandler', 'disabled', 'display', 'download', 'external', 'focusHandler', 'href', 'linkId', 'name', 'rel', 'size', 'target', 'type'],
+  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type'],
 })
 export class GcdsLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
@@ -607,6 +607,10 @@ export declare interface GcdsLink extends Components.GcdsLink {
    * Emitted when the link loses focus.
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
 }
 
 
