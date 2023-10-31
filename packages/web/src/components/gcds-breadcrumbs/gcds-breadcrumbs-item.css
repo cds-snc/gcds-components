@@ -24,7 +24,7 @@
       white-space: normal;
 
       slot {
-        display: inherit;
+        display: block;
       }
     }
   }
