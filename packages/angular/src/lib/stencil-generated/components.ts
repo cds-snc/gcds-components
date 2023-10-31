@@ -446,6 +446,28 @@ export declare interface GcdsHeader extends Components.GcdsHeader {}
 
 
 @ProxyCmp({
+  inputs: ['characterLimit', 'marginBottom', 'marginTop', 'tag']
+})
+@Component({
+  selector: 'gcds-heading',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['characterLimit', 'marginBottom', 'marginTop', 'tag'],
+})
+export class GcdsHeading {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsHeading extends Components.GcdsHeading {}
+
+
+@ProxyCmp({
   inputs: ['hint', 'hintId']
 })
 @Component({
