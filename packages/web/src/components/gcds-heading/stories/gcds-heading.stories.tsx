@@ -71,7 +71,7 @@ export default {
       ],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+        defaultValue: { summary: '400' },
       },
     },
 
