@@ -4,6 +4,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.16.0
+
+### New features
+
+- Heading component (`gcds-heading`)
+  - New `gcds-heading` to render headings in GCDS styles
+
+### Minor
+
+- https://github.com/cds-snc/gcds-components/pull/306 - [c972bef](https://github.com/cds-snc/gcds-components/commit/c972befacb6961fed73c983df1fb4fda6cbc9ca5) - Add `gcds-heading` to component library
+
 ## v0.15.0
 
 ### New features
