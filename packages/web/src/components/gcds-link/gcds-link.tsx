@@ -50,16 +50,6 @@ export class GcdsLink {
     }
   }
 
-  // @Watch('target')
-  // validateTarget(newValue: string) {
-  //   const values = ['_blank', '_self', '_parent', '_top'];
-  //
-  //   // TODO: if value is a valid string?
-  //   if (!values.includes(newValue)) {
-  //     this.target = '_self';
-  //   }
-  // }
-
   /**
    * Link props
    */
@@ -125,6 +115,11 @@ export class GcdsLink {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
+  /**
+   * Emitted when the link has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
+
   /*
    * Observe lang attribute change
    */
@@ -188,6 +183,9 @@ export class GcdsLink {
           rel={isExternal ? 'noopener noreferrer' : rel}
           {...inheritedAttributes}
           part="link"
+          onBlur={() => this.gcdsBlur.emit()}
+          onFocus={() => this.gcdsFocus.emit()}
+          onClick={() => this.gcdsClick.emit()}
         >
           <slot></slot>
 
