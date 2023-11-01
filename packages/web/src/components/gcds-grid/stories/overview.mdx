@@ -9,13 +9,11 @@ _Also called: layout, columns, columns layout, grid container._
 
 A grid is a responsive, flexible column layout to position elements on a page.
 
-<Canvas
-  of={Grid.Default}
-  story={{ inline: true }}
-/>
+<Canvas of={Grid.Default} story={{ inline: true }} />
 
 ## Examples
-<br/>
+
+<br />
 
 ### Grid columns
 
@@ -23,28 +21,19 @@ A grid is a responsive, flexible column layout to position elements on a page.
 
 Use the `columns` property to add your layout for smaller screens or if you are using the same layout for all screens.
 
-<Canvas
-  of={Grid.Columns}
-  story={{ inline: true }}
-/>
+<Canvas of={Grid.Columns} story={{ inline: true }} />
 
 #### Columns tablet
 
 Use the `columns-tablet` property to set your tablet layout **(48em and 768px and above)** or if you are using the same layout for medium and large screens.
 
-<Canvas
-  of={Grid.ColumnsTablet}
-  story={{ inline: true }}
-/>
+<Canvas of={Grid.ColumnsTablet} story={{ inline: true }} />
 
 #### Columns desktop
 
 Use the `columns-desktop` property to define your layout for larger screens **(64em and 1024px and above)**.
 
-<Canvas
-  of={Grid.ColumnsDesktop}
-  story={{ inline: true }}
-/>
+<Canvas of={Grid.ColumnsDesktop} story={{ inline: true }} />
 
 ### Equal width column
 
@@ -52,22 +41,17 @@ Use the `columns-desktop` property to define your layout for larger screens **(6
 
 Opt out of setting the minimum and maximum width when you want to design equal-width columns without width restrictions. This will allow the grid and its columns to scale to the size of the viewport.
 
-<Canvas
-  of={Grid.EqualFlexbile}
-  story={{ inline: true }}
-/>
+<Canvas of={Grid.EqualFlexbile} story={{ inline: true }} />
 
 #### Setting a minimum und maximum width
 
 Set the minimum and maximum width to design equal-width columns with restrictions to limit how wide they will span on any screen size.
 
-<Canvas
-  of={Grid.EqualWidth}
-  story={{ inline: true }}
-/>
+<Canvas of={Grid.EqualWidth} story={{ inline: true }} />
 
 ## Resources
 
+{/* prettier-ignore */}
 <ul>
   <li>
     <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/Grid/" target="_blank">Guidance</gcds-button>
