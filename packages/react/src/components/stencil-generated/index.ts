@@ -24,6 +24,7 @@ export const GcdsFileUploader = /*@__PURE__*/createReactComponent<JSX.GcdsFileUp
 export const GcdsFooter = /*@__PURE__*/createReactComponent<JSX.GcdsFooter, HTMLGcdsFooterElement>('gcds-footer');
 export const GcdsGrid = /*@__PURE__*/createReactComponent<JSX.GcdsGrid, HTMLGcdsGridElement>('gcds-grid');
 export const GcdsHeader = /*@__PURE__*/createReactComponent<JSX.GcdsHeader, HTMLGcdsHeaderElement>('gcds-header');
+export const GcdsHeading = /*@__PURE__*/createReactComponent<JSX.GcdsHeading, HTMLGcdsHeadingElement>('gcds-heading');
 export const GcdsHint = /*@__PURE__*/createReactComponent<JSX.GcdsHint, HTMLGcdsHintElement>('gcds-hint');
 export const GcdsIcon = /*@__PURE__*/createReactComponent<JSX.GcdsIcon, HTMLGcdsIconElement>('gcds-icon');
 export const GcdsInput = /*@__PURE__*/createReactComponent<JSX.GcdsInput, HTMLGcdsInputElement>('gcds-input');
