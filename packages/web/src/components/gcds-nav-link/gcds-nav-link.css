@@ -3,6 +3,10 @@
 @layer reset {
   :host a {
     box-sizing: border-box;
+
+    slot {
+      display: inherit;
+    }
   }
 }
 

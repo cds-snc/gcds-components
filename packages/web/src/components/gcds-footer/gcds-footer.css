@@ -2,6 +2,10 @@
   display: block;
   font: var(--gcds-footer-font);
 
+  slot {
+    display: inherit;
+  }
+
   .sub__header,
   .themenav__header,
   .gcds-footer__header {

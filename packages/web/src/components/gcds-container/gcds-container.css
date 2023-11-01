@@ -4,6 +4,10 @@
   padding: 0;
   box-sizing: border-box;
 
+  slot {
+    display: inherit;
+  }
+
   /* Container border */
   &.container-border {
     border: var(--gcds-container-border);

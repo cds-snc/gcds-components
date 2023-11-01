@@ -2,6 +2,10 @@
   font: var(--gcds-phase-banner-font);
   line-height: var(--gcds-phase-banner-line-height);
 
+  slot {
+    display: inherit;
+  }
+
   /* Is Fixed */
   &.banner-is-fixed {
     position: sticky;

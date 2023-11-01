@@ -6,6 +6,10 @@
   padding: 0;
   border: 0;
   transition: color ease-in-out .15s;
+  
+  slot {
+    display: inherit;
+  }
 
   &:focus-within {
     color: var(--gcds-select-focus-text);
@@ -48,6 +52,7 @@
     border-color: var(--gcds-select-focus-text);
     outline: var(--gcds-select-outline-width) solid var(--gcds-select-focus-text);
     outline-offset: var(--gcds-select-border-width);
+    box-shadow: var(--gcds-select-focus-box-shadow);
   }
 
   &:disabled {

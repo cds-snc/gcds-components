@@ -33,12 +33,13 @@
   border: var(--gcds-input-border-width) solid currentColor;
   border-radius: var(--gcds-input-border-radius);
   box-sizing: border-box;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, outline ease-in-out .15s;
 
   &:focus {
     border-color: var(--gcds-input-focus-text);
     outline: var(--gcds-input-outline-width) solid var(--gcds-input-focus-text);
     outline-offset: var(--gcds-input-border-width);
+    box-shadow: var(--gcds-input-focus-box-shadow);
   }
 
   &:disabled {

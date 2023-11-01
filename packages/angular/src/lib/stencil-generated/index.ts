@@ -18,6 +18,7 @@ export const DIRECTIVES = [
   d.GcdsFooter,
   d.GcdsGrid,
   d.GcdsHeader,
+  d.GcdsHeading,
   d.GcdsHint,
   d.GcdsIcon,
   d.GcdsInput,

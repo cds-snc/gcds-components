@@ -23,6 +23,7 @@
           background-color: var(--gcds-pagination-focus-background);
           outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-background);
           outline-offset: var(--gcds-pagination-border-width);
+          box-shadow: var(--gcds-pagination-focus-box-shadow);
           text-decoration: none;
         }
 
