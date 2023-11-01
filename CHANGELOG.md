@@ -15,6 +15,10 @@ All notable changes to this project will be documented in this file.
 
 - https://github.com/cds-snc/gcds-components/pull/306 - [c972bef](https://github.com/cds-snc/gcds-components/commit/c972befacb6961fed73c983df1fb4fda6cbc9ca5) - Add `gcds-heading` to component library
 
+### Patch
+
+- https://github.com/cds-snc/gcds-components/pull/325 - [3ec8925](https://github.com/cds-snc/gcds-components/commit/3ec89251bf56b346df50ed67ad0a8992631240ff) - Fix slot CSS in gcds-breadcrumbs-item to display text underline
+
 ## v0.15.0
 
 ### New features
