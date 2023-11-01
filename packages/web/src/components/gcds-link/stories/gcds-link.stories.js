@@ -83,8 +83,8 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
 This is an example of
+<!-- Web component code (Angular, Vue) -->
 <gcds-link ${args.display ? `display="${args.display}"` : null} ${
     args.href ? `href="${args.href}"` : null
   } ${args.rel ? `rel="${args.rel}"` : null} ${
@@ -93,8 +93,7 @@ This is an example of
     args.external ? `external` : null
   } ${args.download ? `download="${args.download}"` : null} ${
     args.type ? `type="${args.type}"` : null
-  }> ${args.default}</gcds-link>
- link.
+  }>${args.default}</gcds-link>
 
 <!-- React code -->
 <GcdsLink ${args.display ? `display="${args.display}"` : null} ${
@@ -105,25 +104,18 @@ This is an example of
     args.external ? `external` : null
   } ${args.download ? `download="${args.download}"` : null} ${
     args.type ? `type="${args.type}"` : null
-  }>
-${args.default}</GcdsLink>
+  }>${args.default}</GcdsLink>
+link.
 `.replace(/ null/g, '');
 
 const TemplateSizes = () => `
-
 <!-- Web component code (Angular, Vue) -->
 <gcds-link href="" size="regular">This is a regular link.</gcds-link>
 <gcds-link href="" size="small">This is a small link.</gcds-link>
 
-
-
 <!-- React code -->
-<GcdsLink href="" size="regular">
-  This is a regular link
-</GcdsLink>
-<GcdsLink href="" size="small">
-  This is a small link
-</GcdsLink>
+<GcdsLink href="" size="regular">This is a regular link</GcdsLink>
+<GcdsLink href="" size="small">This is a small link</GcdsLink>
 `;
 
 const TemplatePlayground = args => `
@@ -157,10 +149,10 @@ Default.args = {
 export const Props = Template.bind({});
 Props.args = {
   display: '',
-  href: '',
+  href: '#',
   rel: '',
   target: '',
-  size: 'regular',
+  size: '',
   external: false,
   download: '',
   type: '',
@@ -199,20 +191,6 @@ export const Phone = Template.bind({});
 Phone.args = {
   href: 'tel:1234567890',
   default: 'a phone number',
-};
-
-// TODO: Would it be better to spend more time and have the two links appear in one canvas?
-
-export const SizeSmall = Template.bind({});
-SizeSmall.args = {
-  size: 'small',
-  default: 'a small',
-};
-
-export const SizeRegular = Template.bind({});
-SizeRegular.args = {
-  size: 'regular',
-  default: 'a regular',
 };
 
 export const TemplateSizesExample = TemplateSizes.bind({});
