@@ -741,7 +741,7 @@ export namespace Components {
         /**
           * The target attribute specifies where to open the linked document
          */
-        "target": string | undefined;
+        "target"?: string;
         /**
           * The type specifies the media type of the linked document
          */
@@ -2331,7 +2331,7 @@ declare namespace LocalJSX {
         /**
           * The target attribute specifies where to open the linked document
          */
-        "target"?: string | undefined;
+        "target"?: string;
         /**
           * The type specifies the media type of the linked document
          */

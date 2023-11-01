@@ -78,15 +78,6 @@ export default {
         category: 'Slots | Fentes',
       },
     },
-
-    // TODO: Clarify if this is needed or not
-    // Events
-    gcdsClick: {
-      action: 'click',
-      table: {
-        category: 'Events | Événements',
-      },
-    },
   },
 };
 
@@ -118,6 +109,23 @@ This is an example of
 ${args.default}</GcdsLink>
 `.replace(/ null/g, '');
 
+const TemplateSizes = () => `
+
+<!-- Web component code (Angular, Vue) -->
+<gcds-link href="" size="regular">This is a regular link.</gcds-link>
+<gcds-link href="" size="small">This is a small link.</gcds-link>
+
+
+
+<!-- React code -->
+<GcdsLink href="" size="regular">
+  This is a regular link
+</GcdsLink>
+<GcdsLink href="" size="small">
+  This is a small link
+</GcdsLink>
+`;
+
 const TemplatePlayground = args => `
 <gcds-link ${args.display ? `display="${args.display}"` : null} ${
   args.href ? `href="${args.href}"` : null
@@ -135,7 +143,7 @@ const TemplatePlayground = args => `
 export const Default = Template.bind({});
 Default.args = {
   display: '',
-  href: '',
+  href: '#',
   rel: '',
   target: '',
   size: 'regular',
@@ -206,6 +214,8 @@ SizeRegular.args = {
   size: 'regular',
   default: 'a regular',
 };
+
+export const TemplateSizesExample = TemplateSizes.bind({});
 
 // ------ Link playground ------
 

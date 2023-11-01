@@ -17,7 +17,6 @@
   &:focus {
     background-color: var(--gcds-link-focus-background);
     color: var(--gcds-link-focus-text);
-    /*color: var(--gcds-link-light);*/
     outline: var(--gcds-link-focus-outline-width) solid var(--gcds-link-focus-background);
     outline-offset: var(--gcds-link-focus-outline-offset);
     border-color: var(--gcds-link-focus-border-color);

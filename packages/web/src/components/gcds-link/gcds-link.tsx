@@ -72,7 +72,7 @@ export class GcdsLink {
   /**
    * The target attribute specifies where to open the linked document
    */
-  @Prop() target: string | undefined;
+  @Prop() target?: string = '_self';
 
   /**
    * Whether the link is external or not
@@ -102,8 +102,6 @@ export class GcdsLink {
   /**
    * Events
    */
-
-  // TODO: Clarify all the necessary events
 
   /**
    * Emitted when the link has focus.
@@ -188,14 +186,13 @@ export class GcdsLink {
           onClick={() => this.gcdsClick.emit()}
         >
           <slot></slot>
-
           {target === '_blank' || external ? (
             <gcds-icon
               name="external-link"
               label={i18n[lang].external}
               margin-left="200"
             />
-          ) : download ? (
+          ) : download !== undefined ? (
             <gcds-icon
               name="download"
               label={i18n[lang].download}
