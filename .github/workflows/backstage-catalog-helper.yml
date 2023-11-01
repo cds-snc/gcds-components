@@ -8,9 +8,30 @@ jobs:
   update-catalog-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Update catalog-info.yaml
-        uses: cds-snc/backstage-catalog-info-helper-action@v0.3.0
+      - name: Checkout Actions
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
-          github-app-id: ${{ secrets.SRE_BOT_RW_APP_ID }}
-          github-app-private-key: ${{ secrets.SRE_BOT_RW_APP_PRIVATE_KEY }}
-          github-organization: ${{ github.repository_owner}}
+          fetch-depth: 0
+      - name: Run Backstage Catalog Info Helper
+        uses: cds-snc/backstage-catalog-info-helper-action@v0.3.1
+        with:
+          github_app_id: ${{ secrets.SRE_BOT_RW_APP_ID }}
+          github_app_private_key: ${{ secrets.SRE_BOT_RW_PRIVATE_KEY }}
+          github_organization: cds-snc
+      - name: impersonate Read/Write GH App
+        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a
+        id: generate_token
+        with:
+          app_id: ${{ secrets.SRE_BOT_RW_APP_ID }}
+          private_key: ${{ secrets.SRE_BOT_RW_PRIVATE_KEY }}
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ steps.generate_token.outputs.token}}
+          commit-message: 'Add catalog-info.yaml'
+          branch: 'backstage/catalog-info'
+          title: 'Add catalog-info.yaml'
+          body: 'Adding a basic catalog-info.yaml to start populating the backstage catalog with your components.'
+          labels: 'backstage'
+          add-paths: |
+            catalog-info.yaml
