@@ -97,33 +97,33 @@
      background-color: var(--gcds-button-text-only-default-background);
      color: var(--gcds-button-text-only-default-text);
 
-  &:not([aria-disabled='true']) {
-     text-decoration: underline;
-     text-underline-offset: 0.2em;
-     text-decoration-color: currentColor;
-     text-decoration-thickness: var(--gcds-button-text-only-default-decoration-thickness);
-   }
+    &:not([aria-disabled='true']) {
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-color: currentColor;
+      ext-decoration-thickness: var(--gcds-button-text-only-default-decoration-thickness);
+    }
 
-  &:hover {
-     background-color: var(--gcds-button-text-only-default-background);
-     color: var(--gcds-button-text-only-hover-text);
-     text-decoration-thickness: var(--gcds-button-text-only-hover-decoration-thickness);
-   }
+    &:hover {
+      background-color: var(--gcds-button-text-only-default-background);
+      color: var(--gcds-button-text-only-hover-text);
+      text-decoration-thickness: var(--gcds-button-text-only-hover-decoration-thickness);
+    }
 
-  &:focus {
-     background-color: var(--gcds-button-shared-focus-background);
-     color: var(--gcds-button-shared-focus-text);
-     outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
-     outline-offset: var(--gcds-button-border-width);
-     border-color: var(--gcds-button-shared-focus-background);
-     box-shadow: var(--gcds-button-shared-focus-box-shadow);
-     text-decoration: none;
-   }
+    &:focus {
+      background-color: var(--gcds-button-shared-focus-background);
+      color: var(--gcds-button-shared-focus-text);
+      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline-offset: var(--gcds-button-border-width);
+      border-color: var(--gcds-button-shared-focus-background);
+      box-shadow: var(--gcds-button-shared-focus-box-shadow);
+      text-decoration: none;
+    }
 
-  &:active {
-     background-color: var(--gcds-button-shared-active-background);
-     border-color: var(--gcds-button-shared-active-background);
-   }
+    &:active {
+      background-color: var(--gcds-button-shared-active-background);
+      border-color: var(--gcds-button-shared-active-background);
+    }
   }
 
   &.button--role-skip-to-content {
