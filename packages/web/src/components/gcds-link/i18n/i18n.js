@@ -3,7 +3,7 @@ const I18N = {
     external: 'Opens in a new tab.',
     phone: 'Opens a phone app.',
     download: 'Downloads a file.',
-    email: 'Opens an email client',
+    email: 'Opens an email client.',
   },
   fr: {
     external: "S'ouvre dans un nouvel onglet.",
