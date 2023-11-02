@@ -1,9 +1,9 @@
 const I18N = {
   en: {
     external: 'Opens in a new tab.',
-    phone: 'May open your phone app. [copy edit needed]',
-    download: 'May download file to your device. [copy edit needed]',
-    email: 'May open your email client. [copy edit needed]',
+    phone: 'Opens a phone app.',
+    download: 'Downloads a file.',
+    email: 'Opens an email client',
   },
   fr: {
     external: "S'ouvre dans un nouvel onglet.",
