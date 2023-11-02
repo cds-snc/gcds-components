@@ -15,6 +15,7 @@
   }
 
   &:focus {
+    border-radius: var(--gcds-link-focus-border-radius);
     background-color: var(--gcds-link-focus-background);
     color: var(--gcds-link-focus-text);
     outline: var(--gcds-link-focus-outline-width) solid var(--gcds-link-focus-background);
@@ -23,8 +24,19 @@
     text-decoration: none;
   }
 
-  /* Small link styling */
   &.link--small {
-   font: var(--gcds-link-small-font);
+    font: var(--gcds-link-font-small);
+  }
+
+  &.link--regular {
+    font: var(--gcds-link-font-regular);
+  }
+
+  &.link--inherit {
+    font: inherit;
+  }
+
+  slot {
+    display: inherit;
   }
 }
