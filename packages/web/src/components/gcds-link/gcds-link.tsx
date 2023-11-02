@@ -194,7 +194,7 @@ export class GcdsLink {
             />
           ) : href.toLowerCase().startsWith('mailto:') ? (
             <gcds-icon
-              iconStyle="regular"
+              icon-style="regular"
               name="envelope"
               label={i18n[lang].email}
               margin-left="100"

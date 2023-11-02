@@ -765,15 +765,15 @@ export namespace Components {
         /**
           * Sets the display behavior of the link
          */
-        "display": 'block' | 'inline' | 'inline-block';
+        "display"?: 'block' | 'inline' | 'inline-block';
         /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
-        "download": string | undefined;
+        "download"?: string | undefined;
         /**
           * Whether the link is external or not
          */
-        "external": false;
+        "external"?: boolean;
         /**
           * The href attribute specifies the URL of the page the link goes to
          */
@@ -781,11 +781,11 @@ export namespace Components {
         /**
           * The rel attribute specifies the relationship between the current document and the linked document
          */
-        "rel": string | undefined;
+        "rel"?: string | undefined;
         /**
           * Set the link size
          */
-        "size": 'regular' | 'small' | 'inherit';
+        "size"?: 'regular' | 'small' | 'inherit';
         /**
           * The target attribute specifies where to open the linked document
          */
@@ -793,7 +793,7 @@ export namespace Components {
         /**
           * The type specifies the media type of the linked document
          */
-        "type": string | undefined;
+        "type"?: string | undefined;
     }
     interface GcdsNavGroup {
         /**
@@ -2406,7 +2406,7 @@ declare namespace LocalJSX {
         /**
           * Whether the link is external or not
          */
-        "external"?: false;
+        "external"?: boolean;
         /**
           * The href attribute specifies the URL of the page the link goes to
          */
