@@ -94,14 +94,14 @@
   }
 
   &.button--text-only {
-     background-color: var(--gcds-button-text-only-default-background);
-     color: var(--gcds-button-text-only-default-text);
+    background-color: var(--gcds-button-text-only-default-background);
+    color: var(--gcds-button-text-only-default-text);
 
     &:not([aria-disabled='true']) {
       text-decoration: underline;
       text-underline-offset: 0.2em;
       text-decoration-color: currentColor;
-      ext-decoration-thickness: var(--gcds-button-text-only-default-decoration-thickness);
+      text-decoration-thickness: var(--gcds-button-text-only-default-decoration-thickness);
     }
 
     &:hover {
