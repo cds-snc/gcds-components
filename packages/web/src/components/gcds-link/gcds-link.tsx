@@ -30,8 +30,7 @@ export class GcdsLink {
   /**
    * Set the link size
    */
-  @Prop({ mutable: true }) size: 'regular' | 'small' | 'inherit' = 'regular';
-
+  @Prop({ mutable: true }) size?: 'regular' | 'small' | 'inherit' = 'regular';
   @Watch('size')
   validateSize(newValue: string) {
     const values = ['regular', 'small', 'inherit'];
@@ -41,24 +40,18 @@ export class GcdsLink {
     }
   }
 
+  /**
+   * Sets the display behavior of the link
+   */
+  @Prop() display?: 'block' | 'inline' | 'inline-block' = 'inline';
   @Watch('display')
   validateDisplay(newValue: string) {
     const values = ['block', 'inline', 'inline-block'];
 
     if (!values.includes(newValue)) {
-      this.display = 'block';
+      this.display = 'inline';
     }
   }
-
-  /**
-   * Link props
-   */
-
-  /**
-   * Sets the display behavior of the link
-   */
-  @Prop() display: 'block' | 'inline' | 'inline-block' = 'inline';
-
   /**
    * The href attribute specifies the URL of the page the link goes to
    */
@@ -67,7 +60,7 @@ export class GcdsLink {
   /**
    * The rel attribute specifies the relationship between the current document and the linked document
    */
-  @Prop() rel: string | undefined;
+  @Prop() rel?: string | undefined;
 
   /**
    * The target attribute specifies where to open the linked document
@@ -77,17 +70,17 @@ export class GcdsLink {
   /**
    * Whether the link is external or not
    */
-  @Prop() external: false;
+  @Prop() external?: boolean = false;
 
   /**
    * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
    */
-  @Prop() download: string | undefined;
+  @Prop() download?: string | undefined;
 
   /**
    * The type specifies the media type of the linked document
    */
-  @Prop() type: string | undefined;
+  @Prop() type?: string | undefined;
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -133,6 +126,7 @@ export class GcdsLink {
   componentWillLoad() {
     // Validate attributes and set defaults
     this.validateSize(this.size);
+    this.validateDisplay(this.display);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
       'referrerpolicy',
@@ -170,12 +164,12 @@ export class GcdsLink {
 
     return (
       <Host>
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
         <a
           role="link"
           tabIndex={0}
           {...attrs}
-          class={`link--${size} ${display != 'block' ? `d-${display}` : ''}`}
+          class={`link--${size} ${display != 'inline' ? `d-${display}` : ''}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
           rel={isExternal ? 'noopener noreferrer' : rel}
