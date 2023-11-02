@@ -85,7 +85,7 @@ const Template = args =>
   `
 This is an example of
 <!-- Web component code (Angular, Vue) -->
-<gcds-link ${args.display ? `display="${args.display}"` : null} ${
+<gcds-link ${args.display != 'inline' ? `display="${args.display}"` : null} ${
     args.href ? `href="${args.href}"` : null
   } ${args.rel ? `rel="${args.rel}"` : null} ${
     args.target ? `target="${args.target}"` : null
@@ -96,7 +96,7 @@ This is an example of
   }>${args.default}</gcds-link>
 
 <!-- React code -->
-<GcdsLink ${args.display ? `display="${args.display}"` : null} ${
+<GcdsLink ${args.display != 'inline' ? `display="${args.display}"` : null} ${
     args.href ? `href="${args.href}"` : null
   } ${args.rel ? `rel="${args.rel}"` : null} ${
     args.target ? `target="${args.target}"` : null
@@ -119,7 +119,7 @@ const TemplateSizes = () => `
 `;
 
 const TemplatePlayground = args => `
-<gcds-link ${args.display ? `display="${args.display}"` : null} ${
+<gcds-link ${args.display != 'inline' ? `display="${args.display}"` : null} ${
   args.href ? `href="${args.href}"` : null
 } ${args.rel ? `rel="${args.rel}"` : null} ${
   args.target ? `target="${args.target}"` : null
@@ -134,7 +134,7 @@ const TemplatePlayground = args => `
 // ------ Link Default ------
 export const Default = Template.bind({});
 Default.args = {
-  display: '',
+  display: 'inline',
   href: '#',
   rel: '',
   target: '',
@@ -148,7 +148,7 @@ Default.args = {
 // ------ Link events & props ------
 export const Props = Template.bind({});
 Props.args = {
-  display: '',
+  display: 'inline',
   href: '#',
   rel: '',
   target: '',
