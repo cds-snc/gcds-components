@@ -17,15 +17,15 @@ describe('gcds-link', () => {
  */
 
 describe('gcds-link a11y tests', () => {
-  // Links have discernible text
-  it('Link name', async () => {
+  // Links have discernible text and color contrast
+  it('Link name and color contrast', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<gcds-link type="link" href="#">Link Text</gcds-link>',
     );
 
     const colorContrastTest = new AxePuppeteer(page)
-      .withRules('link-name')
+      .withRules(['link-name'], ['color-contrast'])
       .analyze();
     const results = await colorContrastTest;
 
