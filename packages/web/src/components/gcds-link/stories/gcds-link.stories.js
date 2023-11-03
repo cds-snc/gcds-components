@@ -88,7 +88,7 @@ This is an example of
 <gcds-link ${args.display != 'inline' ? `display="${args.display}"` : null} ${
     args.href ? `href="${args.href}"` : null
   } ${args.rel ? `rel="${args.rel}"` : null} ${
-    args.target ? `target="${args.target}"` : null
+    args.target != '_self' ? `target="${args.target}"` : null
   } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
     args.external ? `external` : null
   } ${args.download ? `download="${args.download}"` : null} ${
@@ -99,7 +99,7 @@ This is an example of
 <GcdsLink ${args.display != 'inline' ? `display="${args.display}"` : null} ${
     args.href ? `href="${args.href}"` : null
   } ${args.rel ? `rel="${args.rel}"` : null} ${
-    args.target ? `target="${args.target}"` : null
+    args.target != '_self' ? `target="${args.target}"` : null
   } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
     args.external ? `external` : null
   } ${args.download ? `download="${args.download}"` : null} ${
@@ -110,19 +110,21 @@ link.
 
 const TemplateSizes = () => `
 <!-- Web component code (Angular, Vue) -->
-<gcds-link href="" size="regular">This is a regular link.</gcds-link>
-<gcds-link href="" size="small">This is a small link.</gcds-link>
+<gcds-link href="#">This is a regular link.</gcds-link>
+<gcds-link href="#" size="small">This is a small link.</gcds-link>
+<gcds-heading tag="h2"><gcds-link href="#" size="inherit">This is link with size set to inherit.</gcds-link></gcds-heading>
 
 <!-- React code -->
-<GcdsLink href="" size="regular">This is a regular link</GcdsLink>
-<GcdsLink href="" size="small">This is a small link</GcdsLink>
+<GcdsLink href="#">This is a regular link</GcdsLink>
+<GcdsLink href="#" size="small">This is a small link</GcdsLink>
+<h2><GcdsLink href="#" size="inherit">This is link with size set to inherit.</GcdsLink></h2>
 `;
 
 const TemplatePlayground = args => `
 <gcds-link ${args.display != 'inline' ? `display="${args.display}"` : null} ${
   args.href ? `href="${args.href}"` : null
 } ${args.rel ? `rel="${args.rel}"` : null} ${
-  args.target ? `target="${args.target}"` : null
+  args.target && args.target != '_self' ? `target="${args.target}"` : null
 } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
   args.external ? `external` : null
 } ${args.download ? `download="${args.download}"` : null} ${
@@ -137,7 +139,7 @@ Default.args = {
   display: 'inline',
   href: '#',
   rel: '',
-  target: '',
+  target: '_self',
   size: 'regular',
   external: false,
   download: '',
@@ -151,8 +153,8 @@ Props.args = {
   display: 'inline',
   href: '#',
   rel: '',
-  target: '',
-  size: '',
+  target: '_self',
+  size: 'regular',
   external: false,
   download: '',
   type: '',
@@ -161,10 +163,11 @@ Props.args = {
 
 export const External = Template.bind({});
 External.args = {
+  display: 'inline',
   href: 'http://design-system.alpha.canada.ca',
   rel: '',
-  target: '',
-  size: '',
+  target: '_self',
+  size: 'regular',
   external: true,
   download: '',
   type: '',
@@ -173,22 +176,29 @@ External.args = {
 
 export const Download = Template.bind({});
 Download.args = {
-  href: 'test.jpg',
+  href: 'long-filename.pdf',
+  display: 'inline',
   target: '_self',
   size: 'regular',
   download: 'file.pdf',
-  type: 'image/jpg',
-  default: 'a file download',
+  type: 'application/pdf',
+  default: 'a file download (Application, PDF 1.5MB',
 };
 
 export const Email = Template.bind({});
 Email.args = {
+  display: 'inline',
+  target: '_self',
+  size: 'regular',
   href: 'mailto:test@test.com?subject=Test%20Email',
   default: 'an email address',
 };
 
 export const Phone = Template.bind({});
 Phone.args = {
+  display: 'inline',
+  target: '_self',
+  size: 'regular',
   href: 'tel:1234567890',
   default: 'a phone number',
 };
@@ -199,10 +209,10 @@ export const TemplateSizesExample = TemplateSizes.bind({});
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  display: '',
+  display: 'inline',
   href: '',
   rel: '',
-  target: '',
+  target: '_self',
   size: 'regular',
   external: false,
   download: '',
