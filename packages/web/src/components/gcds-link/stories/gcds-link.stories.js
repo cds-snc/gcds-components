@@ -210,12 +210,12 @@ export const TemplateSizesExample = TemplateSizes.bind({});
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   display: 'inline',
-  href: '',
+  href: '#',
   rel: '',
   target: '_self',
   size: 'regular',
   external: false,
   download: '',
   type: '',
-  default: 'Link text',
+  default: 'This is an example link.',
 };
