@@ -117,7 +117,7 @@ const TemplateSizes = () => `
 <!-- React code -->
 <GcdsLink href="#">This is a regular link</GcdsLink>
 <GcdsLink href="#" size="small">This is a small link</GcdsLink>
-<h2><GcdsLink href="#" size="inherit">This is link with size set to inherit.</GcdsLink></h2>
+<GcdsHeading tag="h2"><GcdsLink href="#" size="inherit">This is link with size set to inherit.</GcdsLink></GcdsHeading>
 `;
 
 const TemplatePlayground = args => `
@@ -182,7 +182,7 @@ Download.args = {
   size: 'regular',
   download: 'file.pdf',
   type: 'application/pdf',
-  default: 'a file download (Application, PDF 1.5MB',
+  default: 'a file download (PDF, 1.5 MB)',
 };
 
 export const Email = Template.bind({});
