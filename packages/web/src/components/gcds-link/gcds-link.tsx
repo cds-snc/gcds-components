@@ -30,13 +30,13 @@ export class GcdsLink {
   /**
    * Set the link size
    */
-  @Prop({ mutable: true }) size?: 'regular' | 'small' | 'inherit' = 'regular';
+  @Prop({ mutable: true }) size?: 'regular' | 'small' | 'inherit' = 'inherit';
   @Watch('size')
   validateSize(newValue: string) {
     const values = ['regular', 'small', 'inherit'];
 
     if (!values.includes(newValue)) {
-      this.size = 'regular';
+      this.size = 'inherit';
     }
   }
 

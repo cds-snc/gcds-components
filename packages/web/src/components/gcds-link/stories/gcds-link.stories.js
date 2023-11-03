@@ -15,7 +15,7 @@ export default {
       options: ['regular', 'small', 'inherit'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'regular' },
+        defaultValue: { summary: 'inherit' },
       },
     },
     display: {
@@ -89,7 +89,7 @@ This is an example of
     args.href ? `href="${args.href}"` : null
   } ${args.rel ? `rel="${args.rel}"` : null} ${
     args.target != '_self' ? `target="${args.target}"` : null
-  } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
+  } ${args.size != 'inherit' && args.size ? `size="${args.size}"` : null} ${
     args.external ? `external` : null
   } ${args.download ? `download="${args.download}"` : null} ${
     args.type ? `type="${args.type}"` : null
@@ -100,7 +100,7 @@ This is an example of
     args.href ? `href="${args.href}"` : null
   } ${args.rel ? `rel="${args.rel}"` : null} ${
     args.target != '_self' ? `target="${args.target}"` : null
-  } ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
+  } ${args.size != 'inherit' && args.size ? `size="${args.size}"` : null} ${
     args.external ? `external` : null
   } ${args.download ? `download="${args.download}"` : null} ${
     args.type ? `type="${args.type}"` : null
@@ -110,14 +110,14 @@ link.
 
 const TemplateSizes = () => `
 <!-- Web component code (Angular, Vue) -->
-<gcds-link href="#">This is a regular link.</gcds-link>
+<gcds-link href="#" size="regular">This is a regular link.</gcds-link>
 <gcds-link href="#" size="small">This is a small link.</gcds-link>
-<gcds-heading tag="h2"><gcds-link href="#" size="inherit">This is link with size set to inherit.</gcds-link></gcds-heading>
+<gcds-heading tag="h2"><gcds-link href="#">This is a link with size set to inherit (default).</gcds-link></gcds-heading>
 
 <!-- React code -->
-<GcdsLink href="#">This is a regular link</GcdsLink>
+<GcdsLink href="#" size="regular">This is a regular link</GcdsLink>
 <GcdsLink href="#" size="small">This is a small link</GcdsLink>
-<GcdsHeading tag="h2"><GcdsLink href="#" size="inherit">This is link with size set to inherit.</GcdsLink></GcdsHeading>
+<GcdsHeading tag="h2"><GcdsLink href="#">This is a link with size set to inherit (default).</GcdsLink></GcdsHeading>
 `;
 
 const TemplatePlayground = args => `
@@ -125,7 +125,7 @@ const TemplatePlayground = args => `
   args.href ? `href="${args.href}"` : null
 } ${args.rel ? `rel="${args.rel}"` : null} ${
   args.target && args.target != '_self' ? `target="${args.target}"` : null
-} ${args.size != 'regular' && args.size ? `size="${args.size}"` : null} ${
+} ${args.size != 'inherit' && args.size ? `size="${args.size}"` : null} ${
   args.external ? `external` : null
 } ${args.download ? `download="${args.download}"` : null} ${
   args.type ? `type="${args.type}"` : null
@@ -140,7 +140,7 @@ Default.args = {
   href: '#',
   rel: '',
   target: '_self',
-  size: 'regular',
+  size: 'inherit',
   external: false,
   download: '',
   type: '',
@@ -154,7 +154,7 @@ Props.args = {
   href: '#',
   rel: '',
   target: '_self',
-  size: 'regular',
+  size: 'inherit',
   external: false,
   download: '',
   type: '',
@@ -167,7 +167,7 @@ External.args = {
   href: 'http://design-system.alpha.canada.ca',
   rel: '',
   target: '_self',
-  size: 'regular',
+  size: 'inherit',
   external: true,
   download: '',
   type: '',
@@ -179,7 +179,7 @@ Download.args = {
   href: 'long-filename.pdf',
   display: 'inline',
   target: '_self',
-  size: 'regular',
+  size: 'inherit',
   download: 'file.pdf',
   type: 'application/pdf',
   default: 'a file download (PDF, 1.5 MB)',
@@ -189,7 +189,7 @@ export const Email = Template.bind({});
 Email.args = {
   display: 'inline',
   target: '_self',
-  size: 'regular',
+  size: 'inherit',
   href: 'mailto:test@test.com?subject=Test%20Email',
   default: 'an email address',
 };
@@ -198,7 +198,7 @@ export const Phone = Template.bind({});
 Phone.args = {
   display: 'inline',
   target: '_self',
-  size: 'regular',
+  size: 'inherit',
   href: 'tel:1234567890',
   default: 'a phone number',
 };
@@ -213,7 +213,7 @@ Playground.args = {
   href: '#',
   rel: '',
   target: '_self',
-  size: 'regular',
+  size: 'inherit',
   external: false,
   download: '',
   type: '',
