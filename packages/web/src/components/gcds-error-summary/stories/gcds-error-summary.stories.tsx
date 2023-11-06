@@ -6,7 +6,8 @@ export default {
   argTypes: {
     // Props
     listen: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true },
@@ -36,7 +37,7 @@ const Template = args =>
   `
 <!-- Web component code (Angular, Vue) -->
 <gcds-error-summary
-  ${args.listen && !args.errorLinks ? `listen` : null}
+  ${args.listen && args.errorLinks ? `listen` : null}
   ${args.errorLinks ? `error-links='${args.errorLinks}'` : null}
   ${args.heading ? `heading="${args.heading}"` : null}
 >
@@ -44,7 +45,7 @@ const Template = args =>
 
 <!-- React code -->
 <GcdsErrorSummary
-  ${args.listen && !args.errorLinks ? `listen` : null}
+  ${args.listen && args.errorLinks ? `listen` : null}
   ${args.errorLinks ? `errorLinks='${args.errorLinks}'` : null}
   ${args.heading ? `heading="${args.heading}"` : null}
 >
@@ -53,7 +54,7 @@ const Template = args =>
 
 const TemplatePlayground = args => `
 <gcds-error-summary
-  ${args.listen && !args.errorLinks ? `listen` : null}
+  ${args.listen && args.errorLinks ? `listen` : null}
   ${args.errorLinks ? `error-links='${args.errorLinks}'` : null}
   ${args.heading ? `heading="${args.heading}"` : null}
 >

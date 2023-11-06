@@ -6,7 +6,7 @@ export default {
   argTypes: {
     // Props
     display: {
-      control: 'radio',
+      control: 'select',
       options: ['compact', 'full'],
       table: {
         type: { summary: 'string' },

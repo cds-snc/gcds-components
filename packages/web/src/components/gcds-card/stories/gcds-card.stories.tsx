@@ -53,7 +53,7 @@ export default {
       },
     },
     type: {
-      control: 'radio',
+      control: 'select',
       options: ['link', 'action'],
       table: {
         type: { summary: 'string' },
@@ -61,7 +61,7 @@ export default {
       },
     },
     titleElement: {
-      control: 'radio',
+      control: 'select',
       options: ['h3', 'h4', 'h5', 'h6', 'a'],
       table: {
         type: { summary: 'string' },

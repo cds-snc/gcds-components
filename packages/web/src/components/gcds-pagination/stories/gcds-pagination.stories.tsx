@@ -17,7 +17,7 @@ export default {
       },
     },
     display: {
-      control: 'radio',
+      control: 'select',
       options: ['list', 'simple'],
       table: {
         type: { summary: 'string' },
