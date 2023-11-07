@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: gcds-components
+  description: >-
+    GC Design System Components is a monorepo managing the web components of the
+    GC Design System. | « GC Design System Components » (Composants de Système
+    de design GC) est un référentiel unique qui gère les composants Web de
+    Système de design GC.
+  labels:
+    license: MIT
+spec:
+  type: website
+  lifecycle: experimental
+  owner: cds-snc
