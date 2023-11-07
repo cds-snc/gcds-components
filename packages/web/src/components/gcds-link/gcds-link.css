@@ -21,7 +21,7 @@
     box-shadow: var(--gcds-link-focus-box-shadow);
     outline: var(--gcds-link-focus-outline-width) solid var(--gcds-link-focus-background);
     outline-offset: var(--gcds-link-focus-outline-offset);
-    border-color: var(--gcds-link-focus-border-color);
+    border-color: var(--gcds-link-focus-background);
     text-decoration: none;
   }
 
