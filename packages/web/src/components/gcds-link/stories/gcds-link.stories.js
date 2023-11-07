@@ -20,7 +20,7 @@ export default {
     },
     display: {
       control: 'select',
-      options: ['inline', 'inline-block', 'block'],
+      options: ['inline', 'block'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'inline' },

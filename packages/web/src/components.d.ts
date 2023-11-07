@@ -765,7 +765,7 @@ export namespace Components {
         /**
           * Sets the display behavior of the link
          */
-        "display"?: 'block' | 'inline' | 'inline-block';
+        "display"?: 'block' | 'inline';
         /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
@@ -2398,7 +2398,7 @@ declare namespace LocalJSX {
         /**
           * Sets the display behavior of the link
          */
-        "display"?: 'block' | 'inline' | 'inline-block';
+        "display"?: 'block' | 'inline';
         /**
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */

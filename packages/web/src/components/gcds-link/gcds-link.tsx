@@ -43,10 +43,10 @@ export class GcdsLink {
   /**
    * Sets the display behavior of the link
    */
-  @Prop() display?: 'block' | 'inline' | 'inline-block' = 'inline';
+  @Prop() display?: 'block' | 'inline' = 'inline';
   @Watch('display')
   validateDisplay(newValue: string) {
-    const values = ['block', 'inline', 'inline-block'];
+    const values = ['block', 'inline'];
 
     if (!values.includes(newValue)) {
       this.display = 'inline';
