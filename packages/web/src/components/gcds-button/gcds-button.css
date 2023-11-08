@@ -1,183 +1,193 @@
-:host button,
-:host a {
-  cursor: pointer;
-  font: var(--gcds-button-font);
-  padding: var(--gcds-button-padding);
-  border: var(--gcds-button-border-width) solid transparent;
-  text-decoration: none;
-  border-radius: var(--gcds-button-border-radius);
-  box-sizing: border-box;
-  display: inline-block;
-  width: var(--gcds-button-width);
-  text-align: center;
-  transition: all 0.15s ease-in-out;
+@layer reset, defaults, roles.skip, roles.secondary, roles.danger, roles.primary, disabled, size, mobile;
 
-  slot {
-    display: inherit;
-  }
+@layer reset {
+  :host button,
+  :host a {
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
 
-  /* Button Role Styles */
-  &.button--role-danger {
-    background-color: var(--gcds-button-danger-default-background);
-    color: var(--gcds-button-danger-default-text);
-
-    &:hover {
-      background-color: var(--gcds-button-danger-hover-background);
+    slot {
+      display: initial;
     }
-
-    &:focus {
-      background-color: var(--gcds-button-shared-focus-background);
-      color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
-      outline-offset: var(--gcds-button-border-width);
-      border-color: var(--gcds-button-shared-focus-background);
-      box-shadow: var(--gcds-button-shared-focus-box-shadow);
-    }
-
-    &:active {
-      background-color: var(--gcds-button-shared-active-background);
-      border-color: var(--gcds-button-shared-active-background);
-    }
-  }
-
-  &.button--role-primary {
-    background-color: var(--gcds-button-primary-default-background);
-    color: var(--gcds-button-primary-default-text);
-
-    &:hover {
-      background-color: var(--gcds-button-primary-hover-background);
-    }
-
-    &:focus {
-      background-color: var(--gcds-button-shared-focus-background);
-      color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
-      outline-offset: var(--gcds-button-border-width);
-      border-color: var(--gcds-button-shared-focus-background);
-      box-shadow: var(--gcds-button-shared-focus-box-shadow);
-    }
-
-    &:active {
-      background-color: var(--gcds-button-shared-active-background);
-      border-color: var(--gcds-button-shared-active-background);
-    }
-  }
-
-  &.button--role-secondary {
-    background-color: var(--gcds-button-secondary-default-background);
-    color: var(--gcds-button-secondary-default-text);
-    border: var(--gcds-button-border-width) solid currentColor;
-
-    &:hover {
-      background-color: var(--gcds-button-secondary-hover-background);
-      border-color: var(--gcds-button-secondary-default-text);
-      color: var(--gcds-button-secondary-default-text);
-    }
-
-    &:focus {
-      background-color: var(--gcds-button-shared-focus-background);
-      color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
-      outline-offset: var(--gcds-button-border-width);
-      border-color: var(--gcds-button-shared-focus-background);
-      box-shadow: var(--gcds-button-shared-focus-box-shadow);
-
-      &:hover {
-        border-color: var(--gcds-button-shared-focus-background);
-      }
-    }
-
-    &:active {
-      background-color: var(--gcds-button-shared-active-background);
-      border-color: var(--gcds-button-shared-active-background) !important;
-    }
-  }
-
-  &.button--text-only {
-    background-color: var(--gcds-button-text-only-default-background);
-    color: var(--gcds-button-text-only-default-text);
-
-    &:not([aria-disabled='true']) {
-      text-decoration: underline;
-      text-underline-offset: 0.2em;
-      text-decoration-color: currentColor;
-      text-decoration-thickness: var(--gcds-button-text-only-default-decoration-thickness);
-    }
-
-    &:hover {
-      background-color: var(--gcds-button-text-only-default-background);
-      color: var(--gcds-button-text-only-hover-text);
-      text-decoration-thickness: var(--gcds-button-text-only-hover-decoration-thickness);
-    }
-
-    &:focus {
-      background-color: var(--gcds-button-shared-focus-background);
-      color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
-      outline-offset: var(--gcds-button-border-width);
-      border-color: var(--gcds-button-shared-focus-background);
-      box-shadow: var(--gcds-button-shared-focus-box-shadow);
-      text-decoration: none;
-    }
-
-    &:active {
-      background-color: var(--gcds-button-shared-active-background);
-      border-color: var(--gcds-button-shared-active-background);
-    }
-  }
-
-  &.button--role-skip-to-content {
-    position: absolute;
-    top: var(--gcds-button-skip-top);
-    left: 0;
-    width: inherit;
-    z-index: 3;
-
-    &:not(:focus) {
-      clip: rect(0, 0, 0, 0);
-      height: 0;
-      margin: 0;
-      overflow: hidden;
-      padding: 0;
-      width: 0;
-    }
-
-    &:focus {
-      background-color: var(--gcds-button-shared-focus-background);
-      color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
-      outline-offset: var(--gcds-button-border-width);
-      border-color: var(--gcds-button-shared-focus-background);
-      box-shadow: var(--gcds-button-shared-focus-box-shadow);
-      text-decoration: none;
-    }
-
-    &:active {
-      background-color: var(--gcds-button-shared-active-background);
-      border-color: var(--gcds-button-shared-active-background);
-    }
-  }
-
-  /* Shared Styles */
-  &[aria-disabled='true'] {
-    background-color: var(--gcds-button-shared-disabled-background);
-    color: var(--gcds-button-shared-disabled-text);
-    cursor: not-allowed;
-    border: var(--gcds-button-border-width) solid currentColor;
-    pointer-events: none;
-  }
-
-  /* Small button styling */
-  &.button--small {
-    font: var(--gcds-button-small-font);
-    padding: var(--gcds-button-small-padding);
   }
 }
 
-@media screen and (max-width: 30rem) {
-  :host button:not(.button--text-only),
-  :host a:not(.button--text-only) {
-    width: var(--gcds-button-mobile-width);
-    margin: var(--gcds-button-mobile-margin);
+@layer defaults {
+  :host button,
+  :host a {
+    display: inline-block;
+    width: var(--gcds-button-width);
+    font: var(--gcds-button-font);
+    padding: var(--gcds-button-padding);
+    border: var(--gcds-button-border-width) solid transparent;
+    border-radius: var(--gcds-button-border-radius);
+    text-align: center;
+    transition: all 0.15s ease-in-out;
+  }
+}
+
+@layer roles.danger {
+  :host button,
+  :host a {
+    &.button--role-danger {
+      background-color: var(--gcds-button-danger-default-background);
+      color: var(--gcds-button-danger-default-text);
+
+      &:hover {
+        background-color: var(--gcds-button-danger-hover-background);
+      }
+
+      &:focus {
+        background-color: var(--gcds-button-shared-focus-background);
+        color: var(--gcds-button-shared-focus-text);
+        outline: var(--gcds-button-shared-focus-outline-width) solid
+          var(--gcds-button-shared-focus-background);
+        outline-offset: var(--gcds-button-border-width);
+        border-color: var(--gcds-button-shared-focus-background);
+        box-shadow: var(--gcds-button-shared-focus-box-shadow);
+      }
+
+      &:active {
+        background-color: var(--gcds-button-shared-active-background);
+        border-color: var(--gcds-button-shared-active-background);
+      }
+    }
+  }
+}
+
+@layer roles.primary {
+  :host button,
+  :host a {
+    &.button--role-primary {
+      background-color: var(--gcds-button-primary-default-background);
+      color: var(--gcds-button-primary-default-text);
+
+      &:hover {
+        background-color: var(--gcds-button-primary-hover-background);
+      }
+
+      &:focus {
+        background-color: var(--gcds-button-shared-focus-background);
+        color: var(--gcds-button-shared-focus-text);
+        outline: var(--gcds-button-shared-focus-outline-width) solid
+          var(--gcds-button-shared-focus-background);
+        outline-offset: var(--gcds-button-border-width);
+        border-color: var(--gcds-button-shared-focus-background);
+        box-shadow: var(--gcds-button-shared-focus-box-shadow);
+      }
+
+      &:active {
+        background-color: var(--gcds-button-shared-active-background);
+        border-color: var(--gcds-button-shared-active-background);
+      }
+    }
+  }
+}
+
+@layer roles.secondary {
+  :host button,
+  :host a {
+    &.button--role-secondary {
+      background-color: var(--gcds-button-secondary-default-background);
+      color: var(--gcds-button-secondary-default-text);
+      border: var(--gcds-button-border-width) solid currentColor;
+
+      &:hover {
+        background-color: var(--gcds-button-secondary-hover-background);
+        border-color: var(--gcds-button-secondary-default-text);
+        color: var(--gcds-button-secondary-default-text);
+      }
+
+      &:focus {
+        background-color: var(--gcds-button-shared-focus-background);
+        color: var(--gcds-button-shared-focus-text);
+        outline: var(--gcds-button-shared-focus-outline-width) solid
+          var(--gcds-button-shared-focus-background);
+        outline-offset: var(--gcds-button-border-width);
+        border-color: var(--gcds-button-shared-focus-background);
+        box-shadow: var(--gcds-button-shared-focus-box-shadow);
+
+        &:hover {
+          border-color: var(--gcds-button-shared-focus-background);
+        }
+      }
+
+      &:active {
+        background-color: var(--gcds-button-shared-active-background);
+        border-color: var(--gcds-button-shared-active-background) !important;
+      }
+    }
+  }
+}
+
+@layer roles.skip {
+  :host button,
+  :host a {
+    &.button--role-skip-to-content {
+      position: absolute;
+      top: var(--gcds-button-skip-top);
+      left: 0;
+      width: inherit;
+      z-index: 3;
+
+      &:not(:focus) {
+        clip: rect(0, 0, 0, 0);
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        width: 0;
+      }
+
+      &:focus {
+        background-color: var(--gcds-button-shared-focus-background);
+        color: var(--gcds-button-shared-focus-text);
+        outline: var(--gcds-button-shared-focus-outline-width) solid
+          var(--gcds-button-shared-focus-background);
+        outline-offset: var(--gcds-button-border-width);
+        border-color: var(--gcds-button-shared-focus-background);
+        box-shadow: var(--gcds-button-shared-focus-box-shadow);
+        text-decoration: none;
+      }
+
+      &:active {
+        background-color: var(--gcds-button-shared-active-background);
+        border-color: var(--gcds-button-shared-active-background);
+      }
+    }
+  }
+}
+
+@layer disabled {
+  :host button,
+  :host a {
+    &[aria-disabled='true'] {
+      background-color: var(--gcds-button-shared-disabled-background);
+      color: var(--gcds-button-shared-disabled-text);
+      cursor: not-allowed;
+      border: var(--gcds-button-border-width) solid currentColor;
+      pointer-events: none;
+    }
+  }
+}
+
+@layer size {
+  :host button,
+  :host a {
+    &.button--small {
+      font: var(--gcds-button-small-font);
+      padding: var(--gcds-button-small-padding);
+    }
+  }
+}
+
+@layer mobile {
+  @media screen and (max-width: 30rem) {
+    :host button,
+    :host a {
+      width: var(--gcds-button-mobile-width);
+      margin: var(--gcds-button-mobile-margin);
+    }
   }
 }
