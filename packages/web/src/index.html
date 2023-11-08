@@ -102,13 +102,11 @@
     </gcds-header>
 
     <gcds-container size="xl" centered tag="main">
-      <h1 class="text-center mb-500">GC Design System</h1>
-
-      <h2>Components</h2>
+      <gcds-heading tag="h1">GC Design System</gcds-heading>
 
       <!-- ------------- Alerts ------------- -->
 
-      <h3 class="mt-500 mb-400 bb-sm">Alerts</h3>
+      <gcds-heading tag="h2">Alerts</gcds-heading>
       <gcds-alert heading="Success alert" alert-role="success">
         <p>Example content</p>
       </gcds-alert>
@@ -124,7 +122,7 @@
 
       <!-- ------------- Buttons ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Buttons</h3>
+      <gcds-heading tag="h2">Buttons</gcds-heading>
       <gcds-button button-role="primary">Primary</gcds-button>
       <gcds-button button-role="secondary">Secondary</gcds-button>
       <gcds-button button-role="danger">Danger</gcds-button>
@@ -143,7 +141,7 @@
 
       <!-- ------------- Cards ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Cards</h3>
+      <gcds-heading tag="h2">Cards</gcds-heading>
 
       <gcds-grid
         tag="div"
@@ -225,7 +223,7 @@
 
       <!-- ------------- Containers ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Containers</h3>
+      <gcds-heading tag="h2">Containers</gcds-heading>
       <gcds-container size="full" border padding="400">
         <p>
           I'm a responsive container. My size is only limited by the size of my
@@ -243,16 +241,16 @@
 
       <!-- ------------- Details ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Details</h3>
+      <gcds-heading tag="h2">Details</gcds-heading>
       <gcds-details details-title="Find out more">
         <p>Details about stuff.</p>
       </gcds-details>
 
       <!-- ------------- Stepper + Form Elements ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">
+      <gcds-heading tag="h2">
         Form elements (including stepper and error summary)
-      </h3>
+      </gcds-heading>
       <gcds-stepper current-step="1" total-steps="3"></gcds-stepper>
       <form novalidate>
         <gcds-error-summary listen></gcds-error-summary>
@@ -361,7 +359,7 @@
 
       <!-- ------------- Grid ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Grid</h3>
+      <gcds-heading tag="h2">Grid</gcds-heading>
       <gcds-grid
         tag="article"
         columns-desktop="1fr 1fr 1fr 1fr"
@@ -401,7 +399,7 @@
 
       <!-- ------------- Heading ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Heading</h3>
+      <gcds-heading tag="h2">Heading</gcds-heading>
       <gcds-heading tag="h1">Heading level 1</gcds-heading>
       <gcds-heading tag="h2">Heading level 2</gcds-heading>
       <gcds-heading tag="h3">Heading level 3</gcds-heading>
@@ -411,7 +409,7 @@
 
       <!-- ------------- Text ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Text</h3>
+      <gcds-heading tag="h2">Text</gcds-heading>
       <gcds-text margin-bottom="400"
         >This text is primary text using the default body size. The margin
         bottom is set to "400". The character limit is set to "true" (default
@@ -465,31 +463,31 @@
 
       <!-- ------------- Icons ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Icons</h3>
-      <gcds-icon name="tree" size="caption" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="text" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h6" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h5" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h4" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h3" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h2" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h1" margin-right="200"></gcds-icon>
+      <gcds-heading tag="h2">Icons</gcds-heading>
+      <gcds-icon name="close" size="caption" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="text" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h6" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h5" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h4" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h3" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h2" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h1" margin-right="200"></gcds-icon>
 
-      <h4 class="mt-500 mb-300">Fixed width icons (square ratio)</h4>
-      <gcds-icon name="tree" size="text" fixed-width></gcds-icon>
+      <gcds-heading tag="h4">Fixed width icons (square ratio)</gcds-heading>
+      <gcds-icon name="close" size="text" fixed-width></gcds-icon>
       <gcds-icon name="folder" size="text" fixed-width></gcds-icon>
       <gcds-icon name="fire" size="text" fixed-width></gcds-icon>
       <gcds-icon name="utensils" size="text" fixed-width></gcds-icon>
 
-      <h4 class="mt-500 mb-300">Variable width icons (auto width)</h4>
-      <gcds-icon name="tree" size="text"></gcds-icon>
+      <gcds-heading tag="h4">Variable width icons (auto width)</gcds-heading>
+      <gcds-icon name="close" size="text"></gcds-icon>
       <gcds-icon name="folder" size="text"></gcds-icon>
       <gcds-icon name="fire" size="text"></gcds-icon>
       <gcds-icon name="utensils" size="text"></gcds-icon>
 
       <!-- ------------- Pagination ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Pagination</h3>
+      <gcds-heading tag="h2">Pagination</gcds-heading>
       <gcds-pagination
         display="list"
         label="List pagination"
@@ -511,7 +509,7 @@
 
       <!-- ------------- Phase Banner ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Phase banner</h3>
+      <gcds-heading tag="h2">Phase banner</gcds-heading>
       <gcds-phase-banner banner-role="primary">
         <gcds-icon name="tree" size="sm" slot="banner-icon-left"></gcds-icon>
         <p slot="banner-text">Exciting announcement.</p>
@@ -519,7 +517,7 @@
 
       <!-- ------------- Screen reader only ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Screen reader only</h3>
+      <gcds-heading tag="h2">Screen reader only</gcds-heading>
       <gcds-text>There is invisible text below this</gcds-text>
       <gcds-sr-only>
         <gcds-text
@@ -549,7 +547,7 @@
 
       <!-- ------------- Top nav ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Top navigation</h3>
+      <gcds-heading tag="h2">Top navigation</gcds-heading>
       <gcds-top-nav label="topbar" alignment="right" lang="en">
         <gcds-nav-link href="#red" slot="home">Home</gcds-nav-link>
         <gcds-nav-link href="#red">Installation</gcds-nav-link>
