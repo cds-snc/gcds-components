@@ -108,18 +108,6 @@ This is an example of
 link.
 `.replace(/ null/g, '');
 
-const TemplateSizes = () => `
-<!-- Web component code (Angular, Vue) -->
-<gcds-link href="#" size="regular">This is a regular link.</gcds-link>
-<gcds-link href="#" size="small">This is a small link.</gcds-link>
-<gcds-heading tag="h2"><gcds-link href="#">This is a link with size set to inherit (default).</gcds-link></gcds-heading>
-
-<!-- React code -->
-<GcdsLink href="#" size="regular">This is a regular link</GcdsLink>
-<GcdsLink href="#" size="small">This is a small link</GcdsLink>
-<GcdsHeading tag="h2"><GcdsLink href="#">This is a link with size set to inherit (default).</GcdsLink></GcdsHeading>
-`;
-
 const TemplatePlayground = args => `
 <gcds-link ${args.display != 'inline' ? `display="${args.display}"` : null} ${
   args.href ? `href="${args.href}"` : null
@@ -203,7 +191,44 @@ Phone.args = {
   default: 'a phone number',
 };
 
-export const TemplateSizesExample = TemplateSizes.bind({});
+export const SizesSmall = Template.bind({});
+Default.args = {
+  display: 'inline',
+  href: '#',
+  rel: '',
+  target: '_self',
+  size: 'small',
+  external: false,
+  download: '',
+  type: '',
+  default: 'link size small',
+};
+
+export const SizesRegular = Template.bind({});
+Default.args = {
+  display: 'inline',
+  href: '#',
+  rel: '',
+  target: '_self',
+  size: 'regular',
+  external: false,
+  download: '',
+  type: '',
+  default: 'link size regular',
+};
+
+export const SizesInherit = Template.bind({});
+Default.args = {
+  display: 'inline',
+  href: '#',
+  rel: '',
+  target: '_self',
+  size: 'inherit',
+  external: false,
+  download: '',
+  type: '',
+  default: 'link size inherit',
+};
 
 // ------ Link playground ------
 
