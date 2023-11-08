@@ -410,20 +410,20 @@
       <!-- ------------- Text ------------- -->
 
       <gcds-heading tag="h2">Text</gcds-heading>
-      <gcds-text margin-bottom="400"
+      <gcds-text
         >This text is primary text using the default body size. The margin
         bottom is set to "400". The character limit is set to "true" (default
         value) which means that the text will take up a maximum of 65 characters
         per line.</gcds-text
       >
 
-      <gcds-text character-limit="false" margin-bottom="400"
+      <gcds-text character-limit="false"
         >This text is primary text using the default body size. The margin
         bottom is set to "400". The characters limit is set to "false" which
         means that the text will take up all available space.</gcds-text
       >
 
-      <gcds-text text-role="secondary" margin-bottom="400"
+      <gcds-text text-role="secondary"
         >This text is secondary text using the default body size. The margin
         bottom is set to "400". The character limit is set to "true" (default
         value) which means that the text will take up a maximum of 65 characters
@@ -431,21 +431,21 @@
       >
 
       <div class="bg-dark mb-400 p-200">
-        <gcds-text text-role="light"
+        <gcds-text margin-bottom="0" text-role="light"
           >This text is light text using the default body size. The character
           limit is set to "true" (default value) which means that the text will
           take up a maximum of 65 characters per line.</gcds-text
         >
       </div>
 
-      <gcds-text size="caption" margin-bottom="400"
+      <gcds-text size="caption"
         >This text is primary text using the caption size. The margin bottom is
         set to "400". The character limit is set to "true" (default value) which
         means that the text will take up a maximum of 65 characters per
         line.</gcds-text
       >
 
-      <gcds-text margin-bottom="400"
+      <gcds-text
         >This text is primary text using the default body size
         <strong>with some bold text included</strong>. The margin bottom is set
         to "400". The character limit is set to "true" (default value) which
@@ -453,7 +453,7 @@
         line.</gcds-text
       >
 
-      <gcds-text margin-bottom="400"
+      <gcds-text
         >This text is primary text using the default body size
         <em>with some italic text included</em>. The margin bottom is set to
         "400". The character limit is set to "true" (default value) which means
@@ -487,15 +487,51 @@
 
       <!-- ------------- Link ------------- -->
       <h3 class="mt-700 mb-400 bb-sm" id="links">Link</h3>
-      <p class="my-200">This is a <gcds-link size="small" href="/">small link</gcds-link> if you compare it to regular text.</p>
-      <p class="my-200"><gcds-link href="https://picsum.photos/480/270" external display="block">This is an external link</gcds-link></p>
-      <p class="my-200">This is a <gcds-link href="https://picsum.photos/200/200.jpg" download="random_image" type="image/jpeg">download link (PDF, 1.3 MB)</gcds-link> with type indicated</p>
-      <p class="my-200">Contact us <gcds-link href="mailto:test@test.com?subject=Test%20email">via email</gcds-link> or by phone.</p>
-      <p class="my-200">Contact us <gcds-link href="tel:1234567890">by phone</gcds-link> or by email.</p>
-      <p class="my-200">There is text before and <gcds-link href="/" display="inline-block">(sample link)</gcds-link> after this link.</p>
-      <p class="my-200"><gcds-link href="/" referrerpolicy="no-referrer" external>This is a sample link with a referrerpolicy</gcds-link></p>
-      <p class="my-200"><gcds-link href="" onClick='window.alert("Thank you!")'>Click me!</gcds-link></p>
-
+      <p class="my-200">
+        This is a <gcds-link size="small" href="/">small link</gcds-link> if you
+        compare it to regular text.
+      </p>
+      <p class="my-200">
+        <gcds-link href="https://picsum.photos/480/270" external display="block"
+          >This is an external link</gcds-link
+        >
+      </p>
+      <p class="my-200">
+        This is a
+        <gcds-link
+          href="https://picsum.photos/200/200.jpg"
+          download="random_image"
+          type="image/jpeg"
+          >download link (PDF, 1.3 MB)</gcds-link
+        >
+        with type indicated
+      </p>
+      <p class="my-200">
+        Contact us
+        <gcds-link href="mailto:test@test.com?subject=Test%20email"
+          >via email</gcds-link
+        >
+        or by phone.
+      </p>
+      <p class="my-200">
+        Contact us <gcds-link href="tel:1234567890">by phone</gcds-link> or by
+        email.
+      </p>
+      <p class="my-200">
+        There is text before and
+        <gcds-link href="/" display="inline-block">(sample link)</gcds-link>
+        after this link.
+      </p>
+      <p class="my-200">
+        <gcds-link href="/" referrerpolicy="no-referrer" external
+          >This is a sample link with a referrerpolicy</gcds-link
+        >
+      </p>
+      <p class="my-200">
+        <gcds-link href="" onClick='window.alert("Thank you!")'
+          >Click me!</gcds-link
+        >
+      </p>
 
       <!-- ------------- Pagination ------------- -->
 
