@@ -1292,7 +1292,18 @@ export interface GcdsTextareaCustomEvent<T> extends CustomEvent<T> {
     target: HTMLGcdsTextareaElement;
 }
 declare global {
+    interface HTMLGcdsAlertElementEventMap {
+        "gcdsDismiss": void;
+    }
     interface HTMLGcdsAlertElement extends Components.GcdsAlert, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsAlertElementEventMap>(type: K, listener: (this: HTMLGcdsAlertElement, ev: GcdsAlertCustomEvent<HTMLGcdsAlertElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsAlertElementEventMap>(type: K, listener: (this: HTMLGcdsAlertElement, ev: GcdsAlertCustomEvent<HTMLGcdsAlertElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsAlertElement: {
         prototype: HTMLGcdsAlertElement;
@@ -1310,7 +1321,19 @@ declare global {
         prototype: HTMLGcdsBreadcrumbsItemElement;
         new (): HTMLGcdsBreadcrumbsItemElement;
     };
+    interface HTMLGcdsButtonElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+    }
     interface HTMLGcdsButtonElement extends Components.GcdsButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsButtonElementEventMap>(type: K, listener: (this: HTMLGcdsButtonElement, ev: GcdsButtonCustomEvent<HTMLGcdsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsButtonElementEventMap>(type: K, listener: (this: HTMLGcdsButtonElement, ev: GcdsButtonCustomEvent<HTMLGcdsButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsButtonElement: {
         prototype: HTMLGcdsButtonElement;
@@ -1322,7 +1345,22 @@ declare global {
         prototype: HTMLGcdsCardElement;
         new (): HTMLGcdsCardElement;
     };
+    interface HTMLGcdsCheckboxElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsChange": any;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
     interface HTMLGcdsCheckboxElement extends Components.GcdsCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsCheckboxElementEventMap>(type: K, listener: (this: HTMLGcdsCheckboxElement, ev: GcdsCheckboxCustomEvent<HTMLGcdsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsCheckboxElementEventMap>(type: K, listener: (this: HTMLGcdsCheckboxElement, ev: GcdsCheckboxCustomEvent<HTMLGcdsCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsCheckboxElement: {
         prototype: HTMLGcdsCheckboxElement;
@@ -1358,13 +1396,43 @@ declare global {
         prototype: HTMLGcdsErrorSummaryElement;
         new (): HTMLGcdsErrorSummaryElement;
     };
+    interface HTMLGcdsFieldsetElementEventMap {
+        "gcdsGroupError": string;
+        "gcdsGroupErrorClear": void;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
     interface HTMLGcdsFieldsetElement extends Components.GcdsFieldset, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsFieldsetElementEventMap>(type: K, listener: (this: HTMLGcdsFieldsetElement, ev: GcdsFieldsetCustomEvent<HTMLGcdsFieldsetElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsFieldsetElementEventMap>(type: K, listener: (this: HTMLGcdsFieldsetElement, ev: GcdsFieldsetCustomEvent<HTMLGcdsFieldsetElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsFieldsetElement: {
         prototype: HTMLGcdsFieldsetElement;
         new (): HTMLGcdsFieldsetElement;
     };
+    interface HTMLGcdsFileUploaderElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsFileUploaderChange": any;
+        "gcdsRemoveFile": any;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
     interface HTMLGcdsFileUploaderElement extends Components.GcdsFileUploader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsFileUploaderElementEventMap>(type: K, listener: (this: HTMLGcdsFileUploaderElement, ev: GcdsFileUploaderCustomEvent<HTMLGcdsFileUploaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsFileUploaderElementEventMap>(type: K, listener: (this: HTMLGcdsFileUploaderElement, ev: GcdsFileUploaderCustomEvent<HTMLGcdsFileUploaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsFileUploaderElement: {
         prototype: HTMLGcdsFileUploaderElement;
@@ -1406,7 +1474,22 @@ declare global {
         prototype: HTMLGcdsIconElement;
         new (): HTMLGcdsIconElement;
     };
+    interface HTMLGcdsInputElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsChange": any;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
     interface HTMLGcdsInputElement extends Components.GcdsInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsInputElementEventMap>(type: K, listener: (this: HTMLGcdsInputElement, ev: GcdsInputCustomEvent<HTMLGcdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsInputElementEventMap>(type: K, listener: (this: HTMLGcdsInputElement, ev: GcdsInputCustomEvent<HTMLGcdsInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsInputElement: {
         prototype: HTMLGcdsInputElement;
@@ -1424,25 +1507,73 @@ declare global {
         prototype: HTMLGcdsLangToggleElement;
         new (): HTMLGcdsLangToggleElement;
     };
+    interface HTMLGcdsLinkElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": void;
+    }
     interface HTMLGcdsLinkElement extends Components.GcdsLink, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsLinkElementEventMap>(type: K, listener: (this: HTMLGcdsLinkElement, ev: GcdsLinkCustomEvent<HTMLGcdsLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsLinkElementEventMap>(type: K, listener: (this: HTMLGcdsLinkElement, ev: GcdsLinkCustomEvent<HTMLGcdsLinkElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsLinkElement: {
         prototype: HTMLGcdsLinkElement;
         new (): HTMLGcdsLinkElement;
     };
+    interface HTMLGcdsNavGroupElementEventMap {
+        "gcdsClick": void;
+    }
     interface HTMLGcdsNavGroupElement extends Components.GcdsNavGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsNavGroupElementEventMap>(type: K, listener: (this: HTMLGcdsNavGroupElement, ev: GcdsNavGroupCustomEvent<HTMLGcdsNavGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsNavGroupElementEventMap>(type: K, listener: (this: HTMLGcdsNavGroupElement, ev: GcdsNavGroupCustomEvent<HTMLGcdsNavGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsNavGroupElement: {
         prototype: HTMLGcdsNavGroupElement;
         new (): HTMLGcdsNavGroupElement;
     };
+    interface HTMLGcdsNavLinkElementEventMap {
+        "gcdsClick": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+    }
     interface HTMLGcdsNavLinkElement extends Components.GcdsNavLink, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsNavLinkElementEventMap>(type: K, listener: (this: HTMLGcdsNavLinkElement, ev: GcdsNavLinkCustomEvent<HTMLGcdsNavLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsNavLinkElementEventMap>(type: K, listener: (this: HTMLGcdsNavLinkElement, ev: GcdsNavLinkCustomEvent<HTMLGcdsNavLinkElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsNavLinkElement: {
         prototype: HTMLGcdsNavLinkElement;
         new (): HTMLGcdsNavLinkElement;
     };
+    interface HTMLGcdsPaginationElementEventMap {
+        "gcdsPageChange": void;
+    }
     interface HTMLGcdsPaginationElement extends Components.GcdsPagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsPaginationElementEventMap>(type: K, listener: (this: HTMLGcdsPaginationElement, ev: GcdsPaginationCustomEvent<HTMLGcdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsPaginationElementEventMap>(type: K, listener: (this: HTMLGcdsPaginationElement, ev: GcdsPaginationCustomEvent<HTMLGcdsPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsPaginationElement: {
         prototype: HTMLGcdsPaginationElement;
@@ -1454,19 +1585,61 @@ declare global {
         prototype: HTMLGcdsPhaseBannerElement;
         new (): HTMLGcdsPhaseBannerElement;
     };
+    interface HTMLGcdsRadioElementEventMap {
+        "gcdsRadioChange": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+    }
     interface HTMLGcdsRadioElement extends Components.GcdsRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsRadioElementEventMap>(type: K, listener: (this: HTMLGcdsRadioElement, ev: GcdsRadioCustomEvent<HTMLGcdsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsRadioElementEventMap>(type: K, listener: (this: HTMLGcdsRadioElement, ev: GcdsRadioCustomEvent<HTMLGcdsRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsRadioElement: {
         prototype: HTMLGcdsRadioElement;
         new (): HTMLGcdsRadioElement;
     };
+    interface HTMLGcdsSearchElementEventMap {
+        "gcdsChange": object;
+        "gcdsFocus": object;
+        "gcdsBlur": object;
+        "gcdsSubmit": object;
+    }
     interface HTMLGcdsSearchElement extends Components.GcdsSearch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsSearchElementEventMap>(type: K, listener: (this: HTMLGcdsSearchElement, ev: GcdsSearchCustomEvent<HTMLGcdsSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsSearchElementEventMap>(type: K, listener: (this: HTMLGcdsSearchElement, ev: GcdsSearchCustomEvent<HTMLGcdsSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsSearchElement: {
         prototype: HTMLGcdsSearchElement;
         new (): HTMLGcdsSearchElement;
     };
+    interface HTMLGcdsSelectElementEventMap {
+        "gcdsSelectChange": any;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
     interface HTMLGcdsSelectElement extends Components.GcdsSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsSelectElementEventMap>(type: K, listener: (this: HTMLGcdsSelectElement, ev: GcdsSelectCustomEvent<HTMLGcdsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsSelectElementEventMap>(type: K, listener: (this: HTMLGcdsSelectElement, ev: GcdsSelectCustomEvent<HTMLGcdsSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsSelectElement: {
         prototype: HTMLGcdsSelectElement;
@@ -1502,7 +1675,22 @@ declare global {
         prototype: HTMLGcdsTextElement;
         new (): HTMLGcdsTextElement;
     };
+    interface HTMLGcdsTextareaElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsChange": any;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
     interface HTMLGcdsTextareaElement extends Components.GcdsTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsTextareaElementEventMap>(type: K, listener: (this: HTMLGcdsTextareaElement, ev: GcdsTextareaCustomEvent<HTMLGcdsTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsTextareaElementEventMap>(type: K, listener: (this: HTMLGcdsTextareaElement, ev: GcdsTextareaCustomEvent<HTMLGcdsTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsTextareaElement: {
         prototype: HTMLGcdsTextareaElement;
