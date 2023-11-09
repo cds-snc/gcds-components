@@ -1,13 +1,10 @@
 :host a {
   cursor: pointer;
   color: var(--gcds-link-default);
-
-  &:not([aria-disabled='true']) {
-    text-decoration: underline;
-    text-underline-offset: var(--gcds-link-underline-offset);
-    text-decoration-color: currentColor;
-    text-decoration-thickness: var(--gcds-link-decoration-thickness);
-  }
+  text-decoration: underline;
+  text-underline-offset: var(--gcds-link-underline-offset);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: var(--gcds-link-decoration-thickness);
 
   &:hover {
     color: var(--gcds-link-hover);
