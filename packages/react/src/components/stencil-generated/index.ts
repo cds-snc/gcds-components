@@ -30,6 +30,7 @@ export const GcdsIcon = /*@__PURE__*/createReactComponent<JSX.GcdsIcon, HTMLGcds
 export const GcdsInput = /*@__PURE__*/createReactComponent<JSX.GcdsInput, HTMLGcdsInputElement>('gcds-input');
 export const GcdsLabel = /*@__PURE__*/createReactComponent<JSX.GcdsLabel, HTMLGcdsLabelElement>('gcds-label');
 export const GcdsLangToggle = /*@__PURE__*/createReactComponent<JSX.GcdsLangToggle, HTMLGcdsLangToggleElement>('gcds-lang-toggle');
+export const GcdsLink = /*@__PURE__*/createReactComponent<JSX.GcdsLink, HTMLGcdsLinkElement>('gcds-link');
 export const GcdsNavGroup = /*@__PURE__*/createReactComponent<JSX.GcdsNavGroup, HTMLGcdsNavGroupElement>('gcds-nav-group');
 export const GcdsNavLink = /*@__PURE__*/createReactComponent<JSX.GcdsNavLink, HTMLGcdsNavLinkElement>('gcds-nav-link');
 export const GcdsPagination = /*@__PURE__*/createReactComponent<JSX.GcdsPagination, HTMLGcdsPaginationElement>('gcds-pagination');
