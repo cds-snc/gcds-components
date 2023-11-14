@@ -4,6 +4,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.17.0
+
+### New features
+
+- Link component (`gcds-link`)
+  - New `gcds-link` component to allow users to navigate to a new page, website or section on the current page.
+
+### Minor
+
+- https://github.com/cds-snc/gcds-components/pull/305 - [2ffc292](https://github.com/cds-snc/gcds-components/commit/2ffc292828fd5eed53a4eb33cbe753da08f9dde0) - Add `gcds-link` to component library
+
+### Patch
+
+- https://github.com/cds-snc/gcds-components/pull/333 - [5da32e0](https://github.com/cds-snc/gcds-components/commit/5da32e0546d7af52fb318a77e22d315327038b18) - Add default value for margin top + bottom for text component
+- https://github.com/cds-snc/gcds-components/pull/338 - [96e4787](https://github.com/cds-snc/gcds-components/commit/96e4787b7c7f061279fc650d2dd4894d5ae2e193) - Improve storybook a11y for live demos.
+
 ## v0.16.0
 
 ### New features
