@@ -34,7 +34,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
             <slot></slot>
-            <gcds-icon name="external-link" label="${i18n.en.external}" margin-left="200" />
+            <gcds-icon name="external-link" label="${i18n.en.external}" margin-left="100" />
           </a>
         </mock:shadow-root>
         External Link
@@ -52,7 +52,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
             <slot></slot>
-            <gcds-icon name="external-link" label="${i18n.fr.external}" margin-left="200" />
+            <gcds-icon name="external-link" label="${i18n.fr.external}" margin-left="100" />
           </a>
         </mock:shadow-root>
         External Link
