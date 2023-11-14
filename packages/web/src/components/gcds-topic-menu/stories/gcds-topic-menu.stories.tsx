@@ -6,7 +6,8 @@ export default {
   argTypes: {
     // Props
     home: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
@@ -19,19 +20,17 @@ export default {
 const Template = args =>
   `
 <!-- Web component code (Angular, Vue) -->
-<gcds-topic-menu
-  ${args.home ? `home` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
->
+<gcds-topic-menu ${args.home ? `home` : null} ${
+    args.lang != 'en' ? `lang="${args.lang}"` : null
+  }>
 </gcds-topic-menu>
 
 <!-- React code -->
-<GcdsTopicMenu
-  ${args.home ? `home` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
->
+<GcdsTopicMenu ${args.home ? `home` : null} ${
+    args.lang != 'en' ? `lang="${args.lang}"` : null
+  }>
 </GcdsTopicMenu>
-`.replace(/\s\snull\n/g, '');
+`.replace(/ null/g, '');
 
 const TemplatePlayground = args => `
 <gcds-topic-menu

@@ -5,7 +5,8 @@ export default {
     // Props
     characterLimit: {
       name: 'character-limit',
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true },

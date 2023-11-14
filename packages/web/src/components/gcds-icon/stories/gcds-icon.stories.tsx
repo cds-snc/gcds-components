@@ -83,7 +83,8 @@ export default {
     },
     fixedWidth: {
       name: 'fixed-width',
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
@@ -336,7 +337,7 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  name: 'tree',
+  name: 'close',
   size: 'text',
   iconStyle: 'solid',
 };
@@ -345,7 +346,7 @@ Default.args = {
 
 export const Name = TemplateMultiple.bind({});
 Name.args = {
-  name1: 'times',
+  name1: 'close',
   name2: 'external-link',
   name3: 'caret-up',
   name4: 'caret-down',
@@ -369,15 +370,15 @@ Name.args = {
 
 export const Sizes = TemplateMultiple.bind({});
 Sizes.args = {
-  name1: 'tree',
-  name2: 'tree',
-  name3: 'tree',
-  name4: 'tree',
-  name5: 'tree',
-  name6: 'tree',
-  name7: 'tree',
-  name8: 'tree',
-  name9: 'tree',
+  name1: 'close',
+  name2: 'close',
+  name3: 'close',
+  name4: 'close',
+  name5: 'close',
+  name6: 'close',
+  name7: 'close',
+  name8: 'close',
+  name9: 'close',
   size1: 'inherit',
   size2: 'caption',
   size3: 'text',
@@ -393,7 +394,7 @@ Sizes.args = {
 
 export const MarginLeft = TemplateMargin.bind({});
 MarginLeft.args = {
-  name: 'tree',
+  name: 'close',
   marginLeft0: '0',
   marginLeft50: '50',
   marginLeft100: '100',
@@ -416,7 +417,7 @@ MarginLeft.args = {
 
 export const MarginRight = TemplateMargin.bind({});
 MarginRight.args = {
-  name: 'tree',
+  name: 'close',
   marginRight0: '0',
   marginRight50: '50',
   marginRight100: '100',
@@ -464,7 +465,7 @@ Props.args = {
   fixedWidth: false,
   iconStyle: 'solid',
   label: '',
-  name: 'tree',
+  name: 'close',
   size: 'text',
 };
 
@@ -477,6 +478,6 @@ Playground.args = {
   label: '',
   marginLeft: '0',
   marginRight: '0',
-  name: 'tree',
+  name: 'close',
   size: 'text',
 };
