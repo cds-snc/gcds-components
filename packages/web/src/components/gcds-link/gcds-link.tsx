@@ -184,7 +184,7 @@ export class GcdsLink {
             <gcds-icon
               name="external-link"
               label={i18n[lang].external}
-              margin-left="200"
+              margin-left="100"
             />
           ) : download !== undefined ? (
             <gcds-icon
