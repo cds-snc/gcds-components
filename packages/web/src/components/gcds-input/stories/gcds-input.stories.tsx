@@ -17,7 +17,8 @@ export default {
     // Props
     hideLabel: {
       name: 'hide-label',
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
@@ -58,7 +59,8 @@ export default {
       },
     },
     disabled: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
@@ -90,7 +92,8 @@ export default {
       },
     },
     required: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
@@ -329,7 +332,7 @@ Props.args = {
   errorMessage: '',
   required: false,
   disabled: false,
-  size: '',
+  size: null,
   value: '',
   lang: 'en',
   autocomplete: 'off',

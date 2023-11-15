@@ -104,7 +104,7 @@
     outline: var(--gcds-button-shared-focus-outline-width) solid
       var(--gcds-focus-background) !important;
     outline-offset: var(--gcds-button-border-width) !important;
-    box-shadow: none !important;
+    box-shadow: var(--gcds-button-shared-focus-box-shadow);
   }
 
   /* Change props table headings */
@@ -228,7 +228,8 @@
   .css-tvcum3,
   .css-f2g3hl,
   .css-172ajqq,
-  .css-e3ijes {
+  .css-e3ijes,
+  .css-1p58akv {
     background-color: var(--gcds-color-grayscale-700) !important;
     border: var(--gcds-border-width-sm) solid var(--gcds-color-grayscale-0) !important;
     padding: var(--gcds-spacing-50) !important;
@@ -238,7 +239,8 @@
   .css-f2g3hl span,
   .css-172ajqq span,
   .css-e3ijes spa,
-  .css-130cftl {
+  .css-130cftl,
+  .css-1p58akv {
     color: var(--gcds-text-light) !important;
   }
 
@@ -260,6 +262,39 @@
 
   .css-184lgrq {
     background-color: var(--gcds-color-grayscale-700) !important;
+  }
+
+  /* Props table focus styles - form elements */
+  .css-6wu5zk:focus-within {
+    overflow: visible !important;
+  }
+
+  .css-1jvt1oy:focus,
+  .css-1qot2ot:focus,
+  .css-1p58akv:focus,
+  .css-tvcum3:focus-within {
+    box-shadow: 0 0 0 var(--gcds-border-width-md) #262626 !important;
+    outline-offset: var(--gcds-input-border-width) !important;
+    border-color: #262626 !important;
+    outline: var(--gcds-input-outline-width) solid var(--gcds-color-grayscale-0) !important;
+  }
+
+  .css-tvcum3 input[type='checkbox']:focus {
+    box-shadow: none !important;
+  }
+
+  /* Props table focus styles - table headings */
+
+  .css-d474as:focus {
+    font-size: 0.75rem;
+    background-color: var(--gcds-focus-background) !important;
+    border-color: var(--gcds-focus-background) !important;
+    color: var(--gcds-focus-text) !important;
+    border-radius: var(--gcds-button-border-radius) !important;
+    outline: var(--gcds-button-shared-focus-outline-width) solid
+      var(--gcds-focus-background) !important;
+    outline-offset: var(--gcds-button-border-width) !important;
+    box-shadow: var(--gcds-button-shared-focus-box-shadow);
   }
 
   /* Canvas preview */

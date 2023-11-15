@@ -45,7 +45,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@4b07b26a2f6e0a51846e1870223e545bae91c552
+        uses: JS-DevTools/npm-publish@8d0621f78dc8b291082e6b83c56f5a170305410b
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -65,6 +65,7 @@ jobs:
           PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
 
           mkdir -p ./tmp \
+            && sleep 60 \
             && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
             && cd ./tmp/node_modules
 
@@ -136,7 +137,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@4b07b26a2f6e0a51846e1870223e545bae91c552
+        uses: JS-DevTools/npm-publish@8d0621f78dc8b291082e6b83c56f5a170305410b
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}

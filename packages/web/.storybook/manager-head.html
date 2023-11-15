@@ -1,5 +1,8 @@
 <!-- Load GCDS tokens -->
-<link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css"
+/>
 <style>
   /* ----- SIDEBAR ----- */
   .sidebar-container {
@@ -7,7 +10,8 @@
   }
 
   .sidebar-container .os-content {
-    padding: var(--gcds-spacing-100) var(--gcds-spacing-250) var(--gcds-spacing-400) !important;
+    padding: var(--gcds-spacing-100) var(--gcds-spacing-250)
+      var(--gcds-spacing-400) !important;
   }
 
   /* Sidebar header */
@@ -30,13 +34,13 @@
 
   /* Sidebar subheadings + welcome story */
   .sidebar-subheading,
-  div.sidebar-item[data-item-id="welcome--stories"] {
+  div.sidebar-item[data-item-id='welcome--stories'] {
     margin-block-end: var(--gcds-spacing-250) !important;
     padding-inline: var(--gcds-spacing-400) !important;
   }
 
   .sidebar-subheading,
-  div.sidebar-item[data-item-id="welcome--stories"] a {
+  div.sidebar-item[data-item-id='welcome--stories'] a {
     font-size: 1rem !important;
     font-weight: var(--gcds-font-weights-regular) !important;
     letter-spacing: 0.1rem !important;
@@ -113,7 +117,8 @@
   }
 
   .sidebar-item:hover {
-    background-color: var(--gcds-link-default) !important;
+    background-color: var(--gcds-color-grayscale-0) !important;
+    color: var(--gcds-text-primary) !important;
   }
 
   .sidebar-item svg {
@@ -121,12 +126,14 @@
   }
 
   button.sidebar-item {
-    border-block-start: var(--gcds-border-width-sm) solid rgba(255, 255, 255, .15) !important;
+    border-block-start: var(--gcds-border-width-sm) solid
+      rgba(255, 255, 255, 0.15) !important;
     padding: var(--gcds-spacing-250) var(--gcds-spacing-400) !important;
   }
 
   button.sidebar-item:last-of-type {
-    border-block-start: var(--gcds-border-width-sm) solid rgba(255, 255, 255, .15) !important;
+    border-block-start: var(--gcds-border-width-sm) solid
+      rgba(255, 255, 255, 0.15) !important;
   }
 
   button.sidebar-item span {
@@ -134,23 +141,24 @@
     margin-inline-end: var(--gcds-spacing-150);
   }
 
-  div.sidebar-item:not([data-item-id="welcome--stories"]) {
-    background-color: rgba(255, 255, 255, .1);
+  div.sidebar-item:not([data-item-id='welcome--stories']) {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   /* Style selected sidebar item */
-  .sidebar-item[data-selected="true"] {
+  .sidebar-item[data-selected='true'] {
     background-color: var(--gcds-color-grayscale-0) !important;
     color: var(--gcds-color-blue-900) !important;
   }
 
-  button.sidebar-item[aria-expanded="true"] {
-    background-color: rgba(255, 255, 255, .1);
-    border-block-end: var(--gcds-border-width-sm) solid rgba(255, 255, 255, .15) !important;
+  button.sidebar-item[aria-expanded='true'] {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-block-end: var(--gcds-border-width-sm) solid
+      rgba(255, 255, 255, 0.15) !important;
   }
 
   /* Hide all stories from sidebar, except playground story */
-  .sidebar-item[data-nodetype="story"]:not([data-item-id*="playground"]) {
+  .sidebar-item[data-nodetype='story']:not([data-item-id*='playground']) {
     display: none;
   }
 

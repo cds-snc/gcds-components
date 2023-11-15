@@ -25,6 +25,7 @@
  - [gcds-alert](../gcds-alert)
  - [gcds-button](../gcds-button)
  - [gcds-file-uploader](../gcds-file-uploader)
+ - [gcds-link](../gcds-link)
  - [gcds-nav-group](../gcds-nav-group)
  - [gcds-pagination](../gcds-pagination)
  - [gcds-search](../gcds-search)
@@ -36,6 +37,7 @@ graph TD;
   gcds-alert --> gcds-icon
   gcds-button --> gcds-icon
   gcds-file-uploader --> gcds-icon
+  gcds-link --> gcds-icon
   gcds-nav-group --> gcds-icon
   gcds-pagination --> gcds-icon
   gcds-search --> gcds-icon

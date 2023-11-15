@@ -30,7 +30,7 @@ export default {
       },
     },
     method: {
-      control: 'radio',
+      control: 'select',
       options: ['get', 'post'],
       table: {
         type: { summary: 'string' },

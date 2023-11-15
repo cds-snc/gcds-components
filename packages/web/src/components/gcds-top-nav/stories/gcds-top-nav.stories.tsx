@@ -17,7 +17,7 @@ export default {
       },
     },
     alignment: {
-      control: { type: 'radio' },
+      control: { type: 'select' },
       options: ['right', 'left', 'center'],
       table: {
         type: { summary: 'string' },
