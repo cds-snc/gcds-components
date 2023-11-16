@@ -204,6 +204,59 @@ All notable changes to this project will be documented in this file.
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
 
+## v0.17.0
+
+### Nouvelles fonctionnalités
+
+- Composant lien (`gcds-link`)
+  - Nouveau composant `gcds-link` permettant la navigation vers une nouvelle page, un site web our une section à l`intérieur de la page courante
+
+### Mineur
+
+- https://github.com/cds-snc/gcds-components/pull/305 - [2ffc292](https://github.com/cds-snc/gcds-components/commit/2ffc292828fd5eed53a4eb33cbe753da08f9dde0) - Composant `gcds-link` ajouté à la bibliothèque de composants
+
+### Correctif
+
+- https://github.com/cds-snc/gcds-components/pull/333 - [5da32e0](https://github.com/cds-snc/gcds-components/commit/5da32e0546d7af52fb318a77e22d315327038b18) - Ajout de valeur par défaut pour la marge du haut et du bas du composant texte
+- https://github.com/cds-snc/gcds-components/pull/338 - [96e4787](https://github.com/cds-snc/gcds-components/commit/96e4787b7c7f061279fc650d2dd4894d5ae2e193) - Amélioration de l`accessibilité de `storybook` pour la section démos
+
+## v0.16.0
+
+### Nouvelles fonctionnalités
+
+- Composant en-têtes (`gcds-heading`)
+  - Nouveau composant `gcds-heading` pour générer les en-têtes avec les styles du SDGC
+
+### Mineur
+
+- https://github.com/cds-snc/gcds-components/pull/306 - [c972bef](https://github.com/cds-snc/gcds-components/commit/c972befacb6961fed73c983df1fb4fda6cbc9ca5) - Composant `gcds-heading` ajouté à la biliothèque de composants
+
+### Correctif
+
+- https://github.com/cds-snc/gcds-components/pull/325 - [3ec8925](https://github.com/cds-snc/gcds-components/commit/3ec89251bf56b346df50ed67ad0a8992631240ff) - CSS `slot` dans `gcds-breadcrumbs-item` corrigé afin d`afficher le text souligné
+
+## v0.15.0
+
+### Nouvelles fonctionnalités
+
+- Composant texte (`gcds-text`)
+  - Nouveau composant `gcds-text` pour générer du contenu texte dans les styles du SDGC
+- Composant lecteur d`écran seulement (`gcds-sr-only`)
+  - Nouveau composant `gcds-sr-only` pour cacher le contenu du texte disponible seulement avec des technologies d`assistance
+
+### Mineur
+
+- https://github.com/cds-snc/gcds-components/pull/311 - [39c2135](https://github.com/cds-snc/gcds-components/commit/39c2135f3f9eb6ef3fcfa834cb0ab8cfdbc1c498) - Composant `gcds-text` ajouté à la bibliothèque de composants
+- https://github.com/cds-snc/gcds-components/pull/315 - [8117534](https://github.com/cds-snc/gcds-components/commit/8117534ffe52c998be9e09002f1dbbe1ec528f48) - Composant `gcds-sr-only` ajouté à la bibliothèque de composants
+
+### Correctif
+
+- https://github.com/cds-snc/gcds-components/pull/272 - [c48d92f](https://github.com/cds-snc/gcds-components/commit/c48d92f3eb1dc13b368e3140d9f289d66b843638) - Mise à jour de `media query` dans `gcds-pagination`
+- https://github.com/cds-snc/gcds-components/pull/291 - [d4d6f9f](https://github.com/cds-snc/gcds-components/commit/d4d6f9fbb79437a06f2316b5e1ffea5c55110f38) - Étiquette `nav langdmark` supprimée pour prévenir la confusion dans `gcds-header`
+- https://github.com/cds-snc/gcds-components/pull/294 - [e6a550a](https://github.com/cds-snc/gcds-components/commit/e6a550a0f5695d65bb8c9ee2f42f55f7abaacd7e) - Déterminer les valeurs par défaut des propriétés dans `gcds-signature`
+- https://github.com/cds-snc/gcds-components/pull/317 - [ac5d6e7](https://github.com/cds-snc/gcds-components/commit/ac5d6e7db5b0ec3155441ff33d243c27d6322854) - L`option `box-shadow` ajouté au focus pour les composants afin d`avoir une constance du `focus state`
+- https://github.com/cds-snc/gcds-components/pull/318 - [2bf8fde](https://github.com/cds-snc/gcds-components/commit/2bf8fdeedc18726f176bc4b1a54203ee41c04036) -  Ajout de styles pour la balise `slot` pour régler des problèmes d`accessibilité dans Chrome pour les composants qui utilisent cette balise avec du texte
+
 ## v0.14.0
 
 ### Nouvelles fonctionnalités
