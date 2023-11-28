@@ -23,6 +23,7 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      isPrimaryPackageOutputTarget: true,
     },
     {
       type: 'dist-custom-elements',
@@ -44,8 +45,8 @@ export const config: Config = {
     },
     setupFiles: ['./src/utils/test/setupMock.js'],
   },
-  buildEs5: 'prod',
+  validatePrimaryPackageOutputTarget: true,
   extras: {
-    experimentalImportInjection: true,
+    enableImportInjection: true,
   },
 };
