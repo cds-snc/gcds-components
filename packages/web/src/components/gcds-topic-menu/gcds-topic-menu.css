@@ -191,7 +191,6 @@
                   width: auto;
                 }
               }
-
               &:last-child {
                 left: auto;
                 position: relative;
@@ -326,7 +325,6 @@
                 width: auto;
               }
             }
-
             li:last-child {
               left: auto;
               position: static;
