@@ -45,29 +45,13 @@ export default {
         defaultValue: { summary: 'grid' },
       },
     },
-    gap: {
+    equalRowHeight: {
+      name: 'equal-row-height',
       control: { type: 'select' },
-      options: [
-        '0',
-        '50',
-        '100',
-        '150',
-        '200',
-        '250',
-        '300',
-        '400',
-        '450',
-        '500',
-        '550',
-        '600',
-        '700',
-        '800',
-        '900',
-        '1000',
-      ],
+      options: [false, true],
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
       },
     },
     tag: {
@@ -177,15 +161,13 @@ const Template = args =>
     args.columnsDesktop ? `columns-desktop="${args.columnsDesktop}"` : null
   } ${args.columnsTablet ? `columns-tablet="${args.columnsTablet}"` : null} ${
     args.columns ? `columns="${args.columns}"` : null
-  } ${args.gap ? `gap="${args.gap}"` : null} ${
-    args.alignContent ? `align-content="${args.alignContent}"` : null
-  } ${
+  } ${args.alignContent ? `align-content="${args.alignContent}"` : null} ${
     args.justifyContent ? `justify-content="${args.justifyContent}"` : null
   } ${args.placeContent ? `place-content="${args.placeContent}"` : null} ${
     args.alignItems ? `align-items="${args.alignItems}"` : null
   } ${args.justifyItems ? `justify-items="${args.justifyItems}"` : null} ${
     args.placeItems ? `place-items="${args.placeItems}"` : null
-  }>
+  } ${args.equalRowHeight ? `equal-row-height` : null}>
   ${args.default ? args.default : null}
 </gcds-grid>
 
@@ -195,15 +177,38 @@ const Template = args =>
   } ${args.columnsDesktop ? `columnsDesktop="${args.columnsDesktop}"` : null} ${
     args.columnsTablet ? `columnsTablet="${args.columnsTablet}"` : null
   } ${args.columns ? `columns="${args.columns}"` : null} ${
-    args.gap ? `gap="${args.gap}"` : null
-  } ${args.alignContent ? `alignContent="${args.alignContent}"` : null} ${
-    args.justifyContent ? `justifyContent="${args.justifyContent}"` : null
-  } ${args.placeContent ? `placeContent="${args.placeContent}"` : null} ${
-    args.alignItems ? `alignItems="${args.alignItems}"` : null
-  } ${args.justifyItems ? `justifyItems="${args.justifyItems}"` : null} ${
-    args.placeItems ? `placeItems="${args.placeItems}"` : null
+    args.alignContent ? `alignContent="${args.alignContent}"` : null
+  } ${args.justifyContent ? `justifyContent="${args.justifyContent}"` : null} ${
+    args.placeContent ? `placeContent="${args.placeContent}"` : null
+  } ${args.alignItems ? `alignItems="${args.alignItems}"` : null} ${
+    args.justifyItems ? `justifyItems="${args.justifyItems}"` : null
+  } ${args.placeItems ? `placeItems="${args.placeItems}"` : null} ${
+    args.equalRowHeight ? `equalRowHeight` : null
   }>
   ${args.default ? args.default : null}
+</GcdsGrid>
+`.replace(/ null/g, '');
+
+const TemplateIndividual = args =>
+  `
+<!-- Web component code (Angular, Vue) -->
+<gcds-grid>
+  <gcds-grid-col tablet="3" desktop="6">${
+    args.default ? args.default : null
+  }</gcds-grid-col>
+  <gcds-grid-col tablet="3" desktop="6">${
+    args.default ? args.default : null
+  } </gcds-grid-col>
+</gcds-grid>
+
+<!-- React code -->
+<GcdsGrid>
+  <GcdsGridCol tablet="3" desktop="6">${
+    args.default ? args.default : null
+  }</GcdsGridCol>
+  <GcdsGridCol tablet="3" desktop="6">${
+    args.default ? args.default : null
+  }</GcdsGridCol>
 </GcdsGrid>
 `.replace(/ null/g, '');
 
@@ -214,13 +219,13 @@ const TemplatePlayground = args => `
   ${args.columnsDesktop ? `columns-desktop="${args.columnsDesktop}"` : null}
   ${args.columnsTablet ? `columns-tablet="${args.columnsTablet}"` : null}
   ${args.columns ? `columns="${args.columns}"` : null}
-  ${args.gap ? `gap="${args.gap}"` : null}
   ${args.alignContent ? `align-content="${args.alignContent}"` : null}
   ${args.justifyContent ? `justify-content="${args.justifyContent}"` : null}
   ${args.placeContent ? `place-content="${args.placeContent}"` : null}
   ${args.alignItems ? `align-items="${args.alignItems}"` : null}
   ${args.justifyItems ? `justify-items="${args.justifyItems}"` : null}
   ${args.placeItems ? `place-items="${args.placeItems}"` : null}
+  ${args.equalRowHeight ? `equal-row-height` : null}
 >
   ${args.default ? args.default : null}
 </gcds-grid>
@@ -234,7 +239,6 @@ Default.args = {
   columnsTablet: '1fr 1fr',
   columns: '1fr',
   container: 'full',
-  gap: '400',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>
@@ -248,7 +252,6 @@ export const Columns = Template.bind({});
 Columns.args = {
   columns: '1fr',
   container: 'full',
-  gap: '200',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>
@@ -261,7 +264,6 @@ ColumnsTablet.args = {
   columns: '1fr',
   columnsTablet: '1fr 1fr',
   container: 'full',
-  gap: '200',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>
@@ -275,7 +277,6 @@ ColumnsDesktop.args = {
   columnsTablet: '1fr 1fr',
   columns: '1fr',
   container: 'full',
-  gap: '200',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>
@@ -283,30 +284,46 @@ ColumnsDesktop.args = {
   <p>This is some example content to display the grid component.</p>`,
 };
 
-// ------ Grid equal width column ------
+// ------ Grid types ------
 
-export const EqualFlexbile = Template.bind({});
-EqualFlexbile.args = {
-  columnsDesktop: '1fr 1fr 1fr',
+export const Fluid = Template.bind({});
+Fluid.args = {
+  columnsDesktop: '1fr 1fr 1fr 1fr',
   columnsTablet: '1fr 1fr',
   columns: '1fr',
   container: 'full',
-  gap: '400',
+  tag: 'div',
+  default: `<p>This is some example content to display the grid component.</p>
+  <p>This is some example content to display the grid component.</p>
+  <p>This is some example content to display the grid component.</p>
+  <p>This is some example content to display the grid component.</p>`,
+};
+
+export const Fixed = Template.bind({});
+Fixed.args = {
+  columns: 'repeat(auto-fit, minmax(100px, 250px))',
+  container: 'full',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>`,
 };
 
-export const EqualWidth = Template.bind({});
-EqualWidth.args = {
-  columns: 'repeat(auto-fit, minmax(100px, 250px))',
+export const Hybrid = Template.bind({});
+Hybrid.args = {
+  columns: 'repeat(auto-fit, minmax(400px, 1fr))',
   container: 'full',
-  gap: '400',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>`,
+};
+
+export const Individual = TemplateIndividual.bind({});
+Individual.args = {
+  container: 'full',
+  tag: 'div',
+  default: 'This is some example content to display the grid component.',
 };
 
 // ------ Grid events & props ------
@@ -317,7 +334,6 @@ Props.args = {
   columnsDesktop: '',
   columnsTablet: '',
   container: 'full',
-  gap: '400',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>
@@ -331,7 +347,6 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   container: 'full',
   columns: 'repeat(auto-fit, minmax(250px, 1fr))',
-  gap: '400',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
   <p>This is some example content to display the grid component.</p>
