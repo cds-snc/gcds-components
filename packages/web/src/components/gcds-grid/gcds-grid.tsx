@@ -1,5 +1,14 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
+type ContentValues =
+  | 'center'
+  | 'end'
+  | 'space-around'
+  | 'space-between'
+  | 'space-evenly'
+  | 'start'
+  | 'stretch';
+
 @Component({
   tag: 'gcds-grid',
   styleUrl: 'gcds-grid.css',
@@ -16,7 +25,7 @@ export class GcdsGrid {
    * Defines the columns of the grid
    * Option to set different layouts for desktop | tablet | default (includes mobile)
    */
-  @Prop() columns!: string;
+  @Prop() columns?: string;
   @Prop() columnsTablet?: string;
   @Prop() columnsDesktop?: string;
 
@@ -36,26 +45,10 @@ export class GcdsGrid {
   @Prop() display?: 'grid' | 'inline-grid' = 'grid';
 
   /**
-   * Shorthand for column-gap + row-gap
-   * Specifies the width of the gutters between columns and rows
+   * Sets all grid items to have an equal height,
+   * based on the tallest item.
    */
-  @Prop() gap?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+  @Prop() equalRowHeight?: boolean = false;
 
   /**
    * Set tag for grid container
@@ -66,39 +59,18 @@ export class GcdsGrid {
    * If total grid size is less than the size of its grid container,
    * this property aligns the grid along the block (column) axis
    */
-  @Prop() alignContent?:
-    | 'center'
-    | 'end'
-    | 'space-around'
-    | 'space-between'
-    | 'space-evenly'
-    | 'start'
-    | 'stretch';
+  @Prop() alignContent?: ContentValues;
 
   /**
    * If total grid size is less than the size of its grid container,
    * this property aligns the grid along the inline (row) axis
    */
-  @Prop() justifyContent?:
-    | 'center'
-    | 'end'
-    | 'space-around'
-    | 'space-between'
-    | 'space-evenly'
-    | 'start'
-    | 'stretch';
+  @Prop() justifyContent?: ContentValues;
 
   /**
    * Sets both the align-content + justify-content properties
    */
-  @Prop() placeContent?:
-    | 'center'
-    | 'end'
-    | 'space-around'
-    | 'space-between'
-    | 'space-evenly'
-    | 'start'
-    | 'stretch';
+  @Prop() placeContent?: ContentValues;
 
   /**
    * Aligns grid items along the block (column) axis
@@ -125,7 +97,7 @@ export class GcdsGrid {
       container,
       centered,
       display,
-      gap,
+      equalRowHeight,
       justifyContent,
       justifyItems,
       placeContent,
@@ -138,8 +110,12 @@ export class GcdsGrid {
       gcds-grid
       ${alignContent ? `align-content-${alignContent}` : ''}
       ${alignItems ? `align-items-${alignItems}` : ''}
-      ${gap ? `gap-${gap}` : ''}
-      ${display ? `display-${display}` : ''}
+      ${
+        (columns || columnsTablet || columnsDesktop) === undefined
+          ? `display-grid-with-cols`
+          : `display-${display}`
+      }
+      ${equalRowHeight ? 'equal-row-height' : ''}
       ${justifyContent ? `justify-content-${justifyContent}` : ''}
       ${justifyItems ? `justify-items-${justifyItems}` : ''}
       ${placeContent ? `place-content-${placeContent}` : ''}
@@ -150,14 +126,16 @@ export class GcdsGrid {
     function handleColumns() {
       const responsiveColumns = {};
 
-      if (columnsDesktop) {
-        responsiveColumns['--gcds-grid-columns-desktop'] = columnsDesktop;
+      if (columns) {
+        responsiveColumns['--gcds-grid-columns'] = columns;
       }
+
       if (columnsTablet) {
         responsiveColumns['--gcds-grid-columns-tablet'] = columnsTablet;
       }
-      if (columns) {
-        responsiveColumns['--gcds-grid-columns'] = columns;
+
+      if (columnsDesktop) {
+        responsiveColumns['--gcds-grid-columns-desktop'] = columnsDesktop;
       }
 
       return responsiveColumns;
