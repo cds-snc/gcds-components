@@ -4,6 +4,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.17.1
+
+### Patch
+
+- https://github.com/cds-snc/gcds-components/pull/346 - [16732e5](https://github.com/cds-snc/gcds-components/commit/16732e5dc068cdb65d17f5485bb3189b2871836c) - Update stencil build configuration for better integration with multiple frameworks (Nextjs and create-react-app)
+
 ## v0.17.0
 
 ### New features
