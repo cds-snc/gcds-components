@@ -9,7 +9,7 @@
     overflow: hidden;
 
     slot {
-      display: inherit;
+      display: initial;
     }
   }
 }

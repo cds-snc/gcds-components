@@ -7,7 +7,7 @@
   border-inline-start: var(--gcds-alert-border-width) solid transparent;
 
   slot {
-    display: inherit;
+    display: initial;
   }
 
   /* Is Fixed */
@@ -140,8 +140,10 @@
     &:focus {
       border-color: var(--gcds-alert-button-focus-background);
       background-color: var(--gcds-alert-button-focus-background);
-      box-shadow: 0 0 0 var(--gcds-alert-button-border-width) var(--gcds-alert-button-focus-text);
-      outline: var(--gcds-alert-button-outline-width) solid var(--gcds-alert-button-focus-background);
+      box-shadow: 0 0 0 var(--gcds-alert-button-border-width)
+        var(--gcds-alert-button-focus-text);
+      outline: var(--gcds-alert-button-outline-width) solid
+        var(--gcds-alert-button-focus-background);
       outline-offset: var(--gcds-alert-button-border-width);
       color: var(--gcds-alert-button-focus-text);
     }
