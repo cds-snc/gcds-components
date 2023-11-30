@@ -5,7 +5,7 @@
   box-sizing: border-box;
 
   slot {
-    display: inherit;
+    display: initial;
   }
 
   /* Container border */

@@ -19,7 +19,7 @@ variants.weight;
       margin: 0;
 
       slot {
-        display: inherit;
+        display: initial;
       }
     }
   }

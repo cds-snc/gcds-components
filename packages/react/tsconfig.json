@@ -16,7 +16,6 @@
     "outDir": "dist",
     "removeComments": false,
     "skipLibCheck": true,
-    "sourceMap": true,
     "jsx": "react",
     "target": "es2015"
   },

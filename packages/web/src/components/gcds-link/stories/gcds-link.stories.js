@@ -11,7 +11,7 @@ export default {
   argTypes: {
     // Props
     size: {
-      control: { type: 'radio' },
+      control: { type: 'select' },
       options: ['regular', 'small', 'inherit'],
       table: {
         type: { summary: 'string' },
@@ -48,7 +48,8 @@ export default {
       },
     },
     external: {
-      control: 'boolean',
+      control: 'select',
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },

@@ -13,7 +13,7 @@
   transition: all 0.15s ease-in-out;
 
   slot {
-    display: inherit;
+    display: initial;
   }
 
   /* Button Role Styles */
@@ -28,7 +28,8 @@
     &:focus {
       background-color: var(--gcds-button-shared-focus-background);
       color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline: var(--gcds-button-shared-focus-outline-width) solid
+        var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
       box-shadow: var(--gcds-button-shared-focus-box-shadow);
@@ -51,7 +52,8 @@
     &:focus {
       background-color: var(--gcds-button-shared-focus-background);
       color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline: var(--gcds-button-shared-focus-outline-width) solid
+        var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
       box-shadow: var(--gcds-button-shared-focus-box-shadow);
@@ -77,7 +79,8 @@
     &:focus {
       background-color: var(--gcds-button-shared-focus-background);
       color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline: var(--gcds-button-shared-focus-outline-width) solid
+        var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
       box-shadow: var(--gcds-button-shared-focus-box-shadow);
@@ -101,19 +104,24 @@
       text-decoration: underline;
       text-underline-offset: 0.2em;
       text-decoration-color: currentColor;
-      text-decoration-thickness: var(--gcds-button-text-only-default-decoration-thickness);
+      text-decoration-thickness: var(
+        --gcds-button-text-only-default-decoration-thickness
+      );
     }
 
     &:hover {
       background-color: var(--gcds-button-text-only-default-background);
       color: var(--gcds-button-text-only-hover-text);
-      text-decoration-thickness: var(--gcds-button-text-only-hover-decoration-thickness);
+      text-decoration-thickness: var(
+        --gcds-button-text-only-hover-decoration-thickness
+      );
     }
 
     &:focus {
       background-color: var(--gcds-button-shared-focus-background);
       color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline: var(--gcds-button-shared-focus-outline-width) solid
+        var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
       box-shadow: var(--gcds-button-shared-focus-box-shadow);
@@ -145,7 +153,8 @@
     &:focus {
       background-color: var(--gcds-button-shared-focus-background);
       color: var(--gcds-button-shared-focus-text);
-      outline: var(--gcds-button-shared-focus-outline-width) solid var(--gcds-button-shared-focus-background);
+      outline: var(--gcds-button-shared-focus-outline-width) solid
+        var(--gcds-button-shared-focus-background);
       outline-offset: var(--gcds-button-border-width);
       border-color: var(--gcds-button-shared-focus-background);
       box-shadow: var(--gcds-button-shared-focus-box-shadow);

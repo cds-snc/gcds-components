@@ -3,7 +3,7 @@
   line-height: var(--gcds-phase-banner-line-height);
 
   slot {
-    display: inherit;
+    display: initial;
   }
 
   /* Is Fixed */

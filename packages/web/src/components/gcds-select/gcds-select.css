@@ -5,10 +5,10 @@
   margin: 0;
   padding: 0;
   border: 0;
-  transition: color ease-in-out .15s;
-  
+  transition: color ease-in-out 0.15s;
+
   slot {
-    display: inherit;
+    display: initial;
   }
 
   &:focus-within {
@@ -38,7 +38,7 @@
   border: var(--gcds-select-border-width) solid currentColor;
   border-radius: var(--gcds-select-border-radius);
   box-sizing: border-box;
-  transition: all ease-in-out .15s;
+  transition: all ease-in-out 0.15s;
 
   /* Select arrow */
   -webkit-appearance: none;
@@ -50,7 +50,8 @@
 
   &:focus {
     border-color: var(--gcds-select-focus-text);
-    outline: var(--gcds-select-outline-width) solid var(--gcds-select-focus-text);
+    outline: var(--gcds-select-outline-width) solid
+      var(--gcds-select-focus-text);
     outline-offset: var(--gcds-select-border-width);
     box-shadow: var(--gcds-select-focus-box-shadow);
   }
