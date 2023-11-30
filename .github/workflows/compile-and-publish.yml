@@ -77,6 +77,16 @@ jobs:
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
         working-directory: ${{ matrix.package }}
 
+      - name: Report deployment to Sentinel
+        if: steps.publish.outputs.id != ''
+        uses: cds-snc/sentinel-forward-data-action@main
+        with:
+          input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
+          log_type: CDS_Product_Deployment_Data
+          log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+          log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+
+
       - name: Slack notify on failure
         if: failure()
         run: |
@@ -157,6 +167,15 @@ jobs:
 
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
         working-directory: ${{ matrix.package }}
+
+      - name: Report deployment to Sentinel
+        if: steps.publish.outputs.id != ''
+        uses: cds-snc/sentinel-forward-data-action@main
+        with:
+          input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
+          log_type: CDS_Product_Deployment_Data
+          log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+          log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
 
       - name: Slack notify on failure
         if: failure()

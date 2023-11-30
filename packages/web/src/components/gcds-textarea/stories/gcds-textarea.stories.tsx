@@ -160,6 +160,8 @@ const Template = args =>
 </GcdsTextarea>
 `.replace(/\s\snull\n/g, '');
 
+// ------ Textarea default ------
+
 const TemplatePlayground = args => `
 <gcds-textarea
   textarea-id="${args.textareaId}"
