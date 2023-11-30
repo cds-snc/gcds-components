@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
 
 - https://github.com/cds-snc/gcds-components/pull/346 - [16732e5](https://github.com/cds-snc/gcds-components/commit/16732e5dc068cdb65d17f5485bb3189b2871836c) - Update stencil build configuration for better integration with multiple frameworks (Nextjs and create-react-app)
 
+- https://github.com/cds-snc/gcds-components/pull/350 - [2f41435](https://github.com/cds-snc/gcds-components/commit/2f4143543dfa6f7823fa03847e0f24cf4bf9d0d3) - fix: change slot styles to initial
+
+- https://github.com/cds-snc/gcds-components/pull/351 - [d03c792](https://github.com/cds-snc/gcds-components/commit/d03c7924216a59fb7203d4e87743045e235dc745) - Update demo content
+
 ## v0.17.0
 
 ### New features
