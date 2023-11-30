@@ -22,7 +22,7 @@ export class GcdsGridCol {
    * Tablet grid column sizes are based on a 6 column grid.
    * The tablet size will also be used for desktop, if desktop is undefined.
    */
-  @Prop() tablet?: 1 | 2 | 3 | 4 | 5 | 6 = 6;
+  @Prop({ mutable: true }) tablet?: 1 | 2 | 3 | 4 | 5 | 6 = 6;
 
   @Watch('tablet')
   validateTablet(newValue: number) {
@@ -37,7 +37,19 @@ export class GcdsGridCol {
    * Optimize grid column size for desktop (1024px and above).
    * Desktop grid column sizes are based on a 12 column grid.
    */
-  @Prop() desktop?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  @Prop({ mutable: true }) desktop?:
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12;
 
   @Watch('desktop')
   validateDesktop(newValue: number) {
