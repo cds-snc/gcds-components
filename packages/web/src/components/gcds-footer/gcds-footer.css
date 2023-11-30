@@ -3,7 +3,7 @@
   font: var(--gcds-footer-font);
 
   slot {
-    display: inherit;
+    display: initial;
   }
 
   .sub__header,
@@ -86,7 +86,8 @@
 
     nav {
       &:first-of-type::after {
-        border-bottom: var(--gcds-footer-main-nav-first-after-border-width) solid var(--gcds-footer-main-nav-first-after-border-color);
+        border-bottom: var(--gcds-footer-main-nav-first-after-border-width)
+          solid var(--gcds-footer-main-nav-first-after-border-color);
         content: '';
         display: block;
         width: var(--gcds-footer-main-nav-first-after-width);
@@ -177,7 +178,9 @@
           color: var(--gcds-footer-sub-hover-text);
           text-underline-offset: 0.2em;
           text-decoration: underline;
-          text-decoration-thickness: var(--gcds-footer-sub-hover-decoration-thickness);
+          text-decoration-thickness: var(
+            --gcds-footer-sub-hover-decoration-thickness
+          );
         }
 
         &:focus {

@@ -11,7 +11,7 @@
 @layer defaults {
   :host {
     display: block;
-  
+
     .gcds-card {
       border: var(--gcds-card-border);
       border-radius: var(--gcds-card-border-radius);
@@ -35,17 +35,19 @@
         font: var(--gcds-card-tag-font);
         color: var(--gcds-card-tag-color);
       }
-  
+
       .gcds-card__title,
       .gcds-card__title > a {
         color: var(--gcds-card-title-color);
         font: var(--gcds-card-title-font);
         text-underline-offset: var(--gcds-card-title-text-underline-offset);
         text-decoration-color: currentColor;
-        text-decoration-thickness: var(--gcds-card-title-text-decoration-thickness);
+        text-decoration-thickness: var(
+          --gcds-card-title-text-decoration-thickness
+        );
         width: fit-content;
       }
-  
+
       .gcds-card__description {
         max-width: var(--gcds-card-description-max-width);
       }
@@ -84,12 +86,12 @@
         left: 0;
         z-index: 1;
         pointer-events: auto;
-        content: "";
+        content: '';
       }
     }
 
     slot {
-      display: inherit;
+      display: initial;
     }
   }
 }
@@ -104,14 +106,18 @@
       .gcds-card__title > a,
       a.gcds-card__title {
         color: var(--gcds-card-hover-title-color);
-        text-decoration-thickness: var(--gcds-card-hover-title-text-decoration-thickness);
+        text-decoration-thickness: var(
+          --gcds-card-hover-title-text-decoration-thickness
+        );
       }
     }
 
     .gcds-card__title > a:hover,
     a.gcds-card__title:hover {
       color: var(--gcds-card-hover-title-color);
-      text-decoration-thickness: var(--gcds-card-hover-title-text-decoration-thickness);
+      text-decoration-thickness: var(
+        --gcds-card-hover-title-text-decoration-thickness
+      );
     }
   }
 }

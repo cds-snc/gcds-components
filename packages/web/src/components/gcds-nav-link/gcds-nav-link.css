@@ -5,7 +5,7 @@
     box-sizing: border-box;
 
     slot {
-      display: inherit;
+      display: initial;
     }
   }
 }
@@ -14,7 +14,8 @@
   :host a {
     display: flex;
     font: var(---gcds-nav-link-font);
-    text-decoration: underline solid currentColor var(--gcds-nav-link-default-decoration-thickness);
+    text-decoration: underline solid currentColor
+      var(--gcds-nav-link-default-decoration-thickness);
     text-underline-offset: var(--gcds-nav-link-default-underline-offset);
     color: var(--gcds-nav-link-default-text);
     margin-block-end: var(--gcds-nav-link-margin);
@@ -68,7 +69,9 @@
 @layer state.hover {
   @media (hover: hover) {
     :host a:hover {
-      text-decoration-thickness: var(--gcds-nav-link-hover-decoration-thickness);
+      text-decoration-thickness: var(
+        --gcds-nav-link-hover-decoration-thickness
+      );
       color: var(--gcds-nav-link-hover-text);
     }
 
