@@ -60,16 +60,6 @@ export class GcdsTopicMenu {
   @State() navSize: 'desktop' | 'mobile';
 
   /**
-   * Listen for focusout of theme and topic menu to close menu
-   */
-  @Listen('focusout', { target: 'document' })
-  async focusOutListener(e) {
-    if (!this.el.contains(e.relatedTarget) && this.open) {
-      this.toggleNav();
-    }
-  }
-
-  /**
    * Keyboard controls of theme and topic menu
    */
   @Listen('keydown', { target: 'document' })
@@ -234,6 +224,36 @@ export class GcdsTopicMenu {
     this.open = !this.open;
 
     if (this.open) {
+      // Check window size to set the state
+      const mediaQuery = window.matchMedia('screen and (max-width: 991px)');
+      const nav = this.el as HTMLGcdsTopicMenuElement;
+
+      if (mediaQuery.matches) {
+        this.navSize = 'mobile';
+      } else {
+        this.navSize = 'desktop';
+      }
+
+      // Add change event listener to keep track of window changing size
+      mediaQuery.addEventListener('change', async e => {
+        if (e.matches) {
+          nav.updateNavSize('mobile');
+
+          nav.shadowRoot
+            .querySelectorAll('[data-keep-expanded]')
+            .forEach(el => {
+              el.setAttribute('aria-expanded', 'false');
+            });
+        } else {
+          nav.updateNavSize('desktop');
+          nav.shadowRoot
+            .querySelectorAll('[data-keep-expanded]')
+            .forEach(el => {
+              el.setAttribute('aria-expanded', 'true');
+            });
+        }
+      });
+
       if (this.navSize == 'desktop') {
         this.themeList.children[0].children[0].setAttribute(
           'aria-expanded',
@@ -351,14 +371,6 @@ export class GcdsTopicMenu {
 
     this.updateLang();
 
-    const mediaQuery = window.matchMedia('screen and (max-width: 991px)');
-
-    if (mediaQuery.matches) {
-      this.navSize = 'mobile';
-    } else {
-      this.navSize = 'desktop';
-    }
-
     try {
       const response = await fetch(
         `https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-${this.lang}.html`,
@@ -440,25 +452,6 @@ export class GcdsTopicMenu {
         }
       });
     }
-
-    // Mobile responsiveness
-    const mediaQuery = window.matchMedia('screen and (max-width: 991px)');
-    const nav = this.el as HTMLGcdsTopicMenuElement;
-
-    mediaQuery.addEventListener('change', async e => {
-      if (e.matches) {
-        nav.updateNavSize('mobile');
-
-        nav.shadowRoot.querySelectorAll('[data-keep-expanded]').forEach(el => {
-          el.setAttribute('aria-expanded', 'false');
-        });
-      } else {
-        nav.updateNavSize('desktop');
-        nav.shadowRoot.querySelectorAll('[data-keep-expanded]').forEach(el => {
-          el.setAttribute('aria-expanded', 'true');
-        });
-      }
-    });
   }
 
   render() {
