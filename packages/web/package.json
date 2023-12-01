@@ -29,7 +29,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o ./../../docs",
     "lint": "eslint .",
-    "lint-and-fix": "eslint . --fix"
+    "lint-and-fix": "eslint . --fix",
+    "patch:stenciljs": "npx --yes patch-package",
+    "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'"
   },
   "dependencies": {
     "@stencil/core": "^4.7.2",
