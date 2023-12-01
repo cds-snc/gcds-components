@@ -39,7 +39,8 @@
   },
   "files": [
     "dist",
-    "patches"
+    "patches",
+    "gcds.css"
   ],
   "scripts": {
     "prebuild": "del-cli --force ./dist && copyfiles -f ../web/dist/components/*.js ./dist/esm/components && make-dir ./dist/esm && make-dir ./dist/types",
