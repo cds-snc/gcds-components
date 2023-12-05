@@ -60,18 +60,17 @@ export const toModuleFile = (
   importPath: string,
   elementName: string,
   customEvents: string[] = [],
-) => `'use client';
-
-import React, { useImperativeHandle, useRef } from 'react';
+) => `import React, { useImperativeHandle, useRef } from 'react';
 import { ${defineCustomElementFunction} } from '${importPath}';
 import { omitEventCallbacks, useEventListeners } from './lib/utils.js';
+import { GcdsWrapper } from './lib/client'; 
 
 if (!customElements.get('${elementName}')) {
   ${defineCustomElementFunction}();
 }
 
 const customEvents = ${customEvents.length > 0 ? `['${customEvents.join(`', '`)}']` : '[]'};
-const ${toPascalCase(elementName)} = React.forwardRef(({ children = [], ...props }, ref) => {
+const ${toPascalCase(elementName)}WebComponent = React.forwardRef(({ children = [], ...props }, ref) => {
   const nonEventProps = omitEventCallbacks(customEvents, props);
   const nativeProps = {};
 
@@ -88,6 +87,24 @@ const ${toPascalCase(elementName)} = React.forwardRef(({ children = [], ...props
 
   return React.createElement('${elementName}', { ...nativeProps, ref }, children);
 });
+
+function ${toPascalCase(elementName)}(props) {
+  if (!props['noSSR'] && typeof window == 'undefined') {
+    return(
+      <GcdsWrapper>
+        <${toPascalCase(elementName)}WebComponent {...props}>
+          {props.children}
+        </${toPascalCase(elementName)}WebComponent>
+      </GcdsWrapper>
+    )
+  } else {
+    return (
+      <${toPascalCase(elementName)}WebComponent {...props}>
+        {props.children}
+      </${toPascalCase(elementName)}WebComponent>
+    )
+  }
+}
 
 ${toExport(toPascalCase(elementName))}
 `;
