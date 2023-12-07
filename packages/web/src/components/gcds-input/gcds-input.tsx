@@ -10,6 +10,7 @@ import {
   Prop,
   h,
   Listen,
+  AttachInternals,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -27,11 +28,14 @@ import {
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',
-  shadow: false,
-  scoped: true,
+  shadow: true,
+  formAssociated: true,
 })
 export class GcdsInput {
   @Element() el: HTMLElement;
+
+  @AttachInternals()
+  internals: ElementInternals;
 
   private shadowElement?: HTMLElement;
 
@@ -78,9 +82,14 @@ export class GcdsInput {
   @Prop() hint?: string;
 
   /**
-   * Id + name attribute for an input element.
+   * Id  attribute for an input element.
    */
   @Prop() inputId!: string;
+
+  /**
+   * Name attribute for an input element.
+   */
+  @Prop() name!: string;
 
   /**
    * Form field label
@@ -113,21 +122,6 @@ export class GcdsInput {
    * String to have autocomplete enabled
    */
   @Prop() autocomplete?: 'on' | 'off';
-
-  /**
-   * Custom callback function on change event
-   */
-  @Prop() changeHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
 
   /**
    * Array of validators
@@ -178,26 +172,14 @@ export class GcdsInput {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
-    this.gcdsFocus.emit();
-  };
-
   /**
    * Emitted when the input loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = e => {
-    if (this.blurHandler) {
-      this.blurHandler(e);
-    } else {
-      if (this.validateOn == 'blur') {
-        this.validate();
-      }
+  private onBlur = () => {
+    if (this.validateOn == 'blur') {
+      this.validate();
     }
 
     this.gcdsBlur.emit();
@@ -207,6 +189,13 @@ export class GcdsInput {
    * Update value based on user input.
    */
   @Event() gcdsChange: EventEmitter;
+
+  private handleChange(e) {
+    this.value = e.target.value;
+    this.internals.setFormValue(e.target.value);
+
+    this.gcdsChange.emit(this.value);
+  }
 
   /**
    * Call any active validators
@@ -248,15 +237,17 @@ export class GcdsInput {
     }
   }
 
-  handleChange(e) {
-    if (this.changeHandler) {
-      this.changeHandler(e);
-    } else {
-      const val = e.target && e.target.value;
-      this.value = val;
-    }
+  /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    this.internals.setFormValue('');
+    this.value = '';
+  }
 
-    this.gcdsChange.emit(this.value);
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.value = state;
   }
 
   /*
@@ -307,6 +298,7 @@ export class GcdsInput {
       hideLabel,
       hint,
       inputId,
+      name,
       label,
       required,
       size,
@@ -371,9 +363,9 @@ export class GcdsInput {
             {...attrsInput}
             class={hasError ? 'gcds-error' : null}
             id={inputId}
-            name={inputId}
-            onBlur={e => this.onBlur(e)}
-            onFocus={e => this.onFocus(e)}
+            name={name}
+            onBlur={() => this.onBlur()}
+            onFocus={() => this.gcdsFocus.emit()}
             onInput={e => this.handleChange(e)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}

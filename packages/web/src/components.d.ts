@@ -671,14 +671,6 @@ export namespace Components {
          */
         "autocomplete"?: 'on' | 'off';
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler": Function;
-        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
@@ -686,10 +678,6 @@ export namespace Components {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
         /**
           * Specifies if the label is hidden or not.
          */
@@ -699,13 +687,17 @@ export namespace Components {
          */
         "hint"?: string;
         /**
-          * Id + name attribute for an input element.
+          * Id  attribute for an input element.
          */
         "inputId": string;
         /**
           * Form field label
          */
         "label": string;
+        /**
+          * Name attribute for an input element.
+         */
+        "name": string;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1057,6 +1049,8 @@ export namespace Components {
           * Defines the total amount of steps.
          */
         "totalSteps": number;
+    }
+    interface GcdsTest {
     }
     interface GcdsText {
         /**
@@ -1669,6 +1663,12 @@ declare global {
         prototype: HTMLGcdsStepperElement;
         new (): HTMLGcdsStepperElement;
     };
+    interface HTMLGcdsTestElement extends Components.GcdsTest, HTMLStencilElement {
+    }
+    var HTMLGcdsTestElement: {
+        prototype: HTMLGcdsTestElement;
+        new (): HTMLGcdsTestElement;
+    };
     interface HTMLGcdsTextElement extends Components.GcdsText, HTMLStencilElement {
     }
     var HTMLGcdsTextElement: {
@@ -1749,6 +1749,7 @@ declare global {
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-sr-only": HTMLGcdsSrOnlyElement;
         "gcds-stepper": HTMLGcdsStepperElement;
+        "gcds-test": HTMLGcdsTestElement;
         "gcds-text": HTMLGcdsTextElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
@@ -2476,14 +2477,6 @@ declare namespace LocalJSX {
          */
         "autocomplete"?: 'on' | 'off';
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler"?: Function;
-        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
@@ -2491,10 +2484,6 @@ declare namespace LocalJSX {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
         /**
           * Specifies if the label is hidden or not.
          */
@@ -2504,13 +2493,17 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
-          * Id + name attribute for an input element.
+          * Id  attribute for an input element.
          */
         "inputId": string;
         /**
           * Form field label
          */
         "label": string;
+        /**
+          * Name attribute for an input element.
+         */
+        "name": string;
         /**
           * Emitted when the input loses focus.
          */
@@ -2940,6 +2933,8 @@ declare namespace LocalJSX {
          */
         "totalSteps": number;
     }
+    interface GcdsTest {
+    }
     interface GcdsText {
         /**
           * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length.
@@ -3150,6 +3145,7 @@ declare namespace LocalJSX {
         "gcds-signature": GcdsSignature;
         "gcds-sr-only": GcdsSrOnly;
         "gcds-stepper": GcdsStepper;
+        "gcds-test": GcdsTest;
         "gcds-text": GcdsText;
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
@@ -3195,6 +3191,7 @@ declare module "@stencil/core" {
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             "gcds-sr-only": LocalJSX.GcdsSrOnly & JSXBase.HTMLAttributes<HTMLGcdsSrOnlyElement>;
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
+            "gcds-test": LocalJSX.GcdsTest & JSXBase.HTMLAttributes<HTMLGcdsTestElement>;
             "gcds-text": LocalJSX.GcdsText & JSXBase.HTMLAttributes<HTMLGcdsTextElement>;
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             "gcds-top-nav": LocalJSX.GcdsTopNav & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;

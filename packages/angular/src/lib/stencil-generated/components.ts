@@ -512,7 +512,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -520,7 +520,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
 })
 export class GcdsInput {
   protected el: HTMLElement;
