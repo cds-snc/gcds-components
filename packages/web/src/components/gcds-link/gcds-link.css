@@ -16,7 +16,8 @@
     background-color: var(--gcds-link-focus-background);
     color: var(--gcds-link-focus-text);
     box-shadow: var(--gcds-link-focus-box-shadow);
-    outline: var(--gcds-link-focus-outline-width) solid var(--gcds-link-focus-background);
+    outline: var(--gcds-link-focus-outline-width) solid
+      var(--gcds-link-focus-background);
     outline-offset: var(--gcds-link-focus-outline-offset);
     border-color: var(--gcds-link-focus-background);
     text-decoration: none;
@@ -32,6 +33,10 @@
 
   &.link--inherit {
     font: inherit;
+  }
+
+  &.role-light {
+    color: var(--gcds-link-light);
   }
 
   &.d-block {

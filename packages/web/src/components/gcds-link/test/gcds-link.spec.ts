@@ -254,4 +254,21 @@ describe('gcds-link', () => {
       </gcds-link>
     `);
   });
+
+  it('renders a light link role', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsLink],
+      html: '<gcds-link href="#" link-role="light">Link text</gcds-link>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-link href="#" link-role="light">
+        <mock:shadow-root>
+          <a class="link--inherit role-light" part="link" href="#" role="link" tabindex="0" target="_self">
+            <slot></slot>
+          </a>
+        </mock:shadow-root>
+        Link text
+      </gcds-link>
+    `);
+  });
 });

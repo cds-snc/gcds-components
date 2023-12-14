@@ -771,6 +771,10 @@ export namespace Components {
          */
         "href": string;
         /**
+          * Sets the main style of the link.
+         */
+        "linkRole"?: 'default' | 'light';
+        /**
           * The rel attribute specifies the relationship between the current document and the linked document
          */
         "rel"?: string | undefined;
@@ -2590,6 +2594,10 @@ declare namespace LocalJSX {
           * The href attribute specifies the URL of the page the link goes to
          */
         "href": string;
+        /**
+          * Sets the main style of the link.
+         */
+        "linkRole"?: 'default' | 'light';
         /**
           * Emitted when the link loses focus.
          */
