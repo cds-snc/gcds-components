@@ -154,7 +154,6 @@
         columns-desktop="1fr 1fr 1fr"
         columns-tablet="1fr 1fr"
         columns="1fr"
-        gap="250"
       >
         <gcds-card
           card-title="Link card number 1"
@@ -190,7 +189,6 @@
         columns-desktop="1fr 1fr"
         columns-tablet="1fr"
         columns="1fr"
-        gap="250"
         class="d-block mt-250"
       >
         <gcds-card
@@ -375,34 +373,123 @@
 
       <!-- ------------- Grid ------------- -->
 
-      <gcds-heading tag="h2">Grid</gcds-heading>
+      <gcds-heading tag="h2">Grids</gcds-heading>
+
+      <gcds-heading tag="h3">Simple grids</gcds-heading>
+
+      <gcds-heading tag="h4">Fluid grid</gcds-heading>
+      <gcds-text>
+        Each grid column takes up a fractional amount of space within the grid
+        and has no fixed width restrictions. The grid and its columns scale to
+        the size of the viewport. This example has 4 columns for large
+        viewports, 2 columns for medium viewports, and 1 column for smaller
+        viewports.
+      </gcds-text>
       <gcds-grid
-        tag="article"
-        columns-desktop="1fr 1fr 1fr 1fr"
+        columns-desktop="1fr 1fr 1fr"
         columns-tablet="1fr 1fr"
         columns="1fr"
-        gap="500"
       >
-        <p>
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
+        <p class="bg-primary text-light p-300">
+          This is some example content to display the grid component.
         </p>
-        <p>
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
+        <p class="bg-primary text-light p-300">
+          This is some example content to display the grid component.
         </p>
-        <p>
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
+        <p class="bg-primary text-light p-300">
+          This is some example content to display the grid component.
         </p>
-        <p>
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
+      </gcds-grid>
+
+      <gcds-heading tag="h4">Fixed grid</gcds-heading>
+      <gcds-text>
+        In fixed width grids each grid column has a fixed minimum and a maximum
+        width to limit how wide they will span on any screen size. The columns
+        scale until they either reach their minimum or their maximum width. Once
+        a grid column reaches its minimum width, it gets moved to the next row
+        if the space on the current row becomes smaller than its minimum width.
+        In this example each grid column has a minimum width of 100px and a
+        maximum width of 300px.
+      </gcds-text>
+      <gcds-grid columns="repeat(auto-fit, minmax(100px, 300px))">
+        <p class="bg-primary text-light p-300">
+          This is some example content to display the grid component.
         </p>
+        <p class="bg-primary text-light p-300">
+          This is some example content to display the grid component.
+        </p>
+        <p class="bg-primary text-light p-300">
+          This is some example content to display the grid component.
+        </p>
+      </gcds-grid>
+
+      <gcds-heading tag="h4">Hybrid grid</gcds-heading>
+      <gcds-text>
+        Hybrid grid columns include either a minimum or a maximum width and one
+        fractional width. In this example each grid column is responsive with a
+        minimum width of 400px and no maximum width which means it takes up the
+        available space.
+      </gcds-text>
+      <gcds-grid columns="repeat(auto-fit, minmax(400px, 1fr))">
+        <p class="bg-primary text-light p-300">
+          This is some example content to display the grid component.
+        </p>
+        <p class="bg-primary text-light p-300">
+          This is some example content to display the grid component.
+        </p>
+      </gcds-grid>
+
+      <gcds-heading tag="h3">Individually sized grid</gcds-heading>
+      <gcds-text>
+        When using individually sized grid columns, the grid columns define
+        their own size. Each grid column can define a base, tablet (optional)
+        and desktop (optional) size.
+      </gcds-text>
+      <gcds-grid>
+        <gcds-grid-col tablet="3" desktop="6">
+          <p class="bg-primary text-light p-300">
+            Base: 1/1, tablet: 3/6, desktop: 6/12
+          </p>
+        </gcds-grid-col>
+        <gcds-grid-col tablet="3" desktop="6">
+          <p class="bg-primary text-light p-300">
+            Base: 1/1, tablet: 3/6, desktop: 6/12
+          </p>
+        </gcds-grid-col>
+
+        <gcds-grid-col tablet="6" desktop="4">
+          <p class="bg-primary text-light p-300">
+            Base: 1/1, tablet: 6/6, desktop: 4/12
+          </p>
+        </gcds-grid-col>
+        <gcds-grid-col tablet="6" desktop="4">
+          <p class="bg-primary text-light p-300">
+            Base: 1/1, tablet: 6/6, desktop: 4/12
+          </p>
+        </gcds-grid-col>
+        <gcds-grid-col tablet="6" desktop="4">
+          <p class="bg-primary text-light p-300">
+            Base: 1/1, tablet: 6/6, desktop: 4/12
+          </p>
+        </gcds-grid-col>
+
+        <gcds-grid-col tablet="2" desktop="3">
+          <p class="bg-primary text-light p-300">B: 1, t: 2, d: 3</p>
+        </gcds-grid-col>
+        <gcds-grid-col tablet="2" desktop="6">
+          <p class="bg-primary text-light p-300">
+            Base: 1/1, tablet: 2/6, desktop: 6/12
+          </p>
+        </gcds-grid-col>
+        <gcds-grid-col tablet="2" desktop="3">
+          <p class="bg-primary text-light p-300">B: 1, t: 2, d: 3</p>
+        </gcds-grid-col>
+
+        <gcds-grid-col>
+          <p class="bg-primary text-light p-300">
+            Base + tablet + desktop full width
+          </p>
+        </gcds-grid-col>
       </gcds-grid>
 
       <hr class="my-550" />
