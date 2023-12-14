@@ -2,78 +2,21 @@
   margin: 0;
   padding: 0;
   grid-template-columns: var(--gcds-grid-columns, 1fr);
+  gap: var(--gcds-grid-gap);
+  box-sizing: border-box;
 
   /* Display */
+  &.display-grid-with-cols {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
   &.display-grid {
     display: grid;
   }
 
   &.display-inline-grid {
     display: inline-grid;
-  }
-
-  &.gap-0 {
-    gap: var(--gcds-grid-gap-0);
-  }
-
-  &.gap-50 {
-    gap: var(--gcds-grid-gap-50);
-  }
-
-  &.gap-100 {
-    gap: var(--gcds-grid-gap-100);
-  }
-
-  &.gap-150 {
-    gap: var(--gcds-grid-gap-150);
-  }
-
-  &.gap-200 {
-    gap: var(--gcds-grid-gap-200);
-  }
-
-  &.gap-250 {
-    gap: var(--gcds-grid-gap-250);
-  }
-
-  &.gap-300 {
-    gap: var(--gcds-grid-gap-300);
-  }
-
-  &.gap-400 {
-    gap: var(--gcds-grid-gap-400);
-  }
-
-  &.gap-450 {
-    gap: var(--gcds-grid-gap-450);
-  }
-
-  &.gap-500 {
-    gap: var(--gcds-grid-gap-500);
-  }
-
-  &.gap-550 {
-    gap: var(--gcds-grid-gap-550);
-  }
-
-  &.gap-600 {
-    gap: var(--gcds-grid-gap-600);
-  }
-
-  &.gap-700 {
-    gap: var(--gcds-grid-gap-700);
-  }
-
-  &.gap-800 {
-    gap: var(--gcds-grid-gap-800);
-  }
-
-  &.gap-900 {
-    gap: var(--gcds-grid-gap-900);
-  }
-
-  &.gap-1000 {
-    gap: var(--gcds-grid-gap-1000);
   }
 
   /* Align content */
@@ -217,15 +160,44 @@
   &.place-items-stretch {
     place-items: stretch;
   }
+
+  /* Equal row height */
+  &.equal-row-height {
+    grid-auto-rows: 1fr;
+    align-items: stretch;
+  }
 }
 
 @media screen and (min-width: 48em) {
   :host .gcds-grid {
-    grid-template-columns: var(--gcds-grid-columns-tablet, var(--gcds-grid-columns, 1fr));
+    grid-template-columns: var(
+      --gcds-grid-columns-tablet,
+      var(--gcds-grid-columns, 1fr)
+    );
+
+    /* Grid with cols */
+    &.display-grid-with-cols {
+      grid-template-columns: repeat(
+        var(--gcds-grid-columns-default-tablet),
+        minmax(0, 1fr)
+      );
+    }
   }
 }
+
 @media screen and (min-width: 64em) {
   :host .gcds-grid {
-    grid-template-columns: var(--gcds-grid-columns-desktop, var(--gcds-grid-columns-tablet, var(--gcds-grid-columns, 1fr)));
+    grid-template-columns: var(
+      --gcds-grid-columns-desktop,
+      var(--gcds-grid-columns-tablet, var(--gcds-grid-columns, 1fr))
+    );
+
+    /* Grid with cols */
+    &.display-grid-with-cols {
+      grid-template-columns: repeat(
+        var(--gcds-grid-columns-default-desktop),
+        minmax(0, 1fr)
+      );
+    }
   }
 }
