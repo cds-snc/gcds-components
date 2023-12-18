@@ -35,7 +35,7 @@
     font: inherit;
   }
 
-  &.role-light {
+  &.variant-light {
     color: var(--gcds-link-light);
   }
 

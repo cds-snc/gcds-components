@@ -33,8 +33,8 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
-    linkRole: {
-      name: 'link-role',
+    linkVariant: {
+      name: 'link-variant',
       control: { type: 'select' },
       options: ['default', 'light'],
       table: {
@@ -97,24 +97,28 @@ This is an example of
 <!-- Web component code (Angular, Vue) -->
 <gcds-link ${args.display != 'inline' ? `display="${args.display}"` : null} ${
     args.href ? `href="${args.href}"` : null
-  } ${args.linkRole != 'default' ? `link-role="${args.linkRole}"` : null} ${
-    args.rel ? `rel="${args.rel}"` : null
-  } ${args.target != '_self' ? `target="${args.target}"` : null} ${
-    args.size != 'inherit' && args.size ? `size="${args.size}"` : null
-  } ${args.external ? `external` : null} ${
-    args.download ? `download="${args.download}"` : null
-  } ${args.type ? `type="${args.type}"` : null}>${args.default}</gcds-link>
+  } ${
+    args.linkVariant != 'default' ? `link-variant="${args.linkVariant}"` : null
+  } ${args.rel ? `rel="${args.rel}"` : null} ${
+    args.target != '_self' ? `target="${args.target}"` : null
+  } ${args.size != 'inherit' && args.size ? `size="${args.size}"` : null} ${
+    args.external ? `external` : null
+  } ${args.download ? `download="${args.download}"` : null} ${
+    args.type ? `type="${args.type}"` : null
+  }>${args.default}</gcds-link>
 
 <!-- React code -->
 <GcdsLink ${args.display != 'inline' ? `display="${args.display}"` : null} ${
     args.href ? `href="${args.href}"` : null
-  } ${args.linkRole != 'default' ? `link-role="${args.linkRole}"` : null} ${
-    args.rel ? `rel="${args.rel}"` : null
-  } ${args.target != '_self' ? `target="${args.target}"` : null} ${
-    args.size != 'inherit' && args.size ? `size="${args.size}"` : null
-  } ${args.external ? `external` : null} ${
-    args.download ? `download="${args.download}"` : null
-  } ${args.type ? `type="${args.type}"` : null}>${args.default}</GcdsLink>
+  } ${
+    args.linkVariant != 'default' ? `link-variant="${args.linkVariant}"` : null
+  } ${args.rel ? `rel="${args.rel}"` : null} ${
+    args.target != '_self' ? `target="${args.target}"` : null
+  } ${args.size != 'inherit' && args.size ? `size="${args.size}"` : null} ${
+    args.external ? `external` : null
+  } ${args.download ? `download="${args.download}"` : null} ${
+    args.type ? `type="${args.type}"` : null
+  }>${args.default}</GcdsLink>
 link.
 `.replace(/ null/g, '');
 
@@ -127,29 +131,31 @@ const TemplateSizeInherit = args =>
 <GcdsHeading tag="h4">This is an example of <GcdsLink href="#">${args.default}</GcdsLink> link</GcdsHeading>
 `;
 
-const TemplateRole = args =>
+const TemplateVariant = args =>
   `
 <!-- Web component code (Angular, Vue) -->
 <gcds-link href="#" ${
-    args.linkRole != 'default' ? `link-role="${args.linkRole}"` : null
+    args.linkVariant != 'default' ? `link-variant="${args.linkVariant}"` : null
   }>${args.default}</gcds-link>
 
 <!-- React code -->
 <GcdsLink href="#" ${
-    args.linkRole != 'default' ? `link-role="${args.linkRole}"` : null
+    args.linkVariant != 'default' ? `link-variant="${args.linkVariant}"` : null
   }>${args.default}</GcdsLink>
 `.replace(/ null/g, '');
 
 const TemplatePlayground = args => `
 <gcds-link ${args.display != 'inline' ? `display="${args.display}"` : null} ${
   args.href ? `href="${args.href}"` : null
-} ${args.linkRole != 'default' ? `link-role="${args.linkRole}"` : null} ${
-  args.rel ? `rel="${args.rel}"` : null
-} ${args.target && args.target != '_self' ? `target="${args.target}"` : null} ${
-  args.size != 'inherit' && args.size ? `size="${args.size}"` : null
-} ${args.external ? `external` : null} ${
-  args.download ? `download="${args.download}"` : null
-} ${args.type ? `type="${args.type}"` : null}>  ${args.default}
+} ${
+  args.linkVariant != 'default' ? `link-variant="${args.linkVariant}"` : null
+} ${args.rel ? `rel="${args.rel}"` : null} ${
+  args.target && args.target != '_self' ? `target="${args.target}"` : null
+} ${args.size != 'inherit' && args.size ? `size="${args.size}"` : null} ${
+  args.external ? `external` : null
+} ${args.download ? `download="${args.download}"` : null} ${
+  args.type ? `type="${args.type}"` : null
+}>  ${args.default}
 </gcds-link>
 `;
 
@@ -159,7 +165,7 @@ export const Default = Template.bind({});
 Default.args = {
   display: 'inline',
   href: '#',
-  linkRole: 'default',
+  linkVariant: 'default',
   rel: '',
   target: '_self',
   size: 'inherit',
@@ -175,7 +181,7 @@ export const Props = Template.bind({});
 Props.args = {
   display: 'inline',
   href: '#',
-  linkRole: 'default',
+  linkVariant: 'default',
   rel: '',
   target: '_self',
   size: 'inherit',
@@ -191,7 +197,7 @@ export const External = Template.bind({});
 External.args = {
   display: 'inline',
   href: 'http://design-system.alpha.canada.ca',
-  linkRole: 'default',
+  linkVariant: 'default',
   rel: '',
   target: '_blank',
   size: 'inherit',
@@ -205,7 +211,7 @@ export const Download = Template.bind({});
 Download.args = {
   href: 'long-filename.pdf',
   display: 'inline',
-  linkRole: 'default',
+  linkVariant: 'default',
   target: '_self',
   size: 'inherit',
   download: 'file.pdf',
@@ -216,7 +222,7 @@ Download.args = {
 export const Email = Template.bind({});
 Email.args = {
   display: 'inline',
-  linkRole: 'default',
+  linkVariant: 'default',
   target: '_self',
   size: 'inherit',
   href: 'mailto:test@test.com?subject=Test%20Email',
@@ -226,7 +232,7 @@ Email.args = {
 export const Phone = Template.bind({});
 Phone.args = {
   display: 'inline',
-  linkRole: 'default',
+  linkVariant: 'default',
   target: '_self',
   size: 'inherit',
   href: 'tel:1234567890',
@@ -239,7 +245,7 @@ export const SizesSmall = Template.bind({});
 SizesSmall.args = {
   display: 'inline',
   href: '#',
-  linkRole: 'default',
+  linkVariant: 'default',
   rel: '',
   target: '_self',
   size: 'small',
@@ -253,7 +259,7 @@ export const SizesRegular = Template.bind({});
 SizesRegular.args = {
   display: 'inline',
   href: '#',
-  linkRole: 'default',
+  linkVariant: 'default',
   rel: '',
   target: '_self',
   size: 'regular',
@@ -267,7 +273,7 @@ export const SizesInherit = TemplateSizeInherit.bind({});
 SizesInherit.args = {
   display: 'inline',
   href: '#',
-  linkRole: 'default',
+  linkVariant: 'default',
   rel: '',
   target: '_self',
   size: 'inherit',
@@ -279,16 +285,16 @@ SizesInherit.args = {
 
 // ------ Link roles ------
 
-export const RoleDefault = TemplateRole.bind({});
-RoleDefault.args = {
-  default: 'This is a link using the default link role.',
-  linkRole: 'default',
+export const VariantDefault = TemplateVariant.bind({});
+VariantDefault.args = {
+  default: 'This is a link using the default link variant.',
+  linkVariant: 'default',
 };
 
-export const RoleLight = TemplateRole.bind({});
-RoleLight.args = {
-  default: 'This is a link using the light link role.',
-  linkRole: 'light',
+export const VariantLight = TemplateVariant.bind({});
+VariantLight.args = {
+  default: 'This is a link using the light link variant.',
+  linkVariant: 'light',
 };
 
 // ------ Link playground ------
@@ -297,7 +303,7 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   display: 'inline',
   href: '#',
-  linkRole: 'default',
+  linkVariant: 'default',
   rel: '',
   target: '_self',
   size: 'inherit',

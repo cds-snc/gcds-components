@@ -773,7 +773,7 @@ export namespace Components {
         /**
           * Sets the main style of the link.
          */
-        "linkRole"?: 'default' | 'light';
+        "linkVariant"?: 'default' | 'light';
         /**
           * The rel attribute specifies the relationship between the current document and the linked document
          */
@@ -2597,7 +2597,7 @@ declare namespace LocalJSX {
         /**
           * Sets the main style of the link.
          */
-        "linkRole"?: 'default' | 'light';
+        "linkVariant"?: 'default' | 'light';
         /**
           * Emitted when the link loses focus.
          */
