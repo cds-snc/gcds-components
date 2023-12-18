@@ -20,12 +20,12 @@ jobs:
 
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           persist-credentials: false
 
       - name: "Run analysis"
-        uses: ossf/scorecard-action@2fa1e2fa153141e2950c7e1299ed05e2081ead0c
+        uses: ossf/scorecard-action@75cb7af1033cfb77c9fc7d8abc30420008f558f4
         with:
           results_file: ossf-results.json
           results_format: json
