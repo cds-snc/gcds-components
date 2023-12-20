@@ -1,0 +1,44 @@
+:host a {
+  cursor: pointer;
+  color: var(--gcds-link-default);
+  text-decoration: underline;
+  text-underline-offset: var(--gcds-link-underline-offset);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: var(--gcds-link-decoration-thickness);
+
+  &:hover {
+    color: var(--gcds-link-hover);
+    text-decoration-thickness: var(--gcds-link-hover-decoration-thickness);
+  }
+
+  &:focus {
+    border-radius: var(--gcds-link-focus-border-radius);
+    background-color: var(--gcds-link-focus-background);
+    color: var(--gcds-link-focus-text);
+    box-shadow: var(--gcds-link-focus-box-shadow);
+    outline: var(--gcds-link-focus-outline-width) solid var(--gcds-link-focus-background);
+    outline-offset: var(--gcds-link-focus-outline-offset);
+    border-color: var(--gcds-link-focus-background);
+    text-decoration: none;
+  }
+
+  &.link--small {
+    font: var(--gcds-link-font-small);
+  }
+
+  &.link--regular {
+    font: var(--gcds-link-font-regular);
+  }
+
+  &.link--inherit {
+    font: inherit;
+  }
+
+  &.d-block {
+    display: block;
+  }
+
+  slot {
+    display: initial;
+  }
+}

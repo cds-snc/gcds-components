@@ -29,7 +29,8 @@ export default {
     },
     signatureHasLink: {
       name: 'signature-has-link',
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true },
@@ -37,7 +38,7 @@ export default {
     },
     signatureVariant: {
       name: 'signature-variant',
-      control: 'radio',
+      control: 'select',
       options: ['colour', 'white'],
       table: {
         type: { summary: 'string' },
@@ -185,6 +186,7 @@ Default.args = {
   menu: '',
   breadcrumb: '',
   search: '',
+  skipTo: '',
   toggle: '',
   banner: '',
   lang: 'en',
@@ -263,6 +265,7 @@ Playground.args = {
   menu: '',
   breadcrumb: '',
   search: '',
+  skipTo: '',
   toggle: '',
   banner: '',
   lang: 'en',

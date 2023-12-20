@@ -1,0 +1,61 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Link from './gcds-link.stories';
+
+<Meta of={Link} name="Overview" />
+
+# Link<br/>`<gcds-link>`
+
+_Also called: anchor, hyperlink, call to action._
+
+A navigational element that allows users to navigate to a new page, website or section on the current page.
+
+<Canvas of={Link.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+### External
+
+<Canvas of={Link.External} story={{ inline: true }} />
+
+### Download
+
+<Canvas of={Link.Download} story={{ inline: true }} />
+
+### Email addresses
+
+<Canvas of={Link.Email} story={{ inline: true }} />
+
+### Phone numbers
+
+<Canvas of={Link.Phone} story={{ inline: true }} />
+
+### Sizes
+
+#### Size inherit
+
+<Canvas of={Link.SizesInherit} story={{ inline: true }} />
+
+#### Size regular
+
+<Canvas of={Link.SizesRegular} story={{ inline: true }} />
+
+#### Size small
+
+<Canvas of={Link.SizesSmall} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul class="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/link/" target="_blank">Guidance</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-link" target="_blank">Github</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=2646-8407&mode=design&t=yAOnqGop9xbMMCZg-0" target="_blank">Figma</gcds-link>
+  </li>
+</ul>

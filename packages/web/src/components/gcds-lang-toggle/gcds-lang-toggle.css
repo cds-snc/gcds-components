@@ -15,7 +15,9 @@
     text-decoration: underline;
     text-underline-offset: 0.2em;
     text-decoration-color: currentColor;
-    text-decoration-thickness: var(--gcds-lang-toggle-default-decoration-thickness);
+    text-decoration-thickness: var(
+      --gcds-lang-toggle-default-decoration-thickness
+    );
 
     span {
       display: none;
@@ -28,7 +30,9 @@
 
     &:hover {
       color: var(--gcds-lang-toggle-hover-text);
-      text-decoration-thickness: var(--gcds-lang-toggle-hover-decoration-thickness);
+      text-decoration-thickness: var(
+        --gcds-lang-toggle-hover-decoration-thickness
+      );
     }
 
     &:focus {
@@ -47,7 +51,7 @@
       padding: 0;
 
       span {
-        display: inherit;
+        display: initial;
       }
 
       abbr {

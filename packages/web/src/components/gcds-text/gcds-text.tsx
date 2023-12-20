@@ -78,7 +78,7 @@ export class GcdsText {
     | '700'
     | '800'
     | '900'
-    | '1000';
+    | '1000' = '0';
 
   @Watch('marginTop')
   validateMarginTop(newValue: string) {
@@ -101,8 +101,8 @@ export class GcdsText {
       '1000',
     ];
 
-    if (this.marginTop && !values.includes(newValue)) {
-      console.error('Not a valid margin.');
+    if (!values.includes(newValue)) {
+      this.marginTop = '0';
     }
   }
 
@@ -125,7 +125,7 @@ export class GcdsText {
     | '700'
     | '800'
     | '900'
-    | '1000';
+    | '1000' = '400';
 
   @Watch('marginBottom')
   validateMarginBottom(newValue: string) {
@@ -148,8 +148,8 @@ export class GcdsText {
       '1000',
     ];
 
-    if (this.marginBottom && !values.includes(newValue)) {
-      console.error('Not a valid margin.');
+    if (!values.includes(newValue)) {
+      this.marginBottom = '400';
     }
   }
 

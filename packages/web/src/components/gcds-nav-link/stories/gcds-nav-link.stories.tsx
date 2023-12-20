@@ -16,7 +16,8 @@ export default {
     },
     current: {
       name: 'current',
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },

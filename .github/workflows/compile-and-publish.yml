@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Setup Node
-        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
+        uses: actions/setup-node@5ef044f9d09786428e6e895be6be17937becee3a
         with:
           node-version: 18
 
@@ -45,7 +45,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@4b07b26a2f6e0a51846e1870223e545bae91c552
+        uses: JS-DevTools/npm-publish@8d0621f78dc8b291082e6b83c56f5a170305410b
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -65,6 +65,7 @@ jobs:
           PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
 
           mkdir -p ./tmp \
+            && sleep 60 \
             && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
             && cd ./tmp/node_modules
 
@@ -112,7 +113,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Setup Node
-        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
+        uses: actions/setup-node@5ef044f9d09786428e6e895be6be17937becee3a
         with:
           node-version: 18
 
@@ -136,7 +137,7 @@ jobs:
         working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@4b07b26a2f6e0a51846e1870223e545bae91c552
+        uses: JS-DevTools/npm-publish@8d0621f78dc8b291082e6b83c56f5a170305410b
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}

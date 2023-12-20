@@ -7,18 +7,16 @@ import * as SROnly from './gcds-sr-only.stories';
 
 _Also called: visually hidden, assistive text._
 
-<Canvas
-  of={SROnly.Default}
-  story={{ inline: true }}
-/>
+<Canvas of={SROnly.Default} story={{ inline: true }} />
 
 ## Resources
 
-<ul>
+{/* prettier-ignore */}
+<ul class="resources-list">
   <li>
-    <gcds-button type="link" button-style="text-only" href="https://design-system.alpha.canada.ca/en/components/screen-reader-only/" target="_blank">Guidance</gcds-button>
+    <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/screen-reader-only/" target="_blank">Guidance</gcds-link>
   </li>
   <li>
-    <gcds-button type="link" button-style="text-only" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-sr-only" target="_blank">Github</gcds-button>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-sr-only" target="_blank">Github</gcds-link>
   </li>
 </ul>

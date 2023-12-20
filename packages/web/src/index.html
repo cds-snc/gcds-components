@@ -102,13 +102,13 @@
     </gcds-header>
 
     <gcds-container size="xl" centered tag="main">
-      <h1 class="text-center mb-500">GC Design System</h1>
+      <gcds-heading tag="h1">GC Design System</gcds-heading>
 
-      <h2>Components</h2>
+      <hr class="my-550" />
 
       <!-- ------------- Alerts ------------- -->
 
-      <h3 class="mt-500 mb-400 bb-sm">Alerts</h3>
+      <gcds-heading tag="h2">Alerts</gcds-heading>
       <gcds-alert heading="Success alert" alert-role="success">
         <p>Example content</p>
       </gcds-alert>
@@ -122,9 +122,11 @@
         <p>Example content</p>
       </gcds-alert>
 
+      <hr class="my-550" />
+
       <!-- ------------- Buttons ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Buttons</h3>
+      <gcds-heading tag="h2">Buttons</gcds-heading>
       <gcds-button button-role="primary">Primary</gcds-button>
       <gcds-button button-role="secondary">Secondary</gcds-button>
       <gcds-button button-role="danger">Danger</gcds-button>
@@ -141,9 +143,11 @@
         External Link
       </gcds-button>
 
+      <hr class="my-550" />
+
       <!-- ------------- Cards ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Cards</h3>
+      <gcds-heading tag="h2">Cards</gcds-heading>
 
       <gcds-grid
         tag="div"
@@ -223,9 +227,11 @@
       >
       </gcds-card>
 
+      <hr class="my-550" />
+
       <!-- ------------- Containers ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Containers</h3>
+      <gcds-heading tag="h2">Containers</gcds-heading>
       <gcds-container size="full" border padding="400">
         <p>
           I'm a responsive container. My size is only limited by the size of my
@@ -241,18 +247,22 @@
         <p>I'm an extra-small container. My max size is 20rem (320px).</p>
       </gcds-container>
 
+      <hr class="my-550" />
+
       <!-- ------------- Details ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Details</h3>
+      <gcds-heading tag="h2">Details</gcds-heading>
       <gcds-details details-title="Find out more">
         <p>Details about stuff.</p>
       </gcds-details>
-      
+
+      <hr class="my-550" />
+
       <!-- ------------- Stepper + Form Elements ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">
+      <gcds-heading tag="h2">
         Form elements (including stepper and error summary)
-      </h3>
+      </gcds-heading>
       <gcds-stepper current-step="1" total-steps="3"></gcds-stepper>
       <form novalidate>
         <gcds-error-summary listen></gcds-error-summary>
@@ -356,12 +366,16 @@
           required
         ></gcds-file-uploader>
 
+        <br />
+
         <gcds-button type="submit"> Submit </gcds-button>
       </form>
 
+      <hr class="my-550" />
+
       <!-- ------------- Grid ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Grid</h3>
+      <gcds-heading tag="h2">Grid</gcds-heading>
       <gcds-grid
         tag="article"
         columns-desktop="1fr 1fr 1fr 1fr"
@@ -372,36 +386,30 @@
         <p>
           Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book. It has survived not only five centuries,
-          but also the leap into electronic typesetting, remaining essentially
-          unchanged.
+          to make a type specimen book.
         </p>
         <p>
           Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book. It has survived not only five centuries,
-          but also the leap into electronic typesetting, remaining essentially
-          unchanged.
+          to make a type specimen book.
         </p>
         <p>
           Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book. It has survived not only five centuries,
-          but also the leap into electronic typesetting, remaining essentially
-          unchanged.
+          to make a type specimen book.
         </p>
         <p>
           Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book. It has survived not only five centuries,
-          but also the leap into electronic typesetting, remaining essentially
-          unchanged.
+          to make a type specimen book.
         </p>
       </gcds-grid>
 
+      <hr class="my-550" />
+
       <!-- ------------- Heading ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Heading</h3>
+      <gcds-heading tag="h2">Heading</gcds-heading>
       <gcds-heading tag="h1">Heading level 1</gcds-heading>
       <gcds-heading tag="h2">Heading level 2</gcds-heading>
       <gcds-heading tag="h3">Heading level 3</gcds-heading>
@@ -409,23 +417,25 @@
       <gcds-heading tag="h5">Heading level 5</gcds-heading>
       <gcds-heading tag="h6">Heading level 6</gcds-heading>
 
+      <hr class="my-550" />
+
       <!-- ------------- Text ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Text</h3>
-      <gcds-text margin-bottom="400"
+      <gcds-heading tag="h2">Text</gcds-heading>
+      <gcds-text
         >This text is primary text using the default body size. The margin
         bottom is set to "400". The character limit is set to "true" (default
         value) which means that the text will take up a maximum of 65 characters
         per line.</gcds-text
       >
 
-      <gcds-text character-limit="false" margin-bottom="400"
+      <gcds-text character-limit="false"
         >This text is primary text using the default body size. The margin
         bottom is set to "400". The characters limit is set to "false" which
         means that the text will take up all available space.</gcds-text
       >
 
-      <gcds-text text-role="secondary" margin-bottom="400"
+      <gcds-text text-role="secondary"
         >This text is secondary text using the default body size. The margin
         bottom is set to "400". The character limit is set to "true" (default
         value) which means that the text will take up a maximum of 65 characters
@@ -433,21 +443,21 @@
       >
 
       <div class="bg-dark mb-400 p-200">
-        <gcds-text text-role="light"
+        <gcds-text margin-bottom="0" text-role="light"
           >This text is light text using the default body size. The character
           limit is set to "true" (default value) which means that the text will
           take up a maximum of 65 characters per line.</gcds-text
         >
       </div>
 
-      <gcds-text size="caption" margin-bottom="400"
+      <gcds-text size="caption"
         >This text is primary text using the caption size. The margin bottom is
         set to "400". The character limit is set to "true" (default value) which
         means that the text will take up a maximum of 65 characters per
         line.</gcds-text
       >
 
-      <gcds-text margin-bottom="400"
+      <gcds-text
         >This text is primary text using the default body size
         <strong>with some bold text included</strong>. The margin bottom is set
         to "400". The character limit is set to "true" (default value) which
@@ -455,7 +465,7 @@
         line.</gcds-text
       >
 
-      <gcds-text margin-bottom="400"
+      <gcds-text
         >This text is primary text using the default body size
         <em>with some italic text included</em>. The margin bottom is set to
         "400". The character limit is set to "true" (default value) which means
@@ -463,33 +473,88 @@
         line.</gcds-text
       >
 
+      <hr class="my-550" />
+
       <!-- ------------- Icons ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Icons</h3>
-      <gcds-icon name="tree" size="caption" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="text" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h6" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h5" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h4" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h3" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h2" margin-right="200"></gcds-icon>
-      <gcds-icon name="tree" size="h1" margin-right="200"></gcds-icon>
+      <gcds-heading tag="h2">Icons</gcds-heading>
+      <gcds-icon name="close" size="caption" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="text" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h6" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h5" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h4" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h3" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h2" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="h1" margin-right="200"></gcds-icon>
 
-      <h4 class="mt-500 mb-300">Fixed width icons (square ratio)</h4>
-      <gcds-icon name="tree" size="text" fixed-width></gcds-icon>
+      <gcds-heading tag="h4">Fixed width icons (square ratio)</gcds-heading>
+      <gcds-icon name="close" size="text" fixed-width></gcds-icon>
       <gcds-icon name="folder" size="text" fixed-width></gcds-icon>
       <gcds-icon name="fire" size="text" fixed-width></gcds-icon>
       <gcds-icon name="utensils" size="text" fixed-width></gcds-icon>
 
-      <h4 class="mt-500 mb-300">Variable width icons (auto width)</h4>
-      <gcds-icon name="tree" size="text"></gcds-icon>
+      <gcds-heading tag="h4">Variable width icons (auto width)</gcds-heading>
+      <gcds-icon name="close" size="text"></gcds-icon>
       <gcds-icon name="folder" size="text"></gcds-icon>
       <gcds-icon name="fire" size="text"></gcds-icon>
       <gcds-icon name="utensils" size="text"></gcds-icon>
 
+      <hr class="my-550" />
+
+      <!-- ------------- Links ------------- -->
+
+      <gcds-heading tag="h2">Links</gcds-heading>
+      <p class="mb-400">
+        This is a <gcds-link size="small" href="/">small link</gcds-link> if you
+        compare it to regular text.
+      </p>
+      <p class="mb-400">
+        <gcds-link href="https://picsum.photos/480/270" external display="block"
+          >This is an external link.</gcds-link
+        >
+      </p>
+      <p class="mb-400">
+        This is a
+        <gcds-link
+          href="https://picsum.photos/200/200.jpg"
+          download="random_image"
+          type="image/jpeg"
+          >download link (PDF, 1.3 MB)</gcds-link
+        >
+        with type indicated
+      </p>
+      <p class="mb-400">
+        Contact us
+        <gcds-link href="mailto:test@test.com?subject=Test%20email"
+          >via email</gcds-link
+        >
+        or by phone.
+      </p>
+      <p class="mb-400">
+        Contact us <gcds-link href="tel:1234567890">by phone</gcds-link> or by
+        email.
+      </p>
+      <p class="mb-400">
+        There is text before and
+        <gcds-link href="/" display="inline-block">(sample link)</gcds-link>
+        after this link.
+      </p>
+      <p class="mb-400">
+        <gcds-link href="/" referrerpolicy="no-referrer" external
+          >This is a sample link with a referrerpolicy.</gcds-link
+        >
+      </p>
+      <p class="mb-400">
+        <gcds-link href="" onClick='window.alert("Thank you!")'
+          >Click me!</gcds-link
+        >
+      </p>
+
+      <hr class="my-550" />
+
       <!-- ------------- Pagination ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Pagination</h3>
+      <gcds-heading tag="h2">Pagination</gcds-heading>
       <gcds-pagination
         display="list"
         label="List pagination"
@@ -509,23 +574,29 @@
         next-label="Next page"
       ></gcds-pagination>
 
+      <hr class="my-550" />
+
       <!-- ------------- Phase Banner ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Phase banner</h3>
+      <gcds-heading tag="h2">Phase banner</gcds-heading>
       <gcds-phase-banner banner-role="primary">
         <gcds-icon name="tree" size="sm" slot="banner-icon-left"></gcds-icon>
         <p slot="banner-text">Exciting announcement.</p>
       </gcds-phase-banner>
 
+      <hr class="my-550" />
+
       <!-- ------------- Screen reader only ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Screen reader only</h3>
+      <gcds-heading tag="h2">Screen reader only</gcds-heading>
       <gcds-text>There is invisible text below this</gcds-text>
       <gcds-sr-only>
         <gcds-text
           >This text is only available to assistive technologies.</gcds-text
         >
       </gcds-sr-only>
+
+      <hr class="my-550" />
 
       <!-- ------------- Side nav ------------- -->
 
@@ -547,9 +618,11 @@
         </gcds-nav-group>
       </gcds-side-nav>
 
+      <hr class="my-550" />
+
       <!-- ------------- Top nav ------------- -->
 
-      <h3 class="mt-700 mb-400 bb-sm">Top navigation</h3>
+      <gcds-heading tag="h2">Top navigation</gcds-heading>
       <gcds-top-nav label="topbar" alignment="right" lang="en">
         <gcds-nav-link href="#red" slot="home">Home</gcds-nav-link>
         <gcds-nav-link href="#red">Installation</gcds-nav-link>
@@ -564,6 +637,8 @@
           <gcds-nav-link href="#red">Slack</gcds-nav-link>
         </gcds-nav-group>
       </gcds-top-nav>
+
+      <hr class="my-550" />
 
       <!-- ------------- Date Modified ------------- -->
 

@@ -37,14 +37,16 @@ export default {
       },
     },
     checked: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
       },
     },
     disabled: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
@@ -76,7 +78,8 @@ export default {
       },
     },
     required: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },

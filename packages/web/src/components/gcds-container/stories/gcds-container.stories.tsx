@@ -4,14 +4,16 @@ export default {
   argTypes: {
     // Props
     border: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
       },
     },
     centered: {
-      control: 'boolean',
+      control: { type: 'select' },
+      options: [false, true],
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
