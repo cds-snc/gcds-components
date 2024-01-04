@@ -10,6 +10,7 @@ import {
   Host,
   h,
   Listen,
+  AttachInternals,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -27,13 +28,16 @@ import {
 @Component({
   tag: 'gcds-select',
   styleUrl: 'gcds-select.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class GcdsSelect {
   @Element() el: HTMLElement;
 
-  private shadowElement?: HTMLElement;
+  @AttachInternals()
+  internals: ElementInternals;
+
+  private shadowElement?: HTMLSelectElement;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -50,6 +54,11 @@ export class GcdsSelect {
    * Form field label.
    */
   @Prop({ reflect: true, mutable: false }) label!: string;
+
+  /**
+   * Name attribute for select form element.
+   */
+  @Prop({ reflect: true, mutable: false }) name!: string;
 
   /**
    * Specifies if a form field is required or not.
@@ -118,21 +127,6 @@ export class GcdsSelect {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
-   * Custom callback function on change event
-   */
-  @Prop() changeHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
-
-  /**
    * Specifies if the select is invalid.
    */
   @State() hasError: boolean;
@@ -167,11 +161,7 @@ export class GcdsSelect {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
+  private onFocus = () => {
     this.gcdsFocus.emit();
   };
 
@@ -180,13 +170,9 @@ export class GcdsSelect {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    } else {
-      if (this.validateOn == 'blur') {
-        this.validate();
-      }
+  private onBlur = () => {
+    if (this.validateOn == 'blur') {
+      this.validate();
     }
 
     this.gcdsBlur.emit();
@@ -233,15 +219,25 @@ export class GcdsSelect {
   }
 
   handleChange = e => {
-    if (this.changeHandler) {
-      this.changeHandler(e);
-    } else {
-      const val = e.target && e.target.value;
-      this.value = val;
-    }
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val);
 
     this.gcdsSelectChange.emit(this.value);
   };
+
+  /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    this.internals.setFormValue('');
+    this.value = '';
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.value = state;
+  }
 
   /*
    * Observe lang attribute change
@@ -282,6 +278,27 @@ export class GcdsSelect {
     }
   }
 
+  componentDidLoad() {
+    if (this.el.children) {
+      const options = Array.from(this.el.children);
+      for (let opt = 0; opt < this.el.children.length + opt; opt++) {
+        if (options[opt].hasAttribute('selected')) {
+          this.value = options[opt].getAttribute('value');
+        }
+        this.shadowElement.appendChild(options[opt]);
+      }
+    }
+
+    if (this.value) {
+      for (let opt = 0; opt < this.shadowElement.options.length; opt++) {
+        if (this.shadowElement.options[opt].value == this.value) {
+          this.shadowElement.options[opt].setAttribute('selected', '');
+          this.internals.setFormValue(this.shadowElement.options[opt].value);
+        }
+      }
+    }
+  }
+
   render() {
     const {
       lang,
@@ -295,9 +312,11 @@ export class GcdsSelect {
       errorMessage,
       inheritedAttributes,
       hasError,
+      name,
     } = this;
 
     const attrsSelect = {
+      name,
       disabled,
       required,
       value,
@@ -338,20 +357,17 @@ export class GcdsSelect {
           <select
             {...attrsSelect}
             id={selectId}
-            name={selectId}
-            onBlur={e => this.onBlur(e)}
-            onFocus={e => this.onFocus(e)}
+            onBlur={() => this.onBlur()}
+            onFocus={() => this.onFocus()}
             onChange={e => this.handleChange(e)}
             aria-invalid={hasError ? 'true' : 'false'}
-            ref={element => (this.shadowElement = element as HTMLElement)}
+            ref={element => (this.shadowElement = element as HTMLSelectElement)}
           >
             {defaultValue ? (
               <option value="" disabled selected>
                 {defaultValue}
               </option>
             ) : null}
-
-            <slot></slot>
           </select>
         </div>
       </Host>

@@ -10,6 +10,7 @@ import {
   Watch,
   Host,
   h,
+  AttachInternals,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -28,11 +29,14 @@ import {
 @Component({
   tag: 'gcds-checkbox',
   styleUrl: 'gcds-checkbox.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class GcdsCheckbox {
   @Element() el: HTMLElement;
+
+  @AttachInternals()
+  internals: ElementInternals;
 
   private shadowElement?: HTMLElement;
 
@@ -144,21 +148,6 @@ export class GcdsCheckbox {
   }
 
   /**
-   * Custom callback function on click event
-   */
-  @Prop() clickHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
-
-  /**
    * State to handle when errors are passed down to component
    */
   @State() parentError: string;
@@ -193,11 +182,7 @@ export class GcdsCheckbox {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
+  private onFocus = () => {
     this.gcdsFocus.emit();
   };
 
@@ -206,13 +191,9 @@ export class GcdsCheckbox {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = e => {
-    if (this.blurHandler) {
-      this.blurHandler(e);
-    } else {
-      if (this.validateOn == 'blur') {
-        this.validate();
-      }
+  private onBlur = () => {
+    if (this.validateOn == 'blur') {
+      this.validate();
     }
 
     this.gcdsBlur.emit();
@@ -267,6 +248,18 @@ export class GcdsCheckbox {
   }
 
   /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    this.checked = false;
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.checked = state;
+  }
+
+  /*
    * Observe lang attribute change
    */
   updateLang() {
@@ -297,6 +290,8 @@ export class GcdsCheckbox {
     }
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
+
+    this.internals.setFormValue(this.checked ? this.value : null);
   }
 
   componentWillUpdate() {
@@ -305,8 +300,13 @@ export class GcdsCheckbox {
     }
   }
 
-  private onChange = () => {
+  private onChange = e => {
     this.checked = !this.checked;
+    this.internals.setFormValue(e.target.value, 'checked');
+
+    if (!this.checked) {
+      this.internals.setFormValue(null, 'checked');
+    }
 
     this.gcdsChange.emit(this.checked);
   };
@@ -368,12 +368,9 @@ export class GcdsCheckbox {
             id={checkboxId}
             type="checkbox"
             {...attrsInput}
-            onBlur={e => this.onBlur(e)}
-            onFocus={e => this.onFocus(e)}
-            onChange={() => this.onChange()}
-            onClick={e => {
-              this.clickHandler && this.clickHandler(e);
-            }}
+            onBlur={() => this.onBlur()}
+            onFocus={() => this.onFocus()}
+            onClick={e => this.onChange(e)}
             ref={element => (this.shadowElement = element as HTMLElement)}
           />
 

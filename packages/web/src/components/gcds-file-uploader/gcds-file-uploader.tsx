@@ -10,6 +10,7 @@ import {
   Host,
   h,
   Listen,
+  AttachInternals,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -28,11 +29,14 @@ import i18n from './i18n/i18n';
 @Component({
   tag: 'gcds-file-uploader',
   styleUrl: 'gcds-file-uploader.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class GcdsFileUploader {
   @Element() el: HTMLElement;
+
+  @AttachInternals()
+  internals: ElementInternals;
 
   private shadowElement?: HTMLInputElement;
 
@@ -46,6 +50,11 @@ export class GcdsFileUploader {
    * Id attribute for a file uploader element.
    */
   @Prop({ reflect: true, mutable: true }) uploaderId!: string;
+
+  /**
+   * Name attribute for file input element.
+   */
+  @Prop() name!: string;
 
   /**
    * Form field label.
@@ -124,21 +133,6 @@ export class GcdsFileUploader {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
-   * Custom callback function on change event
-   */
-  @Prop() changeHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
-
-  /**
    * Specifies if the file uploader is invalid.
    */
   @State() hasError: boolean;
@@ -168,11 +162,7 @@ export class GcdsFileUploader {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
+  private onFocus = () => {
     this.gcdsFocus.emit();
   };
 
@@ -181,13 +171,9 @@ export class GcdsFileUploader {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = e => {
-    if (this.blurHandler) {
-      this.blurHandler(e);
-    } else {
-      if (this.validateOn == 'blur') {
-        this.validate();
-      }
+  private onBlur = () => {
+    if (this.validateOn == 'blur') {
+      this.validate();
     }
 
     this.gcdsBlur.emit();
@@ -199,22 +185,20 @@ export class GcdsFileUploader {
   @Event() gcdsFileUploaderChange: EventEmitter;
 
   handleChange = e => {
-    if (this.changeHandler) {
-      this.changeHandler(e);
-    } else {
-      const filesContainer: string[] = [];
-      const files = e.target.files;
+    const filesContainer: string[] = [];
+    const files = e.target.files;
 
-      for (let i = 0; i < files.length; i++) {
-        filesContainer.push(files[i].name);
-      }
+    for (let i = 0; i < files.length; i++) {
+      filesContainer.push(files[i].name);
+    }
 
-      this.value = [...filesContainer];
+    this.addFilesToFormData(files);
 
-      // Validate since the input loses focus when dialog opens
-      if (this.validateOn == 'blur') {
-        this.validate();
-      }
+    this.value = [...filesContainer];
+
+    // Validate since the input loses focus when dialog opens
+    if (this.validateOn == 'blur') {
+      this.validate();
     }
 
     this.gcdsFileUploaderChange.emit(this.value);
@@ -226,15 +210,25 @@ export class GcdsFileUploader {
   @Event() gcdsRemoveFile: EventEmitter;
   removeFile = e => {
     e.preventDefault();
+    const fileName = e.target.closest('.file-uploader__uploaded-file')
+      .childNodes[0].textContent;
 
     const filesContainer = this.value;
-    const file = filesContainer.indexOf(
-      e.target.closest('.file-uploader__uploaded-file').childNodes[0]
-        .textContent,
-    );
+    const file = filesContainer.indexOf(fileName);
 
     if (file > -1) {
       filesContainer.splice(file, 1);
+
+      // Add additional logic to remove file from input
+      const dt = new DataTransfer();
+      for (let f = 0; f < this.shadowElement.files.length; f++) {
+        if (this.shadowElement.files[f].name != fileName) {
+          dt.items.add(this.shadowElement.files[f]);
+        }
+      }
+
+      this.shadowElement.files = dt.files;
+      this.addFilesToFormData(this.shadowElement.files);
     }
 
     this.value = [...filesContainer];
@@ -285,6 +279,32 @@ export class GcdsFileUploader {
   }
 
   /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    this.internals.setFormValue('');
+    this.value = [];
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.value = state;
+  }
+
+  /*
+   * Set form data for internals
+   */
+  private addFilesToFormData = files => {
+    const formData = new FormData();
+
+    for (let i = 0; i < files.length; i++) {
+      formData.append(this.name, files[i], files[i].name);
+    }
+
+    this.internals.setFormValue(formData);
+  };
+
+  /*
    * Observe lang attribute change
    */
   updateLang() {
@@ -333,6 +353,7 @@ export class GcdsFileUploader {
       label,
       lang,
       multiple,
+      name,
       required,
       uploaderId,
       value,
@@ -343,6 +364,7 @@ export class GcdsFileUploader {
       accept,
       disabled,
       multiple,
+      name,
       required,
       value,
       ...inheritedAttributes,
@@ -361,9 +383,8 @@ export class GcdsFileUploader {
     if (hint || errorMessage) {
       const hintID = hint ? `hint-${uploaderId} ` : '';
       const errorID = errorMessage ? `error-message-${uploaderId} ` : '';
-      attrsInput[
-        'aria-describedby'
-      ] = `${hintID}${errorID}${attrsInput['aria-describedby']}`;
+      attrsInput['aria-describedby'] =
+        `${hintID}${errorID}${attrsInput['aria-describedby']}`;
     }
 
     return (
@@ -396,10 +417,9 @@ export class GcdsFileUploader {
             <input
               type="file"
               id={uploaderId}
-              name={uploaderId}
               {...attrsInput}
-              onBlur={e => this.onBlur(e)}
-              onFocus={e => this.onFocus(e)}
+              onBlur={() => this.onBlur()}
+              onFocus={() => this.onFocus()}
               onChange={e => this.handleChange(e)}
               aria-invalid={hasError ? 'true' : 'false'}
               ref={element =>

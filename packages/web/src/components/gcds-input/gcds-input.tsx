@@ -28,7 +28,7 @@ import {
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',
-  shadow: true,
+  shadow: { delegatesFocus: true },
   formAssociated: true,
 })
 export class GcdsInput {
@@ -191,8 +191,9 @@ export class GcdsInput {
   @Event() gcdsChange: EventEmitter;
 
   private handleChange(e) {
-    this.value = e.target.value;
-    this.internals.setFormValue(e.target.value);
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val ? val : null);
 
     this.gcdsChange.emit(this.value);
   }
@@ -283,6 +284,8 @@ export class GcdsInput {
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
       'placeholder',
     ]);
+
+    this.internals.setFormValue(this.value ? this.value : null);
   }
 
   componentWillUpdate() {
