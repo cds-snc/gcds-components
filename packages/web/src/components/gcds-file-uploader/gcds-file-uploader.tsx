@@ -213,7 +213,9 @@ export class GcdsFileUploader {
 
       // Validate since the input loses focus when dialog opens
       if (this.validateOn == 'blur') {
-        this.validate();
+        setTimeout(() => {
+          this.validate();
+        }, 100);
       }
     }
 

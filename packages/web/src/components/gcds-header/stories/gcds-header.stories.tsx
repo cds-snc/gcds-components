@@ -143,8 +143,8 @@ const Template = args =>
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.menu ? `<div slot="menu">${args.menu}</div>` : null}
-  ${args.breadcrumb ? `<div slot="menu">${args.breadcrumb}</div>` : null}
-  ${args.search ? `<div slot="menu">${args.search}</div>` : null}
+  ${args.breadcrumb ? `<div slot="breadcrumb">${args.breadcrumb}</div>` : null}
+  ${args.search ? `<div slot="search">${args.search}</div>` : null}
   ${args.skipTo ? `<div slot="skip-to-nav">${args.skipTo}</div>` : null}
   ${args.toggle ? `<div slot="toggle">${args.toggle}</div>` : null}
   ${args.banner ? `<div slot="banner">${args.banner}</div>` : null}

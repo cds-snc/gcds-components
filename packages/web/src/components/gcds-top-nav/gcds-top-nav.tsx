@@ -52,6 +52,37 @@ export class GcdsTopNav {
    */
   @State() navSize: 'desktop' | 'mobile';
 
+  @Listen('focusin', { target: 'document' })
+  async focusInListener(e) {
+    if (this.el.contains(e.target) && !this.navSize) {
+      const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
+      const nav = this.el as HTMLGcdsTopNavElement;
+      const mobileTrigger = this.mobile;
+
+      if (mediaQuery.matches) {
+        this.navSize = 'desktop';
+      } else {
+        this.navSize = 'mobile';
+      }
+
+      await this.updateNavItemQueue(this.el);
+
+      mediaQuery.addEventListener('change', async function (e) {
+        if (e.matches) {
+          nav.updateNavSize('desktop');
+          await nav.updateNavItemQueue(nav);
+
+          if (mobileTrigger.hasAttribute('open')) {
+            mobileTrigger.toggleNav();
+          }
+        } else {
+          nav.updateNavSize('mobile');
+          await nav.updateNavItemQueue(nav);
+        }
+      });
+    }
+  }
+
   @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
     if (!this.el.contains(e.relatedTarget)) {
@@ -148,36 +179,6 @@ export class GcdsTopNav {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
-
-    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-
-    if (mediaQuery.matches) {
-      this.navSize = 'desktop';
-    } else {
-      this.navSize = 'mobile';
-    }
-  }
-
-  async componentDidLoad() {
-    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-    const nav = this.el as HTMLGcdsTopNavElement;
-    const mobileTrigger = this.mobile;
-
-    await this.updateNavItemQueue(this.el);
-
-    mediaQuery.addEventListener('change', async function (e) {
-      if (e.matches) {
-        nav.updateNavSize('desktop');
-        await nav.updateNavItemQueue(nav);
-
-        if (mobileTrigger.hasAttribute('open')) {
-          mobileTrigger.toggleNav();
-        }
-      } else {
-        nav.updateNavSize('mobile');
-        await nav.updateNavItemQueue(nav);
-      }
-    });
   }
 
   render() {
