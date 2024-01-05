@@ -308,11 +308,11 @@
   }
 
   .resources-list {
-    margin: var(--gcds-spacing-400) 0;
+    margin: var(--gcds-spacing-400) 0 !important;
   }
 
   .resources-list li {
-    margin: 0 0 var(--gcds-spacing-300);
+    margin: 0 0 var(--gcds-spacing-300) !important;
   }
 
   /* ----- COMPONENT SPECIFIC ----- */
@@ -349,6 +349,12 @@
   .sbdocs-preview .docs-story #story--components-icon--width gcds-icon {
     margin: 0 var(--gcds-spacing-150) 0 0;
     border: var(--gcds-border-width-sm) solid var(--gcds-border-default);
+  }
+
+  /* gcds-link */
+  .sbdocs-preview .docs-story #story--components-link--variant-light {
+    background: var(--gcds-color-grayscale-900);
+    padding: var(--gcds-spacing-450);
   }
 
   /* gcds-signature */

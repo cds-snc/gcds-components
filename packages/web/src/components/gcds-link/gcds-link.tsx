@@ -28,6 +28,20 @@ export class GcdsLink {
    */
 
   /**
+   * Sets the main style of the link.
+   */
+  @Prop({ mutable: true }) variant?: 'default' | 'light' = 'default';
+
+  @Watch('variant')
+  validateVariant(newValue: string) {
+    const values = ['default', 'light'];
+
+    if (!values.includes(newValue)) {
+      this.variant = 'default';
+    }
+  }
+
+  /**
    * Set the link size
    */
   @Prop({ mutable: true }) size?: 'regular' | 'small' | 'inherit' = 'inherit';
@@ -43,7 +57,7 @@ export class GcdsLink {
   /**
    * Sets the display behavior of the link
    */
-  @Prop() display?: 'block' | 'inline' = 'inline';
+  @Prop({ mutable: true }) display?: 'block' | 'inline' = 'inline';
   @Watch('display')
   validateDisplay(newValue: string) {
     const values = ['block', 'inline'];
@@ -125,6 +139,7 @@ export class GcdsLink {
 
   componentWillLoad() {
     // Validate attributes and set defaults
+    this.validateVariant(this.variant);
     this.validateSize(this.size);
     this.validateDisplay(this.display);
 
@@ -150,6 +165,7 @@ export class GcdsLink {
       download,
       type,
       inheritedAttributes,
+      variant,
     } = this;
 
     const attrs = {
@@ -169,7 +185,9 @@ export class GcdsLink {
           role="link"
           tabIndex={0}
           {...attrs}
-          class={`link--${size} ${display != 'inline' ? `d-${display}` : ''}`}
+          class={`link--${size} ${display != 'inline' ? `d-${display}` : ''} ${
+            variant != 'default' ? `variant-${variant}` : ''
+          }`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
           rel={isExternal ? 'noopener noreferrer' : rel}

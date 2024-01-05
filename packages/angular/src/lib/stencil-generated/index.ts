@@ -17,6 +17,7 @@ export const DIRECTIVES = [
   d.GcdsFileUploader,
   d.GcdsFooter,
   d.GcdsGrid,
+  d.GcdsGridCol,
   d.GcdsHeader,
   d.GcdsHeading,
   d.GcdsHint,

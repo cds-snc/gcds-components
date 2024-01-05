@@ -402,14 +402,14 @@ export declare interface GcdsFooter extends Components.GcdsFooter {}
 
 
 @ProxyCmp({
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
+  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'gap', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
+  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
 })
 export class GcdsGrid {
   protected el: HTMLElement;
@@ -421,6 +421,28 @@ export class GcdsGrid {
 
 
 export declare interface GcdsGrid extends Components.GcdsGrid {}
+
+
+@ProxyCmp({
+  inputs: ['desktop', 'tablet', 'tag']
+})
+@Component({
+  selector: 'gcds-grid-col',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['desktop', 'tablet', 'tag'],
+})
+export class GcdsGridCol {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsGridCol extends Components.GcdsGridCol {}
 
 
 @ProxyCmp({
@@ -601,14 +623,14 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 
 
 @ProxyCmp({
-  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type']
+  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type', 'variant']
 })
 @Component({
   selector: 'gcds-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type'],
+  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type', 'variant'],
 })
 export class GcdsLink {
   protected el: HTMLElement;
