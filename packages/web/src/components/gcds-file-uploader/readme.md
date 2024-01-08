@@ -10,14 +10,12 @@
 | Property                  | Attribute       | Description                                                                 | Type                                                | Default     |
 | ------------------------- | --------------- | --------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
 | `accept`                  | `accept`        | Defines the file types the file uploader accepts.                           | `string`                                            | `undefined` |
-| `blurHandler`             | --              | Custom callback function on blur event                                      | `Function`                                          | `undefined` |
-| `changeHandler`           | --              | Custom callback function on change event                                    | `Function`                                          | `undefined` |
 | `disabled`                | `disabled`      | Specifies if a file uploader element is disabled or not.                    | `boolean`                                           | `false`     |
 | `errorMessage`            | `error-message` | Error message for an invalid file uploader element.                         | `string`                                            | `undefined` |
-| `focusHandler`            | --              | Custom callback function on focus event                                     | `Function`                                          | `undefined` |
 | `hint`                    | `hint`          | Hint displayed below the label.                                             | `string`                                            | `undefined` |
 | `label` _(required)_      | `label`         | Form field label.                                                           | `string`                                            | `undefined` |
 | `multiple`                | `multiple`      | Boolean that specifies if the user is allowed to select more than one file. | `boolean`                                           | `undefined` |
+| `name` _(required)_       | `name`          | Name attribute for file input element.                                      | `string`                                            | `undefined` |
 | `required`                | `required`      | Specifies if a form field is required or not.                               | `boolean`                                           | `false`     |
 | `uploaderId` _(required)_ | `uploader-id`   | Id attribute for a file uploader element.                                   | `string`                                            | `undefined` |
 | `validateOn`              | `validate-on`   | Set event to call validator                                                 | `"blur" \| "other" \| "submit"`                     | `undefined` |
