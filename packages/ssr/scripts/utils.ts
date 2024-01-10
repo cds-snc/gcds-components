@@ -78,6 +78,10 @@ const ${toPascalCase(elementName)}WebComponent = React.forwardRef(({ children = 
     nativeProps[p.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()] = nonEventProps[p];
   }
 
+  if (nativeProps.wrapped) {
+    delete nativeProps.wrapped;
+  }
+
   if (typeof window !== 'undefined') {
     const innerRef = useRef();
     useImperativeHandle(ref, () => innerRef.current);
@@ -90,10 +94,42 @@ const ${toPascalCase(elementName)}WebComponent = React.forwardRef(({ children = 
 
 function ${toPascalCase(elementName)}(props) {
   if (!props['noSSR'] && typeof window == 'undefined') {
+    let cloned = [];
+
+    // Pass wrapped prop to children GCDS components
+    if (Array.isArray(props.children)) {
+      for (let x = 0; x< props.children.length; x++) {
+        if (props.children[x].type && props.children[x].type.toString().includes('Gcds')) {
+          cloned.push(React.cloneElement(props.children[x], { wrapped: true, key: x }));
+        } else if (typeof props.children[x] == 'string') {
+          cloned.push(props.children[x]);
+        } else {
+          cloned.push(React.cloneElement(props.children[x], { key: x }));
+        }
+      }
+    } else if (typeof props.children == 'object') {
+      if (props.children.type && props.children.type.toString().includes('Gcds')) {
+        cloned.push(React.cloneElement(props.children, { wrapped: true, key: 0 }));
+      } else {
+        cloned.push(React.cloneElement(props.children, { key: 0 }));
+      }
+    } else if (typeof props.children == 'string') {
+      cloned = props.children;
+    }
+
+    // Render without GcdsWrapper if wrapped: true
+    if (props.wrapped) {
+      return(
+        <${toPascalCase(elementName)}WebComponent {...props}>
+          {cloned}
+        </${toPascalCase(elementName)}WebComponent>
+      )
+    }
+
     return(
       <GcdsWrapper>
         <${toPascalCase(elementName)}WebComponent {...props}>
-          {props.children}
+          {cloned}
         </${toPascalCase(elementName)}WebComponent>
       </GcdsWrapper>
     )

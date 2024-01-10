@@ -36,10 +36,21 @@ function resolve(children, result = []) {
         resolve(vnode, result);
       } else {
         // Function component
-        resolve(node.type(node.props), result);
+        const props = { ...node.props };
+        // Apply extra wrapped prop to GCDS components
+        if (node.type.toString().includes('Gcds')) {
+          props.wrapped = true;
+        }
+        resolve(node.type(props), result);
       }
     } else if (typeof node.type === 'object' && typeof node.type.render === 'function') {
-      resolve(node.type.render(node.props), result);
+      const props = { ...node.props };
+      const renderedComp = node.type.render(node.props);
+      // Apply extra wrapped attribute to GCDS components
+      if (renderedComp.type.includes('gcds-')) {
+        props.wrapped = true;
+      }
+      resolve(node.type.render(props), result);
     }
   }
 
