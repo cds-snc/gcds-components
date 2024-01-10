@@ -6,7 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+import { ContentValues } from "./components/gcds-grid/gcds-grid";
 export { Validator, ValidatorEntry } from "./validators";
+export { ContentValues } from "./components/gcds-grid/gcds-grid";
 export namespace Components {
     interface GcdsAlert {
         /**
