@@ -17,6 +17,7 @@
 | `size`              | `size`     | Set the link size                                                                                                                                  | `"inherit" \| "regular" \| "small"` | `'inherit'` |
 | `target`            | `target`   | The target attribute specifies where to open the linked document                                                                                   | `string`                            | `'_self'`   |
 | `type`              | `type`     | The type specifies the media type of the linked document                                                                                           | `string`                            | `undefined` |
+| `variant`           | `variant`  | Sets the main style of the link.                                                                                                                   | `"default" \| "light"`              | `'default'` |
 
 
 ## Events

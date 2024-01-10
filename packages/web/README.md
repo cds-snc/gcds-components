@@ -12,7 +12,7 @@ You can find the full documentation for GC Design System Components on [https://
 
 ### Install from npm
 
-``` js
+```js
 npm install @cdssnc/gcds-components
 ```
 
@@ -21,14 +21,27 @@ npm install @cdssnc/gcds-components
 Place the following code in the `<head>` element of your site.
 All gcds-components should now be ready to use in your site.
 
-``` html
-<!-- Font Awesome (Icons) -->
-<script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
+```html
+<!-- Icons Font Awesome (to access icons, import Font Awesome) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  crossorigin="anonymous"
+/>
 
 <!-- GC Design System -->
-<link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css">
-<script type="module" src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"></script>
-<script nomodule src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"
+></script>
+<script
+  nomodule
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"
+></script>
 ```
 
 Note: `<script type="module">` requires a server to load properly, if developing locally, please use `<script nomodule>`.
@@ -41,14 +54,27 @@ The gcds-component library works in multiple frameworks.
 
 Place the following code in the `<head>` element of your site.
 
-``` html
-<!-- Font Awesome (Icons) -->
-<script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
+```html
+<!-- Icons Font Awesome (to access icons, import Font Awesome) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  crossorigin="anonymous"
+/>
 
 <!-- GC Design System -->
-<link rel="stylesheet" href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css">
-<script type="module" src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"></script>
-<script nomodule src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.js"></script>
+<link
+  rel="stylesheet"
+  href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
+></script>
+<script
+  nomodule
+  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.js"
+></script>
 ```
 
 All gcds-components should now be ready to use in your site.
@@ -65,8 +91,11 @@ Please reference [GC Design System Components – Angular](../angular/README.md)
 
 Place the following code in the `main.js` file of your app.
 
-``` js
-import { applyPolyfills, defineCustomElements } from '@cdssnc/gcds-components/loader';
+```js
+import {
+  applyPolyfills,
+  defineCustomElements,
+} from '@cdssnc/gcds-components/loader';
 import '@cdssnc/gcds-components/dist/gcds/gcds.css';
 
 applyPolyfills().then(() => {
@@ -84,7 +113,7 @@ If you are interested in contributing to GC Design System Components, please rea
 
 Code released under the [MIT License](https://github.com/cds-snc/gcds-components/blob/main/LICENSE).
 
---------
+---
 
 # Composants de Système de design GC
 
@@ -98,7 +127,7 @@ Toute la documentation sur les composants de Système de design GC est accessibl
 
 ## Installer le paquet avec npm
 
-``` js
+```js
 npm install @cdssnc/gcds-components
 ```
 
@@ -108,14 +137,27 @@ Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site.
 
 Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components sur votre site.
 
-``` html
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
+```html
+<!-- Icons Font Awesome (pour avoir accès aux icônes, installer Font Awesome) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  crossorigin="anonymous"
+/>
 
 <!-- GC Système de design -->
-<link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css">
-<script type="module" src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"></script>
-<script nomodule src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"
+></script>
+<script
+  nomodule
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"
+></script>
 ```
 
 Remarque : Il faut un serveur pour que `<script type="module">` se charge correctement. Si vous développez localement, utilisez plutôt `<script nomodule>`.
@@ -128,12 +170,19 @@ La bibliothèque gcds-components fonctionne sous plusieurs cadres d'application.
 
 Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site.
 
-``` html
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/892cb27850.js" crossorigin="anonymous"></script>
+```html
+<!-- Icons Font Awesome (pour avoir accès aux icônes, installer Font Awesome) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  crossorigin="anonymous"
+/>
 
 <!-- GC Système de design -->
-<link rel="stylesheet" href="/node_modules/gcds-components/dist/gcds/gcds.css">
+<link
+  rel="stylesheet"
+  href="/node_modules/gcds-components/dist/gcds/gcds.css"
+/>
 <script type="module" src="/components/dist/gcds/gcds.esm.js"></script>
 <script nomodule src="/components/dist/gcds/gcds.js"></script>
 ```
@@ -152,7 +201,7 @@ Veuillez faire référence [Composants de Système de design GC – Angular](../
 
 Insérez le code qui suit dans le fichier `main.js` de votre application.
 
-``` js
+```js
 import { applyPolyfills, defineCustomElements } from 'gcds-components/loader';
 import 'gcds-components/dist/gcds/gcds.css';
 

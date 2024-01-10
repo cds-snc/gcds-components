@@ -15,6 +15,32 @@ A grid is a responsive, flexible column layout to position elements on a page.
 
 <br />
 
+### Simple grids
+
+#### Fluid grid
+
+Each grid column takes up a fractional amount of space within the grid and has no fixed width restrictions. The grid and its columns scale to the size of the viewport. This example has 4 columns for large viewports, 2 columns for medium viewports, and 1 column for smaller viewports.
+
+<Canvas of={Grid.Fluid} story={{ inline: true }} />
+
+#### Fixed width grid
+
+In fixed width grids each grid column has a fixed minimum and a maximum width to limit how wide they will span on any screen size. The columns scale until they either reach their minimum or their maximum width. Once a grid column reaches its minimum width, it gets moved to the next row if the space on the current row becomes smaller than its minimum width. In this example each grid column has a minimum width of 100px and a maximum width of 300px.
+
+<Canvas of={Grid.Fixed} story={{ inline: true }} />
+
+### Hybrid grid
+
+Hybrid grid columns include either a minimum or a maximum width and one fractional width. In this example each grid column is responsive with a minimum width of 400px and no maximum width which means it takes up the available space.
+
+<Canvas of={Grid.Hybrid} story={{ inline: true }} />
+
+### Individually sized grid
+
+When using individually sized grid columns, the grid columns define their own size. Each grid column can define a base, tablet (optional) and desktop (optional) size.
+
+<Canvas of={Grid.Individual} story={{ inline: true }} />
+
 ### Grid columns
 
 #### Columns
@@ -35,24 +61,10 @@ Use the `columns-desktop` property to define your layout for larger screens **(6
 
 <Canvas of={Grid.ColumnsDesktop} story={{ inline: true }} />
 
-### Equal width column
-
-#### Without width restrictions
-
-Opt out of setting the minimum and maximum width when you want to design equal-width columns without width restrictions. This will allow the grid and its columns to scale to the size of the viewport.
-
-<Canvas of={Grid.EqualFlexbile} story={{ inline: true }} />
-
-#### Setting a minimum und maximum width
-
-Set the minimum and maximum width to design equal-width columns with restrictions to limit how wide they will span on any screen size.
-
-<Canvas of={Grid.EqualWidth} story={{ inline: true }} />
-
 ## Resources
 
 {/* prettier-ignore */}
-<ul class="resources-list">
+<ul className="resources-list">
   <li>
     <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/Grid/" target="_blank">Guidance</gcds-link>
   </li>
