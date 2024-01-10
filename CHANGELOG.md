@@ -4,6 +4,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.18.1
+
+### Minor
+
+- https://github.com/cds-snc/gcds-components/pull/368 - [7774a88](https://github.com/cds-snc/gcds-components/commit/7774a8814b680d5798192dde9ce4b9550b86bba9) - Export ContentValues from gcds-grid to fix angular package build
+
 ## v0.18.0
 
 ### New features
