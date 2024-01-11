@@ -2,7 +2,7 @@ import { Validator } from '../validator';
 
 export const requiredFieldset: Validator<string> = {
   validate: (id: string) => {
-    const el = document.querySelector(`#${id}`);
+    const el = document.querySelector(`[fieldset-id=${id}]`);
     const elChildren = el.children;
 
     const isValid = validateFieldsetElements(el, elChildren);
