@@ -55,6 +55,8 @@ export class GcdsErrorSummary {
       this.errorLinks = newErrorLinks;
     }
 
+    this.errorQueue = this.errorLinks as Object;
+
     // Turn off listen if error-links is being used
     if (this.listen) {
       this.listen = false;
@@ -76,15 +78,17 @@ export class GcdsErrorSummary {
   @Listen('gcdsError', { target: 'document' })
   errorListener(e) {
     if (this.listen && e.target.closest('form') == this.el.closest('form')) {
-      this.errorLinksObject[e.detail.id] = e.detail.message;
+      this.errorLinksObject[e.detail.message] = e.target;
     }
   }
 
   @Listen('gcdsValid', { target: 'document' })
   validListener(e) {
     if (this.listen && e.target.closest('form') == this.el.closest('form')) {
-      if (this.errorLinksObject && this.errorLinksObject[e.detail.id]) {
-        delete this.errorLinksObject[e.detail.id];
+      for (const [key, value] of Object.entries(this.errorLinksObject)) {
+        if (value == e.target) {
+          delete this.errorLinksObject[key];
+        }
       }
 
       if (this.errorQueue) {
@@ -119,11 +123,11 @@ export class GcdsErrorSummary {
    */
   sortErrors() {
     const sortable = [];
-    for (const id in this.errorLinksObject) {
+    for (const [key, value] of Object.entries(this.errorLinksObject)) {
       sortable.push([
-        id,
-        this.errorLinksObject[id],
-        document.querySelector(id).getBoundingClientRect().y,
+        key,
+        value,
+        (value as HTMLElement).getBoundingClientRect().y,
       ]);
     }
 
@@ -142,9 +146,7 @@ export class GcdsErrorSummary {
   /*
    * Focus element on error link click with label visible
    */
-  focusElement(event, id) {
-    event.preventDefault();
-
+  focusElement(id) {
     const element = document.querySelector(id);
 
     let target = `[for=${id.replace('#', '')}]`;
@@ -205,13 +207,17 @@ export class GcdsErrorSummary {
               Object.keys(errorQueue).map(key => {
                 return (
                   <li class="summary__listitem">
-                    <a
-                      onClick={e => this.focusElement(e, key)}
-                      class="summary__link"
-                      href={key}
+                    <gcds-link
+                      href="#"
+                      onClick={e => {
+                        e.preventDefault();
+                        errorLinks
+                          ? this.focusElement(key)
+                          : (errorQueue[key] as HTMLElement).focus();
+                      }}
                     >
-                      {errorQueue[key]}
-                    </a>
+                      {errorLinks ? errorQueue[key] : key}
+                    </gcds-link>
                   </li>
                 );
               })}
