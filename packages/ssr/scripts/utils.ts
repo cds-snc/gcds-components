@@ -78,8 +78,8 @@ const ${toPascalCase(elementName)}WebComponent = React.forwardRef(({ children = 
     nativeProps[p.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()] = nonEventProps[p];
   }
 
-  if (nativeProps.wrapped) {
-    delete nativeProps.wrapped;
+  if (nativeProps.isAlreadyWrapped) {
+    delete nativeProps.isAlreadyWrapped;
   }
 
   if (typeof window !== 'undefined') {
@@ -96,11 +96,11 @@ function ${toPascalCase(elementName)}(props) {
   if (!props['noSSR'] && typeof window == 'undefined') {
     let cloned = [];
 
-    // Pass wrapped prop to children GCDS components
+    // Pass isAlreadyWrapped prop to children GCDS components
     if (Array.isArray(props.children)) {
       props.children.map((child, i) => {
         if (child.type && child.type.toString().includes('Gcds')) {
-          cloned.push(React.cloneElement(child, { wrapped: true, key: i }));
+          cloned.push(React.cloneElement(child, { isAlreadyWrapped: true, key: i }));
         } else if (typeof child == 'string') {
           cloned.push(child);
         } else {
@@ -109,7 +109,7 @@ function ${toPascalCase(elementName)}(props) {
       });
     } else if (typeof props.children == 'object') {
       if (props.children.type && props.children.type.toString().includes('Gcds')) {
-        cloned.push(React.cloneElement(props.children, { wrapped: true, key: 0 }));
+        cloned.push(React.cloneElement(props.children, { isAlreadyWrapped: true, key: 0 }));
       } else {
         cloned.push(React.cloneElement(props.children, { key: 0 }));
       }
@@ -117,8 +117,7 @@ function ${toPascalCase(elementName)}(props) {
       cloned = props.children;
     }
 
-    // Render without GcdsWrapper if wrapped: true
-    if (props.wrapped) {
+    if (props.isAlreadyWrapped) {
       return(
         <${toPascalCase(elementName)}WebComponent {...props}>
           {cloned}

@@ -37,18 +37,18 @@ function resolve(children, result = []) {
       } else {
         // Function component
         const props = { ...node.props };
-        // Apply extra wrapped prop to GCDS components
+        // Apply extra isAlreadyWrapped prop to GCDS components
         if (node.type.toString().includes('Gcds')) {
-          props.wrapped = true;
+          props.isAlreadyWrapped = true;
         }
         resolve(node.type(props), result);
       }
     } else if (typeof node.type === 'object' && typeof node.type.render === 'function') {
       const props = { ...node.props };
       const renderedComp = node.type.render(node.props);
-      // Apply extra wrapped attribute to GCDS components
+      // Apply extra isAlreadyWrapped attribute to GCDS components
       if (renderedComp.type.includes('gcds-')) {
-        props.wrapped = true;
+        props.isAlreadyWrapped = true;
       }
       resolve(node.type.render(props), result);
     }
