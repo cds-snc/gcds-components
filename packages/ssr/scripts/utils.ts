@@ -98,15 +98,15 @@ function ${toPascalCase(elementName)}(props) {
 
     // Pass wrapped prop to children GCDS components
     if (Array.isArray(props.children)) {
-      for (let x = 0; x< props.children.length; x++) {
-        if (props.children[x].type && props.children[x].type.toString().includes('Gcds')) {
-          cloned.push(React.cloneElement(props.children[x], { wrapped: true, key: x }));
-        } else if (typeof props.children[x] == 'string') {
-          cloned.push(props.children[x]);
+      props.children.map((child, i) => {
+        if (child.type && child.type.toString().includes('Gcds')) {
+          cloned.push(React.cloneElement(child, { wrapped: true, key: i }));
+        } else if (typeof child == 'string') {
+          cloned.push(child);
         } else {
-          cloned.push(React.cloneElement(props.children[x], { key: x }));
+          cloned.push(React.cloneElement(child, { key: i }));
         }
-      }
+      });
     } else if (typeof props.children == 'object') {
       if (props.children.type && props.children.type.toString().includes('Gcds')) {
         cloned.push(React.cloneElement(props.children, { wrapped: true, key: 0 }));
