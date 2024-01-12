@@ -2,7 +2,7 @@ diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/
 index c1c9fdc..85eb016 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
 +++ b/node_modules/@stencil/core/internal/client/index.js
-@@ -3700,7 +3700,7 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
+@@ -4011,7 +4011,7 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
  };
  const styles = /*@__PURE__*/ new Map();
  const modeResolutionChain = [];
