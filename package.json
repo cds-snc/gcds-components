@@ -2,6 +2,7 @@
   "name": "gcds-components-repo",
   "version": "0.1.13",
   "description": "GCDS components repo",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
