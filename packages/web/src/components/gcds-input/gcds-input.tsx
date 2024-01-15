@@ -37,6 +37,8 @@ export class GcdsInput {
   @AttachInternals()
   internals: ElementInternals;
 
+  private initialValue?: string;
+
   private shadowElement?: HTMLElement;
 
   _validator: Validator<string> = defaultValidator;
@@ -238,12 +240,26 @@ export class GcdsInput {
     }
   }
 
+  @Listen('keydown', { target: 'document' })
+  keyDownListener(e) {
+    if (e.target == this.el && e.key == 'Enter') {
+      const formButton = document.createElement('button');
+      formButton.type = 'submit';
+      formButton.style.display = 'none';
+      this.el.closest('form').appendChild(formButton);
+      formButton.click();
+      formButton.remove();
+    }
+  }
+
   /*
    * Form internal functions
    */
   formResetCallback() {
-    this.internals.setFormValue('');
-    this.value = '';
+    if (this.value != this.initialValue) {
+      this.internals.setFormValue(this.initialValue);
+      this.value = this.initialValue;
+    }
   }
 
   formStateRestoreCallback(state) {
@@ -286,6 +302,7 @@ export class GcdsInput {
     ]);
 
     this.internals.setFormValue(this.value ? this.value : null);
+    this.initialValue = this.value ? this.value : null;
   }
 
   componentWillUpdate() {

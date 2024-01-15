@@ -37,6 +37,8 @@ export class GcdsSelect {
   @AttachInternals()
   internals: ElementInternals;
 
+  private initialValue?: string;
+
   private shadowElement?: HTMLSelectElement;
 
   _validator: Validator<string> = defaultValidator;
@@ -148,6 +150,11 @@ export class GcdsSelect {
   @State() lang: string;
 
   /**
+   * List of passed options
+   */
+  @State() options: Element[];
+
+  /**
    * Events
    */
 
@@ -230,8 +237,10 @@ export class GcdsSelect {
    * Form internal functions
    */
   formResetCallback() {
-    this.internals.setFormValue('');
-    this.value = '';
+    if (this.value != this.initialValue) {
+      this.internals.setFormValue(this.initialValue);
+      this.value = this.initialValue;
+    }
   }
 
   formStateRestoreCallback(state) {
@@ -270,32 +279,27 @@ export class GcdsSelect {
     }
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
+
+    if (this.el.children) {
+      this.options = Array.from(this.el.children);
+      for (let x = 0; x < this.options.length; x++) {
+        if (this.options[x].hasAttribute('selected')) {
+          this.value = this.options[x].getAttribute('value');
+          this.initialValue = this.value ? this.value : null;
+        }
+
+        if (this.value == this.options[x].getAttribute('value')) {
+          this.options[x].setAttribute('selected', 'true');
+          this.internals.setFormValue(this.options[x].getAttribute('value'));
+          this.initialValue = this.value;
+        }
+      }
+    }
   }
 
   componentWillUpdate() {
     if (this.validator) {
       this._validator = getValidator(this.validator);
-    }
-  }
-
-  componentDidLoad() {
-    if (this.el.children) {
-      const options = Array.from(this.el.children);
-      for (let opt = 0; opt < this.el.children.length + opt; opt++) {
-        if (options[opt].hasAttribute('selected')) {
-          this.value = options[opt].getAttribute('value');
-        }
-        this.shadowElement.appendChild(options[opt]);
-      }
-    }
-
-    if (this.value) {
-      for (let opt = 0; opt < this.shadowElement.options.length; opt++) {
-        if (this.shadowElement.options[opt].value == this.value) {
-          this.shadowElement.options[opt].setAttribute('selected', '');
-          this.internals.setFormValue(this.shadowElement.options[opt].value);
-        }
-      }
     }
   }
 
@@ -313,6 +317,7 @@ export class GcdsSelect {
       inheritedAttributes,
       hasError,
       name,
+      options,
     } = this;
 
     const attrsSelect = {
@@ -368,6 +373,16 @@ export class GcdsSelect {
                 {defaultValue}
               </option>
             ) : null}
+            {options.map(opt => {
+              return (
+                <option
+                  value={opt.getAttribute('value')}
+                  selected={opt.getAttribute('selected') ? true : false}
+                >
+                  {opt.innerHTML}
+                </option>
+              );
+            })}
           </select>
         </div>
       </Host>

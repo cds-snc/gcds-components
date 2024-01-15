@@ -38,6 +38,8 @@ export class GcdsCheckbox {
   @AttachInternals()
   internals: ElementInternals;
 
+  private initialState?: boolean;
+
   private shadowElement?: HTMLElement;
 
   _validator: Validator<unknown> = defaultValidator;
@@ -251,7 +253,9 @@ export class GcdsCheckbox {
    * Form internal functions
    */
   formResetCallback() {
-    this.checked = false;
+    if (this.checked != this.initialState) {
+      this.checked = this.initialState;
+    }
   }
 
   formStateRestoreCallback(state) {
@@ -292,6 +296,7 @@ export class GcdsCheckbox {
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
 
     this.internals.setFormValue(this.checked ? this.value : null);
+    this.initialState = this.checked ? this.checked : null;
   }
 
   componentWillUpdate() {

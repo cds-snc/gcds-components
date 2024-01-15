@@ -38,7 +38,9 @@ export class GcdsTextarea {
   @AttachInternals()
   internals: ElementInternals;
 
-  private shadowElement?: HTMLElement;
+  private initialValue?: string;
+
+  private shadowElement?: HTMLTextAreaElement;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -245,8 +247,11 @@ export class GcdsTextarea {
    * Form internal functions
    */
   formResetCallback() {
-    this.internals.setFormValue('');
-    this.value = '';
+    if (this.value != this.initialValue) {
+      this.internals.setFormValue(this.initialValue);
+      this.value = this.initialValue;
+      this.shadowElement.value = this.initialValue;
+    }
   }
 
   formStateRestoreCallback(state) {
@@ -289,6 +294,7 @@ export class GcdsTextarea {
     ]);
 
     this.internals.setFormValue(this.value ? this.value : null);
+    this.initialValue = this.value ? this.value : null;
   }
 
   componentWillUpdate() {
@@ -376,7 +382,9 @@ export class GcdsTextarea {
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={characterCount ? characterCount : null}
             style={cols ? style : null}
-            ref={element => (this.shadowElement = element as HTMLElement)}
+            ref={element =>
+              (this.shadowElement = element as HTMLTextAreaElement)
+            }
           >
             {value}
           </textarea>
