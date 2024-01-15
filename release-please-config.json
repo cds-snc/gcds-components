@@ -1,0 +1,28 @@
+{
+  "bootstrap-sha": "5445327dd19538ff79ab6f981ac36ea262423049",
+  "packages": {
+    ".": {
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false,
+      "pull-request-title-pattern": "chore: GCDS Components Release v${version}"
+    }
+  },
+  "changelog-sections": [
+    { "type": "feat", "section": "New Features" },
+    { "type": "feature", "section": "New Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "perf", "section": "Performance Improvements" },
+    { "type": "revert", "section": "Reverts", "hidden": true },
+    { "type": "docs", "section": "Documentation" },
+    { "type": "style", "section": "Styles" },
+    { "type": "chore", "section": "Patch" },
+    { "type": "refactor", "section": "Code Refactoring" },
+    { "type": "test", "section": "Tests", "hidden": true },
+    { "type": "build", "section": "Build System", "hidden": true },
+    { "type": "ci", "section": "Continuous Integration", "hidden": true }
+  ],
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}
