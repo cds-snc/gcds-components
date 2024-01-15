@@ -1,6 +1,6 @@
 {
   "name": "gcds-components-repo",
-  "version": "0.1.13",
+  "version": "0.18.0",
   "description": "GCDS components repo",
   "scripts": {
     "ng": "ng",
