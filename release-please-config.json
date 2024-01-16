@@ -1,14 +1,6 @@
 {
   "bootstrap-sha": "5445327dd19538ff79ab6f981ac36ea262423049",
   "packages": {
-    ".": {
-      "changelog-path": "CHANGELOG.md",
-      "bump-minor-pre-major": false,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "pull-request-title-pattern": "chore: GCDS Components Release v${version}"
-    },
     "packages/angular": {
       "changelog-path": "CHANGELOG.md",
       "bump-minor-pre-major": false,
