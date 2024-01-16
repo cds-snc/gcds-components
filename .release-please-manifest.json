@@ -1,3 +1,6 @@
 {
-  ".": "0.18.1"
+  ".": "0.1.13",
+  "packages/angular": "0.18.1",
+  "packages/react": "0.18.1",
+  "packages/web": "0.18.1"
 }
