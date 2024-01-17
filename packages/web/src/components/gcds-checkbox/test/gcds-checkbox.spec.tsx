@@ -13,10 +13,12 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkbox checkbox-id="checkbox" label="checkbox" name="checkbox">
-        <div class="gcds-checkbox">
-           <input id="checkbox" name="checkbox" type="checkbox">
-           <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-checkbox">
+            <input id="checkbox" name="checkbox" type="checkbox">
+            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
+          </div>
+         </mock:shadow-root>
       </gcds-checkbox>
     `);
   });
@@ -33,10 +35,12 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkbox checkbox-id="checkbox" checked="" label="checkbox" name="checkbox" value="terms">
-        <div class="gcds-checkbox">
-           <input checked="" id="checkbox" name="checkbox" type="checkbox" value="terms">
-           <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-checkbox">
+            <input checked="" id="checkbox" name="checkbox" type="checkbox" value="terms">
+            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
+          </div>
+         </mock:shadow-root>
       </gcds-checkbox>
     `);
   });
@@ -52,11 +56,13 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkbox checkbox-id="checkbox" hint="this is a hint" label="checkbox" name="checkbox">
-        <div class="gcds-checkbox">
-           <input aria-describedby="hint-checkbox " id="checkbox" name="checkbox" type="checkbox">
-           <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
-           <gcds-hint hint="this is a hint" hint-id="checkbox"></gcds-hint>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-checkbox">
+            <input aria-describedby="hint-checkbox " id="checkbox" name="checkbox" type="checkbox">
+            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
+            <gcds-hint hint="this is a hint" hint-id="checkbox"></gcds-hint>
+          </div>
+         </mock:shadow-root>
       </gcds-checkbox>
     `);
   });
@@ -72,11 +78,13 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkbox checkbox-id="checkbox" error-message="This needs to be checked" label="checkbox" name="checkbox">
-        <div class="gcds-checkbox gcds-checkbox--error">
-           <input aria-describedby="error-message-checkbox " aria-invalid="true" id="checkbox" name="checkbox" type="checkbox">
-           <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
-           <gcds-error-message message="This needs to be checked" messageId="checkbox"></gcds-error-message>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-checkbox gcds-checkbox--error">
+            <input aria-describedby="error-message-checkbox " aria-invalid="true" id="checkbox" name="checkbox" type="checkbox">
+            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
+            <gcds-error-message message="This needs to be checked" messageId="checkbox"></gcds-error-message>
+          </div>
+         </mock:shadow-root>
       </gcds-checkbox>
     `);
   });
@@ -92,10 +100,12 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkbox checkbox-id="checkbox" disabled="" error-message="" label="checkbox" name="checkbox">
-        <div class="gcds-checkbox gcds-checkbox--disabled">
-           <input disabled="" id="checkbox" name="checkbox" type="checkbox">
-           <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-checkbox gcds-checkbox--disabled">
+            <input disabled="" id="checkbox" name="checkbox" type="checkbox">
+            <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
+          </div>
+         </mock:shadow-root>
       </gcds-checkbox>
     `);
   });
