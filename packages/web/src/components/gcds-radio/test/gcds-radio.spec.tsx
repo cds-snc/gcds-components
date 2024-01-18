@@ -13,10 +13,12 @@ describe('gcds-radio', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radio radio-id="radio" label="radio" name="radio">
-        <div class="gcds-radio">
-           <input id="radio" name="radio" type="radio">
-           <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-radio">
+            <input id="radio" name="radio" type="radio">
+            <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
+          </div>
+         </mock:shadow-root>
       </gcds-radio>
     `);
   });
@@ -33,10 +35,12 @@ describe('gcds-radio', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radio radio-id="radio" checked="" label="radio" name="radio" value="terms">
-        <div class="gcds-radio">
-           <input checked="" id="radio" name="radio" type="radio" value="terms">
-           <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-radio">
+            <input checked="" id="radio" name="radio" type="radio" value="terms">
+            <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
+          </div>
+         </mock:shadow-root>
       </gcds-radio>
     `);
   });
@@ -52,11 +56,13 @@ describe('gcds-radio', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radio radio-id="radio" hint="this is a hint" label="radio" name="radio">
-        <div class="gcds-radio">
-           <input aria-describedby="hint-radio " id="radio" name="radio" type="radio">
-           <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
-           <gcds-hint hint="this is a hint" hint-id="radio"></gcds-hint>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-radio">
+            <input aria-describedby="hint-radio " id="radio" name="radio" type="radio">
+            <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
+            <gcds-hint hint="this is a hint" hint-id="radio"></gcds-hint>
+          </div>
+         </mock:shadow-root>
       </gcds-radio>
     `);
   });
@@ -72,10 +78,12 @@ describe('gcds-radio', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radio radio-id="radio" disabled="" label="radio" name="radio">
-        <div class="gcds-radio--disabled gcds-radio">
-           <input disabled="" id="radio" name="radio" type="radio">
-           <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
-         </div>
+        <mock:shadow-root>
+          <div class="gcds-radio--disabled gcds-radio">
+            <input disabled="" id="radio" name="radio" type="radio">
+            <gcds-label label="radio" label-for="radio" lang="en"></gcds-label>
+          </div>
+         </mock:shadow-root>
       </gcds-radio>
     `);
   });
