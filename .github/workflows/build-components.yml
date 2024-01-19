@@ -1,18 +1,12 @@
-name: Renovate pull request
+name: Build components
 on:
   pull_request:
       branches:
         - main
-      types:
-        - labeled
-        - opened
-        - synchronize
-        - reopened
 
 jobs:
   build-packages:
     name: Build all packages
-    if: contains(github.event.pull_request.labels.*.name, 'Renovate')
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
@@ -63,7 +57,6 @@ jobs:
 
   build-storybook:
     name: Build storybook
-    if: contains(github.event.pull_request.labels.*.name, 'Renovate')
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
