@@ -1,8 +1,8 @@
 diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
-index a5153fa..c7dec25 100644
+index 767b59b..3a861af 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
 +++ b/node_modules/@stencil/core/internal/client/index.js
-@@ -4008,7 +4008,7 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
+@@ -3987,7 +3987,7 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
  };
  const styles = /*@__PURE__*/ new Map();
  const modeResolutionChain = [];
@@ -12,10 +12,10 @@ index a5153fa..c7dec25 100644
  const H = (win.HTMLElement || class {
  });
 diff --git a/node_modules/@stencil/core/mock-doc/index.cjs b/node_modules/@stencil/core/mock-doc/index.cjs
-index d7fcb35..5da16f8 100644
+index 13b322c..e0ed9ac 100644
 --- a/node_modules/@stencil/core/mock-doc/index.cjs
 +++ b/node_modules/@stencil/core/mock-doc/index.cjs
-@@ -3306,12 +3306,7 @@ class MockNodeList {
+@@ -3304,12 +3304,7 @@ class MockNodeList {
  }
  class MockElement extends MockNode {
      attachInternals() {
@@ -25,15 +25,15 @@ index d7fcb35..5da16f8 100644
 -Testing components with ElementInternals is fully supported in e2e tests.`);
 -            },
 -        });
-+        return { setFormValue: (value) => {}};
++      return { setFormValue: (value) => {}};
      }
      constructor(ownerDocument, nodeName, namespaceURI = null) {
          super(ownerDocument, 1 /* NODE_TYPES.ELEMENT_NODE */, typeof nodeName === 'string' ? nodeName : null, null);
 diff --git a/node_modules/@stencil/core/mock-doc/index.js b/node_modules/@stencil/core/mock-doc/index.js
-index 0d59979..817e141 100644
+index a061891..d9bd7e1 100644
 --- a/node_modules/@stencil/core/mock-doc/index.js
 +++ b/node_modules/@stencil/core/mock-doc/index.js
-@@ -3303,12 +3303,7 @@ class MockNodeList {
+@@ -3301,12 +3301,7 @@ class MockNodeList {
  }
  class MockElement extends MockNode {
      attachInternals() {
