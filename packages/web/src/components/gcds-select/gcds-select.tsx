@@ -178,7 +178,7 @@ export class GcdsSelect {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   private onBlur = () => {
-    if (this.validateOn == 'blur') {
+    if (this.validateOn === 'blur') {
       this.validate();
     }
 
@@ -282,18 +282,17 @@ export class GcdsSelect {
 
     if (this.el.children) {
       this.options = Array.from(this.el.children);
-      for (let x = 0; x < this.options.length; x++) {
-        if (this.options[x].hasAttribute('selected')) {
-          this.value = this.options[x].getAttribute('value');
+      this.options.map(option => {
+        if (option.hasAttribute('selected')) {
+          this.value = option.getAttribute('value');
           this.initialValue = this.value ? this.value : null;
         }
-
-        if (this.value == this.options[x].getAttribute('value')) {
-          this.options[x].setAttribute('selected', 'true');
-          this.internals.setFormValue(this.options[x].getAttribute('value'));
+        if (this.value === option.getAttribute('value')) {
+          option.setAttribute('selected', 'true');
+          this.internals.setFormValue(option.getAttribute('value'));
           this.initialValue = this.value;
         }
-      }
+      });
     }
   }
 

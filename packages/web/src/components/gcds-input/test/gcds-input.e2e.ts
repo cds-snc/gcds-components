@@ -11,6 +11,25 @@ describe('gcds-input', () => {
     const element = await await page.find('gcds-input >>> input');
     expect(element.getAttribute('id')).toEqual('input-renders');
   });
+  it('Submit using enter', async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      `<form noValidate>
+      <gcds-input label="Label" input-id="enter-submit" name="enter-submit"/>
+      </form>`,
+    );
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('r');
+    await page.keyboard.press('e');
+    await page.keyboard.press('d');
+    await page.keyboard.press('Enter');
+
+    await page.waitForChanges();
+
+    expect(page.url()).toContain('?enter-submit=red');
+  });
 });
 
 /**

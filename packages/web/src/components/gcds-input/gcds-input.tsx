@@ -242,7 +242,7 @@ export class GcdsInput {
 
   @Listen('keydown', { target: 'document' })
   keyDownListener(e) {
-    if (e.target == this.el && e.key == 'Enter') {
+    if (e.target == this.el && e.key === 'Enter') {
       const formButton = document.createElement('button');
       formButton.type = 'submit';
       formButton.style.display = 'none';
