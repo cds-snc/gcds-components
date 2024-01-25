@@ -8,7 +8,6 @@
   "group-pull-request-title-pattern": "chore: GCDS Components Release v${version}",
   "include-component-in-tag": true,
   "packages": {
-    ".":  {},
     "packages/angular": {
       "component": "gcds-components-angular",
       "changelog-path": ""
