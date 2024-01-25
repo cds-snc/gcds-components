@@ -6,16 +6,20 @@
   "draft": false,
   "prerelease": false,
   "group-pull-request-title-pattern": "chore: GCDS Components Release v${version}",
+  "include-component-in-tag": true,
   "packages": {
     ".":  {},
     "packages/angular": {
+      "component": "gcds-components-angular",
       "changelog-path": "../../CHANGELOG.md"
     },
     "packages/react": {
+      "component": "gcds-components-react",
       "changelog-path": "../../CHANGELOG.md"
 
     },
     "packages/web": {
+      "component": "gcds-components",
       "changelog-path": "../../CHANGELOG.md"
     }
   },
@@ -33,6 +37,21 @@
     { "type": "build", "section": "Build System", "hidden": true },
     { "type": "ci", "section": "Continuous Integration", "hidden": true }
   ],
-  "include-component-in-tag": false,
+  "release-type": "node",
+  "plugins": [
+    {
+      "type": "node-workspace",
+      "updatePeerDependencies": true
+    },
+    {
+      "type": "linked-versions",
+      "groupName": "GCDS Components",
+      "components": [
+        "gcds-components-angular",
+        "gcds-components-react",
+        "gcds-components"
+      ]
+    }
+  ],
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
