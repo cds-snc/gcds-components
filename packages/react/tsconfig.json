@@ -1,4 +1,5 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "allowUnreachableCode": false,
     "allowSyntheticDefaultImports": true,
@@ -17,9 +18,11 @@
     "removeComments": false,
     "skipLibCheck": true,
     "jsx": "react",
-    "target": "es2015"
+    "target": "es2015",
+    "declarationDir": "./dist/types"
   },
   "include": [
+    "lib",
     "src/**/*.ts",
     "src/**/*.tsx",
   ],
