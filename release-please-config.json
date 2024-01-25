@@ -6,11 +6,18 @@
   "draft": false,
   "prerelease": false,
   "group-pull-request-title-pattern": "chore: GCDS Components Release v${version}",
-  "changelog-path": "CHANGELOG.md",
   "packages": {
-    "packages/angular": {},
-    "packages/react": {},
-    "packages/web": {}
+    ".":  {},
+    "packages/angular": {
+      "changelog-path": "../../CHANGELOG.md"
+    },
+    "packages/react": {
+      "changelog-path": "../../CHANGELOG.md"
+
+    },
+    "packages/web": {
+      "changelog-path": "../../CHANGELOG.md"
+    }
   },
   "changelog-sections": [
     { "type": "feat", "section": "New Features" },
