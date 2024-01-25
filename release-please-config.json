@@ -1,32 +1,16 @@
 {
   "bootstrap-sha": "5445327dd19538ff79ab6f981ac36ea262423049",
   "last-release-sha": "7c5725a33d1dcbd210a9b2e07382ffcb675d3eb1",
-  "pull-request-title-pattern": "chore: GCDS Components Release v${version}",
+  "bump-minor-pre-major": false,
+  "bump-patch-for-minor-pre-major": false,
+  "draft": false,
+  "prerelease": false,
+  "group-pull-request-title-pattern": "chore: GCDS Components Release v${version}",
+  "changelog-path": "CHANGELOG.md",
   "packages": {
-    "packages/angular": {
-      "changelog-path": "CHANGELOG.md",
-      "bump-minor-pre-major": false,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "pull-request-title-pattern": "chore: GCDS Components Release v${version}"
-    },
-    "packages/react": {
-      "changelog-path": "CHANGELOG.md",
-      "bump-minor-pre-major": false,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "pull-request-title-pattern": "chore: GCDS Components Release v${version}"
-    },
-    "packages/web": {
-      "changelog-path": "CHANGELOG.md",
-      "bump-minor-pre-major": false,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "pull-request-title-pattern": "chore: GCDS Components Release v${version}"
-    }
+    "packages/angular": {},
+    "packages/react": {},
+    "packages/web": {}
   },
   "changelog-sections": [
     { "type": "feat", "section": "New Features" },
