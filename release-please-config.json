@@ -11,16 +11,16 @@
     ".":  {},
     "packages/angular": {
       "component": "gcds-components-angular",
-      "changelog-path": "../../CHANGELOG.md"
+      "changelog-path": ""
     },
     "packages/react": {
       "component": "gcds-components-react",
-      "changelog-path": "../../CHANGELOG.md"
+      "changelog-path": ""
 
     },
     "packages/web": {
       "component": "gcds-components",
-      "changelog-path": "../../CHANGELOG.md"
+      "changelog-path": ""
     }
   },
   "changelog-sections": [
