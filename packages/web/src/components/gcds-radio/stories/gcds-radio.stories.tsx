@@ -12,17 +12,6 @@ export default {
 
   argTypes: {
     // Props
-    radioId: {
-      name: 'radio-id',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
-      },
-      type: {
-        required: true,
-      },
-    },
     name: {
       control: 'text',
       table: {
@@ -33,52 +22,26 @@ export default {
         required: true,
       },
     },
-    checked: {
-      control: { type: 'select' },
-      options: [false, true],
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
-      },
-    },
-    disabled: {
-      control: { type: 'select' },
-      options: [false, true],
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
-      },
-    },
-    hint: {
+    options: {
       control: 'text',
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
-      },
-    },
-    label: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
+        type: {
+          summary: `
+        {
+          id: string;
+          label: string;
+          value: string;
+          hint?: string;
+          checked?: boolean;
+          required?: boolean;
+          disabled?: boolean;
+        }
+        string | object[]`,
+        },
         defaultValue: { summary: '-' },
       },
       type: {
         required: true,
-      },
-    },
-    required: {
-      control: { type: 'select' },
-      options: [false, true],
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
-      },
-    },
-    value: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
       },
     },
     ...langProp,
@@ -109,29 +72,15 @@ const Template = args =>
   `
 <!-- Web component code (Angular, Vue) -->
 <gcds-radio
-  radio-id="${args.radioId}"
-  label="${args.label}"
   name="${args.name}"
-  ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
+  options='${args.options}'
 >
 </gcds-radio>
 
 <!-- React code -->
 <GcdsRadio
-  radioId="${args.radioId}"
-  label="${args.label}"
   name="${args.name}"
-  ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
+  options='${args.options}'
 >
 </GcdsRadio>
 `.replace(/\s\snull\n/g, '');
@@ -141,109 +90,68 @@ const TemplateError = args =>
 <gcds-fieldset
   legend="Fieldset legend"
   fieldset-id="fieldset"
-  error-message="Choose an option to continue."
   hint="Radio buttons only validate in fieldset"
   required
 >
   <gcds-radio
-    radio-id="${args.radioId}1"
-    label="${args.label}"
     name="${args.name}"
-    ${args.hint ? `hint="${args.hint}"` : null}
-    ${args.value ? `value="${args.value}1"` : null}
-    ${args.lang != 'en' ? `lang="${args.lang}"` : null}
-  >
-  </gcds-radio>
-  <gcds-radio
-    radio-id="${args.radioId}2"
-    label="${args.label}"
-    name="${args.name}"
-    ${args.hint ? `hint="${args.hint}"` : null}
-    ${args.value ? `value="${args.value}2"` : null}
-    ${args.lang != 'en' ? `lang="${args.lang}"` : null}
+    options='${args.options}'
   >
   </gcds-radio>
 </gcds-fieldset>
+
+<!-- Script to provide validated example -->
+<script>document.querySelector('[fieldset-id=fieldset').validate();</script>
 `.replace(/\s\snull\n/g, '');
 
 const TemplatePlayground = args =>
   `
 <!-- Web component code (Angular, Vue) -->
 <gcds-radio
-  radio-id="${args.radioId}"
-  label="${args.label}"
   name="${args.name}"
-  ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
+  options='${args.options}'
 >
 </gcds-radio>
 `.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  radioId: 'radio',
-  label: 'Label',
   name: 'radioDefault',
-  hint: 'Description or example to make the option clearer.',
-  required: false,
-  disabled: false,
-  value: '',
-  checked: false,
+  options:
+    '[{ "label": "Label", "id": "radio", "value": "radio" "hint": "Description or example to make the option clearer." }]',
   lang: 'en',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  radioId: 'radioCDisabled',
-  label: 'Label',
   name: 'radio',
-  hint: 'Description or example to make the option clearer.',
-  required: false,
-  disabled: true,
-  value: '',
-  checked: false,
+  options:
+    '[{ "label": "Label", "id": "radio", "value": "radio" "hint": "Description or example to make the option clearer.", "disabled": true }]',
   lang: 'en',
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
-  radioId: 'radioChecked',
-  label: 'Label',
   name: 'radio',
-  hint: 'Description or example to make the option clearer.',
-  required: false,
-  disabled: false,
-  value: '',
-  checked: true,
+  options:
+    '[{ "label": "Label", "id": "radio", "value": "radio" "hint": "Description or example to make the option clearer.", "checked": true }]',
   lang: 'en',
 };
 
 export const Error = TemplateError.bind({});
 Error.args = {
-  radioId: 'radio',
-  label: 'Label',
   name: 'radioDefault',
-  hint: 'Description or example to make the option clearer.',
-  required: false,
-  disabled: false,
-  value: '',
-  checked: false,
+  options: `[
+    { "label": "Label 1", "id": "radio1", "value": "radio-b1" "hint": "Description or example to make the option clearer." },
+    { "label": "Label 2", "id": "radio2", "value": "radio-b2" "hint": "Description or example to make the option clearer." }
+  ]`,
   lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  radioId: 'radio',
-  label: 'Label',
   name: 'radio',
-  hint: 'Description or example to make the option clearer.',
-  required: false,
-  disabled: false,
-  value: '',
-  checked: false,
+  options:
+    '[{ "label": "Label", "id": "radio", "value": "radio" "hint": "Description or example to make the option clearer." }]',
   lang: 'en',
 };

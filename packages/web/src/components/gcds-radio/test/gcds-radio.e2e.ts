@@ -5,7 +5,11 @@ describe('gcds-radio', () => {
   it('renders', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<gcds-radio label="Radio label" name="radio" radio-id="radio" />',
+      `<gcds-radio
+          name="radio"
+          options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+        >
+        </gcds-radio>`,
     );
 
     const element = await page.find('gcds-radio');
@@ -25,7 +29,11 @@ describe('gcds-radio a11y tests', () => {
   it('colour contrast', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-radio label="Label" radio-id="colour-contrast" />
+      <gcds-radio
+        name="radio"
+        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+      >
+      </gcds-radio>
     `);
 
     const colorContrastTest = new AxePuppeteer(page)
@@ -38,7 +46,11 @@ describe('gcds-radio a11y tests', () => {
   it('colour contrast - focus', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-radio label="Label" radio-id="colour-contrast" />
+      <gcds-radio
+        name="radio"
+        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+      >
+      </gcds-radio>
     `);
 
     await page.keyboard.press('Tab');
@@ -53,7 +65,11 @@ describe('gcds-radio a11y tests', () => {
   it('colour contrast - error', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-radio label="Label" radio-id="colour-contrast" has-error />
+      <gcds-radio
+        name="radio"
+        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+      >
+      </gcds-radio>
     `);
 
     const colorContrastTest = new AxePuppeteer(page)
@@ -66,7 +82,11 @@ describe('gcds-radio a11y tests', () => {
   it('colour contrast - disabled', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-radio label="Label" radio-id="colour-contrast" disabled />
+      <gcds-radio
+        name="radio"
+        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+      >
+      </gcds-radio>
     `);
 
     const colorContrastTest = new AxePuppeteer(page)
@@ -83,7 +103,11 @@ describe('gcds-radio a11y tests', () => {
   it('radio keyboard focus', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-radio label="Label" radio-id="keyboard-focus" />
+      <gcds-radio
+        name="radio"
+        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+      >
+      </gcds-radio>
     `);
 
     const inputField = await (
@@ -101,15 +125,53 @@ describe('gcds-radio a11y tests', () => {
   });
 
   /**
+   * Input keyboard control
+   */
+  it('radio keyboard control', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gcds-radio
+        name="radio"
+        options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+      >
+      </gcds-radio>
+    `);
+
+    const inputField = await await page.findAll('gcds-radio >>> input');
+
+    await page.keyboard.press('Tab');
+
+    expect(
+      await page.evaluate(
+        () =>
+          window.document.activeElement.shadowRoot.activeElement.textContent,
+      ),
+    ).toEqual(inputField[0].textContent);
+
+    await page.keyboard.press('ArrowDown');
+
+    expect(
+      await page.evaluate(
+        () =>
+          window.document.activeElement.shadowRoot.activeElement.textContent,
+      ),
+    ).toEqual(inputField[1].textContent);
+  });
+
+  /**
    * Input label test
    */
   it('radio contains label', async () => {
     const page = await newE2EPage();
+    await page.setContent(`
+      <gcds-radio
+        name="radio"
+        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+      >
+      </gcds-radio>
+    `);
 
-    await page.setContent(
-      '<gcds-radio label="Label" radio-id="contains-label" />',
-    );
     const element = await await page.find('gcds-radio >>> gcds-label');
-    expect(element.getAttribute('id')).toEqual('label-for-contains-label');
+    expect(element.getAttribute('id')).toEqual('label-for-radio');
   });
 });

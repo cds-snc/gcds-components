@@ -775,14 +775,14 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
 
 
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'hint', 'label', 'name', 'radioId', 'required', 'value']
+  inputs: ['name', 'options']
 })
 @Component({
   selector: 'gcds-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'hint', 'label', 'name', 'radioId', 'required', 'value'],
+  inputs: ['name', 'options'],
 })
 export class GcdsRadio {
   protected el: HTMLElement;

@@ -6,7 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+import { RadioObject } from "./components/gcds-radio/gcds-radio";
 export { Validator, ValidatorEntry } from "./validators";
+export { RadioObject } from "./components/gcds-radio/gcds-radio";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -861,37 +863,13 @@ export namespace Components {
     }
     interface GcdsRadio {
         /**
-          * Specifies if an input element is checked.
-         */
-        "checked": boolean;
-        /**
-          * Specifies if an input element is disabled or not.
-         */
-        "disabled": boolean;
-        /**
-          * Hint displayed below the label.
-         */
-        "hint": string;
-        /**
-          * Form field label
-         */
-        "label": string;
-        /**
           * Name attribute for an input element.
          */
         "name": string;
         /**
-          * Id attribute for an input element.
+          * Options to render radio buttons
          */
-        "radioId": string;
-        /**
-          * Specifies if a form field is required or not.
-         */
-        "required": boolean;
-        /**
-          * Value for an input element.
-         */
-        "value": string;
+        "options": string | Array<RadioObject>;
     }
     interface GcdsSearch {
         /**
@@ -2649,22 +2627,6 @@ declare namespace LocalJSX {
     }
     interface GcdsRadio {
         /**
-          * Specifies if an input element is checked.
-         */
-        "checked"?: boolean;
-        /**
-          * Specifies if an input element is disabled or not.
-         */
-        "disabled"?: boolean;
-        /**
-          * Hint displayed below the label.
-         */
-        "hint"?: string;
-        /**
-          * Form field label
-         */
-        "label": string;
-        /**
           * Name attribute for an input element.
          */
         "name": string;
@@ -2681,17 +2643,9 @@ declare namespace LocalJSX {
          */
         "onGcdsRadioChange"?: (event: GcdsRadioCustomEvent<void>) => void;
         /**
-          * Id attribute for an input element.
+          * Options to render radio buttons
          */
-        "radioId": string;
-        /**
-          * Specifies if a form field is required or not.
-         */
-        "required"?: boolean;
-        /**
-          * Value for an input element.
-         */
-        "value"?: string;
+        "options": string | Array<RadioObject>;
     }
     interface GcdsSearch {
         /**

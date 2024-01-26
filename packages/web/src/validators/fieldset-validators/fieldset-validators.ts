@@ -29,9 +29,8 @@ export function validateFieldsetElements(element, nodeList) {
         break;
       }
 
-      case 'GCDS-CHECKBOX':
-      case 'GCDS-RADIO': {
-        // Radio/checkbox can share name property
+      case 'GCDS-CHECKBOX': {
+        // Checkboxes can share name property
         const inputName = nodeList[i].getAttribute('name');
         // Find all inputs with shared name
         const sameNameInputs = element.querySelectorAll(`[name=${inputName}]`);
@@ -50,6 +49,22 @@ export function validateFieldsetElements(element, nodeList) {
           // Validate as single input
           isValid.push(nodeList[i].hasAttribute('checked') ? true : false);
         }
+        break;
+      }
+      case 'GCDS-RADIO': {
+        const inputName = nodeList[i].getAttribute('name');
+        // Find all inputs with shared name
+        const sameNameInputs = element.querySelector(`[name=${inputName}]`);
+        const shadowInputs =
+          sameNameInputs.shadowRoot.querySelectorAll('input');
+        let childGroupValid = false;
+
+        for (let r = 0; r < shadowInputs.length; r++) {
+          if (shadowInputs[r].checked) {
+            childGroupValid = true;
+          }
+        }
+        isValid.push(childGroupValid);
         break;
       }
 
