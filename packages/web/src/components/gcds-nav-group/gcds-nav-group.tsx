@@ -7,6 +7,7 @@ import {
   Method,
   Event,
   EventEmitter,
+  Listen,
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
@@ -55,6 +56,18 @@ export class GcdsNavGroup {
    * Style of nav to render based on parent
    */
   @State() navStyle: string;
+
+  @Listen('focusout', { target: 'document' })
+  async focusOutListener(e) {
+    if (
+      (e.target === this.el || this.el.contains(e.target)) &&
+      !this.el.contains(e.relatedTarget) &&
+      this.navStyle == 'dropdown' &&
+      this.open
+    ) {
+      this.toggleNav();
+    }
+  }
 
   /**
    * Focus button element
