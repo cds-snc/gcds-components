@@ -32,9 +32,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  gcds-radio --> gcds-label
-  gcds-radio --> gcds-hint
-  style gcds-radio fill:#f9f,stroke:#333,stroke-width:4px
+  gcds-radio-group --> gcds-label
+  gcds-radio-group --> gcds-hint
+  style gcds-radio-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

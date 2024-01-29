@@ -1,7 +1,7 @@
 import { langProp } from '../../../utils/storybook/component-properties';
 
 export default {
-  title: 'Components/Radio',
+  title: 'Components/Radio Group',
 
   parameters: {
     actions: {
@@ -48,7 +48,7 @@ export default {
 
     // Events
     gcdsRadioChange: {
-      action: 'RadioChnage',
+      action: 'RadioChange',
       table: {
         category: 'Events | Événements',
       },
@@ -71,18 +71,18 @@ export default {
 const Template = args =>
   `
 <!-- Web component code (Angular, Vue) -->
-<gcds-radio
+<gcds-radio-group
   name="${args.name}"
   options='${args.options}'
 >
-</gcds-radio>
+</gcds-radio-group>
 
 <!-- React code -->
-<GcdsRadio
+<GcdsRadioGroup
   name="${args.name}"
   options='${args.options}'
 >
-</GcdsRadio>
+</GcdsRadioGroup>
 `.replace(/\s\snull\n/g, '');
 
 const TemplateError = args =>
@@ -93,11 +93,11 @@ const TemplateError = args =>
   hint="Radio buttons only validate in fieldset"
   required
 >
-  <gcds-radio
+  <gcds-radio-group
     name="${args.name}"
     options='${args.options}'
   >
-  </gcds-radio>
+  </gcds-radio-group>
 </gcds-fieldset>
 
 <!-- Script to provide validated example -->
@@ -107,11 +107,11 @@ const TemplateError = args =>
 const TemplatePlayground = args =>
   `
 <!-- Web component code (Angular, Vue) -->
-<gcds-radio
+<gcds-radio-group
   name="${args.name}"
   options='${args.options}'
 >
-</gcds-radio>
+</gcds-radio-group>
 `.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});

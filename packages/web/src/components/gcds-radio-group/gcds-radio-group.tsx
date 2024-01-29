@@ -28,12 +28,12 @@ export type RadioObject = {
 };
 
 @Component({
-  tag: 'gcds-radio',
-  styleUrl: 'gcds-radio.css',
+  tag: 'gcds-radio-group',
+  styleUrl: 'gcds-radio-group.css',
   shadow: { delegatesFocus: true },
   formAssociated: true,
 })
-export class GcdsRadio {
+export class GcdsRadioGroup {
   @Element() el: HTMLElement;
 
   @AttachInternals()

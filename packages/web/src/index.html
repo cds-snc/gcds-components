@@ -114,9 +114,12 @@
 
         <gcds-file-uploader uploader-id="file" name="file" label="File" hint="This will have files" multiple></gcds-file-uploader>
 
-        <gcds-fieldset legend="Fieldset" fieldset-id="fieldset" hint="This is a hint">
-          <gcds-radio name="radiowc" label="Radio 1" radio-id="r1" value="red"></gcds-radio>
-          <gcds-radio name="radiowc" label="Radio 2" radio-id="r2" value="blue"></gcds-radio>
+        <gcds-fieldset legend="Fieldset" fieldset-id="fieldset" hint="This is a hint" required>
+          <gcds-radio-group
+            name="radiowc"
+            options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"}, { "label": "Label 2", "id": "radio2", "value": "radio2"}, { "label": "Label 3", "id": "radio3", "value": "radio3"}]'
+          >
+          </gcds-radio-group>
         </gcds-fieldset>
 
         <gcds-textarea id="focus"  name="textarea" textarea-id="textarea" label="Textarea" hint="With a hint"></gcds-textarea>
@@ -349,18 +352,11 @@
           hint="They are in a fieldset"
           required
         >
-          <gcds-radio
-            radio-id="form-radio"
-            label="Radio 1 label"
-            hint="This is a hint."
+          <gcds-radio-group
             name="radio"
-          ></gcds-radio>
-          <gcds-radio
-            radio-id="form-radio1"
-            label="Radio 2 label"
-            hint="This is a hint."
-            name="radio"
-          ></gcds-radio>
+            options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+          >
+          </gcds-radio-group>
         </gcds-fieldset>
         <gcds-fieldset
           fieldset-id="fieldset2"

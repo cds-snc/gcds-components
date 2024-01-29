@@ -2,13 +2,13 @@ import { newSpecPage } from '@stencil/core/testing';
 import { requiredFieldset } from '../fieldset-validators';
 
 import { GcdsFieldset } from '../../../components/gcds-fieldset/gcds-fieldset';
-import { GcdsRadio } from '../../../components/gcds-radio/gcds-radio';
+import { GcdsRadioGroup } from '../../../components/gcds-radio-group/gcds-radio-group';
 import { GcdsCheckbox } from '../../../components/gcds-checkbox/gcds-checkbox';
 
 describe('gcds-fieldset invalid - Radio buttons', () => {
   it('renders', async () => {
     await newSpecPage({
-      components: [GcdsFieldset, GcdsRadio],
+      components: [GcdsFieldset, GcdsRadioGroup],
       html: `
         <gcds-fieldset
             fieldset-id="test-fieldset"
@@ -43,7 +43,7 @@ describe('gcds-fieldset invalid - Radio buttons', () => {
 describe('gcds-fieldset valid - Radio buttons', () => {
   it('renders', async () => {
     await newSpecPage({
-      components: [GcdsFieldset, GcdsRadio],
+      components: [GcdsFieldset, GcdsRadioGroup],
       html: `
         <gcds-fieldset
             fieldset-id="test-fieldset"

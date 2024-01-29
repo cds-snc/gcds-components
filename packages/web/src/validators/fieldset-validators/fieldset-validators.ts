@@ -51,7 +51,7 @@ export function validateFieldsetElements(element, nodeList) {
         }
         break;
       }
-      case 'GCDS-RADIO': {
+      case 'GCDS-RADIO-GROUP': {
         const inputName = nodeList[i].getAttribute('name');
         // Find all inputs with shared name
         const sameNameInputs = element.querySelector(`[name=${inputName}]`);
