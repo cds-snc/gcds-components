@@ -15,7 +15,6 @@
     "url": "git+https://github.com/cds-snc/gcds-components.git"
   },
   "scripts": {
-    "test": "node ./__tests__/react-library.test.js",
     "build": "npm run tsc",
     "tsc": "tsc -p . --outDir ./dist"
   },
