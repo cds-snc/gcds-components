@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "allowUnreachableCode": false,
     "allowSyntheticDefaultImports": true,
