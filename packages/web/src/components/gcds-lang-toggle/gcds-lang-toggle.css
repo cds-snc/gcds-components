@@ -1,53 +1,67 @@
-:host {
-  display: block;
-  font: var(--gcds-lang-toggle-font);
+@layer reset, default, hover, focus, desktop;
 
-  h2 {
-    margin: 0;
-    overflow: hidden;
-    position: absolute;
-    width: 0;
+@layer reset {
+  :host {
+    display: block;
+
+    .gcds-lang-toggle h2 {
+      margin: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 0;
+    }
   }
+}
 
-  a {
-    color: var(--gcds-lang-toggle-default-text);
-    padding: var(--gcds-lang-toggle-padding);
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    text-decoration-color: currentColor;
-    text-decoration-thickness: var(
-      --gcds-lang-toggle-default-decoration-thickness
-    );
+@layer default {
+  :host .gcds-lang-toggle {
+    font: var(--gcds-lang-toggle-font);
 
-    span {
-      display: none;
+    a {
+      color: var(--gcds-lang-toggle-default-text);
+      padding: var(--gcds-lang-toggle-padding);
+      text-decoration: underline currentColor
+        var(--gcds-lang-toggle-default-decoration-thickness);
+      text-underline-offset: 0.2em;
+
+      span {
+        display: none;
+      }
+
+      abbr {
+        text-transform: uppercase;
+        text-decoration: none;
+      }
     }
+  }
+}
 
-    abbr {
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-
-    &:hover {
+@layer hover {
+  @media (hover: hover) {
+    :host .gcds-lang-toggle a:hover {
       color: var(--gcds-lang-toggle-hover-text);
       text-decoration-thickness: var(
         --gcds-lang-toggle-hover-decoration-thickness
       );
     }
-
-    &:focus {
-      color: var(--gcds-lang-toggle-focus-text);
-      background-color: var(--gcds-lang-toggle-focus-background);
-      border-radius: var(--gcds-lang-toggle-focus-border-radius);
-      text-decoration: none;
-      box-shadow: var(--gcds-lang-toggle-focus-box-shadow);
-      outline-offset: var(--gcds-lang-toggle-focus-outline-offset);
-      outline: var(--gcds-lang-toggle-focus-outline);
-    }
   }
+}
 
+@layer focus {
+  :host .gcds-lang-toggle a:focus {
+    color: var(--gcds-lang-toggle-focus-text);
+    background-color: var(--gcds-lang-toggle-focus-background);
+    border-radius: var(--gcds-lang-toggle-focus-border-radius);
+    text-decoration: none;
+    box-shadow: var(--gcds-lang-toggle-focus-box-shadow);
+    outline-offset: var(--gcds-lang-toggle-focus-outline-offset);
+    outline: var(--gcds-lang-toggle-focus-outline);
+  }
+}
+
+@layer desktop {
   @media screen and (min-width: 64em) {
-    a {
+    :host .gcds-lang-toggle a {
       padding: 0;
 
       span {
