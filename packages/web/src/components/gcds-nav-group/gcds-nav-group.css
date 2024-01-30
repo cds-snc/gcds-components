@@ -1,4 +1,4 @@
-@layer reset, defaults, variants, mobile, state.hover, state.focus;
+@layer reset, defaults, variants, mobile, hover, focus;
 
 @layer reset {
   :host * {
@@ -24,7 +24,7 @@
       padding: var(--gcds-nav-group-trigger-padding);
       background: transparent;
       color: var(--gcds-nav-group-trigger-text);
-      border: none;
+      border: 0;
       cursor: pointer;
 
       @media only screen and (width >= 64em) {
@@ -47,10 +47,16 @@
   :host {
     .gcds-trigger--dropdown {
       padding: var(--gcds-nav-group-top-nav-trigger-padding);
-      border-block-end: var(--gcds-nav-group-top-nav-trigger-border-width) solid transparent;
-      margin-inline-start: var(--gcds-nav-group-top-nav-trigger-margin-inline-start);
-      text-decoration: underline solid currentColor var(--gcds-nav-group-top-nav-trigger-decoration-thickness);
-      text-underline-offset: var(--gcds-nav-group-top-nav-trigger-underline-offset);
+      border-block-end: var(--gcds-nav-group-top-nav-trigger-border-width) solid
+        transparent;
+      margin-inline-start: var(
+        --gcds-nav-group-top-nav-trigger-margin-inline-start
+      );
+      text-decoration: underline solid currentColor
+        var(--gcds-nav-group-top-nav-trigger-decoration-thickness);
+      text-underline-offset: var(
+        --gcds-nav-group-top-nav-trigger-underline-offset
+      );
       text-decoration-color: transparent;
       transition: all 0.25s ease-in-out;
 
@@ -61,7 +67,9 @@
     }
 
     .gcds-trigger--dropdown[aria-expanded='true'] {
-      background-color: var(--gcds-nav-group-top-nav-trigger-expanded-background-color);
+      background-color: var(
+        --gcds-nav-group-top-nav-trigger-expanded-background-color
+      );
     }
 
     .gcds-nav--dropdown {
@@ -120,7 +128,8 @@
   }
 
   @media only screen and (width < 64em) {
-    :host(.gcds-nav-group-expanded:not(.gcds-mobile-nav)) .gcds-nav-group__list {
+    :host(.gcds-nav-group-expanded:not(.gcds-mobile-nav))
+      .gcds-nav-group__list {
       padding-inline-start: var(--gcds-nav-group-side-nav-dropdown-padding);
     }
   }
@@ -166,27 +175,33 @@
   }
 }
 
-@layer state.hover {
+@layer hover {
   @media (hover: hover) {
-    :host .gcds-nav-group__trigger:hover {
-      color: var(--gcds-nav-group-trigger-hover-text);
-    }
+    :host {
+      .gcds-nav-group__trigger:hover {
+        color: var(--gcds-nav-group-trigger-hover-text);
+      }
 
-    /* Top-nav: trigger */
-    :host .gcds-trigger--dropdown:hover {
-      color: var(--gcds-nav-group-top-nav-trigger-hover-text);
-      text-decoration-color: var(--gcds-nav-group-top-nav-trigger-hover-text);
-      text-decoration-thickness: var(--gcds-nav-group-top-nav-trigger-hover-decoration-thickness);
-    }
+      /* Top-nav: trigger */
+      .gcds-trigger--dropdown:hover {
+        color: var(--gcds-nav-group-top-nav-trigger-hover-text);
+        text-decoration-color: var(--gcds-nav-group-top-nav-trigger-hover-text);
+        text-decoration-thickness: var(
+          --gcds-nav-group-top-nav-trigger-hover-decoration-thickness
+        );
+      }
 
-    /* Side-nav: trigger */
-    :host .gcds-trigger--expandable:hover {
-      background-color: var(--gcds-nav-group-side-nav-trigger-hover-background);
+      /* Side-nav: trigger */
+      .gcds-trigger--expandable:hover {
+        background-color: var(
+          --gcds-nav-group-side-nav-trigger-hover-background
+        );
+      }
     }
   }
 }
 
-@layer state.focus {
+@layer focus {
   :host .gcds-nav-group__trigger:focus {
     background-color: var(--gcds-nav-group-trigger-focus-background);
     color: var(--gcds-nav-group-trigger-focus-text);
