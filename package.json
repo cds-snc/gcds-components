@@ -6,8 +6,8 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
-    "build": "npx lerna run build --scope=@cdssnc/gcds-components",
-    "test": "npx lerna run test --scope=@cdssnc/gcds-components",
+    "build": "npx lerna run build",
+    "test": "npx lerna run test",
     "build-storybook": "npx lerna run build-storybook --scope=@cdssnc/gcds-components",
     "version": "npx lerna version"
   },
@@ -28,6 +28,7 @@
     "@angular-devkit/build-angular": "^16.0.0",
     "@angular/cli": "~16.2.1",
     "@angular/compiler-cli": "^16.2.3",
+    "@types/node": "^20.11.10",
     "cssnano": "^6.0.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
