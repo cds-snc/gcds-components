@@ -122,14 +122,13 @@ export class GcdsErrorSummary {
    * Sort error object based on the order form compoennts appear in the form
    */
   sortErrors() {
-    const sortable = [];
-    for (const [key, value] of Object.entries(this.errorLinksObject)) {
-      sortable.push([
+    const sortable = Object.entries(this.errorLinksObject).map(
+      ([key, value]) => [
         key,
         value,
         (value as HTMLElement).getBoundingClientRect().y,
-      ]);
-    }
+      ],
+    );
 
     sortable.sort(function (a, b) {
       return a[2] - b[2];

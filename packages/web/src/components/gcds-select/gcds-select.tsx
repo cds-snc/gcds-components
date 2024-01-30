@@ -373,10 +373,9 @@ export class GcdsSelect {
               </option>
             ) : null}
             {options.map(opt => {
-              const selected = {};
-              if (opt.hasAttribute('selected')) {
-                selected['selected'] = true;
-              }
+              const selected = opt.hasAttribute('selected')
+                ? { selected: true }
+                : null;
               return (
                 <option value={opt.getAttribute('value')} {...selected}>
                   {opt.innerHTML}
