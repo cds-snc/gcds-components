@@ -1,24 +1,33 @@
-:host .gcds-label {
-  display: block;
-  max-width: 100%;
-  font: var(--gcds-label-font);
-  margin: var(--gcds-label-margin);
-  color: inherit;
+@layer reset, default;
 
-  &.label--hidden {
-    overflow: hidden;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    margin: 0;
+@layer reset {
+  :host {
+    display: block;
   }
 
-  .label--required {
-    margin: var(--gcds-label-required-margin);
+  :host .gcds-label {
+    color: inherit;
   }
 }
 
-gcds-checkbox :host label,
-gcds-radio :host label {
-  cursor: pointer;
+@layer default {
+  :host .gcds-label {
+    display: block;
+    max-width: 100%;
+    font: var(--gcds-label-font);
+    margin: var(--gcds-label-margin) !important;
+    cursor: pointer;
+
+    &.label--hidden {
+      overflow: hidden;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      margin: 0;
+    }
+
+    .label--required {
+      margin: var(--gcds-label-required-margin) !important;
+    }
+  }
 }
