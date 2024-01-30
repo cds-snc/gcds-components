@@ -25,7 +25,7 @@ jobs:
 
       - name: Build gcds-components
         run: npm run build
-        working-directory: ./packages/web
+#        working-directory: ./packages/web
 
 #      - name: Gcds-components link
 #        run: npm link
