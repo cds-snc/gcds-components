@@ -8,6 +8,7 @@
     "compile": "gulp compile",
     "build": "npx lerna run build --scope=@cdssnc/gcds-components",
     "test": "npx lerna run test --scope=@cdssnc/gcds-components",
+    "build-storybook": "npx lerna run build-storybook --scope=@cdssnc/gcds-components",
     "version": "npx lerna version"
   },
   "dependencies": {
