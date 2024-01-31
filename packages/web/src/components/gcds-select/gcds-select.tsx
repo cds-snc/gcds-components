@@ -233,6 +233,24 @@ export class GcdsSelect {
     this.gcdsSelectChange.emit(this.value);
   };
 
+  /**
+   * Check if an option is selected or value matches an option's value
+   */
+  private checkValueOrSelected(option) {
+    const value = option.getAttribute('value');
+
+    if (this.value === value) {
+      option.setAttribute('selected', 'true');
+      this.internals.setFormValue(value);
+      this.initialValue = this.value;
+    }
+
+    if (option.hasAttribute('selected')) {
+      this.value = value;
+      this.initialValue = this.value ? this.value : null;
+    }
+  }
+
   /*
    * Form internal functions
    */
@@ -282,15 +300,16 @@ export class GcdsSelect {
 
     if (this.el.children) {
       this.options = Array.from(this.el.children);
+
       this.options.map(option => {
-        if (option.hasAttribute('selected')) {
-          this.value = option.getAttribute('value');
-          this.initialValue = this.value ? this.value : null;
-        }
-        if (this.value === option.getAttribute('value')) {
-          option.setAttribute('selected', 'true');
-          this.internals.setFormValue(option.getAttribute('value'));
-          this.initialValue = this.value;
+        if (option.nodeName === 'OPTION') {
+          this.checkValueOrSelected(option);
+        } else if (option.nodeName === 'OPTGROUP') {
+          const subOptions = Array.from(option.children);
+
+          subOptions.map(sub => {
+            this.checkValueOrSelected(sub);
+          });
         }
       });
     }
@@ -373,14 +392,35 @@ export class GcdsSelect {
               </option>
             ) : null}
             {options.map(opt => {
-              const selected = opt.hasAttribute('selected')
-                ? { selected: true }
-                : null;
-              return (
-                <option value={opt.getAttribute('value')} {...selected}>
-                  {opt.innerHTML}
-                </option>
-              );
+              if (opt.nodeName === 'OPTION') {
+                const selected = opt.hasAttribute('selected')
+                  ? { selected: true }
+                  : null;
+
+                return (
+                  <option value={opt.getAttribute('value')} {...selected}>
+                    {opt.innerHTML}
+                  </option>
+                );
+              } else if (opt.nodeName === 'OPTGROUP') {
+                const optGroupChildren = Array.from(opt.children).map(sub => {
+                  const selected = sub.hasAttribute('selected')
+                    ? { selected: true }
+                    : null;
+
+                  return (
+                    <option value={sub.getAttribute('value')} {...selected}>
+                      {sub.innerHTML}
+                    </option>
+                  );
+                });
+
+                return (
+                  <optgroup label={opt.getAttribute('label')}>
+                    {optGroupChildren}
+                  </optgroup>
+                );
+              }
             })}
           </select>
         </div>
