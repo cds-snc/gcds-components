@@ -13,7 +13,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -46,7 +46,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is a critical alert." class="gcds-alert alert--role-danger" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -75,7 +75,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -104,7 +104,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is a success alert." class="gcds-alert alert--role-success" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -133,7 +133,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is a warning alert." class="gcds-alert alert--role-warning" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -166,7 +166,7 @@ describe('gcds-alert', () => {
           <div aria-label="Ceci est une alerte d'effacement." class="gcds-alert alert--role-danger" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -195,7 +195,7 @@ describe('gcds-alert', () => {
           <div aria-label="Ceci est une alerte d'information." class="gcds-alert alert--role-info" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -224,7 +224,7 @@ describe('gcds-alert', () => {
           <div aria-label="Ceci est une alerte de succès." class="gcds-alert alert--role-success" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -253,7 +253,7 @@ describe('gcds-alert', () => {
           <div aria-label="Ceci est une alerte d'avertissement." class="gcds-alert alert--role-warning" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -286,7 +286,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -315,7 +315,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -348,7 +348,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -377,7 +377,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
             <gcds-container centered="" size="xl">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -406,7 +406,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
             <gcds-container centered="" size="lg">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -435,7 +435,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
             <gcds-container centered="" size="md">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -464,7 +464,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
             <gcds-container centered="" size="sm">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -493,7 +493,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
             <gcds-container centered="" size="xs">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -526,7 +526,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -590,7 +590,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is an info alert." class="gcds-alert alert--role-info" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="h5" margin-right="250"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
