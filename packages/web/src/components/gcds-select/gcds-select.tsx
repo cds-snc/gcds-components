@@ -301,7 +301,7 @@ export class GcdsSelect {
     if (this.el.children) {
       this.options = Array.from(this.el.children);
 
-      this.options.map(option => {
+      this.options.forEach(option => {
         if (option.nodeName === 'OPTION') {
           this.checkValueOrSelected(option);
         } else if (option.nodeName === 'OPTGROUP') {

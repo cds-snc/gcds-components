@@ -186,11 +186,11 @@ export class GcdsFileUploader {
 
   handleChange = e => {
     const filesContainer: string[] = [];
-    const files = e.target.files;
+    const files = Array.from(e.target.files);
 
-    for (let i = 0; i < files.length; i++) {
-      filesContainer.push(files[i].name);
-    }
+    files.map(file => {
+      filesContainer.push(file['name']);
+    });
 
     this.addFilesToFormData(files);
 
@@ -299,9 +299,9 @@ export class GcdsFileUploader {
   private addFilesToFormData = files => {
     const formData = new FormData();
 
-    for (let i = 0; i < files.length; i++) {
-      formData.append(this.name, files[i], files[i].name);
-    }
+    files.forEach(file => {
+      formData.append(this.name, file, file.name);
+    });
 
     this.internals.setFormValue(formData);
   };
