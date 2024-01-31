@@ -1,4 +1,4 @@
-@layer reset, default, fixed, role, tabletUp, mobile, hover, focus;
+@layer reset, default, fixed, role, wide, compact, hover, focus;
 
 @layer reset {
   :host {
@@ -130,7 +130,7 @@
   }
 }
 
-@layer tabletUp {
+@layer wide {
   @container (width >= 36em) {
     :host .gcds-alert .alert__container {
       display: flex;
@@ -139,7 +139,7 @@
   }
 }
 
-@layer mobile {
+@layer compact {
   @container (width < 36em) {
     :host .gcds-alert {
       .alert__icon {
