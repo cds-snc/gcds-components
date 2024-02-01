@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - 'lerna.json'
+  # Test the workflow on pull requests
+  pull_request:
+    branches:
+      - main
 
 permissions:
   id-token: write
@@ -42,54 +46,54 @@ jobs:
       - name: Build ${{ matrix.name }}
         run: npm run build
 
-      - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@fe58a596e87f1297b15f580ec0dbc833d51a4622
-        id: publish
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ${{ matrix.dist }}
+#      - name: Publish ${{ matrix.name }}
+#        uses: JS-DevTools/npm-publish@fe58a596e87f1297b15f580ec0dbc833d51a4622
+#        id: publish
+#        with:
+#          token: ${{ secrets.NPM_TOKEN }}
+#          package: ${{ matrix.dist }}
+#
+#      - name: Configure AWS credentials using OIDC
+#        if: steps.publish.outputs.id != ''
+#        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
+#        with:
+#          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
+#          role-session-name: CDNPublish
+#          aws-region: ${{ env.CDN_REGION }}
 
-      - name: Configure AWS credentials using OIDC
-        if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
-        with:
-          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
-          role-session-name: CDNPublish
-          aws-region: ${{ env.CDN_REGION }}
+#      - name: Update CDN ${{ matrix.name }}
+#        if: steps.publish.outputs.id != ''
+#        run: |
+#          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
+#
+#          mkdir -p ./tmp \
+#            && sleep 60 \
+#            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+#            && cd ./tmp/node_modules
+#
+#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
+#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
+#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
+#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
+#
+#          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
+#        working-directory: ${{ matrix.package }}
 
-      - name: Update CDN ${{ matrix.name }}
-        if: steps.publish.outputs.id != ''
-        run: |
-          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-
-          mkdir -p ./tmp \
-            && sleep 60 \
-            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-            && cd ./tmp/node_modules
-
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
-
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
-        working-directory: ${{ matrix.package }}
-
-      - name: Report deployment to Sentinel
-        if: steps.publish.outputs.id != ''
-        uses: cds-snc/sentinel-forward-data-action@main
-        with:
-          input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
-          log_type: CDS_Product_Deployment_Data
-          log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
-          log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
-
-
-      - name: Slack notify on failure
-        if: failure()
-        run: |
-          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
-          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
+#      - name: Report deployment to Sentinel
+#        if: steps.publish.outputs.id != ''
+#        uses: cds-snc/sentinel-forward-data-action@main
+#        with:
+#          input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
+#          log_type: CDS_Product_Deployment_Data
+#          log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+#          log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+#
+#
+#      - name: Slack notify on failure
+#        if: failure()
+#        run: |
+#          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
+#          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
 
   publish-react-angular:
     name: Publish @cdssnc/gcds-components-react and @cdssnc/gcds-components-angular
@@ -121,50 +125,50 @@ jobs:
       - name: Build gcds-components
         run: npm run build
 
-      - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@fe58a596e87f1297b15f580ec0dbc833d51a4622
-        id: publish
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ${{ matrix.dist }}
-
-      - name: Configure AWS credentials using OIDC
-        if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
-        with:
-          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
-          role-session-name: CDNPublish
-          aws-region: ${{ env.CDN_REGION }}
-
-      - name: Update CDN ${{ matrix.name }}
-        if: steps.publish.outputs.id != ''
-        run: |
-          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-
-          mkdir -p ./tmp \
-            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-            && cd ./tmp/node_modules
-
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
-
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
-        working-directory: ${{ matrix.package }}
-
-      - name: Report deployment to Sentinel
-        if: steps.publish.outputs.id != ''
-        uses: cds-snc/sentinel-forward-data-action@main
-        with:
-          input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
-          log_type: CDS_Product_Deployment_Data
-          log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
-          log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
-
-      - name: Slack notify on failure
-        if: failure()
-        run: |
-          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
-          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
+#      - name: Publish ${{ matrix.name }}
+#        uses: JS-DevTools/npm-publish@fe58a596e87f1297b15f580ec0dbc833d51a4622
+#        id: publish
+#        with:
+#          token: ${{ secrets.NPM_TOKEN }}
+#          package: ${{ matrix.dist }}
+#
+#      - name: Configure AWS credentials using OIDC
+#        if: steps.publish.outputs.id != ''
+#        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
+#        with:
+#          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
+#          role-session-name: CDNPublish
+#          aws-region: ${{ env.CDN_REGION }}
+#
+#      - name: Update CDN ${{ matrix.name }}
+#        if: steps.publish.outputs.id != ''
+#        run: |
+#          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
+#
+#          mkdir -p ./tmp \
+#            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+#            && cd ./tmp/node_modules
+#
+#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
+#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
+#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
+#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
+#
+#          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
+#        working-directory: ${{ matrix.package }}
+#
+#      - name: Report deployment to Sentinel
+#        if: steps.publish.outputs.id != ''
+#        uses: cds-snc/sentinel-forward-data-action@main
+#        with:
+#          input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
+#          log_type: CDS_Product_Deployment_Data
+#          log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+#          log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+#
+#      - name: Slack notify on failure
+#        if: failure()
+#        run: |
+#          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
+#          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
 
