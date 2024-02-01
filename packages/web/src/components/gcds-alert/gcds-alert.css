@@ -131,7 +131,7 @@
 }
 
 @layer wide {
-  @container (width >= 36em) {
+  @container alert (width >= 36em) {
     :host .gcds-alert .alert__container {
       display: flex;
       align-items: flex-start;
@@ -140,7 +140,7 @@
 }
 
 @layer compact {
-  @container (width < 36em) {
+  @container alert (width < 36em) {
     :host .gcds-alert {
       .alert__icon {
         margin: var(--gcds-alert-icon-mobile-margin);
