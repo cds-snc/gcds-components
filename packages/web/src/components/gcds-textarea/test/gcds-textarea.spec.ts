@@ -44,7 +44,7 @@ describe('gcds-textarea', () => {
             rows="5"
             maxlength="22"
           >Value Test</textarea>
-          <p id="textarea__count-character-count" aria-live="polite">12 characters left</p>
+          <p id="textarea__count-character-count" class="textarea__count" aria-live="polite">12 characters left</p>
         </div>
       </gcds-textarea>
     `);
@@ -68,7 +68,7 @@ describe('gcds-textarea', () => {
             rows="5"
             maxlength="22"
           >Value Test</textarea>
-          <p id="textarea__count-character-count" aria-live="polite">12 caractères restants</p>
+          <p id="textarea__count-character-count" class="textarea__count" aria-live="polite">12 caractères restants</p>
         </div>
       </gcds-textarea>
     `);
