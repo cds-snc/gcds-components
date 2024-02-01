@@ -38,11 +38,9 @@ jobs:
 
       - name: Install ${{ matrix.name }}
         run: npm install
-#        working-directory: ${{ matrix.package }}
 
       - name: Build ${{ matrix.name }}
         run: npm run build
-#        working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
         uses: JS-DevTools/npm-publish@fe58a596e87f1297b15f580ec0dbc833d51a4622
@@ -117,24 +115,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install repo
+      - name: Install monorepo
         run: npm install
-
-      - name: Install gcds-components
-        run: npm install
-        working-directory: ./packages/web
 
       - name: Build gcds-components
         run: npm run build
-        working-directory: ./packages/web
-
-      - name: Install ${{ matrix.name }}
-        run: npm install
-        working-directory: ${{ matrix.package }}
-
-      - name: Build ${{ matrix.name }}
-        run: npm run build
-        working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
         uses: JS-DevTools/npm-publish@fe58a596e87f1297b15f580ec0dbc833d51a4622
