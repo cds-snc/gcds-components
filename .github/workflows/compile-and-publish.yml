@@ -38,11 +38,11 @@ jobs:
 
       - name: Install ${{ matrix.name }}
         run: npm install
-        working-directory: ${{ matrix.package }}
+#        working-directory: ${{ matrix.package }}
 
       - name: Build ${{ matrix.name }}
         run: npm run build
-        working-directory: ${{ matrix.package }}
+#        working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
         uses: JS-DevTools/npm-publish@fe58a596e87f1297b15f580ec0dbc833d51a4622
