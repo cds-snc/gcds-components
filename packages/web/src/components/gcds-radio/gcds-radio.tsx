@@ -9,6 +9,7 @@ import {
   Watch,
   Host,
   h,
+  AttachInternals,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -20,11 +21,14 @@ import {
 @Component({
   tag: 'gcds-radio',
   styleUrl: 'gcds-radio.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class GcdsRadio {
   @Element() el: HTMLElement;
+
+  @AttachInternals()
+  internals: ElementInternals;
 
   private shadowElement?: HTMLInputElement;
 
@@ -73,21 +77,6 @@ export class GcdsRadio {
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**
-   * Custom callback function on click event
-   */
-  @Prop() clickHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
-
-  /**
    * Specifies if the radio is invalid.
    */
   @State() hasError: boolean;
@@ -127,11 +116,7 @@ export class GcdsRadio {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
+  private onFocus = () => {
     this.gcdsFocus.emit();
   };
 
@@ -140,13 +125,21 @@ export class GcdsRadio {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = e => {
-    if (this.blurHandler) {
-      this.blurHandler(e);
-    }
-
+  private onBlur = () => {
     this.gcdsBlur.emit();
   };
+
+  /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    this.checked = false;
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.checked = state;
+  }
 
   /*
    * Observe lang attribute change
@@ -167,11 +160,26 @@ export class GcdsRadio {
     this.updateLang();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
+
+    this.internals.setFormValue(this.checked ? this.value : null);
   }
 
-  private onChange = name => {
+  connectedCallback() {
+    this.internals.role = 'radio';
+    const radioGroup = document.querySelectorAll(`[name=${this.name}]`);
+    this.internals.ariaPosInSet = Array.from(radioGroup)
+      .indexOf(this.el)
+      .toString();
+  }
+
+  private onChange = (e, name) => {
     this.gcdsRadioChange.emit(name);
     this.checked = this.shadowElement.checked;
+    this.internals.setFormValue(e.target.value, 'checked');
+
+    if (!this.checked) {
+      this.internals.setFormValue(null, 'checked');
+    }
   };
 
   @Listen('gcdsRadioChange', { target: 'document' })
@@ -179,6 +187,7 @@ export class GcdsRadio {
     if (event.detail == this.name && event.srcElement != this.shadowElement) {
       if (this.checked) {
         this.checked = false;
+        this.internals.setFormValue(null, 'checked');
       }
     }
   }
@@ -254,12 +263,9 @@ export class GcdsRadio {
             id={radioId}
             type="radio"
             {...attrsInput}
-            onChange={() => this.onChange(name)}
-            onBlur={e => this.onBlur(e)}
-            onFocus={e => this.onFocus(e)}
-            onClick={e => {
-              this.clickHandler && this.clickHandler(e);
-            }}
+            onChange={e => this.onChange(e, name)}
+            onBlur={() => this.onBlur()}
+            onFocus={() => this.onFocus()}
             ref={element => (this.shadowElement = element as HTMLInputElement)}
           />
 

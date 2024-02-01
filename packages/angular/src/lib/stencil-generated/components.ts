@@ -135,7 +135,7 @@ export declare interface GcdsCard extends Components.GcdsCard {}
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'checkboxId', 'checked', 'clickHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['checkboxId', 'checked', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -143,7 +143,7 @@ export declare interface GcdsCard extends Components.GcdsCard {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'checkboxId', 'checked', 'clickHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['checkboxId', 'checked', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
 })
 export class GcdsCheckbox {
   protected el: HTMLElement;
@@ -331,7 +331,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
 
 
 @ProxyCmp({
-  inputs: ['accept', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'multiple', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
+  inputs: ['accept', 'disabled', 'errorMessage', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -339,7 +339,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accept', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'multiple', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
+  inputs: ['accept', 'disabled', 'errorMessage', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsFileUploader {
   protected el: HTMLElement;
@@ -534,7 +534,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -542,7 +542,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
 })
 export class GcdsInput {
   protected el: HTMLElement;
@@ -775,14 +775,14 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'checked', 'clickHandler', 'disabled', 'focusHandler', 'hint', 'label', 'name', 'radioId', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'label', 'name', 'radioId', 'required', 'value']
 })
 @Component({
   selector: 'gcds-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'checked', 'clickHandler', 'disabled', 'focusHandler', 'hint', 'label', 'name', 'radioId', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'label', 'name', 'radioId', 'required', 'value'],
 })
 export class GcdsRadio {
   protected el: HTMLElement;
@@ -851,7 +851,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'changeHandler', 'defaultValue', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'required', 'selectId', 'validateOn', 'validator', 'value'],
+  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -859,7 +859,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'changeHandler', 'defaultValue', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'required', 'selectId', 'validateOn', 'validator', 'value'],
+  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsSelect {
   protected el: HTMLElement;
@@ -1006,7 +1006,7 @@ export declare interface GcdsText extends Components.GcdsText {}
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
+  inputs: ['characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -1014,7 +1014,7 @@ export declare interface GcdsText extends Components.GcdsText {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
+  inputs: ['characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsTextarea {
   protected el: HTMLElement;

@@ -34,7 +34,7 @@
     "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse' && cd ../ssr && npx --yes -p patch-package -c 'patch-package --reverse'"
   },
   "dependencies": {
-    "@stencil/core": "^4.7.2",
+    "@stencil/core": "^4.11.0",
     "@stencil/react-output-target": "^0.5.3",
     "@storybook/addon-a11y": "^7.4.0",
     "@storybook/addons": "^7.4.0",

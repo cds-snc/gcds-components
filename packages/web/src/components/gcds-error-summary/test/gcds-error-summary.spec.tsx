@@ -72,14 +72,14 @@ describe('gcds-error-summary', () => {
             </h2>
             <ol class="summary__errorlist">
               <li class="summary__listitem">
-                <a class="summary__link" href="#link1">
+                <gcds-link href="#link1">
                   This is the first error
-                </a>
+                </gcds-link>
               </li>
               <li class="summary__listitem">
-                <a class="summary__link" href="#link2">
+                <gcds-link href="#link2">
                   This is the second error
-                </a>
+                </gcds-link>
               </li>
             </ol>
           </div>
