@@ -152,7 +152,6 @@ export class GcdsRadioGroup {
   @Listen('gcdsGroupError', { target: 'body' })
   gcdsGroupError(e) {
     if (e.srcElement.contains(this.el)) {
-      console.log(e);
       this.hasError = true;
       this.parentError = e.detail;
     }
@@ -160,7 +159,6 @@ export class GcdsRadioGroup {
   @Listen('gcdsGroupErrorClear', { target: 'body' })
   gcdsGroupErrorClear(e) {
     if (e.srcElement.contains(this.el) && this.hasError) {
-      console.log(e);
       this.hasError = false;
       this.parentError = '';
     }

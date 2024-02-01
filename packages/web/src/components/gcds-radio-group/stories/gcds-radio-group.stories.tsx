@@ -117,8 +117,10 @@ const TemplatePlayground = args =>
 export const Default = Template.bind({});
 Default.args = {
   name: 'radioDefault',
-  options:
-    '[{ "label": "Label", "id": "radio", "value": "radio" "hint": "Description or example to make the option clearer." }]',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1", "hint": "Description or example to make the option clearer."},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2", "hint": "Description or example to make the option clearer."}
+  ]`,
   lang: 'en',
 };
 
@@ -126,7 +128,7 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   name: 'radio',
   options:
-    '[{ "label": "Label", "id": "radio", "value": "radio" "hint": "Description or example to make the option clearer.", "disabled": true }]',
+    '[{ "label": "Label", "id": "radio", "value": "radio1", "hint": "Description or example to make the option clearer.", "disabled": true}]',
   lang: 'en',
 };
 
@@ -134,7 +136,7 @@ export const Checked = Template.bind({});
 Checked.args = {
   name: 'radio',
   options:
-    '[{ "label": "Label", "id": "radio", "value": "radio" "hint": "Description or example to make the option clearer.", "checked": true }]',
+    '[{ "label": "Label", "id": "radio", "value": "radio1", "hint": "Description or example to make the option clearer.", "checked": true}]',
   lang: 'en',
 };
 
@@ -142,8 +144,8 @@ export const Error = TemplateError.bind({});
 Error.args = {
   name: 'radioDefault',
   options: `[
-    { "label": "Label 1", "id": "radio1", "value": "radio-b1" "hint": "Description or example to make the option clearer." },
-    { "label": "Label 2", "id": "radio2", "value": "radio-b2" "hint": "Description or example to make the option clearer." }
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1", "hint": "Description or example to make the option clearer."},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2", "hint": "Description or example to make the option clearer."}
   ]`,
   lang: 'en',
 };
@@ -151,7 +153,9 @@ Error.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   name: 'radio',
-  options:
-    '[{ "label": "Label", "id": "radio", "value": "radio" "hint": "Description or example to make the option clearer." }]',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1", "hint": "Description or example to make the option clearer.", },
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2", "hint": "Description or example to make the option clearer.", }
+  ]`,
   lang: 'en',
 };
