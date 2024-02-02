@@ -61,7 +61,7 @@ jobs:
 #          role-session-name: CDNPublish
 #          aws-region: ${{ env.CDN_REGION }}
 
-      - name: Update CDN ${{ matrix.name }} (test)
+      - name: Update CDN ${{ matrix.name }} - test
 #        if: steps.publish.outputs.id != ''
         run: |
              PUBLISHED_PACKAGE="gcds-components@latest"
@@ -143,7 +143,7 @@ jobs:
 #          role-session-name: CDNPublish
 #          aws-region: ${{ env.CDN_REGION }}
 #
-      - name: Update CDN ${{ matrix.name }} (test)
+      - name: Update CDN ${{ matrix.name }} - test
 #        if: steps.publish.outputs.id != ''
         run: |
                PUBLISHED_PACKAGE="${{ matrix.cdn }}@latest"
