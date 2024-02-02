@@ -59,8 +59,9 @@
   }
 }
 
+/* Note: viewport specific style decision */
 @layer desktop {
-  @media screen and (min-width: 64em) {
+  @media screen and (width >= 64em) {
     :host .gcds-lang-toggle a {
       padding: 0;
 
