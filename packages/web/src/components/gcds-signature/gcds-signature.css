@@ -1,4 +1,4 @@
-@layer reset, default, type.signature, type.wordmark, variant.colour, variant.white;
+@layer reset, default, type.signature, type.wordmark, variant.colour, variant.white, desktop;
 
 @layer reset {
   gcds-signature {
@@ -22,10 +22,6 @@
 @layer type.signature {
   gcds-signature:not([type='wordmark']) svg {
     height: var(--gcds-signature-signature-height);
-
-    @media screen and (min-width: 64em) {
-      height: 2.125rem;
-    }
   }
 }
 
@@ -52,6 +48,15 @@
   gcds-signature[variant='white'] svg {
     :is(.fip_text, .fip_flag) {
       fill: var(--gcds-signature-white-default);
+    }
+  }
+}
+
+/* Note: viewport specific style decision */
+@layer desktop {
+  gcds-signature:not([type='wordmark']) svg {
+    @media screen and (width >= 64em) {
+      height: 2.125rem;
     }
   }
 }

@@ -27,6 +27,7 @@ describe('gcds-signature', () => {
       </gcds-signature>
     `);
   });
+
   it('renders: Signature - English - has link', async () => {
     const page = await newSpecPage({
       components: [GcdsSignature],
@@ -34,12 +35,13 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="en" type="signature" has-link="true" variant="colour">
-        <a href="https://canada.ca/en.html">
+        <a class="gcds-signature" href="https://canada.ca/en.html">
           Government of Canada
         </a>
       </gcds-signature>
     `);
   });
+
   it('renders: Signature - French - no link', async () => {
     const page = await newSpecPage({
       components: [GcdsSignature],
@@ -53,6 +55,7 @@ describe('gcds-signature', () => {
       </gcds-signature>
     `);
   });
+
   it('renders: Signature - French - has link', async () => {
     const page = await newSpecPage({
       components: [GcdsSignature],
@@ -60,7 +63,7 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="fr" type="signature" has-link="true" variant="colour">
-        <a href="https://canada.ca/fr.html">
+        <a class="gcds-signature" href="https://canada.ca/fr.html">
           Gouvernement du Canada
         </a>
       </gcds-signature>
@@ -80,6 +83,7 @@ describe('gcds-signature', () => {
       </gcds-signature>
     `);
   });
+
   it('renders: wordmark - French', async () => {
     const page = await newSpecPage({
       components: [GcdsSignature],

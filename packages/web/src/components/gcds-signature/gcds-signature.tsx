@@ -101,7 +101,11 @@ export class GcdsSignature {
       <Host>
         {hasLink && type === 'signature' ? (
           // eslint-disable-next-line jsx-a11y/anchor-has-content
-          <a href={i18n[lang].link} innerHTML={selectSVG}></a>
+          <a
+            class="gcds-signature"
+            href={i18n[lang].link}
+            innerHTML={selectSVG}
+          ></a>
         ) : (
           <div class="gcds-signature" innerHTML={selectSVG}></div>
         )}
