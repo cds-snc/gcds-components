@@ -61,15 +61,16 @@ jobs:
 #          role-session-name: CDNPublish
 #          aws-region: ${{ env.CDN_REGION }}
 
-#      - name: Update CDN ${{ matrix.name }}
+      - name: Update CDN ${{ matrix.name }} (test)
 #        if: steps.publish.outputs.id != ''
-#        run: |
-#          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
+        run: |
+             PUBLISHED_PACKAGE="gcds-components@latest"
+#            PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
 #
-#          mkdir -p ./tmp \
-#            && sleep 60 \
-#            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-#            && cd ./tmp/node_modules
+          mkdir -p ./tmp \
+            && sleep 60 \
+            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+            && cd ./tmp/node_modules
 #
 #          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
 #          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
@@ -106,10 +107,12 @@ jobs:
           - name: "@cdssnc/gcds-components-react"
             package: "./packages/react"
             dist: "./packages/react"
+            cdn: "gcds-components-react"
 
           - name: "@cdssnc/gcds-components-angular"
             package: "./packages/angular"
             dist: "./packages/angular/dist"
+            cdn: "gcds-components-angular"
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -140,14 +143,16 @@ jobs:
 #          role-session-name: CDNPublish
 #          aws-region: ${{ env.CDN_REGION }}
 #
-#      - name: Update CDN ${{ matrix.name }}
+      - name: Update CDN ${{ matrix.name }} (test)
 #        if: steps.publish.outputs.id != ''
-#        run: |
+        run: |
+               PUBLISHED_PACKAGE="${{ matrix.cdn }}@latest"
+
 #          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
 #
-#          mkdir -p ./tmp \
-#            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-#            && cd ./tmp/node_modules
+          mkdir -p ./tmp \
+            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+            && cd ./tmp/node_modules
 #
 #          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
 #          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
