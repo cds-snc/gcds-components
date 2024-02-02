@@ -1,19 +1,39 @@
-:host {
-  display: block;
-  margin: var(--gcds-header-margin) !important;
+@layer reset, default, brand, wide;
 
-  slot {
-    display: initial;
+@layer reset {
+  :host {
+    display: block;
+
+    slot {
+      display: initial;
+    }
   }
+}
 
-  .gcds-header__container {
-    justify-content: space-between;
-    width: 90%;
-    max-width: var(--gcds-header-container-max-width);
-    margin: 0 auto;
+@layer default {
+  :host {
+    margin: var(--gcds-header-margin) !important;
+
+    .gcds-header__container {
+      justify-content: space-between;
+      width: 90%;
+      max-width: var(--gcds-header-container-max-width);
+      margin: 0 auto;
+    }
+
+    .gcds-header__skip-to-nav {
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      margin-inline: auto;
+      top: var(--gcds-header-skiptonav-top);
+    }
   }
+}
 
-  .gcds-header__brand {
+@layer brand {
+  :host .gcds-header__brand {
+    container: component brand / inline-size;
     border-block-end: var(--gcds-header-brand-border-width) solid
       var(--gcds-header-brand-border-color);
     padding: var(--gcds-header-brand-padding);
@@ -34,14 +54,12 @@
         grid-template-areas: 'signature toggle';
       }
 
-      .brand__toggle,
-      slot[name='toggle'] {
+      :is(.brand__toggle, slot[name='toggle']) {
         grid-area: toggle;
         text-align: right;
       }
 
-      .brand__signature,
-      slot[name='signature'] {
+      :is(.brand__signature, slot[name='signature']) {
         grid-area: signature;
 
         gcds-signature {
@@ -55,28 +73,22 @@
         display: block;
       }
     }
+  }
+}
 
-    @media screen and (min-width: 64em) {
-      .brand__container {
-        grid-template-areas:
-          'toggle toggle'
-          'signature search';
-        grid-template-columns: 1fr 1fr;
+@layer wide {
+  @container brand (width >= 51em) {
+    :host .gcds-header__brand .brand__container {
+      grid-template-areas:
+        'toggle toggle'
+        'signature search';
+      grid-template-columns: 1fr 1fr;
 
-        .brand__search,
-        slot[name='search'] {
-          width: fit-content;
-          margin-inline-start: auto;
-        }
+      .brand__search,
+      slot[name='search'] {
+        width: fit-content;
+        margin-inline-start: auto;
       }
     }
-  }
-
-  .gcds-header__skip-to-nav {
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    margin-inline: auto;
-    top: var(--gcds-header-skiptonav-top);
   }
 }
