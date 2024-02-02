@@ -52,8 +52,11 @@
 @layer hover {
   @media (hover: hover) {
     :host .gcds-link:hover {
-      color: var(--gcds-link-hover);
       text-decoration-thickness: var(--gcds-link-hover-decoration-thickness);
+
+      &:not(.variant-light) {
+        color: var(--gcds-link-hover);
+      }
     }
   }
 }
