@@ -9,16 +9,19 @@ describe('gcds-date-modified', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-modified lang="en">
-        <dl class="gcds-date-modified">
-          <dt>
-            Date modified:
-          </dt>
-          <dd>
-            <time>
-              2022-03-03
-            </time>
-          </dd>
-        </dl>
+        <mock:shadow-root>
+          <dl class="gcds-date-modified">
+            <dt>
+              Date modified:
+            </dt>
+            <dd>
+              <time>
+              <slot></slot>
+              </time>
+            </dd>
+          </dl>
+        </mock:shadow-root>
+        2022-03-03
       </gcds-date-modified>
     `);
   });
@@ -30,16 +33,19 @@ describe('gcds-date-modified', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-modified lang="fr">
-        <dl class="gcds-date-modified">
-          <dt>
-            Date de modification :
-          </dt>
-          <dd>
-            <time>
-              2022-03-03
-            </time>
-          </dd>
-        </dl>
+        <mock:shadow-root>
+          <dl class="gcds-date-modified">
+            <dt>
+              Date de modification :
+            </dt>
+            <dd>
+              <time>
+                <slot></slot>
+              </time>
+            </dd>
+          </dl>
+        </mock:shadow-root>
+        2022-03-03
       </gcds-date-modified>
     `);
   });
@@ -51,14 +57,17 @@ describe('gcds-date-modified', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-modified type="version">
-        <dl class="gcds-date-modified">
-          <dt>
-            Version
-          </dt>
-          <dd>
-            1.2.3
-          </dd>
-        </dl>
+        <mock:shadow-root>
+          <dl class="gcds-date-modified">
+            <dt>
+              Version
+            </dt>
+            <dd>
+              <slot></slot>
+            </dd>
+          </dl>
+        </mock:shadow-root>
+        1.2.3
       </gcds-date-modified>
     `);
   });

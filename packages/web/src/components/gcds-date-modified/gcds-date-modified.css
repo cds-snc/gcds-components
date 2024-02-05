@@ -1,18 +1,29 @@
-:host {
-  display: block;
-  font: var(--gcds-date-modified-font);
-  color: var(--gcds-date-modified-text);
-  margin: var(--gcds-date-modified-margin);
+@layer reset, default;
 
-  .gcds-date-modified {
-    dt,
-    dd {
-      display: inline;
-    }
+@layer reset {
+  :host {
+    display: block;
 
-    dd {
-      margin: var(--gcds-date-modified-description-margin);
+    slot {
+      display: initial;
     }
   }
+}
 
+@layer default {
+  :host {
+    font: var(--gcds-date-modified-font);
+    color: var(--gcds-date-modified-text);
+    margin: var(--gcds-date-modified-margin);
+
+    .gcds-date-modified {
+      :is(dt, dd) {
+        display: inline;
+      }
+
+      dd {
+        margin: var(--gcds-date-modified-description-margin);
+      }
+    }
+  }
 }
