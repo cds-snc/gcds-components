@@ -48,7 +48,7 @@ export class GcdsLangToggle {
 
     return (
       <Host>
-        <div>
+        <div class="gcds-lang-toggle">
           <h2>{i18n[lang].heading}</h2>
           <a href={href} lang={i18n[lang].abbreviation}>
             <span>{i18n[lang].language}</span>
