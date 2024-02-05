@@ -1,4 +1,4 @@
-@layer reset, default, hover, focus, mobile;
+@layer reset, default, focus, compact;
 
 @layer reset {
   :host {
@@ -7,52 +7,43 @@
 }
 
 @layer default {
-  :host .gcds-error-summary {
-    padding: var(--gcds-error-summary-padding);
-    margin: var(--gcds-error-summary-margin);
-    border: var(--gcds-error-summary-border-width) solid
-      var(--gcds-error-summary-border-color);
-    color: var(--gcds-error-summary-text);
-    transition:
-      background 0.15s ease-in-out,
-      border 0.15s ease-in-out,
-      color 0.15s ease-in-out;
-    display: none;
+  :host {
+    container: component summary / inline-size;
 
-    &.gcds-show {
-      display: block;
-    }
+    .gcds-error-summary {
+      padding: var(--gcds-error-summary-padding);
+      margin: var(--gcds-error-summary-margin);
+      border: var(--gcds-error-summary-border-width) solid
+        var(--gcds-error-summary-border-color);
+      color: var(--gcds-error-summary-text);
+      transition:
+        background 0.15s ease-in-out,
+        border 0.15s ease-in-out,
+        color 0.15s ease-in-out;
+      display: none;
 
-    .summary__heading {
-      font: var(--gcds-error-summary-heading-font);
-      margin: 0;
-      padding-block-end: var(--gcds-error-summary-heading-padding-bottom);
-    }
+      &.gcds-show {
+        display: block;
+      }
 
-    .summary__errorlist {
-      padding: 0;
-      margin: var(--gcds-error-summary-list-margin);
+      .summary__heading {
+        font: var(--gcds-error-summary-heading-font);
+        margin: 0;
+        padding-block-end: var(--gcds-error-summary-heading-padding-bottom);
+      }
 
-      .summary__listitem {
-        max-width: var(--gcds-error-summary-max-width);
+      .summary__errorlist {
+        padding: 0;
+        margin: var(--gcds-error-summary-list-margin);
 
-        &:not(:last-child) {
-          padding: var(--gcds-error-summary-list-item-padding);
-        }
+        .summary__listitem {
+          max-width: var(--gcds-error-summary-max-width);
 
-        .summary__link {
-          color: var(--gcds-error-summary-link-color);
-          text-decoration-thickness: var(--gcds-error-summary-link-thickness);
+          &:not(:last-child) {
+            padding: var(--gcds-error-summary-list-item-padding);
+          }
         }
       }
-    }
-  }
-}
-
-@layer hover {
-  @media (hover: hover) {
-    :host .gcds-error-summary .summary__link:hover {
-      text-decoration-thickness: var(--gcds-error-summary-hover-link-thickness);
     }
   }
 }
@@ -64,21 +55,11 @@
     .summary__heading {
       color: var(--gcds-error-summary-focus-color);
     }
-
-    .summary__link:focus {
-      border-radius: var(--gcds-error-summary-focus-link-border-radius);
-      background-color: var(--gcds-error-summary-focus-link-background-color);
-      color: var(--gcds-error-summary-focus-link-text);
-      text-decoration: none;
-      box-shadow: none;
-      outline-offset: var(--gcds-error-summary-focus-link-outline-offset);
-      outline: var(--gcds-error-summary-focus-link-outline);
-    }
   }
 }
 
-@layer mobile {
-  @media screen and (width <= 30rem) {
+@layer compact {
+  @container summary (width < 24em) {
     :host .gcds-error-summary {
       padding: var(--gcds-error-summary-mobile-padding);
     }
