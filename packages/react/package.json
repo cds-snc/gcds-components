@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "npm run tsc",
-    "tsc": "tsc -p . --outDir ./dist"
+    "tsc": "tsc -p ."
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
