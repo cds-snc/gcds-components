@@ -185,9 +185,9 @@ export class GcdsLink {
           role="link"
           tabIndex={0}
           {...attrs}
-          class={`link--${size} ${display != 'inline' ? `d-${display}` : ''} ${
-            variant != 'default' ? `variant-${variant}` : ''
-          }`}
+          class={`gcds-link link--${size} ${
+            display != 'inline' ? `d-${display}` : ''
+          } ${variant != 'default' ? `variant-${variant}` : ''}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
           rel={isExternal ? 'noopener noreferrer' : rel}
@@ -210,7 +210,7 @@ export class GcdsLink {
               label={i18n[lang].download}
               margin-left="100"
             />
-          ) : href.toLowerCase().startsWith('mailto:') ? (
+          ) : href && href.toLowerCase().startsWith('mailto:') ? (
             <gcds-icon
               icon-style="regular"
               name="envelope"
@@ -218,6 +218,7 @@ export class GcdsLink {
               margin-left="100"
             />
           ) : (
+            href &&
             href.toLowerCase().startsWith('tel:') && (
               <gcds-icon
                 name="phone"

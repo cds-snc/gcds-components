@@ -1,4 +1,14 @@
-:host .gcds-hint {
-  font: var(--gcds-hint-font);
-  margin: var(--gcds-hint-margin);
+@layer reset, default;
+
+@layer reset {
+  :host {
+    display: block;
+  }
+}
+
+@layer default {
+  :host .gcds-hint {
+    font: var(--gcds-hint-font);
+    margin: var(--gcds-hint-margin);
+  }
 }

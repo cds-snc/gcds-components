@@ -86,12 +86,17 @@ describe('gcds-radio a11y tests', () => {
       <gcds-radio label="Label" radio-id="keyboard-focus" />
     `);
 
-    const inputField = await (await page.find('gcds-radio input')).innerText;
+    const inputField = await (
+      await page.find('gcds-radio >>> input')
+    ).innerText;
 
     await page.keyboard.press('Tab');
 
     expect(
-      await page.evaluate(() => window.document.activeElement.textContent),
+      await page.evaluate(
+        () =>
+          window.document.activeElement.shadowRoot.activeElement.textContent,
+      ),
     ).toEqual(inputField);
   });
 
@@ -104,7 +109,7 @@ describe('gcds-radio a11y tests', () => {
     await page.setContent(
       '<gcds-radio label="Label" radio-id="contains-label" />',
     );
-    const element = await await page.find('gcds-radio gcds-label');
+    const element = await await page.find('gcds-radio >>> gcds-label');
     expect(element.getAttribute('id')).toEqual('label-for-contains-label');
   });
 });

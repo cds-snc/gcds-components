@@ -5,8 +5,7 @@ import i18n from './i18n/i18n';
 @Component({
   tag: 'gcds-date-modified',
   styleUrl: 'gcds-date-modified.css',
-  shadow: false,
-  scoped: true,
+  shadow: true,
 })
 export class GcdsDateModified {
   @Element() el: HTMLElement;

@@ -10,6 +10,7 @@ import {
   Prop,
   h,
   Listen,
+  AttachInternals,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -28,13 +29,18 @@ import i18n from './i18n/i18n';
 @Component({
   tag: 'gcds-textarea',
   styleUrl: 'gcds-textarea.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class GcdsTextarea {
   @Element() el: HTMLElement;
 
-  private shadowElement?: HTMLElement;
+  @AttachInternals()
+  internals: ElementInternals;
+
+  private initialValue?: string;
+
+  private shadowElement?: HTMLTextAreaElement;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -94,6 +100,11 @@ export class GcdsTextarea {
   @Prop() label!: string;
 
   /**
+   * Name attribute for a textarea element.
+   */
+  @Prop() name!: string;
+
+  /**
    * Specifies if a form field is required or not.
    */
   @Prop() required?: boolean = false;
@@ -104,7 +115,7 @@ export class GcdsTextarea {
   @Prop() rows?: number = 5;
 
   /**
-   * Id + name attribute for a textarea element.
+   * Id attribute for a textarea element.
    */
   @Prop() textareaId!: string;
 
@@ -131,21 +142,6 @@ export class GcdsTextarea {
    * Set event to call validator
    */
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
-
-  /**
-   * Custom callback function on change event
-   */
-  @Prop() changeHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -177,11 +173,7 @@ export class GcdsTextarea {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
+  private onFocus = () => {
     this.gcdsFocus.emit();
   };
 
@@ -190,13 +182,9 @@ export class GcdsTextarea {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = e => {
-    if (this.blurHandler) {
-      this.blurHandler(e);
-    } else {
-      if (this.validateOn == 'blur') {
-        this.validate();
-      }
+  private onBlur = () => {
+    if (this.validateOn == 'blur') {
+      this.validate();
     }
 
     this.gcdsBlur.emit();
@@ -225,12 +213,9 @@ export class GcdsTextarea {
   }
 
   handleChange(e) {
-    if (this.changeHandler) {
-      this.changeHandler(e);
-    } else {
-      const val = e.target && e.target.value;
-      this.value = val;
-    }
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val ? val : null);
 
     this.gcdsChange.emit(this.value);
   }
@@ -256,6 +241,22 @@ export class GcdsTextarea {
         e.preventDefault();
       }
     }
+  }
+
+  /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    if (this.value != this.initialValue) {
+      this.internals.setFormValue(this.initialValue);
+      this.value = this.initialValue;
+      this.shadowElement.value = this.initialValue;
+    }
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.value = state;
   }
 
   /*
@@ -291,6 +292,9 @@ export class GcdsTextarea {
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
       'placeholder',
     ]);
+
+    this.internals.setFormValue(this.value ? this.value : null);
+    this.initialValue = this.value ? this.value : null;
   }
 
   componentWillUpdate() {
@@ -315,6 +319,7 @@ export class GcdsTextarea {
       hasError,
       inheritedAttributes,
       lang,
+      name,
     } = this;
 
     // Use max-width instead of cols attribute to keep field responsive
@@ -328,6 +333,7 @@ export class GcdsTextarea {
     };
 
     const attrsTextarea = {
+      name,
       disabled,
       required,
       rows,
@@ -369,21 +375,26 @@ export class GcdsTextarea {
             {...attrsTextarea}
             class={hasError ? 'gcds-error' : null}
             id={textareaId}
-            name={textareaId}
-            onBlur={e => this.onBlur(e)}
-            onFocus={e => this.onFocus(e)}
+            onBlur={() => this.onBlur()}
+            onFocus={() => this.onFocus()}
             onInput={e => this.handleChange(e)}
             aria-labelledby={`label-for-${textareaId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={characterCount ? characterCount : null}
             style={cols ? style : null}
-            ref={element => (this.shadowElement = element as HTMLElement)}
+            ref={element =>
+              (this.shadowElement = element as HTMLTextAreaElement)
+            }
           >
             {value}
           </textarea>
 
           {characterCount ? (
-            <p id={`textarea__count-${textareaId}`} aria-live="polite">
+            <p
+              id={`textarea__count-${textareaId}`}
+              class="textarea__count"
+              aria-live="polite"
+            >
               {value == undefined
                 ? `${characterCount} ${i18n[lang].characters.allowed}`
                 : `${characterCount - value.length} ${

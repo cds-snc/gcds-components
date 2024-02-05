@@ -106,6 +106,45 @@
 
       <hr class="my-550" />
 
+      <form noValidate id="form">
+        <gcds-input input-id="text" label="Text" name="text" hint="Has a hint" type="text"></gcds-input>
+
+        <gcds-checkbox checkbox-id="check" label="Check" name="check" hint="This has a hint" value="red"></gcds-checkbox>
+        <gcds-checkbox checkbox-id="check" label="Check" name="check" hint="This has a hint" value="blue"></gcds-checkbox>
+
+        <gcds-file-uploader uploader-id="file" name="file" label="File" hint="This will have files" multiple></gcds-file-uploader>
+
+        <gcds-fieldset legend="Fieldset" fieldset-id="fieldset" hint="This is a hint">
+          <gcds-radio name="radiowc" label="Radio 1" radio-id="r1" value="red"></gcds-radio>
+          <gcds-radio name="radiowc" label="Radio 2" radio-id="r2" value="blue"></gcds-radio>
+        </gcds-fieldset>
+
+        <gcds-textarea id="focus"  name="textarea" textarea-id="textarea" label="Textarea" hint="With a hint"></gcds-textarea>
+
+        <gcds-select label="Select" name="select" default-value="Select another" value="green">
+          <option value="red">Red</option>
+          <option value="blue">blue</option>
+          <option value="green">green</option>
+        </gcds-select>
+
+        <gcds-button type="submit">Submit</gcds-button>
+      </form>
+
+      <gcds-button button-role="secondary" onclick="document.querySelector('#focus').focus();">Button</gcds-button>
+
+      <script>
+        const form = document.querySelector("#form");
+        form.addEventListener("submit", function (event) {
+          //event.preventDefault();
+          const formData = new FormData(form);
+        });
+        form.addEventListener("formdata", function (event) {
+          //console.log(event.formData.get("htmlfile"))
+          //console.log(event.formData.getAll("file"))
+          console.log(event.formData.getAll("text"))
+        });
+      </script>
+
       <!-- ------------- Alerts ------------- -->
 
       <gcds-heading tag="h2">Alerts</gcds-heading>

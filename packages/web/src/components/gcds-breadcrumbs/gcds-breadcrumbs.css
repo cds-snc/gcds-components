@@ -1,8 +1,19 @@
-:host .gcds-breadcrumbs {
-  ol {
+@layer reset, default;
+
+@layer reset {
+  :host {
+    display: block;
+
+    .gcds-breadcrumbs ol {
+      list-style: none;
+      overflow-x: hidden;
+    }
+  }
+}
+
+@layer default {
+  :host .gcds-breadcrumbs ol {
     font: var(--gcds-breadcrumbs-font);
-    list-style: none;
-    overflow-x: hidden;
     margin: var(--gcds-breadcrumbs-margin);
     padding: var(--gcds-breadcrumbs-padding);
 
@@ -11,10 +22,8 @@
       margin: var(--gcds-breadcrumbs-item-first-child-margin) !important;
     }
 
-    &.has-canada-link gcds-breadcrumbs-item:first-child {
-      &:before {
-        display: none;
-      }
+    &.has-canada-link gcds-breadcrumbs-item:first-child:before {
+      display: none;
     }
   }
 }

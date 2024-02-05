@@ -17,7 +17,7 @@ import i18n from './i18n/i18n';
 @Component({
   tag: 'gcds-button',
   styleUrl: 'gcds-button.css',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class GcdsButton {
   @Element() el: HTMLElement;

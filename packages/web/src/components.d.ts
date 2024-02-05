@@ -151,10 +151,6 @@ export namespace Components {
     }
     interface GcdsCheckbox {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
           * Id attribute for an input element.
          */
         "checkboxId": string;
@@ -163,10 +159,6 @@ export namespace Components {
          */
         "checked": boolean;
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler": Function;
-        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled": boolean;
@@ -174,10 +166,6 @@ export namespace Components {
           * Error message for an invalid input element.
          */
         "errorMessage": string;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
         /**
           * Hint displayed below the label.
          */
@@ -355,14 +343,6 @@ export namespace Components {
          */
         "accept": string;
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler": Function;
-        /**
           * Specifies if a file uploader element is disabled or not.
          */
         "disabled": boolean;
@@ -370,10 +350,6 @@ export namespace Components {
           * Error message for an invalid file uploader element.
          */
         "errorMessage": string;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
         /**
           * Hint displayed below the label.
          */
@@ -386,6 +362,10 @@ export namespace Components {
           * Boolean that specifies if the user is allowed to select more than one file.
          */
         "multiple": boolean;
+        /**
+          * Name attribute for file input element.
+         */
+        "name": string;
         /**
           * Specifies if a form field is required or not.
          */
@@ -663,14 +643,6 @@ export namespace Components {
          */
         "autocomplete"?: 'on' | 'off';
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler": Function;
-        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
@@ -678,10 +650,6 @@ export namespace Components {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
         /**
           * Specifies if the label is hidden or not.
          */
@@ -691,13 +659,17 @@ export namespace Components {
          */
         "hint"?: string;
         /**
-          * Id + name attribute for an input element.
+          * Id  attribute for an input element.
          */
         "inputId": string;
         /**
           * Form field label
          */
         "label": string;
+        /**
+          * Name attribute for an input element.
+         */
+        "name": string;
         /**
           * Specifies if a form field is required or not.
          */
@@ -889,25 +861,13 @@ export namespace Components {
     }
     interface GcdsRadio {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
           * Specifies if an input element is checked.
          */
         "checked": boolean;
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler": Function;
-        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled": boolean;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
         /**
           * Hint displayed below the label.
          */
@@ -961,14 +921,6 @@ export namespace Components {
     }
     interface GcdsSelect {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler": Function;
-        /**
           * The default value is an optional value that gets displayed before the user selects an option.
          */
         "defaultValue"?: string;
@@ -981,10 +933,6 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
-        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -992,6 +940,10 @@ export namespace Components {
           * Form field label.
          */
         "label": string;
+        /**
+          * Name attribute for select form element.
+         */
+        "name": string;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1117,14 +1069,6 @@ export namespace Components {
     }
     interface GcdsTextarea {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler": Function;
-        /**
           * Sets the maxlength attribute for the textarea element.
          */
         "characterCount"?: number;
@@ -1141,10 +1085,6 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
-        /**
           * Specifies if the label is hidden or not.
          */
         "hideLabel"?: boolean;
@@ -1157,6 +1097,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Name attribute for a textarea element.
+         */
+        "name": string;
+        /**
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
@@ -1165,7 +1109,7 @@ export namespace Components {
          */
         "rows"?: number;
         /**
-          * Id + name attribute for a textarea element.
+          * Id attribute for a textarea element.
          */
         "textareaId": string;
         /**
@@ -1911,10 +1855,6 @@ declare namespace LocalJSX {
     }
     interface GcdsCheckbox {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
           * Id attribute for an input element.
          */
         "checkboxId": string;
@@ -1923,10 +1863,6 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler"?: Function;
-        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
@@ -1934,10 +1870,6 @@ declare namespace LocalJSX {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
         /**
           * Hint displayed below the label.
          */
@@ -2143,14 +2075,6 @@ declare namespace LocalJSX {
          */
         "accept"?: string;
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler"?: Function;
-        /**
           * Specifies if a file uploader element is disabled or not.
          */
         "disabled"?: boolean;
@@ -2158,10 +2082,6 @@ declare namespace LocalJSX {
           * Error message for an invalid file uploader element.
          */
         "errorMessage"?: string;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
         /**
           * Hint displayed below the label.
          */
@@ -2174,6 +2094,10 @@ declare namespace LocalJSX {
           * Boolean that specifies if the user is allowed to select more than one file.
          */
         "multiple"?: boolean;
+        /**
+          * Name attribute for file input element.
+         */
+        "name": string;
         /**
           * Emitted when the uploader loses focus.
          */
@@ -2471,14 +2395,6 @@ declare namespace LocalJSX {
          */
         "autocomplete"?: 'on' | 'off';
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler"?: Function;
-        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
@@ -2486,10 +2402,6 @@ declare namespace LocalJSX {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
         /**
           * Specifies if the label is hidden or not.
          */
@@ -2499,13 +2411,17 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
-          * Id + name attribute for an input element.
+          * Id  attribute for an input element.
          */
         "inputId": string;
         /**
           * Form field label
          */
         "label": string;
+        /**
+          * Name attribute for an input element.
+         */
+        "name": string;
         /**
           * Emitted when the input loses focus.
          */
@@ -2733,25 +2649,13 @@ declare namespace LocalJSX {
     }
     interface GcdsRadio {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
           * Specifies if an input element is checked.
          */
         "checked"?: boolean;
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler"?: Function;
-        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
         /**
           * Hint displayed below the label.
          */
@@ -2833,14 +2737,6 @@ declare namespace LocalJSX {
     }
     interface GcdsSelect {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler"?: Function;
-        /**
           * The default value is an optional value that gets displayed before the user selects an option.
          */
         "defaultValue"?: string;
@@ -2853,10 +2749,6 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
-        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -2864,6 +2756,10 @@ declare namespace LocalJSX {
           * Form field label.
          */
         "label": string;
+        /**
+          * Name attribute for select form element.
+         */
+        "name": string;
         /**
           * Emitted when the select loses focus.
          */
@@ -3002,14 +2898,6 @@ declare namespace LocalJSX {
     }
     interface GcdsTextarea {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
-          * Custom callback function on change event
-         */
-        "changeHandler"?: Function;
-        /**
           * Sets the maxlength attribute for the textarea element.
          */
         "characterCount"?: number;
@@ -3026,10 +2914,6 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
-        /**
           * Specifies if the label is hidden or not.
          */
         "hideLabel"?: boolean;
@@ -3041,6 +2925,10 @@ declare namespace LocalJSX {
           * Form field label
          */
         "label": string;
+        /**
+          * Name attribute for a textarea element.
+         */
+        "name": string;
         /**
           * Emitted when the textarea loses focus.
          */
@@ -3070,7 +2958,7 @@ declare namespace LocalJSX {
          */
         "rows"?: number;
         /**
-          * Id + name attribute for a textarea element.
+          * Id attribute for a textarea element.
          */
         "textareaId": string;
         /**
