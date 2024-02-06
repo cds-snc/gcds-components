@@ -102,12 +102,10 @@ jobs:
           - name: "@cdssnc/gcds-components-react"
             package: "./packages/react"
             dist: "./packages/react"
-            cdn: "gcds-components-react"
 
           - name: "@cdssnc/gcds-components-angular"
             package: "./packages/angular"
             dist: "./packages/angular/dist"
-            cdn: "gcds-components-angular"
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
