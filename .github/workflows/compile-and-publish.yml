@@ -6,10 +6,6 @@ on:
       - main
     paths:
       - 'lerna.json'
-  # Test the workflow on pull requests
-#  pull_request:
-#    branches:
-#      - main
 
 permissions:
   id-token: write
@@ -108,12 +104,10 @@ jobs:
             dist: "./packages/react"
             cdn: "gcds-components-react"
 
-
           - name: "@cdssnc/gcds-components-angular"
             package: "./packages/angular"
             dist: "./packages/angular/dist"
             cdn: "gcds-components-angular"
-
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -144,7 +138,7 @@ jobs:
           role-session-name: CDNPublish
           aws-region: ${{ env.CDN_REGION }}
 
-      - name: Update CDN ${{ matrix.name }} - test
+      - name: Update CDN ${{ matrix.name }}
         if: steps.publish.outputs.id != ''
         run: |
           PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
