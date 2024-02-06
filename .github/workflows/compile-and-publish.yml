@@ -151,7 +151,7 @@ jobs:
       #        run: |
       #          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
         run: |
-          PUBLISHED_PACKAGE="${{ matrix.cdn }}@latest
+          PUBLISHED_PACKAGE="${{ matrix.cdn }}@latest"
           mkdir -p ./tmp \
             && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
             && cd ./tmp/node_modules
