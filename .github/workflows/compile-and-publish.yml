@@ -38,11 +38,9 @@ jobs:
 
       - name: Install ${{ matrix.name }}
         run: npm install
-        working-directory: ${{ matrix.package }}
 
       - name: Build ${{ matrix.name }}
         run: npm run build
-        working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
         uses: JS-DevTools/npm-publish@9c9fb626973e955616b3913bfbd10ddf40b16ad7
@@ -117,24 +115,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install repo
+      - name: Install monorepo (web, react, angular)
         run: npm install
 
-      - name: Install gcds-components
-        run: npm install
-        working-directory: ./packages/web
-
-      - name: Build gcds-components
+      - name: Build gcds-components  (web, react, angular)
         run: npm run build
-        working-directory: ./packages/web
-
-      - name: Install ${{ matrix.name }}
-        run: npm install
-        working-directory: ${{ matrix.package }}
-
-      - name: Build ${{ matrix.name }}
-        run: npm run build
-        working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
         uses: JS-DevTools/npm-publish@9c9fb626973e955616b3913bfbd10ddf40b16ad7
@@ -155,7 +140,6 @@ jobs:
         if: steps.publish.outputs.id != ''
         run: |
           PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-
           mkdir -p ./tmp \
             && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
             && cd ./tmp/node_modules
@@ -182,4 +166,3 @@ jobs:
         run: |
           json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
           curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
-

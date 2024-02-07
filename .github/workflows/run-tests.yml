@@ -18,7 +18,6 @@ jobs:
 
       - name: Install gcds-components
         run: npm install
-        working-directory: ./packages/web
 
       - name: Run tests
         run: npm run test
