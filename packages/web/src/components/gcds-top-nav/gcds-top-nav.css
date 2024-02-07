@@ -1,4 +1,4 @@
-@layer reset, default, compact;
+@layer reset, default, desktop;
 
 @layer reset {
   :host {
@@ -16,21 +16,18 @@
 }
 
 @layer default {
-  :host {
-    container: component nav / inline-size;
-
-    .gcds-top-nav .gcds-top-nav__container {
-      display: flex;
-      flex-direction: column;
-      width: 90%;
-      max-width: var(--gcds-top-nav-max-width);
-      margin-inline: auto;
-    }
+  :host .gcds-top-nav .gcds-top-nav__container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: var(--gcds-top-nav-max-width);
+    margin-inline: auto;
   }
 }
 
-@layer compact {
-  @container nav (width > 51.15em) {
+@layer desktop {
+  /* Note: viewport specific style decisions */
+  @media only screen and (width >= 64em) {
     :host .gcds-top-nav {
       background-color: var(--gcds-top-nav-background);
 
