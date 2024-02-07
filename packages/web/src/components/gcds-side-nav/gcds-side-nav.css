@@ -23,23 +23,31 @@
   }
 }
 
+/* Note: viewport specific style decision */
 @layer desktop {
-  :host {
+  :host .gcds-side-nav {
     @media only screen and (width >= 64em) {
       max-width: var(--gcds-side-nav-max-width);
     }
   }
 }
 
+/* Note: viewport specific style decision */
 @layer mobile {
   @media only screen and (width < 64em) {
-    :host .gcds-side-nav__heading {
-      display: block;
-      width: 0;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
+    :host {
+      .gcds-side-nav__heading {
+        display: block;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      gcds-nav-group {
+        padding: 0;
+      }
     }
   }
 }
