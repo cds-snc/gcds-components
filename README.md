@@ -21,11 +21,11 @@ You can find the full documentation for GC Design System Components on [https://
 ## Local installation
 
 - Clone the repo `git clone https://github.com/cds-snc/gcds-components`.
-- Change into the `/packages/web` directory.
 - Run `npm install` to install all Node.js dependencies.
-- Run `npm run build` to compile web components.
+- Run `npm run build` to compile all three packages (web components, react and angular).
 
-To test the Angular/React packages locally make sure to link the packages to the web package using `npm link`.
+You can test the Angular and React packages locally as this repository is setup using [lerna](https://lerna.js.org/) which uses [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces) under the hood. Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`.
+
 <br/>
 <br/>
 
@@ -78,11 +78,15 @@ Toute la documentation sur les composants de Système de design GC est accessibl
 ## Installation locale
 
 - Copiez le référentiel `git clone https://github.com/cds-snc/gcds-components`.
-- Allez dans le répertoire `/packages/web`.
 - Exécutez ensuite `npm install` pour installer toutes les dépendances Node.js.
-- Finalement, exécutez `npm run build` pour compiler les composants Web.
+- Finalement, exécutez `npm run build` pour compiler les composants Web. [FR]
+- Finalement, exécutez `npm run build` pour compiler les trois paquets (composants web, react et angular). [FR]
 
-Pour tester localement les paquets Angular/React, assurez-vous de connecter les paquets au paquet Web en utilisant `npm link`.
+Pour tester localement les paquets Angular/React, assurez-vous de connecter les paquets au paquet Web en utilisant `npm link`. [original, to be removed]
+
+Pour tester localement les paquets Angular et React 
+You can test the Angular and React packages locally as this repository is setup using [lerna](https://lerna.js.org/) which uses [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces) under the hood. Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`. [FR]
+
 <br/>
 <br/>
 
