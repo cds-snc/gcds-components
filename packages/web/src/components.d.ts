@@ -6,7 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export { Validator, ValidatorEntry } from "./validators";
+export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -859,39 +861,15 @@ export namespace Components {
          */
         "isFixed"?: boolean;
     }
-    interface GcdsRadio {
-        /**
-          * Specifies if an input element is checked.
-         */
-        "checked": boolean;
-        /**
-          * Specifies if an input element is disabled or not.
-         */
-        "disabled": boolean;
-        /**
-          * Hint displayed below the label.
-         */
-        "hint": string;
-        /**
-          * Form field label
-         */
-        "label": string;
+    interface GcdsRadioGroup {
         /**
           * Name attribute for an input element.
          */
         "name": string;
         /**
-          * Id attribute for an input element.
+          * Options to render radio buttons
          */
-        "radioId": string;
-        /**
-          * Specifies if a form field is required or not.
-         */
-        "required": boolean;
-        /**
-          * Value for an input element.
-         */
-        "value": string;
+        "options": string | Array<RadioObject>;
     }
     interface GcdsSearch {
         /**
@@ -1215,9 +1193,9 @@ export interface GcdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsPaginationElement;
 }
-export interface GcdsRadioCustomEvent<T> extends CustomEvent<T> {
+export interface GcdsRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLGcdsRadioElement;
+    target: HTMLGcdsRadioGroupElement;
 }
 export interface GcdsSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1531,24 +1509,24 @@ declare global {
         prototype: HTMLGcdsPhaseBannerElement;
         new (): HTMLGcdsPhaseBannerElement;
     };
-    interface HTMLGcdsRadioElementEventMap {
+    interface HTMLGcdsRadioGroupElementEventMap {
         "gcdsRadioChange": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
-    interface HTMLGcdsRadioElement extends Components.GcdsRadio, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLGcdsRadioElementEventMap>(type: K, listener: (this: HTMLGcdsRadioElement, ev: GcdsRadioCustomEvent<HTMLGcdsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLGcdsRadioGroupElement extends Components.GcdsRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLGcdsRadioGroupElement, ev: GcdsRadioGroupCustomEvent<HTMLGcdsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLGcdsRadioElementEventMap>(type: K, listener: (this: HTMLGcdsRadioElement, ev: GcdsRadioCustomEvent<HTMLGcdsRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLGcdsRadioGroupElement, ev: GcdsRadioGroupCustomEvent<HTMLGcdsRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLGcdsRadioElement: {
-        prototype: HTMLGcdsRadioElement;
-        new (): HTMLGcdsRadioElement;
+    var HTMLGcdsRadioGroupElement: {
+        prototype: HTMLGcdsRadioGroupElement;
+        new (): HTMLGcdsRadioGroupElement;
     };
     interface HTMLGcdsSearchElementEventMap {
         "gcdsChange": object;
@@ -1689,7 +1667,7 @@ declare global {
         "gcds-nav-link": HTMLGcdsNavLinkElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
-        "gcds-radio": HTMLGcdsRadioElement;
+        "gcds-radio-group": HTMLGcdsRadioGroupElement;
         "gcds-search": HTMLGcdsSearchElement;
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-side-nav": HTMLGcdsSideNavElement;
@@ -2647,23 +2625,7 @@ declare namespace LocalJSX {
          */
         "isFixed"?: boolean;
     }
-    interface GcdsRadio {
-        /**
-          * Specifies if an input element is checked.
-         */
-        "checked"?: boolean;
-        /**
-          * Specifies if an input element is disabled or not.
-         */
-        "disabled"?: boolean;
-        /**
-          * Hint displayed below the label.
-         */
-        "hint"?: string;
-        /**
-          * Form field label
-         */
-        "label": string;
+    interface GcdsRadioGroup {
         /**
           * Name attribute for an input element.
          */
@@ -2671,27 +2633,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the radio loses focus.
          */
-        "onGcdsBlur"?: (event: GcdsRadioCustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
         /**
           * Emitted when the radio has focus.
          */
-        "onGcdsFocus"?: (event: GcdsRadioCustomEvent<void>) => void;
+        "onGcdsFocus"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
         /**
           * Emitted when the radio button is checked
          */
-        "onGcdsRadioChange"?: (event: GcdsRadioCustomEvent<void>) => void;
+        "onGcdsRadioChange"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
         /**
-          * Id attribute for an input element.
+          * Options to render radio buttons
          */
-        "radioId": string;
-        /**
-          * Specifies if a form field is required or not.
-         */
-        "required"?: boolean;
-        /**
-          * Value for an input element.
-         */
-        "value"?: string;
+        "options": string | Array<RadioObject>;
     }
     interface GcdsSearch {
         /**
@@ -3031,7 +2985,7 @@ declare namespace LocalJSX {
         "gcds-nav-link": GcdsNavLink;
         "gcds-pagination": GcdsPagination;
         "gcds-phase-banner": GcdsPhaseBanner;
-        "gcds-radio": GcdsRadio;
+        "gcds-radio-group": GcdsRadioGroup;
         "gcds-search": GcdsSearch;
         "gcds-select": GcdsSelect;
         "gcds-side-nav": GcdsSideNav;
@@ -3077,7 +3031,7 @@ declare module "@stencil/core" {
             "gcds-nav-link": LocalJSX.GcdsNavLink & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
-            "gcds-radio": LocalJSX.GcdsRadio & JSXBase.HTMLAttributes<HTMLGcdsRadioElement>;
+            "gcds-radio-group": LocalJSX.GcdsRadioGroup & JSXBase.HTMLAttributes<HTMLGcdsRadioGroupElement>;
             "gcds-search": LocalJSX.GcdsSearch & JSXBase.HTMLAttributes<HTMLGcdsSearchElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
