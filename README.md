@@ -79,12 +79,8 @@ Toute la documentation sur les composants de Système de design GC est accessibl
 
 - Copiez le référentiel `git clone https://github.com/cds-snc/gcds-components`.
 - Exécutez ensuite `npm install` pour installer toutes les dépendances Node.js.
-- Finalement, exécutez `npm run build` pour compiler les composants Web. [FR]
 - Finalement, exécutez `npm run build` pour compiler les trois paquets (composants web, react et angular). [FR]
 
-Pour tester localement les paquets Angular/React, assurez-vous de connecter les paquets au paquet Web en utilisant `npm link`. [original, to be removed]
-
-Pour tester localement les paquets Angular et React 
 You can test the Angular and React packages locally as this repository is setup using [lerna](https://lerna.js.org/) which uses [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces) under the hood. Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`. [FR]
 
 <br/>
