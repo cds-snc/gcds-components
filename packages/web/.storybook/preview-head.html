@@ -374,4 +374,114 @@
   #story--components-top-navigation--default {
     height: 300px;
   }
+
+  .css-8ycahn * .token.comment {
+      color: white !important;
+  }
 </style>
+
+<script>
+  const url = new URLSearchParams(window.location.search);
+
+  if (url.get('demo') && url.get('lang')) {
+    var timer = setInterval(function() {
+      if (document.querySelector('.docblock-argstable')) {
+        clearInterval(timer);
+	      formatTable(document.querySelector('.docblock-argstable'), url.get('lang'));
+      }
+    }, 200);
+  }
+
+  function formatTable(table, lang) {
+    // Format table header
+    const tableHead = [...table.querySelectorAll('th')];
+    tableHead.forEach(th => {
+      th.setAttribute('lang', lang);
+      if (lang == 'en') {
+        const thText = th.innerText;
+        if (thText == 'Name') {
+          th.innerText = 'Property';
+        } else if (thText == 'Description') {
+          th.innerText = 'Data type';
+        } else if (thText == 'Default') {
+          th.innerText = 'Default value';
+        } else if (thText == 'Control') {
+          const resetBtn = th.querySelector('button');
+          th.innerText = 'Values';
+          resetBtn.setAttribute('style', 'float: right;');
+          th.append(resetBtn);
+        }
+      } else {
+        const thText = th.innerText;
+        if (thText == 'Name') {
+          th.innerText = 'Propriété';
+        } else if (thText == 'Description') {
+          th.innerText = 'Type de donnée';
+        } else if (thText == 'Default') {
+          th.innerText = 'Valeur par défaut';
+        } else if (thText == 'Control') {
+          const resetBtn = th.querySelector('button');
+          th.innerText = 'Valeurs';
+          resetBtn.setAttribute('style', 'float: right;');
+          resetBtn.setAttribute('title', 'Réinitialiser les contrôles');
+          th.append(resetBtn);
+        }
+      }
+    });
+
+    // Table Rows
+    const tableRows = [...table.querySelectorAll('tbody > tr')];
+    tableRows.forEach(tr => {
+      // Expand collapse rows
+      if (tr.hasAttribute('class')) {
+        tr.removeAttribute('title');
+        const cellText = tr.children[1].innerText.split(' | ');
+        tr.children[1].innerText = lang === 'en' ? cellText[0] : cellText[1].replace(' items', '');
+        tr.setAttribute('class', '');
+        tr.children[1].setAttribute('class', '');
+        tr.removeChild(tr.children[0]);
+      }
+
+      // Loop through table cells
+      const propertyId = `${tr.children[0].innerText.replace('*', '')}-property`;
+      for (let x = 0; x < tr.children.length; x++) {
+        // Format first cell
+        if (x == 0) {
+          tr.children[x].setAttribute('id', propertyId);
+          if (tr.children[x].querySelector('[title=Required]') && lang == 'fr') {
+            tr.children[x].querySelector('[title=Required]').setAttribute('lang', 'fr');
+            tr.children[x].querySelector('[title=Required]').setAttribute('title', 'Obligatoire');
+          }
+        }
+        // Format third cell
+        if (tr.children[x].innerText === '-') {
+          if (lang === 'en') {
+            tr.children[x].setAttribute('title', 'No default value');
+          } else {
+            tr.children[x].setAttribute('title', 'Aucune valeur par défaut');
+            tr.children[x].setAttribute('lang', 'fr');
+          }
+        }
+        // Format last cell
+        if (x === 3) {
+          if (tr.children[x].querySelector('select')) {
+            tr.children[x].querySelector('select').setAttribute('aria-labelledby', propertyId);
+
+            if (lang === 'fr') {
+              const firstSelectOption = tr.children[x].querySelector('select').children[0];
+              firstSelectOption.setAttribute('lang', 'fr');
+              firstSelectOption.innerText = 'Choisir une option';
+            }
+          }
+
+          // Remove placeholders and assign aria-labelledby
+          if (tr.children[x].querySelector('[placeholder]')) {
+            const formElement = tr.children[x].querySelector('[placeholder]');
+            formElement.removeAttribute('placeholder');
+            formElement.setAttribute('aria-labelledby', propertyId);
+          }
+        }
+      }
+    });
+  }
+</script>
