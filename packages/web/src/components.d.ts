@@ -663,7 +663,7 @@ export namespace Components {
         /**
           * String to have autocomplete enabled
          */
-        "autocomplete"?: 'on' | 'off';
+        "autocomplete"?: string;
         /**
           * Custom callback function on blur event
          */
@@ -2471,7 +2471,7 @@ declare namespace LocalJSX {
         /**
           * String to have autocomplete enabled
          */
-        "autocomplete"?: 'on' | 'off';
+        "autocomplete"?: string;
         /**
           * Custom callback function on blur event
          */
