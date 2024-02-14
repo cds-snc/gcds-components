@@ -40,7 +40,7 @@
   "plugins": [
     {
       "type": "node-workspace",
-      "updatePeerDependencies": true
+      "updatePeerDependencies": false
     },
     {
       "type": "linked-versions",
