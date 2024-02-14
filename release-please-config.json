@@ -30,7 +30,7 @@
     { "type": "revert", "section": "Reverts", "hidden": true },
     { "type": "docs", "section": "Documentation" },
     { "type": "style", "section": "Styles" },
-    { "type": "chore", "section": "Patch" },
+    { "type": "chore", "section": "Patch", "hidden": true },
     { "type": "refactor", "section": "Code Refactoring" },
     { "type": "test", "section": "Tests", "hidden": true },
     { "type": "build", "section": "Build System", "hidden": true },
