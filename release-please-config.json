@@ -32,7 +32,7 @@
   "plugins": [
     {
       "type": "node-workspace",
-      "updatePeerDependencies": false
+      "updatePeerDependencies": true
     },
     {
       "type": "linked-versions",
