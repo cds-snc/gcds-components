@@ -1,4 +1,4 @@
-@layer reset, default, mobile, xs-mobile, focus;
+@layer reset, default, mobile, xsMobile, focus;
 
 @layer reset {
   :host {
@@ -206,7 +206,7 @@
             }
           }
 
-          @media screen and (min-width: 61.9375rem) and (max-width: 74.9375rem) {
+          @media screen and (61.9375rem <= width <= 74.9375rem) {
             li {
               width: auto;
             }
@@ -261,7 +261,7 @@
 }
 
 @layer mobile {
-  @media screen and (max-width: 61.9375rem) {
+  @media screen and (width <= 61.9375rem) {
     :host .gcds-topic-menu {
       .visible-sm-inline {
         display: inline-block;
@@ -449,8 +449,8 @@
   }
 }
 
-@layer xs-mobile {
-  @media screen and (max-width: 47.9375rem) {
+@layer xsMobile {
+  @media screen and (width <= 47.9375rem) {
     :host .gcds-topic-menu > [role='menu'] {
       margin-inline: calc(((100vw - 100%) / 2) * -1);
     }
