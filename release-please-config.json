@@ -2,6 +2,7 @@
   "bootstrap-sha": "5445327dd19538ff79ab6f981ac36ea262423049",
   "last-release-sha": "7c5725a33d1dcbd210a9b2e07382ffcb675d3eb1",
   "include-component-in-tag": true,
+  "group-pull-request-title-pattern": "chore: GCDS Components Release v${version}",
   "packages": {
     ".": {
       "component": "gcds-components",
