@@ -1,25 +1,16 @@
 {
   "bootstrap-sha": "5445327dd19538ff79ab6f981ac36ea262423049",
   "last-release-sha": "7c5725a33d1dcbd210a9b2e07382ffcb675d3eb1",
-  "bump-minor-pre-major": false,
-  "bump-patch-for-minor-pre-major": false,
-  "draft": false,
-  "prerelease": false,
-  "group-pull-request-title-pattern": "chore: GCDS Components Release v${version}",
   "include-component-in-tag": true,
   "packages": {
-    "packages/angular": {
-      "component": "gcds-components-angular",
-      "changelog-path": ""
-    },
-    "packages/react": {
-      "component": "gcds-components-react",
-      "changelog-path": ""
-
-    },
-    "packages/web": {
+    ".": {
       "component": "gcds-components",
-      "changelog-path": ""
+      "changelog-path": "CHANGELOG.md",
+      "pull-request-title-pattern": "chore: GCDS Components Release v${version}",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false
     }
   },
   "changelog-sections": [
@@ -49,6 +40,15 @@
         "gcds-components-angular",
         "gcds-components-react",
         "gcds-components"
+      ]
+    },
+    {
+      "type": "group-priority",
+      "groups": [
+        "gcds-components",
+        "gcds-components-angular",
+        "gcds-components-react"
+
       ]
     }
   ],
