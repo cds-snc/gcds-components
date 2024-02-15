@@ -39,15 +39,6 @@
   "release-type": "node",
   "plugins": [
     {
-      "type": "linked-versions",
-      "groupName": "GCDS Components",
-      "components": [
-        "gcds-components-angular",
-        "gcds-components-react",
-        "gcds-components"
-      ]
-    },
-    {
       "type": "group-priority",
       "groups": [
         "gcds-components",
