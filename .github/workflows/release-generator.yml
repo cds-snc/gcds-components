@@ -23,4 +23,3 @@ jobs:
         id: release
         with:
           token: ${{ steps.sre_app_token.outputs.token }}
-          target-branch: ci/gh-workflow-fix
