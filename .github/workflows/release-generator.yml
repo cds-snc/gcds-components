@@ -1,0 +1,27 @@
+name: Release Generator
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@86576b355dd19da0519e0bdb63d8edb5bcf76a25 # v1.7.0
+        id: sre_app_token
+        with:
+          app_id: ${{ secrets.SRE_APP_ID }}
+          private_key: ${{ secrets.SRE_APP_PRIVATE_KEY }}
+
+      - uses: google-github-actions/release-please-action@cc61a07e2da466bebbc19b3a7dd01d6aecb20d1e # v4.0.2
+        with:
+          command: manifest
+          token: ${{ steps.sre_app_token.outputs.token }}
+          release-type: node
+          default-branch: main

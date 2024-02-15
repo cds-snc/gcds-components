@@ -90,16 +90,6 @@ export class GcdsTopNav {
         if (this.mobile.hasAttribute('open')) {
           await this.mobile.toggleNav();
         }
-      } else {
-        for (let i = 0; i < this.el.children.length; i++) {
-          if (
-            this.el.children[i].nodeName == 'GCDS-NAV-GROUP' &&
-            this.el.children[i].hasAttribute('open')
-          ) {
-            await (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
-            await this.updateNavItemQueue(this.el);
-          }
-        }
       }
     }
   }

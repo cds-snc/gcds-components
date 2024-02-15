@@ -17,7 +17,7 @@
     "removeComments": false,
     "skipLibCheck": true,
     "jsx": "react",
-    "target": "es2015"
+    "target": "es2015",
   },
   "include": [
     "src/**/*.ts",

@@ -28,6 +28,13 @@ Type: `Promise<"desktop" | "mobile">`
 
 
 
+#### Parameters
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| `el`             | `any`     |             |
+| `includeElement` | `boolean` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -37,6 +44,12 @@ Type: `Promise<void>`
 ### `updateNavSize(size: any) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name   | Type  | Description |
+| ------ | ----- | ----------- |
+| `size` | `any` |             |
 
 #### Returns
 

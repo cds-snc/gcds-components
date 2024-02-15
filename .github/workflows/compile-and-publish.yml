@@ -32,20 +32,18 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Setup Node
-        uses: actions/setup-node@5ef044f9d09786428e6e895be6be17937becee3a
+        uses: actions/setup-node@d86ebcd40b3cb50b156bfa44dd277faf38282d12
         with:
           node-version: 18
 
       - name: Install ${{ matrix.name }}
         run: npm install
-        working-directory: ${{ matrix.package }}
 
       - name: Build ${{ matrix.name }}
         run: npm run build
-        working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@3a3ce8768f68335c199746eadc16bcc7ddda963b
+        uses: JS-DevTools/npm-publish@9c9fb626973e955616b3913bfbd10ddf40b16ad7
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -113,31 +111,18 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Setup Node
-        uses: actions/setup-node@5ef044f9d09786428e6e895be6be17937becee3a
+        uses: actions/setup-node@d86ebcd40b3cb50b156bfa44dd277faf38282d12
         with:
           node-version: 18
 
-      - name: Install repo
+      - name: Install monorepo (web, react, angular)
         run: npm install
 
-      - name: Install gcds-components
-        run: npm install
-        working-directory: ./packages/web
-
-      - name: Build gcds-components
+      - name: Build gcds-components  (web, react, angular)
         run: npm run build
-        working-directory: ./packages/web
-
-      - name: Install ${{ matrix.name }}
-        run: npm install
-        working-directory: ${{ matrix.package }}
-
-      - name: Build ${{ matrix.name }}
-        run: npm run build
-        working-directory: ${{ matrix.package }}
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@3a3ce8768f68335c199746eadc16bcc7ddda963b
+        uses: JS-DevTools/npm-publish@9c9fb626973e955616b3913bfbd10ddf40b16ad7
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -155,7 +140,6 @@ jobs:
         if: steps.publish.outputs.id != ''
         run: |
           PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-
           mkdir -p ./tmp \
             && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
             && cd ./tmp/node_modules
@@ -182,4 +166,3 @@ jobs:
         run: |
           json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
           curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
-

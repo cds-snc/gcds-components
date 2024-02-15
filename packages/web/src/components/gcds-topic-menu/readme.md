@@ -48,6 +48,12 @@ Type: `Promise<void>`
 
 Update keyboard focus queue
 
+#### Parameters
+
+| Name     | Type  | Description |
+| -------- | ----- | ----------- |
+| `parent` | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -57,6 +63,12 @@ Type: `Promise<void>`
 ### `updateNavSize(size: any) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name   | Type  | Description |
+| ------ | ----- | ----------- |
+| `size` | `any` |             |
 
 #### Returns
 
