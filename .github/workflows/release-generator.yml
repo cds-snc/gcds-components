@@ -1,6 +1,9 @@
 name: Release Generator
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -21,7 +24,7 @@ jobs:
 
       - uses: google-github-actions/release-please-action@cc61a07e2da466bebbc19b3a7dd01d6aecb20d1e # v4.0.2
         with:
-          command: manifest
           token: ${{ steps.sre_app_token.outputs.token }}
           release-type: node
-          default-branch: main
+          skip-github-release: true
+          skip-github-pull-request: true
