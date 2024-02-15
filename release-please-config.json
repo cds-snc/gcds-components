@@ -1,13 +1,26 @@
 {
   "bootstrap-sha": "5445327dd19538ff79ab6f981ac36ea262423049",
+  "last-release-sha": "7c5725a33d1dcbd210a9b2e07382ffcb675d3eb1",
+  "bump-minor-pre-major": false,
+  "bump-patch-for-minor-pre-major": false,
+  "draft": false,
+  "prerelease": false,
+  "group-pull-request-title-pattern": "chore: GCDS Components Release ${version}",
+  "pull-request-title-pattern": "chore: GCDS Components Release ${version}",
+  "include-component-in-tag": true,
   "packages": {
-    ".": {
-      "changelog-path": "CHANGELOG.md",
-      "bump-minor-pre-major": false,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "pull-request-title-pattern": "chore: GCDS Components Release v${version}"
+    "packages/angular": {
+      "component": "gcds-components-angular",
+      "changelog-path": ""
+    },
+    "packages/react": {
+      "component": "gcds-components-react",
+      "changelog-path": ""
+
+    },
+    "packages/web": {
+      "component": "gcds-components",
+      "changelog-path": ""
     }
   },
   "changelog-sections": [
@@ -18,11 +31,32 @@
     { "type": "revert", "section": "Reverts", "hidden": true },
     { "type": "docs", "section": "Documentation" },
     { "type": "style", "section": "Styles" },
-    { "type": "chore", "section": "Patch" },
+    { "type": "chore", "section": "Patch", "hidden": true },
     { "type": "refactor", "section": "Code Refactoring" },
     { "type": "test", "section": "Tests", "hidden": true },
     { "type": "build", "section": "Build System", "hidden": true },
     { "type": "ci", "section": "Continuous Integration", "hidden": true }
+  ],
+  "release-type": "node",
+  "plugins": [
+    {
+      "type": "linked-versions",
+      "groupName": "GCDS Components",
+      "components": [
+        "gcds-components-angular",
+        "gcds-components-react",
+        "gcds-components"
+      ]
+    },
+    {
+      "type": "group-priority",
+      "groups": [
+        "gcds-components",
+        "gcds-components-angular",
+        "gcds-components-react"
+
+      ]
+    }
   ],
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
