@@ -27,3 +27,4 @@ jobs:
         with:
           token: ${{ steps.sre_app_token.outputs.token }}
           skip-github-release: true
+          target-branch: ci/gh-workflow-fix
