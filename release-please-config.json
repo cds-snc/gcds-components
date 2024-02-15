@@ -6,7 +6,6 @@
   "draft": false,
   "prerelease": false,
   "group-pull-request-title-pattern": "chore: GCDS Components Release ${version}",
-  "pull-request-title-pattern": "chore: GCDS Components Release ${version}",
   "include-component-in-tag": true,
   "packages": {
     "packages/angular": {
