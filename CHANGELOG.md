@@ -4,6 +4,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.0](https://github.com/cds-snc/gcds-components/compare/v0.17.1...v0.18.0) (2024-02-15)
+
+
+### Features
+
+* add light link-variant to link component ([#358](https://github.com/cds-snc/gcds-components/issues/358)) ([34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0))
+* add new grid functionality ([#356](https://github.com/cds-snc/gcds-components/issues/356)) ([3a1a9c6](https://github.com/cds-snc/gcds-components/commit/3a1a9c694245ae2fad37cf7878618aa7a0584841))
+* lerna monorepo config ([#388](https://github.com/cds-snc/gcds-components/issues/388)) ([424b138](https://github.com/cds-snc/gcds-components/commit/424b138d6ebf8e3df77b2e265ff386bf1e39d7cf))
+
+
+### Bug Fixes
+
+* change release please config ([#430](https://github.com/cds-snc/gcds-components/issues/430)) ([4454570](https://github.com/cds-snc/gcds-components/commit/4454570646f69479b67bfb1f2cebc409aefabc21))
+* **deps:** update all patch dependencies to v7.6.10 ([#386](https://github.com/cds-snc/gcds-components/issues/386)) ([8494806](https://github.com/cds-snc/gcds-components/commit/84948065888c16833a790a870ee0a711eb39856a))
+* File-uploader not validating properly ([#364](https://github.com/cds-snc/gcds-components/issues/364)) ([ee16326](https://github.com/cds-snc/gcds-components/commit/ee16326a0daa8edb126c273f85c85c2a3cf0ef58))
+* fix storybook spacing in component preview ([df39443](https://github.com/cds-snc/gcds-components/commit/df3944321e81866eda41016c449279ca7b6ec619))
+* header slots in story ([#362](https://github.com/cds-snc/gcds-components/issues/362)) ([a96c1f8](https://github.com/cds-snc/gcds-components/commit/a96c1f8512d6bfd3a0445727a0530d7d07f35838))
+* header slots in story ([#362](https://github.com/cds-snc/gcds-components/issues/362)) ([ac2ea8c](https://github.com/cds-snc/gcds-components/commit/ac2ea8c0644fd98c53789cddcdb060c4b744cdcf))
+* link variant prop name ([#363](https://github.com/cds-snc/gcds-components/issues/363)) ([ab0e404](https://github.com/cds-snc/gcds-components/commit/ab0e4042d4db0c580fd61a049bd8a2696d9b3141))
+* storybook spacing in component preview ([#427](https://github.com/cds-snc/gcds-components/issues/427)) ([df39443](https://github.com/cds-snc/gcds-components/commit/df3944321e81866eda41016c449279ca7b6ec619))
+* update font awesome instructions in readme ([#353](https://github.com/cds-snc/gcds-components/issues/353)) ([e9624f0](https://github.com/cds-snc/gcds-components/commit/e9624f071888db71abbf60b5869dc19d6e49b4b9))
+* update renovate base branch ([#370](https://github.com/cds-snc/gcds-components/issues/370)) ([e8d0947](https://github.com/cds-snc/gcds-components/commit/e8d09475be5f0f46e64f233f7803117c90d8733f))
+
 ## v0.18.1
 
 ### Minor
