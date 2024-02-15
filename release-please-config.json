@@ -5,7 +5,8 @@
   "bump-patch-for-minor-pre-major": false,
   "draft": false,
   "prerelease": false,
-  "group-pull-request-title-pattern": "chore: GCDS Components Release v${version}",
+  "group-pull-request-title-pattern": "chore: GCDS Components Release ${version}",
+  "pull-request-title-pattern": "chore: GCDS Components Release ${version}",
   "include-component-in-tag": true,
   "packages": {
     "packages/angular": {
@@ -38,6 +39,15 @@
   ],
   "release-type": "node",
   "plugins": [
+    {
+      "type": "linked-versions",
+      "groupName": "GCDS Components",
+      "components": [
+        "gcds-components-angular",
+        "gcds-components-react",
+        "gcds-components"
+      ]
+    },
     {
       "type": "group-priority",
       "groups": [
