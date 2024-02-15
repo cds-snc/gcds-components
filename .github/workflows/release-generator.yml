@@ -1,9 +1,6 @@
 name: Release Generator
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
@@ -26,5 +23,4 @@ jobs:
         id: release
         with:
           token: ${{ steps.sre_app_token.outputs.token }}
-          skip-github-release: true
           target-branch: ci/gh-workflow-fix
