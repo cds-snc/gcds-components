@@ -27,4 +27,4 @@ jobs:
         with:
           token: ${{ steps.sre_app_token.outputs.token }}
           release-type: node
-          skip-github-release: true
+          include-component-in-tag: true
