@@ -4,6 +4,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.19.0](https://github.com/cds-snc/gcds-components/compare/v0.18.1...v0.19.0) (2024-02-15)
+
+
+### Features
+
+* lerna monorepo config ([#388](https://github.com/cds-snc/gcds-components/issues/388)) ([424b138](https://github.com/cds-snc/gcds-components/commit/424b138d6ebf8e3df77b2e265ff386bf1e39d7cf))
+
+
+### Bug Fixes
+
+* change release please config ([#430](https://github.com/cds-snc/gcds-components/issues/430)) ([4454570](https://github.com/cds-snc/gcds-components/commit/4454570646f69479b67bfb1f2cebc409aefabc21))
+* **deps:** update all patch dependencies to v7.6.10 ([#386](https://github.com/cds-snc/gcds-components/issues/386)) ([8494806](https://github.com/cds-snc/gcds-components/commit/84948065888c16833a790a870ee0a711eb39856a))
+* fix storybook spacing in component preview ([df39443](https://github.com/cds-snc/gcds-components/commit/df3944321e81866eda41016c449279ca7b6ec619))
+* storybook spacing in component preview ([#427](https://github.com/cds-snc/gcds-components/issues/427)) ([df39443](https://github.com/cds-snc/gcds-components/commit/df3944321e81866eda41016c449279ca7b6ec619))
+* update renovate base branch ([#370](https://github.com/cds-snc/gcds-components/issues/370)) ([e8d0947](https://github.com/cds-snc/gcds-components/commit/e8d09475be5f0f46e64f233f7803117c90d8733f))
+
 ## v0.18.1
 
 ### Minor
