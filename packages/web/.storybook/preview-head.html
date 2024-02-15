@@ -391,6 +391,8 @@
 	      formatTable(document.querySelector('.docblock-argstable'), url.get('lang'));
       }
     }, 200);
+
+    // Chnage language on hide/copy code buttons
     if (url.get('lang') === 'fr') {
       var buttonTimer = setInterval(function() {
         if (document.querySelector('.docblock-code-toggle')) {
@@ -398,7 +400,31 @@
           formatFrenchButtons(document.querySelector('.docblock-code-toggle'));
         }
       }, 200);
+
+      copyButtonTimer();
     }
+  }
+
+  function copyButtonTimer() {
+    var buttonTimer = setInterval(function() {
+      if (document.querySelector('.css-otxova')) {
+        clearInterval(buttonTimer);
+        formatCopyButton(document.querySelector('.css-otxova'));
+      }
+    }, 200);
+  }
+
+  function formatCopyButton(button) {
+    button.innerText = 'Copie';
+
+    button.addEventListener('click', () => {
+      setTimeout(() => {
+        button.innerText = 'Copié';
+      }, 10);
+      setTimeout(() => {
+        button.innerText = 'Copie';
+      }, 1800);
+    })
   }
 
   function formatFrenchButtons(button) {
@@ -410,6 +436,7 @@
         setTimeout(() => {
           button.innerText = "Masquer le code";
         }, 10);
+        copyButtonTimer();
       } else {
         setTimeout(() => {
           button.innerText = "Voir le code";
