@@ -40,6 +40,10 @@
   "release-type": "node",
   "plugins": [
     {
+      "type": "node-workspace",
+      "updatePeerDependencies": true
+    },
+    {
       "type": "linked-versions",
       "groupName": "GCDS Components",
       "components": [
