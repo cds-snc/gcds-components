@@ -389,26 +389,23 @@
     }
   }
 
+  let observer = new MutationObserver((mutation) => {
+    if (mutation[0].target.parentElement.innerText === 'Copied') {
+      mutation[0].target.parentElement.innerText = 'Copié'
+    } else if (mutation[0].target.parentNode.innerText === 'Copy') {
+      mutation[0].target.parentElement.innerText = 'Copie'
+    }
+  });
+
   function copyButtonTimer() {
     var buttonTimer = setInterval(function() {
+      console.log('looking')
       if (document.querySelector('.css-otxova')) {
+        document.querySelector('.css-otxova').innerText = 'Copie';
         clearInterval(buttonTimer);
-        formatCopyButton(document.querySelector('.css-otxova'));
+        observer.observe(document.querySelector('.css-111a2cx'), { characterData: true, attributes: false, childList: false, subtree: true });
       }
     }, 200);
-  }
-
-  function formatCopyButton(button) {
-    button.innerText = 'Copie';
-
-    button.addEventListener('click', () => {
-      setTimeout(() => {
-        button.innerText = 'Copié';
-      }, 10);
-      setTimeout(() => {
-        button.innerText = 'Copie';
-      }, 1800);
-    })
   }
 
   function formatFrenchButtons(button) {
@@ -495,11 +492,18 @@
         }
         // Format third cell
         if (tr.children[x].innerText === '-') {
+          let span = document.createElement('span');
+          span.setAttribute('class', 'sr-only');
+
           if (lang === 'en') {
             tr.children[x].setAttribute('title', 'No default value');
+            span.innerText = 'No default value';
+            tr.children[x].append(span);
           } else {
             tr.children[x].setAttribute('title', 'Aucune valeur par défaut');
             tr.children[x].setAttribute('lang', 'fr');
+            span.innerText = 'Aucune valeur par défaut';
+            tr.children[x].append(span);
           }
         }
         // Format last cell
