@@ -5,9 +5,7 @@ describe('gcds-pagination', () => {
   it('renders', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-pagination
-       display="simple" 
-      ></gcds-pagination>
+      <gcds-pagination display="simple"></gcds-pagination>
     `);
 
     const element = await page.find('gcds-pagination');

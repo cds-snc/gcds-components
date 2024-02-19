@@ -1,9 +1,19 @@
-:host {
-  display: block;
+@layer reset, default, list, simple, wide, compact, hover, active, focus;
 
-  ul {
-    padding: 0;
-    list-style: none;
+@layer reset {
+  :host {
+    display: block;
+
+    .gcds-pagination ul {
+      padding: 0;
+      list-style: none;
+    }
+  }
+}
+
+@layer default {
+  :host .gcds-pagination {
+    container: component pagination / inline-size;
 
     li {
       margin: var(--gcds-pagination-listitem-margin);
@@ -12,40 +22,14 @@
         color: var(--gcds-pagination-default-text);
         font: var(--gcds-pagination-font);
         border-radius: var(--gcds-pagination-border-radius);
-
-        &:hover {
-          background: var(--gcds-pagination-hover-background);
-          color: var(--gcds-pagination-hover-text);
-        }
-
-        &:focus {
-          color: var(--gcds-pagination-focus-text);
-          background-color: var(--gcds-pagination-focus-background);
-          outline: var(--gcds-pagination-focus-outline-width) solid var(--gcds-pagination-focus-background);
-          outline-offset: var(--gcds-pagination-border-width);
-          box-shadow: var(--gcds-pagination-focus-box-shadow);
-          text-decoration: none;
-        }
-
-        &:active:not(:focus),
-        &[aria-current*='page']:not(:focus) {
-          color: var(--gcds-pagination-active-text);
-          background: var(--gcds-pagination-active-background);
-          border-color: var(--gcds-pagination-active-background);
-          text-decoration: none;
-          pointer-events: none;
-        }
       }
     }
+  }
+}
 
-    @media screen and (max-width: 24em) {
-      li {
-        margin: var(--gcds-pagination-mobile-list-item-margin);
-      }
-    }
-
-    &.gcds-pagination-list,
-    &.gcds-pagination-list-mobile-prevnext {
+@layer list {
+  :host .gcds-pagination {
+    :is(.gcds-pagination-list, .gcds-pagination-list-mobile-prevnext) {
       display: flex;
       flex-direction: row;
       margin: 0 auto;
@@ -76,145 +60,168 @@
         &.gcds-pagination-list-mobile-ellipses {
           display: none;
         }
-
-        /* Mobile styling */
-        @media screen and (max-width: 55.625em) {
-          a {
-            border: var(--gcds-pagination-border-width) solid currentColor;
-
-            &:focus {
-              border-color: var(--gcds-pagination-focus-background);
-            }
-          }
-
-          & > span.gcds-pagination-list-ellipses {
-            min-width: auto;
-          }
-
-          &:has(> a.gcds-pagination-end-button) {
-            margin: 0;
-          }
-
-          .gcds-pagination-end-button {
-            display: none;
-          }
-
-          &.gcds-pagination-mobile-prevnext {
-            display: block;
-          }
-        }
-
-        /* Mobile breakpoints for responsive rendering */
-        @media screen and (max-width: 34.75em) {
-          &.gcds-pagination-list-breakpoint-488 {
-            display: none;
-          }
-
-          &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-488),
-          &.gcds-pagination-list-breakpoint-488 + .gcds-pagination-list-mobile-ellipses {
-            display: list-item;
-          }
-        }
-        @media screen and (max-width: 32.5em) {
-          &.gcds-pagination-list-breakpoint-460 {
-            display: none;
-            margin: 0;
-          }
-
-          &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-460),
-          &.gcds-pagination-list-breakpoint-460 + .gcds-pagination-list-mobile-ellipses {
-            display: list-item;
-          }
-        }
-        @media screen and (max-width: 31em) {
-          &.gcds-pagination-list-breakpoint-420 {
-            display: none;
-          }
-
-          &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-420),
-          &.gcds-pagination-list-breakpoint-420 + .gcds-pagination-list-mobile-ellipses {
-            display: list-item;
-          }
-        }
-        @media screen and (max-width: 25.75em) {
-          &.gcds-pagination-list-breakpoint-360 {
-            display: none;
-          }
-
-          &.gcds-pagination-list-mobile-ellipses:has(+ .gcds-pagination-list-breakpoint-360),
-          &.gcds-pagination-list-breakpoint-360 + .gcds-pagination-list-mobile-ellipses {
-            display: list-item;
-          }
-        }
       }
     }
 
-    &.gcds-pagination-list-mobile-prevnext {
-      display: none;
+    /* GOOD TO GO */
+    .gcds-pagination-list-mobile-prevnext {
+      display: flex;
       margin: var(--gcds-pagination-mobile-list-prevnext-margin);
     }
+  }
+}
 
-    @media screen and (max-width: 55.625em) {
-      &.gcds-pagination-list-mobile-prevnext {
-        display: flex;
+@layer simple {
+  :host .gcds-pagination-simple {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    li {
+      display: inline-block;
+      margin: var(--gcds-pagination-simple-listitem-margin);
+      justify-content: space-between;
+      width: fit-content;
+
+      a {
+        display: grid;
+        padding: var(--gcds-pagination-simple-padding);
+
+        & > gcds-icon {
+          grid-area: icon;
+        }
+
+        & > .gcds-pagination-simple-text {
+          grid-area: text;
+          margin: var(--gcds-pagination-simple-listitem-text-margin);
+        }
+
+        & > span {
+          grid-area: label;
+          font-weight: var(--gcds-pagination-simple-label-font-weight);
+        }
       }
     }
 
-    &.gcds-pagination-simple {
-      li {
-        margin: var(--gcds-pagination-simple-listitem-margin);
-        justify-content: space-between;
-        width: fit-content;
-        display: inline-block;
+    .gcds-pagination-simple-previous a {
+      grid-template-areas:
+        'icon text'
+        'icon label';
+      grid-template-columns: 0.25fr 1fr;
+    }
 
+    .gcds-pagination-simple-next a {
+      grid-template-areas:
+        'text icon'
+        'label icon';
+      grid-template-columns: 1fr 0.25fr;
+    }
+  }
+}
+
+@layer wide {
+  /* List display: list */
+  @container pagination (width > 44em) {
+    :host .gcds-pagination-list-mobile-prevnext {
+      display: none;
+    }
+  }
+
+  /* List display: simple */
+  @container pagination (width > 20em) {
+    :host .gcds-pagination-simple {
+      flex-direction: row;
+
+      .gcds-pagination-simple-next {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+@layer compact {
+  @container pagination (width <= 44em) {
+    :host .gcds-pagination {
+      :is(.gcds-pagination-list, .gcds-pagination-list-mobile-prevnext) li {
         a {
-          display: grid;
-          padding: var(--gcds-pagination-simple-padding);
-
-          & > gcds-icon {
-            grid-area: icon;
-          }
-
-          & > .gcds-pagination-simple-text {
-            grid-area: text;
-            margin: var(--gcds-pagination-simple-listitem-text-margin);
-          }
-
-          & > span {
-            grid-area: label;
-            font-weight: var(--gcds-pagination-simple-label-font-weight);
-          }
+          border: var(--gcds-pagination-border-width) solid currentColor;
         }
 
-        &.gcds-pagination-simple-previous {
-          a {
-            grid-template-areas:
-              'icon text'
-              'icon label';
-            grid-template-columns: 0.25fr 1fr;
-          }
+        & > span.gcds-pagination-list-ellipses {
+          min-width: auto;
         }
-        &.gcds-pagination-simple-next {
-          float: right;
 
-          a {
-            grid-template-areas:
-              'text icon'
-              'label icon';
-            grid-template-columns: 1fr 0.25fr;
-          }
+        &:has(> a.gcds-pagination-end-button) {
+          margin: 0;
         }
-      }
 
-      @media screen and (max-width: 25.75em) {
-        li {
+        .gcds-pagination-end-button {
+          display: none;
+        }
+
+        &.gcds-pagination-mobile-prevnext {
           display: block;
-
-          &:last-of-type {
-            float: none;
-          }
         }
       }
     }
+  }
+
+  @container pagination (width <= 30em) {
+    :host .gcds-pagination-list .gcds-pagination-list-breakpoint-sm {
+      display: none;
+    }
+  }
+
+  @container pagination (width <= 27.5em) {
+    :host .gcds-pagination-list .gcds-pagination-list-breakpoint-xs {
+      display: none;
+    }
+  }
+
+  @container pagination (width <= 25em) {
+    :host .gcds-pagination-list .gcds-pagination-list-breakpoint-xxs {
+      display: none;
+    }
+  }
+
+  @container pagination (width <= 19em) {
+    :host .gcds-pagination-list li {
+      margin: var(--gcds-pagination-mobile-list-item-margin);
+    }
+  }
+}
+
+@layer hover {
+  @media (hover: hover) {
+    :host .gcds-pagination ul li a:hover {
+      background: var(--gcds-pagination-hover-background);
+      color: var(--gcds-pagination-hover-text);
+    }
+  }
+}
+
+@layer active {
+  :host .gcds-pagination ul li a {
+    &:active:not(:focus),
+    &[aria-current*='page']:not(:focus) {
+      color: var(--gcds-pagination-active-text);
+      background: var(--gcds-pagination-active-background);
+      border-color: var(--gcds-pagination-active-background);
+      text-decoration: none;
+      pointer-events: none;
+    }
+  }
+}
+
+@layer focus {
+  :host .gcds-pagination ul li a:focus {
+    color: var(--gcds-pagination-focus-text);
+    background-color: var(--gcds-pagination-focus-background);
+    outline: var(--gcds-pagination-focus-outline-width) solid
+      var(--gcds-pagination-focus-background);
+    outline-offset: var(--gcds-pagination-border-width);
+    box-shadow: var(--gcds-pagination-focus-box-shadow);
+    text-decoration: none;
+    border-color: var(--gcds-pagination-focus-background);
   }
 }
