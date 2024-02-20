@@ -128,6 +128,7 @@
     color: var(--gcds-text-primary) !important;
     font-weight: var(--gcds-font-weights-bold);
     padding-block-start: var(--gcds-spacing-400);
+    border-inline: 0 !important;
   }
 
   .css-tm6i3o.css-tm6i3o {
@@ -399,7 +400,6 @@
 
   function copyButtonTimer() {
     var buttonTimer = setInterval(function() {
-      console.log('looking')
       if (document.querySelector('.css-otxova')) {
         document.querySelector('.css-otxova').innerText = 'Copie';
         clearInterval(buttonTimer);
