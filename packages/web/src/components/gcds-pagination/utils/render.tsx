@@ -83,33 +83,33 @@ function constructClasses(page: number, current: number, total: number) {
     return '';
   } else if (current == 1 || current == total) {
     if (current - page == 4 || current - page == -4) {
-      return 'gcds-pagination-list-breakpoint-360';
+      return 'gcds-pagination-list-breakpoint-xxs';
     } else if (current - page == 5 || current - page == -5) {
-      return 'gcds-pagination-list-breakpoint-420';
+      return 'gcds-pagination-list-breakpoint-xs';
     } else if (current - page > 5 || current - page < -5) {
-      return 'gcds-pagination-list-breakpoint-488';
+      return 'gcds-pagination-list-breakpoint-sm';
     }
   } else if (current == 2 || current == total - 1) {
     if (current - page == 3 || current - page == -3) {
-      return 'gcds-pagination-list-breakpoint-360';
+      return 'gcds-pagination-list-breakpoint-xxs';
     } else if (current - page == 4 || current - page == -4) {
-      return 'gcds-pagination-list-breakpoint-420';
+      return 'gcds-pagination-list-breakpoint-xs';
     } else if (current - page > 4 || current - page < -4) {
-      return 'gcds-pagination-list-breakpoint-488';
+      return 'gcds-pagination-list-breakpoint-sm';
     }
   } else if (current > 2 && current < total - 1 && total < 10 && current == 5) {
     if (current - page == 2 || current - page == -2) {
-      return 'gcds-pagination-list-breakpoint-420';
+      return 'gcds-pagination-list-breakpoint-xs';
     } else if (current - page >= 3 || current - page <= -3) {
-      return 'gcds-pagination-list-breakpoint-488';
+      return 'gcds-pagination-list-breakpoint-sm';
     }
   } else if (current > 2 && current < total - 1) {
     if (current - page == 2 || current - page == -2) {
-      return 'gcds-pagination-list-breakpoint-420';
+      return 'gcds-pagination-list-breakpoint-xxs';
     } else if (current - page == 3 || current - page == -3) {
-      return 'gcds-pagination-list-breakpoint-460';
+      return 'gcds-pagination-list-breakpoint-xs';
     } else if (current - page > 3 || current - page < -3) {
-      return 'gcds-pagination-list-breakpoint-488';
+      return 'gcds-pagination-list-breakpoint-sm';
     }
   }
 }
