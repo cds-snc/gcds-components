@@ -39,7 +39,7 @@ describe('gcds-pagination', () => {
       </script>
     `);
 
-    const element = await page.find('[aria-current*=page]');
+    const element = await page.find('gcds-pagination >>> [aria-current*=page]');
     expect(element.getAttribute('href')).toEqual(
       '?query=design system&idx=10&page=page_2#red',
     );

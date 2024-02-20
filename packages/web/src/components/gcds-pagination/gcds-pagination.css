@@ -63,7 +63,6 @@
       }
     }
 
-    /* GOOD TO GO */
     .gcds-pagination-list-mobile-prevnext {
       display: flex;
       margin: var(--gcds-pagination-mobile-list-prevnext-margin);
