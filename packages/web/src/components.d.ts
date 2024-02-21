@@ -69,10 +69,6 @@ export namespace Components {
     | 'danger'
     | 'skip-to-content';
         /**
-          * Set the style variant
-         */
-        "buttonStyle": 'solid' | 'text-only';
-        /**
           * Custom callback function on click event
          */
         "clickHandler": Function;
@@ -1824,10 +1820,6 @@ declare namespace LocalJSX {
     | 'secondary'
     | 'danger'
     | 'skip-to-content';
-        /**
-          * Set the style variant
-         */
-        "buttonStyle"?: 'solid' | 'text-only';
         /**
           * Custom callback function on click event
          */
