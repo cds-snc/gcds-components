@@ -420,31 +420,17 @@
     color: var(--gcds-text-primary) !important;
   }
 
-  .docblock-argstable-head th:nth-child(1) span:before {
-    content: 'Property | Propriété';
-  }
-
-  .docblock-argstable-head th:nth-child(2) span:before {
-    content: 'Data type | Type de donnée';
-  }
-
-  .docblock-argstable-head th:nth-child(3) span:before {
-    content: 'Default value | Valeur par défaut';
-  }
-
-  .docblock-argstable-head th:nth-child(4) span:before {
-    content: 'Values | Valeurs';
-  }
-
   /* Table Styling */
   .docblock-argstable-head tr th,
   .docblock-argstable-body tr td.css-11nj37o,
-  .docblock-argstable-body tr .css-11nj37o ~ td {
+  .docblock-argstable-body tr .css-11nj37o ~ td,
+  .sub-table-heading {
     background-color: var(--gcds-color-grayscale-0) !important;
     border-radius: 0 !important;
     color: var(--gcds-text-primary) !important;
     font-weight: var(--gcds-font-weights-bold);
     padding-block-start: var(--gcds-spacing-400);
+    border-inline: 0 !important;
   }
 
   .css-tm6i3o.css-tm6i3o {
@@ -453,6 +439,11 @@
 
   .css-quknxc.css-quknxc tbody {
     box-shadow: none !important;
+  }
+
+  .css-quknxc.css-quknxc tbody {
+    box-shadow: none !important;
+    filter: none !important;
   }
 
   .docblock-argstable-body .css-1oi7qoy td {
@@ -499,7 +490,7 @@
     border: var(--gcds-border-width-sm) solid currentColor;
   }
 
-  .docblock-argstable-body td {
+  .docblock-argstable-body td:not(.sub-table-heading) {
     vertical-align: middle !important;
     background-color: #262626 !important;
     color: var(--gcds-text-light);
@@ -675,7 +666,171 @@
   /* gcds-top-nav */
   #story--components-top-navigation--default {
     height: 300px;
-  }</style><style>#storybook-root[hidden],
+  }
+
+  .css-8ycahn * .token.comment {
+      color: white !important;
+  }</style><script>const url = new URLSearchParams(window.location.search);
+
+  if (url.get('demo') && url.get('lang')) {
+    var tableTimer = setInterval(function() {
+      if (document.querySelector('.docblock-argstable')) {
+        clearInterval(tableTimer);
+	      formatTable(document.querySelector('.docblock-argstable'), url.get('lang'));
+      }
+    }, 200);
+
+    // Change language on hide/copy code buttons
+    if (url.get('lang') === 'fr') {
+      var buttonTimer = setInterval(function() {
+        if (document.querySelector('.docblock-code-toggle')) {
+          clearInterval(buttonTimer);
+          formatFrenchButtons(document.querySelector('.docblock-code-toggle'));
+        }
+      }, 200);
+
+      copyButtonTimer();
+    }
+  }
+
+  let observer = new MutationObserver((mutation) => {
+    if (mutation[0].target.parentElement.innerText === 'Copied') {
+      mutation[0].target.parentElement.innerText = 'Copié'
+    } else if (mutation[0].target.parentNode.innerText === 'Copy') {
+      mutation[0].target.parentElement.innerText = 'Copie'
+    }
+  });
+
+  function copyButtonTimer() {
+    var buttonTimer = setInterval(function() {
+      if (document.querySelector('.css-otxova')) {
+        document.querySelector('.css-otxova').innerText = 'Copie';
+        clearInterval(buttonTimer);
+        observer.observe(document.querySelector('.css-111a2cx'), { characterData: true, attributes: false, childList: false, subtree: true });
+      }
+    }, 200);
+  }
+
+  function formatFrenchButtons(button) {
+    setTimeout(() => {
+      button.innerText = "Masquer le code";
+    }, 10);
+    button.addEventListener('click', () => {
+      if (!button.classList.contains('docblock-code-toggle--expanded')) {
+        setTimeout(() => {
+          button.innerText = "Masquer le code";
+        }, 10);
+        copyButtonTimer();
+      } else {
+        setTimeout(() => {
+          button.innerText = "Voir le code";
+        }, 10);
+      }
+    });
+  }
+
+  function formatTable(table, lang) {
+    // Format table header
+    const tableHead = [...table.querySelectorAll('th')];
+    tableHead.forEach(th => {
+      th.setAttribute('lang', lang);
+      if (lang == 'en') {
+        const thText = th.innerText;
+        if (thText == 'Name') {
+          th.innerText = 'Property';
+        } else if (thText == 'Description') {
+          th.innerText = 'Data type';
+        } else if (thText == 'Default') {
+          th.innerText = 'Default value';
+        } else if (thText == 'Control') {
+          const resetBtn = th.querySelector('button');
+          th.innerText = 'Values';
+          resetBtn.setAttribute('style', 'float: right;');
+          th.append(resetBtn);
+        }
+      } else {
+        const thText = th.innerText;
+        if (thText == 'Name') {
+          th.innerText = 'Propriété';
+        } else if (thText == 'Description') {
+          th.innerText = 'Type de donnée';
+        } else if (thText == 'Default') {
+          th.innerText = 'Valeur par défaut';
+        } else if (thText == 'Control') {
+          const resetBtn = th.querySelector('button');
+          th.innerText = 'Valeurs';
+          resetBtn.setAttribute('style', 'float: right;');
+          resetBtn.setAttribute('title', 'Réinitialiser les contrôles');
+          th.append(resetBtn);
+        }
+      }
+    });
+
+    // Table Rows
+    const tableRows = [...table.querySelectorAll('tbody > tr')];
+    tableRows.forEach(tr => {
+      // Expand collapse rows
+      if (tr.hasAttribute('class')) {
+        tr.removeAttribute('title');
+        const cellText = tr.children[0].children[1].innerText.toLowerCase().split(' | ');
+        tr.children[1].innerText = lang === 'en' ? 
+          cellText[0].charAt(0).toUpperCase() + cellText[0].slice(1) : 
+          cellText[1].replace(' items', '').charAt(0).toUpperCase() + cellText[1].slice(1);
+        tr.setAttribute('class', '');
+        tr.children[1].setAttribute('colspan', '4');
+        tr.children[1].setAttribute('class', 'sub-table-heading');
+        tr.removeChild(tr.children[0]);
+      }
+
+      // Loop through table cells
+      const propertyId = `${tr.children[0].innerText.replace('*', '')}-property`;
+      for (let x = 0; x < tr.children.length; x++) {
+        // Format first cell
+        if (x == 0) {
+          tr.children[x].setAttribute('id', propertyId);
+          if (tr.children[x].querySelector('[title=Required]') && lang == 'fr') {
+            tr.children[x].querySelector('[title=Required]').setAttribute('lang', 'fr');
+            tr.children[x].querySelector('[title=Required]').setAttribute('title', 'Obligatoire');
+          }
+        }
+        // Format third cell
+        if (tr.children[x].innerText === '-') {
+          let span = document.createElement('span');
+          span.setAttribute('class', 'sr-only');
+
+          if (lang === 'en') {
+            tr.children[x].setAttribute('title', 'No default value');
+            span.innerText = 'No default value';
+            tr.children[x].append(span);
+          } else {
+            tr.children[x].setAttribute('title', 'Aucune valeur par défaut');
+            tr.children[x].setAttribute('lang', 'fr');
+            span.innerText = 'Aucune valeur par défaut';
+            tr.children[x].append(span);
+          }
+        }
+        // Format last cell
+        if (x === 3) {
+          if (tr.children[x].querySelector('select')) {
+            tr.children[x].querySelector('select').setAttribute('aria-labelledby', propertyId);
+
+            if (lang === 'fr') {
+              const firstSelectOption = tr.children[x].querySelector('select').children[0];
+              firstSelectOption.setAttribute('lang', 'fr');
+              firstSelectOption.innerText = 'Choisir une option';
+            }
+          }
+
+          // Remove placeholders and assign aria-labelledby
+          if (tr.children[x].querySelector('[placeholder]')) {
+            const formElement = tr.children[x].querySelector('[placeholder]');
+            formElement.removeAttribute('placeholder');
+            formElement.setAttribute('aria-labelledby', propertyId);
+          }
+        }
+      }
+    });
+  }</script><style>#storybook-root[hidden],
       #storybook-docs[hidden] {
         display: none !important;
       }</style></head><body><div class="sb-preparing-story sb-wrapper"><div class="sb-loader"></div></div><div class="sb-preparing-docs sb-wrapper"><div class="sb-previewBlock"><div class="sb-previewBlock_header"><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div></div><div class="sb-previewBlock_body"><div class="sb-loader"></div></div></div><table aria-hidden="true" class="sb-argstableBlock"><thead class="sb-argstableBlock-head"><tr><th><span>Name</span></th><th><span>Description</span></th><th><span>Default</span></th><th><span>Control</span></th></tr></thead><tbody class="sb-argstableBlock-body"><tr><td><span>propertyName</span><span title="Required">*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr><tr><td><span>propertyName</span><span>*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr><tr><td><span>propertyName</span><span>*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr></tbody></table></div><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="storybook-root"></div><div id="storybook-docs"></div><script>window['CONFIG_TYPE'] = "PRODUCTION";
@@ -705,7 +860,7 @@
             window['DOCS_OPTIONS'] = {"defaultName":"Stories","autodocs":false};</script><script type="module">import './sb-preview/runtime.js';
 
       
-      import './runtime~main.cf9f47dc.iframe.bundle.js';
+      import './runtime~main.60a57768.iframe.bundle.js';
       
       import './9020.2f524b4c.iframe.bundle.js';
       
