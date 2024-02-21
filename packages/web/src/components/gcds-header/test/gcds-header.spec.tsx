@@ -32,9 +32,9 @@ describe('gcds-header', () => {
       <gcds-header lang-href="/fr/" role="banner" signature-has-link="true" signature-variant="colour" skip-to-href="#main">
         <mock:shadow-root>
           <nav class="gcds-header__skip-to-nav">
-            <gcds-button button-role="skip-to-content" type="link" href="#main">
+            <gcds-link href="#main">
               Skip to main content
-            </gcds-button>
+            </gcds-link>
           </nav>
           <div class="gcds-header__brand">
             <div class="brand__container container--simple">

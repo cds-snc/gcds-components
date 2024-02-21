@@ -65,13 +65,7 @@ export class GcdsHeader {
     } else if (this.skipToHref) {
       return (
         <nav class="gcds-header__skip-to-nav">
-          <gcds-button
-            type="link"
-            button-role="skip-to-content"
-            href={this.skipToHref}
-          >
-            {i18n[this.lang].skip}
-          </gcds-button>
+          <gcds-link href={this.skipToHref}>{i18n[this.lang].skip}</gcds-link>
         </nav>
       );
     } else {
