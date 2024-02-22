@@ -19,6 +19,20 @@
 | `type`                   | `type`          | The type attribute specifies how the card renders as a link                                            | `"action" \| "link"`                  | `'link'`    |
 
 
+## Dependencies
+
+### Depends on
+
+- [gcds-link](../gcds-link)
+
+### Graph
+```mermaid
+graph TD;
+  gcds-card --> gcds-link
+  gcds-link --> gcds-icon
+  style gcds-card fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

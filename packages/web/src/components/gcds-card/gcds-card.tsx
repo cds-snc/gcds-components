@@ -80,12 +80,12 @@ export class GcdsCard {
           {tag && <span class="gcds-card__tag">{tag}</span>}
           {Element != 'a' ? (
             <Element class="gcds-card__title">
-              <a href={href}>{cardTitle}</a>
+              <gcds-link href={href}>{cardTitle}</gcds-link>
             </Element>
           ) : (
-            <a href={href} class="gcds-card__title">
+            <gcds-link href={href} class="gcds-card__title">
               {cardTitle}
-            </a>
+            </gcds-link>
           )}
 
           {description && <p class="gcds-card__description">{description}</p>}
