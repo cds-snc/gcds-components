@@ -33,6 +33,7 @@
 
 ### Used by
 
+ - [gcds-breadcrumbs-item](../gcds-breadcrumbs)
  - [gcds-card](../gcds-card)
  - [gcds-error-summary](../gcds-error-summary)
  - [gcds-lang-toggle](../gcds-lang-toggle)
@@ -45,6 +46,7 @@
 ```mermaid
 graph TD;
   gcds-link --> gcds-icon
+  gcds-breadcrumbs-item --> gcds-link
   gcds-card --> gcds-link
   gcds-error-summary --> gcds-link
   gcds-lang-toggle --> gcds-link
