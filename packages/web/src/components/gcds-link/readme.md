@@ -34,6 +34,7 @@
 ### Used by
 
  - [gcds-error-summary](../gcds-error-summary)
+ - [gcds-lang-toggle](../gcds-lang-toggle)
 
 ### Depends on
 
@@ -44,6 +45,7 @@
 graph TD;
   gcds-link --> gcds-icon
   gcds-error-summary --> gcds-link
+  gcds-lang-toggle --> gcds-link
   style gcds-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
