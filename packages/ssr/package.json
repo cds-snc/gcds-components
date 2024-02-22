@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components-ssr",
-  "version": "0.17.1",
+  "version": "0.18.1",
   "author": "Government of Canada / Gouvernement du Canada",
   "license": "MIT",
   "publishConfig": {
@@ -50,12 +50,10 @@
     "build:cjs": "esbuild dist/esm/*.js dist/esm/**/*.js dist/esm/**/**/*.js --log-level=error --outdir=dist/cjs --format=cjs --loader:.js=jsx",
     "lint": "eslint .",
     "@comment_postinstall": "Behavior of the script below: if '.gitignore' exists in current directory, do nothing -- else, package is installed as dependencies so return error-code 1, causing patch-package to run.",
-    "postinstall": "node -e \"try { require('fs').accessSync('./.gitignore', require('fs').constants.F_OK); } catch{ process.exit(1); }\" || (cp -R patches/ ../../../patches && cd ../../../ && npx --yes patch-package && rm -rf patches)",
-    "patch:stenciljs": "npx --yes patch-package && cd ../web && npx --yes patch-package",
-    "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse' && cd ../web && npx --yes -p patch-package -c 'patch-package --reverse'"
+    "postinstall": "node -e \"try { require('fs').accessSync('./.gitignore', require('fs').constants.F_OK); } catch{ process.exit(1); }\" || (cp -R patches/ ../../../patches && cd ../../../ && npx --yes patch-package && rm -rf patches)"
   },
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.17.1",
+    "@cdssnc/gcds-components": "^0.18.1",
     "@stencil/core": "^4.11.0",
     "element-internals-polyfill": "^1.3.10",
     "linkedom": "^0.16.1",
