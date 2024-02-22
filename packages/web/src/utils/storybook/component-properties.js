@@ -1,4 +1,4 @@
-const formProps = {
+export const formProps = {
   disabled: {
     control: 'boolean',
     table: {
@@ -47,7 +47,7 @@ const formProps = {
   },
 };
 
-const langProp = {
+export const langProp = {
   lang: {
     control: 'radio',
     options: ['en', 'fr'],
@@ -58,7 +58,7 @@ const langProp = {
   },
 };
 
-const validatorProps = {
+export const validatorProps = {
   validateOn: {
     name: 'validate-on',
     control: { type: 'select' },
@@ -68,10 +68,4 @@ const validatorProps = {
       defaultValue: { summary: 'blur' },
     },
   },
-};
-
-export default {
-  formProps,
-  validatorProps,
-  langProp,
 };
