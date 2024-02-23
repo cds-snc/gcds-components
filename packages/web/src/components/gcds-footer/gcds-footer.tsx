@@ -82,7 +82,6 @@ export class GcdsFooter {
         this.lang = this.el.lang;
       }
     });
-
     observer.observe(this.el, observerConfig);
   }
 
