@@ -641,7 +641,7 @@ export namespace Components {
         /**
           * String to have autocomplete enabled
          */
-        "autocomplete"?: 'on' | 'off';
+        "autocomplete"?: string;
         /**
           * Specifies if an input element is disabled or not.
          */
@@ -2365,7 +2365,7 @@ declare namespace LocalJSX {
         /**
           * String to have autocomplete enabled
          */
-        "autocomplete"?: 'on' | 'off';
+        "autocomplete"?: string;
         /**
           * Specifies if an input element is disabled or not.
          */
