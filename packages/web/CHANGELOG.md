@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.0...gcds-components-v0.19.1) (2024-02-22)
+
+
+### Bug Fixes
+
+* Fixes identified in OCADU report (a11y and usability) ([#446](https://github.com/cds-snc/gcds-components/issues/446)) ([09095a5](https://github.com/cds-snc/gcds-components/commit/09095a52f41e40a243455874daf2c147c18d89b1))
+
 ## [0.19.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.18.1...gcds-components-v0.19.0) (2024-02-21)
 
 ### Breaking changes
