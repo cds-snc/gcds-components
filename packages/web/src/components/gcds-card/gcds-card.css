@@ -36,18 +36,9 @@
       width: 100%;
     }
 
-    .gcds-card__tag {
-      font: var(--gcds-card-tag-font);
-      color: var(--gcds-card-tag-color);
-    }
-
     .gcds-card__title {
       font: var(--gcds-card-title-font);
       width: fit-content;
-    }
-
-    .gcds-card__description {
-      max-width: var(--gcds-card-description-max-width);
     }
   }
 }

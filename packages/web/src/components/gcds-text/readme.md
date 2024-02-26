@@ -17,6 +17,19 @@
 | `textRole`       | `text-role`       | Sets the main style of the text.                                                                                    | `"light" \| "primary" \| "secondary"`                                                                                                        | `'primary'` |
 
 
+## Dependencies
+
+### Used by
+
+ - [gcds-card](../gcds-card)
+
+### Graph
+```mermaid
+graph TD;
+  gcds-card --> gcds-text
+  style gcds-text fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
