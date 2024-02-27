@@ -118,12 +118,12 @@ export class GcdsCard {
           )}
           {Element != 'a' ? (
             <Element class="gcds-card__title" {...taggedAttr}>
-              <a href={href}>{cardTitle}</a>
+              <gcds-link href={href}>{cardTitle}</gcds-link>
             </Element>
           ) : (
-            <a href={href} class="gcds-card__title" {...taggedAttr}>
+            <gcds-link href={href} class="gcds-card__title" {...taggedAttr}>
               {cardTitle}
-            </a>
+            </gcds-link>
           )}
 
           {description && <p class="gcds-card__description">{description}</p>}

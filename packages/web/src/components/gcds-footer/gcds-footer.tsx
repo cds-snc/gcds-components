@@ -159,7 +159,9 @@ export class GcdsFooter {
 
                       return (
                         <li>
-                          <a href={contextualLinksObject[key]}>{key}</a>
+                          <gcds-link href={contextualLinksObject[key]}>
+                            {key}
+                          </gcds-link>
                         </li>
                       );
                     }
@@ -177,7 +179,9 @@ export class GcdsFooter {
                 <ul class="govnav__list">
                   {Object.keys(govNav).map(value => (
                     <li>
-                      <a href={govNav[value].link}>{govNav[value].text}</a>
+                      <gcds-link href={govNav[value].link}>
+                        {govNav[value].text}
+                      </gcds-link>
                     </li>
                   ))}
                 </ul>
@@ -190,7 +194,9 @@ export class GcdsFooter {
                 <ul class="themenav__list">
                   {Object.keys(themeNav).map(value => (
                     <li>
-                      <a href={themeNav[value].link}>{themeNav[value].text}</a>
+                      <gcds-link href={themeNav[value].link}>
+                        {themeNav[value].text}
+                      </gcds-link>
                     </li>
                   ))}
                 </ul>
@@ -211,7 +217,9 @@ export class GcdsFooter {
 
                         return (
                           <li>
-                            <a href={subLinksObject[key]}>{key}</a>
+                            <gcds-link href={subLinksObject[key]}>
+                              {key}
+                            </gcds-link>
                           </li>
                         );
                       }
@@ -219,9 +227,9 @@ export class GcdsFooter {
                   : Object.keys(siteNav).map(value => {
                       return (
                         <li>
-                          <a href={siteNav[value].link}>
+                          <gcds-link href={siteNav[value].link}>
                             {siteNav[value].text}
-                          </a>
+                          </gcds-link>
                         </li>
                       );
                     })}

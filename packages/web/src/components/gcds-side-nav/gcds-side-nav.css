@@ -1,27 +1,42 @@
-@layer reset, defaults;
+@layer reset, default, desktop, mobile;
 
 @layer reset {
-  :host * {
-    margin: 0;
-    box-sizing: border-box;
+  :host {
+    display: block;
+
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
   }
 }
 
-@layer defaults {
+@layer default {
   :host {
-    display: block;
     width: 100%;
-
-    @media only screen and (width >= 64em) {
-      max-width: var(--gcds-side-nav-max-width);
-    }
 
     .gcds-side-nav__heading {
       font: var(--gcds-side-nav-heading-font);
       margin-block-end: var(--gcds-side-nav-heading-margin);
       padding: var(--gcds-side-nav-heading-padding);
+    }
+  }
+}
 
-      @media only screen and (width < 64em) {
+/* Note: viewport specific style decision */
+@layer desktop {
+  :host .gcds-side-nav {
+    @media only screen and (width >= 64em) {
+      max-width: var(--gcds-side-nav-max-width);
+    }
+  }
+}
+
+/* Note: viewport specific style decision */
+@layer mobile {
+  @media only screen and (width < 64em) {
+    :host {
+      .gcds-side-nav__heading {
         display: block;
         width: 0;
         height: 0;

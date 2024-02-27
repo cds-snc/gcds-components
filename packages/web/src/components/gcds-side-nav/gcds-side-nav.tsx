@@ -170,7 +170,10 @@ export class GcdsSideNav {
 
     return (
       <Host>
-        <nav aria-label={`${label}${I18N[lang].navLabel}`}>
+        <nav
+          aria-label={`${label}${I18N[lang].navLabel}`}
+          class="gcds-side-nav"
+        >
           <h2 class="gcds-side-nav__heading">{label}</h2>
           <gcds-nav-group
             menuLabel="Menu"
