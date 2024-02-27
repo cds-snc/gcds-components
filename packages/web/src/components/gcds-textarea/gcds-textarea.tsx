@@ -390,17 +390,13 @@ export class GcdsTextarea {
           </textarea>
 
           {characterCount ? (
-            <p
-              id={`textarea__count-${textareaId}`}
-              class="textarea__count"
-              aria-live="polite"
-            >
+            <gcds-text id={`textarea__count-${textareaId}`} aria-live="polite">
               {value == undefined
                 ? `${characterCount} ${i18n[lang].characters.allowed}`
                 : `${characterCount - value.length} ${
                     i18n[lang].characters.left
                   }`}
-            </p>
+            </gcds-text>
           ) : null}
         </div>
       </Host>

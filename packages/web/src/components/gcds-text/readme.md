@@ -25,6 +25,7 @@
  - [gcds-date-modified](../gcds-date-modified)
  - [gcds-error-message](../gcds-error-message)
  - [gcds-hint](../gcds-hint)
+ - [gcds-textarea](../gcds-textarea)
 
 ### Graph
 ```mermaid
@@ -33,6 +34,7 @@ graph TD;
   gcds-date-modified --> gcds-text
   gcds-error-message --> gcds-text
   gcds-hint --> gcds-text
+  gcds-textarea --> gcds-text
   style gcds-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

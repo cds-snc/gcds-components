@@ -24,10 +24,6 @@
     color: var(--gcds-textarea-default-text);
     transition: color ease-in-out 0.15s;
 
-    :is(textarea, .textarea__count) {
-      margin: var(--gcds-textarea-margin) !important;
-    }
-
     textarea {
       display: block;
       min-width: 50%;
@@ -36,6 +32,7 @@
       height: auto;
       min-height: var(--gcds-textarea-min-height);
       font: inherit;
+      margin: var(--gcds-textarea-margin) !important;
       padding: var(--gcds-textarea-padding) !important;
       background-color: var(--gcds-textarea-default-background);
       background-image: none;
