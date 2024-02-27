@@ -63,6 +63,7 @@ graph TD;
   gcds-textarea --> gcds-label
   gcds-textarea --> gcds-hint
   gcds-textarea --> gcds-error-message
+  gcds-error-message --> gcds-text
   style gcds-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

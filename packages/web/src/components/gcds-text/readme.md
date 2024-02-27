@@ -22,11 +22,13 @@
 ### Used by
 
  - [gcds-card](../gcds-card)
+ - [gcds-error-message](../gcds-error-message)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-card --> gcds-text
+  gcds-error-message --> gcds-text
   style gcds-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
