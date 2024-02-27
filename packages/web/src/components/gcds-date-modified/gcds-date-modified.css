@@ -4,6 +4,10 @@
   :host {
     display: block;
 
+    dl {
+      margin: 0;
+    }
+
     slot {
       display: initial;
     }
@@ -11,19 +15,15 @@
 }
 
 @layer default {
-  :host {
-    font: var(--gcds-date-modified-font);
-    color: var(--gcds-date-modified-text);
+  :host .gcds-date-modified {
     margin: var(--gcds-date-modified-margin);
 
-    .gcds-date-modified {
-      :is(dt, dd) {
-        display: inline;
-      }
+    :is(dt, gcds-text, dd) {
+      display: inline;
+    }
 
-      dd {
-        margin: var(--gcds-date-modified-description-margin);
-      }
+    dd {
+      margin: var(--gcds-date-modified-description-margin);
     }
   }
 }

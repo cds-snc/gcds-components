@@ -22,6 +22,7 @@
 ### Used by
 
  - [gcds-card](../gcds-card)
+ - [gcds-date-modified](../gcds-date-modified)
  - [gcds-error-message](../gcds-error-message)
  - [gcds-hint](../gcds-hint)
 
@@ -29,6 +30,7 @@
 ```mermaid
 graph TD;
   gcds-card --> gcds-text
+  gcds-date-modified --> gcds-text
   gcds-error-message --> gcds-text
   gcds-hint --> gcds-text
   style gcds-text fill:#f9f,stroke:#333,stroke-width:4px
