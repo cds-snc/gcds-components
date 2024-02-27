@@ -9,7 +9,9 @@ export class GcdsSrOnly {
   render() {
     return (
       <Host>
-        <slot></slot>
+        <p>
+          <slot></slot>
+        </p>
       </Host>
     );
   }
