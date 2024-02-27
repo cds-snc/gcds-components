@@ -61,20 +61,6 @@ export class GcdsButton {
   }
 
   /**
-   * Set the style variant
-   */
-  @Prop({ mutable: true }) buttonStyle: 'solid' | 'text-only' = 'solid';
-
-  @Watch('buttonStyle')
-  validateButtonStyle(newValue: string) {
-    const values = ['solid', 'text-only'];
-
-    if (!values.includes(newValue)) {
-      this.buttonStyle = 'solid';
-    }
-  }
-
-  /**
    * Set the button size
    */
   @Prop({ mutable: true }) size: 'regular' | 'small' = 'regular';
@@ -182,7 +168,6 @@ export class GcdsButton {
     // Validate attributes and set defaults
     this.validateType(this.type);
     this.validateButtonRole(this.buttonRole);
-    this.validateButtonStyle(this.buttonStyle);
     this.validateSize(this.size);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
@@ -249,7 +234,6 @@ export class GcdsButton {
     const {
       type,
       buttonRole,
-      buttonStyle,
       size,
       buttonId,
       disabled,
@@ -285,13 +269,11 @@ export class GcdsButton {
           onBlur={e => this.onBlur(e)}
           onFocus={e => this.onFocus(e)}
           onClick={e => this.handleClick(e)}
-          class={`button--role-${buttonRole} button--${buttonStyle} button--${size}`}
+          class={`gcds-button button--role-${buttonRole} button--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           {...inheritedAttributes}
           part="button"
         >
-          <slot name="left"></slot>
-
           <slot></slot>
 
           {type === 'link' && target === '_blank' ? (
@@ -300,9 +282,7 @@ export class GcdsButton {
               label={i18n[lang].label}
               margin-left="200"
             />
-          ) : (
-            <slot name="right"></slot>
-          )}
+          ) : null}
         </Tag>
       </Host>
     );

@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components",
-  "version": "0.17.1",
+  "version": "0.19.1",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Web components for the GCDS",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -29,9 +29,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o ./../../docs",
     "lint": "eslint .",
-    "lint-and-fix": "eslint . --fix",
-    "patch:stenciljs": "npx --yes patch-package && cd ../ssr && npx --yes patch-package",
-    "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse' && cd ../ssr && npx --yes -p patch-package -c 'patch-package --reverse'"
+    "lint-and-fix": "eslint . --fix"
   },
   "dependencies": {
     "@stencil/core": "^4.11.0",
@@ -45,7 +43,7 @@
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
-    "@cdssnc/gcds-tokens": "^1.11.0",
+    "@cdssnc/gcds-tokens": "^1.11.1",
     "@fortawesome/fontawesome-free": "^6.3.0",
     "@stencil/angular-output-target": "^0.8.1",
     "@stencil/postcss": "^2.1.0",

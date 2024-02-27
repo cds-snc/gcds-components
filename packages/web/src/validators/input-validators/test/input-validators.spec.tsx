@@ -20,6 +20,9 @@ const createMockFileList = (files: MockFile[]) => {
     item(index: number): File {
       return fileList[index];
     },
+    [Symbol.iterator]: function (): IterableIterator<File> {
+      throw new Error('Function not implemented.');
+    },
   };
   files.forEach(
     (file, index) => (fileList[index] = createFileFromMockFile(file)),

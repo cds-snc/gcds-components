@@ -6,8 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+import { ContentValues } from "./components/gcds-grid/gcds-grid";
 import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export { Validator, ValidatorEntry } from "./validators";
+export { ContentValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export namespace Components {
     interface GcdsAlert {
@@ -68,10 +70,6 @@ export namespace Components {
     | 'secondary'
     | 'danger'
     | 'skip-to-content';
-        /**
-          * Set the style variant
-         */
-        "buttonStyle": 'solid' | 'text-only';
         /**
           * Custom callback function on click event
          */
@@ -643,7 +641,7 @@ export namespace Components {
         /**
           * String to have autocomplete enabled
          */
-        "autocomplete"?: 'on' | 'off';
+        "autocomplete"?: string;
         /**
           * Specifies if an input element is disabled or not.
          */
@@ -1745,10 +1743,6 @@ declare namespace LocalJSX {
     | 'danger'
     | 'skip-to-content';
         /**
-          * Set the style variant
-         */
-        "buttonStyle"?: 'solid' | 'text-only';
-        /**
           * Custom callback function on click event
          */
         "clickHandler"?: Function;
@@ -2371,7 +2365,7 @@ declare namespace LocalJSX {
         /**
           * String to have autocomplete enabled
          */
-        "autocomplete"?: 'on' | 'off';
+        "autocomplete"?: string;
         /**
           * Specifies if an input element is disabled or not.
          */

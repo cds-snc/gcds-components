@@ -85,7 +85,12 @@ describe('gcds-card', () => {
     <gcds-card card-title="Card" href="#card" tag="Tag" type="link">
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
-          <span class="gcds-card__tag">Tag</span>
+          <span class="gcds-card__tag" id="gcds-card__tag">
+            <gcds-sr-only>
+              Tagged:
+            </gcds-sr-only>
+            Tag
+          </span>
           <gcds-link class="gcds-card__title" href="#card">
             Card
           </gcds-link>

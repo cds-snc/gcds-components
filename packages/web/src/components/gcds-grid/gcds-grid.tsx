@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
-type ContentValues =
+export type ContentValues =
   | 'center'
   | 'end'
   | 'space-around'
