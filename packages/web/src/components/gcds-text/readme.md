@@ -23,12 +23,14 @@
 
  - [gcds-card](../gcds-card)
  - [gcds-error-message](../gcds-error-message)
+ - [gcds-hint](../gcds-hint)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-card --> gcds-text
   gcds-error-message --> gcds-text
+  gcds-hint --> gcds-text
   style gcds-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

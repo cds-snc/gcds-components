@@ -63,6 +63,7 @@ graph TD;
   gcds-input --> gcds-label
   gcds-input --> gcds-hint
   gcds-input --> gcds-error-message
+  gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   style gcds-input fill:#f9f,stroke:#333,stroke-width:4px
 ```

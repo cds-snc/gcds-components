@@ -27,7 +27,9 @@ export class GcdsHint {
 
     return (
       <Host id={`hint-${hintId}`}>
-        <p class="gcds-hint">{hint}</p>
+        <gcds-text class="gcds-hint" margin-bottom="200">
+          {hint}
+        </gcds-text>
       </Host>
     );
   }

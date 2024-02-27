@@ -25,9 +25,14 @@
  - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
 
+### Depends on
+
+- [gcds-text](../gcds-text)
+
 ### Graph
 ```mermaid
 graph TD;
+  gcds-hint --> gcds-text
   gcds-checkbox --> gcds-hint
   gcds-fieldset --> gcds-hint
   gcds-file-uploader --> gcds-hint

@@ -60,6 +60,7 @@ graph TD;
   gcds-checkbox --> gcds-label
   gcds-checkbox --> gcds-hint
   gcds-checkbox --> gcds-error-message
+  gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   style gcds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
