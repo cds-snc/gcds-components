@@ -9,7 +9,7 @@
 
 | Property               | Attribute       | Description                                                      | Type                                                               | Default     |
 | ---------------------- | --------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
-| `autocomplete`         | `autocomplete`  | String to have autocomplete enabled                              | `string`                                                    | `undefined` |
+| `autocomplete`         | `autocomplete`  | String to have autocomplete enabled                              | `string`                                                           | `undefined` |
 | `disabled`             | `disabled`      | Specifies if an input element is disabled or not.                | `boolean`                                                          | `false`     |
 | `errorMessage`         | `error-message` | Error message for an invalid input element.                      | `string`                                                           | `undefined` |
 | `hideLabel`            | `hide-label`    | Specifies if the label is hidden or not.                         | `boolean`                                                          | `false`     |

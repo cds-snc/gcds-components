@@ -19,19 +19,18 @@
 
 ### Depends on
 
-- [gcds-button](../gcds-button)
+- [gcds-link](../gcds-link)
 - [gcds-lang-toggle](../gcds-lang-toggle)
 - [gcds-signature](../gcds-signature)
 
 ### Graph
 ```mermaid
 graph TD;
-  gcds-header --> gcds-button
+  gcds-header --> gcds-link
   gcds-header --> gcds-lang-toggle
   gcds-header --> gcds-signature
-  gcds-button --> gcds-icon
-  gcds-lang-toggle --> gcds-link
   gcds-link --> gcds-icon
+  gcds-lang-toggle --> gcds-link
   style gcds-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
