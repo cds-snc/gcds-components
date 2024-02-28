@@ -1,8 +1,10 @@
 name: Build components
 on:
+  workflow_dispatch:
   pull_request:
       branches:
         - main
+        - gcds-components-ssr
 
 jobs:
   build-packages:
