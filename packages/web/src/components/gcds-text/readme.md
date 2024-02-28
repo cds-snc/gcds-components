@@ -17,6 +17,13 @@
 | `textRole`       | `text-role`       | Sets the main style of the text.                                                                                    | `"light" \| "primary" \| "secondary"`                                                                                                        | `'primary'` |
 
 
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"text"` |             |
+
+
 ## Dependencies
 
 ### Used by
@@ -24,6 +31,7 @@
  - [gcds-card](../gcds-card)
  - [gcds-date-modified](../gcds-date-modified)
  - [gcds-error-message](../gcds-error-message)
+ - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-hint](../gcds-hint)
  - [gcds-textarea](../gcds-textarea)
 
@@ -33,6 +41,7 @@ graph TD;
   gcds-card --> gcds-text
   gcds-date-modified --> gcds-text
   gcds-error-message --> gcds-text
+  gcds-file-uploader --> gcds-text
   gcds-hint --> gcds-text
   gcds-textarea --> gcds-text
   style gcds-text fill:#f9f,stroke:#333,stroke-width:4px

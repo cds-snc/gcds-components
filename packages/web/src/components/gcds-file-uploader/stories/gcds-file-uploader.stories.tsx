@@ -184,7 +184,7 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-default',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -196,7 +196,7 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-disabled',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -207,7 +207,7 @@ Disabled.args = {
 
 export const Error = Template.bind({});
 Error.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-error',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -219,7 +219,7 @@ Error.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-required',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -232,7 +232,7 @@ Required.args = {
 
 export const Multiple = Template.bind({});
 Multiple.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-multiple',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -245,7 +245,7 @@ Multiple.args = {
 
 export const AcceptAudio = Template.bind({});
 AcceptAudio.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-audio',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -256,7 +256,7 @@ AcceptAudio.args = {
 
 export const AcceptImages = Template.bind({});
 AcceptImages.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-images',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -267,7 +267,7 @@ AcceptImages.args = {
 
 export const AcceptJpg = Template.bind({});
 AcceptJpg.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-jpg',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -278,7 +278,7 @@ AcceptJpg.args = {
 
 export const AcceptPdf = Template.bind({});
 AcceptPdf.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-pdf',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -289,7 +289,7 @@ AcceptPdf.args = {
 
 export const AcceptPng = Template.bind({});
 AcceptPng.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-png',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -300,7 +300,7 @@ AcceptPng.args = {
 
 export const AcceptSvg = Template.bind({});
 AcceptSvg.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-svg',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -311,7 +311,7 @@ AcceptSvg.args = {
 
 export const AcceptVideos = Template.bind({});
 AcceptVideos.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-videos',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
@@ -342,7 +342,7 @@ Props.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  uploaderId: 'uploader',
+  uploaderId: 'uploader-playground',
   name: 'file-uploader',
   label: 'Label',
   hint: 'Hint / Example message.',
