@@ -199,7 +199,9 @@ export class GcdsErrorSummary {
               : ''
           }`}
         >
-          <h2 class="summary__heading">{heading ?? i18n[lang].heading}</h2>
+          <gcds-heading tag="h2" margin-top="0" margin-bottom="300">
+            {heading ?? i18n[lang].heading}
+          </gcds-heading>
           <ol class="summary__errorlist">
             {(hasSubmitted || errorLinks) &&
               Object.keys(errorQueue).length > 0 &&

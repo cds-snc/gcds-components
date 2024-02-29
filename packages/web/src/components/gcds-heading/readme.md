@@ -15,6 +15,19 @@
 | `tag` _(required)_ | `tag`             | Sets the appropriate HTML tag for the selected level.                                                                                      | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"`                                                                                               | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [gcds-error-summary](../gcds-error-summary)
+
+### Graph
+```mermaid
+graph TD;
+  gcds-error-summary --> gcds-heading
+  style gcds-heading fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

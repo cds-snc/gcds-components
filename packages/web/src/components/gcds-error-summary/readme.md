@@ -18,11 +18,13 @@
 
 ### Depends on
 
+- [gcds-heading](../gcds-heading)
 - [gcds-link](../gcds-link)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-error-summary --> gcds-heading
   gcds-error-summary --> gcds-link
   gcds-link --> gcds-icon
   style gcds-error-summary fill:#f9f,stroke:#333,stroke-width:4px
