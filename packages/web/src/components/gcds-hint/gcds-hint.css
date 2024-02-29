@@ -5,3 +5,12 @@
     display: block;
   }
 }
+
+@layer default {
+  :host {
+    .gcds-hint,
+    gcds-text::part(text) {
+      color: inherit;
+    }
+  }
+}
