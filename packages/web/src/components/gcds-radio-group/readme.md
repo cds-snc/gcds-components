@@ -34,6 +34,7 @@
 graph TD;
   gcds-radio-group --> gcds-label
   gcds-radio-group --> gcds-hint
+  gcds-hint --> gcds-text
   style gcds-radio-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

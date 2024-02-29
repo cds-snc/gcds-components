@@ -76,9 +76,6 @@
     justify-content: space-between;
     width: 100%;
     max-width: var(--gcds-file-uploader-file-max-width);
-    font: inherit;
-    font-weight: var(--gcds-file-uploader-button-font-weight);
-    color: var(--gcds-file-uploader-default-text);
     padding: var(--gcds-file-uploader-file-padding);
     border: var(--gcds-file-uploader-file-border-width) solid
       var(--gcds-file-uploader-file-border-color);
@@ -88,11 +85,18 @@
       border-block-end: 0;
     }
 
-    span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding-inline-end: 0;
+    &:last-of-type {
+      margin: var(--gcds-file-uploader-button-margin);
+    }
+
+    gcds-text {
+      overflow: auto;
+
+      &::part(text) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     button {
@@ -101,6 +105,7 @@
       background: transparent;
       border: 0;
       color: var(--gcds-file-uploader-file-button-default-text);
+      font-weight: var(--gcds-file-uploader-button-font-weight);
       margin: var(--gcds-file-uploader-file-button-margin);
       padding: var(--gcds-file-uploader-file-button-padding);
 

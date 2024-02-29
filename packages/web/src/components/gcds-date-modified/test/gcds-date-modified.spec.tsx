@@ -12,12 +12,12 @@ describe('gcds-date-modified', () => {
         <mock:shadow-root>
           <dl class="gcds-date-modified">
             <dt>
-              Date modified:
+              <gcds-text display="inline" margin-bottom="0">Date modified:</gcds-text>
             </dt>
             <dd>
-              <time>
-              <slot></slot>
-              </time>
+              <gcds-text display="inline" margin-bottom="0">
+                <time><slot></slot></time>
+              </gcds-text>
             </dd>
           </dl>
         </mock:shadow-root>
@@ -36,12 +36,12 @@ describe('gcds-date-modified', () => {
         <mock:shadow-root>
           <dl class="gcds-date-modified">
             <dt>
-              Date de modification :
+              <gcds-text display="inline" margin-bottom="0">Date de modification :</gcds-text>
             </dt>
             <dd>
-              <time>
-                <slot></slot>
-              </time>
+              <gcds-text display="inline" margin-bottom="0">
+                <time><slot></slot></time>
+              </gcds-text>
             </dd>
           </dl>
         </mock:shadow-root>
@@ -60,10 +60,12 @@ describe('gcds-date-modified', () => {
         <mock:shadow-root>
           <dl class="gcds-date-modified">
             <dt>
-              Version
+              <gcds-text display="inline" margin-bottom="0">Version</gcds-text>
             </dt>
             <dd>
-              <slot></slot>
+              <gcds-text display="inline" margin-bottom="0">
+                <slot></slot>
+              </gcds-text>
             </dd>
           </dl>
         </mock:shadow-root>

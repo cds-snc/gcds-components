@@ -56,6 +56,7 @@ Type: `Promise<void>`
 - [gcds-label](../gcds-label)
 - [gcds-hint](../gcds-hint)
 - [gcds-error-message](../gcds-error-message)
+- [gcds-text](../gcds-text)
 
 ### Graph
 ```mermaid
@@ -63,6 +64,9 @@ graph TD;
   gcds-textarea --> gcds-label
   gcds-textarea --> gcds-hint
   gcds-textarea --> gcds-error-message
+  gcds-textarea --> gcds-text
+  gcds-hint --> gcds-text
+  gcds-error-message --> gcds-text
   style gcds-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -446,7 +446,7 @@ export class GcdsFileUploader {
                   class="file-uploader__uploaded-file"
                   aria-label={`${i18n[lang].removeFile} ${file}.`}
                 >
-                  <span>{file}</span>
+                  <gcds-text margin-bottom="0">{file}</gcds-text>
                   <button onClick={e => this.removeFile(e)}>
                     <span>{i18n[lang].button.remove}</span>
                     <gcds-icon name="times" size="text" margin-left="200" />

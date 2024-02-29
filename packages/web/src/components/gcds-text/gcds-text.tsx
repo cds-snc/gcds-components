@@ -190,6 +190,7 @@ export class GcdsText {
             ${marginTop ? `mt-${marginTop}` : ''}
             ${marginBottom ? `mb-${marginBottom}` : ''}
           `}
+          part="text"
         >
           {size === 'caption' ? (
             <small>

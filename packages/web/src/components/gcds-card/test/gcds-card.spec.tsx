@@ -85,12 +85,10 @@ describe('gcds-card', () => {
     <gcds-card card-title="Card" href="#card" tag="Tag" type="link">
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
-          <span class="gcds-card__tag" id="gcds-card__tag">
-            <gcds-sr-only>
-              Tagged:
-            </gcds-sr-only>
+          <gcds-text id="gcds-card__tag" class="gcds-card__tag" size="caption" text-role="secondary">
+            <gcds-sr-only>Tagged:</gcds-sr-only>
             Tag
-          </span>
+          </gcds-text>
           <gcds-link class="gcds-card__title" href="#card">
             Card
           </gcds-link>
@@ -117,9 +115,9 @@ describe('gcds-card', () => {
           <gcds-link class="gcds-card__title" href="#card">
             Card
           </gcds-link>
-          <p class="gcds-card__description">
+          <gcds-text class="gcds-card__description">
             This is the card description
-          </p>
+          </gcds-text>
         </div>
       </mock:shadow-root>
     </gcds-card

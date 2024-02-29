@@ -60,6 +60,8 @@ graph TD;
   gcds-select --> gcds-label
   gcds-select --> gcds-hint
   gcds-select --> gcds-error-message
+  gcds-hint --> gcds-text
+  gcds-error-message --> gcds-text
   style gcds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
