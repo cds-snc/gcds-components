@@ -10,6 +10,7 @@ import WordmarkFr from './assets/wmms-spl-fr.svg';
 @Component({
   tag: 'gcds-signature',
   styleUrl: 'gcds-signature.css',
+  shadow: true,
 })
 export class GcdsSignature {
   @Element() el: HTMLElement;

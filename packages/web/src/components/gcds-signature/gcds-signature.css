@@ -1,52 +1,52 @@
 @layer reset, default, type.signature, type.wordmark, variant.colour, variant.white, desktop;
 
 @layer reset {
-  gcds-signature {
+  :host {
     display: block;
     width: fit-content;
   }
 }
 
 @layer default {
-  gcds-signature {
+  :host {
     .gcds-signature {
       display: flex;
     }
 
     svg {
       max-width: 100%;
+
+      .fip_flag {
+        fill: var(--gcds-signature-color-flag);
+      }
     }
   }
 }
 
 @layer type.signature {
-  gcds-signature:not([type='wordmark']) svg {
+  :host(:not([type='wordmark'])) svg {
     height: var(--gcds-signature-signature-height);
   }
 }
 
 @layer type.wordmark {
-  gcds-signature[type='wordmark'] svg {
+  :host([type='wordmark']) svg {
     height: var(--gcds-signature-wordmark-height);
     width: auto;
   }
 }
 
 @layer variant.colour {
-  gcds-signature:not([variant='white']) svg {
+  :host(:not([variant='white'])) svg {
     .fip_text {
       fill: var(--gcds-signature-color-text);
-    }
-
-    .fip_flag {
-      fill: var(--gcds-signature-color-flag);
     }
   }
 }
 
 @layer variant.white {
-  gcds-signature[variant='white'] svg {
-    :is(.fip_text, .fip_flag) {
+  :host([variant='white']) svg {
+    :is(.fip_text) {
       fill: var(--gcds-signature-white-default);
     }
   }
@@ -54,7 +54,7 @@
 
 /* Note: viewport specific style decision */
 @layer desktop {
-  gcds-signature:not([type='wordmark']) svg {
+  :host(:not([type='wordmark'])) svg {
     @media screen and (width >= 64em) {
       height: 2.125rem;
     }
