@@ -42,7 +42,7 @@ This Code of Conduct applies both within project spaces and in public spaces whe
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at `cds-snc@tbs-sct.gc.ca`. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at `cds-snc@servicecanada.gc.ca`. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
 Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
 
@@ -96,7 +96,7 @@ Ce Code de conduite s'applique dans tous les espaces du projet, et il s'applique
 
 ## Application des règles
 
-Les cas de comportement abusif, de harcèlement ou d'autres comportements inacceptables peuvent être rapportés en communiquant avec l'équipe de projet à l'adresse suivante&nbsp;:`cds-snc@tbs-sct.gc.ca`. Toutes les plaintes feront l'objet d'un examen et d'une enquête et donneront lieu à une réponse qui est jugée nécessaire et appropriée dans les circonstances. L'équipe de projet est dans l'obligation de respecter la confidentialité à l'égard du déclarant d'un incident. De plus amples détails sur les politiques d'application spécifiques peuvent être affichés séparément.
+Les cas de comportement abusif, de harcèlement ou d'autres comportements inacceptables peuvent être rapportés en communiquant avec l'équipe de projet à l'adresse suivante&nbsp;:`cds-snc@servicecanada.gc.ca`. Toutes les plaintes feront l'objet d'un examen et d'une enquête et donneront lieu à une réponse qui est jugée nécessaire et appropriée dans les circonstances. L'équipe de projet est dans l'obligation de respecter la confidentialité à l'égard du déclarant d'un incident. De plus amples détails sur les politiques d'application spécifiques peuvent être affichés séparément.
 
 Les responsables de projet qui ne respectent pas ou n'appliquent pas le Code de conduite en bonne et due formepeuvent faire face à des répercussions temporaires ou permanentes déterminées par d'autres membres de la les membres de la direction du projet.
 
