@@ -1,4 +1,12 @@
-@layer default;
+@layer reset, default;
+
+@layer reset {
+  :host {
+    slot {
+      display: initial;
+    }
+  }
+}
 
 @layer default {
   :host {
@@ -7,9 +15,5 @@
     height: 0;
     margin: 0;
     overflow: hidden;
-
-    slot {
-      display: initial;
-    }
   }
 }

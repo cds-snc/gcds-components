@@ -1,5 +1,15 @@
-:host .gcds-stepper {
-  font: var(--gcds-stepper-font);
-  margin: var(--gcds-stepper-margin);
-  color: var(--gcds-stepper-text);
+@layer reset, default;
+
+@layer reset {
+  :host {
+    display: block;
+  }
+}
+
+@layer default {
+  :host .gcds-stepper {
+    font: var(--gcds-stepper-font);
+    margin: var(--gcds-stepper-margin);
+    color: var(--gcds-stepper-text);
+  }
 }

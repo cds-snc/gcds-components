@@ -1,9 +1,8 @@
 name: Run Tests
-on: 
+on:
   pull_request:
       branches:
         - main
-        - develop
 
 jobs:
   build-deploy:
@@ -12,14 +11,13 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-        
-      - uses: actions/setup-node@5ef044f9d09786428e6e895be6be17937becee3a
+
+      - uses: actions/setup-node@25b062c917b0c75f8b47d8469aff6c94ffd89abb
         with:
           node-version: 18
 
       - name: Install gcds-components
         run: npm install
-        working-directory: ./packages/web
 
       - name: Run tests
         run: npm run test

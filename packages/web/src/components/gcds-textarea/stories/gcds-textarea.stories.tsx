@@ -35,6 +35,17 @@ export default {
         required: true,
       },
     },
+    name: {
+      name: 'name',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+      type: {
+        required: true,
+      },
+    },
     characterCount: {
       name: 'character-count',
       control: 'number',
@@ -129,6 +140,7 @@ const Template = args =>
 <gcds-textarea
   textarea-id="${args.textareaId}"
   label="${args.label}"
+  name="${args.name}"
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
@@ -146,6 +158,7 @@ const Template = args =>
 <GcdsTextarea
   textareaId="${args.textareaId}"
   label="${args.label}"
+  name="${args.name}"
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
@@ -166,6 +179,7 @@ const TemplatePlayground = args => `
 <gcds-textarea
   textarea-id="${args.textareaId}"
   label="${args.label}"
+  name="${args.name}"
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
@@ -186,6 +200,7 @@ export const Default = Template.bind({});
 Default.args = {
   textareaId: 'textarea',
   label: 'Label',
+  name: 'textarea-name',
   hint: 'Hint / Example message.',
   validateOn: 'blur',
   lang: 'en',
@@ -197,6 +212,7 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   textareaId: 'textarea',
   label: 'Label',
+  name: 'textarea-name',
   hint: 'Hint / Example message.',
   disabled: true,
   validateOn: 'blur',
@@ -207,6 +223,7 @@ export const Error = Template.bind({});
 Error.args = {
   textareaId: 'textarea',
   label: 'Label',
+  name: 'textarea-name',
   hint: 'Hint / Example message.',
   errorMessage: 'Error message or validation message.',
   required: true,
@@ -218,6 +235,7 @@ export const Required = Template.bind({});
 Required.args = {
   textareaId: 'textarea',
   label: 'Label',
+  name: 'textarea-name',
   hint: 'Hint / Example message.',
   required: true,
   validateOn: 'blur',
@@ -230,6 +248,7 @@ export const Character = Template.bind({});
 Character.args = {
   textareaId: 'textarea',
   label: 'Label',
+  name: 'textarea-name',
   hint: 'Hint / Example message.',
   characterCount: 200,
   validateOn: 'blur',
@@ -242,6 +261,7 @@ export const Rows = Template.bind({});
 Rows.args = {
   textareaId: 'textarea',
   label: 'Label',
+  name: 'textarea-name',
   hint: 'Hint / Example message.',
   rows: 10,
   validateOn: 'blur',
@@ -254,6 +274,7 @@ export const Props = Template.bind({});
 Props.args = {
   textareaId: 'textarea',
   label: 'Label',
+  name: 'textarea-name',
   hint: 'Hint / Example message.',
   characterCount: '',
   errorMessage: '',
@@ -272,6 +293,7 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   textareaId: 'textarea',
   label: 'Label',
+  name: 'textarea-name',
   hint: 'Hint / Example message.',
   characterCount: '',
   errorMessage: '',

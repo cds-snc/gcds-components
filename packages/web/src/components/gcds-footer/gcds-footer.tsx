@@ -148,8 +148,10 @@ export class GcdsFooter {
         {contextualLinksObject && contextualHeading && (
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
-              <nav aria-label={contextualHeading}>
-                <h3 class="contextual__header">{contextualHeading}</h3>
+              <nav aria-labelledby="contextual__header">
+                <h3 id="contextual__header" class="contextual__header">
+                  {contextualHeading}
+                </h3>
                 <ul class="contextual__list">
                   {Object.keys(contextualLinksObject).map(key => {
                     if (contextualLinkCount < 3) {
@@ -157,7 +159,9 @@ export class GcdsFooter {
 
                       return (
                         <li>
-                          <a href={contextualLinksObject[key]}>{key}</a>
+                          <gcds-link href={contextualLinksObject[key]}>
+                            {key}
+                          </gcds-link>
                         </li>
                       );
                     }
@@ -170,25 +174,29 @@ export class GcdsFooter {
         {display === 'full' ? (
           <div class="gcds-footer__main">
             <div class="main__container">
-              <nav class="main__govnav" aria-label={I18N[lang].gov.heading}>
-                <h3>{I18N[lang].gov.heading}</h3>
+              <nav class="main__govnav" aria-labelledby="govnav__header">
+                <h3 id="govnav__header">{I18N[lang].gov.heading}</h3>
                 <ul class="govnav__list">
                   {Object.keys(govNav).map(value => (
                     <li>
-                      <a href={govNav[value].link}>{govNav[value].text}</a>
+                      <gcds-link href={govNav[value].link}>
+                        {govNav[value].text}
+                      </gcds-link>
                     </li>
                   ))}
                 </ul>
               </nav>
               <nav
                 class="main__themenav"
-                aria-label={I18N[lang].themes.heading}
+                aria-labelledby="themenav__header"
               >
-                <h4 class="themenav__header">{I18N[lang].themes.heading}</h4>
+                <h4 id="themenav__header" class="themenav__header">{I18N[lang].themes.heading}</h4>
                 <ul class="themenav__list">
                   {Object.keys(themeNav).map(value => (
                     <li>
-                      <a href={themeNav[value].link}>{themeNav[value].text}</a>
+                      <gcds-link href={themeNav[value].link}>
+                        {themeNav[value].text}
+                      </gcds-link>
                     </li>
                   ))}
                 </ul>
@@ -199,8 +207,8 @@ export class GcdsFooter {
 
         <div class="gcds-footer__sub">
           <div class="sub__container">
-            <nav aria-label={I18N[lang].site.heading}>
-              <h3 class="sub__header">{I18N[lang].site.heading}</h3>
+            <nav aria-labelledby="sub__header">
+              <h3 id="sub__header" class="sub__header">{I18N[lang].site.heading}</h3>
               <ul>
                 {subLinks
                   ? Object.keys(subLinksObject).map(key => {
@@ -209,7 +217,9 @@ export class GcdsFooter {
 
                         return (
                           <li>
-                            <a href={subLinksObject[key]}>{key}</a>
+                            <gcds-link href={subLinksObject[key]}>
+                              {key}
+                            </gcds-link>
                           </li>
                         );
                       }
@@ -217,9 +227,9 @@ export class GcdsFooter {
                   : Object.keys(siteNav).map(value => {
                       return (
                         <li>
-                          <a href={siteNav[value].link}>
+                          <gcds-link href={siteNav[value].link}>
                             {siteNav[value].text}
-                          </a>
+                          </gcds-link>
                         </li>
                       );
                     })}

@@ -1,6 +1,7 @@
 // Original code from https://github.com/luwes/wesc
 
 import React from 'react';
+import 'element-internals-polyfill';
 
 declare global {
   interface HTMLElement {

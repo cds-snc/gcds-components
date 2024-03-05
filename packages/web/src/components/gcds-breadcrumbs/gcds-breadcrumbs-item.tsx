@@ -22,9 +22,9 @@ export class GcdsBreadcrumbsItem {
 
     return (
       <Host role="listitem" class="gcds-breadcrumbs-item">
-        <a href={href}>
+        <gcds-link href={href}>
           <slot></slot>
-        </a>
+        </gcds-link>
       </Host>
     );
   }

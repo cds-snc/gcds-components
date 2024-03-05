@@ -31,6 +31,14 @@
 
 ## Dependencies
 
+### Used by
+
+ - [gcds-breadcrumbs-item](../gcds-breadcrumbs)
+ - [gcds-card](../gcds-card)
+ - [gcds-error-summary](../gcds-error-summary)
+ - [gcds-footer](../gcds-footer)
+ - [gcds-lang-toggle](../gcds-lang-toggle)
+
 ### Depends on
 
 - [gcds-icon](../gcds-icon)
@@ -39,6 +47,11 @@
 ```mermaid
 graph TD;
   gcds-link --> gcds-icon
+  gcds-breadcrumbs-item --> gcds-link
+  gcds-card --> gcds-link
+  gcds-error-summary --> gcds-link
+  gcds-footer --> gcds-link
+  gcds-lang-toggle --> gcds-link
   style gcds-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

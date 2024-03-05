@@ -1,4 +1,14 @@
-import { Element, Component, Host, Prop, h, Fragment } from '@stencil/core';
+import {
+  Element,
+  Component,
+  Host,
+  Prop,
+  h,
+  Fragment,
+  State,
+} from '@stencil/core';
+import { assignLanguage, observerConfig } from '../../utils/utils';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-card',
@@ -48,6 +58,30 @@ export class GcdsCard {
    */
   @Prop({ reflect: true }) imgAlt: string;
 
+  /**
+   * Language of rendered component
+   */
+  @State() lang: string;
+
+  /*
+   * Observe lang attribute change
+   */
+  updateLang() {
+    const observer = new MutationObserver(mutations => {
+      if (mutations[0].oldValue != this.el.lang) {
+        this.lang = this.el.lang;
+      }
+    });
+    observer.observe(this.el, observerConfig);
+  }
+
+  async componentWillLoad() {
+    // Define lang attribute
+    this.lang = assignLanguage(this.el);
+
+    this.updateLang();
+  }
+
   private get hasCardFooter() {
     return !!this.el.querySelector('[slot="footer"]');
   }
@@ -63,9 +97,16 @@ export class GcdsCard {
       imgSrc,
       imgAlt,
       hasCardFooter,
+      lang,
     } = this;
 
     const Element = titleElement;
+
+    const taggedAttr = {};
+
+    if (tag) {
+      taggedAttr['aria-describedby'] = 'gcds-card__tag';
+    }
 
     return (
       <Host>
@@ -77,18 +118,29 @@ export class GcdsCard {
               class="gcds-card__image"
             />
           )}
-          {tag && <span class="gcds-card__tag">{tag}</span>}
+          {tag && (
+            <gcds-text
+              id="gcds-card__tag"
+              class="gcds-card__tag"
+              text-role="secondary"
+              size="caption"
+            >
+              <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
+              {tag}
+            </gcds-text>
+          )}
           {Element != 'a' ? (
-            <Element class="gcds-card__title">
-              <a href={href}>{cardTitle}</a>
+            <Element class="gcds-card__title" {...taggedAttr}>
+              <gcds-link href={href}>{cardTitle}</gcds-link>
             </Element>
           ) : (
-            <a href={href} class="gcds-card__title">
+            <gcds-link href={href} class="gcds-card__title" {...taggedAttr}>
               {cardTitle}
-            </a>
+            </gcds-link>
           )}
-
-          {description && <p class="gcds-card__description">{description}</p>}
+          {description && (
+            <gcds-text class="gcds-card__description">{description}</gcds-text>
+          )}
           {hasCardFooter && (
             <>
               <div class="gcds-card__spacer"></div>

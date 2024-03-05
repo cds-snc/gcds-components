@@ -1,9 +1,6 @@
 # gcds-card
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -18,7 +15,25 @@
 | `titleElement`           | `title-element` | The title element attribute specifies HTML element the title renders as                                | `"a" \| "h3" \| "h4" \| "h5" \| "h6"` | `'a'`       |
 | `type`                   | `type`          | The type attribute specifies how the card renders as a link                                            | `"action" \| "link"`                  | `'link'`    |
 
+## Dependencies
 
-----------------------------------------------
+### Depends on
 
-*Built with [StencilJS](https://stenciljs.com/)*
+- [gcds-sr-only](../gcds-sr-only)
+- [gcds-text](../gcds-text)
+- [gcds-link](../gcds-link)
+
+### Graph
+
+```mermaid
+graph TD;
+  gcds-card --> gcds-sr-only
+  gcds-card --> gcds-text
+  gcds-card --> gcds-link
+  gcds-link --> gcds-icon
+  style gcds-card fill:#f9f,stroke:#333,stroke-width:4px
+```
+
+---
+
+_Built with [StencilJS](https://stenciljs.com/)_

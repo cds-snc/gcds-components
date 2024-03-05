@@ -90,16 +90,6 @@ export class GcdsTopNav {
         if (this.mobile.hasAttribute('open')) {
           await this.mobile.toggleNav();
         }
-      } else {
-        for (let i = 0; i < this.el.children.length; i++) {
-          if (
-            this.el.children[i].nodeName == 'GCDS-NAV-GROUP' &&
-            this.el.children[i].hasAttribute('open')
-          ) {
-            await (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
-            await this.updateNavItemQueue(this.el);
-          }
-        }
       }
     }
   }
@@ -186,27 +176,31 @@ export class GcdsTopNav {
 
     return (
       <Host>
-        <nav
-          aria-label={`${label}${I18N[lang].navLabel}`}
-          class="gcds-top-nav__container"
-        >
-          <gcds-nav-group
-            menuLabel="Menu"
-            closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
-            openTrigger="Menu"
-            class="gcds-mobile-nav gcds-mobile-nav-topnav"
-            ref={element => (this.mobile = element as HTMLGcdsNavGroupElement)}
-            lang={lang}
+        <div class="gcds-top-nav">
+          <nav
+            aria-label={`${label}${I18N[lang].navLabel}`}
+            class="gcds-top-nav__container"
           >
-            <slot name="home"></slot>
-            <ul
-              role="menu"
-              class={`nav-container__list nav-list--${alignment}`}
+            <gcds-nav-group
+              menuLabel="Menu"
+              closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
+              openTrigger="Menu"
+              class="gcds-mobile-nav gcds-mobile-nav-topnav"
+              ref={element =>
+                (this.mobile = element as HTMLGcdsNavGroupElement)
+              }
+              lang={lang}
             >
-              <slot></slot>
-            </ul>
-          </gcds-nav-group>
-        </nav>
+              <slot name="home"></slot>
+              <ul
+                role="menu"
+                class={`nav-container__list nav-list--${alignment}`}
+              >
+                <slot></slot>
+              </ul>
+            </gcds-nav-group>
+          </nav>
+        </div>
       </Host>
     );
   }

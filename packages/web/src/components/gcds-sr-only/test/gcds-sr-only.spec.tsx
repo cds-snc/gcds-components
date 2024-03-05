@@ -10,7 +10,7 @@ describe('gcds-sr-only', () => {
     expect(page.root).toEqualHtml(`
       <gcds-sr-only>
         <mock:shadow-root>
-          <slot></slot>
+          <p><slot></slot></p>
         </mock:shadow-root>
         Hidden text
       </gcds-sr-only>

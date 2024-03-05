@@ -1,12 +1,17 @@
-:host {
-  display: inline-block;
+@layer reset, default;
+
+@layer reset {
+  :host {
+    display: inline-block;
+  }
 }
 
-:host .error-message {
-  font: var(--gcds-error-message-font);
-  margin: var(--gcds-error-message-margin);
-  padding: var(--gcds-error-message-padding);
-  background: var(--gcds-error-message-background);
-  color: var(--gcds-error-message-text);
-  border-inline-start: var(--gcds-error-message-border-width) solid var(--gcds-error-message-border-color);
+@layer default {
+  :host .error-message {
+    margin: var(--gcds-error-message-margin);
+    padding: var(--gcds-error-message-padding);
+    background: var(--gcds-error-message-background);
+    border-inline-start: var(--gcds-error-message-border-width) solid
+      var(--gcds-error-message-border-color);
+  }
 }

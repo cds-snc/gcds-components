@@ -15,9 +15,9 @@ describe('gcds-card', () => {
     <gcds-card card-title="Card" href="#card" type="link">
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
-          <a class="gcds-card__title" href="#card">
+          <gcds-link class="gcds-card__title" href="#card">
             Card
-          </a>
+          </gcds-link>
         </div>
       </mock:shadow-root>
     </gcds-card
@@ -37,9 +37,9 @@ describe('gcds-card', () => {
     <gcds-card card-title="Card" href="#card" type="action">
       <mock:shadow-root>
         <div class="gcds-card gcds-card--action">
-          <a class="gcds-card__title" href="#card">
+          <gcds-link class="gcds-card__title" href="#card">
             Card
-          </a>
+          </gcds-link>
         </div>
       </mock:shadow-root>
     </gcds-card
@@ -61,9 +61,9 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
           <h3 class="gcds-card__title">
-            <a href="#card">
+            <gcds-link href="#card">
                 Card
-            </a>
+            </gcds-link>
           </h3>
         </div>
       </mock:shadow-root>
@@ -85,10 +85,13 @@ describe('gcds-card', () => {
     <gcds-card card-title="Card" href="#card" tag="Tag" type="link">
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
-          <span class="gcds-card__tag">Tag</span>
-          <a class="gcds-card__title" href="#card">
+          <gcds-text id="gcds-card__tag" class="gcds-card__tag" size="caption" text-role="secondary">
+            <gcds-sr-only>Tagged:</gcds-sr-only>
+            Tag
+          </gcds-text>
+          <gcds-link class="gcds-card__title" href="#card">
             Card
-          </a>
+          </gcds-link>
         </div>
       </mock:shadow-root>
     </gcds-card
@@ -109,12 +112,12 @@ describe('gcds-card', () => {
     <gcds-card card-title="Card" href="#card" description="This is the card description" type="link">
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
-          <a class="gcds-card__title" href="#card">
+          <gcds-link class="gcds-card__title" href="#card">
             Card
-          </a>
-          <p class="gcds-card__description">
+          </gcds-link>
+          <gcds-text class="gcds-card__description">
             This is the card description
-          </p>
+          </gcds-text>
         </div>
       </mock:shadow-root>
     </gcds-card
@@ -135,9 +138,9 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
           <img alt="" class="gcds-card__image" src="https://picsum.photos/480/270">
-          <a class="gcds-card__title" href="#card">
+          <gcds-link class="gcds-card__title" href="#card">
             Card
-          </a>
+          </gcds-link>
         </div>
       </mock:shadow-root>
     </gcds-card>
@@ -159,9 +162,9 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
           <img alt="Alt text for image from picsum" class="gcds-card__image" src="https://picsum.photos/480/270">
-          <a class="gcds-card__title" href="#card">
+          <gcds-link class="gcds-card__title" href="#card">
             Card
-          </a>
+          </gcds-link>
         </div>
       </mock:shadow-root>
     </gcds-card>
@@ -183,9 +186,9 @@ describe('gcds-card', () => {
     <gcds-card card-title="Card" href="#card" type="link">
       <mock:shadow-root>
         <div class="gcds-card gcds-card--link">
-          <a class="gcds-card__title" href="#card">
+          <gcds-link class="gcds-card__title" href="#card">
             Card
-          </a>
+          </gcds-link>
           <div class="gcds-card__spacer"></div>
           <slot name="footer"></slot>
         </div>

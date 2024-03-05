@@ -1,172 +1,199 @@
-:host .gcds-file-uploader-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 90%;
-  font: var(--gcds-file-uploader-font);
-  color: var(--gcds-file-uploader-default-text);
-  margin: 0;
-  padding: 0;
-  border: 0;
-  transition: color ease-in-out 0.15s;
+@layer reset, default, input, files, disabled, error, focus, active;
 
-  &:focus-within {
-    color: var(--gcds-file-uploader-focus-text);
+@layer reset {
+  :host {
+    display: block;
+
+    .gcds-file-uploader-wrapper {
+      margin: 0;
+      padding: 0;
+      border: 0;
+
+      button {
+        font: inherit;
+        outline: 0;
+        cursor: pointer;
+      }
+    }
   }
+}
 
-  &.gcds-disabled {
+@layer default {
+  :host .gcds-file-uploader-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 90%;
+    font: var(--gcds-file-uploader-font);
+    color: var(--gcds-file-uploader-default-text);
+    transition: color ease-in-out 0.15s;
+
+    button {
+      border-radius: var(--gcds-file-uploader-file-button-border-radius);
+      transition: all 0.15s ease-in-out;
+    }
+  }
+}
+
+@layer input {
+  :host .gcds-file-uploader-wrapper .file-uploader__input {
+    position: relative;
+    display: inline-block;
+
+    button {
+      font-weight: var(--gcds-file-uploader-button-font-weight);
+      margin: var(--gcds-file-uploader-button-margin);
+      padding: var(--gcds-file-uploader-button-padding);
+      background-color: var(--gcds-file-uploader-button-background);
+      color: var(--gcds-file-uploader-button-text);
+      border: var(--gcds-file-uploader-button-border-width) solid
+        var(--gcds-file-uploader-button-text);
+    }
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    #file-uploader__summary {
+      visibility: hidden;
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+  }
+}
+
+@layer files {
+  :host .gcds-file-uploader-wrapper .file-uploader__uploaded-file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--gcds-file-uploader-file-max-width);
+    padding: var(--gcds-file-uploader-file-padding);
+    border: var(--gcds-file-uploader-file-border-width) solid
+      var(--gcds-file-uploader-file-border-color);
+    cursor: pointer;
+
+    &:not(:last-of-type) {
+      border-block-end: 0;
+    }
+
+    &:last-of-type {
+      margin: var(--gcds-file-uploader-button-margin);
+    }
+
+    gcds-text {
+      overflow: auto;
+
+      &::part(text) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      background: transparent;
+      border: 0;
+      color: var(--gcds-file-uploader-file-button-default-text);
+      font-weight: var(--gcds-file-uploader-button-font-weight);
+      margin: var(--gcds-file-uploader-file-button-margin);
+      padding: var(--gcds-file-uploader-file-button-padding);
+
+      &:not(:focus) span {
+        overflow: visible;
+        text-decoration: underline
+          var(--gcds-file-uploader-file-button-default-decoration-thickness);
+        text-underline-offset: var(
+          --gcds-file-uploader-file-button-underline-offset
+        );
+      }
+    }
+  }
+}
+
+@layer disabled {
+  :host .gcds-file-uploader-wrapper.gcds-disabled {
     color: var(--gcds-file-uploader-disabled-text);
 
-    .file-uploader__input input,
+    :is(.file-uploader__input, .file-uploader__uploaded-file) {
+      pointer-events: none;
+    }
+
+    .file-uploader__input button,
     .file-uploader__uploaded-file,
-    .file-uploader__uploaded-file gcds-icon {
-      cursor: not-allowed;
+    .file-uploader__uploaded-file button {
+      color: inherit;
     }
 
     .file-uploader__input button {
       background-color: var(--gcds-file-uploader-disabled-background);
-      color: inherit;
-      border-color: var(--gcds-file-uploader-disabled-text);
-      outline: 0;
+      border-color: currentColor;
     }
+  }
+}
 
-    .file-uploader__uploaded-file {
-      color: inherit;
+@layer error {
+  :host .gcds-file-uploader-wrapper.gcds-error .file-uploader__uploaded-file {
+    border-color: var(--gcds-file-uploader-file-danger-border-color);
+  }
+}
 
-      button {
-        color: inherit;
+@layer hover {
+  @media (hover: hover) {
+    :host .gcds-file-uploader-wrapper {
+      .file-uploader__input:not(:focus-within):hover button {
+        background-color: var(--gcds-file-uploader-hover-button-background);
+      }
 
-        &:focus {
-          background: transparent;
+      .file-uploader__uploaded-file button:not(:focus):hover {
+        color: var(--gcds-file-uploader-file-button-hover-text);
+
+        span {
+          text-decoration-thickness: var(
+            --gcds-file-uploader-file-button-hover-decoration-thickness
+          );
         }
       }
     }
   }
-
-  &.gcds-error .file-uploader__uploaded-file:not(:focus) {
-    border-color: var(--gcds-file-uploader-file-danger-border-color);
-  }
-
-  &.gcds-error .file-uploader__uploaded-file:focus-within,
-  .file-uploader__uploaded-file:focus-within {
-    border-color: var(--gcds-file-uploader-file-focus-border-color);
-  }
 }
 
-:host .file-uploader__input {
-  position: relative;
-  display: inline-block;
+@layer focus {
+  :host .gcds-file-uploader-wrapper:focus-within {
+    color: var(--gcds-file-uploader-focus-text);
 
-  &.uploaded-files {
-    margin: var(--gcds-file-uploader-button-margin);
-  }
-
-  button {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: var(--gcds-file-uploader-button-font-weight);
-    line-height: inherit;
-    padding: var(--gcds-file-uploader-button-padding);
-    background-color: var(--gcds-file-uploader-button-background);
-    color: var(--gcds-file-uploader-button-text);
-    border: var(--gcds-file-uploader-button-border-width) solid var(--gcds-file-uploader-button-text);
-    border-radius: var(--gcds-file-uploader-button-border-radius);
-    transition: all 0.15s ease-in-out;
-  }
-
-  input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  #file-uploader__summary {
-    visibility: hidden;
-    height: 0;
-    margin: 0;
-    overflow: hidden;
-  }
-
-  &:hover button {
-    background-color: var(--gcds-file-uploader-hover-button-background);
-  }
-
-  &:focus-within button {
-    background-color: var(--gcds-file-uploader-focus-button-background);
-    color: var(--gcds-file-uploader-focus-button-text);
-    outline: var(--gcds-file-uploader-button-outline-width) solid var(--gcds-file-uploader-focus-button-background);
-    border-color: currentColor;
-  }
-
-  &:active button {
-    background-color: var(--gcds-file-uploader-active-button-background);
-    color: var(--gcds-file-uploader-active-button-text);
-  }
-}
-
-:host .file-uploader__uploaded-file {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: var(--gcds-file-uploader-file-max-width);
-  font: inherit;
-  font-weight: var(--gcds-file-uploader-button-font-weight);
-  color: var(--gcds-file-uploader-default-text);
-  padding: var(--gcds-file-uploader-file-padding);
-  border: var(--gcds-file-uploader-file-border-width) solid var(--gcds-file-uploader-file-border-color);
-  cursor: pointer;
-
-  &:not(:last-of-type) {
-    border-block-end: 0;
-  }
-
-  span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-inline-end: 0;
-  }
-
-  button {
-    display: flex;
-    align-items: center;
-    font: inherit;
-    background: transparent;
-    border-radius: var(--gcds-file-uploader-file-button-border-radius);
-    color: var(--gcds-file-uploader-file-button-default-text);
-    margin: var(--gcds-file-uploader-file-button-margin);
-    padding: var(--gcds-file-uploader-file-button-padding);
-    outline: 0;
-    transition: color 0.35s;
-
-    &:not(:focus) span {
-      transition: box-shadow 0.35s;
-      overflow: visible;
-      text-decoration: underline;
-      text-underline-offset: var(--gcds-file-uploader-file-button-underline-offset);
-      text-decoration-thickness: var(--gcds-file-uploader-file-button-default-decoration-thickness);
+    .file-uploader__uploaded-file:focus-within {
+      border-color: var(--gcds-file-uploader-file-focus-border-color);
     }
 
-    &:hover {
-      color: var(--gcds-file-uploader-file-button-hover-text);
-    }
-
-    &:hover span {
-      text-decoration-thickness: var(--gcds-file-uploader-file-button-hover-decoration-thickness);
-    }
-
-    &:focus {
+    .file-uploader__input:focus-within button,
+    .file-uploader__uploaded-file button:focus {
       background-color: var(--gcds-file-uploader-focus-button-background);
       color: var(--gcds-file-uploader-focus-button-text);
-      outline: var(--gcds-file-uploader-focus-button-outline-width) solid var(--gcds-file-uploader-focus-button-background);
+      outline: var(--gcds-file-uploader-button-outline-width) solid
+        var(--gcds-file-uploader-focus-button-background);
       outline-offset: var(--gcds-file-uploader-focus-button-outline-offset);
       border-color: var(--gcds-file-uploader-focus-button-background);
-      text-decoration-color: transparent;
+    }
+  }
+}
+
+@layer active {
+  :host .gcds-file-uploader-wrapper {
+    .file-uploader__input:has(input:active) button {
+      background-color: var(--gcds-file-uploader-active-button-background);
+      color: var(--gcds-file-uploader-active-button-text);
+      border-color: var(--gcds-file-uploader-active-button-background);
     }
   }
 }
