@@ -50,7 +50,7 @@ export class GcdsLangToggle {
       <Host>
         <div class="gcds-lang-toggle">
           <h2>{i18n[lang].heading}</h2>
-          <gcds-link href={href} lang={i18n[lang].abbreviation}>
+          <gcds-link size="regular" href={href} lang={i18n[lang].abbreviation}>
             <span>{i18n[lang].language}</span>
             <abbr title={i18n[lang].language}>{i18n[lang].abbreviation}</abbr>
           </gcds-link>

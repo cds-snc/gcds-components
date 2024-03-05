@@ -20,6 +20,7 @@ describe('gcds-error-summary', () => {
       </gcds-error-summary>
     `);
   });
+
   it('renders - fr', async () => {
     const page = await newSpecPage({
       components: [GcdsErrorSummary],
@@ -38,6 +39,7 @@ describe('gcds-error-summary', () => {
       </gcds-error-summary>
     `);
   });
+
   it('renders - custom heading', async () => {
     const page = await newSpecPage({
       components: [GcdsErrorSummary],
@@ -56,6 +58,7 @@ describe('gcds-error-summary', () => {
       </gcds-error-summary>
     `);
   });
+
   it('renders - error-links', async () => {
     const page = await newSpecPage({
       components: [GcdsErrorSummary],
@@ -72,12 +75,12 @@ describe('gcds-error-summary', () => {
             </gcds-heading>
             <ol class="summary__errorlist">
               <li class="summary__listitem">
-                <gcds-link href="#link1">
+                <gcds-link size="regular" href="#link1">
                   This is the first error
                 </gcds-link>
               </li>
               <li class="summary__listitem">
-                <gcds-link href="#link2">
+                <gcds-link size="regular" href="#link2">
                   This is the second error
                 </gcds-link>
               </li>
@@ -87,6 +90,7 @@ describe('gcds-error-summary', () => {
       </gcds-error-summary>
     `);
   });
+
   it('renders - listen', async () => {
     const page = await newSpecPage({
       components: [GcdsErrorSummary],

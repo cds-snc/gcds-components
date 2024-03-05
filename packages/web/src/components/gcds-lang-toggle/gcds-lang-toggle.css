@@ -15,8 +15,6 @@
 
 @layer default {
   :host .gcds-lang-toggle {
-    font: var(--gcds-lang-toggle-font);
-
     gcds-link::part(link) {
       padding: var(--gcds-lang-toggle-padding);
     }

@@ -209,6 +209,7 @@ export class GcdsErrorSummary {
                 return (
                   <li class="summary__listitem">
                     <gcds-link
+                      size="regular"
                       href={errorLinks ? key : '#'}
                       onClick={e => {
                         e.preventDefault();

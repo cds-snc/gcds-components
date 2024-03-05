@@ -159,7 +159,10 @@ export class GcdsFooter {
 
                       return (
                         <li>
-                          <gcds-link href={contextualLinksObject[key]}>
+                          <gcds-link
+                            size="small"
+                            href={contextualLinksObject[key]}
+                          >
                             {key}
                           </gcds-link>
                         </li>
@@ -179,22 +182,21 @@ export class GcdsFooter {
                 <ul class="govnav__list">
                   {Object.keys(govNav).map(value => (
                     <li>
-                      <gcds-link href={govNav[value].link}>
+                      <gcds-link size="small" href={govNav[value].link}>
                         {govNav[value].text}
                       </gcds-link>
                     </li>
                   ))}
                 </ul>
               </nav>
-              <nav
-                class="main__themenav"
-                aria-labelledby="themenav__header"
-              >
-                <h4 id="themenav__header" class="themenav__header">{I18N[lang].themes.heading}</h4>
+              <nav class="main__themenav" aria-labelledby="themenav__header">
+                <h4 id="themenav__header" class="themenav__header">
+                  {I18N[lang].themes.heading}
+                </h4>
                 <ul class="themenav__list">
                   {Object.keys(themeNav).map(value => (
                     <li>
-                      <gcds-link href={themeNav[value].link}>
+                      <gcds-link size="small" href={themeNav[value].link}>
                         {themeNav[value].text}
                       </gcds-link>
                     </li>
@@ -208,7 +210,9 @@ export class GcdsFooter {
         <div class="gcds-footer__sub">
           <div class="sub__container">
             <nav aria-labelledby="sub__header">
-              <h3 id="sub__header" class="sub__header">{I18N[lang].site.heading}</h3>
+              <h3 id="sub__header" class="sub__header">
+                {I18N[lang].site.heading}
+              </h3>
               <ul>
                 {subLinks
                   ? Object.keys(subLinksObject).map(key => {
@@ -217,7 +221,7 @@ export class GcdsFooter {
 
                         return (
                           <li>
-                            <gcds-link href={subLinksObject[key]}>
+                            <gcds-link size="small" href={subLinksObject[key]}>
                               {key}
                             </gcds-link>
                           </li>
@@ -227,7 +231,7 @@ export class GcdsFooter {
                   : Object.keys(siteNav).map(value => {
                       return (
                         <li>
-                          <gcds-link href={siteNav[value].link}>
+                          <gcds-link size="small" href={siteNav[value].link}>
                             {siteNav[value].text}
                           </gcds-link>
                         </li>
