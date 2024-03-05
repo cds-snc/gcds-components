@@ -89,7 +89,7 @@ describe('gcds-card', () => {
             <gcds-sr-only>Tagged:</gcds-sr-only>
             Tag
           </gcds-text>
-          <gcds-link class="gcds-card__title" href="#card">
+          <gcds-link aria-describedby="gcds-card__tag" class="gcds-card__title" href="#card">
             Card
           </gcds-link>
         </div>
