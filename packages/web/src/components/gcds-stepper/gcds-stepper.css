@@ -8,8 +8,6 @@
 
 @layer default {
   :host .gcds-stepper {
-    font: var(--gcds-stepper-font);
-    margin: var(--gcds-stepper-margin);
     color: var(--gcds-stepper-text);
   }
 }

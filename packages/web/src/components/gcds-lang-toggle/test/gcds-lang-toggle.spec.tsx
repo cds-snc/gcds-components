@@ -12,7 +12,7 @@ describe('gcds-lang-toggle', () => {
         <mock:shadow-root>
         <div class="gcds-lang-toggle">
           <h2>Language Selection</h2>
-          <gcds-link href="/fr/" lang="fr">
+          <gcds-link size="regular" href="/fr/" lang="fr">
             <span>Français</span>
             <abbr title="Français">fr</abbr>
           </gcds-link>
@@ -32,7 +32,7 @@ describe('gcds-lang-toggle', () => {
         <mock:shadow-root>
         <div class="gcds-lang-toggle">
           <h2>Sélection de la langue</h2>
-          <gcds-link href="/en/" lang="en">
+          <gcds-link size="regular" href="/en/" lang="en">
             <span>English</span>
             <abbr title="English">en</abbr>
           </gcds-link>

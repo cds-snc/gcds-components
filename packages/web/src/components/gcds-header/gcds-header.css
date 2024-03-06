@@ -27,14 +27,14 @@
       width: 100%;
       margin-inline: auto;
       top: var(--gcds-header-skiptonav-top);
-  
+
       gcds-link {
         z-index: 3;
         position: absolute;
         top: var(--gcds-header-skiptonav-top);
         left: 0;
         width: inherit;
-  
+
         &:not(:focus) {
           width: 0;
           height: 0;

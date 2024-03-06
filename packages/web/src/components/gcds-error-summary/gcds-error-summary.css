@@ -26,12 +26,6 @@
         display: block;
       }
 
-      .summary__heading {
-        font: var(--gcds-error-summary-heading-font);
-        margin: 0;
-        padding-block-end: var(--gcds-error-summary-heading-padding-bottom);
-      }
-
       .summary__errorlist {
         padding: 0;
         margin: var(--gcds-error-summary-list-margin);
@@ -52,7 +46,7 @@
   :host .gcds-error-summary:is(:focus, :has(:focus-within)) {
     border-color: var(--gcds-error-summary-focus-color);
 
-    .summary__heading {
+    gcds-heading {
       color: var(--gcds-error-summary-focus-color);
     }
   }

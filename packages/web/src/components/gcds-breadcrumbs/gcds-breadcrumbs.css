@@ -13,7 +13,6 @@
 
 @layer default {
   :host .gcds-breadcrumbs ol {
-    font: var(--gcds-breadcrumbs-font);
     margin: var(--gcds-breadcrumbs-margin);
     padding: var(--gcds-breadcrumbs-padding);
 

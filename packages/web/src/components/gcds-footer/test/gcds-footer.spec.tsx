@@ -19,27 +19,27 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/social.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/social.html">
                       Social media
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/mobile.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/mobile.html">
                       Mobile applications
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/government/about.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/government/about.html">
                       About Canada.ca
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/transparency/terms.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/transparency/terms.html">
                       Terms and conditions
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/transparency/privacy.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/transparency/privacy.html">
                       Privacy
                     </gcds-link>
                   </li>
@@ -72,17 +72,17 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul class="govnav__list">
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/contact.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/contact.html">
                       All Contacts
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/government/dept.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/government/dept.html">
                       Departments and agencies
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/government/system.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/government/system.html">
                       About government
                     </gcds-link>
                   </li>
@@ -94,92 +94,92 @@ describe('gcds-footer', () => {
                 </h4>
                 <ul class="themenav__list">
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/jobs.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/jobs.html">
                       Jobs
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/immigration-citizenship.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/immigration-citizenship.html">
                       Immigration and citizenship
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://travel.gc.ca/">
+                    <gcds-link size="small" href="https://travel.gc.ca/">
                       Travel and tourism
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/business.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/business.html">
                       Business
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/benefits.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/benefits.html">
                       Benefits
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/health.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/health.html">
                       Health
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/taxes.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/taxes.html">
                       Taxes
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/environment.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/environment.html">
                       Environment and natural resources
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/defence.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/defence.html">
                       National security and defence
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/culture.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/culture.html">
                       Culture, history and sport
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/policing.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/policing.html">
                       Policing, justice and emergencies
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/transport.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/transport.html">
                       Transport and infrastructure
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://international.gc.ca/world-monde/index.aspx?lang=eng">
+                    <gcds-link size="small" href="https://international.gc.ca/world-monde/index.aspx?lang=eng">
                       Canada and the world
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/finance.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/finance.html">
                       Money and finance
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/science.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/science.html">
                       Science and innovation
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/indigenous-peoples.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/indigenous-peoples.html">
                       Indigenous peoples
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/veterans.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/veterans.html">
                       Veterans and military
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/youth.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/youth.html">
                       Youth
                     </gcds-link>
                   </li>
@@ -195,27 +195,27 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/social.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/social.html">
                       Social media
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/mobile.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/mobile.html">
                       Mobile applications
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/government/about.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/government/about.html">
                       About Canada.ca
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/transparency/terms.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/transparency/terms.html">
                       Terms and conditions
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/transparency/privacy.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/transparency/privacy.html">
                       Privacy
                     </gcds-link>
                   </li>
@@ -248,27 +248,27 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/sociaux.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/sociaux.html">
                       Médias sociaux
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/mobile.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/mobile.html">
                       Applications mobiles
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/gouvernement/a-propos.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/gouvernement/a-propos.html">
                       À propos de Canada.ca
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/transparence/avis.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/transparence/avis.html">
                       Avis
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/transparence/confidentialite.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/transparence/confidentialite.html">
                       Confidentialité
                     </gcds-link>
                   </li>
@@ -301,17 +301,17 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul class="govnav__list">
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/contact.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/contact.html">
                       Toutes les coordonnées
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/gouvernement/min.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/gouvernement/min.html">
                       Ministères et organismes
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/gouvernement/systeme.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/gouvernement/systeme.html">
                       À propos du gouvernement
                     </gcds-link>
                   </li>
@@ -323,92 +323,92 @@ describe('gcds-footer', () => {
                 </h4>
                 <ul class="themenav__list">
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/emplois.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/emplois.html">
                       Emplois
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/immigration-citoyennete.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/immigration-citoyennete.html">
                       Immigration et citoyenneté
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://voyage.gc.ca/">
+                    <gcds-link size="small" href="https://voyage.gc.ca/">
                       Voyage et tourisme
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/entreprises.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/entreprises.html">
                       Entreprises
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/prestations.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/prestations.html">
                       Prestations
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/sante.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/sante.html">
                       Santé
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/impots.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/impots.html">
                       Impôts
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/environnement.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/environnement.html">
                       Environnement et ressources naturelles
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/defense.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/defense.html">
                       Sécurité nationale et défense
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/culture.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/culture.html">
                       Culture, histoire et sport
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/police.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/police.html">
                       Services de police, justice et urgences
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/transport.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/transport.html">
                       Transport et infrastructure
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">
+                    <gcds-link size="small" href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">
                       Le Canada et le monde
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/finance.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/finance.html">
                       Argent et finance
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/science.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/science.html">
                       Science et innovation
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/autochtones.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/autochtones.html">
                       Autochtones
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/veterans.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/veterans.html">
                       Vétérans et militaires
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/services/jeunesse.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/jeunesse.html">
                       Jeunesse
                     </gcds-link>
                   </li>
@@ -424,27 +424,27 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/sociaux.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/sociaux.html">
                       Médias sociaux
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/mobile.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/mobile.html">
                       Applications mobiles
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/gouvernement/a-propos.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/gouvernement/a-propos.html">
                       À propos de Canada.ca
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/transparence/avis.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/transparence/avis.html">
                       Avis
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/fr/transparence/confidentialite.html">
+                    <gcds-link size="small" href="https://www.canada.ca/fr/transparence/confidentialite.html">
                       Confidentialité
                     </gcds-link>
                   </li>
@@ -482,17 +482,17 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul class="contextual__list">
                   <li>
-                    <gcds-link href="#red">
+                    <gcds-link size="small" href="#red">
                       Link 1
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="#green">
+                    <gcds-link size="small" href="#green">
                       Link 2
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="#blue">
+                    <gcds-link size="small" href="#blue">
                       Link 3
                     </gcds-link>
                   </li>
@@ -508,17 +508,17 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul class="govnav__list">
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/contact.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/contact.html">
                       All Contacts
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/government/dept.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/government/dept.html">
                       Departments and agencies
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/government/system.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/government/system.html">
                       About government
                     </gcds-link>
                   </li>
@@ -530,92 +530,92 @@ describe('gcds-footer', () => {
                 </h4>
                 <ul class="themenav__list">
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/jobs.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/jobs.html">
                       Jobs
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/immigration-citizenship.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/immigration-citizenship.html">
                       Immigration and citizenship
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://travel.gc.ca/">
+                    <gcds-link size="small" href="https://travel.gc.ca/">
                       Travel and tourism
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/business.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/business.html">
                       Business
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/benefits.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/benefits.html">
                       Benefits
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/health.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/health.html">
                       Health
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/taxes.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/taxes.html">
                       Taxes
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/environment.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/environment.html">
                       Environment and natural resources
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/defence.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/defence.html">
                       National security and defence
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/culture.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/culture.html">
                       Culture, history and sport
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/policing.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/policing.html">
                       Policing, justice and emergencies
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/transport.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/transport.html">
                       Transport and infrastructure
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://international.gc.ca/world-monde/index.aspx?lang=eng">
+                    <gcds-link size="small" href="https://international.gc.ca/world-monde/index.aspx?lang=eng">
                       Canada and the world
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/finance.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/finance.html">
                       Money and finance
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/science.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/science.html">
                       Science and innovation
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/indigenous-peoples.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/indigenous-peoples.html">
                       Indigenous peoples
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/veterans.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/veterans.html">
                       Veterans and military
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/services/youth.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/youth.html">
                       Youth
                     </gcds-link>
                   </li>
@@ -631,27 +631,27 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/social.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/social.html">
                       Social media
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/mobile.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/mobile.html">
                       Mobile applications
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/government/about.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/government/about.html">
                       About Canada.ca
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/transparency/terms.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/transparency/terms.html">
                       Terms and conditions
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="https://www.canada.ca/en/transparency/privacy.html">
+                    <gcds-link size="small" href="https://www.canada.ca/en/transparency/privacy.html">
                       Privacy
                     </gcds-link>
                   </li>
@@ -688,17 +688,17 @@ describe('gcds-footer', () => {
                 </h3>
                 <ul>
                   <li>
-                    <gcds-link href="#red">
+                    <gcds-link size="small" href="#red">
                       Link 1
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="#green">
+                    <gcds-link size="small" href="#green">
                       Link 2
                     </gcds-link>
                   </li>
                   <li>
-                    <gcds-link href="#blue">
+                    <gcds-link size="small" href="#blue">
                       Link 3
                     </gcds-link>
                   </li>
