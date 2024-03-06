@@ -30,11 +30,19 @@
 @layer size {
   :host .gcds-link {
     &.link--small {
-      font: var(--gcds-link-font-small);
+      font: var(--gcds-link-font-small-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-link-font-small-mobile);
+      }
     }
 
     &.link--regular {
-      font: var(--gcds-link-font-regular);
+      font: var(--gcds-link-font-regular-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-link-font-regular-mobile);
+      }
     }
 
     &.link--inherit {
