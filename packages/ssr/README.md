@@ -2,7 +2,7 @@
 
 # GC Design System Components – SSR React Wrapper
 
-GC Design System Components – SSR React Wrapper the GCDS within an SSR Ready React wrapper to ease integration of the components into React applications that utilize the SSR capability.
+GC Design System Components – SSR React Wrapper provides the [GC Design System Components](https://github.com/cds-snc/gcds-components/tree/main/packages/web) within an SSR Ready React wrapper to ease integration of the components into React applications that utilize the SSR capability.
 
 
 ## Documentation
