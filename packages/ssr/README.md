@@ -16,8 +16,6 @@ You can find the full documentation for GC Design System Components on [https://
 Navigate to the root folder of your project and run:
 
 ``` js
-npm install @cdssnc/gcds-components @cdssnc/gcds-components-ssr
-// TODO: Review this line above, check if it's correct, or is it just:
 npm install @cdssnc/gcds-components-ssr
 ```
 
