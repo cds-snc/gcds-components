@@ -9,6 +9,17 @@ declare global {
   }
 }
 
+const delFocusElements = [
+  'gcds-button',
+  'gcds-checkbox',
+  'gcds-fieldset',
+  'gcds-file-uploader',
+  'gcds-input',
+  'gcds-radio-group',
+  'gcds-select',
+  'gcds-textarea',
+];
+
 export async function render(children) {
   const container = document.createElement('div');
   renderChildren(children, container);
@@ -42,12 +53,18 @@ function renderChildren(children, parent: HTMLElement) {
 
                 renderCustomElements(element.shadowRoot);
 
-                const templateShadowRoot = React.createElement('template', {
+                const templateProps = {
                   shadowrootmode: element.shadowRoot.mode ?? 'open',
                   dangerouslySetInnerHTML: {
                     __html: element.shadowRoot.innerHTML,
                   },
-                });
+                };
+
+                if (delFocusElements.includes(node.type)) {
+                  templateProps['shadowrootdelegatesfocus'] = 'true';
+                }
+
+                const templateShadowRoot = React.createElement('template', templateProps);
 
                 if (node.props.children) {
                   node.props.children.unshift(templateShadowRoot);
@@ -70,17 +87,22 @@ function renderChildren(children, parent: HTMLElement) {
 }
 
 const renderCustomElements = (shadowRoot: ShadowRoot) => {
-  const customElements = Array.from(shadowRoot.innerHTML.matchAll(/gcds-[\w-]+/g)).map(([e]) => e);
+  const customElements = Array.from(shadowRoot.innerHTML.matchAll(/<gcds-[\w-]+/g)).map(([e]) => e);
   for (const element of customElements) {
-    const elementShadowRoot = shadowRoot.querySelector(element)?.shadowRoot;
-
-    if (elementShadowRoot) {
-      const template = document.createElement('template');
-      template.setAttribute('shadowrootmode', 'open');
-      template.innerHTML = elementShadowRoot?.innerHTML;
-      renderCustomElements(elementShadowRoot);
-      shadowRoot.querySelector(element)?.appendChild(template);
+    const elementShadowRoot = shadowRoot.querySelectorAll(element.replace('<', ''));
+    for (const e of elementShadowRoot) {
+      if (e?.shadowRoot) {
+        const template = document.createElement('template');
+        template.setAttribute('shadowrootmode', 'open');
+        template.innerHTML = e?.innerHTML;
+        renderCustomElements(e.shadowRoot);
+        shadowRoot.querySelector(element)?.appendChild(template);
+      }
     }
+
+    // if (elementShadowRoot) {
+
+    // }
   }
 };
 
