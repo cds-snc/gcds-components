@@ -13,7 +13,7 @@ export default {
     buttonRole: {
       name: 'button-role',
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'danger', 'skip-to-content'],
+      options: ['primary', 'secondary', 'danger'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'primary' },
@@ -175,9 +175,6 @@ const TemplatePreview = () => `
 <gcds-button button-role="danger">
   Danger
 </gcds-button>
-<gcds-button button-role="skip-to-content">
-  Skip-to-content
-</gcds-button>
 
 <!-- React code -->
 <GcdsButton>
@@ -188,9 +185,6 @@ const TemplatePreview = () => `
 </GcdsButton>
 <GcdsButton buttonRole="danger">
   Danger
-</GcdsButton>
-<GcdsButton buttonRole="skip-to-content">
-  Skip-to-content
 </GcdsButton>
 `;
 
@@ -360,28 +354,6 @@ DangerSize.args = {
   btnOneText: 'Danger default',
   btnOneSize: 'regular',
   btnTwoText: 'Danger small',
-  btnTwoSize: 'small',
-};
-
-// ------ Button skip-to-content ------
-
-export const SkipToContentState = TemplateTwoButtons.bind({});
-SkipToContentState.args = {
-  buttonRole: 'skip-to-content',
-  btnOneText: 'Skip-to-content default',
-  btnOneSize: 'regular',
-  btnOneDisabled: false,
-  btnTwoText: 'Skip-to-content disabled',
-  btnTwoSize: 'regular',
-  btnTwoDisabled: true,
-};
-
-export const SkipToContentSize = TemplateTwoButtons.bind({});
-SkipToContentSize.args = {
-  buttonRole: 'skip-to-content',
-  btnOneText: 'Skip-to-content default',
-  btnOneSize: 'regular',
-  btnTwoText: 'Skip-to-content small',
   btnTwoSize: 'small',
 };
 
