@@ -66,10 +66,7 @@ export namespace Components {
         /**
           * Set the main style
          */
-        "buttonRole": | 'primary'
-    | 'secondary'
-    | 'danger'
-    | 'skip-to-content';
+        "buttonRole": 'primary' | 'secondary' | 'danger';
         /**
           * Custom callback function on click event
          */
@@ -1738,10 +1735,7 @@ declare namespace LocalJSX {
         /**
           * Set the main style
          */
-        "buttonRole"?: | 'primary'
-    | 'secondary'
-    | 'danger'
-    | 'skip-to-content';
+        "buttonRole"?: 'primary' | 'secondary' | 'danger';
         /**
           * Custom callback function on click event
          */
