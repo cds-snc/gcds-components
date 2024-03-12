@@ -99,8 +99,18 @@ const Template = args =>
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  <gcds-input input-id="form-input" label="Input label" hint="Hint / Example message." size="6"></gcds-input>
-  <gcds-select select-id="form-select" label="Select label" hint="Hint / Example message." default-value="Select option.">
+  <gcds-input
+    input-id="${args.fieldsetId}-input"
+    label="Input label"
+    hint="Hint / Example message."
+    size="6"
+  ></gcds-input>
+  <gcds-select
+    select-id="${args.fieldsetId}-select"
+    label="Select label"
+    hint="Hint / Example message."
+    default-value="Select option."
+  >
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
@@ -123,8 +133,18 @@ const Template = args =>
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  <GcdsInput inputId="form-input" label="Input label" hint="Hint / Example message." size="6"></GcdsInput>
-  <GcdsSelect selectId="form-select" label="Select label" hint="Hint / Example message." defaultValue="Select option.">
+  <GcdsInput
+    inputId="${args.fieldsetId}-input"
+    label="Input label"
+    hint="Hint / Example message."
+    size="6"
+  ></GcdsInput>
+  <GcdsSelect
+    selectId="${args.fieldsetId}-select"
+    label="Select label"
+    hint="Hint / Example message."
+    defaultValue="Select option."
+  >
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
@@ -151,14 +171,14 @@ const TemplateRequired = args =>
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <gcds-checkbox
-    checkbox-id="check1"
+    checkbox-id="${args.fieldsetId}-check1"
     label="Checkbox 1"
     name="check"
     value="1"
   >
   </gcds-checkbox>
   <gcds-checkbox
-    checkbox-id="check2"
+    checkbox-id="${args.fieldsetId}-check2"
     label="Checkbox 2"
     name="check"
     value="2"
@@ -178,14 +198,14 @@ const TemplateRequired = args =>
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <GcdsCheckbox
-    checkboxId="check1"
+    checkboxId="${args.fieldsetId}-check1"
     label="Checkbox 1"
     name="check"
     value="1"
   >
   </GcdsCheckbox>
   <GcdsCheckbox
-    checkboxId="check2"
+    checkboxId="${args.fieldsetId}-check2"
     label="Checkbox 2"
     name="check"
     value=""2
@@ -207,8 +227,18 @@ const TemplatePlayground = args =>
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  <gcds-input input-id="form-input" label="Input label" hint="Hint / Example message." size="6"></gcds-input>
-  <gcds-select select-id="form-select" label="Select label" hint="Hint / Example message." default-value="Select option.">
+  <gcds-input
+    input-id="${args.fieldsetId}-input"
+    label="Input label"
+    hint="Hint / Example message."
+    size="6"
+  ></gcds-input>
+  <gcds-select
+    select-id="${args.fieldsetId}-select"
+    label="Select label"
+    hint="Hint / Example message."
+    default-value="Select option."
+  >
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
@@ -223,7 +253,7 @@ const TemplatePlayground = args =>
 
 export const Default = Template.bind({});
 Default.args = {
-  fieldsetId: 'fieldset',
+  fieldsetId: 'field-default',
   legend: 'Legend',
   hint: 'Hint / Example message.',
   errorMessage: '',
@@ -235,7 +265,7 @@ Default.args = {
 
 export const Required = TemplateRequired.bind({});
 Required.args = {
-  fieldsetId: 'fieldset',
+  fieldsetId: 'field-required',
   legend: 'Legend',
   hint: 'Hint / Example message.',
   errorMessage: '',
@@ -247,7 +277,7 @@ Required.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  fieldsetId: 'fieldset',
+  fieldsetId: 'field-disabled',
   legend: 'Legend',
   hint: 'Hint / Example message.',
   errorMessage: '',
@@ -259,7 +289,7 @@ Disabled.args = {
 
 export const Error = Template.bind({});
 Error.args = {
-  fieldsetId: 'fieldset',
+  fieldsetId: 'field-error',
   legend: 'Legend',
   hint: 'Hint / Example message.',
   errorMessage: 'This is an error message',
@@ -269,9 +299,21 @@ Error.args = {
   lang: 'en',
 };
 
+export const Props = Template.bind({});
+Props.args = {
+  fieldsetId: 'field-default',
+  legend: 'Legend',
+  hint: 'Hint / Example message.',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  fieldsetId: 'fieldset',
+  fieldsetId: 'field-playground',
   legend: 'Legend',
   hint: 'Hint / Example message.',
   errorMessage: '',

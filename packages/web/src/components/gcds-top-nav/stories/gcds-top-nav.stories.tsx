@@ -123,14 +123,6 @@ Default.args = {
   lang: 'en',
 };
 
-export const Props = Template.bind({});
-Props.args = {
-  label: 'Top navigation',
-  alignment: 'right',
-  home: 'Home nav link',
-  lang: 'en',
-};
-
 export const Home = Template.bind({});
 Home.args = {
   label: 'Top navigation',
@@ -160,6 +152,14 @@ Left.args = {
   label: 'Top navigation',
   alignment: 'left',
   home: '',
+  lang: 'en',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  label: 'Top navigation',
+  alignment: 'right',
+  home: 'Home nav link',
   lang: 'en',
 };
 

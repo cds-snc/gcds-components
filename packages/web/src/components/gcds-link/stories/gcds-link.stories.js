@@ -168,22 +168,6 @@ Default.args = {
   default: 'a GCDS Link component',
 };
 
-// ------ Link events & props ------
-
-export const Props = Template.bind({});
-Props.args = {
-  display: 'inline',
-  href: '#',
-  variant: 'default',
-  rel: '',
-  target: '_self',
-  size: 'inherit',
-  external: false,
-  download: '',
-  type: '',
-  default: 'a GCDS Link component',
-};
-
 // ------ Link with icon ------
 
 export const External = Template.bind({});
@@ -288,6 +272,22 @@ export const VariantLight = TemplateVariant.bind({});
 VariantLight.args = {
   default: 'This is a link using the light link variant.',
   variant: 'light',
+};
+
+// ------ Link events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
+  display: 'inline',
+  href: '#',
+  variant: 'default',
+  rel: '',
+  target: '_self',
+  size: 'inherit',
+  external: false,
+  download: '',
+  type: '',
+  default: 'a GCDS Link component',
 };
 
 // ------ Link playground ------

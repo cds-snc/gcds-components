@@ -185,9 +185,9 @@ const TemplatePlayground = args =>
 
 export const Default = Template.bind({});
 Default.args = {
-  radioId: 'radio',
+  radioId: 'radio-default',
   label: 'Label',
-  name: 'radioDefault',
+  name: 'radio',
   hint: 'Description or example to make the option clearer.',
   required: false,
   disabled: false,
@@ -198,7 +198,7 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  radioId: 'radioCDisabled',
+  radioId: 'radio-disabled',
   label: 'Label',
   name: 'radio',
   hint: 'Description or example to make the option clearer.',
@@ -211,7 +211,7 @@ Disabled.args = {
 
 export const Checked = Template.bind({});
 Checked.args = {
-  radioId: 'radioChecked',
+  radioId: 'radio-checked',
   label: 'Label',
   name: 'radio',
   hint: 'Description or example to make the option clearer.',
@@ -224,9 +224,22 @@ Checked.args = {
 
 export const Error = TemplateError.bind({});
 Error.args = {
-  radioId: 'radio',
+  radioId: 'radio-error',
   label: 'Label',
-  name: 'radioDefault',
+  name: 'radio-error',
+  hint: 'Description or example to make the option clearer.',
+  required: false,
+  disabled: false,
+  value: '',
+  checked: false,
+  lang: 'en',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  radioId: 'radio-props',
+  label: 'Label',
+  name: 'radio',
   hint: 'Description or example to make the option clearer.',
   required: false,
   disabled: false,
@@ -237,7 +250,7 @@ Error.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  radioId: 'radio',
+  radioId: 'radio-playground',
   label: 'Label',
   name: 'radio',
   hint: 'Description or example to make the option clearer.',

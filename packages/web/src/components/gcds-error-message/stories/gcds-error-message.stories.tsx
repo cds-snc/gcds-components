@@ -56,7 +56,7 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  messageId: 'message-id',
+  messageId: 'message-default',
   message: 'Error message or validation message.',
 };
 
@@ -64,7 +64,7 @@ Default.args = {
 
 export const Props = Template.bind({});
 Props.args = {
-  messageId: 'message-id',
+  messageId: 'message-props',
   message: 'Error message or validation message.',
 };
 
@@ -72,6 +72,6 @@ Props.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  messageId: '',
+  messageId: 'message-playground',
   message: 'Error message or validation message.',
 };

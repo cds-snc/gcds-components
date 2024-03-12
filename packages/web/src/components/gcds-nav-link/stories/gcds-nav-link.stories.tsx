@@ -96,13 +96,6 @@ Default.args = {
   default: 'Nav link',
 };
 
-export const Props = Template.bind({});
-Props.args = {
-  href: '#link',
-  current: false,
-  default: 'Nav link',
-};
-
 export const Current = Template.bind({});
 Current.args = {
   href: '#link',
@@ -121,6 +114,13 @@ export const CurrentTopNav = TemplateTopNav.bind({});
 CurrentTopNav.args = {
   href: '#link',
   current: true,
+  default: 'Nav link',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  href: '#link',
+  current: false,
   default: 'Nav link',
 };
 

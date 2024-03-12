@@ -6,10 +6,10 @@ import * as Checkbox from './gcds-checkbox.stories';
 {!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
-  of={Checkbox.Default}
+  of={Checkbox.Props}
   story={{ inline: true }}
   sourceState="shown"
   type="dynamic"
 />
 
-<Controls of={Checkbox.Default} sort="requiredFirst" />
+<Controls of={Checkbox.Props} sort="requiredFirst" />

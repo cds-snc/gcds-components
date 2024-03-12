@@ -6,10 +6,10 @@ import * as Header from './gcds-header.stories';
 {!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
-  of={Header.Default}
+  of={Header.Props}
   story={{ inline: true }}
   sourceState="shown"
   type="dynamic"
 />
 
-<Controls of={Header.Default} sort="requiredFirst" />
+<Controls of={Header.Props} sort="requiredFirst" />
