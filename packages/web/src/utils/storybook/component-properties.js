@@ -49,7 +49,7 @@ export const formProps = {
 
 export const langProp = {
   lang: {
-    control: 'radio',
+    control: { type: 'select' },
     options: ['en', 'fr'],
     table: {
       type: { summary: 'string' },

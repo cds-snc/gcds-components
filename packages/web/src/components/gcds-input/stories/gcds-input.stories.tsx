@@ -193,7 +193,7 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  inputId: 'example-default',
+  inputId: 'input-default',
   type: 'text',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -212,7 +212,7 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  inputId: 'example-disabled',
+  inputId: 'input-disabled',
   type: 'text',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -224,7 +224,7 @@ Disabled.args = {
 
 export const Error = Template.bind({});
 Error.args = {
-  inputId: 'example-error',
+  inputId: 'input-error',
   type: 'text',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -237,7 +237,7 @@ Error.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-  inputId: 'example-required',
+  inputId: 'input-required',
   type: 'text',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -251,7 +251,7 @@ Required.args = {
 
 export const Email = Template.bind({});
 Email.args = {
-  inputId: 'example-email',
+  inputId: 'input-email',
   type: 'email',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -263,7 +263,7 @@ Email.args = {
 
 export const Number = Template.bind({});
 Number.args = {
-  inputId: 'example-number',
+  inputId: 'input-number',
   type: 'number',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -275,7 +275,7 @@ Number.args = {
 
 export const Password = Template.bind({});
 Password.args = {
-  inputId: 'example-password',
+  inputId: 'input-password',
   type: 'password',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -287,7 +287,7 @@ Password.args = {
 
 export const Search = Template.bind({});
 Search.args = {
-  inputId: 'example-search',
+  inputId: 'input-search',
   type: 'search',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -299,7 +299,7 @@ Search.args = {
 
 export const Text = Template.bind({});
 Text.args = {
-  inputId: 'example-text',
+  inputId: 'input-text',
   type: 'text',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -311,7 +311,7 @@ Text.args = {
 
 export const Url = Template.bind({});
 Url.args = {
-  inputId: 'example-url',
+  inputId: 'input-url',
   type: 'url',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -325,7 +325,7 @@ Url.args = {
 
 export const Props = Template.bind({});
 Props.args = {
-  inputId: 'example-default',
+  inputId: 'input-props',
   type: 'text',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -344,7 +344,7 @@ Props.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  inputId: 'input',
+  inputId: 'input-playground',
   type: 'text',
   label: 'Input label',
   hint: '',

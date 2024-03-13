@@ -6,10 +6,10 @@ import * as Card from './gcds-card.stories';
 {!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
-  of={Card.Default}
+  of={Card.Props}
   story={{ inline: true }}
   sourceState="shown"
   type="dynamic"
 />
 
-<Controls of={Card.Default} sort="requiredFirst" />
+<Controls of={Card.Props} sort="requiredFirst" />

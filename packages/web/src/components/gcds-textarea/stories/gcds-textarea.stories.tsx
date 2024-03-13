@@ -184,7 +184,7 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-default',
   label: 'Label',
   hint: 'Hint / Example message.',
   validateOn: 'blur',
@@ -195,7 +195,7 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-disabled',
   label: 'Label',
   hint: 'Hint / Example message.',
   disabled: true,
@@ -205,7 +205,7 @@ Disabled.args = {
 
 export const Error = Template.bind({});
 Error.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-error',
   label: 'Label',
   hint: 'Hint / Example message.',
   errorMessage: 'Error message or validation message.',
@@ -216,7 +216,7 @@ Error.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-required',
   label: 'Label',
   hint: 'Hint / Example message.',
   required: true,
@@ -228,7 +228,7 @@ Required.args = {
 
 export const Character = Template.bind({});
 Character.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-character',
   label: 'Label',
   hint: 'Hint / Example message.',
   characterCount: 200,
@@ -240,7 +240,7 @@ Character.args = {
 
 export const Rows = Template.bind({});
 Rows.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-rows',
   label: 'Label',
   hint: 'Hint / Example message.',
   rows: 10,
@@ -252,7 +252,7 @@ Rows.args = {
 
 export const Props = Template.bind({});
 Props.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-props',
   label: 'Label',
   hint: 'Hint / Example message.',
   characterCount: '',
@@ -270,7 +270,7 @@ Props.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-playground',
   label: 'Label',
   hint: 'Hint / Example message.',
   characterCount: '',

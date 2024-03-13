@@ -184,7 +184,7 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  selectId: 'example-default',
+  selectId: 'select-default',
   label: 'Label',
   hint: 'Hint / Example message.',
   value: '',
@@ -200,7 +200,7 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  selectId: 'example-disabled',
+  selectId: 'select-disabled',
   label: 'Label',
   hint: 'Hint / Example message.',
   defaultValue: 'Select option.',
@@ -211,7 +211,7 @@ Disabled.args = {
 
 export const Error = Template.bind({});
 Error.args = {
-  selectId: 'example-error',
+  selectId: 'select-error',
   label: 'Label',
   hint: 'Hint / Example message.',
   defaultValue: 'Select option.',
@@ -223,7 +223,7 @@ Error.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-  selectId: 'example-required',
+  selectId: 'select-required',
   label: 'Label',
   hint: 'Hint / Example message.',
   defaultValue: 'Select option.',
@@ -236,7 +236,7 @@ Required.args = {
 
 export const WithoutDefaultValue = Template.bind({});
 WithoutDefaultValue.args = {
-  selectId: 'example-default',
+  selectId: 'select-default-value',
   label: 'Label',
   hint: 'Hint / Example message.',
   lang: 'en',
@@ -247,7 +247,7 @@ WithoutDefaultValue.args = {
 
 export const Props = Template.bind({});
 Props.args = {
-  selectId: 'example-default',
+  selectId: 'select-props',
   label: 'Label',
   hint: 'Hint / Example message.',
   value: '',
@@ -263,7 +263,7 @@ Props.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  selectId: 'example-playground',
+  selectId: 'select-playground',
   label: 'Label',
   hint: 'Hint / Example message.',
   value: '',
