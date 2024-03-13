@@ -485,7 +485,15 @@ export namespace Components {
         /**
           * Set tag for grid container
          */
-        "tag"?: string;
+        "tag"?: | 'article'
+    | 'aside'
+    | 'div'
+    | 'dl'
+    | 'main'
+    | 'nav'
+    | 'ol'
+    | 'section'
+    | 'ul';
     }
     interface GcdsGridCol {
         /**
@@ -2293,7 +2301,15 @@ declare namespace LocalJSX {
         /**
           * Set tag for grid container
          */
-        "tag"?: string;
+        "tag"?: | 'article'
+    | 'aside'
+    | 'div'
+    | 'dl'
+    | 'main'
+    | 'nav'
+    | 'ol'
+    | 'section'
+    | 'ul';
     }
     interface GcdsGridCol {
         /**
