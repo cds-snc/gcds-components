@@ -55,4 +55,22 @@ describe('gcds-grid', () => {
       </gcds-grid>
     `);
   });
+
+  it('renders - div when passed an invalid tag value', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsGrid],
+      html: `
+        <gcds-grid columns="1fr" tag="p" />
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-grid columns="1fr" tag="p">
+        <mock:shadow-root>
+          <div class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr;">
+            <slot></slot>
+          </div>
+        </mock:shadow-root>
+      </gcds-grid>
+    `);
+  });
 });
