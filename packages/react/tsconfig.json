@@ -13,18 +13,20 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "removeComments": false,
     "skipLibCheck": true,
     "jsx": "react",
     "target": "es2015",
+    "declarationDir": "./dist/types"
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
   ],
   "exclude": [
-    "**/__tests__/**"
+    "**/__tests__/**",
+    "node_modules",
   ],
   "compileOnSave": false,
   "buildOnSave": false
