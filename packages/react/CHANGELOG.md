@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.20.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.19.1...gcds-components-react-v0.20.0) (2024-03-14)
+
+
+### Bug Fixes
+
+* invalid path for types ([#471](https://github.com/cds-snc/gcds-components/issues/471)) ([f859d43](https://github.com/cds-snc/gcds-components/commit/f859d438e9a79184d83157b92a97f855376777ac))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.19.1 to ^0.20.0
+
 ## [0.19.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.19.0...gcds-components-react-v0.19.1) (2024-02-22)
 
 
