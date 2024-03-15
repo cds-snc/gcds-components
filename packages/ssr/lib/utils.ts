@@ -1,6 +1,6 @@
 // Original code from https://github.com/luwes/wesc
 
-import { RefObject, useEffect } from 'react';
+import React, { RefObject, useEffect } from 'react';
 
 const REACT_PROP_TO_ATTRIBUTE_NAME_MAP = {
   className: 'class',
@@ -183,6 +183,28 @@ export const gcdsAttributeGenerator = (tagName: string, props: object) => {
     }
     case 'gcds-footer': {
       props['role'] = props['role'] ? props['role'] : 'contentInfo';
+
+      return props;
+    }
+    case 'gcds-grid-col': {
+      let tablet = 6;
+      let desktop = 12;
+
+      if (props['tablet'] && props['tablet'] <= 6 && props['tablet'] > 0) {
+        tablet = props['tablet'];
+      }
+      if (props['desktop'] && props['desktop'] <= 12 && props['desktop'] > 0) {
+        desktop = props['desktop'];
+      } else if (props['tablet']) {
+        desktop = tablet * 2;
+      }
+
+      props['style'] = {
+        '--gcds-grid-col-tablet': tablet as React.CSSProperties,
+        '--gcds-grid-col-desktop': desktop as React.CSSProperties,
+      };
+
+      props['style'] = { ...props['style'] };
 
       return props;
     }
