@@ -9,6 +9,7 @@ declare global {
   }
 }
 
+// TODO: find some way to automate this
 const delFocusElements = [
   'gcds-button',
   'gcds-checkbox',

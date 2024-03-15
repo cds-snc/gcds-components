@@ -1,13 +1,6 @@
 // Original code from https://github.com/luwes/wesc
 
-import React, { FC, Fragment, PropsWithChildren, ReactNode, useEffect, useState } from 'react';
-
-export const WithRSCFallback: FC<PropsWithChildren<{ rsc: ReactNode }>> = ({ rsc, children }) => {
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => setIsClient(true), []);
-
-  return React.createElement(Fragment, null, isClient ? children : rsc);
-};
+import { PropsWithChildren } from 'react';
 
 // Must go in a client component
 // > Otherwise will error:
