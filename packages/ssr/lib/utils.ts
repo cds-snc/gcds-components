@@ -230,6 +230,12 @@ export const gcdsAttributeGenerator = (tagName: string, props: object) => {
 
       return props;
     }
+    case 'gcds-pagination': {
+      props['role'] = props['role'] ? props['role'] : 'navigation';
+      props['aria-label'] = props['label'];
+
+      return props;
+    }
     case 'gcds-text': {
       const defaultClass = props['display'] ? `d-${props['display']}` : '';
       if (defaultClass != '') {
