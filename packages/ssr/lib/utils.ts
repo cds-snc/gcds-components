@@ -204,8 +204,6 @@ export const gcdsAttributeGenerator = (tagName: string, props: object) => {
         '--gcds-grid-col-desktop': desktop as React.CSSProperties,
       };
 
-      props['style'] = { ...props['style'] };
-
       return props;
     }
     case 'gcds-header': {
@@ -243,6 +241,11 @@ export const gcdsAttributeGenerator = (tagName: string, props: object) => {
       } else {
         props['class'] = props['class'] ? `${props['class']}${defaultClass}` : defaultClass;
       }
+
+      return props;
+    }
+    case 'gcds-signature': {
+      props['variant'] = props['variant'] ? props['variant'] : 'colour';
 
       return props;
     }
