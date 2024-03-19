@@ -59,14 +59,16 @@ const Template = args =>
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
   }
-  <gcds-nav-link href="#">Nav link</gcds-nav-link>
-  <gcds-nav-group  open-trigger="Nav group label" menu-label="Nav group label">
-    <gcds-nav-link href="#">Nav link</gcds-nav-link>
-    <gcds-nav-link href="#">Nav link</gcds-nav-link>
-    <gcds-nav-link href="#">Nav link</gcds-nav-link>
+  <gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
+
+  <gcds-nav-group  open-trigger="Features" menu-label="Features">
+    <gcds-nav-link href="#" current>Create reusable templates</gcds-nav-link>
+    <gcds-nav-link href="#">Personalize messages</gcds-nav-link>
+    <gcds-nav-link href="#">Schedule messages</gcds-nav-link>
+    <gcds-nav-link href="#">Send messages automatically</gcds-nav-link>
   </gcds-nav-group>
-  <gcds-nav-link href="#">Nav link</gcds-nav-link>
-  <gcds-nav-link href="#">Nav link</gcds-nav-link>
+
+  <gcds-nav-link href="#">Contact us</gcds-nav-link>
 </gcds-top-nav>
 
 <!-- React code -->
@@ -80,14 +82,16 @@ const Template = args =>
       ? `<GcdsNavLink href="#home" slot="home">${args.home}</GcdsNavLink> `
       : null
   }
-  <GcdsNavLink href="#">Nav link</GcdsNavLink>
-  <GcdsNavGroup  openTrigger="Nav group label" menuLabel="Nav group label">
-    <GcdsNavLink href="#">Nav link</GcdsNavLink>
-    <GcdsNavLink href="#">Nav link</GcdsNavLink>
-    <GcdsNavLink href="#">Nav link</GcdsNavLink>
+  <GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
+
+  <GcdsNavGroup  openTrigger="Features" menuLabel="Features">
+    <GcdsNavLink href="#" current>Create reusable templates</GcdsNavLink>
+    <GcdsNavLink href="#">Personalize messages</GcdsNavLink>
+    <GcdsNavLink href="#">Schedule messages</GcdsNavLink>
+    <GcdsNavLink href="#">Send messages automatically</GcdsNavLink>
   </GcdsNavGroup>
-  <GcdsNavLink href="#">Nav link</GcdsNavLink>
-  <GcdsNavLink href="#">Nav link</GcdsNavLink>
+
+  <GcdsNavLink href="#">Contact us</GcdsNavLink>
 </GcdsTopNav>
 `.replace(/\s\snull\n/g, '');
 
@@ -119,7 +123,7 @@ export const Default = Template.bind({});
 Default.args = {
   label: 'Top navigation',
   alignment: 'right',
-  home: 'Home nav link',
+  home: 'GC Notify',
   lang: 'en',
 };
 
@@ -127,7 +131,7 @@ export const Home = Template.bind({});
 Home.args = {
   label: 'Top navigation',
   alignment: 'right',
-  home: 'Home nav link',
+  home: 'GC Notify',
   lang: 'en',
 };
 
@@ -159,7 +163,7 @@ export const Props = Template.bind({});
 Props.args = {
   label: 'Top navigation',
   alignment: 'right',
-  home: 'Home nav link',
+  home: 'GC Notify',
   lang: 'en',
 };
 
@@ -167,6 +171,6 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   label: 'Top navigation',
   alignment: 'right',
-  home: 'Home nav link',
+  home: 'GC Notify',
   lang: 'en',
 };
