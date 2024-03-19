@@ -323,6 +323,15 @@
     font-size: var(--gcds-font-sizes-text);
   }
 
+  /* ----- FRAME ----- */
+  #storybook-docs > .sbdocs-wrapper {
+    padding: 0;
+  }
+
+  #storybook-docs > .sbdocs-wrapper > .sbdocs-content {
+    max-width: var(--gcds-container-size-xl);
+  }
+
   /* ----- OVERVIEW PAGE ----- */
   .intro-boxes {
     background-color: var(--gcds-color-grayscale-50);
@@ -669,20 +678,23 @@
   }
 
   .css-8ycahn * .token.comment {
-      color: white !important;
+    color: white !important;
   }</style><script>const url = new URLSearchParams(window.location.search);
 
   if (url.get('demo') && url.get('lang')) {
-    var tableTimer = setInterval(function() {
+    var tableTimer = setInterval(function () {
       if (document.querySelector('.docblock-argstable')) {
         clearInterval(tableTimer);
-	      formatTable(document.querySelector('.docblock-argstable'), url.get('lang'));
+        formatTable(
+          document.querySelector('.docblock-argstable'),
+          url.get('lang'),
+        );
       }
     }, 200);
 
     // Change language on hide/copy code buttons
     if (url.get('lang') === 'fr') {
-      var buttonTimer = setInterval(function() {
+      var buttonTimer = setInterval(function () {
         if (document.querySelector('.docblock-code-toggle')) {
           clearInterval(buttonTimer);
           formatFrenchButtons(document.querySelector('.docblock-code-toggle'));
@@ -693,37 +705,42 @@
     }
   }
 
-  let observer = new MutationObserver((mutation) => {
+  let observer = new MutationObserver(mutation => {
     if (mutation[0].target.parentElement.innerText === 'Copied') {
-      mutation[0].target.parentElement.innerText = 'Copié'
+      mutation[0].target.parentElement.innerText = 'Copié';
     } else if (mutation[0].target.parentNode.innerText === 'Copy') {
-      mutation[0].target.parentElement.innerText = 'Copie'
+      mutation[0].target.parentElement.innerText = 'Copie';
     }
   });
 
   function copyButtonTimer() {
-    var buttonTimer = setInterval(function() {
+    var buttonTimer = setInterval(function () {
       if (document.querySelector('.css-otxova')) {
         document.querySelector('.css-otxova').innerText = 'Copie';
         clearInterval(buttonTimer);
-        observer.observe(document.querySelector('.css-111a2cx'), { characterData: true, attributes: false, childList: false, subtree: true });
+        observer.observe(document.querySelector('.css-111a2cx'), {
+          characterData: true,
+          attributes: false,
+          childList: false,
+          subtree: true,
+        });
       }
     }, 200);
   }
 
   function formatFrenchButtons(button) {
     setTimeout(() => {
-      button.innerText = "Masquer le code";
+      button.innerText = 'Masquer le code';
     }, 10);
     button.addEventListener('click', () => {
       if (!button.classList.contains('docblock-code-toggle--expanded')) {
         setTimeout(() => {
-          button.innerText = "Masquer le code";
+          button.innerText = 'Masquer le code';
         }, 10);
         copyButtonTimer();
       } else {
         setTimeout(() => {
-          button.innerText = "Voir le code";
+          button.innerText = 'Voir le code';
         }, 10);
       }
     });
@@ -772,10 +789,14 @@
       // Expand collapse rows
       if (tr.hasAttribute('class')) {
         tr.removeAttribute('title');
-        const cellText = tr.children[0].children[1].innerText.toLowerCase().split(' | ');
-        tr.children[1].innerText = lang === 'en' ? 
-          cellText[0].charAt(0).toUpperCase() + cellText[0].slice(1) : 
-          cellText[1].replace(' items', '').charAt(0).toUpperCase() + cellText[1].slice(1);
+        const cellText = tr.children[0].children[1].innerText
+          .toLowerCase()
+          .split(' | ');
+        tr.children[1].innerText =
+          lang === 'en'
+            ? cellText[0].charAt(0).toUpperCase() + cellText[0].slice(1)
+            : cellText[1].replace(' items', '').charAt(0).toUpperCase() +
+              cellText[1].slice(1);
         tr.setAttribute('class', '');
         tr.children[1].setAttribute('colspan', '4');
         tr.children[1].setAttribute('class', 'sub-table-heading');
@@ -783,14 +804,24 @@
       }
 
       // Loop through table cells
-      const propertyId = `${tr.children[0].innerText.replace('*', '')}-property`;
+      const propertyId = `${tr.children[0].innerText.replace(
+        '*',
+        '',
+      )}-property`;
       for (let x = 0; x < tr.children.length; x++) {
         // Format first cell
         if (x == 0) {
           tr.children[x].setAttribute('id', propertyId);
-          if (tr.children[x].querySelector('[title=Required]') && lang == 'fr') {
-            tr.children[x].querySelector('[title=Required]').setAttribute('lang', 'fr');
-            tr.children[x].querySelector('[title=Required]').setAttribute('title', 'Obligatoire');
+          if (
+            tr.children[x].querySelector('[title=Required]') &&
+            lang == 'fr'
+          ) {
+            tr.children[x]
+              .querySelector('[title=Required]')
+              .setAttribute('lang', 'fr');
+            tr.children[x]
+              .querySelector('[title=Required]')
+              .setAttribute('title', 'Obligatoire');
           }
         }
         // Format third cell
@@ -812,10 +843,13 @@
         // Format last cell
         if (x === 3) {
           if (tr.children[x].querySelector('select')) {
-            tr.children[x].querySelector('select').setAttribute('aria-labelledby', propertyId);
+            tr.children[x]
+              .querySelector('select')
+              .setAttribute('aria-labelledby', propertyId);
 
             if (lang === 'fr') {
-              const firstSelectOption = tr.children[x].querySelector('select').children[0];
+              const firstSelectOption =
+                tr.children[x].querySelector('select').children[0];
               firstSelectOption.setAttribute('lang', 'fr');
               firstSelectOption.innerText = 'Choisir une option';
             }
@@ -860,7 +894,7 @@
             window['DOCS_OPTIONS'] = {"defaultName":"Stories","autodocs":false};</script><script type="module">import './sb-preview/runtime.js';
 
       
-      import './runtime~main.a16939b8.iframe.bundle.js';
+      import './runtime~main.d1cbeb74.iframe.bundle.js';
       
       import './9020.2f524b4c.iframe.bundle.js';
       
