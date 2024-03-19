@@ -116,12 +116,11 @@ export class GcdsNavLink {
     }
 
     return (
-      <Host role="presentation" class={`gcds-nav-link--${this.navStyle}`}>
+      <Host role="listitem" class={`gcds-nav-link--${this.navStyle}`}>
         <a
           class="gcds-nav-link"
           href={href}
           {...linkAttrs}
-          role="menuitem"
           onBlur={e => this.onBlur(e)}
           onFocus={e => this.onFocus(e)}
           onClick={e => this.onClick(e)}
