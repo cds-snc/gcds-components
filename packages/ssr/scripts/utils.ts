@@ -62,8 +62,8 @@ export const toModuleFile = (
   customEvents: string[] = [],
 ) => `import React, { useImperativeHandle, useRef } from 'react';
 import { ${defineCustomElementFunction} } from '${importPath}';
-import { omitEventCallbacks, useEventListeners } from './lib/utils.js';
-import { GcdsWrapper } from './lib/client'; 
+import { omitEventCallbacks, useEventListeners, gcdsAttributeGenerator } from './lib/utils.js';
+import { GcdsWrapper } from './lib/client';
 
 if (!customElements.get('${elementName}')) {
   ${defineCustomElementFunction}();
@@ -72,15 +72,17 @@ if (!customElements.get('${elementName}')) {
 const customEvents = ${customEvents.length > 0 ? `['${customEvents.join(`', '`)}']` : '[]'};
 const ${toPascalCase(elementName)}WebComponent = React.forwardRef(({ children = [], ...props }, ref) => {
   const nonEventProps = omitEventCallbacks(customEvents, props);
-  const nativeProps = {};
+  let nativeProps = {};
+
+  if (nonEventProps.isAlreadyWrapped) {
+    delete nonEventProps.isAlreadyWrapped;
+  }
 
   for (const p in nonEventProps) {
     nativeProps[p.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()] = nonEventProps[p];
   }
 
-  if (nativeProps.isAlreadyWrapped) {
-    delete nativeProps.isAlreadyWrapped;
-  }
+  nativeProps = gcdsAttributeGenerator("${elementName}", nativeProps);
 
   if (typeof window !== 'undefined') {
     const innerRef = useRef();
@@ -92,7 +94,7 @@ const ${toPascalCase(elementName)}WebComponent = React.forwardRef(({ children = 
   return React.createElement('${elementName}', { ...nativeProps, ref }, children);
 });
 
-function ${toPascalCase(elementName)}(props) {
+const ${toPascalCase(elementName)} = (props) => {
   if (!props['noSSR'] && typeof window == 'undefined') {
     let cloned = [];
 

@@ -1,6 +1,6 @@
 // Original code from https://github.com/luwes/wesc
 
-import { RefObject, useEffect } from 'react';
+import React, { RefObject, useEffect } from 'react';
 
 const REACT_PROP_TO_ATTRIBUTE_NAME_MAP = {
   className: 'class',
@@ -145,3 +145,117 @@ export const toNativeProps = (props = {}) =>
 
     return transformedProps;
   }, {});
+
+export const gcdsAttributeGenerator = (tagName: string, props: object) => {
+  if (props['class-name']) {
+    props['class'] = props['class-name'];
+    delete props['class-name'];
+  }
+
+  // Server side was always flagging this as wrong so forcing attr="" format
+  for (const p in props) {
+    if (typeof props[p] == 'boolean') {
+      if (p) {
+        props[p] = '';
+      }
+    }
+  }
+
+  switch (tagName) {
+    case 'gcds-breadcrumbs-item': {
+      props['role'] = props['role'] ? props['role'] : 'listitem';
+      props['class'] = props['class'] ? `${props['class']} gcds-breadcrumbs-item` : 'gcds-breadcrumbs-item';
+
+      return props;
+    }
+    case 'gcds-card': {
+      props['type'] = props['type'] ? props['type'] : 'link';
+
+      return props;
+    }
+    case 'gcds-error-message': {
+      props['class'] = props['class'] ? `${props['class']} gcds-error-message-wrapper` : 'gcds-error-message-wrapper';
+      props['id'] = props['id']
+        ? `${props['id']} error-message-${props['message-id']}`
+        : `error-message-${props['message-id']}`;
+
+      return props;
+    }
+    case 'gcds-footer': {
+      props['role'] = props['role'] ? props['role'] : 'contentInfo';
+
+      return props;
+    }
+    case 'gcds-grid-col': {
+      let tablet = 6;
+      let desktop = 12;
+
+      if (props['tablet'] && props['tablet'] <= 6 && props['tablet'] > 0) {
+        tablet = props['tablet'];
+      }
+      if (props['desktop'] && props['desktop'] <= 12 && props['desktop'] > 0) {
+        desktop = props['desktop'];
+      } else if (props['tablet']) {
+        desktop = tablet * 2;
+      }
+
+      const style = {
+        '--gcds-grid-col-tablet': tablet as React.CSSProperties,
+        '--gcds-grid-col-desktop': desktop as React.CSSProperties,
+      };
+
+      props['style'] = {
+        ...props['style'],
+        ...style,
+      };
+
+      return props;
+    }
+    case 'gcds-header': {
+      props['role'] = props['role'] ? props['role'] : 'banner';
+
+      return props;
+    }
+    case 'gcds-nav-link': {
+      // props['class'] = props['class'] ? `${props['class']} gcds-nav-link--sidenav` : 'gcds-nav-link--sidenav';
+      // props['role'] = props['role'] ? props['role'] : 'presentation';
+
+      return props;
+    }
+    case 'gcds-nav-group': {
+      const openClass = props['open'] ? 'gcds-nav-group-expanded' : '';
+      if (openClass != '') {
+        props['class'] = props['class'] ? `${props['class']} ${openClass}` : openClass;
+      } else {
+        props['class'] = props['class'] ? `${props['class']}${openClass}` : openClass;
+      }
+      props['role'] = props['role'] ? props['role'] : 'presentation';
+
+      return props;
+    }
+    case 'gcds-pagination': {
+      props['role'] = props['role'] ? props['role'] : 'navigation';
+      props['aria-label'] = props['label'];
+
+      return props;
+    }
+    case 'gcds-text': {
+      const defaultClass = props['display'] ? `d-${props['display']}` : '';
+      if (defaultClass != '') {
+        props['class'] = props['class'] ? `${props['class']} ${defaultClass}` : defaultClass;
+      } else {
+        props['class'] = props['class'] ? `${props['class']}${defaultClass}` : defaultClass;
+      }
+
+      return props;
+    }
+    case 'gcds-signature': {
+      props['variant'] = props['variant'] ? props['variant'] : 'colour';
+
+      return props;
+    }
+    default: {
+      return props;
+    }
+  }
+};
