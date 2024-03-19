@@ -199,9 +199,14 @@ export const gcdsAttributeGenerator = (tagName: string, props: object) => {
         desktop = tablet * 2;
       }
 
-      props['style'] = {
+      const style = {
         '--gcds-grid-col-tablet': tablet as React.CSSProperties,
         '--gcds-grid-col-desktop': desktop as React.CSSProperties,
+      };
+
+      props['style'] = {
+        ...props['style'],
+        ...style,
       };
 
       return props;
