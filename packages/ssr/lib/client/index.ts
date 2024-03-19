@@ -1,11 +1,13 @@
 // Original code from https://github.com/luwes/wesc
 
+import { PropsWithChildren } from 'react';
+
 // Must go in a client component
 // > Otherwise will error:
 // > Attempted to call the default export of ... from the server but it's on the client.
 // > It's not possible to invoke a client function from the server, it can only be rendered
 // > as a Component or passed to props of a Client Component.
-export function GcdsWrapper({ children }) {
+export function GcdsWrapper({ children }: PropsWithChildren) {
   if (typeof window === 'undefined') {
     // eslint-disable-next-line import/no-unresolved
     return import('./render.js').then(({ render }) => render(resolve(children)));
@@ -14,8 +16,9 @@ export function GcdsWrapper({ children }) {
   return children;
 }
 
-function resolve(children, result = []) {
-  const nodes = [].concat(children ?? []);
+/* eslint-disable */
+function resolve(children: any, result: any[] = []) {
+  const nodes: any[] = [].concat(children ?? []);
 
   for (const node of nodes) {
     if (typeof node === 'string') {
@@ -36,21 +39,10 @@ function resolve(children, result = []) {
         resolve(vnode, result);
       } else {
         // Function component
-        const props = { ...node.props };
-        // Apply extra isAlreadyWrapped prop to GCDS components
-        if (node.type.toString().includes('Gcds')) {
-          props.isAlreadyWrapped = true;
-        }
-        resolve(node.type(props), result);
+        resolve(node.type(node.props), result);
       }
     } else if (typeof node.type === 'object' && typeof node.type.render === 'function') {
-      const props = { ...node.props };
-      const renderedComp = node.type.render(node.props);
-      // Apply extra isAlreadyWrapped attribute to GCDS components
-      if (renderedComp.type.includes('gcds-')) {
-        props.isAlreadyWrapped = true;
-      }
-      resolve(node.type.render(props), result);
+      resolve(node.type.render(node.props), result);
     }
   }
 

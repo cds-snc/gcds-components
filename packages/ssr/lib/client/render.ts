@@ -9,6 +9,18 @@ declare global {
   }
 }
 
+// TODO: find some way to automate this
+const delFocusElements = [
+  'gcds-button',
+  'gcds-checkbox',
+  'gcds-fieldset',
+  'gcds-file-uploader',
+  'gcds-input',
+  'gcds-radio-group',
+  'gcds-select',
+  'gcds-textarea',
+];
+
 export async function render(children) {
   const container = document.createElement('div');
   renderChildren(children, container);
@@ -32,36 +44,44 @@ function renderChildren(children, parent: HTMLElement) {
           element.connectedCallback = function () {
             originalConnected?.call(element);
 
-            if (element.shadowRoot) {
-              // Some web components defer updates. Add a timeout larger than micro task.
-              setTimeout(() => {
-                const styles = Array.from(element.shadowRoot.querySelectorAll('style'));
-                for (const style of styles) {
-                  style.textContent = minimizeCss(style.textContent);
-                }
+            // Some web components defer updates. Add a timeout larger than micro task.
+            setTimeout(() => {
+              if (!element.shadowRoot) {
+                return;
+              }
 
-                renderCustomElements(element.shadowRoot);
+              const styles = Array.from(element.shadowRoot.querySelectorAll('style') ?? []);
+              for (const style of styles) {
+                style.textContent = minimizeCss(style.textContent ?? '');
+              }
 
-                const templateShadowRoot = React.createElement('template', {
-                  shadowrootmode: element.shadowRoot.mode ?? 'open',
-                  dangerouslySetInnerHTML: {
-                    __html: element.shadowRoot.innerHTML,
-                  },
-                });
+              renderCustomElements(element.shadowRoot);
 
-                if (node.props.children) {
-                  node.props.children.unshift(templateShadowRoot);
-                } else {
-                  node.props.children = [templateShadowRoot];
-                }
+              const templateProps = {
+                shadowrootmode: element.shadowRoot.mode ?? 'open',
+                dangerouslySetInnerHTML: {
+                  __html: element.shadowRoot.innerHTML,
+                },
+              };
 
-                Object.assign(node.props, attributesToProps(element.attributes));
+              if (delFocusElements.includes(node.type)) {
+                templateProps['shadowrootdelegatesfocus'] = 'true';
+              }
 
-                if (typeof node.props.style === 'string') {
-                  node.props.style = parseStyle(node.props.style);
-                }
-              }, 0);
-            }
+              const templateShadowRoot = React.createElement('template', templateProps);
+
+              if (node.props.children) {
+                node.props.children.unshift(templateShadowRoot);
+              } else {
+                node.props.children = [templateShadowRoot];
+              }
+
+              Object.assign(node.props, attributesToProps(element.attributes));
+
+              if (typeof node.props.style === 'string') {
+                node.props.style = parseStyle(node.props.style);
+              }
+            }, 0);
           };
         }
       }
@@ -70,7 +90,8 @@ function renderChildren(children, parent: HTMLElement) {
 }
 
 const renderCustomElements = (shadowRoot: ShadowRoot) => {
-  const customElements = Array.from(shadowRoot.innerHTML.matchAll(/gcds-[\w-]+/g)).map(([e]) => e);
+  // Find all custom elements in the shadow root
+  const customElements = Array.from(shadowRoot.innerHTML.matchAll(/<([a-z0-9]+-[\w-]+)/g)).map(([, e]) => e);
   for (const element of customElements) {
     const elementShadowRoot = shadowRoot.querySelector(element)?.shadowRoot;
 
