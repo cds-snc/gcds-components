@@ -177,28 +177,26 @@ export class GcdsTopNav {
     return (
       <Host>
         <div class="gcds-top-nav">
-          <nav
-            aria-label={`${label}${I18N[lang].navLabel}`}
-            class="gcds-top-nav__container"
-          >
-            <gcds-nav-group
-              menuLabel="Menu"
-              closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
-              openTrigger="Menu"
-              class="gcds-mobile-nav gcds-mobile-nav-topnav"
-              ref={element =>
-                (this.mobile = element as HTMLGcdsNavGroupElement)
-              }
-              lang={lang}
-            >
-              <slot name="home"></slot>
-              <ul
-                role="menu"
-                class={`nav-container__list nav-list--${alignment}`}
+          <nav aria-label={`${label}${I18N[lang].navLabel}`}>
+            <ul class="gcds-top-nav__container">
+              <gcds-nav-group
+                menuLabel="Menu"
+                closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
+                openTrigger="Menu"
+                class="gcds-mobile-nav gcds-mobile-nav-topnav"
+                ref={element =>
+                  (this.mobile = element as HTMLGcdsNavGroupElement)
+                }
+                lang={lang}
               >
-                <slot></slot>
-              </ul>
-            </gcds-nav-group>
+                <slot name="home"></slot>
+                <li class={`nav-container__list nav-list--${alignment}`}>
+                  <ul class={`nav-container__list nav-list--${alignment}`}>
+                    <slot></slot>
+                  </ul>
+                </li>
+              </gcds-nav-group>
+            </ul>
           </nav>
         </div>
       </Host>
