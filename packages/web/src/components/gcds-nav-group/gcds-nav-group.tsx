@@ -137,24 +137,17 @@ export class GcdsNavGroup {
   render() {
     const { closeTrigger, menuLabel, open, openTrigger } = this;
 
-    const roleAttr = {
-      role: 'menuitem',
-    };
+    const hostAttr = {};
 
-    if (this.el.classList.contains('gcds-mobile-nav')) {
-      delete roleAttr['role'];
+    if (open) {
+      hostAttr['class'] = 'gcds-nav-group-expanded';
     }
 
     return (
-      <Host
-        role="presentation"
-        open={open}
-        class={open && 'gcds-nav-group-expanded'}
-      >
+      <Host role="listitem" open={open} {...hostAttr}>
         <button
           aria-haspopup="true"
           aria-expanded={open.toString()}
-          {...roleAttr}
           ref={element => (this.triggerElement = element as HTMLElement)}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
           onClick={() => {
@@ -166,7 +159,6 @@ export class GcdsNavGroup {
           {closeTrigger && open ? closeTrigger : openTrigger}
         </button>
         <ul
-          role="menu"
           aria-label={menuLabel}
           class={`gcds-nav-group__list gcds-nav--${this.navStyle}`}
         >
