@@ -363,9 +363,8 @@ export class GcdsFileUploader {
     if (hint || errorMessage) {
       const hintID = hint ? `hint-${uploaderId} ` : '';
       const errorID = errorMessage ? `error-message-${uploaderId} ` : '';
-      attrsInput[
-        'aria-describedby'
-      ] = `${hintID}${errorID}${attrsInput['aria-describedby']}`;
+      attrsInput['aria-describedby'] =
+        `${hintID}${errorID}${attrsInput['aria-describedby']}`;
     }
 
     return (
@@ -409,14 +408,16 @@ export class GcdsFileUploader {
               }
             />
             {value.length > 0 ? (
-              <p id="file-uploader__summary">
+              <gcds-sr-only id="file-uploader__summary">
                 <span>{i18n[lang].summary.selected} </span>
                 {value.map(file => (
                   <span>{file} </span>
                 ))}
-              </p>
+              </gcds-sr-only>
             ) : (
-              <p id="file-uploader__summary">{i18n[lang].summary.unselected}</p>
+              <gcds-sr-only id="file-uploader__summary">
+                {i18n[lang].summary.unselected}
+              </gcds-sr-only>
             )}
           </div>
 
