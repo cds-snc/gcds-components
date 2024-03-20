@@ -84,7 +84,7 @@
       background-color: var(--gcds-nav-link-side-nav-hover-background);
     }
 
-    :host> .gcds-nav-link--dropdown.gcds-nav-link:hover {
+    :host > .gcds-nav-link--dropdown.gcds-nav-link:hover {
       background-color: var(--gcds-nav-link-top-nav-hover-background);
     }
   }
