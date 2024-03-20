@@ -217,19 +217,12 @@ export const gcdsAttributeGenerator = (tagName: string, props: object) => {
       return props;
     }
     case 'gcds-nav-link': {
-      // props['class'] = props['class'] ? `${props['class']} gcds-nav-link--sidenav` : 'gcds-nav-link--sidenav';
-      // props['role'] = props['role'] ? props['role'] : 'presentation';
+      props['role'] = props['role'] ? props['role'] : 'listitem';
 
       return props;
     }
     case 'gcds-nav-group': {
-      const openClass = props['open'] ? 'gcds-nav-group-expanded' : '';
-      if (openClass != '') {
-        props['class'] = props['class'] ? `${props['class']} ${openClass}` : openClass;
-      } else {
-        props['class'] = props['class'] ? `${props['class']}${openClass}` : openClass;
-      }
-      props['role'] = props['role'] ? props['role'] : 'presentation';
+      props['role'] = props['role'] ? props['role'] : 'listitem';
 
       return props;
     }

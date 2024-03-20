@@ -96,8 +96,7 @@ export class GcdsNavLink {
 
     if (this.el.closest('gcds-top-nav')) {
       if (this.el.parentNode.nodeName == 'GCDS-TOP-NAV') {
-        this.navStyle =
-          this.el.slot == 'home' ? 'topnav gcds-nav-link--home' : 'topnav';
+        this.navStyle = 'topnav';
       } else {
         this.navStyle = 'dropdown';
       }
@@ -116,9 +115,9 @@ export class GcdsNavLink {
     }
 
     return (
-      <Host role="listitem" class={`gcds-nav-link--${this.navStyle}`}>
+      <Host role="listitem">
         <a
-          class="gcds-nav-link"
+          class={`gcds-nav-link gcds-nav-link--${this.navStyle}`}
           href={href}
           {...linkAttrs}
           onBlur={e => this.onBlur(e)}

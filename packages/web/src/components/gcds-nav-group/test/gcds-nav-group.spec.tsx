@@ -48,7 +48,7 @@ describe('gcds-nav-group', () => {
       html: `<gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group" open></gcds-nav-group>`,
     });
     expect(page.root).toEqualHtml(`
-    <gcds-nav-group class="gcds-nav-group-expanded" menu-label="Nav group submenu" open-trigger="Nav group" role="listitem" open>
+    <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group" role="listitem" open>
       <mock:shadow-root>
         <button aria-expanded="true" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable">
           <gcds-icon name="angle-up"></gcds-icon>

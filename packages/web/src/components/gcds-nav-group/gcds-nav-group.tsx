@@ -137,14 +137,8 @@ export class GcdsNavGroup {
   render() {
     const { closeTrigger, menuLabel, open, openTrigger } = this;
 
-    const hostAttr = {};
-
-    if (open) {
-      hostAttr['class'] = 'gcds-nav-group-expanded';
-    }
-
     return (
-      <Host role="listitem" open={open} {...hostAttr}>
+      <Host role="listitem" open={open}>
         <button
           aria-haspopup="true"
           aria-expanded={open.toString()}
