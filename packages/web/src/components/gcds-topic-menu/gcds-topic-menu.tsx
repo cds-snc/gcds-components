@@ -465,8 +465,10 @@ export class GcdsTopicMenu {
     const { home, lang } = this;
     return (
       <Host>
-        <nav class="gcds-topic-menu">
-          <h2 class="gcds-topic-menu__heading">Menu</h2>
+        <nav class="gcds-topic-menu" aria-labelledby="gcds-topic-menu__heading">
+          <gcds-sr-only id="gcds-topic-menu__heading" tag="h2">
+            {I18N[lang].menuLabelFull}
+          </gcds-sr-only>
           <button
             aria-haspopup="true"
             aria-expanded={this.open.toString()}
@@ -477,13 +479,17 @@ export class GcdsTopicMenu {
           >
             {this.lang == 'en' ? (
               <>
-                <span class="gcds-topic-menu__main">Main </span>
-                Menu
+                <gcds-sr-only tag="span">
+                  {I18N[lang].menuLabelHidden}
+                </gcds-sr-only>
+                {I18N[lang].menuToggle}
               </>
             ) : (
               <>
-                Menu
-                <span class="gcds-topic-menu__main"> principal</span>
+                {I18N[lang].menuToggle}
+                <gcds-sr-only tag="span">
+                  {I18N[lang].menuLabelHidden}
+                </gcds-sr-only>
               </>
             )}
             <gcds-icon

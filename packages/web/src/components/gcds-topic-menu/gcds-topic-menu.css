@@ -11,15 +11,6 @@
   :host {
     display: block;
 
-    .gcds-topic-menu__main,
-    .gcds-topic-menu__heading {
-      display: inherit;
-      width: 0;
-      height: 0;
-      margin: 0;
-      overflow: hidden;
-    }
-
     .visible-sm-inline {
       display: none;
     }
