@@ -91,16 +91,23 @@ function renderChildren(children, parent: HTMLElement) {
 
 const renderCustomElements = (shadowRoot: ShadowRoot) => {
   // Find all custom elements in the shadow root
-  const customElements = Array.from(shadowRoot.innerHTML.matchAll(/<([a-z0-9]+-[\w-]+)/g)).map(([, e]) => e);
+  let customElements = Array.from(shadowRoot.innerHTML.matchAll(/<([a-z0-9]+-[\w-]+)/g)).map(([, e]) => e);
+  // Remove duplicates from array
+  customElements = customElements.reduce((acc, curr) => (acc.includes(curr) ? acc : [...acc, curr]), []);
+  // loop through known custom elements
   for (const element of customElements) {
-    const elementShadowRoot = shadowRoot.querySelector(element)?.shadowRoot;
-
-    if (elementShadowRoot) {
-      const template = document.createElement('template');
-      template.setAttribute('shadowrootmode', 'open');
-      template.innerHTML = elementShadowRoot?.innerHTML;
-      renderCustomElements(elementShadowRoot);
-      shadowRoot.querySelector(element)?.appendChild(template);
+    const elementShadowRoot = shadowRoot.querySelectorAll(element);
+    for (const e of elementShadowRoot) {
+      if (e?.shadowRoot) {
+        const template = document.createElement('template');
+        template.setAttribute('shadowrootmode', 'open');
+        if (delFocusElements.includes(element)) {
+          template.setAttribute('shadowrootdelegatesfocus', 'true');
+        }
+        template.innerHTML = e?.innerHTML;
+        renderCustomElements(e.shadowRoot);
+        e?.appendChild(template);
+      }
     }
   }
 };
