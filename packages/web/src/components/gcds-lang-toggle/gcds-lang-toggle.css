@@ -2,13 +2,6 @@
   display: block;
   font: var(--gcds-lang-toggle-font);
 
-  h2 {
-    margin: 0;
-    overflow: hidden;
-    position: absolute;
-    width: 0;
-  }
-
   a {
     color: var(--gcds-lang-toggle-default-text);
     padding: var(--gcds-lang-toggle-padding);
