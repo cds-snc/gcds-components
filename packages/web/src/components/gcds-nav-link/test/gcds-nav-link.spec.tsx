@@ -8,9 +8,9 @@ describe('gcds-nav-link', () => {
       html: `<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-nav-link href="#link" class="gcds-nav-link--sidenav" role="presentation">
+      <gcds-nav-link href="#link" role="listitem">
         <mock:shadow-root>
-          <a href="#link" class="gcds-nav-link" role="menuitem">
+          <a href="#link" class="gcds-nav-link gcds-nav-link--sidenav">
             <slot></slot>
           </a>
         </mock:shadow-root>
@@ -24,9 +24,9 @@ describe('gcds-nav-link', () => {
       html: `<gcds-nav-link href="#link" current>Nav Link</gcds-nav-link>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-nav-link class="gcds-nav-link--sidenav" current="" href="#link" role="presentation">
+      <gcds-nav-link current="" href="#link" role="listitem">
         <mock:shadow-root>
-          <a aria-current="page" class="gcds-nav-link" href="#link" role="menuitem">
+          <a aria-current="page" class="gcds-nav-link gcds-nav-link--sidenav" href="#link">
             <slot></slot>
           </a>
         </mock:shadow-root>

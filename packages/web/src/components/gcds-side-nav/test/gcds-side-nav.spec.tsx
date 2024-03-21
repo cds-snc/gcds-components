@@ -16,9 +16,11 @@ describe('gcds-side-nav', () => {
             <h2 class="gcds-side-nav__heading">
               Side-nav
             </h2>
-            <gcds-nav-group class="gcds-mobile-nav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en" role="menu">
-              <slot></slot>
-            </gcds-nav-group>
+            <ul>
+              <gcds-nav-group class="gcds-mobile-nav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en">
+                <slot></slot>
+              </gcds-nav-group>
+            </ul>
           </nav>
         </mock:shadow-root>
       </gcds-side-nav>
@@ -36,9 +38,11 @@ describe('gcds-side-nav', () => {
             <h2 class="gcds-side-nav__heading">
               Side-nav
             </h2>
-            <gcds-nav-group class="gcds-mobile-nav" menuLabel="Menu" closeTrigger="Fermer" openTrigger="Menu" lang="fr" role="menu">
-              <slot></slot>
-            </gcds-nav-group>
+            <ul>
+              <gcds-nav-group class="gcds-mobile-nav" menuLabel="Menu" closeTrigger="Fermer" openTrigger="Menu" lang="fr">
+                <slot></slot>
+              </gcds-nav-group>
+            </ul>
           </nav>
         </mock:shadow-root>
       </gcds-side-nav>

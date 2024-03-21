@@ -98,7 +98,7 @@
     }
   }
 
-  :host(.gcds-mobile-nav.gcds-nav-group-expanded) {
+  :host([open].gcds-mobile-nav) {
     z-index: 100;
     position: fixed;
     top: 0;
@@ -166,7 +166,7 @@
       margin: var(--gcds-nav-group-mobile-list-margin);
     }
 
-    :host(.gcds-nav-group-expanded:not(.gcds-mobile-nav))
+    :host([open]:not(.gcds-mobile-nav))
       .gcds-nav-group__list {
       padding-inline-start: var(--gcds-nav-group-side-nav-dropdown-padding);
     }

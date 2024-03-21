@@ -175,17 +175,20 @@ export class GcdsSideNav {
           class="gcds-side-nav"
         >
           <h2 class="gcds-side-nav__heading">{label}</h2>
-          <gcds-nav-group
-            menuLabel="Menu"
-            closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
-            openTrigger="Menu"
-            class="gcds-mobile-nav"
-            role="menu"
-            ref={element => (this.mobile = element as HTMLGcdsNavGroupElement)}
-            lang={lang}
-          >
-            <slot></slot>
-          </gcds-nav-group>
+          <ul>
+            <gcds-nav-group
+              menuLabel="Menu"
+              closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
+              openTrigger="Menu"
+              class="gcds-mobile-nav"
+              ref={element =>
+                (this.mobile = element as HTMLGcdsNavGroupElement)
+              }
+              lang={lang}
+            >
+              <slot></slot>
+            </gcds-nav-group>
+          </ul>
         </nav>
       </Host>
     );
