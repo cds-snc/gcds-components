@@ -31,6 +31,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [gcds-header](../gcds-header)
+
 ### Depends on
 
 - [gcds-icon](../gcds-icon)
@@ -39,6 +43,7 @@
 ```mermaid
 graph TD;
   gcds-link --> gcds-icon
+  gcds-header --> gcds-link
   style gcds-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
