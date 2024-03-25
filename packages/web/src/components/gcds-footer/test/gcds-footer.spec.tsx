@@ -8,15 +8,15 @@ describe('gcds-footer', () => {
       html: `<gcds-footer display="compact" lang="en"></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" display="compact" lang="en">
+      <gcds-footer role="contentinfo" display="compact" lang="en" aria-label="Footer">
         <mock:shadow-root>
-          <h2 class="gcds-footer__header">About this site</h2>
+          <gcds-sr-only tag="h2">About this site</gcds-sr-only>
           <div class="gcds-footer__sub">
             <div class="sub__container">
-              <nav aria-labelledby="sub__header">
-                <h3 class="sub__header" id="sub__header">
+              <nav aria-labelledby="sub__heading">
+                <gcds-sr-only id="sub__heading" tag="h3">
                   Government of Canada Corporate
-                </h3>
+                </gcds-sr-only>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/en/social.html">
@@ -61,13 +61,13 @@ describe('gcds-footer', () => {
       html: `<gcds-footer display="full" lang="en"></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" display="full" lang="en">
+      <gcds-footer role="contentinfo" display="full" lang="en" aria-label="Footer">
         <mock:shadow-root>
-          <h2 class="gcds-footer__header">About this site</h2>
+          <gcds-sr-only tag="h2">About this site</gcds-sr-only>
           <div class="gcds-footer__main">
             <div class="main__container">
-              <nav aria-labelledby="govnav__header" class="main__govnav">
-                <h3 id="govnav__header">
+              <nav aria-labelledby="govnav__heading" class="main__govnav">
+                <h3 id="govnav__heading">
                   Government of Canada
                 </h3>
                 <ul class="govnav__list">
@@ -88,10 +88,10 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <nav aria-labelledby="themenav__header" class="main__themenav">
-                <h4 class="themenav__header" id="themenav__header">
+              <nav aria-labelledby="themenav__heading" class="main__themenav">
+                <gcds-sr-only tag="h4" id="themenav__heading">
                   Themes and topics
-                </h4>
+                </gcds-sr-only>
                 <ul class="themenav__list">
                   <li>
                     <a href="https://www.canada.ca/en/services/jobs.html">
@@ -189,10 +189,10 @@ describe('gcds-footer', () => {
           </div>
           <div class="gcds-footer__sub">
             <div class="sub__container">
-              <nav aria-labelledby="sub__header">
-                <h3 class="sub__header" id="sub__header">
+              <nav aria-labelledby="sub__heading">
+                <gcds-sr-only id="sub__heading" tag="h3">
                   Government of Canada Corporate
-                </h3>
+                </gcds-sr-only>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/en/social.html">
@@ -237,15 +237,15 @@ describe('gcds-footer', () => {
       html: `<gcds-footer display="compact" lang="fr"></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" display="compact" lang="fr">
+      <gcds-footer role="contentinfo" display="compact" lang="fr" aria-label="Footer">
         <mock:shadow-root>
-          <h2 class="gcds-footer__header">À propos de ce site</h2>
+          <gcds-sr-only tag="h2">À propos de ce site</gcds-sr-only>
           <div class="gcds-footer__sub">
             <div class="sub__container">
-              <nav aria-labelledby="sub__header">
-                <h3 class="sub__header" id="sub__header">
+              <nav aria-labelledby="sub__heading">
+                <gcds-sr-only id="sub__heading" tag="h3">
                   Organisation du gouvernement du Canada
-                </h3>
+                </gcds-sr-only>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/fr/sociaux.html">
@@ -290,13 +290,13 @@ describe('gcds-footer', () => {
       html: `<gcds-footer display="full" lang="fr"></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" display="full" lang="fr">
+      <gcds-footer role="contentinfo" display="full" lang="fr" aria-label="Footer">
         <mock:shadow-root>
-          <h2 class="gcds-footer__header">À propos de ce site</h2>
+          <gcds-sr-only tag="h2">À propos de ce site</gcds-sr-only>
           <div class="gcds-footer__main">
             <div class="main__container">
-              <nav aria-labelledby="govnav__header" class="main__govnav">
-                <h3 id="govnav__header">
+              <nav aria-labelledby="govnav__heading" class="main__govnav">
+                <h3 id="govnav__heading">
                   Gouvernement du Canada
                 </h3>
                 <ul class="govnav__list">
@@ -317,10 +317,10 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <nav aria-labelledby="themenav__header" class="main__themenav">
-                <h4 class="themenav__header" id="themenav__header">
+              <nav aria-labelledby="themenav__heading" class="main__themenav">
+                <gcds-sr-only tag="h4" id="themenav__heading">
                   Thèmes et sujets
-                </h4>
+                </gcds-sr-only>
                 <ul class="themenav__list">
                   <li>
                     <a href="https://www.canada.ca/fr/services/emplois.html">
@@ -418,10 +418,10 @@ describe('gcds-footer', () => {
           </div>
           <div class="gcds-footer__sub">
             <div class="sub__container">
-              <nav aria-labelledby="sub__header">
-                <h3 class="sub__header" id="sub__header">
+              <nav aria-labelledby="sub__heading">
+                <gcds-sr-only id="sub__heading" tag="h3">
                   Organisation du gouvernement du Canada
-                </h3>
+                </gcds-sr-only>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/fr/sociaux.html">
@@ -471,13 +471,13 @@ describe('gcds-footer', () => {
       ></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer contextual-heading="Heading" contextual-links="{ &quot;Link 1&quot;: &quot;#red&quot;, &quot;Link 2&quot;: &quot;#green&quot;, &quot;Link 3&quot;: &quot;#blue&quot; }" display="full" lang="en" role="contentinfo">
+      <gcds-footer contextual-heading="Heading" contextual-links="{ &quot;Link 1&quot;: &quot;#red&quot;, &quot;Link 2&quot;: &quot;#green&quot;, &quot;Link 3&quot;: &quot;#blue&quot; }" display="full" lang="en" role="contentinfo" aria-label="Footer">
         <mock:shadow-root>
-          <h2 class="gcds-footer__header">About this site</h2>
+          <gcds-sr-only tag="h2">About this site</gcds-sr-only>
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
-              <nav aria-labelledby="contextual__header">
-                <h3 class="contextual__header" id="contextual__header">
+              <nav aria-labelledby="contextual__heading">
+                <h3 class="contextual__heading" id="contextual__heading">
                   Heading
                 </h3>
                 <ul class="contextual__list">
@@ -502,8 +502,8 @@ describe('gcds-footer', () => {
           </div>
           <div class="gcds-footer__main">
             <div class="main__container">
-              <nav aria-labelledby="govnav__header" class="main__govnav">
-                <h3 id="govnav__header">
+              <nav aria-labelledby="govnav__heading" class="main__govnav">
+                <h3 id="govnav__heading">
                   Government of Canada
                 </h3>
                 <ul class="govnav__list">
@@ -524,10 +524,10 @@ describe('gcds-footer', () => {
                   </li>
                 </ul>
               </nav>
-              <nav aria-labelledby="themenav__header" class="main__themenav">
-                <h4 class="themenav__header" id="themenav__header">
+              <nav aria-labelledby="themenav__heading" class="main__themenav">
+                <gcds-sr-only tag="h4" id="themenav__heading">
                   Themes and topics
-                </h4>
+                </gcds-sr-only>
                 <ul class="themenav__list">
                   <li>
                     <a href="https://www.canada.ca/en/services/jobs.html">
@@ -625,10 +625,10 @@ describe('gcds-footer', () => {
           </div>
           <div class="gcds-footer__sub">
             <div class="sub__container">
-              <nav aria-labelledby="sub__header">
-                <h3 class="sub__header" id="sub__header">
+              <nav aria-labelledby="sub__heading">
+                <gcds-sr-only id="sub__heading" tag="h3">
                   Government of Canada Corporate
-                </h3>
+                </gcds-sr-only>
                 <ul>
                   <li>
                     <a href="https://www.canada.ca/en/social.html">
@@ -677,15 +677,15 @@ describe('gcds-footer', () => {
         ></gcds-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-footer role="contentinfo" display="compact" lang="en" sub-links="{ &quot;Link 1&quot;: &quot;#red&quot;, &quot;Link 2&quot;: &quot;#green&quot;, &quot;Link 3&quot;: &quot;#blue&quot; }">
+      <gcds-footer role="contentinfo" display="compact" lang="en" sub-links="{ &quot;Link 1&quot;: &quot;#red&quot;, &quot;Link 2&quot;: &quot;#green&quot;, &quot;Link 3&quot;: &quot;#blue&quot; }" aria-label="Footer">
         <mock:shadow-root>
-          <h2 class="gcds-footer__header">About this site</h2>
+          <gcds-sr-only tag="h2">About this site</gcds-sr-only>
           <div class="gcds-footer__sub">
             <div class="sub__container">
-              <nav aria-labelledby="sub__header">
-                <h3 class="sub__header" id="sub__header">
+              <nav aria-labelledby="sub__heading">
+                <gcds-sr-only id="sub__heading" tag="h3">
                   Government of Canada Corporate
-                </h3>
+                </gcds-sr-only>
                 <ul>
                   <li>
                     <a href="#red">
