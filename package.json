@@ -49,8 +49,7 @@
   "workspaces": [
     "packages/web",
     "packages/angular",
-    "packages/react",
-    "packages/ssr"
+    "packages/react"
   ],
   "license": "MIT"
 }
