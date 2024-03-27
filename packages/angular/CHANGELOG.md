@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.21.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.20.0...gcds-components-angular-v0.21.0) (2024-03-27)
+
+
+### New Features
+
+* add tag prop to gcds-sr-only component ([#484](https://github.com/cds-snc/gcds-components/issues/484)) ([dfb7285](https://github.com/cds-snc/gcds-components/commit/dfb7285a14b477f4c4f71750e8b09d3ca5c193a9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @cdssnc/gcds-components bumped from ^0.20.0 to ^0.21.0
+
 ## [0.20.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.19.1...gcds-components-angular-v0.20.0) (2024-03-14)
 
 
