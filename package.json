@@ -22,7 +22,7 @@
     "@angular/router": "^16.2.3",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
-    "zone.js": "^0.13.1"
+    "zone.js": "^0.14.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.0",
@@ -39,7 +39,7 @@
     "ng-packagr": "^16.0.0",
     "nx": "^16.0.0",
     "sass": "^1.43.5",
-    "typescript": "~5.1.0",
+    "typescript": "~5.4.0",
     "workbox-build": "^7.0.0"
   },
   "workspaces": [
