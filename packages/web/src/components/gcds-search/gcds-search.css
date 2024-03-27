@@ -3,14 +3,6 @@
 @layer defaults {
   :host {
     .gcds-search {
-      .gcds-search__header {
-        display: block;
-        width: 0;
-        height: 0;
-        margin: 0;
-        overflow: hidden;
-      }
-
       .gcds-search__form {
         display: flex;
         margin: var(--gcds-search-margin) !important;
@@ -28,7 +20,9 @@
         border: var(--gcds-search-border-width) solid currentColor;
         border-radius: var(--gcds-search-border-radius);
         box-sizing: border-box;
-        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition:
+          border-color ease-in-out 0.15s,
+          box-shadow ease-in-out 0.15s;
       }
 
       ::part(button) {
@@ -38,8 +32,8 @@
       }
     }
 
-    [type="search"]::-webkit-search-cancel-button,
-    [type="search"]::-webkit-search-decoration {
+    [type='search']::-webkit-search-cancel-button,
+    [type='search']::-webkit-search-decoration {
       -webkit-appearance: none;
       appearance: none;
     }
@@ -51,7 +45,8 @@
     input.gcds-search__input {
       &:focus {
         border-color: var(--gcds-search-focus-text);
-        outline: var(--gcds-search-outline-width) solid var(--gcds-search-focus-text);
+        outline: var(--gcds-search-outline-width) solid
+          var(--gcds-search-focus-text);
         outline-offset: var(--gcds-search-border-width);
         border-radius: var(--gcds-search-focus-border-radius);
         box-shadow: var(--gcds-search-focus-box-shadow);
@@ -61,7 +56,7 @@
 
     ::part(button):focus {
       border-radius: var(--gcds-search-focus-border-radius);
-      box-shadow:  var(--gcds-search-focus-box-shadow);
+      box-shadow: var(--gcds-search-focus-box-shadow);
     }
   }
 }

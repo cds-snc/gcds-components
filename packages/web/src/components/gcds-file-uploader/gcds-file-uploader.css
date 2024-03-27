@@ -69,7 +69,8 @@
     padding: var(--gcds-file-uploader-button-padding);
     background-color: var(--gcds-file-uploader-button-background);
     color: var(--gcds-file-uploader-button-text);
-    border: var(--gcds-file-uploader-button-border-width) solid var(--gcds-file-uploader-button-text);
+    border: var(--gcds-file-uploader-button-border-width) solid
+      var(--gcds-file-uploader-button-text);
     border-radius: var(--gcds-file-uploader-button-border-radius);
     transition: all 0.15s ease-in-out;
   }
@@ -84,13 +85,6 @@
     cursor: pointer;
   }
 
-  #file-uploader__summary {
-    visibility: hidden;
-    height: 0;
-    margin: 0;
-    overflow: hidden;
-  }
-
   &:hover button {
     background-color: var(--gcds-file-uploader-hover-button-background);
   }
@@ -98,7 +92,8 @@
   &:focus-within button {
     background-color: var(--gcds-file-uploader-focus-button-background);
     color: var(--gcds-file-uploader-focus-button-text);
-    outline: var(--gcds-file-uploader-button-outline-width) solid var(--gcds-file-uploader-focus-button-background);
+    outline: var(--gcds-file-uploader-button-outline-width) solid
+      var(--gcds-file-uploader-focus-button-background);
     border-color: currentColor;
   }
 
@@ -118,7 +113,8 @@
   font-weight: var(--gcds-file-uploader-button-font-weight);
   color: var(--gcds-file-uploader-default-text);
   padding: var(--gcds-file-uploader-file-padding);
-  border: var(--gcds-file-uploader-file-border-width) solid var(--gcds-file-uploader-file-border-color);
+  border: var(--gcds-file-uploader-file-border-width) solid
+    var(--gcds-file-uploader-file-border-color);
   cursor: pointer;
 
   &:not(:last-of-type) {
@@ -148,8 +144,12 @@
       transition: box-shadow 0.35s;
       overflow: visible;
       text-decoration: underline;
-      text-underline-offset: var(--gcds-file-uploader-file-button-underline-offset);
-      text-decoration-thickness: var(--gcds-file-uploader-file-button-default-decoration-thickness);
+      text-underline-offset: var(
+        --gcds-file-uploader-file-button-underline-offset
+      );
+      text-decoration-thickness: var(
+        --gcds-file-uploader-file-button-default-decoration-thickness
+      );
     }
 
     &:hover {
@@ -157,13 +157,16 @@
     }
 
     &:hover span {
-      text-decoration-thickness: var(--gcds-file-uploader-file-button-hover-decoration-thickness);
+      text-decoration-thickness: var(
+        --gcds-file-uploader-file-button-hover-decoration-thickness
+      );
     }
 
     &:focus {
       background-color: var(--gcds-file-uploader-focus-button-background);
       color: var(--gcds-file-uploader-focus-button-text);
-      outline: var(--gcds-file-uploader-focus-button-outline-width) solid var(--gcds-file-uploader-focus-button-background);
+      outline: var(--gcds-file-uploader-focus-button-outline-width) solid
+        var(--gcds-file-uploader-focus-button-background);
       outline-offset: var(--gcds-file-uploader-focus-button-outline-offset);
       border-color: var(--gcds-file-uploader-focus-button-background);
       text-decoration-color: transparent;

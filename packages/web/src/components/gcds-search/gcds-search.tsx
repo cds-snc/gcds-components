@@ -115,7 +115,7 @@ export class GcdsSearch {
     return (
       <Host>
         <div class="gcds-search">
-          <h2 class="gcds-search__header">{I18N[lang].search}</h2>
+          <gcds-sr-only tag="h2">{I18N[lang].search}</gcds-sr-only>
           <form
             action={formAction}
             method={method}

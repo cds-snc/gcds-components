@@ -31,7 +31,7 @@ describe('gcds-header', () => {
     expect(page.root).toEqualHtml(`
       <gcds-header lang-href="/fr/" role="banner" signature-has-link="true" signature-variant="colour" skip-to-href="#main">
         <mock:shadow-root>
-          <nav class="gcds-header__skip-to-nav">
+          <nav class="gcds-header__skip-to-nav" aria-label="Skip to">
             <gcds-link href="#main">
               Skip to main content
             </gcds-link>
