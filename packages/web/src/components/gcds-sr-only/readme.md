@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description                                    | Type                                                            | Default |
+| -------- | --------- | ---------------------------------------------- | --------------------------------------------------------------- | ------- |
+| `tag`    | `tag`     | Sets the appropriate HTML tag for the content. | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "p" \| "span"` | `'p'`   |
+
+
 ## Dependencies
 
 ### Used by

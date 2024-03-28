@@ -152,6 +152,16 @@ DisplayContextual.args = {
   lang: 'en',
 };
 
+export const Props = Template.bind({});
+Props.args = {
+  display: 'full',
+  contextualHeading: 'Contextual navigation',
+  contextualLinks:
+    '{ "Why GC Notify": "#", "Features": "#", "Activity on GC Notify": "#" }',
+  subLinks: '',
+  lang: 'en',
+};
+
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   display: 'compact',

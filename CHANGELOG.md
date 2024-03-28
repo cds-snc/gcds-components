@@ -4,11 +4,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.20.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.1...gcds-components-v0.20.0) (2024-03-14)
+
+
+### New Features
+
+* set allowed values for grid tag property to limit misuse ([#470](https://github.com/cds-snc/gcds-components/issues/470)) ([a686d09](https://github.com/cds-snc/gcds-components/commit/a686d09dab4cf40548448ccdc7e050d6322afb24))
+  
+### Bug Fixes
+
+* React package: invalid path for types ([#471](https://github.com/cds-snc/gcds-components/issues/471)) ([f859d43](https://github.com/cds-snc/gcds-components/commit/f859d438e9a79184d83157b92a97f855376777ac))
+
+  
 ## [0.19.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.0...gcds-components-v0.19.1) (2024-02-22)
 
 ### Bug Fixes
 
-* Fixes identified in OCADU report (a11y and usability) ([#446](https://github.com/cds-snc/gcds-components/issues/446)) ([09095a5](https://github.com/cds-snc/gcds-components/commit/09095a52f41e40a243455874daf2c147c18d89b1))
+- Fixes identified in OCADU report (a11y and usability) ([#446](https://github.com/cds-snc/gcds-components/issues/446)) ([09095a5](https://github.com/cds-snc/gcds-components/commit/09095a52f41e40a243455874daf2c147c18d89b1))
 
 ## v0.19.0
 
@@ -259,6 +271,31 @@ All notable changes to this project will be documented in this file.
 # Journal des modifications
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
+
+## v0.18.1
+
+### Changement mineur
+
+- https://github.com/cds-snc/gcds-components/pull/368 - [7774a88](https://github.com/cds-snc/gcds-components/commit/7774a8814b680d5798192dde9ce4b9550b86bba9) — Exportation de ContentValues à partir de gcds-grid pour corriger la version du paquet Angular
+
+## v0.18.0
+
+### Nouvelles fonctionnalités
+
+- Fonctionnalité pour le composant grille
+  - Possibilité d’ajouter des colonnes de grille dont la taille est individuellement définie et de définir des lignes de hauteur égale.
+
+### Changement mineur
+
+- https://github.com/cds-snc/gcds-components/pull/358 - [34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0) — Ajout de la variante Light au composant lien
+
+### Correctif
+
+- https://github.com/cds-snc/gcds-components/pull/363 - [ab0e404](https://github.com/cds-snc/gcds-components/commit/ab0e4042d4db0c580fd61a049bd8a2696d9b3141) — Correction du nom de propriété pour les variantes du composant lien
+- https://github.com/cds-snc/gcds-components/pull/364 - [ee16326](https://github.com/cds-snc/gcds-components/commit/ee16326a0daa8edb126c273f85c85c2a3cf0ef58) — Correction de la validation pour le téléverseur de fichiers
+- https://github.com/cds-snc/gcds-components/pull/362 - [ac2ea8c](https://github.com/cds-snc/gcds-components/commit/ac2ea8c0644fd98c53789cddcdb060c4b744cdcf) — Mise à jour des emplacements (slots) du composant en-tête dans Storybook
+- https://github.com/cds-snc/gcds-components/pull/357 - [5a0bd5c](https://github.com/cds-snc/gcds-components/commit/5a0bd5c56ea8d59f4798ee21c385302598b2d501) — Correction du lien Ressources dans Storybook
+- https://github.com/cds-snc/gcds-components/pull/353 - [e9624f0](https://github.com/cds-snc/gcds-components/commit/e9624f071888db71abbf60b5869dc19d6e49b4b9) — Mise à jour des instructions pour Font Awesome dans le README
 
 ## v0.17.1
 

@@ -166,56 +166,40 @@ const Template = args =>
 
 const TemplatePreview = () => `
 <!-- Web component code (Angular, Vue) -->
-<gcds-button>
-  Primary
-</gcds-button>
-<gcds-button button-role="secondary">
-  Secondary
-</gcds-button>
-<gcds-button button-role="danger">
-  Danger
-</gcds-button>
+<gcds-button>Submit</gcds-button>
+<gcds-button button-role="secondary">Cancel</gcds-button>
+<gcds-button button-role="danger">Delete</gcds-button>
 
 <!-- React code -->
-<GcdsButton>
-  Primary
-</GcdsButton>
-<GcdsButton buttonRole="secondary">
-  Secondary
-</GcdsButton>
-<GcdsButton buttonRole="danger">
-  Danger
-</GcdsButton>
+<GcdsButton>Submit</GcdsButton>
+<GcdsButton buttonRole="secondary">Cancel</GcdsButton>
+<GcdsButton buttonRole="danger">Delete</GcdsButton>
 `;
 
 const TemplateTypes = () => `
 <!-- Web component code (Angular, Vue) -->
-<gcds-button>
-  Button
-</gcds-button>
-<gcds-button type="link">
-  Link
-</gcds-button>
-<gcds-button type="reset">
-  Reset
-</gcds-button>
-<gcds-button type="submit">
-  Submit
-</gcds-button>
+<gcds-button>Button</gcds-button>
+<gcds-button type="link">Link</gcds-button>
+<gcds-button type="reset">Reset</gcds-button>
+<gcds-button type="submit">Submit</gcds-button>
 
 <!-- React code -->
-<GcdsButton>
-  Button
-</GcdsButton>
-<GcdsButton type="link">
-  Link
-</GcdsButton>
-<GcdsButton type="reset">
-  Reset
-</GcdsButton>
-<GcdsButton type="submit">
-  Submit
-</GcdsButton>
+<GcdsButton>Button</GcdsButton>
+<GcdsButton type="link">Link</GcdsButton>
+<GcdsButton type="reset">Reset</GcdsButton>
+<GcdsButton type="submit">Submit</GcdsButton>
+`;
+
+const TemplateRoles = () => `
+<!-- Web component code (Angular, Vue) -->
+<gcds-button>Primary</gcds-button>
+<gcds-button button-role="secondary">Secondary</gcds-button>
+<gcds-button button-role="danger">Danger</gcds-button>
+
+<!-- React code -->
+<GcdsButton>Primary</GcdsButton>
+<GcdsButton buttonRole="secondary">Secondary</GcdsButton>
+<GcdsButton buttonRole="danger">Danger</GcdsButton>
 `;
 
 const TemplateTwoButtons = args =>
@@ -290,6 +274,10 @@ export const Preview = TemplatePreview.bind({});
 // ------ Buttons types ------
 
 export const PreviewTypes = TemplateTypes.bind({});
+
+// ------ Buttons roles ------
+
+export const PreviewRoles = TemplateRoles.bind({});
 
 // ------ Button primary ------
 

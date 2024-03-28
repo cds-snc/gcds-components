@@ -941,13 +941,14 @@ export declare interface GcdsSignature extends Components.GcdsSignature {}
 
 
 @ProxyCmp({
+  inputs: ['tag']
 })
 @Component({
   selector: 'gcds-sr-only',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['tag'],
 })
 export class GcdsSrOnly {
   protected el: HTMLElement;

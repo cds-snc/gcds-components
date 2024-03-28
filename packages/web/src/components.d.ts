@@ -462,7 +462,15 @@ export namespace Components {
         /**
           * Set tag for grid container
          */
-        "tag"?: string;
+        "tag"?: | 'article'
+    | 'aside'
+    | 'div'
+    | 'dl'
+    | 'main'
+    | 'nav'
+    | 'ol'
+    | 'section'
+    | 'ul';
     }
     interface GcdsGridCol {
         /**
@@ -968,6 +976,17 @@ export namespace Components {
         "variant": 'colour' | 'white';
     }
     interface GcdsSrOnly {
+        /**
+          * Sets the appropriate HTML tag for the content.
+         */
+        "tag"?: | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'p'
+    | 'span';
     }
     interface GcdsStepper {
         /**
@@ -2183,7 +2202,15 @@ declare namespace LocalJSX {
         /**
           * Set tag for grid container
          */
-        "tag"?: string;
+        "tag"?: | 'article'
+    | 'aside'
+    | 'div'
+    | 'dl'
+    | 'main'
+    | 'nav'
+    | 'ol'
+    | 'section'
+    | 'ul';
     }
     interface GcdsGridCol {
         /**
@@ -2766,6 +2793,17 @@ declare namespace LocalJSX {
         "variant"?: 'colour' | 'white';
     }
     interface GcdsSrOnly {
+        /**
+          * Sets the appropriate HTML tag for the content.
+         */
+        "tag"?: | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'p'
+    | 'span';
     }
     interface GcdsStepper {
         /**

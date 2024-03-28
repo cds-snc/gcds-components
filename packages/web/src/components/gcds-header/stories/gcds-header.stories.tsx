@@ -256,6 +256,21 @@ All.args = {
   lang: 'en',
 };
 
+export const Props = Template.bind({});
+Props.args = {
+  langHref: '#',
+  skipToHref: '#',
+  signatureHasLink: true,
+  signatureVariant: 'colour',
+  menu: '',
+  breadcrumb: '',
+  search: '',
+  skipTo: '',
+  toggle: '',
+  banner: '',
+  lang: 'en',
+};
+
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   langHref: '#',

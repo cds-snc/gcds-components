@@ -52,7 +52,18 @@ export default {
       },
     },
     tag: {
-      control: 'text',
+      control: { type: 'select' },
+      options: [
+        'article',
+        'aside',
+        'div',
+        'dl',
+        'main',
+        'nav',
+        'ol',
+        'section',
+        'ul',
+      ],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'div' },
@@ -321,6 +332,20 @@ Individual.args = {
   container: 'full',
   tag: 'div',
   default: 'This is some example content to display the grid component.',
+};
+
+// ------ Grid tag ------
+
+export const Tag = Template.bind({});
+Tag.args = {
+  columns: 'repeat(auto-fit, minmax(100px, 250px))',
+  columnsDesktop: '',
+  columnsTablet: '',
+  container: 'full',
+  tag: 'article',
+  default: `<p>This is some example content to display the grid component.</p>
+  <p>This is some example content to display the grid component.</p>
+  <p>This is some example content to display the grid component.</p>`,
 };
 
 // ------ Grid events & props ------

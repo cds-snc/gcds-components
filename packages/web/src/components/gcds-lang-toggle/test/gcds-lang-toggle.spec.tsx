@@ -11,7 +11,9 @@ describe('gcds-lang-toggle', () => {
       <gcds-lang-toggle href="/fr/" lang="en">
         <mock:shadow-root>
         <div class="gcds-lang-toggle">
-          <h2>Language Selection</h2>
+          <gcds-sr-only id="lang-toggle__heading" tag="h2">
+            Language selection
+          </gcds-sr-only>
           <gcds-link size="regular" href="/fr/" lang="fr">
             <span>Français</span>
             <abbr title="Français">fr</abbr>
@@ -31,7 +33,9 @@ describe('gcds-lang-toggle', () => {
       <gcds-lang-toggle href="/en/" lang="fr">
         <mock:shadow-root>
         <div class="gcds-lang-toggle">
-          <h2>Sélection de la langue</h2>
+          <gcds-sr-only id="lang-toggle__heading" tag="h2">
+            Sélection de la langue
+          </gcds-sr-only>
           <gcds-link size="regular" href="/en/" lang="en">
             <span>English</span>
             <abbr title="English">en</abbr>

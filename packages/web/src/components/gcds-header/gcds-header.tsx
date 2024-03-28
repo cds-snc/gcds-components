@@ -64,10 +64,11 @@ export class GcdsHeader {
       return <slot name="skip-to-nav"></slot>;
     } else if (this.skipToHref) {
       return (
-        <nav class="gcds-header__skip-to-nav">
-          <gcds-link size="regular" href={this.skipToHref}>
-            {i18n[this.lang].skip}
-          </gcds-link>
+        <nav
+          class="gcds-header__skip-to-nav"
+          aria-label={i18n[this.lang].skipLabel}
+        >
+          <gcds-link href={this.skipToHref}>{i18n[this.lang].skip}</gcds-link>
         </nav>
       );
     } else {

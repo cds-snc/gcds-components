@@ -1,5 +1,6 @@
 name: Build components
 on:
+  workflow_dispatch:
   pull_request:
       branches:
         - main
@@ -12,7 +13,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - uses: actions/setup-node@25b062c917b0c75f8b47d8469aff6c94ffd89abb
+      - uses: actions/setup-node@c2ac33f2c62f978d6c944d9648125a294e56dc0b
         with:
           node-version: 18
 
@@ -29,7 +30,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - uses: actions/setup-node@25b062c917b0c75f8b47d8469aff6c94ffd89abb
+      - uses: actions/setup-node@c2ac33f2c62f978d6c944d9648125a294e56dc0b
         with:
           node-version: 18
 

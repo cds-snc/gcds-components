@@ -1,7 +1,7 @@
 const I18N = {
   en: {
     abbreviation: 'fr',
-    heading: 'Language Selection',
+    heading: 'Language selection',
     language: 'Français',
   },
   fr: {
