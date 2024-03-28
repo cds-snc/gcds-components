@@ -1,12 +1,24 @@
-:host {
-  display: block;
-  font: var(--gcds-date-modified-font);
-  color: var(--gcds-date-modified-text);
-  margin: var(--gcds-date-modified-margin);
+@layer reset, default;
 
-  .gcds-date-modified {
-    dt,
-    dd {
+@layer reset {
+  :host {
+    display: block;
+
+    dl {
+      margin: 0;
+    }
+
+    slot {
+      display: initial;
+    }
+  }
+}
+
+@layer default {
+  :host .gcds-date-modified {
+    margin: var(--gcds-date-modified-margin);
+
+    :is(dt, gcds-text, dd) {
       display: inline;
     }
 

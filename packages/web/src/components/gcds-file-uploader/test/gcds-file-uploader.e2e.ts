@@ -5,7 +5,7 @@ describe('gcds-file-uploader', () => {
   it('renders', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<gcds-file-uploader label="file uploader label" uploader-id="file-uploader" />',
+      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" />',
     );
 
     const element = await page.find('gcds-file-uploader');
@@ -26,9 +26,9 @@ describe('gcds-file-uploader a11y tests', () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<gcds-file-uploader label="Label" uploader-id="aria-invalid" error-message="Field required" />',
+      '<gcds-file-uploader label="Label" uploader-id="aria-invalid" name="file" error-message="Field required" />',
     );
-    const element = await await page.find('gcds-file-uploader input');
+    const element = await await page.find('gcds-file-uploader >>> input');
     expect(element.getAttribute('aria-invalid')).toEqual('true');
   });
 
@@ -38,7 +38,7 @@ describe('gcds-file-uploader a11y tests', () => {
   it('colour contrast', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-file-uploader label="Label" uploader-id="colour-contrast"></gcds-file-uploader>
+      <gcds-file-uploader label="Label" name="file" uploader-id="colour-contrast"></gcds-file-uploader>
     `);
 
     const colorContrastTest = new AxePuppeteer(page)
@@ -55,17 +55,20 @@ describe('gcds-file-uploader a11y tests', () => {
   it('file uploader keyboard focus', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-file-uploader label="Label" uploader-id="keyboard-focus" />
+      <gcds-file-uploader label="Label" name="file" uploader-id="keyboard-focus" />
     `);
 
     const fileUploaderField = await (
-      await page.find('gcds-file-uploader input')
+      await page.find('gcds-file-uploader >>> input')
     ).innerText;
 
     await page.keyboard.press('Tab');
 
     expect(
-      await page.evaluate(() => window.document.activeElement.textContent),
+      await page.evaluate(
+        () =>
+          window.document.activeElement.shadowRoot.activeElement.textContent,
+      ),
     ).toEqual(fileUploaderField);
   });
 
@@ -76,9 +79,9 @@ describe('gcds-file-uploader a11y tests', () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<gcds-file-uploader label="Label" uploader-id="contains-label" />',
+      '<gcds-file-uploader label="Label" name="file" uploader-id="contains-label" />',
     );
-    const element = await await page.find('gcds-file-uploader gcds-label');
+    const element = await await page.find('gcds-file-uploader >>> gcds-label');
     expect(element.getAttribute('id')).toEqual('label-for-contains-label');
   });
 });

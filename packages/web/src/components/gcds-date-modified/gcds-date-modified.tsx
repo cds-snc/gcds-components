@@ -5,8 +5,7 @@ import i18n from './i18n/i18n';
 @Component({
   tag: 'gcds-date-modified',
   styleUrl: 'gcds-date-modified.css',
-  shadow: false,
-  scoped: true,
+  shadow: true,
 })
 export class GcdsDateModified {
   @Element() el: HTMLElement;
@@ -50,15 +49,21 @@ export class GcdsDateModified {
     return (
       <Host>
         <dl class="gcds-date-modified">
-          <dt>{type === 'version' ? 'Version ' : i18n[lang].term}</dt>
+          <dt>
+            <gcds-text display="inline" margin-bottom="0">
+              {type === 'version' ? 'Version ' : i18n[lang].term}
+            </gcds-text>
+          </dt>
           <dd>
-            {type === 'version' ? (
-              <slot></slot>
-            ) : (
-              <time>
+            <gcds-text display="inline" margin-bottom="0">
+              {type === 'version' ? (
                 <slot></slot>
-              </time>
-            )}
+              ) : (
+                <time>
+                  <slot></slot>
+                </time>
+              )}
+            </gcds-text>
           </dd>
         </dl>
       </Host>

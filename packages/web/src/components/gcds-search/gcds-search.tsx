@@ -14,8 +14,7 @@ import I18N from './i18n/I18N';
 @Component({
   tag: 'gcds-search',
   styleUrl: 'gcds-search.css',
-  shadow: false,
-  scoped: true,
+  shadow: true
 })
 export class GcdsSearch {
   @Element() el: HTMLElement;

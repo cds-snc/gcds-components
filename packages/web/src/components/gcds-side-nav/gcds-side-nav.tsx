@@ -47,6 +47,37 @@ export class GcdsSideNav {
    */
   @State() navSize: 'desktop' | 'mobile';
 
+  @Listen('focusin', { target: 'document' })
+  async focusInListener(e) {
+    if (this.el.contains(e.target) && !this.navSize) {
+      const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
+      const nav = this.el as HTMLGcdsSideNavElement;
+      const mobileTrigger = this.mobile;
+
+      if (mediaQuery.matches) {
+        this.navSize = 'desktop';
+      } else {
+        this.navSize = 'mobile';
+      }
+
+      await this.updateNavItemQueue(this.el);
+
+      mediaQuery.addEventListener('change', async function (e) {
+        if (e.matches) {
+          nav.updateNavSize('desktop');
+          await nav.updateNavItemQueue(nav);
+
+          if (mobileTrigger.hasAttribute('open')) {
+            mobileTrigger.toggleNav();
+          }
+        } else {
+          nav.updateNavSize('mobile');
+          await nav.updateNavItemQueue(nav);
+        }
+      });
+    }
+  }
+
   @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
     if (!this.el.contains(e.relatedTarget)) {
@@ -132,36 +163,6 @@ export class GcdsSideNav {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
-
-    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-
-    if (mediaQuery.matches) {
-      this.navSize = 'desktop';
-    } else {
-      this.navSize = 'mobile';
-    }
-  }
-
-  async componentDidLoad() {
-    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-    const nav = this.el as HTMLGcdsSideNavElement;
-    const mobileTrigger = this.mobile;
-
-    await this.updateNavItemQueue(this.el);
-
-    mediaQuery.addEventListener('change', async function (e) {
-      if (e.matches) {
-        nav.updateNavSize('desktop');
-        await nav.updateNavItemQueue(nav);
-
-        if (mobileTrigger.hasAttribute('open')) {
-          mobileTrigger.toggleNav();
-        }
-      } else {
-        nav.updateNavSize('mobile');
-        await nav.updateNavItemQueue(nav);
-      }
-    });
   }
 
   render() {
@@ -169,19 +170,25 @@ export class GcdsSideNav {
 
     return (
       <Host>
-        <nav aria-label={`${label}${I18N[lang].navLabel}`}>
+        <nav
+          aria-label={`${label}${I18N[lang].navLabel}`}
+          class="gcds-side-nav"
+        >
           <h2 class="gcds-side-nav__heading">{label}</h2>
-          <gcds-nav-group
-            menuLabel="Menu"
-            closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
-            openTrigger="Menu"
-            class="gcds-mobile-nav"
-            role="menu"
-            ref={element => (this.mobile = element as HTMLGcdsNavGroupElement)}
-            lang={lang}
-          >
-            <slot></slot>
-          </gcds-nav-group>
+          <ul>
+            <gcds-nav-group
+              menuLabel="Menu"
+              closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
+              openTrigger="Menu"
+              class="gcds-mobile-nav"
+              ref={element =>
+                (this.mobile = element as HTMLGcdsNavGroupElement)
+              }
+              lang={lang}
+            >
+              <slot></slot>
+            </gcds-nav-group>
+          </ul>
         </nav>
       </Host>
     );

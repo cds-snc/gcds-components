@@ -53,7 +53,14 @@ export class GcdsStepper {
 
     return (
       <Host>
-        <h6 class="gcds-stepper">{`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}</h6>
+        <gcds-heading
+          tag="h6"
+          class="gcds-stepper"
+          margin-top="0"
+          margin-bottom="300"
+        >
+          {`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}
+        </gcds-heading>
       </Host>
     );
   }

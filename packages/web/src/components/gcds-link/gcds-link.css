@@ -1,17 +1,76 @@
-:host a {
-  cursor: pointer;
-  color: var(--gcds-link-default);
-  text-decoration: underline;
-  text-underline-offset: var(--gcds-link-underline-offset);
-  text-decoration-color: currentColor;
-  text-decoration-thickness: var(--gcds-link-decoration-thickness);
+@layer reset, default, display, size, variant, hover, focus;
 
-  &:hover {
-    color: var(--gcds-link-hover);
-    text-decoration-thickness: var(--gcds-link-hover-decoration-thickness);
+@layer reset {
+  :host {
+    display: inline-block;
+
+    slot {
+      display: initial;
+    }
   }
+}
 
-  &:focus {
+@layer default {
+  :host .gcds-link {
+    cursor: pointer;
+    color: var(--gcds-link-default);
+    text-decoration: underline currentColor
+      var(--gcds-link-decoration-thickness);
+    text-underline-offset: var(--gcds-link-underline-offset);
+    transition: all 0.35s;
+  }
+}
+
+@layer display {
+  :host .gcds-link.d-block {
+    display: block;
+  }
+}
+
+@layer size {
+  :host .gcds-link {
+    &.link--small {
+      font: var(--gcds-link-font-small-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-link-font-small-mobile);
+      }
+    }
+
+    &.link--regular {
+      font: var(--gcds-link-font-regular-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-link-font-regular-mobile);
+      }
+    }
+
+    &.link--inherit {
+      font: inherit;
+    }
+  }
+}
+
+@layer variant {
+  :host .gcds-link.variant-light {
+    color: var(--gcds-link-light);
+  }
+}
+
+@layer hover {
+  @media (hover: hover) {
+    :host .gcds-link:hover {
+      text-decoration-thickness: var(--gcds-link-hover-decoration-thickness);
+
+      &:not(.variant-light) {
+        color: var(--gcds-link-hover);
+      }
+    }
+  }
+}
+
+@layer focus {
+  :host .gcds-link:focus {
     border-radius: var(--gcds-link-focus-border-radius);
     background-color: var(--gcds-link-focus-background);
     color: var(--gcds-link-focus-text);
@@ -19,31 +78,6 @@
     outline: var(--gcds-link-focus-outline-width) solid
       var(--gcds-link-focus-background);
     outline-offset: var(--gcds-link-focus-outline-offset);
-    border-color: var(--gcds-link-focus-background);
     text-decoration: none;
-  }
-
-  &.link--small {
-    font: var(--gcds-link-font-small);
-  }
-
-  &.link--regular {
-    font: var(--gcds-link-font-regular);
-  }
-
-  &.link--inherit {
-    font: inherit;
-  }
-
-  &.variant-light {
-    color: var(--gcds-link-light);
-  }
-
-  &.d-block {
-    display: block;
-  }
-
-  slot {
-    display: initial;
   }
 }

@@ -30,9 +30,9 @@ export class GcdsErrorMessage {
         id={`error-message-${messageId}`}
         class="gcds-error-message-wrapper"
       >
-        <p class="error-message" role="alert">
+        <gcds-text class="error-message" role="alert" margin-bottom="0">
           {message}
-        </p>
+        </gcds-text>
       </Host>
     );
   }

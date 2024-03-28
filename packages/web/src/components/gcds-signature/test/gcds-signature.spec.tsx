@@ -21,12 +21,15 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="en" type="signature" variant="colour">
-        <div class="gcds-signature">
-          Government of Canada
-        </div>
+        <mock:shadow-root>
+          <div class="gcds-signature">
+            Government of Canada
+          </div>
+        </mock:shadow-root>
       </gcds-signature>
     `);
   });
+
   it('renders: Signature - English - has link', async () => {
     const page = await newSpecPage({
       components: [GcdsSignature],
@@ -34,12 +37,15 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="en" type="signature" has-link="true" variant="colour">
-        <a href="https://canada.ca/en.html">
-          Government of Canada
-        </a>
+        <mock:shadow-root>
+          <a class="gcds-signature" href="https://canada.ca/en.html">
+            Government of Canada
+          </a>
+        </mock:shadow-root>
       </gcds-signature>
     `);
   });
+
   it('renders: Signature - French - no link', async () => {
     const page = await newSpecPage({
       components: [GcdsSignature],
@@ -47,12 +53,15 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="fr" type="signature" variant="colour">
-        <div class="gcds-signature">
-          Gouvernement du Canada
-        </div>
+        <mock:shadow-root>
+          <div class="gcds-signature">
+            Gouvernement du Canada
+          </div>
+        </mock:shadow-root>
       </gcds-signature>
     `);
   });
+
   it('renders: Signature - French - has link', async () => {
     const page = await newSpecPage({
       components: [GcdsSignature],
@@ -60,9 +69,11 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="fr" type="signature" has-link="true" variant="colour">
-        <a href="https://canada.ca/fr.html">
-          Gouvernement du Canada
-        </a>
+        <mock:shadow-root>
+          <a class="gcds-signature" href="https://canada.ca/fr.html">
+            Gouvernement du Canada
+          </a>
+        </mock:shadow-root>
       </gcds-signature>
     `);
   });
@@ -74,12 +85,15 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="en" type="wordmark" variant="colour">
-        <div class="gcds-signature">
-          Symbol of the Government of Canada
-        </div>
+        <mock:shadow-root>
+          <div class="gcds-signature">
+            Symbol of the Government of Canada
+          </div>
+        </mock:shadow-root>
       </gcds-signature>
     `);
   });
+
   it('renders: wordmark - French', async () => {
     const page = await newSpecPage({
       components: [GcdsSignature],
@@ -87,9 +101,11 @@ describe('gcds-signature', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-signature lang="fr" type="wordmark" variant="colour">
-        <div class="gcds-signature">
-          Symbole du Gouvernement du Canada
-        </div>
+        <mock:shadow-root>
+          <div class="gcds-signature">
+            Symbole du Gouvernement du Canada
+          </div>
+        </mock:shadow-root>
       </gcds-signature>
     `);
   });

@@ -17,8 +17,7 @@ import { constructHref, constructClasses } from './utils/render';
 @Component({
   tag: 'gcds-pagination',
   styleUrl: 'gcds-pagination.css',
-  shadow: false,
-  scoped: true,
+  shadow: true,
 })
 export class GcdsPagination {
   @Element() el: HTMLElement;
@@ -148,14 +147,14 @@ export class GcdsPagination {
             .replace('{total}', this.totalPages)
             .replace('{label}', this.label)
         : end == 'next'
-        ? `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf
-            .replace('{#}', ++page)
-            .replace('{total}', this.totalPages)
-            .replace('{label}', this.label)}`
-        : `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf
-            .replace('{#}', --page)
-            .replace('{total}', this.totalPages)
-            .replace('{label}', this.label)}`,
+          ? `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf
+              .replace('{#}', ++page)
+              .replace('{total}', this.totalPages)
+              .replace('{label}', this.label)}`
+          : `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf
+              .replace('{#}', --page)
+              .replace('{total}', this.totalPages)
+              .replace('{label}', this.label)}`,
     };
 
     if (page == this.currentPage && !end) {
@@ -379,51 +378,53 @@ export class GcdsPagination {
 
     return (
       <Host role="navigation" aria-label={label}>
-        {display === 'list' ? (
-          <div>
-            <ul class="gcds-pagination-list">{this.listitems}</ul>
-            <ul class="gcds-pagination-list-mobile-prevnext">
-              {this.mobilePrevNext}
+        <div class="gcds-pagination">
+          {display === 'list' ? (
+            <div>
+              <ul class="gcds-pagination-list">{this.listitems}</ul>
+              <ul class="gcds-pagination-list-mobile-prevnext">
+                {this.mobilePrevNext}
+              </ul>
+            </div>
+          ) : (
+            <ul class="gcds-pagination-simple">
+              {previousHref && (
+                <li class="gcds-pagination-simple-previous">
+                  <a
+                    href={previousHref}
+                    aria-label={`${I18N[lang].previousPage}${
+                      previousLabel ? `: ${previousLabel}` : ''
+                    }`}
+                    onClick={e => this.onPageChange(e)}
+                  >
+                    <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
+                    <div class="gcds-pagination-simple-text">
+                      {I18N[lang].previous}
+                    </div>
+                    <span>{previousLabel}</span>
+                  </a>
+                </li>
+              )}
+              {nextHref && (
+                <li class="gcds-pagination-simple-next">
+                  <a
+                    href={nextHref}
+                    aria-label={`${I18N[lang].nextPage}${
+                      nextLabel ? `: ${nextLabel}` : ''
+                    }`}
+                    onClick={e => this.onPageChange(e)}
+                  >
+                    <div class="gcds-pagination-simple-text">
+                      {I18N[lang].next}
+                    </div>
+                    <span>{nextLabel}</span>
+                    <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
+                  </a>
+                </li>
+              )}
             </ul>
-          </div>
-        ) : (
-          <ul class="gcds-pagination-simple">
-            {previousHref && (
-              <li class="gcds-pagination-simple-previous">
-                <a
-                  href={previousHref}
-                  aria-label={`${I18N[lang].previousPage}${
-                    previousLabel ? `: ${previousLabel}` : ''
-                  }`}
-                  onClick={e => this.onPageChange(e)}
-                >
-                  <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
-                  <div class="gcds-pagination-simple-text">
-                    {I18N[lang].previous}
-                  </div>
-                  <span>{previousLabel}</span>
-                </a>
-              </li>
-            )}
-            {nextHref && (
-              <li class="gcds-pagination-simple-next">
-                <a
-                  href={nextHref}
-                  aria-label={`${I18N[lang].nextPage}${
-                    nextLabel ? `: ${nextLabel}` : ''
-                  }`}
-                  onClick={e => this.onPageChange(e)}
-                >
-                  <div class="gcds-pagination-simple-text">
-                    {I18N[lang].next}
-                  </div>
-                  <span>{nextLabel}</span>
-                  <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
-                </a>
-              </li>
-            )}
-          </ul>
-        )}
+          )}
+        </div>
       </Host>
     );
   }

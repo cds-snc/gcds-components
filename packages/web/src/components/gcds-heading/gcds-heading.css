@@ -1,18 +1,11 @@
-@layer reset,
-defaults,
-variants;
+@layer reset, default, limit, margin;
 
 @layer reset {
   :host {
     display: block;
     color: var(--gcds-heading-default-text);
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    :is(h1, h2, h3, h4, h5, h6) {
       box-sizing: border-box;
       margin: 0;
     }
@@ -23,14 +16,9 @@ variants;
   }
 }
 
-@layer defaults {
+@layer default {
   :host {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    :is(h1, h2, h3, h4, h5, h6) {
       text-wrap: balance;
     }
 
@@ -93,14 +81,37 @@ variants;
   }
 }
 
-@layer variants {
+@layer limit {
   :host {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h1.limit {
+      max-width: var(--gcds-heading-character-limit-h1);
+    }
+
+    h2.limit {
+      max-width: var(--gcds-heading-character-limit-h2);
+    }
+
+    h3.limit {
+      max-width: var(--gcds-heading-character-limit-h3);
+    }
+
+    h4.limit {
+      max-width: var(--gcds-heading-character-limit-h4);
+    }
+
+    h5.limit {
+      max-width: var(--gcds-heading-character-limit-h5);
+    }
+
+    h6.limit {
+      max-width: var(--gcds-heading-character-limit-h6);
+    }
+  }
+}
+
+@layer margin {
+  :host {
+    :is(h1, h2, h3, h4, h5, h6) {
       /* Margin top */
       &.mt-0 {
         margin-block-start: var(--gcds-heading-spacing-0);
@@ -230,31 +241,6 @@ variants;
       &.mb-1000 {
         margin-block-end: var(--gcds-heading-spacing-1000);
       }
-    }
-
-    /* Character limit */
-    h1.limit {
-      max-width: var(--gcds-heading-character-limit-h1);
-    }
-
-    h2.limit {
-      max-width: var(--gcds-heading-character-limit-h2);
-    }
-
-    h3.limit {
-      max-width: var(--gcds-heading-character-limit-h3);
-    }
-
-    h4.limit {
-      max-width: var(--gcds-heading-character-limit-h4);
-    }
-
-    h5.limit {
-      max-width: var(--gcds-heading-character-limit-h5);
-    }
-
-    h6.limit {
-      max-width: var(--gcds-heading-character-limit-h6);
     }
   }
 }

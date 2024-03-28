@@ -1,203 +1,238 @@
-:host .gcds-grid {
-  margin: 0;
-  padding: 0;
-  grid-template-columns: var(--gcds-grid-columns, 1fr);
-  gap: var(--gcds-grid-gap);
-  box-sizing: border-box;
+@layer reset, default, display, align, justify, place, equalHeight, tablet, desktop;
 
-  /* Display */
-  &.display-grid-with-cols {
-    display: grid;
-    grid-template-columns: 1fr;
+@layer reset {
+  :host {
+    display: block;
+
+    .gcds-grid {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
   }
+}
 
-  &.display-grid {
-    display: grid;
+@layer default {
+  :host .gcds-grid {
+    grid-template-columns: var(--gcds-grid-columns, 1fr);
+    gap: var(--gcds-grid-gap);
   }
+}
 
-  &.display-inline-grid {
-    display: inline-grid;
+@layer display {
+  :host .gcds-grid {
+    &.display-grid-with-cols {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    &.display-grid {
+      display: grid;
+    }
+
+    &.display-inline-grid {
+      display: inline-grid;
+    }
   }
+}
 
-  /* Align content */
-  &.align-content-center {
-    align-content: center;
+@layer align {
+  :host .gcds-grid {
+    /* Align content */
+    &.align-content-center {
+      align-content: center;
+    }
+
+    &.align-content-end {
+      align-content: end;
+    }
+
+    &.align-content-space-around {
+      align-content: space-around;
+    }
+
+    &.align-content-space-between {
+      align-content: space-between;
+    }
+
+    &.align-content-space-evenly {
+      align-content: space-evenly;
+    }
+
+    &.align-content-start {
+      align-content: start;
+    }
+
+    &.align-content-stretch {
+      align-content: stretch;
+    }
+
+    /* Align items */
+    &.align-items-baseline {
+      align-items: baseline;
+    }
+
+    &.align-items-center {
+      align-items: center;
+    }
+
+    &.align-items-end {
+      align-items: end;
+    }
+
+    &.align-items-start {
+      align-items: start;
+    }
+
+    &.align-items-stretch {
+      align-items: stretch;
+    }
   }
+}
 
-  &.align-content-end {
-    align-content: end;
+@layer justify {
+  :host .gcds-grid {
+    /* Justify content */
+    &.justify-content-center {
+      justify-content: center;
+    }
+
+    &.justify-content-end {
+      justify-content: end;
+    }
+
+    &.justify-content-space-around {
+      justify-content: space-around;
+    }
+
+    &.justify-content-space-between {
+      justify-content: space-between;
+    }
+
+    &.justify-content-space-evenly {
+      justify-content: space-evenly;
+    }
+
+    &.justify-content-start {
+      justify-content: start;
+    }
+
+    &.justify-content-stretch {
+      justify-content: stretch;
+    }
+
+    /* Justify items */
+    &.justify-items-center {
+      justify-items: center;
+    }
+
+    &.justify-items-end {
+      justify-items: end;
+    }
+
+    &.justify-items-start {
+      justify-items: start;
+    }
+
+    &.justify-items-stretch {
+      justify-items: stretch;
+    }
   }
+}
 
-  &.align-content-space-around {
-    align-content: space-around;
+@layer place {
+  :host .gcds-grid {
+    /* Place content */
+    &.place-content-center {
+      place-content: center;
+    }
+
+    &.place-content-end {
+      place-content: end;
+    }
+
+    &.place-content-space-around {
+      place-content: space-around;
+    }
+
+    &.place-content-space-between {
+      place-content: space-between;
+    }
+
+    &.place-content-space-evenly {
+      place-content: space-evenly;
+    }
+
+    &.place-content-start {
+      place-content: start;
+    }
+
+    &.place-content-stretch {
+      place-content: stretch;
+    }
+
+    /* Place items */
+    &.place-items-center {
+      place-items: center;
+    }
+
+    &.place-items-end {
+      place-items: end;
+    }
+
+    &.place-items-start {
+      place-items: start;
+    }
+
+    &.place-items-stretch {
+      place-items: stretch;
+    }
   }
+}
 
-  &.align-content-space-between {
-    align-content: space-between;
-  }
-
-  &.align-content-space-evenly {
-    align-content: space-evenly;
-  }
-
-  &.align-content-start {
-    align-content: start;
-  }
-
-  &.align-content-stretch {
-    align-content: stretch;
-  }
-
-  /* Justify content */
-  &.justify-content-center {
-    justify-content: center;
-  }
-
-  &.justify-content-end {
-    justify-content: end;
-  }
-
-  &.justify-content-space-around {
-    justify-content: space-around;
-  }
-
-  &.justify-content-space-between {
-    justify-content: space-between;
-  }
-
-  &.justify-content-space-evenly {
-    justify-content: space-evenly;
-  }
-
-  &.justify-content-start {
-    justify-content: start;
-  }
-
-  &.justify-content-stretch {
-    justify-content: stretch;
-  }
-
-  /* Place content */
-  &.place-content-center {
-    place-content: center;
-  }
-
-  &.place-content-end {
-    place-content: end;
-  }
-
-  &.place-content-space-around {
-    place-content: space-around;
-  }
-
-  &.place-content-space-between {
-    place-content: space-between;
-  }
-
-  &.place-content-space-evenly {
-    place-content: space-evenly;
-  }
-
-  &.place-content-start {
-    place-content: start;
-  }
-
-  &.place-content-stretch {
-    place-content: stretch;
-  }
-
-  /* Align items */
-  &.align-items-baseline {
-    align-items: baseline;
-  }
-
-  &.align-items-center {
-    align-items: center;
-  }
-
-  &.align-items-end {
-    align-items: end;
-  }
-
-  &.align-items-start {
-    align-items: start;
-  }
-
-  &.align-items-stretch {
-    align-items: stretch;
-  }
-
-  /* Justify items */
-  &.justify-items-center {
-    justify-items: center;
-  }
-
-  &.justify-items-end {
-    justify-items: end;
-  }
-
-  &.justify-items-start {
-    justify-items: start;
-  }
-
-  &.justify-items-stretch {
-    justify-items: stretch;
-  }
-
-  /* Place items */
-  &.place-items-center {
-    place-items: center;
-  }
-
-  &.place-items-end {
-    place-items: end;
-  }
-
-  &.place-items-start {
-    place-items: start;
-  }
-
-  &.place-items-stretch {
-    place-items: stretch;
-  }
-
-  /* Equal row height */
-  &.equal-row-height {
+@layer equalHeight {
+  :host .gcds-grid.equal-row-height {
     grid-auto-rows: 1fr;
     align-items: stretch;
   }
 }
 
-@media screen and (min-width: 48em) {
-  :host .gcds-grid {
-    grid-template-columns: var(
-      --gcds-grid-columns-tablet,
-      var(--gcds-grid-columns, 1fr)
-    );
-
-    /* Grid with cols */
-    &.display-grid-with-cols {
-      grid-template-columns: repeat(
-        var(--gcds-grid-columns-default-tablet),
-        minmax(0, 1fr)
+/* Note: viewport specific style decision */
+@layer tablet {
+  @media screen and (width >= 48em) {
+    :host .gcds-grid {
+      grid-template-columns: var(
+        --gcds-grid-columns-tablet,
+        var(--gcds-grid-columns, 1fr)
       );
+
+      /* Grid with cols */
+      &.display-grid-with-cols {
+        grid-template-columns: repeat(
+          var(--gcds-grid-columns-default-tablet),
+          minmax(0, 1fr)
+        );
+      }
     }
   }
 }
 
-@media screen and (min-width: 64em) {
-  :host .gcds-grid {
-    grid-template-columns: var(
-      --gcds-grid-columns-desktop,
-      var(--gcds-grid-columns-tablet, var(--gcds-grid-columns, 1fr))
-    );
-
-    /* Grid with cols */
-    &.display-grid-with-cols {
-      grid-template-columns: repeat(
-        var(--gcds-grid-columns-default-desktop),
-        minmax(0, 1fr)
+/* Note: viewport specific style decision */
+@layer desktop {
+  @media screen and (width >= 64em) {
+    :host .gcds-grid {
+      grid-template-columns: var(
+        --gcds-grid-columns-desktop,
+        var(--gcds-grid-columns-tablet, var(--gcds-grid-columns, 1fr))
       );
+
+      /* Grid with cols */
+      &.display-grid-with-cols {
+        grid-template-columns: repeat(
+          var(--gcds-grid-columns-default-desktop),
+          minmax(0, 1fr)
+        );
+      }
     }
   }
 }

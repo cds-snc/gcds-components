@@ -27,21 +27,23 @@ export class GcdsDetails {
 
     return (
       <Host>
-        <button
-          aria-expanded={open.toString()}
-          aria-controls="details__panel"
-          onClick={() => (this.open = !open)}
-          class="details__summary"
-          id="details__summary"
-        >
-          {detailsTitle}
-        </button>
-        <div
-          id="details__panel"
-          class="details__panel"
-          aria-labelledby="details__summary"
-        >
-          <slot></slot>
+        <div class="gcds-details">
+          <button
+            aria-expanded={open.toString()}
+            aria-controls="details__panel"
+            onClick={() => (this.open = !open)}
+            class="details__summary"
+            id="details__summary"
+          >
+            {detailsTitle}
+          </button>
+          <div
+            id="details__panel"
+            class="details__panel"
+            aria-labelledby="details__summary"
+          >
+            <slot></slot>
+          </div>
         </div>
       </Host>
     );

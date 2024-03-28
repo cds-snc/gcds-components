@@ -81,11 +81,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-icon](../gcds-icon)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-topic-menu --> gcds-sr-only
   gcds-topic-menu --> gcds-icon
   style gcds-topic-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```

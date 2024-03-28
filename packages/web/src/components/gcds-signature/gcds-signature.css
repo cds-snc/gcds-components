@@ -1,52 +1,62 @@
-gcds-signature {
-  display: block;
-  width: fit-content;
+@layer reset, default, type.signature, type.wordmark, variant.colour, variant.white, desktop;
 
-  .gcds-signature {
-    display: flex;
+@layer reset {
+  :host {
+    display: block;
+    width: fit-content;
   }
+}
 
-  svg {
-    max-width: 100%;
-  }
-
-  &:not([type='wordmark']) {
-    svg {
-      height: var(--gcds-signature-signature-height);
+@layer default {
+  :host {
+    .gcds-signature {
+      display: flex;
     }
 
-    @media screen and (min-width: 64em) {
-      svg {
-        height: 2.125rem;
-      }
-    }
-  }
-
-  &[type='wordmark'] {
     svg {
-      height: var(--gcds-signature-wordmark-height);
-      width: auto;
-    }
-  }
-
-  &:not([variant='white']) {
-    svg {
-      .fip_text {
-        fill: var( --gcds-signature-color-text);
-      }
+      max-width: 100%;
 
       .fip_flag {
         fill: var(--gcds-signature-color-flag);
       }
     }
   }
+}
 
-  &[variant='white'] {
-    svg {
-      .fip_text,
-      .fip_flag {
-        fill: var(--gcds-signature-white-default);
-      }
+@layer type.signature {
+  :host(:not([type='wordmark'])) svg {
+    height: var(--gcds-signature-signature-height);
+  }
+}
+
+@layer type.wordmark {
+  :host([type='wordmark']) svg {
+    height: var(--gcds-signature-wordmark-height);
+    width: auto;
+  }
+}
+
+@layer variant.colour {
+  :host(:not([variant='white'])) svg {
+    .fip_text {
+      fill: var(--gcds-signature-color-text);
+    }
+  }
+}
+
+@layer variant.white {
+  :host([variant='white']) svg {
+    :is(.fip_text) {
+      fill: var(--gcds-signature-white-default);
+    }
+  }
+}
+
+/* Note: viewport specific style decision */
+@layer desktop {
+  :host(:not([type='wordmark'])) svg {
+    @media screen and (width >= 64em) {
+      height: 2.125rem;
     }
   }
 }

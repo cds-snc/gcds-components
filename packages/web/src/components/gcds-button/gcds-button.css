@@ -50,24 +50,6 @@
       color: var(--gcds-button-secondary-default-text);
       border: var(--gcds-button-border-width) solid currentColor;
     }
-
-    /* Button skip to content */
-    &.button--role-skip-to-content {
-      position: absolute;
-      top: var(--gcds-button-skip-top);
-      left: 0;
-      width: inherit;
-      z-index: 3;
-
-      &:not(:focus) {
-        clip: rect(0, 0, 0, 0);
-        height: 0;
-        margin: 0;
-        overflow: hidden;
-        padding: 0;
-        width: 0;
-      }
-    }
   }
 }
 

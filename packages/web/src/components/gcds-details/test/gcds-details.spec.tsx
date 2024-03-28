@@ -10,11 +10,13 @@ describe('gcds-details', () => {
     expect(page.root).toEqualHtml(`
       <gcds-details details-title="Learn more about this topic">
         <mock:shadow-root>
-          <button id="details__summary" class="details__summary" aria-expanded="false" aria-controls="details__panel">
-            Learn more about this topic
-          </button>
-          <div id="details__panel" class="details__panel" aria-labelledby="details__summary">
-            <slot></slot>
+          <div class="gcds-details">
+            <button id="details__summary" class="details__summary" aria-expanded="false" aria-controls="details__panel">
+              Learn more about this topic
+            </button>
+            <div id="details__panel" class="details__panel" aria-labelledby="details__summary">
+              <slot></slot>
+            </div>
           </div>
         </mock:shadow-root>
       </gcds-details>
@@ -29,11 +31,13 @@ describe('gcds-details', () => {
     expect(page.root).toEqualHtml(`
       <gcds-details details-title="Learn more about this topic" open>
         <mock:shadow-root>
-        <button id="details__summary" class="details__summary" aria-expanded="true" aria-controls="details__panel">
-            Learn more about this topic
-          </button>
-          <div id="details__panel" class="details__panel" aria-labelledby="details__summary">
-            <slot></slot>
+          <div class="gcds-details">
+            <button id="details__summary" class="details__summary" aria-expanded="true" aria-controls="details__panel">
+              Learn more about this topic
+            </button>
+            <div id="details__panel" class="details__panel" aria-labelledby="details__summary">
+              <slot></slot>
+            </div>
           </div>
         </mock:shadow-root>
       </gcds-details>

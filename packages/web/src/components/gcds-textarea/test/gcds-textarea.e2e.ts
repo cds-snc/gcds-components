@@ -8,7 +8,7 @@ describe('gcds-textarea', () => {
     await page.setContent(
       '<gcds-textarea label="Label" textarea-id="textarea-renders" value="Textarea Value" />',
     );
-    const element = await await page.find('gcds-textarea textarea');
+    const element = await await page.find('gcds-textarea >>> textarea');
     expect(element.textContent).toEqual('Textarea Value');
   });
 });
@@ -28,7 +28,7 @@ describe('gcds-textarea a11y tests', () => {
     await page.setContent(
       '<gcds-textarea label="Label" textarea-id="textarea-renders" error-message="Field required" />',
     );
-    const element = await await page.find('gcds-textarea textarea');
+    const element = await await page.find('gcds-textarea >>> textarea');
     expect(element.getAttribute('aria-invalid')).toEqual('true');
   });
   /**
@@ -58,13 +58,16 @@ describe('gcds-textarea a11y tests', () => {
     `);
 
     const textareaField = await (
-      await page.find('gcds-textarea textarea')
+      await page.find('gcds-textarea >>> textarea')
     ).innerText;
 
     await page.keyboard.press('Tab');
 
     expect(
-      await page.evaluate(() => window.document.activeElement.textContent),
+      await page.evaluate(
+        () =>
+          window.document.activeElement.shadowRoot.activeElement.textContent,
+      ),
     ).toEqual(textareaField);
   });
 
@@ -77,7 +80,7 @@ describe('gcds-textarea a11y tests', () => {
     await page.setContent(
       '<gcds-textarea label="Label" textarea-id="textarea-renders" />',
     );
-    const element = await await page.find('gcds-textarea gcds-label');
+    const element = await await page.find('gcds-textarea >>> gcds-label');
     expect(element.getAttribute('id')).toEqual('label-for-textarea-renders');
   });
 
@@ -87,7 +90,7 @@ describe('gcds-textarea a11y tests', () => {
     await page.setContent(
       '<gcds-textarea label="Label" textarea-id="textarea-renders" />',
     );
-    const element = await await page.find('gcds-textarea textarea');
+    const element = await await page.find('gcds-textarea >>> textarea');
     expect(element.getAttribute('aria-labelledby')).toEqual(
       'label-for-textarea-renders',
     );

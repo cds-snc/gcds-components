@@ -1,0 +1,49 @@
+diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
+index 767b59b..3a861af 100644
+--- a/node_modules/@stencil/core/internal/client/index.js
++++ b/node_modules/@stencil/core/internal/client/index.js
+@@ -3987,7 +3987,7 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
+ };
+ const styles = /*@__PURE__*/ new Map();
+ const modeResolutionChain = [];
+-const win = typeof window !== 'undefined' ? window : {};
++const win = typeof window !== 'undefined' ? window : globalThis || {};
+ const doc = win.document || { head: {} };
+ const H = (win.HTMLElement || class {
+ });
+diff --git a/node_modules/@stencil/core/mock-doc/index.cjs b/node_modules/@stencil/core/mock-doc/index.cjs
+index 13b322c..e0ed9ac 100644
+--- a/node_modules/@stencil/core/mock-doc/index.cjs
++++ b/node_modules/@stencil/core/mock-doc/index.cjs
+@@ -3304,12 +3304,7 @@ class MockNodeList {
+ }
+ class MockElement extends MockNode {
+     attachInternals() {
+-        return new Proxy({}, {
+-            get: function (_target, prop, _receiver) {
+-                console.error(`NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-Testing components with ElementInternals is fully supported in e2e tests.`);
+-            },
+-        });
++      return { setFormValue: (value) => {}};
+     }
+     constructor(ownerDocument, nodeName, namespaceURI = null) {
+         super(ownerDocument, 1 /* NODE_TYPES.ELEMENT_NODE */, typeof nodeName === 'string' ? nodeName : null, null);
+diff --git a/node_modules/@stencil/core/mock-doc/index.js b/node_modules/@stencil/core/mock-doc/index.js
+index a061891..d9bd7e1 100644
+--- a/node_modules/@stencil/core/mock-doc/index.js
++++ b/node_modules/@stencil/core/mock-doc/index.js
+@@ -3301,12 +3301,7 @@ class MockNodeList {
+ }
+ class MockElement extends MockNode {
+     attachInternals() {
+-        return new Proxy({}, {
+-            get: function (_target, prop, _receiver) {
+-                console.error(`NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-Testing components with ElementInternals is fully supported in e2e tests.`);
+-            },
+-        });
++      return { setFormValue: (value) => {}};
+     }
+     constructor(ownerDocument, nodeName, namespaceURI = null) {
+         super(ownerDocument, 1 /* NODE_TYPES.ELEMENT_NODE */, typeof nodeName === 'string' ? nodeName : null, null);

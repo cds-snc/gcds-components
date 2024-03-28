@@ -29,8 +29,7 @@ import i18n from './i18n/i18n';
 @Component({
   tag: 'gcds-fieldset',
   styleUrl: 'gcds-fieldset.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
 })
 export class GcdsFieldset {
   @Element() el: HTMLElement;

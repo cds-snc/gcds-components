@@ -131,12 +131,12 @@ export class GcdsAlert {
               alertRole === 'danger'
                 ? i18n[lang].label.danger
                 : alertRole === 'info'
-                ? i18n[lang].label.info
-                : alertRole === 'success'
-                ? i18n[lang].label.success
-                : alertRole === 'warning'
-                ? i18n[lang].label.warning
-                : null
+                  ? i18n[lang].label.info
+                  : alertRole === 'success'
+                    ? i18n[lang].label.success
+                    : alertRole === 'warning'
+                      ? i18n[lang].label.warning
+                      : null
             }
           >
             <gcds-container size={isFixed ? container : 'full'} centered>
@@ -146,16 +146,17 @@ export class GcdsAlert {
                     aria-hidden="true"
                     class="alert__icon"
                     size="h5"
+                    margin-right="250"
                     name={
                       alertRole === 'danger'
                         ? 'exclamation-circle'
                         : alertRole === 'info'
-                        ? 'info-circle'
-                        : alertRole === 'success'
-                        ? 'check-circle'
-                        : alertRole === 'warning'
-                        ? 'exclamation-triangle'
-                        : null
+                          ? 'info-circle'
+                          : alertRole === 'success'
+                            ? 'check-circle'
+                            : alertRole === 'warning'
+                              ? 'exclamation-triangle'
+                              : null
                     }
                   />
                 )}

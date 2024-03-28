@@ -1,12 +1,4 @@
-@layer reset,
-defaults,
-variants.display,
-variants.limit,
-variants.margin,
-variants.role,
-variants.size,
-variants.style,
-variants.weight;
+@layer reset, default, display, limit, margin, role, size, style, weight;
 
 @layer reset {
   :host {
@@ -25,7 +17,7 @@ variants.weight;
   }
 }
 
-@layer defaults {
+@layer default {
   :host .gcds-text {
     font: var(--gcds-text-size-body-desktop);
 
@@ -35,7 +27,7 @@ variants.weight;
   }
 }
 
-@layer variants.display {
+@layer display {
   :host {
     &.d-block {
       display: block;
@@ -63,15 +55,13 @@ variants.weight;
   }
 }
 
-@layer variants.limit {
-  :host .gcds-text {
-    &.limit {
-      max-width: var(--gcds-text-character-limit);
-    }
+@layer limit {
+  :host .gcds-text.limit {
+    max-width: var(--gcds-text-character-limit);
   }
 }
 
-@layer variants.margin {
+@layer margin {
   :host .gcds-text {
     /* Margin top */
     &.mt-0 {
@@ -222,14 +212,11 @@ variants.weight;
 }
 
 @layer variants.size {
-  :host .gcds-text {
-    small,
-    ::slotted(small) {
-      font: var(--gcds-text-size-caption-desktop);
+  :host .gcds-text :is(small, ::slotted(small)) {
+    font: var(--gcds-text-size-caption-desktop);
 
-      @media only screen and (width < 48em) {
-        font: var(--gcds-text-size-caption-mobile);
-      }
+    @media only screen and (width < 48em) {
+      font: var(--gcds-text-size-caption-mobile);
     }
   }
 }

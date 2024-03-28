@@ -18,9 +18,15 @@
 
  - [gcds-breadcrumbs](.)
 
+### Depends on
+
+- [gcds-link](../gcds-link)
+
 ### Graph
 ```mermaid
 graph TD;
+  gcds-breadcrumbs-item --> gcds-link
+  gcds-link --> gcds-icon
   gcds-breadcrumbs --> gcds-breadcrumbs-item
   style gcds-breadcrumbs-item fill:#f9f,stroke:#333,stroke-width:4px
 ```

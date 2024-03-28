@@ -54,6 +54,8 @@ Type: `Promise<void>`
 graph TD;
   gcds-fieldset --> gcds-hint
   gcds-fieldset --> gcds-error-message
+  gcds-hint --> gcds-text
+  gcds-error-message --> gcds-text
   style gcds-fieldset fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
