@@ -31,6 +31,7 @@
 
 ### Depends on
 
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-label](../gcds-label)
 - [gcds-button](../gcds-button)
 - [gcds-icon](../gcds-icon)
@@ -38,6 +39,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  gcds-search --> gcds-sr-only
   gcds-search --> gcds-label
   gcds-search --> gcds-button
   gcds-search --> gcds-icon

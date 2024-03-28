@@ -20,11 +20,13 @@
 
 ### Depends on
 
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-link](../gcds-link)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-lang-toggle --> gcds-sr-only
   gcds-lang-toggle --> gcds-link
   gcds-link --> gcds-icon
   gcds-header --> gcds-lang-toggle

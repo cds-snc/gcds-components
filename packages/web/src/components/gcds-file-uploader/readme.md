@@ -55,6 +55,7 @@ Type: `Promise<void>`
 - [gcds-label](../gcds-label)
 - [gcds-hint](../gcds-hint)
 - [gcds-error-message](../gcds-error-message)
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-text](../gcds-text)
 - [gcds-icon](../gcds-icon)
 
@@ -64,6 +65,7 @@ graph TD;
   gcds-file-uploader --> gcds-label
   gcds-file-uploader --> gcds-hint
   gcds-file-uploader --> gcds-error-message
+  gcds-file-uploader --> gcds-sr-only
   gcds-file-uploader --> gcds-text
   gcds-file-uploader --> gcds-icon
   gcds-hint --> gcds-text
