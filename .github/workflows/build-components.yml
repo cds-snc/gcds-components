@@ -4,6 +4,7 @@ on:
   pull_request:
       branches:
         - main
+        - gcds-components-ssr
 
 jobs:
   build-packages:
