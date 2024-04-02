@@ -23,6 +23,10 @@
       "require": "./dist/cjs/index.js",
       "types": "./dist/types/index.d.ts"
     },
+    "./gcds.css": {
+      "import": "./gcds.css",
+      "require": "./gcds.css"
+    },
     "./server": {
       "import": "./dist/esm/lib/server.js",
       "require": "./dist/cjs/lib/server.js",
