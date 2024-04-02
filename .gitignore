@@ -46,4 +46,4 @@ UserInterfaceState.xcuserstate
 
 # Duplicate global css file
 packages/react/gcds.css
-packages/ssr/gcds.css
+packages/react-ssr/gcds.css
