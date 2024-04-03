@@ -52,7 +52,7 @@ body:
         This is the best way to ensure this issue is triaged quickly.
       placeholder: https://github.com/...
     validations:
-      required: true
+      required: false
   - type: textarea
     attributes:
       label: Additional Information
