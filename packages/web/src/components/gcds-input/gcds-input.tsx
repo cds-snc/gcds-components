@@ -332,7 +332,7 @@ export class GcdsInput {
 
     // Use max-width instead of size attribute to keep field responsive
     const style = {
-      maxWidth: `${size * 1.5}ch`,
+      maxWidth: `${size + (type === 'number' ? 2.5 : 3.75)}ch`,
     };
 
     const attrsInput = {
