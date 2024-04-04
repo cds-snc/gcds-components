@@ -14,9 +14,13 @@
   :host .gcds-label {
     display: block;
     max-width: 100%;
-    font: var(--gcds-label-font);
+    font: var(--gcds-label-font-desktop);
     margin: var(--gcds-label-margin) !important;
     cursor: pointer;
+
+    @media only screen and (width < 48em) {
+      font: var(--gcds-label-font-mobile);
+    }
 
     &.label--hidden {
       overflow: hidden;
