@@ -1,5 +1,5 @@
 name: 💡 Feature Request
-description: Suggest an idea for GC Design System
+description: Suggest an idea for GC Design System Components
 title: 'feat: '
 body:
   - type: checkboxes
