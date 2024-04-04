@@ -40,4 +40,4 @@ body:
   - type: textarea
     attributes:
       label: Add other relevant resources.
-      description: Include any other information relevant to your request, like Stack traces, related issues, suggestions how to implement, Stack Overflow links, forum links, etc.
+      description: Include any other information relevant to your request, like stack traces, related issues, suggestions how to implement, Stack Overflow links, forum links, etc.
