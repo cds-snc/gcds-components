@@ -1,0 +1,59 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve GCDS
+title: 'bug: '
+body:
+  - type: checkboxes
+    attributes:
+      label: Prerequisites
+      description: Please ensure you have completed all of the following.
+      options:
+        - label: I have read the [Contributing Guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
+          required: true
+        - label: I agree to follow the [Code of Conduct](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md).
+          required: true
+        - label: I have searched for [existing issues](https://github.com/cds-snc/gcds-components/issues) that already report this problem, without success.
+          required: true
+  - type: input
+    attributes:
+      label: GCDS Components Package and Version
+      description: The version number of GCDS Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Current Behavior
+      description: A clear description of what the bug is and how it manifests. Please provide screenshots as necessary.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A clear description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: System Info
+      description: |
+        Please provide any additional information, such as npm version, browser(s), frameworks, and version(s) as well
+      render: shell
+      placeholder: System, Environment, Browsers. At minimum, tell us if you are using a framework and what version.
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      description: Please explain the steps required to duplicate this issue.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Code Reproduction URL
+      description: |
+        Please reproduce this issue in a blank environment and provide a link to the repo. You may use https://stackblitz.com/ or https://codesandbox.io/ to create a reproduction.
+        This is the best way to ensure this issue is triaged quickly.
+      placeholder: https://github.com/...
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: List any other information that is relevant to your issue. Stack traces, related issues, suggestions on how to fix, Stack Overflow links, forum links, etc.
