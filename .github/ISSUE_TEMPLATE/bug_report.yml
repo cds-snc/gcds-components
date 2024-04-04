@@ -16,7 +16,7 @@ body:
   - type: input
     attributes:
       label: GCDS Components Package and Version
-      description: The version number of GCDS Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x
+      description: The version number of GCDS Components where the issue is occurring. Example\: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x
     validations:
       required: true
   - type: textarea
