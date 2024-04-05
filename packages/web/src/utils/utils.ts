@@ -39,10 +39,10 @@ export const inheritAttributes = (
 export const assignLanguage = (el: HTMLElement) => {
   let lang = '';
   if (!el.getAttribute('lang')) {
-    if (
-      document.documentElement.getAttribute('lang') == 'en' ||
-      !document.documentElement.getAttribute('lang')
-    ) {
+    const closestLangAttribute = closestElement('[lang]', el)?.getAttribute(
+      'lang',
+    );
+    if (closestLangAttribute == 'en' || !closestLangAttribute) {
       lang = 'en';
     } else {
       lang = 'fr';
@@ -54,6 +54,18 @@ export const assignLanguage = (el: HTMLElement) => {
   }
 
   return lang;
+};
+
+// Allows use of closest() function across shadow boundaries
+const closestElement = (selector, el) => {
+  if (el) {
+    return (
+      (el && el != document && el != window && el.closest(selector)) ||
+      closestElement(selector, el.getRootNode().host)
+    );
+  }
+
+  return null;
 };
 
 export const observerConfig = {
