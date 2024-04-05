@@ -12,7 +12,7 @@ export const inheritAttributes = (
   // Check for any aria or data attributes
   for (let i = 0; i < el.attributes.length; i++) {
     const attr = el.attributes[i];
-    if (attr.name.includes('aria-') || attr.name.includes('data-')) {
+    if (attr.name.includes('aria-')) {
       attributeObject[attr.name] = attr.value;
       el.removeAttribute(attr.name);
     }
