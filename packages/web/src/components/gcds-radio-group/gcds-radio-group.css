@@ -22,24 +22,41 @@
 
 @layer default {
   :host .gcds-radio {
-    max-width: 90%;
+    position: relative;
+    max-width: var(--gcds-radio-max-width);
+    min-height: calc(
+      var(--gcds-radio-input-height-and-width) - var(--gcds-radio-padding)
+    );
     font: var(--gcds-radio-font);
     color: var(--gcds-radio-default-text);
     margin: var(--gcds-radio-margin) !important;
+    padding: var(--gcds-radio-padding) 0 0;
     transition: color ease-in-out 0.15s;
-    position: relative;
 
     :is(gcds-label, gcds-hint) {
       padding: var(--gcds-radio-label-padding) !important;
     }
 
-    input {
-      height: var(--gcds-radio-input-height);
-      width: var(--gcds-radio-input-width);
-      left: 0;
-      opacity: 0;
+    gcds-hint::part(hint) {
+      margin: 0;
+    }
+
+    input,
+    gcds-label:before,
+    gcds-label:after {
       position: absolute;
-      top: var(--gcds-radio-top);
+    }
+
+    input,
+    gcds-label:before {
+      top: 0;
+      left: 0;
+      height: var(--gcds-radio-input-height-and-width);
+      width: var(--gcds-radio-input-height-and-width);
+    }
+
+    input {
+      opacity: 0;
     }
 
     gcds-label {
@@ -47,16 +64,11 @@
 
       &:before,
       &:after {
-        position: absolute;
         border-radius: var(--gcds-radio-border-radius);
       }
 
       &:before {
         border: var(--gcds-radio-input-border-width) solid currentcolor;
-        height: var(--gcds-radio-input-height-and-width);
-        width: var(--gcds-radio-input-height-and-width);
-        left: 0;
-        top: var(--gcds-radio-top);
         transition:
           border-color ease-in-out 0.15s,
           box-shadow ease-in-out 0.15s,

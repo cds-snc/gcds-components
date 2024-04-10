@@ -21,8 +21,12 @@
     color: var(--gcds-fieldset-default-text);
 
     legend {
-      font: var(--gcds-fieldset-font);
+      font: var(--gcds-fieldset-font-desktop);
       margin: var(--gcds-fieldset-legend-margin) !important;
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-fieldset-font-mobile);
+      }
 
       .legend__required {
         margin: var(--gcds-fieldset-legend-required-margin) !important;

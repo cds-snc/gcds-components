@@ -10,7 +10,7 @@ describe('gcds-hint', () => {
     expect(root).toEqualHtml(`
       <gcds-hint hint-id="input-renders" hint="Hint Test" id="hint-input-renders">
         <mock:shadow-root>
-          <gcds-text class="gcds-hint" margin-bottom="200">Hint Test</gcds-text>
+          <gcds-text class="gcds-hint" margin-bottom="0" part="hint">Hint Test</gcds-text>
         </mock:shadow-root>
       </gcds-hint>
     `);

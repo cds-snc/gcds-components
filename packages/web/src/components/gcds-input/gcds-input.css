@@ -43,6 +43,16 @@
         border-color ease-in-out 0.15s,
         box-shadow ease-in-out 0.15s,
         outline ease-in-out 0.15s;
+
+      /* Hide number arrows */
+      &[type='number'] {
+        -moz-appearance: textfield;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+      }
     }
   }
 }
