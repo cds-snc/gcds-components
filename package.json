@@ -9,6 +9,7 @@
     "build": "npx lerna run build",
     "test": "npx lerna run test",
     "build-storybook": "npx lerna run build-storybook --scope=@cdssnc/gcds-components",
+    "start": "npx lerna run start --scope=@cdssnc/gcds-components",
     "version": "npx lerna version"
   },
   "dependencies": {
