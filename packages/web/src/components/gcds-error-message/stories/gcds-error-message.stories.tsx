@@ -14,14 +14,14 @@ export default {
         required: true,
       },
     },
-    message: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+
+    // Slots
+    default: {
+      control: {
+        type: 'text',
       },
-      type: {
-        required: true,
+      table: {
+        category: 'Slots | Fentes',
       },
     },
   },
@@ -30,25 +30,19 @@ export default {
 const Template = args =>
   `
 <!-- Web component code (Angular, Vue) -->
-<gcds-error-message
-  message-id="${args.messageId}"
-  message="${args.message}"
->
+<gcds-error-message message-id="${args.messageId}">
+  ${args.default}
 </gcds-error-message>
 
 <!-- React code -->
-<GcdsErrorMessage
-  messageId="${args.messageId}"
-  message="${args.message}"
->
+<GcdsErrorMessage messageId="${args.messageId}">
+  ${args.default}"
 </GcdsErrorMessage>
-`.replace(/\s\snull\n/g, '');
+`;
 
 const TemplatePlayground = args => `
-<gcds-error-message
-  message-id="${args.messageId}"
-  message="${args.message}"
->
+<gcds-error-message message-id="${args.messageId}">
+  ${args.default}
 </gcds-error-message>
 `;
 
@@ -57,7 +51,7 @@ const TemplatePlayground = args => `
 export const Default = Template.bind({});
 Default.args = {
   messageId: 'message-default',
-  message: 'Error message or validation message.',
+  default: 'Error message or validation message.',
 };
 
 // ------ Error message events & props ------
@@ -65,7 +59,7 @@ Default.args = {
 export const Props = Template.bind({});
 Props.args = {
   messageId: 'message-props',
-  message: 'Error message or validation message.',
+  default: 'Error message or validation message.',
 };
 
 // ------ Error message playground ------
@@ -73,5 +67,5 @@ Props.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   messageId: 'message-playground',
-  message: 'Error message or validation message.',
+  default: 'Error message or validation message.',
 };

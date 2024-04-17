@@ -120,7 +120,9 @@ describe('gcds-textarea', () => {
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper gcds-error">
             <gcds-label label-for="textarea-with-error" label="Label" lang="en"></gcds-label>
-            <gcds-error-message messageId="textarea-with-error" message="This is an error message."></gcds-error-message>
+            <gcds-error-message messageId="textarea-with-error">
+              This is an error message.
+            </gcds-error-message>
             <textarea
               id="textarea-with-error"
               class="gcds-error"

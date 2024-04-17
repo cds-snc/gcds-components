@@ -374,7 +374,9 @@ export class GcdsSelect {
           {hint ? <gcds-hint hint-id={selectId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={selectId} message={errorMessage} />
+            <gcds-error-message messageId={selectId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <select

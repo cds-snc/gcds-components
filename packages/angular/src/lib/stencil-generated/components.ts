@@ -246,14 +246,14 @@ export declare interface GcdsDetails extends Components.GcdsDetails {}
 
 
 @ProxyCmp({
-  inputs: ['message', 'messageId']
+  inputs: ['messageId']
 })
 @Component({
   selector: 'gcds-error-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['message', 'messageId'],
+  inputs: ['messageId'],
 })
 export class GcdsErrorMessage {
   protected el: HTMLElement;

@@ -401,7 +401,9 @@ export class GcdsFileUploader {
           {hint ? <gcds-hint hint-id={uploaderId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={uploaderId} message={errorMessage} />
+            <gcds-error-message messageId={uploaderId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <div

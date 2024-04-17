@@ -388,7 +388,9 @@ export class GcdsCheckbox {
           {hint ? <gcds-hint hint-id={checkboxId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={checkboxId} message={errorMessage} />
+            <gcds-error-message messageId={checkboxId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           {parentError ? (

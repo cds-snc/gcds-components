@@ -82,9 +82,11 @@ describe('gcds-checkbox', () => {
           <div class="gcds-checkbox gcds-checkbox--error">
             <input aria-describedby="error-message-checkbox " aria-invalid="true" id="checkbox" name="checkbox" type="checkbox">
             <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
-            <gcds-error-message message="This needs to be checked" messageId="checkbox"></gcds-error-message>
+            <gcds-error-message messageId="checkbox">
+              This needs to be checked
+            </gcds-error-message>
           </div>
-         </mock:shadow-root>
+        </mock:shadow-root>
       </gcds-checkbox>
     `);
   });
@@ -105,7 +107,7 @@ describe('gcds-checkbox', () => {
             <input disabled="" id="checkbox" name="checkbox" type="checkbox">
             <gcds-label label="checkbox" label-for="checkbox" lang="en"></gcds-label>
           </div>
-         </mock:shadow-root>
+        </mock:shadow-root>
       </gcds-checkbox>
     `);
   });

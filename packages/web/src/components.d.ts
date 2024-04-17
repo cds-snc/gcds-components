@@ -272,10 +272,6 @@ export namespace Components {
     }
     interface GcdsErrorMessage {
         /**
-          * Error message for an invalid form field.
-         */
-        "message": string;
-        /**
           * Id attribute for the error message.
          */
         "messageId": string;
@@ -1975,10 +1971,6 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface GcdsErrorMessage {
-        /**
-          * Error message for an invalid form field.
-         */
-        "message": string;
         /**
           * Id attribute for the error message.
          */
