@@ -398,7 +398,7 @@ export class GcdsFileUploader {
         >
           <gcds-label {...attrsLabel} label-for={uploaderId} lang={lang} />
 
-          {hint ? <gcds-hint hint={hint} hint-id={uploaderId} /> : null}
+          {hint ? <gcds-hint hint-id={uploaderId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
             <gcds-error-message messageId={uploaderId} message={errorMessage} />

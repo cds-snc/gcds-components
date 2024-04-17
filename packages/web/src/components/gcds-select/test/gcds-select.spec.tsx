@@ -76,7 +76,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <gcds-hint hint="This is a hint." hint-id="select"></gcds-hint>
+            <gcds-hint hint-id="select">This is a hint.</gcds-hint>
             <select id="select" name="select-name" aria-invalid="false" aria-describedby="hint-select ">
             </select>
           </div>

@@ -53,7 +53,7 @@ describe('gcds-fieldset', () => {
             <legend id="legend-field">
               Fieldset legend
             </legend>
-            <gcds-hint hint="Fieldset hint" hint-id="field"></gcds-hint>
+            <gcds-hint hint-id="field">Fieldset hint</gcds-hint>
             <slot></slot>
           </fieldset>
         </mock:shadow-root>

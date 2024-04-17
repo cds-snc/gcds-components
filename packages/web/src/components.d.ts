@@ -566,10 +566,6 @@ export namespace Components {
     }
     interface GcdsHint {
         /**
-          * Hint displayed below the label and above the input field.
-         */
-        "hint"?: string;
-        /**
           * Id attribute for the hint.
          */
         "hintId": string;
@@ -2305,10 +2301,6 @@ declare namespace LocalJSX {
         "tag": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsHint {
-        /**
-          * Hint displayed below the label and above the input field.
-         */
-        "hint"?: string;
         /**
           * Id attribute for the hint.
          */

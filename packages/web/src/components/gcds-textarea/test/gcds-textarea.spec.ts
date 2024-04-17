@@ -255,7 +255,7 @@ describe('gcds-textarea', () => {
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper">
             <gcds-label label-for="textarea-with-hint" label="Label" lang="en"></gcds-label>
-            <gcds-hint hint="This is a textarea hint." hint-id="textarea-with-hint"></gcds-hint>
+            <gcds-hint hint-id="textarea-with-hint">This is a textarea hint.</gcds-hint>
             <textarea
               id="textarea-with-hint"
               name="textarea-with-hint-name"

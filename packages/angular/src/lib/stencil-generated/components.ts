@@ -490,14 +490,14 @@ export declare interface GcdsHeading extends Components.GcdsHeading {}
 
 
 @ProxyCmp({
-  inputs: ['hint', 'hintId']
+  inputs: ['hintId']
 })
 @Component({
   selector: 'gcds-hint',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['hint', 'hintId'],
+  inputs: ['hintId'],
 })
 export class GcdsHint {
   protected el: HTMLElement;
