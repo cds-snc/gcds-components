@@ -208,7 +208,9 @@ describe('gcds-input', () => {
         <mock:shadow-root>
           <div class="gcds-input-wrapper gcds-error">
             <gcds-label label-for="input-with-error" label="Label" lang="en"></gcds-label>
-            <gcds-error-message messageId="input-with-error" message="This is an error message."></gcds-error-message>
+            <gcds-error-message messageId="input-with-error">
+              This is an error message.
+            </gcds-error-message>
             <input
               type="text"
               id="input-with-error"
@@ -263,7 +265,7 @@ describe('gcds-input', () => {
         <mock:shadow-root>
           <div class="gcds-input-wrapper">
             <gcds-label label-for="input-with-hint" label="Label" lang="en"></gcds-label>
-            <gcds-hint hint-id="input-with-hint" hint="This is an input hint."></gcds-hint>
+            <gcds-hint hint-id="input-with-hint">This is an input hint.</gcds-hint>
             <input
               type="text"
               id="input-with-hint"

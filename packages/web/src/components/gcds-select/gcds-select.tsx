@@ -371,10 +371,12 @@ export class GcdsSelect {
         >
           <gcds-label {...attrsLabel} label-for={selectId} lang={lang} />
 
-          {hint ? <gcds-hint hint={hint} hint-id={selectId} /> : null}
+          {hint ? <gcds-hint hint-id={selectId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={selectId} message={errorMessage} />
+            <gcds-error-message messageId={selectId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <select

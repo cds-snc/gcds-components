@@ -272,10 +272,6 @@ export namespace Components {
     }
     interface GcdsErrorMessage {
         /**
-          * Error message for an invalid form field.
-         */
-        "message": string;
-        /**
           * Id attribute for the error message.
          */
         "messageId": string;
@@ -565,10 +561,6 @@ export namespace Components {
         "tag": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsHint {
-        /**
-          * Hint displayed below the label and above the input field.
-         */
-        "hint"?: string;
         /**
           * Id attribute for the hint.
          */
@@ -1980,10 +1972,6 @@ declare namespace LocalJSX {
     }
     interface GcdsErrorMessage {
         /**
-          * Error message for an invalid form field.
-         */
-        "message": string;
-        /**
           * Id attribute for the error message.
          */
         "messageId": string;
@@ -2305,10 +2293,6 @@ declare namespace LocalJSX {
         "tag": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsHint {
-        /**
-          * Hint displayed below the label and above the input field.
-         */
-        "hint"?: string;
         /**
           * Id attribute for the hint.
          */

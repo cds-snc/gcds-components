@@ -64,7 +64,9 @@ describe('gcds-file-uploader', () => {
         <mock:shadow-root>
           <div class="gcds-file-uploader-wrapper gcds-error">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
-            <gcds-error-message message="This is an error message." messageId="file-uploader"></gcds-error-message>
+            <gcds-error-message messageId="file-uploader">
+              This is an error message.
+            </gcds-error-message>
             <div class="file-uploader__input">
               <button type="button" tabindex="-1">
                 Choose file
@@ -91,7 +93,7 @@ describe('gcds-file-uploader', () => {
         <mock:shadow-root>
           <div class="gcds-file-uploader-wrapper">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
-            <gcds-hint hint="This is a hint." hint-id="file-uploader"></gcds-hint>
+            <gcds-hint hint-id="file-uploader">This is a hint.</gcds-hint>
             <div class="file-uploader__input">
               <button type="button" tabindex="-1">
                 Choose file

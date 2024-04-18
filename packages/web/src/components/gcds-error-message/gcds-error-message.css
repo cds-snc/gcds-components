@@ -3,6 +3,10 @@
 @layer reset {
   :host {
     display: inline-block;
+
+    slot {
+      display: initial;
+    }
   }
 }
 

@@ -219,7 +219,7 @@ export class GcdsRadioGroup {
                 ></gcds-label>
 
                 {radio.hint ? (
-                  <gcds-hint hint={radio.hint} hint-id={radio.id} />
+                  <gcds-hint hint-id={radio.id}>{radio.hint}</gcds-hint>
                 ) : null}
               </div>
             );

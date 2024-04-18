@@ -54,7 +54,9 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper gcds-error">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <gcds-error-message message="This is an error message." messageId="select"></gcds-error-message>
+            <gcds-error-message messageId="select">
+              This is an error message.
+            </gcds-error-message>
             <select id="select" name="select-name" aria-invalid="true" aria-describedby="error-message-select ">
             </select>
           </div>
@@ -76,7 +78,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <gcds-hint hint="This is a hint." hint-id="select"></gcds-hint>
+            <gcds-hint hint-id="select">This is a hint.</gcds-hint>
             <select id="select" name="select-name" aria-invalid="false" aria-describedby="hint-select ">
             </select>
           </div>

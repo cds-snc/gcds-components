@@ -373,10 +373,12 @@ export class GcdsInput {
             lang={lang}
           />
 
-          {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
+          {hint ? <gcds-hint hint-id={inputId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={inputId} message={errorMessage} />
+            <gcds-error-message messageId={inputId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <input

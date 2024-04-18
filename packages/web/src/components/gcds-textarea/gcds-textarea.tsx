@@ -365,10 +365,12 @@ export class GcdsTextarea {
             lang={lang}
           />
 
-          {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
+          {hint ? <gcds-hint hint-id={textareaId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={textareaId} message={errorMessage} />
+            <gcds-error-message messageId={textareaId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <textarea
