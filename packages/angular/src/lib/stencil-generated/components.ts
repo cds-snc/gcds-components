@@ -8,14 +8,14 @@ import { Components } from '@cdssnc/gcds-components';
 
 
 @ProxyCmp({
-  inputs: ['alertRole', 'container', 'dismissHandler', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed']
+  inputs: ['alertRole', 'container', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed']
 })
 @Component({
   selector: 'gcds-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alertRole', 'container', 'dismissHandler', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed'],
+  inputs: ['alertRole', 'container', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed'],
 })
 export class GcdsAlert {
   protected el: HTMLElement;

@@ -19,6 +19,13 @@
 | `"hint"` |             |
 
 
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"hint"` |             |
+
+
 ## Dependencies
 
 ### Used by

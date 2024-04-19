@@ -8,7 +8,7 @@ import {
   State,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -32,11 +32,6 @@ export class GcdsAlert {
    * Defines the max width of the alert content.
    */
   @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' = 'full';
-
-  /**
-   * Callback when the close button is clicked.
-   */
-  @Prop() dismissHandler: Function;
 
   /**
    * Defines the alert heading.
@@ -77,16 +72,6 @@ export class GcdsAlert {
    */
 
   @Event() gcdsDismiss!: EventEmitter<void>;
-
-  private onDismiss = e => {
-    this.gcdsDismiss.emit();
-
-    if (this.dismissHandler) {
-      this.dismissHandler(e);
-    } else {
-      this.isOpen = false;
-    }
-  };
 
   /*
    * Observe lang attribute change
@@ -171,7 +156,12 @@ export class GcdsAlert {
                 {!hideCloseBtn && (
                   <button
                     class="alert__close-btn"
-                    onClick={e => this.onDismiss(e)}
+                    onClick={e => {
+                      const event = emitEvent(e, this.gcdsDismiss);
+                      if (event) {
+                        this.isOpen = false;
+                      }
+                    }}
                     aria-label={i18n[lang].closeBtn}
                   >
                     <gcds-icon aria-hidden="true" name="times" size="text" />

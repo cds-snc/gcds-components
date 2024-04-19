@@ -22,10 +22,6 @@ export namespace Components {
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
-          * Callback when the close button is clicked.
-         */
-        "dismissHandler": Function;
-        /**
           * Defines the alert heading.
          */
         "heading": string;
@@ -1697,10 +1693,6 @@ declare namespace LocalJSX {
           * Defines the max width of the alert content.
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Callback when the close button is clicked.
-         */
-        "dismissHandler"?: Function;
         /**
           * Defines the alert heading.
          */

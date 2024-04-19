@@ -10,7 +10,7 @@ import {
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import { inheritAttributes } from '../../utils/utils';
+import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -193,9 +193,9 @@ export class GcdsLink {
           rel={isExternal ? 'noopener noreferrer' : rel}
           {...inheritedAttributes}
           part="link"
-          onBlur={() => this.gcdsBlur.emit()}
-          onFocus={() => this.gcdsFocus.emit()}
-          onClick={() => this.gcdsClick.emit()}
+          onBlur={e => emitEvent(e, this.gcdsBlur)}
+          onFocus={e => emitEvent(e, this.gcdsFocus)}
+          onClick={e => emitEvent(e, this.gcdsClick, href)}
         >
           <slot></slot>
           {target === '_blank' || external ? (
