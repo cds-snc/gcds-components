@@ -1475,6 +1475,8 @@ declare global {
     };
     interface HTMLGcdsNavGroupElementEventMap {
         "gcdsClick": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
     }
     interface HTMLGcdsNavGroupElement extends Components.GcdsNavGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsNavGroupElementEventMap>(type: K, listener: (this: HTMLGcdsNavGroupElement, ev: GcdsNavGroupCustomEvent<HTMLGcdsNavGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2555,9 +2557,17 @@ declare namespace LocalJSX {
          */
         "menuLabel": string;
         /**
-          * Emitted when the button has focus.
+          * Emitted when the button blurs.
+         */
+        "onGcdsBlur"?: (event: GcdsNavGroupCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has been clicked.
          */
         "onGcdsClick"?: (event: GcdsNavGroupCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has been focus.
+         */
+        "onGcdsFocus"?: (event: GcdsNavGroupCustomEvent<void>) => void;
         /**
           * Has the nav group been expanded
          */

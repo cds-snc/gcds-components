@@ -689,16 +689,24 @@ export class GcdsNavGroup {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsClick']);
+    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
 
 export declare interface GcdsNavGroup extends Components.GcdsNavGroup {
   /**
-   * Emitted when the button has focus.
+   * Emitted when the button has been clicked.
    */
   gcdsClick: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the button has been focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the button blurs.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
 }
 
 

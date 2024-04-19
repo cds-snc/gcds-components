@@ -10,7 +10,7 @@ import {
   Listen,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-nav-group',
@@ -43,9 +43,19 @@ export class GcdsNavGroup {
   @Prop({ reflect: true, mutable: true }) open: boolean = false;
 
   /**
-   * Emitted when the button has focus.
+   * Emitted when the button has been clicked.
    */
   @Event() gcdsClick!: EventEmitter<void>;
+
+  /**
+   * Emitted when the button has been focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the button blurs.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
 
   /**
    * Language of rendered component
@@ -144,9 +154,13 @@ export class GcdsNavGroup {
           aria-expanded={open.toString()}
           ref={element => (this.triggerElement = element as HTMLElement)}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
-          onClick={() => {
-            this.toggleNav();
-            this.gcdsClick.emit();
+          onBlur={e => emitEvent(e, this.gcdsBlur)}
+          onFocus={e => emitEvent(e, this.gcdsFocus)}
+          onClick={e => {
+            const event = emitEvent(e, this.gcdsClick);
+            if (event) {
+              this.toggleNav();
+            }
           }}
         >
           <gcds-icon name={open ? 'angle-up' : 'angle-down'}></gcds-icon>
