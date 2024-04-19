@@ -13,8 +13,8 @@
     "build-storybook": "npx lerna run build-storybook --scope=@cdssnc/gcds-components",
     "version": "npx lerna version",
     "patch:stenciljs": "npx --yes patch-package",
-    "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'"
-    "start": "npx lerna run start --scope=@cdssnc/gcds-components",
+    "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'",
+    "start": "npx lerna run start --scope=@cdssnc/gcds-components"
   },
   "dependencies": {
     "@angular/animations": "^16.2.3",
