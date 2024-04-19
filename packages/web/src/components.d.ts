@@ -822,10 +822,6 @@ export namespace Components {
          */
         "nextLabel": string;
         /**
-          * Function to fire when pageChange event is called
-         */
-        "pageChangeHandler": Function;
-        /**
           * Simple display - href for previous link
          */
         "previousHref": string;
@@ -1512,7 +1508,9 @@ declare global {
         new (): HTMLGcdsNavLinkElement;
     };
     interface HTMLGcdsPaginationElementEventMap {
-        "gcdsPageChange": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": void;
     }
     interface HTMLGcdsPaginationElement extends Components.GcdsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsPaginationElementEventMap>(type: K, listener: (this: HTMLGcdsPaginationElement, ev: GcdsPaginationCustomEvent<HTMLGcdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2621,13 +2619,17 @@ declare namespace LocalJSX {
          */
         "nextLabel"?: string;
         /**
-          * Update value based on user input.
+          * Emitted when the link loses focus.
          */
-        "onGcdsPageChange"?: (event: GcdsPaginationCustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsPaginationCustomEvent<void>) => void;
         /**
-          * Function to fire when pageChange event is called
+          * Emitted when the link has been clicked.
          */
-        "pageChangeHandler"?: Function;
+        "onGcdsClick"?: (event: GcdsPaginationCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsPaginationCustomEvent<void>) => void;
         /**
           * Simple display - href for previous link
          */

@@ -748,30 +748,38 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
 
 
 @ProxyCmp({
-  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'previousHref', 'previousLabel', 'totalPages', 'url']
 })
 @Component({
   selector: 'gcds-pagination',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url'],
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'previousHref', 'previousLabel', 'totalPages', 'url'],
 })
 export class GcdsPagination {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsPageChange']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
 export declare interface GcdsPagination extends Components.GcdsPagination {
   /**
-   * Update value based on user input.
+   * Emitted when the link has focus.
    */
-  gcdsPageChange: EventEmitter<CustomEvent<void>>;
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
 }
 
 

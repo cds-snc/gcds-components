@@ -10,7 +10,7 @@ import {
   h,
 } from '@stencil/core';
 
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import { constructHref, constructClasses } from './utils/render';
 
@@ -93,11 +93,6 @@ export class GcdsPagination {
     }
   }
 
-  /**
-   * Function to fire when pageChange event is called
-   */
-  @Prop() pageChangeHandler: Function;
-
   @State() currentStep: number;
 
   /**
@@ -111,22 +106,24 @@ export class GcdsPagination {
     }
   }
 
-  /*
+  /**
    * Events
    */
 
   /**
-   * Update value based on user input.
+   * Emitted when the link has focus.
    */
-  @Event() gcdsPageChange: EventEmitter<void>;
+  @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onPageChange = e => {
-    if (this.pageChangeHandler) {
-      this.pageChangeHandler(e);
-    }
+  /**
+   * Emitted when the link loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
 
-    this.gcdsPageChange.emit();
-  };
+  /**
+   * Emitted when the link has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
 
   /**
    * Function to constuct <li> and <a> tags for display="list" pagination
@@ -136,11 +133,11 @@ export class GcdsPagination {
     end?: 'next' | 'previous' | null,
     mobile?: boolean,
   ) {
+    const href = this.urlObject
+      ? constructHref(this.urlObject, page, end)
+      : 'javascript:void(0)';
     const linkAttrs = {
-      'onClick': e => this.onPageChange(e),
-      'href': this.urlObject
-        ? constructHref(this.urlObject, page, end)
-        : 'javascript:void(0)',
+      'href': href,
       'aria-label': !end
         ? I18N[this.lang].pageNumberOf
             .replace('{#}', page)
@@ -155,6 +152,9 @@ export class GcdsPagination {
               .replace('{#}', --page)
               .replace('{total}', this.totalPages)
               .replace('{label}', this.label)}`,
+      'onBlur': e => emitEvent(e, this.gcdsBlur),
+      'onFocus': e => emitEvent(e, this.gcdsFocus),
+      'onClick': e => emitEvent(e, this.gcdsClick, { page: page, href }),
     };
 
     if (page == this.currentPage && !end) {
@@ -395,7 +395,9 @@ export class GcdsPagination {
                     aria-label={`${I18N[lang].previousPage}${
                       previousLabel ? `: ${previousLabel}` : ''
                     }`}
-                    onClick={e => this.onPageChange(e)}
+                    onBlur={e => emitEvent(e, this.gcdsBlur)}
+                    onFocus={e => emitEvent(e, this.gcdsFocus)}
+                    onClick={e => emitEvent(e, this.gcdsClick, previousHref)}
                   >
                     <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
                     <div class="gcds-pagination-simple-text">
@@ -412,7 +414,9 @@ export class GcdsPagination {
                     aria-label={`${I18N[lang].nextPage}${
                       nextLabel ? `: ${nextLabel}` : ''
                     }`}
-                    onClick={e => this.onPageChange(e)}
+                    onBlur={e => emitEvent(e, this.gcdsBlur)}
+                    onFocus={e => emitEvent(e, this.gcdsFocus)}
+                    onClick={e => emitEvent(e, this.gcdsClick, nextHref)}
                   >
                     <div class="gcds-pagination-simple-text">
                       {I18N[lang].next}
