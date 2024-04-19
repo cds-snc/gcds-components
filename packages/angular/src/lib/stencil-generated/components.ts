@@ -224,7 +224,8 @@ export declare interface GcdsDateModified extends Components.GcdsDateModified {}
 
 
 @ProxyCmp({
-  inputs: ['detailsTitle', 'open']
+  inputs: ['detailsTitle', 'open'],
+  methods: ['toggle']
 })
 @Component({
   selector: 'gcds-details',
@@ -238,11 +239,25 @@ export class GcdsDetails {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
-export declare interface GcdsDetails extends Components.GcdsDetails {}
+export declare interface GcdsDetails extends Components.GcdsDetails {
+  /**
+   * Emitted when the details has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the details loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the details has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
+}
 
 
 @ProxyCmp({

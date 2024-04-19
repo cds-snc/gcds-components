@@ -1,4 +1,14 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Host,
+  Prop,
+  Method,
+  Event,
+  EventEmitter,
+  h,
+} from '@stencil/core';
+import { emitEvent } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-details',
@@ -22,6 +32,37 @@ export class GcdsDetails {
    */
   @Prop({ mutable: true, reflect: true }) open?: boolean = false;
 
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when the details has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the details loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the details has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
+
+  /**
+   * Methods
+   */
+
+  /*
+   * Toggle details open or closed
+   */
+  @Method()
+  async toggle() {
+    this.open = !this.open;
+  }
+
   render() {
     const { detailsTitle, open } = this;
 
@@ -31,7 +72,14 @@ export class GcdsDetails {
           <button
             aria-expanded={open.toString()}
             aria-controls="details__panel"
-            onClick={() => (this.open = !open)}
+            onBlur={e => emitEvent(e, this.gcdsBlur)}
+            onFocus={e => emitEvent(e, this.gcdsFocus)}
+            onClick={e => {
+              const event = emitEvent(e, this.gcdsClick);
+              if (event) {
+                this.toggle();
+              }
+            }}
             class="details__summary"
             id="details__summary"
           >

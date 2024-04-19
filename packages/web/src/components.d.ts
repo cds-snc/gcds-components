@@ -265,6 +265,10 @@ export namespace Components {
           * Defines if the details panel is open by default or not.
          */
         "open"?: boolean;
+        /**
+          * Methods
+         */
+        "toggle": () => Promise<void>;
     }
     interface GcdsErrorMessage {
         /**
@@ -1167,6 +1171,10 @@ export interface GcdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCheckboxElement;
 }
+export interface GcdsDetailsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsDetailsElement;
+}
 export interface GcdsFieldsetCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsFieldsetElement;
@@ -1298,7 +1306,20 @@ declare global {
         prototype: HTMLGcdsDateModifiedElement;
         new (): HTMLGcdsDateModifiedElement;
     };
+    interface HTMLGcdsDetailsElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": void;
+    }
     interface HTMLGcdsDetailsElement extends Components.GcdsDetails, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsDetailsElementEventMap>(type: K, listener: (this: HTMLGcdsDetailsElement, ev: GcdsDetailsCustomEvent<HTMLGcdsDetailsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsDetailsElementEventMap>(type: K, listener: (this: HTMLGcdsDetailsElement, ev: GcdsDetailsCustomEvent<HTMLGcdsDetailsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsDetailsElement: {
         prototype: HTMLGcdsDetailsElement;
@@ -1957,6 +1978,18 @@ declare namespace LocalJSX {
           * The details title summarizes the panel content.
          */
         "detailsTitle": string;
+        /**
+          * Emitted when the details loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsDetailsCustomEvent<void>) => void;
+        /**
+          * Emitted when the details has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsDetailsCustomEvent<void>) => void;
+        /**
+          * Emitted when the details has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsDetailsCustomEvent<void>) => void;
         /**
           * Defines if the details panel is open by default or not.
          */

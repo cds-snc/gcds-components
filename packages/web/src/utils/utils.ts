@@ -91,6 +91,7 @@ export const elementGroupCheck = name => {
 };
 
 // Emit event with logic to cancel HTML events
+// Returns false if event has been prevented
 export const emitEvent = (
   e: Event,
   customEvent: EventEmitter,
