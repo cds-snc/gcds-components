@@ -153,12 +153,16 @@ export class GcdsCheckbox {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
 
 export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
+  /**
+   * Emitted when the checkbox has focus.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the checkbox has focus.
    */

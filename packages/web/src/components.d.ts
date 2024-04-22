@@ -1259,6 +1259,7 @@ declare global {
         new (): HTMLGcdsCardElement;
     };
     interface HTMLGcdsCheckboxElementEventMap {
+        "gcdsClick": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsChange": any;
@@ -1861,6 +1862,10 @@ declare namespace LocalJSX {
           * Update value based on user input.
          */
         "onGcdsChange"?: (event: GcdsCheckboxCustomEvent<any>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onGcdsClick"?: (event: GcdsCheckboxCustomEvent<void>) => void;
         /**
           * Emitted when the input has a validation error.
          */
