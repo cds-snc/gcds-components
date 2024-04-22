@@ -154,8 +154,8 @@ export class GcdsNavGroup {
           aria-expanded={open.toString()}
           ref={element => (this.triggerElement = element as HTMLElement)}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
-          onBlur={e => emitEvent(e, this.gcdsBlur)}
-          onFocus={e => emitEvent(e, this.gcdsFocus)}
+          onBlur={() => this.gcdsBlur.emit()}
+          onFocus={() => this.gcdsFocus.emit()}
           onClick={e => {
             const event = emitEvent(e, this.gcdsClick);
             if (event) {

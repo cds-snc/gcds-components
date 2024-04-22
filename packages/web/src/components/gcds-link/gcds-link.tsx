@@ -193,8 +193,8 @@ export class GcdsLink {
           rel={isExternal ? 'noopener noreferrer' : rel}
           {...inheritedAttributes}
           part="link"
-          onBlur={e => emitEvent(e, this.gcdsBlur)}
-          onFocus={e => emitEvent(e, this.gcdsFocus)}
+          onBlur={() => this.gcdsBlur.emit()}
+          onFocus={() => this.gcdsFocus.emit()}
           onClick={e => emitEvent(e, this.gcdsClick, href)}
         >
           <slot></slot>

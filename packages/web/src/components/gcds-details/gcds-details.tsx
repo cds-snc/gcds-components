@@ -72,8 +72,8 @@ export class GcdsDetails {
           <button
             aria-expanded={open.toString()}
             aria-controls="details__panel"
-            onBlur={e => emitEvent(e, this.gcdsBlur)}
-            onFocus={e => emitEvent(e, this.gcdsFocus)}
+            onBlur={() => this.gcdsBlur.emit()}
+            onFocus={() => this.gcdsFocus.emit()}
             onClick={e => {
               const event = emitEvent(e, this.gcdsClick);
               if (event) {

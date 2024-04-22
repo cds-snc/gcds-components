@@ -152,8 +152,8 @@ export class GcdsPagination {
               .replace('{#}', --page)
               .replace('{total}', this.totalPages)
               .replace('{label}', this.label)}`,
-      'onBlur': e => emitEvent(e, this.gcdsBlur),
-      'onFocus': e => emitEvent(e, this.gcdsFocus),
+      'onBlur': () => this.gcdsBlur.emit(),
+      'onFocus': () => this.gcdsFocus.emit(),
       'onClick': e => emitEvent(e, this.gcdsClick, { page: page, href }),
     };
 
@@ -395,8 +395,8 @@ export class GcdsPagination {
                     aria-label={`${I18N[lang].previousPage}${
                       previousLabel ? `: ${previousLabel}` : ''
                     }`}
-                    onBlur={e => emitEvent(e, this.gcdsBlur)}
-                    onFocus={e => emitEvent(e, this.gcdsFocus)}
+                    onBlur={() => this.gcdsBlur.emit()}
+                    onFocus={() => this.gcdsFocus.emit()}
                     onClick={e => emitEvent(e, this.gcdsClick, previousHref)}
                   >
                     <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
@@ -414,8 +414,8 @@ export class GcdsPagination {
                     aria-label={`${I18N[lang].nextPage}${
                       nextLabel ? `: ${nextLabel}` : ''
                     }`}
-                    onBlur={e => emitEvent(e, this.gcdsBlur)}
-                    onFocus={e => emitEvent(e, this.gcdsFocus)}
+                    onBlur={() => this.gcdsBlur.emit()}
+                    onFocus={() => this.gcdsFocus.emit()}
                     onClick={e => emitEvent(e, this.gcdsClick, nextHref)}
                   >
                     <div class="gcds-pagination-simple-text">

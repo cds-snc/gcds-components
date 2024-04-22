@@ -108,8 +108,8 @@ export class GcdsNavLink {
           class={`gcds-nav-link gcds-nav-link--${this.navStyle}`}
           href={href}
           {...linkAttrs}
-          onBlur={e => emitEvent(e, this.gcdsBlur)}
-          onFocus={e => emitEvent(e, this.gcdsFocus)}
+          onBlur={() => this.gcdsBlur.emit()}
+          onFocus={() => this.gcdsFocus.emit()}
           onClick={e => emitEvent(e, this.gcdsClick, href)}
           ref={element => (this.linkElement = element as HTMLElement)}
         >
