@@ -1,5 +1,5 @@
 name: 🐛 Bug Report
-description: Create a report to help us improve GCDS
+description: Create a report to help us improve GC Design System
 title: 'bug: '
 body:
   - type: checkboxes
@@ -15,8 +15,8 @@ body:
           required: true
   - type: input
     attributes:
-      label: GCDS Components Package and Version
-      description: "The version number of GCDS Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x"
+      label: GC Design System Components Package and Version
+      description: "The version number of GC Design System Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x"
     validations:
       required: true
   - type: textarea
