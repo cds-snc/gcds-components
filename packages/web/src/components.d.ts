@@ -880,13 +880,17 @@ export namespace Components {
          */
         "placeholder": string;
         /**
-          * Set the name of the search input
+          * Set the id of the search input
          */
         "searchId": string;
         /**
           * Set a list of predefined search terms
          */
         "suggested": Array<string>;
+        /**
+          * Set the value of the search input
+         */
+        "value": string;
     }
     interface GcdsSelect {
         /**
@@ -1552,7 +1556,7 @@ declare global {
         new (): HTMLGcdsRadioGroupElement;
     };
     interface HTMLGcdsSearchElementEventMap {
-        "gcdsChange": object;
+        "gcdsChange": string;
         "gcdsFocus": object;
         "gcdsBlur": object;
         "gcdsSubmit": object;
@@ -2703,7 +2707,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the search input value has changed.
          */
-        "onGcdsChange"?: (event: GcdsSearchCustomEvent<object>) => void;
+        "onGcdsChange"?: (event: GcdsSearchCustomEvent<string>) => void;
         /**
           * Emitted when the search input value has gained focus.
          */
@@ -2717,13 +2721,17 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Set the name of the search input
+          * Set the id of the search input
          */
         "searchId"?: string;
         /**
           * Set a list of predefined search terms
          */
         "suggested"?: Array<string>;
+        /**
+          * Set the value of the search input
+         */
+        "value"?: string;
     }
     interface GcdsSelect {
         /**

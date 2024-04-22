@@ -842,14 +842,14 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
 
 
 @ProxyCmp({
-  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested']
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested', 'value']
 })
 @Component({
   selector: 'gcds-search',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested'],
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested', 'value'],
 })
 export class GcdsSearch {
   protected el: HTMLElement;
@@ -865,7 +865,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   /**
    * Emitted when the search input value has changed.
    */
-  gcdsChange: EventEmitter<CustomEvent<object>>;
+  gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the search input value has gained focus.
    */
