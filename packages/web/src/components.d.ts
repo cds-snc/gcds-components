@@ -52,10 +52,6 @@ export namespace Components {
     }
     interface GcdsButton {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
           * The buttonId attribute specifies the id for a <button> element.
          */
         "buttonId": string;
@@ -64,10 +60,6 @@ export namespace Components {
          */
         "buttonRole": 'primary' | 'secondary' | 'danger';
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler": Function;
-        /**
           * The disabled attribute for a <button> element.
          */
         "disabled": boolean;
@@ -75,14 +67,6 @@ export namespace Components {
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download": string | undefined;
-        /**
-          * Focus element
-         */
-        "focusElement": () => Promise<void>;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
         /**
           * The href attribute specifies the URL of the page the link goes to
          */
@@ -1250,6 +1234,7 @@ declare global {
         new (): HTMLGcdsBreadcrumbsItemElement;
     };
     interface HTMLGcdsButtonElementEventMap {
+        "gcdsClick": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
@@ -1753,10 +1738,6 @@ declare namespace LocalJSX {
     }
     interface GcdsButton {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
           * The buttonId attribute specifies the id for a <button> element.
          */
         "buttonId"?: string;
@@ -1765,10 +1746,6 @@ declare namespace LocalJSX {
          */
         "buttonRole"?: 'primary' | 'secondary' | 'danger';
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler"?: Function;
-        /**
           * The disabled attribute for a <button> element.
          */
         "disabled"?: boolean;
@@ -1776,10 +1753,6 @@ declare namespace LocalJSX {
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download"?: string | undefined;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
         /**
           * The href attribute specifies the URL of the page the link goes to
          */
@@ -1792,6 +1765,10 @@ declare namespace LocalJSX {
           * Emitted when the button loses focus.
          */
         "onGcdsBlur"?: (event: GcdsButtonCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsButtonCustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */

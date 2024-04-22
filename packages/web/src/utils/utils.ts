@@ -99,8 +99,8 @@ export const emitEvent = (
 ) => {
   const event = customEvent.emit(value);
 
-  // Was the custom event interrupted
-  if (event.defaultPrevented) {
+  // Was the custom or native event interrupted
+  if (event.defaultPrevented || e.defaultPrevented) {
     // Stop native HTML event in shadow-dom
     e.preventDefault();
     return false;

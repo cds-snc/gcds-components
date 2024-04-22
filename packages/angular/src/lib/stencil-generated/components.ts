@@ -80,27 +80,30 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type'],
-  methods: ['focusElement']
+  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type']
 })
 @Component({
   selector: 'gcds-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type'],
+  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type'],
 })
 export class GcdsButton {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
 
 export declare interface GcdsButton extends Components.GcdsButton {
+  /**
+   * Emitted when the button has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the button has focus.
    */
