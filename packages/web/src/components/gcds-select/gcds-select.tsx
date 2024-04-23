@@ -161,16 +161,12 @@ export class GcdsSelect {
   /**
    * Update value based on user selection.
    */
-  @Event() gcdsSelectChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter;
 
   /**
    * Emitted when the select has focus.
    */
   @Event() gcdsFocus!: EventEmitter<void>;
-
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
 
   /**
    * Emitted when the select loses focus.
@@ -230,7 +226,7 @@ export class GcdsSelect {
     this.value = val;
     this.internals.setFormValue(val);
 
-    this.gcdsSelectChange.emit(this.value);
+    this.gcdsChange.emit(this.value);
   };
 
   /**
@@ -383,8 +379,8 @@ export class GcdsSelect {
             {...attrsSelect}
             id={selectId}
             onBlur={() => this.onBlur()}
-            onFocus={() => this.onFocus()}
-            onChange={e => this.handleChange(e)}
+            onFocus={() => this.gcdsFocus.emit()}
+            onInput={e => this.handleChange(e)}
             aria-invalid={hasError ? 'true' : 'false'}
             ref={element => (this.shadowElement = element as HTMLSelectElement)}
           >

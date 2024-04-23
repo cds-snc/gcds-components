@@ -25,14 +25,14 @@
 
 ## Events
 
-| Event                    | Description                                    | Type                  |
-| ------------------------ | ---------------------------------------------- | --------------------- |
-| `gcdsBlur`               | Emitted when the uploader loses focus.         | `CustomEvent<void>`   |
-| `gcdsError`              | Emitted when the input has a validation error. | `CustomEvent<object>` |
-| `gcdsFileUploaderChange` | Update value based on user selection.          | `CustomEvent<any>`    |
-| `gcdsFocus`              | Emitted when the uploader has focus.           | `CustomEvent<void>`   |
-| `gcdsRemoveFile`         | Remove file and update value.                  | `CustomEvent<any>`    |
-| `gcdsValid`              | Emitted when the input has a validation error. | `CustomEvent<object>` |
+| Event            | Description                                    | Type                  |
+| ---------------- | ---------------------------------------------- | --------------------- |
+| `gcdsBlur`       | Emitted when the uploader loses focus.         | `CustomEvent<void>`   |
+| `gcdsChange`     | Update value based on user selection.          | `CustomEvent<any>`    |
+| `gcdsError`      | Emitted when the input has a validation error. | `CustomEvent<object>` |
+| `gcdsFocus`      | Emitted when the uploader has focus.           | `CustomEvent<void>`   |
+| `gcdsRemoveFile` | Remove file and update value.                  | `CustomEvent<any>`    |
+| `gcdsValid`      | Emitted when the input has a validation error. | `CustomEvent<object>` |
 
 
 ## Methods

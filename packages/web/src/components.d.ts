@@ -1346,7 +1346,7 @@ declare global {
     interface HTMLGcdsFileUploaderElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsFileUploaderChange": any;
+        "gcdsChange": any;
         "gcdsRemoveFile": any;
         "gcdsError": object;
         "gcdsValid": object;
@@ -1562,7 +1562,7 @@ declare global {
         new (): HTMLGcdsSearchElement;
     };
     interface HTMLGcdsSelectElementEventMap {
-        "gcdsSelectChange": any;
+        "gcdsChange": any;
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsError": object;
@@ -2087,13 +2087,13 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
+          * Update value based on user selection.
+         */
+        "onGcdsChange"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
+        /**
           * Emitted when the input has a validation error.
          */
         "onGcdsError"?: (event: GcdsFileUploaderCustomEvent<object>) => void;
-        /**
-          * Update value based on user selection.
-         */
-        "onGcdsFileUploaderChange"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
         /**
           * Emitted when the uploader has focus.
          */
@@ -2745,6 +2745,10 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
+          * Update value based on user selection.
+         */
+        "onGcdsChange"?: (event: GcdsSelectCustomEvent<any>) => void;
+        /**
           * Emitted when the select has a validation error.
          */
         "onGcdsError"?: (event: GcdsSelectCustomEvent<object>) => void;
@@ -2752,10 +2756,6 @@ declare namespace LocalJSX {
           * Emitted when the select has focus.
          */
         "onGcdsFocus"?: (event: GcdsSelectCustomEvent<void>) => void;
-        /**
-          * Update value based on user selection.
-         */
-        "onGcdsSelectChange"?: (event: GcdsSelectCustomEvent<any>) => void;
         /**
           * Emitted when the select has a validation error.
          */

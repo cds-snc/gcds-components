@@ -173,10 +173,6 @@ export class GcdsTextarea {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
-
   /**
    * Emitted when the textarea loses focus.
    */
@@ -378,7 +374,7 @@ export class GcdsTextarea {
             class={hasError ? 'gcds-error' : null}
             id={textareaId}
             onBlur={() => this.onBlur()}
-            onFocus={() => this.onFocus()}
+            onFocus={() => this.gcdsFocus.emit()}
             onInput={e => this.handleChange(e)}
             aria-labelledby={`label-for-${textareaId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}

@@ -162,10 +162,6 @@ export class GcdsFileUploader {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
-
   /**
    * Emitted when the uploader loses focus.
    */
@@ -182,7 +178,7 @@ export class GcdsFileUploader {
   /**
    * Update value based on user selection.
    */
-  @Event() gcdsFileUploaderChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter;
 
   handleChange = e => {
     const filesContainer: string[] = [];
@@ -203,7 +199,7 @@ export class GcdsFileUploader {
       }, 100);
     }
 
-    this.gcdsFileUploaderChange.emit(this.value);
+    this.gcdsChange.emit(this.value);
   };
 
   /**
@@ -423,7 +419,7 @@ export class GcdsFileUploader {
               id={uploaderId}
               {...attrsInput}
               onBlur={() => this.onBlur()}
-              onFocus={() => this.onFocus()}
+              onFocus={() => this.gcdsFocus.emit()}
               onChange={e => this.handleChange(e)}
               aria-invalid={hasError ? 'true' : 'false'}
               ref={element =>

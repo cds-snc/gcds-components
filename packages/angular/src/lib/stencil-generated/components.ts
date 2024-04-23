@@ -368,7 +368,7 @@ export class GcdsFileUploader {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsFileUploaderChange', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -385,7 +385,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   /**
    * Update value based on user selection.
    */
-  gcdsFileUploaderChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
    * Remove file and update value.
    */
@@ -904,7 +904,7 @@ export class GcdsSelect {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsSelectChange', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -913,7 +913,7 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
   /**
    * Update value based on user selection.
    */
-  gcdsSelectChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
    * Emitted when the select has focus.
    */
