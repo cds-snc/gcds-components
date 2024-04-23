@@ -1523,7 +1523,7 @@ declare global {
         new (): HTMLGcdsPhaseBannerElement;
     };
     interface HTMLGcdsRadioGroupElementEventMap {
-        "gcdsRadioChange": void;
+        "gcdsChange": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
@@ -2657,13 +2657,13 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
         /**
+          * Emitted when the radio button is checked
+         */
+        "onGcdsChange"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
+        /**
           * Emitted when the radio has focus.
          */
         "onGcdsFocus"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
-        /**
-          * Emitted when the radio button is checked
-         */
-        "onGcdsRadioChange"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
         /**
           * Options to render radio buttons
          */

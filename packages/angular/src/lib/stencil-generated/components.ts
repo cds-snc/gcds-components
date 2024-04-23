@@ -827,7 +827,7 @@ export class GcdsRadioGroup {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsRadioChange', 'gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
@@ -836,7 +836,7 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
   /**
    * Emitted when the radio button is checked
    */
-  gcdsRadioChange: EventEmitter<CustomEvent<void>>;
+  gcdsChange: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the radio has focus.
    */
