@@ -65,7 +65,7 @@ import { ${defineCustomElementFunction} } from '${importPath}';
 import { omitEventCallbacks, useEventListeners, gcdsAttributeGenerator } from './lib/utils.js';
 import { GcdsWrapper } from './lib/client';
 
-if (!customElements.get('${elementName}')) {
+if(typeof customElements !== 'undefined' && !customElements.get('${elementName}')) {
   ${defineCustomElementFunction}();
 }
 
