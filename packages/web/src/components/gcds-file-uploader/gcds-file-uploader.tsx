@@ -162,10 +162,6 @@ export class GcdsFileUploader {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
-
   /**
    * Emitted when the uploader loses focus.
    */
@@ -180,11 +176,16 @@ export class GcdsFileUploader {
   };
 
   /**
-   * Update value based on user selection.
+   * Emitted when the user has made a file selection.
    */
-  @Event() gcdsFileUploaderChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter;
 
-  handleChange = e => {
+  /**
+   * Emitted when the user has uploaded a file.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  handleInput = e => {
     const filesContainer: string[] = [];
     const files = Array.from(e.target.files);
 
@@ -203,7 +204,7 @@ export class GcdsFileUploader {
       }, 100);
     }
 
-    this.gcdsFileUploaderChange.emit(this.value);
+    this.gcdsInput.emit(this.value);
   };
 
   /**
@@ -423,8 +424,9 @@ export class GcdsFileUploader {
               id={uploaderId}
               {...attrsInput}
               onBlur={() => this.onBlur()}
-              onFocus={() => this.onFocus()}
-              onChange={e => this.handleChange(e)}
+              onFocus={() => this.gcdsFocus.emit()}
+              onInput={e => this.handleInput(e)}
+              onChange={e => this.handleInput(e)}
               aria-invalid={hasError ? 'true' : 'false'}
               ref={element =>
                 (this.shadowElement = element as HTMLInputElement)

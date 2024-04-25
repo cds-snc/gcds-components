@@ -15,11 +15,11 @@
 
 ## Events
 
-| Event             | Description                              | Type                |
-| ----------------- | ---------------------------------------- | ------------------- |
-| `gcdsBlur`        | Emitted when the radio loses focus.      | `CustomEvent<void>` |
-| `gcdsFocus`       | Emitted when the radio has focus.        | `CustomEvent<void>` |
-| `gcdsRadioChange` | Emitted when the radio button is checked | `CustomEvent<void>` |
+| Event        | Description                              | Type                |
+| ------------ | ---------------------------------------- | ------------------- |
+| `gcdsBlur`   | Emitted when the radio loses focus.      | `CustomEvent<void>` |
+| `gcdsChange` | Emitted when the radio button is checked | `CustomEvent<void>` |
+| `gcdsFocus`  | Emitted when the radio has focus.        | `CustomEvent<void>` |
 
 
 ## Dependencies

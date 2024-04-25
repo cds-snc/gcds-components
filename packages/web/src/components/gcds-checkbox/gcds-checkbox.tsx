@@ -15,6 +15,7 @@ import {
 import {
   assignLanguage,
   elementGroupCheck,
+  emitEvent,
   inheritAttributes,
   observerConfig,
 } from '../../utils/utils';
@@ -180,13 +181,14 @@ export class GcdsCheckbox {
    */
 
   /**
+   * Emitted when the checkbox has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
+
+  /**
    * Emitted when the checkbox has focus.
    */
   @Event() gcdsFocus!: EventEmitter<void>;
-
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
 
   /**
    * Emitted when the checkbox loses focus.
@@ -207,6 +209,16 @@ export class GcdsCheckbox {
   @Event() gcdsChange: EventEmitter;
 
   /**
+   * Emitted when the input has a validation error.
+   */
+  @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+   * Emitted when the input has a validation error.
+   */
+  @Event() gcdsValid!: EventEmitter<object>;
+
+  /**
    * Call any active validators
    */
   @Method()
@@ -225,16 +237,6 @@ export class GcdsCheckbox {
       this.gcdsValid.emit({ id: `#${this.checkboxId}` });
     }
   }
-
-  /**
-   * Emitted when the input has a validation error.
-   */
-  @Event() gcdsError!: EventEmitter<object>;
-
-  /**
-   * Emitted when the input has a validation error.
-   */
-  @Event() gcdsValid!: EventEmitter<object>;
 
   @Listen('submit', { target: 'document' })
   submitListener(e) {
@@ -374,8 +376,9 @@ export class GcdsCheckbox {
             type="checkbox"
             {...attrsInput}
             onBlur={() => this.onBlur()}
-            onFocus={() => this.onFocus()}
-            onClick={e => this.onChange(e)}
+            onFocus={() => this.gcdsFocus.emit()}
+            onChange={e => this.onChange(e)}
+            onClick={e => emitEvent(e, this.gcdsClick)}
             ref={element => (this.shadowElement = element as HTMLElement)}
           />
 

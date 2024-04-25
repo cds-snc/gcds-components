@@ -24,13 +24,14 @@
 
 ## Events
 
-| Event              | Description                                     | Type                  |
-| ------------------ | ----------------------------------------------- | --------------------- |
-| `gcdsBlur`         | Emitted when the select loses focus.            | `CustomEvent<void>`   |
-| `gcdsError`        | Emitted when the select has a validation error. | `CustomEvent<object>` |
-| `gcdsFocus`        | Emitted when the select has focus.              | `CustomEvent<void>`   |
-| `gcdsSelectChange` | Update value based on user selection.           | `CustomEvent<any>`    |
-| `gcdsValid`        | Emitted when the select has a validation error. | `CustomEvent<object>` |
+| Event        | Description                                     | Type                  |
+| ------------ | ----------------------------------------------- | --------------------- |
+| `gcdsBlur`   | Emitted when the select loses focus.            | `CustomEvent<void>`   |
+| `gcdsChange` | Emitted when the select value has changed.      | `CustomEvent<any>`    |
+| `gcdsError`  | Emitted when the select has a validation error. | `CustomEvent<object>` |
+| `gcdsFocus`  | Emitted when the select has focus.              | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the select has received input.     | `CustomEvent<any>`    |
+| `gcdsValid`  | Emitted when the select has a validation error. | `CustomEvent<object>` |
 
 
 ## Methods

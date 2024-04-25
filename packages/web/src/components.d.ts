@@ -22,10 +22,6 @@ export namespace Components {
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
-          * Callback when the close button is clicked.
-         */
-        "dismissHandler": Function;
-        /**
           * Defines the alert heading.
          */
         "heading": string;
@@ -56,10 +52,6 @@ export namespace Components {
     }
     interface GcdsButton {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler": Function;
-        /**
           * The buttonId attribute specifies the id for a <button> element.
          */
         "buttonId": string;
@@ -68,10 +60,6 @@ export namespace Components {
          */
         "buttonRole": 'primary' | 'secondary' | 'danger';
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler": Function;
-        /**
           * The disabled attribute for a <button> element.
          */
         "disabled": boolean;
@@ -79,14 +67,6 @@ export namespace Components {
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download": string | undefined;
-        /**
-          * Focus element
-         */
-        "focusElement": () => Promise<void>;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler": Function;
         /**
           * The href attribute specifies the URL of the page the link goes to
          */
@@ -269,6 +249,10 @@ export namespace Components {
           * Defines if the details panel is open by default or not.
          */
         "open"?: boolean;
+        /**
+          * Methods
+         */
+        "toggle": () => Promise<void>;
     }
     interface GcdsErrorMessage {
         /**
@@ -822,10 +806,6 @@ export namespace Components {
          */
         "nextLabel": string;
         /**
-          * Function to fire when pageChange event is called
-         */
-        "pageChangeHandler": Function;
-        /**
           * Simple display - href for previous link
          */
         "previousHref": string;
@@ -884,13 +864,17 @@ export namespace Components {
          */
         "placeholder": string;
         /**
-          * Set the name of the search input
+          * Set the id of the search input
          */
         "searchId": string;
         /**
           * Set a list of predefined search terms
          */
         "suggested": Array<string>;
+        /**
+          * Set the value of the search input
+         */
+        "value": string;
     }
     interface GcdsSelect {
         /**
@@ -1171,6 +1155,10 @@ export interface GcdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCheckboxElement;
 }
+export interface GcdsDetailsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsDetailsElement;
+}
 export interface GcdsFieldsetCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsFieldsetElement;
@@ -1246,6 +1234,7 @@ declare global {
         new (): HTMLGcdsBreadcrumbsItemElement;
     };
     interface HTMLGcdsButtonElementEventMap {
+        "gcdsClick": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
@@ -1270,6 +1259,7 @@ declare global {
         new (): HTMLGcdsCardElement;
     };
     interface HTMLGcdsCheckboxElementEventMap {
+        "gcdsClick": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsChange": any;
@@ -1302,7 +1292,20 @@ declare global {
         prototype: HTMLGcdsDateModifiedElement;
         new (): HTMLGcdsDateModifiedElement;
     };
+    interface HTMLGcdsDetailsElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": void;
+    }
     interface HTMLGcdsDetailsElement extends Components.GcdsDetails, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsDetailsElementEventMap>(type: K, listener: (this: HTMLGcdsDetailsElement, ev: GcdsDetailsCustomEvent<HTMLGcdsDetailsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsDetailsElementEventMap>(type: K, listener: (this: HTMLGcdsDetailsElement, ev: GcdsDetailsCustomEvent<HTMLGcdsDetailsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsDetailsElement: {
         prototype: HTMLGcdsDetailsElement;
@@ -1343,7 +1346,8 @@ declare global {
     interface HTMLGcdsFileUploaderElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsFileUploaderChange": any;
+        "gcdsChange": any;
+        "gcdsInput": any;
         "gcdsRemoveFile": any;
         "gcdsError": object;
         "gcdsValid": object;
@@ -1407,6 +1411,7 @@ declare global {
     interface HTMLGcdsInputElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
+        "gcdsInput": any;
         "gcdsChange": any;
         "gcdsError": object;
         "gcdsValid": object;
@@ -1458,6 +1463,8 @@ declare global {
     };
     interface HTMLGcdsNavGroupElementEventMap {
         "gcdsClick": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
     }
     interface HTMLGcdsNavGroupElement extends Components.GcdsNavGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsNavGroupElementEventMap>(type: K, listener: (this: HTMLGcdsNavGroupElement, ev: GcdsNavGroupCustomEvent<HTMLGcdsNavGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1493,7 +1500,9 @@ declare global {
         new (): HTMLGcdsNavLinkElement;
     };
     interface HTMLGcdsPaginationElementEventMap {
-        "gcdsPageChange": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": void;
     }
     interface HTMLGcdsPaginationElement extends Components.GcdsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsPaginationElementEventMap>(type: K, listener: (this: HTMLGcdsPaginationElement, ev: GcdsPaginationCustomEvent<HTMLGcdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1516,7 +1525,7 @@ declare global {
         new (): HTMLGcdsPhaseBannerElement;
     };
     interface HTMLGcdsRadioGroupElementEventMap {
-        "gcdsRadioChange": void;
+        "gcdsChange": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
@@ -1535,7 +1544,7 @@ declare global {
         new (): HTMLGcdsRadioGroupElement;
     };
     interface HTMLGcdsSearchElementEventMap {
-        "gcdsChange": object;
+        "gcdsChange": string;
         "gcdsFocus": object;
         "gcdsBlur": object;
         "gcdsSubmit": object;
@@ -1555,7 +1564,8 @@ declare global {
         new (): HTMLGcdsSearchElement;
     };
     interface HTMLGcdsSelectElementEventMap {
-        "gcdsSelectChange": any;
+        "gcdsChange": any;
+        "gcdsInput": any;
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsError": object;
@@ -1609,6 +1619,7 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsChange": any;
+        "gcdsInput": any;
         "gcdsError": object;
         "gcdsValid": object;
     }
@@ -1698,10 +1709,6 @@ declare namespace LocalJSX {
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
-          * Callback when the close button is clicked.
-         */
-        "dismissHandler"?: Function;
-        /**
           * Defines the alert heading.
          */
         "heading": string;
@@ -1736,10 +1743,6 @@ declare namespace LocalJSX {
     }
     interface GcdsButton {
         /**
-          * Custom callback function on blur event
-         */
-        "blurHandler"?: Function;
-        /**
           * The buttonId attribute specifies the id for a <button> element.
          */
         "buttonId"?: string;
@@ -1748,10 +1751,6 @@ declare namespace LocalJSX {
          */
         "buttonRole"?: 'primary' | 'secondary' | 'danger';
         /**
-          * Custom callback function on click event
-         */
-        "clickHandler"?: Function;
-        /**
           * The disabled attribute for a <button> element.
          */
         "disabled"?: boolean;
@@ -1759,10 +1758,6 @@ declare namespace LocalJSX {
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download"?: string | undefined;
-        /**
-          * Custom callback function on focus event
-         */
-        "focusHandler"?: Function;
         /**
           * The href attribute specifies the URL of the page the link goes to
          */
@@ -1775,6 +1770,10 @@ declare namespace LocalJSX {
           * Emitted when the button loses focus.
          */
         "onGcdsBlur"?: (event: GcdsButtonCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsButtonCustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */
@@ -1867,6 +1866,10 @@ declare namespace LocalJSX {
           * Update value based on user input.
          */
         "onGcdsChange"?: (event: GcdsCheckboxCustomEvent<any>) => void;
+        /**
+          * Emitted when the checkbox has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsCheckboxCustomEvent<void>) => void;
         /**
           * Emitted when the input has a validation error.
          */
@@ -1965,6 +1968,18 @@ declare namespace LocalJSX {
           * The details title summarizes the panel content.
          */
         "detailsTitle": string;
+        /**
+          * Emitted when the details loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsDetailsCustomEvent<void>) => void;
+        /**
+          * Emitted when the details has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsDetailsCustomEvent<void>) => void;
+        /**
+          * Emitted when the details has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsDetailsCustomEvent<void>) => void;
         /**
           * Defines if the details panel is open by default or not.
          */
@@ -2076,17 +2091,21 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
+          * Emitted when the user has made a file selection.
+         */
+        "onGcdsChange"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
+        /**
           * Emitted when the input has a validation error.
          */
         "onGcdsError"?: (event: GcdsFileUploaderCustomEvent<object>) => void;
         /**
-          * Update value based on user selection.
-         */
-        "onGcdsFileUploaderChange"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
-        /**
           * Emitted when the uploader has focus.
          */
         "onGcdsFocus"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
+        /**
+          * Emitted when the user has uploaded a file.
+         */
+        "onGcdsInput"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
         /**
           * Remove file and update value.
          */
@@ -2404,7 +2423,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsInputCustomEvent<void>) => void;
         /**
-          * Update value based on user input.
+          * Emitted when the input has changed.
          */
         "onGcdsChange"?: (event: GcdsInputCustomEvent<any>) => void;
         /**
@@ -2415,6 +2434,10 @@ declare namespace LocalJSX {
           * Emitted when the input has focus.
          */
         "onGcdsFocus"?: (event: GcdsInputCustomEvent<void>) => void;
+        /**
+          * Emitted when the element has received input.
+         */
+        "onGcdsInput"?: (event: GcdsInputCustomEvent<any>) => void;
         /**
           * Emitted when the input has a validation error.
          */
@@ -2530,9 +2553,17 @@ declare namespace LocalJSX {
          */
         "menuLabel": string;
         /**
-          * Emitted when the button has focus.
+          * Emitted when the button blurs.
+         */
+        "onGcdsBlur"?: (event: GcdsNavGroupCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has been clicked.
          */
         "onGcdsClick"?: (event: GcdsNavGroupCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has been focus.
+         */
+        "onGcdsFocus"?: (event: GcdsNavGroupCustomEvent<void>) => void;
         /**
           * Has the nav group been expanded
          */
@@ -2586,13 +2617,17 @@ declare namespace LocalJSX {
          */
         "nextLabel"?: string;
         /**
-          * Update value based on user input.
+          * Emitted when the link loses focus.
          */
-        "onGcdsPageChange"?: (event: GcdsPaginationCustomEvent<void>) => void;
+        "onGcdsBlur"?: (event: GcdsPaginationCustomEvent<void>) => void;
         /**
-          * Function to fire when pageChange event is called
+          * Emitted when the link has been clicked.
          */
-        "pageChangeHandler"?: Function;
+        "onGcdsClick"?: (event: GcdsPaginationCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsPaginationCustomEvent<void>) => void;
         /**
           * Simple display - href for previous link
          */
@@ -2634,13 +2669,13 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
         /**
+          * Emitted when the radio button is checked
+         */
+        "onGcdsChange"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
+        /**
           * Emitted when the radio has focus.
          */
         "onGcdsFocus"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
-        /**
-          * Emitted when the radio button is checked
-         */
-        "onGcdsRadioChange"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
         /**
           * Options to render radio buttons
          */
@@ -2666,7 +2701,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the search input value has changed.
          */
-        "onGcdsChange"?: (event: GcdsSearchCustomEvent<object>) => void;
+        "onGcdsChange"?: (event: GcdsSearchCustomEvent<string>) => void;
         /**
           * Emitted when the search input value has gained focus.
          */
@@ -2680,13 +2715,17 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Set the name of the search input
+          * Set the id of the search input
          */
         "searchId"?: string;
         /**
           * Set a list of predefined search terms
          */
         "suggested"?: Array<string>;
+        /**
+          * Set the value of the search input
+         */
+        "value"?: string;
     }
     interface GcdsSelect {
         /**
@@ -2718,6 +2757,10 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
+          * Emitted when the select value has changed.
+         */
+        "onGcdsChange"?: (event: GcdsSelectCustomEvent<any>) => void;
+        /**
           * Emitted when the select has a validation error.
          */
         "onGcdsError"?: (event: GcdsSelectCustomEvent<object>) => void;
@@ -2726,9 +2769,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
-          * Update value based on user selection.
+          * Emitted when the select has received input.
          */
-        "onGcdsSelectChange"?: (event: GcdsSelectCustomEvent<any>) => void;
+        "onGcdsInput"?: (event: GcdsSelectCustomEvent<any>) => void;
         /**
           * Emitted when the select has a validation error.
          */
@@ -2898,7 +2941,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsTextareaCustomEvent<void>) => void;
         /**
-          * Update value based on user input.
+          * Emitted when the textarea has changed.
          */
         "onGcdsChange"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**
@@ -2909,6 +2952,10 @@ declare namespace LocalJSX {
           * Emitted when the textarea has focus.
          */
         "onGcdsFocus"?: (event: GcdsTextareaCustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has received input.
+         */
+        "onGcdsInput"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**
           * Emitted when the textarea has a validation error.
          */
