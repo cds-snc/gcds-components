@@ -187,7 +187,7 @@ export class GcdsTextarea {
   };
 
   /**
-   * Update value based on user input.
+   * Emitted when the textarea has received input.
    */
   @Event() gcdsChange: EventEmitter;
 

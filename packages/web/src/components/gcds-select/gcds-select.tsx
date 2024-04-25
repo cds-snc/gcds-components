@@ -159,7 +159,7 @@ export class GcdsSelect {
    */
 
   /**
-   * Update value based on user selection.
+   * Emitted when the select value has changed.
    */
   @Event() gcdsChange: EventEmitter;
 

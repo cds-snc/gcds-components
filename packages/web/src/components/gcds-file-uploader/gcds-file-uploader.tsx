@@ -176,7 +176,7 @@ export class GcdsFileUploader {
   };
 
   /**
-   * Update value based on user selection.
+   * Emitted when the user has made a file selection.
    */
   @Event() gcdsChange: EventEmitter;
 

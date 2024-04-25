@@ -181,7 +181,7 @@ export class GcdsCheckbox {
    */
 
   /**
-   * Emitted when the checkbox has focus.
+   * Emitted when the checkbox has been clicked.
    */
   @Event() gcdsClick!: EventEmitter<void>;
 

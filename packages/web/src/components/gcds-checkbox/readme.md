@@ -28,7 +28,7 @@
 | ------------ | ---------------------------------------------- | --------------------- |
 | `gcdsBlur`   | Emitted when the checkbox loses focus.         | `CustomEvent<void>`   |
 | `gcdsChange` | Update value based on user input.              | `CustomEvent<any>`    |
-| `gcdsClick`  | Emitted when the checkbox has focus.           | `CustomEvent<void>`   |
+| `gcdsClick`  | Emitted when the checkbox has been clicked.    | `CustomEvent<void>`   |
 | `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the checkbox has focus.           | `CustomEvent<void>`   |
 | `gcdsValid`  | Emitted when the input has a validation error. | `CustomEvent<object>` |

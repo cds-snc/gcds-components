@@ -1863,7 +1863,7 @@ declare namespace LocalJSX {
          */
         "onGcdsChange"?: (event: GcdsCheckboxCustomEvent<any>) => void;
         /**
-          * Emitted when the checkbox has focus.
+          * Emitted when the checkbox has been clicked.
          */
         "onGcdsClick"?: (event: GcdsCheckboxCustomEvent<void>) => void;
         /**
@@ -2087,7 +2087,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
-          * Update value based on user selection.
+          * Emitted when the user has made a file selection.
          */
         "onGcdsChange"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
         /**
@@ -2415,7 +2415,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsInputCustomEvent<void>) => void;
         /**
-          * Update value based on user input.
+          * Emitted when the input has received input.
          */
         "onGcdsChange"?: (event: GcdsInputCustomEvent<any>) => void;
         /**
@@ -2745,7 +2745,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
-          * Update value based on user selection.
+          * Emitted when the select value has changed.
          */
         "onGcdsChange"?: (event: GcdsSelectCustomEvent<any>) => void;
         /**
@@ -2925,7 +2925,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsTextareaCustomEvent<void>) => void;
         /**
-          * Update value based on user input.
+          * Emitted when the textarea has received input.
          */
         "onGcdsChange"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**

@@ -160,7 +160,7 @@ export class GcdsCheckbox {
 
 export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
   /**
-   * Emitted when the checkbox has focus.
+   * Emitted when the checkbox has been clicked.
    */
   gcdsClick: EventEmitter<CustomEvent<void>>;
   /**
@@ -383,7 +383,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Update value based on user selection.
+   * Emitted when the user has made a file selection.
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
@@ -586,7 +586,7 @@ export declare interface GcdsInput extends Components.GcdsInput {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Update value based on user input.
+   * Emitted when the input has received input.
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
@@ -911,7 +911,7 @@ export class GcdsSelect {
 
 export declare interface GcdsSelect extends Components.GcdsSelect {
   /**
-   * Update value based on user selection.
+   * Emitted when the select value has changed.
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
@@ -1075,7 +1075,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Update value based on user input.
+   * Emitted when the textarea has received input.
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
   /**

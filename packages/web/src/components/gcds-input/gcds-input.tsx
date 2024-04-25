@@ -188,7 +188,7 @@ export class GcdsInput {
   };
 
   /**
-   * Update value based on user input.
+   * Emitted when the input has received input.
    */
   @Event() gcdsChange: EventEmitter;
 
