@@ -30,6 +30,7 @@
 | `gcdsChange` | Emitted when the select value has changed.      | `CustomEvent<any>`    |
 | `gcdsError`  | Emitted when the select has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the select has focus.              | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the select has received input.     | `CustomEvent<any>`    |
 | `gcdsValid`  | Emitted when the select has a validation error. | `CustomEvent<object>` |
 
 

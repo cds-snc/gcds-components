@@ -1347,6 +1347,7 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsChange": any;
+        "gcdsInput": any;
         "gcdsRemoveFile": any;
         "gcdsError": object;
         "gcdsValid": object;
@@ -1410,6 +1411,7 @@ declare global {
     interface HTMLGcdsInputElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
+        "gcdsInput": any;
         "gcdsChange": any;
         "gcdsError": object;
         "gcdsValid": object;
@@ -1563,6 +1565,7 @@ declare global {
     };
     interface HTMLGcdsSelectElementEventMap {
         "gcdsChange": any;
+        "gcdsInput": any;
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsError": object;
@@ -1616,6 +1619,7 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsChange": any;
+        "gcdsInput": any;
         "gcdsError": object;
         "gcdsValid": object;
     }
@@ -2099,6 +2103,10 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
+          * Emitted when the user has uplaoded a file.
+         */
+        "onGcdsInput"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
+        /**
           * Remove file and update value.
          */
         "onGcdsRemoveFile"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
@@ -2415,7 +2423,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsInputCustomEvent<void>) => void;
         /**
-          * Emitted when the input has received input.
+          * Emitted when the input has changed.
          */
         "onGcdsChange"?: (event: GcdsInputCustomEvent<any>) => void;
         /**
@@ -2426,6 +2434,10 @@ declare namespace LocalJSX {
           * Emitted when the input has focus.
          */
         "onGcdsFocus"?: (event: GcdsInputCustomEvent<void>) => void;
+        /**
+          * Emitted when the input has received input.
+         */
+        "onGcdsInput"?: (event: GcdsInputCustomEvent<any>) => void;
         /**
           * Emitted when the input has a validation error.
          */
@@ -2757,6 +2769,10 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsSelectCustomEvent<void>) => void;
         /**
+          * Emitted when the select has received input.
+         */
+        "onGcdsInput"?: (event: GcdsSelectCustomEvent<any>) => void;
+        /**
           * Emitted when the select has a validation error.
          */
         "onGcdsValid"?: (event: GcdsSelectCustomEvent<object>) => void;
@@ -2936,6 +2952,10 @@ declare namespace LocalJSX {
           * Emitted when the textarea has focus.
          */
         "onGcdsFocus"?: (event: GcdsTextareaCustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has changed.
+         */
+        "onGcdsInput"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**
           * Emitted when the textarea has a validation error.
          */

@@ -192,6 +192,19 @@ export class GcdsTextarea {
   @Event() gcdsChange: EventEmitter;
 
   /**
+   * Emitted when the textarea has changed.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  handleInput(e) {
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val ? val : null);
+
+    this.gcdsInput.emit(this.value);
+  }
+
+  /**
    * Call any active validators
    */
   @Method()
@@ -206,14 +219,6 @@ export class GcdsTextarea {
       this.errorMessage = '';
       this.gcdsValid.emit({ id: `#${this.textareaId}` });
     }
-  }
-
-  handleChange(e) {
-    const val = e.target && e.target.value;
-    this.value = val;
-    this.internals.setFormValue(val ? val : null);
-
-    this.gcdsChange.emit(this.value);
   }
 
   /**
@@ -375,7 +380,8 @@ export class GcdsTextarea {
             id={textareaId}
             onBlur={() => this.onBlur()}
             onFocus={() => this.gcdsFocus.emit()}
-            onInput={e => this.handleChange(e)}
+            onInput={e => this.handleInput(e)}
+            onChange={e => this.handleInput(e)}
             aria-labelledby={`label-for-${textareaId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={characterCount ? characterCount : null}

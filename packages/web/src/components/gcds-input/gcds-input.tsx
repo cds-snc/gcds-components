@@ -190,15 +190,20 @@ export class GcdsInput {
   /**
    * Emitted when the input has received input.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsInput: EventEmitter;
 
-  private handleChange(e) {
+  private handleInput(e) {
     const val = e.target && e.target.value;
     this.value = val;
     this.internals.setFormValue(val ? val : null);
 
-    this.gcdsChange.emit(this.value);
+    this.gcdsInput.emit(this.value);
   }
+
+  /**
+   * Emitted when the input has changed.
+   */
+  @Event() gcdsChange: EventEmitter;
 
   /**
    * Call any active validators
@@ -388,7 +393,8 @@ export class GcdsInput {
             name={name}
             onBlur={() => this.onBlur()}
             onFocus={() => this.gcdsFocus.emit()}
-            onInput={e => this.handleChange(e)}
+            onInput={e => this.handleInput(e)}
+            onChange={e => this.handleInput(e)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={size}

@@ -33,6 +33,7 @@
 | `gcdsChange` | Emitted when the textarea has received input.     | `CustomEvent<any>`    |
 | `gcdsError`  | Emitted when the textarea has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the textarea has focus.              | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the textarea has changed.            | `CustomEvent<any>`    |
 | `gcdsValid`  | Emitted when the textarea has a validation error. | `CustomEvent<object>` |
 
 

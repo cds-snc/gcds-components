@@ -31,6 +31,7 @@
 | `gcdsChange`     | Emitted when the user has made a file selection. | `CustomEvent<any>`    |
 | `gcdsError`      | Emitted when the input has a validation error.   | `CustomEvent<object>` |
 | `gcdsFocus`      | Emitted when the uploader has focus.             | `CustomEvent<void>`   |
+| `gcdsInput`      | Emitted when the user has uplaoded a file.       | `CustomEvent<any>`    |
 | `gcdsRemoveFile` | Remove file and update value.                    | `CustomEvent<any>`    |
 | `gcdsValid`      | Emitted when the input has a validation error.   | `CustomEvent<object>` |
 

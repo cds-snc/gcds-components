@@ -30,9 +30,10 @@
 | Event        | Description                                    | Type                  |
 | ------------ | ---------------------------------------------- | --------------------- |
 | `gcdsBlur`   | Emitted when the input loses focus.            | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when the input has received input.     | `CustomEvent<any>`    |
+| `gcdsChange` | Emitted when the input has changed.            | `CustomEvent<any>`    |
 | `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the input has focus.              | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the input has received input.     | `CustomEvent<any>`    |
 | `gcdsValid`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
 
 
