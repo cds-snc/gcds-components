@@ -33,7 +33,7 @@
 | `gcdsChange` | Emitted when the input has changed.            | `CustomEvent<any>`    |
 | `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the input has focus.              | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the input has received input.     | `CustomEvent<any>`    |
+| `gcdsInput`  | Emitted when the element has received input.   | `CustomEvent<any>`    |
 | `gcdsValid`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
 
 

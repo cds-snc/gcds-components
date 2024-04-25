@@ -188,7 +188,7 @@ export class GcdsInput {
   };
 
   /**
-   * Emitted when the input has received input.
+   * Emitted when the element has received input.
    */
   @Event() gcdsInput: EventEmitter;
 

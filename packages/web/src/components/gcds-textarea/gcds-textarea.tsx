@@ -187,12 +187,12 @@ export class GcdsTextarea {
   };
 
   /**
-   * Emitted when the textarea has received input.
+   * Emitted when the textarea has changed.
    */
   @Event() gcdsChange: EventEmitter;
 
   /**
-   * Emitted when the textarea has changed.
+   * Emitted when the textarea has received input.
    */
   @Event() gcdsInput: EventEmitter;
 

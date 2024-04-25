@@ -2103,7 +2103,7 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
-          * Emitted when the user has uplaoded a file.
+          * Emitted when the user has uploaded a file.
          */
         "onGcdsInput"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
         /**
@@ -2435,7 +2435,7 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsInputCustomEvent<void>) => void;
         /**
-          * Emitted when the input has received input.
+          * Emitted when the element has received input.
          */
         "onGcdsInput"?: (event: GcdsInputCustomEvent<any>) => void;
         /**
@@ -2941,7 +2941,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsTextareaCustomEvent<void>) => void;
         /**
-          * Emitted when the textarea has received input.
+          * Emitted when the textarea has changed.
          */
         "onGcdsChange"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**
@@ -2953,7 +2953,7 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsTextareaCustomEvent<void>) => void;
         /**
-          * Emitted when the textarea has changed.
+          * Emitted when the textarea has received input.
          */
         "onGcdsInput"?: (event: GcdsTextareaCustomEvent<any>) => void;
         /**

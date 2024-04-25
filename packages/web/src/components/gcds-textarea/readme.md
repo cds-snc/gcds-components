@@ -30,10 +30,10 @@
 | Event        | Description                                       | Type                  |
 | ------------ | ------------------------------------------------- | --------------------- |
 | `gcdsBlur`   | Emitted when the textarea loses focus.            | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when the textarea has received input.     | `CustomEvent<any>`    |
+| `gcdsChange` | Emitted when the textarea has changed.            | `CustomEvent<any>`    |
 | `gcdsError`  | Emitted when the textarea has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the textarea has focus.              | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the textarea has changed.            | `CustomEvent<any>`    |
+| `gcdsInput`  | Emitted when the textarea has received input.     | `CustomEvent<any>`    |
 | `gcdsValid`  | Emitted when the textarea has a validation error. | `CustomEvent<object>` |
 
 

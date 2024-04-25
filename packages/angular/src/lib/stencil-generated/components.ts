@@ -387,7 +387,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
-   * Emitted when the user has uplaoded a file.
+   * Emitted when the user has uploaded a file.
    */
   gcdsInput: EventEmitter<CustomEvent<any>>;
   /**
@@ -590,7 +590,7 @@ export declare interface GcdsInput extends Components.GcdsInput {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the input has received input.
+   * Emitted when the element has received input.
    */
   gcdsInput: EventEmitter<CustomEvent<any>>;
   /**
@@ -1087,11 +1087,11 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the textarea has received input.
+   * Emitted when the textarea has changed.
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
-   * Emitted when the textarea has changed.
+   * Emitted when the textarea has received input.
    */
   gcdsInput: EventEmitter<CustomEvent<any>>;
   /**

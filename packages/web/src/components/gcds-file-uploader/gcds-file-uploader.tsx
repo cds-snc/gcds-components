@@ -181,7 +181,7 @@ export class GcdsFileUploader {
   @Event() gcdsChange: EventEmitter;
 
   /**
-   * Emitted when the user has uplaoded a file.
+   * Emitted when the user has uploaded a file.
    */
   @Event() gcdsInput: EventEmitter;
 
