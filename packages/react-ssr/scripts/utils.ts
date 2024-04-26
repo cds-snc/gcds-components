@@ -183,7 +183,7 @@ ${NATIVE_GLOBAL_EVENTS.map(
   (eventName) => `on${toPascalCase(eventName)}: (event: GlobalEventHandlersEventMap['${eventName}']) => void`,
 ).join(',\n')}
 };
-type IsEnum<T> = T extends ${enums.join(' | ')} ? true : false;
+${isEnum(enums)}
 type EnumsToStringLiterals<T> = {
   [K in keyof T]: Exclude<IsEnum<T[K]> extends true ? \`\${T[K]}\` : T[K], 'undefined'>;
 };
@@ -192,6 +192,8 @@ ${elements.map((elementName) => toTypeDeclaration(elementName, customEvents[elem
 
 ${toExport(elements.map(toPascalCase).join(',\n'))}
 `;
+
+export const isEnum = (enums) => (enums.length > 0 ? `type IsEnum<T> = T extends ${enums.join(' | ')} ? true : false;` : '');
 
 export const toIndexFile = (modules: string[]) => `${modules.map((module) => `export * from './${module}';`).join('\n')}\n`;
 
