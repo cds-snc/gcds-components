@@ -11,8 +11,6 @@ body:
           required: true
         - label: I agree to follow the [Code of Conduct](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md).
           required: true
-        - label: I've searched for [existing issues](https://github.com/cds-snc/gcds-components/issues) that already report this problem, without success.
-          required: true
   - type: dropdown
     id: contribution-type
     attributes:
