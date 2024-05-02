@@ -871,12 +871,16 @@ export class GcdsSearch {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']);
+    proxyOutputs(this, this.el, ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']);
   }
 }
 
 
 export declare interface GcdsSearch extends Components.GcdsSearch {
+  /**
+   * Emitted when the search element has recieved input.
+   */
+  gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the search input value has changed.
    */

@@ -25,6 +25,7 @@
 | `gcdsBlur`   | Emitted when the search input has lost focus.         | `CustomEvent<object>` |
 | `gcdsChange` | Emitted when the search input value has changed.      | `CustomEvent<string>` |
 | `gcdsFocus`  | Emitted when the search input value has gained focus. | `CustomEvent<object>` |
+| `gcdsInput`  | Emitted when the search element has recieved input.   | `CustomEvent<string>` |
 | `gcdsSubmit` | Emitted when the search form has submitted.           | `CustomEvent<object>` |
 
 

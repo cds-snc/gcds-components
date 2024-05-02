@@ -1544,6 +1544,7 @@ declare global {
         new (): HTMLGcdsRadioGroupElement;
     };
     interface HTMLGcdsSearchElementEventMap {
+        "gcdsInput": string;
         "gcdsChange": string;
         "gcdsFocus": object;
         "gcdsBlur": object;
@@ -2706,6 +2707,10 @@ declare namespace LocalJSX {
           * Emitted when the search input value has gained focus.
          */
         "onGcdsFocus"?: (event: GcdsSearchCustomEvent<object>) => void;
+        /**
+          * Emitted when the search element has recieved input.
+         */
+        "onGcdsInput"?: (event: GcdsSearchCustomEvent<string>) => void;
         /**
           * Emitted when the search form has submitted.
          */
