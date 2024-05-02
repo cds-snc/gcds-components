@@ -59,6 +59,11 @@ export class GcdsSearch {
    */
 
   /**
+   * Emitted when the search element has recieved input.
+   */
+  @Event() gcdsInput!: EventEmitter<string>;
+
+  /**
    * Emitted when the search input value has changed.
    */
   @Event() gcdsChange!: EventEmitter<string>;
@@ -83,11 +88,11 @@ export class GcdsSearch {
    */
   @State() lang: string;
 
-  private onInput = e => {
+  private handleInput = (e, customEvent) => {
     const input = e.target as HTMLInputElement;
     this.value = input.value;
 
-    this.gcdsChange.emit(this.value);
+    customEvent.emit(this.value);
   };
 
   /*
@@ -139,7 +144,7 @@ export class GcdsSearch {
             action={formAction}
             method={method}
             role="search"
-            onSubmit={e => emitEvent(e, this.gcdsSubmit)}
+            onSubmit={e => emitEvent(e, this.gcdsSubmit, this.value)}
             class="gcds-search__form"
           >
             <gcds-label
@@ -153,7 +158,8 @@ export class GcdsSearch {
               list="search-list"
               size={34}
               maxLength={170}
-              onInput={e => this.onInput(e)}
+              onInput={e => this.handleInput(e, this.gcdsInput)}
+              onChange={e => this.handleInput(e, this.gcdsChange)}
               onFocus={() => this.gcdsFocus.emit()}
               onBlur={() => this.gcdsBlur.emit()}
               {...attrsInput}

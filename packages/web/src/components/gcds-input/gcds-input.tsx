@@ -192,12 +192,12 @@ export class GcdsInput {
    */
   @Event() gcdsInput: EventEmitter;
 
-  private handleInput(e) {
+  private handleInput = (e, customEvent) => {
     const val = e.target && e.target.value;
     this.value = val;
     this.internals.setFormValue(val ? val : null);
 
-    this.gcdsInput.emit(this.value);
+    customEvent.emit(this.value);
   }
 
   /**
@@ -393,8 +393,8 @@ export class GcdsInput {
             name={name}
             onBlur={() => this.onBlur()}
             onFocus={() => this.gcdsFocus.emit()}
-            onInput={e => this.handleInput(e)}
-            onChange={e => this.handleInput(e)}
+            onInput={e => this.handleInput(e, this.gcdsInput)}
+            onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={size}
