@@ -22,7 +22,7 @@ function resolve(children: any, result: any[] = []) {
 
   for (const node of nodes) {
     if (typeof node === 'string') {
-      result.push(node);
+      result.push([node]);
     } else if (typeof node.type === 'string') {
       const copy = { ...node, props: { ...node.props } };
       if (copy.props.children) {
