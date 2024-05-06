@@ -1,0 +1,37 @@
+{
+  "name": "@cdssnc/gcds-components-vue",
+  "version": "0.20.0",
+  "description": "Vue wrapper for GC Design System components",
+  "author": "Government of Canada / Gouvernement du Canada",
+  "homepage": "https://design-system.alpha.canada.ca/",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "dist",
+    "gcds.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cds-snc/gcds-components.git"
+  },
+  "scripts": {
+    "build": "npm run tsc",
+    "tsc": "tsc -p . --outDir ./dist"
+  },
+  "bugs": {
+    "url": "https://github.com/cds-snc/gcds-components/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@cdssnc/gcds-components": "^0.20.0"
+  },
+  "devDependencies": {
+    "vue": "^3.4.26"
+  }
+}

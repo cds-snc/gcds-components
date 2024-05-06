@@ -46,7 +46,8 @@
   "workspaces": [
     "packages/web",
     "packages/angular",
-    "packages/react"
+    "packages/react",
+    "packages/vue"
   ],
   "license": "MIT"
 }

@@ -44,6 +44,9 @@
     ],
     "gcds-components-angular": [
       "./packages/angular"
+    ],
+    "gcds-components-vue": [
+      "./packages/vue"
     ]
   },
   "angularCompilerOptions": {
