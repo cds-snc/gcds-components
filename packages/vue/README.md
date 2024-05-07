@@ -36,7 +36,7 @@ In your `App.vue`, place the following to load the global styles:
 
 ### Using Vite
 
-If using [Vite](https://vitejs.dev/), additional configuration will need to be added to `vite.config.ts` to prevent Vue from logging a warning about failing to resolve components.
+If using [Vite](https://vitejs.dev/), additional configuration will need to be added to `vite.config.ts` to prevent Vue from logging a warning about failing to resolve components (e.g. "Failed to resolve component: gcds-header").
 
 ``` js
 export default defineConfig({
