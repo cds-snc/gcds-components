@@ -1,9 +1,6 @@
 # gcds-footer
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -15,7 +12,6 @@
 | `subLinks`          | `sub-links`          | Object of list items for sub-footer. Format: { link-label: link-href }      | `object \| string`    | `undefined` |
 | `wordmarkVariant`   | `wordmark-variant`   | GcdsSignature - The variant of the Government of Canada wordmark            | `"colour" \| "white"` | `undefined` |
 
-
 ## Dependencies
 
 ### Depends on
@@ -25,6 +21,7 @@
 - [gcds-link](../gcds-link)
 
 ### Graph
+
 ```mermaid
 graph TD;
   gcds-footer --> gcds-signature
@@ -34,6 +31,6 @@ graph TD;
   style gcds-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

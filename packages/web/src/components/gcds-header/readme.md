@@ -1,9 +1,6 @@
 # gcds-header
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -14,7 +11,6 @@
 | `signatureVariant`        | `signature-variant`  | GcdsSignature - The variant of the Government of Canada signature                   | `"colour" \| "white"` | `undefined` |
 | `skipToHref` _(required)_ | `skip-to-href`       | Top navigation - Skip to content href                                               | `string`              | `undefined` |
 
-
 ## Dependencies
 
 ### Depends on
@@ -24,6 +20,7 @@
 - [gcds-signature](../gcds-signature)
 
 ### Graph
+
 ```mermaid
 graph TD;
   gcds-header --> gcds-link
@@ -35,6 +32,6 @@ graph TD;
   style gcds-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

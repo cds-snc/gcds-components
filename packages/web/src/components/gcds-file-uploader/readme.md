@@ -1,9 +1,6 @@
 # gcds-file-uploader
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -22,7 +19,6 @@
 | `validator`               | --              | Array of validators                                                         | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
 | `value`                   | --              | Value for a file uploader element.                                          | `string[]`                                          | `[]`        |
 
-
 ## Events
 
 | Event            | Description                                      | Type                  |
@@ -35,7 +31,6 @@
 | `gcdsRemoveFile` | Remove file and update value.                    | `CustomEvent<any>`    |
 | `gcdsValid`      | Emitted when the input has a validation error.   | `CustomEvent<object>` |
 
-
 ## Methods
 
 ### `validate() => Promise<void>`
@@ -45,9 +40,6 @@ Call any active validators
 #### Returns
 
 Type: `Promise<void>`
-
-
-
 
 ## Dependencies
 
@@ -61,6 +53,7 @@ Type: `Promise<void>`
 - [gcds-icon](../gcds-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   gcds-file-uploader --> gcds-label
@@ -74,6 +67,6 @@ graph TD;
   style gcds-file-uploader fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
