@@ -81,7 +81,7 @@ Naviguez jusqu'au dossier racine de votre projet et exécutez :
 npm install @cdssnc/gcds-components-vue
 ```
 
-<!-- In your `main.js` file, import the GC Design System components plugin and use it:
+Dans votre fichier 'main.js', importez le plugiciel des composants Système de design GC et utilisez-le de la façon suivante :
 
 ``` jsx
 import { GcdsComponents } from '@cdssnc/gcds-components-vue';
@@ -89,7 +89,7 @@ import { GcdsComponents } from '@cdssnc/gcds-components-vue';
 createApp(App).use(GcdsComponents).mount('#app');
 ```
 
-In your `App.vue`, place the following to load the global styles:
+Dans votre fichier 'App.vue', utilisez le code suivant pour charger les styles généraux :
 
 ``` html
 <style src='@cdssnc/gcds-components-vue/gcds.css'>
@@ -97,9 +97,8 @@ In your `App.vue`, place the following to load the global styles:
 </style> 
 ```
 
-### Using Vite
-
-If using [Vite](https://vitejs.dev/), additional configuration will need to be added to `vite.config.ts` to prevent Vue from logging a warning about failing to resolve components.
+### Utilisation de Vite
+Si vous utilisez [Vite](https://vitejs.dev/), il faudra ajouter une configuration additionnelle à 'vite.config.ts' afin d’empêcher que Vue ne signale un avertissement d’échec pour la résolution de composants (p. ex. « Failed to resolve component: gcds-header » [Échec de la résolution du composant : gcds-header]).
 
 ``` js
 export default defineConfig({
@@ -114,7 +113,7 @@ export default defineConfig({
     })
   ],
 })
-``` -->
+```
 
 ## Apportez votre contribution
 
