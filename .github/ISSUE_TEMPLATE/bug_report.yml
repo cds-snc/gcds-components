@@ -16,7 +16,7 @@ body:
   - type: input
     attributes:
       label: GC Design System Components Package and Version
-      description: "The version number of GC Design System Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x"
+      description: "The version number of GC Design System Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x. If the issue exists in figma, please type in 'figma'"
     validations:
       required: true
   - type: textarea
