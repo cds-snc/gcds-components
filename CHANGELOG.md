@@ -4,6 +4,92 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.21.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.20.0...gcds-components-v0.21.0) (2024-05-08)
+
+### Breaking changes
+
+#### Transition to form-associated custom elements
+
+We've undertaken significant efforts to migrate our components to form-associated custom elements. GC Design System form components will now use the shadow DOM (document object model). The shadow DOM provides improved encapsulation and control over styling and lets form components integrate with native browser features for validation and accessibility. This feature depends on HTMLElement API attachInternals which is supported in most browsers.
+
+This change will require all form components to have the name attribute. Here's a list of the GC Design System components affected by the change:
+
+- File uploader (`gcds-file-uploader`)
+- Input (`gcds-input`)
+- Select (`gcds-select`)
+- Text area (`gcds-textarea`)
+
+##### Required changes for form components
+
+- Add a `name` attribute
+- Your code should look similar to the following:
+
+``` html
+<gcds-file-uploader name="" uploader-id="" label=""></gcds-file-uploader>
+<gcds-input name="" input-id="" label=""></gcds-input>
+<gcds-select name="" select-id="" label=""></gcds-select>
+<gcds-textarea name="" textarea-id="" label=""></gcds-textarea>
+```
+
+#### Shadow-dom
+
+The following components will be updated to now use the shadow DOM like other GC Design System components:
+
+- Pagination (`gcds-pagination`)
+- Search (`gcds-search`)
+- Signature (`gcds-signature`)
+
+#### Radio group
+
+As part of the transition, our `gcds-radio` component will be deprecated in favour of a new component `gcds-radio-group`. The radio group component allows for better (native HTML) form controls in a shadow DOM environment.
+
+##### Old implementation
+
+``` html
+<gcds-radio
+    radio-id="radio-1"
+    name="radio-example"
+    label="Label 1"
+    value="label-1"
+>
+  </gcds-radio>
+  <gcds-radio
+    radio-id="radio-2"
+    name="radio-example"
+    label="Label 2"
+    value="label-2"
+      >
+ </gcds-radio>
+ ```
+
+##### New implementation
+
+``` html
+<gcds-radio-group
+  name="radio-example"
+  options="[{ 
+      'id': 'radio-1',
+      'label': 'Label 1',
+      'value': 'label-1'}, {
+      'id': 'radio-2',
+      'label': 'Label 2',
+      'value': 'label-2'}]"
+>
+</gcds-radio-group>
+
+```
+
+
+### New Features
+
+* add tag prop to gcds-sr-only component ([#484](https://github.com/cds-snc/gcds-components/issues/484)) ([dfb7285](https://github.com/cds-snc/gcds-components/commit/dfb7285a14b477f4c4f71750e8b09d3ca5c193a9))
+* Component rewrites (form-associated, gcds-radio-group, CSS rewrites)  ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
+
+
+### Bug Fixes
+
+* Update utility functions for more usability ([#495](https://github.com/cds-snc/gcds-components/issues/495)) ([a0e8fbb](https://github.com/cds-snc/gcds-components/commit/a0e8fbbf5ed8004f72f4e51ca2f2da4ef70a37ef))
+
 ## [0.20.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.1...gcds-components-v0.20.0) (2024-03-14)
 
 
