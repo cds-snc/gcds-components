@@ -14,21 +14,34 @@ We've undertaken significant efforts to migrate our components to form-associate
 
 This change will require all form components to have the name attribute. Here's a list of the GC Design System components affected by the change:
 
-- Fieldset (gcds-fieldset)
-- File uploader (gcds-file-uploader)
-- Input (gcds-input)
-- Select (gcds-select)
-- Text area (gcds-textarea)
+- File uploader (`gcds-file-uploader`)
+- Input (`gcds-input`)
+- Select (`gcds-select`)
+- Text area (`gcds-textarea`)
+
+##### Required changes for form components
+
+- Add a `name` attribute
+- Your code should look similar to the following:
+
+``` html
+<gcds-file-uploader name=”” >
+<gcds-input name=”” >
+<gcds-select name=”” >
+<gcds-textarea name=”” >
+```
+
+#### Shadow-dom
 
 The following components will be updated to now use the shadow DOM like other GC Design System components:
 
-- Pagination (gcds-pagination)
-- Search (gcds-search)
-- Signature (gcds-signature)
-
-As part of the transition, our `gcds-radio` component will be deprecated in favour of a new component `gcds-radio-group`. The radio group component allows for better (native HTML) form controls in a shadow DOM environment.
+- Pagination (`gcds-pagination`)
+- Search (`gcds-search`)
+- Signature (`gcds-signature`)
 
 #### Radio group
+
+As part of the transition, our `gcds-radio` component will be deprecated in favour of a new component `gcds-radio-group`. The radio group component allows for better (native HTML) form controls in a shadow DOM environment.
 
 ##### Old implementation
 
