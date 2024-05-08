@@ -1,5 +1,5 @@
 {
-  "packages/angular": "0.20.0",
-  "packages/react": "0.20.0",
-  "packages/web": "0.20.0"
+  "packages/angular": "0.21.0",
+  "packages/react": "0.21.0",
+  "packages/web": "0.21.0"
 }

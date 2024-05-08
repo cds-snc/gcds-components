@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.21.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.20.0...gcds-components-react-v0.21.0) (2024-05-08)
+
+
+### New Features
+
+* Component rewrites (form-associated, gcds-radio-group, CSS rewrites)  ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.20.0 to ^0.21.0
+
 ## [0.20.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.19.1...gcds-components-react-v0.20.0) (2024-03-14)
 
 
