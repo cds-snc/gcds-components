@@ -28,7 +28,8 @@ body:
       label: Which component or pattern is this contribution for?
       options:
         - Data Table
-        - Card (v2)
+        - Image
+        - Tags
     validations:
       required: true
   - type: textarea
