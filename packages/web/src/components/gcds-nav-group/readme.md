@@ -17,9 +17,11 @@
 
 ## Events
 
-| Event       | Description                        | Type                |
-| ----------- | ---------------------------------- | ------------------- |
-| `gcdsClick` | Emitted when the button has focus. | `CustomEvent<void>` |
+| Event       | Description                               | Type                |
+| ----------- | ----------------------------------------- | ------------------- |
+| `gcdsBlur`  | Emitted when the button blurs.            | `CustomEvent<void>` |
+| `gcdsClick` | Emitted when the button has been clicked. | `CustomEvent<void>` |
+| `gcdsFocus` | Emitted when the button has been focus.   | `CustomEvent<void>` |
 
 
 ## Methods

@@ -1,4 +1,12 @@
-import { Element, Component, Host, Prop, h, Fragment, State } from '@stencil/core';
+import {
+  Element,
+  Component,
+  Host,
+  Prop,
+  h,
+  Fragment,
+  State,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -89,7 +97,7 @@ export class GcdsCard {
       imgSrc,
       imgAlt,
       hasCardFooter,
-      lang
+      lang,
     } = this;
 
     const Element = titleElement;
@@ -111,22 +119,28 @@ export class GcdsCard {
             />
           )}
           {tag && (
-            <span id="gcds-card__tag" class="gcds-card__tag">
+            <gcds-text
+              id="gcds-card__tag"
+              class="gcds-card__tag"
+              text-role="secondary"
+              size="caption"
+            >
               <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
               {tag}
-            </span>
+            </gcds-text>
           )}
           {Element != 'a' ? (
             <Element class="gcds-card__title" {...taggedAttr}>
-              <a href={href}>{cardTitle}</a>
+              <gcds-link href={href}>{cardTitle}</gcds-link>
             </Element>
           ) : (
-            <a href={href} class="gcds-card__title" {...taggedAttr}>
+            <gcds-link href={href} class="gcds-card__title" {...taggedAttr}>
               {cardTitle}
-            </a>
+            </gcds-link>
           )}
-
-          {description && <p class="gcds-card__description">{description}</p>}
+          {description && (
+            <gcds-text class="gcds-card__description">{description}</gcds-text>
+          )}
           {hasCardFooter && (
             <>
               <div class="gcds-card__spacer"></div>

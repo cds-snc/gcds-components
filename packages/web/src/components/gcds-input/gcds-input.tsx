@@ -10,6 +10,7 @@ import {
   Prop,
   h,
   Listen,
+  AttachInternals,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -27,11 +28,16 @@ import {
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class GcdsInput {
   @Element() el: HTMLElement;
+
+  @AttachInternals()
+  internals: ElementInternals;
+
+  private initialValue?: string;
 
   private shadowElement?: HTMLElement;
 
@@ -78,9 +84,14 @@ export class GcdsInput {
   @Prop() hint?: string;
 
   /**
-   * Id + name attribute for an input element.
+   * Id  attribute for an input element.
    */
   @Prop() inputId!: string;
+
+  /**
+   * Name attribute for an input element.
+   */
+  @Prop() name!: string;
 
   /**
    * Form field label
@@ -113,21 +124,6 @@ export class GcdsInput {
    * String to have autocomplete enabled
    */
   @Prop() autocomplete?: string;
-
-  /**
-   * Custom callback function on change event
-   */
-  @Prop() changeHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
 
   /**
    * Array of validators
@@ -178,33 +174,34 @@ export class GcdsInput {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
-    this.gcdsFocus.emit();
-  };
-
   /**
    * Emitted when the input loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = e => {
-    if (this.blurHandler) {
-      this.blurHandler(e);
-    } else {
-      if (this.validateOn == 'blur') {
-        this.validate();
-      }
+  private onBlur = () => {
+    if (this.validateOn == 'blur') {
+      this.validate();
     }
 
     this.gcdsBlur.emit();
   };
 
   /**
-   * Update value based on user input.
+   * Emitted when the element has received input.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  private handleInput = (e, customEvent) => {
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val ? val : null);
+
+    customEvent.emit(this.value);
+  }
+
+  /**
+   * Emitted when the input has changed.
    */
   @Event() gcdsChange: EventEmitter;
 
@@ -248,15 +245,31 @@ export class GcdsInput {
     }
   }
 
-  handleChange(e) {
-    if (this.changeHandler) {
-      this.changeHandler(e);
-    } else {
-      const val = e.target && e.target.value;
-      this.value = val;
+  @Listen('keydown', { target: 'document' })
+  keyDownListener(e) {
+    if (e.target == this.el && e.key === 'Enter') {
+      const formButton = document.createElement('button');
+      formButton.type = 'submit';
+      formButton.style.display = 'none';
+      this.el.closest('form').appendChild(formButton);
+      formButton.click();
+      formButton.remove();
     }
+  }
 
-    this.gcdsChange.emit(this.value);
+  /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    if (this.value != this.initialValue) {
+      this.internals.setFormValue(this.initialValue);
+      this.value = this.initialValue;
+    }
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.value = state;
   }
 
   /*
@@ -292,6 +305,9 @@ export class GcdsInput {
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
       'placeholder',
     ]);
+
+    this.internals.setFormValue(this.value ? this.value : null);
+    this.initialValue = this.value ? this.value : null;
   }
 
   componentWillUpdate() {
@@ -307,6 +323,7 @@ export class GcdsInput {
       hideLabel,
       hint,
       inputId,
+      name,
       label,
       required,
       size,
@@ -320,7 +337,7 @@ export class GcdsInput {
 
     // Use max-width instead of size attribute to keep field responsive
     const style = {
-      maxWidth: `${size * 1.5}ch`,
+      maxWidth: `${size + (type === 'number' ? 2.5 : 3.75)}ch`,
     };
 
     const attrsInput = {
@@ -361,20 +378,23 @@ export class GcdsInput {
             lang={lang}
           />
 
-          {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
+          {hint ? <gcds-hint hint-id={inputId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={inputId} message={errorMessage} />
+            <gcds-error-message messageId={inputId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <input
             {...attrsInput}
             class={hasError ? 'gcds-error' : null}
             id={inputId}
-            name={inputId}
-            onBlur={e => this.onBlur(e)}
-            onFocus={e => this.onFocus(e)}
-            onInput={e => this.handleChange(e)}
+            name={name}
+            onBlur={() => this.onBlur()}
+            onFocus={() => this.gcdsFocus.emit()}
+            onInput={e => this.handleInput(e, this.gcdsInput)}
+            onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={size}

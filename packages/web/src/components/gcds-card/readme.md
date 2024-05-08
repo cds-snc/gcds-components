@@ -1,7 +1,5 @@
 # gcds-card
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -23,12 +21,17 @@
 
 ### Depends on
 
+- [gcds-text](../gcds-text)
 - [gcds-sr-only](../gcds-sr-only)
+- [gcds-link](../gcds-link)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-card --> gcds-text
   gcds-card --> gcds-sr-only
+  gcds-card --> gcds-link
+  gcds-link --> gcds-icon
   style gcds-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

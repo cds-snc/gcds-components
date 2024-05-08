@@ -9,16 +9,19 @@ describe('gcds-date-modified', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-modified lang="en">
-        <dl class="gcds-date-modified">
-          <dt>
-            Date modified:
-          </dt>
-          <dd>
-            <time>
-              2022-03-03
-            </time>
-          </dd>
-        </dl>
+        <mock:shadow-root>
+          <dl class="gcds-date-modified">
+            <dt>
+              <gcds-text display="inline" margin-bottom="0">Date modified:</gcds-text>
+            </dt>
+            <dd>
+              <gcds-text display="inline" margin-bottom="0">
+                <time><slot></slot></time>
+              </gcds-text>
+            </dd>
+          </dl>
+        </mock:shadow-root>
+        2022-03-03
       </gcds-date-modified>
     `);
   });
@@ -30,16 +33,19 @@ describe('gcds-date-modified', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-modified lang="fr">
-        <dl class="gcds-date-modified">
-          <dt>
-            Date de modification :
-          </dt>
-          <dd>
-            <time>
-              2022-03-03
-            </time>
-          </dd>
-        </dl>
+        <mock:shadow-root>
+          <dl class="gcds-date-modified">
+            <dt>
+              <gcds-text display="inline" margin-bottom="0">Date de modification :</gcds-text>
+            </dt>
+            <dd>
+              <gcds-text display="inline" margin-bottom="0">
+                <time><slot></slot></time>
+              </gcds-text>
+            </dd>
+          </dl>
+        </mock:shadow-root>
+        2022-03-03
       </gcds-date-modified>
     `);
   });
@@ -51,14 +57,19 @@ describe('gcds-date-modified', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-modified type="version">
-        <dl class="gcds-date-modified">
-          <dt>
-            Version
-          </dt>
-          <dd>
-            1.2.3
-          </dd>
-        </dl>
+        <mock:shadow-root>
+          <dl class="gcds-date-modified">
+            <dt>
+              <gcds-text display="inline" margin-bottom="0">Version</gcds-text>
+            </dt>
+            <dd>
+              <gcds-text display="inline" margin-bottom="0">
+                <slot></slot>
+              </gcds-text>
+            </dd>
+          </dl>
+        </mock:shadow-root>
+        1.2.3
       </gcds-date-modified>
     `);
   });

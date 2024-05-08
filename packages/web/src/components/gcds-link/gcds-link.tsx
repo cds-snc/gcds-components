@@ -10,7 +10,7 @@ import {
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import { inheritAttributes } from '../../utils/utils';
+import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -185,9 +185,9 @@ export class GcdsLink {
           role="link"
           tabIndex={0}
           {...attrs}
-          class={`link--${size} ${display != 'inline' ? `d-${display}` : ''} ${
-            variant != 'default' ? `variant-${variant}` : ''
-          }`}
+          class={`gcds-link link--${size} ${
+            display != 'inline' ? `d-${display}` : ''
+          } ${variant != 'default' ? `variant-${variant}` : ''}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
           rel={isExternal ? 'noopener noreferrer' : rel}
@@ -195,7 +195,7 @@ export class GcdsLink {
           part="link"
           onBlur={() => this.gcdsBlur.emit()}
           onFocus={() => this.gcdsFocus.emit()}
-          onClick={() => this.gcdsClick.emit()}
+          onClick={e => emitEvent(e, this.gcdsClick, href)}
         >
           <slot></slot>
           {target === '_blank' || external ? (
@@ -210,7 +210,7 @@ export class GcdsLink {
               label={i18n[lang].download}
               margin-left="100"
             />
-          ) : href.toLowerCase().startsWith('mailto:') ? (
+          ) : href && href.toLowerCase().startsWith('mailto:') ? (
             <gcds-icon
               icon-style="regular"
               name="envelope"
@@ -218,6 +218,7 @@ export class GcdsLink {
               margin-left="100"
             />
           ) : (
+            href &&
             href.toLowerCase().startsWith('tel:') && (
               <gcds-icon
                 name="phone"

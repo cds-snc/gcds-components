@@ -1,0 +1,142 @@
+@layer reset, default, disabled, error, focus;
+
+@layer reset {
+  :host {
+    display: block;
+
+    .gcds-radio {
+      padding: 0;
+      border: 0;
+
+      gcds-label {
+        &:before,
+        &:after {
+          cursor: pointer;
+          content: '';
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+}
+
+@layer default {
+  :host .gcds-radio {
+    position: relative;
+    max-width: var(--gcds-radio-max-width);
+    min-height: calc(
+      var(--gcds-radio-input-height-and-width) - var(--gcds-radio-padding)
+    );
+    font: var(--gcds-radio-font);
+    color: var(--gcds-radio-default-text);
+    margin: var(--gcds-radio-margin) !important;
+    padding: var(--gcds-radio-padding) 0 0;
+    transition: color ease-in-out 0.15s;
+
+    :is(gcds-label, gcds-hint) {
+      padding: var(--gcds-radio-label-padding) !important;
+    }
+
+    gcds-hint::part(hint) {
+      margin: 0;
+    }
+
+    input,
+    gcds-label:before,
+    gcds-label:after {
+      position: absolute;
+    }
+
+    input,
+    gcds-label:before {
+      top: 0;
+      left: 0;
+      height: var(--gcds-radio-input-height-and-width);
+      width: var(--gcds-radio-input-height-and-width);
+    }
+
+    input {
+      opacity: 0;
+    }
+
+    gcds-label {
+      width: fit-content;
+
+      &:before,
+      &:after {
+        border-radius: var(--gcds-radio-border-radius);
+      }
+
+      &:before {
+        border: var(--gcds-radio-input-border-width) solid currentcolor;
+        transition:
+          border-color ease-in-out 0.15s,
+          box-shadow ease-in-out 0.15s,
+          outline ease-in-out 0.15s;
+      }
+
+      &:after {
+        height: var(--gcds-radio-check-height-and-width);
+        width: var(--gcds-radio-check-height-and-width);
+        left: var(--gcds-radio-check-left);
+        opacity: 0;
+        top: var(--gcds-radio-check-top);
+        background-color: currentcolor;
+        transition: opacity 0.2s ease-in-out;
+      }
+    }
+
+    input:checked + gcds-label:after {
+      opacity: 1;
+    }
+  }
+}
+
+@layer disabled {
+  :host .gcds-radio.gcds-radio--disabled {
+    color: var(--gcds-radio-disabled-text);
+
+    gcds-label {
+      &:before,
+      &:after {
+        cursor: not-allowed;
+      }
+
+      &:before {
+        border-color: var(--gcds-radio-disabled-border);
+        background-color: var(--gcds-radio-disabled-background);
+      }
+    }
+  }
+}
+
+@layer error {
+  :host .gcds-radio.gcds-radio--error:not(:focus-within) gcds-label {
+    &:before {
+      border-color: var(--gcds-radio-danger-border);
+    }
+
+    &:after {
+      background-color: var(--gcds-radio-danger-border);
+    }
+  }
+}
+
+@layer focus {
+  :host .gcds-radio:focus-within {
+    color: var(--gcds-radio-focus-text);
+
+    input:focus + gcds-label {
+      &:before {
+        outline: var(--gcds-radio-focus-outline-width) solid currentcolor;
+        outline-offset: var(--gcds-radio-input-border-width);
+        box-shadow: var(--gcds-radio-focus-box-shadow);
+        background: var(--gcds-radio-focus-background);
+      }
+
+      &:after {
+        background-color: currentcolor;
+      }
+    }
+  }
+}

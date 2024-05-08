@@ -33,7 +33,12 @@
 
 ### Used by
 
+ - [gcds-breadcrumbs-item](../gcds-breadcrumbs)
+ - [gcds-card](../gcds-card)
+ - [gcds-error-summary](../gcds-error-summary)
+ - [gcds-footer](../gcds-footer)
  - [gcds-header](../gcds-header)
+ - [gcds-lang-toggle](../gcds-lang-toggle)
 
 ### Depends on
 
@@ -43,7 +48,12 @@
 ```mermaid
 graph TD;
   gcds-link --> gcds-icon
+  gcds-breadcrumbs-item --> gcds-link
+  gcds-card --> gcds-link
+  gcds-error-summary --> gcds-link
+  gcds-footer --> gcds-link
   gcds-header --> gcds-link
+  gcds-lang-toggle --> gcds-link
   style gcds-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

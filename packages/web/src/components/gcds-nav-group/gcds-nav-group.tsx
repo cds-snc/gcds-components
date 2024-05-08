@@ -10,7 +10,7 @@ import {
   Listen,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-nav-group',
@@ -43,9 +43,19 @@ export class GcdsNavGroup {
   @Prop({ reflect: true, mutable: true }) open: boolean = false;
 
   /**
-   * Emitted when the button has focus.
+   * Emitted when the button has been clicked.
    */
   @Event() gcdsClick!: EventEmitter<void>;
+
+  /**
+   * Emitted when the button has been focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the button blurs.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
 
   /**
    * Language of rendered component
@@ -137,36 +147,26 @@ export class GcdsNavGroup {
   render() {
     const { closeTrigger, menuLabel, open, openTrigger } = this;
 
-    const roleAttr = {
-      role: 'menuitem',
-    };
-
-    if (this.el.classList.contains('gcds-mobile-nav')) {
-      delete roleAttr['role'];
-    }
-
     return (
-      <Host
-        role="presentation"
-        open={open}
-        class={open && 'gcds-nav-group-expanded'}
-      >
+      <Host role="listitem" open={open}>
         <button
           aria-haspopup="true"
           aria-expanded={open.toString()}
-          {...roleAttr}
           ref={element => (this.triggerElement = element as HTMLElement)}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
-          onClick={() => {
-            this.toggleNav();
-            this.gcdsClick.emit();
+          onBlur={() => this.gcdsBlur.emit()}
+          onFocus={() => this.gcdsFocus.emit()}
+          onClick={e => {
+            const event = emitEvent(e, this.gcdsClick);
+            if (event) {
+              this.toggleNav();
+            }
           }}
         >
           <gcds-icon name={open ? 'angle-up' : 'angle-down'}></gcds-icon>
           {closeTrigger && open ? closeTrigger : openTrigger}
         </button>
         <ul
-          role="menu"
           aria-label={menuLabel}
           class={`gcds-nav-group__list gcds-nav--${this.navStyle}`}
         >

@@ -29,8 +29,7 @@ import i18n from './i18n/i18n';
 @Component({
   tag: 'gcds-fieldset',
   styleUrl: 'gcds-fieldset.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
 })
 export class GcdsFieldset {
   @Element() el: HTMLElement;
@@ -314,10 +313,12 @@ export class GcdsFieldset {
             ) : null}
           </legend>
 
-          {hint ? <gcds-hint hint={hint} hint-id={fieldsetId} /> : null}
+          {hint ? <gcds-hint hint-id={fieldsetId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={fieldsetId} message={errorMessage} />
+            <gcds-error-message messageId={fieldsetId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
           <slot></slot>
         </fieldset>
