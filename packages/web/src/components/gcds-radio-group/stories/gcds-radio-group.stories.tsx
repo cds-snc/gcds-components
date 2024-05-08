@@ -150,6 +150,16 @@ Error.args = {
   lang: 'en',
 };
 
+export const Props = Template.bind({});
+Props.args = {
+  name: 'radioDefault',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1", "hint": "Description or example to make the option clearer."},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2", "hint": "Description or example to make the option clearer."}
+  ]`,
+  lang: 'en',
+};
+
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   name: 'radio',
