@@ -48,14 +48,14 @@ As part of the transition, our `gcds-radio` component will be deprecated in favo
 ``` html
 <gcds-radio
     radio-id="radio-1"
-    name=”radio-example”
+    name="radio-example"
     label="Label 1"
     value="label-1"
 >
   </gcds-radio>
   <gcds-radio
     radio-id="radio-2"
-    name=”radio-example”
+    name="radio-example"
     label="Label 2"
     value="label-2"
       >
@@ -67,13 +67,13 @@ As part of the transition, our `gcds-radio` component will be deprecated in favo
 ``` html
 <gcds-radio-group
   name="radio-example"
-  options=”[{ 
+  options="[{ 
       'id': 'radio-1',
       'label': 'Label 1',
       'value': 'label-1'}, {
       'id': 'radio-2',
       'label': 'Label 2',
-      'value': 'label-2'}]”
+      'value': 'label-2'}]"
 >
 </gcds-radio-group>
 
