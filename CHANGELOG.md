@@ -25,10 +25,10 @@ This change will require all form components to have the name attribute. Here's 
 - Your code should look similar to the following:
 
 ``` html
-<gcds-file-uploader name=”” >
-<gcds-input name=”” >
-<gcds-select name=”” >
-<gcds-textarea name=”” >
+<gcds-file-uploader name="" uploader-id="" label=""></gcds-file-uploader>
+<gcds-input name="" input-id="" label=""></gcds-input>
+<gcds-select name="" select-id="" label=""></gcds-select>
+<gcds-textarea name="" textarea-id="" label=""></gcds-textarea>
 ```
 
 #### Shadow-dom

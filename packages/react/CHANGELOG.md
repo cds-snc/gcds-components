@@ -5,7 +5,11 @@
 
 ### New Features
 
-* Component rewrites (form-associated, gcds-radio-group, CSS rewrites)  ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
+* add tag prop to gcds-sr-only component ([#484](https://github.com/cds-snc/gcds-components/issues/484)) ([dfb7285](https://github.com/cds-snc/gcds-components/commit/dfb7285a14b477f4c4f71750e8b09d3ca5c193a9))
+
+### Changes
+
+* [**Breaking:**](https://github.com/cds-snc/gcds-components/blob/main/CHANGELOG.md#0210-2024-05-08) Component rewrites (form-associated, gcds-radio-group, CSS rewrites)  ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
 
 
 ### Dependencies
