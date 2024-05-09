@@ -56,5 +56,6 @@ export const config: Config = {
   validatePrimaryPackageOutputTarget: true,
   extras: {
     enableImportInjection: true,
+    experimentalSlotFixes: true
   },
 };

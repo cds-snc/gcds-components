@@ -8,7 +8,7 @@ import {
   State,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -32,11 +32,6 @@ export class GcdsAlert {
    * Defines the max width of the alert content.
    */
   @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' = 'full';
-
-  /**
-   * Callback when the close button is clicked.
-   */
-  @Prop() dismissHandler: Function;
 
   /**
    * Defines the alert heading.
@@ -77,16 +72,6 @@ export class GcdsAlert {
    */
 
   @Event() gcdsDismiss!: EventEmitter<void>;
-
-  private onDismiss = e => {
-    this.gcdsDismiss.emit();
-
-    if (this.dismissHandler) {
-      this.dismissHandler(e);
-    } else {
-      this.isOpen = false;
-    }
-  };
 
   /*
    * Observe lang attribute change
@@ -131,12 +116,12 @@ export class GcdsAlert {
               alertRole === 'danger'
                 ? i18n[lang].label.danger
                 : alertRole === 'info'
-                ? i18n[lang].label.info
-                : alertRole === 'success'
-                ? i18n[lang].label.success
-                : alertRole === 'warning'
-                ? i18n[lang].label.warning
-                : null
+                  ? i18n[lang].label.info
+                  : alertRole === 'success'
+                    ? i18n[lang].label.success
+                    : alertRole === 'warning'
+                      ? i18n[lang].label.warning
+                      : null
             }
           >
             <gcds-container size={isFixed ? container : 'full'} centered>
@@ -146,16 +131,17 @@ export class GcdsAlert {
                     aria-hidden="true"
                     class="alert__icon"
                     size="h5"
+                    margin-right="250"
                     name={
                       alertRole === 'danger'
                         ? 'exclamation-circle'
                         : alertRole === 'info'
-                        ? 'info-circle'
-                        : alertRole === 'success'
-                        ? 'check-circle'
-                        : alertRole === 'warning'
-                        ? 'exclamation-triangle'
-                        : null
+                          ? 'info-circle'
+                          : alertRole === 'success'
+                            ? 'check-circle'
+                            : alertRole === 'warning'
+                              ? 'exclamation-triangle'
+                              : null
                     }
                   />
                 )}
@@ -170,7 +156,12 @@ export class GcdsAlert {
                 {!hideCloseBtn && (
                   <button
                     class="alert__close-btn"
-                    onClick={e => this.onDismiss(e)}
+                    onClick={e => {
+                      const event = emitEvent(e, this.gcdsDismiss);
+                      if (event) {
+                        this.isOpen = false;
+                      }
+                    }}
                     aria-label={i18n[lang].closeBtn}
                   >
                     <gcds-icon aria-hidden="true" name="times" size="text" />

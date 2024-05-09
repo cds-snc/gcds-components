@@ -1,31 +1,50 @@
-:host {
-  display: block;
-  grid-column: span var(--gcds-grid-columns-default-base) / span
-    var(--gcds-grid-columns-default-base);
-}
+@layer reset, default, tablet, desktop;
 
-:host .gcds-grid-col {
-  display: block;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@media screen and (min-width: 48em) {
+@layer reset {
   :host {
-    grid-column: span
-      var(--gcds-grid-col-tablet, var(--gcds-grid-columns-default-tablet)) /
-      span var(---gcds-grid-col-tablet, var(--gcds-grid-columns-default-tablet));
+    display: block;
+
+    .gcds-grid-col {
+      display: block;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
   }
 }
 
-@media screen and (min-width: 64em) {
+@layer default {
   :host {
-    grid-column: span
-      var(--gcds-grid-col-desktop, var(--gcds-grid-columns-default-desktop)) /
-      span
-      var(--gcds-grid-col-desktop, var(--gcds-grid-columns-default-desktop));
+    grid-column: span var(--gcds-grid-columns-default-base) / span
+      var(--gcds-grid-columns-default-base);
+
+    .gcds-grid-col {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/* Note: viewport specific style decision */
+@layer tablet {
+  @media screen and (width >= 48em) {
+    :host {
+      grid-column: span
+        var(--gcds-grid-col-tablet, var(--gcds-grid-columns-default-tablet)) /
+        span
+        var(---gcds-grid-col-tablet, var(--gcds-grid-columns-default-tablet));
+    }
+  }
+}
+
+/* Note: viewport specific style decision */
+@layer desktop {
+  @media screen and (width >= 64em) {
+    :host {
+      grid-column: span
+        var(--gcds-grid-col-desktop, var(--gcds-grid-columns-default-desktop)) /
+        span
+        var(--gcds-grid-col-desktop, var(--gcds-grid-columns-default-desktop));
+    }
   }
 }

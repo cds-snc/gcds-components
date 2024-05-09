@@ -1,93 +1,13 @@
-@layer reset, defaults, slot, link, state.hover, state.focus;
+@layer reset, default, slot, link, hover;
 
 @layer reset {
-  :host * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-}
-
-@layer defaults {
   :host {
     display: block;
 
-    .gcds-card {
-      border: var(--gcds-card-border);
-      border-radius: var(--gcds-card-border-radius);
-      background-color: var(--gcds-card-background-color);
-      display: block;
-      padding: var(--gcds-card-padding);
-      height: 100%;
-      color: var(--gcds-card-color);
-      position: relative;
-
-      > *:not(slot):not(.gcds-card__spacer) {
-        display: block;
-        margin: var(--gcds-card-margin);
-      }
-
-      .gcds-card__image {
-        width: 100%;
-      }
-
-      .gcds-card__tag {
-        font: var(--gcds-card-tag-font);
-        color: var(--gcds-card-tag-color);
-      }
-
-      .gcds-card__title,
-      .gcds-card__title > a {
-        color: var(--gcds-card-title-color);
-        font: var(--gcds-card-title-font);
-        text-underline-offset: var(--gcds-card-title-text-underline-offset);
-        text-decoration-color: currentColor;
-        text-decoration-thickness: var(
-          --gcds-card-title-text-decoration-thickness
-        );
-        width: fit-content;
-      }
-
-      .gcds-card__description {
-        max-width: var(--gcds-card-description-max-width);
-      }
-    }
-  }
-}
-
-@layer slot {
-  :host {
-    .gcds-card:has(slot) {
-      display: flex;
-      flex-direction: column;
-
-      .gcds-card__spacer {
-        flex: 1;
-      }
-
-      ::slotted(*) {
-        color: var(--gcds-card-slot-color);
-        font: var(--gcds-card-slot-font) !important;
-        z-index: 2;
-      }
-    }
-  }
-}
-
-@layer link {
-  :host {
-    .gcds-card--link {
-      .gcds-card__title > a::after,
-      a.gcds-card__title::after {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-        pointer-events: auto;
-        content: '';
-      }
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
     }
 
     slot {
@@ -96,43 +16,71 @@
   }
 }
 
-@layer state.hover {
-  :host {
-    .gcds-card--link:hover {
-      background-color: var(--gcds-card-hover-background-color);
-      cursor: pointer;
-      box-shadow: var(--gcds-card-hover-box-shadow);
+@layer default {
+  :host .gcds-card {
+    border: var(--gcds-card-border);
+    border-radius: var(--gcds-card-border-radius);
+    background-color: var(--gcds-card-background-color);
+    display: block;
+    padding: var(--gcds-card-padding);
+    height: 100%;
+    color: var(--gcds-card-color);
+    position: relative;
 
-      .gcds-card__title > a,
-      a.gcds-card__title {
-        color: var(--gcds-card-hover-title-color);
-        text-decoration-thickness: var(
-          --gcds-card-hover-title-text-decoration-thickness
-        );
-      }
+    > *:not(slot):not(.gcds-card__spacer) {
+      display: block;
+      margin: var(--gcds-card-margin);
     }
 
-    .gcds-card__title > a:hover,
-    a.gcds-card__title:hover {
-      color: var(--gcds-card-hover-title-color);
-      text-decoration-thickness: var(
-        --gcds-card-hover-title-text-decoration-thickness
-      );
+    .gcds-card__image {
+      width: 100%;
+    }
+
+    .gcds-card__title {
+      font: var(--gcds-card-title-font);
+      width: fit-content;
     }
   }
 }
 
-@layer state.focus {
-  :host {
-    .gcds-card__title > a:focus,
-    a.gcds-card__title:focus {
-      background-color: var(--gcds-card-focus-background);
-      border-radius: var(--gcds-card-focus-border-radius);
-      box-shadow: var(--gcds-card-focus-box-shadow);
-      color: var(--gcds-card-focus-color);
-      outline: var(--gcds-card-focus-outline);
-      outline-offset: var(--gcds-card-focus-outline-offset);
-      text-decoration: none;
+@layer slot {
+  :host .gcds-card:has(slot) {
+    display: flex;
+    flex-direction: column;
+
+    .gcds-card__spacer {
+      flex: 1;
+    }
+
+    ::slotted(*) {
+      color: var(--gcds-card-slot-color);
+      font: var(--gcds-card-slot-font) !important;
+      z-index: 2;
+    }
+  }
+}
+
+@layer link {
+  :host .gcds-card.gcds-card--link gcds-link::part(link):after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: '';
+  }
+}
+
+@layer hover {
+  @media (hover: hover) {
+    :host .gcds-card {
+      &.gcds-card--link:hover {
+        background-color: var(--gcds-card-hover-background-color);
+        cursor: pointer;
+        box-shadow: var(--gcds-card-hover-box-shadow);
+      }
     }
   }
 }

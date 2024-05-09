@@ -1,4 +1,24 @@
-:host .gcds-hint {
-  font: var(--gcds-hint-font);
-  margin: var(--gcds-hint-margin);
+@layer reset, default;
+
+@layer reset {
+  :host {
+    display: block;
+
+    slot {
+      display: initial;
+    }
+  }
+}
+
+@layer default {
+  :host {
+    .gcds-hint,
+    gcds-text::part(text) {
+      color: inherit;
+    }
+
+    .gcds-hint {
+      margin: var(--gcds-hint-margin);
+    }
+  }
 }

@@ -299,18 +299,11 @@
           hint="They are in a fieldset"
           required
         >
-          <gcds-radio
-            radio-id="form-radio"
-            label="Radio 1 label"
-            hint="This is a hint."
+          <gcds-radio-group
             name="radio"
-          ></gcds-radio>
-          <gcds-radio
-            radio-id="form-radio1"
-            label="Radio 2 label"
-            hint="This is a hint."
-            name="radio"
-          ></gcds-radio>
+            options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+          >
+          </gcds-radio-group>
         </gcds-fieldset>
         <gcds-fieldset
           fieldset-id="fieldset2"
@@ -683,6 +676,7 @@
 
       <!-- ------------- Side nav ------------- -->
 
+      <gcds-heading tag="h2">Side navigation</gcds-heading>
       <gcds-side-nav class="mt-700" label="Sidenav">
         <gcds-nav-link href="#red">Installation</gcds-nav-link>
         <gcds-nav-link href="#red" current>Foundations</gcds-nav-link>

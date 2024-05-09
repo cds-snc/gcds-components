@@ -14,7 +14,6 @@
 | `label` _(required)_ | `label`          | Navigation element label                                                | `string`             | `undefined` |
 | `nextHref`           | `next-href`      | Simple display - href for next link                                     | `string`             | `undefined` |
 | `nextLabel`          | `next-label`     | Simple display - lable for next link                                    | `string`             | `undefined` |
-| `pageChangeHandler`  | --               | Function to fire when pageChange event is called                        | `Function`           | `undefined` |
 | `previousHref`       | `previous-href`  | Simple display - href for previous link                                 | `string`             | `undefined` |
 | `previousLabel`      | `previous-label` | Simple display - label for previous link                                | `string`             | `undefined` |
 | `totalPages`         | `total-pages`    | List display - Total number of pages                                    | `number`             | `undefined` |
@@ -23,9 +22,11 @@
 
 ## Events
 
-| Event            | Description                       | Type                |
-| ---------------- | --------------------------------- | ------------------- |
-| `gcdsPageChange` | Update value based on user input. | `CustomEvent<void>` |
+| Event       | Description                             | Type                |
+| ----------- | --------------------------------------- | ------------------- |
+| `gcdsBlur`  | Emitted when the link loses focus.      | `CustomEvent<void>` |
+| `gcdsClick` | Emitted when the link has been clicked. | `CustomEvent<void>` |
+| `gcdsFocus` | Emitted when the link has focus.        | `CustomEvent<void>` |
 
 
 ## Dependencies

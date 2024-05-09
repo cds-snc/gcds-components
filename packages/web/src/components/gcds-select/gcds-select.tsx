@@ -10,6 +10,7 @@ import {
   Host,
   h,
   Listen,
+  AttachInternals,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -27,13 +28,18 @@ import {
 @Component({
   tag: 'gcds-select',
   styleUrl: 'gcds-select.css',
-  shadow: false,
-  scoped: true,
+  shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class GcdsSelect {
   @Element() el: HTMLElement;
 
-  private shadowElement?: HTMLElement;
+  @AttachInternals()
+  internals: ElementInternals;
+
+  private initialValue?: string;
+
+  private shadowElement?: HTMLSelectElement;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -50,6 +56,11 @@ export class GcdsSelect {
    * Form field label.
    */
   @Prop({ reflect: true, mutable: false }) label!: string;
+
+  /**
+   * Name attribute for select form element.
+   */
+  @Prop({ reflect: true, mutable: false }) name!: string;
 
   /**
    * Specifies if a form field is required or not.
@@ -118,21 +129,6 @@ export class GcdsSelect {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
-   * Custom callback function on change event
-   */
-  @Prop() changeHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
-
-  /**
    * Specifies if the select is invalid.
    */
   @State() hasError: boolean;
@@ -154,39 +150,45 @@ export class GcdsSelect {
   @State() lang: string;
 
   /**
+   * List of passed options
+   */
+  @State() options: Element[];
+
+  /**
    * Events
    */
 
   /**
-   * Update value based on user selection.
+   * Emitted when the select value has changed.
    */
-  @Event() gcdsSelectChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter;
+
+  /**
+   * Emitted when the select has received input.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  private handleInput = (e, customEvent) => {
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val);
+
+    customEvent.emit(this.value);
+  };
 
   /**
    * Emitted when the select has focus.
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
-    this.gcdsFocus.emit();
-  };
-
   /**
    * Emitted when the select loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    } else {
-      if (this.validateOn == 'blur') {
-        this.validate();
-      }
+  private onBlur = () => {
+    if (this.validateOn === 'blur') {
+      this.validate();
     }
 
     this.gcdsBlur.emit();
@@ -232,16 +234,38 @@ export class GcdsSelect {
     }
   }
 
-  handleChange = e => {
-    if (this.changeHandler) {
-      this.changeHandler(e);
-    } else {
-      const val = e.target && e.target.value;
-      this.value = val;
+  /**
+   * Check if an option is selected or value matches an option's value
+   */
+  private checkValueOrSelected(option) {
+    const value = option.getAttribute('value');
+
+    if (this.value === value) {
+      option.setAttribute('selected', 'true');
+      this.internals.setFormValue(value);
+      this.initialValue = this.value;
     }
 
-    this.gcdsSelectChange.emit(this.value);
-  };
+    if (option.hasAttribute('selected')) {
+      this.value = value;
+      this.initialValue = this.value ? this.value : null;
+    }
+  }
+
+  /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    if (this.value != this.initialValue) {
+      this.internals.setFormValue(this.initialValue);
+      this.value = this.initialValue;
+    }
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.value = state;
+  }
 
   /*
    * Observe lang attribute change
@@ -274,6 +298,22 @@ export class GcdsSelect {
     }
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
+
+    if (this.el.children) {
+      this.options = Array.from(this.el.children);
+
+      this.options.forEach(option => {
+        if (option.nodeName === 'OPTION') {
+          this.checkValueOrSelected(option);
+        } else if (option.nodeName === 'OPTGROUP') {
+          const subOptions = Array.from(option.children);
+
+          subOptions.map(sub => {
+            this.checkValueOrSelected(sub);
+          });
+        }
+      });
+    }
   }
 
   componentWillUpdate() {
@@ -295,9 +335,12 @@ export class GcdsSelect {
       errorMessage,
       inheritedAttributes,
       hasError,
+      name,
+      options,
     } = this;
 
     const attrsSelect = {
+      name,
       disabled,
       required,
       value,
@@ -329,29 +372,60 @@ export class GcdsSelect {
         >
           <gcds-label {...attrsLabel} label-for={selectId} lang={lang} />
 
-          {hint ? <gcds-hint hint={hint} hint-id={selectId} /> : null}
+          {hint ? <gcds-hint hint-id={selectId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={selectId} message={errorMessage} />
+            <gcds-error-message messageId={selectId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <select
             {...attrsSelect}
             id={selectId}
-            name={selectId}
-            onBlur={e => this.onBlur(e)}
-            onFocus={e => this.onFocus(e)}
-            onChange={e => this.handleChange(e)}
+            onBlur={() => this.onBlur()}
+            onFocus={() => this.gcdsFocus.emit()}
+            onInput={e => this.handleInput(e, this.gcdsInput)}
+            onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-invalid={hasError ? 'true' : 'false'}
-            ref={element => (this.shadowElement = element as HTMLElement)}
+            ref={element => (this.shadowElement = element as HTMLSelectElement)}
           >
             {defaultValue ? (
               <option value="" disabled selected>
                 {defaultValue}
               </option>
             ) : null}
+            {options.map(opt => {
+              if (opt.nodeName === 'OPTION') {
+                const selected = opt.hasAttribute('selected')
+                  ? { selected: true }
+                  : null;
 
-            <slot></slot>
+                return (
+                  <option value={opt.getAttribute('value')} {...selected}>
+                    {opt.innerHTML}
+                  </option>
+                );
+              } else if (opt.nodeName === 'OPTGROUP') {
+                const optGroupChildren = Array.from(opt.children).map(sub => {
+                  const selected = sub.hasAttribute('selected')
+                    ? { selected: true }
+                    : null;
+
+                  return (
+                    <option value={sub.getAttribute('value')} {...selected}>
+                      {sub.innerHTML}
+                    </option>
+                  );
+                });
+
+                return (
+                  <optgroup label={opt.getAttribute('label')}>
+                    {optGroupChildren}
+                  </optgroup>
+                );
+              }
+            })}
           </select>
         </div>
       </Host>

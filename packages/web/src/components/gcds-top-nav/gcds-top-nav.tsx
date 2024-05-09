@@ -52,6 +52,37 @@ export class GcdsTopNav {
    */
   @State() navSize: 'desktop' | 'mobile';
 
+  @Listen('focusin', { target: 'document' })
+  async focusInListener(e) {
+    if (this.el.contains(e.target) && !this.navSize) {
+      const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
+      const nav = this.el as HTMLGcdsTopNavElement;
+      const mobileTrigger = this.mobile;
+
+      if (mediaQuery.matches) {
+        this.navSize = 'desktop';
+      } else {
+        this.navSize = 'mobile';
+      }
+
+      await this.updateNavItemQueue(this.el);
+
+      mediaQuery.addEventListener('change', async function (e) {
+        if (e.matches) {
+          nav.updateNavSize('desktop');
+          await nav.updateNavItemQueue(nav);
+
+          if (mobileTrigger.hasAttribute('open')) {
+            mobileTrigger.toggleNav();
+          }
+        } else {
+          nav.updateNavSize('mobile');
+          await nav.updateNavItemQueue(nav);
+        }
+      });
+    }
+  }
+
   @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
     if (!this.el.contains(e.relatedTarget)) {
@@ -138,36 +169,6 @@ export class GcdsTopNav {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
-
-    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-
-    if (mediaQuery.matches) {
-      this.navSize = 'desktop';
-    } else {
-      this.navSize = 'mobile';
-    }
-  }
-
-  async componentDidLoad() {
-    const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
-    const nav = this.el as HTMLGcdsTopNavElement;
-    const mobileTrigger = this.mobile;
-
-    await this.updateNavItemQueue(this.el);
-
-    mediaQuery.addEventListener('change', async function (e) {
-      if (e.matches) {
-        nav.updateNavSize('desktop');
-        await nav.updateNavItemQueue(nav);
-
-        if (mobileTrigger.hasAttribute('open')) {
-          mobileTrigger.toggleNav();
-        }
-      } else {
-        nav.updateNavSize('mobile');
-        await nav.updateNavItemQueue(nav);
-      }
-    });
   }
 
   render() {
@@ -175,27 +176,29 @@ export class GcdsTopNav {
 
     return (
       <Host>
-        <nav
-          aria-label={`${label}${I18N[lang].navLabel}`}
-          class="gcds-top-nav__container"
-        >
-          <gcds-nav-group
-            menuLabel="Menu"
-            closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
-            openTrigger="Menu"
-            class="gcds-mobile-nav gcds-mobile-nav-topnav"
-            ref={element => (this.mobile = element as HTMLGcdsNavGroupElement)}
-            lang={lang}
-          >
-            <slot name="home"></slot>
-            <ul
-              role="menu"
-              class={`nav-container__list nav-list--${alignment}`}
-            >
-              <slot></slot>
+        <div class="gcds-top-nav">
+          <nav aria-label={`${label}${I18N[lang].navLabel}`}>
+            <ul class="gcds-top-nav__container">
+              <gcds-nav-group
+                menuLabel="Menu"
+                closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
+                openTrigger="Menu"
+                class="gcds-mobile-nav gcds-mobile-nav-topnav"
+                ref={element =>
+                  (this.mobile = element as HTMLGcdsNavGroupElement)
+                }
+                lang={lang}
+              >
+                <slot name="home"></slot>
+                <li class={`nav-container__list nav-list--${alignment}`}>
+                  <ul class={`nav-container__list nav-list--${alignment}`}>
+                    <slot></slot>
+                  </ul>
+                </li>
+              </gcds-nav-group>
             </ul>
-          </gcds-nav-group>
-        </nav>
+          </nav>
+        </div>
       </Host>
     );
   }

@@ -1,7 +1,7 @@
-@layer reset, defaults, variants, state.hover, state.active, state.focus;
+@layer reset, default, variants, hover, active, focus;
 
 @layer reset {
-  :host a {
+  :host .gcds-nav-link {
     box-sizing: border-box;
 
     slot {
@@ -10,8 +10,8 @@
   }
 }
 
-@layer defaults {
-  :host a {
+@layer default {
+  :host .gcds-nav-link {
     display: flex;
     font: var(---gcds-nav-link-font);
     text-decoration: underline solid currentColor
@@ -41,7 +41,7 @@
 @layer variants {
   /* Top-nav: styles for larger screens */
   @media only screen and (width >= 64em) {
-    :host(.gcds-nav-link--topnav) > a {
+    :host > .gcds-nav-link--topnav.gcds-nav-link {
       color: var(--gcds-nav-link-top-nav-text);
       margin: var(--gcds-nav-link-top-nav-margin);
       padding: var(--gcds-nav-link-top-nav-padding);
@@ -54,51 +54,51 @@
     }
 
     /* Home link styles  */
-    :host(.gcds-nav-link--home) > a {
+    :host([slot=home]) > .gcds-nav-link {
       font: var(--gcds-nav-link-top-nav-home-font);
       padding: var(--gcds-nav-link-top-nav-home-padding);
     }
   }
 
   /* Side-nav: nav link styles */
-  :host(.gcds-nav-link--sidenav) > a {
+  :host > .gcds-nav-link--sidenav.gcds-nav-link {
     padding: var(--gcds-nav-link-side-nav-padding);
   }
 }
 
-@layer state.hover {
+@layer hover {
   @media (hover: hover) {
-    :host a:hover {
+    :host .gcds-nav-link:hover {
       text-decoration-thickness: var(
         --gcds-nav-link-hover-decoration-thickness
       );
       color: var(--gcds-nav-link-hover-text);
     }
 
-    :host(.gcds-nav-link--sidenav) > a:hover,
-    :host(.gcds-nav-link--dropdown) > a:hover {
+    :host > .gcds-nav-link--sidenav.gcds-nav-link:hover,
+    :host > .gcds-nav-link--dropdown.gcds-nav-link:hover {
       color: var(--gcds-nav-link-hover-text);
     }
 
-    :host(.gcds-nav-link--sidenav) > a:hover {
+    :host > .gcds-nav-link--sidenav.gcds-nav-link:hover {
       background-color: var(--gcds-nav-link-side-nav-hover-background);
     }
 
-    :host(.gcds-nav-link--dropdown) > a:hover {
+    :host > .gcds-nav-link--dropdown.gcds-nav-link:hover {
       background-color: var(--gcds-nav-link-top-nav-hover-background);
     }
   }
 }
 
-@layer state.active {
-  :host a[aria-current='page'] {
+@layer active {
+  :host .gcds-nav-link[aria-current='page'] {
     font-weight: var(--gcds-nav-link-active-font-weight);
     background-color: var(--gcds-nav-link-active-background);
     color: var(--gcds-nav-link-active-text);
     border-inline-start-color: var(--gcds-nav-link-active-border-color);
   }
 
-  :host(.gcds-nav-link--topnav) > a[aria-current='page'] {
+  :host > .gcds-nav-link--topnav.gcds-nav-link[aria-current='page'] {
     @media only screen and (width >= 64em) {
       font: var(--gcds-nav-link-font);
       background-color: transparent;
@@ -108,8 +108,8 @@
   }
 }
 
-@layer state.focus {
-  :host a:focus {
+@layer focus {
+  :host .gcds-nav-link:focus {
     background-color: var(--gcds-nav-link-focus-background);
     color: var(--gcds-nav-link-focus-text);
     outline: var(--gcds-nav-link-focus-outline);

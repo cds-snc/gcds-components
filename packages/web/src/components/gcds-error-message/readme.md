@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property                 | Attribute    | Description                              | Type     | Default     |
-| ------------------------ | ------------ | ---------------------------------------- | -------- | ----------- |
-| `message` _(required)_   | `message`    | Error message for an invalid form field. | `string` | `undefined` |
-| `messageId` _(required)_ | `message-id` | Id attribute for the error message.      | `string` | `undefined` |
+| Property                 | Attribute    | Description                         | Type     | Default     |
+| ------------------------ | ------------ | ----------------------------------- | -------- | ----------- |
+| `messageId` _(required)_ | `message-id` | Id attribute for the error message. | `string` | `undefined` |
 
 
 ## Dependencies
@@ -24,9 +23,14 @@
  - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
 
+### Depends on
+
+- [gcds-text](../gcds-text)
+
 ### Graph
 ```mermaid
 graph TD;
+  gcds-error-message --> gcds-text
   gcds-checkbox --> gcds-error-message
   gcds-fieldset --> gcds-error-message
   gcds-file-uploader --> gcds-error-message

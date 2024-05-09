@@ -48,15 +48,15 @@ export class GcdsLangToggle {
 
     return (
       <Host>
-        <nav aria-labelledby="lang-toggle__heading">
+        <div class="gcds-lang-toggle">
           <gcds-sr-only id="lang-toggle__heading" tag="h2">
             {i18n[lang].heading}
           </gcds-sr-only>
-          <a href={href} lang={i18n[lang].abbreviation}>
+          <gcds-link size="regular" href={href} lang={i18n[lang].abbreviation}>
             <span>{i18n[lang].language}</span>
             <abbr title={i18n[lang].language}>{i18n[lang].abbreviation}</abbr>
-          </a>
-        </nav>
+          </gcds-link>
+        </div>
       </Host>
     );
   }

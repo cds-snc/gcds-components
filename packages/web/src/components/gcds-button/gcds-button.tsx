@@ -3,7 +3,6 @@ import {
   Element,
   Event,
   EventEmitter,
-  Method,
   Host,
   Watch,
   Prop,
@@ -11,13 +10,13 @@ import {
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
-import { inheritAttributes } from '../../utils/utils';
+import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-button',
   styleUrl: 'gcds-button.css',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class GcdsButton {
   @Element() el: HTMLElement;
@@ -45,15 +44,12 @@ export class GcdsButton {
   /**
    * Set the main style
    */
-  @Prop({ mutable: true }) buttonRole:
-    | 'primary'
-    | 'secondary'
-    | 'danger'
-    | 'skip-to-content' = 'primary';
+  @Prop({ mutable: true }) buttonRole: 'primary' | 'secondary' | 'danger' =
+    'primary';
 
   @Watch('buttonRole')
   validateButtonRole(newValue: string) {
-    const values = ['primary', 'secondary', 'danger', 'skip-to-content'];
+    const values = ['primary', 'secondary', 'danger'];
 
     if (!values.includes(newValue)) {
       this.buttonRole = 'primary';
@@ -114,21 +110,6 @@ export class GcdsButton {
   @Prop() download: string | undefined;
 
   /**
-   * Custom callback function on click event
-   */
-  @Prop() clickHandler: Function;
-
-  /**
-   * Custom callback function on focus event
-   */
-  @Prop() focusHandler: Function;
-
-  /**
-   * Custom callback function on blur event
-   */
-  @Prop() blurHandler: Function;
-
-  /**
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
@@ -141,6 +122,11 @@ export class GcdsButton {
   /**
    * Events
    */
+
+  /**
+   * Emitted when the button has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
 
   /**
    * Emitted when the button has focus.
@@ -178,18 +164,10 @@ export class GcdsButton {
     this.updateLang();
   }
 
-  /**
-   * Focus element
-   */
-  @Method()
-  async focusElement() {
-    this.shadowElement.focus();
-  }
-
   private handleClick = (e: Event) => {
-    if (this.clickHandler) {
-      this.clickHandler(e);
-    } else {
+    const event = emitEvent(e, this.gcdsClick);
+
+    if (event) {
       if (!this.disabled && this.type != 'button' && this.type != 'link') {
         // Attach button to form
         const form = this.el.closest('form');
@@ -208,26 +186,10 @@ export class GcdsButton {
           formButton.remove();
         }
       }
+
+      // Has any inherited attributes changed on click
+      this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
     }
-
-    // Has any inherited attributes changed on click
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-  };
-
-  private onFocus = e => {
-    if (this.focusHandler) {
-      this.focusHandler(e);
-    }
-
-    this.gcdsFocus.emit();
-  };
-
-  private onBlur = e => {
-    if (this.blurHandler) {
-      this.blurHandler(e);
-    }
-
-    this.gcdsBlur.emit();
   };
 
   render() {
@@ -266,8 +228,8 @@ export class GcdsButton {
         <Tag
           {...attrs}
           id={buttonId}
-          onBlur={e => this.onBlur(e)}
-          onFocus={e => this.onFocus(e)}
+          onBlur={() => this.gcdsBlur.emit()}
+          onFocus={() => this.gcdsFocus.emit()}
           onClick={e => this.handleClick(e)}
           class={`gcds-button button--role-${buttonRole} button--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}

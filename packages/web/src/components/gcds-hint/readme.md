@@ -7,10 +7,16 @@
 
 ## Properties
 
-| Property | Attribute | Description                                               | Type     | Default     |
-| -------- | --------- | --------------------------------------------------------- | -------- | ----------- |
-| `hint`   | `hint`    | Hint displayed below the label and above the input field. | `string` | `undefined` |
-| `hintId` | `hint-id` | Id attribute for the hint.                                | `string` | `undefined` |
+| Property | Attribute | Description                | Type     | Default     |
+| -------- | --------- | -------------------------- | -------- | ----------- |
+| `hintId` | `hint-id` | Id attribute for the hint. | `string` | `undefined` |
+
+
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"hint"` |             |
 
 
 ## Dependencies
@@ -21,18 +27,23 @@
  - [gcds-fieldset](../gcds-fieldset)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
- - [gcds-radio](../gcds-radio)
+ - [gcds-radio-group](../gcds-radio-group)
  - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
+
+### Depends on
+
+- [gcds-text](../gcds-text)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-hint --> gcds-text
   gcds-checkbox --> gcds-hint
   gcds-fieldset --> gcds-hint
   gcds-file-uploader --> gcds-hint
   gcds-input --> gcds-hint
-  gcds-radio --> gcds-hint
+  gcds-radio-group --> gcds-hint
   gcds-select --> gcds-hint
   gcds-textarea --> gcds-hint
   style gcds-hint fill:#f9f,stroke:#333,stroke-width:4px

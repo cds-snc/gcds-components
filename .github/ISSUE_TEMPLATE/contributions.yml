@@ -2,6 +2,17 @@ name: 👷 Contribute to next priorities
 description: Help us with our work on our next priorities 
 title: 'contribution: '
 body:
+  - type: markdown
+    attributes:
+      value: "## Thank you for contributing to our project!"
+  - type: markdown
+    attributes:
+      value: |
+        - Before we start developing these components or patterns, we want to ensure that the GC community has an opportunity to submit contributions that can accelerate and inform design and delivery.
+        - The types of contributions we'll be looking for:
+          - **examples of designs**: screenshots, prototypes, links to live services
+          - **research findings**: tell or show us your discovery, your use case, or how your relevant prototype or service has been tested with people using the service
+          - **code**: prototype code or production code; share your implementations of the relevant component or pattern in services
   - type: checkboxes
     attributes:
       label: Prerequisites
@@ -17,7 +28,8 @@ body:
       label: Which component or pattern is this contribution for?
       options:
         - Data Table
-        - Card (v2)
+        - Image
+        - Tags
     validations:
       required: true
   - type: textarea

@@ -1,32 +1,48 @@
-:host {
-  display: block;
+@layer reset, default, disabled, focus;
 
+@layer reset {
+  :host {
+    display: block;
+
+    .gcds-fieldset {
+      border: 0;
+      padding: 0;
+    }
+
+    slot {
+      display: block;
+      margin: 0;
+    }
+  }
+}
+
+@layer default {
   .gcds-fieldset {
-    border: none;
-    padding: 0;
     color: var(--gcds-fieldset-default-text);
 
-    & > legend {
-      font: var(--gcds-fieldset-font);
-      color: inherit;
-      margin: var(--gcds-fieldset-legend-margin);
-    }
+    legend {
+      font: var(--gcds-fieldset-font-desktop);
+      margin: var(--gcds-fieldset-legend-margin) !important;
 
-    &:focus-within {
-      color: var(--gcds-fieldset-focus-text);
-    }
+      @media only screen and (width < 48em) {
+        font: var(--gcds-fieldset-font-mobile);
+      }
 
-    &:disabled {
-      color: var(--gcds-fieldset-disabled-text);
+      .legend__required {
+        margin: var(--gcds-fieldset-legend-required-margin) !important;
+      }
     }
   }
+}
 
-  .legend__required {
-    margin: var(--gcds-fieldset-legend-required-margin);
+@layer disabled {
+  :host .gcds-fieldset:disabled {
+    color: var(--gcds-fieldset-disabled-text);
   }
+}
 
-  slot {
-    display: block;
-    margin: 0;
+@layer focus {
+  :host .gcds-fieldset:focus-within {
+    color: var(--gcds-fieldset-focus-text);
   }
 }

@@ -8,14 +8,14 @@ import { Components } from '@cdssnc/gcds-components';
 
 
 @ProxyCmp({
-  inputs: ['alertRole', 'container', 'dismissHandler', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed']
+  inputs: ['alertRole', 'container', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed']
 })
 @Component({
   selector: 'gcds-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alertRole', 'container', 'dismissHandler', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed'],
+  inputs: ['alertRole', 'container', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed'],
 })
 export class GcdsAlert {
   protected el: HTMLElement;
@@ -80,27 +80,30 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type'],
-  methods: ['focusElement']
+  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type']
 })
 @Component({
   selector: 'gcds-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'buttonId', 'buttonRole', 'clickHandler', 'disabled', 'download', 'focusHandler', 'href', 'name', 'rel', 'size', 'target', 'type'],
+  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type'],
 })
 export class GcdsButton {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
 
 export declare interface GcdsButton extends Components.GcdsButton {
+  /**
+   * Emitted when the button has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the button has focus.
    */
@@ -135,7 +138,7 @@ export declare interface GcdsCard extends Components.GcdsCard {}
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'checkboxId', 'checked', 'clickHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['checkboxId', 'checked', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -143,19 +146,23 @@ export declare interface GcdsCard extends Components.GcdsCard {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'checkboxId', 'checked', 'clickHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['checkboxId', 'checked', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
 })
 export class GcdsCheckbox {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
 
 export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
+  /**
+   * Emitted when the checkbox has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the checkbox has focus.
    */
@@ -224,7 +231,8 @@ export declare interface GcdsDateModified extends Components.GcdsDateModified {}
 
 
 @ProxyCmp({
-  inputs: ['detailsTitle', 'open']
+  inputs: ['detailsTitle', 'open'],
+  methods: ['toggle']
 })
 @Component({
   selector: 'gcds-details',
@@ -238,22 +246,36 @@ export class GcdsDetails {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
-export declare interface GcdsDetails extends Components.GcdsDetails {}
+export declare interface GcdsDetails extends Components.GcdsDetails {
+  /**
+   * Emitted when the details has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the details loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the details has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
+}
 
 
 @ProxyCmp({
-  inputs: ['message', 'messageId']
+  inputs: ['messageId']
 })
 @Component({
   selector: 'gcds-error-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['message', 'messageId'],
+  inputs: ['messageId'],
 })
 export class GcdsErrorMessage {
   protected el: HTMLElement;
@@ -331,7 +353,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
 
 
 @ProxyCmp({
-  inputs: ['accept', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'multiple', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
+  inputs: ['accept', 'disabled', 'errorMessage', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -339,14 +361,14 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accept', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'multiple', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
+  inputs: ['accept', 'disabled', 'errorMessage', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsFileUploader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsFileUploaderChange', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -361,9 +383,13 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Update value based on user selection.
+   * Emitted when the user has made a file selection.
    */
-  gcdsFileUploaderChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the user has uploaded a file.
+   */
+  gcdsInput: EventEmitter<CustomEvent<any>>;
   /**
    * Remove file and update value.
    */
@@ -490,14 +516,14 @@ export declare interface GcdsHeading extends Components.GcdsHeading {}
 
 
 @ProxyCmp({
-  inputs: ['hint', 'hintId']
+  inputs: ['hintId']
 })
 @Component({
   selector: 'gcds-hint',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['hint', 'hintId'],
+  inputs: ['hintId'],
 })
 export class GcdsHint {
   protected el: HTMLElement;
@@ -534,7 +560,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -542,14 +568,14 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'blurHandler', 'changeHandler', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'inputId', 'label', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
 })
 export class GcdsInput {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -564,7 +590,11 @@ export declare interface GcdsInput extends Components.GcdsInput {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Update value based on user input.
+   * Emitted when the element has received input.
+   */
+  gcdsInput: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has changed.
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
@@ -674,16 +704,24 @@ export class GcdsNavGroup {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsClick']);
+    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
 
 export declare interface GcdsNavGroup extends Components.GcdsNavGroup {
   /**
-   * Emitted when the button has focus.
+   * Emitted when the button has been clicked.
    */
   gcdsClick: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the button has been focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the button blurs.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
 }
 
 
@@ -725,30 +763,38 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
 
 
 @ProxyCmp({
-  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url']
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'previousHref', 'previousLabel', 'totalPages', 'url']
 })
 @Component({
   selector: 'gcds-pagination',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'pageChangeHandler', 'previousHref', 'previousLabel', 'totalPages', 'url'],
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'previousHref', 'previousLabel', 'totalPages', 'url'],
 })
 export class GcdsPagination {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsPageChange']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
 export declare interface GcdsPagination extends Components.GcdsPagination {
   /**
-   * Update value based on user input.
+   * Emitted when the link has focus.
    */
-  gcdsPageChange: EventEmitter<CustomEvent<void>>;
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
 }
 
 
@@ -775,30 +821,30 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'checked', 'clickHandler', 'disabled', 'focusHandler', 'hint', 'label', 'name', 'radioId', 'required', 'value']
+  inputs: ['name', 'options']
 })
 @Component({
-  selector: 'gcds-radio',
+  selector: 'gcds-radio-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'checked', 'clickHandler', 'disabled', 'focusHandler', 'hint', 'label', 'name', 'radioId', 'required', 'value'],
+  inputs: ['name', 'options'],
 })
-export class GcdsRadio {
+export class GcdsRadioGroup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsRadioChange', 'gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
 
-export declare interface GcdsRadio extends Components.GcdsRadio {
+export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
   /**
    * Emitted when the radio button is checked
    */
-  gcdsRadioChange: EventEmitter<CustomEvent<void>>;
+  gcdsChange: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the radio has focus.
    */
@@ -811,30 +857,34 @@ export declare interface GcdsRadio extends Components.GcdsRadio {
 
 
 @ProxyCmp({
-  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested']
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested', 'value']
 })
 @Component({
   selector: 'gcds-search',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested'],
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested', 'value'],
 })
 export class GcdsSearch {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']);
+    proxyOutputs(this, this.el, ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']);
   }
 }
 
 
 export declare interface GcdsSearch extends Components.GcdsSearch {
   /**
+   * Emitted when the search element has recieved input.
+   */
+  gcdsInput: EventEmitter<CustomEvent<string>>;
+  /**
    * Emitted when the search input value has changed.
    */
-  gcdsChange: EventEmitter<CustomEvent<object>>;
+  gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the search input value has gained focus.
    */
@@ -851,7 +901,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'changeHandler', 'defaultValue', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'required', 'selectId', 'validateOn', 'validator', 'value'],
+  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -859,23 +909,27 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'changeHandler', 'defaultValue', 'disabled', 'errorMessage', 'focusHandler', 'hint', 'label', 'required', 'selectId', 'validateOn', 'validator', 'value'],
+  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsSelect {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsSelectChange', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']);
   }
 }
 
 
 export declare interface GcdsSelect extends Components.GcdsSelect {
   /**
-   * Update value based on user selection.
+   * Emitted when the select value has changed.
    */
-  gcdsSelectChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the select has received input.
+   */
+  gcdsInput: EventEmitter<CustomEvent<any>>;
   /**
    * Emitted when the select has focus.
    */
@@ -1007,7 +1061,7 @@ export declare interface GcdsText extends Components.GcdsText {}
 
 
 @ProxyCmp({
-  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
+  inputs: ['characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
   methods: ['validate']
 })
 @Component({
@@ -1015,14 +1069,14 @@ export declare interface GcdsText extends Components.GcdsText {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['blurHandler', 'changeHandler', 'characterCount', 'cols', 'disabled', 'errorMessage', 'focusHandler', 'hideLabel', 'hint', 'label', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
+  inputs: ['characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
 })
 export class GcdsTextarea {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -1037,9 +1091,13 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Update value based on user input.
+   * Emitted when the textarea has changed.
    */
   gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the textarea has received input.
+   */
+  gcdsInput: EventEmitter<CustomEvent<any>>;
   /**
    * Emitted when the textarea has a validation error.
    */
