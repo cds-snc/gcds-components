@@ -29,7 +29,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.20.0"
+    "@cdssnc/gcds-components": "^0.21.0"
   },
   "devDependencies": {
     "vue": "^3.4.26"
