@@ -1,6 +1,7 @@
 dist/
 www/
 loader/
+hydrate/
 /tmp
 /out-tsc
 /bazel-out
