@@ -14,7 +14,8 @@
   "unpkg": "dist/stencil-starter-project-name/stencil-starter-project-name.esm.js",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "hydrate"
   ],
   "publishConfig": {
     "access": "public"
