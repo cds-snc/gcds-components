@@ -269,14 +269,18 @@
     overflow: visible !important;
   }
 
-  .css-1jvt1oy:focus,
-  .css-1qot2ot:focus,
-  .css-1p58akv:focus,
-  .css-tvcum3:focus-within {
+  .docblock-argstable input:focus,
+  .docblock-argstable textarea:focus,
+  .docblock-argstable .css-obbby0:focus-within {
     box-shadow: 0 0 0 var(--gcds-border-width-md) #262626 !important;
     outline-offset: var(--gcds-input-border-width) !important;
     border-color: #262626 !important;
     outline: var(--gcds-input-outline-width) solid var(--gcds-color-grayscale-0) !important;
+    border-radius: var(--gcds-link-focus-border-radius) !important;
+  }
+
+  .docblock-argstable .css-obbby0:focus-within select {
+    box-shadow: none !important;
   }
 
   .css-tvcum3 input[type='checkbox']:focus {
