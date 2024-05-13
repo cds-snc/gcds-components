@@ -315,6 +315,9 @@ export class GcdsCheckbox {
       this.internals.setFormValue(null, 'checked');
     }
 
+    const changeEvt = new e.constructor(e.type, e);
+    this.el.dispatchEvent(changeEvt);
+
     this.gcdsChange.emit(this.checked);
   };
 
