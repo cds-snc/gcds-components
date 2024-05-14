@@ -119,7 +119,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-checkbox
   checkbox-id="${args.checkboxId}"
   label="${args.label}"

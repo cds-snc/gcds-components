@@ -83,7 +83,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-card
   card-title="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}

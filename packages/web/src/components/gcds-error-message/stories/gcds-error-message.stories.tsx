@@ -29,7 +29,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-error-message message-id="${args.messageId}">
   ${args.default}
 </gcds-error-message>

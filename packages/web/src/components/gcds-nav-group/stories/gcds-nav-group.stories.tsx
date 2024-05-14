@@ -50,7 +50,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-nav-group
   menu-label="${args.menuLabel}"
   open-trigger="${args.openTrigger}"

@@ -19,7 +19,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-topic-menu ${args.home ? `home` : null} ${
     args.lang != 'en' ? `lang="${args.lang}"` : null
   }>

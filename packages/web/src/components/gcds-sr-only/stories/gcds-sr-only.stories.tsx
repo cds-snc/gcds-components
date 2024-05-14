@@ -29,7 +29,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-sr-only ${args.tag != 'p' ? `tag="${args.tag}"` : null}>
   ${args.default}
 </gcds-sr-only>

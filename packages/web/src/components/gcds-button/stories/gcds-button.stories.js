@@ -133,7 +133,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-button ${args.type != 'button' ? `type="${args.type}"` : null} ${
     args.buttonRole != 'primary' ? `button-role="${args.buttonRole}"` : null
   } ${args.buttonId ? `button-id="${args.buttonId}"` : null} ${

@@ -162,7 +162,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-grid ${args.tag != 'div' ? `tag="${args.tag}"` : null} ${
     args.container != 'full' ? `container="${args.container}"` : null
   } ${
