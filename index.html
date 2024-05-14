@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 
     <title>@storybook/cli - Storybook</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
@@ -28,27 +28,29 @@
     <link href="./sb-manager/runtime.js" rel="modulepreload" />
 
     
-    <link href="./sb-addons/links-0/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/storybook-core-server-presets-0/common-manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-controls-1/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/links-1/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-actions-2/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-controls-2/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-backgrounds-3/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-actions-3/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-viewport-4/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-backgrounds-4/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-toolbars-5/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-viewport-5/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-measure-6/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-toolbars-6/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-outline-7/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-measure-7/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/interactions-8/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-outline-8/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/a11y-9/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/interactions-9/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/storybook-10/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/a11y-10/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/storybook-11/manager-bundle.js" rel="modulepreload" />
       <!-- Load GCDS tokens -->
 <link
   rel="stylesheet"
@@ -57,7 +59,7 @@
 <style>
   /* ----- SIDEBAR ----- */
   .sidebar-container {
-    background-color: var(--gcds-color-blue-900);
+    background-color: var(--gcds-bg-primary) !important;
   }
 
   .sidebar-container .os-content {
@@ -65,29 +67,78 @@
       var(--gcds-spacing-400) !important;
   }
 
+  .sidebar-container .css-d3imve {
+    padding: 0 !important;
+  }
+
+  /* Focus styling */
+  .sidebar-container a:focus,
+  .sidebar-container button:not(.sidebar-item):focus,
+  .sb-bar a:focus,
+  .sb-bar button:focus,
+  #panel-tab-content a:focus,
+  #panel-tab-content button:focus,
+  #storybook-preview-wrapper a:focus {
+    background-color: var(--gcds-link-focus-background) !important;
+    border-radius: var(--gcds-link-focus-border-radius) !important;
+    box-shadow: var(--gcds-link-focus-box-shadow) !important;
+    color: var(--gcds-link-focus-text) !important;
+    outline: var(--gcds-link-focus-outline-width) solid
+      var(--gcds-link-focus-background) !important;
+    outline-offset: var(--gcds-link-focus-outline-offset) !important;
+    text-decoration: none !important;
+  }
+
+  #panel-tab-content button:focus span {
+    color: inherit !important;
+  }
+
   /* Sidebar header */
   .sidebar-header {
+    position: relative;
+    flex-wrap: wrap;
     flex-direction: column-reverse;
+    padding-inline: var(--gcds-spacing-450) !important;
   }
 
   .sidebar-header .css-1jtjrtn {
-    margin: 0;
+    flex-shrink: 0;
+    margin: var(--gcds-spacing-500) 0 0;
+  }
+
+  .sidebar-header .css-1rb1jn6 {
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
+
+  .sidebar-header .css-c3junj,
+  .sidebar-header .css-17fv6jh {
+    position: absolute;
+    top: var(--gcds-spacing-200);
   }
 
   .sidebar-header .css-c3junj {
-    align-self: flex-end;
+    right: var(--gcds-spacing-450);
     margin: 0 0 var(--gcds-spacing-150);
+  }
+
+  .sidebar-header .css-17fv6jh {
+    right: var(--gcds-spacing-600);
   }
 
   .sidebar-header .css-c3junj button {
     padding: 0;
   }
 
+  .sidebar-header #button-run-tests svg {
+    color: var(--gcds-text-light) !important;
+  }
+
   /* Sidebar subheadings + welcome story */
   .sidebar-subheading,
   div.sidebar-item[data-item-id='welcome--stories'] {
     margin-block-end: var(--gcds-spacing-250) !important;
-    padding-inline: var(--gcds-spacing-400) !important;
   }
 
   .sidebar-subheading,
@@ -102,14 +153,19 @@
     margin: 0;
   }
 
-  .sidebar-subheading .css-1q3s0lr span,
+  .sidebar-subheading .css-1h0aucu,
   #welcome--stories svg {
     display: none;
   }
 
   /* Sidebar search field */
   .search-field {
-    margin: var(--gcds-spacing-450) 0;
+    margin: var(--gcds-spacing-450) 0 !important;
+    padding: 0 var(--gcds-spacing-450);
+  }
+
+  .search-field .css-1u13tiw {
+    left: calc(var(--gcds-spacing-450) + 8px);
   }
 
   .search-field svg,
@@ -158,9 +214,22 @@
     color: var(--gcds-text-light) !important;
   }
 
+  .sidebar-subheading,
+  .sidebar-item {
+    padding-inline: var(--gcds-spacing-450) !important;
+  }
+
+  .sidebar-subheading button {
+    padding: 0;
+  }
+
+  .sidebar-subheading button:hover {
+    background-color: transparent !important;
+  }
+
   .sidebar-item {
     padding-block: var(--gcds-spacing-150) !important;
-    padding-inline-start: var(--gcds-spacing-450) !important;
+    border-radius: 0 !important;
   }
 
   .sidebar-item a {
@@ -168,18 +237,26 @@
   }
 
   .sidebar-item:hover {
-    background-color: var(--gcds-color-grayscale-0) !important;
+    background-color: var(--gcds-bg-white) !important;
     color: var(--gcds-text-primary) !important;
   }
 
-  .sidebar-item svg {
+  .sidebar-item a:focus {
+    background-color: transparent !important;
+    border: 0 !important;
+    color: var(--gcds-text-primary) !important;
+    outline: 0 !important;
+  }
+
+  .sidebar-item svg,
+  .sidebar-item div {
     display: none !important;
   }
 
   button.sidebar-item {
     border-block-start: var(--gcds-border-width-sm) solid
       rgba(255, 255, 255, 0.15) !important;
-    padding: var(--gcds-spacing-250) var(--gcds-spacing-400) !important;
+    padding: var(--gcds-spacing-250) var(--gcds-spacing-450) !important;
   }
 
   button.sidebar-item:last-of-type {
@@ -198,7 +275,7 @@
 
   /* Style selected sidebar item */
   .sidebar-item[data-selected='true'] {
-    background-color: var(--gcds-color-grayscale-0) !important;
+    background-color: var(--gcds-bg-white) !important;
     color: var(--gcds-color-blue-900) !important;
   }
 
@@ -218,6 +295,11 @@
     display: none !important;
   }
 
+  /* Search results */
+  #storybook-explorer-menu .css-1iruc8t {
+    padding: 0 var(--gcds-spacing-450);
+  }
+
   /* ----- MAIN ----- */
   .css-8x7xhh {
     box-shadow: none !important;
@@ -226,7 +308,15 @@
   /* ----- PREVIEW FRAME ----- */
   #storybook-preview-wrapper {
     padding: 4rem 0;
-    background-color: var(--gcds-color-grayscale-0);
+    background-color: var(--gcds-bg-white) !important;
+  }
+
+  #storybook-preview-wrapper iframe {
+    box-shadow: none !important;
+  }
+
+  #storybook-preview-wrapper:has(> a[href='#welcome--stories']) {
+    padding: 0;
   }
 </style>
  
@@ -247,12 +337,9 @@
       
         
           window['FEATURES'] = {
-  "warnOnLegacyHierarchySeparator": true,
-  "buildStoriesJson": false,
-  "storyStoreV7": true,
   "argTypeTargetsV7": true,
   "legacyDecoratorFileOrder": false,
-  "disallowImplicitActionsInRenderV8": false
+  "disallowImplicitActionsInRenderV8": true
 };
         
       
@@ -279,37 +366,70 @@
       
         
       
+        
+          window['TAGS_OPTIONS'] = {
+  "dev-only": {
+    "excludeFromDocsStories": true
+  },
+  "docs-only": {
+    "excludeFromSidebar": true
+  },
+  "test-only": {
+    "excludeFromSidebar": true,
+    "excludeFromDocsStories": true
+  }
+};
+        
+      
+        
+          window['STORYBOOK_RENDERER'] = "@storybook/html";
+        
+      
+        
+          window['STORYBOOK_BUILDER'] = "@storybook/builder-webpack5";
+        
+      
+        
+          window['STORYBOOK_FRAMEWORK'] = "/home/runner/work/gcds-components/gcds-components/node_modules/@storybook/html-webpack5";
+        
+      
     </script>
     
 
     <script type="module">
+      import './sb-manager/globals-runtime.js';
+      
+      
+        import './sb-addons/storybook-core-server-presets-0/common-manager-bundle.js';
+      
+        import './sb-addons/links-1/manager-bundle.js';
+      
+        import './sb-addons/essentials-controls-2/manager-bundle.js';
+      
+        import './sb-addons/essentials-actions-3/manager-bundle.js';
+      
+        import './sb-addons/essentials-backgrounds-4/manager-bundle.js';
+      
+        import './sb-addons/essentials-viewport-5/manager-bundle.js';
+      
+        import './sb-addons/essentials-toolbars-6/manager-bundle.js';
+      
+        import './sb-addons/essentials-measure-7/manager-bundle.js';
+      
+        import './sb-addons/essentials-outline-8/manager-bundle.js';
+      
+        import './sb-addons/interactions-9/manager-bundle.js';
+      
+        import './sb-addons/a11y-10/manager-bundle.js';
+      
+        import './sb-addons/storybook-11/manager-bundle.js';
+      
+      
       import './sb-manager/runtime.js';
-
-      
-      import './sb-addons/links-0/manager-bundle.js';
-      
-      import './sb-addons/essentials-controls-1/manager-bundle.js';
-      
-      import './sb-addons/essentials-actions-2/manager-bundle.js';
-      
-      import './sb-addons/essentials-backgrounds-3/manager-bundle.js';
-      
-      import './sb-addons/essentials-viewport-4/manager-bundle.js';
-      
-      import './sb-addons/essentials-toolbars-5/manager-bundle.js';
-      
-      import './sb-addons/essentials-measure-6/manager-bundle.js';
-      
-      import './sb-addons/essentials-outline-7/manager-bundle.js';
-      
-      import './sb-addons/interactions-8/manager-bundle.js';
-      
-      import './sb-addons/a11y-9/manager-bundle.js';
-      
-      import './sb-addons/storybook-10/manager-bundle.js';
-      
     </script>
 
+    
     <link href="./sb-preview/runtime.js" rel="prefetch" as="script" />
+    
   </body>
 </html>

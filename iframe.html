@@ -59,8 +59,17 @@
     left: 0;
     right: 0;
     padding: 20px;
-    font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular', 'San Francisco',
-      BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family:
+      'Nunito Sans',
+      -apple-system,
+      '.SFNSText-Regular',
+      'San Francisco',
+      BlinkMacSystemFont,
+      'Segoe UI',
+      'Helvetica Neue',
+      Helvetica,
+      Arial,
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow: auto;
   }
@@ -254,7 +263,9 @@
 
   .sb-argstableBlock-body {
     border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 1px, rgba(0, 0, 0, 0.065) 0 0 0 1px;
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0 1px 3px 1px,
+      rgba(0, 0, 0, 0.065) 0 0 0 1px;
   }
   .sb-argstableBlock-body tr {
     background: transparent;
@@ -376,7 +387,7 @@
   }
 
   .docs-story .docblock-code-toggle,
-  .css-3s4ai0 .css-otxova {
+  .css-3s4ai0 .css-lp0lj7 {
     border: var(--gcds-button-border-width) solid currentColor !important;
     border-radius: var(--gcds-button-border-radius) !important;
     box-sizing: border-box;
@@ -392,7 +403,7 @@
     color: var(--gcds-button-secondary-default-text) !important;
   }
 
-  .css-3s4ai0 .css-otxova {
+  .css-3s4ai0 .css-lp0lj7 {
     background-color: #262626 !important;
     color: var(--gcds-text-light) !important;
   }
@@ -403,12 +414,12 @@
     color: var(--gcds-button-secondary-default-text);
   }
 
-  .css-3s4ai0 .css-otxova:hover:not(:focus) {
+  .css-3s4ai0 .css-lp0lj7:hover:not(:focus) {
     background-color: rgba(255, 255, 255, 0.2) !important;
   }
 
   .docs-story .docblock-code-toggle:focus,
-  .css-3s4ai0 .css-otxova:focus {
+  .css-3s4ai0 .css-lp0lj7:focus {
     background-color: var(--gcds-focus-background) !important;
     border-color: var(--gcds-focus-background) !important;
     color: var(--gcds-focus-text) !important;
@@ -571,14 +582,18 @@
     overflow: visible !important;
   }
 
-  .css-1jvt1oy:focus,
-  .css-1qot2ot:focus,
-  .css-1p58akv:focus,
-  .css-tvcum3:focus-within {
+  .docblock-argstable input:focus,
+  .docblock-argstable textarea:focus,
+  .docblock-argstable .css-obbby0:focus-within {
     box-shadow: 0 0 0 var(--gcds-border-width-md) #262626 !important;
     outline-offset: var(--gcds-input-border-width) !important;
     border-color: #262626 !important;
     outline: var(--gcds-input-outline-width) solid var(--gcds-color-grayscale-0) !important;
+    border-radius: var(--gcds-link-focus-border-radius) !important;
+  }
+
+  .docblock-argstable .css-obbby0:focus-within select {
+    box-shadow: none !important;
   }
 
   .css-tvcum3 input[type='checkbox']:focus {
@@ -586,7 +601,6 @@
   }
 
   /* Props table focus styles - table headings */
-
   .css-d474as:focus {
     font-size: 0.75rem;
     background-color: var(--gcds-focus-background) !important;
@@ -602,6 +616,11 @@
   /* Canvas preview */
   .css-ikdg6z {
     background-color: var(--gcds-color-grayscale-50);
+  }
+
+  /* Code preview comments */
+  .language-html .token.comment {
+    color: var(--gcds-text-light) !important;
   }
 
   /* Code preview white space */
@@ -675,10 +694,6 @@
   /* gcds-top-nav */
   #story--components-top-navigation--default {
     height: 300px;
-  }
-
-  .css-8ycahn * .token.comment {
-    color: white !important;
   }</style><script>const url = new URLSearchParams(window.location.search);
 
   if (url.get('demo') && url.get('lang')) {
@@ -715,8 +730,8 @@
 
   function copyButtonTimer() {
     var buttonTimer = setInterval(function () {
-      if (document.querySelector('.css-otxova')) {
-        document.querySelector('.css-otxova').innerText = 'Copie';
+      if (document.querySelector('.css-lp0lj7')) {
+        document.querySelector('.css-lp0lj7').innerText = 'Copie';
         clearInterval(buttonTimer);
         observer.observe(document.querySelector('.css-111a2cx'), {
           characterData: true,
@@ -881,7 +896,7 @@
           
       
           
-            window['FEATURES'] = {"warnOnLegacyHierarchySeparator":true,"buildStoriesJson":false,"storyStoreV7":true,"argTypeTargetsV7":true,"legacyDecoratorFileOrder":false,"disallowImplicitActionsInRenderV8":false};
+            window['FEATURES'] = {"argTypeTargetsV7":true,"legacyDecoratorFileOrder":false,"disallowImplicitActionsInRenderV8":true};
           
       
           
@@ -891,11 +906,15 @@
           
       
           
-            window['DOCS_OPTIONS'] = {"defaultName":"Stories","autodocs":false};</script><script type="module">import './sb-preview/runtime.js';
+            window['DOCS_OPTIONS'] = {"defaultName":"Stories","autodocs":false};
+          
+      
+          
+            window['TAGS_OPTIONS'] = {"dev-only":{"excludeFromDocsStories":true},"docs-only":{"excludeFromSidebar":true},"test-only":{"excludeFromSidebar":true,"excludeFromDocsStories":true}};</script><script type="module">import './sb-preview/runtime.js';
 
       
-      import './runtime~main.a1c99e41.iframe.bundle.js';
+      import './runtime~main.ecbfc189.iframe.bundle.js';
       
-      import './9020.2f524b4c.iframe.bundle.js';
+      import './2607.3cc847db.iframe.bundle.js';
       
-      import './main.6b103455.iframe.bundle.js';</script></body></html>
+      import './main.459c9135.iframe.bundle.js';</script></body></html>
