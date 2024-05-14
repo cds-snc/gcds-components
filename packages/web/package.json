@@ -14,7 +14,8 @@
   "unpkg": "dist/stencil-starter-project-name/stencil-starter-project-name.esm.js",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "hydrate"
   ],
   "publishConfig": {
     "access": "public"
@@ -34,9 +35,10 @@
   "dependencies": {
     "@stencil/core": "^4.11.0",
     "@stencil/react-output-target": "^0.5.3",
-    "@storybook/addon-a11y": "^7.4.0",
-    "@storybook/addons": "^7.4.0",
-    "@storybook/theming": "^7.4.0"
+    "@storybook/addon-a11y": "^8.0.9",
+    "@storybook/addons": "^7.6.17",
+    "@storybook/test": "^8.0.9",
+    "@storybook/theming": "^8.0.9"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.7.3",
@@ -49,14 +51,15 @@
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^3.0.0-0",
     "@stencil/vue-output-target": "^0.8.8",
-    "@storybook/addon-actions": "^7.4.0",
-    "@storybook/addon-essentials": "^7.4.0",
-    "@storybook/addon-interactions": "^7.4.0",
-    "@storybook/addon-links": "^7.4.0",
-    "@storybook/blocks": "^7.4.0",
-    "@storybook/html": "^7.4.0",
-    "@storybook/html-webpack5": "^7.4.0",
-    "@storybook/testing-library": "^0.2.0",
+    "@storybook/addon-actions": "^8.0.9",
+    "@storybook/addon-essentials": "^8.0.9",
+    "@storybook/addon-interactions": "^8.0.9",
+    "@storybook/addon-links": "^8.0.9",
+    "@storybook/addon-mdx-gfm": "^8.0.9",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
+    "@storybook/blocks": "^8.0.9",
+    "@storybook/html": "^8.0.9",
+    "@storybook/html-webpack5": "^8.0.9",
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
@@ -74,12 +77,10 @@
     "postcss-nested": "^6.0.0",
     "prettier": "^3.0.0",
     "puppeteer": "^21.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
-    "storybook": "^7.4.0",
+    "storybook": "^8.0.9",
     "workbox-build": "^7.0.0"
   },
   "license": "MIT"

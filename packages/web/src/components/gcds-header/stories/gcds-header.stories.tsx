@@ -102,7 +102,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-header
   lang-href="${args.langHref}"
   skip-to-href="${args.skipToHref}"

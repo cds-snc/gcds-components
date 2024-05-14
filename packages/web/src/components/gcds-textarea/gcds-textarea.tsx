@@ -201,8 +201,13 @@ export class GcdsTextarea {
     this.value = val;
     this.internals.setFormValue(val ? val : null);
 
+    if (e.type === 'change') {
+      const changeEvt = new e.constructor(e.type, e);
+      this.el.dispatchEvent(changeEvt);
+    }
+
     customEvent.emit(this.value);
-  }
+  };
 
   /**
    * Call any active validators

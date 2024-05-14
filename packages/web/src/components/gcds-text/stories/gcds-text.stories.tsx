@@ -111,7 +111,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-text ${
     args.textRole != 'primary' ? `text-role="${args.textRole}"` : null
   } ${args.size != 'body' ? `size="${args.size}"` : null} ${
