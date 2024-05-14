@@ -88,7 +88,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-fieldset
   fieldset-id="${args.fieldsetId}"
   legend="${args.legend}"

@@ -144,7 +144,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-input
   input-id="${args.inputId}"
   label="${args.label}"

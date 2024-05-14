@@ -99,7 +99,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-container ${args.size != 'full' ? `size="${args.size}"` : null} ${
     args.border ? 'border' : null
   } ${args.centered ? 'centered' : null} ${

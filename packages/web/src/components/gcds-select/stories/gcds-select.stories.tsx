@@ -120,7 +120,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-select
   select-id="${args.selectId}"
   label="${args.label}"

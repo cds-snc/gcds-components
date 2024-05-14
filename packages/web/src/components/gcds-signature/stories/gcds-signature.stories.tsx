@@ -35,7 +35,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-signature ${args.type != 'signature' ? `type="${args.type}"` : null} ${
     args.hasLink != false ? `has-link="${args.hasLink}"` : null
   } ${args.variant != 'colour' ? `variant="${args.variant}"` : null} ${

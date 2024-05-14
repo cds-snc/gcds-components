@@ -70,7 +70,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-radio-group
   name="${args.name}"
   options='${args.options}'

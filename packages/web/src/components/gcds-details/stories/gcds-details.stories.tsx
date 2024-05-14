@@ -37,7 +37,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-details details-title="${args.detailsTitle}" ${args.open ? `open` : null}>
   ${args.default}
 </gcds-details>
