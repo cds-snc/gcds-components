@@ -20,14 +20,21 @@ npm install @cdssnc/gcds-components-vue
 
 In your `main.js` file, import the GC Design System components plugin and use it:
 
-``` jsx
+```jsx
 import { GcdsComponents } from '@cdssnc/gcds-components-vue';
 
 createApp(App).use(GcdsComponents).mount('#app');
 ```
 
-In your `App.vue`, place the following to load the global styles:
+Add the global styles to your app. There are multiple ways to achieve this.
 
+You can import it in your `main.js` file next to your `style.css`:
+```js
+import '@cdssnc/gcds-components-vue/gcds.css';
+import './style.css';
+```
+
+or in your `App.vue` using the html style tag
 ``` html
 <style src='@cdssnc/gcds-components-vue/gcds.css'>
     /* global styles */
