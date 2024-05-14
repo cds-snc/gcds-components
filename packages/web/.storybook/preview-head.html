@@ -74,7 +74,7 @@
   }
 
   .docs-story .docblock-code-toggle,
-  .css-3s4ai0 .css-otxova {
+  .css-3s4ai0 .css-lp0lj7 {
     border: var(--gcds-button-border-width) solid currentColor !important;
     border-radius: var(--gcds-button-border-radius) !important;
     box-sizing: border-box;
@@ -90,7 +90,7 @@
     color: var(--gcds-button-secondary-default-text) !important;
   }
 
-  .css-3s4ai0 .css-otxova {
+  .css-3s4ai0 .css-lp0lj7 {
     background-color: #262626 !important;
     color: var(--gcds-text-light) !important;
   }
@@ -101,12 +101,12 @@
     color: var(--gcds-button-secondary-default-text);
   }
 
-  .css-3s4ai0 .css-otxova:hover:not(:focus) {
+  .css-3s4ai0 .css-lp0lj7:hover:not(:focus) {
     background-color: rgba(255, 255, 255, 0.2) !important;
   }
 
   .docs-story .docblock-code-toggle:focus,
-  .css-3s4ai0 .css-otxova:focus {
+  .css-3s4ai0 .css-lp0lj7:focus {
     background-color: var(--gcds-focus-background) !important;
     border-color: var(--gcds-focus-background) !important;
     color: var(--gcds-focus-text) !important;
@@ -288,7 +288,6 @@
   }
 
   /* Props table focus styles - table headings */
-
   .css-d474as:focus {
     font-size: 0.75rem;
     background-color: var(--gcds-focus-background) !important;
@@ -304,6 +303,11 @@
   /* Canvas preview */
   .css-ikdg6z {
     background-color: var(--gcds-color-grayscale-50);
+  }
+
+  /* Code preview comments */
+  .language-html .token.comment {
+    color: var(--gcds-text-light) !important;
   }
 
   /* Code preview white space */
@@ -378,10 +382,6 @@
   #story--components-top-navigation--default {
     height: 300px;
   }
-
-  .css-8ycahn * .token.comment {
-    color: white !important;
-  }
 </style>
 
 <script>
@@ -421,8 +421,8 @@
 
   function copyButtonTimer() {
     var buttonTimer = setInterval(function () {
-      if (document.querySelector('.css-otxova')) {
-        document.querySelector('.css-otxova').innerText = 'Copie';
+      if (document.querySelector('.css-lp0lj7')) {
+        document.querySelector('.css-lp0lj7').innerText = 'Copie';
         clearInterval(buttonTimer);
         observer.observe(document.querySelector('.css-111a2cx'), {
           characterData: true,

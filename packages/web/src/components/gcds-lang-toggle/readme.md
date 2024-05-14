@@ -2,17 +2,19 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property            | Attribute | Description                                                        | Type     | Default     |
 | ------------------- | --------- | ------------------------------------------------------------------ | -------- | ----------- |
 | `href` _(required)_ | `href`    | The href attribute specifies the URL of the opposite language page | `string` | `undefined` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [gcds-header](../gcds-header)
+ - [gcds-header](../gcds-header)
 
 ### Depends on
 
@@ -20,7 +22,6 @@
 - [gcds-link](../gcds-link)
 
 ### Graph
-
 ```mermaid
 graph TD;
   gcds-lang-toggle --> gcds-sr-only
@@ -30,6 +31,6 @@ graph TD;
   style gcds-lang-toggle fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                  | Attribute            | Description                                                                         | Type                  | Default     |
@@ -10,6 +11,7 @@
 | `signatureHasLink`        | `signature-has-link` | GcdsSignature - GCDS signature links to Canada.ca                                   | `boolean`             | `true`      |
 | `signatureVariant`        | `signature-variant`  | GcdsSignature - The variant of the Government of Canada signature                   | `"colour" \| "white"` | `undefined` |
 | `skipToHref` _(required)_ | `skip-to-href`       | Top navigation - Skip to content href                                               | `string`              | `undefined` |
+
 
 ## Dependencies
 
@@ -20,7 +22,6 @@
 - [gcds-signature](../gcds-signature)
 
 ### Graph
-
 ```mermaid
 graph TD;
   gcds-header --> gcds-link
@@ -32,6 +33,6 @@ graph TD;
   style gcds-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
