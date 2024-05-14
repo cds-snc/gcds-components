@@ -11,7 +11,6 @@ import type { JSX } from '@cdssnc/gcds-components';
 export const GcdsAlert = /*@__PURE__*/ defineContainer<JSX.GcdsAlert>('gcds-alert', undefined, [
   'alertRole',
   'container',
-  'dismissHandler',
   'heading',
   'hideCloseBtn',
   'hideRoleIcon',
@@ -41,9 +40,7 @@ export const GcdsButton = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-bu
   'rel',
   'target',
   'download',
-  'clickHandler',
-  'focusHandler',
-  'blurHandler',
+  'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'
 ]);
@@ -73,9 +70,7 @@ export const GcdsCheckbox = /*@__PURE__*/ defineContainer<JSX.GcdsCheckbox>('gcd
   'hint',
   'validator',
   'validateOn',
-  'clickHandler',
-  'focusHandler',
-  'blurHandler',
+  'gcdsClick',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsChange',
@@ -101,13 +96,15 @@ export const GcdsDateModified = /*@__PURE__*/ defineContainer<JSX.GcdsDateModifi
 
 export const GcdsDetails = /*@__PURE__*/ defineContainer<JSX.GcdsDetails>('gcds-details', undefined, [
   'detailsTitle',
-  'open'
+  'open',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
 export const GcdsErrorMessage = /*@__PURE__*/ defineContainer<JSX.GcdsErrorMessage>('gcds-error-message', undefined, [
-  'messageId',
-  'message'
+  'messageId'
 ]);
 
 
@@ -136,6 +133,7 @@ export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcd
 
 export const GcdsFileUploader = /*@__PURE__*/ defineContainer<JSX.GcdsFileUploader>('gcds-file-uploader', undefined, [
   'uploaderId',
+  'name',
   'label',
   'required',
   'disabled',
@@ -146,12 +144,10 @@ export const GcdsFileUploader = /*@__PURE__*/ defineContainer<JSX.GcdsFileUpload
   'hint',
   'validator',
   'validateOn',
-  'changeHandler',
-  'focusHandler',
-  'blurHandler',
   'gcdsFocus',
   'gcdsBlur',
-  'gcdsFileUploaderChange',
+  'gcdsChange',
+  'gcdsInput',
   'gcdsRemoveFile',
   'gcdsError',
   'gcdsValid'
@@ -209,7 +205,6 @@ export const GcdsHeading = /*@__PURE__*/ defineContainer<JSX.GcdsHeading>('gcds-
 
 
 export const GcdsHint = /*@__PURE__*/ defineContainer<JSX.GcdsHint>('gcds-hint', undefined, [
-  'hint',
   'hintId'
 ]);
 
@@ -231,19 +226,18 @@ export const GcdsInput = /*@__PURE__*/ defineContainer<JSX.GcdsInput>('gcds-inpu
   'hideLabel',
   'hint',
   'inputId',
+  'name',
   'label',
   'required',
   'size',
   'type',
   'value',
   'autocomplete',
-  'changeHandler',
-  'focusHandler',
-  'blurHandler',
   'validator',
   'validateOn',
   'gcdsFocus',
   'gcdsBlur',
+  'gcdsInput',
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
@@ -284,7 +278,9 @@ export const GcdsNavGroup = /*@__PURE__*/ defineContainer<JSX.GcdsNavGroup>('gcd
   'menuLabel',
   'openTrigger',
   'open',
-  'gcdsClick'
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur'
 ]);
 
 
@@ -307,8 +303,9 @@ export const GcdsPagination = /*@__PURE__*/ defineContainer<JSX.GcdsPagination>(
   'totalPages',
   'currentPage',
   'url',
-  'pageChangeHandler',
-  'gcdsPageChange'
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
@@ -319,19 +316,10 @@ export const GcdsPhaseBanner = /*@__PURE__*/ defineContainer<JSX.GcdsPhaseBanner
 ]);
 
 
-export const GcdsRadio = /*@__PURE__*/ defineContainer<JSX.GcdsRadio>('gcds-radio', undefined, [
-  'radioId',
-  'label',
+export const GcdsRadioGroup = /*@__PURE__*/ defineContainer<JSX.GcdsRadioGroup>('gcds-radio-group', undefined, [
+  'options',
   'name',
-  'required',
-  'disabled',
-  'checked',
-  'value',
-  'hint',
-  'clickHandler',
-  'focusHandler',
-  'blurHandler',
-  'gcdsRadioChange',
+  'gcdsChange',
   'gcdsFocus',
   'gcdsBlur'
 ]);
@@ -343,7 +331,9 @@ export const GcdsSearch = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-se
   'method',
   'name',
   'searchId',
+  'value',
   'suggested',
+  'gcdsInput',
   'gcdsChange',
   'gcdsFocus',
   'gcdsBlur',
@@ -354,6 +344,7 @@ export const GcdsSearch = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-se
 export const GcdsSelect = /*@__PURE__*/ defineContainer<JSX.GcdsSelect>('gcds-select', undefined, [
   'selectId',
   'label',
+  'name',
   'required',
   'disabled',
   'defaultValue',
@@ -362,10 +353,8 @@ export const GcdsSelect = /*@__PURE__*/ defineContainer<JSX.GcdsSelect>('gcds-se
   'hint',
   'validator',
   'validateOn',
-  'changeHandler',
-  'focusHandler',
-  'blurHandler',
-  'gcdsSelectChange',
+  'gcdsChange',
+  'gcdsInput',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsError',
@@ -414,18 +403,17 @@ export const GcdsTextarea = /*@__PURE__*/ defineContainer<JSX.GcdsTextarea>('gcd
   'hideLabel',
   'hint',
   'label',
+  'name',
   'required',
   'rows',
   'textareaId',
   'value',
   'validator',
   'validateOn',
-  'changeHandler',
-  'focusHandler',
-  'blurHandler',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsChange',
+  'gcdsInput',
   'gcdsError',
   'gcdsValid'
 ]);

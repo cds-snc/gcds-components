@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components-vue",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "description": "Vue wrapper for GC Design System components",
   "author": "Government of Canada / Gouvernement du Canada",
   "homepage": "https://design-system.alpha.canada.ca/",
