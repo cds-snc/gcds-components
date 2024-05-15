@@ -39,9 +39,10 @@ In the root directory, run `npm run build`. All three packages will be compiled.
 
 | Package                   | Description                                                                         | Docs             |
 | ------------------------- | ----------------------------------------------------------------------------------- | ---------------- |
-| [`@cdssnc/gcds-components`](packages/web/)           | GC Design System Components | [Docs](packages/web/README.md) |
-| [`@cdssnc/gcds-components-react`](packages/react/)           | GC Design System Components – React | [Docs](packages/react/README.md) |
-| [`@cdssnc/gcds-components-angular`](packages/angular/)           | GC Design System Components – Angular  | [Docs](packages/angular/README.md) |
+| [@cdssnc/gcds-components](packages/web/)           | GC Design System Components | [Docs](packages/web/README.md) |
+| [@cdssnc/gcds-components-react](packages/react/)           | GC Design System Components – React | [Docs](packages/react/README.md) |
+| [@cdssnc/gcds-components-angular](packages/angular/)           | GC Design System Components – Angular  | [Docs](packages/angular/README.md) |
+| [@cdssnc/gcds-components-vue](packages/vue/)           | GC Design System Components – Vue  | [Docs](packages/vue/README.md) |
 
 ## How to contribute
 
@@ -96,9 +97,10 @@ Dans le répertoire racine, exécutez `npm run build`. Les trois paquets seront 
 
 | Paquet                   | Description                                                                         | Docs             |
 | ------------------------- | ----------------------------------------------------------------------------------- | ---------------- |
-| [`@cdssnc/gcds-components`](packages/web/)           | Composants de Système de design GC | [Docs](packages/web/README.md) |
-| [`@cdssnc/gcds-components-react`](packages/react/)           | Composants de Système de design GC — React | [Docs](packages/react/README.md) |
-| [`@cdssnc/gcds-components-angular`](packages/angular/)           | Composants de Système de design GC — Angular  | [Docs](packages/angular/README.md) |
+| [@cdssnc/gcds-components](packages/web/)           | Composants de Système de design GC | [Docs](packages/web/README.md) |
+| [@cdssnc/gcds-components-react](packages/react/)           | Composants de Système de design GC — React | [Docs](packages/react/README.md) |
+| [@cdssnc/gcds-components-angular](packages/angular/)           | Composants de Système de design GC — Angular  | [Docs](packages/angular/README.md) |
+| [@cdssnc/gcds-components-vue](packages/vue/)           | Composants de Système de design GC — Vue  | [Docs](packages/vue/README.md) |
 
 ## Apportez votre contribution
 

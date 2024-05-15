@@ -16,7 +16,10 @@
     "packages/react": {
       "component": "gcds-components-react",
       "changelog-path": ""
-
+    },
+    "packages/vue": {
+      "component": "gcds-components-vue",
+      "changelog-path": ""
     },
     "packages/web": {
       "component": "gcds-components",
@@ -49,6 +52,7 @@
       "components": [
         "gcds-components-angular",
         "gcds-components-react",
+        "gcds-components-vue",
         "gcds-components"
       ]
     },
@@ -57,7 +61,8 @@
       "groups": [
         "gcds-components",
         "gcds-components-angular",
-        "gcds-components-react"
+        "gcds-components-react",
+        "gcds-components-vue"
 
       ]
     }

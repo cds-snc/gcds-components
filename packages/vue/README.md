@@ -98,7 +98,16 @@ import { GcdsComponents } from '@cdssnc/gcds-components-vue';
 createApp(App).use(GcdsComponents).mount('#app');
 ```
 
-Dans votre fichier 'App.vue', utilisez le code suivant pour charger les styles généraux :
+Ajoutez les styles généraux à votre application. Vous pouvez les ajouter de plusieurs façons.
+
+Vous pouvez soit les importer dans votre fichier `main.js` à côté de votre `style.css` :
+
+``` js
+import '@cdssnc/gcds-components-vue/gcds.css';
+import './style.css';
+```
+
+ou les insérer dans votre `App.vue` à l'aide de la balise de style html.
 
 ``` html
 <style src='@cdssnc/gcds-components-vue/gcds.css'>
