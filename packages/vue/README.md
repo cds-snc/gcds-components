@@ -90,7 +90,7 @@ Naviguez jusqu'au dossier racine de votre projet et exécutez :
 npm install @cdssnc/gcds-components-vue
 ```
 
-Dans votre fichier 'main.js', importez le plugiciel des composants Système de design GC et utilisez-le de la façon suivante :
+Dans votre fichier `main.js`, importez le plugiciel des composants Système de design GC et utilisez-le de la façon suivante :
 
 ``` js
 import { GcdsComponents } from '@cdssnc/gcds-components-vue';
