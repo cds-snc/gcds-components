@@ -106,6 +106,11 @@ jobs:
           - name: "@cdssnc/gcds-components-angular"
             package: "./packages/angular"
             dist: "./packages/angular/dist"
+
+          - name: "@cdssnc/gcds-components-vue"
+            package: "./packages/vue"
+            dist: "./packages/vue"
+
     steps:
       - name: Git Checkout
         uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5

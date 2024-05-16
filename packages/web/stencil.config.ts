@@ -4,6 +4,7 @@ import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'gcds',
@@ -22,6 +23,10 @@ export const config: Config = {
       componentCorePackage: '@cdssnc/gcds-components',
       directivesProxyFile: '../angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular/src/lib/stencil-generated/index.ts',
+    }),
+    vueOutputTarget({
+      componentCorePackage: '@cdssnc/gcds-components',
+      proxiesFile: '../vue/lib/components.ts',
     }),
     {
       type: 'dist',

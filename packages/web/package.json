@@ -50,6 +50,7 @@
     "@stencil/angular-output-target": "^0.8.1",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^3.0.0-0",
+    "@stencil/vue-output-target": "^0.8.8",
     "@storybook/addon-actions": "^8.0.9",
     "@storybook/addon-essentials": "^8.0.9",
     "@storybook/addon-interactions": "^8.0.9",
