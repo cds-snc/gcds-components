@@ -1,4 +1,4 @@
-@layer reset, default, focus, compact;
+@layer reset, default, compact;
 
 @layer reset {
   :host {
@@ -36,18 +36,12 @@
           &:not(:last-child) {
             padding: var(--gcds-error-summary-list-item-padding);
           }
+
+          gcds-link::part(link):not(:focus) {
+            color: var(--gcds-error-summary-link-color);
+          }
         }
       }
-    }
-  }
-}
-
-@layer focus {
-  :host .gcds-error-summary:is(:focus, :has(:focus-within)) {
-    border-color: var(--gcds-error-summary-focus-color);
-
-    gcds-heading {
-      color: var(--gcds-error-summary-focus-color);
     }
   }
 }

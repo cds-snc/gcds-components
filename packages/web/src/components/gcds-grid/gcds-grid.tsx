@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 
 export type ContentValues =
   | 'center'
@@ -53,7 +53,35 @@ export class GcdsGrid {
   /**
    * Set tag for grid container
    */
-  @Prop() tag?: string = 'div';
+  @Prop({ mutable: true }) tag?:
+    | 'article'
+    | 'aside'
+    | 'div'
+    | 'dl'
+    | 'main'
+    | 'nav'
+    | 'ol'
+    | 'section'
+    | 'ul' = 'div';
+
+  @Watch('tag')
+  validateTag(newValue: string) {
+    const values = [
+      'article',
+      'aside',
+      'div',
+      'dl',
+      'main',
+      'nav',
+      'ol',
+      'section',
+      'ul',
+    ];
+
+    if (!values.includes(newValue)) {
+      this.tag = 'div';
+    }
+  }
 
   /**
    * If total grid size is less than the size of its grid container,
@@ -86,6 +114,11 @@ export class GcdsGrid {
    * Sets both the align-items + justify-items properties
    */
   @Prop() placeItems?: 'center' | 'end' | 'start' | 'stretch';
+
+  componentWillLoad() {
+    // Validate attributes and set defaults
+    this.validateTag(this.tag);
+  }
 
   render() {
     const {

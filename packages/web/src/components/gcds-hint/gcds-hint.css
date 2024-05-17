@@ -3,6 +3,10 @@
 @layer reset {
   :host {
     display: block;
+
+    slot {
+      display: initial;
+    }
   }
 }
 
@@ -11,6 +15,10 @@
     .gcds-hint,
     gcds-text::part(text) {
       color: inherit;
+    }
+
+    .gcds-hint {
+      margin: var(--gcds-hint-margin);
     }
   }
 }

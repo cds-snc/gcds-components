@@ -102,7 +102,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-header
   lang-href="${args.langHref}"
   skip-to-href="${args.skipToHref}"
@@ -253,6 +253,21 @@ All.args = {
   toggle: 'Toggle slot',
   menu: 'Menu slot',
   breadcrumb: 'Breadcrumbs slot',
+  lang: 'en',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  langHref: '#',
+  skipToHref: '#',
+  signatureHasLink: true,
+  signatureVariant: 'colour',
+  menu: '',
+  breadcrumb: '',
+  search: '',
+  skipTo: '',
+  toggle: '',
+  banner: '',
   lang: 'en',
 };
 

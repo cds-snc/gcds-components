@@ -50,7 +50,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-nav-group
   menu-label="${args.menuLabel}"
   open-trigger="${args.openTrigger}"
@@ -135,15 +135,6 @@ Default.args = {
   lang: 'en',
 };
 
-export const Props = Template.bind({});
-Props.args = {
-  menuLabel: 'Sub-menu',
-  openTrigger: 'Navigation group',
-  closeTrigger: '',
-  open: false,
-  lang: 'en',
-};
-
 export const Open = Template.bind({});
 Open.args = {
   menuLabel: 'Open sub-menu',
@@ -174,6 +165,15 @@ Menu.args = {
 export const TopNav = TemplateTopNav.bind({});
 TopNav.args = {
   menuLabel: 'Topnav sub-menu',
+  openTrigger: 'Navigation group',
+  closeTrigger: '',
+  open: false,
+  lang: 'en',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  menuLabel: 'Sub-menu',
   openTrigger: 'Navigation group',
   closeTrigger: '',
   open: false,

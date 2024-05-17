@@ -92,16 +92,12 @@ export class GcdsRadioGroup {
   /**
    * Emitted when the radio button is checked
    */
-  @Event() gcdsRadioChange!: EventEmitter<void>;
+  @Event() gcdsChange!: EventEmitter<void>;
 
   /**
    * Emitted when the radio has focus.
    */
   @Event() gcdsFocus!: EventEmitter<void>;
-
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
 
   /**
    * Emitted when the radio loses focus.
@@ -142,8 +138,11 @@ export class GcdsRadioGroup {
   }
 
   private onChange = e => {
-    this.gcdsRadioChange.emit();
+    this.gcdsChange.emit(e.target.value);
     this.internals.setFormValue(e.target.value, 'checked');
+
+    const changeEvt = new e.constructor(e.type, e);
+    this.el.dispatchEvent(changeEvt);
   };
 
   /**
@@ -206,7 +205,7 @@ export class GcdsRadioGroup {
                   {...attrsInput}
                   onChange={e => this.onChange(e)}
                   onBlur={() => this.onBlur()}
-                  onFocus={() => this.onFocus()}
+                  onFocus={() => this.gcdsFocus.emit()}
                   ref={element =>
                     (this.shadowElement = element as HTMLInputElement)
                   }
@@ -219,7 +218,7 @@ export class GcdsRadioGroup {
                 ></gcds-label>
 
                 {radio.hint ? (
-                  <gcds-hint hint={radio.hint} hint-id={radio.id} />
+                  <gcds-hint hint-id={radio.id}>{radio.hint}</gcds-hint>
                 ) : null}
               </div>
             );

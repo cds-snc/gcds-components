@@ -21,41 +21,48 @@
 
 @layer default {
   :host .gcds-checkbox {
-    max-width: 90%;
+    position: relative;
+    max-width: var(--gcds-checkbox-max-width);
+    min-height: calc(
+      var(--gcds-checkbox-input-height-and-width) - var(--gcds-checkbox-padding)
+    );
     font: var(--gcds-checkbox-font);
     color: var(--gcds-checkbox-default-text);
     margin: var(--gcds-checkbox-margin) !important;
+    padding: var(--gcds-checkbox-padding) 0 0;
     transition: color ease-in-out 0.15s;
-    position: relative;
 
     :is(gcds-label, gcds-hint, gcds-error-message) {
       padding: var(--gcds-checkbox-label-padding) !important;
     }
 
-    input {
-      height: var(--gcds-checkbox-input-height-and-width);
-      width: var(--gcds-checkbox-input-height-and-width);
-      left: 0;
-      opacity: 0;
+    gcds-hint::part(hint) {
+      margin: 0;
+    }
+
+    input,
+    gcds-label:before,
+    gcds-label:after {
       position: absolute;
-      top: var(--gcds-checkbox-top);
-      width: 200px;
+    }
+
+    input,
+    gcds-label:before {
+      top: 0;
+      left: 0;
+      width: var(--gcds-checkbox-input-height-and-width);
+      height: var(--gcds-checkbox-input-height-and-width);
+    }
+
+    input {
+      opacity: 0;
     }
 
     gcds-label {
       width: fit-content;
 
-      &:before,
-      &:after {
-        position: absolute;
-      }
-
       &:before {
         border: var(--gcds-checkbox-input-border-width) solid currentcolor;
-        height: var(--gcds-checkbox-input-height-and-width);
-        width: var(--gcds-checkbox-input-height-and-width);
-        left: 0;
-        top: var(--gcds-checkbox-top);
         border-radius: var(--gcds-checkbox-input-border-radius);
         transition:
           border-color ease-in-out 0.15s,

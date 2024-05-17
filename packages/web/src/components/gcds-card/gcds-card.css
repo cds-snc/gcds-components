@@ -81,13 +81,6 @@
         cursor: pointer;
         box-shadow: var(--gcds-card-hover-box-shadow);
       }
-
-      &.gcds-card--link:hover gcds-link::part(link) {
-        color: var(--gcds-card-hover-title-color);
-        text-decoration-thickness: var(
-          --gcds-card-hover-title-text-decoration-thickness
-        );
-      }
     }
   }
 }

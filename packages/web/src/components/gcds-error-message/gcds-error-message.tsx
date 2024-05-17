@@ -17,13 +17,8 @@ export class GcdsErrorMessage {
    */
   @Prop() messageId!: string;
 
-  /**
-   * Error message for an invalid form field.
-   */
-  @Prop() message!: string;
-
   render() {
-    const { messageId, message } = this;
+    const { messageId } = this;
 
     return (
       <Host
@@ -31,7 +26,7 @@ export class GcdsErrorMessage {
         class="gcds-error-message-wrapper"
       >
         <gcds-text class="error-message" role="alert" margin-bottom="0">
-          {message}
+          <slot></slot>
         </gcds-text>
       </Host>
     );

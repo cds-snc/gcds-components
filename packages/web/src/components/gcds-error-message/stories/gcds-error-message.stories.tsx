@@ -14,14 +14,14 @@ export default {
         required: true,
       },
     },
-    message: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+
+    // Slots
+    default: {
+      control: {
+        type: 'text',
       },
-      type: {
-        required: true,
+      table: {
+        category: 'Slots | Fentes',
       },
     },
   },
@@ -29,26 +29,20 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
-<gcds-error-message
-  message-id="${args.messageId}"
-  message="${args.message}"
->
+<!-- Web component code (HTML, Angular, Vue) -->
+<gcds-error-message message-id="${args.messageId}">
+  ${args.default}
 </gcds-error-message>
 
 <!-- React code -->
-<GcdsErrorMessage
-  messageId="${args.messageId}"
-  message="${args.message}"
->
+<GcdsErrorMessage messageId="${args.messageId}">
+  ${args.default}"
 </GcdsErrorMessage>
-`.replace(/\s\snull\n/g, '');
+`;
 
 const TemplatePlayground = args => `
-<gcds-error-message
-  message-id="${args.messageId}"
-  message="${args.message}"
->
+<gcds-error-message message-id="${args.messageId}">
+  ${args.default}
 </gcds-error-message>
 `;
 
@@ -56,22 +50,22 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  messageId: 'message-id',
-  message: 'Error message or validation message.',
+  messageId: 'message-default',
+  default: 'Error message or validation message.',
 };
 
 // ------ Error message events & props ------
 
 export const Props = Template.bind({});
 Props.args = {
-  messageId: 'message-id',
-  message: 'Error message or validation message.',
+  messageId: 'message-props',
+  default: 'Error message or validation message.',
 };
 
 // ------ Error message playground ------
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  messageId: '',
-  message: 'Error message or validation message.',
+  messageId: 'message-playground',
+  default: 'Error message or validation message.',
 };

@@ -159,18 +159,32 @@ export class GcdsSelect {
    */
 
   /**
-   * Update value based on user selection.
+   * Emitted when the select value has changed.
    */
-  @Event() gcdsSelectChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter;
+
+  /**
+   * Emitted when the select has received input.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  private handleInput = (e, customEvent) => {
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val);
+
+    if (e.type === 'change') {
+      const changeEvt = new e.constructor(e.type, e);
+      this.el.dispatchEvent(changeEvt);
+    }
+
+    customEvent.emit(this.value);
+  };
 
   /**
    * Emitted when the select has focus.
    */
   @Event() gcdsFocus!: EventEmitter<void>;
-
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
 
   /**
    * Emitted when the select loses focus.
@@ -225,13 +239,38 @@ export class GcdsSelect {
     }
   }
 
-  handleChange = e => {
-    const val = e.target && e.target.value;
-    this.value = val;
-    this.internals.setFormValue(val);
+  /**
+   * Check if an option is selected or value matches an option's value
+   */
+  private checkValueOrSelected(option) {
+    const value = option.getAttribute('value');
 
-    this.gcdsSelectChange.emit(this.value);
-  };
+    if (this.value === value) {
+      option.setAttribute('selected', 'true');
+      this.internals.setFormValue(value);
+      this.initialValue = this.value;
+    }
+
+    if (option.hasAttribute('selected')) {
+      this.value = value;
+      this.initialValue = this.value ? this.value : null;
+    }
+  }
+
+  /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    if (this.value != this.initialValue) {
+      this.internals.setFormValue(this.initialValue);
+      this.value = this.initialValue;
+    }
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.value = state;
+  }
 
   /**
    * Check if an option is selected or value matches an option's value
@@ -371,18 +410,21 @@ export class GcdsSelect {
         >
           <gcds-label {...attrsLabel} label-for={selectId} lang={lang} />
 
-          {hint ? <gcds-hint hint={hint} hint-id={selectId} /> : null}
+          {hint ? <gcds-hint hint-id={selectId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={selectId} message={errorMessage} />
+            <gcds-error-message messageId={selectId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <select
             {...attrsSelect}
             id={selectId}
             onBlur={() => this.onBlur()}
-            onFocus={() => this.onFocus()}
-            onChange={e => this.handleChange(e)}
+            onFocus={() => this.gcdsFocus.emit()}
+            onInput={e => this.handleInput(e, this.gcdsInput)}
+            onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-invalid={hasError ? 'true' : 'false'}
             ref={element => (this.shadowElement = element as HTMLSelectElement)}
           >

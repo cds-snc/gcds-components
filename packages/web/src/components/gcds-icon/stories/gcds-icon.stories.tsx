@@ -113,7 +113,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-icon ${args.label ? `label="${args.label}"` : null} name="${args.name}" ${
     args.iconStyle != 'solid' ? `icon-style="${args.iconStyle}"` : null
   } ${args.marginLeft ? `margin-left="${args.marginLeft}"` : null} ${
@@ -219,21 +219,86 @@ const TemplateMargin = args =>
   }></gcds-icon>
 
 <!-- React code -->
-<GcdsIcon name="${args.name}" margin-left="0"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="50"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="100"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="150"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="200"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="250"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="300"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="400"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="500"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="550"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="600"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="700"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="800"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="900"></GcdsIcon>
-<GcdsIcon name="${args.name}" margin-left="1000"></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft0 ? `marginLeft="${args.marginLeft0}"` : null
+  } ${
+    args.marginRight0 ? `marginRight="${args.marginRight0}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft50 ? `marginLeft="${args.marginLeft50}"` : null
+  } ${
+    args.marginRight50 ? `marginRight="${args.marginRight50}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft100 ? `marginLeft="${args.marginLeft100}"` : null
+  } ${
+    args.marginRight100 ? `marginRight="${args.marginRight100}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft150 ? `marginLeft="${args.marginLeft150}"` : null
+  } ${
+    args.marginRight150 ? `marginRight="${args.marginRight150}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft200 ? `marginLeft="${args.marginLeft200}"` : null
+  } ${
+    args.marginRight200 ? `marginRight="${args.marginRight200}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft250 ? `marginLeft="${args.marginLeft250}"` : null
+  } ${
+    args.marginRight250 ? `marginRight="${args.marginRight250}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft300 ? `marginLeft="${args.marginLeft300}"` : null
+  } ${
+    args.marginRight300 ? `marginRight="${args.marginRight300}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft400 ? `marginLeft="${args.marginLeft400}"` : null
+  } ${
+    args.marginRight400 ? `marginRight="${args.marginRight400}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft450 ? `marginLeft="${args.marginLeft450}"` : null
+  } ${
+    args.marginRight450 ? `marginRight="${args.marginRight450}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft500 ? `marginLeft="${args.marginLeft500}"` : null
+  } ${
+    args.marginRight500 ? `marginRight="${args.marginRight500}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft550 ? `marginLeft="${args.marginLeft550}"` : null
+  } ${
+    args.marginRight550 ? `marginRight="${args.marginRight550}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft600 ? `marginLeft="${args.marginLeft600}"` : null
+  } ${
+    args.marginRight600 ? `marginRight="${args.marginRight600}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft700 ? `marginLeft="${args.marginLeft700}"` : null
+  } ${
+    args.marginRight700 ? `marginRight="${args.marginRight700}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft800 ? `marginLeft="${args.marginLeft800}"` : null
+  } ${
+    args.marginRight800 ? `marginRight="${args.marginRight800}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft900 ? `marginLeft="${args.marginLeft900}"` : null
+  } ${
+    args.marginRight900 ? `marginRight="${args.marginRight900}"` : null
+  }></GcdsIcon>
+<GcdsIcon name="${args.name}" ${
+    args.marginLeft1000 ? `marginLeft="${args.marginLeft1000}"` : null
+  } ${
+    args.marginRight1000 ? `marginRight="${args.marginRight1000}"` : null
+  }></GcdsIcon>
 `.replace(/ null/g, '');
 
 const TemplateMultiple = args =>

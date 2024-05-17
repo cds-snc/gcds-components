@@ -11,7 +11,6 @@
 | ---------------------- | ---------------- | -------------------------------------------------------- | ------------------------------------------------ | ----------- |
 | `alertRole`            | `alert-role`     | Defines alert role.                                      | `"danger" \| "info" \| "success" \| "warning"`   | `'info'`    |
 | `container`            | `container`      | Defines the max width of the alert content.              | `"full" \| "lg" \| "md" \| "sm" \| "xl" \| "xs"` | `'full'`    |
-| `dismissHandler`       | --               | Callback when the close button is clicked.               | `Function`                                       | `undefined` |
 | `heading` _(required)_ | `heading`        | Defines the alert heading.                               | `string`                                         | `undefined` |
 | `hideCloseBtn`         | `hide-close-btn` | Defines if the alert's close button is displayed or not. | `boolean`                                        | `false`     |
 | `hideRoleIcon`         | `hide-role-icon` | Defines if the alert's role icon is displayed or not.    | `boolean`                                        | `false`     |

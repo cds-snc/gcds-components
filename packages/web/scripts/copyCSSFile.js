@@ -3,3 +3,4 @@ const fs = require('fs');
 
 fs.copyFileSync('./dist/gcds/gcds.css', '../react/gcds.css');
 fs.copyFileSync('./dist/gcds/gcds.css', '../react-ssr/gcds.css');
+fs.copyFileSync('./dist/gcds/gcds.css', '../vue/gcds.css');

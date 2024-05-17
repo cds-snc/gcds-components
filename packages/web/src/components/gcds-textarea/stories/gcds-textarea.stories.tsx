@@ -136,7 +136,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-textarea
   textarea-id="${args.textareaId}"
   label="${args.label}"
@@ -198,7 +198,7 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-default',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
@@ -210,7 +210,7 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-disabled',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
@@ -221,7 +221,7 @@ Disabled.args = {
 
 export const Error = Template.bind({});
 Error.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-error',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
@@ -233,7 +233,7 @@ Error.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-required',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
@@ -246,7 +246,7 @@ Required.args = {
 
 export const Character = Template.bind({});
 Character.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-character',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
@@ -259,7 +259,7 @@ Character.args = {
 
 export const Rows = Template.bind({});
 Rows.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-rows',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
@@ -272,7 +272,7 @@ Rows.args = {
 
 export const Props = Template.bind({});
 Props.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-props',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
@@ -291,7 +291,7 @@ Props.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  textareaId: 'textarea',
+  textareaId: 'textarea-playground',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',

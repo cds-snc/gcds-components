@@ -81,7 +81,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-pagination
   ${args.display != 'list' ? `display="${args.display}"` : null}
   label="${args.label}"
@@ -233,6 +233,20 @@ UrlMatch.args = {
   previousHref: '',
   previousLabel: '',
   nextHref: '',
+  nextLabel: '',
+  lang: 'en',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  display: 'list',
+  label: 'Pagination',
+  currentPage: '9',
+  totalPages: '15',
+  url: '',
+  previousHref: '#previous',
+  previousLabel: '',
+  nextHref: '#next',
   nextLabel: '',
   lang: 'en',
 };

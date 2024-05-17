@@ -18,7 +18,7 @@ describe('gcds-radio-group', () => {
             <input id="radio" name="radio" type="radio" value="radio">
             <gcds-label label="Label" label-for="radio" lang="en"></gcds-label>
           </div>
-         </mock:shadow-root>
+        </mock:shadow-root>
       </gcds-radio-group>
     `);
   });
@@ -38,7 +38,7 @@ describe('gcds-radio-group', () => {
             <input checked="" id="radio" name="radio" type="radio" value="radio">
             <gcds-label label="Label" label-for="radio" lang="en"></gcds-label>
           </div>
-         </mock:shadow-root>
+        </mock:shadow-root>
       </gcds-radio-group>
     `);
   });
@@ -47,19 +47,19 @@ describe('gcds-radio-group', () => {
       components: [GcdsRadioGroup],
       html: `<gcds-radio-group
           name="radio"
-          options='[{ "label": "Label", "id": "radio", "value": "radio", "hint": "this is a hint"}]'
+          options='[{ "label": "Label", "id": "radio", "value": "radio", "hint": "This is a hint."}]'
         >
         </gcds-radio-group>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-radio-group name="radio" options='[{ "label": "Label", "id": "radio", "value": "radio", "hint": "this is a hint"}]'>
+      <gcds-radio-group name="radio" options='[{ "label": "Label", "id": "radio", "value": "radio", "hint": "This is a hint."}]'>
         <mock:shadow-root>
           <div class="gcds-radio">
             <input aria-describedby="hint-radio " id="radio" name="radio" type="radio" value="radio">
             <gcds-label label="Label" label-for="radio" lang="en"></gcds-label>
-            <gcds-hint hint="this is a hint" hint-id="radio"></gcds-hint>
+            <gcds-hint hint-id="radio">This is a hint.</gcds-hint>
           </div>
-         </mock:shadow-root>
+        </mock:shadow-root>
       </gcds-radio-group>
     `);
   });
@@ -79,7 +79,7 @@ describe('gcds-radio-group', () => {
             <input disabled="" id="radio" name="radio" type="radio" value="radio">
             <gcds-label label="Label" label-for="radio" lang="en"></gcds-label>
           </div>
-         </mock:shadow-root>
+        </mock:shadow-root>
       </gcds-radio-group>
     `);
   });
@@ -107,7 +107,7 @@ describe('gcds-radio-group', () => {
             <input id="radio3" name="radio" type="radio" value="radio3">
             <gcds-label label="Label 3" label-for="radio3" lang="en"></gcds-label>
           </div>
-         </mock:shadow-root>
+        </mock:shadow-root>
       </gcds-radio-group>
     `);
   });

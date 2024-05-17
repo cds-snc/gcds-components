@@ -13,7 +13,8 @@
     "build-storybook": "npx lerna run build-storybook --scope=@cdssnc/gcds-components",
     "version": "npx lerna version",
     "patch:stenciljs": "npx --yes patch-package",
-    "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'"
+    "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'",
+    "start": "npx lerna run start --scope=@cdssnc/gcds-components"
   },
   "dependencies": {
     "@angular/animations": "^16.2.3",
@@ -47,9 +48,11 @@
     "workbox-build": "^7.0.0"
   },
   "workspaces": [
+    "utils/angular-output-target",
     "packages/web",
     "packages/angular",
     "packages/react",
+    "packages/vue",
     "packages/react-ssr"
   ],
   "license": "MIT"

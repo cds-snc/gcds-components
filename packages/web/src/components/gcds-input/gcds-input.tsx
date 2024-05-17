@@ -188,7 +188,25 @@ export class GcdsInput {
   };
 
   /**
-   * Update value based on user input.
+   * Emitted when the element has received input.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  private handleInput = (e, customEvent) => {
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val ? val : null);
+
+    if (e.type === 'change') {
+      const changeEvt = new e.constructor(e.type, e);
+      this.el.dispatchEvent(changeEvt);
+    }
+
+    customEvent.emit(this.value);
+  };
+
+  /**
+   * Emitted when the input has changed.
    */
   @Event() gcdsChange: EventEmitter;
 
@@ -332,7 +350,7 @@ export class GcdsInput {
 
     // Use max-width instead of size attribute to keep field responsive
     const style = {
-      maxWidth: `${size * 1.5}ch`,
+      maxWidth: `${size + (type === 'number' ? 2.5 : 3.75)}ch`,
     };
 
     const attrsInput = {
@@ -373,10 +391,12 @@ export class GcdsInput {
             lang={lang}
           />
 
-          {hint ? <gcds-hint hint={hint} hint-id={inputId} /> : null}
+          {hint ? <gcds-hint hint-id={inputId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={inputId} message={errorMessage} />
+            <gcds-error-message messageId={inputId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <input
@@ -386,7 +406,8 @@ export class GcdsInput {
             name={name}
             onBlur={() => this.onBlur()}
             onFocus={() => this.gcdsFocus.emit()}
-            onInput={e => this.handleChange(e)}
+            onInput={e => this.handleInput(e, this.gcdsInput)}
+            onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={size}

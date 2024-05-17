@@ -93,7 +93,7 @@ export default {
 const Template = args =>
   `
 This is an example of
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-link ${args.display != 'inline' ? `display="${args.display}"` : null} ${
     args.href ? `href="${args.href}"` : null
   } ${args.variant != 'default' ? `variant="${args.variant}"` : null} ${
@@ -156,22 +156,6 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  display: 'inline',
-  href: '#',
-  variant: 'default',
-  rel: '',
-  target: '_self',
-  size: 'inherit',
-  external: false,
-  download: '',
-  type: '',
-  default: 'a GCDS Link component',
-};
-
-// ------ Link events & props ------
-
-export const Props = Template.bind({});
-Props.args = {
   display: 'inline',
   href: '#',
   variant: 'default',
@@ -288,6 +272,22 @@ export const VariantLight = TemplateVariant.bind({});
 VariantLight.args = {
   default: 'This is a link using the light link variant.',
   variant: 'light',
+};
+
+// ------ Link events & props ------
+
+export const Props = Template.bind({});
+Props.args = {
+  display: 'inline',
+  href: '#',
+  variant: 'default',
+  rel: '',
+  target: '_self',
+  size: 'inherit',
+  external: false,
+  download: '',
+  type: '',
+  default: 'a GCDS Link component',
 };
 
 // ------ Link playground ------

@@ -1,7 +1,5 @@
 # gcds-footer
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -21,12 +19,14 @@
 ### Depends on
 
 - [gcds-signature](../gcds-signature)
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-link](../gcds-link)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-footer --> gcds-signature
+  gcds-footer --> gcds-sr-only
   gcds-footer --> gcds-link
   gcds-link --> gcds-icon
   style gcds-footer fill:#f9f,stroke:#333,stroke-width:4px

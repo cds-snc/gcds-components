@@ -120,7 +120,9 @@ describe('gcds-textarea', () => {
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper gcds-error">
             <gcds-label label-for="textarea-with-error" label="Label" lang="en"></gcds-label>
-            <gcds-error-message messageId="textarea-with-error" message="This is an error message."></gcds-error-message>
+            <gcds-error-message messageId="textarea-with-error">
+              This is an error message.
+            </gcds-error-message>
             <textarea
               id="textarea-with-error"
               class="gcds-error"
@@ -255,7 +257,7 @@ describe('gcds-textarea', () => {
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper">
             <gcds-label label-for="textarea-with-hint" label="Label" lang="en"></gcds-label>
-            <gcds-hint hint="This is a textarea hint." hint-id="textarea-with-hint"></gcds-hint>
+            <gcds-hint hint-id="textarea-with-hint">This is a textarea hint.</gcds-hint>
             <textarea
               id="textarea-with-hint"
               name="textarea-with-hint-name"

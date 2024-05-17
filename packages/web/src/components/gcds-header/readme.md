@@ -1,7 +1,5 @@
 # gcds-header
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -30,6 +28,7 @@ graph TD;
   gcds-header --> gcds-lang-toggle
   gcds-header --> gcds-signature
   gcds-link --> gcds-icon
+  gcds-lang-toggle --> gcds-sr-only
   gcds-lang-toggle --> gcds-link
   style gcds-header fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -4,11 +4,109 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.21.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.20.0...gcds-components-v0.21.0) (2024-05-08)
+
+### Breaking changes
+
+#### Transition to form-associated custom elements
+
+We've undertaken significant efforts to migrate our components to form-associated custom elements. GC Design System form components will now use the shadow DOM (document object model). The shadow DOM provides improved encapsulation and control over styling and lets form components integrate with native browser features for validation and accessibility. This feature depends on HTMLElement API attachInternals which is supported in most browsers.
+
+This change will require all form components to have the name attribute. Here's a list of the GC Design System components affected by the change:
+
+- File uploader (`gcds-file-uploader`)
+- Input (`gcds-input`)
+- Select (`gcds-select`)
+- Text area (`gcds-textarea`)
+
+##### Required changes for form components
+
+- Add a `name` attribute
+- Your code should look similar to the following:
+
+``` html
+<gcds-file-uploader name="" uploader-id="" label=""></gcds-file-uploader>
+<gcds-input name="" input-id="" label=""></gcds-input>
+<gcds-select name="" select-id="" label=""></gcds-select>
+<gcds-textarea name="" textarea-id="" label=""></gcds-textarea>
+```
+
+#### Shadow-dom
+
+The following components will be updated to now use the shadow DOM like other GC Design System components:
+
+- Pagination (`gcds-pagination`)
+- Search (`gcds-search`)
+- Signature (`gcds-signature`)
+
+#### Radio group
+
+As part of the transition, our `gcds-radio` component will be deprecated in favour of a new component `gcds-radio-group`. The radio group component allows for better (native HTML) form controls in a shadow DOM environment.
+
+##### Old implementation
+
+``` html
+<gcds-radio
+    radio-id="radio-1"
+    name="radio-example"
+    label="Label 1"
+    value="label-1"
+>
+  </gcds-radio>
+  <gcds-radio
+    radio-id="radio-2"
+    name="radio-example"
+    label="Label 2"
+    value="label-2"
+      >
+ </gcds-radio>
+ ```
+
+##### New implementation
+
+``` html
+<gcds-radio-group
+  name="radio-example"
+  options="[{ 
+      'id': 'radio-1',
+      'label': 'Label 1',
+      'value': 'label-1'}, {
+      'id': 'radio-2',
+      'label': 'Label 2',
+      'value': 'label-2'}]"
+>
+</gcds-radio-group>
+
+```
+
+
+### New Features
+
+* add tag prop to gcds-sr-only component ([#484](https://github.com/cds-snc/gcds-components/issues/484)) ([dfb7285](https://github.com/cds-snc/gcds-components/commit/dfb7285a14b477f4c4f71750e8b09d3ca5c193a9))
+* Component rewrites (form-associated, gcds-radio-group, CSS rewrites)  ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
+
+
+### Bug Fixes
+
+* Update utility functions for more usability ([#495](https://github.com/cds-snc/gcds-components/issues/495)) ([a0e8fbb](https://github.com/cds-snc/gcds-components/commit/a0e8fbbf5ed8004f72f4e51ca2f2da4ef70a37ef))
+
+## [0.20.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.1...gcds-components-v0.20.0) (2024-03-14)
+
+
+### New Features
+
+* set allowed values for grid tag property to limit misuse ([#470](https://github.com/cds-snc/gcds-components/issues/470)) ([a686d09](https://github.com/cds-snc/gcds-components/commit/a686d09dab4cf40548448ccdc7e050d6322afb24))
+  
+### Bug Fixes
+
+* React package: invalid path for types ([#471](https://github.com/cds-snc/gcds-components/issues/471)) ([f859d43](https://github.com/cds-snc/gcds-components/commit/f859d438e9a79184d83157b92a97f855376777ac))
+
+  
 ## [0.19.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.0...gcds-components-v0.19.1) (2024-02-22)
 
 ### Bug Fixes
 
-* Fixes identified in OCADU report (a11y and usability) ([#446](https://github.com/cds-snc/gcds-components/issues/446)) ([09095a5](https://github.com/cds-snc/gcds-components/commit/09095a52f41e40a243455874daf2c147c18d89b1))
+- Fixes identified in OCADU report (a11y and usability) ([#446](https://github.com/cds-snc/gcds-components/issues/446)) ([09095a5](https://github.com/cds-snc/gcds-components/commit/09095a52f41e40a243455874daf2c147c18d89b1))
 
 ## v0.19.0
 
@@ -259,6 +357,31 @@ All notable changes to this project will be documented in this file.
 # Journal des modifications
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
+
+## v0.18.1
+
+### Changement mineur
+
+- https://github.com/cds-snc/gcds-components/pull/368 - [7774a88](https://github.com/cds-snc/gcds-components/commit/7774a8814b680d5798192dde9ce4b9550b86bba9) — Exportation de ContentValues à partir de gcds-grid pour corriger la version du paquet Angular
+
+## v0.18.0
+
+### Nouvelles fonctionnalités
+
+- Fonctionnalité pour le composant grille
+  - Possibilité d’ajouter des colonnes de grille dont la taille est individuellement définie et de définir des lignes de hauteur égale.
+
+### Changement mineur
+
+- https://github.com/cds-snc/gcds-components/pull/358 - [34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0) — Ajout de la variante Light au composant lien
+
+### Correctif
+
+- https://github.com/cds-snc/gcds-components/pull/363 - [ab0e404](https://github.com/cds-snc/gcds-components/commit/ab0e4042d4db0c580fd61a049bd8a2696d9b3141) — Correction du nom de propriété pour les variantes du composant lien
+- https://github.com/cds-snc/gcds-components/pull/364 - [ee16326](https://github.com/cds-snc/gcds-components/commit/ee16326a0daa8edb126c273f85c85c2a3cf0ef58) — Correction de la validation pour le téléverseur de fichiers
+- https://github.com/cds-snc/gcds-components/pull/362 - [ac2ea8c](https://github.com/cds-snc/gcds-components/commit/ac2ea8c0644fd98c53789cddcdb060c4b744cdcf) — Mise à jour des emplacements (slots) du composant en-tête dans Storybook
+- https://github.com/cds-snc/gcds-components/pull/357 - [5a0bd5c](https://github.com/cds-snc/gcds-components/commit/5a0bd5c56ea8d59f4798ee21c385302598b2d501) — Correction du lien Ressources dans Storybook
+- https://github.com/cds-snc/gcds-components/pull/353 - [e9624f0](https://github.com/cds-snc/gcds-components/commit/e9624f071888db71abbf60b5869dc19d6e49b4b9) — Mise à jour des instructions pour Font Awesome dans le README
 
 ## v0.17.1
 

@@ -143,13 +143,13 @@ export class GcdsFooter {
     let subLinkCount = 0;
 
     return (
-      <Host role="contentinfo">
-        <h2 class="gcds-footer__header">{I18N[lang].about}</h2>
+      <Host role="contentinfo" aria-label="Footer">
+        <gcds-sr-only tag="h2">{I18N[lang].about}</gcds-sr-only>
         {contextualLinksObject && contextualHeading && (
           <div class="gcds-footer__contextual">
             <div class="contextual__container">
-              <nav aria-labelledby="contextual__header">
-                <h3 id="contextual__header" class="contextual__header">
+              <nav aria-labelledby="contextual__heading">
+                <h3 id="contextual__heading" class="contextual__heading">
                   {contextualHeading}
                 </h3>
                 <ul class="contextual__list">
@@ -177,8 +177,8 @@ export class GcdsFooter {
         {display === 'full' ? (
           <div class="gcds-footer__main">
             <div class="main__container">
-              <nav class="main__govnav" aria-labelledby="govnav__header">
-                <h3 id="govnav__header">{I18N[lang].gov.heading}</h3>
+              <nav class="main__govnav" aria-labelledby="govnav__heading">
+                <h3 id="govnav__heading">{I18N[lang].gov.heading}</h3>
                 <ul class="govnav__list">
                   {Object.keys(govNav).map(value => (
                     <li>
@@ -189,10 +189,10 @@ export class GcdsFooter {
                   ))}
                 </ul>
               </nav>
-              <nav class="main__themenav" aria-labelledby="themenav__header">
-                <h4 id="themenav__header" class="themenav__header">
+              <nav class="main__themenav" aria-labelledby="themenav__heading">
+                <gcds-sr-only tag="h4" id="themenav__heading">
                   {I18N[lang].themes.heading}
-                </h4>
+                </gcds-sr-only>
                 <ul class="themenav__list">
                   {Object.keys(themeNav).map(value => (
                     <li>
@@ -209,10 +209,10 @@ export class GcdsFooter {
 
         <div class="gcds-footer__sub">
           <div class="sub__container">
-            <nav aria-labelledby="sub__header">
-              <h3 id="sub__header" class="sub__header">
+            <nav aria-labelledby="sub__heading">
+              <gcds-sr-only tag="h3" id="sub__heading">
                 {I18N[lang].site.heading}
-              </h3>
+              </gcds-sr-only>
               <ul>
                 {subLinks
                   ? Object.keys(subLinksObject).map(key => {

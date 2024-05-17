@@ -119,7 +119,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-checkbox
   checkbox-id="${args.checkboxId}"
   label="${args.label}"
@@ -173,7 +173,7 @@ const TemplatePlayground = args =>
 
 export const Default = Template.bind({});
 Default.args = {
-  checkboxId: 'checkboxState',
+  checkboxId: 'checkbox-default',
   label: 'Label',
   name: 'checkbox',
   hint: 'Description or example to make the option clearer.',
@@ -188,7 +188,7 @@ Default.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-  checkboxId: 'checkboxRequired',
+  checkboxId: 'checkbox-required',
   label: 'Label',
   name: 'checkbox',
   hint: 'Description or example to make the option clearer.',
@@ -203,7 +203,7 @@ Required.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  checkboxId: 'checkboxDisabled',
+  checkboxId: 'checkbox-disabled',
   label: 'Label',
   name: 'checkbox',
   hint: 'Description or example to make the option clearer.',
@@ -218,7 +218,7 @@ Disabled.args = {
 
 export const Error = Template.bind({});
 Error.args = {
-  checkboxId: 'checkboxError',
+  checkboxId: 'checkbox-error',
   label: 'Label',
   name: 'checkbox',
   hint: 'Description or example to make the option clearer.',
@@ -233,7 +233,7 @@ Error.args = {
 
 export const Checked = Template.bind({});
 Checked.args = {
-  checkboxId: 'checkboxError',
+  checkboxId: 'checkbox-checked',
   label: 'Label',
   name: 'checkbox',
   hint: 'Description or example to make the option clearer.',
@@ -246,9 +246,24 @@ Checked.args = {
   lang: 'en',
 };
 
+export const Props = Template.bind({});
+Props.args = {
+  checkboxId: 'checkbox-default',
+  label: 'Label',
+  name: 'checkbox',
+  hint: 'Description or example to make the option clearer.',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  checked: false,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  checkboxId: 'checkboxDisabled',
+  checkboxId: 'checkbox-playground',
   label: 'Label',
   name: 'checkbox',
   hint: 'Description or example to make the option clearer.',

@@ -79,6 +79,9 @@
 
       ::slotted(*) {
         font: var(--gcds-details-font);
+      }
+
+      ::slotted(*:not(:last-child)) {
         margin: 0 0 var(--gcds-details-panel-slotted-margin) !important;
       }
 

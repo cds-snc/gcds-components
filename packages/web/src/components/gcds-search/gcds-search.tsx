@@ -8,13 +8,13 @@ import {
   EventEmitter,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import I18N from './i18n/I18N';
 
 @Component({
   tag: 'gcds-search',
   styleUrl: 'gcds-search.css',
-  shadow: true
+  shadow: true,
 })
 export class GcdsSearch {
   @Element() el: HTMLElement;
@@ -40,9 +40,14 @@ export class GcdsSearch {
   @Prop() name: string = 'q';
 
   /**
-   * Set the name of the search input
+   * Set the id of the search input
    */
   @Prop() searchId: string = 'search';
+
+  /**
+   * Set the value of the search input
+   */
+  @Prop({ mutable: true }) value: string;
 
   /**
    * Set a list of predefined search terms
@@ -54,9 +59,14 @@ export class GcdsSearch {
    */
 
   /**
+   * Emitted when the search element has recieved input.
+   */
+  @Event() gcdsInput!: EventEmitter<string>;
+
+  /**
    * Emitted when the search input value has changed.
    */
-  @Event() gcdsChange!: EventEmitter<object>;
+  @Event() gcdsChange!: EventEmitter<string>;
 
   /**
    * Emitted when the search input value has gained focus.
@@ -78,6 +88,13 @@ export class GcdsSearch {
    */
   @State() lang: string;
 
+  private handleInput = (e, customEvent) => {
+    const input = e.target as HTMLInputElement;
+    this.value = input.value;
+
+    customEvent.emit(this.value);
+  };
+
   /*
    * Observe lang attribute change
    */
@@ -96,8 +113,16 @@ export class GcdsSearch {
   }
 
   render() {
-    const { placeholder, action, method, name, lang, searchId, suggested } =
-      this;
+    const {
+      placeholder,
+      action,
+      method,
+      name,
+      value,
+      lang,
+      searchId,
+      suggested,
+    } = this;
 
     const labelText = `${I18N[lang].searchLabel.replace('{$}', placeholder)}`;
 
@@ -114,12 +139,12 @@ export class GcdsSearch {
     return (
       <Host>
         <div class="gcds-search">
-          <h2 class="gcds-search__header">{I18N[lang].search}</h2>
+          <gcds-sr-only tag="h2">{I18N[lang].search}</gcds-sr-only>
           <form
             action={formAction}
             method={method}
             role="search"
-            onSubmit={() => this.gcdsSubmit.emit()}
+            onSubmit={e => emitEvent(e, this.gcdsSubmit, this.value)}
             class="gcds-search__form"
           >
             <gcds-label
@@ -133,11 +158,13 @@ export class GcdsSearch {
               list="search-list"
               size={34}
               maxLength={170}
-              onChange={() => this.gcdsChange.emit()}
+              onInput={e => this.handleInput(e, this.gcdsInput)}
+              onChange={e => this.handleInput(e, this.gcdsChange)}
               onFocus={() => this.gcdsFocus.emit()}
               onBlur={() => this.gcdsBlur.emit()}
               {...attrsInput}
               class="gcds-search__input"
+              value={value}
             ></input>
 
             {suggested && (

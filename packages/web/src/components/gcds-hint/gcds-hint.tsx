@@ -13,22 +13,17 @@ export class GcdsHint {
    */
 
   /**
-   * Hint displayed below the label and above the input field.
-   */
-  @Prop() hint?: string;
-
-  /**
    * Id attribute for the hint.
    */
   @Prop() hintId: string;
 
   render() {
-    const { hint, hintId } = this;
+    const { hintId } = this;
 
     return (
       <Host id={`hint-${hintId}`}>
-        <gcds-text class="gcds-hint" margin-bottom="200">
-          {hint}
+        <gcds-text class="gcds-hint" margin-bottom="0" part="hint">
+          <slot></slot>
         </gcds-text>
       </Host>
     );

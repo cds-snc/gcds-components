@@ -173,10 +173,6 @@ export class GcdsTextarea {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
-
   /**
    * Emitted when the textarea loses focus.
    */
@@ -191,9 +187,27 @@ export class GcdsTextarea {
   };
 
   /**
-   * Update value based on user input.
+   * Emitted when the textarea has changed.
    */
   @Event() gcdsChange: EventEmitter;
+
+  /**
+   * Emitted when the textarea has received input.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  private handleInput = (e, customEvent) => {
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val ? val : null);
+
+    if (e.type === 'change') {
+      const changeEvt = new e.constructor(e.type, e);
+      this.el.dispatchEvent(changeEvt);
+    }
+
+    customEvent.emit(this.value);
+  };
 
   /**
    * Call any active validators
@@ -210,14 +224,6 @@ export class GcdsTextarea {
       this.errorMessage = '';
       this.gcdsValid.emit({ id: `#${this.textareaId}` });
     }
-  }
-
-  handleChange(e) {
-    const val = e.target && e.target.value;
-    this.value = val;
-    this.internals.setFormValue(val ? val : null);
-
-    this.gcdsChange.emit(this.value);
   }
 
   /**
@@ -365,10 +371,12 @@ export class GcdsTextarea {
             lang={lang}
           />
 
-          {hint ? <gcds-hint hint={hint} hint-id={textareaId} /> : null}
+          {hint ? <gcds-hint hint-id={textareaId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={textareaId} message={errorMessage} />
+            <gcds-error-message messageId={textareaId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <textarea
@@ -376,8 +384,9 @@ export class GcdsTextarea {
             class={hasError ? 'gcds-error' : null}
             id={textareaId}
             onBlur={() => this.onBlur()}
-            onFocus={() => this.onFocus()}
-            onInput={e => this.handleChange(e)}
+            onFocus={() => this.gcdsFocus.emit()}
+            onInput={e => this.handleInput(e, this.gcdsInput)}
+            onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${textareaId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
             maxlength={characterCount ? characterCount : null}

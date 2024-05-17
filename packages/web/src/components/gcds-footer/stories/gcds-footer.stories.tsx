@@ -45,7 +45,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-footer
   ${args.display != 'compact' ? `display="${args.display}"` : null}
   ${
@@ -149,6 +149,16 @@ DisplayContextual.args = {
   contextualHeading: 'Contextual navigation',
   contextualLinks:
     '{ "Why GC Notify": "#", "Features": "#", "Activity on GC Notify": "#" }',
+  lang: 'en',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  display: 'full',
+  contextualHeading: 'Contextual navigation',
+  contextualLinks:
+    '{ "Why GC Notify": "#", "Features": "#", "Activity on GC Notify": "#" }',
+  subLinks: '',
   lang: 'en',
 };
 

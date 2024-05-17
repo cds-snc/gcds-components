@@ -7,10 +7,16 @@
 
 ## Properties
 
-| Property | Attribute | Description                                               | Type     | Default     |
-| -------- | --------- | --------------------------------------------------------- | -------- | ----------- |
-| `hint`   | `hint`    | Hint displayed below the label and above the input field. | `string` | `undefined` |
-| `hintId` | `hint-id` | Id attribute for the hint.                                | `string` | `undefined` |
+| Property | Attribute | Description                | Type     | Default     |
+| -------- | --------- | -------------------------- | -------- | ----------- |
+| `hintId` | `hint-id` | Id attribute for the hint. | `string` | `undefined` |
+
+
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"hint"` |             |
 
 
 ## Dependencies

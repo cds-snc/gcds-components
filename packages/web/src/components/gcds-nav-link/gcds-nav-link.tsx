@@ -9,7 +9,7 @@ import {
   EventEmitter,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 
 @Component({
   tag: 'gcds-nav-link',
@@ -76,18 +76,6 @@ export class GcdsNavLink {
     observer.observe(this.el, observerConfig);
   }
 
-  private onClick = e => {
-    this.gcdsClick.emit(e);
-  };
-
-  private onFocus = e => {
-    this.gcdsFocus.emit(e);
-  };
-
-  private onBlur = e => {
-    this.gcdsBlur.emit(e);
-  };
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -120,9 +108,9 @@ export class GcdsNavLink {
           class={`gcds-nav-link gcds-nav-link--${this.navStyle}`}
           href={href}
           {...linkAttrs}
-          onBlur={e => this.onBlur(e)}
-          onFocus={e => this.onFocus(e)}
-          onClick={e => this.onClick(e)}
+          onBlur={() => this.gcdsBlur.emit()}
+          onFocus={() => this.gcdsFocus.emit()}
+          onClick={e => emitEvent(e, this.gcdsClick, href)}
           ref={element => (this.linkElement = element as HTMLElement)}
         >
           <slot></slot>

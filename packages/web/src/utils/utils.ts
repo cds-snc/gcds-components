@@ -1,3 +1,5 @@
+import { EventEmitter } from '@stencil/core';
+
 export function format(label: string): string {
   return label ? ` ${label}` : 'Fallback Button Label';
 }
@@ -12,7 +14,7 @@ export const inheritAttributes = (
   // Check for any aria or data attributes
   for (let i = 0; i < el.attributes.length; i++) {
     const attr = el.attributes[i];
-    if (attr.name.includes('aria-') || attr.name.includes('data-')) {
+    if (attr.name.includes('aria-')) {
       attributeObject[attr.name] = attr.value;
       el.removeAttribute(attr.name);
     }
@@ -39,10 +41,10 @@ export const inheritAttributes = (
 export const assignLanguage = (el: HTMLElement) => {
   let lang = '';
   if (!el.getAttribute('lang')) {
-    if (
-      document.documentElement.getAttribute('lang') == 'en' ||
-      !document.documentElement.getAttribute('lang')
-    ) {
+    const closestLangAttribute = closestElement('[lang]', el)?.getAttribute(
+      'lang',
+    );
+    if (closestLangAttribute == 'en' || !closestLangAttribute) {
       lang = 'en';
     } else {
       lang = 'fr';
@@ -54,6 +56,18 @@ export const assignLanguage = (el: HTMLElement) => {
   }
 
   return lang;
+};
+
+// Allows use of closest() function across shadow boundaries
+const closestElement = (selector, el) => {
+  if (el) {
+    return (
+      (el && el != document && el != window && el.closest(selector)) ||
+      closestElement(selector, el.getRootNode().host)
+    );
+  }
+
+  return null;
 };
 
 export const observerConfig = {
@@ -74,4 +88,23 @@ export const elementGroupCheck = name => {
     }
   }
   return !hasCheck;
+};
+
+// Emit event with logic to cancel HTML events
+// Returns false if event has been prevented
+export const emitEvent = (
+  e: Event,
+  customEvent: EventEmitter,
+  value?: unknown,
+) => {
+  const event = customEvent.emit(value);
+
+  // Was the custom or native event interrupted
+  if (event.defaultPrevented || e.defaultPrevented) {
+    // Stop native HTML event in shadow-dom
+    e.preventDefault();
+    return false;
+  }
+
+  return true;
 };

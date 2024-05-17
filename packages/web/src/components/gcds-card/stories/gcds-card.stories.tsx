@@ -83,7 +83,7 @@ export default {
 
 const Template = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-card
   card-title="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}
@@ -182,6 +182,20 @@ Image.args = {
     'Description or supporting text relating to the headline. Longer text will be truncated with ...',
   imgSrc: 'https://picsum.photos/480/270',
   imgAlt: 'An image with the card component',
+  footer: '',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  cardTitle: 'Card title link',
+  href: '#',
+  type: 'link',
+  titleElement: 'a',
+  tag: 'Tag',
+  description:
+    'Description or supporting text relating to the headline. Longer text will be truncated with ...',
+  imgSrc: '',
+  imgAlt: '',
   footer: '',
 };
 

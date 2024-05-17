@@ -162,10 +162,6 @@ export class GcdsFileUploader {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
-  private onFocus = () => {
-    this.gcdsFocus.emit();
-  };
-
   /**
    * Emitted when the uploader loses focus.
    */
@@ -180,11 +176,16 @@ export class GcdsFileUploader {
   };
 
   /**
-   * Update value based on user selection.
+   * Emitted when the user has made a file selection.
    */
-  @Event() gcdsFileUploaderChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter;
 
-  handleChange = e => {
+  /**
+   * Emitted when the user has uploaded a file.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  private handleInput = (e, customEvent) => {
     const filesContainer: string[] = [];
     const files = Array.from(e.target.files);
 
@@ -203,7 +204,12 @@ export class GcdsFileUploader {
       }, 100);
     }
 
-    this.gcdsFileUploaderChange.emit(this.value);
+    if (e.type === 'change') {
+      const changeEvt = new e.constructor(e.type, e);
+      this.el.dispatchEvent(changeEvt);
+    }
+
+    customEvent.emit(this.value);
   };
 
   /**
@@ -398,10 +404,12 @@ export class GcdsFileUploader {
         >
           <gcds-label {...attrsLabel} label-for={uploaderId} lang={lang} />
 
-          {hint ? <gcds-hint hint={hint} hint-id={uploaderId} /> : null}
+          {hint ? <gcds-hint hint-id={uploaderId}>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={uploaderId} message={errorMessage} />
+            <gcds-error-message messageId={uploaderId}>
+              {errorMessage}
+            </gcds-error-message>
           ) : null}
 
           <div
@@ -421,22 +429,25 @@ export class GcdsFileUploader {
               id={uploaderId}
               {...attrsInput}
               onBlur={() => this.onBlur()}
-              onFocus={() => this.onFocus()}
-              onChange={e => this.handleChange(e)}
+              onFocus={() => this.gcdsFocus.emit()}
+              onInput={e => this.handleInput(e, this.gcdsInput)}
+              onChange={e => this.handleInput(e, this.gcdsChange)}
               aria-invalid={hasError ? 'true' : 'false'}
               ref={element =>
                 (this.shadowElement = element as HTMLInputElement)
               }
             />
             {value.length > 0 ? (
-              <p id="file-uploader__summary">
+              <gcds-sr-only id="file-uploader__summary">
                 <span>{i18n[lang].summary.selected} </span>
                 {value.map(file => (
                   <span>{file} </span>
                 ))}
-              </p>
+              </gcds-sr-only>
             ) : (
-              <p id="file-uploader__summary">{i18n[lang].summary.unselected}</p>
+              <gcds-sr-only id="file-uploader__summary">
+                {i18n[lang].summary.unselected}
+              </gcds-sr-only>
             )}
           </div>
 
