@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+/**
+ * Define client-only functions, objects and variables, so they don't cause any
+ * undefined errors when rendering from the server side
+ */
 
 // Original code from https://github.com/luwes/wesc
 
