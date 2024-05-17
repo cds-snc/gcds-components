@@ -47,7 +47,7 @@
     "@babel/preset-typescript": "^7.21.0",
     "@cdssnc/gcds-tokens": "^1.13.2",
     "@fortawesome/fontawesome-free": "^6.3.0",
-    "@stencil/angular-output-target": "^0.8.1",
+    "@stencil/angular-output-target": "file:../../utils/angular-output-target",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^3.0.0-0",
     "@stencil/vue-output-target": "^0.8.8",

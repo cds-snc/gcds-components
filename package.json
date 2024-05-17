@@ -48,6 +48,7 @@
     "workbox-build": "^7.0.0"
   },
   "workspaces": [
+    "utils/angular-output-target",
     "packages/web",
     "packages/angular",
     "packages/react",

@@ -19,5 +19,8 @@ jobs:
       - name: Install gcds-components
         run: npm install
 
+      - name: Build repo
+        run: npm run build
+
       - name: Run tests
         run: npm run test
