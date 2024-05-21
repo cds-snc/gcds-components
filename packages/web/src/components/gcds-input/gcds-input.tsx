@@ -210,14 +210,6 @@ export class GcdsInput {
    */
   @Event() gcdsChange: EventEmitter;
 
-  private handleChange(e) {
-    const val = e.target && e.target.value;
-    this.value = val;
-    this.internals.setFormValue(val ? val : null);
-
-    this.gcdsChange.emit(this.value);
-  }
-
   /**
    * Call any active validators
    */

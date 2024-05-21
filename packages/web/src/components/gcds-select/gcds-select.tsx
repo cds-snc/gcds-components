@@ -272,39 +272,6 @@ export class GcdsSelect {
     this.value = state;
   }
 
-  /**
-   * Check if an option is selected or value matches an option's value
-   */
-  private checkValueOrSelected(option) {
-    const value = option.getAttribute('value');
-
-    if (this.value === value) {
-      option.setAttribute('selected', 'true');
-      this.internals.setFormValue(value);
-      this.initialValue = this.value;
-    }
-
-    if (option.hasAttribute('selected')) {
-      this.value = value;
-      this.initialValue = this.value ? this.value : null;
-    }
-  }
-
-  /*
-   * Form internal functions
-   */
-  formResetCallback() {
-    if (this.value != this.initialValue) {
-      this.internals.setFormValue(this.initialValue);
-      this.value = this.initialValue;
-    }
-  }
-
-  formStateRestoreCallback(state) {
-    this.internals.setFormValue(state);
-    this.value = state;
-  }
-
   /*
    * Observe lang attribute change
    */
