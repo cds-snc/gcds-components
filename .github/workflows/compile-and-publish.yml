@@ -146,6 +146,7 @@ jobs:
         run: |
           PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
           mkdir -p ./tmp \
+            && sleep 60 \
             && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
             && cd ./tmp/node_modules
 
