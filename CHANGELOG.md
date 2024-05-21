@@ -4,6 +4,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.22.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.21.0...gcds-components-v0.22.0) (2024-05-21)
+
+### New Features
+
+- Add/create @cdssnc/gcds-components-vue package ([#516](https://github.com/cds-snc/gcds-components/issues/516)) ([3933498](https://github.com/cds-snc/gcds-components/commit/3933498c007bb3628badb0a9c751980bb01ecd25))ß
+- Add @Outputs to angular wrapper components ([#529](https://github.com/cds-snc/gcds-components/issues/529)) ([0660093](https://github.com/cds-snc/gcds-components/commit/0660093997b9f23ddc4745a0599df66c793a6e51))
+- Add dist-hydrate-app output ([#524](https://github.com/cds-snc/gcds-components/issues/524)) ([c448c59](https://github.com/cds-snc/gcds-components/commit/c448c59f56c367e8f408becffaa3edaf3ef8d280))
+
+### Bug Fixes
+
+- Emit change event from form components ([#523](https://github.com/cds-snc/gcds-components/issues/523)) ([d956370](https://github.com/cds-snc/gcds-components/commit/d9563707bb5f26ac8da7ee0cbd2c5f343ec624d3))
+
 ## [0.21.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.20.0...gcds-components-v0.21.0) (2024-05-08)
 
 ### Breaking changes
@@ -82,24 +94,24 @@ As part of the transition, our `gcds-radio` component will be deprecated in favo
 
 ### New Features
 
-* add tag prop to gcds-sr-only component ([#484](https://github.com/cds-snc/gcds-components/issues/484)) ([dfb7285](https://github.com/cds-snc/gcds-components/commit/dfb7285a14b477f4c4f71750e8b09d3ca5c193a9))
-* Component rewrites (form-associated, gcds-radio-group, CSS rewrites)  ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
+- add tag prop to gcds-sr-only component ([#484](https://github.com/cds-snc/gcds-components/issues/484)) ([dfb7285](https://github.com/cds-snc/gcds-components/commit/dfb7285a14b477f4c4f71750e8b09d3ca5c193a9))
+- Component rewrites (form-associated, gcds-radio-group, CSS rewrites)  ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
 
 
 ### Bug Fixes
 
-* Update utility functions for more usability ([#495](https://github.com/cds-snc/gcds-components/issues/495)) ([a0e8fbb](https://github.com/cds-snc/gcds-components/commit/a0e8fbbf5ed8004f72f4e51ca2f2da4ef70a37ef))
+- Update utility functions for more usability ([#495](https://github.com/cds-snc/gcds-components/issues/495)) ([a0e8fbb](https://github.com/cds-snc/gcds-components/commit/a0e8fbbf5ed8004f72f4e51ca2f2da4ef70a37ef))
 
 ## [0.20.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.1...gcds-components-v0.20.0) (2024-03-14)
 
 
 ### New Features
 
-* set allowed values for grid tag property to limit misuse ([#470](https://github.com/cds-snc/gcds-components/issues/470)) ([a686d09](https://github.com/cds-snc/gcds-components/commit/a686d09dab4cf40548448ccdc7e050d6322afb24))
+- set allowed values for grid tag property to limit misuse ([#470](https://github.com/cds-snc/gcds-components/issues/470)) ([a686d09](https://github.com/cds-snc/gcds-components/commit/a686d09dab4cf40548448ccdc7e050d6322afb24))
   
 ### Bug Fixes
 
-* React package: invalid path for types ([#471](https://github.com/cds-snc/gcds-components/issues/471)) ([f859d43](https://github.com/cds-snc/gcds-components/commit/f859d438e9a79184d83157b92a97f855376777ac))
+- React package: invalid path for types ([#471](https://github.com/cds-snc/gcds-components/issues/471)) ([f859d43](https://github.com/cds-snc/gcds-components/commit/f859d438e9a79184d83157b92a97f855376777ac))
 
   
 ## [0.19.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.0...gcds-components-v0.19.1) (2024-02-22)

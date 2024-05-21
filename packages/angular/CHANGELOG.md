@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.22.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.21.0...gcds-components-angular-v0.22.0) (2024-05-21)
+
+
+### New Features
+
+* Add @Outputs to angular wrapper components ([#529](https://github.com/cds-snc/gcds-components/issues/529)) ([0660093](https://github.com/cds-snc/gcds-components/commit/0660093997b9f23ddc4745a0599df66c793a6e51))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @cdssnc/gcds-components bumped from ^0.21.0 to ^0.22.0
+
 ## [0.21.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.20.0...gcds-components-angular-v0.21.0) (2024-05-08)
 
 
