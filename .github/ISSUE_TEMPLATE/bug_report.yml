@@ -5,7 +5,9 @@ body:
   - type: checkboxes
     attributes:
       label: Prerequisites | Prérequis
-      description: Please ensure you have completed all of the following. | Assurez-vous de respecter les mesures suivantes.
+      description: |
+        Please ensure you have completed all of the following.
+        Assurez-vous de respecter les mesures suivantes.
       options:
         - label: I have read the [Contributing Guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md). | J’ai lu les [Lignes directrices sur les contributions](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
           required: true
