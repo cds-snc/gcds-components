@@ -183,6 +183,7 @@ export const gcdsAttributeGenerator = (tagName: string, props: object) => {
     }
     case 'gcds-footer': {
       props['role'] = props['role'] ? props['role'] : 'contentInfo';
+      props['aria-label'] = 'Footer';
 
       return props;
     }
