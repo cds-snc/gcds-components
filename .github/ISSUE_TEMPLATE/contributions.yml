@@ -1,10 +1,10 @@
 name: 👷 Contribute to next priorities | Contribuer aux prochaines priorités
-description: Help us with our work on our next priorities | Participez à nos travaux sur nos prochaines priorités
+description: Help us with our work on our next priorities | Participez à nos travaux sur nos prochaines priorités.
 title: 'contribution: '
 body:
   - type: markdown
     attributes:
-      value: "## Thank you for contributing to our project! | Merci de participer à notre projet!"
+      value: "## Thank you for contributing to our project!"
   - type: markdown
     attributes:
       value: |
@@ -15,12 +15,16 @@ body:
           - **code**: prototype code or production code; share your implementations of the relevant component or pattern in services
   - type: markdown
     attributes:
+      value: "## Merci de participer à notre projet!"
+  - type: markdown
+    attributes:
       value: |
         - Avant que nous entamions le développement de ces composants ou configurations, nous souhaitons nous assurer que la communauté du GC a eu l’occasion de soumettre des contributions qui peuvent éclairer et accélérer la conception et le développement.
         - Voici les types de contributions que nous recherchons :
           - **Exemples de designs** : captures d’écran, prototypes, liens vers des services en ligne.
           - **Résultats de recherche** : recherches exploratoires, exemple de cas d’utilisation ou tests d’utilisabilité d’un prototype ou d’un service.
           - **Code** : code de prototype ou de production, ou implémentations du produit.
+
   - type: checkboxes
     attributes:
       label: Prerequisites | Prérequis

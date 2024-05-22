@@ -51,6 +51,7 @@ body:
       render: shell
       placeholder: |
         System, Environment, Browsers. At minimum, tell us if you are using a framework and what version.
+        
         Système, environnement, navigateurs. Au minimum, dites-nous si vous utilisez une infrastructure et si oui, indiquez sa version.
   - type: textarea
     attributes:
