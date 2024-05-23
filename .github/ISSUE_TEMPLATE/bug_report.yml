@@ -21,7 +21,7 @@ body:
       description: |
         The version number of GC Design System Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x. If the issue exists in figma, please type in 'figma'.
         
-        Numéro de version des composants de Système de design GC où vous rencontrez le problème. Exemple : gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x. Si le problème se trouve dans Figma, écrivez « Figma »."
+        Numéro de version des composants de Système de design GC où vous rencontrez le problème. Exemple : gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x. Si le problème se trouve dans Figma, écrivez « Figma ».
     validations:
       required: true
   - type: textarea
