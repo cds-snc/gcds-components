@@ -106,7 +106,8 @@
   }
 
   .docs-story .docblock-code-toggle:focus,
-  .css-3s4ai0 .css-lp0lj7:focus {
+  .css-3s4ai0 .css-lp0lj7:focus,
+  .copy-code-btn:focus {
     background-color: var(--gcds-focus-background) !important;
     border-color: var(--gcds-focus-background) !important;
     color: var(--gcds-focus-text) !important;
@@ -323,6 +324,37 @@
     margin: 0 0 var(--gcds-spacing-300) !important;
   }
 
+  /* ----- CUSTOM COPY CODE BTNS ----- */
+
+  .copy-code-btn {
+    cursor: pointer;
+    background-color: #262626 !important;
+    color: var(--gcds-text-light) !important;
+    border: var(--gcds-button-border-width) solid currentColor !important;
+    border-radius: var(--gcds-button-border-radius) !important;
+    box-sizing: border-box;
+    font: var(--gcds-button-font) !important;
+    font-size: 0.875rem !important;
+    margin: 0 var(--gcds-spacing-150) var(--gcds-spacing-250)
+      var(--gcds-spacing-300) !important;
+    padding: var(--gcds-spacing-200) var(--gcds-spacing-150) !important;
+    transition: all 0.35s;
+  }
+
+  .copy-code-btn:hover:not(:focus) {
+    background-color: var(--gcds-bg-white) !important;
+    color: #262626 !important;
+  }
+
+  .copy-code-btn:first-letter {
+    text-transform: uppercase;
+  }
+
+  /* Hide default Storybook copy btn */
+  .css-lp0lj7 {
+    display: none !important;
+  }
+
   /* ----- COMPONENT SPECIFIC ----- */
 
   /* gcds-button */
@@ -451,6 +483,69 @@
       }
     });
   }
+
+  // Add custom copy code buttons to code preview
+  window.addEventListener('load', function () {
+    setTimeout(() => {
+      const container = document.querySelector('.language-html');
+      const btnContainer = document.querySelector('.css-111a2cx');
+      const stringWeb = '<!-- Web component code (HTML, Angular, Vue) -->';
+      const stringReact = '<!-- React code -->';
+      const langFr = url.get('lang') && url.get('lang') === 'fr';
+
+      if (btnContainer) {
+        createBtn(stringWeb, stringReact, 'web component', 'composants web');
+        createBtn(stringReact, '', 'React', 'React');
+
+        function createBtn(startString, endString, textEn, textFr) {
+          const copyBtn = document.createElement('button');
+
+          copyBtn.textContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
+          copyBtn.classList.add('copy-code-btn');
+
+          copyBtn.addEventListener('click', function () {
+            const content = container.textContent;
+            const startIndex = content.indexOf(startString);
+            let extractedContent;
+
+            if (startIndex !== -1) {
+              if (endString) {
+                const endIndex = content.indexOf(endString, startIndex);
+
+                if (endIndex !== -1) {
+                  extractedContent = content
+                    .substring(startIndex + startString.length, endIndex)
+                    .trim();
+                } else {
+                  console.error('End string not found in the content.');
+                  return;
+                }
+              } else {
+                extractedContent = content
+                  .substring(startIndex + startString.length)
+                  .trim();
+              }
+
+              navigator.clipboard
+                .writeText(extractedContent)
+                .then(function () {
+                  copyBtn.textContent = langFr
+                    ? `${textFr} copiés`
+                    : `${textEn} copied`;
+                })
+                .catch(function (err) {
+                  console.error('Unable to copy content to clipboard: ', err);
+                });
+            } else {
+              console.error('Start string not found in the content.');
+            }
+          });
+
+          btnContainer.appendChild(copyBtn);
+        }
+      }
+    }, 200);
+  });
 
   function formatTable(table, lang) {
     // Format table header
