@@ -21,6 +21,8 @@
     "access": "public"
   },
   "scripts": {
+    "postinstall": "cd ../../utils/angular-output-target && npm install",
+    "prebuild": "cd ../../utils/angular-output-target && npm run build",
     "build": "stencil build --docs",
     "postbuild": "node ./scripts/copyCSSFile.js",
     "start": "stencil build --dev --watch --serve",
