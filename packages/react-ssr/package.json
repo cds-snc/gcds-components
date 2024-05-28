@@ -10,10 +10,6 @@
     "url": "https://github.com/cds-snc/gcds-components/issues"
   },
   "homepage": "https://design-system.alpha.canada.ca/",
-  "engines": {
-    "node": "^18",
-    "npm": "^9"
-  },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
@@ -77,7 +73,7 @@
     "get-tsconfig": "^4.7.5",
     "make-dir-cli": "3.1.0",
     "prettier": "3.1.0",
-    "tsx": "4.2.0",
+    "tsx": "4.11.0",
     "typescript": "~5.1.0"
   },
   "nx": {
