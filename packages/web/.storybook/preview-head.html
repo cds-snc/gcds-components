@@ -65,16 +65,13 @@
     left: 0 !important;
   }
 
-  .css-3s4ai0 {
-    padding-block-end: var(--gcds-spacing-550);
-  }
-
   .css-3s4ai0 .css-111a2cx {
     background-color: transparent !important;
   }
 
   .docs-story .docblock-code-toggle,
-  .css-3s4ai0 .css-lp0lj7 {
+  .css-3s4ai0 .css-lp0lj7,
+  .copy-code-btn {
     border: var(--gcds-button-border-width) solid currentColor !important;
     border-radius: var(--gcds-button-border-radius) !important;
     box-sizing: border-box;
@@ -328,22 +325,13 @@
 
   .copy-code-btn {
     cursor: pointer;
-    background-color: #262626 !important;
-    color: var(--gcds-text-light) !important;
+    background-color: transparent !important;
+    color: var(--gcds-button-secondary-default-text) !important;
     border: var(--gcds-button-border-width) solid currentColor !important;
-    border-radius: var(--gcds-button-border-radius) !important;
-    box-sizing: border-box;
-    font: var(--gcds-button-font) !important;
-    font-size: 0.875rem !important;
-    margin: 0 var(--gcds-spacing-150) var(--gcds-spacing-250)
-      var(--gcds-spacing-300) !important;
-    padding: var(--gcds-spacing-200) var(--gcds-spacing-150) !important;
-    transition: all 0.35s;
   }
 
   .copy-code-btn:hover:not(:focus) {
-    background-color: var(--gcds-bg-white) !important;
-    color: #262626 !important;
+    background-color: var(--gcds-button-secondary-hover-background) !important;
   }
 
   .copy-code-btn:first-letter {
@@ -484,69 +472,6 @@
     });
   }
 
-  // Add custom copy code buttons to code preview
-  window.addEventListener('load', function () {
-    setTimeout(() => {
-      const container = document.querySelector('.language-html');
-      const btnContainer = document.querySelector('.css-111a2cx');
-      const stringWeb = '<!-- Web component code (HTML, Angular, Vue) -->';
-      const stringReact = '<!-- React code -->';
-      const langFr = url.get('lang') && url.get('lang') === 'fr';
-
-      if (btnContainer) {
-        createBtn(stringWeb, stringReact, 'web component', 'composants web');
-        createBtn(stringReact, '', 'React', 'React');
-
-        function createBtn(startString, endString, textEn, textFr) {
-          const copyBtn = document.createElement('button');
-
-          copyBtn.textContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
-          copyBtn.classList.add('copy-code-btn');
-
-          copyBtn.addEventListener('click', function () {
-            const content = container.textContent;
-            const startIndex = content.indexOf(startString);
-            let extractedContent;
-
-            if (startIndex !== -1) {
-              if (endString) {
-                const endIndex = content.indexOf(endString, startIndex);
-
-                if (endIndex !== -1) {
-                  extractedContent = content
-                    .substring(startIndex + startString.length, endIndex)
-                    .trim();
-                } else {
-                  console.error('End string not found in the content.');
-                  return;
-                }
-              } else {
-                extractedContent = content
-                  .substring(startIndex + startString.length)
-                  .trim();
-              }
-
-              navigator.clipboard
-                .writeText(extractedContent)
-                .then(function () {
-                  copyBtn.textContent = langFr
-                    ? `${textFr} copiés`
-                    : `${textEn} copied`;
-                })
-                .catch(function (err) {
-                  console.error('Unable to copy content to clipboard: ', err);
-                });
-            } else {
-              console.error('Start string not found in the content.');
-            }
-          });
-
-          btnContainer.appendChild(copyBtn);
-        }
-      }
-    }, 200);
-  });
-
   function formatTable(table, lang) {
     // Format table header
     const tableHead = [...table.querySelectorAll('th')];
@@ -666,4 +591,123 @@
       }
     });
   }
+
+  // ----- Custom copy code buttons -----
+
+  // Add custom copy code buttons to code preview
+  function createCopyBtn(toggleCode, startString, endString, textEn, textFr) {
+    const toggleCodeBtnParent = toggleCode.closest('.css-25bv1u');
+    const copyBtn = document.createElement('button');
+    const langFr = url.get('lang') && url.get('lang') === 'fr';
+
+    copyBtn.textContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
+    copyBtn.classList.add('copy-code-btn');
+
+    // Copy content to clipboard
+    function copyContent() {
+      // Get the content of the code block
+      const contentParent = toggleCode.closest('.sbdocs-preview');
+      const content = contentParent
+        ? contentParent.querySelector('.language-html').textContent
+        : '';
+      const start = content.indexOf(startString);
+      let code;
+
+      if (start !== -1) {
+        const end = endString
+          ? content.indexOf(endString, start)
+          : content.length;
+
+        // Extract the code from the content
+        if (end !== -1) {
+          code = content.substring(start + startString.length, end).trim();
+        } else {
+          console.error('End string not found in the content.');
+          return;
+        }
+
+        // Copy the extracted code to clipboard
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            // Update button text to indicate successful copy
+            copyBtn.textContent = langFr
+              ? `${textFr} copiés`
+              : `${textEn} copied`;
+          })
+          .catch(err => {
+            console.error('Unable to copy content to clipboard: ', err);
+          });
+      } else {
+        console.error('Start string not found in the content.');
+      }
+    }
+
+    copyBtn.addEventListener('click', function () {
+      copyContent();
+    });
+
+    // Append the copy button to the container
+    if (toggleCodeBtnParent) {
+      toggleCodeBtnParent.appendChild(copyBtn);
+    } else {
+      console.error('Parent container not found.');
+    }
+  }
+
+  // Display copy buttons based on toggle button state
+  function toggleCopyBtnsDisplay(toggleCode) {
+    // Define strings representing code blocks for web components and React
+    const stringWeb = '<!-- Web component code (HTML, Angular, Vue) -->';
+    const stringReact = '<!-- React code -->';
+
+    // Check if toggle button is in expanded state
+    if (toggleCode.classList.contains('docblock-code-toggle--expanded')) {
+      // If expanded, create copy buttons for web component and React code
+      createCopyBtn(
+        toggleCode,
+        stringWeb,
+        stringReact,
+        'web component',
+        'composants web',
+      );
+      createCopyBtn(toggleCode, stringReact, '', 'React', 'React');
+    } else {
+      // If not expanded, remove existing copy buttons
+      const copyBtns = document.querySelectorAll('.copy-code-btn');
+      copyBtns.forEach(btn => btn.remove());
+    }
+  }
+
+  // Add DOMContentLoaded event
+  function domContentLoadedHandler() {
+    setTimeout(() => {
+      const toggleCodes = document.querySelectorAll('.docblock-code-toggle');
+
+      if (toggleCodes.length > 0) {
+        // Toggle the display of copy buttons based on the toggle code button state
+        toggleCodes.forEach(toggleCode => {
+          toggleCopyBtnsDisplay(toggleCode);
+
+          // Add event listener for click event to each toggle code button
+          toggleCode.addEventListener('click', () => {
+            setTimeout(() => toggleCopyBtnsDisplay(toggleCode), 200);
+          });
+        });
+      }
+    }, 1000);
+
+    // Remove DOMContentLoaded event listener to avoid execution for each story on the page
+    document.removeEventListener('DOMContentLoaded', domContentLoadedHandler);
+  }
+
+  // Add event listener to execute domContentLoadedHandler function when DOM content is loaded
+  document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
+
+  // Add event listener to execute domContentLoadedHandler for click events
+  document.addEventListener('click', function () {
+    document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
+  });
+
+  // ----- End custom copy code buttons -----
 </script>
