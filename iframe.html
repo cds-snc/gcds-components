@@ -378,16 +378,13 @@
     left: 0 !important;
   }
 
-  .css-3s4ai0 {
-    padding-block-end: var(--gcds-spacing-550);
-  }
-
   .css-3s4ai0 .css-111a2cx {
     background-color: transparent !important;
   }
 
   .docs-story .docblock-code-toggle,
-  .css-3s4ai0 .css-lp0lj7 {
+  .css-3s4ai0 .css-lp0lj7,
+  .copy-code-btn {
     border: var(--gcds-button-border-width) solid currentColor !important;
     border-radius: var(--gcds-button-border-radius) !important;
     box-sizing: border-box;
@@ -419,7 +416,8 @@
   }
 
   .docs-story .docblock-code-toggle:focus,
-  .css-3s4ai0 .css-lp0lj7:focus {
+  .css-3s4ai0 .css-lp0lj7:focus,
+  .copy-code-btn:focus {
     background-color: var(--gcds-focus-background) !important;
     border-color: var(--gcds-focus-background) !important;
     color: var(--gcds-focus-text) !important;
@@ -634,6 +632,29 @@
 
   .resources-list li {
     margin: 0 0 var(--gcds-spacing-300) !important;
+  }
+
+  /* ----- CUSTOM COPY CODE BTNS ----- */
+
+  .copy-code-btn {
+    min-width: 11.35rem;
+    cursor: pointer;
+    background-color: transparent !important;
+    color: var(--gcds-button-secondary-default-text) !important;
+    border: var(--gcds-button-border-width) solid currentColor !important;
+  }
+
+  .copy-code-btn:hover:not(:focus) {
+    background-color: var(--gcds-button-secondary-hover-background) !important;
+  }
+
+  .copy-code-btn:first-letter {
+    text-transform: uppercase;
+  }
+
+  /* Hide default Storybook copy btn */
+  .css-lp0lj7 {
+    display: none !important;
   }
 
   /* ----- COMPONENT SPECIFIC ----- */
@@ -879,7 +900,131 @@
         }
       }
     });
-  }</script><style>#storybook-root[hidden],
+  }
+
+  // ----- Custom copy code buttons -----
+
+  // Add custom copy code buttons to code preview
+  function createCopyBtn(toggleCode, startString, endString, textEn, textFr) {
+    const toggleCodeBtnParent = toggleCode.closest('.css-25bv1u');
+    const copyBtn = document.createElement('button');
+    const langFr = url.get('lang') && url.get('lang') === 'fr';
+    const defaultBtnContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
+    const copiedBtnContent = langFr ? `${textFr} copiés` : `${textEn} copied`;
+
+    copyBtn.textContent = defaultBtnContent;
+    copyBtn.classList.add('copy-code-btn');
+
+    // Copy content to clipboard
+    function copyContent() {
+      // Get the content of the code block
+      const contentParent = toggleCode.closest('.sbdocs-preview');
+      const content = contentParent
+        ? contentParent.querySelector('.language-html').textContent
+        : '';
+      const start = content.indexOf(startString);
+      let code;
+
+      if (start !== -1) {
+        const end = endString
+          ? content.indexOf(endString, start)
+          : content.length;
+
+        // Extract the code from the content
+        if (end !== -1) {
+          code = content.substring(start + startString.length, end).trim();
+        } else {
+          console.error('End string not found in the content.');
+          return;
+        }
+
+        // Copy the extracted code to clipboard
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            // Update button text to indicate successful copy
+            copyBtn.textContent = copiedBtnContent;
+
+            // Revert button text to default after 1.5 seconds
+            setTimeout(() => {
+              copyBtn.textContent = defaultBtnContent;
+            }, 1500);
+          })
+          .catch(err => {
+            console.error('Unable to copy content to clipboard: ', err);
+          });
+      } else {
+        console.error('Start string not found in the content.');
+      }
+    }
+
+    copyBtn.addEventListener('click', function () {
+      copyContent();
+    });
+
+    // Append the copy button to the container
+    if (toggleCodeBtnParent) {
+      toggleCodeBtnParent.appendChild(copyBtn);
+    } else {
+      console.error('Parent container not found.');
+    }
+  }
+
+  // Display copy buttons based on toggle button state
+  function toggleCopyBtnsDisplay(toggleCode) {
+    // Define strings representing code blocks for web components and React
+    const stringWeb = '<!-- Web component code (HTML, Angular, Vue) -->';
+    const stringReact = '<!-- React code -->';
+
+    // Check if toggle button is in expanded state
+    if (toggleCode.classList.contains('docblock-code-toggle--expanded')) {
+      // If expanded, create copy buttons for web component and React code
+      createCopyBtn(
+        toggleCode,
+        stringWeb,
+        stringReact,
+        'web component',
+        'composants web',
+      );
+      createCopyBtn(toggleCode, stringReact, '', 'React', 'React');
+    } else {
+      // If not expanded, remove existing copy buttons
+      const copyBtns = document.querySelectorAll('.copy-code-btn');
+      copyBtns.forEach(btn => btn.remove());
+    }
+  }
+
+  // Add DOMContentLoaded event
+  function domContentLoadedHandler() {
+    setTimeout(() => {
+      const toggleCodes = document.querySelectorAll('.docblock-code-toggle');
+
+      if (toggleCodes.length > 0) {
+        // Toggle the display of copy buttons based on the toggle code button state
+        toggleCodes.forEach(toggleCode => {
+          toggleCopyBtnsDisplay(toggleCode);
+
+          // Add event listener for click event to each toggle code button
+          toggleCode.addEventListener('click', () => {
+            setTimeout(() => toggleCopyBtnsDisplay(toggleCode), 200);
+          });
+        });
+      }
+    }, 1000);
+
+    // Remove DOMContentLoaded event listener to avoid execution for each story on the page
+    document.removeEventListener('DOMContentLoaded', domContentLoadedHandler);
+  }
+
+  // Add event listener to execute domContentLoadedHandler function when DOM content is loaded
+  document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
+
+  // Add event listener to execute domContentLoadedHandler for click events
+  document.addEventListener('click', function () {
+    document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
+  });
+
+  // ----- End custom copy code buttons -----</script><style>#storybook-root[hidden],
       #storybook-docs[hidden] {
         display: none !important;
       }</style></head><body><div class="sb-preparing-story sb-wrapper"><div class="sb-loader"></div></div><div class="sb-preparing-docs sb-wrapper"><div class="sb-previewBlock"><div class="sb-previewBlock_header"><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div></div><div class="sb-previewBlock_body"><div class="sb-loader"></div></div></div><table aria-hidden="true" class="sb-argstableBlock"><thead class="sb-argstableBlock-head"><tr><th><span>Name</span></th><th><span>Description</span></th><th><span>Default</span></th><th><span>Control</span></th></tr></thead><tbody class="sb-argstableBlock-body"><tr><td><span>propertyName</span><span title="Required">*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr><tr><td><span>propertyName</span><span>*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr><tr><td><span>propertyName</span><span>*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr></tbody></table></div><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="storybook-root"></div><div id="storybook-docs"></div><script>window['CONFIG_TYPE'] = "PRODUCTION";
@@ -913,7 +1058,7 @@
             window['TAGS_OPTIONS'] = {"dev-only":{"excludeFromDocsStories":true},"docs-only":{"excludeFromSidebar":true},"test-only":{"excludeFromSidebar":true,"excludeFromDocsStories":true}};</script><script type="module">import './sb-preview/runtime.js';
 
       
-      import './runtime~main.f22a6330.iframe.bundle.js';
+      import './runtime~main.5ea63b8b.iframe.bundle.js';
       
       import './2607.3cc847db.iframe.bundle.js';
       
