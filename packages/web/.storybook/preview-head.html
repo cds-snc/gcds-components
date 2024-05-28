@@ -600,8 +600,10 @@
     const toggleCodeBtnParent = toggleCode.closest('.css-25bv1u');
     const copyBtn = document.createElement('button');
     const langFr = url.get('lang') && url.get('lang') === 'fr';
+    const defaultBtnContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
+    const copiedBtnContent = langFr ? `${textFr} copiés` : `${textEn} copied`;
 
-    copyBtn.textContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
+    copyBtn.textContent = defaultBtnContent;
     copyBtn.classList.add('copy-code-btn');
 
     // Copy content to clipboard
@@ -632,9 +634,12 @@
           .writeText(code)
           .then(() => {
             // Update button text to indicate successful copy
-            copyBtn.textContent = langFr
-              ? `${textFr} copiés`
-              : `${textEn} copied`;
+            copyBtn.textContent = copiedBtnContent;
+
+            // Revert button text to default after 1.5 seconds
+            setTimeout(() => {
+              copyBtn.textContent = defaultBtnContent;
+            }, 1500);
           })
           .catch(err => {
             console.error('Unable to copy content to clipboard: ', err);
