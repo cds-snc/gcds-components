@@ -165,7 +165,7 @@ const Template = args =>
 `.replace(/ null/g, '');
 
 const TemplatePreview = () => `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-button>Submit</gcds-button>
 <gcds-button button-role="secondary">Cancel</gcds-button>
 <gcds-button button-role="danger">Delete</gcds-button>
@@ -177,7 +177,7 @@ const TemplatePreview = () => `
 `;
 
 const TemplateTypes = () => `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-button>Button</gcds-button>
 <gcds-button type="link">Link</gcds-button>
 <gcds-button type="reset">Reset</gcds-button>
@@ -191,7 +191,7 @@ const TemplateTypes = () => `
 `;
 
 const TemplateRoles = () => `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-button>Primary</gcds-button>
 <gcds-button button-role="secondary">Secondary</gcds-button>
 <gcds-button button-role="danger">Danger</gcds-button>
@@ -204,7 +204,7 @@ const TemplateRoles = () => `
 
 const TemplateTwoButtons = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-button ${
     args.buttonRole != 'primary' ? `button-role="${args.buttonRole}"` : null
   } ${args.btnOneSize != 'regular' ? `size="${args.btnOneSize}"` : null} ${
@@ -239,7 +239,7 @@ const TemplateTwoButtons = args =>
 
 const TemplateBtnIcon = args =>
   `
-<!-- Web component code (Angular, Vue) -->
+<!-- Web component code (HTML, Angular, Vue) -->
 <gcds-button>
   ${args.default} <gcds-icon name="${args.iconName}"></gcds-icon>
 </gcds-button>
