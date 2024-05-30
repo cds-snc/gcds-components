@@ -39,6 +39,7 @@ export default {
       control: {
         type: 'text',
       },
+      description: 'Customize the content for the home link.',
       table: {
         category: 'Slots | Fentes',
       },

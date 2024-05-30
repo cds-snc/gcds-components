@@ -81,6 +81,7 @@ export default {
       control: {
         type: 'text',
       },
+      description: 'Customize the content or include additional elements.',
       table: {
         category: 'Slots | Fentes',
       },

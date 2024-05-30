@@ -77,6 +77,7 @@ export default {
       control: {
         type: 'text',
       },
+      description: 'Include additional elements.',
       table: {
         category: 'Slots | Fentes',
       },

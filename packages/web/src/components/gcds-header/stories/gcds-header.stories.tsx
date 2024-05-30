@@ -52,6 +52,7 @@ export default {
       control: {
         type: 'text',
       },
+      description: 'Use this slot to add a menu to the header.',
       table: {
         category: 'Slots | Fentes',
       },
@@ -60,6 +61,7 @@ export default {
       control: {
         type: 'text',
       },
+      description: 'Use this slot to add breadcrumbs to the header.',
       table: {
         category: 'Slots | Fentes',
       },
@@ -68,6 +70,7 @@ export default {
       control: {
         type: 'text',
       },
+      description: 'Use this slot to add a search to the header.',
       table: {
         category: 'Slots | Fentes',
       },
@@ -76,6 +79,8 @@ export default {
       control: {
         type: 'text',
       },
+      description:
+        'Use this slot to add a different language toggle to the header.',
       table: {
         category: 'Slots | Fentes',
       },
@@ -84,6 +89,7 @@ export default {
       control: {
         type: 'text',
       },
+      description: 'Use this slot to add a banner to the header.',
       table: {
         category: 'Slots | Fentes',
       },
@@ -93,6 +99,8 @@ export default {
       control: {
         type: 'text',
       },
+      description:
+        'Use this slot to add a different skip-to-nav link to the header.',
       table: {
         category: 'Slots | Fentes',
       },
