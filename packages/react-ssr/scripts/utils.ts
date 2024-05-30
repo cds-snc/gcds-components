@@ -63,7 +63,7 @@ export const toModuleFile = (
 ) => `import React, { useImperativeHandle, useRef } from 'react';
 import { ${defineCustomElementFunction} } from '${importPath}';
 import { omitEventCallbacks, useEventListeners, gcdsAttributeGenerator } from './lib/utils.js';
-import { GcdsWrapper } from './lib/client';
+import { toNativeProps } from './lib/native-props';
 
 if(typeof customElements !== 'undefined' && !customElements.get('${elementName}')) {
   ${defineCustomElementFunction}();
@@ -71,12 +71,7 @@ if(typeof customElements !== 'undefined' && !customElements.get('${elementName}'
 
 const customEvents = ${customEvents.length > 0 ? `['${customEvents.join(`', '`)}']` : '[]'};
 const ${toPascalCase(elementName)} = React.forwardRef(({ children = [], ...props }, ref) => {
-  const nonEventProps = omitEventCallbacks(customEvents, props);
-  let nativeProps = {};
-
-  for (const p in nonEventProps) {
-    nativeProps[p.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()] = nonEventProps[p];
-  }
+  let nativeProps = toNativeProps(omitEventCallbacks(customEvents, props));
 
   nativeProps = gcdsAttributeGenerator("${elementName}", nativeProps);
 
