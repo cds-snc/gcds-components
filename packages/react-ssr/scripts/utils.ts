@@ -108,7 +108,7 @@ const toTypeDeclaration = (elementName: string, customEvents?: { name: string; e
       .join(',\n  ')}
   }`
       : ''
-  }>> & React.RefAttributes<HTMLElement | undefined>>;`;
+  }>> & React.RefAttributes<HTMLElement | undefined> & React.HTMLAttributes<HTMLElement>>;`;
 
 export const toTypesFile = (
   elements: string[],
