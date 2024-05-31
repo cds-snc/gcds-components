@@ -680,7 +680,7 @@
       createCopyBtn(toggleCode, stringReact, '', 'React', 'React');
     } else {
       // If not expanded, remove existing copy buttons
-      const copyBtns = document.querySelectorAll('.copy-code-btn');
+      const copyBtns = toggleCode.closest('.css-25bv1u').querySelectorAll('.copy-code-btn');
       copyBtns.forEach(btn => btn.remove());
     }
   }
