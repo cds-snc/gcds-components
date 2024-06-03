@@ -1,43 +1,70 @@
-name: 💡 Feature Request
-description: Suggest an idea for GC Design System Components
+name: 💡 Feature Request | Demander une fonctionnalité
+description: Suggest an idea for GC Design System Components | Suggérez une idée pour Système de design GC.
 title: 'feat: '
 body:
   - type: checkboxes
     attributes:
-      label: Prerequisites
-      description: Complete all of the following.
+      label: Prerequisites | Prérequis
+      description: |
+        Complete all of the following.
+        Assurez-vous de respecter les mesures suivantes.
+
       options:
-        - label: I've read the [Contributing Guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
+        - label: I've read the [Contributing Guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md). | J’ai lu les [Lignes directrices sur les contributions](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
           required: true
-        - label: I agree to follow the [Code of Conduct](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md).
+        - label: I agree to follow the [Code of Conduct](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md). | J’accepte de me conformer au [Code de conduite](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md).
           required: true
-        - label: I've searched for [existing issues](https://github.com/cds-snc/gcds-components/issues) that already report this problem, without success.
+        - label: I've searched for [existing issues](https://github.com/cds-snc/gcds-components/issues) that already report this problem, without success. | J’ai vérifié parmi les [tickets (issues) existants](https://github.com/cds-snc/gcds-components/issues) que ce sujet n’avait pas déjà été soumis.
           required: true
   - type: textarea
     attributes:
-      label: Describe the feature request.
-      description: A clear and concise description of what the proposed new feature does that's distinct from existing gcds-components.
+      label: Describe the feature request. | Décrivez la fonctionnalité demandée
+      description: |
+        A clear and concise description of what the proposed new feature does that's distinct from existing gcds-components.
+
+        Une description claire et concise de ce que la fonctionnalité proposée permet de faire, et que les composants actuels ne permettent pas.
+
     validations:
       required: true
   - type: textarea
     attributes:
-      label: Describe the use case.
-      description: A clear and concise use case for what problem this feature would solve for most Government of Canada services or products.
+      label: Describe the use case. | Décrivez les cas d’utilisation
+      description: |
+        A clear and concise use case for what problem this feature would solve for most Government of Canada services or products.
+
+        Une description claire et concise du type de problème rencontré par la plupart des services et produits du gouvernement du Canada que cette fonctionnalité résoudrait. 
+
     validations:
       required: true
   - type: textarea
     attributes:
-      label: Describe the preferred solution.
-      description: A clear and concise description of how you want this feature to be added to gcds-components.
+      label: Describe the preferred solution. | Décrivez la solution souhaitée
+      description: |
+        A clear and concise description of how you want this feature to be added to gcds-components.
+
+        Une description claire et concise de la façon dont vous voudriez voir cette fonctionnalité s’intégrer aux composants de Système de design GC.
+
   - type: textarea
     attributes:
-      label: Describe all alternatives.
-      description: A clear and concise description of any alternative solutions or features you have considered.
+      label: Describe all alternatives. | Décrivez toutes les solutions possibles
+      description: |
+        A clear and concise description of any alternative solutions or features you have considered.
+
+        Une description claire et concise de toutes les autres solutions ou fonctionnalités que vous avez envisagées.
+
   - type: textarea
     attributes:
-      label: Provide related code or examples.
-      description: Provide some sample code and/or screenshots to illustrate the feature request with examples.
+      label: Provide related code or examples. | Fournissez du code ou des exemples pertinents
+      description: |
+        Provide some sample code and/or screenshots to illustrate the feature request with examples.
+
+        Fournissez des exemples de code ou des captures d’écran qui illustrent la demande de fonctionnalité.
+
   - type: textarea
     attributes:
-      label: Add other relevant resources.
-      description: Include any other information relevant to your request, like stack traces, related issues, suggestions how to implement, Stack Overflow links, forum links, etc.
+      label: Add other relevant resources. | Ajoutez toute autre ressource utile
+      description: |
+        Include any other information relevant to your request, like stack traces, related issues, suggestions how to implement, Stack Overflow links, forum links, etc.
+
+        Ajoutez toute autre information utile à votre demande. Exemple : traces d’appels (stack traces), problèmes connexes, suggestions d’implémentation, liens Stack Overflow, liens de forum, etc.
+
