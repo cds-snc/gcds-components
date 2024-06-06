@@ -22,8 +22,8 @@ const toNativeAttributeName = (name: string, value: unknown): string | undefined
   return name;
 };
 
-const toNativeAttributeValue = (value: unknown) =>
-  typeof value === 'string' ? value : JSON.stringify(value).replace(/"/g, '&quot;');
+export const toNativeAttributeValue = (value: unknown) =>
+  typeof value === 'boolean' ? '' : Array.isArray(value) ? value.join(' ') : value;
 
 export const toNativeProps = (props = {}) =>
   Object.entries(props).reduce((transformedProps, [name, value]) => {
