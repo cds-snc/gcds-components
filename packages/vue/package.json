@@ -39,7 +39,6 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/compiler-dom": "^3.4.26",
     "@vue/server-renderer": "^3.4.27",
-    "vite": "^4.5.3",
     "vue": "^3.4.26"
   }
 }
