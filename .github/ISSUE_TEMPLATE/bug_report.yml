@@ -1,59 +1,85 @@
-name: 🐛 Bug Report
-description: Create a report to help us improve GC Design System
+name: 🐛 Bug Report | Rapport de bogue
+description: Create a report to help us improve GC Design System | Remplissez un rapport de bogue pour nous aider à améliorer Système de design GC.
 title: 'bug: '
 body:
   - type: checkboxes
     attributes:
-      label: Prerequisites
-      description: Please ensure you have completed all of the following.
-      options:
-        - label: I have read the [Contributing Guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
-          required: true
-        - label: I agree to follow the [Code of Conduct](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md).
-          required: true
-        - label: I have searched for [existing issues](https://github.com/cds-snc/gcds-components/issues) that already report this problem, without success.
-          required: true
-  - type: input
-    attributes:
-      label: GC Design System Components Package and Version
-      description: "The version number of GC Design System Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x. If the issue exists in figma, please type in 'figma'"
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Current Behavior
-      description: A clear description of what the bug is and how it manifests. Please provide screenshots as necessary.
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Expected Behavior
-      description: A clear description of what you expected to happen.
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: System Info
+      label: Prerequisites | Prérequis
       description: |
-        Please provide any additional information, such as npm version, browser(s), frameworks, and version(s) as well
-      render: shell
-      placeholder: System, Environment, Browsers. At minimum, tell us if you are using a framework and what version.
+        Please ensure you have completed all of the following.
+        Assurez-vous de respecter les mesures suivantes.
+      options:
+        - label: I have read the [Contributing Guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md). | J’ai lu les [Lignes directrices sur les contributions](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
+          required: true
+        - label: I agree to follow the [Code of Conduct](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md). | J’accepte de me conformer au [Code de conduite](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md).
+          required: true
+        - label: I have searched for [existing issues](https://github.com/cds-snc/gcds-components/issues) that already report this problem, without success. | J’ai vérifié parmi [les tickets (issues) existants](https://github.com/cds-snc/gcds-components/issues) que ce sujet n’avait pas déjà été soumis.
+          required: true
+  - type: input
+    attributes:
+      label: GC Design System Components Package and Version | Paquet et version des composants de Système de design GC
+      description: |
+        The version number of GC Design System Components where the issue is occurring. Example: gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x. If the issue exists in figma, please type in 'figma'.
+        
+        Numéro de version des composants de Système de design GC où vous rencontrez le problème. Exemple : gcds-components@x.x.x, gcds-components-react@x.x.x, gcds-components-angular@x.x.x. Si le problème se trouve dans Figma, écrivez « Figma ».
+    validations:
+      required: true
   - type: textarea
     attributes:
-      label: Steps to Reproduce
-      description: Please explain the steps required to duplicate this issue.
+      label: Current Behavior | Comportement observé
+      description: |
+        A clear description of what the bug is and how it manifests. Please provide screenshots as necessary.
+        
+        Une description claire du bogue et de la façon dont il se manifeste. Ajoutez des captures d’écran si nécessaire.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior | Comportement attendu
+      description: |
+        A clear description of what you expected to happen.
+        
+        Une description claire de ce qui devrait se produire selon vous.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: System Info | Information sur le système
+      description: |
+        Please provide any additional information, such as npm version, browser(s), frameworks, and version(s) as well.
+        
+        Ajoutez des renseignements additionnels comme la version npm, le navigateur, l’infrastructure et sa version.
+    
+      render: shell
+      placeholder: |
+        System, Environment, Browsers. At minimum, tell us if you are using a framework and what version.
+        
+        Système, environnement, navigateurs. Au minimum, dites-nous si vous utilisez une infrastructure et si oui, indiquez sa version.
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce | Étapes pour reproduire le bogue
+      description: |
+        Please explain the steps required to duplicate this issue.
+
+        Expliquez les étapes permettant de reproduire le problème.
     validations:
       required: true
   - type: input
     attributes:
-      label: Code Reproduction URL
+      label: "Code Reproduction URL | URL de reproduction du code"
       description: |
         Please reproduce this issue in a blank environment and provide a link to the repo. You may use https://stackblitz.com/ or https://codesandbox.io/ to create a reproduction.
         This is the best way to ensure this issue is triaged quickly.
+        
+        Reproduisez le problème dans un environnement vierge et fournissez le lien du référentiel. Vous pouvez utiliser https://stackblitz.com/ ou https://codesandbox.io/ pour créer la reproduction. 
+        C’est la meilleure façon de s’assurer que le problème est traité rapidement.
       placeholder: https://github.com/...
     validations:
       required: false
   - type: textarea
     attributes:
-      label: Additional Information
-      description: List any other information that is relevant to your issue. Stack traces, related issues, suggestions on how to fix, Stack Overflow links, forum links, etc.
+      label: Additional Information | Informations supplémentaires
+      description: |
+        List any other information that is relevant to your issue. Stack traces, related issues, suggestions on how to fix, Stack Overflow links, forum links, etc.
+
+        Fournissez toute autre information utile. Exemple : traces d’appels (stack traces), problèmes connexes, suggestions de correctif, liens Stack Overflow, liens de forum, etc.

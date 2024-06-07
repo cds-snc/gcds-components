@@ -340,9 +340,9 @@ export class GcdsInput {
       lang,
     } = this;
 
-    // Use max-width instead of size attribute to keep field responsive
+    // Use max-width to keep field responsive
     const style = {
-      maxWidth: `${size + (type === 'number' ? 2.5 : 3.75)}ch`,
+      maxWidth: `${size * 2}ch`,
     };
 
     const attrsInput = {
@@ -402,7 +402,7 @@ export class GcdsInput {
             onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${inputId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
-            maxlength={size}
+            size={size}
             style={size ? style : null}
             ref={element => (this.shadowElement = element as HTMLElement)}
           />

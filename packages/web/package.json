@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components",
-  "version": "0.21.0",
+  "version": "0.22.1",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Web components for the GCDS",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -21,6 +21,8 @@
     "access": "public"
   },
   "scripts": {
+    "postinstall": "cd ../../utils/angular-output-target && npm install",
+    "prebuild": "cd ../../utils/angular-output-target && npm run build",
     "build": "stencil build --docs",
     "postbuild": "node ./scripts/copyCSSFile.js",
     "start": "stencil build --dev --watch --serve",

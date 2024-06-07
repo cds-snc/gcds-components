@@ -63,24 +63,15 @@ export const toModuleFile = (
 ) => `import React, { useImperativeHandle, useRef } from 'react';
 import { ${defineCustomElementFunction} } from '${importPath}';
 import { omitEventCallbacks, useEventListeners, gcdsAttributeGenerator } from './lib/utils.js';
-import { GcdsWrapper } from './lib/client';
+import { toNativeProps } from './lib/native-props';
 
 if(typeof customElements !== 'undefined' && !customElements.get('${elementName}')) {
   ${defineCustomElementFunction}();
 }
 
 const customEvents = ${customEvents.length > 0 ? `['${customEvents.join(`', '`)}']` : '[]'};
-const ${toPascalCase(elementName)}WebComponent = React.forwardRef(({ children = [], ...props }, ref) => {
-  const nonEventProps = omitEventCallbacks(customEvents, props);
-  let nativeProps = {};
-
-  if (nonEventProps.isAlreadyWrapped) {
-    delete nonEventProps.isAlreadyWrapped;
-  }
-
-  for (const p in nonEventProps) {
-    nativeProps[p.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()] = nonEventProps[p];
-  }
+const ${toPascalCase(elementName)} = React.forwardRef(({ children = [], ...props }, ref) => {
+  let nativeProps = toNativeProps(omitEventCallbacks(customEvents, props));
 
   nativeProps = gcdsAttributeGenerator("${elementName}", nativeProps);
 
@@ -93,55 +84,6 @@ const ${toPascalCase(elementName)}WebComponent = React.forwardRef(({ children = 
 
   return React.createElement('${elementName}', { ...nativeProps, ref }, children);
 });
-
-const ${toPascalCase(elementName)} = (props) => {
-  if (!props['noSSR'] && typeof window == 'undefined') {
-    let cloned = [];
-
-    // Pass isAlreadyWrapped prop to children GCDS components
-    if (Array.isArray(props.children)) {
-      props.children.map((child, i) => {
-        if (child.type && child.type.toString().includes('Gcds')) {
-          cloned.push(React.cloneElement(child, { isAlreadyWrapped: true, key: i }));
-        } else if (typeof child == 'string') {
-          cloned.push(child);
-        } else {
-          cloned.push(React.cloneElement(child, { key: i }));
-        }
-      });
-    } else if (typeof props.children == 'object') {
-      if (props.children.type && props.children.type.toString().includes('Gcds')) {
-        cloned.push(React.cloneElement(props.children, { isAlreadyWrapped: true, key: 0 }));
-      } else {
-        cloned.push(React.cloneElement(props.children, { key: 0 }));
-      }
-    } else if (typeof props.children == 'string') {
-      cloned = props.children;
-    }
-
-    if (props.isAlreadyWrapped) {
-      return(
-        <${toPascalCase(elementName)}WebComponent {...props}>
-          {cloned}
-        </${toPascalCase(elementName)}WebComponent>
-      )
-    }
-
-    return(
-      <GcdsWrapper>
-        <${toPascalCase(elementName)}WebComponent {...props}>
-          {cloned}
-        </${toPascalCase(elementName)}WebComponent>
-      </GcdsWrapper>
-    )
-  } else {
-    return (
-      <${toPascalCase(elementName)}WebComponent {...props}>
-        {props.children}
-      </${toPascalCase(elementName)}WebComponent>
-    )
-  }
-}
 
 ${toExport(toPascalCase(elementName))}
 `;
@@ -166,7 +108,7 @@ const toTypeDeclaration = (elementName: string, customEvents?: { name: string; e
       .join(',\n  ')}
   }`
       : ''
-  }>> & React.RefAttributes<HTMLElement | undefined>>;`;
+  }>> & React.RefAttributes<HTMLElement | undefined> & React.HTMLAttributes<HTMLElement>>;`;
 
 export const toTypesFile = (
   elements: string[],

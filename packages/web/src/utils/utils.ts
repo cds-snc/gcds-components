@@ -62,7 +62,11 @@ export const assignLanguage = (el: HTMLElement) => {
 const closestElement = (selector, el) => {
   if (el) {
     return (
-      (el && el != document && el != window && el.closest(selector)) ||
+      (el &&
+        el != document &&
+        typeof window != 'undefined' &&
+        el != window &&
+        el.closest(selector)) ||
       closestElement(selector, el.getRootNode().host)
     );
   }
