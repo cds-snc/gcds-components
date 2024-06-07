@@ -20,6 +20,8 @@
   },
   "scripts": {
     "build": "npm run tsc",
+    "pretest": "cd tests/app && npm i",
+    "test": "npx playwright test",
     "tsc": "tsc -p . --outDir ./dist"
   },
   "bugs": {
@@ -32,10 +34,11 @@
     "@cdssnc/gcds-components": "^0.21.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.14.2",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/compiler-dom": "^3.4.26",
     "@vue/server-renderer": "^3.4.27",
-    "cypress": "^13.9.0",
     "vite": "^4.5.3",
     "vue": "^3.4.26"
   }
