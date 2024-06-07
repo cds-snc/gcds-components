@@ -11,6 +11,7 @@
     "pretest": "npm run patch:stenciljs",
     "test": "npx lerna run test",
     "build-storybook": "npx lerna run build-storybook --scope=@cdssnc/gcds-components",
+    "start-storybook": "npx lerna run storybook --scope=@cdssnc/gcds-components",
     "version": "npx lerna version",
     "patch:stenciljs": "npx --yes patch-package",
     "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'",
@@ -48,6 +49,7 @@
     "workbox-build": "^7.0.0"
   },
   "workspaces": [
+    "utils/angular-output-target",
     "packages/web",
     "packages/angular",
     "packages/react",

@@ -1,0 +1,68 @@
+{
+  "name": "@stencil/angular-output-target",
+  "version": "0.8.4",
+  "description": "Angular output target for @stencil/core components.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "resources/",
+    "angular-component-lib/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "prebuild": "rimraf ./dist && npm run test",
+    "build": "tsc && npm run rollup",
+    "watch": "tsc --watch",
+    "rollup": "rollup -c",
+    "version": "npm run build",
+    "prettier": "npm run prettier.base -- --write",
+    "prettier.base": "prettier \"./({angular-component-lib,src,test,__tests__}/**/*.{ts,tsx,js,jsx})|*.{ts,tsx,js,jsx}\"",
+    "prettier.dry-run": "npm run prettier.base -- --list-different",
+    "release": "np",
+    "test": "jest --passWithNoTests",
+    "test.watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/stencil-ds-output-targets.git"
+  },
+  "author": "Ionic Team",
+  "homepage": "https://stenciljs.com/",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ionic-team/stencil-ds-output-targets/issues"
+  },
+  "devDependencies": {
+    "@angular/core": "^16.2.12",
+    "@angular/forms": "^16.2.12",
+    "@types/jest": "^26.0.9",
+    "jest": "^26.3.0",
+    "np": "^6.0.2",
+    "prettier": "2.8.8",
+    "rimraf": "^4.2.0",
+    "rollup": "^2.23.1",
+    "ts-jest": "^26.2.0"
+  },
+  "peerDependencies": {
+    "@stencil/core": ">=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|ts|tsx)$": "<rootDir>/test/jest.preprocessor.js"
+    },
+    "testRegex": "(\\.(test|spec))\\.(ts?|tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ],
+    "testURL": "http://localhost"
+  }
+}
