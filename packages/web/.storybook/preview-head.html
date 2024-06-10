@@ -598,66 +598,65 @@
   // Add custom copy code buttons to code preview
   function createCopyBtn(toggleCode, startString, endString, textEn, textFr) {
     const toggleCodeBtnParent = toggleCode.closest('.css-25bv1u');
-    const copyBtn = document.createElement('button');
-    const langFr = url.get('lang') && url.get('lang') === 'fr';
-    const defaultBtnContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
-    const copiedBtnContent = langFr ? `${textFr} copiés` : `${textEn} copied`;
 
-    copyBtn.textContent = defaultBtnContent;
-    copyBtn.classList.add('copy-code-btn');
+    if (toggleCodeBtnParent && toggleCodeBtnParent.querySelectorAll('.copy-code-btn').length < 2) {
+      const copyBtn = document.createElement('button');
+      const langFr = url.get('lang') && url.get('lang') === 'fr';
+      const defaultBtnContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
+      const copiedBtnContent = langFr ? `${textFr} copiés` : `${textEn} copied`;
 
-    // Copy content to clipboard
-    function copyContent() {
-      // Get the content of the code block
-      const contentParent = toggleCode.closest('.sbdocs-preview');
-      const content = contentParent
-        ? contentParent.querySelector('.language-html').textContent
-        : '';
-      const start = content.indexOf(startString);
-      let code;
+      copyBtn.textContent = defaultBtnContent;
+      copyBtn.classList.add('copy-code-btn');
 
-      if (start !== -1) {
-        const end = endString
-          ? content.indexOf(endString, start)
-          : content.length;
+      // Copy content to clipboard
+      function copyContent() {
+        // Get the content of the code block
+        const contentParent = toggleCode.closest('.sbdocs-preview');
+        const content = contentParent
+          ? contentParent.querySelector('.language-html').textContent
+          : '';
+        const start = content.indexOf(startString);
+        let code;
 
-        // Extract the code from the content
-        if (end !== -1) {
-          code = content.substring(start + startString.length, end).trim();
+        if (start !== -1) {
+          const end = endString
+            ? content.indexOf(endString, start)
+            : content.length;
+
+          // Extract the code from the content
+          if (end !== -1) {
+            code = content.substring(start + startString.length, end).trim();
+          } else {
+            console.error('End string not found in the content.');
+            return;
+          }
+
+          // Copy the extracted code to clipboard
+          navigator.clipboard
+            .writeText(code)
+            .then(() => {
+              // Update button text to indicate successful copy
+              copyBtn.textContent = copiedBtnContent;
+
+              // Revert button text to default after 1.5 seconds
+              setTimeout(() => {
+                copyBtn.textContent = defaultBtnContent;
+              }, 1500);
+            })
+            .catch(err => {
+              console.error('Unable to copy content to clipboard: ', err);
+            });
         } else {
-          console.error('End string not found in the content.');
-          return;
+          console.error('Start string not found in the content.');
         }
-
-        // Copy the extracted code to clipboard
-        navigator.clipboard
-          .writeText(code)
-          .then(() => {
-            // Update button text to indicate successful copy
-            copyBtn.textContent = copiedBtnContent;
-
-            // Revert button text to default after 1.5 seconds
-            setTimeout(() => {
-              copyBtn.textContent = defaultBtnContent;
-            }, 1500);
-          })
-          .catch(err => {
-            console.error('Unable to copy content to clipboard: ', err);
-          });
-      } else {
-        console.error('Start string not found in the content.');
       }
-    }
 
-    copyBtn.addEventListener('click', function () {
-      copyContent();
-    });
+      copyBtn.addEventListener('click', function () {
+        copyContent();
+      });
 
-    // Append the copy button to the container
-    if (toggleCodeBtnParent) {
+      // Append the copy button to the container
       toggleCodeBtnParent.appendChild(copyBtn);
-    } else {
-      console.error('Parent container not found.');
     }
   }
 
