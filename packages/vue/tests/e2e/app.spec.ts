@@ -28,7 +28,6 @@ test('Select component event handling', async ({ page }) => {
 
   // Change gcds-select with events
   await page.locator('#gcds-event select').selectOption('green');
-  // await page.locator('gcds-select select').first().selectOption('green');
   await expect(page.locator('#selectedColor')).toHaveText('green');
 });
 
