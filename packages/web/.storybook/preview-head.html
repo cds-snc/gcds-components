@@ -705,17 +705,18 @@
       createCopyBtn(toggleCode, stringReact, '', 'React', 'React');
     } else {
       // If not expanded, remove existing copy buttons
-      const copyBtns = document.querySelectorAll('.copy-code-btn');
+      const copyBtns = toggleCode.closest('.css-25bv1u').querySelectorAll('.copy-code-btn');
       copyBtns.forEach(btn => btn.remove());
     }
   }
 
   // Add DOMContentLoaded event
   function domContentLoadedHandler() {
-    setTimeout(() => {
+    const domLoadInterval = setInterval(() => {
       const toggleCodes = document.querySelectorAll('.docblock-code-toggle');
 
       if (toggleCodes.length > 0) {
+        clearInterval(domLoadInterval);
         // Toggle the display of copy buttons based on the toggle code button state
         toggleCodes.forEach(toggleCode => {
           toggleCopyBtnsDisplay(toggleCode);
@@ -726,19 +727,11 @@
           });
         });
       }
-    }, 1000);
-
-    // Remove DOMContentLoaded event listener to avoid execution for each story on the page
-    document.removeEventListener('DOMContentLoaded', domContentLoadedHandler);
+    }, 100);
   }
 
   // Add event listener to execute domContentLoadedHandler function when DOM content is loaded
   document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
-
-  // Add event listener to execute domContentLoadedHandler for click events
-  document.addEventListener('click', function () {
-    document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
-  });
 
   // ----- End custom copy code buttons -----
 </script>
