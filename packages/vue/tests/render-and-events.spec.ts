@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('test app has loaded', async ({ page }) => {
+test('Page has loaded and rendered', async ({ page }) => {
   await page.goto('http://localhost:5173/');
 
   // Expect a title "to contain" a substring.
@@ -10,7 +10,7 @@ test('test app has loaded', async ({ page }) => {
   const topicMenuButton = await page.locator('gcds-topic-menu button');
   await expect(topicMenuButton).toHaveText('Main Menu');
 
-  // Breadcrumbs has rendered has rendered
+  // Breadcrumbs has rendered
   const breadcrumbsLink = await page.locator('gcds-breadcrumbs-item');
   await expect(breadcrumbsLink).toHaveText('Canada.ca');
 
@@ -19,7 +19,7 @@ test('test app has loaded', async ({ page }) => {
   await expect(footerLinks).toBe(26);
 });
 
-test('select - events', async ({ page }) => {
+test('Select component event handling', async ({ page }) => {
   await page.goto('http://localhost:5173/');
 
   // Change normal HTML select option
@@ -27,11 +27,12 @@ test('select - events', async ({ page }) => {
   await expect(page.locator('#selectedColor')).toHaveText('yellow');
 
   // Change gcds-select with events
-  await page.locator('gcds-select select').first().selectOption('green');
+  await page.locator('#gcds-event select').selectOption('green');
+  // await page.locator('gcds-select select').first().selectOption('green');
   await expect(page.locator('#selectedColor')).toHaveText('green');
 });
 
-test('selects - v-model', async ({ page }) => {
+test('Select component input binding with v-model', async ({ page }) => {
   await page.goto('http://localhost:5173/');
 
   // Change normal HTML select option
@@ -39,6 +40,6 @@ test('selects - v-model', async ({ page }) => {
   await expect(page.locator('#selectedColor')).toHaveText('blue');
 
   // Change gcds-select with v-model
-  await page.locator('gcds-select select').last().selectOption('yellow');
+  await page.locator('#gcds-v-model select').selectOption('yellow');
   await expect(page.locator('#selectedColor')).toHaveText('yellow');
 });

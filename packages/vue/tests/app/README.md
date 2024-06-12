@@ -1,6 +1,8 @@
+**Test app used for E2E testing purposes**
+
 # Vue3 with GC Design System Components Vue Package
 
-This package is an example of how you can use the GC Design System Components - Vue package in a Vue3 project that uses Vite. Used to test component rendering, events listeners and `v-model`.
+This package is an example of how you can use the GC Design System Components - Vue package in a Vue3 project that uses Vite. Used to E2E test component rendering, events listeners and `v-model`.
 
 # Vue 3 + Vite
 
