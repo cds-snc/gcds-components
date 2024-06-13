@@ -1,0 +1,51 @@
+name: Upload to S3 Example
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Publish packages"]
+    types:
+      - completed
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  CDN_BUCKET: gc-design-system-production-cdn
+  CDN_REGION: ca-central-1
+
+jobs:
+  upload-to-cdn:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install AWS CLI
+        run: sudo apt-get install awscli -y
+
+      - name: Make retry script executable
+        run: chmod +x ./utils/scripts/retry.sh
+
+      - name: Make upload script executable
+        run: chmod +x ./utils/scripts/upload_to_cdn.sh
+
+      - name: Configure AWS credentials using OIDC
+        # Replace with....something else
+#        if: steps.publish.outputs.id != ''
+        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
+        with:
+          role-to-assume: arn:aws:iam::951846448183:role/daine-gcds-components-apply
+          role-session-name: CDNPublish
+          aws-region: ${{ env.CDN_REGION }}
+
+      - name: Upload file to S3
+        run: ./retry.sh 3 "echo 'hello world'"
+#        run: ./retry.sh 3 ./upload_to_cdn.sh
+
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: your-region

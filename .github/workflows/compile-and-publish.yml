@@ -48,32 +48,39 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
+          dry-run: true
 
-      - name: Configure AWS credentials using OIDC
-        if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
-        with:
-          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
-          role-session-name: CDNPublish
-          aws-region: ${{ env.CDN_REGION }}
+      - name: Save PUBLISHED_PACKAGE to env var
+        id: save_published_package_name
+        run: echo "PUBLISHED_PACKAGE=${{ steps.publish.outputs.id }}"
+        env:
+          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
 
-      - name: Update CDN ${{ matrix.name }}
-        if: steps.publish.outputs.id != ''
-        run: |
-          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-
-          mkdir -p ./tmp \
-            && sleep 60 \
-            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-            && cd ./tmp/node_modules
-
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
-
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
-        working-directory: ${{ matrix.package }}
+#      - name: Configure AWS credentials using OIDC
+#        if: steps.publish.outputs.id != ''
+#        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
+#        with:
+#          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
+#          role-session-name: CDNPublish
+#          aws-region: ${{ env.CDN_REGION }}
+#
+#      - name: Update CDN ${{ matrix.name }}
+#        if: steps.publish.outputs.id != ''
+#        run: |
+#          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
+#
+#          mkdir -p ./tmp \
+#            && sleep 60 \
+#            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+#            && cd ./tmp/node_modules
+#
+#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
+#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
+#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
+#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
+#
+#          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
+#        working-directory: ${{ matrix.package }}
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
@@ -91,8 +98,8 @@ jobs:
           json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
           curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
 
-  publish-react-angular:
-    name: Publish @cdssnc/gcds-components-react and @cdssnc/gcds-components-angular
+  publish-react-angular-vue:
+    name: Publish @cdssnc/gcds-components-react, @cdssnc/gcds-components-angular, @cdssnc/gcds-components-vue
     needs: publish-web
     runs-on: ubuntu-latest
     strategy:
@@ -120,10 +127,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install monorepo (web, react, angular)
+      - name: Install monorepo (web, react, angular, vue)
         run: npm install
 
-      - name: Build gcds-components  (web, react, angular)
+      - name: Build gcds-components (web, react, angular, vue)
         run: npm run build
 
       - name: Publish ${{ matrix.name }}
@@ -133,30 +140,30 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
 
-      - name: Configure AWS credentials using OIDC
-        if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
-        with:
-          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
-          role-session-name: CDNPublish
-          aws-region: ${{ env.CDN_REGION }}
-
-      - name: Update CDN ${{ matrix.name }}
-        if: steps.publish.outputs.id != ''
-        run: |
-          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-          mkdir -p ./tmp \
-            && sleep 60 \
-            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-            && cd ./tmp/node_modules
-
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
-
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
-        working-directory: ${{ matrix.package }}
+#      - name: Configure AWS credentials using OIDC
+#        if: steps.publish.outputs.id != ''
+#        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
+#        with:
+#          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
+#          role-session-name: CDNPublish
+#          aws-region: ${{ env.CDN_REGION }}
+#
+#      - name: Update CDN ${{ matrix.name }}
+#        if: steps.publish.outputs.id != ''
+#        run: |
+#          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
+#          mkdir -p ./tmp \
+#            && sleep 60 \
+#            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+#            && cd ./tmp/node_modules
+#
+#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
+#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
+#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
+#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
+#
+#          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
+#        working-directory: ${{ matrix.package }}
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
