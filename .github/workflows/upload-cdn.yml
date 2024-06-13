@@ -1,4 +1,4 @@
-name: Upload to S3 Example
+name: Upload packages to CDN
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  CDN_BUCKET: gc-design-system-production-cdn
+  CDN_BUCKET: gc-design-system-daine-scratch-cdn
   CDN_REGION: ca-central-1
 
 jobs:

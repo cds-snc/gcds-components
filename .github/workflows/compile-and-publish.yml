@@ -54,7 +54,8 @@ jobs:
         id: save_published_package_name
         run: echo "PUBLISHED_PACKAGE=${{ steps.publish.outputs.id }}"
         env:
-          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
+#          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
+          PUBLISHED_PACKAGE: ${{ matrix.name }}@0.22.1
 
 #      - name: Configure AWS credentials using OIDC
 #        if: steps.publish.outputs.id != ''
@@ -107,14 +108,17 @@ jobs:
       matrix:
         include:
           - name: "@cdssnc/gcds-components-react"
+            short_name: react
             package: "./packages/react"
             dist: "./packages/react"
 
           - name: "@cdssnc/gcds-components-angular"
+            short_name: angular
             package: "./packages/angular"
             dist: "./packages/angular/dist"
 
           - name: "@cdssnc/gcds-components-vue"
+            short_name: vue
             package: "./packages/vue"
             dist: "./packages/vue"
 
@@ -139,6 +143,14 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
+          dry-run: true
+
+      - name: Save PUBLISHED_PACKAGE to env var
+        id: save_published_package_name_${{ matrix.short_name }}
+        run: echo "PUBLISHED_PACKAGE=${{ steps.publish.outputs.id }}"
+        env:
+          #          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
+          PUBLISHED_PACKAGE_${{ matrix.short_name }}: ${{ matrix.name }}@0.22.1
 
 #      - name: Configure AWS credentials using OIDC
 #        if: steps.publish.outputs.id != ''
