@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 ## Path to lerna.json
 #LERNA_JSON="lerna.json"
 #
@@ -21,6 +23,13 @@ echo "PACKAGE_PATH: $PACKAGE_PATH"
 
 PUBLISHED_PACKAGE=$1@$PACKAGE_VERSION
 echo "Uploading published package: $PUBLISHED_PACKAGE"
+
+# Verify AWS credentials
+aws sts get-caller-identity
+
+# Your AWS CLI command here
+aws s3 ls
+
 #PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
 #CDN_BUCKET=$2
 #CDN_CLOUDFRONT_DIST_ID=$3
@@ -60,4 +69,4 @@ retry() {
 }
 
 # Retry 3 times with a 5-second delay in between
-retry 3 5
+#retry 3 5
