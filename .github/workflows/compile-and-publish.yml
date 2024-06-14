@@ -50,14 +50,14 @@ jobs:
           package: ${{ matrix.dist }}
           dry-run: true
 
-      - name: Save PUBLISHED_PACKAGE to env var
-        id: save_published_package_name
-        run: echo "PUBLISHED_PACKAGE=${{ matrix.name }}@0.22.1"
-        env:
-#          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
-          PUBLISHED_PACKAGE: ${{ matrix.name }}@0.22.1
-
-#      - name: Configure AWS credentials using OIDC
+#      - name: Save PUBLISHED_PACKAGE to env var
+#        id: save_published_package_name
+#        run: echo "PUBLISHED_PACKAGE=${{ matrix.name }}@0.22.1"
+#        env:
+##          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
+#          PUBLISHED_PACKAGE: ${{ matrix.name }}@0.22.1
+#
+##      - name: Configure AWS credentials using OIDC
 #        if: steps.publish.outputs.id != ''
 #        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
 #        with:
@@ -145,12 +145,12 @@ jobs:
           package: ${{ matrix.dist }}
           dry-run: true
 
-      - name: Save PUBLISHED_PACKAGE to env var ${{matrix.short_name}}
-        id: save_published_package_name
-        run: echo "PUBLISHED_PACKAGE_${{ matrix.short_name }}=${{ matrix.name }}@0.22.1"
-        env:
-          #          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
-          PUBLISHED_PACKAGE_${{ matrix.short_name }}: ${{ matrix.name }}@0.22.1
+#      - name: Save PUBLISHED_PACKAGE to env var ${{matrix.short_name}}
+#        id: save_published_package_name
+#        run: echo "PUBLISHED_PACKAGE_${{ matrix.short_name }}=${{ matrix.name }}@0.22.1"
+#        env:
+#          #          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
+#          PUBLISHED_PACKAGE_${{ matrix.short_name }}: ${{ matrix.name }}@0.22.1
 
 #      - name: Configure AWS credentials using OIDC
 #        if: steps.publish.outputs.id != ''
