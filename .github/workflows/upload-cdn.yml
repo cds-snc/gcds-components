@@ -66,8 +66,7 @@ jobs:
       - name: Upload file to S3
 #        run: ./utils/scripts/retry.sh 3 "echo 'hello world'"
         run: |
-          ./utils/scripts/retry.sh 3
-          "./utils/scripts/upload_to_cdn.sh ${{ matrix.name }}"
+          ./utils/scripts/retry.sh 3 "./utils/scripts/upload_to_cdn.sh ${{ matrix.name }}"
 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
