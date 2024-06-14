@@ -42,7 +42,7 @@ jobs:
           aws-region: ${{ env.CDN_REGION }}
 
       - name: Upload file to S3
-        run: ./retry.sh 3 "echo 'hello world'"
+        run: ./utils/scripts/retry.sh 3 "echo 'hello world'"
 #        run: ./retry.sh 3 ./upload_to_cdn.sh
 
         env:
