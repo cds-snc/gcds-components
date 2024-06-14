@@ -145,8 +145,8 @@ jobs:
           package: ${{ matrix.dist }}
           dry-run: true
 
-      - name: Save PUBLISHED_PACKAGE to env var
-        id: save_published_package_name_${{ matrix.short_name }}
+      - name: Save PUBLISHED_PACKAGE to env var ${{matrix.short_name}}
+        id: save_published_package_name
         run: echo "PUBLISHED_PACKAGE=${{ steps.publish.outputs.id }}"
         env:
           #          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
