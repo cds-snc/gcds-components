@@ -66,9 +66,22 @@ jobs:
       - name: Verify AWS Configuration
         run: aws sts get-caller-identity
 
-      - name: Upload file to S3
+      - name: Get files from NPM
 #        run: ./utils/scripts/retry.sh 3 "echo 'hello world'"
         run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.name }}
+
+      - name: Upload file to S3 ${{ matrix.name }}
+        run: |
+          PUBLISHED_PACKAGE=$(jq -r '.version' ${{ matrix.package }}/lerna.json)
+          echo "PUBLISHED_PACKAGE=$PUBLISHED_PACKAGE"
+
+          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
+          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
+          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
+          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
+
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
+        working-directory: ${{ matrix.package }}
 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
