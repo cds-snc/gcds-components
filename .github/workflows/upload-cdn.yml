@@ -25,19 +25,19 @@ jobs:
         include:
           - name: "@cdssnc/gcds-components"
             package: "./packages/web"
-            dist: "./packages/web"
+            dist: "/packages/web"
 
           - name: "@cdssnc/gcds-components-react"
             package: "./packages/react"
-            dist: "./packages/react"
+            dist: "/packages/react"
 
           - name: "@cdssnc/gcds-components-angular"
             package: "./packages/angular"
-            dist: "./packages/angular/dist"
+            dist: "/packages/angular/dist"
 
           - name: "@cdssnc/gcds-components-vue"
             package: "./packages/vue"
-            dist: "./packages/vue"
+            dist: "/packages/vue"
 
     steps:
       - name: Checkout code
