@@ -19,6 +19,30 @@ jobs:
   upload-to-cdn:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "@cdssnc/gcds-components"
+            short_name: web
+            package: "./packages/web"
+            dist: "./packages/web"
+
+          - name: "@cdssnc/gcds-components-react"
+            short_name: react
+            package: "./packages/react"
+            dist: "./packages/react"
+
+          - name: "@cdssnc/gcds-components-angular"
+            short_name: angular
+            package: "./packages/angular"
+            dist: "./packages/angular/dist"
+
+          - name: "@cdssnc/gcds-components-vue"
+            short_name: vue
+            package: "./packages/vue"
+            dist: "./packages/vue"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,6 +64,20 @@ jobs:
           role-to-assume: arn:aws:iam::951846448183:role/daine-gcds-components-apply
           role-session-name: CDNPublish
           aws-region: ${{ env.CDN_REGION }}
+
+      - name: Set package variable
+        id: set_package_var
+        run: |
+          if [ "${{ matrix.short_name }}" = "web" ]; then
+            echo "PACKAGE_NAME=${{ PUBLISHED_PACKAGE }}" >> $GITHUB_ENV
+          else if [ "${{ matrix.short_name }}" = "react" ]; then
+            echo "PACKAGE_NAME=${{ PUBLISHED_PACKAGE_react }}" >> $GITHUB_ENV
+          else if [ "${{ matrix.short_name }}" = "angular" ]; then
+            echo "PACKAGE_NAME=${{ PUBLISHED_PACKAGE_angular }}" >> $GITHUB_ENV
+          else if [ "${{ matrix.short_name }}" = "vue" ]; then
+            echo "PACKAGE_NAME=${{ PUBLISHED_PACKAGE_vue }}" >> $GITHUB_ENV
+          fi
+          echo "Package name: ${{ PACKAGE_NAME }}"
 
       - name: Upload file to S3
         run: ./utils/scripts/retry.sh 3 "echo 'hello world'"

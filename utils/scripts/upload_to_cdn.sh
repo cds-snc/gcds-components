@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Get the published package name
-PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
+PUBLISHED_PACKAGE=$1
+#PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
 
 mkdir -p ./tmp \
   && sleep 60 \
