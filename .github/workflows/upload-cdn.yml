@@ -73,3 +73,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: your-region
+          PACKAGE_VERSION: $(jq -r '.version' ${{ matrix.package }}/lerna.json)
+          CDN_BUCKET: ${{ env.CDN_BUCKET }}
+          CDN_CLOUDFRONT_DIST_ID: ${{secrets.CDN_CLOUDFRONT_DIST_ID}}
+          PACKAGE_PATH: ${{ matrix.dist }}

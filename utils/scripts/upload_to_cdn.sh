@@ -15,6 +15,10 @@ PACKAGE_VERSION=$(jq -r '.version' $LERNA_JSON)
 echo "Lerna version: $PACKAGE_VERSION"
 
 # Get the published package name
+echo "PACKAGE_VERSION: $PACKAGE_VERSION"
+echo "CDN_BUCKET: $CDN_BUCKET"
+echo "PACKAGE_PATH: $PACKAGE_PATH"
+
 PUBLISHED_PACKAGE=$1@$PACKAGE_VERSION
 echo "Uploading published package: $PUBLISHED_PACKAGE"
 #PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
