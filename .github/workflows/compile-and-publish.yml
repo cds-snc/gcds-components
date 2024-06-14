@@ -52,7 +52,7 @@ jobs:
 
       - name: Save PUBLISHED_PACKAGE to env var
         id: save_published_package_name
-        run: echo "PUBLISHED_PACKAGE=${{ steps.publish.outputs.id }}"
+        run: echo "PUBLISHED_PACKAGE=${{ matrix.name }}@0.22.1"
         env:
 #          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
           PUBLISHED_PACKAGE: ${{ matrix.name }}@0.22.1
@@ -147,7 +147,7 @@ jobs:
 
       - name: Save PUBLISHED_PACKAGE to env var ${{matrix.short_name}}
         id: save_published_package_name
-        run: echo "PUBLISHED_PACKAGE=${{ steps.publish.outputs.id }}"
+        run: echo "PUBLISHED_PACKAGE_${{ matrix.short_name }}=${{ matrix.name }}@0.22.1"
         env:
           #          PUBLISHED_PACKAGE: ${{ steps.publish.outputs.id }}
           PUBLISHED_PACKAGE_${{ matrix.short_name }}: ${{ matrix.name }}@0.22.1
