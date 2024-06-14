@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Path to lerna.json
-LERNA_JSON="lerna.json"
-
-# Check if lerna.json exists
-if [ ! -f "$LERNA_JSON" ]; then
-  echo "lerna.json not found!"
-  exit 1
-fi
-
-# Read and process lerna.json using jq
-PACKAGE_VERSION=$(jq -r '.version' $LERNA_JSON)
-
-echo "Lerna version: $PACKAGE_VERSION"
+## Path to lerna.json
+#LERNA_JSON="lerna.json"
+#
+## Check if lerna.json exists
+#if [ ! -f "$LERNA_JSON" ]; then
+#  echo "lerna.json not found!"
+#  exit 1
+#fi
+#
+## Read and process lerna.json using jq
+#PACKAGE_VERSION=$(jq -r '.version' $LERNA_JSON)
+#
+#echo "Lerna version: $PACKAGE_VERSION"
 
 # Get the published package name
 echo "PACKAGE_VERSION: $PACKAGE_VERSION"
