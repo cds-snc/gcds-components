@@ -22,9 +22,9 @@ echo "PACKAGE_PATH: $PACKAGE_PATH"
 PUBLISHED_PACKAGE=$1@$PACKAGE_VERSION
 echo "Uploading published package: $PUBLISHED_PACKAGE"
 #PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-CDN_BUCKET=$2
-CDN_CLOUDFRONT_DIST_ID=$3
-PACKAGE_NAME=$4
+#CDN_BUCKET=$2
+#CDN_CLOUDFRONT_DIST_ID=$3
+#PACKAGE_NAME=$4
 
 mkdir -p ./tmp \
   && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
