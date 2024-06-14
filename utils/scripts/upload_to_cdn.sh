@@ -18,14 +18,17 @@ echo "Lerna version: $PACKAGE_VERSION"
 PUBLISHED_PACKAGE=$1@$PACKAGE_VERSION
 echo "Uploading published package: $PUBLISHED_PACKAGE"
 #PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
+CDN_BUCKET=$2
+CDN_CLOUDFRONT_DIST_ID=$3
+PACKAGE_NAME=$4
 
 mkdir -p ./tmp \
   && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
   && cd ./tmp/node_modules
 
-aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
-aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
-aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
-aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
+aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/"$PUBLISHED_PACKAGE" --delete
+aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/$PACKAGE_NAME@latest --delete
+aws s3api head-object --bucket $CDN_BUCKET --key "$PUBLISHED_PACKAGE"/package.json
+aws s3api head-object --bucket $CDN_BUCKET --key $PACKAGE_NAME@latest/package.json
 
-aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
+aws cloudfront create-invalidation --distribution-id $CDN_CLOUDFRONT_DIST_ID --paths "/*"
