@@ -25,19 +25,19 @@ jobs:
         include:
           - name: "@cdssnc/gcds-components"
             package: "./packages/web"
-            dist: "/packages/web"
+            dist: "./packages/web"
 
           - name: "@cdssnc/gcds-components-react"
             package: "./packages/react"
-            dist: "/packages/react"
+            dist: "./packages/react"
 
           - name: "@cdssnc/gcds-components-angular"
             package: "./packages/angular"
-            dist: "/packages/angular/dist"
+            dist: "./packages/angular/dist"
 
           - name: "@cdssnc/gcds-components-vue"
             package: "./packages/vue"
-            dist: "/packages/vue"
+            dist: "./packages/vue"
 
     steps:
       - name: Checkout code
@@ -74,7 +74,7 @@ jobs:
         run: |
           PACKAGE_VERSION=$(jq -r '.version' ../../lerna.json)
           echo "PACKAGE_VERSION=$PACKAGE_VERSION"
-          PUBLISHED_PACKAGE=$1@$PACKAGE_VERSION
+          PUBLISHED_PACKAGE=${{ matrix.name }}@$PACKAGE_VERSION
           echo "PUBLISHED_PACKAGE=$PUBLISHED_PACKAGE"
 
           aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
