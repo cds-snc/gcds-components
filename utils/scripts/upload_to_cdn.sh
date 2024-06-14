@@ -26,13 +26,38 @@ echo "Uploading published package: $PUBLISHED_PACKAGE"
 #CDN_CLOUDFRONT_DIST_ID=$3
 #PACKAGE_NAME=$4
 
-mkdir -p ./tmp \
-  && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-  && cd ./tmp/node_modules
+upload_to_cdn() {
+  mkdir -p ./tmp \
+    && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+    && cd ./tmp/node_modules
 
-aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/"$PUBLISHED_PACKAGE" --delete
-aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/$PACKAGE_NAME@latest --delete
-aws s3api head-object --bucket $CDN_BUCKET --key "$PUBLISHED_PACKAGE"/package.json
-aws s3api head-object --bucket $CDN_BUCKET --key $PACKAGE_NAME@latest/package.json
+  aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/"$PUBLISHED_PACKAGE" --delete
+  aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/$PACKAGE_NAME@latest --delete
+  aws s3api head-object --bucket $CDN_BUCKET --key "$PUBLISHED_PACKAGE"/package.json
+  aws s3api head-object --bucket $CDN_BUCKET --key $PACKAGE_NAME@latest/package.json
 
-aws cloudfront create-invalidation --distribution-id $CDN_CLOUDFRONT_DIST_ID --paths "/*"
+  aws cloudfront create-invalidation --distribution-id $CDN_CLOUDFRONT_DIST_ID --paths "/*"
+}
+
+# Retry function
+retry() {
+  local retries=$1
+  local delay=$2
+  local count=0
+
+  while [[ $count -lt $retries ]]; do
+    if upload_to_cdn; then
+      return 0
+    fi
+
+    count=$((count + 1))
+    echo "Retry $count/$retries failed. Retrying in $delay seconds..."
+    sleep $delay
+  done
+
+  echo "All $retries retries failed."
+  return 1
+}
+
+# Retry 3 times with a 5-second delay in between
+retry 3 5
