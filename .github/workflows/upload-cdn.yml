@@ -63,6 +63,9 @@ jobs:
           role-session-name: CDNPublish
           aws-region: ${{ env.CDN_REGION }}
 
+      - name: Verify AWS Configuration
+        run: aws sts get-caller-identity
+
       - name: Upload file to S3
 #        run: ./utils/scripts/retry.sh 3 "echo 'hello world'"
         run: |
