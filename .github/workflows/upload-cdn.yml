@@ -72,9 +72,9 @@ jobs:
 
       - name: Upload file to S3 ${{ matrix.name }}
         run: |
-          ls -al
-          ls -al ../../
-          PUBLISHED_PACKAGE=$(jq -r '.version' ../../lerna.json)
+          PACKAGE_VERSION=$(jq -r '.version' ../../lerna.json)
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION"
+          PUBLISHED_PACKAGE=$1@$PACKAGE_VERSION
           echo "PUBLISHED_PACKAGE=$PUBLISHED_PACKAGE"
 
           aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
