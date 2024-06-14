@@ -24,6 +24,8 @@ echo "PACKAGE_PATH: $PACKAGE_PATH"
 PUBLISHED_PACKAGE=$1@$PACKAGE_VERSION
 echo "Uploading published package: $PUBLISHED_PACKAGE"
 
+# AWS credentials not getting through here
+# fatal error: Unable to locate credentials
 # Verify AWS credentials
 aws sts get-caller-identity
 
