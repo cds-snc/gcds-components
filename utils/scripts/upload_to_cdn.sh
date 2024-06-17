@@ -27,7 +27,7 @@ echo "Uploading published package: $PUBLISHED_PACKAGE"
 # AWS credentials not getting through here
 # fatal error: Unable to locate credentials
 # Verify AWS credentials
-#aws sts get-caller-identity
+aws sts get-caller-identity
 
 # Your AWS CLI command here
 #aws s3 ls
