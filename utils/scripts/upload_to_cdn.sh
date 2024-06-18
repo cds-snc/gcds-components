@@ -3,7 +3,7 @@
 
 
 ## Path to lerna.json
-#LERNA_JSON="lerna.json"
+LERNA_JSON="lerna.json"
 #
 ## Check if lerna.json exists
 #if [ ! -f "$LERNA_JSON" ]; then
@@ -15,7 +15,7 @@ echo "Current working directory: $(pwd)"
 
 ## Read and process lerna.json using jq
 PACKAGE_NAME=$1
-PACKAGE_VERSION=$(jq -r '.version' ../../lerna.json)
+PACKAGE_VERSION=$(jq -r '.version' $LERNA_JSON)
 #
 #echo "Lerna version: $PACKAGE_VERSION"
 
