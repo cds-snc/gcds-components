@@ -43,9 +43,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-#
-#      - name: Update ubuntu to get latest updates
-#        run: sudo apt-get update
 
       - name: Install jq and aws cli
         run: |
@@ -53,16 +50,10 @@ jobs:
           sudo apt-get install -y jq
           sudo apt-get install awscli -y
 
-#      - name: Install AWS CLI
-#        run: sudo apt-get install awscli -y
-
       - name: Make scripts executable
         run: |
           chmod +x ./utils/scripts/retry.sh
           chmod +x ./utils/scripts/upload_to_cdn.sh
-
-#      - name: Make upload script executable
-#        run: chmod +x ./utils/scripts/upload_to_cdn.sh
 
       - name: Configure AWS credentials using OIDC
         # TODO: Replace with correct role on production
