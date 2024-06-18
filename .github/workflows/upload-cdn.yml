@@ -12,6 +12,7 @@ permissions:
   contents: read
 
 env:
+  # TODO: Replace with correct bucket name in production
   CDN_BUCKET: gc-design-system-daine-scratch-cdn
   CDN_REGION: ca-central-1
 
@@ -66,28 +67,12 @@ jobs:
       - name: Upload file to S3
         run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.package }}
         env:
-#          PACKAGE_VERSION: $(jq -r '.version' ${{ matrix.package }}/lerna.json)
           CDN_BUCKET: ${{ env.CDN_BUCKET }}
           CDN_CLOUDFRONT_DIST_ID: ${{secrets.CDN_CLOUDFRONT_DIST_ID}}
           PACKAGE_PATH: ${{ matrix.dist }}
 
-#      - name: Upload file to S3 ${{ matrix.name }}
-#        run: |
-#          PACKAGE_VERSION=$(jq -r '.version' ../../lerna.json)
-#          echo "PACKAGE_VERSION=$PACKAGE_VERSION"
-#          PUBLISHED_PACKAGE=${{ matrix.name }}@$PACKAGE_VERSION
-#          echo "PUBLISHED_PACKAGE=$PUBLISHED_PACKAGE"
-#
-#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
-#          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
-#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
-#          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
-#
-#          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
-#        working-directory: ${{ matrix.package }}
-#
-#        env:
-#          PACKAGE_VERSION: $(jq -r '.version' ${{ matrix.package }}/lerna.json)
-#          CDN_BUCKET: ${{ env.CDN_BUCKET }}
-#          CDN_CLOUDFRONT_DIST_ID: ${{secrets.CDN_CLOUDFRONT_DIST_ID}}
-#          PACKAGE_PATH: ${{ matrix.dist }}
+      - name: Slack notify on failure
+        if: failure()
+        run: |
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: CDN upload ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/upload-cdn.yml|Upload packages to CDN>"}}]}'
+          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
