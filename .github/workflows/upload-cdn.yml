@@ -44,6 +44,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Update ubuntu to get latest updates
+        run: sudo apt-get update
+
       - name: Install jq to get lerna version from lerna.json
         run: sudo apt-get install -y jq
 
