@@ -70,7 +70,7 @@ jobs:
 #        run: ./utils/scripts/retry.sh 3 "echo 'hello world'"
         run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.name }}
         env:
-          PACKAGE_VERSION: $(jq -r '.version' ${{ matrix.package }}/lerna.json)
+#          PACKAGE_VERSION: $(jq -r '.version' ${{ matrix.package }}/lerna.json)
           CDN_BUCKET: ${{ env.CDN_BUCKET }}
           CDN_CLOUDFRONT_DIST_ID: ${{secrets.CDN_CLOUDFRONT_DIST_ID}}
           PACKAGE_PATH: ${{ matrix.dist }}
