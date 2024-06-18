@@ -48,6 +48,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
+          # TODO: Remove for production
           dry-run: true
 
       - name: Report deployment to Sentinel
@@ -107,6 +108,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
+          # TODO: Remove for production
           dry-run: true
 
       - name: Report deployment to Sentinel
