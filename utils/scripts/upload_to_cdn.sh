@@ -11,9 +11,10 @@
 #  exit 1
 #fi
 #
-pwd
+echo "Current working directory: $(pwd)
 
 ## Read and process lerna.json using jq
+PACKAGE_NAME=$1
 PACKAGE_VERSION=$(jq -r '.version' ../../lerna.json)
 #
 #echo "Lerna version: $PACKAGE_VERSION"
@@ -24,7 +25,7 @@ echo "CDN_BUCKET: $CDN_BUCKET"
 echo "PACKAGE_PATH: $PACKAGE_PATH"
 echo "PACKAGE_NAME: $PACKAGE_NAME"
 
-PUBLISHED_PACKAGE=$1@$PACKAGE_VERSION
+PUBLISHED_PACKAGE=$PACKAGE_NAME@$PACKAGE_VERSION
 echo "Uploading published package: $PUBLISHED_PACKAGE"
 
 # AWS credentials not getting through here

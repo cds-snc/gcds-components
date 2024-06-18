@@ -23,20 +23,20 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: "@cdssnc/gcds-components"
-            package: "web"
+          - name: "web"
+            package: "@cdssnc/gcds-components"
             dist: "./packages/web"
 
-          - name: "@cdssnc/gcds-components-react"
-            package: "react"
+          - name: "react"
+            package: "@cdssnc/gcds-components-react"
             dist: "./packages/react"
 
-          - name: "@cdssnc/gcds-components-angular"
-            package: "angular"
+          - name: "angular"
+            package: "@cdssnc/gcds-components-angular"
             dist: "./packages/angular/dist"
 
-          - name: "@cdssnc/gcds-components-vue"
-            package: "vue"
+          - name: "vue"
+            package: "@cdssnc/gcds-components-vue"
             dist: "./packages/vue"
 
     steps:
@@ -56,25 +56,20 @@ jobs:
         run: chmod +x ./utils/scripts/upload_to_cdn.sh
 
       - name: Configure AWS credentials using OIDC
-        # Replace with..correct role on production
+        # TODO: Replace with correct role on production
         uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
         with:
           role-to-assume: arn:aws:iam::951846448183:role/daine-gcds-components-apply
           role-session-name: CDNPublish
           aws-region: ${{ env.CDN_REGION }}
 
-      - name: Verify AWS Configuration
-        run: aws sts get-caller-identity
-
       - name: Upload file to S3
-#        run: ./utils/scripts/retry.sh 3 "echo 'hello world'"
-        run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.package }}
+        run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.name }}
         env:
 #          PACKAGE_VERSION: $(jq -r '.version' ${{ matrix.package }}/lerna.json)
           CDN_BUCKET: ${{ env.CDN_BUCKET }}
           CDN_CLOUDFRONT_DIST_ID: ${{secrets.CDN_CLOUDFRONT_DIST_ID}}
           PACKAGE_PATH: ${{ matrix.dist }}
-          PACKAGE_NAME: ${{ matrix.name }}
 
 #      - name: Upload file to S3 ${{ matrix.name }}
 #        run: |
