@@ -64,7 +64,7 @@ jobs:
           aws-region: ${{ env.CDN_REGION }}
 
       - name: Upload file to S3
-        run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.name }}
+        run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.package }}
         env:
 #          PACKAGE_VERSION: $(jq -r '.version' ${{ matrix.package }}/lerna.json)
           CDN_BUCKET: ${{ env.CDN_BUCKET }}

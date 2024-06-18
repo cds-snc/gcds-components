@@ -1,45 +1,30 @@
 #!/bin/bash
 
-
+PACKAGE_NAME=$1
 
 ## Path to lerna.json
 LERNA_JSON="lerna.json"
-#
-## Check if lerna.json exists
-#if [ ! -f "$LERNA_JSON" ]; then
-#  echo "lerna.json not found!"
-#  exit 1
-#fi
-#
+
+# Check if lerna.json exists
+if [ ! -f "$LERNA_JSON" ]; then
+  echo "lerna.json not found!"
+  exit 1
+fi
+
 echo "Current working directory: $(pwd)"
 
-## Read and process lerna.json using jq
-PACKAGE_NAME=$1
+## Read and process lerna.json using jq to get the package version
 PACKAGE_VERSION=$(jq -r '.version' $LERNA_JSON)
-#
-#echo "Lerna version: $PACKAGE_VERSION"
 
-# Get the published package name
 echo "PACKAGE_VERSION: $PACKAGE_VERSION"
 echo "CDN_BUCKET: $CDN_BUCKET"
 echo "PACKAGE_PATH: $PACKAGE_PATH"
 echo "PACKAGE_NAME: $PACKAGE_NAME"
 
+# Get the published package name and version
 PUBLISHED_PACKAGE=$PACKAGE_NAME@$PACKAGE_VERSION
-echo "Uploading published package: $PUBLISHED_PACKAGE"
 
-# AWS credentials not getting through here
-# fatal error: Unable to locate credentials
-# Verify AWS credentials
-aws sts get-caller-identity
-
-# Your AWS CLI command here
-#aws s3 ls
-
-#PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-#CDN_BUCKET=$2
-#CDN_CLOUDFRONT_DIST_ID=$3
-#PACKAGE_NAME=$4
+# Install the package from npm
 install_package(){
   echo "Installing package: $PUBLISHED_PACKAGE"
   mkdir -p ./tmp \
@@ -47,12 +32,9 @@ install_package(){
     && cd ./tmp/node_modules
 }
 
+# Upload the package files to the CDN
 upload_to_cdn() {
-#  mkdir -p ./tmp \
-#    && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-#    && cd ./tmp/node_modules
-
-  echo "Uploading package to CDN: $PUBLISHED_PACKAGE"
+  echo "Uploading published package to CDN: $PUBLISHED_PACKAGE"
   aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/"$PUBLISHED_PACKAGE" --delete
   aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/$PACKAGE_NAME@latest --delete
   aws s3api head-object --bucket $CDN_BUCKET --key "$PUBLISHED_PACKAGE"/package.json
@@ -68,6 +50,7 @@ retry() {
   local count=0
 
   while [[ $count -lt $retries ]]; do
+    # Upload the package to the CDN if the package is available and was installed
     if install_package; then
       upload_to_cdn
       return 0
