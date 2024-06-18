@@ -50,10 +50,8 @@ jobs:
           sudo apt-get install -y jq
           sudo apt-get install awscli -y
 
-      - name: Make scripts executable
-        run: |
-          chmod +x ./utils/scripts/retry.sh
-          chmod +x ./utils/scripts/upload_to_cdn.sh
+      - name: Make Upload to CDN script executable
+        run: chmod +x ./utils/scripts/upload_to_cdn.sh
 
       - name: Configure AWS credentials using OIDC
         # TODO: Replace with correct role on production
