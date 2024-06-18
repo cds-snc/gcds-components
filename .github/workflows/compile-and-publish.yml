@@ -11,10 +11,6 @@ permissions:
   id-token: write
   contents: read
 
-env:
-  CDN_BUCKET: gc-design-system-production-cdn
-  CDN_REGION: ca-central-1
-
 jobs:
   publish-web:
     name: Publish @cdssnc/gcds-components
@@ -48,8 +44,6 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
-          # TODO: Remove for production
-          dry-run: true
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
@@ -108,8 +102,6 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
-          # TODO: Remove for production
-          dry-run: true
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''

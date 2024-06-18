@@ -12,8 +12,7 @@ permissions:
   contents: read
 
 env:
-  # TODO: Replace with correct bucket name in production
-  CDN_BUCKET: gc-design-system-daine-scratch-cdn
+  CDN_BUCKET: gc-design-system-production-cdn
   CDN_REGION: ca-central-1
 
 jobs:
@@ -54,10 +53,9 @@ jobs:
         run: chmod +x ./utils/scripts/upload_to_cdn.sh
 
       - name: Configure AWS credentials using OIDC
-        # TODO: Replace with correct role on production
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
         with:
-          role-to-assume: arn:aws:iam::951846448183:role/daine-gcds-components-apply
+          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
           role-session-name: CDNPublish
           aws-region: ${{ env.CDN_REGION }}
 
