@@ -24,19 +24,19 @@ jobs:
       matrix:
         include:
           - name: "@cdssnc/gcds-components"
-            package: "./packages/web"
+            package: "web"
             dist: "./packages/web"
 
           - name: "@cdssnc/gcds-components-react"
-            package: "./packages/react"
+            package: "react"
             dist: "./packages/react"
 
           - name: "@cdssnc/gcds-components-angular"
-            package: "./packages/angular"
+            package: "angular"
             dist: "./packages/angular/dist"
 
           - name: "@cdssnc/gcds-components-vue"
-            package: "./packages/vue"
+            package: "vue"
             dist: "./packages/vue"
 
     steps:
@@ -68,12 +68,13 @@ jobs:
 
       - name: Upload file to S3
 #        run: ./utils/scripts/retry.sh 3 "echo 'hello world'"
-        run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.name }}
+        run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.package }}
         env:
 #          PACKAGE_VERSION: $(jq -r '.version' ${{ matrix.package }}/lerna.json)
           CDN_BUCKET: ${{ env.CDN_BUCKET }}
           CDN_CLOUDFRONT_DIST_ID: ${{secrets.CDN_CLOUDFRONT_DIST_ID}}
           PACKAGE_PATH: ${{ matrix.dist }}
+          PACKAGE_NAME: ${{ matrix.name }}
 
 #      - name: Upload file to S3 ${{ matrix.name }}
 #        run: |
