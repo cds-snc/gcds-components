@@ -64,7 +64,7 @@ jobs:
       - name: Upload file to S3
         run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.package }}
         env:
-          CDN_BUCKET: ${{ env.CDN_BUCKET }}
+#          CDN_BUCKET: ${{ env.CDN_BUCKET }}
           CDN_CLOUDFRONT_DIST_ID: ${{secrets.CDN_CLOUDFRONT_DIST_ID}}
           PACKAGE_PATH: ${{ matrix.dist }}
 
