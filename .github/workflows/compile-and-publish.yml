@@ -75,17 +75,14 @@ jobs:
       matrix:
         include:
           - name: "@cdssnc/gcds-components-react"
-            short_name: react
             package: "./packages/react"
             dist: "./packages/react"
 
           - name: "@cdssnc/gcds-components-angular"
-            short_name: angular
             package: "./packages/angular"
             dist: "./packages/angular/dist"
 
           - name: "@cdssnc/gcds-components-vue"
-            short_name: vue
             package: "./packages/vue"
             dist: "./packages/vue"
 
