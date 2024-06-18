@@ -11,7 +11,7 @@
 #  exit 1
 #fi
 #
-echo "Current working directory: $(pwd)
+echo "Current working directory: $(pwd)"
 
 ## Read and process lerna.json using jq
 PACKAGE_NAME=$1
