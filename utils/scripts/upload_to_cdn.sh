@@ -12,7 +12,7 @@
 #fi
 #
 ## Read and process lerna.json using jq
-PACKAGE_VERSION=$(jq -r '.version' $PACKAGE_PATH/lerna.json)
+PACKAGE_VERSION=$(jq -r '.version' ./lerna.json)
 #
 #echo "Lerna version: $PACKAGE_VERSION"
 
