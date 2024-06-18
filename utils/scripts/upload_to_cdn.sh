@@ -36,18 +36,25 @@ aws sts get-caller-identity
 #CDN_BUCKET=$2
 #CDN_CLOUDFRONT_DIST_ID=$3
 #PACKAGE_NAME=$4
-
-upload_to_cdn() {
+install_package(){
+  echo "Installing package: $PUBLISHED_PACKAGE"
   mkdir -p ./tmp \
     && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
     && cd ./tmp/node_modules
+}
 
-#  aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/"$PUBLISHED_PACKAGE" --delete
-#  aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/$PACKAGE_NAME@latest --delete
-#  aws s3api head-object --bucket $CDN_BUCKET --key "$PUBLISHED_PACKAGE"/package.json
-#  aws s3api head-object --bucket $CDN_BUCKET --key $PACKAGE_NAME@latest/package.json
-#
-#  aws cloudfront create-invalidation --distribution-id $CDN_CLOUDFRONT_DIST_ID --paths "/*"
+upload_to_cdn() {
+#  mkdir -p ./tmp \
+#    && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
+#    && cd ./tmp/node_modules
+
+  echo "Uploading package to CDN: $PUBLISHED_PACKAGE"
+  aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/"$PUBLISHED_PACKAGE" --delete
+  aws s3 sync ./$PACKAGE_NAME s3://$CDN_BUCKET/$PACKAGE_NAME@latest --delete
+  aws s3api head-object --bucket $CDN_BUCKET --key "$PUBLISHED_PACKAGE"/package.json
+  aws s3api head-object --bucket $CDN_BUCKET --key $PACKAGE_NAME@latest/package.json
+
+  aws cloudfront create-invalidation --distribution-id $CDN_CLOUDFRONT_DIST_ID --paths "/*"
 }
 
 # Retry function
@@ -57,7 +64,8 @@ retry() {
   local count=0
 
   while [[ $count -lt $retries ]]; do
-    if upload_to_cdn; then
+    if install_package; then
+      upload_to_cdn
       return 0
     fi
 
@@ -71,4 +79,4 @@ retry() {
 }
 
 # Retry 3 times with a 5-second delay in between
-#retry 3 5
+retry 3 5
