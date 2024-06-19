@@ -16,6 +16,16 @@ env:
   CDN_REGION: ca-central-1
 
 jobs:
+  unable-to-deploy:
+      if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Exit and notify Slack if publishing failed and we can't upload to the CDN
+          run: |
+            json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publishing workflow failed, unable to upload to CDN <https://github.com/cds-snc/gcds-components/actions/workflows/upload-cdn.yml|Upload packages to CDN>"}}]}'
+            curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
+            exit 1
+
   upload-to-cdn:
     runs-on: ubuntu-latest
 
