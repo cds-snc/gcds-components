@@ -11,10 +11,6 @@ permissions:
   id-token: write
   contents: read
 
-env:
-  CDN_BUCKET: gc-design-system-production-cdn
-  CDN_REGION: ca-central-1
-
 jobs:
   publish-web:
     name: Publish @cdssnc/gcds-components
@@ -54,6 +50,9 @@ jobs:
       - name: Sleep for 60 seconds to give more time for NPM to complete publishing before proceeding to publish the rest
         run: sleep 60
 
+      - name: Force exit to test
+        run: exit 1
+
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
         uses: cds-snc/sentinel-forward-data-action@main
@@ -62,7 +61,6 @@ jobs:
           log_type: CDS_Product_Deployment_Data
           log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
           log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
-
 
       - name: Slack notify on failure
         if: failure()
