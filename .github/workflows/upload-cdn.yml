@@ -1,0 +1,78 @@
+name: Upload packages to CDN
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Publish packages"]
+    types:
+      - completed
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  CDN_BUCKET: gc-design-system-production-cdn
+  CDN_REGION: ca-central-1
+
+jobs:
+  unable-to-deploy:
+    # If this was triggered by a workflow run ("Publish packages" as noted above) and the workflow run failed
+    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exit and notify Slack if publishing failed and we can't upload to the CDN
+        run: |
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publishing workflow failed, unable to upload to CDN <https://github.com/cds-snc/gcds-components/actions/workflows/upload-cdn.yml|Upload packages to CDN>"}}]}'
+          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
+          exit 1
+
+  upload-to-cdn:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "web"
+            package: "@cdssnc/gcds-components"
+            dist: "./packages/web"
+
+          - name: "react"
+            package: "@cdssnc/gcds-components-react"
+            dist: "./packages/react"
+
+          - name: "angular"
+            package: "@cdssnc/gcds-components-angular"
+            dist: "./packages/angular/dist"
+
+          - name: "vue"
+            package: "@cdssnc/gcds-components-vue"
+            dist: "./packages/vue"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      - name: Make Upload to CDN script executable
+        run: chmod +x ./utils/scripts/upload_to_cdn.sh
+
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
+        with:
+          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
+          role-session-name: CDNPublish
+          aws-region: ${{ env.CDN_REGION }}
+
+      - name: Upload file to S3
+        run: ./utils/scripts/upload_to_cdn.sh ${{ matrix.package }}
+        env:
+          CDN_CLOUDFRONT_DIST_ID: ${{secrets.CDN_CLOUDFRONT_DIST_ID}}
+          PACKAGE_PATH: ${{ matrix.dist }}
+
+      - name: Slack notify on failure
+        if: failure()
+        run: |
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: CDN upload ${{ matrix.package }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/upload-cdn.yml|Upload packages to CDN>"}}]}'
+          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
