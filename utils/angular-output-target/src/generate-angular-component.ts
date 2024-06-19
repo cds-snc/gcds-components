@@ -51,6 +51,10 @@ export const createAngularComponentDefinition = (
     proxyCmpOptions.push(`\n  methods: [${formattedMethods}]`);
   }
 
+  /**
+   * Custom modification
+   * - Added conditional to add outputs
+   */
   if (hasOutputs) {
     proxyCmpOptions.push(`\n  outputs: [${formattedOutputs}]`);
   }
@@ -67,6 +71,10 @@ export const createAngularComponentDefinition = (
    * Angular does not complain about the inputs property. The output target
    * uses the inputs property to define the inputs of the component instead of
    * having to use the @Input decorator (and manually define the type and default value).
+   * 
+   * Custom modifications
+   * - Add hasOutputs logic to render outputs
+   * - Modify proxyOutouts to remove second parameter "this.el"
    */
   const output = `@ProxyCmp({${proxyCmpOptions.join(',')}\n})
 @Component({
@@ -83,7 +91,7 @@ export class ${tagNameAsPascal} {
     this.el = r.nativeElement;${
       hasOutputs
         ? `
-    proxyOutputs(this, this.el, [${formattedOutputs}]);`
+    proxyOutputs(this, [${formattedOutputs}]);`
         : ''
     }
   }

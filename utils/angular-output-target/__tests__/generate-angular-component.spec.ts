@@ -68,7 +68,7 @@ export class MyComponent {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['my-output', 'my-other-output']);
+    proxyOutputs(this, ['my-output', 'my-other-output']);
   }
 }`);
     });
@@ -166,7 +166,7 @@ export class MyComponent {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['my-output', 'my-other-output']);
+    proxyOutputs(this, ['my-output', 'my-other-output']);
   }
 }`);
     });
