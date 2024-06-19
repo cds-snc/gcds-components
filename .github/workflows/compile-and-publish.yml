@@ -51,6 +51,9 @@ jobs:
           # TODO: Remove for production
           dry-run: true
 
+      - name: Sleep for 60 seconds to give more time for NPM to complete publishing before proceeding to publish the rest
+        run: sleep 60
+
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
         uses: cds-snc/sentinel-forward-data-action@main
