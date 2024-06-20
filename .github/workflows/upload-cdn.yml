@@ -28,7 +28,8 @@ jobs:
           exit 1
 
   upload-to-cdn:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    # Runs on manual triggers (workflow_dispatch), or if the workflow run "Publish packages" was successful
+    if: ${{ github.event_name != 'workflow_run' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') }}
     runs-on: ubuntu-latest
 
     strategy:
