@@ -7,7 +7,13 @@
 }
 
 @layer default {
-  :host .gcds-stepper {
-    color: var(--gcds-stepper-text);
+  :host .gcds-stepper .gcds-stepper__steps {
+    font: var(--gcds-stepper-font-desktop);
+    display: block;
+    margin: var(--gcds-stepper-margin);
+
+    @media only screen and (width < 48em) {
+      font: var(--gcds-stepper-font-mobile);
+    }
   }
 }
