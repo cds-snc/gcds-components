@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, h } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -17,12 +17,28 @@ export class GcdsStepper {
   /**
    * Defines the current step.
    */
-  @Prop() currentStep!: number;
+  @Prop({ mutable: true }) currentStep!: number;
+  @Watch('currentStep')
+  validateCurrentStep() {
+    if (this.currentStep == undefined) {
+      this.currentStep = 1;
+    } else if (this.currentStep > this.totalSteps) {
+      this.currentStep = this.totalSteps;
+    }
+  }
 
   /**
    * Defines the total amount of steps.
    */
-  @Prop() totalSteps!: number;
+  @Prop({ mutable: true }) totalSteps!: number;
+  @Watch('totalSteps')
+  validateTotalSteps() {
+    if (this.totalSteps == undefined) {
+      this.totalSteps = 3;
+    } else if (this.totalSteps < this.currentStep) {
+      this.totalSteps = this.currentStep;
+    }
+  }
 
   /**
    * Defines the heading tag to render
@@ -51,6 +67,17 @@ export class GcdsStepper {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
+
+    // Validate step attributes
+    this.validateTotalSteps();
+    this.validateCurrentStep();
+  }
+
+  async componentDidLoad() {
+    // Throw error in console if no children passed for heading
+    if (this.el.innerHTML.trim() == "") {
+      console.error('The gcds-stepper requires child elements to be passed to render properly.');
+    }
   }
 
   render() {
@@ -66,6 +93,8 @@ export class GcdsStepper {
         >
           <span class="gcds-stepper__steps">
             {`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}
+
+            {/* Hidden colon to provide pause between caption and heading text for AT */}
             <gcds-sr-only> : </gcds-sr-only>
           </span>
           <slot></slot>
