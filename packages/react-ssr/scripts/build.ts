@@ -3,7 +3,7 @@ import { createRequire } from 'node:module';
 import { dirname, format, join, parse } from 'node:path';
 import { exit } from 'node:process';
 import { fileURLToPath } from 'node:url';
-import {replaceInFile} from 'replace-in-file'
+import { replaceInFile } from 'replace-in-file'
 import { parseComponentsEvents, parseEnums, printProgress, toIndexFile, toModuleFile, toTypesFile } from './utils';
 
 const require = createRequire(import.meta.url);
@@ -88,7 +88,7 @@ const patchStencil = async () => {
   const stencilOptions = {
     files: './dist/esm/lib/stencil/index.js',
     from: 'var win = typeof window !== "undefined" ? window : {};',
-    to: "var  win = typeof window !== 'undefined' ? window : globalThis || {};",
+    to: 'var  win = typeof window !== \'undefined\' ? window : globalThis || {};',
   };
 
   try {
