@@ -25,6 +25,11 @@ export class GcdsStepper {
   @Prop() totalSteps!: number;
 
   /**
+   * Defines the heading tag to render
+   */
+  @Prop() tag: 'h1' | 'h2' | 'h3' = 'h2';
+
+  /**
    * Language of rendered component
    */
   @State() lang: string;
@@ -49,19 +54,19 @@ export class GcdsStepper {
   }
 
   render() {
-    const { currentStep, lang, totalSteps } = this;
+    const { currentStep, lang, totalSteps, tag } = this;
 
     return (
       <Host>
         <gcds-heading
-          tag="h2"
+          tag={tag}
           class="gcds-stepper"
           margin-top="0"
           margin-bottom="300"
         >
           <span class="gcds-stepper__steps">
             {`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}
-            {this.el.children && <gcds-sr-only> : </gcds-sr-only>}
+            <gcds-sr-only> : </gcds-sr-only>
           </span>
           <slot></slot>
         </gcds-heading>
