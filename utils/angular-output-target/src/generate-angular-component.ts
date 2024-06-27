@@ -52,7 +52,7 @@ export const createAngularComponentDefinition = (
   }
 
   /**
-   * Custom modification
+   * GCDS modification
    * - Added conditional to add outputs
    */
   if (hasOutputs) {
@@ -72,9 +72,11 @@ export const createAngularComponentDefinition = (
    * uses the inputs property to define the inputs of the component instead of
    * having to use the @Input decorator (and manually define the type and default value).
    * 
-   * Custom modifications
-   * - Add hasOutputs logic to render outputs
-   * - Modify proxyOutouts to remove second parameter "this.el"
+   * GCDS modifications
+   * - Added `hasOutputs` logic to render outputs
+   * - Modified proxyOutputs to remove second parameter `this.el`
+   *      proxyOutputs(this, this.el, [${formattedOutputs}]);`
+   *   From: https://github.com/ionic-team/stencil-ds-output-targets/blob/9524c1ce970770e01afb493c292f71a2fe61b14a/packages/angular-output-target/src/generate-angular-component.ts#L82
    */
   const output = `@ProxyCmp({${proxyCmpOptions.join(',')}\n})
 @Component({
