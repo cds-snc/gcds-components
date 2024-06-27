@@ -43,7 +43,7 @@
     "gcds.css"
   ],
   "scripts": {
-    "prebuild": "del-cli --force ./dist && copyfiles -f ../web/dist/components/*.js ./dist/esm/components && make-dir ./dist/esm && make-dir ./dist/types",
+    "prebuild": "del-cli --force ./dist && copyfiles -f ../web/dist/components/*.js ./dist/esm/components && copyfiles -f ../../node_modules/@stencil/core/internal/client/index.js ./dist/esm/lib/stencil && copyfiles -f ../../node_modules/@stencil/core/internal/client/shadow-css.js ./dist/esm/lib/stencil && make-dir ./dist/esm && make-dir ./dist/types",
     "build": "npm run build:esm && npm run build:types && npm run build:cjs",
     "build:esm": "tsx ./scripts/build.ts",
     "build:types": "tsc -p .",
@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@cdssnc/gcds-components": "^0.22.0",
-    "@stencil/core": "^4.11.0",
+    "@stencil/core": "^4.18.3",
     "element-internals-polyfill": "^1.3.10",
     "linkedom": "^0.16.1",
     "react": "^18.2.0",
@@ -73,6 +73,7 @@
     "get-tsconfig": "^4.7.5",
     "make-dir-cli": "3.1.0",
     "prettier": "3.1.0",
+    "replace-in-file": "^8.0.0",
     "tsx": "4.11.0",
     "typescript": "~5.1.0"
   },
