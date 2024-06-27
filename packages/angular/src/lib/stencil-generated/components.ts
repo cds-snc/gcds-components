@@ -23,7 +23,7 @@ export class GcdsAlert {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsDismiss']);
+    proxyOutputs(this, ['gcdsDismiss']);
   }
 }
 
@@ -96,7 +96,7 @@ export class GcdsButton {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
@@ -156,7 +156,7 @@ export class GcdsCheckbox {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -250,7 +250,7 @@ export class GcdsDetails {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
@@ -332,7 +332,7 @@ export class GcdsFieldset {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -374,7 +374,7 @@ export class GcdsFileUploader {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -582,7 +582,7 @@ export class GcdsInput {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -675,7 +675,7 @@ export class GcdsLink {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
@@ -713,7 +713,7 @@ export class GcdsNavGroup {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
@@ -751,7 +751,7 @@ export class GcdsNavLink {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, ['gcdsClick', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
@@ -788,7 +788,7 @@ export class GcdsPagination {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
@@ -847,7 +847,7 @@ export class GcdsRadioGroup {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsFocus', 'gcdsBlur']);
+    proxyOutputs(this, ['gcdsChange', 'gcdsFocus', 'gcdsBlur']);
   }
 }
 
@@ -884,7 +884,7 @@ export class GcdsSearch {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']);
+    proxyOutputs(this, ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']);
   }
 }
 
@@ -930,7 +930,7 @@ export class GcdsSelect {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -1091,7 +1091,7 @@ export class GcdsTextarea {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']);
   }
 }
 
