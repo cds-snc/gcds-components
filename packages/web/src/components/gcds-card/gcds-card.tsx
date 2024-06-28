@@ -4,8 +4,9 @@ import {
   Host,
   Prop,
   h,
-  Fragment,
   State,
+  Event,
+  EventEmitter
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
@@ -17,11 +18,6 @@ import i18n from './i18n/i18n';
 })
 export class GcdsCard {
   @Element() el: HTMLElement;
-
-  /**
-   * The type attribute specifies how the card renders as a link
-   */
-  @Prop({ reflect: true }) type: 'link' | 'action' = 'link';
 
   /**
    * The card title attribute specifies the title that appears on the card
@@ -44,9 +40,9 @@ export class GcdsCard {
   @Prop({ reflect: true }) description: string;
 
   /**
-   * The tag attribute specifies the tag text that appears above the card title
+   * The badge attribute specifies the badge text that appears in the top left corner of the card
    */
-  @Prop({ reflect: true }) tag: string;
+  @Prop({ reflect: true }) badge: string;
 
   /**
    * The img src attribute specifies the path to the image
@@ -62,6 +58,25 @@ export class GcdsCard {
    * Language of rendered component
    */
   @State() lang: string;
+
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when the card has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the card loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the card has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
 
   /*
    * Observe lang attribute change
@@ -82,21 +97,27 @@ export class GcdsCard {
     this.updateLang();
   }
 
-  private get hasCardFooter() {
-    return !!this.el.querySelector('[slot="footer"]');
+  private get renderDescription() {
+    if (this.el.innerHTML.trim() != "") {
+      return (<slot></slot>);
+    } else {
+      return (
+        <gcds-text>
+          {this.description}
+        </gcds-text>
+      );
+    }
   }
 
   render() {
     const {
-      type,
       cardTitle,
       titleElement,
       href,
-      description,
-      tag,
+      badge,
       imgSrc,
       imgAlt,
-      hasCardFooter,
+      renderDescription,
       lang,
     } = this;
 
@@ -104,13 +125,13 @@ export class GcdsCard {
 
     const taggedAttr = {};
 
-    if (tag) {
-      taggedAttr['aria-describedby'] = 'gcds-card__tag';
+    if (badge) {
+      taggedAttr['aria-describedby'] = 'gcds-badge';
     }
 
     return (
       <Host>
-        <div class={`gcds-card gcds-card--${type}`}>
+        <div class="gcds-card">
           {imgSrc && (
             <img
               src={imgSrc}
@@ -118,15 +139,18 @@ export class GcdsCard {
               class="gcds-card__image"
             />
           )}
-          {tag && (
+          {badge && (
             <gcds-text
-              id="gcds-card__tag"
-              class="gcds-card__tag"
-              text-role="secondary"
+              id="gcds-badge"
+              class="gcds-badge"
+              text-role="light"
+              margin-bottom="0"
               size="caption"
             >
-              <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
-              {tag}
+              <strong>
+                <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
+                {badge}
+              </strong>
             </gcds-text>
           )}
           {Element != 'a' ? (
@@ -138,15 +162,9 @@ export class GcdsCard {
               {cardTitle}
             </gcds-link>
           )}
-          {description && (
-            <gcds-text class="gcds-card__description">{description}</gcds-text>
-          )}
-          {hasCardFooter && (
-            <>
-              <div class="gcds-card__spacer"></div>
-              <slot name="footer"></slot>
-            </>
-          )}
+          <div class="gcds-card__description">
+            {renderDescription}
+          </div>
         </div>
       </Host>
     );

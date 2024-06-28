@@ -118,25 +118,40 @@ export declare interface GcdsButton extends Components.GcdsButton {
 
 
 @ProxyCmp({
-  inputs: ['cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'tag', 'titleElement', 'type']
+  inputs: ['badge', 'cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'titleElement'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
   selector: 'gcds-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'tag', 'titleElement', 'type'],
+  inputs: ['badge', 'cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'titleElement'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
 })
 export class GcdsCard {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
-export declare interface GcdsCard extends Components.GcdsCard {}
+export declare interface GcdsCard extends Components.GcdsCard {
+  /**
+   * Emitted when the card has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the card loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the card has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
+}
 
 
 @ProxyCmp({

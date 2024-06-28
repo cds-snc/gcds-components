@@ -94,6 +94,10 @@ export namespace Components {
     }
     interface GcdsCard {
         /**
+          * The badge attribute specifies the badge text that appears in the top left corner of the card
+         */
+        "badge": string;
+        /**
           * The card title attribute specifies the title that appears on the card
          */
         "cardTitle": string;
@@ -114,17 +118,9 @@ export namespace Components {
          */
         "imgSrc": string;
         /**
-          * The tag attribute specifies the tag text that appears above the card title
-         */
-        "tag": string;
-        /**
           * The title element attribute specifies HTML element the title renders as
          */
         "titleElement": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
-        /**
-          * The type attribute specifies how the card renders as a link
-         */
-        "type": 'link' | 'action';
     }
     interface GcdsCheckbox {
         /**
@@ -1151,6 +1147,10 @@ export interface GcdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsButtonElement;
 }
+export interface GcdsCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsCardElement;
+}
 export interface GcdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCheckboxElement;
@@ -1252,7 +1252,20 @@ declare global {
         prototype: HTMLGcdsButtonElement;
         new (): HTMLGcdsButtonElement;
     };
+    interface HTMLGcdsCardElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": void;
+    }
     interface HTMLGcdsCardElement extends Components.GcdsCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsCardElementEventMap>(type: K, listener: (this: HTMLGcdsCardElement, ev: GcdsCardCustomEvent<HTMLGcdsCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsCardElementEventMap>(type: K, listener: (this: HTMLGcdsCardElement, ev: GcdsCardCustomEvent<HTMLGcdsCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsCardElement: {
         prototype: HTMLGcdsCardElement;
@@ -1798,6 +1811,10 @@ declare namespace LocalJSX {
     }
     interface GcdsCard {
         /**
+          * The badge attribute specifies the badge text that appears in the top left corner of the card
+         */
+        "badge"?: string;
+        /**
           * The card title attribute specifies the title that appears on the card
          */
         "cardTitle": string;
@@ -1818,17 +1835,21 @@ declare namespace LocalJSX {
          */
         "imgSrc"?: string;
         /**
-          * The tag attribute specifies the tag text that appears above the card title
+          * Emitted when the card loses focus.
          */
-        "tag"?: string;
+        "onGcdsBlur"?: (event: GcdsCardCustomEvent<void>) => void;
+        /**
+          * Emitted when the card has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsCardCustomEvent<void>) => void;
+        /**
+          * Emitted when the card has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsCardCustomEvent<void>) => void;
         /**
           * The title element attribute specifies HTML element the title renders as
          */
         "titleElement"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
-        /**
-          * The type attribute specifies how the card renders as a link
-         */
-        "type"?: 'link' | 'action';
     }
     interface GcdsCheckbox {
         /**
