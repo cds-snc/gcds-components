@@ -80,7 +80,7 @@ export default {
     },
 
      // Events
-     gcdsClick: {
+    gcdsClick: {
       action: 'click',
       table: {
         category: 'Events | Événements',

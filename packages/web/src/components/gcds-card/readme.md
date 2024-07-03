@@ -7,7 +7,7 @@
 
 | Property                 | Attribute       | Description                                                                                            | Type                                  | Default     |
 | ------------------------ | --------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------- | ----------- |
-| `badge`                  | `badge`         | The badge attribute specifies the badge text that appears in the top corner of the card                | `string`                              | `undefined` |
+| `badge`                  | `badge`         | The badge attribute specifies the badge text that appears in the top left corner of the card           | `string`                              | `undefined` |
 | `cardTitle` _(required)_ | `card-title`    | The card title attribute specifies the title that appears on the card                                  | `string`                              | `undefined` |
 | `description`            | `description`   | The description attribute specifies the body of text that appears on the card                          | `string`                              | `undefined` |
 | `href` _(required)_      | `href`          | The href attribute specifies the URL of the page the link goes to                                      | `string`                              | `undefined` |

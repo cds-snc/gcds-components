@@ -101,11 +101,13 @@ export class GcdsCard {
     if (this.el.innerHTML.trim() != "") {
       return (<slot></slot>);
     } else {
-      return (
-        <gcds-text>
-          {this.description}
-        </gcds-text>
-      );
+      if (this.description) {
+        return (
+          <gcds-text>
+            {this.description}
+          </gcds-text>
+        );
+      }
     }
   }
 
