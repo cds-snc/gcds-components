@@ -1,6 +1,12 @@
 /* eslint-disable */
 /* tslint:disable */
-import { fromEvent } from 'rxjs';
+/**
+ * GCDS Modification
+ * Replaced 
+ *     import { fromEvent } from 'rxjs'; 
+ * From: https://github.com/ionic-team/stencil-ds-output-targets/blob/9524c1ce970770e01afb493c292f71a2fe61b14a/packages/angular-output-target/angular-component-lib/utils.ts#L3
+ */
+import { EventEmitter } from '@angular/core';
 
 export const proxyInputs = (Cmp: any, inputs: string[]) => {
   const Prototype = Cmp.prototype;
@@ -34,8 +40,16 @@ export const proxyMethods = (Cmp: any, methods: string[]) => {
   });
 };
 
-export const proxyOutputs = (instance: any, el: any, events: string[]) => {
-  events.forEach((eventName) => (instance[eventName] = fromEvent(el, eventName)));
+/**
+ * GCDS modification
+ * Replaced 
+ *   fromEvent(el, eventName)
+ * to
+ *   new EventEmitter()
+ * From: https://github.com/ionic-team/stencil-ds-output-targets/blob/9524c1ce970770e01afb493c292f71a2fe61b14a/packages/angular-output-target/angular-component-lib/utils.ts#L38
+ */
+export const proxyOutputs = (instance: any, events: string[]) => {
+  events.forEach((eventName) => (instance[eventName] = new EventEmitter()));
 };
 
 export const defineCustomElement = (tagName: string, customElement: any) => {

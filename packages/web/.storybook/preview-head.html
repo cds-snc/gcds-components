@@ -262,6 +262,12 @@
     background-color: var(--gcds-color-grayscale-700) !important;
   }
 
+  .docblock-argstable input,
+  .docblock-argstable textarea,
+  .docblock-argstable .css-obbby0 {
+    min-width: 13rem !important;
+  }
+
   /* Props table focus styles - form elements */
   .css-6wu5zk:focus-within {
     overflow: visible !important;
@@ -541,6 +547,7 @@
       )}-property`;
       for (let x = 0; x < tr.children.length; x++) {
         // Format first cell
+        // Add id attribute, translate required title
         if (x == 0) {
           tr.children[x].setAttribute('id', propertyId);
           if (
@@ -555,23 +562,42 @@
               .setAttribute('title', 'Obligatoire');
           }
         }
-        // Format third cell
-        if (tr.children[x].innerText === '-') {
-          let span = document.createElement('span');
-          span.setAttribute('class', 'sr-only');
 
-          if (lang === 'en') {
-            tr.children[x].setAttribute('title', 'No default value');
-            span.innerText = 'No default value';
-            tr.children[x].append(span);
-          } else {
-            tr.children[x].setAttribute('title', 'Aucune valeur par défaut');
-            tr.children[x].setAttribute('lang', 'fr');
-            span.innerText = 'Aucune valeur par défaut';
-            tr.children[x].append(span);
+        // Format second cell
+        // Format slot description, add lang attribute
+        if (x == 1) {
+          const tableCell = tr.children[x];
+          if (tableCell.children.length > 1) {
+            const slotDesc = tableCell.children[0].querySelector('span');
+            const langStrings = slotDesc.innerText.split(' | ');
+            slotDesc.setAttribute('lang', lang);
+            slotDesc.innerText = lang === "en" ? langStrings[0] : langStrings[1];
           }
         }
+
+
+        // Format third cell
+        // Add hidden text to default value
+        if (x == 2) {
+          if (tr.children[x].innerText === '-') {
+            let span = document.createElement('span');
+            span.setAttribute('class', 'sr-only');
+  
+            if (lang === 'en') {
+              tr.children[x].setAttribute('title', 'No default value');
+              span.innerText = 'No default value';
+              tr.children[x].append(span);
+            } else {
+              tr.children[x].setAttribute('title', 'Aucune valeur par défaut');
+              tr.children[x].setAttribute('lang', 'fr');
+              span.innerText = 'Aucune valeur par défaut';
+              tr.children[x].append(span);
+            }
+          }
+        }
+
         // Format last cell
+        // Fix form inputs
         if (x === 3) {
           if (tr.children[x].querySelector('select')) {
             tr.children[x]
@@ -683,17 +709,29 @@
       createCopyBtn(toggleCode, stringReact, '', 'React', 'React');
     } else {
       // If not expanded, remove existing copy buttons
+<<<<<<< HEAD
       const copyBtns = document.querySelectorAll('.copy-code-btn');
+=======
+      const copyBtns = toggleCode.closest('.css-25bv1u').querySelectorAll('.copy-code-btn');
+>>>>>>> main
       copyBtns.forEach(btn => btn.remove());
     }
   }
 
   // Add DOMContentLoaded event
   function domContentLoadedHandler() {
+<<<<<<< HEAD
     setTimeout(() => {
       const toggleCodes = document.querySelectorAll('.docblock-code-toggle');
 
       if (toggleCodes.length > 0) {
+=======
+    const domLoadInterval = setInterval(() => {
+      const toggleCodes = document.querySelectorAll('.docblock-code-toggle');
+
+      if (toggleCodes.length > 0) {
+        clearInterval(domLoadInterval);
+>>>>>>> main
         // Toggle the display of copy buttons based on the toggle code button state
         toggleCodes.forEach(toggleCode => {
           toggleCopyBtnsDisplay(toggleCode);
@@ -704,19 +742,26 @@
           });
         });
       }
+<<<<<<< HEAD
     }, 1000);
 
     // Remove DOMContentLoaded event listener to avoid execution for each story on the page
     document.removeEventListener('DOMContentLoaded', domContentLoadedHandler);
+=======
+    }, 100);
+>>>>>>> main
   }
 
   // Add event listener to execute domContentLoadedHandler function when DOM content is loaded
   document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
 
+<<<<<<< HEAD
   // Add event listener to execute domContentLoadedHandler for click events
   document.addEventListener('click', function () {
     document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
   });
 
+=======
+>>>>>>> main
   // ----- End custom copy code buttons -----
 </script>

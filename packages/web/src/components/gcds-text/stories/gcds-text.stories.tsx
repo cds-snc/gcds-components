@@ -102,6 +102,8 @@ export default {
       control: {
         type: 'text',
       },
+      description:
+        'Customize the content or include additional elements. | Personnalisez le contenu ou ajoutez des éléments supplémentaires.',
       table: {
         category: 'Slots | Fentes',
       },

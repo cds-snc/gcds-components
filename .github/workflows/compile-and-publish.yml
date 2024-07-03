@@ -11,10 +11,6 @@ permissions:
   id-token: write
   contents: read
 
-env:
-  CDN_BUCKET: gc-design-system-production-cdn
-  CDN_REGION: ca-central-1
-
 jobs:
   publish-web:
     name: Publish @cdssnc/gcds-components
@@ -29,10 +25,10 @@ jobs:
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Setup Node
-        uses: actions/setup-node@eff380dfbcf941bf8832e4acb788cebe13dfd758
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b
         with:
           node-version: 18
 
@@ -43,37 +39,14 @@ jobs:
         run: npm run build
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@c292f92f18bc92012d410c34bc2b236466de43b8
+        uses: JS-DevTools/npm-publish@52bacc14a33500e8dcf0afe1bff552d638216212
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
 
-      - name: Configure AWS credentials using OIDC
-        if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
-        with:
-          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
-          role-session-name: CDNPublish
-          aws-region: ${{ env.CDN_REGION }}
-
-      - name: Update CDN ${{ matrix.name }}
-        if: steps.publish.outputs.id != ''
-        run: |
-          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-
-          mkdir -p ./tmp \
-            && sleep 60 \
-            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-            && cd ./tmp/node_modules
-
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
-
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
-        working-directory: ${{ matrix.package }}
+      - name: Sleep for 60 seconds to give more time for NPM to complete publishing before proceeding to publish the rest
+        run: sleep 60
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
@@ -84,15 +57,14 @@ jobs:
           log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
           log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
 
-
       - name: Slack notify on failure
         if: failure()
         run: |
           json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
           curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
 
-  publish-react-angular:
-    name: Publish @cdssnc/gcds-components-react and @cdssnc/gcds-components-angular
+  publish-react-angular-vue:
+    name: Publish @cdssnc/gcds-components-react, @cdssnc/gcds-components-angular, @cdssnc/gcds-components-vue
     needs: publish-web
     runs-on: ubuntu-latest
     strategy:
@@ -113,50 +85,25 @@ jobs:
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Setup Node
-        uses: actions/setup-node@eff380dfbcf941bf8832e4acb788cebe13dfd758
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b
         with:
           node-version: 18
 
-      - name: Install monorepo (web, react, angular)
+      - name: Install monorepo (web, react, angular, vue)
         run: npm install
 
-      - name: Build gcds-components  (web, react, angular)
+      - name: Build gcds-components (web, react, angular, vue)
         run: npm run build
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@c292f92f18bc92012d410c34bc2b236466de43b8
+        uses: JS-DevTools/npm-publish@52bacc14a33500e8dcf0afe1bff552d638216212
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
-
-      - name: Configure AWS credentials using OIDC
-        if: steps.publish.outputs.id != ''
-        uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3.0.2
-        with:
-          role-to-assume: arn:aws:iam::307395567143:role/gcds-components-apply
-          role-session-name: CDNPublish
-          aws-region: ${{ env.CDN_REGION }}
-
-      - name: Update CDN ${{ matrix.name }}
-        if: steps.publish.outputs.id != ''
-        run: |
-          PUBLISHED_PACKAGE="${{ steps.publish.outputs.id }}"
-          mkdir -p ./tmp \
-            && sleep 60 \
-            && npm install --prefix ./tmp "$PUBLISHED_PACKAGE" \
-            && cd ./tmp/node_modules
-
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/"$PUBLISHED_PACKAGE" --delete
-          aws s3 sync ./${{ matrix.name }} s3://${{ env.CDN_BUCKET }}/${{ matrix.name }}@latest --delete
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key "$PUBLISHED_PACKAGE"/package.json
-          aws s3api head-object --bucket ${{ env.CDN_BUCKET }} --key ${{ matrix.name }}@latest/package.json
-
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_CLOUDFRONT_DIST_ID }} --paths "/*"
-        working-directory: ${{ matrix.package }}
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
