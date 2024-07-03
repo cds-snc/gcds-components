@@ -142,4 +142,73 @@ describe('gcds-stepper', () => {
       </gcds-stepper>
     `);
   });
+
+  it('does not render - no children', async () => {
+    const page = await newSpecPage({
+      components: [GcdsStepper],
+      html: `<gcds-stepper current-step="2" total-steps="6"></gcds-stepper>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-stepper current-step="2" total-steps="6">
+        <mock:shadow-root>
+        </mock:shadow-root>
+      </gcds-stepper>
+    `);
+  });
+
+  it('does not render - no required attributes', async () => {
+    const page = await newSpecPage({
+      components: [GcdsStepper],
+      html: `<gcds-stepper>Section title</gcds-stepper>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-stepper>
+        <mock:shadow-root>
+        </mock:shadow-root>
+        Section title
+      </gcds-stepper>
+    `);
+  });
+
+  it('does not render - higher current step', async () => {
+    const page = await newSpecPage({
+      components: [GcdsStepper],
+      html: `<gcds-stepper current-step="8" total-steps="6">Section title</gcds-stepper>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-stepper current-step="8" total-steps="6">
+        <mock:shadow-root>
+        </mock:shadow-root>
+        Section title
+      </gcds-stepper>
+    `);
+  });
+
+  it('does not render - negative current step', async () => {
+    const page = await newSpecPage({
+      components: [GcdsStepper],
+      html: `<gcds-stepper current-step="-1" total-steps="6">Section title</gcds-stepper>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-stepper current-step="-1" total-steps="6">
+        <mock:shadow-root>
+        </mock:shadow-root>
+        Section title
+      </gcds-stepper>
+    `);
+  });
+
+  it('does not render - NaN total steps', async () => {
+    const page = await newSpecPage({
+      components: [GcdsStepper],
+      html: `<gcds-stepper current-step="1" total-steps="A">Section title</gcds-stepper>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-stepper current-step="1" total-steps="A">
+        <mock:shadow-root>
+        </mock:shadow-root>
+        Section title
+      </gcds-stepper>
+    `);
+  });
 });

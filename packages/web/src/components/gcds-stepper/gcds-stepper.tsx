@@ -20,10 +20,11 @@ export class GcdsStepper {
   @Prop({ mutable: true }) currentStep!: number;
   @Watch('currentStep')
   validateCurrentStep() {
-    if (this.currentStep == undefined) {
-      this.currentStep = 1;
-    } else if (this.currentStep > this.totalSteps) {
-      this.currentStep = this.totalSteps;
+    if (this.currentStep <= 0 || 
+      isNaN(this.currentStep) || 
+      this.currentStep > this.totalSteps
+    ) {
+      this.renderError = true;
     }
   }
 
@@ -33,10 +34,11 @@ export class GcdsStepper {
   @Prop({ mutable: true }) totalSteps!: number;
   @Watch('totalSteps')
   validateTotalSteps() {
-    if (this.totalSteps == undefined) {
-      this.totalSteps = 3;
-    } else if (this.totalSteps < this.currentStep) {
-      this.totalSteps = this.currentStep;
+    if (this.totalSteps <= 0 ||
+      isNaN(this.totalSteps) ||
+      this.totalSteps < this.currentStep
+    ) {
+      this.renderError = true;
     }
   }
 
@@ -44,6 +46,11 @@ export class GcdsStepper {
    * Defines the heading tag to render
    */
   @Prop() tag: 'h1' | 'h2' | 'h3' = 'h2';
+
+  /**
+   * State to track if component should render
+   */
+  @State() renderError: boolean = false;
 
   /**
    * Language of rendered component
@@ -62,6 +69,13 @@ export class GcdsStepper {
     observer.observe(this.el, observerConfig);
   }
 
+
+  private validateChildren() {
+    if (this.el.innerHTML.trim() == "") {
+      this.renderError = true;
+    }
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -69,14 +83,12 @@ export class GcdsStepper {
     this.updateLang();
 
     // Validate step attributes
-    this.validateTotalSteps();
     this.validateCurrentStep();
-  }
+    this.validateTotalSteps();
+    this.validateChildren();
 
-  async componentDidLoad() {
-    // Throw error in console if no children passed for heading
-    if (this.el.innerHTML.trim() == "") {
-      console.error('The gcds-stepper requires child elements to be passed to render properly.');
+    if (this.renderError) {
+      console.error(`${i18n["en"].error} | ${i18n["fr"].error}`);
     }
   }
 
@@ -85,20 +97,23 @@ export class GcdsStepper {
 
     return (
       <Host>
-        <gcds-heading
-          tag={tag}
-          class="gcds-stepper"
-          margin-top="0"
-          margin-bottom="300"
-        >
-          <span class="gcds-stepper__steps">
-            {`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}
+        {!this.renderError && 
+          <gcds-heading
+            tag={tag}
+            class="gcds-stepper"
+            margin-top="0"
+            margin-bottom="300"
+          >
+            <span class="gcds-stepper__steps">
+              {`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}
 
-            {/* Hidden colon to provide pause between caption and heading text for AT */}
-            <gcds-sr-only> : </gcds-sr-only>
-          </span>
-          <slot></slot>
-        </gcds-heading>
+              {/* Hidden colon to provide pause between caption and heading text for AT */}
+              <gcds-sr-only> : </gcds-sr-only>
+            </span>
+            <slot></slot>
+          </gcds-heading>
+        }
+
       </Host>
     );
   }
