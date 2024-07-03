@@ -143,6 +143,29 @@ describe('gcds-stepper', () => {
     `);
   });
 
+  it('renders - HTML children', async () => {
+    const page = await newSpecPage({
+      components: [GcdsStepper],
+      html: `<gcds-stepper current-step="2" total-steps="6">
+        <span class="example">Section title</span>
+      </gcds-stepper>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-stepper current-step="2" total-steps="6">
+        <mock:shadow-root>
+          <gcds-heading tag="h2" class="gcds-stepper" margin-top="0" margin-bottom="300">
+            <span class="gcds-stepper__steps">
+              Step 2 of 6
+              <gcds-sr-only> : </gcds-sr-only>
+            </span>
+            <slot></slot
+          </gcds-heading>
+        </mock:shadow-root>
+        <span class="example">Section title</span>
+      </gcds-stepper>
+    `);
+  });
+
   it('does not render - no children', async () => {
     const page = await newSpecPage({
       components: [GcdsStepper],
