@@ -1,4 +1,4 @@
-@layer reset, default, link, focus, hover;
+@layer reset, default, link, hover, focus;
 
 @layer reset {
   :host {
@@ -18,18 +18,14 @@
 
 @layer default {
   :host .gcds-card {
-    border: 2px solid transparent;
-    /* border: var(--gcds-card-border); --remove */
-    /* border-radius: var(--gcds-card-border-radius); --remove */
     background-color: var(--gcds-card-background-color);
     display: block;
-    /* padding: var(--gcds-card-padding); --update*/
-    padding: var(--gcds-spacing-450) var(--gcds-spacing-400);
+    padding: var(--gcds-card-padding);
     height: 100%;
     color: var(--gcds-card-color);
     position: relative;
-    /* box-shadow: var(--gcds-card-hover-box-shadow); --update*/
-    box-shadow: 0 3px 10px 3px rgba(0,0,0,0.1);
+    box-shadow: var(--gcds-card-box-shadow);
+    overflow: hidden;
 
     > *:not(slot):not(.gcds-card__spacer) {
       display: block;
@@ -37,11 +33,12 @@
     }
 
     .gcds-badge {
-      background-color: blue;
+      background-color: var(--gcds-card-badge-background-color);
       position: absolute;
-      top: -2px;
-      left: -2px;
-      padding: 3px 24px;
+      top: 0;
+      left: 0;
+      padding: var(--gcds-card-badge-padding);
+      text-wrap: nowrap;
     }
 
     .gcds-card__image {
@@ -49,21 +46,20 @@
     }
 
     .gcds-card__title {
-      /* font: var(--gcds-card-title-font); */
       width: fit-content;
 
-      font: var(--gcds-heading-h3-desktop);
+      font: var(--gcds-card-title-font-desktop);
 
       @media only screen and (width < 48em) {
-        font: var(--gcds-heading-h3-mobile);
+        font: var(--gcds-card-title-font-mobile);
       }
     }
 
     .gcds-card__description {
-      font: var(--gcds-text-size-body-desktop);
+      font: var(--gcds-card-description-font-desktop);
 
       @media only screen and (width < 48em) {
-        font: var(--gcds-text-size-body-mobile);
+        font: var(--gcds-card-description-font-mobile);
       }
     }
   }
@@ -82,34 +78,32 @@
   }
 }
 
-@layer focus {
-  :host {
-    .gcds-card:has(:focus-within) {
-      border-color: var(--gcds-focus-background);
-      box-shadow: none;
-      outline: var(--gcds-link-focus-outline-width) solid
-        var(--gcds-link-focus-background);
-      outline-offset: var(--gcds-link-focus-outline-offset);
-    }
-
-    gcds-link::part(link):focus {
-      border: none;
-      box-shadow: none;
-      color: var(--gcds-link-default);
-      background-color: transparent;
-      outline: none;
-      text-decoration: underline currentColor
-      var(--gcds-link-decoration-thickness);
+@layer hover {
+  @media (hover: hover) {
+    :host .gcds-card:hover {
+      box-shadow: var(--gcds-card-hover-box-shadow);
+      background-color: var(--gcds-card-hover-background-color);
+      cursor: pointer;
     }
   }
 }
 
-@layer hover {
-  @media (hover: hover) {
-    :host .gcds-card:hover {
-      box-shadow: 0 4px 12px 4px rgba(0,0,0,0.2);
-      background-color: var(--gcds-card-hover-background-color);
-      cursor: pointer;
+@layer focus {
+  :host {
+    .gcds-card:has(:focus-within) {
+      box-shadow: var(--gcds-card-focus-box-shadow);
+      outline: var(--gcds-card-focus-outline);
+      outline-offset: var(--gcds-card-focus-outline-offset);
+    }
+
+    gcds-link::part(link):focus {
+      border: var(--gcds-card-focus-link-border);
+      box-shadow: var(--gcds-card-focus-link-box-shadow);
+      color: var(--gcds-card-focus-link-color);
+      background-color: var(--gcds-card-focus-link-background-color);
+      outline: var(--gcds-card-focus-link-outline);
+      text-decoration: underline currentColor
+       var(--gcds-card-focus-link-text-decoration-thickness);
     }
   }
 }
