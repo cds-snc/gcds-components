@@ -168,11 +168,11 @@ describe('gcds-card', () => {
       html: `<gcds-card
         card-title="Card"
         href="#card"
-        title-element="h3"
+        title-tag="h3"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
-    <gcds-card card-title="Card" href="#card" title-element="h3">
+    <gcds-card card-title="Card" href="#card" title-tag="h3">
       <mock:shadow-root>
         <div class="gcds-card">
           <h3 class="gcds-card__title">
@@ -194,11 +194,11 @@ describe('gcds-card', () => {
       html: `<gcds-card
         card-title="Card"
         href="#card"
-        title-element="h4"
+        title-tag="h4"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
-    <gcds-card card-title="Card" href="#card" title-element="h4">
+    <gcds-card card-title="Card" href="#card" title-tag="h4">
       <mock:shadow-root>
         <div class="gcds-card">
           <h4 class="gcds-card__title">
@@ -220,11 +220,11 @@ describe('gcds-card', () => {
       html: `<gcds-card
         card-title="Card"
         href="#card"
-        title-element="h5"
+        title-tag="h5"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
-    <gcds-card card-title="Card" href="#card" title-element="h5">
+    <gcds-card card-title="Card" href="#card" title-tag="h5">
       <mock:shadow-root>
         <div class="gcds-card">
           <h5 class="gcds-card__title">
@@ -246,11 +246,11 @@ describe('gcds-card', () => {
       html: `<gcds-card
         card-title="Card"
         href="#card"
-        title-element="h6"
+        title-tag="h6"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
-    <gcds-card card-title="Card" href="#card" title-element="h6">
+    <gcds-card card-title="Card" href="#card" title-tag="h6">
       <mock:shadow-root>
         <div class="gcds-card">
           <h6 class="gcds-card__title">

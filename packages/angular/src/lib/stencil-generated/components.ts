@@ -118,7 +118,7 @@ export declare interface GcdsButton extends Components.GcdsButton {
 
 
 @ProxyCmp({
-  inputs: ['badge', 'cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'titleElement'],
+  inputs: ['badge', 'cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'titleTag'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -126,7 +126,7 @@ export declare interface GcdsButton extends Components.GcdsButton {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['badge', 'cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'titleElement'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
+  inputs: ['badge', 'cardTitle', 'description', 'href', 'imgAlt', 'imgSrc', 'titleTag'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
 })
 export class GcdsCard {
   protected el: HTMLElement;

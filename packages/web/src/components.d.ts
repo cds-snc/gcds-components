@@ -118,9 +118,9 @@ export namespace Components {
          */
         "imgSrc": string;
         /**
-          * The title element attribute specifies HTML element the title renders as
+          * The title tag attribute specifies HTML element the title renders as
          */
-        "titleElement": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+        "titleTag": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     }
     interface GcdsCheckbox {
         /**
@@ -1847,9 +1847,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsCardCustomEvent<void>) => void;
         /**
-          * The title element attribute specifies HTML element the title renders as
+          * The title tag attribute specifies HTML element the title renders as
          */
-        "titleElement"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+        "titleTag"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     }
     interface GcdsCheckbox {
         /**

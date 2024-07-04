@@ -56,8 +56,8 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
-    titleElement: {
-      name: 'title-element',
+    titleTag: {
+      name: 'title-tag',
       control: 'select',
       options: ['h3', 'h4', 'h5', 'h6', 'a'],
       table: {
@@ -107,7 +107,7 @@ const Template = args =>
 <gcds-card
   card-title="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}
-  ${args.titleElement != 'a' ? `title-element="${args.titleElement}"` : null}
+  ${args.titleTag != 'a' ? `title-tag="${args.titleTag}"` : null}
   ${args.badge ? `badge="${args.badge}"` : null}
   ${args.description ? `description="${args.description}"` : null}
   ${args.imgSrc ? `img-src="${args.imgSrc}"` : null}
@@ -121,7 +121,7 @@ const Template = args =>
 <GcdsCard
   cardTitle="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}
-  ${args.titleElement != 'a' ? `titleElement="${args.titleElement}"` : null}
+  ${args.titleTag != 'a' ? `titleTag="${args.titleTag}"` : null}
   ${args.badge ? `badge="${args.badge}"` : null}
   ${args.description ? `description="${args.description}"` : null}
   ${args.imgSrc ? `imgSrc="${args.imgSrc}"` : null}
@@ -138,7 +138,7 @@ const TemplatePlayground = args =>
 <gcds-card
   card-title="${args.cardTitle}"
   ${args.href ? `href="${args.href}"` : null}
-  ${args.titleElement != 'a' ? `title-element="${args.titleElement}"` : null}
+  ${args.titleTag != 'a' ? `title-element="${args.titleTag}"` : null}
   ${args.badge ? `badge="${args.badge}"` : null}
   ${args.description ? `description="${args.description}"` : null}
   ${args.imgSrc ? `img-src="${args.imgSrc}"` : null}
@@ -153,7 +153,7 @@ export const Default = Template.bind({});
 Default.args = {
   cardTitle: 'Card title link',
   href: '#',
-  titleElement: 'a',
+  titleTag: 'a',
   badge: 'badge',
   description:
     'Description or supporting text relating to the headline.',
@@ -167,7 +167,7 @@ export const Description = Template.bind({});
 Description.args = {
   cardTitle: 'Card title link',
   href: '#',
-  titleElement: 'a',
+  titleTag: 'a',
   badge: '',
   description:
     'Description or supporting text relating to the headline.',
@@ -181,7 +181,7 @@ export const Slot = Template.bind({});
 Slot.args = {
   cardTitle: 'Card title link',
   href: '#',
-  titleElement: 'a',
+  titleTag: 'a',
   badge: '',
   description: '',
   imgSrc: '',
@@ -195,7 +195,7 @@ export const Badge = Template.bind({});
 Badge.args = {
   cardTitle: 'Card title link',
   href: '#',
-  titleElement: 'a',
+  titleTag: 'a',
   badge: 'Badge',
   description:
     'Description or supporting text relating to the headline.',
@@ -209,7 +209,7 @@ export const Image = Template.bind({});
 Image.args = {
   cardTitle: 'Card title link',
   href: '#',
-  titleElement: 'a',
+  titleTag: 'a',
   badge: '',
   description:
     'Description or supporting text relating to the headline.',
@@ -223,7 +223,7 @@ export const Props = Template.bind({});
 Props.args = {
   cardTitle: 'Card title link',
   href: '#',
-  titleElement: 'a',
+  titleTag: 'a',
   badge: 'badge',
   description:
     'Description or supporting text relating to the headline.',
@@ -237,7 +237,7 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   cardTitle: 'Card title link',
   href: '#',
-  titleElement: 'a',
+  titleTag: 'a',
   badge: '',
   description:
     'Description or supporting text relating to the headline.',

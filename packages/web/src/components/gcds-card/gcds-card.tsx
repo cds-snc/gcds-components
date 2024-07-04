@@ -25,9 +25,9 @@ export class GcdsCard {
   @Prop({ reflect: true }) cardTitle!: string;
 
   /**
-   * The title element attribute specifies HTML element the title renders as
+   * The title tag attribute specifies HTML element the title renders as
    */
-  @Prop() titleElement: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
+  @Prop() titleTag: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
 
   /**
    * The href attribute specifies the URL of the page the link goes to
@@ -114,7 +114,7 @@ export class GcdsCard {
   render() {
     const {
       cardTitle,
-      titleElement,
+      titleTag,
       href,
       badge,
       imgSrc,
@@ -123,7 +123,7 @@ export class GcdsCard {
       lang,
     } = this;
 
-    const Element = titleElement;
+    const Element = titleTag;
 
     const taggedAttr = {};
 
