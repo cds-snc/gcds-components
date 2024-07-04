@@ -7,7 +7,7 @@ const I18N = {
   fr: {
     step: 'Étape',
     of: 'sur',
-    error: '',
+    error: 'Le composant <gcds-stepper> n\'a pas pu être rendu. Vérifiez les attributs current-step, total-steps ou les éléments enfants passés pour vous assurer qu\'ils sont corrects.',
   },
 };
 
