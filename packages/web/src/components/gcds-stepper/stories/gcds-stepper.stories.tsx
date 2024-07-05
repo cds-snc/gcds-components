@@ -46,6 +46,9 @@ export default {
       table: {
         category: 'Slots | Fentes',
       },
+      type: {
+        required: true,
+      },
     },
     ...langProp,
   },
