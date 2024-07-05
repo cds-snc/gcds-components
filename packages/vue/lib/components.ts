@@ -48,7 +48,7 @@ export const GcdsButton = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-bu
 
 export const GcdsCard = /*@__PURE__*/ defineContainer<JSX.GcdsCard>('gcds-card', undefined, [
   'cardTitle',
-  'titleTag',
+  'cardTitleTag',
   'href',
   'description',
   'badge',

@@ -102,6 +102,10 @@ export namespace Components {
          */
         "cardTitle": string;
         /**
+          * The crad title tag attribute specifies HTML element the title renders as
+         */
+        "cardTitleTag": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+        /**
           * The description attribute specifies the body of text that appears on the card
          */
         "description": string;
@@ -117,10 +121,6 @@ export namespace Components {
           * The img src attribute specifies the path to the image
          */
         "imgSrc": string;
-        /**
-          * The title tag attribute specifies HTML element the title renders as
-         */
-        "titleTag": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     }
     interface GcdsCheckbox {
         /**
@@ -1819,6 +1819,10 @@ declare namespace LocalJSX {
          */
         "cardTitle": string;
         /**
+          * The crad title tag attribute specifies HTML element the title renders as
+         */
+        "cardTitleTag"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+        /**
           * The description attribute specifies the body of text that appears on the card
          */
         "description"?: string;
@@ -1846,10 +1850,6 @@ declare namespace LocalJSX {
           * Emitted when the card has focus.
          */
         "onGcdsFocus"?: (event: GcdsCardCustomEvent<void>) => void;
-        /**
-          * The title tag attribute specifies HTML element the title renders as
-         */
-        "titleTag"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     }
     interface GcdsCheckbox {
         /**
