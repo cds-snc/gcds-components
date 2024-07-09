@@ -20,8 +20,9 @@ export class GcdsStepper {
   @Prop({ mutable: true }) currentStep!: number;
   @Watch('currentStep')
   validateCurrentStep() {
-    if (this.currentStep <= 0 || 
-      isNaN(this.currentStep) || 
+    if (
+      this.currentStep <= 0 ||
+      isNaN(this.currentStep) ||
       this.currentStep > this.totalSteps
     ) {
       this.renderError = true;
@@ -34,7 +35,8 @@ export class GcdsStepper {
   @Prop({ mutable: true }) totalSteps!: number;
   @Watch('totalSteps')
   validateTotalSteps() {
-    if (this.totalSteps <= 0 ||
+    if (
+      this.totalSteps <= 0 ||
       isNaN(this.totalSteps) ||
       this.totalSteps < this.currentStep
     ) {
@@ -69,9 +71,8 @@ export class GcdsStepper {
     observer.observe(this.el, observerConfig);
   }
 
-
   private validateChildren() {
-    if (this.el.innerHTML.trim() == "") {
+    if (this.el.innerHTML.trim() == '') {
       this.renderError = true;
     }
   }
@@ -88,7 +89,7 @@ export class GcdsStepper {
     this.validateChildren();
 
     if (this.renderError) {
-      console.error(`${i18n["en"].error} | ${i18n["fr"].error}`);
+      console.error(`${i18n['en'].error} | ${i18n['fr'].error}`);
     }
   }
 
@@ -97,7 +98,7 @@ export class GcdsStepper {
 
     return (
       <Host>
-        {!this.renderError && 
+        {!this.renderError && (
           <gcds-heading
             tag={tag}
             class="gcds-stepper"
@@ -112,8 +113,7 @@ export class GcdsStepper {
             </span>
             <slot></slot>
           </gcds-heading>
-        }
-
+        )}
       </Host>
     );
   }

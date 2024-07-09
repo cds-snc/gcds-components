@@ -23,10 +23,7 @@ describe('gcds-stepper', () => {
     `);
   });
 
-  /**
-   * Renders current + total steps
-   */
-  it('renders steps', async () => {
+  it('renders - current and total steps', async () => {
     const page = await newSpecPage({
       components: [GcdsStepper],
       html: `<gcds-stepper current-step="2" total-steps="6">Section title</gcds-stepper>`,
@@ -47,18 +44,15 @@ describe('gcds-stepper', () => {
     `);
   });
 
-  /**
-   * Renders as a heading 1
-   */
-  it('renders steps', async () => {
+  it('renders - tag h1', async () => {
     const page = await newSpecPage({
       components: [GcdsStepper],
-      html: `<gcds-stepper current-step="2" total-steps="6">Section title</gcds-stepper>`,
+      html: `<gcds-stepper current-step="2" total-steps="6" tag="h1">Section title</gcds-stepper>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-stepper current-step="2" total-steps="6">
+      <gcds-stepper current-step="2" total-steps="6" tag="h1">
         <mock:shadow-root>
-          <gcds-heading tag="h2" class="gcds-stepper" margin-top="0" margin-bottom="300">
+          <gcds-heading tag="h1" class="gcds-stepper" margin-top="0" margin-bottom="300">
             <span class="gcds-stepper__steps">
               Step 2 of 6
               <gcds-sr-only> : </gcds-sr-only>
@@ -71,10 +65,7 @@ describe('gcds-stepper', () => {
     `);
   });
 
-  /**
-   * Renders as a heading 2
-   */
-  it('renders steps', async () => {
+  it('renders - tag h2', async () => {
     const page = await newSpecPage({
       components: [GcdsStepper],
       html: `<gcds-stepper current-step="2" total-steps="6" tag="h2">Section title</gcds-stepper>`,
@@ -95,10 +86,7 @@ describe('gcds-stepper', () => {
     `);
   });
 
-  /**
-   * Renders as a heading 3
-   */
-  it('renders steps', async () => {
+  it('renders - tag h3', async () => {
     const page = await newSpecPage({
       components: [GcdsStepper],
       html: `<gcds-stepper current-step="2" total-steps="6" tag="h3">Section title</gcds-stepper>`,
@@ -119,10 +107,7 @@ describe('gcds-stepper', () => {
     `);
   });
 
-  /**
-   * Renders stepper in french
-   */
-  it('renders stepper in french', async () => {
+  it('renders - French', async () => {
     const page = await newSpecPage({
       components: [GcdsStepper],
       html: `<gcds-stepper current-step="2" total-steps="6" lang="fr">Section title</gcds-stepper>`,
