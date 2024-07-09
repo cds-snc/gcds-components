@@ -17,6 +17,7 @@
     text-decoration-style: solid;
     text-decoration-color: currentColor;
     text-decoration-thickness: var(--gcds-link-decoration-thickness);
+    text-underline-offset: var(--gcds-link-underline-offset);
     transition: all 0.35s;
   }
 }
