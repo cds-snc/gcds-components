@@ -75,7 +75,7 @@ export class GcdsNavGroup {
       this.navStyle === 'dropdown' &&
       this.open
     ) {
-      this.toggleNav();
+      setTimeout(() => this.toggleNav(), 200)
     }
   }
 
