@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.22.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.1...gcds-components-v0.22.2) (2024-07-10)
+
+
+### Bug Fixes
+
+* card property typos in Storybook ([17c9d7b](https://github.com/cds-snc/gcds-components/commit/17c9d7b325f2c9b1497914e4924e45163bf16172))
+* Safari a11y issues with links and nav group focus ([#583](https://github.com/cds-snc/gcds-components/issues/583)) ([d7c3fb9](https://github.com/cds-snc/gcds-components/commit/d7c3fb91f0fb475926371be62395e33b635153a4))
+
 ## [0.22.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.0...gcds-components-v0.22.1) (2024-05-27)
 
 
