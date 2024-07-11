@@ -26,6 +26,7 @@
     position: relative;
     box-shadow: var(--gcds-card-box-shadow);
     overflow: hidden;
+    max-width: var(--gcds-card-max-width);
 
     > *:not(slot):not(.gcds-card__spacer) {
       display: block;
