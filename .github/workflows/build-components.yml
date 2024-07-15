@@ -36,7 +36,7 @@ jobs:
           node-version: 18
 
       - name: Install gcds-components
-        run: npm install
+        run: npm ci
 
       - name: Build gcds-components
         run: npm run build
