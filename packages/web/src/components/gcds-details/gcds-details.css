@@ -39,8 +39,10 @@
       padding: var(--gcds-details-summary-padding);
       color: var(--gcds-details-default-text);
       font: var(--gcds-details-font);
-      text-decoration: underline
-        var(--gcds-details-default-decoration-thickness);
+      text-decoration-style: solid;
+      text-decoration-line: underline;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: var(--gcds-details-default-decoration-thickness);
       text-underline-offset: 0.2em;
       transition:
         background-color 0.15s ease-in-out,
