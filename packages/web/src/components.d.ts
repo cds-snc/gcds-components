@@ -102,7 +102,7 @@ export namespace Components {
          */
         "cardTitle": string;
         /**
-          * The crad title tag attribute specifies HTML element the title renders as
+          * The card title tag attribute specifies HTML element the title renders as
          */
         "cardTitleTag": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**
@@ -1819,7 +1819,7 @@ declare namespace LocalJSX {
          */
         "cardTitle": string;
         /**
-          * The crad title tag attribute specifies HTML element the title renders as
+          * The card title tag attribute specifies HTML element the title renders as
          */
         "cardTitleTag"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**

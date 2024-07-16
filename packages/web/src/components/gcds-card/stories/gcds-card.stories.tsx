@@ -114,7 +114,7 @@ const Template = args =>
   ${args.imgAlt ? `img-alt="${args.imgAlt}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${args.default ? `${args.default}` : null}
+  ${args.default ? `<gcds-text>${args.default}</gcds-text>` : null}
 </gcds-card>
 
 <!-- React code -->
@@ -128,7 +128,7 @@ const Template = args =>
   ${args.imgAlt ? `imgAlt="${args.imgAlt}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${args.default ? `${args.default}` : null}
+  ${args.default ? `<GcdsText>${args.default}</GcdsText>` : null}
 </GcdsCard>
 `.replace(/\s\snull\n/g, '');
 
@@ -145,7 +145,7 @@ const TemplatePlayground = args =>
   ${args.imgAlt ? `img-alt="${args.imgAlt}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${args.default ? `${args.default}` : null}
+  ${args.default ? `<gcds-text>${args.default}</gcds-text>` : null}
 </gcds-card>
 `.replace(/\s\snull\n/g, '');
 
