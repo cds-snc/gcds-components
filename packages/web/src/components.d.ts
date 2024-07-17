@@ -94,7 +94,7 @@ export namespace Components {
     }
     interface GcdsCard {
         /**
-          * The badge attribute specifies the badge text that appears in the top left corner of the card
+          * The badge attribute specifies the badge text that appears in the top left corner of the card. 20 character limit.
          */
         "badge": string;
         /**
@@ -1811,7 +1811,7 @@ declare namespace LocalJSX {
     }
     interface GcdsCard {
         /**
-          * The badge attribute specifies the badge text that appears in the top left corner of the card
+          * The badge attribute specifies the badge text that appears in the top left corner of the card. 20 character limit.
          */
         "badge"?: string;
         /**

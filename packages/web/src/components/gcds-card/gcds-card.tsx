@@ -6,7 +6,8 @@ import {
   h,
   State,
   Event,
-  EventEmitter
+  EventEmitter,
+  Watch,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
@@ -40,9 +41,16 @@ export class GcdsCard {
   @Prop({ reflect: true }) description: string;
 
   /**
-   * The badge attribute specifies the badge text that appears in the top left corner of the card
+   * The badge attribute specifies the badge text that appears in the top left corner of the card. 20 character limit.
    */
-  @Prop({ reflect: true }) badge: string;
+  @Prop({ reflect: true, mutable: true }) badge: string;
+  @Watch('badge')
+  validateBadge() {
+    if (this.badge && this.badge.length > 20) {
+      console.error(`${i18n['en'].badgeError} | ${i18n['fr'].badgeError}`);
+      this.badgeError = true;
+    }
+  }
 
   /**
    * The img src attribute specifies the path to the image
@@ -58,6 +66,11 @@ export class GcdsCard {
    * Language of rendered component
    */
   @State() lang: string;
+
+  /**
+   * State to track validation on badge
+   */
+  @State() badgeError: boolean = false;
 
   /**
    * Events
@@ -95,18 +108,16 @@ export class GcdsCard {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
+
+    this.validateBadge();
   }
 
   private get renderDescription() {
-    if (this.el.innerHTML.trim() != "") {
-      return (<slot></slot>);
+    if (this.el.innerHTML.trim() != '') {
+      return <slot></slot>;
     } else {
       if (this.description) {
-        return (
-          <gcds-text>
-            {this.description}
-          </gcds-text>
-        );
+        return <gcds-text>{this.description}</gcds-text>;
       }
     }
   }
@@ -121,6 +132,7 @@ export class GcdsCard {
       imgAlt,
       renderDescription,
       lang,
+      badgeError,
     } = this;
 
     const Element = cardTitleTag;
@@ -141,7 +153,7 @@ export class GcdsCard {
               class="gcds-card__image"
             />
           )}
-          {badge && (
+          {(badge && !badgeError) && (
             <gcds-text
               id="gcds-badge"
               class="gcds-badge"
@@ -164,9 +176,7 @@ export class GcdsCard {
               {cardTitle}
             </gcds-link>
           )}
-          <div class="gcds-card__description">
-            {renderDescription}
-          </div>
+          <div class="gcds-card__description">{renderDescription}</div>
         </div>
       </Host>
     );

@@ -265,4 +265,28 @@ describe('gcds-card', () => {
     </gcds-card
     `);
   });
+
+  it('renders - badge too long error', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        card-title="Card"
+        href="#card"
+        badge="Badge that is too long to render"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" badge="Badge that is too long to render">
+      <mock:shadow-root>
+        <div class="gcds-card">
+          <gcds-link aria-describedby="gcds-badge" class="gcds-card__title" href="#card">
+            Card
+          </gcds-link>
+          <div class="gcds-card__description">
+          </div>
+        </div>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
 });
