@@ -234,6 +234,36 @@ export namespace Components {
          */
         "tag"?: string;
     }
+    interface GcdsDateInput {
+        /**
+          * Specifies if the date input is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message displayed below the legend and above form fields.
+         */
+        "errorMessage"?: string;
+        /**
+          * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
+         */
+        "format": 'full' | 'compact';
+        /**
+          * Hint displayed below the legend and above form fields.
+         */
+        "hint"?: string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for the date input.
+         */
+        "name": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+    }
     interface GcdsDateModified {
         /**
           * Set date modified type. Default is date.
@@ -1286,6 +1316,12 @@ declare global {
         prototype: HTMLGcdsContainerElement;
         new (): HTMLGcdsContainerElement;
     };
+    interface HTMLGcdsDateInputElement extends Components.GcdsDateInput, HTMLStencilElement {
+    }
+    var HTMLGcdsDateInputElement: {
+        prototype: HTMLGcdsDateInputElement;
+        new (): HTMLGcdsDateInputElement;
+    };
     interface HTMLGcdsDateModifiedElement extends Components.GcdsDateModified, HTMLStencilElement {
     }
     var HTMLGcdsDateModifiedElement: {
@@ -1664,6 +1700,7 @@ declare global {
         "gcds-card": HTMLGcdsCardElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-container": HTMLGcdsContainerElement;
+        "gcds-date-input": HTMLGcdsDateInputElement;
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
         "gcds-details": HTMLGcdsDetailsElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
@@ -1957,6 +1994,36 @@ declare namespace LocalJSX {
           * Set tag for container.
          */
         "tag"?: string;
+    }
+    interface GcdsDateInput {
+        /**
+          * Specifies if the date input is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message displayed below the legend and above form fields.
+         */
+        "errorMessage"?: string;
+        /**
+          * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
+         */
+        "format": 'full' | 'compact';
+        /**
+          * Hint displayed below the legend and above form fields.
+         */
+        "hint"?: string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for the date input.
+         */
+        "name": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
     }
     interface GcdsDateModified {
         /**
@@ -3026,6 +3093,7 @@ declare namespace LocalJSX {
         "gcds-card": GcdsCard;
         "gcds-checkbox": GcdsCheckbox;
         "gcds-container": GcdsContainer;
+        "gcds-date-input": GcdsDateInput;
         "gcds-date-modified": GcdsDateModified;
         "gcds-details": GcdsDetails;
         "gcds-error-message": GcdsErrorMessage;
@@ -3072,6 +3140,7 @@ declare module "@stencil/core" {
             "gcds-card": LocalJSX.GcdsCard & JSXBase.HTMLAttributes<HTMLGcdsCardElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-container": LocalJSX.GcdsContainer & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
+            "gcds-date-input": LocalJSX.GcdsDateInput & JSXBase.HTMLAttributes<HTMLGcdsDateInputElement>;
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
