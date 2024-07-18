@@ -1189,6 +1189,10 @@ export interface GcdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCheckboxElement;
 }
+export interface GcdsDateInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsDateInputElement;
+}
 export interface GcdsDetailsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsDetailsElement;
@@ -1320,7 +1324,23 @@ declare global {
         prototype: HTMLGcdsContainerElement;
         new (): HTMLGcdsContainerElement;
     };
+    interface HTMLGcdsDateInputElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsInput": any;
+        "gcdsChange": any;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
     interface HTMLGcdsDateInputElement extends Components.GcdsDateInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsDateInputElementEventMap>(type: K, listener: (this: HTMLGcdsDateInputElement, ev: GcdsDateInputCustomEvent<HTMLGcdsDateInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsDateInputElementEventMap>(type: K, listener: (this: HTMLGcdsDateInputElement, ev: GcdsDateInputCustomEvent<HTMLGcdsDateInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsDateInputElement: {
         prototype: HTMLGcdsDateInputElement;
@@ -2024,6 +2044,30 @@ declare namespace LocalJSX {
           * Name attribute for the date input.
          */
         "name": string;
+        /**
+          * Emitted when an element loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsDateInputCustomEvent<void>) => void;
+        /**
+          * Emitted when an element has changed.
+         */
+        "onGcdsChange"?: (event: GcdsDateInputCustomEvent<any>) => void;
+        /**
+          * Emitted when an element has a validation error.
+         */
+        "onGcdsError"?: (event: GcdsDateInputCustomEvent<object>) => void;
+        /**
+          * Emitted when an element has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsDateInputCustomEvent<void>) => void;
+        /**
+          * Emitted when the element has received input.
+         */
+        "onGcdsInput"?: (event: GcdsDateInputCustomEvent<any>) => void;
+        /**
+          * Emitted when an element has validated.
+         */
+        "onGcdsValid"?: (event: GcdsDateInputCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
          */

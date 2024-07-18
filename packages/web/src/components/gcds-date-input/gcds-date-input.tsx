@@ -5,6 +5,8 @@ import {
   AttachInternals,
   Prop,
   State,
+  Event,
+  EventEmitter,
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
@@ -22,7 +24,7 @@ export class GcdsDateInput {
   @AttachInternals()
   internals: ElementInternals;
 
-  private initialValue?: string;
+  // private initialValue?: string;
 
   /**
    * Name attribute for the date input.
@@ -65,6 +67,10 @@ export class GcdsDateInput {
   @Prop({ mutable: true }) disabled?: boolean = false;
 
   /**
+   * States
+   */
+
+  /**
    * State to track individual month value
    */
   @State() monthValue: string;
@@ -83,6 +89,40 @@ export class GcdsDateInput {
    * Language of rendered date input
    */
   @State() lang: string;
+
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when an element has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when an element loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the element has received input.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  /**
+   * Emitted when an element has changed.
+   */
+  @Event() gcdsChange: EventEmitter;
+
+  /**
+   * Emitted when an element has a validation error.
+   */
+  @Event() gcdsError!: EventEmitter<object>;
+
+  /**
+   * Emitted when an element has validated.
+   */
+  @Event() gcdsValid!: EventEmitter<object>;
 
   /*
    * Observe lang attribute change
@@ -168,7 +208,7 @@ export class GcdsDateInput {
 
     this.splitFormValue();
     if (this.setValue()) {
-      this.initialValue = this.value;
+      // this.initialValue = this.value;
     }
   }
 

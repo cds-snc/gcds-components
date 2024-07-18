@@ -9,6 +9,7 @@ export const DIRECTIVES = [
   d.GcdsCard,
   d.GcdsCheckbox,
   d.GcdsContainer,
+  d.GcdsDateInput,
   d.GcdsDateModified,
   d.GcdsDetails,
   d.GcdsErrorMessage,

@@ -89,6 +89,24 @@ export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('g
 ]);
 
 
+export const GcdsDateInput = /*@__PURE__*/ defineContainer<JSX.GcdsDateInput>('gcds-date-input', undefined, [
+  'name',
+  'label',
+  'format',
+  'value',
+  'required',
+  'hint',
+  'errorMessage',
+  'disabled',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+]);
+
+
 export const GcdsDateModified = /*@__PURE__*/ defineContainer<JSX.GcdsDateModified>('gcds-date-modified', undefined, [
   'type'
 ]);
