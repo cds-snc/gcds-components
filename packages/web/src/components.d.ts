@@ -263,6 +263,10 @@ export namespace Components {
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
+        /**
+          * Default value for the date input element. Format: YYYY-MM-DD
+         */
+        "value"?: string;
     }
     interface GcdsDateModified {
         /**
@@ -2024,6 +2028,10 @@ declare namespace LocalJSX {
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
+        /**
+          * Default value for the date input element. Format: YYYY-MM-DD
+         */
+        "value"?: string;
     }
     interface GcdsDateModified {
         /**

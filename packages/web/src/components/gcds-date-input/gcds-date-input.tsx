@@ -22,7 +22,7 @@ export class GcdsDateInput {
   @AttachInternals()
   internals: ElementInternals;
 
-  // private initialValue?: string;
+  private initialValue?: string;
 
   /**
    * Name attribute for the date input.
@@ -38,6 +38,11 @@ export class GcdsDateInput {
    * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
    */
   @Prop() format!: 'full' | 'compact';
+
+  /**
+   * Default value for the date input element. Format: YYYY-MM-DD
+   */
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Specifies if a form field is required or not.
@@ -60,6 +65,21 @@ export class GcdsDateInput {
   @Prop({ mutable: true }) disabled?: boolean = false;
 
   /**
+   * State to track individual month value
+   */
+  @State() monthValue: string;
+
+  /**
+   * State to track individual month value
+   */
+  @State() dayValue: string;
+
+  /**
+   * State to track individual month value
+   */
+  @State() yearValue: string;
+
+  /**
    * Language of rendered date input
    */
   @State() lang: string;
@@ -76,9 +96,80 @@ export class GcdsDateInput {
     observer.observe(this.el, observerConfig);
   }
 
+  private handleInput = (e, type) => {
+    const val = e.target && e.target.value;
+
+    if (type === 'year') {
+      this.yearValue = val;
+    } else if (type === 'month') {
+      this.monthValue = val;
+    } else if (type === 'day') {
+      this.dayValue = val;
+    }
+
+    this.setValue();
+
+    if (e.type === 'change') {
+      const changeEvt = new e.constructor(e.type, e);
+      this.el.dispatchEvent(changeEvt);
+    }
+  };
+
+  /**
+   * Logic to combine all input values together based on format
+   */
+  private setValue() {
+    const { yearValue, dayValue, monthValue, format } = this;
+
+    // All form elements have something entered
+    if (yearValue && monthValue && dayValue && format == 'full') {
+      // Is the combined value a valid date
+      if (!isNaN(Date.parse(`${yearValue}-${monthValue}-${dayValue}`))) {
+        this.value = `${yearValue}-${monthValue}-${dayValue}`;
+        this.internals.setFormValue(this.value);
+      }
+    } else if (yearValue && monthValue && format == 'compact') {
+      // Is the combined value a valid date
+      if (!isNaN(Date.parse(`${yearValue}-${monthValue}`))) {
+        this.value = `${yearValue}-${monthValue}`;
+        this.internals.setFormValue(this.value);
+      }
+    } else {
+      this.value = null;
+      this.internals.setFormValue(null);
+
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Split YYYY-MM-DD value into parts depending on format
+   */
+  private splitFormValue() {
+    if (this.value && !isNaN(Date.parse(this.value))) {
+      if (this.format == 'compact') {
+        let splitValue = this.value.split('-');
+        this.yearValue = splitValue[0];
+        this.monthValue = splitValue[1];
+      } else {
+        let splitValue = this.value.split('-');
+        this.yearValue = splitValue[0];
+        this.monthValue = splitValue[1];
+        this.dayValue = splitValue[2];
+      }
+    }
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.splitFormValue();
+    if (this.setValue()) {
+      this.initialValue = this.value;
+    }
   }
 
   render() {
@@ -100,6 +191,9 @@ export class GcdsDateInput {
         name="month"
         defaultValue={i18n[lang].selectmonth}
         disabled={disabled}
+        onInput={e => this.handleInput(e, 'month')}
+        onChange={e => this.handleInput(e, 'month')}
+        value={this.monthValue}
       >
         <option value="01">{i18n[lang].january}</option>
         <option value="02">{i18n[lang].february}</option>
@@ -124,6 +218,9 @@ export class GcdsDateInput {
         type="number"
         size={4}
         disabled={disabled}
+        value={this.yearValue}
+        onInput={e => this.handleInput(e, 'year')}
+        onChange={e => this.handleInput(e, 'year')}
       ></gcds-input>
     );
 
@@ -135,6 +232,9 @@ export class GcdsDateInput {
         type="number"
         size={2}
         disabled={disabled}
+        value={this.dayValue}
+        onInput={e => this.handleInput(e, 'day')}
+        onChange={e => this.handleInput(e, 'day')}
       ></gcds-input>
     );
 
