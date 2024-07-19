@@ -24,16 +24,32 @@ export class GcdsCard {
    * The card title attribute specifies the title that appears on the card
    */
   @Prop({ reflect: true }) cardTitle!: string;
-
-  /**
-   * The card title tag attribute specifies HTML element the title renders as
-   */
-  @Prop() cardTitleTag: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
+  @Watch('cardTitle')
+  validateCardTitle() {
+    if (!this.cardTitle || this.cardTitle.trim() == '') {
+      this.error.push('cardTitle');
+    } else if (this.error.includes('cardTitle')) {
+      this.error.splice(this.error.indexOf('cardTitle'), 1);
+    }
+  }
 
   /**
    * The href attribute specifies the URL of the page the link goes to
    */
   @Prop({ reflect: true }) href!: string;
+  @Watch('href')
+  validateHref() {
+    if (!this.href || this.href.trim() == '') {
+      this.error.push('href');
+    } else if (this.error.includes('href')) {
+      this.error.splice(this.error.indexOf('href'), 1);
+    }
+  }
+
+  /**
+   * The card title tag attribute specifies HTML element the title renders as
+   */
+  @Prop() cardTitleTag: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
 
   /**
    * The description attribute specifies the body of text that appears on the card
@@ -48,7 +64,9 @@ export class GcdsCard {
   validateBadge() {
     if (this.badge && this.badge.length > 20) {
       console.error(`${i18n['en'].badgeError} | ${i18n['fr'].badgeError}`);
-      this.badgeError = true;
+      this.error.push('badge');
+    } else if (this.error.includes('badge')) {
+      this.error.splice(this.error.indexOf('badge'), 1);
     }
   }
 
@@ -70,7 +88,7 @@ export class GcdsCard {
   /**
    * State to track validation on badge
    */
-  @State() badgeError: boolean = false;
+  @State() error: Array<string> = [];
 
   /**
    * Events
@@ -109,7 +127,13 @@ export class GcdsCard {
 
     this.updateLang();
 
+    this.validateCardTitle();
+    this.validateHref();
     this.validateBadge();
+
+    if (this.error.includes('href') || this.error.includes('cardTitle')) {
+      console.error('gcds-card: Error rendering, please check required properties \'card-title\' or \'href\'');
+    }
   }
 
   private get renderDescription() {
@@ -132,7 +156,7 @@ export class GcdsCard {
       imgAlt,
       renderDescription,
       lang,
-      badgeError,
+      error,
     } = this;
 
     const Element = cardTitleTag;
@@ -143,42 +167,44 @@ export class GcdsCard {
       taggedAttr['aria-describedby'] = 'gcds-badge';
     }
 
-    return (
-      <Host>
-        <div class="gcds-card">
-          {imgSrc && (
-            <img
-              src={imgSrc}
-              alt={imgAlt ? imgAlt : ''}
-              class="gcds-card__image"
-            />
-          )}
-          {(badge && !badgeError) && (
-            <gcds-text
-              id="gcds-badge"
-              class="gcds-badge"
-              text-role="light"
-              margin-bottom="0"
-              size="caption"
-            >
-              <strong>
-                <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
-                {badge}
-              </strong>
-            </gcds-text>
-          )}
-          {Element != 'a' ? (
-            <Element class="gcds-card__title" {...taggedAttr}>
-              <gcds-link href={href}>{cardTitle}</gcds-link>
-            </Element>
-          ) : (
-            <gcds-link href={href} class="gcds-card__title" {...taggedAttr}>
-              {cardTitle}
-            </gcds-link>
-          )}
-          <div class="gcds-card__description">{renderDescription}</div>
-        </div>
-      </Host>
-    );
+    if ((!error.includes('href') && !error.includes('cardTitle'))) {
+      return (
+        <Host>
+          <div class="gcds-card">
+            {imgSrc && (
+              <img
+                src={imgSrc}
+                alt={imgAlt ? imgAlt : ''}
+                class="gcds-card__image"
+              />
+            )}
+            {(badge && !error.includes('badge')) && (
+              <gcds-text
+                id="gcds-badge"
+                class="gcds-badge"
+                text-role="light"
+                margin-bottom="0"
+                size="caption"
+              >
+                <strong>
+                  <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
+                  {badge}
+                </strong>
+              </gcds-text>
+            )}
+            {Element != 'a' ? (
+              <Element class="gcds-card__title" {...taggedAttr}>
+                <gcds-link href={href}>{cardTitle}</gcds-link>
+              </Element>
+            ) : (
+              <gcds-link href={href} class="gcds-card__title" {...taggedAttr}>
+                {cardTitle}
+              </gcds-link>
+            )}
+            <div class="gcds-card__description">{renderDescription}</div>
+          </div>
+        </Host>
+      );
+    }
   }
 }
