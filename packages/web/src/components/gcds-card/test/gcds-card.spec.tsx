@@ -289,4 +289,34 @@ describe('gcds-card', () => {
     </gcds-card
     `);
   });
+
+  it('does not render - no href attribute', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        card-title="Card"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card">
+      <mock:shadow-root>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
+
+  it('does not render - no card-title attribute', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        href="#card"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card href="#card">
+      <mock:shadow-root>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
 });

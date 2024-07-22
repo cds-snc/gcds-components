@@ -27,9 +27,9 @@ export class GcdsCard {
   @Watch('cardTitle')
   validateCardTitle() {
     if (!this.cardTitle || this.cardTitle.trim() == '') {
-      this.error.push('cardTitle');
-    } else if (this.error.includes('cardTitle')) {
-      this.error.splice(this.error.indexOf('cardTitle'), 1);
+      this.errors.push('cardTitle');
+    } else if (this.errors.includes('cardTitle')) {
+      this.errors.splice(this.errors.indexOf('cardTitle'), 1);
     }
   }
 
@@ -40,9 +40,9 @@ export class GcdsCard {
   @Watch('href')
   validateHref() {
     if (!this.href || this.href.trim() == '') {
-      this.error.push('href');
-    } else if (this.error.includes('href')) {
-      this.error.splice(this.error.indexOf('href'), 1);
+      this.errors.push('href');
+    } else if (this.errors.includes('href')) {
+      this.errors.splice(this.errors.indexOf('href'), 1);
     }
   }
 
@@ -64,9 +64,9 @@ export class GcdsCard {
   validateBadge() {
     if (this.badge && this.badge.length > 20) {
       console.error(`${i18n['en'].badgeError} | ${i18n['fr'].badgeError}`);
-      this.error.push('badge');
-    } else if (this.error.includes('badge')) {
-      this.error.splice(this.error.indexOf('badge'), 1);
+      this.errors.push('badge');
+    } else if (this.errors.includes('badge')) {
+      this.errors.splice(this.errors.indexOf('badge'), 1);
     }
   }
 
@@ -86,9 +86,10 @@ export class GcdsCard {
   @State() lang: string;
 
   /**
-   * State to track validation on badge
+   * State to track validation on properties
+   * Contains a list of properties that have an error associated with them
    */
-  @State() error: Array<string> = [];
+  @State() errors: Array<string> = [];
 
   /**
    * Events
@@ -121,18 +122,32 @@ export class GcdsCard {
     observer.observe(this.el, observerConfig);
   }
 
+  /*
+   * Validate required properties
+   */
+  private validateRequiredProps() {
+    this.validateCardTitle();
+    this.validateHref();
+
+    if (this.errors.includes('href') || this.errors.includes('cardTitle')) {
+      return false;
+    }
+
+    return true;
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
 
-    this.validateCardTitle();
-    this.validateHref();
     this.validateBadge();
 
-    if (this.error.includes('href') || this.error.includes('cardTitle')) {
-      console.error('gcds-card: Error rendering, please check required properties \'card-title\' or \'href\'');
+    let valid = this.validateRequiredProps();
+
+    if (!valid) {
+      console.error(`${i18n['en'].renderError} | ${i18n['fr'].renderError} `);
     }
   }
 
@@ -156,7 +171,7 @@ export class GcdsCard {
       imgAlt,
       renderDescription,
       lang,
-      error,
+      errors,
     } = this;
 
     const Element = cardTitleTag;
@@ -167,7 +182,7 @@ export class GcdsCard {
       taggedAttr['aria-describedby'] = 'gcds-badge';
     }
 
-    if ((!error.includes('href') && !error.includes('cardTitle'))) {
+    if (this.validateRequiredProps()) {
       return (
         <Host>
           <div class="gcds-card">
@@ -178,7 +193,7 @@ export class GcdsCard {
                 class="gcds-card__image"
               />
             )}
-            {(badge && !error.includes('badge')) && (
+            {badge && !errors.includes('badge') && (
               <gcds-text
                 id="gcds-badge"
                 class="gcds-badge"
