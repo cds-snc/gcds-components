@@ -342,7 +342,8 @@ export class GcdsInput {
 
     // Use max-width to keep field responsive
     const style = {
-      maxWidth: `${size * 2}ch`,
+      // maxWidth: `${size * 2}ch`,
+      maxWidth: `calc(${size * 2}ch + (2 * var(--gcds-input-padding)))`,
     };
 
     const attrsInput = {

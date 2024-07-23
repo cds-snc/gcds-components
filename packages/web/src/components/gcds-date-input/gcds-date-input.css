@@ -1,3 +1,18 @@
-:host {
-  display: block;
+@layer reset, default;
+
+@layer reset {
+  :host {
+    display: block;
+  }
+}
+
+@layer default {
+  :host {
+    .gcds-date-input--month,
+    .gcds-date-input--year,
+    .gcds-date-input--day {
+      display: inline-block;
+      padding-right: 1rem;
+    }
+  }
 }

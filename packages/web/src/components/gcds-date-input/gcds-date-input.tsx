@@ -164,15 +164,25 @@ export class GcdsDateInput {
     // All form elements have something entered
     if (yearValue && monthValue && dayValue && format == 'full') {
       // Is the combined value a valid date
-      if (!isNaN(Date.parse(`${yearValue}-${monthValue}-${dayValue}`))) {
+      if (this.isValidDate(`${yearValue}-${monthValue}-${dayValue}`)) {
         this.value = `${yearValue}-${monthValue}-${dayValue}`;
         this.internals.setFormValue(this.value);
+      } else {
+        this.value = null;
+        this.internals.setFormValue(null);
+
+        return false;
       }
     } else if (yearValue && monthValue && format == 'compact') {
       // Is the combined value a valid date
-      if (!isNaN(Date.parse(`${yearValue}-${monthValue}`))) {
+      if (this.isValidDate(`${yearValue}-${monthValue}`)) {
         this.value = `${yearValue}-${monthValue}`;
         this.internals.setFormValue(this.value);
+      } else {
+        this.value = null;
+        this.internals.setFormValue(null);
+
+        return false;
       }
     } else {
       this.value = null;
@@ -188,7 +198,7 @@ export class GcdsDateInput {
    * Split YYYY-MM-DD value into parts depending on format
    */
   private splitFormValue() {
-    if (this.value && !isNaN(Date.parse(this.value))) {
+    if (this.value && this.isValidDate(this.value)) {
       if (this.format == 'compact') {
         let splitValue = this.value.split('-');
         this.yearValue = splitValue[0];
@@ -200,6 +210,22 @@ export class GcdsDateInput {
         this.dayValue = splitValue[2];
       }
     }
+  }
+
+  private isValidDate(dateString) {
+    let regEx = /^\d{4}-\d{2}-\d{2}$/;
+    let d = new Date(dateString);
+    let dNum = d.getTime();
+
+    // Small modifications to handle YYYY-MM format
+    if (this.format == 'compact') {
+      regEx = /^\d{4}-\d{2}$/;
+      d = new Date(`${dateString}-01`);
+    }
+
+    if (!dateString.match(regEx)) return false; // Invalid format
+    if (!dNum && dNum !== 0) return false; // NaN value, Invalid date
+    return true;
   }
 
   async componentWillLoad() {
@@ -234,6 +260,7 @@ export class GcdsDateInput {
         onInput={e => this.handleInput(e, 'month')}
         onChange={e => this.handleInput(e, 'month')}
         value={this.monthValue}
+        class="gcds-date-input--month"
       >
         <option value="01">{i18n[lang].january}</option>
         <option value="02">{i18n[lang].february}</option>
@@ -261,6 +288,7 @@ export class GcdsDateInput {
         value={this.yearValue}
         onInput={e => this.handleInput(e, 'year')}
         onChange={e => this.handleInput(e, 'year')}
+        class="gcds-date-input--year"
       ></gcds-input>
     );
 
@@ -275,6 +303,7 @@ export class GcdsDateInput {
         value={this.dayValue}
         onInput={e => this.handleInput(e, 'day')}
         onChange={e => this.handleInput(e, 'day')}
+        class="gcds-date-input--day"
       ></gcds-input>
     );
 
@@ -287,12 +316,13 @@ export class GcdsDateInput {
           errorMessage={errorMessage}
           required={required}
           lang={lang}
-        ></gcds-fieldset>
-        {format == 'compact'
-          ? [month, year]
-          : lang == 'en'
-            ? [month, day, year]
-            : [day, month, year]}
+        >
+          {format == 'compact'
+            ? [month, year]
+            : lang == 'en'
+              ? [month, day, year]
+              : [day, month, year]}
+        </gcds-fieldset>
       </Host>
     );
   }
