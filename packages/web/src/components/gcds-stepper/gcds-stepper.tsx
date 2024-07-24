@@ -1,5 +1,5 @@
 import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -25,7 +25,9 @@ export class GcdsStepper {
       isNaN(this.currentStep) ||
       this.currentStep > this.totalSteps
     ) {
-      this.renderError = true;
+      this.errors.push('currentStep');
+    } else if (this.errors.includes('currentStep')) {
+      this.errors.splice(this.errors.indexOf('currentStep'), 1);
     }
   }
 
@@ -40,7 +42,9 @@ export class GcdsStepper {
       isNaN(this.totalSteps) ||
       this.totalSteps < this.currentStep
     ) {
-      this.renderError = true;
+      this.errors.push('totalSteps');
+    } else if (this.errors.includes('totalSteps')) {
+      this.errors.splice(this.errors.indexOf('totalSteps'), 1);
     }
   }
 
@@ -50,9 +54,10 @@ export class GcdsStepper {
   @Prop() tag: 'h1' | 'h2' | 'h3' = 'h2';
 
   /**
-   * State to track if component should render
+   * State to track validation on properties
+   * Contains a list of properties that have an error associated with them
    */
-  @State() renderError: boolean = false;
+  @State() errors: Array<string> = [];
 
   /**
    * Language of rendered component
@@ -73,8 +78,25 @@ export class GcdsStepper {
 
   private validateChildren() {
     if (this.el.innerHTML.trim() == '') {
-      this.renderError = true;
+      this.errors.push('children');
+    } else if (this.errors.includes('children')) {
+      this.errors.splice(this.errors.indexOf('children'), 1);
     }
+  }
+
+  private validateRequiredProps() {
+    this.validateCurrentStep();
+    this.validateTotalSteps();
+    this.validateChildren();
+
+    if (
+      this.errors.includes('totalSteps') ||
+      this.errors.includes('currentStep') ||
+      this.errors.includes('children')
+    ) {
+      return false;
+    }
+    return true;
   }
 
   async componentWillLoad() {
@@ -83,13 +105,10 @@ export class GcdsStepper {
 
     this.updateLang();
 
-    // Validate step attributes
-    this.validateCurrentStep();
-    this.validateTotalSteps();
-    this.validateChildren();
+    let valid = this.validateRequiredProps();
 
-    if (this.renderError) {
-      console.error(`${i18n['en'].error} | ${i18n['fr'].error}`);
+    if (!valid) {
+      logError('gcds-stepper', this.errors);
     }
   }
 
@@ -98,7 +117,7 @@ export class GcdsStepper {
 
     return (
       <Host>
-        {!this.renderError && (
+        {this.validateRequiredProps() && (
           <gcds-heading
             tag={tag}
             class="gcds-stepper"
