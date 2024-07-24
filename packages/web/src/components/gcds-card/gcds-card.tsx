@@ -4,10 +4,12 @@ import {
   Host,
   Prop,
   h,
-  Fragment,
   State,
+  Event,
+  EventEmitter,
+  Watch,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -19,24 +21,35 @@ export class GcdsCard {
   @Element() el: HTMLElement;
 
   /**
-   * The type attribute specifies how the card renders as a link
-   */
-  @Prop({ reflect: true }) type: 'link' | 'action' = 'link';
-
-  /**
    * The card title attribute specifies the title that appears on the card
    */
   @Prop({ reflect: true }) cardTitle!: string;
-
-  /**
-   * The title element attribute specifies HTML element the title renders as
-   */
-  @Prop() titleElement: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
+  @Watch('cardTitle')
+  validateCardTitle() {
+    if (!this.cardTitle || this.cardTitle.trim() == '') {
+      this.errors.push('cardTitle');
+    } else if (this.errors.includes('cardTitle')) {
+      this.errors.splice(this.errors.indexOf('cardTitle'), 1);
+    }
+  }
 
   /**
    * The href attribute specifies the URL of the page the link goes to
    */
   @Prop({ reflect: true }) href!: string;
+  @Watch('href')
+  validateHref() {
+    if (!this.href || this.href.trim() == '') {
+      this.errors.push('href');
+    } else if (this.errors.includes('href')) {
+      this.errors.splice(this.errors.indexOf('href'), 1);
+    }
+  }
+
+  /**
+   * The card title tag attribute specifies HTML element the title renders as
+   */
+  @Prop() cardTitleTag: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
 
   /**
    * The description attribute specifies the body of text that appears on the card
@@ -44,9 +57,18 @@ export class GcdsCard {
   @Prop({ reflect: true }) description: string;
 
   /**
-   * The tag attribute specifies the tag text that appears above the card title
+   * The badge attribute specifies the badge text that appears in the top left corner of the card. 20 character limit.
    */
-  @Prop({ reflect: true }) tag: string;
+  @Prop({ reflect: true, mutable: true }) badge: string;
+  @Watch('badge')
+  validateBadge() {
+    if (this.badge && this.badge.length > 20) {
+      console.error(`${i18n['en'].badgeError} | ${i18n['fr'].badgeError}`);
+      this.errors.push('badge');
+    } else if (this.errors.includes('badge')) {
+      this.errors.splice(this.errors.indexOf('badge'), 1);
+    }
+  }
 
   /**
    * The img src attribute specifies the path to the image
@@ -63,6 +85,31 @@ export class GcdsCard {
    */
   @State() lang: string;
 
+  /**
+   * State to track validation on properties
+   * Contains a list of properties that have an error associated with them
+   */
+  @State() errors: Array<string> = [];
+
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when the card has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the card loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the card has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<void>;
+
   /*
    * Observe lang attribute change
    */
@@ -75,80 +122,104 @@ export class GcdsCard {
     observer.observe(this.el, observerConfig);
   }
 
+  /*
+   * Validate required properties
+   */
+  private validateRequiredProps() {
+    this.validateCardTitle();
+    this.validateHref();
+
+    if (this.errors.includes('href') || this.errors.includes('cardTitle')) {
+      return false;
+    }
+
+    return true;
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
+
+    this.validateBadge();
+
+    let valid = this.validateRequiredProps();
+
+    if (!valid) {
+      logError('gcds-card', this.errors, ['badge']);
+    }
   }
 
-  private get hasCardFooter() {
-    return !!this.el.querySelector('[slot="footer"]');
+  private get renderDescription() {
+    if (this.el.innerHTML.trim() != '') {
+      return <slot></slot>;
+    } else {
+      if (this.description) {
+        return <gcds-text>{this.description}</gcds-text>;
+      }
+    }
   }
 
   render() {
     const {
-      type,
       cardTitle,
-      titleElement,
+      cardTitleTag,
       href,
-      description,
-      tag,
+      badge,
       imgSrc,
       imgAlt,
-      hasCardFooter,
+      renderDescription,
       lang,
+      errors,
     } = this;
 
-    const Element = titleElement;
+    const Element = cardTitleTag;
 
     const taggedAttr = {};
 
-    if (tag) {
-      taggedAttr['aria-describedby'] = 'gcds-card__tag';
+    if (badge) {
+      taggedAttr['aria-describedby'] = 'gcds-badge';
     }
 
-    return (
-      <Host>
-        <div class={`gcds-card gcds-card--${type}`}>
-          {imgSrc && (
-            <img
-              src={imgSrc}
-              alt={imgAlt ? imgAlt : ''}
-              class="gcds-card__image"
-            />
-          )}
-          {tag && (
-            <gcds-text
-              id="gcds-card__tag"
-              class="gcds-card__tag"
-              text-role="secondary"
-              size="caption"
-            >
-              <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
-              {tag}
-            </gcds-text>
-          )}
-          {Element != 'a' ? (
-            <Element class="gcds-card__title" {...taggedAttr}>
-              <gcds-link href={href}>{cardTitle}</gcds-link>
-            </Element>
-          ) : (
-            <gcds-link href={href} class="gcds-card__title" {...taggedAttr}>
-              {cardTitle}
-            </gcds-link>
-          )}
-          {description && (
-            <gcds-text class="gcds-card__description">{description}</gcds-text>
-          )}
-          {hasCardFooter && (
-            <>
-              <div class="gcds-card__spacer"></div>
-              <slot name="footer"></slot>
-            </>
-          )}
-        </div>
-      </Host>
-    );
+    if (this.validateRequiredProps()) {
+      return (
+        <Host>
+          <div class="gcds-card">
+            {imgSrc && (
+              <img
+                src={imgSrc}
+                alt={imgAlt ? imgAlt : ''}
+                class="gcds-card__image"
+              />
+            )}
+            {badge && !errors.includes('badge') && (
+              <gcds-text
+                id="gcds-badge"
+                class="gcds-badge"
+                text-role="light"
+                margin-bottom="0"
+                size="caption"
+              >
+                <strong>
+                  <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
+                  {badge}
+                </strong>
+              </gcds-text>
+            )}
+            {Element != 'a' ? (
+              <Element class="gcds-card__title" {...taggedAttr}>
+                <gcds-link href={href}>{cardTitle}</gcds-link>
+              </Element>
+            ) : (
+              <gcds-link href={href} class="gcds-card__title" {...taggedAttr}>
+                {cardTitle}
+              </gcds-link>
+            )}
+            <div class="gcds-card__description">{renderDescription}</div>
+          </div>
+        </Host>
+      );
+    }
   }
 }

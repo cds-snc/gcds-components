@@ -17,15 +17,14 @@ describe('gcds-card', () => {
  */
 
 describe('gcds-card a11y tests', () => {
-  it('Colour contrast: Primary button-role, button-styles', async () => {
+  it('Colour contrast', async () => {
     const page = await newE2EPage();
     await page.setContent(`<gcds-card
       card-title="Card"
-      tag="Tag"
+      badge="Tag"
       description="This is the card description"
       href="#card"
     >
-      <p slot="footer">Metadata</p>
     </gcds-card>`);
 
     const colorContrastTest = new AxePuppeteer(page)

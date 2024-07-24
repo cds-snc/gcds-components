@@ -1,4 +1,4 @@
-@layer reset, default, slot, link, hover;
+@layer reset, default, link, hover, focus;
 
 @layer reset {
   :host {
@@ -18,18 +18,28 @@
 
 @layer default {
   :host .gcds-card {
-    border: var(--gcds-card-border);
-    border-radius: var(--gcds-card-border-radius);
     background-color: var(--gcds-card-background-color);
     display: block;
     padding: var(--gcds-card-padding);
     height: 100%;
     color: var(--gcds-card-color);
     position: relative;
+    box-shadow: var(--gcds-card-box-shadow);
+    overflow: hidden;
+    max-width: var(--gcds-card-max-width);
 
     > *:not(slot):not(.gcds-card__spacer) {
       display: block;
       margin: var(--gcds-card-margin);
+    }
+
+    .gcds-badge {
+      background-color: var(--gcds-card-badge-background-color);
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: var(--gcds-card-badge-padding);
+      text-wrap: nowrap;
     }
 
     .gcds-card__image {
@@ -37,31 +47,27 @@
     }
 
     .gcds-card__title {
-      font: var(--gcds-card-title-font);
       width: fit-content;
-    }
-  }
-}
 
-@layer slot {
-  :host .gcds-card:has(slot) {
-    display: flex;
-    flex-direction: column;
+      font: var(--gcds-card-title-font-desktop);
 
-    .gcds-card__spacer {
-      flex: 1;
+      @media only screen and (width < 48em) {
+        font: var(--gcds-card-title-font-mobile);
+      }
     }
 
-    ::slotted(*) {
-      color: var(--gcds-card-slot-color);
-      font: var(--gcds-card-slot-font) !important;
-      z-index: 2;
+    .gcds-card__description {
+      font: var(--gcds-card-description-font-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-card-description-font-mobile);
+      }
     }
   }
 }
 
 @layer link {
-  :host .gcds-card.gcds-card--link gcds-link::part(link):after {
+  :host .gcds-card gcds-link::part(link):after {
     position: absolute;
     top: 0;
     right: 0;
@@ -75,12 +81,30 @@
 
 @layer hover {
   @media (hover: hover) {
-    :host .gcds-card {
-      &.gcds-card--link:hover {
-        background-color: var(--gcds-card-hover-background-color);
-        cursor: pointer;
-        box-shadow: var(--gcds-card-hover-box-shadow);
-      }
+    :host .gcds-card:hover {
+      box-shadow: var(--gcds-card-hover-box-shadow);
+      background-color: var(--gcds-card-hover-background-color);
+      cursor: pointer;
+    }
+  }
+}
+
+@layer focus {
+  :host {
+    .gcds-card:has(:focus-within) {
+      box-shadow: var(--gcds-card-focus-box-shadow);
+      outline: var(--gcds-card-focus-outline);
+      outline-offset: var(--gcds-card-focus-outline-offset);
+    }
+
+    gcds-link::part(link):focus {
+      border: var(--gcds-card-focus-link-border);
+      box-shadow: var(--gcds-card-focus-link-box-shadow);
+      color: var(--gcds-card-focus-link-color);
+      background-color: var(--gcds-card-focus-link-background-color);
+      outline: var(--gcds-card-focus-link-outline);
+      text-decoration: underline currentColor
+       var(--gcds-card-focus-link-text-decoration-thickness);
     }
   }
 }
