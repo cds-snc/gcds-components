@@ -108,3 +108,23 @@ export const emitEvent = (
 
   return true;
 };
+
+// Log validation error for required properties in components
+export const logError = (
+  name,
+  errorArr,
+  optionalAttrsArrToRemove
+) => {
+  let engMsg = 'Render error, please check required properties.';
+  let frMsg = 'Erreur de rendu, veuillez vérifier les propriétés requises.';
+  let errors = [...errorArr];
+
+  // remove any potential optional attributes from errors array
+  for (const optionalAttr of optionalAttrsArrToRemove) {
+    if (errors.includes(optionalAttr)) {
+      errors.splice(errors.indexOf(optionalAttr), 1);
+    }
+  }
+
+  console.error(`${name}: ${engMsg} (${errors}) | ${name}: ${frMsg} (${errors})`);
+};

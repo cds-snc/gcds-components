@@ -9,7 +9,7 @@ import {
   EventEmitter,
   Watch,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -147,7 +147,7 @@ export class GcdsCard {
     let valid = this.validateRequiredProps();
 
     if (!valid) {
-      console.error(`${i18n['en'].renderError} | ${i18n['fr'].renderError} `);
+      logError('gcds-card', this.errors, ['badge']);
     }
   }
 
