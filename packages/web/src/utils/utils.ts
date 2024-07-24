@@ -109,20 +109,26 @@ export const emitEvent = (
   return true;
 };
 
-// Log validation error for required properties in components
+/* Log validation error for required properties in components
+ * @param name - name of the component i.e. <gcds-*>
+ * @param errorArr - array of attributes with errors
+ * @param optionalAttrsArrToRemove - array of optional attributes with errors to be removed from this error message
+ */
 export const logError = (
-  name,
-  errorArr,
-  optionalAttrsArrToRemove
+  name: string,
+  errorArr: string[],
+  optionalAttrsArrToRemove?: string[]
 ) => {
   let engMsg = 'Render error, please check required properties.';
   let frMsg = 'Erreur de rendu, veuillez vérifier les propriétés requises.';
   let errors = [...errorArr];
 
   // remove any potential optional attributes from errors array
-  for (const optionalAttr of optionalAttrsArrToRemove) {
-    if (errors.includes(optionalAttr)) {
-      errors.splice(errors.indexOf(optionalAttr), 1);
+  if (optionalAttrsArrToRemove && optionalAttrsArrToRemove.length > 0) {
+    for (const optionalAttr of optionalAttrsArrToRemove) {
+      if (errors.includes(optionalAttr)) {
+        errors.splice(errors.indexOf(optionalAttr), 1);
+      }
     }
   }
 
