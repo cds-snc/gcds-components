@@ -71,12 +71,47 @@ const createReactWrapperModules = async ({ entryPoints, distRoot }) => {
   console.info('writing modules completed!');
 };
 
-createReactWrapperModules({
-  entryPoints: readdirSync(COMPONENTS_DIR)
-    .filter((file) => file.startsWith('gcds') && file.endsWith('.js') && !file.endsWith('2.js'))
-    .map((file) => join(COMPONENTS_DIR, file)),
-  distRoot: join(DIST_DIR),
-}).catch((err) => {
-  console.error('unexpected error generating module!', err);
-  exit(1);
-});
+// Copy over the required stencil files, add required patch and modify imports in component files
+const patchStencil = async () => {
+
+  // Updating stencil import in component files
+  const componentOptions = {
+    files: './dist/esm/components/*.js',
+    from: '@stencil/core/internal/client',
+    to: '../lib/stencil',
+  };
+
+  await replaceInFile(componentOptions);
+
+  // Patching stencil
+  // Will need to check if the from property needs to be updated when we update @stencil/core
+  const stencilOptions = {
+    files: './dist/esm/lib/stencil/index.js',
+    from: "const win = typeof window !== 'undefined' ? window : {};",
+    to: "const win = typeof window !== 'undefined' ? window : globalThis || {};",
+  };
+
+  try {
+    const results = await replaceInFile(stencilOptions);
+
+    if (results[0].hasChanged) {
+      createReactWrapperModules({
+        entryPoints: readdirSync(COMPONENTS_DIR)
+          .filter((file) => file.startsWith('gcds') && file.endsWith('.js') && !file.endsWith('2.js'))
+          .map((file) => join(COMPONENTS_DIR, file)),
+        distRoot: join(DIST_DIR),
+      }).catch((err) => {
+        console.error('unexpected error generating module!', err);
+        exit(1);
+      });
+    } else {
+      throw new Error('Unable to patch Stencil');
+    }
+  }
+  catch(error) {
+    throw new Error(error)
+  }
+
+};
+
+patchStencil();

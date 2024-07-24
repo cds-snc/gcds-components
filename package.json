@@ -6,7 +6,6 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
-    "prebuild": "npm run patch:stenciljs",
     "build": "npx lerna run build --concurrency=1",
     "pretest": "npm run patch:stenciljs",
     "test": "npx lerna run test",
