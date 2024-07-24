@@ -21,6 +21,7 @@
  - [gcds-footer](../gcds-footer)
  - [gcds-lang-toggle](../gcds-lang-toggle)
  - [gcds-search](../gcds-search)
+ - [gcds-stepper](../gcds-stepper)
  - [gcds-topic-menu](../gcds-topic-menu)
 
 ### Graph
@@ -31,6 +32,7 @@ graph TD;
   gcds-footer --> gcds-sr-only
   gcds-lang-toggle --> gcds-sr-only
   gcds-search --> gcds-sr-only
+  gcds-stepper --> gcds-sr-only
   gcds-topic-menu --> gcds-sr-only
   style gcds-sr-only fill:#f9f,stroke:#333,stroke-width:4px
 ```
