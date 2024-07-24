@@ -84,7 +84,9 @@ const patchStencil = async () => {
   await replaceInFile(componentOptions);
 
   // Patching stencil
-  // Will need to check if the from property needs to be updated when we update @stencil/core
+  // Will need to check if the from property needs to be updated when we update @stencil/core@4.11.0
+  // - 3990 const win = typeof window !== 'undefined' ? window : {};
+  // + 3990 const win = typeof window !== 'undefined' ? window : globalThis || {};
   const stencilOptions = {
     files: './dist/esm/lib/stencil/index.js',
     from: "const win = typeof window !== 'undefined' ? window : {};",
