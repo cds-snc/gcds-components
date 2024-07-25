@@ -69,6 +69,7 @@ graph TD;
   gcds-file-uploader --> gcds-icon
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
+  gcds-error-message --> gcds-icon
   style gcds-file-uploader fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
