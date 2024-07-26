@@ -7,6 +7,7 @@ import {
   State,
   Event,
   EventEmitter,
+  Watch,
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
@@ -30,21 +31,57 @@ export class GcdsDateInput {
    * Name attribute for the date input.
    */
   @Prop() name!: string;
+  @Watch('name')
+  validateName() {
+    if (!this.name) {
+      this.errors.push('name');
+    } else if (this.errors.includes('name')) {
+      this.errors.splice(this.errors.indexOf('name'), 1);
+    }
+  }
 
   /**
    * Form field label
    */
   @Prop() label!: string;
+  @Watch('label')
+  validateLabel() {
+    if (!this.label) {
+      this.errors.push('label');
+    } else if (this.errors.includes('label')) {
+      this.errors.splice(this.errors.indexOf('label'), 1);
+    }
+  }
 
   /**
    * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
    */
   @Prop() format!: 'full' | 'compact';
+  @Watch('format')
+  validateFormat() {
+    if (!this.format || (this.format != 'full' && this.format != 'compact')) {
+      this.errors.push('format');
+    } else if (this.errors.includes('format')) {
+      this.errors.splice(this.errors.indexOf('format'), 1);
+    }
+  }
 
   /**
    * Default value for the date input element. Format: YYYY-MM-DD
    */
   @Prop({ mutable: true }) value?: string;
+  @Watch('value')
+  validateValue() {
+    if (this.value && !this.isValidDate(this.value)) {
+      this.errors.push('value');
+      this.value = '';
+      console.error(
+        `${i18n['en'].valueError}${i18n['en'][`valueFormat${this.format}`]} | ${i18n['fr'].valueError}${i18n['fr'][`valueFormat${this.format}`]}`,
+      );
+    } else if (this.errors.includes('value')) {
+      this.errors.splice(this.errors.indexOf('value'), 1);
+    }
+  }
 
   /**
    * Specifies if a form field is required or not.
@@ -84,6 +121,12 @@ export class GcdsDateInput {
    * State to track individual month value
    */
   @State() yearValue: string;
+
+  /**
+   * State to track validation on properties
+   * Contains a list of properties that have an error associated with them
+   */
+  @State() errors: Array<string> = [];
 
   /**
    * Language of rendered date input
@@ -244,15 +287,37 @@ export class GcdsDateInput {
   }
 
   private formatDay(e) {
-    if(!isNaN(e.target.value) && e.target.value.length === 1) {
+    if (!isNaN(e.target.value) && e.target.value.length === 1) {
       this.dayValue = '0' + e.target.value;
     }
+  }
+
+  private validateRequiredProps() {
+    this.validateName();
+    this.validateLabel();
+    this.validateFormat();
+
+    if (
+      this.errors.includes('name') ||
+      this.errors.includes('label') ||
+      this.errors.includes('format')
+    ) {
+      return false;
+    }
+    return true;
   }
 
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
+    let valid = this.validateRequiredProps();
+
+    if (!valid) {
+      // logError('gcds-date-input', this.errors);
+    }
+
+    this.validateValue();
     if (this.value && this.isValidDate(this.value)) {
       this.splitFormValue();
       this.setValue();
@@ -344,20 +409,22 @@ export class GcdsDateInput {
 
     return (
       <Host name={name}>
-        <gcds-fieldset
-          legend={label}
-          fieldsetId="date-input"
-          hint={hint}
-          errorMessage={errorMessage}
-          required={required}
-          lang={lang}
-        >
-          {format == 'compact'
-            ? [month, year]
-            : lang == 'en'
-              ? [month, day, year]
-              : [day, month, year]}
-        </gcds-fieldset>
+        {this.validateRequiredProps() && (
+          <gcds-fieldset
+            legend={label}
+            fieldsetId="date-input"
+            hint={hint}
+            errorMessage={errorMessage}
+            required={required}
+            lang={lang}
+          >
+            {format == 'compact'
+              ? [month, year]
+              : lang == 'en'
+                ? [month, day, year]
+                : [day, month, year]}
+          </gcds-fieldset>
+        )}
       </Host>
     );
   }

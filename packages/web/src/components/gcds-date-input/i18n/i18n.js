@@ -15,7 +15,10 @@ const I18N = {
     september: 'September',
     october: 'October',
     november: 'November',
-    december: 'December'
+    december: 'December',
+    valueError: 'gcds-date-input:  Value attribute contains an invalid date format. Expected format: ',
+    valueFormatfull: 'YYYY-MM-DD',
+    valueFormatcompact: 'YYYY-MM'
   },
   fr: {
     year: 'Année',
@@ -33,7 +36,10 @@ const I18N = {
     september: 'septembre',
     october: 'octobre',
     november: 'novembre',
-    december: 'décembre'
+    december: 'décembre',
+    valueError: 'gcds-date-input:  Value attribute contains an invalid date format. Expected format: ',
+    valueFormatfull: 'YYYY-MM-DD',
+    valueFormatcompact: 'YYYY-MM'
   },
 };
 
