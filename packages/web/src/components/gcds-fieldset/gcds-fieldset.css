@@ -9,6 +9,10 @@
       padding: 0;
     }
 
+    legend {
+      padding: 0;
+    }
+
     slot {
       display: block;
       margin: 0;

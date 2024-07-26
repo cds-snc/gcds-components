@@ -354,7 +354,7 @@ export class GcdsDateInput {
         onInput={e => this.handleInput(e, 'month')}
         onChange={e => this.handleInput(e, 'month')}
         value={this.monthValue}
-        class="gcds-date-input--month"
+        class="gcds-date-input__month"
         {...requiredAttr}
       >
         <option value="01">{i18n[lang].january}</option>
@@ -383,7 +383,7 @@ export class GcdsDateInput {
         value={this.yearValue}
         onInput={e => this.handleInput(e, 'year')}
         onChange={e => this.handleInput(e, 'year')}
-        class="gcds-date-input--year"
+        class="gcds-date-input__year"
         {...requiredAttr}
       ></gcds-input>
     );
@@ -402,7 +402,7 @@ export class GcdsDateInput {
           this.handleInput(e, 'day');
           this.formatDay(e);
         }}
-        class="gcds-date-input--day"
+        class="gcds-date-input__day"
         {...requiredAttr}
       ></gcds-input>
     );
@@ -416,6 +416,7 @@ export class GcdsDateInput {
             hint={hint}
             errorMessage={errorMessage}
             required={required}
+            class={`gcds-date-input__fieldset${hint ? ' gcds-date-input--hint' : ''}${errorMessage ? ' gcds-date-input--error' : ''}`}
             lang={lang}
           >
             {format == 'compact'
