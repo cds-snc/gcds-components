@@ -8,9 +8,18 @@ import {
   Event,
   EventEmitter,
   Watch,
+  Method,
+  Listen,
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
+import {
+  Validator,
+  defaultValidator,
+  ValidatorEntry,
+  getValidator,
+  requiredValidator,
+} from '../../validators';
 import i18n from './i18n/i18n';
 
 @Component({
@@ -26,6 +35,8 @@ export class GcdsDateInput {
   internals: ElementInternals;
 
   private initialValue?: string;
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * Name attribute for the date input.
@@ -97,11 +108,40 @@ export class GcdsDateInput {
    * Error message displayed below the legend and above form fields.
    */
   @Prop() errorMessage?: string;
+  @Watch('errorMessage')
+  validateErrorMessage() {
+    // if (this.disabled) {
+    //   this.errorMessage = '';
+    // } else if (!this.hasError && this.errorMessage) {
+    //   this.hasError = true;
+    // } else if (this.errorMessage == '') {
+    //   this.hasError = false;
+    // }
+  }
 
   /**
    * Specifies if the date input is disabled or not.
    */
   @Prop({ mutable: true }) disabled?: boolean = false;
+
+  /**
+   * Array of validators
+   */
+  @Prop({ mutable: true }) validator: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+
+  @Watch('validator')
+  validateValidator() {
+    if (this.validator && !this.validateOn) {
+      this.validateOn = 'blur';
+    }
+  }
+
+  /**
+   * Set event to call validator
+   */
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
 
   /**
    * States
@@ -121,6 +161,11 @@ export class GcdsDateInput {
    * State to track individual month value
    */
   @State() yearValue: string;
+
+  /**
+   * Specifies if the input is invalid.
+   */
+  @State() hasError: boolean;
 
   /**
    * State to track validation on properties
@@ -166,6 +211,36 @@ export class GcdsDateInput {
    * Emitted when an element has validated.
    */
   @Event() gcdsValid!: EventEmitter<object>;
+
+  /**
+   * Call any active validators
+   */
+  @Method()
+  async validate() {
+    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
+      // this.errorMessage = this._validator.errorMessage[this.lang];
+      // this.gcdsError.emit({
+      //   id: `#${this.inputId}`,
+      //   message: `${this.label} - ${this.errorMessage}`,
+      // });
+    } else {
+      this.errorMessage = '';
+      // this.gcdsValid.emit({ id: `#${this.inputId}` });
+    }
+  }
+
+  @Listen('submit', { target: 'document' })
+  submitListener(e) {
+    if (e.target == this.el.closest('form')) {
+      if (this.validateOn && this.validateOn != 'other') {
+        this.validate();
+      }
+
+      if (this.hasError) {
+        e.preventDefault();
+      }
+    }
+  }
 
   /*
    * Form internal functions
@@ -253,7 +328,7 @@ export class GcdsDateInput {
   }
 
   /**
-   * Split YYYY-MM-DD value into parts depending on format
+   * Split value into parts depending on format
    */
   private splitFormValue() {
     if (this.value && this.isValidDate(this.value)) {
@@ -270,6 +345,9 @@ export class GcdsDateInput {
     }
   }
 
+  /**
+   * Check if value is a valid date
+   */
   private isValidDate(dateString) {
     let regEx = /^\d{4}-\d{2}-\d{2}$/;
     let d = new Date(dateString);
@@ -286,6 +364,9 @@ export class GcdsDateInput {
     return true;
   }
 
+  /**
+   * Format day input value to add 0 to single digit values
+   */
   private formatDay(e) {
     if (!isNaN(e.target.value) && e.target.value.length === 1) {
       this.dayValue = '0' + e.target.value;
@@ -311,6 +392,8 @@ export class GcdsDateInput {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
+    this.validateValidator();
+
     let valid = this.validateRequiredProps();
 
     if (!valid) {
@@ -323,6 +406,19 @@ export class GcdsDateInput {
       this.setValue();
 
       this.initialValue = this.value;
+    }
+
+    // Assign required validator if needed
+    // requiredValidator(this.el, 'fieldset', this.type);
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
     }
   }
 
