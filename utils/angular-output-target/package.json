@@ -15,6 +15,7 @@
   },
   "scripts": {
     "prepublishOnly": "npm run build",
+    "preinstall": "rm -rf node_modules",
     "prebuild": "rimraf ./dist && npm run test",
     "build": "tsc && npm run rollup",
     "watch": "tsc --watch",
