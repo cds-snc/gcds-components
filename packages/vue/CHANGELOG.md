@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.23.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.22.4...gcds-components-vue-v0.23.0) (2024-07-31)
+
+
+### Patch
+
+* **gcds-components-vue:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.22.4 to ^0.23.0
+
 ## [0.22.4](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.22.3...gcds-components-vue-v0.22.4) (2024-07-29)
 
 
