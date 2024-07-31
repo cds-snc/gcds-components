@@ -33,7 +33,7 @@
     "lint-and-fix": "eslint . --fix"
   },
   "dependencies": {
-    "@stencil/core": "^4.11.0",
+    "@stencil/core": "4.11.0",
     "@stencil/react-output-target": "^0.5.3",
     "@storybook/addon-a11y": "^8.0.9",
     "@storybook/addons": "^7.6.17",
