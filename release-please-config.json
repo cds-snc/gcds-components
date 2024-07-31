@@ -27,7 +27,9 @@
     },
     "packages/react-ssr": {
       "component": "gcds-components-react-ssr",
-      "changelog-path": ""
+      "changelog-path": "",
+      "prerelease": true,
+      "prerelease-type": "canary"
     }
   },
   "changelog-sections": [
