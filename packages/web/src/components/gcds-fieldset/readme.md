@@ -56,6 +56,7 @@ graph TD;
   gcds-fieldset --> gcds-error-message
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
+  gcds-error-message --> gcds-icon
   style gcds-fieldset fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
