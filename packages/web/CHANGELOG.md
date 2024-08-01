@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.24.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.23.0...gcds-components-v0.24.0) (2024-08-01)
+
+
+### New Features
+
+* add visited state to link component ([#602](https://github.com/cds-snc/gcds-components/issues/602)) ([da4e524](https://github.com/cds-snc/gcds-components/commit/da4e524708e74ec485c9bec1805e09b3c67e125c))
+
 ## [0.23.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.4...gcds-components-v0.23.0) (2024-07-31)
 
 
