@@ -58,6 +58,7 @@
       "components": [
         "gcds-components-angular",
         "gcds-components-react",
+        "gcds-components-react-ssr",
         "gcds-components-vue",
         "gcds-components"
       ]
@@ -68,6 +69,7 @@
         "gcds-components",
         "gcds-components-angular",
         "gcds-components-react",
+        "gcds-components-react-ssr",
         "gcds-components-vue"
 
       ]
