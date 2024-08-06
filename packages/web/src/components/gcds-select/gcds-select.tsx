@@ -393,6 +393,7 @@ export class GcdsSelect {
             onInput={e => this.handleInput(e, this.gcdsInput)}
             onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-invalid={hasError ? 'true' : 'false'}
+            part="input"
             ref={element => (this.shadowElement = element as HTMLSelectElement)}
           >
             {defaultValue ? (

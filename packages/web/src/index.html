@@ -106,8 +106,23 @@
 
       <hr class="my-550" />
 
-      <form>
-
+      <form novalidate>
+        <gcds-date-input
+          label="Date input"
+          name="date"
+          lang="en"
+          format="full"
+          required
+        ></gcds-date-input>
+        
+        <!-- <gcds-date-input
+          label="Date input"
+          name="date"
+          lang="en"
+          format="compact"
+          value="2024-02"
+          hint="this is a hint"
+        ></gcds-date-input>
         <gcds-date-input
           label="Date input"
           name="date"
@@ -122,24 +137,8 @@
           format="full"
           value="2024-02-01"
           hint="this is a hint"
-        ></gcds-date-input>
-        <gcds-date-input
-          label="Date input"
-          name="date"
-          lang="en"
-          format="full"
-          value="2024-02-01"
           error-message="this is an error message"
-        ></gcds-date-input>
-        <gcds-date-input
-          label="Date input"
-          name="date"
-          lang="en"
-          format="full"
-          value="2024-02-01"
-          hint="this is a hint"
-          error-message="this is an error message"
-        ></gcds-date-input>
+        ></gcds-date-input> -->
 
         <gcds-button type="submit">Submit</gcds-button>
       </form>
@@ -306,6 +305,14 @@
           hint="Please enter your email."
           required
         ></gcds-input>
+
+      <gcds-date-input
+        label="Date input"
+        name="date-input"
+        lang="en"
+        format="full"
+        required
+      ></gcds-date-input>
 
         <gcds-input
           input-id="form-number"

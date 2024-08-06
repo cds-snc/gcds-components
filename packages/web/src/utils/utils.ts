@@ -9,15 +9,21 @@ export const inheritAttributes = (
   shadowElement: HTMLElement,
   attributes: string[] = [],
 ) => {
-  const attributeObject = {};
+  let attributeObject = {};
+  let attributesToRemove = [];
 
-  // Check for any aria or data attributes
+  // Check for any aria attributes
   for (let i = 0; i < el.attributes.length; i++) {
     const attr = el.attributes[i];
     if (attr.name.includes('aria-')) {
       attributeObject[attr.name] = attr.value;
-      el.removeAttribute(attr.name);
+      attributesToRemove.push(attr.name);
     }
+  }
+
+  // Remove attributes from host element
+  for (let i = 0; i < attributesToRemove.length; i++) {
+    el.removeAttribute(attributesToRemove[i]);
   }
 
   // Check for attributes defined by component
@@ -108,3 +114,41 @@ export const emitEvent = (
 
   return true;
 };
+
+export const isValidDate = (dateString, format) => {
+  // Define regex pattern to match YYYY-MM-DD format
+  let regex = /^\d{4}-\d{2}-\d{2}$/;
+
+  if (format == 'compact') {
+    // Define regex pattern to match YYYY-MM format
+    regex = /^\d{4}-\d{2}$/;
+  }
+
+  // Check if the format matches the regex
+  if (!regex.test(dateString)) {
+    return false;
+  }
+
+  // Parse the date string into a Date object
+  const formattedDate = `${dateString}${format === 'compact' ? '-15' : ''}`;
+  const date = new Date(formattedDate);
+
+  // Check if the date is valid
+  const [year, month, day] = formattedDate.split('-').map(Number);
+
+  // False positive leap year check
+  if (format === 'full' && month === 2 && day === 29 && !isLeapYear(year)) {
+    return false;
+  }
+
+  // Ensure the year, month, and day match the parsed date
+  return (
+    date.getFullYear() === year &&
+    date.getMonth() === month - 1 &&
+    date.getDate() + 1 === day
+  );
+};
+
+function isLeapYear(y) {
+  return !(y & 3 || (!(y % 25) && y & 15));
+}

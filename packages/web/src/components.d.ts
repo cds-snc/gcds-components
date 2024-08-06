@@ -264,6 +264,20 @@ export namespace Components {
          */
         "required"?: boolean;
         /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
           * Default value for the date input element. Format: YYYY-MM-DD
          */
         "value"?: string;
@@ -2072,6 +2086,16 @@ declare namespace LocalJSX {
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Default value for the date input element. Format: YYYY-MM-DD
          */

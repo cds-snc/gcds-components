@@ -12,7 +12,7 @@ import {
   Listen,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage, observerConfig, isValidDate } from '../../utils/utils';
 import {
   Validator,
   defaultValidator,
@@ -35,6 +35,8 @@ export class GcdsDateInput {
   internals: ElementInternals;
 
   private initialValue?: string;
+
+  // private fieldsetElement?: HTMLGcdsFieldsetElement;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -83,7 +85,7 @@ export class GcdsDateInput {
   @Prop({ mutable: true }) value?: string;
   @Watch('value')
   validateValue() {
-    if (this.value && !this.isValidDate(this.value)) {
+    if (this.value && !isValidDate(this.value, this.format)) {
       this.errors.push('value');
       this.value = '';
       console.error(
@@ -107,17 +109,7 @@ export class GcdsDateInput {
   /**
    * Error message displayed below the legend and above form fields.
    */
-  @Prop() errorMessage?: string;
-  @Watch('errorMessage')
-  validateErrorMessage() {
-    // if (this.disabled) {
-    //   this.errorMessage = '';
-    // } else if (!this.hasError && this.errorMessage) {
-    //   this.hasError = true;
-    // } else if (this.errorMessage == '') {
-    //   this.hasError = false;
-    // }
-  }
+  @Prop({ mutable: true }) errorMessage?: string;
 
   /**
    * Specifies if the date input is disabled or not.
@@ -130,7 +122,6 @@ export class GcdsDateInput {
   @Prop({ mutable: true }) validator: Array<
     string | ValidatorEntry | Validator<string>
   >;
-
   @Watch('validator')
   validateValidator() {
     if (this.validator && !this.validateOn) {
@@ -163,9 +154,13 @@ export class GcdsDateInput {
   @State() yearValue: string;
 
   /**
-   * Specifies if the input is invalid.
+   * Specifies if the date input is invalid.
    */
-  @State() hasError: boolean;
+  @State() hasError: object = {
+    day: false,
+    month: false,
+    year: false,
+  };
 
   /**
    * State to track validation on properties
@@ -192,6 +187,12 @@ export class GcdsDateInput {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
+  private onBlur = () => {
+    if (this.validateOn == 'blur') {
+      this.validate();
+    }
+  };
+
   /**
    * Emitted when the element has received input.
    */
@@ -217,27 +218,40 @@ export class GcdsDateInput {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
-      // this.errorMessage = this._validator.errorMessage[this.lang];
-      // this.gcdsError.emit({
-      //   id: `#${this.inputId}`,
-      //   message: `${this.label} - ${this.errorMessage}`,
-      // });
+    const validationResult = this._validator.validate(this.name);
+    if (!validationResult.valid) {
+      this.errorMessage = validationResult.reason[this.lang];
+      this.hasError = { ...validationResult.errors };
+      this.gcdsError.emit({
+        message: `${this.label} - ${this.errorMessage}`,
+        errors: validationResult.errors,
+      });
     } else {
       this.errorMessage = '';
-      // this.gcdsValid.emit({ id: `#${this.inputId}` });
+      this.gcdsValid.emit();
+      this.hasError = {
+        day: false,
+        month: false,
+        year: false,
+      };
     }
   }
 
+  /*
+   * Event listeners
+   */
+
   @Listen('submit', { target: 'document' })
-  submitListener(e) {
+  async submitListener(e) {
     if (e.target == this.el.closest('form')) {
       if (this.validateOn && this.validateOn != 'other') {
         this.validate();
       }
 
-      if (this.hasError) {
-        e.preventDefault();
+      for (const key in this.hasError) {
+        if (this.hasError[key]) {
+          e.preventDefault();
+        }
       }
     }
   }
@@ -245,6 +259,7 @@ export class GcdsDateInput {
   /*
    * Form internal functions
    */
+
   formResetCallback() {
     if (this.value != this.initialValue) {
       this.internals.setFormValue(this.initialValue);
@@ -269,6 +284,9 @@ export class GcdsDateInput {
     observer.observe(this.el, observerConfig);
   }
 
+  /*
+   * Handle input event to update state
+   */
   private handleInput = (e, type) => {
     const val = e.target && e.target.value;
 
@@ -297,7 +315,7 @@ export class GcdsDateInput {
     // All form elements have something entered
     if (yearValue && monthValue && dayValue && format == 'full') {
       // Is the combined value a valid date
-      if (this.isValidDate(`${yearValue}-${monthValue}-${dayValue}`)) {
+      if (isValidDate(`${yearValue}-${monthValue}-${dayValue}`, this.format)) {
         this.value = `${yearValue}-${monthValue}-${dayValue}`;
         this.internals.setFormValue(this.value);
       } else {
@@ -308,7 +326,7 @@ export class GcdsDateInput {
       }
     } else if (yearValue && monthValue && format == 'compact') {
       // Is the combined value a valid date
-      if (this.isValidDate(`${yearValue}-${monthValue}`)) {
+      if (isValidDate(`${yearValue}-${monthValue}`, this.format)) {
         this.value = `${yearValue}-${monthValue}`;
         this.internals.setFormValue(this.value);
       } else {
@@ -331,7 +349,7 @@ export class GcdsDateInput {
    * Split value into parts depending on format
    */
   private splitFormValue() {
-    if (this.value && this.isValidDate(this.value)) {
+    if (this.value && isValidDate(this.value, this.format)) {
       if (this.format == 'compact') {
         let splitValue = this.value.split('-');
         this.yearValue = splitValue[0];
@@ -343,25 +361,6 @@ export class GcdsDateInput {
         this.dayValue = splitValue[2];
       }
     }
-  }
-
-  /**
-   * Check if value is a valid date
-   */
-  private isValidDate(dateString) {
-    let regEx = /^\d{4}-\d{2}-\d{2}$/;
-    let d = new Date(dateString);
-    let dNum = d.getTime();
-
-    // Small modifications to handle YYYY-MM format
-    if (this.format == 'compact') {
-      regEx = /^\d{4}-\d{2}$/;
-      d = new Date(`${dateString}-01`);
-    }
-
-    if (!dateString.match(regEx)) return false; // Invalid format
-    if (!dNum && dNum !== 0) return false; // NaN value, Invalid date
-    return true;
   }
 
   /**
@@ -394,6 +393,13 @@ export class GcdsDateInput {
 
     this.validateValidator();
 
+    // Assign required validator if needed
+    requiredValidator(this.el, 'date-input');
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
+
     let valid = this.validateRequiredProps();
 
     if (!valid) {
@@ -401,18 +407,11 @@ export class GcdsDateInput {
     }
 
     this.validateValue();
-    if (this.value && this.isValidDate(this.value)) {
+    if (this.value && isValidDate(this.value, this.format)) {
       this.splitFormValue();
       this.setValue();
 
       this.initialValue = this.value;
-    }
-
-    // Assign required validator if needed
-    // requiredValidator(this.el, 'fieldset', this.type);
-
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
     }
   }
 
@@ -432,6 +431,7 @@ export class GcdsDateInput {
       errorMessage,
       disabled,
       lang,
+      hasError,
     } = this;
 
     let requiredAttr = {};
@@ -450,8 +450,9 @@ export class GcdsDateInput {
         onInput={e => this.handleInput(e, 'month')}
         onChange={e => this.handleInput(e, 'month')}
         value={this.monthValue}
-        class="gcds-date-input__month"
+        class={`gcds-date-input__month ${hasError['month'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
+        aria-invalid={hasError['month'].toString()}
       >
         <option value="01">{i18n[lang].january}</option>
         <option value="02">{i18n[lang].february}</option>
@@ -479,8 +480,9 @@ export class GcdsDateInput {
         value={this.yearValue}
         onInput={e => this.handleInput(e, 'year')}
         onChange={e => this.handleInput(e, 'year')}
-        class="gcds-date-input__year"
+        class={`gcds-date-input__year ${hasError['year'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
+        aria-invalid={hasError['year'].toString()}
       ></gcds-input>
     );
 
@@ -498,13 +500,14 @@ export class GcdsDateInput {
           this.handleInput(e, 'day');
           this.formatDay(e);
         }}
-        class="gcds-date-input__day"
+        class={`gcds-date-input__day ${hasError['day'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
+        aria-invalid={hasError['day'].toString()}
       ></gcds-input>
     );
 
     return (
-      <Host name={name}>
+      <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
           <gcds-fieldset
             legend={label}
@@ -514,6 +517,7 @@ export class GcdsDateInput {
             required={required}
             class={`gcds-date-input__fieldset${hint ? ' gcds-date-input--hint' : ''}${errorMessage ? ' gcds-date-input--error' : ''}`}
             lang={lang}
+            data-date-input={format}
           >
             {format == 'compact'
               ? [month, year]

@@ -405,6 +405,7 @@ export class GcdsInput {
             aria-invalid={errorMessage ? 'true' : 'false'}
             size={size}
             style={size ? style : null}
+            part="input"
             ref={element => (this.shadowElement = element as HTMLElement)}
           />
         </div>

@@ -39,5 +39,10 @@
     .gcds-date-input--error {
       --gcds-fieldset-legend-margin: 0 0 0.1875rem;
     }
+
+    gcds-input.gcds-date-input--error::part(input),
+    gcds-select.gcds-date-input--error::part(input) {
+      border-color: var(--gcds-input-danger-border);
+    }
   }
 }
