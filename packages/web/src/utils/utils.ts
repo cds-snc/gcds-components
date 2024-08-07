@@ -115,6 +115,32 @@ export const emitEvent = (
   return true;
 };
 
+/* Log validation error for required properties in components
+ * @param name - name of the component i.e. <gcds-*>
+ * @param errorArr - array of attributes with errors
+ * @param optionalAttrsArrToRemove - array of optional attributes with errors to be removed from this error message
+ */
+export const logError = (
+  name: string,
+  errorArr: string[],
+  optionalAttrsArrToRemove?: string[]
+) => {
+  let engMsg = 'Render error, please check required properties.';
+  let frMsg = 'Erreur de rendu, veuillez vérifier les propriétés requises.';
+  let errors = [...errorArr];
+
+  // remove any potential optional attributes from errors array
+  if (optionalAttrsArrToRemove && optionalAttrsArrToRemove.length > 0) {
+    for (const optionalAttr of optionalAttrsArrToRemove) {
+      if (errors.includes(optionalAttr)) {
+        errors.splice(errors.indexOf(optionalAttr), 1);
+      }
+    }
+  }
+
+  console.error(`${name}: ${engMsg} (${errors}) | ${name}: ${frMsg} (${errors})`);
+};
+
 export const isValidDate = (dateString, format) => {
   // Define regex pattern to match YYYY-MM-DD format
   let regex = /^\d{4}-\d{2}-\d{2}$/;

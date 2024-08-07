@@ -12,7 +12,12 @@ import {
   Listen,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig, isValidDate } from '../../utils/utils';
+import {
+  assignLanguage,
+  observerConfig,
+  isValidDate,
+  logError,
+} from '../../utils/utils';
 import {
   Validator,
   defaultValidator,
@@ -403,7 +408,7 @@ export class GcdsDateInput {
     let valid = this.validateRequiredProps();
 
     if (!valid) {
-      // logError('gcds-date-input', this.errors);
+      logError('gcds-date-input', this.errors);
     }
 
     this.validateValue();
@@ -478,6 +483,7 @@ export class GcdsDateInput {
         size={4}
         disabled={disabled}
         value={this.yearValue}
+        autocomplete="year"
         onInput={e => this.handleInput(e, 'year')}
         onChange={e => this.handleInput(e, 'year')}
         class={`gcds-date-input__year ${hasError['year'] ? 'gcds-date-input--error' : ''}`}
@@ -495,6 +501,7 @@ export class GcdsDateInput {
         size={2}
         disabled={disabled}
         value={this.dayValue}
+        autocomplete="day"
         onInput={e => this.handleInput(e, 'day')}
         onChange={e => {
           this.handleInput(e, 'day');
