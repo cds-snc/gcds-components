@@ -98,6 +98,8 @@ export const GcdsDateInput = /*@__PURE__*/ defineContainer<JSX.GcdsDateInput>('g
   'hint',
   'errorMessage',
   'disabled',
+  'validator',
+  'validateOn',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsInput',

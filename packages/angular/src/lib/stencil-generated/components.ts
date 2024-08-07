@@ -212,7 +212,8 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'label', 'name', 'required', 'value'],
+  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],
+  methods: ['validate'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -220,7 +221,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'label', 'name', 'required', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
 })
 export class GcdsDateInput {
   protected el: HTMLElement;
