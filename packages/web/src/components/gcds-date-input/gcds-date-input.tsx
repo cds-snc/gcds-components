@@ -88,7 +88,7 @@ export class GcdsDateInput {
   @Prop({ mutable: true }) value?: string;
   @Watch('value')
   validateValue() {
-    if (this.value && !isValidDate(this.value, this.format)) {
+    if (this.value && !isValidDate(this.value)) {
       this.errors.push('value');
       this.value = '';
       console.error(
@@ -144,17 +144,17 @@ export class GcdsDateInput {
   /**
    * State to track individual month value
    */
-  @State() monthValue: string;
+  @State() monthValue: string = '';
 
   /**
    * State to track individual month value
    */
-  @State() dayValue: string;
+  @State() dayValue: string = '';
 
   /**
    * State to track individual month value
    */
-  @State() yearValue: string;
+  @State() yearValue: string = '';
 
   /**
    * Specifies if the date input is invalid.
@@ -221,7 +221,11 @@ export class GcdsDateInput {
    */
   @Method()
   async validate() {
-    const validationResult = this._validator.validate(this.name);
+    const validationResult = this._validator.validate(
+      this.format === 'full'
+        ? `${this.yearValue}-${this.monthValue}-${this.dayValue}`
+        : `${this.yearValue}-${this.monthValue}`,
+    );
     if (!validationResult.valid) {
       this.errorMessage = validationResult.reason[this.lang];
       this.hasError = { ...validationResult.errors };
@@ -318,7 +322,7 @@ export class GcdsDateInput {
     // All form elements have something entered
     if (yearValue && monthValue && dayValue && format == 'full') {
       // Is the combined value a valid date
-      if (isValidDate(`${yearValue}-${monthValue}-${dayValue}`, this.format)) {
+      if (isValidDate(`${yearValue}-${monthValue}-${dayValue}`)) {
         this.value = `${yearValue}-${monthValue}-${dayValue}`;
         this.internals.setFormValue(this.value);
       } else {
@@ -329,7 +333,7 @@ export class GcdsDateInput {
       }
     } else if (yearValue && monthValue && format == 'compact') {
       // Is the combined value a valid date
-      if (isValidDate(`${yearValue}-${monthValue}`, this.format)) {
+      if (isValidDate(`${yearValue}-${monthValue}`)) {
         this.value = `${yearValue}-${monthValue}`;
         this.internals.setFormValue(this.value);
       } else {
@@ -352,7 +356,7 @@ export class GcdsDateInput {
    * Split value into parts depending on format
    */
   private splitFormValue() {
-    if (this.value && isValidDate(this.value, this.format)) {
+    if (this.value && isValidDate(this.value)) {
       if (this.format == 'compact') {
         let splitValue = this.value.split('-');
         this.yearValue = splitValue[0];
@@ -410,7 +414,7 @@ export class GcdsDateInput {
     }
 
     this.validateValue();
-    if (this.value && isValidDate(this.value, this.format)) {
+    if (this.value && isValidDate(this.value)) {
       this.splitFormValue();
       this.setValue();
 

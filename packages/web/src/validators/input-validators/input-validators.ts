@@ -70,32 +70,28 @@ const errorMessage = {
 };
 
 export const requiredDateInput: Validator<string> = {
-  validate: (name: string) => {
-    const dateInput = document.querySelector(
-      `[name=${name}]`,
-    ) as HTMLGcdsDateInputElement;
-
-    const dateValues = findDateInputElementValues(dateInput, dateInput.format);
-    let fullDate = '';
-
-    if (dateInput.format === 'full') {
-      fullDate = `${dateValues.year}-${dateValues.month}-${dateValues.day}`;
-    } else {
-      fullDate = `${dateValues.year}-${dateValues.month}`;
-    }
-
-    if (isValidDate(fullDate, dateInput.format)) {
+  validate: (date: string) => {
+    if (isValidDate(date)) {
       return { valid: true };
     }
 
-    const error = getDateInputError(dateValues);
+    let splitDate = date.split('-');
+    let dateObject = {
+      day: splitDate[2],
+      month: splitDate[1],
+      year: splitDate[0],
+    };
+
+    let format = splitDate.length === 3 ? 'full' : 'compact';
+
+    const error = getDateInputError(dateObject, format);
 
     return error;
   },
   errorMessage: errorMessage,
 };
 
-const getDateInputError = dateValues => {
+const getDateInputError = (dateValues, format) => {
   const { day, month, year } = dateValues;
 
   let errorResponse = {
@@ -126,13 +122,19 @@ const getDateInputError = dateValues => {
     errorResponse.reason.fr = errorMessage.fr.missingday;
 
     // No month set
-  } else if (day && !month && year) {
+  } else if (
+    (day && !month && year) ||
+    (!day && !month && year && format === 'compact')
+  ) {
     errorResponse.errors.month = true;
     errorResponse.reason.en = errorMessage.en.missingmonth;
     errorResponse.reason.fr = errorMessage.fr.missingmonth;
 
     // No year set
-  } else if (day && month && !year) {
+  } else if (
+    (day && month && !year) ||
+    (!day && month && !year && format === 'compact')
+  ) {
     errorResponse.errors.year = true;
     errorResponse.reason.en = errorMessage.en.missingyear;
     errorResponse.reason.fr = errorMessage.fr.missingyear;
@@ -178,42 +180,4 @@ const getDateInputError = dateValues => {
   }
 
   return errorResponse;
-};
-
-const findDateInputElementValues = (
-  dateInput: HTMLGcdsDateInputElement,
-  format: string,
-) => {
-  if (format === 'full') {
-    return {
-      month: (
-        dateInput.shadowRoot.querySelector(
-          '.gcds-date-input__month',
-        ) as HTMLGcdsSelectElement
-      ).value,
-      year: (
-        dateInput.shadowRoot.querySelector(
-          '.gcds-date-input__year',
-        ) as HTMLGcdsInputElement
-      ).value,
-      day: (
-        dateInput.shadowRoot.querySelector(
-          '.gcds-date-input__day',
-        ) as HTMLGcdsInputElement
-      ).value,
-    };
-  } else {
-    return {
-      month: (
-        dateInput.shadowRoot.querySelector(
-          '.gcds-date-input__month',
-        ) as HTMLGcdsSelectElement
-      ).value,
-      year: (
-        dateInput.shadowRoot.querySelector(
-          '.gcds-date-input__year',
-        ) as HTMLGcdsInputElement
-      ).value,
-    };
-  }
 };
