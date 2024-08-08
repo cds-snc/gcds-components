@@ -358,7 +358,6 @@ export class GcdsInput {
 
     // Use max-width to keep field responsive
     const style = {
-      // maxWidth: `${size * 2}ch`,
       maxWidth: `calc(${size * 2}ch + (2 * var(--gcds-input-padding)))`,
     };
 
@@ -429,7 +428,6 @@ export class GcdsInput {
             style={size ? style : null}
             part="input"
             ref={element => (this.shadowElement = element as HTMLElement)}
-            data-test={inheritedAttributes['aria-invalid']}
           />
         </div>
       </Host>
