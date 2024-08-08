@@ -155,6 +155,18 @@ export class GcdsSelect {
   @State() options: Element[];
 
   /**
+   * Watch HTML attribute aria-invalid to inherit changes
+   */
+  @Watch('aria-invalid')
+  ariaInvalidWatcher() {
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
+  }
+  @Watch('aria-description')
+  ariaDescriptiondWatcher() {
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
+  }
+
+  /**
    * Events
    */
 
@@ -392,7 +404,13 @@ export class GcdsSelect {
             onFocus={() => this.gcdsFocus.emit()}
             onInput={e => this.handleInput(e, this.gcdsInput)}
             onChange={e => this.handleInput(e, this.gcdsChange)}
-            aria-invalid={hasError ? 'true' : 'false'}
+            aria-invalid={
+              inheritedAttributes['aria-invalid'] === 'true'
+                ? inheritedAttributes['aria-invalid']
+                : errorMessage
+                  ? 'true'
+                  : 'false'
+            }
             part="input"
             ref={element => (this.shadowElement = element as HTMLSelectElement)}
           >

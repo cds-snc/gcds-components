@@ -458,6 +458,7 @@ export class GcdsDateInput {
         class={`gcds-date-input__month ${hasError['month'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
         aria-invalid={hasError['month'].toString()}
+        aria-description={hasError['month'] && errorMessage}
       >
         <option value="01">{i18n[lang].january}</option>
         <option value="02">{i18n[lang].february}</option>
@@ -489,6 +490,7 @@ export class GcdsDateInput {
         class={`gcds-date-input__year ${hasError['year'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
         aria-invalid={hasError['year'].toString()}
+        aria-description={hasError['year'] && errorMessage}
       ></gcds-input>
     );
 
@@ -510,6 +512,7 @@ export class GcdsDateInput {
         class={`gcds-date-input__day ${hasError['day'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
         aria-invalid={hasError['day'].toString()}
+        aria-description={hasError['day'] && errorMessage}
       ></gcds-input>
     );
 

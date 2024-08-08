@@ -21,11 +21,6 @@ export const inheritAttributes = (
     }
   }
 
-  // Remove attributes from host element
-  for (let i = 0; i < attributesToRemove.length; i++) {
-    el.removeAttribute(attributesToRemove[i]);
-  }
-
   // Check for attributes defined by component
   attributes.forEach(attr => {
     if (
@@ -141,7 +136,7 @@ export const logError = (
   console.error(`${name}: ${engMsg} (${errors}) | ${name}: ${frMsg} (${errors})`);
 };
 
-export const isValidDate = (dateString, format) => {
+export const isValidDate = (dateString: string, format: 'full' | 'compact') => {
   // Define regex pattern to match YYYY-MM-DD format
   let regex = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -175,6 +170,6 @@ export const isValidDate = (dateString, format) => {
   );
 };
 
-function isLeapYear(y) {
+function isLeapYear(y: number) {
   return !(y & 3 || (!(y % 25) && y & 15));
 }
