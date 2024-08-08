@@ -10,8 +10,11 @@ describe('gcds-error-message', () => {
     expect(root).toEqualHtml(`
       <gcds-error-message message-id="input-renders" id="error-message-input-renders" class="gcds-error-message-wrapper">
         <mock:shadow-root>
-          <gcds-text class="error-message" role="alert" margin-bottom="0">
-            <slot></slot>
+          <gcds-text class="error-message" role="alert" margin-bottom="300">
+            <gcds-icon name="triangle-exclamation" margin-right="100"></gcds-icon>
+            <strong>
+              <slot></slot>
+            </strong>
           </gcds-text>
         </mock:shadow-root>
         This field is required

@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.24.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.23.0...gcds-components-v0.24.0) (2024-08-01)
+
+
+### New Features
+
+* add visited state to link component ([#602](https://github.com/cds-snc/gcds-components/issues/602)) ([da4e524](https://github.com/cds-snc/gcds-components/commit/da4e524708e74ec485c9bec1805e09b3c67e125c))
+
+## [0.23.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.4...gcds-components-v0.23.0) (2024-07-31)
+
+
+### New Features
+
+* add react ssr package ([#587](https://github.com/cds-snc/gcds-components/issues/587)) ([bf3fd1e](https://github.com/cds-snc/gcds-components/commit/bf3fd1ee11429ae9ff97047547f6bcedd2fd8c3d))
+
+## [0.22.4](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.3...gcds-components-v0.22.4) (2024-07-29)
+
+
+### Bug Fixes
+
+* roll back changes to the angular build process ([#597](https://github.com/cds-snc/gcds-components/issues/597)) ([0b62c3a](https://github.com/cds-snc/gcds-components/commit/0b62c3ab4a1ac4f65401b92fba732f9166c9e39d))
+
+## [0.22.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.2...gcds-components-v0.22.3) (2024-07-29)
+
+
+### Code Refactoring
+
+* update error message design ([#592](https://github.com/cds-snc/gcds-components/issues/592)) ([5f1b94e](https://github.com/cds-snc/gcds-components/commit/5f1b94e83076c8b97a4f110ac7269acc15cc67f4))
+
 ## [0.22.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.1...gcds-components-v0.22.2) (2024-07-10)
 
 

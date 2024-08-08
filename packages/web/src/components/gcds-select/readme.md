@@ -68,6 +68,7 @@ graph TD;
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-date-input --> gcds-select
+  gcds-error-message --> gcds-icon
   style gcds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

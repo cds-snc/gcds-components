@@ -1,4 +1,4 @@
-@layer reset, default, display, size, variant, hover, focus;
+@layer reset, default, display, size, variant, hover, visited, focus;
 
 @layer reset {
   :host {
@@ -67,6 +67,12 @@
         color: var(--gcds-link-hover);
       }
     }
+  }
+}
+
+@layer visited {
+  :host .gcds-link:not(.variant-light):visited {
+    color: var(--gcds-link-visited);
   }
 }
 
