@@ -91,7 +91,7 @@ export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('g
 
 export const GcdsDateInput = /*@__PURE__*/ defineContainer<JSX.GcdsDateInput>('gcds-date-input', undefined, [
   'name',
-  'label',
+  'legend',
   'format',
   'value',
   'required',

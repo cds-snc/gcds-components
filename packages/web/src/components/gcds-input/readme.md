@@ -70,8 +70,8 @@ graph TD;
   gcds-input --> gcds-error-message
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
-  gcds-date-input --> gcds-input
   gcds-error-message --> gcds-icon
+  gcds-date-input --> gcds-input
   style gcds-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

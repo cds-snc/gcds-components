@@ -252,9 +252,9 @@ export namespace Components {
          */
         "hint"?: string;
         /**
-          * Form field label
+          * Fieldset legend
          */
-        "label": string;
+        "legend": string;
         /**
           * Name attribute for the date input.
          */
@@ -2051,9 +2051,9 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
-          * Form field label
+          * Fieldset legend
          */
-        "label": string;
+        "legend": string;
         /**
           * Name attribute for the date input.
          */

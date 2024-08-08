@@ -53,7 +53,7 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
-    label: {
+    legend: {
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -115,7 +115,7 @@ const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-date-input
-  label="${args.label}"
+  legend="${args.legend}"
   name="${args.name}"
   format="${args.format}"
   ${args.value ? `value="${args.value}"` : null}
@@ -130,7 +130,7 @@ const Template = args =>
 
 <!-- React code -->
 <GcdsDateInput
-  label="${args.label}"
+  legend="${args.legend}"
   name="${args.name}"
   format="${args.format}"
   ${args.value ? `value="${args.value}"` : null}
@@ -145,7 +145,7 @@ const Template = args =>
 
 const TemplatePlayground = args => `
 <gcds-date-input
-  label="${args.label}"
+  legend="${args.legend}"
   name="${args.name}"
   format="${args.format}"
   ${args.value ? `value="${args.value}"` : null}
@@ -164,7 +164,7 @@ const TemplatePlayground = args => `
 export const Default = Template.bind({});
 Default.args = {
   name: 'example-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: '',
@@ -180,7 +180,7 @@ Default.args = {
 export const FullEN = Template.bind({});
 FullEN.args = {
   name: 'FullEN-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: '',
@@ -196,7 +196,7 @@ FullEN.args = {
 export const FullFR = Template.bind({});
 FullFR.args = {
   name: 'FullFR-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: '',
@@ -212,7 +212,7 @@ FullFR.args = {
 export const CompactEN = Template.bind({});
 CompactEN.args = {
   name: 'CompactEN-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'compact',
   value: '',
   hint: '',
@@ -228,7 +228,7 @@ CompactEN.args = {
 export const CompactFR = Template.bind({});
 CompactFR.args = {
   name: 'CompactFR-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'compact',
   value: '',
   hint: '',
@@ -244,7 +244,7 @@ CompactFR.args = {
 export const Required = Template.bind({});
 Required.args = {
   name: 'required-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: '',
@@ -260,7 +260,7 @@ Required.args = {
 export const Hint = Template.bind({});
 Hint.args = {
   name: 'hint-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: 'Hint / example message.',
@@ -276,7 +276,7 @@ Hint.args = {
 export const Error = Template.bind({});
 Error.args = {
   name: 'error-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: '',
@@ -292,7 +292,7 @@ Error.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   name: 'disabled-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: '',
@@ -308,7 +308,7 @@ Disabled.args = {
 export const Props = Template.bind({});
 Props.args = {
   name: 'props-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: '',
@@ -324,7 +324,7 @@ Props.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   name: 'playground-default',
-  label: 'Date input',
+  legend: 'Date input',
   format: 'full',
   value: '',
   hint: '',

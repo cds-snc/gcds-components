@@ -41,8 +41,6 @@ export class GcdsDateInput {
 
   private initialValue?: string;
 
-  // private fieldsetElement?: HTMLGcdsFieldsetElement;
-
   _validator: Validator<string> = defaultValidator;
 
   /**
@@ -59,15 +57,15 @@ export class GcdsDateInput {
   }
 
   /**
-   * Form field label
+   * Fieldset legend
    */
-  @Prop() label!: string;
-  @Watch('label')
-  validateLabel() {
-    if (!this.label) {
-      this.errors.push('label');
-    } else if (this.errors.includes('label')) {
-      this.errors.splice(this.errors.indexOf('label'), 1);
+  @Prop() legend!: string;
+  @Watch('legend')
+  validateLegend() {
+    if (!this.legend) {
+      this.errors.push('legend');
+    } else if (this.errors.includes('legend')) {
+      this.errors.splice(this.errors.indexOf('legend'), 1);
     }
   }
 
@@ -228,7 +226,7 @@ export class GcdsDateInput {
       this.errorMessage = validationResult.reason[this.lang];
       this.hasError = { ...validationResult.errors };
       this.gcdsError.emit({
-        message: `${this.label} - ${this.errorMessage}`,
+        message: `${this.legend} - ${this.errorMessage}`,
         errors: validationResult.errors,
       });
     } else {
@@ -379,12 +377,12 @@ export class GcdsDateInput {
 
   private validateRequiredProps() {
     this.validateName();
-    this.validateLabel();
+    this.validateLegend();
     this.validateFormat();
 
     if (
       this.errors.includes('name') ||
-      this.errors.includes('label') ||
+      this.errors.includes('legend') ||
       this.errors.includes('format')
     ) {
       return false;
@@ -428,7 +426,7 @@ export class GcdsDateInput {
 
   render() {
     const {
-      label,
+      legend,
       name,
       format,
       required,
@@ -520,7 +518,7 @@ export class GcdsDateInput {
       <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
           <gcds-fieldset
-            legend={label}
+            legend={legend}
             fieldsetId="date-input"
             hint={hint}
             errorMessage={errorMessage}

@@ -13,7 +13,7 @@
 | `errorMessage`        | `error-message` | Error message displayed below the legend and above form fields.                                                                        | `string`                                            | `undefined` |
 | `format` _(required)_ | `format`        | Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements. | `"compact" \| "full"`                               | `undefined` |
 | `hint`                | `hint`          | Hint displayed below the legend and above form fields.                                                                                 | `string`                                            | `undefined` |
-| `label` _(required)_  | `label`         | Form field label                                                                                                                       | `string`                                            | `undefined` |
+| `legend` _(required)_ | `legend`        | Fieldset legend                                                                                                                        | `string`                                            | `undefined` |
 | `name` _(required)_   | `name`          | Name attribute for the date input.                                                                                                     | `string`                                            | `undefined` |
 | `required`            | `required`      | Specifies if a form field is required or not.                                                                                          | `boolean`                                           | `false`     |
 | `validateOn`          | `validate-on`   | Set event to call validator                                                                                                            | `"blur" \| "other" \| "submit"`                     | `undefined` |
@@ -65,6 +65,7 @@ graph TD;
   gcds-select --> gcds-error-message
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
+  gcds-error-message --> gcds-icon
   gcds-input --> gcds-label
   gcds-input --> gcds-hint
   gcds-input --> gcds-error-message
