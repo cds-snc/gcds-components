@@ -140,6 +140,10 @@ export const logError = (
   console.error(`${name}: ${engMsg} (${errors}) | ${name}: ${frMsg} (${errors})`);
 };
 
+/* Check for valid date
+ * @param dateString - the date to check
+ * @param format - format of the date. either: YYYY-MM-DD or YYYY-MM
+ */
 export const isValidDate = (dateString: string, format: 'full' | 'compact') => {
   // Define regex pattern to match YYYY-MM-DD format
   let regex = /^\d{4}-\d{2}-\d{2}$/;

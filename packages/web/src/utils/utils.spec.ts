@@ -1,4 +1,4 @@
-import { format, logError } from './utils';
+import { format, logError, isValidDate } from './utils';
 
 describe('format', () => {
   it('returns Fallback Button Label', () => {
@@ -49,5 +49,39 @@ describe('logError', () => {
     expect(errorSpy).toHaveBeenCalledWith(
       'gcds-component: Render error, please check required properties. () | gcds-component: Erreur de rendu, veuillez vérifier les propriétés requises. ()',
     );
+  });
+});
+
+describe('isValidDate', () => {
+  it('returns true - full format', () => {
+    expect(isValidDate('1991-03-03', 'full')).toEqual(true);
+  });
+
+  it('returns true - full format - leap year', () => {
+    expect(isValidDate('1992-02-29', 'full')).toEqual(true);
+  });
+
+  it('returns true - compact format', () => {
+    expect(isValidDate('1991-03', 'compact')).toEqual(true);
+  });
+
+  it('returns false - full format - invalid month', () => {
+    expect(isValidDate('1991-13-03', 'full')).toEqual(false);
+  });
+
+  it('returns false - full format - invalid day', () => {
+    expect(isValidDate('1991-02-29', 'full')).toEqual(false);
+  });
+
+  it('returns false - compact format - invalid month', () => {
+    expect(isValidDate('1991-1', 'compact')).toEqual(false);
+  });
+
+  it('returns false - full format - invalid year', () => {
+    expect(isValidDate('199-02-29', 'full')).toEqual(false);
+  });
+
+  it('returns false - compact format - invalid year', () => {
+    expect(isValidDate('199-1', 'compact')).toEqual(false);
   });
 });
