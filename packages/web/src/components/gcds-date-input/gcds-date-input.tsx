@@ -447,6 +447,11 @@ export class GcdsDateInput {
       requiredAttr['aria-required'] = 'true';
     }
 
+    // Array of months 01 - 12
+    const options = Array.from({ length: 12 }, (_, i) =>
+      i + 1 < 10 ? `0${i + 1}` : `${i + 1}`,
+    );
+
     const month = (
       <gcds-select
         label={i18n[lang].month}
@@ -462,18 +467,11 @@ export class GcdsDateInput {
         aria-invalid={hasError['month'].toString()}
         aria-description={hasError['month'] && errorMessage}
       >
-        <option value="01">{i18n[lang].january}</option>
-        <option value="02">{i18n[lang].february}</option>
-        <option value="03">{i18n[lang].march}</option>
-        <option value="04">{i18n[lang].april}</option>
-        <option value="05">{i18n[lang].may}</option>
-        <option value="06">{i18n[lang].june}</option>
-        <option value="07">{i18n[lang].july}</option>
-        <option value="08">{i18n[lang].august}</option>
-        <option value="09">{i18n[lang].september}</option>
-        <option value="10">{i18n[lang].october}</option>
-        <option value="11">{i18n[lang].november}</option>
-        <option value="12">{i18n[lang].december}</option>
+        {options.map(option => (
+          <option key={option} value={option}>
+            {i18n[lang]['months'][option]}
+          </option>
+        ))}
       </gcds-select>
     );
 
