@@ -13,6 +13,7 @@ declare global {
 const delFocusElements = [
   'gcds-button',
   'gcds-checkbox',
+  'gcds-date-input',
   'gcds-fieldset',
   'gcds-file-uploader',
   'gcds-input',

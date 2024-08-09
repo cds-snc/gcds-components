@@ -1,0 +1,15 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as DateInput from './gcds-date-input.stories';
+
+<Meta of={DateInput} name="Events & properties" />
+
+{!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
+
+<Canvas
+  of={DateInput.Props}
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={DateInput.Props} sort="requiredFirst" />

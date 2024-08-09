@@ -18,8 +18,8 @@
 
 @layer default {
   :host .gcds-input-wrapper {
-    width: 75ch;
-    max-width: 90%;
+    max-width: 75ch;
+    width: 100%;
     font: var(--gcds-input-font);
     color: var(--gcds-input-default-text);
     transition: color ease-in-out 0.15s;

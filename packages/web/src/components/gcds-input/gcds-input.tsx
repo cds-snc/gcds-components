@@ -166,6 +166,22 @@ export class GcdsInput {
   @State() lang: string;
 
   /**
+   * Watch HTML attributes to inherit changes
+   */
+  @Watch('aria-invalid')
+  ariaInvalidWatcher() {
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
+      'placeholder',
+    ]);
+  }
+  @Watch('aria-description')
+  ariaDescriptiondWatcher() {
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
+      'placeholder',
+    ]);
+  }
+
+  /**
    * Events
    */
 
@@ -342,7 +358,7 @@ export class GcdsInput {
 
     // Use max-width to keep field responsive
     const style = {
-      maxWidth: `${size * 2}ch`,
+      maxWidth: `calc(${size * 2}ch + (2 * var(--gcds-input-padding)))`,
     };
 
     const attrsInput = {
@@ -401,9 +417,16 @@ export class GcdsInput {
             onInput={e => this.handleInput(e, this.gcdsInput)}
             onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${inputId}`}
-            aria-invalid={errorMessage ? 'true' : 'false'}
+            aria-invalid={
+              inheritedAttributes['aria-invalid'] === 'true'
+                ? inheritedAttributes['aria-invalid']
+                : errorMessage
+                  ? 'true'
+                  : 'false'
+            }
             size={size}
             style={size ? style : null}
+            part="input"
             ref={element => (this.shadowElement = element as HTMLElement)}
           />
         </div>
