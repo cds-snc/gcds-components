@@ -122,7 +122,7 @@ export const emitEvent = (
 export const logError = (
   name: string,
   errorArr: string[],
-  optionalAttrsArrToRemove?: string[]
+  optionalAttrsArrToRemove?: string[],
 ) => {
   let engMsg = 'Render error, please check required properties.';
   let frMsg = 'Erreur de rendu, veuillez vérifier les propriétés requises.';
@@ -137,7 +137,9 @@ export const logError = (
     }
   }
 
-  console.error(`${name}: ${engMsg} (${errors}) | ${name}: ${frMsg} (${errors})`);
+  console.error(
+    `${name}: ${engMsg} (${errors}) | ${name}: ${frMsg} (${errors})`,
+  );
 };
 
 /* Check for valid date
@@ -149,33 +151,39 @@ export const isValidDate = (dateString: string) => {
   let compactregex = /^\d{4}-\d{2}$/;
   let format = '';
 
+  console.log(dateString);
+
   // Check if the format matches the regex
   if (fullregex.test(dateString)) {
     format = 'full';
   } else if (compactregex.test(dateString)) {
-    format = 'compact'
+    format = 'compact';
   } else {
     return false;
   }
-  
+
   // Parse the date string into a Date object
   const formattedDate = `${dateString}${format === 'compact' ? '-15' : ''}`;
-  const date = new Date(formattedDate);
 
   // Check if the date is valid
   const [year, month, day] = formattedDate.split('-').map(Number);
 
-  // False positive leap year check
-  if (format === 'full' && month === 2 && day === 29 && !isLeapYear(year)) {
+  const thirtyOneDays = [1, 3, 5, 7, 8, 10, 12];
+  const thirtyDays = [4, 6, 9, 11];
+
+  if (month < 1 || month > 12) {
+    return false;
+  } else if (thirtyDays.includes(month) && (day < 1 || day > 30)) {
+    return false;
+  } else if (thirtyOneDays.includes(month) && (day < 1 || day > 31)) {
+    return false;
+  } else if (!isLeapYear(year) && month === 2 && (day < 1 || day > 28)) {
+    return false;
+  } else if (isLeapYear(year) && month === 2 && (day < 1 || day > 29)) {
     return false;
   }
 
-  // Ensure the year, month, and day match the parsed date
-  return (
-    date.getFullYear() === year &&
-    date.getMonth() === month - 1 &&
-    date.getDate() + 1 === day
-  );
+  return true;
 };
 
 function isLeapYear(y: number) {
