@@ -42,7 +42,7 @@ export const requiredSelectField: Validator<string> = {
 /*
  * Date input validators
  */
-const errorMessage = {
+export const dateInputErrorMessage = {
   en: {
     all: 'Enter the date.',
     missingmonth: 'Select the month.',
@@ -88,7 +88,7 @@ export const requiredDateInput: Validator<string> = {
 
     return error;
   },
-  errorMessage: errorMessage,
+  errorMessage: dateInputErrorMessage,
 };
 
 const getDateInputError = (dateValues, format) => {
@@ -112,14 +112,14 @@ const getDateInputError = (dateValues, format) => {
     errorResponse.errors.day = true;
     errorResponse.errors.month = true;
     errorResponse.errors.year = true;
-    errorResponse.reason.en = errorMessage.en.all;
-    errorResponse.reason.fr = errorMessage.fr.all;
+    errorResponse.reason.en = dateInputErrorMessage.en.all;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.all;
 
     // No day set
   } else if (!day && month && year) {
     errorResponse.errors.day = true;
-    errorResponse.reason.en = errorMessage.en.missingday;
-    errorResponse.reason.fr = errorMessage.fr.missingday;
+    errorResponse.reason.en = dateInputErrorMessage.en.missingday;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.missingday;
 
     // No month set
   } else if (
@@ -127,8 +127,8 @@ const getDateInputError = (dateValues, format) => {
     (!day && !month && year && format === 'compact')
   ) {
     errorResponse.errors.month = true;
-    errorResponse.reason.en = errorMessage.en.missingmonth;
-    errorResponse.reason.fr = errorMessage.fr.missingmonth;
+    errorResponse.reason.en = dateInputErrorMessage.en.missingmonth;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonth;
 
     // No year set
   } else if (
@@ -136,47 +136,47 @@ const getDateInputError = (dateValues, format) => {
     (!day && month && !year && format === 'compact')
   ) {
     errorResponse.errors.year = true;
-    errorResponse.reason.en = errorMessage.en.missingyear;
-    errorResponse.reason.fr = errorMessage.fr.missingyear;
+    errorResponse.reason.en = dateInputErrorMessage.en.missingyear;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.missingyear;
 
     // No day and month set
   } else if (!day && !month && year) {
     errorResponse.errors.day = true;
     errorResponse.errors.month = true;
-    errorResponse.reason.en = errorMessage.en.missingmonthday;
-    errorResponse.reason.fr = errorMessage.fr.missingmonthday;
+    errorResponse.reason.en = dateInputErrorMessage.en.missingmonthday;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthday;
 
     // No day and year set
   } else if (!day && month && !year) {
     errorResponse.errors.day = true;
     errorResponse.errors.year = true;
-    errorResponse.reason.en = errorMessage.en.missingdayyear;
-    errorResponse.reason.fr = errorMessage.fr.missingdayyear;
+    errorResponse.reason.en = dateInputErrorMessage.en.missingdayyear;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.missingdayyear;
 
     // No month and year set
   } else if (day && !month && !year) {
     errorResponse.errors.year = true;
     errorResponse.errors.month = true;
-    errorResponse.reason.en = errorMessage.en.missingmonthyear;
-    errorResponse.reason.fr = errorMessage.fr.missingmonthyear;
+    errorResponse.reason.en = dateInputErrorMessage.en.missingmonthyear;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthyear;
 
     // Year is formatted incorrectly
   } else if (year.length != 4) {
     errorResponse.errors.year = true;
-    errorResponse.reason.en = errorMessage.en.invalidyearlength;
-    errorResponse.reason.fr = errorMessage.fr.invalidyearlength;
+    errorResponse.reason.en = dateInputErrorMessage.en.invalidyearlength;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.invalidyearlength;
 
     // Year format
   } else if (year < 0 || year > 9999) {
     errorResponse.errors.year = true;
-    errorResponse.reason.en = errorMessage.en.invalidyear;
-    errorResponse.reason.fr = errorMessage.fr.invalidyear;
+    errorResponse.reason.en = dateInputErrorMessage.en.invalidyear;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.invalidyear;
 
     // Invalid day
   } else {
     errorResponse.errors.day = true;
-    errorResponse.reason.en = errorMessage.en.invalidday;
-    errorResponse.reason.fr = errorMessage.fr.invalidday;
+    errorResponse.reason.en = dateInputErrorMessage.en.invalidday;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.invalidday;
   }
 
   return errorResponse;
