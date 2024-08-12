@@ -151,8 +151,6 @@ export const isValidDate = (dateString: string) => {
   let compactregex = /^\d{4}-\d{2}$/;
   let format = '';
 
-  console.log(dateString);
-
   // Check if the format matches the regex
   if (fullregex.test(dateString)) {
     format = 'full';
