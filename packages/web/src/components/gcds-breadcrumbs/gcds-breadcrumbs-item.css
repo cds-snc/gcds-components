@@ -1,4 +1,4 @@
-@layer reset, default, hover, focus;
+@layer reset, default, hover, focus, mobile;
 
 @layer reset {
   :host(.gcds-breadcrumbs-item) {
@@ -30,6 +30,24 @@
     gcds-link::part(link) {
       margin: var(--gcds-breadcrumbs-item-margin);
       padding: var(--gcds-breadcrumbs-item-link-padding);
+    }
+  }
+}
+
+/* Note: mobile specific style decision */
+@layer mobile {
+  @media screen and (max-width: 30rem) {
+    :host(.gcds-breadcrumbs-item) {
+      display: block;
+
+      &:before {
+        top: var(--gcds-breadcrumbs-mobile-item-arrow-top);
+      }
+
+      gcds-link::part(link) {
+        margin: var(--gcds-breadcrumbs-mobile-item-margin);
+        padding: var(--gcds-breadcrumbs-mobile-item-padding);
+      }
     }
   }
 }
