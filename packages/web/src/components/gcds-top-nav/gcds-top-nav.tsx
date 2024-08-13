@@ -180,9 +180,9 @@ export class GcdsTopNav {
           <nav aria-label={`${label}${I18N[lang].navLabel}`}>
             <ul class="gcds-top-nav__container">
               <gcds-nav-group
-                menuLabel="Menu"
-                closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
-                openTrigger="Menu"
+                menuLabel={I18N[lang].menuLabel}
+                closeTrigger={I18N[lang].closeTrigger}
+                openTrigger={I18N[lang].menuLabel}
                 class="gcds-mobile-nav gcds-mobile-nav-topnav"
                 ref={element =>
                   (this.mobile = element as HTMLGcdsNavGroupElement)

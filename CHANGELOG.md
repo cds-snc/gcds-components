@@ -4,6 +4,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.24.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.24.0...gcds-components-v0.24.1) (2024-08-13)
+
+### Bug Fixes
+
+- update small design misalignments in various components ([#608](https://github.com/cds-snc/gcds-components/issues/608)) ([9bcb4ae](https://github.com/cds-snc/gcds-components/commit/9bcb4aef1004ea45b4ad0a2855b2322cfedbe799))
+
 ## [0.24.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.23.0...gcds-components-v0.24.0) (2024-08-01)
 
 ### New Features
