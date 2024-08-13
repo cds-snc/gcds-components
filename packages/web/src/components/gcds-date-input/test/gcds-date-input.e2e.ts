@@ -285,7 +285,7 @@ it('Validation - Invalid day', async () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-input a11y tests', () => {
+describe('gcds-date-input a11y tests', () => {
   it('Colour contrast', async () => {
     const page = await newE2EPage();
     await page.setContent(
