@@ -253,7 +253,7 @@ export class GcdsFieldset {
     this.validateValidator();
 
     // Assign required validator if needed
-    if (this.el.getAttribute('data-date-input')) {
+    if (this.el.getAttribute('data-date')) {
       this.isDateInput = true;
     } else {
       requiredValidator(this.el, 'fieldset');

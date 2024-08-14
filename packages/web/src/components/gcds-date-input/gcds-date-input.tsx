@@ -527,7 +527,7 @@ export class GcdsDateInput {
             required={required}
             class={`gcds-date-input__fieldset${hint ? ' gcds-date-input--hint' : ''}${errorMessage ? ' gcds-date-input--error' : ''}`}
             lang={lang}
-            data-date-input={format}
+            data-date="true"
           >
             {format == 'compact'
               ? [month, year]
