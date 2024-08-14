@@ -398,6 +398,7 @@ export class GcdsDateInput {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
+    this.updateLang();
     this.validateValidator();
 
     // Assign required validator if needed
