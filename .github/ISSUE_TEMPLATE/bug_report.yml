@@ -16,6 +16,7 @@ body:
         - label: I have searched for [existing issues](https://github.com/cds-snc/gcds-components/issues) that already report this problem, without success. | J’ai vérifié parmi [les tickets (issues) existants](https://github.com/cds-snc/gcds-components/issues) que ce sujet n’avait pas déjà été soumis.
           required: true
   - type: input
+    id: package_version
     attributes:
       label: GC Design System Components Package and Version | Paquet et version des composants de Système de design GC
       description: |
@@ -25,6 +26,7 @@ body:
     validations:
       required: true
   - type: textarea
+    id: current_behavior
     attributes:
       label: Current Behavior | Comportement observé
       description: |
@@ -34,6 +36,7 @@ body:
     validations:
       required: true
   - type: textarea
+    id: expected_behavior
     attributes:
       label: Expected Behavior | Comportement attendu
       description: |
@@ -43,6 +46,7 @@ body:
     validations:
       required: true
   - type: textarea
+    id: sys_info
     attributes:
       label: System Info | Information sur le système
       description: |
@@ -56,6 +60,7 @@ body:
         
         Système, environnement, navigateurs. Au minimum, dites-nous si vous utilisez une infrastructure et si oui, indiquez sa version.
   - type: textarea
+    id: steps_to_reproduce
     attributes:
       label: Steps to Reproduce | Étapes pour reproduire le bogue
       description: |
@@ -65,6 +70,7 @@ body:
     validations:
       required: true
   - type: input
+    id: code_url
     attributes:
       label: "Code Reproduction URL | URL de reproduction du code"
       description: |
@@ -77,6 +83,7 @@ body:
     validations:
       required: false
   - type: textarea
+    id: more_info
     attributes:
       label: Additional Information | Informations supplémentaires
       description: |
