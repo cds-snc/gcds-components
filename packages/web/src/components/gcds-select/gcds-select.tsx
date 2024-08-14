@@ -411,7 +411,7 @@ export class GcdsSelect {
                   ? 'true'
                   : 'false'
             }
-            part="input"
+            part="select"
             ref={element => (this.shadowElement = element as HTMLSelectElement)}
           >
             {defaultValue ? (

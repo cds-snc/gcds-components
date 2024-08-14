@@ -41,7 +41,7 @@
     }
 
     gcds-input.gcds-date-input--error::part(input),
-    gcds-select.gcds-date-input--error::part(input) {
+    gcds-select.gcds-date-input--error::part(select) {
       border-color: var(--gcds-date-input-danger-border);
     }
   }
