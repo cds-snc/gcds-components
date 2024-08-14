@@ -257,8 +257,8 @@ Required.args = {
 
 // ------ Date input Format Hint ------
 
-export const Hint = Template.bind({});
-Hint.args = {
+export const DefaultState = Template.bind({});
+DefaultState.args = {
   name: 'hint-default',
   legend: 'Date input',
   format: 'full',

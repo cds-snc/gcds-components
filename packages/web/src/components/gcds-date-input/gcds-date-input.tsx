@@ -485,7 +485,6 @@ export class GcdsDateInput {
         size={4}
         disabled={disabled}
         value={this.yearValue}
-        autocomplete="year"
         onInput={e => this.handleInput(e, 'year')}
         onChange={e => this.handleInput(e, 'year')}
         class={`gcds-date-input__year ${hasError['year'] ? 'gcds-date-input--error' : ''}`}
@@ -504,7 +503,6 @@ export class GcdsDateInput {
         size={2}
         disabled={disabled}
         value={this.dayValue}
-        autocomplete="day"
         onInput={e => this.handleInput(e, 'day')}
         onChange={e => {
           this.handleInput(e, 'day');
