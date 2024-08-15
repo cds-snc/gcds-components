@@ -31,9 +31,9 @@ describe('gcds-fieldset', () => {
           <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field">
               Fieldset legend
-              <strong class="legend__required">
+              <span class="legend__required">
                 (required)
-              </strong>
+              </span>
             </legend>
             <slot></slot>
           </fieldset>
