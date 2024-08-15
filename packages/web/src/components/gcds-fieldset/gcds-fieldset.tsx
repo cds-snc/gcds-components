@@ -309,7 +309,7 @@ export class GcdsFieldset {
           <legend id={`legend-${fieldsetId}`}>
             {legend}
             {required ? (
-              <strong class="legend__required">({i18n[lang].required})</strong>
+              <span class="legend__required">({i18n[lang].required})</span>
             ) : null}
           </legend>
 
