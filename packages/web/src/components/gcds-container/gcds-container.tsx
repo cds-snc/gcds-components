@@ -23,6 +23,13 @@ export class GcdsContainer {
   @Prop() centered?: boolean = false;
 
   /**
+   * Defines if the container is the main page container or not. If set to true,
+   * the width will be set to 90% for smaller screens to ensure consistency
+   * with the responsiveness of other core layout components (header + footer).
+   */
+  @Prop() mainContainer?: boolean = false;
+
+  /**
    * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
    */
   @Prop() margin?:
@@ -75,7 +82,8 @@ export class GcdsContainer {
   @Prop() tag?: string = 'div';
 
   render() {
-    const { border, centered, margin, padding, size, tag } = this;
+    const { border, centered, mainContainer, margin, padding, size, tag } =
+      this;
 
     const Tag = tag;
 
@@ -84,8 +92,9 @@ export class GcdsContainer {
         <Tag
           class={`
             gcds-container
-            ${border ? `container-border` : ''}
-            ${centered ? `container-centered` : ''}
+            ${border ? 'container-border' : ''}
+            ${centered ? 'container-centered' : ''}
+            ${mainContainer ? 'container-main' : ''}
             ${margin ? `m-${margin}` : ''}
             ${padding ? `p-${padding}` : ''}
             ${size ? `size-${size}` : ''}

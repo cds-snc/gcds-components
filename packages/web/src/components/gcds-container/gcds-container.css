@@ -1,4 +1,4 @@
-@layer reset, default, border, centered, margin, padding, size;
+@layer reset, default, border, centered, main, margin, padding, size;
 
 @layer reset {
   :host {
@@ -32,6 +32,12 @@
 @layer centered {
   :host .gcds-container.container-centered {
     margin-inline: auto !important;
+  }
+}
+
+@layer main {
+  :host .gcds-container.container-main:not(.size-full) {
+    width: 90%;
   }
 }
 

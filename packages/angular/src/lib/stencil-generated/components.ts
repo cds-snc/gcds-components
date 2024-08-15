@@ -190,14 +190,14 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['border', 'centered', 'margin', 'padding', 'size', 'tag']
+  inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag']
 })
 @Component({
   selector: 'gcds-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['border', 'centered', 'margin', 'padding', 'size', 'tag'],
+  inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag'],
 })
 export class GcdsContainer {
   protected el: HTMLElement;
