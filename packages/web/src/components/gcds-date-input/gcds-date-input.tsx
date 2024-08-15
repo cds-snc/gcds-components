@@ -322,7 +322,7 @@ export class GcdsDateInput {
     // All form elements have something entered
     if (yearValue && monthValue && dayValue && format == 'full') {
       // Is the combined value a valid date
-      if (isValidDate(`${yearValue}-${monthValue}-${dayValue}`)) {
+      if (isValidDate(`${yearValue}-${monthValue}-${dayValue}`, format)) {
         this.value = `${yearValue}-${monthValue}-${dayValue}`;
         this.internals.setFormValue(this.value);
       } else {
@@ -333,7 +333,7 @@ export class GcdsDateInput {
       }
     } else if (yearValue && monthValue && format == 'compact') {
       // Is the combined value a valid date
-      if (isValidDate(`${yearValue}-${monthValue}`)) {
+      if (isValidDate(`${yearValue}-${monthValue}`, format)) {
         this.value = `${yearValue}-${monthValue}`;
         this.internals.setFormValue(this.value);
       } else {
@@ -356,7 +356,7 @@ export class GcdsDateInput {
    * Split value into parts depending on format
    */
   private splitFormValue() {
-    if (this.value && isValidDate(this.value)) {
+    if (this.value && isValidDate(this.value, this.format)) {
       if (this.format == 'compact') {
         let splitValue = this.value.split('-');
         this.yearValue = splitValue[0];

@@ -57,12 +57,20 @@ describe('isValidDate', () => {
     expect(isValidDate('1991-03-03')).toEqual(true);
   });
 
+  it('returns true - full format - forced format', () => {
+    expect(isValidDate('1991-03-03', 'full')).toEqual(true);
+  });
+
   it('returns true - full format - leap year', () => {
     expect(isValidDate('1992-02-29')).toEqual(true);
   });
 
   it('returns true - compact format', () => {
     expect(isValidDate('1991-03')).toEqual(true);
+  });
+
+  it('returns true - compact format - forced format', () => {
+    expect(isValidDate('1991-03', 'compact')).toEqual(true);
   });
 
   it('returns false - full format - invalid month', () => {
@@ -83,5 +91,13 @@ describe('isValidDate', () => {
 
   it('returns false - compact format - invalid year', () => {
     expect(isValidDate('199-1')).toEqual(false);
+  });
+
+  it('returns false - full format - force compact', () => {
+    expect(isValidDate('1991-03-03', 'compact')).toEqual(false);
+  });
+
+  it('returns false - compact format - force full', () => {
+    expect(isValidDate('1991-03', 'full')).toEqual(false);
   });
 });
