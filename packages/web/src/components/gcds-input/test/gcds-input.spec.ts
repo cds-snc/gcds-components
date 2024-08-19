@@ -18,6 +18,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-renders"
               name="input-renders-name"
+              part="input"
               aria-labelledby="label-for-input-renders"
               aria-invalid="false"
             />
@@ -44,6 +45,7 @@ describe('gcds-input', () => {
               type="email"
               id="type-email"
               name="type-email-name"
+              part="input"
               aria-labelledby="label-for-type-email"
               aria-invalid="false"
             />
@@ -67,6 +69,7 @@ describe('gcds-input', () => {
               type="number"
               id="type-number"
               name="type-number-name"
+              part="input"
               aria-labelledby="label-for-type-number"
               aria-invalid="false"
             />
@@ -90,6 +93,7 @@ describe('gcds-input', () => {
               type="password"
               id="type-password"
               name="type-password-name"
+              part="input"
               aria-labelledby="label-for-type-password"
               aria-invalid="false"
             />
@@ -113,6 +117,7 @@ describe('gcds-input', () => {
               type="search"
               id="type-search"
               name="type-search-name"
+              part="input"
               aria-labelledby="label-for-type-search"
               aria-invalid="false"
             />
@@ -136,6 +141,7 @@ describe('gcds-input', () => {
               type="text"
               id="type-text"
               name="type-text-name"
+              part="input"
               aria-labelledby="label-for-type-text"
               aria-invalid="false"
             />
@@ -159,6 +165,7 @@ describe('gcds-input', () => {
               type="url"
               id="type-url"
               name="type-url-name"
+              part="input"
               aria-labelledby="label-for-type-url"
               aria-invalid="false"
             />
@@ -185,6 +192,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-disabled"
               name="input-disabled-name"
+              part="input"
               aria-labelledby="label-for-input-disabled"
               aria-invalid="false"
               disabled=""
@@ -216,6 +224,7 @@ describe('gcds-input', () => {
               id="input-with-error"
               class="gcds-error"
               name="input-with-error-name"
+              part="input"
               aria-labelledby="label-for-input-with-error"
               aria-describedby="error-message-input-with-error "
               aria-invalid="true"
@@ -243,6 +252,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-label-hidden"
               name="input-label-hidden-name"
+              part="input"
               aria-labelledby="label-for-input-label-hidden"
               aria-invalid="false"
             />
@@ -270,6 +280,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-with-hint"
               name="input-with-hint-name"
+              part="input"
               aria-labelledby="label-for-input-with-hint"
               aria-describedby="hint-input-with-hint "
               aria-invalid="false"
@@ -297,6 +308,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-renders-id"
               name="input-renders-id-name"
+              part="input"
               aria-labelledby="label-for-input-renders-id"
               aria-invalid="false"
             />
@@ -323,6 +335,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-renders-label"
               name="input-renders-label-name"
+              part="input"
               aria-labelledby="label-for-input-renders-label"
               aria-invalid="false"
             />
@@ -349,6 +362,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-required"
               name="input-required-name"
+              part="input"
               aria-labelledby="label-for-input-required"
               aria-invalid="false"
               required
@@ -376,6 +390,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-with-value"
               name="input-with-value-name"
+              part="input"
               value="Input value"
               aria-labelledby="label-for-input-with-value"
               aria-invalid="false"
@@ -403,6 +418,7 @@ describe('gcds-input', () => {
               type="text"
               id="input-with-name"
               name="input-with-name-name"
+              part="input"
               aria-labelledby="label-for-input-with-name"
               aria-invalid="false"
             />

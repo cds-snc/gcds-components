@@ -47,7 +47,10 @@
     ],
     "gcds-components-vue": [
       "./packages/vue"
-    ]
+    ],
+    "gcds-components-react-ssr": [
+      "./packages/react-ssr"
+    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

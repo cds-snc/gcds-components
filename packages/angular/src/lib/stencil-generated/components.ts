@@ -227,6 +227,56 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
 
 
 @ProxyCmp({
+  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'legend', 'name', 'required', 'validateOn', 'validator', 'value'],
+  methods: ['validate'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
+})
+@Component({
+  selector: 'gcds-date-input',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'legend', 'name', 'required', 'validateOn', 'validator', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+})
+export class GcdsDateInput {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+  }
+}
+
+
+export declare interface GcdsDateInput extends Components.GcdsDateInput {
+  /**
+   * Emitted when an element has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when an element loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the element has received input.
+   */
+  gcdsInput: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when an element has changed.
+   */
+  gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when an element has a validation error.
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when an element has validated.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
+}
+
+
+@ProxyCmp({
   inputs: ['type']
 })
 @Component({

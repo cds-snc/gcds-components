@@ -1,0 +1,48 @@
+@layer reset, default, hint, error;
+
+@layer reset {
+  :host {
+    display: block;
+  }
+}
+
+@layer default {
+  :host {
+    .gcds-date-input__fieldset {
+      --gcds-fieldset-font-desktop: var(--gcds-date-input-fieldset-font-desktop);
+      --gcds-fieldset-font-mobile: var(--gcds-date-input-fieldset-font-mobile);
+      --gcds-fieldset-legend-margin: var(--gcds-date-input-fieldset-margin);
+    }
+
+    .gcds-date-input__month,
+    .gcds-date-input__year,
+    .gcds-date-input__day {
+      display: inline-block;
+      margin-inline-end: var(--gcds-date-input-margin);
+
+      --gcds-label-font-desktop: var(--gcds-date-input-label-font-desktop);
+      --gcds-label-font-mobile: var(--gcds-date-input-label-font-mobile );
+    }
+  }
+}
+
+@layer hint {
+  :host {
+    .gcds-date-input--hint {
+      --gcds-fieldset-legend-margin: var(--gcds-date-input-fieldset-hint-margin);
+    }
+  }
+}
+
+@layer error {
+  :host {
+    .gcds-date-input--error {
+      --gcds-fieldset-legend-margin: var(--gcds-date-input-fieldset-error-margin );
+    }
+
+    gcds-input.gcds-date-input--error::part(input),
+    gcds-select.gcds-date-input--error::part(select) {
+      border-color: var(--gcds-date-input-danger-border);
+    }
+  }
+}

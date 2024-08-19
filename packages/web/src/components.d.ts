@@ -230,6 +230,54 @@ export namespace Components {
          */
         "tag"?: string;
     }
+    interface GcdsDateInput {
+        /**
+          * Specifies if the date input is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message displayed below the legend and above form fields.
+         */
+        "errorMessage"?: string;
+        /**
+          * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
+         */
+        "format": 'full' | 'compact';
+        /**
+          * Hint displayed below the legend and above form fields.
+         */
+        "hint"?: string;
+        /**
+          * Fieldset legend
+         */
+        "legend": string;
+        /**
+          * Name attribute for the date input.
+         */
+        "name": string;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Default value for the date input element. Format: YYYY-MM-DD
+         */
+        "value"?: string;
+    }
     interface GcdsDateModified {
         /**
           * Set date modified type. Default is date.
@@ -1155,6 +1203,10 @@ export interface GcdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCheckboxElement;
 }
+export interface GcdsDateInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsDateInputElement;
+}
 export interface GcdsDetailsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsDetailsElement;
@@ -1298,6 +1350,28 @@ declare global {
     var HTMLGcdsContainerElement: {
         prototype: HTMLGcdsContainerElement;
         new (): HTMLGcdsContainerElement;
+    };
+    interface HTMLGcdsDateInputElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsInput": any;
+        "gcdsChange": any;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
+    interface HTMLGcdsDateInputElement extends Components.GcdsDateInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsDateInputElementEventMap>(type: K, listener: (this: HTMLGcdsDateInputElement, ev: GcdsDateInputCustomEvent<HTMLGcdsDateInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsDateInputElementEventMap>(type: K, listener: (this: HTMLGcdsDateInputElement, ev: GcdsDateInputCustomEvent<HTMLGcdsDateInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsDateInputElement: {
+        prototype: HTMLGcdsDateInputElement;
+        new (): HTMLGcdsDateInputElement;
     };
     interface HTMLGcdsDateModifiedElement extends Components.GcdsDateModified, HTMLStencilElement {
     }
@@ -1677,6 +1751,7 @@ declare global {
         "gcds-card": HTMLGcdsCardElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-container": HTMLGcdsContainerElement;
+        "gcds-date-input": HTMLGcdsDateInputElement;
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
         "gcds-details": HTMLGcdsDetailsElement;
         "gcds-error-message": HTMLGcdsErrorMessageElement;
@@ -1978,6 +2053,74 @@ declare namespace LocalJSX {
           * Set tag for container.
          */
         "tag"?: string;
+    }
+    interface GcdsDateInput {
+        /**
+          * Specifies if the date input is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message displayed below the legend and above form fields.
+         */
+        "errorMessage"?: string;
+        /**
+          * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
+         */
+        "format": 'full' | 'compact';
+        /**
+          * Hint displayed below the legend and above form fields.
+         */
+        "hint"?: string;
+        /**
+          * Fieldset legend
+         */
+        "legend": string;
+        /**
+          * Name attribute for the date input.
+         */
+        "name": string;
+        /**
+          * Emitted when an element loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsDateInputCustomEvent<void>) => void;
+        /**
+          * Emitted when an element has changed.
+         */
+        "onGcdsChange"?: (event: GcdsDateInputCustomEvent<any>) => void;
+        /**
+          * Emitted when an element has a validation error.
+         */
+        "onGcdsError"?: (event: GcdsDateInputCustomEvent<object>) => void;
+        /**
+          * Emitted when an element has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsDateInputCustomEvent<void>) => void;
+        /**
+          * Emitted when the element has received input.
+         */
+        "onGcdsInput"?: (event: GcdsDateInputCustomEvent<any>) => void;
+        /**
+          * Emitted when an element has validated.
+         */
+        "onGcdsValid"?: (event: GcdsDateInputCustomEvent<object>) => void;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Default value for the date input element. Format: YYYY-MM-DD
+         */
+        "value"?: string;
     }
     interface GcdsDateModified {
         /**
@@ -3047,6 +3190,7 @@ declare namespace LocalJSX {
         "gcds-card": GcdsCard;
         "gcds-checkbox": GcdsCheckbox;
         "gcds-container": GcdsContainer;
+        "gcds-date-input": GcdsDateInput;
         "gcds-date-modified": GcdsDateModified;
         "gcds-details": GcdsDetails;
         "gcds-error-message": GcdsErrorMessage;
@@ -3093,6 +3237,7 @@ declare module "@stencil/core" {
             "gcds-card": LocalJSX.GcdsCard & JSXBase.HTMLAttributes<HTMLGcdsCardElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-container": LocalJSX.GcdsContainer & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
+            "gcds-date-input": LocalJSX.GcdsDateInput & JSXBase.HTMLAttributes<HTMLGcdsDateInputElement>;
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;

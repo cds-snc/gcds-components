@@ -14,7 +14,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - uses: actions/setup-node@eff380dfbcf941bf8832e4acb788cebe13dfd758
+      - uses: actions/setup-node@26961cf329f22f6837d5f54c3efd76b480300ace
         with:
           node-version: 18
 
@@ -31,7 +31,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - uses: actions/setup-node@eff380dfbcf941bf8832e4acb788cebe13dfd758
+      - uses: actions/setup-node@26961cf329f22f6837d5f54c3efd76b480300ace
         with:
           node-version: 18
 

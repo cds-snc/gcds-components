@@ -9,6 +9,10 @@
       padding: 0;
     }
 
+    legend {
+      padding: 0;
+    }
+
     slot {
       display: block;
       margin: 0;
@@ -30,6 +34,12 @@
 
       .legend__required {
         margin: var(--gcds-fieldset-legend-required-margin) !important;
+        font: var(--gcds-fieldset-legend-required-font-desktop);
+        vertical-align: middle;
+
+        @media only screen and (width < 48em) {
+          font: var(--gcds-fieldset-legend-required-font-mobile);
+        }
       }
     }
   }

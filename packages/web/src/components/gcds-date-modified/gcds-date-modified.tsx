@@ -51,7 +51,7 @@ export class GcdsDateModified {
         <dl class="gcds-date-modified">
           <dt>
             <gcds-text display="inline" margin-bottom="0">
-              {type === 'version' ? 'Version ' : i18n[lang].term}
+              {type === 'version' ? i18n[lang].version : i18n[lang].date}
             </gcds-text>
           </dt>
           <dd>

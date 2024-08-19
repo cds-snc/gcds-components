@@ -177,9 +177,9 @@ export class GcdsSideNav {
           <h2 class="gcds-side-nav__heading">{label}</h2>
           <ul>
             <gcds-nav-group
-              menuLabel="Menu"
-              closeTrigger={lang == 'fr' ? 'Fermer' : 'Close'}
-              openTrigger="Menu"
+              menuLabel={I18N[lang].menuLabel}
+              closeTrigger={I18N[lang].closeTrigger}
+              openTrigger={I18N[lang].menuLabel}
               class="gcds-mobile-nav"
               ref={element =>
                 (this.mobile = element as HTMLGcdsNavGroupElement)

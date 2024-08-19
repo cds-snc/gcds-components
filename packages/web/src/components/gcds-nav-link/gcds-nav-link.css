@@ -14,8 +14,10 @@
   :host .gcds-nav-link {
     display: flex;
     font: var(---gcds-nav-link-font);
-    text-decoration: underline solid currentColor
-      var(--gcds-nav-link-default-decoration-thickness);
+    text-decoration-style: solid;
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: var(--gcds-nav-link-default-decoration-thickness);
     text-underline-offset: var(--gcds-nav-link-default-underline-offset);
     color: var(--gcds-nav-link-default-text);
     margin-block-end: var(--gcds-nav-link-margin);
