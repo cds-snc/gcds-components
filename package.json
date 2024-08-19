@@ -6,8 +6,7 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
-    "prebuild": "npm run patch:stenciljs",
-    "build": "npx lerna run build --concurrency=1",
+    "build": "npm run build --ws",
     "pretest": "npm run patch:stenciljs",
     "test": "npx lerna run test",
     "build-storybook": "npx lerna run build-storybook --scope=@cdssnc/gcds-components",
@@ -34,6 +33,7 @@
     "@angular-devkit/build-angular": "^16.0.0",
     "@angular/cli": "~16.2.1",
     "@angular/compiler-cli": "^16.2.3",
+    "@stencil/angular-output-target": "^0.8.4",
     "@types/node": "^20.11.10",
     "cssnano": "^6.0.0",
     "karma": "~6.4.0",
@@ -53,7 +53,8 @@
     "packages/web",
     "packages/angular",
     "packages/react",
-    "packages/vue"
+    "packages/vue",
+    "packages/react-ssr"
   ],
   "license": "MIT"
 }

@@ -36,6 +36,8 @@ export class GcdsFieldset {
 
   private shadowElement?: HTMLElement;
 
+  isDateInput: boolean = false;
+
   _validator: Validator<string> = defaultValidator;
 
   /**
@@ -251,7 +253,11 @@ export class GcdsFieldset {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, 'fieldset');
+    if (this.el.getAttribute('data-date')) {
+      this.isDateInput = true;
+    } else {
+      requiredValidator(this.el, 'fieldset');
+    }
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
@@ -309,7 +315,7 @@ export class GcdsFieldset {
           <legend id={`legend-${fieldsetId}`}>
             {legend}
             {required ? (
-              <strong class="legend__required">({i18n[lang].required})</strong>
+              <span class="legend__required">({i18n[lang].required})</span>
             ) : null}
           </legend>
 

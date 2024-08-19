@@ -12,7 +12,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <select id="select" name="select-name" aria-invalid="false">
+            <select id="select" name="select-name" part="select" aria-invalid="false">
             </select>
           </div>
         </mock:shadow-root>
@@ -33,7 +33,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper gcds-disabled">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <select id="select" name="select-name" aria-invalid="false" disabled>
+            <select id="select" name="select-name" part="select" aria-invalid="false" disabled>
             </select>
           </div>
         </mock:shadow-root>
@@ -57,7 +57,7 @@ describe('gcds-select', () => {
             <gcds-error-message messageId="select">
               This is an error message.
             </gcds-error-message>
-            <select id="select" name="select-name" aria-invalid="true" aria-describedby="error-message-select ">
+            <select id="select" name="select-name" part="select" aria-invalid="true" aria-describedby="error-message-select ">
             </select>
           </div>
         </mock:shadow-root>
@@ -79,7 +79,7 @@ describe('gcds-select', () => {
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <gcds-hint hint-id="select">This is a hint.</gcds-hint>
-            <select id="select" name="select-name" aria-invalid="false" aria-describedby="hint-select ">
+            <select id="select" name="select-name" part="select" aria-invalid="false" aria-describedby="hint-select ">
             </select>
           </div>
         </mock:shadow-root>
@@ -100,7 +100,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <select id="select" name="select-name" aria-invalid="false">
+            <select id="select" name="select-name" part="select" aria-invalid="false">
             </select>
           </div>
         </mock:shadow-root>
@@ -121,7 +121,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <select id="select" name="select-name" aria-invalid="false">
+            <select id="select" name="select-name" part="select" aria-invalid="false">
             </select>
           </div>
         </mock:shadow-root>
@@ -142,7 +142,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en" required=""></gcds-label>
-            <select id="select" name="select-name" aria-invalid="false" required="">
+            <select id="select" name="select-name" part="select" aria-invalid="false" required="">
             </select>
           </div>
         </mock:shadow-root>
@@ -169,7 +169,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <select id="select" name="select-name" aria-invalid="false">
+            <select id="select" name="select-name" part="select" aria-invalid="false">
               <option value="1">This is option 1</option>
               <option value="2">This is option 2</option>
               <option value="3">This is option 3</option>
@@ -202,7 +202,7 @@ describe('gcds-select', () => {
         <mock:shadow-root>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
-            <select id="select" name="select" aria-invalid="false">
+            <select id="select" name="select" part="select" aria-invalid="false">
               <option value="" selected disabled="">Please select one</option>
               <option value="1">This is option 1</option>
               <option value="2">This is option 2</option>

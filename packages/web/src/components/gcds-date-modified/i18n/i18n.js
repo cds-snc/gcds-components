@@ -1,9 +1,11 @@
 const I18N = {
   en: {
-    term: 'Date modified:',
+    date: 'Date modified:',
+    version: 'Version ',
   },
   fr: {
-    term: 'Date de modification :',
+    date: 'Date de modification :',
+    version: 'Version ',
   },
 };
 

@@ -26,11 +26,13 @@
 ### Depends on
 
 - [gcds-text](../gcds-text)
+- [gcds-icon](../gcds-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-error-message --> gcds-text
+  gcds-error-message --> gcds-icon
   gcds-checkbox --> gcds-error-message
   gcds-fieldset --> gcds-error-message
   gcds-file-uploader --> gcds-error-message

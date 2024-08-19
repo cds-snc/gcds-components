@@ -25,6 +25,7 @@ export default {
       },
     },
     nextHref: {
+      name: 'next-href',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -32,6 +33,7 @@ export default {
       },
     },
     nextLabel: {
+      name: 'next-label',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -39,6 +41,7 @@ export default {
       },
     },
     previousHref: {
+      name: 'previous-href',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -46,6 +49,7 @@ export default {
       },
     },
     previousLabel: {
+      name: 'previous-label',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -53,6 +57,7 @@ export default {
       },
     },
     totalPages: {
+      name: 'total-pages',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -60,6 +65,7 @@ export default {
       },
     },
     currentPage: {
+      name: 'current-page',
       control: 'text',
       table: {
         type: { summary: 'string' },

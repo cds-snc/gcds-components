@@ -1,0 +1,68 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as DateInput from './gcds-date-input.stories';
+
+<Meta of={DateInput} name="Overview" />
+
+# date input<br/>`<gcds-date-input>`
+
+_Also called: dates, dateinput, date, memorable date._
+
+A date input is a space to enter a known date.
+
+
+<Canvas of={DateInput.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+### Format
+
+#### Full - English
+
+<Canvas of={DateInput.FullEN} story={{ inline: true }} />
+
+#### Full - French
+
+<Canvas of={DateInput.FullFR} story={{ inline: true }} />
+
+#### Compact - English
+
+<Canvas of={DateInput.CompactEN} story={{ inline: true }} />
+
+#### Compact - French
+
+<Canvas of={DateInput.CompactFR} story={{ inline: true }} />
+
+### State
+
+#### Default
+
+<Canvas of={DateInput.DefaultState} story={{ inline: true }} />
+
+#### Required
+
+<Canvas of={DateInput.Required} story={{ inline: true }} />
+
+#### Error message
+
+<Canvas of={DateInput.Error} story={{ inline: true }} />
+
+#### Disabled
+
+<Canvas of={DateInput.Disabled} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul className="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/date-input/" target="_blank">Guidance</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-date-input" target="_blank">Github</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://www.figma.com/design/mh2maMG2NBtk41k1O1UGHV/GC-Design-System?node-id=14220-878&t=gVwci9KWzoc3fgel-0" target="_blank">Figma</gcds-link>
+  </li>
+</ul>

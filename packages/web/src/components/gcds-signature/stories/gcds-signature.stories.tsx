@@ -14,6 +14,7 @@ export default {
       },
     },
     hasLink: {
+      name: 'has-link',
       control: { type: 'select' },
       options: [false, true],
       table: {

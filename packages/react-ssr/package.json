@@ -1,0 +1,87 @@
+{
+  "name": "@cdssnc/gcds-components-react-ssr",
+  "version": "0.24.1-canary.0",
+  "author": "Government of Canada / Gouvernement du Canada",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/cds-snc/gcds-components/issues"
+  },
+  "homepage": "https://design-system.alpha.canada.ca/",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./gcds.css": {
+      "import": "./gcds.css",
+      "require": "./gcds.css"
+    },
+    "./server": {
+      "import": "./dist/esm/lib/server.js",
+      "require": "./dist/cjs/lib/server.js",
+      "types": "./dist/types/lib/server.d.ts"
+    },
+    "./client": {
+      "import": "./dist/esm/lib/client/index.js",
+      "require": "./dist/cjs/lib/client/index.js",
+      "types": "./dist/types/lib/client/index.d.ts"
+    }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "dist",
+    "patches",
+    "gcds.css"
+  ],
+  "scripts": {
+    "prebuild": "del-cli --force ./dist && copyfiles -f ../web/dist/components/*.js ./dist/esm/components && copyfiles -f ../../node_modules/@stencil/core/internal/client/index.js ./dist/esm/lib/stencil && copyfiles -f ../../node_modules/@stencil/core/internal/client/shadow-css.js ./dist/esm/lib/stencil && make-dir ./dist/esm && make-dir ./dist/types",
+    "build": "npm run build:esm && npm run build:types && npm run build:cjs",
+    "build:esm": "tsx ./scripts/build.ts",
+    "build:types": "tsc -p .",
+    "build:cjs": "esbuild dist/esm/*.js dist/esm/**/*.js dist/esm/**/**/*.js --log-level=error --outdir=dist/cjs --format=cjs --loader:.js=jsx",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@cdssnc/gcds-components": "^0.24.1",
+    "@stencil/core": "4.11.0",
+    "element-internals-polyfill": "^1.3.10",
+    "linkedom": "^0.16.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.23.0",
+    "@smartive/eslint-config": "4.0.1",
+    "@smartive/prettier-config": "3.1.2",
+    "@types/node": "18.18.11",
+    "copyfiles": "2.4.1",
+    "del-cli": "5.1.0",
+    "esbuild": "0.19.7",
+    "eslint": "8.54.0",
+    "eslint-config-prettier": "9.0.0",
+    "get-tsconfig": "^4.7.5",
+    "make-dir-cli": "3.1.0",
+    "prettier": "3.1.0",
+    "replace-in-file": "^8.0.0",
+    "tsx": "4.11.0",
+    "typescript": "~5.1.0"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ]
+      }
+    }
+  }
+}

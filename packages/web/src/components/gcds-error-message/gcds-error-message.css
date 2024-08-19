@@ -12,10 +12,9 @@
 
 @layer default {
   :host .error-message {
-    margin: var(--gcds-error-message-margin);
-    padding: var(--gcds-error-message-padding);
-    background: var(--gcds-error-message-background);
-    border-inline-start: var(--gcds-error-message-border-width) solid
-      var(--gcds-error-message-border-color);
+    &::part(text),
+    gcds-icon {
+      color: var(--gcds-error-message-text-color);
+    }
   }
 }

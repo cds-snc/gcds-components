@@ -31,6 +31,7 @@
     }
 
     .label--required {
+      font-weight: var(--gcds-label-required-font-weight);
       margin: var(--gcds-label-required-margin) !important;
     }
   }
