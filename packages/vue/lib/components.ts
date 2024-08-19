@@ -82,6 +82,7 @@ export const GcdsCheckbox = /*@__PURE__*/ defineContainer<JSX.GcdsCheckbox>('gcd
 export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', undefined, [
   'border',
   'centered',
+  'mainContainer',
   'margin',
   'padding',
   'size',

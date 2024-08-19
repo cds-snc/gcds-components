@@ -188,6 +188,10 @@ export namespace Components {
          */
         "centered"?: boolean;
         /**
+          * Defines if the container is the main page container or not. If set to true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
+         */
+        "mainContainer"?: boolean;
+        /**
           * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
          */
         "margin"?: | '0'
@@ -1986,6 +1990,10 @@ declare namespace LocalJSX {
           * Defines if container is centered or not.
          */
         "centered"?: boolean;
+        /**
+          * Defines if the container is the main page container or not. If set to true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
+         */
+        "mainContainer"?: boolean;
         /**
           * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
          */
