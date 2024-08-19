@@ -4,6 +4,97 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.25.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.24.1...gcds-components-v0.25.0) (2024-08-19)
+
+### Breaking changes
+
+The Card and Stepper components have been redesigned and will have some changes in their API structure.
+
+#### Updates to the Card component
+
+The property `type` will be removed as the component will now only support link interactions. If you’re using `type=action`, note that this will be unsupported in this release.
+
+The `tag` property will be replaced by a new property named `badge`.
+
+The property `title-element` will be replaced by a new property named `card-title-tag`.
+
+We’re dropping support for the `footer` slot (`slot="footer"`). We’re removing it as we haven’t observed any use of the slot.
+
+**New**: We’ve introduced a `slot` to support the display of HTML text formatting within the Card component. You can still use the description property for this purpose with a simple string value (text) only.
+
+##### Old implementation
+
+```html
+<gcds-card
+  type="link"
+  card-title=""
+  href=""
+  title-element=""
+  description=""
+  tag=""
+  img-src=""
+  img-alt=""
+>
+ <slot name=”footer”></slot>
+</gcds-card>
+```
+
+##### New implementation
+
+```html
+<gcds-card
+  card-title=""
+  href=""
+  card-title-tag="a"
+  description=""
+  badge=""
+  img-src=""
+  img-alt=""
+>
+ <slot></slot>
+</gcds-card>
+```
+
+#### Updates to the Stepper component
+
+**New**: A new `tag` property will be available to allow the developer to choose the right heading to render the element.
+
+**New (required)**: The stepper will now require text or an element passed into the `slot` to display the heading element. It’s a required property and the component will not render without it.
+
+If you experience issues with the change, ‌‌[contact us](https://design-system.alpha.canada.ca/en/contact/).
+
+##### Old implementation
+
+```html
+<gcds-stepper
+  current-step=""
+  total-steps=""
+></gcds-stepper>
+```
+
+##### New implementation
+
+```html
+<gcds-stepper
+  current-step=""
+  total-steps=""
+  tag=""
+>
+  <slot></slot>
+</gcds-stepper>
+```
+
+### New Features
+
+- Add gcds-date-input component ([#607](https://github.com/cds-snc/gcds-components/issues/607)) ([ce0b4cc](https://github.com/cds-snc/gcds-components/commit/ce0b4ccdbcc9b25ebd8fb8e5b5ca03f4d49332a5))
+- add new main-container prop to container ([#613](https://github.com/cds-snc/gcds-components/issues/613)) ([4eef9b3](https://github.com/cds-snc/gcds-components/commit/4eef9b394d17bac749bd78d5131e97df4e97f7e9))
+- update gcds-card (breaking change) ([#578](https://github.com/cds-snc/gcds-components/issues/578)) ([4a72105](https://github.com/cds-snc/gcds-components/commit/4a72105de07e5bb5675241729c443e4bb6f89925))
+- updates to stepper component (breaking change + new tag attribute) ([#573](https://github.com/cds-snc/gcds-components/issues/573)) ([0f8bd2f](https://github.com/cds-snc/gcds-components/commit/0f8bd2f3031557beca5377765928c13e0a362025))
+
+### Code Refactoring
+
+- change fieldset legend required to span ([#612](https://github.com/cds-snc/gcds-components/issues/612)) ([ca5108f](https://github.com/cds-snc/gcds-components/commit/ca5108f0d29327b62cd9b694b44203b8bdc7250e))
+
 ## [0.24.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.24.0...gcds-components-v0.24.1) (2024-08-13)
 
 ### Bug Fixes

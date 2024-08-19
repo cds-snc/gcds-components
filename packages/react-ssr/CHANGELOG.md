@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.25.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.24.1-canary.0...gcds-components-react-ssr-v0.25.0) (2024-08-19)
+
+
+### New Features
+
+* Add gcds-date-input component ([#607](https://github.com/cds-snc/gcds-components/issues/607)) ([ce0b4cc](https://github.com/cds-snc/gcds-components/commit/ce0b4ccdbcc9b25ebd8fb8e5b5ca03f4d49332a5))
+* add react ssr package ([#587](https://github.com/cds-snc/gcds-components/issues/587)) ([bf3fd1e](https://github.com/cds-snc/gcds-components/commit/bf3fd1ee11429ae9ff97047547f6bcedd2fd8c3d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.24.1 to ^0.25.0
+
 ## [0.24.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.24.0-canary.0...gcds-components-react-ssr-v0.24.1) (2024-08-13)
 
 
