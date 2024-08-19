@@ -36,6 +36,8 @@ export class GcdsFieldset {
 
   private shadowElement?: HTMLElement;
 
+  isDateInput: boolean = false;
+
   _validator: Validator<string> = defaultValidator;
 
   /**
@@ -251,7 +253,11 @@ export class GcdsFieldset {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, 'fieldset');
+    if (this.el.getAttribute('data-date')) {
+      this.isDateInput = true;
+    } else {
+      requiredValidator(this.el, 'fieldset');
+    }
 
     if (this.validator) {
       this._validator = getValidator(this.validator);

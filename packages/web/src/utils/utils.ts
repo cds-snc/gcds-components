@@ -9,14 +9,15 @@ export const inheritAttributes = (
   shadowElement: HTMLElement,
   attributes: string[] = [],
 ) => {
-  const attributeObject = {};
+  let attributeObject = {};
+  let attributesToRemove = [];
 
-  // Check for any aria or data attributes
+  // Check for any aria attributes
   for (let i = 0; i < el.attributes.length; i++) {
     const attr = el.attributes[i];
     if (attr.name.includes('aria-')) {
       attributeObject[attr.name] = attr.value;
-      el.removeAttribute(attr.name);
+      attributesToRemove.push(attr.name);
     }
   }
 
@@ -112,3 +113,81 @@ export const emitEvent = (
 
   return true;
 };
+
+/* Log validation error for required properties in components
+ * @param name - name of the component i.e. <gcds-*>
+ * @param errorArr - array of attributes with errors
+ * @param optionalAttrsArrToRemove - array of optional attributes with errors to be removed from this error message
+ */
+export const logError = (
+  name: string,
+  errorArr: string[],
+  optionalAttrsArrToRemove?: string[],
+) => {
+  let engMsg = 'Render error, please check required properties.';
+  let frMsg = 'Erreur de rendu, veuillez vérifier les propriétés requises.';
+  let errors = [...errorArr];
+
+  // remove any potential optional attributes from errors array
+  if (optionalAttrsArrToRemove && optionalAttrsArrToRemove.length > 0) {
+    for (const optionalAttr of optionalAttrsArrToRemove) {
+      if (errors.includes(optionalAttr)) {
+        errors.splice(errors.indexOf(optionalAttr), 1);
+      }
+    }
+  }
+
+  console.error(
+    `${name}: ${engMsg} (${errors}) | ${name}: ${frMsg} (${errors})`,
+  );
+};
+
+/* Check for valid date
+ * @param dateString - the date to check
+ */
+export const isValidDate = (dateString: string, forceFormat?: 'full' | 'compact') => {
+  // Define regex pattern to match YYYY-MM-DD format
+  let fullregex = /^\d{4}-\d{2}-\d{2}$/;
+  let compactregex = /^\d{4}-\d{2}$/;
+  let format = '';
+
+  // Check if the format matches the regex
+  if (fullregex.test(dateString)) {
+    format = 'full';
+  } else if (compactregex.test(dateString)) {
+    format = 'compact';
+  } else {
+    return false;
+  }
+
+  if (forceFormat && format != forceFormat) {
+    return false;
+  }
+
+  // Parse the date string into a Date object
+  const formattedDate = `${dateString}${format === 'compact' ? '-15' : ''}`;
+
+  // Check if the date is valid
+  const [year, month, day] = formattedDate.split('-').map(Number);
+
+  const thirtyOneDays = [1, 3, 5, 7, 8, 10, 12];
+  const thirtyDays = [4, 6, 9, 11];
+
+  if (month < 1 || month > 12) {
+    return false;
+  } else if (thirtyDays.includes(month) && (day < 1 || day > 30)) {
+    return false;
+  } else if (thirtyOneDays.includes(month) && (day < 1 || day > 31)) {
+    return false;
+  } else if (!isLeapYear(year) && month === 2 && (day < 1 || day > 28)) {
+    return false;
+  } else if (isLeapYear(year) && month === 2 && (day < 1 || day > 29)) {
+    return false;
+  }
+
+  return true;
+};
+
+function isLeapYear(y: number) {
+  return !(y & 3 || (!(y % 25) && y & 15));
+}
