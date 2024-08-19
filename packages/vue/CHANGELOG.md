@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.25.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.24.1...gcds-components-vue-v0.25.0) (2024-08-19)
+
+
+### New Features
+
+* Add gcds-date-input component ([#607](https://github.com/cds-snc/gcds-components/issues/607)) ([ce0b4cc](https://github.com/cds-snc/gcds-components/commit/ce0b4ccdbcc9b25ebd8fb8e5b5ca03f4d49332a5))
+* add new main-container prop to container ([#613](https://github.com/cds-snc/gcds-components/issues/613)) ([4eef9b3](https://github.com/cds-snc/gcds-components/commit/4eef9b394d17bac749bd78d5131e97df4e97f7e9))
+* update gcds-card (breaking change) ([#578](https://github.com/cds-snc/gcds-components/issues/578)) ([4a72105](https://github.com/cds-snc/gcds-components/commit/4a72105de07e5bb5675241729c443e4bb6f89925))
+* updates to stepper component (breaking change + new tag attribute) ([#573](https://github.com/cds-snc/gcds-components/issues/573)) ([0f8bd2f](https://github.com/cds-snc/gcds-components/commit/0f8bd2f3031557beca5377765928c13e0a362025))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.24.1 to ^0.25.0
+
 ## [0.24.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.24.0...gcds-components-vue-v0.24.1) (2024-08-13)
 
 

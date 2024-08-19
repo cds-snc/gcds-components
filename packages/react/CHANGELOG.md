@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.25.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.24.1...gcds-components-react-v0.25.0) (2024-08-19)
+
+
+### New Features
+
+* Add gcds-date-input component ([#607](https://github.com/cds-snc/gcds-components/issues/607)) ([ce0b4cc](https://github.com/cds-snc/gcds-components/commit/ce0b4ccdbcc9b25ebd8fb8e5b5ca03f4d49332a5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.24.1 to ^0.25.0
+
 ## [0.24.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.24.0...gcds-components-react-v0.24.1) (2024-08-13)
 
 

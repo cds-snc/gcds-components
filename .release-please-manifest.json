@@ -1,7 +1,7 @@
 {
-  "packages/angular": "0.24.1",
-  "packages/react": "0.24.1",
-  "packages/vue": "0.24.1",
-  "packages/web": "0.24.1",
-  "packages/react-ssr": "0.24.1-canary.0"
+  "packages/angular": "0.25.0",
+  "packages/react": "0.25.0",
+  "packages/vue": "0.25.0",
+  "packages/web": "0.25.0",
+  "packages/react-ssr": "0.25.0"
 }
