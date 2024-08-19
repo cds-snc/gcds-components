@@ -11,19 +11,23 @@
   "packages": {
     "packages/angular": {
       "component": "gcds-components-angular",
-      "changelog-path": ""
+      "changelog-path": "",
+      "prerelease": false
     },
     "packages/react": {
       "component": "gcds-components-react",
-      "changelog-path": ""
+      "changelog-path": "",
+      "prerelease": false
     },
     "packages/vue": {
       "component": "gcds-components-vue",
-      "changelog-path": ""
+      "changelog-path": "",
+      "prerelease": false
     },
     "packages/web": {
       "component": "gcds-components",
-      "changelog-path": ""
+      "changelog-path": "",
+      "prerelease": false
     },
     "packages/react-ssr": {
       "component": "gcds-components-react-ssr",
