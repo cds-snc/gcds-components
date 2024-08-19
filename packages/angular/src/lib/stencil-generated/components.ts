@@ -1096,14 +1096,14 @@ export declare interface GcdsSrOnly extends Components.GcdsSrOnly {}
 
 
 @ProxyCmp({
-  inputs: ['currentStep', 'totalSteps']
+  inputs: ['currentStep', 'tag', 'totalSteps']
 })
 @Component({
   selector: 'gcds-stepper',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['currentStep', 'totalSteps'],
+  inputs: ['currentStep', 'tag', 'totalSteps'],
 })
 export class GcdsStepper {
   protected el: HTMLElement;

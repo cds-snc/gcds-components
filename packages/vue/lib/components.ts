@@ -404,7 +404,8 @@ export const GcdsSrOnly = /*@__PURE__*/ defineContainer<JSX.GcdsSrOnly>('gcds-sr
 
 export const GcdsStepper = /*@__PURE__*/ defineContainer<JSX.GcdsStepper>('gcds-stepper', undefined, [
   'currentStep',
-  'totalSteps'
+  'totalSteps',
+  'tag'
 ]);
 
 

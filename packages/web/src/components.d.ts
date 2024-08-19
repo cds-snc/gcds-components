@@ -1018,6 +1018,10 @@ export namespace Components {
          */
         "currentStep": number;
         /**
+          * Defines the heading tag to render
+         */
+        "tag": 'h1' | 'h2' | 'h3';
+        /**
           * Defines the total amount of steps.
          */
         "totalSteps": number;
@@ -3014,6 +3018,10 @@ declare namespace LocalJSX {
           * Defines the current step.
          */
         "currentStep": number;
+        /**
+          * Defines the heading tag to render
+         */
+        "tag"?: 'h1' | 'h2' | 'h3';
         /**
           * Defines the total amount of steps.
          */
