@@ -28,11 +28,6 @@
     overflow: hidden;
     max-width: var(--gcds-card-max-width);
 
-    > *:not(slot):not(.gcds-card__spacer) {
-      display: block;
-      margin: var(--gcds-card-margin);
-    }
-
     .gcds-badge {
       background-color: var(--gcds-card-badge-background-color);
       position: absolute;
@@ -44,6 +39,7 @@
 
     .gcds-card__image {
       width: 100%;
+      margin: var(--gcds-card-image-margin);
     }
 
     .gcds-card__title {
@@ -54,10 +50,14 @@
       @media only screen and (width < 48em) {
         font: var(--gcds-card-title-font-mobile);
       }
+
+      &:has( + .gcds-card__description) {
+        margin: var(--gcds-card-title-margin);
+      }
     }
 
     .gcds-card__description {
-      font: var(--gcds-card-description-font-desktop);
+      --gcds-text-size-body-desktop: var(--gcds-card-description-font-desktop);
 
       @media only screen and (width < 48em) {
         font: var(--gcds-card-description-font-mobile);
