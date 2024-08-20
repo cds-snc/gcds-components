@@ -42,7 +42,6 @@ body:
       label: Which component or pattern is this contribution for? | Quel composant ou quelle configuration cette contribution vise-t-elle?
       options:
         - Data Table | Tableau de données
-        - Image | Image
         - Tags | Étiquettes
     validations:
       required: true
