@@ -4,35 +4,30 @@
   "bump-minor-pre-major": false,
   "bump-patch-for-minor-pre-major": false,
   "draft": false,
+  "prerelease": false,
   "group-pull-request-title-pattern": "chore: GCDS Components Release ${version}",
   "pull-request-title-pattern": "chore: GCDS Components Release ${version}",
   "include-component-in-tag": true,
   "packages": {
     "packages/angular": {
       "component": "gcds-components-angular",
-      "changelog-path": "",
-      "prerelease": false
+      "changelog-path": ""
     },
     "packages/react": {
       "component": "gcds-components-react",
-      "changelog-path": "",
-      "prerelease": false
+      "changelog-path": ""
     },
     "packages/vue": {
       "component": "gcds-components-vue",
-      "changelog-path": "",
-      "prerelease": false
+      "changelog-path": ""
     },
     "packages/web": {
       "component": "gcds-components",
-      "changelog-path": "",
-      "prerelease": false
+      "changelog-path": ""
     },
     "packages/react-ssr": {
       "component": "gcds-components-react-ssr",
-      "changelog-path": "",
-      "prerelease": true,
-      "prerelease-type": "canary"
+      "changelog-path": ""
     }
   },
   "changelog-sections": [
