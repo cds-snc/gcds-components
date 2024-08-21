@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.0...gcds-components-v0.26.0-canary.0) (2024-08-21)
+
+
+### Bug Fixes
+
+* Margin and spacing issues in gcds-card ([#617](https://github.com/cds-snc/gcds-components/issues/617)) ([2d39bdc](https://github.com/cds-snc/gcds-components/commit/2d39bdc52a51da82e5fa0b55c569dd316d355176))
+
 ## [0.25.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.24.1...gcds-components-v0.25.0) (2024-08-19)
 
 
