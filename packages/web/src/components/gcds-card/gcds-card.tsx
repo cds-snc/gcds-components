@@ -153,11 +153,11 @@ export class GcdsCard {
 
   private get renderDescription() {
     if (this.el.innerHTML.trim() != '') {
-      return <slot></slot>;
+      return <div class="gcds-card__description"><slot></slot></div>;
+    } else if (this.description) {
+      return <div class="gcds-card__description"><gcds-text margin-bottom='0'>{this.description}</gcds-text></div>;
     } else {
-      if (this.description) {
-        return <gcds-text>{this.description}</gcds-text>;
-      }
+      return null;
     }
   }
 
@@ -216,7 +216,7 @@ export class GcdsCard {
                 {cardTitle}
               </gcds-link>
             )}
-            <div class="gcds-card__description">{renderDescription}</div>
+            {renderDescription}
           </div>
         </Host>
       );
