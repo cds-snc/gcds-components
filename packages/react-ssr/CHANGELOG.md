@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.25.1-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.25.0-canary.0...gcds-components-react-ssr-v0.25.1-canary.0) (2024-08-22)
+
+
+### Bug Fixes
+
+* Build to allow new tokens to be imported in react-ssr package ([#624](https://github.com/cds-snc/gcds-components/issues/624)) ([88790c7](https://github.com/cds-snc/gcds-components/commit/88790c76f6571abc7d1505a492cea6591cbd97cc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.25.0 to ^0.25.1
+
 ## [0.25.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.24.1-canary.0...gcds-components-react-ssr-v0.25.0) (2024-08-19)
 
 

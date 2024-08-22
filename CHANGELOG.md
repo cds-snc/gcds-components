@@ -4,6 +4,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.25.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.0...gcds-components-v0.25.1) (2024-08-22)
+
+### Bug Fixes
+
+- Build to allow new tokens to be imported in react-ssr package ([#624](https://github.com/cds-snc/gcds-components/issues/624)) ([88790c7](https://github.com/cds-snc/gcds-components/commit/88790c76f6571abc7d1505a492cea6591cbd97cc))
+- Margin and spacing issues in gcds-card ([#617](https://github.com/cds-snc/gcds-components/issues/617)) ([2d39bdc](https://github.com/cds-snc/gcds-components/commit/2d39bdc52a51da82e5fa0b55c569dd316d355176))
+
 ## [0.25.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.24.1...gcds-components-v0.25.0) (2024-08-19)
 
 ### Breaking changes
