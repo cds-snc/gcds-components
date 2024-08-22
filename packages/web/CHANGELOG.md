@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.26.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.0...gcds-components-v0.26.0-canary.0) (2024-08-22)
+## [0.25.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.0...gcds-components-v0.25.1) (2024-08-22)
 
 
 ### Bug Fixes
