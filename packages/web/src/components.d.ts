@@ -832,6 +832,16 @@ export namespace Components {
          */
         "href": string;
     }
+    interface GcdsNotice {
+        /**
+          * Defines the notice title.
+         */
+        "noticeTitle": string;
+        /**
+          * Defines notice role.
+         */
+        "type": 'danger' | 'info' | 'success' | 'warning';
+    }
     interface GcdsPagination {
         /**
           * List display - Current page number
@@ -1594,6 +1604,12 @@ declare global {
         prototype: HTMLGcdsNavLinkElement;
         new (): HTMLGcdsNavLinkElement;
     };
+    interface HTMLGcdsNoticeElement extends Components.GcdsNotice, HTMLStencilElement {
+    }
+    var HTMLGcdsNoticeElement: {
+        prototype: HTMLGcdsNoticeElement;
+        new (): HTMLGcdsNoticeElement;
+    };
     interface HTMLGcdsPaginationElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
@@ -1779,6 +1795,7 @@ declare global {
         "gcds-link": HTMLGcdsLinkElement;
         "gcds-nav-group": HTMLGcdsNavGroupElement;
         "gcds-nav-link": HTMLGcdsNavLinkElement;
+        "gcds-notice": HTMLGcdsNoticeElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radio-group": HTMLGcdsRadioGroupElement;
@@ -2772,6 +2789,16 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsNavLinkCustomEvent<void>) => void;
     }
+    interface GcdsNotice {
+        /**
+          * Defines the notice title.
+         */
+        "noticeTitle": string;
+        /**
+          * Defines notice role.
+         */
+        "type": 'danger' | 'info' | 'success' | 'warning';
+    }
     interface GcdsPagination {
         /**
           * List display - Current page number
@@ -3226,6 +3253,7 @@ declare namespace LocalJSX {
         "gcds-link": GcdsLink;
         "gcds-nav-group": GcdsNavGroup;
         "gcds-nav-link": GcdsNavLink;
+        "gcds-notice": GcdsNotice;
         "gcds-pagination": GcdsPagination;
         "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radio-group": GcdsRadioGroup;
@@ -3273,6 +3301,7 @@ declare module "@stencil/core" {
             "gcds-link": LocalJSX.GcdsLink & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
             "gcds-nav-group": LocalJSX.GcdsNavGroup & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
             "gcds-nav-link": LocalJSX.GcdsNavLink & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
+            "gcds-notice": LocalJSX.GcdsNotice & JSXBase.HTMLAttributes<HTMLGcdsNoticeElement>;
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             "gcds-radio-group": LocalJSX.GcdsRadioGroup & JSXBase.HTMLAttributes<HTMLGcdsRadioGroupElement>;

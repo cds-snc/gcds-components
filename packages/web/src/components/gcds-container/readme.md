@@ -24,6 +24,7 @@
 
  - [gcds-alert](../gcds-alert)
  - [gcds-grid](../gcds-grid)
+ - [gcds-notice](../gcds-notice)
  - [gcds-phase-banner](../gcds-phase-banner)
 
 ### Graph
@@ -31,6 +32,7 @@
 graph TD;
   gcds-alert --> gcds-container
   gcds-grid --> gcds-container
+  gcds-notice --> gcds-container
   gcds-phase-banner --> gcds-container
   style gcds-container fill:#f9f,stroke:#333,stroke-width:4px
 ```

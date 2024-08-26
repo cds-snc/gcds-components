@@ -35,6 +35,7 @@ export const GcdsLangToggle = /*@__PURE__*/createReactComponent<JSX.GcdsLangTogg
 export const GcdsLink = /*@__PURE__*/createReactComponent<JSX.GcdsLink, HTMLGcdsLinkElement>('gcds-link');
 export const GcdsNavGroup = /*@__PURE__*/createReactComponent<JSX.GcdsNavGroup, HTMLGcdsNavGroupElement>('gcds-nav-group');
 export const GcdsNavLink = /*@__PURE__*/createReactComponent<JSX.GcdsNavLink, HTMLGcdsNavLinkElement>('gcds-nav-link');
+export const GcdsNotice = /*@__PURE__*/createReactComponent<JSX.GcdsNotice, HTMLGcdsNoticeElement>('gcds-notice');
 export const GcdsPagination = /*@__PURE__*/createReactComponent<JSX.GcdsPagination, HTMLGcdsPaginationElement>('gcds-pagination');
 export const GcdsPhaseBanner = /*@__PURE__*/createReactComponent<JSX.GcdsPhaseBanner, HTMLGcdsPhaseBannerElement>('gcds-phase-banner');
 export const GcdsRadioGroup = /*@__PURE__*/createReactComponent<JSX.GcdsRadioGroup, HTMLGcdsRadioGroupElement>('gcds-radio-group');
