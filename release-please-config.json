@@ -31,15 +31,15 @@
     }
   },
   "changelog-sections": [
-    { "type": "feat", "section": "New Features" },
-    { "type": "feature", "section": "New Features" },
-    { "type": "fix", "section": "Bug Fixes" },
-    { "type": "perf", "section": "Performance Improvements" },
+    { "type": "feat", "section": ":rocket: New Features" },
+    { "type": "feature", "section": ":rocket: New Features" },
+    { "type": "fix", "section": ":bug: :wrench: Bug Fixes" },
+    { "type": "perf", "section": ":sparkles: Performance Improvements" },
+    { "type": "docs", "section": ":pencil: Documentation" },
+    { "type": "style", "section": ":art: Styles" },
+    { "type": "refactor", "section": ":arrows_counterclockwise: Code Refactoring" },
     { "type": "revert", "section": "Reverts", "hidden": true },
-    { "type": "docs", "section": "Documentation" },
-    { "type": "style", "section": "Styles" },
     { "type": "chore", "section": "Patch", "hidden": true },
-    { "type": "refactor", "section": "Code Refactoring" },
     { "type": "test", "section": "Tests", "hidden": true },
     { "type": "build", "section": "Build System", "hidden": true },
     { "type": "ci", "section": "Continuous Integration", "hidden": true }
