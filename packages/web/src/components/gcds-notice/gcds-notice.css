@@ -114,7 +114,7 @@
         --gcds-heading-h2-mobile: var(--gcds-notice-content-heading-font-mobile);
 
         .notice__type {
-          font: var(--gcds-notice-heading-text-mobile);
+          font: var(--gcds-notice-content-type-mobile);
         }
       }
 
