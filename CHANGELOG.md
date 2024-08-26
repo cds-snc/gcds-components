@@ -510,6 +510,277 @@ As part of the transition, our `gcds-radio` component will be deprecated in favo
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
 
+## [0.25.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.0...gcds-components-v0.25.1) (2024-08-22)
+
+### Correctif
+
+- Créé afin de permettre les nouvelles unités de style à être importées dans le paquet react-ssr ([#624](https://github.com/cds-snc/gcds-components/issues/624)) ([88790c7](https://github.com/cds-snc/gcds-components/commit/88790c76f6571abc7d1505a492cea6591cbd97cc))
+- Problèmes de marge et d'espacement dans gcds-card ([#617](https://github.com/cds-snc/gcds-components/issues/617)) ([2d39bdc](https://github.com/cds-snc/gcds-components/commit/2d39bdc52a51da82e5fa0b55c569dd316d355176))
+
+## [0.25.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.24.1...gcds-components-v0.25.0) (2024-08-19)
+
+### Changements de ruptures de code
+
+Le composants Carte et Indicateur d'étape ont eu une refonte et des changements à la structure de leur API.
+
+#### Mises à jour au composant Carte
+
+La propriété `type` sera enlevée et le composant supporte maintenant les lien d'interactions seulement. Veuillez noter que l'utilisation de `type=action` ne sera pas supporté dans cette version.
+
+La propriété `tag` sera remplacée par la nouvelle propriété `badge`.
+
+La propriété `title-element` sera remplacée par la nouvelle propriété `card-title-tag`.
+
+Arrêt du support pour (`slot="footer"`) car nous n'avons pas observé d'utilité pour cet élément.
+
+**Nouveau**: Nous ajoutons un `slot` afin de supporter l'affichage du formattage de texte HTML dans le composant Carte. Vous pouvez toujours utiliser la propriété `description` avec une valeur de text simple seulement.
+
+##### Vieille implémentation
+
+```html
+<gcds-card
+  type="link"
+  card-title=""
+  href=""
+  title-element=""
+  description=""
+  tag=""
+  img-src=""
+  img-alt=""
+>
+ <slot name=”footer”></slot>
+</gcds-card>
+```
+
+##### Nouvelle implémentation
+
+```html
+<gcds-card
+  card-title=""
+  href=""
+  card-title-tag="a"
+  description=""
+  badge=""
+  img-src=""
+  img-alt=""
+>
+ <slot></slot>
+</gcds-card>
+```
+
+#### Mises à jour au composant Indicateur d'étape
+
+**Nouveau**: Une nouvelle propriété `tag` sera disponible afin de donner au développeur l'option de choisir la bonne en-tête pour générer l'élément.
+
+**Nouveau (obligatoire)**: Le composant requiert maintenant du texte ou un élément dans le `slot` afin d'afficher l'élément d'en-tête. C'est une propriété obligatoire et le composant ne sera pas généré sans elle.
+
+Si vous avez des problèmes avec le changement, ‌‌[contactez-nous](https://design-system.alpha.canada.ca/en/contact/).
+
+##### Vieille implémentation
+
+```html
+<gcds-stepper
+  current-step=""
+  total-steps=""
+></gcds-stepper>
+```
+
+##### Nouvelle implémentation
+
+```html
+<gcds-stepper
+  current-step=""
+  total-steps=""
+  tag=""
+>
+  <slot></slot>
+</gcds-stepper>
+```
+
+### Nouvelles fonctionnalités
+
+- Ajout du composant gcds-date-input ([#607](https://github.com/cds-snc/gcds-components/issues/607)) ([ce0b4cc](https://github.com/cds-snc/gcds-components/commit/ce0b4ccdbcc9b25ebd8fb8e5b5ca03f4d49332a5))
+- Ajout d'une nouvelle propriété `main-container` au conteneur ([#613](https://github.com/cds-snc/gcds-components/issues/613)) ([4eef9b3](https://github.com/cds-snc/gcds-components/commit/4eef9b394d17bac749bd78d5131e97df4e97f7e9))
+- Mise à jour de gcds-card (changement de ruptures de code) ([#578](https://github.com/cds-snc/gcds-components/issues/578)) ([4a72105](https://github.com/cds-snc/gcds-components/commit/4a72105de07e5bb5675241729c443e4bb6f89925))
+- Mises à jour au composant Indicateur d'étape (changement de ruptures de code + nouvel attribut tag) ([#573](https://github.com/cds-snc/gcds-components/issues/573)) ([0f8bd2f](https://github.com/cds-snc/gcds-components/commit/0f8bd2f3031557beca5377765928c13e0a362025))
+
+### Optimisation du code
+
+- changer l'étiquette du `fieldset legend required` de `strong` à `span` ([#612](https://github.com/cds-snc/gcds-components/issues/612)) ([ca5108f](https://github.com/cds-snc/gcds-components/commit/ca5108f0d29327b62cd9b694b44203b8bdc7250e))
+
+## [0.24.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.24.0...gcds-components-v0.24.1) (2024-08-13)
+
+### Correctif
+
+- Mise à jour de mauvais alignements de design pour plusieurs composants ([#608](https://github.com/cds-snc/gcds-components/issues/608)) ([9bcb4ae](https://github.com/cds-snc/gcds-components/commit/9bcb4aef1004ea45b4ad0a2855b2322cfedbe799))
+
+## [0.24.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.23.0...gcds-components-v0.24.0) (2024-08-01)
+
+### Nouvelles fonctionnalités
+
+- Ajout d'un statut visité au composant Lien ([#602](https://github.com/cds-snc/gcds-components/issues/602)) ([da4e524](https://github.com/cds-snc/gcds-components/commit/da4e524708e74ec485c9bec1805e09b3c67e125c))
+
+## [0.23.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.4...gcds-components-v0.23.0) (2024-07-31)
+
+### Nouvelles fonctionnalités
+
+- Ajout du paquest React ssr (version canary) ([#587](https://github.com/cds-snc/gcds-components/issues/587)) ([bf3fd1e](https://github.com/cds-snc/gcds-components/commit/bf3fd1ee11429ae9ff97047547f6bcedd2fd8c3d))
+
+## [0.22.4](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.3...gcds-components-v0.22.4) (2024-07-29)
+
+### Correctif
+
+- Revenir en arrière sur les changements au processus de déploiement Angular ([#597](https://github.com/cds-snc/gcds-components/issues/597)) ([0b62c3a](https://github.com/cds-snc/gcds-components/commit/0b62c3ab4a1ac4f65401b92fba732f9166c9e39d))
+
+## [0.22.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.2...gcds-components-v0.22.3) (2024-07-29)
+
+### Optimisation du code
+
+- Mise à jour au design des messages d'erreurs ([#592](https://github.com/cds-snc/gcds-components/issues/592)) ([5f1b94e](https://github.com/cds-snc/gcds-components/commit/5f1b94e83076c8b97a4f110ac7269acc15cc67f4))
+
+## [0.22.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.1...gcds-components-v0.22.2) (2024-07-10)
+
+### Correctif
+
+- Problèmes d'accessibilité sur Safari avec les liens et le focus du groupe de navigation ([#583](https://github.com/cds-snc/gcds-components/issues/583)) ([d7c3fb9](https://github.com/cds-snc/gcds-components/commit/d7c3fb91f0fb475926371be62395e33b635153a4))
+- Retrait des événements rxjs afin d'éviter la duplication des évènements personnalisés dans @cdssnc/gcds-component-angular ([#566](https://github.com/cds-snc/gcds-components/issues/566)) ([9bf46ac](https://github.com/cds-snc/gcds-components/commit/9bf46ac49c7ffd3a1569430a0a138136e639fc9c))
+
+## [0.22.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.22.0...gcds-components-v0.22.1) (2024-05-27)
+
+### Correctif
+
+- Mauvais alignements du bouton dans le menu thème et sujet en français (correctif) ([#541](https://github.com/cds-snc/gcds-components/issues/541)) ([c524215](https://github.com/cds-snc/gcds-components/commit/c5242158b75838eb4366b0c254029597b87bcab4))
+
+### Optimisation du code
+
+- Mise à jour du composant Champ de saisie afin d'augmenter le calcul de la largeur du champ ([#536](https://github.com/cds-snc/gcds-components/issues/536)) ([d6204f3](https://github.com/cds-snc/gcds-components/commit/d6204f327d639b304df7bb49006c60ef1950b7f8))
+
+## [0.22.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.21.0...gcds-components-v0.22.0) (2024-05-21)
+
+### Nouvelles fonctionnalités
+
+- Ajout/création du paquet @cdssnc/gcds-components-vue ([#516](https://github.com/cds-snc/gcds-components/issues/516)) ([3933498](https://github.com/cds-snc/gcds-components/commit/3933498c007bb3628badb0a9c751980bb01ecd25))ß
+- Ajout de @Outputs au composants pour Angular ([#529](https://github.com/cds-snc/gcds-components/issues/529)) ([0660093](https://github.com/cds-snc/gcds-components/commit/0660093997b9f23ddc4745a0599df66c793a6e51))
+- Ajout de `dist-hydrate-app`. ([#524](https://github.com/cds-snc/gcds-components/issues/524)) ([c448c59](https://github.com/cds-snc/gcds-components/commit/c448c59f56c367e8f408becffaa3edaf3ef8d280))
+
+### Correctif
+
+- Émettre l'évènement `change` venant des composants de formulaire ([#523](https://github.com/cds-snc/gcds-components/issues/523)) ([d956370](https://github.com/cds-snc/gcds-components/commit/d9563707bb5f26ac8da7ee0cbd2c5f343ec624d3))
+
+## [0.21.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.20.0...gcds-components-v0.21.0) (2024-05-08)
+
+### Changements de ruptures de code
+
+#### Transition des éléments personnalisés associés au formulaire
+
+Nous avons mis des efforts substentiels afin de migrer nos composants au éléments personnalisés associés au formulaire. Les composants du Sytème de design GC vont maintenant utiliser le shadow DOM (document object model). Le shadow DOM améliore le contrôle et l'encapsulation de la stylisation et permet aux composants de formulaire d'être intégré aux fonctionnalités natives du navigateur pour la validation et l'accessibilité.
+
+Ce changement requiert que tous les composants aient l'attribut `name`. Voici une liste des composants du Système de design GC visés par ce changement:
+
+- Téléverseur de fichiers (`gcds-file-uploader`)
+- Champ de saisie (`gcds-input`)
+- Sélection (`gcds-select`)
+- Zone de texte (`gcds-textarea`)
+
+##### Changements requis pour les composants de formulaire
+
+- Ajoutez un attribut `name`
+- Votre code devrait ressembler à ceci:
+
+```html
+<gcds-file-uploader name="" uploader-id="" label=""></gcds-file-uploader>
+<gcds-input name="" input-id="" label=""></gcds-input>
+<gcds-select name="" select-id="" label=""></gcds-select>
+<gcds-textarea name="" textarea-id="" label=""></gcds-textarea>
+```
+
+#### Shadow-dom
+
+Les composants qui suivent seront mis à jour pour utiliser le shadow DOM comme les autres composants du Système de design GC:
+
+- Pagination (`gcds-pagination`)
+- Recherche (`gcds-search`)
+- Signature (`gcds-signature`)
+
+#### Groupe radio
+
+Inclus dans cette transition, le composant `gcds-radio` sera abandonné en faveur du nouveau composant `gcds-radio-group`. Le composant Groupe de boutons radio permet un meilleur contrôle sur les composants natif HTML de formulaire dans un environnement shadow DOM.
+
+##### Vieille implémentation
+
+```html
+<gcds-radio
+  radio-id="radio-1"
+  name="radio-example"
+  label="Label 1"
+  value="label-1"
+>
+</gcds-radio>
+<gcds-radio
+  radio-id="radio-2"
+  name="radio-example"
+  label="Label 2"
+  value="label-2"
+>
+</gcds-radio>
+```
+
+##### Nouvelle implémentation
+
+```html
+<gcds-radio-group
+  name="radio-example"
+  options="[{
+      'id': 'radio-1',
+      'label': 'Label 1',
+      'value': 'label-1'}, {
+      'id': 'radio-2',
+      'label': 'Label 2',
+      'value': 'label-2'}]"
+>
+</gcds-radio-group>
+```
+
+### Nouvelles fonctionnalités
+
+- Ajout de la propriété `tag` au composant gcds-sr-only ([#484](https://github.com/cds-snc/gcds-components/issues/484)) ([dfb7285](https://github.com/cds-snc/gcds-components/commit/dfb7285a14b477f4c4f71750e8b09d3ca5c193a9))
+- Réécriture de composants (associés au fomulaire, gcds-radio-group, réécriture CSS) ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
+
+### Correctif
+
+- Mise à jour de fonctions d'utilités pour améliorer l'utilisabilité ([#495](https://github.com/cds-snc/gcds-components/issues/495)) ([a0e8fbb](https://github.com/cds-snc/gcds-components/commit/a0e8fbbf5ed8004f72f4e51ca2f2da4ef70a37ef))
+
+## [0.20.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.1...gcds-components-v0.20.0) (2024-03-14)
+
+### Nouvelles fonctionnalités
+
+- définir les valeurs permises pour la propriété d'étiquette de la grille afin de limiter les mauvaises utilisations ([#470](https://github.com/cds-snc/gcds-components/issues/470)) ([a686d09](https://github.com/cds-snc/gcds-components/commit/a686d09dab4cf40548448ccdc7e050d6322afb24))
+
+### Correctif
+
+- Paquet React: chemin invalide pour les types ([#471](https://github.com/cds-snc/gcds-components/issues/471)) ([f859d43](https://github.com/cds-snc/gcds-components/commit/f859d438e9a79184d83157b92a97f855376777ac))
+
+## [0.19.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.19.0...gcds-components-v0.19.1) (2024-02-22)
+
+### Correctif
+
+- Correctifs identifiés dans le rapport d'accessibilité (accessibilité et utilisabililté) ([#446](https://github.com/cds-snc/gcds-components/issues/446)) ([09095a5](https://github.com/cds-snc/gcds-components/commit/09095a52f41e40a243455874daf2c147c18d89b1))
+
+## v0.19.0
+
+### Changements de ruptures de code
+
+- Composant Bouton - enlever la propriété `button-style prop` ([#450](https://github.com/cds-snc/gcds-components/issues/450)) ([f7d4ce4](https://github.com/cds-snc/gcds-components/commit/f7d4ce474b1805c41fb86eec8619bbe8440146e6))
+
+### Correctif
+
+- changement de la logistique de la sortie de focus de la bascule de langue de `top-nav` à `nav-group` ([#387](https://github.com/cds-snc/gcds-components/pull/387)) ([a72f91f](https://github.com/cds-snc/gcds-components/commit/a72f91fb975ded03151fc0eee2cc376ddb2b22c4))
+
+### Optimisation du code
+
+- remplacer le `skip-to-href` du `gcds-button` dans `gcds-header` avec le composant `gcds-link` ([#451](https://github.com/cds-snc/gcds-components/issues/451)) ([f3a052b](https://github.com/cds-snc/gcds-components/commit/f3a052b3e79a8fa8fdf8d9724c47deb43b09977c))
+- réécriture du CSS du composant Bouton ([#450](https://github.com/cds-snc/gcds-components/issues/450)) ([f7d4ce4](https://github.com/cds-snc/gcds-components/commit/f7d4ce474b1805c41fb86eec8619bbe8440146e6))
+
 ## v0.18.1
 
 ### Changement mineur
