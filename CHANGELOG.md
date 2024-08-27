@@ -314,8 +314,6 @@ Released on: 2024-02-22
 - Grid functionality
   - Ability to add individually sized grid columns to grids as well as allowing to set equal height rows.
 
-### :rocket: New Features
-
 - https://github.com/cds-snc/gcds-components/pull/358 - [34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0) - Add light variant to link component
 
 ### :jigsaw: Patch
@@ -796,8 +794,6 @@ Version publiée le : 2024-02-22
 
 - Fonctionnalité pour le composant grille
   - Possibilité d’ajouter des colonnes de grille dont la taille est individuellement définie et de définir des lignes de hauteur égale.
-
-### Changement mineur
 
 - https://github.com/cds-snc/gcds-components/pull/358 - [34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0) — Ajout de la variante Light au composant lien
 
