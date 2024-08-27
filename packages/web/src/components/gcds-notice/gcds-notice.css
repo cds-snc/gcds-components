@@ -38,6 +38,7 @@
 
       ::slotted(*) {
         margin-block-start: 0;
+        font: var(--gcds-notice-content-slotted-font-desktop);
       }
 
       ::slotted(*:last-child) {
@@ -120,6 +121,10 @@
 
       .notice__close-btn {
         margin: var(--gcds-notice-button-mobile-margin);
+      }
+
+      ::slotted(*) {
+        font: var(--gcds-notice-content-slotted-font-mobile);
       }
     }
   }
