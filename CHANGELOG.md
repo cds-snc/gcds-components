@@ -340,12 +340,7 @@ Released on: 2024-02-22
 
 ### :rocket: New features
 
-- Link component (`gcds-link`)
-  - New `gcds-link` component to allow users to navigate to a new page, website or section on the current page.
-
-### Minor
-
-- https://github.com/cds-snc/gcds-components/pull/305 - [2ffc292](https://github.com/cds-snc/gcds-components/commit/2ffc292828fd5eed53a4eb33cbe753da08f9dde0) - Add `gcds-link` to component library
+- https://github.com/cds-snc/gcds-components/pull/305 - [2ffc292](https://github.com/cds-snc/gcds-components/commit/2ffc292828fd5eed53a4eb33cbe753da08f9dde0) - New `gcds-link` component to allow users to navigate to a new page, website or section on the current page.
 
 ### :jigsaw: Patch
 
@@ -356,12 +351,7 @@ Released on: 2024-02-22
 
 ### :rocket: New features
 
-- Heading component (`gcds-heading`)
-  - New `gcds-heading` to render headings in GCDS styles
-
-### Minor
-
-- https://github.com/cds-snc/gcds-components/pull/306 - [c972bef](https://github.com/cds-snc/gcds-components/commit/c972befacb6961fed73c983df1fb4fda6cbc9ca5) - Add `gcds-heading` to component library
+- https://github.com/cds-snc/gcds-components/pull/306 - [c972bef](https://github.com/cds-snc/gcds-components/commit/c972befacb6961fed73c983df1fb4fda6cbc9ca5) - New `gcds-heading` to render headings in GCDS styles
 
 ### :jigsaw: Patch
 
@@ -371,15 +361,8 @@ Released on: 2024-02-22
 
 ### :rocket: New features
 
-- Text component (`gcds-text`)
-  - New `gcds-text` to render text content in GCDS style
-- Screen reader only component (`gcds-sr-only`)
-  - New `gcds-sr-only` to hide text content only available to assistive technologies
-
-### Minor
-
-- https://github.com/cds-snc/gcds-components/pull/311 - [39c2135](https://github.com/cds-snc/gcds-components/commit/39c2135f3f9eb6ef3fcfa834cb0ab8cfdbc1c498) - Add `gcds-text` to component library
-- https://github.com/cds-snc/gcds-components/pull/315 - [8117534](https://github.com/cds-snc/gcds-components/commit/8117534ffe52c998be9e09002f1dbbe1ec528f48) - Add `gcds-sr-only` to component library
+- https://github.com/cds-snc/gcds-components/pull/311 - [39c2135](https://github.com/cds-snc/gcds-components/commit/39c2135f3f9eb6ef3fcfa834cb0ab8cfdbc1c498) -  New `gcds-text` component to render text content in GCDS style
+- https://github.com/cds-snc/gcds-components/pull/315 - [8117534](https://github.com/cds-snc/gcds-components/commit/8117534ffe52c998be9e09002f1dbbe1ec528f48) - New `gcds-sr-only` component to hide text content only available to assistive technologies
 
 ### :jigsaw: Patch
 
@@ -393,12 +376,7 @@ Released on: 2024-02-22
 
 ### :rocket: New features
 
-- Theme and topic menu component (`gcds-topic-menu`)
-  - New `gcds-topic-menu` component for canada.ca compliance
-
-### Minor
-
-- https://github.com/cds-snc/gcds-components/pull/223 - [c8f0aa1](https://github.com/cds-snc/gcds-components/commit/c8f0aa1107404b5093731548f072d22e8bb699a3) - Add `gcds-topic-menu` to component library
+- https://github.com/cds-snc/gcds-components/pull/223 - [c8f0aa1](https://github.com/cds-snc/gcds-components/commit/c8f0aa1107404b5093731548f072d22e8bb699a3) - New `gcds-topic-menu` component for canada.ca compliance
 
 ### :jigsaw: Patch
 
@@ -411,18 +389,11 @@ Released on: 2024-02-22
 
 ### :rocket: New features
 
-- Search component (`gcds-search`)
-  - New `gcds-search` component for canada.ca compliance
+- https://github.com/cds-snc/gcds-components/pull/212 - [c8f0aa1](https://github.com/cds-snc/gcds-components/commit/c8f0aa1107404b5093731548f072d22e8bb699a3) - New `gcds-search` component for canada.ca compliance
 
 ### :rotating_light: Breaking changes
 
-- Header component (`gcds-header`)
-  - `topnav` slot in the `gcds-header` has been renamed to `skip-to-nav`
-
-### Minor
-
-- https://github.com/cds-snc/gcds-components/pull/212 - [c8f0aa1](https://github.com/cds-snc/gcds-components/commit/c8f0aa1107404b5093731548f072d22e8bb699a3) - Add `gcds-search` to component library
-- https://github.com/cds-snc/gcds-components/pull/225 - [2bc48f9](https://github.com/cds-snc/gcds-components/commit/2bc48f9f51e967c0d12b20b191fbfe2ff54790e1) - Rename `topnav` slot in `gcds-header` to `skip-to-nav`
+- https://github.com/cds-snc/gcds-components/pull/225 - [2bc48f9](https://github.com/cds-snc/gcds-components/commit/2bc48f9f51e967c0d12b20b191fbfe2ff54790e1) - `topnav` slot in the `gcds-header` component has been renamed to `skip-to-nav`
 
 ### :jigsaw: Patch
 
@@ -441,45 +412,32 @@ Released on: 2024-02-22
 
 ### :rocket: New features
 
-- Navigation components (`gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` and `gcds-nav-link`)
-  - Navigation components to provide options for main navigation landmarks
-- Date modified type (`gcds-date-modified`)
-  - Added `type` prop to chose between displaying "Date modified" and "Version"
+- https://github.com/cds-snc/gcds-components/pull/201 - [a922e5f](https://github.com/cds-snc/gcds-components/commit/a922e5fab3a690b4d2a1bc6cd81192a3265a9c63) - Add `gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` and `gcds-nav-link` components to library
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Add `type` prop to `gcds-date-modified` to display "Version" number if needed
 
 ### :rotating_light: Breaking changes
 
 - Site menu component (`gcds-site-menu`)
   - `gcds-site-menu` has been removed from the component library, replaced with `gcds-top-nav`
-- Error summary (`gcds-error-summary`)
-  - `sub-heading` prop has been removed from the `gcds-error-summary`
 
-### Minor
-
-- https://github.com/cds-snc/gcds-components/pull/201 - [a922e5f](https://github.com/cds-snc/gcds-components/commit/a922e5fab3a690b4d2a1bc6cd81192a3265a9c63) - Add `gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` and `gcds-nav-link` components to library
-- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Update form error styling
-- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Remove `sub-heading` from `gcds-error-summary`
-- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Add `type` prop to `gcds-date-modified` to display "Version" number if needed
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - `sub-heading` prop has been removed from the `gcds-error-summary` component
 
 ### :jigsaw: Patch
 
 - https://github.com/cds-snc/gcds-components/pull/205 - [51b30a8](https://github.com/cds-snc/gcds-components/commit/51b30a8a3d5db9f0e91f6f4e9a2d85c26ab2568c) - Add `experimentalImportInjection` to build to help integration of components with bundlers like Vite
 - https://github.com/cds-snc/gcds-components/pull/205 - [51b30a8](https://github.com/cds-snc/gcds-components/commit/51b30a8a3d5db9f0e91f6f4e9a2d85c26ab2568c) - Fix `onChange` event for `gcds-checkbox`
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Update form error styling
 
 ## v0.11.0
 
 ### :rocket: New features
 
-- Card component (`gcds-card`)
-  - New `gcds-card` component to display related pieces of information as a single unit
+- https://github.com/cds-snc/gcds-components/pull/183 - [b64db5d](https://github.com/cds-snc/gcds-components/commit/b64db5d0877adfdd38d400b2a0687d039760b08d) - New `gcds-card` component to display related pieces of information as a single unit
 
 ### :rotating_light: Breaking changes
 
 - Container component (`gcds-container`)
   - `container` property has been renamed `size`
-
-### Minor
-
-- https://github.com/cds-snc/gcds-components/pull/183 - [b64db5d](https://github.com/cds-snc/gcds-components/commit/b64db5d0877adfdd38d400b2a0687d039760b08d) - Add `gcds-card` component to library
 
 ### :jigsaw: Patch
 
@@ -513,15 +471,8 @@ Released on: 2024-02-22
 
 ### :rocket: New features
 
-- Error summary component
-  - New `gcds-error-summary` component for form validation on submit.
-- Angular v15 update
-  - Update `@cdssnc/gcds-components-angular` to use Angular v15. Package will no longer work with Angular v14.
-
-### Minor
-
-- https://github.com/cds-snc/gcds-components/pull/144 - [d88d5f2](https://github.com/cds-snc/gcds-components/commit/d88d5f21e82dfb55b14aba6c0a98da03c17833e1) - Add `gcds-error-summary` to component library
-- https://github.com/cds-snc/gcds-components/pull/149 - [a531b14](https://github.com/cds-snc/gcds-components/commit/a531b14050a2cce28fa6300a0551e2335962fabc) - Update `@cdssnc/gcds-components-angular` to use Angular v15
+- https://github.com/cds-snc/gcds-components/pull/144 - [d88d5f2](https://github.com/cds-snc/gcds-components/commit/d88d5f21e82dfb55b14aba6c0a98da03c17833e1) - New `gcds-error-summary` component for form validation on submit.
+- https://github.com/cds-snc/gcds-components/pull/149 - [a531b14](https://github.com/cds-snc/gcds-components/commit/a531b14050a2cce28fa6300a0551e2335962fabc) - Update `@cdssnc/gcds-components-angular` to use Angular v15. Package will no longer work with Angular v14.
 
 ### :jigsaw: Patch
 
@@ -872,12 +823,7 @@ Version publiée le : 2024-02-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-- Composant lien (`gcds-link`)
-  - Nouveau composant `gcds-link` permettant la navigation vers une nouvelle page, un site web our une section à l`intérieur de la page courante
-
-### Mineur
-
-- https://github.com/cds-snc/gcds-components/pull/305 - [2ffc292](https://github.com/cds-snc/gcds-components/commit/2ffc292828fd5eed53a4eb33cbe753da08f9dde0) - Composant `gcds-link` ajouté à la bibliothèque de composants
+- https://github.com/cds-snc/gcds-components/pull/305 - [2ffc292](https://github.com/cds-snc/gcds-components/commit/2ffc292828fd5eed53a4eb33cbe753da08f9dde0) - Nouveau composant `gcds-link` permettant la navigation vers une nouvelle page, un site web our une section à l`intérieur de la page courante.
 
 ### :jigsaw: Correctif
 
@@ -888,12 +834,7 @@ Version publiée le : 2024-02-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-- Composant en-têtes (`gcds-heading`)
-  - Nouveau composant `gcds-heading` pour générer les en-têtes avec les styles du SDGC
-
-### Mineur
-
-- https://github.com/cds-snc/gcds-components/pull/306 - [c972bef](https://github.com/cds-snc/gcds-components/commit/c972befacb6961fed73c983df1fb4fda6cbc9ca5) - Composant `gcds-heading` ajouté à la biliothèque de composants
+- https://github.com/cds-snc/gcds-components/pull/306 - [c972bef](https://github.com/cds-snc/gcds-components/commit/c972befacb6961fed73c983df1fb4fda6cbc9ca5) - Nouveau composant `gcds-heading` pour générer les en-têtes avec les styles du SDGC
 
 ### :jigsaw: Correctif
 
@@ -903,15 +844,8 @@ Version publiée le : 2024-02-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-- Composant texte (`gcds-text`)
-  - Nouveau composant `gcds-text` pour générer du contenu texte dans les styles du SDGC
-- Composant lecteur d`écran seulement (`gcds-sr-only`)
-  - Nouveau composant `gcds-sr-only` pour cacher le contenu du texte disponible seulement avec des technologies d`assistance
-
-### Mineur
-
-- https://github.com/cds-snc/gcds-components/pull/311 - [39c2135](https://github.com/cds-snc/gcds-components/commit/39c2135f3f9eb6ef3fcfa834cb0ab8cfdbc1c498) - Composant `gcds-text` ajouté à la bibliothèque de composants
-- https://github.com/cds-snc/gcds-components/pull/315 - [8117534](https://github.com/cds-snc/gcds-components/commit/8117534ffe52c998be9e09002f1dbbe1ec528f48) - Composant `gcds-sr-only` ajouté à la bibliothèque de composants
+- https://github.com/cds-snc/gcds-components/pull/311 - [39c2135](https://github.com/cds-snc/gcds-components/commit/39c2135f3f9eb6ef3fcfa834cb0ab8cfdbc1c498) - Nouveau composant `gcds-text` pour générer du contenu texte dans les styles du SDGC
+- https://github.com/cds-snc/gcds-components/pull/315 - [8117534](https://github.com/cds-snc/gcds-components/commit/8117534ffe52c998be9e09002f1dbbe1ec528f48) - Nouveau composant `gcds-sr-only` pour cacher le contenu du texte disponible seulement avec des technologies d`assistance
 
 ### :jigsaw: Correctif
 
@@ -925,12 +859,7 @@ Version publiée le : 2024-02-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-- Composant menu des thèmes et sujets (`gcds-topic-menu`)
-  - Nouveau composant `gcds-topic-menu` pour la conformité avec canada.ca
-
-### Mineur
-
-- https://github.com/cds-snc/gcds-components/pull/223 - [c8f0aa1](https://github.com/cds-snc/gcds-components/commit/c8f0aa1107404b5093731548f072d22e8bb699a3) - Composant `gcds-topic-menu` ajouté à la bibliothèque de composants
+- https://github.com/cds-snc/gcds-components/pull/223 - [c8f0aa1](https://github.com/cds-snc/gcds-components/commit/c8f0aa1107404b5093731548f072d22e8bb699a3) - Nouveau composant `gcds-topic-menu` pour la conformité avec canada.ca
 
 ### :jigsaw: Correctif
 
@@ -943,17 +872,10 @@ Version publiée le : 2024-02-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-- Composant recherche (`gcds-search`)
-  - Nouveau composant `gcds-search` pour la conformité avec canada.ca
+- https://github.com/cds-snc/gcds-components/pull/212 - [c8f0aa1](https://github.com/cds-snc/gcds-components/commit/c8f0aa1107404b5093731548f072d22e8bb699a3) - Nouveau composant `gcds-search` pour la conformité avec canada.ca
 
-### Changements cassants
+### :rotating_light: Changements de ruptures de code
 
-- Composant en-tête (`gcds-header`)
-  - L’élément `topnav` du composant `gcds-header` a été renommé à `skip-to-nav`
-
-### Mineur
-
-- https://github.com/cds-snc/gcds-components/pull/212 - [c8f0aa1](https://github.com/cds-snc/gcds-components/commit/c8f0aa1107404b5093731548f072d22e8bb699a3) - Composant `gcds-search` ajouté à la bibliothèque de composants
 - https://github.com/cds-snc/gcds-components/pull/225 - [2bc48f9](https://github.com/cds-snc/gcds-components/commit/2bc48f9f51e967c0d12b20b191fbfe2ff54790e1) - Élément `topnav` du composant `gcds-header` renommé à `skip-to-nav`
 
 ### :jigsaw: Correctif
@@ -973,45 +895,32 @@ Version publiée le : 2024-02-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-- Composants de navigation (`gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` et `gcds-nav-link`)
-  - Composants de navigation offrant différentes options pour les principaux repères de navigation
-- Type pour le composant date de modification (`gcds-date-modified`)
-  - Popriété `type` ajoutée au composant pour distinguer entre la « date de modification » et la « version »
+- https://github.com/cds-snc/gcds-components/pull/201 - [a922e5f](https://github.com/cds-snc/gcds-components/commit/a922e5fab3a690b4d2a1bc6cd81192a3265a9c63) - Composants `gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` et `gcds-nav-link` ajoutés à la bibliothèque
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Propriété `type` ajoutée au composant `gcds-date-modified` afin d’afficher le numéro de version au besoin
 
-### Changements cassants
+### :rotating_light: Changements de ruptures de code
 
 - Composant menu de navigation globale (`gcds-site-menu`)
   - Composant `gcds-site-menu` retiré de la bibliothèque de composant et remplacé par `gcds-top-nav`
-- Résumé des erreurs (`gcds-error-summary`)
-  - Propriété `sub-heading` (sous-titre) supprimée du composant `gcds-error-summary`
 
-### Mineur
-
-- https://github.com/cds-snc/gcds-components/pull/201 - [a922e5f](https://github.com/cds-snc/gcds-components/commit/a922e5fab3a690b4d2a1bc6cd81192a3265a9c63) - Composants `gcds-top-nav`, `gcds-side-nav`, `gcds-nav-group` et `gcds-nav-link` ajoutés à la bibliothèque
-- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Styles des erreurs de formulaire mis à jour
-- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - `sub-heading` supprimé du composant `gcds-error-summary`
-- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Propriété `type` ajoutée au composant `gcds-date-modified` afin d’afficher le numéro de version au besoin
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Propriété `sub-heading` (sous-titre) supprimée du composant `gcds-error-summary`
 
 ### :jigsaw: Correctif
 
 - https://github.com/cds-snc/gcds-components/pull/205 - [51b30a8](https://github.com/cds-snc/gcds-components/commit/51b30a8a3d5db9f0e91f6f4e9a2d85c26ab2568c) - `experimentalImportInjection` ajouté à la version afin d’aider l’intégration de composants nécessitant des installations regroupées comme Vite
 - https://github.com/cds-snc/gcds-components/pull/205 - [51b30a8](https://github.com/cds-snc/gcds-components/commit/51b30a8a3d5db9f0e91f6f4e9a2d85c26ab2568c) - Évènement `onChange` corrigé pour le composant `gcds-checkbox`
+- https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Styles des erreurs de formulaire mis à jour
 
 ## v0.11.0
 
 ### :rocket: Nouvelles fonctionnalités
 
-- Composant carte (`gcds-card`)
-  - Nouveau composant `gcds-card` permettant d’afficher une série de renseignements connexes dans un seul élément
+- https://github.com/cds-snc/gcds-components/pull/183 - [b64db5d](https://github.com/cds-snc/gcds-components/commit/b64db5d0877adfdd38d400b2a0687d039760b08d) - Nouveau composant `gcds-card` permettant d’afficher une série de renseignements connexes dans un seul élément
 
-### Changements cassants
+### :rotating_light: Changements de ruptures de code
 
 - Composant boîte (`gcds-container`)
   - Propriété `container` (boîte) renommée à `size` (taille)
-
-### Mineur
-
-- https://github.com/cds-snc/gcds-components/pull/183 - [b64db5d](https://github.com/cds-snc/gcds-components/commit/b64db5d0877adfdd38d400b2a0687d039760b08d) - Composant `gcds-card` ajouté à la bibliothèque de composants
 
 ### :jigsaw: Correctif
 
@@ -1045,15 +954,8 @@ Version publiée le : 2024-02-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-- Composant résumé des erreurs
-  - Nouveau composant `gcds-error-summary` permettant la validation de formulaires avant la soumission
-- Mise à jour vers Angular v15
-  - Le dépôt `@cdssnc/gcds-components-angular` a été mis à jour vers Angular v15. Le package ne fonctionnera plus avec Angular v14.
-
-### Mineur
-
-- https://github.com/cds-snc/gcds-components/pull/144 - [d88d5f2](https://github.com/cds-snc/gcds-components/commit/d88d5f21e82dfb55b14aba6c0a98da03c17833e1) - Composant `gcds-error-summary` ajouté à la bibliothèque de composants
-- https://github.com/cds-snc/gcds-components/pull/149 - [a531b14](https://github.com/cds-snc/gcds-components/commit/a531b14050a2cce28fa6300a0551e2335962fabc) - Dépôt `@cdssnc/gcds-components-angular` mis à jour vers Angular v15
+- https://github.com/cds-snc/gcds-components/pull/144 - [d88d5f2](https://github.com/cds-snc/gcds-components/commit/d88d5f21e82dfb55b14aba6c0a98da03c17833e1) -  Nouveau composant `gcds-error-summary` permettant la validation de formulaires avant la soumission
+- https://github.com/cds-snc/gcds-components/pull/149 - [a531b14](https://github.com/cds-snc/gcds-components/commit/a531b14050a2cce28fa6300a0551e2335962fabc) - Le dépôt `@cdssnc/gcds-components-angular` a été mis à jour vers Angular v15. Le package ne fonctionnera plus avec Angular v14.
 
 ### :jigsaw: Correctif
 
