@@ -30,9 +30,9 @@
         --gcds-heading-h2-mobile: var(--gcds-notice-content-heading-font-desktop);
 
         .notice__type {
-          font: var(--gcds-notice-content-type-desktop);
+          font: var(--gcds-notice-content-type-font-desktop);
           display: block;
-          margin: 0;
+          margin: var(--gcds-notice-content-type-margin);
         }
       }
 
@@ -115,7 +115,7 @@
         --gcds-heading-h2-mobile: var(--gcds-notice-content-heading-font-mobile);
 
         .notice__type {
-          font: var(--gcds-notice-content-type-mobile);
+          font: var(--gcds-notice-content-type-font-mobile);
         }
       }
 

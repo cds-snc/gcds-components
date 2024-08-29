@@ -18,8 +18,8 @@ export default {
       control: { type: 'select' },
       options: ['success', 'danger', 'info', 'warning'],
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
       },
       type: {
         required: true,
@@ -44,18 +44,18 @@ const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-notice type="${args.type}" notice-title="${args.noticeTitle}">
-  <gcds-text margin-bottom="0">${args.default}</gcds-text>
+  ${args.default.trim() != '' ? `<gcds-text margin-bottom="0">${args.default}</gcds-text>` : null}
 </gcds-notice>
 
 <!-- React code -->
 <GcdsNotice type="${args.type}"  noticeTitle="${args.noticeTitle}">
-  <GcdsText marginBottom="0">${args.default}</GcdsText>
+  ${args.default.trim() != '' ? `<GcdsText marginBottom="0">${args.default}</GcdsText>` : null}
 </GcdsNotice>
 `.replace(/ null/g, '');
 
 const TemplatePlayground = args => `
 <gcds-notice type="${args.type}"  notice-title="${args.noticeTitle}">
-  <gcds-text margin-bottom="0">${args.default}</gcds-text>
+  ${args.default.trim() != '' ? `<gcds-text margin-bottom="0">${args.default}</gcds-text>` : null}
 </gcds-notice>
 `;
 

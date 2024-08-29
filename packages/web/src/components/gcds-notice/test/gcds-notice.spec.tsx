@@ -12,14 +12,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="success">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-success">
+        <section class="gcds-notice notice--type-success">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Success
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -27,7 +27,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information
@@ -46,14 +46,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="success">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-success">
+        <section class="gcds-notice notice--type-success">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Success
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -61,7 +61,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information
@@ -80,14 +80,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="danger">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-danger">
+        <section class="gcds-notice notice--type-danger">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Danger
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -95,7 +95,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information
@@ -114,14 +114,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="info">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-info">
+        <section class="gcds-notice notice--type-info">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Information
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -129,7 +129,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information
@@ -148,14 +148,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="warning">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-warning">
+        <section class="gcds-notice notice--type-warning">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Warning
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -163,7 +163,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information
@@ -182,14 +182,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="success" lang="fr">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-success">
+        <section class="gcds-notice notice--type-success">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Succès
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -197,7 +197,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information
@@ -216,14 +216,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="danger" lang="fr">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-danger">
+        <section class="gcds-notice notice--type-danger">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Danger
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -231,7 +231,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information
@@ -250,14 +250,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="info" lang="fr">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-info">
+        <section class="gcds-notice notice--type-info">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Information
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -265,7 +265,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information
@@ -284,14 +284,14 @@ describe('gcds-alert', () => {
     expect(page.root)
       .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="warning" lang="fr">
       <mock:shadow-root>
-        <div class="gcds-notice notice--type-warning">
+        <section class="gcds-notice notice--type-warning">
           <gcds-container size="full">
             <div class="notice__content">
               <gcds-heading class="notice__heading" margintop="0" tag="h2">
                 <strong class="notice__type">
                   Avertissement
                 </strong>
-                <gcds-sr-only>
+                <gcds-sr-only tag="span">
                   :
                 </gcds-sr-only>
                 GC Design System notice
@@ -299,7 +299,7 @@ describe('gcds-alert', () => {
               <slot></slot>
             </div>
           </gcds-container>
-        </div>
+        </section>
       </mock:shadow-root>
       <gcds-text>
         Provide additonal information

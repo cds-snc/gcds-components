@@ -107,7 +107,7 @@ export class GcdsNotice {
     return (
       <Host>
         {this.validateRequiredProps() && (
-          <div class={`gcds-notice notice--type-${type}`}>
+          <section class={`gcds-notice notice--type-${type}`}>
             <gcds-container size="full">
               <div class="notice__content">
                 <gcds-heading tag="h2" marginTop="0" class="notice__heading">
@@ -115,13 +115,13 @@ export class GcdsNotice {
                     {i18n[lang]['type'][type]}
                   </strong>
                   {/* Hidden colon to provide pause between caption and heading text for AT */}
-                  <gcds-sr-only> : </gcds-sr-only>
+                  <gcds-sr-only tag="span"> : </gcds-sr-only>
                   {noticeTitle}
                 </gcds-heading>
                 <slot></slot>
               </div>
             </gcds-container>
-          </div>
+          </section>
         )}
       </Host>
     );
