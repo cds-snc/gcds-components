@@ -30,7 +30,11 @@ const createReactWrapperModules = async ({ entryPoints, distRoot }) => {
     const enums = parseEnums(componentsTypeSource);
 
     let i = 0;
-    for (const importPath of entryPoints) {
+    for (let importPath of entryPoints) {
+
+      // Build on Window: File prefix required
+      importPath = importPath.replace( /^[A-Z]:\\/, 'file://$&' );
+
       const component = await import(importPath);
 
       let defineFunctionName = 'd';
