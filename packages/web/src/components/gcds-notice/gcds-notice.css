@@ -17,7 +17,6 @@
 
 @layer default {
   :host .gcds-notice {
-    container: component notice / inline-size;
     color: var(--gcds-notice-text);
     padding: var(--gcds-notice-padding);
     border-inline-start: var(--gcds-notice-border-width) solid transparent;
