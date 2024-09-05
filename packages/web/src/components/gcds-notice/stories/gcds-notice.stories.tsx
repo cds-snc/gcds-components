@@ -1,3 +1,5 @@
+import { langProp } from '../../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Notice',
 
@@ -25,6 +27,7 @@ export default {
         required: true,
       },
     },
+    ...langProp,
 
     // Slots
     default: {
@@ -43,18 +46,18 @@ export default {
 const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
-<gcds-notice type="${args.type}" notice-title="${args.noticeTitle}">
+<gcds-notice type="${args.type}" notice-title="${args.noticeTitle}" ${args.lang != 'en' ? `lang="${args.lang}"` : null}>
   ${args.default.trim() != '' ? `<gcds-text margin-bottom="0">${args.default}</gcds-text>` : null}
 </gcds-notice>
 
 <!-- React code -->
-<GcdsNotice type="${args.type}"  noticeTitle="${args.noticeTitle}">
+<GcdsNotice type="${args.type}"  noticeTitle="${args.noticeTitle}" ${args.lang != 'en' ? `lang="${args.lang}"` : null}>
   ${args.default.trim() != '' ? `<GcdsText marginBottom="0">${args.default}</GcdsText>` : null}
 </GcdsNotice>
 `.replace(/ null/g, '');
 
 const TemplatePlayground = args => `
-<gcds-notice type="${args.type}"  notice-title="${args.noticeTitle}">
+<gcds-notice type="${args.type}"  notice-title="${args.noticeTitle}" ${args.lang != 'en' ? `lang="${args.lang}"` : null}>
   ${args.default.trim() != '' ? `<gcds-text margin-bottom="0">${args.default}</gcds-text>` : null}
 </gcds-notice>
 `;
@@ -66,6 +69,7 @@ Default.args = {
   noticeTitle: 'GC Design System notice',
   type: 'success',
   default: 'Provide additional information.',
+  lang: 'en',
 };
 
 // ------ Notice success ------
@@ -75,6 +79,7 @@ Success.args = {
   noticeTitle: 'GC Design System notice',
   type: 'success',
   default: 'Provide additional information.',
+  lang: 'en',
 };
 
 // ------ Notice danger ------
@@ -84,6 +89,7 @@ Danger.args = {
   noticeTitle: 'GC Design System notice',
   type: 'danger',
   default: 'Provide additional information.',
+  lang: 'en',
 };
 
 // ------ Notice info ------
@@ -93,6 +99,7 @@ Info.args = {
   noticeTitle: 'GC Design System notice',
   type: 'info',
   default: 'Provide additional information.',
+  lang: 'en',
 };
 
 // ------ Notice warning ------
@@ -102,6 +109,7 @@ Warning.args = {
   noticeTitle: 'GC Design System notice',
   type: 'warning',
   default: 'Provide additional information.',
+  lang: 'en',
 };
 
 // ------ Notice events & props ------
@@ -111,6 +119,7 @@ Props.args = {
   noticeTitle: 'GC Design System notice',
   type: 'success',
   default: 'Provide additional information.',
+  lang: 'en',
 };
 
 // ------ Notice playground ------
@@ -120,4 +129,5 @@ Playground.args = {
   noticeTitle: 'GC Design System notice',
   type: 'success',
   default: 'Provide additional information.',
+  lang: 'en',
 };
