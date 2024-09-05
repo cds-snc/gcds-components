@@ -108,19 +108,15 @@ export class GcdsNotice {
       <Host>
         {this.validateRequiredProps() && (
           <section class={`gcds-notice notice--type-${type}`}>
-            <gcds-container size="full">
-              <div class="notice__content">
-                <gcds-heading tag="h2" marginTop="0" class="notice__heading">
-                  <strong class="notice__type">
-                    {i18n[lang]['type'][type]}
-                  </strong>
-                  {/* Hidden colon to provide pause between caption and heading text for AT */}
-                  <gcds-sr-only tag="span"> : </gcds-sr-only>
-                  {noticeTitle}
-                </gcds-heading>
-                <slot></slot>
-              </div>
-            </gcds-container>
+            <gcds-heading tag="h2" marginTop="0" class="notice__heading">
+              <strong class="notice__type">
+                {i18n[lang]['type'][type]}
+              </strong>
+              {/* Hidden colon to provide pause between caption and heading text for AT */}
+              <gcds-sr-only tag="span"> : </gcds-sr-only>
+              {noticeTitle}
+            </gcds-heading>
+            <slot></slot>
           </section>
         )}
       </Host>

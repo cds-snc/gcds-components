@@ -1,4 +1,4 @@
-# gcds-alert
+# gcds-notice
 
 
 
@@ -17,14 +17,12 @@
 
 ### Depends on
 
-- [gcds-container](../gcds-container)
 - [gcds-heading](../gcds-heading)
 - [gcds-sr-only](../gcds-sr-only)
 
 ### Graph
 ```mermaid
 graph TD;
-  gcds-notice --> gcds-container
   gcds-notice --> gcds-heading
   gcds-notice --> gcds-sr-only
   style gcds-notice fill:#f9f,stroke:#333,stroke-width:4px
