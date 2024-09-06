@@ -15,7 +15,7 @@ export class GcdsNotice {
    */
 
   /**
-   * Defines notice role.
+   * Set notice type.
    */
   @Prop() type!: 'danger' | 'info' | 'success' | 'warning';
   validateType() {
@@ -27,7 +27,7 @@ export class GcdsNotice {
   }
 
   /**
-   * Defines the notice title.
+   * Set the notice title.
    */
   @Prop() noticeTitle!: string;
   validateNoticeTitle() {
@@ -112,7 +112,7 @@ export class GcdsNotice {
               <strong class="notice__type">
                 {i18n[lang]['type'][type]}
               </strong>
-              {/* Hidden colon to provide pause between caption and heading text for AT */}
+              {/* Hidden colon to provide pause between caption and heading text for assistive technology */}
               <gcds-sr-only tag="span"> : </gcds-sr-only>
               {noticeTitle}
             </gcds-heading>

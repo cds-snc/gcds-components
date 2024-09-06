@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { GcdsNotice } from '../gcds-notice';
 
-describe('gcds-alert', () => {
+describe('gcds-notice', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
