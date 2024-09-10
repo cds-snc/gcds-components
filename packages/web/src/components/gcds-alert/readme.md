@@ -26,6 +26,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [gcds-page-feedback](../gcds-page-feedback)
+
 ### Depends on
 
 - [gcds-container](../gcds-container)
@@ -36,6 +40,7 @@
 graph TD;
   gcds-alert --> gcds-container
   gcds-alert --> gcds-icon
+  gcds-page-feedback --> gcds-alert
   style gcds-alert fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

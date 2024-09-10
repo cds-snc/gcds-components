@@ -26,8 +26,11 @@
     container: component alert / inline-size;
     font: var(--gcds-alert-font);
     color: var(--gcds-alert-text);
-    padding: var(--gcds-alert-padding);
-    border-inline-start: var(--gcds-alert-border-width) solid transparent;
+
+	gcds-container {
+      padding: var(--gcds-alert-padding);
+      border-inline-start: var(--gcds-alert-border-width) solid transparent;
+	}
 
     .alert__content {
       flex: 1 1 auto;
@@ -89,9 +92,11 @@
 @layer role {
   :host .gcds-alert {
     &.alert--role-danger {
-      background-color: var(--gcds-alert-danger-background);
-      border-color: var(--gcds-alert-danger-icon);
-      color: var(--gcds-alert-danger-text);
+	  gcds-container {
+        background-color: var(--gcds-alert-danger-background);
+        border-color: var(--gcds-alert-danger-icon);
+        color: var(--gcds-alert-danger-text);
+	  }
 
       .alert__icon {
         color: var(--gcds-alert-danger-icon);
@@ -99,9 +104,12 @@
     }
 
     &.alert--role-info {
-      background-color: var(--gcds-alert-info-background);
-      border-color: var(--gcds-alert-info-icon);
-      color: var(--gcds-alert-info-text);
+	  
+	  gcds-container {
+		background-color: var(--gcds-alert-info-background);
+		border-color: var(--gcds-alert-info-icon);
+		color: var(--gcds-alert-info-text);
+	  }
 
       .alert__icon {
         color: var(--gcds-alert-info-icon);
@@ -109,9 +117,11 @@
     }
 
     &.alert--role-success {
-      background-color: var(--gcds-alert-success-background);
-      border-color: var(--gcds-alert-success-icon);
-      color: var(--gcds-alert-success-text);
+	  gcds-container {
+        background-color: var(--gcds-alert-success-background);
+        border-color: var(--gcds-alert-success-icon);
+        color: var(--gcds-alert-success-text);
+	  }
 
       .alert__icon {
         color: var(--gcds-alert-success-icon);
@@ -119,9 +129,11 @@
     }
 
     &.alert--role-warning {
-      background-color: var(--gcds-alert-warning-background);
-      border-color: var(--gcds-alert-warning-icon);
-      color: var(--gcds-alert-warning-text);
+	  gcds-container {
+        background-color: var(--gcds-alert-warning-background);
+        border-color: var(--gcds-alert-warning-icon);
+        color: var(--gcds-alert-warning-text);
+	  }
 
       .alert__icon {
         color: var(--gcds-alert-warning-icon);

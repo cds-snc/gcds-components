@@ -66,6 +66,11 @@ export class GcdsRadioGroup {
   @Prop({ reflect: true, mutable: false }) name!: string;
 
   /**
+   * Value for the selected radio element.
+   */
+  @Prop({ mutable: true }) value?: string;
+
+  /**
    * Specifies if the radio is invalid.
    */
   @State() hasError: boolean;
@@ -138,6 +143,7 @@ export class GcdsRadioGroup {
   }
 
   private onChange = e => {
+	this.value = e.target.value;
     this.gcdsChange.emit(e.target.value);
     this.internals.setFormValue(e.target.value, 'checked');
 

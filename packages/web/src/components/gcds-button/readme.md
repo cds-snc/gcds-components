@@ -33,6 +33,7 @@
 
 ### Used by
 
+ - [gcds-page-feedback](../gcds-page-feedback)
  - [gcds-search](../gcds-search)
 
 ### Depends on
@@ -43,6 +44,7 @@
 ```mermaid
 graph TD;
   gcds-button --> gcds-icon
+  gcds-page-feedback --> gcds-button
   gcds-search --> gcds-button
   style gcds-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

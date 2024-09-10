@@ -836,6 +836,24 @@ export namespace Components {
          */
         "href": string;
     }
+    interface GcdsPageFeedback {
+        "action"?: string;
+        /**
+          * Optional contact us information
+         */
+        "contact"?: '';
+        "contactLink"?: '';
+        "feedbackForm"?: '';
+        /**
+          * Props
+         */
+        "notInPageDetailSection"?: boolean;
+        "section"?: '';
+        /**
+          * Optional configurable option for feedback categorization
+         */
+        "theme"?: '';
+    }
     interface GcdsPagination {
         /**
           * List display - Current page number
@@ -897,6 +915,10 @@ export namespace Components {
           * Options to render radio buttons
          */
         "options": string | Array<RadioObject>;
+        /**
+          * Value for the selected radio element.
+         */
+        "value"?: string;
     }
     interface GcdsSearch {
         /**
@@ -1598,6 +1620,12 @@ declare global {
         prototype: HTMLGcdsNavLinkElement;
         new (): HTMLGcdsNavLinkElement;
     };
+    interface HTMLGcdsPageFeedbackElement extends Components.GcdsPageFeedback, HTMLStencilElement {
+    }
+    var HTMLGcdsPageFeedbackElement: {
+        prototype: HTMLGcdsPageFeedbackElement;
+        new (): HTMLGcdsPageFeedbackElement;
+    };
     interface HTMLGcdsPaginationElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
@@ -1783,6 +1811,7 @@ declare global {
         "gcds-link": HTMLGcdsLinkElement;
         "gcds-nav-group": HTMLGcdsNavGroupElement;
         "gcds-nav-link": HTMLGcdsNavLinkElement;
+        "gcds-page-feedback": HTMLGcdsPageFeedbackElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radio-group": HTMLGcdsRadioGroupElement;
@@ -2780,6 +2809,24 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsNavLinkCustomEvent<void>) => void;
     }
+    interface GcdsPageFeedback {
+        "action"?: string;
+        /**
+          * Optional contact us information
+         */
+        "contact"?: '';
+        "contactLink"?: '';
+        "feedbackForm"?: '';
+        /**
+          * Props
+         */
+        "notInPageDetailSection"?: boolean;
+        "section"?: '';
+        /**
+          * Optional configurable option for feedback categorization
+         */
+        "theme"?: '';
+    }
     interface GcdsPagination {
         /**
           * List display - Current page number
@@ -2865,6 +2912,10 @@ declare namespace LocalJSX {
           * Options to render radio buttons
          */
         "options": string | Array<RadioObject>;
+        /**
+          * Value for the selected radio element.
+         */
+        "value"?: string;
     }
     interface GcdsSearch {
         /**
@@ -3234,6 +3285,7 @@ declare namespace LocalJSX {
         "gcds-link": GcdsLink;
         "gcds-nav-group": GcdsNavGroup;
         "gcds-nav-link": GcdsNavLink;
+        "gcds-page-feedback": GcdsPageFeedback;
         "gcds-pagination": GcdsPagination;
         "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radio-group": GcdsRadioGroup;
@@ -3281,6 +3333,7 @@ declare module "@stencil/core" {
             "gcds-link": LocalJSX.GcdsLink & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
             "gcds-nav-group": LocalJSX.GcdsNavGroup & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
             "gcds-nav-link": LocalJSX.GcdsNavLink & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
+            "gcds-page-feedback": LocalJSX.GcdsPageFeedback & JSXBase.HTMLAttributes<HTMLGcdsPageFeedbackElement>;
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             "gcds-radio-group": LocalJSX.GcdsRadioGroup & JSXBase.HTMLAttributes<HTMLGcdsRadioGroupElement>;

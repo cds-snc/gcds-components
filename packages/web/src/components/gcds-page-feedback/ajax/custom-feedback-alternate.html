@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<div data-feedback-form-action="oh-yeah-give-me-that-feedback.html"></div>
+<gcds-select
+	select-id="custom-feedback-select"
+	label="ALT Choose your favorite pets"
+	name="feedback-select-pets"
+	default-value="Pets lists"
+	required
+  >
+	<option value="dog">Dog</option>
+	<option value="cat">Cat</option>
+	<option value="bird">Bird</option>
+	<option value="fish">Fish</option>
+  </gcds-select>
+  <gcds-textarea
+	textarea-id="custom-feedback-textarea"
+	name="custom123"
+	label="ALT Why not?">
+  </gcds-textarea>
+  <label>Try traditional input (required): 
+	<input type="text" name="test" required>
+  </label>
+  <gcds-radio-group
+	name="custom-feedback-radio"
+	options='[
+	  { "label": "ALT No", "id": "custom-feedback-radio-1", "hint": "hoey", "value": "no" },
+	  { "label": "ALT Yes", "id": "custom-feedback-radio-2", "hint": "hoey d", "value": "yes" }
+	]'>
+  </gcds-radio-group>
+</html>

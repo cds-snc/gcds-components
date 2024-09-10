@@ -52,6 +52,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [gcds-page-feedback](../gcds-page-feedback)
+
 ### Depends on
 
 - [gcds-label](../gcds-label)
@@ -69,6 +73,7 @@ graph TD;
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
+  gcds-page-feedback --> gcds-textarea
   style gcds-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

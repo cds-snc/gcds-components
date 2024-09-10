@@ -38,7 +38,8 @@
     "@storybook/addon-a11y": "^8.0.9",
     "@storybook/addons": "^7.6.17",
     "@storybook/test": "^8.0.9",
-    "@storybook/theming": "^8.0.9"
+    "@storybook/theming": "^8.0.9",
+    "dompurify": "^3.1.6"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.7.3",

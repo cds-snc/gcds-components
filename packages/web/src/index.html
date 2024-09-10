@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
+	<meta name="dcterm.creator" content="ABC corp.">
     <title>Stencil Component Starter</title>
 
     <!-- Utility framework -->
@@ -106,10 +107,70 @@
 
       <hr class="my-550" />
 
+	  <gcds-page-feedback></gcds-page-feedback>
+	  
+	  
+	  <gcds-grid columns="1fr" columns-tablet="10fr 2fr" columns-desktop="8fr 4fr">
+		<gcds-page-feedback></gcds-page-feedback>
+		<gcds-link href="#chat">Chatbot</gcds-link>
+	  </gcds-grid>
+	  
+	  
+	  <h2>With contact us link</h2>
+	  
+	  <gcds-page-feedback not-in-page-detail-section contact="ABC123 corp" contact-link="#helloworld"></gcds-page-feedback>
+	  
+	  
+	  <gcds-grid columns="1fr" columns-tablet="10fr 2fr" columns-desktop="8fr 4fr">
+		<gcds-page-feedback contact="ABC123 corp" contact-link="#helloworld"></gcds-page-feedback>
+		<gcds-link href="#chat">Chatbot</gcds-link>
+	  </gcds-grid>
+	  
+	  <h2>With custom feedback form</h2>
+	  
+	  <gcds-page-feedback action="helloworld">
+		<div slot="feedback-form">
+		  <gcds-select
+			select-id="custom-feedback-select"
+			label="Choose your favorite color"
+			name="custom-feedback-select"
+			default-value="Color lists"
+			required
+		  >
+			<option value="blue">Blue</option>
+			<option value="red">Red</option>
+			<option value="green">Green</option>
+			<option value="yellow">Yellow</option>
+		  </gcds-select>
+		  <gcds-textarea
+			textarea-id="custom-feedback-textarea"
+			name="custom123"
+			label="Why?">
+		  </gcds-textarea>
+		  <label>Try (required): 
+			<input type="text" name="test" required>
+		  </label>
+		  <gcds-radio-group
+			name="custom-feedback-radio"
+			options='[
+			  { "label": "No", "id": "custom-feedback-radio-1", "hint": "hoey", "value": "no" },
+			  { "label": "Yes", "id": "custom-feedback-radio-2", "hint": "hoey d", "value": "yes" }
+			]'>
+		  </gcds-radio-group>
+		</div>
+	  </gcds-page-feedback>
+	  
+	  
+	  
+	  <gcds-page-feedback feedback-form="../src/components/gcds-page-feedback/ajax/custom-feedback.html" theme="yep" section="test">
+	  </gcds-page-feedback>
+	  
+	  
+	  
       <!-- ------------- Alerts ------------- -->
 
       <gcds-heading tag="h2">Alerts</gcds-heading>
-      <gcds-alert heading="Success alert" alert-role="success">
+      <gcds-alert heading="Success alert" alert-role="success" container="sm" is-fixed>
         <p>Example content</p>
       </gcds-alert>
       <gcds-alert heading="Info alert" alert-role="info">

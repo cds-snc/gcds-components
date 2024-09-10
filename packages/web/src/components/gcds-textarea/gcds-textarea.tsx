@@ -358,7 +358,7 @@ export class GcdsTextarea {
     }
 
     return (
-      <Host>
+      <Host name={name}>
         <div
           class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${
             hasError ? 'gcds-error' : ''

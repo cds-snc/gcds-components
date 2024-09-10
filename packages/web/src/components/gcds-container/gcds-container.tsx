@@ -88,7 +88,8 @@ export class GcdsContainer {
     const Tag = tag;
 
     return (
-      <Host>
+      <Host
+		size={size}>
         <Tag
           class={`
             gcds-container

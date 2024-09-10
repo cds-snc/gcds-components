@@ -28,6 +28,7 @@
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-link](../gcds-link)
  - [gcds-nav-group](../gcds-nav-group)
+ - [gcds-page-feedback](../gcds-page-feedback)
  - [gcds-pagination](../gcds-pagination)
  - [gcds-search](../gcds-search)
  - [gcds-topic-menu](../gcds-topic-menu)
@@ -41,6 +42,7 @@ graph TD;
   gcds-file-uploader --> gcds-icon
   gcds-link --> gcds-icon
   gcds-nav-group --> gcds-icon
+  gcds-page-feedback --> gcds-icon
   gcds-pagination --> gcds-icon
   gcds-search --> gcds-icon
   gcds-topic-menu --> gcds-icon

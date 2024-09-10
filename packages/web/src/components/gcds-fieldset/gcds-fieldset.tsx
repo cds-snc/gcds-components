@@ -312,7 +312,7 @@ export class GcdsFieldset {
           tabindex="-1"
           ref={element => (this.shadowElement = element as HTMLElement)}
         >
-          <legend id={`legend-${fieldsetId}`}>
+          <legend id={`legend-${fieldsetId}`} part="legend">
             {legend}
             {required ? (
               <span class="legend__required">({i18n[lang].required})</span>

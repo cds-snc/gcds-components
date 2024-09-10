@@ -1,0 +1,91 @@
+@layer reset, default, largeView, mediumView, smallView;
+
+@layer reset {
+  :host {
+    display: block;
+  }
+}
+
+@layer default {
+  :host .page-feedback__intro, :host .page-feedback__get-feedback, :host .page-feedback__confirmation {
+    &.d-none {
+      display: none;
+    }
+	
+	--gcds-fieldset-font-desktop: var(--gcds-label-font-desktop);
+	--gcds-fieldset-font-mobile:  var(--gcds-label-font-desktop);
+	
+  }
+  
+  /* Add a spacing of 9 px between both gcds-button */
+  @media only screen and (width >= 30rem) {
+    :host gcds-fieldset gcds-button+gcds-button {
+	  margin-left: 9px;
+    }
+  }
+  
+  :host gcds-fieldset .page-feedback__btn-group {
+	text-align: right;
+  }
+  
+  :host gcds-button::part(button) {
+	font-family: Lato, sans-serif;
+  }
+  
+  :host gcds-fieldset::part(legend) {
+	width: 100%;
+	float:left;
+	margin-top: 12px!important;
+  }
+  
+  
+  :host .gcds-page-feedback:not(.confirmed) {
+	background-color: #f5f5f5;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+  }
+  
+  
+  :host gcds-details {
+	margin-bottom: 7px;
+  }
+  
+  /* for testing only */
+  :host hr {
+	margin-top: 100px;
+  }
+  
+}
+
+@layer largeView {
+
+  :host {
+	@media only screen and (width >= 62rem) {
+	  gcds-fieldset::part(legend) {
+		width: 66.66%;
+	  }
+	}
+  }
+}
+
+@layer mediumView {
+  :host {
+	@media only screen and (width >= 48rem) {
+	  gcds-fieldset::part(legend) {
+		width: 75;
+	  }
+	}
+  }
+}
+
+
+@layer smallView {
+  :host {
+	@media only screen and (width >= 30rem) {
+	  gcds-fieldset::part(legend) {
+		width: 58.33%;
+	  }
+    }
+  }
+}
+

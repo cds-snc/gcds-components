@@ -205,7 +205,7 @@ export class GcdsSelect {
 
   private onBlur = () => {
     if (this.validateOn === 'blur') {
-      this.validate();
+      this.validate().catch( ()=> { /* do nothing */ });
     }
 
     this.gcdsBlur.emit();
@@ -222,6 +222,7 @@ export class GcdsSelect {
         id: `#${this.selectId}`,
         message: `${this.label} - ${this.errorMessage}`,
       });
+	  throw new Error( `Validation of: ${this.label} - ${this.errorMessage}` );
     } else {
       this.errorMessage = '';
       this.gcdsValid.emit({ id: `#${this.selectId}` });
