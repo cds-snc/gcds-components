@@ -35,6 +35,10 @@
     .gcds-nav-group__trigger-desc {
       display: none;
     }
+
+    ul {
+      list-style: none;
+    }
   }
 }
 
