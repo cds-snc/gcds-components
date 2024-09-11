@@ -83,6 +83,9 @@
     background-color: var(--gcds-footer-contextual-background);
     color: var(--gcds-footer-contextual-text);
     padding: var(--gcds-footer-contextual-padding);
+
+    /* Fix weird white border bug */
+    margin-block-end: -1px;
   }
 }
 
