@@ -65,6 +65,14 @@
         color: var(--gcds-footer-main-text);
       }
     }
+
+    h3 {
+      font: var(--gcds-footer-font-heading-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-footer-font-heading-mobile);
+      }
+    }
   }
 }
 
