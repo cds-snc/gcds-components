@@ -86,6 +86,11 @@ export class GcdsButton {
   @Prop() disabled: boolean;
 
   /**
+   * The value attribute specifies the value for a <button> element.
+   */
+    @Prop() value: string;
+
+  /**
    * Link props
    */
 
@@ -165,7 +170,9 @@ export class GcdsButton {
   }
 
   private handleClick = (e: Event) => {
-    const event = emitEvent(e, this.gcdsClick);
+    // Check button type, only emit value if type is "submit"
+    const emitValue = this.type === 'submit' ? this.value : undefined;
+    const event = emitEvent(e, this.gcdsClick, emitValue);
 
     if (event) {
       if (!this.disabled && this.type != 'button' && this.type != 'link') {
@@ -179,6 +186,9 @@ export class GcdsButton {
           formButton.type = this.type;
           if (this.name) {
             formButton.name = this.name;
+          }
+          if (this.value) {
+            formButton.value = this.value;
           }
           formButton.style.display = 'none';
           form.appendChild(formButton);
@@ -205,6 +215,7 @@ export class GcdsButton {
       rel,
       target,
       download,
+      value,
       inheritedAttributes,
     } = this;
 
@@ -215,6 +226,7 @@ export class GcdsButton {
             type: type,
             ariaDisabled: disabled,
             name,
+            value,
           }
         : {
             href,

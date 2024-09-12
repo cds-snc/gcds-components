@@ -36,6 +36,7 @@ export const GcdsButton = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-bu
   'buttonId',
   'name',
   'disabled',
+  'value',
   'href',
   'rel',
   'target',

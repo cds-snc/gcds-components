@@ -91,6 +91,10 @@ export namespace Components {
           * Set button types
          */
         "type": 'submit' | 'reset' | 'button' | 'link';
+        /**
+          * The value attribute specifies the value for a <button> element.
+         */
+        "value": string;
     }
     interface GcdsCard {
         /**
@@ -1891,6 +1895,10 @@ declare namespace LocalJSX {
           * Set button types
          */
         "type"?: 'submit' | 'reset' | 'button' | 'link';
+        /**
+          * The value attribute specifies the value for a <button> element.
+         */
+        "value"?: string;
     }
     interface GcdsCard {
         /**
