@@ -58,6 +58,13 @@ export default {
         defaultValue: { summary: 'button' },
       },
     },
+    value: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+    },
 
     // Link props
     download: {
@@ -142,6 +149,7 @@ const Template = args =>
     args.size != 'regular' ? `size="${args.size}"` : null
   } ${args.disabled ? `disabled` : null} ${
     args.name ? `name="${args.name}"` : null
+  } ${ args.value ? `value="${args.value}"` : null
   } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${
     args.type == 'link' && args.rel ? `rel="${args.rel}"` : null
   } ${args.type == 'link' && args.target ? `target="${args.target}"` : null} ${
@@ -157,6 +165,7 @@ const Template = args =>
     args.size != 'regular' ? `size="${args.size}"` : null
   } ${args.disabled ? `disabled` : null} ${
     args.name ? `name="${args.name}"` : null
+  } ${ args.value ? `value="${args.value}"` : null
   } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${
     args.type == 'link' && args.rel ? `rel="${args.rel}"` : null
   } ${args.type == 'link' && args.target ? `target="${args.target}"` : null} ${
@@ -260,6 +269,7 @@ const TemplatePlayground = args => `
   ${args.size != 'regular' ? `size="${args.size}"` : null}
   ${args.disabled ? `disabled` : null}
   ${args.name ? `name="${args.name}"` : null}
+  ${args.value ? `value="${args.value}"` : null}
   ${args.type == 'link' && args.href ? `href="${args.href}"` : null}
   ${args.type == 'link' && args.rel ? `rel="${args.rel}"` : null}
   ${args.type == 'link' && args.target ? `target="${args.target}"` : null}
@@ -365,6 +375,7 @@ Props.args = {
   size: 'regular',
   disabled: false,
   name: '',
+  value: '',
   href: '',
   rel: '',
   target: '',
@@ -382,6 +393,7 @@ Playground.args = {
   size: 'regular',
   disabled: false,
   name: '',
+  value: '',
   href: '',
   rel: '',
   target: '',

@@ -81,7 +81,7 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
 
 
 @ProxyCmp({
-  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type'],
+  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type', 'value'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur']
 })
 @Component({
@@ -89,7 +89,7 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type'],outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur'],
+  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type', 'value'],outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur'],
 })
 export class GcdsButton {
   protected el: HTMLElement;
