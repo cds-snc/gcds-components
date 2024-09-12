@@ -187,6 +187,9 @@ export class GcdsButton {
           if (this.name) {
             formButton.name = this.name;
           }
+          if (this.value) {
+            formButton.value = this.value;
+          }
           formButton.style.display = 'none';
           form.appendChild(formButton);
           formButton.click();
