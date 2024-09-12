@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.26.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.25.1-canary.0...gcds-components-react-ssr-v0.26.0) (2024-09-12)
+## [0.26.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.25.1-canary.0...gcds-components-react-ssr-v0.26.0-canary.0) (2024-09-12)
 
 
 ### Patch
