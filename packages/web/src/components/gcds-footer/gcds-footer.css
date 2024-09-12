@@ -65,6 +65,14 @@
         color: var(--gcds-footer-main-text);
       }
     }
+
+    h3 {
+      font: var(--gcds-footer-font-heading-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-footer-font-heading-mobile);
+      }
+    }
   }
 }
 
@@ -75,6 +83,9 @@
     background-color: var(--gcds-footer-contextual-background);
     color: var(--gcds-footer-contextual-text);
     padding: var(--gcds-footer-contextual-padding);
+
+    /* Fix weird white border bug */
+    margin-block-end: -1px;
   }
 }
 
