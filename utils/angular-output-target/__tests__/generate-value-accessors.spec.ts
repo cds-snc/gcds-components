@@ -41,6 +41,6 @@ export class TextValueAccessor extends ValueAccessor {
     super(el);
   }
 }`;
-    expect(finalText.trim()).toEqual(exptectedOutput.trim().replace(/\n/g, EOL));
+    expect(finalText.trim().replace(/\r/g, "").replace(/\n/g, EOL)).toEqual(exptectedOutput.trim().replace(/\n/g, EOL));
   });
 });
