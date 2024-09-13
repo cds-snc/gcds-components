@@ -36,7 +36,10 @@
       width: 100%;
       height: auto;
       min-height: var(--gcds-search-min-width-and-height);
-      font: var(--gcds-search-font);
+      font: var(--gcds-search-font-desktop);
+      @media only screen and (width < 48em) {
+        font: var(--gcds-search-font-mobile);
+      }
       padding: var(--gcds-search-padding) !important;
       background-color: var(--gcds-search-default-background);
       color: var(--gcds-search-default-text);
