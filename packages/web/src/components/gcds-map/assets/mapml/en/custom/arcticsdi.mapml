@@ -1,0 +1,18 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-meta charset="utf-8"></map-meta>
+    <map-title>Canada's Arctic SDI Contribution</map-title>
+    <map-link rel="license" title="&amp;copy; Arctic Council" href="https://catalogue.arctic-sdi.org/geonetwork/srv/eng/catalog.search#/metadata/8b4f2b34-2d0d-4744-ae0f-d7989b9f7a02/formatters/xsl-view?root=div&amp;view=advanced"></map-link>
+    <map-meta name="projection" content="EPSG3573"></map-meta>
+    <map-meta name="cs" content="pcrs"></map-meta>
+    <map-meta name="zoom" content="min=0,max=6" ></map-meta>
+  </map-head>
+  <map-body>
+    <map-extent units="EPSG3573" checked="checked" hidden="hidden">
+      <map-input type="zoom" name="TileMatrix" min="0" max="11" value="0"/>
+      <map-input type="location" name="TileCol" axis="column" units="tilematrix" min="0" max="1"/>
+      <map-input type="location" name="TileRow" axis="row" units="tilematrix" min="0" max="1"/>
+      <map-link rel="tile" tref="https://basemap.arctic-sdi.org/mapcache/wmts/1.0.0/arctic_cascading/default/3573/{TileMatrix}/{TileRow}/{TileCol}.png"/>
+    </map-extent>
+  </map-body>
+</mapml->

@@ -68,7 +68,7 @@
     <!-- ------------- Verify banner ------------- -->
 
     <gcds-verify-banner></gcds-verify-banner>
-
+    
     <!-- ------------- Header ------------- -->
 
     <gcds-header
@@ -587,7 +587,15 @@
       <gcds-heading tag="h6">Heading level 6</gcds-heading>
 
       <hr class="my-550" />
+    <!-- ------------- Maps and Layers ------------- -->
+    
+    <gcds-heading tag="h2">Maps</gcds-heading>
+    
+    <mapml-viewer lat="45.4215" lon="-75.6972" zoom="10" projection="OSMTILE" caption="test" controls controlslist="geolocation">
+      <map-layer src="/build/gcds-map/assets/mapml/en/osmtile/cbmt" checked></map-layer>
+    </mapml-viewer>
 
+      <hr class="my-550" />
       <!-- ------------- Notices ------------- -->
 
       <gcds-heading tag="h2">Notices</gcds-heading>

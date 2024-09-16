@@ -1,0 +1,33 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+    <map-head>
+        <map-title>Current Conditions</map-title>
+        <map-meta charset="utf-8" />
+
+        <map-link href="https://eccc-msc.github.io/open-data/msc-geomet/readme_en/" rel="license"
+            title="MSC GeoMet" />
+        <map-link href="../osmtile/current_conditions" rel="alternate" projection="OSMTILE" />
+    </map-head>
+    <map-body>
+        <map-extent units="CBMTILE" checked="checked" hidden="hidden">
+            <map-input name="z" type="zoom" min="0" max="25" />
+            <map-input name="xmin" type="location" rel="map" position="top-left" axis="easting"
+                units="pcrs" min="-2238985.0" max="2618775.0" />
+            <map-input name="ymin" type="location" rel="map" position="bottom-left" axis="northing"
+                units="pcrs" min="-671929.0" max="3546199.0" />
+            <map-input name="xmax" type="location" rel="map" position="top-right" axis="easting"
+                units="pcrs" min="-2238985.0" max="2618775.0" />
+            <map-input name="ymax" type="location" rel="map" position="top-left" axis="northing"
+                units="pcrs" min="-671929.0" max="3546199.0" />
+            <map-input name="w" type="width" min="1" max="4079" />
+            <map-input name="h" type="height" min="1" max="4079" />
+            <map-link
+                tref="https://geo.weather.gc.ca/geomet?request=GetMap&amp;crs=EPSG:3978&amp;service=WMS&amp;bbox={xmin},{ymin},{xmax},{ymax}&amp;layers=CURRENT_CONDITIONS&amp;format=image/png&amp;width={w}&amp;styles=default&amp;language=en&amp;version=1.3.0&amp;transparent=true&amp;height={h}"
+                rel="image" />
+<!--
+            <map-input name="i" type="location" axis="i" units="map"></map-input>
+            <map-input name="j" type="location" axis="j" units="map"></map-input>
+            <map-link tref="https://geo.weather.gc.ca/geomet?request=GetFeatureInfo&amp;query_layers=CURRENT_CONDITIONS&amp;crs=EPSG:3978&amp;bbox={xmin},{ymin},{xmax},{ymax}&amp;language=en&amp;version=1.3.0&amp;transparent=true&amp;service=WMS&amp;layers=CURRENT_CONDITIONS&amp;width={w}&amp;x={i}&amp;feature_count=50&amp;y={j}&amp;styles=default&amp;info_format=text/plain&amp;height={h}" rel="query"></map-link>
+-->
+        </map-extent>
+    </map-body>
+</mapml->

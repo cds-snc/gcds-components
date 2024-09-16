@@ -19,10 +19,42 @@ const config = {
     name: getAbsolutePath("@storybook/html-webpack5"),
     options: {},
   },
+  staticDirs: [{ from: '../dist/gcds/gcds-map', to: '/dist/gcds/gcds-map' }],
   docs: {
     autodocs: false,
     defaultName: 'Stories'
   },
+  webpackFinal: async (config) => {
+    // Use ts-loader for .ts and .tsx files
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      use: [
+        {
+          loader: require.resolve('ts-loader'),
+          options: {
+            transpileOnly: true,
+          },
+        },
+      ],
+    });
+    /* this is for mapml.js which is imported at run time */
+    config.module.rules.push({
+      test: /\.(js|ts)$/,
+      use: [
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            plugins: [require.resolve('babel-plugin-transform-import-meta')],
+          },
+        },
+      ],
+    });
+    
+    config.resolve.extensions.push('.ts', '.tsx');
+
+
+    return config;
+  }
 };
 export default config;
 

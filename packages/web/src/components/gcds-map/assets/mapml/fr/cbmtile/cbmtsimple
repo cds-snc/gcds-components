@@ -1,0 +1,18 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Carte de base du Canada - Simple</map-title>
+    <map-meta http-equiv="Content-Type" content="application/xml;charset=UTF-8"/>
+    <map-meta charset="utf-8"/>
+
+    <map-link rel="license" href="https://ouvert.canada.ca/fr/licence-du-gouvernement-ouvert-canada" title="Licence du gouvernement ouvert - Canada"/>
+    <map-link rel="legend" href="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/Simple/MapServer/legend"/>
+  </map-head>
+  <map-body>
+    <map-extent units="CBMTILE" checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom" value="18" min="0" max="18"/>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="51599" max="59201"/>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="45919" max="56244"/>
+      <map-link rel="tile" tref="https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/Simple/MapServer/tile/{z}/{y}/{x}?m4h=t"/>
+    </map-extent>
+  </map-body>
+</mapml->

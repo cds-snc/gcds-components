@@ -1,0 +1,15 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Map from './gcds-map.stories';
+
+<Meta of={Map} name="Events & properties" />
+
+# Map<br/>`<mapml-viewer>`
+
+The `<mapml-viewer>` component enables slippy maps with one or more `<map-layer>` children.
+
+
+<Canvas of={Map.Default} story={{ inline: true }} />
+<Controls of={Map.Default} sort="alpha" />
+
+{/* this is a comment: HTML syntax doesn’t work in MDX as it’s replaced by JSX (<img> to <img />). */}
+
