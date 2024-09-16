@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.0...gcds-components-v0.27.0-canary.0) (2024-09-16)
+
+
+### :bug: :wrench: Bug Fixes
+
+* add mobile font size to search component ([#640](https://github.com/cds-snc/gcds-components/issues/640)) ([2f8efa3](https://github.com/cds-snc/gcds-components/commit/2f8efa337a49411da258e4b2c9dea64a50021cbf))
+
 ## [0.26.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.1...gcds-components-v0.26.0) (2024-09-12)
 
 
