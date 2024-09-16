@@ -1,0 +1,23 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Toporama</map-title>
+    <map-meta http-equiv="Content-Type" content="application/xml;charset=UTF-8"/>
+    <map-meta charset="utf-8"/>
+
+    <map-link rel="license" href="https://www.rncan.gc.ca/sciences-terre/geographie/atlas-canada/savoir-davantage-cartes-topographiques/16841#topolicensing" title="Toporama &#xa9; Ressources naturelles Canada"/>
+    <map-link rel="legend" href="https://maps.geogratis.gc.ca/wms/toporama_fr?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;LAYER=SCW-Toporama&amp;VERSION=1.1&amp;FORMAT=image/png"/>
+    <map-link rel="alternate" projection="CBMTILE" href="../cbmtile/toporama"/>
+  </map-head>
+  <map-body>
+    <map-extent units="OSMTILE" checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom" value="18" min="4" max="18"/>
+      <map-input name="w" type="width"/>
+      <map-input name="h" type="height"/>
+      <map-input name="xmin" type="location" units="pcrs" position="top-left" axis="easting" min="-1.88830035E7" max="-1917652.2"/>
+      <map-input name="ymin" type="location" units="pcrs" position="bottom-left" axis="northing" min="2700367.3" max="2.04484338E7"/>
+      <map-input name="xmax" type="location" units="pcrs" position="top-right" axis="easting" min="-1.88830035E7" max="-1917652.2"/>
+      <map-input name="ymax" type="location" units="pcrs" position="top-left" axis="northing" min="2700367.3" max="2.04484338E7"/>
+      <map-link rel="image" tref="https://maps.geogratis.gc.ca/wms/toporama_fr?SERVICE=WMS&amp;REQUEST=GetMap&amp;FORMAT=image/jpeg&amp;TRANSPARENT=FALSE&amp;STYLES=&amp;VERSION=1.3.0&amp;LAYERS=SCW-Toporama&amp;WIDTH={w}&amp;HEIGHT={h}&amp;CRS=EPSG:3857&amp;BBOX={xmin},{ymin},{xmax},{ymax}&amp;m4h=t"/>
+    </map-extent>
+  </map-body>
+</mapml->

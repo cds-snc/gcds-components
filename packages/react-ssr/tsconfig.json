@@ -10,6 +10,7 @@
     "declarationDir": "./dist/types/lib",
     "lib": [
       "dom",
+      "dom.iterable",
       "es2015"
     ],
     "module": "esnext",
