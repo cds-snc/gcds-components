@@ -8,6 +8,7 @@ import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'gcds',
+  globalScript: 'src/global/global-scripts.ts',
   globalStyle: 'src/assets/css/global.css',
   srcDir: './src',
   outputTargets: [
@@ -31,6 +32,21 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
       isPrimaryPackageOutputTarget: true,
+      copy: [
+            {
+              src: '../../../node_modules/@maps4html/mapml/dist',
+              dest: 'gcds-map',
+            },
+            {
+                src: 'components/gcds-map/gcds-map.css', 
+                dest: 'gcds-map/gcds-map.css'
+            },
+            {
+                src: 'components/gcds-map/assets',  
+                dest: 'gcds-map/assets',
+                warn: true
+            }
+      ],
     },
     {
       // Copy font assets from 'assets' folder to 'dist' folder to ensure they are included in the build output.
