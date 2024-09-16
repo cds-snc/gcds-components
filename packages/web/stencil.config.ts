@@ -10,6 +10,7 @@ export const config: Config = {
   namespace: 'gcds',
   globalStyle:
     '../../node_modules/@cdssnc/gcds-tokens/build/web/css/tokens.css',
+  globalScript: 'src/global/global-scripts.ts',
   srcDir: './src',
   outputTargets: [
     reactOutputTarget({
@@ -32,6 +33,21 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
       isPrimaryPackageOutputTarget: true,
+      copy: [
+            {
+              src: '../../../node_modules/@maps4html/mapml/dist',
+              dest: 'gcds-map',
+            },
+            {
+                src: 'components/gcds-map/gcds-map.css', 
+                dest: 'gcds-map/gcds-map.css'
+            },
+            {
+                src: 'components/gcds-map/mapml',  
+                dest: 'gcds-map/mapml',
+                warn: true
+            }
+      ],
     },
     {
       type: 'dist-custom-elements',
@@ -48,7 +64,7 @@ export const config: Config = {
       plugins: [require('postcss-nested'), require('cssnano')],
     }),
     inlineSvg(),
-    sass(),
+    sass()
   ],
   testing: {
     transform: {
