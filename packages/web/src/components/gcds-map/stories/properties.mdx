@@ -1,0 +1,16 @@
+import { Meta, Story, Controls } from '@storybook/blocks';
+import * as Map from './gcds-map.stories';
+
+<Meta title="GCDS Map Properties" />
+
+<Story name="Default">
+  <Map.Default />
+</Story>
+
+<Controls story={Map.Default} />
+
+# GCDS Map Properties
+
+| Property   | Attribute  | Description                                      | Type     | Default |
+|------------|------------|--------------------------------------------------|----------|---------|
+| `layers`   | `layers`   | Array of objects representing map layers         | `Array`  | `[]`    |
