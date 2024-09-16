@@ -50,6 +50,7 @@
     "@babel/preset-typescript": "^7.21.0",
     "@cdssnc/gcds-fonts": "^0.2.2",
     "@cdssnc/gcds-tokens": "^2.12.0",
+    "@maps4html/mapml": "^0.16.0",
     "@playwright/test": "^1.52.0",
     "@stencil/angular-output-target": "file:../../utils/angular-output-target",
     "@stencil/playwright": "^0.2.1",
@@ -70,6 +71,7 @@
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
     "babel-loader": "^9.0.0",
+    "babel-plugin-transform-import-meta": "^2.3.2",
     "cssnano": "^6.0.0",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
@@ -88,6 +90,7 @@
     "serve": "^14.2.4",
     "stencil-inline-svg": "^1.1.0",
     "storybook": "^8.0.9",
+    "ts-loader": "^9.5.1",
     "workbox-build": "^7.0.0"
   },
   "license": "MIT"

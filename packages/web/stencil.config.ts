@@ -10,10 +10,12 @@ import {
   vueComponentModels,
   angularValueAccessorBindings,
 } from './src/utils/config/config';
+
 const customElementsDir = 'dist/components';
 
 export const config: Config = {
   namespace: 'gcds',
+  globalScript: 'src/global/global-scripts.ts',
   globalStyle: 'src/assets/css/global.css',
   srcDir: './src',
   outputTargets: [
@@ -52,6 +54,21 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
       isPrimaryPackageOutputTarget: true,
+      copy: [
+        {
+          src: '../../../node_modules/@maps4html/mapml/dist',
+          dest: 'gcds-map',
+        },
+        {
+          src: 'components/gcds-map/gcds-map.css', 
+          dest: 'gcds-map/gcds-map.css'
+        },
+        {
+          src: 'components/gcds-map/assets',  
+          dest: 'gcds-map/assets',
+          warn: true
+        }
+      ],
     },
     {
       // Copy font assets from 'assets' folder to 'dist' folder to ensure they are included in the build output.
@@ -76,7 +93,27 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
-      copy: [{ src: '**/*.e2e.html' }],
+      copy: [
+        { src: '**/*.e2e.html' },
+        // Copy MapML.js from node_modules in project root
+        {
+          src: '../../../node_modules/@maps4html/mapml/dist',
+          dest: 'build/gcds-map/',
+          warn: true
+        },
+        // Copy gcds-map CSS
+        {
+          src: 'components/gcds-map/gcds-map.css', 
+          dest: 'build/gcds-map/gcds-map.css',
+          warn: true
+        },
+        // Copy layer assets
+        {
+          src: 'components/gcds-map/assets',  
+          dest: 'build/gcds-map/assets',
+          warn: true
+        }
+      ],
     },
   ],
   plugins: [
