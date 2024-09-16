@@ -797,6 +797,50 @@ export declare interface GcdsLink extends Components.GcdsLink {
 
 
 @ProxyCmp({
+  inputs: ['controls', 'controlslist', 'height', 'lat', 'lon', 'projection', 'width', 'zoom']
+})
+@Component({
+  selector: 'gcds-map',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['controls', 'controlslist', 'height', 'lat', 'lon', 'projection', 'width', 'zoom'],
+})
+export class GcdsMap {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsMap extends Components.GcdsMap {}
+
+
+@ProxyCmp({
+  inputs: ['checked', 'label', 'opacity', 'src']
+})
+@Component({
+  selector: 'gcds-map-layer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['checked', 'label', 'opacity', 'src'],
+})
+export class GcdsMapLayer {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsMapLayer extends Components.GcdsMapLayer {}
+
+
+@ProxyCmp({
   inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'],
   methods: ['focusTrigger', 'toggleNav'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur']

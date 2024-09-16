@@ -1,0 +1,48 @@
+@layer reset, default, display, size, variant, hover, visited, focus;
+
+/* Existing styles */
+
+@layer reset {
+  :host {
+    display: inline-block;
+
+    slot {
+      display: initial;
+    }
+
+    /* Added default dimensions for map */
+    --map-width: 100%;
+    --map-height: 400px;
+
+    width: var(--map-width);
+    height: var(--map-height);
+    position: relative;
+  }
+}
+
+@layer default {
+  :host .gcds-map {
+    cursor: pointer;
+    color: var(--gcds-map-default);
+    text-decoration-style: solid;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: var(--gcds-map-decoration-thickness);
+    text-underline-offset: var(--gcds-map-underline-offset);
+    transition: all 0.35s;
+  }
+
+  /* Added rule to ensure mapml-viewer fits inside gcds-map container */
+  mapml-viewer {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+@layer display {
+  :host .gcds-map.d-block {
+    display: block;
+  }
+}
+
+/* Remaining layers: size, variant, hover, visited, focus remain unchanged */
