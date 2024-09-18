@@ -25,7 +25,7 @@ jobs:
           app_id: ${{ secrets.SRE_BOT_RW_APP_ID }}
           private_key: ${{ secrets.SRE_BOT_RW_PRIVATE_KEY }}
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@6cd32fd93684475c31847837f87bb135d40a2b79 # v7.0.3
         with:
           token: ${{ steps.generate_token.outputs.token}}
           sign-commits: true
