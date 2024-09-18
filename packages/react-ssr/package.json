@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@cdssnc/gcds-components": "^0.26.1",
-    "@stencil/core": "4.11.0",
+    "@stencil/core": "4.19.2",
     "element-internals-polyfill": "^1.3.10",
     "linkedom": "^0.16.1",
     "react": "^18.2.0",

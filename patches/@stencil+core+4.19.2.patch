@@ -1,0 +1,40 @@
+diff --git a/node_modules/@stencil/core/mock-doc/index.cjs b/node_modules/@stencil/core/mock-doc/index.cjs
+index f019ad6..4c6ba62 100644
+--- a/node_modules/@stencil/core/mock-doc/index.cjs
++++ b/node_modules/@stencil/core/mock-doc/index.cjs
+@@ -6861,14 +6861,7 @@ var MockNodeList = class {
+ };
+ var MockElement = class extends MockNode2 {
+   attachInternals() {
+-    return new Proxy({}, {
+-      get: function(_target, prop, _receiver) {
+-        console.error(
+-          `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-Testing components with ElementInternals is fully supported in e2e tests.`
+-        );
+-      }
+-    });
++    return { setFormValue: (value) => {} };
+   }
+   constructor(ownerDocument, nodeName, namespaceURI = null) {
+     super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
+diff --git a/node_modules/@stencil/core/mock-doc/index.js b/node_modules/@stencil/core/mock-doc/index.js
+index 70bb571..dc65ad3 100644
+--- a/node_modules/@stencil/core/mock-doc/index.js
++++ b/node_modules/@stencil/core/mock-doc/index.js
+@@ -6808,14 +6808,7 @@ var MockNodeList = class {
+ };
+ var MockElement = class extends MockNode2 {
+   attachInternals() {
+-    return new Proxy({}, {
+-      get: function(_target, prop, _receiver) {
+-        console.error(
+-          `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-Testing components with ElementInternals is fully supported in e2e tests.`
+-        );
+-      }
+-    });
++    return { setFormValue: (value) => {} };
+   }
+   constructor(ownerDocument, nodeName, namespaceURI = null) {
+     super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
