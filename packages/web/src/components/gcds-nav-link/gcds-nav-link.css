@@ -13,7 +13,7 @@
 @layer default {
   :host .gcds-nav-link {
     display: flex;
-    font: var(---gcds-nav-link-font);
+    font: var(--gcds-nav-link-font);
     text-decoration-style: solid;
     text-decoration-line: underline;
     text-decoration-color: currentColor;
