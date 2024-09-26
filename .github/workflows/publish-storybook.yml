@@ -19,7 +19,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - uses: actions/setup-node@97ca147735c170fb35096b39ef17a0fc5d9270ac
+      - uses: actions/setup-node@aca7b64a59c0063db8564e0ffdadd3887f1cbae5
         with:
           node-version: 18
 
