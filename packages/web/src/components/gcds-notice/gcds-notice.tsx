@@ -102,21 +102,34 @@ export class GcdsNotice {
   }
 
   render() {
-    const { type, noticeTitle, lang } = this;
+    const { type, noticeTitle } = this;
 
     return (
       <Host>
         {this.validateRequiredProps() && (
           <section class={`gcds-notice notice--type-${type}`}>
+            <gcds-icon
+              aria-hidden="true"
+              class="notice__icon"
+              size="h4"
+              name={
+                type === 'danger'
+                  ? 'exclamation-circle'
+                  : type === 'info'
+                    ? 'info-circle'
+                    : type === 'success'
+                      ? 'check-circle'
+                      : type === 'warning'
+                        ? 'exclamation-triangle'
+                        : null
+              }
+            />
             <gcds-heading tag="h2" marginTop="0" class="notice__heading">
-              <strong class="notice__type">
-                {i18n[lang]['type'][type]}
-              </strong>
-              {/* Hidden colon to provide pause between caption and heading text for assistive technology */}
-              <gcds-sr-only tag="span"> : </gcds-sr-only>
               {noticeTitle}
             </gcds-heading>
-            <slot></slot>
+            <div class="notice__body">
+              <slot></slot>
+            </div>
           </section>
         )}
       </Host>

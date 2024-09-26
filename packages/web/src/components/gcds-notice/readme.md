@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property                   | Attribute      | Description               | Type                                           | Default     |
-| -------------------------- | -------------- | ------------------------- | ---------------------------------------------- | ----------- |
-| `noticeTitle` _(required)_ | `notice-title` | Defines the notice title. | `string`                                       | `undefined` |
-| `type` _(required)_        | `type`         | Defines notice role.      | `"danger" \| "info" \| "success" \| "warning"` | `undefined` |
+| Property                   | Attribute      | Description           | Type                                           | Default     |
+| -------------------------- | -------------- | --------------------- | ---------------------------------------------- | ----------- |
+| `noticeTitle` _(required)_ | `notice-title` | Set the notice title. | `string`                                       | `undefined` |
+| `type` _(required)_        | `type`         | Set notice type.      | `"danger" \| "info" \| "success" \| "warning"` | `undefined` |
 
 
 ## Dependencies

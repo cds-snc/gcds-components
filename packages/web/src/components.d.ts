@@ -834,11 +834,11 @@ export namespace Components {
     }
     interface GcdsNotice {
         /**
-          * Defines the notice title.
+          * Set the notice title.
          */
         "noticeTitle": string;
         /**
-          * Defines notice role.
+          * Set notice type.
          */
         "type": 'danger' | 'info' | 'success' | 'warning';
     }
@@ -2791,11 +2791,11 @@ declare namespace LocalJSX {
     }
     interface GcdsNotice {
         /**
-          * Defines the notice title.
+          * Set the notice title.
          */
         "noticeTitle": string;
         /**
-          * Defines notice role.
+          * Set notice type.
          */
         "type": 'danger' | 'info' | 'success' | 'warning';
     }
