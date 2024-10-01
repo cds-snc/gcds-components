@@ -47,18 +47,18 @@ const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-notice type="${args.type}" notice-title="${args.noticeTitle}" ${args.lang != 'en' ? `lang="${args.lang}"` : null}>
-  ${args.default.trim() != '' ? `<gcds-text margin-bottom="0">${args.default}</gcds-text>` : null}
+  ${args.default.trim() != '' ? `<gcds-text>${args.default}</gcds-text>` : null}
 </gcds-notice>
 
 <!-- React code -->
 <GcdsNotice type="${args.type}"  noticeTitle="${args.noticeTitle}" ${args.lang != 'en' ? `lang="${args.lang}"` : null}>
-  ${args.default.trim() != '' ? `<GcdsText marginBottom="0">${args.default}</GcdsText>` : null}
+  ${args.default.trim() != '' ? `<GcdsText>${args.default}</GcdsText>` : null}
 </GcdsNotice>
 `.replace(/ null/g, '');
 
 const TemplatePlayground = args => `
 <gcds-notice type="${args.type}"  notice-title="${args.noticeTitle}" ${args.lang != 'en' ? `lang="${args.lang}"` : null}>
-  ${args.default.trim() != '' ? `<gcds-text margin-bottom="0">${args.default}</gcds-text>` : null}
+  ${args.default.trim() != '' ? `<gcds-text>${args.default}</gcds-text>` : null}
 </gcds-notice>
 `;
 
@@ -66,9 +66,9 @@ const TemplatePlayground = args => `
 
 export const Default = Template.bind({});
 Default.args = {
-  noticeTitle: 'GC Design System notice',
+  noticeTitle: 'Title',
   type: 'success',
-  default: 'Provide additional information.',
+  default: 'Message.',
   lang: 'en',
 };
 
@@ -76,9 +76,9 @@ Default.args = {
 
 export const Success = Template.bind({});
 Success.args = {
-  noticeTitle: 'GC Design System notice',
+  noticeTitle: 'Title',
   type: 'success',
-  default: 'Provide additional information.',
+  default: 'Message.',
   lang: 'en',
 };
 
@@ -86,9 +86,9 @@ Success.args = {
 
 export const Danger = Template.bind({});
 Danger.args = {
-  noticeTitle: 'GC Design System notice',
+  noticeTitle: 'Title',
   type: 'danger',
-  default: 'Provide additional information.',
+  default: 'Message.',
   lang: 'en',
 };
 
@@ -96,9 +96,9 @@ Danger.args = {
 
 export const Info = Template.bind({});
 Info.args = {
-  noticeTitle: 'GC Design System notice',
+  noticeTitle: 'Title',
   type: 'info',
-  default: 'Provide additional information.',
+  default: 'Message.',
   lang: 'en',
 };
 
@@ -106,9 +106,9 @@ Info.args = {
 
 export const Warning = Template.bind({});
 Warning.args = {
-  noticeTitle: 'GC Design System notice',
+  noticeTitle: 'Title',
   type: 'warning',
-  default: 'Provide additional information.',
+  default: 'Message.',
   lang: 'en',
 };
 
@@ -116,9 +116,9 @@ Warning.args = {
 
 export const Props = Template.bind({});
 Props.args = {
-  noticeTitle: 'GC Design System notice',
+  noticeTitle: 'Title',
   type: 'success',
-  default: 'Provide additional information.',
+  default: 'Message.',
   lang: 'en',
 };
 
@@ -126,8 +126,8 @@ Props.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  noticeTitle: 'GC Design System notice',
+  noticeTitle: 'Title',
   type: 'success',
-  default: 'Provide additional information.',
+  default: 'Message.',
   lang: 'en',
 };

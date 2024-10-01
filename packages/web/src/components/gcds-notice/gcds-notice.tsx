@@ -1,6 +1,5 @@
 import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig, logError } from '../../utils/utils';
-import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-notice',
@@ -124,10 +123,10 @@ export class GcdsNotice {
                         : null
               }
             />
-            <gcds-heading tag="h2" marginTop="0" class="notice__heading">
-              {noticeTitle}
-            </gcds-heading>
-            <div class="notice__body">
+            <div>
+              <gcds-heading tag="h2" marginTop="300" class="notice__heading">
+                {noticeTitle}
+              </gcds-heading>
               <slot></slot>
             </div>
           </section>

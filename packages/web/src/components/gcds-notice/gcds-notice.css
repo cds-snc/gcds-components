@@ -18,40 +18,37 @@
 @layer default {
   :host .gcds-notice {
     color: var(--gcds-notice-text);
-    padding: var(--gcds-notice-padding);
-    border-inline-start: var(--gcds-notice-border-width) solid transparent;
-    position: relative;
-    padding-block-end: var(--gcds-spacing-250);
-    
-    border-image: linear-gradient(to bottom, var(--gcds-notice-border-color) var(--gcds-spacing-300), var(--gcds-notice-border-color) var(--gcds-spacing-250), transparent var(--gcds-spacing-300), transparent var(--gcds-spacing-550), var(--gcds-notice-border-color) var(--gcds-spacing-550), var(--gcds-notice-border-color) var(--gcds-spacing-550)) 1 100%;
-    /* border-image: linear-gradient(to bottom, #d3080c var(--gcds-spacing-300), #d3080c var(--gcds-spacing-250), transparent var(--gcds-spacing-300), transparent var(--gcds-spacing-550), #d3080c var(--gcds-spacing-550), #d3080c var(--gcds-spacing-550)) 1 100%; */
+    display: grid;
+    grid-template-columns: var(--gcds-notice-icon-width) auto;
+    gap: var(--gcds-notice-icon-gap);
 
     .notice__heading {
-      padding-block-start: var(--gcds-spacing-300);
-      --gcds-heading-h2-desktop: var(--gcds-notice-content-heading-font-desktop);
+      --gcds-heading-h2-desktop: var(
+        --gcds-notice-content-heading-font-desktop
+      );
       --gcds-heading-h2-mobile: var(--gcds-notice-content-heading-font-mobile);
-      margin: var(--gcds-spacing-300);
-
-      /* .notice__type {
-        font: var(--gcds-notice-content-type-font-desktop);
-        display: block;
-        margin: var(--gcds-notice-content-type-margin);
-
-        @media only screen and (width < 48em) {
-          font: var(--gcds-notice-content-type-font-mobile);
-        }
-      } */
     }
 
     .notice__icon {
-      position: absolute;
-      top: var(--gcds-spacing-300);
-      margin-top: var(--gcds-spacing-50);
-      left: -1rem;
-    }
+      margin: var(--gcds-notice-icon-margin);
 
-    .notice__body {
-      margin: var(--gcds-spacing-300);
+      &:before {
+        display: block;
+        width: var(--gcds-notice-border-width);
+        margin: 0 auto;
+        height: var(--gcds-notice-icon-before-height);
+        content: '';
+        background-color: currentColor;
+      }
+
+      &:after {
+        display: block;
+        width: var(--gcds-notice-border-width);
+        margin: 0 auto;
+        height: var(--gcds-notice-icon-after-height);
+        content: '';
+        background-color: currentColor;
+      }
     }
 
     ::slotted(*) {
@@ -81,39 +78,20 @@
 
 @layer type {
   :host .gcds-notice {
-    &.notice--type-danger {
-      border-color: var(--gcds-notice-danger-text);
-      --gcds-notice-border-color: var(--gcds-notice-danger-text);
-
-      .notice__icon {
-        color: var(--gcds-notice-danger-text);
-      }
+    &.notice--type-danger .notice__icon {
+      color: var(--gcds-notice-danger-text);
     }
 
-    &.notice--type-info {
-      border-color: var(--gcds-notice-info-text);
-      --gcds-notice-border-color: var(--gcds-notice-info-text);
-      .notice__icon {
-        color: var(--gcds-notice-info-text);
-      }
+    &.notice--type-info .notice__icon {
+      color: var(--gcds-notice-info-text);
     }
 
-    &.notice--type-success {
-      border-color: var(--gcds-notice-success-text);
-      --gcds-notice-border-color: var(--gcds-notice-success-text);
-
-      .notice__icon {
-        color: var(--gcds-notice-success-text);
-      }
+    &.notice--type-success .notice__icon {
+      color: var(--gcds-notice-success-text);
     }
 
-    &.notice--type-warning {
-      border-color: var(--gcds-notice-warning-text);
-      --gcds-notice-border-color: var(--gcds-notice-warning-text);
-
-      .notice__icon {
-        color: var(--gcds-notice-warning-text);
-      }
+    &.notice--type-warning .notice__icon {
+      color: var(--gcds-notice-warning-text);
     }
   }
 }
