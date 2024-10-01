@@ -17,6 +17,7 @@
 | `size`       | `size`        | Set the button size                                                                                                                                | `"regular" \| "small"`                      | `'regular'` |
 | `target`     | `target`      | The target attribute specifies where to open the linked document                                                                                   | `string`                                    | `undefined` |
 | `type`       | `type`        | Set button types                                                                                                                                   | `"button" \| "link" \| "reset" \| "submit"` | `'button'`  |
+| `value`      | `value`       | The value attribute specifies the value for a <button> element.                                                                                    | `string`                                    | `undefined` |
 
 
 ## Events

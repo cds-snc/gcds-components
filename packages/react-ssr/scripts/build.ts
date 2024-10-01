@@ -30,7 +30,11 @@ const createReactWrapperModules = async ({ entryPoints, distRoot }) => {
     const enums = parseEnums(componentsTypeSource);
 
     let i = 0;
-    for (const importPath of entryPoints) {
+    for (let importPath of entryPoints) {
+
+      // Build on Window: File prefix required
+      importPath = importPath.replace( /^[A-Z]:\\/, 'file://$&' );
+
       const component = await import(importPath);
 
       let defineFunctionName = 'd';
@@ -84,13 +88,13 @@ const patchStencil = async () => {
   await replaceInFile(componentOptions);
 
   // Patching stencil
-  // Will need to check if the from property needs to be updated when we update @stencil/core@4.11.0
-  // - 3990 const win = typeof window !== 'undefined' ? window : {};
-  // + 3990 const win = typeof window !== 'undefined' ? window : globalThis || {};
+  // Will need to check if the from property needs to be updated when we update @stencil/core@4.19.2
+  // - 129 var win = typeof window !== "undefined" ? window : {};
+  // + 129 var win = typeof window !== "undefined" ? window : globalThis || {};
   const stencilOptions = {
     files: './dist/esm/lib/stencil/index.js',
-    from: "const win = typeof window !== 'undefined' ? window : {};",
-    to: "const win = typeof window !== 'undefined' ? window : globalThis || {};",
+    from: 'var win = typeof window !== "undefined" ? window : {};',
+    to: 'var win = typeof window !== "undefined" ? window : globalThis || {};',
   };
 
   try {

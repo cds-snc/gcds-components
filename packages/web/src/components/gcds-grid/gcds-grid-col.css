@@ -32,7 +32,7 @@
       grid-column: span
         var(--gcds-grid-col-tablet, var(--gcds-grid-columns-default-tablet)) /
         span
-        var(---gcds-grid-col-tablet, var(--gcds-grid-columns-default-tablet));
+        var(--gcds-grid-col-tablet, var(--gcds-grid-columns-default-tablet));
     }
   }
 }

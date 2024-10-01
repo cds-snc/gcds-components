@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Setup Node
-        uses: actions/setup-node@26961cf329f22f6837d5f54c3efd76b480300ace
+        uses: actions/setup-node@aca7b64a59c0063db8564e0ffdadd3887f1cbae5
         with:
           node-version: 18
 
@@ -63,8 +63,8 @@ jobs:
           json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
           curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
 
-  publish-react-angular-vue:
-    name: Publish @cdssnc/gcds-components-react, @cdssnc/gcds-components-angular, @cdssnc/gcds-components-vue
+  publish-react-angular-vue-ssr:
+    name: Publish @cdssnc/gcds-components-react, @cdssnc/gcds-components-angular, @cdssnc/gcds-components-vue, @cdssnc/gcds-components-react-ssr
     needs: publish-web
     runs-on: ubuntu-latest
     strategy:
@@ -83,12 +83,16 @@ jobs:
             package: "./packages/vue"
             dist: "./packages/vue"
 
+          - name: "@cdssnc/gcds-components-react-ssr"
+            package: "./packages/react-ssr"
+            dist: "./packages/react-ssr"
+
     steps:
       - name: Git Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Setup Node
-        uses: actions/setup-node@26961cf329f22f6837d5f54c3efd76b480300ace
+        uses: actions/setup-node@aca7b64a59c0063db8564e0ffdadd3887f1cbae5
         with:
           node-version: 18
 
@@ -104,56 +108,6 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{ matrix.dist }}
-
-      - name: Report deployment to Sentinel
-        if: steps.publish.outputs.id != ''
-        uses: cds-snc/sentinel-forward-data-action@main
-        with:
-          input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
-          log_type: CDS_Product_Deployment_Data
-          log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
-          log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
-
-      - name: Slack notify on failure
-        if: failure()
-        run: |
-          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Publish ${{ matrix.name }} failed: <https://github.com/cds-snc/gcds-components/actions/workflows/compile-and-publish.yml|Publish packages>"}}]}'
-          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
-
-  publish-react-ssr:
-    name: Publish React SSR
-    needs: publish-web
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: "@cdssnc/gcds-components-react-ssr"
-            package: "./packages/react-ssr"
-            dist: "./packages/react-ssr"
-
-    steps:
-      - name: Git Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-
-      - name: Setup Node
-        uses: actions/setup-node@26961cf329f22f6837d5f54c3efd76b480300ace
-        with:
-          node-version: 18
-
-      - name: Install monorepo (react-ssr)
-        run: npm install
-
-      - name: Build gcds-components (react-ssr)
-        run: npm run build
-
-      - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@e06fe3ef65499b38eb12224f2a60979f6d797330
-        id: publish
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ${{ matrix.dist }}
-          tag: canary
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
