@@ -285,6 +285,24 @@ export class GcdsSelect {
   }
 
   /*
+   * Observe passed options and update if change
+   */
+  observeOptions() {
+    const config = {
+      attributes: false,
+      childList: true,
+      characterData: true,
+      subtree: true,
+    };
+    const observer = new MutationObserver(() => {
+      this.options = Array.from(this.el.children);
+      // Reset value to null to prevent unwanted selection
+      this.value = null;
+    });
+    observer.observe(this.el, config);
+  }
+
+  /*
    * Observe lang attribute change
    */
   updateLang() {
@@ -331,6 +349,10 @@ export class GcdsSelect {
         }
       });
     }
+  }
+
+  async componentDidLoad() {
+    this.observeOptions();
   }
 
   componentWillUpdate() {
