@@ -103,6 +103,13 @@ export class GcdsNotice {
   render() {
     const { type, noticeTitle } = this;
 
+    const iconTypes = {
+      danger: 'exclamation-circle',
+      info: 'info-circle',
+      success: 'check-circle',
+      warning: 'exclamation-triangle',
+    };
+
     return (
       <Host>
         {this.validateRequiredProps() && (
@@ -111,17 +118,7 @@ export class GcdsNotice {
               aria-hidden="true"
               class="notice__icon"
               size="h4"
-              name={
-                type === 'danger'
-                  ? 'exclamation-circle'
-                  : type === 'info'
-                    ? 'info-circle'
-                    : type === 'success'
-                      ? 'check-circle'
-                      : type === 'warning'
-                        ? 'exclamation-triangle'
-                        : null
-              }
+              name={iconTypes[type]}
             />
             <div>
               <gcds-heading tag="h2" marginTop="300" class="notice__heading">
