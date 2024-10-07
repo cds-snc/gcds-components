@@ -21,9 +21,14 @@
  - [gcds-footer](../gcds-footer)
  - [gcds-header](../gcds-header)
 
+### Depends on
+
+- [gcds-sr-only](../gcds-sr-only)
+
 ### Graph
 ```mermaid
 graph TD;
+  gcds-signature --> gcds-sr-only
   gcds-footer --> gcds-signature
   gcds-header --> gcds-signature
   style gcds-signature fill:#f9f,stroke:#333,stroke-width:4px

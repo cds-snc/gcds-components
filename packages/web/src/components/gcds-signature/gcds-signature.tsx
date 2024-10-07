@@ -95,18 +95,39 @@ export class GcdsSignature {
     }
   }
 
+  private get svgLabel() {
+    if (this.lang === 'en') {
+      return (
+        <gcds-sr-only tag="span" id="signature-title">
+          Government of Canada / <span lang="fr">Gouvernement du Canada</span>
+        </gcds-sr-only>
+      );
+    } else {
+      return (
+        <gcds-sr-only tag="span" id="signature-title">
+          Gouvernement du Canada / <span lang="en">Government of Canada</span>
+        </gcds-sr-only>
+      );
+    }
+  }
+
   render() {
-    const { type, hasLink, lang, selectSVG } = this;
+    const { type, hasLink, lang, selectSVG, svgLabel } = this;
 
     return (
       <Host>
-        {hasLink && type === 'signature' ? (
-          // eslint-disable-next-line jsx-a11y/anchor-has-content
-          <a
-            class="gcds-signature"
-            href={i18n[lang].link}
-            innerHTML={selectSVG}
-          ></a>
+        {type === 'signature' ? (
+          hasLink ? (
+            <a class="gcds-signature" href={i18n[lang].link}>
+              <div innerHTML={selectSVG}></div>
+              {svgLabel}
+            </a>
+          ) : (
+            <div class="gcds-signature">
+              <div innerHTML={selectSVG}></div>
+              {svgLabel}
+            </div>
+          )
         ) : (
           <div class="gcds-signature" innerHTML={selectSVG}></div>
         )}
