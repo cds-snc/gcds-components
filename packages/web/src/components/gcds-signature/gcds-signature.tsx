@@ -1,4 +1,13 @@
-import { Component, Host, Element, Watch, State, Prop, h } from '@stencil/core';
+import {
+  Component,
+  Host,
+  Element,
+  Watch,
+  State,
+  Prop,
+  h,
+  Fragment,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -96,38 +105,46 @@ export class GcdsSignature {
   }
 
   private get svgLabel() {
+    let altText = '';
     if (this.lang === 'en') {
-      return (
-        <gcds-sr-only tag="span" id="signature-title">
-          Government of Canada / <span lang="fr">Gouvernement du Canada</span>
-        </gcds-sr-only>
+      altText = (
+        <>
+          {i18n['en'].gc} / <span lang="fr">{i18n['fr'].gc}</span>
+        </>
       );
     } else {
-      return (
-        <gcds-sr-only tag="span" id="signature-title">
-          Gouvernement du Canada / <span lang="en">Government of Canada</span>
-        </gcds-sr-only>
+      altText = (
+        <>
+          {i18n['fr'].gc} / <span lang="en">{i18n['en'].gc}</span>
+        </>
       );
     }
+    return (
+      <gcds-sr-only tag="span" id="signature-title">
+        {altText}
+      </gcds-sr-only>
+    );
   }
 
   render() {
     const { type, hasLink, lang, selectSVG, svgLabel } = this;
 
+    const sigAttrs = {
+      class: 'gcds-signature',
+    };
+    const Tag = hasLink ? 'a' : 'div';
+
+    if (Tag === 'a') {
+      sigAttrs['href'] = i18n[lang].link;
+    }
+
     return (
       <Host>
         {type === 'signature' ? (
-          hasLink ? (
-            <a class="gcds-signature" href={i18n[lang].link}>
-              <div innerHTML={selectSVG}></div>
-              {svgLabel}
-            </a>
-          ) : (
-            <div class="gcds-signature">
-              <div innerHTML={selectSVG}></div>
-              {svgLabel}
-            </div>
-          )
+          <Tag {...sigAttrs}>
+            <div innerHTML={selectSVG}></div>
+            {svgLabel}
+          </Tag>
         ) : (
           <div class="gcds-signature" innerHTML={selectSVG}></div>
         )}
