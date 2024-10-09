@@ -1,5 +1,5 @@
-import { Component, Element, h, Prop } from '@stencil/core';
-import 'https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml-viewer.js';  // Import mapml-viewer
+import { Component, Element, h, Prop, Host } from '@stencil/core';
+// import 'https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js';  // Import mapml-viewer
 
 @Component({
   tag: 'gcds-map',
@@ -46,7 +46,7 @@ export class GcdsMap {
           const mapExtent = layer.shadowRoot?.querySelector('map-extent');
           if (mapExtent && !mapExtent.hasAttribute('checked')) {
             mapExtent.setAttribute('checked', 'true');
-}
+          }
         });
       });
     });
@@ -57,23 +57,26 @@ export class GcdsMap {
     const layers = Array.from(this.el.querySelectorAll('gcds-map-layer'));
 
     return (
-      <mapml-viewer
-        lat={this.lat}
-        lon={this.lon}
-        zoom={this.zoom}
-        projection={this.projection}
-        controls={this.controls ? true : undefined}
+      <Host>
+        <mapml-viewer
+          lat={this.lat}
+          lon={this.lon}
+          zoom={this.zoom}
+          projection={this.projection}
+          controls={this.controls ? true : undefined}
         controlslist={this.controlslist}  // Pass the controlslist to mapml-viewer
-      >
+        >
         {layers.map((layer) => (
-          <layer-
-            label={layer.getAttribute('label')}
-            src={layer.getAttribute('src')}
+            <layer-
+              label={layer.getAttribute('label')}
+              src={layer.getAttribute('src')}
             checked={layer.getAttribute('checked') === 'true' ? 'checked' : undefined}
             opacity={layer.getAttribute('opacity')}  // Pass the opacity to the <layer-> element
-          ></layer->
-        ))}
-      </mapml-viewer>
+            ></layer->
+          ))}
+        </mapml-viewer>
+        <script type="module"  src="https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js"></script>
+      </Host>
     );
   }
 }
