@@ -150,11 +150,7 @@ export class GcdsErrorSummary {
 
     let target = `[for=${id.replace('#', '')}]`;
 
-    if (element.nodeName == 'FIELDSET') {
-      target = `#legend-${id.replace('#', '')}`;
-    }
-
-    element.closest('form').querySelector(target).scrollIntoView();
+    element.closest('form').querySelector(target)?.scrollIntoView();
     element.focus();
   }
 
