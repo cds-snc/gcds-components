@@ -36,3 +36,8 @@ global.fetch = jest.fn(() =>
   `),
   }),
 );
+
+global.console = {
+  ...console,
+  error: jest.fn(),
+}
