@@ -71,7 +71,7 @@ export class GcdsMap {
               ></layer->
             ))}
         </mapml-viewer>
-        <script type="module"  src="https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js"></script>
+        <script type="module"  src="https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js" integrity="sha384-D5NIJ25KvizEU8FGdiQ1zkGxMN9UDe1WutBPXZgYCMro40DHP/t6zRvvbWkmmylr" crossorigin="anonymous"></script>
       </Host>
     );
   }
