@@ -20,6 +20,7 @@ export default {
       },
     },
     mainContainer: {
+      name: 'main-container',
       control: { type: 'select' },
       options: [false, true],
       table: {

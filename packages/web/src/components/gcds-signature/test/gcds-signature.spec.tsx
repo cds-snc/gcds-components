@@ -23,7 +23,15 @@ describe('gcds-signature', () => {
       <gcds-signature lang="en" type="signature" variant="colour">
         <mock:shadow-root>
           <div class="gcds-signature">
-            Government of Canada
+            <div>
+              Government of Canada
+            </div>
+            <gcds-sr-only id="signature-title" tag="span">
+              Government of Canada /
+              <span lang="fr">
+                Gouvernement du Canada
+              </span>
+            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-signature>
@@ -39,7 +47,15 @@ describe('gcds-signature', () => {
       <gcds-signature lang="en" type="signature" has-link="true" variant="colour">
         <mock:shadow-root>
           <a class="gcds-signature" href="https://canada.ca/en.html">
-            Government of Canada
+            <div>
+              Government of Canada
+            </div>
+            <gcds-sr-only id="signature-title" tag="span">
+              Government of Canada /
+              <span lang="fr">
+                Gouvernement du Canada
+              </span>
+            </gcds-sr-only>
           </a>
         </mock:shadow-root>
       </gcds-signature>
@@ -55,7 +71,15 @@ describe('gcds-signature', () => {
       <gcds-signature lang="fr" type="signature" variant="colour">
         <mock:shadow-root>
           <div class="gcds-signature">
-            Gouvernement du Canada
+            <div>
+              Gouvernement du Canada
+            </div>
+            <gcds-sr-only id="signature-title" tag="span">
+              Gouvernement du Canada /
+              <span lang="en">
+                Government of Canada
+              </span>
+            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-signature>
@@ -71,7 +95,15 @@ describe('gcds-signature', () => {
       <gcds-signature lang="fr" type="signature" has-link="true" variant="colour">
         <mock:shadow-root>
           <a class="gcds-signature" href="https://canada.ca/fr.html">
-            Gouvernement du Canada
+            <div>
+              Gouvernement du Canada
+            </div>
+            <gcds-sr-only id="signature-title" tag="span">
+              Gouvernement du Canada /
+              <span lang="en">
+                Government of Canada
+              </span>
+            </gcds-sr-only>
           </a>
         </mock:shadow-root>
       </gcds-signature>
