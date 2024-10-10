@@ -55,6 +55,7 @@
     "@storybook/addon-essentials": "^8.0.9",
     "@storybook/addon-interactions": "^8.0.9",
     "@storybook/addon-links": "^8.0.9",
+    "@storybook/addon-mdx-gfm": "^8.0.9",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/blocks": "^8.0.9",
     "@storybook/html": "^8.0.9",
@@ -80,7 +81,6 @@
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
     "storybook": "^8.0.9",
-    "ts-loader": "^9.5.1",
     "workbox-build": "^7.0.0"
   },
   "license": "MIT"

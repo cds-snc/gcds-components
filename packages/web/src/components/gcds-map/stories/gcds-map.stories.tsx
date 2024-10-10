@@ -1,16 +1,25 @@
 export default {
   title: 'Components/Map',
-  component: 'gcds-map',
+  argTypes: {
+      projection: {
+        name: 'projection',
+        control: 'select',
+        options: ['OSMTILE', 'CBMTILE', 'WGS84'],
+        table: {
+          type: { summary: 'Tiled CRS name' },
+          defaultValue: { summary: 'OSMTILE (Web Mercator)' },
+        },
+        type: { required: false }
+      }
+    }
 };
 
-// no jsx version
 const Template = (args) => `
   <gcds-map lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" controls>
     <gcds-map-layer
       label="Canada Base Map - Transportation (CBMT)"
       src="https://geogratis.gc.ca/mapml/en/osmtile/cbmt/"
       checked="${args.checked}"
-      opacity="${args.layer1Opacity}"
     ></gcds-map-layer>
     <gcds-map-layer
       label="Another Layer"
@@ -19,13 +28,15 @@ const Template = (args) => `
   </gcds-map>
 `;
 
+// each named export is a 'story'
 export const Default = Template.bind({});
 Default.args = {
-  lat: 45.4215,
-  lon: -75.6972,
-  zoom: 10,
-  layer1Opacity: 1,
-  checked: true,
+  lat: 66.5,
+  lon: -106,
+  zoom: 2,
+  projection: 'OSMTILE',
+  controls: true,
+  checked: true
 };
 
 export const CustomMap = Template.bind({});

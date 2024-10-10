@@ -1,12 +1,14 @@
-import { Meta, Story } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as Map from './gcds-map.stories';
 
-<Meta title="GCDS Map Overview" />
+<Meta of={Map} name="Map" />
 
-# GCDS Map Overview
+# Map<br/>`<gcds-map>`
 
-The `gcds-map` component is a wrapper around the `mapml-viewer` custom element and allows you to dynamically manage map layers.
+The `<gcds-map>` component enables slipply maps with one or more `<gcds-layer>` children
 
-<Story name="Default">
-  <Map.Default />
-</Story>
+<Canvas>
+  <Story name="Default">
+    <Map.Default />
+  </Story>
+</Canvas>

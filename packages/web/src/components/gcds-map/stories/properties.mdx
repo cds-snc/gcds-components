@@ -1,16 +1,15 @@
-import { Meta, Story, Controls } from '@storybook/blocks';
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
 import * as Map from './gcds-map.stories';
 
-<Meta title="GCDS Map Properties" />
+<Meta of={Map} name="Properties" />
 
-<Story name="Default">
-  <Map.Default />
-</Story>
 
-<Controls story={Map.Default} />
 
-# GCDS Map Properties
+<Canvas 
+  of={Map.Default} 
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
 
-| Property   | Attribute  | Description                                      | Type     | Default |
-|------------|------------|--------------------------------------------------|----------|---------|
-| `layers`   | `layers`   | Array of objects representing map layers         | `Array`  | `[]`    |
+<Controls of={Map.Default} sort="none" />

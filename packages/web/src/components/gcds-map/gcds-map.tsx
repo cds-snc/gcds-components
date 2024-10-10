@@ -1,5 +1,4 @@
 import { Component, Element, h, Prop, Host } from '@stencil/core';
-// import 'https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js';  // Import mapml-viewer
 
 @Component({
   tag: 'gcds-map',
@@ -9,17 +8,14 @@ import { Component, Element, h, Prop, Host } from '@stencil/core';
 export class GcdsMap {
   @Element() el: HTMLElement;
 
-  // <mapml-viewer> attributes
   @Prop() lat: number;
   @Prop() lon: number;
   @Prop() zoom: number;
-  @Prop() projection: string = 'OSMTILE';  // Default projection
+  @Prop() projection: string = 'OSMTILE';
   @Prop() controls: boolean = true;
   @Prop() controlslist: string;
-
-  // Add width and height props to allow setting dimensions at design time
-  @Prop() width: string = '100%';  // Allow setting width of the map
-  @Prop() height: string = '400px';  // Allow setting height of the map
+  @Prop() width: string = '100%'; 
+  @Prop() height: string = '400px';
 
   componentDidLoad() {
     // Apply width and height as CSS variables
@@ -53,7 +49,7 @@ export class GcdsMap {
   }
 
   render() {
-    // Find the <gcds-map-layer> children inside the light DOM
+    // Find the <gcds-map-layer> children inside the light DOM of <gcds-map>
     const layers = Array.from(this.el.querySelectorAll('gcds-map-layer'));
 
     return (
@@ -62,18 +58,18 @@ export class GcdsMap {
           lat={this.lat}
           lon={this.lon}
           zoom={this.zoom}
-          projection={this.projection}
+          projection={this.projection ? this.projection : undefined}
           controls={this.controls ? true : undefined}
-        controlslist={this.controlslist}  // Pass the controlslist to mapml-viewer
+        controlslist={this.controlslist ? this.controlslist : undefined}
         >
-        {layers.map((layer) => (
-            <layer-
-              label={layer.getAttribute('label')}
-              src={layer.getAttribute('src')}
-            checked={layer.getAttribute('checked') === 'true' ? 'checked' : undefined}
-            opacity={layer.getAttribute('opacity')}  // Pass the opacity to the <layer-> element
-            ></layer->
-          ))}
+          {layers.map((layer) => (
+              <layer-
+                label={layer.getAttribute('label')}
+                src={layer.getAttribute('src')}
+              checked={layer.getAttribute('checked') === 'true' ? 'checked' : undefined}
+              opacity={layer.getAttribute('opacity')}
+              ></layer->
+            ))}
         </mapml-viewer>
         <script type="module"  src="https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js"></script>
       </Host>
