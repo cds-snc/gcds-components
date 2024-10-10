@@ -23,6 +23,25 @@ const config = {
     autodocs: false,
     defaultName: 'Stories'
   },
+  webpackFinal: async (config) => {
+    // Use ts-loader for .ts and .tsx files
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      use: [
+        {
+          loader: require.resolve('ts-loader'),
+          options: {
+            transpileOnly: true,
+          },
+        },
+      ],
+    });
+
+    config.resolve.extensions.push('.ts', '.tsx');
+
+
+    return config;
+  }
 };
 export default config;
 

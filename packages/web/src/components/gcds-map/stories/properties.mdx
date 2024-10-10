@@ -1,0 +1,13 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Map from './gcds-map.stories';
+
+<Meta of={Map} name="Properties" />
+
+<Canvas 
+  of={Map.Default} 
+  story={{ inline: true }}
+  sourceState="shown"
+  type="dynamic"
+/>
+
+<Controls of={Map.Default} sort="none" />
