@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop, Host } from '@stencil/core';
+import { Component, Element, h, Prop, Host, Watch } from '@stencil/core';
 
 @Component({
   tag: 'gcds-map',
@@ -12,18 +12,58 @@ export class GcdsMap {
   @Prop() lon: number;
   @Prop() zoom: number;
   @Prop() projection: string = 'OSMTILE';
-  @Prop() controls: boolean = true;
+  @Prop() controls: boolean = false;
   @Prop() controlslist: string;
   @Prop() width: string = '100%'; 
   @Prop() height: string = '400px';
+
+  mapViewer: HTMLMapmlViewerElement;
 
   componentDidLoad() {
     // Apply width and height as CSS variables
     this.el.style.setProperty('--map-width', this.width);
     this.el.style.setProperty('--map-height', this.height);
 
+    // Reference the <mapml-viewer> element
+    this.mapViewer = this.el.shadowRoot.querySelector('mapml-viewer') as HTMLMapmlViewerElement;
+
     // Handle <layer-> readiness once the map is rendered
     this.handleLayerReady();
+  }
+
+  @Watch('lat')
+  @Watch('lon')
+  @Watch('zoom')
+  @Watch('projection')
+  @Watch('controls')
+  @Watch('controlslist')
+  handlePropChange(propName: string, newValue: any) {
+    if (this.mapViewer) {
+      switch (propName) {
+        case 'lat':
+        case 'lon':
+        case 'zoom':
+          this.mapViewer.zoomTo(this.lat,this.lon,this.zoom);
+          break;
+        case 'projection':
+          this.mapViewer.setAttribute(propName, newValue.toString());
+          break;
+        case 'controls':
+          if (newValue) {
+            this.mapViewer.setAttribute('controls', '');
+          } else {
+            this.mapViewer.removeAttribute('controls');
+          }
+          break;
+        case 'controlslist':
+          if (newValue) {
+            this.mapViewer.controlsList = newValue;
+          } else {
+            this.mapViewer.removeAttribute('controlslist');
+          }
+          break;
+      }
+    }
   }
 
   handleLayerReady() {
@@ -42,6 +82,9 @@ export class GcdsMap {
           const mapExtent = layer.shadowRoot?.querySelector('map-extent');
           if (mapExtent && !mapExtent.hasAttribute('checked')) {
             mapExtent.setAttribute('checked', 'true');
+            // the geogratis layers only have a single extent, hide it to 
+            // reduce cognitive load, improve a11y
+            mapExtent.setAttribute('hidden', 'true')
           }
         });
       });
@@ -60,19 +103,35 @@ export class GcdsMap {
           zoom={this.zoom}
           projection={this.projection ? this.projection : undefined}
           controls={this.controls ? true : undefined}
-        controlslist={this.controlslist ? this.controlslist : undefined}
+          controlslist={this.controlslist ? this.controlslist : undefined}
         >
           {layers.map((layer) => (
-              <layer-
-                label={layer.getAttribute('label')}
-                src={layer.getAttribute('src')}
+            <layer-
+              label={layer.getAttribute('label')}
+              src={layer.getAttribute('src')}
+              hidden={layer.getAttribute('hidden') === 'true' ? 'hidden' : undefined}
               checked={layer.getAttribute('checked') === 'true' ? 'checked' : undefined}
               opacity={layer.getAttribute('opacity')}
-              ></layer->
-            ))}
+            ></layer->
+          ))}
         </mapml-viewer>
-        <script type="module"  src="https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js" integrity="sha384-D5NIJ25KvizEU8FGdiQ1zkGxMN9UDe1WutBPXZgYCMro40DHP/t6zRvvbWkmmylr" crossorigin="anonymous"></script>
+        <script
+          type="module"
+          src="https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js"
+          integrity="sha384-D5NIJ25KvizEU8FGdiQ1zkGxMN9UDe1WutBPXZgYCMro40DHP/t6zRvvbWkmmylr"
+          crossOrigin="anonymous"
+        ></script>
       </Host>
     );
   }
+}
+
+// Declare the HTMLMapmlViewerElement type
+declare class HTMLMapmlViewerElement extends HTMLElement {
+  lat: number;
+  lon: number;
+  zoom: number;
+  projection: string;
+  controls: boolean;
+  controlsList: string;
 }

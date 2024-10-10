@@ -2,12 +2,13 @@ import { Component, Prop } from '@stencil/core';  // Remove 'h'
 
 @Component({
   tag: 'gcds-map-layer',
-  shadow: true,
+  shadow: false,
 })
 export class GcdsMapLayer {
-  @Prop() label: string;
   @Prop() src: string;
-  @Prop() checked: boolean;
+  @Prop() checked: boolean = true;
+  @Prop() hidden: boolean = false;
+  @Prop() label: string;
   @Prop() opacity: number;
 
   render() {
