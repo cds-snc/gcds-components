@@ -1,0 +1,49 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Notice from './gcds-notice.stories';
+
+<Meta of={Notice} name="Overview" />
+
+# Notice<br/>`<gcds-notice>`
+
+_Also called: Contextual alert_
+
+The notice is a prominent message to draw attention to important information or change. 
+
+<Canvas of={Notice.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+### Types
+
+#### Success
+
+<Canvas of={Notice.Default} story={{ inline: true }} />
+
+#### Danger
+
+<Canvas of={Notice.Danger} story={{ inline: true }} />
+
+#### Info
+
+<Canvas of={Notice.Info} story={{ inline: true }} />
+
+#### Warning
+
+<Canvas of={Notice.Warning} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul className="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/notice/" target="_blank">Guidance</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-notice" target="_blank">Github</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://www.figma.com/design/mh2maMG2NBtk41k1O1UGHV/GC-Design-System?node-id=23721-2461&t=UuX7lLupz0VikUxZ-0" target="_blank">Figma</gcds-link>
+  </li>
+</ul>

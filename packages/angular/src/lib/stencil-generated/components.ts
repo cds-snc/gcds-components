@@ -838,6 +838,28 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
 
 
 @ProxyCmp({
+  inputs: ['noticeTitle', 'type']
+})
+@Component({
+  selector: 'gcds-notice',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['noticeTitle', 'type'],
+})
+export class GcdsNotice {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsNotice extends Components.GcdsNotice {}
+
+
+@ProxyCmp({
   inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'previousHref', 'previousLabel', 'totalPages', 'url'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
