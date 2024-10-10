@@ -115,7 +115,6 @@ export class GcdsNotice {
         {this.validateRequiredProps() && (
           <section class={`gcds-notice notice--type-${type}`}>
             <gcds-icon
-              aria-hidden="true"
               class="notice__icon"
               size="h4"
               name={iconTypes[type]}
