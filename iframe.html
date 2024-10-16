@@ -1039,6 +1039,15 @@
     }, 100);
   }
 
+  // Add min-height to frame to help prevent flash when component props are modified
+  const frameSize = setInterval(() => {
+    const docsStory = document.querySelector('[data-name="Props"]');
+    if (docsStory && docsStory.clientHeight > 0) {
+      docsStory.setAttribute('style', `min-height: ${docsStory.clientHeight}px;`);
+      clearInterval(frameSize);
+    }
+  }, 200);
+
   // Add event listener to execute domContentLoadedHandler function when DOM content is loaded
   document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
 
