@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.26.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.2...gcds-components-v0.26.3) (2024-10-09)
+
+
+### :bug: :wrench: Bug Fixes
+
+* error summary focusing gcds element from error-links list ([290e271](https://github.com/cds-snc/gcds-components/commit/290e2712868a0ab691e4a3be66f5615f6a8e2e7f))
+* **gcds-error-summary:** focusing gcds element from manual error-links list ([#666](https://github.com/cds-snc/gcds-components/issues/666)) ([290e271](https://github.com/cds-snc/gcds-components/commit/290e2712868a0ab691e4a3be66f5615f6a8e2e7f))
+* Update available options in select if changed ([#655](https://github.com/cds-snc/gcds-components/issues/655)) ([e7a16cb](https://github.com/cds-snc/gcds-components/commit/e7a16cb6b6d4b5e54887431b2eb2931bfaf1380a))
+
+
+### :pencil: Documentation
+
+* Fix typo with main-container attribute in storybook ([#659](https://github.com/cds-snc/gcds-components/issues/659)) ([52cf8e8](https://github.com/cds-snc/gcds-components/commit/52cf8e884f09d9d20cfbd4736e7d1fdbddc8edb2))
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* **gcds-signature:** Signature alternative text to be bilingual ([#660](https://github.com/cds-snc/gcds-components/issues/660)) ([146e8b2](https://github.com/cds-snc/gcds-components/commit/146e8b29fbd216d655c93266fed0185b540b1712))
+
 ## [0.26.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.1...gcds-components-v0.26.2) (2024-09-25)
 
 
