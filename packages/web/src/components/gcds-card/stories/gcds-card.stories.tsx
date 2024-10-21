@@ -1,4 +1,7 @@
-import { langProp } from '../../../utils/storybook/component-properties';
+import {
+  langProp,
+  eventProp,
+} from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Card',
@@ -79,24 +82,18 @@ export default {
       },
     },
 
-     // Events
+    // Events
     gcdsClick: {
       action: 'click',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsFocus: {
       action: 'focus',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsBlur: {
       action: 'blur',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
   },
 };
@@ -155,8 +152,7 @@ Default.args = {
   href: '#',
   cardTitleTag: 'a',
   badge: 'badge',
-  description:
-    'Description or supporting text relating to the headline.',
+  description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
   imgAlt: '',
   default: '',
@@ -169,8 +165,7 @@ Description.args = {
   href: '#',
   cardTitleTag: 'a',
   badge: '',
-  description:
-    'Description or supporting text relating to the headline.',
+  description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
   imgAlt: '',
   default: '',
@@ -186,9 +181,8 @@ Slot.args = {
   description: '',
   imgSrc: '',
   imgAlt: '',
-  default:
-    'Description or supporting text relating to the headline.',
-    lang: 'en',
+  default: 'Description or supporting text relating to the headline.',
+  lang: 'en',
 };
 
 export const Badge = Template.bind({});
@@ -197,8 +191,7 @@ Badge.args = {
   href: '#',
   cardTitleTag: 'a',
   badge: 'Badge',
-  description:
-    'Description or supporting text relating to the headline.',
+  description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
   imgAlt: '',
   default: '',
@@ -211,8 +204,7 @@ Image.args = {
   href: '#',
   cardTitleTag: 'a',
   badge: '',
-  description:
-    'Description or supporting text relating to the headline.',
+  description: 'Description or supporting text relating to the headline.',
   imgSrc: 'https://picsum.photos/480/270',
   imgAlt: 'An image with the card component',
   default: '',
@@ -225,8 +217,7 @@ Props.args = {
   href: '#',
   cardTitleTag: 'a',
   badge: 'badge',
-  description:
-    'Description or supporting text relating to the headline.',
+  description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
   imgAlt: '',
   default: '',
@@ -239,8 +230,7 @@ Playground.args = {
   href: '#',
   cardTitleTag: 'a',
   badge: '',
-  description:
-    'Description or supporting text relating to the headline.',
+  description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
   imgAlt: '',
   default: '',

@@ -1,4 +1,7 @@
-import { langProp } from '../../../utils/storybook/component-properties';
+import {
+  langProp,
+  eventProp,
+} from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Radio Group',
@@ -49,21 +52,15 @@ export default {
     // Events
     gcdsRadioChange: {
       action: 'RadioChange',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsFocus: {
       action: 'focus',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsBlur: {
       action: 'blur',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
   },
 };

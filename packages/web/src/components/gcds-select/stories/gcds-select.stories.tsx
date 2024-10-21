@@ -1,6 +1,7 @@
 import {
   langProp,
   validatorProps,
+  eventProp,
 } from '../../../utils/storybook/component-properties';
 
 export default {
@@ -99,21 +100,15 @@ export default {
     // Events
     gcdsChange: {
       action: 'change',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsFocus: {
       action: 'focus',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsBlur: {
       action: 'blur',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
   },
 };
