@@ -243,7 +243,7 @@ export class GcdsTextarea {
         this.validate();
       }
 
-      if (this.hasError) {
+      if (this.hasError && this.validateOn != 'other') {
         e.preventDefault();
       }
     }
