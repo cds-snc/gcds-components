@@ -256,7 +256,7 @@ export class GcdsDateInput {
       }
 
       for (const key in this.hasError) {
-        if (this.hasError[key]) {
+        if (this.hasError[key] && this.validateOn != 'other') {
           e.preventDefault();
         }
       }
