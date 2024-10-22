@@ -1,6 +1,7 @@
 import {
   langProp,
   validatorProps,
+  eventProp,
 } from '../../../utils/storybook/component-properties';
 
 export default {
@@ -73,15 +74,11 @@ export default {
     // Events
     gcdsGroupError: {
       action: 'GroupError',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsGroupErrorClear: {
       action: 'GroupErrorClear',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
   },
 };

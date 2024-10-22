@@ -1,3 +1,5 @@
+import { eventProp } from '../../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Button',
 
@@ -115,27 +117,19 @@ export default {
     // Events
     gcdsClick: {
       action: 'click',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsChange: {
       action: 'change',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsFocus: {
       action: 'focus',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
     gcdsBlur: {
       action: 'blur',
-      table: {
-        category: 'Events | Événements',
-      },
+      ...eventProp,
     },
   },
 };
@@ -149,7 +143,8 @@ const Template = args =>
     args.size != 'regular' ? `size="${args.size}"` : null
   } ${args.disabled ? `disabled` : null} ${
     args.name ? `name="${args.name}"` : null
-  } ${ args.value ? `value="${args.value}"` : null
+  } ${
+    args.value ? `value="${args.value}"` : null
   } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${
     args.type == 'link' && args.rel ? `rel="${args.rel}"` : null
   } ${args.type == 'link' && args.target ? `target="${args.target}"` : null} ${
@@ -165,7 +160,8 @@ const Template = args =>
     args.size != 'regular' ? `size="${args.size}"` : null
   } ${args.disabled ? `disabled` : null} ${
     args.name ? `name="${args.name}"` : null
-  } ${ args.value ? `value="${args.value}"` : null
+  } ${
+    args.value ? `value="${args.value}"` : null
   } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${
     args.type == 'link' && args.rel ? `rel="${args.rel}"` : null
   } ${args.type == 'link' && args.target ? `target="${args.target}"` : null} ${
