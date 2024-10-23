@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.27.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.3...gcds-components-v0.27.0-canary.0) (2024-10-23)
+
+
+### :bug: :wrench: Bug Fixes
+
+* Allow skipping blocking form submission with validate-on attribute ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+* error-message property blocking form submission. ([#673](https://github.com/cds-snc/gcds-components/issues/673)) ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* adjust details font sizes and summary + panel padding ([#674](https://github.com/cds-snc/gcds-components/issues/674)) ([fd5a422](https://github.com/cds-snc/gcds-components/commit/fd5a422d5ab66b37535dbb243fa156df769146ad))
+
 ## [0.26.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.2...gcds-components-v0.26.3) (2024-10-09)
 
 
