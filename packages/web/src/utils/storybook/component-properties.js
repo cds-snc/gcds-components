@@ -69,3 +69,12 @@ export const validatorProps = {
     },
   },
 };
+
+export const eventProp = {
+  control: {
+    type: {},
+  },
+  table: {
+    category: 'Events | Événements',
+  },
+};
