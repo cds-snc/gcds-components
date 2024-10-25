@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property                      | Attribute          | Description           | Type                                           | Default     |
-| ----------------------------- | ------------------ | --------------------- | ---------------------------------------------- | ----------- |
-| `noticeTitle` _(required)_    | `notice-title`     | Set the notice title. | `string`                                       | `undefined` |
-| `noticeTitleTag` _(required)_ | `notice-title-tag` | Set notice type.      | `"h2" \| "h3" \| "h4" \| "h5"`                 | `undefined` |
-| `type` _(required)_           | `type`             | Set notice type.      | `"danger" \| "info" \| "success" \| "warning"` | `undefined` |
+| Property                      | Attribute          | Description                   | Type                                           | Default     |
+| ----------------------------- | ------------------ | ----------------------------- | ---------------------------------------------- | ----------- |
+| `noticeTitle` _(required)_    | `notice-title`     | Set the notice title.         | `string`                                       | `undefined` |
+| `noticeTitleTag` _(required)_ | `notice-title-tag` | Set notice title heading tag. | `"h2" \| "h3" \| "h4" \| "h5"`                 | `undefined` |
+| `type` _(required)_           | `type`             | Set notice type.              | `"danger" \| "info" \| "success" \| "warning"` | `undefined` |
 
 
 ## Dependencies

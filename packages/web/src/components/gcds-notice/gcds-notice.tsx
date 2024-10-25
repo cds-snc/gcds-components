@@ -38,7 +38,7 @@ export class GcdsNotice {
   }
 
   /**
-   * Set notice type.
+   * Set notice title heading tag.
    */
   @Prop() noticeTitleTag!: 'h2' | 'h3' | 'h4' | 'h5';
   validateNoticeTitleTag() {

@@ -842,7 +842,7 @@ export namespace Components {
          */
         "noticeTitle": string;
         /**
-          * Set notice type.
+          * Set notice title heading tag.
          */
         "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
         /**
@@ -2807,7 +2807,7 @@ declare namespace LocalJSX {
          */
         "noticeTitle": string;
         /**
-          * Set notice type.
+          * Set notice title heading tag.
          */
         "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
         /**
