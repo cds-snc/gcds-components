@@ -97,6 +97,18 @@ export class GcdsFileUploader {
    * FileList of uploaded files to input
    */
   @Prop({ mutable: true }) files: FileList;
+  @Watch('files')
+  watchFiles() {
+    const filesContainer: string[] = [];
+    const files = Array.from(this.files);
+
+    files.map(file => {
+      filesContainer.push(file['name']);
+    });
+
+    this.addFilesToFormData(files);
+    this.value = [...filesContainer];
+  }
 
   /**
    * Error message for an invalid file uploader element.
@@ -312,9 +324,11 @@ export class GcdsFileUploader {
   private addFilesToFormData = files => {
     const formData = new FormData();
 
-    files.forEach(file => {
-      formData.append(this.name, file, file.name);
-    });
+    if (files.length > 0) {
+      files.forEach(file => {
+        formData.append(this.name, file, file.name);
+      });
+    }
 
     this.internals.setFormValue(formData);
   };
