@@ -838,14 +838,14 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
 
 
 @ProxyCmp({
-  inputs: ['noticeTitle', 'type']
+  inputs: ['noticeTitle', 'noticeTitleTag', 'type']
 })
 @Component({
   selector: 'gcds-notice',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['noticeTitle', 'type'],
+  inputs: ['noticeTitle', 'noticeTitleTag', 'type'],
 })
 export class GcdsNotice {
   protected el: HTMLElement;

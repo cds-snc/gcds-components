@@ -844,6 +844,10 @@ export namespace Components {
         /**
           * Set notice type.
          */
+        "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
+        /**
+          * Set notice type.
+         */
         "type": 'danger' | 'info' | 'success' | 'warning';
     }
     interface GcdsPagination {
@@ -2802,6 +2806,10 @@ declare namespace LocalJSX {
           * Set the notice title.
          */
         "noticeTitle": string;
+        /**
+          * Set notice type.
+         */
+        "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
         /**
           * Set notice type.
          */

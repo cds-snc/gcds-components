@@ -319,7 +319,8 @@ export const GcdsNavLink = /*@__PURE__*/ defineContainer<JSX.GcdsNavLink>('gcds-
 
 export const GcdsNotice = /*@__PURE__*/ defineContainer<JSX.GcdsNotice>('gcds-notice', undefined, [
   'type',
-  'noticeTitle'
+  'noticeTitle',
+  'noticeTitleTag'
 ]);
 
 

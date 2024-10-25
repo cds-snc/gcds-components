@@ -27,6 +27,14 @@
         --gcds-notice-content-heading-font-desktop
       );
       --gcds-heading-h2-mobile: var(--gcds-notice-content-heading-font-mobile);
+      --gcds-heading-h4-desktop: var(
+        --gcds-notice-content-heading-font-desktop
+      );
+      --gcds-heading-h4-mobile: var(--gcds-notice-content-heading-font-mobile);
+      --gcds-heading-h5-desktop: var(
+        --gcds-notice-content-heading-font-desktop
+      );
+      --gcds-heading-h5-mobile: var(--gcds-notice-content-heading-font-mobile);
     }
 
     .notice__icon {

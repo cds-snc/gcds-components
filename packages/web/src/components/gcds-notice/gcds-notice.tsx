@@ -38,6 +38,21 @@ export class GcdsNotice {
   }
 
   /**
+   * Set notice type.
+   */
+  @Prop() noticeTitleTag!: 'h2' | 'h3' | 'h4' | 'h5';
+  validateNoticeTitleTag() {
+    if (
+      !this.noticeTitleTag ||
+      !['h2', 'h3', 'h4', 'h5'].includes(this.noticeTitleTag)
+    ) {
+      this.errors.push('noticeTitleTag');
+    } else if (this.errors.includes('noticeTitleTag')) {
+      this.errors.splice(this.errors.indexOf('noticeTitleTag'), 1);
+    }
+  }
+
+  /**
    * States
    */
 
@@ -75,11 +90,13 @@ export class GcdsNotice {
   private validateRequiredProps() {
     this.validateNoticeTitle();
     this.validateType();
+    this.validateNoticeTitleTag();
     this.validateChildren();
 
     if (
       this.errors.includes('type') ||
       this.errors.includes('noticeTitle') ||
+      this.errors.includes('noticeTitleTag') ||
       this.errors.includes('children')
     ) {
       return false;
@@ -101,7 +118,7 @@ export class GcdsNotice {
   }
 
   render() {
-    const { type, noticeTitle } = this;
+    const { type, noticeTitle, noticeTitleTag } = this;
 
     const iconTypes = {
       danger: 'exclamation-circle',
@@ -114,13 +131,13 @@ export class GcdsNotice {
       <Host>
         {this.validateRequiredProps() && (
           <section class={`gcds-notice notice--type-${type}`}>
-            <gcds-icon
-              class="notice__icon"
-              size="h4"
-              name={iconTypes[type]}
-            />
+            <gcds-icon class="notice__icon" size="h4" name={iconTypes[type]} />
             <div>
-              <gcds-heading tag="h2" marginTop="300" class="notice__heading">
+              <gcds-heading
+                tag={noticeTitleTag}
+                marginTop="300"
+                class="notice__heading"
+              >
                 {noticeTitle}
               </gcds-heading>
               <slot></slot>
