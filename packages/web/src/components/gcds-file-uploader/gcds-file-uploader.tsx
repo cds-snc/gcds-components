@@ -94,6 +94,11 @@ export class GcdsFileUploader {
   @Prop({ reflect: true, mutable: false }) multiple: boolean;
 
   /**
+   * FileList of uploaded files to input
+   */
+  @Prop({ mutable: true }) files: FileList;
+
+  /**
    * Error message for an invalid file uploader element.
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
@@ -188,6 +193,7 @@ export class GcdsFileUploader {
   private handleInput = (e, customEvent) => {
     const filesContainer: string[] = [];
     const files = Array.from(e.target.files);
+    this.files = e.target.files;
 
     files.map(file => {
       filesContainer.push(file['name']);
@@ -236,6 +242,7 @@ export class GcdsFileUploader {
       }
 
       this.shadowElement.files = dt.files;
+      this.files = dt.files;
       this.addFilesToFormData(this.shadowElement.files);
     }
 
