@@ -11,6 +11,22 @@ describe('gcds-file-uploader', () => {
     const element = await page.find('gcds-file-uploader');
     expect(element).toHaveClass('hydrated');
   });
+
+  it('renders', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" />',
+    );
+
+    const [fileChooser] = await Promise.all([
+      page.waitForFileChooser(),
+      page.click('gcds-file-uploader >>> input')
+    ]);
+
+    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
+
+    expect((await page.findAll('gcds-file-uploader >>> .file-uploader__uploaded-file')).length).toBe(1);
+  });
 });
 
 /**
