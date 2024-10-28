@@ -257,4 +257,22 @@ describe('gcds-notice', () => {
     </gcds-notice>
     `);
   });
+
+  it('does not render - invalid notice title tag value', async () => {
+    const page = await newSpecPage({
+      components: [GcdsNotice],
+      html: `<gcds-notice notice-title-tag="h1" notice-title="GC Design System notice" type="info">
+        <gcds-text>Provide additonal information</gcds-text>
+      </gcds-notice>`,
+    });
+    expect(page.root)
+      .toEqualHtml(`<gcds-notice notice-title-tag="h1" notice-title="GC Design System notice" type="info">
+      <mock:shadow-root>
+      </mock:shadow-root>
+      <gcds-text>
+        Provide additonal information
+      </gcds-text>
+    </gcds-notice>
+    `);
+  });
 });
