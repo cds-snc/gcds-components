@@ -423,7 +423,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
 
 
 @ProxyCmp({
-  inputs: ['accept', 'disabled', 'errorMessage', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
+  inputs: ['accept', 'disabled', 'errorMessage', 'files', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
   methods: ['validate'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']
 })
@@ -432,7 +432,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accept', 'disabled', 'errorMessage', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid'],
+  inputs: ['accept', 'disabled', 'errorMessage', 'files', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid'],
 })
 export class GcdsFileUploader {
   protected el: HTMLElement;

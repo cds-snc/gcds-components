@@ -380,6 +380,10 @@ export namespace Components {
          */
         "errorMessage": string;
         /**
+          * FileList of uploaded files to input
+         */
+        "files": FileList;
+        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -2255,6 +2259,10 @@ declare namespace LocalJSX {
           * Error message for an invalid file uploader element.
          */
         "errorMessage"?: string;
+        /**
+          * FileList of uploaded files to input
+         */
+        "files"?: FileList;
         /**
           * Hint displayed below the label.
          */
