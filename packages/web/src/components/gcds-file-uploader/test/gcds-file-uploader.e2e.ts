@@ -12,7 +12,7 @@ describe('gcds-file-uploader', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('upload 1 files', async () => {
+  it('upload 1 file', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" />',
