@@ -20,14 +20,20 @@ describe('gcds-file-uploader', () => {
 
     const [fileChooser] = await Promise.all([
       page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input')
+      page.click('gcds-file-uploader >>> input'),
     ]);
 
     await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
 
     await page.waitForChanges();
 
-    expect((await page.findAll('gcds-file-uploader >>> .file-uploader__uploaded-file')).length).toBe(1);
+    expect(
+      (
+        await page.findAll(
+          'gcds-file-uploader >>> .file-uploader__uploaded-file',
+        )
+      ).length,
+    ).toBe(1);
   });
 
   it('upload multiple files', async () => {
@@ -38,14 +44,23 @@ describe('gcds-file-uploader', () => {
 
     const [fileChooser] = await Promise.all([
       page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input')
+      page.click('gcds-file-uploader >>> input'),
     ]);
 
-    await fileChooser.accept(['./gcds-file-uploader.e2e.ts', './gcds-file-uploader.spec.tsx']);
+    await fileChooser.accept([
+      './gcds-file-uploader.e2e.ts',
+      './gcds-file-uploader.spec.tsx',
+    ]);
 
     await page.waitForChanges();
 
-    expect((await page.findAll('gcds-file-uploader >>> .file-uploader__uploaded-file')).length).toBe(2);
+    expect(
+      (
+        await page.findAll(
+          'gcds-file-uploader >>> .file-uploader__uploaded-file',
+        )
+      ).length,
+    ).toBe(2);
   });
 
   it('upload and remove file', async () => {
@@ -56,16 +71,26 @@ describe('gcds-file-uploader', () => {
 
     const [fileChooser] = await Promise.all([
       page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input')
+      page.click('gcds-file-uploader >>> input'),
     ]);
 
     await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
 
     await page.waitForChanges();
 
-    await (await page.find('gcds-file-uploader >>> .file-uploader__uploaded-file > button')).click();
+    await (
+      await page.find(
+        'gcds-file-uploader >>> .file-uploader__uploaded-file > button',
+      )
+    ).click();
 
-    expect((await page.findAll('gcds-file-uploader >>> .file-uploader__uploaded-file')).length).toBe(0);
+    expect(
+      (
+        await page.findAll(
+          'gcds-file-uploader >>> .file-uploader__uploaded-file',
+        )
+      ).length,
+    ).toBe(0);
   });
 
   it('set files property manually', async () => {
@@ -80,14 +105,22 @@ describe('gcds-file-uploader', () => {
 
       const dataTransfer = new DataTransfer();
       dataTransfer.items.add(file);
-      
+
       document.querySelector('gcds-file-uploader').files = dataTransfer.files;
-    })
+    });
 
     await page.waitForChanges();
 
-    expect((await page.findAll('gcds-file-uploader >>> .file-uploader__uploaded-file')).length).toBe(1);
-    expect((await page.find('gcds-file-uploader >>> gcds-text')).textContent).toBe('./example.txt');
+    expect(
+      (
+        await page.findAll(
+          'gcds-file-uploader >>> .file-uploader__uploaded-file',
+        )
+      ).length,
+    ).toBe(1);
+    expect(
+      (await page.find('gcds-file-uploader >>> gcds-text')).textContent,
+    ).toBe('./example.txt');
   });
 });
 
