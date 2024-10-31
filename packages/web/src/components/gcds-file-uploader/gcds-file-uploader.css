@@ -125,6 +125,14 @@
   :host .gcds-file-uploader-wrapper.gcds-disabled {
     color: var(--gcds-file-uploader-disabled-text);
 
+    gcds-label {
+      --gcds-label-text: currentColor;
+    }
+
+    gcds-hint {
+      --gcds-hint-text: currentColor;
+    }
+
     :is(.file-uploader__input, .file-uploader__uploaded-file) {
       pointer-events: none;
     }

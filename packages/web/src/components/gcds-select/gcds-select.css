@@ -58,6 +58,14 @@
   :host .gcds-select-wrapper.gcds-disabled {
     color: var(--gcds-select-disabled-text);
 
+    gcds-label {
+      --gcds-label-text: currentColor;
+    }
+
+    gcds-hint {
+      --gcds-hint-text: currentColor;
+    }
+
     select:disabled {
       cursor: not-allowed;
       background-color: var(--gcds-select-disabled-background);

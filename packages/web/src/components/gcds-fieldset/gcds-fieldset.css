@@ -1,4 +1,4 @@
-@layer reset, default, disabled, focus;
+@layer reset, default, disabled;
 
 @layer reset {
   :host {
@@ -48,11 +48,9 @@
 @layer disabled {
   :host .gcds-fieldset:disabled {
     color: var(--gcds-fieldset-disabled-text);
-  }
-}
 
-@layer focus {
-  :host .gcds-fieldset:focus-within {
-    color: var(--gcds-fieldset-focus-text);
+    gcds-hint {
+      --gcds-hint-text: currentColor;
+    }
   }
 }

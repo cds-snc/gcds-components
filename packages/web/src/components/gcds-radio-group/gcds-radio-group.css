@@ -97,6 +97,8 @@
     color: var(--gcds-radio-disabled-text);
 
     gcds-label {
+      --gcds-label-text: currentColor;
+
       &:before,
       &:after {
         cursor: not-allowed;
@@ -106,6 +108,10 @@
         border-color: var(--gcds-radio-disabled-border);
         background-color: var(--gcds-radio-disabled-background);
       }
+    }
+
+    gcds-hint {
+      --gcds-hint-text: currentColor;
     }
   }
 }
