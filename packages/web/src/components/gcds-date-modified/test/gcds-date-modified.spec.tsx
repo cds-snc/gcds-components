@@ -73,4 +73,17 @@ describe('gcds-date-modified', () => {
       </gcds-date-modified>
     `);
   });
+
+  it('does not render - no children', async () => {
+    const page = await newSpecPage({
+      components: [GcdsDateModified],
+      html: `<gcds-date-modified lang="en"></gcds-date-modified>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-date-modified lang="en">
+        <mock:shadow-root>
+        </mock:shadow-root>
+      </gcds-date-modified>
+    `);
+  });
 });
