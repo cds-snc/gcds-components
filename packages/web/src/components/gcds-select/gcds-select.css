@@ -81,15 +81,11 @@
 }
 
 @layer focus {
-  :host .gcds-select-wrapper:focus-within {
-    color: var(--gcds-select-focus-text);
-
-    select:focus {
-      border-color: var(--gcds-select-focus-text);
-      outline: var(--gcds-select-outline-width) solid
-        var(--gcds-select-focus-text);
-      outline-offset: var(--gcds-select-border-width);
-      box-shadow: var(--gcds-select-focus-box-shadow);
-    }
+  :host .gcds-select-wrapper:focus-within select:focus {
+    border-color: var(--gcds-select-focus-border);
+    outline: var(--gcds-select-outline-width) solid
+      var(--gcds-select-focus-border);
+    outline-offset: var(--gcds-select-border-width);
+    box-shadow: var(--gcds-select-focus-box-shadow);
   }
 }

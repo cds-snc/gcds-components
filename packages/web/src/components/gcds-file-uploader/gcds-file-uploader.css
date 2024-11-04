@@ -178,8 +178,6 @@
 
 @layer focus {
   :host .gcds-file-uploader-wrapper:focus-within {
-    color: var(--gcds-file-uploader-focus-text);
-
     .file-uploader__uploaded-file:focus-within {
       border-color: var(--gcds-file-uploader-file-focus-border-color);
     }

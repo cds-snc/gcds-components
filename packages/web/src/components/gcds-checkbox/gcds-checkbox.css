@@ -128,7 +128,7 @@
 
 @layer focus {
   :host .gcds-checkbox:focus-within {
-    color: var(--gcds-checkbox-focus-text);
+    color: var(--gcds-checkbox-focus-color);
 
     input:focus + gcds-label:before {
       outline: var(--gcds-checkbox-focus-outline-width) solid currentcolor;

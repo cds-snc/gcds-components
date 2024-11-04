@@ -130,7 +130,7 @@
 
 @layer focus {
   :host .gcds-radio:focus-within {
-    color: var(--gcds-radio-focus-text);
+    color: var(--gcds-radio-focus-color);
 
     input:focus + gcds-label {
       &:before {
