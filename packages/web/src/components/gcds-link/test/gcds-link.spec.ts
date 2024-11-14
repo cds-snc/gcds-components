@@ -27,10 +27,10 @@ describe('gcds-link', () => {
   it('[english] renders external link with label + icon', async () => {
     const { root } = await newSpecPage({
       components: [GcdsLink],
-      html: `<gcds-link href="https://google.com" target="_blank">External Link</gcds-link>`,
+      html: `<gcds-link href="https://google.com" external>External Link</gcds-link>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-link href="https://google.com" target="_blank">
+      <gcds-link href="https://google.com" external>
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
             <slot></slot>
@@ -45,10 +45,10 @@ describe('gcds-link', () => {
   it('[french] renders external link with label + icon', async () => {
     const { root } = await newSpecPage({
       components: [GcdsLink],
-      html: `<gcds-link href="https://google.com" target="_blank" lang="fr">External Link</gcds-link>`,
+      html: `<gcds-link href="https://google.com" external lang="fr">External Link</gcds-link>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-link href="https://google.com" target="_blank" lang="fr">
+      <gcds-link href="https://google.com" external lang="fr">
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
             <slot></slot>

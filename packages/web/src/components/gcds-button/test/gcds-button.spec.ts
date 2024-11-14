@@ -153,10 +153,10 @@ describe('gcds-button', () => {
   it('renders external link with label + icon', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
-      html: `<gcds-button type="link" button-style="text-only" href="https://google.com" target="_blank">Button Label</gcds-button>`,
+      html: `<gcds-button type="link" href="https://google.com" external>Button Label</gcds-button>`,
     });
     expect(root).toEqualHtml(`
-      <gcds-button type="link" button-style="text-only" href="https://google.com" target="_blank">
+      <gcds-button type="link" href="https://google.com" external>
         <mock:shadow-root>
           <a class="gcds-button button--role-primary button--regular" href="https://google.com" part="button" target="_blank">
             <slot></slot>

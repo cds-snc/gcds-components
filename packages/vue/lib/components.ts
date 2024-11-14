@@ -41,6 +41,7 @@ export const GcdsButton = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-bu
   'rel',
   'target',
   'download',
+  'external',
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'

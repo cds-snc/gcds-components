@@ -115,6 +115,11 @@ export class GcdsButton {
   @Prop() download: string | undefined;
 
   /**
+   * Whether the link is external or not
+   */
+  @Prop() external?: boolean = false;
+
+  /**
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
@@ -215,6 +220,7 @@ export class GcdsButton {
       rel,
       target,
       download,
+      external,
       value,
       inheritedAttributes,
     } = this;
@@ -234,6 +240,7 @@ export class GcdsButton {
             target,
             download,
           };
+    const isExternalLink = external === true && type === 'link';
 
     return (
       <Host>
@@ -245,12 +252,13 @@ export class GcdsButton {
           onClick={e => this.handleClick(e)}
           class={`gcds-button button--role-${buttonRole} button--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
+          target={isExternalLink ? '_blank' : target}
           {...inheritedAttributes}
           part="button"
         >
           <slot></slot>
 
-          {type === 'link' && target === '_blank' ? (
+          {type === 'link' && external ? (
             <gcds-icon
               name="external-link"
               label={i18n[lang].label}

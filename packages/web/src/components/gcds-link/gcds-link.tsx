@@ -198,7 +198,7 @@ export class GcdsLink {
           onClick={e => emitEvent(e, this.gcdsClick, href)}
         >
           <slot></slot>
-          {target === '_blank' || external ? (
+          { external ? (
             <gcds-icon
               name="external-link"
               label={i18n[lang].external}
