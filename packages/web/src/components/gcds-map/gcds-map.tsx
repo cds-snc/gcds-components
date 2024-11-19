@@ -134,4 +134,5 @@ declare class HTMLMapmlViewerElement extends HTMLElement {
   projection: string;
   controls: boolean;
   controlsList: string;
+  zoomTo(lat: number, lon: number, zoom: number): void;
 }
