@@ -61,6 +61,14 @@
   :host .gcds-input-wrapper.gcds-disabled {
     color: var(--gcds-input-disabled-text);
 
+    gcds-label {
+      --gcds-label-text: currentColor;
+    }
+
+    gcds-hint {
+      --gcds-hint-text: currentColor;
+    }
+
     input:disabled {
       cursor: not-allowed;
       background-color: var(--gcds-input-disabled-background);
@@ -76,15 +84,11 @@
 }
 
 @layer focus {
-  :host .gcds-input-wrapper:focus-within {
-    color: var(--gcds-input-focus-text);
-
-    input:focus {
-      border-color: var(--gcds-input-focus-text);
-      outline: var(--gcds-input-outline-width) solid
-        var(--gcds-input-focus-text);
-      outline-offset: var(--gcds-input-border-width);
-      box-shadow: var(--gcds-input-focus-box-shadow);
-    }
+  :host .gcds-input-wrapper:focus-within input:focus {
+    border-color: var(--gcds-input-focus-border);
+    outline: var(--gcds-input-outline-width) solid
+      var(--gcds-input-focus-border);
+    outline-offset: var(--gcds-input-border-width);
+    box-shadow: var(--gcds-input-focus-box-shadow);
   }
 }

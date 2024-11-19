@@ -51,6 +51,14 @@
   :host .gcds-textarea-wrapper.gcds-disabled {
     color: var(--gcds-textarea-disabled-text);
 
+    gcds-label {
+      --gcds-label-text: currentColor;
+    }
+
+    gcds-hint {
+      --gcds-hint-text: currentColor;
+    }
+
     textarea:disabled {
       cursor: not-allowed;
       background-color: var(--gcds-textarea-disabled-background);
@@ -72,15 +80,11 @@
 }
 
 @layer focus {
-  :host .gcds-textarea-wrapper:focus-within {
-    color: var(--gcds-textarea-focus-text);
-
-    textarea:focus {
-      border-color: var(--gcds-textarea-focus-text);
-      outline: var(--gcds-textarea-outline-width) solid
-        var(--gcds-textarea-focus-text);
-      outline-offset: var(--gcds-textarea-border-width);
-      box-shadow: var(--gcds-textarea-focus-box-shadow);
-    }
+  :host .gcds-textarea-wrapper:focus-within textarea:focus {
+    border-color: var(--gcds-textarea-focus-border);
+    outline: var(--gcds-textarea-outline-width) solid
+      var(--gcds-textarea-focus-border);
+    outline-offset: var(--gcds-textarea-border-width);
+    box-shadow: var(--gcds-textarea-focus-box-shadow);
   }
 }

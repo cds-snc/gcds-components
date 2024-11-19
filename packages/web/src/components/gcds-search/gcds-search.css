@@ -62,9 +62,9 @@
 @layer focus {
   :host .gcds-search {
     input:focus {
-      border-color: var(--gcds-search-focus-text);
+      border-color: var(--gcds-search-focus-border-color);
       outline: var(--gcds-search-outline-width) solid
-        var(--gcds-search-focus-text);
+        var(--gcds-search-focus-border-color);
       outline-offset: var(--gcds-search-border-width);
       border-radius: var(--gcds-search-focus-border-radius);
       box-shadow: var(--gcds-search-focus-box-shadow);
