@@ -12,7 +12,7 @@ export class GcdsMap {
   @Prop() lon: number;
   @Prop() zoom: number;
   @Prop() projection: string = 'OSMTILE';
-  @Prop() controls: boolean = false;
+  @Prop() controls: boolean = true;
   @Prop() controlslist: string;
   @Prop() width: string = '100%'; 
   @Prop() height: string = '400px';
@@ -115,12 +115,9 @@ export class GcdsMap {
             ></layer->
           ))}
         </mapml-viewer>
-        <script
-          type="module"
-          src="https://cdn.jsdelivr.net/npm/@maps4html/mapml/dist/mapml.js"
-          integrity="sha384-D5NIJ25KvizEU8FGdiQ1zkGxMN9UDe1WutBPXZgYCMro40DHP/t6zRvvbWkmmylr"
-          crossOrigin="anonymous"
-        ></script>
+        // build should create the directory here /dist/gcds/gcds-map
+        // including files mapml.js, mapml.css, mapml.map (if desired)
+        <script type="module" src="./dist/gcds/gcds-map/mapml.js"></script>
       </Host>
     );
   }
