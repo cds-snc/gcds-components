@@ -38,7 +38,8 @@
     "@storybook/addon-a11y": "^8.0.9",
     "@storybook/addons": "^7.6.17",
     "@storybook/test": "^8.0.9",
-    "@storybook/theming": "^8.0.9"
+    "@storybook/theming": "^8.0.9",
+    "@maps4html/mapml": "^0.14.1"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.7.3",
@@ -47,7 +48,6 @@
     "@babel/preset-typescript": "^7.21.0",
     "@cdssnc/gcds-tokens": "^1.20.2",
     "@fortawesome/fontawesome-free": "^6.3.0",
-    "@maps4html/mapml": "^0.14.1",
     "@stencil/angular-output-target": "file:../../utils/angular-output-target",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^3.0.0-0",

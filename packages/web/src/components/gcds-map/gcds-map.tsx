@@ -27,7 +27,7 @@ export class GcdsMap {
     // Reference the <mapml-viewer> element
     this.mapViewer = this.el.shadowRoot.querySelector('mapml-viewer') as HTMLMapmlViewerElement;
 
-    // Handle <map-layer> readiness once the map is rendered
+    // Handle <layer-> readiness once the map is rendered
     this.handleLayerReady();
   }
 
@@ -67,13 +67,13 @@ export class GcdsMap {
   }
 
   handleLayerReady() {
-    // Wait for the 'map-layer' custom element to be defined
-    customElements.whenDefined('map-layer').then(() => {
-      // Find all <map-layer> elements inside the mapml-viewer
-      const layers = Array.from(this.el.shadowRoot.querySelectorAll('map-layer'));
+    // Wait for the 'layer-' custom element to be defined
+    customElements.whenDefined('layer-').then(() => {
+      // Find all <layer-> elements inside the mapml-viewer
+      const layers = Array.from(this.el.shadowRoot.querySelectorAll('layer-'));
 
       layers.forEach((layer) => {
-        // Now we know the <map-layer> element is fully defined, call whenReady()
+        // Now we know the <layer-> element is fully defined, call whenReady()
         (layer as any).whenReady().then(() => {
           // Check for <map-extent> in the layer's shadow DOM and add 'checked' attribute
           // this is necessary only for geogratis MapML resources, but harmless
@@ -106,13 +106,13 @@ export class GcdsMap {
           controlslist={this.controlslist ? this.controlslist : undefined}
         >
           {layers.map((layer) => (
-            <map-layer
+            <layer-
               label={layer.getAttribute('label')}
               src={layer.getAttribute('src')}
               hidden={layer.getAttribute('hidden') === 'true' ? 'hidden' : undefined}
               checked={layer.getAttribute('checked') === 'true' ? 'checked' : undefined}
               opacity={layer.getAttribute('opacity')}
-            ></map-layer>
+            ></layer->
           ))}
         </mapml-viewer>
         <script type="module" src="./dist/gcds/gcds-map/mapml.js"></script>
