@@ -24,6 +24,23 @@ describe('gcds-link', () => {
    * Variant tests
    */
 
+  it('opens links in new tab without displaying the external icon', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsLink],
+      html: `<gcds-link href="https://google.com" target="_blank">Link opens in a new tab, but is not external</gcds-link>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-link href="https://google.com" target="_blank">
+        <mock:shadow-root>
+          <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+            <slot></slot>
+          </a>
+        </mock:shadow-root>
+        Link opens in a new tab, but is not external
+      </gcds-link>
+    `);
+  });
+
   it('[english] renders external link with label + icon', async () => {
     const { root } = await newSpecPage({
       components: [GcdsLink],

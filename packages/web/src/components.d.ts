@@ -68,7 +68,7 @@ export namespace Components {
          */
         "download": string | undefined;
         /**
-          * Whether the link is external or not
+          * Set to true if the button links to an external page. Requires the "type" to be set to "link" to work.
          */
         "external"?: boolean;
         /**
@@ -1868,7 +1868,7 @@ declare namespace LocalJSX {
          */
         "download"?: string | undefined;
         /**
-          * Whether the link is external or not
+          * Set to true if the button links to an external page. Requires the "type" to be set to "link" to work.
          */
         "external"?: boolean;
         /**

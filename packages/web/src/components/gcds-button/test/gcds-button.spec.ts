@@ -153,7 +153,7 @@ describe('gcds-button', () => {
   it('renders external link with label + icon', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
-      html: `<gcds-button type="link" href="https://google.com" external>Button Label</gcds-button>`,
+      html: `<gcds-button type="link" href="https://google.com" external>Link label</gcds-button>`,
     });
     expect(root).toEqualHtml(`
       <gcds-button type="link" href="https://google.com" external>
@@ -163,7 +163,24 @@ describe('gcds-button', () => {
             <gcds-icon name="external-link" label="Opens in a new tab." margin-left="200" />
           </a>
         </mock:shadow-root>
-        Button Label
+        Link label
+      </gcds-button>
+    `);
+  });
+
+  it('opens links in new tab without displaying the external icon', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button type="link" href="https://google.com" target="_blank">Link label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button type="link" href="https://google.com" target="_blank">
+        <mock:shadow-root>
+          <a class="gcds-button button--role-primary button--regular" href="https://google.com" part="button" target="_blank">
+            <slot></slot>
+          </a>
+        </mock:shadow-root>
+        Link label
       </gcds-button>
     `);
   });
