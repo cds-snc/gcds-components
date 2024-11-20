@@ -5,7 +5,7 @@ import { inlineSvg } from 'stencil-inline-svg';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
-import { execSync } from 'child_process';
+import stencilCopyMapMLPlugin from './scripts/stencilCopyMapMLPlugin';
 
 export const config: Config = {
   namespace: 'gcds',
@@ -50,18 +50,7 @@ export const config: Config = {
     }),
     inlineSvg(),
     sass(),
-    {
-      name: 'postBuildCopy',
-      async buildEnd() {
-        try {
-          // copy MapML dependency
-          execSync('node ./scripts/copyMapMLFiles.js', { stdio: 'inherit' });
-          console.log('MapML files copied successfully to dist/gcds/gcds-map');
-        } catch (err) {
-          console.error('Error copying MapML files:', err);
-        }
-      },
-    }
+    stencilCopyMapMLPlugin()
   ],
   testing: {
     transform: {
