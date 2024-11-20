@@ -6,7 +6,7 @@ export default {
         control: 'boolean',
         table: {
           type: { summary: 'Add map controls' },
-          defaultValue: { summary: 'false' }
+          defaultValue: { summary: 'true' }
         }
       },
       lat: {

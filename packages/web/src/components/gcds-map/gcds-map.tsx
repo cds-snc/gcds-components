@@ -115,8 +115,6 @@ export class GcdsMap {
             ></map-layer>
           ))}
         </mapml-viewer>
-        // build should create the directory here /dist/gcds/gcds-map
-        // including files mapml.js, mapml.css, mapml.map (if desired)
         <script type="module" src="./dist/gcds/gcds-map/mapml.js"></script>
       </Host>
     );
