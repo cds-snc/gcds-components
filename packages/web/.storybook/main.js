@@ -19,6 +19,7 @@ const config = {
     name: getAbsolutePath("@storybook/html-webpack5"),
     options: {},
   },
+  staticDirs: [{ from: '../dist/gcds/gcds-map', to: '/dist/gcds/gcds-map' }],
   docs: {
     autodocs: false,
     defaultName: 'Stories'
