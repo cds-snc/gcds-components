@@ -19,6 +19,26 @@ export class GcdsMap {
 
   mapViewer: HTMLMapmlViewerElement;
 
+  // written with the help of ChatGPT and Pierre Dubois.
+  async componentWillLoad() {
+    try {
+      const scriptId = 'mapml-loader';
+      if (!document.getElementById(scriptId)) {
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = './dist/gcds/gcds-map/mapml.js';
+        script.crossOrigin = 'anonymous';
+        script.id = scriptId;
+        document.head.appendChild(script);
+        script.onload = () => console.log('MapML module dynamically loaded');
+        script.onerror = (err) => console.error('Error loading MapML module:', err);
+      } else {
+        console.log('MapML script already loaded');
+      }
+    } catch (err) {
+      console.error('Error injecting MapML script:', err);
+    }
+  }
   componentDidLoad() {
     // Apply width and height as CSS variables
     this.el.style.setProperty('--map-width', this.width);
@@ -115,7 +135,6 @@ export class GcdsMap {
             ></layer->
           ))}
         </mapml-viewer>
-        <script type="module" src="./dist/gcds/gcds-map/mapml.js"></script>
       </Host>
     );
   }
