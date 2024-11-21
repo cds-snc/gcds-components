@@ -39,4 +39,4 @@ function stencilCopyMapMLPlugin() {
   };
 }
 
-module.exports = stencilCopyMapMLPlugin;
+exports.copyMapMLPlugin = stencilCopyMapMLPlugin;
