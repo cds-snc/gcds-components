@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.27.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.26.3...gcds-components-vue-v0.27.0) (2024-11-19)
+
+
+### :rocket: New Features
+
+* **gcds-file-uploader:** Add files prop for ease of access to uploaded files ([#676](https://github.com/cds-snc/gcds-components/issues/676)) ([2323e42](https://github.com/cds-snc/gcds-components/commit/2323e42e8d492891d0550f370fbface17c33fe09))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.26.3 to ^0.27.0
+
 ## [0.26.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.26.2...gcds-components-vue-v0.26.3) (2024-10-09)
 
 
