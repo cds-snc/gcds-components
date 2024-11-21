@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+import type { ComponentCompilerProperty } from '@stencil/core/internal';
 import { createComponentTypeDefinition, createAngularComponentDefinition } from '../src/generate-angular-component';
 
 describe('createAngularComponentDefinition()', () => {
@@ -61,7 +63,7 @@ export class MyComponent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],outputs: ['my-output', 'my-other-output'],
+  inputs: [], outputs: ['my-output', 'my-other-output']
 })
 export class MyComponent {
   protected el: HTMLElement;
@@ -159,7 +161,7 @@ export class MyComponent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],outputs: ['my-output', 'my-other-output'],
+  inputs: [], outputs: ['my-output', 'my-other-output']
 })
 export class MyComponent {
   protected el: HTMLElement;
@@ -210,6 +212,42 @@ export class MyComponent {
 })
 export class MyComponent {
   protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}`);
+    });
+  });
+
+  describe('inline members', () => {
+    it('generates component with inlined member with jsDoc', () => {
+      const component = createAngularComponentDefinition('my-component', ['myMember'], [], [], false, false, [
+        {
+          docs: {
+            tags: [{ name: 'deprecated', text: 'use v2 of this API' }],
+            text: 'This is a jsDoc for myMember',
+          },
+          name: 'myMember',
+        } as ComponentCompilerProperty,
+      ]);
+
+      expect(component).toEqual(`@ProxyCmp({
+  inputs: ['myMember']
+})
+@Component({
+  selector: 'my-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['myMember'],
+})
+export class MyComponent {
+  protected el: HTMLElement;
+    /**
+   * This is a jsDoc for myMember @deprecated use v2 of this API
+   */
+  myMember: Components.MyComponent['myMember'];
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -287,6 +325,21 @@ describe('createComponentTypeDefinition()', () => {
         tags: [],
       },
     },
+    {
+      name: 'my/slash/event',
+      complexType: {
+        references: {
+          MySlashEvent: {
+            location: 'import',
+          },
+        },
+        original: 'MySlashEvent',
+      },
+      docs: {
+        text: '',
+        tags: [],
+      },
+    },
   ];
 
   describe('www build', () => {
@@ -298,6 +351,7 @@ describe('createComponentTypeDefinition()', () => {
 import type { MyOtherEvent as IMyComponentMyOtherEvent } from '@ionic/core';
 import type { MyDoclessEvent as IMyComponentMyDoclessEvent } from '@ionic/core';
 import type { MyKebabEvent as IMyComponentMyKebabEvent } from '@ionic/core';
+import type { MySlashEvent as IMyComponentMySlashEvent } from '@ionic/core';
 
 export declare interface MyComponent extends Components.MyComponent {
   /**
@@ -312,6 +366,8 @@ export declare interface MyComponent extends Components.MyComponent {
   myDoclessEvent: EventEmitter<CustomEvent<IMyComponentMyDoclessEvent>>;
 
   'my-kebab-event': EventEmitter<CustomEvent<IMyComponentMyKebabEvent>>;
+
+  'my/slash/event': EventEmitter<CustomEvent<IMyComponentMySlashEvent>>;
 }`
       );
     });
@@ -367,6 +423,7 @@ export declare interface MyComponent extends Components.MyComponent {
               resolved: '{ side: Side; }',
               references: {
                 Side: {
+                  id: '',
                   location: 'import',
                   path: '../../interfaces',
                 },
@@ -409,6 +466,7 @@ export declare interface MyComponent extends Components.MyComponent {
 import type { MyOtherEvent as IMyComponentMyOtherEvent } from '@ionic/core/custom-elements';
 import type { MyDoclessEvent as IMyComponentMyDoclessEvent } from '@ionic/core/custom-elements';
 import type { MyKebabEvent as IMyComponentMyKebabEvent } from '@ionic/core/custom-elements';
+import type { MySlashEvent as IMyComponentMySlashEvent } from '@ionic/core/custom-elements';
 
 export declare interface MyComponent extends Components.MyComponent {
   /**
@@ -423,6 +481,8 @@ export declare interface MyComponent extends Components.MyComponent {
   myDoclessEvent: EventEmitter<CustomEvent<IMyComponentMyDoclessEvent>>;
 
   'my-kebab-event': EventEmitter<CustomEvent<IMyComponentMyKebabEvent>>;
+
+  'my/slash/event': EventEmitter<CustomEvent<IMyComponentMySlashEvent>>;
 }`
         );
       });

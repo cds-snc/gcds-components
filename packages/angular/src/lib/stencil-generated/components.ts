@@ -16,7 +16,7 @@ import { Components } from '@cdssnc/gcds-components';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alertRole', 'container', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed'],outputs: ['gcdsDismiss'],
+  inputs: ['alertRole', 'container', 'heading', 'hideCloseBtn', 'hideRoleIcon', 'isFixed'], outputs: ['gcdsDismiss']
 })
 export class GcdsAlert {
   protected el: HTMLElement;
@@ -89,7 +89,7 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type', 'value'],outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur'],
+  inputs: ['buttonId', 'buttonRole', 'disabled', 'download', 'href', 'name', 'rel', 'size', 'target', 'type', 'value'], outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur']
 })
 export class GcdsButton {
   protected el: HTMLElement;
@@ -126,7 +126,7 @@ export declare interface GcdsButton extends Components.GcdsButton {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['badge', 'cardTitle', 'cardTitleTag', 'description', 'href', 'imgAlt', 'imgSrc'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
+  inputs: ['badge', 'cardTitle', 'cardTitleTag', 'description', 'href', 'imgAlt', 'imgSrc'], outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 export class GcdsCard {
   protected el: HTMLElement;
@@ -164,7 +164,7 @@ export declare interface GcdsCard extends Components.GcdsCard {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checkboxId', 'checked', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'],outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+  inputs: ['checkboxId', 'checked', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'validateOn', 'validator', 'value'], outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 export class GcdsCheckbox {
   protected el: HTMLElement;
@@ -236,7 +236,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'legend', 'name', 'required', 'validateOn', 'validator', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'legend', 'name', 'required', 'validateOn', 'validator', 'value'], outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 export class GcdsDateInput {
   protected el: HTMLElement;
@@ -308,7 +308,7 @@ export declare interface GcdsDateModified extends Components.GcdsDateModified {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['detailsTitle', 'open'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
+  inputs: ['detailsTitle', 'open'], outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 export class GcdsDetails {
   protected el: HTMLElement;
@@ -390,7 +390,7 @@ export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'],outputs: ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid'],
+  inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'], outputs: ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid']
 })
 export class GcdsFieldset {
   protected el: HTMLElement;
@@ -432,7 +432,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accept', 'disabled', 'errorMessage', 'files', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid'],
+  inputs: ['accept', 'disabled', 'errorMessage', 'files', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'], outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']
 })
 export class GcdsFileUploader {
   protected el: HTMLElement;
@@ -640,7 +640,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'], outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 export class GcdsInput {
   protected el: HTMLElement;
@@ -733,7 +733,7 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type', 'variant'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
+  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type', 'variant'], outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 export class GcdsLink {
   protected el: HTMLElement;
@@ -771,7 +771,7 @@ export declare interface GcdsLink extends Components.GcdsLink {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'],outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur'],
+  inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'], outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur']
 })
 export class GcdsNavGroup {
   protected el: HTMLElement;
@@ -809,7 +809,7 @@ export declare interface GcdsNavGroup extends Components.GcdsNavGroup {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['current', 'href'],outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur'],
+  inputs: ['current', 'href'], outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur']
 })
 export class GcdsNavLink {
   protected el: HTMLElement;
@@ -846,7 +846,7 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'previousHref', 'previousLabel', 'totalPages', 'url'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
+  inputs: ['currentPage', 'display', 'label', 'nextHref', 'nextLabel', 'previousHref', 'previousLabel', 'totalPages', 'url'], outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 export class GcdsPagination {
   protected el: HTMLElement;
@@ -905,7 +905,7 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['name', 'options'],outputs: ['gcdsChange', 'gcdsFocus', 'gcdsBlur'],
+  inputs: ['name', 'options'], outputs: ['gcdsChange', 'gcdsFocus', 'gcdsBlur']
 })
 export class GcdsRadioGroup {
   protected el: HTMLElement;
@@ -942,7 +942,7 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested', 'value'],outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit'],
+  inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested', 'value'], outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']
 })
 export class GcdsSearch {
   protected el: HTMLElement;
@@ -988,7 +988,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid'],
+  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'], outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']
 })
 export class GcdsSelect {
   protected el: HTMLElement;
@@ -1149,7 +1149,7 @@ export declare interface GcdsText extends Components.GcdsText {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid'],
+  inputs: ['characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'], outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']
 })
 export class GcdsTextarea {
   protected el: HTMLElement;
