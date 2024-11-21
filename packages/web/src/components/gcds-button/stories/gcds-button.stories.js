@@ -77,6 +77,15 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    external: {
+      control: 'select',
+      if: { arg: 'type', eq: 'link' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
     href: {
       control: 'text',
       if: { arg: 'type', eq: 'link' },
@@ -145,7 +154,7 @@ const Template = args =>
     args.name ? `name="${args.name}"` : null
   } ${
     args.value ? `value="${args.value}"` : null
-  } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${
+  } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${args.type == 'link' && args.external ? `external` : null} ${
     args.type == 'link' && args.rel ? `rel="${args.rel}"` : null
   } ${args.type == 'link' && args.target ? `target="${args.target}"` : null} ${
     args.type == 'link' && args.download ? `download="${args.download}"` : null
@@ -162,7 +171,7 @@ const Template = args =>
     args.name ? `name="${args.name}"` : null
   } ${
     args.value ? `value="${args.value}"` : null
-  } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${
+  } ${args.type == 'link' && args.href ? `href="${args.href}"` : null} ${args.type == 'link' && args.external ? `external` : null} ${
     args.type == 'link' && args.rel ? `rel="${args.rel}"` : null
   } ${args.type == 'link' && args.target ? `target="${args.target}"` : null} ${
     args.type == 'link' && args.download ? `download="${args.download}"` : null
@@ -267,6 +276,7 @@ const TemplatePlayground = args => `
   ${args.name ? `name="${args.name}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.type == 'link' && args.href ? `href="${args.href}"` : null}
+  ${args.type == 'link' && args.external ? `external` : null}
   ${args.type == 'link' && args.rel ? `rel="${args.rel}"` : null}
   ${args.type == 'link' && args.target ? `target="${args.target}"` : null}
   ${args.type == 'link' && args.download ? `download="${args.download}"` : null}

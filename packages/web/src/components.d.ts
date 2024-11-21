@@ -68,6 +68,10 @@ export namespace Components {
          */
         "download": string | undefined;
         /**
+          * Set to true if the button links to an external page. Requires the "type" to be set to "link" to work.
+         */
+        "external"?: boolean;
+        /**
           * The href attribute specifies the URL of the page the link goes to
          */
         "href": string | undefined;
@@ -1863,6 +1867,10 @@ declare namespace LocalJSX {
           * The download attribute specifies that the target (the file specified in the href attribute) will be downloaded when a user clicks on the hyperlink
          */
         "download"?: string | undefined;
+        /**
+          * Set to true if the button links to an external page. Requires the "type" to be set to "link" to work.
+         */
+        "external"?: boolean;
         /**
           * The href attribute specifies the URL of the page the link goes to
          */

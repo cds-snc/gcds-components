@@ -178,7 +178,7 @@ External.args = {
   href: 'http://design-system.alpha.canada.ca',
   variant: 'default',
   rel: '',
-  target: '_blank',
+  target: '_self',
   size: 'inherit',
   external: true,
   download: '',
