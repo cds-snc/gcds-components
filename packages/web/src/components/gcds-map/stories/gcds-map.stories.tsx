@@ -52,8 +52,8 @@ export default {
         },
         type: { required: false }
       },
-      title: {
-        name: 'title',
+      caption: {
+        name: 'caption',
         control: 'text',
         table: {
           type: { summary: 'The screen-reader accessible caption of the map (not visible)' },

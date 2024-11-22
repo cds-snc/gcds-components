@@ -801,13 +801,13 @@ export namespace Components {
         "variant"?: 'default' | 'light';
     }
     interface GcdsMap {
+        "caption": string;
         "controls": boolean;
         "controlslist": string;
         "height": string;
         "lat": number;
         "lon": number;
         "projection": string;
-        "title": string;
         "width": string;
         "zoom": number;
     }
@@ -2769,13 +2769,13 @@ declare namespace LocalJSX {
         "variant"?: 'default' | 'light';
     }
     interface GcdsMap {
+        "caption"?: string;
         "controls"?: boolean;
         "controlslist"?: string;
         "height"?: string;
         "lat"?: number;
         "lon"?: number;
         "projection"?: string;
-        "title"?: string;
         "width"?: string;
         "zoom"?: number;
     }

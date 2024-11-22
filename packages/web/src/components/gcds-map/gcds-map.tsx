@@ -16,7 +16,7 @@ export class GcdsMap {
   @Prop() controlslist: string;
   @Prop() width: string = '100%'; 
   @Prop() height: string = '400px';
-  @Prop() title: string; 
+  @Prop() caption: string; 
 
   mapViewer: HTMLMapmlViewerElement;
 
@@ -48,41 +48,55 @@ export class GcdsMap {
     // Reference the <mapml-viewer> element
     this.mapViewer = this.el.shadowRoot.querySelector('mapml-viewer') as HTMLMapmlViewerElement;
 
+    if (this.caption) {
+      this.handleCaptionChange(this.caption, null);
+    }
     // Handle <layer-> readiness once the map is rendered
     this.handleLayerReady();
   }
 
-  @Watch('lat')
-  @Watch('lon')
   @Watch('zoom')
-  @Watch('projection')
-  @Watch('controls')
-  @Watch('controlslist')
-  handlePropChange(propName: string, newValue: any) {
+  handleZoomChange(newValue: any, oldValue: any) {
     if (this.mapViewer) {
-      switch (propName) {
-        case 'lat':
-        case 'lon':
-        case 'zoom':
-          this.mapViewer.zoomTo(this.lat,this.lon,this.zoom);
-          break;
-        case 'projection':
-          this.mapViewer.setAttribute(propName, newValue.toString());
-          break;
-        case 'controls':
-          if (newValue) {
-            this.mapViewer.setAttribute('controls', '');
-          } else {
-            this.mapViewer.removeAttribute('controls');
-          }
-          break;
-        case 'controlslist':
-          if (newValue) {
-            this.mapViewer.controlsList = newValue;
-          } else {
-            this.mapViewer.removeAttribute('controlslist');
-          }
-          break;
+      if (newValue !== oldValue) {
+        this.mapViewer.zoomTo(this.mapViewer.lat, this.mapViewer.lon, newValue);
+      }
+    }
+  }
+  @Watch('controls')
+  handleControlsChange(newValue: any, oldValue: any) {
+    if (this.mapViewer) {
+      if (newValue) {
+        this.mapViewer.setAttribute('controls', '');
+      } else {
+        this.mapViewer.removeAttribute('controls');
+      }
+    }
+  }
+  @Watch('controlslist')
+  handleControlsListChange(newValue: any, oldValue: any) {
+    if (this.mapViewer && newValue !== oldValue) {
+      this.mapViewer.setAttribute('controlslist', newValue);
+    }
+  }
+  @Watch('projection')
+  handleProjectionChange(newValue: any, oldValue: any) {
+    if (this.mapViewer && newValue !== oldValue) {
+      this.mapViewer.setAttribute('projection', newValue);
+    }
+  }
+  @Watch('caption')
+  handleCaptionChange(newValue: string, oldValue: string) {
+    let captionEl = this.mapViewer.querySelector('map-caption');
+    if (this.mapViewer) {
+      if (newValue) {
+        if (!captionEl) {
+          captionEl = document.createElement('map-caption');
+          this.mapViewer.prepend(captionEl);
+        }
+        captionEl.textContent = newValue;
+      } else if (captionEl) {
+        captionEl.remove();
       }
     }
   }
@@ -126,7 +140,6 @@ export class GcdsMap {
           controls={this.controls ? true : undefined}
           controlslist={this.controlslist ? this.controlslist : undefined}
         >
-          {this.title && <map-caption>{this.title}</map-caption>}
           {layers.map((layer) => (
             <layer-
               label={layer.getAttribute('label')}
