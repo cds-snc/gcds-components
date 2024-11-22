@@ -16,6 +16,7 @@ export class GcdsMap {
   @Prop() controlslist: string;
   @Prop() width: string = '100%'; 
   @Prop() height: string = '400px';
+  @Prop() title: string; 
 
   mapViewer: HTMLMapmlViewerElement;
 
@@ -125,6 +126,7 @@ export class GcdsMap {
           controls={this.controls ? true : undefined}
           controlslist={this.controlslist ? this.controlslist : undefined}
         >
+          {this.title && <map-caption>{this.title}</map-caption>}
           {layers.map((layer) => (
             <layer-
               label={layer.getAttribute('label')}
@@ -140,7 +142,6 @@ export class GcdsMap {
   }
 }
 
-// Declare the HTMLMapmlViewerElement type
 declare class HTMLMapmlViewerElement extends HTMLElement {
   lat: number;
   lon: number;

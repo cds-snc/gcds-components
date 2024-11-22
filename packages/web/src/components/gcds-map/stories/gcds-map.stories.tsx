@@ -51,23 +51,31 @@ export default {
           defaultValue: { summary: 'Empty string' },
         },
         type: { required: false }
+      },
+      title: {
+        name: 'title',
+        control: 'text',
+        table: {
+          type: { summary: 'The screen-reader accessible caption of the map (not visible)' },
+          defaultValue: { summary: 'Empty string' }
+        },
+        type: { required: false }
       }
     }
 };
 
 const TemplateBasic = (args) => `
   <gcds-map lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" ${args.controls ? 'controls' : ''}  ${args.controlslist ? `controlslist="${args.controlslist}"` : ''}
-    projection="${args.projection}">
+    projection="${args.projection}" title="this is a test">
     <gcds-map-layer
-      label="Canada Base Map - Transportation (CBMT)"
+      label="Canada Base Map - Transportation (CBMT) - EPSG:3857"
       src="https://geogratis.gc.ca/mapml/en/osmtile/cbmt/"
       checked="true"
     ></gcds-map-layer>
     <gcds-map-layer
-      label="A Second Layer - will prevent map from reverting to default OSMTILE when user changes projection in story controls"
-      src="https://geogratis.gc.ca/mapml/en/osmtile/kNN_LandCover_VegTreed_250m/"
-      checked="false"
-      hidden="true" <!-- hidden layers are present on map but hidden in layer control -->
+      label="Canada Base Map - Transportation (CBMT) - EPSG:3978"
+      src="https://geogratis.gc.ca/mapml/en/cbmtile/cbmt/"
+      checked="true"
     ></gcds-map-layer>
   </gcds-map>
 `;

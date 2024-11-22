@@ -807,6 +807,7 @@ export namespace Components {
         "lat": number;
         "lon": number;
         "projection": string;
+        "title": string;
         "width": string;
         "zoom": number;
     }
@@ -2774,6 +2775,7 @@ declare namespace LocalJSX {
         "lat"?: number;
         "lon"?: number;
         "projection"?: string;
+        "title"?: string;
         "width"?: string;
         "zoom"?: number;
     }
