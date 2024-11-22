@@ -48,6 +48,8 @@ export class GcdsMap {
     // Reference the <mapml-viewer> element
     this.mapViewer = this.el.shadowRoot.querySelector('mapml-viewer') as HTMLMapmlViewerElement;
 
+    // this needs to be handled outside of render() function so we don't end
+    // up with > 1 <map-caption> element inside <mapml-viewer>
     if (this.caption) {
       this.handleCaptionChange(this.caption, null);
     }
