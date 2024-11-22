@@ -66,7 +66,7 @@ export default {
 
 const TemplateBasic = (args) => `
   <gcds-map lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" ${args.controls ? 'controls' : ''}  ${args.controlslist ? `controlslist="${args.controlslist}"` : ''}
-    projection="${args.projection}" title="this is a test">
+    projection="${args.projection}" caption="This is a test">
     <gcds-map-layer
       label="Canada Base Map - Transportation (CBMT) - EPSG:3857"
       src="https://geogratis.gc.ca/mapml/en/osmtile/cbmt/"

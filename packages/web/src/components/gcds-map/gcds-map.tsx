@@ -51,7 +51,7 @@ export class GcdsMap {
     // this needs to be handled outside of render() function so we don't end
     // up with > 1 <map-caption> element inside <mapml-viewer>
     if (this.caption) {
-      this.handleCaptionChange(this.caption, null);
+      this.handleCaptionChange(this.caption);
     }
     // Handle <layer-> readiness once the map is rendered
     this.handleLayerReady();
@@ -66,7 +66,7 @@ export class GcdsMap {
     }
   }
   @Watch('controls')
-  handleControlsChange(newValue: any, oldValue: any) {
+  handleControlsChange(newValue: any) {
     if (this.mapViewer) {
       if (newValue) {
         this.mapViewer.setAttribute('controls', '');
@@ -88,7 +88,7 @@ export class GcdsMap {
     }
   }
   @Watch('caption')
-  handleCaptionChange(newValue: string, oldValue: string) {
+  handleCaptionChange(newValue: string) {
     let captionEl = this.mapViewer.querySelector('map-caption');
     if (this.mapViewer) {
       if (newValue) {
