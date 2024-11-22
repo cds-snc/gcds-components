@@ -21,7 +21,7 @@
     "dev:build": "tsc --watch --preserveWatchOutput",
     "dev:rollup": "rollup -c --watch --preserveWatchOutput",
     "watch": "tsc --watch",
-    "rollup": "rollup -c",
+    "rollup": "rollup -c --bundleConfigAsCjs",
     "version": "pnpm run build",
     "prettier": "pnpm run prettier.base --write",
     "prettier.base": "prettier \"./({angular-component-lib,src,test,__tests__}/**/*.{ts,tsx,js,jsx})|*.{ts,tsx,js,jsx}\"",
@@ -41,8 +41,8 @@
     "url": "https://github.com/ionic-team/stencil-ds-output-targets/issues"
   },
   "devDependencies": {
-    "@angular/core": "^16.2.12",
-    "@angular/forms": "^16.2.12",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
     "@types/node": "^18.0.0",
     "npm-run-all2": "^6.2.4",
     "rimraf": "^5.0.0",

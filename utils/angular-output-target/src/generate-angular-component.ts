@@ -80,7 +80,7 @@ export const createAngularComponentDefinition = (
     proxyCmpOptions.push(`\n  outputs: [${formattedOutputs}]`);
   }
 
-  let standaloneOption = '';
+  let standaloneOption = `\n  standalone: false`;
 
   if (standalone && includeImportCustomElements) {
     standaloneOption = `\n  standalone: true`;
@@ -111,7 +111,7 @@ export const createAngularComponentDefinition = (
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [${formattedInputs}],${hasOutputs ? ` outputs: [${formattedOutputs}]` : ''}${standaloneOption}
+  inputs: [${formattedInputs}],${hasOutputs ? `\n  outputs: [${formattedOutputs}],` : ''}${standaloneOption},
 })
 export class ${tagNameAsPascal} {
   ${propertiesDeclarationText}
