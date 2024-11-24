@@ -12,7 +12,7 @@ export class GcdsMap {
   @Prop() lon: number;
   @Prop() zoom: number;
   @Prop() projection: string = 'OSMTILE';
-  @Prop() controls: boolean = true;
+  @Prop({ reflect: true }) controls: boolean = false;
   @Prop() controlslist: string;
   @Prop() width: string = '100%'; 
   @Prop() height: string = '400px';

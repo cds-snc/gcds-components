@@ -6,12 +6,12 @@ export default {
         control: 'boolean',
         table: {
           type: { summary: 'Add map controls' },
-          defaultValue: { summary: 'true' }
+          defaultValue: { summary: 'false if the attribute is absent' }
         }
       },
       lat: {
         name: 'lat',
-        control: 'text',
+        control: { type: 'number' },
         table: {
           type: { summary: 'Initial latitude of map centre, range +/- 90' },
           defaultValue: { summary: '0' }
@@ -19,7 +19,7 @@ export default {
       },
       lon: {
         name: 'lon',
-        control: 'text',
+        control: { type: 'number' },
         table: {
           type: { summary: 'Initial longitude of map centre, range +/- 180' },
           defaultValue: { summary: '0' }
@@ -27,7 +27,7 @@ export default {
       },
       zoom: {
         name: 'zoom',
-        control: 'text',
+        control: { type: 'number' },
         table: {
           type: { summary: 'Initial zoom of map, range 0-22' },
           defaultValue: { summary: '0' }
@@ -45,7 +45,7 @@ export default {
       },
       controlslist: {
         name: 'controlslist',
-        control: 'text',
+        control:  { type: 'text' },
         table: {
           type: { summary: 'Space separated list of tokens, including: geolocation, nofullscreen, nozoom, nolayer, noreload, noscale' },
           defaultValue: { summary: 'Empty string' },
@@ -64,21 +64,34 @@ export default {
     }
 };
 
-const TemplateBasic = (args) => `
-  <gcds-map lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" ${args.controls ? 'controls' : ''}  ${args.controlslist ? `controlslist="${args.controlslist}"` : ''}
-    projection="${args.projection}" caption="This is a test">
-    <gcds-map-layer
-      label="Canada Base Map - Transportation (CBMT) - EPSG:3857"
-      src="https://geogratis.gc.ca/mapml/en/osmtile/cbmt/"
-      checked="true"
-    ></gcds-map-layer>
-    <gcds-map-layer
-      label="Canada Base Map - Transportation (CBMT) - EPSG:3978"
-      src="https://geogratis.gc.ca/mapml/en/cbmtile/cbmt/"
-      checked="true"
-    ></gcds-map-layer>
-  </gcds-map>
-`;
+const TemplateBasic = (args) => {
+  const container = document.createElement('div');
+  container.innerHTML = `
+    <gcds-map lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" ${args.controls ? 'controls' : ''} ${args.controlslist ? `controlslist="${args.controlslist}"` : ''}
+      projection="${args.projection}" caption="This is a test">
+      <gcds-map-layer
+        label="Canada Base Map - Transportation (CBMT) - EPSG:3857"
+        src="https://geogratis.gc.ca/mapml/en/osmtile/cbmt/"
+        checked="true"
+      ></gcds-map-layer>
+      <gcds-map-layer
+        label="Canada Base Map - Transportation (CBMT) - EPSG:3978"
+        src="https://geogratis.gc.ca/mapml/en/cbmtile/cbmt/"
+        checked="true"
+      ></gcds-map-layer>
+    </gcds-map>
+  `;
+
+  // Attach the onBlur handler to the gcds-map element
+  const mapElement = container.querySelector('gcds-map');
+  mapElement.addEventListener('blur', (event) => {
+    console.log('onBlur triggered');
+    args.controlslist = event.target.getAttribute('controlslist') || '';
+  });
+
+  return container.innerHTML;
+};
+
 
 const TemplateMultiLayer = (args) => `
   <gcds-map lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" ${args.controls ? 'controls' : ''}  ${args.controlslist ? `controlslist="${args.controlslist}"` : ''}
