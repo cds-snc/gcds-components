@@ -36,7 +36,7 @@ export default {
       projection: {
         name: 'projection',
         control: 'select',
-        options: ['OSMTILE', 'CBMTILE', 'WGS84'],
+        options: ['OSMTILE', 'CBMTILE'],
         table: {
           type: { summary: 'Tiled CRS name' },
           defaultValue: { summary: 'OSMTILE (Web Mercator)' },
@@ -45,12 +45,12 @@ export default {
       },
       controlslist: {
         name: 'controlslist',
-        control:  { type: 'text' },
+        control: 'multi-select',
+        options: ['geolocation', 'nofullscreen', 'nozoom', 'nolayer', 'noreload', 'noscale'],
         table: {
-          type: { summary: 'Space separated list of tokens, including: geolocation, nofullscreen, nozoom, nolayer, noreload, noscale' },
+          type: { summary: 'Space-separated list of tokens for controls to display' },
           defaultValue: { summary: 'Empty string' },
         },
-        type: { required: false }
       },
       caption: {
         name: 'caption',
@@ -65,9 +65,9 @@ export default {
 };
 
 const TemplateBasic = (args) => {
-  const container = document.createElement('div');
-  container.innerHTML = `
-    <gcds-map lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" ${args.controls ? 'controls' : ''} ${args.controlslist ? `controlslist="${args.controlslist}"` : ''}
+  return `
+  <gcds-map key="mapml-viewer" lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" ${args.controls ? 'controls' : ''}  
+      controlslist="${args.controlslist.length > 0 ? args.controlslist.join(' ') : ''}"
       projection="${args.projection}" caption="This is a test">
       <gcds-map-layer
         label="Canada Base Map - Transportation (CBMT) - EPSG:3857"
@@ -81,17 +81,7 @@ const TemplateBasic = (args) => {
       ></gcds-map-layer>
     </gcds-map>
   `;
-
-  // Attach the onBlur handler to the gcds-map element
-  const mapElement = container.querySelector('gcds-map');
-  mapElement.addEventListener('blur', (event) => {
-    console.log('onBlur triggered');
-    args.controlslist = event.target.getAttribute('controlslist') || '';
-  });
-
-  return container.innerHTML;
-};
-
+}
 
 const TemplateMultiLayer = (args) => `
   <gcds-map lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" ${args.controls ? 'controls' : ''}  ${args.controlslist ? `controlslist="${args.controlslist}"` : ''}
@@ -133,7 +123,8 @@ Default.args = {
   lon: -106,
   zoom: 2,
   projection: 'OSMTILE',
-  controls: true
+  controls: true,
+  controlslist: ['geolocation']
 };
 
 export const MultiLayer = TemplateMultiLayer.bind({});
