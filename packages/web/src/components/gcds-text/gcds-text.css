@@ -68,20 +68,40 @@
       margin-block-start: var(--gcds-text-spacing-0);
     }
 
+    &.mt-25 {
+      margin-block-start: var(--gcds-text-spacing-25);
+    }
+
     &.mt-50 {
       margin-block-start: var(--gcds-text-spacing-50);
+    }
+
+    &.mt-75 {
+      margin-block-start: var(--gcds-text-spacing-75);
     }
 
     &.mt-100 {
       margin-block-start: var(--gcds-text-spacing-100);
     }
 
+    &.mt-125 {
+      margin-block-start: var(--gcds-text-spacing-125);
+    }
+
     &.mt-150 {
       margin-block-start: var(--gcds-text-spacing-150);
     }
 
+    &.mt-175 {
+      margin-block-start: var(--gcds-text-spacing-175);
+    }
+
     &.mt-200 {
       margin-block-start: var(--gcds-text-spacing-200);
+    }
+
+    &.mt-225 {
+      margin-block-start: var(--gcds-text-spacing-225);
     }
 
     &.mt-250 {
@@ -90,6 +110,10 @@
 
     &.mt-300 {
       margin-block-start: var(--gcds-text-spacing-300);
+    }
+
+    &.mt-350 {
+      margin-block-start: var(--gcds-text-spacing-350);
     }
 
     &.mt-400 {
@@ -112,20 +136,56 @@
       margin-block-start: var(--gcds-text-spacing-600);
     }
 
+    &.mt-650 {
+      margin-block-start: var(--gcds-text-spacing-650);
+    }
+
     &.mt-700 {
       margin-block-start: var(--gcds-text-spacing-700);
+    }
+
+    &.mt-750 {
+      margin-block-start: var(--gcds-text-spacing-750);
     }
 
     &.mt-800 {
       margin-block-start: var(--gcds-text-spacing-800);
     }
 
+    &.mt-850 {
+      margin-block-start: var(--gcds-text-spacing-850);
+    }
+
     &.mt-900 {
       margin-block-start: var(--gcds-text-spacing-900);
     }
 
+    &.mt-950 {
+      margin-block-start: var(--gcds-text-spacing-950);
+    }
+
     &.mt-1000 {
       margin-block-start: var(--gcds-text-spacing-1000);
+    }
+
+    &.mt-1050 {
+      margin-block-start: var(--gcds-text-spacing-1050);
+    }
+
+    &.mt-1100 {
+      margin-block-start: var(--gcds-text-spacing-1100);
+    }
+
+    &.mt-1150 {
+      margin-block-start: var(--gcds-text-spacing-1150);
+    }
+
+    &.mt-1200 {
+      margin-block-start: var(--gcds-text-spacing-1200);
+    }
+
+    &.mt-1250 {
+      margin-block-start: var(--gcds-text-spacing-1250);
     }
 
     /* Margin bottom */
@@ -133,20 +193,40 @@
       margin-block-end: var(--gcds-text-spacing-0);
     }
 
+    &.mb-25 {
+      margin-block-end: var(--gcds-text-spacing-25);
+    }
+
     &.mb-50 {
       margin-block-end: var(--gcds-text-spacing-50);
+    }
+
+    &.mb-75 {
+      margin-block-end: var(--gcds-text-spacing-75);
     }
 
     &.mb-100 {
       margin-block-end: var(--gcds-text-spacing-100);
     }
 
+    &.mb-125 {
+      margin-block-end: var(--gcds-text-spacing-125);
+    }
+
     &.mb-150 {
       margin-block-end: var(--gcds-text-spacing-150);
     }
 
+    &.mb-175 {
+      margin-block-end: var(--gcds-text-spacing-175);
+    }
+
     &.mb-200 {
       margin-block-end: var(--gcds-text-spacing-200);
+    }
+
+    &.mb-225 {
+      margin-block-end: var(--gcds-text-spacing-225);
     }
 
     &.mb-250 {
@@ -155,6 +235,10 @@
 
     &.mb-300 {
       margin-block-end: var(--gcds-text-spacing-300);
+    }
+
+    &.mb-350 {
+      margin-block-end: var(--gcds-text-spacing-350);
     }
 
     &.mb-400 {
@@ -177,20 +261,56 @@
       margin-block-end: var(--gcds-text-spacing-600);
     }
 
+    &.mb-650 {
+      margin-block-end: var(--gcds-text-spacing-650);
+    }
+
     &.mb-700 {
       margin-block-end: var(--gcds-text-spacing-700);
+    }
+
+    &.mb-750 {
+      margin-block-end: var(--gcds-text-spacing-750);
     }
 
     &.mb-800 {
       margin-block-end: var(--gcds-text-spacing-800);
     }
 
+    &.mb-850 {
+      margin-block-end: var(--gcds-text-spacing-850);
+    }
+
     &.mb-900 {
       margin-block-end: var(--gcds-text-spacing-900);
     }
 
+    &.mb-950 {
+      margin-block-end: var(--gcds-text-spacing-950);
+    }
+
     &.mb-1000 {
       margin-block-end: var(--gcds-text-spacing-1000);
+    }
+
+    &.mb-1050 {
+      margin-block-end: var(--gcds-text-spacing-1050);
+    }
+
+    &.mb-1100 {
+      margin-block-end: var(--gcds-text-spacing-1100);
+    }
+
+    &.mb-1150 {
+      margin-block-end: var(--gcds-text-spacing-1150);
+    }
+
+    &.mb-1200 {
+      margin-block-end: var(--gcds-text-spacing-1200);
+    }
+
+    &.mb-1250 {
+      margin-block-end: var(--gcds-text-spacing-1250);
     }
   }
 }

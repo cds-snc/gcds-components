@@ -6,9 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues } from "./components/gcds-grid/gcds-grid";
 import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export { Validator, ValidatorEntry } from "./validators";
+export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export namespace Components {
@@ -180,55 +182,25 @@ export namespace Components {
     }
     interface GcdsContainer {
         /**
-          * Defines if container has a border or not.
+          * Defines if the container has a border.
          */
         "border"?: boolean;
         /**
-          * Defines if container is centered or not.
+          * Defines if the container is centered.
          */
         "centered"?: boolean;
         /**
-          * Defines if the container is the main page container or not. If set to true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
+          * Defines if the container is the main page container. When true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
          */
         "mainContainer"?: boolean;
         /**
-          * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
+          * Container margin. Left and right margins won't be applied if the container is centered.
          */
-        "margin"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "margin"?: SpacingValues;
         /**
           * Defines the container's padding.
          */
-        "padding"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "padding"?: SpacingValues;
         /**
           * Defines container size.
          */
@@ -558,43 +530,13 @@ export namespace Components {
          */
         "characterLimit"?: boolean;
         /**
-          * Adds margin below the heading. The default margin-botttom is 400.
+          * Adds margin below the heading. The default margin-botttom is 300.
          */
-        "marginBottom"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginBottom"?: SpacingValues;
         /**
-          * Adds margin above the heading. The default margin-top for h1 is set to 0, while for h2 to h6 headings, it's 500.
+          * Adds margin above the heading. The default margin-top for h1 is set to 0, while for h2 to h6 headings, it's 600.
          */
-        "marginTop"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginTop"?: SpacingValues;
         /**
           * Sets the appropriate HTML tag for the selected level.
          */
@@ -622,41 +564,11 @@ export namespace Components {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginLeft"?: SpacingValues;
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginRight"?: SpacingValues;
         /**
           * Name of the icon.
          */
@@ -1051,41 +963,11 @@ export namespace Components {
         /**
           * Adds margin below the text.
          */
-        "marginBottom"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginBottom"?: SpacingValues;
         /**
           * Adds margin above the text.
          */
-        "marginTop"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginTop"?: SpacingValues;
         /**
           * Sets the appropriate HTML tags for the selected size.
          */
@@ -2020,55 +1902,25 @@ declare namespace LocalJSX {
     }
     interface GcdsContainer {
         /**
-          * Defines if container has a border or not.
+          * Defines if the container has a border.
          */
         "border"?: boolean;
         /**
-          * Defines if container is centered or not.
+          * Defines if the container is centered.
          */
         "centered"?: boolean;
         /**
-          * Defines if the container is the main page container or not. If set to true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
+          * Defines if the container is the main page container. When true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
          */
         "mainContainer"?: boolean;
         /**
-          * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
+          * Container margin. Left and right margins won't be applied if the container is centered.
          */
-        "margin"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "margin"?: SpacingValues;
         /**
           * Defines the container's padding.
          */
-        "padding"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "padding"?: SpacingValues;
         /**
           * Defines container size.
          */
@@ -2462,43 +2314,13 @@ declare namespace LocalJSX {
          */
         "characterLimit"?: boolean;
         /**
-          * Adds margin below the heading. The default margin-botttom is 400.
+          * Adds margin below the heading. The default margin-botttom is 300.
          */
-        "marginBottom"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginBottom"?: SpacingValues;
         /**
-          * Adds margin above the heading. The default margin-top for h1 is set to 0, while for h2 to h6 headings, it's 500.
+          * Adds margin above the heading. The default margin-top for h1 is set to 0, while for h2 to h6 headings, it's 600.
          */
-        "marginTop"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginTop"?: SpacingValues;
         /**
           * Sets the appropriate HTML tag for the selected level.
          */
@@ -2526,41 +2348,11 @@ declare namespace LocalJSX {
         /**
           * Add margin to the left of the icon
          */
-        "marginLeft"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginLeft"?: SpacingValues;
         /**
           * Add margin to the right of the icon
          */
-        "marginRight"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginRight"?: SpacingValues;
         /**
           * Name of the icon.
          */
@@ -3060,41 +2852,11 @@ declare namespace LocalJSX {
         /**
           * Adds margin below the text.
          */
-        "marginBottom"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginBottom"?: SpacingValues;
         /**
           * Adds margin above the text.
          */
-        "marginTop"?: | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+        "marginTop"?: SpacingValues;
         /**
           * Sets the appropriate HTML tags for the selected size.
          */

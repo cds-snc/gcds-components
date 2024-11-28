@@ -1,4 +1,5 @@
 import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
+import { SpacingValues, SpacingArray } from '../../utils/types/spacing';
 
 @Component({
   tag: 'gcds-text',
@@ -62,46 +63,11 @@ export class GcdsText {
   /**
    * Adds margin above the text.
    */
-  @Prop({ mutable: true }) marginTop?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000' = '0';
+  @Prop({ mutable: true }) marginTop?: SpacingValues = '0';
 
   @Watch('marginTop')
   validateMarginTop(newValue: string) {
-    const values = [
-      '0',
-      '50',
-      '100',
-      '150',
-      '200',
-      '250',
-      '300',
-      '400',
-      '450',
-      '500',
-      '550',
-      '600',
-      '700',
-      '800',
-      '900',
-      '1000',
-    ];
-
-    if (!values.includes(newValue)) {
+    if (!SpacingArray.includes(newValue as SpacingValues)) {
       this.marginTop = '0';
     }
   }
@@ -109,47 +75,12 @@ export class GcdsText {
   /**
    * Adds margin below the text.
    */
-  @Prop({ mutable: true }) marginBottom?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000' = '400';
+  @Prop({ mutable: true }) marginBottom?: SpacingValues = '300';
 
   @Watch('marginBottom')
   validateMarginBottom(newValue: string) {
-    const values = [
-      '0',
-      '50',
-      '100',
-      '150',
-      '200',
-      '250',
-      '300',
-      '400',
-      '450',
-      '500',
-      '550',
-      '600',
-      '700',
-      '800',
-      '900',
-      '1000',
-    ];
-
-    if (!values.includes(newValue)) {
-      this.marginBottom = '400';
+    if (!SpacingArray.includes(newValue as SpacingValues)) {
+      this.marginBottom = '300';
     }
   }
 
