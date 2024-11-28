@@ -37,6 +37,7 @@ export const createForwardRef = <PropType, ElementType>(ReactComponent: any, dis
   };
   forwardRef.displayName = displayName;
 
+  // @ts-expect-error
   return React.forwardRef(forwardRef);
 };
 
