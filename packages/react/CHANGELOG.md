@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.27.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.26.3...gcds-components-react-v0.27.0) (2024-11-19)
+
+
+### Patch
+
+* **gcds-components-react:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.26.3 to ^0.27.0
+
 ## [0.26.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.26.2...gcds-components-react-v0.26.3) (2024-10-09)
 
 

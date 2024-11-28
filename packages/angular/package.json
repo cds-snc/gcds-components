@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components-angular",
-  "version": "0.26.3",
+  "version": "0.27.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Angular wrapper for gcds-components",
   "homepage": "https://design-system.alpha.canada.ca/",
