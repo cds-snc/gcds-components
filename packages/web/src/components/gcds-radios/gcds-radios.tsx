@@ -73,7 +73,7 @@ export class GcdsRadios {
     if (typeof this.options === 'string' && this.options.trim() !== '') {
       try {
         this.options = JSON.parse(this.options as string);
-      } catch (e) {
+      } catch {
         logError('gcds-radios', ['Invalid JSON string for options']);
         this.options = null;
       }
