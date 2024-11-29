@@ -185,8 +185,9 @@ export class GcdsLink {
 
     return (
       <Host>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <a
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
           tabIndex={0}
           {...attrs}
           class={`gcds-link link--${size} ${
