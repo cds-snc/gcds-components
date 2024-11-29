@@ -379,7 +379,7 @@ export class GcdsTopicMenu {
         `https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-${this.lang}.html`,
       );
       this.listItems = await response.text();
-    } catch (error) {
+    } catch {
       this.listItems = backup[this.lang];
     }
   }
