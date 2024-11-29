@@ -135,7 +135,7 @@ export class GcdsNotice {
             <div>
               <gcds-heading
                 tag={noticeTitleTag}
-                marginTop="300"
+                marginTop="200"
                 class="notice__heading"
               >
                 {noticeTitle}
