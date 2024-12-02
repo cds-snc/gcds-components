@@ -31,7 +31,7 @@ You can test the Angular and React packages locally as this repository is setup 
 
 ## Compiling all packages
 
-In the root directory, run `npm run build`. All three packages will be compiled.
+In the root directory, run `npm run build`. All five packages will be compiled.
 <br/>
 <br/>
 
@@ -43,6 +43,7 @@ In the root directory, run `npm run build`. All three packages will be compiled.
 | [@cdssnc/gcds-components-react](packages/react/)           | GC Design System Components – React | [Docs](packages/react/README.md) |
 | [@cdssnc/gcds-components-angular](packages/angular/)           | GC Design System Components – Angular  | [Docs](packages/angular/README.md) |
 | [@cdssnc/gcds-components-vue](packages/vue/)           | GC Design System Components – Vue  | [Docs](packages/vue/README.md) |
+| [@cdssnc/gcds-components-react-ssr](packages/react-ssr/)           | GC Design System Components – React SSR | [Docs](packages/react-ssr/README.md) |
 
 ## How to contribute
 
@@ -89,7 +90,7 @@ Vous pouvez tester localement les paquets Angular et React puisque ce référent
 
 ### Compilation de tous les paquets
 
-Dans le répertoire racine, exécutez `npm run build`. Les trois paquets seront alors compilés.
+Dans le répertoire racine, exécutez `npm run build`. Les cinq paquets seront alors compilés.
 <br/>
 <br/>
 
@@ -101,6 +102,7 @@ Dans le répertoire racine, exécutez `npm run build`. Les trois paquets seront 
 | [@cdssnc/gcds-components-react](packages/react/)           | Composants de Système de design GC — React | [Docs](packages/react/README.md) |
 | [@cdssnc/gcds-components-angular](packages/angular/)           | Composants de Système de design GC — Angular  | [Docs](packages/angular/README.md) |
 | [@cdssnc/gcds-components-vue](packages/vue/)           | Composants de Système de design GC — Vue  | [Docs](packages/vue/README.md) |
+| [@cdssnc/gcds-components-react-ssr](packages/react-ssr/)           | Composants de Système de design GC – React SSR | [Docs](packages/react-ssr/README.md) |
 
 ## Apportez votre contribution
 
