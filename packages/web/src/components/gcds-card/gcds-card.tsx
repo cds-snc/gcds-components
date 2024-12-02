@@ -186,13 +186,6 @@ export class GcdsCard {
       return (
         <Host>
           <div class="gcds-card">
-            {imgSrc && (
-              <img
-                src={imgSrc}
-                alt={imgAlt ? imgAlt : ''}
-                class="gcds-card__image"
-              />
-            )}
             {badge && !errors.includes('badge') && (
               <gcds-text
                 id="gcds-badge"
@@ -206,6 +199,13 @@ export class GcdsCard {
                   {badge}
                 </strong>
               </gcds-text>
+            )}
+            {imgSrc && (
+              <img
+                src={imgSrc}
+                alt={imgAlt ? imgAlt : ''}
+                class="gcds-card__image"
+              />
             )}
             {Element != 'a' ? (
               <Element class="gcds-card__title" {...taggedAttr}>

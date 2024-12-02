@@ -35,6 +35,10 @@
       left: 0;
       padding: var(--gcds-card-badge-padding);
       text-wrap: nowrap;
+
+      &::part(text) {
+        line-height: var(--gcds-card-badge-line-height);
+      }
     }
 
     .gcds-card__image {
