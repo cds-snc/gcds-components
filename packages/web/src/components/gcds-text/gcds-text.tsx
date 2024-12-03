@@ -87,11 +87,11 @@ export class GcdsText {
   /**
    * Sets the appropriate HTML tags for the selected size.
    */
-  @Prop({ mutable: true }) size?: 'body' | 'caption' = 'body';
+  @Prop({ mutable: true }) size?: 'body' | 'small' = 'body';
 
   @Watch('size')
   validateSize(newValue: string) {
-    const values = ['body', 'caption'];
+    const values = ['body', 'small'];
 
     if (!values.includes(newValue)) {
       this.size = 'body';
@@ -120,10 +120,11 @@ export class GcdsText {
             ${characterLimit ? 'limit' : ''}
             ${marginTop ? `mt-${marginTop}` : ''}
             ${marginBottom ? `mb-${marginBottom}` : ''}
+            ${size === 'small' ? `size-small` : ''}
           `}
           part="text"
         >
-          {size === 'caption' ? (
+          {size === 'small' ? (
             <small>
               <slot />
             </small>

@@ -971,7 +971,7 @@ export namespace Components {
         /**
           * Sets the appropriate HTML tags for the selected size.
          */
-        "size"?: 'body' | 'caption';
+        "size"?: 'body' | 'small';
         /**
           * Sets the main style of the text.
          */
@@ -2860,7 +2860,7 @@ declare namespace LocalJSX {
         /**
           * Sets the appropriate HTML tags for the selected size.
          */
-        "size"?: 'body' | 'caption';
+        "size"?: 'body' | 'small';
         /**
           * Sets the main style of the text.
          */

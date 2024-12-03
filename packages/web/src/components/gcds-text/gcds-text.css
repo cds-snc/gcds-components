@@ -332,11 +332,12 @@
 }
 
 @layer variants.size {
+  :host .gcds-text.size-small,
   :host .gcds-text :is(small, ::slotted(small)) {
-    font: var(--gcds-text-size-caption-desktop);
+    font: var(--gcds-text-size-small-desktop);
 
     @media only screen and (width < 48em) {
-      font: var(--gcds-text-size-caption-mobile);
+      font: var(--gcds-text-size-small-mobile);
     }
   }
 }

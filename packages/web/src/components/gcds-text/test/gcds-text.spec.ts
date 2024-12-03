@@ -226,17 +226,17 @@ describe('gcds-text', () => {
     `);
   });
 
-  it('renders caption text size', async () => {
+  it('renders small text size', async () => {
     const { root } = await newSpecPage({
       components: [GcdsText],
       html: `
-        <gcds-text size="caption">This is some text.</gcds-text>
+        <gcds-text size="small">This is some text.</gcds-text>
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-text size="caption">
+      <gcds-text size="small">
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-0 mb-300" part="text">
+          <p class="gcds-text limit role-primary mt-0 mb-300 size-small" part="text">
             <small><slot></slot></small>
           </p>
         </mock:shadow-root>

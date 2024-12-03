@@ -192,7 +192,7 @@ export class GcdsCard {
                 class="gcds-badge"
                 text-role="light"
                 margin-bottom="0"
-                size="caption"
+                size="small"
               >
                 <strong>
                   <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
