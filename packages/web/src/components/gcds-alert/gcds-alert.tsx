@@ -131,7 +131,7 @@ export class GcdsAlert {
                     aria-hidden="true"
                     class="alert__icon"
                     size="h5"
-                    margin-right="250"
+                    margin-right="175"
                     name={
                       alertRole === 'danger'
                         ? 'exclamation-circle'

@@ -174,7 +174,7 @@ export class GcdsPagination {
               }
             >
               {I18N[this.lang].next}
-              <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
+              <gcds-icon margin-left="150" name="arrow-right"></gcds-icon>
             </a>
           ) : (
             <a
@@ -185,7 +185,7 @@ export class GcdsPagination {
                   : 'gcds-pagination-end-button-mobile'
               }
             >
-              <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
+              <gcds-icon margin-right="150" name="arrow-left"></gcds-icon>
               {mobile
                 ? I18N[this.lang].previousMobile
                 : I18N[this.lang].previous}
@@ -399,7 +399,7 @@ export class GcdsPagination {
                     onFocus={() => this.gcdsFocus.emit()}
                     onClick={e => emitEvent(e, this.gcdsClick, previousHref)}
                   >
-                    <gcds-icon margin-right="200" name="arrow-left"></gcds-icon>
+                    <gcds-icon margin-right="150" name="arrow-left"></gcds-icon>
                     <div class="gcds-pagination-simple-text">
                       {I18N[lang].previous}
                     </div>
@@ -422,7 +422,7 @@ export class GcdsPagination {
                       {I18N[lang].next}
                     </div>
                     <span>{nextLabel}</span>
-                    <gcds-icon margin-left="200" name="arrow-right"></gcds-icon>
+                    <gcds-icon margin-left="150" name="arrow-right"></gcds-icon>
                   </a>
                 </li>
               )}

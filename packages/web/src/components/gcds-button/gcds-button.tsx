@@ -254,7 +254,7 @@ export class GcdsButton {
             <gcds-icon
               name="external-link"
               label={i18n[lang].label}
-              margin-left="200"
+              margin-left="150"
             />
           ) : null}
         </Tag>
