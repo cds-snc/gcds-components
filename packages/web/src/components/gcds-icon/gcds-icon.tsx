@@ -48,7 +48,7 @@ export class GcdsIcon {
    */
   @Prop() size?:
     | 'inherit'
-    | 'caption'
+    | 'text-small'
     | 'text'
     | 'h6'
     | 'h5'

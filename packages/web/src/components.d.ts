@@ -577,7 +577,7 @@ export namespace Components {
           * Defines the size of the icon.
          */
         "size"?: | 'inherit'
-    | 'caption'
+    | 'text-small'
     | 'text'
     | 'h6'
     | 'h5'
@@ -2361,7 +2361,7 @@ declare namespace LocalJSX {
           * Defines the size of the icon.
          */
         "size"?: | 'inherit'
-    | 'caption'
+    | 'text-small'
     | 'text'
     | 'h6'
     | 'h5'

@@ -124,7 +124,7 @@ export default {
       control: { type: 'select' },
       options: [
         'inherit',
-        'caption',
+        'text-small',
         'text',
         'h6',
         'h5',
@@ -625,7 +625,7 @@ Sizes.args = {
   name8: 'close',
   name9: 'close',
   size1: 'inherit',
-  size2: 'caption',
+  size2: 'text-small',
   size3: 'text',
   size4: 'h6',
   size5: 'h5',
@@ -671,7 +671,7 @@ MarginLeft.args = {
   marginLeft1150: '1150',
   marginLeft1200: '1200',
   marginLeft1250: '1250',
-  size: 'caption',
+  size: 'text-small',
 };
 
 export const MarginRight = TemplateMargin.bind({});
@@ -708,7 +708,7 @@ MarginRight.args = {
   marginRight1150: '1150',
   marginRight1200: '1200',
   marginRight1250: '1250',
-  size: 'caption',
+  size: 'text-small',
 };
 
 // ------ Icon width ------

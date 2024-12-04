@@ -488,7 +488,7 @@ export class GcdsTopicMenu {
             <gcds-icon
               name="chevron-down"
               margin-left="100"
-              size="caption"
+              size="text-small"
             ></gcds-icon>
           </button>
           <ul

@@ -111,7 +111,7 @@ export default {
     },
     size: {
       control: { type: 'select' },
-      options: ['body', 'caption'],
+      options: ['body', 'small'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'body' },
@@ -249,13 +249,13 @@ SizeBody.args = {
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
 
-export const SizeCaption = Template.bind({});
-SizeCaption.args = {
+export const SizeSmall = Template.bind({});
+SizeSmall.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
   marginBottom: '300',
-  size: 'caption',
+  size: 'small',
   textRole: 'primary',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
