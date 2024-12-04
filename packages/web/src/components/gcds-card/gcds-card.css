@@ -36,8 +36,8 @@
       padding: var(--gcds-card-badge-padding);
       text-wrap: nowrap;
 
-      &::part(text) {
-        line-height: var(--gcds-card-badge-line-height);
+      @media only screen and (width < 48em) {
+        padding: var(--gcds-card-badge-mobile-padding);
       }
     }
 
@@ -108,7 +108,7 @@
       background-color: var(--gcds-card-focus-link-background-color);
       outline: var(--gcds-card-focus-link-outline);
       text-decoration: underline currentColor
-       var(--gcds-card-focus-link-text-decoration-thickness);
+        var(--gcds-card-focus-link-text-decoration-thickness);
     }
   }
 }
