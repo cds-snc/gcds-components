@@ -11,7 +11,7 @@ describe('gcds-error-message', () => {
       <gcds-error-message message-id="input-renders" id="error-message-input-renders" class="gcds-error-message-wrapper">
         <mock:shadow-root>
           <gcds-text class="error-message" role="alert" margin-bottom="225">
-            <gcds-icon name="triangle-exclamation" margin-right="75"></gcds-icon>
+            <gcds-icon name="triangle-exclamation" margin-right="50"></gcds-icon>
             <strong>
               <slot></slot>
             </strong>
