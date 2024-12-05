@@ -347,14 +347,14 @@
   .intro-boxes {
     background-color: var(--gcds-color-grayscale-50);
     margin-block-start: var(--gcds-spacing-450) !important;
-    margin-block-end: var(--gcds-spacing-500) !important;
-    padding: var(--gcds-spacing-400);
+    margin-block-end: var(--gcds-spacing-600) !important;
+    padding: var(--gcds-spacing-300);
   }
 
   .intro-boxes li {
     list-style: none;
     background-color: var(--gcds-color-grayscale-0);
-    padding: var(--gcds-spacing-400);
+    padding: var(--gcds-spacing-300);
   }
 
   /* ----- PROPERTIES PAGE ----- */
@@ -369,7 +369,7 @@
 
   /* Add space between component preview + copy & hide code btns */
   .docs-story .sb-story {
-    padding-block-end: var(--gcds-spacing-500);
+    padding-block-end: var(--gcds-spacing-600);
   }
 
   .docs-story .css-25bv1u,
@@ -390,9 +390,9 @@
     box-sizing: border-box;
     font: var(--gcds-button-font) !important;
     font-size: 0.875rem !important;
-    margin: 0 var(--gcds-spacing-150) var(--gcds-spacing-250)
-      var(--gcds-spacing-300) !important;
-    padding: var(--gcds-spacing-200) var(--gcds-spacing-150) !important;
+    margin: 0 var(--gcds-spacing-100) var(--gcds-spacing-175)
+      var(--gcds-spacing-225) !important;
+    padding: var(--gcds-spacing-150) var(--gcds-spacing-100) !important;
     transition: all 0.15s ease-in-out 0s;
   }
 
@@ -447,7 +447,7 @@
     border-radius: 0 !important;
     color: var(--gcds-text-primary) !important;
     font-weight: var(--gcds-font-weights-bold);
-    padding-block-start: var(--gcds-spacing-400);
+    padding-block-start: var(--gcds-spacing-300);
     border-inline: 0 !important;
   }
 
@@ -543,7 +543,7 @@
   .css-1p58akv {
     background-color: var(--gcds-color-grayscale-700) !important;
     border: var(--gcds-border-width-sm) solid var(--gcds-color-grayscale-0) !important;
-    padding: var(--gcds-spacing-50) !important;
+    padding: var(--gcds-spacing-25) !important;
   }
 
   .css-tvcum3 span,
@@ -633,11 +633,11 @@
   }
 
   .resources-list {
-    margin: var(--gcds-spacing-400) 0 !important;
+    margin: var(--gcds-spacing-300) 0 !important;
   }
 
   .resources-list li {
-    margin: 0 0 var(--gcds-spacing-300) !important;
+    margin: 0 0 var(--gcds-spacing-225) !important;
   }
 
   /* ----- CUSTOM COPY CODE BTNS ----- */
@@ -668,7 +668,7 @@
   /* gcds-button */
   .sbdocs-preview .docs-story gcds-button.hydrated + gcds-button.hydrated,
   .sb-show-main #storybook-root gcds-button.hydrated + gcds-button.hydrated {
-    margin: 0 0 0 var(--gcds-spacing-400);
+    margin: 0 0 0 var(--gcds-spacing-300);
   }
 
   /* gcds-container */
@@ -680,7 +680,7 @@
   /* gcds-icon */
   .sbdocs-preview .docs-story #story--components-icon--name gcds-icon,
   .sbdocs-preview .docs-story #story--components-icon--sizes gcds-icon {
-    margin: 0 var(--gcds-spacing-150) 0 0;
+    margin: 0 var(--gcds-spacing-100) 0 0;
   }
 
   .sbdocs-preview .docs-story #story--components-icon--margin-left gcds-icon,
@@ -695,7 +695,7 @@
   }
 
   .sbdocs-preview .docs-story #story--components-icon--width gcds-icon {
-    margin: 0 var(--gcds-spacing-150) 0 0;
+    margin: 0 var(--gcds-spacing-100) 0 0;
     border: var(--gcds-border-width-sm) solid var(--gcds-border-default);
   }
 
@@ -887,7 +887,7 @@
           if (tr.children[x].innerText === '-') {
             let span = document.createElement('span');
             span.setAttribute('class', 'sr-only');
-  
+
             if (lang === 'en') {
               tr.children[x].setAttribute('title', 'No default value');
               span.innerText = 'No default value';
