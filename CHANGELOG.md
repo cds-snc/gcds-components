@@ -22,7 +22,7 @@ The valid values have changed for the properties in the following components. Wh
 
 The valid variables used for the properties in the following components have been updated. While some options remain unchanged, the underlying values they contain (in pixels) have been modified. Check the spacing section of our tokens release for the updated pixel values.
 
-_Example_: If you were previously using `400` for the `margin` property on `gcds-container`, it will be updated to `32px`. If you want to keep its previous size of `40px`, you need to change your code to use `450` instead. Here is a [visual mapping guide](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) to help you identify the values you need to use.
+_Example_: If you were previously using `400` for the `margin` property on `gcds-container`, it will be updated to `32px`. If you want to keep its previous size of `24px`, you need to change your code to use `300` instead. Here is a [visual mapping guide](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) to help you identify the values you need to use.
 
 Only update your code _if you use these properties_, otherwise the new default values will be applied automatically.
 
