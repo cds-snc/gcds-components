@@ -202,20 +202,20 @@ export class GcdsLink {
             <gcds-icon
               name="external-link"
               label={i18n[lang].external}
-              margin-left="100"
+              margin-left="75"
             />
           ) : download !== undefined ? (
             <gcds-icon
               name="download"
               label={i18n[lang].download}
-              margin-left="100"
+              margin-left="75"
             />
           ) : href && href.toLowerCase().startsWith('mailto:') ? (
             <gcds-icon
               icon-style="regular"
               name="envelope"
               label={i18n[lang].email}
-              margin-left="100"
+              margin-left="75"
             />
           ) : (
             href &&
@@ -223,7 +223,7 @@ export class GcdsLink {
               <gcds-icon
                 name="phone"
                 label={i18n[lang].phone}
-                margin-left="100"
+                margin-left="75"
               />
             )
           )}

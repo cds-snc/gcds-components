@@ -12,7 +12,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text>
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-primary mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -34,7 +34,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text text-role="primary">
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-primary mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -53,7 +53,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text text-role="secondary">
         <mock:shadow-root>
-          <p class="gcds-text limit role-secondary mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-secondary mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -72,7 +72,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text text-role="light">
         <mock:shadow-root>
-          <p class="gcds-text limit role-light mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-light mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -94,7 +94,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text>
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-primary mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -113,7 +113,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text character-limit="false">
         <mock:shadow-root>
-          <p class="gcds-text role-primary mt-0 mb-400" part="text">
+          <p class="gcds-text role-primary mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -135,7 +135,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text>
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-primary mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -154,7 +154,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text class="d-flex" display="flex">
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-primary mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -176,7 +176,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text margin-top="400">
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-400 mb-400" part="text">
+          <p class="gcds-text limit role-primary mt-400 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -217,7 +217,7 @@ describe('gcds-text', () => {
     expect(root).toEqualHtml(`
       <gcds-text>
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-primary mt-0 mb-300" part="text">
             <slot></slot>
           </p>
         </mock:shadow-root>
@@ -226,17 +226,17 @@ describe('gcds-text', () => {
     `);
   });
 
-  it('renders caption text size', async () => {
+  it('renders small text size', async () => {
     const { root } = await newSpecPage({
       components: [GcdsText],
       html: `
-        <gcds-text size="caption">This is some text.</gcds-text>
+        <gcds-text size="small">This is some text.</gcds-text>
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-text size="caption">
+      <gcds-text size="small">
         <mock:shadow-root>
-          <p class="gcds-text limit role-primary mt-0 mb-400" part="text">
+          <p class="gcds-text limit role-primary mt-0 mb-300 size-small" part="text">
             <small><slot></slot></small>
           </p>
         </mock:shadow-root>

@@ -21,7 +21,7 @@ describe('gcds-topic-menu', () => {
                 Main
               </gcds-sr-only>
               Menu
-              <gcds-icon margin-left="150" name="chevron-down" size="caption"></gcds-icon>
+              <gcds-icon margin-left="100" name="chevron-down" size="text-small"></gcds-icon>
             </button>
             <ul aria-orientation="vertical" data-top-menu role="menu">
               <li role="presentation">
@@ -101,7 +101,7 @@ describe('gcds-topic-menu', () => {
               <gcds-sr-only tag="span">
                 principal
               </gcds-sr-only>
-              <gcds-icon margin-left="150" name="chevron-down" size="caption"></gcds-icon>
+              <gcds-icon margin-left="100" name="chevron-down" size="text-small"></gcds-icon>
             </button>
             <ul aria-orientation="vertical" data-top-menu role="menu">
               <li role="presentation">
@@ -181,7 +181,7 @@ describe('gcds-topic-menu', () => {
                 Main
               </gcds-sr-only>
               Menu
-              <gcds-icon margin-left="150" name="chevron-down" size="caption"></gcds-icon>
+              <gcds-icon margin-left="100" name="chevron-down" size="text-small"></gcds-icon>
             </button>
             <ul aria-orientation="vertical" data-top-menu role="menu">
               <li role="presentation">

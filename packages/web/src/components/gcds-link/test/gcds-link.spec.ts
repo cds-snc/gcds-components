@@ -34,7 +34,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
             <slot></slot>
-            <gcds-icon name="external-link" label="${i18n.en.external}" margin-left="100" />
+            <gcds-icon name="external-link" label="${i18n.en.external}" margin-left="75" />
           </a>
         </mock:shadow-root>
         External Link
@@ -52,7 +52,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
             <slot></slot>
-            <gcds-icon name="external-link" label="${i18n.fr.external}" margin-left="100" />
+            <gcds-icon name="external-link" label="${i18n.fr.external}" margin-left="75" />
           </a>
         </mock:shadow-root>
         External Link
@@ -70,7 +70,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" download role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon name="download" label="${i18n.en.download}" margin-left="100" />
+            <gcds-icon name="download" label="${i18n.en.download}" margin-left="75" />
           </a>
         </mock:shadow-root>
         Download file
@@ -88,7 +88,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" download role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon name="download" label="${i18n.fr.download}" margin-left="100" />
+            <gcds-icon name="download" label="${i18n.fr.download}" margin-left="75" />
           </a>
         </mock:shadow-root>
         Download file
@@ -106,7 +106,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" download="myfile.pdf" role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon name="download" label="${i18n.en.download}" margin-left="100" />
+            <gcds-icon name="download" label="${i18n.en.download}" margin-left="75" />
           </a>
         </mock:shadow-root>
         Download file
@@ -124,7 +124,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" download="myfile.pdf" role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon name="download" label="${i18n.fr.download}" margin-left="100" />
+            <gcds-icon name="download" label="${i18n.fr.download}" margin-left="75" />
           </a>
         </mock:shadow-root>
         Download file
@@ -142,7 +142,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="tel:1234567890" part="link" role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon name="phone" label="${i18n.en.phone}" margin-left="100" />
+            <gcds-icon name="phone" label="${i18n.en.phone}" margin-left="75" />
           </a>
         </mock:shadow-root>
         123-456-7890
@@ -160,7 +160,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="tel:1234567890" part="link" role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon name="phone" label="${i18n.fr.phone}" margin-left="100" />
+            <gcds-icon name="phone" label="${i18n.fr.phone}" margin-left="75" />
           </a>
         </mock:shadow-root>
         123-456-7890
@@ -178,7 +178,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="mailto:test@test.com" part="link" role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon icon-style="regular" name="envelope" label="${i18n.en.email}" margin-left="100" />
+            <gcds-icon icon-style="regular" name="envelope" label="${i18n.en.email}" margin-left="75" />
           </a>
         </mock:shadow-root>
         test@test.com
@@ -196,7 +196,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="mailto:test@test.com" part="link" role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon icon-style="regular" name="envelope" label="${i18n.fr.email}" margin-left="100" />
+            <gcds-icon icon-style="regular" name="envelope" label="${i18n.fr.email}" margin-left="75" />
           </a>
         </mock:shadow-root>
         test@test.com

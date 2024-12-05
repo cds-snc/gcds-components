@@ -25,8 +25,8 @@ export class GcdsErrorMessage {
         id={`error-message-${messageId}`}
         class="gcds-error-message-wrapper"
       >
-        <gcds-text class="error-message" role="alert" margin-bottom="300">
-          <gcds-icon name="triangle-exclamation" margin-right="100"></gcds-icon>
+        <gcds-text class="error-message" role="alert" margin-bottom="100">
+          <gcds-icon name="triangle-exclamation" margin-right="50"></gcds-icon>
           <strong>
             <slot></slot>
           </strong>

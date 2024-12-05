@@ -36,7 +36,7 @@ describe('gcds-card', () => {
     <gcds-card card-title="Card" href="#card" badge="new">
       <mock:shadow-root>
         <div class="gcds-card">
-          <gcds-text class="gcds-badge" id="gcds-badge" margin-bottom="0" size="caption" text-role="light">
+          <gcds-text class="gcds-badge" id="gcds-badge" margin-bottom="0" size="small" text-role="light">
             <strong>
               <gcds-sr-only>
                 Tagged:
