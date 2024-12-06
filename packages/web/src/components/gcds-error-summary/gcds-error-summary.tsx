@@ -195,7 +195,7 @@ export class GcdsErrorSummary {
               : ''
           }`}
         >
-          <gcds-heading tag="h2" margin-top="0" margin-bottom="300">
+          <gcds-heading tag="h2" margin-top="0" margin-bottom="225">
             {heading ?? i18n[lang].heading}
           </gcds-heading>
           <ol class="summary__errorlist">

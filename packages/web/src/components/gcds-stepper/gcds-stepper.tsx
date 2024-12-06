@@ -122,7 +122,7 @@ export class GcdsStepper {
             tag={tag}
             class="gcds-stepper"
             margin-top="0"
-            margin-bottom="300"
+            margin-bottom="225"
           >
             <span class="gcds-stepper__steps">
               {`${i18n[lang].step} ${currentStep} ${i18n[lang].of} ${totalSteps}`}

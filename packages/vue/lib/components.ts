@@ -164,6 +164,7 @@ export const GcdsFileUploader = /*@__PURE__*/ defineContainer<JSX.GcdsFileUpload
   'value',
   'accept',
   'multiple',
+  'files',
   'errorMessage',
   'hint',
   'validator',

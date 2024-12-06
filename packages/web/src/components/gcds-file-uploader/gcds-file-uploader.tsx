@@ -94,6 +94,23 @@ export class GcdsFileUploader {
   @Prop({ reflect: true, mutable: false }) multiple: boolean;
 
   /**
+   * FileList of uploaded files to input
+   */
+  @Prop({ mutable: true }) files: FileList;
+  @Watch('files')
+  watchFiles() {
+    const filesContainer: string[] = [];
+    const files = Array.from(this.files);
+
+    files.map(file => {
+      filesContainer.push(file['name']);
+    });
+
+    this.addFilesToFormData(files);
+    this.value = [...filesContainer];
+  }
+
+  /**
    * Error message for an invalid file uploader element.
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
@@ -188,6 +205,7 @@ export class GcdsFileUploader {
   private handleInput = (e, customEvent) => {
     const filesContainer: string[] = [];
     const files = Array.from(e.target.files);
+    this.files = e.target.files;
 
     files.map(file => {
       filesContainer.push(file['name']);
@@ -236,6 +254,7 @@ export class GcdsFileUploader {
       }
 
       this.shadowElement.files = dt.files;
+      this.files = dt.files;
       this.addFilesToFormData(this.shadowElement.files);
     }
 
@@ -305,9 +324,11 @@ export class GcdsFileUploader {
   private addFilesToFormData = files => {
     const formData = new FormData();
 
-    files.forEach(file => {
-      formData.append(this.name, file, file.name);
-    });
+    if (files.length > 0) {
+      files.forEach(file => {
+        formData.append(this.name, file, file.name);
+      });
+    }
 
     this.internals.setFormValue(formData);
   };
@@ -460,7 +481,7 @@ export class GcdsFileUploader {
                   <gcds-text margin-bottom="0">{file}</gcds-text>
                   <button onClick={e => this.removeFile(e)}>
                     <span>{i18n[lang].button.remove}</span>
-                    <gcds-icon name="times" size="text" margin-left="200" />
+                    <gcds-icon name="times" size="text" margin-left="150" />
                   </button>
                 </div>
               ))

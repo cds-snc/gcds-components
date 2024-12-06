@@ -18,18 +18,12 @@
 @layer default {
   :host(.gcds-breadcrumbs-item) {
     position: relative;
-    padding: var(--gcds-breadcrumbs-item-padding) !important;
+    margin: var(--gcds-breadcrumbs-item-margin) !important;
 
     &:before {
-      position: absolute;
-      top: var(--gcds-breadcrumbs-item-arrow-top);
-      left: var(--gcds-breadcrumbs-item-arrow-left);
+      position: relative;
       content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' height='12px' viewBox='0 0 8 14'><path fill='26374a' d='M7.7,6.3c0.4,0.4,0.4,1,0,1.4l-6,6c-0.4,0.4-1,0.4-1.4,0s-0.4-1,0-1.4L5.6,7L0.3,1.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0 L7.7,6.3L7.7,6.3z'/></svg>");
-    }
-
-    gcds-link::part(link) {
-      margin: var(--gcds-breadcrumbs-item-margin);
-      padding: var(--gcds-breadcrumbs-item-link-padding);
+      margin: var(--gcds-breadcrumbs-item-arrow-margin);
     }
   }
 }
@@ -39,15 +33,7 @@
   @media screen and (max-width: 30rem) {
     :host(.gcds-breadcrumbs-item) {
       display: block;
-
-      &:before {
-        top: var(--gcds-breadcrumbs-mobile-item-arrow-top);
-      }
-
-      gcds-link::part(link) {
-        margin: var(--gcds-breadcrumbs-mobile-item-margin);
-        padding: var(--gcds-breadcrumbs-mobile-item-padding);
-      }
+      margin: var(--gcds-breadcrumbs-mobile-item-margin) !important;
     }
   }
 }

@@ -130,7 +130,6 @@
       <gcds-button button-role="primary">Primary</gcds-button>
       <gcds-button button-role="secondary">Secondary</gcds-button>
       <gcds-button button-role="danger">Danger</gcds-button>
-      <gcds-button button-role="skip-to-content">Skip to content</gcds-button>
 
       <hr class="my-550" />
 
@@ -196,7 +195,7 @@
       <!-- ------------- Containers ------------- -->
 
       <gcds-heading tag="h2">Containers</gcds-heading>
-      <gcds-container size="full" border padding="400">
+      <gcds-container size="full" border padding="300">
         <p>
           I'm a responsive container. My size is only limited by the size of my
           parent container.
@@ -231,7 +230,7 @@
       <gcds-stepper current-step="1" total-steps="4" tag="h2">
         Section title
       </gcds-stepper>
-      
+
       <form novalidate>
         <gcds-error-summary listen></gcds-error-summary>
 
@@ -508,70 +507,70 @@
       <!-- ------------- Text ------------- -->
 
       <gcds-heading tag="h2">Text</gcds-heading>
-      <gcds-text
-        >This text is primary text using the default body size. The margin
+      <gcds-text>
+        This text is primary text using the default body size. The margin
         bottom is set to "400". The character limit is set to "true" (default
         value) which means that the text will take up a maximum of 65 characters
-        per line.</gcds-text
-      >
+        per line.
+      </gcds-text>
 
-      <gcds-text character-limit="false"
-        >This text is primary text using the default body size. The margin
+      <gcds-text character-limit="false">
+        This text is primary text using the default body size. The margin
         bottom is set to "400". The characters limit is set to "false" which
-        means that the text will take up all available space.</gcds-text
-      >
+        means that the text will take up all available space.
+      </gcds-text>
 
-      <gcds-text text-role="secondary"
-        >This text is secondary text using the default body size. The margin
+      <gcds-text text-role="secondary">
+        This text is secondary text using the default body size. The margin
         bottom is set to "400". The character limit is set to "true" (default
         value) which means that the text will take up a maximum of 65 characters
-        per line.</gcds-text
-      >
+        per line.
+      </gcds-text>
 
-      <div class="bg-dark mb-400 p-200">
-        <gcds-text margin-bottom="0" text-role="light"
-          >This text is light text using the default body size. The character
+      <div class="bg-dark mb-300 p-150">
+        <gcds-text margin-bottom="0" text-role="light">
+          This text is light text using the default body size. The character
           limit is set to "true" (default value) which means that the text will
-          take up a maximum of 65 characters per line.</gcds-text
-        >
+          take up a maximum of 65 characters per line.
+        </gcds-text>
       </div>
 
-      <gcds-text size="caption"
-        >This text is primary text using the caption size. The margin bottom is
+      <gcds-text size="small">
+        This text is primary text using the small size. The margin bottom is
         set to "400". The character limit is set to "true" (default value) which
         means that the text will take up a maximum of 65 characters per
-        line.</gcds-text
-      >
+        line.
+      </gcds-text>
 
-      <gcds-text
-        >This text is primary text using the default body size
+      <gcds-text>
+        This text is primary text using the default body size
         <strong>with some bold text included</strong>. The margin bottom is set
         to "400". The character limit is set to "true" (default value) which
         means that the text will take up a maximum of 65 characters per
-        line.</gcds-text
-      >
+        line.
+      </gcds-text>
 
-      <gcds-text
-        >This text is primary text using the default body size
+      <gcds-text>
+        This text is primary text using the default body size
         <em>with some italic text included</em>. The margin bottom is set to
         "400". The character limit is set to "true" (default value) which means
         that the text will take up a maximum of 65 characters per
-        line.</gcds-text
-      >
+        line.
+      </gcds-text>
 
       <hr class="my-550" />
 
       <!-- ------------- Icons ------------- -->
 
       <gcds-heading tag="h2">Icons</gcds-heading>
-      <gcds-icon name="close" size="caption" margin-right="200"></gcds-icon>
-      <gcds-icon name="close" size="text" margin-right="200"></gcds-icon>
-      <gcds-icon name="close" size="h6" margin-right="200"></gcds-icon>
-      <gcds-icon name="close" size="h5" margin-right="200"></gcds-icon>
-      <gcds-icon name="close" size="h4" margin-right="200"></gcds-icon>
-      <gcds-icon name="close" size="h3" margin-right="200"></gcds-icon>
-      <gcds-icon name="close" size="h2" margin-right="200"></gcds-icon>
-      <gcds-icon name="close" size="h1" margin-right="200"></gcds-icon>
+      <gcds-icon name="close" size="text-small" margin-right="150"></gcds-icon>
+      <gcds-icon name="close" size="text" margin-right="150"></gcds-icon>
+      <gcds-icon name="close" size="h6" margin-right="150"></gcds-icon>
+      <gcds-icon name="close" size="h5" margin-right="150"></gcds-icon>
+      <gcds-icon name="close" size="h4" margin-right="150"></gcds-icon>
+      <gcds-icon name="close" size="h3" margin-right="150"></gcds-icon>
+      <gcds-icon name="close" size="h2" margin-right="150"></gcds-icon>
+      <gcds-icon name="close" size="h1" margin-right="150"></gcds-icon>
 
       <gcds-heading tag="h4">Fixed width icons (square ratio)</gcds-heading>
       <gcds-icon name="close" size="text" fixed-width></gcds-icon>
@@ -590,11 +589,11 @@
       <!-- ------------- Links ------------- -->
 
       <gcds-heading tag="h2">Links</gcds-heading>
-      <p class="mb-400">
+      <p class="mb-300">
         This is a <gcds-link size="small" href="/">small link</gcds-link> if you
         compare it to regular text.
       </p>
-      <p class="mb-400">
+      <p class="mb-300">
         <gcds-link
           href="https://picsum.photos/480/270"
           external
@@ -603,7 +602,7 @@
           This is an external link.
         </gcds-link>
       </p>
-      <p class="mb-400">
+      <p class="mb-300">
         This is a
         <gcds-link
           href="https://picsum.photos/200/200.jpg"
@@ -613,33 +612,33 @@
         >
         with type indicated
       </p>
-      <p class="mb-400">
+      <p class="mb-300">
         Contact us
         <gcds-link href="mailto:test@test.com?subject=Test%20email">
           via email
         </gcds-link>
         or by phone.
       </p>
-      <p class="mb-400">
+      <p class="mb-300">
         Contact us <gcds-link href="tel:1234567890">by phone</gcds-link> or by
         email.
       </p>
-      <p class="mb-400">
+      <p class="mb-300">
         There is text before and
         <gcds-link href="/" display="inline-block">(sample link)</gcds-link>
         after this link.
       </p>
-      <p class="mb-400">
+      <p class="mb-300">
         <gcds-link href="/" referrerpolicy="no-referrer" external>
           This is a sample link with a referrerpolicy.
         </gcds-link>
       </p>
-      <p class="mb-400">
+      <p class="mb-300">
         <gcds-link href="" onClick='window.alert("Thank you!")'>
           Click me!
         </gcds-link>
       </p>
-      <div class="bg-dark mb-400 p-200">
+      <div class="bg-dark mb-300 p-150">
         <gcds-link variant="light" href="/">
           This is a link using the light link role.
         </gcds-link>

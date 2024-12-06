@@ -1,4 +1,5 @@
 import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
+import { SpacingValues, SpacingArray } from '../../utils/types/spacing';
 
 @Component({
   tag: 'gcds-heading',
@@ -34,100 +35,32 @@ export class GcdsHeading {
 
   /**
    * Adds margin above the heading. The default margin-top for h1 is set to 0,
-   * while for h2 to h6 headings, it's 500.
+   * while for h2 to h6 headings, it's 600.
    */
-  @Prop({ mutable: true }) marginTop?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+  @Prop({ mutable: true }) marginTop?: SpacingValues;
 
   @Watch('marginTop')
   validateMarginTop(newValue: string) {
-    const values = [
-      '0',
-      '50',
-      '100',
-      '150',
-      '200',
-      '250',
-      '300',
-      '400',
-      '450',
-      '500',
-      '550',
-      '600',
-      '700',
-      '800',
-      '900',
-      '1000',
-    ];
-
-    if (!this.marginTop || (this.marginTop && !values.includes(newValue))) {
-      if (this.tag !== 'h1') {
-        this.marginTop = '500';
-      } else {
-        this.marginTop = '0';
-      }
+    if (
+      !this.marginTop ||
+      (this.marginTop && !SpacingArray.includes(newValue as SpacingValues))
+    ) {
+      this.marginTop = this.tag === 'h1' ? '0' : '600';
     }
   }
 
   /**
-   * Adds margin below the heading. The default margin-botttom is 400.
+   * Adds margin below the heading. The default margin-botttom is 300.
    */
-  @Prop({ mutable: true }) marginBottom?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000' = '400';
+  @Prop({ mutable: true }) marginBottom?: SpacingValues = '300';
 
   @Watch('marginBottom')
   validateMarginBottom(newValue: string) {
-    const values = [
-      '0',
-      '50',
-      '100',
-      '150',
-      '200',
-      '250',
-      '300',
-      '400',
-      '450',
-      '500',
-      '550',
-      '600',
-      '700',
-      '800',
-      '900',
-      '1000',
-    ];
-
-    if (this.marginBottom && !values.includes(newValue)) {
-      this.marginBottom = '400';
+    if (
+      this.marginBottom &&
+      !SpacingArray.includes(newValue as SpacingValues)
+    ) {
+      this.marginBottom = '300';
     }
   }
 

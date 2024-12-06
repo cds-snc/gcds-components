@@ -1,4 +1,5 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { SpacingValues } from '../../utils/types/spacing';
 
 @Component({
   tag: 'gcds-container',
@@ -13,63 +14,32 @@ export class GcdsContainer {
    */
 
   /**
-   * Defines if container has a border or not.
+  * Defines if the container has a border.
    */
   @Prop() border?: boolean = false;
 
   /**
-   * Defines if container is centered or not.
+   * Defines if the container is centered.
    */
   @Prop() centered?: boolean = false;
 
   /**
-   * Defines if the container is the main page container or not. If set to true,
+   * Defines if the container is the main page container. When true,
    * the width will be set to 90% for smaller screens to ensure consistency
    * with the responsiveness of other core layout components (header + footer).
    */
   @Prop() mainContainer?: boolean = false;
 
   /**
-   * Defines the container's margin. Note that left and right margin will not be applied if the container is centered.
+   * Container margin. Left and right margins won't be applied
+   * if the container is centered.
    */
-  @Prop() margin?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+  @Prop() margin?: SpacingValues;
 
   /**
    *  Defines the container's padding.
    */
-  @Prop() padding?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+  @Prop() padding?: SpacingValues;
 
   /**
    * Defines container size.

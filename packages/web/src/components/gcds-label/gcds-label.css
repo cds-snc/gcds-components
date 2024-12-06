@@ -4,10 +4,6 @@
   :host {
     display: block;
   }
-
-  :host .gcds-label {
-    color: inherit;
-  }
 }
 
 @layer default {
@@ -16,6 +12,7 @@
     max-width: 100%;
     font: var(--gcds-label-font-desktop);
     margin: var(--gcds-label-margin) !important;
+    color: var(--gcds-label-text);
     cursor: pointer;
 
     @media only screen and (width < 48em) {

@@ -1,5 +1,71 @@
 # Changelog
 
+## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0) (2024-12-05)
+
+### :rotating_light: Breaking changes
+
+* update components with new typography + spacing tokens ([#695](https://github.com/cds-snc/gcds-components/issues/695)) ([105cd4b](https://github.com/cds-snc/gcds-components/commit/105cd4b5e755393da053aa210505260f1e8e249d))
+
+We've made small adjustments to all typography and spacing sizes across the design system. GC Design System components are now closer in appearance to their counterparts on Canada.ca.  
+
+These updates were introduced with the [latest release of our design tokens](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#200).
+
+_**If you are using this package**_
+Upgrade your version number to this release version to receive the changes in font sizes, line heights and spacing values.
+
+### Spacing changes
+
+The valid values have changed for the properties in the following components. While some values still remain, their underlying value in rem or pixels have changed. See the spacing section of our tokens release to check out the new underlying values. 
+
+The valid variables used for the properties in the following components have been updated. While some options remain unchanged, the underlying values they contain (in pixels) have been modified. Check the spacing section of our tokens release for the updated pixel values. 
+
+_Example_: If you were previously using `400` for the `margin` property on `gcds-container`, it will be updated to `32px`. If you want to keep its previous size of `40px`, you need to change your code to use `450` instead. Here is a [visual mapping guide](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) to help you identify the values you need to use.
+
+Only update your code _if you use these properties_, otherwise the new default values will be applied automatically.
+
+* [**gcds-container**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-container/readme.md)
+  - `margin`
+  - `padding`
+* [**gcds-heading**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-heading/readme.md)
+  - `margin-top`
+  - `margin-bottom`
+* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+  - `margin-left`
+  - `margin-right`
+* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+  - `margin-top`
+  - `margin-bottom`
+
+### Typography changes
+
+Only update if you use the `caption` value for the `size` property in the following components.
+* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+  - Change `caption` to `text-small`
+* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+  - Change `caption` to `text-small`
+
+## [0.27.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.3...gcds-components-v0.27.0) (2024-11-19)
+
+
+### :rocket: New Features
+
+* **gcds-file-uploader:** Add files prop for ease of access to uploaded files ([#676](https://github.com/cds-snc/gcds-components/issues/676)) ([2323e42](https://github.com/cds-snc/gcds-components/commit/2323e42e8d492891d0550f370fbface17c33fe09))
+
+
+### :bug: :wrench: Bug Fixes
+
+* Allow skipping blocking form submission with validate-on attribute ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+* error-message property blocking form submission. ([#673](https://github.com/cds-snc/gcds-components/issues/673)) ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+* **gcds-fieldset:** Add CSS to allow form components to maintain responsive layout ([#683](https://github.com/cds-snc/gcds-components/issues/683)) ([6b41ba0](https://github.com/cds-snc/gcds-components/commit/6b41ba0f2e9bf208b1ee090dbb939041914cc9bf))
+* **gcds-fieldset:** Add CSS to allow form components to maintin responsive layout ([6b41ba0](https://github.com/cds-snc/gcds-components/commit/6b41ba0f2e9bf208b1ee090dbb939041914cc9bf))
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* adjust details font sizes and summary + panel padding ([#674](https://github.com/cds-snc/gcds-components/issues/674)) ([fd5a422](https://github.com/cds-snc/gcds-components/commit/fd5a422d5ab66b37535dbb243fa156df769146ad))
+* improve date-modified validation ([#679](https://github.com/cds-snc/gcds-components/issues/679)) ([481d8a3](https://github.com/cds-snc/gcds-components/commit/481d8a31dabc7f685f1d777ff7b12cb381bfa11d))
+* remove focus colour from label, hint and legend ([#678](https://github.com/cds-snc/gcds-components/issues/678)) ([544f1cb](https://github.com/cds-snc/gcds-components/commit/544f1cb0036d6f4fc4552ae68422e628a0f4dd55))
+
 ## [0.26.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.2...gcds-components-v0.26.3) (2024-10-09)
 
 

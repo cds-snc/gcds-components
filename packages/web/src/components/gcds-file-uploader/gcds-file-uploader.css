@@ -125,6 +125,14 @@
   :host .gcds-file-uploader-wrapper.gcds-disabled {
     color: var(--gcds-file-uploader-disabled-text);
 
+    gcds-label {
+      --gcds-label-text: currentColor;
+    }
+
+    gcds-hint {
+      --gcds-hint-text: currentColor;
+    }
+
     :is(.file-uploader__input, .file-uploader__uploaded-file) {
       pointer-events: none;
     }
@@ -170,8 +178,6 @@
 
 @layer focus {
   :host .gcds-file-uploader-wrapper:focus-within {
-    color: var(--gcds-file-uploader-focus-text);
-
     .file-uploader__uploaded-file:focus-within {
       border-color: var(--gcds-file-uploader-file-focus-border-color);
     }

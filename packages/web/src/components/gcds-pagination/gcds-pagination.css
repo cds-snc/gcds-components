@@ -38,8 +38,8 @@
       li {
         a,
         & > span.gcds-pagination-list-ellipses {
-          height: 2.75rem;
-          min-width: 2.75rem;
+          height: 3rem;
+          min-width: 3rem;
           display: flex;
           justify-content: center;
           align-items: center;
