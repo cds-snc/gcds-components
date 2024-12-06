@@ -10,9 +10,21 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@cdssnc/gcds-components-angular": [
-        "packages/angular/dist"
-      ]
+      "gcds-components": [
+        "./packages/web"
+      ],
+      "gcds-components-react": [
+        "./packages/react"
+      ],
+      "gcds-components-angular": [
+        "./packages/angular/dist"
+      ],
+      "gcds-components-vue": [
+        "./packages/vue"
+      ],
+      "gcds-components-react-ssr": [
+        "./packages/react-ssr"
+      ],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -35,23 +47,6 @@
   "exclude": [
     "node_modules"
   ],
-  "paths": {
-    "gcds-components": [
-      "./packages/web"
-    ],
-    "gcds-components-react": [
-      "./packages/react"
-    ],
-    "gcds-components-angular": [
-      "./packages/angular"
-    ],
-    "gcds-components-vue": [
-      "./packages/vue"
-    ],
-    "gcds-components-react-ssr": [
-      "./packages/react-ssr"
-    ],
-  },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
