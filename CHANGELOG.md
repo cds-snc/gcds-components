@@ -18,8 +18,6 @@ Upgrade your version number to this release version to receive the changes in fo
 
 ### Spacing changes
 
-The valid values have changed for the properties in the following components. While some values still remain, their underlying value in rem or pixels have changed. See the spacing section of our tokens release to check out the new underlying values.
-
 The valid variables used for the properties in the following components have been updated. While some options remain unchanged, the underlying values they contain (in pixels) have been modified. Check the spacing section of our tokens release for the updated pixel values.
 
 _Example_: If you were previously using `400` for the `margin` property on `gcds-container`, it will be updated to `32px`. If you want to keep its previous size of `24px`, you need to change your code to use `300` instead. Here is a [visual mapping guide](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) to help you identify the values you need to use.
@@ -608,8 +606,6 @@ _**Si vous utilisez ce paquetage,**_
 mettez à jour votre numéro de version vers cette version de publication pour recevoir les modifications des tailles de police, des hauteurs de ligne et des valeurs d'espacement.
 
 ### Changement d’espacement
-
-Les valeurs valides ont changé pour les propriétés des composants suivants. Bien que certaines valeurs restent encore valides, leur valeur sous-jacente en rem ou en pixels a changé. Consultez la section sur l'espacement de notre dernière publication d'unité de style pour découvrir les nouvelles valeurs sous-jacentes.
 
 Les variables valides utilisées pour les propriétés dans les composants suivants ont été mises à jour. Bien que certaines options restent inchangées, les valeurs sous-jacentes qu'elles contiennent (en pixels) ont été modifiées. Vérifiez la section d'espacement de notre publication d'unité de style pour les valeurs de pixel mises à jour.
 
