@@ -712,6 +712,24 @@ export namespace Components {
          */
         "variant"?: 'default' | 'light';
     }
+    interface GcdsMap {
+        "caption": string;
+        "controls": boolean;
+        "controlslist": string;
+        "height": string;
+        "lat": number;
+        "lon": number;
+        "projection": string;
+        "width": string;
+        "zoom": number;
+    }
+    interface GcdsMapLayer {
+        "checked": boolean;
+        "hidden": boolean;
+        "label": string;
+        "opacity": number;
+        "src": string;
+    }
     interface GcdsNavGroup {
         /**
           * Label for the expanded button trigger
@@ -1446,6 +1464,18 @@ declare global {
         prototype: HTMLGcdsLinkElement;
         new (): HTMLGcdsLinkElement;
     };
+    interface HTMLGcdsMapElement extends Components.GcdsMap, HTMLStencilElement {
+    }
+    var HTMLGcdsMapElement: {
+        prototype: HTMLGcdsMapElement;
+        new (): HTMLGcdsMapElement;
+    };
+    interface HTMLGcdsMapLayerElement extends Components.GcdsMapLayer, HTMLStencilElement {
+    }
+    var HTMLGcdsMapLayerElement: {
+        prototype: HTMLGcdsMapLayerElement;
+        new (): HTMLGcdsMapLayerElement;
+    };
     interface HTMLGcdsNavGroupElementEventMap {
         "gcdsClick": void;
         "gcdsFocus": void;
@@ -1667,6 +1697,8 @@ declare global {
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
         "gcds-link": HTMLGcdsLinkElement;
+        "gcds-map": HTMLGcdsMapElement;
+        "gcds-map-layer": HTMLGcdsMapLayerElement;
         "gcds-nav-group": HTMLGcdsNavGroupElement;
         "gcds-nav-link": HTMLGcdsNavLinkElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
@@ -2528,6 +2560,24 @@ declare namespace LocalJSX {
          */
         "variant"?: 'default' | 'light';
     }
+    interface GcdsMap {
+        "caption"?: string;
+        "controls"?: boolean;
+        "controlslist"?: string;
+        "height"?: string;
+        "lat"?: number;
+        "lon"?: number;
+        "projection"?: string;
+        "width"?: string;
+        "zoom"?: number;
+    }
+    interface GcdsMapLayer {
+        "checked"?: boolean;
+        "hidden"?: boolean;
+        "label"?: string;
+        "opacity"?: number;
+        "src"?: string;
+    }
     interface GcdsNavGroup {
         /**
           * Label for the expanded button trigger
@@ -3002,6 +3052,8 @@ declare namespace LocalJSX {
         "gcds-label": GcdsLabel;
         "gcds-lang-toggle": GcdsLangToggle;
         "gcds-link": GcdsLink;
+        "gcds-map": GcdsMap;
+        "gcds-map-layer": GcdsMapLayer;
         "gcds-nav-group": GcdsNavGroup;
         "gcds-nav-link": GcdsNavLink;
         "gcds-pagination": GcdsPagination;
@@ -3049,6 +3101,8 @@ declare module "@stencil/core" {
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
             "gcds-link": LocalJSX.GcdsLink & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
+            "gcds-map": LocalJSX.GcdsMap & JSXBase.HTMLAttributes<HTMLGcdsMapElement>;
+            "gcds-map-layer": LocalJSX.GcdsMapLayer & JSXBase.HTMLAttributes<HTMLGcdsMapLayerElement>;
             "gcds-nav-group": LocalJSX.GcdsNavGroup & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
             "gcds-nav-link": LocalJSX.GcdsNavLink & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;

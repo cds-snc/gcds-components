@@ -1,0 +1,16 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Map from './gcds-map.stories';
+
+<Meta of={Map} name="Map" />
+
+# Map<br/>`<gcds-map>`
+
+The `<gcds-map>` component enables slippy maps with one or more `<gcds-map-layer>` children
+
+<Canvas>
+  <Story name="Default">
+    <Map.Default />
+  </Story>
+</Canvas>
+
+<Controls of={Map.Default} sort="none" />
