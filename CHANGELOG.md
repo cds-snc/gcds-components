@@ -592,6 +592,52 @@ Released on: 2024-02-22
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
 
+## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0)
+
+Version publiée le : 2024-12-05
+
+### :rotating_light: Changements non rétrocompatibles
+
+* mise à jour des composants avec de nouvelles typographies + nouvelles unités de style d'espacement ([#695 en anglais](https://github.com/cds-snc/gcds-components/issues/695)) ([105cd4b](https://github.com/cds-snc/gcds-components/commit/105cd4b5e755393da053aa210505260f1e8e249d))
+
+Nous avons apporté de petits ajustements à toutes les tailles de typographie et d'espacement dans le système de design. Les composants du système de design GC ressemblent maintenant davantage à leurs homologues sur Canada.ca.
+
+Ces mises à jour ont été introduites avec la [dernière version de nos unités de style de conception.](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#200).
+
+_**Si vous utilisez ce paquetage,**_
+mettez à jour votre numéro de version vers cette version de publication pour recevoir les modifications des tailles de police, des hauteurs de ligne et des valeurs d'espacement.
+
+### Changement d’espacement
+
+Les valeurs valides ont changé pour les propriétés des composants suivants. Bien que certaines valeurs restent encore valides, leur valeur sous-jacente en rem ou en pixels a changé. Consultez la section sur l'espacement de notre dernière publication d'unité de style pour découvrir les nouvelles valeurs sous-jacentes.
+
+Les variables valides utilisées pour les propriétés dans les composants suivants ont été mises à jour. Bien que certaines options restent inchangées, les valeurs sous-jacentes qu'elles contiennent (en pixels) ont été modifiées. Vérifiez la section d'espacement de notre publication d'unité de style pour les valeurs de pixel mises à jour.
+
+Exemple: Si vous utilisiez auparavant 400 pour la propriété de marge sur gcds-container, elle sera mise à jour à 32px. Si vous souhaitez conserver sa taille précédente de 40px, vous devez modifier votre code pour utiliser 450 à la place. Voici un [guide de cartographie visuelle](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) pour vous aider à identifier les valeurs que vous devez utiliser.
+
+Mettez à jour votre code uniquement _si vous utilisez ces propriétés_, sinon les nouvelles valeurs par défaut seront appliquées automatiquement.
+
+* [**gcds-container**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-container/readme.md)
+  - `margin`
+  - `padding`
+* [**gcds-heading**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-heading/readme.md)
+  - `margin-top`
+  - `margin-bottom`
+* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+  - `margin-left`
+  - `margin-right`
+* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+  - `margin-top`
+  - `margin-bottom`
+
+### Changements de typographie
+
+Mettez à jour uniquement si vous utilisez la valeur de légende pour la propriété de taille dans les composants suivants.
+* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+  - Change `caption` a `text-small`
+* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+  - Change `caption` a `text-small`
+
 ## [0.27.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.3...gcds-components-v0.27.0)
 
 Version publiée le : 2024-11-21
