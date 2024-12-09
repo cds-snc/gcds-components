@@ -630,9 +630,9 @@ Mettez à jour votre code uniquement _si vous utilisez ces propriétés_, sinon 
 
 Mettez à jour uniquement si vous utilisez la valeur de légende pour la propriété de taille dans les composants suivants.
 * [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
-  - Change `caption` a `text-small`
+  - Changer `caption` à `text-small`
 * [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
-  - Change `caption` a `text-small`
+  - Changer `caption`  à `text-small`
 
 ## [0.27.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.3...gcds-components-v0.27.0)
 
