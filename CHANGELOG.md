@@ -675,8 +675,7 @@ Version publiée le : 2024-09-25
 
 * Corriger les fautes de frappe dans les unités de style ([#646](https://github.com/cds-snc/gcds-components/issues/646)) ([4c8d850](https://github.com/cds-snc/gcds-components/commit/4c8d850569feafc538aa0e9593ba96cfdf9b97c2))
 * **gcds-sr-only:** Alignement avec la technique WCAG C7 ([#642](https://github.com/cds-snc/gcds-components/issues/642)) ([3cbe8bc](https://github.com/cds-snc/gcds-components/commit/3cbe8bc08d021849fa16269800fb08e12d4db037))
-* Mise à jour des unités de style pour corriger le rouge et s’aligner avec l’image de marque et corriger la taille de la police pour la légende du gcds-date-input ([#650](https://github.com/cds-snc/gcds-components/issues/650)) ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
-* Mise à jour des unités de styles pour propager les corrections du rouge de l’image de marque et la taille de la police de légende ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
+* Mise à jour des unités de style pour corriger le rouge du PFIM (Programme fédéral de l’image de marque) et corriger la taille de la police pour la légende du gcds-date-input ([#650](https://github.com/cds-snc/gcds-components/issues/650)) ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
 
 ## [0.26.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.0...gcds-components-v0.26.1)
 
