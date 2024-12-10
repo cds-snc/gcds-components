@@ -15,7 +15,7 @@ describe('gcds-notice', () => {
         <section class="gcds-notice notice--type-success">
           <gcds-icon class="notice__icon" name="check-circle" size="h4"></gcds-icon>
           <div>
-            <gcds-heading class="notice__heading" margintop="200" tag="h2">
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -42,7 +42,7 @@ describe('gcds-notice', () => {
         <section class="gcds-notice notice--type-danger">
           <gcds-icon class="notice__icon" name="exclamation-circle" size="h4"></gcds-icon>
           <div>
-            <gcds-heading class="notice__heading" margintop="200" tag="h2">
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -69,7 +69,7 @@ describe('gcds-notice', () => {
         <section class="gcds-notice notice--type-info">
           <gcds-icon class="notice__icon" name="info-circle" size="h4"></gcds-icon>
           <div>
-            <gcds-heading class="notice__heading" margintop="200" tag="h2">
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -96,7 +96,7 @@ describe('gcds-notice', () => {
         <section class="gcds-notice notice--type-warning">
           <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
           <div>
-            <gcds-heading class="notice__heading" margintop="200" tag="h2">
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -123,7 +123,7 @@ describe('gcds-notice', () => {
         <section class="gcds-notice notice--type-warning">
           <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
           <div>
-            <gcds-heading class="notice__heading" margintop="200" tag="h3">
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h3">
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -150,7 +150,7 @@ describe('gcds-notice', () => {
         <section class="gcds-notice notice--type-warning">
           <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
           <div>
-            <gcds-heading class="notice__heading" margintop="200" tag="h4">
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h4">
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -177,7 +177,7 @@ describe('gcds-notice', () => {
         <section class="gcds-notice notice--type-warning">
           <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
           <div>
-            <gcds-heading class="notice__heading" margintop="200" tag="h5">
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h5">
               GC Design System notice
             </gcds-heading>
             <slot></slot>
