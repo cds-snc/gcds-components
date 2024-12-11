@@ -186,26 +186,26 @@ export class GcdsCard {
       return (
         <Host>
           <div class="gcds-card">
-            {imgSrc && (
-              <img
-                src={imgSrc}
-                alt={imgAlt ? imgAlt : ''}
-                class="gcds-card__image"
-              />
-            )}
             {badge && !errors.includes('badge') && (
               <gcds-text
                 id="gcds-badge"
                 class="gcds-badge"
                 text-role="light"
                 margin-bottom="0"
-                size="caption"
+                size="small"
               >
                 <strong>
                   <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
                   {badge}
                 </strong>
               </gcds-text>
+            )}
+            {imgSrc && (
+              <img
+                src={imgSrc}
+                alt={imgAlt ? imgAlt : ''}
+                class="gcds-card__image"
+              />
             )}
             {Element != 'a' ? (
               <Element class="gcds-card__title" {...taggedAttr}>

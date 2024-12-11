@@ -8,13 +8,12 @@
     "compile": "gulp compile",
     "build": "npm run build --ws",
     "pretest": "npm run patch:stenciljs",
-    "test": "npx lerna run test",
-    "build-storybook": "npx lerna run build-storybook --scope=@cdssnc/gcds-components",
-    "start-storybook": "npx lerna run storybook --scope=@cdssnc/gcds-components",
-    "version": "npx lerna version",
+    "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/vue",
+    "build-storybook": "npm run build-storybook -w @cdssnc/gcds-components",
+    "start-storybook": "npm run storybook -w @cdssnc/gcds-components",
     "patch:stenciljs": "npx --yes patch-package",
     "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'",
-    "start": "npx lerna run start --scope=@cdssnc/gcds-components"
+    "start": "npm run start -w @cdssnc/gcds-components"
   },
   "dependencies": {
     "@angular/animations": "^19.0.0",
@@ -41,7 +40,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "lerna": "^8.0.2",
     "ng-packagr": "^19.0.1",
     "nx": "^16.0.0",
     "sass": "^1.43.5",

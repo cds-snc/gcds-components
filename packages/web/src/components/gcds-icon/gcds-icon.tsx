@@ -1,4 +1,5 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { SpacingValues } from '../../utils/types/spacing';
 
 @Component({
   tag: 'gcds-icon',
@@ -25,44 +26,12 @@ export class GcdsIcon {
   /**
    * Add margin to the left of the icon
    */
-  @Prop() marginLeft?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+  @Prop() marginLeft?: SpacingValues;
 
   /**
    * Add margin to the right of the icon
    */
-  @Prop() marginRight?:
-    | '0'
-    | '50'
-    | '100'
-    | '150'
-    | '200'
-    | '250'
-    | '300'
-    | '400'
-    | '450'
-    | '500'
-    | '550'
-    | '600'
-    | '700'
-    | '800'
-    | '900'
-    | '1000';
+  @Prop() marginRight?: SpacingValues;
 
   /**
    * Name of the icon.
@@ -79,7 +48,7 @@ export class GcdsIcon {
    */
   @Prop() size?:
     | 'inherit'
-    | 'caption'
+    | 'text-small'
     | 'text'
     | 'h6'
     | 'h5'

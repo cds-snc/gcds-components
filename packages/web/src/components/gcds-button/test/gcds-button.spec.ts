@@ -160,7 +160,7 @@ describe('gcds-button', () => {
         <mock:shadow-root>
           <a class="gcds-button button--role-primary button--regular" href="https://google.com" part="button" target="_blank">
             <slot></slot>
-            <gcds-icon name="external-link" label="Opens in a new tab." margin-left="200" />
+            <gcds-icon name="external-link" label="Opens in a new tab." margin-left="150" />
           </a>
         </mock:shadow-root>
         Button Label

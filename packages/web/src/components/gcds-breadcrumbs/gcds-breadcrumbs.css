@@ -18,7 +18,9 @@
 
     &.has-canada-link gcds-breadcrumbs-item:first-child,
     &:not(.has-canada-link) ::slotted(:first-child) {
-      margin: var(--gcds-breadcrumbs-item-first-child-margin) !important;
+      &:before {
+        display: none;
+      }
     }
 
     &.has-canada-link gcds-breadcrumbs-item:first-child:before {

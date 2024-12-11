@@ -32,21 +32,36 @@ export default {
       control: { type: 'select' },
       options: [
         '0',
+        '25',
         '50',
+        '75',
         '100',
+        '125',
         '150',
+        '175',
         '200',
+        '225',
         '250',
         '300',
+        '350',
         '400',
         '450',
         '500',
         '550',
         '600',
+        '650',
         '700',
+        '750',
         '800',
+        '850',
         '900',
+        '950',
         '1000',
+        '1050',
+        '1100',
+        '1150',
+        '1200',
+        '1250',
       ],
       table: {
         type: { summary: 'string' },
@@ -58,30 +73,45 @@ export default {
       control: { type: 'select' },
       options: [
         '0',
+        '25',
         '50',
+        '75',
         '100',
+        '125',
         '150',
+        '175',
         '200',
+        '225',
         '250',
         '300',
+        '350',
         '400',
         '450',
         '500',
         '550',
         '600',
+        '650',
         '700',
+        '750',
         '800',
+        '850',
         '900',
+        '950',
         '1000',
+        '1050',
+        '1100',
+        '1150',
+        '1200',
+        '1250',
       ],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '400' },
+        defaultValue: { summary: '300' },
       },
     },
     size: {
       control: { type: 'select' },
-      options: ['body', 'caption'],
+      options: ['body', 'small'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'body' },
@@ -121,7 +151,7 @@ const Template = args =>
   } ${args.display != 'block' ? `display="${args.display}"` : null} ${
     args.marginTop != '0' ? `margin-top="${args.marginTop}"` : null
   } ${
-    args.marginBottom != '400' ? `margin-bottom="${args.marginBottom}"` : null
+    args.marginBottom != '300' ? `margin-bottom="${args.marginBottom}"` : null
   }>
   ${args.default}
 </gcds-text>
@@ -134,7 +164,7 @@ const Template = args =>
   } ${args.display != 'block' ? `display="${args.display}"` : null} ${
     args.marginTop != '0' ? `marginTop="${args.marginTop}"` : null
   } ${
-    args.marginBottom != '400' ? `marginBottom="${args.marginBottom}"` : null
+    args.marginBottom != '300' ? `marginBottom="${args.marginBottom}"` : null
   }>
   ${args.default}
 </GcdsText>
@@ -147,7 +177,7 @@ const TemplatePlayground = args => `
   ${!args.characterLimit ? `character-limit="${args.characterLimit}"` : null}
   ${args.display != 'block' ? `display="${args.display}"` : null}
   ${args.marginTop != '0' ? `margin-top="${args.marginTop}"` : null}
-  ${args.marginBottom != '400' ? `margin-bottom="${args.marginBottom}"` : null}
+  ${args.marginBottom != '300' ? `margin-bottom="${args.marginBottom}"` : null}
 >
   ${args.default}
 </gcds-text>
@@ -160,7 +190,7 @@ Default.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'primary',
   default:
@@ -174,7 +204,7 @@ Primary.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'primary',
   default:
@@ -186,7 +216,7 @@ Secondary.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'secondary',
   default:
@@ -198,7 +228,7 @@ Light.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'light',
   default:
@@ -212,20 +242,20 @@ SizeBody.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'primary',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
 };
 
-export const SizeCaption = Template.bind({});
-SizeCaption.args = {
+export const SizeSmall = Template.bind({});
+SizeSmall.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
-  size: 'caption',
+  marginBottom: '300',
+  size: 'small',
   textRole: 'primary',
   default:
     'This is some example content to display the gcds-text component. It is a paragraph displaying non-heading content with matching GC Design System styles to provide accessible text sizes and colour contrast.',
@@ -238,7 +268,7 @@ CharacterLimit.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'primary',
   default:
@@ -250,7 +280,7 @@ NoCharacterLimit.args = {
   characterLimit: false,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'primary',
   default:
@@ -264,7 +294,7 @@ Props.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'primary',
   default:
@@ -278,7 +308,7 @@ Playground.args = {
   characterLimit: true,
   display: 'block',
   marginTop: '0',
-  marginBottom: '400',
+  marginBottom: '300',
   size: 'body',
   textRole: 'primary',
   default:
