@@ -15,7 +15,7 @@
     "url": "git+https://github.com/cds-snc/gcds-components.git"
   },
   "scripts": {
-    "prebuild": "node ./scripts/buildPatch.js",
+    "prebuild": "node ./scripts/patchFiles.js",
     "build": "npm run tsc",
     "tsc": "tsc -p ."
   },
@@ -37,6 +37,7 @@
     "@types/react-dom": "^18.0.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "replace-in-file": "^8.0.0",
     "typescript": "~5.1.0"
   },
   "license": "MIT"
