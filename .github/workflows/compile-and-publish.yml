@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'lerna.json'
+      - '.release-please-manifest.json'
 
 permissions:
   id-token: write
