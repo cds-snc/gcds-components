@@ -2,19 +2,19 @@
 
 PACKAGE_NAME=$1
 
-## Path to lerna.json
-LERNA_JSON="lerna.json"
+## Path to the release manifest which has the version numbers
+RELEASE_PLEASE_MANIFEST=".release-please-manifest.json"
 
 # Check if lerna.json exists
-if [ ! -f "$LERNA_JSON" ]; then
-  echo "lerna.json not found!"
+if [ ! -f "$RELEASE_PLEASE_MANIFEST" ]; then
+  echo ".release-please-manifest.json not found!"
   exit 1
 fi
 
 echo "Current working directory: $(pwd)"
 
 ## Read and process lerna.json using jq to get the package version
-PACKAGE_VERSION=$(jq -r '.version' $LERNA_JSON)
+PACKAGE_VERSION=$(jq -r '."packages/web"' $RELEASE_PLEASE_MANIFEST)
 
 echo "PACKAGE_VERSION: $PACKAGE_VERSION"
 echo "CDN_BUCKET: $CDN_BUCKET"
