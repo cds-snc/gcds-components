@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "stencil build --docs",
-    "postbuild": "node ./scripts/copyCSSFile.js",
+    "postbuild": "node ./scripts/copyCSSFile.js && node ./scripts/patchFiles.js",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",

@@ -15,7 +15,6 @@
     "url": "git+https://github.com/cds-snc/gcds-components.git"
   },
   "scripts": {
-    "prebuild": "node ./scripts/patchFiles.js",
     "build": "npm run tsc",
     "tsc": "tsc -p ."
   },

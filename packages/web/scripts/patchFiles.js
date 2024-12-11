@@ -14,7 +14,7 @@
     {
       files: path.join(
         __dirname,
-        '../src/components/stencil-generated/react-component-lib/utils/index.tsx',
+        '../../react/src/components/stencil-generated/react-component-lib/utils/index.tsx',
       ),
       from: 'return React.forwardRef(forwardRef);',
       to: '// @ts-expect-error\n  return React.forwardRef(forwardRef);',
@@ -22,7 +22,7 @@
     {
       files: path.join(
         __dirname,
-        '../src/components/stencil-generated/react-component-lib/createOverlayComponent.tsx',
+        '../../react/src/components/stencil-generated/react-component-lib/createOverlayComponent.tsx',
       ),
       from: 'return <Overlay {...props} forwardedRef={ref} />;',
       to: '// @ts-expect-error\n    return <Overlay {...props} forwardedRef={ref} />;',
