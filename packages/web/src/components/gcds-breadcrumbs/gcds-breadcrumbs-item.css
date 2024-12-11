@@ -18,7 +18,10 @@
 @layer default {
   :host(.gcds-breadcrumbs-item) {
     position: relative;
-    margin: var(--gcds-breadcrumbs-item-margin) !important;
+
+    @media screen and (width >= 30rem) {
+      margin: var(--gcds-breadcrumbs-item-margin) !important;
+    }
 
     &:before {
       position: relative;
@@ -30,7 +33,7 @@
 
 /* Note: mobile specific style decision */
 @layer mobile {
-  @media screen and (max-width: 30rem) {
+  @media screen and (width < 30rem) {
     :host(.gcds-breadcrumbs-item) {
       display: block;
       margin: var(--gcds-breadcrumbs-mobile-item-margin) !important;
