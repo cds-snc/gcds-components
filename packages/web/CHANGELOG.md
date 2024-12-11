@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.29.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.28.0...gcds-components-v0.29.0) (2024-12-11)
+
+
+### :rocket: New Features
+
+* New gcds-notice component ([#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* adjust breadcrumbs margin ([#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
+* adjust details padding ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
+
 ## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0) (2024-12-05)
 
 ### :rotating_light: Breaking changes
