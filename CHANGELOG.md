@@ -18,11 +18,9 @@ Upgrade your version number to this release version to receive the changes in fo
 
 ### Spacing changes
 
-The valid values have changed for the properties in the following components. While some values still remain, their underlying value in rem or pixels have changed. See the spacing section of our tokens release to check out the new underlying values.
-
 The valid variables used for the properties in the following components have been updated. While some options remain unchanged, the underlying values they contain (in pixels) have been modified. Check the spacing section of our tokens release for the updated pixel values.
 
-_Example_: If you were previously using `400` for the `margin` property on `gcds-container`, it will be updated to `32px`. If you want to keep its previous size of `40px`, you need to change your code to use `450` instead. Here is a [visual mapping guide](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) to help you identify the values you need to use.
+_Example_: If you were previously using `400` for the `margin` property on `gcds-container`, it will be updated to `32px`. If you want to keep its previous size of `24px`, you need to change your code to use `300` instead. Here is a [visual mapping guide](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) to help you identify the values you need to use.
 
 Only update your code _if you use these properties_, otherwise the new default values will be applied automatically.
 
@@ -591,6 +589,114 @@ Released on: 2024-02-22
 # Journal des modifications
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
+
+## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0)
+
+Version publiée le : 2024-12-05
+
+### :rotating_light: Changements non rétrocompatibles
+
+* mise à jour des composants avec de nouvelles typographies + nouvelles unités de style d'espacement ([#695 en anglais](https://github.com/cds-snc/gcds-components/issues/695)) ([105cd4b](https://github.com/cds-snc/gcds-components/commit/105cd4b5e755393da053aa210505260f1e8e249d))
+
+Nous avons apporté de petits ajustements à toutes les tailles de typographie et d'espacement dans le système de design. Les composants du système de design GC ressemblent maintenant davantage à leurs homologues sur Canada.ca.
+
+Ces mises à jour ont été introduites avec la [dernière version de nos unités de style de conception.](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#200).
+
+_**Si vous utilisez ce paquetage,**_
+mettez à jour votre numéro de version vers cette version de publication pour recevoir les modifications des tailles de police, des hauteurs de ligne et des valeurs d'espacement.
+
+### Changement d’espacement
+
+Les variables valides utilisées pour les propriétés dans les composants suivants ont été mises à jour. Bien que certaines options restent inchangées, les valeurs sous-jacentes qu'elles contiennent (en pixels) ont été modifiées. Vérifiez la section d'espacement de notre publication d'unité de style pour les valeurs de pixel mises à jour.
+
+Exemple: Si vous utilisiez auparavant 400 pour la propriété de marge sur gcds-container, elle sera mise à jour à 32px. Si vous souhaitez conserver sa taille précédente de 40px, vous devez modifier votre code pour utiliser 450 à la place. Voici un [guide de cartographie visuelle](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) pour vous aider à identifier les valeurs que vous devez utiliser.
+
+Mettez à jour votre code uniquement _si vous utilisez ces propriétés_, sinon les nouvelles valeurs par défaut seront appliquées automatiquement.
+
+* [**gcds-container**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-container/readme.md)
+  - `margin`
+  - `padding`
+* [**gcds-heading**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-heading/readme.md)
+  - `margin-top`
+  - `margin-bottom`
+* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+  - `margin-left`
+  - `margin-right`
+* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+  - `margin-top`
+  - `margin-bottom`
+
+### Changements de typographie
+
+Mettez à jour uniquement si vous utilisez la valeur de légende pour la propriété de taille dans les composants suivants.
+* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+  - Changer `caption` à `text-small`
+* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+  - Changer `caption`  à `text-small`
+
+## [0.27.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.3...gcds-components-v0.27.0)
+
+Version publiée le : 2024-11-21
+
+### :rocket: Nouvelle fonctionnalité
+
+* **gcds-file-uploader:** Ajouter des propriétés d’extension pour les fichiers et faciliter l'accès aux fichiers téléversés ([#676](https://github.com/cds-snc/gcds-components/issues/676)) ([2323e42](https://github.com/cds-snc/gcds-components/commit/2323e42e8d492891d0550f370fbface17c33fe09))
+
+### :bug: :wrench: Corrections de bogues
+
+* Autoriser le contournement de la soumission de formulaire bloquant avec l'attribut validate-on ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+* Propriété du message d'erreur bloquant la soumission du formulaire. ([#673](https://github.com/cds-snc/gcds-components/issues/673)) ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+* **gcds-fieldset:** Ajoutez du CSS pour permettre aux composants de formulaire de maintenir une mise en page réactive ([#683](https://github.com/cds-snc/gcds-components/issues/683)) ([6b41ba0](https://github.com/cds-snc/gcds-components/commit/6b41ba0f2e9bf208b1ee090dbb939041914cc9bf))
+
+### :arrows_counterclockwise: Refactorisation de code
+
+* ajuster les tailles de police pour le composant détails et le résumé +  remplissage du panneau ([#674](https://github.com/cds-snc/gcds-components/issues/674)) ([fd5a422](https://github.com/cds-snc/gcds-components/commit/fd5a422d5ab66b37535dbb243fa156df769146ad))
+* améliorer la validation du gcds-date-modified ([#679](https://github.com/cds-snc/gcds-components/issues/679)) ([481d8a3](https://github.com/cds-snc/gcds-components/commit/481d8a31dabc7f685f1d777ff7b12cb381bfa11d))
+* supprimer la couleur de focus pour l'étiquette,  l'indice et la légende ([#678](https://github.com/cds-snc/gcds-components/issues/678)) ([544f1cb](https://github.com/cds-snc/gcds-components/commit/544f1cb0036d6f4fc4552ae68422e628a0f4dd55))
+
+## [0.26.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.2...gcds-components-v0.26.3) 
+
+Version publiée le : 2024-10-10
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-error-summary:** focaliser l'élément gcds de la liste des liens d'erreur manuels ([#666](https://github.com/cds-snc/gcds-components/issues/666)) ([290e271](https://github.com/cds-snc/gcds-components/commit/290e2712868a0ab691e4a3be66f5615f6a8e2e7f))
+* **gcds-select:** Mise à jour des options disponibles lorsqu'elles sont modifiées pour le composant sélection. ([#655](https://github.com/cds-snc/gcds-components/issues/655)) ([e7a16cb](https://github.com/cds-snc/gcds-components/commit/e7a16cb6b6d4b5e54887431b2eb2931bfaf1380a))
+
+### :arrows_counterclockwise: Refactorisation de code
+
+* **gcds-signature:** Texte de remplacement de la signature pour permettre le bilinguisme ([#660](https://github.com/cds-snc/gcds-components/issues/660)) ([146e8b2](https://github.com/cds-snc/gcds-components/commit/146e8b29fbd216d655c93266fed0185b540b1712))
+
+## [0.26.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.1...gcds-components-v0.26.2)
+
+Version publiée le : 2024-09-25
+
+### :bug: :wrench: Corrections de bogues
+
+* Corriger les fautes de frappe dans les unités de style ([#646](https://github.com/cds-snc/gcds-components/issues/646)) ([4c8d850](https://github.com/cds-snc/gcds-components/commit/4c8d850569feafc538aa0e9593ba96cfdf9b97c2))
+* **gcds-sr-only:** Alignement avec la technique WCAG C7 ([#642](https://github.com/cds-snc/gcds-components/issues/642)) ([3cbe8bc](https://github.com/cds-snc/gcds-components/commit/3cbe8bc08d021849fa16269800fb08e12d4db037))
+* Mise à jour des unités de style pour corriger le rouge du PFIM (Programme fédéral de l’image de marque) et corriger la taille de la police pour la légende du gcds-date-input ([#650](https://github.com/cds-snc/gcds-components/issues/650)) ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
+
+## [0.26.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.0...gcds-components-v0.26.1)
+
+Version publiée le : 2024-09-16
+
+### :bug: :wrench: Corrections de bogues
+
+* ajouter la taille de police pour la version mobile du composant recherche ([#640](https://github.com/cds-snc/gcds-components/issues/640)) ([2f8efa3](https://github.com/cds-snc/gcds-components/commit/2f8efa337a49411da258e4b2c9dea64a50021cbf))
+
+## [0.26.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.1...gcds-components-v0.26.0)
+
+Version publiée le : 2024-09-12
+
+### :rocket: Nouvelle fonctionnalité
+
+* Ajouter la valeur de l'attribut pour le bouton gcds-button ([#635](https://github.com/cds-snc/gcds-components/issues/635)) ([085d964](https://github.com/cds-snc/gcds-components/commit/085d96416e75e807f51a0d4e18b45e6114ac497a))
+
+### :bug: :wrench: Corrections de bogues
+
+* divers petits correctifs de bogues de conception ([#634](https://github.com/cds-snc/gcds-components/issues/634)) ([8eefbe4](https://github.com/cds-snc/gcds-components/commit/8eefbe4def6d385f8130df4ddb4a2065ae4f6c57))
+
 
 ## [0.25.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.0...gcds-components-v0.25.1)
 
