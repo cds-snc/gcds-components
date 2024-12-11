@@ -20,12 +20,14 @@
 ### Used by
 
  - [gcds-error-summary](../gcds-error-summary)
+ - [gcds-notice](../gcds-notice)
  - [gcds-stepper](../gcds-stepper)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-error-summary --> gcds-heading
+  gcds-notice --> gcds-heading
   gcds-stepper --> gcds-heading
   style gcds-heading fill:#f9f,stroke:#333,stroke-width:4px
 ```
