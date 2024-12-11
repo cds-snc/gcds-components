@@ -7,7 +7,7 @@ RELEASE_PLEASE_MANIFEST=".release-please-manifest.json"
 
 # Check if lerna.json exists
 if [ ! -f "$RELEASE_PLEASE_MANIFEST" ]; then
-  echo "lerna.json not found!"
+  echo ".release-please-manifest.json not found!"
   exit 1
 fi
 
