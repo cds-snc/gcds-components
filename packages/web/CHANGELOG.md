@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.30.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.0...gcds-components-v0.30.0-canary.0) (2024-12-11)
+
+
+### :bug: :wrench: Bug Fixes
+
+* breadcrumbs item arrow display ([#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
+* breadcrumbs item arrow width ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
+
 ## [0.29.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.28.0...gcds-components-v0.29.0) (2024-12-11)
 
 
