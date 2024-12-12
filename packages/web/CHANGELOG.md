@@ -1,12 +1,32 @@
 # Changelog
 
+## [0.29.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.0...gcds-components-v0.29.1) (2024-12-11)
+
+
+### :bug: :wrench: Bug Fixes
+
+* breadcrumbs item arrow display ([#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
+* breadcrumbs item arrow width ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
+
+## [0.29.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.28.0...gcds-components-v0.29.0) (2024-12-11)
+
+
+### :rocket: New Features
+
+* New gcds-notice component ([#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* adjust breadcrumbs margin ([#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
+
 ## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0) (2024-12-05)
 
 ### :rotating_light: Breaking changes
 
 * update components with new typography + spacing tokens ([#695](https://github.com/cds-snc/gcds-components/issues/695)) ([105cd4b](https://github.com/cds-snc/gcds-components/commit/105cd4b5e755393da053aa210505260f1e8e249d))
 
-We've made small adjustments to all typography and spacing sizes across the design system. GC Design System components are now closer in appearance to their counterparts on Canada.ca.  
+We've made small adjustments to all typography and spacing sizes across the design system. GC Design System components are now closer in appearance to their counterparts on Canada.ca.
 
 These updates were introduced with the [latest release of our design tokens](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#200).
 
@@ -15,9 +35,9 @@ Upgrade your version number to this release version to receive the changes in fo
 
 ### Spacing changes
 
-The valid values have changed for the properties in the following components. While some values still remain, their underlying value in rem or pixels have changed. See the spacing section of our tokens release to check out the new underlying values. 
+The valid values have changed for the properties in the following components. While some values still remain, their underlying value in rem or pixels have changed. See the spacing section of our tokens release to check out the new underlying values.
 
-The valid variables used for the properties in the following components have been updated. While some options remain unchanged, the underlying values they contain (in pixels) have been modified. Check the spacing section of our tokens release for the updated pixel values. 
+The valid variables used for the properties in the following components have been updated. While some options remain unchanged, the underlying values they contain (in pixels) have been modified. Check the spacing section of our tokens release for the updated pixel values.
 
 _Example_: If you were previously using `400` for the `margin` property on `gcds-container`, it will be updated to `32px`. If you want to keep its previous size of `40px`, you need to change your code to use `450` instead. Here is a [visual mapping guide](https://github.com/cds-snc/gcds-tokens/blob/main/CHANGELOG.md#spacing-tokens-visual-mapping-guide) to help you identify the values you need to use.
 
