@@ -10,7 +10,7 @@ describe('gcds-error-message', () => {
     expect(root).toEqualHtml(`
       <gcds-error-message message-id="input-renders" id="error-message-input-renders" class="gcds-error-message-wrapper">
         <mock:shadow-root>
-          <gcds-text class="error-message" role="alert" margin-bottom="100">
+          <gcds-text class="error-message" role="alert" margin-bottom="75">
             <gcds-icon name="triangle-exclamation" margin-right="50"></gcds-icon>
             <strong>
               <slot></slot>
