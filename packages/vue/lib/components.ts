@@ -318,6 +318,13 @@ export const GcdsNavLink = /*@__PURE__*/ defineContainer<JSX.GcdsNavLink>('gcds-
 ]);
 
 
+export const GcdsNotice = /*@__PURE__*/ defineContainer<JSX.GcdsNotice>('gcds-notice', undefined, [
+  'type',
+  'noticeTitle',
+  'noticeTitleTag'
+]);
+
+
 export const GcdsPagination = /*@__PURE__*/ defineContainer<JSX.GcdsPagination>('gcds-pagination', undefined, [
   'display',
   'label',
