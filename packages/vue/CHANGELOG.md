@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.30.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.29.1...gcds-components-vue-v0.30.0) (2024-12-17)
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* adjust form element spacing ([#707](https://github.com/cds-snc/gcds-components/issues/707)) ([4393412](https://github.com/cds-snc/gcds-components/commit/43934122d91718cd73881c03a12c4c570dca5862))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.29.1 to ^0.30.0
+
 ## [0.29.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.29.0...gcds-components-vue-v0.29.1) (2024-12-11)
 
 
