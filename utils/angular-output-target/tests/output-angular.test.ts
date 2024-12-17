@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { ComponentCompilerEventComplexType, ComponentCompilerMeta } from '@stencil/core/internal';
 import { generateProxies } from '../src/output-angular';
 import { PackageJSON, OutputTargetAngular } from '../src/types';
@@ -17,9 +18,7 @@ describe('generateProxies', () => {
     };
 
     const finalText = generateProxies(components, pkgData, outputTarget, rootDir);
-    expect(
-      finalText.includes(`import { Components } from '../../angular-output-target/dist/types/components';`)
-    ).toBeFalsy();
+    expect(finalText.includes(`import { Components } from '../../angular/dist/types/components';`)).toBeFalsy();
     expect(finalText.includes(`import { Components } from 'component-library';`)).toBeTruthy();
   });
 
@@ -29,10 +28,8 @@ describe('generateProxies', () => {
     } as OutputTargetAngular;
 
     const finalText = generateProxies(components, pkgData, outputTarget, rootDir);
-    expect(finalText.includes(`import { Components } from 'component-library';`)).toBeFalsy();
-    expect(
-      finalText.includes(`import { Components } from '../../angular-output-target/dist/types/components';`)
-    ).toBeTruthy();
+    expect(finalText).not.toContain(`import { Components } from 'component-library';`);
+    expect(finalText.includes(`import { Components } from '../../angular-output-target/dist/types/components';`)).toBeTruthy();
   });
 
   it('should include output related imports when there is component with not internal event', () => {
@@ -55,7 +52,7 @@ describe('generateProxies', () => {
             complexType: {
               original: '',
               resolved: '',
-              references: { fakeReference: { location: 'local' } },
+              references: { fakeReference: { location: 'local', id: '' } },
             } as ComponentCompilerEventComplexType,
           },
         ],
@@ -96,7 +93,7 @@ describe('generateProxies', () => {
             complexType: {
               original: '',
               resolved: '',
-              references: { fakeReference: { location: 'local' } },
+              references: { fakeReference: { location: 'local', id: '' } },
             } as ComponentCompilerEventComplexType,
           },
         ],

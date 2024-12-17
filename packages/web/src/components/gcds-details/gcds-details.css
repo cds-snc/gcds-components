@@ -1,4 +1,4 @@
-@layer reset, default, hover, focus;
+@layer reset, default, hover, focus, print;
 
 @layer reset {
   :host {
@@ -149,5 +149,28 @@
     outline-offset: var(--gcds-details-focus-outline-offset);
     outline: var(--gcds-details-focus-outline);
     text-decoration: none;
+  }
+}
+
+@layer print {
+  /* Display details component open by default for print */
+  @media print {
+    :host .gcds-details {
+      .details__summary{
+        font-weight: var(--gcds-details-print-summary-font-weight);
+        text-decoration: none;
+        color: var(--gcds-details-print-summary-text);
+
+        &:before {
+          transform: rotate(90deg);
+        }
+      }
+
+      .details__panel {
+        display: block;
+        /* Note: Logical properties are not yet supported in print */
+        border-left: var(--gcds-details-panel-border-width) solid var(--gcds-details-panel-border-color);
+      }
+    }
   }
 }
