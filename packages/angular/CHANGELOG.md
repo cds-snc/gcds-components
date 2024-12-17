@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.30.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.29.1...gcds-components-angular-v0.30.0) (2024-12-17)
+
+
+### :rocket: New Features
+
+* **angular:** Update angular dependencies to v19 ([#709](https://github.com/cds-snc/gcds-components/issues/709)) ([ab1c12b](https://github.com/cds-snc/gcds-components/commit/ab1c12b822e13040ac8da7e66c5e9ada9aea1180))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @cdssnc/gcds-components bumped from ^0.29.1 to ^0.30.0
+
 ## [0.29.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.29.0...gcds-components-angular-v0.29.1) (2024-12-11)
 
 

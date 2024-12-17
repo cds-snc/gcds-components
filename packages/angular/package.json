@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components-angular",
-  "version": "0.29.1",
+  "version": "0.30.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Angular wrapper for gcds-components",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -20,7 +20,7 @@
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@cdssnc/gcds-components": "^0.29.1"
+    "@cdssnc/gcds-components": "^0.30.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
