@@ -153,6 +153,7 @@
 }
 
 @layer print {
+  /* Display details component open by default for print */
   @media print {
     :host .gcds-details {
       .details__summary{
