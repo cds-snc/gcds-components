@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.30.0...gcds-components-v0.31.0-canary.0) (2024-12-17)
+
+
+### Patch
+
+* **gcds-components:** Synchronize GCDS Components versions
+
 ## [0.30.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.1...gcds-components-v0.30.0) (2024-12-17)
 
 
