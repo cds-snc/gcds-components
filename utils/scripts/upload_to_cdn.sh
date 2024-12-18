@@ -5,7 +5,7 @@ PACKAGE_NAME=$1
 ## Path to the release manifest which has the version numbers
 RELEASE_PLEASE_MANIFEST=".release-please-manifest.json"
 
-# Check if lerna.json exists
+# Check if the release please manifest file exists
 if [ ! -f "$RELEASE_PLEASE_MANIFEST" ]; then
   echo ".release-please-manifest.json not found!"
   exit 1
@@ -13,7 +13,7 @@ fi
 
 echo "Current working directory: $(pwd)"
 
-## Read and process lerna.json using jq to get the package version
+## Read and process .release-please-manifest.json using jq to get the package version
 PACKAGE_VERSION=$(jq -r '."packages/web"' $RELEASE_PLEASE_MANIFEST)
 
 echo "PACKAGE_VERSION: $PACKAGE_VERSION"
