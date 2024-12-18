@@ -24,7 +24,7 @@ You can find the full documentation for GC Design System Components on [https://
 - Run `npm install` to install all Node.js dependencies.
 - Run `npm run build` to compile all three packages (web components, react and angular).
 
-You can test the Angular and React packages locally as this repository is setup using [lerna](https://lerna.js.org/) which uses [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces) under the hood. Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`.
+You can test the Angular and React packages locally as this repository is setup using [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`.
 
 <br/>
 <br/>
@@ -83,7 +83,7 @@ Toute la documentation sur les composants de Système de design GC est accessibl
 - Exécutez ensuite `npm install` pour installer toutes les dépendances Node.js.
 - Finalement, exécutez `npm run build` pour compiler les trois paquets (composants Web, React et Angular).
 
-Vous pouvez tester localement les paquets Angular et React puisque ce référentiel est configuré à l’aide de [lerna](https://lerna.js.org/), qui utilise [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces) à la base. Npm workspaces gère automatiquement la liaison de paquets dépendants à l’exécution de `npm install`, donc nul besoin d’exécuter manuellement `npm link`.
+Vous pouvez tester localement les paquets Angular et React puisque ce référentiel est configuré à l’aide de [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces gère automatiquement la liaison de paquets dépendants à l’exécution de `npm install`, donc nul besoin d’exécuter manuellement `npm link`.
 
 <br/>
 <br/>
