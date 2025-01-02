@@ -144,7 +144,7 @@ npm install @cdssnc/gcds-components
 
 Utilisez la version la plus récente de Système de design GC. Les versions épinglées offrent stabilité et prévisibilité parce que le code ne changera pas de manière inattendue, ce qui peut être crucial pour maintenir la stabilité d'une application. Toutefois, il faut mettre à jour manuellement les liens CDN chaque fois qu'une version plus récente de Système de design GC est publiée.
 
-Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site. Remplacez `<version-number>` par le numéro de version le plus récent pour recevoir les mises à jour correspondantes
+Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site. Remplacez `<version-number>` par le numéro de version le plus récent pour recevoir les mises à jour correspondantes.
 
 ```html
 <!-- Icons Font Awesome (pour avoir accès aux icônes, installer Font Awesome) -->
