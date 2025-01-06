@@ -18,8 +18,11 @@ npm install @cdssnc/gcds-components
 
 ### Install with CDN
 
-Place the following code in the `<head>` element of your site.
-All gcds-components should now be ready to use in your site.
+#### Add the code
+
+Use the latest version of GC Design System. Pinned versions provide stability and predictability because the code will remain consistent and won't change unexpectedly, which can be crucial for maintaining the stability of an application. However, it requires manual updating of the CDN links whenever a newer version of GC Design System is released.
+
+Place the following code in the `<head>` element of your site. Replace `<version-number>` with the latest version number to receive corresponding updates.
 
 ```html
 <!-- Icons Font Awesome (to access icons, import Font Awesome) -->
@@ -32,25 +35,29 @@ All gcds-components should now be ready to use in your site.
 <!-- GC Design System -->
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css"
+  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
 ></script>
 <script
   nomodule
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.js"
 ></script>
 ```
 
 Note: `<script type="module">` requires a server to load properly, if developing locally, please use `<script nomodule>`.
 
-### Supported frameworks
+#### Automatic updates using `@latest`
+
+Use the `@latest` version of GC Design System to receive automatic updates whenever a new version is released. **While it removes the need to manually update the CDN links, it adds the risk of introducing breaking changes to the codebase as new versions are automatically applied**.
+
+## Supported frameworks
 
 The gcds-component library works in multiple frameworks.
 
-#### Javascript
+### Javascript
 
 Place the following code in the `<head>` element of your site.
 
@@ -79,7 +86,7 @@ Place the following code in the `<head>` element of your site.
 
 All gcds-components should now be ready to use in your site.
 
-#### React
+### React
 
 Please reference [GC Design System Components – React](../react/README.md)
 
@@ -87,7 +94,7 @@ Please reference [GC Design System Components – React](../react/README.md)
 
 Please reference [GC Design System Components – Angular](../angular/README.md)
 
-#### Vue
+### Vue
 
 Place the following code in the `main.js` file of your app.
 
@@ -125,17 +132,19 @@ Toute la documentation sur les composants de Système de design GC est accessibl
 
 ## Installation
 
-## Installer le paquet avec npm
+### Installer le paquet avec npm
 
 ```js
 npm install @cdssnc/gcds-components
 ```
 
-## Installer le paquet avec CDN
+### Installer le paquet avec CDN
 
-Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site.
+#### Ajoutez le code
 
-Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components sur votre site.
+Utilisez la version la plus récente de Système de design GC. Les versions épinglées offrent stabilité et prévisibilité parce que le code ne changera pas de manière inattendue, ce qui peut être crucial pour maintenir la stabilité d'une application. Toutefois, il faut mettre à jour manuellement les liens CDN chaque fois qu'une version plus récente de Système de design GC est publiée.
+
+Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site. Remplacez `<version-number>` par le numéro de version le plus récent pour recevoir les mises à jour correspondantes.
 
 ```html
 <!-- Icons Font Awesome (pour avoir accès aux icônes, installer Font Awesome) -->
@@ -148,19 +157,23 @@ Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components 
 <!-- GC Système de design -->
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css"
+  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
 ></script>
 <script
   nomodule
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.js"
 ></script>
 ```
 
 Remarque : Il faut un serveur pour que `<script type="module">` se charge correctement. Si vous développez localement, utilisez plutôt `<script nomodule>`.
+
+#### Mises à jour automatiques grâce à `@latest`
+
+Utilisez la version `@latest` de Système de design GC pour recevoir des mises à jour automatiques chaque fois qu'une nouvelle version est publiée. **Bien que cette approche vous évite la mise à jour manuelle des liens CDN, elle court le risque d'introduire des modifications qui entraînent une rupture de compatibilité avec le code base à mesure que les nouvelles versions sont automatiquement appliquées**.
 
 ## Cadres d'application pris en charge
 
@@ -189,7 +202,7 @@ Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site.
 
 Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components sur votre site.
 
-#### React
+### React
 
 Veuillez faire référence [Composants de Système de design GC – React](../react/README.md)
 
