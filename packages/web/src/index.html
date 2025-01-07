@@ -105,16 +105,6 @@
       <gcds-heading tag="h1">GC Design System</gcds-heading>
 
       <hr class="my-550" />
-    <!-- GCDS Map with a single map layer -->
-    <gcds-map lat="45.4215" lon="-75.6972" zoom="10" projection="OSMTILE" caption="test" controls controlslist="geolocation">
-      <!-- Canada Base Map - Transportation (CBMT) layer -->
-      <gcds-map-layer
-        label="Canada Base Map - Transportation (CBMT)"
-        src="https://geogratis.gc.ca/mapml/en/osmtile/cbmt/"
-        checked="true"
-        opacity="1.0"
-      ></gcds-map-layer>
-    </gcds-map>
 
       <!-- ------------- Alerts ------------- -->
 
@@ -485,7 +475,20 @@
       <gcds-heading tag="h6">Heading level 6</gcds-heading>
 
       <hr class="my-550" />
+    <!-- ------------- Maps and Layers ------------- -->
+    
+    <gcds-heading tag="h2">Maps</gcds-heading>
+    
+    <gcds-map lat="45.4215" lon="-75.6972" zoom="10" projection="OSMTILE" caption="test" controls controlslist="geolocation">
+      <gcds-map-layer
+        label="Canada Base Map - Transportation (CBMT)"
+        src="https://geogratis.gc.ca/mapml/en/osmtile/cbmt/"
+        checked="true"
+        opacity="1.0"
+      ></gcds-map-layer>
+    </gcds-map>
 
+      <hr class="my-550" />
       <!-- ------------- Notices ------------- -->
 
       <gcds-heading tag="h2">Notices</gcds-heading>
