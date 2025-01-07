@@ -16,6 +16,35 @@ describe('gcds-notice', () => {
           <gcds-icon class="notice__icon" name="check-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
+              <gcds-sr-only tag="span">Success: </gcds-sr-only>
+              GC Design System notice
+            </gcds-heading>
+            <slot></slot>
+          </div>
+        </section>
+      </mock:shadow-root>
+      <gcds-text>
+        Provide additonal information
+      </gcds-text>
+    </gcds-notice>
+    `);
+  });
+
+  it('renders - success type - french', async () => {
+    const page = await newSpecPage({
+      components: [GcdsNotice],
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="success" lang="fr">
+        <gcds-text>Provide additonal information</gcds-text>
+      </gcds-notice>`,
+    });
+    expect(page.root)
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="success" lang="fr">
+      <mock:shadow-root>
+        <section class="gcds-notice notice--type-success">
+          <gcds-icon class="notice__icon" name="check-circle" size="h4"></gcds-icon>
+          <div>
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
+              <gcds-sr-only tag="span">Succès : </gcds-sr-only>
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -43,6 +72,35 @@ describe('gcds-notice', () => {
           <gcds-icon class="notice__icon" name="exclamation-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
+              <gcds-sr-only tag="span">Danger: </gcds-sr-only>
+              GC Design System notice
+            </gcds-heading>
+            <slot></slot>
+          </div>
+        </section>
+      </mock:shadow-root>
+      <gcds-text>
+        Provide additonal information
+      </gcds-text>
+    </gcds-notice>
+    `);
+  });
+
+  it('renders - danger type - french', async () => {
+    const page = await newSpecPage({
+      components: [GcdsNotice],
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="danger" lang="fr">
+        <gcds-text>Provide additonal information</gcds-text>
+      </gcds-notice>`,
+    });
+    expect(page.root)
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="danger" lang="fr">
+      <mock:shadow-root>
+        <section class="gcds-notice notice--type-danger">
+          <gcds-icon class="notice__icon" name="exclamation-circle" size="h4"></gcds-icon>
+          <div>
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
+              <gcds-sr-only tag="span">Danger : </gcds-sr-only>
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -70,6 +128,35 @@ describe('gcds-notice', () => {
           <gcds-icon class="notice__icon" name="info-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
+              <gcds-sr-only tag="span">Information: </gcds-sr-only>
+              GC Design System notice
+            </gcds-heading>
+            <slot></slot>
+          </div>
+        </section>
+      </mock:shadow-root>
+      <gcds-text>
+        Provide additonal information
+      </gcds-text>
+    </gcds-notice>
+    `);
+  });
+
+  it('renders - info type - french', async () => {
+    const page = await newSpecPage({
+      components: [GcdsNotice],
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="info" lang="fr">
+        <gcds-text>Provide additonal information</gcds-text>
+      </gcds-notice>`,
+    });
+    expect(page.root)
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="info" lang="fr">
+      <mock:shadow-root>
+        <section class="gcds-notice notice--type-info">
+          <gcds-icon class="notice__icon" name="info-circle" size="h4"></gcds-icon>
+          <div>
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
+              <gcds-sr-only tag="span">Information : </gcds-sr-only>
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -97,6 +184,35 @@ describe('gcds-notice', () => {
           <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
+              <gcds-sr-only tag="span">Warning: </gcds-sr-only>
+              GC Design System notice
+            </gcds-heading>
+            <slot></slot>
+          </div>
+        </section>
+      </mock:shadow-root>
+      <gcds-text>
+        Provide additonal information
+      </gcds-text>
+    </gcds-notice>
+    `);
+  });
+
+  it('renders - warning type - french', async () => {
+    const page = await newSpecPage({
+      components: [GcdsNotice],
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="warning" lang="fr">
+        <gcds-text>Provide additonal information</gcds-text>
+      </gcds-notice>`,
+    });
+    expect(page.root)
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="warning" lang="fr">
+      <mock:shadow-root>
+        <section class="gcds-notice notice--type-warning">
+          <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
+          <div>
+            <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
+              <gcds-sr-only tag="span">Avertissement : </gcds-sr-only>
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -124,6 +240,7 @@ describe('gcds-notice', () => {
           <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h3">
+              <gcds-sr-only tag="span">Warning: </gcds-sr-only>
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -151,6 +268,7 @@ describe('gcds-notice', () => {
           <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h4">
+              <gcds-sr-only tag="span">Warning: </gcds-sr-only>
               GC Design System notice
             </gcds-heading>
             <slot></slot>
@@ -178,6 +296,7 @@ describe('gcds-notice', () => {
           <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h5">
+              <gcds-sr-only tag="span">Warning: </gcds-sr-only>
               GC Design System notice
             </gcds-heading>
             <slot></slot>
