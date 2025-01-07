@@ -5,7 +5,6 @@ import { inlineSvg } from 'stencil-inline-svg';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
-import { copyMapMLPlugin } from './scripts/copyMapMLStencilPlugin';
 
 export const config: Config = {
   namespace: 'gcds',
