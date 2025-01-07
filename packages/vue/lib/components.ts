@@ -309,14 +309,16 @@ export const GcdsMap = /*@__PURE__*/ defineContainer<JSX.GcdsMap>('gcds-map', un
   'controls',
   'controlslist',
   'width',
-  'height'
+  'height',
+  'caption'
 ]);
 
 
 export const GcdsMapLayer = /*@__PURE__*/ defineContainer<JSX.GcdsMapLayer>('gcds-map-layer', undefined, [
-  'label',
   'src',
   'checked',
+  'hidden',
+  'label',
   'opacity'
 ]);
 
