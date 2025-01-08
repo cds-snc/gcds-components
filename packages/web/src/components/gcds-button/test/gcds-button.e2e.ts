@@ -9,6 +9,34 @@ describe('gcds-button', () => {
     const element = await page.find('gcds-button');
     expect(element.textContent).toEqual('Button Label');
   });
+  it('fires gcdsClick event', async () => {
+    const page = await newE2EPage();
+
+    await page.setContent('<gcds-button>Button Label</gcds-button>');
+    const element = await page.find('gcds-button >>> button');
+    element.click();
+
+    await page.waitForChanges();
+
+    const event = await page.waitForEvent('gcdsClick');
+    expect(event.target.nodeName).toBe('GCDS-BUTTON');
+  });
+  it('disabled - will not fire gcdsClick event', async () => {
+    const page = await newE2EPage();
+
+    await page.setContent('<gcds-button disabled>Button Label</gcds-button>');
+    const element = await page.find('gcds-button >>> button');
+    element.click();
+
+    await page.waitForChanges();
+
+    // Event won't fire so waitForEvent() will timeout
+    try {
+      await page.waitForEvent('gcdsClick')
+    } catch (error) {
+      expect(error.toString()).toBe('Error: waitForEvent() timeout, eventName: gcdsClick')
+    }
+  });
 });
 
 /*
