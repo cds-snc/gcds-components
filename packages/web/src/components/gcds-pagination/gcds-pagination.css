@@ -207,7 +207,6 @@
       background: var(--gcds-pagination-active-background);
       border-color: var(--gcds-pagination-active-background);
       text-decoration: none;
-      pointer-events: none;
     }
   }
 }
