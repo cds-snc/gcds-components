@@ -13,29 +13,25 @@ describe('gcds-button', () => {
     const page = await newE2EPage();
 
     await page.setContent('<gcds-button>Button Label</gcds-button>');
-    const element = await page.find('gcds-button >>> button');
-    element.click();
+    const gcdsClick = await page.spyOnEvent('gcdsClick');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
 
     await page.waitForChanges();
 
-    const event = await page.waitForEvent('gcdsClick');
-    expect(event.target.nodeName).toBe('GCDS-BUTTON');
+    expect(gcdsClick.events.length).toBe(1);
   });
   it('disabled - will not fire gcdsClick event', async () => {
     const page = await newE2EPage();
 
     await page.setContent('<gcds-button disabled>Button Label</gcds-button>');
-    const element = await page.find('gcds-button >>> button');
-    element.click();
+    const gcdsClick = await page.spyOnEvent('gcdsClick');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
 
     await page.waitForChanges();
 
-    // Event won't fire so waitForEvent() will timeout
-    try {
-      await page.waitForEvent('gcdsClick')
-    } catch (error) {
-      expect(error.toString()).toBe('Error: waitForEvent() timeout, eventName: gcdsClick')
-    }
+    expect(gcdsClick.events.length).toBe(0);
   });
 });
 
