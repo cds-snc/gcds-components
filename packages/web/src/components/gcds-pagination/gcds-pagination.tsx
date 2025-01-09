@@ -138,6 +138,7 @@ export class GcdsPagination {
       : 'javascript:void(0)';
     const linkAttrs = {
       'href': href,
+      'tabindex': 0,
       'aria-label': !end
         ? I18N[this.lang].pageNumberOf
             .replace('{#}', page)
@@ -392,6 +393,7 @@ export class GcdsPagination {
                 <li class="gcds-pagination-simple-previous">
                   <a
                     href={previousHref}
+                    tabindex={0}
                     aria-label={`${I18N[lang].previousPage}${
                       previousLabel ? `: ${previousLabel}` : ''
                     }`}
@@ -411,6 +413,7 @@ export class GcdsPagination {
                 <li class="gcds-pagination-simple-next">
                   <a
                     href={nextHref}
+                    tabindex={0}
                     aria-label={`${I18N[lang].nextPage}${
                       nextLabel ? `: ${nextLabel}` : ''
                     }`}

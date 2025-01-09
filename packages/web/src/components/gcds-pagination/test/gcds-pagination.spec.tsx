@@ -21,7 +21,7 @@ describe('gcds-pagination', () => {
           <div class="gcds-pagination">
             <ul class="gcds-pagination-simple">
               <li class="gcds-pagination-simple-previous">
-                <a aria-label="Previous page: Previous label" href="#previous">
+                <a aria-label="Previous page: Previous label" href="#previous" tabindex="0">
                   <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Previous
@@ -32,7 +32,7 @@ describe('gcds-pagination', () => {
                 </a>
               </li>
               <li class="gcds-pagination-simple-next">
-                <a aria-label="Next page: Next label" href="#next">
+                <a aria-label="Next page: Next label" href="#next" tabindex="0">
                   <div class="gcds-pagination-simple-text">
                     Next
                   </div>
@@ -66,7 +66,7 @@ describe('gcds-pagination', () => {
           <div class="gcds-pagination">
             <ul class="gcds-pagination-simple">
               <li class="gcds-pagination-simple-previous">
-                <a aria-label="Previous page" href="#previous">
+                <a aria-label="Previous page" href="#previous" tabindex="0">
                   <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Previous
@@ -76,7 +76,7 @@ describe('gcds-pagination', () => {
                 </a>
               </li>
               <li class="gcds-pagination-simple-next">
-                <a aria-label="Next page" href="#next">
+                <a aria-label="Next page" href="#next" tabindex="0">
                   <div class="gcds-pagination-simple-text">
                     Next
                   </div>
@@ -111,7 +111,7 @@ describe('gcds-pagination', () => {
           <div class="gcds-pagination">
             <ul class="gcds-pagination-simple">
               <li class="gcds-pagination-simple-previous">
-                <a aria-label="Page précédente: Previous label" href="#previous">
+                <a aria-label="Page précédente: Previous label" href="#previous" tabindex="0">
                   <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                   Précédent
@@ -122,7 +122,7 @@ describe('gcds-pagination', () => {
                 </a>
               </li>
               <li class="gcds-pagination-simple-next">
-                <a aria-label="Page suivante: Next label" href="#next">
+                <a aria-label="Page suivante: Next label" href="#next" tabindex="0">
                   <div class="gcds-pagination-simple-text">
                     Suivante
                   </div>
@@ -156,7 +156,7 @@ describe('gcds-pagination', () => {
           <div class="gcds-pagination">
             <ul class="gcds-pagination-simple">
               <li class="gcds-pagination-simple-previous">
-                <a aria-label="Page précédente" href="#previous">
+                <a aria-label="Page précédente" href="#previous" tabindex="0">
                   <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Précédent
@@ -166,7 +166,7 @@ describe('gcds-pagination', () => {
                 </a>
               </li>
               <li class="gcds-pagination-simple-next">
-                <a aria-label="Page suivante" href="#next">
+                <a aria-label="Page suivante" href="#next" tabindex="0">
                   <div class="gcds-pagination-simple-text">
                     Suivante
                   </div>
@@ -201,13 +201,13 @@ describe('gcds-pagination', () => {
             <div>
               <ul class="gcds-pagination-list">
                 <li>
-                  <a aria-label="Previous page: Page 4 of 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                  <a aria-label="Previous page: Page 4 of 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                     Previous
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 1 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 1 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     1
                   </a>
                 </li>
@@ -217,37 +217,37 @@ describe('gcds-pagination', () => {
                   </span>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-sm">
-                  <a aria-label="Page 2 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 2 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     2
                   </a>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-xs">
-                  <a aria-label="Page 3 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 3 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     3
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 4 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 4 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     4
                   </a>
                 </li>
                 <li>
-                  <a aria-current="page" aria-label="Page 5 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-current="page" aria-label="Page 5 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     5
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 6 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 6 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     6
                   </a>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-xs">
-                  <a aria-label="Page 7 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 7 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     7
                   </a>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-sm">
-                  <a aria-label="Page 8 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 8 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     8
                   </a>
                 </li>
@@ -257,12 +257,12 @@ describe('gcds-pagination', () => {
                   </span>
                 </li>
                 <li>
-                  <a aria-label="Page 9 of 9 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 9 of 9 of Search results" href="javascript:void(0)" tabindex="0">
                     9
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Next page: Page 6 of 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                  <a aria-label="Next page: Page 6 of 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     Next
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
@@ -270,13 +270,13 @@ describe('gcds-pagination', () => {
               </ul>
               <ul class="gcds-pagination-list-mobile-prevnext">
                 <li>
-                  <a aria-label="Previous page: Page 4 of 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                  <a aria-label="Previous page: Page 4 of 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                     Prev
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Next page: Page 6 of 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                  <a aria-label="Next page: Page 6 of 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     Next
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
@@ -308,13 +308,13 @@ describe('gcds-pagination', () => {
             <div>
               <ul class="gcds-pagination-list">
                 <li>
-                  <a aria-label="Previous page: Page 9 of 20 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                  <a aria-label="Previous page: Page 9 of 20 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                     Previous
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 1 of 20 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 1 of 20 of Search results" href="javascript:void(0)" tabindex="0">
                     1
                   </a>
                 </li>
@@ -324,27 +324,27 @@ describe('gcds-pagination', () => {
                   </span>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-xxs">
-                  <a aria-label="Page 8 of 20 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 8 of 20 of Search results" href="javascript:void(0)" tabindex="0">
                     8
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 9 of 20 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 9 of 20 of Search results" href="javascript:void(0)" tabindex="0">
                     9
                   </a>
                 </li>
                 <li>
-                  <a aria-current="page" aria-label="Page 10 of 20 of Search results" href="javascript:void(0)">
+                  <a aria-current="page" aria-label="Page 10 of 20 of Search results" href="javascript:void(0)" tabindex="0">
                     10
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 11 of 20 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 11 of 20 of Search results" href="javascript:void(0)" tabindex="0">
                     11
                   </a>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-xxs">
-                  <a aria-label="Page 12 of 20 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 12 of 20 of Search results" href="javascript:void(0)" tabindex="0">
                     12
                   </a>
                 </li>
@@ -354,12 +354,12 @@ describe('gcds-pagination', () => {
                   </span>
                 </li>
                 <li>
-                  <a aria-label="Page 20 of 20 of Search results" href="javascript:void(0)">
+                  <a aria-label="Page 20 of 20 of Search results" href="javascript:void(0)" tabindex="0">
                     20
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Next page: Page 11 of 20 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                  <a aria-label="Next page: Page 11 of 20 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     Next
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
@@ -367,13 +367,13 @@ describe('gcds-pagination', () => {
               </ul>
               <ul class="gcds-pagination-list-mobile-prevnext">
                 <li>
-                  <a aria-label="Previous page: Page 9 of 20 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                  <a aria-label="Previous page: Page 9 of 20 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                     Prev
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Next page: Page 11 of 20 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                  <a aria-label="Next page: Page 11 of 20 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     Next
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
@@ -405,13 +405,13 @@ describe('gcds-pagination', () => {
             <div>
               <ul class="gcds-pagination-list">
                 <li>
-                  <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                  <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                     Précédent
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 1 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 1 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     1
                   </a>
                 </li>
@@ -421,37 +421,37 @@ describe('gcds-pagination', () => {
                   </span>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-sm">
-                  <a aria-label="Page 2 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 2 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     2
                   </a>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-xs">
-                  <a aria-label="Page 3 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 3 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     3
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 4 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 4 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     4
                   </a>
                 </li>
                 <li>
-                  <a aria-current="page" aria-label="Page 5 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-current="page" aria-label="Page 5 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     5
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 6 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 6 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     6
                   </a>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-xs">
-                  <a aria-label="Page 7 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 7 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     7
                   </a>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-sm">
-                  <a aria-label="Page 8 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 8 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     8
                   </a>
                 </li>
@@ -461,12 +461,12 @@ describe('gcds-pagination', () => {
                   </span>
                 </li>
                 <li>
-                  <a aria-label="Page 9 sur 9 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 9 sur 9 des Search results" href="javascript:void(0)" tabindex="0">
                     9
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                  <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     Suivante
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
@@ -474,13 +474,13 @@ describe('gcds-pagination', () => {
               </ul>
               <ul class="gcds-pagination-list-mobile-prevnext">
                 <li>
-                  <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                  <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                     Préc.
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                  <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     Suivante
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
@@ -512,13 +512,13 @@ describe('gcds-pagination', () => {
             <div>
               <ul class="gcds-pagination-list">
                 <li>
-                  <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                  <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                     Précédent
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 1 sur 20 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 1 sur 20 des Search results" href="javascript:void(0)" tabindex="0">
                     1
                   </a>
                 </li>
@@ -528,27 +528,27 @@ describe('gcds-pagination', () => {
                   </span>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-xxs">
-                  <a aria-label="Page 8 sur 20 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 8 sur 20 des Search results" href="javascript:void(0)" tabindex="0">
                     8
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 9 sur 20 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 9 sur 20 des Search results" href="javascript:void(0)" tabindex="0">
                     9
                   </a>
                 </li>
                 <li>
-                  <a aria-current="page" aria-label="Page 10 sur 20 des Search results" href="javascript:void(0)">
+                  <a aria-current="page" aria-label="Page 10 sur 20 des Search results" href="javascript:void(0)" tabindex="0">
                     10
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page 11 sur 20 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 11 sur 20 des Search results" href="javascript:void(0)" tabindex="0">
                     11
                   </a>
                 </li>
                 <li class="gcds-pagination-list-breakpoint-xxs">
-                  <a aria-label="Page 12 sur 20 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 12 sur 20 des Search results" href="javascript:void(0)" tabindex="0">
                     12
                   </a>
                 </li>
@@ -558,12 +558,12 @@ describe('gcds-pagination', () => {
                   </span>
                 </li>
                 <li>
-                  <a aria-label="Page 20 sur 20 des Search results" href="javascript:void(0)">
+                  <a aria-label="Page 20 sur 20 des Search results" href="javascript:void(0)" tabindex="0">
                     20
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)">
+                  <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     Suivante
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
@@ -571,13 +571,13 @@ describe('gcds-pagination', () => {
               </ul>
               <ul class="gcds-pagination-list-mobile-prevnext">
                 <li>
-                  <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                  <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
                     Préc.
                   </a>
                 </li>
                 <li>
-                  <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)">
+                  <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     Suivante
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>

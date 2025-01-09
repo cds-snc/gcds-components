@@ -624,7 +624,7 @@ export namespace Components {
          */
         "required"?: boolean;
         /**
-          * Size attribute for an input element. Defines max-length as well.
+          * Size attribute for an input element to provide a visual indication of the expected text length to the user.
          */
         "size"?: number;
         /**
@@ -2453,7 +2453,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Size attribute for an input element. Defines max-length as well.
+          * Size attribute for an input element to provide a visual indication of the expected text length to the user.
          */
         "size"?: number;
         /**

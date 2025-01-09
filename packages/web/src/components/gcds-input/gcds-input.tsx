@@ -104,8 +104,8 @@ export class GcdsInput {
   @Prop() required?: boolean = false;
 
   /**
-   * Size attribute for an input element.
-   * Defines max-length as well.
+   * Size attribute for an input element to provide a visual indication
+   * of the expected text length to the user.
    */
   @Prop() size?: number;
 
