@@ -74,11 +74,6 @@ const TemplateBasic = (args) => {
         src="https://geogratis.gc.ca/mapml/en/osmtile/cbmt/"
         checked="true"
       ></gcds-map-layer>
-      <gcds-map-layer
-        label="Canada Base Map - Transportation (CBMT) - EPSG:3978"
-        src="https://geogratis.gc.ca/mapml/en/cbmtile/cbmt/"
-        checked="true"
-      ></gcds-map-layer>
     </gcds-map>
   `;
 }
