@@ -125,6 +125,14 @@ export class GcdsTextarea {
   @Prop({ mutable: true }) value?: string;
 
   /**
+   * Set value on internal textarea to allow proper resets
+   */
+  @Watch('value')
+  watchValue(val) {
+    this.shadowElement.value = val;
+  }
+
+  /**
    * Array of validators
    */
   @Prop({ mutable: true }) validator: Array<
@@ -200,6 +208,7 @@ export class GcdsTextarea {
     const val = e.target && e.target.value;
     this.value = val;
     this.internals.setFormValue(val ? val : null);
+    this.shadowElement.value = val;
 
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
