@@ -88,7 +88,7 @@ export class GcdsButton {
   /**
    * The value attribute specifies the value for a <button> element.
    */
-    @Prop() value: string;
+  @Prop() value: string;
 
   /**
    * Link props
@@ -242,7 +242,7 @@ export class GcdsButton {
           id={buttonId}
           onBlur={() => this.gcdsBlur.emit()}
           onFocus={() => this.gcdsFocus.emit()}
-          onClick={e => this.handleClick(e)}
+          onClick={e => !disabled && this.handleClick(e)}
           class={`gcds-button button--role-${buttonRole} button--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           {...inheritedAttributes}

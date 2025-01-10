@@ -9,6 +9,30 @@ describe('gcds-button', () => {
     const element = await page.find('gcds-button');
     expect(element.textContent).toEqual('Button Label');
   });
+  it('fires gcdsClick event', async () => {
+    const page = await newE2EPage();
+
+    await page.setContent('<gcds-button>Button Label</gcds-button>');
+    const gcdsClick = await page.spyOnEvent('gcdsClick');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    await page.waitForChanges();
+
+    expect(gcdsClick.events.length).toBe(1);
+  });
+  it('disabled - will not fire gcdsClick event', async () => {
+    const page = await newE2EPage();
+
+    await page.setContent('<gcds-button disabled>Button Label</gcds-button>');
+    const gcdsClick = await page.spyOnEvent('gcdsClick');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    await page.waitForChanges();
+
+    expect(gcdsClick.events.length).toBe(0);
+  });
 });
 
 /*
