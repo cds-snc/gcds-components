@@ -1,4 +1,4 @@
-@layer reset, default, hover, focus, mobile;
+@layer reset, default, hover, focus;
 
 @layer reset {
   :host(.gcds-breadcrumbs-item) {
@@ -17,25 +17,13 @@
 
 @layer default {
   :host(.gcds-breadcrumbs-item) {
-    @media screen and (width >= 30rem) {
-      margin: var(--gcds-breadcrumbs-item-margin) !important;
-    }
+    margin: var(--gcds-breadcrumbs-item-margin) !important;
 
     &:before {
       display: inline-block;
       width: 0.375rem;
       content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' height='12px' viewBox='0 0 8 14'><path fill='26374a' d='M7.7,6.3c0.4,0.4,0.4,1,0,1.4l-6,6c-0.4,0.4-1,0.4-1.4,0s-0.4-1,0-1.4L5.6,7L0.3,1.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0 L7.7,6.3L7.7,6.3z'/></svg>");
       margin: var(--gcds-breadcrumbs-item-arrow-margin);
-    }
-  }
-}
-
-/* Note: mobile specific style decision */
-@layer mobile {
-  @media screen and (width < 30rem) {
-    :host(.gcds-breadcrumbs-item) {
-      display: block;
-      margin: var(--gcds-breadcrumbs-mobile-item-margin) !important;
     }
   }
 }
