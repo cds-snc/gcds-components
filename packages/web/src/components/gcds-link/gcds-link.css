@@ -2,7 +2,7 @@
 
 @layer reset {
   :host {
-    display: inline-block;
+    display: inline;
 
     slot {
       display: initial;
