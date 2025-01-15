@@ -61,6 +61,26 @@ Use the `columns-desktop` property to define your layout for larger screens **(6
 
 <Canvas of={Grid.ColumnsDesktop} story={{ inline: true }} />
 
+### Grid gap
+
+#### Gap
+
+Use the `gap` property to define the horizontal and vertical spacing between items in a grid container for all viewports if `gapTablet` and `gapDesktop` are not defined. Option to set different spacing for desktop with `gap-desktop` and for tablet with `gap-tablet`.
+
+<Canvas of={Grid.Gap} story={{ inline: true }} />
+
+#### Gap tablet
+
+The `gap-tablet` property provides an option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gap-desktop is not defined, gap-tablet will be used to define the spacing for desktop screens as well.
+
+<Canvas of={Grid.GapTablet} story={{ inline: true }} />
+
+#### Gap desktop
+
+The `columns-desktop` property provides an option to set horizontal and vertical spacing between items in a grid container for desktop screens.
+
+<Canvas of={Grid.GapDesktop} story={{ inline: true }} />
+
 ### Tag
 
 Always use the tag in a standard way to maintain accessibility.

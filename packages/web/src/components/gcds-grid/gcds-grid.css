@@ -205,6 +205,7 @@
         --gcds-grid-columns-tablet,
         var(--gcds-grid-columns, 1fr)
       );
+      gap: var(--gcds-grid-gap-tablet, var(--gcds-grid-gap));
 
       /* Grid with cols */
       &.display-grid-with-cols {
@@ -225,6 +226,7 @@
         --gcds-grid-columns-desktop,
         var(--gcds-grid-columns-tablet, var(--gcds-grid-columns, 1fr))
       );
+      gap: var(--gcds-grid-gap-desktop, var(--gcds-grid-gap-tablet, var(--gcds-grid-gap)));
 
       /* Grid with cols */
       &.display-grid-with-cols {

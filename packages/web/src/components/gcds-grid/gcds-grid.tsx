@@ -9,6 +9,43 @@ export type ContentValues =
   | 'start'
   | 'stretch';
 
+export type SpacingValues =
+  | '150'
+  | '175'
+  | '200'
+  | '225'
+  | '250'
+  | '300'
+  | '350'
+  | '400'
+  | '450'
+  | '500'
+  | '550'
+  | '600'
+  | '650'
+  | '700'
+  | '750'
+  | '800';
+
+const SpacingArray = [
+  '150',
+  '175',
+  '200',
+  '225',
+  '250',
+  '300',
+  '350',
+  '400',
+  '450',
+  '500',
+  '550',
+  '600',
+  '650',
+  '700',
+  '750',
+  '800',
+];
+
 @Component({
   tag: 'gcds-grid',
   styleUrl: 'gcds-grid.css',
@@ -22,11 +59,22 @@ export class GcdsGrid {
    */
 
   /**
-   * Defines the columns of the grid
-   * Option to set different layouts for desktop | tablet | default (includes mobile)
+   * Defines the default number of grid columns for all viewports if columnsTablet
+   * and columnsDesktop are not defined. Option to set different layouts for
+   * desktop with columnsDesktop and for tablet with columnsTablet.
    */
   @Prop() columns?: string;
+
+  /**
+   * Provides option to set a different number of grid columns for tablet screens.
+   * If columnsDesktop is not defined, columnsTablet will be used to define the
+   * number of columns for desktop as well.
+   */
   @Prop() columnsTablet?: string;
+
+  /**
+   * Provides option to set a different number of grid columns for desktop screens.
+   */
   @Prop() columnsDesktop?: string;
 
   /**
@@ -49,6 +97,56 @@ export class GcdsGrid {
    * based on the tallest item.
    */
   @Prop() equalRowHeight?: boolean = false;
+
+  /**
+   * Defines the horizontal and vertical spacing between items in
+   * a grid container for all viewports if gap-tablet and gap-desktop
+   * are not defined. Option to set different spacing for desktop
+   * with gap-desktop and for tablet with gap-tablet.
+   */
+  @Prop() gap?: SpacingValues = '300';
+
+  @Watch('gap')
+  validateGap(newValue: string) {
+    const values = SpacingArray;
+
+    if (!values.includes(newValue)) {
+      this.gap = '300';
+    }
+  }
+
+  /**
+   * Provides option to set horizontal and vertical spacing between items in a
+   * grid container for tablet screens. If gap-desktop is not defined, gap-tablet
+   * will be used to define the spacing for desktop screens as well.
+   */
+  @Prop() gapTablet?: SpacingValues;
+
+  @Watch('gapTablet')
+  validateGapTablet(newValue: string) {
+    const values = SpacingArray;
+
+    if (newValue != undefined && !values.includes(newValue)) {
+      this.gapTablet = undefined;
+      console.error('Not a valid spacing value for gap-tablet.');
+    }
+  }
+
+  /**
+   * Provides option to set horizontal and vertical spacing between items
+   * in a grid container for desktop screens.
+   */
+  @Prop() gapDesktop?: SpacingValues;
+
+  @Watch('gapDesktop')
+  validateGapDesktop(newValue: string) {
+    const values = SpacingArray;
+
+    if (newValue != undefined && !values.includes(newValue)) {
+      this.gapDesktop = undefined;
+      console.error('Not a valid spacing value for gap-desktop.');
+    }
+  }
 
   /**
    * Set tag for grid container
@@ -118,6 +216,9 @@ export class GcdsGrid {
   componentWillLoad() {
     // Validate attributes and set defaults
     this.validateTag(this.tag);
+    this.validateGap(this.gap);
+    this.validateGapTablet(this.gapTablet);
+    this.validateGapDesktop(this.gapDesktop);
   }
 
   render() {
@@ -131,6 +232,9 @@ export class GcdsGrid {
       centered,
       display,
       equalRowHeight,
+      gap,
+      gapTablet,
+      gapDesktop,
       justifyContent,
       justifyItems,
       placeContent,
@@ -155,35 +259,42 @@ export class GcdsGrid {
       ${placeItems ? `place-items-${placeItems}` : ''}
     `;
 
-    // Set CSS variables in style attribute based on passed column properties
-    function handleColumns() {
-      const responsiveColumns = {};
+    // Set CSS variables in style attribute based on passed column + gap properties
+    function handleGridStyles() {
+      const gridStyles = {};
 
-      if (columns) {
-        responsiveColumns['--gcds-grid-columns'] = columns;
-      }
+      const setGridProperty = (value, property, suffix = '') => {
+        const gapValue = `var(--gcds-grid-gap-${value})`;
+        const tokenValue = property === 'gap' ? gapValue : value;
 
-      if (columnsTablet) {
-        responsiveColumns['--gcds-grid-columns-tablet'] = columnsTablet;
-      }
+        if (value) {
+          gridStyles[`--gcds-grid-${property}${suffix}`] = tokenValue;
+        }
+      };
 
-      if (columnsDesktop) {
-        responsiveColumns['--gcds-grid-columns-desktop'] = columnsDesktop;
-      }
+      // Handle columns
+      setGridProperty(columns, 'columns');
+      setGridProperty(columnsTablet, 'columns', '-tablet');
+      setGridProperty(columnsDesktop, 'columns', '-desktop');
 
-      return responsiveColumns;
+      // Handle gap
+      setGridProperty(gap, 'gap');
+      setGridProperty(gapTablet, 'gap', '-tablet');
+      setGridProperty(gapDesktop, 'gap', '-desktop');
+
+      return gridStyles;
     }
 
     return (
       <Host>
         {container ? (
           <gcds-container size={container} centered={centered}>
-            <Tag class={classNames} style={handleColumns()}>
+            <Tag class={classNames} style={handleGridStyles()}>
               <slot />
             </Tag>
           </gcds-container>
         ) : (
-          <Tag class={classNames} style={handleColumns()}>
+          <Tag class={classNames} style={handleGridStyles()}>
             <slot />
           </Tag>
         )}

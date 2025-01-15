@@ -7,11 +7,11 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
-import { ContentValues } from "./components/gcds-grid/gcds-grid";
+import { ContentValues, SpacingValues as SpacingValues1 } from "./components/gcds-grid/gcds-grid";
 import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
-export { ContentValues } from "./components/gcds-grid/gcds-grid";
+export { ContentValues, SpacingValues as SpacingValues1 } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export namespace Components {
     interface GcdsAlert {
@@ -434,10 +434,16 @@ export namespace Components {
          */
         "centered"?: boolean;
         /**
-          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
+          * Defines the default number of grid columns for all viewports if columnsTablet and columnsDesktop are not defined. Option to set different layouts for desktop with columnsDesktop and for tablet with columnsTablet.
          */
         "columns"?: string;
+        /**
+          * Provides option to set a different number of grid columns for desktop screens.
+         */
         "columnsDesktop"?: string;
+        /**
+          * Provides option to set a different number of grid columns for tablet screens. If columnsDesktop is not defined, columnsTablet will be used to define the number of columns for desktop as well.
+         */
         "columnsTablet"?: string;
         /**
           * Defines grid container size
@@ -451,6 +457,18 @@ export namespace Components {
           * Sets all grid items to have an equal height, based on the tallest item.
          */
         "equalRowHeight"?: boolean;
+        /**
+          * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gapTablet and gapDesktop are not defined. Option to set different spacing for desktop with gapDesktop and for tablet with gapTablet.
+         */
+        "gap"?: SpacingValues1;
+        /**
+          * Provides option to set horizontal and vertical spacing between items in a grid container for desktop screens.
+         */
+        "gapDesktop"?: SpacingValues1;
+        /**
+          * Provides option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gapDesktop is not defined, gapTablet will be used to define the spacing for desktop screens as well.
+         */
+        "gapTablet"?: SpacingValues1;
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -2239,10 +2257,16 @@ declare namespace LocalJSX {
          */
         "centered"?: boolean;
         /**
-          * Defines the columns of the grid Option to set different layouts for desktop | tablet | default (includes mobile)
+          * Defines the default number of grid columns for all viewports if columnsTablet and columnsDesktop are not defined. Option to set different layouts for desktop with columnsDesktop and for tablet with columnsTablet.
          */
         "columns"?: string;
+        /**
+          * Provides option to set a different number of grid columns for desktop screens.
+         */
         "columnsDesktop"?: string;
+        /**
+          * Provides option to set a different number of grid columns for tablet screens. If columnsDesktop is not defined, columnsTablet will be used to define the number of columns for desktop as well.
+         */
         "columnsTablet"?: string;
         /**
           * Defines grid container size
@@ -2256,6 +2280,18 @@ declare namespace LocalJSX {
           * Sets all grid items to have an equal height, based on the tallest item.
          */
         "equalRowHeight"?: boolean;
+        /**
+          * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gapTablet and gapDesktop are not defined. Option to set different spacing for desktop with gapDesktop and for tablet with gapTablet.
+         */
+        "gap"?: SpacingValues1;
+        /**
+          * Provides option to set horizontal and vertical spacing between items in a grid container for desktop screens.
+         */
+        "gapDesktop"?: SpacingValues1;
+        /**
+          * Provides option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gapDesktop is not defined, gapTablet will be used to define the spacing for desktop screens as well.
+         */
+        "gapTablet"?: SpacingValues1;
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
