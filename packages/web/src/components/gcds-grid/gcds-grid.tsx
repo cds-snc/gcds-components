@@ -100,9 +100,9 @@ export class GcdsGrid {
 
   /**
    * Defines the horizontal and vertical spacing between items in
-   * a grid container for all viewports if gapTablet and gapDesktop
+   * a grid container for all viewports if gap-tablet and gap-desktop
    * are not defined. Option to set different spacing for desktop
-   * with gapDesktop and for tablet with gapTablet.
+   * with gap-desktop and for tablet with gap-tablet.
    */
   @Prop() gap?: SpacingValues = '300';
 
@@ -117,7 +117,7 @@ export class GcdsGrid {
 
   /**
    * Provides option to set horizontal and vertical spacing between items in a
-   * grid container for tablet screens. If gapDesktop is not defined, gapTablet
+   * grid container for tablet screens. If gap-desktop is not defined, gap-tablet
    * will be used to define the spacing for desktop screens as well.
    */
   @Prop() gapTablet?: SpacingValues;
