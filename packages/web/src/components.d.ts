@@ -458,7 +458,7 @@ export namespace Components {
          */
         "equalRowHeight"?: boolean;
         /**
-          * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gapTablet and gapDesktop are not defined. Option to set different spacing for desktop with gapDesktop and for tablet with gapTablet.
+          * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gap-tablet and gap-desktop are not defined. Option to set different spacing for desktop with gap-desktop and for tablet with gap-tablet.
          */
         "gap"?: SpacingValues1;
         /**
@@ -466,7 +466,7 @@ export namespace Components {
          */
         "gapDesktop"?: SpacingValues1;
         /**
-          * Provides option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gapDesktop is not defined, gapTablet will be used to define the spacing for desktop screens as well.
+          * Provides option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gap-desktop is not defined, gap-tablet will be used to define the spacing for desktop screens as well.
          */
         "gapTablet"?: SpacingValues1;
         /**
@@ -2281,7 +2281,7 @@ declare namespace LocalJSX {
          */
         "equalRowHeight"?: boolean;
         /**
-          * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gapTablet and gapDesktop are not defined. Option to set different spacing for desktop with gapDesktop and for tablet with gapTablet.
+          * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gap-tablet and gap-desktop are not defined. Option to set different spacing for desktop with gap-desktop and for tablet with gap-tablet.
          */
         "gap"?: SpacingValues1;
         /**
@@ -2289,7 +2289,7 @@ declare namespace LocalJSX {
          */
         "gapDesktop"?: SpacingValues1;
         /**
-          * Provides option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gapDesktop is not defined, gapTablet will be used to define the spacing for desktop screens as well.
+          * Provides option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gap-desktop is not defined, gap-tablet will be used to define the spacing for desktop screens as well.
          */
         "gapTablet"?: SpacingValues1;
         /**
