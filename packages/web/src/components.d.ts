@@ -434,7 +434,7 @@ export namespace Components {
          */
         "centered"?: boolean;
         /**
-          * Defines the default number of grid columns for all viewports if columnsTablet and columnsDesktop are not defined. Option to set different layouts for desktop with columnsDesktop and for tablet with columnsTablet.
+          * Defines the default number of grid columns for all viewports if columns-tablet and columns-desktop are not defined. Option to set different layouts for desktop with columns-desktop and for tablet with columns-tablet.
          */
         "columns"?: string;
         /**
@@ -442,7 +442,7 @@ export namespace Components {
          */
         "columnsDesktop"?: string;
         /**
-          * Provides option to set a different number of grid columns for tablet screens. If columnsDesktop is not defined, columnsTablet will be used to define the number of columns for desktop as well.
+          * Provides option to set a different number of grid columns for tablet screens. If columns-desktop is not defined, columns-tablet will be used to define the number of columns for desktop as well.
          */
         "columnsTablet"?: string;
         /**
@@ -2257,7 +2257,7 @@ declare namespace LocalJSX {
          */
         "centered"?: boolean;
         /**
-          * Defines the default number of grid columns for all viewports if columnsTablet and columnsDesktop are not defined. Option to set different layouts for desktop with columnsDesktop and for tablet with columnsTablet.
+          * Defines the default number of grid columns for all viewports if columns-tablet and columns-desktop are not defined. Option to set different layouts for desktop with columns-desktop and for tablet with columns-tablet.
          */
         "columns"?: string;
         /**
@@ -2265,7 +2265,7 @@ declare namespace LocalJSX {
          */
         "columnsDesktop"?: string;
         /**
-          * Provides option to set a different number of grid columns for tablet screens. If columnsDesktop is not defined, columnsTablet will be used to define the number of columns for desktop as well.
+          * Provides option to set a different number of grid columns for tablet screens. If columns-desktop is not defined, columns-tablet will be used to define the number of columns for desktop as well.
          */
         "columnsTablet"?: string;
         /**
