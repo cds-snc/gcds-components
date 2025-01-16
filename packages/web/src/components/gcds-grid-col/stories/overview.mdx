@@ -1,0 +1,46 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as GridCol from './gcds-grid-col.stories';
+
+<Meta of={GridCol} name="Overview" />
+
+# Grid column<br/>`<gcds-grid-col>`
+
+Grid columns define their own size. Each grid column can define a base, tablet (optional) and desktop (optional) size.
+
+<Canvas of={GridCol.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+### Size
+
+#### Tablet
+
+The `tablet` property sets the grid column size for tablet (768px - 1023px). Tablet grid column sizes are based on a 6 column grid. The tablet size will also be used for desktop, if desktop is undefined.
+
+<Canvas of={GridCol.Tablet} story={{ inline: true }} />
+
+#### Desktop
+
+The `columns-desktop` property provides an option to set horizontal and vertical spacing between items in a grid container for desktop screens.
+
+<Canvas of={GridCol.Desktop} story={{ inline: true }} />
+
+### Tag
+
+Always use the tag in a standard way to maintain accessibility.
+
+<Canvas of={GridCol.Tag} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul className="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/grid/" target="_blank">Guidance</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/develop/packages/web/src/components/gcds-grid-col" target="_blank">Github</gcds-link>
+  </li>
+</ul>
