@@ -106,6 +106,82 @@
 
       <hr class="my-550" />
 
+      <!-- ------------- CSS parts demo ------------- -->
+
+      <gcds-heading tag="h2">CSS parts</gcds-heading>
+
+      <p class="mb-600">Below see two input components, the second of the two has had modifications to the CSS using parts.</p>
+
+      <gcds-input
+        input-id="form-name"
+        label="Name"
+        hint="Please enter your full name."
+        error-message="This is an error."
+        required
+      ></gcds-input>
+
+      <gcds-input
+        input-id="form-name"
+        label="Name"
+        hint="Please enter your full name."
+        error-message="This is an error."
+        required
+        id="part-demo"
+      ></gcds-input>
+
+      <style>
+        #part-demo::part(hint) {
+          color: red;
+        }
+        #part-demo::part(label) {
+          color: blue;
+          margin: 20rem !important;
+        }
+        #part-demo::part(required) {
+          color: darkred;
+        }
+        #part-demo::part(error) {
+          color: green;
+        }
+        #part-demo::part(input) {
+          padding: 0;
+          min-height: auto;
+        }
+      </style>
+
+      <!-- ------------- Changing tokens ------------- -->
+
+      <gcds-heading tag="h2">Changing tokens</gcds-heading>
+
+      <p class="mb-600">Below see two input components, the second of the two has had modifications to the CSS using custom styles to override the component tokens.</p>
+
+      <gcds-input
+        input-id="form-name"
+        label="Name"
+        hint="Please enter your full name."
+        error-message="This is an error."
+        required
+      ></gcds-input>
+
+      <gcds-input
+        input-id="form-name"
+        label="Name"
+        hint="Please enter your full name."
+        error-message="This is an error."
+        required
+        id="token-demo"
+      ></gcds-input>
+
+      <style>
+        #token-demo {
+          --gcds-input-padding: 0;
+          --gcds-input-min-width-and-height: auto;
+          --gcds-error-message-text-color: green;
+          --gcds-label-text: blue;
+          --gcds-hint-text: red;
+        }
+      </style>
+
       <!-- ------------- Alerts ------------- -->
 
       <gcds-heading tag="h2">Alerts</gcds-heading>

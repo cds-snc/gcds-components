@@ -12,13 +12,6 @@
 | `hintId` | `hint-id` | Id attribute for the hint. | `string` | `undefined` |
 
 
-## Shadow Parts
-
-| Part     | Description |
-| -------- | ----------- |
-| `"hint"` |             |
-
-
 ## Dependencies
 
 ### Used by

@@ -33,7 +33,7 @@
       min-height: var(--gcds-input-min-width-and-height);
       font: inherit !important;
       margin: var(--gcds-input-margin) !important;
-      padding: var(--gcds-input-padding) !important;
+      padding: var(--gcds-input-padding);
       background-color: var(--gcds-input-default-background);
       background-image: none;
       color: var(--gcds-input-default-text);

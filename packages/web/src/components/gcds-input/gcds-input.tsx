@@ -25,6 +25,13 @@ import {
   requiredValidator,
 } from '../../validators';
 
+/**
+ * @part label - The label text describing the input.
+ * @part hint - The hint text describing the input.
+ * @part required - The (required) text in the label.
+ * @part error - The error message text describing the input.
+ * @part input - The form input.
+ */
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',
@@ -397,12 +404,13 @@ export class GcdsInput {
             hide-label={hideLabel}
             label-for={inputId}
             lang={lang}
+            exportparts='label required'
           />
 
-          {hint ? <gcds-hint hint-id={inputId}>{hint}</gcds-hint> : null}
+          {hint ? <gcds-hint hint-id={inputId} exportparts='hint'>{hint}</gcds-hint> : null}
 
           {errorMessage ? (
-            <gcds-error-message messageId={inputId}>
+            <gcds-error-message messageId={inputId} exportparts='error'>
               {errorMessage}
             </gcds-error-message>
           ) : null}

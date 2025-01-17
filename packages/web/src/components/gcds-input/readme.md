@@ -50,6 +50,17 @@ Type: `Promise<void>`
 
 
 
+## Shadow Parts
+
+| Part         | Description                                  |
+| ------------ | -------------------------------------------- |
+| `"error"`    | The error message text describing the input. |
+| `"hint"`     | The hint text describing the input.          |
+| `"input"`    | The form input.                              |
+| `"label"`    | The label text describing the input.         |
+| `"required"` | The (required) text in the label.            |
+
+
 ## Dependencies
 
 ### Used by

@@ -15,6 +15,14 @@
 | `required`  | `required`   | Specifies if a form field is required or not. | `boolean` | `undefined` |
 
 
+## Shadow Parts
+
+| Part         | Description |
+| ------------ | ----------- |
+| `"label"`    |             |
+| `"required"` |             |
+
+
 ## Dependencies
 
 ### Used by
