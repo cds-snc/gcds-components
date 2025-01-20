@@ -1,4 +1,5 @@
 import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
+import i18n from './i18n/i18n';
 
 export type ContentValues =
   | 'center'
@@ -128,7 +129,9 @@ export class GcdsGrid {
 
     if (newValue != undefined && !values.includes(newValue)) {
       this.gapTablet = undefined;
-      console.error('gcds-grid: Not a valid spacing value for gap-tablet.');
+      console.error(
+        `${i18n['en'].gapTabletError} | ${i18n['fr'].gapTabletError}`,
+      );
     }
   }
 
@@ -144,7 +147,9 @@ export class GcdsGrid {
 
     if (newValue != undefined && !values.includes(newValue)) {
       this.gapDesktop = undefined;
-      console.error('gcds-grid: Not a valid spacing value for gap-desktop.');
+      console.error(
+        `${i18n['en'].gapDesktopError} | ${i18n['fr'].gapDesktopError}`,
+      );
     }
   }
 
