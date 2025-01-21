@@ -1,11 +1,11 @@
 const I18N = {
   en: {
-    gapDesktopError: 'gcds-grid: Not a valid spacing value for gap-desktop.',
-    gapTabletError: 'gcds-grid: Not a valid spacing value for gap-tablet.',
+    gapDesktopError: 'gcds-grid: Invalid spacing value for gap-desktop.',
+    gapTabletError: 'gcds-grid: Invalid spacing value for gap-tablet.',
   },
   fr: {
-    gapDesktopError: 'gcds-grid: Not a valid spacing value for gap-desktop.',
-    gapTabletError: 'gcds-grid: Not a valid spacing value for gap-tablet.',
+    gapDesktopError: "gcds-grid: Valeur d'espacement invalide pour gap-desktop.",
+    gapTabletError: "gcds-grid: Valeur d'espacement invalide pour gap-tablet.",
   },
 };
 
