@@ -4,7 +4,7 @@
 
 ## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.30.0...gcds-components-v0.31.0)
 
-Released on 2025-01-22
+Released on: 2025-01-22
 
 ### :rocket: New Features
 
