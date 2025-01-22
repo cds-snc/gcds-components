@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.30.0...gcds-components-vue-v0.31.0) (2025-01-22)
+
+
+### :rocket: New Features
+
+* add grid gap property for more flexibility ([#732](https://github.com/cds-snc/gcds-components/issues/732)) ([2af7915](https://github.com/cds-snc/gcds-components/commit/2af7915306f0a32f6af32a24336857ce300756d8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.30.0 to ^0.31.0
+
 ## [0.30.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.29.1...gcds-components-vue-v0.30.0) (2024-12-17)
 
 
