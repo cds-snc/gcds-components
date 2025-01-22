@@ -7,11 +7,11 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
-import { ContentValues, SpacingValues as SpacingValues1 } from "./components/gcds-grid/gcds-grid";
+import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
-export { ContentValues, SpacingValues as SpacingValues1 } from "./components/gcds-grid/gcds-grid";
+export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export namespace Components {
     interface GcdsAlert {
@@ -460,15 +460,15 @@ export namespace Components {
         /**
           * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gap-tablet and gap-desktop are not defined. Option to set different spacing for desktop with gap-desktop and for tablet with gap-tablet.
          */
-        "gap"?: SpacingValues1;
+        "gap"?: GridGapValues;
         /**
           * Provides option to set horizontal and vertical spacing between items in a grid container for desktop screens.
          */
-        "gapDesktop"?: SpacingValues1;
+        "gapDesktop"?: GridGapValues;
         /**
           * Provides option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gap-desktop is not defined, gap-tablet will be used to define the spacing for desktop screens as well.
          */
-        "gapTablet"?: SpacingValues1;
+        "gapTablet"?: GridGapValues;
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */
@@ -2283,15 +2283,15 @@ declare namespace LocalJSX {
         /**
           * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gap-tablet and gap-desktop are not defined. Option to set different spacing for desktop with gap-desktop and for tablet with gap-tablet.
          */
-        "gap"?: SpacingValues1;
+        "gap"?: GridGapValues;
         /**
           * Provides option to set horizontal and vertical spacing between items in a grid container for desktop screens.
          */
-        "gapDesktop"?: SpacingValues1;
+        "gapDesktop"?: GridGapValues;
         /**
           * Provides option to set horizontal and vertical spacing between items in a grid container for tablet screens. If gap-desktop is not defined, gap-tablet will be used to define the spacing for desktop screens as well.
          */
-        "gapTablet"?: SpacingValues1;
+        "gapTablet"?: GridGapValues;
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the inline (row) axis
          */

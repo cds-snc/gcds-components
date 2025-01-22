@@ -147,7 +147,7 @@ describe('gcds-grid', () => {
     `);
   });
 
-  it('renders - does not render gap tablet when passed invalid value', async () => {
+  it('does not render gap tablet when passed invalid value', async () => {
     const { root } = await newSpecPage({
       components: [GcdsGrid],
       html: `
@@ -183,7 +183,7 @@ describe('gcds-grid', () => {
     `);
   });
 
-  it('renders - does not render gap desktop when passed invalid value', async () => {
+  it('does not render gap desktop when passed invalid value', async () => {
     const { root } = await newSpecPage({
       components: [GcdsGrid],
       html: `

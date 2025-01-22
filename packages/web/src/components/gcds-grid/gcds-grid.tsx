@@ -1,4 +1,5 @@
 import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
+import i18n from './i18n/i18n';
 
 export type ContentValues =
   | 'center'
@@ -9,7 +10,7 @@ export type ContentValues =
   | 'start'
   | 'stretch';
 
-export type SpacingValues =
+export type GridGapValues =
   | '150'
   | '175'
   | '200'
@@ -27,7 +28,7 @@ export type SpacingValues =
   | '750'
   | '800';
 
-const SpacingArray = [
+const GridGapArray = [
   '150',
   '175',
   '200',
@@ -104,11 +105,11 @@ export class GcdsGrid {
    * are not defined. Option to set different spacing for desktop
    * with gap-desktop and for tablet with gap-tablet.
    */
-  @Prop() gap?: SpacingValues = '300';
+  @Prop() gap?: GridGapValues = '300';
 
   @Watch('gap')
   validateGap(newValue: string) {
-    const values = SpacingArray;
+    const values = GridGapArray;
 
     if (!values.includes(newValue)) {
       this.gap = '300';
@@ -120,15 +121,17 @@ export class GcdsGrid {
    * grid container for tablet screens. If gap-desktop is not defined, gap-tablet
    * will be used to define the spacing for desktop screens as well.
    */
-  @Prop() gapTablet?: SpacingValues;
+  @Prop() gapTablet?: GridGapValues;
 
   @Watch('gapTablet')
   validateGapTablet(newValue: string) {
-    const values = SpacingArray;
+    const values = GridGapArray;
 
     if (newValue != undefined && !values.includes(newValue)) {
       this.gapTablet = undefined;
-      console.error('Not a valid spacing value for gap-tablet.');
+      console.error(
+        `${i18n['en'].gapTabletError} | ${i18n['fr'].gapTabletError}`,
+      );
     }
   }
 
@@ -136,15 +139,17 @@ export class GcdsGrid {
    * Provides option to set horizontal and vertical spacing between items
    * in a grid container for desktop screens.
    */
-  @Prop() gapDesktop?: SpacingValues;
+  @Prop() gapDesktop?: GridGapValues;
 
   @Watch('gapDesktop')
   validateGapDesktop(newValue: string) {
-    const values = SpacingArray;
+    const values = GridGapArray;
 
     if (newValue != undefined && !values.includes(newValue)) {
       this.gapDesktop = undefined;
-      console.error('Not a valid spacing value for gap-desktop.');
+      console.error(
+        `${i18n['en'].gapDesktopError} | ${i18n['fr'].gapDesktopError}`,
+      );
     }
   }
 
