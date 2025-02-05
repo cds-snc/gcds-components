@@ -518,24 +518,48 @@ export class GcdsDateInput {
     return (
       <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
-          <gcds-fieldset
-            legend={legend}
-            fieldsetId="date-input"
-            hint={hint}
-            errorMessage={errorMessage}
-            required={required}
+          <fieldset
             class={`gcds-date-input__fieldset${hint ? ' gcds-date-input--hint' : ''}${errorMessage ? ' gcds-date-input--error' : ''}`}
-            lang={lang}
-            data-date="true"
           >
+            <legend>
+              {legend}
+              {required ? (
+                <span class="legend__required">{i18n[lang].required}</span>
+              ) : null}
+            </legend>
+            {hint ? <gcds-hint hint-id="date-input">{hint}</gcds-hint> : null}
+            {errorMessage ? (
+              <div>
+                <gcds-error-message messageId="date-input">
+                  {errorMessage}
+                </gcds-error-message>
+              </div>
+            ) : null}
             {format == 'compact'
               ? [month, year]
               : lang == 'en'
                 ? [month, day, year]
                 : [day, month, year]}
-          </gcds-fieldset>
+          </fieldset>
         )}
       </Host>
     );
   }
 }
+
+// <gcds-fieldset
+// legend={legend}
+// fieldsetId="date-input"
+// hint={hint}
+// errorMessage={errorMessage}
+// required={required}
+// class={`gcds-date-input__fieldset${hint ? ' gcds-date-input--hint' : ''}${errorMessage ? ' gcds-date-input--error' : ''}`}
+// lang={lang}
+// data-date="true"
+// >
+// {format == 'compact'
+//   ? [month, year]
+//   : lang == 'en'
+//     ? [month, day, year]
+//     : [day, month, year]}
+// </gcds-fieldset>
