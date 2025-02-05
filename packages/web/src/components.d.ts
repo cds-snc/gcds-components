@@ -108,7 +108,7 @@ export namespace Components {
          */
         "cardTitle": string;
         /**
-          * The card title tag attribute specifies HTML element the title renders as
+          * The card title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
          */
         "cardTitleTag": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**
@@ -776,7 +776,7 @@ export namespace Components {
          */
         "noticeTitle": string;
         /**
-          * Set notice title heading tag.
+          * The notice title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
          */
         "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
         /**
@@ -1835,7 +1835,7 @@ declare namespace LocalJSX {
          */
         "cardTitle": string;
         /**
-          * The card title tag attribute specifies HTML element the title renders as
+          * The card title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
          */
         "cardTitleTag"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**
@@ -2643,7 +2643,7 @@ declare namespace LocalJSX {
          */
         "noticeTitle": string;
         /**
-          * Set notice title heading tag.
+          * The notice title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
          */
         "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
         /**
