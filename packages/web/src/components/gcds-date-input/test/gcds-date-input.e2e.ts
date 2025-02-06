@@ -306,9 +306,7 @@ describe('gcds-date-input a11y tests', () => {
       '<gcds-date-input legend="Date input" name="date" format="full"></gcds-date-input>',
     );
 
-    const labelTest = new AxePuppeteer(page)
-      .withRules('label')
-      .analyze();
+    const labelTest = new AxePuppeteer(page).withRules('label').analyze();
     const results = await labelTest;
 
     expect(results.violations.length).toBe(0);
@@ -321,29 +319,26 @@ describe('gcds-date-input a11y tests', () => {
     );
 
     await page.keyboard.press('Tab');
-    
+
     expect(
       await page.evaluate(
-        () =>
-          window.document.activeElement.shadowRoot.activeElement.nodeName,
+        () => window.document.activeElement.shadowRoot.activeElement.nodeName,
       ),
     ).toEqual('GCDS-SELECT');
 
     await page.keyboard.press('Tab');
-    
+
     expect(
       await page.evaluate(
-        () =>
-          window.document.activeElement.shadowRoot.activeElement.nodeName,
+        () => window.document.activeElement.shadowRoot.activeElement.nodeName,
       ),
     ).toEqual('GCDS-INPUT');
 
     await page.keyboard.press('Tab');
-    
+
     expect(
       await page.evaluate(
-        () =>
-          window.document.activeElement.shadowRoot.activeElement.nodeName,
+        () => window.document.activeElement.shadowRoot.activeElement.nodeName,
       ),
     ).toEqual('GCDS-INPUT');
   });
