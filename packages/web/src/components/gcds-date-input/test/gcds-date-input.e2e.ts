@@ -116,10 +116,8 @@ it('Validation - Missing day', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.missingday);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.missingday);
 });
 
 it('Validation - Missing year', async () => {
@@ -137,10 +135,8 @@ it('Validation - Missing year', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.missingyear);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.missingyear);
 });
 
 it('Validation - Missing month', async () => {
@@ -161,10 +157,8 @@ it('Validation - Missing month', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.missingmonth);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.missingmonth);
 });
 
 it('Validation - Missing month and day', async () => {
@@ -184,10 +178,8 @@ it('Validation - Missing month and day', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.missingmonthday);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.missingmonthday);
 });
 
 it('Validation - Missing day and year', async () => {
@@ -224,10 +216,8 @@ it('Validation - Missing month and year', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.missingmonthyear);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.missingmonthyear);
 });
 
 it('Validation - Year length', async () => {
@@ -249,10 +239,8 @@ it('Validation - Year length', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.invalidyearlength);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.invalidyearlength);
 });
 
 it('Validation - Invalid day', async () => {
@@ -274,10 +262,8 @@ it('Validation - Invalid day', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.invalidday);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.invalidday);
 });
 
 /**
