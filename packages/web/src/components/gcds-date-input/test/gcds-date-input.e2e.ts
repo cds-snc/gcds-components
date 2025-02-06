@@ -92,10 +92,8 @@ it('Validation - Missing all fileds', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.all);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.all);
 });
 
 it('Validation - Missing day', async () => {
@@ -196,10 +194,8 @@ it('Validation - Missing day and year', async () => {
   await page.waitForChanges();
 
   expect(
-    (await page.find('gcds-date-input >>> gcds-fieldset')).getAttribute(
-      'error-message',
-    ),
-  ).toBe(dateInputErrorMessage.en.missingdayyear);
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual(dateInputErrorMessage.en.missingdayyear);
 });
 
 it('Validation - Missing month and year', async () => {
