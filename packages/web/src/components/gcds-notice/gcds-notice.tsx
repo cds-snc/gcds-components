@@ -39,7 +39,9 @@ export class GcdsNotice {
   }
 
   /**
-   * Set notice title heading tag.
+   * The notice title tag property specifies the HTML heading element for the title.
+   * This property does not modify the font size. It is used to assign the heading level
+   * in order to maintain heading hierarchy and accessibility for assistive technologies.
    */
   @Prop() noticeTitleTag!: 'h2' | 'h3' | 'h4' | 'h5';
   validateNoticeTitleTag() {
