@@ -19,12 +19,12 @@
 @layer default {
   :host {
     .gcds-date-input__fieldset legend {
-      color: var(--gcds-fieldset-default-text);
+      color: var(--gcds-date-input-fieldset-text);
       font: var(--gcds-date-input-fieldset-font-desktop);
 
       .legend__required {
-        margin: var(--gcds-fieldset-legend-required-margin) !important;
-        font: var(--gcds-fieldset-legend-required-font-desktop);
+        margin: var(--gcds-date-input-fieldset-required-margin) !important;
+        font: var(--gcds-date-input-fieldset-required-font-desktop);
         vertical-align: middle;
       }
 
@@ -32,7 +32,7 @@
         font: var(--gcds-date-input-fieldset-font-mobile);
 
         .legend__required {
-          font: var(--gcds-fieldset-legend-required-font-mobile);
+          font: var(--gcds-date-input-fieldset-required-font-mobile);
         }
       }
     }
@@ -51,7 +51,7 @@
 
 @layer hint {
   :host {
-    .gcds-date-input--hint {
+    gcds-hint {
       margin: var(--gcds-date-input-fieldset-hint-margin);
     }
   }
@@ -59,10 +59,6 @@
 
 @layer error {
   :host {
-    /* .gcds-date-input--error {
-      margin: var(--gcds-date-input-fieldset-error-margin);
-    } */
-
     gcds-input.gcds-date-input--error::part(input),
     gcds-select.gcds-date-input--error::part(select) {
       border-color: var(--gcds-date-input-danger-border);

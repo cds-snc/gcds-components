@@ -358,11 +358,11 @@ export class GcdsDateInput {
   private splitFormValue() {
     if (this.value && isValidDate(this.value, this.format)) {
       if (this.format == 'compact') {
-        let splitValue = this.value.split('-');
+        const splitValue = this.value.split('-');
         this.yearValue = splitValue[0];
         this.monthValue = splitValue[1];
       } else {
-        let splitValue = this.value.split('-');
+        const splitValue = this.value.split('-');
         this.yearValue = splitValue[0];
         this.monthValue = splitValue[1];
         this.dayValue = splitValue[2];
@@ -408,7 +408,7 @@ export class GcdsDateInput {
       this._validator = getValidator(this.validator);
     }
 
-    let valid = this.validateRequiredProps();
+    const valid = this.validateRequiredProps();
 
     if (!valid) {
       logError('gcds-date-input', this.errors);
@@ -442,7 +442,7 @@ export class GcdsDateInput {
       hasError,
     } = this;
 
-    let requiredAttr = {};
+    const requiredAttr = {};
 
     if (required) {
       requiredAttr['aria-required'] = 'true';
@@ -518,9 +518,7 @@ export class GcdsDateInput {
     return (
       <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
-          <fieldset
-            class={`gcds-date-input__fieldset${hint ? ' gcds-date-input--hint' : ''}${errorMessage ? ' gcds-date-input--error' : ''}`}
-          >
+          <fieldset class="gcds-date-input__fieldset">
             <legend>
               {legend}
               {required ? (
