@@ -449,6 +449,17 @@ export class GcdsDateInput {
       requiredAttr['aria-required'] = 'true';
     }
 
+    const fieldsetAttrs = {
+      'tabindex': '0',
+      'aria-labelledby': 'date-input-legend',
+    };
+
+    if (hint) {
+      const hintID = this.hint ? `date-input-hint ` : '';
+      fieldsetAttrs['aria-labelledby'] =
+        `${fieldsetAttrs['aria-labelledby']} ${hintID}`.trim();
+    }
+
     // Array of months 01 - 12
     const options = Array.from({ length: 12 }, (_, i) =>
       i + 1 < 10 ? `0${i + 1}` : `${i + 1}`,
@@ -516,17 +527,24 @@ export class GcdsDateInput {
     return (
       <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
-          <fieldset class="gcds-date-input__fieldset">
-            <legend>
+          <fieldset class="gcds-date-input__fieldset" {...fieldsetAttrs}>
+            <legend id="date-input-legend">
               {legend}
               {required ? (
                 <span class="legend__required">{i18n[lang].required}</span>
               ) : null}
             </legend>
-            {hint ? <gcds-hint hint-id="date-input">{hint}</gcds-hint> : null}
+            {hint ? (
+              <gcds-hint id="date-input-hint" hint-id="date-input">
+                {hint}
+              </gcds-hint>
+            ) : null}
             {errorMessage ? (
               <div>
-                <gcds-error-message messageId="date-input">
+                <gcds-error-message
+                  id="date-input-error"
+                  messageId="date-input"
+                >
                   {errorMessage}
                 </gcds-error-message>
               </div>
@@ -542,20 +560,3 @@ export class GcdsDateInput {
     );
   }
 }
-
-// <gcds-fieldset
-// legend={legend}
-// fieldsetId="date-input"
-// hint={hint}
-// errorMessage={errorMessage}
-// required={required}
-// class={`gcds-date-input__fieldset${hint ? ' gcds-date-input--hint' : ''}${errorMessage ? ' gcds-date-input--error' : ''}`}
-// lang={lang}
-// data-date="true"
-// >
-// {format == 'compact'
-//   ? [month, year]
-//   : lang == 'en'
-//     ? [month, day, year]
-//     : [day, month, year]}
-// </gcds-fieldset>
