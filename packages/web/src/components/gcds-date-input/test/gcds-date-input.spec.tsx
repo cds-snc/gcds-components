@@ -10,7 +10,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
@@ -67,7 +67,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" lang="fr" legend="Date input" name="date">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
@@ -125,7 +125,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
@@ -181,7 +181,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" lang="fr" legend="Date input" name="date">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
@@ -238,7 +238,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" required>
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
               <span class="legend__required">
@@ -298,7 +298,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" hint="This is a hint">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset date-input-hint" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend date-input-hint" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
@@ -358,7 +358,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" value="1991-03-15">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
@@ -415,7 +415,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date" value="1991-03">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
@@ -471,7 +471,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" value="1991-03-015">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
@@ -529,7 +529,7 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date" value="1991-15">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>

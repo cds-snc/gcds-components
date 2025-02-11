@@ -450,7 +450,7 @@ export class GcdsDateInput {
     }
 
     const fieldsetAttrs = {
-      'tabindex': '0',
+      'tabindex': '-1',
       'aria-labelledby': 'date-input-legend',
     };
 
