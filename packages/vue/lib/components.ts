@@ -360,6 +360,23 @@ export const GcdsRadioGroup = /*@__PURE__*/ defineContainer<JSX.GcdsRadioGroup>(
 ]);
 
 
+export const GcdsRadios = /*@__PURE__*/ defineContainer<JSX.GcdsRadios>('gcds-radios', undefined, [
+  'options',
+  'name',
+  'legend',
+  'required',
+  'hint',
+  'errorMessage',
+  'disabled',
+  'value',
+  'gcdsChange',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsValid',
+  'gcdsError'
+]);
+
+
 export const GcdsSearch = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-search', undefined, [
   'placeholder',
   'action',

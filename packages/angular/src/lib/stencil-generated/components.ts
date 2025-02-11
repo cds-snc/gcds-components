@@ -1001,6 +1001,53 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
 
 
 @ProxyCmp({
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'value'],
+  outputs: ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
+})
+@Component({
+  selector: 'gcds-radios',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'value'],
+  outputs: ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError'],
+  standalone: false,
+})
+export class GcdsRadios {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']);
+  }
+}
+
+
+export declare interface GcdsRadios extends Components.GcdsRadios {
+  /**
+   * Emitted when the radio button is checked
+   */
+  gcdsChange: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the radio has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the radio loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the radios has passed validation.
+   */
+  gcdsValid: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the radios has a validation error.
+   */
+  gcdsError: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
   inputs: ['action', 'method', 'name', 'placeholder', 'searchId', 'suggested', 'value'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsSubmit']
 })

@@ -106,6 +106,29 @@
 
       <hr class="my-550" />
 
+      <gcds-radios
+        name="radio"
+        legend="Radios component"
+        hint="Select one"
+        error-message="Red"
+        options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+      >
+      </gcds-radios>
+
+      <gcds-fieldset
+      fieldset-id="fieldset"
+      legend="Radio button group"
+      hint="They are in a fieldset"
+      required
+    >
+
+      <gcds-radio-group
+        name="radio"
+        options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+      >
+      </gcds-radio-group>
+    </gcds-fieldset>
+
       <!-- ------------- Alerts ------------- -->
 
       <gcds-heading tag="h2">Alerts</gcds-heading>
