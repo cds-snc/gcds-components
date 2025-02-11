@@ -298,11 +298,11 @@ describe('gcds-date-input', () => {
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" hint="This is a hint">
         <mock:shadow-root>
-          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset  date-input-hint" tabindex="0">
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset date-input-hint" tabindex="0">
             <legend id="date-input-legend">
               Date input
             </legend>
-            <gcds-hint id=" date-input-hint" hint-id="date-input">
+            <gcds-hint id="date-input-hint" hint-id="date-input">
               This is a hint
             </gcds-hint>
             <gcds-select aria-invalid="false" class="gcds-date-input__month" defaultvalue="Select a month" label="Month" name="month" selectid="month" value="">
