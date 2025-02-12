@@ -52,14 +52,16 @@ Type: `Promise<void>`
 
 - [gcds-select](../gcds-select)
 - [gcds-input](../gcds-input)
-- [gcds-fieldset](../gcds-fieldset)
+- [gcds-hint](../gcds-hint)
+- [gcds-error-message](../gcds-error-message)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-date-input --> gcds-select
   gcds-date-input --> gcds-input
-  gcds-date-input --> gcds-fieldset
+  gcds-date-input --> gcds-hint
+  gcds-date-input --> gcds-error-message
   gcds-select --> gcds-label
   gcds-select --> gcds-hint
   gcds-select --> gcds-error-message
@@ -69,8 +71,6 @@ graph TD;
   gcds-input --> gcds-label
   gcds-input --> gcds-hint
   gcds-input --> gcds-error-message
-  gcds-fieldset --> gcds-hint
-  gcds-fieldset --> gcds-error-message
   style gcds-date-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
