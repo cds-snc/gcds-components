@@ -74,6 +74,8 @@
         var(--gcds-search-focus-border-color);
       outline-offset: var(--gcds-search-border-width);
       box-shadow: var(--gcds-search-focus-box-shadow);
+      border-width: var(--gcds-search-focus-border-width);
+      margin: var(--gcds-search-focus-margin);
       z-index: 30;
     }
 
