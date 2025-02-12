@@ -1,4 +1,4 @@
-@layer reset, default, desktop;
+@layer reset, default, desktop, mobile;
 
 @layer reset {
   :host {
@@ -32,10 +32,11 @@
 
 /* Note: viewport specific style decision */
 @layer desktop {
-  @media screen and (width >= 64em) {
+  @media screen and (width >= 48em) {
     :host .gcds-lang-toggle {
       gcds-link::part(link) {
         padding: 0;
+        font: var(--gcds-lang-toggle-font-desktop);
       }
 
       span {
@@ -45,6 +46,14 @@
       abbr {
         display: none;
       }
+    }
+  }
+}
+
+@layer mobile {
+  @media screen and (width < 48em) {
+    :host .gcds-lang-toggle gcds-link::part(link) {
+      font: var(--gcds-lang-toggle-font-mobile);
     }
   }
 }
