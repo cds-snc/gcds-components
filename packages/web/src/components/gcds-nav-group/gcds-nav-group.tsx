@@ -10,7 +10,12 @@ import {
   Listen,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
+import {
+  assignLanguage,
+  observerConfig,
+  emitEvent,
+  closestElement,
+} from '../../utils/utils';
 
 @Component({
   tag: 'gcds-nav-group',
@@ -67,13 +72,20 @@ export class GcdsNavGroup {
    */
   @State() navStyle: string;
 
+  /**
+   * Position of nav for mobile menu logic
+   */
+  @State() navPosiiton: number;
+
+  // Close dropdowns on focusout when on desktop screen size
   @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
     if (
       (e.target === this.el || this.el.contains(e.target)) &&
       !this.el.contains(e.relatedTarget) &&
       this.navStyle === 'dropdown' &&
-      this.open
+      this.open &&
+      window.innerWidth >= 1024
     ) {
       setTimeout(() => this.toggleNav(), 200);
     }
@@ -101,6 +113,28 @@ export class GcdsNavGroup {
         this.el.children[i].hasAttribute('open')
       ) {
         (this.el.children[i] as HTMLGcdsNavGroupElement).toggleNav();
+      }
+    }
+
+    // Dropdown exception - Close child dropdown nav-groups if opened in mobile menu
+    if (this.el.classList.contains('gcds-mobile-nav-topnav')) {
+      const topnav = closestElement('gcds-top-nav', this.el);
+      const childNavGroups = topnav.querySelectorAll('gcds-nav-group');
+      childNavGroups.forEach(navGroup => {
+        if (navGroup.hasAttribute('open')) {
+          navGroup.toggleNav();
+        }
+      });
+    }
+
+    // Remove ability to scroll page when mobile menu is open
+    if (this.el.classList.contains('gcds-mobile-nav')) {
+      if (this.open) {
+        this.navPosiiton = window.scrollY;
+        document.body.style.position = 'fixed';
+      } else {
+        document.body.style.removeProperty('position');
+        window.scrollTo(0, this.navPosiiton);
       }
     }
   }
