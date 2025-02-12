@@ -1,9 +1,9 @@
 const I18N = {
   en: {
-    required: 'required',
+    required: ' (required)',
   },
   fr: {
-    required: 'obligatoire',
+    required: ' (obligatoire)',
   },
 };
 

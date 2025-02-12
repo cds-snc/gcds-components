@@ -5,17 +5,12 @@ import {
   EventEmitter,
   State,
   Prop,
-  Listen,
   Watch,
   Host,
   h,
   AttachInternals,
 } from '@stencil/core';
-import {
-  assignLanguage,
-  inheritAttributes,
-  observerConfig,
-} from '../../utils/utils';
+import { assignLanguage, inheritAttributes } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 export type RadioObject = {
@@ -42,6 +37,8 @@ export class GcdsRadios {
 
   private shadowElement?: HTMLInputElement;
 
+  private initialValue?: string;
+
   private optionObject;
 
   /**
@@ -59,6 +56,17 @@ export class GcdsRadios {
     } else if (typeof this.options == 'string') {
       this.optionObject = JSON.parse(this.options);
     }
+
+    if (this.optionObject && !this.value) {
+      this.optionObject.forEach(radio => {
+        if (radio.checked) {
+          this.value = radio.value;
+          this.internals.setFormValue(radio.value, 'checked');
+        }
+      });
+    }
+
+    console.log(this.optionObject);
   }
 
   /**
@@ -153,39 +161,46 @@ export class GcdsRadios {
    * Emitted when the radios has a validation error.
    */
   @Event() gcdsError!: EventEmitter<void>;
-  /*
 
+  /*
+   * Form internal functions
+   */
+  formResetCallback() {
+    if (this.value != this.initialValue) {
+      this.internals.setFormValue(this.initialValue, 'checked');
+      this.value = this.initialValue;
+    }
+  }
+
+  formStateRestoreCallback(state) {
+    this.internals.setFormValue(state);
+    this.value = state;
+  }
+
+  /*
    * Observe lang attribute change
    */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
+  @Watch('lang')
+  watchLang(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      this.lang = newValue;
+    }
   }
 
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    this.updateLang();
     this.validateOptions();
     this.validateErrorMessage();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-
-    this.optionObject &&
-      this.optionObject.map(radio => {
-        if (radio.checked) {
-          this.internals.setFormValue(radio.value, 'checked');
-        }
-      });
+    this.initialValue = this.value ? this.value : null;
   }
 
   private onChange = e => {
     this.gcdsChange.emit(e.target.value);
+    this.value = e.target.value;
     this.internals.setFormValue(e.target.value, 'checked');
 
     const changeEvt = new e.constructor(e.type, e);
@@ -247,7 +262,9 @@ export class GcdsRadios {
                 disabled: disabled,
                 required: radio.required,
                 value: radio.value,
-                checked: radio.checked,
+                checked:
+                  (radio.checked === 'true' || radio.checked === true) &&
+                  radio.checked,
                 ...inheritedAttributes,
               };
 
