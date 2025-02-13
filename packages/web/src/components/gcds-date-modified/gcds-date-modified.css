@@ -25,5 +25,9 @@
     dd {
       margin: var(--gcds-date-modified-description-margin);
     }
+
+    gcds-text::part(text) {
+      font: var(--gcds-date-modified-font);
+    }
   }
 }
