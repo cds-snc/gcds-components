@@ -878,6 +878,20 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
           * Specifies if an input element is disabled or not.
          */
         "value": string;
@@ -1611,7 +1625,7 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsValid": void;
-        "gcdsError": void;
+        "gcdsError": object;
     }
     interface HTMLGcdsRadiosElement extends Components.GcdsRadios, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsRadiosElementEventMap>(type: K, listener: (this: HTMLGcdsRadiosElement, ev: GcdsRadiosCustomEvent<HTMLGcdsRadiosElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2831,7 +2845,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the radios has a validation error.
          */
-        "onGcdsError"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        "onGcdsError"?: (event: GcdsRadiosCustomEvent<object>) => void;
         /**
           * Emitted when the radio has focus.
          */
@@ -2848,6 +2862,16 @@ declare namespace LocalJSX {
           * Specifies if a form field is required or not.
          */
         "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
         /**
           * Specifies if an input element is disabled or not.
          */

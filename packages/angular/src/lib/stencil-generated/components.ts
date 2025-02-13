@@ -1001,7 +1001,8 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'value'],
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  methods: ['validate'],
   outputs: ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
 })
 @Component({
@@ -1009,7 +1010,7 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'value'],
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
   outputs: ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError'],
   standalone: false,
 })
@@ -1043,7 +1044,7 @@ export declare interface GcdsRadios extends Components.GcdsRadios {
   /**
    * Emitted when the radios has a validation error.
    */
-  gcdsError: EventEmitter<CustomEvent<void>>;
+  gcdsError: EventEmitter<CustomEvent<object>>;
 }
 
 

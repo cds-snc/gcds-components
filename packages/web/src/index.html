@@ -105,6 +105,30 @@
       <gcds-heading tag="h1">GC Design System</gcds-heading>
 
       <hr class="my-550" />
+      <form novalidate>
+        <gcds-error-summary listen></gcds-error-summary>
+
+        <gcds-input
+        input-id="form-name"
+        label="Name"
+        hint="Please enter your full name."
+        required
+      ></gcds-input>
+
+        <gcds-radios
+          name="radio"
+          legend="Radios component"
+          hint="Select one"
+          id="radios-form"
+          validate-on="submit"
+          lang="en"
+          required
+          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+          >
+        </gcds-radios>
+
+        <gcds-button type="submit">Submit</gcds-button>
+      </form>
 
       <gcds-radios
         name="radio"
@@ -123,8 +147,8 @@
         //         options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
         const options = [
           { "label": "Radio 1 label", "id": "radio1", "value": "radio1"},
-          { "label": "Radio 2 label", "id": "radio2", "value": "radio2", "checked": true, "hint": "This will start without a check"},
-          { "label": "Radio 3 label", "id": "radio3", "value": "radio3", "checked": "true"}
+          { "label": "Radio 2 label", "id": "radio2", "value": "radio2", "hint": "This will start without a check"},
+          { "label": "Radio 3 label", "id": "radio3", "value": "radio3"}
         ];
 
         document.getElementById('radios').options = options;

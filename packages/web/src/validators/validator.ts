@@ -104,6 +104,13 @@ export function requiredValidator(element, type, subtype?) {
           element.validator = ['requiredDateInput'];
         }
         break;
+      case 'radio':
+        if (element.validator) {
+          element.validator.unshift('requiredRadio');
+        } else {
+          element.validator = ['requiredRadio'];
+        }
+        break;
     }
   }
 }

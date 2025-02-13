@@ -6,11 +6,21 @@ import {
   State,
   Prop,
   Watch,
+  Listen,
+  Method,
   Host,
   h,
   AttachInternals,
 } from '@stencil/core';
+
 import { assignLanguage, inheritAttributes } from '../../utils/utils';
+import {
+  Validator,
+  defaultValidator,
+  ValidatorEntry,
+  getValidator,
+  requiredValidator,
+} from '../../validators';
 import i18n from './i18n/i18n';
 
 export type RadioObject = {
@@ -40,6 +50,8 @@ export class GcdsRadios {
   private initialValue?: string;
 
   private optionObject;
+
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * Props
@@ -115,6 +127,25 @@ export class GcdsRadios {
   @Prop({ reflect: true, mutable: true }) value: string;
 
   /**
+   * Array of validators
+   */
+  @Prop({ mutable: true }) validator: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+
+  @Watch('validator')
+  validateValidator() {
+    if (this.validator && !this.validateOn) {
+      this.validateOn = 'blur';
+    }
+  }
+
+  /**
+   * Set event to call validator
+   */
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+
+  /**
    * Specifies if the radio is invalid.
    */
   @State() hasError: boolean;
@@ -128,6 +159,22 @@ export class GcdsRadios {
    * Language of rendered component
    */
   @State() lang: string;
+
+  /**
+   * Call any active validators
+   */
+  @Method()
+  async validate() {
+    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
+      this.errorMessage = this._validator.errorMessage[this.lang];
+      this.gcdsError.emit({
+        message: `${this.legend} - ${this.errorMessage}`,
+      });
+    } else {
+      this.errorMessage = '';
+      this.gcdsValid.emit();
+    }
+  }
 
   /**
    * Events
@@ -152,6 +199,14 @@ export class GcdsRadios {
     this.gcdsBlur.emit();
   };
 
+  private onBlurValidate = () => {
+    if (this.validateOn == 'blur') {
+      this.validate();
+    }
+
+    this.gcdsBlur.emit();
+  };
+
   /**
    * Emitted when the radios has passed validation.
    */
@@ -160,7 +215,20 @@ export class GcdsRadios {
   /**
    * Emitted when the radios has a validation error.
    */
-  @Event() gcdsError!: EventEmitter<void>;
+  @Event() gcdsError!: EventEmitter<object>;
+
+  @Listen('submit', { target: 'document' })
+  submitListener(e) {
+    if (e.target == this.el.closest('form')) {
+      if (this.validateOn && this.validateOn != 'other') {
+        this.validate();
+      }
+
+      if (this.hasError && this.validateOn != 'other') {
+        e.preventDefault();
+      }
+    }
+  }
 
   /*
    * Form internal functions
@@ -193,6 +261,14 @@ export class GcdsRadios {
 
     this.validateOptions();
     this.validateErrorMessage();
+    this.validateValidator();
+
+    // Assign required validator if needed
+    requiredValidator(this.el, 'radio');
+
+    if (this.validator) {
+      this._validator = getValidator(this.validator);
+    }
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
     this.initialValue = this.value ? this.value : null;
@@ -221,7 +297,7 @@ export class GcdsRadios {
     } = this;
 
     const fieldsetAttrs = {
-      'tabindex': '0',
+      'tabindex': '-1',
       'aria-labelledby': 'radios-legend',
     };
 
@@ -232,7 +308,7 @@ export class GcdsRadios {
     }
 
     return (
-      <Host>
+      <Host onBlur={() => this.onBlurValidate()}>
         <fieldset class="gcds-radios__fieldset" {...fieldsetAttrs}>
           <legend id="radios-legend" class="gcds-radios__legend">
             {legend}

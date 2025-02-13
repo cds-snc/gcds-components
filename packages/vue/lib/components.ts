@@ -369,6 +369,8 @@ export const GcdsRadios = /*@__PURE__*/ defineContainer<JSX.GcdsRadios>('gcds-ra
   'errorMessage',
   'disabled',
   'value',
+  'validator',
+  'validateOn',
   'gcdsChange',
   'gcdsFocus',
   'gcdsBlur',
