@@ -71,14 +71,12 @@ export class GcdsRadios {
 
     if (this.optionObject && !this.value) {
       this.optionObject.forEach(radio => {
-        if (radio.checked) {
+        if (radio.checked === 'true' || radio.checked === true) {
           this.value = radio.value;
           this.internals.setFormValue(radio.value, 'checked');
         }
       });
     }
-
-    console.log(this.optionObject);
   }
 
   /**
@@ -125,6 +123,23 @@ export class GcdsRadios {
    * Specifies if an input element is disabled or not.
    */
   @Prop({ reflect: true, mutable: true }) value: string;
+  @Watch('value')
+  validateValue() {
+    if (this.optionObject && this.value !== null) {
+      let isValidValue = false;
+      this.optionObject.map(radio => {
+        if (radio.value == this.value) {
+          isValidValue = true;
+          radio.checked = true;
+        }
+      });
+
+      // unset value if no radio button with value available
+      if (!isValidValue) {
+        this.value = null;
+      }
+    }
+  }
 
   /**
    * Array of validators
@@ -288,6 +303,7 @@ export class GcdsRadios {
       lang,
       name,
       legend,
+      value,
       required,
       hint,
       errorMessage,
@@ -338,9 +354,7 @@ export class GcdsRadios {
                 disabled: disabled,
                 required: radio.required,
                 value: radio.value,
-                checked:
-                  (radio.checked === 'true' || radio.checked === true) &&
-                  radio.checked,
+                checked: radio.value === value && true,
                 ...inheritedAttributes,
               };
 
