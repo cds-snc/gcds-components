@@ -637,14 +637,14 @@ export declare interface GcdsHint extends Components.GcdsHint {}
 
 
 @ProxyCmp({
-  inputs: ['fixedWidth', 'iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size']
+  inputs: ['iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size']
 })
 @Component({
   selector: 'gcds-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['fixedWidth', 'iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size'],
+  inputs: ['iconStyle', 'label', 'marginLeft', 'marginRight', 'name', 'size'],
   standalone: false,
 })
 export class GcdsIcon {

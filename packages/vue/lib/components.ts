@@ -243,7 +243,6 @@ export const GcdsIcon = /*@__PURE__*/ defineContainer<JSX.GcdsIcon>('gcds-icon',
   'marginLeft',
   'marginRight',
   'name',
-  'fixedWidth',
   'size'
 ]);
 

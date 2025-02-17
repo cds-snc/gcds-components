@@ -78,12 +78,6 @@ export class GcdsIcon {
     }
   }
 
-  // TODO: Will be removed in separate pull request
-  /**
-   * If the icon should render as a fixed-width square, or their natural width.
-   */
-  @Prop() fixedWidth: boolean = false;
-
   /**
    * Defines the size of the icon.
    */
@@ -124,25 +118,16 @@ export class GcdsIcon {
   }
 
   render() {
-    const {
-      iconStyle,
-      label,
-      marginLeft,
-      marginRight,
-      name,
-      fixedWidth,
-      size,
-    } = this;
+    const { label, marginLeft, marginRight, name, size } = this;
 
     return (
       <Host>
         <span
           class={`
-            gcds-icon gcds-icon-${name} fa-${iconStyle}
+            gcds-icon gcds-icon-${name}
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
             ${size ? `size-${size}` : ''}
-            ${fixedWidth ? `fixed-width` : ''}
           `}
           role="img"
           aria-label={label ? label : false}
