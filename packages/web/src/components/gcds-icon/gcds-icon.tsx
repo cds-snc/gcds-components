@@ -1,5 +1,6 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 import { SpacingValues } from '../../utils/types/spacing';
+import i18n from './i18n/i18n';
 
 @Component({
   tag: 'gcds-icon',
@@ -13,6 +14,7 @@ export class GcdsIcon {
    * Props
    */
 
+  // TODO: Will be removed in separate pull request
   /**
    * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
    */
@@ -36,8 +38,47 @@ export class GcdsIcon {
   /**
    * Name of the icon.
    */
-  @Prop() name!: string;
+  @Prop({ mutable: true }) name!:
+    | 'checkmark-circle'
+    | 'chevron-down'
+    | 'chevron-left'
+    | 'chevron-right'
+    | 'chevron-up'
+    | 'close'
+    | 'download'
+    | 'email'
+    | 'exclamation-circle'
+    | 'external'
+    | 'info-circle'
+    | 'phone'
+    | 'search'
+    | 'warning-triangle';
 
+  @Watch('name')
+  validateName(newValue: string) {
+    const values = [
+      'checkmark-circle',
+      'chevron-down',
+      'chevron-left',
+      'chevron-right',
+      'chevron-up',
+      'close',
+      'download',
+      'email',
+      'exclamation-circle',
+      'external',
+      'info-circle',
+      'phone',
+      'search',
+      'warning-triangle',
+    ];
+
+    if (!values.includes(newValue)) {
+      console.error(`${i18n['en'].nameError} | ${i18n['fr'].nameError}`);
+    }
+  }
+
+  // TODO: Will be removed in separate pull request
   /**
    * If the icon should render as a fixed-width square, or their natural width.
    */
@@ -57,6 +98,31 @@ export class GcdsIcon {
     | 'h2'
     | 'h1' = 'text';
 
+  @Watch('size')
+  validateSize(newValue: string) {
+    const values = [
+      'inherit',
+      'text-small',
+      'text',
+      'h6',
+      'h5',
+      'h4',
+      'h3',
+      'h2',
+      'h1',
+    ];
+
+    if (!values.includes(newValue)) {
+      this.size = 'text';
+    }
+  }
+
+  componentWillLoad() {
+    // Validate attributes and set defaults
+    this.validateName(this.name);
+    this.validateSize(this.size);
+  }
+
   render() {
     const {
       iconStyle,
@@ -72,7 +138,7 @@ export class GcdsIcon {
       <Host>
         <span
           class={`
-            gcds-icon fa fa-${iconStyle} fa-${name}
+            gcds-icon gcds-icon-${name}
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
             ${size ? `size-${size}` : ''}
