@@ -26,7 +26,7 @@ export class GcdsErrorMessage {
         class="gcds-error-message-wrapper"
       >
         <gcds-text class="error-message" role="alert" margin-bottom="75">
-          <gcds-icon name="triangle-exclamation" margin-right="50"></gcds-icon>
+          <gcds-icon name="warning-triangle" margin-right="50"></gcds-icon>
           <strong>
             <slot></slot>
           </strong>
