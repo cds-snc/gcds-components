@@ -252,7 +252,7 @@ export class GcdsButton {
 
           {type === 'link' && target === '_blank' ? (
             <gcds-icon
-              name="external-link"
+              name="external"
               label={i18n[lang].label}
               margin-left="150"
             />
