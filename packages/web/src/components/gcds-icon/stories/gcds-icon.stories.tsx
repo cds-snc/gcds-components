@@ -153,7 +153,7 @@ export default {
       ],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'text' },
+        defaultValue: { summary: 'inherit' },
       },
     },
   },

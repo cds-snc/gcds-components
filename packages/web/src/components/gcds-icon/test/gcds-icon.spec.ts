@@ -10,7 +10,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="close">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon gcds-icon-close size-text"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon gcds-icon-close size-inherit"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -24,7 +24,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="close" margin-left="100">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon gcds-icon-close size-text ml-100"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon gcds-icon-close size-inherit ml-100"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -38,7 +38,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="close" margin-right="100">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon gcds-icon-close size-text mr-100"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon gcds-icon-close size-inherit mr-100"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -66,7 +66,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="close">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="gcds-icon gcds-icon-close size-text"></span>
+          <span aria-hidden="true" role="img" class="gcds-icon gcds-icon-close size-inherit"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
@@ -80,7 +80,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="close" label="This is a description">
         <mock:shadow-root>
-          <span aria-hidden="false" aria-label="This is a description" role="img" class="gcds-icon gcds-icon-close size-text"></span>
+          <span aria-hidden="false" aria-label="This is a description" role="img" class="gcds-icon gcds-icon-close size-inherit"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);

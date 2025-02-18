@@ -96,7 +96,7 @@ export class GcdsIcon {
     | 'h4'
     | 'h3'
     | 'h2'
-    | 'h1' = 'text';
+    | 'h1' = 'inherit';
 
   @Watch('size')
   validateSize(newValue: string) {
@@ -113,7 +113,7 @@ export class GcdsIcon {
     ];
 
     if (!values.includes(newValue)) {
-      this.size = 'text';
+      this.size = 'inherit';
     }
   }
 
