@@ -138,7 +138,7 @@ export class GcdsIcon {
       <Host>
         <span
           class={`
-            gcds-icon gcds-icon-${name}
+            gcds-icon gcds-icon-${name} fa-${iconStyle}
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
             ${size ? `size-${size}` : ''}
