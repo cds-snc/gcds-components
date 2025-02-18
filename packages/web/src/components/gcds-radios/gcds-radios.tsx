@@ -13,7 +13,7 @@ import {
   AttachInternals,
 } from '@stencil/core';
 
-import { assignLanguage, inheritAttributes } from '../../utils/utils';
+import { assignLanguage, inheritAttributes, logError } from '../../utils/utils';
 import {
   Validator,
   defaultValidator,
@@ -61,14 +61,17 @@ export class GcdsRadios {
    * Options to render radio buttons
    */
   @Prop() options!: string | Array<RadioObject>;
+
   @Watch('options')
   validateOptions() {
+    // Assig optionsObject from passed options string/object
     if (typeof this.options == 'object') {
       this.optionObject = this.options;
     } else if (typeof this.options == 'string') {
       this.optionObject = JSON.parse(this.options);
     }
 
+    // Assign value if passed options has a checked radio
     if (this.optionObject && !this.value) {
       this.optionObject.forEach(radio => {
         if (radio.checked === 'true' || radio.checked === true) {
@@ -77,6 +80,13 @@ export class GcdsRadios {
         }
       });
     }
+
+    // Log error if no or invalid optionsObject
+    if (!this.optionObject && !this.errors.includes('options')) {
+      this.errors.push('options');
+    } else if (this.errors.includes('options')) {
+      this.errors.splice(this.errors.indexOf('options'), 1);
+    }
   }
 
   /**
@@ -84,10 +94,33 @@ export class GcdsRadios {
    */
   @Prop({ reflect: true, mutable: false }) name!: string;
 
+  @Watch('name')
+  validateName() {
+    if (
+      (!this.name || this.name.trim() === '') &&
+      !this.errors.includes('name')
+    ) {
+      this.errors.push('name');
+    } else if (this.errors.includes('name')) {
+      this.errors.splice(this.errors.indexOf('name'), 1);
+    }
+  }
+
   /**
    * Name of the form field group.
    */
   @Prop({ reflect: true, mutable: false }) legend!: string;
+  @Watch('legend')
+  validateLegend() {
+    if (
+      (!this.legend || this.legend.trim() === '') &&
+      !this.errors.includes('legend')
+    ) {
+      this.errors.push('legend');
+    } else if (this.errors.includes('legend')) {
+      this.errors.splice(this.errors.indexOf('legend'), 1);
+    }
+  }
 
   /**
    * Specifies if a form field is required or not.
@@ -174,6 +207,12 @@ export class GcdsRadios {
    * Language of rendered component
    */
   @State() lang: string;
+
+  /**
+   * State to track validation on properties
+   * Contains a list of properties that have an error associated with them
+   */
+  @State() errors: Array<string> = [];
 
   /**
    * Call any active validators
@@ -270,11 +309,39 @@ export class GcdsRadios {
     }
   }
 
+  private onChange = e => {
+    this.gcdsChange.emit(e.target.value);
+    this.value = e.target.value;
+    this.internals.setFormValue(e.target.value, 'checked');
+
+    const changeEvt = new e.constructor(e.type, e);
+    this.el.dispatchEvent(changeEvt);
+  };
+
+  /*
+   * Validate required properties
+   */
+  private validateRequiredProps() {
+    this.validateLegend();
+    this.validateName();
+
+    if (
+      this.errors.includes('name') ||
+      this.errors.includes('legend') ||
+      this.errors.includes('options')
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     this.validateOptions();
+    this.validateRequiredProps();
     this.validateErrorMessage();
     this.validateValidator();
 
@@ -287,16 +354,13 @@ export class GcdsRadios {
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
     this.initialValue = this.value ? this.value : null;
+
+    const valid = this.validateRequiredProps();
+
+    if (!valid) {
+      logError('gcds-radios', this.errors);
+    }
   }
-
-  private onChange = e => {
-    this.gcdsChange.emit(e.target.value);
-    this.value = e.target.value;
-    this.internals.setFormValue(e.target.value, 'checked');
-
-    const changeEvt = new e.constructor(e.type, e);
-    this.el.dispatchEvent(changeEvt);
-  };
 
   render() {
     const {
@@ -323,87 +387,89 @@ export class GcdsRadios {
         `${fieldsetAttrs['aria-labelledby']} ${hintID}`.trim();
     }
 
-    return (
-      <Host onBlur={() => this.onBlurValidate()}>
-        <fieldset class="gcds-radios__fieldset" {...fieldsetAttrs}>
-          <legend id="radios-legend" class="gcds-radios__legend">
-            {legend}
-            {required ? (
-              <span class="legend__required">{i18n[lang].required}</span>
+    if (this.validateRequiredProps()) {
+      return (
+        <Host onBlur={() => this.onBlurValidate()}>
+          <fieldset class="gcds-radios__fieldset" {...fieldsetAttrs}>
+            <legend id="radios-legend" class="gcds-radios__legend">
+              {legend}
+              {required ? (
+                <span class="legend__required">{i18n[lang].required}</span>
+              ) : null}
+            </legend>
+
+            {hint ? (
+              <gcds-hint id="radios-hint" hint-id="radios">
+                {hint}
+              </gcds-hint>
             ) : null}
-          </legend>
 
-          {hint ? (
-            <gcds-hint id="radios-hint" hint-id="radios">
-              {hint}
-            </gcds-hint>
-          ) : null}
+            {errorMessage ? (
+              <div>
+                <gcds-error-message id="radios-error" messageId="radios">
+                  {errorMessage}
+                </gcds-error-message>
+              </div>
+            ) : null}
 
-          {errorMessage ? (
-            <div>
-              <gcds-error-message id="radios-error" messageId="radios">
-                {errorMessage}
-              </gcds-error-message>
-            </div>
-          ) : null}
+            {this.optionObject &&
+              this.optionObject.map(radio => {
+                const attrsInput = {
+                  name,
+                  disabled: disabled,
+                  required: radio.required,
+                  value: radio.value,
+                  checked: radio.value === value && true,
+                  ...inheritedAttributes,
+                };
 
-          {this.optionObject &&
-            this.optionObject.map(radio => {
-              const attrsInput = {
-                name,
-                disabled: disabled,
-                required: radio.required,
-                value: radio.value,
-                checked: radio.value === value && true,
-                ...inheritedAttributes,
-              };
+                if (radio.hint) {
+                  const hintID = radio.hint ? `hint-${radio.id} ` : '';
+                  attrsInput['aria-describedby'] = `${hintID}${
+                    attrsInput['aria-describedby']
+                      ? `${attrsInput['aria-describedby']}`
+                      : ''
+                  }`;
+                }
 
-              if (radio.hint) {
-                const hintID = radio.hint ? `hint-${radio.id} ` : '';
-                attrsInput['aria-describedby'] = `${hintID}${
-                  attrsInput['aria-describedby']
-                    ? `${attrsInput['aria-describedby']}`
-                    : ''
-                }`;
-              }
+                if (hasError) {
+                  attrsInput['aria-invalid'] = 'true';
+                  attrsInput['aria-description'] = errorMessage;
+                }
 
-              if (hasError) {
-                attrsInput['aria-invalid'] = 'true';
-                attrsInput['aria-description'] = errorMessage;
-              }
+                return (
+                  <div
+                    class={`gcds-radio ${
+                      disabled ? 'gcds-radio--disabled' : ''
+                    } ${hasError ? 'gcds-radio--error' : ''}`}
+                  >
+                    <input
+                      id={radio.id}
+                      type="radio"
+                      {...attrsInput}
+                      onChange={e => this.onChange(e)}
+                      onBlur={() => this.onBlur()}
+                      onFocus={() => this.gcdsFocus.emit()}
+                      ref={element =>
+                        (this.shadowElement = element as HTMLInputElement)
+                      }
+                    />
 
-              return (
-                <div
-                  class={`gcds-radio ${
-                    disabled ? 'gcds-radio--disabled' : ''
-                  } ${hasError ? 'gcds-radio--error' : ''}`}
-                >
-                  <input
-                    id={radio.id}
-                    type="radio"
-                    {...attrsInput}
-                    onChange={e => this.onChange(e)}
-                    onBlur={() => this.onBlur()}
-                    onFocus={() => this.gcdsFocus.emit()}
-                    ref={element =>
-                      (this.shadowElement = element as HTMLInputElement)
-                    }
-                  />
+                    <gcds-label
+                      label={radio.label}
+                      label-for={radio.id}
+                      lang={lang}
+                    ></gcds-label>
 
-                  <gcds-label
-                    label={radio.label}
-                    label-for={radio.id}
-                    lang={lang}
-                  ></gcds-label>
-
-                  {radio.hint ? (
-                    <gcds-hint hint-id={radio.id}>{radio.hint}</gcds-hint>
-                  ) : null}
-                </div>
-              );
-            })}
-        </fieldset>
-      </Host>
-    );
+                    {radio.hint ? (
+                      <gcds-hint hint-id={radio.id}>{radio.hint}</gcds-hint>
+                    ) : null}
+                  </div>
+                );
+              })}
+          </fieldset>
+        </Host>
+      );
+    }
   }
 }

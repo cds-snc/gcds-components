@@ -31,73 +31,102 @@
 }
 
 @layer default {
-  :host .gcds-radio {
-    position: relative;
-    max-width: var(--gcds-radio-max-width);
-    min-height: calc(
-      var(--gcds-radio-input-height-and-width) - var(--gcds-radio-padding)
-    );
-    font: var(--gcds-radio-font);
-    color: var(--gcds-radio-default-text);
-    margin: var(--gcds-radio-margin) !important;
-    padding: var(--gcds-radio-padding) 0 0;
-    transition: color ease-in-out 0.15s;
+  :host {
+    .gcds-radios__legend {
+      font: var(--gcds-date-input-fieldset-font-desktop); /* --gcds-radio-legend-font-desktop */
+      margin: 0 0 var(--gcds-spacing-25);  /* --gcds-radio-legend-margin */
 
-    :is(gcds-label, gcds-hint) {
-      padding: var(--gcds-radio-label-padding) !important;
-    }
-
-    gcds-hint::part(hint) {
-      margin: 0;
-    }
-
-    input,
-    gcds-label:before,
-    gcds-label:after {
-      position: absolute;
-    }
-
-    input,
-    gcds-label:before {
-      top: 0;
-      left: 0;
-      height: var(--gcds-radio-input-height-and-width);
-      width: var(--gcds-radio-input-height-and-width);
-    }
-
-    input {
-      opacity: 0;
-    }
-
-    gcds-label {
-      width: fit-content;
-
-      &:before,
-      &:after {
-        border-radius: var(--gcds-radio-border-radius);
+      .legend__required {
+        font: var(--gcds-date-input-fieldset-required-font-desktop); /* --gcds-radio-legend-required-font-desktop */
       }
 
-      &:before {
-        border: var(--gcds-radio-input-border-width) solid currentcolor;
-        transition:
-          border-color ease-in-out 0.15s,
-          box-shadow ease-in-out 0.15s,
-          outline ease-in-out 0.15s;
+      @media only screen and (width < 48em) {
+        font: var(--gcds-date-input-fieldset-font-mobile); /* --gcds-radio-legend-font-mobile */
+
+        .legend__required {
+          font: var(--gcds-date-input-fieldset-required-font-mobile); /* --gcds-radio-legend-required-font-desktop */
+        }
       }
 
-      &:after {
-        height: var(--gcds-radio-check-height-and-width);
-        width: var(--gcds-radio-check-height-and-width);
-        left: var(--gcds-radio-check-left);
+      &:not(:has(+ gcds-hint)) {
+        margin: 0 0 var(--gcds-spacing-200);  /* --gcds-radio-legend-hint-margin */
+      }
+    }
+
+    gcds-hint:part(hint) {
+      margin: 0 0 var(--gcds-spacing-200);  /* --gcds-radio-hint-margin */
+    }
+  
+    .gcds-radio {
+      position: relative;
+      max-width: var(--gcds-radio-max-width);
+      min-height: calc(
+        var(--gcds-radio-input-height-and-width) - var(--gcds-radio-padding)
+      );
+      font: var(--gcds-radio-font);
+      color: var(--gcds-radio-default-text);
+      margin: var(--gcds-radio-margin) !important;
+      padding: var(--gcds-radio-padding) 0 0;
+      transition: color ease-in-out 0.15s;
+
+      :is(gcds-label, gcds-hint) {
+        padding: var(--gcds-radio-label-padding) !important;
+      }
+
+      gcds-hint::part(hint) {
+        margin: 0;
+      }
+
+      input,
+      gcds-label:before,
+      gcds-label:after {
+        position: absolute;
+      }
+
+      input,
+      gcds-label:before {
+        top: 0;
+        left: 0;
+        height: var(--gcds-radio-input-height-and-width);
+        width: var(--gcds-radio-input-height-and-width);
+      }
+
+      input {
         opacity: 0;
-        top: var(--gcds-radio-check-top);
-        background-color: currentcolor;
-        transition: opacity 0.2s ease-in-out;
       }
-    }
 
-    input:checked + gcds-label:after {
-      opacity: 1;
+      gcds-label {
+        width: fit-content;
+        --gcds-label-font-desktop: 500 1.25rem/160% 'Noto Sans', sans-serif; /* --gcds-radio-label-font-desktop */
+        --gcds-label-font-mobile: 500 1.125rem/155% 'Noto Sans', sans-serif; /* --gcds-radio-label-font-mobile */
+
+        &:before,
+        &:after {
+          border-radius: var(--gcds-radio-border-radius);
+        }
+
+        &:before {
+          border: var(--gcds-radio-input-border-width) solid currentcolor;
+          transition:
+            border-color ease-in-out 0.15s,
+            box-shadow ease-in-out 0.15s,
+            outline ease-in-out 0.15s;
+        }
+
+        &:after {
+          height: var(--gcds-radio-check-height-and-width);
+          width: var(--gcds-radio-check-height-and-width);
+          left: var(--gcds-radio-check-left);
+          opacity: 0;
+          top: var(--gcds-radio-check-top);
+          background-color: currentcolor;
+          transition: opacity 0.2s ease-in-out;
+        }
+      }
+
+      input:checked + gcds-label:after {
+        opacity: 1;
+      }
     }
   }
 }
@@ -127,13 +156,19 @@
 }
 
 @layer error {
-  :host .gcds-radio.gcds-radio--error:not(:focus-within) gcds-label {
-    &:before {
-      border-color: var(--gcds-radio-danger-border);
+  :host {
+    gcds-error-message {
+      margin: 0 0 var(--gcds-spacing-100); /* --gcds-radio-error-message-margin */
     }
 
-    &:after {
-      background-color: var(--gcds-radio-danger-border);
+    .gcds-radio.gcds-radio--error:not(:focus-within) gcds-label {
+      &:before {
+        border-color: var(--gcds-radio-danger-border);
+      }
+
+      &:after {
+        background-color: var(--gcds-radio-danger-border);
+      }
     }
   }
 }
