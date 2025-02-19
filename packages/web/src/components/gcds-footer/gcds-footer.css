@@ -31,8 +31,11 @@
     .gcds-footer__contextual,
     .gcds-footer__main,
     .gcds-footer__sub {
-      padding: var(--gcds-footer-band-padding);
-    }
+      padding: var(--gcds-footer-band-padding-desktop);
+
+      @media only screen and (width < 48em) {
+        padding: var(--gcds-footer-band-padding-mobile);
+      }    }
 
     .sub__header,
     .themenav__header,
