@@ -144,6 +144,9 @@
       <gcds-button button-role="secondary" onclick="langChange()">Language change</gcds-button>
       <gcds-button button-role="danger" onclick="setValue('radio1')">Set value: radio1</gcds-button>
       <gcds-button button-role="danger" onclick="setValue('rad')">Set value: rad</gcds-button>
+      <gcds-button button-role="danger" onclick="removeOptions()">Remove options</gcds-button>
+      <gcds-button button-role="primary" onclick="addOptions()">Add options</gcds-button>
+      <gcds-button button-role="danger" onclick="addInvalidOptions()">Add bad options</gcds-button>
 
       <script>
         //         options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
@@ -151,6 +154,11 @@
           { "label": "Radio 1 label", "id": "radio1", "value": "radio1"},
           { "label": "Radio 2 label", "id": "radio2", "value": "radio2", "hint": "This will start without a check"},
           { "label": "Radio 3 label", "id": "radio3", "value": "radio3"}
+        ];
+        const badoptions = [
+          { "red": "Radio 1 label", "id": "radio1", "blue": "radio1"},
+          { "label": "Radio 2 label", "id": "radio2", "blue": "radio2", "hint": ''},
+          { "red": "Radio 3 label", "id": "radio3", "blue": "radio3"}
         ];
 
         document.getElementById('radios').options = options;
@@ -172,6 +180,18 @@
         function setValue(val) {
           const radio = document.getElementById('radios');
           radio.value = val;
+        }
+        function removeOptions() {
+          const radio = document.getElementById('radios');
+          radio.options = null;
+        }
+        function addOptions() {
+          const radio = document.getElementById('radios');
+          radio.options = options;
+        }
+        function addInvalidOptions() {
+          const radio = document.getElementById('radios');
+          radio.options = badoptions;
         }
 
       </script>

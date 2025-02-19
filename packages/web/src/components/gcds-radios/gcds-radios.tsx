@@ -64,11 +64,23 @@ export class GcdsRadios {
 
   @Watch('options')
   validateOptions() {
-    // Assig optionsObject from passed options string/object
+    let validObject = true;
+    // Assign optionsObject from passed options string/object
     if (typeof this.options == 'object') {
       this.optionObject = this.options;
     } else if (typeof this.options == 'string') {
       this.optionObject = JSON.parse(this.options);
+    } else {
+      this.optionObject = null;
+    }
+
+    // Validate options has type RadioObject
+    if (this.optionObject) {
+      this.optionObject.map(radio => {
+        if (!isRadioObject(radio)) {
+          validObject = false;
+        }
+      });
     }
 
     // Assign value if passed options has a checked radio
@@ -82,7 +94,10 @@ export class GcdsRadios {
     }
 
     // Log error if no or invalid optionsObject
-    if (!this.optionObject && !this.errors.includes('options')) {
+    if (
+      (!this.optionObject && !this.errors.includes('options')) ||
+      !validObject
+    ) {
       this.errors.push('options');
     } else if (this.errors.includes('options')) {
       this.errors.splice(this.errors.indexOf('options'), 1);
@@ -362,6 +377,15 @@ export class GcdsRadios {
     }
   }
 
+  async componentDidUpdate() {
+    // Validate props again if changed after render
+    const valid = this.validateRequiredProps();
+
+    if (!valid) {
+      logError('gcds-radios', this.errors);
+    }
+  }
+
   render() {
     const {
       lang,
@@ -472,4 +496,34 @@ export class GcdsRadios {
       );
     }
   }
+}
+
+function isRadioObject(obj: any): obj is RadioObject {
+  if (typeof obj !== 'object' || obj === null) return false;
+
+  const validKeys = [
+    'id',
+    'label',
+    'value',
+    'hint',
+    'checked',
+    'required',
+    'disabled',
+  ];
+  const objKeys = Object.keys(obj);
+
+  // Check if all properties match the expected type
+  const hasValidTypes =
+    typeof obj.id === 'string' &&
+    typeof obj.label === 'string' &&
+    typeof obj.value === 'string' &&
+    (obj.hint === undefined || typeof obj.hint === 'string') &&
+    (obj.checked === undefined || typeof obj.checked === 'boolean') &&
+    (obj.required === undefined || typeof obj.required === 'boolean') &&
+    (obj.disabled === undefined || typeof obj.disabled === 'boolean');
+
+  // Ensure no extra properties exist
+  const hasOnlyValidKeys = objKeys.every(key => validKeys.includes(key));
+
+  return hasValidTypes && hasOnlyValidKeys;
 }
