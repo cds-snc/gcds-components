@@ -7,6 +7,7 @@ describe('gcds-radios', () => {
     await page.setContent(
       `<gcds-radios
           name="radio"
+          legend="Legend"
           options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
         >
         </gcds-radios>`,
@@ -31,6 +32,7 @@ describe('gcds-radios a11y tests', () => {
     await page.setContent(`
       <gcds-radios
         name="radio"
+        legend="Legend"
         options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
       >
       </gcds-radios>
@@ -48,6 +50,7 @@ describe('gcds-radios a11y tests', () => {
     await page.setContent(`
       <gcds-radios
         name="radio"
+        legend="Legend"
         options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
       >
       </gcds-radios>
@@ -67,6 +70,7 @@ describe('gcds-radios a11y tests', () => {
     await page.setContent(`
       <gcds-radios
         name="radio"
+        legend="Legend"
         options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
       >
       </gcds-radios>
@@ -84,6 +88,7 @@ describe('gcds-radios a11y tests', () => {
     await page.setContent(`
       <gcds-radios
         name="radio"
+        legend="Legend"
         options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
       >
       </gcds-radios>
@@ -105,6 +110,7 @@ describe('gcds-radios a11y tests', () => {
     await page.setContent(`
       <gcds-radios
         name="radio"
+        legend="Legend"
         options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
       >
       </gcds-radios>
@@ -132,6 +138,7 @@ describe('gcds-radios a11y tests', () => {
     await page.setContent(`
       <gcds-radios
         name="radio"
+        legend="Legend"
         options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
       >
       </gcds-radios>
@@ -166,6 +173,7 @@ describe('gcds-radios a11y tests', () => {
     await page.setContent(`
       <gcds-radios
         name="radio"
+        legend="Legend"
         options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
       >
       </gcds-radios>
