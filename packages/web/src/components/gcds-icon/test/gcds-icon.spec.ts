@@ -95,7 +95,7 @@ describe('gcds-icon', () => {
     expect(root).toEqualHtml(`
       <gcds-icon name="close" size="h3" icon-style="regular">
         <mock:shadow-root>
-          <span aria-hidden="true" role="img" class="fa-solid gcds-icon gcds-icon-close size-h3"></span>
+          <span aria-hidden="true" role="img" class="fa-regular gcds-icon gcds-icon-close size-h3"></span>
         </mock:shadow-root>
       </gcds-icon>
     `);
