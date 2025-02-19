@@ -150,7 +150,7 @@ export class GcdsRadios {
   /**
    * Error message for invalid radio buttons.
    */
-  @Prop({ reflect: true, mutable: true }) errorMessage: string;
+  @Prop({ reflect: false, mutable: true }) errorMessage: string;
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {

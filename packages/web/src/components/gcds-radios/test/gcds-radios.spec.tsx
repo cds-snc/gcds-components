@@ -7,37 +7,88 @@ describe('gcds-radios', () => {
       components: [GcdsRadios],
       html: `<gcds-radios
           name="radio"
-          options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
         >
         </gcds-radios>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-radios name="radio" options='[{ "label": "Label", "id": "radio", "value": "radio"}]'>
+      <gcds-radios name="radio" legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
         <mock:shadow-root>
-          <div class="gcds-radio">
-            <input id="radio" name="radio" type="radio" value="radio">
-            <gcds-label label="Label" label-for="radio" lang="en"></gcds-label>
-          </div>
+          <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              Legend
+            </legend>
+            <div class="gcds-radio">
+              <input id="radio1" name="radio" type="radio" value="radio1">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio">
+              <input id="radio2" name="radio" type="radio" value="radio2">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
         </mock:shadow-root>
       </gcds-radios>
     `);
   });
-  it('renders checked', async () => {
+  it('renders checked w/ options', async () => {
     const page = await newSpecPage({
       components: [GcdsRadios],
       html: `<gcds-radios
           name="radio"
-          options='[{ "label": "Label", "id": "radio", "value": "radio", "checked": true}]'
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1", "checked": true},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
         >
         </gcds-radios>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-radios name="radio" options='[{ "label": "Label", "id": "radio", "value": "radio", "checked": true}]'>
+      <gcds-radios legend="Legend" name="radio" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1", "checked": true},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' value="radio1">
         <mock:shadow-root>
-          <div class="gcds-radio">
-            <input checked="" id="radio" name="radio" type="radio" value="radio">
-            <gcds-label label="Label" label-for="radio" lang="en"></gcds-label>
-          </div>
+          <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              Legend
+            </legend>
+            <div class="gcds-radio">
+              <input id="radio1" name="radio" type="radio" value="radio1" checked="">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio">
+              <input id="radio2" name="radio" type="radio" value="radio2">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('renders checked w/ value', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1", "checked": true},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+          value="radio1"
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios legend="Legend" name="radio" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1", "checked": true},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' value="radio1">
+        <mock:shadow-root>
+          <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              Legend
+            </legend>
+            <div class="gcds-radio">
+              <input id="radio1" name="radio" type="radio" value="radio1" checked="">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio">
+              <input id="radio2" name="radio" type="radio" value="radio2">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
         </mock:shadow-root>
       </gcds-radios>
     `);
@@ -47,18 +98,67 @@ describe('gcds-radios', () => {
       components: [GcdsRadios],
       html: `<gcds-radios
           name="radio"
-          options='[{ "label": "Label", "id": "radio", "value": "radio", "hint": "This is a hint."}]'
+          legend="Legend"
+          hint="Hint text"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
         >
         </gcds-radios>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-radios name="radio" options='[{ "label": "Label", "id": "radio", "value": "radio", "hint": "This is a hint."}]'>
+      <gcds-radios name="radio" legend="Legend" hint="Hint text" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
         <mock:shadow-root>
-          <div class="gcds-radio">
-            <input aria-describedby="hint-radio " id="radio" name="radio" type="radio" value="radio">
-            <gcds-label label="Label" label-for="radio" lang="en"></gcds-label>
-            <gcds-hint hint-id="radio">This is a hint.</gcds-hint>
-          </div>
+          <fieldset aria-labelledby="radios-legend radios-hint" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              Legend
+            </legend>
+            <gcds-hint hint-id="radios" id="radios-hint">
+              Hint text
+            </gcds-hint>
+            <div class="gcds-radio">
+              <input id="radio1" name="radio" type="radio" value="radio1">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio">
+              <input id="radio2" name="radio" type="radio" value="radio2">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('renders w/ error message', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+          error-message="Error message"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios name="radio" legend="Legend" error-message="Error message" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
+        <mock:shadow-root>
+          <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              Legend
+            </legend>
+            <div>
+              <gcds-error-message id="radios-error" messageid="radios">
+                Error message
+              </gcds-error-message>
+            </div>
+            <div class="gcds-radio gcds-radio--error">
+              <input aria-description="Error message" aria-invalid="true" id="radio1" name="radio" type="radio" value="radio1">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio gcds-radio--error">
+              <input aria-description="Error message" aria-invalid="true" id="radio2" name="radio" type="radio" value="radio2">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
         </mock:shadow-root>
       </gcds-radios>
     `);
@@ -68,45 +168,89 @@ describe('gcds-radios', () => {
       components: [GcdsRadios],
       html: `<gcds-radios
           name="radio"
-          options='[{ "label": "Label", "id": "radio", "value": "radio", "disabled": true }]'
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+          disabled
         >
         </gcds-radios>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-radios name="radio" options='[{ "label": "Label", "id": "radio", "value": "radio", "disabled": true }]'>
+      <gcds-radios name="radio" legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' disabled>
         <mock:shadow-root>
-          <div class="gcds-radio--disabled gcds-radio">
-            <input disabled="" id="radio" name="radio" type="radio" value="radio">
-            <gcds-label label="Label" label-for="radio" lang="en"></gcds-label>
-          </div>
+          <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              Legend
+            </legend>
+            <div class="gcds-radio gcds-radio--disabled">
+              <input disabled="" id="radio1" name="radio" type="radio" value="radio1">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio gcds-radio--disabled">
+              <input disabled="" id="radio2" name="radio" type="radio" value="radio2">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
         </mock:shadow-root>
       </gcds-radios>
     `);
   });
-  it('renders multiple radio buttons', async () => {
+  it('does not render - no required attributes', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios></gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios>
+        <mock:shadow-root>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('does not render - missing name', async () => {
     const page = await newSpecPage({
       components: [GcdsRadios],
       html: `<gcds-radios
-          name="radio"
-          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"}, { "label": "Label 2", "id": "radio2", "value": "radio2"}, { "label": "Label 3", "id": "radio3", "value": "radio3"}]'
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
         >
         </gcds-radios>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-radios name="radio" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"}, { "label": "Label 2", "id": "radio2", "value": "radio2"}, { "label": "Label 3", "id": "radio3", "value": "radio3"}]'>
+      <gcds-radios legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
         <mock:shadow-root>
-          <div class="gcds-radio">
-            <input id="radio1" name="radio" type="radio" value="radio1">
-            <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
-          </div>
-          <div class="gcds-radio">
-            <input id="radio2" name="radio" type="radio" value="radio2">
-            <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
-          </div>
-          <div class="gcds-radio">
-            <input id="radio3" name="radio" type="radio" value="radio3">
-            <gcds-label label="Label 3" label-for="radio3" lang="en"></gcds-label>
-          </div>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('does not render - missing legend', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios name="radio" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
+        <mock:shadow-root>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('does not render - missing legend attribute', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios name="radio" legend="Legend">
+        <mock:shadow-root>
         </mock:shadow-root>
       </gcds-radios>
     `);
