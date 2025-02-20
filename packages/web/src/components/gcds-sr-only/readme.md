@@ -20,6 +20,7 @@
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-footer](../gcds-footer)
  - [gcds-lang-toggle](../gcds-lang-toggle)
+ - [gcds-notice](../gcds-notice)
  - [gcds-search](../gcds-search)
  - [gcds-signature](../gcds-signature)
  - [gcds-stepper](../gcds-stepper)
@@ -32,6 +33,7 @@ graph TD;
   gcds-file-uploader --> gcds-sr-only
   gcds-footer --> gcds-sr-only
   gcds-lang-toggle --> gcds-sr-only
+  gcds-notice --> gcds-sr-only
   gcds-search --> gcds-sr-only
   gcds-signature --> gcds-sr-only
   gcds-stepper --> gcds-sr-only
