@@ -31,7 +31,7 @@
     .gcds-footer__contextual,
     .gcds-footer__main,
     .gcds-footer__sub {
-      padding: var(--gcds-footer-band-padding);
+      padding: var(--gcds-footer-band-padding-desktop);
     }
 
     .sub__header,
@@ -156,6 +156,17 @@
 }
 
 @layer compact {
+  /* Mobile specific style */
+  @media only screen and (width < 45em) {
+    :host {
+      .gcds-footer__contextual,
+      .gcds-footer__main,
+      .gcds-footer__sub {
+        padding: var(--gcds-footer-band-padding-mobile);
+      }
+    }
+  }
+
   @container sub (width <= 30em) {
     :host .gcds-footer__sub .sub__container {
       slot[name='wordmark'],
