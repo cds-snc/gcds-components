@@ -3,6 +3,7 @@
 # Changelog
 
 ## [0.32.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.31.0...gcds-components-v0.32.0)
+
 Released on: 2025-02-19
 
 ### :bug: :wrench: Bug Fixes
