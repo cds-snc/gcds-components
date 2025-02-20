@@ -1,4 +1,4 @@
-@layer reset, default, names, fixedWidth, margin, size;
+@layer reset, default, names, margin, size;
 
 @layer reset {
   :host {
@@ -82,47 +82,6 @@
 
     &-warning-triangle:before {
       content: "\e90d";
-    }
-  }
-}
-
-// TODO: Will be removed in separate pull request
-@layer fixedWidth {
-  :host .gcds-icon {
-    &.fixed-width {
-      text-align: center;
-    }
-
-    &.size-text-small.fixed-width {
-      width: calc(var(--gcds-icon-fixed-width-text-small) * 1em);
-    }
-
-    &.size-text.fixed-width {
-      width: calc(var(--gcds-icon-fixed-width-text) * 1em);
-    }
-
-    &.size-h6.fixed-width {
-      width: calc(var(--gcds-icon-fixed-width-h6) * 1em);
-    }
-
-    &.size-h5.fixed-width {
-      width: calc(var(--gcds-icon-fixed-width-h5) * 1em);
-    }
-
-    &.size-h4.fixed-width {
-      width: calc(var(--gcds-icon-fixed-width-h4) * 1em);
-    }
-
-    &.size-h3.fixed-width {
-      width: calc(var(--gcds-icon-fixed-width-h3) * 1em);
-    }
-
-    &.size-h2.fixed-width {
-      width: calc(var(--gcds-icon-fixed-width-h2) * 1em);
-    }
-
-    &.size-h1.fixed-width {
-      width: calc(var(--gcds-icon-fixed-width-h1) * 1em);
     }
   }
 }

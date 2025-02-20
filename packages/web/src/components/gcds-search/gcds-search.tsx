@@ -180,11 +180,7 @@ export class GcdsSearch {
               class="gcds-search__button"
               exportparts="button"
             >
-              <gcds-icon
-                name="search"
-                label={I18N[lang].search}
-                fixed-width
-              ></gcds-icon>
+              <gcds-icon name="search" label={I18N[lang].search}></gcds-icon>
             </gcds-button>
           </form>
         </div>
