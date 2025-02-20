@@ -14,12 +14,6 @@ export class GcdsIcon {
    * Props
    */
 
-  // TODO: Will be removed in separate pull request
-  /**
-   * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-   */
-  @Prop() iconStyle?: 'regular' | 'solid' = 'solid';
-
   /**
    * Add icon description.
    */
@@ -124,7 +118,7 @@ export class GcdsIcon {
       <Host>
         <span
           class={`
-            gcds-icon gcds-icon-${name} fa-${iconStyle}
+            gcds-icon gcds-icon-${name}
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
             ${size ? `size-${size}` : ''}

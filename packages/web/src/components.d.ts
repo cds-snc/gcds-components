@@ -571,10 +571,6 @@ export namespace Components {
     }
     interface GcdsIcon {
         /**
-          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-         */
-        "iconStyle"?: 'regular' | 'solid';
-        /**
           * Add icon description.
          */
         "label"?: string;
@@ -2405,10 +2401,6 @@ declare namespace LocalJSX {
         "hintId"?: string;
     }
     interface GcdsIcon {
-        /**
-          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-         */
-        "iconStyle"?: 'regular' | 'solid';
         /**
           * Add icon description.
          */

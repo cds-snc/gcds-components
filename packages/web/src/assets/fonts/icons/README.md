@@ -86,7 +86,7 @@ To use GC Design System icons in your project, place the following code in your 
   content: "\e904";
 }
 
-.gcds-icon-information-circle:before {
+.gcds-icon-info-circle:before {
   content: "\e90a";
 }
 
@@ -187,7 +187,7 @@ Place the following code in your CSS and replace `path/to/node_modules` with the
   content: "\e904";
 }
 
-.gcds-icon-information-circle:before {
+.gcds-icon-info-circle:before {
   content: "\e90a";
 }
 
@@ -310,7 +310,7 @@ Pour utiliser les icônes de Système de design GC dans votre projet, placez le 
   content: "\e904";
 }
 
-.gcds-icon-information-circle:before {
+.gcds-icon-info-circle:before {
   content: "\e90a";
 }
 
@@ -411,7 +411,7 @@ Placez le code suivant dans votre CSS et remplacez `path/to/node_modules` par l'
   content: "\e904";
 }
 
-.gcds-icon-information-circle:before {
+.gcds-icon-info-circle:before {
   content: "\e90a";
 }
 
