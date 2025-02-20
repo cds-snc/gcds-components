@@ -301,6 +301,28 @@ export const GcdsLink = /*@__PURE__*/ defineContainer<JSX.GcdsLink>('gcds-link',
 ]);
 
 
+export const GcdsMap = /*@__PURE__*/ defineContainer<JSX.GcdsMap>('gcds-map', undefined, [
+  'lat',
+  'lon',
+  'zoom',
+  'projection',
+  'controls',
+  'controlslist',
+  'width',
+  'height',
+  'caption'
+]);
+
+
+export const GcdsMapLayer = /*@__PURE__*/ defineContainer<JSX.GcdsMapLayer>('gcds-map-layer', undefined, [
+  'src',
+  'checked',
+  'hidden',
+  'label',
+  'opacity'
+]);
+
+
 export const GcdsNavGroup = /*@__PURE__*/ defineContainer<JSX.GcdsNavGroup>('gcds-nav-group', undefined, [
   'closeTrigger',
   'menuLabel',

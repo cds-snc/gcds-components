@@ -1,0 +1,19 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Map from './gcds-map.stories';
+
+<Meta of={Map} name="Map" />
+
+# Map<br/>`<mapml-viewer>`
+
+The `<mapml-viewer>` component enables slippy maps with one or more `<map-layer>` children.
+
+The `<map-caption>` element can be used to provide a screen reader friendly caption or title
+for the map.
+
+<Canvas>
+  <Story name="Default">
+    <Map.Default />
+  </Story>
+</Canvas>
+
+<Controls of={Map.Default} sort="none" />

@@ -27,6 +27,8 @@ export const DIRECTIVES = [
   d.GcdsLabel,
   d.GcdsLangToggle,
   d.GcdsLink,
+  d.GcdsMap,
+  d.GcdsMapLayer,
   d.GcdsNavGroup,
   d.GcdsNavLink,
   d.GcdsNotice,
