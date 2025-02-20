@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.32.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.31.0...gcds-components-angular-v0.32.0-canary.0) (2025-02-20)
+## [0.32.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.31.0...gcds-components-angular-v0.32.0) (2025-02-20)
 
 
 ### Patch
@@ -12,7 +12,7 @@
 
 * The following workspace dependencies were updated
   * peerDependencies
-    * @cdssnc/gcds-components bumped from ^0.31.0 to ^0.32.0-canary.0
+    * @cdssnc/gcds-components bumped from ^0.31.0 to ^0.32.0
 
 ## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.30.0...gcds-components-angular-v0.31.0) (2025-01-22)
 
