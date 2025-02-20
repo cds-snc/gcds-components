@@ -6,7 +6,8 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
-    "build": "npm run build --ws",
+    "copy-icon-font": "cp -R ./node_modules/@cdssnc/gcds-fonts/fonts/icons/* ./packages/web/src/assets/fonts/icons",
+    "build": "npm run copy-icon-font && npm run build --ws",
     "pretest": "npm run patch:stenciljs",
     "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/vue",
     "build-storybook": "npm run build-storybook -w @cdssnc/gcds-components",
