@@ -18,7 +18,7 @@
 
 * The following workspace dependencies were updated
   * dependencies
-    * @cdssnc/gcds-components bumped from ^0.31.0 to ^0.32.0-canary.0
+    * @cdssnc/gcds-components bumped from ^0.31.0 to ^0.32.0
 
 ## [0.31.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.30.0-canary.0...gcds-components-react-ssr-v0.31.0-canary.0) (2025-01-22)
 
