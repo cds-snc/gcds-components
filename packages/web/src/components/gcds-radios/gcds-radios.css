@@ -33,28 +33,28 @@
 @layer default {
   :host {
     .gcds-radios__legend {
-      font: var(--gcds-date-input-fieldset-font-desktop); /* --gcds-radio-legend-font-desktop */
-      margin: 0 0 var(--gcds-spacing-25);  /* --gcds-radio-legend-margin */
+      font: var(--gcds-radio-legend-font-desktop);
+      margin: var(--gcds-radio-legend-margin);
 
       .legend__required {
-        font: var(--gcds-date-input-fieldset-required-font-desktop); /* --gcds-radio-legend-required-font-desktop */
+        font: var(--gcds-radio-legend-required-font-desktop);
       }
 
       @media only screen and (width < 48em) {
-        font: var(--gcds-date-input-fieldset-font-mobile); /* --gcds-radio-legend-font-mobile */
+        font: var(--gcds-radio-legend-font-mobile);
 
         .legend__required {
-          font: var(--gcds-date-input-fieldset-required-font-mobile); /* --gcds-radio-legend-required-font-desktop */
+          font: var(--gcds-radio-legend-required-font-mobile);
         }
       }
 
       &:not(:has(+ gcds-hint)) {
-        margin: 0 0 var(--gcds-spacing-200);  /* --gcds-radio-legend-hint-margin */
+        margin: var(--gcds-radio-legend-hint-margin);
       }
     }
 
     gcds-hint:part(hint) {
-      margin: 0 0 var(--gcds-spacing-200);  /* --gcds-radio-hint-margin */
+      margin: var(--gcds-radio-hint-margin);
     }
   
     .gcds-radio {
@@ -97,8 +97,8 @@
 
       gcds-label {
         width: fit-content;
-        --gcds-label-font-desktop: 500 1.25rem/160% 'Noto Sans', sans-serif; /* --gcds-radio-label-font-desktop */
-        --gcds-label-font-mobile: 500 1.125rem/155% 'Noto Sans', sans-serif; /* --gcds-radio-label-font-mobile */
+        --gcds-label-font-desktop: var(--gcds-radio-label-font-desktop);
+        --gcds-label-font-mobile: var(--gcds-radio-label-font-mobile);
 
         &:before,
         &:after {
@@ -158,7 +158,7 @@
 @layer error {
   :host {
     gcds-error-message {
-      margin: 0 0 var(--gcds-spacing-100); /* --gcds-radio-error-message-margin */
+      margin: var(--gcds-radio-error-message-margin);
     }
 
     .gcds-radio.gcds-radio--error:not(:focus-within) gcds-label {
