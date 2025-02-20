@@ -3,16 +3,6 @@ export default {
 
   argTypes: {
     // Props
-    // TODO: Will be removed in separate pull request
-    iconStyle: {
-      name: 'icon-style',
-      control: { type: 'select' },
-      options: ['regular', 'solid'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'solid' },
-      },
-    },
     label: {
       control: 'text',
       table: {
@@ -128,16 +118,6 @@ export default {
         required: true,
       },
     },
-    // TODO: Will be removed in separate pull request
-    fixedWidth: {
-      name: 'fixed-width',
-      control: { type: 'select' },
-      options: [false, true],
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
-      },
-    },
     size: {
       control: { type: 'select' },
       options: [
@@ -163,22 +143,18 @@ const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-icon ${args.label ? `label="${args.label}"` : null} name="${args.name}" ${
-    args.iconStyle != 'solid' ? `icon-style="${args.iconStyle}"` : null
-  } ${args.marginLeft ? `margin-left="${args.marginLeft}"` : null} ${
+    args.marginLeft ? `margin-left="${args.marginLeft}"` : null
+  } ${
     args.marginRight ? `margin-right="${args.marginRight}"` : null
-  } ${args.size != 'text' ? `size="${args.size}"` : null} ${
-    args.fixedWidth ? `fixed-width="${args.fixedWidth}"` : null
-  }>
+  } ${args.size != 'text' ? `size="${args.size}"` : null}>
 </gcds-icon>
 
 <!-- React code -->
 <GcdsIcon ${args.label ? `label="${args.label}"` : null} name="${args.name}" ${
-    args.iconStyle != 'solid' ? `iconStyle="${args.iconStyle}"` : null
-  } ${args.marginLeft ? `marginLeft="${args.marginLeft}"` : null} ${
+    args.marginLeft ? `marginLeft="${args.marginLeft}"` : null
+  } ${
     args.marginRight ? `marginRight="${args.marginRight}"` : null
-  } ${args.size != 'text' ? `size="${args.size}"` : null} ${
-    args.fixedWidth ? `fixedWidth="${args.fixedWidth}"` : null
-  }>
+  } ${args.size != 'text' ? `size="${args.size}"` : null}>
 </GcdsIcon>
 `.replace(/ null/g, '');
 
@@ -564,30 +540,6 @@ const TemplateMultiple = args =>
   }></GcdsIcon>
 `.replace(/ null/g, '');
 
-// TODO: Will be removed in separate pull request
-const TemplateTwo = args =>
-  `
-<!-- Web component code (Angular, Vue) -->
-<gcds-icon name="${args.name}" ${
-    args.size != 'text' ? `size="${args.size}"` : null
-  } ${
-    args.fixedWidth1 ? `fixed-width="${args.fixedWidth1}"` : null
-  }></gcds-icon>
-<gcds-icon name="${args.name}" ${
-    args.size != 'text' ? `size="${args.size}"` : null
-  } ${
-    args.fixedWidth2 ? `fixed-width="${args.fixedWidth2}"` : null
-  }></gcds-icon>
-
-<!-- React code -->
-<GcdsIcon name="${args.name}" ${
-    args.size != 'text' ? `size="${args.size}"` : null
-  } ${args.fixedWidth1 ? `fixedWidth="${args.fixedWidth1}"` : null}></GcdsIcon>
-<GcdsIcon name="${args.name}" ${
-    args.size != 'text' ? `size="${args.size}"` : null
-  } ${args.fixedWidth2 ? `fixedWidth="${args.fixedWidth2}"` : null}></GcdsIcon>
-`.replace(/ null/g, '');
-
 const TemplatePlayground = args => `
 <gcds-icon
   ${args.label ? `label="${args.label}"` : null}
@@ -595,8 +547,6 @@ const TemplatePlayground = args => `
   ${args.marginLeft ? `margin-left="${args.marginLeft}"` : null}
   ${args.marginRight ? `margin-right="${args.marginRight}"` : null}
   ${args.size != 'text' ? `size="${args.size}"` : null}
-  ${args.fixedWidth ? `fixed-width="${args.fixedWidth}"` : null}
-  ${args.iconStyle != 'solid' ? `iconStyle="${args.iconStyle}"` : null}
 >
 </gcds-icon>
 `;
@@ -607,7 +557,6 @@ export const Default = Template.bind({});
 Default.args = {
   name: 'close',
   size: 'text',
-  iconStyle: 'solid',
 };
 
 // ------ Icon name ------
@@ -734,23 +683,12 @@ MarginRight.args = {
   size: 'text-small',
 };
 
-// TODO: Will be removed in separate pull request
-// ------ Icon width ------
-export const Width = TemplateTwo.bind({});
-Width.args = {
-  name: 'close',
-  size: 'text',
-  fixedWidth1: true,
-  fixedWidth2: false,
-};
-
 // ------ Icon label ------
 
 export const Label = Template.bind({});
 Label.args = {
   name: 'close',
   size: 'text',
-  iconStyle: 'solid',
   label: 'Clicking this icon will close the element.',
 };
 
@@ -758,8 +696,6 @@ Label.args = {
 
 export const Props = Template.bind({});
 Props.args = {
-  fixedWidth: false,
-  iconStyle: 'solid',
   label: '',
   name: 'close',
   size: 'text',
@@ -769,8 +705,6 @@ Props.args = {
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  fixedWidth: false,
-  iconStyle: 'solid',
   label: '',
   marginLeft: '0',
   marginRight: '0',
