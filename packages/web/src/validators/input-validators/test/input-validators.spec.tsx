@@ -25,6 +25,7 @@ const createMockFileList = (files: MockFile[]) => {
     item(index: number): File {
       return fileList[index];
     },
+    // @ts-ignore
     [Symbol.iterator]: function (): IterableIterator<File> {
       throw new Error('Function not implemented.');
     },

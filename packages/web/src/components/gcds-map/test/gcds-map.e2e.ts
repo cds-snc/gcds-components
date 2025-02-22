@@ -1,5 +1,4 @@
 import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
 
 describe('gcds-map E2E', () => {
 
@@ -26,9 +25,11 @@ describe('gcds-map E2E', () => {
     const mapHandle = await page.evaluateHandle(() => document.querySelector('mapml-viewer'));
 
     // Run `whenLayersReady()` inside the browser context
+    // @ts-ignore
     await page.evaluate(async (m) => await m.whenLayersReady(), mapHandle);
 
-    // Retrieve the `layers.length`
+    // Retrieve the `layers.length
+    // @ts-ignore
     const layers = await page.evaluate(m => m.layers.length, mapHandle);
     expect(layers).toBe(1);
     expect(messages.some(msg => msg.includes("MapML module dynamically loaded"))).toBeTruthy();

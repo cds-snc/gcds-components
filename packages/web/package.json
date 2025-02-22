@@ -24,7 +24,7 @@
     "build": "stencil build --docs",
     "postbuild": "node ./scripts/copyCSSFile.js",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
+    "test": "stencil test --spec --e2e gcds-map.e2e.ts --silent",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "storybook": "storybook dev -p 6006",
