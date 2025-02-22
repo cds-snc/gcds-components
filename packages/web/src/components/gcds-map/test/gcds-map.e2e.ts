@@ -1,4 +1,5 @@
 import { newE2EPage } from '@stencil/core/testing';
+import type { MapMLViewerElement } from '../../../gcds-map';
 
 describe('gcds-map E2E', () => {
 
@@ -22,10 +23,9 @@ describe('gcds-map E2E', () => {
     expect(map).not.toBeNull();
 
     // Get the actual DOM element instead of E2EElement
-    const mapHandle = await page.evaluateHandle(() => document.querySelector('mapml-viewer'));
+    const mapHandle = await page.evaluateHandle(() => document.querySelector('mapml-viewer') as MapMLViewerElement);
 
     // Run `whenLayersReady()` inside the browser context
-    // @ts-ignore
     await page.evaluate(async (m) => await m.whenLayersReady(), mapHandle);
 
     // Retrieve the `layers.length
