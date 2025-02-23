@@ -82,3 +82,25 @@ Default.args = {
   layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
   caption: 'A map of Canada'
 };
+
+export const HiddenBasemap = (args) => {
+  return `
+    <mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}"
+      projection="${args.projection}" ${args.controls ? 'controls' : ''} 
+      controlslist="${args.controlslist.length > 0 ? args.controlslist.join(' ') : ''}">
+      <map-caption>${args.caption}</map-caption>
+
+      <map-layer src="${args.layer}" checked="checked" hidden="hidden"></map-layer>
+      <map-layer checked src="/dist/gcds/gcds-map/mapml/en/osmtile/toporama"></map-layer>
+    </mapml-viewer>
+  `;
+};
+HiddenBasemap.args = {
+  lat: 66.5,
+  lon: -106,
+  zoom: 2,
+  projection: 'OSMTILE',
+  controls: true,
+  layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
+  caption: 'A hidden basemap of Canada with one thematic layer mashup'
+};

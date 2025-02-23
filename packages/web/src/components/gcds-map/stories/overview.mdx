@@ -11,9 +11,31 @@ The `<map-caption>` element can be used to provide a screen reader friendly capt
 for the map.
 
 <Canvas>
+  <Story of={Map.HiddenBasemap} name="HiddenBasemap" />
+
+</Canvas>
+
+<Canvas>
   <Story name="Default">
     <Map.Default />
   </Story>
 </Canvas>
 
 <Controls of={Map.Default} sort="none" />
+
+{/* this is a comment: HTML syntax doesn’t work in MDX as it’s replaced by JSX (<img> to <img />). */}
+
+{/* 
+ - map with one basemap layer
+ - map with hidden basemap +  one thematic layer
+ -  map with time select (territorial evolution)
+ - layer with vector tiles
+ - dark / light mode
+ - layer with vector features / places styled with CSS
+ - custom projection (Arctic SDI)
+ - map with feature links and bbox-specific/enabled layers
+ - a static map
+*/}
+
+This will be a map with a hidden basemap plus one thematic layer
+
