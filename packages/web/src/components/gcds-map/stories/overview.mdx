@@ -10,16 +10,7 @@ The `<mapml-viewer>` component enables slippy maps with one or more `<map-layer>
 The `<map-caption>` element can be used to provide a screen reader friendly caption or title
 for the map.
 
-<Canvas>
-  <Story of={Map.HiddenBasemap} name="HiddenBasemap" />
-
-</Canvas>
-
-<Canvas>
-  <Story name="Default">
-    <Map.Default />
-  </Story>
-</Canvas>
+<Canvas of={Map.Default} story={{ inline: true }} />
 
 <Controls of={Map.Default} sort="none" />
 
@@ -37,5 +28,8 @@ for the map.
  - a static map
 */}
 
-This will be a map with a hidden basemap plus one thematic layer
+You can "hide" a layer, such as a basemap layer (in the layer control), while ensuring that is always visible
+on the map. This can be useful to reduce the cognitive load of your map application,
+and may improve the map's accessibility for some users.
 
+<Canvas of={Map.HiddenBasemap} story={{ inline: true }} />

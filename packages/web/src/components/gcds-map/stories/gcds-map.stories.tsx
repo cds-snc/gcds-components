@@ -91,16 +91,17 @@ export const HiddenBasemap = (args) => {
       <map-caption>${args.caption}</map-caption>
 
       <map-layer src="${args.layer}" checked="checked" hidden="hidden"></map-layer>
-      <map-layer checked src="/dist/gcds/gcds-map/mapml/en/osmtile/toporama"></map-layer>
+      <map-layer checked src="/dist/gcds/gcds-map/mapml/en/osmtile/current_conditions"></map-layer>
     </mapml-viewer>
   `;
 };
 HiddenBasemap.args = {
-  lat: 66.5,
-  lon: -106,
-  zoom: 2,
+  lat: 53.087426, 
+  lon: -91.275330,
+  zoom: 4,
   projection: 'OSMTILE',
   controls: true,
+  controlslist: [],
   layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
   caption: 'A hidden basemap of Canada with one thematic layer mashup'
 };
