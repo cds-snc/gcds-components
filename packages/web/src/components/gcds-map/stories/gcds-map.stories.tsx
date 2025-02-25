@@ -153,3 +153,27 @@ HiddenBasemap.args = {
   layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
   caption: "Canada's current weather conditions"
 };
+
+const TemplatePlayground = args => `<mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" lang="${args.lang}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
+
+  <map-caption>${args.caption}</map-caption>
+
+  <map-layer src="${args.layer}" checked hidden></map-layer>
+
+  <map-layer src="/dist/gcds/gcds-map/mapml/en/osmtile/current_conditions" checked></map-layer>
+
+</mapml-viewer>`; 
+
+export const Playground = TemplatePlayground.bind({});
+Playground.args = {
+  lat: 53.087426, 
+  lon: -91.275330,
+  zoom: 4,
+  projection: 'OSMTILE',
+  controls: true,
+  static: false,
+  lang: 'en',
+  controlslist: ['geolocation'],
+  layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
+  caption: "Canada's current weather conditions"
+};

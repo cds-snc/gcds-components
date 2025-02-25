@@ -10,13 +10,15 @@ The `<mapml-viewer>` component enables slippy maps with one or more `<map-layer>
 The `<map-caption>` element can be used to provide a screen reader friendly caption or title
 for the map.
 
-<Canvas of={Map.Default} story={{ inline: true }} />
 
 ## Examples
 
 <br />
 
 ### A map with a single basemap, centred on a location of interest
+
+<Canvas of={Map.Default} story={{ inline: true }} />
+
 
 {/* this is a comment: HTML syntax doesn’t work in MDX as it’s replaced by JSX (<img> to <img />). */}
 
@@ -25,6 +27,7 @@ for the map.
  - map with hidden basemap +  one thematic layer
  -  map with time select (territorial evolution)
  - layer with vector tiles
+ - map with a queryable vector layer
  - geojson layer
  - a map in which the content changes language to match the user's language
  - dark / light mode
@@ -34,7 +37,9 @@ for the map.
  - map with feature links and bbox-specific/enabled layers
 */}
 
-You can "hide" a layer, such as a basemap layer (in the layer control), while ensuring that is always visible
+### A map with a "hidden" basemap and a single thematic layer exposed in the layer control
+
+You can "hide" a basemap layer from the layer control, while ensuring that it is always visible
 on the map. This can be useful to reduce the cognitive load of your map application,
 and may improve the map's accessibility for some users.
 
