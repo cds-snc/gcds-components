@@ -37,7 +37,7 @@ export default {
       defaultValue: 'OSMTILE'
     },
     layer: {
-      name: 'Layer',
+      name: 'Layers',
       control: 'select',
       options: Object.keys(layerMap),
       mapping: layerMap,
@@ -48,7 +48,7 @@ export default {
       control: 'multi-select',
       options: ['geolocation', 'nofullscreen', 'nozoom', 'nolayer', 'noreload', 'noscale'],
       table: {
-        type: { summary: 'Space-separated list of tokens for controls to display' },
+        type: { summary: 'Space-separated list of case-insensitive string tokens of control name or "no"+control name, if the control is a default control' },
         defaultValue: { summary: 'Empty string' },
       },
     },
@@ -63,7 +63,7 @@ export default {
 // "Show Code" disclosure widget; don't change it without testing the result...
 const TemplateBasic = (args) => {
   return `
-    <mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? 'static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
+    <mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
 
   <map-caption>${args.caption}</map-caption>
 
@@ -94,7 +94,7 @@ export const HiddenBasemap = (args) => {
 
   <map-layer src="${args.layer}" checked hidden></map-layer>
 
-  <map-layer checked src="/dist/gcds/gcds-map/mapml/en/osmtile/current_conditions"></map-layer>
+  <map-layer src="/dist/gcds/gcds-map/mapml/en/osmtile/current_conditions" checked></map-layer>
 
 </mapml-viewer>
   `;
