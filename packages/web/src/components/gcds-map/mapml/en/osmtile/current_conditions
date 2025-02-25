@@ -1,10 +1,10 @@
 <mapml- xmlns="http://www.w3.org/1999/xhtml">
     <map-head>
         <map-title>Current Conditions</map-title>
+        <map-base href="/dist/gcds/gcds-map/mapml/en/osmtile/current_conditions" ></map-base>
         <map-link href="https://eccc-msc.github.io/open-data/msc-geomet/readme_en/" rel="license"
             title="MSC GeoMet" />
-        <map-link
-            href="../../en/cbmtile/current_conditions" rel="alternate" projection="CBMTILE" />
+        <map-link href="../cbmtile/current_conditions" rel="alternate" projection="CBMTILE" />
     </map-head>
     <map-body>
         <map-extent units="OSMTILE" checked="checked" hidden="hidden">

@@ -59,15 +59,17 @@ export default {
   }
 };
 
+// spacing and indentation is visually significant in the template (it's visible in the
+// "Show Code" disclosure widget; don't change it without testing the result...
 const TemplateBasic = (args) => {
   return `
-    <mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}"
-      projection="${args.projection}" ${args.controls ? 'controls' : ''} 
-      controlslist="${args.controlslist.length > 0 ? args.controlslist.join(' ') : ''}">
-      <map-caption>${args.caption}</map-caption>
+    <mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? 'static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
 
-      <map-layer src="${args.layer}" checked="true"></map-layer>
-    </mapml-viewer>
+  <map-caption>${args.caption}</map-caption>
+
+  <map-layer src="${args.layer}" ${`checked`}></map-layer>
+
+</mapml-viewer>
   `;
 };
 
@@ -78,6 +80,7 @@ Default.args = {
   zoom: 2,
   projection: 'OSMTILE',
   controls: true,
+  static: false,
   controlslist: ['geolocation'],
   layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
   caption: 'A map of Canada'
@@ -85,14 +88,15 @@ Default.args = {
 
 export const HiddenBasemap = (args) => {
   return `
-    <mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}"
-      projection="${args.projection}" ${args.controls ? 'controls' : ''} 
-      controlslist="${args.controlslist.length > 0 ? args.controlslist.join(' ') : ''}">
-      <map-caption>${args.caption}</map-caption>
+    <mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" projection="${args.projection}"${args.controls ? ' controls' : ''}>
 
-      <map-layer src="${args.layer}" checked="checked" hidden="hidden"></map-layer>
-      <map-layer checked src="/dist/gcds/gcds-map/mapml/en/osmtile/current_conditions"></map-layer>
-    </mapml-viewer>
+  <map-caption>${args.caption}</map-caption>
+
+  <map-layer src="${args.layer}" checked hidden></map-layer>
+
+  <map-layer checked src="/dist/gcds/gcds-map/mapml/en/osmtile/current_conditions"></map-layer>
+
+</mapml-viewer>
   `;
 };
 HiddenBasemap.args = {
@@ -101,7 +105,6 @@ HiddenBasemap.args = {
   zoom: 4,
   projection: 'OSMTILE',
   controls: true,
-  controlslist: [],
   layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
-  caption: 'A hidden basemap of Canada with one thematic layer mashup'
+  caption: "Canada's current weather conditions"
 };

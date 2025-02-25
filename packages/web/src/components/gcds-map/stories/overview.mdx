@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
 import * as Map from './gcds-map.stories';
 
-<Meta of={Map} name="Map" />
+<Meta of={Map} name="Overview" />
 
 # Map<br/>`<mapml-viewer>`
 
@@ -12,8 +12,6 @@ for the map.
 
 <Canvas of={Map.Default} story={{ inline: true }} />
 
-<Controls of={Map.Default} sort="none" />
-
 {/* this is a comment: HTML syntax doesn’t work in MDX as it’s replaced by JSX (<img> to <img />). */}
 
 {/* 
@@ -21,11 +19,12 @@ for the map.
  - map with hidden basemap +  one thematic layer
  -  map with time select (territorial evolution)
  - layer with vector tiles
+ - geojson layer
  - dark / light mode
  - layer with vector features / places styled with CSS
+ - inline layer content
  - custom projection (Arctic SDI)
  - map with feature links and bbox-specific/enabled layers
- - a static map
 */}
 
 You can "hide" a layer, such as a basemap layer (in the layer control), while ensuring that is always visible
