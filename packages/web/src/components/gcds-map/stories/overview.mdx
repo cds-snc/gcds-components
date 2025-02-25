@@ -12,6 +12,12 @@ for the map.
 
 <Canvas of={Map.Default} story={{ inline: true }} />
 
+## Examples
+
+<br />
+
+### A map with a single basemap, centred on a location of interest
+
 {/* this is a comment: HTML syntax doesn’t work in MDX as it’s replaced by JSX (<img> to <img />). */}
 
 {/* 
@@ -20,6 +26,7 @@ for the map.
  -  map with time select (territorial evolution)
  - layer with vector tiles
  - geojson layer
+ - a map in which the content changes language to match the user's language
  - dark / light mode
  - layer with vector features / places styled with CSS
  - inline layer content
@@ -32,3 +39,18 @@ on the map. This can be useful to reduce the cognitive load of your map applicat
 and may improve the map's accessibility for some users.
 
 <Canvas of={Map.HiddenBasemap} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul className="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/map/" target="_blank">Guidance</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/develop/packages/web/src/components/gcds-map" target="_blank">Github</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/Maps4HTML/mapml.js" target="_blank">MapML polyfill on GitHub</gcds-link>
+  </li>
+</ul>
