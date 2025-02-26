@@ -82,6 +82,27 @@ export const GcdsCheckbox = /*@__PURE__*/ defineContainer<JSX.GcdsCheckbox>('gcd
 ]);
 
 
+export const GcdsCheckboxes = /*@__PURE__*/ defineContainer<JSX.GcdsCheckboxes>('gcds-checkboxes', undefined, [
+  'name',
+  'legend',
+  'options',
+  'required',
+  'disabled',
+  'value',
+  'checked',
+  'errorMessage',
+  'hint',
+  'validator',
+  'validateOn',
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+]);
+
+
 export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', undefined, [
   'border',
   'centered',

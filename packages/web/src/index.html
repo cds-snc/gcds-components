@@ -106,6 +106,70 @@
 
       <hr class="my-550" />
 
+      <form id="form-submit">
+        <gcds-checkboxes
+          legend="red"
+          label="blue"
+          name="check"
+          hint="Checkboxes hint"
+          error-message="red"
+          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+        ></gcds-checkboxes>
+        <gcds-checkboxes
+          legend="red"
+          label="blue"
+          name="check2"
+          hint="Checkboxes hint"
+          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}]'
+        ></gcds-checkboxes>
+
+        <gcds-input
+          input-id="form-name"
+          name="name"
+          label="Name"
+          hint="Please enter your full name."
+          required
+        ></gcds-input>
+
+        <gcds-input
+          input-id="form-email"
+          label="Email"
+          type="text"
+          name="name"
+          hint="Please enter your email."
+          required
+        ></gcds-input>
+        <fieldset>
+          <legend>Choose your monster's features:</legend>
+        
+          <div>
+            <input type="checkbox" id="scales" name="test" checked value="blue"/>
+            <label for="scales">Scales</label>
+          </div>
+        
+          <div>
+            <input type="checkbox" id="horns" name="test" value="red"/>
+            <label for="horns">Horns</label>
+          </div>
+        </fieldset>
+
+        <gcds-button type="submit">Submit</gcds-button>
+      </form>
+
+      <script>
+        let form = document.getElementById('form-submit');
+
+        form.addEventListener("submit", function(event) {
+          event.preventDefault();
+          new FormData(form);
+        });
+
+        form.addEventListener("formdata", event => {
+          // event.formData grabs the object
+          console.log(event.formData.getAll('name'));
+        });
+      </script>
+
       <!-- ------------- Alerts ------------- -->
 
       <gcds-heading tag="h2">Alerts</gcds-heading>
