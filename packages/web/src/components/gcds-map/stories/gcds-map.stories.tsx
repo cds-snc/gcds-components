@@ -104,7 +104,7 @@ export default {
 };
 
 // spacing and indentation is visually significant in the template (it's visible in the
-// "Show Code" disclosure widget; don't change it without testing the result...
+// "Show Code" disclosure widget; don't change it without testing the result...)
 const TemplateBasic = (args) => {
   return `
     <mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" lang="${args.lang}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
@@ -154,7 +154,7 @@ HiddenBasemap.args = {
   caption: "Canada's current weather conditions"
 };
 
-const TemplatePlayground = args => `<mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" lang="${args.lang}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
+export const Playground = args => `<mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" lang="${args.lang}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
 
   <map-caption>${args.caption}</map-caption>
 
@@ -164,7 +164,6 @@ const TemplatePlayground = args => `<mapml-viewer lat="${args.lat}" lon="${args.
 
 </mapml-viewer>`; 
 
-export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   lat: 53.087426, 
   lon: -91.275330,
