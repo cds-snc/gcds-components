@@ -176,3 +176,102 @@ Playground.args = {
   layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
   caption: "Canada's current weather conditions"
 };
+
+export const GeoJSONTemplate = args => `<mapml-viewer id="np" lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" lang="${args.lang}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
+
+  <map-caption>${args.caption}</map-caption>
+
+  <map-layer src="${args.layer}" checked hidden></map-layer>
+
+</mapml-viewer>`;
+
+GeoJSONTemplate.args = {
+  lat: 53.087426, 
+  lon: -91.275330,
+  zoom: 4,
+  projection: 'OSMTILE',
+  controls: true,
+  static: false,
+  lang: 'en',
+  controlslist: ['geolocation'],
+  layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
+  caption: "Canada's Provinces and Territories in styled GeoJSON"
+};
+
+GeoJSONTemplate.loaders = [
+  async () => {
+    try {
+      const response = await fetch('/dist/gcds/gcds-map/assets/canada.json');
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+      const geoJsonData = await response.json();
+      
+      // Return the data for use in the story
+      return { geoJsonData };
+    } catch (error) {
+      console.error('Error loading GeoJSON data:', error);
+      return { geoJsonData: null, error };
+    }
+  }
+];
+
+GeoJSONTemplate.play = async ({ canvasElement, loaded }) => {
+  console.log('Play function started');
+  try {
+    
+    const { geoJsonData } = loaded;
+    
+    // Configure MapML options for the GeoJSON
+    let provOptions = { 
+      projection: "OSMTILE",
+      label: "Provinces and territories of Canada", 
+      caption: "PRENAME",
+      geometryFunction: function (g, _) {
+        if (g.nodeName === "MAP-MULTIPOLYGON") {
+          let polys = g.querySelectorAll("map-polygon");
+          for (let i=0; i < polys.length; i++) {
+            polys[i].setAttribute("class", "h");
+          }
+        } else {
+          g.setAttribute("class", "h");
+        }
+        return g;
+      }
+    };
+    
+    // Access the MapML global object
+    const mapmlGlobal = window as any;
+    if (typeof mapmlGlobal.M === 'undefined') {
+      console.log('M not found!');
+      return;
+    }
+    
+    // Convert GeoJSON to MapML
+    let provs = mapmlGlobal.M.geojson2mapml(geoJsonData, provOptions);
+    console.log('provinces geojson layer created');
+    
+    // Get the map viewer
+    const mapViewer = canvasElement;
+    if (!mapViewer) {
+      console.log('Map viewer not found!');
+      return;
+    }
+    
+    mapViewer.appendChild(provs);
+    console.log('Added GeoJSON layer to map');
+  } catch (error) {
+    console.error('Error in map playground:', error);
+  }
+};
+customElements.whenDefined('mapml-viewer').then(() => {
+  (async () => {
+    console.log('starting playground operations...');
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const loadedData = await GeoJSONTemplate.loaders[0]();
+    const canvasElement = document.querySelector('#np');
+    
+    await GeoJSONTemplate.play({ canvasElement, loaded: loadedData });
+  })();
+});

@@ -45,6 +45,15 @@ and may improve the map's accessibility for some users.
 
 <Canvas of={Map.HiddenBasemap} story={{ inline: true }} />
 
+### A map including default styled GeoJSON features
+
+The MapML viewer library has built-in support for converting GeoJSON into MapML
+features and layers.  You can use custom JavaScript functions to provide styles
+for your features.
+
+<Canvas of={Map.GeoJSONTemplate} story={{ inline: true }} />
+
+
 ## Resources
 
 {/* prettier-ignore */}
@@ -57,5 +66,11 @@ and may improve the map's accessibility for some users.
   </li>
   <li>
     <gcds-link size="regular" href="https://github.com/Maps4HTML/mapml.js" target="_blank">MapML polyfill on GitHub</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://maps4html.org/web-map-doc/" target="_blank">MapML.js documentation</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://docs.geoserver.org/latest/en/user/extensions/mapml/index.html" target="_blank">GeoServer MapML extension documentation</gcds-link>
   </li>
 </ul>

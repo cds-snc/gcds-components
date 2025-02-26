@@ -46,6 +46,11 @@ export const config: Config = {
                 src: 'components/gcds-map/mapml',  
                 dest: 'gcds-map/mapml',
                 warn: true
+            },
+            {
+                src: 'components/gcds-map/assets',  
+                dest: 'gcds-map/assets',
+                warn: true
             }
       ],
     },
