@@ -177,15 +177,17 @@ Playground.args = {
   caption: "Canada's current weather conditions"
 };
 
-export const GeoJSONTemplate = args => `<mapml-viewer id="np" lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" lang="${args.lang}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
+export const GeoJSON2MapMLExample = args => `<mapml-viewer id="np" lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" lang="${args.lang}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
 
   <map-caption>${args.caption}</map-caption>
 
   <map-layer src="${args.layer}" checked hidden></map-layer>
 
+  <!-- A GeoJSON <map-layer> is created and styled by a function call here -->
+
 </mapml-viewer>`;
 
-GeoJSONTemplate.args = {
+GeoJSON2MapMLExample.args = {
   lat: 53.087426, 
   lon: -91.275330,
   zoom: 4,
@@ -198,7 +200,7 @@ GeoJSONTemplate.args = {
   caption: "Canada's Provinces and Territories in styled GeoJSON"
 };
 
-GeoJSONTemplate.loaders = [
+GeoJSON2MapMLExample.loaders = [
   async () => {
     try {
       const response = await fetch('/dist/gcds/gcds-map/assets/canada.json');
@@ -216,18 +218,17 @@ GeoJSONTemplate.loaders = [
   }
 ];
 
-GeoJSONTemplate.play = async ({ canvasElement, loaded }) => {
+GeoJSON2MapMLExample.play = async ({ canvasElement, loaded }) => {
   console.log('Play function started');
   try {
-    
     const { geoJsonData } = loaded;
     
-    // Configure MapML options for the GeoJSON
+    // Configure MapML options for the geojson2mapml api
     let provOptions = { 
       projection: "OSMTILE",
       label: "Provinces and territories of Canada", 
       caption: "PRENAME",
-      geometryFunction: function (g, _) {
+      geometryFunction: function (g, f) {
         if (g.nodeName === "MAP-MULTIPOLYGON") {
           let polys = g.querySelectorAll("map-polygon");
           for (let i=0; i < polys.length; i++) {
@@ -235,6 +236,47 @@ GeoJSONTemplate.play = async ({ canvasElement, loaded }) => {
           }
         } else {
           g.setAttribute("class", "h");
+        }
+        switch (f.properties.PRUID) {
+          case '10':
+            g.className = 'canada nl'
+            break;
+          case '11':
+            g.className = 'canada pei'
+            break;
+          case '12':
+            g.className = 'canada ns'
+            break;
+          case '13':
+            g.className = 'canada nb'
+            break;
+          case '24':
+            g.className = 'canada qc'
+            break;
+          case '35':
+            g.className = 'canada on'
+            break;
+          case '46':
+            g.className = 'canada mb'
+            break;
+          case '47':
+            g.className = 'canada sk'
+            break;
+          case '48':
+            g.className = 'canada ab'
+            break;
+          case '59':
+            g.className = 'canada bc'
+            break;
+          case '60':
+            g.className = 'canada yk'
+            break;
+          case '61':
+            g.className = 'canada nwt'
+            break;
+          case '62':
+            g.className = 'canada nt'
+            break;
         }
         return g;
       }
@@ -249,6 +291,20 @@ GeoJSONTemplate.play = async ({ canvasElement, loaded }) => {
     
     // Convert GeoJSON to MapML
     let provs = mapmlGlobal.M.geojson2mapml(geoJsonData, provOptions);
+
+    // post-process the <map-layer> just created - need to update the geojson2mapml
+    // api to add map-feature and perhaps other callbacks opportunities for 
+    // post-facto setting class values and perhaps other stuff tbc
+
+    const features = provs.querySelectorAll('map-feature');
+    features.forEach(feature => {
+      const taggedGeometry = feature.querySelector('.canada');
+      feature.setAttribute('class', taggedGeometry.getAttribute('class'))
+      taggedGeometry.removeAttribute('class');
+    });
+
+    // this layer should not be rendered at large scales (too generalized)
+    provs.setAttribute('media','(0 < map-zoom < 7)');
     console.log('provinces geojson layer created');
     
     // Get the map viewer
@@ -257,6 +313,14 @@ GeoJSONTemplate.play = async ({ canvasElement, loaded }) => {
       console.log('Map viewer not found!');
       return;
     }
+    let mapStyle = document.createElement('map-style');
+    mapStyle.innerHTML = `.canada { fill-opacity: 0.7; stroke-width: 1; stroke: white; stroke-opacity: 1; stroke-dasharray: 3; } 
+            .bc { fill: #ffdeb2; stroke: #e6c8a1; } .ab { fill: #facad6; stroke: #e8708e; } .sk { fill: #b5ffe4; stroke: #9ad9c2;} .mb { fill: #e6e6fa;  stroke: #cdcdde; } 
+            .on { fill: #facad6; stroke: #e8708e; } .qc { fill: #b5ffe4; stroke: #9ad9c2;} .nb { fill: #ffdeb2; } .pei { fill: #e6e6fa; stroke: #cdcdde;} 
+            .ns { fill: #facad6;  stroke: #e8708e; } .nl { fill: #ebc798; stroke: #d0a368; } 
+            .yk { fill: #ebc798; stroke: #d0a368; } .nwt { fill: #e6e6fa; stroke: #cdcdde; } .nt { fill: #ffdeb2; stroke: #e6c8a1; }`
+    // scope styles to this layer only
+    provs.insertAdjacentElement('afterbegin',mapStyle);
     
     mapViewer.appendChild(provs);
     console.log('Added GeoJSON layer to map');
@@ -267,11 +331,37 @@ GeoJSONTemplate.play = async ({ canvasElement, loaded }) => {
 customElements.whenDefined('mapml-viewer').then(() => {
   (async () => {
     console.log('starting playground operations...');
-    await new Promise(resolve => setTimeout(resolve, 1000));
     
-    const loadedData = await GeoJSONTemplate.loaders[0]();
-    const canvasElement = document.querySelector('#np');
+    // Load data while waiting for the viewer
+    const loadDataPromise = GeoJSON2MapMLExample.loaders[0]();
     
-    await GeoJSONTemplate.play({ canvasElement, loaded: loadedData });
+    // Function to find the viewer
+    const findViewer = () => {
+      return new Promise((resolve, reject) => {
+        // Set a maximum timeout (e.g., 10 seconds) to avoid infinite polling
+        const maxTimeout = setTimeout(() => {
+          clearInterval(interval);
+          reject(new Error('Timed out waiting for #np element'));
+        }, 10000);
+        
+        const interval = setInterval(() => {
+          const viewer = document.querySelector('#np');
+          if (viewer) {
+            clearInterval(interval);
+            clearTimeout(maxTimeout);
+            resolve(viewer);
+          }
+        }, 100); 
+      });
+    };
+    
+    try {
+      const [loadedData, viewer] = await Promise.all([loadDataPromise, findViewer()]);
+      
+      console.log('Found viewer and loaded data, running play function');
+      await GeoJSON2MapMLExample.play({ canvasElement: viewer, loaded: loadedData });
+    } catch (error) {
+      console.error('Error during initialization:', error);
+    }
   })();
 });
