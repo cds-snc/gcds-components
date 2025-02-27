@@ -14,7 +14,13 @@ import {
 } from '@stencil/core';
 
 import { Radio, RadioObject, isRadioObject } from './radio';
-import { assignLanguage, inheritAttributes, logError } from '../../utils/utils';
+import {
+  assignLanguage,
+  inheritAttributes,
+  logError,
+  handleErrors,
+  isValid,
+} from '../../utils/utils';
 import {
   Validator,
   defaultValidator,
@@ -55,11 +61,11 @@ export class GcdsRadios {
 
   @Watch('options')
   validateOptions() {
-    let validObject = true;
+    let invalidObject = false;
     // Assign optionsObject from passed options string/object
     if (typeof this.options == 'object') {
       this.optionObject = this.options;
-    } else if (typeof this.options == 'string') {
+    } else if (typeof this.options == 'string' && this.options.trim() !== '') {
       this.optionObject = JSON.parse(this.options);
     } else {
       this.optionObject = null;
@@ -69,7 +75,7 @@ export class GcdsRadios {
     if (this.optionObject) {
       this.optionObject.map(radio => {
         if (!isRadioObject(radio)) {
-          validObject = false;
+          invalidObject = true;
         }
       });
     }
@@ -85,14 +91,12 @@ export class GcdsRadios {
     }
 
     // Log error if no or invalid optionsObject
-    if (
-      (!this.optionObject && !this.errors.includes('options')) ||
-      !validObject
-    ) {
-      this.errors.push('options');
-    } else if (this.errors.includes('options')) {
-      this.errors.splice(this.errors.indexOf('options'), 1);
-    }
+    this.errors = handleErrors(
+      this.errors,
+      'options',
+      this.optionObject,
+      invalidObject,
+    );
   }
 
   /**
@@ -102,14 +106,7 @@ export class GcdsRadios {
 
   @Watch('name')
   validateName() {
-    if (
-      (!this.name || this.name.trim() === '') &&
-      !this.errors.includes('name')
-    ) {
-      this.errors.push('name');
-    } else if (this.errors.includes('name')) {
-      this.errors.splice(this.errors.indexOf('name'), 1);
-    }
+    this.errors = handleErrors(this.errors, 'name', this.name);
   }
 
   /**
@@ -118,14 +115,7 @@ export class GcdsRadios {
   @Prop({ reflect: true, mutable: false }) legend!: string;
   @Watch('legend')
   validateLegend() {
-    if (
-      (!this.legend || this.legend.trim() === '') &&
-      !this.errors.includes('legend')
-    ) {
-      this.errors.push('legend');
-    } else if (this.errors.includes('legend')) {
-      this.errors.splice(this.errors.indexOf('legend'), 1);
-    }
+    this.errors = handleErrors(this.errors, 'legend', this.legend);
   }
 
   /**
@@ -331,15 +321,7 @@ export class GcdsRadios {
     this.validateLegend();
     this.validateName();
 
-    if (
-      this.errors.includes('name') ||
-      this.errors.includes('legend') ||
-      this.errors.includes('options')
-    ) {
-      return false;
-    }
-
-    return true;
+    return isValid(this.errors, ['name', 'legend', 'options']);
   }
 
   async componentWillLoad() {
