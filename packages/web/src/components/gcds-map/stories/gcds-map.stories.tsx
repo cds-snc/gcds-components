@@ -218,6 +218,46 @@ GeoJSON2MapMLExample.loaders = [
   }
 ];
 
+GeoJSON2MapMLExample.parameters = {
+  docs: {
+    source: {
+      code: `
+<mapml-viewer id="np" lat="${GeoJSON2MapMLExample.args.lat}" lon="${GeoJSON2MapMLExample.args.lon}" zoom="${GeoJSON2MapMLExample.args.zoom}" lang="${GeoJSON2MapMLExample.args.lang}" projection="${GeoJSON2MapMLExample.args.projection}"${GeoJSON2MapMLExample.args.controls ? ' controls' : ''}${GeoJSON2MapMLExample.args.static ? ' static' : ''}${GeoJSON2MapMLExample.args.controlslist.length > 0  ? ` controlslist="${GeoJSON2MapMLExample.args.controlslist.join(' ')}"` : ''}>
+
+  <map-caption>${GeoJSON2MapMLExample.args.caption}</map-caption>
+
+  <map-layer src="${GeoJSON2MapMLExample.args.layer}" checked hidden></map-layer>
+
+  <!-- this layer created via javascript, using M.geojson2mapml API functions -->
+  <map-layer label="Provinces and territories of Canada" checked="" media="(0 < map-zoom < 7)">
+    <map-style>
+     .canada { fill-opacity: 0.7; stroke-width: 1; stroke: white; stroke-opacity: 1; stroke-dasharray: 3; } 
+     .bc { fill: #ffdeb2; stroke: #e6c8a1; } .ab { fill: #facad6; stroke: #e8708e; } 
+     .sk { fill: #b5ffe4; stroke: #9ad9c2;} .mb { fill: #e6e6fa;  stroke: #cdcdde; } 
+     .on { fill: #facad6; stroke: #e8708e; } .qc { fill: #b5ffe4; stroke: #9ad9c2;} 
+     .nb { fill: #ffdeb2; } .pei { fill: #e6e6fa; stroke: #cdcdde;} 
+     .ns { fill: #facad6;  stroke: #e8708e; } .nl { fill: #ebc798; stroke: #d0a368; } 
+     .yk { fill: #ebc798; stroke: #d0a368; } .nwt { fill: #e6e6fa; stroke: #cdcdde; } 
+     .nt { fill: #ffdeb2; stroke: #e6c8a1; }
+    </map-style>
+    <map-meta name="extent" content="top-left-longitude=-141.01143, top-left-latitude=41.71096, bottom-right-longitude=-52.61941,bottom-right-latitude=83.13505"></map-meta>
+    <map-meta name="projection" content="OSMTILE"></map-meta>
+    <map-meta name="cs" content="gcrs"></map-meta>
+    <map-feature class="canada nl">
+      <map-featurecaption>Newfoundland and Labrador</map-featurecaption>
+      <map-geometry>...</map-geometry>
+      <map-properties>...</map-properties>
+    </map-feature>
+    ... etc ...
+  </map-layer>
+
+</mapml-viewer>`,
+      language: 'html',
+      type: 'code',
+    }
+  }
+};
+
 GeoJSON2MapMLExample.play = async ({ canvasElement, loaded }) => {
   console.log('Play function started');
   try {
