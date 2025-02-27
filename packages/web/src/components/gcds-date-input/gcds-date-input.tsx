@@ -317,7 +317,17 @@ export class GcdsDateInput {
    * Logic to combine all input values together based on format
    */
   private setValue() {
-    const { yearValue, dayValue, monthValue, format } = this;
+    const { yearValue, monthValue, format } = this;
+    let { dayValue } = this;
+
+    // Logic to make sure the day input is registered correctly
+    if (dayValue && dayValue.length === 1 && dayValue != '0') {
+      dayValue = '0' + dayValue;
+      this.dayValue = dayValue;
+    } else if (dayValue && dayValue.length == 3 && dayValue[0] === '0') {
+      dayValue = dayValue.substring(1);
+      this.dayValue = dayValue;
+    }
 
     // All form elements have something entered
     if (yearValue && monthValue && dayValue && format == 'full') {
@@ -358,24 +368,15 @@ export class GcdsDateInput {
   private splitFormValue() {
     if (this.value && isValidDate(this.value, this.format)) {
       if (this.format == 'compact') {
-        let splitValue = this.value.split('-');
+        const splitValue = this.value.split('-');
         this.yearValue = splitValue[0];
         this.monthValue = splitValue[1];
       } else {
-        let splitValue = this.value.split('-');
+        const splitValue = this.value.split('-');
         this.yearValue = splitValue[0];
         this.monthValue = splitValue[1];
         this.dayValue = splitValue[2];
       }
-    }
-  }
-
-  /**
-   * Format day input value to add 0 to single digit values
-   */
-  private formatDay(e) {
-    if (!isNaN(e.target.value) && e.target.value.length === 1) {
-      this.dayValue = '0' + e.target.value;
     }
   }
 
@@ -408,7 +409,7 @@ export class GcdsDateInput {
       this._validator = getValidator(this.validator);
     }
 
-    let valid = this.validateRequiredProps();
+    const valid = this.validateRequiredProps();
 
     if (!valid) {
       logError('gcds-date-input', this.errors);
@@ -442,10 +443,21 @@ export class GcdsDateInput {
       hasError,
     } = this;
 
-    let requiredAttr = {};
+    const requiredAttr = {};
 
     if (required) {
       requiredAttr['aria-required'] = 'true';
+    }
+
+    const fieldsetAttrs = {
+      'tabindex': '-1',
+      'aria-labelledby': 'date-input-legend',
+    };
+
+    if (hint) {
+      const hintID = this.hint ? `date-input-hint ` : '';
+      fieldsetAttrs['aria-labelledby'] =
+        `${fieldsetAttrs['aria-labelledby']} ${hintID}`.trim();
     }
 
     // Array of months 01 - 12
@@ -504,10 +516,7 @@ export class GcdsDateInput {
         disabled={disabled}
         value={this.dayValue}
         onInput={e => this.handleInput(e, 'day')}
-        onChange={e => {
-          this.handleInput(e, 'day');
-          this.formatDay(e);
-        }}
+        onChange={e => this.handleInput(e, 'day')}
         class={`gcds-date-input__day ${hasError['day'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
         aria-invalid={hasError['day'].toString()}
@@ -518,22 +527,34 @@ export class GcdsDateInput {
     return (
       <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
-          <gcds-fieldset
-            legend={legend}
-            fieldsetId="date-input"
-            hint={hint}
-            errorMessage={errorMessage}
-            required={required}
-            class={`gcds-date-input__fieldset${hint ? ' gcds-date-input--hint' : ''}${errorMessage ? ' gcds-date-input--error' : ''}`}
-            lang={lang}
-            data-date="true"
-          >
+          <fieldset class="gcds-date-input__fieldset" {...fieldsetAttrs}>
+            <legend id="date-input-legend">
+              {legend}
+              {required ? (
+                <span class="legend__required">{i18n[lang].required}</span>
+              ) : null}
+            </legend>
+            {hint ? (
+              <gcds-hint id="date-input-hint" hint-id="date-input">
+                {hint}
+              </gcds-hint>
+            ) : null}
+            {errorMessage ? (
+              <div>
+                <gcds-error-message
+                  id="date-input-error"
+                  messageId="date-input"
+                >
+                  {errorMessage}
+                </gcds-error-message>
+              </div>
+            ) : null}
             {format == 'compact'
               ? [month, year]
               : lang == 'en'
                 ? [month, day, year]
                 : [day, month, year]}
-          </gcds-fieldset>
+          </fieldset>
         )}
       </Host>
     );
