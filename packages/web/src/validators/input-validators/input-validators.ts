@@ -181,3 +181,11 @@ const getDateInputError = (dateValues, format) => {
 
   return errorResponse;
 };
+
+export const requiredRadio: Validator<string> = {
+  validate: (value: string) => value != null,
+  errorMessage: {
+    en: 'Choose an option to continue.',
+    fr: 'Choisissez une option pour continuer.',
+  },
+};
