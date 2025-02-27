@@ -399,17 +399,14 @@ export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'],
-  methods: ['validate'],
-  outputs: ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid']
+  inputs: ['fieldsetId', 'hint', 'legend', 'size']
 })
 @Component({
   selector: 'gcds-fieldset',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'],
-  outputs: ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid'],
+  inputs: ['fieldsetId', 'hint', 'legend', 'size'],
   standalone: false,
 })
 export class GcdsFieldset {
@@ -417,29 +414,11 @@ export class GcdsFieldset {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid']);
   }
 }
 
 
-export declare interface GcdsFieldset extends Components.GcdsFieldset {
-  /**
-   * Emitted when the fieldset has a validation error.
-   */
-  gcdsGroupError: EventEmitter<CustomEvent<string>>;
-  /**
-   * Emitted when the fieldset has a validation error.
-   */
-  gcdsGroupErrorClear: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the fieldset has a validation error.
-   */
-  gcdsError: EventEmitter<CustomEvent<object>>;
-  /**
-   * Emitted when the fieldset has a validation error.
-   */
-  gcdsValid: EventEmitter<CustomEvent<object>>;
-}
+export declare interface GcdsFieldset extends Components.GcdsFieldset {}
 
 
 @ProxyCmp({
