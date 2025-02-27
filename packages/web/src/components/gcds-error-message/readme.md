@@ -18,7 +18,6 @@
 
  - [gcds-checkbox](../gcds-checkbox)
  - [gcds-date-input](../gcds-date-input)
- - [gcds-fieldset](../gcds-fieldset)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
  - [gcds-select](../gcds-select)
@@ -36,7 +35,6 @@ graph TD;
   gcds-error-message --> gcds-icon
   gcds-checkbox --> gcds-error-message
   gcds-date-input --> gcds-error-message
-  gcds-fieldset --> gcds-error-message
   gcds-file-uploader --> gcds-error-message
   gcds-input --> gcds-error-message
   gcds-select --> gcds-error-message
