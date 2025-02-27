@@ -9,12 +9,12 @@ import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
-import { RadioObject as RadioObject1 } from "./components/gcds-radios/gcds-radios";
+import { RadioObject as RadioObject1 } from "./components/gcds-radios/radio";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
-export { RadioObject as RadioObject1 } from "./components/gcds-radios/gcds-radios";
+export { RadioObject as RadioObject1 } from "./components/gcds-radios/radio";
 export namespace Components {
     interface GcdsAlert {
         /**

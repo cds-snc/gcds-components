@@ -13,6 +13,7 @@ import {
   AttachInternals,
 } from '@stencil/core';
 
+import { Radio, RadioObject, isRadioObject } from './radio';
 import { assignLanguage, inheritAttributes, logError } from '../../utils/utils';
 import {
   Validator,
@@ -22,16 +23,6 @@ import {
   requiredValidator,
 } from '../../validators';
 import i18n from './i18n/i18n';
-
-export type RadioObject = {
-  id: string;
-  label: string;
-  value: string;
-  hint?: string;
-  checked?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-};
 
 @Component({
   tag: 'gcds-radios',
@@ -462,33 +453,16 @@ export class GcdsRadios {
                 }
 
                 return (
-                  <div
-                    class={`gcds-radio ${
-                      disabled ? 'gcds-radio--disabled' : ''
-                    } ${hasError ? 'gcds-radio--error' : ''}`}
-                  >
-                    <input
-                      id={radio.id}
-                      type="radio"
-                      {...attrsInput}
-                      onChange={e => this.onChange(e)}
-                      onBlur={() => this.onBlur()}
-                      onFocus={() => this.gcdsFocus.emit()}
-                      ref={element =>
-                        (this.shadowElement = element as HTMLInputElement)
-                      }
-                    />
-
-                    <gcds-label
-                      label={radio.label}
-                      label-for={radio.id}
-                      lang={lang}
-                    ></gcds-label>
-
-                    {radio.hint ? (
-                      <gcds-hint hint-id={radio.id}>{radio.hint}</gcds-hint>
-                    ) : null}
-                  </div>
+                  <Radio
+                    radio={radio}
+                    disabled={disabled}
+                    hasError={hasError}
+                    lang={lang}
+                    gcdsFocus={this.gcdsFocus}
+                    onBlur={this.onBlur}
+                    onChange={this.onChange}
+                    attrsInput={attrsInput}
+                  />
                 );
               })}
           </fieldset>
@@ -496,34 +470,4 @@ export class GcdsRadios {
       );
     }
   }
-}
-
-function isRadioObject(obj: any): obj is RadioObject {
-  if (typeof obj !== 'object' || obj === null) return false;
-
-  const validKeys = [
-    'id',
-    'label',
-    'value',
-    'hint',
-    'checked',
-    'required',
-    'disabled',
-  ];
-  const objKeys = Object.keys(obj);
-
-  // Check if all properties match the expected type
-  const hasValidTypes =
-    typeof obj.id === 'string' &&
-    typeof obj.label === 'string' &&
-    typeof obj.value === 'string' &&
-    (obj.hint === undefined || typeof obj.hint === 'string') &&
-    (obj.checked === undefined || typeof obj.checked === 'boolean') &&
-    (obj.required === undefined || typeof obj.required === 'boolean') &&
-    (obj.disabled === undefined || typeof obj.disabled === 'boolean');
-
-  // Ensure no extra properties exist
-  const hasOnlyValidKeys = objKeys.every(key => validKeys.includes(key));
-
-  return hasValidTypes && hasOnlyValidKeys;
 }
