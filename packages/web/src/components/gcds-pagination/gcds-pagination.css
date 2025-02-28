@@ -50,6 +50,11 @@
             width: auto;
             min-width: auto;
             height: auto;
+            text-decoration: none;
+
+            span {
+              text-decoration: underline;
+            }
           }
         }
 
@@ -99,6 +104,16 @@
           grid-area: label;
           font-weight: var(--gcds-pagination-simple-label-font-weight);
         }
+      }
+    }
+
+    .gcds-pagination-simple-previous a,
+    .gcds-pagination-simple-next a {
+      text-decoration: none;
+
+      .gcds-pagination-simple-text,
+      span {
+        text-decoration: underline;
       }
     }
 

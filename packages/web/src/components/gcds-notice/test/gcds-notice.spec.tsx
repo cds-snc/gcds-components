@@ -13,7 +13,7 @@ describe('gcds-notice', () => {
       .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="success">
       <mock:shadow-root>
         <section class="gcds-notice notice--type-success">
-          <gcds-icon class="notice__icon" name="check-circle" size="h4"></gcds-icon>
+          <gcds-icon class="notice__icon" name="checkmark-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
               <gcds-sr-only tag="span">Success: </gcds-sr-only>
@@ -41,7 +41,7 @@ describe('gcds-notice', () => {
       .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="success" lang="fr">
       <mock:shadow-root>
         <section class="gcds-notice notice--type-success">
-          <gcds-icon class="notice__icon" name="check-circle" size="h4"></gcds-icon>
+          <gcds-icon class="notice__icon" name="checkmark-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
               <gcds-sr-only tag="span">Succès : </gcds-sr-only>
@@ -181,7 +181,7 @@ describe('gcds-notice', () => {
       .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="warning">
       <mock:shadow-root>
         <section class="gcds-notice notice--type-warning">
-          <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
+          <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
               <gcds-sr-only tag="span">Warning: </gcds-sr-only>
@@ -209,7 +209,7 @@ describe('gcds-notice', () => {
       .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="warning" lang="fr">
       <mock:shadow-root>
         <section class="gcds-notice notice--type-warning">
-          <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
+          <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
               <gcds-sr-only tag="span">Avertissement : </gcds-sr-only>
@@ -237,7 +237,7 @@ describe('gcds-notice', () => {
       .toEqualHtml(`<gcds-notice notice-title-tag="h3" notice-title="GC Design System notice" type="warning">
       <mock:shadow-root>
         <section class="gcds-notice notice--type-warning">
-          <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
+          <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h3">
               <gcds-sr-only tag="span">Warning: </gcds-sr-only>
@@ -265,7 +265,7 @@ describe('gcds-notice', () => {
       .toEqualHtml(`<gcds-notice notice-title-tag="h4" notice-title="GC Design System notice" type="warning">
       <mock:shadow-root>
         <section class="gcds-notice notice--type-warning">
-          <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
+          <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h4">
               <gcds-sr-only tag="span">Warning: </gcds-sr-only>
@@ -293,7 +293,7 @@ describe('gcds-notice', () => {
       .toEqualHtml(`<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" type="warning">
       <mock:shadow-root>
         <section class="gcds-notice notice--type-warning">
-          <gcds-icon class="notice__icon" name="exclamation-triangle" size="h4"></gcds-icon>
+          <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h5">
               <gcds-sr-only tag="span">Warning: </gcds-sr-only>
