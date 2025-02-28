@@ -21,8 +21,6 @@ export default function globalMapMLScript() {
         } catch (err) {
           console.error('Error injecting MapML script:', err);
         }
-      } else {
-        console.log('MapML script already loaded');
       }
     }
   }

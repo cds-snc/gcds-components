@@ -119,9 +119,9 @@ const TemplateBasic = (args) => {
 
 export const Default = TemplateBasic.bind({});
 Default.args = {
-  lat: 66.5,
-  lon: -106,
-  zoom: 2,
+  lat: 48.474287,
+  lon: -123.390541,
+  zoom: 11,
   projection: 'OSMTILE',
   controls: true,
   static: false,
@@ -221,15 +221,16 @@ GeoJSON2MapMLExample.loaders = [
 GeoJSON2MapMLExample.parameters = {
   docs: {
     source: {
-      code: `
-<mapml-viewer id="np" lat="${GeoJSON2MapMLExample.args.lat}" lon="${GeoJSON2MapMLExample.args.lon}" zoom="${GeoJSON2MapMLExample.args.zoom}" lang="${GeoJSON2MapMLExample.args.lang}" projection="${GeoJSON2MapMLExample.args.projection}"${GeoJSON2MapMLExample.args.controls ? ' controls' : ''}${GeoJSON2MapMLExample.args.static ? ' static' : ''}${GeoJSON2MapMLExample.args.controlslist.length > 0  ? ` controlslist="${GeoJSON2MapMLExample.args.controlslist.join(' ')}"` : ''}>
+      type: 'code',
+      language: 'html',
+      code: `<mapml-viewer id="np" lat="${GeoJSON2MapMLExample.args.lat}" lon="${GeoJSON2MapMLExample.args.lon}" zoom="${GeoJSON2MapMLExample.args.zoom}" lang="${GeoJSON2MapMLExample.args.lang}" projection="${GeoJSON2MapMLExample.args.projection}"${GeoJSON2MapMLExample.args.controls ? ' controls' : ''}${GeoJSON2MapMLExample.args.static ? ' static' : ''}${GeoJSON2MapMLExample.args.controlslist.length > 0  ? ` controlslist="${GeoJSON2MapMLExample.args.controlslist.join(' ')}"` : ''}>
 
   <map-caption>${GeoJSON2MapMLExample.args.caption}</map-caption>
 
   <map-layer src="${GeoJSON2MapMLExample.args.layer}" checked hidden></map-layer>
 
   <!-- this layer created via javascript, using M.geojson2mapml API functions -->
-  <map-layer label="Provinces and territories of Canada" checked="" media="(0 < map-zoom < 7)">
+  <map-layer label="Provinces and territories of Canada" checked media="(0 < map-zoom < 7)">
     <map-style>
      .canada { fill-opacity: 0.7; stroke-width: 1; stroke: white; stroke-opacity: 1; stroke-dasharray: 3; } 
      .bc { fill: #ffdeb2; stroke: #e6c8a1; } .ab { fill: #facad6; stroke: #e8708e; } 
@@ -251,9 +252,7 @@ GeoJSON2MapMLExample.parameters = {
     ... etc ...
   </map-layer>
 
-</mapml-viewer>`,
-      language: 'html',
-      type: 'code',
+</mapml-viewer>`
     }
   }
 };
@@ -266,7 +265,7 @@ GeoJSON2MapMLExample.play = async ({ canvasElement, loaded }) => {
     // Configure MapML options for the geojson2mapml api
     let provOptions = { 
       projection: "OSMTILE",
-      label: "Provinces and territories of Canada", 
+      label: "Provinces and Territories of Canada", 
       caption: "PRENAME",
       geometryFunction: function (g, f) {
         if (g.nodeName === "MAP-MULTIPOLYGON") {
@@ -359,6 +358,7 @@ GeoJSON2MapMLExample.play = async ({ canvasElement, loaded }) => {
             .on { fill: #facad6; stroke: #e8708e; } .qc { fill: #b5ffe4; stroke: #9ad9c2;} .nb { fill: #ffdeb2; } .pei { fill: #e6e6fa; stroke: #cdcdde;} 
             .ns { fill: #facad6;  stroke: #e8708e; } .nl { fill: #ebc798; stroke: #d0a368; } 
             .yk { fill: #ebc798; stroke: #d0a368; } .nwt { fill: #e6e6fa; stroke: #cdcdde; } .nt { fill: #ffdeb2; stroke: #e6c8a1; }`
+
     // scope styles to this layer only
     provs.insertAdjacentElement('afterbegin',mapStyle);
     
@@ -371,8 +371,8 @@ GeoJSON2MapMLExample.play = async ({ canvasElement, loaded }) => {
 customElements.whenDefined('mapml-viewer').then(() => {
   (async () => {
     console.log('starting playground operations...');
-    
-    // Load data while waiting for the viewer
+
+    // Load data while waiting for the viewer to render
     const loadDataPromise = GeoJSON2MapMLExample.loaders[0]();
     
     // Function to find the viewer
@@ -395,13 +395,74 @@ customElements.whenDefined('mapml-viewer').then(() => {
       });
     };
     
-    try {
-      const [loadedData, viewer] = await Promise.all([loadDataPromise, findViewer()]);
-      
-      console.log('Found viewer and loaded data, running play function');
-      await GeoJSON2MapMLExample.play({ canvasElement: viewer, loaded: loadedData });
-    } catch (error) {
-      console.error('Error during initialization:', error);
-    }
+    const addGeoJSONLayer = async () => {
+      try {
+        const [loadedData, viewer] = await Promise.all([loadDataPromise, findViewer()]);
+
+        console.log('Found viewer and loaded data, running play function');
+        await GeoJSON2MapMLExample.play({ canvasElement: viewer, loaded: loadedData });
+      } catch (error) {
+        console.error('Error during initialization:', error);
+      }
+    };
+    addGeoJSONLayer();
+/*
+
+NOTE: This doesn't work, and I'm not sure why.  It could be that the viewer's load
+event is run just once when it first renders and never again thereafter; I didn't
+dig into it too much.  The issue that I was trying to solve is that the geojson
+layer is added when the overview page loads the first time, and is removed when the user
+navigates away from the overview (the state is lost, because it's not part of the
+story, it's accomplished by the play function).
+
+    document.addEventListener('load', async (event) => {
+      const customEvent = event as CustomEvent;
+      if (customEvent.detail && customEvent.detail.target && customEvent.detail.target.id === 'np') {
+        console.log('calling addGeoJSON');
+        addGeoJSONLayer();
+      }
+    }, true);
+*/
   })();
 });
+
+export const DarkMode = args => `<mapml-viewer lat="${args.lat}" lon="${args.lon}" zoom="${args.zoom}" lang="${args.lang}" projection="${args.projection}"${args.controls ? ' controls' : ''}${args.static ? ' static' : ''}${args.controlslist.length > 0  ? ` controlslist="${args.controlslist.join(' ')}"` : ''}>
+
+  <map-caption>${args.caption}</map-caption>
+
+  <map-layer media="(prefers-color-scheme: dark)" checked>
+    <map-title>OpenStreetMap</map-title>
+    <map-link rel="stylesheet" type="application/pmtiles+stylesheet" href="/dist/gcds/gcds-map/assets/pmtiles/darkTheme.js"></map-link>
+    <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+    <map-extent units="OSMTILE" checked hidden>
+      <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+      <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="https://data.source.coop/protomaps/openstreetmap/tiles/v3.pmtiles"></map-link>
+    </map-extent>
+  </map-layer>
+
+  <map-layer media="(prefers-color-scheme: light)" checked>
+    <map-title>OpenStreetMap</map-title>
+    <map-link rel="stylesheet" type="application/pmtiles+stylesheet" href="/dist/gcds/gcds-map/assets/pmtiles/lightTheme.js"></map-link>
+    <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+    <map-extent units="OSMTILE" checked hidden>
+      <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+      <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="https://data.source.coop/protomaps/openstreetmap/tiles/v3.pmtiles"></map-link>
+    </map-extent>
+  </map-layer>
+</mapml-viewer>`; 
+
+DarkMode.args = {
+  lat: 53.087426, 
+  lon: -91.275330,
+  zoom: 4,
+  projection: 'OSMTILE',
+  controls: true,
+  static: false,
+  lang: 'en',
+  controlslist: ['geolocation'],
+  caption: "OpenStreetMap in pmtiles archive format, demonstrating light and dark mode maps"
+};
