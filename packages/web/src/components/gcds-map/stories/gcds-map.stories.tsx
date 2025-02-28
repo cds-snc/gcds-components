@@ -128,7 +128,7 @@ Default.args = {
   lang: 'en',
   controlslist: ['geolocation'],
   layer: '/dist/gcds/gcds-map/mapml/en/osmtile/cbmt',
-  caption: 'A map of Canada'
+  caption: 'A map of Victoria, Canada'
 };
 
 export const HiddenBasemap = (args) => {
