@@ -230,7 +230,7 @@ GeoJSON2MapMLExample.parameters = {
   <map-layer src="${GeoJSON2MapMLExample.args.layer}" checked hidden></map-layer>
 
   <!-- this layer created via javascript, using M.geojson2mapml API functions -->
-  <map-layer label="Provinces and territories of Canada" checked media="(0 < map-zoom < 7)">
+  <map-layer label="Provinces and territories of Canada" checked media="(0 < map-zoom < 7)" opacity="0.65">
     <map-style>
      .canada { fill-opacity: 0.7; stroke-width: 1; stroke: white; stroke-opacity: 1; stroke-dasharray: 3; } 
      .bc { fill: #ffdeb2; stroke: #e6c8a1; } .ab { fill: #facad6; stroke: #e8708e; } 
@@ -344,6 +344,7 @@ GeoJSON2MapMLExample.play = async ({ canvasElement, loaded }) => {
 
     // this layer should not be rendered at large scales (too generalized)
     provs.setAttribute('media','(0 < map-zoom < 7)');
+    provs.setAttribute('opacity', '0.65');
     console.log('provinces geojson layer created');
     
     // Get the map viewer
@@ -430,29 +431,10 @@ export const DarkMode = args => `<mapml-viewer lat="${args.lat}" lon="${args.lon
 
   <map-caption>${args.caption}</map-caption>
 
-  <map-layer media="(prefers-color-scheme: dark)" checked>
-    <map-title>OpenStreetMap</map-title>
-    <map-link rel="stylesheet" type="application/pmtiles+stylesheet" href="/dist/gcds/gcds-map/assets/pmtiles/darkTheme.js"></map-link>
-    <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
-    <map-extent units="OSMTILE" checked hidden>
-      <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
-      <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
-      <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
-      <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="https://data.source.coop/protomaps/openstreetmap/tiles/v3.pmtiles"></map-link>
-    </map-extent>
-  </map-layer>
+  <map-layer media="(prefers-color-scheme: dark)" src="/dist/gcds/gcds-map/mapml/en/osmtile/dark.mapml" checked></map-layer>
 
-  <map-layer media="(prefers-color-scheme: light)" checked>
-    <map-title>OpenStreetMap</map-title>
-    <map-link rel="stylesheet" type="application/pmtiles+stylesheet" href="/dist/gcds/gcds-map/assets/pmtiles/lightTheme.js"></map-link>
-    <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
-    <map-extent units="OSMTILE" checked hidden>
-      <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
-      <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
-      <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
-      <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="https://data.source.coop/protomaps/openstreetmap/tiles/v3.pmtiles"></map-link>
-    </map-extent>
-  </map-layer>
+  <map-layer media="(prefers-color-scheme: light)" src="/dist/gcds/gcds-map/mapml/en/osmtile/light.mapml" checked></map-layer>
+
 </mapml-viewer>`; 
 
 DarkMode.args = {

@@ -49,7 +49,8 @@ for some users.
 
 The MapML viewer library has [built-in support for converting GeoJSON into MapML](https://maps4html.org/web-map-doc/docs/api/mapml-viewer-api/#geojson2mapmljson-options)
 features and layers.  You can use custom JavaScript functions to provide styles
-for your features.
+for your features.  Also note that you can pre-establish or set the transparency of 
+layers via the `opacity` attribute and property (See "Show Code", below).
 
 <Canvas of={Map.GeoJSON2MapMLExample} story={{ inline: true }} />
 
@@ -60,7 +61,7 @@ media query syntax with map-specific media query features. A key consideration i
 the availability of content and styles to match expressed preferences.  This
 example uses publicly available tile archives from Protomaps. 
 
-To experience dark mode, either set your operating system mode to dark, or use 
+To _automatically_ experience dark mode, either set your operating system mode to dark, or use 
 CSS preference emulation in browser devTools to simulate a preference.  See the 
 MapML user guide for more information on [styling](https://maps4html.org/web-map-doc/docs/user-guide/creating-styles) and 
 [media queries](https://maps4html.org/web-map-doc/docs/api/mapml-viewer-api#supported-map-media-query-features).

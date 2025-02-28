@@ -1,0 +1,19 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>OpenStreetMap - light theme</map-title>
+    <map-base href="/dist/gcds/gcds-map/mapml/en/osmtile/light" ></map-base>
+    <map-link rel="stylesheet" type="application/pmtiles+stylesheet" href="/dist/gcds/gcds-map/assets/pmtiles/lightTheme.js"></map-link>
+    <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+    <map-link rel="style" title="Dark theme" href="dark.mapml"></map-link>
+    <map-link rel="self style" title="Light theme" href="light.mapml"></map-link>
+    <map-meta name="extent" content="top-left-easting=-11625919, top-left-northing=5565456, bottom-right-easting=-11479160, bottom-right-northing=5494446"></map-meta>
+  </map-head>
+  <map-body>
+    <map-extent units="OSMTILE" checked="" hidden="">
+      <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+      <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="https://data.source.coop/protomaps/openstreetmap/tiles/v3.pmtiles"></map-link>
+    </map-extent>
+  </map-body>
+</mapml->
