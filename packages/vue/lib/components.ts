@@ -143,7 +143,7 @@ export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcd
   'fieldsetId',
   'hint',
   'legend',
-  'size'
+  'legendSize'
 ]);
 
 

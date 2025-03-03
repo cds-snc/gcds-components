@@ -33,14 +33,16 @@ export class GcdsFieldset {
   /**
    * Sets the appropriate font size for the fieldset legend.
    */
-  @Prop({ mutable: true }) size!: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  @Prop({ mutable: true }) legendSize!: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-  @Watch('size')
-  validateSize(newValue: string) {
+  @Watch('legendSize')
+  validateLegendSize(newValue: string) {
     const values = ['h2', 'h3', 'h4', 'h5', 'h6'];
 
     if (!values.includes(newValue)) {
-      console.error(`${i18n['en'].sizeError} | ${i18n['fr'].sizeError}`);
+      console.error(
+        `${i18n['en'].legendSizeError} | ${i18n['fr'].legendSizeError}`,
+      );
     }
   }
 
@@ -51,13 +53,13 @@ export class GcdsFieldset {
 
   async componentWillLoad() {
     // Validate attributes and set defaults
-    this.validateSize(this.size);
+    this.validateLegendSize(this.legendSize);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
   render() {
-    const { fieldsetId, hint, inheritedAttributes, legend, size } = this;
+    const { fieldsetId, hint, inheritedAttributes, legend, legendSize } = this;
 
     const fieldsetAttrs = {
       ...inheritedAttributes,
@@ -77,7 +79,7 @@ export class GcdsFieldset {
           tabindex="-1"
           ref={element => (this.shadowElement = element as HTMLElement)}
         >
-          <legend id={`legend-${fieldsetId}`} class={`size-${size}`}>
+          <legend id={`legend-${fieldsetId}`} class={`size-${legendSize}`}>
             {legend}
           </legend>
 

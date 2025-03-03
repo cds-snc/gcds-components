@@ -5,10 +5,10 @@ describe('gcds-fieldset', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [GcdsFieldset],
-      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h2"></gcds-fieldset>`,
+      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h2"></gcds-fieldset>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h2">
+      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h2">
         <mock:shadow-root>
           <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field" class="size-h2">
@@ -23,10 +23,10 @@ describe('gcds-fieldset', () => {
   it('renders - size h2', async () => {
     const page = await newSpecPage({
       components: [GcdsFieldset],
-      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h2"></gcds-fieldset>`,
+      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h2"></gcds-fieldset>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h2">
+      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h2">
         <mock:shadow-root>
           <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field" class="size-h2">
@@ -41,10 +41,10 @@ describe('gcds-fieldset', () => {
   it('renders - size h3', async () => {
     const page = await newSpecPage({
       components: [GcdsFieldset],
-      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h3"></gcds-fieldset>`,
+      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h3"></gcds-fieldset>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h3">
+      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h3">
         <mock:shadow-root>
           <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field" class="size-h3">
@@ -59,10 +59,10 @@ describe('gcds-fieldset', () => {
   it('renders - size h4', async () => {
     const page = await newSpecPage({
       components: [GcdsFieldset],
-      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h4"></gcds-fieldset>`,
+      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h4"></gcds-fieldset>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h4">
+      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h4">
         <mock:shadow-root>
           <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field" class="size-h4">
@@ -77,10 +77,10 @@ describe('gcds-fieldset', () => {
   it('renders - size h5', async () => {
     const page = await newSpecPage({
       components: [GcdsFieldset],
-      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h5"></gcds-fieldset>`,
+      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h5"></gcds-fieldset>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h5">
+      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h5">
         <mock:shadow-root>
           <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field" class="size-h5">
@@ -95,10 +95,10 @@ describe('gcds-fieldset', () => {
   it('renders - size h6', async () => {
     const page = await newSpecPage({
       components: [GcdsFieldset],
-      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h6"></gcds-fieldset>`,
+      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h6"></gcds-fieldset>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h6">
+      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h6">
         <mock:shadow-root>
           <fieldset class="gcds-fieldset" aria-labelledby="legend-field" id="field" tabindex="-1">
             <legend id="legend-field" class="size-h6">
@@ -113,10 +113,10 @@ describe('gcds-fieldset', () => {
   it('renders - hint', async () => {
     const page = await newSpecPage({
       components: [GcdsFieldset],
-      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h2" hint="Fieldset hint"></gcds-fieldset>`,
+      html: `<gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h2" hint="Fieldset hint"></gcds-fieldset>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" size="h2" hint="Fieldset hint">
+      <gcds-fieldset fieldset-id="field" legend="Fieldset legend" legend-size="h2" hint="Fieldset hint">
         <mock:shadow-root>
           <fieldset class="gcds-fieldset" aria-labelledby="legend-field hint-field" id="field" tabindex="-1">
             <legend id="legend-field" class="size-h2">

@@ -12,7 +12,7 @@
 | `fieldsetId` _(required)_ | `fieldset-id` | The unique identifier for the component                 | `string`                               | `undefined` |
 | `hint`                    | `hint`        | Hint displayed below the legend.                        | `string`                               | `undefined` |
 | `legend` _(required)_     | `legend`      | The title for the contents of the fieldset              | `string`                               | `undefined` |
-| `size` _(required)_       | `size`        | Sets the appropriate font size for the fieldset legend. | `"h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `undefined` |
+| `legendSize` _(required)_ | `legend-size` | Sets the appropriate font size for the fieldset legend. | `"h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `undefined` |
 
 
 ## Dependencies

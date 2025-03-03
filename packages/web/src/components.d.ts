@@ -314,7 +314,7 @@ export namespace Components {
         /**
           * Sets the appropriate font size for the fieldset legend.
          */
-        "size": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsFileUploader {
         /**
@@ -2061,7 +2061,7 @@ declare namespace LocalJSX {
         /**
           * Sets the appropriate font size for the fieldset legend.
          */
-        "size": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsFileUploader {
         /**

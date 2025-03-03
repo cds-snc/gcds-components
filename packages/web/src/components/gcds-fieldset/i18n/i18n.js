@@ -1,9 +1,9 @@
 const I18N = {
   en: {
-    sizeError: 'gcds-fieldset: Invalid size.',
+    legendSizeError: 'gcds-fieldset: Invalid size.',
   },
   fr: {
-    sizeError: 'gcds-fieldset: Taille invalide.',
+    legendSizeError: 'gcds-fieldset: Taille invalide.',
   },
 };
 

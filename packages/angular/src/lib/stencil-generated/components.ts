@@ -399,14 +399,14 @@ export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
 
 
 @ProxyCmp({
-  inputs: ['fieldsetId', 'hint', 'legend', 'size']
+  inputs: ['fieldsetId', 'hint', 'legend', 'legendSize']
 })
 @Component({
   selector: 'gcds-fieldset',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['fieldsetId', 'hint', 'legend', 'size'],
+  inputs: ['fieldsetId', 'hint', 'legend', 'legendSize'],
   standalone: false,
 })
 export class GcdsFieldset {
