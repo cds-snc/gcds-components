@@ -300,10 +300,6 @@ export namespace Components {
     }
     interface GcdsFieldset {
         /**
-          * The unique identifier for the component
-         */
-        "fieldsetId": string;
-        /**
           * Hint displayed below the legend.
          */
         "hint": string;
@@ -2046,10 +2042,6 @@ declare namespace LocalJSX {
         "listen"?: boolean;
     }
     interface GcdsFieldset {
-        /**
-          * The unique identifier for the component
-         */
-        "fieldsetId": string;
         /**
           * Hint displayed below the legend.
          */

@@ -16,11 +16,6 @@ export class GcdsFieldset {
    */
 
   /**
-   * The unique identifier for the component
-   */
-  @Prop({ reflect: true, mutable: false }) fieldsetId!: string;
-
-  /**
    * Hint displayed below the legend.
    */
   @Prop({ reflect: true, mutable: false }) hint: string;
@@ -59,7 +54,7 @@ export class GcdsFieldset {
   }
 
   render() {
-    const { fieldsetId, hint, inheritedAttributes, legend, legendSize } = this;
+    const { hint, inheritedAttributes, legend, legendSize } = this;
 
     const fieldsetAttrs = {
       ...inheritedAttributes,
@@ -69,21 +64,22 @@ export class GcdsFieldset {
       <Host>
         <fieldset
           class="gcds-fieldset"
-          id={fieldsetId}
           {...fieldsetAttrs}
           aria-labelledby={
-            hint
-              ? `legend-${fieldsetId} hint-${fieldsetId}`
-              : `legend-${fieldsetId}`
+            hint ? `fieldset-legend fieldset-hint` : `fieldset-legend`
           }
           tabindex="-1"
           ref={element => (this.shadowElement = element as HTMLElement)}
         >
-          <legend id={`legend-${fieldsetId}`} class={`size-${legendSize}`}>
+          <legend id="fieldset-legend" class={`size-${legendSize}`}>
             {legend}
           </legend>
 
-          {hint ? <gcds-hint hint-id={fieldsetId}>{hint}</gcds-hint> : null}
+          {hint ? (
+            <gcds-hint id="fieldset-hint" hint-id="fieldset">
+              {hint}
+            </gcds-hint>
+          ) : null}
 
           <slot></slot>
         </fieldset>

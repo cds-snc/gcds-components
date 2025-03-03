@@ -140,7 +140,6 @@ export const GcdsErrorSummary = /*@__PURE__*/ defineContainer<JSX.GcdsErrorSumma
 
 
 export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcds-fieldset', undefined, [
-  'fieldsetId',
   'hint',
   'legend',
   'legendSize'
