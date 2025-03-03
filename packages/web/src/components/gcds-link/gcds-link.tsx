@@ -211,12 +211,7 @@ export class GcdsLink {
               margin-left="75"
             />
           ) : href && href.toLowerCase().startsWith('mailto:') ? (
-            <gcds-icon
-              icon-style="regular"
-              name="email"
-              label={i18n[lang].email}
-              margin-left="75"
-            />
+            <gcds-icon name="email" label={i18n[lang].email} margin-left="75" />
           ) : (
             href &&
             href.toLowerCase().startsWith('tel:') && (
