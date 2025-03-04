@@ -371,6 +371,7 @@ export const GcdsRadios = /*@__PURE__*/ defineContainer<JSX.GcdsRadios>('gcds-ra
   'value',
   'validator',
   'validateOn',
+  'gcdsInput',
   'gcdsChange',
   'gcdsFocus',
   'gcdsBlur',

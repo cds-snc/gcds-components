@@ -233,6 +233,11 @@ export class GcdsRadios {
   /**
    * Emitted when the radio button is checked
    */
+  @Event() gcdsInput!: EventEmitter<void>;
+
+  /**
+   * Emitted when the radio button is checked
+   */
   @Event() gcdsChange!: EventEmitter<void>;
 
   /**
@@ -307,6 +312,15 @@ export class GcdsRadios {
 
   private onChange = e => {
     this.gcdsChange.emit(e.target.value);
+    this.value = e.target.value;
+    this.internals.setFormValue(e.target.value, 'checked');
+
+    const changeEvt = new e.constructor(e.type, e);
+    this.el.dispatchEvent(changeEvt);
+  };
+
+  private onInput = e => {
+    this.gcdsInput.emit(e.target.value);
     this.value = e.target.value;
     this.internals.setFormValue(e.target.value, 'checked');
 
@@ -443,6 +457,7 @@ export class GcdsRadios {
                     gcdsFocus={this.gcdsFocus}
                     onBlur={this.onBlur}
                     onChange={this.onChange}
+                    onInput={this.onInput}
                     attrsInput={attrsInput}
                   />
                 );

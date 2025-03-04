@@ -1003,7 +1003,7 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
 @ProxyCmp({
   inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
   methods: ['validate'],
-  outputs: ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
+  outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
 })
 @Component({
   selector: 'gcds-radios',
@@ -1011,7 +1011,7 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
-  outputs: ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError'],
+  outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError'],
   standalone: false,
 })
 export class GcdsRadios {
@@ -1019,12 +1019,16 @@ export class GcdsRadios {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, ['gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']);
+    proxyOutputs(this, ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']);
   }
 }
 
 
 export declare interface GcdsRadios extends Components.GcdsRadios {
+  /**
+   * Emitted when the radio button is checked
+   */
+  gcdsInput: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the radio button is checked
    */

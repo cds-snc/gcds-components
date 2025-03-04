@@ -8,6 +8,7 @@ interface RadioProps {
   gcdsFocus: EventEmitter;
   onBlur: Function;
   onChange: Function;
+  onInput: Function;
   attrsInput: Object;
 }
 
@@ -19,6 +20,7 @@ export const Radio: FunctionalComponent<RadioProps> = ({
   gcdsFocus,
   onBlur,
   onChange,
+  onInput,
   attrsInput,
 }) => (
   <div
@@ -31,6 +33,7 @@ export const Radio: FunctionalComponent<RadioProps> = ({
       type="radio"
       {...attrsInput}
       onChange={e => onChange(e)}
+      onInput={e => onInput(e)}
       onBlur={() => onBlur()}
       onFocus={() => gcdsFocus.emit()}
     />

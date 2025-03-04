@@ -29,6 +29,7 @@
 | `gcdsChange` | Emitted when the radio button is checked        | `CustomEvent<void>`   |
 | `gcdsError`  | Emitted when the radios has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the radio has focus.               | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the radio button is checked        | `CustomEvent<void>`   |
 | `gcdsValid`  | Emitted when the radios has passed validation.  | `CustomEvent<void>`   |
 
 

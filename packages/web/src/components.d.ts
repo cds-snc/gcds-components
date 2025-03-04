@@ -1621,6 +1621,7 @@ declare global {
         new (): HTMLGcdsRadioGroupElement;
     };
     interface HTMLGcdsRadiosElementEventMap {
+        "gcdsInput": void;
         "gcdsChange": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
@@ -2850,6 +2851,10 @@ declare namespace LocalJSX {
           * Emitted when the radio has focus.
          */
         "onGcdsFocus"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when the radio button is checked
+         */
+        "onGcdsInput"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
           * Emitted when the radios has passed validation.
          */
