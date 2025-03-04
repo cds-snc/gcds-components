@@ -3,15 +3,11 @@ export default {
 
   argTypes: {
     // Props
-    fieldsetId: {
-      name: 'fieldset-id',
+    hint: {
       control: 'text',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
-      },
-      type: {
-        required: true,
       },
     },
     legend: {
@@ -24,14 +20,7 @@ export default {
         required: true,
       },
     },
-    hint: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
-      },
-    },
-    size: {
+    legendSize: {
       control: { type: 'select' },
       options: ['h2', 'h3', 'h4', 'h5', 'h6'],
       table: {
@@ -49,19 +38,18 @@ const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-fieldset
-  fieldset-id="${args.fieldsetId}"
   legend="${args.legend}"
-  size="${args.size}"
+  legend-size="${args.legendSize}"
   ${args.hint ? `hint="${args.hint}"` : null}
 >
   <gcds-input
-    input-id="${args.fieldsetId}-input"
+    input-id="fieldset-input"
     label="Input label"
     hint="Hint / Example message."
     size="6"
   ></gcds-input>
   <gcds-select
-    select-id="${args.fieldsetId}-select"
+    select-id="fieldset-select"
     label="Select label"
     hint="Hint / Example message."
     default-value="Select option."
@@ -79,19 +67,18 @@ const Template = args =>
 
 <!-- React code -->
 <GcdsFieldset
-  fieldsetId="${args.fieldsetId}"
   legend="${args.legend}"
-  size="${args.size}"
+  legendSize="${args.legendSize}"
   ${args.hint ? `hint="${args.hint}"` : null}
 >
   <GcdsInput
-    inputId="${args.fieldsetId}-input"
+    inputId="fieldset-input"
     label="Input label"
     hint="Hint / Example message."
     size="6"
   ></GcdsInput>
   <GcdsSelect
-    selectId="${args.fieldsetId}-select"
+    selectId="fieldset-select"
     label="Select label"
     hint="Hint / Example message."
     defaultValue="Select option."
@@ -112,19 +99,18 @@ const TemplatePlayground = args =>
   `
 <!-- Web component code (Angular, Vue) -->
 <gcds-fieldset
-  fieldset-id="${args.fieldsetId}"
   legend="${args.legend}"
-  size="${args.size}"
+  legend-size="${args.legendSize}"
   ${args.hint ? `hint="${args.hint}"` : null}
 >
   <gcds-input
-    input-id="${args.fieldsetId}-input"
+    input-id="fieldset-input"
     label="Input label"
     hint="Hint / Example message."
     size="6"
   ></gcds-input>
   <gcds-select
-    select-id="${args.fieldsetId}-select"
+    select-id="fieldset-select"
     label="Select label"
     hint="Hint / Example message."
     default-value="Select option."
@@ -143,63 +129,56 @@ const TemplatePlayground = args =>
 
 export const Default = Template.bind({});
 Default.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
-  size: 'h2',
+  legendSize: 'h2',
   hint: 'Hint / Example message.',
 };
 
 export const SizeH2 = Template.bind({});
 SizeH2.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
-  size: 'h2',
+  legendSize: 'h2',
   hint: 'Hint / Example message.',
 };
 
 export const SizeH3 = Template.bind({});
 SizeH3.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
-  size: 'h3',
+  legendSize: 'h3',
   hint: 'Hint / Example message.',
 };
 
 export const SizeH4 = Template.bind({});
 SizeH4.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
-  size: 'h4',
+  legendSize: 'h4',
   hint: 'Hint / Example message.',
 };
 
 export const SizeH5 = Template.bind({});
 SizeH5.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
-  size: 'h5',
+  legendSize: 'h5',
   hint: 'Hint / Example message.',
 };
 
 export const SizeH6 = Template.bind({});
 SizeH6.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
-  size: 'h6',
+  legendSize: 'h6',
   hint: 'Hint / Example message.',
 };
 
 export const Props = Template.bind({});
 Props.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
-  size: 'h2',
+  legendSize: 'h2',
   hint: 'Hint / Example message.',
 };
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  fieldsetId: 'field-playground',
   legend: 'Legend',
+  legendSize: 'h2',
   hint: 'Hint / Example message.',
 };
