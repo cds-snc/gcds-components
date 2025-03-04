@@ -6,12 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
-import { CheckboxObject } from "./components/gcds-checkboxes/gcds-checkboxes";
+import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
 export { Validator, ValidatorEntry } from "./validators";
-export { CheckboxObject } from "./components/gcds-checkboxes/gcds-checkboxes";
+export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";

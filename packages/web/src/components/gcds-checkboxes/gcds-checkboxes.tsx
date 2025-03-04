@@ -16,7 +16,6 @@ import {
   assignLanguage,
   emitEvent,
   inheritAttributes,
-  observerConfig,
 } from '../../utils/utils';
 import {
   Validator,
@@ -25,16 +24,7 @@ import {
   getValidator,
   requiredValidator,
 } from '../../validators';
-
-export type CheckboxObject = {
-  id: string;
-  label: string;
-  value?: string;
-  hint?: string;
-  checked?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-};
+import { CheckboxObject, isCheckboxObject } from './checkbox';
 
 @Component({
   tag: 'gcds-checkboxes',
@@ -78,7 +68,7 @@ export class GcdsCheckboxes {
 
   @Watch('options')
   validateOptions() {
-    // let validObject = true;
+    let validObject = true;
     // Assign optionsObject from passed options string/object
     if (typeof this.options == 'object') {
       this.optionObject = this.options;
@@ -88,28 +78,28 @@ export class GcdsCheckboxes {
       this.optionObject = null;
     }
 
-    // Validate options has type RadioObject
-    // if (this.optionObject) {
-    //   this.optionObject.map(radio => {
-    //     if (!isRadioObject(radio)) {
-    //       validObject = false;
-    //     }
-    //   });
-    // }
+    // Validate options has type CheckboxObject
+    if (this.optionObject) {
+      this.optionObject.map(radio => {
+        if (!isCheckboxObject(radio)) {
+          validObject = false;
+        }
+      });
+    }
 
     if (this.optionObject.length > 1) {
       this.isGroup = true;
     }
 
     // Assign value if passed options has a checked radio
-    // if (this.optionObject && !this.value) {
-    //   this.optionObject.forEach(radio => {
-    //     if (radio.checked === 'true' || radio.checked === true) {
-    //       this.value = radio.value;
-    //       this.internals.setFormValue(radio.value, 'checked');
-    //     }
-    //   });
-    // }
+    if (this.optionObject && !this.value) {
+      this.optionObject.forEach(radio => {
+        if (radio.checked === 'true' || radio.checked === true) {
+          this.value = radio.value;
+          this.internals.setFormValue(radio.value, 'checked');
+        }
+      });
+    }
   }
 
   /**
@@ -289,20 +279,16 @@ export class GcdsCheckboxes {
   /*
    * Observe lang attribute change
    */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
+  @Watch('lang')
+  watchLang(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      this.lang = newValue;
+    }
   }
 
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     this.validateOptions();
     this.validateDisabledCheckbox();
