@@ -21,6 +21,7 @@ export default {
       },
     },
     legendSize: {
+      name: 'legend-size',
       control: { type: 'select' },
       options: ['h2', 'h3', 'h4', 'h5', 'h6'],
       table: {
