@@ -302,18 +302,6 @@ export namespace Components {
     }
     interface GcdsFieldset {
         /**
-          * Flag to disable fieldset and its contents
-         */
-        "disabled": boolean;
-        /**
-          * Error message for invalid form elements in group.
-         */
-        "errorMessage": string;
-        /**
-          * The unique identifier for the component
-         */
-        "fieldsetId": string;
-        /**
           * Hint displayed below the legend.
          */
         "hint": string;
@@ -322,23 +310,9 @@ export namespace Components {
          */
         "legend": string;
         /**
-          * Flag the contents are required
+          * Sets the appropriate font size for the fieldset legend.
          */
-        "required": boolean;
-        /**
-          * Call any active validators
-         */
-        "validate": () => Promise<void>;
-        /**
-          * Set event to call validator
-         */
-        "validateOn": 'blur' | 'submit' | 'other';
-        /**
-          * Array of validators
-         */
-        "validator": Array<
-    string | ValidatorEntry | Validator<string>
-  >;
+        "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsFileUploader {
         /**
@@ -1191,10 +1165,6 @@ export interface GcdsDetailsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsDetailsElement;
 }
-export interface GcdsFieldsetCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGcdsFieldsetElement;
-}
 export interface GcdsFileUploaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsFileUploaderElement;
@@ -1394,21 +1364,7 @@ declare global {
         prototype: HTMLGcdsErrorSummaryElement;
         new (): HTMLGcdsErrorSummaryElement;
     };
-    interface HTMLGcdsFieldsetElementEventMap {
-        "gcdsGroupError": string;
-        "gcdsGroupErrorClear": void;
-        "gcdsError": object;
-        "gcdsValid": object;
-    }
     interface HTMLGcdsFieldsetElement extends Components.GcdsFieldset, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLGcdsFieldsetElementEventMap>(type: K, listener: (this: HTMLGcdsFieldsetElement, ev: GcdsFieldsetCustomEvent<HTMLGcdsFieldsetElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLGcdsFieldsetElementEventMap>(type: K, listener: (this: HTMLGcdsFieldsetElement, ev: GcdsFieldsetCustomEvent<HTMLGcdsFieldsetElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsFieldsetElement: {
         prototype: HTMLGcdsFieldsetElement;
@@ -2164,18 +2120,6 @@ declare namespace LocalJSX {
     }
     interface GcdsFieldset {
         /**
-          * Flag to disable fieldset and its contents
-         */
-        "disabled"?: boolean;
-        /**
-          * Error message for invalid form elements in group.
-         */
-        "errorMessage"?: string;
-        /**
-          * The unique identifier for the component
-         */
-        "fieldsetId": string;
-        /**
           * Hint displayed below the legend.
          */
         "hint"?: string;
@@ -2184,35 +2128,9 @@ declare namespace LocalJSX {
          */
         "legend": string;
         /**
-          * Emitted when the fieldset has a validation error.
+          * Sets the appropriate font size for the fieldset legend.
          */
-        "onGcdsError"?: (event: GcdsFieldsetCustomEvent<object>) => void;
-        /**
-          * Emitted when the fieldset has a validation error.
-         */
-        "onGcdsGroupError"?: (event: GcdsFieldsetCustomEvent<string>) => void;
-        /**
-          * Emitted when the fieldset has a validation error.
-         */
-        "onGcdsGroupErrorClear"?: (event: GcdsFieldsetCustomEvent<void>) => void;
-        /**
-          * Emitted when the fieldset has a validation error.
-         */
-        "onGcdsValid"?: (event: GcdsFieldsetCustomEvent<object>) => void;
-        /**
-          * Flag the contents are required
-         */
-        "required"?: boolean;
-        /**
-          * Set event to call validator
-         */
-        "validateOn"?: 'blur' | 'submit' | 'other';
-        /**
-          * Array of validators
-         */
-        "validator"?: Array<
-    string | ValidatorEntry | Validator<string>
-  >;
+        "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsFileUploader {
         /**

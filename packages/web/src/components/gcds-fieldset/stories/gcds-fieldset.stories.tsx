@@ -1,30 +1,13 @@
-import {
-  langProp,
-  validatorProps,
-  eventProp,
-} from '../../../utils/storybook/component-properties';
-
 export default {
   title: 'Components/Fieldset',
 
-  parameters: {
-    actions: {
-      argTypesRegex: '^gcds.*',
-      handles: ['GroupError', 'GroupErrorClear'],
-    },
-  },
-
   argTypes: {
     // Props
-    fieldsetId: {
-      name: 'fieldset-id',
+    hint: {
       control: 'text',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
-      },
-      type: {
-        required: true,
       },
     },
     legend: {
@@ -37,48 +20,17 @@ export default {
         required: true,
       },
     },
-    disabled: {
+    legendSize: {
+      name: 'legend-size',
       control: { type: 'select' },
-      options: [false, true],
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
-      },
-    },
-    errorMessage: {
-      name: 'error-message',
-      control: 'text',
+      options: ['h2', 'h3', 'h4', 'h5', 'h6'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
       },
-    },
-    hint: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+      type: {
+        required: true,
       },
-    },
-    required: {
-      control: { type: 'select' },
-      options: [false, true],
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
-      },
-    },
-    ...validatorProps,
-    ...langProp,
-
-    // Events
-    gcdsGroupError: {
-      action: 'GroupError',
-      ...eventProp,
-    },
-    gcdsGroupErrorClear: {
-      action: 'GroupErrorClear',
-      ...eventProp,
     },
   },
 };
@@ -87,23 +39,18 @@ const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-fieldset
-  fieldset-id="${args.fieldsetId}"
   legend="${args.legend}"
+  legend-size="${args.legendSize}"
   ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <gcds-input
-    input-id="${args.fieldsetId}-input"
+    input-id="fieldset-input"
     label="Input label"
     hint="Hint / Example message."
     size="6"
   ></gcds-input>
   <gcds-select
-    select-id="${args.fieldsetId}-select"
+    select-id="fieldset-select"
     label="Select label"
     hint="Hint / Example message."
     default-value="Select option."
@@ -121,23 +68,18 @@ const Template = args =>
 
 <!-- React code -->
 <GcdsFieldset
-  fieldsetId="${args.fieldsetId}"
   legend="${args.legend}"
+  legendSize="${args.legendSize}"
   ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <GcdsInput
-    inputId="${args.fieldsetId}-input"
+    inputId="fieldset-input"
     label="Input label"
     hint="Hint / Example message."
     size="6"
   ></GcdsInput>
   <GcdsSelect
-    selectId="${args.fieldsetId}-select"
+    selectId="fieldset-select"
     label="Select label"
     hint="Hint / Example message."
     defaultValue="Select option."
@@ -154,84 +96,22 @@ const Template = args =>
 </GcdsFieldset>
 `.replace(/\s\snull\n/g, '');
 
-const TemplateRequired = args =>
-  `
-<!-- Web component code (Angular, Vue) -->
-<gcds-fieldset
-  fieldset-id="${args.fieldsetId}"
-  legend="${args.legend}"
-  ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
->
-  <gcds-checkbox
-    checkbox-id="${args.fieldsetId}-check1"
-    label="Checkbox 1"
-    name="check"
-    value="1"
-  >
-  </gcds-checkbox>
-  <gcds-checkbox
-    checkbox-id="${args.fieldsetId}-check2"
-    label="Checkbox 2"
-    name="check"
-    value="2"
-  >
-  </gcds-checkbox>
-</gcds-fieldset>
-
-<!-- React code -->
-<GcdsFieldset
-  fieldsetId="${args.fieldsetId}"
-  legend="${args.legend}"
-  ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
->
-  <GcdsCheckbox
-    checkboxId="${args.fieldsetId}-check1"
-    label="Checkbox 1"
-    name="check"
-    value="1"
-  >
-  </GcdsCheckbox>
-  <GcdsCheckbox
-    checkboxId="${args.fieldsetId}-check2"
-    label="Checkbox 2"
-    name="check"
-    value=""2
-  >
-  </GcdsCheckbox>
-</GcdsFieldset>
-`.replace(/\s\snull\n/g, '');
-
 const TemplatePlayground = args =>
   `
 <!-- Web component code (Angular, Vue) -->
 <gcds-fieldset
-  fieldset-id="${args.fieldsetId}"
   legend="${args.legend}"
+  legend-size="${args.legendSize}"
   ${args.hint ? `hint="${args.hint}"` : null}
-  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
-  ${args.required ? `required` : null}
-  ${args.disabled ? `disabled` : null}
-  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
-  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   <gcds-input
-    input-id="${args.fieldsetId}-input"
+    input-id="fieldset-input"
     label="Input label"
     hint="Hint / Example message."
     size="6"
   ></gcds-input>
   <gcds-select
-    select-id="${args.fieldsetId}-select"
+    select-id="fieldset-select"
     label="Select label"
     hint="Hint / Example message."
     default-value="Select option."
@@ -250,72 +130,56 @@ const TemplatePlayground = args =>
 
 export const Default = Template.bind({});
 Default.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
+  legendSize: 'h2',
   hint: 'Hint / Example message.',
-  errorMessage: '',
-  required: false,
-  disabled: false,
-  validateOn: 'blur',
-  lang: 'en',
 };
 
-export const Required = TemplateRequired.bind({});
-Required.args = {
-  fieldsetId: 'field-required',
+export const SizeH2 = Template.bind({});
+SizeH2.args = {
   legend: 'Legend',
+  legendSize: 'h2',
   hint: 'Hint / Example message.',
-  errorMessage: '',
-  required: true,
-  disabled: false,
-  validateOn: 'blur',
-  lang: 'en',
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  fieldsetId: 'field-disabled',
+export const SizeH3 = Template.bind({});
+SizeH3.args = {
   legend: 'Legend',
+  legendSize: 'h3',
   hint: 'Hint / Example message.',
-  errorMessage: '',
-  required: false,
-  disabled: true,
-  validateOn: 'blur',
-  lang: 'en',
 };
 
-export const Error = Template.bind({});
-Error.args = {
-  fieldsetId: 'field-error',
+export const SizeH4 = Template.bind({});
+SizeH4.args = {
   legend: 'Legend',
+  legendSize: 'h4',
   hint: 'Hint / Example message.',
-  errorMessage: 'This is an error message',
-  required: false,
-  disabled: false,
-  validateOn: 'blur',
-  lang: 'en',
+};
+
+export const SizeH5 = Template.bind({});
+SizeH5.args = {
+  legend: 'Legend',
+  legendSize: 'h5',
+  hint: 'Hint / Example message.',
+};
+
+export const SizeH6 = Template.bind({});
+SizeH6.args = {
+  legend: 'Legend',
+  legendSize: 'h6',
+  hint: 'Hint / Example message.',
 };
 
 export const Props = Template.bind({});
 Props.args = {
-  fieldsetId: 'field-default',
   legend: 'Legend',
+  legendSize: 'h2',
   hint: 'Hint / Example message.',
-  errorMessage: '',
-  required: false,
-  disabled: false,
-  validateOn: 'blur',
-  lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  fieldsetId: 'field-playground',
   legend: 'Legend',
+  legendSize: 'h2',
   hint: 'Hint / Example message.',
-  errorMessage: '',
-  required: false,
-  disabled: false,
-  validateOn: 'blur',
-  lang: 'en',
 };
