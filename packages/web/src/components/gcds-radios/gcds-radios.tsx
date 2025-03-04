@@ -323,9 +323,6 @@ export class GcdsRadios {
     this.gcdsInput.emit(e.target.value);
     this.value = e.target.value;
     this.internals.setFormValue(e.target.value, 'checked');
-
-    const changeEvt = new e.constructor(e.type, e);
-    this.el.dispatchEvent(changeEvt);
   };
 
   /*
