@@ -153,7 +153,15 @@ const TemplatePlayground = args =>
 <!-- Web component code (Angular, Vue) -->
 <gcds-radios
   name="${args.name}"
+  legend="${args.legend}"
   options='${args.options}'
+  ${args.hint ? `hint="${args.hint}"` : null}
+  ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
+  ${args.required ? `required` : null}
+  ${args.disabled ? `disabled` : null}
+  ${args.value ? `value="${args.value}"` : null}
+  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-radios>
 `.replace(/\s\snull\n/g, '');
