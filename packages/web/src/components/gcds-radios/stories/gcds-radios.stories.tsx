@@ -151,11 +151,11 @@ const Template = args =>
 const TemplatePlayground = args =>
   `
 <!-- Web component code (Angular, Vue) -->
-<gcds-radio-group
+<gcds-radios
   name="${args.name}"
   options='${args.options}'
 >
-</gcds-radio-group>
+</gcds-radios>
 `.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
