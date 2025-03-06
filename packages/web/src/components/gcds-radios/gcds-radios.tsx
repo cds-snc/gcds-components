@@ -100,7 +100,7 @@ export class GcdsRadios {
   }
 
   /**
-   * Name attribute for an input element.
+   * The `name` attribute for the <gcds-radios>, used to group radio elements together
    */
   @Prop({ reflect: true, mutable: false }) name!: string;
 
@@ -110,7 +110,7 @@ export class GcdsRadios {
   }
 
   /**
-   * Name of the form field group.
+   * Label or legend for the group of radio elements
    */
   @Prop({ reflect: true, mutable: false }) legend!: string;
   @Watch('legend')
@@ -124,12 +124,12 @@ export class GcdsRadios {
   @Prop({ reflect: true, mutable: false }) required: boolean;
 
   /**
-   * Specifies if a form field is required or not.
+   * Hint displayed below the label and above the radio elements
    */
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**
-   * Error message for invalid radio buttons.
+   * Set this to display an error message for invalid <gcds-radios>
    */
   @Prop({ reflect: false, mutable: true }) errorMessage: string;
   @Watch('errorMessage')
@@ -147,7 +147,7 @@ export class GcdsRadios {
   @Prop({ reflect: true, mutable: true }) disabled: boolean;
 
   /**
-   * Specifies if an input element is disabled or not.
+   * Default value for the element
    */
   @Prop({ reflect: true, mutable: true }) value: string;
   @Watch('value')
@@ -229,22 +229,22 @@ export class GcdsRadios {
    */
 
   /**
-   * Emitted when the radio button is checked
+   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
    */
   @Event() gcdsInput!: EventEmitter<void>;
 
   /**
-   * Emitted when the radio button is checked
+   * Emitted when a <gcds-radios> option is checked (but not when unchecked)
    */
   @Event() gcdsChange!: EventEmitter<void>;
 
   /**
-   * Emitted when the radio has focus.
+   * Emitted when <gcds-radios> has received focus
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
   /**
-   * Emitted when the radio loses focus.
+   * Emitted when the <gcds-radios> has lost focus
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
@@ -261,12 +261,12 @@ export class GcdsRadios {
   };
 
   /**
-   * Emitted when the radios has passed validation.
+   * Emitted when <gcds-radios> has passed validation
    */
   @Event() gcdsValid!: EventEmitter<void>;
 
   /**
-   * Emitted when the radios has a validation error.
+   * Emitted when <gcds-radios> has a validation error
    */
   @Event() gcdsError!: EventEmitter<object>;
 
@@ -423,7 +423,7 @@ export class GcdsRadios {
                 const attrsInput = {
                   name,
                   disabled: disabled,
-                  required: radio.required,
+                  required: required,
                   value: radio.value,
                   checked: radio.value === value && true,
                   ...inheritedAttributes,

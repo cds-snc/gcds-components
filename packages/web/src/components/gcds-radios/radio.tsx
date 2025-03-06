@@ -54,21 +54,12 @@ export type RadioObject = {
   value: string;
   hint?: string;
   checked?: boolean;
-  required?: boolean;
 };
 
 export function isRadioObject(obj: any): obj is RadioObject {
   if (typeof obj !== 'object' || obj === null) return false;
 
-  const validKeys = [
-    'id',
-    'label',
-    'value',
-    'hint',
-    'checked',
-    'required',
-    'disabled',
-  ];
+  const validKeys = ['id', 'label', 'value', 'hint', 'checked'];
   const objKeys = Object.keys(obj);
 
   // Check if all properties match the expected type
@@ -77,8 +68,7 @@ export function isRadioObject(obj: any): obj is RadioObject {
     typeof obj.label === 'string' &&
     typeof obj.value === 'string' &&
     (obj.hint === undefined || typeof obj.hint === 'string') &&
-    (obj.checked === undefined || typeof obj.checked === 'boolean') &&
-    (obj.required === undefined || typeof obj.required === 'boolean');
+    (obj.checked === undefined || typeof obj.checked === 'boolean');
 
   // Ensure no extra properties exist
   const hasOnlyValidKeys = objKeys.every(key => validKeys.includes(key));
