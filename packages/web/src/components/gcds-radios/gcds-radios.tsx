@@ -46,7 +46,7 @@ export class GcdsRadios {
 
   private initialValue?: string;
 
-  private optionObject;
+  private optionsArr;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -57,32 +57,37 @@ export class GcdsRadios {
   /**
    * Options to render radio buttons
    */
-  @Prop() options!: string | Array<RadioObject>;
+  @Prop({ mutable: true }) options!: string | Array<RadioObject>;
 
   @Watch('options')
   validateOptions() {
     let invalidObject = false;
-    // Assign optionsObject from passed options string/object
-    if (typeof this.options == 'object') {
-      this.optionObject = this.options;
-    } else if (typeof this.options == 'string' && this.options.trim() !== '') {
-      this.optionObject = JSON.parse(this.options);
+    // Assign optionsArr from passed options string or array
+    if (typeof this.options === 'string' && this.options.trim() !== '') {
+      try {
+        this.options = JSON.parse(this.options as string);
+      } catch (e) {
+        logError('gcds-radios', ['Invalid JSON string for options']);
+        this.options = null;
+      }
+    }
+
+    if (Array.isArray(this.options)) {
+      this.optionsArr = this.options;
     } else {
-      this.optionObject = null;
+      this.optionsArr = null;
     }
 
     // Validate options has type RadioObject
-    if (this.optionObject) {
-      this.optionObject.map(radio => {
-        if (!isRadioObject(radio)) {
-          invalidObject = true;
-        }
-      });
+    if (this.optionsArr && this.optionsArr.length > 1) {
+      invalidObject = this.optionsArr.some(radio => !isRadioObject(radio));
+    } else {
+      invalidObject = true;
     }
 
     // Assign value if passed options has a checked radio
-    if (this.optionObject && !this.value) {
-      this.optionObject.forEach(radio => {
+    if (this.optionsArr && !this.value) {
+      this.optionsArr.forEach(radio => {
         if (radio.checked === 'true' || radio.checked === true) {
           this.value = radio.value;
           this.internals.setFormValue(radio.value, 'checked');
@@ -94,7 +99,7 @@ export class GcdsRadios {
     this.errors = handleErrors(
       this.errors,
       'options',
-      this.optionObject,
+      this.optionsArr,
       invalidObject,
     );
   }
@@ -152,11 +157,10 @@ export class GcdsRadios {
   @Prop({ reflect: true, mutable: true }) value: string;
   @Watch('value')
   validateValue() {
-    if (this.optionObject && this.value !== null) {
+    if (this.optionsArr && this.value !== null) {
       let isValidValue = false;
-      this.optionObject.map(radio => {
+      this.optionsArr.map(radio => {
         if (radio.value == this.value) {
-          console.log(radio.label)
           isValidValue = true;
           radio.checked = true;
         }
@@ -165,7 +169,6 @@ export class GcdsRadios {
       // unset value if no radio button with value available
       if (!isValidValue) {
         this.value = null;
-        console.log('why')
       }
     }
   }
@@ -215,7 +218,6 @@ export class GcdsRadios {
    */
   @Method()
   async validate() {
-    console.log('radio has validated');
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsError.emit({
@@ -419,8 +421,8 @@ export class GcdsRadios {
               </div>
             ) : null}
 
-            {this.optionObject &&
-              this.optionObject.map(radio => {
+            {this.optionsArr &&
+              this.optionsArr.map(radio => {
                 const attrsInput = {
                   name,
                   disabled: disabled,
