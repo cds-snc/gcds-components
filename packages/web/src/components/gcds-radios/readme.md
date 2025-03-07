@@ -7,30 +7,30 @@
 
 ## Properties
 
-| Property               | Attribute       | Description                                       | Type                                                | Default     |
-| ---------------------- | --------------- | ------------------------------------------------- | --------------------------------------------------- | ----------- |
-| `disabled`             | `disabled`      | Specifies if an input element is disabled or not. | `boolean`                                           | `undefined` |
-| `errorMessage`         | `error-message` | Error message for invalid radio buttons.          | `string`                                            | `undefined` |
-| `hint`                 | `hint`          | Specifies if a form field is required or not.     | `string`                                            | `undefined` |
-| `legend` _(required)_  | `legend`        | Name of the form field group.                     | `string`                                            | `undefined` |
-| `name` _(required)_    | `name`          | Name attribute for an input element.              | `string`                                            | `undefined` |
-| `options` _(required)_ | `options`       | Options to render radio buttons                   | `RadioObject[] \| string`                           | `undefined` |
-| `required`             | `required`      | Specifies if a form field is required or not.     | `boolean`                                           | `undefined` |
-| `validateOn`           | `validate-on`   | Set event to call validator                       | `"blur" \| "other" \| "submit"`                     | `undefined` |
-| `validator`            | --              | Array of validators                               | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `value`                | `value`         | Specifies if an input element is disabled or not. | `string`                                            | `undefined` |
+| Property               | Attribute       | Description                                                                       | Type                                                | Default     |
+| ---------------------- | --------------- | --------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| `disabled`             | `disabled`      | Specifies if an input element is disabled or not.                                 | `boolean`                                           | `undefined` |
+| `errorMessage`         | `error-message` | Set this to display an error message for invalid <gcds-radios>                    | `string`                                            | `undefined` |
+| `hint`                 | `hint`          | Hint displayed below the label and above the radio elements                       | `string`                                            | `undefined` |
+| `legend` _(required)_  | `legend`        | Label or legend for the group of radio elements                                   | `string`                                            | `undefined` |
+| `name` _(required)_    | `name`          | The `name` attribute for the <gcds-radios>, used to group radio elements together | `string`                                            | `undefined` |
+| `options` _(required)_ | `options`       | Options to render radio buttons                                                   | `RadioObject[] \| string`                           | `undefined` |
+| `required`             | `required`      | Specifies if a form field is required or not.                                     | `boolean`                                           | `undefined` |
+| `validateOn`           | `validate-on`   | Set event to call validator                                                       | `"blur" \| "other" \| "submit"`                     | `undefined` |
+| `validator`            | --              | Array of validators                                                               | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `value`                | `value`         | Default value for the element                                                     | `string`                                            | `undefined` |
 
 
 ## Events
 
-| Event        | Description                                     | Type                  |
-| ------------ | ----------------------------------------------- | --------------------- |
-| `gcdsBlur`   | Emitted when the radio loses focus.             | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when the radio button is checked        | `CustomEvent<void>`   |
-| `gcdsError`  | Emitted when the radios has a validation error. | `CustomEvent<object>` |
-| `gcdsFocus`  | Emitted when the radio has focus.               | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the radio button is checked        | `CustomEvent<void>`   |
-| `gcdsValid`  | Emitted when the radios has passed validation.  | `CustomEvent<void>`   |
+| Event        | Description                                                                                                        | Type                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| `gcdsBlur`   | Emitted when the <gcds-radios> has lost focus                                                                      | `CustomEvent<void>`   |
+| `gcdsChange` | Emitted when a <gcds-radios> option is checked (but not when unchecked)                                            | `CustomEvent<void>`   |
+| `gcdsError`  | Emitted when <gcds-radios> has a validation error                                                                  | `CustomEvent<object>` |
+| `gcdsFocus`  | Emitted when <gcds-radios> has received focus                                                                      | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected) | `CustomEvent<void>`   |
+| `gcdsValid`  | Emitted when <gcds-radios> has passed validation                                                                   | `CustomEvent<void>`   |
 
 
 ## Methods

@@ -1005,27 +1005,27 @@ export class GcdsRadios {
 
 export declare interface GcdsRadios extends Components.GcdsRadios {
   /**
-   * Emitted when the radio button is checked
+   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
    */
   gcdsInput: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the radio button is checked
+   * Emitted when a <gcds-radios> option is checked (but not when unchecked)
    */
   gcdsChange: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the radio has focus.
+   * Emitted when <gcds-radios> has received focus
    */
   gcdsFocus: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the radio loses focus.
+   * Emitted when the <gcds-radios> has lost focus
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the radios has passed validation.
+   * Emitted when <gcds-radios> has passed validation
    */
   gcdsValid: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the radios has a validation error.
+   * Emitted when <gcds-radios> has a validation error
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
 }

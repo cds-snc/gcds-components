@@ -828,19 +828,19 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Error message for invalid radio buttons.
+          * Set this to display an error message for invalid <gcds-radios>
          */
         "errorMessage": string;
         /**
-          * Specifies if a form field is required or not.
+          * Hint displayed below the label and above the radio elements
          */
         "hint": string;
         /**
-          * Name of the form field group.
+          * Label or legend for the group of radio elements
          */
         "legend": string;
         /**
-          * Name attribute for an input element.
+          * The `name` attribute for the <gcds-radios>, used to group radio elements together
          */
         "name": string;
         /**
@@ -866,7 +866,7 @@ export namespace Components {
     string | ValidatorEntry | Validator<string>
   >;
         /**
-          * Specifies if an input element is disabled or not.
+          * Default value for the element
          */
         "value": string;
     }
@@ -2738,43 +2738,43 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Error message for invalid radio buttons.
+          * Set this to display an error message for invalid <gcds-radios>
          */
         "errorMessage"?: string;
         /**
-          * Specifies if a form field is required or not.
+          * Hint displayed below the label and above the radio elements
          */
         "hint"?: string;
         /**
-          * Name of the form field group.
+          * Label or legend for the group of radio elements
          */
         "legend": string;
         /**
-          * Name attribute for an input element.
+          * The `name` attribute for the <gcds-radios>, used to group radio elements together
          */
         "name": string;
         /**
-          * Emitted when the radio loses focus.
+          * Emitted when the <gcds-radios> has lost focus
          */
         "onGcdsBlur"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
-          * Emitted when the radio button is checked
+          * Emitted when a <gcds-radios> option is checked (but not when unchecked)
          */
         "onGcdsChange"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
-          * Emitted when the radios has a validation error.
+          * Emitted when <gcds-radios> has a validation error
          */
         "onGcdsError"?: (event: GcdsRadiosCustomEvent<object>) => void;
         /**
-          * Emitted when the radio has focus.
+          * Emitted when <gcds-radios> has received focus
          */
         "onGcdsFocus"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
-          * Emitted when the radio button is checked
+          * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
          */
         "onGcdsInput"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
-          * Emitted when the radios has passed validation.
+          * Emitted when <gcds-radios> has passed validation
          */
         "onGcdsValid"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
@@ -2796,7 +2796,7 @@ declare namespace LocalJSX {
     string | ValidatorEntry | Validator<string>
   >;
         /**
-          * Specifies if an input element is disabled or not.
+          * Default value for the element
          */
         "value"?: string;
     }
