@@ -13,7 +13,7 @@ import {
   AttachInternals,
 } from '@stencil/core';
 
-import { Radio, RadioObject, isRadioObject } from './radio';
+import { RadioObject, isRadioObject } from './radio';
 import {
   assignLanguage,
   inheritAttributes,
@@ -156,6 +156,7 @@ export class GcdsRadios {
       let isValidValue = false;
       this.optionObject.map(radio => {
         if (radio.value == this.value) {
+          console.log(radio.label)
           isValidValue = true;
           radio.checked = true;
         }
@@ -164,6 +165,7 @@ export class GcdsRadios {
       // unset value if no radio button with value available
       if (!isValidValue) {
         this.value = null;
+        console.log('why')
       }
     }
   }
@@ -213,6 +215,7 @@ export class GcdsRadios {
    */
   @Method()
   async validate() {
+    console.log('radio has validated');
     if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsError.emit({
@@ -308,19 +311,17 @@ export class GcdsRadios {
     }
   }
 
-  private onChange = e => {
-    this.gcdsChange.emit(e.target.value);
-    this.value = e.target.value;
-    this.internals.setFormValue(e.target.value, 'checked');
+  private handleInput = (e, customEvent) => {
+    const val = e.target && e.target.value;
+    this.value = val;
+    this.internals.setFormValue(val ? val : null, 'checked');
 
-    const changeEvt = new e.constructor(e.type, e);
-    this.el.dispatchEvent(changeEvt);
-  };
+    if (e.type === 'change') {
+      const changeEvt = new e.constructor(e.type, e);
+      this.el.dispatchEvent(changeEvt);
+    }
 
-  private onInput = e => {
-    this.gcdsInput.emit(e.target.value);
-    this.value = e.target.value;
-    this.internals.setFormValue(e.target.value, 'checked');
+    customEvent.emit(this.value);
   };
 
   /*
@@ -425,7 +426,7 @@ export class GcdsRadios {
                   disabled: disabled,
                   required: required,
                   value: radio.value,
-                  checked: radio.value === value && true,
+                  checked: radio.value === value,
                   ...inheritedAttributes,
                 };
 
@@ -444,17 +445,31 @@ export class GcdsRadios {
                 }
 
                 return (
-                  <Radio
-                    radio={radio}
-                    disabled={disabled}
-                    hasError={hasError}
-                    lang={lang}
-                    gcdsFocus={this.gcdsFocus}
-                    onBlur={this.onBlur}
-                    onChange={this.onChange}
-                    onInput={this.onInput}
-                    attrsInput={attrsInput}
-                  />
+                  <div
+                    class={`gcds-radio ${
+                      disabled ? 'gcds-radio--disabled' : ''
+                    } ${hasError ? 'gcds-radio--error' : ''}`}
+                  >
+                    <input
+                      id={radio.id}
+                      type="radio"
+                      {...attrsInput}
+                      onInput={e => this.handleInput(e, this.gcdsInput)}
+                      onChange={e => this.handleInput(e, this.gcdsChange)}
+                      onBlur={() => this.onBlur()}
+                      onFocus={() => this.gcdsFocus.emit()}
+                    />
+
+                    <gcds-label
+                      label={radio.label}
+                      label-for={radio.id}
+                      lang={lang}
+                    ></gcds-label>
+
+                    {radio.hint ? (
+                      <gcds-hint hint-id={radio.id}>{radio.hint}</gcds-hint>
+                    ) : null}
+                  </div>
                 );
               })}
           </fieldset>
