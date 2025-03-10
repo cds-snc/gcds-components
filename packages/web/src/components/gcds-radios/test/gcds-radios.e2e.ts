@@ -8,13 +8,85 @@ describe('gcds-radios', () => {
       `<gcds-radios
           name="radio"
           legend="Legend"
-          options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
         >
         </gcds-radios>`,
     );
 
     const element = await page.find('gcds-radios');
     expect(element).toHaveClass('hydrated');
+  });
+  it('Emit gcdsInput event', async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      `<gcds-radios
+          name="radio"
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+        >
+        </gcds-radios>`,
+    );
+
+    await page.evaluate(() => {
+      const radios = document.querySelector('gcds-radios[name="radio"]');
+
+      radios.addEventListener('gcdsInput', ev => {
+        (ev.target as HTMLGcdsRadiosElement).legend = 'Changed';
+      });
+    });
+
+    let legendText = (await page.find('gcds-radios >>> legend')).textContent;
+    expect(legendText).toBe('Legend');
+
+    await page.waitForChanges();
+
+    await page.locator('gcds-radios >>> input').click();
+
+    await page.waitForChanges();
+
+    legendText = (await page.find('gcds-radios >>> legend')).textContent;
+    expect(legendText).toBe('Changed');
+  });
+  it('assign options using JS', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gcds-radios
+        name="radio"
+        legend="Legend"
+      >
+      </gcds-radios>
+    `);
+
+    await page.evaluate(() => {
+      // Create radio options array
+      const radioOptions = [
+        {
+          label: 'Radio 1 label',
+          id: 'radio1',
+          value: 'radio1',
+        },
+        {
+          label: 'Radio 2 label',
+          id: 'radio2',
+          value: 'radio2',
+        },
+      ];
+
+      // Find the gcds-radios element
+      const radios = document.querySelector('gcds-radios[name="radio"]');
+
+      // Assign radio options to options property
+      (radios as HTMLGcdsRadiosElement).options = radioOptions;
+    });
+
+    await page.waitForChanges();
+
+    const labelText = await (
+      await page.find('gcds-radios >>> gcds-label')
+    ).innerText;
+
+    expect(labelText).toEqual('Radio 1 label');
   });
 });
 
@@ -33,7 +105,7 @@ describe('gcds-radios a11y tests', () => {
       <gcds-radios
         name="radio"
         legend="Legend"
-        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+        options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
       >
       </gcds-radios>
     `);
@@ -51,7 +123,7 @@ describe('gcds-radios a11y tests', () => {
       <gcds-radios
         name="radio"
         legend="Legend"
-        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+        options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
       >
       </gcds-radios>
     `);
@@ -71,7 +143,7 @@ describe('gcds-radios a11y tests', () => {
       <gcds-radios
         name="radio"
         legend="Legend"
-        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+        options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
       >
       </gcds-radios>
     `);
@@ -89,7 +161,8 @@ describe('gcds-radios a11y tests', () => {
       <gcds-radios
         name="radio"
         legend="Legend"
-        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+        options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+        disabled
       >
       </gcds-radios>
     `);
@@ -111,7 +184,7 @@ describe('gcds-radios a11y tests', () => {
       <gcds-radios
         name="radio"
         legend="Legend"
-        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+        options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
       >
       </gcds-radios>
     `);
@@ -174,12 +247,12 @@ describe('gcds-radios a11y tests', () => {
       <gcds-radios
         name="radio"
         legend="Legend"
-        options='[{ "label": "Label", "id": "radio", "value": "radio"}]'
+        options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
       >
       </gcds-radios>
     `);
 
     const element = await await page.find('gcds-radios >>> gcds-label');
-    expect(element.getAttribute('id')).toEqual('label-for-radio');
+    expect(element.getAttribute('id')).toEqual('label-for-radio1');
   });
 });

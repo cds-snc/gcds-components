@@ -239,7 +239,7 @@ describe('gcds-radios', () => {
       </gcds-radios>
     `);
   });
-  it('does not render - missing legend attribute', async () => {
+  it('does not render - missing options attribute', async () => {
     const page = await newSpecPage({
       components: [GcdsRadios],
       html: `<gcds-radios
@@ -250,6 +250,57 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend">
+        <mock:shadow-root>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('does not render - empty options array', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+          options='[]'
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios name="radio" legend="Legend" options='[]'>
+        <mock:shadow-root>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('does not render - blank options string', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+          options=''
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios name="radio" legend="Legend" options=''>
+        <mock:shadow-root>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('does not render - options object not array', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+          options='{{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}}'
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios name="radio" legend="Legend" options='{{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}}'>
         <mock:shadow-root>
         </mock:shadow-root>
       </gcds-radios>
