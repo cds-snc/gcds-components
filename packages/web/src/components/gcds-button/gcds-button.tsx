@@ -44,15 +44,20 @@ export class GcdsButton {
   /**
    * Set the main style
    */
-  @Prop({ mutable: true }) buttonRole: 'primary' | 'secondary' | 'danger' =
-    'primary';
+  @Prop({ mutable: true }) buttonRole:
+    | 'start'
+    | 'primary'
+    | 'secondary'
+    | 'danger' = 'primary';
 
   @Watch('buttonRole')
   validateButtonRole(newValue: string) {
-    const values = ['primary', 'secondary', 'danger'];
+    const values = ['start', 'primary', 'secondary', 'danger'];
 
     if (!values.includes(newValue)) {
       this.buttonRole = 'primary';
+    } else if (newValue === 'start' && this.size === 'small') {
+      this.size = 'regular';
     }
   }
 
@@ -66,6 +71,8 @@ export class GcdsButton {
     const values = ['regular', 'small'];
 
     if (!values.includes(newValue)) {
+      this.size = 'regular';
+    } else if (this.buttonRole === 'start') {
       this.size = 'regular';
     }
   }
