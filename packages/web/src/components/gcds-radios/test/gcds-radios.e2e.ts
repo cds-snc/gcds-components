@@ -27,26 +27,12 @@ describe('gcds-radios', () => {
         >
         </gcds-radios>`,
     );
-
-    await page.evaluate(() => {
-      const radios = document.querySelector('gcds-radios[name="radio"]');
-
-      radios.addEventListener('gcdsInput', ev => {
-        (ev.target as HTMLGcdsRadiosElement).legend = 'Changed';
-      });
-    });
-
-    let legendText = (await page.find('gcds-radios >>> legend')).textContent;
-    expect(legendText).toBe('Legend');
-
-    await page.waitForChanges();
+    const gcdsInput = await page.spyOnEvent('gcdsInput');
 
     await page.locator('gcds-radios >>> input').click();
-
     await page.waitForChanges();
 
-    legendText = (await page.find('gcds-radios >>> legend')).textContent;
-    expect(legendText).toBe('Changed');
+    expect(gcdsInput.events.length).toBe(1);
   });
   it('assign options using JS', async () => {
     const page = await newE2EPage();
