@@ -15,7 +15,7 @@ export default {
     buttonRole: {
       name: 'button-role',
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'danger'],
+      options: ['start', 'primary', 'secondary', 'danger'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'primary' },
@@ -199,11 +199,13 @@ const TemplateTypes = () => `
 
 const TemplateRoles = () => `
 <!-- Web component code (HTML, Angular, Vue) -->
+<gcds-button button-role="start">Start</gcds-button>
 <gcds-button>Primary</gcds-button>
 <gcds-button button-role="secondary">Secondary</gcds-button>
 <gcds-button button-role="danger">Danger</gcds-button>
 
 <!-- React code -->
+<GcdsButton buttonRole="start">Start</GcdsButton>
 <GcdsButton>Primary</GcdsButton>
 <GcdsButton buttonRole="secondary">Secondary</GcdsButton>
 <GcdsButton buttonRole="danger">Danger</GcdsButton>
@@ -288,6 +290,17 @@ export const PreviewTypes = TemplateTypes.bind({});
 export const PreviewRoles = TemplateRoles.bind({});
 
 // ------ Button primary ------
+
+export const StartState = TemplateTwoButtons.bind({});
+StartState.args = {
+  buttonRole: 'start',
+  btnOneText: 'Start default',
+  btnOneSize: 'regular',
+  btnOneDisabled: false,
+  btnTwoText: 'Start disabled',
+  btnTwoSize: 'regular',
+  btnTwoDisabled: true,
+};
 
 export const PrimaryState = TemplateTwoButtons.bind({});
 PrimaryState.args = {
