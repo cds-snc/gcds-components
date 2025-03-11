@@ -10,6 +10,7 @@ import {
   requiredFileInput,
   requiredSelectField,
   requiredDateInput,
+  requiredRadio,
 } from './input-validators/input-validators';
 import { requiredCheck } from './checkbox-validators/checkbox-validators';
 
@@ -20,6 +21,7 @@ export enum ValidatorsName {
   requiredFileInput = 'requiredFileInput',
   requiredSelectField = 'requiredSelectField',
   requiredDateInput = 'requiredDateInput',
+  requiredRadio = 'requiredRadio',
 }
 
 export function getValidator<A>(
@@ -54,6 +56,8 @@ export function validatorFactory(name: string, options: any): Validator<any> {
       return requiredDateInput;
     case ValidatorsName.requiredFileInput:
       return requiredFileInput;
+    case ValidatorsName.requiredRadio:
+      return requiredRadio;
     default:
       return defaultValidator;
   }

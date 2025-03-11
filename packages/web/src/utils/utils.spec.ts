@@ -1,4 +1,4 @@
-import { format, logError, isValidDate } from './utils';
+import { format, logError, isValidDate, isValid, handleErrors } from './utils';
 
 describe('format', () => {
   it('returns Fallback Button Label', () => {
@@ -99,5 +99,42 @@ describe('isValidDate', () => {
 
   it('returns false - compact format - force full', () => {
     expect(isValidDate('1991-03', 'full')).toEqual(false);
+  });
+});
+
+describe('hasErrors', () => {
+  it('returns false', () => {
+    expect(
+      isValid(['property1', 'property2'], ['property1', 'property2']),
+    ).toEqual(false);
+  });
+  it('returns true', () => {
+    expect(isValid([], ['property1', 'property1'])).toEqual(true);
+  });
+});
+
+describe('handleErrors', () => {
+  it('valid string property', () => {
+    expect(handleErrors([], 'property', 'value')).toEqual([]);
+  });
+  it('valid boolean property', () => {
+    expect(handleErrors([], 'property', true)).toEqual([]);
+  });
+  it('valid object property', () => {
+    expect(handleErrors([], 'property', { key: 'value' })).toEqual([]);
+  });
+  it('invalid property - empty', () => {
+    expect(handleErrors([], 'property', '')).toEqual(['property']);
+  });
+  it('invalid property - null value', () => {
+    expect(handleErrors([], 'property', null)).toEqual(['property']);
+  });
+  it('invalid property - just whitespace', () => {
+    expect(handleErrors([], 'property', ' ')).toEqual(['property']);
+  });
+  it('valid string property - remove from errors', () => {
+    expect(
+      handleErrors(['property1', 'property2'], 'property1', 'value'),
+    ).toEqual(['property2']);
   });
 });
