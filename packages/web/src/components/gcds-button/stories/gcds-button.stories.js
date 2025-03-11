@@ -173,11 +173,13 @@ const Template = args =>
 
 const TemplatePreview = () => `
 <!-- Web component code (HTML, Angular, Vue) -->
+<gcds-button button-role="start">Start</gcds-button>
 <gcds-button>Submit</gcds-button>
 <gcds-button button-role="secondary">Cancel</gcds-button>
 <gcds-button button-role="danger">Delete</gcds-button>
 
 <!-- React code -->
+<GcdsButton buttonRole="start">Start</GcdsButton>
 <GcdsButton>Submit</GcdsButton>
 <GcdsButton buttonRole="secondary">Cancel</GcdsButton>
 <GcdsButton buttonRole="danger">Delete</GcdsButton>
