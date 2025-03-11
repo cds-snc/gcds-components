@@ -1,0 +1,17 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Service MapML de la carte de base de l&apos;oc&#xe9;an Arctique</map-title>
+    <map-meta http-equiv="Content-Type" content="application/xml;charset=UTF-8"/>
+    <map-meta charset="utf-8"/>
+
+    <map-link rel="license" href="https://www.esri.com/legal/software-license" title="Sources: Esri, GEBCO, NOAA, National Geographic, DeLorme, HERE, Geonames.org, et d&apos;autres contributeurs"/>
+  </map-head>
+  <map-body>
+    <map-extent units="APSTILE" checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom" value="10" min="0" max="10"/>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="442" max="589"/>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="429" max="582"/>
+      <map-link rel="tile" tref="https://server.arcgisonline.com/arcgis/rest/services/Polar/Arctic_Ocean_Base/MapServer/tile/{z}/{y}/{x}?m4h=t"/>
+    </map-extent>
+  </map-body>
+</mapml->

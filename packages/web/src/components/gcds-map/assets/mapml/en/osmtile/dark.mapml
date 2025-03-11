@@ -1,0 +1,17 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>OpenStreetMap - dark theme</map-title>
+    <map-link rel="stylesheet" type="application/pmtiles+stylesheet" href="../../../pmtiles/darkTheme.js"></map-link>
+    <map-link rel="license" title="© OpenStreetMap contributors CC BY-SA" href="https://www.openstreetmap.org/copyright"></map-link>
+    <map-link rel="self style" title="Dark theme" href="dark.mapml"></map-link>
+    <map-link rel="style" title="Light theme" href="light.mapml"></map-link>
+  </map-head>
+  <map-body>
+    <map-extent units="OSMTILE" checked="" hidden="">
+      <map-input name="z" type="zoom" value="18" min="0" max="18"></map-input>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="0" max="262144"></map-input>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="0" max="262144"></map-input>
+      <map-link rel="tile" type="application/vnd.mapbox-vector-tile" tref="https://data.source.coop/protomaps/openstreetmap/tiles/v3.pmtiles"></map-link>
+    </map-extent>
+  </map-body>
+</mapml->

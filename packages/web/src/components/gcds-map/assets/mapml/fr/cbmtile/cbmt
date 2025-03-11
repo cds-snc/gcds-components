@@ -1,0 +1,20 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>La carte de base du Canada - transport</map-title>
+    <map-meta http-equiv="Content-Type" content="application/xml;charset=UTF-8"/>
+    <map-meta charset="utf-8"/>
+
+    <map-link rel="license" href="https://www.rncan.gc.ca/sciences-terre/geographie/atlas-canada/savoir-davantage-cartes-topographiques/16841#topolicensing" title="La Carte de Base du Canada &#xa9; Ressources naturelles Canada"/>
+    <map-link rel="alternate" projection="OSMTILE" href="../osmtile/cbmt"/>
+  </map-head>
+  <map-body>
+    <map-extent units="CBMTILE" checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom" value="22" min="0" max="22"/>
+      <map-input name="txmin" type="location" units="tilematrix" position="top-left" axis="easting" min="-3262924.7" max="3823954.0"/>
+      <map-input name="tymin" type="location" units="tilematrix" position="bottom-left" axis="northing" min="-1554977.6" max="4046262.8"/>
+      <map-input name="txmax" type="location" units="tilematrix" position="top-right" axis="easting" min="-3262924.7" max="3823954.0"/>
+      <map-input name="tymax" type="location" units="tilematrix" position="top-left" axis="northing" min="-1554977.6" max="4046262.8"/>
+      <map-link rel="tile" tref="https://geogratis.gc.ca/cartes/CBCT?SERVICE=WMS&amp;VERSION=1.1.1&amp;SRS=EPSG:3978&amp;LAYERS=CBCT&amp;BBOX={txmin},{tymin},{txmax},{tymax}&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;WIDTH=256&amp;HEIGHT=256&amp;STYLES=&amp;m4h=t"/>
+    </map-extent>
+  </map-body>
+</mapml->

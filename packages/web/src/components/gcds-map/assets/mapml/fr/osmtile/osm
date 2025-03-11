@@ -1,0 +1,17 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>OpenStreetMap</map-title>
+    <map-meta http-equiv="Content-Type" content="application/xml;charset=UTF-8"/>
+    <map-meta charset="utf-8"/>
+
+    <map-link rel="license" href="https://www.openstreetmap.org/copyright/fr" title="&#xa9; OpenStreetMap contributeurs CC BY-SA"/>
+  </map-head>
+  <map-body>
+    <map-extent units="OSMTILE" checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom" value="18" min="0" max="18"/>
+      <map-input name="x" type="location" units="tilematrix" axis="column" min="7551" max="118527"/>
+      <map-input name="y" type="location" units="tilematrix" axis="row" min="-2688" max="113408"/>
+      <map-link rel="tile" tref="https://tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+    </map-extent>
+  </map-body>
+</mapml->
