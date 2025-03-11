@@ -123,18 +123,34 @@ export class GcdsNotice {
   render() {
     const { type, noticeTitle, noticeTitleTag } = this;
 
-    const iconTypes = {
+    const iconTypes: {
+      [key in 'danger' | 'info' | 'success' | 'warning']:
+        | 'exclamation-circle'
+        | 'info-circle'
+        | 'checkmark-circle'
+        | 'warning-triangle';
+    } = {
       danger: 'exclamation-circle',
       info: 'info-circle',
-      success: 'check-circle',
-      warning: 'exclamation-triangle',
+      success: 'checkmark-circle',
+      warning: 'warning-triangle',
     };
 
     return (
       <Host>
         {this.validateRequiredProps() && (
           <section class={`gcds-notice notice--type-${type}`}>
-            <gcds-icon class="notice__icon" size="h4" name={iconTypes[type]} />
+            <gcds-icon
+              class="notice__icon"
+              size="h4"
+              name={
+                iconTypes[type] as
+                  | 'exclamation-circle'
+                  | 'info-circle'
+                  | 'checkmark-circle'
+                  | 'warning-triangle'
+              }
+            />
             <div>
               <gcds-heading
                 tag={noticeTitleTag}
