@@ -31,7 +31,7 @@
       gcds-link {
         z-index: 3;
         position: absolute;
-        top: var(--gcds-header-skiptonav-top);
+        top: 0;
         left: 0;
         width: inherit;
 
@@ -52,7 +52,6 @@
     border-block-end: var(--gcds-header-brand-border-width) solid
       var(--gcds-header-brand-border-color);
     padding: var(--gcds-header-brand-padding);
-    margin: var(--gcds-header-brand-margin);
 
     .brand__container {
       display: grid;
@@ -76,10 +75,7 @@
 
       :is(.brand__signature, slot[name='signature']) {
         grid-area: signature;
-
-        gcds-signature {
-          margin: var(--gcds-header-brand-signature-margin);
-        }
+        align-content: center;
       }
 
       .brand__search {
