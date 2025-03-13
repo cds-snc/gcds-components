@@ -112,6 +112,23 @@ describe('gcds-button', () => {
     `);
   });
 
+  it('renders button-role primary size: small', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="primary" size="small">Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="primary" size="small">
+        <mock:shadow-root>
+          <button class="gcds-button button--role-primary button--small" part="button" type="button">
+            <slot></slot>
+          </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
   it('renders button-role secondary', async () => {
     const { root } = await newSpecPage({
       components: [GcdsButton],
@@ -121,6 +138,23 @@ describe('gcds-button', () => {
       <gcds-button button-role="secondary">
         <mock:shadow-root>
           <button class="gcds-button button--role-secondary button--regular" part="button" type="button">
+            <slot></slot>
+          </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
+  it('renders button-role secondary size: small', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="secondary" size="small">Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="secondary" size="small">
+        <mock:shadow-root>
+          <button class="gcds-button button--role-secondary button--small" part="button" type="button">
             <slot></slot>
           </button>
         </mock:shadow-root>
@@ -146,6 +180,57 @@ describe('gcds-button', () => {
     `);
   });
 
+  it('renders button-role danger size: small', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="danger" size="small">Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="danger" size="small">
+        <mock:shadow-root>
+          <button class="gcds-button button--role-danger button--small" part="button" type="button">
+            <slot></slot>
+          </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
+  it('renders button-role start', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="start">Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="start">
+        <mock:shadow-root>
+          <button class="gcds-button button--role-start button--regular" part="button" type="button">
+            <slot></slot>
+          </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
+  it('renders button-role start overrides size: small', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="start" size="small">Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="start" size="small">
+        <mock:shadow-root>
+          <button class="gcds-button button--role-start button--regular" part="button" type="button">
+            <slot></slot>
+          </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
   /*
    * Variant tests
    */
@@ -162,6 +247,74 @@ describe('gcds-button', () => {
             <slot></slot>
             <gcds-icon name="external-link" label="Opens in a new tab." margin-left="150" />
           </a>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
+  it('renders disabled primary button', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="primary" disabled>Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="primary" disabled>
+        <mock:shadow-root>
+          <button ariadisabled="" class="gcds-button button--role-primary button--regular" part="button" type="button">
+            <slot></slot>
+          </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
+  it('renders disabled start button', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="start" disabled>Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="start" disabled>
+        <mock:shadow-root>
+          <button ariadisabled="" class="gcds-button button--role-start button--regular" part="button" type="button">
+            <slot></slot>
+          </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
+  it('renders disabled secondary button', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="secondary" disabled>Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="secondary" disabled>
+        <mock:shadow-root>
+          <button ariadisabled="" class="gcds-button button--role-secondary button--regular" part="button" type="button">
+            <slot></slot>
+          </button>
+        </mock:shadow-root>
+        Button Label
+      </gcds-button>
+    `);
+  });
+
+  it('renders disabled danger button', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsButton],
+      html: `<gcds-button button-role="danger" disabled>Button Label</gcds-button>`,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-button button-role="danger" disabled>
+        <mock:shadow-root>
+          <button ariadisabled="" class="gcds-button button--role-danger button--regular" part="button" type="button">
+            <slot></slot>
+          </button>
         </mock:shadow-root>
         Button Label
       </gcds-button>

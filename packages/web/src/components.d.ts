@@ -60,7 +60,10 @@ export namespace Components {
         /**
           * Set the main style
          */
-        "buttonRole": 'primary' | 'secondary' | 'danger';
+        "buttonRole": | 'start'
+    | 'primary'
+    | 'secondary'
+    | 'danger';
         /**
           * The disabled attribute for a <button> element.
          */
@@ -1775,7 +1778,10 @@ declare namespace LocalJSX {
         /**
           * Set the main style
          */
-        "buttonRole"?: 'primary' | 'secondary' | 'danger';
+        "buttonRole"?: | 'start'
+    | 'primary'
+    | 'secondary'
+    | 'danger';
         /**
           * The disabled attribute for a <button> element.
          */
