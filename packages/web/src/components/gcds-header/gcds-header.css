@@ -1,4 +1,4 @@
-@layer reset, default, brand, wide;
+@layer reset, default, brand, menu, wide;
 
 @layer reset {
   :host {
@@ -84,6 +84,12 @@
         display: block;
       }
     }
+  }
+}
+
+@layer menu {
+  :host {
+    --gcds-nav-group-mobile-trigger-margin: var(--gcds-header-menu-top-nav-mobile-trigger-margin);
   }
 }
 
