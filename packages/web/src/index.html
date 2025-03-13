@@ -167,6 +167,11 @@
           // event.formData grabs the object
           console.log(event.formData.getAll('name'));
         });
+        form.addEventListener("gcdsInput", event => {
+          // event.formData grabs the object
+          console.log(event);
+        });
+        
       </script>
 
       <!-- ------------- Alerts ------------- -->

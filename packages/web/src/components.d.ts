@@ -1337,6 +1337,7 @@ declare global {
         "gcdsClick": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
+        "gcdsInput": any;
         "gcdsChange": any;
         "gcdsError": object;
         "gcdsValid": object;
@@ -2050,7 +2051,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
         /**
-          * Update value based on user input.
+          * Emitted when a checkbox has changed.
          */
         "onGcdsChange"?: (event: GcdsCheckboxesCustomEvent<any>) => void;
         /**
@@ -2065,6 +2066,10 @@ declare namespace LocalJSX {
           * Emitted when the checkbox has focus.
          */
         "onGcdsFocus"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
+        /**
+          * Emmitted when a checkbox has been inputted.
+         */
+        "onGcdsInput"?: (event: GcdsCheckboxesCustomEvent<any>) => void;
         /**
           * Emitted when the input has a validation error.
          */

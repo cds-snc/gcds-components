@@ -24,7 +24,7 @@ import {
   getValidator,
   requiredValidator,
 } from '../../validators';
-import { CheckboxObject, isCheckboxObject } from './checkbox';
+import { CheckboxObject, isCheckboxObject, renderCheckbox } from './checkbox';
 
 @Component({
   tag: 'gcds-checkboxes',
@@ -121,7 +121,7 @@ export class GcdsCheckboxes {
   /**
    * Value for an input element.
    */
-  @Prop({ reflect: true, mutable: false }) value: string;
+  @Prop({ reflect: true, mutable: true }) value: string;
 
   /**
    * Specifies if an input element is checked.
@@ -216,7 +216,12 @@ export class GcdsCheckboxes {
   };
 
   /**
-   * Update value based on user input.
+   * Emmitted when a checkbox has been inputted.
+   */
+  @Event() gcdsInput: EventEmitter;
+
+  /**
+   * Emitted when a checkbox has changed.
    */
   @Event() gcdsChange: EventEmitter;
 
@@ -315,33 +320,34 @@ export class GcdsCheckboxes {
     }
   }
 
-  private onChange = e => {
+  // private onChange = e => {
+  //   this.checked = !this.checked;
+  //   this.internals.setFormValue(e.target.value, 'checked');
+
+  //   if (!this.checked) {
+  //     this.internals.setFormValue(null, 'checked');
+  //   }
+
+  //   const changeEvt = new e.constructor(e.type, e);
+  //   this.el.dispatchEvent(changeEvt);
+
+  //   this.gcdsChange.emit(this.checked);
+  // };
+
+  private handleInput = (e, customEvent) => {
     this.checked = !this.checked;
     this.internals.setFormValue(e.target.value, 'checked');
 
-    if (!this.checked) {
-      this.internals.setFormValue(null, 'checked');
+    if (e.type === 'change') {
+      const changeEvt = new e.constructor(e.type, e);
+      this.el.dispatchEvent(changeEvt);
     }
 
-    const changeEvt = new e.constructor(e.type, e);
-    this.el.dispatchEvent(changeEvt);
-
-    this.gcdsChange.emit(this.checked);
+    customEvent.emit(this.value);
   };
 
   render() {
-    const {
-      lang,
-      legend,
-      name,
-      required,
-      disabled,
-      value,
-      hint,
-      errorMessage,
-      hasError,
-      inheritedAttributes,
-    } = this;
+    const { legend, required, hint, errorMessage } = this;
 
     // const attrsInput = {
     //   name,
@@ -379,88 +385,39 @@ export class GcdsCheckboxes {
 
     return (
       <Host>
-        <fieldset class="gcds-checkboxes__fieldset" {...fieldsetAttrs}>
-          <legend id="checkboxes-legend" class="gcds-checkboxes__legend">
-            {legend}
-            {required ? (
-              <span class="legend__required"> (required)</span>
+        {this.isGroup ? (
+          <fieldset class="gcds-checkboxes__fieldset" {...fieldsetAttrs}>
+            <legend id="checkboxes-legend" class="gcds-checkboxes__legend">
+              {legend}
+              {required ? (
+                <span class="legend__required"> (required)</span>
+              ) : null}
+            </legend>
+            {hint ? (
+              <gcds-hint id="checkboxes-hint" hint-id="checkboxes">
+                {hint}
+              </gcds-hint>
             ) : null}
-          </legend>
-          {hint ? (
-            <gcds-hint id="checkboxes-hint" hint-id="checkboxes">
-              {hint}
-            </gcds-hint>
-          ) : null}
 
-          {errorMessage ? (
-            <div>
-              <gcds-error-message id="checkboxes-error" messageId="checkboxes">
-                {errorMessage}
-              </gcds-error-message>
-            </div>
-          ) : null}
-
-          {this.optionObject &&
-            this.optionObject.map(checkbox => {
-              const attrsInput = {
-                name,
-                disabled: disabled,
-                required: checkbox.required,
-                value: checkbox.value,
-                checked: checkbox.value === value && true,
-                ...inheritedAttributes,
-              };
-
-              if (checkbox.hint) {
-                const hintID = checkbox.hint ? `hint-${checkbox.id} ` : '';
-                attrsInput['aria-describedby'] = `${hintID}${
-                  attrsInput['aria-describedby']
-                    ? `${attrsInput['aria-describedby']}`
-                    : ''
-                }`;
-              }
-
-              if (hasError) {
-                attrsInput['aria-invalid'] = 'true';
-                attrsInput['aria-description'] = errorMessage;
-              }
-
-              return (
-                <div
-                  class={`gcds-checkbox ${disabled ? 'gcds-checkbox--disabled' : ''} ${
-                    hasError ? 'gcds-checkbox--error' : ''
-                  }`}
+            {errorMessage ? (
+              <div>
+                <gcds-error-message
+                  id="checkboxes-error"
+                  messageId="checkboxes"
                 >
-                  <input
-                    id={checkbox.id}
-                    type="checkbox"
-                    {...attrsInput}
-                    onBlur={() => this.onBlur()}
-                    onFocus={() => this.gcdsFocus.emit()}
-                    onChange={e => this.onChange(e)}
-                    onClick={e => emitEvent(e, this.gcdsClick)}
-                  />
+                  {errorMessage}
+                </gcds-error-message>
+              </div>
+            ) : null}
 
-                  <gcds-label
-                    label={checkbox.label}
-                    // required
-                    label-for={checkbox.id}
-                    lang={lang}
-                  ></gcds-label>
-
-                  {checkbox.hint ? (
-                    <gcds-hint hint-id={checkbox.id}>{checkbox.hint}</gcds-hint>
-                  ) : null}
-
-                  {!this.isGroup && errorMessage ? (
-                    <gcds-error-message messageId={checkbox.id}>
-                      {checkbox.errorMessage}
-                    </gcds-error-message>
-                  ) : null}
-                </div>
-              );
-            })}
-        </fieldset>
+            {this.optionObject &&
+              this.optionObject.map(checkbox => {
+                return renderCheckbox(checkbox, this, emitEvent);
+              })}
+          </fieldset>
+        ) : (
+          renderCheckbox(this.optionObject[0], this, emitEvent)
+        )}
       </Host>
     );
   }
