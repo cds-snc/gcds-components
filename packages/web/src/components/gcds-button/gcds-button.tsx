@@ -70,9 +70,7 @@ export class GcdsButton {
   validateSize(newValue: string) {
     const values = ['regular', 'small'];
 
-    if (!values.includes(newValue)) {
-      this.size = 'regular';
-    } else if (this.buttonRole === 'start') {
+    if (!values.includes(newValue) || this.buttonRole === 'start') {
       this.size = 'regular';
     }
   }
