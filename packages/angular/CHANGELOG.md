@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.32.0...gcds-components-angular-v0.33.0) (2025-03-18)
+
+
+### Patch
+
+* **gcds-components-angular:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @cdssnc/gcds-components bumped from ^0.32.0 to ^0.33.0
+
 ## [0.32.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.31.0...gcds-components-angular-v0.32.0) (2025-02-20)
 
 
