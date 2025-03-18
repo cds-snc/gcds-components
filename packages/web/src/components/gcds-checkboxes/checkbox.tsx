@@ -29,13 +29,40 @@ export function isCheckboxObject(obj: any): obj is CheckboxObject {
 }
 
 export const renderCheckbox = (checkbox, element, emitEvent) => {
+  const {
+    name,
+    disabled,
+    hasError,
+    errorMessage,
+    value,
+    onBlur,
+    gcdsFocus,
+    gcdsInput,
+    gcdsClick,
+    handleInput,
+    required,
+    hint,
+    isGroup,
+    lang,
+  } = element;
+
   const attrsInput = {
-    name: element.name,
-    disabled: element.disabled,
+    name: name,
+    disabled: disabled,
     required: checkbox.required,
     value: checkbox.value,
-    checked: checkbox.value === element.value && true,
+    checked: checkbox.checked,
   };
+
+  const labelAttrs = {
+    'label': checkbox.label,
+    'label-for': checkbox.id,
+    lang,
+  };
+
+  if (!isGroup && required) {
+    labelAttrs['required'] = required;
+  }
 
   if (checkbox.hint) {
     const hintID = checkbox.hint ? `hint-${checkbox.id} ` : '';
@@ -44,43 +71,38 @@ export const renderCheckbox = (checkbox, element, emitEvent) => {
     }`;
   }
 
-  if (element.hasError) {
+  if (hasError) {
     attrsInput['aria-invalid'] = 'true';
-    attrsInput['aria-description'] = element.errorMessage;
+    attrsInput['aria-description'] = errorMessage;
   }
 
   return (
     <div
-      class={`gcds-checkbox ${element.disabled ? 'gcds-checkbox--disabled' : ''} ${
-        element.hasError ? 'gcds-checkbox--error' : ''
+      class={`gcds-checkbox ${disabled ? 'gcds-checkbox--disabled' : ''} ${
+        hasError ? 'gcds-checkbox--error' : ''
       }`}
     >
       <input
         id={checkbox.id}
         type="checkbox"
         {...attrsInput}
-        onBlur={() => element.onBlur()}
-        onFocus={() => element.gcdsFocus.emit()}
-        onChange={e => element.handleInput(e, element.gcdsChange)}
-        onInput={e => element.handleInput(e, element.gcdsInput)}
-        onClick={e => emitEvent(e, element.gcdsClick)}
+        onBlur={() => onBlur()}
+        onFocus={() => gcdsFocus.emit()}
+        onInput={e => handleInput(e, gcdsInput)}
+        onClick={e => emitEvent(e, gcdsClick)}
       />
 
-      <gcds-label
-        label={checkbox.label}
-        label-for={checkbox.id}
-        lang={element.lang}
-      ></gcds-label>
+      <gcds-label {...labelAttrs}></gcds-label>
 
-      {checkbox.hint ? (
+      {checkbox.hint || (!isGroup && hint) ? (
         <gcds-hint hint-id={checkbox.id}>
-          {!element.isGroup && element.hint ? element.hint : checkbox.hint}
+          {!isGroup && hint ? hint : checkbox.hint}
         </gcds-hint>
       ) : null}
 
-      {!element.isGroup && element.errorMessage ? (
+      {!isGroup && errorMessage ? (
         <gcds-error-message messageId={checkbox.id}>
-          {element.errorMessage}
+          {errorMessage}
         </gcds-error-message>
       ) : null}
     </div>

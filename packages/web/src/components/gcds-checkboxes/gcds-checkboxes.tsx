@@ -16,6 +16,7 @@ import {
   assignLanguage,
   emitEvent,
   inheritAttributes,
+  logError,
 } from '../../utils/utils';
 import {
   Validator,
@@ -38,11 +39,11 @@ export class GcdsCheckboxes {
   @AttachInternals()
   internals: ElementInternals;
 
-  private initialState?: boolean;
+  private initialState?: string;
 
   private shadowElement?: HTMLElement;
 
-  private optionObject;
+  private optionsArr;
   private isGroup = false;
 
   _validator: Validator<unknown> = defaultValidator;
@@ -64,42 +65,41 @@ export class GcdsCheckboxes {
   /**
    * Options to render radio buttons
    */
-  @Prop() options!: string | Array<CheckboxObject>;
+  @Prop({ mutable: true }) options!: string | Array<CheckboxObject>;
 
   @Watch('options')
   validateOptions() {
-    let validObject = true;
-    // Assign optionsObject from passed options string/object
-    if (typeof this.options == 'object') {
-      this.optionObject = this.options;
-    } else if (typeof this.options == 'string') {
-      this.optionObject = JSON.parse(this.options);
-    } else {
-      this.optionObject = null;
+    let invalidObject = false;
+    // Assign optionsArr from passed options string or array
+    if (typeof this.options === 'string' && this.options.trim() !== '') {
+      try {
+        // Assign to random variable to not restart options validation
+        const optionsCheck = JSON.parse(this.options as string);
+
+        if (Array.isArray(optionsCheck)) {
+          this.optionsArr = optionsCheck;
+        } else {
+          this.optionsArr = null;
+        }
+      } catch (e) {
+        logError('gcds-checkboxes', ['Invalid JSON string for options']);
+        this.options = null;
+      }
     }
 
     // Validate options has type CheckboxObject
-    if (this.optionObject) {
-      this.optionObject.map(radio => {
-        if (!isCheckboxObject(radio)) {
-          validObject = false;
-        }
-      });
+    if (this.optionsArr && this.optionsArr.length >= 1) {
+      invalidObject = this.optionsArr.some(
+        checkbox => !isCheckboxObject(checkbox),
+      );
     }
 
-    if (this.optionObject.length > 1) {
+    // Setup group rendering flag
+    if (this.optionsArr.length > 1) {
       this.isGroup = true;
     }
 
-    // Assign value if passed options has a checked radio
-    if (this.optionObject && !this.value) {
-      this.optionObject.forEach(radio => {
-        if (radio.checked === 'true' || radio.checked === true) {
-          this.value = radio.value;
-          this.internals.setFormValue(radio.value, 'checked');
-        }
-      });
-    }
+    // Error logging will be here
   }
 
   /**
@@ -119,9 +119,54 @@ export class GcdsCheckboxes {
   }
 
   /**
-   * Value for an input element.
+   * Value for an checkboxes component.
    */
-  @Prop({ reflect: true, mutable: true }) value: string;
+  @Prop({ reflect: true, mutable: true }) value: string | Array<string> = [];
+  @Watch('value')
+  validateValue(newValue) {
+    // Convert string to array
+    if (!Array.isArray(newValue)) {
+      try {
+        this.value = JSON.parse(newValue);
+      } catch (e) {
+        logError('gcds-checkboxes', ['Invalid array for value']);
+        this.value = [];
+      }
+    } else {
+      // Check options with matching values
+      if (this.optionsArr) {
+        const availableValues = [];
+        this.optionsArr.map(checkbox => {
+          availableValues.push(checkbox.value ? checkbox.value : 'on');
+
+          // Passed checkbox is not marked as checked
+          if ((this.value as Array<string>).includes(checkbox.value)) {
+            checkbox.checked = true;
+            // Checked checkbox is not in value
+          } else if (
+            (checkbox.checked == 'true' || checkbox.checked === true) &&
+            !(this.value as Array<string>).includes(checkbox.value || 'on')
+          ) {
+            (this.value as Array<string>).push(
+              checkbox.value ? checkbox.value : 'on',
+            );
+          }
+        });
+
+        // Remove any values that are not available in the inputs
+        (this.value as Array<string>)
+          .filter(value => !availableValues.includes(value))
+          .map(value => {
+            this.value = (this.value as Array<string>).filter(
+              item => item !== value,
+            );
+          });
+      }
+
+      this.internals.setFormValue(this.value.toString());
+      this.initialState = this.value.toString();
+    }
+  }
 
   /**
    * Specifies if an input element is checked.
@@ -221,11 +266,6 @@ export class GcdsCheckboxes {
   @Event() gcdsInput: EventEmitter;
 
   /**
-   * Emitted when a checkbox has changed.
-   */
-  @Event() gcdsChange: EventEmitter;
-
-  /**
    * Emitted when the input has a validation error.
    */
   @Event() gcdsError!: EventEmitter<object>;
@@ -271,14 +311,13 @@ export class GcdsCheckboxes {
    * Form internal functions
    */
   formResetCallback() {
-    if (this.checked != this.initialState) {
-      this.checked = this.initialState;
+    if (this.value.toString() != this.initialState) {
+      this.value = this.initialState;
     }
   }
 
   formStateRestoreCallback(state) {
     this.internals.setFormValue(state);
-    this.checked = state;
   }
 
   /*
@@ -296,6 +335,7 @@ export class GcdsCheckboxes {
     this.lang = assignLanguage(this.el);
 
     this.validateOptions();
+    this.validateValue(this.value);
     this.validateDisabledCheckbox();
     this.validateHasError();
     this.validateErrorMessage();
@@ -309,9 +349,6 @@ export class GcdsCheckboxes {
     }
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-
-    this.internals.setFormValue(this.checked ? this.value : null);
-    this.initialState = this.checked ? this.checked : null;
   }
 
   componentWillUpdate() {
@@ -320,23 +357,23 @@ export class GcdsCheckboxes {
     }
   }
 
-  // private onChange = e => {
-  //   this.checked = !this.checked;
-  //   this.internals.setFormValue(e.target.value, 'checked');
-
-  //   if (!this.checked) {
-  //     this.internals.setFormValue(null, 'checked');
-  //   }
-
-  //   const changeEvt = new e.constructor(e.type, e);
-  //   this.el.dispatchEvent(changeEvt);
-
-  //   this.gcdsChange.emit(this.checked);
-  // };
-
   private handleInput = (e, customEvent) => {
-    this.checked = !this.checked;
-    this.internals.setFormValue(e.target.value, 'checked');
+    if (e.target.checked) {
+      (this.value as Array<string>).push(e.target.value);
+    } else {
+      // Uncheck checkbox in optionsArr
+      this.optionsArr.map(checkbox => {
+        if (checkbox.id === e.target.id) {
+          checkbox.checked = false;
+        }
+      });
+      // Remove value from value array
+      this.value = (this.value as Array<string>).filter(
+        item => item !== e.target.value,
+      );
+    }
+
+    this.internals.setFormValue(this.value.toString());
 
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
@@ -349,15 +386,6 @@ export class GcdsCheckboxes {
   render() {
     const { legend, required, hint, errorMessage } = this;
 
-    // const attrsInput = {
-    //   name,
-    //   disabled,
-    //   required,
-    //   value,
-    //   checked,
-    //   ...inheritedAttributes,
-    // };
-
     const fieldsetAttrs = {
       'tabindex': '-1',
       'aria-labelledby': 'checkboxes-legend',
@@ -368,20 +396,6 @@ export class GcdsCheckboxes {
       fieldsetAttrs['aria-labelledby'] =
         `${fieldsetAttrs['aria-labelledby']} ${hintID}`.trim();
     }
-
-    // if (hint || errorMessage) {
-    //   const hintID = hint ? `hint-${checkboxId} ` : '';
-    //   const errorID = errorMessage ? `error-message-${checkboxId} ` : '';
-    //   attrsInput['aria-describedby'] = `${hintID}${errorID}${
-    //     attrsInput['aria-describedby']
-    //       ? `${attrsInput['aria-describedby']}`
-    //       : ''
-    //   }`;
-    // }
-
-    // if (hasError) {
-    //   attrsInput['aria-invalid'] = 'true';
-    // }
 
     return (
       <Host>
@@ -410,13 +424,13 @@ export class GcdsCheckboxes {
               </div>
             ) : null}
 
-            {this.optionObject &&
-              this.optionObject.map(checkbox => {
+            {this.optionsArr &&
+              this.optionsArr.map(checkbox => {
                 return renderCheckbox(checkbox, this, emitEvent);
               })}
           </fieldset>
         ) : (
-          renderCheckbox(this.optionObject[0], this, emitEvent)
+          renderCheckbox(this.optionsArr[0], this, emitEvent)
         )}
       </Host>
     );

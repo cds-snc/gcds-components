@@ -110,17 +110,23 @@
         <gcds-checkboxes
           legend="red"
           label="blue"
-          name="check"
+          name="checkgroup"
           hint="Checkboxes hint"
-          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+          class="value-check"
+          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}, { "label": "Radio 3 label", "id": "radio3", "checked": "true"}]'
+          value='["radio1"]'
         ></gcds-checkboxes>
         <gcds-checkboxes
           legend="red"
           label="blue"
-          name="check2"
+          name="singlecheck"
           hint="Checkboxes hint"
           options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}]'
+          class="value-check"
+          value='red'
         ></gcds-checkboxes>
+
+        <gcds-button id="value-check">Values</gcds-button>
 
         <gcds-input
           input-id="form-name"
@@ -138,6 +144,8 @@
           hint="Please enter your email."
           required
         ></gcds-input>
+
+
         <fieldset>
           <legend>Choose your monster's features:</legend>
         
@@ -156,21 +164,29 @@
       </form>
 
       <script>
+        document.getElementById('value-check').addEventListener('click', (e) => {
+          let checkboxes = document.querySelectorAll('.value-check');
+
+          checkboxes.forEach(v => {
+            console.log(v.name, v.value)
+          })
+        })
+
         let form = document.getElementById('form-submit');
 
-        form.addEventListener("submit", function(event) {
-          event.preventDefault();
-          new FormData(form);
-        });
+        // form.addEventListener("submit", function(event) {
+        //   event.preventDefault();
+        //   new FormData(form);
+        // });
 
-        form.addEventListener("formdata", event => {
-          // event.formData grabs the object
-          console.log(event.formData.getAll('name'));
-        });
-        form.addEventListener("gcdsInput", event => {
-          // event.formData grabs the object
-          console.log(event);
-        });
+        // form.addEventListener("formdata", event => {
+        //   // event.formData grabs the object
+        //   console.log(event.formData.getAll('name'));
+        // });
+        // form.addEventListener("gcdsInput", event => {
+        //   // event.formData grabs the object
+        //   console.log(event);
+        // });
         
       </script>
 

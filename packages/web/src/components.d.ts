@@ -230,9 +230,9 @@ export namespace Components {
     string | ValidatorEntry | Validator<string>
   >;
         /**
-          * Value for an input element.
+          * Value for an checkboxes component.
          */
-        "value": string;
+        "value": string | Array<string>;
     }
     interface GcdsContainer {
         /**
@@ -1338,7 +1338,6 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsInput": any;
-        "gcdsChange": any;
         "gcdsError": object;
         "gcdsValid": object;
     }
@@ -2051,10 +2050,6 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
         /**
-          * Emitted when a checkbox has changed.
-         */
-        "onGcdsChange"?: (event: GcdsCheckboxesCustomEvent<any>) => void;
-        /**
           * Emitted when the checkbox has been clicked.
          */
         "onGcdsClick"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
@@ -2093,9 +2088,9 @@ declare namespace LocalJSX {
     string | ValidatorEntry | Validator<string>
   >;
         /**
-          * Value for an input element.
+          * Value for an checkboxes component.
          */
-        "value"?: string;
+        "value"?: string | Array<string>;
     }
     interface GcdsContainer {
         /**
