@@ -2,6 +2,19 @@
 
 # Changelog
 
+## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.32.0...gcds-components-v0.33.0)
+
+Released on 2025-03-18
+
+### :rocket: New Features
+
+* **gcds-button:** Add start button role ([#775](https://github.com/cds-snc/gcds-components/issues/775)) ([1b519b4](https://github.com/cds-snc/gcds-components/commit/1b519b4d82158476192b7a28ce0a55e2e233dc9f))
+
+
+### :art: Styles
+
+* update header spacing and border colour + width ([#776](https://github.com/cds-snc/gcds-components/issues/776)) ([bfc184e](https://github.com/cds-snc/gcds-components/commit/bfc184eea624aa39e5966285b433e6399286a030))
+
 ## [0.32.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.31.0...gcds-components-v0.32.0)
 
 Released on: 2025-02-19
