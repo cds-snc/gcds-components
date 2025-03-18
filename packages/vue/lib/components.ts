@@ -161,18 +161,9 @@ export const GcdsErrorSummary = /*@__PURE__*/ defineContainer<JSX.GcdsErrorSumma
 
 
 export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcds-fieldset', undefined, [
-  'fieldsetId',
-  'legend',
-  'required',
-  'errorMessage',
   'hint',
-  'disabled',
-  'validator',
-  'validateOn',
-  'gcdsGroupError',
-  'gcdsGroupErrorClear',
-  'gcdsError',
-  'gcdsValid'
+  'legend',
+  'legendSize'
 ]);
 
 
@@ -378,6 +369,26 @@ export const GcdsRadioGroup = /*@__PURE__*/ defineContainer<JSX.GcdsRadioGroup>(
   'gcdsChange',
   'gcdsFocus',
   'gcdsBlur'
+]);
+
+
+export const GcdsRadios = /*@__PURE__*/ defineContainer<JSX.GcdsRadios>('gcds-radios', undefined, [
+  'options',
+  'name',
+  'legend',
+  'required',
+  'hint',
+  'errorMessage',
+  'disabled',
+  'value',
+  'validator',
+  'validateOn',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsValid',
+  'gcdsError'
 ]);
 
 

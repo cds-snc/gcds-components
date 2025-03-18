@@ -365,23 +365,39 @@
           hint="This answer is yes."
         ></gcds-checkbox>
 
-        <gcds-fieldset
-          fieldset-id="fieldset"
-          legend="Radio button group"
-          hint="They are in a fieldset"
+        <gcds-radios
+          name="radio"
+          legend="Radios"
+          hint="Rendered with options attribute"
           required
-        >
-          <gcds-radio-group
-            name="radio"
-            options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
-          >
-          </gcds-radio-group>
-        </gcds-fieldset>
+          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+        ></gcds-radios>
+
+        <gcds-radios
+          name="radios-object"
+          legend="Radios with JS"
+          hint="Radios options added by JavaScript"
+          required
+        ></gcds-radios>
+
+        <script>
+          // Create radio options array
+          const radioOptions = [
+            { "label": "Radio 1 label", "id": "radio1", "value": "radio1", "hint": "Set with JS"},
+            { "label": "Radio 2 label", "id": "radio2", "value": "radio2", "hint": "Set with JS"}
+          ];
+
+          // Find the gcds-radios element
+          const radios = document.querySelector('gcds-radios[name="radios-object"]');
+
+          // Assign radio options to options property
+          radios.options = radioOptions;
+        </script>
+
         <gcds-fieldset
-          fieldset-id="fieldset2"
           legend="Checkbox group"
+          legend-size="h3"
           hint="Select all that apply."
-          required
         >
           <gcds-checkbox
             checkbox-id="form-checkbox-group1"

@@ -40,6 +40,7 @@ export const GcdsNotice = /*@__PURE__*/createReactComponent<JSX.GcdsNotice, HTML
 export const GcdsPagination = /*@__PURE__*/createReactComponent<JSX.GcdsPagination, HTMLGcdsPaginationElement>('gcds-pagination');
 export const GcdsPhaseBanner = /*@__PURE__*/createReactComponent<JSX.GcdsPhaseBanner, HTMLGcdsPhaseBannerElement>('gcds-phase-banner');
 export const GcdsRadioGroup = /*@__PURE__*/createReactComponent<JSX.GcdsRadioGroup, HTMLGcdsRadioGroupElement>('gcds-radio-group');
+export const GcdsRadios = /*@__PURE__*/createReactComponent<JSX.GcdsRadios, HTMLGcdsRadiosElement>('gcds-radios');
 export const GcdsSearch = /*@__PURE__*/createReactComponent<JSX.GcdsSearch, HTMLGcdsSearchElement>('gcds-search');
 export const GcdsSelect = /*@__PURE__*/createReactComponent<JSX.GcdsSelect, HTMLGcdsSelectElement>('gcds-select');
 export const GcdsSideNav = /*@__PURE__*/createReactComponent<JSX.GcdsSideNav, HTMLGcdsSideNavElement>('gcds-side-nav');
