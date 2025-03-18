@@ -281,17 +281,35 @@
           hint="This answer is yes."
         ></gcds-checkbox>
 
-        <gcds-fieldset
-          legend="Radio button group"
-          legend-size="h3"
-          hint="They are in a fieldset"
-        >
-          <gcds-radio-group
-            name="radio"
-            options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
-          >
-          </gcds-radio-group>
-        </gcds-fieldset>
+        <gcds-radios
+          name="radio"
+          legend="Radios"
+          hint="Rendered with options attribute"
+          required
+          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+        ></gcds-radios>
+
+        <gcds-radios
+          name="radios-object"
+          legend="Radios with JS"
+          hint="Radios options added by JavaScript"
+          required
+        ></gcds-radios>
+
+        <script>
+          // Create radio options array
+          const radioOptions = [
+            { "label": "Radio 1 label", "id": "radio1", "value": "radio1", "hint": "Set with JS"},
+            { "label": "Radio 2 label", "id": "radio2", "value": "radio2", "hint": "Set with JS"}
+          ];
+
+          // Find the gcds-radios element
+          const radios = document.querySelector('gcds-radios[name="radios-object"]');
+
+          // Assign radio options to options property
+          radios.options = radioOptions;
+        </script>
+
         <gcds-fieldset
           legend="Checkbox group"
           legend-size="h3"

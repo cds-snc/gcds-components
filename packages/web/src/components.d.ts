@@ -9,10 +9,12 @@ import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
+import { RadioObject as RadioObject1 } from "./components/gcds-radios/radio";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
+export { RadioObject as RadioObject1 } from "./components/gcds-radios/radio";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -820,6 +822,54 @@ export namespace Components {
          */
         "options": string | Array<RadioObject>;
     }
+    interface GcdsRadios {
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled": boolean;
+        /**
+          * Set this to display an error message for invalid <gcds-radios>
+         */
+        "errorMessage": string;
+        /**
+          * Hint displayed below the label and above the radio elements
+         */
+        "hint": string;
+        /**
+          * Label or legend for the group of radio elements
+         */
+        "legend": string;
+        /**
+          * The `name` attribute for the <gcds-radios>, used to group radio elements together
+         */
+        "name": string;
+        /**
+          * Options to render radio buttons
+         */
+        "options": string | Array<RadioObject1>;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required": boolean;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Default value for the element
+         */
+        "value": string;
+    }
     interface GcdsSearch {
         /**
           * Sets the action for the search form. Default will be canada.ca global search
@@ -1142,6 +1192,10 @@ export interface GcdsPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface GcdsRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsRadioGroupElement;
+}
+export interface GcdsRadiosCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsRadiosElement;
 }
 export interface GcdsSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1522,6 +1576,28 @@ declare global {
         prototype: HTMLGcdsRadioGroupElement;
         new (): HTMLGcdsRadioGroupElement;
     };
+    interface HTMLGcdsRadiosElementEventMap {
+        "gcdsInput": void;
+        "gcdsChange": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsValid": void;
+        "gcdsError": object;
+    }
+    interface HTMLGcdsRadiosElement extends Components.GcdsRadios, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsRadiosElementEventMap>(type: K, listener: (this: HTMLGcdsRadiosElement, ev: GcdsRadiosCustomEvent<HTMLGcdsRadiosElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsRadiosElementEventMap>(type: K, listener: (this: HTMLGcdsRadiosElement, ev: GcdsRadiosCustomEvent<HTMLGcdsRadiosElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsRadiosElement: {
+        prototype: HTMLGcdsRadiosElement;
+        new (): HTMLGcdsRadiosElement;
+    };
     interface HTMLGcdsSearchElementEventMap {
         "gcdsInput": string;
         "gcdsChange": string;
@@ -1667,6 +1743,7 @@ declare global {
         "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radio-group": HTMLGcdsRadioGroupElement;
+        "gcds-radios": HTMLGcdsRadiosElement;
         "gcds-search": HTMLGcdsSearchElement;
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-side-nav": HTMLGcdsSideNavElement;
@@ -2655,6 +2732,74 @@ declare namespace LocalJSX {
          */
         "options": string | Array<RadioObject>;
     }
+    interface GcdsRadios {
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set this to display an error message for invalid <gcds-radios>
+         */
+        "errorMessage"?: string;
+        /**
+          * Hint displayed below the label and above the radio elements
+         */
+        "hint"?: string;
+        /**
+          * Label or legend for the group of radio elements
+         */
+        "legend": string;
+        /**
+          * The `name` attribute for the <gcds-radios>, used to group radio elements together
+         */
+        "name": string;
+        /**
+          * Emitted when the <gcds-radios> has lost focus
+         */
+        "onGcdsBlur"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when a <gcds-radios> option is checked (but not when unchecked)
+         */
+        "onGcdsChange"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when <gcds-radios> has a validation error
+         */
+        "onGcdsError"?: (event: GcdsRadiosCustomEvent<object>) => void;
+        /**
+          * Emitted when <gcds-radios> has received focus
+         */
+        "onGcdsFocus"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
+         */
+        "onGcdsInput"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when <gcds-radios> has passed validation
+         */
+        "onGcdsValid"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Options to render radio buttons
+         */
+        "options": string | Array<RadioObject1>;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Default value for the element
+         */
+        "value"?: string;
+    }
     interface GcdsSearch {
         /**
           * Sets the action for the search form. Default will be canada.ca global search
@@ -2997,6 +3142,7 @@ declare namespace LocalJSX {
         "gcds-pagination": GcdsPagination;
         "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radio-group": GcdsRadioGroup;
+        "gcds-radios": GcdsRadios;
         "gcds-search": GcdsSearch;
         "gcds-select": GcdsSelect;
         "gcds-side-nav": GcdsSideNav;
@@ -3045,6 +3191,7 @@ declare module "@stencil/core" {
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             "gcds-radio-group": LocalJSX.GcdsRadioGroup & JSXBase.HTMLAttributes<HTMLGcdsRadioGroupElement>;
+            "gcds-radios": LocalJSX.GcdsRadios & JSXBase.HTMLAttributes<HTMLGcdsRadiosElement>;
             "gcds-search": LocalJSX.GcdsSearch & JSXBase.HTMLAttributes<HTMLGcdsSearchElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
