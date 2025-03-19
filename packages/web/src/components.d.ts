@@ -190,7 +190,7 @@ export namespace Components {
          */
         "checked": boolean;
         /**
-          * Specifies if an input element is disabled or not.
+          * Specifies if the checkboxes are disabled or not.
          */
         "disabled": boolean;
         /**
@@ -214,7 +214,7 @@ export namespace Components {
          */
         "options": string | Array<CheckboxObject>;
         /**
-          * Specifies if a form field is required or not.
+          * Specifies if the checkboxes are required or not.
          */
         "required": boolean;
         /**
@@ -232,7 +232,7 @@ export namespace Components {
     string | ValidatorEntry | Validator<string>
   >;
         /**
-          * Value for an checkboxes component.
+          * Value for checkboxes component.
          */
         "value": string | Array<string>;
     }
@@ -2059,7 +2059,7 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Specifies if an input element is disabled or not.
+          * Specifies if the checkboxes are disabled or not.
          */
         "disabled"?: boolean;
         /**
@@ -2107,7 +2107,7 @@ declare namespace LocalJSX {
          */
         "options": string | Array<CheckboxObject>;
         /**
-          * Specifies if a form field is required or not.
+          * Specifies if the checkboxes are required or not.
          */
         "required"?: boolean;
         /**
@@ -2121,7 +2121,7 @@ declare namespace LocalJSX {
     string | ValidatorEntry | Validator<string>
   >;
         /**
-          * Value for an checkboxes component.
+          * Value for checkboxes component.
          */
         "value"?: string | Array<string>;
     }

@@ -107,26 +107,30 @@
       <hr class="my-550" />
 
       <form id="form-submit">
+        <gcds-error-summary listen></gcds-error-summary>
+
         <gcds-checkboxes
           legend="red"
           label="blue"
           name="checkgroup"
           hint="Checkboxes hint"
+          required
           class="value-check"
-          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}, { "label": "Radio 3 label", "id": "radio3", "checked": "true"}]'
-          value='["radio1"]'
+          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}, { "label": "Radio 3 label", "id": "radio3", "value": "radio3"}]'
         ></gcds-checkboxes>
         <gcds-checkboxes
           legend="red"
           label="blue"
           name="singlecheck"
           hint="Checkboxes hint"
+          required
+
           options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}]'
           class="value-check"
-          value='red'
         ></gcds-checkboxes>
 
         <gcds-button id="value-check">Values</gcds-button>
+        <gcds-button id="check-check">Check checked checkboxes</gcds-button>
 
         <gcds-input
           input-id="form-name"
@@ -170,6 +174,11 @@
           checkboxes.forEach(v => {
             console.log(v.name, v.value)
           })
+        })
+        document.getElementById('check-check').addEventListener('click', (e) => {
+          let checkboxes = document.querySelectorAll('.value-check');
+
+          console.log(checkboxes[0].shadowRoot.querySelectorAll('input[type=checkbox]:checked'))
         })
 
         let form = document.getElementById('form-submit');

@@ -92,6 +92,8 @@ export class GcdsCheckboxes {
       invalidObject = this.optionsArr.some(
         checkbox => !isCheckboxObject(checkbox),
       );
+    } else if (this.optionsArr.length == 0) {
+      invalidObject = true;
     }
 
     // Setup group rendering flag
@@ -103,11 +105,11 @@ export class GcdsCheckboxes {
   }
 
   /**
-   * Specifies if a form field is required or not.
+   * Specifies if the checkboxes are required or not.
    */
   @Prop({ reflect: true, mutable: false }) required: boolean;
   /**
-   * Specifies if an input element is disabled or not.
+   * Specifies if the checkboxes are disabled or not.
    */
   @Prop({ reflect: true, mutable: true }) disabled: boolean;
 
@@ -119,7 +121,7 @@ export class GcdsCheckboxes {
   }
 
   /**
-   * Value for an checkboxes component.
+   * Value for checkboxes component.
    */
   @Prop({ reflect: true, mutable: true }) value: string | Array<string> = [];
   @Watch('value')
@@ -252,7 +254,7 @@ export class GcdsCheckboxes {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  private onBlur = () => {
+  private onBlurValidate = () => {
     if (this.validateOn == 'blur') {
       this.validate();
     }
@@ -280,13 +282,10 @@ export class GcdsCheckboxes {
    */
   @Method()
   async validate() {
-    if (
-      !this._validator.validate(this.checked) &&
-      this._validator.errorMessage
-    ) {
+    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
       this.errorMessage = this._validator.errorMessage[this.lang];
       this.gcdsError.emit({
-        message: `${this.legend} - ${this.errorMessage}`,
+        message: `${this.isGroup ? this.legend : this.optionsArr[0].label} - ${this.errorMessage}`,
       });
     } else {
       this.errorMessage = '';
@@ -342,7 +341,10 @@ export class GcdsCheckboxes {
     this.validateValidator();
 
     // Assign required validator if needed
-    requiredValidator(this.el, 'checkbox');
+    requiredValidator(
+      this.el,
+      this.isGroup ? 'checkboxGroup' : 'singleCheckbox',
+    );
 
     if (this.validator) {
       this._validator = getValidator(this.validator);
@@ -359,6 +361,11 @@ export class GcdsCheckboxes {
 
   private handleInput = (e, customEvent) => {
     if (e.target.checked) {
+      this.optionsArr.map(checkbox => {
+        if (checkbox.id === e.target.id) {
+          checkbox.checked = true;
+        }
+      });
       (this.value as Array<string>).push(e.target.value);
     } else {
       // Uncheck checkbox in optionsArr
@@ -398,7 +405,13 @@ export class GcdsCheckboxes {
     }
 
     return (
-      <Host>
+      <Host
+        onBlur={() => {
+          if (this.isGroup) {
+            this.onBlurValidate();
+          }
+        }}
+      >
         {this.isGroup ? (
           <fieldset class="gcds-checkboxes__fieldset" {...fieldsetAttrs}>
             <legend id="checkboxes-legend" class="gcds-checkboxes__legend">

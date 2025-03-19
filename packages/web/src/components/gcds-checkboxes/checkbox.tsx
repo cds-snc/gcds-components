@@ -34,24 +34,24 @@ export const renderCheckbox = (checkbox, element, emitEvent) => {
     disabled,
     hasError,
     errorMessage,
-    value,
-    onBlur,
     gcdsFocus,
     gcdsInput,
     gcdsClick,
+    gcdsBlur,
     handleInput,
     required,
     hint,
     isGroup,
     lang,
+    onBlurValidate,
   } = element;
 
   const attrsInput = {
     name: name,
+    id: checkbox.id,
     disabled: disabled,
     required: checkbox.required,
     value: checkbox.value,
-    checked: checkbox.checked,
   };
 
   const labelAttrs = {
@@ -71,6 +71,11 @@ export const renderCheckbox = (checkbox, element, emitEvent) => {
     }`;
   }
 
+  if (checkbox.checked == 'true' || checkbox.checked === true) {
+    attrsInput['checked'] = true;
+    console.log(checkbox.id);
+  }
+
   if (hasError) {
     attrsInput['aria-invalid'] = 'true';
     attrsInput['aria-description'] = errorMessage;
@@ -83,10 +88,15 @@ export const renderCheckbox = (checkbox, element, emitEvent) => {
       }`}
     >
       <input
-        id={checkbox.id}
         type="checkbox"
         {...attrsInput}
-        onBlur={() => onBlur()}
+        onBlur={() => {
+          if (isGroup) {
+            gcdsBlur.emit();
+          } else {
+            onBlurValidate();
+          }
+        }}
         onFocus={() => gcdsFocus.emit()}
         onInput={e => handleInput(e, gcdsInput)}
         onClick={e => emitEvent(e, gcdsClick)}
