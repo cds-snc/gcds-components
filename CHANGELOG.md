@@ -692,6 +692,107 @@ Released on: 2024-02-22
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
 
+## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.32.0...gcds-components-v0.33.0)
+
+Version publiée le : 2025-03-18
+
+### :rocket: Nouvelles fonctionnalités
+
+* **gcds-button :** Ajout du rôle bouton de démarrage ([\#775](https://github.com/cds-snc/gcds-components/issues/775)) ([1b519b4](https://github.com/cds-snc/gcds-components/commit/1b519b4d82158476192b7a28ce0a55e2e233dc9f))
+
+
+### :art: Styles
+
+* Mise à jour de l'espacement de l'en-tête et de la couleur + la largeur de la bordure ([\#776](https://github.com/cds-snc/gcds-components/issues/776)) ([bfc184e](https://github.com/cds-snc/gcds-components/commit/bfc184eea624aa39e5966285b433e6399286a030))
+
+## [0.32.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.31.0...gcds-components-v0.32.0)
+
+Version publiée le : 2025-02-19
+
+### :bug: :wrench: Corrections de bogues
+
+* Problèmes d’affichage et d’interaction ([\#748](https://github.com/cds-snc/gcds-components/issues/748)) ([0169b14](https://github.com/cds-snc/gcds-components/commit/0169b14bd17c1e65f1531b7df0df9e062776f30b)) avec les composants de navigation (`gcds-top-nav`, `gcds-nav-group`)
+* Retrait de la dépendance gcds-fieldset du composant gcds-date-input ([\#746](https://github.com/cds-snc/gcds-components/issues/746)) ([3e103ee](https://github.com/cds-snc/gcds-components/commit/3e103eecccf045862865b3b20cc4390a9942bd28))
+
+
+### :pencil: Documentation
+
+* Nous avons mis à jour les descriptions de propriété de `card-title-tag` pour `<gcds-card>` et `notice-title-tag` pour `<gcds-notice>` afin de décrire plus clairement son fonctionnement ([\#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
+
+
+### :art: Styles
+Des travaux ont été fait pour harmoniser nos styles avec ceux de Canada.ca :
+
+* Mise à jour du dégagement intérieur pour `<gcds-footer>` ([\#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
+* Mise à jour des styles pour `<gcds-footer>` ([\#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
+* Mise à jour de la taille de police pour `<gcds-breadcrumb-item>` ([\#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
+* Mise à jour de la taille de police pour `<date-modified>` ([\#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
+* Mise à jour de la taille de police pour `<gcds-lang-toggle>` ([\#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
+* Mise à jour des styles pour `<gcds-search>` ([\#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
+
+## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.30.0...gcds-components-v0.31.0)
+
+Version publiée le : 2025-01-22
+
+### :rocket: Nouvelles fonctionnalités
+
+* ajout de la propriété d'écart de grille pour plus de flexibilité ([\#732](https://github.com/cds-snc/gcds-components/issues/732)) ([2af7915](https://github.com/cds-snc/gcds-components/commit/2af7915306f0a32f6af32a24336857ce300756d8))
+* mise à jour des instructions d'installation pour correspondre au site de documentation ([\#718](https://github.com/cds-snc/gcds-components/issues/718)) ([e5c3bee](https://github.com/cds-snc/gcds-components/commit/e5c3bee5c724f85db9afe6970b3acee83e5c3d33))
+
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-button :** Empêchement de l'événement gcdsClick si le bouton est désactivé ([\#724](https://github.com/cds-snc/gcds-components/issues/724)) ([1cd508a](https://github.com/cds-snc/gcds-components/commit/1cd508a87c95b38a1937f421580ab8d846112f9a))
+* **gcds-link :** Propriété d'affichage pour permettre un comportement normal de retour à la ligne des liens ([\#731](https://github.com/cds-snc/gcds-components/issues/731)) ([b0f357c](https://github.com/cds-snc/gcds-components/commit/b0f357c61c7a951a92f24b1de1b4c2a61e92fc10))
+* **gcds-notice :** Ajout des étiquettes accessibles pour identifier le type d'avis ([\#721](https://github.com/cds-snc/gcds-components/issues/721)) ([450d182](https://github.com/cds-snc/gcds-components/commit/450d18215ee15c33cdcd6991defc764f65e236e7))
+* **gcds-pagination :** Ajout de tabindex="0" aux balises <a> pour le fonctionnement dans les navigateurs webkit ([\#723](https://github.com/cds-snc/gcds-components/issues/723)) ([7256590](https://github.com/cds-snc/gcds-components/commit/7256590d0f5517e87fb7e1d10439a7d3b9f7e579))
+* **gcds-textarea :** Valeur correctement définie dans la zone de texte shadow-root ([\#730](https://github.com/cds-snc/gcds-components/issues/730)) ([c3f18e6](https://github.com/cds-snc/gcds-components/commit/c3f18e612e091b7d06c1802d8af99da9efd77460))
+* Description de la propriété de taille de saisie ([\#728](https://github.com/cds-snc/gcds-components/issues/728)) ([f6fa41b](https://github.com/cds-snc/gcds-components/commit/f6fa41b64653160493cc8857e0fb1933234a5050))
+
+
+### :arrows\_counterclockwise: Refactorisation du code
+
+* Retrait de l'empilement du chemin d’accès sur les appareils mobiles ([\#729](https://github.com/cds-snc/gcds-components/issues/729)) ([cf70cf6](https://github.com/cds-snc/gcds-components/commit/cf70cf6afea17bc7a3ba745fe4851b95306e280e))
+* Mise à jour de l'espacement des composants + flèches de pagination ([\#726](https://github.com/cds-snc/gcds-components/issues/726)) ([a00e60d](https://github.com/cds-snc/gcds-components/commit/a00e60dcb389d4577af4c6f5e450718a35574391))
+
+## [0.30.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.1...gcds-components-v0.30.0)
+
+Version publiée le : 2024-12-17
+
+### :rocket: Nouvelles fonctionnalités
+
+* **angular :** Mise à jour des dépendances angular vers la v19 ([\#709](https://github.com/cds-snc/gcds-components/issues/709)) ([ab1c12b](https://github.com/cds-snc/gcds-components/commit/ab1c12b822e13040ac8da7e66c5e9ada9aea1180))
+
+
+### :art: Styles
+
+* Amélioration du design d'impression pour le composant détails ([\#711](https://github.com/cds-snc/gcds-components/issues/711)) ([e68a3bf](https://github.com/cds-snc/gcds-components/commit/e68a3bf78a4a50fe8836cec64ca30557d5298871))
+
+
+### :arrows\_counterclockwise: Refactorisation du code
+
+* Ajustement de l'espacement des éléments de formulaire ([\#707](https://github.com/cds-snc/gcds-components/issues/707)) ([4393412](https://github.com/cds-snc/gcds-components/commit/43934122d91718cd73881c03a12c4c570dca5862))
+
+## [0.29.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.0...gcds-components-v0.29.1)
+
+Version publiée le : 2024-12-11
+
+### :bug: :wrench: Corrections de bogues
+
+* affichage de l’élément flèche du chemin d’accès ([\#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
+
+## [0.29.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.28.0...gcds-components-v0.29.0)
+
+Version publiée le : 2024-12-11
+
+### :rocket: Nouvelles fonctionnalités
+
+* Nouveau composant gcds-notice ([\#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
+
+### :arrows\_counterclockwise: Refactorisation du code
+
+* Ajustement de la marge des chemins d’accès ([\#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
+
 ## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0)
 
 Version publiée le : 2024-12-05
