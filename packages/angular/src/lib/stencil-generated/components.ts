@@ -215,7 +215,7 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
   methods: ['validate'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsError', 'gcdsValid']
 })
@@ -224,7 +224,7 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })

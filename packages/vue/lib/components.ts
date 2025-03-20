@@ -89,7 +89,6 @@ export const GcdsCheckboxes = /*@__PURE__*/ defineContainer<JSX.GcdsCheckboxes>(
   'required',
   'disabled',
   'value',
-  'checked',
   'errorMessage',
   'hint',
   'validator',

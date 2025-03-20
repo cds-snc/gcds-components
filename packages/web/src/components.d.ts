@@ -186,15 +186,11 @@ export namespace Components {
     }
     interface GcdsCheckboxes {
         /**
-          * Specifies if an input element is checked.
-         */
-        "checked": boolean;
-        /**
           * Specifies if the checkboxes are disabled or not.
          */
         "disabled": boolean;
         /**
-          * Error message for an invalid input element.
+          * Set this to display an error message for invalid <gcds-checkboxes>
          */
         "errorMessage": string;
         /**
@@ -2055,15 +2051,11 @@ declare namespace LocalJSX {
     }
     interface GcdsCheckboxes {
         /**
-          * Specifies if an input element is checked.
-         */
-        "checked"?: boolean;
-        /**
           * Specifies if the checkboxes are disabled or not.
          */
         "disabled"?: boolean;
         /**
-          * Error message for an invalid input element.
+          * Set this to display an error message for invalid <gcds-checkboxes>
          */
         "errorMessage"?: string;
         /**

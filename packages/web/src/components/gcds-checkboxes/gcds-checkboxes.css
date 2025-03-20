@@ -90,7 +90,6 @@
         opacity: 0;
         top: var(--gcds-checkbox-check-top);
         transform: rotate(40deg);
-        transition: opacity 0.2s ease-in-out;
       }
     }
 

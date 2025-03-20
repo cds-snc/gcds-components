@@ -24,6 +24,7 @@
 ### Used by
 
  - [gcds-checkbox](../gcds-checkbox)
+ - [gcds-checkboxes](../gcds-checkboxes)
  - [gcds-date-input](../gcds-date-input)
  - [gcds-fieldset](../gcds-fieldset)
  - [gcds-file-uploader](../gcds-file-uploader)
@@ -42,6 +43,7 @@
 graph TD;
   gcds-hint --> gcds-text
   gcds-checkbox --> gcds-hint
+  gcds-checkboxes --> gcds-hint
   gcds-date-input --> gcds-hint
   gcds-fieldset --> gcds-hint
   gcds-file-uploader --> gcds-hint

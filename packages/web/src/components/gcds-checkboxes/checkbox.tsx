@@ -28,7 +28,7 @@ export function isCheckboxObject(obj: any): obj is CheckboxObject {
   return hasValidTypes && hasOnlyValidKeys;
 }
 
-export const renderCheckbox = (checkbox, element, emitEvent) => {
+export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
   const {
     name,
     disabled,
@@ -38,11 +38,11 @@ export const renderCheckbox = (checkbox, element, emitEvent) => {
     gcdsInput,
     gcdsClick,
     gcdsBlur,
-    handleInput,
     required,
     hint,
     isGroup,
     lang,
+    value,
     onBlurValidate,
   } = element;
 
@@ -71,9 +71,8 @@ export const renderCheckbox = (checkbox, element, emitEvent) => {
     }`;
   }
 
-  if (checkbox.checked == 'true' || checkbox.checked === true) {
+  if (value.includes(checkbox.value)) {
     attrsInput['checked'] = true;
-    console.log(checkbox.id);
   }
 
   if (hasError) {

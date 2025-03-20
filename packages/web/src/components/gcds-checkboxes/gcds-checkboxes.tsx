@@ -17,6 +17,8 @@ import {
   emitEvent,
   inheritAttributes,
   logError,
+  handleErrors,
+  isValid,
 } from '../../utils/utils';
 import {
   Validator,
@@ -57,10 +59,22 @@ export class GcdsCheckboxes {
    */
   @Prop({ reflect: true, mutable: false }) name!: string;
 
+  @Watch('name')
+  validateName() {
+    this.errors = handleErrors(this.errors, 'name', this.name);
+  }
+
   /**
    * Name of the form field group.
    */
   @Prop({ reflect: true, mutable: false }) legend: string;
+
+  @Watch('legend')
+  validateLegend() {
+    if (this.isGroup) {
+      this.errors = handleErrors(this.errors, 'legend', this.legend);
+    }
+  }
 
   /**
    * Options to render radio buttons
@@ -80,10 +94,18 @@ export class GcdsCheckboxes {
           this.optionsArr = optionsCheck;
         } else {
           this.optionsArr = null;
+          invalidObject = true;
         }
       } catch (e) {
         logError('gcds-checkboxes', ['Invalid JSON string for options']);
         this.options = null;
+        invalidObject = true;
+        this.errors = handleErrors(
+          this.errors,
+          'options',
+          this.optionsArr,
+          invalidObject,
+        );
       }
     }
 
@@ -92,22 +114,29 @@ export class GcdsCheckboxes {
       invalidObject = this.optionsArr.some(
         checkbox => !isCheckboxObject(checkbox),
       );
-    } else if (this.optionsArr.length == 0) {
+    } else if (this.optionsArr && this.optionsArr.length == 0) {
       invalidObject = true;
     }
 
     // Setup group rendering flag
-    if (this.optionsArr.length > 1) {
+    if (this.optionsArr && this.optionsArr.length > 1) {
       this.isGroup = true;
     }
 
-    // Error logging will be here
+    // Log error if no or invalid optionsArr
+    this.errors = handleErrors(
+      this.errors,
+      'options',
+      this.optionsArr,
+      invalidObject,
+    );
   }
 
   /**
    * Specifies if the checkboxes are required or not.
    */
   @Prop({ reflect: true, mutable: false }) required: boolean;
+
   /**
    * Specifies if the checkboxes are disabled or not.
    */
@@ -141,17 +170,14 @@ export class GcdsCheckboxes {
         this.optionsArr.map(checkbox => {
           availableValues.push(checkbox.value ? checkbox.value : 'on');
 
-          // Passed checkbox is not marked as checked
-          if ((this.value as Array<string>).includes(checkbox.value)) {
-            checkbox.checked = true;
-            // Checked checkbox is not in value
-          } else if (
+          if (
             (checkbox.checked == 'true' || checkbox.checked === true) &&
             !(this.value as Array<string>).includes(checkbox.value || 'on')
           ) {
-            (this.value as Array<string>).push(
+            this.value = [
+              ...(this.value as Array<string>),
               checkbox.value ? checkbox.value : 'on',
-            );
+            ];
           }
         });
 
@@ -171,12 +197,7 @@ export class GcdsCheckboxes {
   }
 
   /**
-   * Specifies if an input element is checked.
-   */
-  @Prop({ reflect: true, mutable: true }) checked: boolean;
-
-  /**
-   * Error message for an invalid input element.
+   * Set this to display an error message for invalid <gcds-checkboxes>
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
   @Watch('errorMessage')
@@ -236,6 +257,12 @@ export class GcdsCheckboxes {
   @State() lang: string;
 
   /**
+   * State to track validation on properties
+   * Contains a list of properties that have an error associated with them
+   */
+  @State() errors: Array<string> = [];
+
+  /**
    * Events
    */
 
@@ -293,6 +320,7 @@ export class GcdsCheckboxes {
     }
   }
 
+  // Submit validation handler
   @Listen('submit', { target: 'document' })
   submitListener(e) {
     if (e.target == this.el.closest('form')) {
@@ -329,12 +357,23 @@ export class GcdsCheckboxes {
     }
   }
 
+  /*
+   * Validate required properties
+   */
+  private validateRequiredProps() {
+    this.validateOptions();
+    this.validateValue(this.value);
+    this.validateLegend();
+    this.validateName();
+
+    return isValid(this.errors, ['name', 'legend', 'options']);
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    this.validateOptions();
-    this.validateValue(this.value);
+    this.validateRequiredProps();
     this.validateDisabledCheckbox();
     this.validateHasError();
     this.validateErrorMessage();
@@ -346,8 +385,24 @@ export class GcdsCheckboxes {
       this.isGroup ? 'checkboxGroup' : 'singleCheckbox',
     );
 
+    // Assign checkbox hint to component hint if not group
+    if (
+      !this.isGroup &&
+      this.optionsArr &&
+      this.optionsArr[0]?.hint &&
+      !this.hint
+    ) {
+      this.hint = this.optionsArr[0].hint;
+    }
+
     if (this.validator) {
       this._validator = getValidator(this.validator);
+    }
+
+    const valid = this.validateRequiredProps();
+
+    if (!valid) {
+      logError('gcds-checkboxes', this.errors);
     }
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
@@ -359,21 +414,19 @@ export class GcdsCheckboxes {
     }
   }
 
+  async componentDidUpdate() {
+    // Validate props again if changed after render
+    const valid = this.validateRequiredProps();
+
+    if (!valid) {
+      logError('gcds-checkboxes', this.errors);
+    }
+  }
+
   private handleInput = (e, customEvent) => {
     if (e.target.checked) {
-      this.optionsArr.map(checkbox => {
-        if (checkbox.id === e.target.id) {
-          checkbox.checked = true;
-        }
-      });
-      (this.value as Array<string>).push(e.target.value);
+      this.value = [...(this.value as Array<string>), e.target.value];
     } else {
-      // Uncheck checkbox in optionsArr
-      this.optionsArr.map(checkbox => {
-        if (checkbox.id === e.target.id) {
-          checkbox.checked = false;
-        }
-      });
       // Remove value from value array
       this.value = (this.value as Array<string>).filter(
         item => item !== e.target.value,
@@ -404,48 +457,60 @@ export class GcdsCheckboxes {
         `${fieldsetAttrs['aria-labelledby']} ${hintID}`.trim();
     }
 
-    return (
-      <Host
-        onBlur={() => {
-          if (this.isGroup) {
-            this.onBlurValidate();
-          }
-        }}
-      >
-        {this.isGroup ? (
-          <fieldset class="gcds-checkboxes__fieldset" {...fieldsetAttrs}>
-            <legend id="checkboxes-legend" class="gcds-checkboxes__legend">
-              {legend}
-              {required ? (
-                <span class="legend__required"> (required)</span>
+    if (this.validateRequiredProps()) {
+      return (
+        <Host
+          onBlur={() => {
+            if (this.isGroup) {
+              this.onBlurValidate();
+            }
+          }}
+        >
+          {this.isGroup ? (
+            <fieldset class="gcds-checkboxes__fieldset" {...fieldsetAttrs}>
+              <legend id="checkboxes-legend" class="gcds-checkboxes__legend">
+                {legend}
+                {required ? (
+                  <span class="legend__required"> (required)</span>
+                ) : null}
+              </legend>
+              {hint ? (
+                <gcds-hint id="checkboxes-hint" hint-id="checkboxes">
+                  {hint}
+                </gcds-hint>
               ) : null}
-            </legend>
-            {hint ? (
-              <gcds-hint id="checkboxes-hint" hint-id="checkboxes">
-                {hint}
-              </gcds-hint>
-            ) : null}
 
-            {errorMessage ? (
-              <div>
-                <gcds-error-message
-                  id="checkboxes-error"
-                  messageId="checkboxes"
-                >
-                  {errorMessage}
-                </gcds-error-message>
-              </div>
-            ) : null}
+              {errorMessage ? (
+                <div>
+                  <gcds-error-message
+                    id="checkboxes-error"
+                    messageId="checkboxes"
+                  >
+                    {errorMessage}
+                  </gcds-error-message>
+                </div>
+              ) : null}
 
-            {this.optionsArr &&
-              this.optionsArr.map(checkbox => {
-                return renderCheckbox(checkbox, this, emitEvent);
-              })}
-          </fieldset>
-        ) : (
-          renderCheckbox(this.optionsArr[0], this, emitEvent)
-        )}
-      </Host>
-    );
+              {this.optionsArr &&
+                this.optionsArr.map(checkbox => {
+                  return renderCheckbox(
+                    checkbox,
+                    this,
+                    emitEvent,
+                    this.handleInput,
+                  );
+                })}
+            </fieldset>
+          ) : (
+            renderCheckbox(
+              this.optionsArr[0],
+              this,
+              emitEvent,
+              this.handleInput,
+            )
+          )}
+        </Host>
+      );
+    }
   }
 }
