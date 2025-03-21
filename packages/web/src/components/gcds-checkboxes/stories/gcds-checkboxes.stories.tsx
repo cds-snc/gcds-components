@@ -90,8 +90,8 @@ export default {
     value: {
       control: 'text',
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+        type: { summary: 'string | Array<string>' },
+        defaultValue: { summary: '[]' },
       },
     },
     ...validatorProps,
