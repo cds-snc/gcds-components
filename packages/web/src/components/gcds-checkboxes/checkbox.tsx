@@ -62,6 +62,7 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
 
   if (!isGroup && required) {
     labelAttrs['required'] = required;
+    attrsInput['required'] = required;
   }
 
   if (checkbox.hint) {

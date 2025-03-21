@@ -107,6 +107,8 @@ export class GcdsCheckboxes {
           invalidObject,
         );
       }
+    } else if (Array.isArray(this.options)) {
+      this.optionsArr = this.options;
     }
 
     // Validate options has type CheckboxObject
@@ -204,10 +206,8 @@ export class GcdsCheckboxes {
   validateErrorMessage() {
     if (this.disabled) {
       this.errorMessage = '';
-    } else if (!this.hasError && this.errorMessage) {
-      this.hasError = true;
-    } else if (this.errorMessage == '') {
-      this.hasError = false;
+    } else {
+      this.hasError = this.errorMessage ? !this.hasError : false;
     }
   }
 

@@ -111,10 +111,19 @@
 
         <gcds-checkboxes
           legend="red"
+          name="jsoptions"
+          hint="Checkboxes hint"
+          required
+          class="value-check"
+          id="jscheck"
+        ></gcds-checkboxes>
+        <gcds-checkboxes
+          legend="red"
           name="checkgroup"
           hint="Checkboxes hint"
           required
           class="value-check"
+          value='["radio1"]'
           options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}, { "label": "Radio 3 label", "id": "radio3", "value": "radio3"}]'
         ></gcds-checkboxes>
         <gcds-checkboxes
@@ -164,6 +173,24 @@
       </form>
 
       <script>
+        const options = [
+          {
+            label: 'Checkbox 1 label',
+            id: 'checkbox1',
+            value: 'checkbox2',
+          },
+          {
+            label: 'Checkbox 2 label',
+            id: 'checkbox1',
+            value: 'checkbox2',
+          },
+        ];
+
+
+        let check = document.getElementById('jscheck');
+
+        check.options = options;
+
         document.getElementById('value-check').addEventListener('click', (e) => {
           let checkboxes = document.querySelectorAll('.value-check');
 
