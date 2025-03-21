@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property               | Attribute       | Description                                      | Type                                                | Default     |
-| ---------------------- | --------------- | ------------------------------------------------ | --------------------------------------------------- | ----------- |
-| `disabled`             | `disabled`      | Specifies if the checkboxes are disabled or not. | `boolean`                                           | `undefined` |
-| `errorMessage`         | `error-message` | Error message for an invalid input element.      | `string`                                            | `undefined` |
-| `hint`                 | `hint`          | Hint displayed below the label.                  | `string`                                            | `undefined` |
-| `legend`               | `legend`        | Name of the form field group.                    | `string`                                            | `undefined` |
-| `name` _(required)_    | `name`          | Name attribute for an input element.             | `string`                                            | `undefined` |
-| `options` _(required)_ | `options`       | Options to render radio buttons                  | `CheckboxObject[] \| string`                        | `undefined` |
-| `required`             | `required`      | Specifies if the checkboxes are required or not. | `boolean`                                           | `undefined` |
-| `validateOn`           | `validate-on`   | Set event to call validator                      | `"blur" \| "other" \| "submit"`                     | `undefined` |
-| `validator`            | --              | Array of validators                              | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `value`                | `value`         | Value for checkboxes component.                  | `string \| string[]`                                | `[]`        |
+| Property               | Attribute       | Description                                                        | Type                                                | Default     |
+| ---------------------- | --------------- | ------------------------------------------------------------------ | --------------------------------------------------- | ----------- |
+| `disabled`             | `disabled`      | Specifies if the checkboxes are disabled or not.                   | `boolean`                                           | `undefined` |
+| `errorMessage`         | `error-message` | Set this to display an error message for invalid <gcds-checkboxes> | `string`                                            | `undefined` |
+| `hint`                 | `hint`          | Hint displayed below the label.                                    | `string`                                            | `undefined` |
+| `legend`               | `legend`        | Name of the form field group.                                      | `string`                                            | `undefined` |
+| `name` _(required)_    | `name`          | Name attribute for an input element.                               | `string`                                            | `undefined` |
+| `options` _(required)_ | `options`       | Options to render radio buttons                                    | `CheckboxObject[] \| string`                        | `undefined` |
+| `required`             | `required`      | Specifies if the checkboxes are required or not.                   | `boolean`                                           | `undefined` |
+| `validateOn`           | `validate-on`   | Set event to call validator                                        | `"blur" \| "other" \| "submit"`                     | `undefined` |
+| `validator`            | --              | Array of validators                                                | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `value`                | `value`         | Value for checkboxes component.                                    | `string \| string[]`                                | `[]`        |
 
 
 ## Events

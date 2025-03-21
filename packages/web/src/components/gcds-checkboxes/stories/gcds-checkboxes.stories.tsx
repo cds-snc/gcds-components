@@ -16,17 +16,6 @@ export default {
 
   argTypes: {
     // Props
-    checkboxId: {
-      name: 'checkbox-id',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
-      },
-      type: {
-        required: true,
-      },
-    },
     name: {
       control: 'text',
       table: {
@@ -35,14 +24,6 @@ export default {
       },
       type: {
         required: true,
-      },
-    },
-    checked: {
-      control: { type: 'select' },
-      options: [false, true],
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
       },
     },
     disabled: {
@@ -68,10 +49,30 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
-    label: {
+    legend: {
       control: 'text',
       table: {
         type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+      type: {
+        required: true,
+      },
+    },
+    options: {
+      control: 'text',
+      table: {
+        type: {
+          summary: `
+        {
+          id: string;
+          label: string;
+          value?: string;
+          hint?: string;
+          checked?: boolean;
+        }
+        string | object[]`,
+        },
         defaultValue: { summary: '-' },
       },
       type: {
@@ -97,8 +98,8 @@ export default {
     ...langProp,
 
     // Events
-    gcdsChange: {
-      action: 'change',
+    gcdsInput: {
+      action: 'input',
       ...eventProp,
     },
     gcdsFocus: {
@@ -115,158 +116,282 @@ export default {
 const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
-<gcds-checkbox
-  checkbox-id="${args.checkboxId}"
-  label="${args.label}"
+<gcds-checkboxes
   name="${args.name}"
+  legend="${args.legend}"
+  options='${args.options}'
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
-  ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
+  ${args.value ? `value='${args.value}'` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-</gcds-checkbox>
+</gcds-checkboxes>
 
 <!-- React code -->
-<GcdsCheckbox
-  checkboxId="${args.checkboxId}"
-  label="${args.label}"
+<GcdsCheckboxes
   name="${args.name}"
+  legend="${args.legend}"
+  options='${args.options}'
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
-  ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
+  ${args.value ? `value='${args.value}'` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-</GcdsCheckbox>
+</GcdsCheckboxes>
 `.replace(/\s\snull\n/g, '');
 
 const TemplatePlayground = args =>
   `
 <!-- Web component code (Angular, Vue) -->
-<gcds-checkbox
-  checkbox-id="${args.checkboxId}"
-  label="${args.label}"
+<gcds-checkboxes
   name="${args.name}"
+  legend="${args.legend}"
+  options='${args.options}'
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
-  ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
+  ${args.value ? `value='${args.value}'` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-</gcds-checkbox>
+</gcds-checkboxes>
 `.replace(/\s\snull\n/g, '');
 
-export const Default = Template.bind({});
-Default.args = {
-  checkboxId: 'checkbox-default',
-  label: 'Label',
+export const DefaultGroup = Template.bind({});
+DefaultGroup.args = {
+  legend: 'Legend',
   name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const DefaultSingle = Template.bind({});
+DefaultSingle.args = {
+  legend: '',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const HintGroup = Template.bind({});
+HintGroup.args = {
+  legend: 'Legend',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
   hint: 'Description or example to make the option clearer.',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  checked: false,
   validateOn: 'blur',
   lang: 'en',
 };
 
-export const Required = Template.bind({});
-Required.args = {
-  checkboxId: 'checkbox-required',
-  label: 'Label',
+export const HintSingle = Template.bind({});
+HintSingle.args = {
+  legend: 'Legend',
   name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
+  ]`,
   hint: 'Description or example to make the option clearer.',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const RequiredGroup = Template.bind({});
+RequiredGroup.args = {
+  legend: 'Legend',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: true,
   disabled: false,
   value: '',
-  checked: false,
-  validateOn: 'other',
+  validateOn: 'blur',
   lang: 'en',
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  checkboxId: 'checkbox-disabled',
-  label: 'Label',
+export const RequiredSingle = Template.bind({});
+RequiredSingle.args = {
+  legend: 'Legend',
   name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: true,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const DisabledGroup = Template.bind({});
+DisabledGroup.args = {
+  legend: 'Legend',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: true,
   value: '',
-  checked: false,
   validateOn: 'blur',
   lang: 'en',
 };
 
-export const Error = Template.bind({});
-Error.args = {
-  checkboxId: 'checkbox-error',
-  label: 'Label',
+export const DisabledSingle = Template.bind({});
+DisabledSingle.args = {
+  legend: 'Legend',
   name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: true,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const ErrorGroup = Template.bind({});
+ErrorGroup.args = {
+  legend: 'Legend',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
+  hint: '',
+  errorMessage: 'Choose an option to continue.',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const ErrorSingle = Template.bind({});
+ErrorSingle.args = {
+  legend: 'Legend',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
+  ]`,
+  hint: '',
   errorMessage: 'You must check the box to continue.',
   required: false,
   disabled: false,
   value: '',
-  checked: false,
   validateOn: 'blur',
   lang: 'en',
 };
 
-export const Checked = Template.bind({});
-Checked.args = {
-  checkboxId: 'checkbox-checked',
-  label: 'Label',
+export const ValueGroup = Template.bind({});
+ValueGroup.args = {
+  legend: 'Legend',
   name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,
-  value: '',
-  checked: true,
-  validateOn: 'other',
+  value: '["checkbox2"]',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const ValueSingle = Template.bind({});
+ValueSingle.args = {
+  legend: 'Legend',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '["checkbox1"]',
+  validateOn: 'blur',
   lang: 'en',
 };
 
 export const Props = Template.bind({});
 Props.args = {
-  checkboxId: 'checkbox-default',
-  label: 'Label',
+  legend: 'Legend',
   name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  checked: false,
   validateOn: 'blur',
   lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  checkboxId: 'checkbox-playground',
-  label: 'Label',
+  legend: 'Legend',
   name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  checked: false,
   validateOn: 'blur',
   lang: 'en',
 };
