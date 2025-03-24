@@ -106,122 +106,6 @@
 
       <hr class="my-550" />
 
-      <form id="form-submit">
-        <gcds-error-summary listen></gcds-error-summary>
-
-        <gcds-checkboxes
-          legend="red"
-          name="jsoptions"
-          hint="Checkboxes hint"
-          required
-          class="value-check"
-          id="jscheck"
-        ></gcds-checkboxes>
-        <gcds-checkboxes
-          legend="red"
-          name="checkgroup"
-          hint="Checkboxes hint"
-          required
-          class="value-check"
-          value='["radio1"]'
-          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}, { "label": "Radio 3 label", "id": "radio3", "value": "radio3"}]'
-        ></gcds-checkboxes>
-        <gcds-checkboxes
-          name="singlecheck"
-          hint="Checkboxes hint"
-          required
-          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}]'
-          class="value-check"
-        ></gcds-checkboxes>
-
-        <gcds-button id="value-check">Values</gcds-button>
-        <gcds-button id="check-check">Check checked checkboxes</gcds-button>
-
-        <gcds-input
-          input-id="form-name"
-          name="name"
-          label="Name"
-          hint="Please enter your full name."
-          required
-        ></gcds-input>
-
-        <gcds-input
-          input-id="form-email"
-          label="Email"
-          type="text"
-          name="name"
-          hint="Please enter your email."
-          required
-        ></gcds-input>
-
-
-        <fieldset>
-          <legend>Choose your monster's features:</legend>
-        
-          <div>
-            <input type="checkbox" id="scales" name="test" checked value="blue"/>
-            <label for="scales">Scales</label>
-          </div>
-        
-          <div>
-            <input type="checkbox" id="horns" name="test" value="red"/>
-            <label for="horns">Horns</label>
-          </div>
-        </fieldset>
-
-        <gcds-button type="submit">Submit</gcds-button>
-      </form>
-
-      <script>
-        const options = [
-          {
-            label: 'Checkbox 1 label',
-            id: 'checkbox1',
-            value: 'checkbox2',
-          },
-          {
-            label: 'Checkbox 2 label',
-            id: 'checkbox1',
-            value: 'checkbox2',
-          },
-        ];
-
-
-        let check = document.getElementById('jscheck');
-
-        check.options = options;
-
-        document.getElementById('value-check').addEventListener('click', (e) => {
-          let checkboxes = document.querySelectorAll('.value-check');
-
-          checkboxes.forEach(v => {
-            console.log(v.name, v.value)
-          })
-        })
-        document.getElementById('check-check').addEventListener('click', (e) => {
-          let checkboxes = document.querySelectorAll('.value-check');
-
-          console.log(checkboxes[0].shadowRoot.querySelectorAll('input[type=checkbox]:checked'))
-        })
-
-        let form = document.getElementById('form-submit');
-
-        // form.addEventListener("submit", function(event) {
-        //   event.preventDefault();
-        //   new FormData(form);
-        // });
-
-        // form.addEventListener("formdata", event => {
-        //   // event.formData grabs the object
-        //   console.log(event.formData.getAll('name'));
-        // });
-        // form.addEventListener("gcdsInput", event => {
-        //   // event.formData grabs the object
-        //   console.log(event);
-        // });
-        
-      </script>
-
       <!-- ------------- Alerts ------------- -->
 
       <gcds-heading tag="h2">Alerts</gcds-heading>
@@ -390,12 +274,12 @@
           required
         ></gcds-textarea>
 
-        <gcds-checkbox
-          checkbox-id="form-checkbox"
-          label="Do you like pizza?"
+        <gcds-checkboxes
+          name="singlecheck"
           required
-          hint="This answer is yes."
-        ></gcds-checkbox>
+          options='[{ "label": "Do you like pizza?", "id": "form-checkbox", "value": "yes", "hint": "This answer is yes."}]'
+          class="value-check"
+        ></gcds-checkboxes>
 
         <gcds-radios
           name="radio"
@@ -426,24 +310,42 @@
           radios.options = radioOptions;
         </script>
 
-        <gcds-fieldset
+        <gcds-checkboxes
           legend="Checkbox group"
-          legend-size="h3"
+          name="checkgroup"
           hint="Select all that apply."
-        >
-          <gcds-checkbox
-            checkbox-id="form-checkbox-group1"
-            label="checkbox 1 label"
-            hint="This is a hint."
-            name="checkbox"
-          ></gcds-checkbox>
-          <gcds-checkbox
-            checkbox-id="form-checkbox-group2"
-            label="checkbox 2 label"
-            hint="This is a hint."
-            name="checkbox"
-          ></gcds-checkbox>
-        </gcds-fieldset>
+          required
+          options='[{ "label": "Checkbox 1 label", "id": "check1", "value": "check1"}, { "label": "Checkbox 2 label", "id": "check2", "value": "check2"}, { "label": "Checkbox 3 label", "id": "check3", "value": "check3"}]'
+        ></gcds-checkboxes>
+
+        <gcds-checkboxes
+          legend="Checkboxes"
+          name="jsoptions"
+          hint="Set with JS."
+          required
+          id="jscheck"
+        ></gcds-checkboxes>
+
+
+      <script>
+        const checkboxOptions = [
+          {
+            label: 'Checkbox 1 label',
+            id: 'checkbox1',
+            value: 'checkbox2',
+          },
+          {
+            label: 'Checkbox 2 label',
+            id: 'checkbox1',
+            value: 'checkbox2',
+          },
+        ];
+
+
+        let check = document.getElementById('jscheck');
+
+        check.options = checkboxOptions;
+      </script>
 
         <gcds-select
           select-id="form-select"

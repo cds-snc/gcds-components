@@ -214,7 +214,7 @@ export class GcdsCheckboxes {
   /**
    * Hint displayed below the label.
    */
-  @Prop({ reflect: true, mutable: false }) hint: string;
+  @Prop({ reflect: true, mutable: true }) hint: string;
 
   /**
    * Array of validators
