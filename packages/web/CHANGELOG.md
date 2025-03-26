@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.0...gcds-components-v0.34.0-canary.0) (2025-03-26)
+
+
+### :bug: :wrench: Bug Fixes
+
+* Mobile top-nav menu closing in Safari ([#785](https://github.com/cds-snc/gcds-components/issues/785)) ([913eb3c](https://github.com/cds-snc/gcds-components/commit/913eb3c6ed82a5b02161a792470e465f3068bd33))
+
 ## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.32.0...gcds-components-v0.33.0) (2025-03-18)
 
 
