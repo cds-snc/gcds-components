@@ -185,6 +185,7 @@ export class GcdsNavGroup {
       <Host role="listitem" open={open}>
         <button
           aria-haspopup="true"
+          tabIndex={0}
           aria-expanded={open.toString()}
           ref={element => (this.triggerElement = element as HTMLElement)}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}

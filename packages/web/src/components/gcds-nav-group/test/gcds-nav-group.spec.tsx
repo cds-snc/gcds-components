@@ -10,7 +10,7 @@ describe('gcds-nav-group', () => {
     expect(page.root).toEqualHtml(`
     <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group" role="listitem">
       <mock:shadow-root>
-        <button aria-expanded="false" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable">
+        <button aria-expanded="false" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable" tabindex="0">
           <gcds-icon name="angle-down"></gcds-icon>
           Nav group
         </button>
@@ -30,7 +30,7 @@ describe('gcds-nav-group', () => {
     expect(page.root).toEqualHtml(`
     <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group" lang="fr" role="listitem">
       <mock:shadow-root>
-        <button aria-expanded="false" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable">
+        <button aria-expanded="false" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable" tabindex="0">
           <gcds-icon name="angle-down"></gcds-icon>
           Nav group
         </button>
@@ -50,7 +50,7 @@ describe('gcds-nav-group', () => {
     expect(page.root).toEqualHtml(`
     <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group" role="listitem" open>
       <mock:shadow-root>
-        <button aria-expanded="true" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable">
+        <button aria-expanded="true" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable" tabindex="0">
           <gcds-icon name="angle-up"></gcds-icon>
           Nav group
         </button>
