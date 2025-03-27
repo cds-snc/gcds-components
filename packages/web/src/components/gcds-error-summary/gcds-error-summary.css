@@ -39,6 +39,10 @@
 
           gcds-link::part(link):not(:focus) {
             color: var(--gcds-error-summary-link-color);
+
+            &:hover {
+              color: var(--gcds-error-summary-link-hover-color);
+            }
           }
         }
       }
