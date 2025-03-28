@@ -14,6 +14,7 @@ export const GcdsBreadcrumbsItem = /*@__PURE__*/createReactComponent<JSX.GcdsBre
 export const GcdsButton = /*@__PURE__*/createReactComponent<JSX.GcdsButton, HTMLGcdsButtonElement>('gcds-button');
 export const GcdsCard = /*@__PURE__*/createReactComponent<JSX.GcdsCard, HTMLGcdsCardElement>('gcds-card');
 export const GcdsCheckbox = /*@__PURE__*/createReactComponent<JSX.GcdsCheckbox, HTMLGcdsCheckboxElement>('gcds-checkbox');
+export const GcdsCheckboxes = /*@__PURE__*/createReactComponent<JSX.GcdsCheckboxes, HTMLGcdsCheckboxesElement>('gcds-checkboxes');
 export const GcdsContainer = /*@__PURE__*/createReactComponent<JSX.GcdsContainer, HTMLGcdsContainerElement>('gcds-container');
 export const GcdsDateInput = /*@__PURE__*/createReactComponent<JSX.GcdsDateInput, HTMLGcdsDateInputElement>('gcds-date-input');
 export const GcdsDateModified = /*@__PURE__*/createReactComponent<JSX.GcdsDateModified, HTMLGcdsDateModifiedElement>('gcds-date-modified');
