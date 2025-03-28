@@ -118,7 +118,7 @@ const Template = args =>
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-checkboxes
   name="${args.name}"
-  legend="${args.legend}"
+  ${args.legend ? `legend="${args.legend}"` : null}
   options='${args.options}'
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
@@ -216,7 +216,7 @@ HintGroup.args = {
 
 export const HintSingle = Template.bind({});
 HintSingle.args = {
-  legend: 'Legend',
+  legend: '',
   name: 'checkbox',
   options: `[
     { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
@@ -249,7 +249,7 @@ RequiredGroup.args = {
 
 export const RequiredSingle = Template.bind({});
 RequiredSingle.args = {
-  legend: 'Legend',
+  legend: '',
   name: 'checkbox',
   options: `[
     { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
@@ -282,7 +282,7 @@ DisabledGroup.args = {
 
 export const DisabledSingle = Template.bind({});
 DisabledSingle.args = {
-  legend: 'Legend',
+  legend: '',
   name: 'checkbox',
   options: `[
     { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
@@ -315,7 +315,7 @@ ErrorGroup.args = {
 
 export const ErrorSingle = Template.bind({});
 ErrorSingle.args = {
-  legend: 'Legend',
+  legend: '',
   name: 'checkbox',
   options: `[
     { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
@@ -348,7 +348,7 @@ ValueGroup.args = {
 
 export const ValueSingle = Template.bind({});
 ValueSingle.args = {
-  legend: 'Legend',
+  legend: '',
   name: 'checkbox',
   options: `[
     { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
