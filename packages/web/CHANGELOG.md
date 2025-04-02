@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.34.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.0...gcds-components-v0.34.0-canary.0) (2025-04-02)
+
+
+### :bug: :wrench: Bug Fixes
+
+* GC signature cut off on mobile devices ([#796](https://github.com/cds-snc/gcds-components/issues/796)) ([1603172](https://github.com/cds-snc/gcds-components/commit/1603172413d6427b7f1a34f96a990461a33c5c7d))
+* mandatory elements issues ([#793](https://github.com/cds-snc/gcds-components/issues/793)) ([69d77a7](https://github.com/cds-snc/gcds-components/commit/69d77a79e0a477c0dda8c39d815245f7d826351e))
+* mandatory elements issues ([#793](https://github.com/cds-snc/gcds-components/issues/793)) ([3fbd544](https://github.com/cds-snc/gcds-components/commit/3fbd54469d1634890a814a972e255fc4717405cf))
+* Mobile top-nav menu closing in Safari ([#785](https://github.com/cds-snc/gcds-components/issues/785)) ([913eb3c](https://github.com/cds-snc/gcds-components/commit/913eb3c6ed82a5b02161a792470e465f3068bd33))
+
 ## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.32.0...gcds-components-v0.33.0) (2025-03-18)
 
 
