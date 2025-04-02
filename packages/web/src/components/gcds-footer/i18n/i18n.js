@@ -81,7 +81,7 @@ const I18N = {
           link: 'https://www.canada.ca/en/services/science.html',
         },
         indigenous: {
-          text: 'Indigenous peoples',
+          text: 'Indigenous Peoples',
           link: 'https://www.canada.ca/en/services/indigenous-peoples.html',
         },
         veterans: {
