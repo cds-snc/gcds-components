@@ -170,7 +170,7 @@ describe('gcds-footer', () => {
                   </li>
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/services/indigenous-peoples.html">
-                      Indigenous peoples
+                      Indigenous Peoples
                     </gcds-link>
                   </li>
                   <li>
@@ -606,7 +606,7 @@ describe('gcds-footer', () => {
                   </li>
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/services/indigenous-peoples.html">
-                      Indigenous peoples
+                      Indigenous Peoples
                     </gcds-link>
                   </li>
                   <li>

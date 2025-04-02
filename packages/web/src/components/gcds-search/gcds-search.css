@@ -34,6 +34,7 @@
 
     input {
       box-sizing: border-box;
+      border-radius: 0;
       width: 100%;
       max-height: var(--gcds-search-max-height);
       font: var(--gcds-search-font);
@@ -52,6 +53,8 @@
     }
 
     gcds-button {
+      --gcds-button-mobile-margin: 0;
+      
       &::part(button) {
         border-radius: 0;
         padding: var(--gcds-search-button-padding);
