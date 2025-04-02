@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.34.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.0...gcds-components-v0.34.0-canary.0) (2025-04-02)
+## [0.33.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.0...gcds-components-v0.33.1) (2025-04-02)
 
 
 ### :bug: :wrench: Bug Fixes
