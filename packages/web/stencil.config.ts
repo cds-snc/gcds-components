@@ -8,8 +8,7 @@ import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'gcds',
-  globalStyle:
-    '../../node_modules/@cdssnc/gcds-tokens/build/web/css/tokens.css',
+  globalStyle: 'src/assets/css/global.css',
   srcDir: './src',
   outputTargets: [
     reactOutputTarget({
