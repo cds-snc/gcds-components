@@ -1,0 +1,16 @@
+/* Import GC Design System Tokens */
+@import '../../../../../node_modules/@cdssnc/gcds-tokens/build/web/css/tokens.css';
+
+/* Add fade-in animation to improve layout shift  */
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fade 0.05s normal forwards ease-in-out;
+}
