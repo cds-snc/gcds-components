@@ -255,7 +255,7 @@ export class GcdsFileUploader {
 
       this.shadowElement.files = dt.files;
       this.files = dt.files;
-      this.addFilesToFormData(this.shadowElement.files);
+      this.addFilesToFormData(Array.from(this.shadowElement.files));
     }
 
     this.value = [...filesContainer];
@@ -332,6 +332,47 @@ export class GcdsFileUploader {
 
     this.internals.setFormValue(formData);
   };
+
+  /*
+   * Handle drop event on file uploader
+   */
+  private handleDrop(e) {
+    e.preventDefault();
+
+    const droppedFiles = e.dataTransfer.files;
+
+    if (droppedFiles.length > 0) {
+      const dt = new DataTransfer();
+      for (const file of droppedFiles) {
+        if (this.isFileAccepted(file)) {
+          dt.items.add(file);
+        }
+      }
+
+      if (dt.files.length > 0) {
+        this.shadowElement.files = dt.files;
+        this.files = dt.files;
+      }
+    }
+  }
+
+  /*
+   * Check if dropped files are accpeted file types
+   */
+  private isFileAccepted(file) {
+    if (this.accept) {
+      const acceptedTypes = this.accept.split(',').map(type => type.trim());
+      return acceptedTypes.some(type => {
+        if (type.startsWith('.')) {
+          return file.name.endsWith(type);
+        } else {
+          return file.type === type;
+        }
+      });
+    }
+
+    return true;
+  }
 
   /*
    * Observe lang attribute change
@@ -437,6 +478,8 @@ export class GcdsFileUploader {
             class={`file-uploader__input ${
               value.length > 0 ? 'uploaded-files' : ''
             }`}
+            onDrop={e => this.handleDrop(e)}
+            onDragOver={e => e.preventDefault()}
           >
             <button
               type="button"
