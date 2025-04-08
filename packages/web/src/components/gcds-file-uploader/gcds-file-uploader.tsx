@@ -341,11 +341,13 @@ export class GcdsFileUploader {
 
     const droppedFiles = e.dataTransfer.files;
 
-    if (droppedFiles.length > 0) {
+    if (droppedFiles && droppedFiles.length > 0) {
       const dt = new DataTransfer();
       for (const file of droppedFiles) {
         if (this.isFileAccepted(file)) {
           dt.items.add(file);
+        } else {
+          this.errorMessage = `${i18n[this.lang].droppedError} ${this.accept}`;
         }
       }
 
@@ -354,6 +356,9 @@ export class GcdsFileUploader {
         this.files = dt.files;
       }
     }
+
+    // Focus file input to bring atention to any errors
+    this.shadowElement.focus();
   }
 
   /*
