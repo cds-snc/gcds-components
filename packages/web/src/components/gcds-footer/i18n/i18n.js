@@ -4,7 +4,7 @@ const I18N = {
       heading: 'Government of Canada',
       menu: {
         contacts: {
-          text: 'All Contacts',
+          text: 'All contacts',
           link: 'https://www.canada.ca/en/contact.html',
         },
         dept: {
