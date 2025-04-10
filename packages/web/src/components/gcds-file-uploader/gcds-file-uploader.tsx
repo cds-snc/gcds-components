@@ -344,11 +344,7 @@ export class GcdsFileUploader {
     if (droppedFiles && droppedFiles.length > 0) {
       const dt = new DataTransfer();
       for (const file of droppedFiles) {
-        if (this.isFileAccepted(file)) {
-          dt.items.add(file);
-        } else {
-          this.errorMessage = `${i18n[this.lang].droppedError} ${this.accept}`;
-        }
+        dt.items.add(file);
       }
 
       if (dt.files.length > 0) {
@@ -357,26 +353,8 @@ export class GcdsFileUploader {
       }
     }
 
-    // Focus file input to bring atention to any errors
+    // Focus file input after drop
     this.shadowElement.focus();
-  }
-
-  /*
-   * Check if dropped files are accpeted file types
-   */
-  private isFileAccepted(file) {
-    if (this.accept) {
-      const acceptedTypes = this.accept.split(',').map(type => type.trim());
-      return acceptedTypes.some(type => {
-        if (type.startsWith('.')) {
-          return file.name.endsWith(type);
-        } else {
-          return file.type === type;
-        }
-      });
-    }
-
-    return true;
   }
 
   /*
