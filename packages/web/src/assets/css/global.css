@@ -1,5 +1,15 @@
 /* Import GC Design System Tokens */
-@import '../../../../../node_modules/@cdssnc/gcds-tokens/build/web/css/tokens.css';
+@import '~@cdssnc/gcds-tokens/build/web/css/tokens.css';
+
+/* Import GC Design System Icon Font */
+@font-face {
+  font-family: 'gcds-icons';
+  src: url('/dist/gcds/assets/fonts/gcds-icons.ttf') format('truetype'),
+      url('/dist/gcds/assets/fonts/gcds-icons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 
 /* Add fade-in animation to improve layout shift  */
 @keyframes fade {

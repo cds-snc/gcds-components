@@ -33,7 +33,15 @@ export const config: Config = {
       isPrimaryPackageOutputTarget: true,
     },
     {
+      // Copy font assets from 'assets' folder to 'dist' folder to ensure they are included in the build output.
       type: 'dist-custom-elements',
+      copy: [
+        {
+          src: 'assets/fonts/**/*',
+          dest: 'dist/gcds/assets/fonts',
+          warn: true,
+        },
+      ],
     },
     {
       type: 'docs-readme',

@@ -3,6 +3,7 @@ export default {
 
   argTypes: {
     // Props
+    // TODO: Will be removed in separate pull request
     iconStyle: {
       name: 'icon-style',
       control: { type: 'select' },
@@ -102,7 +103,23 @@ export default {
       },
     },
     name: {
-      control: 'text',
+      control: { type: 'select' },
+      options: [
+        'checkmark-circle',
+        'chevron-down',
+        'chevron-left',
+        'chevron-right',
+        'chevron-up',
+        'close',
+        'download',
+        'email',
+        'exclamation-circle',
+        'external',
+        'info-circle',
+        'phone',
+        'search',
+        'warning-triangle',
+      ],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
@@ -111,6 +128,7 @@ export default {
         required: true,
       },
     },
+    // TODO: Will be removed in separate pull request
     fixedWidth: {
       name: 'fixed-width',
       control: { type: 'select' },
@@ -135,7 +153,7 @@ export default {
       ],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'text' },
+        defaultValue: { summary: 'inherit' },
       },
     },
   },
@@ -491,7 +509,9 @@ const TemplateMultiple = args =>
     args.size2 != 'text' ? `size="${args.size2}"` : null
   }></gcds-icon>
 <gcds-icon name="${args.name3}" ${
-    args.size3 != 'text' ? `size="${args.size3}"` : null
+    args.name3 === 'close' || args.size3 != 'text'
+      ? `size="${args.size3}"`
+      : null
   }></gcds-icon>
 <gcds-icon name="${args.name4}" ${
     args.size4 != 'text' ? `size="${args.size4}"` : null
@@ -520,7 +540,9 @@ const TemplateMultiple = args =>
     args.size2 != 'text' ? `size="${args.size2}"` : null
   }></GcdsIcon>
 <GcdsIcon name="${args.name3}" ${
-    args.size3 != 'text' ? `size="${args.size3}"` : null
+    args.name3 === 'close' || args.size3 != 'text'
+      ? `size="${args.size3}"`
+      : null
   }></GcdsIcon>
 <GcdsIcon name="${args.name4}" ${
     args.size4 != 'text' ? `size="${args.size4}"` : null
@@ -542,6 +564,7 @@ const TemplateMultiple = args =>
   }></GcdsIcon>
 `.replace(/ null/g, '');
 
+// TODO: Will be removed in separate pull request
 const TemplateTwo = args =>
   `
 <!-- Web component code (Angular, Vue) -->
@@ -591,15 +614,15 @@ Default.args = {
 
 export const Name = TemplateMultiple.bind({});
 Name.args = {
-  name1: 'close',
-  name2: 'external-link',
-  name3: 'caret-up',
-  name4: 'caret-down',
-  name5: 'exclamation-circle',
-  name6: 'sync',
+  name1: 'checkmark-circle',
+  name2: 'chevron-down',
+  name3: 'chevron-left',
+  name4: 'chevron-right',
+  name5: 'chevron-up',
+  name6: 'close',
   name7: 'download',
-  name8: 'check',
-  name9: 'paperclip',
+  name8: 'email',
+  name9: 'exclamation-circle',
   size1: 'text',
   size2: 'text',
   size3: 'text',
@@ -711,8 +734,8 @@ MarginRight.args = {
   size: 'text-small',
 };
 
+// TODO: Will be removed in separate pull request
 // ------ Icon width ------
-
 export const Width = TemplateTwo.bind({});
 Width.args = {
   name: 'close',

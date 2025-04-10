@@ -54,16 +54,12 @@
 
     gcds-button {
       --gcds-button-mobile-margin: 0;
-      
+
       &::part(button) {
         border-radius: 0;
-        padding: var(--gcds-search-button-padding);
+        padding: 0;
         width: var(--gcds-search-button-width-height);
         height: var(--gcds-search-button-width-height);
-      }
-
-      gcds-icon {
-        display: block;
       }
     }
   }

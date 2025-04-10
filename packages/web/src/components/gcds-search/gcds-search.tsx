@@ -181,6 +181,7 @@ export class GcdsSearch {
               exportparts="button"
             >
               <gcds-icon
+                size="h3"
                 name="search"
                 label={I18N[lang].search}
                 fixed-width

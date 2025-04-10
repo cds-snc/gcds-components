@@ -507,7 +507,7 @@ export class GcdsFileUploader {
                   <gcds-text margin-bottom="0">{file}</gcds-text>
                   <button onClick={e => this.removeFile(e)}>
                     <span>{i18n[lang].button.remove}</span>
-                    <gcds-icon name="times" size="text" margin-left="150" />
+                    <gcds-icon name="close" size="text" margin-left="150" />
                   </button>
                 </div>
               ))
