@@ -60,7 +60,7 @@ export const assignLanguage = (el: HTMLElement) => {
 };
 
 // Allows use of closest() function across shadow boundaries
-const closestElement = (selector, el) => {
+export const closestElement = (selector, el) => {
   if (el) {
     return (
       (el &&

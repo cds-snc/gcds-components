@@ -74,9 +74,21 @@ export class GcdsTopNav {
 
           if (mobileTrigger.hasAttribute('open')) {
             mobileTrigger.toggleNav();
+            const childNavGroups = nav.querySelectorAll('gcds-nav-group');
+            childNavGroups.forEach(navGroup => {
+              if (navGroup.hasAttribute('open')) {
+                navGroup.toggleNav();
+              }
+            });
           }
         } else {
           nav.updateNavSize('mobile');
+          const childNavGroups = nav.querySelectorAll('gcds-nav-group');
+          childNavGroups.forEach(navGroup => {
+            if (navGroup.hasAttribute('open')) {
+              navGroup.toggleNav();
+            }
+          });
           await nav.updateNavItemQueue(nav);
         }
       });

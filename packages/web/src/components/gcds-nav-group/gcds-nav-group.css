@@ -111,7 +111,7 @@
     height: 100vh;
     overflow-y: scroll;
     background-color: var(--gcds-nav-group-mobile-background);
-    padding: var(--gcds-nav-group-mobile-padding);
+    padding: var(--gcds-nav-group-mobile-padding) !important;
   }
 }
 

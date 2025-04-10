@@ -18,16 +18,18 @@ const I18N = {
       '11': 'November',
       '12': 'December',
     },
-    valueError: 'gcds-date-input:  Value attribute contains an invalid date format. Expected format: ',
+    valueError:
+      'gcds-date-input:  Value attribute contains an invalid date format. Expected format: ',
     valueFormatfull: 'YYYY-MM-DD',
-    valueFormatcompact: 'YYYY-MM'
+    valueFormatcompact: 'YYYY-MM',
+    required: ' (required)',
   },
   fr: {
     year: 'Année',
     month: 'Mois',
     day: 'Jour',
     selectmonth: 'Sélectionnez un mois',
-    months : {
+    months: {
       '01': 'janvier',
       '02': 'février',
       '03': 'mars',
@@ -41,9 +43,11 @@ const I18N = {
       '11': 'novembre',
       '12': 'décembre',
     },
-    valueError: 'gcds-date-input:  Value attribute contains an invalid date format. Expected format: ',
+    valueError:
+      'gcds-date-input:  Value attribute contains an invalid date format. Expected format: ',
     valueFormatfull: 'YYYY-MM-DD',
-    valueFormatcompact: 'YYYY-MM'
+    valueFormatcompact: 'YYYY-MM',
+    required: ' (obligatoire)',
   },
 };
 

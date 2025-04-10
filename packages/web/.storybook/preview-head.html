@@ -427,6 +427,14 @@
 <script>
   const url = new URLSearchParams(window.location.search);
 
+  if (url.get('externalLinks')) {
+    document.addEventListener('gcdsClick', (ev) => {
+      if (ev.detail && ev.detail.includes('https://')) {
+        top.window.location.href = ev.detail;
+      }
+    });
+  }
+
   if (url.get('demo') && url.get('lang')) {
     var tableTimer = setInterval(function () {
       if (document.querySelector('.docblock-argstable')) {

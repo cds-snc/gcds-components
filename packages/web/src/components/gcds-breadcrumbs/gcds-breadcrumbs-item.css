@@ -25,5 +25,9 @@
       content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' height='12px' viewBox='0 0 8 14'><path fill='26374a' d='M7.7,6.3c0.4,0.4,0.4,1,0,1.4l-6,6c-0.4,0.4-1,0.4-1.4,0s-0.4-1,0-1.4L5.6,7L0.3,1.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0 L7.7,6.3L7.7,6.3z'/></svg>");
       margin: var(--gcds-breadcrumbs-item-arrow-margin);
     }
+
+    gcds-link::part(link) {
+      font: var(--gcds-breadcrumbs-item-font);
+    }
   }
 }

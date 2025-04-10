@@ -9,7 +9,7 @@ export default {
   parameters: {
     actions: {
       argTypesRegex: '^gcds.*',
-      handles: ['RadioChange', 'focus', 'blur'],
+      handles: ['change', 'focus', 'blur'],
     },
   },
 
@@ -50,8 +50,8 @@ export default {
     ...langProp,
 
     // Events
-    gcdsRadioChange: {
-      action: 'RadioChange',
+    gcdsChange: {
+      action: 'change',
       ...eventProp,
     },
     gcdsFocus: {
