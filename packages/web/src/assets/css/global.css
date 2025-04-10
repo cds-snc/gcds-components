@@ -1,5 +1,5 @@
 /* Import GC Design System Tokens */
-@import '../../../../../node_modules/@cdssnc/gcds-tokens/build/web/css/tokens.css';
+@import '~@cdssnc/gcds-tokens/build/web/css/tokens.css';
 
 /* Import GC Design System Icon Font */
 @font-face {
