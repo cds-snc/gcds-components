@@ -49,7 +49,3 @@ UserInterfaceState.xcuserstate
 packages/react/gcds.css
 packages/vue/gcds.css
 packages/react-ssr/gcds.css
-
-# Icon font files
-packages/web/src/assets/fonts/icons/*
-!packages/web/src/assets/fonts/icons/
