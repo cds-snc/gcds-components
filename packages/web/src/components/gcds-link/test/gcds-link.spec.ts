@@ -34,7 +34,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
             <slot></slot>
-            <gcds-icon name="external-link" label="${i18n.en.external}" margin-left="75" />
+            <gcds-icon name="external" label="${i18n.en.external}" margin-left="75" />
           </a>
         </mock:shadow-root>
         External Link
@@ -52,7 +52,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
             <slot></slot>
-            <gcds-icon name="external-link" label="${i18n.fr.external}" margin-left="75" />
+            <gcds-icon name="external" label="${i18n.fr.external}" margin-left="75" />
           </a>
         </mock:shadow-root>
         External Link
@@ -178,7 +178,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="mailto:test@test.com" part="link" role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon icon-style="regular" name="envelope" label="${i18n.en.email}" margin-left="75" />
+            <gcds-icon icon-style="regular" name="email" label="${i18n.en.email}" margin-left="75" />
           </a>
         </mock:shadow-root>
         test@test.com
@@ -196,7 +196,7 @@ describe('gcds-link', () => {
         <mock:shadow-root>
           <a class="gcds-link link--inherit" href="mailto:test@test.com" part="link" role="link" tabindex="0" target="_self">
             <slot></slot>
-            <gcds-icon icon-style="regular" name="envelope" label="${i18n.fr.email}" margin-left="75" />
+            <gcds-icon icon-style="regular" name="email" label="${i18n.fr.email}" margin-left="75" />
           </a>
         </mock:shadow-root>
         test@test.com
