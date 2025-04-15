@@ -571,14 +571,6 @@ export namespace Components {
     }
     interface GcdsIcon {
         /**
-          * If the icon should render as a fixed-width square, or their natural width.
-         */
-        "fixedWidth": boolean;
-        /**
-          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-         */
-        "iconStyle"?: 'regular' | 'solid';
-        /**
           * Add icon description.
          */
         "label"?: string;
@@ -2409,14 +2401,6 @@ declare namespace LocalJSX {
         "hintId"?: string;
     }
     interface GcdsIcon {
-        /**
-          * If the icon should render as a fixed-width square, or their natural width.
-         */
-        "fixedWidth"?: boolean;
-        /**
-          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-         */
-        "iconStyle"?: 'regular' | 'solid';
         /**
           * Add icon description.
          */
