@@ -37,11 +37,6 @@ With this update, Icon names have been updated to align with the custom GCDS Ico
 You will be able to remove any existing FontAwesome dependencies (such as CDN links, npm packages, etc.) if you choose to exclusively use the GC Design System icon component going forward.
 
 
-### :rocket: New Features
-
-* add gcds icon font ([#757](https://github.com/cds-snc/gcds-components/issues/757)) ([b747bfc](https://github.com/cds-snc/gcds-components/commit/b747bfcd7e9ac135ed87486a2b85766d2557b5c3))
-
-
 ### :bug: :wrench: Bug Fixes
 
 * **gcds-file-uploader:** ability to drag and drop files onto file input ([#801](https://github.com/cds-snc/gcds-components/issues/801)) ([159f347](https://github.com/cds-snc/gcds-components/commit/159f347abec31490c7734043a2c14e845c17096e))
