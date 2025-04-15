@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.34.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.1...gcds-components-v0.34.0) (2025-04-15)
+
+
+### :rocket: New Features
+
+* add gcds icon font ([#757](https://github.com/cds-snc/gcds-components/issues/757)) ([b747bfc](https://github.com/cds-snc/gcds-components/commit/b747bfcd7e9ac135ed87486a2b85766d2557b5c3))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-file-uploader:** ability to drag and drop files onto file input ([#801](https://github.com/cds-snc/gcds-components/issues/801)) ([159f347](https://github.com/cds-snc/gcds-components/commit/159f347abec31490c7734043a2c14e845c17096e))
+* improve layout shift for components ([#798](https://github.com/cds-snc/gcds-components/issues/798)) ([00c0bbb](https://github.com/cds-snc/gcds-components/commit/00c0bbbde169986423c154c17f35e595370d1c23))
+* update spacing between links and small typo in footer sub band ([#805](https://github.com/cds-snc/gcds-components/issues/805)) ([a4e1c2a](https://github.com/cds-snc/gcds-components/commit/a4e1c2a3273e9744143590d47ff7ee2b40671a43))
+
 ## [0.33.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.0...gcds-components-v0.33.1) (2025-04-02)
 
 ### :bug: :wrench: Bug Fixes
