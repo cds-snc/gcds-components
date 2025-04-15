@@ -24,15 +24,17 @@ This change brings several important benefits:
 
 #### Property changes
 
-The fixed-width and icon-style properties have been removed. Icons are now properly sized by default and adopt a unified style for enhanced consistency across GC services. If your code utilizes these properties, please remove them to ensure compatibility with the new font and avoid tech debt. Only update your code if you use these properties, otherwise, the new default values will be applied automatically.
+The `fixed-width` and `icon-style` properties have been removed. Icons are now properly sized by default and adopt a unified style for enhanced consistency across GC services. If your code utilizes these properties, please remove them to ensure compatibility with the new font and avoid tech debt.
+
+Only update your code if you use these properties, otherwise, the new default values will be applied automatically.
 
 * [gcds-icon](https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-icon)
-  * fixed-width
-  * icon-style
+  * `fixed-width`
+  * `icon-style`
 
-#### Updated Icon names
+#### Updated Icon `names`
 
-With this update, Icon names have been updated to align with the custom GCDS Icons font. Existing icon names have changed, requiring updates to your code. Please revise any usage of old icon names to reflect these changes. You can find an overview of all available names in the [gcds-icon readme](https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-icon).
+With this update, Icon `names` have been updated to align with the custom GCDS Icons font. Existing icon `names` have changed, requiring updates to your code. Please revise any usage of old icon `names` to reflect these changes. You can find an overview of all available `names` in the [gcds-icon readme](https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-icon).
 
 #### Remove existing FontAwesome dependencies
 

@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.34.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.33.1-canary.0...gcds-components-react-ssr-v0.34.0) (2025-04-15)
+## [0.34.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.33.1-canary.0...gcds-components-react-ssr-v0.34.0-canary.0) (2025-04-15)
 
 
 ### Patch
