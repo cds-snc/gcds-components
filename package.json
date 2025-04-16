@@ -35,7 +35,6 @@
     "@stencil/angular-output-target": "^0.10.0",
     "@types/node": "^20.11.10",
     "cssnano": "^6.0.0",
-    "ncp": "^2.0.0",
     "ng-packagr": "^19.0.1",
     "nx": "^16.0.0",
     "sass": "^1.43.5",
