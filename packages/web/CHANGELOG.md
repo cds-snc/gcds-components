@@ -1,6 +1,8 @@
 # Changelog
 
-## [0.34.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.0...gcds-components-v0.34.1) (2025-04-16)
+## [0.34.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.0...gcds-components-v0.34.1)
+
+Released on: 2025-04-16
 
 
 ### :bug: :wrench: Bug Fixes
