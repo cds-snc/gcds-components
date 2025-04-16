@@ -4,8 +4,8 @@
 /* Import GC Design System Icon Font */
 @font-face {
   font-family: 'gcds-icons';
-  src: url('/dist/gcds/assets/fonts/gcds-icons.ttf') format('truetype'),
-      url('/dist/gcds/assets/fonts/gcds-icons.woff') format('woff');
+  src: url("https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-fonts@0.2.2/icons/gcds-icons.ttf") format("truetype"),
+        url("https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-fonts@0.2.2/icons/gcds-icons.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: block;
