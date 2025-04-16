@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components-vue",
-  "version": "0.34.0",
+  "version": "0.34.1",
   "description": "Vue wrapper for GC Design System components",
   "author": "Government of Canada / Gouvernement du Canada",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -31,7 +31,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.34.0"
+    "@cdssnc/gcds-components": "^0.34.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.1",
