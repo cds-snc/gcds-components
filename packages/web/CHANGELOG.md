@@ -4,7 +4,6 @@
 
 Released on: 2025-04-16
 
-
 ### :bug: :wrench: Bug Fixes
 
 * **hotfix**: Icon font face URL not resolving properly in the global `gcds.css` file ([#813](https://github.com/cds-snc/gcds-components/issues/813)) ([86464ff](https://github.com/cds-snc/gcds-components/commit/86464ffcbc73d5cab491699d6f93f834f2968781))
