@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.35.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.0...gcds-components-v0.35.0-canary.0) (2025-04-16)
+
+
+### :bug: :wrench: Bug Fixes
+
+* icon font face declaration ([#813](https://github.com/cds-snc/gcds-components/issues/813)) ([86464ff](https://github.com/cds-snc/gcds-components/commit/86464ffcbc73d5cab491699d6f93f834f2968781))
+
 ## [0.34.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.1...gcds-components-v0.34.0)
 
 Released on: 2025-04-14
