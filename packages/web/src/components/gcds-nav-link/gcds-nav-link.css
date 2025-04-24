@@ -26,6 +26,7 @@
     transition: all 0.25s ease-in-out;
 
     @media only screen and (width < 64em) {
+      font: var(--gcds-nav-link-font-mobile);
       min-width: 50%;
     }
 
@@ -44,11 +45,12 @@
   /* Top-nav: styles for larger screens */
   @media only screen and (width >= 64em) {
     :host > .gcds-nav-link--topnav.gcds-nav-link {
+      font: var(--gcds-nav-link-top-nav-font);
       color: var(--gcds-nav-link-top-nav-text);
       margin: var(--gcds-nav-link-top-nav-margin);
       padding: var(--gcds-nav-link-top-nav-padding);
       border-inline: 0;
-      border-block-end: var(--gcds-nav-link-border-width) solid transparent;
+      border-block: var(--gcds-nav-link-border-width) solid transparent;
 
       &:not(:hover) {
         text-decoration-color: transparent;
@@ -94,7 +96,6 @@
 
 @layer active {
   :host .gcds-nav-link[aria-current='page'] {
-    font-weight: var(--gcds-nav-link-active-font-weight);
     background-color: var(--gcds-nav-link-active-background);
     color: var(--gcds-nav-link-active-text);
     border-inline-start-color: var(--gcds-nav-link-active-border-color);
@@ -102,11 +103,14 @@
 
   :host > .gcds-nav-link--topnav.gcds-nav-link[aria-current='page'] {
     @media only screen and (width >= 64em) {
-      font: var(--gcds-nav-link-font);
       background-color: transparent;
       color: var(--gcds-nav-link-top-nav-text);
       border-block-end-color: var(--gcds-nav-link-active-border-color);
     }
+  }
+
+  :host > .gcds-nav-link--sidenav.gcds-nav-link[aria-current='page'] {
+    font-weight: var(--gcds-nav-link-active-font-weight);
   }
 }
 
