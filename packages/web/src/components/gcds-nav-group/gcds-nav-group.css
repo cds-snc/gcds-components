@@ -61,8 +61,6 @@
   :host .gcds-trigger--dropdown {
     font: var(--gcds-nav-group-top-nav-font);
     padding: var(--gcds-nav-group-top-nav-trigger-padding);
-    border-block-end: var(--gcds-nav-group-top-nav-trigger-border-width) solid
-      transparent;
     text-decoration: underline solid currentColor
       var(--gcds-nav-group-top-nav-trigger-decoration-thickness);
     text-underline-offset: var(
@@ -96,7 +94,7 @@
       margin-block-start: var(--gcds-nav-group-mobile-trigger-margin);
       color: var(--gcds-nav-group-mobile-trigger-text);
       border: var(--gcds-nav-group-mobile-trigger-border-width) solid
-      currentColor;
+        currentColor;
       border-radius: var(--gcds-nav-group-mobile-trigger-border-radius);
 
       gcds-icon {
@@ -173,8 +171,7 @@
       margin: var(--gcds-nav-group-mobile-list-margin);
     }
 
-    :host([open]:not(.gcds-mobile-nav))
-      .gcds-nav-group__list {
+    :host([open]:not(.gcds-mobile-nav)) .gcds-nav-group__list {
       padding-inline-start: var(--gcds-nav-group-side-nav-dropdown-padding);
     }
   }
