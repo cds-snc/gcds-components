@@ -138,9 +138,9 @@ export class GcdsAlert {
                         : alertRole === 'info'
                           ? 'info-circle'
                           : alertRole === 'success'
-                            ? 'check-circle'
+                            ? 'checkmark-circle'
                             : alertRole === 'warning'
-                              ? 'exclamation-triangle'
+                              ? 'warning-triangle'
                               : null
                     }
                   />
@@ -164,7 +164,7 @@ export class GcdsAlert {
                     }}
                     aria-label={i18n[lang].closeBtn}
                   >
-                    <gcds-icon aria-hidden="true" name="times" size="text" />
+                    <gcds-icon aria-hidden="true" name="close" size="text" />
                   </button>
                 )}
               </div>

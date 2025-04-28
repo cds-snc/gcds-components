@@ -4,7 +4,7 @@ const { AxePuppeteer } = require('@axe-core/puppeteer');
 describe('gcds-icon', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gcds-icon name="angle-down"></gcds-icon>');
+    await page.setContent('<gcds-icon name="close"></gcds-icon>');
 
     const element = await page.find('gcds-icon');
     expect(element).toHaveClass('hydrated');
@@ -23,7 +23,7 @@ describe('gcds-banner a11y tests', () => {
   it('colour contrast', async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <gcds-icon name="angle-down"></gcds-icon>
+      <gcds-icon name="close"></gcds-icon>
     `);
 
     const colorContrastTest = new AxePuppeteer(page)

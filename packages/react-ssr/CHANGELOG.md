@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.34.1-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.34.0-canary.0...gcds-components-react-ssr-v0.34.1-canary.0) (2025-04-16)
+
+
+### :rocket: New Features
+
+* Add gcds-date-input component ([#607](https://github.com/cds-snc/gcds-components/issues/607)) ([ce0b4cc](https://github.com/cds-snc/gcds-components/commit/ce0b4ccdbcc9b25ebd8fb8e5b5ca03f4d49332a5))
+
+
+### :bug: :wrench: Bug Fixes
+
+* Build to allow new tokens to be imported in react-ssr package ([#624](https://github.com/cds-snc/gcds-components/issues/624)) ([88790c7](https://github.com/cds-snc/gcds-components/commit/88790c76f6571abc7d1505a492cea6591cbd97cc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.34.0 to ^0.34.1
+
+## [0.34.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.33.1-canary.0...gcds-components-react-ssr-v0.34.0-canary.0) (2025-04-15)
+
+
+### Patch
+
+* **gcds-components-react-ssr:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.33.1 to ^0.34.0
+
 ## [0.33.1-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.33.0-canary.0...gcds-components-react-ssr-v0.33.1-canary.0) (2025-04-02)
 
 

@@ -197,7 +197,7 @@ export class GcdsCard {
                 size="small"
               >
                 <strong>
-                  <gcds-sr-only>{i18n[lang].tagged}</gcds-sr-only>
+                  <gcds-sr-only tag="span">{i18n[lang].tagged}</gcds-sr-only>
                   {badge}
                 </strong>
               </gcds-text>

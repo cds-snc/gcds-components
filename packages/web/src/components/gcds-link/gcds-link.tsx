@@ -200,7 +200,7 @@ export class GcdsLink {
           <slot></slot>
           {target === '_blank' || external ? (
             <gcds-icon
-              name="external-link"
+              name="external"
               label={i18n[lang].external}
               margin-left="75"
             />
@@ -211,12 +211,7 @@ export class GcdsLink {
               margin-left="75"
             />
           ) : href && href.toLowerCase().startsWith('mailto:') ? (
-            <gcds-icon
-              icon-style="regular"
-              name="envelope"
-              label={i18n[lang].email}
-              margin-left="75"
-            />
+            <gcds-icon name="email" label={i18n[lang].email} margin-left="75" />
           ) : (
             href &&
             href.toLowerCase().startsWith('tel:') && (

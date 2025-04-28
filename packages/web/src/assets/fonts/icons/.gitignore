@@ -1,0 +1,3 @@
+# Ignore icon font files
+*
+!.gitignore
