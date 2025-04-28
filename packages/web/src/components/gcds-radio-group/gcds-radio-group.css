@@ -68,6 +68,7 @@
       }
 
       &:before {
+        background-color: var(--gcds-radio-input-background);
         border: var(--gcds-radio-input-border-width) solid currentcolor;
         transition:
           border-color ease-in-out 0.15s,
