@@ -38,7 +38,7 @@ describe('gcds-card', () => {
         <div class="gcds-card">
           <gcds-text class="gcds-badge" id="gcds-badge" margin-bottom="0" size="small" text-role="light">
             <strong>
-              <gcds-sr-only>
+              <gcds-sr-only tag="span">
                 Tagged:
               </gcds-sr-only>
               new
