@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.34.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.1...gcds-components-v0.34.2) (2025-04-29)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-card:** Ensure shadow dom are structuraly valid according to spec ([#821](https://github.com/cds-snc/gcds-components/issues/821)) ([fe67947](https://github.com/cds-snc/gcds-components/commit/fe6794729de41224945cb7d53fd8785367044214))
+* Prevent click event on disabled button ([#829](https://github.com/cds-snc/gcds-components/issues/829)) ([4c69273](https://github.com/cds-snc/gcds-components/commit/4c692736eff6f5153dad640df9d5ce38008a1134))
+
+
+### :art: Styles
+
+* Add background colour to checkboxes and radios ([#828](https://github.com/cds-snc/gcds-components/issues/828)) ([91233af](https://github.com/cds-snc/gcds-components/commit/91233afb4e1f2bb32a3f156a8c008ab9d31d9f23))
+* update top-nav design ([#822](https://github.com/cds-snc/gcds-components/issues/822)) ([9d01580](https://github.com/cds-snc/gcds-components/commit/9d01580c4fcf8afe2ee105d1dbc0c874259cb92e))
+
 ## [0.34.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.0...gcds-components-v0.34.1)
 
 Released on: 2025-04-16
