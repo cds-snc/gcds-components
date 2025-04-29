@@ -90,6 +90,13 @@ export class GcdsButton {
    */
   @Prop() disabled: boolean;
 
+  @Watch('disabled')
+  validateDisabled(newValue: boolean) {
+    if (newValue === false || (newValue === true && this.type === 'link')) {
+      this.el.removeAttribute('disabled');
+    }
+  }
+
   /**
    * The value attribute specifies the value for a <button> element.
    */
@@ -165,6 +172,7 @@ export class GcdsButton {
     this.validateType(this.type);
     this.validateButtonRole(this.buttonRole);
     this.validateSize(this.size);
+    this.validateDisabled(this.disabled);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
 
@@ -247,7 +255,9 @@ export class GcdsButton {
           id={buttonId}
           onBlur={() => this.gcdsBlur.emit()}
           onFocus={() => this.gcdsFocus.emit()}
-          onClick={e => !disabled && this.handleClick(e)}
+          onClick={e =>
+            !disabled ? this.handleClick(e) : e.stopImmediatePropagation()
+          }
           class={`gcds-button button--role-${buttonRole} button--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           {...inheritedAttributes}
