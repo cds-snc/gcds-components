@@ -23,9 +23,13 @@
 @layer default {
   :host .gcds-select-wrapper {
     max-width: 75ch;
-    font: var(--gcds-select-font);
+    font: var(--gcds-select-font-desktop);
     color: var(--gcds-select-default-text);
     transition: color ease-in-out 0.15s;
+
+    @media only screen and (width < 48em) {
+      font: var(--gcds-select-font-mobile);
+    }
 
     select {
       display: block;
