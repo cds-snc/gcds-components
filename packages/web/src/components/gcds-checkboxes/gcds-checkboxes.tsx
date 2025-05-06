@@ -48,14 +48,14 @@ export class GcdsCheckboxes {
   private optionsArr;
   private isGroup = false;
 
-  _validator: Validator<unknown> = defaultValidator;
+  _validator: Validator<string | string[]> = defaultValidator;
 
   /**
    * Props
    */
 
   /**
-   * Name attribute for an input element.
+   * Name attribute for a checkboxes element.
    */
   @Prop({ reflect: true, mutable: false }) name!: string;
 
@@ -65,7 +65,7 @@ export class GcdsCheckboxes {
   }
 
   /**
-   * Name of the form field group.
+   * Set the legend for fieldset form group.
    */
   @Prop({ reflect: true, mutable: false }) legend: string;
 
@@ -373,16 +373,18 @@ export class GcdsCheckboxes {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    this.validateRequiredProps();
+    const valid = this.validateRequiredProps();
+
     this.validateDisabledCheckbox();
     this.validateHasError();
     this.validateErrorMessage();
     this.validateValidator();
 
     // Assign required validator if needed
+    console.log(this.name, this.isGroup)
     requiredValidator(
       this.el,
-      this.isGroup ? 'checkboxGroup' : 'singleCheckbox',
+      this.isGroup ? 'checkboxGroup' : 'checkboxSingle',
     );
 
     // Assign checkbox hint to component hint if not group
@@ -396,10 +398,9 @@ export class GcdsCheckboxes {
     }
 
     if (this.validator) {
+      console.log(this.name, this.validator);
       this._validator = getValidator(this.validator);
     }
-
-    const valid = this.validateRequiredProps();
 
     if (!valid) {
       logError('gcds-checkboxes', this.errors);
@@ -459,13 +460,7 @@ export class GcdsCheckboxes {
 
     if (this.validateRequiredProps()) {
       return (
-        <Host
-          onBlur={() => {
-            if (this.isGroup) {
-              this.onBlurValidate();
-            }
-          }}
-        >
+        <Host onBlur={() => this.isGroup && this.onBlurValidate()}>
           {this.isGroup ? (
             <fieldset class="gcds-checkboxes__fieldset" {...fieldsetAttrs}>
               <legend id="checkboxes-legend" class="gcds-checkboxes__legend">

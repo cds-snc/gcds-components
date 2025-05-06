@@ -200,7 +200,7 @@ export const requiredCheckboxGroup: Validator<Array<string>> = {
   },
 };
 
-export const requiredSingleCheckbox: Validator<Array<string>> = {
+export const requiredCheckboxSingle: Validator<Array<string>> = {
   validate: (value: Array<string>) => value.length > 0,
   errorMessage: {
     en: 'You must check the box to continue.',

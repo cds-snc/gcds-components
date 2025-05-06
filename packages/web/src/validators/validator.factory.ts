@@ -12,7 +12,7 @@ import {
   requiredDateInput,
   requiredRadio,
   requiredCheckboxGroup,
-  requiredSingleCheckbox,
+  requiredCheckboxSingle,
 } from './input-validators/input-validators';
 
 export enum ValidatorsName {
@@ -24,7 +24,7 @@ export enum ValidatorsName {
   requiredDateInput = 'requiredDateInput',
   requiredRadio = 'requiredRadio',
   requiredCheckboxGroup = 'requiredCheckboxGroup',
-  requiredSingleCheckbox = 'requiredSingleCheckbox',
+  requiredCheckboxSingle = 'requiredCheckboxSingle',
 }
 
 export function getValidator<A>(
@@ -61,8 +61,8 @@ export function validatorFactory(name: string, options: any): Validator<any> {
       return requiredRadio;
     case ValidatorsName.requiredCheckboxGroup:
       return requiredCheckboxGroup;
-    case ValidatorsName.requiredSingleCheckbox:
-      return requiredSingleCheckbox;
+    case ValidatorsName.requiredCheckboxSingle:
+      return requiredCheckboxSingle;
     default:
       return defaultValidator;
   }

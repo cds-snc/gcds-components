@@ -198,11 +198,11 @@ export namespace Components {
          */
         "hint": string;
         /**
-          * Name of the form field group.
+          * Set the legend for fieldset form group.
          */
         "legend": string;
         /**
-          * Name attribute for an input element.
+          * Name attribute for a checkboxes element.
          */
         "name": string;
         /**
@@ -2063,11 +2063,11 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
-          * Name of the form field group.
+          * Set the legend for fieldset form group.
          */
         "legend"?: string;
         /**
-          * Name attribute for an input element.
+          * Name attribute for a checkboxes element.
          */
         "name": string;
         /**

@@ -105,11 +105,11 @@ export function requiredValidator(element, type, subtype?) {
           element.validator = ['requiredCheckboxGroup'];
         }
         break;
-      case 'singleCheckbox':
+      case 'checkboxSingle':
         if (element.validator) {
-          element.validator.unshift('requiredSingleCheckbox');
+          element.validator.unshift('requiredCheckboxSingle');
         } else {
-          element.validator = ['requiredSingleCheckbox'];
+          element.validator = ['requiredCheckboxSingle'];
         }
         break;
     }

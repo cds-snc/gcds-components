@@ -66,7 +66,7 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
   }
 
   if (checkbox.hint) {
-    const hintID = checkbox.hint ? `hint-${checkbox.id} ` : '';
+    const hintID = `hint-${checkbox.id}`;
     attrsInput['aria-describedby'] = `${hintID}${
       attrsInput['aria-describedby'] ? `${attrsInput['aria-describedby']}` : ''
     }`;
@@ -90,13 +90,7 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
       <input
         type="checkbox"
         {...attrsInput}
-        onBlur={() => {
-          if (isGroup) {
-            gcdsBlur.emit();
-          } else {
-            onBlurValidate();
-          }
-        }}
+        onBlur={isGroup ? () => gcdsBlur.emit() : onBlurValidate}
         onFocus={() => gcdsFocus.emit()}
         onInput={e => handleInput(e, gcdsInput)}
         onClick={e => emitEvent(e, gcdsClick)}
