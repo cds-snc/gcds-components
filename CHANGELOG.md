@@ -2,6 +2,15 @@
 
 # Changelog
 
+## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.2...gcds-components-v0.34.3)
+
+Released on: 2025-05-07
+
+### :art: Styles
+
+- fix details list spacing ([#839](https://github.com/cds-snc/gcds-components/issues/839)) ([57e3a71](https://github.com/cds-snc/gcds-components/commit/57e3a71c23d2ea4e99c08b3504b8d575711457f9))
+- fix inconsistent text scaling across desktop + mobile styles for multiple components ([#838](https://github.com/cds-snc/gcds-components/issues/838)) ([d6ff2d0](https://github.com/cds-snc/gcds-components/commit/d6ff2d00fc2194ccf9d63bbd0966ed274d64be90))
+
 ## [0.34.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.1...gcds-components-v0.34.2)
 
 Released on: 2025-04-29
