@@ -42,7 +42,7 @@
         padding: var(--gcds-topic-menu-button-padding);
         text-transform: uppercase;
         cursor: pointer;
-        font: var(--gcds-topic-menu-button-font);
+        font: inherit;
 
         &.gcds-topic-menu--home {
           background-color: var(--gcds-topic-menu-button-home-background);
@@ -189,7 +189,7 @@
                 );
 
                 [role='menuitem'] {
-                  font: var(--gcds-topic-menu-mostrequested-item-first-font);
+                  font: inherit;
                   text-decoration: underline;
                   width: auto;
                 }
@@ -235,7 +235,7 @@
         border-block-end: var(--gcds-topic-menu-border-width) solid
           var(--gcds-topic-menu-menuitem-border-block-end);
         color: var(--gcds-topic-menu-menuitem-text);
-        font: var(--gcds-topic-menu-menuitem-font);
+        font: var(--gcds-topic-menu-font);
         text-decoration: none;
         display: block;
         padding: var(--gcds-topic-menu-menuitem-padding);
@@ -249,7 +249,6 @@
           z-index: 9999 !important;
         }
 
-
         &:hover,
         &[aria-expanded='true'] {
           background-color: var(--gcds-topic-menu-menuitem-expanded-background);
@@ -257,7 +256,9 @@
         }
       }
 
-      [role='menuitem'][aria-haspopup='true'][aria-expanded='false'][aria-controls]:not([aria-controls*="sub"]) {
+      [role='menuitem'][aria-haspopup='true'][aria-expanded='false'][aria-controls]:not(
+          [aria-controls*='sub']
+        ) {
         background-color: var(--gcds-topic-menu-themelist-background);
       }
     }
@@ -312,9 +313,7 @@
               }
 
               &[aria-haspopup] {
-                font: var(
-                  --gcds-topic-menu-mobile-topiclist-menuitem-haspopup-font
-                );
+                font: inherit;
               }
             }
           }
@@ -329,9 +328,6 @@
                 );
               color: var(
                 --gcds-topic-menu-mobile-topiclist-item-first-menuitem-text
-              );
-              font: var(
-                --gcds-topic-menu-mobile-topiclist-menuitem-haspopup-font
               );
               text-decoration: underline;
               width: auto;

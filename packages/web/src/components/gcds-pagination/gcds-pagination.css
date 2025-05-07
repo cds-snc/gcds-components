@@ -20,8 +20,12 @@
 
       a {
         color: var(--gcds-pagination-default-text);
-        font: var(--gcds-pagination-font);
+        font: var(--gcds-pagination-font-desktop);
         border-radius: var(--gcds-pagination-border-radius);
+
+        @media only screen and (width < 48em) {
+          font: var(--gcds-pagination-font-mobile);
+        }
       }
     }
   }
