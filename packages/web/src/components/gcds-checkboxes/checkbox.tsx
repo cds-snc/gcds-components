@@ -5,10 +5,13 @@ export type CheckboxObject = {
   label: string;
   value?: string;
   hint?: string;
-  checked?: boolean;
+  checked?: boolean | string;
 };
 
-export function isCheckboxObject(obj: any): obj is CheckboxObject {
+/* Check if passed object matches required CheckboxObject type
+ * @param obj - object to check
+ */
+export function isCheckboxObject(obj: CheckboxObject) {
   if (typeof obj !== 'object' || obj === null) return false;
 
   const validKeys = ['id', 'label', 'value', 'hint', 'checked', 'required'];
@@ -26,6 +29,53 @@ export function isCheckboxObject(obj: any): obj is CheckboxObject {
   const hasOnlyValidKeys = objKeys.every(key => validKeys.includes(key));
 
   return hasValidTypes && hasOnlyValidKeys;
+}
+
+/* Loop through the optionsArr and check if each option/checkbox is formatted correctly
+ * @param optionsArr - array of objects to be checked
+ */
+export function validateOptionsArray(optionsArr) {
+  let invalidOptionsArr = false;
+
+  if (optionsArr && optionsArr.length >= 1) {
+    invalidOptionsArr = optionsArr.some(
+      checkbox => !isCheckboxObject(checkbox),
+    );
+  } else if (optionsArr && optionsArr.length == 0) {
+    invalidOptionsArr = true;
+  }
+
+  return invalidOptionsArr;
+}
+
+/* Loop through manually assigned value to check if it is available in rendered checkboxes
+ * @param optionsArr - array of checkbox objects to compare to
+ * @param element - the checkboxes element
+ */
+export function cleanUpValues(optionsArr, element) {
+  const availableValues = [];
+  optionsArr.map(checkbox => {
+    availableValues.push(checkbox.value ? checkbox.value : 'on');
+
+    if (
+      (checkbox.checked == 'true' || checkbox.checked === true) &&
+      !(element.value as Array<string>).includes(checkbox.value || 'on')
+    ) {
+      element.value = [
+        ...(element.value as Array<string>),
+        checkbox.value ? checkbox.value : 'on',
+      ];
+    }
+  });
+
+  // Remove any values that are not available in the inputs
+  (element.value as Array<string>)
+    .filter(value => !availableValues.includes(value))
+    .map(value => {
+      element.value = (element.value as Array<string>).filter(
+        item => item !== value,
+      );
+    });
 }
 
 export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {

@@ -27,7 +27,12 @@ import {
   getValidator,
   requiredValidator,
 } from '../../validators';
-import { CheckboxObject, isCheckboxObject, renderCheckbox } from './checkbox';
+import {
+  CheckboxObject,
+  cleanUpValues,
+  renderCheckbox,
+  validateOptionsArray,
+} from './checkbox';
 
 @Component({
   tag: 'gcds-checkboxes',
@@ -77,60 +82,33 @@ export class GcdsCheckboxes {
   }
 
   /**
-   * Options to render radio buttons
+   * Options to render checkboxes buttons
    */
   @Prop({ mutable: true }) options!: string | Array<CheckboxObject>;
 
   @Watch('options')
   validateOptions() {
-    let invalidObject = false;
-    // Assign optionsArr from passed options string or array
-    if (typeof this.options === 'string' && this.options.trim() !== '') {
-      try {
-        // Assign to random variable to not restart options validation
-        const optionsCheck = JSON.parse(this.options as string);
+    let invalidOptions = false;
 
-        if (Array.isArray(optionsCheck)) {
-          this.optionsArr = optionsCheck;
-        } else {
-          this.optionsArr = null;
-          invalidObject = true;
-        }
-      } catch (e) {
-        logError('gcds-checkboxes', ['Invalid JSON string for options']);
-        this.options = null;
-        invalidObject = true;
-        this.errors = handleErrors(
-          this.errors,
-          'options',
-          this.optionsArr,
-          invalidObject,
-        );
+    // Assign optionsArr based on valid options property
+    invalidOptions = this.assignOptionsArray();
+
+    // Check if each checkbox object is formatted correctly
+    if (this.optionsArr && !invalidOptions) {
+      invalidOptions = validateOptionsArray(this.optionsArr);
+
+      // Assign if isGroup logic more than one checkbox object
+      if (this.optionsArr && this.optionsArr.length > 1) {
+        this.isGroup = true;
       }
-    } else if (Array.isArray(this.options)) {
-      this.optionsArr = this.options;
     }
 
-    // Validate options has type CheckboxObject
-    if (this.optionsArr && this.optionsArr.length >= 1) {
-      invalidObject = this.optionsArr.some(
-        checkbox => !isCheckboxObject(checkbox),
-      );
-    } else if (this.optionsArr && this.optionsArr.length == 0) {
-      invalidObject = true;
-    }
-
-    // Setup group rendering flag
-    if (this.optionsArr && this.optionsArr.length > 1) {
-      this.isGroup = true;
-    }
-
-    // Log error if no or invalid optionsArr
+    // Log error if invalidOptions
     this.errors = handleErrors(
       this.errors,
       'options',
       this.optionsArr,
-      invalidObject,
+      invalidOptions,
     );
   }
 
@@ -165,33 +143,9 @@ export class GcdsCheckboxes {
         logError('gcds-checkboxes', ['Invalid array for value']);
         this.value = [];
       }
-    } else {
-      // Check options with matching values
-      if (this.optionsArr) {
-        const availableValues = [];
-        this.optionsArr.map(checkbox => {
-          availableValues.push(checkbox.value ? checkbox.value : 'on');
-
-          if (
-            (checkbox.checked == 'true' || checkbox.checked === true) &&
-            !(this.value as Array<string>).includes(checkbox.value || 'on')
-          ) {
-            this.value = [
-              ...(this.value as Array<string>),
-              checkbox.value ? checkbox.value : 'on',
-            ];
-          }
-        });
-
-        // Remove any values that are not available in the inputs
-        (this.value as Array<string>)
-          .filter(value => !availableValues.includes(value))
-          .map(value => {
-            this.value = (this.value as Array<string>).filter(
-              item => item !== value,
-            );
-          });
-      }
+    } else if (this.optionsArr) {
+      // Remove any manually set values that do not match available inputs
+      cleanUpValues(this.optionsArr, this.el);
 
       this.internals.setFormValue(this.value.toString());
       this.initialState = this.value.toString();
@@ -381,7 +335,6 @@ export class GcdsCheckboxes {
     this.validateValidator();
 
     // Assign required validator if needed
-    console.log(this.name, this.isGroup)
     requiredValidator(
       this.el,
       this.isGroup ? 'checkboxGroup' : 'checkboxSingle',
@@ -398,7 +351,6 @@ export class GcdsCheckboxes {
     }
 
     if (this.validator) {
-      console.log(this.name, this.validator);
       this._validator = getValidator(this.validator);
     }
 
@@ -443,6 +395,35 @@ export class GcdsCheckboxes {
 
     customEvent.emit(this.value);
   };
+
+  /*
+   * Validate passed options and assign optionsArr if proper formatting
+   */
+  private assignOptionsArray() {
+    let invalidOptions = false;
+
+    if (Array.isArray(this.options)) {
+      this.optionsArr = this.options;
+    } else if (typeof this.options === 'string' && this.options.trim() !== '') {
+      try {
+        // Assign to random variable to not restart options validation
+        const optionsCheck = JSON.parse(this.options as string);
+
+        if (Array.isArray(optionsCheck)) {
+          this.optionsArr = optionsCheck;
+        } else {
+          this.optionsArr = null;
+          invalidOptions = true;
+        }
+      } catch (e) {
+        logError('gcds-checkboxes', ['Invalid JSON string for options']);
+        this.options = null;
+        invalidOptions = true;
+      }
+    }
+
+    return invalidOptions;
+  }
 
   render() {
     const { legend, required, hint, errorMessage } = this;
