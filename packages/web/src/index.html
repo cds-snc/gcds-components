@@ -131,25 +131,45 @@
       <ul>
         <li class="mb-300">
           <gcds-button button-role="start">Start</gcds-button>
-          <gcds-button button-role="start" disabled>Start (disabled)</gcds-button>
+          <gcds-button button-role="start" disabled>
+            Start (disabled)
+          </gcds-button>
         </li>
         <li class="mb-300">
           <gcds-button button-role="primary">Primary</gcds-button>
-          <gcds-button button-role="primary" size="small">Primary (small)</gcds-button>
-          <gcds-button button-role="primary" disabled>Primary (disabled)</gcds-button>
-          <gcds-button button-role="primary" size="small" disabled>Primary (small, disabled)</gcds-button>
+          <gcds-button button-role="primary" size="small">
+            Primary (small)
+          </gcds-button>
+          <gcds-button button-role="primary" disabled>
+            Primary (disabled)
+          </gcds-button>
+          <gcds-button button-role="primary" size="small" disabled>
+            Primary (small, disabled)
+          </gcds-button>
         </li>
         <li class="mb-300">
           <gcds-button button-role="secondary">Secondary</gcds-button>
-          <gcds-button button-role="secondary" size="small">Secondary (small)</gcds-button>
-          <gcds-button button-role="secondary" disabled>Secondary (disabled)</gcds-button>
-          <gcds-button button-role="secondary" size="small" disabled>Secondary (small, disabled)</gcds-button>
+          <gcds-button button-role="secondary" size="small">
+            Secondary (small)
+          </gcds-button>
+          <gcds-button button-role="secondary" disabled>
+            Secondary (disabled)
+          </gcds-button>
+          <gcds-button button-role="secondary" size="small" disabled>
+            Secondary (small, disabled)
+          </gcds-button>
         </li>
         <li class="mb-300">
           <gcds-button button-role="danger">Danger</gcds-button>
-          <gcds-button button-role="danger" size="small">Danger (small)</gcds-button>
-          <gcds-button button-role="danger" disabled>Danger (disabled)</gcds-button>
-          <gcds-button button-role="danger" size="small" disabled>Danger (small, disabled)</gcds-button>
+          <gcds-button button-role="danger" size="small">
+            Danger (small)
+          </gcds-button>
+          <gcds-button button-role="danger" disabled>
+            Danger (disabled)
+          </gcds-button>
+          <gcds-button button-role="danger" size="small" disabled>
+            Danger (small, disabled)
+          </gcds-button>
         </li>
       </ul>
 
@@ -239,6 +259,17 @@
       <gcds-heading tag="h2">Details</gcds-heading>
       <gcds-details details-title="Find out more">
         <p>Details about stuff.</p>
+        <ul class="list-disc">
+          <li>List item</li>
+          <li>List item</li>
+          <li>List item</li>
+        </ul>
+        <p>Details about stuff.</p>
+        <ul class="list-disc">
+          <li>List item</li>
+          <li>List item</li>
+          <li>List item</li>
+        </ul>
       </gcds-details>
 
       <hr class="my-550" />
@@ -509,18 +540,30 @@
           <li>Information 2</li>
         </ul>
       </gcds-notice>
-      <gcds-notice notice-title-tag="h3" type="success" notice-title="Success notice">
+      <gcds-notice
+        notice-title-tag="h3"
+        type="success"
+        notice-title="Success notice"
+      >
         <gcds-text>Please pay attention to this notice.</gcds-text>
         <ol class="mb-400 list-decimal">
           <li>Information</li>
           <li>Information</li>
         </ol>
       </gcds-notice>
-      <gcds-notice notice-title-tag="h3" type="danger" notice-title="Danger notice">
+      <gcds-notice
+        notice-title-tag="h3"
+        type="danger"
+        notice-title="Danger notice"
+      >
         <gcds-text>Please pay attention to this notice.</gcds-text>
         <gcds-text>This line as well</gcds-text>
       </gcds-notice>
-      <gcds-notice notice-title-tag="h3" type="warning" notice-title="Warning notice">
+      <gcds-notice
+        notice-title-tag="h3"
+        type="warning"
+        notice-title="Warning notice"
+      >
         <gcds-text>Please pay attention to this notice.</gcds-text>
       </gcds-notice>
 
@@ -530,16 +573,16 @@
 
       <gcds-heading tag="h2">Text</gcds-heading>
       <gcds-text>
-        This text is primary text using the default body size. The margin
-        bottom is set to "400". The character limit is set to "true" (default
-        value) which means that the text will take up a maximum of 65 characters
-        per line.
+        This text is primary text using the default body size. The margin bottom
+        is set to "400". The character limit is set to "true" (default value)
+        which means that the text will take up a maximum of 65 characters per
+        line.
       </gcds-text>
 
       <gcds-text character-limit="false">
-        This text is primary text using the default body size. The margin
-        bottom is set to "400". The characters limit is set to "false" which
-        means that the text will take up all available space.
+        This text is primary text using the default body size. The margin bottom
+        is set to "400". The characters limit is set to "false" which means that
+        the text will take up all available space.
       </gcds-text>
 
       <gcds-text text-role="secondary">
@@ -558,26 +601,23 @@
       </div>
 
       <gcds-text size="small">
-        This text is primary text using the small size. The margin bottom is
-        set to "400". The character limit is set to "true" (default value) which
-        means that the text will take up a maximum of 65 characters per
-        line.
+        This text is primary text using the small size. The margin bottom is set
+        to "400". The character limit is set to "true" (default value) which
+        means that the text will take up a maximum of 65 characters per line.
       </gcds-text>
 
       <gcds-text>
         This text is primary text using the default body size
         <strong>with some bold text included</strong>. The margin bottom is set
         to "400". The character limit is set to "true" (default value) which
-        means that the text will take up a maximum of 65 characters per
-        line.
+        means that the text will take up a maximum of 65 characters per line.
       </gcds-text>
 
       <gcds-text>
         This text is primary text using the default body size
         <em>with some italic text included</em>. The margin bottom is set to
         "400". The character limit is set to "true" (default value) which means
-        that the text will take up a maximum of 65 characters per
-        line.
+        that the text will take up a maximum of 65 characters per line.
       </gcds-text>
 
       <hr class="my-550" />
@@ -587,7 +627,13 @@
       <gcds-heading tag="h2">Icons</gcds-heading>
 
       <gcds-heading tag="h3">Icon names</gcds-heading>
-      <gcds-grid columns-desktop="1fr 1fr 1fr 1fr" columns-tablet="1fr 1fr" columns="1fr" tag="ul" gap="150">
+      <gcds-grid
+        columns-desktop="1fr 1fr 1fr 1fr"
+        columns-tablet="1fr 1fr"
+        columns="1fr"
+        tag="ul"
+        gap="150"
+      >
         <li class="b-sm p-150 list-none text-center">
           <gcds-icon name="checkmark-circle" size="h2"></gcds-icon>
           <p>checkmark-circle</p>
@@ -649,7 +695,11 @@
       <gcds-heading tag="h3">Icon sizes</gcds-heading>
       <ul class="b-sm">
         <li class="d-flex align-items-center bb-sm p-150">
-          <gcds-icon name="close" size="text-small" margin-right="150"></gcds-icon>
+          <gcds-icon
+            name="close"
+            size="text-small"
+            margin-right="150"
+          ></gcds-icon>
           <span> Size: text-small</span>
         </li>
         <li class="d-flex align-items-center bb-sm p-150">
