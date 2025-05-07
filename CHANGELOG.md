@@ -2,8 +2,9 @@
 
 # Changelog
 
-## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.2...gcds-components-v0.34.3) (2025-05-07)
+## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.2...gcds-components-v0.34.3)
 
+Released on: 2025-05-07
 ### :art: Styles
 
 - fix details list spacing ([#839](https://github.com/cds-snc/gcds-components/issues/839)) ([57e3a71](https://github.com/cds-snc/gcds-components/commit/57e3a71c23d2ea4e99c08b3504b8d575711457f9))
