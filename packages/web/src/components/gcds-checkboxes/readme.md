@@ -14,7 +14,7 @@
 | `hint`                 | `hint`          | Hint displayed below the label.                                    | `string`                                            | `undefined` |
 | `legend`               | `legend`        | Set the legend for fieldset form group.                            | `string`                                            | `undefined` |
 | `name` _(required)_    | `name`          | Name attribute for a checkboxes element.                           | `string`                                            | `undefined` |
-| `options` _(required)_ | `options`       | Options to render radio buttons                                    | `CheckboxObject[] \| string`                        | `undefined` |
+| `options` _(required)_ | `options`       | Options to render checkboxes buttons                               | `CheckboxObject[] \| string`                        | `undefined` |
 | `required`             | `required`      | Specifies if the checkboxes are required or not.                   | `boolean`                                           | `undefined` |
 | `validateOn`           | `validate-on`   | Set event to call validator                                        | `"blur" \| "other" \| "submit"`                     | `undefined` |
 | `validator`            | --              | Array of validators                                                | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |

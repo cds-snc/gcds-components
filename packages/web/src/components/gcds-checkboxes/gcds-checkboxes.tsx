@@ -46,7 +46,7 @@ export class GcdsCheckboxes {
   @AttachInternals()
   internals: ElementInternals;
 
-  private initialState?: string;
+  private initialState?: string | string[];
 
   private shadowElement?: HTMLElement;
 
@@ -148,7 +148,6 @@ export class GcdsCheckboxes {
       cleanUpValues(this.optionsArr, this.el);
 
       this.internals.setFormValue(this.value.toString());
-      this.initialState = this.value.toString();
     }
   }
 
@@ -292,7 +291,7 @@ export class GcdsCheckboxes {
    * Form internal functions
    */
   formResetCallback() {
-    if (this.value.toString() != this.initialState) {
+    if (this.value != this.initialState) {
       this.value = this.initialState;
     }
   }
@@ -358,6 +357,7 @@ export class GcdsCheckboxes {
       logError('gcds-checkboxes', this.errors);
     }
 
+    this.initialState = this.value;
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 

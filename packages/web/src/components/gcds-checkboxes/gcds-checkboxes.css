@@ -17,12 +17,13 @@
     .gcds-checkbox {
       padding: 0;
 
-      gcds-label {
+      gcds-label > label {
         &:before,
         &:after {
           cursor: pointer;
           content: '';
           box-sizing: border-box;
+          position: absolute;
         }
       }
     }
@@ -83,7 +84,7 @@
       }
   
       input,
-      gcds-label:before {
+      gcds-label>label:before {
         top: 0;
         left: 0;
         width: var(--gcds-checkbox-input-height-and-width);
@@ -94,7 +95,7 @@
         opacity: 0;
       }
   
-      gcds-label {
+      gcds-label > label {
         width: fit-content;
         --gcds-label-font-desktop: var(--gcds-checkbox-label-font-desktop);
         --gcds-label-font-mobile: var(--gcds-checkbox-label-font-mobile);
@@ -121,7 +122,7 @@
         }
       }
   
-      input:checked + gcds-label:after {
+      input:checked + gcds-label > label:after {
         opacity: 1;
       }
     }
@@ -132,8 +133,9 @@
   :host .gcds-checkbox.gcds-checkbox--disabled {
     color: var(--gcds-checkbox-disabled-text);
 
-    gcds-label {
+    gcds-label > label {
       --gcds-label-text: currentColor;
+      cursor: not-allowed;
 
       &:before,
       &:after {
@@ -153,7 +155,7 @@
 }
 
 @layer error {
-  :host .gcds-checkbox.gcds-checkbox--error:not(:focus-within) gcds-label {
+  :host .gcds-checkbox.gcds-checkbox--error:not(:focus-within) gcds-label > label {
     &:before {
       border-color: var(--gcds-checkbox-danger-border);
     }
@@ -166,13 +168,16 @@
 
 @layer focus {
   :host .gcds-checkbox:focus-within {
-    color: var(--gcds-checkbox-focus-color);
-
-    input:focus + gcds-label:before {
+    input:focus + gcds-label > label:before {
+      color: var(--gcds-checkbox-focus-color);
       outline: var(--gcds-checkbox-focus-outline-width) solid currentcolor;
       outline-offset: var(--gcds-checkbox-input-border-width);
       box-shadow: var(--gcds-checkbox-focus-box-shadow);
       background: var(--gcds-checkbox-focus-background);
+    }
+
+    input:focus + gcds-label > label:after {
+      color: var(--gcds-checkbox-focus-color);
     }
   }
 }

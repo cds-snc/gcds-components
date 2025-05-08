@@ -206,7 +206,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Options to render radio buttons
+          * Options to render checkboxes buttons
          */
         "options": string | Array<CheckboxObject>;
         /**
@@ -2095,7 +2095,7 @@ declare namespace LocalJSX {
          */
         "onGcdsValid"?: (event: GcdsCheckboxesCustomEvent<object>) => void;
         /**
-          * Options to render radio buttons
+          * Options to render checkboxes buttons
          */
         "options": string | Array<CheckboxObject>;
         /**

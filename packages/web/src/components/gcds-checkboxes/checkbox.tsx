@@ -54,7 +54,7 @@ export function validateOptionsArray(optionsArr) {
  */
 export function cleanUpValues(optionsArr, element) {
   const availableValues = [];
-  optionsArr.map(checkbox => {
+  optionsArr.forEach(checkbox => {
     availableValues.push(checkbox.value ? checkbox.value : 'on');
 
     if (
@@ -71,7 +71,7 @@ export function cleanUpValues(optionsArr, element) {
   // Remove any values that are not available in the inputs
   (element.value as Array<string>)
     .filter(value => !availableValues.includes(value))
-    .map(value => {
+    .forEach(value => {
       element.value = (element.value as Array<string>).filter(
         item => item !== value,
       );
@@ -143,10 +143,15 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
         onBlur={isGroup ? () => gcdsBlur.emit() : onBlurValidate}
         onFocus={() => gcdsFocus.emit()}
         onInput={e => handleInput(e, gcdsInput)}
-        onClick={e => emitEvent(e, gcdsClick)}
+        onClick={e =>
+          !disabled ? emitEvent(e, gcdsClick) : e.stopImmediatePropagation()
+        }
       />
 
-      <gcds-label {...labelAttrs}></gcds-label>
+      <gcds-label
+        {...labelAttrs}
+        onClick={e => e.stopPropagation()}
+      ></gcds-label>
 
       {checkbox.hint || (!isGroup && hint) ? (
         <gcds-hint hint-id={checkbox.id}>
