@@ -20,6 +20,7 @@
 ### Used by
 
  - [gcds-checkbox](../gcds-checkbox)
+ - [gcds-checkboxes](../gcds-checkboxes)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
  - [gcds-radio-group](../gcds-radio-group)
@@ -32,6 +33,7 @@
 ```mermaid
 graph TD;
   gcds-checkbox --> gcds-label
+  gcds-checkboxes --> gcds-label
   gcds-file-uploader --> gcds-label
   gcds-input --> gcds-label
   gcds-radio-group --> gcds-label
