@@ -217,7 +217,7 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
 @ProxyCmp({
   inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
   methods: ['validate'],
-  outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsError', 'gcdsValid']
+  outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
   selector: 'gcds-checkboxes',
@@ -225,7 +225,7 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
-  outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsError', 'gcdsValid'],
+  outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
 export class GcdsCheckboxes {
@@ -233,7 +233,7 @@ export class GcdsCheckboxes {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -255,6 +255,10 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
    * Emmitted when a checkbox has been inputted.
    */
   gcdsInput: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emmitted when a checkbox has been changed.
+   */
+  gcdsChange: EventEmitter<CustomEvent<any>>;
   /**
    * Emitted when the input has a validation error.
    */

@@ -195,7 +195,7 @@ describe('gcds-checkbox', () => {
               Group of checkboxes
             </legend>
             <div class="gcds-checkbox">
-              <input id="checkbox1" aria-describedby="hint-checkbox1 " name="checkgroup" type="checkbox" value="checkbox1">
+              <input id="checkbox1" aria-describedby="hint-checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
               <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
               <gcds-hint hint-id="checkbox1">
                 First option

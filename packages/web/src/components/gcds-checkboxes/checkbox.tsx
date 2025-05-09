@@ -86,6 +86,7 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
     errorMessage,
     gcdsFocus,
     gcdsInput,
+    gcdsChange,
     gcdsClick,
     gcdsBlur,
     required,
@@ -142,6 +143,7 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
         {...attrsInput}
         onBlur={isGroup ? () => gcdsBlur.emit() : onBlurValidate}
         onFocus={() => gcdsFocus.emit()}
+        onChange={() => gcdsChange.emit()}
         onInput={e => handleInput(e, gcdsInput)}
         onClick={e =>
           !disabled ? emitEvent(e, gcdsClick) : e.stopImmediatePropagation()

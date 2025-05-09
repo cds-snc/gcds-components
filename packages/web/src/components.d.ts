@@ -1003,7 +1003,7 @@ export namespace Components {
         "value"?: string;
     }
     interface GcdsSideNav {
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Label for navigation landmark
          */
@@ -1152,7 +1152,7 @@ export namespace Components {
           * Nav alignment
          */
         "alignment": 'left' | 'center' | 'right';
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Label for navigation landmark
          */
@@ -1165,7 +1165,7 @@ export namespace Components {
           * Close all theme menus
          */
         "closeAllMenus": () => Promise<void>;
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Sets the homepage styling
          */
@@ -1358,6 +1358,7 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsInput": any;
+        "gcdsChange": any;
         "gcdsError": object;
         "gcdsValid": object;
     }
@@ -2074,6 +2075,10 @@ declare namespace LocalJSX {
           * Emitted when the checkbox loses focus.
          */
         "onGcdsBlur"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
+        /**
+          * Emmitted when a checkbox has been changed.
+         */
+        "onGcdsChange"?: (event: GcdsCheckboxesCustomEvent<any>) => void;
         /**
           * Emitted when the checkbox has been clicked.
          */

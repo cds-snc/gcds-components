@@ -248,6 +248,11 @@ export class GcdsCheckboxes {
   @Event() gcdsInput: EventEmitter;
 
   /**
+   * Emmitted when a checkbox has been changed.
+   */
+  @Event() gcdsChange: EventEmitter;
+
+  /**
    * Emitted when the input has a validation error.
    */
   @Event() gcdsError!: EventEmitter<object>;
