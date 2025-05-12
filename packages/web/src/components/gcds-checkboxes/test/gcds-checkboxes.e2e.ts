@@ -60,7 +60,7 @@ describe('gcds-checkboxes', () => {
     expect(gcdsInput.events.length).toBe(1);
 
     await page.evaluate(() => {
-      // Find the gcds-radios element
+      // Find the gcds-checkboxes element
       const checkboxes = document.querySelector(
         'gcds-checkboxes[name="checkgroup"]',
       );
