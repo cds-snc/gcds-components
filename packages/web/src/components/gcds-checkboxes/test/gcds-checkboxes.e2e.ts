@@ -130,7 +130,7 @@ describe('gcds-checkboxes', () => {
     expect(await (await input.getProperty('checked')).jsonValue()).toBe(false);
 
     await page.evaluate(() => {
-      // Find the gcds-radios element
+      // Find the gcds-checkboxes element
       const checkboxes = document.querySelector(
         'gcds-checkboxes[name="checkgroup"]',
       );
