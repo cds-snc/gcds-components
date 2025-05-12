@@ -98,7 +98,7 @@ describe('gcds-checkboxes', () => {
         },
       ];
 
-      // Find the gcds-radios element
+      // Find the gcds-checkboxes element
       const checkboxes = document.querySelector(
         'gcds-checkboxes[name="checkgroup"]',
       );
