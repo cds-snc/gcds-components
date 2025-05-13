@@ -24,6 +24,7 @@
     "build": "stencil build --docs",
     "postbuild": "node ./scripts/copyCSSFile.js",
     "start": "stencil build --dev --watch --serve",
+    "pretest": "cd ../.. && npm run patch:stenciljs",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
@@ -33,7 +34,7 @@
     "lint-and-fix": "eslint . --fix"
   },
   "dependencies": {
-    "@stencil/core": "4.19.2",
+    "@stencil/core": "4.31.0",
     "@stencil/react-output-target": "^0.5.3",
     "@storybook/addon-a11y": "^8.0.9",
     "@storybook/addons": "^7.6.17",

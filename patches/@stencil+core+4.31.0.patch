@@ -1,17 +1,19 @@
 diff --git a/node_modules/@stencil/core/mock-doc/index.cjs b/node_modules/@stencil/core/mock-doc/index.cjs
-index f019ad6..4c6ba62 100644
+index 7e67980..6a1a435 100644
 --- a/node_modules/@stencil/core/mock-doc/index.cjs
 +++ b/node_modules/@stencil/core/mock-doc/index.cjs
-@@ -6861,14 +6861,7 @@ var MockNodeList = class {
+@@ -6785,16 +6785,7 @@ var MockNodeList = class {
  };
  var MockElement = class extends MockNode2 {
    attachInternals() {
 -    return new Proxy({}, {
 -      get: function(_target, prop, _receiver) {
--        console.error(
--          `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
--Testing components with ElementInternals is fully supported in e2e tests.`
--        );
+-        if ("process" in globalThis && globalThis.process.env.__STENCIL_SPEC_TESTS__) {
+-          console.error(
+-            `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-  Testing components with ElementInternals is fully supported in e2e tests.`
+-          );
+-        }
 -      }
 -    });
 +    return { setFormValue: (value) => {} };
@@ -19,19 +21,21 @@ index f019ad6..4c6ba62 100644
    constructor(ownerDocument, nodeName, namespaceURI = null) {
      super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
 diff --git a/node_modules/@stencil/core/mock-doc/index.js b/node_modules/@stencil/core/mock-doc/index.js
-index 70bb571..dc65ad3 100644
+index 8781e7c..095a699 100644
 --- a/node_modules/@stencil/core/mock-doc/index.js
 +++ b/node_modules/@stencil/core/mock-doc/index.js
-@@ -6808,14 +6808,7 @@ var MockNodeList = class {
+@@ -6732,16 +6732,7 @@ var MockNodeList = class {
  };
  var MockElement = class extends MockNode2 {
    attachInternals() {
 -    return new Proxy({}, {
 -      get: function(_target, prop, _receiver) {
--        console.error(
--          `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
--Testing components with ElementInternals is fully supported in e2e tests.`
--        );
+-        if ("process" in globalThis && globalThis.process.env.__STENCIL_SPEC_TESTS__) {
+-          console.error(
+-            `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-  Testing components with ElementInternals is fully supported in e2e tests.`
+-          );
+-        }
 -      }
 -    });
 +    return { setFormValue: (value) => {} };

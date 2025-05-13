@@ -21,7 +21,7 @@
 | `size`                 | `size`          | Size attribute for an input element to provide a visual indication of the expected text length to the user. | `number`                                                           | `undefined` |
 | `type`                 | `type`          | Set Input types                                                                                             | `"email" \| "number" \| "password" \| "search" \| "text" \| "url"` | `'text'`    |
 | `validateOn`           | `validate-on`   | Set event to call validator                                                                                 | `"blur" \| "other" \| "submit"`                                    | `undefined` |
-| `validator`            | --              | Array of validators                                                                                         | `(string \| ValidatorEntry \| Validator<string>)[]`                | `undefined` |
+| `validator`            | `validator`     | Array of validators                                                                                         | `(string \| ValidatorEntry \| Validator<string>)[]`                | `undefined` |
 | `value`                | `value`         | Default value for an input element.                                                                         | `string`                                                           | `undefined` |
 
 

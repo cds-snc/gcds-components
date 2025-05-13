@@ -17,7 +17,7 @@
 | `name` _(required)_   | `name`          | Name attribute for the date input.                                                                                                     | `string`                                            | `undefined` |
 | `required`            | `required`      | Specifies if a form field is required or not.                                                                                          | `boolean`                                           | `false`     |
 | `validateOn`          | `validate-on`   | Set event to call validator                                                                                                            | `"blur" \| "other" \| "submit"`                     | `undefined` |
-| `validator`           | --              | Array of validators                                                                                                                    | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validator`           | `validator`     | Array of validators                                                                                                                    | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
 | `value`               | `value`         | Default value for the date input element. Format: YYYY-MM-DD                                                                           | `string`                                            | `undefined` |
 
 

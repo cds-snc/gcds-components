@@ -14,7 +14,7 @@
 | `name`        | `name`        | Set the name of the search input                                                   | `string`          | `'q'`            |
 | `placeholder` | `placeholder` | Set the placeholder and label for the search input. Becomes "Search [placeholder]" | `string`          | `'Canada.ca'`    |
 | `searchId`    | `search-id`   | Set the id of the search input                                                     | `string`          | `'search'`       |
-| `suggested`   | --            | Set a list of predefined search terms                                              | `string[]`        | `undefined`      |
+| `suggested`   | `suggested`   | Set a list of predefined search terms                                              | `string[]`        | `undefined`      |
 | `value`       | `value`       | Set the value of the search input                                                  | `string`          | `undefined`      |
 
 
