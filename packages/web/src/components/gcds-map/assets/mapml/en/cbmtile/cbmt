@@ -1,0 +1,22 @@
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+  <map-head>
+    <map-title>Canada Base Map - Transportation (CBMT)</map-title>
+    <map-meta http-equiv="Content-Type" content="application/xml;charset=UTF-8"/>
+    <map-meta charset="utf-8"/>
+    <map-link rel="license" href="https://www.nrcan.gc.ca/earth-sciences/geography/topographic-information/free-data-geogratis/licence/17285" title="Canada Base Map &#xa9; Natural Resources Canada"/>
+
+    <map-link rel="alternate" projection="OSMTILE" href="../osmtile/cbmt"/>
+  </map-head>
+  <map-body>
+    <map-extent units="CBMTILE" checked="checked" hidden="hidden">
+      <map-input name="z" type="zoom" value="22" min="0" max="22"/>
+      <map-input name="xmin" type="location" units="pcrs" position="top-left" axis="easting" min="-3262924.7" max="3823954.0"/>
+      <map-input name="ymin" type="location" units="pcrs" position="bottom-left" axis="northing" min="-1554977.6" max="4046262.8"/>
+      <map-input name="xmax" type="location" units="pcrs" position="top-right" axis="easting" min="-3262924.7" max="3823954.0"/>
+      <map-input name="ymax" type="location" units="pcrs" position="top-left" axis="northing" min="-1554977.6" max="4046262.8"/>
+      <map-input name="w" type="width"/>
+      <map-input name="h" type="height"/>
+      <map-link rel="image" tref="https://geogratis.gc.ca/maps/CBMT?SERVICE=WMS&amp;VERSION=1.1.1&amp;SRS=EPSG:3978&amp;LAYERS=CBMT&amp;BBOX={xmin},{ymin},{xmax},{ymax}&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;WIDTH={w}&amp;HEIGHT={h}&amp;STYLES=&amp;m4h=t"/>
+    </map-extent>
+  </map-body>
+</mapml->

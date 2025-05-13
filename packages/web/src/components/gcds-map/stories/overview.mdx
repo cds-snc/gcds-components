@@ -1,0 +1,111 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Map from './gcds-map.stories';
+
+<Meta of={Map} name="Overview" />
+
+# Map<br/>`<mapml-viewer>`
+
+The `<mapml-viewer>` component enables slippy maps with one or more `<map-layer>` children;
+the `<map-caption>` element can be used to provide a screen reader-friendly caption or title
+for the map.
+
+
+## Examples
+
+<br />
+
+### A single "basemap" layer, centred on a location of interest 
+
+<Canvas of={Map.Default} story={{ inline: true }} />
+
+
+{/* this is a comment: HTML syntax doesn’t work in MDX as it’s replaced by JSX (<img> to <img />). */}
+
+{/* 
+ - map with one basemap layer
+ - map with hidden basemap +  one thematic layer
+ - geojson layer
+ - dark / light mode
+ - inline layer content
+ - custom projection (Arctic SDI)
+ -  map with time select (territorial evolution)
+ - map with a queryable vector layer tbd it's a bit annoying actually
+ - a map in which the content changes language to match the user's language
+ - layer with vector tiles
+ - layer with vector features / places styled with CSS
+ - map with feature links and bbox-specific/enabled layers
+*/}
+
+### A "hidden" basemap layer with a single thematic layer exposed in the layer control
+
+You can "hide" any layer from the layer control with its `hidden` attribute, 
+while ensuring that it is always visible on the map. This can be useful to reduce 
+the cognitive load of your map application, and may improve the map's accessibility 
+for some users.
+
+<Canvas of={Map.HiddenBasemap} story={{ inline: true }} />
+
+### A styled GeoJSON features layer
+
+The MapML viewer library has [built-in support for converting GeoJSON into MapML](https://maps4html.org/web-map-doc/docs/api/mapml-viewer-api/#geojson2mapmljson-options)
+features and layers.  You can use custom JavaScript functions to provide styles
+for your features.  Also note that you can pre-establish or set the transparency of 
+layers via the `opacity` attribute and property (See "Show Code", below).
+
+<Canvas of={Map.GeoJSON2MapMLExample} story={{ inline: true }} />
+
+### Light / Dark mode
+
+Maps can be configured to adapt their content to the user's preferred colour scheme, using
+media query syntax with map-specific media query features. A key consideration is
+the availability of content and styles to match expressed preferences.  This
+example uses publicly available tile archives from Protomaps. 
+
+To _automatically_ experience dark mode, either set your operating system mode to dark, or use 
+CSS preference emulation in browser devTools to simulate a preference.  See the 
+MapML user guide for more information on [styling](https://maps4html.org/web-map-doc/docs/user-guide/creating-styles) and 
+[media queries](https://maps4html.org/web-map-doc/docs/api/mapml-viewer-api#supported-map-media-query-features).
+
+<Canvas of={Map.DarkMode} story={{ inline: true }} />
+
+### Inline vs Remote MapML content
+
+The [ `<map-layer>` element](https://maps4html.org/web-map-doc/docs/elements/layer/) can contain HTML-flavoured MapML custom elements between
+the opening and closing tags, called "inline" content, or it can refer to XML-flavoured
+xhtml custom element markup via a `src="url"` (but not both).  It can be a bit tricky if you
+copy content between different contexts as such, since the parsing of these two
+flavours of markup requires a different approach.
+
+<Canvas of={Map.InlineVsRemote} story={{ inline: true }} />
+
+### Custom map projections
+
+There are four pre-defined MapML projections: OSMTILE ("Web Mercator"), CBMTILE
+(Lambert Conformal Conic defined for Canada's spatial data infrastructure), WGS84, and
+APSTILE (Alaskan Polar Stereographic).  Your maps can use other projections that
+are supported by the [proj4js JavaScript library](https://github.com/proj4js) for 
+web mapping, by executing a snippet of JavaScript with a compatible projection
+definition as shown below. See the [MapML.js documentation](https://maps4html.org/web-map-doc/docs/api/mapml-viewer-api#definecustomprojectionoptions) for details. 
+
+<Canvas of={Map.CustomProjection} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul className="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/map/" target="_blank">Guidance</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/develop/packages/web/src/components/gcds-map" target="_blank">Github</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/Maps4HTML/mapml.js" target="_blank">MapML polyfill on GitHub</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://maps4html.org/web-map-doc/" target="_blank">MapML.js documentation</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://docs.geoserver.org/latest/en/user/extensions/mapml/index.html" target="_blank">GeoServer MapML extension documentation</gcds-link>
+  </li>
+</ul>
