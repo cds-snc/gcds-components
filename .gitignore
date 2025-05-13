@@ -45,6 +45,9 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 .env
 
+# Stencil generated files
+packages/react/lib/components.ts
+
 # Duplicate global css file
 packages/react/gcds.css
 packages/vue/gcds.css

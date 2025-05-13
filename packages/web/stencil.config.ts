@@ -3,8 +3,10 @@ import { postcss } from '@stencil/postcss';
 import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
 import { reactOutputTarget } from '@stencil/react-output-target';
-import { angularOutputTarget } from '@stencil/angular-output-target';
-import { vueOutputTarget } from '@stencil/vue-output-target';
+// import { angularOutputTarget } from '@stencil/angular-output-target';
+// import { vueOutputTarget } from '@stencil/vue-output-target';
+
+const customElementsDir = 'dist/components';
 
 export const config: Config = {
   namespace: 'gcds',
@@ -12,21 +14,31 @@ export const config: Config = {
   srcDir: './src',
   outputTargets: [
     reactOutputTarget({
-      componentCorePackage: '@cdssnc/gcds-components',
-      proxiesFile: '../react/src/components/stencil-generated/index.ts',
-      includeDefineCustomElements: true,
+      outDir: '../react/lib/',
+      customElementsDir,
     }),
-    angularOutputTarget({
-      // outputType should be set to 'component' for Stencil projects using the dist output. Otherwise if using the custom elements output, outputType should be set to 'scam' or 'standalone'.
-      outputType: 'component',
-      componentCorePackage: '@cdssnc/gcds-components',
-      directivesProxyFile: '../angular/src/lib/stencil-generated/components.ts',
-      directivesArrayFile: '../angular/src/lib/stencil-generated/index.ts',
-    }),
-    vueOutputTarget({
-      componentCorePackage: '@cdssnc/gcds-components',
-      proxiesFile: '../vue/lib/components.ts',
-    }),
+    // TODO: Configure a SSR friendly react output within @cdssnc/gcds-components-react
+    // reactOutputTarget({
+    //   outDir: '../react/ssr/',
+    //   hydrateModule: '@cdssnc/gcds-components/hydrate',
+    //   customElementsDir,
+    // }),
+    // reactOutputTarget({
+    //   componentCorePackage: '@cdssnc/gcds-components',
+    //   proxiesFile: '../react/src/components/stencil-generated/index.ts',
+    //   includeDefineCustomElements: true,
+    // }),
+    // angularOutputTarget({
+    //   // outputType should be set to 'component' for Stencil projects using the dist output. Otherwise if using the custom elements output, outputType should be set to 'scam' or 'standalone'.
+    //   outputType: 'component',
+    //   componentCorePackage: '@cdssnc/gcds-components',
+    //   directivesProxyFile: '../angular/src/lib/stencil-generated/components.ts',
+    //   directivesArrayFile: '../angular/src/lib/stencil-generated/index.ts',
+    // }),
+    // vueOutputTarget({
+    //   componentCorePackage: '@cdssnc/gcds-components',
+    //   proxiesFile: '../vue/lib/components.ts',
+    // }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
@@ -35,6 +47,7 @@ export const config: Config = {
     {
       // Copy font assets from 'assets' folder to 'dist' folder to ensure they are included in the build output.
       type: 'dist-custom-elements',
+      externalRuntime: false,
       copy: [
         {
           src: 'assets/fonts/**/*',
@@ -66,6 +79,7 @@ export const config: Config = {
   validatePrimaryPackageOutputTarget: true,
   extras: {
     enableImportInjection: true,
-    experimentalSlotFixes: true
+    experimentalScopedSlotChanges: true,
+    experimentalSlotFixes: true,
   },
 };

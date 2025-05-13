@@ -16,11 +16,21 @@
   },
   "scripts": {
     "build": "npm run tsc",
-    "tsc": "tsc -p ."
+    "tsc": "tsc -p . --outDir ./dist"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/lib/index.js",
+  "module": "dist/lib/index.js",
+  "types": "dist/types/lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/lib/index.js",
+      "types": "./dist/types/lib/index.d.ts"
+    },
+    "./gcds.css": {
+      "import": "./gcds.css",
+      "require": "./gcds.css"
+    }
+  },
   "directories": {
     "lib": "lib"
   },
@@ -29,7 +39,8 @@
     "gcds.css"
   ],
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.34.3"
+    "@cdssnc/gcds-components": "^0.34.3",
+    "@stencil/react-output-target": "^1.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.48",
