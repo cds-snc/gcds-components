@@ -11,7 +11,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/stencil-starter-project-name/stencil-starter-project-name.esm.js",
+  "unpkg": "dist/gcds/gcds.esm.js",
   "files": [
     "dist/",
     "loader/",
@@ -52,7 +52,7 @@
     "@stencil/postcss": "^2.1.0",
     "@stencil/react-output-target": "^1.0.2",
     "@stencil/sass": "^3.0.0-0",
-    "@stencil/vue-output-target": "^0.8.8",
+    "@stencil/vue-output-target": "^0.10.7",
     "@storybook/addon-actions": "^8.0.9",
     "@storybook/addon-essentials": "^8.0.9",
     "@storybook/addon-interactions": "^8.0.9",

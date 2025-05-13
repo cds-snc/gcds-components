@@ -1,12 +1,17 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "allowUnreachableCode": false,
+    "esModuleInterop": true,
     "outDir": "./dist",
     "lib": ["dom", "es2020"],
-    "module": "es2015",
-    "moduleResolution": "node",
-    "target": "es2017",
-    "skipLibCheck": true
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "ES2020",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "removeComments": false
   },
   "include": ["lib"],
   "exclude": ["node_modules"]
