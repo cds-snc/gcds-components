@@ -191,3 +191,19 @@ export const requiredRadio: Validator<string> = {
     fr: 'Choisissez une option pour continuer.',
   },
 };
+
+export const requiredCheckboxGroup: Validator<Array<string>> = {
+  validate: (value: Array<string>) => value.length > 0,
+  errorMessage: {
+    en: 'Choose an option to continue.',
+    fr: 'Choisissez une option pour continuer.',
+  },
+};
+
+export const requiredCheckboxSingle: Validator<Array<string>> = {
+  validate: (value: Array<string>) => value.length > 0,
+  errorMessage: {
+    en: 'You must check the box to continue.',
+    fr: 'Vous devez cocher la case pour continuer.',
+  },
+};

@@ -83,13 +83,7 @@ export function requiredValidator(element, type, subtype?) {
           element.validator = ['requiredFileInput'];
         }
         break;
-      case 'checkbox':
-        if (element.validator) {
-          element.validator.unshift('requiredCheck');
-        } else {
-          element.validator = ['requiredCheck'];
-        }
-        break;
+
       case 'date-input':
         if (element.validator) {
           element.validator.unshift('requiredDateInput');
@@ -102,6 +96,20 @@ export function requiredValidator(element, type, subtype?) {
           element.validator.unshift('requiredRadio');
         } else {
           element.validator = ['requiredRadio'];
+        }
+        break;
+      case 'checkboxGroup':
+        if (element.validator) {
+          element.validator.unshift('requiredCheckboxGroup');
+        } else {
+          element.validator = ['requiredCheckboxGroup'];
+        }
+        break;
+      case 'checkboxSingle':
+        if (element.validator) {
+          element.validator.unshift('requiredCheckboxSingle');
+        } else {
+          element.validator = ['requiredCheckboxSingle'];
         }
         break;
     }
