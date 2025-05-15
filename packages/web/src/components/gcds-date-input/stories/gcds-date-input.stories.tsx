@@ -24,7 +24,7 @@ export default {
       control: { type: 'select' },
       options: ['full', 'compact'],
       table: {
-        type: { summary: 'boolean' },
+        type: { summary: 'string' },
         defaultValue: { summary: '-' },
       },
       type: {

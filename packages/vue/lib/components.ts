@@ -250,12 +250,10 @@ export const GcdsHint = /*@__PURE__*/ defineContainer<JSX.GcdsHint>('gcds-hint',
 
 
 export const GcdsIcon = /*@__PURE__*/ defineContainer<JSX.GcdsIcon>('gcds-icon', undefined, [
-  'iconStyle',
   'label',
   'marginLeft',
   'marginRight',
   'name',
-  'fixedWidth',
   'size'
 ]);
 

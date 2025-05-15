@@ -32,6 +32,18 @@ export default {
         required: true,
       },
     },
+
+    // Slots
+    default: {
+      control: {
+        type: 'text',
+      },
+      description:
+        'Customize the content or include additional elements. | Personnalisez le contenu ou ajoutez des éléments supplémentaires.',
+      table: {
+        category: 'Slots | Fentes',
+      },
+    },
   },
 };
 
@@ -43,8 +55,11 @@ const Template = args =>
   legend-size="${args.legendSize}"
   ${args.hint ? `hint="${args.hint}"` : null}
 >
-  <gcds-input
-    input-id="fieldset-input"
+  ${
+    args.default
+      ? args.default
+      : `<gcds-input
+    input-id="${args.fieldsetId}-input"
     label="Input label"
     hint="Hint / Example message."
     size="6"
@@ -63,7 +78,8 @@ const Template = args =>
     <option value="6">Option 6</option>
     <option value="7">Option 7</option>
     <option value="8">Option 8</option>
-  </gcds-select>
+  </gcds-select>`
+  }
 </gcds-fieldset>
 
 <!-- React code -->
@@ -72,8 +88,11 @@ const Template = args =>
   legendSize="${args.legendSize}"
   ${args.hint ? `hint="${args.hint}"` : null}
 >
-  <GcdsInput
-    inputId="fieldset-input"
+    ${
+      args.default
+        ? args.default
+        : `<GcdsInput
+    inputId="${args.fieldsetId}-input"
     label="Input label"
     hint="Hint / Example message."
     size="6"
@@ -92,7 +111,8 @@ const Template = args =>
     <option value="6">Option 6</option>
     <option value="7">Option 7</option>
     <option value="8">Option 8</option>
-  </GcdsSelect>
+  </GcdsSelect>`
+    }
 </GcdsFieldset>
 `.replace(/\s\snull\n/g, '');
 
@@ -147,6 +167,7 @@ SizeH3.args = {
   legend: 'Legend',
   legendSize: 'h3',
   hint: 'Hint / Example message.',
+  default: '',
 };
 
 export const SizeH4 = Template.bind({});
@@ -154,6 +175,7 @@ SizeH4.args = {
   legend: 'Legend',
   legendSize: 'h4',
   hint: 'Hint / Example message.',
+  default: '',
 };
 
 export const SizeH5 = Template.bind({});
@@ -161,6 +183,7 @@ SizeH5.args = {
   legend: 'Legend',
   legendSize: 'h5',
   hint: 'Hint / Example message.',
+  default: '',
 };
 
 export const SizeH6 = Template.bind({});
@@ -168,6 +191,7 @@ SizeH6.args = {
   legend: 'Legend',
   legendSize: 'h6',
   hint: 'Hint / Example message.',
+  default: '',
 };
 
 export const Props = Template.bind({});
@@ -175,6 +199,7 @@ Props.args = {
   legend: 'Legend',
   legendSize: 'h2',
   hint: 'Hint / Example message.',
+  default: '',
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -182,4 +207,5 @@ Playground.args = {
   legend: 'Legend',
   legendSize: 'h2',
   hint: 'Hint / Example message.',
+  default: '',
 };

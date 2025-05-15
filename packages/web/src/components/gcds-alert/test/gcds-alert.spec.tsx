@@ -21,7 +21,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -54,7 +54,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -83,7 +83,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -104,7 +104,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is a success alert." class="gcds-alert alert--role-success" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5" margin-right="175"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="checkmark-circle" size="h5" margin-right="175"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -112,7 +112,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -133,7 +133,7 @@ describe('gcds-alert', () => {
           <div aria-label="This is a warning alert." class="gcds-alert alert--role-warning" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5" margin-right="175"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="warning-triangle" size="h5" margin-right="175"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -141,7 +141,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -174,7 +174,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -203,7 +203,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -224,7 +224,7 @@ describe('gcds-alert', () => {
           <div aria-label="Ceci est une alerte de succès." class="gcds-alert alert--role-success" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="check-circle" size="h5" margin-right="175"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="checkmark-circle" size="h5" margin-right="175"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -232,7 +232,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -253,7 +253,7 @@ describe('gcds-alert', () => {
           <div aria-label="Ceci est une alerte d'avertissement." class="gcds-alert alert--role-warning" role="alert">
             <gcds-container centered="" size="full">
               <div class="alert__container">
-                <gcds-icon aria-hidden="true" class="alert__icon" name="exclamation-triangle" size="h5" margin-right="175"></gcds-icon>
+                <gcds-icon aria-hidden="true" class="alert__icon" name="warning-triangle" size="h5" margin-right="175"></gcds-icon>
 
                 <div class="alert__content">
                   <p class="alert__heading"><strong>Main notification title</strong></p>
@@ -261,7 +261,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Fermer l'alerte.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -294,7 +294,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -323,7 +323,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -356,7 +356,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -385,7 +385,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -414,7 +414,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -443,7 +443,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -472,7 +472,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -501,7 +501,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -561,7 +561,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>
@@ -598,7 +598,7 @@ describe('gcds-alert', () => {
                 </div>
 
                 <button class="alert__close-btn" aria-label="Close alert.">
-                  <gcds-icon aria-hidden="true" name="times" size="text"></gcds-icon>
+                  <gcds-icon aria-hidden="true" name="close" size="text"></gcds-icon>
                 </button>
               </div>
             </gcds-container>

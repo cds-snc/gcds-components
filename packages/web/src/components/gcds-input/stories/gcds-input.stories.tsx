@@ -63,8 +63,7 @@ export default {
       },
     },
     autocomplete: {
-      control: { type: 'select' },
-      options: ['on', 'off'],
+      control: 'text',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
@@ -213,7 +212,7 @@ Default.args = {
   size: '',
   value: '',
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',
 };
@@ -229,7 +228,7 @@ Disabled.args = {
   hint: 'Hint / example message.',
   disabled: true,
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -243,7 +242,7 @@ Error.args = {
   required: true,
   errorMessage: 'Error message or validation message.',
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -256,7 +255,7 @@ Required.args = {
   hint: 'Hint / example message.',
   required: true,
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -271,7 +270,7 @@ Email.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -284,7 +283,7 @@ Number.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -297,7 +296,7 @@ Password.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -310,7 +309,7 @@ Search.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -323,7 +322,7 @@ Text.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -336,7 +335,7 @@ Url.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   validateOn: 'blur',
 };
 
@@ -355,7 +354,7 @@ Props.args = {
   size: null,
   value: '',
   lang: 'en',
-  autocomplete: 'off',
+  autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',
 };
@@ -374,7 +373,7 @@ Playground.args = {
   disabled: false,
   size: '',
   value: '',
-  autocomplete: 'off',
+  autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',
   lang: 'en',

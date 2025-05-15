@@ -1,8 +1,6 @@
 name: Backstage Catalog Info Helper
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
 
 jobs:
   update-catalog-info:

@@ -20,8 +20,12 @@
 
       a {
         color: var(--gcds-pagination-default-text);
-        font: var(--gcds-pagination-font);
+        font: var(--gcds-pagination-font-desktop);
         border-radius: var(--gcds-pagination-border-radius);
+
+        @media only screen and (width < 48em) {
+          font: var(--gcds-pagination-font-mobile);
+        }
       }
     }
   }
@@ -50,6 +54,11 @@
             width: auto;
             min-width: auto;
             height: auto;
+            text-decoration: none;
+
+            span {
+              text-decoration: underline;
+            }
           }
         }
 
@@ -99,6 +108,16 @@
           grid-area: label;
           font-weight: var(--gcds-pagination-simple-label-font-weight);
         }
+      }
+    }
+
+    .gcds-pagination-simple-previous a,
+    .gcds-pagination-simple-next a {
+      text-decoration: none;
+
+      .gcds-pagination-simple-text,
+      span {
+        text-decoration: underline;
       }
     }
 

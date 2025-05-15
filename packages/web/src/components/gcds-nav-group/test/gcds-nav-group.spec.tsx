@@ -10,8 +10,8 @@ describe('gcds-nav-group', () => {
     expect(page.root).toEqualHtml(`
     <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group" role="listitem">
       <mock:shadow-root>
-        <button aria-expanded="false" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable">
-          <gcds-icon name="angle-down"></gcds-icon>
+        <button aria-expanded="false" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable" tabindex="0">
+          <gcds-icon name="chevron-down"></gcds-icon>
           Nav group
         </button>
         <ul aria-label="Nav group submenu" class="gcds-nav--expandable gcds-nav-group__list">
@@ -30,8 +30,8 @@ describe('gcds-nav-group', () => {
     expect(page.root).toEqualHtml(`
     <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group" lang="fr" role="listitem">
       <mock:shadow-root>
-        <button aria-expanded="false" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable">
-          <gcds-icon name="angle-down"></gcds-icon>
+        <button aria-expanded="false" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable" tabindex="0">
+          <gcds-icon name="chevron-down"></gcds-icon>
           Nav group
         </button>
         <ul aria-label="Nav group submenu" class="gcds-nav--expandable gcds-nav-group__list">
@@ -50,8 +50,8 @@ describe('gcds-nav-group', () => {
     expect(page.root).toEqualHtml(`
     <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group" role="listitem" open>
       <mock:shadow-root>
-        <button aria-expanded="true" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable">
-          <gcds-icon name="angle-up"></gcds-icon>
+        <button aria-expanded="true" aria-haspopup="true" class="gcds-nav-group__trigger gcds-trigger--expandable" tabindex="0">
+          <gcds-icon name="chevron-up"></gcds-icon>
           Nav group
         </button>
         <ul aria-label="Nav group submenu" class="gcds-nav--expandable gcds-nav-group__list">

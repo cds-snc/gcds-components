@@ -44,15 +44,20 @@ export class GcdsButton {
   /**
    * Set the main style
    */
-  @Prop({ mutable: true }) buttonRole: 'primary' | 'secondary' | 'danger' =
-    'primary';
+  @Prop({ mutable: true }) buttonRole:
+    | 'start'
+    | 'primary'
+    | 'secondary'
+    | 'danger' = 'primary';
 
   @Watch('buttonRole')
   validateButtonRole(newValue: string) {
-    const values = ['primary', 'secondary', 'danger'];
+    const values = ['start', 'primary', 'secondary', 'danger'];
 
     if (!values.includes(newValue)) {
       this.buttonRole = 'primary';
+    } else if (newValue === 'start' && this.size === 'small') {
+      this.size = 'regular';
     }
   }
 
@@ -65,7 +70,7 @@ export class GcdsButton {
   validateSize(newValue: string) {
     const values = ['regular', 'small'];
 
-    if (!values.includes(newValue)) {
+    if (!values.includes(newValue) || this.buttonRole === 'start') {
       this.size = 'regular';
     }
   }
@@ -84,6 +89,13 @@ export class GcdsButton {
    * The disabled attribute for a <button> element.
    */
   @Prop() disabled: boolean;
+
+  @Watch('disabled')
+  validateDisabled(newValue: boolean) {
+    if (newValue === false || (newValue === true && this.type === 'link')) {
+      this.el.removeAttribute('disabled');
+    }
+  }
 
   /**
    * The value attribute specifies the value for a <button> element.
@@ -160,6 +172,7 @@ export class GcdsButton {
     this.validateType(this.type);
     this.validateButtonRole(this.buttonRole);
     this.validateSize(this.size);
+    this.validateDisabled(this.disabled);
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
 
@@ -242,7 +255,9 @@ export class GcdsButton {
           id={buttonId}
           onBlur={() => this.gcdsBlur.emit()}
           onFocus={() => this.gcdsFocus.emit()}
-          onClick={e => !disabled && this.handleClick(e)}
+          onClick={e =>
+            !disabled ? this.handleClick(e) : e.stopImmediatePropagation()
+          }
           class={`gcds-button button--role-${buttonRole} button--${size}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           {...inheritedAttributes}
@@ -252,7 +267,7 @@ export class GcdsButton {
 
           {type === 'link' && target === '_blank' ? (
             <gcds-icon
-              name="external-link"
+              name="external"
               label={i18n[lang].label}
               margin-left="150"
             />

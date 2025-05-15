@@ -185,6 +185,7 @@ export class GcdsNavGroup {
       <Host role="listitem" open={open}>
         <button
           aria-haspopup="true"
+          tabIndex={0}
           aria-expanded={open.toString()}
           ref={element => (this.triggerElement = element as HTMLElement)}
           class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
@@ -197,7 +198,7 @@ export class GcdsNavGroup {
             }
           }}
         >
-          <gcds-icon name={open ? 'angle-up' : 'angle-down'}></gcds-icon>
+          <gcds-icon name={open ? 'chevron-up' : 'chevron-down'}></gcds-icon>
           {closeTrigger && open ? closeTrigger : openTrigger}
         </button>
         <ul
