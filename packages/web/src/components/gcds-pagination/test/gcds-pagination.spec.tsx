@@ -203,7 +203,7 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Previous page: Page 4 of 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    Previous
+                    <span>Previous</span>
                   </a>
                 </li>
                 <li>
@@ -263,7 +263,7 @@ describe('gcds-pagination', () => {
                 </li>
                 <li>
                   <a aria-label="Next page: Page 6 of 9 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
-                    Next
+                    <span>Next</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -272,12 +272,12 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Previous page: Page 4 of 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    Prev
+                    <span>Prev</span>
                   </a>
                 </li>
                 <li>
                   <a aria-label="Next page: Page 6 of 9 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
-                    Next
+                    <span>Next</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -310,7 +310,7 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Previous page: Page 9 of 20 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    Previous
+                    <span>Previous</span>
                   </a>
                 </li>
                 <li>
@@ -360,7 +360,7 @@ describe('gcds-pagination', () => {
                 </li>
                 <li>
                   <a aria-label="Next page: Page 11 of 20 of Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
-                    Next
+                    <span>Next</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -369,12 +369,12 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Previous page: Page 9 of 20 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    Prev
+                    <span>Prev</span>
                   </a>
                 </li>
                 <li>
                   <a aria-label="Next page: Page 11 of 20 of Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
-                    Next
+                    <span>Next</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -407,7 +407,7 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    Précédent
+                    <span>Précédent</span>
                   </a>
                 </li>
                 <li>
@@ -467,7 +467,7 @@ describe('gcds-pagination', () => {
                 </li>
                 <li>
                   <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
-                    Suivante
+                    <span>Suivante</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -476,12 +476,12 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    Préc.
+                    <span>Préc.</span>
                   </a>
                 </li>
                 <li>
                   <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
-                    Suivante
+                    <span>Suivante</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -514,7 +514,7 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    Précédent
+                    <span>Précédent</span>
                   </a>
                 </li>
                 <li>
@@ -564,7 +564,7 @@ describe('gcds-pagination', () => {
                 </li>
                 <li>
                   <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
-                    Suivante
+                    <span>Suivante</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -573,12 +573,12 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    Préc.
+                    <span>Préc.</span>
                   </a>
                 </li>
                 <li>
                   <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
-                    Suivante
+                    <span>Suivante</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>

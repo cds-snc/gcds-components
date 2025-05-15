@@ -20,13 +20,17 @@
   :host .gcds-button {
     display: inline-block;
     width: var(--gcds-button-width);
-    font: var(--gcds-button-font);
     text-align: center;
     text-wrap: balance;
     padding: var(--gcds-button-padding);
     border: var(--gcds-button-border-width) solid transparent;
     border-radius: var(--gcds-button-border-radius);
     transition: all 0.15s ease-in-out;
+    font: var(--gcds-button-font-desktop);
+
+    @media only screen and (width < 48em) {
+      font: var(--gcds-button-font-mobile);
+    }
   }
 }
 
@@ -42,6 +46,18 @@
     &.button--role-primary {
       background-color: var(--gcds-button-primary-default-background);
       color: var(--gcds-button-primary-default-text);
+    }
+
+    /* Button start */
+    &.button--role-start {
+      background-color: var(--gcds-button-start-default-background);
+      color: var(--gcds-button-start-default-text);
+      padding: var(--gcds-button-start-padding);
+      font: var(--gcds-button-start-font-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-button-start-font-mobile);
+      }
     }
 
     /* Button secondary */
@@ -61,12 +77,14 @@
 }
 
 @layer disabled {
-  :host .gcds-button[aria-disabled='true'] {
-    background-color: var(--gcds-button-shared-disabled-background);
-    color: var(--gcds-button-shared-disabled-text);
-    cursor: not-allowed;
-    border: var(--gcds-button-border-width) solid currentColor;
+  :host([disabled]) {
     pointer-events: none;
+
+    .gcds-button[aria-disabled='true'] {
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: var(--gcds-button-shared-disabled-opacity);
+    }
   }
 }
 
@@ -81,6 +99,11 @@
       /* Primary button */
       &.button--role-primary {
         background-color: var(--gcds-button-primary-hover-background);
+      }
+
+      /* Start button */
+      &.button--role-start {
+        background-color: var(--gcds-button-start-hover-background);
       }
 
       /* Secondary button */

@@ -4,7 +4,7 @@ const I18N = {
       heading: 'Government of Canada',
       menu: {
         contacts: {
-          text: 'All Contacts',
+          text: 'All contacts',
           link: 'https://www.canada.ca/en/contact.html',
         },
         dept: {
@@ -81,7 +81,7 @@ const I18N = {
           link: 'https://www.canada.ca/en/services/science.html',
         },
         indigenous: {
-          text: 'Indigenous peoples',
+          text: 'Indigenous Peoples',
           link: 'https://www.canada.ca/en/services/indigenous-peoples.html',
         },
         veterans: {

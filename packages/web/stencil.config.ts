@@ -8,8 +8,7 @@ import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'gcds',
-  globalStyle:
-    '../../node_modules/@cdssnc/gcds-tokens/build/web/css/tokens.css',
+  globalStyle: 'src/assets/css/global.css',
   srcDir: './src',
   outputTargets: [
     reactOutputTarget({
@@ -34,7 +33,15 @@ export const config: Config = {
       isPrimaryPackageOutputTarget: true,
     },
     {
+      // Copy font assets from 'assets' folder to 'dist' folder to ensure they are included in the build output.
       type: 'dist-custom-elements',
+      copy: [
+        {
+          src: 'assets/fonts/**/*',
+          dest: 'dist/gcds/assets/fonts',
+          warn: true,
+        },
+      ],
     },
     {
       type: 'docs-readme',

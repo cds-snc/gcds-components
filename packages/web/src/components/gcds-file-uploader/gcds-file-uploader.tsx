@@ -255,7 +255,7 @@ export class GcdsFileUploader {
 
       this.shadowElement.files = dt.files;
       this.files = dt.files;
-      this.addFilesToFormData(this.shadowElement.files);
+      this.addFilesToFormData(Array.from(this.shadowElement.files));
     }
 
     this.value = [...filesContainer];
@@ -332,6 +332,30 @@ export class GcdsFileUploader {
 
     this.internals.setFormValue(formData);
   };
+
+  /*
+   * Handle drop event on file uploader
+   */
+  private handleDrop(e) {
+    e.preventDefault();
+
+    const droppedFiles = e.dataTransfer.files;
+
+    if (droppedFiles && droppedFiles.length > 0) {
+      const dt = new DataTransfer();
+      for (const file of droppedFiles) {
+        dt.items.add(file);
+      }
+
+      if (dt.files.length > 0) {
+        this.shadowElement.files = dt.files;
+        this.files = dt.files;
+      }
+    }
+
+    // Focus file input after drop
+    this.shadowElement.focus();
+  }
 
   /*
    * Observe lang attribute change
@@ -437,6 +461,8 @@ export class GcdsFileUploader {
             class={`file-uploader__input ${
               value.length > 0 ? 'uploaded-files' : ''
             }`}
+            onDrop={e => this.handleDrop(e)}
+            onDragOver={e => e.preventDefault()}
           >
             <button
               type="button"
@@ -481,7 +507,7 @@ export class GcdsFileUploader {
                   <gcds-text margin-bottom="0">{file}</gcds-text>
                   <button onClick={e => this.removeFile(e)}>
                     <span>{i18n[lang].button.remove}</span>
-                    <gcds-icon name="times" size="text" margin-left="150" />
+                    <gcds-icon name="close" size="text" margin-left="150" />
                   </button>
                 </div>
               ))

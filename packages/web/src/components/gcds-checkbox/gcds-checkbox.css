@@ -62,6 +62,7 @@
       width: fit-content;
 
       &:before {
+        background-color: var(--gcds-checkbox-default-background);
         border: var(--gcds-checkbox-input-border-width) solid currentcolor;
         border-radius: var(--gcds-checkbox-input-border-radius);
         transition:

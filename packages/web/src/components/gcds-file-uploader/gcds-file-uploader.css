@@ -24,9 +24,13 @@
     flex-direction: column;
     align-items: flex-start;
     max-width: 90%;
-    font: var(--gcds-file-uploader-font);
+    font: var(--gcds-file-uploader-font-desktop);
     color: var(--gcds-file-uploader-default-text);
     transition: color ease-in-out 0.15s;
+
+    @media only screen and (width < 48em) {
+      font: var(--gcds-file-uploader-font-mobile);
+    }
 
     button {
       border-radius: var(--gcds-file-uploader-file-button-border-radius);
@@ -58,6 +62,10 @@
       height: 100%;
       opacity: 0;
       cursor: pointer;
+
+      &::-webkit-file-upload-button {
+        cursor: pointer;
+      }
     }
 
     #file-uploader__summary {
@@ -79,7 +87,6 @@
     padding: var(--gcds-file-uploader-file-padding);
     border: var(--gcds-file-uploader-file-border-width) solid
       var(--gcds-file-uploader-file-border-color);
-    cursor: pointer;
 
     &:not(:last-of-type) {
       border-block-end: 0;

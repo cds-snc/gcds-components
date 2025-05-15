@@ -64,7 +64,10 @@ export namespace Components {
         /**
           * Set the main style
          */
-        "buttonRole": 'primary' | 'secondary' | 'danger';
+        "buttonRole": | 'start'
+    | 'primary'
+    | 'secondary'
+    | 'danger';
         /**
           * The disabled attribute for a <button> element.
          */
@@ -594,14 +597,6 @@ export namespace Components {
     }
     interface GcdsIcon {
         /**
-          * If the icon should render as a fixed-width square, or their natural width.
-         */
-        "fixedWidth": boolean;
-        /**
-          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-         */
-        "iconStyle"?: 'regular' | 'solid';
-        /**
           * Add icon description.
          */
         "label"?: string;
@@ -616,7 +611,20 @@ export namespace Components {
         /**
           * Name of the icon.
          */
-        "name": string;
+        "name": | 'checkmark-circle'
+    | 'chevron-down'
+    | 'chevron-left'
+    | 'chevron-right'
+    | 'chevron-up'
+    | 'close'
+    | 'download'
+    | 'email'
+    | 'exclamation-circle'
+    | 'external'
+    | 'info-circle'
+    | 'phone'
+    | 'search'
+    | 'warning-triangle';
         /**
           * Defines the size of the icon.
          */
@@ -1886,7 +1894,10 @@ declare namespace LocalJSX {
         /**
           * Set the main style
          */
-        "buttonRole"?: 'primary' | 'secondary' | 'danger';
+        "buttonRole"?: | 'start'
+    | 'primary'
+    | 'secondary'
+    | 'danger';
         /**
           * The disabled attribute for a <button> element.
          */
@@ -2536,14 +2547,6 @@ declare namespace LocalJSX {
     }
     interface GcdsIcon {
         /**
-          * If the icon should render as a fixed-width square, or their natural width.
-         */
-        "fixedWidth"?: boolean;
-        /**
-          * Style of the icon. 'regular' icons are outlined. Some icons have 'solid' variation.
-         */
-        "iconStyle"?: 'regular' | 'solid';
-        /**
           * Add icon description.
          */
         "label"?: string;
@@ -2558,7 +2561,20 @@ declare namespace LocalJSX {
         /**
           * Name of the icon.
          */
-        "name": string;
+        "name": | 'checkmark-circle'
+    | 'chevron-down'
+    | 'chevron-left'
+    | 'chevron-right'
+    | 'chevron-up'
+    | 'close'
+    | 'download'
+    | 'email'
+    | 'exclamation-circle'
+    | 'external'
+    | 'info-circle'
+    | 'phone'
+    | 'search'
+    | 'warning-triangle';
         /**
           * Defines the size of the icon.
          */

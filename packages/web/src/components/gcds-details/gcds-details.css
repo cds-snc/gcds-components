@@ -105,7 +105,8 @@
       }
 
       ::slotted(*:not(:last-child)) {
-        margin: 0 0 var(--gcds-details-panel-slotted-margin) !important;
+        margin-block-start: 0 !important;
+        margin-block-end: var(--gcds-details-panel-slotted-margin) !important;
       }
 
       ::slotted(ol),
@@ -156,7 +157,7 @@
   /* Display details component open by default for print */
   @media print {
     :host .gcds-details {
-      .details__summary{
+      .details__summary {
         font-weight: var(--gcds-details-print-summary-font-weight);
         text-decoration: none;
         color: var(--gcds-details-print-summary-text);
@@ -169,7 +170,8 @@
       .details__panel {
         display: block;
         /* Note: Logical properties are not yet supported in print */
-        border-left: var(--gcds-details-panel-border-width) solid var(--gcds-details-panel-border-color);
+        border-left: var(--gcds-details-panel-border-width) solid
+          var(--gcds-details-panel-border-color);
       }
     }
   }

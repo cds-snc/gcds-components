@@ -73,7 +73,7 @@ describe('gcds-footer', () => {
                 <ul class="govnav__list">
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/contact.html">
-                      All Contacts
+                      All contacts
                     </gcds-link>
                   </li>
                   <li>
@@ -170,7 +170,7 @@ describe('gcds-footer', () => {
                   </li>
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/services/indigenous-peoples.html">
-                      Indigenous peoples
+                      Indigenous Peoples
                     </gcds-link>
                   </li>
                   <li>
@@ -509,7 +509,7 @@ describe('gcds-footer', () => {
                 <ul class="govnav__list">
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/contact.html">
-                      All Contacts
+                      All contacts
                     </gcds-link>
                   </li>
                   <li>
@@ -606,7 +606,7 @@ describe('gcds-footer', () => {
                   </li>
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/services/indigenous-peoples.html">
-                      Indigenous peoples
+                      Indigenous Peoples
                     </gcds-link>
                   </li>
                   <li>
