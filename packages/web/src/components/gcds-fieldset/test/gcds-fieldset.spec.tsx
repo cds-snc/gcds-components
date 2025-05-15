@@ -118,7 +118,7 @@ describe('gcds-fieldset', () => {
     expect(page.root).toEqualHtml(`
       <gcds-fieldset legend="Fieldset legend" legend-size="h2" hint="Fieldset hint">
         <mock:shadow-root>
-          <fieldset class="gcds-fieldset" aria-labelledby="legend-field fieldset-hint" tabindex="-1">
+          <fieldset class="gcds-fieldset" aria-labelledby="fieldset-legend fieldset-hint" tabindex="-1">
             <legend id="fieldset-legend" class="size-h2">
               Fieldset legend
             </legend>
