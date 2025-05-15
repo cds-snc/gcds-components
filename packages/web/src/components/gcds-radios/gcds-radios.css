@@ -18,12 +18,13 @@
       padding: 0;
       border: 0;
 
-      gcds-label {
+      gcds-label > label {
         &:before,
         &:after {
           cursor: pointer;
           content: '';
           box-sizing: border-box;
+          position: absolute;
         }
       }
     }
@@ -56,7 +57,7 @@
     gcds-hint:part(hint) {
       margin: var(--gcds-radio-hint-margin);
     }
-  
+
     .gcds-radio {
       position: relative;
       max-width: var(--gcds-radio-max-width);
@@ -84,7 +85,7 @@
       }
 
       input,
-      gcds-label:before {
+      gcds-label > label:before {
         top: 0;
         left: 0;
         height: var(--gcds-radio-input-height-and-width);
@@ -95,7 +96,7 @@
         opacity: 0;
       }
 
-      gcds-label {
+      gcds-label > label {
         width: fit-content;
         --gcds-label-font-desktop: var(--gcds-radio-label-font-desktop);
         --gcds-label-font-mobile: var(--gcds-radio-label-font-mobile);
@@ -106,6 +107,7 @@
         }
 
         &:before {
+          background-color: var(--gcds-radio-default-background);
           border: var(--gcds-radio-input-border-width) solid currentcolor;
           transition:
             border-color ease-in-out 0.15s,
@@ -120,11 +122,10 @@
           opacity: 0;
           top: var(--gcds-radio-check-top);
           background-color: currentcolor;
-          transition: opacity 0.2s ease-in-out;
         }
       }
 
-      input:checked + gcds-label:after {
+      input:checked + gcds-label > label:after {
         opacity: 1;
       }
     }
@@ -135,8 +136,9 @@
   :host .gcds-radio.gcds-radio--disabled {
     color: var(--gcds-radio-disabled-text);
 
-    gcds-label {
+    gcds-label > label {
       --gcds-label-text: currentColor;
+      cursor: not-allowed;
 
       &:before,
       &:after {
@@ -161,7 +163,7 @@
       margin: var(--gcds-radio-error-message-margin);
     }
 
-    .gcds-radio.gcds-radio--error:not(:focus-within) gcds-label {
+    .gcds-radio.gcds-radio--error:not(:focus-within) gcds-label > label {
       &:before {
         border-color: var(--gcds-radio-danger-border);
       }
@@ -175,19 +177,16 @@
 
 @layer focus {
   :host .gcds-radio:focus-within {
-    color: var(--gcds-radio-focus-color);
+    input:focus + gcds-label > label:before {
+      color: var(--gcds-radio-focus-color);
+      outline: var(--gcds-radio-focus-outline-width) solid currentcolor;
+      outline-offset: var(--gcds-radio-input-border-width);
+      box-shadow: var(--gcds-radio-focus-box-shadow);
+      background: var(--gcds-radio-focus-background);
+    }
 
-    input:focus + gcds-label {
-      &:before {
-        outline: var(--gcds-radio-focus-outline-width) solid currentcolor;
-        outline-offset: var(--gcds-radio-input-border-width);
-        box-shadow: var(--gcds-radio-focus-box-shadow);
-        background: var(--gcds-radio-focus-background);
-      }
-
-      &:after {
-        background-color: currentcolor;
-      }
+    input:focus + gcds-label > label:after {
+      background-color: var(--gcds-radio-focus-color);
     }
   }
 }

@@ -38,19 +38,19 @@
       .gcds-checkboxes__legend {
         font: var(--gcds-checkbox-legend-font-desktop);
         margin: var(--gcds-checkbox-legend-margin);
-  
+
         .legend__required {
           font: var(--gcds-checkbox-legend-required-font-desktop);
         }
-  
+
         @media only screen and (width < 48em) {
           font: var(--gcds-checkbox-legend-font-mobile);
-  
+
           .legend__required {
             font: var(--gcds-checkbox-legend-required-font-mobile);
           }
         }
-  
+
         &:not(:has(+ gcds-hint)) {
           margin: var(--gcds-checkbox-legend-hint-margin);
         }
@@ -61,46 +61,48 @@
       position: relative;
       max-width: var(--gcds-checkbox-max-width);
       min-height: calc(
-        var(--gcds-checkbox-input-height-and-width) - var(--gcds-checkbox-padding)
+        var(--gcds-checkbox-input-height-and-width) -
+          var(--gcds-checkbox-padding)
       );
       font: var(--gcds-checkbox-font);
       color: var(--gcds-checkbox-default-text);
       margin: var(--gcds-checkbox-margin) !important;
       padding: var(--gcds-checkbox-padding) 0 0;
       transition: color ease-in-out 0.15s;
-  
+
       :is(gcds-label, gcds-hint, gcds-error-message) {
         padding: var(--gcds-checkbox-label-padding) !important;
       }
-  
+
       gcds-hint::part(hint) {
         margin: 0;
       }
-  
+
       input,
       gcds-label:before,
       gcds-label:after {
         position: absolute;
       }
-  
+
       input,
-      gcds-label>label:before {
+      gcds-label > label:before {
         top: 0;
         left: 0;
         width: var(--gcds-checkbox-input-height-and-width);
         height: var(--gcds-checkbox-input-height-and-width);
       }
-  
+
       input {
         opacity: 0;
       }
-  
+
       gcds-label > label {
         width: fit-content;
         --gcds-label-font-desktop: var(--gcds-checkbox-label-font-desktop);
         --gcds-label-font-mobile: var(--gcds-checkbox-label-font-mobile);
-  
+
         &:before {
+          background-color: var(--gcds-checkbox-default-background);
           border: var(--gcds-checkbox-input-border-width) solid currentcolor;
           border-radius: var(--gcds-checkbox-input-border-radius);
           transition:
@@ -108,7 +110,7 @@
             box-shadow ease-in-out 0.15s,
             outline ease-in-out 0.15s;
         }
-  
+
         &:after {
           border: var(--gcds-checkbox-check-border-width) solid currentcolor;
           border-inline-start: 0 !important;
@@ -121,7 +123,7 @@
           transform: rotate(40deg);
         }
       }
-  
+
       input:checked + gcds-label > label:after {
         opacity: 1;
       }
@@ -155,7 +157,10 @@
 }
 
 @layer error {
-  :host .gcds-checkbox.gcds-checkbox--error:not(:focus-within) gcds-label > label {
+  :host
+    .gcds-checkbox.gcds-checkbox--error:not(:focus-within)
+    gcds-label
+    > label {
     &:before {
       border-color: var(--gcds-checkbox-danger-border);
     }

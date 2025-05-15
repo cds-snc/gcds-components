@@ -466,6 +466,7 @@ export class GcdsRadios {
                       label={radio.label}
                       label-for={radio.id}
                       lang={lang}
+                      onClick={e => e.stopPropagation()}
                     ></gcds-label>
 
                     {radio.hint ? (
