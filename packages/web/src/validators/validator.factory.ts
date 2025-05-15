@@ -10,18 +10,21 @@ import {
   requiredFileInput,
   requiredSelectField,
   requiredDateInput,
+  requiredRadio,
+  requiredCheckboxGroup,
+  requiredCheckboxSingle,
 } from './input-validators/input-validators';
-import { requiredCheck } from './checkbox-validators/checkbox-validators';
-import { requiredFieldset } from './fieldset-validators/fieldset-validators';
 
 export enum ValidatorsName {
   requiredField = 'requiredField',
   requiredEmailField = 'requiredEmailField',
   requiredCheck = 'requiredCheck',
-  requiredFieldset = 'requiredFieldset',
   requiredFileInput = 'requiredFileInput',
   requiredSelectField = 'requiredSelectField',
   requiredDateInput = 'requiredDateInput',
+  requiredRadio = 'requiredRadio',
+  requiredCheckboxGroup = 'requiredCheckboxGroup',
+  requiredCheckboxSingle = 'requiredCheckboxSingle',
 }
 
 export function getValidator<A>(
@@ -50,14 +53,16 @@ export function validatorFactory(name: string, options: any): Validator<any> {
       return requiredEmailField;
     case ValidatorsName.requiredSelectField:
       return requiredSelectField;
-    case ValidatorsName.requiredCheck:
-      return requiredCheck;
-    case ValidatorsName.requiredFieldset:
-      return requiredFieldset;
     case ValidatorsName.requiredDateInput:
       return requiredDateInput;
     case ValidatorsName.requiredFileInput:
       return requiredFileInput;
+    case ValidatorsName.requiredRadio:
+      return requiredRadio;
+    case ValidatorsName.requiredCheckboxGroup:
+      return requiredCheckboxGroup;
+    case ValidatorsName.requiredCheckboxSingle:
+      return requiredCheckboxSingle;
     default:
       return defaultValidator;
   }

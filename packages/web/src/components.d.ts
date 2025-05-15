@@ -6,13 +6,17 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Validator, ValidatorEntry } from "./validators";
+import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
+import { RadioObject as RadioObject1 } from "./components/gcds-radios/radio";
 export { Validator, ValidatorEntry } from "./validators";
+export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
+export { RadioObject as RadioObject1 } from "./components/gcds-radios/radio";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -183,6 +187,54 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GcdsCheckboxes {
+        /**
+          * Specifies if the checkboxes are disabled or not.
+         */
+        "disabled": boolean;
+        /**
+          * Set this to display an error message for invalid <gcds-checkboxes>
+         */
+        "errorMessage": string;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint": string;
+        /**
+          * Set the legend for fieldset form group.
+         */
+        "legend": string;
+        /**
+          * Name attribute for a checkboxes element.
+         */
+        "name": string;
+        /**
+          * Options to render checkboxes buttons
+         */
+        "options": string | Array<CheckboxObject>;
+        /**
+          * Specifies if the checkboxes are required or not.
+         */
+        "required": boolean;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Value for checkboxes component.
+         */
+        "value": string | Array<string>;
+    }
     interface GcdsContainer {
         /**
           * Defines if the container has a border.
@@ -303,18 +355,6 @@ export namespace Components {
     }
     interface GcdsFieldset {
         /**
-          * Flag to disable fieldset and its contents
-         */
-        "disabled": boolean;
-        /**
-          * Error message for invalid form elements in group.
-         */
-        "errorMessage": string;
-        /**
-          * The unique identifier for the component
-         */
-        "fieldsetId": string;
-        /**
           * Hint displayed below the legend.
          */
         "hint": string;
@@ -323,23 +363,9 @@ export namespace Components {
          */
         "legend": string;
         /**
-          * Flag the contents are required
+          * Sets the appropriate font size for the fieldset legend.
          */
-        "required": boolean;
-        /**
-          * Call any active validators
-         */
-        "validate": () => Promise<void>;
-        /**
-          * Set event to call validator
-         */
-        "validateOn": 'blur' | 'submit' | 'other';
-        /**
-          * Array of validators
-         */
-        "validator": Array<
-    string | ValidatorEntry | Validator<string>
-  >;
+        "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsFileUploader {
         /**
@@ -854,6 +880,54 @@ export namespace Components {
          */
         "options": string | Array<RadioObject>;
     }
+    interface GcdsRadios {
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled": boolean;
+        /**
+          * Set this to display an error message for invalid <gcds-radios>
+         */
+        "errorMessage": string;
+        /**
+          * Hint displayed below the label and above the radio elements
+         */
+        "hint": string;
+        /**
+          * Label or legend for the group of radio elements
+         */
+        "legend": string;
+        /**
+          * The `name` attribute for the <gcds-radios>, used to group radio elements together
+         */
+        "name": string;
+        /**
+          * Options to render radio buttons
+         */
+        "options": string | Array<RadioObject1>;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required": boolean;
+        /**
+          * Call any active validators
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Default value for the element
+         */
+        "value": string;
+    }
     interface GcdsSearch {
         /**
           * Sets the action for the search form. Default will be canada.ca global search
@@ -937,7 +1011,7 @@ export namespace Components {
         "value"?: string;
     }
     interface GcdsSideNav {
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Label for navigation landmark
          */
@@ -1086,7 +1160,7 @@ export namespace Components {
           * Nav alignment
          */
         "alignment": 'left' | 'center' | 'right';
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Label for navigation landmark
          */
@@ -1099,7 +1173,7 @@ export namespace Components {
           * Close all theme menus
          */
         "closeAllMenus": () => Promise<void>;
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Sets the homepage styling
          */
@@ -1141,6 +1215,10 @@ export interface GcdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCheckboxElement;
 }
+export interface GcdsCheckboxesCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsCheckboxesElement;
+}
 export interface GcdsDateInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsDateInputElement;
@@ -1148,10 +1226,6 @@ export interface GcdsDateInputCustomEvent<T> extends CustomEvent<T> {
 export interface GcdsDetailsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsDetailsElement;
-}
-export interface GcdsFieldsetCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGcdsFieldsetElement;
 }
 export interface GcdsFileUploaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1180,6 +1254,10 @@ export interface GcdsPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface GcdsRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsRadioGroupElement;
+}
+export interface GcdsRadiosCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsRadiosElement;
 }
 export interface GcdsSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1283,6 +1361,29 @@ declare global {
         prototype: HTMLGcdsCheckboxElement;
         new (): HTMLGcdsCheckboxElement;
     };
+    interface HTMLGcdsCheckboxesElementEventMap {
+        "gcdsClick": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsInput": any;
+        "gcdsChange": any;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
+    interface HTMLGcdsCheckboxesElement extends Components.GcdsCheckboxes, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsCheckboxesElementEventMap>(type: K, listener: (this: HTMLGcdsCheckboxesElement, ev: GcdsCheckboxesCustomEvent<HTMLGcdsCheckboxesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsCheckboxesElementEventMap>(type: K, listener: (this: HTMLGcdsCheckboxesElement, ev: GcdsCheckboxesCustomEvent<HTMLGcdsCheckboxesElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsCheckboxesElement: {
+        prototype: HTMLGcdsCheckboxesElement;
+        new (): HTMLGcdsCheckboxesElement;
+    };
     interface HTMLGcdsContainerElement extends Components.GcdsContainer, HTMLStencilElement {
     }
     var HTMLGcdsContainerElement: {
@@ -1348,21 +1449,7 @@ declare global {
         prototype: HTMLGcdsErrorSummaryElement;
         new (): HTMLGcdsErrorSummaryElement;
     };
-    interface HTMLGcdsFieldsetElementEventMap {
-        "gcdsGroupError": string;
-        "gcdsGroupErrorClear": void;
-        "gcdsError": object;
-        "gcdsValid": object;
-    }
     interface HTMLGcdsFieldsetElement extends Components.GcdsFieldset, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLGcdsFieldsetElementEventMap>(type: K, listener: (this: HTMLGcdsFieldsetElement, ev: GcdsFieldsetCustomEvent<HTMLGcdsFieldsetElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLGcdsFieldsetElementEventMap>(type: K, listener: (this: HTMLGcdsFieldsetElement, ev: GcdsFieldsetCustomEvent<HTMLGcdsFieldsetElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsFieldsetElement: {
         prototype: HTMLGcdsFieldsetElement;
@@ -1574,6 +1661,28 @@ declare global {
         prototype: HTMLGcdsRadioGroupElement;
         new (): HTMLGcdsRadioGroupElement;
     };
+    interface HTMLGcdsRadiosElementEventMap {
+        "gcdsInput": void;
+        "gcdsChange": void;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsValid": void;
+        "gcdsError": object;
+    }
+    interface HTMLGcdsRadiosElement extends Components.GcdsRadios, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsRadiosElementEventMap>(type: K, listener: (this: HTMLGcdsRadiosElement, ev: GcdsRadiosCustomEvent<HTMLGcdsRadiosElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsRadiosElementEventMap>(type: K, listener: (this: HTMLGcdsRadiosElement, ev: GcdsRadiosCustomEvent<HTMLGcdsRadiosElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsRadiosElement: {
+        prototype: HTMLGcdsRadiosElement;
+        new (): HTMLGcdsRadiosElement;
+    };
     interface HTMLGcdsSearchElementEventMap {
         "gcdsInput": string;
         "gcdsChange": string;
@@ -1694,6 +1803,7 @@ declare global {
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-card": HTMLGcdsCardElement;
         "gcds-checkbox": HTMLGcdsCheckboxElement;
+        "gcds-checkboxes": HTMLGcdsCheckboxesElement;
         "gcds-container": HTMLGcdsContainerElement;
         "gcds-date-input": HTMLGcdsDateInputElement;
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
@@ -1719,6 +1829,7 @@ declare global {
         "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radio-group": HTMLGcdsRadioGroupElement;
+        "gcds-radios": HTMLGcdsRadiosElement;
         "gcds-search": HTMLGcdsSearchElement;
         "gcds-select": HTMLGcdsSelectElement;
         "gcds-side-nav": HTMLGcdsSideNavElement;
@@ -1950,6 +2061,78 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface GcdsCheckboxes {
+        /**
+          * Specifies if the checkboxes are disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set this to display an error message for invalid <gcds-checkboxes>
+         */
+        "errorMessage"?: string;
+        /**
+          * Hint displayed below the label.
+         */
+        "hint"?: string;
+        /**
+          * Set the legend for fieldset form group.
+         */
+        "legend"?: string;
+        /**
+          * Name attribute for a checkboxes element.
+         */
+        "name": string;
+        /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
+        /**
+          * Emmitted when a checkbox has been changed.
+         */
+        "onGcdsChange"?: (event: GcdsCheckboxesCustomEvent<any>) => void;
+        /**
+          * Emitted when the checkbox has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
+        /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsError"?: (event: GcdsCheckboxesCustomEvent<object>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
+        /**
+          * Emmitted when a checkbox has been inputted.
+         */
+        "onGcdsInput"?: (event: GcdsCheckboxesCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsCheckboxesCustomEvent<object>) => void;
+        /**
+          * Options to render checkboxes buttons
+         */
+        "options": string | Array<CheckboxObject>;
+        /**
+          * Specifies if the checkboxes are required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Value for checkboxes component.
+         */
+        "value"?: string | Array<string>;
+    }
     interface GcdsContainer {
         /**
           * Defines if the container has a border.
@@ -2098,18 +2281,6 @@ declare namespace LocalJSX {
     }
     interface GcdsFieldset {
         /**
-          * Flag to disable fieldset and its contents
-         */
-        "disabled"?: boolean;
-        /**
-          * Error message for invalid form elements in group.
-         */
-        "errorMessage"?: string;
-        /**
-          * The unique identifier for the component
-         */
-        "fieldsetId": string;
-        /**
           * Hint displayed below the legend.
          */
         "hint"?: string;
@@ -2118,35 +2289,9 @@ declare namespace LocalJSX {
          */
         "legend": string;
         /**
-          * Emitted when the fieldset has a validation error.
+          * Sets the appropriate font size for the fieldset legend.
          */
-        "onGcdsError"?: (event: GcdsFieldsetCustomEvent<object>) => void;
-        /**
-          * Emitted when the fieldset has a validation error.
-         */
-        "onGcdsGroupError"?: (event: GcdsFieldsetCustomEvent<string>) => void;
-        /**
-          * Emitted when the fieldset has a validation error.
-         */
-        "onGcdsGroupErrorClear"?: (event: GcdsFieldsetCustomEvent<void>) => void;
-        /**
-          * Emitted when the fieldset has a validation error.
-         */
-        "onGcdsValid"?: (event: GcdsFieldsetCustomEvent<object>) => void;
-        /**
-          * Flag the contents are required
-         */
-        "required"?: boolean;
-        /**
-          * Set event to call validator
-         */
-        "validateOn"?: 'blur' | 'submit' | 'other';
-        /**
-          * Array of validators
-         */
-        "validator"?: Array<
-    string | ValidatorEntry | Validator<string>
-  >;
+        "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface GcdsFileUploader {
         /**
@@ -2753,6 +2898,74 @@ declare namespace LocalJSX {
          */
         "options": string | Array<RadioObject>;
     }
+    interface GcdsRadios {
+        /**
+          * Specifies if an input element is disabled or not.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set this to display an error message for invalid <gcds-radios>
+         */
+        "errorMessage"?: string;
+        /**
+          * Hint displayed below the label and above the radio elements
+         */
+        "hint"?: string;
+        /**
+          * Label or legend for the group of radio elements
+         */
+        "legend": string;
+        /**
+          * The `name` attribute for the <gcds-radios>, used to group radio elements together
+         */
+        "name": string;
+        /**
+          * Emitted when the <gcds-radios> has lost focus
+         */
+        "onGcdsBlur"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when a <gcds-radios> option is checked (but not when unchecked)
+         */
+        "onGcdsChange"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when <gcds-radios> has a validation error
+         */
+        "onGcdsError"?: (event: GcdsRadiosCustomEvent<object>) => void;
+        /**
+          * Emitted when <gcds-radios> has received focus
+         */
+        "onGcdsFocus"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
+         */
+        "onGcdsInput"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Emitted when <gcds-radios> has passed validation
+         */
+        "onGcdsValid"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        /**
+          * Options to render radio buttons
+         */
+        "options": string | Array<RadioObject1>;
+        /**
+          * Specifies if a form field is required or not.
+         */
+        "required"?: boolean;
+        /**
+          * Set event to call validator
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Default value for the element
+         */
+        "value"?: string;
+    }
     interface GcdsSearch {
         /**
           * Sets the action for the search form. Default will be canada.ca global search
@@ -3070,6 +3283,7 @@ declare namespace LocalJSX {
         "gcds-button": GcdsButton;
         "gcds-card": GcdsCard;
         "gcds-checkbox": GcdsCheckbox;
+        "gcds-checkboxes": GcdsCheckboxes;
         "gcds-container": GcdsContainer;
         "gcds-date-input": GcdsDateInput;
         "gcds-date-modified": GcdsDateModified;
@@ -3095,6 +3309,7 @@ declare namespace LocalJSX {
         "gcds-pagination": GcdsPagination;
         "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radio-group": GcdsRadioGroup;
+        "gcds-radios": GcdsRadios;
         "gcds-search": GcdsSearch;
         "gcds-select": GcdsSelect;
         "gcds-side-nav": GcdsSideNav;
@@ -3118,6 +3333,7 @@ declare module "@stencil/core" {
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-card": LocalJSX.GcdsCard & JSXBase.HTMLAttributes<HTMLGcdsCardElement>;
             "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
+            "gcds-checkboxes": LocalJSX.GcdsCheckboxes & JSXBase.HTMLAttributes<HTMLGcdsCheckboxesElement>;
             "gcds-container": LocalJSX.GcdsContainer & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
             "gcds-date-input": LocalJSX.GcdsDateInput & JSXBase.HTMLAttributes<HTMLGcdsDateInputElement>;
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
@@ -3143,6 +3359,7 @@ declare module "@stencil/core" {
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             "gcds-radio-group": LocalJSX.GcdsRadioGroup & JSXBase.HTMLAttributes<HTMLGcdsRadioGroupElement>;
+            "gcds-radios": LocalJSX.GcdsRadios & JSXBase.HTMLAttributes<HTMLGcdsRadiosElement>;
             "gcds-search": LocalJSX.GcdsSearch & JSXBase.HTMLAttributes<HTMLGcdsSearchElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;

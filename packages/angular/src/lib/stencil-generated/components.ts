@@ -215,6 +215,62 @@ export declare interface GcdsCheckbox extends Components.GcdsCheckbox {
 
 
 @ProxyCmp({
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  methods: ['validate'],
+  outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
+})
+@Component({
+  selector: 'gcds-checkboxes',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+  standalone: false,
+})
+export class GcdsCheckboxes {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+  }
+}
+
+
+export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
+  /**
+   * Emitted when the checkbox has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the checkbox has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the checkbox loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emmitted when a checkbox has been inputted.
+   */
+  gcdsInput: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emmitted when a checkbox has been changed.
+   */
+  gcdsChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
+}
+
+
+@ProxyCmp({
   inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag']
 })
 @Component({
@@ -399,17 +455,14 @@ export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'],
-  methods: ['validate'],
-  outputs: ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid']
+  inputs: ['hint', 'legend', 'legendSize']
 })
 @Component({
   selector: 'gcds-fieldset',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'fieldsetId', 'hint', 'legend', 'required', 'validateOn', 'validator'],
-  outputs: ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid'],
+  inputs: ['hint', 'legend', 'legendSize'],
   standalone: false,
 })
 export class GcdsFieldset {
@@ -417,29 +470,11 @@ export class GcdsFieldset {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, ['gcdsGroupError', 'gcdsGroupErrorClear', 'gcdsError', 'gcdsValid']);
   }
 }
 
 
-export declare interface GcdsFieldset extends Components.GcdsFieldset {
-  /**
-   * Emitted when the fieldset has a validation error.
-   */
-  gcdsGroupError: EventEmitter<CustomEvent<string>>;
-  /**
-   * Emitted when the fieldset has a validation error.
-   */
-  gcdsGroupErrorClear: EventEmitter<CustomEvent<void>>;
-  /**
-   * Emitted when the fieldset has a validation error.
-   */
-  gcdsError: EventEmitter<CustomEvent<object>>;
-  /**
-   * Emitted when the fieldset has a validation error.
-   */
-  gcdsValid: EventEmitter<CustomEvent<object>>;
-}
+export declare interface GcdsFieldset extends Components.GcdsFieldset {}
 
 
 @ProxyCmp({
@@ -997,6 +1032,58 @@ export declare interface GcdsRadioGroup extends Components.GcdsRadioGroup {
    * Emitted when the radio loses focus.
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  methods: ['validate'],
+  outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
+})
+@Component({
+  selector: 'gcds-radios',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError'],
+  standalone: false,
+})
+export class GcdsRadios {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']);
+  }
+}
+
+
+export declare interface GcdsRadios extends Components.GcdsRadios {
+  /**
+   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
+   */
+  gcdsInput: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when a <gcds-radios> option is checked (but not when unchecked)
+   */
+  gcdsChange: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when <gcds-radios> has received focus
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the <gcds-radios> has lost focus
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when <gcds-radios> has passed validation
+   */
+  gcdsValid: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when <gcds-radios> has a validation error
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
 }
 
 
