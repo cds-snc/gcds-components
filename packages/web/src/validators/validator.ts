@@ -1,11 +1,24 @@
-export interface Validator<A> {
+export interface ValidatorOld<A> {
   validate: (x: A) => any;
   errorMessage?: object;
 }
 
+export interface ValidatorReturn {
+  valid: boolean;
+  reason: {
+    en: string;
+    fr: string;
+  };
+  errors?: object;
+}
+
+export interface Validator<A> {
+  validate: (x: A) => ValidatorReturn;
+}
+
 export interface ValidatorEntry {
   name: string;
-  options?: any;
+  options?: unknown;
 }
 
 export interface GcdsErrorInterface {
@@ -14,30 +27,51 @@ export interface GcdsErrorInterface {
 }
 
 export const defaultValidator: Validator<any> = {
-  validate: (_x: any) => true,
+  validate: (_x: any) => {
+    return {
+      valid: true,
+      reason: {
+        en: '',
+        fr: '',
+      },
+    };
+  },
 };
 
 export function combineValidators<A>(
-  v1: Validator<A>,
-  v2: Validator<A>,
+  v1: Validator<A> | ValidatorOld<A>,
+  v2: Validator<A> | ValidatorOld<A>,
 ): Validator<A> {
-  let combined: Validator<A>;
-
-  combined = {
+  return {
     validate: (x: A) => {
-      const res1: boolean = v1.validate(x);
-      const res2: boolean = v2.validate(x);
+      const res1 = v1.validate(x);
+      const res2 = v2.validate(x);
 
-      if (!res1) {
-        combined.errorMessage = v1.errorMessage;
-      } else if (!res2) {
-        combined.errorMessage = v2.errorMessage;
+      if (
+        (typeof res1 === 'object' && !res1.valid) ||
+        (typeof res1 === 'boolean' && !res1)
+      ) {
+        return typeof res1 === 'object'
+          ? res1
+          : { valid: res1, reason: (v1 as ValidatorOld<A>).errorMessage };
+      } else if (
+        (typeof res2 === 'object' && !res2.valid) ||
+        (typeof res2 === 'boolean' && !res2)
+      ) {
+        return typeof res2 === 'object'
+          ? res2
+          : { valid: res2, reason: (v2 as ValidatorOld<A>).errorMessage };
+      } else {
+        return {
+          valid: true,
+          reason: {
+            en: '',
+            fr: '',
+          },
+        };
       }
-
-      return res1 && res2;
     },
   };
-  return combined;
 }
 
 export function requiredValidator(element, type, subtype?) {

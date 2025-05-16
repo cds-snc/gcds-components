@@ -7,11 +7,13 @@ export const requiredFieldset: Validator<string> = {
 
     const isValid = validateFieldsetElements(el, elChildren);
 
-    return !isValid.includes(false);
-  },
-  errorMessage: {
-    en: 'Choose an option to continue.',
-    fr: 'Choisissez une option pour continuer.',
+    return {
+      valid: !isValid.includes(false),
+      reason: {
+        en: 'Choose an option to continue.',
+        fr: 'Choisissez une option pour continuer.',
+      },
+    };
   },
 };
 

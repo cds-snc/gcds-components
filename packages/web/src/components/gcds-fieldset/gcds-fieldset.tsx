@@ -15,6 +15,7 @@ import {
   assignLanguage,
   observerConfig,
   inheritAttributes,
+  handleValidationResult,
 } from '../../utils/utils';
 import {
   Validator,
@@ -115,15 +116,13 @@ export class GcdsFieldset {
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * State to handle errors
@@ -159,21 +158,14 @@ export class GcdsFieldset {
    */
   @Method()
   async validate() {
-    if (
-      !this._validator.validate(this.fieldsetId) &&
-      this._validator.errorMessage
-    ) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsGroupError.emit(this.errorMessage);
-      this.gcdsError.emit({
-        id: `#${this.fieldsetId}`,
-        message: `${this.legend} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsGroupErrorClear.emit();
-      this.gcdsValid.emit({ id: `#${this.fieldsetId}` });
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsFieldsetElement,
+      this._validator.validate(this.fieldsetId),
+      this.legend,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   @Listen('gcdsBlur')
@@ -250,7 +242,6 @@ export class GcdsFieldset {
 
     this.validateDisabledFieldset();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     if (this.el.getAttribute('data-date')) {
@@ -259,17 +250,9 @@ export class GcdsFieldset {
       requiredValidator(this.el, 'fieldset');
     }
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
+    this.validateValidator();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
   }
 
   render() {
