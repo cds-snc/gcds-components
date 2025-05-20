@@ -1,4 +1,6 @@
-import { format, logError, isValidDate } from './utils';
+import { EventEmitter } from '@stencil/core';
+import { ValidatorReturn } from '../validators';
+import { format, logError, isValidDate, handleValidationResult } from './utils';
 
 describe('format', () => {
   it('returns Fallback Button Label', () => {
@@ -24,7 +26,11 @@ describe('logError', () => {
   it('creates error message with excluded optional attributes', () => {
     const errorSpy = jest.spyOn(console, 'error');
 
-    logError('gcds-component', ['requiredAttr', 'optionalAttr'], ['optionalAttr']);
+    logError(
+      'gcds-component',
+      ['requiredAttr', 'optionalAttr'],
+      ['optionalAttr'],
+    );
 
     expect(errorSpy).toHaveBeenCalledWith(
       'gcds-component: Render error, please check required properties. (requiredAttr) | gcds-component: Erreur de rendu, veuillez vérifier les propriétés requises. (requiredAttr)',
@@ -99,5 +105,163 @@ describe('isValidDate', () => {
 
   it('returns false - compact format - force full', () => {
     expect(isValidDate('1991-03', 'full')).toEqual(false);
+  });
+});
+
+describe('handleValidationResult', () => {
+  it('gcds-input - invalid response', () => {
+    const input = document.createElement('gcds-input');
+
+    input.label = 'Test input';
+    input.inputId = 'test';
+    input.name = 'testinput';
+    input.required = true;
+
+    const validateResponse: ValidatorReturn = {
+      valid: false,
+      reason: {
+        en: 'Enter information to continue.',
+        fr: 'Saisissez des renseignements pour continuer.',
+      },
+    };
+
+    const gcdsError: EventEmitter<void> = {
+      emit: jest.fn(),
+    };
+    const errorSpy = jest.spyOn(gcdsError, 'emit');
+
+    const gcdsValid: EventEmitter<void> = {
+      emit: jest.fn(),
+    };
+    const validSpy = jest.spyOn(gcdsValid, 'emit');
+
+    handleValidationResult(
+      input,
+      validateResponse,
+      input.label,
+      gcdsError,
+      gcdsValid,
+      'en',
+    );
+    expect(errorSpy).toHaveBeenCalled();
+    expect(validSpy).toHaveBeenCalledTimes(0);
+    expect(input.errorMessage).toEqual('Enter information to continue.');
+  });
+  it('gcds-input - valid response', () => {
+    const input = document.createElement('gcds-input');
+
+    input.label = 'Test input';
+    input.inputId = 'test';
+    input.name = 'testinput';
+    input.required = true;
+
+    const validateResponse: ValidatorReturn = {
+      valid: true,
+      reason: {
+        en: 'Enter information to continue.',
+        fr: 'Saisissez des renseignements pour continuer.',
+      },
+    };
+
+    const gcdsError: EventEmitter<void> = {
+      emit: jest.fn(),
+    };
+    const errorSpy = jest.spyOn(gcdsError, 'emit');
+
+    const gcdsValid: EventEmitter<void> = {
+      emit: jest.fn(),
+    };
+    const validSpy = jest.spyOn(gcdsValid, 'emit');
+
+    handleValidationResult(
+      input,
+      validateResponse,
+      input.label,
+      gcdsError,
+      gcdsValid,
+      'en',
+    );
+
+    expect(errorSpy).toHaveBeenCalledTimes(0);
+    expect(validSpy).toHaveBeenCalled();
+    expect(input.errorMessage).toEqual('');
+  });
+  it('gcds-date-input - invalid response', () => {
+    const input = document.createElement('gcds-date-input');
+
+    input.legend = 'Test input';
+    input.name = 'testinput';
+    input.format = 'full';
+    input.required = true;
+
+    const validateResponse: ValidatorReturn = {
+      valid: false,
+      reason: {
+        en: 'Enter information to continue.',
+        fr: 'Saisissez des renseignements pour continuer.',
+      },
+    };
+
+    const gcdsError: EventEmitter<void> = {
+      emit: jest.fn(),
+    };
+    const errorSpy = jest.spyOn(gcdsError, 'emit');
+
+    const gcdsValid: EventEmitter<void> = {
+      emit: jest.fn(),
+    };
+    const validSpy = jest.spyOn(gcdsValid, 'emit');
+
+    handleValidationResult(
+      input,
+      validateResponse,
+      input.legend,
+      gcdsError,
+      gcdsValid,
+      'en',
+      { day: false, month: false, year: false },
+    );
+    expect(errorSpy).toHaveBeenCalled();
+    expect(validSpy).toHaveBeenCalledTimes(0);
+    expect(input.errorMessage).toEqual('Enter information to continue.');
+  });
+  it('gcds-date-input - valid response', () => {
+    const input = document.createElement('gcds-date-input');
+
+    input.legend = 'Test input';
+    input.name = 'testinput';
+    input.format = 'full';
+    input.required = true;
+
+    const validateResponse: ValidatorReturn = {
+      valid: true,
+      reason: {
+        en: 'Enter information to continue.',
+        fr: 'Saisissez des renseignements pour continuer.',
+      },
+    };
+
+    const gcdsError: EventEmitter<void> = {
+      emit: jest.fn(),
+    };
+    const errorSpy = jest.spyOn(gcdsError, 'emit');
+
+    const gcdsValid: EventEmitter<void> = {
+      emit: jest.fn(),
+    };
+    const validSpy = jest.spyOn(gcdsValid, 'emit');
+
+    handleValidationResult(
+      input,
+      validateResponse,
+      input.legend,
+      gcdsError,
+      gcdsValid,
+      'en',
+      { day: false, month: false, year: false },
+    );
+    expect(errorSpy).toHaveBeenCalledTimes(0);
+    expect(validSpy).toHaveBeenCalled();
+    expect(input.errorMessage).toEqual('');
   });
 });

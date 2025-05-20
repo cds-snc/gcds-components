@@ -17,7 +17,7 @@
 | `name` _(required)_     | `name`          | Name attribute for select form element.                                                       | `string`                                            | `undefined` |
 | `required`              | `required`      | Specifies if a form field is required or not.                                                 | `boolean`                                           | `false`     |
 | `selectId` _(required)_ | `select-id`     | Id attribute for a select element.                                                            | `string`                                            | `undefined` |
-| `validateOn`            | `validate-on`   | Set event to call validator                                                                   | `"blur" \| "other" \| "submit"`                     | `undefined` |
+| `validateOn`            | `validate-on`   | Set event to call validator                                                                   | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
 | `validator`             | --              | Array of validators                                                                           | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
 | `value`                 | `value`         | Value for a select element.                                                                   | `string`                                            | `undefined` |
 
