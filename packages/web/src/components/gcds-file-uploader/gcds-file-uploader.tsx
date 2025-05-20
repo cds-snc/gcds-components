@@ -135,7 +135,7 @@ export class GcdsFileUploader {
    * Array of validators
    */
   @Prop({ mutable: true }) validator: Array<
-    string | ValidatorEntry | Validator<string>
+    string | ValidatorEntry | Validator<string | number | FileList>
   >;
 
   @Watch('validator')

@@ -27,7 +27,7 @@ export interface GcdsErrorInterface {
 }
 
 export const defaultValidator: Validator<any> = {
-  validate: (_x: any) => {
+  validate: () => {
     return {
       valid: true,
       reason: {
