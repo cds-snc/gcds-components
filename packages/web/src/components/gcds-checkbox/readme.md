@@ -10,14 +10,14 @@
 | Property                  | Attribute       | Description                                       | Type                                                | Default     |
 | ------------------------- | --------------- | ------------------------------------------------- | --------------------------------------------------- | ----------- |
 | `checkboxId` _(required)_ | `checkbox-id`   | Id attribute for an input element.                | `string`                                            | `undefined` |
-| `checked`                 | `checked`       | Specifies if an input element is checked.         | `boolean`                                           | `undefined` |
+| `checked`                 | `checked`       | Specifies if an input element is checked.         | `boolean`                                           | `false`     |
 | `disabled`                | `disabled`      | Specifies if an input element is disabled or not. | `boolean`                                           | `undefined` |
 | `errorMessage`            | `error-message` | Error message for an invalid input element.       | `string`                                            | `undefined` |
 | `hint`                    | `hint`          | Hint displayed below the label.                   | `string`                                            | `undefined` |
 | `label` _(required)_      | `label`         | Form field label                                  | `string`                                            | `undefined` |
 | `name` _(required)_       | `name`          | Name attribute for an input element.              | `string`                                            | `undefined` |
 | `required`                | `required`      | Specifies if a form field is required or not.     | `boolean`                                           | `undefined` |
-| `validateOn`              | `validate-on`   | Set event to call validator                       | `"blur" \| "other" \| "submit"`                     | `undefined` |
+| `validateOn`              | `validate-on`   | Set event to call validator                       | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
 | `validator`               | --              | Array of validators                               | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
 | `value`                   | `value`         | Value for an input element.                       | `string`                                            | `undefined` |
 
