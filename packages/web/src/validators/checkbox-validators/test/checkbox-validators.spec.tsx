@@ -8,7 +8,7 @@ describe('Required checkbox validator', () => {
   };
   const results: Array<{ value: boolean; res: ValidatorReturn }> = [
     { value: true, res: { valid: true, reason } },
-    { value: false, res: { valid: true, reason } },
+    { value: false, res: { valid: false, reason } },
   ];
   results.forEach(i =>
     it(`Should return ${i.res.valid} for ${i.value}`, () => {
