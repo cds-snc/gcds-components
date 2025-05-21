@@ -7,6 +7,7 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'gcds-date-input, gcds-input, gcds-textarea, gcds-file-uploader',
   host: {
+    '(gcdsChange)': 'handleChangeEvent($event.target.value)',
     '(gcdsInput)': 'handleChangeEvent($event.target.value)'
   },
   providers: [

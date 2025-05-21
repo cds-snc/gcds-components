@@ -11,13 +11,15 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'select',
   },
   {
+    // Date input
+    elementSelectors: ['gcds-date-input'],
+    event: 'gcdsChange',
+    targetAttr: 'value',
+    type: 'text',
+  },
+  {
     // Text
-    elementSelectors: [
-      'gcds-date-input',
-      'gcds-input',
-      'gcds-textarea',
-      'gcds-file-uploader',
-    ],
+    elementSelectors: ['gcds-input', 'gcds-textarea', 'gcds-file-uploader'],
     event: 'gcdsInput',
     targetAttr: 'value',
     type: 'text',
