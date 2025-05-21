@@ -1,6 +1,14 @@
-import type { CompilerJsDoc, ComponentCompilerEvent, ComponentCompilerProperty } from '@stencil/core/internal';
+import type {
+  CompilerJsDoc,
+  ComponentCompilerEvent,
+  ComponentCompilerProperty,
+} from '@stencil/core/internal';
 
-import { createComponentEventTypeImports, dashToPascalCase, formatToQuotedList } from './utils';
+import {
+  createComponentEventTypeImports,
+  dashToPascalCase,
+  formatToQuotedList,
+} from './utils';
 import type { OutputType } from './types';
 
 /**
@@ -8,9 +16,14 @@ import type { OutputType } from './types';
  *
  * @param prop A ComponentCompilerEvent or ComponentCompilerProperty to turn into a property declaration.
  * @param type The name of the type (e.g. 'string')
+ * @param inlinePropertyAsSetter Inlines the entire property as an empty Setter, to aid Angulars Compilerp
  * @returns The property declaration as a string.
  */
-function createPropertyDeclaration(prop: ComponentCompilerEvent | ComponentCompilerProperty, type: string): string {
+function createPropertyDeclaration(
+  prop: ComponentCompilerEvent | ComponentCompilerProperty,
+  type: string,
+  inlinePropertyAsSetter: boolean = false,
+): string {
   const comment = createDocComment(prop.docs);
   let eventName = prop.name;
   if (/[-/]/.test(prop.name)) {
@@ -18,8 +31,13 @@ function createPropertyDeclaration(prop: ComponentCompilerEvent | ComponentCompi
     // https://github.com/ionic-team/stencil-ds-output-targets/issues/212
     eventName = `'${prop.name}'`;
   }
-  return `${comment.length > 0 ? `  ${comment}` : ''}
+  if (inlinePropertyAsSetter) {
+    return `${comment.length > 0 ? `  ${comment}` : ''}
+  set ${eventName}(_: ${type}) {};`;
+  } else {
+    return `${comment.length > 0 ? `  ${comment}` : ''}
   ${eventName}: ${type};`;
+  }
 }
 
 /**
@@ -41,7 +59,7 @@ export const createAngularComponentDefinition = (
   methods: readonly string[],
   includeImportCustomElements = false,
   standalone = false,
-  inlineComponentProps: readonly ComponentCompilerProperty[] = []
+  inlineComponentProps: readonly ComponentCompilerProperty[] = [],
 ) => {
   const tagNameAsPascal = dashToPascalCase(tagName);
 
@@ -86,19 +104,25 @@ export const createAngularComponentDefinition = (
     standaloneOption = `\n  standalone: true`;
   }
 
-  const propertyDeclarations = inlineComponentProps.map((m) =>
-    createPropertyDeclaration(m, `Components.${tagNameAsPascal}['${m.name}']`)
+  const propertyDeclarations = inlineComponentProps.map(m =>
+    createPropertyDeclaration(
+      m,
+      `Components.${tagNameAsPascal}['${m.name}']`,
+      true,
+    ),
   );
 
-  const propertiesDeclarationText = ['protected el: HTMLElement;', ...propertyDeclarations].join('\n  ');
-
+  const propertiesDeclarationText = [
+    `protected el: HTML${tagNameAsPascal}Element;`,
+    ...propertyDeclarations,
+  ].join('\n  ');
   /**
    * Notes on the generated output:
    * - We disable @angular-eslint/no-inputs-metadata-property, so that
    * Angular does not complain about the inputs property. The output target
    * uses the inputs property to define the inputs of the component instead of
    * having to use the @Input decorator (and manually define the type and default value).
-   * 
+   *
    * GCDS modifications
    * - Added `hasOutputs` logic to render outputs
    * - Modified proxyOutputs to remove second parameter `this.el`
@@ -135,7 +159,10 @@ export class ${tagNameAsPascal} {
  * @param event The Stencil component event.
  * @returns The sanitized event type as a string.
  */
-const formatOutputType = (componentClassName: string, event: ComponentCompilerEvent) => {
+const formatOutputType = (
+  componentClassName: string,
+  event: ComponentCompilerEvent,
+) => {
   const prefix = `I${componentClassName}`;
   /**
    * The original attribute contains the original type defined by the devs.
@@ -143,7 +170,10 @@ const formatOutputType = (componentClassName: string, event: ComponentCompilerEv
    * replacing consecutive spaces with a single space, and adding a single space after commas.
    */
   return Object.entries(event.complexType.references)
-    .filter(([_, refObject]) => refObject.location === 'local' || refObject.location === 'import')
+    .filter(
+      ([_, refObject]) =>
+        refObject.location === 'local' || refObject.location === 'import',
+    )
     .reduce(
       (type, [src, dst]) => {
         let renamedType = type;
@@ -176,16 +206,24 @@ const formatOutputType = (componentClassName: string, event: ComponentCompilerEv
                  * For example, remapping a type like `EventEmitter<CustomEvent<MyEvent<T>>>` to
                  * `EventEmitter<CustomEvent<IMyComponentMyEvent<IMyComponentT>>>`.
                  */
-                return [p1, `I${componentClassName}${v.substring(1, v.length - 1)}`, p2].join('');
+                return [
+                  p1,
+                  `I${componentClassName}${v.substring(1, v.length - 1)}`,
+                  p2,
+                ].join('');
               }
               return [p1, dst, p2].join('');
+            })
+            // Capture all instances that contain sub types, e.g. `IMyComponent.SomeMoreComplexType.SubType`.
+            .replace(new RegExp(`^${src}(\.\\w+)+$`, 'g'), (type: string) => {
+              return `I${componentClassName}${src}.${type.split('.').slice(1).join('.')}`;
             })
         );
       },
       event.complexType.original
         .replace(/\n/g, ' ')
         .replace(/\s{2,}/g, ' ')
-        .replace(/,\s*/g, ', ')
+        .replace(/,\s*/g, ', '),
     );
 };
 
@@ -199,7 +237,7 @@ const createDocComment = (doc: CompilerJsDoc) => {
     return '';
   }
   return `/**
-   * ${doc.text}${doc.tags.length > 0 ? ' ' : ''}${doc.tags.map((tag) => `@${tag.name} ${tag.text}`)}
+   * ${doc.text}${doc.tags.length > 0 ? ' ' : ''}${doc.tags.map(tag => `@${tag.name} ${tag.text}`)}
    */`;
 };
 
@@ -217,17 +255,24 @@ export const createComponentTypeDefinition = (
   tagNameAsPascal: string,
   events: readonly ComponentCompilerEvent[],
   componentCorePackage: string,
-  customElementsDir?: string
+  customElementsDir?: string,
 ) => {
-  const publicEvents = events.filter((ev) => !ev.internal);
+  const publicEvents = events.filter(ev => !ev.internal);
 
-  const eventTypeImports = createComponentEventTypeImports(tagNameAsPascal, publicEvents, {
-    componentCorePackage,
-    customElementsDir,
-    outputType,
-  });
-  const eventTypes = publicEvents.map((event) =>
-    createPropertyDeclaration(event, `EventEmitter<CustomEvent<${formatOutputType(tagNameAsPascal, event)}>>`)
+  const eventTypeImports = createComponentEventTypeImports(
+    tagNameAsPascal,
+    publicEvents,
+    {
+      componentCorePackage,
+      customElementsDir,
+      outputType,
+    },
+  );
+  const eventTypes = publicEvents.map(event =>
+    createPropertyDeclaration(
+      event,
+      `EventEmitter<CustomEvent<${formatOutputType(tagNameAsPascal, event)}>>`,
+    ),
   );
   const interfaceDeclaration = `export declare interface ${tagNameAsPascal} extends Components.${tagNameAsPascal} {`;
 

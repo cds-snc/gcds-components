@@ -47,7 +47,8 @@
     "utils/angular-output-target",
     "packages/web",
     "packages/react",
-    "packages/vue"
+    "packages/vue",
+    "packages/angular"
   ],
   "license": "MIT"
 }

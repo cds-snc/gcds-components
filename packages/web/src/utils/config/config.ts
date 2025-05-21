@@ -4,13 +4,6 @@ import { ComponentModelConfig } from '@stencil/vue-output-target';
 // TODO: Add gcds-radios and gcds-checkboxes when ready
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
-    // Number
-    elementSelectors: ['gcds-input[type="number"]'],
-    event: 'gcdsChange',
-    targetAttr: 'value',
-    type: 'number',
-  },
-  {
     // Select
     elementSelectors: ['gcds-select'],
     event: 'gcdsChange',
@@ -21,11 +14,11 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
     // Text
     elementSelectors: [
       'gcds-date-input',
-      'gcds-input:not[type="number"]',
+      'gcds-input',
       'gcds-textarea',
       'gcds-file-uploader',
     ],
-    event: 'gcdsChange',
+    event: 'gcdsInput',
     targetAttr: 'value',
     type: 'text',
   },
