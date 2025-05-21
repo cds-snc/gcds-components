@@ -6,6 +6,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 // import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
+import { vueComponentModels } from './src/utils/config/config';
 const customElementsDir = 'dist/components';
 
 export const config: Config = {
@@ -42,20 +43,7 @@ export const config: Config = {
       includePolyfills: false,
       includeDefineCustomElements: false,
       hydrateModule: '@cdssnc/gcds-components/hydrate',
-      componentModels: [
-        {
-          elements: [
-            'gcds-input',
-            'gcds-textarea',
-            'gcds-select',
-            'gcds-file-uploader',
-            'gcds-select',
-            'gcds-date-input',
-          ],
-          event: 'gcdsChange',
-          targetAttr: 'value',
-        },
-      ],
+      componentModels: vueComponentModels,
       customElementsDir,
     }),
     {
