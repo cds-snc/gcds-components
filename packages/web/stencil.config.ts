@@ -27,11 +27,7 @@ export const config: Config = {
     //   hydrateModule: '@cdssnc/gcds-components/hydrate',
     //   customElementsDir,
     // }),
-    // reactOutputTarget({
-    //   componentCorePackage: '@cdssnc/gcds-components',
-    //   proxiesFile: '../react/src/components/stencil-generated/index.ts',
-    //   includeDefineCustomElements: true,
-    // }),
+    // TODO: Configure a standalone output within @cdssnc/gcds-components-angular
     angularOutputTarget({
       // outputType should be set to 'component' for Stencil projects using the dist output. Otherwise if using the custom elements output, outputType should be set to 'scam' or 'standalone'.
       outputType: 'component',
