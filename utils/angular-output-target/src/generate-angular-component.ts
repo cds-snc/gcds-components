@@ -215,7 +215,7 @@ const formatOutputType = (
               return [p1, dst, p2].join('');
             })
             // Capture all instances that contain sub types, e.g. `IMyComponent.SomeMoreComplexType.SubType`.
-            .replace(new RegExp(`^${src}(\.\\w+)+$`, 'g'), (type: string) => {
+            .replace(new RegExp(`^${src}(.\\w+)+$`, 'g'), (type: string) => {
               return `I${componentClassName}${src}.${type.split('.').slice(1).join('.')}`;
             })
         );
