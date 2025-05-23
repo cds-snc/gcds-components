@@ -48,7 +48,8 @@
     "packages/web",
     "packages/react",
     "packages/vue",
-    "packages/angular"
+    "packages/angular",
+    "packages/react-ssr"
   ],
   "license": "MIT"
 }

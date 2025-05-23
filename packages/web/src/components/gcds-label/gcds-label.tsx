@@ -6,7 +6,7 @@ import i18n from './i18n/i18n';
   tag: 'gcds-label',
   styleUrl: 'gcds-label.css',
   shadow: false,
-  scoped: true,
+  scoped: false,
 })
 export class GcdsLabel {
   @Element() el: HTMLElement;
