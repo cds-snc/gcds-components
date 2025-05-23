@@ -31,7 +31,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.34.3"
+    "@cdssnc/gcds-components": "^0.34.3",
+    "@stencil/vue-output-target": "^0.10.7"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.1",
