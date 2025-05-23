@@ -78,7 +78,7 @@
     "lit-html": "^2.6.1",
     "postcss-nested": "^6.0.0",
     "prettier": "^3.0.0",
-    "puppeteer": "^21.0.0",
+    "puppeteer": "^24.9.0",
     "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.43.5",
     "stencil-inline-svg": "^1.1.0",
