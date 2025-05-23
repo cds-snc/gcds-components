@@ -2,11 +2,11 @@ name: Run Tests
 on:
   workflow_dispatch:
   pull_request:
-      branches:
-        - main
+    branches:
+      - main
 
 jobs:
-  build-deploy:
+  test:
     name: Run Tests
     runs-on: ubuntu-22.04 # latest version 24 has incompatibility issues (playwright)
     steps:
@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/setup-node@40337cb8f758cccdfe3475af609daa63f81c7e23
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Install gcds-components
         run: npm ci
