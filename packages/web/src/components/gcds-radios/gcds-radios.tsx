@@ -142,7 +142,7 @@ export class GcdsRadios {
     if (this.disabled) {
       this.errorMessage = '';
     } else {
-      this.hasError = this.errorMessage ? !this.hasError : false;
+      this.hasError = this.errorMessage ? true : false;
     }
   }
 
@@ -162,13 +162,13 @@ export class GcdsRadios {
       this.optionsArr.map(radio => {
         if (radio.value == this.value) {
           isValidValue = true;
-          radio.checked = true;
         }
       });
 
       // unset value if no radio button with value available
       if (!isValidValue) {
         this.value = null;
+        this.internals.setFormValue(this.value);
       }
     }
   }
