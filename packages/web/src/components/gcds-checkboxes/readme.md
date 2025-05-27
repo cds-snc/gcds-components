@@ -23,14 +23,15 @@
 
 ## Events
 
-| Event       | Description                                    | Type                  |
-| ----------- | ---------------------------------------------- | --------------------- |
-| `gcdsBlur`  | Emitted when the checkbox loses focus.         | `CustomEvent<void>`   |
-| `gcdsClick` | Emitted when the checkbox has been clicked.    | `CustomEvent<void>`   |
-| `gcdsError` | Emitted when the input has a validation error. | `CustomEvent<object>` |
-| `gcdsFocus` | Emitted when the checkbox has focus.           | `CustomEvent<void>`   |
-| `gcdsInput` | Emmitted when a checkbox has been inputted.    | `CustomEvent<any>`    |
-| `gcdsValid` | Emitted when the input has a validation error. | `CustomEvent<object>` |
+| Event        | Description                                    | Type                  |
+| ------------ | ---------------------------------------------- | --------------------- |
+| `gcdsBlur`   | Emitted when the checkbox loses focus.         | `CustomEvent<void>`   |
+| `gcdsChange` | Emmitted when a checkbox has been changed.     | `CustomEvent<any>`    |
+| `gcdsClick`  | Emitted when the checkbox has been clicked.    | `CustomEvent<void>`   |
+| `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
+| `gcdsFocus`  | Emitted when the checkbox has focus.           | `CustomEvent<void>`   |
+| `gcdsInput`  | Emmitted when a checkbox has been inputted.    | `CustomEvent<any>`    |
+| `gcdsValid`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
 
 
 ## Methods
