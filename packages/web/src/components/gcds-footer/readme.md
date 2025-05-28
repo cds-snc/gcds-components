@@ -28,7 +28,6 @@ graph TD;
   gcds-footer --> gcds-signature
   gcds-footer --> gcds-sr-only
   gcds-footer --> gcds-link
-  gcds-signature --> gcds-sr-only
   gcds-link --> gcds-icon
   style gcds-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
