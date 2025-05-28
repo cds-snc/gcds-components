@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.4](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.34.4) (2025-05-28)
+
+
+### :bug: :wrench: Bug Fixes
+
+* SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
+
 ## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.2...gcds-components-v0.34.3) (2025-05-07)
 
 ### :art: Styles
