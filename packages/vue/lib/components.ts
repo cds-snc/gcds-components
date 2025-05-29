@@ -1,14 +1,55 @@
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated vue proxies */
-import { defineContainer } from './vue-component-lib/utils';
+import { defineContainer, defineStencilSSRComponent, type StencilVueComponent } from '@stencil/vue-output-target/runtime';
 
-import type { JSX } from '@cdssnc/gcds-components';
+import type { JSX } from '@cdssnc/gcds-components/dist/components';
+
+import { defineCustomElement as defineGcdsAlert } from '@cdssnc/gcds-components/dist/components/gcds-alert.js';
+import { defineCustomElement as defineGcdsBreadcrumbs } from '@cdssnc/gcds-components/dist/components/gcds-breadcrumbs.js';
+import { defineCustomElement as defineGcdsBreadcrumbsItem } from '@cdssnc/gcds-components/dist/components/gcds-breadcrumbs-item.js';
+import { defineCustomElement as defineGcdsButton } from '@cdssnc/gcds-components/dist/components/gcds-button.js';
+import { defineCustomElement as defineGcdsCard } from '@cdssnc/gcds-components/dist/components/gcds-card.js';
+import { defineCustomElement as defineGcdsCheckbox } from '@cdssnc/gcds-components/dist/components/gcds-checkbox.js';
+import { defineCustomElement as defineGcdsContainer } from '@cdssnc/gcds-components/dist/components/gcds-container.js';
+import { defineCustomElement as defineGcdsDateInput } from '@cdssnc/gcds-components/dist/components/gcds-date-input.js';
+import { defineCustomElement as defineGcdsDateModified } from '@cdssnc/gcds-components/dist/components/gcds-date-modified.js';
+import { defineCustomElement as defineGcdsDetails } from '@cdssnc/gcds-components/dist/components/gcds-details.js';
+import { defineCustomElement as defineGcdsErrorMessage } from '@cdssnc/gcds-components/dist/components/gcds-error-message.js';
+import { defineCustomElement as defineGcdsErrorSummary } from '@cdssnc/gcds-components/dist/components/gcds-error-summary.js';
+import { defineCustomElement as defineGcdsFieldset } from '@cdssnc/gcds-components/dist/components/gcds-fieldset.js';
+import { defineCustomElement as defineGcdsFileUploader } from '@cdssnc/gcds-components/dist/components/gcds-file-uploader.js';
+import { defineCustomElement as defineGcdsFooter } from '@cdssnc/gcds-components/dist/components/gcds-footer.js';
+import { defineCustomElement as defineGcdsGrid } from '@cdssnc/gcds-components/dist/components/gcds-grid.js';
+import { defineCustomElement as defineGcdsGridCol } from '@cdssnc/gcds-components/dist/components/gcds-grid-col.js';
+import { defineCustomElement as defineGcdsHeader } from '@cdssnc/gcds-components/dist/components/gcds-header.js';
+import { defineCustomElement as defineGcdsHeading } from '@cdssnc/gcds-components/dist/components/gcds-heading.js';
+import { defineCustomElement as defineGcdsHint } from '@cdssnc/gcds-components/dist/components/gcds-hint.js';
+import { defineCustomElement as defineGcdsIcon } from '@cdssnc/gcds-components/dist/components/gcds-icon.js';
+import { defineCustomElement as defineGcdsInput } from '@cdssnc/gcds-components/dist/components/gcds-input.js';
+import { defineCustomElement as defineGcdsLabel } from '@cdssnc/gcds-components/dist/components/gcds-label.js';
+import { defineCustomElement as defineGcdsLangToggle } from '@cdssnc/gcds-components/dist/components/gcds-lang-toggle.js';
+import { defineCustomElement as defineGcdsLink } from '@cdssnc/gcds-components/dist/components/gcds-link.js';
+import { defineCustomElement as defineGcdsNavGroup } from '@cdssnc/gcds-components/dist/components/gcds-nav-group.js';
+import { defineCustomElement as defineGcdsNavLink } from '@cdssnc/gcds-components/dist/components/gcds-nav-link.js';
+import { defineCustomElement as defineGcdsNotice } from '@cdssnc/gcds-components/dist/components/gcds-notice.js';
+import { defineCustomElement as defineGcdsPagination } from '@cdssnc/gcds-components/dist/components/gcds-pagination.js';
+import { defineCustomElement as defineGcdsPhaseBanner } from '@cdssnc/gcds-components/dist/components/gcds-phase-banner.js';
+import { defineCustomElement as defineGcdsRadioGroup } from '@cdssnc/gcds-components/dist/components/gcds-radio-group.js';
+import { defineCustomElement as defineGcdsSearch } from '@cdssnc/gcds-components/dist/components/gcds-search.js';
+import { defineCustomElement as defineGcdsSelect } from '@cdssnc/gcds-components/dist/components/gcds-select.js';
+import { defineCustomElement as defineGcdsSideNav } from '@cdssnc/gcds-components/dist/components/gcds-side-nav.js';
+import { defineCustomElement as defineGcdsSignature } from '@cdssnc/gcds-components/dist/components/gcds-signature.js';
+import { defineCustomElement as defineGcdsSrOnly } from '@cdssnc/gcds-components/dist/components/gcds-sr-only.js';
+import { defineCustomElement as defineGcdsStepper } from '@cdssnc/gcds-components/dist/components/gcds-stepper.js';
+import { defineCustomElement as defineGcdsText } from '@cdssnc/gcds-components/dist/components/gcds-text.js';
+import { defineCustomElement as defineGcdsTextarea } from '@cdssnc/gcds-components/dist/components/gcds-textarea.js';
+import { defineCustomElement as defineGcdsTopNav } from '@cdssnc/gcds-components/dist/components/gcds-top-nav.js';
+import { defineCustomElement as defineGcdsTopicMenu } from '@cdssnc/gcds-components/dist/components/gcds-topic-menu.js';
+import { defineCustomElement as defineGcdsVerifyBanner } from '@cdssnc/gcds-components/dist/components/gcds-verify-banner.js';
 
 
-
-
-export const GcdsAlert = /*@__PURE__*/ defineContainer<JSX.GcdsAlert>('gcds-alert', undefined, [
+export const GcdsAlert: StencilVueComponent<JSX.GcdsAlert> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsAlert>('gcds-alert', defineGcdsAlert, [
   'alertRole',
   'container',
   'heading',
@@ -16,20 +57,46 @@ export const GcdsAlert = /*@__PURE__*/ defineContainer<JSX.GcdsAlert>('gcds-aler
   'hideRoleIcon',
   'isFixed',
   'gcdsDismiss'
-]);
+], [
+  'gcdsDismiss'
+]) : defineStencilSSRComponent<JSX.GcdsAlert>({
+  tagName: 'gcds-alert',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'alertRole': [String, "alert-role"],
+    'container': [String, "container"],
+    'heading': [String, "heading"],
+    'hideCloseBtn': [Boolean, "hide-close-btn"],
+    'hideRoleIcon': [Boolean, "hide-role-icon"],
+    'isFixed': [Boolean, "is-fixed"],
+    'onGcdsDismiss': [Function]
+  }
+});
 
 
-export const GcdsBreadcrumbs = /*@__PURE__*/ defineContainer<JSX.GcdsBreadcrumbs>('gcds-breadcrumbs', undefined, [
+export const GcdsBreadcrumbs: StencilVueComponent<JSX.GcdsBreadcrumbs> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsBreadcrumbs>('gcds-breadcrumbs', defineGcdsBreadcrumbs, [
   'hideCanadaLink'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsBreadcrumbs>({
+  tagName: 'gcds-breadcrumbs',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'hideCanadaLink': [Boolean, "hide-canada-link"]
+  }
+});
 
 
-export const GcdsBreadcrumbsItem = /*@__PURE__*/ defineContainer<JSX.GcdsBreadcrumbsItem>('gcds-breadcrumbs-item', undefined, [
+export const GcdsBreadcrumbsItem: StencilVueComponent<JSX.GcdsBreadcrumbsItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsBreadcrumbsItem>('gcds-breadcrumbs-item', defineGcdsBreadcrumbsItem, [
   'href'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsBreadcrumbsItem>({
+  tagName: 'gcds-breadcrumbs-item',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'href': [String, "href"]
+  }
+});
 
 
-export const GcdsButton = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-button', undefined, [
+export const GcdsButton: StencilVueComponent<JSX.GcdsButton> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsButton>('gcds-button', defineGcdsButton, [
   'type',
   'buttonRole',
   'size',
@@ -44,10 +111,33 @@ export const GcdsButton = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-bu
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'
-]);
+], [
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur'
+]) : defineStencilSSRComponent<JSX.GcdsButton>({
+  tagName: 'gcds-button',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'type': [String, "type"],
+    'buttonRole': [String, "button-role"],
+    'size': [String, "size"],
+    'buttonId': [String, "button-id"],
+    'name': [String, "name"],
+    'disabled': [Boolean, "disabled"],
+    'value': [String, "value"],
+    'href': [String, "href"],
+    'rel': [String, "rel"],
+    'target': [String, "target"],
+    'download': [String, "download"],
+    'onGcdsClick': [Function],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function]
+  }
+});
 
 
-export const GcdsCard = /*@__PURE__*/ defineContainer<JSX.GcdsCard>('gcds-card', undefined, [
+export const GcdsCard: StencilVueComponent<JSX.GcdsCard> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsCard>('gcds-card', defineGcdsCard, [
   'cardTitle',
   'href',
   'cardTitleTag',
@@ -58,10 +148,29 @@ export const GcdsCard = /*@__PURE__*/ defineContainer<JSX.GcdsCard>('gcds-card',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+]) : defineStencilSSRComponent<JSX.GcdsCard>({
+  tagName: 'gcds-card',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'cardTitle': [String, "card-title"],
+    'href': [String, "href"],
+    'cardTitleTag': [String, "card-title-tag"],
+    'description': [String, "description"],
+    'badge': [String, "badge"],
+    'imgSrc': [String, "img-src"],
+    'imgAlt': [String, "img-alt"],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsClick': [Function]
+  }
+});
 
 
-export const GcdsCheckbox = /*@__PURE__*/ defineContainer<JSX.GcdsCheckbox>('gcds-checkbox', undefined, [
+export const GcdsCheckbox: StencilVueComponent<JSX.GcdsCheckbox> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsCheckbox>('gcds-checkbox', defineGcdsCheckbox, [
   'checkboxId',
   'label',
   'name',
@@ -79,10 +188,38 @@ export const GcdsCheckbox = /*@__PURE__*/ defineContainer<JSX.GcdsCheckbox>('gcd
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+]) : defineStencilSSRComponent<JSX.GcdsCheckbox>({
+  tagName: 'gcds-checkbox',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'checkboxId': [String, "checkbox-id"],
+    'label': [String, "label"],
+    'name': [String, "name"],
+    'required': [Boolean, "required"],
+    'disabled': [Boolean, "disabled"],
+    'value': [String, "value"],
+    'checked': [Boolean, "checked"],
+    'errorMessage': [String, "error-message"],
+    'hint': [String, "hint"],
+    'validateOn': [String, "validate-on"],
+    'onGcdsClick': [Function],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsChange': [Function],
+    'onGcdsError': [Function],
+    'onGcdsValid': [Function]
+  }
+});
 
 
-export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', undefined, [
+export const GcdsContainer: StencilVueComponent<JSX.GcdsContainer> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsContainer>('gcds-container', defineGcdsContainer, [
   'border',
   'centered',
   'mainContainer',
@@ -90,10 +227,22 @@ export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('g
   'padding',
   'size',
   'tag'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsContainer>({
+  tagName: 'gcds-container',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'border': [Boolean, "border"],
+    'centered': [Boolean, "centered"],
+    'mainContainer': [Boolean, "main-container"],
+    'margin': [String, "margin"],
+    'padding': [String, "padding"],
+    'size': [String, "size"],
+    'tag': [String, "tag"]
+  }
+});
 
 
-export const GcdsDateInput = /*@__PURE__*/ defineContainer<JSX.GcdsDateInput>('gcds-date-input', undefined, [
+export const GcdsDateInput: StencilVueComponent<JSX.GcdsDateInput, JSX.GcdsDateInput["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsDateInput, JSX.GcdsDateInput["value"]>('gcds-date-input', defineGcdsDateInput, [
   'name',
   'legend',
   'format',
@@ -110,36 +259,98 @@ export const GcdsDateInput = /*@__PURE__*/ defineContainer<JSX.GcdsDateInput>('g
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange') : defineStencilSSRComponent<JSX.GcdsDateInput, JSX.GcdsDateInput["value"]>({
+  tagName: 'gcds-date-input',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'name': [String, "name"],
+    'legend': [String, "legend"],
+    'format': [String, "format"],
+    'value': [String, "value"],
+    'required': [Boolean, "required"],
+    'hint': [String, "hint"],
+    'errorMessage': [String, "error-message"],
+    'disabled': [Boolean, "disabled"],
+    'validateOn': [String, "validate-on"],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsInput': [Function],
+    'onGcdsChange': [Function],
+    'onGcdsError': [Function],
+    'onGcdsValid': [Function]
+  }
+});
 
 
-export const GcdsDateModified = /*@__PURE__*/ defineContainer<JSX.GcdsDateModified>('gcds-date-modified', undefined, [
+export const GcdsDateModified: StencilVueComponent<JSX.GcdsDateModified> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsDateModified>('gcds-date-modified', defineGcdsDateModified, [
   'type'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsDateModified>({
+  tagName: 'gcds-date-modified',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'type': [String, "type"]
+  }
+});
 
 
-export const GcdsDetails = /*@__PURE__*/ defineContainer<JSX.GcdsDetails>('gcds-details', undefined, [
+export const GcdsDetails: StencilVueComponent<JSX.GcdsDetails> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsDetails>('gcds-details', defineGcdsDetails, [
   'detailsTitle',
   'open',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+]) : defineStencilSSRComponent<JSX.GcdsDetails>({
+  tagName: 'gcds-details',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'detailsTitle': [String, "details-title"],
+    'open': [Boolean, "open"],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsClick': [Function]
+  }
+});
 
 
-export const GcdsErrorMessage = /*@__PURE__*/ defineContainer<JSX.GcdsErrorMessage>('gcds-error-message', undefined, [
+export const GcdsErrorMessage: StencilVueComponent<JSX.GcdsErrorMessage> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsErrorMessage>('gcds-error-message', defineGcdsErrorMessage, [
   'messageId'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsErrorMessage>({
+  tagName: 'gcds-error-message',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'messageId': [String, "message-id"]
+  }
+});
 
 
-export const GcdsErrorSummary = /*@__PURE__*/ defineContainer<JSX.GcdsErrorSummary>('gcds-error-summary', undefined, [
+export const GcdsErrorSummary: StencilVueComponent<JSX.GcdsErrorSummary> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsErrorSummary>('gcds-error-summary', defineGcdsErrorSummary, [
   'heading',
   'listen',
   'errorLinks'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsErrorSummary>({
+  tagName: 'gcds-error-summary',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'heading': [String, "heading"],
+    'listen': [Boolean, "listen"],
+    'errorLinks': [String, "error-links"]
+  }
+});
 
 
-export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcds-fieldset', undefined, [
+export const GcdsFieldset: StencilVueComponent<JSX.GcdsFieldset> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsFieldset>('gcds-fieldset', defineGcdsFieldset, [
   'fieldsetId',
   'legend',
   'required',
@@ -152,10 +363,31 @@ export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcd
   'gcdsGroupErrorClear',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsGroupError',
+  'gcdsGroupErrorClear',
+  'gcdsError',
+  'gcdsValid'
+]) : defineStencilSSRComponent<JSX.GcdsFieldset>({
+  tagName: 'gcds-fieldset',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'fieldsetId': [String, "fieldset-id"],
+    'legend': [String, "legend"],
+    'required': [Boolean, "required"],
+    'errorMessage': [String, "error-message"],
+    'hint': [String, "hint"],
+    'disabled': [Boolean, "disabled"],
+    'validateOn': [String, "validate-on"],
+    'onGcdsGroupError': [Function],
+    'onGcdsGroupErrorClear': [Function],
+    'onGcdsError': [Function],
+    'onGcdsValid': [Function]
+  }
+});
 
 
-export const GcdsFileUploader = /*@__PURE__*/ defineContainer<JSX.GcdsFileUploader>('gcds-file-uploader', undefined, [
+export const GcdsFileUploader: StencilVueComponent<JSX.GcdsFileUploader, JSX.GcdsFileUploader["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsFileUploader, JSX.GcdsFileUploader["value"]>('gcds-file-uploader', defineGcdsFileUploader, [
   'uploaderId',
   'name',
   'label',
@@ -176,19 +408,60 @@ export const GcdsFileUploader = /*@__PURE__*/ defineContainer<JSX.GcdsFileUpload
   'gcdsRemoveFile',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsChange',
+  'gcdsInput',
+  'gcdsRemoveFile',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange') : defineStencilSSRComponent<JSX.GcdsFileUploader, JSX.GcdsFileUploader["value"]>({
+  tagName: 'gcds-file-uploader',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'uploaderId': [String, "uploader-id"],
+    'name': [String, "name"],
+    'label': [String, "label"],
+    'required': [Boolean, "required"],
+    'disabled': [Boolean, "disabled"],
+    'accept': [String, "accept"],
+    'multiple': [Boolean, "multiple"],
+    'errorMessage': [String, "error-message"],
+    'hint': [String, "hint"],
+    'validateOn': [String, "validate-on"],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsChange': [Function],
+    'onGcdsInput': [Function],
+    'onGcdsRemoveFile': [Function],
+    'onGcdsError': [Function],
+    'onGcdsValid': [Function]
+  }
+});
 
 
-export const GcdsFooter = /*@__PURE__*/ defineContainer<JSX.GcdsFooter>('gcds-footer', undefined, [
+export const GcdsFooter: StencilVueComponent<JSX.GcdsFooter> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsFooter>('gcds-footer', defineGcdsFooter, [
   'display',
   'wordmarkVariant',
   'contextualHeading',
   'contextualLinks',
   'subLinks'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsFooter>({
+  tagName: 'gcds-footer',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'display': [String, "display"],
+    'wordmarkVariant': [String, "wordmark-variant"],
+    'contextualHeading': [String, "contextual-heading"],
+    'contextualLinks': [String, "contextual-links"],
+    'subLinks': [String, "sub-links"]
+  }
+});
 
 
-export const GcdsGrid = /*@__PURE__*/ defineContainer<JSX.GcdsGrid>('gcds-grid', undefined, [
+export const GcdsGrid: StencilVueComponent<JSX.GcdsGrid> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsGrid>('gcds-grid', defineGcdsGrid, [
   'columns',
   'columnsTablet',
   'columnsDesktop',
@@ -206,47 +479,111 @@ export const GcdsGrid = /*@__PURE__*/ defineContainer<JSX.GcdsGrid>('gcds-grid',
   'alignItems',
   'justifyItems',
   'placeItems'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsGrid>({
+  tagName: 'gcds-grid',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'columns': [String, "columns"],
+    'columnsTablet': [String, "columns-tablet"],
+    'columnsDesktop': [String, "columns-desktop"],
+    'container': [String, "container"],
+    'centered': [Boolean, "centered"],
+    'display': [String, "display"],
+    'equalRowHeight': [Boolean, "equal-row-height"],
+    'gap': [String, "gap"],
+    'gapTablet': [String, "gap-tablet"],
+    'gapDesktop': [String, "gap-desktop"],
+    'tag': [String, "tag"],
+    'alignContent': [String, "align-content"],
+    'justifyContent': [String, "justify-content"],
+    'placeContent': [String, "place-content"],
+    'alignItems': [String, "align-items"],
+    'justifyItems': [String, "justify-items"],
+    'placeItems': [String, "place-items"]
+  }
+});
 
 
-export const GcdsGridCol = /*@__PURE__*/ defineContainer<JSX.GcdsGridCol>('gcds-grid-col', undefined, [
+export const GcdsGridCol: StencilVueComponent<JSX.GcdsGridCol> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsGridCol>('gcds-grid-col', defineGcdsGridCol, [
   'tag',
   'tablet',
   'desktop'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsGridCol>({
+  tagName: 'gcds-grid-col',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'tag': [String, "tag"],
+    'tablet': [Number, "tablet"],
+    'desktop': [Number, "desktop"]
+  }
+});
 
 
-export const GcdsHeader = /*@__PURE__*/ defineContainer<JSX.GcdsHeader>('gcds-header', undefined, [
+export const GcdsHeader: StencilVueComponent<JSX.GcdsHeader> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsHeader>('gcds-header', defineGcdsHeader, [
   'langHref',
   'signatureVariant',
   'signatureHasLink',
   'skipToHref'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsHeader>({
+  tagName: 'gcds-header',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'langHref': [String, "lang-href"],
+    'signatureVariant': [String, "signature-variant"],
+    'signatureHasLink': [Boolean, "signature-has-link"],
+    'skipToHref': [String, "skip-to-href"]
+  }
+});
 
 
-export const GcdsHeading = /*@__PURE__*/ defineContainer<JSX.GcdsHeading>('gcds-heading', undefined, [
+export const GcdsHeading: StencilVueComponent<JSX.GcdsHeading> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsHeading>('gcds-heading', defineGcdsHeading, [
   'tag',
   'characterLimit',
   'marginTop',
   'marginBottom'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsHeading>({
+  tagName: 'gcds-heading',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'tag': [String, "tag"],
+    'characterLimit': [Boolean, "character-limit"],
+    'marginTop': [String, "margin-top"],
+    'marginBottom': [String, "margin-bottom"]
+  }
+});
 
 
-export const GcdsHint = /*@__PURE__*/ defineContainer<JSX.GcdsHint>('gcds-hint', undefined, [
+export const GcdsHint: StencilVueComponent<JSX.GcdsHint> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsHint>('gcds-hint', defineGcdsHint, [
   'hintId'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsHint>({
+  tagName: 'gcds-hint',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'hintId': [String, "hint-id"]
+  }
+});
 
 
-export const GcdsIcon = /*@__PURE__*/ defineContainer<JSX.GcdsIcon>('gcds-icon', undefined, [
+export const GcdsIcon: StencilVueComponent<JSX.GcdsIcon> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsIcon>('gcds-icon', defineGcdsIcon, [
   'label',
   'marginLeft',
   'marginRight',
   'name',
   'size'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsIcon>({
+  tagName: 'gcds-icon',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'label': [String, "label"],
+    'marginLeft': [String, "margin-left"],
+    'marginRight': [String, "margin-right"],
+    'name': [String, "name"],
+    'size': [String, "size"]
+  }
+});
 
 
-export const GcdsInput = /*@__PURE__*/ defineContainer<JSX.GcdsInput>('gcds-input', undefined, [
+export const GcdsInput: StencilVueComponent<JSX.GcdsInput, JSX.GcdsInput["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsInput, JSX.GcdsInput["value"]>('gcds-input', defineGcdsInput, [
   'disabled',
   'errorMessage',
   'hideLabel',
@@ -267,23 +604,70 @@ export const GcdsInput = /*@__PURE__*/ defineContainer<JSX.GcdsInput>('gcds-inpu
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange') : defineStencilSSRComponent<JSX.GcdsInput, JSX.GcdsInput["value"]>({
+  tagName: 'gcds-input',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'disabled': [Boolean, "disabled"],
+    'errorMessage': [String, "error-message"],
+    'hideLabel': [Boolean, "hide-label"],
+    'hint': [String, "hint"],
+    'inputId': [String, "input-id"],
+    'name': [String, "name"],
+    'label': [String, "label"],
+    'required': [Boolean, "required"],
+    'size': [Number, "size"],
+    'type': [String, "type"],
+    'value': [String, "value"],
+    'autocomplete': [String, "autocomplete"],
+    'validateOn': [String, "validate-on"],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsInput': [Function],
+    'onGcdsChange': [Function],
+    'onGcdsError': [Function],
+    'onGcdsValid': [Function]
+  }
+});
 
 
-export const GcdsLabel = /*@__PURE__*/ defineContainer<JSX.GcdsLabel>('gcds-label', undefined, [
+export const GcdsLabel: StencilVueComponent<JSX.GcdsLabel> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsLabel>('gcds-label', defineGcdsLabel, [
   'hideLabel',
   'label',
   'labelFor',
   'required'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsLabel>({
+  tagName: 'gcds-label',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'hideLabel': [Boolean, "hide-label"],
+    'label': [String, "label"],
+    'labelFor': [String, "label-for"],
+    'required': [Boolean, "required"]
+  }
+});
 
 
-export const GcdsLangToggle = /*@__PURE__*/ defineContainer<JSX.GcdsLangToggle>('gcds-lang-toggle', undefined, [
+export const GcdsLangToggle: StencilVueComponent<JSX.GcdsLangToggle> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsLangToggle>('gcds-lang-toggle', defineGcdsLangToggle, [
   'href'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsLangToggle>({
+  tagName: 'gcds-lang-toggle',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'href': [String, "href"]
+  }
+});
 
 
-export const GcdsLink = /*@__PURE__*/ defineContainer<JSX.GcdsLink>('gcds-link', undefined, [
+export const GcdsLink: StencilVueComponent<JSX.GcdsLink> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsLink>('gcds-link', defineGcdsLink, [
   'variant',
   'size',
   'display',
@@ -296,10 +680,31 @@ export const GcdsLink = /*@__PURE__*/ defineContainer<JSX.GcdsLink>('gcds-link',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+]) : defineStencilSSRComponent<JSX.GcdsLink>({
+  tagName: 'gcds-link',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'variant': [String, "variant"],
+    'size': [String, "size"],
+    'display': [String, "display"],
+    'href': [String, "href"],
+    'rel': [String, "rel"],
+    'target': [String, "target"],
+    'external': [Boolean, "external"],
+    'download': [String, "download"],
+    'type': [String, "type"],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsClick': [Function]
+  }
+});
 
 
-export const GcdsNavGroup = /*@__PURE__*/ defineContainer<JSX.GcdsNavGroup>('gcds-nav-group', undefined, [
+export const GcdsNavGroup: StencilVueComponent<JSX.GcdsNavGroup> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsNavGroup>('gcds-nav-group', defineGcdsNavGroup, [
   'closeTrigger',
   'menuLabel',
   'openTrigger',
@@ -307,26 +712,64 @@ export const GcdsNavGroup = /*@__PURE__*/ defineContainer<JSX.GcdsNavGroup>('gcd
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'
-]);
+], [
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur'
+]) : defineStencilSSRComponent<JSX.GcdsNavGroup>({
+  tagName: 'gcds-nav-group',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'closeTrigger': [String, "close-trigger"],
+    'menuLabel': [String, "menu-label"],
+    'openTrigger': [String, "open-trigger"],
+    'open': [Boolean, "open"],
+    'onGcdsClick': [Function],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function]
+  }
+});
 
 
-export const GcdsNavLink = /*@__PURE__*/ defineContainer<JSX.GcdsNavLink>('gcds-nav-link', undefined, [
+export const GcdsNavLink: StencilVueComponent<JSX.GcdsNavLink> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsNavLink>('gcds-nav-link', defineGcdsNavLink, [
   'href',
   'current',
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'
-]);
+], [
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur'
+]) : defineStencilSSRComponent<JSX.GcdsNavLink>({
+  tagName: 'gcds-nav-link',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'href': [String, "href"],
+    'current': [Boolean, "current"],
+    'onGcdsClick': [Function],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function]
+  }
+});
 
 
-export const GcdsNotice = /*@__PURE__*/ defineContainer<JSX.GcdsNotice>('gcds-notice', undefined, [
+export const GcdsNotice: StencilVueComponent<JSX.GcdsNotice> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsNotice>('gcds-notice', defineGcdsNotice, [
   'type',
   'noticeTitle',
   'noticeTitleTag'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsNotice>({
+  tagName: 'gcds-notice',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'type': [String, "type"],
+    'noticeTitle': [String, "notice-title"],
+    'noticeTitleTag': [String, "notice-title-tag"]
+  }
+});
 
 
-export const GcdsPagination = /*@__PURE__*/ defineContainer<JSX.GcdsPagination>('gcds-pagination', undefined, [
+export const GcdsPagination: StencilVueComponent<JSX.GcdsPagination> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsPagination>('gcds-pagination', defineGcdsPagination, [
   'display',
   'label',
   'previousHref',
@@ -339,26 +782,69 @@ export const GcdsPagination = /*@__PURE__*/ defineContainer<JSX.GcdsPagination>(
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+]) : defineStencilSSRComponent<JSX.GcdsPagination>({
+  tagName: 'gcds-pagination',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'display': [String, "display"],
+    'label': [String, "label"],
+    'previousHref': [String, "previous-href"],
+    'previousLabel': [String, "previous-label"],
+    'nextHref': [String, "next-href"],
+    'nextLabel': [String, "next-label"],
+    'totalPages': [Number, "total-pages"],
+    'currentPage': [Number, "current-page"],
+    'url': [String, "url"],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsClick': [Function]
+  }
+});
 
 
-export const GcdsPhaseBanner = /*@__PURE__*/ defineContainer<JSX.GcdsPhaseBanner>('gcds-phase-banner', undefined, [
+export const GcdsPhaseBanner: StencilVueComponent<JSX.GcdsPhaseBanner> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsPhaseBanner>('gcds-phase-banner', defineGcdsPhaseBanner, [
   'bannerRole',
   'container',
   'isFixed'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsPhaseBanner>({
+  tagName: 'gcds-phase-banner',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'bannerRole': [String, "banner-role"],
+    'container': [String, "container"],
+    'isFixed': [Boolean, "is-fixed"]
+  }
+});
 
 
-export const GcdsRadioGroup = /*@__PURE__*/ defineContainer<JSX.GcdsRadioGroup>('gcds-radio-group', undefined, [
+export const GcdsRadioGroup: StencilVueComponent<JSX.GcdsRadioGroup> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsRadioGroup>('gcds-radio-group', defineGcdsRadioGroup, [
   'options',
   'name',
   'gcdsChange',
   'gcdsFocus',
   'gcdsBlur'
-]);
+], [
+  'gcdsChange',
+  'gcdsFocus',
+  'gcdsBlur'
+]) : defineStencilSSRComponent<JSX.GcdsRadioGroup>({
+  tagName: 'gcds-radio-group',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'options': [String, "options"],
+    'name': [String, "name"],
+    'onGcdsChange': [Function],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function]
+  }
+});
 
 
-export const GcdsSearch = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-search', undefined, [
+export const GcdsSearch: StencilVueComponent<JSX.GcdsSearch> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsSearch>('gcds-search', defineGcdsSearch, [
   'placeholder',
   'action',
   'method',
@@ -371,10 +857,32 @@ export const GcdsSearch = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-se
   'gcdsFocus',
   'gcdsBlur',
   'gcdsSubmit'
-]);
+], [
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsSubmit'
+]) : defineStencilSSRComponent<JSX.GcdsSearch>({
+  tagName: 'gcds-search',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'placeholder': [String, "placeholder"],
+    'action': [String, "action"],
+    'method': [String, "method"],
+    'name': [String, "name"],
+    'searchId': [String, "search-id"],
+    'value': [String, "value"],
+    'onGcdsInput': [Function],
+    'onGcdsChange': [Function],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsSubmit': [Function]
+  }
+});
 
 
-export const GcdsSelect = /*@__PURE__*/ defineContainer<JSX.GcdsSelect>('gcds-select', undefined, [
+export const GcdsSelect: StencilVueComponent<JSX.GcdsSelect, JSX.GcdsSelect["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsSelect, JSX.GcdsSelect["value"]>('gcds-select', defineGcdsSelect, [
   'selectId',
   'label',
   'name',
@@ -392,44 +900,112 @@ export const GcdsSelect = /*@__PURE__*/ defineContainer<JSX.GcdsSelect>('gcds-se
   'gcdsBlur',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsChange',
+  'gcdsInput',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange') : defineStencilSSRComponent<JSX.GcdsSelect, JSX.GcdsSelect["value"]>({
+  tagName: 'gcds-select',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'selectId': [String, "select-id"],
+    'label': [String, "label"],
+    'name': [String, "name"],
+    'required': [Boolean, "required"],
+    'disabled': [Boolean, "disabled"],
+    'defaultValue': [String, "default-value"],
+    'value': [String, "value"],
+    'errorMessage': [String, "error-message"],
+    'hint': [String, "hint"],
+    'validateOn': [String, "validate-on"],
+    'onGcdsChange': [Function],
+    'onGcdsInput': [Function],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsError': [Function],
+    'onGcdsValid': [Function]
+  }
+});
 
 
-export const GcdsSideNav = /*@__PURE__*/ defineContainer<JSX.GcdsSideNav>('gcds-side-nav', undefined, [
+export const GcdsSideNav: StencilVueComponent<JSX.GcdsSideNav> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsSideNav>('gcds-side-nav', defineGcdsSideNav, [
   'label'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsSideNav>({
+  tagName: 'gcds-side-nav',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'label': [String, "label"]
+  }
+});
 
 
-export const GcdsSignature = /*@__PURE__*/ defineContainer<JSX.GcdsSignature>('gcds-signature', undefined, [
+export const GcdsSignature: StencilVueComponent<JSX.GcdsSignature> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsSignature>('gcds-signature', defineGcdsSignature, [
   'type',
   'variant',
   'hasLink'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsSignature>({
+  tagName: 'gcds-signature',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'type': [String, "type"],
+    'variant': [String, "variant"],
+    'hasLink': [Boolean, "has-link"]
+  }
+});
 
 
-export const GcdsSrOnly = /*@__PURE__*/ defineContainer<JSX.GcdsSrOnly>('gcds-sr-only', undefined, [
+export const GcdsSrOnly: StencilVueComponent<JSX.GcdsSrOnly> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsSrOnly>('gcds-sr-only', defineGcdsSrOnly, [
   'tag'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsSrOnly>({
+  tagName: 'gcds-sr-only',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'tag': [String, "tag"]
+  }
+});
 
 
-export const GcdsStepper = /*@__PURE__*/ defineContainer<JSX.GcdsStepper>('gcds-stepper', undefined, [
+export const GcdsStepper: StencilVueComponent<JSX.GcdsStepper> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsStepper>('gcds-stepper', defineGcdsStepper, [
   'currentStep',
   'totalSteps',
   'tag'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsStepper>({
+  tagName: 'gcds-stepper',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'currentStep': [Number, "current-step"],
+    'totalSteps': [Number, "total-steps"],
+    'tag': [String, "tag"]
+  }
+});
 
 
-export const GcdsText = /*@__PURE__*/ defineContainer<JSX.GcdsText>('gcds-text', undefined, [
+export const GcdsText: StencilVueComponent<JSX.GcdsText> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsText>('gcds-text', defineGcdsText, [
   'textRole',
   'characterLimit',
   'display',
   'marginTop',
   'marginBottom',
   'size'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsText>({
+  tagName: 'gcds-text',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'textRole': [String, "text-role"],
+    'characterLimit': [Boolean, "character-limit"],
+    'display': [String, "display"],
+    'marginTop': [String, "margin-top"],
+    'marginBottom': [String, "margin-bottom"],
+    'size': [String, "size"]
+  }
+});
 
 
-export const GcdsTextarea = /*@__PURE__*/ defineContainer<JSX.GcdsTextarea>('gcds-textarea', undefined, [
+export const GcdsTextarea: StencilVueComponent<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]>('gcds-textarea', defineGcdsTextarea, [
   'characterCount',
   'cols',
   'disabled',
@@ -450,22 +1026,74 @@ export const GcdsTextarea = /*@__PURE__*/ defineContainer<JSX.GcdsTextarea>('gcd
   'gcdsInput',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsChange',
+  'gcdsInput',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange') : defineStencilSSRComponent<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]>({
+  tagName: 'gcds-textarea',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'characterCount': [Number, "character-count"],
+    'cols': [Number, "cols"],
+    'disabled': [Boolean, "disabled"],
+    'errorMessage': [String, "error-message"],
+    'hideLabel': [Boolean, "hide-label"],
+    'hint': [String, "hint"],
+    'label': [String, "label"],
+    'name': [String, "name"],
+    'required': [Boolean, "required"],
+    'rows': [Number, "rows"],
+    'textareaId': [String, "textarea-id"],
+    'value': [String, "value"],
+    'validateOn': [String, "validate-on"],
+    'onGcdsFocus': [Function],
+    'onGcdsBlur': [Function],
+    'onGcdsChange': [Function],
+    'onGcdsInput': [Function],
+    'onGcdsError': [Function],
+    'onGcdsValid': [Function]
+  }
+});
 
 
-export const GcdsTopNav = /*@__PURE__*/ defineContainer<JSX.GcdsTopNav>('gcds-top-nav', undefined, [
+export const GcdsTopNav: StencilVueComponent<JSX.GcdsTopNav> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsTopNav>('gcds-top-nav', defineGcdsTopNav, [
   'label',
   'alignment'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsTopNav>({
+  tagName: 'gcds-top-nav',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'label': [String, "label"],
+    'alignment': [String, "alignment"]
+  }
+});
 
 
-export const GcdsTopicMenu = /*@__PURE__*/ defineContainer<JSX.GcdsTopicMenu>('gcds-topic-menu', undefined, [
+export const GcdsTopicMenu: StencilVueComponent<JSX.GcdsTopicMenu> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsTopicMenu>('gcds-topic-menu', defineGcdsTopicMenu, [
   'home'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsTopicMenu>({
+  tagName: 'gcds-topic-menu',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'home': [Boolean, "home"]
+  }
+});
 
 
-export const GcdsVerifyBanner = /*@__PURE__*/ defineContainer<JSX.GcdsVerifyBanner>('gcds-verify-banner', undefined, [
+export const GcdsVerifyBanner: StencilVueComponent<JSX.GcdsVerifyBanner> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsVerifyBanner>('gcds-verify-banner', defineGcdsVerifyBanner, [
   'container',
   'isFixed'
-]);
+]) : defineStencilSSRComponent<JSX.GcdsVerifyBanner>({
+  tagName: 'gcds-verify-banner',
+  hydrateModule: import('@cdssnc/gcds-components/hydrate'),
+  props: {
+    'container': [String, "container"],
+    'isFixed': [Boolean, "is-fixed"]
+  }
+});
 

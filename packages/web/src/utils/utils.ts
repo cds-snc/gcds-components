@@ -145,7 +145,10 @@ export const logError = (
 /* Check for valid date
  * @param dateString - the date to check
  */
-export const isValidDate = (dateString: string, forceFormat?: 'full' | 'compact') => {
+export const isValidDate = (
+  dateString: string,
+  forceFormat?: 'full' | 'compact',
+) => {
   // Define regex pattern to match YYYY-MM-DD format
   let fullregex = /^\d{4}-\d{2}-\d{2}$/;
   let compactregex = /^\d{4}-\d{2}$/;

@@ -16,7 +16,7 @@
 | `legend` _(required)_     | `legend`        | The title for the contents of the fieldset        | `string`                                            | `undefined` |
 | `required`                | `required`      | Flag the contents are required                    | `boolean`                                           | `undefined` |
 | `validateOn`              | `validate-on`   | Set event to call validator                       | `"blur" \| "other" \| "submit"`                     | `undefined` |
-| `validator`               | --              | Array of validators                               | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validator`               | `validator`     | Array of validators                               | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
 
 
 ## Events
