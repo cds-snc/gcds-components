@@ -16,6 +16,7 @@ import {
   assignLanguage,
   elementGroupCheck,
   emitEvent,
+  handleValidationResult,
   inheritAttributes,
   observerConfig,
 } from '../../utils/utils';
@@ -87,7 +88,7 @@ export class GcdsCheckbox {
   /**
    * Specifies if an input element is checked.
    */
-  @Prop({ reflect: true, mutable: true }) checked: boolean;
+  @Prop({ reflect: true, mutable: true }) checked: boolean = false;
 
   /**
    * Error message for an invalid input element.
@@ -118,15 +119,13 @@ export class GcdsCheckbox {
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * Event listener for gcds-fieldset errors
@@ -223,19 +222,14 @@ export class GcdsCheckbox {
    */
   @Method()
   async validate() {
-    if (
-      !this._validator.validate(this.checked) &&
-      this._validator.errorMessage
-    ) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({
-        id: `#${this.checkboxId}`,
-        message: `${this.label} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit({ id: `#${this.checkboxId}` });
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsCheckboxElement,
+      this._validator.validate(this.checked),
+      this.label,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   @Listen('submit', { target: 'document' })
@@ -286,25 +280,16 @@ export class GcdsCheckbox {
     this.validateDisabledCheckbox();
     this.validateHasError();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, 'checkbox');
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
+    this.validateValidator();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
 
     this.internals.setFormValue(this.checked ? this.value : null);
     this.initialState = this.checked ? this.checked : null;
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
   }
 
   private onChange = e => {
