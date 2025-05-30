@@ -41,7 +41,7 @@ import {
   formAssociated: true,
 })
 export class GcdsCheckboxes {
-  @Element() el: HTMLElement;
+  @Element() el: HTMLInputElement;
 
   @AttachInternals()
   internals: ElementInternals;
@@ -147,7 +147,10 @@ export class GcdsCheckboxes {
       // Remove any manually set values that do not match available inputs
       cleanUpValues(this.optionsArr, this.el);
 
-      this.internals.setFormValue(this.value.toString());
+      // Set form value only when a value is assigned
+      if ((this.value as string[]).length > 0) {
+        this.internals.setFormValue(this.value.toString());
+      }
     }
   }
 
@@ -278,6 +281,23 @@ export class GcdsCheckboxes {
     }
   }
 
+  /*
+   * FormData listener to append values like native checkboxes
+   */
+  @Listen('formdata', { target: 'document' })
+  formdataListener(e) {
+    const data = e.formData;
+
+    (this.value as string[]).forEach(value => {
+      // Set formdata for first entry to remove array
+      if ((this.value as string[]).indexOf(value) === 0) {
+        data.set(this.name, value);
+      } else {
+        data.append(this.name, value);
+      }
+    });
+  }
+
   // Submit validation handler
   @Listen('submit', { target: 'document' })
   submitListener(e) {
@@ -303,6 +323,7 @@ export class GcdsCheckboxes {
 
   formStateRestoreCallback(state) {
     this.internals.setFormValue(state);
+    this.value = [...state.split(',')];
   }
 
   /*
@@ -391,7 +412,11 @@ export class GcdsCheckboxes {
       );
     }
 
-    this.internals.setFormValue(this.value.toString());
+    if ((this.value as string[]).length > 0) {
+      this.internals.setFormValue(this.value.toString());
+    } else {
+      this.internals.setFormValue(null);
+    }
 
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
