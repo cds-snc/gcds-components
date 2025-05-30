@@ -1,4 +1,4 @@
-@layer reset, default, disabled, error, focus;
+@layer reset, default, disabled, error, focus, a11y.highcontrast;
 
 @layer reset {
   :host {
@@ -187,6 +187,17 @@
 
     input:focus + gcds-label > label:after {
       background-color: var(--gcds-radio-focus-color);
+    }
+  }
+}
+
+@layer a11y.highcontrast {
+  :host .gcds-radio gcds-label > label::after {
+    @media (prefers-color-scheme: light) {
+      background-color: buttonText;
+    }
+    @media (prefers-color-scheme: dark) {
+      background-color: buttonText;
     }
   }
 }
