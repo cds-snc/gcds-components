@@ -11,8 +11,6 @@ import i18n from './i18n/i18n';
 export class GcdsLabel {
   @Element() el: HTMLElement;
 
-  private focusEl?: HTMLElement;
-
   /**
    * Props
    */
@@ -61,30 +59,14 @@ export class GcdsLabel {
     this.updateLang();
   }
 
-  /**
-   * Click label if host element is clicked
-   */
-  private clickEl() {
-    if (this.focusEl) {
-      this.focusEl.click();
-    }
-  }
-
-  private onClick = (ev: any) => {
-    if (ev.srcElement.tagName == 'GCDS-LABEL') {
-      this.clickEl();
-    }
-  };
-
   render() {
     const { hideLabel, labelFor, label, required, lang } = this;
 
     return (
-      <Host id={`label-for-${labelFor}`} onClick={this.onClick}>
+      <Host id={`label-for-${labelFor}`}>
         <label
           htmlFor={labelFor}
           class={`gcds-label ${hideLabel ? 'label--hidden' : ''}`}
-          ref={focusEl => (this.focusEl = focusEl)}
         >
           <span>{label}</span>
           {required ? (

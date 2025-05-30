@@ -44,11 +44,12 @@ describe('gcds-error-summary', () => {
           required
         ></gcds-file-uploader>
 
-        <gcds-checkbox
-          checkbox-id="form-checkbox"
-          label="I agree to the terms"
+        <gcds-checkboxes
+          legend="Group of checkboxes"
+          name="checkgroup"
+          options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'
           required
-        ></gcds-checkbox>
+        ></gcds-checkboxes>
 
         <gcds-button type="submit">
           Submit

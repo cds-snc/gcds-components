@@ -82,6 +82,27 @@ export const GcdsCheckbox = /*@__PURE__*/ defineContainer<JSX.GcdsCheckbox>('gcd
 ]);
 
 
+export const GcdsCheckboxes = /*@__PURE__*/ defineContainer<JSX.GcdsCheckboxes>('gcds-checkboxes', undefined, [
+  'name',
+  'legend',
+  'options',
+  'required',
+  'disabled',
+  'value',
+  'errorMessage',
+  'hint',
+  'validator',
+  'validateOn',
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+]);
+
+
 export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', undefined, [
   'border',
   'centered',
@@ -140,18 +161,9 @@ export const GcdsErrorSummary = /*@__PURE__*/ defineContainer<JSX.GcdsErrorSumma
 
 
 export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcds-fieldset', undefined, [
-  'fieldsetId',
-  'legend',
-  'required',
-  'errorMessage',
   'hint',
-  'disabled',
-  'validator',
-  'validateOn',
-  'gcdsGroupError',
-  'gcdsGroupErrorClear',
-  'gcdsError',
-  'gcdsValid'
+  'legend',
+  'legendSize'
 ]);
 
 
@@ -355,6 +367,26 @@ export const GcdsRadioGroup = /*@__PURE__*/ defineContainer<JSX.GcdsRadioGroup>(
   'gcdsChange',
   'gcdsFocus',
   'gcdsBlur'
+]);
+
+
+export const GcdsRadios = /*@__PURE__*/ defineContainer<JSX.GcdsRadios>('gcds-radios', undefined, [
+  'options',
+  'name',
+  'legend',
+  'required',
+  'hint',
+  'errorMessage',
+  'disabled',
+  'value',
+  'validator',
+  'validateOn',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsValid',
+  'gcdsError'
 ]);
 
 

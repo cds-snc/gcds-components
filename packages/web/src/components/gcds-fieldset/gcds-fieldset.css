@@ -1,4 +1,4 @@
-@layer reset, default, disabled;
+@layer reset, default, size;
 
 @layer reset {
   :host {
@@ -26,32 +26,51 @@
     color: var(--gcds-fieldset-default-text);
 
     legend {
-      font: var(--gcds-fieldset-font-desktop);
       margin: var(--gcds-fieldset-legend-margin) !important;
-
-      @media only screen and (width < 48em) {
-        font: var(--gcds-fieldset-font-mobile);
-      }
-
-      .legend__required {
-        margin: var(--gcds-fieldset-legend-required-margin) !important;
-        font: var(--gcds-fieldset-legend-required-font-desktop);
-        vertical-align: middle;
-
-        @media only screen and (width < 48em) {
-          font: var(--gcds-fieldset-legend-required-font-mobile);
-        }
-      }
     }
   }
 }
 
-@layer disabled {
-  :host .gcds-fieldset:disabled {
-    color: var(--gcds-fieldset-disabled-text);
+@layer size {
+  .gcds-fieldset legend {
+    &.size-h2 {
+      font: var(--gcds-fieldset-legend-size-h2-desktop);
 
-    gcds-hint {
-      --gcds-hint-text: currentColor;
+      @media only screen and (width < 48em) {
+        font: var(--gcds-fieldset-legend-size-h2-mobile);
+      }
+    }
+
+    &.size-h3 {
+      font: var(--gcds-fieldset-legend-size-h3-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-fieldset-legend-size-h3-mobile);
+      }
+    }
+
+    &.size-h4 {
+      font: var(--gcds-fieldset-legend-size-h4-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-fieldset-legend-size-h4-mobile);
+      }
+    }
+
+    &.size-h5 {
+      font: var(--gcds-fieldset-legend-size-h5-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-fieldset-legend-size-h5-mobile);
+      }
+    }
+
+    &.size-h6 {
+      font: var(--gcds-fieldset-legend-size-h6-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-fieldset-legend-size-h6-mobile);
+      }
     }
   }
 }
