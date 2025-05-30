@@ -508,6 +508,8 @@ export class GcdsCheckboxes {
                 })}
             </fieldset>
           ) : (
+            this.optionsArr &&
+            this.optionsArr.length > 0 &&
             renderCheckbox(
               this.optionsArr[0],
               this,
