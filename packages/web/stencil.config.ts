@@ -85,6 +85,7 @@ export const config: Config = {
       '^.+\\.(ts|tsx|js|jsx|css)$': '@stencil/core/testing/jest-preprocessor',
     },
     setupFiles: ['./src/utils/test/setupMock.js'],
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
   },
   validatePrimaryPackageOutputTarget: true,
   extras: {
