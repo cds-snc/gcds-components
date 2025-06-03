@@ -11,7 +11,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="#">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" part="link" href="#" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" part="link" href="#" tabindex="0" target="_self">
             <slot></slot>
           </a>
         </mock:shadow-root>
@@ -32,7 +32,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="https://google.com" target="_blank">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" tabindex="0">
             <slot></slot>
             <gcds-icon name="external" label="${i18n.en.external}" margin-left="75" />
           </a>
@@ -50,7 +50,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="https://google.com" target="_blank" lang="fr">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
+          <a class="gcds-link link--inherit" href="https://google.com" part="link" target="_blank" rel="noopener noreferrer" tabindex="0">
             <slot></slot>
             <gcds-icon name="external" label="${i18n.fr.external}" margin-left="75" />
           </a>
@@ -68,7 +68,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="https://google.com" download>
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="https://google.com" part="link" download role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" href="https://google.com" part="link" download tabindex="0" target="_self">
             <slot></slot>
             <gcds-icon name="download" label="${i18n.en.download}" margin-left="75" />
           </a>
@@ -86,7 +86,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="https://google.com" download lang="fr">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="https://google.com" part="link" download role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" href="https://google.com" part="link" download tabindex="0" target="_self">
             <slot></slot>
             <gcds-icon name="download" label="${i18n.fr.download}" margin-left="75" />
           </a>
@@ -104,7 +104,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="https://google.com" download="myfile.pdf">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="https://google.com" part="link" download="myfile.pdf" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" href="https://google.com" part="link" download="myfile.pdf" tabindex="0" target="_self">
             <slot></slot>
             <gcds-icon name="download" label="${i18n.en.download}" margin-left="75" />
           </a>
@@ -122,7 +122,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="https://google.com" download="myfile.pdf" lang="fr">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="https://google.com" part="link" download="myfile.pdf" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" href="https://google.com" part="link" download="myfile.pdf" tabindex="0" target="_self">
             <slot></slot>
             <gcds-icon name="download" label="${i18n.fr.download}" margin-left="75" />
           </a>
@@ -140,7 +140,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="tel:1234567890">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="tel:1234567890" part="link" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" href="tel:1234567890" part="link" tabindex="0" target="_self">
             <slot></slot>
             <gcds-icon name="phone" label="${i18n.en.phone}" margin-left="75" />
           </a>
@@ -158,7 +158,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="tel:1234567890" lang="fr">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="tel:1234567890" part="link" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" href="tel:1234567890" part="link" tabindex="0" target="_self">
             <slot></slot>
             <gcds-icon name="phone" label="${i18n.fr.phone}" margin-left="75" />
           </a>
@@ -176,7 +176,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="mailto:test@test.com">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="mailto:test@test.com" part="link" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" href="mailto:test@test.com" part="link" tabindex="0" target="_self">
             <slot></slot>
             <gcds-icon name="email" label="${i18n.en.email}" margin-left="75" />
           </a>
@@ -194,7 +194,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="mailto:test@test.com" lang="fr">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" href="mailto:test@test.com" part="link" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" href="mailto:test@test.com" part="link" tabindex="0" target="_self">
             <slot></slot>
             <gcds-icon name="email" label="${i18n.fr.email}" margin-left="75" />
           </a>
@@ -212,7 +212,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="#" size="small">
         <mock:shadow-root>
-          <a class="gcds-link link--small" part="link" href="#" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--small" part="link" href="#" tabindex="0" target="_self">
             <slot></slot>
           </a>
         </mock:shadow-root>
@@ -229,7 +229,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="#" size="regular">
         <mock:shadow-root>
-          <a class="gcds-link link--regular" part="link" href="#" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--regular" part="link" href="#" tabindex="0" target="_self">
             <slot></slot>
           </a>
         </mock:shadow-root>
@@ -246,7 +246,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="#" size="inherit">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit" part="link" href="#" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit" part="link" href="#" tabindex="0" target="_self">
             <slot></slot>
           </a>
         </mock:shadow-root>
@@ -263,7 +263,7 @@ describe('gcds-link', () => {
     expect(root).toEqualHtml(`
       <gcds-link href="#" variant="light">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit variant-light" part="link" href="#" role="link" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit variant-light" part="link" href="#" tabindex="0" target="_self">
             <slot></slot>
           </a>
         </mock:shadow-root>
