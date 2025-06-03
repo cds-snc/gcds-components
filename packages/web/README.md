@@ -25,13 +25,6 @@ Use the latest version of GC Design System. Pinned versions provide stability an
 Place the following code in the `<head>` element of your site. Replace `<version-number>` with the latest version number to receive corresponding updates.
 
 ```html
-<!-- Icons Font Awesome (to access icons, import Font Awesome) -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  crossorigin="anonymous"
-/>
-
 <!-- GC Design System -->
 <link
   rel="stylesheet"
@@ -40,10 +33,6 @@ Place the following code in the `<head>` element of your site. Replace `<version
 <script
   type="module"
   src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
-></script>
-<script
-  nomodule
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.js"
 ></script>
 ```
 
@@ -62,13 +51,6 @@ The gcds-component library works in multiple frameworks.
 Place the following code in the `<head>` element of your site.
 
 ```html
-<!-- Icons Font Awesome (to access icons, import Font Awesome) -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  crossorigin="anonymous"
-/>
-
 <!-- GC Design System -->
 <link
   rel="stylesheet"
@@ -77,10 +59,6 @@ Place the following code in the `<head>` element of your site.
 <script
   type="module"
   src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
-></script>
-<script
-  nomodule
-  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.js"
 ></script>
 ```
 
@@ -147,13 +125,6 @@ Utilisez la version la plus récente de Système de design GC. Les versions épi
 Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site. Remplacez `<version-number>` par le numéro de version le plus récent pour recevoir les mises à jour correspondantes.
 
 ```html
-<!-- Icons Font Awesome (pour avoir accès aux icônes, installer Font Awesome) -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  crossorigin="anonymous"
-/>
-
 <!-- GC Système de design -->
 <link
   rel="stylesheet"
@@ -162,10 +133,6 @@ Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site. R
 <script
   type="module"
   src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
-></script>
-<script
-  nomodule
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.js"
 ></script>
 ```
 
@@ -184,20 +151,12 @@ La bibliothèque gcds-components fonctionne sous plusieurs cadres d'application.
 Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site.
 
 ```html
-<!-- Icons Font Awesome (pour avoir accès aux icônes, installer Font Awesome) -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  crossorigin="anonymous"
-/>
-
 <!-- GC Système de design -->
 <link
   rel="stylesheet"
   href="/node_modules/gcds-components/dist/gcds/gcds.css"
 />
 <script type="module" src="/components/dist/gcds/gcds.esm.js"></script>
-<script nomodule src="/components/dist/gcds/gcds.js"></script>
 ```
 
 Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components sur votre site.
