@@ -48,7 +48,9 @@
     "@cdssnc/gcds-fonts": "^0.2.2",
     "@cdssnc/gcds-tokens": "^2.11.1",
     "@fortawesome/fontawesome-free": "^6.3.0",
+    "@playwright/test": "^1.52.0",
     "@stencil/angular-output-target": "file:../../utils/angular-output-target",
+    "@stencil/playwright": "^0.2.1",
     "@stencil/postcss": "^2.1.0",
     "@stencil/react-output-target": "^1.0.2",
     "@stencil/sass": "^3.0.0-0",
@@ -81,6 +83,7 @@
     "puppeteer": "^24.9.0",
     "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.43.5",
+    "serve": "^14.2.4",
     "stencil-inline-svg": "^1.1.0",
     "storybook": "^8.0.9",
     "workbox-build": "^7.0.0"
