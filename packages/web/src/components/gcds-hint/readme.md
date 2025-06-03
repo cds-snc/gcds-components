@@ -23,13 +23,11 @@
 
 ### Used by
 
- - [gcds-checkbox](../gcds-checkbox)
  - [gcds-checkboxes](../gcds-checkboxes)
  - [gcds-date-input](../gcds-date-input)
  - [gcds-fieldset](../gcds-fieldset)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
- - [gcds-radio-group](../gcds-radio-group)
  - [gcds-radios](../gcds-radios)
  - [gcds-select](../gcds-select)
  - [gcds-textarea](../gcds-textarea)
@@ -42,13 +40,11 @@
 ```mermaid
 graph TD;
   gcds-hint --> gcds-text
-  gcds-checkbox --> gcds-hint
   gcds-checkboxes --> gcds-hint
   gcds-date-input --> gcds-hint
   gcds-fieldset --> gcds-hint
   gcds-file-uploader --> gcds-hint
   gcds-input --> gcds-hint
-  gcds-radio-group --> gcds-hint
   gcds-radios --> gcds-hint
   gcds-select --> gcds-hint
   gcds-textarea --> gcds-hint

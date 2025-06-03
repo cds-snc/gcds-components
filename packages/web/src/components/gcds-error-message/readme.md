@@ -16,7 +16,6 @@
 
 ### Used by
 
- - [gcds-checkbox](../gcds-checkbox)
  - [gcds-checkboxes](../gcds-checkboxes)
  - [gcds-date-input](../gcds-date-input)
  - [gcds-file-uploader](../gcds-file-uploader)
@@ -35,7 +34,6 @@
 graph TD;
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
-  gcds-checkbox --> gcds-error-message
   gcds-checkboxes --> gcds-error-message
   gcds-date-input --> gcds-error-message
   gcds-file-uploader --> gcds-error-message
