@@ -138,7 +138,7 @@ export class GcdsSearch {
 
     return (
       <Host>
-        <div class="gcds-search">
+        <section class="gcds-search">
           <gcds-sr-only tag="h2">{I18N[lang].search}</gcds-sr-only>
           <form
             action={formAction}
@@ -155,7 +155,7 @@ export class GcdsSearch {
             <input
               type="search"
               id={searchId}
-              list="search-list"
+              {...(suggested ? { list: 'search-list' } : {})}
               size={34}
               maxLength={170}
               onInput={e => this.handleInput(e, this.gcdsInput)}
@@ -187,7 +187,7 @@ export class GcdsSearch {
               ></gcds-icon>
             </gcds-button>
           </form>
-        </div>
+        </section>
       </Host>
     );
   }
