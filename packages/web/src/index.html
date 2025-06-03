@@ -327,44 +327,78 @@
           required
         ></gcds-textarea>
 
-        <gcds-checkbox
-          checkbox-id="form-checkbox"
-          label="Do you like pizza?"
+        <gcds-checkboxes
+          name="singlecheck"
           required
-          hint="This answer is yes."
-        ></gcds-checkbox>
+          options='[{ "label": "Do you like pizza?", "id": "form-checkbox", "value": "yes", "hint": "This answer is yes."}]'
+          class="value-check"
+        ></gcds-checkboxes>
 
-        <gcds-fieldset
-          fieldset-id="fieldset"
-          legend="Radio button group"
-          hint="They are in a fieldset"
+        <gcds-radios
+          name="radio"
+          legend="Radios"
+          hint="Rendered with options attribute"
           required
-        >
-          <gcds-radio-group
-            name="radio"
-            options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
-          >
-          </gcds-radio-group>
-        </gcds-fieldset>
-        <gcds-fieldset
-          fieldset-id="fieldset2"
+          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+        ></gcds-radios>
+
+        <gcds-radios
+          name="radios-object"
+          legend="Radios with JS"
+          hint="Radios options added by JavaScript"
+          required
+        ></gcds-radios>
+
+        <script>
+          // Create radio options array
+          const radioOptions = [
+            { "label": "Radio 1 label", "id": "radio1", "value": "radio1", "hint": "Set with JS"},
+            { "label": "Radio 2 label", "id": "radio2", "value": "radio2", "hint": "Set with JS"}
+          ];
+
+          // Find the gcds-radios element
+          const radios = document.querySelector('gcds-radios[name="radios-object"]');
+
+          // Assign radio options to options property
+          radios.options = radioOptions;
+        </script>
+
+        <gcds-checkboxes
           legend="Checkbox group"
+          name="checkgroup"
           hint="Select all that apply."
           required
-        >
-          <gcds-checkbox
-            checkbox-id="form-checkbox-group1"
-            label="checkbox 1 label"
-            hint="This is a hint."
-            name="checkbox"
-          ></gcds-checkbox>
-          <gcds-checkbox
-            checkbox-id="form-checkbox-group2"
-            label="checkbox 2 label"
-            hint="This is a hint."
-            name="checkbox"
-          ></gcds-checkbox>
-        </gcds-fieldset>
+          options='[{ "label": "Checkbox 1 label", "id": "check1", "value": "check1"}, { "label": "Checkbox 2 label", "id": "check2", "value": "check2"}, { "label": "Checkbox 3 label", "id": "check3", "value": "check3"}]'
+        ></gcds-checkboxes>
+
+        <gcds-checkboxes
+          legend="Checkboxes"
+          name="jsoptions"
+          hint="Set with JS."
+          required
+          id="jscheck"
+        ></gcds-checkboxes>
+
+
+      <script>
+        const checkboxOptions = [
+          {
+            label: 'Checkbox 1 label',
+            id: 'checkbox1',
+            value: 'checkbox2',
+          },
+          {
+            label: 'Checkbox 2 label',
+            id: 'checkbox1',
+            value: 'checkbox2',
+          },
+        ];
+
+
+        let check = document.getElementById('jscheck');
+
+        check.options = checkboxOptions;
+      </script>
 
         <gcds-select
           select-id="form-select"
