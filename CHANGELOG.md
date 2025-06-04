@@ -44,7 +44,7 @@ If you're using `Fieldset` with other form components, you will have to update y
 
 * **Update usage:** Remove it if you’re using it to wrap the previous `Radio Group` and `Checkbox` components. The new `Radios` and `Checkboxes`  components come with a built-in `fieldset` now.
 
-* **Set legend size:** Use the new `legend-size` property to set the legend’s heading level from **H2** to **H6**, adjusting font size for proper hierarchy and accessibility.
+* **Set legend size (required):** Use the new `legend-size` property to set the legend’s heading level from **H2** to **H6**, adjusting font size for proper hierarchy and accessibility.
 
 * **Remove validation:** `Fieldset` no longer handles validation, which was previously only used for radio and checkbox groups. Remove any usage of `validate-on` and `validator` on the component.
 
@@ -1064,7 +1064,7 @@ Si vous utilisez le composant `jeu de champs` avec d’autres composants de form
 
 * **Mettre à jour l’emploi :** Supprimez-le si vous l’utilisez pour envelopper les anciens composants `groupe de boutons radio` et `case à cocher`. Les composants `boutons radio` et `cases à cocher` comportent maintenant un élément `fieldset` intégré.
 
-* **Régler la taille de police de la légende :** Utilisez la nouvelle propriété `legend-size` pour définir le niveau de titre de la légende de **H2** à **H6**, en ajustant la taille de la police pour une hiérarchie et une accessibilité appropriées.
+* **Régler la taille de police de la légende (obligatoire) :** Utilisez la nouvelle propriété `legend-size` pour définir le niveau de titre de la légende de **H2** à **H6**, en ajustant la taille de la police pour une hiérarchie et une accessibilité appropriées.
 
 * **Supprimer la fonction de validation :** Le composant `jeu de champs` ne prend plus en charge la fonction de validation, qui n’était auparavant utilisée que pour les groupes de boutons radio et de cases à cocher. Supprimez tout emploi de `validate-on` et `validator` du composant.
 
@@ -1102,7 +1102,7 @@ Voici un exemple de code pour montrer les changements :
 
 Voici comment modifier l’instance de votre composant `groupe de boutons radio` pour employer le nouveau composant `boutons radio` :
 
-* **Échanger les composants :** Remplacez `gcds-radio-group` par `gcds-radios`. Un élément `fieldset` et une légende y sont maintenant intégrés. Si vous ne l’avez pas encore fait, retirez l’enveloppe `jeu de champ` ou `fieldset`.
+* **Échanger les composants :** Remplacez `gcds-radio-group` par `gcds-radios`. Un élément `fieldset` et une légende y sont maintenant intégrés. Si vous ne l’avez pas encore fait, retirez l’enveloppe `jeu de champs` ou `fieldset`.
 
 * **Utiliser la propriété \<legend\> (obligatoire) :** Définissez l’étiquette de groupe à l’aide de la propriété `legend`; l’étiquette manuelle de groupe n’est plus nécessaire.
 
@@ -1168,7 +1168,7 @@ Voici comment modifier l’instance de votre composant `groupe de boutons radio`
 
 Voici comment modifier l’instance de votre composant case à cocher pour employer le nouveau composant cases à cocher :
 
-* **Échanger les composants :** Remplacez `gcds-checkbox` par `gcds-checkboxes`. Un élément `jeu de champs` y est maintenant intégré pour les situations qui l’exigent, ainsi qu’une propriété `légende`. Si vous ne l’avez pas encore fait, retirez l’enveloppe `jeu de champ` ou `fieldset`.
+* **Échanger les composants :** Remplacez `gcds-checkbox` par `gcds-checkboxes`. Un élément `jeu de champs` y est maintenant intégré pour les situations qui l’exigent, ainsi qu’une propriété `légende`. Si vous ne l’avez pas encore fait, retirez l’enveloppe `jeu de champs` ou `fieldset`.
 
 * **Utiliser la propriété `legend` (obligatoire) :** Définissez l’étiquette du groupe en utilisant `legend`. Vous n’avez plus besoin de propriétés `label` individuelles.
 
