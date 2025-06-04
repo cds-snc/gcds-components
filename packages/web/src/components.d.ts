@@ -5,18 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Validator, ValidatorEntry } from "./validators";
 import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
+import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
-import { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
-import { RadioObject as RadioObject1 } from "./components/gcds-radios/radio";
-export { Validator, ValidatorEntry } from "./validators";
+import { RadioObject } from "./components/gcds-radios/radio";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
+export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
-export { RadioObject } from "./components/gcds-radio-group/gcds-radio-group";
-export { RadioObject as RadioObject1 } from "./components/gcds-radios/radio";
+export { RadioObject } from "./components/gcds-radios/radio";
 export namespace Components {
     interface GcdsAlert {
         /**
@@ -134,58 +132,6 @@ export namespace Components {
           * The img src attribute specifies the path to the image
          */
         "imgSrc": string;
-    }
-    interface GcdsCheckbox {
-        /**
-          * Id attribute for an input element.
-         */
-        "checkboxId": string;
-        /**
-          * Specifies if an input element is checked.
-         */
-        "checked": boolean;
-        /**
-          * Specifies if an input element is disabled or not.
-         */
-        "disabled": boolean;
-        /**
-          * Error message for an invalid input element.
-         */
-        "errorMessage": string;
-        /**
-          * Hint displayed below the label.
-         */
-        "hint": string;
-        /**
-          * Form field label
-         */
-        "label": string;
-        /**
-          * Name attribute for an input element.
-         */
-        "name": string;
-        /**
-          * Specifies if a form field is required or not.
-         */
-        "required": boolean;
-        /**
-          * Call any active validators
-         */
-        "validate": () => Promise<void>;
-        /**
-          * Set event to call validator
-         */
-        "validateOn": 'blur' | 'submit' | 'other';
-        /**
-          * Array of validators
-         */
-        "validator": Array<
-    string | ValidatorEntry | Validator<string>
-  >;
-        /**
-          * Value for an input element.
-         */
-        "value": string;
     }
     interface GcdsCheckboxes {
         /**
@@ -870,16 +816,6 @@ export namespace Components {
          */
         "isFixed"?: boolean;
     }
-    interface GcdsRadioGroup {
-        /**
-          * Name attribute for an input element.
-         */
-        "name": string;
-        /**
-          * Options to render radio buttons
-         */
-        "options": string | Array<RadioObject>;
-    }
     interface GcdsRadios {
         /**
           * Specifies if an input element is disabled or not.
@@ -904,7 +840,7 @@ export namespace Components {
         /**
           * Options to render radio buttons
          */
-        "options": string | Array<RadioObject1>;
+        "options": string | Array<RadioObject>;
         /**
           * Specifies if a form field is required or not.
          */
@@ -1211,10 +1147,6 @@ export interface GcdsCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCardElement;
 }
-export interface GcdsCheckboxCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGcdsCheckboxElement;
-}
 export interface GcdsCheckboxesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCheckboxesElement;
@@ -1250,10 +1182,6 @@ export interface GcdsNavLinkCustomEvent<T> extends CustomEvent<T> {
 export interface GcdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsPaginationElement;
-}
-export interface GcdsRadioGroupCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGcdsRadioGroupElement;
 }
 export interface GcdsRadiosCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1338,28 +1266,6 @@ declare global {
     var HTMLGcdsCardElement: {
         prototype: HTMLGcdsCardElement;
         new (): HTMLGcdsCardElement;
-    };
-    interface HTMLGcdsCheckboxElementEventMap {
-        "gcdsClick": void;
-        "gcdsFocus": void;
-        "gcdsBlur": void;
-        "gcdsChange": any;
-        "gcdsError": object;
-        "gcdsValid": object;
-    }
-    interface HTMLGcdsCheckboxElement extends Components.GcdsCheckbox, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLGcdsCheckboxElementEventMap>(type: K, listener: (this: HTMLGcdsCheckboxElement, ev: GcdsCheckboxCustomEvent<HTMLGcdsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLGcdsCheckboxElementEventMap>(type: K, listener: (this: HTMLGcdsCheckboxElement, ev: GcdsCheckboxCustomEvent<HTMLGcdsCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLGcdsCheckboxElement: {
-        prototype: HTMLGcdsCheckboxElement;
-        new (): HTMLGcdsCheckboxElement;
     };
     interface HTMLGcdsCheckboxesElementEventMap {
         "gcdsClick": void;
@@ -1642,25 +1548,6 @@ declare global {
         prototype: HTMLGcdsPhaseBannerElement;
         new (): HTMLGcdsPhaseBannerElement;
     };
-    interface HTMLGcdsRadioGroupElementEventMap {
-        "gcdsChange": void;
-        "gcdsFocus": void;
-        "gcdsBlur": void;
-    }
-    interface HTMLGcdsRadioGroupElement extends Components.GcdsRadioGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLGcdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLGcdsRadioGroupElement, ev: GcdsRadioGroupCustomEvent<HTMLGcdsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLGcdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLGcdsRadioGroupElement, ev: GcdsRadioGroupCustomEvent<HTMLGcdsRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLGcdsRadioGroupElement: {
-        prototype: HTMLGcdsRadioGroupElement;
-        new (): HTMLGcdsRadioGroupElement;
-    };
     interface HTMLGcdsRadiosElementEventMap {
         "gcdsInput": void;
         "gcdsChange": void;
@@ -1802,7 +1689,6 @@ declare global {
         "gcds-breadcrumbs-item": HTMLGcdsBreadcrumbsItemElement;
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-card": HTMLGcdsCardElement;
-        "gcds-checkbox": HTMLGcdsCheckboxElement;
         "gcds-checkboxes": HTMLGcdsCheckboxesElement;
         "gcds-container": HTMLGcdsContainerElement;
         "gcds-date-input": HTMLGcdsDateInputElement;
@@ -1828,7 +1714,6 @@ declare global {
         "gcds-notice": HTMLGcdsNoticeElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
         "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
-        "gcds-radio-group": HTMLGcdsRadioGroupElement;
         "gcds-radios": HTMLGcdsRadiosElement;
         "gcds-search": HTMLGcdsSearchElement;
         "gcds-select": HTMLGcdsSelectElement;
@@ -1988,78 +1873,6 @@ declare namespace LocalJSX {
           * Emitted when the card has focus.
          */
         "onGcdsFocus"?: (event: GcdsCardCustomEvent<void>) => void;
-    }
-    interface GcdsCheckbox {
-        /**
-          * Id attribute for an input element.
-         */
-        "checkboxId": string;
-        /**
-          * Specifies if an input element is checked.
-         */
-        "checked"?: boolean;
-        /**
-          * Specifies if an input element is disabled or not.
-         */
-        "disabled"?: boolean;
-        /**
-          * Error message for an invalid input element.
-         */
-        "errorMessage"?: string;
-        /**
-          * Hint displayed below the label.
-         */
-        "hint"?: string;
-        /**
-          * Form field label
-         */
-        "label": string;
-        /**
-          * Name attribute for an input element.
-         */
-        "name": string;
-        /**
-          * Emitted when the checkbox loses focus.
-         */
-        "onGcdsBlur"?: (event: GcdsCheckboxCustomEvent<void>) => void;
-        /**
-          * Update value based on user input.
-         */
-        "onGcdsChange"?: (event: GcdsCheckboxCustomEvent<any>) => void;
-        /**
-          * Emitted when the checkbox has been clicked.
-         */
-        "onGcdsClick"?: (event: GcdsCheckboxCustomEvent<void>) => void;
-        /**
-          * Emitted when the input has a validation error.
-         */
-        "onGcdsError"?: (event: GcdsCheckboxCustomEvent<object>) => void;
-        /**
-          * Emitted when the checkbox has focus.
-         */
-        "onGcdsFocus"?: (event: GcdsCheckboxCustomEvent<void>) => void;
-        /**
-          * Emitted when the input has a validation error.
-         */
-        "onGcdsValid"?: (event: GcdsCheckboxCustomEvent<object>) => void;
-        /**
-          * Specifies if a form field is required or not.
-         */
-        "required"?: boolean;
-        /**
-          * Set event to call validator
-         */
-        "validateOn"?: 'blur' | 'submit' | 'other';
-        /**
-          * Array of validators
-         */
-        "validator"?: Array<
-    string | ValidatorEntry | Validator<string>
-  >;
-        /**
-          * Value for an input element.
-         */
-        "value"?: string;
     }
     interface GcdsCheckboxes {
         /**
@@ -2876,28 +2689,6 @@ declare namespace LocalJSX {
          */
         "isFixed"?: boolean;
     }
-    interface GcdsRadioGroup {
-        /**
-          * Name attribute for an input element.
-         */
-        "name": string;
-        /**
-          * Emitted when the radio loses focus.
-         */
-        "onGcdsBlur"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
-        /**
-          * Emitted when the radio button is checked
-         */
-        "onGcdsChange"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
-        /**
-          * Emitted when the radio has focus.
-         */
-        "onGcdsFocus"?: (event: GcdsRadioGroupCustomEvent<void>) => void;
-        /**
-          * Options to render radio buttons
-         */
-        "options": string | Array<RadioObject>;
-    }
     interface GcdsRadios {
         /**
           * Specifies if an input element is disabled or not.
@@ -2946,7 +2737,7 @@ declare namespace LocalJSX {
         /**
           * Options to render radio buttons
          */
-        "options": string | Array<RadioObject1>;
+        "options": string | Array<RadioObject>;
         /**
           * Specifies if a form field is required or not.
          */
@@ -3282,7 +3073,6 @@ declare namespace LocalJSX {
         "gcds-breadcrumbs-item": GcdsBreadcrumbsItem;
         "gcds-button": GcdsButton;
         "gcds-card": GcdsCard;
-        "gcds-checkbox": GcdsCheckbox;
         "gcds-checkboxes": GcdsCheckboxes;
         "gcds-container": GcdsContainer;
         "gcds-date-input": GcdsDateInput;
@@ -3308,7 +3098,6 @@ declare namespace LocalJSX {
         "gcds-notice": GcdsNotice;
         "gcds-pagination": GcdsPagination;
         "gcds-phase-banner": GcdsPhaseBanner;
-        "gcds-radio-group": GcdsRadioGroup;
         "gcds-radios": GcdsRadios;
         "gcds-search": GcdsSearch;
         "gcds-select": GcdsSelect;
@@ -3332,7 +3121,6 @@ declare module "@stencil/core" {
             "gcds-breadcrumbs-item": LocalJSX.GcdsBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsItemElement>;
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             "gcds-card": LocalJSX.GcdsCard & JSXBase.HTMLAttributes<HTMLGcdsCardElement>;
-            "gcds-checkbox": LocalJSX.GcdsCheckbox & JSXBase.HTMLAttributes<HTMLGcdsCheckboxElement>;
             "gcds-checkboxes": LocalJSX.GcdsCheckboxes & JSXBase.HTMLAttributes<HTMLGcdsCheckboxesElement>;
             "gcds-container": LocalJSX.GcdsContainer & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
             "gcds-date-input": LocalJSX.GcdsDateInput & JSXBase.HTMLAttributes<HTMLGcdsDateInputElement>;
@@ -3358,7 +3146,6 @@ declare module "@stencil/core" {
             "gcds-notice": LocalJSX.GcdsNotice & JSXBase.HTMLAttributes<HTMLGcdsNoticeElement>;
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
-            "gcds-radio-group": LocalJSX.GcdsRadioGroup & JSXBase.HTMLAttributes<HTMLGcdsRadioGroupElement>;
             "gcds-radios": LocalJSX.GcdsRadios & JSXBase.HTMLAttributes<HTMLGcdsRadiosElement>;
             "gcds-search": LocalJSX.GcdsSearch & JSXBase.HTMLAttributes<HTMLGcdsSearchElement>;
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;

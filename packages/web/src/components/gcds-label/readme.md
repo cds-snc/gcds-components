@@ -19,11 +19,9 @@
 
 ### Used by
 
- - [gcds-checkbox](../gcds-checkbox)
  - [gcds-checkboxes](../gcds-checkboxes)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
- - [gcds-radio-group](../gcds-radio-group)
  - [gcds-radios](../gcds-radios)
  - [gcds-search](../gcds-search)
  - [gcds-select](../gcds-select)
@@ -32,11 +30,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  gcds-checkbox --> gcds-label
   gcds-checkboxes --> gcds-label
   gcds-file-uploader --> gcds-label
   gcds-input --> gcds-label
-  gcds-radio-group --> gcds-label
   gcds-radios --> gcds-label
   gcds-search --> gcds-label
   gcds-select --> gcds-label
