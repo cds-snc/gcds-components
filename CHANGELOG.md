@@ -96,21 +96,21 @@ Here’s how to change your `Radio Group` component usage to the new `Radios` co
 
 ```html
 <gcds-fieldset fieldset-id="radioFieldset" legend="Radio Options" hint="Choose one option." required="">
-<gcds-radio-group
-  name="radioDefault"
-  options='[{
-     "label": "Label for radio 1",
-     "id": "radio1",
-     "value": "radio1",
-     "hint": "Description or example to make the option clearer."
-   },{
-     "label": "Label for radio 2",
-     "id": "radio2", 
-     "value": "radio2",
-     "hint": "Description or example to make the option clearer."
-   }]'
->
-</gcds-radio-group>
+  <gcds-radio-group
+    name="radioDefault"
+    options='[{
+      "label": "Label for radio 1",
+      "id": "radio1",
+      "value": "radio1",
+      "hint": "Description or example to make the option clearer."
+    },{
+      "label": "Label for radio 2",
+      "id": "radio2", 
+      "value": "radio2",
+      "hint": "Description or example to make the option clearer."
+    }]'
+  >
+  </gcds-radio-group>
 </gcds-fieldset>
 
 ```
@@ -1053,7 +1053,7 @@ Pour y remédier, nous avons modifié le but et le comportement de ces composant
 
 * **Structure plus sémantique** : L’emploi et la signification prévus de chaque composant sont maintenant mieux reflétés dans le code HTML.  
 * **Validation simplifiée** : Il n’est plus nécessaire de gérer manuellement la validation au niveau parent — elle est intégrée dans les composants qui permettent l’utilisation de valideurs.  
-* **Hiérarchie visuelle plus** **claire **: Les titres de section et les étiquettes de groupe portent maintenant les styles appropriés en fonction de leur contexte.  
+* **Hiérarchie visuelle plus claire**: Les titres de section et les étiquettes de groupe portent maintenant les styles appropriés en fonction de leur contexte.  
 * **Moins de travail manuel :** Il n’est pas nécessaire d’envelopper ces composants manuellement dans un `jeu de champs` ni de gérer les légendes en double.
 
 #### Mesures à prendre : Guide par composant
@@ -1116,21 +1116,21 @@ Voici comment modifier l’instance de votre composant `groupe de boutons radio`
 
 ```html
 <gcds-fieldset fieldset-id="radioFieldset" legend="Radio Options" hint="Choose one option." required="">
-<gcds-radio-group
-  name="radioDefault"
-  options='[{
-     "label": "Label for radio 1",
-     "id": "radio1",
-     "value": "radio1",
-     "hint": "Description or example to make the option clearer."
-   },{
-     "label": "Label for radio 2",
-     "id": "radio2", 
-     "value": "radio2",
-     "hint": "Description or example to make the option clearer."
-   }]'
->
-</gcds-radio-group>
+  <gcds-radio-group
+    name="radioDefault"
+    options='[{
+      "label": "Label for radio 1",
+      "id": "radio1",
+      "value": "radio1",
+      "hint": "Description or example to make the option clearer."
+    },{
+      "label": "Label for radio 2",
+      "id": "radio2", 
+      "value": "radio2",
+      "hint": "Description or example to make the option clearer."
+    }]'
+  >
+  </gcds-radio-group>
 </gcds-fieldset>
 ```
 
