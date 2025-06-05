@@ -249,8 +249,8 @@ export function handleValidationResult(
   element:
     | HTMLGcdsInputElement
     | HTMLGcdsDateInputElement
-    | HTMLGcdsFieldsetElement
-    | HTMLGcdsCheckboxElement
+    | HTMLGcdsRadiosElement
+    | HTMLGcdsCheckboxesElement
     | HTMLGcdsFileUploaderElement
     | HTMLGcdsSelectElement
     | HTMLGcdsTextareaElement,

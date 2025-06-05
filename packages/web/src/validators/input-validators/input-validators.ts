@@ -205,26 +205,36 @@ const getDateInputError = (dateValues, format) => {
 
 export const requiredRadio: Validator<string> = {
   validate: (value: string) => {
-    return value != null && value != '';
-  },
-  errorMessage: {
-    en: 'Choose an option to continue.',
-    fr: 'Choisissez une option pour continuer.',
+    return {
+      valid: value != null && value != '',
+      reason: {
+        en: 'Choose an option to continue.',
+        fr: 'Choisissez une option pour continuer.',
+      },
+    };
   },
 };
 
 export const requiredCheckboxGroup: Validator<Array<string>> = {
-  validate: (value: Array<string>) => value.length > 0,
-  errorMessage: {
-    en: 'Choose an option to continue.',
-    fr: 'Choisissez une option pour continuer.',
+  validate: (value: Array<string>) => {
+    return {
+      valid: value.length > 0,
+      reason: {
+        en: 'Choose an option to continue.',
+        fr: 'Choisissez une option pour continuer.',
+      },
+    };
   },
 };
 
 export const requiredCheckboxSingle: Validator<Array<string>> = {
-  validate: (value: Array<string>) => value.length > 0,
-  errorMessage: {
-    en: 'You must check the box to continue.',
-    fr: 'Vous devez cocher la case pour continuer.',
+  validate: (value: Array<string>) => {
+    return {
+      valid: value.length > 0,
+      reason: {
+        en: 'You must check the box to continue.',
+        fr: 'Vous devez cocher la case pour continuer.',
+      },
+    };
   },
 };
