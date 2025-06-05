@@ -1,32 +1,21 @@
 import {
   langProp,
-  validatorProps,
   eventProp,
+  validatorProps,
 } from '../../../utils/storybook/component-properties';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Components/Radios',
 
   parameters: {
     actions: {
       argTypesRegex: '^gcds.*',
-      handles: ['change', 'focus', 'blur'],
+      handles: ['RadioChange', 'focus', 'blur'],
     },
   },
 
   argTypes: {
     // Props
-    checkboxId: {
-      name: 'checkbox-id',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
-      },
-      type: {
-        required: true,
-      },
-    },
     name: {
       control: 'text',
       table: {
@@ -37,12 +26,26 @@ export default {
         required: true,
       },
     },
-    checked: {
-      control: { type: 'select' },
-      options: [false, true],
+    options: {
+      control: 'text',
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
+        type: {
+          summary: `
+        {
+          id: string;
+          label: string;
+          value: string;
+          hint?: string;
+          checked?: boolean;
+          required?: boolean;
+          disabled?: boolean;
+        }
+        string | object[]`,
+        },
+        defaultValue: { summary: '-' },
+      },
+      type: {
+        required: true,
       },
     },
     disabled: {
@@ -68,7 +71,7 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
-    label: {
+    legend: {
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -93,12 +96,12 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
-    ...validatorProps,
     ...langProp,
+    ...validatorProps,
 
     // Events
     gcdsChange: {
-      action: 'change',
+      action: 'RadioChange',
       ...eventProp,
     },
     gcdsFocus: {
@@ -115,158 +118,203 @@ export default {
 const Template = args =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
-<gcds-checkbox
-  checkbox-id="${args.checkboxId}"
-  label="${args.label}"
+<gcds-radios
   name="${args.name}"
+  legend="${args.legend}"
+  options='${args.options}'
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-</gcds-checkbox>
+</gcds-radios>
 
 <!-- React code -->
-<GcdsCheckbox
-  checkboxId="${args.checkboxId}"
-  label="${args.label}"
+<GcdsRadios
   name="${args.name}"
+  legend="${args.legend}"
+  options='${args.options}'
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
-  ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
+  ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-</GcdsCheckbox>
+</GcdsRadios>
 `.replace(/\s\snull\n/g, '');
 
 const TemplatePlayground = args =>
   `
 <!-- Web component code (Angular, Vue) -->
-<gcds-checkbox
-  checkbox-id="${args.checkboxId}"
-  label="${args.label}"
+<gcds-radios
   name="${args.name}"
+  legend="${args.legend}"
+  options='${args.options}'
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
-  ${args.checked ? `checked` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-</gcds-checkbox>
+</gcds-radios>
 `.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
-  checkboxId: 'checkbox-default',
-  label: 'Label',
-  name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  name: 'radioDefault',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  checked: false,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const Hint = Template.bind({});
+Hint.args = {
+  name: 'radio',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1", "hint": "Description or example to make the option clearer."},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2", "hint": "Description or example to make the option clearer."}
+  ]`,
+  hint: 'Hint text',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
   validateOn: 'blur',
   lang: 'en',
 };
 
 export const Required = Template.bind({});
 Required.args = {
-  checkboxId: 'checkbox-required',
-  label: 'Label',
-  name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  name: 'radio',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: true,
   disabled: false,
   value: '',
-  checked: false,
-  validateOn: 'other',
+  validateOn: 'blur',
   lang: 'en',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  checkboxId: 'checkbox-disabled',
-  label: 'Label',
-  name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  name: 'radio',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: true,
   value: '',
-  checked: false,
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const CheckedProp = Template.bind({});
+CheckedProp.args = {
+  name: 'radio',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2", "checked": true}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+};
+
+export const CheckedValue = Template.bind({});
+CheckedValue.args = {
+  name: 'radio',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: 'radio1',
   validateOn: 'blur',
   lang: 'en',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  checkboxId: 'checkbox-error',
-  label: 'Label',
-  name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
-  errorMessage: 'You must check the box to continue.',
+  name: 'radioDefault',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
+  errorMessage: 'Error message',
   required: false,
   disabled: false,
   value: '',
-  checked: false,
   validateOn: 'blur',
-  lang: 'en',
-};
-
-export const Checked = Template.bind({});
-Checked.args = {
-  checkboxId: 'checkbox-checked',
-  label: 'Label',
-  name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
-  errorMessage: '',
-  required: false,
-  disabled: false,
-  value: '',
-  checked: true,
-  validateOn: 'other',
   lang: 'en',
 };
 
 export const Props = Template.bind({});
 Props.args = {
-  checkboxId: 'checkbox-default',
-  label: 'Label',
-  name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  name: 'radio',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  checked: false,
   validateOn: 'blur',
   lang: 'en',
 };
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  checkboxId: 'checkbox-playground',
-  label: 'Label',
-  name: 'checkbox',
-  hint: 'Description or example to make the option clearer.',
+  name: 'radio',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
   errorMessage: '',
   required: false,
   disabled: false,
   value: '',
-  checked: false,
   validateOn: 'blur',
   lang: 'en',
 };

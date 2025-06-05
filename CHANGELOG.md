@@ -2,13 +2,293 @@
 
 # Changelog
 
+## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0) 
+
+Released on: 2025-06-04
+
+
+### :rotating_light: Breaking changes
+
+We’ve made changes to the `Radio Group` and `Checkbox` components to clarify their structure and make them easier to use – especially when it comes to validation and visual hierarchy.
+
+In earlier versions, these components were typically wrapped in a `Fieldset` component, which served two purposes:
+
+* Grouping related form elements  
+* Acting as the label container for radio or checkbox groups
+
+This created a few challenges
+
+* Validation had to be handled on the parent `Fieldset`, which wasn't intuitive  
+* Visual hierarchy became inconsistent—section legends (like for “Personal Info”) and control group labels (like “Yes or No?”) looked the same, even though they serve different purposes
+
+To address this, we’ve changed the purpose and behavior of these components
+
+* **Redefined `Fieldset` Usage:** The `Fieldset` component will now be used exclusively for grouping related form sections, with visual styling that reflects its role as a section or group heading.
+
+* **New `Radios` and `Checkboxes` Components:** These components now include an internal `fieldset` and handle their own labeling and validation, simplifying implementation and improving accessibility.
+
+* **Deprecation of `Radio Group` and `Checkbox`:** The older `Radio Group` and `Checkbox` components will be deprecated immediately. Continued use may lead to inconsistent behavior and accessibility challenges.
+
+**What's Improved?**
+
+* **More semantic structure**: Each component now better reflects its intended use and meaning in HTML.  
+* **Simplified validation**: You no longer need to manually handle validation at the parent level – it’s built into the components where you can use validators.  
+* **Clearer visual hierarchy**: Section headings and group labels are now styled appropriately based on context.  
+* **Less boilerplate**: There’s no need to wrap these components manually in a `Fieldset` or manage duplicate legends.
+
+#### Action Required: Component-by-Component Guide
+
+##### Fieldset
+
+If you're using `Fieldset` with other form components, you will have to update your code with the following:
+
+* **Update usage:** Remove it if you’re using it to wrap the previous `Radio Group` and `Checkbox` components. The new `Radios` and `Checkboxes`  components come with a built-in `fieldset` now.
+
+* **Set legend size (required):** Use the new `legend-size` property to set the legend’s heading level from **H2** to **H6**, adjusting font size for proper hierarchy and accessibility.
+
+* **Remove validation:** `Fieldset` no longer handles validation, which was previously only used for radio and checkbox groups. Remove any usage of `validate-on` and `validator` on the component.
+
+* **Remove deprecated properties:** `fieldset-id`, `required`, `error-message`, and `disabled`. These were previously used only for validation.
+
+Here’s a code example to show the changes:
+
+###### Before:
+
+```html
+<gcds-fieldset
+  fieldset-id="field-required"
+  legend="Legend text"
+  hint="This is hint text."
+  required
+  error-message="This is an error message"
+>
+  // Grouped form components
+</gcds-fieldset>
+```
+
+###### After:
+
+```html
+<gcds-fieldset
+  legend="Legend text"
+  legend-size="h3"
+  hint="This is hint text."
+>
+  // Grouped form components
+</gcds-fieldset>
+```
+
+##### Radio Group to Radios
+
+Here’s how to change your `Radio Group` component usage to the new `Radios` component:
+
+* **Swap the component**: Replace `gcds-radio-group` with `gcds-radios`. It now includes a built-in `fieldset` and legend. If you haven’t done so yet, remove the `Fieldset` or `fieldset` wrapper around it.
+
+* **Use the legend property (required):** Define the group label using `legend`; manual group labeling is no longer needed.
+
+* **Access the selected value:** Use the `value` property to set and get the selected radio button’s value directly.
+
+* **New form properties:** Supports new properties like `required`, `hint`, `error-message`, `disabled`, `validator`, and `validate-on` for validation and user feedback.
+
+* **Remove manual validation wrappers:** Validation is handled internally; no need to wrap with `gcds-fieldset`.
+
+###### Before:
+
+```html
+<gcds-fieldset fieldset-id="radioFieldset" legend="Radio Options" hint="Choose one option." required="">
+  <gcds-radio-group
+    name="radioDefault"
+    options='[{
+      "label": "Label for radio 1",
+      "id": "radio1",
+      "value": "radio1",
+      "hint": "Description or example to make the option clearer."
+    },{
+      "label": "Label for radio 2",
+      "id": "radio2", 
+      "value": "radio2",
+      "hint": "Description or example to make the option clearer."
+    }]'
+  >
+  </gcds-radio-group>
+</gcds-fieldset>
+
+```
+
+###### After:
+
+```html
+<gcds-radios
+  name="radioDefault"
+  legend="Radio Options"
+  hint="Choose one option."
+  options=`[{
+    "id": "radio1",
+    "label": "Label for radio 1",
+    "value": "radio1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "radio2",
+    "label": "Label for radio 2",
+    "value": "radio2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]`
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value=""
+  validator=""
+  validate-on="submit"
+>
+</gcds-radios>
+```
+
+##### Checkbox to Checkboxes
+
+Here’s how to change your Checkbox component usage to the new Checkboxes component:
+
+* **Swap the component:** Replace `gcds-checkbox` with `gcds-checkboxes`. It now includes a built-in `fieldset` in cases where it is appropriate, and `legend`. If you haven’t done so yet, remove the `Fieldset` or `fieldset` wrapper around it.
+
+* **Use the `legend` property:** Define the group label using `legend`. You no longer need individual `label` properties.
+
+* **Configure with `options`.** Use the new `options` property to define each checkbox's `label`, `value`, and `checked` state.
+
+```javascript
+// Options array
+let options = [{
+    "id": "checkId1",
+    "label": "Option One",
+    "value": "value-1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "checkId2",
+    "label": "Option Two",
+    "value": "value-2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]
+```
+
+* **Handle values as an array:** The `value` property now sets and returns an array of all selected checkbox values.
+
+```javascript
+// Set the selected checkbox values
+let selectedCheckboxes = ["option1", "option2"]
+```
+
+* **Remove deprecated properties:** Remove `label`, `checkbox-id`, and `checked`. These are now part of the `options` object.
+
+* **Skip the wrapper.** No need to wrap in `gcds-fieldset` — validation is handled inside the component.
+
+To recap, here’s a full code example of the changes.
+
+###### Before:
+
+```html
+<gcds-fieldset fieldset-id="fieldId" legend="Group Label" hint="Optional hint text.">
+    <gcds-checkbox checkbox-id="checkId1" label="Option One" value="value-1" name="group-name" hint="Description or example to make the option clearer."></gcds-checkbox>
+    <gcds-checkbox checkbox-id="checkId2" label="Option Two" value="value-2" name="group-name" hint="Description or example to make the option clearer."></gcds-checkbox>
+</gcds-fieldset>
+
+```
+
+###### After:
+
+```html
+<gcds-checkboxes
+  name="checkboxOptions"
+  legend="Group Label"
+  hint="Optional hint text."
+  options=`[{
+    "id": "checkId1",
+    "label": "Option One",
+    "value": "value-1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "checkId2",
+    "label": "Option Two",
+    "value": "value-2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]`
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value="['value-1', 'value-1']"
+  validator=""
+  validate-on="submit"
+>
+</gcds-checkboxes>
+```
+
+Or, if you’d like to use your defined variables in a JS framework like React for example:
+
+```javascript
+<GcdsCheckboxes
+  name="checkboxOptions"
+  legend="Group Label"
+  hint="Optional hint text."
+  options={checkboxOptions}
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value={selectedCheckboxes}
+  validator=""
+  validate-on="submit"
+>
+</GcdsCheckboxes>
+```
+
+### :rocket: New Features
+
+* Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
+
+
+### :bug: :wrench: Bug Fixes
+
+* align structural markup for link and search with GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
+* SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
+* update installation instructions to remove outdated file ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
+
+
+### :no_entry: Remove
+
+* **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+
+## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.2...gcds-components-v0.34.3)
+
+Released on: 2025-05-07
+
+### :art: Styles
+
+- fix details list spacing ([#839](https://github.com/cds-snc/gcds-components/issues/839)) ([57e3a71](https://github.com/cds-snc/gcds-components/commit/57e3a71c23d2ea4e99c08b3504b8d575711457f9))
+- fix inconsistent text scaling across desktop + mobile styles for multiple components ([#838](https://github.com/cds-snc/gcds-components/issues/838)) ([d6ff2d0](https://github.com/cds-snc/gcds-components/commit/d6ff2d00fc2194ccf9d63bbd0966ed274d64be90))
+
+## [0.34.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.1...gcds-components-v0.34.2)
+
+Released on: 2025-04-29
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-card:** Ensure shadow dom are structuraly valid according to spec ([#821](https://github.com/cds-snc/gcds-components/issues/821)) ([fe67947](https://github.com/cds-snc/gcds-components/commit/fe6794729de41224945cb7d53fd8785367044214))
+- Prevent click event on disabled button ([#829](https://github.com/cds-snc/gcds-components/issues/829)) ([4c69273](https://github.com/cds-snc/gcds-components/commit/4c692736eff6f5153dad640df9d5ce38008a1134))
+
+### :art: Styles
+
+- Add background colour to checkboxes and radios ([#828](https://github.com/cds-snc/gcds-components/issues/828)) ([91233af](https://github.com/cds-snc/gcds-components/commit/91233afb4e1f2bb32a3f156a8c008ab9d31d9f23))
+- update top-nav design ([#822](https://github.com/cds-snc/gcds-components/issues/822)) ([9d01580](https://github.com/cds-snc/gcds-components/commit/9d01580c4fcf8afe2ee105d1dbc0c874259cb92e))
+
 ## [0.34.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.0...gcds-components-v0.34.1)
 
 Released on: 2025-04-16
 
 ### :bug: :wrench: Bug Fixes
 
-* **hotfix**: Icon font face URL not resolving properly in the global `gcds.css` file ([#813](https://github.com/cds-snc/gcds-components/issues/813)) ([86464ff](https://github.com/cds-snc/gcds-components/commit/86464ffcbc73d5cab491699d6f93f834f2968781))
+- **hotfix**: Icon font face URL not resolving properly in the global `gcds.css` file ([#813](https://github.com/cds-snc/gcds-components/issues/813)) ([86464ff](https://github.com/cds-snc/gcds-components/commit/86464ffcbc73d5cab491699d6f93f834f2968781))
 
 ## [0.34.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.1...gcds-components-v0.34.0)
 
@@ -20,15 +300,15 @@ Released on: 2025-04-14
 
 The GC Design System team has designed and copyrighted a custom-built set of icons for the Government of Canada. The Icon component now uses the custom GCDS Icon font for improved consistency and guidance, replacing the previously used icons from FontAwesome.
 
-* replace Font Awesome with GCDS icons font ([#757](https://github.com/cds-snc/gcds-components/issues/757)) ([b747bfc](https://github.com/cds-snc/gcds-components/commit/b747bfcd7e9ac135ed87486a2b85766d2557b5c3))
-* remove icon props icon-style and fixed-width ([#761](https://github.com/cds-snc/gcds-components/pull/761)) ([2b91787](https://github.com/cds-snc/gcds-components/commit/2b91787b215c38f074a1ae26ebf032805e357fba))
+- replace Font Awesome with GCDS icons font ([#757](https://github.com/cds-snc/gcds-components/issues/757)) ([b747bfc](https://github.com/cds-snc/gcds-components/commit/b747bfcd7e9ac135ed87486a2b85766d2557b5c3))
+- remove icon props icon-style and fixed-width ([#761](https://github.com/cds-snc/gcds-components/pull/761)) ([2b91787](https://github.com/cds-snc/gcds-components/commit/2b91787b215c38f074a1ae26ebf032805e357fba))
 
 #### Benefits
 
 This change brings several important benefits:
 
-* We have removed the dependency on the third-party FontAwesome package. The new icon font will be integrated into the components package, eliminating the need to maintain the FontAwesome CDN link.
-* Increased visual consistency for a more unified appearance across Government of Canada services to foster trust and accessibility.
+- We have removed the dependency on the third-party FontAwesome package. The new icon font will be integrated into the components package, eliminating the need to maintain the FontAwesome CDN link.
+- Increased visual consistency for a more unified appearance across Government of Canada services to foster trust and accessibility.
 
 #### Property changes
 
@@ -36,9 +316,9 @@ The `fixed-width` and `icon-style` properties have been removed. Icons are n
 
 Only update your code if you use these properties, otherwise, the new default values will be applied automatically.
 
-* [gcds-icon](https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-icon)
-  * `fixed-width`
-  * `icon-style`
+- [gcds-icon](https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-icon)
+  - `fixed-width`
+  - `icon-style`
 
 #### Updated Icon `names`
 
@@ -48,20 +328,19 @@ With this update, Icon `names` have been updated to align with the custom GCDS I
 
 You will be able to remove any existing FontAwesome dependencies (such as CDN links, npm packages, etc.) if you choose to exclusively use the GC Design System icon component going forward.
 
-
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-file-uploader:** ability to drag and drop files onto file input ([#801](https://github.com/cds-snc/gcds-components/issues/801)) ([159f347](https://github.com/cds-snc/gcds-components/commit/159f347abec31490c7734043a2c14e845c17096e))
-* improve layout shift for components ([#798](https://github.com/cds-snc/gcds-components/issues/798)) ([00c0bbb](https://github.com/cds-snc/gcds-components/commit/00c0bbbde169986423c154c17f35e595370d1c23))
-* update spacing between links and small typo in footer sub band ([#805](https://github.com/cds-snc/gcds-components/issues/805)) ([a4e1c2a](https://github.com/cds-snc/gcds-components/commit/a4e1c2a3273e9744143590d47ff7ee2b40671a43))
+- **gcds-file-uploader:** ability to drag and drop files onto file input ([#801](https://github.com/cds-snc/gcds-components/issues/801)) ([159f347](https://github.com/cds-snc/gcds-components/commit/159f347abec31490c7734043a2c14e845c17096e))
+- improve layout shift for components ([#798](https://github.com/cds-snc/gcds-components/issues/798)) ([00c0bbb](https://github.com/cds-snc/gcds-components/commit/00c0bbbde169986423c154c17f35e595370d1c23))
+- update spacing between links and small typo in footer sub band ([#805](https://github.com/cds-snc/gcds-components/issues/805)) ([a4e1c2a](https://github.com/cds-snc/gcds-components/commit/a4e1c2a3273e9744143590d47ff7ee2b40671a43))
 
 ## [0.33.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.0...gcds-components-v0.33.1) (2025-04-02)
 
 ### :bug: :wrench: Bug Fixes
 
-* GC signature cut off on mobile devices ([#796](https://github.com/cds-snc/gcds-components/issues/796)) ([1603172](https://github.com/cds-snc/gcds-components/commit/1603172413d6427b7f1a34f96a990461a33c5c7d))
-* mandatory elements issues ([#793](https://github.com/cds-snc/gcds-components/issues/793)) ([3fbd544](https://github.com/cds-snc/gcds-components/commit/3fbd54469d1634890a814a972e255fc4717405cf))
-* Mobile top-nav menu closing in Safari ([#785](https://github.com/cds-snc/gcds-components/issues/785)) ([913eb3c](https://github.com/cds-snc/gcds-components/commit/913eb3c6ed82a5b02161a792470e465f3068bd33))
+- GC signature cut off on mobile devices ([#796](https://github.com/cds-snc/gcds-components/issues/796)) ([1603172](https://github.com/cds-snc/gcds-components/commit/1603172413d6427b7f1a34f96a990461a33c5c7d))
+- mandatory elements issues ([#793](https://github.com/cds-snc/gcds-components/issues/793)) ([3fbd544](https://github.com/cds-snc/gcds-components/commit/3fbd54469d1634890a814a972e255fc4717405cf))
+- Mobile top-nav menu closing in Safari ([#785](https://github.com/cds-snc/gcds-components/issues/785)) ([913eb3c](https://github.com/cds-snc/gcds-components/commit/913eb3c6ed82a5b02161a792470e465f3068bd33))
 
 ## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.32.0...gcds-components-v0.33.0)
 
@@ -69,12 +348,11 @@ Released on 2025-03-18
 
 ### :rocket: New Features
 
-* **gcds-button:** Add start button role ([#775](https://github.com/cds-snc/gcds-components/issues/775)) ([1b519b4](https://github.com/cds-snc/gcds-components/commit/1b519b4d82158476192b7a28ce0a55e2e233dc9f))
-
+- **gcds-button:** Add start button role ([#775](https://github.com/cds-snc/gcds-components/issues/775)) ([1b519b4](https://github.com/cds-snc/gcds-components/commit/1b519b4d82158476192b7a28ce0a55e2e233dc9f))
 
 ### :art: Styles
 
-* update header spacing and border colour + width ([#776](https://github.com/cds-snc/gcds-components/issues/776)) ([bfc184e](https://github.com/cds-snc/gcds-components/commit/bfc184eea624aa39e5966285b433e6399286a030))
+- update header spacing and border colour + width ([#776](https://github.com/cds-snc/gcds-components/issues/776)) ([bfc184e](https://github.com/cds-snc/gcds-components/commit/bfc184eea624aa39e5966285b433e6399286a030))
 
 ## [0.32.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.31.0...gcds-components-v0.32.0)
 
@@ -82,24 +360,23 @@ Released on: 2025-02-19
 
 ### :bug: :wrench: Bug Fixes
 
-* Navigation components (`gcds-top-nav`, `gcds-nav-group`) display and interaction issues ([#748](https://github.com/cds-snc/gcds-components/issues/748)) ([0169b14](https://github.com/cds-snc/gcds-components/commit/0169b14bd17c1e65f1531b7df0df9e062776f30b))
-* Remove gcds-fieldset dependancy from gcds-date-input ([#746](https://github.com/cds-snc/gcds-components/issues/746)) ([3e103ee](https://github.com/cds-snc/gcds-components/commit/3e103eecccf045862865b3b20cc4390a9942bd28))
-
+- Navigation components (`gcds-top-nav`, `gcds-nav-group`) display and interaction issues ([#748](https://github.com/cds-snc/gcds-components/issues/748)) ([0169b14](https://github.com/cds-snc/gcds-components/commit/0169b14bd17c1e65f1531b7df0df9e062776f30b))
+- Remove gcds-fieldset dependancy from gcds-date-input ([#746](https://github.com/cds-snc/gcds-components/issues/746)) ([3e103ee](https://github.com/cds-snc/gcds-components/commit/3e103eecccf045862865b3b20cc4390a9942bd28))
 
 ### :pencil: Documentation
 
-* We've updated the property descriptions of `card-title-tag` for `<gcds-card>` and `notice-title-tag` for `<gcds-notice>` to provide a better and clearer explanation of how it works ([#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
-
+- We've updated the property descriptions of `card-title-tag` for `gcds-card` and `notice-title-tag` for `gcds-notice` to provide a better and clearer explanation of how it works ([#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
 
 ### :art: Styles
+
 We've done some work to align our styles with Canada.ca:
 
-* Updated the paddings for `<gcds-footer>` ([#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
-* Updated `<gcds-footer>` styles ([#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
-* Updated `<gcds-breadcrumb-item>` font size ([#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
-* Updated `<date-modified>` font size ([#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
-* Updated `<gcds-lang-toggle>` font size ([#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
-* Updated `<gcds-search>` styles ([#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
+- Updated the paddings for `gcds-footer` ([#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
+- Updated `gcds-footer` styles ([#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
+- Updated `gcds-breadcrumb-item` font size ([#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
+- Updated `date-modified` font size ([#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
+- Updated `gcds-lang-toggle` font size ([#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
+- Updated `gcds-search` styles ([#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
 
 ## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.30.0...gcds-components-v0.31.0)
 
@@ -107,24 +384,22 @@ Released on: 2025-01-22
 
 ### :rocket: New Features
 
-* add grid gap property for more flexibility ([#732](https://github.com/cds-snc/gcds-components/issues/732)) ([2af7915](https://github.com/cds-snc/gcds-components/commit/2af7915306f0a32f6af32a24336857ce300756d8))
-* update installation instructions to match documentation site ([#718](https://github.com/cds-snc/gcds-components/issues/718)) ([e5c3bee](https://github.com/cds-snc/gcds-components/commit/e5c3bee5c724f85db9afe6970b3acee83e5c3d33))
-
+- add grid gap property for more flexibility ([#732](https://github.com/cds-snc/gcds-components/issues/732)) ([2af7915](https://github.com/cds-snc/gcds-components/commit/2af7915306f0a32f6af32a24336857ce300756d8))
+- update installation instructions to match documentation site ([#718](https://github.com/cds-snc/gcds-components/issues/718)) ([e5c3bee](https://github.com/cds-snc/gcds-components/commit/e5c3bee5c724f85db9afe6970b3acee83e5c3d33))
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-button:** Prevent gcdsClick event if button is disabled ([#724](https://github.com/cds-snc/gcds-components/issues/724)) ([1cd508a](https://github.com/cds-snc/gcds-components/commit/1cd508a87c95b38a1937f421580ab8d846112f9a))
-* **gcds-link:** Display property to allow normal link wrap behaviour ([#731](https://github.com/cds-snc/gcds-components/issues/731)) ([b0f357c](https://github.com/cds-snc/gcds-components/commit/b0f357c61c7a951a92f24b1de1b4c2a61e92fc10))
-* **gcds-notice:** Add accessible labels to identify notice type ([#721](https://github.com/cds-snc/gcds-components/issues/721)) ([450d182](https://github.com/cds-snc/gcds-components/commit/450d18215ee15c33cdcd6991defc764f65e236e7))
-* **gcds-pagination:** Add tabindex="0" to &lt;a&gt; tags to function in webkit browsers ([#723](https://github.com/cds-snc/gcds-components/issues/723)) ([7256590](https://github.com/cds-snc/gcds-components/commit/7256590d0f5517e87fb7e1d10439a7d3b9f7e579))
-* **gcds-textarea:** Properly set value in shadow-root textarea ([#730](https://github.com/cds-snc/gcds-components/issues/730)) ([c3f18e6](https://github.com/cds-snc/gcds-components/commit/c3f18e612e091b7d06c1802d8af99da9efd77460))
-* input size property description ([#728](https://github.com/cds-snc/gcds-components/issues/728)) ([f6fa41b](https://github.com/cds-snc/gcds-components/commit/f6fa41b64653160493cc8857e0fb1933234a5050))
-
+- **gcds-button:** Prevent gcdsClick event if button is disabled ([#724](https://github.com/cds-snc/gcds-components/issues/724)) ([1cd508a](https://github.com/cds-snc/gcds-components/commit/1cd508a87c95b38a1937f421580ab8d846112f9a))
+- **gcds-link:** Display property to allow normal link wrap behaviour ([#731](https://github.com/cds-snc/gcds-components/issues/731)) ([b0f357c](https://github.com/cds-snc/gcds-components/commit/b0f357c61c7a951a92f24b1de1b4c2a61e92fc10))
+- **gcds-notice:** Add accessible labels to identify notice type ([#721](https://github.com/cds-snc/gcds-components/issues/721)) ([450d182](https://github.com/cds-snc/gcds-components/commit/450d18215ee15c33cdcd6991defc764f65e236e7))
+- **gcds-pagination:** Add tabindex="0" to &lt;a&gt; tags to function in webkit browsers ([#723](https://github.com/cds-snc/gcds-components/issues/723)) ([7256590](https://github.com/cds-snc/gcds-components/commit/7256590d0f5517e87fb7e1d10439a7d3b9f7e579))
+- **gcds-textarea:** Properly set value in shadow-root textarea ([#730](https://github.com/cds-snc/gcds-components/issues/730)) ([c3f18e6](https://github.com/cds-snc/gcds-components/commit/c3f18e612e091b7d06c1802d8af99da9efd77460))
+- input size property description ([#728](https://github.com/cds-snc/gcds-components/issues/728)) ([f6fa41b](https://github.com/cds-snc/gcds-components/commit/f6fa41b64653160493cc8857e0fb1933234a5050))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-* remove mobile stacking from breadcrumbs ([#729](https://github.com/cds-snc/gcds-components/issues/729)) ([cf70cf6](https://github.com/cds-snc/gcds-components/commit/cf70cf6afea17bc7a3ba745fe4851b95306e280e))
-* update component spacing + pagination arrows ([#726](https://github.com/cds-snc/gcds-components/issues/726)) ([a00e60d](https://github.com/cds-snc/gcds-components/commit/a00e60dcb389d4577af4c6f5e450718a35574391))
+- remove mobile stacking from breadcrumbs ([#729](https://github.com/cds-snc/gcds-components/issues/729)) ([cf70cf6](https://github.com/cds-snc/gcds-components/commit/cf70cf6afea17bc7a3ba745fe4851b95306e280e))
+- update component spacing + pagination arrows ([#726](https://github.com/cds-snc/gcds-components/issues/726)) ([a00e60d](https://github.com/cds-snc/gcds-components/commit/a00e60dcb389d4577af4c6f5e450718a35574391))
 
 ## [0.30.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.1...gcds-components-v0.30.0)
 
@@ -132,17 +407,15 @@ Released on: 2024-12-17
 
 ### :rocket: New Features
 
-* **angular:** Update angular dependencies to v19 ([#709](https://github.com/cds-snc/gcds-components/issues/709)) ([ab1c12b](https://github.com/cds-snc/gcds-components/commit/ab1c12b822e13040ac8da7e66c5e9ada9aea1180))
-
+- **angular:** Update angular dependencies to v19 ([#709](https://github.com/cds-snc/gcds-components/issues/709)) ([ab1c12b](https://github.com/cds-snc/gcds-components/commit/ab1c12b822e13040ac8da7e66c5e9ada9aea1180))
 
 ### :art: Styles
 
-* improve print design for details component ([#711](https://github.com/cds-snc/gcds-components/issues/711)) ([e68a3bf](https://github.com/cds-snc/gcds-components/commit/e68a3bf78a4a50fe8836cec64ca30557d5298871))
-
+- improve print design for details component ([#711](https://github.com/cds-snc/gcds-components/issues/711)) ([e68a3bf](https://github.com/cds-snc/gcds-components/commit/e68a3bf78a4a50fe8836cec64ca30557d5298871))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-* adjust form element spacing ([#707](https://github.com/cds-snc/gcds-components/issues/707)) ([4393412](https://github.com/cds-snc/gcds-components/commit/43934122d91718cd73881c03a12c4c570dca5862))
+- adjust form element spacing ([#707](https://github.com/cds-snc/gcds-components/issues/707)) ([4393412](https://github.com/cds-snc/gcds-components/commit/43934122d91718cd73881c03a12c4c570dca5862))
 
 ## [0.29.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.0...gcds-components-v0.29.1)
 
@@ -150,7 +423,7 @@ Released on: 2024-12-11
 
 ### :bug: :wrench: Bug Fixes
 
-* breadcrumbs item arrow display ([#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
+- breadcrumbs item arrow display ([#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
 
 ## [0.29.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.28.0...gcds-components-v0.29.0)
 
@@ -158,11 +431,11 @@ Released on: 2024-12-11
 
 ### :rocket: New Features
 
-* New gcds-notice component ([#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
+- New gcds-notice component ([#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-* adjust breadcrumbs margin ([#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
+- adjust breadcrumbs margin ([#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
 
 ## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0)
 
@@ -170,7 +443,7 @@ Released on 2024-12-05
 
 ### :rotating_light: Breaking changes
 
-* update components with new typography + spacing tokens ([#695](https://github.com/cds-snc/gcds-components/issues/695)) ([105cd4b](https://github.com/cds-snc/gcds-components/commit/105cd4b5e755393da053aa210505260f1e8e249d))
+- update components with new typography + spacing tokens ([#695](https://github.com/cds-snc/gcds-components/issues/695)) ([105cd4b](https://github.com/cds-snc/gcds-components/commit/105cd4b5e755393da053aa210505260f1e8e249d))
 
 We've made small adjustments to all typography and spacing sizes across the design system. GC Design System components are now closer in appearance to their counterparts on Canada.ca.
 
@@ -187,25 +460,26 @@ _Example_: If you were previously using `400` for the `margin` property on `gcds
 
 Only update your code _if you use these properties_, otherwise the new default values will be applied automatically.
 
-* [**gcds-container**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-container/readme.md)
+- [**gcds-container**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-container/readme.md)
   - `margin`
   - `padding`
-* [**gcds-heading**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-heading/readme.md)
+- [**gcds-heading**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-heading/readme.md)
   - `margin-top`
   - `margin-bottom`
-* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+- [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
   - `margin-left`
   - `margin-right`
-* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+- [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
   - `margin-top`
   - `margin-bottom`
 
 ### Typography changes
 
 Only update if you use the `caption` value for the `size` property in the following components.
-* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+
+- [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
   - Change `caption` to `text-small`
-* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+- [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
   - Change `caption` to `text-small`
 
 ## [0.27.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.3...gcds-components-v0.27.0)
@@ -214,19 +488,19 @@ Released on 2024-11-21
 
 ### :rocket: New Features
 
-* **gcds-file-uploader:** Add files prop for ease of access to uploaded files ([#676](https://github.com/cds-snc/gcds-components/issues/676)) ([2323e42](https://github.com/cds-snc/gcds-components/commit/2323e42e8d492891d0550f370fbface17c33fe09))
+- **gcds-file-uploader:** Add files prop for ease of access to uploaded files ([#676](https://github.com/cds-snc/gcds-components/issues/676)) ([2323e42](https://github.com/cds-snc/gcds-components/commit/2323e42e8d492891d0550f370fbface17c33fe09))
 
 ### :bug: :wrench: Bug Fixes
 
-* Allow skipping blocking form submission with validate-on attribute ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
-* error-message property blocking form submission. ([#673](https://github.com/cds-snc/gcds-components/issues/673)) ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
-* **gcds-fieldset:** Add CSS to allow form components to maintain responsive layout ([#683](https://github.com/cds-snc/gcds-components/issues/683)) ([6b41ba0](https://github.com/cds-snc/gcds-components/commit/6b41ba0f2e9bf208b1ee090dbb939041914cc9bf))
+- Allow skipping blocking form submission with validate-on attribute ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+- error-message property blocking form submission. ([#673](https://github.com/cds-snc/gcds-components/issues/673)) ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+- **gcds-fieldset:** Add CSS to allow form components to maintain responsive layout ([#683](https://github.com/cds-snc/gcds-components/issues/683)) ([6b41ba0](https://github.com/cds-snc/gcds-components/commit/6b41ba0f2e9bf208b1ee090dbb939041914cc9bf))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-* adjust details font sizes and summary + panel padding ([#674](https://github.com/cds-snc/gcds-components/issues/674)) ([fd5a422](https://github.com/cds-snc/gcds-components/commit/fd5a422d5ab66b37535dbb243fa156df769146ad))
-* improve date-modified validation ([#679](https://github.com/cds-snc/gcds-components/issues/679)) ([481d8a3](https://github.com/cds-snc/gcds-components/commit/481d8a31dabc7f685f1d777ff7b12cb381bfa11d))
-* remove focus colour from label, hint and legend ([#678](https://github.com/cds-snc/gcds-components/issues/678)) ([544f1cb](https://github.com/cds-snc/gcds-components/commit/544f1cb0036d6f4fc4552ae68422e628a0f4dd55))
+- adjust details font sizes and summary + panel padding ([#674](https://github.com/cds-snc/gcds-components/issues/674)) ([fd5a422](https://github.com/cds-snc/gcds-components/commit/fd5a422d5ab66b37535dbb243fa156df769146ad))
+- improve date-modified validation ([#679](https://github.com/cds-snc/gcds-components/issues/679)) ([481d8a3](https://github.com/cds-snc/gcds-components/commit/481d8a31dabc7f685f1d777ff7b12cb381bfa11d))
+- remove focus colour from label, hint and legend ([#678](https://github.com/cds-snc/gcds-components/issues/678)) ([544f1cb](https://github.com/cds-snc/gcds-components/commit/544f1cb0036d6f4fc4552ae68422e628a0f4dd55))
 
 ## [0.26.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.2...gcds-components-v0.26.3)
 
@@ -234,12 +508,12 @@ Released on 2024-10-10
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-error-summary:** focusing gcds element from manual error-links list ([#666](https://github.com/cds-snc/gcds-components/issues/666)) ([290e271](https://github.com/cds-snc/gcds-components/commit/290e2712868a0ab691e4a3be66f5615f6a8e2e7f))
-* **gcds-select:** Update available options in select if changed ([#655](https://github.com/cds-snc/gcds-components/issues/655)) ([e7a16cb](https://github.com/cds-snc/gcds-components/commit/e7a16cb6b6d4b5e54887431b2eb2931bfaf1380a))
+- **gcds-error-summary:** focusing gcds element from manual error-links list ([#666](https://github.com/cds-snc/gcds-components/issues/666)) ([290e271](https://github.com/cds-snc/gcds-components/commit/290e2712868a0ab691e4a3be66f5615f6a8e2e7f))
+- **gcds-select:** Update available options in select if changed ([#655](https://github.com/cds-snc/gcds-components/issues/655)) ([e7a16cb](https://github.com/cds-snc/gcds-components/commit/e7a16cb6b6d4b5e54887431b2eb2931bfaf1380a))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-* **gcds-signature:** Signature alternative text to be bilingual ([#660](https://github.com/cds-snc/gcds-components/issues/660)) ([146e8b2](https://github.com/cds-snc/gcds-components/commit/146e8b29fbd216d655c93266fed0185b540b1712))
+- **gcds-signature:** Signature alternative text to be bilingual ([#660](https://github.com/cds-snc/gcds-components/issues/660)) ([146e8b2](https://github.com/cds-snc/gcds-components/commit/146e8b29fbd216d655c93266fed0185b540b1712))
 
 ## [0.26.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.1...gcds-components-v0.26.2)
 
@@ -247,10 +521,10 @@ Released on 2024-09-25
 
 ### :bug: :wrench: Bug Fixes
 
-* Fix typos in tokens ([#646](https://github.com/cds-snc/gcds-components/issues/646)) ([4c8d850](https://github.com/cds-snc/gcds-components/commit/4c8d850569feafc538aa0e9593ba96cfdf9b97c2))
-* **gcds-sr-only:** Align with WCAG technique C7 ([#642](https://github.com/cds-snc/gcds-components/issues/642)) ([3cbe8bc](https://github.com/cds-snc/gcds-components/commit/3cbe8bc08d021849fa16269800fb08e12d4db037))
-* Update tokens to fix FIP red and date-input legend font weight ([#650](https://github.com/cds-snc/gcds-components/issues/650)) ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
-* Update tokens to inherit fixes for FIP red and legend font weight ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
+- Fix typos in tokens ([#646](https://github.com/cds-snc/gcds-components/issues/646)) ([4c8d850](https://github.com/cds-snc/gcds-components/commit/4c8d850569feafc538aa0e9593ba96cfdf9b97c2))
+- **gcds-sr-only:** Align with WCAG technique C7 ([#642](https://github.com/cds-snc/gcds-components/issues/642)) ([3cbe8bc](https://github.com/cds-snc/gcds-components/commit/3cbe8bc08d021849fa16269800fb08e12d4db037))
+- Update tokens to fix FIP red and date-input legend font weight ([#650](https://github.com/cds-snc/gcds-components/issues/650)) ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
+- Update tokens to inherit fixes for FIP red and legend font weight ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
 
 ## [0.26.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.0...gcds-components-v0.26.1)
 
@@ -258,7 +532,7 @@ Released on: 2024-09-16
 
 ### :bug: :wrench: Bug Fixes
 
-* add mobile font size to search component ([#640](https://github.com/cds-snc/gcds-components/issues/640)) ([2f8efa3](https://github.com/cds-snc/gcds-components/commit/2f8efa337a49411da258e4b2c9dea64a50021cbf))
+- add mobile font size to search component ([#640](https://github.com/cds-snc/gcds-components/issues/640)) ([2f8efa3](https://github.com/cds-snc/gcds-components/commit/2f8efa337a49411da258e4b2c9dea64a50021cbf))
 
 ## [0.26.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.1...gcds-components-v0.26.0)
 
@@ -266,11 +540,11 @@ Released on: 2024-09-12
 
 ### :rocket: New Features
 
-* add value attribute to gcds-button ([#635](https://github.com/cds-snc/gcds-components/issues/635)) ([085d964](https://github.com/cds-snc/gcds-components/commit/085d96416e75e807f51a0d4e18b45e6114ac497a))
+- add value attribute to gcds-button ([#635](https://github.com/cds-snc/gcds-components/issues/635)) ([085d964](https://github.com/cds-snc/gcds-components/commit/085d96416e75e807f51a0d4e18b45e6114ac497a))
 
 ### :bug: :wrench: Bug Fixes
 
-* various small design bug fixes ([#634](https://github.com/cds-snc/gcds-components/issues/634)) ([8eefbe4](https://github.com/cds-snc/gcds-components/commit/8eefbe4def6d385f8130df4ddb4a2065ae4f6c57))
+- various small design bug fixes ([#634](https://github.com/cds-snc/gcds-components/issues/634)) ([8eefbe4](https://github.com/cds-snc/gcds-components/commit/8eefbe4def6d385f8130df4ddb4a2065ae4f6c57))
 
 ## [0.25.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.0...gcds-components-v0.25.1)
 
@@ -314,7 +588,7 @@ We’re dropping support for the `footer` slot (`slot="footer"`). We’re removi
   img-src=""
   img-alt=""
 >
- <slot name=”footer”></slot>
+  <slot name="”footer”"></slot>
 </gcds-card>
 ```
 
@@ -330,7 +604,7 @@ We’re dropping support for the `footer` slot (`slot="footer"`). We’re removi
   img-src=""
   img-alt=""
 >
- <slot></slot>
+  <slot></slot>
 </gcds-card>
 ```
 
@@ -345,20 +619,13 @@ If you experience issues with the change, ‌‌[contact us](https://design-syst
 ##### Old implementation
 
 ```html
-<gcds-stepper
-  current-step=""
-  total-steps=""
-></gcds-stepper>
+<gcds-stepper current-step="" total-steps=""></gcds-stepper>
 ```
 
 ##### New implementation
 
 ```html
-<gcds-stepper
-  current-step=""
-  total-steps=""
-  tag=""
->
+<gcds-stepper current-step="" total-steps="" tag="">
   <slot></slot>
 </gcds-stepper>
 ```
@@ -580,6 +847,7 @@ Released on: 2024-02-22
 ### :rocket: New features
 
 - Grid functionality
+
   - Ability to add individually sized grid columns to grids as well as allowing to set equal height rows.
 
 - https://github.com/cds-snc/gcds-components/pull/358 - [34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0) - Add light variant to link component
@@ -627,7 +895,7 @@ Released on: 2024-02-22
 
 ### :rocket: New features
 
-- https://github.com/cds-snc/gcds-components/pull/311 - [39c2135](https://github.com/cds-snc/gcds-components/commit/39c2135f3f9eb6ef3fcfa834cb0ab8cfdbc1c498) -  New `gcds-text` component to render text content in GCDS style
+- https://github.com/cds-snc/gcds-components/pull/311 - [39c2135](https://github.com/cds-snc/gcds-components/commit/39c2135f3f9eb6ef3fcfa834cb0ab8cfdbc1c498) - New `gcds-text` component to render text content in GCDS style
 - https://github.com/cds-snc/gcds-components/pull/315 - [8117534](https://github.com/cds-snc/gcds-components/commit/8117534ffe52c998be9e09002f1dbbe1ec528f48) - New `gcds-sr-only` component to hide text content only available to assistive technologies
 
 ### :jigsaw: Patch
@@ -684,6 +952,7 @@ Released on: 2024-02-22
 ### :rotating_light: Breaking changes
 
 - Site menu component (`gcds-site-menu`)
+
   - `gcds-site-menu` has been removed from the component library, replaced with `gcds-top-nav`
 
 - https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - `sub-heading` prop has been removed from the `gcds-error-summary` component
@@ -753,18 +1022,272 @@ Released on: 2024-02-22
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
 
+## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0)
+
+Version publiée le : 2025-06-04
+
+
+### Changement non rétrocompatible : jeu de champs, groupe de boutons radio, case à cocher
+
+Nous avons apporté des modifications aux composants `groupe de boutons radio` et `case à cocher` afin de clarifier leur structure et de les rendre plus faciles à utiliser, en particulier en ce qui concerne la validation et la hiérarchie visuelle.
+
+Dans les versions antérieures, ces composants étaient généralement enveloppés d’un composant `jeu de champs` pour deux raisons :
+
+* Regrouper les éléments connexes d’un formulaire  
+* Agir à titre de conteneur d’étiquettes pour les groupes de boutons radio ou de cases à cocher.
+
+Cela posait quelques défis.
+
+* La gestion de la validation devait se faire au moyen d’un composant `jeu de champs` parent, ce qui n’était pas intuitif.  
+* La hiérarchie visuelle est devenue incohérente — les légendes de section (p. ex. « Renseignements personnels ») et les étiquettes de groupes de contrôle (p. ex. « Oui ou Non? ») se ressemblaient, même s’ils servaient différentes fonctions.
+
+Pour y remédier, nous avons modifié le but et le comportement de ces composants.
+
+* **Emploi redéfini du composant `jeu de champs` :** Le composant `jeu de champs` sera désormais utilisé exclusivement pour regrouper les sections de formulaires connexes, avec un style visuel qui reflète son rôle de titre de section ou de groupe.
+
+* **Nouveaux composants `boutons radio` et `cases à cocher` :** Ces composants comprennent désormais un `jeu de champs` interne et leurs propres fonctions d’étiquetage et de validation, ce qui simplifie leur mise en œuvre et améliore leur accessibilité.
+
+* **Mise hors service des composants `groupe de boutons radio` et `case à cocher` :** Les anciens composants `groupe de boutons radio` et `case à cocher` seront immédiatement mis hors service. Des comportements incohérents et des défis en matière d’accessibilité pourraient survenir si vous continuez à les utiliser.
+
+**Quelles sont les améliorations?**
+
+* **Structure plus sémantique** : L’emploi et la signification prévus de chaque composant sont maintenant mieux reflétés dans le code HTML.  
+* **Validation simplifiée** : Il n’est plus nécessaire de gérer manuellement la validation au niveau parent — elle est intégrée dans les composants qui permettent l’utilisation de valideurs.  
+* **Hiérarchie visuelle plus claire**: Les titres de section et les étiquettes de groupe portent maintenant les styles appropriés en fonction de leur contexte.  
+* **Moins de travail manuel :** Il n’est pas nécessaire d’envelopper ces composants manuellement dans un `jeu de champs` ni de gérer les légendes en double.
+
+#### Mesures à prendre : Guide par composant
+
+##### Jeu de champs
+
+Si vous utilisez le composant `jeu de champs` avec d’autres composants de formulaire, vous devrez mettre à jour votre code avec les éléments suivants :
+
+* **Mettre à jour l’emploi :** Supprimez-le si vous l’utilisez pour envelopper les anciens composants `groupe de boutons radio` et `case à cocher`. Les composants `boutons radio` et `cases à cocher` comportent maintenant un élément `fieldset` intégré.
+
+* **Régler la taille de police de la légende (obligatoire) :** Utilisez la nouvelle propriété `legend-size` pour définir le niveau de titre de la légende de **H2** à **H6**, en ajustant la taille de la police pour une hiérarchie et une accessibilité appropriées.
+
+* **Supprimer la fonction de validation :** Le composant `jeu de champs` ne prend plus en charge la fonction de validation, qui n’était auparavant utilisée que pour les groupes de boutons radio et de cases à cocher. Supprimez tout emploi de `validate-on` et `validator` du composant.
+
+* **Supprimer les propriétés obsolètes :** `fieldset-id`, `required`, `error-message` et `disabled`. Ceux-ci étaient auparavant utilisés uniquement pour la validation.
+
+Voici un exemple de code pour montrer les changements :
+
+###### Avant :
+
+```html
+<gcds-fieldset
+  fieldset-id="field-required"
+  legend="Legend text"
+  hint="This is hint text."
+  required
+  error-message="This is an error message"
+>
+  // Grouped form components
+</gcds-fieldset>
+```
+
+###### Après :
+
+```html
+<gcds-fieldset
+  legend="Legend text"
+  legend-size="h3"
+  hint="This is hint text."
+>
+  // Grouped form components
+</gcds-fieldset>
+```
+
+##### Transition du composant groupe de boutons radio au composant boutons radio
+
+Voici comment modifier l’instance de votre composant `groupe de boutons radio` pour employer le nouveau composant `boutons radio` :
+
+* **Échanger les composants :** Remplacez `gcds-radio-group` par `gcds-radios`. Un élément `fieldset` et une légende y sont maintenant intégrés. Si vous ne l’avez pas encore fait, retirez l’enveloppe `jeu de champs` ou `fieldset`.
+
+* **Utiliser la propriété \<legend\> (obligatoire) :** Définissez l’étiquette de groupe à l’aide de la propriété `legend`; l’étiquette manuelle de groupe n’est plus nécessaire.
+
+* **Accéder à la valeur sélectionnée :** Utilisez la propriété `value` pour définir et obtenir directement la valeur du bouton radio sélectionné.
+
+* **Nouvelles propriétés de formulaire :** Prise en charge de nouvelles propriétés comme `required`, `hint`, `error-message`, `disabled`, `validator` et `validate-on` pour la validation et les commentaires des utilisateur·rice·s.
+
+* **Supprimer les enveloppes de validation manuelle :** La validation est gérée en interne; il n’est pas nécessaire d’utiliser une enveloppe `gcds-fieldset`.
+
+###### Avant :
+
+```html
+<gcds-fieldset fieldset-id="radioFieldset" legend="Radio Options" hint="Choose one option." required="">
+  <gcds-radio-group
+    name="radioDefault"
+    options='[{
+      "label": "Label for radio 1",
+      "id": "radio1",
+      "value": "radio1",
+      "hint": "Description or example to make the option clearer."
+    },{
+      "label": "Label for radio 2",
+      "id": "radio2", 
+      "value": "radio2",
+      "hint": "Description or example to make the option clearer."
+    }]'
+  >
+  </gcds-radio-group>
+</gcds-fieldset>
+```
+
+###### Après :
+
+```html
+<gcds-radios
+  name="radioDefault"
+  legend="Radio Options"
+  hint="Choose one option."
+  options=`[{
+    "id": "radio1",
+    "label": "Label for radio 1",
+    "value": "radio1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "radio2",
+    "label": "Label for radio 2",
+    "value": "radio2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]`
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value=""
+  validator=""
+  validate-on="submit"
+>
+</gcds-radios>
+```
+
+##### Transition du composant case à cocher au composant cases à cocher
+
+Voici comment modifier l’instance de votre composant case à cocher pour employer le nouveau composant cases à cocher :
+
+* **Échanger les composants :** Remplacez `gcds-checkbox` par `gcds-checkboxes`. Un élément `jeu de champs` y est maintenant intégré pour les situations qui l’exigent, ainsi qu’une propriété `légende`. Si vous ne l’avez pas encore fait, retirez l’enveloppe `jeu de champs` ou `fieldset`.
+
+* **Utiliser la propriété `legend` (obligatoire) :** Définissez l’étiquette du groupe en utilisant `legend`. Vous n’avez plus besoin de propriétés `label` individuelles.
+
+* **Configurer à l’aide de la propriété `options`.** Utilisez la nouvelle propriété `options` pour définir l’état `label`, `value` et `checked` de chaque case à cocher.
+
+```javascript
+// Options array
+let options = [{
+    "id": "checkId1",
+    "label": "Option One",
+    "value": "value-1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "checkId2",
+    "label": "Option Two",
+    "value": "value-2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]
+```
+
+* **Traiter les valeurs sous forme de tableau :** La propriété `value` définit et retourne maintenant un tableau de toutes les valeurs de cases à cocher sélectionnées.
+
+```javascript
+// Set the selected checkbox values
+let selectedCheckboxes = ["option1", "option2"]
+```
+
+* **Supprimer les propriétés obsolètes :** Supprimez `label`, `checkbox-id` et `checked`. Celles-ci font maintenant partie de l’objet `options`.
+
+* **Sauter l’enveloppe.** Il n’est pas nécessaire d’appliquer une enveloppe `gcds-fieldset` — la validation est gérée à même le composant.
+
+Pour récapituler, voici un exemple des changements en code intégral.
+
+###### Avant :
+
+```html
+<gcds-fieldset fieldset-id="fieldId" legend="Group Label" hint="Optional hint text.">
+    <gcds-checkbox checkbox-id="checkId1" label="Option One" value="value-1" name="group-name" hint="Description or example to make the option clearer."></gcds-checkbox>
+    <gcds-checkbox checkbox-id="checkId2" label="Option Two" value="value-2" name="group-name" hint="Description or example to make the option clearer."></gcds-checkbox>
+</gcds-fieldset>
+```
+
+###### Après :
+
+```html
+<gcds-checkboxes
+  name="checkboxOptions"
+  legend="Group Label"
+  hint="Optional hint text."
+  options=`[{
+    "id": "checkId1",
+    "label": "Option One",
+    "value": "value-1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "checkId2",
+    "label": "Option Two",
+    "value": "value-2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]`
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value="['value-1', 'value-1']"
+  validator=""
+  validate-on="submit"
+>
+</gcds-checkboxes>
+```
+
+Ou encore, si vous préférez utiliser vos propres variables définies dans un cadre JS comme React :
+
+```javascript
+<GcdsCheckboxes
+  name="checkboxOptions"
+  legend="Group Label"
+  hint="Optional hint text."
+  options={checkboxOptions}
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value={selectedCheckboxes}
+  validator=""
+  validate-on="submit"
+>
+</GcdsCheckboxes>
+```
+
+### :rocket: Nouvelles fonctionnalités
+
+* Retravailler le fieldset et les nouveaux composants gcds-radios et gcds-checkboxes ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
+
+
+### :bug: :wrench: Corrections de bogues
+
+* aligner le balisage structurel pour les liens et la recherche avec GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
+* Étiquettes d’air SVG ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
+* mettre à jour les instructions d'installation pour supprimer le fichier obsolète ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
+
+
+### :no_entry: Retirer
+
+* **gcds-radio-group + gcds-checkbox:** Supprimer les anciens composants du groupe radio et de la case à cocher ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+
 ## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.32.0...gcds-components-v0.33.0)
 
 Version publiée le : 2025-03-18
 
 ### :rocket: Nouvelles fonctionnalités
 
-* **gcds-button :** Ajout du rôle bouton de démarrage ([\#775](https://github.com/cds-snc/gcds-components/issues/775)) ([1b519b4](https://github.com/cds-snc/gcds-components/commit/1b519b4d82158476192b7a28ce0a55e2e233dc9f))
-
+- **gcds-button :** Ajout du rôle bouton de démarrage ([\#775](https://github.com/cds-snc/gcds-components/issues/775)) ([1b519b4](https://github.com/cds-snc/gcds-components/commit/1b519b4d82158476192b7a28ce0a55e2e233dc9f))
 
 ### :art: Styles
 
-* Mise à jour de l'espacement de l'en-tête et de la couleur + la largeur de la bordure ([\#776](https://github.com/cds-snc/gcds-components/issues/776)) ([bfc184e](https://github.com/cds-snc/gcds-components/commit/bfc184eea624aa39e5966285b433e6399286a030))
+- Mise à jour de l'espacement de l'en-tête et de la couleur + la largeur de la bordure ([\#776](https://github.com/cds-snc/gcds-components/issues/776)) ([bfc184e](https://github.com/cds-snc/gcds-components/commit/bfc184eea624aa39e5966285b433e6399286a030))
 
 ## [0.32.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.31.0...gcds-components-v0.32.0)
 
@@ -772,24 +1295,23 @@ Version publiée le : 2025-02-19
 
 ### :bug: :wrench: Corrections de bogues
 
-* Problèmes d’affichage et d’interaction ([\#748](https://github.com/cds-snc/gcds-components/issues/748)) ([0169b14](https://github.com/cds-snc/gcds-components/commit/0169b14bd17c1e65f1531b7df0df9e062776f30b)) avec les composants de navigation (`gcds-top-nav`, `gcds-nav-group`)
-* Retrait de la dépendance gcds-fieldset du composant gcds-date-input ([\#746](https://github.com/cds-snc/gcds-components/issues/746)) ([3e103ee](https://github.com/cds-snc/gcds-components/commit/3e103eecccf045862865b3b20cc4390a9942bd28))
-
+- Problèmes d’affichage et d’interaction ([\#748](https://github.com/cds-snc/gcds-components/issues/748)) ([0169b14](https://github.com/cds-snc/gcds-components/commit/0169b14bd17c1e65f1531b7df0df9e062776f30b)) avec les composants de navigation (`gcds-top-nav`, `gcds-nav-group`)
+- Retrait de la dépendance gcds-fieldset du composant gcds-date-input ([\#746](https://github.com/cds-snc/gcds-components/issues/746)) ([3e103ee](https://github.com/cds-snc/gcds-components/commit/3e103eecccf045862865b3b20cc4390a9942bd28))
 
 ### :pencil: Documentation
 
-* Nous avons mis à jour les descriptions de propriété de `card-title-tag` pour `<gcds-card>` et `notice-title-tag` pour `<gcds-notice>` afin de décrire plus clairement son fonctionnement ([\#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
-
+- Nous avons mis à jour les descriptions de propriété de `card-title-tag` pour `gcds-card` et `notice-title-tag` pour `gcds-notice` afin de décrire plus clairement son fonctionnement ([\#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
 
 ### :art: Styles
+
 Des travaux ont été fait pour harmoniser nos styles avec ceux de Canada.ca :
 
-* Mise à jour du dégagement intérieur pour `<gcds-footer>` ([\#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
-* Mise à jour des styles pour `<gcds-footer>` ([\#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
-* Mise à jour de la taille de police pour `<gcds-breadcrumb-item>` ([\#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
-* Mise à jour de la taille de police pour `<date-modified>` ([\#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
-* Mise à jour de la taille de police pour `<gcds-lang-toggle>` ([\#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
-* Mise à jour des styles pour `<gcds-search>` ([\#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
+- Mise à jour du dégagement intérieur pour `gcds-footer` ([\#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
+- Mise à jour des styles pour `gcds-footer` ([\#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
+- Mise à jour de la taille de police pour `gcds-breadcrumb-item` ([\#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
+- Mise à jour de la taille de police pour `date-modified` ([\#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
+- Mise à jour de la taille de police pour `gcds-lang-toggle` ([\#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
+- Mise à jour des styles pour `gcds-search` ([\#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
 
 ## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.30.0...gcds-components-v0.31.0)
 
@@ -797,24 +1319,22 @@ Version publiée le : 2025-01-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-* ajout de la propriété d'écart de grille pour plus de flexibilité ([\#732](https://github.com/cds-snc/gcds-components/issues/732)) ([2af7915](https://github.com/cds-snc/gcds-components/commit/2af7915306f0a32f6af32a24336857ce300756d8))
-* mise à jour des instructions d'installation pour correspondre au site de documentation ([\#718](https://github.com/cds-snc/gcds-components/issues/718)) ([e5c3bee](https://github.com/cds-snc/gcds-components/commit/e5c3bee5c724f85db9afe6970b3acee83e5c3d33))
-
+- ajout de la propriété d'écart de grille pour plus de flexibilité ([\#732](https://github.com/cds-snc/gcds-components/issues/732)) ([2af7915](https://github.com/cds-snc/gcds-components/commit/2af7915306f0a32f6af32a24336857ce300756d8))
+- mise à jour des instructions d'installation pour correspondre au site de documentation ([\#718](https://github.com/cds-snc/gcds-components/issues/718)) ([e5c3bee](https://github.com/cds-snc/gcds-components/commit/e5c3bee5c724f85db9afe6970b3acee83e5c3d33))
 
 ### :bug: :wrench: Corrections de bogues
 
-* **gcds-button :** Empêchement de l'événement gcdsClick si le bouton est désactivé ([\#724](https://github.com/cds-snc/gcds-components/issues/724)) ([1cd508a](https://github.com/cds-snc/gcds-components/commit/1cd508a87c95b38a1937f421580ab8d846112f9a))
-* **gcds-link :** Propriété d'affichage pour permettre un comportement normal de retour à la ligne des liens ([\#731](https://github.com/cds-snc/gcds-components/issues/731)) ([b0f357c](https://github.com/cds-snc/gcds-components/commit/b0f357c61c7a951a92f24b1de1b4c2a61e92fc10))
-* **gcds-notice :** Ajout des étiquettes accessibles pour identifier le type d'avis ([\#721](https://github.com/cds-snc/gcds-components/issues/721)) ([450d182](https://github.com/cds-snc/gcds-components/commit/450d18215ee15c33cdcd6991defc764f65e236e7))
-* **gcds-pagination :** Ajout de tabindex="0" aux balises <a> pour le fonctionnement dans les navigateurs webkit ([\#723](https://github.com/cds-snc/gcds-components/issues/723)) ([7256590](https://github.com/cds-snc/gcds-components/commit/7256590d0f5517e87fb7e1d10439a7d3b9f7e579))
-* **gcds-textarea :** Valeur correctement définie dans la zone de texte shadow-root ([\#730](https://github.com/cds-snc/gcds-components/issues/730)) ([c3f18e6](https://github.com/cds-snc/gcds-components/commit/c3f18e612e091b7d06c1802d8af99da9efd77460))
-* Description de la propriété de taille de saisie ([\#728](https://github.com/cds-snc/gcds-components/issues/728)) ([f6fa41b](https://github.com/cds-snc/gcds-components/commit/f6fa41b64653160493cc8857e0fb1933234a5050))
+- **gcds-button :** Empêchement de l'événement gcdsClick si le bouton est désactivé ([\#724](https://github.com/cds-snc/gcds-components/issues/724)) ([1cd508a](https://github.com/cds-snc/gcds-components/commit/1cd508a87c95b38a1937f421580ab8d846112f9a))
+- **gcds-link :** Propriété d'affichage pour permettre un comportement normal de retour à la ligne des liens ([\#731](https://github.com/cds-snc/gcds-components/issues/731)) ([b0f357c](https://github.com/cds-snc/gcds-components/commit/b0f357c61c7a951a92f24b1de1b4c2a61e92fc10))
+- **gcds-notice :** Ajout des étiquettes accessibles pour identifier le type d'avis ([\#721](https://github.com/cds-snc/gcds-components/issues/721)) ([450d182](https://github.com/cds-snc/gcds-components/commit/450d18215ee15c33cdcd6991defc764f65e236e7))
+- **gcds-pagination :** Ajout de tabindex="0" aux balises <a> pour le fonctionnement dans les navigateurs webkit ([\#723](https://github.com/cds-snc/gcds-components/issues/723)) ([7256590](https://github.com/cds-snc/gcds-components/commit/7256590d0f5517e87fb7e1d10439a7d3b9f7e579))
+- **gcds-textarea :** Valeur correctement définie dans la zone de texte shadow-root ([\#730](https://github.com/cds-snc/gcds-components/issues/730)) ([c3f18e6](https://github.com/cds-snc/gcds-components/commit/c3f18e612e091b7d06c1802d8af99da9efd77460))
+- Description de la propriété de taille de saisie ([\#728](https://github.com/cds-snc/gcds-components/issues/728)) ([f6fa41b](https://github.com/cds-snc/gcds-components/commit/f6fa41b64653160493cc8857e0fb1933234a5050))
 
+### :arrows_counterclockwise: Refactorisation du code
 
-### :arrows\_counterclockwise: Refactorisation du code
-
-* Retrait de l'empilement du chemin d’accès sur les appareils mobiles ([\#729](https://github.com/cds-snc/gcds-components/issues/729)) ([cf70cf6](https://github.com/cds-snc/gcds-components/commit/cf70cf6afea17bc7a3ba745fe4851b95306e280e))
-* Mise à jour de l'espacement des composants + flèches de pagination ([\#726](https://github.com/cds-snc/gcds-components/issues/726)) ([a00e60d](https://github.com/cds-snc/gcds-components/commit/a00e60dcb389d4577af4c6f5e450718a35574391))
+- Retrait de l'empilement du chemin d’accès sur les appareils mobiles ([\#729](https://github.com/cds-snc/gcds-components/issues/729)) ([cf70cf6](https://github.com/cds-snc/gcds-components/commit/cf70cf6afea17bc7a3ba745fe4851b95306e280e))
+- Mise à jour de l'espacement des composants + flèches de pagination ([\#726](https://github.com/cds-snc/gcds-components/issues/726)) ([a00e60d](https://github.com/cds-snc/gcds-components/commit/a00e60dcb389d4577af4c6f5e450718a35574391))
 
 ## [0.30.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.1...gcds-components-v0.30.0)
 
@@ -822,17 +1342,15 @@ Version publiée le : 2024-12-17
 
 ### :rocket: Nouvelles fonctionnalités
 
-* **angular :** Mise à jour des dépendances angular vers la v19 ([\#709](https://github.com/cds-snc/gcds-components/issues/709)) ([ab1c12b](https://github.com/cds-snc/gcds-components/commit/ab1c12b822e13040ac8da7e66c5e9ada9aea1180))
-
+- **angular :** Mise à jour des dépendances angular vers la v19 ([\#709](https://github.com/cds-snc/gcds-components/issues/709)) ([ab1c12b](https://github.com/cds-snc/gcds-components/commit/ab1c12b822e13040ac8da7e66c5e9ada9aea1180))
 
 ### :art: Styles
 
-* Amélioration du design d'impression pour le composant détails ([\#711](https://github.com/cds-snc/gcds-components/issues/711)) ([e68a3bf](https://github.com/cds-snc/gcds-components/commit/e68a3bf78a4a50fe8836cec64ca30557d5298871))
+- Amélioration du design d'impression pour le composant détails ([\#711](https://github.com/cds-snc/gcds-components/issues/711)) ([e68a3bf](https://github.com/cds-snc/gcds-components/commit/e68a3bf78a4a50fe8836cec64ca30557d5298871))
 
+### :arrows_counterclockwise: Refactorisation du code
 
-### :arrows\_counterclockwise: Refactorisation du code
-
-* Ajustement de l'espacement des éléments de formulaire ([\#707](https://github.com/cds-snc/gcds-components/issues/707)) ([4393412](https://github.com/cds-snc/gcds-components/commit/43934122d91718cd73881c03a12c4c570dca5862))
+- Ajustement de l'espacement des éléments de formulaire ([\#707](https://github.com/cds-snc/gcds-components/issues/707)) ([4393412](https://github.com/cds-snc/gcds-components/commit/43934122d91718cd73881c03a12c4c570dca5862))
 
 ## [0.29.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.0...gcds-components-v0.29.1)
 
@@ -840,7 +1358,7 @@ Version publiée le : 2024-12-11
 
 ### :bug: :wrench: Corrections de bogues
 
-* affichage de l’élément flèche du chemin d’accès ([\#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
+- affichage de l’élément flèche du chemin d’accès ([\#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
 
 ## [0.29.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.28.0...gcds-components-v0.29.0)
 
@@ -848,11 +1366,11 @@ Version publiée le : 2024-12-11
 
 ### :rocket: Nouvelles fonctionnalités
 
-* Nouveau composant gcds-notice ([\#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
+- Nouveau composant gcds-notice ([\#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
 
-### :arrows\_counterclockwise: Refactorisation du code
+### :arrows_counterclockwise: Refactorisation du code
 
-* Ajustement de la marge des chemins d’accès ([\#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
+- Ajustement de la marge des chemins d’accès ([\#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
 
 ## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0)
 
@@ -860,7 +1378,7 @@ Version publiée le : 2024-12-05
 
 ### :rotating_light: Changements non rétrocompatibles
 
-* mise à jour des composants avec de nouvelles typographies + nouvelles unités de style d'espacement ([#695 en anglais](https://github.com/cds-snc/gcds-components/issues/695)) ([105cd4b](https://github.com/cds-snc/gcds-components/commit/105cd4b5e755393da053aa210505260f1e8e249d))
+- mise à jour des composants avec de nouvelles typographies + nouvelles unités de style d'espacement ([#695 en anglais](https://github.com/cds-snc/gcds-components/issues/695)) ([105cd4b](https://github.com/cds-snc/gcds-components/commit/105cd4b5e755393da053aa210505260f1e8e249d))
 
 Nous avons apporté de petits ajustements à toutes les tailles de typographie et d'espacement dans le système de design. Les composants du système de design GC ressemblent maintenant davantage à leurs homologues sur Canada.ca.
 
@@ -877,26 +1395,27 @@ Exemple: Si vous utilisiez auparavant 400 pour la propriété de marge sur gcds-
 
 Mettez à jour votre code uniquement _si vous utilisez ces propriétés_, sinon les nouvelles valeurs par défaut seront appliquées automatiquement.
 
-* [**gcds-container**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-container/readme.md)
+- [**gcds-container**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-container/readme.md)
   - `margin`
   - `padding`
-* [**gcds-heading**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-heading/readme.md)
+- [**gcds-heading**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-heading/readme.md)
   - `margin-top`
   - `margin-bottom`
-* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+- [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
   - `margin-left`
   - `margin-right`
-* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+- [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
   - `margin-top`
   - `margin-bottom`
 
 ### Changements de typographie
 
 Mettez à jour uniquement si vous utilisez la valeur de légende pour la propriété de taille dans les composants suivants.
-* [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
+
+- [**gcds-icon**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-icon/readme.md)
   - Changer `caption` à `text-small`
-* [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
-  - Changer `caption`  à `text-small`
+- [**gcds-text**](https://github.com/cds-snc/gcds-components/blob/main/packages/web/src/components/gcds-text/readme.md)
+  - Changer `caption` à `text-small`
 
 ## [0.27.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.3...gcds-components-v0.27.0)
 
@@ -904,19 +1423,19 @@ Version publiée le : 2024-11-21
 
 ### :rocket: Nouvelle fonctionnalité
 
-* **gcds-file-uploader:** Ajouter des propriétés d’extension pour les fichiers et faciliter l'accès aux fichiers téléversés ([#676](https://github.com/cds-snc/gcds-components/issues/676)) ([2323e42](https://github.com/cds-snc/gcds-components/commit/2323e42e8d492891d0550f370fbface17c33fe09))
+- **gcds-file-uploader:** Ajouter des propriétés d’extension pour les fichiers et faciliter l'accès aux fichiers téléversés ([#676](https://github.com/cds-snc/gcds-components/issues/676)) ([2323e42](https://github.com/cds-snc/gcds-components/commit/2323e42e8d492891d0550f370fbface17c33fe09))
 
 ### :bug: :wrench: Corrections de bogues
 
-* Autoriser le contournement de la soumission de formulaire bloquant avec l'attribut validate-on ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
-* Propriété du message d'erreur bloquant la soumission du formulaire. ([#673](https://github.com/cds-snc/gcds-components/issues/673)) ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
-* **gcds-fieldset:** Ajoutez du CSS pour permettre aux composants de formulaire de maintenir une mise en page réactive ([#683](https://github.com/cds-snc/gcds-components/issues/683)) ([6b41ba0](https://github.com/cds-snc/gcds-components/commit/6b41ba0f2e9bf208b1ee090dbb939041914cc9bf))
+- Autoriser le contournement de la soumission de formulaire bloquant avec l'attribut validate-on ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+- Propriété du message d'erreur bloquant la soumission du formulaire. ([#673](https://github.com/cds-snc/gcds-components/issues/673)) ([17c50ae](https://github.com/cds-snc/gcds-components/commit/17c50aea1818ba5a20dc3f873639286ff6f8e588))
+- **gcds-fieldset:** Ajoutez du CSS pour permettre aux composants de formulaire de maintenir une mise en page réactive ([#683](https://github.com/cds-snc/gcds-components/issues/683)) ([6b41ba0](https://github.com/cds-snc/gcds-components/commit/6b41ba0f2e9bf208b1ee090dbb939041914cc9bf))
 
 ### :arrows_counterclockwise: Refactorisation de code
 
-* ajuster les tailles de police pour le composant détails et le résumé +  remplissage du panneau ([#674](https://github.com/cds-snc/gcds-components/issues/674)) ([fd5a422](https://github.com/cds-snc/gcds-components/commit/fd5a422d5ab66b37535dbb243fa156df769146ad))
-* améliorer la validation du gcds-date-modified ([#679](https://github.com/cds-snc/gcds-components/issues/679)) ([481d8a3](https://github.com/cds-snc/gcds-components/commit/481d8a31dabc7f685f1d777ff7b12cb381bfa11d))
-* supprimer la couleur de focus pour l'étiquette,  l'indice et la légende ([#678](https://github.com/cds-snc/gcds-components/issues/678)) ([544f1cb](https://github.com/cds-snc/gcds-components/commit/544f1cb0036d6f4fc4552ae68422e628a0f4dd55))
+- ajuster les tailles de police pour le composant détails et le résumé + remplissage du panneau ([#674](https://github.com/cds-snc/gcds-components/issues/674)) ([fd5a422](https://github.com/cds-snc/gcds-components/commit/fd5a422d5ab66b37535dbb243fa156df769146ad))
+- améliorer la validation du gcds-date-modified ([#679](https://github.com/cds-snc/gcds-components/issues/679)) ([481d8a3](https://github.com/cds-snc/gcds-components/commit/481d8a31dabc7f685f1d777ff7b12cb381bfa11d))
+- supprimer la couleur de focus pour l'étiquette, l'indice et la légende ([#678](https://github.com/cds-snc/gcds-components/issues/678)) ([544f1cb](https://github.com/cds-snc/gcds-components/commit/544f1cb0036d6f4fc4552ae68422e628a0f4dd55))
 
 ## [0.26.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.2...gcds-components-v0.26.3)
 
@@ -924,12 +1443,12 @@ Version publiée le : 2024-10-10
 
 ### :bug: :wrench: Corrections de bogues
 
-* **gcds-error-summary:** focaliser l'élément gcds de la liste des liens d'erreur manuels ([#666](https://github.com/cds-snc/gcds-components/issues/666)) ([290e271](https://github.com/cds-snc/gcds-components/commit/290e2712868a0ab691e4a3be66f5615f6a8e2e7f))
-* **gcds-select:** Mise à jour des options disponibles lorsqu'elles sont modifiées pour le composant sélection. ([#655](https://github.com/cds-snc/gcds-components/issues/655)) ([e7a16cb](https://github.com/cds-snc/gcds-components/commit/e7a16cb6b6d4b5e54887431b2eb2931bfaf1380a))
+- **gcds-error-summary:** focaliser l'élément gcds de la liste des liens d'erreur manuels ([#666](https://github.com/cds-snc/gcds-components/issues/666)) ([290e271](https://github.com/cds-snc/gcds-components/commit/290e2712868a0ab691e4a3be66f5615f6a8e2e7f))
+- **gcds-select:** Mise à jour des options disponibles lorsqu'elles sont modifiées pour le composant sélection. ([#655](https://github.com/cds-snc/gcds-components/issues/655)) ([e7a16cb](https://github.com/cds-snc/gcds-components/commit/e7a16cb6b6d4b5e54887431b2eb2931bfaf1380a))
 
 ### :arrows_counterclockwise: Refactorisation de code
 
-* **gcds-signature:** Texte de remplacement de la signature pour permettre le bilinguisme ([#660](https://github.com/cds-snc/gcds-components/issues/660)) ([146e8b2](https://github.com/cds-snc/gcds-components/commit/146e8b29fbd216d655c93266fed0185b540b1712))
+- **gcds-signature:** Texte de remplacement de la signature pour permettre le bilinguisme ([#660](https://github.com/cds-snc/gcds-components/issues/660)) ([146e8b2](https://github.com/cds-snc/gcds-components/commit/146e8b29fbd216d655c93266fed0185b540b1712))
 
 ## [0.26.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.1...gcds-components-v0.26.2)
 
@@ -937,9 +1456,9 @@ Version publiée le : 2024-09-25
 
 ### :bug: :wrench: Corrections de bogues
 
-* Corriger les fautes de frappe dans les unités de style ([#646](https://github.com/cds-snc/gcds-components/issues/646)) ([4c8d850](https://github.com/cds-snc/gcds-components/commit/4c8d850569feafc538aa0e9593ba96cfdf9b97c2))
-* **gcds-sr-only:** Alignement avec la technique WCAG C7 ([#642](https://github.com/cds-snc/gcds-components/issues/642)) ([3cbe8bc](https://github.com/cds-snc/gcds-components/commit/3cbe8bc08d021849fa16269800fb08e12d4db037))
-* Mise à jour des unités de style pour corriger le rouge du PFIM (Programme fédéral de l’image de marque) et corriger la taille de la police pour la légende du gcds-date-input ([#650](https://github.com/cds-snc/gcds-components/issues/650)) ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
+- Corriger les fautes de frappe dans les unités de style ([#646](https://github.com/cds-snc/gcds-components/issues/646)) ([4c8d850](https://github.com/cds-snc/gcds-components/commit/4c8d850569feafc538aa0e9593ba96cfdf9b97c2))
+- **gcds-sr-only:** Alignement avec la technique WCAG C7 ([#642](https://github.com/cds-snc/gcds-components/issues/642)) ([3cbe8bc](https://github.com/cds-snc/gcds-components/commit/3cbe8bc08d021849fa16269800fb08e12d4db037))
+- Mise à jour des unités de style pour corriger le rouge du PFIM (Programme fédéral de l’image de marque) et corriger la taille de la police pour la légende du gcds-date-input ([#650](https://github.com/cds-snc/gcds-components/issues/650)) ([3c602da](https://github.com/cds-snc/gcds-components/commit/3c602dad949fcf16781cdef16be04c6870c94876))
 
 ## [0.26.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.26.0...gcds-components-v0.26.1)
 
@@ -947,7 +1466,7 @@ Version publiée le : 2024-09-16
 
 ### :bug: :wrench: Corrections de bogues
 
-* ajouter la taille de police pour la version mobile du composant recherche ([#640](https://github.com/cds-snc/gcds-components/issues/640)) ([2f8efa3](https://github.com/cds-snc/gcds-components/commit/2f8efa337a49411da258e4b2c9dea64a50021cbf))
+- ajouter la taille de police pour la version mobile du composant recherche ([#640](https://github.com/cds-snc/gcds-components/issues/640)) ([2f8efa3](https://github.com/cds-snc/gcds-components/commit/2f8efa337a49411da258e4b2c9dea64a50021cbf))
 
 ## [0.26.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.1...gcds-components-v0.26.0)
 
@@ -955,12 +1474,11 @@ Version publiée le : 2024-09-12
 
 ### :rocket: Nouvelle fonctionnalité
 
-* Ajouter la valeur de l'attribut pour le bouton gcds-button ([#635](https://github.com/cds-snc/gcds-components/issues/635)) ([085d964](https://github.com/cds-snc/gcds-components/commit/085d96416e75e807f51a0d4e18b45e6114ac497a))
+- Ajouter la valeur de l'attribut pour le bouton gcds-button ([#635](https://github.com/cds-snc/gcds-components/issues/635)) ([085d964](https://github.com/cds-snc/gcds-components/commit/085d96416e75e807f51a0d4e18b45e6114ac497a))
 
 ### :bug: :wrench: Corrections de bogues
 
-* divers petits correctifs de bogues de conception ([#634](https://github.com/cds-snc/gcds-components/issues/634)) ([8eefbe4](https://github.com/cds-snc/gcds-components/commit/8eefbe4def6d385f8130df4ddb4a2065ae4f6c57))
-
+- divers petits correctifs de bogues de conception ([#634](https://github.com/cds-snc/gcds-components/issues/634)) ([8eefbe4](https://github.com/cds-snc/gcds-components/commit/8eefbe4def6d385f8130df4ddb4a2065ae4f6c57))
 
 ## [0.25.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.25.0...gcds-components-v0.25.1)
 
@@ -1004,7 +1522,7 @@ Arrêt du support pour (`slot="footer"`) car nous n'avons pas observé d'utilit�
   img-src=""
   img-alt=""
 >
- <slot name=”footer”></slot>
+  <slot name="”footer”"></slot>
 </gcds-card>
 ```
 
@@ -1020,7 +1538,7 @@ Arrêt du support pour (`slot="footer"`) car nous n'avons pas observé d'utilit�
   img-src=""
   img-alt=""
 >
- <slot></slot>
+  <slot></slot>
 </gcds-card>
 ```
 
@@ -1035,20 +1553,13 @@ Si vous avez des problèmes avec le changement, ‌‌[contactez-nous](https://d
 ##### Vieille implémentation
 
 ```html
-<gcds-stepper
-  current-step=""
-  total-steps=""
-></gcds-stepper>
+<gcds-stepper current-step="" total-steps=""></gcds-stepper>
 ```
 
 ##### Nouvelle implémentation
 
 ```html
-<gcds-stepper
-  current-step=""
-  total-steps=""
-  tag=""
->
+<gcds-stepper current-step="" total-steps="" tag="">
   <slot></slot>
 </gcds-stepper>
 ```
@@ -1270,6 +1781,7 @@ Version publiée le : 2024-02-22
 ### :rocket: Nouvelles fonctionnalités
 
 - Fonctionnalité pour le composant grille
+
   - Possibilité d’ajouter des colonnes de grille dont la taille est individuellement définie et de définir des lignes de hauteur égale.
 
 - https://github.com/cds-snc/gcds-components/pull/358 - [34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0) — Ajout de la variante Light au composant lien
@@ -1374,6 +1886,7 @@ Version publiée le : 2024-02-22
 ### :rotating_light: Changements de ruptures de code
 
 - Composant menu de navigation globale (`gcds-site-menu`)
+
   - Composant `gcds-site-menu` retiré de la bibliothèque de composant et remplacé par `gcds-top-nav`
 
 - https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Propriété `sub-heading` (sous-titre) supprimée du composant `gcds-error-summary`
@@ -1427,7 +1940,7 @@ Version publiée le : 2024-02-22
 
 ### :rocket: Nouvelles fonctionnalités
 
-- https://github.com/cds-snc/gcds-components/pull/144 - [d88d5f2](https://github.com/cds-snc/gcds-components/commit/d88d5f21e82dfb55b14aba6c0a98da03c17833e1) -  Nouveau composant `gcds-error-summary` permettant la validation de formulaires avant la soumission
+- https://github.com/cds-snc/gcds-components/pull/144 - [d88d5f2](https://github.com/cds-snc/gcds-components/commit/d88d5f21e82dfb55b14aba6c0a98da03c17833e1) - Nouveau composant `gcds-error-summary` permettant la validation de formulaires avant la soumission
 - https://github.com/cds-snc/gcds-components/pull/149 - [a531b14](https://github.com/cds-snc/gcds-components/commit/a531b14050a2cce28fa6300a0551e2335962fabc) - Le dépôt `@cdssnc/gcds-components-angular` a été mis à jour vers Angular v15. Le package ne fonctionnera plus avec Angular v14.
 
 ### :jigsaw: Correctif

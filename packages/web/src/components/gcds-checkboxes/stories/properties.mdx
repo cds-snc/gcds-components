@@ -1,15 +1,15 @@
 import { Meta, Canvas, Controls } from '@storybook/blocks';
-import * as Radio from './gcds-radio-group.stories';
+import * as Checkbox from './gcds-checkboxes.stories';
 
-<Meta of={Radio} name="Events & properties" />
+<Meta of={Checkbox} name="Events & properties" />
 
 {!(new URLSearchParams(window.location.search)).get('demo') && <h1>Events & properties</h1>}
 
 <Canvas
-  of={Radio.Props}
+  of={Checkbox.Props}
   story={{ inline: true }}
   sourceState="shown"
   type="dynamic"
 />
 
-<Controls of={Radio.Props} sort="requiredFirst" />
+<Controls of={Checkbox.Props} sort="requiredFirst" />

@@ -77,10 +77,14 @@
 }
 
 @layer disabled {
-  :host .gcds-button[aria-disabled='true'] {
-    cursor: not-allowed;
+  :host([disabled]) {
     pointer-events: none;
-    opacity: var(--gcds-button-shared-disabled-opacity);
+
+    .gcds-button[aria-disabled='true'] {
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: var(--gcds-button-shared-disabled-opacity);
+    }
   }
 }
 
