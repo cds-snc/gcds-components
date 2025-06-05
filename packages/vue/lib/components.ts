@@ -61,14 +61,13 @@ export const GcdsCard = /*@__PURE__*/ defineContainer<JSX.GcdsCard>('gcds-card',
 ]);
 
 
-export const GcdsCheckbox = /*@__PURE__*/ defineContainer<JSX.GcdsCheckbox>('gcds-checkbox', undefined, [
-  'checkboxId',
-  'label',
+export const GcdsCheckboxes = /*@__PURE__*/ defineContainer<JSX.GcdsCheckboxes>('gcds-checkboxes', undefined, [
   'name',
+  'legend',
+  'options',
   'required',
   'disabled',
   'value',
-  'checked',
   'errorMessage',
   'hint',
   'validator',
@@ -76,6 +75,7 @@ export const GcdsCheckbox = /*@__PURE__*/ defineContainer<JSX.GcdsCheckbox>('gcd
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur',
+  'gcdsInput',
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
@@ -140,18 +140,9 @@ export const GcdsErrorSummary = /*@__PURE__*/ defineContainer<JSX.GcdsErrorSumma
 
 
 export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcds-fieldset', undefined, [
-  'fieldsetId',
-  'legend',
-  'required',
-  'errorMessage',
   'hint',
-  'disabled',
-  'validator',
-  'validateOn',
-  'gcdsGroupError',
-  'gcdsGroupErrorClear',
-  'gcdsError',
-  'gcdsValid'
+  'legend',
+  'legendSize'
 ]);
 
 
@@ -349,12 +340,23 @@ export const GcdsPhaseBanner = /*@__PURE__*/ defineContainer<JSX.GcdsPhaseBanner
 ]);
 
 
-export const GcdsRadioGroup = /*@__PURE__*/ defineContainer<JSX.GcdsRadioGroup>('gcds-radio-group', undefined, [
+export const GcdsRadios = /*@__PURE__*/ defineContainer<JSX.GcdsRadios>('gcds-radios', undefined, [
   'options',
   'name',
+  'legend',
+  'required',
+  'hint',
+  'errorMessage',
+  'disabled',
+  'value',
+  'validator',
+  'validateOn',
+  'gcdsInput',
   'gcdsChange',
   'gcdsFocus',
-  'gcdsBlur'
+  'gcdsBlur',
+  'gcdsValid',
+  'gcdsError'
 ]);
 
 

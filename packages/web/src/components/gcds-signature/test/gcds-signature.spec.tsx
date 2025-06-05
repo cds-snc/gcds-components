@@ -26,12 +26,6 @@ describe('gcds-signature', () => {
             <div>
               Government of Canada
             </div>
-            <gcds-sr-only id="signature-title" tag="span">
-              Government of Canada /
-              <span lang="fr">
-                Gouvernement du Canada
-              </span>
-            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-signature>
@@ -50,12 +44,6 @@ describe('gcds-signature', () => {
             <div>
               Government of Canada
             </div>
-            <gcds-sr-only id="signature-title" tag="span">
-              Government of Canada /
-              <span lang="fr">
-                Gouvernement du Canada
-              </span>
-            </gcds-sr-only>
           </a>
         </mock:shadow-root>
       </gcds-signature>
@@ -74,12 +62,6 @@ describe('gcds-signature', () => {
             <div>
               Gouvernement du Canada
             </div>
-            <gcds-sr-only id="signature-title" tag="span">
-              Gouvernement du Canada /
-              <span lang="en">
-                Government of Canada
-              </span>
-            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-signature>
@@ -98,12 +80,6 @@ describe('gcds-signature', () => {
             <div>
               Gouvernement du Canada
             </div>
-            <gcds-sr-only id="signature-title" tag="span">
-              Gouvernement du Canada /
-              <span lang="en">
-                Government of Canada
-              </span>
-            </gcds-sr-only>
           </a>
         </mock:shadow-root>
       </gcds-signature>

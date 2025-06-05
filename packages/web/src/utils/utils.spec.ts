@@ -1,6 +1,13 @@
 import { EventEmitter } from '@stencil/core';
 import { ValidatorReturn } from '../validators';
-import { format, logError, isValidDate, handleValidationResult } from './utils';
+import {
+  format,
+  logError,
+  isValid,
+  isValidDate,
+  handleValidationResult,
+  handleErrors,
+} from './utils';
 
 describe('format', () => {
   it('returns Fallback Button Label', () => {
@@ -263,5 +270,41 @@ describe('handleValidationResult', () => {
     expect(errorSpy).toHaveBeenCalledTimes(0);
     expect(validSpy).toHaveBeenCalled();
     expect(input.errorMessage).toEqual('');
+  });
+});
+describe('hasErrors', () => {
+  it('returns false', () => {
+    expect(
+      isValid(['property1', 'property2'], ['property1', 'property2']),
+    ).toEqual(false);
+  });
+  it('returns true', () => {
+    expect(isValid([], ['property1', 'property1'])).toEqual(true);
+  });
+});
+
+describe('handleErrors', () => {
+  it('valid string property', () => {
+    expect(handleErrors([], 'property', 'value')).toEqual([]);
+  });
+  it('valid boolean property', () => {
+    expect(handleErrors([], 'property', true)).toEqual([]);
+  });
+  it('valid object property', () => {
+    expect(handleErrors([], 'property', { key: 'value' })).toEqual([]);
+  });
+  it('invalid property - empty', () => {
+    expect(handleErrors([], 'property', '')).toEqual(['property']);
+  });
+  it('invalid property - null value', () => {
+    expect(handleErrors([], 'property', null)).toEqual(['property']);
+  });
+  it('invalid property - just whitespace', () => {
+    expect(handleErrors([], 'property', ' ')).toEqual(['property']);
+  });
+  it('valid string property - remove from errors', () => {
+    expect(
+      handleErrors(['property1', 'property2'], 'property1', 'value'),
+    ).toEqual(['property2']);
   });
 });
