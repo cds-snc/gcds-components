@@ -6,6 +6,7 @@ import {
   requiredDateInput,
   requiredCheckboxGroup,
   requiredCheckboxSingle,
+  requiredRadio,
 } from '../input-validators';
 import { Blob } from 'buffer';
 import { dateInputErrorMessage } from '../input-validators';
@@ -117,26 +118,50 @@ describe('Required file input validator', () => {
   );
 });
 
-describe('Required checkbox group validator', () => {
-  const results: Array<{ value: string[]; res: boolean }> = [
-    { value: ['value1', 'value2'], res: true },
-    { value: ['value1'], res: true },
-    { value: [], res: false },
+describe('Required radios validator', () => {
+  const reason = {
+    en: 'Choose an option to continue.',
+    fr: 'Choisissez une option pour continuer.',
+  };
+  const results: Array<{ value: string; res: ValidatorReturn }> = [
+    { value: 'value1', res: { valid: true, reason } },
+    { value: '', res: { valid: false, reason } },
   ];
   results.forEach(i =>
-    it(`Should return ${i.res} for ${i.value}`, () => {
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
+      expect(requiredRadio.validate(i.value)).toEqual(i.res);
+    }),
+  );
+});
+
+describe('Required checkbox group validator', () => {
+  const reason = {
+    en: 'Choose an option to continue.',
+    fr: 'Choisissez une option pour continuer.',
+  };
+  const results: Array<{ value: string[]; res: ValidatorReturn }> = [
+    { value: ['value1', 'value2'], res: { valid: true, reason } },
+    { value: ['value1'], res: { valid: true, reason } },
+    { value: [], res: { valid: false, reason } },
+  ];
+  results.forEach(i =>
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
       expect(requiredCheckboxGroup.validate(i.value)).toEqual(i.res);
     }),
   );
 });
 
 describe('Required checkbox single validator', () => {
-  const results: Array<{ value: string[]; res: boolean }> = [
-    { value: ['value1'], res: true },
-    { value: [], res: false },
+  const reason = {
+    en: 'You must check the box to continue.',
+    fr: 'Vous devez cocher la case pour continuer.',
+  };
+  const results: Array<{ value: string[]; res: ValidatorReturn }> = [
+    { value: ['value1'], res: { valid: true, reason } },
+    { value: [], res: { valid: false, reason } },
   ];
   results.forEach(i =>
-    it(`Should return ${i.res} for ${i.value}`, () => {
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
       expect(requiredCheckboxSingle.validate(i.value)).toEqual(i.res);
     }),
   );
