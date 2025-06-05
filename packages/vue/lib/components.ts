@@ -10,7 +10,7 @@ import { defineCustomElement as defineGcdsBreadcrumbs } from '@cdssnc/gcds-compo
 import { defineCustomElement as defineGcdsBreadcrumbsItem } from '@cdssnc/gcds-components/dist/components/gcds-breadcrumbs-item.js';
 import { defineCustomElement as defineGcdsButton } from '@cdssnc/gcds-components/dist/components/gcds-button.js';
 import { defineCustomElement as defineGcdsCard } from '@cdssnc/gcds-components/dist/components/gcds-card.js';
-import { defineCustomElement as defineGcdsCheckbox } from '@cdssnc/gcds-components/dist/components/gcds-checkbox.js';
+import { defineCustomElement as defineGcdsCheckboxes } from '@cdssnc/gcds-components/dist/components/gcds-checkboxes.js';
 import { defineCustomElement as defineGcdsContainer } from '@cdssnc/gcds-components/dist/components/gcds-container.js';
 import { defineCustomElement as defineGcdsDateInput } from '@cdssnc/gcds-components/dist/components/gcds-date-input.js';
 import { defineCustomElement as defineGcdsDateModified } from '@cdssnc/gcds-components/dist/components/gcds-date-modified.js';
@@ -35,7 +35,7 @@ import { defineCustomElement as defineGcdsNavLink } from '@cdssnc/gcds-component
 import { defineCustomElement as defineGcdsNotice } from '@cdssnc/gcds-components/dist/components/gcds-notice.js';
 import { defineCustomElement as defineGcdsPagination } from '@cdssnc/gcds-components/dist/components/gcds-pagination.js';
 import { defineCustomElement as defineGcdsPhaseBanner } from '@cdssnc/gcds-components/dist/components/gcds-phase-banner.js';
-import { defineCustomElement as defineGcdsRadioGroup } from '@cdssnc/gcds-components/dist/components/gcds-radio-group.js';
+import { defineCustomElement as defineGcdsRadios } from '@cdssnc/gcds-components/dist/components/gcds-radios.js';
 import { defineCustomElement as defineGcdsSearch } from '@cdssnc/gcds-components/dist/components/gcds-search.js';
 import { defineCustomElement as defineGcdsSelect } from '@cdssnc/gcds-components/dist/components/gcds-select.js';
 import { defineCustomElement as defineGcdsSideNav } from '@cdssnc/gcds-components/dist/components/gcds-side-nav.js';
@@ -170,14 +170,13 @@ export const GcdsCard: StencilVueComponent<JSX.GcdsCard> = /*@__PURE__*/ globalT
 });
 
 
-export const GcdsCheckbox: StencilVueComponent<JSX.GcdsCheckbox> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsCheckbox>('gcds-checkbox', defineGcdsCheckbox, [
-  'checkboxId',
-  'label',
+export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsCheckboxes>('gcds-checkboxes', defineGcdsCheckboxes, [
   'name',
+  'legend',
+  'options',
   'required',
   'disabled',
   'value',
-  'checked',
   'errorMessage',
   'hint',
   'validator',
@@ -185,6 +184,7 @@ export const GcdsCheckbox: StencilVueComponent<JSX.GcdsCheckbox> = /*@__PURE__*/
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur',
+  'gcdsInput',
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
@@ -192,26 +192,27 @@ export const GcdsCheckbox: StencilVueComponent<JSX.GcdsCheckbox> = /*@__PURE__*/
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur',
+  'gcdsInput',
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
-]) : defineStencilSSRComponent<JSX.GcdsCheckbox>({
-  tagName: 'gcds-checkbox',
+]) : defineStencilSSRComponent<JSX.GcdsCheckboxes>({
+  tagName: 'gcds-checkboxes',
   hydrateModule: import('@cdssnc/gcds-components/hydrate'),
   props: {
-    'checkboxId': [String, "checkbox-id"],
-    'label': [String, "label"],
     'name': [String, "name"],
+    'legend': [String, "legend"],
+    'options': [String, "options"],
     'required': [Boolean, "required"],
     'disabled': [Boolean, "disabled"],
     'value': [String, "value"],
-    'checked': [Boolean, "checked"],
     'errorMessage': [String, "error-message"],
     'hint': [String, "hint"],
     'validateOn': [String, "validate-on"],
     'onGcdsClick': [Function],
     'onGcdsFocus': [Function],
     'onGcdsBlur': [Function],
+    'onGcdsInput': [Function],
     'onGcdsChange': [Function],
     'onGcdsError': [Function],
     'onGcdsValid': [Function]
@@ -351,38 +352,16 @@ export const GcdsErrorSummary: StencilVueComponent<JSX.GcdsErrorSummary> = /*@__
 
 
 export const GcdsFieldset: StencilVueComponent<JSX.GcdsFieldset> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsFieldset>('gcds-fieldset', defineGcdsFieldset, [
-  'fieldsetId',
-  'legend',
-  'required',
-  'errorMessage',
   'hint',
-  'disabled',
-  'validator',
-  'validateOn',
-  'gcdsGroupError',
-  'gcdsGroupErrorClear',
-  'gcdsError',
-  'gcdsValid'
-], [
-  'gcdsGroupError',
-  'gcdsGroupErrorClear',
-  'gcdsError',
-  'gcdsValid'
+  'legend',
+  'legendSize'
 ]) : defineStencilSSRComponent<JSX.GcdsFieldset>({
   tagName: 'gcds-fieldset',
   hydrateModule: import('@cdssnc/gcds-components/hydrate'),
   props: {
-    'fieldsetId': [String, "fieldset-id"],
-    'legend': [String, "legend"],
-    'required': [Boolean, "required"],
-    'errorMessage': [String, "error-message"],
     'hint': [String, "hint"],
-    'disabled': [Boolean, "disabled"],
-    'validateOn': [String, "validate-on"],
-    'onGcdsGroupError': [Function],
-    'onGcdsGroupErrorClear': [Function],
-    'onGcdsError': [Function],
-    'onGcdsValid': [Function]
+    'legend': [String, "legend"],
+    'legendSize': [String, "legend-size"]
   }
 });
 
@@ -821,25 +800,49 @@ export const GcdsPhaseBanner: StencilVueComponent<JSX.GcdsPhaseBanner> = /*@__PU
 });
 
 
-export const GcdsRadioGroup: StencilVueComponent<JSX.GcdsRadioGroup> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsRadioGroup>('gcds-radio-group', defineGcdsRadioGroup, [
+export const GcdsRadios: StencilVueComponent<JSX.GcdsRadios> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsRadios>('gcds-radios', defineGcdsRadios, [
   'options',
   'name',
+  'legend',
+  'required',
+  'hint',
+  'errorMessage',
+  'disabled',
+  'value',
+  'validator',
+  'validateOn',
+  'gcdsInput',
   'gcdsChange',
   'gcdsFocus',
-  'gcdsBlur'
+  'gcdsBlur',
+  'gcdsValid',
+  'gcdsError'
 ], [
+  'gcdsInput',
   'gcdsChange',
   'gcdsFocus',
-  'gcdsBlur'
-]) : defineStencilSSRComponent<JSX.GcdsRadioGroup>({
-  tagName: 'gcds-radio-group',
+  'gcdsBlur',
+  'gcdsValid',
+  'gcdsError'
+]) : defineStencilSSRComponent<JSX.GcdsRadios>({
+  tagName: 'gcds-radios',
   hydrateModule: import('@cdssnc/gcds-components/hydrate'),
   props: {
     'options': [String, "options"],
     'name': [String, "name"],
+    'legend': [String, "legend"],
+    'required': [Boolean, "required"],
+    'hint': [String, "hint"],
+    'errorMessage': [String, "error-message"],
+    'disabled': [Boolean, "disabled"],
+    'value': [String, "value"],
+    'validateOn': [String, "validate-on"],
+    'onGcdsInput': [Function],
     'onGcdsChange': [Function],
     'onGcdsFocus': [Function],
-    'onGcdsBlur': [Function]
+    'onGcdsBlur': [Function],
+    'onGcdsValid': [Function],
+    'onGcdsError': [Function]
   }
 });
 

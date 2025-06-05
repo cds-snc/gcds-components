@@ -37,7 +37,11 @@
     { "type": "perf", "section": ":sparkles: Performance Improvements" },
     { "type": "docs", "section": ":pencil: Documentation" },
     { "type": "style", "section": ":art: Styles" },
-    { "type": "refactor", "section": ":arrows_counterclockwise: Code Refactoring" },
+    {
+      "type": "refactor",
+      "section": ":arrows_counterclockwise: Code Refactoring"
+    },
+    { "type": "remove", "section": ":no_entry: Remove" },
     { "type": "revert", "section": "Reverts", "hidden": true },
     { "type": "chore", "section": "Patch", "hidden": true },
     { "type": "test", "section": "Tests", "hidden": true },
@@ -69,7 +73,6 @@
         "gcds-components-react",
         "gcds-components-react-ssr",
         "gcds-components-vue"
-
       ]
     }
   ],
