@@ -2,6 +2,263 @@
 
 # Changelog
 
+## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0) 
+
+Released on: 2025-06-04
+
+
+### :rotating_light: Breaking changes
+
+We’ve made changes to the `Radio Group` and `Checkbox` components to clarify their structure and make them easier to use – especially when it comes to validation and visual hierarchy.
+
+In earlier versions, these components were typically wrapped in a `Fieldset` component, which served two purposes:
+
+* Grouping related form elements  
+* Acting as the label container for radio or checkbox groups
+
+This created a few challenges
+
+* Validation had to be handled on the parent `Fieldset`, which wasn't intuitive  
+* Visual hierarchy became inconsistent—section legends (like for “Personal Info”) and control group labels (like “Yes or No?”) looked the same, even though they serve different purposes
+
+To address this, we’ve changed the purpose and behavior of these components
+
+* **Redefined `Fieldset` Usage:** The `Fieldset` component will now be used exclusively for grouping related form sections, with visual styling that reflects its role as a section or group heading.
+
+* **New `Radios` and `Checkboxes` Components:** These components now include an internal `fieldset` and handle their own labeling and validation, simplifying implementation and improving accessibility.
+
+* **Deprecation of `Radio Group` and `Checkbox`:** The older `Radio Group` and `Checkbox` components will be deprecated immediately. Continued use may lead to inconsistent behavior and accessibility challenges.
+
+**What's Improved?**
+
+* **More semantic structure**: Each component now better reflects its intended use and meaning in HTML.  
+* **Simplified validation**: You no longer need to manually handle validation at the parent level – it’s built into the components where you can use validators.  
+* **Clearer visual hierarchy**: Section headings and group labels are now styled appropriately based on context.  
+* **Less boilerplate**: There’s no need to wrap these components manually in a `Fieldset` or manage duplicate legends.
+
+#### Action Required: Component-by-Component Guide
+
+##### Fieldset
+
+If you're using `Fieldset` with other form components, you will have to update your code with the following:
+
+* **Update usage:** Remove it if you’re using it to wrap the previous `Radio Group` and `Checkbox` components. The new `Radios` and `Checkboxes`  components come with a built-in `fieldset` now.
+
+* **Set legend size (required):** Use the new `legend-size` property to set the legend’s heading level from **H2** to **H6**, adjusting font size for proper hierarchy and accessibility.
+
+* **Remove validation:** `Fieldset` no longer handles validation, which was previously only used for radio and checkbox groups. Remove any usage of `validate-on` and `validator` on the component.
+
+* **Remove deprecated properties:** `fieldset-id`, `required`, `error-message`, and `disabled`. These were previously used only for validation.
+
+Here’s a code example to show the changes:
+
+###### Before:
+
+```html
+<gcds-fieldset
+  fieldset-id="field-required"
+  legend="Legend text"
+  hint="This is hint text."
+  required
+  error-message="This is an error message"
+>
+  // Grouped form components
+</gcds-fieldset>
+```
+
+###### After:
+
+```html
+<gcds-fieldset
+  legend="Legend text"
+  legend-size="h3"
+  hint="This is hint text."
+>
+  // Grouped form components
+</gcds-fieldset>
+```
+
+##### Radio Group to Radios
+
+Here’s how to change your `Radio Group` component usage to the new `Radios` component:
+
+* **Swap the component**: Replace `gcds-radio-group` with `gcds-radios`. It now includes a built-in `fieldset` and legend. If you haven’t done so yet, remove the `Fieldset` or `fieldset` wrapper around it.
+
+* **Use the legend property (required):** Define the group label using `legend`; manual group labeling is no longer needed.
+
+* **Access the selected value:** Use the `value` property to set and get the selected radio button’s value directly.
+
+* **New form properties:** Supports new properties like `required`, `hint`, `error-message`, `disabled`, `validator`, and `validate-on` for validation and user feedback.
+
+* **Remove manual validation wrappers:** Validation is handled internally; no need to wrap with `gcds-fieldset`.
+
+###### Before:
+
+```html
+<gcds-fieldset fieldset-id="radioFieldset" legend="Radio Options" hint="Choose one option." required="">
+  <gcds-radio-group
+    name="radioDefault"
+    options='[{
+      "label": "Label for radio 1",
+      "id": "radio1",
+      "value": "radio1",
+      "hint": "Description or example to make the option clearer."
+    },{
+      "label": "Label for radio 2",
+      "id": "radio2", 
+      "value": "radio2",
+      "hint": "Description or example to make the option clearer."
+    }]'
+  >
+  </gcds-radio-group>
+</gcds-fieldset>
+
+```
+
+###### After:
+
+```html
+<gcds-radios
+  name="radioDefault"
+  legend="Radio Options"
+  hint="Choose one option."
+  options=`[{
+    "id": "radio1",
+    "label": "Label for radio 1",
+    "value": "radio1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "radio2",
+    "label": "Label for radio 2",
+    "value": "radio2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]`
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value=""
+  validator=""
+  validate-on="submit"
+>
+</gcds-radios>
+```
+
+##### Checkbox to Checkboxes
+
+Here’s how to change your Checkbox component usage to the new Checkboxes component:
+
+* **Swap the component:** Replace `gcds-checkbox` with `gcds-checkboxes`. It now includes a built-in `fieldset` in cases where it is appropriate, and `legend`. If you haven’t done so yet, remove the `Fieldset` or `fieldset` wrapper around it.
+
+* **Use the `legend` property:** Define the group label using `legend`. You no longer need individual `label` properties.
+
+* **Configure with `options`.** Use the new `options` property to define each checkbox's `label`, `value`, and `checked` state.
+
+```javascript
+// Options array
+let options = [{
+    "id": "checkId1",
+    "label": "Option One",
+    "value": "value-1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "checkId2",
+    "label": "Option Two",
+    "value": "value-2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]
+```
+
+* **Handle values as an array:** The `value` property now sets and returns an array of all selected checkbox values.
+
+```javascript
+// Set the selected checkbox values
+let selectedCheckboxes = ["option1", "option2"]
+```
+
+* **Remove deprecated properties:** Remove `label`, `checkbox-id`, and `checked`. These are now part of the `options` object.
+
+* **Skip the wrapper.** No need to wrap in `gcds-fieldset` — validation is handled inside the component.
+
+To recap, here’s a full code example of the changes.
+
+###### Before:
+
+```html
+<gcds-fieldset fieldset-id="fieldId" legend="Group Label" hint="Optional hint text.">
+    <gcds-checkbox checkbox-id="checkId1" label="Option One" value="value-1" name="group-name" hint="Description or example to make the option clearer."></gcds-checkbox>
+    <gcds-checkbox checkbox-id="checkId2" label="Option Two" value="value-2" name="group-name" hint="Description or example to make the option clearer."></gcds-checkbox>
+</gcds-fieldset>
+
+```
+
+###### After:
+
+```html
+<gcds-checkboxes
+  name="checkboxOptions"
+  legend="Group Label"
+  hint="Optional hint text."
+  options=`[{
+    "id": "checkId1",
+    "label": "Option One",
+    "value": "value-1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "checkId2",
+    "label": "Option Two",
+    "value": "value-2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]`
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value="['value-1', 'value-1']"
+  validator=""
+  validate-on="submit"
+>
+</gcds-checkboxes>
+```
+
+Or, if you’d like to use your defined variables in a JS framework like React for example:
+
+```javascript
+<GcdsCheckboxes
+  name="checkboxOptions"
+  legend="Group Label"
+  hint="Optional hint text."
+  options={checkboxOptions}
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value={selectedCheckboxes}
+  validator=""
+  validate-on="submit"
+>
+</GcdsCheckboxes>
+```
+
+### :rocket: New Features
+
+* Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
+
+
+### :bug: :wrench: Bug Fixes
+
+* align structural markup for link and search with GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
+* SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
+* update installation instructions to remove outdated file ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
+
+
+### :no_entry: Remove
+
+* **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+
 ## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.2...gcds-components-v0.34.3)
 
 Released on: 2025-05-07
@@ -108,18 +365,18 @@ Released on: 2025-02-19
 
 ### :pencil: Documentation
 
-- We've updated the property descriptions of `card-title-tag` for `<gcds-card>` and `notice-title-tag` for `<gcds-notice>` to provide a better and clearer explanation of how it works ([#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
+- We've updated the property descriptions of `card-title-tag` for `gcds-card` and `notice-title-tag` for `gcds-notice` to provide a better and clearer explanation of how it works ([#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
 
 ### :art: Styles
 
 We've done some work to align our styles with Canada.ca:
 
-- Updated the paddings for `<gcds-footer>` ([#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
-- Updated `<gcds-footer>` styles ([#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
-- Updated `<gcds-breadcrumb-item>` font size ([#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
-- Updated `<date-modified>` font size ([#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
-- Updated `<gcds-lang-toggle>` font size ([#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
-- Updated `<gcds-search>` styles ([#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
+- Updated the paddings for `gcds-footer` ([#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
+- Updated `gcds-footer` styles ([#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
+- Updated `gcds-breadcrumb-item` font size ([#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
+- Updated `date-modified` font size ([#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
+- Updated `gcds-lang-toggle` font size ([#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
+- Updated `gcds-search` styles ([#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
 
 ## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.30.0...gcds-components-v0.31.0)
 
@@ -765,6 +1022,261 @@ Released on: 2024-02-22
 
 Tout changement important à ce projet sera consigné dans le présent fichier.
 
+## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0)
+
+Version publiée le : 2025-06-04
+
+
+### Changement non rétrocompatible : jeu de champs, groupe de boutons radio, case à cocher
+
+Nous avons apporté des modifications aux composants `groupe de boutons radio` et `case à cocher` afin de clarifier leur structure et de les rendre plus faciles à utiliser, en particulier en ce qui concerne la validation et la hiérarchie visuelle.
+
+Dans les versions antérieures, ces composants étaient généralement enveloppés d’un composant `jeu de champs` pour deux raisons :
+
+* Regrouper les éléments connexes d’un formulaire  
+* Agir à titre de conteneur d’étiquettes pour les groupes de boutons radio ou de cases à cocher.
+
+Cela posait quelques défis.
+
+* La gestion de la validation devait se faire au moyen d’un composant `jeu de champs` parent, ce qui n’était pas intuitif.  
+* La hiérarchie visuelle est devenue incohérente — les légendes de section (p. ex. « Renseignements personnels ») et les étiquettes de groupes de contrôle (p. ex. « Oui ou Non? ») se ressemblaient, même s’ils servaient différentes fonctions.
+
+Pour y remédier, nous avons modifié le but et le comportement de ces composants.
+
+* **Emploi redéfini du composant `jeu de champs` :** Le composant `jeu de champs` sera désormais utilisé exclusivement pour regrouper les sections de formulaires connexes, avec un style visuel qui reflète son rôle de titre de section ou de groupe.
+
+* **Nouveaux composants `boutons radio` et `cases à cocher` :** Ces composants comprennent désormais un `jeu de champs` interne et leurs propres fonctions d’étiquetage et de validation, ce qui simplifie leur mise en œuvre et améliore leur accessibilité.
+
+* **Mise hors service des composants `groupe de boutons radio` et `case à cocher` :** Les anciens composants `groupe de boutons radio` et `case à cocher` seront immédiatement mis hors service. Des comportements incohérents et des défis en matière d’accessibilité pourraient survenir si vous continuez à les utiliser.
+
+**Quelles sont les améliorations?**
+
+* **Structure plus sémantique** : L’emploi et la signification prévus de chaque composant sont maintenant mieux reflétés dans le code HTML.  
+* **Validation simplifiée** : Il n’est plus nécessaire de gérer manuellement la validation au niveau parent — elle est intégrée dans les composants qui permettent l’utilisation de valideurs.  
+* **Hiérarchie visuelle plus claire**: Les titres de section et les étiquettes de groupe portent maintenant les styles appropriés en fonction de leur contexte.  
+* **Moins de travail manuel :** Il n’est pas nécessaire d’envelopper ces composants manuellement dans un `jeu de champs` ni de gérer les légendes en double.
+
+#### Mesures à prendre : Guide par composant
+
+##### Jeu de champs
+
+Si vous utilisez le composant `jeu de champs` avec d’autres composants de formulaire, vous devrez mettre à jour votre code avec les éléments suivants :
+
+* **Mettre à jour l’emploi :** Supprimez-le si vous l’utilisez pour envelopper les anciens composants `groupe de boutons radio` et `case à cocher`. Les composants `boutons radio` et `cases à cocher` comportent maintenant un élément `fieldset` intégré.
+
+* **Régler la taille de police de la légende (obligatoire) :** Utilisez la nouvelle propriété `legend-size` pour définir le niveau de titre de la légende de **H2** à **H6**, en ajustant la taille de la police pour une hiérarchie et une accessibilité appropriées.
+
+* **Supprimer la fonction de validation :** Le composant `jeu de champs` ne prend plus en charge la fonction de validation, qui n’était auparavant utilisée que pour les groupes de boutons radio et de cases à cocher. Supprimez tout emploi de `validate-on` et `validator` du composant.
+
+* **Supprimer les propriétés obsolètes :** `fieldset-id`, `required`, `error-message` et `disabled`. Ceux-ci étaient auparavant utilisés uniquement pour la validation.
+
+Voici un exemple de code pour montrer les changements :
+
+###### Avant :
+
+```html
+<gcds-fieldset
+  fieldset-id="field-required"
+  legend="Legend text"
+  hint="This is hint text."
+  required
+  error-message="This is an error message"
+>
+  // Grouped form components
+</gcds-fieldset>
+```
+
+###### Après :
+
+```html
+<gcds-fieldset
+  legend="Legend text"
+  legend-size="h3"
+  hint="This is hint text."
+>
+  // Grouped form components
+</gcds-fieldset>
+```
+
+##### Transition du composant groupe de boutons radio au composant boutons radio
+
+Voici comment modifier l’instance de votre composant `groupe de boutons radio` pour employer le nouveau composant `boutons radio` :
+
+* **Échanger les composants :** Remplacez `gcds-radio-group` par `gcds-radios`. Un élément `fieldset` et une légende y sont maintenant intégrés. Si vous ne l’avez pas encore fait, retirez l’enveloppe `jeu de champs` ou `fieldset`.
+
+* **Utiliser la propriété \<legend\> (obligatoire) :** Définissez l’étiquette de groupe à l’aide de la propriété `legend`; l’étiquette manuelle de groupe n’est plus nécessaire.
+
+* **Accéder à la valeur sélectionnée :** Utilisez la propriété `value` pour définir et obtenir directement la valeur du bouton radio sélectionné.
+
+* **Nouvelles propriétés de formulaire :** Prise en charge de nouvelles propriétés comme `required`, `hint`, `error-message`, `disabled`, `validator` et `validate-on` pour la validation et les commentaires des utilisateur·rice·s.
+
+* **Supprimer les enveloppes de validation manuelle :** La validation est gérée en interne; il n’est pas nécessaire d’utiliser une enveloppe `gcds-fieldset`.
+
+###### Avant :
+
+```html
+<gcds-fieldset fieldset-id="radioFieldset" legend="Radio Options" hint="Choose one option." required="">
+  <gcds-radio-group
+    name="radioDefault"
+    options='[{
+      "label": "Label for radio 1",
+      "id": "radio1",
+      "value": "radio1",
+      "hint": "Description or example to make the option clearer."
+    },{
+      "label": "Label for radio 2",
+      "id": "radio2", 
+      "value": "radio2",
+      "hint": "Description or example to make the option clearer."
+    }]'
+  >
+  </gcds-radio-group>
+</gcds-fieldset>
+```
+
+###### Après :
+
+```html
+<gcds-radios
+  name="radioDefault"
+  legend="Radio Options"
+  hint="Choose one option."
+  options=`[{
+    "id": "radio1",
+    "label": "Label for radio 1",
+    "value": "radio1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "radio2",
+    "label": "Label for radio 2",
+    "value": "radio2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]`
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value=""
+  validator=""
+  validate-on="submit"
+>
+</gcds-radios>
+```
+
+##### Transition du composant case à cocher au composant cases à cocher
+
+Voici comment modifier l’instance de votre composant case à cocher pour employer le nouveau composant cases à cocher :
+
+* **Échanger les composants :** Remplacez `gcds-checkbox` par `gcds-checkboxes`. Un élément `jeu de champs` y est maintenant intégré pour les situations qui l’exigent, ainsi qu’une propriété `légende`. Si vous ne l’avez pas encore fait, retirez l’enveloppe `jeu de champs` ou `fieldset`.
+
+* **Utiliser la propriété `legend` (obligatoire) :** Définissez l’étiquette du groupe en utilisant `legend`. Vous n’avez plus besoin de propriétés `label` individuelles.
+
+* **Configurer à l’aide de la propriété `options`.** Utilisez la nouvelle propriété `options` pour définir l’état `label`, `value` et `checked` de chaque case à cocher.
+
+```javascript
+// Options array
+let options = [{
+    "id": "checkId1",
+    "label": "Option One",
+    "value": "value-1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "checkId2",
+    "label": "Option Two",
+    "value": "value-2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]
+```
+
+* **Traiter les valeurs sous forme de tableau :** La propriété `value` définit et retourne maintenant un tableau de toutes les valeurs de cases à cocher sélectionnées.
+
+```javascript
+// Set the selected checkbox values
+let selectedCheckboxes = ["option1", "option2"]
+```
+
+* **Supprimer les propriétés obsolètes :** Supprimez `label`, `checkbox-id` et `checked`. Celles-ci font maintenant partie de l’objet `options`.
+
+* **Sauter l’enveloppe.** Il n’est pas nécessaire d’appliquer une enveloppe `gcds-fieldset` — la validation est gérée à même le composant.
+
+Pour récapituler, voici un exemple des changements en code intégral.
+
+###### Avant :
+
+```html
+<gcds-fieldset fieldset-id="fieldId" legend="Group Label" hint="Optional hint text.">
+    <gcds-checkbox checkbox-id="checkId1" label="Option One" value="value-1" name="group-name" hint="Description or example to make the option clearer."></gcds-checkbox>
+    <gcds-checkbox checkbox-id="checkId2" label="Option Two" value="value-2" name="group-name" hint="Description or example to make the option clearer."></gcds-checkbox>
+</gcds-fieldset>
+```
+
+###### Après :
+
+```html
+<gcds-checkboxes
+  name="checkboxOptions"
+  legend="Group Label"
+  hint="Optional hint text."
+  options=`[{
+    "id": "checkId1",
+    "label": "Option One",
+    "value": "value-1",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  },{
+    "id": "checkId2",
+    "label": "Option Two",
+    "value": "value-2",
+    "checked": "",
+    "hint": "Description or example to make the option clearer.",
+  }]`
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value="['value-1', 'value-1']"
+  validator=""
+  validate-on="submit"
+>
+</gcds-checkboxes>
+```
+
+Ou encore, si vous préférez utiliser vos propres variables définies dans un cadre JS comme React :
+
+```javascript
+<GcdsCheckboxes
+  name="checkboxOptions"
+  legend="Group Label"
+  hint="Optional hint text."
+  options={checkboxOptions}
+  required=""
+  error-message="An error message to display"
+  disabled=""
+  value={selectedCheckboxes}
+  validator=""
+  validate-on="submit"
+>
+</GcdsCheckboxes>
+```
+
+### :rocket: Nouvelles fonctionnalités
+
+* Retravailler le fieldset et les nouveaux composants gcds-radios et gcds-checkboxes ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
+
+
+### :bug: :wrench: Corrections de bogues
+
+* aligner le balisage structurel pour les liens et la recherche avec GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
+* Étiquettes d’air SVG ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
+* mettre à jour les instructions d'installation pour supprimer le fichier obsolète ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
+
+
+### :no_entry: Retirer
+
+* **gcds-radio-group + gcds-checkbox:** Supprimer les anciens composants du groupe radio et de la case à cocher ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+
 ## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.32.0...gcds-components-v0.33.0)
 
 Version publiée le : 2025-03-18
@@ -788,18 +1300,18 @@ Version publiée le : 2025-02-19
 
 ### :pencil: Documentation
 
-- Nous avons mis à jour les descriptions de propriété de `card-title-tag` pour `<gcds-card>` et `notice-title-tag` pour `<gcds-notice>` afin de décrire plus clairement son fonctionnement ([\#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
+- Nous avons mis à jour les descriptions de propriété de `card-title-tag` pour `gcds-card` et `notice-title-tag` pour `gcds-notice` afin de décrire plus clairement son fonctionnement ([\#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
 
 ### :art: Styles
 
 Des travaux ont été fait pour harmoniser nos styles avec ceux de Canada.ca :
 
-- Mise à jour du dégagement intérieur pour `<gcds-footer>` ([\#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
-- Mise à jour des styles pour `<gcds-footer>` ([\#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
-- Mise à jour de la taille de police pour `<gcds-breadcrumb-item>` ([\#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
-- Mise à jour de la taille de police pour `<date-modified>` ([\#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
-- Mise à jour de la taille de police pour `<gcds-lang-toggle>` ([\#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
-- Mise à jour des styles pour `<gcds-search>` ([\#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
+- Mise à jour du dégagement intérieur pour `gcds-footer` ([\#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
+- Mise à jour des styles pour `gcds-footer` ([\#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
+- Mise à jour de la taille de police pour `gcds-breadcrumb-item` ([\#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
+- Mise à jour de la taille de police pour `date-modified` ([\#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
+- Mise à jour de la taille de police pour `gcds-lang-toggle` ([\#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
+- Mise à jour des styles pour `gcds-search` ([\#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
 
 ## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.30.0...gcds-components-v0.31.0)
 

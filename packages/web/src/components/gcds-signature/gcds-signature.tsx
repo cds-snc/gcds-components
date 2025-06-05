@@ -6,7 +6,6 @@ import {
   State,
   Prop,
   h,
-  Fragment,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
@@ -104,30 +103,8 @@ export class GcdsSignature {
     }
   }
 
-  private get svgLabel() {
-    let altText = '';
-    if (this.lang === 'en') {
-      altText = (
-        <>
-          {i18n['en'].gc} / <span lang="fr">{i18n['fr'].gc}</span>
-        </>
-      );
-    } else {
-      altText = (
-        <>
-          {i18n['fr'].gc} / <span lang="en">{i18n['en'].gc}</span>
-        </>
-      );
-    }
-    return (
-      <gcds-sr-only tag="span" id="signature-title">
-        {altText}
-      </gcds-sr-only>
-    );
-  }
-
   render() {
-    const { type, hasLink, lang, selectSVG, svgLabel } = this;
+    const { type, hasLink, lang, selectSVG } = this;
 
     const sigAttrs = {
       class: 'gcds-signature',
@@ -143,7 +120,6 @@ export class GcdsSignature {
         {type === 'signature' ? (
           <Tag {...sigAttrs}>
             <div innerHTML={selectSVG}></div>
-            {svgLabel}
           </Tag>
         ) : (
           <div class="gcds-signature" innerHTML={selectSVG}></div>

@@ -2,6 +2,8 @@ import {
   requiredField,
   requiredFileInput,
   requiredDateInput,
+  requiredCheckboxGroup,
+  requiredCheckboxSingle,
 } from '../input-validators';
 import { Blob } from 'buffer';
 import { dateInputErrorMessage } from '../input-validators';
@@ -68,6 +70,31 @@ describe('Required file input validator', () => {
   results.forEach(i =>
     it(`Should return ${i.res} for ${i.value}`, () => {
       expect(requiredFileInput.validate(i.value)).toEqual(i.res);
+    }),
+  );
+});
+
+describe('Required checkbox group validator', () => {
+  const results: Array<{ value: string[]; res: boolean }> = [
+    { value: ['value1', 'value2'], res: true },
+    { value: ['value1'], res: true },
+    { value: [], res: false },
+  ];
+  results.forEach(i =>
+    it(`Should return ${i.res} for ${i.value}`, () => {
+      expect(requiredCheckboxGroup.validate(i.value)).toEqual(i.res);
+    }),
+  );
+});
+
+describe('Required checkbox single validator', () => {
+  const results: Array<{ value: string[]; res: boolean }> = [
+    { value: ['value1'], res: true },
+    { value: [], res: false },
+  ];
+  results.forEach(i =>
+    it(`Should return ${i.res} for ${i.value}`, () => {
+      expect(requiredCheckboxSingle.validate(i.value)).toEqual(i.res);
     }),
   );
 });

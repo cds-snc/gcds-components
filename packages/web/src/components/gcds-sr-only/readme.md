@@ -22,7 +22,6 @@
  - [gcds-lang-toggle](../gcds-lang-toggle)
  - [gcds-notice](../gcds-notice)
  - [gcds-search](../gcds-search)
- - [gcds-signature](../gcds-signature)
  - [gcds-stepper](../gcds-stepper)
  - [gcds-topic-menu](../gcds-topic-menu)
 
@@ -35,7 +34,6 @@ graph TD;
   gcds-lang-toggle --> gcds-sr-only
   gcds-notice --> gcds-sr-only
   gcds-search --> gcds-sr-only
-  gcds-signature --> gcds-sr-only
   gcds-stepper --> gcds-sr-only
   gcds-topic-menu --> gcds-sr-only
   style gcds-sr-only fill:#f9f,stroke:#333,stroke-width:4px
