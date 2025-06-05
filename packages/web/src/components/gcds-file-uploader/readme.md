@@ -10,7 +10,7 @@
 | `accept`                  | `accept`        | Defines the file types the file uploader accepts.                           | `string`                                            | `undefined` |
 | `disabled`                | `disabled`      | Specifies if a file uploader element is disabled or not.                    | `boolean`                                           | `false`     |
 | `errorMessage`            | `error-message` | Error message for an invalid file uploader element.                         | `string`                                            | `undefined` |
-| `files`                   | --              | FileList of uploaded files to input                                         | `FileList`                                          | `undefined` |
+| `files`                   | `files`         | FileList of uploaded files to input                                         | `FileList`                                          | `undefined` |
 | `hint`                    | `hint`          | Hint displayed below the label.                                             | `string`                                            | `undefined` |
 | `label` _(required)_      | `label`         | Form field label.                                                           | `string`                                            | `undefined` |
 | `multiple`                | `multiple`      | Boolean that specifies if the user is allowed to select more than one file. | `boolean`                                           | `undefined` |
@@ -18,8 +18,8 @@
 | `required`                | `required`      | Specifies if a form field is required or not.                               | `boolean`                                           | `false`     |
 | `uploaderId` _(required)_ | `uploader-id`   | Id attribute for a file uploader element.                                   | `string`                                            | `undefined` |
 | `validateOn`              | `validate-on`   | Set event to call validator                                                 | `"blur" \| "other" \| "submit"`                     | `undefined` |
-| `validator`               | --              | Array of validators                                                         | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `value`                   | --              | Value for a file uploader element.                                          | `string[]`                                          | `[]`        |
+| `validator`               | `validator`     | Array of validators                                                         | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `value`                   | `value`         | Value for a file uploader element.                                          | `string[]`                                          | `[]`        |
 
 
 ## Events
