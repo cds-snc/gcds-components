@@ -337,7 +337,7 @@ it('Validation - Custom validator old format', async () => {
       };
     };
 
-    // @ts-expect-error Old format of validator is different then new format. Will still run in JS environments
+    // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
     (dateInput as HTMLGcdsDateInputElement).validator = [expectYear('1991')];
   });
 
