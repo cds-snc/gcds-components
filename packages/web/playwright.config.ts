@@ -9,9 +9,9 @@ export default createConfig({
   testMatch: '*.e2e.playwright.ts',
   timeout: 60000,
   use: {
-    baseURL: 'http://localhost:3337/',
+    baseURL: 'http://localhost:3333/',
   },
   webServer: {
-    url: 'http://localhost:3337/',
+    url: 'http://localhost:3333/',
   },
 });

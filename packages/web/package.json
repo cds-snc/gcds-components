@@ -24,8 +24,10 @@
     "build": "stencil build --docs",
     "postbuild": "node ./scripts/copyCSSFile.js",
     "start": "stencil build --dev --watch --serve",
-    "pretest": "cd ../.. && npm run patch:stenciljs",
-    "test": "stencil test --spec --e2e",
+    "pretest": "cd ../.. && npm run patch:stenciljs && npm run build",
+    "test": "npm run test.spec && npm run test.e2e",
+    "test.spec": "stencil test --spec",
+    "test.e2e": "npx playwright test",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "storybook": "storybook dev -p 6006",
@@ -41,6 +43,7 @@
     "@storybook/theming": "^8.0.9"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@axe-core/puppeteer": "^4.7.3",
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",

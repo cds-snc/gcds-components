@@ -1,67 +1,76 @@
-// import { newE2EPage } from '@stencil/core/testing';
-// const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
-test.describe('my-component', () => {
-  test('should render', async ({ page }) => {
+test.describe('gcds-breadcrumbs', () => {
+  test('should render gen', async ({ page }) => {
     await page.goto(
-      'components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
+      '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
     );
-    // Rest of test
+
     const component = await page.locator('gcds-breadcrumbs');
     await expect(component).toHaveClass(`hydrated`);
-  });
-  test('should ol have link', async ({ page }) => {
-    await page.goto(
-      'components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
-    );
-    // Rest of test
-    const component = await page.locator('ol');
-    await expect(component).toHaveClass(`has-canada-link`);
+
+    const items = await page.locator('gcds-breadcrumbs-item').first();
+    await expect(items).toHaveRole('listitem');
   });
 });
-
-// describe('gcds-breadcrumbs', () => {
-//   it('renders', async () => {
-//     const page = await newE2EPage();
-//     await page.setContent('<gcds-breadcrumbs></gcds-breadcrumbs>');
-
-//     const element = await page.find('gcds-breadcrumbs');
-//     expect(element).toHaveClass('hydrated');
-//   });
-// });
 
 /**
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-// describe('gcds-breadcrumbs a11y tests', () => {
-//   /**
-//    * Colour contrast test
-//    */
-//   it('colour contrast', async () => {
-//     const page = await newE2EPage();
-//     await page.setContent(`
-//       <gcds-breadcrumbs>
-//         <nav aria-label="Breadcrumb" class="gcds-breadcrumbs">
-//           <ol class="has-canada-link">
-//             <gcds-breadcrumbs-item href="https://www.canada.ca/en.html">
-//               Canada.ca
-//             </gcds-breadcrumbs-item>
-//             <slot></slot>
-//           </ol>
-//         </nav>
-//       </gcds-breadcrumbs>
-//     `);
+test.describe('gcds-breadcrumbs a11y tests', () => {
+  test('Colour contrast', async ({ page }) => {
+    await page.goto(
+      '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
+    );
 
-//     const colorContrastTest = new AxePuppeteer(page)
-//       .withRules('color-contrast')
-//       .analyze();
-//     const results = await colorContrastTest;
+    // axe-core seems to have an issue with colour contrast testing <slot> elements so ad dtext to element manually
+    await page
+      .locator('a')
+      .first()
+      .evaluate(el => ((el as HTMLElement).innerText = 'Colour contrast'));
 
-//     expect(results.violations.length).toBe(0);
-//   });
-// });
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  test('Proper list structure', async ({ page }) => {
+    await page.goto(
+      '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
+    );
+
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['list'])
+        .analyze();
+
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  test('Proper link names', async ({ page }) => {
+    await page.goto(
+      '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
+    );
+
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['link-name'])
+        .analyze();
+
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+});

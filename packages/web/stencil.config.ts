@@ -75,7 +75,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
-      copy: [{ src: '**/test/*.html' }],
+      copy: [{ src: '**/*.e2e.html' }],
     },
   ],
   plugins: [
