@@ -122,6 +122,176 @@ describe('gcds-file-uploader', () => {
       (await page.find('gcds-file-uploader >>> gcds-text')).textContent,
     ).toBe('./example.txt');
   });
+
+  it('Validation', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" required/>',
+    );
+
+    const input = await page.find('gcds-file-uploader');
+
+    input.callMethod('validate');
+    await page.waitForChanges();
+
+    const error = await page.$eval(
+      'gcds-file-uploader >>> gcds-error-message',
+      el => el.innerText,
+    );
+
+    expect(error).toBe('You must upload a file to continue.');
+
+    const [fileChooser] = await Promise.all([
+      page.waitForFileChooser(),
+      page.click('gcds-file-uploader >>> input'),
+    ]);
+
+    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
+
+    await page.waitForChanges();
+
+    input.callMethod('validate');
+    await page.waitForChanges();
+
+    expect(await page.$('gcds-file-uploader >>> gcds-error-message')).toBe(
+      null,
+    );
+  });
+
+  it('Validation - Custom validator', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" required/>',
+    );
+
+    await page.evaluate(() => {
+      const input = document.querySelector('gcds-file-uploader');
+
+      const matchFile = (name: string) => {
+        return {
+          validate: (value: FileList) => {
+            return {
+              valid: value.length > 0 && value[0].name === name,
+              reason: {
+                en: `The uploaded file must have a name of ${name}.`,
+                fr: `The uploaded file must have a name of ${name}.`,
+              },
+            };
+          },
+        };
+      };
+
+      (input as HTMLGcdsFileUploaderElement).validator = [
+        matchFile('gcds-file-uploader.spec.tsx'),
+      ];
+    });
+
+    const [fileChooser] = await Promise.all([
+      page.waitForFileChooser(),
+      page.click('gcds-file-uploader >>> input'),
+    ]);
+
+    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
+
+    await page.waitForChanges();
+
+    const input = await page.find('gcds-file-uploader');
+
+    input.callMethod('validate');
+    await page.waitForChanges();
+
+    const error = await page.$eval(
+      'gcds-file-uploader >>> gcds-error-message',
+      el => el.innerText,
+    );
+
+    expect(error).toBe(
+      'The uploaded file must have a name of gcds-file-uploader.spec.tsx.',
+    );
+
+    const [fileChooser2] = await Promise.all([
+      page.waitForFileChooser(),
+      page.click('gcds-file-uploader >>> input'),
+    ]);
+
+    await fileChooser2.accept(['./gcds-file-uploader.spec.tsx']);
+
+    await page.waitForChanges();
+
+    input.callMethod('validate');
+    await page.waitForChanges();
+
+    expect(await page.$('gcds-file-uploader >>> gcds-error-message')).toBe(
+      null,
+    );
+  });
+
+  it('Validation - Custom validator old format', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" required/>',
+    );
+
+    await page.evaluate(() => {
+      const input = document.querySelector('gcds-file-uploader');
+
+      const matchFile = (name: string) => {
+        return {
+          validate: (value: FileList) => {
+            return value.length > 0 && value[0].name === name;
+          },
+          errorMessage: {
+            en: `The uploaded file must have a name of ${name}.`,
+            fr: `The uploaded file must have a name of ${name}.`,
+          },
+        };
+      };
+
+      (input as HTMLGcdsFileUploaderElement).validator = [
+        // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
+        matchFile('gcds-file-uploader.spec.tsx'),
+      ];
+    });
+
+    const [fileChooser] = await Promise.all([
+      page.waitForFileChooser(),
+      page.click('gcds-file-uploader >>> input'),
+    ]);
+
+    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
+
+    await page.waitForChanges();
+
+    const input = await page.find('gcds-file-uploader');
+
+    input.callMethod('validate');
+    await page.waitForChanges();
+
+    const error = await page.$eval(
+      'gcds-file-uploader >>> gcds-error-message',
+      el => el.innerText,
+    );
+
+    expect(error).toBe(
+      'The uploaded file must have a name of gcds-file-uploader.spec.tsx.',
+    );
+
+    const [fileChooser2] = await Promise.all([
+      page.waitForFileChooser(),
+      page.click('gcds-file-uploader >>> input'),
+    ]);
+
+    await fileChooser2.accept(['./gcds-file-uploader.spec.tsx']);
+
+    await page.waitForChanges();
+
+    input.callMethod('validate');
+    await page.waitForChanges();
+
+    expect(await page.$('gcds-file-uploader >>> gcds-error-message')).toBe(
+      null,
+    );
+  });
 });
 
 /**

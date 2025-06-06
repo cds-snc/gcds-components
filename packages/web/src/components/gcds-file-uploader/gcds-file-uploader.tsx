@@ -14,6 +14,7 @@ import {
 } from '@stencil/core';
 import {
   assignLanguage,
+  handleValidationResult,
   inheritAttributes,
   observerConfig,
 } from '../../utils/utils';
@@ -134,20 +135,18 @@ export class GcdsFileUploader {
    * Array of validators
    */
   @Prop({ mutable: true }) validator: Array<
-    string | ValidatorEntry | Validator<string>
+    string | ValidatorEntry | Validator<string | number | FileList>
   >;
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * Specifies if the file uploader is invalid.
@@ -267,19 +266,14 @@ export class GcdsFileUploader {
    */
   @Method()
   async validate() {
-    if (
-      !this._validator.validate(this.shadowElement.files) &&
-      this._validator.errorMessage
-    ) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({
-        id: `#${this.uploaderId}`,
-        message: `${this.label} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit({ id: `#${this.uploaderId}` });
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsFileUploaderElement,
+      this._validator.validate(this.shadowElement.files),
+      this.label,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   /**
@@ -378,22 +372,13 @@ export class GcdsFileUploader {
     this.validateDisabledSelect();
     this.validateHasError();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, 'file');
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
+    this.validateValidator();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
   }
 
   render() {

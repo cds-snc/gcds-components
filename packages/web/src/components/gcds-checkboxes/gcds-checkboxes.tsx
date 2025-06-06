@@ -19,6 +19,7 @@ import {
   logError,
   handleErrors,
   isValid,
+  handleValidationResult,
 } from '../../utils/utils';
 import {
   Validator,
@@ -41,7 +42,7 @@ import {
   formAssociated: true,
 })
 export class GcdsCheckboxes {
-  @Element() el: HTMLInputElement;
+  @Element() el: HTMLGcdsCheckboxesElement;
 
   @AttachInternals()
   internals: ElementInternals;
@@ -270,15 +271,14 @@ export class GcdsCheckboxes {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({
-        message: `${this.isGroup ? this.legend : this.optionsArr[0].label} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit();
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsCheckboxesElement,
+      this._validator.validate(this.value),
+      this.isGroup ? this.legend : this.optionsArr[0].label,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   /*

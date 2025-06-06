@@ -21,7 +21,7 @@ import { Components } from '@cdssnc/gcds-components';
   standalone: false,
 })
 export class GcdsAlert {
-  protected el: HTMLGcdsAlertElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -50,7 +50,7 @@ export declare interface GcdsAlert extends Components.GcdsAlert {
   standalone: false,
 })
 export class GcdsBreadcrumbs {
-  protected el: HTMLGcdsBreadcrumbsElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -73,7 +73,7 @@ export declare interface GcdsBreadcrumbs extends Components.GcdsBreadcrumbs {}
   standalone: false,
 })
 export class GcdsBreadcrumbsItem {
-  protected el: HTMLGcdsBreadcrumbsItemElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -98,7 +98,7 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
   standalone: false,
 })
 export class GcdsButton {
-  protected el: HTMLGcdsButtonElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -137,7 +137,7 @@ export declare interface GcdsButton extends Components.GcdsButton {
   standalone: false,
 })
 export class GcdsCard {
-  protected el: HTMLGcdsCardElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -177,7 +177,7 @@ export declare interface GcdsCard extends Components.GcdsCard {
   standalone: false,
 })
 export class GcdsCheckboxes {
-  protected el: HTMLGcdsCheckboxesElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -230,7 +230,7 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
   standalone: false,
 })
 export class GcdsContainer {
-  protected el: HTMLGcdsContainerElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -256,7 +256,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
   standalone: false,
 })
 export class GcdsDateInput {
-  protected el: HTMLGcdsDateInputElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -305,7 +305,7 @@ export declare interface GcdsDateInput extends Components.GcdsDateInput {
   standalone: false,
 })
 export class GcdsDateModified {
-  protected el: HTMLGcdsDateModifiedElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -331,7 +331,7 @@ export declare interface GcdsDateModified extends Components.GcdsDateModified {}
   standalone: false,
 })
 export class GcdsDetails {
-  protected el: HTMLGcdsDetailsElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -368,7 +368,7 @@ export declare interface GcdsDetails extends Components.GcdsDetails {
   standalone: false,
 })
 export class GcdsErrorMessage {
-  protected el: HTMLGcdsErrorMessageElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -391,7 +391,7 @@ export declare interface GcdsErrorMessage extends Components.GcdsErrorMessage {}
   standalone: false,
 })
 export class GcdsErrorSummary {
-  protected el: HTMLGcdsErrorSummaryElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -414,7 +414,7 @@ export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
   standalone: false,
 })
 export class GcdsFieldset {
-  protected el: HTMLGcdsFieldsetElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -440,7 +440,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {}
   standalone: false,
 })
 export class GcdsFileUploader {
-  protected el: HTMLGcdsFileUploaderElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -493,7 +493,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   standalone: false,
 })
 export class GcdsFooter {
-  protected el: HTMLGcdsFooterElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -516,7 +516,7 @@ export declare interface GcdsFooter extends Components.GcdsFooter {}
   standalone: false,
 })
 export class GcdsGrid {
-  protected el: HTMLGcdsGridElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -539,7 +539,7 @@ export declare interface GcdsGrid extends Components.GcdsGrid {}
   standalone: false,
 })
 export class GcdsGridCol {
-  protected el: HTMLGcdsGridColElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -562,7 +562,7 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
   standalone: false,
 })
 export class GcdsHeader {
-  protected el: HTMLGcdsHeaderElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -585,7 +585,7 @@ export declare interface GcdsHeader extends Components.GcdsHeader {}
   standalone: false,
 })
 export class GcdsHeading {
-  protected el: HTMLGcdsHeadingElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -608,7 +608,7 @@ export declare interface GcdsHeading extends Components.GcdsHeading {}
   standalone: false,
 })
 export class GcdsHint {
-  protected el: HTMLGcdsHintElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -631,7 +631,7 @@ export declare interface GcdsHint extends Components.GcdsHint {}
   standalone: false,
 })
 export class GcdsIcon {
-  protected el: HTMLGcdsIconElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -657,7 +657,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   standalone: false,
 })
 export class GcdsInput {
-  protected el: HTMLGcdsInputElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -706,7 +706,7 @@ export declare interface GcdsInput extends Components.GcdsInput {
   standalone: false,
 })
 export class GcdsLabel {
-  protected el: HTMLGcdsLabelElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -729,7 +729,7 @@ export declare interface GcdsLabel extends Components.GcdsLabel {}
   standalone: false,
 })
 export class GcdsLangToggle {
-  protected el: HTMLGcdsLangToggleElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -754,7 +754,7 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
   standalone: false,
 })
 export class GcdsLink {
-  protected el: HTMLGcdsLinkElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -794,7 +794,7 @@ export declare interface GcdsLink extends Components.GcdsLink {
   standalone: false,
 })
 export class GcdsNavGroup {
-  protected el: HTMLGcdsNavGroupElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -834,7 +834,7 @@ export declare interface GcdsNavGroup extends Components.GcdsNavGroup {
   standalone: false,
 })
 export class GcdsNavLink {
-  protected el: HTMLGcdsNavLinkElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -871,7 +871,7 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
   standalone: false,
 })
 export class GcdsNotice {
-  protected el: HTMLGcdsNoticeElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -896,7 +896,7 @@ export declare interface GcdsNotice extends Components.GcdsNotice {}
   standalone: false,
 })
 export class GcdsPagination {
-  protected el: HTMLGcdsPaginationElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -933,7 +933,7 @@ export declare interface GcdsPagination extends Components.GcdsPagination {
   standalone: false,
 })
 export class GcdsPhaseBanner {
-  protected el: HTMLGcdsPhaseBannerElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -959,7 +959,7 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
   standalone: false,
 })
 export class GcdsRadios {
-  protected el: HTMLGcdsRadiosElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1010,7 +1010,7 @@ export declare interface GcdsRadios extends Components.GcdsRadios {
   standalone: false,
 })
 export class GcdsSearch {
-  protected el: HTMLGcdsSearchElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1058,7 +1058,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   standalone: false,
 })
 export class GcdsSelect {
-  protected el: HTMLGcdsSelectElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1108,7 +1108,7 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
   standalone: false,
 })
 export class GcdsSideNav {
-  protected el: HTMLGcdsSideNavElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1131,7 +1131,7 @@ export declare interface GcdsSideNav extends Components.GcdsSideNav {}
   standalone: false,
 })
 export class GcdsSignature {
-  protected el: HTMLGcdsSignatureElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1154,7 +1154,7 @@ export declare interface GcdsSignature extends Components.GcdsSignature {}
   standalone: false,
 })
 export class GcdsSrOnly {
-  protected el: HTMLGcdsSrOnlyElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1177,7 +1177,7 @@ export declare interface GcdsSrOnly extends Components.GcdsSrOnly {}
   standalone: false,
 })
 export class GcdsStepper {
-  protected el: HTMLGcdsStepperElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1200,7 +1200,7 @@ export declare interface GcdsStepper extends Components.GcdsStepper {}
   standalone: false,
 })
 export class GcdsText {
-  protected el: HTMLGcdsTextElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1226,7 +1226,7 @@ export declare interface GcdsText extends Components.GcdsText {}
   standalone: false,
 })
 export class GcdsTextarea {
-  protected el: HTMLGcdsTextareaElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1276,7 +1276,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
   standalone: false,
 })
 export class GcdsTopNav {
-  protected el: HTMLGcdsTopNavElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1300,7 +1300,7 @@ export declare interface GcdsTopNav extends Components.GcdsTopNav {}
   standalone: false,
 })
 export class GcdsTopicMenu {
-  protected el: HTMLGcdsTopicMenuElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1323,7 +1323,7 @@ export declare interface GcdsTopicMenu extends Components.GcdsTopicMenu {}
   standalone: false,
 })
 export class GcdsVerifyBanner {
-  protected el: HTMLGcdsVerifyBannerElement;
+  protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;

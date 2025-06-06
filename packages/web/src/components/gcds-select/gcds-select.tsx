@@ -14,6 +14,7 @@ import {
 } from '@stencil/core';
 import {
   assignLanguage,
+  handleValidationResult,
   inheritAttributes,
   observerConfig,
 } from '../../utils/utils';
@@ -118,15 +119,13 @@ export class GcdsSelect {
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * Specifies if the select is invalid.
@@ -216,16 +215,14 @@ export class GcdsSelect {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({
-        id: `#${this.selectId}`,
-        message: `${this.label} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit({ id: `#${this.selectId}` });
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsSelectElement,
+      this._validator.validate(this.value),
+      this.label,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   /**
@@ -323,14 +320,11 @@ export class GcdsSelect {
     this.validateDisabledSelect();
     this.validateHasError();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, 'select');
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
+    this.validateValidator();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
 
@@ -353,12 +347,6 @@ export class GcdsSelect {
 
   async componentDidLoad() {
     this.observeOptions();
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
   }
 
   render() {
