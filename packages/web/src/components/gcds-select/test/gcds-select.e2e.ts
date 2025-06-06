@@ -113,7 +113,7 @@ describe('gcds-select', () => {
         };
       };
 
-      // @ts-expect-error Old format of validator is different then new format. Will still run in JS environments
+      // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
       (select as HTMLGcdsSelectElement).validator = [matchAnswer('Yes')];
     });
 

@@ -248,7 +248,7 @@ describe('gcds-file-uploader', () => {
       };
 
       (input as HTMLGcdsFileUploaderElement).validator = [
-        // @ts-expect-error Old format of validator is different then new format. Will still run in JS environments
+        // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
         matchFile('gcds-file-uploader.spec.tsx'),
       ];
     });
