@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.36.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0-canary.0) (2025-06-09)
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* form validators ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
+
 ## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0) (2025-06-04)
 
 
