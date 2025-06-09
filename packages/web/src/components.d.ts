@@ -366,7 +366,7 @@ export namespace Components {
           * Array of validators
          */
         "validator": Array<
-    string | ValidatorEntry | Validator<string>
+    string | ValidatorEntry | Validator<string | number | FileList>
   >;
         /**
           * Value for a file uploader element.
@@ -2183,7 +2183,7 @@ declare namespace LocalJSX {
           * Array of validators
          */
         "validator"?: Array<
-    string | ValidatorEntry | Validator<string>
+    string | ValidatorEntry | Validator<string | number | FileList>
   >;
         /**
           * Value for a file uploader element.
