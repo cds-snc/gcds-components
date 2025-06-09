@@ -17,7 +17,7 @@
 | `options` _(required)_ | `options`       | Options to render checkboxes buttons                               | `CheckboxObject[] \| string`                        | `undefined` |
 | `required`             | `required`      | Specifies if the checkboxes are required or not.                   | `boolean`                                           | `undefined` |
 | `validateOn`           | `validate-on`   | Set event to call validator                                        | `"blur" \| "other" \| "submit"`                     | `undefined` |
-| `validator`            | --              | Array of validators                                                | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validator`            | `validator`     | Array of validators                                                | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
 | `value`                | `value`         | Value for checkboxes component.                                    | `string \| string[]`                                | `[]`        |
 
 

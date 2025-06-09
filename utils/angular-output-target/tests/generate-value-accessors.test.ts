@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { createValueAccessor, ValueAccessor } from '../src/generate-value-accessors';
+import {
+  createValueAccessor,
+  ValueAccessor,
+} from '../src/generate-value-accessors';
 import path from 'path';
 import fs from 'fs';
 
@@ -13,7 +16,10 @@ describe('createValueAccessor', () => {
       ],
     };
 
-    const srcFilePath = path.join(__dirname, '../resources/control-value-accessors/text-value-accessor.ts');
+    const srcFilePath = path.join(
+      __dirname,
+      '../resources/control-value-accessors/text-value-accessor.ts',
+    );
     const srcFile = fs.readFileSync(srcFilePath, { encoding: 'utf-8' });
     const finalText = createValueAccessor(srcFile, valueAccessor, 'component');
     expect(finalText.trim()).toMatchInlineSnapshot(`
@@ -35,7 +41,7 @@ describe('createValueAccessor', () => {
             useExisting: TextValueAccessor,
             multi: true
           }
-        ]
+        ],standalone: false
       })
       export class TextValueAccessor extends ValueAccessor {
         constructor(el: ElementRef) {
@@ -53,7 +59,10 @@ describe('createValueAccessor', () => {
       ],
     };
 
-    const srcFilePath = path.join(__dirname, '../resources/control-value-accessors/text-value-accessor.ts');
+    const srcFilePath = path.join(
+      __dirname,
+      '../resources/control-value-accessors/text-value-accessor.ts',
+    );
     const srcFile = fs.readFileSync(srcFilePath, { encoding: 'utf-8' });
     const finalText = createValueAccessor(srcFile, valueAccessor, 'standalone');
     expect(finalText.trim()).toMatchInlineSnapshot(`
