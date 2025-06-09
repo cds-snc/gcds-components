@@ -1,12 +1,16 @@
 import {
   requiredField,
+  requiredEmailField,
+  requiredSelectField,
   requiredFileInput,
   requiredDateInput,
   requiredCheckboxGroup,
   requiredCheckboxSingle,
+  requiredRadio,
 } from '../input-validators';
 import { Blob } from 'buffer';
 import { dateInputErrorMessage } from '../input-validators';
+import { ValidatorReturn } from '../../validator';
 
 interface MockFile {
   name: string;
@@ -39,77 +43,144 @@ const createMockFileList = (files: MockFile[]) => {
 };
 
 describe('Required input validator', () => {
-  const results: Array<{ value: string; res: boolean }> = [
-    { value: 'Text field value', res: true },
-    { value: '', res: false },
-    { value: ' ', res: false },
+  const reason = {
+    en: 'Enter information to continue.',
+    fr: 'Saisissez des renseignements pour continuer.',
+  };
+  const results: Array<{ value: string; res: ValidatorReturn }> = [
+    { value: 'Text field value', res: { valid: true, reason } },
+    { value: '', res: { valid: false, reason } },
+    { value: ' ', res: { valid: false, reason } },
   ];
   results.forEach(i =>
-    it(`Should return ${i.res} for ${i.value}`, () => {
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
       expect(requiredField.validate(i.value)).toEqual(i.res);
     }),
   );
 });
+describe('Required email validator', () => {
+  const reason = {
+    en: 'Enter a valid email address to continue. Use a standard format. Example: name@address.ca.',
+    fr: 'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
+  };
+  const results: Array<{ value: string; res: ValidatorReturn }> = [
+    { value: 'test@test.ca', res: { valid: true, reason } },
+    { value: '', res: { valid: false, reason } },
+    { value: ' ', res: { valid: false, reason } },
+    { value: 'test@test', res: { valid: false, reason } },
+  ];
+  results.forEach(i =>
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
+      expect(requiredEmailField.validate(i.value)).toEqual(i.res);
+    }),
+  );
+});
+describe('Required select validator', () => {
+  const reason = {
+    en: 'Choose an option to continue.',
+    fr: 'Choisissez une option pour continuer.',
+  };
+  const results: Array<{ value: string; res: ValidatorReturn }> = [
+    { value: 'Chosen option', res: { valid: true, reason } },
+    { value: '', res: { valid: false, reason } },
+  ];
+  results.forEach(i =>
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
+      expect(requiredSelectField.validate(i.value)).toEqual(i.res);
+    }),
+  );
+});
 describe('Required file input validator', () => {
-  const results: Array<{ value: FileList; res: boolean }> = [
+  const reason = {
+    en: 'You must upload a file to continue.',
+    fr: 'Vous devez téléverser un fichier pour continuer.',
+  };
+  const results: Array<{ value: FileList; res: ValidatorReturn }> = [
     {
       value: createMockFileList([
         { body: 'test', mimeType: 'text/plain', name: 'test1.txt' },
         { body: 'test', mimeType: 'text/plain', name: 'test2.txt' },
       ]),
-      res: true,
+      res: { valid: true, reason },
     },
     {
       value: createMockFileList([
         { body: 'test', mimeType: 'text/plain', name: 'test1.txt' },
       ]),
-      res: true,
+      res: { valid: true, reason },
     },
-    { value: createMockFileList([]), res: false },
+    { value: createMockFileList([]), res: { valid: false, reason } },
   ];
   results.forEach(i =>
-    it(`Should return ${i.res} for ${i.value}`, () => {
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
       expect(requiredFileInput.validate(i.value)).toEqual(i.res);
     }),
   );
 });
 
-describe('Required checkbox group validator', () => {
-  const results: Array<{ value: string[]; res: boolean }> = [
-    { value: ['value1', 'value2'], res: true },
-    { value: ['value1'], res: true },
-    { value: [], res: false },
+describe('Required radios validator', () => {
+  const reason = {
+    en: 'Choose an option to continue.',
+    fr: 'Choisissez une option pour continuer.',
+  };
+  const results: Array<{ value: string; res: ValidatorReturn }> = [
+    { value: 'value1', res: { valid: true, reason } },
+    { value: '', res: { valid: false, reason } },
   ];
   results.forEach(i =>
-    it(`Should return ${i.res} for ${i.value}`, () => {
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
+      expect(requiredRadio.validate(i.value)).toEqual(i.res);
+    }),
+  );
+});
+
+describe('Required checkbox group validator', () => {
+  const reason = {
+    en: 'Choose an option to continue.',
+    fr: 'Choisissez une option pour continuer.',
+  };
+  const results: Array<{ value: string[]; res: ValidatorReturn }> = [
+    { value: ['value1', 'value2'], res: { valid: true, reason } },
+    { value: ['value1'], res: { valid: true, reason } },
+    { value: [], res: { valid: false, reason } },
+  ];
+  results.forEach(i =>
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
       expect(requiredCheckboxGroup.validate(i.value)).toEqual(i.res);
     }),
   );
 });
 
 describe('Required checkbox single validator', () => {
-  const results: Array<{ value: string[]; res: boolean }> = [
-    { value: ['value1'], res: true },
-    { value: [], res: false },
+  const reason = {
+    en: 'You must check the box to continue.',
+    fr: 'Vous devez cocher la case pour continuer.',
+  };
+  const results: Array<{ value: string[]; res: ValidatorReturn }> = [
+    { value: ['value1'], res: { valid: true, reason } },
+    { value: [], res: { valid: false, reason } },
   ];
   results.forEach(i =>
-    it(`Should return ${i.res} for ${i.value}`, () => {
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
       expect(requiredCheckboxSingle.validate(i.value)).toEqual(i.res);
     }),
   );
 });
 
 describe('Required date input validator', () => {
-  const results: Array<{ value: string; res: object }> = [
-    { value: '1991-03-04', res: { valid: true } },
-    { value: '1992-02-29', res: { valid: true } },
-    { value: '1991-03', res: { valid: true } },
+  const results: Array<{ value: string; res: ValidatorReturn }> = [
+    { value: '1991-03-04', res: { valid: true, reason: { en: '', fr: '' } } },
+    { value: '1992-02-29', res: { valid: true, reason: { en: '', fr: '' } } },
+    { value: '1991-03', res: { valid: true, reason: { en: '', fr: '' } } },
     {
       value: '--',
       res: {
         valid: false,
         errors: { day: true, month: true, year: true },
-        reason: { en: dateInputErrorMessage.en.all, fr: dateInputErrorMessage.fr.all },
+        reason: {
+          en: dateInputErrorMessage.en.all,
+          fr: dateInputErrorMessage.fr.all,
+        },
       },
     },
     {
@@ -117,7 +188,10 @@ describe('Required date input validator', () => {
       res: {
         valid: false,
         errors: { day: true, month: true, year: true },
-        reason: { en: dateInputErrorMessage.en.all, fr: dateInputErrorMessage.fr.all },
+        reason: {
+          en: dateInputErrorMessage.en.all,
+          fr: dateInputErrorMessage.fr.all,
+        },
       },
     },
     {
@@ -254,7 +328,7 @@ describe('Required date input validator', () => {
     },
   ];
   results.forEach(i =>
-    it(`Should return ${i.res['valid']} for ${i.value}`, () => {
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
       expect(requiredDateInput.validate(i.value)).toEqual(i.res);
     }),
   );

@@ -14,6 +14,7 @@ import {
 } from '@stencil/core';
 import {
   assignLanguage,
+  handleValidationResult,
   inheritAttributes,
   observerConfig,
 } from '../../utils/utils';
@@ -23,6 +24,7 @@ import {
   ValidatorEntry,
   getValidator,
   requiredValidator,
+  ValidatorOld,
 } from '../../validators';
 
 @Component({
@@ -41,7 +43,7 @@ export class GcdsInput {
 
   private shadowElement?: HTMLElement;
 
-  _validator: Validator<string> = defaultValidator;
+  _validator: Validator<string> | ValidatorOld<string> = defaultValidator;
 
   /**
    * Props
@@ -134,15 +136,13 @@ export class GcdsInput {
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -231,16 +231,14 @@ export class GcdsInput {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({
-        id: `#${this.inputId}`,
-        message: `${this.label} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit({ id: `#${this.inputId}` });
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsInputElement,
+      this._validator.validate(this.value),
+      this.label,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   /**
@@ -314,14 +312,11 @@ export class GcdsInput {
     this.validateDisabledInput();
     this.validateHasError();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, 'input', this.type);
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
+    this.validateValidator();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
       'placeholder',
@@ -329,12 +324,6 @@ export class GcdsInput {
 
     this.internals.setFormValue(this.value ? this.value : null);
     this.initialValue = this.value ? this.value : null;
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
   }
 
   render() {

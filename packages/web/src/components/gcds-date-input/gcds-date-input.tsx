@@ -17,6 +17,7 @@ import {
   observerConfig,
   isValidDate,
   logError,
+  handleValidationResult,
 } from '../../utils/utils';
 import {
   Validator,
@@ -127,15 +128,13 @@ export class GcdsDateInput {
   >;
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * States
@@ -221,27 +220,19 @@ export class GcdsDateInput {
    */
   @Method()
   async validate() {
-    const validationResult = this._validator.validate(
-      this.format === 'full'
-        ? `${this.yearValue}-${this.monthValue}-${this.dayValue}`
-        : `${this.yearValue}-${this.monthValue}`,
+    this.hasError = handleValidationResult(
+      this.el as HTMLGcdsDateInputElement,
+      this._validator.validate(
+        this.format === 'full'
+          ? `${this.yearValue}-${this.monthValue}-${this.dayValue}`
+          : `${this.yearValue}-${this.monthValue}`,
+      ),
+      this.legend,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+      { day: false, month: false, year: false },
     );
-    if (!validationResult.valid) {
-      this.errorMessage = validationResult.reason[this.lang];
-      this.hasError = { ...validationResult.errors };
-      this.gcdsError.emit({
-        message: `${this.legend} - ${this.errorMessage}`,
-        errors: validationResult.errors,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit();
-      this.hasError = {
-        day: false,
-        month: false,
-        year: false,
-      };
-    }
   }
 
   /*
@@ -400,14 +391,11 @@ export class GcdsDateInput {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, 'date-input');
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
+    this.validateValidator();
 
     const valid = this.validateRequiredProps();
 
@@ -421,12 +409,6 @@ export class GcdsDateInput {
       this.setValue();
 
       this.initialValue = this.value;
-    }
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
     }
   }
 
