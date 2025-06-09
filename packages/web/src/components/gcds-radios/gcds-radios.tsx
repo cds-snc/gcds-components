@@ -20,6 +20,7 @@ import {
   logError,
   handleErrors,
   isValid,
+  handleValidationResult,
 } from '../../utils/utils';
 import {
   Validator,
@@ -218,15 +219,14 @@ export class GcdsRadios {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({
-        message: `${this.legend} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit();
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsRadiosElement,
+      this._validator.validate(this.value),
+      this.legend,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   /**
