@@ -20,7 +20,7 @@
 | `required`                | `required`        | Specifies if a form field is required or not.                          | `boolean`                                           | `false`     |
 | `rows`                    | `rows`            | Default value for textarea rows.                                       | `number`                                            | `5`         |
 | `textareaId` _(required)_ | `textarea-id`     | Id attribute for a textarea element.                                   | `string`                                            | `undefined` |
-| `validateOn`              | `validate-on`     | Set event to call validator                                            | `"blur" \| "other" \| "submit"`                     | `undefined` |
+| `validateOn`              | `validate-on`     | Set event to call validator                                            | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
 | `validator`               | `validator`       | Array of validators                                                    | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
 | `value`                   | `value`           | Default value for an input element.                                    | `string`                                            | `undefined` |
 

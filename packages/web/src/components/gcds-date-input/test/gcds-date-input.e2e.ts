@@ -262,6 +262,111 @@ it('Validation - Invalid day', async () => {
   ).toEqual(dateInputErrorMessage.en.invalidday);
 });
 
+it('Validation - Custom validator', async () => {
+  const page = await newE2EPage();
+  await page.setContent(
+    '<gcds-date-input legend="Date input" name="date" format="full" required></gcds-date-input>',
+  );
+
+  await page.evaluate(() => {
+    const dateInput = document.querySelector('gcds-date-input');
+
+    const expectYear = (year: string) => {
+      return {
+        validate: (value: string) => {
+          const dates = value.split('-');
+          return {
+            valid: dates[0] === year,
+            reason: {
+              en: `The entered year must be ${year}.`,
+              fr: `The entered year must be ${year}.`,
+            },
+          };
+        },
+      };
+    };
+
+    (dateInput as HTMLGcdsDateInputElement).validator = [expectYear('1991')];
+  });
+
+  await page.waitForChanges();
+
+  await page.select('gcds-date-input >>> gcds-select >>> select', '03');
+  await page.type('gcds-date-input >>> .gcds-date-input__day >>> input', '03');
+  await page.type(
+    'gcds-date-input >>> .gcds-date-input__year >>> input',
+    '199',
+  );
+
+  const dateInput = await page.find('gcds-date-input');
+
+  dateInput.callMethod('validate');
+  await page.waitForChanges();
+
+  expect(
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual('The entered year must be 1991.');
+
+  await page.type('gcds-date-input >>> .gcds-date-input__year >>> input', '1');
+
+  dateInput.callMethod('validate');
+  await page.waitForChanges();
+
+  expect(await page.$('gcds-date-input >>> gcds-error-message')).toBe(null);
+});
+
+it('Validation - Custom validator old format', async () => {
+  const page = await newE2EPage();
+  await page.setContent(
+    '<gcds-date-input legend="Date input" name="date" format="full" required></gcds-date-input>',
+  );
+
+  await page.evaluate(() => {
+    const dateInput = document.querySelector('gcds-date-input');
+
+    const expectYear = (year: string) => {
+      return {
+        validate: (value: string) => {
+          const dates = value.split('-');
+          return dates[0] === year;
+        },
+        errorMessage: {
+          en: `The entered year must be ${year}.`,
+          fr: `The entered year must be ${year}.`,
+        },
+      };
+    };
+
+    // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
+    (dateInput as HTMLGcdsDateInputElement).validator = [expectYear('1991')];
+  });
+
+  await page.waitForChanges();
+
+  await page.select('gcds-date-input >>> gcds-select >>> select', '03');
+  await page.type('gcds-date-input >>> .gcds-date-input__day >>> input', '03');
+  await page.type(
+    'gcds-date-input >>> .gcds-date-input__year >>> input',
+    '199',
+  );
+
+  const dateInput = await page.find('gcds-date-input');
+
+  dateInput.callMethod('validate');
+  await page.waitForChanges();
+
+  expect(
+    (await page.find('gcds-date-input >>> gcds-error-message')).innerHTML,
+  ).toEqual('The entered year must be 1991.');
+
+  await page.type('gcds-date-input >>> .gcds-date-input__year >>> input', '1');
+
+  dateInput.callMethod('validate');
+  await page.waitForChanges();
+
+  expect(await page.$('gcds-date-input >>> gcds-error-message')).toBe(null);
+});
+
 /**
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
