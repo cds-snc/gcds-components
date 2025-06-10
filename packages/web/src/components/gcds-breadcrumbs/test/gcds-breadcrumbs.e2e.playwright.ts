@@ -3,12 +3,19 @@ const { AxeBuilder } = require('@axe-core/playwright');
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
+test.beforeEach(async ({ page }) => {
+  await page.goto(
+    '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
+  );
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-breadcrumbs');
+    return host && host.shadowRoot;
+  });
+});
+
 test.describe('gcds-breadcrumbs', () => {
   test('should render gen', async ({ page }) => {
-    await page.goto(
-      '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
-    );
-
     const component = await page.locator('gcds-breadcrumbs');
     await expect(component).toHaveClass(`hydrated`);
 
@@ -24,10 +31,6 @@ test.describe('gcds-breadcrumbs', () => {
 
 test.describe('gcds-breadcrumbs a11y tests', () => {
   test('Colour contrast', async ({ page }) => {
-    await page.goto(
-      '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
-    );
-
     // axe-core seems to have an issue with colour contrast testing <slot> elements so ad dtext to element manually
     await page
       .locator('a')
@@ -44,10 +47,6 @@ test.describe('gcds-breadcrumbs a11y tests', () => {
     }
   });
   test('Proper list structure', async ({ page }) => {
-    await page.goto(
-      '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
-    );
-
     try {
       const results = await new AxeBuilder({ page })
         .withRules(['list'])
@@ -59,10 +58,6 @@ test.describe('gcds-breadcrumbs a11y tests', () => {
     }
   });
   test('Proper link names', async ({ page }) => {
-    await page.goto(
-      '/components/gcds-breadcrumbs/test/gcds-breadcrumbs.e2e.html',
-    );
-
     try {
       const results = await new AxeBuilder({ page })
         .withRules(['link-name'])
