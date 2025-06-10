@@ -24,7 +24,7 @@
     "build": "stencil build --docs",
     "postbuild": "node ./scripts/copyCSSFile.js",
     "start": "stencil build --dev --watch --serve",
-    "pretest": "cd ../.. && npm run patch:stenciljs && npm run build",
+    "pretest": "cd ../.. && npm run patch:stenciljs",
     "test": "npm run test.spec && npm run test.e2e",
     "test.spec": "stencil test --spec",
     "test.e2e": "npx playwright test",
