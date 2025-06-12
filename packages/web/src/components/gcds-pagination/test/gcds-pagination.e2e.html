@@ -27,8 +27,15 @@
   </head>
 
   <body>
-    <form novalidate>
-      <gcds-error-summary> </gcds-error-summary>
-    </form>
+    <gcds-pagination
+      display="simple"
+      label="Pagination"
+      previous-href="#previous"
+      previous-label="Title of page"
+      next-href="#next"
+      next-label="3 of 3"
+    ></gcds-pagination>
+    <gcds-pagination label="Pagination" total-pages="15" current-page="9">
+    </gcds-pagination>
   </body>
 </html>
