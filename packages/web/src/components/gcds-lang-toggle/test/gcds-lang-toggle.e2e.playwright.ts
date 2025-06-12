@@ -13,11 +13,22 @@ test.beforeEach(async ({ page }) => {
     return host && host.shadowRoot;
   });
 });
+
 test.describe('gcds-lang-toggle', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-lang-toggle');
-    for (let i = 0; i < (await element.count()); i++) {
-      await expect(element.nth(i)).toHaveClass(`hydrated`);
+    const langToggles = await page.locator('gcds-lang-toggle');
+    const count = await langToggles.count();
+
+    for (let i = 0; i < count; i++) {
+      const langToggle = langToggles.nth(i);
+
+      // Wait for element to attach and become visible, allowing up to 10s
+      await langToggle.waitFor({ state: 'attached' });
+      await langToggle.waitFor({ state: 'visible' });
+      await langToggle.waitFor({ timeout: 10000 });
+
+      // Check if it has the 'hydrated' class
+      await expect(langToggle).toHaveClass('hydrated');
     }
   });
 });

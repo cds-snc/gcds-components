@@ -17,10 +17,14 @@ test.beforeEach(async ({ page }) => {
 test.describe('gcds-error-summary', () => {
   test('renders', async ({ page }) => {
     const element = await page.locator('gcds-error-summary');
+
+    // Wait for element state
     await element.waitFor({ state: 'hidden' });
 
-    expect(element).toHaveClass('hydrated');
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
+
   test('renders from listen', async ({ page }) => {
     const form = await page.locator('form');
     await form.waitFor({ state: 'hidden' });

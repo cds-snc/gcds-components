@@ -14,9 +14,19 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('gcds-link', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-link');
-    for (let i = 0; i < (await element.count()); i++) {
-      await expect(element.nth(i)).toHaveClass(`hydrated`);
+    const links = await page.locator('gcds-link');
+    const count = await links.count();
+
+    for (let i = 0; i < count; i++) {
+      const link = links.nth(i);
+
+      // Wait for element to attach and become visible, allowing up to 10s
+      await link.waitFor({ state: 'attached' });
+      await link.waitFor({ state: 'visible' });
+      await link.waitFor({ timeout: 10000 });
+
+      // Check if it has the 'hydrated' class
+      await expect(link).toHaveClass('hydrated');
     }
   });
 });

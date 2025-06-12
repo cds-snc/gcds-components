@@ -4,29 +4,29 @@ import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/components/gcds-alert/test/gcds-alert.e2e.html');
+  await page.goto('/components/gcds-notice/test/gcds-notice.e2e.html');
 
   await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-alert');
+    const host = document.querySelector('gcds-notice');
     return host && host.shadowRoot;
   });
 });
 
-test.describe('gcds-alert', () => {
+test.describe('gcds-notice', () => {
   test('renders', async ({ page }) => {
-    const alerts = await page.locator('gcds-alert');
-    const count = await alerts.count();
+    const notices = await page.locator('gcds-notice');
+    const count = await notices.count();
 
     for (let i = 0; i < count; i++) {
-      const alert = alerts.nth(i);
+      const notice = notices.nth(i);
 
       // Wait for element to attach and become visible, allowing up to 10s
-      await alert.waitFor({ state: 'attached' });
-      await alert.waitFor({ state: 'visible' });
-      await alert.waitFor({ timeout: 10000 });
+      await notice.waitFor({ state: 'attached' });
+      await notice.waitFor({ state: 'visible' });
+      await notice.waitFor({ timeout: 10000 });
 
       // Check if it has the 'hydrated' class
-      await expect(alert).toHaveClass('hydrated');
+      await expect(notice).toHaveClass('hydrated');
     }
   });
 });
@@ -35,25 +35,25 @@ test.describe('gcds-alert', () => {
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
-const roles = ['danger', 'info', 'success', 'warning'];
+const types = ['danger', 'info', 'success', 'warning'];
 
-test.describe('gcds-alert a11y tests', () => {
+test.describe('gcds-notice a11y tests', () => {
   /**
    * Colour contrast test
    */
-  roles.forEach(role => {
-    test(`colour contrast ${role} alert`, async ({ page }) => {
+  types.forEach(type => {
+    test(`colour contrast ${type} notice`, async ({ page }) => {
       await page.setContent(`
-        <gcds-alert heading="Main notification title" alert-role="${role}">
+        <gcds-notice notice-title="Title" notice-title-tag="h2" type="${type}">
           <p>Testing slot content.</p>
-        </gcds-alert>
+        </gcds-notice>
       `);
 
       // Wait for shadow DOM to be available and component to hydrate
       await page.waitForFunction(() => {
-        const alert = document.querySelector('gcds-alert');
+        const notice = document.querySelector('gcds-notice');
         return (
-          alert && alert.shadowRoot && alert.classList.contains('hydrated')
+          notice && notice.shadowRoot && notice.classList.contains('hydrated')
         );
       });
 

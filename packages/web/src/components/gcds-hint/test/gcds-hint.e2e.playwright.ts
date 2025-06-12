@@ -11,11 +11,18 @@ test.beforeEach(async ({ page }) => {
     return host && host.shadowRoot;
   });
 });
+
 test.describe('gcds-hint', () => {
   test('renders', async ({ page }) => {
     const element = await page.locator('gcds-hint');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
     await element.waitFor({ timeout: 10000 });
-    expect(element).toHaveClass('hydrated');
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
 });
 

@@ -13,12 +13,23 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('gcds-button', () => {
-  test('should render', async ({ page }) => {
+  test('renders', async ({ page }) => {
     const buttons = await page.locator('gcds-button');
-    for (let i = 0; i < (await buttons.count()); i++) {
-      await expect(buttons.nth(i)).toHaveClass(`hydrated`);
+    const count = await buttons.count();
+
+    for (let i = 0; i < count; i++) {
+      const button = buttons.nth(i);
+
+      // Wait for element to attach and become visible, allowing up to 10s
+      await button.waitFor({ state: 'attached' });
+      await button.waitFor({ state: 'visible' });
+      await button.waitFor({ timeout: 10000 });
+
+      // Check if it has the 'hydrated' class
+      await expect(button).toHaveClass('hydrated');
     }
   });
+
   test('fires gcdsClick and click event', async ({ page }) => {
     const gcdsClick = await page.spyOnEvent('gcdsClick');
     const click = await page.spyOnEvent('click');
@@ -28,6 +39,7 @@ test.describe('gcds-button', () => {
     expect(gcdsClick.events.length).toBe(1);
     expect(click.events.length).toBe(1);
   });
+
   test('disabled - will not fire gcdsClick and click event', async ({
     page,
   }) => {
@@ -73,6 +85,7 @@ test.describe('gcds-button a11y tests', () => {
       console.error(e);
     }
   });
+
   test('Proper link names', async ({ page }) => {
     try {
       const results = await new AxeBuilder({ page })
@@ -84,6 +97,7 @@ test.describe('gcds-button a11y tests', () => {
       console.error(e);
     }
   });
+
   test('Proper button names', async ({ page }) => {
     try {
       const results = await new AxeBuilder({ page })

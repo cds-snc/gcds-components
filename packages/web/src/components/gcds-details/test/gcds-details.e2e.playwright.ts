@@ -15,9 +15,16 @@ test.beforeEach(async ({ page }) => {
 test.describe('gcds-details', () => {
   test('renders', async ({ page }) => {
     const element = await page.locator('gcds-details');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
     await element.waitFor({ timeout: 10000 });
-    expect(element).toHaveClass('hydrated');
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
+
   test('fires gcdsClick and click event', async ({ page }) => {
     const gcdsClick = await page.spyOnEvent('gcdsClick');
     const click = await page.spyOnEvent('click');
@@ -48,6 +55,7 @@ test.describe('gcds-details a11y tests', () => {
       console.error(e);
     }
   });
+
   test('button name', async ({ page }) => {
     try {
       const results = await new AxeBuilder({ page })

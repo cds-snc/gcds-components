@@ -13,10 +13,18 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('gcds-card', () => {
-  test('should render', async ({ page }) => {
-    const card = await page.locator('gcds-card');
-    await expect(card).toHaveClass(`hydrated`);
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-card');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
+
   test('fires gcdsClick and click event', async ({ page }) => {
     await page.goto('/components/gcds-card/test/gcds-card.e2e.html');
 
@@ -68,7 +76,8 @@ test.describe('gcds-card a11y tests', () => {
     expect(
       await page.evaluate(
         () =>
-          window.document.activeElement.shadowRoot.activeElement.textContent,
+          window.document.activeElement?.shadowRoot?.activeElement
+            ?.textContent || '',
       ),
     ).toEqual(linkText);
   });

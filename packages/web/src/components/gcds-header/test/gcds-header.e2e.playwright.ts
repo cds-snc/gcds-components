@@ -15,8 +15,14 @@ test.beforeEach(async ({ page }) => {
 test.describe('gcds-header', () => {
   test('renders', async ({ page }) => {
     const element = await page.locator('gcds-header');
-    await element.waitFor({ state: 'attached', timeout: 10000 });
-    expect(element).toHaveClass('hydrated');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
 });
 
