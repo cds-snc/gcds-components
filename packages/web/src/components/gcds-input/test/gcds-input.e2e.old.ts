@@ -11,6 +11,7 @@ describe('gcds-input', () => {
     const element = await await page.find('gcds-input >>> input');
     expect(element.getAttribute('id')).toEqual('input-renders');
   });
+
   it('Submit using enter', async () => {
     const page = await newE2EPage();
 
@@ -30,6 +31,7 @@ describe('gcds-input', () => {
 
     expect(page.url()).toContain('?enter-submit=red');
   });
+
   it('Validation', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -55,6 +57,7 @@ describe('gcds-input', () => {
 
     expect(await page.$('gcds-input >>> gcds-error-message')).toBe(null);
   });
+
   it('Validation - custom validator', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -107,6 +110,7 @@ describe('gcds-input', () => {
 
     expect(await page.$('gcds-input >>> gcds-error-message')).toBe(null);
   });
+
   it('Validation - custom validator old format', async () => {
     const page = await newE2EPage();
     await page.setContent(
