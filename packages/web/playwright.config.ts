@@ -6,7 +6,7 @@ expect.extend(matchers);
 export default createConfig({
   // You can override Playwright config options here
   testDir: './src',
-  testMatch: '*.e2e.playwright.ts',
+  testMatch: '*.e2e.ts',
   timeout: 60000,
   use: {
     baseURL: 'http://localhost:3333/',
