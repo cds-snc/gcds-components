@@ -61,6 +61,9 @@ test.describe('gcds-button', () => {
  */
 
 test.describe('gcds-button a11y tests', () => {
+  /**
+   * Colour contrast
+   */
   test('Colour contrast', async ({ page }) => {
     // axe-core seems to have an issue with colour contrast testing <slot> elements so ad dtext to element manually
     await page
@@ -86,6 +89,9 @@ test.describe('gcds-button a11y tests', () => {
     }
   });
 
+  /**
+   * Proper names
+   */
   test('Proper link names', async ({ page }) => {
     try {
       const results = await new AxeBuilder({ page })
@@ -108,5 +114,64 @@ test.describe('gcds-button a11y tests', () => {
     } catch (e) {
       console.error(e);
     }
+  });
+
+  /**
+   * Keyboard focus
+   */
+  test('Keyboard focus: button', async ({ page }) => {
+    // Get the visible button text inside the first gcds-button
+    const buttonText = await page
+      .locator('gcds-button')
+      .first()
+      .locator('button')
+      .first()
+      .innerText();
+
+    await page.keyboard.press('Tab');
+
+    // Ensure gcds-button element is focused
+    const activeTagName = await page.evaluate(
+      () => document.activeElement?.tagName,
+    );
+    expect(activeTagName).toBe('GCDS-BUTTON');
+
+    // Get focused gcds-button's innerText
+    const shadowButtonText = await page.evaluate(() => {
+      const active = document.activeElement;
+      if (!active?.shadowRoot) return '';
+      const button = active.shadowRoot.querySelector('button');
+      return button?.textContent?.trim() || '';
+    });
+
+    expect(shadowButtonText).toBe(buttonText);
+  });
+
+  test('Keyboard focus: link', async ({ page }) => {
+    // Get the visible button text inside the first gcds-button
+    const buttonText = await page
+      .locator('gcds-button')
+      .nth(11)
+      .locator('a')
+      .first()
+      .innerText();
+
+    await page.keyboard.press('Tab');
+
+    // Ensure gcds-button element is focused
+    const activeTagName = await page.evaluate(
+      () => document.activeElement?.tagName,
+    );
+    expect(activeTagName).toBe('GCDS-BUTTON');
+
+    // Get focused gcds-button's innerText
+    const shadowButtonText = await page.evaluate(() => {
+      const active = document.activeElement;
+      if (!active?.shadowRoot) return '';
+      const button = active.shadowRoot.querySelector('a');
+      return button?.textContent?.trim() || '';
+    });
+
+    expect(shadowButtonText).toBe(buttonText);
   });
 });
