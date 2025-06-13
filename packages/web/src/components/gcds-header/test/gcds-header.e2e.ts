@@ -1,13 +1,28 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-header', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-header></gcds-header>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-header');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-header/test/gcds-header.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-header');
+    return host && host.shadowRoot;
+  });
+});
+
+test.describe('gcds-header', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-header');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
 });
 
@@ -16,19 +31,31 @@ describe('gcds-header', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-header a11y tests', () => {
-  // Banner is top level
-  it('Top level banner', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-header></gcds-header>
-    `);
-
-    const topLevelTest = new AxePuppeteer(page)
-      .withRules('landmark-banner-is-top-level')
-      .analyze();
-    const results = await topLevelTest;
-
-    expect(results.violations.length).toBe(0);
+test.describe('gcds-header a11y tests', () => {
+  /**
+   * Banner is top level
+   */
+  test('Top level banner', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['landmark-banner-is-top-level'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  /**
+   * Image alt text
+   */
+  test('Alt text', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['image-alt'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });

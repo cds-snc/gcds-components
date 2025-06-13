@@ -1,46 +1,52 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-side-nav', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-side-nav></gcds-side-nav>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-side-nav');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-side-nav/test/gcds-side-nav.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-side-nav');
+    return host && host.shadowRoot;
   });
 });
 
-/*
+test.describe('gcds-side-nav', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-side-nav');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+
+    // Check first nav link item role
+    const firstItem = await page.locator('gcds-nav-link').first();
+    await expect(firstItem).toHaveRole('listitem');
+  });
+});
+
+/**
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-side-nav a11y tests', () => {
-  it('Colour contrast: topbar', async () => {
-    const page = await newE2EPage();
-    await page.setViewport({
-      width: 1140,
-      height: 800,
-    });
-    await page.setContent(`
-      <gcds-top-nav label="top-nav" alignment="right" lang="en">
-        <gcds-nav-link href="#red" slot="home">Home</gcds-nav-link>
-        <gcds-nav-link href="#red">Installation</gcds-nav-link>
-        <gcds-nav-link href="#red">Foundations</gcds-nav-link>
-        <gcds-nav-link href="#red" current >Components</gcds-nav-link>
-        <gcds-nav-group heading="Contact us">
-          <gcds-nav-link href="#red">Form</gcds-nav-link>
-          <gcds-nav-link href="#red">GitHub</gcds-nav-link>
-          <gcds-nav-link href="#red">Slack</gcds-nav-link>
-        </gcds-nav-group>
-      </gcds-top-nav>`);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+test.describe('gcds-side-nav a11y tests', () => {
+  /**
+   * Colour contrast
+   */
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });

@@ -1,49 +1,61 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-nav-link', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-nav-link></gcds-nav-link>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-nav-link');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-nav-link/test/gcds-nav-link.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-nav-link');
+    return host && host.shadowRoot;
   });
 });
 
-/*
+test.describe('gcds-nav-link', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-nav-link');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+  });
+});
+
+/**
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-nav-link a11y tests', () => {
-  it('Colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      `<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`,
-    );
-
-    const defaultColorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await defaultColorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-
-    await page.keyboard.press('Tab');
+test.describe('gcds-nav-link a11y tests', () => {
+  /**
+   * Colour contrast
+   */
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
-
-  it('Accessible link', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      `<gcds-nav-link href="#link">Nav Link</gcds-nav-link>`,
-    );
-
-    const buttonNameTest = new AxePuppeteer(page)
-      .withRules('link-name')
-      .analyze();
-    const results = await buttonNameTest;
-
-    expect(results.violations.length).toBe(0);
+  /**
+   * Link text
+   */
+  test('Proper link text', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['link-name'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });

@@ -1,36 +1,57 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('gcds-sr-only', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-sr-only></gcds-sr-only>');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-sr-only/test/gcds-sr-only.e2e.html');
 
-    const element = await page.find('gcds-sr-only');
-    expect(element).toHaveClass('hydrated');
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-sr-only');
+    return host && host.shadowRoot;
   });
-  
-  it('Check that the element confines its display to a pixel and hides the text', async () => {
-    const page = await newE2EPage();
-    await page.setContent( `
-      <div style="padding: 20px; background-color:#8d201c; color:white">Hello</div>
-      <gcds-sr-only></gcds-sr-only>
-      <div style="padding: 20px; background-color:#2a7da6; color:white;">World</div>
-    `);
+});
 
-    const sizingInfo = await page.evaluate( () => {
-      const elm = document.querySelector( 'gcds-sr-only' );
-      const rectPrevElm = elm.previousElementSibling.getBoundingClientRect();
-      const rectNextElm = elm.nextElementSibling.getBoundingClientRect();
+test.describe('gcds-sr-only', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-sr-only');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+  });
+});
+
+/**
+ * Accessibility tests
+ * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
+ */
+
+test.describe('gcds-sr-only a11y tests', () => {
+  test('element is visually hidden', async ({ page }) => {
+    const styles = await page.evaluate(() => {
+      const element = document.querySelector('gcds-sr-only');
+      const computedStyles = window.getComputedStyle(element);
+
       return {
-        offsetHeight: elm.offsetHeight,
-        offsetWidth: elm.offsetWidth,
-        bottomPrevElm: rectPrevElm.bottom,
-        topNextElm: rectNextElm.top
-      }
+        position: computedStyles.position,
+        width: computedStyles.width,
+        height: computedStyles.height,
+        overflow: computedStyles.overflow,
+        clip: computedStyles.clip,
+        clipPath: computedStyles.clipPath,
+        whiteSpace: computedStyles.whiteSpace,
+      };
     });
 
-    expect( sizingInfo.bottomPrevElm ).toEqual( sizingInfo.topNextElm );
-    expect( sizingInfo.offsetHeight ).toBeGreaterThan( 0 );
-    expect( sizingInfo.offsetWidth ).toBeGreaterThan( 0 );
+    expect(styles.position).toBe('absolute');
+    expect(styles.width).toBe('1px');
+    expect(styles.height).toBe('1px');
+    expect(styles.overflow).toBe('hidden');
+    expect(styles.clip).toBe('rect(1px, 1px, 1px, 1px)');
+    expect(styles.clipPath).toBe('inset(100%)');
+    expect(styles.whiteSpace).toBe('nowrap');
   });
 });

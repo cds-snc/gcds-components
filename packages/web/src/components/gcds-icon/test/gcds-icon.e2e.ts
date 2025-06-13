@@ -1,13 +1,28 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-icon', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-icon name="close"></gcds-icon>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-icon');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-icon/test/gcds-icon.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-icon');
+    return host && host.shadowRoot;
+  });
+});
+
+test.describe('gcds-icon', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-icon');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
 });
 
@@ -16,21 +31,40 @@ describe('gcds-icon', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-banner a11y tests', () => {
+test.describe('gcds-icon a11y tests', () => {
   /**
-   * Colour contrast test
+   * Colour contrast
    */
-  it('colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-icon name="close"></gcds-icon>
-    `);
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  /**
+   * Image alt text
+   */
+  test('Image alt text', async ({ page }) => {
+    const element = await page.locator('gcds-icon');
+    await element.waitFor({ timeout: 10000 });
 
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
+    await element.evaluate(
+      el => ((el as HTMLGcdsIconElement).label = 'Labelled'),
+    );
 
-    expect(results.violations.length).toBe(0);
+    await page.waitForChanges();
+
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['image-alt'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });

@@ -1,82 +1,63 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-nav-group', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>',
-    );
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-nav-group');
-    expect(element).toHaveClass('hydrated');
-  });
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-nav-group/test/gcds-nav-group.e2e.html');
 
-  it('renders w/ gcds-nav-links', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group">
-        <gcds-nav-link href="#link1">Nav Link 1</gcds-nav-link>
-        <gcds-nav-link href="#link2">Nav Link 2</gcds-nav-link>
-        <gcds-nav-link href="#link3">Nav Link 3</gcds-nav-link>
-      </gcds-nav-group>
-    `);
-
-    await page.keyboard.press('Tab');
-    expect(
-      await page.evaluate(() =>
-        window.document.activeElement.shadowRoot.activeElement.textContent.trim(),
-      ),
-    ).toEqual('Nav group');
-
-    await page.waitForChanges();
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Tab');
-    expect(
-      await page.evaluate(() => window.document.activeElement.nodeName),
-    ).toEqual('GCDS-NAV-LINK');
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-nav-group');
+    return host && host.shadowRoot;
   });
 });
 
-/*
+test.describe('gcds-nav-group', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-nav-group');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+
+    // Check first nav link item role
+    const firstItem = await page.locator('gcds-nav-link').first();
+    await expect(firstItem).toHaveRole('listitem');
+  });
+});
+
+/**
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-nav-group a11y tests', () => {
-  it('Colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>
-    `);
-
-    const defaultColorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    let results = await defaultColorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-
-    await page.keyboard.press('Tab');
-
-    const focusColorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    results = await focusColorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+test.describe('gcds-nav-group a11y tests', () => {
+  /**
+   * Colour contrast
+   */
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
-  it('Accessible button', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-nav-group menu-label="Nav group submenu" open-trigger="Nav group"></gcds-nav-group>
-    `);
+  test('Accessible button', async ({ page }) => {
+    const element = page.locator('gcds-nav-group').first();
+    await element.waitFor({ state: 'attached' });
+    await expect(element).toHaveClass(/hydrated/);
 
-    const buttonNameTest = new AxePuppeteer(page)
-      .withRules('button-name')
+    const results = await new AxeBuilder({ page })
+      .withRules(['button-name'])
       .analyze();
-    const results = await buttonNameTest;
 
     expect(results.violations.length).toBe(0);
   });

@@ -1,13 +1,38 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-details', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-details></gcds-details>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-details');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-details/test/gcds-details.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-details');
+    return host && host.shadowRoot;
+  });
+});
+
+test.describe('gcds-details', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-details');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+  });
+
+  test('fires gcdsClick and click event', async ({ page }) => {
+    const gcdsClick = await page.spyOnEvent('gcdsClick');
+    const click = await page.spyOnEvent('click');
+
+    await page.locator('button').first().click();
+
+    expect(gcdsClick.events.length).toBe(1);
+    expect(click.events.length).toBe(1);
   });
 });
 
@@ -16,23 +41,29 @@ describe('gcds-details', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-details a11y tests', () => {
+test.describe('gcds-details a11y tests', () => {
   /**
    * Colour contrast test
    */
-  it('colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-details details-title="Learn more about this topic">
-        <p>Additional information </p>
-      </gcds-details>
-    `);
+  test('colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
+  });
 
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+  test('button name', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['button-name'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });

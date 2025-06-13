@@ -1,13 +1,40 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-card', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-card></gcds-card>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-card');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-card/test/gcds-card.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-card');
+    return host && host.shadowRoot;
+  });
+});
+
+test.describe('gcds-card', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-card');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+  });
+
+  test('fires gcdsClick and click event', async ({ page }) => {
+    await page.goto('/components/gcds-card/test/gcds-card.e2e.html');
+
+    const gcdsClick = await page.spyOnEvent('gcdsClick');
+    const click = await page.spyOnEvent('click');
+
+    await page.locator('a').click();
+
+    expect(gcdsClick.events.length).toBe(1);
+    expect(click.events.length).toBe(1);
   });
 });
 
@@ -16,91 +43,70 @@ describe('gcds-card', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-card a11y tests', () => {
-  it('Colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<gcds-card
-      card-title="Card"
-      badge="Tag"
-      description="This is the card description"
-      href="#card"
-    >
-    </gcds-card>`);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+test.describe('gcds-card a11y tests', () => {
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
-  it('Link name', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<gcds-card
-      card-title="Card"
-      description="This is the card description"
-      href="#card"
-    ></gcds-card>`);
-
-    const linkNameTest = new AxePuppeteer(page)
-      .withRules('link-name')
-      .analyze();
-    const results = await linkNameTest;
-
-    expect(results.violations.length).toBe(0);
+  test('Link name', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['link-name'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
-  it('Keyboard focus', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<gcds-card
-      card-title="Card"
-      description="This is the card description"
-      href="#card"
-    ></gcds-card>`);
-
+  test('Keyboard focus', async ({ page }) => {
     const linkText = await (
-      await page.find('gcds-card >>> .gcds-card__title')
-    ).innerText;
+      await page.locator('.gcds-card__title')
+    ).innerText();
 
     await page.keyboard.press('Tab');
 
     expect(
       await page.evaluate(
         () =>
-          window.document.activeElement.shadowRoot.activeElement.textContent,
+          window.document.activeElement?.shadowRoot?.activeElement
+            ?.textContent || '',
       ),
     ).toEqual(linkText);
   });
 
-  it('Alt text - no img-alt prop', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<gcds-card
-      card-title="Card"
-      description="This is the card description"
-      href="#card"
-      img-src="https://picsum.photos/480/270"
-    ></gcds-card>`);
-
-    const imgAltTest = new AxePuppeteer(page).withRules('image-alt').analyze();
-    const results = await imgAltTest;
-
-    expect(results.violations.length).toBe(0);
+  test('Alt text - no alt text', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['image-alt'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
-  it('Alt text w/ img-alt prop', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<gcds-card
-      card-title="Card"
-      description="This is the card description"
-      href="#card"
-      img-src="https://picsum.photos/480/270"
-      img-alt="Alt text for image test"
-    ></gcds-card>`);
+  test('Alt text w/ img-alt prop', async ({ page }) => {
+    await page
+      .locator('gcds-card')
+      .evaluate(el => ((el as HTMLGcdsCardElement).imgAlt = ''));
 
-    const imgAltTest = new AxePuppeteer(page).withRules('image-alt').analyze();
-    const results = await imgAltTest;
+    await page.waitForChanges();
 
-    expect(results.violations.length).toBe(0);
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['image-alt'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });

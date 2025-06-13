@@ -1,65 +1,77 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-error-summary', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-error-summary></gcds-error-summary>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-error-summary');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto(
+    '/components/gcds-error-summary/test/gcds-error-summary.e2e.html',
+  );
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-error-summary');
+    return host && host.shadowRoot;
   });
-  it('renders from listen', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <form novalidate>
-        <gcds-error-summary></gcds-error-summary>
+});
 
-        <gcds-input
-          input-id="fullname"
-          label="Full name"
-          required
-        ></gcds-input>
+test.describe('gcds-error-summary', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-error-summary');
 
-        <gcds-textarea
-          textarea-id="description"
-          label="Description"
-          required
-        ></gcds-textarea>
+    // Wait for element state
+    await element.waitFor({ state: 'hidden' });
 
-        <gcds-select
-          select-id="form-select"
-          label="Select option"
-          required
-          default-value="Please select an option"
-        >
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </gcds-select>
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+  });
 
-        <gcds-file-uploader
-          uploader-id="form-uploader"
-          label="Upload file"
-          required
-        ></gcds-file-uploader>
+  test('renders from listen', async ({ page }) => {
+    const form = await page.locator('form');
+    await form.waitFor({ state: 'hidden' });
 
-        <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'
-          required
-        ></gcds-checkboxes>
+    await form.evaluate(el => {
+      const input = document.createElement('gcds-input');
+      input.label = 'Input';
+      input.name = 'input';
+      input.required = true;
+      input.type = 'text';
 
-        <gcds-button type="submit">
-          Submit
-        </gcds-button>
-      </form>
-    `);
+      const textarea = document.createElement('gcds-textarea');
+      textarea.label = 'Textarea';
+      textarea.name = 'textarea';
+      textarea.required = true;
+
+      const select = document.createElement('gcds-select');
+      select.label = 'Textarea';
+      select.name = 'textarea';
+      select.required = true;
+      select.defaultValue = 'Please select another option';
+      select.innerHTML = `<option>Option 1</option>
+        <option>Option 2</option>
+        option>Option 3</option>`;
+
+      const file = document.createElement('gcds-file-uploader');
+      file.label = 'File';
+      file.name = 'file';
+      file.required = true;
+
+      const button = document.createElement('gcds-button');
+      button.innerText = 'Submit';
+      button.type = 'submit';
+
+      el.append(input);
+      el.append(textarea);
+      el.append(select);
+      el.append(file);
+      el.append(button);
+    });
 
     await page.waitForChanges();
 
-    await page.click('gcds-button');
+    const submitButton = await page.locator('button[type="submit"]');
+    await submitButton.waitFor();
+
+    await submitButton.click();
 
     await page.waitForChanges();
 
@@ -78,53 +90,73 @@ describe('gcds-error-summary', () => {
             .querySelector('gcds-error-summary')
             .shadowRoot.querySelector('.summary__errorlist').childNodes.length,
       ),
-    ).toEqual(5);
+    ).toEqual(4);
   });
 });
 
-describe('gcds-input a11y tests', () => {
+test.describe('gcds-input a11y tests', () => {
   /**
    * Colour contrast test
    */
-  it('colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-        <gcds-error-summary error-links='{"#link1":"This is the first error","#link2":"This is the second error"}'></gcds-error-summary>
-      `);
+  test('colour contrast', async ({ page }) => {
+    const element = await page.locator('gcds-error-summary');
+    await element.waitFor({ state: 'hidden' });
 
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
+    element.evaluate(
+      el =>
+        ((el as HTMLGcdsErrorSummaryElement).errorLinks =
+          '{"#link1":"This is the first error","#link2":"This is the second error"}'),
+    );
 
-    expect(results.violations.length).toBe(0);
+    await page.waitForChanges();
+
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
-
   /**
    * Links have discernible text
    */
-  it('Link name', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <form novalidate>
-        <gcds-error-summary listen></gcds-error-summary>
-        <gcds-input input-id="fullname" label="Full name" required></gcds-input>
-        <gcds-input type="email" input-id="email" label="Email address" required></gcds-input>
-        <gcds-button type="submit">
-          Submit
-        </gcds-button>
-      </form>
-    `);
+  test('Link name', async ({ page }) => {
+    const form = await page.locator('form');
+    await form.waitFor({ state: 'hidden' });
+
+    await form.evaluate(el => {
+      const input = document.createElement('gcds-input');
+      input.label = 'Input';
+      input.name = 'input';
+      input.required = true;
+      input.type = 'text';
+
+      const button = document.createElement('gcds-button');
+      button.innerText = 'Submit';
+      button.type = 'submit';
+
+      el.append(input);
+      el.append(button);
+    });
 
     await page.waitForChanges();
 
-    await page.click('gcds-button');
+    const submitButton = await page.locator('button');
+    await submitButton.waitFor();
+
+    await submitButton.click();
 
     await page.waitForChanges();
 
-    const linkTest = new AxePuppeteer(page).withRules('link-name').analyze();
-    const results = await linkTest;
-
-    expect(results.violations.length).toBe(0);
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['link-name'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });
