@@ -1,0 +1,45 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local components -->
+    <link rel="stylesheet" href="/build/gcds.css" />
+    <script type="module" src="/build/gcds.esm.js"></script>
+    <script nomodule src="/build/gcds.js"></script>
+  </head>
+
+  <body>
+    <form>
+      <gcds-select
+        select-id="select-default"
+        label="Label"
+        name="select"
+        hint="Hint message."
+        default-value="Select option."
+      >
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+      </gcds-select>
+    </form>
+  </body>
+</html>
