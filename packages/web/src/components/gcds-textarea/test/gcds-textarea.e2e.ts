@@ -124,6 +124,7 @@ test.describe('gcds-textarea', () => {
           en: `The entered value must be longer than ${min} characters`,
           fr: `The entered value must be longer than ${min} characters`,
         };
+
         return {
           validate: (value: string) => {
             value = value || '';

@@ -28,7 +28,121 @@ test.describe('gcds-select', () => {
   /**
    * Validation
    */
-  // !!! TODO
+  test('Validation', async ({ page }) => {
+    const element = await page.locator('gcds-select');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+    await element.evaluate(el => (el as HTMLGcdsSelectElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsSelectElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('Choose an option to continue.');
+
+    await element.locator('select').selectOption({ label: 'Option 1' });
+    await element.evaluate(el => (el as HTMLGcdsSelectElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsSelectElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('Validation - custom validation', async ({ page }) => {
+    const element = await page.locator('gcds-select');
+
+    // Wait for element to attach and become visible
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      const matchAnswer = (answer: string) => {
+        return {
+          validate: (value: string) => {
+            return {
+              valid: value === answer,
+              reason: {
+                en: `The selected answer must be "${answer}"`,
+                fr: `The selected answer must be "${answer}"`,
+              },
+            };
+          },
+        };
+      };
+
+      (el as HTMLGcdsSelectElement).validator = [matchAnswer('1')];
+    });
+
+    await element.locator('select').selectOption('2');
+    await element.evaluate(el => (el as HTMLGcdsSelectElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsSelectElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('The selected answer must be "1"');
+
+    await element.locator('select').selectOption('1');
+    await element.evaluate(el => (el as HTMLGcdsSelectElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsSelectElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('Validation - custom validation (old format)', async ({ page }) => {
+    const element = await page.locator('gcds-select');
+
+    // Wait for element to attach and become visible
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      const matchAnswer = (answer: string) => {
+        const errorMessage = {
+          en: `The selected answer must be "${answer}"`,
+          fr: `The selected answer must be "${answer}"`,
+        };
+
+        return {
+          validate: (value: string) => {
+            return value === answer;
+          },
+          errorMessage,
+        };
+      };
+
+      // @ts-expect-error Old format validator
+      (el as HTMLGcdsSelectElement).validator = [matchAnswer('1')];
+    });
+
+    await element.locator('select').selectOption('2');
+    await element.evaluate(el => (el as HTMLGcdsSelectElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsSelectElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('The selected answer must be "1"');
+
+    await element.locator('select').selectOption('1');
+    await element.evaluate(el => (el as HTMLGcdsSelectElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsSelectElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
 });
 
 /**
