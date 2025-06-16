@@ -79,7 +79,7 @@ test.describe('gcds-select a11y tests', () => {
 
     // Confirm that the focused element is the select inside gcds-select
     const isFocused = await select.evaluate(
-      el => el === el.getRootNode().activeElement,
+      el => el === (el.getRootNode() as ShadowRoot).activeElement,
     );
 
     expect(isFocused).toBe(true);
