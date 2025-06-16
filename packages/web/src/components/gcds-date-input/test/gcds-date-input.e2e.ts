@@ -26,6 +26,9 @@ test.describe('gcds-date-input', () => {
     // Check if it has the 'hydrated' class
     await expect(element).toHaveClass('hydrated');
   });
+  /**
+   * Value
+   */
   test('Format: full - value', async ({ page }) => {
     const element = await page.locator('gcds-date-input');
 
@@ -67,6 +70,9 @@ test.describe('gcds-date-input', () => {
 
     expect(value).toEqual('1234-03');
   });
+  /**
+   * Validation
+   */
   test('Validation - Missing all fields', async ({ page }) => {
     const element = await page.locator('gcds-date-input');
 

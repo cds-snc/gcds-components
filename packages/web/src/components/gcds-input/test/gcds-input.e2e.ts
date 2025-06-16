@@ -28,7 +28,142 @@ test.describe('gcds-input', () => {
   /**
    * Validation
    */
-  // !!! TODO
+  test('Validation', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('Enter information to continue.');
+
+    await element.locator('input').fill('Information');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+  test('Validation - custom validation', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      const minLength = (min: number) => {
+        return {
+          validate: (value: string) => {
+            value = value || '';
+            let valid = true;
+            if (min) {
+              valid = min <= value.length;
+            }
+            return {
+              valid,
+              reason: {
+                en: `The entered value must be longer than ${min} characters`,
+                fr: `The entered value must be longer than ${min} characters`,
+              },
+            };
+          },
+        };
+      };
+
+      (el as HTMLGcdsInputElement).validator = [minLength(2)];
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('input').fill('1');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(
+      'The entered value must be longer than 2 characters',
+    );
+
+    await element.locator('input').fill('123');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+  test('Validation - custom validation old format', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      const minLength = (min: number) => {
+        const errorMessage = {
+          en: `The entered value must be longer than ${min} characters`,
+          fr: `The entered value must be longer than ${min} characters`,
+        };
+        return {
+          validate: (value: string) => {
+            value = value || '';
+            let valid = true;
+            if (min) {
+              valid = min <= value.length;
+            }
+            return valid;
+          },
+          errorMessage,
+        };
+      };
+
+      // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
+      (el as HTMLGcdsInputElement).validator = [minLength(2)];
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('input').fill('1');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(
+      'The entered value must be longer than 2 characters',
+    );
+
+    await element.locator('input').fill('123');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
 });
 
 /**
