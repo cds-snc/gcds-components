@@ -54,6 +54,7 @@ test.describe('gcds-input', () => {
 
     expect(errorMessage).toEqual('');
   });
+
   test('Validation - custom validation', async ({ page }) => {
     const element = await page.locator('gcds-input');
 
@@ -109,6 +110,7 @@ test.describe('gcds-input', () => {
 
     expect(errorMessage).toEqual('');
   });
+
   test('Validation - custom validation old format', async ({ page }) => {
     const element = await page.locator('gcds-input');
 
