@@ -11,7 +11,7 @@
 
 Refactor form validation and validators in the GC Design System components to allow more descriptive error messages. Validators will also take validators written in the old format and convert them into the new format to not produce any breaking changes for teams who have written their own validators.
 
-- form validators ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
+- Refactor form validators to allow more descriptive error messages ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
 
 #### Changes
 
