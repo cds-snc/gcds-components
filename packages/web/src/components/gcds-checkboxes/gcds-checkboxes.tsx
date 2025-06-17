@@ -136,7 +136,6 @@ export class GcdsCheckboxes {
   @Prop({ reflect: true, mutable: true }) value: string | Array<string> = [];
   @Watch('value')
   validateValue(newValue) {
-    console.log(this.name, newValue);
     // Convert string to array
     if (!Array.isArray(newValue)) {
       try {
