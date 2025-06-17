@@ -9,7 +9,140 @@
 
 ### :arrows_counterclockwise: Code Refactoring
 
+Refactor form validation and validators in the GC Design System components to allow more descriptive error messages. Validators will also take validators written in the old format and convert them into the new format to not produce any breaking changes for teams who have written their own validators.
+
 - form validators ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
+
+#### Changes
+
+- Validators now only have validate which returns an object of `{ valid: boolean, reasons: { en: string, fr: string }, errors?: object }`.
+- All form components have been updated to have validate-on set to blur by default
+- Tests have been added for each form component to test default validation, a custom validator and a custom validator in th old format.
+
+##### Old implementation
+
+Custom validator using the old implementation to allow validation of `min length`, `max length` or `value` between `min` and `max` for the `gcds-input` component:
+
+```
+<gcds-input
+  input-id="form-name"
+  id="text-input"
+  label="Name"
+  hint="Please enter your full name."
+  required
+></gcds-input>
+
+<script>
+  // Old implementation of validator
+  const getLengthValidator = (min, max) => {
+    // Create errorMessage object
+    let errorMessage = {};
+
+    if (min && max) {
+      errorMessage['en'] = `You must enter between ${min} and ${max} characters`;
+      errorMessage['fr'] = `French You must enter between ${min} and ${max} characters`;
+    } else if (min) {
+      errorMessage['en'] = `You must enter at least ${min} characters`;
+      errorMessage['fr'] = `French You must enter at least ${min} characters`;
+    } else if (max) {
+      errorMessage['en'] = `You must enter less than ${max} characters`;
+      errorMessage['fr'] = `French You must enter less than ${max} characters`;
+    }
+
+    return {
+      validate: value => {
+        value = value || '';
+
+        if (min && max) {
+          return min <= value.length && value.length <= max;
+        }
+
+        if (min) {
+          return min <= value.length;
+        }
+
+        if (max) {
+          return value.length <= max;
+        }
+
+        return true;
+      },
+      errorMessage,
+    };
+  };
+
+  // Get the text input
+  const textInput = document.getElementById('text-input');
+
+  // Assign the validator
+  textInput.validator = [getLengthValidator(1, 5)];
+</script>
+```
+
+##### New implementation
+
+Custom validator using the new implementation to allow validation of `min length`, `max length` or `value` between `min` and `max` for the `gcds-input` component:
+
+```
+<gcds-input
+  input-id="form-name"
+  id="text-input"
+  label="Name"
+  hint="Please enter your full name."
+  required
+></gcds-input>
+
+<script>
+  // New implementation of validator
+  const getLengthValidator = (min, max) => {
+    // Create errorMessage object
+    let errorMessage = {};
+
+    if (min && max) {
+      errorMessage['en'] = `You must enter between ${min} and ${max} characters`;
+      errorMessage['fr'] = `French You must enter between ${min} and ${max} characters`;
+    } else if (min) {
+      errorMessage['en'] = `You must enter at least ${min} characters`;
+      errorMessage['fr'] = `French You must enter at least ${min} characters`;
+    } else if (max) {
+      errorMessage['en'] = `You must enter less than ${max} characters`;
+      errorMessage['fr'] = `French You must enter less than ${max} characters`;
+    }
+
+    return {
+      validate: value => {
+        value = value || '';
+        let valid = true;
+
+        if (min && max) {
+          valid = min <= value.length && value.length <= max;
+        }
+
+        if (min) {
+          valid = min <= value.length;
+        }
+
+        if (max) {
+          valid = value.length <= max;
+        }
+
+        console.log(value, value.length, valid, min, max);
+
+        return {
+          valid,
+          reason: errorMessage,
+        };
+      },
+    };
+  }
+
+  // Get the text input
+  const textInput = document.getElementById('text-input');
+
+  // Assign the validator
+  textInput.validator = [getLengthValidator(1, 5)];
+</script>
+```
 
 ## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0) (2025-06-04)
 
