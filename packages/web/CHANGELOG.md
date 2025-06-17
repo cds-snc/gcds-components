@@ -1,36 +1,31 @@
 # Changelog
 
-## [0.36.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0-canary.0) (2025-06-17)
-
+## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0) (2025-06-17)
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-checkboxes:** Add logic to make sure a prechecked checkbox's value is removed on change ([#878](https://github.com/cds-snc/gcds-components/issues/878)) ([10ac050](https://github.com/cds-snc/gcds-components/commit/10ac050f4642e6399a9901054f0754dc8a2383ed))
-* **gcds-card:** Remove redundant z-index from card and fix focus state ([#879](https://github.com/cds-snc/gcds-components/issues/879)) ([3a284d6](https://github.com/cds-snc/gcds-components/commit/3a284d65e41b06580bf250d56e85bd5c9e72ecbf))
-
+- **gcds-checkboxes:** Add logic to make sure a prechecked checkbox's value is removed on change ([#878](https://github.com/cds-snc/gcds-components/issues/878)) ([10ac050](https://github.com/cds-snc/gcds-components/commit/10ac050f4642e6399a9901054f0754dc8a2383ed))
+- **gcds-card:** Remove redundant z-index from card and fix focus state ([#879](https://github.com/cds-snc/gcds-components/issues/879)) ([3a284d6](https://github.com/cds-snc/gcds-components/commit/3a284d65e41b06580bf250d56e85bd5c9e72ecbf))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-* form validators ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
+- form validators ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
 
 ## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0) (2025-06-04)
 
-
 ### :rocket: New Features
 
-* Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
-
+- Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
 
 ### :bug: :wrench: Bug Fixes
 
-* align structural markup for link and search with GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
-* SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
-* update installation instructions to remove outdated file ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
-
+- align structural markup for link and search with GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
+- SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
+- update installation instructions to remove outdated file ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
 
 ### :no_entry: Remove
 
-* **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+- **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
 
 ## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.2...gcds-components-v0.34.3) (2025-05-07)
 
