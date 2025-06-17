@@ -406,6 +406,15 @@ export class GcdsCheckboxes {
     if (e.target.checked) {
       this.value = [...(this.value as Array<string>), e.target.value];
     } else {
+      // Modify options to prevent adding prechecked values when unchecking option
+      this.options = (
+        typeof this.options === 'string'
+          ? JSON.parse(this.options as string)
+          : (this.options as CheckboxObject[])
+      ).map(check =>
+        check.value === e.target.value ? { ...check, checked: false } : check,
+      );
+
       // Remove value from value array
       this.value = (this.value as Array<string>).filter(
         item => item !== e.target.value,
