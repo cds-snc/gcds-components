@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.36.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0-canary.0) (2025-06-17)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-checkboxes:** Add logic to make sure a prechecked checkbox's value is removed on change ([#878](https://github.com/cds-snc/gcds-components/issues/878)) ([10ac050](https://github.com/cds-snc/gcds-components/commit/10ac050f4642e6399a9901054f0754dc8a2383ed))
+* remove redundant z-index from card and fix focus state ([#879](https://github.com/cds-snc/gcds-components/issues/879)) ([3a284d6](https://github.com/cds-snc/gcds-components/commit/3a284d65e41b06580bf250d56e85bd5c9e72ecbf))
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* form validators ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
+
 ## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0) (2025-06-04)
 
 
