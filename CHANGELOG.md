@@ -27,7 +27,7 @@ Refactor form validation and validators in the GC Design System components to al
 
 Custom validator using the old implementation to allow validation of `min length`, `max length` or `value` between `min` and `max` for the `gcds-input` component:
 
-```
+```html
 <gcds-input
   input-id="form-name"
   id="text-input"
@@ -43,8 +43,10 @@ Custom validator using the old implementation to allow validation of `min length
     let errorMessage = {};
 
     if (min && max) {
-      errorMessage['en'] = `You must enter between ${min} and ${max} characters`;
-      errorMessage['fr'] = `French You must enter between ${min} and ${max} characters`;
+      errorMessage['en'] =
+        `You must enter between ${min} and ${max} characters`;
+      errorMessage['fr'] =
+        `French You must enter between ${min} and ${max} characters`;
     } else if (min) {
       errorMessage['en'] = `You must enter at least ${min} characters`;
       errorMessage['fr'] = `French You must enter at least ${min} characters`;
@@ -87,7 +89,7 @@ Custom validator using the old implementation to allow validation of `min length
 
 Custom validator using the new implementation to allow validation of `min length`, `max length` or `value` between `min` and `max` for the `gcds-input` component:
 
-```
+```html
 <gcds-input
   input-id="form-name"
   id="text-input"
@@ -103,8 +105,10 @@ Custom validator using the new implementation to allow validation of `min length
     let errorMessage = {};
 
     if (min && max) {
-      errorMessage['en'] = `You must enter between ${min} and ${max} characters`;
-      errorMessage['fr'] = `French You must enter between ${min} and ${max} characters`;
+      errorMessage['en'] =
+        `You must enter between ${min} and ${max} characters`;
+      errorMessage['fr'] =
+        `French You must enter between ${min} and ${max} characters`;
     } else if (min) {
       errorMessage['en'] = `You must enter at least ${min} characters`;
       errorMessage['fr'] = `French You must enter at least ${min} characters`;
@@ -138,7 +142,7 @@ Custom validator using the new implementation to allow validation of `min length
         };
       },
     };
-  }
+  };
 
   // Get the text input
   const textInput = document.getElementById('text-input');
