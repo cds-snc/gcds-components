@@ -1,18 +1,28 @@
 # Changelog
 
-## [0.35.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.34.3-canary.0...gcds-components-react-ssr-v0.35.0-canary.0) (2025-06-04)
-
+## [0.36.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.35.0-canary.0...gcds-components-react-ssr-v0.36.0-canary.0) (2025-06-17)
 
 ### Patch
 
-* **gcds-components-react-ssr:** Synchronize GCDS Components versions
-
+- **gcds-components-react-ssr:** Synchronize GCDS Components versions
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @cdssnc/gcds-components bumped from ^0.34.3 to ^0.35.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.35.0 to ^0.36.0
+
+## [0.35.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.34.3-canary.0...gcds-components-react-ssr-v0.35.0-canary.0) (2025-06-04)
+
+### Patch
+
+- **gcds-components-react-ssr:** Synchronize GCDS Components versions
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.34.3 to ^0.35.0
 
 ## [0.34.3-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.34.2-canary.0...gcds-components-react-ssr-v0.34.3-canary.0) (2025-05-07)
 
