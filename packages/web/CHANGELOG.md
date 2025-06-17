@@ -17,7 +17,7 @@ Refactor form validation and validators in the GC Design System components to al
 
 - Validators now only have validate which returns an object of `{ valid: boolean, reasons: { en: string, fr: string }, errors?: object }`.
 - All form components have been updated to have `validate-on` set to `blur` by default
-- Tests have been added for each form component to test default validation, a custom validator and a custom validator in th old format.
+- Tests have been added for each form component to test default validation, a custom validator and a custom validator in the old format.
 
 ##### Old implementation
 
