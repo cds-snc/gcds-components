@@ -2,9 +2,9 @@
 
 ## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.35.0...gcds-components-angular-v0.36.0) (2025-06-17)
 
-### :arrows_counterclockwise: Code Refactoring
+### Patch
 
-- form validators ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
+- **gcds-components-angular:** Synchronize GCDS Components versions
 
 ### Dependencies
 
@@ -14,13 +14,9 @@
 
 ## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.34.3...gcds-components-angular-v0.35.0) (2025-06-04)
 
-### :rocket: New Features
+### Patch
 
-- Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
-
-### :no_entry: Remove
-
-- **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+- **gcds-components-angular:** Synchronize GCDS Components versions
 
 ### Dependencies
 
