@@ -176,109 +176,107 @@ test.describe('gcds-radios', () => {
 
     expect(errorMessage).toEqual('');
   });
-  // TODO Look into why there is a validator error and why it only became known because of this component
-  // test('Validation - custom validation', async ({ page }) => {
-  //   const element = await page.locator('gcds-radios');
+  test('Validation - custom validation', async ({ page }) => {
+    const element = await page.locator('gcds-radios');
 
-  //   // Wait for element to attach and become visible, allowing up to 10s
-  //   await element.waitFor({ state: 'attached' });
-  //   await element.waitFor({ state: 'visible' });
-  //   await element.waitFor({ timeout: 10000 });
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-  //   await element.evaluate(el => {
-  //     const selectThird = (preferedOption: string) => {
-  //       return {
-  //         validate: (value: string) => {
-  //           console.log(preferedOption, value);
-  //           return {
-  //             valid: value === preferedOption,
-  //             reason: {
-  //               en: `Please select the third option to continue.`,
-  //               fr: `Please select the third option to continue.`,
-  //             },
-  //           };
-  //         },
-  //       };
-  //     };
+    await element.evaluate(el => {
+      const selectThird = (preferedOption: string) => {
+        return {
+          validate: (value: string) => {
+            return {
+              valid: value === preferedOption,
+              reason: {
+                en: `Please select the third option to continue.`,
+                fr: `Please select the third option to continue.`,
+              },
+            };
+          },
+        };
+      };
 
-  //     (el as HTMLGcdsDateInputElement).validator = [selectThird('radio3')];
-  //   });
+      (el as HTMLGcdsRadiosElement).validator = [selectThird('radio3')];
+    });
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   await element.locator('input').nth(0).click({ force: true });
+    await element.locator('input').nth(1).click({ force: true });
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   await element.evaluate(el => (el as HTMLGcdsRadiosElement).validate());
+    await element.evaluate(el => (el as HTMLGcdsRadiosElement).validate());
 
-  //   let errorMessage = await element.evaluate(
-  //     el => (el as HTMLGcdsRadiosElement).errorMessage,
-  //   );
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsRadiosElement).errorMessage,
+    );
 
-  //   expect(errorMessage).toEqual('Please select the third option to continue.');
+    expect(errorMessage).toEqual('Please select the third option to continue.');
 
-  //   await element.locator('input').nth(2).click({ force: true });
+    await element.locator('input').nth(2).click({ force: true });
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   await element.evaluate(el => (el as HTMLGcdsRadiosElement).validate());
+    await element.evaluate(el => (el as HTMLGcdsRadiosElement).validate());
 
-  //   errorMessage = await element.evaluate(
-  //     el => (el as HTMLGcdsRadiosElement).errorMessage,
-  //   );
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsRadiosElement).errorMessage,
+    );
 
-  //   expect(errorMessage).toEqual('');
-  // });
-  // test('Validation - custom validation old format', async ({ page }) => {
-  //   const element = await page.locator('gcds-radios');
+    expect(errorMessage).toEqual('');
+  });
+  test('Validation - custom validation old format', async ({ page }) => {
+    const element = await page.locator('gcds-radios');
 
-  //   // Wait for element to attach and become visible, allowing up to 10s
-  //   await element.waitFor({ state: 'attached' });
-  //   await element.waitFor({ state: 'visible' });
-  //   await element.waitFor({ timeout: 10000 });
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-  //   await element.evaluate(el => {
-  //     const selectThird = (preferedOption: string) => {
-  //       return {
-  //         validate: (value: string) => value === preferedOption,
-  //         errorMessage: {
-  //           en: `Please select the third option to continue.`,
-  //           fr: `Please select the third option to continue.`,
-  //         },
-  //       };
-  //     };
+    await element.evaluate(el => {
+      const selectThird = (preferedOption: string) => {
+        return {
+          validate: (value: string) => value === preferedOption,
+          errorMessage: {
+            en: `Please select the third option to continue.`,
+            fr: `Please select the third option to continue.`,
+          },
+        };
+      };
 
-  //     // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
-  //     (el as HTMLGcdsDateInputElement).validator = [selectThird('radio3')];
-  //   });
+      // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
+      (el as HTMLGcdsDateInputElement).validator = [selectThird('radio3')];
+    });
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   await element.locator('input').nth(0).click({ force: true });
+    await element.locator('input').nth(0).click({ force: true });
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   await element.evaluate(el => (el as HTMLGcdsRadiosElement).validate());
+    await element.evaluate(el => (el as HTMLGcdsRadiosElement).validate());
 
-  //   let errorMessage = await element.evaluate(
-  //     el => (el as HTMLGcdsRadiosElement).errorMessage,
-  //   );
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsRadiosElement).errorMessage,
+    );
 
-  //   expect(errorMessage).toEqual('Please select the third option to continue.');
+    expect(errorMessage).toEqual('Please select the third option to continue.');
 
-  //   await element.locator('input').nth(2).click({ force: true });
+    await element.locator('input').nth(2).click({ force: true });
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   await element.evaluate(el => (el as HTMLGcdsRadiosElement).validate());
+    await element.evaluate(el => (el as HTMLGcdsRadiosElement).validate());
 
-  //   errorMessage = await element.evaluate(
-  //     el => (el as HTMLGcdsRadiosElement).errorMessage,
-  //   );
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsRadiosElement).errorMessage,
+    );
 
-  //   expect(errorMessage).toEqual('');
-  // });
+    expect(errorMessage).toEqual('');
+  });
 });
 
 /**

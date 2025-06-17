@@ -182,15 +182,13 @@ export class GcdsCheckboxes {
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -357,13 +355,14 @@ export class GcdsCheckboxes {
     this.validateDisabledCheckbox();
     this.validateHasError();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(
       this.el,
       this.isGroup ? 'checkboxGroup' : 'checkboxSingle',
     );
+
+    this.validateValidator();
 
     // Assign checkbox hint to component hint if not group
     if (
@@ -375,22 +374,12 @@ export class GcdsCheckboxes {
       this.hint = this.optionsArr[0].hint;
     }
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
-
     if (!valid) {
       logError('gcds-checkboxes', this.errors);
     }
 
     this.initialState = this.value;
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
   }
 
   async componentDidUpdate() {
