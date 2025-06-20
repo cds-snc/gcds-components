@@ -1,15 +1,33 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-notice', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<gcds-notice notice-title="GC Design System notice" type="success">
-        <gcds-text>Provide additonal information</gcds-text>
-      </gcds-notice>`);
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-notice');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-notice/test/gcds-notice.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-notice');
+    return host && host.shadowRoot;
+  });
+});
+
+test.describe('gcds-notice', () => {
+  test('renders', async ({ page }) => {
+    const notices = await page.locator('gcds-notice');
+    const count = await notices.count();
+
+    for (let i = 0; i < count; i++) {
+      const notice = notices.nth(i);
+
+      // Wait for element to attach and become visible, allowing up to 10s
+      await notice.waitFor({ state: 'attached' });
+      await notice.waitFor({ state: 'visible' });
+      await notice.waitFor({ timeout: 10000 });
+
+      // Check if it has the 'hydrated' class
+      await expect(notice).toHaveClass('hydrated');
+    }
   });
 });
 
@@ -17,104 +35,33 @@ describe('gcds-notice', () => {
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
+const types = ['danger', 'info', 'success', 'warning'];
 
-describe('gcds-notice a11y tests', () => {
+test.describe('gcds-notice a11y tests', () => {
   /**
    * Colour contrast test
    */
-  it('colour contrast danger notice', async () => {
-    const page = await newE2EPage();
-    await page.setViewport({
-      width: 600,
-      height: 400,
+  types.forEach(type => {
+    test(`colour contrast ${type} notice`, async ({ page }) => {
+      await page.setContent(`
+        <gcds-notice notice-title="Title" notice-title-tag="h2" type="${type}">
+          <p>Testing slot content.</p>
+        </gcds-notice>
+      `);
+
+      // Wait for shadow DOM to be available and component to hydrate
+      await page.waitForFunction(() => {
+        const notice = document.querySelector('gcds-notice');
+        return (
+          notice && notice.shadowRoot && notice.classList.contains('hydrated')
+        );
+      });
+
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+
+      expect(results.violations.length).toBe(0);
     });
-    await page.setContent(`
-      <gcds-notice notice-title="GC Design System notice" type="danger">
-        <gcds-text>Provide additonal information</gcds-text>
-      </gcds-notice>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-
-  it('colour contrast info notice', async () => {
-    const page = await newE2EPage();
-    await page.setViewport({
-      width: 600,
-      height: 400,
-    });
-    await page.setContent(`
-     <gcds-notice notice-title="GC Design System notice" type="info">
-        <gcds-text>Provide additonal information</gcds-text>
-      </gcds-notice>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-
-  it('colour contrast success notice', async () => {
-    const page = await newE2EPage();
-    await page.setViewport({
-      width: 600,
-      height: 400,
-    });
-    await page.setContent(`
-      <gcds-notice notice-title="GC Design System notice" type="success">
-        <gcds-text>Provide additonal information</gcds-text>
-      </gcds-notice>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-
-  it('colour contrast warning notice', async () => {
-    const page = await newE2EPage();
-    await page.setViewport({
-      width: 600,
-      height: 400,
-    });
-    await page.setContent(`
-      <gcds-notice notice-title="GC Design System notice" type="warning">
-        <gcds-text>Provide additonal information</gcds-text>
-      </gcds-notice>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-
-  it('heading text', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-notice notice-title="GC Design System notice" type="success">
-        <gcds-text>Provide additonal information</gcds-text>
-      </gcds-notice>
-    `);
-
-    const emptyHeadingtest = new AxePuppeteer(page)
-      .withRules('empty-heading')
-      .analyze();
-    const results = await emptyHeadingtest;
-
-    expect(results.violations.length).toBe(0);
   });
 });

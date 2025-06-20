@@ -72,6 +72,11 @@ export const config: Config = {
     {
       type: 'dist-hydrate-script',
     },
+    {
+      type: 'www',
+      serviceWorker: null,
+      copy: [{ src: '**/*.e2e.html' }],
+    },
   ],
   plugins: [
     postcss({
@@ -85,7 +90,6 @@ export const config: Config = {
       '^.+\\.(ts|tsx|js|jsx|css)$': '@stencil/core/testing/jest-preprocessor',
     },
     setupFiles: ['./src/utils/test/setupMock.js'],
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
   },
   validatePrimaryPackageOutputTarget: true,
   extras: {

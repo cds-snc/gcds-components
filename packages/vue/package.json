@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "npm run tsc",
-    "pretest": "cd tests/app && npm i",
+    "pretest": "cd tests/app && npm i && cd ../../../web && npm run build",
     "test": "npx playwright test",
     "tsc": "tsc -p . --outDir ./dist"
   },

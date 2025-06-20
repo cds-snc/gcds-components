@@ -183,15 +183,13 @@ export class GcdsRadios {
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * Specifies if the radio is invalid.
@@ -343,14 +341,11 @@ export class GcdsRadios {
     this.validateOptions();
     this.validateRequiredProps();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, 'radio');
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
+    this.validateValidator();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
     this.initialValue = this.value ? this.value : null;

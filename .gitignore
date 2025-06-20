@@ -39,6 +39,7 @@ $RECYCLE.BIN/
 /libpeerconnection.log
 testem.log
 /typings
+test-results/
 
 .DS_Store
 Thumbs.db

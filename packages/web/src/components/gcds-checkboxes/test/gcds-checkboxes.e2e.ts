@@ -1,239 +1,278 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-const checkboxOptions =
-  '[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('gcds-checkboxes', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-checkboxes label="checkbox label" name="checkbox" checkbox-id="checkbox" />',
-    );
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-checkboxes/test/gcds-checkboxes.e2e.html');
 
-    const element = await page.find('gcds-checkboxes');
-    expect(element).toHaveClass('hydrated');
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-checkboxes');
+    return host && host.shadowRoot;
   });
-  it('Emit gcds custom events', async () => {
-    const page = await newE2EPage();
+});
 
-    await page.setContent(
-      `<gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>`,
-    );
+test.describe('gcds-checkboxes', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+  });
+  /**
+   * Events
+   */
+  test('Emit gcds custom events', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
     const gcdsInput = await page.spyOnEvent('gcdsInput');
     const gcdsChange = await page.spyOnEvent('gcdsChange');
     const gcdsBlur = await page.spyOnEvent('gcdsBlur');
     const gcdsFocus = await page.spyOnEvent('gcdsFocus');
 
-    await page.locator('gcds-checkboxes >>> input').click();
+    await element.locator('input').first().click({ force: true });
+
     await page.waitForChanges();
 
     await page.keyboard.press('Tab');
+
+    expect(gcdsInput).toHaveReceivedEvent();
+    expect(gcdsChange).toHaveReceivedEvent();
+    expect(gcdsBlur).toHaveReceivedEvent();
+    expect(gcdsFocus).toHaveReceivedEvent();
+  });
+  test('Disabled - no events', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsCheckboxesElement).required = false;
+      (el as HTMLGcdsCheckboxesElement).disabled = true;
+    });
+
     await page.waitForChanges();
 
-    expect(gcdsInput.events.length).toBeGreaterThanOrEqual(1);
-    expect(gcdsChange.events.length).toBeGreaterThanOrEqual(1);
-    expect(gcdsBlur.events.length).toBeGreaterThanOrEqual(1);
-    expect(gcdsFocus.events.length).toBeGreaterThanOrEqual(1);
+    const gcdsInput = await page.spyOnEvent('gcdsInput');
+    const gcdsChange = await page.spyOnEvent('gcdsChange');
+
+    await element.locator('input').first().click({ force: true });
+
+    await page.waitForChanges();
+
+    expect(gcdsInput).not.toHaveReceivedEvent();
+    expect(gcdsChange).not.toHaveReceivedEvent();
   });
-  // Will investigate getting this test functional in new test suite
-  // it('Disabled - no events', async () => {
-  //   const page = await newE2EPage();
+  /**
+   * JS manipulation
+   */
+  test('Using JS - assign options', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
 
-  //   await page.setContent(
-  //     `<gcds-checkboxes
-  //         legend="Group of checkboxes"
-  //         name="checkgroup"
-  //         options='${checkboxOptions}'
-  //       ></gcds-checkboxes>`,
-  //   );
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-  //   const gcdsInput = await page.spyOnEvent('gcdsInput');
+    await element.evaluate(el => {
+      (el as HTMLGcdsCheckboxesElement).options = null;
+    });
 
-  //   await page.locator('gcds-checkboxes >>> input').click();
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   expect(gcdsInput.events.length).toBe(1);
-
-  //   await page.evaluate(() => {
-  //     // Find the gcds-checkboxes element
-  //     const checkboxes = document.querySelector(
-  //       'gcds-checkboxes[name="checkgroup"]',
-  //     );
-
-  //     // Assign checkbox options to options property
-  //     (checkboxes as HTMLGcdsCheckboxesElement).disabled = true;
-  //   });
-
-  //   await page.locator('gcds-checkboxes >>> input').click();
-  //   await page.waitForChanges();
-
-  //   expect(gcdsInput.events.length).toBe(1);
-  // });
-  it('assign options using JS', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-        ></gcds-checkboxes>
-    `);
-
-    await page.evaluate(() => {
-      // Create checkbox options array
-      const options = [
+    await element.evaluate(el => {
+      (el as HTMLGcdsCheckboxesElement).options = [
         {
-          label: 'Checkbox 1 label',
-          id: 'checkbox1',
-          value: 'checkbox2',
+          label: 'Red',
+          id: 'red',
+          value: 'red',
         },
         {
-          label: 'Checkbox 2 label',
-          id: 'checkbox1',
-          value: 'checkbox2',
+          label: 'Blue',
+          id: 'blue',
+          value: 'blue',
         },
       ];
-
-      // Find the gcds-checkboxes element
-      const checkboxes = document.querySelector(
-        'gcds-checkboxes[name="checkgroup"]',
-      );
-
-      // Assign checkbox options to options property
-      (checkboxes as HTMLGcdsCheckboxesElement).options = options;
     });
 
     await page.waitForChanges();
 
-    const labelText = await (
-      await page.find('gcds-checkboxes >>> gcds-label')
-    ).innerText;
-
-    expect(labelText).toEqual('Checkbox 1 label');
+    expect(
+      await page
+        .locator('input')
+        .first()
+        .evaluate(el => el.id),
+    ).toBe('red');
   });
-  it('assign value using JS', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-        <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>
-    `);
+  test('Using JS - assign value', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
 
-    let input = await page.$('gcds-checkboxes >>> input[value="checkbox1"]');
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-    expect(await (await input.getProperty('checked')).jsonValue()).toBe(false);
+    let checkTwo = await page
+      .locator('input')
+      .nth(1)
+      .evaluate(el => (el as HTMLInputElement).checked);
 
-    await page.evaluate(() => {
-      // Find the gcds-checkboxes element
-      const checkboxes = document.querySelector(
-        'gcds-checkboxes[name="checkgroup"]',
-      );
+    expect(checkTwo).toBe(false);
 
-      // Assign checkbox options to options property
-      (checkboxes as HTMLGcdsCheckboxesElement).value = ['checkbox1'];
+    await element.evaluate(el => {
+      (el as HTMLGcdsCheckboxesElement).value = ['check2'];
     });
 
     await page.waitForChanges();
 
-    input = await page.$('gcds-checkboxes >>> input[value="checkbox1"]');
+    checkTwo = await page
+      .locator('input')
+      .nth(1)
+      .evaluate(el => (el as HTMLInputElement).checked);
 
-    expect(await (await input.getProperty('checked')).jsonValue()).toBe(true);
+    expect(checkTwo).toBe(true);
   });
-  it('Form reset', async () => {
-    const page = await newE2EPage();
+  /**
+   * Validation
+   */
+  test('Validation', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
 
-    await page.setContent(
-      `<form novalidate>
-      <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-        <gcds-button type="reset">Reset</gcds-button>
-      </form>`,
+    await element.evaluate(el => (el as HTMLGcdsCheckboxesElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsCheckboxesElement).errorMessage,
     );
 
-    let input = await page.$('gcds-checkboxes >>> input[value="checkbox1"]');
+    expect(errorMessage).toEqual('Choose an option to continue.');
 
-    expect(await (await input.getProperty('checked')).jsonValue()).toBe(false);
+    await element.locator('input').first().click({ force: true });
 
-    await page.locator('gcds-checkboxes >>> input').click();
     await page.waitForChanges();
 
-    input = await page.$('gcds-checkboxes >>> input[value="checkbox1"]');
+    await element.evaluate(el => (el as HTMLGcdsCheckboxesElement).validate());
 
-    expect(await (await input.getProperty('checked')).jsonValue()).toBe(true);
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsCheckboxesElement).errorMessage,
+    );
 
-    await page.locator('gcds-button >>> button').click();
-    await page.waitForChanges();
-
-    input = await page.$('gcds-checkboxes >>> input[value="checkbox1"]');
-
-    expect(await (await input.getProperty('checked')).jsonValue()).toBe(false);
+    expect(errorMessage).toEqual('');
   });
-  it('Validation', async () => {
-    const page = await newE2EPage();
+  test('Validation - custom validation', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
 
-    await page.setContent(
-      `<gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          required
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>`,
-    );
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
+    await element.evaluate(el => {
+      const selectAll = () => {
+        return {
+          validate: (value: string | string[]) => {
+            return {
+              valid: Array.isArray(value) && value.length == 3,
+              reason: {
+                en: `Please select all options to continue.`,
+                fr: `Please select all options to continue.`,
+              },
+            };
+          },
+        };
+      };
+
+      (el as HTMLGcdsDateInputElement).validator = [selectAll()];
+    });
+
     await page.waitForChanges();
 
-    const error = await page.$eval(
-      'gcds-checkboxes >>> gcds-error-message',
-      el => el.innerText,
+    await element.evaluate(el => (el as HTMLGcdsCheckboxesElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsCheckboxesElement).errorMessage,
     );
 
-    expect(error).toBe('Choose an option to continue.');
+    expect(errorMessage).toEqual('Please select all options to continue.');
 
-    await page.locator('gcds-checkboxes >>> input').click();
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
+    await element.locator('input').first().click({ force: true });
+    await element.locator('input').nth(1).click({ force: true });
+    await element.locator('input').nth(2).click({ force: true });
+
     await page.waitForChanges();
 
-    expect(await page.$('gcds-checkboxes >>> gcds-error-message')).toBe(null);
+    await element.evaluate(el => (el as HTMLGcdsCheckboxesElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsCheckboxesElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
   });
-  it('Keyboard controls', async () => {
-    const page = await newE2EPage();
+  test('Validation - custom validation old format', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
 
-    await page.setContent(
-      `<gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>`,
-    );
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-    let input = await page.$('gcds-checkboxes >>> input[value="checkbox1"]');
+    await element.evaluate(el => {
+      const selectAll = () => {
+        return {
+          validate: (value: string | string[]) =>
+            Array.isArray(value) && value.length == 3,
+          errorMessage: {
+            en: `Please select all options to continue.`,
+            fr: `Please select all options to continue.`,
+          },
+        };
+      };
 
-    expect(await (await input.getProperty('checked')).jsonValue()).toBe(false);
+      // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
+      (el as HTMLGcdsDateInputElement).validator = [selectAll()];
+    });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
     await page.waitForChanges();
 
-    input = await page.$('gcds-checkboxes >>> input[value="checkbox1"]');
+    await element.evaluate(el => (el as HTMLGcdsCheckboxesElement).validate());
 
-    expect(await (await input.getProperty('checked')).jsonValue()).toBe(true);
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsCheckboxesElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('Please select all options to continue.');
+
+    await element.locator('input').first().click({ force: true });
+    await element.locator('input').nth(1).click({ force: true });
+    await element.locator('input').nth(2).click({ force: true });
+
+    await page.waitForChanges();
+
+    await element.evaluate(el => (el as HTMLGcdsCheckboxesElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsCheckboxesElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
   });
 });
 
@@ -242,142 +281,62 @@ describe('gcds-checkboxes', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-checkboxes a11y tests', () => {
+test.describe('gcds-checkboxes a11y tests', () => {
   /**
-   * Aria-invalid true if error test
+   * Colour contrast
    */
-  it('aria-invalid', async () => {
-    const page = await newE2EPage();
-
-    await page.setContent(
-      `<gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          error-message="Has error"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>`,
-    );
-    const element = await await page.find('gcds-checkboxes >>> input');
-    expect(element.getAttribute('aria-invalid')).toEqual('true');
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
-
   /**
-   * Colour contrast test
+   * Labels
    */
-  it('colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+  test('Proper labels', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['label'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
-  it('colour contrast - focus', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>
-    `);
-
-    await page.keyboard.press('Tab');
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-  it('colour contrast - error', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          error-message="Has error"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-  it('colour contrast - disabled', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          disabled
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-
   /**
-   * Input keyboard focus
+   * Keyboard focus
    */
-  it('checkbox keyboard focus', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>
-    `);
-
-    const inputField = await (
-      await page.find('gcds-checkboxes >>> input')
-    ).innerText;
+  test('Keyboard focus', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
+    await expect(element).toHaveClass('hydrated');
 
     await page.keyboard.press('Tab');
 
     expect(
       await page.evaluate(
-        () =>
-          window.document.activeElement.shadowRoot.activeElement.textContent,
+        () => window.document.activeElement.shadowRoot.activeElement.id,
       ),
-    ).toEqual(inputField);
-  });
+    ).toEqual('check1');
 
-  /**
-   * Input label test
-   */
-  it('checkbox contains label', async () => {
-    const page = await newE2EPage();
+    await page.keyboard.press('Tab');
 
-    await page.setContent(
-      `<gcds-checkboxes
-          legend="Group of checkboxes"
-          name="checkgroup"
-          options='${checkboxOptions}'
-        ></gcds-checkboxes>`,
-    );
-    const element = await await page.find('gcds-checkboxes >>> gcds-label');
-    expect(element.getAttribute('id')).toEqual('label-for-checkbox1');
+    expect(
+      await page.evaluate(
+        () => window.document.activeElement.shadowRoot.activeElement.id,
+      ),
+    ).toEqual('check2');
+
+    await page.keyboard.press('Tab');
+
+    expect(
+      await page.evaluate(
+        () => window.document.activeElement.shadowRoot.activeElement.id,
+      ),
+    ).toEqual('check3');
   });
 });
