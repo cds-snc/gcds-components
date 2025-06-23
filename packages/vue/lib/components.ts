@@ -170,7 +170,7 @@ export const GcdsCard: StencilVueComponent<JSX.GcdsCard> = /*@__PURE__*/ globalT
 });
 
 
-export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsCheckboxes>('gcds-checkboxes', defineGcdsCheckboxes, [
+export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes, JSX.GcdsCheckboxes["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsCheckboxes, JSX.GcdsCheckboxes["value"]>('gcds-checkboxes', defineGcdsCheckboxes, [
   'name',
   'legend',
   'options',
@@ -196,7 +196,8 @@ export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes> = /*@__PURE
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
-]) : defineStencilSSRComponent<JSX.GcdsCheckboxes>({
+],
+'value', 'gcdsChange') : defineStencilSSRComponent<JSX.GcdsCheckboxes, JSX.GcdsCheckboxes["value"]>({
   tagName: 'gcds-checkboxes',
   hydrateModule: import('@cdssnc/gcds-components/hydrate'),
   props: {
@@ -800,7 +801,7 @@ export const GcdsPhaseBanner: StencilVueComponent<JSX.GcdsPhaseBanner> = /*@__PU
 });
 
 
-export const GcdsRadios: StencilVueComponent<JSX.GcdsRadios> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsRadios>('gcds-radios', defineGcdsRadios, [
+export const GcdsRadios: StencilVueComponent<JSX.GcdsRadios, JSX.GcdsRadios["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.GcdsRadios, JSX.GcdsRadios["value"]>('gcds-radios', defineGcdsRadios, [
   'options',
   'name',
   'legend',
@@ -824,7 +825,8 @@ export const GcdsRadios: StencilVueComponent<JSX.GcdsRadios> = /*@__PURE__*/ glo
   'gcdsBlur',
   'gcdsValid',
   'gcdsError'
-]) : defineStencilSSRComponent<JSX.GcdsRadios>({
+],
+'value', 'gcdsChange') : defineStencilSSRComponent<JSX.GcdsRadios, JSX.GcdsRadios["value"]>({
   tagName: 'gcds-radios',
   hydrateModule: import('@cdssnc/gcds-components/hydrate'),
   props: {

@@ -36,7 +36,7 @@
     "lint-and-fix": "eslint . --fix"
   },
   "dependencies": {
-    "@stencil/core": "4.31.0",
+    "@stencil/core": "4.35.1",
     "@storybook/addon-a11y": "^8.0.9",
     "@storybook/addons": "^7.6.17",
     "@storybook/test": "^8.0.9",
@@ -54,9 +54,9 @@
     "@stencil/angular-output-target": "file:../../utils/angular-output-target",
     "@stencil/playwright": "^0.2.1",
     "@stencil/postcss": "^2.1.0",
-    "@stencil/react-output-target": "^1.0.2",
+    "@stencil/react-output-target": "^1.1.0",
     "@stencil/sass": "^3.0.0-0",
-    "@stencil/vue-output-target": "^0.10.7",
+    "@stencil/vue-output-target": "^0.10.8",
     "@storybook/addon-actions": "^8.0.9",
     "@storybook/addon-essentials": "^8.0.9",
     "@storybook/addon-interactions": "^8.0.9",

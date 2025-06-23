@@ -5,7 +5,7 @@ import { ValueAccessor } from './value-accessor';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'gcds-date-input, gcds-input, gcds-textarea, gcds-file-uploader',
+  selector: 'gcds-date-input, gcds-checkboxes, gcds-radios, gcds-input, gcds-textarea, gcds-file-uploader',
   host: {
     '(gcdsChange)': 'handleChangeEvent($event.target.value)',
     '(gcdsInput)': 'handleChangeEvent($event.target.value)'

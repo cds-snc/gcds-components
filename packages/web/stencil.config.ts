@@ -96,5 +96,6 @@ export const config: Config = {
     enableImportInjection: true,
     experimentalScopedSlotChanges: true,
     experimentalSlotFixes: true,
+    addGlobalStyleToComponents: true,
   },
 };

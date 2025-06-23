@@ -23,11 +23,11 @@ import { Components } from '@cdssnc/gcds-components';
 export class GcdsAlert {
   protected el: HTMLGcdsAlertElement;
     /**
-   * Defines alert role.
+   * Defines alert role. @default 'info'
    */
   set alertRole(_: Components.GcdsAlert['alertRole']) {};
     /**
-   * Defines the max width of the alert content.
+   * Defines the max width of the alert content. @default 'full'
    */
   set container(_: Components.GcdsAlert['container']) {};
     /**
@@ -35,15 +35,15 @@ export class GcdsAlert {
    */
   set heading(_: Components.GcdsAlert['heading']) {};
     /**
-   * Defines if the alert's close button is displayed or not.
+   * Defines if the alert's close button is displayed or not. @default false
    */
   set hideCloseBtn(_: Components.GcdsAlert['hideCloseBtn']) {};
     /**
-   * Defines if the alert's role icon is displayed or not.
+   * Defines if the alert's role icon is displayed or not. @default false
    */
   set hideRoleIcon(_: Components.GcdsAlert['hideRoleIcon']) {};
     /**
-   * Defines if the alert's position is fixed.
+   * Defines if the alert's position is fixed. @default false
    */
   set isFixed(_: Components.GcdsAlert['isFixed']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -76,7 +76,7 @@ export declare interface GcdsAlert extends Components.GcdsAlert {
 export class GcdsBreadcrumbs {
   protected el: HTMLGcdsBreadcrumbsElement;
     /**
-   * Defines if the default canada.ca link is displayed or omitted.
+   * Defines if the default canada.ca link is displayed or omitted. @default false
    */
   set hideCanadaLink(_: Components.GcdsBreadcrumbs['hideCanadaLink']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -132,15 +132,15 @@ export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsI
 export class GcdsButton {
   protected el: HTMLGcdsButtonElement;
     /**
-   * Set button types
+   * Set button types @default 'button'
    */
   set type(_: Components.GcdsButton['type']) {};
     /**
-   * Set the main style
+   * Set the main style @default 'primary'
    */
   set buttonRole(_: Components.GcdsButton['buttonRole']) {};
     /**
-   * Set the button size
+   * Set the button size @default 'regular'
    */
   set size(_: Components.GcdsButton['size']) {};
     /**
@@ -225,7 +225,7 @@ export class GcdsCard {
     /**
    * The card title tag property specifies the HTML heading element for the title.
 This property does not modify the font size. It is used to assign the heading level
-in order to maintain heading hierarchy and accessibility for assistive technologies.
+in order to maintain heading hierarchy and accessibility for assistive technologies. @default 'a'
    */
   set cardTitleTag(_: Components.GcdsCard['cardTitleTag']) {};
     /**
@@ -305,7 +305,7 @@ export class GcdsCheckboxes {
    */
   set disabled(_: Components.GcdsCheckboxes['disabled']) {};
     /**
-   * Value for checkboxes component.
+   * Value for checkboxes component. @default []
    */
   set value(_: Components.GcdsCheckboxes['value']) {};
     /**
@@ -321,7 +321,7 @@ export class GcdsCheckboxes {
    */
   set validator(_: Components.GcdsCheckboxes['validator']) {};
     /**
-   * Set event to call validator
+   * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsCheckboxes['validateOn']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -378,17 +378,17 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
 export class GcdsContainer {
   protected el: HTMLGcdsContainerElement;
     /**
-   * Defines if the container has a border.
+   * Defines if the container has a border. @default false
    */
   set border(_: Components.GcdsContainer['border']) {};
     /**
-   * Defines if the container is centered.
+   * Defines if the container is centered. @default false
    */
   set centered(_: Components.GcdsContainer['centered']) {};
     /**
    * Defines if the container is the main page container. When true,
 the width will be set to 90% for smaller screens to ensure consistency
-with the responsiveness of other core layout components (header + footer).
+with the responsiveness of other core layout components (header + footer). @default false
    */
   set mainContainer(_: Components.GcdsContainer['mainContainer']) {};
     /**
@@ -401,11 +401,11 @@ if the container is centered.
    */
   set padding(_: Components.GcdsContainer['padding']) {};
     /**
-   * Defines container size.
+   * Defines container size. @default 'full'
    */
   set size(_: Components.GcdsContainer['size']) {};
     /**
-   * Set tag for container.
+   * Set tag for container. @default 'div'
    */
   set tag(_: Components.GcdsContainer['tag']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -451,7 +451,7 @@ export class GcdsDateInput {
    */
   set value(_: Components.GcdsDateInput['value']) {};
     /**
-   * Specifies if a form field is required or not.
+   * Specifies if a form field is required or not. @default false
    */
   set required(_: Components.GcdsDateInput['required']) {};
     /**
@@ -463,7 +463,7 @@ export class GcdsDateInput {
    */
   set errorMessage(_: Components.GcdsDateInput['errorMessage']) {};
     /**
-   * Specifies if the date input is disabled or not.
+   * Specifies if the date input is disabled or not. @default false
    */
   set disabled(_: Components.GcdsDateInput['disabled']) {};
     /**
@@ -471,7 +471,7 @@ export class GcdsDateInput {
    */
   set validator(_: Components.GcdsDateInput['validator']) {};
     /**
-   * Set event to call validator
+   * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsDateInput['validateOn']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -524,7 +524,7 @@ export declare interface GcdsDateInput extends Components.GcdsDateInput {
 export class GcdsDateModified {
   protected el: HTMLGcdsDateModifiedElement;
     /**
-   * Set date modified type. Default is date.
+   * Set date modified type. Default is date. @default 'date'
    */
   set type(_: Components.GcdsDateModified['type']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -558,7 +558,7 @@ export class GcdsDetails {
    */
   set detailsTitle(_: Components.GcdsDetails['detailsTitle']) {};
     /**
-   * Defines if the details panel is open by default or not.
+   * Defines if the details panel is open by default or not. @default false
    */
   set open(_: Components.GcdsDetails['open']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -630,7 +630,7 @@ export class GcdsErrorSummary {
    */
   set heading(_: Components.GcdsErrorSummary['heading']) {};
     /**
-   * Specifies if the error summary should listen for GcdsError event to generate error list.
+   * Specifies if the error summary should listen for GcdsError event to generate error list. @default true
    */
   set listen(_: Components.GcdsErrorSummary['listen']) {};
     /**
@@ -711,15 +711,15 @@ export class GcdsFileUploader {
    */
   set label(_: Components.GcdsFileUploader['label']) {};
     /**
-   * Specifies if a form field is required or not.
+   * Specifies if a form field is required or not. @default false
    */
   set required(_: Components.GcdsFileUploader['required']) {};
     /**
-   * Specifies if a file uploader element is disabled or not.
+   * Specifies if a file uploader element is disabled or not. @default false
    */
   set disabled(_: Components.GcdsFileUploader['disabled']) {};
     /**
-   * Value for a file uploader element.
+   * Value for a file uploader element. @default []
    */
   set value(_: Components.GcdsFileUploader['value']) {};
     /**
@@ -747,7 +747,7 @@ export class GcdsFileUploader {
    */
   set validator(_: Components.GcdsFileUploader['validator']) {};
     /**
-   * Set event to call validator
+   * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsFileUploader['validateOn']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -804,7 +804,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
 export class GcdsFooter {
   protected el: HTMLGcdsFooterElement;
     /**
-   * Display mode of the footer
+   * Display mode of the footer @default 'compact'
    */
   set display(_: Components.GcdsFooter['display']) {};
     /**
@@ -867,23 +867,23 @@ number of columns for desktop as well.
    */
   set container(_: Components.GcdsGrid['container']) {};
     /**
-   * Defines if grid container is centered or not
+   * Defines if grid container is centered or not @default false
    */
   set centered(_: Components.GcdsGrid['centered']) {};
     /**
-   * Defines element as grid or inline-grid container
+   * Defines element as grid or inline-grid container @default 'grid'
    */
   set display(_: Components.GcdsGrid['display']) {};
     /**
    * Sets all grid items to have an equal height,
-based on the tallest item.
+based on the tallest item. @default false
    */
   set equalRowHeight(_: Components.GcdsGrid['equalRowHeight']) {};
     /**
    * Defines the horizontal and vertical spacing between items in
 a grid container for all viewports if gap-tablet and gap-desktop
 are not defined. Option to set different spacing for desktop
-with gap-desktop and for tablet with gap-tablet.
+with gap-desktop and for tablet with gap-tablet. @default '300'
    */
   set gap(_: Components.GcdsGrid['gap']) {};
     /**
@@ -898,7 +898,7 @@ in a grid container for desktop screens.
    */
   set gapDesktop(_: Components.GcdsGrid['gapDesktop']) {};
     /**
-   * Set tag for grid container
+   * Set tag for grid container @default 'div'
    */
   set tag(_: Components.GcdsGrid['tag']) {};
     /**
@@ -951,13 +951,13 @@ export declare interface GcdsGrid extends Components.GcdsGrid {}
 export class GcdsGridCol {
   protected el: HTMLGcdsGridColElement;
     /**
-   * Set tag for grid column
+   * Set tag for grid column @default 'div'
    */
   set tag(_: Components.GcdsGridCol['tag']) {};
     /**
    * Optimize grid column size for tablet (768px - 1023px).
 Tablet grid column sizes are based on a 6 column grid.
-The tablet size will also be used for desktop, if desktop is undefined.
+The tablet size will also be used for desktop, if desktop is undefined. @default 6
    */
   set tablet(_: Components.GcdsGridCol['tablet']) {};
     /**
@@ -997,7 +997,7 @@ export class GcdsHeader {
    */
   set signatureVariant(_: Components.GcdsHeader['signatureVariant']) {};
     /**
-   * GcdsSignature - GCDS signature links to Canada.ca
+   * GcdsSignature - GCDS signature links to Canada.ca @default true
    */
   set signatureHasLink(_: Components.GcdsHeader['signatureHasLink']) {};
     /**
@@ -1033,7 +1033,7 @@ export class GcdsHeading {
   set tag(_: Components.GcdsHeading['tag']) {};
     /**
    * Sets the line length to a maximum amount of characters per line for
-each heading level, ensuring a comfortable, accessible reading length.
+each heading level, ensuring a comfortable, accessible reading length. @default true
    */
   set characterLimit(_: Components.GcdsHeading['characterLimit']) {};
     /**
@@ -1042,7 +1042,7 @@ while for h2 to h6 headings, it's 600.
    */
   set marginTop(_: Components.GcdsHeading['marginTop']) {};
     /**
-   * Adds margin below the heading. The default margin-botttom is 300.
+   * Adds margin below the heading. The default margin-botttom is 300. @default '300'
    */
   set marginBottom(_: Components.GcdsHeading['marginBottom']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -1112,7 +1112,7 @@ export class GcdsIcon {
    */
   set name(_: Components.GcdsIcon['name']) {};
     /**
-   * Defines the size of the icon.
+   * Defines the size of the icon. @default 'inherit'
    */
   set size(_: Components.GcdsIcon['size']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -1142,7 +1142,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 export class GcdsInput {
   protected el: HTMLGcdsInputElement;
     /**
-   * Specifies if an input element is disabled or not.
+   * Specifies if an input element is disabled or not. @default false
    */
   set disabled(_: Components.GcdsInput['disabled']) {};
     /**
@@ -1150,7 +1150,7 @@ export class GcdsInput {
    */
   set errorMessage(_: Components.GcdsInput['errorMessage']) {};
     /**
-   * Specifies if the label is hidden or not.
+   * Specifies if the label is hidden or not. @default false
    */
   set hideLabel(_: Components.GcdsInput['hideLabel']) {};
     /**
@@ -1170,7 +1170,7 @@ export class GcdsInput {
    */
   set label(_: Components.GcdsInput['label']) {};
     /**
-   * Specifies if a form field is required or not.
+   * Specifies if a form field is required or not. @default false
    */
   set required(_: Components.GcdsInput['required']) {};
     /**
@@ -1179,7 +1179,7 @@ of the expected text length to the user.
    */
   set size(_: Components.GcdsInput['size']) {};
     /**
-   * Set Input types
+   * Set Input types @default 'text'
    */
   set type(_: Components.GcdsInput['type']) {};
     /**
@@ -1195,7 +1195,7 @@ of the expected text length to the user.
    */
   set validator(_: Components.GcdsInput['validator']) {};
     /**
-   * Set event to call validator
+   * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsInput['validateOn']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -1316,15 +1316,15 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
 export class GcdsLink {
   protected el: HTMLGcdsLinkElement;
     /**
-   * Sets the main style of the link.
+   * Sets the main style of the link. @default 'default'
    */
   set variant(_: Components.GcdsLink['variant']) {};
     /**
-   * Set the link size
+   * Set the link size @default 'inherit'
    */
   set size(_: Components.GcdsLink['size']) {};
     /**
-   * Sets the display behavior of the link
+   * Sets the display behavior of the link @default 'inline'
    */
   set display(_: Components.GcdsLink['display']) {};
     /**
@@ -1336,11 +1336,11 @@ export class GcdsLink {
    */
   set rel(_: Components.GcdsLink['rel']) {};
     /**
-   * The target attribute specifies where to open the linked document
+   * The target attribute specifies where to open the linked document @default '_self'
    */
   set target(_: Components.GcdsLink['target']) {};
     /**
-   * Whether the link is external or not
+   * Whether the link is external or not @default false
    */
   set external(_: Components.GcdsLink['external']) {};
     /**
@@ -1404,7 +1404,7 @@ export class GcdsNavGroup {
    */
   set openTrigger(_: Components.GcdsNavGroup['openTrigger']) {};
     /**
-   * Has the nav group been expanded
+   * Has the nav group been expanded @default false
    */
   set open(_: Components.GcdsNavGroup['open']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -1532,7 +1532,7 @@ export declare interface GcdsNotice extends Components.GcdsNotice {}
 export class GcdsPagination {
   protected el: HTMLGcdsPaginationElement;
     /**
-   * Navigation element label
+   * Navigation element label @default 'list'
    */
   set display(_: Components.GcdsPagination['display']) {};
     /**
@@ -1605,11 +1605,11 @@ export declare interface GcdsPagination extends Components.GcdsPagination {
 export class GcdsPhaseBanner {
   protected el: HTMLGcdsPhaseBannerElement;
     /**
-   * Defines banner role.
+   * Defines banner role. @default 'primary'
    */
   set bannerRole(_: Components.GcdsPhaseBanner['bannerRole']) {};
     /**
-   * Defines the container width of the phase banner content
+   * Defines the container width of the phase banner content @default 'xl'
    */
   set container(_: Components.GcdsPhaseBanner['container']) {};
     /**
@@ -1679,7 +1679,7 @@ export class GcdsRadios {
    */
   set validator(_: Components.GcdsRadios['validator']) {};
     /**
-   * Set event to call validator
+   * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsRadios['validateOn']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -1734,23 +1734,23 @@ export declare interface GcdsRadios extends Components.GcdsRadios {
 export class GcdsSearch {
   protected el: HTMLGcdsSearchElement;
     /**
-   * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
+   * Set the placeholder and label for the search input. Becomes "Search [placeholder]" @default 'Canada.ca'
    */
   set placeholder(_: Components.GcdsSearch['placeholder']) {};
     /**
-   * Sets the action for the search form. Default will be canada.ca global search
+   * Sets the action for the search form. Default will be canada.ca global search @default '/sr/srb.html'
    */
   set action(_: Components.GcdsSearch['action']) {};
     /**
-   * Set the form method of the search form
+   * Set the form method of the search form @default 'get'
    */
   set method(_: Components.GcdsSearch['method']) {};
     /**
-   * Set the name of the search input
+   * Set the name of the search input @default 'q'
    */
   set name(_: Components.GcdsSearch['name']) {};
     /**
-   * Set the id of the search input
+   * Set the id of the search input @default 'search'
    */
   set searchId(_: Components.GcdsSearch['searchId']) {};
     /**
@@ -1822,11 +1822,11 @@ export class GcdsSelect {
    */
   set name(_: Components.GcdsSelect['name']) {};
     /**
-   * Specifies if a form field is required or not.
+   * Specifies if a form field is required or not. @default false
    */
   set required(_: Components.GcdsSelect['required']) {};
     /**
-   * Specifies if a select element is disabled or not.
+   * Specifies if a select element is disabled or not. @default false
    */
   set disabled(_: Components.GcdsSelect['disabled']) {};
     /**
@@ -1850,7 +1850,7 @@ export class GcdsSelect {
    */
   set validator(_: Components.GcdsSelect['validator']) {};
     /**
-   * Set event to call validator
+   * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsSelect['validateOn']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -1931,15 +1931,15 @@ export declare interface GcdsSideNav extends Components.GcdsSideNav {}
 export class GcdsSignature {
   protected el: HTMLGcdsSignatureElement;
     /**
-   * The type of graphic to render
+   * The type of graphic to render @default 'signature'
    */
   set type(_: Components.GcdsSignature['type']) {};
     /**
-   * The colour variant to render
+   * The colour variant to render @default 'colour'
    */
   set variant(_: Components.GcdsSignature['variant']) {};
     /**
-   * Has link to canada.ca. Only applies to signature
+   * Has link to canada.ca. Only applies to signature @default false
    */
   set hasLink(_: Components.GcdsSignature['hasLink']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -1966,7 +1966,7 @@ export declare interface GcdsSignature extends Components.GcdsSignature {}
 export class GcdsSrOnly {
   protected el: HTMLGcdsSrOnlyElement;
     /**
-   * Sets the appropriate HTML tag for the content.
+   * Sets the appropriate HTML tag for the content. @default 'p'
    */
   set tag(_: Components.GcdsSrOnly['tag']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -2001,7 +2001,7 @@ export class GcdsStepper {
    */
   set totalSteps(_: Components.GcdsStepper['totalSteps']) {};
     /**
-   * Defines the heading tag to render
+   * Defines the heading tag to render @default 'h2'
    */
   set tag(_: Components.GcdsStepper['tag']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -2028,27 +2028,27 @@ export declare interface GcdsStepper extends Components.GcdsStepper {}
 export class GcdsText {
   protected el: HTMLGcdsTextElement;
     /**
-   * Sets the main style of the text.
+   * Sets the main style of the text. @default 'primary'
    */
   set textRole(_: Components.GcdsText['textRole']) {};
     /**
-   * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length.
+   * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length. @default true
    */
   set characterLimit(_: Components.GcdsText['characterLimit']) {};
     /**
-   * Specifies the display behaviour of the text.
+   * Specifies the display behaviour of the text. @default 'block'
    */
   set display(_: Components.GcdsText['display']) {};
     /**
-   * Adds margin above the text.
+   * Adds margin above the text. @default '0'
    */
   set marginTop(_: Components.GcdsText['marginTop']) {};
     /**
-   * Adds margin below the text.
+   * Adds margin below the text. @default '300'
    */
   set marginBottom(_: Components.GcdsText['marginBottom']) {};
     /**
-   * Sets the appropriate HTML tags for the selected size.
+   * Sets the appropriate HTML tags for the selected size. @default 'body'
    */
   set size(_: Components.GcdsText['size']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -2086,7 +2086,7 @@ export class GcdsTextarea {
    */
   set cols(_: Components.GcdsTextarea['cols']) {};
     /**
-   * Specifies if a textarea element is disabled or not.
+   * Specifies if a textarea element is disabled or not. @default false
    */
   set disabled(_: Components.GcdsTextarea['disabled']) {};
     /**
@@ -2094,7 +2094,7 @@ export class GcdsTextarea {
    */
   set errorMessage(_: Components.GcdsTextarea['errorMessage']) {};
     /**
-   * Specifies if the label is hidden or not.
+   * Specifies if the label is hidden or not. @default false
    */
   set hideLabel(_: Components.GcdsTextarea['hideLabel']) {};
     /**
@@ -2110,11 +2110,11 @@ export class GcdsTextarea {
    */
   set name(_: Components.GcdsTextarea['name']) {};
     /**
-   * Specifies if a form field is required or not.
+   * Specifies if a form field is required or not. @default false
    */
   set required(_: Components.GcdsTextarea['required']) {};
     /**
-   * Default value for textarea rows.
+   * Default value for textarea rows. @default 5
    */
   set rows(_: Components.GcdsTextarea['rows']) {};
     /**
@@ -2130,7 +2130,7 @@ export class GcdsTextarea {
    */
   set validator(_: Components.GcdsTextarea['validator']) {};
     /**
-   * Set event to call validator
+   * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsTextarea['validateOn']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -2188,7 +2188,7 @@ export class GcdsTopNav {
    */
   set label(_: Components.GcdsTopNav['label']) {};
     /**
-   * Nav alignment
+   * Nav alignment @default 'left'
    */
   set alignment(_: Components.GcdsTopNav['alignment']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -2216,7 +2216,7 @@ export declare interface GcdsTopNav extends Components.GcdsTopNav {}
 export class GcdsTopicMenu {
   protected el: HTMLGcdsTopicMenuElement;
     /**
-   * Sets the homepage styling
+   * Sets the homepage styling @default false
    */
   set home(_: Components.GcdsTopicMenu['home']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -2243,11 +2243,11 @@ export declare interface GcdsTopicMenu extends Components.GcdsTopicMenu {}
 export class GcdsVerifyBanner {
   protected el: HTMLGcdsVerifyBannerElement;
     /**
-   * Defines the container width of the verify banner content
+   * Defines the container width of the verify banner content @default 'xl'
    */
   set container(_: Components.GcdsVerifyBanner['container']) {};
     /**
-   * Defines if the banner's position is fixed.
+   * Defines if the banner's position is fixed. @default false
    */
   set isFixed(_: Components.GcdsVerifyBanner['isFixed']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

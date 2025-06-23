@@ -40,7 +40,7 @@
   ],
   "dependencies": {
     "@cdssnc/gcds-components": "^0.36.0",
-    "@stencil/react-output-target": "^1.0.2"
+    "@stencil/react-output-target": "^1.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.48",

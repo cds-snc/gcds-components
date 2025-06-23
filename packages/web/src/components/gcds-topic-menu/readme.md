@@ -24,13 +24,13 @@ Type: `Promise<void>`
 
 
 
-### `getNavSize() => Promise<"mobile" | "desktop">`
+### `getNavSize() => Promise<"desktop" | "mobile">`
 
 
 
 #### Returns
 
-Type: `Promise<"mobile" | "desktop">`
+Type: `Promise<"desktop" | "mobile">`
 
 
 
