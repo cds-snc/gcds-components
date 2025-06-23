@@ -11,7 +11,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Run Backstage Catalog Info Helper
-        uses: cds-snc/backstage-catalog-info-helper-action@v0.3.1
+        uses: cds-snc/backstage-catalog-info-helper-action@cc75afc29a0ade6c41400132ff9e1222f8916ba6 # v0.3.1
         with:
           github_app_id: ${{ secrets.SRE_BOT_RW_APP_ID }}
           github_app_private_key: ${{ secrets.SRE_BOT_RW_PRIVATE_KEY }}
