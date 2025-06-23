@@ -3,7 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 
 @Directive({
   selector:
-    'gcds-breadcrumbs-item[routerLink], gcds-button[routerLink], gcds-card[routerLink], gcds-header[routerLink], gcds-lang-toggle[routerLink], gcds-link[routerLink], gcds-nav-link[routerLink], gcds-pagination[gcdsRouterLink]',
+    'gcds-breadcrumbs-item[routerLink], gcds-button[routerLink], gcds-card[routerLink], gcds-header[routerLink], gcds-lang-toggle[routerLink], gcds-link[routerLink], gcds-nav-link[routerLink], [gcdsRouterLink]',
   standalone: false,
 })
 export class GcdsRouterDirective implements OnInit {
