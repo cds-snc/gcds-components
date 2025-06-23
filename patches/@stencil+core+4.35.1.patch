@@ -1,8 +1,8 @@
 diff --git a/node_modules/@stencil/core/mock-doc/index.cjs b/node_modules/@stencil/core/mock-doc/index.cjs
-index 7e67980..6a1a435 100644
+index b8beb06..a78a245 100644
 --- a/node_modules/@stencil/core/mock-doc/index.cjs
 +++ b/node_modules/@stencil/core/mock-doc/index.cjs
-@@ -6785,16 +6785,7 @@ var MockNodeList = class {
+@@ -6807,16 +6807,7 @@ var MockNodeList = class {
  };
  var MockElement = class extends MockNode2 {
    attachInternals() {
@@ -21,10 +21,10 @@ index 7e67980..6a1a435 100644
    constructor(ownerDocument, nodeName, namespaceURI = null) {
      super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
 diff --git a/node_modules/@stencil/core/mock-doc/index.js b/node_modules/@stencil/core/mock-doc/index.js
-index 8781e7c..095a699 100644
+index dc74c34..5470a34 100644
 --- a/node_modules/@stencil/core/mock-doc/index.js
 +++ b/node_modules/@stencil/core/mock-doc/index.js
-@@ -6732,16 +6732,7 @@ var MockNodeList = class {
+@@ -6754,16 +6754,7 @@ var MockNodeList = class {
  };
  var MockElement = class extends MockNode2 {
    attachInternals() {
