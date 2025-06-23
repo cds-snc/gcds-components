@@ -55,7 +55,7 @@
         font: var(--gcds-card-title-font-mobile);
       }
 
-      &:has( + .gcds-card__description) {
+      &:has(+ .gcds-card__description) {
         margin: var(--gcds-card-title-margin);
       }
     }
@@ -77,7 +77,6 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
     pointer-events: auto;
     content: '';
   }
@@ -95,7 +94,7 @@
 
 @layer focus {
   :host {
-    .gcds-card:has(:focus-within) {
+    .gcds-card:focus-within {
       box-shadow: var(--gcds-card-focus-box-shadow);
       outline: var(--gcds-card-focus-outline);
       outline-offset: var(--gcds-card-focus-outline-offset);

@@ -1,23 +1,32 @@
 # Changelog
 
-## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.34.3...gcds-components-vue-v0.35.0) (2025-06-04)
+## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.35.0...gcds-components-vue-v0.36.0) (2025-06-17)
 
+### Patch
 
-### :rocket: New Features
-
-* Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
-
-
-### :no_entry: Remove
-
-* **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
-
+- **gcds-components-vue:** Synchronize GCDS Components versions
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @cdssnc/gcds-components bumped from ^0.34.3 to ^0.35.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.35.0 to ^0.36.0
+
+## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.34.3...gcds-components-vue-v0.35.0) (2025-06-04)
+
+### :rocket: New Features
+
+- Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
+
+### :no_entry: Remove
+
+- **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.34.3 to ^0.35.0
 
 ## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.34.2...gcds-components-vue-v0.34.3) (2025-05-07)
 
