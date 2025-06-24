@@ -29,7 +29,8 @@
   /* Note: viewport specific style decisions */
   @media only screen and (width >= 64em) {
     :host .gcds-top-nav {
-      border-block-end: var(--gcds-top-nav-border-width) solid var(--gcds-top-nav-border-color);
+      border-block-end: var(--gcds-top-nav-border-width) solid
+        var(--gcds-top-nav-border-color);
 
       .gcds-top-nav__container {
         flex-direction: row;
