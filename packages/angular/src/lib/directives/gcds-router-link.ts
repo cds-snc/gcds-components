@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input, OnInit } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 
 @Directive({
@@ -6,7 +6,7 @@ import { Router, NavigationExtras } from '@angular/router';
     'gcds-breadcrumbs-item[routerLink], gcds-button[routerLink], gcds-card[routerLink], gcds-header[routerLink], gcds-lang-toggle[routerLink], gcds-link[routerLink], gcds-nav-link[routerLink], [gcdsRouterLink]',
   standalone: false,
 })
-export class GcdsRouterDirective implements OnInit {
+export class GcdsRouterDirective {
   @Input() routerLink!: string | any[];
   @Input() queryParams?: { [k: string]: any };
   @Input() fragment?: string;
