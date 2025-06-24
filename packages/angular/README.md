@@ -45,7 +45,7 @@ Place the following code in the `styles.scss` file of your app.
 
 ## Using GC Design System components with `RouterLink`
 
-To use `routerLink` with GC Design System components simply add the `routerLink` attribute to th elements as you normally would. With components that contains multiple links within their shadow-dom (e.g., `gcds-pagination`, `gcds-footer`) and not one clear path when selected, add `gcdsRotuerLink` to allow the component to interface with the Angular router.
+To use `routerLink` with GC Design System components simply add the `routerLink` attribute to the elements as you normally would. With components that contains multiple links within their shadow-dom (e.g., `gcds-pagination`, `gcds-footer`) and not one clear path when selected, add `gcdsRotuerLink` to allow the component to interface with the Angular router.
 
 ### RouterLink and gcdsRouterLink examples
 
