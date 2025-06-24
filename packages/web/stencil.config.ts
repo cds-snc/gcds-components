@@ -43,7 +43,8 @@ export const config: Config = {
       includeImportCustomElements: true,
       includePolyfills: false,
       includeDefineCustomElements: false,
-      hydrateModule: '@cdssnc/gcds-components/hydrate',
+      // TODO: Configure the vue package to work in SSR environments
+      // hydrateModule: '@cdssnc/gcds-components/hydrate',
       componentModels: vueComponentModels,
       customElementsDir,
     }),
