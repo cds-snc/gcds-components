@@ -49,15 +49,20 @@ To use `routerLink` with GC Design System components simply add the `routerLink`
 
 ### RouterLink and gcdsRouterLink examples
 
+#### RouterLink example
+
 ```html
-  <!-- Router link example -->
   <gcds-link
     href="/home"
     routerLink="/home"
   >
     Home
   </gcds-link>
+```
 
+#### GcdsRouterLink example
+
+```html
   <!-- GCDS Router link example -->
   <gcds-pagination
     display="simple"
@@ -131,16 +136,20 @@ Pour utiliser `routerLink` avec les composants du système de design GC, ajoutez
 
 ### Exemples de RouterLink et gcdsRouterLink
 
+#### Exemple de RouterLink
+
 ```html
-  <!-- Router link example -->
   <gcds-link
     href="/accueil"
     routerLink="/accueil"
   >
     Accueil
   </gcds-link>
+```
 
-  <!-- GCDS Router link example -->
+#### Exemple de GcdsRouterLink
+
+```html
   <gcds-pagination
     display="simple"
     label="Pagination"
