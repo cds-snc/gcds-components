@@ -158,7 +158,17 @@ export class GcdsNavGroup {
     this.updateLang();
 
     if (this.el.parentNode.nodeName == 'GCDS-TOP-NAV') {
+      // Set the navStyle to 'dropdown' and add a class for alignment if specified
       this.navStyle = 'dropdown';
+
+      // Get the alignment value from the parent + append the corresponding class
+      const alignment = (this.el.parentNode as HTMLElement).getAttribute(
+        'alignment',
+      );
+
+      if (alignment === 'right') {
+        this.navStyle += ' dropdown-right';
+      }
 
       if (this.open) {
         this.open = false;
