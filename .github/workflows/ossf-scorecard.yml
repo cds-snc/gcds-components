@@ -39,7 +39,7 @@ jobs:
           jq -c '. + {"metadata_owner": "'$OWNER'", "metadata_repo": "'$REPO'", "metadata_query": "ossf"}' ossf-results.json > ossf-results-modified.json
 
       - name: "Post results to Sentinel"
-        uses: cds-snc/sentinel-forward-data-action@main
+        uses: cds-snc/sentinel-forward-data-action@01db4a9203054ecdb60ff368c3cdfca71d62e85f
         with:
           file_name: ossf-results-modified.json
           log_type: GitHubMetadata_OSSF_Scorecard

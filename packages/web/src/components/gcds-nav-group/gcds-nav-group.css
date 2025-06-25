@@ -132,12 +132,18 @@
         z-index: 1;
         position: absolute;
         top: 100%;
+        left: 0;
         width: var(--gcds-nav-group-top-nav-dropdown-width);
         background-color: var(--gcds-nav-group-top-nav-dropdown-background);
         margin-block-start: var(--gcds-spacing-200);
         padding: var(--gcds-nav-group-top-nav-dropdown-padding);
         box-shadow: var(--gcds-nav-group-top-nav-dropdown-box-shadow);
         border-radius: var(--gcds-border-radius-md);
+
+        &.dropdown-right {
+          left: auto;
+          right: 0;
+        }
       }
     }
 
@@ -154,12 +160,6 @@
 
     :host(.gcds-mobile-nav-topnav) > .gcds-nav--expandable {
       display: flex;
-    }
-  }
-
-  @media only screen and (width >= 64em) and (width < 96em) {
-    :host .gcds-nav--dropdown {
-      right: 0;
     }
   }
 }

@@ -81,9 +81,24 @@
 
       <gcds-search slot="search"></gcds-search>
 
-      <!-- ------------- Theme & topic menu ------------- -->
+      <!-- ------------- Top nav ------------- -->
 
-      <gcds-topic-menu slot="menu"></gcds-topic-menu>
+      <gcds-top-nav slot="menu" label="Top navigation" alignment="right">
+        <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
+        <gcds-nav-link href="#">Nav link</gcds-nav-link>
+
+        <gcds-nav-group
+          open-trigger="Nav group trigger"
+          menu-label="Nav group trigger"
+        >
+          <gcds-nav-link href="#" current>Nav link</gcds-nav-link>
+          <gcds-nav-link href="#">Nav link</gcds-nav-link>
+          <gcds-nav-link href="#">Nav link</gcds-nav-link>
+          <gcds-nav-link href="#">Nav link</gcds-nav-link>
+        </gcds-nav-group>
+
+        <gcds-nav-link href="#">Nav link</gcds-nav-link>
+      </gcds-top-nav>
 
       <!-- ------------- Breadcrumbs ------------- -->
 
