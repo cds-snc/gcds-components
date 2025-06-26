@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "npm run tsc",
-    "pretest": "cd tests/app && npm i",
+    "pretest": "cd tests/app && npm i && cd ../../../web && npm run build",
     "test": "npx playwright test",
     "tsc": "tsc -p . --outDir ./dist"
   },
@@ -31,7 +31,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.36.0"
+    "@cdssnc/gcds-components": "^0.36.0",
+    "@stencil/vue-output-target": "^0.10.8"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.1",

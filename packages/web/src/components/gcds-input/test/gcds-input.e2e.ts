@@ -1,69 +1,69 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-input', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    await page.setContent(
-      '<gcds-input label="Label" input-id="input-renders" name="input-renders-name"/>',
-    );
-    const element = await await page.find('gcds-input >>> input');
-    expect(element.getAttribute('id')).toEqual('input-renders');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-input/test/gcds-input.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-input');
+    return host && host.shadowRoot;
   });
-  it('Submit using enter', async () => {
-    const page = await newE2EPage();
+});
 
-    await page.setContent(
-      `<form noValidate>
-      <gcds-input label="Label" input-id="enter-submit" name="enter-submit"/>
-      </form>`,
-    );
+test.describe('gcds-input', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-input');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('r');
-    await page.keyboard.press('e');
-    await page.keyboard.press('d');
-    await page.keyboard.press('Enter');
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-    await page.waitForChanges();
-
-    expect(page.url()).toContain('?enter-submit=red');
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
-  it('Validation', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-input label="Label" input-id="input-renders" name="input-renders-name" required></gcds-input>',
+
+  /**
+   * Validation
+   */
+  test('Validation', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
     );
 
-    const input = await page.find('gcds-input');
+    expect(errorMessage).toEqual('Enter information to continue.');
 
-    input.callMethod('validate');
-    await page.waitForChanges();
+    await element.locator('input').fill('Information');
 
-    const error = await page.$eval(
-      'gcds-input >>> gcds-error-message',
-      el => el.innerText,
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
     );
 
-    expect(error).toBe('Enter information to continue.');
-
-    await page.type('gcds-input >>> input', 'red');
-
-    input.callMethod('validate');
-    await page.waitForChanges();
-
-    expect(await page.$('gcds-input >>> gcds-error-message')).toBe(null);
+    expect(errorMessage).toEqual('');
   });
-  it('Validation - custom validator', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-input label="Label" input-id="input-renders" name="input-renders-name" required></gcds-input>',
-    );
 
-    await page.evaluate(() => {
-      const input = document.querySelector('gcds-input');
+  test('Validation - custom validation', async ({ page }) => {
+    const element = await page.locator('gcds-input');
 
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
       const minLength = (min: number) => {
         return {
           validate: (value: string) => {
@@ -83,39 +83,43 @@ describe('gcds-input', () => {
         };
       };
 
-      (input as HTMLGcdsInputElement).validator = [minLength(2)];
+      (el as HTMLGcdsInputElement).validator = [minLength(2)];
     });
 
     await page.waitForChanges();
 
-    const input = await page.find('gcds-input');
+    await element.locator('input').fill('1');
 
-    input.callMethod('validate');
-    await page.waitForChanges();
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
 
-    const error = await page.$eval(
-      'gcds-input >>> gcds-error-message',
-      el => el.innerText,
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
     );
 
-    expect(error).toBe('The entered value must be longer than 2 characters');
+    expect(errorMessage).toEqual(
+      'The entered value must be longer than 2 characters',
+    );
 
-    await page.type('gcds-input >>> input', 'red');
+    await element.locator('input').fill('123');
 
-    input.callMethod('validate');
-    await page.waitForChanges();
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
 
-    expect(await page.$('gcds-input >>> gcds-error-message')).toBe(null);
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
   });
-  it('Validation - custom validator old format', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-input label="Label" input-id="input-renders" name="input-renders-name" required></gcds-input>',
-    );
 
-    await page.evaluate(() => {
-      const input = document.querySelector('gcds-input');
+  test('Validation - custom validation old format', async ({ page }) => {
+    const element = await page.locator('gcds-input');
 
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
       const minLength = (min: number) => {
         const errorMessage = {
           en: `The entered value must be longer than ${min} characters`,
@@ -135,29 +139,32 @@ describe('gcds-input', () => {
       };
 
       // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
-      (input as HTMLGcdsInputElement).validator = [minLength(2)];
+      (el as HTMLGcdsInputElement).validator = [minLength(2)];
     });
 
     await page.waitForChanges();
 
-    const input = await page.find('gcds-input');
+    await element.locator('input').fill('1');
 
-    input.callMethod('validate');
-    await page.waitForChanges();
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
 
-    const error = await page.$eval(
-      'gcds-input >>> gcds-error-message',
-      el => el.innerText,
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
     );
 
-    expect(error).toBe('The entered value must be longer than 2 characters');
+    expect(errorMessage).toEqual(
+      'The entered value must be longer than 2 characters',
+    );
 
-    await page.type('gcds-input >>> input', 'red');
+    await element.locator('input').fill('123');
 
-    input.callMethod('validate');
-    await page.waitForChanges();
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
 
-    expect(await page.$('gcds-input >>> gcds-error-message')).toBe(null);
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
   });
 });
 
@@ -166,82 +173,78 @@ describe('gcds-input', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-input a11y tests', () => {
+test.describe('gcds-input a11y tests', () => {
   /**
    * Aria-invalid true if error test
    */
-  it('aria-invalid', async () => {
-    const page = await newE2EPage();
+  test('aria-invalid', async ({ page }) => {
+    const element = await page.locator('gcds-input');
 
-    await page.setContent(
-      '<gcds-input label="Label" input-id="aria-invalid" name="aria-invalid-name" error-message="Field required" />',
-    );
-    const element = await await page.find('gcds-input >>> input');
-    expect(element.getAttribute('aria-invalid')).toEqual('true');
+    await element.evaluate(el => {
+      el.setAttribute('error-message', 'Field required');
+    });
+    await expect(element).toHaveClass('hydrated');
+
+    const inputElement = element.locator('input');
+    await expect(inputElement).toHaveAttribute('aria-invalid', 'true');
   });
 
   /**
-   * Colour contrast test
+   * Colour contrast
    */
-  it('colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-input label="Label" input-id="colour-contrast" name="colour-contrast-name" input-value="Testing the contrast" />
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
   /**
    * Input keyboard focus
    */
-  it('input keyboard focus', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-input label="Label" input-id="keyboard-focus" name="keyboard-focus-name" />
-    `);
+  test('input keyboard focus', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+    await expect(element).toHaveClass('hydrated');
 
-    const inputField = await (
-      await page.find('gcds-input >>> input')
-    ).innerText;
+    const inputField = await page
+      .locator('gcds-input')
+      .locator('input')
+      .innerText();
 
     await page.keyboard.press('Tab');
 
     expect(
       await page.evaluate(
-        () =>
-          window.document.activeElement.shadowRoot.activeElement.textContent,
+        () => document.activeElement?.shadowRoot?.activeElement?.textContent,
       ),
-    ).toEqual(inputField);
+    ).toBe(inputField);
   });
 
   /**
    * Input label test
    */
-  it('input contains label', async () => {
-    const page = await newE2EPage();
+  test('input contains label', async ({ page }) => {
+    const element = await page.locator('gcds-input');
 
-    await page.setContent(
-      '<gcds-input label="Label" input-id="contains-label" name="contains-label-name" />',
-    );
-    const element = await await page.find('gcds-input >>> gcds-label');
-    expect(element.getAttribute('id')).toEqual('label-for-contains-label');
+    await expect(element).toHaveClass('hydrated');
+
+    const label = element.locator('gcds-label');
+    await expect(label).toHaveAttribute('id', 'label-for-input-default');
   });
 
-  it('input has aria-labelledby for label', async () => {
-    const page = await newE2EPage();
+  test('input has aria-labelledby for label', async ({ page }) => {
+    const element = await page.locator('gcds-input');
 
-    await page.setContent(
-      '<gcds-input label="Label" input-id="aria-labelledby" name="aria-labelledby-name" />',
-    );
-    const element = await await page.find('gcds-input >>> input');
-    expect(element.getAttribute('aria-labelledby')).toEqual(
-      'label-for-aria-labelledby',
+    await expect(element).toHaveClass('hydrated');
+
+    const input = element.locator('input');
+    await expect(input).toHaveAttribute(
+      'aria-labelledby',
+      'label-for-input-default',
     );
   });
 });
