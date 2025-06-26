@@ -18,13 +18,16 @@
       padding: 0;
       border: 0;
 
-      gcds-label > label {
-        &:before,
-        &:after {
-          cursor: pointer;
-          content: '';
-          box-sizing: border-box;
-          position: absolute;
+      gcds-label {
+        display: block;
+        & > label {
+          &:before,
+          &:after {
+            cursor: pointer;
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+          }
         }
       }
     }

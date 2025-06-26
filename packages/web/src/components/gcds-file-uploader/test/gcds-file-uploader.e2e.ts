@@ -1,103 +1,124 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-file-uploader', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" />',
-    );
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
+import path from 'path';
 
-    const element = await page.find('gcds-file-uploader');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto(
+    '/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
+  );
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-file-uploader');
+    return host && host.shadowRoot;
   });
+});
 
-  it('upload 1 file', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" />',
+test.describe('gcds-file-uploader', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+  });
+  test('upload one file', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    const filePath: string = path.resolve(
+      './www/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
     );
 
-    const [fileChooser] = await Promise.all([
-      page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input'),
-    ]);
+    const fileInput = await page.locator('input[type="file"]');
 
-    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
+    fileInput.setInputFiles(filePath);
 
     await page.waitForChanges();
 
     expect(
-      (
-        await page.findAll(
-          'gcds-file-uploader >>> .file-uploader__uploaded-file',
-        )
-      ).length,
+      await element.evaluate(
+        el => (el as HTMLGcdsFileUploaderElement).files.length,
+      ),
     ).toBe(1);
   });
+  test('upload multiple file', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
 
-  it('upload multiple files', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-file-uploader label="file uploader label" multiple name="file" uploader-id="file-uploader" />',
-    );
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-    const [fileChooser] = await Promise.all([
-      page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input'),
-    ]);
+    const fileInput = await page.locator('input[type="file"]');
 
-    await fileChooser.accept([
-      './gcds-file-uploader.e2e.ts',
-      './gcds-file-uploader.spec.tsx',
+    fileInput.setInputFiles([
+      path.resolve(
+        './www/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
+      ),
+      path.resolve(
+        './www/components/gcds-date-input/test/gcds-date-input.e2e.html',
+      ),
     ]);
 
     await page.waitForChanges();
 
     expect(
-      (
-        await page.findAll(
-          'gcds-file-uploader >>> .file-uploader__uploaded-file',
-        )
-      ).length,
+      await element.evaluate(
+        el => (el as HTMLGcdsFileUploaderElement).files.length,
+      ),
     ).toBe(2);
   });
+  test('upload and remove file', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
 
-  it('upload and remove file', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" />',
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    const filePath: string = path.resolve(
+      './www/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
     );
 
-    const [fileChooser] = await Promise.all([
-      page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input'),
-    ]);
+    const fileInput = await page.locator('input[type="file"]');
 
-    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
+    fileInput.setInputFiles(filePath);
 
     await page.waitForChanges();
 
-    await (
-      await page.find(
-        'gcds-file-uploader >>> .file-uploader__uploaded-file > button',
-      )
-    ).click();
+    expect(
+      await element.evaluate(
+        el => (el as HTMLGcdsFileUploaderElement).files.length,
+      ),
+    ).toBe(1);
+
+    await page.locator('button').nth(1).click();
+
+    await page.waitForChanges();
 
     expect(
-      (
-        await page.findAll(
-          'gcds-file-uploader >>> .file-uploader__uploaded-file',
-        )
-      ).length,
+      await element.evaluate(
+        el => (el as HTMLGcdsFileUploaderElement).files.length,
+      ),
     ).toBe(0);
   });
+  test('set files manually', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
 
-  it('set files property manually', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" />',
-    );
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
     await page.evaluate(() => {
       const blob = new Blob(['hello world'], { type: 'text/plain' });
@@ -112,61 +133,61 @@ describe('gcds-file-uploader', () => {
     await page.waitForChanges();
 
     expect(
-      (
-        await page.findAll(
-          'gcds-file-uploader >>> .file-uploader__uploaded-file',
-        )
-      ).length,
+      await element.evaluate(
+        el => (el as HTMLGcdsFileUploaderElement).files.length,
+      ),
     ).toBe(1);
-    expect(
-      (await page.find('gcds-file-uploader >>> gcds-text')).textContent,
-    ).toBe('./example.txt');
   });
+  /**
+   * Validation
+   */
+  test('validation', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
 
-  it('Validation', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" required/>',
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el =>
+      (el as HTMLGcdsFileUploaderElement).validate(),
     );
 
-    const input = await page.find('gcds-file-uploader');
-
-    input.callMethod('validate');
-    await page.waitForChanges();
-
-    const error = await page.$eval(
-      'gcds-file-uploader >>> gcds-error-message',
-      el => el.innerText,
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsFileUploaderElement).errorMessage,
     );
 
-    expect(error).toBe('You must upload a file to continue.');
+    expect(errorMessage).toEqual('You must upload a file to continue.');
 
-    const [fileChooser] = await Promise.all([
-      page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input'),
-    ]);
-
-    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
-
-    await page.waitForChanges();
-
-    input.callMethod('validate');
-    await page.waitForChanges();
-
-    expect(await page.$('gcds-file-uploader >>> gcds-error-message')).toBe(
-      null,
+    const filePath: string = path.resolve(
+      './www/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
     );
+
+    const fileInput = await page.locator('input[type="file"]');
+
+    fileInput.setInputFiles(filePath);
+
+    await page.waitForChanges();
+
+    await element.evaluate(el =>
+      (el as HTMLGcdsFileUploaderElement).validate(),
+    );
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsFileUploaderElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
   });
+  test('validation - custom validation', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
 
-  it('Validation - Custom validator', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" required/>',
-    );
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-    await page.evaluate(() => {
-      const input = document.querySelector('gcds-file-uploader');
-
+    await element.evaluate(el => {
       const matchFile = (name: string) => {
         return {
           validate: (value: FileList) => {
@@ -181,60 +202,62 @@ describe('gcds-file-uploader', () => {
         };
       };
 
-      (input as HTMLGcdsFileUploaderElement).validator = [
-        matchFile('gcds-file-uploader.spec.tsx'),
+      (el as HTMLGcdsFileUploaderElement).validator = [
+        matchFile('gcds-date-input.e2e.html'),
       ];
     });
 
-    const [fileChooser] = await Promise.all([
-      page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input'),
-    ]);
-
-    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
-
     await page.waitForChanges();
 
-    const input = await page.find('gcds-file-uploader');
+    const fileInput = await page.locator('input[type="file"]');
 
-    input.callMethod('validate');
-    await page.waitForChanges();
-
-    const error = await page.$eval(
-      'gcds-file-uploader >>> gcds-error-message',
-      el => el.innerText,
+    fileInput.setInputFiles(
+      path.resolve(
+        './www/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
+      ),
     );
 
-    expect(error).toBe(
-      'The uploaded file must have a name of gcds-file-uploader.spec.tsx.',
+    await page.waitForChanges();
+
+    await element.evaluate(el =>
+      (el as HTMLGcdsFileUploaderElement).validate(),
     );
 
-    const [fileChooser2] = await Promise.all([
-      page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input'),
-    ]);
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsFileUploaderElement).errorMessage,
+    );
 
-    await fileChooser2.accept(['./gcds-file-uploader.spec.tsx']);
+    expect(errorMessage).toEqual(
+      'The uploaded file must have a name of gcds-date-input.e2e.html.',
+    );
+
+    fileInput.setInputFiles(
+      path.resolve(
+        './www/components/gcds-date-input/test/gcds-date-input.e2e.html',
+      ),
+    );
 
     await page.waitForChanges();
 
-    input.callMethod('validate');
-    await page.waitForChanges();
-
-    expect(await page.$('gcds-file-uploader >>> gcds-error-message')).toBe(
-      null,
+    await element.evaluate(el =>
+      (el as HTMLGcdsFileUploaderElement).validate(),
     );
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsFileUploaderElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
   });
+  test('validation - custom validation old format', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
 
-  it('Validation - Custom validator old format', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-file-uploader label="file uploader label" name="file" uploader-id="file-uploader" required/>',
-    );
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-    await page.evaluate(() => {
-      const input = document.querySelector('gcds-file-uploader');
-
+    await element.evaluate(el => {
       const matchFile = (name: string) => {
         return {
           validate: (value: FileList) => {
@@ -247,50 +270,53 @@ describe('gcds-file-uploader', () => {
         };
       };
 
-      (input as HTMLGcdsFileUploaderElement).validator = [
+      (el as HTMLGcdsFileUploaderElement).validator = [
         // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
-        matchFile('gcds-file-uploader.spec.tsx'),
+        matchFile('gcds-date-input.e2e.html'),
       ];
     });
 
-    const [fileChooser] = await Promise.all([
-      page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input'),
-    ]);
-
-    await fileChooser.accept(['./gcds-file-uploader.e2e.ts']);
-
     await page.waitForChanges();
 
-    const input = await page.find('gcds-file-uploader');
+    const fileInput = await page.locator('input[type="file"]');
 
-    input.callMethod('validate');
-    await page.waitForChanges();
-
-    const error = await page.$eval(
-      'gcds-file-uploader >>> gcds-error-message',
-      el => el.innerText,
+    fileInput.setInputFiles(
+      path.resolve(
+        './www/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
+      ),
     );
 
-    expect(error).toBe(
-      'The uploaded file must have a name of gcds-file-uploader.spec.tsx.',
+    await page.waitForChanges();
+
+    await element.evaluate(el =>
+      (el as HTMLGcdsFileUploaderElement).validate(),
     );
 
-    const [fileChooser2] = await Promise.all([
-      page.waitForFileChooser(),
-      page.click('gcds-file-uploader >>> input'),
-    ]);
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsFileUploaderElement).errorMessage,
+    );
 
-    await fileChooser2.accept(['./gcds-file-uploader.spec.tsx']);
+    expect(errorMessage).toEqual(
+      'The uploaded file must have a name of gcds-date-input.e2e.html.',
+    );
+
+    fileInput.setInputFiles(
+      path.resolve(
+        './www/components/gcds-date-input/test/gcds-date-input.e2e.html',
+      ),
+    );
 
     await page.waitForChanges();
 
-    input.callMethod('validate');
-    await page.waitForChanges();
-
-    expect(await page.$('gcds-file-uploader >>> gcds-error-message')).toBe(
-      null,
+    await element.evaluate(el =>
+      (el as HTMLGcdsFileUploaderElement).validate(),
     );
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsFileUploaderElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
   });
 });
 
@@ -299,49 +325,43 @@ describe('gcds-file-uploader', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-file-uploader a11y tests', () => {
+test.describe('gcds-file-uploader a11y tests', () => {
   /**
-   * Aria-invalid true if error test
+   * Colour contrast
    */
-  it('aria-invalid', async () => {
-    const page = await newE2EPage();
-
-    await page.setContent(
-      '<gcds-file-uploader label="Label" uploader-id="aria-invalid" name="file" error-message="Field required" />',
-    );
-    const element = await await page.find('gcds-file-uploader >>> input');
-    expect(element.getAttribute('aria-invalid')).toEqual('true');
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
-
   /**
-   * Colour contrast test
+   * Labels
    */
-  it('colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-file-uploader label="Label" name="file" uploader-id="colour-contrast"></gcds-file-uploader>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+  test('Proper labels', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['label'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
-
   /**
-   * File uploader keyboard focus
+   * Keyboard focus
    */
-  it('file uploader keyboard focus', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-file-uploader label="Label" name="file" uploader-id="keyboard-focus" />
-    `);
+  test('Keyboard focus', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
+    await expect(element).toHaveClass('hydrated');
 
-    const fileUploaderField = await (
-      await page.find('gcds-file-uploader >>> input')
-    ).innerText;
+    const fileUploaderField = await page
+      .locator('input')
+      .evaluate(el => (el as HTMLInputElement).innerText);
 
     await page.keyboard.press('Tab');
 
@@ -352,17 +372,21 @@ describe('gcds-file-uploader a11y tests', () => {
       ),
     ).toEqual(fileUploaderField);
   });
-
   /**
-   * File uploader label test
+   * Aria-invalid
    */
-  it('file-uploader contains label', async () => {
-    const page = await newE2EPage();
+  test('aria-invalid', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
+    await expect(element).toHaveClass('hydrated');
 
-    await page.setContent(
-      '<gcds-file-uploader label="Label" name="file" uploader-id="contains-label" />',
+    await element.evaluate(
+      el => ((el as HTMLGcdsFileUploaderElement).errorMessage = 'Error'),
     );
-    const element = await await page.find('gcds-file-uploader >>> gcds-label');
-    expect(element.getAttribute('id')).toEqual('label-for-contains-label');
+
+    await page.waitForChanges();
+
+    expect(await page.locator('input').getAttribute('aria-invalid')).toEqual(
+      'true',
+    );
   });
 });

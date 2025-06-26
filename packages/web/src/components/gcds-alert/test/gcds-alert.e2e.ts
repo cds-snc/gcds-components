@@ -1,13 +1,33 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-alert', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-alert></gcds-alert>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-alert');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-alert/test/gcds-alert.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-alert');
+    return host && host.shadowRoot;
+  });
+});
+
+test.describe('gcds-alert', () => {
+  test('renders', async ({ page }) => {
+    const alerts = await page.locator('gcds-alert');
+    const count = await alerts.count();
+
+    for (let i = 0; i < count; i++) {
+      const alert = alerts.nth(i);
+
+      // Wait for element to attach and become visible, allowing up to 10s
+      await alert.waitFor({ state: 'attached' });
+      await alert.waitFor({ state: 'visible' });
+      await alert.waitFor({ timeout: 10000 });
+
+      // Check if it has the 'hydrated' class
+      await expect(alert).toHaveClass('hydrated');
+    }
   });
 });
 
@@ -15,72 +35,33 @@ describe('gcds-alert', () => {
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
+const roles = ['danger', 'info', 'success', 'warning'];
 
-describe('gcds-alert a11y tests', () => {
+test.describe('gcds-alert a11y tests', () => {
   /**
    * Colour contrast test
    */
-  it('colour contrast danger alert', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-alert heading="Main notification title" alert-role="danger">
-        <p>Testing slot content.</p>
-      </gcds-alert>
-    `);
+  roles.forEach(role => {
+    test(`colour contrast ${role} alert`, async ({ page }) => {
+      await page.setContent(`
+        <gcds-alert heading="Main notification title" alert-role="${role}">
+          <p>Testing slot content.</p>
+        </gcds-alert>
+      `);
 
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
+      // Wait for shadow DOM to be available and component to hydrate
+      await page.waitForFunction(() => {
+        const alert = document.querySelector('gcds-alert');
+        return (
+          alert && alert.shadowRoot && alert.classList.contains('hydrated')
+        );
+      });
 
-    expect(results.violations.length).toBe(0);
-  });
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
 
-  it('colour contrast info alert', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-alert heading="Main notification title" alert-role="info">
-        <p>Testing slot content.</p>
-      </gcds-alert>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-
-  it('colour contrast success alert', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-alert heading="Main notification title" alert-role="success">
-        <p>Testing slot content.</p>
-      </gcds-alert>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
-  });
-
-  it('colour contrast warning alert', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-alert heading="Main notification title" alert-role="warning">
-        <p>Testing slot content.</p>
-      </gcds-alert>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+      expect(results.violations.length).toBe(0);
+    });
   });
 });

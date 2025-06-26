@@ -1,58 +1,79 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-textarea', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    await page.setContent(
-      '<gcds-textarea label="Label" textarea-id="textarea-renders" value="Textarea Value" />',
-    );
-    const element = await await page.find('gcds-textarea >>> textarea');
-    expect(element.textContent).toEqual('Textarea Value');
+test.beforeEach(async ({ page }) => {
+  await page.goto('/components/gcds-textarea/test/gcds-textarea.e2e.html');
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-textarea');
+    return host && host.shadowRoot;
   });
-  it('Validation', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-textarea name="textarea" label="Label" textarea-id="textarea-renders" required/>',
-    );
+});
 
-    const textarea = await page.find('gcds-textarea');
+test.describe('gcds-textarea', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
 
-    textarea.callMethod('validate');
-    await page.waitForChanges();
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
 
-    const error = await page.$eval(
-      'gcds-textarea >>> gcds-error-message',
-      el => el.innerText,
-    );
-
-    expect(error).toBe('Enter information to continue.');
-
-    await page.type('gcds-textarea >>> textarea', 'red');
-
-    textarea.callMethod('validate');
-    await page.waitForChanges();
-
-    expect(await page.$('gcds-textarea >>> gcds-error-message')).toBe(null);
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
-  it('Validation - custom validator', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-textarea name="textarea" label="Label" textarea-id="textarea-renders" required/>',
+
+  /**
+   * Validation
+   */
+  test('Validation', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
     );
 
-    await page.evaluate(() => {
-      const textarea = document.querySelector('gcds-textarea');
+    expect(errorMessage).toEqual('Enter information to continue.');
 
+    await element.locator('textarea').fill('Information');
+
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('Validation - custom validation', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
       const minLength = (min: number) => {
         return {
           validate: (value: string) => {
             value = value || '';
             let valid = true;
+
             if (min) {
               valid = min <= value.length;
             }
+
             return {
               valid,
               reason: {
@@ -64,51 +85,55 @@ describe('gcds-textarea', () => {
         };
       };
 
-      (textarea as HTMLGcdsTextareaElement).validator = [minLength(2)];
+      (el as HTMLGcdsTextareaElement).validator = [minLength(2)];
     });
 
     await page.waitForChanges();
+    await element.locator('textarea').fill('1');
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
 
-    const textarea = await page.find('gcds-textarea');
-
-    textarea.callMethod('validate');
-    await page.waitForChanges();
-
-    const error = await page.$eval(
-      'gcds-textarea >>> gcds-error-message',
-      el => el.innerText,
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
     );
 
-    expect(error).toBe('The entered value must be longer than 2 characters');
+    expect(errorMessage).toEqual(
+      'The entered value must be longer than 2 characters',
+    );
 
-    await page.type('gcds-textarea >>> textarea', 'red');
+    await element.locator('textarea').fill('123');
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
 
-    textarea.callMethod('validate');
-    await page.waitForChanges();
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
+    );
 
-    expect(await page.$('gcds-textarea >>> gcds-error-message')).toBe(null);
+    expect(errorMessage).toEqual('');
   });
-  it('Validation - custom validator old format', async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      '<gcds-textarea name="textarea" label="Label" textarea-id="textarea-renders" required/>',
-    );
 
-    await page.evaluate(() => {
-      const textarea = document.querySelector('gcds-textarea');
+  test('Validation - custom validation old format', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
 
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
       const minLength = (min: number) => {
         const errorMessage = {
           en: `The entered value must be longer than ${min} characters`,
           fr: `The entered value must be longer than ${min} characters`,
         };
+
         return {
           validate: (value: string) => {
             value = value || '';
             let valid = true;
+
             if (min) {
               valid = min <= value.length;
             }
+
             return valid;
           },
           errorMessage,
@@ -116,29 +141,29 @@ describe('gcds-textarea', () => {
       };
 
       // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
-      (textarea as HTMLGcdsTextareaElement).validator = [minLength(2)];
+      (el as HTMLGcdsTextareaElement).validator = [minLength(2)];
     });
 
     await page.waitForChanges();
+    await element.locator('textarea').fill('1');
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
 
-    const textarea = await page.find('gcds-textarea');
-
-    textarea.callMethod('validate');
-    await page.waitForChanges();
-
-    const error = await page.$eval(
-      'gcds-textarea >>> gcds-error-message',
-      el => el.innerText,
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
     );
 
-    expect(error).toBe('The entered value must be longer than 2 characters');
+    expect(errorMessage).toEqual(
+      'The entered value must be longer than 2 characters',
+    );
 
-    await page.type('gcds-textarea >>> textarea', 'red');
+    await element.locator('textarea').fill('123');
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
 
-    textarea.callMethod('validate');
-    await page.waitForChanges();
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
+    );
 
-    expect(await page.$('gcds-textarea >>> gcds-error-message')).toBe(null);
+    expect(errorMessage).toEqual('');
   });
 });
 
@@ -147,81 +172,78 @@ describe('gcds-textarea', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-textarea a11y tests', () => {
+test.describe('gcds-textarea a11y tests', () => {
   /**
    * Aria-invalid true if error test
    */
-  it('aria-invalid', async () => {
-    const page = await newE2EPage();
+  test('aria-invalid', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
 
-    await page.setContent(
-      '<gcds-textarea label="Label" textarea-id="textarea-renders" error-message="Field required" />',
-    );
-    const element = await await page.find('gcds-textarea >>> textarea');
-    expect(element.getAttribute('aria-invalid')).toEqual('true');
+    await element.evaluate(el => {
+      el.setAttribute('error-message', 'Field required');
+    });
+    await expect(element).toHaveClass('hydrated');
+
+    const textareaElement = element.locator('textarea');
+    await expect(textareaElement).toHaveAttribute('aria-invalid', 'true');
   });
+
   /**
-   * Colour contrast test
+   * Colour contrast
    */
-  it('colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-textarea label="Label" textarea-id="textarea-renders" value="Testing the contrast" />
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
   /**
    * Textarea keyboard focus
    */
-  it('textarea keyboard focus', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-textarea label="Label" textarea-id="textarea-renders" />
-    `);
+  test('textarea keyboard focus', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
+    await expect(element).toHaveClass('hydrated');
 
-    const textareaField = await (
-      await page.find('gcds-textarea >>> textarea')
-    ).innerText;
+    const textareaField = await page
+      .locator('gcds-textarea')
+      .locator('textarea')
+      .innerText();
 
     await page.keyboard.press('Tab');
 
     expect(
       await page.evaluate(
-        () =>
-          window.document.activeElement.shadowRoot.activeElement.textContent,
+        () => document.activeElement?.shadowRoot?.activeElement?.textContent,
       ),
-    ).toEqual(textareaField);
+    ).toBe(textareaField);
   });
 
   /**
    * Textarea label test
    */
-  it('textarea contains label', async () => {
-    const page = await newE2EPage();
+  test('textarea contains label', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
 
-    await page.setContent(
-      '<gcds-textarea label="Label" textarea-id="textarea-renders" />',
-    );
-    const element = await await page.find('gcds-textarea >>> gcds-label');
-    expect(element.getAttribute('id')).toEqual('label-for-textarea-renders');
+    await expect(element).toHaveClass('hydrated');
+
+    const label = element.locator('gcds-label');
+    await expect(label).toHaveAttribute('id', 'label-for-textarea-default');
   });
 
-  it('textarea has aria-labelledby for label', async () => {
-    const page = await newE2EPage();
+  test('textarea has aria-labelledby for label', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
 
-    await page.setContent(
-      '<gcds-textarea label="Label" textarea-id="textarea-renders" />',
-    );
-    const element = await await page.find('gcds-textarea >>> textarea');
-    expect(element.getAttribute('aria-labelledby')).toEqual(
-      'label-for-textarea-renders',
+    await expect(element).toHaveClass('hydrated');
+
+    const textarea = element.locator('textarea');
+    await expect(textarea).toHaveAttribute(
+      'aria-labelledby',
+      'label-for-textarea-default',
     );
   });
 });

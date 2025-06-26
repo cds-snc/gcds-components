@@ -1,14 +1,55 @@
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated vue proxies */
-import { defineContainer } from './vue-component-lib/utils';
+import { defineContainer, type StencilVueComponent } from '@stencil/vue-output-target/runtime';
 
-import type { JSX } from '@cdssnc/gcds-components';
+import type { JSX } from '@cdssnc/gcds-components/dist/components';
+
+import { defineCustomElement as defineGcdsAlert } from '@cdssnc/gcds-components/dist/components/gcds-alert.js';
+import { defineCustomElement as defineGcdsBreadcrumbs } from '@cdssnc/gcds-components/dist/components/gcds-breadcrumbs.js';
+import { defineCustomElement as defineGcdsBreadcrumbsItem } from '@cdssnc/gcds-components/dist/components/gcds-breadcrumbs-item.js';
+import { defineCustomElement as defineGcdsButton } from '@cdssnc/gcds-components/dist/components/gcds-button.js';
+import { defineCustomElement as defineGcdsCard } from '@cdssnc/gcds-components/dist/components/gcds-card.js';
+import { defineCustomElement as defineGcdsCheckboxes } from '@cdssnc/gcds-components/dist/components/gcds-checkboxes.js';
+import { defineCustomElement as defineGcdsContainer } from '@cdssnc/gcds-components/dist/components/gcds-container.js';
+import { defineCustomElement as defineGcdsDateInput } from '@cdssnc/gcds-components/dist/components/gcds-date-input.js';
+import { defineCustomElement as defineGcdsDateModified } from '@cdssnc/gcds-components/dist/components/gcds-date-modified.js';
+import { defineCustomElement as defineGcdsDetails } from '@cdssnc/gcds-components/dist/components/gcds-details.js';
+import { defineCustomElement as defineGcdsErrorMessage } from '@cdssnc/gcds-components/dist/components/gcds-error-message.js';
+import { defineCustomElement as defineGcdsErrorSummary } from '@cdssnc/gcds-components/dist/components/gcds-error-summary.js';
+import { defineCustomElement as defineGcdsFieldset } from '@cdssnc/gcds-components/dist/components/gcds-fieldset.js';
+import { defineCustomElement as defineGcdsFileUploader } from '@cdssnc/gcds-components/dist/components/gcds-file-uploader.js';
+import { defineCustomElement as defineGcdsFooter } from '@cdssnc/gcds-components/dist/components/gcds-footer.js';
+import { defineCustomElement as defineGcdsGrid } from '@cdssnc/gcds-components/dist/components/gcds-grid.js';
+import { defineCustomElement as defineGcdsGridCol } from '@cdssnc/gcds-components/dist/components/gcds-grid-col.js';
+import { defineCustomElement as defineGcdsHeader } from '@cdssnc/gcds-components/dist/components/gcds-header.js';
+import { defineCustomElement as defineGcdsHeading } from '@cdssnc/gcds-components/dist/components/gcds-heading.js';
+import { defineCustomElement as defineGcdsHint } from '@cdssnc/gcds-components/dist/components/gcds-hint.js';
+import { defineCustomElement as defineGcdsIcon } from '@cdssnc/gcds-components/dist/components/gcds-icon.js';
+import { defineCustomElement as defineGcdsInput } from '@cdssnc/gcds-components/dist/components/gcds-input.js';
+import { defineCustomElement as defineGcdsLabel } from '@cdssnc/gcds-components/dist/components/gcds-label.js';
+import { defineCustomElement as defineGcdsLangToggle } from '@cdssnc/gcds-components/dist/components/gcds-lang-toggle.js';
+import { defineCustomElement as defineGcdsLink } from '@cdssnc/gcds-components/dist/components/gcds-link.js';
+import { defineCustomElement as defineGcdsNavGroup } from '@cdssnc/gcds-components/dist/components/gcds-nav-group.js';
+import { defineCustomElement as defineGcdsNavLink } from '@cdssnc/gcds-components/dist/components/gcds-nav-link.js';
+import { defineCustomElement as defineGcdsNotice } from '@cdssnc/gcds-components/dist/components/gcds-notice.js';
+import { defineCustomElement as defineGcdsPagination } from '@cdssnc/gcds-components/dist/components/gcds-pagination.js';
+import { defineCustomElement as defineGcdsPhaseBanner } from '@cdssnc/gcds-components/dist/components/gcds-phase-banner.js';
+import { defineCustomElement as defineGcdsRadios } from '@cdssnc/gcds-components/dist/components/gcds-radios.js';
+import { defineCustomElement as defineGcdsSearch } from '@cdssnc/gcds-components/dist/components/gcds-search.js';
+import { defineCustomElement as defineGcdsSelect } from '@cdssnc/gcds-components/dist/components/gcds-select.js';
+import { defineCustomElement as defineGcdsSideNav } from '@cdssnc/gcds-components/dist/components/gcds-side-nav.js';
+import { defineCustomElement as defineGcdsSignature } from '@cdssnc/gcds-components/dist/components/gcds-signature.js';
+import { defineCustomElement as defineGcdsSrOnly } from '@cdssnc/gcds-components/dist/components/gcds-sr-only.js';
+import { defineCustomElement as defineGcdsStepper } from '@cdssnc/gcds-components/dist/components/gcds-stepper.js';
+import { defineCustomElement as defineGcdsText } from '@cdssnc/gcds-components/dist/components/gcds-text.js';
+import { defineCustomElement as defineGcdsTextarea } from '@cdssnc/gcds-components/dist/components/gcds-textarea.js';
+import { defineCustomElement as defineGcdsTopNav } from '@cdssnc/gcds-components/dist/components/gcds-top-nav.js';
+import { defineCustomElement as defineGcdsTopicMenu } from '@cdssnc/gcds-components/dist/components/gcds-topic-menu.js';
+import { defineCustomElement as defineGcdsVerifyBanner } from '@cdssnc/gcds-components/dist/components/gcds-verify-banner.js';
 
 
-
-
-export const GcdsAlert = /*@__PURE__*/ defineContainer<JSX.GcdsAlert>('gcds-alert', undefined, [
+export const GcdsAlert: StencilVueComponent<JSX.GcdsAlert> = /*@__PURE__*/ defineContainer<JSX.GcdsAlert>('gcds-alert', defineGcdsAlert, [
   'alertRole',
   'container',
   'heading',
@@ -16,20 +57,22 @@ export const GcdsAlert = /*@__PURE__*/ defineContainer<JSX.GcdsAlert>('gcds-aler
   'hideRoleIcon',
   'isFixed',
   'gcdsDismiss'
+], [
+  'gcdsDismiss'
 ]);
 
 
-export const GcdsBreadcrumbs = /*@__PURE__*/ defineContainer<JSX.GcdsBreadcrumbs>('gcds-breadcrumbs', undefined, [
+export const GcdsBreadcrumbs: StencilVueComponent<JSX.GcdsBreadcrumbs> = /*@__PURE__*/ defineContainer<JSX.GcdsBreadcrumbs>('gcds-breadcrumbs', defineGcdsBreadcrumbs, [
   'hideCanadaLink'
 ]);
 
 
-export const GcdsBreadcrumbsItem = /*@__PURE__*/ defineContainer<JSX.GcdsBreadcrumbsItem>('gcds-breadcrumbs-item', undefined, [
+export const GcdsBreadcrumbsItem: StencilVueComponent<JSX.GcdsBreadcrumbsItem> = /*@__PURE__*/ defineContainer<JSX.GcdsBreadcrumbsItem>('gcds-breadcrumbs-item', defineGcdsBreadcrumbsItem, [
   'href'
 ]);
 
 
-export const GcdsButton = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-button', undefined, [
+export const GcdsButton: StencilVueComponent<JSX.GcdsButton> = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-button', defineGcdsButton, [
   'type',
   'buttonRole',
   'size',
@@ -44,10 +87,14 @@ export const GcdsButton = /*@__PURE__*/ defineContainer<JSX.GcdsButton>('gcds-bu
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'
+], [
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur'
 ]);
 
 
-export const GcdsCard = /*@__PURE__*/ defineContainer<JSX.GcdsCard>('gcds-card', undefined, [
+export const GcdsCard: StencilVueComponent<JSX.GcdsCard> = /*@__PURE__*/ defineContainer<JSX.GcdsCard>('gcds-card', defineGcdsCard, [
   'cardTitle',
   'href',
   'cardTitleTag',
@@ -58,10 +105,14 @@ export const GcdsCard = /*@__PURE__*/ defineContainer<JSX.GcdsCard>('gcds-card',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
-export const GcdsCheckboxes = /*@__PURE__*/ defineContainer<JSX.GcdsCheckboxes>('gcds-checkboxes', undefined, [
+export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes, JSX.GcdsCheckboxes["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsCheckboxes, JSX.GcdsCheckboxes["value"]>('gcds-checkboxes', defineGcdsCheckboxes, [
   'name',
   'legend',
   'options',
@@ -79,10 +130,19 @@ export const GcdsCheckboxes = /*@__PURE__*/ defineContainer<JSX.GcdsCheckboxes>(
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange');
 
 
-export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', undefined, [
+export const GcdsContainer: StencilVueComponent<JSX.GcdsContainer> = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', defineGcdsContainer, [
   'border',
   'centered',
   'mainContainer',
@@ -93,7 +153,7 @@ export const GcdsContainer = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('g
 ]);
 
 
-export const GcdsDateInput = /*@__PURE__*/ defineContainer<JSX.GcdsDateInput>('gcds-date-input', undefined, [
+export const GcdsDateInput: StencilVueComponent<JSX.GcdsDateInput, JSX.GcdsDateInput["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsDateInput, JSX.GcdsDateInput["value"]>('gcds-date-input', defineGcdsDateInput, [
   'name',
   'legend',
   'format',
@@ -110,43 +170,55 @@ export const GcdsDateInput = /*@__PURE__*/ defineContainer<JSX.GcdsDateInput>('g
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange');
 
 
-export const GcdsDateModified = /*@__PURE__*/ defineContainer<JSX.GcdsDateModified>('gcds-date-modified', undefined, [
+export const GcdsDateModified: StencilVueComponent<JSX.GcdsDateModified> = /*@__PURE__*/ defineContainer<JSX.GcdsDateModified>('gcds-date-modified', defineGcdsDateModified, [
   'type'
 ]);
 
 
-export const GcdsDetails = /*@__PURE__*/ defineContainer<JSX.GcdsDetails>('gcds-details', undefined, [
+export const GcdsDetails: StencilVueComponent<JSX.GcdsDetails> = /*@__PURE__*/ defineContainer<JSX.GcdsDetails>('gcds-details', defineGcdsDetails, [
   'detailsTitle',
   'open',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+], [
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
 ]);
 
 
-export const GcdsErrorMessage = /*@__PURE__*/ defineContainer<JSX.GcdsErrorMessage>('gcds-error-message', undefined, [
+export const GcdsErrorMessage: StencilVueComponent<JSX.GcdsErrorMessage> = /*@__PURE__*/ defineContainer<JSX.GcdsErrorMessage>('gcds-error-message', defineGcdsErrorMessage, [
   'messageId'
 ]);
 
 
-export const GcdsErrorSummary = /*@__PURE__*/ defineContainer<JSX.GcdsErrorSummary>('gcds-error-summary', undefined, [
+export const GcdsErrorSummary: StencilVueComponent<JSX.GcdsErrorSummary> = /*@__PURE__*/ defineContainer<JSX.GcdsErrorSummary>('gcds-error-summary', defineGcdsErrorSummary, [
   'heading',
   'listen',
   'errorLinks'
 ]);
 
 
-export const GcdsFieldset = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcds-fieldset', undefined, [
+export const GcdsFieldset: StencilVueComponent<JSX.GcdsFieldset> = /*@__PURE__*/ defineContainer<JSX.GcdsFieldset>('gcds-fieldset', defineGcdsFieldset, [
   'hint',
   'legend',
   'legendSize'
 ]);
 
 
-export const GcdsFileUploader = /*@__PURE__*/ defineContainer<JSX.GcdsFileUploader>('gcds-file-uploader', undefined, [
+export const GcdsFileUploader: StencilVueComponent<JSX.GcdsFileUploader, JSX.GcdsFileUploader["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsFileUploader, JSX.GcdsFileUploader["value"]>('gcds-file-uploader', defineGcdsFileUploader, [
   'uploaderId',
   'name',
   'label',
@@ -167,10 +239,19 @@ export const GcdsFileUploader = /*@__PURE__*/ defineContainer<JSX.GcdsFileUpload
   'gcdsRemoveFile',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsChange',
+  'gcdsInput',
+  'gcdsRemoveFile',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange');
 
 
-export const GcdsFooter = /*@__PURE__*/ defineContainer<JSX.GcdsFooter>('gcds-footer', undefined, [
+export const GcdsFooter: StencilVueComponent<JSX.GcdsFooter> = /*@__PURE__*/ defineContainer<JSX.GcdsFooter>('gcds-footer', defineGcdsFooter, [
   'display',
   'wordmarkVariant',
   'contextualHeading',
@@ -179,7 +260,7 @@ export const GcdsFooter = /*@__PURE__*/ defineContainer<JSX.GcdsFooter>('gcds-fo
 ]);
 
 
-export const GcdsGrid = /*@__PURE__*/ defineContainer<JSX.GcdsGrid>('gcds-grid', undefined, [
+export const GcdsGrid: StencilVueComponent<JSX.GcdsGrid> = /*@__PURE__*/ defineContainer<JSX.GcdsGrid>('gcds-grid', defineGcdsGrid, [
   'columns',
   'columnsTablet',
   'columnsDesktop',
@@ -200,14 +281,14 @@ export const GcdsGrid = /*@__PURE__*/ defineContainer<JSX.GcdsGrid>('gcds-grid',
 ]);
 
 
-export const GcdsGridCol = /*@__PURE__*/ defineContainer<JSX.GcdsGridCol>('gcds-grid-col', undefined, [
+export const GcdsGridCol: StencilVueComponent<JSX.GcdsGridCol> = /*@__PURE__*/ defineContainer<JSX.GcdsGridCol>('gcds-grid-col', defineGcdsGridCol, [
   'tag',
   'tablet',
   'desktop'
 ]);
 
 
-export const GcdsHeader = /*@__PURE__*/ defineContainer<JSX.GcdsHeader>('gcds-header', undefined, [
+export const GcdsHeader: StencilVueComponent<JSX.GcdsHeader> = /*@__PURE__*/ defineContainer<JSX.GcdsHeader>('gcds-header', defineGcdsHeader, [
   'langHref',
   'signatureVariant',
   'signatureHasLink',
@@ -215,7 +296,7 @@ export const GcdsHeader = /*@__PURE__*/ defineContainer<JSX.GcdsHeader>('gcds-he
 ]);
 
 
-export const GcdsHeading = /*@__PURE__*/ defineContainer<JSX.GcdsHeading>('gcds-heading', undefined, [
+export const GcdsHeading: StencilVueComponent<JSX.GcdsHeading> = /*@__PURE__*/ defineContainer<JSX.GcdsHeading>('gcds-heading', defineGcdsHeading, [
   'tag',
   'characterLimit',
   'marginTop',
@@ -223,12 +304,12 @@ export const GcdsHeading = /*@__PURE__*/ defineContainer<JSX.GcdsHeading>('gcds-
 ]);
 
 
-export const GcdsHint = /*@__PURE__*/ defineContainer<JSX.GcdsHint>('gcds-hint', undefined, [
+export const GcdsHint: StencilVueComponent<JSX.GcdsHint> = /*@__PURE__*/ defineContainer<JSX.GcdsHint>('gcds-hint', defineGcdsHint, [
   'hintId'
 ]);
 
 
-export const GcdsIcon = /*@__PURE__*/ defineContainer<JSX.GcdsIcon>('gcds-icon', undefined, [
+export const GcdsIcon: StencilVueComponent<JSX.GcdsIcon> = /*@__PURE__*/ defineContainer<JSX.GcdsIcon>('gcds-icon', defineGcdsIcon, [
   'label',
   'marginLeft',
   'marginRight',
@@ -237,7 +318,7 @@ export const GcdsIcon = /*@__PURE__*/ defineContainer<JSX.GcdsIcon>('gcds-icon',
 ]);
 
 
-export const GcdsInput = /*@__PURE__*/ defineContainer<JSX.GcdsInput>('gcds-input', undefined, [
+export const GcdsInput: StencilVueComponent<JSX.GcdsInput, JSX.GcdsInput["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsInput, JSX.GcdsInput["value"]>('gcds-input', defineGcdsInput, [
   'disabled',
   'errorMessage',
   'hideLabel',
@@ -258,10 +339,18 @@ export const GcdsInput = /*@__PURE__*/ defineContainer<JSX.GcdsInput>('gcds-inpu
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange');
 
 
-export const GcdsLabel = /*@__PURE__*/ defineContainer<JSX.GcdsLabel>('gcds-label', undefined, [
+export const GcdsLabel: StencilVueComponent<JSX.GcdsLabel> = /*@__PURE__*/ defineContainer<JSX.GcdsLabel>('gcds-label', defineGcdsLabel, [
   'hideLabel',
   'label',
   'labelFor',
@@ -269,12 +358,12 @@ export const GcdsLabel = /*@__PURE__*/ defineContainer<JSX.GcdsLabel>('gcds-labe
 ]);
 
 
-export const GcdsLangToggle = /*@__PURE__*/ defineContainer<JSX.GcdsLangToggle>('gcds-lang-toggle', undefined, [
+export const GcdsLangToggle: StencilVueComponent<JSX.GcdsLangToggle> = /*@__PURE__*/ defineContainer<JSX.GcdsLangToggle>('gcds-lang-toggle', defineGcdsLangToggle, [
   'href'
 ]);
 
 
-export const GcdsLink = /*@__PURE__*/ defineContainer<JSX.GcdsLink>('gcds-link', undefined, [
+export const GcdsLink: StencilVueComponent<JSX.GcdsLink> = /*@__PURE__*/ defineContainer<JSX.GcdsLink>('gcds-link', defineGcdsLink, [
   'variant',
   'size',
   'display',
@@ -287,10 +376,14 @@ export const GcdsLink = /*@__PURE__*/ defineContainer<JSX.GcdsLink>('gcds-link',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
-export const GcdsNavGroup = /*@__PURE__*/ defineContainer<JSX.GcdsNavGroup>('gcds-nav-group', undefined, [
+export const GcdsNavGroup: StencilVueComponent<JSX.GcdsNavGroup> = /*@__PURE__*/ defineContainer<JSX.GcdsNavGroup>('gcds-nav-group', defineGcdsNavGroup, [
   'closeTrigger',
   'menuLabel',
   'openTrigger',
@@ -298,26 +391,34 @@ export const GcdsNavGroup = /*@__PURE__*/ defineContainer<JSX.GcdsNavGroup>('gcd
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'
-]);
-
-
-export const GcdsNavLink = /*@__PURE__*/ defineContainer<JSX.GcdsNavLink>('gcds-nav-link', undefined, [
-  'href',
-  'current',
+], [
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'
 ]);
 
 
-export const GcdsNotice = /*@__PURE__*/ defineContainer<JSX.GcdsNotice>('gcds-notice', undefined, [
+export const GcdsNavLink: StencilVueComponent<JSX.GcdsNavLink> = /*@__PURE__*/ defineContainer<JSX.GcdsNavLink>('gcds-nav-link', defineGcdsNavLink, [
+  'href',
+  'current',
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur'
+], [
+  'gcdsClick',
+  'gcdsFocus',
+  'gcdsBlur'
+]);
+
+
+export const GcdsNotice: StencilVueComponent<JSX.GcdsNotice> = /*@__PURE__*/ defineContainer<JSX.GcdsNotice>('gcds-notice', defineGcdsNotice, [
   'type',
   'noticeTitle',
   'noticeTitleTag'
 ]);
 
 
-export const GcdsPagination = /*@__PURE__*/ defineContainer<JSX.GcdsPagination>('gcds-pagination', undefined, [
+export const GcdsPagination: StencilVueComponent<JSX.GcdsPagination> = /*@__PURE__*/ defineContainer<JSX.GcdsPagination>('gcds-pagination', defineGcdsPagination, [
   'display',
   'label',
   'previousHref',
@@ -330,17 +431,21 @@ export const GcdsPagination = /*@__PURE__*/ defineContainer<JSX.GcdsPagination>(
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
-export const GcdsPhaseBanner = /*@__PURE__*/ defineContainer<JSX.GcdsPhaseBanner>('gcds-phase-banner', undefined, [
+export const GcdsPhaseBanner: StencilVueComponent<JSX.GcdsPhaseBanner> = /*@__PURE__*/ defineContainer<JSX.GcdsPhaseBanner>('gcds-phase-banner', defineGcdsPhaseBanner, [
   'bannerRole',
   'container',
   'isFixed'
 ]);
 
 
-export const GcdsRadios = /*@__PURE__*/ defineContainer<JSX.GcdsRadios>('gcds-radios', undefined, [
+export const GcdsRadios: StencilVueComponent<JSX.GcdsRadios, JSX.GcdsRadios["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsRadios, JSX.GcdsRadios["value"]>('gcds-radios', defineGcdsRadios, [
   'options',
   'name',
   'legend',
@@ -357,10 +462,18 @@ export const GcdsRadios = /*@__PURE__*/ defineContainer<JSX.GcdsRadios>('gcds-ra
   'gcdsBlur',
   'gcdsValid',
   'gcdsError'
-]);
+], [
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsValid',
+  'gcdsError'
+],
+'value', 'gcdsChange');
 
 
-export const GcdsSearch = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-search', undefined, [
+export const GcdsSearch: StencilVueComponent<JSX.GcdsSearch> = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-search', defineGcdsSearch, [
   'placeholder',
   'action',
   'method',
@@ -373,10 +486,16 @@ export const GcdsSearch = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-se
   'gcdsFocus',
   'gcdsBlur',
   'gcdsSubmit'
+], [
+  'gcdsInput',
+  'gcdsChange',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsSubmit'
 ]);
 
 
-export const GcdsSelect = /*@__PURE__*/ defineContainer<JSX.GcdsSelect>('gcds-select', undefined, [
+export const GcdsSelect: StencilVueComponent<JSX.GcdsSelect, JSX.GcdsSelect["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsSelect, JSX.GcdsSelect["value"]>('gcds-select', defineGcdsSelect, [
   'selectId',
   'label',
   'name',
@@ -394,34 +513,42 @@ export const GcdsSelect = /*@__PURE__*/ defineContainer<JSX.GcdsSelect>('gcds-se
   'gcdsBlur',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsChange',
+  'gcdsInput',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange');
 
 
-export const GcdsSideNav = /*@__PURE__*/ defineContainer<JSX.GcdsSideNav>('gcds-side-nav', undefined, [
+export const GcdsSideNav: StencilVueComponent<JSX.GcdsSideNav> = /*@__PURE__*/ defineContainer<JSX.GcdsSideNav>('gcds-side-nav', defineGcdsSideNav, [
   'label'
 ]);
 
 
-export const GcdsSignature = /*@__PURE__*/ defineContainer<JSX.GcdsSignature>('gcds-signature', undefined, [
+export const GcdsSignature: StencilVueComponent<JSX.GcdsSignature> = /*@__PURE__*/ defineContainer<JSX.GcdsSignature>('gcds-signature', defineGcdsSignature, [
   'type',
   'variant',
   'hasLink'
 ]);
 
 
-export const GcdsSrOnly = /*@__PURE__*/ defineContainer<JSX.GcdsSrOnly>('gcds-sr-only', undefined, [
+export const GcdsSrOnly: StencilVueComponent<JSX.GcdsSrOnly> = /*@__PURE__*/ defineContainer<JSX.GcdsSrOnly>('gcds-sr-only', defineGcdsSrOnly, [
   'tag'
 ]);
 
 
-export const GcdsStepper = /*@__PURE__*/ defineContainer<JSX.GcdsStepper>('gcds-stepper', undefined, [
+export const GcdsStepper: StencilVueComponent<JSX.GcdsStepper> = /*@__PURE__*/ defineContainer<JSX.GcdsStepper>('gcds-stepper', defineGcdsStepper, [
   'currentStep',
   'totalSteps',
   'tag'
 ]);
 
 
-export const GcdsText = /*@__PURE__*/ defineContainer<JSX.GcdsText>('gcds-text', undefined, [
+export const GcdsText: StencilVueComponent<JSX.GcdsText> = /*@__PURE__*/ defineContainer<JSX.GcdsText>('gcds-text', defineGcdsText, [
   'textRole',
   'characterLimit',
   'display',
@@ -431,7 +558,7 @@ export const GcdsText = /*@__PURE__*/ defineContainer<JSX.GcdsText>('gcds-text',
 ]);
 
 
-export const GcdsTextarea = /*@__PURE__*/ defineContainer<JSX.GcdsTextarea>('gcds-textarea', undefined, [
+export const GcdsTextarea: StencilVueComponent<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]>('gcds-textarea', defineGcdsTextarea, [
   'characterCount',
   'cols',
   'disabled',
@@ -452,21 +579,29 @@ export const GcdsTextarea = /*@__PURE__*/ defineContainer<JSX.GcdsTextarea>('gcd
   'gcdsInput',
   'gcdsError',
   'gcdsValid'
-]);
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsChange',
+  'gcdsInput',
+  'gcdsError',
+  'gcdsValid'
+],
+'value', 'gcdsChange');
 
 
-export const GcdsTopNav = /*@__PURE__*/ defineContainer<JSX.GcdsTopNav>('gcds-top-nav', undefined, [
+export const GcdsTopNav: StencilVueComponent<JSX.GcdsTopNav> = /*@__PURE__*/ defineContainer<JSX.GcdsTopNav>('gcds-top-nav', defineGcdsTopNav, [
   'label',
   'alignment'
 ]);
 
 
-export const GcdsTopicMenu = /*@__PURE__*/ defineContainer<JSX.GcdsTopicMenu>('gcds-topic-menu', undefined, [
+export const GcdsTopicMenu: StencilVueComponent<JSX.GcdsTopicMenu> = /*@__PURE__*/ defineContainer<JSX.GcdsTopicMenu>('gcds-topic-menu', defineGcdsTopicMenu, [
   'home'
 ]);
 
 
-export const GcdsVerifyBanner = /*@__PURE__*/ defineContainer<JSX.GcdsVerifyBanner>('gcds-verify-banner', undefined, [
+export const GcdsVerifyBanner: StencilVueComponent<JSX.GcdsVerifyBanner> = /*@__PURE__*/ defineContainer<JSX.GcdsVerifyBanner>('gcds-verify-banner', defineGcdsVerifyBanner, [
   'container',
   'isFixed'
 ]);

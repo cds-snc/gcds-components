@@ -1,13 +1,35 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-phase-banner', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-phase-banner></gcds-phase-banner>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-phase-banner');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto(
+    '/components/gcds-phase-banner/test/gcds-phase-banner.e2e.html',
+  );
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-phase-banner');
+    return host && host.shadowRoot;
+  });
+});
+
+test.describe('gcds-phase-banner', () => {
+  test('renders', async ({ page }) => {
+    const banners = await page.locator('gcds-phase-banner');
+    const count = await banners.count();
+
+    for (let i = 0; i < count; i++) {
+      const banner = banners.nth(i);
+
+      // Wait for element to attach and become visible, allowing up to 10s
+      await banner.waitFor({ state: 'attached' });
+      await banner.waitFor({ state: 'visible' });
+      await banner.waitFor({ timeout: 10000 });
+
+      // Check if it has the 'hydrated' class
+      await expect(banner).toHaveClass('hydrated');
+    }
   });
 });
 
@@ -15,40 +37,34 @@ describe('gcds-phase-banner', () => {
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
+const roles = ['primary', 'secondary'];
 
-describe('gcds-phase-banner a11y tests', () => {
+test.describe('gcds-phase-banner a11y tests', () => {
   /**
    * Colour contrast test
    */
-  it('colour contrast primary banner', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-phase-banner>
-        <span slot="banner-text"> This is an example of a primary banner.</span>
-      </gcds-phase-banner>
-    `);
+  roles.forEach(role => {
+    test(`colour contrast ${role} phase-banner`, async ({ page }) => {
+      await page.setContent(`
+        <gcds-phase-banner banner-role="${role}">
+          <gcds-icon name="info-circle" slot="banner-icon-left"></gcds-icon>
+          <p slot="banner-text">Exciting announcement.</p>
+        </gcds-phase-banner>
+      `);
 
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
+      // Wait for shadow DOM to be available and component to hydrate
+      await page.waitForFunction(() => {
+        const banner = document.querySelector('gcds-phase-banner');
+        return (
+          banner && banner.shadowRoot && banner.classList.contains('hydrated')
+        );
+      });
 
-    expect(results.violations.length).toBe(0);
-  });
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
 
-  it('colour contrast secondary banner', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-phase-banner banner-role="secondary">
-        <span slot="banner-text"> This is an example of a secondary banner.</span>
-      </gcds-phase-banner>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+      expect(results.violations.length).toBe(0);
+    });
   });
 });

@@ -1,11 +1,20 @@
 import { describe, it, expect } from 'vitest';
 import type { ComponentCompilerProperty } from '@stencil/core/internal';
-import { createComponentTypeDefinition, createAngularComponentDefinition } from '../src/generate-angular-component';
+import {
+  createComponentTypeDefinition,
+  createAngularComponentDefinition,
+} from '../src/generate-angular-component';
 
 describe('createAngularComponentDefinition()', () => {
   describe('www output', () => {
     it('generates a component', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], [], false);
+      const component = createAngularComponentDefinition(
+        'my-component',
+        [],
+        [],
+        [],
+        false,
+      );
 
       expect(component).toEqual(`@ProxyCmp({
 })
@@ -18,7 +27,7 @@ describe('createAngularComponentDefinition()', () => {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -27,7 +36,13 @@ export class MyComponent {
     });
 
     it('generates a component with inputs', () => {
-      const component = createAngularComponentDefinition('my-component', ['my-input', 'my-other-input'], [], [], false);
+      const component = createAngularComponentDefinition(
+        'my-component',
+        ['my-input', 'my-other-input'],
+        [],
+        [],
+        false,
+      );
       expect(component).toMatch(`@ProxyCmp({
   inputs: ['my-input', 'my-other-input']
 })
@@ -40,7 +55,7 @@ export class MyComponent {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -54,7 +69,7 @@ export class MyComponent {
         [],
         ['my-output', 'my-other-output'],
         [],
-        false
+        false,
       );
 
       expect(component).toMatch(`@ProxyCmp({
@@ -70,7 +85,7 @@ export class MyComponent {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -80,7 +95,13 @@ export class MyComponent {
     });
 
     it('generates a component with methods', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], ['myMethod', 'myOtherMethod'], false);
+      const component = createAngularComponentDefinition(
+        'my-component',
+        [],
+        [],
+        ['myMethod', 'myOtherMethod'],
+        false,
+      );
 
       expect(component).toMatch(`@ProxyCmp({
   methods: ['myMethod', 'myOtherMethod']
@@ -94,7 +115,7 @@ export class MyComponent {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -105,7 +126,13 @@ export class MyComponent {
 
   describe('custom elements output', () => {
     it('generates a component', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], [], true);
+      const component = createAngularComponentDefinition(
+        'my-component',
+        [],
+        [],
+        [],
+        true,
+      );
 
       expect(component).toEqual(`@ProxyCmp({
   defineCustomElementFn: defineMyComponent
@@ -119,7 +146,7 @@ export class MyComponent {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -128,7 +155,13 @@ export class MyComponent {
     });
 
     it('generates a component with inputs', () => {
-      const component = createAngularComponentDefinition('my-component', ['my-input', 'my-other-input'], [], [], true);
+      const component = createAngularComponentDefinition(
+        'my-component',
+        ['my-input', 'my-other-input'],
+        [],
+        [],
+        true,
+      );
 
       expect(component).toEqual(`@ProxyCmp({
   defineCustomElementFn: defineMyComponent,
@@ -143,7 +176,7 @@ export class MyComponent {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -157,7 +190,7 @@ export class MyComponent {
         [],
         ['my-output', 'my-other-output'],
         [],
-        true
+        true,
       );
       expect(component).toMatch(`@ProxyCmp({
   defineCustomElementFn: defineMyComponent,
@@ -173,7 +206,7 @@ export class MyComponent {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -183,7 +216,13 @@ export class MyComponent {
     });
 
     it('generates a component with methods', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], ['myMethod', 'myOtherMethod'], true);
+      const component = createAngularComponentDefinition(
+        'my-component',
+        [],
+        [],
+        ['myMethod', 'myOtherMethod'],
+        true,
+      );
 
       expect(component).toMatch(`@ProxyCmp({
   defineCustomElementFn: defineMyComponent,
@@ -198,7 +237,7 @@ export class MyComponent {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -207,7 +246,14 @@ export class MyComponent {
     });
 
     it('generates a standalone component', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], [], true, true);
+      const component = createAngularComponentDefinition(
+        'my-component',
+        [],
+        [],
+        [],
+        true,
+        true,
+      );
 
       expect(component).toEqual(`@ProxyCmp({
   defineCustomElementFn: defineMyComponent
@@ -221,7 +267,7 @@ export class MyComponent {
   standalone: true,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -232,15 +278,23 @@ export class MyComponent {
 
   describe('inline members', () => {
     it('generates component with inlined member with jsDoc', () => {
-      const component = createAngularComponentDefinition('my-component', ['myMember'], [], [], false, false, [
-        {
-          docs: {
-            tags: [{ name: 'deprecated', text: 'use v2 of this API' }],
-            text: 'This is a jsDoc for myMember',
-          },
-          name: 'myMember',
-        } as ComponentCompilerProperty,
-      ]);
+      const component = createAngularComponentDefinition(
+        'my-component',
+        ['myMember'],
+        [],
+        [],
+        false,
+        false,
+        [
+          {
+            docs: {
+              tags: [{ name: 'deprecated', text: 'use v2 of this API' }],
+              text: 'This is a jsDoc for myMember',
+            },
+            name: 'myMember',
+          } as ComponentCompilerProperty,
+        ],
+      );
 
       expect(component).toEqual(`@ProxyCmp({
   inputs: ['myMember']
@@ -254,11 +308,11 @@ export class MyComponent {
   standalone: false,
 })
 export class MyComponent {
-  protected el: HTMLElement;
+  protected el: HTMLMyComponentElement;
     /**
    * This is a jsDoc for myMember @deprecated use v2 of this API
    */
-  myMember: Components.MyComponent['myMember'];
+  set myMember(_: Components.MyComponent['myMember']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -355,7 +409,12 @@ describe('createComponentTypeDefinition()', () => {
 
   describe('www build', () => {
     it('creates a type definition', () => {
-      const definition = createComponentTypeDefinition('component', 'MyComponent', testEvents, '@ionic/core');
+      const definition = createComponentTypeDefinition(
+        'component',
+        'MyComponent',
+        testEvents,
+        '@ionic/core',
+      );
 
       expect(definition).toEqual(
         `import type { MyEvent as IMyComponentMyEvent } from '@ionic/core';
@@ -379,7 +438,7 @@ export declare interface MyComponent extends Components.MyComponent {
   'my-kebab-event': EventEmitter<CustomEvent<IMyComponentMyKebabEvent>>;
 
   'my/slash/event': EventEmitter<CustomEvent<IMyComponentMySlashEvent>>;
-}`
+}`,
       );
     });
 
@@ -443,7 +502,7 @@ export declare interface MyComponent extends Components.MyComponent {
             internal: false,
           },
         ],
-        '@ionic/core'
+        '@ionic/core',
       );
 
       expect(definition).toEqual(
@@ -456,7 +515,7 @@ export declare interface MyComponent extends Components.MyComponent {
   myChange: EventEmitter<CustomEvent<IMyComponentMyEvent<IMyComponentCurrency>>>;
 
   mySwipe: EventEmitter<CustomEvent<{ side: IMyComponentSide }>>;
-}`
+}`,
       );
     });
   });
@@ -469,7 +528,7 @@ export declare interface MyComponent extends Components.MyComponent {
           'MyComponent',
           testEvents,
           '@ionic/core',
-          'custom-elements'
+          'custom-elements',
         );
 
         expect(definition).toEqual(
@@ -494,7 +553,7 @@ export declare interface MyComponent extends Components.MyComponent {
   'my-kebab-event': EventEmitter<CustomEvent<IMyComponentMyKebabEvent>>;
 
   'my/slash/event': EventEmitter<CustomEvent<IMyComponentMySlashEvent>>;
-}`
+}`,
         );
       });
     });

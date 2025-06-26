@@ -19,10 +19,12 @@ export namespace Components {
     interface GcdsAlert {
         /**
           * Defines alert role.
+          * @default 'info'
          */
         "alertRole"?: 'danger' | 'info' | 'success' | 'warning';
         /**
           * Defines the max width of the alert content.
+          * @default 'full'
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
@@ -31,20 +33,24 @@ export namespace Components {
         "heading": string;
         /**
           * Defines if the alert's close button is displayed or not.
+          * @default false
          */
         "hideCloseBtn"?: boolean;
         /**
           * Defines if the alert's role icon is displayed or not.
+          * @default false
          */
         "hideRoleIcon"?: boolean;
         /**
           * Defines if the alert's position is fixed.
+          * @default false
          */
         "isFixed"?: boolean;
     }
     interface GcdsBreadcrumbs {
         /**
           * Defines if the default canada.ca link is displayed or omitted.
+          * @default false
          */
         "hideCanadaLink": boolean;
     }
@@ -61,6 +67,7 @@ export namespace Components {
         "buttonId": string;
         /**
           * Set the main style
+          * @default 'primary'
          */
         "buttonRole": | 'start'
     | 'primary'
@@ -88,6 +95,7 @@ export namespace Components {
         "rel": string | undefined;
         /**
           * Set the button size
+          * @default 'regular'
          */
         "size": 'regular' | 'small';
         /**
@@ -96,6 +104,7 @@ export namespace Components {
         "target": string | undefined;
         /**
           * Set button types
+          * @default 'button'
          */
         "type": 'submit' | 'reset' | 'button' | 'link';
         /**
@@ -114,6 +123,7 @@ export namespace Components {
         "cardTitle": string;
         /**
           * The card title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
+          * @default 'a'
          */
         "cardTitleTag": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**
@@ -168,6 +178,7 @@ export namespace Components {
         "validate": () => Promise<void>;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn": 'blur' | 'submit' | 'other';
         /**
@@ -178,20 +189,24 @@ export namespace Components {
   >;
         /**
           * Value for checkboxes component.
+          * @default []
          */
         "value": string | Array<string>;
     }
     interface GcdsContainer {
         /**
           * Defines if the container has a border.
+          * @default false
          */
         "border"?: boolean;
         /**
           * Defines if the container is centered.
+          * @default false
          */
         "centered"?: boolean;
         /**
           * Defines if the container is the main page container. When true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
+          * @default false
          */
         "mainContainer"?: boolean;
         /**
@@ -204,16 +219,19 @@ export namespace Components {
         "padding"?: SpacingValues;
         /**
           * Defines container size.
+          * @default 'full'
          */
         "size"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Set tag for container.
+          * @default 'div'
          */
         "tag"?: string;
     }
     interface GcdsDateInput {
         /**
           * Specifies if the date input is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -238,6 +256,7 @@ export namespace Components {
         "name": string;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -246,6 +265,7 @@ export namespace Components {
         "validate": () => Promise<void>;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn": 'blur' | 'submit' | 'other';
         /**
@@ -262,6 +282,7 @@ export namespace Components {
     interface GcdsDateModified {
         /**
           * Set date modified type. Default is date.
+          * @default 'date'
          */
         "type": 'date' | 'version';
     }
@@ -272,6 +293,7 @@ export namespace Components {
         "detailsTitle": string;
         /**
           * Defines if the details panel is open by default or not.
+          * @default false
          */
         "open"?: boolean;
         /**
@@ -296,6 +318,7 @@ export namespace Components {
         "heading"?: string;
         /**
           * Specifies if the error summary should listen for GcdsError event to generate error list.
+          * @default true
          */
         "listen"?: boolean;
     }
@@ -320,6 +343,7 @@ export namespace Components {
         "accept": string;
         /**
           * Specifies if a file uploader element is disabled or not.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -348,6 +372,7 @@ export namespace Components {
         "name": string;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required": boolean;
         /**
@@ -360,6 +385,7 @@ export namespace Components {
         "validate": () => Promise<void>;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn": 'blur' | 'submit' | 'other';
         /**
@@ -370,6 +396,7 @@ export namespace Components {
   >;
         /**
           * Value for a file uploader element.
+          * @default []
          */
         "value": string[];
     }
@@ -384,6 +411,7 @@ export namespace Components {
         "contextualLinks": string | object;
         /**
           * Display mode of the footer
+          * @default 'compact'
          */
         "display"?: 'compact' | 'full';
         /**
@@ -406,6 +434,7 @@ export namespace Components {
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
         /**
           * Defines if grid container is centered or not
+          * @default false
          */
         "centered"?: boolean;
         /**
@@ -426,14 +455,17 @@ export namespace Components {
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
+          * @default 'grid'
          */
         "display"?: 'grid' | 'inline-grid';
         /**
           * Sets all grid items to have an equal height, based on the tallest item.
+          * @default false
          */
         "equalRowHeight"?: boolean;
         /**
           * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gap-tablet and gap-desktop are not defined. Option to set different spacing for desktop with gap-desktop and for tablet with gap-tablet.
+          * @default '300'
          */
         "gap"?: GridGapValues;
         /**
@@ -462,6 +494,7 @@ export namespace Components {
         "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
         /**
           * Set tag for grid container
+          * @default 'div'
          */
         "tag"?: | 'article'
     | 'aside'
@@ -491,10 +524,12 @@ export namespace Components {
     | 12;
         /**
           * Optimize grid column size for tablet (768px - 1023px). Tablet grid column sizes are based on a 6 column grid. The tablet size will also be used for desktop, if desktop is undefined.
+          * @default 6
          */
         "tablet"?: 1 | 2 | 3 | 4 | 5 | 6;
         /**
           * Set tag for grid column
+          * @default 'div'
          */
         "tag"?: string;
     }
@@ -505,6 +540,7 @@ export namespace Components {
         "langHref": string;
         /**
           * GcdsSignature - GCDS signature links to Canada.ca
+          * @default true
          */
         "signatureHasLink": boolean;
         /**
@@ -520,10 +556,12 @@ export namespace Components {
     interface GcdsHeading {
         /**
           * Sets the line length to a maximum amount of characters per line for each heading level, ensuring a comfortable, accessible reading length.
+          * @default true
          */
         "characterLimit"?: boolean;
         /**
           * Adds margin below the heading. The default margin-botttom is 300.
+          * @default '300'
          */
         "marginBottom"?: SpacingValues;
         /**
@@ -573,6 +611,7 @@ export namespace Components {
     | 'warning-triangle';
         /**
           * Defines the size of the icon.
+          * @default 'inherit'
          */
         "size"?: | 'inherit'
     | 'text-small'
@@ -591,6 +630,7 @@ export namespace Components {
         "autocomplete"?: string;
         /**
           * Specifies if an input element is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -599,6 +639,7 @@ export namespace Components {
         "errorMessage"?: string;
         /**
           * Specifies if the label is hidden or not.
+          * @default false
          */
         "hideLabel"?: boolean;
         /**
@@ -619,6 +660,7 @@ export namespace Components {
         "name": string;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -627,6 +669,7 @@ export namespace Components {
         "size"?: number;
         /**
           * Set Input types
+          * @default 'text'
          */
         "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
         /**
@@ -635,6 +678,7 @@ export namespace Components {
         "validate": () => Promise<void>;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn": 'blur' | 'submit' | 'other';
         /**
@@ -675,6 +719,7 @@ export namespace Components {
     interface GcdsLink {
         /**
           * Sets the display behavior of the link
+          * @default 'inline'
          */
         "display"?: 'block' | 'inline';
         /**
@@ -683,6 +728,7 @@ export namespace Components {
         "download"?: string | undefined;
         /**
           * Whether the link is external or not
+          * @default false
          */
         "external"?: boolean;
         /**
@@ -695,10 +741,12 @@ export namespace Components {
         "rel"?: string | undefined;
         /**
           * Set the link size
+          * @default 'inherit'
          */
         "size"?: 'regular' | 'small' | 'inherit';
         /**
           * The target attribute specifies where to open the linked document
+          * @default '_self'
          */
         "target"?: string;
         /**
@@ -707,6 +755,7 @@ export namespace Components {
         "type"?: string | undefined;
         /**
           * Sets the main style of the link.
+          * @default 'default'
          */
         "variant"?: 'default' | 'light';
     }
@@ -725,6 +774,7 @@ export namespace Components {
         "menuLabel": string;
         /**
           * Has the nav group been expanded
+          * @default false
          */
         "open": boolean;
         /**
@@ -771,6 +821,7 @@ export namespace Components {
         "currentPage": number;
         /**
           * Navigation element label
+          * @default 'list'
          */
         "display": 'list' | 'simple';
         /**
@@ -805,10 +856,12 @@ export namespace Components {
     interface GcdsPhaseBanner {
         /**
           * Defines banner role.
+          * @default 'primary'
          */
         "bannerRole"?: 'primary' | 'secondary';
         /**
           * Defines the container width of the phase banner content
+          * @default 'xl'
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
@@ -851,6 +904,7 @@ export namespace Components {
         "validate": () => Promise<void>;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn": 'blur' | 'submit' | 'other';
         /**
@@ -867,22 +921,27 @@ export namespace Components {
     interface GcdsSearch {
         /**
           * Sets the action for the search form. Default will be canada.ca global search
+          * @default '/sr/srb.html'
          */
         "action": string;
         /**
           * Set the form method of the search form
+          * @default 'get'
          */
         "method": 'get' | 'post';
         /**
           * Set the name of the search input
+          * @default 'q'
          */
         "name": string;
         /**
           * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
+          * @default 'Canada.ca'
          */
         "placeholder": string;
         /**
           * Set the id of the search input
+          * @default 'search'
          */
         "searchId": string;
         /**
@@ -901,6 +960,7 @@ export namespace Components {
         "defaultValue"?: string;
         /**
           * Specifies if a select element is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -921,6 +981,7 @@ export namespace Components {
         "name": string;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -933,6 +994,7 @@ export namespace Components {
         "validate": () => Promise<void>;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn": 'blur' | 'submit' | 'other';
         /**
@@ -947,7 +1009,7 @@ export namespace Components {
         "value"?: string;
     }
     interface GcdsSideNav {
-        "getNavSize": () => Promise<"mobile" | "desktop">;
+        "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
          */
@@ -958,20 +1020,24 @@ export namespace Components {
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
+          * @default false
          */
         "hasLink": boolean;
         /**
           * The type of graphic to render
+          * @default 'signature'
          */
         "type": 'signature' | 'wordmark';
         /**
           * The colour variant to render
+          * @default 'colour'
          */
         "variant": 'colour' | 'white';
     }
     interface GcdsSrOnly {
         /**
           * Sets the appropriate HTML tag for the content.
+          * @default 'p'
          */
         "tag"?: | 'h1'
     | 'h2'
@@ -989,6 +1055,7 @@ export namespace Components {
         "currentStep": number;
         /**
           * Defines the heading tag to render
+          * @default 'h2'
          */
         "tag": 'h1' | 'h2' | 'h3';
         /**
@@ -999,10 +1066,12 @@ export namespace Components {
     interface GcdsText {
         /**
           * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length.
+          * @default true
          */
         "characterLimit"?: boolean;
         /**
           * Specifies the display behaviour of the text.
+          * @default 'block'
          */
         "display"?: | 'block'
     | 'flex'
@@ -1012,18 +1081,22 @@ export namespace Components {
     | 'none';
         /**
           * Adds margin below the text.
+          * @default '300'
          */
         "marginBottom"?: SpacingValues;
         /**
           * Adds margin above the text.
+          * @default '0'
          */
         "marginTop"?: SpacingValues;
         /**
           * Sets the appropriate HTML tags for the selected size.
+          * @default 'body'
          */
         "size"?: 'body' | 'small';
         /**
           * Sets the main style of the text.
+          * @default 'primary'
          */
         "textRole"?: 'light' | 'primary' | 'secondary';
     }
@@ -1038,6 +1111,7 @@ export namespace Components {
         "cols"?: number;
         /**
           * Specifies if a textarea element is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1046,6 +1120,7 @@ export namespace Components {
         "errorMessage"?: string;
         /**
           * Specifies if the label is hidden or not.
+          * @default false
          */
         "hideLabel"?: boolean;
         /**
@@ -1062,10 +1137,12 @@ export namespace Components {
         "name": string;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Default value for textarea rows.
+          * @default 5
          */
         "rows"?: number;
         /**
@@ -1078,6 +1155,7 @@ export namespace Components {
         "validate": () => Promise<void>;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn": 'blur' | 'submit' | 'other';
         /**
@@ -1094,9 +1172,10 @@ export namespace Components {
     interface GcdsTopNav {
         /**
           * Nav alignment
+          * @default 'left'
          */
         "alignment": 'left' | 'center' | 'right';
-        "getNavSize": () => Promise<"mobile" | "desktop">;
+        "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
          */
@@ -1109,9 +1188,10 @@ export namespace Components {
           * Close all theme menus
          */
         "closeAllMenus": () => Promise<void>;
-        "getNavSize": () => Promise<"mobile" | "desktop">;
+        "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Sets the homepage styling
+          * @default false
          */
         "home": boolean;
         /**
@@ -1127,10 +1207,12 @@ export namespace Components {
     interface GcdsVerifyBanner {
         /**
           * Defines the container width of the verify banner content
+          * @default 'xl'
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines if the banner's position is fixed.
+          * @default false
          */
         "isFixed"?: boolean;
     }
@@ -1732,10 +1814,12 @@ declare namespace LocalJSX {
     interface GcdsAlert {
         /**
           * Defines alert role.
+          * @default 'info'
          */
         "alertRole"?: 'danger' | 'info' | 'success' | 'warning';
         /**
           * Defines the max width of the alert content.
+          * @default 'full'
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
@@ -1744,14 +1828,17 @@ declare namespace LocalJSX {
         "heading": string;
         /**
           * Defines if the alert's close button is displayed or not.
+          * @default false
          */
         "hideCloseBtn"?: boolean;
         /**
           * Defines if the alert's role icon is displayed or not.
+          * @default false
          */
         "hideRoleIcon"?: boolean;
         /**
           * Defines if the alert's position is fixed.
+          * @default false
          */
         "isFixed"?: boolean;
         /**
@@ -1762,6 +1849,7 @@ declare namespace LocalJSX {
     interface GcdsBreadcrumbs {
         /**
           * Defines if the default canada.ca link is displayed or omitted.
+          * @default false
          */
         "hideCanadaLink"?: boolean;
     }
@@ -1778,6 +1866,7 @@ declare namespace LocalJSX {
         "buttonId"?: string;
         /**
           * Set the main style
+          * @default 'primary'
          */
         "buttonRole"?: | 'start'
     | 'primary'
@@ -1817,6 +1906,7 @@ declare namespace LocalJSX {
         "rel"?: string | undefined;
         /**
           * Set the button size
+          * @default 'regular'
          */
         "size"?: 'regular' | 'small';
         /**
@@ -1825,6 +1915,7 @@ declare namespace LocalJSX {
         "target"?: string | undefined;
         /**
           * Set button types
+          * @default 'button'
          */
         "type"?: 'submit' | 'reset' | 'button' | 'link';
         /**
@@ -1843,6 +1934,7 @@ declare namespace LocalJSX {
         "cardTitle": string;
         /**
           * The card title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
+          * @default 'a'
          */
         "cardTitleTag"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
         /**
@@ -1933,6 +2025,7 @@ declare namespace LocalJSX {
         "required"?: boolean;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn"?: 'blur' | 'submit' | 'other';
         /**
@@ -1943,20 +2036,24 @@ declare namespace LocalJSX {
   >;
         /**
           * Value for checkboxes component.
+          * @default []
          */
         "value"?: string | Array<string>;
     }
     interface GcdsContainer {
         /**
           * Defines if the container has a border.
+          * @default false
          */
         "border"?: boolean;
         /**
           * Defines if the container is centered.
+          * @default false
          */
         "centered"?: boolean;
         /**
           * Defines if the container is the main page container. When true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
+          * @default false
          */
         "mainContainer"?: boolean;
         /**
@@ -1969,16 +2066,19 @@ declare namespace LocalJSX {
         "padding"?: SpacingValues;
         /**
           * Defines container size.
+          * @default 'full'
          */
         "size"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Set tag for container.
+          * @default 'div'
          */
         "tag"?: string;
     }
     interface GcdsDateInput {
         /**
           * Specifies if the date input is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2027,10 +2127,12 @@ declare namespace LocalJSX {
         "onGcdsValid"?: (event: GcdsDateInputCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn"?: 'blur' | 'submit' | 'other';
         /**
@@ -2047,6 +2149,7 @@ declare namespace LocalJSX {
     interface GcdsDateModified {
         /**
           * Set date modified type. Default is date.
+          * @default 'date'
          */
         "type"?: 'date' | 'version';
     }
@@ -2069,6 +2172,7 @@ declare namespace LocalJSX {
         "onGcdsFocus"?: (event: GcdsDetailsCustomEvent<void>) => void;
         /**
           * Defines if the details panel is open by default or not.
+          * @default false
          */
         "open"?: boolean;
     }
@@ -2089,6 +2193,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * Specifies if the error summary should listen for GcdsError event to generate error list.
+          * @default true
          */
         "listen"?: boolean;
     }
@@ -2113,6 +2218,7 @@ declare namespace LocalJSX {
         "accept"?: string;
         /**
           * Specifies if a file uploader element is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2169,6 +2275,7 @@ declare namespace LocalJSX {
         "onGcdsValid"?: (event: GcdsFileUploaderCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -2177,6 +2284,7 @@ declare namespace LocalJSX {
         "uploaderId": string;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn"?: 'blur' | 'submit' | 'other';
         /**
@@ -2187,6 +2295,7 @@ declare namespace LocalJSX {
   >;
         /**
           * Value for a file uploader element.
+          * @default []
          */
         "value"?: string[];
     }
@@ -2201,6 +2310,7 @@ declare namespace LocalJSX {
         "contextualLinks"?: string | object;
         /**
           * Display mode of the footer
+          * @default 'compact'
          */
         "display"?: 'compact' | 'full';
         /**
@@ -2223,6 +2333,7 @@ declare namespace LocalJSX {
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
         /**
           * Defines if grid container is centered or not
+          * @default false
          */
         "centered"?: boolean;
         /**
@@ -2243,14 +2354,17 @@ declare namespace LocalJSX {
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines element as grid or inline-grid container
+          * @default 'grid'
          */
         "display"?: 'grid' | 'inline-grid';
         /**
           * Sets all grid items to have an equal height, based on the tallest item.
+          * @default false
          */
         "equalRowHeight"?: boolean;
         /**
           * Defines the horizontal and vertical spacing between items in a grid container for all viewports if gap-tablet and gap-desktop are not defined. Option to set different spacing for desktop with gap-desktop and for tablet with gap-tablet.
+          * @default '300'
          */
         "gap"?: GridGapValues;
         /**
@@ -2279,6 +2393,7 @@ declare namespace LocalJSX {
         "placeItems"?: 'center' | 'end' | 'start' | 'stretch';
         /**
           * Set tag for grid container
+          * @default 'div'
          */
         "tag"?: | 'article'
     | 'aside'
@@ -2308,10 +2423,12 @@ declare namespace LocalJSX {
     | 12;
         /**
           * Optimize grid column size for tablet (768px - 1023px). Tablet grid column sizes are based on a 6 column grid. The tablet size will also be used for desktop, if desktop is undefined.
+          * @default 6
          */
         "tablet"?: 1 | 2 | 3 | 4 | 5 | 6;
         /**
           * Set tag for grid column
+          * @default 'div'
          */
         "tag"?: string;
     }
@@ -2322,6 +2439,7 @@ declare namespace LocalJSX {
         "langHref": string;
         /**
           * GcdsSignature - GCDS signature links to Canada.ca
+          * @default true
          */
         "signatureHasLink"?: boolean;
         /**
@@ -2337,10 +2455,12 @@ declare namespace LocalJSX {
     interface GcdsHeading {
         /**
           * Sets the line length to a maximum amount of characters per line for each heading level, ensuring a comfortable, accessible reading length.
+          * @default true
          */
         "characterLimit"?: boolean;
         /**
           * Adds margin below the heading. The default margin-botttom is 300.
+          * @default '300'
          */
         "marginBottom"?: SpacingValues;
         /**
@@ -2390,6 +2510,7 @@ declare namespace LocalJSX {
     | 'warning-triangle';
         /**
           * Defines the size of the icon.
+          * @default 'inherit'
          */
         "size"?: | 'inherit'
     | 'text-small'
@@ -2408,6 +2529,7 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         /**
           * Specifies if an input element is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2416,6 +2538,7 @@ declare namespace LocalJSX {
         "errorMessage"?: string;
         /**
           * Specifies if the label is hidden or not.
+          * @default false
          */
         "hideLabel"?: boolean;
         /**
@@ -2460,6 +2583,7 @@ declare namespace LocalJSX {
         "onGcdsValid"?: (event: GcdsInputCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -2468,10 +2592,12 @@ declare namespace LocalJSX {
         "size"?: number;
         /**
           * Set Input types
+          * @default 'text'
          */
         "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn"?: 'blur' | 'submit' | 'other';
         /**
@@ -2512,6 +2638,7 @@ declare namespace LocalJSX {
     interface GcdsLink {
         /**
           * Sets the display behavior of the link
+          * @default 'inline'
          */
         "display"?: 'block' | 'inline';
         /**
@@ -2520,6 +2647,7 @@ declare namespace LocalJSX {
         "download"?: string | undefined;
         /**
           * Whether the link is external or not
+          * @default false
          */
         "external"?: boolean;
         /**
@@ -2544,10 +2672,12 @@ declare namespace LocalJSX {
         "rel"?: string | undefined;
         /**
           * Set the link size
+          * @default 'inherit'
          */
         "size"?: 'regular' | 'small' | 'inherit';
         /**
           * The target attribute specifies where to open the linked document
+          * @default '_self'
          */
         "target"?: string;
         /**
@@ -2556,6 +2686,7 @@ declare namespace LocalJSX {
         "type"?: string | undefined;
         /**
           * Sets the main style of the link.
+          * @default 'default'
          */
         "variant"?: 'default' | 'light';
     }
@@ -2582,6 +2713,7 @@ declare namespace LocalJSX {
         "onGcdsFocus"?: (event: GcdsNavGroupCustomEvent<void>) => void;
         /**
           * Has the nav group been expanded
+          * @default false
          */
         "open"?: boolean;
         /**
@@ -2632,6 +2764,7 @@ declare namespace LocalJSX {
         "currentPage"?: number;
         /**
           * Navigation element label
+          * @default 'list'
          */
         "display"?: 'list' | 'simple';
         /**
@@ -2678,10 +2811,12 @@ declare namespace LocalJSX {
     interface GcdsPhaseBanner {
         /**
           * Defines banner role.
+          * @default 'primary'
          */
         "bannerRole"?: 'primary' | 'secondary';
         /**
           * Defines the container width of the phase banner content
+          * @default 'xl'
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
@@ -2744,6 +2879,7 @@ declare namespace LocalJSX {
         "required"?: boolean;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn"?: 'blur' | 'submit' | 'other';
         /**
@@ -2760,14 +2896,17 @@ declare namespace LocalJSX {
     interface GcdsSearch {
         /**
           * Sets the action for the search form. Default will be canada.ca global search
+          * @default '/sr/srb.html'
          */
         "action"?: string;
         /**
           * Set the form method of the search form
+          * @default 'get'
          */
         "method"?: 'get' | 'post';
         /**
           * Set the name of the search input
+          * @default 'q'
          */
         "name"?: string;
         /**
@@ -2792,10 +2931,12 @@ declare namespace LocalJSX {
         "onGcdsSubmit"?: (event: GcdsSearchCustomEvent<object>) => void;
         /**
           * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
+          * @default 'Canada.ca'
          */
         "placeholder"?: string;
         /**
           * Set the id of the search input
+          * @default 'search'
          */
         "searchId"?: string;
         /**
@@ -2814,6 +2955,7 @@ declare namespace LocalJSX {
         "defaultValue"?: string;
         /**
           * Specifies if a select element is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2858,6 +3000,7 @@ declare namespace LocalJSX {
         "onGcdsValid"?: (event: GcdsSelectCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -2866,6 +3009,7 @@ declare namespace LocalJSX {
         "selectId": string;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn"?: 'blur' | 'submit' | 'other';
         /**
@@ -2888,20 +3032,24 @@ declare namespace LocalJSX {
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
+          * @default false
          */
         "hasLink"?: boolean;
         /**
           * The type of graphic to render
+          * @default 'signature'
          */
         "type"?: 'signature' | 'wordmark';
         /**
           * The colour variant to render
+          * @default 'colour'
          */
         "variant"?: 'colour' | 'white';
     }
     interface GcdsSrOnly {
         /**
           * Sets the appropriate HTML tag for the content.
+          * @default 'p'
          */
         "tag"?: | 'h1'
     | 'h2'
@@ -2919,6 +3067,7 @@ declare namespace LocalJSX {
         "currentStep": number;
         /**
           * Defines the heading tag to render
+          * @default 'h2'
          */
         "tag"?: 'h1' | 'h2' | 'h3';
         /**
@@ -2929,10 +3078,12 @@ declare namespace LocalJSX {
     interface GcdsText {
         /**
           * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length.
+          * @default true
          */
         "characterLimit"?: boolean;
         /**
           * Specifies the display behaviour of the text.
+          * @default 'block'
          */
         "display"?: | 'block'
     | 'flex'
@@ -2942,18 +3093,22 @@ declare namespace LocalJSX {
     | 'none';
         /**
           * Adds margin below the text.
+          * @default '300'
          */
         "marginBottom"?: SpacingValues;
         /**
           * Adds margin above the text.
+          * @default '0'
          */
         "marginTop"?: SpacingValues;
         /**
           * Sets the appropriate HTML tags for the selected size.
+          * @default 'body'
          */
         "size"?: 'body' | 'small';
         /**
           * Sets the main style of the text.
+          * @default 'primary'
          */
         "textRole"?: 'light' | 'primary' | 'secondary';
     }
@@ -2968,6 +3123,7 @@ declare namespace LocalJSX {
         "cols"?: number;
         /**
           * Specifies if a textarea element is disabled or not.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2976,6 +3132,7 @@ declare namespace LocalJSX {
         "errorMessage"?: string;
         /**
           * Specifies if the label is hidden or not.
+          * @default false
          */
         "hideLabel"?: boolean;
         /**
@@ -3016,10 +3173,12 @@ declare namespace LocalJSX {
         "onGcdsValid"?: (event: GcdsTextareaCustomEvent<object>) => void;
         /**
           * Specifies if a form field is required or not.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Default value for textarea rows.
+          * @default 5
          */
         "rows"?: number;
         /**
@@ -3028,6 +3187,7 @@ declare namespace LocalJSX {
         "textareaId": string;
         /**
           * Set event to call validator
+          * @default 'blur'
          */
         "validateOn"?: 'blur' | 'submit' | 'other';
         /**
@@ -3044,6 +3204,7 @@ declare namespace LocalJSX {
     interface GcdsTopNav {
         /**
           * Nav alignment
+          * @default 'left'
          */
         "alignment"?: 'left' | 'center' | 'right';
         /**
@@ -3054,16 +3215,19 @@ declare namespace LocalJSX {
     interface GcdsTopicMenu {
         /**
           * Sets the homepage styling
+          * @default false
          */
         "home"?: boolean;
     }
     interface GcdsVerifyBanner {
         /**
           * Defines the container width of the verify banner content
+          * @default 'xl'
          */
         "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
         /**
           * Defines if the banner's position is fixed.
+          * @default false
          */
         "isFixed"?: boolean;
     }

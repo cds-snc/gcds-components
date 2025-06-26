@@ -44,9 +44,9 @@
   "workspaces": [
     "utils/angular-output-target",
     "packages/web",
-    "packages/angular",
     "packages/react",
     "packages/vue",
+    "packages/angular",
     "packages/react-ssr"
   ],
   "license": "MIT"

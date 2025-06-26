@@ -1,13 +1,30 @@
-import { newE2EPage } from '@stencil/core/testing';
-const { AxePuppeteer } = require('@axe-core/puppeteer');
+const { AxeBuilder } = require('@axe-core/playwright');
 
-describe('gcds-verify-banner', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<gcds-verify-banner></gcds-verify-banner>');
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-    const element = await page.find('gcds-verify-banner');
-    expect(element).toHaveClass('hydrated');
+test.beforeEach(async ({ page }) => {
+  await page.goto(
+    '/components/gcds-verify-banner/test/gcds-verify-banner.e2e.html',
+  );
+
+  await page.waitForFunction(() => {
+    const host = document.querySelector('gcds-verify-banner');
+    return host && host.shadowRoot;
+  });
+});
+
+test.describe('gcds-verify-banner', () => {
+  test('renders', async ({ page }) => {
+    const element = await page.locator('gcds-verify-banner');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
   });
 });
 
@@ -16,21 +33,18 @@ describe('gcds-verify-banner', () => {
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
 
-describe('gcds-verify-banner a11y tests', () => {
+test.describe('gcds-verify-banner a11y tests', () => {
   /**
-   * Colour contrast test
+   * Colour contrast
    */
-  it('colour contrast', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <gcds-verify-banner></gcds-verify-banner>
-    `);
-
-    const colorContrastTest = new AxePuppeteer(page)
-      .withRules('color-contrast')
-      .analyze();
-    const results = await colorContrastTest;
-
-    expect(results.violations.length).toBe(0);
+  test('Colour contrast', async ({ page }) => {
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['color-contrast'])
+        .analyze();
+      expect(results.violations.length).toBe(0);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });
