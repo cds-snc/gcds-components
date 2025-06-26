@@ -6,15 +6,14 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
-    "copy-icon-font": "ncp ./node_modules/@cdssnc/gcds-fonts/fonts/icons ./packages/web/src/assets/fonts/icons",
-    "build": "npm run copy-icon-font && npm run build --ws",
+    "build": "npm run build --ws",
     "pretest": "npm run patch:stenciljs",
     "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/vue",
     "build-storybook": "npm run build-storybook -w @cdssnc/gcds-components",
     "start-storybook": "npm run storybook -w @cdssnc/gcds-components",
     "patch:stenciljs": "npx --yes patch-package",
     "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'",
-    "start": "npm run copy-icon-font && npm run start -w @cdssnc/gcds-components"
+    "start": "npm run start -w @cdssnc/gcds-components"
   },
   "dependencies": {
     "@angular/animations": "^19.0.0",
@@ -36,7 +35,6 @@
     "@stencil/angular-output-target": "^0.10.0",
     "@types/node": "^20.11.10",
     "cssnano": "^6.0.0",
-    "ncp": "^2.0.0",
     "ng-packagr": "^19.0.1",
     "nx": "^16.0.0",
     "sass": "^1.43.5",
