@@ -41,7 +41,12 @@ export class GcdsInput {
 
   private initialValue?: string;
 
-  private shadowElement?: HTMLElement;
+  private shadowElement?: HTMLInputElement;
+
+  // Array to store which native HTML errors are happening on the input
+  private htmlValidationErrors = [];
+
+  private inputTitle: string = '';
 
   _validator: Validator<string> | ValidatorOld<string> = defaultValidator;
 
@@ -123,9 +128,72 @@ export class GcdsInput {
   @Prop({ mutable: true }) value?: string;
 
   /**
-   * String to have autocomplete enabled
+   * String to have autocomplete enabled.
    */
   @Prop() autocomplete?: string;
+
+  /**
+   * If true, the input will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The ID of the form that the input field belongs to.
+   */
+  @Prop({ reflect: true }) form?: string;
+
+  /**
+   * The maximum value that the input field can accept.
+   * Only applies to number input type.
+   */
+  @Prop({ reflect: true }) max?: number | string;
+
+  /**
+   * The maximum number of characters that the input field can accept.
+   */
+  @Prop({ reflect: true }) maxlength?: number;
+
+  /**
+   * The minimum value that the input field can accept.
+   * Only applies to number input type.
+   */
+  @Prop({ reflect: true }) min?: number | string;
+
+  /**
+   * The minimum number of characters that the input field can accept.
+   */
+  @Prop({ reflect: true }) minlength?: number;
+
+  /**
+   * Specifies a regular expression the form control's value should match.
+   * See: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
+   */
+  @Prop({ reflect: true }) pattern?: string;
+
+  /**
+   * The input placeholder text value
+   */
+  @Prop({ reflect: true }) placeholder?: string;
+
+  /**
+   * If true, the input field cannot be modified.
+   */
+  @Prop({ reflect: true }) readonly?: boolean;
+
+  /**
+   * A number that specifies the granularity that the value must adhere to.
+   * Valid for number type.
+   * See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
+   */
+  @Prop({ reflect: true }) step?: number | 'any';
+
+  /**
+   * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+   */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
+  }
 
   /**
    * Array of validators
@@ -219,7 +287,40 @@ export class GcdsInput {
     }
 
     customEvent.emit(this.value);
+    this.updateValidity();
   };
+
+  private updateValidity(override?) {
+    const validity = this.shadowElement.validity;
+    this.htmlValidationErrors = [];
+
+    for (const key in validity) {
+      // Do not include valid or missingValue keys
+      if (validity[key] === true && key !== 'valid' && key !== 'missingValue') {
+        this.htmlValidationErrors.push(key);
+      }
+    }
+
+    // Add override values to HTML errors array
+    for (const key in override) {
+      this.htmlValidationErrors.push(key);
+    }
+
+    // Set internals validity
+    this.internals.setValidity(
+      override
+        ? { ...this.shadowElement.validity, ...override }
+        : this.shadowElement.validity,
+      this.htmlValidationErrors.length > 0
+        ? this.htmlValidationErrors[0]
+        : null,
+      this.shadowElement,
+    );
+
+    // Set input title when HTML error occruring
+    this.inputTitle =
+      this.htmlValidationErrors.length > 0 ? this.htmlValidationErrors[0] : '';
+  }
 
   /**
    * Emitted when the input has changed.
@@ -239,6 +340,33 @@ export class GcdsInput {
       this.gcdsValid,
       this.lang,
     );
+
+    // Native HTML validation
+    if (
+      (this.required && !this.internals.checkValidity()) ||
+      !this.internals.checkValidity()
+    ) {
+      if (!this.internals.validity.valueMissing) {
+        this.errorMessage = this.htmlValidationErrors[0];
+        this.inputTitle = this.errorMessage;
+      }
+    }
+  }
+
+  /**
+   * Get validity of gcds-input
+   */
+  @Method()
+  public async getValidity(): Promise<ValidityState> {
+    return this.internals.validity;
+  }
+
+  /**
+   * Get validationMessage of gcds-input
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   /**
@@ -326,6 +454,27 @@ export class GcdsInput {
     this.initialValue = this.value ? this.value : null;
   }
 
+  componentDidLoad() {
+    let lengthValidity;
+    // maxlength/minlength validation on load
+    if (this.value && (this.minlength || this.maxlength)) {
+      if (this.minlength && this.value.length < this.minlength) {
+        lengthValidity = { tooShort: true };
+      } else if (this.maxlength && this.value.length > this.minlength) {
+        lengthValidity = { tooLong: true };
+      }
+    }
+
+    this.updateValidity(lengthValidity);
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement?.focus();
+      });
+    }
+  }
+
   render() {
     const {
       disabled,
@@ -341,6 +490,17 @@ export class GcdsInput {
       value,
       hasError,
       autocomplete,
+      autofocus,
+      form,
+      max,
+      maxlength,
+      min,
+      minlength,
+      pattern,
+      placeholder,
+      readonly,
+      step,
+      inputTitle,
       inheritedAttributes,
       lang,
     } = this;
@@ -354,8 +514,19 @@ export class GcdsInput {
       disabled,
       required,
       type,
-      value,
       autocomplete,
+      autofocus,
+      form,
+      max,
+      maxlength,
+      min,
+      minlength,
+      pattern,
+      placeholder,
+      readonly,
+      step,
+      value,
+      title: inputTitle,
       ...inheritedAttributes,
     };
 
@@ -416,7 +587,7 @@ export class GcdsInput {
             size={size}
             style={size ? style : null}
             part="input"
-            ref={element => (this.shadowElement = element as HTMLElement)}
+            ref={element => (this.shadowElement = element)}
           />
         </div>
       </Host>

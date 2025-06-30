@@ -1126,8 +1126,8 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'getValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -1135,7 +1135,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'required', 'size', 'type', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -1187,9 +1187,58 @@ of the expected text length to the user.
    */
   set value(_: Components.GcdsInput['value']) {};
     /**
-   * String to have autocomplete enabled
+   * String to have autocomplete enabled.
    */
   set autocomplete(_: Components.GcdsInput['autocomplete']) {};
+    /**
+   * If true, the input will be focused on component render
+   */
+  set autofocus(_: Components.GcdsInput['autofocus']) {};
+    /**
+   * The ID of the form that the input field belongs to.
+   */
+  set form(_: Components.GcdsInput['form']) {};
+    /**
+   * The maximum value that the input field can accept.
+Only applies to number input type.
+   */
+  set max(_: Components.GcdsInput['max']) {};
+    /**
+   * The maximum number of characters that the input field can accept.
+   */
+  set maxlength(_: Components.GcdsInput['maxlength']) {};
+    /**
+   * The minimum value that the input field can accept.
+Only applies to number input type.
+   */
+  set min(_: Components.GcdsInput['min']) {};
+    /**
+   * The minimum number of characters that the input field can accept.
+   */
+  set minlength(_: Components.GcdsInput['minlength']) {};
+    /**
+   * Specifies a regular expression the form control's value should match.
+See: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
+   */
+  set pattern(_: Components.GcdsInput['pattern']) {};
+    /**
+   * The input placeholder text value
+   */
+  set placeholder(_: Components.GcdsInput['placeholder']) {};
+    /**
+   * If true, the input field cannot be modified.
+   */
+  set readonly(_: Components.GcdsInput['readonly']) {};
+    /**
+   * A number that specifies the granularity that the value must adhere to.
+Valid for number type.
+See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
+   */
+  set step(_: Components.GcdsInput['step']) {};
+    /**
+   * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsInput['validity']) {};
     /**
    * Array of validators
    */
