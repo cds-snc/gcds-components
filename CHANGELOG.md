@@ -12,6 +12,7 @@ Released on 2025-07-02
  ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
 
     **Changes**
+    
     Vue package:
     - Configure componentModels in output to ensure v-model works as it should
    
