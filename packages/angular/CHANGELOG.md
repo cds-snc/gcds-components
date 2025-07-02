@@ -5,15 +5,15 @@
 
 ### :rocket: New Features
 
-* support for data binding and routerLink ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
-* update stencil and stencil output targets ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+- support for data binding and routerLink ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+- update stencil and stencil output targets ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
 
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * peerDependencies
-    * @cdssnc/gcds-components bumped from ^0.36.0 to ^0.37.0
+- The following workspace dependencies were updated
+  - peerDependencies
+    - @cdssnc/gcds-components bumped from ^0.36.0 to ^0.37.0
 
 ## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.35.0...gcds-components-angular-v0.36.0) (2025-06-17)
 
