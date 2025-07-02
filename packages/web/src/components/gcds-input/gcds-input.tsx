@@ -27,6 +27,8 @@ import {
   ValidatorOld,
 } from '../../validators';
 
+import I18N from './i18n/i18n.js';
+
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',
@@ -276,6 +278,9 @@ export class GcdsInput {
    */
   @Event() gcdsInput: EventEmitter;
 
+  /**
+   * Handling input and change events on input
+   */
   private handleInput = (e, customEvent) => {
     const val = e.target && e.target.value;
     this.value = val;
@@ -289,38 +294,6 @@ export class GcdsInput {
     customEvent.emit(this.value);
     this.updateValidity();
   };
-
-  private updateValidity(override?) {
-    const validity = this.shadowElement.validity;
-    this.htmlValidationErrors = [];
-
-    for (const key in validity) {
-      // Do not include valid or missingValue keys
-      if (validity[key] === true && key !== 'valid' && key !== 'missingValue') {
-        this.htmlValidationErrors.push(key);
-      }
-    }
-
-    // Add override values to HTML errors array
-    for (const key in override) {
-      this.htmlValidationErrors.push(key);
-    }
-
-    // Set internals validity
-    this.internals.setValidity(
-      override
-        ? { ...this.shadowElement.validity, ...override }
-        : this.shadowElement.validity,
-      this.htmlValidationErrors.length > 0
-        ? this.htmlValidationErrors[0]
-        : null,
-      this.shadowElement,
-    );
-
-    // Set input title when HTML error occruring
-    this.inputTitle =
-      this.htmlValidationErrors.length > 0 ? this.htmlValidationErrors[0] : '';
-  }
 
   /**
    * Emitted when the input has changed.
@@ -347,7 +320,7 @@ export class GcdsInput {
       !this.internals.checkValidity()
     ) {
       if (!this.internals.validity.valueMissing) {
-        this.errorMessage = this.htmlValidationErrors[0];
+        this.errorMessage = this.formatHTMLErrorMessage();
         this.inputTitle = this.errorMessage;
       }
     }
@@ -417,6 +390,93 @@ export class GcdsInput {
   formStateRestoreCallback(state) {
     this.internals.setFormValue(state);
     this.value = state;
+  }
+
+  /**
+   * Update gcds-input's validity using internal input
+   */
+  private updateValidity(override?) {
+    const validity = this.shadowElement.validity;
+    this.htmlValidationErrors = [];
+
+    for (const key in validity) {
+      // Do not include valid or missingValue keys
+      if (validity[key] === true && key !== 'valid') {
+        this.htmlValidationErrors.push(key);
+      }
+    }
+
+    // Add override values to HTML errors array
+    for (const key in override) {
+      this.htmlValidationErrors.push(key);
+    }
+
+    // Set internals validity
+    this.internals.setValidity(
+      override
+        ? { ...this.shadowElement.validity, ...override }
+        : this.shadowElement.validity,
+      this.htmlValidationErrors.length > 0
+        ? this.formatHTMLErrorMessage()
+        : null,
+      this.shadowElement,
+    );
+
+    // Set input title when HTML error occruring
+    this.inputTitle =
+      this.htmlValidationErrors.length > 0 ? this.formatHTMLErrorMessage() : '';
+  }
+
+  /**
+   * Format HTML error message based off assigned attributes
+   * This lets us assign custom error messages
+   */
+  private formatHTMLErrorMessage() {
+    switch (this.htmlValidationErrors[0]) {
+      case 'valueMissing':
+        return I18N[this.lang][this.htmlValidationErrors[0]];
+      case 'typeMismatch':
+        if (this.type === 'url' || this.type === 'email') {
+          return I18N[this.lang][this.htmlValidationErrors[0]][this.type];
+        } else {
+          return I18N[this.lang][this.htmlValidationErrors[0]];
+        }
+      case 'tooLong':
+        return I18N[this.lang][this.htmlValidationErrors[0]]
+          .replace('{max}', this.maxlength)
+          .replace('{current}', this.value.length);
+      case 'tooShort':
+        return I18N[this.lang][this.htmlValidationErrors[0]]
+          .replace('{min}', this.minlength)
+          .replace('{current}', this.value.length);
+      case 'rangeUnderflow':
+        return I18N[this.lang][this.htmlValidationErrors[0]].replace(
+          '{min}',
+          this.min,
+        );
+      case 'rangeOverflow':
+        return I18N[this.lang][this.htmlValidationErrors[0]].replace(
+          '{max}',
+          this.max,
+        );
+      case 'stepMismatch':
+        return I18N[this.lang][this.htmlValidationErrors[0]]
+          .replace(
+            '{lower}',
+            Math.floor(Number(this.value) / Number(this.step)) *
+              Number(this.step),
+          )
+          .replace(
+            '{upper}',
+            Math.floor(Number(this.value) / Number(this.step)) *
+              Number(this.step) +
+              Number(this.step),
+          );
+      case 'badInput':
+      case 'patternMismatch':
+      default:
+        return I18N[this.lang][this.htmlValidationErrors[0]];
+    }
   }
 
   /*
