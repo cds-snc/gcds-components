@@ -8,17 +8,20 @@ Released on 2025-07-02
 
 ### :rocket: New Features
 
-- Update @stencil/core, @stencil/react-output-target, @stencil/vue-output-target and @stencil/angular-output-target to latest versions to take advantage of new features and fixes.
+- Update `@stencil/core`, `@stencil/react-output-target`, `@stencil/vue-output-target` and `@stencil/angular-output-target` to latest versions to take advantage of new features and fixes.
  ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
 
     **Changes**
     Vue package:
     - Configure componentModels in output to ensure v-model works as it should
+   
     Angular package
     - Fix two-way binding issue. Form components should now be able to correctly use ngModel.
     - Fix routerLink issue. Navigation components should now be able to navigate using Angular's built in router.
+   
     React package
     - React components are now functional components instead of class components.
+    
 - Added support for data binding and `routerLink` in Angular ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
 
 
