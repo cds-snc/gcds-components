@@ -24,7 +24,7 @@ Released on 2025-07-02
 
 ### :bug: :wrench: Bug Fixes
 
-- nav-group dropdown alignment within top-nav ([#886](https://github.com/cds-snc/gcds-components/issues/886)) ([af84659](https://github.com/cds-snc/gcds-components/commit/af846591126f649ddc8d84d7c2f6963abf63fa36))
+- Fixed top-nav `alignment=left` for the nav-group dropdown ([#886](https://github.com/cds-snc/gcds-components/issues/886)) ([af84659](https://github.com/cds-snc/gcds-components/commit/af846591126f649ddc8d84d7c2f6963abf63fa36))
 - update installation instructions to remove outdated file ([9c7d76c](https://github.com/cds-snc/gcds-components/commit/9c7d76c37fcc3772f70bd6f4dc6e3354122adaa1))
 
 ## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0)
