@@ -19,7 +19,7 @@ Released on 2025-07-02
     - Fix routerLink issue. Navigation components should now be able to navigate using Angular's built in router.
     React package
     - React components are now functional components instead of class components.
-- support for data binding and routerLink in Angular ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+- Added support for data binding and `routerLink` in Angular ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
 
 
 ### :bug: :wrench: Bug Fixes
