@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.36.0-canary.0...gcds-components-react-ssr-v0.37.0) (2025-06-26)
+## [0.37.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-ssr-v0.36.0-canary.0...gcds-components-react-ssr-v0.37.0-canary.0) (2025-06-26)
 
 
 ### :rocket: New Features

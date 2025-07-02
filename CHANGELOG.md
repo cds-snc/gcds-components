@@ -2,7 +2,9 @@
 
 # Changelog
 
-## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.36.0...gcds-components-v0.37.0) (2025-06-26)
+## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.36.0...gcds-components-v0.37.0)
+
+Released on 2025-07-02
 
 ### :rocket: New Features
 
