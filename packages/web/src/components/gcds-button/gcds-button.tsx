@@ -88,7 +88,7 @@ export class GcdsButton {
   /**
    * The disabled attribute for a <button> element.
    */
-  @Prop() disabled: boolean;
+  @Prop({ reflect: true }) disabled: boolean;
 
   @Watch('disabled')
   validateDisabled(newValue: boolean) {
