@@ -621,4 +621,116 @@ describe('gcds-input', () => {
       </gcds-input>
     `);
   });
+
+  /**
+   * Input pattern test
+   */
+  it('renders input pattern', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-pattern" name="input-with-pattern-name" pattern="[a-zA-Z0-9]{3,5}"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-pattern" name="input-with-pattern-name" pattern="[a-zA-Z0-9]{3,5}">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-pattern" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-pattern"
+              name="input-with-pattern-name"
+              part="input"
+              aria-labelledby="label-for-input-with-pattern"
+              aria-invalid="false"
+              pattern="[a-zA-Z0-9]{3,5}"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input placeholder test
+   */
+  it('renders input placeholder', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-placeholder" name="input-with-placeholder-name" placeholder="Placeholder"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-placeholder" name="input-with-placeholder-name" placeholder="Placeholder">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-placeholder" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-placeholder"
+              name="input-with-placeholder-name"
+              part="input"
+              aria-labelledby="label-for-input-with-placeholder"
+              aria-invalid="false"
+              placeholder="Placeholder"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input step test
+   */
+  it('renders input step', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input type="number" label="Label" input-id="input-with-step" name="input-with-step-name" step="10"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input type="number" label="Label" input-id="input-with-step" name="input-with-step-name" step="10">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-step" label="Label" lang="en"></gcds-label>
+            <input
+              type="number"
+              id="input-with-step"
+              name="input-with-step-name"
+              part="input"
+              aria-labelledby="label-for-input-with-step"
+              aria-invalid="false"
+              step="10"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input readonly test
+   */
+  it('renders input readonly', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-readonly" name="input-with-readonly-name" readonly/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-readonly" name="input-with-readonly-name" readonly>
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-readonly" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-readonly"
+              name="input-with-readonly-name"
+              part="input"
+              aria-labelledby="label-for-input-with-readonly"
+              aria-invalid="false"
+              readonly
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
 });

@@ -240,15 +240,11 @@ export class GcdsInput {
    */
   @Watch('aria-invalid')
   ariaInvalidWatcher() {
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
-      'placeholder',
-    ]);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
   @Watch('aria-description')
   ariaDescriptiondWatcher() {
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
-      'placeholder',
-    ]);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
   /**
@@ -506,9 +502,7 @@ export class GcdsInput {
 
     this.validateValidator();
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
-      'placeholder',
-    ]);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
 
     this.internals.setFormValue(this.value ? this.value : null);
     this.initialValue = this.value ? this.value : null;
