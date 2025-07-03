@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.38.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.37.0...gcds-components-vue-v0.38.0-canary.0) (2025-07-03)
+
+
+### Patch
+
+* **gcds-components-vue:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.37.0 to ^0.38.0-canary.0
+
 ## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.36.0...gcds-components-vue-v0.37.0) (2025-06-26)
 
 

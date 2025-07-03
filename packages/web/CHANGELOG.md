@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.37.0...gcds-components-v0.38.0-canary.0) (2025-07-03)
+
+
+### :bug: :wrench: Bug Fixes
+
+* reflect gcds-button `disabled` prop to support :host([disabled]) styles ([#894](https://github.com/cds-snc/gcds-components/issues/894)) ([b7c74c0](https://github.com/cds-snc/gcds-components/commit/b7c74c06d5a86f3baa2e7f16b07b9e41a37bb7fe))
+
 ## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.36.0...gcds-components-v0.37.0) (2025-06-26)
 
 
