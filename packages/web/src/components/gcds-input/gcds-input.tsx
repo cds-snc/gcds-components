@@ -323,11 +323,11 @@ export class GcdsInput {
   }
 
   /**
-   * Get validity of gcds-input
+   * Check the validity of gcds-input
    */
   @Method()
-  public async getValidity(): Promise<ValidityState> {
-    return this.internals.validity;
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
   }
 
   /**

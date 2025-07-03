@@ -3,6 +3,8 @@ const { AxeBuilder } = require('@axe-core/playwright');
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
+import I18N from '../i18n/i18n.js';
+
 test.beforeEach(async ({ page }) => {
   await page.goto('/components/gcds-input/test/gcds-input.e2e.html');
 
@@ -165,6 +167,254 @@ test.describe('gcds-input', () => {
     );
 
     expect(errorMessage).toEqual('');
+  });
+
+  /**
+   * HTML attribute validation
+   */
+  test('HTML attribute validation - min/max', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsInputElement).type = 'number';
+      (el as HTMLGcdsInputElement).min = 5;
+      (el as HTMLGcdsInputElement).max = 100;
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('input').fill('1');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(I18N.en.rangeUnderflow.replace('{min}', 5));
+
+    await element.locator('input').fill('123');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(I18N.en.rangeOverflow.replace('{max}', 100));
+
+    await element.locator('input').fill('87');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('HTML attribute validation - step', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsInputElement).type = 'number';
+      (el as HTMLGcdsInputElement).step = 10;
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('input').fill('17');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(
+      I18N.en.stepMismatch.replace('{lower}', 10).replace('{upper}', 20),
+    );
+
+    await element.locator('input').fill('20');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('HTML attribute validation - pattern', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsInputElement).pattern = '[A-Z]+';
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('input').fill('nocaps');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(I18N.en.patternMismatch);
+
+    await element.locator('input').fill('ALLCAPS');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('HTML attribute validation - minlength', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsInputElement).minlength = 6;
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('input').fill('short');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(
+      I18N.en.tooShort.replace('{min}', 6).replace('{current}', 5),
+    );
+
+    await element.locator('input').fill('long enough');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('HTML attribute validation - maxlength', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsInputElement).value = 'too long value';
+      (el as HTMLGcdsInputElement).maxlength = 7;
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('input').focus();
+
+    await page.keyboard.press('Backspace');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(
+      I18N.en.tooLong.replace('{max}', 7).replace('{current}', 13),
+    );
+
+    await element.locator('input').fill('perfect');
+
+    await element.evaluate(el => (el as HTMLGcdsInputElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  /**
+   * HTML validity
+   */
+  test('HTML validity', async ({ page }) => {
+    const element = await page.locator('gcds-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsInputElement).minlength = 6;
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('input').fill('short');
+
+    let checkedValidity = await element.evaluate(el =>
+      (el as HTMLGcdsInputElement).checkValidity(),
+    );
+
+    expect(checkedValidity).toEqual(false);
+
+    let validationMessage = await element.evaluate(el =>
+      (el as HTMLGcdsInputElement).getValidationMessage(),
+    );
+
+    expect(validationMessage).toEqual(
+      I18N.en.tooShort.replace('{min}', 6).replace('{current}', 5),
+    );
+
+    await element.locator('input').fill('long enough');
+
+    checkedValidity = await element.evaluate(el =>
+      (el as HTMLGcdsInputElement).checkValidity(),
+    );
+
+    expect(checkedValidity).toEqual(true);
+
+    validationMessage = await element.evaluate(el =>
+      (el as HTMLGcdsInputElement).getValidationMessage(),
+    );
+
+    expect(validationMessage).toEqual('');
   });
 });
 

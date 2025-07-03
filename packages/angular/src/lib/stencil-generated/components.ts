@@ -1127,7 +1127,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 @ProxyCmp({
   inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
-  methods: ['validate', 'getValidity', 'getValidationMessage'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({

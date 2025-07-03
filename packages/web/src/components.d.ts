@@ -633,6 +633,10 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
+          * Check the validity of gcds-input
+         */
+        "checkValidity": () => Promise<boolean>;
+        /**
           * Specifies if an input element is disabled or not.
           * @default false
          */
@@ -649,10 +653,6 @@ export namespace Components {
           * Get validationMessage of gcds-input
          */
         "getValidationMessage": () => Promise<string>;
-        /**
-          * Get validity of gcds-input
-         */
-        "getValidity": () => Promise<ValidityState>;
         /**
           * Specifies if the label is hidden or not.
           * @default false

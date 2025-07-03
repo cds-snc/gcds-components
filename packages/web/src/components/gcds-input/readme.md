@@ -50,6 +50,16 @@
 
 ## Methods
 
+### `checkValidity() => Promise<boolean>`
+
+Check the validity of gcds-input
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
 ### `getValidationMessage() => Promise<string>`
 
 Get validationMessage of gcds-input
@@ -57,16 +67,6 @@ Get validationMessage of gcds-input
 #### Returns
 
 Type: `Promise<string>`
-
-
-
-### `getValidity() => Promise<ValidityState>`
-
-Get validity of gcds-input
-
-#### Returns
-
-Type: `Promise<ValidityState>`
 
 
 
