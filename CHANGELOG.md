@@ -2,6 +2,35 @@
 
 # Changelog
 
+## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.36.0...gcds-components-v0.37.0)
+
+Released on 2025-07-02
+
+### :rocket: New Features
+
+- Update `@stencil/core`, `@stencil/react-output-target`, `@stencil/vue-output-target` and `@stencil/angular-output-target` to latest versions to take advantage of new features and fixes.
+ ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+
+    **Changes**
+    
+    Vue package:
+    - Configure componentModels in output to ensure v-model works as it should
+   
+    Angular package
+    - Fix two-way binding issue. Form components should now be able to correctly use ngModel.
+    - Fix routerLink issue. Navigation components should now be able to navigate using Angular's built in router.
+   
+    React package
+    - React components are now functional components instead of class components.
+    
+- Added support for data binding and `routerLink` in Angular ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+
+
+### :bug: :wrench: Bug Fixes
+
+- Fixed top-nav `alignment=left` for the nav-group dropdown ([#886](https://github.com/cds-snc/gcds-components/issues/886)) ([af84659](https://github.com/cds-snc/gcds-components/commit/af846591126f649ddc8d84d7c2f6963abf63fa36))
+- update installation instructions to remove outdated file ([9c7d76c](https://github.com/cds-snc/gcds-components/commit/9c7d76c37fcc3772f70bd6f4dc6e3354122adaa1))
+
 ## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0)
 
 Released on: 2025-06-17
