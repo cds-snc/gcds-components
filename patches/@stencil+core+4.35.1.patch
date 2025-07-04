@@ -1,8 +1,8 @@
 diff --git a/node_modules/@stencil/core/mock-doc/index.cjs b/node_modules/@stencil/core/mock-doc/index.cjs
-index b8beb06..a78a245 100644
+index b8beb06..9bde5b5 100644
 --- a/node_modules/@stencil/core/mock-doc/index.cjs
 +++ b/node_modules/@stencil/core/mock-doc/index.cjs
-@@ -6807,16 +6807,7 @@ var MockNodeList = class {
+@@ -6807,16 +6807,10 @@ var MockNodeList = class {
  };
  var MockElement = class extends MockNode2 {
    attachInternals() {
@@ -16,15 +16,18 @@ index b8beb06..a78a245 100644
 -        }
 -      }
 -    });
-+    return { setFormValue: (value) => {} };
++    return {
++      setFormValue: (value) => { },
++      setValidity: (value) => {}
++    };
    }
    constructor(ownerDocument, nodeName, namespaceURI = null) {
      super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
 diff --git a/node_modules/@stencil/core/mock-doc/index.js b/node_modules/@stencil/core/mock-doc/index.js
-index dc74c34..5470a34 100644
+index dc74c34..5de978c 100644
 --- a/node_modules/@stencil/core/mock-doc/index.js
 +++ b/node_modules/@stencil/core/mock-doc/index.js
-@@ -6754,16 +6754,7 @@ var MockNodeList = class {
+@@ -6754,16 +6754,10 @@ var MockNodeList = class {
  };
  var MockElement = class extends MockNode2 {
    attachInternals() {
@@ -38,7 +41,10 @@ index dc74c34..5470a34 100644
 -        }
 -      }
 -    });
-+    return { setFormValue: (value) => {} };
++    return {
++      setFormValue: (value) => { },
++      setValidity: () => {}
++    };
    }
    constructor(ownerDocument, nodeName, namespaceURI = null) {
      super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
