@@ -285,10 +285,11 @@ export class GcdsInput {
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
+    } else {
+      this.updateValidity();
     }
 
     customEvent.emit(this.value);
-    this.updateValidity();
   };
 
   /**
@@ -407,14 +408,18 @@ export class GcdsInput {
       this.htmlValidationErrors.push(key);
     }
 
-    // Set internals validity
-    this.internals.setValidity(
-      override
-        ? { ...this.shadowElement.validity, ...override }
-        : this.shadowElement.validity,
+    const validityState = override
+      ? { ...this.shadowElement.validity, ...override }
+      : this.shadowElement.validity;
+
+    const validationMessage =
       this.htmlValidationErrors.length > 0
         ? this.formatHTMLErrorMessage()
-        : null,
+        : null;
+
+    this.internals.setValidity(
+      validityState,
+      validationMessage,
       this.shadowElement,
     );
 
