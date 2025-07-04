@@ -1,7 +1,7 @@
 import {
   Component,
   Element,
-  Event,
+  Event as StencilEvent,
   EventEmitter,
   Prop,
   Watch,
@@ -176,12 +176,12 @@ export class GcdsFileUploader {
   /**
    * Emitted when the uploader has focus.
    */
-  @Event() gcdsFocus!: EventEmitter<void>;
+  @StencilEvent() gcdsFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the uploader loses focus.
    */
-  @Event() gcdsBlur!: EventEmitter<void>;
+  @StencilEvent() gcdsBlur!: EventEmitter<void>;
 
   private onBlur = () => {
     if (this.validateOn == 'blur') {
@@ -194,12 +194,12 @@ export class GcdsFileUploader {
   /**
    * Emitted when the user has made a file selection.
    */
-  @Event() gcdsChange: EventEmitter;
+  @StencilEvent() gcdsChange: EventEmitter;
 
   /**
    * Emitted when the user has uploaded a file.
    */
-  @Event() gcdsInput: EventEmitter;
+  @StencilEvent() gcdsInput: EventEmitter;
 
   private handleInput = (e, customEvent) => {
     const filesContainer: string[] = [];
@@ -232,7 +232,7 @@ export class GcdsFileUploader {
   /**
    * Remove file and update value.
    */
-  @Event() gcdsRemoveFile: EventEmitter;
+  @StencilEvent() gcdsRemoveFile: EventEmitter;
   removeFile = e => {
     e.preventDefault();
     const fileName = e.target.closest('.file-uploader__uploaded-file')
@@ -259,6 +259,8 @@ export class GcdsFileUploader {
 
     this.value = [...filesContainer];
     this.gcdsRemoveFile.emit(this.value);
+    this.gcdsChange.emit(this.value);
+    this.el.dispatchEvent(new Event('change', { bubbles: true }));
   };
 
   /**
@@ -279,12 +281,12 @@ export class GcdsFileUploader {
   /**
    * Emitted when the input has a validation error.
    */
-  @Event() gcdsError!: EventEmitter<object>;
+  @StencilEvent() gcdsError!: EventEmitter<object>;
 
   /**
    * Emitted when the input has a validation error.
    */
-  @Event() gcdsValid!: EventEmitter<object>;
+  @StencilEvent() gcdsValid!: EventEmitter<object>;
 
   @Listen('submit', { target: 'document' })
   submitListener(e) {
@@ -345,6 +347,9 @@ export class GcdsFileUploader {
         this.shadowElement.files = dt.files;
         this.files = dt.files;
       }
+
+      this.gcdsChange.emit(this.value);
+      this.el.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
     // Focus file input after drop
