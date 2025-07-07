@@ -260,7 +260,9 @@ export class GcdsFileUploader {
     this.value = [...filesContainer];
     this.gcdsRemoveFile.emit(this.value);
     this.gcdsChange.emit(this.value);
-    this.el.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+    this.el.dispatchEvent(
+      new Event('change', { bubbles: true, composed: true }),
+    );
   };
 
   /**
@@ -349,7 +351,9 @@ export class GcdsFileUploader {
       }
 
       this.gcdsChange.emit(this.value);
-      this.el.dispatchEvent(new Event('change', { bubbles: true }));
+      this.el.dispatchEvent(
+        new Event('change', { bubbles: true, composed: true }),
+      );
     }
 
     // Focus file input after drop
