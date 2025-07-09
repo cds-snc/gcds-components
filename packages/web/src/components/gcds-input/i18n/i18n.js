@@ -18,7 +18,7 @@ const I18N = {
     badInput: 'Enter a number to continue.',
   },
   fr: {
-    valueMissing: 'Enter information to continue.',
+    valueMissing: 'Saisissez des renseignements pour continuer.',
     typeMismatch: {
       email:
         'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
