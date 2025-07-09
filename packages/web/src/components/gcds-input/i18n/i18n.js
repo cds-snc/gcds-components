@@ -4,36 +4,38 @@ const I18N = {
     typeMismatch: {
       email:
         'Enter a valid email address to continue. Use a standard format. Example: name@address.ca.',
-      url: 'Please enter a URL',
+      url: 'Enter a URL in the specified format to continue.',
     },
-    patternMismatch: 'Please match the requested format.',
+    patternMismatch: 'Use the specified format to continue.',
     tooLong:
-      'Please shorten this text to {max} characters or less (You are currently using {current} characters).',
+      "Enter {max} characters or less to continue. You've entered {current} characters.",
     tooShort:
-      'Please lengthen this text to {min} characters or more. You are currently using {current} characters.',
-    rangeUnderflow: 'Value must be greater than or equal to {min}.',
-    rangeOverflow: 'Value must be less than or equal to {max}.',
+      "Enter at least {min} characters to continue. You've entered {current} characters.",
+    rangeUnderflow: "Enter a number that's {min} or more to continue.",
+    rangeOverflow: "Enter a number that's {max} or less to continue.",
     stepMismatch:
-      'Please enter a valid value. The two nearest valid values are {lower} and {upper}.',
-    badInput: 'Please enter a number.',
+      'Enter a number from the specified options to continue. The closest numbers to what you entered are {lower} and {upper}. ',
+    badInput: 'Enter a number to continue.',
   },
   fr: {
     valueMissing: 'Enter information to continue.',
     typeMismatch: {
       email:
         'Enter a valid email address to continue. Use a standard format. Example: name@address.ca.',
-      url: 'Please enter a URL',
+      url: 'Veuillez entrer une adresse Web en utilisant le format spécifié pour continuer.',
     },
-    patternMismatch: 'Please match the requested format.',
+    patternMismatch: 'Veuillez utiliser le format spécifié pour continuer.',
     tooLong:
-      'Please shorten this text to {max} characters or less (You are currently using {current} characters).',
+      'Veuillez entrer {max} caractères ou moins pour continuer. Vous en avez présentement {current}.',
     tooShort:
-      'Please lengthen this text to {min} characters or more. You are currently using {current} characters.',
-    rangeUnderflow: 'Value must be greater than or equal to {min}.',
-    rangeOverflow: 'Value must be less than or equal to {max}.',
+      'Veuillez entrer au moins {min} caractères pour continuer. Vous en avez présentement {current}.',
+    rangeUnderflow:
+      'Veuillez entrer un nombre plus grand ou égal à {min} pour continuer',
+    rangeOverflow:
+      'Veuillez entrer un nombre plus petit ou égal à {max} pour continuer',
     stepMismatch:
-      'Please enter a valid value. The two nearest valid values are {lower} and {upper}.',
-    badInput: 'Please enter a number.',
+      'Veuillez entrer un nombre parmi les options spécifiées pour continuer. Les nombres les plus proches de votre entrée sont {lower} et {upper}.',
+    badInput: 'Veuillez entrer un nombre pour continuer.',
   },
 };
 
