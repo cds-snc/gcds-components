@@ -8,7 +8,7 @@ Released on: 2025-07-09
 
 ### :rocket: New Features
 
-- **gcds-footer**: changes to footer links ([#898](https://github.com/cds-snc/gcds-components/issues/898)) ([b9b7f3f](https://github.com/cds-snc/gcds-components/commit/b9b7f3f2f312eae64113ec2e1c9b61b8de0e10b5))
+- **gcds-footer**: added new 'Manage life events' link + re-positioned links for 'Taxes,' 'Canada and the world,' and 'Money and finances.' ([#898](https://github.com/cds-snc/gcds-components/issues/898)) ([b9b7f3f](https://github.com/cds-snc/gcds-components/commit/b9b7f3f2f312eae64113ec2e1c9b61b8de0e10b5))
 
 ### :bug: :wrench: Bug Fixes
 
