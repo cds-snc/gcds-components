@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.37.0...gcds-components-v0.38.0) (2025-07-09)
+
+
+### :rocket: New Features
+
+* changes to footer links ([#898](https://github.com/cds-snc/gcds-components/issues/898)) ([b9b7f3f](https://github.com/cds-snc/gcds-components/commit/b9b7f3f2f312eae64113ec2e1c9b61b8de0e10b5))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-file-uploader:** emit missing gcdsChange/change event ([#896](https://github.com/cds-snc/gcds-components/issues/896)) ([1e827b8](https://github.com/cds-snc/gcds-components/commit/1e827b85525968ede197ac3f51a9da21c34608f0))
+* reflect gcds-button `disabled` prop to support :host([disabled]) styles ([#894](https://github.com/cds-snc/gcds-components/issues/894)) ([b7c74c0](https://github.com/cds-snc/gcds-components/commit/b7c74c06d5a86f3baa2e7f16b07b9e41a37bb7fe))
+
 ## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.36.0...gcds-components-v0.37.0) (2025-06-26)
 
 
