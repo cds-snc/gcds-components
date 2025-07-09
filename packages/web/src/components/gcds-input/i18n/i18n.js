@@ -21,7 +21,7 @@ const I18N = {
     valueMissing: 'Enter information to continue.',
     typeMismatch: {
       email:
-        'Enter a valid email address to continue. Use a standard format. Example: name@address.ca.',
+        'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
       url: 'Veuillez entrer une adresse Web en utilisant le format spécifié pour continuer.',
     },
     patternMismatch: 'Veuillez utiliser le format spécifié pour continuer.',
