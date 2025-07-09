@@ -2,25 +2,21 @@
 
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.37.0...gcds-components-vue-v0.38.0) (2025-07-09)
 
+### Patch
 
-### :rocket: New Features
-
-* changes to footer links ([#898](https://github.com/cds-snc/gcds-components/issues/898)) ([b9b7f3f](https://github.com/cds-snc/gcds-components/commit/b9b7f3f2f312eae64113ec2e1c9b61b8de0e10b5))
-
+- **gcds-components-vue:** Synchronize GCDS Components versions
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @cdssnc/gcds-components bumped from ^0.37.0 to ^0.38.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.37.0 to ^0.38.0
 
 ## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.36.0...gcds-components-vue-v0.37.0) (2025-06-26)
-
 
 ### :rocket: New Features
 
 - update stencil and stencil output targets ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
-
 
 ### Dependencies
 
