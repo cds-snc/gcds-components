@@ -22,20 +22,20 @@ const I18N = {
     typeMismatch: {
       email:
         'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
-      url: 'Veuillez entrer une adresse Web en utilisant le format spécifié pour continuer.',
+      url: 'Entrez une adresse Web en utilisant le format spécifié pour continuer.',
     },
-    patternMismatch: 'Veuillez utiliser le format spécifié pour continuer.',
+    patternMismatch: 'Utilisez le format spécifié pour continuer.',
     tooLong:
-      'Veuillez entrer {max} caractères ou moins pour continuer. Vous en avez présentement {current}.',
+      'Entrez {max} caractères ou moins pour continuer. Vous en avez présentement {current}.',
     tooShort:
-      'Veuillez entrer au moins {min} caractères pour continuer. Vous en avez présentement {current}.',
+      'Entrez au moins {min} caractères pour continuer. Vous en avez présentement {current}.',
     rangeUnderflow:
-      'Veuillez entrer un nombre plus grand ou égal à {min} pour continuer',
+      'Entrez un nombre plus grand ou égal à {min} pour continuer.',
     rangeOverflow:
-      'Veuillez entrer un nombre plus petit ou égal à {max} pour continuer',
+      'Entrez un nombre plus petit ou égal à {max} pour continuer.',
     stepMismatch:
-      'Veuillez entrer un nombre parmi les options spécifiées pour continuer. Les nombres les plus proches de votre entrée sont {lower} et {upper}.',
-    badInput: 'Veuillez entrer un nombre pour continuer.',
+      'Entrez un nombre parmi les options spécifiées pour continuer. Les nombres les plus proches de votre entrée sont {lower} et {upper}.',
+    badInput: 'Entrez un nombre pour continuer.',
   },
 };
 
