@@ -2,6 +2,19 @@
 
 # Changelog
 
+## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.37.0...gcds-components-v0.38.0)
+
+Released on: 2025-07-09
+
+### :rocket: New Features
+
+- **gcds-footer**: added new 'Manage life events' link + re-positioned links for 'Taxes,' 'Canada and the world,' and 'Money and finances.' ([#898](https://github.com/cds-snc/gcds-components/issues/898)) ([b9b7f3f](https://github.com/cds-snc/gcds-components/commit/b9b7f3f2f312eae64113ec2e1c9b61b8de0e10b5))
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-file-uploader:** emit missing gcdsChange/change event ([#896](https://github.com/cds-snc/gcds-components/issues/896)) ([1e827b8](https://github.com/cds-snc/gcds-components/commit/1e827b85525968ede197ac3f51a9da21c34608f0))
+- **gcds-button**: reflect `disabled` prop to support :host([disabled]) styles ([#894](https://github.com/cds-snc/gcds-components/issues/894)) ([b7c74c0](https://github.com/cds-snc/gcds-components/commit/b7c74c06d5a86f3baa2e7f16b07b9e41a37bb7fe))
+
 ## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.36.0...gcds-components-v0.37.0)
 
 Released on 2025-07-02
@@ -9,22 +22,24 @@ Released on 2025-07-02
 ### :rocket: New Features
 
 - Update `@stencil/core`, `@stencil/react-output-target`, `@stencil/vue-output-target` and `@stencil/angular-output-target` to latest versions to take advantage of new features and fixes.
- ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+  ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
 
-    **Changes**
-    
-    Vue package:
-    - Configure componentModels in output to ensure v-model works as it should
-   
-    Angular package
-    - Fix two-way binding issue. Form components should now be able to correctly use ngModel.
-    - Fix routerLink issue. Navigation components should now be able to navigate using Angular's built in router.
-   
-    React package
-    - React components are now functional components instead of class components.
-    
+  **Changes**
+
+  Vue package:
+
+  - Configure componentModels in output to ensure v-model works as it should
+
+  Angular package
+
+  - Fix two-way binding issue. Form components should now be able to correctly use ngModel.
+  - Fix routerLink issue. Navigation components should now be able to navigate using Angular's built in router.
+
+  React package
+
+  - React components are now functional components instead of class components.
+
 - Added support for data binding and `routerLink` in Angular ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
-
 
 ### :bug: :wrench: Bug Fixes
 
