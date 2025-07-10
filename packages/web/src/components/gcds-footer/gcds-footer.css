@@ -69,7 +69,7 @@
     }
 
     h3 {
-      font: var( --gcds-footer-font-heading);
+      font: var(--gcds-footer-font-heading);
       margin: var(--gcds-footer-heading-margin);
     }
 
@@ -113,7 +113,7 @@
 
       &.main__themenav .themenav__list {
         display: grid;
-        grid-template-rows: repeat(18, 1fr);
+        grid-template-rows: repeat(19, 1fr);
         grid-auto-flow: column;
       }
     }
@@ -194,7 +194,7 @@
       }
 
       nav.main__themenav .themenav__list {
-        grid-template-rows: repeat(9, 1fr);
+        grid-template-rows: repeat(10, 1fr);
       }
     }
   }
@@ -224,7 +224,7 @@
       }
 
       nav.main__themenav .themenav__list {
-        grid-template-rows: repeat(6, 1fr);
+        grid-template-rows: repeat(7, 1fr);
       }
     }
   }

@@ -73,7 +73,7 @@ const I18N = {
           link: 'https://international.gc.ca/world-monde/index.aspx?lang=eng',
         },
         finance: {
-          text: 'Money and finance',
+          text: 'Money and finances',
           link: 'https://www.canada.ca/en/services/finance.html',
         },
         science: {
@@ -91,6 +91,10 @@ const I18N = {
         youth: {
           text: 'Youth',
           link: 'https://www.canada.ca/en/services/youth.html',
+        },
+        life: {
+          text: 'Manage life events',
+          link: 'https://www.canada.ca/en/services/life-events.html',
         },
       },
     },
@@ -196,7 +200,7 @@ const I18N = {
           link: 'https://www.international.gc.ca/world-monde/index.aspx?lang=fra',
         },
         finance: {
-          text: 'Argent et finance',
+          text: 'Argent et finances',
           link: 'https://www.canada.ca/fr/services/finance.html',
         },
         science: {
@@ -214,6 +218,10 @@ const I18N = {
         youth: {
           text: 'Jeunesse',
           link: 'https://www.canada.ca/fr/services/jeunesse.html',
+        },
+        life: {
+          text: 'Gérer les événements de la vie',
+          link: 'https://www.canada.ca/fr/services/evenements-vie.html',
         },
       },
     },

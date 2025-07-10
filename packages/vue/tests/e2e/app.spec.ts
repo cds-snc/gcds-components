@@ -16,7 +16,7 @@ test('Page has loaded and rendered', async ({ page }) => {
 
   // Footer has rendered
   const footerLinks = await page.locator('gcds-footer a').count();
-  await expect(footerLinks).toBe(26);
+  await expect(footerLinks).toBe(27);
 });
 
 test('Select component event handling', async ({ page }) => {

@@ -160,7 +160,7 @@ describe('gcds-footer', () => {
                   </li>
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/services/finance.html">
-                      Money and finance
+                      Money and finances
                     </gcds-link>
                   </li>
                   <li>
@@ -181,6 +181,11 @@ describe('gcds-footer', () => {
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/services/youth.html">
                       Youth
+                    </gcds-link>
+                  </li>
+                  <li>
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/life-events.html">
+                      Manage life events
                     </gcds-link>
                   </li>
                 </ul>
@@ -389,7 +394,7 @@ describe('gcds-footer', () => {
                   </li>
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/fr/services/finance.html">
-                      Argent et finance
+                      Argent et finances
                     </gcds-link>
                   </li>
                   <li>
@@ -410,6 +415,11 @@ describe('gcds-footer', () => {
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/fr/services/jeunesse.html">
                       Jeunesse
+                    </gcds-link>
+                  </li>
+                  <li>
+                    <gcds-link size="small" href="https://www.canada.ca/fr/services/evenements-vie.html">
+                      Gérer les événements de la vie
                     </gcds-link>
                   </li>
                 </ul>
@@ -596,7 +606,7 @@ describe('gcds-footer', () => {
                   </li>
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/services/finance.html">
-                      Money and finance
+                      Money and finances
                     </gcds-link>
                   </li>
                   <li>
@@ -617,6 +627,11 @@ describe('gcds-footer', () => {
                   <li>
                     <gcds-link size="small" href="https://www.canada.ca/en/services/youth.html">
                       Youth
+                    </gcds-link>
+                  </li>
+                  <li>
+                    <gcds-link size="small" href="https://www.canada.ca/en/services/life-events.html">
+                      Manage life events
                     </gcds-link>
                   </li>
                 </ul>
