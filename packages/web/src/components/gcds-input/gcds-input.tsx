@@ -519,7 +519,7 @@ export class GcdsInput {
     if (this.value && (this.minlength || this.maxlength)) {
       if (this.minlength && this.value.length < this.minlength) {
         lengthValidity = { tooShort: true };
-      } else if (this.maxlength && this.value.length > this.minlength) {
+      } else if (this.maxlength && this.value.length > this.maxlength) {
         lengthValidity = { tooLong: true };
       }
     }
