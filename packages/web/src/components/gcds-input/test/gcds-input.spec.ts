@@ -651,34 +651,6 @@ describe('gcds-input', () => {
   });
 
   /**
-   * Input placeholder test
-   */
-  it('renders input placeholder', async () => {
-    const { root } = await newSpecPage({
-      components: [GcdsInput],
-      html: '<gcds-input label="Label" input-id="input-with-placeholder" name="input-with-placeholder-name" placeholder="Placeholder"/>',
-    });
-    expect(root).toEqualHtml(`
-      <gcds-input label="Label" input-id="input-with-placeholder" name="input-with-placeholder-name" placeholder="Placeholder">
-        <mock:shadow-root>
-          <div class="gcds-input-wrapper">
-            <gcds-label label-for="input-with-placeholder" label="Label" lang="en"></gcds-label>
-            <input
-              type="text"
-              id="input-with-placeholder"
-              name="input-with-placeholder-name"
-              part="input"
-              aria-labelledby="label-for-input-with-placeholder"
-              aria-invalid="false"
-              placeholder="Placeholder"
-            />
-          </div>
-        </mock:shadow-root>
-      </gcds-input>
-    `);
-  });
-
-  /**
    * Input step test
    */
   it('renders input step', async () => {

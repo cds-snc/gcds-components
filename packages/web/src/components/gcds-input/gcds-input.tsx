@@ -173,11 +173,6 @@ export class GcdsInput {
   @Prop({ reflect: true }) pattern?: string;
 
   /**
-   * The input placeholder text value
-   */
-  @Prop({ reflect: true }) placeholder?: string;
-
-  /**
    * If true, the input field cannot be modified.
    */
   @Prop({ reflect: true }) readonly?: boolean;
@@ -556,7 +551,6 @@ export class GcdsInput {
       min,
       minlength,
       pattern,
-      placeholder,
       readonly,
       step,
       inputTitle,
@@ -581,7 +575,6 @@ export class GcdsInput {
       min,
       minlength,
       pattern,
-      placeholder,
       readonly,
       step,
       value,

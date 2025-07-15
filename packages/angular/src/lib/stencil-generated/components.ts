@@ -1126,7 +1126,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
@@ -1135,7 +1135,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -1221,10 +1221,6 @@ Only applies to number input type.
 See: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
    */
   set pattern(_: Components.GcdsInput['pattern']) {};
-    /**
-   * The input placeholder text value
-   */
-  set placeholder(_: Components.GcdsInput['placeholder']) {};
     /**
    * If true, the input field cannot be modified.
    */

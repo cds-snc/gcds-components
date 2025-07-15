@@ -167,13 +167,6 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
-    placeholder: {
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
-      },
-    },
     readonly: {
       control: { type: 'select' },
       options: [false, true],
@@ -230,7 +223,6 @@ const Template = args =>
   ${args.min ? `min="${args.min}"` : null}
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.pattern ? `pattern="${args.pattern}"` : null}
-  ${args.placeholder ? `placeholder="${args.placeholder}"` : null}
   ${args.step ? `step="${args.step}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.size ? `size="${args.size}"` : null}
@@ -259,7 +251,6 @@ const Template = args =>
   ${args.min ? `min="${args.min}"` : null}
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.pattern ? `pattern="${args.pattern}"` : null}
-  ${args.placeholder ? `placeholder="${args.placeholder}"` : null}
   ${args.step ? `step="${args.step}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.size ? `size="${args.size}"` : null}
@@ -289,7 +280,6 @@ const TemplatePlayground = args => `
   ${args.min ? `min="${args.min}"` : null}
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.pattern ? `pattern="${args.pattern}"` : null}
-  ${args.placeholder ? `placeholder="${args.placeholder}"` : null}
   ${args.step ? `step="${args.step}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.size ? `size="${args.size}"` : null}
@@ -328,7 +318,6 @@ Default.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -353,7 +342,6 @@ Disabled.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -377,7 +365,6 @@ Error.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -400,7 +387,6 @@ Required.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   readonly: false,
 };
 
@@ -424,7 +410,6 @@ Email.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -447,7 +432,6 @@ Number.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   readonly: false,
 };
 
@@ -469,7 +453,6 @@ Password.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -492,7 +475,6 @@ Search.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -515,7 +497,6 @@ Text.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -538,7 +519,6 @@ Url.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -561,7 +541,6 @@ Autocomplete.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -584,7 +563,6 @@ Autofocus.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -607,7 +585,6 @@ Form.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -630,7 +607,6 @@ Max.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -653,7 +629,6 @@ Min.args = {
   min: '50',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -676,7 +651,6 @@ Maxlength.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -699,7 +673,6 @@ Minlength.args = {
   min: '',
   minlength: '5',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -722,7 +695,6 @@ Pattern.args = {
   min: '',
   minlength: '',
   pattern: '[A-Z]+',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -745,7 +717,6 @@ Step.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '10',
   readonly: false,
 };
@@ -769,7 +740,6 @@ Readonly.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: true,
 };
@@ -799,7 +769,6 @@ Props.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };
@@ -829,7 +798,6 @@ Playground.args = {
   min: '',
   minlength: '',
   pattern: '',
-  placeholder: '',
   step: '',
   readonly: false,
 };

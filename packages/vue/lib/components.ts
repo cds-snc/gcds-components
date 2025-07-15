@@ -338,7 +338,6 @@ export const GcdsInput: StencilVueComponent<JSX.GcdsInput, JSX.GcdsInput["value"
   'min',
   'minlength',
   'pattern',
-  'placeholder',
   'readonly',
   'step',
   'validity',

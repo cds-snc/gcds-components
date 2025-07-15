@@ -695,10 +695,6 @@ export namespace Components {
          */
         "pattern"?: string;
         /**
-          * The input placeholder text value
-         */
-        "placeholder"?: string;
-        /**
           * If true, the input field cannot be modified.
          */
         "readonly"?: boolean;
@@ -2662,10 +2658,6 @@ declare namespace LocalJSX {
           * Specifies a regular expression the form control's value should match. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
          */
         "pattern"?: string;
-        /**
-          * The input placeholder text value
-         */
-        "placeholder"?: string;
         /**
           * If true, the input field cannot be modified.
          */
