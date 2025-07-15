@@ -18,13 +18,13 @@
     "build": "npm run tsc",
     "tsc": "tsc -p . --outDir ./dist"
   },
-  "main": "dist/lib/index.js",
-  "module": "dist/lib/index.js",
-  "types": "dist/types/lib/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/lib/index.js",
-      "types": "./dist/types/lib/index.d.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/types/index.d.ts"
     },
     "./gcds.css": {
       "import": "./gcds.css",
