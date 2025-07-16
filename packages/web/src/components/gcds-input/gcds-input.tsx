@@ -27,6 +27,8 @@ import {
   ValidatorOld,
 } from '../../validators';
 
+import I18N from './i18n/i18n.js';
+
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',
@@ -41,7 +43,12 @@ export class GcdsInput {
 
   private initialValue?: string;
 
-  private shadowElement?: HTMLElement;
+  private shadowElement?: HTMLInputElement;
+
+  // Array to store which native HTML errors are happening on the input
+  private htmlValidationErrors = [];
+
+  private inputTitle: string = '';
 
   _validator: Validator<string> | ValidatorOld<string> = defaultValidator;
 
@@ -123,9 +130,67 @@ export class GcdsInput {
   @Prop({ mutable: true }) value?: string;
 
   /**
-   * String to have autocomplete enabled
+   * String to have autocomplete enabled.
    */
   @Prop() autocomplete?: string;
+
+  /**
+   * If true, the input will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The ID of the form that the input field belongs to.
+   */
+  @Prop({ reflect: true }) form?: string;
+
+  /**
+   * The maximum value that the input field can accept.
+   * Only applies to number input type.
+   */
+  @Prop({ reflect: true }) max?: number | string;
+
+  /**
+   * The maximum number of characters that the input field can accept.
+   */
+  @Prop({ reflect: true }) maxlength?: number;
+
+  /**
+   * The minimum value that the input field can accept.
+   * Only applies to number input type.
+   */
+  @Prop({ reflect: true }) min?: number | string;
+
+  /**
+   * The minimum number of characters that the input field can accept.
+   */
+  @Prop({ reflect: true }) minlength?: number;
+
+  /**
+   * Specifies a regular expression the form control's value should match.
+   * See: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
+   */
+  @Prop({ reflect: true }) pattern?: string;
+
+  /**
+   * If true, the input field cannot be modified.
+   */
+  @Prop({ reflect: true }) readonly?: boolean;
+
+  /**
+   * A number that specifies the granularity that the value must adhere to.
+   * Valid for number type.
+   * See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
+   */
+  @Prop({ reflect: true }) step?: number | 'any';
+
+  /**
+   * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+   */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
+  }
 
   /**
    * Array of validators
@@ -170,15 +235,11 @@ export class GcdsInput {
    */
   @Watch('aria-invalid')
   ariaInvalidWatcher() {
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
-      'placeholder',
-    ]);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
   @Watch('aria-description')
   ariaDescriptiondWatcher() {
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
-      'placeholder',
-    ]);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
   /**
@@ -208,6 +269,9 @@ export class GcdsInput {
    */
   @Event() gcdsInput: EventEmitter;
 
+  /**
+   * Handling input and change events on input
+   */
   private handleInput = (e, customEvent) => {
     const val = e.target && e.target.value;
     this.value = val;
@@ -216,6 +280,8 @@ export class GcdsInput {
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
+    } else {
+      this.updateValidity();
     }
 
     customEvent.emit(this.value);
@@ -239,6 +305,33 @@ export class GcdsInput {
       this.gcdsValid,
       this.lang,
     );
+
+    // Native HTML validation
+    if (
+      (this.required && !this.internals.checkValidity()) ||
+      !this.internals.checkValidity()
+    ) {
+      if (!this.internals.validity.valueMissing) {
+        this.errorMessage = this.formatHTMLErrorMessage();
+        this.inputTitle = this.errorMessage;
+      }
+    }
+  }
+
+  /**
+   * Check the validity of gcds-input
+   */
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  /**
+   * Get validationMessage of gcds-input
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   /**
@@ -291,6 +384,97 @@ export class GcdsInput {
     this.value = state;
   }
 
+  /**
+   * Update gcds-input's validity using internal input
+   */
+  private updateValidity(override?) {
+    const validity = this.shadowElement.validity;
+    this.htmlValidationErrors = [];
+
+    for (const key in validity) {
+      // Do not include valid or missingValue keys
+      if (validity[key] === true && key !== 'valid') {
+        this.htmlValidationErrors.push(key);
+      }
+    }
+
+    // Add override values to HTML errors array
+    for (const key in override) {
+      this.htmlValidationErrors.push(key);
+    }
+
+    const validityState = override
+      ? { ...this.shadowElement.validity, ...override }
+      : this.shadowElement.validity;
+
+    const validationMessage =
+      this.htmlValidationErrors.length > 0
+        ? this.formatHTMLErrorMessage()
+        : null;
+
+    this.internals.setValidity(
+      validityState,
+      validationMessage,
+      this.shadowElement,
+    );
+
+    // Set input title when HTML error occruring
+    this.inputTitle =
+      this.htmlValidationErrors.length > 0 ? this.formatHTMLErrorMessage() : '';
+  }
+
+  /**
+   * Format HTML error message based off assigned attributes
+   * This lets us assign custom error messages
+   */
+  private formatHTMLErrorMessage() {
+    switch (this.htmlValidationErrors[0]) {
+      case 'valueMissing':
+        return I18N[this.lang][this.htmlValidationErrors[0]];
+      case 'typeMismatch':
+        if (this.type === 'url' || this.type === 'email') {
+          return I18N[this.lang][this.htmlValidationErrors[0]][this.type];
+        } else {
+          return I18N[this.lang][this.htmlValidationErrors[0]];
+        }
+      case 'tooLong':
+        return I18N[this.lang][this.htmlValidationErrors[0]]
+          .replace('{max}', this.maxlength)
+          .replace('{current}', this.value.length);
+      case 'tooShort':
+        return I18N[this.lang][this.htmlValidationErrors[0]]
+          .replace('{min}', this.minlength)
+          .replace('{current}', this.value.length);
+      case 'rangeUnderflow':
+        return I18N[this.lang][this.htmlValidationErrors[0]].replace(
+          '{min}',
+          this.min,
+        );
+      case 'rangeOverflow':
+        return I18N[this.lang][this.htmlValidationErrors[0]].replace(
+          '{max}',
+          this.max,
+        );
+      case 'stepMismatch':
+        return I18N[this.lang][this.htmlValidationErrors[0]]
+          .replace(
+            '{lower}',
+            Math.floor(Number(this.value) / Number(this.step)) *
+              Number(this.step),
+          )
+          .replace(
+            '{upper}',
+            Math.floor(Number(this.value) / Number(this.step)) *
+              Number(this.step) +
+              Number(this.step),
+          );
+      case 'badInput':
+      case 'patternMismatch':
+      default:
+        return I18N[this.lang][this.htmlValidationErrors[0]];
+    }
+  }
+
   /*
    * Observe lang attribute change
    */
@@ -318,12 +502,31 @@ export class GcdsInput {
 
     this.validateValidator();
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
-      'placeholder',
-    ]);
+    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
 
     this.internals.setFormValue(this.value ? this.value : null);
     this.initialValue = this.value ? this.value : null;
+  }
+
+  componentDidLoad() {
+    let lengthValidity;
+    // maxlength/minlength validation on load
+    if (this.value && (this.minlength || this.maxlength)) {
+      if (this.minlength && this.value.length < this.minlength) {
+        lengthValidity = { tooShort: true };
+      } else if (this.maxlength && this.value.length > this.maxlength) {
+        lengthValidity = { tooLong: true };
+      }
+    }
+
+    this.updateValidity(lengthValidity);
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement?.focus();
+      });
+    }
   }
 
   render() {
@@ -341,6 +544,16 @@ export class GcdsInput {
       value,
       hasError,
       autocomplete,
+      autofocus,
+      form,
+      max,
+      maxlength,
+      min,
+      minlength,
+      pattern,
+      readonly,
+      step,
+      inputTitle,
       inheritedAttributes,
       lang,
     } = this;
@@ -354,8 +567,18 @@ export class GcdsInput {
       disabled,
       required,
       type,
-      value,
       autocomplete,
+      autofocus,
+      form,
+      max,
+      maxlength,
+      min,
+      minlength,
+      pattern,
+      readonly,
+      step,
+      value,
+      title: inputTitle,
       ...inheritedAttributes,
     };
 
@@ -416,7 +639,7 @@ export class GcdsInput {
             size={size}
             style={size ? style : null}
             part="input"
-            ref={element => (this.shadowElement = element as HTMLElement)}
+            ref={element => (this.shadowElement = element)}
           />
         </div>
       </Host>

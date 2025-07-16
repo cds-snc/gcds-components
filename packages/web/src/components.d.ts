@@ -625,9 +625,17 @@ export namespace Components {
     }
     interface GcdsInput {
         /**
-          * String to have autocomplete enabled
+          * String to have autocomplete enabled.
          */
         "autocomplete"?: string;
+        /**
+          * If true, the input will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
+          * Check the validity of gcds-input
+         */
+        "checkValidity": () => Promise<boolean>;
         /**
           * Specifies if an input element is disabled or not.
           * @default false
@@ -637,6 +645,14 @@ export namespace Components {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the input field belongs to.
+         */
+        "form"?: string;
+        /**
+          * Get validationMessage of gcds-input
+         */
+        "getValidationMessage": () => Promise<string>;
         /**
           * Specifies if the label is hidden or not.
           * @default false
@@ -655,9 +671,33 @@ export namespace Components {
          */
         "label": string;
         /**
+          * The maximum value that the input field can accept. Only applies to number input type.
+         */
+        "max"?: number | string;
+        /**
+          * The maximum number of characters that the input field can accept.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum value that the input field can accept. Only applies to number input type.
+         */
+        "min"?: number | string;
+        /**
+          * The minimum number of characters that the input field can accept.
+         */
+        "minlength"?: number;
+        /**
           * Name attribute for an input element.
          */
         "name": string;
+        /**
+          * Specifies a regular expression the form control's value should match. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
+         */
+        "pattern"?: string;
+        /**
+          * If true, the input field cannot be modified.
+         */
+        "readonly"?: boolean;
         /**
           * Specifies if a form field is required or not.
           * @default false
@@ -667,6 +707,10 @@ export namespace Components {
           * Size attribute for an input element to provide a visual indication of the expected text length to the user.
          */
         "size"?: number;
+        /**
+          * A number that specifies the granularity that the value must adhere to. Valid for number type. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
+         */
+        "step"?: number | 'any';
         /**
           * Set Input types
           * @default 'text'
@@ -687,6 +731,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Default value for an input element.
          */
@@ -2524,9 +2573,13 @@ declare namespace LocalJSX {
     }
     interface GcdsInput {
         /**
-          * String to have autocomplete enabled
+          * String to have autocomplete enabled.
          */
         "autocomplete"?: string;
+        /**
+          * If true, the input will be focused on component render
+         */
+        "autofocus"?: boolean;
         /**
           * Specifies if an input element is disabled or not.
           * @default false
@@ -2536,6 +2589,10 @@ declare namespace LocalJSX {
           * Error message for an invalid input element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the input field belongs to.
+         */
+        "form"?: string;
         /**
           * Specifies if the label is hidden or not.
           * @default false
@@ -2553,6 +2610,22 @@ declare namespace LocalJSX {
           * Form field label
          */
         "label": string;
+        /**
+          * The maximum value that the input field can accept. Only applies to number input type.
+         */
+        "max"?: number | string;
+        /**
+          * The maximum number of characters that the input field can accept.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum value that the input field can accept. Only applies to number input type.
+         */
+        "min"?: number | string;
+        /**
+          * The minimum number of characters that the input field can accept.
+         */
+        "minlength"?: number;
         /**
           * Name attribute for an input element.
          */
@@ -2582,6 +2655,14 @@ declare namespace LocalJSX {
          */
         "onGcdsValid"?: (event: GcdsInputCustomEvent<object>) => void;
         /**
+          * Specifies a regular expression the form control's value should match. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
+         */
+        "pattern"?: string;
+        /**
+          * If true, the input field cannot be modified.
+         */
+        "readonly"?: boolean;
+        /**
           * Specifies if a form field is required or not.
           * @default false
          */
@@ -2590,6 +2671,10 @@ declare namespace LocalJSX {
           * Size attribute for an input element to provide a visual indication of the expected text length to the user.
          */
         "size"?: number;
+        /**
+          * A number that specifies the granularity that the value must adhere to. Valid for number type. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
+         */
+        "step"?: number | 'any';
         /**
           * Set Input types
           * @default 'text'
@@ -2606,6 +2691,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Default value for an input element.
          */
