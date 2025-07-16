@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.38.0...gcds-components-react-v0.39.0) (2025-07-16)
+
+
+### :bug: :wrench: Bug Fixes
+
+* React output package.json configuration ([#901](https://github.com/cds-snc/gcds-components/issues/901)) ([1ee8332](https://github.com/cds-snc/gcds-components/commit/1ee8332aa7b88cd28011f57e0179a75aede18f6e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.38.0 to ^0.39.0
+
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.37.0...gcds-components-react-v0.38.0) (2025-07-09)
 
 

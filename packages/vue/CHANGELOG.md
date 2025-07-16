@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.38.0...gcds-components-vue-v0.39.0) (2025-07-16)
+
+
+### :rocket: New Features
+
+* **gcds-input:** Add native HTML attributes and validation ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.38.0 to ^0.39.0
+
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.37.0...gcds-components-vue-v0.38.0) (2025-07-09)
 
 ### Patch
