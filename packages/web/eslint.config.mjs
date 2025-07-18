@@ -4,8 +4,10 @@ import eslintjsx from 'eslint-plugin-jsx-a11y'
 // import eslintprettier from 'eslint-plugin-prettier/recommended'
 import eslintstorybook from 'eslint-plugin-storybook'
 import tseslint from 'typescript-eslint'
+// import eslintn from 'eslint-plugin-n'
+import { defineConfig } from "eslint/config";
 
-export default [
+export default defineConfig([
   {
     ignores: [
       'node_modules/',
@@ -52,8 +54,13 @@ export default [
     languageOptions: {
       globals: {
         ...globals.node
-      }
+      },
     },
+
+    // extends: [
+    //   eslintn.configs['flat/recommended'],
+    // ],
+    
     plugins: {
       tseslint
     },
@@ -93,4 +100,4 @@ export default [
     }
   },
   // eslintprettier
-];
+]);
