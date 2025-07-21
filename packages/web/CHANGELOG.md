@@ -1,23 +1,186 @@
 # Changelog
 
-## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0) (2025-06-04)
-
+## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.37.0...gcds-components-v0.38.0) (2025-07-09)
 
 ### :rocket: New Features
 
-* Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
-
+- **gcds-footer**: changes to footer links ([#898](https://github.com/cds-snc/gcds-components/issues/898)) ([b9b7f3f](https://github.com/cds-snc/gcds-components/commit/b9b7f3f2f312eae64113ec2e1c9b61b8de0e10b5))
 
 ### :bug: :wrench: Bug Fixes
 
-* align structural markup for link and search with GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
-* SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
-* update installation instructions to remove outdated file ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
+- **gcds-file-uploader:** emit missing gcdsChange/change event ([#896](https://github.com/cds-snc/gcds-components/issues/896)) ([1e827b8](https://github.com/cds-snc/gcds-components/commit/1e827b85525968ede197ac3f51a9da21c34608f0))
+- **gcds-button**: reflect `disabled` prop to support :host([disabled]) styles ([#894](https://github.com/cds-snc/gcds-components/issues/894)) ([b7c74c0](https://github.com/cds-snc/gcds-components/commit/b7c74c06d5a86f3baa2e7f16b07b9e41a37bb7fe))
 
+## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.36.0...gcds-components-v0.37.0) (2025-06-26)
+
+### :rocket: New Features
+
+- update stencil and stencil output targets ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+
+### :bug: :wrench: Bug Fixes
+
+- nav-group dropdown alignment within top-nav ([#886](https://github.com/cds-snc/gcds-components/issues/886)) ([af84659](https://github.com/cds-snc/gcds-components/commit/af846591126f649ddc8d84d7c2f6963abf63fa36))
+- update installation instructions to remove outdated file ([9c7d76c](https://github.com/cds-snc/gcds-components/commit/9c7d76c37fcc3772f70bd6f4dc6e3354122adaa1))
+
+## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0) (2025-06-17)
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-checkboxes:** Add logic to make sure a prechecked checkbox's value is removed on change ([#878](https://github.com/cds-snc/gcds-components/issues/878)) ([10ac050](https://github.com/cds-snc/gcds-components/commit/10ac050f4642e6399a9901054f0754dc8a2383ed))
+- **gcds-card:** Remove redundant z-index from card and fix focus state ([#879](https://github.com/cds-snc/gcds-components/issues/879)) ([3a284d6](https://github.com/cds-snc/gcds-components/commit/3a284d65e41b06580bf250d56e85bd5c9e72ecbf))
+
+### :arrows_counterclockwise: Code Refactoring
+
+Refactor form validation and validators in the GC Design System components to allow more descriptive error messages. Validators will also take validators written in the old format and convert them into the new format to not produce any breaking changes for teams who have written their own validators.
+
+- Refactor form validators to allow more descriptive error messages ([#846](https://github.com/cds-snc/gcds-components/issues/846)) ([bdf945e](https://github.com/cds-snc/gcds-components/commit/bdf945eba33c51ceec0c4be526ecbe77ad664763))
+
+#### Changes
+
+- Validators now only have validate which returns an object of `{ valid: boolean, reasons: { en: string, fr: string }, errors?: object }`.
+- All form components have been updated to have `validate-on` set to `blur` by default
+- Tests have been added for each form component to test default validation, a custom validator and a custom validator in the old format.
+
+##### Old implementation
+
+Custom validator using the old implementation to allow validation of `min length`, `max length` or `value` between `min` and `max` for the `gcds-input` component:
+
+```
+<gcds-input
+  input-id="form-name"
+  id="text-input"
+  label="Name"
+  hint="Please enter your full name."
+  required
+></gcds-input>
+
+<script>
+  // Old implementation of validator
+  const getLengthValidator = (min, max) => {
+    // Create errorMessage object
+    let errorMessage = {};
+
+    if (min && max) {
+      errorMessage['en'] = `You must enter between ${min} and ${max} characters`;
+      errorMessage['fr'] = `French You must enter between ${min} and ${max} characters`;
+    } else if (min) {
+      errorMessage['en'] = `You must enter at least ${min} characters`;
+      errorMessage['fr'] = `French You must enter at least ${min} characters`;
+    } else if (max) {
+      errorMessage['en'] = `You must enter less than ${max} characters`;
+      errorMessage['fr'] = `French You must enter less than ${max} characters`;
+    }
+
+    return {
+      validate: value => {
+        value = value || '';
+
+        if (min && max) {
+          return min <= value.length && value.length <= max;
+        }
+
+        if (min) {
+          return min <= value.length;
+        }
+
+        if (max) {
+          return value.length <= max;
+        }
+
+        return true;
+      },
+      errorMessage,
+    };
+  };
+
+  // Get the text input
+  const textInput = document.getElementById('text-input');
+
+  // Assign the validator
+  textInput.validator = [getLengthValidator(1, 5)];
+</script>
+```
+
+##### New implementation
+
+Custom validator using the new implementation to allow validation of `min length`, `max length` or `value` between `min` and `max` for the `gcds-input` component:
+
+```
+<gcds-input
+  input-id="form-name"
+  id="text-input"
+  label="Name"
+  hint="Please enter your full name."
+  required
+></gcds-input>
+
+<script>
+  // New implementation of validator
+  const getLengthValidator = (min, max) => {
+    // Create errorMessage object
+    let errorMessage = {};
+
+    if (min && max) {
+      errorMessage['en'] = `You must enter between ${min} and ${max} characters`;
+      errorMessage['fr'] = `French You must enter between ${min} and ${max} characters`;
+    } else if (min) {
+      errorMessage['en'] = `You must enter at least ${min} characters`;
+      errorMessage['fr'] = `French You must enter at least ${min} characters`;
+    } else if (max) {
+      errorMessage['en'] = `You must enter less than ${max} characters`;
+      errorMessage['fr'] = `French You must enter less than ${max} characters`;
+    }
+
+    return {
+      validate: value => {
+        value = value || '';
+        let valid = true;
+
+        if (min && max) {
+          valid = min <= value.length && value.length <= max;
+        }
+
+        if (min) {
+          valid = min <= value.length;
+        }
+
+        if (max) {
+          valid = value.length <= max;
+        }
+
+        console.log(value, value.length, valid, min, max);
+
+        return {
+          valid,
+          reason: errorMessage,
+        };
+      },
+    };
+  }
+
+  // Get the text input
+  const textInput = document.getElementById('text-input');
+
+  // Assign the validator
+  textInput.validator = [getLengthValidator(1, 5)];
+</script>
+```
+
+## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.3...gcds-components-v0.35.0) (2025-06-04)
+
+### :rocket: New Features
+
+- Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
+
+### :bug: :wrench: Bug Fixes
+
+- align structural markup for link and search with GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
+- SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
+- update installation instructions to remove outdated file ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
 
 ### :no_entry: Remove
 
-* **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+- **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
 
 ## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.2...gcds-components-v0.34.3) (2025-05-07)
 

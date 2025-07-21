@@ -14,6 +14,7 @@ import {
 } from '@stencil/core';
 import {
   assignLanguage,
+  handleValidationResult,
   inheritAttributes,
   observerConfig,
 } from '../../utils/utils';
@@ -141,15 +142,13 @@ export class GcdsTextarea {
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -223,16 +222,14 @@ export class GcdsTextarea {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({
-        id: `#${this.textareaId}`,
-        message: `${this.label} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit({ id: `#${this.textareaId}` });
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsTextareaElement,
+      this._validator.validate(this.value),
+      this.label,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   /**
@@ -295,14 +292,11 @@ export class GcdsTextarea {
     this.validateDisabledTextarea();
     this.validateHasError();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(this.el, 'textarea');
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
+    this.validateValidator();
 
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement, [
       'placeholder',
@@ -310,12 +304,6 @@ export class GcdsTextarea {
 
     this.internals.setFormValue(this.value ? this.value : null);
     this.initialValue = this.value ? this.value : null;
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
   }
 
   render() {

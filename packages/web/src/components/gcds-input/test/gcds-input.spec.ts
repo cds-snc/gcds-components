@@ -1,8 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { GcdsInput } from '../gcds-input';
 
-// import '../../../utils/test/elementInternals.mock';
-
 describe('gcds-input', () => {
   it('renders with minimum required properties', async () => {
     const { root } = await newSpecPage({
@@ -421,6 +419,286 @@ describe('gcds-input', () => {
               part="input"
               aria-labelledby="label-for-input-with-name"
               aria-invalid="false"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input autocomplete test
+   */
+  it('renders input autocomplete', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-autocomplete" name="input-with-autocomplete-name" autocomplete="on"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-autocomplete" name="input-with-autocomplete-name" autocomplete="on">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-autocomplete" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-autocomplete"
+              name="input-with-autocomplete-name"
+              part="input"
+              aria-labelledby="label-for-input-with-autocomplete"
+              aria-invalid="false"
+              autocomplete="on"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input autofocus test
+   */
+  it('renders input autofocus', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-autofocus" name="input-with-autofocus-name" autofocus/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-autofocus" name="input-with-autofocus-name" autofocus>
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-autofocus" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-autofocus"
+              name="input-with-autofocus-name"
+              part="input"
+              aria-labelledby="label-for-input-with-autofocus"
+              aria-invalid="false"
+              autofocus
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input form test
+   */
+  it('renders input form', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-form" name="input-with-form-name" form="formId"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-form" name="input-with-form-name" form="formId">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-form" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-form"
+              name="input-with-form-name"
+              part="input"
+              aria-labelledby="label-for-input-with-form"
+              aria-invalid="false"
+              form="formId"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input max test
+   */
+  it('renders input max', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input type="number" label="Label" input-id="input-with-max" name="input-with-max-name" max="10"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input type="number" label="Label" input-id="input-with-max" name="input-with-max-name" max="10">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-max" label="Label" lang="en"></gcds-label>
+            <input
+              type="number"
+              id="input-with-max"
+              name="input-with-max-name"
+              part="input"
+              aria-labelledby="label-for-input-with-max"
+              aria-invalid="false"
+              max="10"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input min test
+   */
+  it('renders input min', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input type="number" label="Label" input-id="input-with-min" name="input-with-min-name" min="10"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input type="number" label="Label" input-id="input-with-min" name="input-with-min-name" min="10">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-min" label="Label" lang="en"></gcds-label>
+            <input
+              type="number"
+              id="input-with-min"
+              name="input-with-min-name"
+              part="input"
+              aria-labelledby="label-for-input-with-min"
+              aria-invalid="false"
+              min="10"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input minlength test
+   */
+  it('renders input minlength', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-minlength" name="input-with-minlength-name" minlength="3"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-minlength" name="input-with-minlength-name" minlength="3">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-minlength" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-minlength"
+              name="input-with-minlength-name"
+              part="input"
+              aria-labelledby="label-for-input-with-minlength"
+              aria-invalid="false"
+              minlength="3"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input maxlength test
+   */
+  it('renders input maxlength', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-maxlength" name="input-with-maxlength-name" maxlength="6"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-maxlength" name="input-with-maxlength-name" maxlength="6">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-maxlength" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-maxlength"
+              name="input-with-maxlength-name"
+              part="input"
+              aria-labelledby="label-for-input-with-maxlength"
+              aria-invalid="false"
+              maxlength="6"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input pattern test
+   */
+  it('renders input pattern', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-pattern" name="input-with-pattern-name" pattern="[a-zA-Z0-9]{3,5}"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-pattern" name="input-with-pattern-name" pattern="[a-zA-Z0-9]{3,5}">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-pattern" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-pattern"
+              name="input-with-pattern-name"
+              part="input"
+              aria-labelledby="label-for-input-with-pattern"
+              aria-invalid="false"
+              pattern="[a-zA-Z0-9]{3,5}"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input step test
+   */
+  it('renders input step', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input type="number" label="Label" input-id="input-with-step" name="input-with-step-name" step="10"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input type="number" label="Label" input-id="input-with-step" name="input-with-step-name" step="10">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-step" label="Label" lang="en"></gcds-label>
+            <input
+              type="number"
+              id="input-with-step"
+              name="input-with-step-name"
+              part="input"
+              aria-labelledby="label-for-input-with-step"
+              aria-invalid="false"
+              step="10"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
+   * Input readonly test
+   */
+  it('renders input readonly', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-readonly" name="input-with-readonly-name" readonly/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-readonly" name="input-with-readonly-name" readonly>
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-readonly" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-readonly"
+              name="input-with-readonly-name"
+              part="input"
+              aria-labelledby="label-for-input-with-readonly"
+              aria-invalid="false"
+              readonly
             />
           </div>
         </mock:shadow-root>

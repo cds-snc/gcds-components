@@ -1,1 +1,1 @@
-export * from '../src/components/stencil-generated';
+export * from './components';

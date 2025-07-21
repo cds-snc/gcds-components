@@ -6,26 +6,47 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
+import {
+  vueComponentModels,
+  angularValueAccessorBindings,
+} from './src/utils/config/config';
+const customElementsDir = 'dist/components';
+
 export const config: Config = {
   namespace: 'gcds',
   globalStyle: 'src/assets/css/global.css',
   srcDir: './src',
   outputTargets: [
     reactOutputTarget({
-      componentCorePackage: '@cdssnc/gcds-components',
-      proxiesFile: '../react/src/components/stencil-generated/index.ts',
-      includeDefineCustomElements: true,
+      outDir: '../react/lib/',
+      customElementsDir,
     }),
+    // TODO: Configure a SSR friendly react output within @cdssnc/gcds-components-react
+    // reactOutputTarget({
+    //   outDir: '../react/ssr/',
+    //   hydrateModule: '@cdssnc/gcds-components/hydrate',
+    //   customElementsDir,
+    // }),
+    // TODO: Configure a standalone output within @cdssnc/gcds-components-angular
     angularOutputTarget({
       // outputType should be set to 'component' for Stencil projects using the dist output. Otherwise if using the custom elements output, outputType should be set to 'scam' or 'standalone'.
       outputType: 'component',
       componentCorePackage: '@cdssnc/gcds-components',
       directivesProxyFile: '../angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular/src/lib/stencil-generated/index.ts',
+      valueAccessorConfigs: angularValueAccessorBindings,
+      inlineProperties: true,
     }),
     vueOutputTarget({
       componentCorePackage: '@cdssnc/gcds-components',
       proxiesFile: '../vue/lib/components.ts',
+      includeImportCustomElements: true,
+      includePolyfills: false,
+      includeDefineCustomElements: false,
+      // TODO: Configure the vue package to work in SSR environments
+      // hydrateModule: '@cdssnc/gcds-components/hydrate',
+      componentModels: vueComponentModels,
+      customElementsDir,
     }),
     {
       type: 'dist',
@@ -35,6 +56,9 @@ export const config: Config = {
     {
       // Copy font assets from 'assets' folder to 'dist' folder to ensure they are included in the build output.
       type: 'dist-custom-elements',
+      customElementsExportBehavior: 'single-export-module',
+      minify: true,
+      externalRuntime: false,
       copy: [
         {
           src: 'assets/fonts/**/*',
@@ -48,6 +72,11 @@ export const config: Config = {
     },
     {
       type: 'dist-hydrate-script',
+    },
+    {
+      type: 'www',
+      serviceWorker: null,
+      copy: [{ src: '**/*.e2e.html' }],
     },
   ],
   plugins: [
@@ -66,6 +95,8 @@ export const config: Config = {
   validatePrimaryPackageOutputTarget: true,
   extras: {
     enableImportInjection: true,
-    experimentalSlotFixes: true
+    experimentalScopedSlotChanges: true,
+    experimentalSlotFixes: true,
+    addGlobalStyleToComponents: true,
   },
 };

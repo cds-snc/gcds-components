@@ -1,0 +1,50 @@
+diff --git a/node_modules/@stencil/core/mock-doc/index.cjs b/node_modules/@stencil/core/mock-doc/index.cjs
+index b8beb06..9bde5b5 100644
+--- a/node_modules/@stencil/core/mock-doc/index.cjs
++++ b/node_modules/@stencil/core/mock-doc/index.cjs
+@@ -6807,16 +6807,10 @@ var MockNodeList = class {
+ };
+ var MockElement = class extends MockNode2 {
+   attachInternals() {
+-    return new Proxy({}, {
+-      get: function(_target, prop, _receiver) {
+-        if ("process" in globalThis && globalThis.process.env.__STENCIL_SPEC_TESTS__) {
+-          console.error(
+-            `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-  Testing components with ElementInternals is fully supported in e2e tests.`
+-          );
+-        }
+-      }
+-    });
++    return {
++      setFormValue: (value) => { },
++      setValidity: (value) => {}
++    };
+   }
+   constructor(ownerDocument, nodeName, namespaceURI = null) {
+     super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
+diff --git a/node_modules/@stencil/core/mock-doc/index.js b/node_modules/@stencil/core/mock-doc/index.js
+index dc74c34..5de978c 100644
+--- a/node_modules/@stencil/core/mock-doc/index.js
++++ b/node_modules/@stencil/core/mock-doc/index.js
+@@ -6754,16 +6754,10 @@ var MockNodeList = class {
+ };
+ var MockElement = class extends MockNode2 {
+   attachInternals() {
+-    return new Proxy({}, {
+-      get: function(_target, prop, _receiver) {
+-        if ("process" in globalThis && globalThis.process.env.__STENCIL_SPEC_TESTS__) {
+-          console.error(
+-            `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-  Testing components with ElementInternals is fully supported in e2e tests.`
+-          );
+-        }
+-      }
+-    });
++    return {
++      setFormValue: (value) => { },
++      setValidity: () => {}
++    };
+   }
+   constructor(ownerDocument, nodeName, namespaceURI = null) {
+     super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);

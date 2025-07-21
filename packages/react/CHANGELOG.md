@@ -1,23 +1,60 @@
 # Changelog
 
-## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.34.3...gcds-components-react-v0.35.0) (2025-06-04)
+## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.37.0...gcds-components-react-v0.38.0) (2025-07-09)
 
 
-### :rocket: New Features
+### Patch
 
-* Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
-
-
-### :no_entry: Remove
-
-* **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+* **gcds-components-react:** Synchronize GCDS Components versions
 
 
 ### Dependencies
 
 * The following workspace dependencies were updated
   * dependencies
-    * @cdssnc/gcds-components bumped from ^0.34.3 to ^0.35.0
+    * @cdssnc/gcds-components bumped from ^0.37.0 to ^0.38.0
+
+## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.36.0...gcds-components-react-v0.37.0) (2025-06-26)
+
+
+### :rocket: New Features
+
+- update stencil and stencil output targets ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.36.0 to ^0.37.0
+
+## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.35.0...gcds-components-react-v0.36.0) (2025-06-17)
+
+### Patch
+
+- **gcds-components-react:** Synchronize GCDS Components versions
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.35.0 to ^0.36.0
+
+## [0.35.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.34.3...gcds-components-react-v0.35.0) (2025-06-04)
+
+### :rocket: New Features
+
+- Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
+
+### :no_entry: Remove
+
+- **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.34.3 to ^0.35.0
 
 ## [0.34.3](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.34.2...gcds-components-react-v0.34.3) (2025-05-07)
 

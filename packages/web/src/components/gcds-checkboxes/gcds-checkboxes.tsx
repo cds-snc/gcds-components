@@ -19,6 +19,7 @@ import {
   logError,
   handleErrors,
   isValid,
+  handleValidationResult,
 } from '../../utils/utils';
 import {
   Validator,
@@ -41,7 +42,7 @@ import {
   formAssociated: true,
 })
 export class GcdsCheckboxes {
-  @Element() el: HTMLInputElement;
+  @Element() el: HTMLGcdsCheckboxesElement;
 
   @AttachInternals()
   internals: ElementInternals;
@@ -181,15 +182,13 @@ export class GcdsCheckboxes {
 
   @Watch('validator')
   validateValidator() {
-    if (this.validator && !this.validateOn) {
-      this.validateOn = 'blur';
-    }
+    this._validator = getValidator(this.validator);
   }
 
   /**
    * Set event to call validator
    */
-  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other';
+  @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -270,15 +269,14 @@ export class GcdsCheckboxes {
    */
   @Method()
   async validate() {
-    if (!this._validator.validate(this.value) && this._validator.errorMessage) {
-      this.errorMessage = this._validator.errorMessage[this.lang];
-      this.gcdsError.emit({
-        message: `${this.isGroup ? this.legend : this.optionsArr[0].label} - ${this.errorMessage}`,
-      });
-    } else {
-      this.errorMessage = '';
-      this.gcdsValid.emit();
-    }
+    handleValidationResult(
+      this.el as HTMLGcdsCheckboxesElement,
+      this._validator.validate(this.value),
+      this.isGroup ? this.legend : this.optionsArr[0].label,
+      this.gcdsError,
+      this.gcdsValid,
+      this.lang,
+    );
   }
 
   /*
@@ -357,13 +355,14 @@ export class GcdsCheckboxes {
     this.validateDisabledCheckbox();
     this.validateHasError();
     this.validateErrorMessage();
-    this.validateValidator();
 
     // Assign required validator if needed
     requiredValidator(
       this.el,
       this.isGroup ? 'checkboxGroup' : 'checkboxSingle',
     );
+
+    this.validateValidator();
 
     // Assign checkbox hint to component hint if not group
     if (
@@ -375,22 +374,12 @@ export class GcdsCheckboxes {
       this.hint = this.optionsArr[0].hint;
     }
 
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
-
     if (!valid) {
       logError('gcds-checkboxes', this.errors);
     }
 
     this.initialState = this.value;
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
-  }
-
-  componentWillUpdate() {
-    if (this.validator) {
-      this._validator = getValidator(this.validator);
-    }
   }
 
   async componentDidUpdate() {
@@ -406,6 +395,15 @@ export class GcdsCheckboxes {
     if (e.target.checked) {
       this.value = [...(this.value as Array<string>), e.target.value];
     } else {
+      // Modify options to prevent adding prechecked values when unchecking option
+      this.options = (
+        typeof this.options === 'string'
+          ? JSON.parse(this.options as string)
+          : (this.options as CheckboxObject[])
+      ).map(check =>
+        check.value === e.target.value ? { ...check, checked: false } : check,
+      );
+
       // Remove value from value array
       this.value = (this.value as Array<string>).filter(
         item => item !== e.target.value,

@@ -43,6 +43,39 @@ Place the following code in the `styles.scss` file of your app.
 @import '../node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css';
 ```
 
+## Using GC Design System components with `RouterLink`
+
+To use `routerLink` with GC Design System components simply add the `routerLink` attribute to the elements as you normally would. With components that contains multiple links within their shadow-dom (e.g., `gcds-pagination`, `gcds-footer`) and not one clear path when selected, add `gcdsRotuerLink` to allow the component to interface with the Angular router.
+
+### RouterLink and gcdsRouterLink examples
+
+#### RouterLink example
+
+```html
+  <gcds-link
+    href="/home"
+    routerLink="/home"
+  >
+    Home
+  </gcds-link>
+```
+
+#### GcdsRouterLink example
+
+```html
+  <!-- GCDS Router link example -->
+  <gcds-pagination
+    display="simple"
+    label="Pagination"
+    previous-href="/page1"
+    previous-label="Page 1"
+    next-href="/page3"
+    next-label="Page 3"
+    gcdsRouterLink
+  >
+  </gcds-pagination>
+```
+
 ## How to contribute
 
 If you are interested in contributing to GC Design System Components, please read our [contributing guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
@@ -95,6 +128,38 @@ Insérez le code suivant dans le fichier `styles.scss` de votre application :
 
 ``` css
 @import '../node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css';
+```
+
+## Utilisation des composants du Système de design GC avec `RouterLink`
+
+Pour utiliser `routerLink` avec les composants du système de design GC, ajoutez simplement l'attribut `routerLink` aux éléments comme vous le feriez normalement. Avec des composants qui contiennent plusieurs liens dans leur shadow-dom (par exemple, `gcds-pagination`, `gcds-footer`) et pas un chemin clair lorsqu'ils sont sélectionnés, ajoutez `gcdsRotuerLink` pour permettre au composant de s'interfacer avec le routeur Angular.
+
+### Exemples de RouterLink et gcdsRouterLink
+
+#### Exemple de RouterLink
+
+```html
+  <gcds-link
+    href="/accueil"
+    routerLink="/accueil"
+  >
+    Accueil
+  </gcds-link>
+```
+
+#### Exemple de GcdsRouterLink
+
+```html
+  <gcds-pagination
+    display="simple"
+    label="Pagination"
+    previous-href="/page1"
+    previous-label="Page 1"
+    next-href="/page3"
+    next-label="Page 3"
+    gcdsRouterLink
+  >
+  </gcds-pagination>
 ```
 
 ## Apportez votre contribution

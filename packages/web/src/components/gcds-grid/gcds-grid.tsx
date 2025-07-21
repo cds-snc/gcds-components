@@ -105,7 +105,7 @@ export class GcdsGrid {
    * are not defined. Option to set different spacing for desktop
    * with gap-desktop and for tablet with gap-tablet.
    */
-  @Prop() gap?: GridGapValues = '300';
+  @Prop({ mutable: true }) gap?: GridGapValues = '300';
 
   @Watch('gap')
   validateGap(newValue: string) {
@@ -121,7 +121,7 @@ export class GcdsGrid {
    * grid container for tablet screens. If gap-desktop is not defined, gap-tablet
    * will be used to define the spacing for desktop screens as well.
    */
-  @Prop() gapTablet?: GridGapValues;
+  @Prop({ mutable: true }) gapTablet?: GridGapValues;
 
   @Watch('gapTablet')
   validateGapTablet(newValue: string) {
@@ -139,7 +139,7 @@ export class GcdsGrid {
    * Provides option to set horizontal and vertical spacing between items
    * in a grid container for desktop screens.
    */
-  @Prop() gapDesktop?: GridGapValues;
+  @Prop({ mutable: true }) gapDesktop?: GridGapValues;
 
   @Watch('gapDesktop')
   validateGapDesktop(newValue: string) {

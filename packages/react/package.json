@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components-react",
-  "version": "0.35.0",
+  "version": "0.38.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "React wrapper for gcds-components",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -16,11 +16,21 @@
   },
   "scripts": {
     "build": "npm run tsc",
-    "tsc": "tsc -p ."
+    "tsc": "tsc -p . --outDir ./dist"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./gcds.css": {
+      "import": "./gcds.css",
+      "require": "./gcds.css"
+    }
+  },
   "directories": {
     "lib": "lib"
   },
@@ -29,7 +39,8 @@
     "gcds.css"
   ],
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.35.0"
+    "@cdssnc/gcds-components": "^0.38.0",
+    "@stencil/react-output-target": "^1.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.48",

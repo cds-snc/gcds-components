@@ -1,5 +1,10 @@
 import path from 'path';
-import type { CompilerCtx, ComponentCompilerMeta, ComponentCompilerProperty, Config } from '@stencil/core/internal';
+import type {
+  CompilerCtx,
+  ComponentCompilerMeta,
+  ComponentCompilerProperty,
+  Config,
+} from '@stencil/core/internal';
 import type { OutputTargetAngular, PackageJSON } from './types';
 import {
   relativeImport,
@@ -11,7 +16,10 @@ import {
   isOutputTypeCustomElementsBuild,
   OutputTypes,
 } from './utils';
-import { createAngularComponentDefinition, createComponentTypeDefinition } from './generate-angular-component';
+import {
+  createAngularComponentDefinition,
+  createComponentTypeDefinition,
+} from './generate-angular-component';
 import { generateAngularDirectivesFile } from './generate-angular-directives-file';
 import generateValueAccessors from './generate-value-accessors';
 import { generateAngularModuleForComponent } from './generate-angular-modules';
@@ -20,32 +28,62 @@ export async function angularDirectiveProxyOutput(
   compilerCtx: CompilerCtx,
   outputTarget: OutputTargetAngular,
   components: ComponentCompilerMeta[],
-  config: Config
+  config: Config,
 ) {
-  const filteredComponents = getFilteredComponents(outputTarget.excludeComponents, components);
+  const filteredComponents = getFilteredComponents(
+    outputTarget.excludeComponents,
+    components,
+  );
   const rootDir = config.rootDir as string;
   const pkgData = await readPackageJson(config, rootDir);
 
-  const finalText = generateProxies(filteredComponents, pkgData, outputTarget, config.rootDir as string);
+  const finalText = generateProxies(
+    filteredComponents,
+    pkgData,
+    outputTarget,
+    config.rootDir as string,
+  );
 
   await Promise.all([
     compilerCtx.fs.writeFile(outputTarget.directivesProxyFile, finalText),
     copyResources(config, outputTarget),
-    generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget),
-    generateValueAccessors(compilerCtx, filteredComponents, outputTarget, config),
+    generateAngularDirectivesFile(
+      compilerCtx,
+      filteredComponents,
+      outputTarget,
+    ),
+    generateValueAccessors(
+      compilerCtx,
+      filteredComponents,
+      outputTarget,
+      config,
+    ),
   ]);
 }
 
-function getFilteredComponents(excludeComponents: string[] = [], cmps: ComponentCompilerMeta[]) {
-  return sortBy(cmps, (cmp) => cmp.tagName).filter((c) => !excludeComponents.includes(c.tagName) && !c.internal);
+function getFilteredComponents(
+  excludeComponents: string[] = [],
+  cmps: ComponentCompilerMeta[],
+) {
+  return sortBy(cmps, cmp => cmp.tagName).filter(
+    c => !excludeComponents.includes(c.tagName) && !c.internal,
+  );
 }
 
-async function copyResources(config: Config, outputTarget: OutputTargetAngular) {
+async function copyResources(
+  config: Config,
+  outputTarget: OutputTargetAngular,
+) {
   if (!config.sys || !config.sys.copy || !config.sys.glob) {
-    throw new Error('stencil is not properly initialized at this step. Notify the developer');
+    throw new Error(
+      'stencil is not properly initialized at this step. Notify the developer',
+    );
   }
   const srcDirectory = path.join(__dirname, '..', 'angular-component-lib');
-  const destDirectory = path.join(path.dirname(outputTarget.directivesProxyFile), 'angular-component-lib');
+  const destDirectory = path.join(
+    path.dirname(outputTarget.directivesProxyFile),
+    'angular-component-lib',
+  );
 
   return config.sys.copy(
     [
@@ -53,10 +91,11 @@ async function copyResources(config: Config, outputTarget: OutputTargetAngular) 
         src: srcDirectory,
         dest: destDirectory,
         keepDirStructure: false,
+        ignore: [],
         warn: false,
       },
     ],
-    srcDirectory
+    srcDirectory,
   );
 }
 
@@ -64,21 +103,32 @@ export function generateProxies(
   components: ComponentCompilerMeta[],
   pkgData: PackageJSON,
   outputTarget: OutputTargetAngular,
-  rootDir: string
+  rootDir: string,
 ) {
   const distTypesDir = path.dirname(pkgData.types);
   const dtsFilePath = path.join(rootDir, distTypesDir, GENERATED_DTS);
   const { outputType } = outputTarget;
-  const componentsTypeFile = relativeImport(outputTarget.directivesProxyFile, dtsFilePath, '.d.ts');
+  const componentsTypeFile = relativeImport(
+    outputTarget.directivesProxyFile,
+    dtsFilePath,
+    '.d.ts',
+  );
   const includeSingleComponentAngularModules = outputType === OutputTypes.Scam;
   const isCustomElementsBuild = isOutputTypeCustomElementsBuild(outputType!);
   const isStandaloneBuild = outputType === OutputTypes.Standalone;
-  const includeOutputImports = components.some((component) => component.events.some((event) => !event.internal));
+  const includeOutputImports = components.some(component =>
+    component.events.some(event => !event.internal),
+  );
 
   /**
    * The collection of named imports from @angular/core.
    */
-  const angularCoreImports = ['ChangeDetectionStrategy', 'ChangeDetectorRef', 'Component', 'ElementRef'];
+  const angularCoreImports = [
+    'ChangeDetectionStrategy',
+    'ChangeDetectorRef',
+    'Component',
+    'ElementRef',
+  ];
 
   if (includeOutputImports) {
     angularCoreImports.push('EventEmitter');
@@ -114,7 +164,9 @@ ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n
     let importLocation = outputTarget.componentCorePackage
       ? normalizePath(outputTarget.componentCorePackage)
       : normalizePath(componentsTypeFile);
-    importLocation += isCustomElementsBuild ? `/${outputTarget.customElementsDir}` : '';
+    importLocation += isCustomElementsBuild
+      ? `/${outputTarget.customElementsDir}`
+      : '';
     return `import ${isCustomElementsBuild ? 'type ' : ''}{ ${IMPORT_TYPES} } from '${importLocation}';\n`;
   };
 
@@ -128,12 +180,15 @@ ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n
    * IonButton would be imported as IonButtonCmp so as to not conflict with the
    * IonButton Angular Component that takes in the Web Component as a parameter.
    */
-  if (isCustomElementsBuild && outputTarget.componentCorePackage !== undefined) {
-    const cmpImports = components.map((component) => {
+  if (
+    isCustomElementsBuild &&
+    outputTarget.componentCorePackage !== undefined
+  ) {
+    const cmpImports = components.map(component => {
       const pascalImport = dashToPascalCase(component.tagName);
 
       return `import { defineCustomElement as define${pascalImport} } from '${normalizePath(
-        outputTarget.componentCorePackage
+        outputTarget.componentCorePackage,
       )}/${outputTarget.customElementsDir}/${component.tagName}.js';`;
     });
 
@@ -142,7 +197,8 @@ ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n
 
   const proxyFileOutput = [];
 
-  const filterInternalProps = (prop: { name: string; internal: boolean }) => !prop.internal;
+  const filterInternalProps = (prop: { name: string; internal: boolean }) =>
+    !prop.internal;
   const mapPropName = (prop: { name: string }) => prop.name;
 
   const { componentCorePackage, customElementsDir } = outputTarget;
@@ -167,16 +223,22 @@ ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n
     const outputs: string[] = [];
 
     if (cmpMeta.events) {
-      outputs.push(...cmpMeta.events.filter(filterInternalProps).map(mapPropName));
+      outputs.push(
+        ...cmpMeta.events.filter(filterInternalProps).map(mapPropName),
+      );
     }
 
     const methods: string[] = [];
 
     if (cmpMeta.methods) {
-      methods.push(...cmpMeta.methods.filter(filterInternalProps).map(mapPropName));
+      methods.push(
+        ...cmpMeta.methods.filter(filterInternalProps).map(mapPropName),
+      );
     }
 
-    const inlineComponentProps = outputTarget.inlineProperties ? internalProps : [];
+    const inlineComponentProps = outputTarget.inlineProperties
+      ? internalProps
+      : [];
 
     /**
      * For each component, we need to generate:
@@ -191,7 +253,7 @@ ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n
       methods,
       isCustomElementsBuild,
       isStandaloneBuild,
-      inlineComponentProps
+      inlineComponentProps,
     );
     const moduleDefinition = generateAngularModuleForComponent(cmpMeta.tagName);
     const componentTypeDefinition = createComponentTypeDefinition(
@@ -199,7 +261,7 @@ ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n
       tagNameAsPascal,
       cmpMeta.events,
       componentCorePackage,
-      customElementsDir
+      customElementsDir,
     );
 
     proxyFileOutput.push(componentDefinition, '\n');
@@ -209,7 +271,12 @@ ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n
     proxyFileOutput.push(componentTypeDefinition, '\n');
   }
 
-  const final: string[] = [imports, typeImports, sourceImports, ...proxyFileOutput];
+  const final: string[] = [
+    imports,
+    typeImports,
+    sourceImports,
+    ...proxyFileOutput,
+  ];
 
   return final.join('\n') + '\n';
 }
