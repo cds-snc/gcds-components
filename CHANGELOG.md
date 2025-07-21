@@ -2,6 +2,46 @@
 
 # Changelog
 
+## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.38.0...gcds-components-v0.39.0)
+
+Released on 2025-07-21
+
+### :rocket: New Features
+
+- **gcds-input:** Add native HTML attributes and validation ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
+
+#### New gcds-input properties
+
+| Property               | Attribute       | Description                                                                                                                                                             | Type                                                               | Default     |
+| ---------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
+| `autofocus`            | `autofocus`     | If true, the input will be focused on component render                                                                                                                  | `boolean`                                                          | `undefined` |
+| `form`                 | `form`          | The ID of the form that the input field belongs to.                                                                                                                     | `string`                                                           | `undefined` |
+| `max`                  | `max`           | The maximum value that the input field can accept. Only applies to number input type.                                                                                   | `number \| string`                                                 | `undefined` |
+| `maxlength`            | `maxlength`     | The maximum number of characters that the input field can accept.                                                                                                       | `number`                                                           | `undefined` |
+| `min`                  | `min`           | The minimum value that the input field can accept. Only applies to number input type.                                                                                   | `number \| string`                                                 | `undefined` |
+| `minlength`            | `minlength`     | The minimum number of characters that the input field can accept.                                                                                                       | `number`                                                           | `undefined` |
+| `pattern`              | `pattern`       | Specifies a regular expression the form control's value should match. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern                         | `string`                                                           | `undefined` |
+| `readonly`             | `readonly`      | If true, the input field cannot be modified.                                                                                                                            | `boolean`                                                          | `undefined` |
+| `step`                 | `step`          | A number that specifies the granularity that the value must adhere to. Valid for number type. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step | `"any" \| number`                                                  | `undefined` |
+| `validity`             | `validity`      | Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.                                                 | `ValidityState`                                                    | `undefined` |
+
+#### New gcds-input methods
+
+`gcds-input` has also been expanded to work with the HTML [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) to provide developers with more options when validating `gcds-input`s and new methods to check current validation state.
+
+| Name    | Description | Returns |
+| -------- | ------- | ------- |
+| `checkValidity()`  | Check the validity of gcds-input   |  boolean |
+| `getValidationMessage()` | Get validationMessage of gcds-input     |  string  |
+
+### :bug: :wrench: Bug Fixes
+
+- **@cdssnc/gcds-components-react:** React output package.json configuration ([#901](https://github.com/cds-snc/gcds-components/issues/901)) ([1ee8332](https://github.com/cds-snc/gcds-components/commit/1ee8332aa7b88cd28011f57e0179a75aede18f6e))
+
+### :no_entry: Remove
+
+- **gcds-input:** Removed `placeholder` from `inheritedAttributes` function ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
+
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.37.0...gcds-components-v0.38.0)
 
 Released on: 2025-07-09

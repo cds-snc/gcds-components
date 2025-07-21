@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.38.0...gcds-components-v0.39.0) (2025-07-16)
+
+
+### :rocket: New Features
+
+* **gcds-input:** Add native HTML attributes and validation ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
+
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.37.0...gcds-components-v0.38.0) (2025-07-09)
 
 ### :rocket: New Features
