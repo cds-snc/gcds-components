@@ -2,6 +2,19 @@
 
 # Changelog
 
+## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.38.0...gcds-components-v0.39.0)
+
+Released on 2025-07-21
+
+### :rocket: New Features
+
+- **gcds-input:** Add native HTML attributes and validation ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
+- **gcds-input:** Removed `placeholder` from `inheritedAttributes` function ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
+
+### :bug: :wrench: Bug Fixes
+
+- **@cdssnc/gcds-components-react:** React output package.json configuration ([#901](https://github.com/cds-snc/gcds-components/issues/901)) ([1ee8332](https://github.com/cds-snc/gcds-components/commit/1ee8332aa7b88cd28011f57e0179a75aede18f6e))
+
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.37.0...gcds-components-v0.38.0)
 
 Released on: 2025-07-09
