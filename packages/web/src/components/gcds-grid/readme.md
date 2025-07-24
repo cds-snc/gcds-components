@@ -28,6 +28,13 @@
 | `tag`            | `tag`              | Set tag for grid container                                                                                                                                                                                                                  | `"article" \| "aside" \| "div" \| "dl" \| "main" \| "nav" \| "ol" \| "section" \| "ul"`                                                        | `'div'`     |
 
 
+## Slots
+
+| Slot | Description                            |
+| ---- | -------------------------------------- |
+|      | Slot for the main content of the grid. |
+
+
 ## Dependencies
 
 ### Used by
@@ -43,7 +50,7 @@
 graph TD;
   gcds-grid --> gcds-container
   gcds-verify-banner --> gcds-grid
-  style gcds-grid fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-grid fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

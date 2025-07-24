@@ -90,7 +90,8 @@ export declare interface GcdsBreadcrumbs extends Components.GcdsBreadcrumbs {}
 
 
 @ProxyCmp({
-  inputs: ['href']
+  inputs: ['href'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
   selector: 'gcds-breadcrumbs-item',
@@ -98,6 +99,7 @@ export declare interface GcdsBreadcrumbs extends Components.GcdsBreadcrumbs {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['href'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
 export class GcdsBreadcrumbsItem {
@@ -109,11 +111,25 @@ export class GcdsBreadcrumbsItem {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
-export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsItem {}
+export declare interface GcdsBreadcrumbsItem extends Components.GcdsBreadcrumbsItem {
+  /**
+   * Emitted when the link has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has been clicked. Contains the href in the event detail.
+   */
+  gcdsClick: EventEmitter<CustomEvent<string>>;
+}
 
 
 @ProxyCmp({
@@ -185,9 +201,9 @@ export class GcdsButton {
 
 export declare interface GcdsButton extends Components.GcdsButton {
   /**
-   * Emitted when the button has been clicked.
+   * Emitted when the button has been clicked. Contains the value or href in the event detail.
    */
-  gcdsClick: EventEmitter<CustomEvent<void>>;
+  gcdsClick: EventEmitter<CustomEvent<string | void>>;
   /**
    * Emitted when the button has focus.
    */
@@ -262,9 +278,9 @@ export declare interface GcdsCard extends Components.GcdsCard {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the card has been clicked.
+   * Emitted when the card has been clicked. Contains the href in the event detail.
    */
-  gcdsClick: EventEmitter<CustomEvent<void>>;
+  gcdsClick: EventEmitter<CustomEvent<string>>;
 }
 
 
@@ -346,13 +362,13 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emmitted when a checkbox has been inputted.
+   * Emmitted when a checkbox has been inputted. Contains the new value in the event detail.
    */
-  gcdsInput: EventEmitter<CustomEvent<any>>;
+  gcdsInput: EventEmitter<CustomEvent<string[]>>;
   /**
-   * Emmitted when a checkbox has been changed.
+   * Emmitted when a checkbox has been changed. Contains the new value in the event detail.
    */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<string[]>>;
   /**
    * Emitted when the input has a validation error.
    */
@@ -492,13 +508,13 @@ export declare interface GcdsDateInput extends Components.GcdsDateInput {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the element has received input.
+   * Emitted when the element has received input. Contains the new value in the event detail.
    */
-  gcdsInput: EventEmitter<CustomEvent<any>>;
+  gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when an element has changed.
+   * Emitted when an element has changed. Contains the new value in the event detail.
    */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when an element has a validation error.
    */
@@ -613,7 +629,8 @@ export declare interface GcdsErrorMessage extends Components.GcdsErrorMessage {}
 
 
 @ProxyCmp({
-  inputs: ['errorLinks', 'heading', 'listen']
+  inputs: ['errorLinks', 'heading', 'listen'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
   selector: 'gcds-error-summary',
@@ -621,6 +638,7 @@ export declare interface GcdsErrorMessage extends Components.GcdsErrorMessage {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['errorLinks', 'heading', 'listen'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
 export class GcdsErrorSummary {
@@ -640,11 +658,25 @@ export class GcdsErrorSummary {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
-export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {}
+export declare interface GcdsErrorSummary extends Components.GcdsErrorSummary {
+  /**
+   * Emitted when the link has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has been clicked.
+   */
+  gcdsClick: EventEmitter<CustomEvent<string>>;
+}
 
 
 @ProxyCmp({
@@ -768,13 +800,13 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the user has made a file selection.
+   * Emitted when the user has made a file selection. Contains the new value in the event detail.
    */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<string[]>>;
   /**
-   * Emitted when the user has uploaded a file.
+   * Emitted when the user has uploaded a file. Contains the new value in the event detail.
    */
-  gcdsInput: EventEmitter<CustomEvent<any>>;
+  gcdsInput: EventEmitter<CustomEvent<string[]>>;
   /**
    * Remove file and update value.
    */
@@ -791,7 +823,8 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
 
 
 @ProxyCmp({
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant']
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
   selector: 'gcds-footer',
@@ -799,6 +832,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
 export class GcdsFooter {
@@ -826,11 +860,25 @@ export class GcdsFooter {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
-export declare interface GcdsFooter extends Components.GcdsFooter {}
+export declare interface GcdsFooter extends Components.GcdsFooter {
+  /**
+   * Emitted when the link has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has been clicked. Contains the href in the event detail.
+   */
+  gcdsClick: EventEmitter<CustomEvent<string>>;
+}
 
 
 @ProxyCmp({
@@ -976,7 +1024,8 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
 
 
 @ProxyCmp({
-  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref']
+  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
   selector: 'gcds-header',
@@ -984,6 +1033,7 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
 export class GcdsHeader {
@@ -1007,11 +1057,25 @@ export class GcdsHeader {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
-export declare interface GcdsHeader extends Components.GcdsHeader {}
+export declare interface GcdsHeader extends Components.GcdsHeader {
+  /**
+   * Emitted when the link has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has been clicked. Contains the href in the event detail.
+   */
+  gcdsClick: EventEmitter<CustomEvent<string>>;
+}
 
 
 @ProxyCmp({
@@ -1263,11 +1327,11 @@ export declare interface GcdsInput extends Components.GcdsInput {
   /**
    * Emitted when the element has received input.
    */
-  gcdsInput: EventEmitter<CustomEvent<any>>;
+  gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the input has changed.
    */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the input has a validation error.
    */
@@ -1319,7 +1383,8 @@ export declare interface GcdsLabel extends Components.GcdsLabel {}
 
 
 @ProxyCmp({
-  inputs: ['href']
+  inputs: ['href'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
   selector: 'gcds-lang-toggle',
@@ -1327,6 +1392,7 @@ export declare interface GcdsLabel extends Components.GcdsLabel {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['href'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
 export class GcdsLangToggle {
@@ -1338,11 +1404,25 @@ export class GcdsLangToggle {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsClick']);
   }
 }
 
 
-export declare interface GcdsLangToggle extends Components.GcdsLangToggle {}
+export declare interface GcdsLangToggle extends Components.GcdsLangToggle {
+  /**
+   * Emitted when the link has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the link has been clicked. Contains the href in the event detail.
+   */
+  gcdsClick: EventEmitter<CustomEvent<string>>;
+}
 
 
 @ProxyCmp({
@@ -1414,9 +1494,9 @@ export declare interface GcdsLink extends Components.GcdsLink {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the link has been clicked.
+   * Emitted when the link has been clicked. Contains the href in the event detail.
    */
-  gcdsClick: EventEmitter<CustomEvent<void>>;
+  gcdsClick: EventEmitter<CustomEvent<string>>;
 }
 
 
@@ -1512,7 +1592,7 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
   /**
    * Emitted when the link has been clicked.
    */
-  gcdsClick: EventEmitter<CustomEvent<void>>;
+  gcdsClick: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the link has focus.
    */
@@ -1630,9 +1710,10 @@ export declare interface GcdsPagination extends Components.GcdsPagination {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the link has been clicked.
+   * Emitted when the link has been clicked. Contains the href in event detail when using simple display,
+or an object with page and href when using list display.
    */
-  gcdsClick: EventEmitter<CustomEvent<void>>;
+  gcdsClick: EventEmitter<CustomEvent<object | string>>;
 }
 
 
@@ -1737,13 +1818,13 @@ export class GcdsRadios {
 
 export declare interface GcdsRadios extends Components.GcdsRadios {
   /**
-   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
+   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
    */
-  gcdsInput: EventEmitter<CustomEvent<void>>;
+  gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when a <gcds-radios> option is checked (but not when unchecked)
+   * Emitted when a <gcds-radios> option is checked (but not when unchecked). Contains new value in event detail
    */
-  gcdsChange: EventEmitter<CustomEvent<void>>;
+  gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when <gcds-radios> has received focus
    */
@@ -1826,15 +1907,15 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   /**
    * Emitted when the search input value has gained focus.
    */
-  gcdsFocus: EventEmitter<CustomEvent<object>>;
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the search input has lost focus.
    */
-  gcdsBlur: EventEmitter<CustomEvent<object>>;
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
    * Emitted when the search form has submitted.
    */
-  gcdsSubmit: EventEmitter<CustomEvent<object>>;
+  gcdsSubmit: EventEmitter<CustomEvent<string>>;
 }
 
 
@@ -1910,11 +1991,11 @@ export declare interface GcdsSelect extends Components.GcdsSelect {
   /**
    * Emitted when the select value has changed.
    */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the select has received input.
    */
-  gcdsInput: EventEmitter<CustomEvent<any>>;
+  gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the select has focus.
    */
@@ -2198,11 +2279,11 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
   /**
    * Emitted when the textarea has changed.
    */
-  gcdsChange: EventEmitter<CustomEvent<any>>;
+  gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the textarea has received input.
    */
-  gcdsInput: EventEmitter<CustomEvent<any>>;
+  gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the textarea has a validation error.
    */

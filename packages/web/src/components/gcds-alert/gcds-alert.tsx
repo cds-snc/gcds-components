@@ -11,6 +11,9 @@ import {
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * @slot - Slot for the main content of the alert.
+ */
 @Component({
   tag: 'gcds-alert',
   styleUrl: 'gcds-alert.css',

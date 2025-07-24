@@ -1,5 +1,8 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
+/**
+ * @slot - Slot for the hint content.
+ */
 @Component({
   tag: 'gcds-hint',
   styleUrl: 'gcds-hint.css',

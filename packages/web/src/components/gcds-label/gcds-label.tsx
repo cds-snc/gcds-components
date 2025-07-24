@@ -2,6 +2,9 @@ import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * @slot - Slot for the label content.
+ */
 @Component({
   tag: 'gcds-label',
   styleUrl: 'gcds-label.css',

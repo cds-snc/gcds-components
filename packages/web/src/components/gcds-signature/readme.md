@@ -26,7 +26,7 @@
 graph TD;
   gcds-footer --> gcds-signature
   gcds-header --> gcds-signature
-  style gcds-signature fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-signature fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

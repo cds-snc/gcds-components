@@ -1,6 +1,9 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { SpacingValues } from '../../utils/types/spacing';
 
+/**
+ * @slot - Slot for the main content of the container.
+ */
 @Component({
   tag: 'gcds-container',
   styleUrl: 'gcds-container.css',
@@ -14,7 +17,7 @@ export class GcdsContainer {
    */
 
   /**
-  * Defines if the container has a border.
+   * Defines if the container has a border.
    */
   @Prop() border?: boolean = false;
 

@@ -13,6 +13,9 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * @slot - Slot for the link content.
+ */
 @Component({
   tag: 'gcds-link',
   styleUrl: 'gcds-link.css',
@@ -121,9 +124,9 @@ export class GcdsLink {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   /**
-   * Emitted when the link has been clicked.
+   * Emitted when the link has been clicked. Contains the href in the event detail.
    */
-  @Event() gcdsClick!: EventEmitter<void>;
+  @Event() gcdsClick!: EventEmitter<string>;
 
   /*
    * Observe lang attribute change

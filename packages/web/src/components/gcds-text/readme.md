@@ -17,6 +17,13 @@
 | `textRole`       | `text-role`       | Sets the main style of the text.                                                                                    | `"light" \| "primary" \| "secondary"`                                                                                                                                                                                                                                                  | `'primary'` |
 
 
+## Slots
+
+| Slot | Description                               |
+| ---- | ----------------------------------------- |
+|      | Slot for the content of the text element. |
+
+
 ## Shadow Parts
 
 | Part     | Description |
@@ -44,7 +51,7 @@ graph TD;
   gcds-file-uploader --> gcds-text
   gcds-hint --> gcds-text
   gcds-textarea --> gcds-text
-  style gcds-text fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-text fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

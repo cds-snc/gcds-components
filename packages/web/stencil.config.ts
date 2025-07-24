@@ -79,6 +79,13 @@ export const config: Config = {
       copy: [{ src: '**/*.e2e.html' }],
     },
   ],
+  docs: {
+    markdown: {
+      targetComponent: {
+        background: '#26374a',
+      },
+    },
+  },
   plugins: [
     postcss({
       plugins: [require('postcss-nested'), require('cssnano')],

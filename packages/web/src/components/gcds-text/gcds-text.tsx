@@ -1,6 +1,9 @@
 import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 import { SpacingValues, SpacingArray } from '../../utils/types/spacing';
 
+/**
+ * @slot - Slot for the content of the text element.
+ */
 @Component({
   tag: 'gcds-text',
   styleUrl: 'gcds-text.css',

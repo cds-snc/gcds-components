@@ -1270,6 +1270,10 @@ export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsAlertElement;
 }
+export interface GcdsBreadcrumbsItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsBreadcrumbsItemElement;
+}
 export interface GcdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsButtonElement;
@@ -1290,13 +1294,29 @@ export interface GcdsDetailsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsDetailsElement;
 }
+export interface GcdsErrorSummaryCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsErrorSummaryElement;
+}
 export interface GcdsFileUploaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsFileUploaderElement;
 }
+export interface GcdsFooterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsFooterElement;
+}
+export interface GcdsHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsHeaderElement;
+}
 export interface GcdsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsInputElement;
+}
+export interface GcdsLangToggleCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsLangToggleElement;
 }
 export interface GcdsLinkCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1354,14 +1374,27 @@ declare global {
         prototype: HTMLGcdsBreadcrumbsElement;
         new (): HTMLGcdsBreadcrumbsElement;
     };
+    interface HTMLGcdsBreadcrumbsItemElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": string;
+    }
     interface HTMLGcdsBreadcrumbsItemElement extends Components.GcdsBreadcrumbsItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLGcdsBreadcrumbsItemElement, ev: GcdsBreadcrumbsItemCustomEvent<HTMLGcdsBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLGcdsBreadcrumbsItemElement, ev: GcdsBreadcrumbsItemCustomEvent<HTMLGcdsBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsBreadcrumbsItemElement: {
         prototype: HTMLGcdsBreadcrumbsItemElement;
         new (): HTMLGcdsBreadcrumbsItemElement;
     };
     interface HTMLGcdsButtonElementEventMap {
-        "gcdsClick": void;
+        "gcdsClick": string | void;
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
@@ -1382,7 +1415,7 @@ declare global {
     interface HTMLGcdsCardElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsClick": void;
+        "gcdsClick": string;
     }
     interface HTMLGcdsCardElement extends Components.GcdsCard, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsCardElementEventMap>(type: K, listener: (this: HTMLGcdsCardElement, ev: GcdsCardCustomEvent<HTMLGcdsCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1402,8 +1435,8 @@ declare global {
         "gcdsClick": void;
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsInput": any;
-        "gcdsChange": any;
+        "gcdsInput": string[];
+        "gcdsChange": string[];
         "gcdsError": object;
         "gcdsValid": object;
     }
@@ -1430,8 +1463,8 @@ declare global {
     interface HTMLGcdsDateInputElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsInput": any;
-        "gcdsChange": any;
+        "gcdsInput": string;
+        "gcdsChange": string;
         "gcdsError": object;
         "gcdsValid": object;
     }
@@ -1480,7 +1513,20 @@ declare global {
         prototype: HTMLGcdsErrorMessageElement;
         new (): HTMLGcdsErrorMessageElement;
     };
+    interface HTMLGcdsErrorSummaryElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": string;
+    }
     interface HTMLGcdsErrorSummaryElement extends Components.GcdsErrorSummary, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsErrorSummaryElementEventMap>(type: K, listener: (this: HTMLGcdsErrorSummaryElement, ev: GcdsErrorSummaryCustomEvent<HTMLGcdsErrorSummaryElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsErrorSummaryElementEventMap>(type: K, listener: (this: HTMLGcdsErrorSummaryElement, ev: GcdsErrorSummaryCustomEvent<HTMLGcdsErrorSummaryElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsErrorSummaryElement: {
         prototype: HTMLGcdsErrorSummaryElement;
@@ -1495,8 +1541,8 @@ declare global {
     interface HTMLGcdsFileUploaderElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsChange": any;
-        "gcdsInput": any;
+        "gcdsChange": string[];
+        "gcdsInput": string[];
         "gcdsRemoveFile": any;
         "gcdsError": object;
         "gcdsValid": object;
@@ -1515,7 +1561,20 @@ declare global {
         prototype: HTMLGcdsFileUploaderElement;
         new (): HTMLGcdsFileUploaderElement;
     };
+    interface HTMLGcdsFooterElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": string;
+    }
     interface HTMLGcdsFooterElement extends Components.GcdsFooter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsFooterElementEventMap>(type: K, listener: (this: HTMLGcdsFooterElement, ev: GcdsFooterCustomEvent<HTMLGcdsFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsFooterElementEventMap>(type: K, listener: (this: HTMLGcdsFooterElement, ev: GcdsFooterCustomEvent<HTMLGcdsFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsFooterElement: {
         prototype: HTMLGcdsFooterElement;
@@ -1533,7 +1592,20 @@ declare global {
         prototype: HTMLGcdsGridColElement;
         new (): HTMLGcdsGridColElement;
     };
+    interface HTMLGcdsHeaderElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": string;
+    }
     interface HTMLGcdsHeaderElement extends Components.GcdsHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsHeaderElementEventMap>(type: K, listener: (this: HTMLGcdsHeaderElement, ev: GcdsHeaderCustomEvent<HTMLGcdsHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsHeaderElementEventMap>(type: K, listener: (this: HTMLGcdsHeaderElement, ev: GcdsHeaderCustomEvent<HTMLGcdsHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsHeaderElement: {
         prototype: HTMLGcdsHeaderElement;
@@ -1560,8 +1632,8 @@ declare global {
     interface HTMLGcdsInputElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsInput": any;
-        "gcdsChange": any;
+        "gcdsInput": string;
+        "gcdsChange": string;
         "gcdsError": object;
         "gcdsValid": object;
     }
@@ -1585,7 +1657,20 @@ declare global {
         prototype: HTMLGcdsLabelElement;
         new (): HTMLGcdsLabelElement;
     };
+    interface HTMLGcdsLangToggleElementEventMap {
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsClick": string;
+    }
     interface HTMLGcdsLangToggleElement extends Components.GcdsLangToggle, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsLangToggleElementEventMap>(type: K, listener: (this: HTMLGcdsLangToggleElement, ev: GcdsLangToggleCustomEvent<HTMLGcdsLangToggleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsLangToggleElementEventMap>(type: K, listener: (this: HTMLGcdsLangToggleElement, ev: GcdsLangToggleCustomEvent<HTMLGcdsLangToggleElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGcdsLangToggleElement: {
         prototype: HTMLGcdsLangToggleElement;
@@ -1594,7 +1679,7 @@ declare global {
     interface HTMLGcdsLinkElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsClick": void;
+        "gcdsClick": string;
     }
     interface HTMLGcdsLinkElement extends Components.GcdsLink, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsLinkElementEventMap>(type: K, listener: (this: HTMLGcdsLinkElement, ev: GcdsLinkCustomEvent<HTMLGcdsLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1630,7 +1715,7 @@ declare global {
         new (): HTMLGcdsNavGroupElement;
     };
     interface HTMLGcdsNavLinkElementEventMap {
-        "gcdsClick": void;
+        "gcdsClick": string;
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
@@ -1657,7 +1742,7 @@ declare global {
     interface HTMLGcdsPaginationElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsClick": void;
+        "gcdsClick": object | string;
     }
     interface HTMLGcdsPaginationElement extends Components.GcdsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsPaginationElementEventMap>(type: K, listener: (this: HTMLGcdsPaginationElement, ev: GcdsPaginationCustomEvent<HTMLGcdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1680,8 +1765,8 @@ declare global {
         new (): HTMLGcdsPhaseBannerElement;
     };
     interface HTMLGcdsRadiosElementEventMap {
-        "gcdsInput": void;
-        "gcdsChange": void;
+        "gcdsInput": string;
+        "gcdsChange": string;
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsValid": void;
@@ -1704,9 +1789,9 @@ declare global {
     interface HTMLGcdsSearchElementEventMap {
         "gcdsInput": string;
         "gcdsChange": string;
-        "gcdsFocus": object;
-        "gcdsBlur": object;
-        "gcdsSubmit": object;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsSubmit": string;
     }
     interface HTMLGcdsSearchElement extends Components.GcdsSearch, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsSearchElementEventMap>(type: K, listener: (this: HTMLGcdsSearchElement, ev: GcdsSearchCustomEvent<HTMLGcdsSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1723,8 +1808,8 @@ declare global {
         new (): HTMLGcdsSearchElement;
     };
     interface HTMLGcdsSelectElementEventMap {
-        "gcdsChange": any;
-        "gcdsInput": any;
+        "gcdsChange": string;
+        "gcdsInput": string;
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsError": object;
@@ -1777,8 +1862,8 @@ declare global {
     interface HTMLGcdsTextareaElementEventMap {
         "gcdsFocus": void;
         "gcdsBlur": void;
-        "gcdsChange": any;
-        "gcdsInput": any;
+        "gcdsChange": string;
+        "gcdsInput": string;
         "gcdsError": object;
         "gcdsValid": object;
     }
@@ -1907,6 +1992,18 @@ declare namespace LocalJSX {
           * Specifies the href of the breadcrumb item.
          */
         "href": string | undefined;
+        /**
+          * Emitted when the link loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsBreadcrumbsItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has been clicked. Contains the href in the event detail.
+         */
+        "onGcdsClick"?: (event: GcdsBreadcrumbsItemCustomEvent<string>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsBreadcrumbsItemCustomEvent<void>) => void;
     }
     interface GcdsButton {
         /**
@@ -1942,9 +2039,9 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsButtonCustomEvent<void>) => void;
         /**
-          * Emitted when the button has been clicked.
+          * Emitted when the button has been clicked. Contains the value or href in the event detail.
          */
-        "onGcdsClick"?: (event: GcdsButtonCustomEvent<void>) => void;
+        "onGcdsClick"?: (event: GcdsButtonCustomEvent<string | void>) => void;
         /**
           * Emitted when the button has focus.
          */
@@ -2007,9 +2104,9 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsCardCustomEvent<void>) => void;
         /**
-          * Emitted when the card has been clicked.
+          * Emitted when the card has been clicked. Contains the href in the event detail.
          */
-        "onGcdsClick"?: (event: GcdsCardCustomEvent<void>) => void;
+        "onGcdsClick"?: (event: GcdsCardCustomEvent<string>) => void;
         /**
           * Emitted when the card has focus.
          */
@@ -2041,9 +2138,9 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
         /**
-          * Emmitted when a checkbox has been changed.
+          * Emmitted when a checkbox has been changed. Contains the new value in the event detail.
          */
-        "onGcdsChange"?: (event: GcdsCheckboxesCustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsCheckboxesCustomEvent<string[]>) => void;
         /**
           * Emitted when the checkbox has been clicked.
          */
@@ -2057,9 +2154,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
         /**
-          * Emmitted when a checkbox has been inputted.
+          * Emmitted when a checkbox has been inputted. Contains the new value in the event detail.
          */
-        "onGcdsInput"?: (event: GcdsCheckboxesCustomEvent<any>) => void;
+        "onGcdsInput"?: (event: GcdsCheckboxesCustomEvent<string[]>) => void;
         /**
           * Emitted when the input has a validation error.
          */
@@ -2155,9 +2252,9 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsDateInputCustomEvent<void>) => void;
         /**
-          * Emitted when an element has changed.
+          * Emitted when an element has changed. Contains the new value in the event detail.
          */
-        "onGcdsChange"?: (event: GcdsDateInputCustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsDateInputCustomEvent<string>) => void;
         /**
           * Emitted when an element has a validation error.
          */
@@ -2167,9 +2264,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsDateInputCustomEvent<void>) => void;
         /**
-          * Emitted when the element has received input.
+          * Emitted when the element has received input. Contains the new value in the event detail.
          */
-        "onGcdsInput"?: (event: GcdsDateInputCustomEvent<any>) => void;
+        "onGcdsInput"?: (event: GcdsDateInputCustomEvent<string>) => void;
         /**
           * Emitted when an element has validated.
          */
@@ -2245,6 +2342,18 @@ declare namespace LocalJSX {
           * @default true
          */
         "listen"?: boolean;
+        /**
+          * Emitted when the link loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsErrorSummaryCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has been clicked.
+         */
+        "onGcdsClick"?: (event: GcdsErrorSummaryCustomEvent<string>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsErrorSummaryCustomEvent<void>) => void;
     }
     interface GcdsFieldset {
         /**
@@ -2299,9 +2408,9 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
-          * Emitted when the user has made a file selection.
+          * Emitted when the user has made a file selection. Contains the new value in the event detail.
          */
-        "onGcdsChange"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsFileUploaderCustomEvent<string[]>) => void;
         /**
           * Emitted when the input has a validation error.
          */
@@ -2311,9 +2420,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsFileUploaderCustomEvent<void>) => void;
         /**
-          * Emitted when the user has uploaded a file.
+          * Emitted when the user has uploaded a file. Contains the new value in the event detail.
          */
-        "onGcdsInput"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
+        "onGcdsInput"?: (event: GcdsFileUploaderCustomEvent<string[]>) => void;
         /**
           * Remove file and update value.
          */
@@ -2362,6 +2471,18 @@ declare namespace LocalJSX {
           * @default 'compact'
          */
         "display"?: 'compact' | 'full';
+        /**
+          * Emitted when the link loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsFooterCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has been clicked. Contains the href in the event detail.
+         */
+        "onGcdsClick"?: (event: GcdsFooterCustomEvent<string>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsFooterCustomEvent<void>) => void;
         /**
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
@@ -2486,6 +2607,18 @@ declare namespace LocalJSX {
           * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
          */
         "langHref": string;
+        /**
+          * Emitted when the link loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsHeaderCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has been clicked. Contains the href in the event detail.
+         */
+        "onGcdsClick"?: (event: GcdsHeaderCustomEvent<string>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsHeaderCustomEvent<void>) => void;
         /**
           * GcdsSignature - GCDS signature links to Canada.ca
           * @default true
@@ -2637,7 +2770,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has changed.
          */
-        "onGcdsChange"?: (event: GcdsInputCustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsInputCustomEvent<string>) => void;
         /**
           * Emitted when the input has a validation error.
          */
@@ -2649,7 +2782,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the element has received input.
          */
-        "onGcdsInput"?: (event: GcdsInputCustomEvent<any>) => void;
+        "onGcdsInput"?: (event: GcdsInputCustomEvent<string>) => void;
         /**
           * Emitted when the input has a validation error.
          */
@@ -2724,6 +2857,18 @@ declare namespace LocalJSX {
           * The href attribute specifies the URL of the opposite language page
          */
         "href": string;
+        /**
+          * Emitted when the link loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsLangToggleCustomEvent<void>) => void;
+        /**
+          * Emitted when the link has been clicked. Contains the href in the event detail.
+         */
+        "onGcdsClick"?: (event: GcdsLangToggleCustomEvent<string>) => void;
+        /**
+          * Emitted when the link has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsLangToggleCustomEvent<void>) => void;
     }
     interface GcdsLink {
         /**
@@ -2749,9 +2894,9 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsLinkCustomEvent<void>) => void;
         /**
-          * Emitted when the link has been clicked.
+          * Emitted when the link has been clicked. Contains the href in the event detail.
          */
-        "onGcdsClick"?: (event: GcdsLinkCustomEvent<void>) => void;
+        "onGcdsClick"?: (event: GcdsLinkCustomEvent<string>) => void;
         /**
           * Emitted when the link has focus.
          */
@@ -2827,7 +2972,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link has been clicked.
          */
-        "onGcdsClick"?: (event: GcdsNavLinkCustomEvent<void>) => void;
+        "onGcdsClick"?: (event: GcdsNavLinkCustomEvent<string>) => void;
         /**
           * Emitted when the link has focus.
          */
@@ -2874,9 +3019,9 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsPaginationCustomEvent<void>) => void;
         /**
-          * Emitted when the link has been clicked.
+          * Emitted when the link has been clicked. Contains the href in event detail when using simple display, or an object with page and href when using list display.
          */
-        "onGcdsClick"?: (event: GcdsPaginationCustomEvent<void>) => void;
+        "onGcdsClick"?: (event: GcdsPaginationCustomEvent<object | string>) => void;
         /**
           * Emitted when the link has focus.
          */
@@ -2940,9 +3085,9 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
-          * Emitted when a <gcds-radios> option is checked (but not when unchecked)
+          * Emitted when a <gcds-radios> option is checked (but not when unchecked). Contains new value in event detail
          */
-        "onGcdsChange"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        "onGcdsChange"?: (event: GcdsRadiosCustomEvent<string>) => void;
         /**
           * Emitted when <gcds-radios> has a validation error
          */
@@ -2952,9 +3097,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
-          * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
+          * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
          */
-        "onGcdsInput"?: (event: GcdsRadiosCustomEvent<void>) => void;
+        "onGcdsInput"?: (event: GcdsRadiosCustomEvent<string>) => void;
         /**
           * Emitted when <gcds-radios> has passed validation
          */
@@ -3002,7 +3147,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the search input has lost focus.
          */
-        "onGcdsBlur"?: (event: GcdsSearchCustomEvent<object>) => void;
+        "onGcdsBlur"?: (event: GcdsSearchCustomEvent<void>) => void;
         /**
           * Emitted when the search input value has changed.
          */
@@ -3010,7 +3155,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the search input value has gained focus.
          */
-        "onGcdsFocus"?: (event: GcdsSearchCustomEvent<object>) => void;
+        "onGcdsFocus"?: (event: GcdsSearchCustomEvent<void>) => void;
         /**
           * Emitted when the search element has recieved input.
          */
@@ -3018,7 +3163,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the search form has submitted.
          */
-        "onGcdsSubmit"?: (event: GcdsSearchCustomEvent<object>) => void;
+        "onGcdsSubmit"?: (event: GcdsSearchCustomEvent<string>) => void;
         /**
           * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
           * @default 'Canada.ca'
@@ -3071,7 +3216,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the select value has changed.
          */
-        "onGcdsChange"?: (event: GcdsSelectCustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsSelectCustomEvent<string>) => void;
         /**
           * Emitted when the select has a validation error.
          */
@@ -3083,7 +3228,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the select has received input.
          */
-        "onGcdsInput"?: (event: GcdsSelectCustomEvent<any>) => void;
+        "onGcdsInput"?: (event: GcdsSelectCustomEvent<string>) => void;
         /**
           * Emitted when the select has a validation error.
          */
@@ -3244,7 +3389,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the textarea has changed.
          */
-        "onGcdsChange"?: (event: GcdsTextareaCustomEvent<any>) => void;
+        "onGcdsChange"?: (event: GcdsTextareaCustomEvent<string>) => void;
         /**
           * Emitted when the textarea has a validation error.
          */
@@ -3256,7 +3401,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the textarea has received input.
          */
-        "onGcdsInput"?: (event: GcdsTextareaCustomEvent<any>) => void;
+        "onGcdsInput"?: (event: GcdsTextareaCustomEvent<string>) => void;
         /**
           * Emitted when the textarea has a validation error.
          */

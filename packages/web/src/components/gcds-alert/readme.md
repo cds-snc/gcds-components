@@ -24,6 +24,13 @@
 | `gcdsDismiss` | Events      | `CustomEvent<void>` |
 
 
+## Slots
+
+| Slot | Description                             |
+| ---- | --------------------------------------- |
+|      | Slot for the main content of the alert. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -36,7 +43,7 @@
 graph TD;
   gcds-alert --> gcds-container
   gcds-alert --> gcds-icon
-  style gcds-alert fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-alert fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -24,7 +24,7 @@
 graph TD;
   gcds-verify-banner --> gcds-grid
   gcds-grid --> gcds-container
-  style gcds-verify-banner fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-verify-banner fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

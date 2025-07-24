@@ -89,7 +89,7 @@ Type: `Promise<void>`
 graph TD;
   gcds-topic-menu --> gcds-sr-only
   gcds-topic-menu --> gcds-icon
-  style gcds-topic-menu fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-topic-menu fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

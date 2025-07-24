@@ -1,12 +1,4 @@
-import {
-  Component,
-  Host,
-  Element,
-  Watch,
-  State,
-  Prop,
-  h,
-} from '@stencil/core';
+import { Component, Host, Element, Watch, State, Prop, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 

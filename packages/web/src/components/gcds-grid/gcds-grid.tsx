@@ -47,6 +47,9 @@ const GridGapArray = [
   '800',
 ];
 
+/**
+ * @slot - Slot for the main content of the grid.
+ */
 @Component({
   tag: 'gcds-grid',
   styleUrl: 'gcds-grid.css',

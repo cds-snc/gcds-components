@@ -1,6 +1,9 @@
 import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 import { SpacingValues, SpacingArray } from '../../utils/types/spacing';
 
+/**
+ * @slot - Slot for the heading content
+ */
 @Component({
   tag: 'gcds-heading',
   styleUrl: 'gcds-heading.css',

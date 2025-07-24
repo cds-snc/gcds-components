@@ -1,5 +1,8 @@
 import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 
+/**
+ * @slot - Slot for the main content of the grid coloumn.
+ */
 @Component({
   tag: 'gcds-grid-col',
   styleUrl: 'gcds-grid-col.css',

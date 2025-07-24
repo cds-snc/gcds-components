@@ -15,6 +15,13 @@
 | `required`  | `required`   | Specifies if a form field is required or not. | `boolean` | `undefined` |
 
 
+## Slots
+
+| Slot | Description                 |
+| ---- | --------------------------- |
+|      | Slot for the label content. |
+
+
 ## Dependencies
 
 ### Used by
@@ -37,7 +44,7 @@ graph TD;
   gcds-search --> gcds-label
   gcds-select --> gcds-label
   gcds-textarea --> gcds-label
-  style gcds-label fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-label fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -10,6 +10,9 @@ import {
 } from '@stencil/core';
 import { emitEvent } from '../../utils/utils';
 
+/**
+ * @slot - Slot for the main content of the details panel.
+ */
 @Component({
   tag: 'gcds-details',
   styleUrl: 'gcds-details.css',

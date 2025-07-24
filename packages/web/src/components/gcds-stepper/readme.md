@@ -14,6 +14,13 @@
 | `totalSteps` _(required)_  | `total-steps`  | Defines the total amount of steps. | `number`               | `undefined` |
 
 
+## Slots
+
+| Slot | Description                   |
+| ---- | ----------------------------- |
+|      | Slot for the heading content. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -26,7 +33,7 @@
 graph TD;
   gcds-stepper --> gcds-heading
   gcds-stepper --> gcds-sr-only
-  style gcds-stepper fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-stepper fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

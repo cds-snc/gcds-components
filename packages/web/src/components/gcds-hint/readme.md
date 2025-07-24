@@ -12,6 +12,13 @@
 | `hintId` | `hint-id` | Id attribute for the hint. | `string` | `undefined` |
 
 
+## Slots
+
+| Slot | Description                |
+| ---- | -------------------------- |
+|      | Slot for the hint content. |
+
+
 ## Shadow Parts
 
 | Part     | Description |
@@ -48,7 +55,7 @@ graph TD;
   gcds-radios --> gcds-hint
   gcds-select --> gcds-hint
   gcds-textarea --> gcds-hint
-  style gcds-hint fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-hint fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

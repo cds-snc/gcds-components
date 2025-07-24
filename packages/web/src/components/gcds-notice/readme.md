@@ -14,6 +14,13 @@
 | `type` _(required)_           | `type`             | Set notice type.                                                                                                                                                                                                                                         | `"danger" \| "info" \| "success" \| "warning"` | `undefined` |
 
 
+## Slots
+
+| Slot | Description                              |
+| ---- | ---------------------------------------- |
+|      | Slot for the main content of the notice. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -28,7 +35,7 @@ graph TD;
   gcds-notice --> gcds-icon
   gcds-notice --> gcds-heading
   gcds-notice --> gcds-sr-only
-  style gcds-notice fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-notice fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

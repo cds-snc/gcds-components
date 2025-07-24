@@ -1,4 +1,13 @@
-import { Component, Element, Host, Prop, State, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Host,
+  Prop,
+  State,
+  Event,
+  EventEmitter,
+  h,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -18,6 +27,25 @@ export class GcdsLangToggle {
    * The href attribute specifies the URL of the opposite language page
    */
   @Prop({ reflect: true, mutable: false }) href!: string;
+
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when the link has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link has been clicked. Contains the href in the event detail.
+   */
+  @Event() gcdsClick!: EventEmitter<string>;
 
   /**
    * Language of rendered component

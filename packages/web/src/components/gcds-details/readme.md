@@ -35,6 +35,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot | Description                                     |
+| ---- | ----------------------------------------------- |
+|      | Slot for the main content of the details panel. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -12,6 +12,13 @@
 | `tag`    | `tag`     | Sets the appropriate HTML tag for the content. | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "p" \| "span"` | `'p'`   |
 
 
+## Slots
+
+| Slot | Description                             |
+| ---- | --------------------------------------- |
+|      | Slot for the hidden accessible content. |
+
+
 ## Dependencies
 
 ### Used by
@@ -36,7 +43,7 @@ graph TD;
   gcds-search --> gcds-sr-only
   gcds-stepper --> gcds-sr-only
   gcds-topic-menu --> gcds-sr-only
-  style gcds-sr-only fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-sr-only fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

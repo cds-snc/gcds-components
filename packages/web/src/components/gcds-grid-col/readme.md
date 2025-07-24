@@ -14,6 +14,13 @@
 | `tag`     | `tag`     | Set tag for grid column                                                                                                                                                               | `string`                                                      | `'div'`     |
 
 
+## Slots
+
+| Slot | Description                                    |
+| ---- | ---------------------------------------------- |
+|      | Slot for the main content of the grid coloumn. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

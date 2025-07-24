@@ -2,6 +2,9 @@ import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * @slot - Slot for the date/version number.
+ */
 @Component({
   tag: 'gcds-date-modified',
   styleUrl: 'gcds-date-modified.css',
@@ -65,7 +68,7 @@ export class GcdsDateModified {
 
     this.updateLang();
 
-    let valid = this.validateRequiredProps();
+    const valid = this.validateRequiredProps();
 
     if (!valid) {
       logError('gcds-date-modified', this.errors);

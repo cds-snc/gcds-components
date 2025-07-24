@@ -18,6 +18,13 @@
 | `tag`           | `tag`            | Set tag for container.                                                                                                                                                                                            | `string`                                                                                                                                                                                                                                                                               | `'div'`     |
 
 
+## Slots
+
+| Slot | Description                                 |
+| ---- | ------------------------------------------- |
+|      | Slot for the main content of the container. |
+
+
 ## Dependencies
 
 ### Used by
@@ -32,7 +39,7 @@ graph TD;
   gcds-alert --> gcds-container
   gcds-grid --> gcds-container
   gcds-phase-banner --> gcds-container
-  style gcds-container fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-container fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

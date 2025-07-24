@@ -44,7 +44,7 @@ graph TD;
   gcds-pagination --> gcds-icon
   gcds-search --> gcds-icon
   gcds-topic-menu --> gcds-icon
-  style gcds-icon fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-icon fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
