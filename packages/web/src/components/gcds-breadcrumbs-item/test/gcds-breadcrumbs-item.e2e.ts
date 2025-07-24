@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   );
 
   await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-breadcrumbs-item');
+    const host = document.querySelector('gcds-breadcrumbs');
     return host && host.shadowRoot;
   });
 });
@@ -35,14 +35,14 @@ test.describe('gcds-breadcrumbs-item', () => {
     const gcdsClick = await page.spyOnEvent('gcdsClick');
     const click = await page.spyOnEvent('click');
 
-    const element = await page.locator('a').last();
+    const element = await page.locator('gcds-breadcrumbs-item').last();
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
     await element.waitFor({ state: 'visible' });
     await element.waitFor({ timeout: 10000 });
 
-    await element.click();
+    await page.locator('text=Components').click();
 
     expect(gcdsClick.events.length).toBe(1);
     expect(click.events.length).toBe(1);
