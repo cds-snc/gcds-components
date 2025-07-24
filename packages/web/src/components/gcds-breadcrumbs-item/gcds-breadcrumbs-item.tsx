@@ -9,6 +9,8 @@ import {
 } from '@stencil/core';
 
 /**
+ * Breadcrumbs item represents a single link in the breadcrumbs navigation.
+ *
  * @slot - Slot for the breadcrumb item link label.
  */
 @Component({

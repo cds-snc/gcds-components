@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
+
 ## Properties
 
 | Property | Attribute | Description               | Type      | Default |

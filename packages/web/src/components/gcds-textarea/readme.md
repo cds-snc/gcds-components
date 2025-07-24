@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A text area is a space to enter long-form information in response to a question or instruction.
+
 ## Properties
 
 | Property                  | Attribute         | Description                                                            | Type                                                | Default     |

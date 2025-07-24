@@ -13,6 +13,8 @@ import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
+ * A card is a box containing structured, actionable content on a single topic.
+ *
  * @slot - Slot for the card description. Will ovewrite the description prop if used.
  */
 @Component({

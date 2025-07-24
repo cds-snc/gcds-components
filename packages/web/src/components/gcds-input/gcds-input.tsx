@@ -29,6 +29,9 @@ import {
 
 import I18N from './i18n/i18n.js';
 
+/**
+ * An input is a space to enter short-form information in response to a question or instruction.
+ */
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',

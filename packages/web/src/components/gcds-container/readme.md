@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A container is a basic box layout with a set width for its contents.
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                                                                                                                                                       | Type                                                                                                                                                                                                                                                                                   | Default     |

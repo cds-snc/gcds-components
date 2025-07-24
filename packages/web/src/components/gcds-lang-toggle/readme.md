@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The language toggle is a link to the same content in the other Official Language.
+
 ## Properties
 
 | Property            | Attribute | Description                                                        | Type     | Default     |

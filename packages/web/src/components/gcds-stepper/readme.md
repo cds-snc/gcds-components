@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A stepper is a progress tracker for a multi-step process.
+
 ## Properties
 
 | Property                   | Attribute      | Description                        | Type                   | Default     |

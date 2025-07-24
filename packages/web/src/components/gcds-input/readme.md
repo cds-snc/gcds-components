@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+An input is a space to enter short-form information in response to a question or instruction.
+
 ## Properties
 
 | Property               | Attribute       | Description                                                                                                                                                             | Type                                                               | Default     |

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Breadcrumbs item represents a single link in the breadcrumbs navigation.
+
 ## Properties
 
 | Property            | Attribute | Description                                | Type     | Default     |

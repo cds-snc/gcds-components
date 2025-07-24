@@ -3,6 +3,8 @@ import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
+ * A stepper is a progress tracker for a multi-step process.
+ *
  * @slot - Slot for the heading content.
  */
 @Component({

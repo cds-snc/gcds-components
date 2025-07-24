@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A grid column is a single column in a grid layout, allowing for flexible content arrangement.
+
 ## Properties
 
 | Property  | Attribute | Description                                                                                                                                                                           | Type                                                          | Default     |

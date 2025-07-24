@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A top navigation is a horizontal list of page links.
+
 ## Properties
 
 | Property             | Attribute   | Description                   | Type                            | Default     |

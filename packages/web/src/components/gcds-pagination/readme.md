@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Pagination is a division of content into multiple linked pages.
+
 ## Properties
 
 | Property             | Attribute        | Description                                                             | Type                 | Default     |

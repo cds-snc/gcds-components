@@ -1,6 +1,8 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
 /**
+ * An error message is a description of a problem blocking a user goal.
+ *
  * @slot - Slot for the error message content.
  */
 @Component({

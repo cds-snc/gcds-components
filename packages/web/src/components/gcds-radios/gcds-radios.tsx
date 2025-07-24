@@ -31,6 +31,9 @@ import {
 } from '../../validators';
 import i18n from './i18n/i18n';
 
+/**
+ * Radios provide a set of options for a single response.
+ */
 @Component({
   tag: 'gcds-radios',
   styleUrl: 'gcds-radios.css',

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A link is a navigational element that brings a person to a new page, website, file, or section on the current page.
+
 ## Properties
 
 | Property            | Attribute  | Description                                                                                                                                        | Type                                | Default     |

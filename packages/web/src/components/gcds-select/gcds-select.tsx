@@ -26,6 +26,9 @@ import {
   requiredValidator,
 } from '../../validators';
 
+/**
+ * A select provides a large list of options for single selection.
+ */
 @Component({
   tag: 'gcds-select',
   styleUrl: 'gcds-select.css',

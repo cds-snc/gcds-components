@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The notice is a short, prominent message that’s part of the page content.
+
 ## Properties
 
 | Property                      | Attribute          | Description                                                                                                                                                                                                                                              | Type                                           | Default     |

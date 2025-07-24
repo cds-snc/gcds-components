@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+An icon is a symbol that visually represents an action or idea.
+
 ## Properties
 
 | Property            | Attribute      | Description                         | Type                                                                                                                                                                                                                                                                                   | Default     |

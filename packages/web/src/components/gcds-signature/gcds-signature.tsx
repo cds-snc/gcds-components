@@ -7,6 +7,9 @@ import SignatureFr from './assets/sig-blk-fr.svg';
 import WordmarkEn from './assets/wmms-spl-en.svg';
 import WordmarkFr from './assets/wmms-spl-fr.svg';
 
+/**
+ * The signature is the Government of Canada landmark identifier found in the header or footer.
+ */
 @Component({
   tag: 'gcds-signature',
   styleUrl: 'gcds-signature.css',

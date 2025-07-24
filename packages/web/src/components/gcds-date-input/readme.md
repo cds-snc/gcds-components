@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A date input is a space to enter a known date.
+
 ## Properties
 
 | Property              | Attribute       | Description                                                                                                                            | Type                                                | Default     |

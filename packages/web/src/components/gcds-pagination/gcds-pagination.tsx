@@ -14,6 +14,9 @@ import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import { constructHref, constructClasses } from './utils/render';
 
+/**
+ * Pagination is a division of content into multiple linked pages.
+ */
 @Component({
   tag: 'gcds-pagination',
   styleUrl: 'gcds-pagination.css',

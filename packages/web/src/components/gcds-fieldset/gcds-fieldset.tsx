@@ -3,6 +3,8 @@ import { inheritAttributes } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
+ * A fieldset is a group of multiple form components or elements.
+ *
  * @slot - Slot for the form elements.
  */
 @Component({

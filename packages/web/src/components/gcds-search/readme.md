@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Search is a space for entering keywords to find relevant information.
+
 ## Properties
 
 | Property      | Attribute     | Description                                                                        | Type              | Default          |

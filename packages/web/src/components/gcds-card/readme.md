@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A card is a box containing structured, actionable content on a single topic.
+
 ## Properties
 
 | Property                 | Attribute        | Description                                                                                                                                                                                                                                            | Type                                  | Default     |

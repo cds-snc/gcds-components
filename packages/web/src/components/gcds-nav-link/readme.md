@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+`<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+
 ## Properties
 
 | Property            | Attribute | Description       | Type      | Default     |

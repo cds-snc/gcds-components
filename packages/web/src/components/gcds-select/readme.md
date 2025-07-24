@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A select provides a large list of options for single selection.
+
 ## Properties
 
 | Property                | Attribute       | Description                                                                                   | Type                                                | Default     |

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A side navigation is a vertical list of page links on the left side of the screen.
+
 ## Properties
 
 | Property             | Attribute | Description                   | Type     | Default     |

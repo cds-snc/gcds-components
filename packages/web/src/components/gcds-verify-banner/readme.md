@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+`<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+
 ## Properties
 
 | Property    | Attribute   | Description                                              | Type                                             | Default |

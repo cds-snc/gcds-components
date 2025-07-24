@@ -3,6 +3,8 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
+ * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+ *
  * @slot - Slot for the label content.
  */
 @Component({

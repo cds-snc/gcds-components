@@ -14,6 +14,8 @@ import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
+ * A link is a navigational element that brings a person to a new page, website, file, or section on the current page.
+ *
  * @slot - Slot for the link content.
  */
 @Component({

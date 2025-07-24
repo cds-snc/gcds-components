@@ -35,6 +35,9 @@ import {
   validateOptionsArray,
 } from './checkbox';
 
+/**
+ * Checkboxes provide a set of options for multiple responses.
+ */
 @Component({
   tag: 'gcds-checkboxes',
   styleUrl: 'gcds-checkboxes.css',

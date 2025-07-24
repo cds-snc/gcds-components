@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+An error message is a description of a problem blocking a user goal.
+
 ## Properties
 
 | Property                 | Attribute    | Description                         | Type     | Default     |

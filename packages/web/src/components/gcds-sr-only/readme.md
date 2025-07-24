@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The screenreader-only component is text information only accessible with assistive technologies.
+
 ## Properties
 
 | Property | Attribute | Description                                    | Type                                                            | Default |

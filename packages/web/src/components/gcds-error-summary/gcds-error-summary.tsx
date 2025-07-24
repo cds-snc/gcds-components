@@ -13,6 +13,9 @@ import {
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * An error summary is a list of user errors in a form.
+ */
 @Component({
   tag: 'gcds-error-summary',
   styleUrl: 'gcds-error-summary.css',

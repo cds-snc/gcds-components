@@ -27,6 +27,9 @@ import {
 } from '../../validators';
 import i18n from './i18n/i18n';
 
+/**
+ * A text area is a space to enter long-form information in response to a question or instruction.
+ */
 @Component({
   tag: 'gcds-textarea',
   styleUrl: 'gcds-textarea.css',

@@ -1,6 +1,8 @@
 import { Component, Host, Watch, h, Prop } from '@stencil/core';
 
 /**
+ * The screenreader-only component is text information only accessible with assistive technologies.
+ *
  * @slot - Slot for the hidden accessible content.
  */
 @Component({

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A fieldset is a group of multiple form components or elements.
+
 ## Properties
 
 | Property                  | Attribute     | Description                                             | Type                                   | Default     |

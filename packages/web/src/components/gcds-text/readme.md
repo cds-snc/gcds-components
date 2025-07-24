@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Text is a styled and formatted paragraph that displays written content in an accessible way.
+
 ## Properties
 
 | Property         | Attribute         | Description                                                                                                         | Type                                                                                                                                                                                                                                                                                   | Default     |

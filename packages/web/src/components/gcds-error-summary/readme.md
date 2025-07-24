@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+An error summary is a list of user errors in a form.
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                              | Type               | Default     |

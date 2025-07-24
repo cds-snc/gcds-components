@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The signature is the Government of Canada landmark identifier found in the header or footer.
+
 ## Properties
 
 | Property  | Attribute  | Description                                      | Type                        | Default       |

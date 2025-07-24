@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+`<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+
 ## Properties
 
 | Property               | Attribute        | Description                                              | Type                                             | Default     |

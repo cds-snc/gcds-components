@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Checkboxes provide a set of options for multiple responses.
+
 ## Properties
 
 | Property               | Attribute       | Description                                                        | Type                                                | Default     |

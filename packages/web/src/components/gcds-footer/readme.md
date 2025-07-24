@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The footer is the responsive Government of Canada branded footer landmark.
+
 ## Properties
 
 | Property            | Attribute            | Description                                                                 | Type                  | Default     |

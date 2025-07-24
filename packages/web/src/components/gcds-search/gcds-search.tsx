@@ -11,6 +11,9 @@ import {
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import I18N from './i18n/I18N';
 
+/**
+ * Search is a space for entering keywords to find relevant information.
+ */
 @Component({
   tag: 'gcds-search',
   styleUrl: 'gcds-search.css',

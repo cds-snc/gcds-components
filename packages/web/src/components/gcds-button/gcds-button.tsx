@@ -14,6 +14,8 @@ import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
+ * The button is an interactive object that emphasizes an action.
+ *
  * @slot - Slot for the button/link label.
  */
 @Component({

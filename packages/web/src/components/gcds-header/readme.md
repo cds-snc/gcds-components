@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The header is the responsive Government of Canada branded header landmark.
+
 ## Properties
 
 | Property                  | Attribute            | Description                                                                         | Type                  | Default     |

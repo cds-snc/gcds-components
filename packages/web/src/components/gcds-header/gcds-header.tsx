@@ -12,6 +12,8 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
+ * The header is the responsive Government of Canada branded header landmark.
+ *
  * @slot banner - Slot to add a banner across the top of the header.
  * @slot breadcrumb - Slot to add breadcrumbs at the bottom of the header.
  * @slot menu - Slot to add a menu below the divider line.

@@ -12,6 +12,9 @@ import {
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
 
+/**
+ * The footer is the responsive Government of Canada branded footer landmark.
+ */
 @Component({
   tag: 'gcds-footer',
   styleUrl: 'gcds-footer.css',

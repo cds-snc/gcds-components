@@ -27,6 +27,9 @@ import {
 } from '../../validators';
 import i18n from './i18n/i18n';
 
+/**
+ * A file uploader is a space to select and add supporting documentation.
+ */
 @Component({
   tag: 'gcds-file-uploader',
   styleUrl: 'gcds-file-uploader.css',

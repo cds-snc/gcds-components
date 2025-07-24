@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A grid is a responsive, flexible column layout to position elements on a page.
+
 ## Properties
 
 | Property         | Attribute          | Description                                                                                                                                                                                                                                 | Type                                                                                                                                           | Default     |

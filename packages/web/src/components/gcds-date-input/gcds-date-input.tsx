@@ -28,6 +28,9 @@ import {
 } from '../../validators';
 import i18n from './i18n/i18n';
 
+/**
+ * A date input is a space to enter a known date.
+ */
 @Component({
   tag: 'gcds-date-input',
   styleUrl: 'gcds-date-input.css',

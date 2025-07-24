@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A file uploader is a space to select and add supporting documentation.
+
 ## Properties
 
 | Property                  | Attribute       | Description                                                                 | Type                                                                      | Default     |

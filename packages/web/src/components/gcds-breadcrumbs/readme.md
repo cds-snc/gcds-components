@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
+
 ## Properties
 
 | Property         | Attribute          | Description                                                    | Type      | Default |

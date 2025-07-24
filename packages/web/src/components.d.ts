@@ -16,6 +16,9 @@ export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radios/radio";
 export namespace Components {
+    /**
+     * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+     */
     interface GcdsAlert {
         /**
           * Defines alert role.
@@ -47,6 +50,9 @@ export namespace Components {
          */
         "isFixed"?: boolean;
     }
+    /**
+     * Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
+     */
     interface GcdsBreadcrumbs {
         /**
           * Defines if the default canada.ca link is displayed or omitted.
@@ -54,12 +60,18 @@ export namespace Components {
          */
         "hideCanadaLink": boolean;
     }
+    /**
+     * Breadcrumbs item represents a single link in the breadcrumbs navigation.
+     */
     interface GcdsBreadcrumbsItem {
         /**
           * Specifies the href of the breadcrumb item.
          */
         "href": string | undefined;
     }
+    /**
+     * The button is an interactive object that emphasizes an action.
+     */
     interface GcdsButton {
         /**
           * The buttonId attribute specifies the id for a <button> element.
@@ -112,6 +124,9 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * A card is a box containing structured, actionable content on a single topic.
+     */
     interface GcdsCard {
         /**
           * The badge attribute specifies the badge text that appears in the top left corner of the card. 20 character limit.
@@ -143,6 +158,9 @@ export namespace Components {
          */
         "imgSrc": string;
     }
+    /**
+     * Checkboxes provide a set of options for multiple responses.
+     */
     interface GcdsCheckboxes {
         /**
           * Specifies if the checkboxes are disabled or not.
@@ -193,6 +211,9 @@ export namespace Components {
          */
         "value": string | Array<string>;
     }
+    /**
+     * A container is a basic box layout with a set width for its contents.
+     */
     interface GcdsContainer {
         /**
           * Defines if the container has a border.
@@ -228,6 +249,9 @@ export namespace Components {
          */
         "tag"?: string;
     }
+    /**
+     * A date input is a space to enter a known date.
+     */
     interface GcdsDateInput {
         /**
           * Specifies if the date input is disabled or not.
@@ -279,6 +303,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * Date modified is an indicator of the last update to a webpage or application.
+     */
     interface GcdsDateModified {
         /**
           * Set date modified type. Default is date.
@@ -286,6 +313,9 @@ export namespace Components {
          */
         "type": 'date' | 'version';
     }
+    /**
+     * Details is an interactive switch for a person to expand or collapse content.
+     */
     interface GcdsDetails {
         /**
           * The details title summarizes the panel content.
@@ -301,12 +331,18 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
     }
+    /**
+     * An error message is a description of a problem blocking a user goal.
+     */
     interface GcdsErrorMessage {
         /**
           * Id attribute for the error message.
          */
         "messageId": string;
     }
+    /**
+     * An error summary is a list of user errors in a form.
+     */
     interface GcdsErrorSummary {
         /**
           * Object of list items for error list. Format: { link-href: link-label }
@@ -322,6 +358,9 @@ export namespace Components {
          */
         "listen"?: boolean;
     }
+    /**
+     * A fieldset is a group of multiple form components or elements.
+     */
     interface GcdsFieldset {
         /**
           * Hint displayed below the legend.
@@ -336,6 +375,9 @@ export namespace Components {
          */
         "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
+    /**
+     * A file uploader is a space to select and add supporting documentation.
+     */
     interface GcdsFileUploader {
         /**
           * Defines the file types the file uploader accepts.
@@ -400,6 +442,9 @@ export namespace Components {
          */
         "value": string[];
     }
+    /**
+     * The footer is the responsive Government of Canada branded footer landmark.
+     */
     interface GcdsFooter {
         /**
           * Heading for contextual slot and nav landmark
@@ -423,6 +468,9 @@ export namespace Components {
          */
         "wordmarkVariant": 'colour' | 'white';
     }
+    /**
+     * A grid is a responsive, flexible column layout to position elements on a page.
+     */
     interface GcdsGrid {
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
@@ -506,6 +554,9 @@ export namespace Components {
     | 'section'
     | 'ul';
     }
+    /**
+     * A grid column is a single column in a grid layout, allowing for flexible content arrangement.
+     */
     interface GcdsGridCol {
         /**
           * Optimize grid column size for desktop (1024px and above). Desktop grid column sizes are based on a 12 column grid.
@@ -533,6 +584,9 @@ export namespace Components {
          */
         "tag"?: string;
     }
+    /**
+     * The header is the responsive Government of Canada branded header landmark.
+     */
     interface GcdsHeader {
         /**
           * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
@@ -553,6 +607,9 @@ export namespace Components {
          */
         "skipToHref": string;
     }
+    /**
+     * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+     */
     interface GcdsHeading {
         /**
           * Sets the line length to a maximum amount of characters per line for each heading level, ensuring a comfortable, accessible reading length.
@@ -573,12 +630,18 @@ export namespace Components {
          */
         "tag": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
+    /**
+     * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+     */
     interface GcdsHint {
         /**
           * Id attribute for the hint.
          */
         "hintId": string;
     }
+    /**
+     * An icon is a symbol that visually represents an action or idea.
+     */
     interface GcdsIcon {
         /**
           * Add icon description.
@@ -623,6 +686,9 @@ export namespace Components {
     | 'h2'
     | 'h1';
     }
+    /**
+     * An input is a space to enter short-form information in response to a question or instruction.
+     */
     interface GcdsInput {
         /**
           * String to have autocomplete enabled.
@@ -741,6 +807,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+     */
     interface GcdsLabel {
         /**
           * Specifies if the label is hidden or not.
@@ -759,12 +828,18 @@ export namespace Components {
          */
         "required"?: boolean;
     }
+    /**
+     * The language toggle is a link to the same content in the other Official Language.
+     */
     interface GcdsLangToggle {
         /**
           * The href attribute specifies the URL of the opposite language page
          */
         "href": string;
     }
+    /**
+     * A link is a navigational element that brings a person to a new page, website, file, or section on the current page.
+     */
     interface GcdsLink {
         /**
           * Sets the display behavior of the link
@@ -808,6 +883,9 @@ export namespace Components {
          */
         "variant"?: 'default' | 'light';
     }
+    /**
+     * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     */
     interface GcdsNavGroup {
         /**
           * Label for the expanded button trigger
@@ -835,6 +913,9 @@ export namespace Components {
          */
         "toggleNav": () => Promise<void>;
     }
+    /**
+     * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     */
     interface GcdsNavLink {
         /**
           * Current page flag
@@ -849,6 +930,9 @@ export namespace Components {
          */
         "href": string;
     }
+    /**
+     * The notice is a short, prominent message that’s part of the page content.
+     */
     interface GcdsNotice {
         /**
           * Set the notice title.
@@ -863,6 +947,9 @@ export namespace Components {
          */
         "type": 'danger' | 'info' | 'success' | 'warning';
     }
+    /**
+     * Pagination is a division of content into multiple linked pages.
+     */
     interface GcdsPagination {
         /**
           * List display - Current page number
@@ -902,6 +989,9 @@ export namespace Components {
          */
         "url": string | object;
     }
+    /**
+     * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+     */
     interface GcdsPhaseBanner {
         /**
           * Defines banner role.
@@ -918,6 +1008,9 @@ export namespace Components {
          */
         "isFixed"?: boolean;
     }
+    /**
+     * Radios provide a set of options for a single response.
+     */
     interface GcdsRadios {
         /**
           * Specifies if an input element is disabled or not.
@@ -967,6 +1060,9 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * Search is a space for entering keywords to find relevant information.
+     */
     interface GcdsSearch {
         /**
           * Sets the action for the search form. Default will be canada.ca global search
@@ -1002,6 +1098,9 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * A select provides a large list of options for single selection.
+     */
     interface GcdsSelect {
         /**
           * The default value is an optional value that gets displayed before the user selects an option.
@@ -1057,6 +1156,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * A side navigation is a vertical list of page links on the left side of the screen.
+     */
     interface GcdsSideNav {
         "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
@@ -1066,6 +1168,9 @@ export namespace Components {
         "updateNavItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
     }
+    /**
+     * The signature is the Government of Canada landmark identifier found in the header or footer.
+     */
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -1083,6 +1188,9 @@ export namespace Components {
          */
         "variant": 'colour' | 'white';
     }
+    /**
+     * The screenreader-only component is text information only accessible with assistive technologies.
+     */
     interface GcdsSrOnly {
         /**
           * Sets the appropriate HTML tag for the content.
@@ -1097,6 +1205,9 @@ export namespace Components {
     | 'p'
     | 'span';
     }
+    /**
+     * A stepper is a progress tracker for a multi-step process.
+     */
     interface GcdsStepper {
         /**
           * Defines the current step.
@@ -1112,6 +1223,9 @@ export namespace Components {
          */
         "totalSteps": number;
     }
+    /**
+     * Text is a styled and formatted paragraph that displays written content in an accessible way.
+     */
     interface GcdsText {
         /**
           * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length.
@@ -1149,6 +1263,9 @@ export namespace Components {
          */
         "textRole"?: 'light' | 'primary' | 'secondary';
     }
+    /**
+     * A text area is a space to enter long-form information in response to a question or instruction.
+     */
     interface GcdsTextarea {
         /**
           * Sets the maxlength attribute for the textarea element.
@@ -1218,6 +1335,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * A top navigation is a horizontal list of page links.
+     */
     interface GcdsTopNav {
         /**
           * Nav alignment
@@ -1232,6 +1352,9 @@ export namespace Components {
         "updateNavItemQueue": (el: any, includeElement?: boolean) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
     }
+    /**
+     * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
+     */
     interface GcdsTopicMenu {
         /**
           * Close all theme menus
@@ -1253,6 +1376,9 @@ export namespace Components {
         "updateNavItemQueue": (parent: any) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
     }
+    /**
+     * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+     */
     interface GcdsVerifyBanner {
         /**
           * Defines the container width of the verify banner content
@@ -1354,6 +1480,9 @@ declare global {
     interface HTMLGcdsAlertElementEventMap {
         "gcdsDismiss": void;
     }
+    /**
+     * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+     */
     interface HTMLGcdsAlertElement extends Components.GcdsAlert, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsAlertElementEventMap>(type: K, listener: (this: HTMLGcdsAlertElement, ev: GcdsAlertCustomEvent<HTMLGcdsAlertElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1368,6 +1497,9 @@ declare global {
         prototype: HTMLGcdsAlertElement;
         new (): HTMLGcdsAlertElement;
     };
+    /**
+     * Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
+     */
     interface HTMLGcdsBreadcrumbsElement extends Components.GcdsBreadcrumbs, HTMLStencilElement {
     }
     var HTMLGcdsBreadcrumbsElement: {
@@ -1379,6 +1511,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": string;
     }
+    /**
+     * Breadcrumbs item represents a single link in the breadcrumbs navigation.
+     */
     interface HTMLGcdsBreadcrumbsItemElement extends Components.GcdsBreadcrumbsItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLGcdsBreadcrumbsItemElement, ev: GcdsBreadcrumbsItemCustomEvent<HTMLGcdsBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1398,6 +1533,9 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
+    /**
+     * The button is an interactive object that emphasizes an action.
+     */
     interface HTMLGcdsButtonElement extends Components.GcdsButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsButtonElementEventMap>(type: K, listener: (this: HTMLGcdsButtonElement, ev: GcdsButtonCustomEvent<HTMLGcdsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1417,6 +1555,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": string;
     }
+    /**
+     * A card is a box containing structured, actionable content on a single topic.
+     */
     interface HTMLGcdsCardElement extends Components.GcdsCard, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsCardElementEventMap>(type: K, listener: (this: HTMLGcdsCardElement, ev: GcdsCardCustomEvent<HTMLGcdsCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1440,6 +1581,9 @@ declare global {
         "gcdsError": object;
         "gcdsValid": object;
     }
+    /**
+     * Checkboxes provide a set of options for multiple responses.
+     */
     interface HTMLGcdsCheckboxesElement extends Components.GcdsCheckboxes, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsCheckboxesElementEventMap>(type: K, listener: (this: HTMLGcdsCheckboxesElement, ev: GcdsCheckboxesCustomEvent<HTMLGcdsCheckboxesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1454,6 +1598,9 @@ declare global {
         prototype: HTMLGcdsCheckboxesElement;
         new (): HTMLGcdsCheckboxesElement;
     };
+    /**
+     * A container is a basic box layout with a set width for its contents.
+     */
     interface HTMLGcdsContainerElement extends Components.GcdsContainer, HTMLStencilElement {
     }
     var HTMLGcdsContainerElement: {
@@ -1468,6 +1615,9 @@ declare global {
         "gcdsError": object;
         "gcdsValid": object;
     }
+    /**
+     * A date input is a space to enter a known date.
+     */
     interface HTMLGcdsDateInputElement extends Components.GcdsDateInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsDateInputElementEventMap>(type: K, listener: (this: HTMLGcdsDateInputElement, ev: GcdsDateInputCustomEvent<HTMLGcdsDateInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1482,6 +1632,9 @@ declare global {
         prototype: HTMLGcdsDateInputElement;
         new (): HTMLGcdsDateInputElement;
     };
+    /**
+     * Date modified is an indicator of the last update to a webpage or application.
+     */
     interface HTMLGcdsDateModifiedElement extends Components.GcdsDateModified, HTMLStencilElement {
     }
     var HTMLGcdsDateModifiedElement: {
@@ -1493,6 +1646,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": void;
     }
+    /**
+     * Details is an interactive switch for a person to expand or collapse content.
+     */
     interface HTMLGcdsDetailsElement extends Components.GcdsDetails, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsDetailsElementEventMap>(type: K, listener: (this: HTMLGcdsDetailsElement, ev: GcdsDetailsCustomEvent<HTMLGcdsDetailsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1507,6 +1663,9 @@ declare global {
         prototype: HTMLGcdsDetailsElement;
         new (): HTMLGcdsDetailsElement;
     };
+    /**
+     * An error message is a description of a problem blocking a user goal.
+     */
     interface HTMLGcdsErrorMessageElement extends Components.GcdsErrorMessage, HTMLStencilElement {
     }
     var HTMLGcdsErrorMessageElement: {
@@ -1518,6 +1677,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": string;
     }
+    /**
+     * An error summary is a list of user errors in a form.
+     */
     interface HTMLGcdsErrorSummaryElement extends Components.GcdsErrorSummary, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsErrorSummaryElementEventMap>(type: K, listener: (this: HTMLGcdsErrorSummaryElement, ev: GcdsErrorSummaryCustomEvent<HTMLGcdsErrorSummaryElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1532,6 +1694,9 @@ declare global {
         prototype: HTMLGcdsErrorSummaryElement;
         new (): HTMLGcdsErrorSummaryElement;
     };
+    /**
+     * A fieldset is a group of multiple form components or elements.
+     */
     interface HTMLGcdsFieldsetElement extends Components.GcdsFieldset, HTMLStencilElement {
     }
     var HTMLGcdsFieldsetElement: {
@@ -1547,6 +1712,9 @@ declare global {
         "gcdsError": object;
         "gcdsValid": object;
     }
+    /**
+     * A file uploader is a space to select and add supporting documentation.
+     */
     interface HTMLGcdsFileUploaderElement extends Components.GcdsFileUploader, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsFileUploaderElementEventMap>(type: K, listener: (this: HTMLGcdsFileUploaderElement, ev: GcdsFileUploaderCustomEvent<HTMLGcdsFileUploaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1566,6 +1734,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": string;
     }
+    /**
+     * The footer is the responsive Government of Canada branded footer landmark.
+     */
     interface HTMLGcdsFooterElement extends Components.GcdsFooter, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsFooterElementEventMap>(type: K, listener: (this: HTMLGcdsFooterElement, ev: GcdsFooterCustomEvent<HTMLGcdsFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1580,12 +1751,18 @@ declare global {
         prototype: HTMLGcdsFooterElement;
         new (): HTMLGcdsFooterElement;
     };
+    /**
+     * A grid is a responsive, flexible column layout to position elements on a page.
+     */
     interface HTMLGcdsGridElement extends Components.GcdsGrid, HTMLStencilElement {
     }
     var HTMLGcdsGridElement: {
         prototype: HTMLGcdsGridElement;
         new (): HTMLGcdsGridElement;
     };
+    /**
+     * A grid column is a single column in a grid layout, allowing for flexible content arrangement.
+     */
     interface HTMLGcdsGridColElement extends Components.GcdsGridCol, HTMLStencilElement {
     }
     var HTMLGcdsGridColElement: {
@@ -1597,6 +1774,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": string;
     }
+    /**
+     * The header is the responsive Government of Canada branded header landmark.
+     */
     interface HTMLGcdsHeaderElement extends Components.GcdsHeader, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsHeaderElementEventMap>(type: K, listener: (this: HTMLGcdsHeaderElement, ev: GcdsHeaderCustomEvent<HTMLGcdsHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1611,18 +1791,27 @@ declare global {
         prototype: HTMLGcdsHeaderElement;
         new (): HTMLGcdsHeaderElement;
     };
+    /**
+     * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+     */
     interface HTMLGcdsHeadingElement extends Components.GcdsHeading, HTMLStencilElement {
     }
     var HTMLGcdsHeadingElement: {
         prototype: HTMLGcdsHeadingElement;
         new (): HTMLGcdsHeadingElement;
     };
+    /**
+     * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+     */
     interface HTMLGcdsHintElement extends Components.GcdsHint, HTMLStencilElement {
     }
     var HTMLGcdsHintElement: {
         prototype: HTMLGcdsHintElement;
         new (): HTMLGcdsHintElement;
     };
+    /**
+     * An icon is a symbol that visually represents an action or idea.
+     */
     interface HTMLGcdsIconElement extends Components.GcdsIcon, HTMLStencilElement {
     }
     var HTMLGcdsIconElement: {
@@ -1637,6 +1826,9 @@ declare global {
         "gcdsError": object;
         "gcdsValid": object;
     }
+    /**
+     * An input is a space to enter short-form information in response to a question or instruction.
+     */
     interface HTMLGcdsInputElement extends Components.GcdsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsInputElementEventMap>(type: K, listener: (this: HTMLGcdsInputElement, ev: GcdsInputCustomEvent<HTMLGcdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1651,6 +1843,9 @@ declare global {
         prototype: HTMLGcdsInputElement;
         new (): HTMLGcdsInputElement;
     };
+    /**
+     * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+     */
     interface HTMLGcdsLabelElement extends Components.GcdsLabel, HTMLStencilElement {
     }
     var HTMLGcdsLabelElement: {
@@ -1662,6 +1857,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": string;
     }
+    /**
+     * The language toggle is a link to the same content in the other Official Language.
+     */
     interface HTMLGcdsLangToggleElement extends Components.GcdsLangToggle, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsLangToggleElementEventMap>(type: K, listener: (this: HTMLGcdsLangToggleElement, ev: GcdsLangToggleCustomEvent<HTMLGcdsLangToggleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1681,6 +1879,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": string;
     }
+    /**
+     * A link is a navigational element that brings a person to a new page, website, file, or section on the current page.
+     */
     interface HTMLGcdsLinkElement extends Components.GcdsLink, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsLinkElementEventMap>(type: K, listener: (this: HTMLGcdsLinkElement, ev: GcdsLinkCustomEvent<HTMLGcdsLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1700,6 +1901,9 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
+    /**
+     * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     */
     interface HTMLGcdsNavGroupElement extends Components.GcdsNavGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsNavGroupElementEventMap>(type: K, listener: (this: HTMLGcdsNavGroupElement, ev: GcdsNavGroupCustomEvent<HTMLGcdsNavGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1719,6 +1923,9 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
     }
+    /**
+     * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     */
     interface HTMLGcdsNavLinkElement extends Components.GcdsNavLink, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsNavLinkElementEventMap>(type: K, listener: (this: HTMLGcdsNavLinkElement, ev: GcdsNavLinkCustomEvent<HTMLGcdsNavLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1733,6 +1940,9 @@ declare global {
         prototype: HTMLGcdsNavLinkElement;
         new (): HTMLGcdsNavLinkElement;
     };
+    /**
+     * The notice is a short, prominent message that’s part of the page content.
+     */
     interface HTMLGcdsNoticeElement extends Components.GcdsNotice, HTMLStencilElement {
     }
     var HTMLGcdsNoticeElement: {
@@ -1744,6 +1954,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsClick": object | string;
     }
+    /**
+     * Pagination is a division of content into multiple linked pages.
+     */
     interface HTMLGcdsPaginationElement extends Components.GcdsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsPaginationElementEventMap>(type: K, listener: (this: HTMLGcdsPaginationElement, ev: GcdsPaginationCustomEvent<HTMLGcdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1758,6 +1971,9 @@ declare global {
         prototype: HTMLGcdsPaginationElement;
         new (): HTMLGcdsPaginationElement;
     };
+    /**
+     * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+     */
     interface HTMLGcdsPhaseBannerElement extends Components.GcdsPhaseBanner, HTMLStencilElement {
     }
     var HTMLGcdsPhaseBannerElement: {
@@ -1772,6 +1988,9 @@ declare global {
         "gcdsValid": void;
         "gcdsError": object;
     }
+    /**
+     * Radios provide a set of options for a single response.
+     */
     interface HTMLGcdsRadiosElement extends Components.GcdsRadios, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsRadiosElementEventMap>(type: K, listener: (this: HTMLGcdsRadiosElement, ev: GcdsRadiosCustomEvent<HTMLGcdsRadiosElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1793,6 +2012,9 @@ declare global {
         "gcdsBlur": void;
         "gcdsSubmit": string;
     }
+    /**
+     * Search is a space for entering keywords to find relevant information.
+     */
     interface HTMLGcdsSearchElement extends Components.GcdsSearch, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsSearchElementEventMap>(type: K, listener: (this: HTMLGcdsSearchElement, ev: GcdsSearchCustomEvent<HTMLGcdsSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1815,6 +2037,9 @@ declare global {
         "gcdsError": object;
         "gcdsValid": object;
     }
+    /**
+     * A select provides a large list of options for single selection.
+     */
     interface HTMLGcdsSelectElement extends Components.GcdsSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsSelectElementEventMap>(type: K, listener: (this: HTMLGcdsSelectElement, ev: GcdsSelectCustomEvent<HTMLGcdsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1829,30 +2054,45 @@ declare global {
         prototype: HTMLGcdsSelectElement;
         new (): HTMLGcdsSelectElement;
     };
+    /**
+     * A side navigation is a vertical list of page links on the left side of the screen.
+     */
     interface HTMLGcdsSideNavElement extends Components.GcdsSideNav, HTMLStencilElement {
     }
     var HTMLGcdsSideNavElement: {
         prototype: HTMLGcdsSideNavElement;
         new (): HTMLGcdsSideNavElement;
     };
+    /**
+     * The signature is the Government of Canada landmark identifier found in the header or footer.
+     */
     interface HTMLGcdsSignatureElement extends Components.GcdsSignature, HTMLStencilElement {
     }
     var HTMLGcdsSignatureElement: {
         prototype: HTMLGcdsSignatureElement;
         new (): HTMLGcdsSignatureElement;
     };
+    /**
+     * The screenreader-only component is text information only accessible with assistive technologies.
+     */
     interface HTMLGcdsSrOnlyElement extends Components.GcdsSrOnly, HTMLStencilElement {
     }
     var HTMLGcdsSrOnlyElement: {
         prototype: HTMLGcdsSrOnlyElement;
         new (): HTMLGcdsSrOnlyElement;
     };
+    /**
+     * A stepper is a progress tracker for a multi-step process.
+     */
     interface HTMLGcdsStepperElement extends Components.GcdsStepper, HTMLStencilElement {
     }
     var HTMLGcdsStepperElement: {
         prototype: HTMLGcdsStepperElement;
         new (): HTMLGcdsStepperElement;
     };
+    /**
+     * Text is a styled and formatted paragraph that displays written content in an accessible way.
+     */
     interface HTMLGcdsTextElement extends Components.GcdsText, HTMLStencilElement {
     }
     var HTMLGcdsTextElement: {
@@ -1867,6 +2107,9 @@ declare global {
         "gcdsError": object;
         "gcdsValid": object;
     }
+    /**
+     * A text area is a space to enter long-form information in response to a question or instruction.
+     */
     interface HTMLGcdsTextareaElement extends Components.GcdsTextarea, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsTextareaElementEventMap>(type: K, listener: (this: HTMLGcdsTextareaElement, ev: GcdsTextareaCustomEvent<HTMLGcdsTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1881,18 +2124,27 @@ declare global {
         prototype: HTMLGcdsTextareaElement;
         new (): HTMLGcdsTextareaElement;
     };
+    /**
+     * A top navigation is a horizontal list of page links.
+     */
     interface HTMLGcdsTopNavElement extends Components.GcdsTopNav, HTMLStencilElement {
     }
     var HTMLGcdsTopNavElement: {
         prototype: HTMLGcdsTopNavElement;
         new (): HTMLGcdsTopNavElement;
     };
+    /**
+     * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
+     */
     interface HTMLGcdsTopicMenuElement extends Components.GcdsTopicMenu, HTMLStencilElement {
     }
     var HTMLGcdsTopicMenuElement: {
         prototype: HTMLGcdsTopicMenuElement;
         new (): HTMLGcdsTopicMenuElement;
     };
+    /**
+     * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+     */
     interface HTMLGcdsVerifyBannerElement extends Components.GcdsVerifyBanner, HTMLStencilElement {
     }
     var HTMLGcdsVerifyBannerElement: {
@@ -1945,6 +2197,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    /**
+     * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+     */
     interface GcdsAlert {
         /**
           * Defines alert role.
@@ -1980,6 +2235,9 @@ declare namespace LocalJSX {
          */
         "onGcdsDismiss"?: (event: GcdsAlertCustomEvent<void>) => void;
     }
+    /**
+     * Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
+     */
     interface GcdsBreadcrumbs {
         /**
           * Defines if the default canada.ca link is displayed or omitted.
@@ -1987,6 +2245,9 @@ declare namespace LocalJSX {
          */
         "hideCanadaLink"?: boolean;
     }
+    /**
+     * Breadcrumbs item represents a single link in the breadcrumbs navigation.
+     */
     interface GcdsBreadcrumbsItem {
         /**
           * Specifies the href of the breadcrumb item.
@@ -2005,6 +2266,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsBreadcrumbsItemCustomEvent<void>) => void;
     }
+    /**
+     * The button is an interactive object that emphasizes an action.
+     */
     interface GcdsButton {
         /**
           * The buttonId attribute specifies the id for a <button> element.
@@ -2069,6 +2333,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * A card is a box containing structured, actionable content on a single topic.
+     */
     interface GcdsCard {
         /**
           * The badge attribute specifies the badge text that appears in the top left corner of the card. 20 character limit.
@@ -2112,6 +2379,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsCardCustomEvent<void>) => void;
     }
+    /**
+     * Checkboxes provide a set of options for multiple responses.
+     */
     interface GcdsCheckboxes {
         /**
           * Specifies if the checkboxes are disabled or not.
@@ -2186,6 +2456,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | Array<string>;
     }
+    /**
+     * A container is a basic box layout with a set width for its contents.
+     */
     interface GcdsContainer {
         /**
           * Defines if the container has a border.
@@ -2221,6 +2494,9 @@ declare namespace LocalJSX {
          */
         "tag"?: string;
     }
+    /**
+     * A date input is a space to enter a known date.
+     */
     interface GcdsDateInput {
         /**
           * Specifies if the date input is disabled or not.
@@ -2292,6 +2568,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * Date modified is an indicator of the last update to a webpage or application.
+     */
     interface GcdsDateModified {
         /**
           * Set date modified type. Default is date.
@@ -2299,6 +2578,9 @@ declare namespace LocalJSX {
          */
         "type"?: 'date' | 'version';
     }
+    /**
+     * Details is an interactive switch for a person to expand or collapse content.
+     */
     interface GcdsDetails {
         /**
           * The details title summarizes the panel content.
@@ -2322,12 +2604,18 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
     }
+    /**
+     * An error message is a description of a problem blocking a user goal.
+     */
     interface GcdsErrorMessage {
         /**
           * Id attribute for the error message.
          */
         "messageId": string;
     }
+    /**
+     * An error summary is a list of user errors in a form.
+     */
     interface GcdsErrorSummary {
         /**
           * Object of list items for error list. Format: { link-href: link-label }
@@ -2355,6 +2643,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsErrorSummaryCustomEvent<void>) => void;
     }
+    /**
+     * A fieldset is a group of multiple form components or elements.
+     */
     interface GcdsFieldset {
         /**
           * Hint displayed below the legend.
@@ -2369,6 +2660,9 @@ declare namespace LocalJSX {
          */
         "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
+    /**
+     * A file uploader is a space to select and add supporting documentation.
+     */
     interface GcdsFileUploader {
         /**
           * Defines the file types the file uploader accepts.
@@ -2457,6 +2751,9 @@ declare namespace LocalJSX {
          */
         "value"?: string[];
     }
+    /**
+     * The footer is the responsive Government of Canada branded footer landmark.
+     */
     interface GcdsFooter {
         /**
           * Heading for contextual slot and nav landmark
@@ -2492,6 +2789,9 @@ declare namespace LocalJSX {
          */
         "wordmarkVariant"?: 'colour' | 'white';
     }
+    /**
+     * A grid is a responsive, flexible column layout to position elements on a page.
+     */
     interface GcdsGrid {
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
@@ -2575,6 +2875,9 @@ declare namespace LocalJSX {
     | 'section'
     | 'ul';
     }
+    /**
+     * A grid column is a single column in a grid layout, allowing for flexible content arrangement.
+     */
     interface GcdsGridCol {
         /**
           * Optimize grid column size for desktop (1024px and above). Desktop grid column sizes are based on a 12 column grid.
@@ -2602,6 +2905,9 @@ declare namespace LocalJSX {
          */
         "tag"?: string;
     }
+    /**
+     * The header is the responsive Government of Canada branded header landmark.
+     */
     interface GcdsHeader {
         /**
           * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
@@ -2634,6 +2940,9 @@ declare namespace LocalJSX {
          */
         "skipToHref": string;
     }
+    /**
+     * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+     */
     interface GcdsHeading {
         /**
           * Sets the line length to a maximum amount of characters per line for each heading level, ensuring a comfortable, accessible reading length.
@@ -2654,12 +2963,18 @@ declare namespace LocalJSX {
          */
         "tag": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
+    /**
+     * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+     */
     interface GcdsHint {
         /**
           * Id attribute for the hint.
          */
         "hintId"?: string;
     }
+    /**
+     * An icon is a symbol that visually represents an action or idea.
+     */
     interface GcdsIcon {
         /**
           * Add icon description.
@@ -2704,6 +3019,9 @@ declare namespace LocalJSX {
     | 'h2'
     | 'h1';
     }
+    /**
+     * An input is a space to enter short-form information in response to a question or instruction.
+     */
     interface GcdsInput {
         /**
           * String to have autocomplete enabled.
@@ -2834,6 +3152,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+     */
     interface GcdsLabel {
         /**
           * Specifies if the label is hidden or not.
@@ -2852,6 +3173,9 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
     }
+    /**
+     * The language toggle is a link to the same content in the other Official Language.
+     */
     interface GcdsLangToggle {
         /**
           * The href attribute specifies the URL of the opposite language page
@@ -2870,6 +3194,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsLangToggleCustomEvent<void>) => void;
     }
+    /**
+     * A link is a navigational element that brings a person to a new page, website, file, or section on the current page.
+     */
     interface GcdsLink {
         /**
           * Sets the display behavior of the link
@@ -2925,6 +3252,9 @@ declare namespace LocalJSX {
          */
         "variant"?: 'default' | 'light';
     }
+    /**
+     * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     */
     interface GcdsNavGroup {
         /**
           * Label for the expanded button trigger
@@ -2956,6 +3286,9 @@ declare namespace LocalJSX {
          */
         "openTrigger": string;
     }
+    /**
+     * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     */
     interface GcdsNavLink {
         /**
           * Current page flag
@@ -2978,6 +3311,9 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsNavLinkCustomEvent<void>) => void;
     }
+    /**
+     * The notice is a short, prominent message that’s part of the page content.
+     */
     interface GcdsNotice {
         /**
           * Set the notice title.
@@ -2992,6 +3328,9 @@ declare namespace LocalJSX {
          */
         "type": 'danger' | 'info' | 'success' | 'warning';
     }
+    /**
+     * Pagination is a division of content into multiple linked pages.
+     */
     interface GcdsPagination {
         /**
           * List display - Current page number
@@ -3043,6 +3382,9 @@ declare namespace LocalJSX {
          */
         "url"?: string | object;
     }
+    /**
+     * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+     */
     interface GcdsPhaseBanner {
         /**
           * Defines banner role.
@@ -3059,6 +3401,9 @@ declare namespace LocalJSX {
          */
         "isFixed"?: boolean;
     }
+    /**
+     * Radios provide a set of options for a single response.
+     */
     interface GcdsRadios {
         /**
           * Specifies if an input element is disabled or not.
@@ -3128,6 +3473,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * Search is a space for entering keywords to find relevant information.
+     */
     interface GcdsSearch {
         /**
           * Sets the action for the search form. Default will be canada.ca global search
@@ -3183,6 +3531,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * A select provides a large list of options for single selection.
+     */
     interface GcdsSelect {
         /**
           * The default value is an optional value that gets displayed before the user selects an option.
@@ -3258,12 +3609,18 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * A side navigation is a vertical list of page links on the left side of the screen.
+     */
     interface GcdsSideNav {
         /**
           * Label for navigation landmark
          */
         "label": string;
     }
+    /**
+     * The signature is the Government of Canada landmark identifier found in the header or footer.
+     */
     interface GcdsSignature {
         /**
           * Has link to canada.ca. Only applies to signature
@@ -3281,6 +3638,9 @@ declare namespace LocalJSX {
          */
         "variant"?: 'colour' | 'white';
     }
+    /**
+     * The screenreader-only component is text information only accessible with assistive technologies.
+     */
     interface GcdsSrOnly {
         /**
           * Sets the appropriate HTML tag for the content.
@@ -3295,6 +3655,9 @@ declare namespace LocalJSX {
     | 'p'
     | 'span';
     }
+    /**
+     * A stepper is a progress tracker for a multi-step process.
+     */
     interface GcdsStepper {
         /**
           * Defines the current step.
@@ -3310,6 +3673,9 @@ declare namespace LocalJSX {
          */
         "totalSteps": number;
     }
+    /**
+     * Text is a styled and formatted paragraph that displays written content in an accessible way.
+     */
     interface GcdsText {
         /**
           * Sets the line length to a maximum amount of characters per line to ensure a comfortable, accessible reading length.
@@ -3347,6 +3713,9 @@ declare namespace LocalJSX {
          */
         "textRole"?: 'light' | 'primary' | 'secondary';
     }
+    /**
+     * A text area is a space to enter long-form information in response to a question or instruction.
+     */
     interface GcdsTextarea {
         /**
           * Sets the maxlength attribute for the textarea element.
@@ -3436,6 +3805,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * A top navigation is a horizontal list of page links.
+     */
     interface GcdsTopNav {
         /**
           * Nav alignment
@@ -3447,6 +3819,9 @@ declare namespace LocalJSX {
          */
         "label": string;
     }
+    /**
+     * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
+     */
     interface GcdsTopicMenu {
         /**
           * Sets the homepage styling
@@ -3454,6 +3829,9 @@ declare namespace LocalJSX {
          */
         "home"?: boolean;
     }
+    /**
+     * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+     */
     interface GcdsVerifyBanner {
         /**
           * Defines the container width of the verify banner content
@@ -3515,47 +3893,173 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+             */
             "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
+            /**
+             * Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
+             */
             "gcds-breadcrumbs": LocalJSX.GcdsBreadcrumbs & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsElement>;
+            /**
+             * Breadcrumbs item represents a single link in the breadcrumbs navigation.
+             */
             "gcds-breadcrumbs-item": LocalJSX.GcdsBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsItemElement>;
+            /**
+             * The button is an interactive object that emphasizes an action.
+             */
             "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
+            /**
+             * A card is a box containing structured, actionable content on a single topic.
+             */
             "gcds-card": LocalJSX.GcdsCard & JSXBase.HTMLAttributes<HTMLGcdsCardElement>;
+            /**
+             * Checkboxes provide a set of options for multiple responses.
+             */
             "gcds-checkboxes": LocalJSX.GcdsCheckboxes & JSXBase.HTMLAttributes<HTMLGcdsCheckboxesElement>;
+            /**
+             * A container is a basic box layout with a set width for its contents.
+             */
             "gcds-container": LocalJSX.GcdsContainer & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
+            /**
+             * A date input is a space to enter a known date.
+             */
             "gcds-date-input": LocalJSX.GcdsDateInput & JSXBase.HTMLAttributes<HTMLGcdsDateInputElement>;
+            /**
+             * Date modified is an indicator of the last update to a webpage or application.
+             */
             "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
+            /**
+             * Details is an interactive switch for a person to expand or collapse content.
+             */
             "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
+            /**
+             * An error message is a description of a problem blocking a user goal.
+             */
             "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            /**
+             * An error summary is a list of user errors in a form.
+             */
             "gcds-error-summary": LocalJSX.GcdsErrorSummary & JSXBase.HTMLAttributes<HTMLGcdsErrorSummaryElement>;
+            /**
+             * A fieldset is a group of multiple form components or elements.
+             */
             "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
+            /**
+             * A file uploader is a space to select and add supporting documentation.
+             */
             "gcds-file-uploader": LocalJSX.GcdsFileUploader & JSXBase.HTMLAttributes<HTMLGcdsFileUploaderElement>;
+            /**
+             * The footer is the responsive Government of Canada branded footer landmark.
+             */
             "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
+            /**
+             * A grid is a responsive, flexible column layout to position elements on a page.
+             */
             "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
+            /**
+             * A grid column is a single column in a grid layout, allowing for flexible content arrangement.
+             */
             "gcds-grid-col": LocalJSX.GcdsGridCol & JSXBase.HTMLAttributes<HTMLGcdsGridColElement>;
+            /**
+             * The header is the responsive Government of Canada branded header landmark.
+             */
             "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
+            /**
+             * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+             */
             "gcds-heading": LocalJSX.GcdsHeading & JSXBase.HTMLAttributes<HTMLGcdsHeadingElement>;
+            /**
+             * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+             */
             "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
+            /**
+             * An icon is a symbol that visually represents an action or idea.
+             */
             "gcds-icon": LocalJSX.GcdsIcon & JSXBase.HTMLAttributes<HTMLGcdsIconElement>;
+            /**
+             * An input is a space to enter short-form information in response to a question or instruction.
+             */
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
+            /**
+             * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+             */
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
+            /**
+             * The language toggle is a link to the same content in the other Official Language.
+             */
             "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            /**
+             * A link is a navigational element that brings a person to a new page, website, file, or section on the current page.
+             */
             "gcds-link": LocalJSX.GcdsLink & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
+            /**
+             * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+             */
             "gcds-nav-group": LocalJSX.GcdsNavGroup & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
+            /**
+             * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+             */
             "gcds-nav-link": LocalJSX.GcdsNavLink & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
+            /**
+             * The notice is a short, prominent message that’s part of the page content.
+             */
             "gcds-notice": LocalJSX.GcdsNotice & JSXBase.HTMLAttributes<HTMLGcdsNoticeElement>;
+            /**
+             * Pagination is a division of content into multiple linked pages.
+             */
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
+            /**
+             * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+             */
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
+            /**
+             * Radios provide a set of options for a single response.
+             */
             "gcds-radios": LocalJSX.GcdsRadios & JSXBase.HTMLAttributes<HTMLGcdsRadiosElement>;
+            /**
+             * Search is a space for entering keywords to find relevant information.
+             */
             "gcds-search": LocalJSX.GcdsSearch & JSXBase.HTMLAttributes<HTMLGcdsSearchElement>;
+            /**
+             * A select provides a large list of options for single selection.
+             */
             "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
+            /**
+             * A side navigation is a vertical list of page links on the left side of the screen.
+             */
             "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
+            /**
+             * The signature is the Government of Canada landmark identifier found in the header or footer.
+             */
             "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
+            /**
+             * The screenreader-only component is text information only accessible with assistive technologies.
+             */
             "gcds-sr-only": LocalJSX.GcdsSrOnly & JSXBase.HTMLAttributes<HTMLGcdsSrOnlyElement>;
+            /**
+             * A stepper is a progress tracker for a multi-step process.
+             */
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
+            /**
+             * Text is a styled and formatted paragraph that displays written content in an accessible way.
+             */
             "gcds-text": LocalJSX.GcdsText & JSXBase.HTMLAttributes<HTMLGcdsTextElement>;
+            /**
+             * A text area is a space to enter long-form information in response to a question or instruction.
+             */
             "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
+            /**
+             * A top navigation is a horizontal list of page links.
+             */
             "gcds-top-nav": LocalJSX.GcdsTopNav & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;
+            /**
+             * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
+             */
             "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
+            /**
+             * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+             */
             "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }
     }

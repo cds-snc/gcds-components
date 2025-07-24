@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+`<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+
 ## Properties
 
 | Property | Attribute | Description                | Type     | Default     |

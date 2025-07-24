@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+
 ## Properties
 
 | Property           | Attribute         | Description                                                                                                                                | Type                                                                                                                                                                                                                                                                                   | Default     |

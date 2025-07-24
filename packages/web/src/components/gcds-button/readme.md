@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The button is an interactive object that emphasizes an action.
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                                                                                        | Type                                              | Default     |

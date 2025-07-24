@@ -3,6 +3,8 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
+ * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+ *
  * @slot banner-cta - Slot for the call-to-action element in the banner.
  * @slot banner-icon-left - Slot for displaying an icon/image on the left of the banner.
  * @slot banner-icon-right - Slot for displaying an icon/image on the right of the banner.

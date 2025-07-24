@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Details is an interactive switch for a person to expand or collapse content.
+
 ## Properties
 
 | Property                    | Attribute       | Description                                             | Type      | Default     |

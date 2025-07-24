@@ -5,6 +5,9 @@ import i18n from './i18n/i18n';
 import CanadaFlag from './assets/canada-flag.svg';
 import ContentToggleArrow from './assets/content-toggle-arrow.svg';
 
+/**
+ * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+ */
 @Component({
   tag: 'gcds-verify-banner',
   styleUrl: 'gcds-verify-banner.css',

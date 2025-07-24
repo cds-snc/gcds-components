@@ -11,6 +11,9 @@ import {
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * The language toggle is a link to the same content in the other Official Language.
+ */
 @Component({
   tag: 'gcds-lang-toggle',
   styleUrl: 'gcds-lang-toggle.css',

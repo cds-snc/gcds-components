@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Date modified is an indicator of the last update to a webpage or application.
+
 ## Properties
 
 | Property | Attribute | Description                              | Type                  | Default  |

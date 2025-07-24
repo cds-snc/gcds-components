@@ -1,6 +1,8 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
 /**
+ * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+ *
  * @slot - Slot for the hint content.
  */
 @Component({
