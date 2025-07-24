@@ -267,7 +267,7 @@ export class GcdsInput {
   /**
    * Emitted when the element has received input.
    */
-  @Event() gcdsInput: EventEmitter;
+  @Event() gcdsInput: EventEmitter<string>;
 
   /**
    * Handling input and change events on input
@@ -290,7 +290,7 @@ export class GcdsInput {
   /**
    * Emitted when the input has changed.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter<string>;
 
   /**
    * Call any active validators

@@ -196,12 +196,12 @@ export class GcdsTextarea {
   /**
    * Emitted when the textarea has changed.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter<string>;
 
   /**
    * Emitted when the textarea has received input.
    */
-  @Event() gcdsInput: EventEmitter;
+  @Event() gcdsInput: EventEmitter<string>;
 
   private handleInput = (e, customEvent) => {
     const val = e.target && e.target.value;

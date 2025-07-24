@@ -14,6 +14,13 @@
 | `legendSize` _(required)_ | `legend-size` | Sets the appropriate font size for the fieldset legend. | `"h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `undefined` |
 
 
+## Slots
+
+| Slot | Description                 |
+| ---- | --------------------------- |
+|      | Slot for the form elements. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -25,7 +32,7 @@
 graph TD;
   gcds-fieldset --> gcds-hint
   gcds-hint --> gcds-text
-  style gcds-fieldset fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-fieldset fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -23,14 +23,14 @@
 
 ## Events
 
-| Event        | Description                                                                                                        | Type                  |
-| ------------ | ------------------------------------------------------------------------------------------------------------------ | --------------------- |
-| `gcdsBlur`   | Emitted when the <gcds-radios> has lost focus                                                                      | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when a <gcds-radios> option is checked (but not when unchecked)                                            | `CustomEvent<void>`   |
-| `gcdsError`  | Emitted when <gcds-radios> has a validation error                                                                  | `CustomEvent<object>` |
-| `gcdsFocus`  | Emitted when <gcds-radios> has received focus                                                                      | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected) | `CustomEvent<void>`   |
-| `gcdsValid`  | Emitted when <gcds-radios> has passed validation                                                                   | `CustomEvent<void>`   |
+| Event        | Description                                                                                                                                            | Type                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| `gcdsBlur`   | Emitted when the <gcds-radios> has lost focus                                                                                                          | `CustomEvent<void>`   |
+| `gcdsChange` | Emitted when a <gcds-radios> option is checked (but not when unchecked). Contains new value in event detail                                            | `CustomEvent<string>` |
+| `gcdsError`  | Emitted when <gcds-radios> has a validation error                                                                                                      | `CustomEvent<object>` |
+| `gcdsFocus`  | Emitted when <gcds-radios> has received focus                                                                                                          | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail | `CustomEvent<string>` |
+| `gcdsValid`  | Emitted when <gcds-radios> has passed validation                                                                                                       | `CustomEvent<void>`   |
 
 
 ## Methods
@@ -63,7 +63,7 @@ graph TD;
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
-  style gcds-radios fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-radios fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

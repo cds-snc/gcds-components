@@ -1,6 +1,10 @@
 import { Component, Prop, Element, State, Host, Watch, h } from '@stencil/core';
 import { inheritAttributes } from '../../utils/utils';
 import i18n from './i18n/i18n';
+
+/**
+ * @slot - Slot for the form elements.
+ */
 @Component({
   tag: 'gcds-fieldset',
   styleUrl: 'gcds-fieldset.css',

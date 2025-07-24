@@ -196,14 +196,14 @@ export class GcdsDateInput {
   };
 
   /**
-   * Emitted when the element has received input.
+   * Emitted when the element has received input. Contains the new value in the event detail.
    */
-  @Event() gcdsInput: EventEmitter;
+  @Event() gcdsInput: EventEmitter<string>;
 
   /**
-   * Emitted when an element has changed.
+   * Emitted when an element has changed. Contains the new value in the event detail.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter<string>;
 
   /**
    * Emitted when an element has a validation error.

@@ -24,15 +24,15 @@
 
 ## Events
 
-| Event            | Description                                      | Type                  |
-| ---------------- | ------------------------------------------------ | --------------------- |
-| `gcdsBlur`       | Emitted when the uploader loses focus.           | `CustomEvent<void>`   |
-| `gcdsChange`     | Emitted when the user has made a file selection. | `CustomEvent<any>`    |
-| `gcdsError`      | Emitted when the input has a validation error.   | `CustomEvent<object>` |
-| `gcdsFocus`      | Emitted when the uploader has focus.             | `CustomEvent<void>`   |
-| `gcdsInput`      | Emitted when the user has uploaded a file.       | `CustomEvent<any>`    |
-| `gcdsRemoveFile` | Remove file and update value.                    | `CustomEvent<any>`    |
-| `gcdsValid`      | Emitted when the input has a validation error.   | `CustomEvent<object>` |
+| Event            | Description                                                                                  | Type                    |
+| ---------------- | -------------------------------------------------------------------------------------------- | ----------------------- |
+| `gcdsBlur`       | Emitted when the uploader loses focus.                                                       | `CustomEvent<void>`     |
+| `gcdsChange`     | Emitted when the user has made a file selection. Contains the new value in the event detail. | `CustomEvent<string[]>` |
+| `gcdsError`      | Emitted when the input has a validation error.                                               | `CustomEvent<object>`   |
+| `gcdsFocus`      | Emitted when the uploader has focus.                                                         | `CustomEvent<void>`     |
+| `gcdsInput`      | Emitted when the user has uploaded a file. Contains the new value in the event detail.       | `CustomEvent<string[]>` |
+| `gcdsRemoveFile` | Remove file and update value.                                                                | `CustomEvent<any>`      |
+| `gcdsValid`      | Emitted when the input has a validation error.                                               | `CustomEvent<object>`   |
 
 
 ## Methods
@@ -71,7 +71,7 @@ graph TD;
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
-  style gcds-file-uploader fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-file-uploader fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

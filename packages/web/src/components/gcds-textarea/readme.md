@@ -30,10 +30,10 @@
 | Event        | Description                                       | Type                  |
 | ------------ | ------------------------------------------------- | --------------------- |
 | `gcdsBlur`   | Emitted when the textarea loses focus.            | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when the textarea has changed.            | `CustomEvent<any>`    |
+| `gcdsChange` | Emitted when the textarea has changed.            | `CustomEvent<string>` |
 | `gcdsError`  | Emitted when the textarea has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the textarea has focus.              | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the textarea has received input.     | `CustomEvent<any>`    |
+| `gcdsInput`  | Emitted when the textarea has received input.     | `CustomEvent<string>` |
 | `gcdsValid`  | Emitted when the textarea has a validation error. | `CustomEvent<object>` |
 
 
@@ -69,7 +69,7 @@ graph TD;
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
-  style gcds-textarea fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-textarea fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

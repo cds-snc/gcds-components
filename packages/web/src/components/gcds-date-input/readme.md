@@ -23,14 +23,14 @@
 
 ## Events
 
-| Event        | Description                                     | Type                  |
-| ------------ | ----------------------------------------------- | --------------------- |
-| `gcdsBlur`   | Emitted when an element loses focus.            | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when an element has changed.            | `CustomEvent<any>`    |
-| `gcdsError`  | Emitted when an element has a validation error. | `CustomEvent<object>` |
-| `gcdsFocus`  | Emitted when an element has focus.              | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the element has received input.    | `CustomEvent<any>`    |
-| `gcdsValid`  | Emitted when an element has validated.          | `CustomEvent<object>` |
+| Event        | Description                                                                              | Type                  |
+| ------------ | ---------------------------------------------------------------------------------------- | --------------------- |
+| `gcdsBlur`   | Emitted when an element loses focus.                                                     | `CustomEvent<void>`   |
+| `gcdsChange` | Emitted when an element has changed. Contains the new value in the event detail.         | `CustomEvent<string>` |
+| `gcdsError`  | Emitted when an element has a validation error.                                          | `CustomEvent<object>` |
+| `gcdsFocus`  | Emitted when an element has focus.                                                       | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the element has received input. Contains the new value in the event detail. | `CustomEvent<string>` |
+| `gcdsValid`  | Emitted when an element has validated.                                                   | `CustomEvent<object>` |
 
 
 ## Methods
@@ -71,7 +71,7 @@ graph TD;
   gcds-input --> gcds-label
   gcds-input --> gcds-hint
   gcds-input --> gcds-error-message
-  style gcds-date-input fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-date-input fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

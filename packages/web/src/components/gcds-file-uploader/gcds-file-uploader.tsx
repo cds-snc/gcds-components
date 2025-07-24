@@ -192,14 +192,14 @@ export class GcdsFileUploader {
   };
 
   /**
-   * Emitted when the user has made a file selection.
+   * Emitted when the user has made a file selection. Contains the new value in the event detail.
    */
-  @StencilEvent() gcdsChange: EventEmitter;
+  @StencilEvent() gcdsChange: EventEmitter<string[]>;
 
   /**
-   * Emitted when the user has uploaded a file.
+   * Emitted when the user has uploaded a file. Contains the new value in the event detail.
    */
-  @StencilEvent() gcdsInput: EventEmitter;
+  @StencilEvent() gcdsInput: EventEmitter<string[]>;
 
   private handleInput = (e, customEvent) => {
     const filesContainer: string[] = [];

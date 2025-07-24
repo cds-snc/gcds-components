@@ -40,10 +40,10 @@
 | Event        | Description                                    | Type                  |
 | ------------ | ---------------------------------------------- | --------------------- |
 | `gcdsBlur`   | Emitted when the input loses focus.            | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when the input has changed.            | `CustomEvent<any>`    |
+| `gcdsChange` | Emitted when the input has changed.            | `CustomEvent<string>` |
 | `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the input has focus.              | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the element has received input.   | `CustomEvent<any>`    |
+| `gcdsInput`  | Emitted when the element has received input.   | `CustomEvent<string>` |
 | `gcdsValid`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
 
 
@@ -102,7 +102,7 @@ graph TD;
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
   gcds-date-input --> gcds-input
-  style gcds-input fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-input fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

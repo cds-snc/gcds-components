@@ -27,10 +27,10 @@
 | Event        | Description                                     | Type                  |
 | ------------ | ----------------------------------------------- | --------------------- |
 | `gcdsBlur`   | Emitted when the select loses focus.            | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when the select value has changed.      | `CustomEvent<any>`    |
+| `gcdsChange` | Emitted when the select value has changed.      | `CustomEvent<string>` |
 | `gcdsError`  | Emitted when the select has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`  | Emitted when the select has focus.              | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the select has received input.     | `CustomEvent<any>`    |
+| `gcdsInput`  | Emitted when the select has received input.     | `CustomEvent<string>` |
 | `gcdsValid`  | Emitted when the select has a validation error. | `CustomEvent<object>` |
 
 
@@ -69,7 +69,7 @@ graph TD;
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
   gcds-date-input --> gcds-select
-  style gcds-select fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-select fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

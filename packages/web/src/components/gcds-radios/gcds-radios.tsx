@@ -232,14 +232,14 @@ export class GcdsRadios {
    */
 
   /**
-   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected)
+   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
    */
-  @Event() gcdsInput!: EventEmitter<void>;
+  @Event() gcdsInput!: EventEmitter<string>;
 
   /**
-   * Emitted when a <gcds-radios> option is checked (but not when unchecked)
+   * Emitted when a <gcds-radios> option is checked (but not when unchecked). Contains new value in event detail
    */
-  @Event() gcdsChange!: EventEmitter<void>;
+  @Event() gcdsChange!: EventEmitter<string>;
 
   /**
    * Emitted when <gcds-radios> has received focus

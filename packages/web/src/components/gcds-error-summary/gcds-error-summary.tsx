@@ -6,6 +6,8 @@ import {
   Watch,
   State,
   Listen,
+  Event,
+  EventEmitter,
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
@@ -62,6 +64,25 @@ export class GcdsErrorSummary {
       this.listen = false;
     }
   }
+
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when the link has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link has been clicked.
+   */
+  @Event() gcdsClick!: EventEmitter<string>;
 
   /**
    * Language of rendered component
@@ -148,7 +169,7 @@ export class GcdsErrorSummary {
   focusElement(id) {
     const element = document.querySelector(id);
 
-    let target = `[for=${id.replace('#', '')}]`;
+    const target = `[for=${id.replace('#', '')}]`;
 
     element.closest('form').querySelector(target)?.scrollIntoView();
     element.focus();

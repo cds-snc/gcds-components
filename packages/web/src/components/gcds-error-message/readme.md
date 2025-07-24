@@ -12,6 +12,13 @@
 | `messageId` _(required)_ | `message-id` | Id attribute for the error message. | `string` | `undefined` |
 
 
+## Slots
+
+| Slot | Description                         |
+| ---- | ----------------------------------- |
+|      | Slot for the error message content. |
+
+
 ## Dependencies
 
 ### Used by
@@ -41,7 +48,7 @@ graph TD;
   gcds-radios --> gcds-error-message
   gcds-select --> gcds-error-message
   gcds-textarea --> gcds-error-message
-  style gcds-error-message fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-error-message fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
