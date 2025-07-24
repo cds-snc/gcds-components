@@ -58,6 +58,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot | Description                                          |
+| ---- | ---------------------------------------------------- |
+|      | Slot for the navigation groups and navigation links. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -69,7 +76,7 @@ Type: `Promise<void>`
 graph TD;
   gcds-side-nav --> gcds-nav-group
   gcds-nav-group --> gcds-icon
-  style gcds-side-nav fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-side-nav fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

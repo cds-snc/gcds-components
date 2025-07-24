@@ -15,11 +15,11 @@
 
 ## Events
 
-| Event       | Description                             | Type                |
-| ----------- | --------------------------------------- | ------------------- |
-| `gcdsBlur`  | Emitted when the link loses focus.      | `CustomEvent<void>` |
-| `gcdsClick` | Emitted when the link has been clicked. | `CustomEvent<void>` |
-| `gcdsFocus` | Emitted when the link has focus.        | `CustomEvent<void>` |
+| Event       | Description                             | Type                  |
+| ----------- | --------------------------------------- | --------------------- |
+| `gcdsBlur`  | Emitted when the link loses focus.      | `CustomEvent<void>`   |
+| `gcdsClick` | Emitted when the link has been clicked. | `CustomEvent<string>` |
+| `gcdsFocus` | Emitted when the link has focus.        | `CustomEvent<void>`   |
 
 
 ## Methods
@@ -33,6 +33,13 @@ Focus the link element
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot | Description                           |
+| ---- | ------------------------------------- |
+|      | Slot for the navigation link content. |
 
 
 ----------------------------------------------

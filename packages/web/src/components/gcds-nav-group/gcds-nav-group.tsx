@@ -17,6 +17,9 @@ import {
   closestElement,
 } from '../../utils/utils';
 
+/**
+ * @slot - Slot for the list of navigation links.
+ */
 @Component({
   tag: 'gcds-nav-group',
   styleUrl: 'gcds-nav-group.css',

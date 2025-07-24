@@ -47,6 +47,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot | Description                            |
+| ---- | -------------------------------------- |
+|      | Slot for the list of navigation links. |
+
+
 ## Dependencies
 
 ### Used by
@@ -64,7 +71,7 @@ graph TD;
   gcds-nav-group --> gcds-icon
   gcds-side-nav --> gcds-nav-group
   gcds-top-nav --> gcds-nav-group
-  style gcds-nav-group fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-nav-group fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

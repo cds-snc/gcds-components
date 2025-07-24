@@ -1,5 +1,16 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Host,
+  Prop,
+  Event,
+  EventEmitter,
+  h,
+} from '@stencil/core';
 
+/**
+ * @slot - Slot for the breadcrumb item link label.
+ */
 @Component({
   tag: 'gcds-breadcrumbs-item',
   styleUrl: 'gcds-breadcrumbs-item.css',
@@ -16,6 +27,25 @@ export class GcdsBreadcrumbsItem {
    * Specifies the href of the breadcrumb item.
    */
   @Prop() href!: string | undefined;
+
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when the link has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link has been clicked. Contains the href in the event detail.
+   */
+  @Event() gcdsClick!: EventEmitter<string>;
 
   render() {
     const { href } = this;

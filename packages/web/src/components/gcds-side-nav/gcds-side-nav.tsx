@@ -12,6 +12,9 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 import I18N from './i18n/i18n';
 
+/**
+ * @slot - Slot for the navigation groups and navigation links.
+ */
 @Component({
   tag: 'gcds-side-nav',
   styleUrl: 'gcds-side-nav.css',

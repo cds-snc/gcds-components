@@ -14,6 +14,16 @@
 | `isFixed`    | `is-fixed`    | Defines if the banner's position is fixed.              | `boolean`                                        | `undefined` |
 
 
+## Slots
+
+| Slot                  | Description                                                   |
+| --------------------- | ------------------------------------------------------------- |
+| `"banner-cta"`        | Slot for the call-to-action element in the banner.            |
+| `"banner-icon-left"`  | Slot for displaying an icon/image on the left of the banner.  |
+| `"banner-icon-right"` | Slot for displaying an icon/image on the right of the banner. |
+| `"banner-text"`       | Slot for the main content of the banner.                      |
+
+
 ## Dependencies
 
 ### Depends on
@@ -24,7 +34,7 @@
 ```mermaid
 graph TD;
   gcds-phase-banner --> gcds-container
-  style gcds-phase-banner fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-phase-banner fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

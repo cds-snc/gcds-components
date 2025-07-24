@@ -11,6 +11,9 @@ import {
 } from '@stencil/core';
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 
+/**
+ * @slot - Slot for the navigation link content.
+ */
 @Component({
   tag: 'gcds-nav-link',
   styleUrl: 'gcds-nav-link.css',
@@ -34,7 +37,7 @@ export class GcdsNavLink {
   /**
    * Emitted when the link has been clicked.
    */
-  @Event() gcdsClick!: EventEmitter<void>;
+  @Event() gcdsClick!: EventEmitter<string>;
 
   /**
    * Emitted when the link has focus.
