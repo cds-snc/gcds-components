@@ -40,7 +40,7 @@
 
 ### Used by
 
- - [gcds-breadcrumbs-item](../gcds-breadcrumbs)
+ - [gcds-breadcrumbs-item](../gcds-breadcrumbs-item)
  - [gcds-card](../gcds-card)
  - [gcds-error-summary](../gcds-error-summary)
  - [gcds-footer](../gcds-footer)

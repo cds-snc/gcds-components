@@ -7,44 +7,31 @@
 
 ## Properties
 
-| Property            | Attribute | Description                                | Type     | Default     |
-| ------------------- | --------- | ------------------------------------------ | -------- | ----------- |
-| `href` _(required)_ | `href`    | Specifies the href of the breadcrumb item. | `string` | `undefined` |
-
-
-## Events
-
-| Event       | Description                                                                    | Type                  |
-| ----------- | ------------------------------------------------------------------------------ | --------------------- |
-| `gcdsBlur`  | Emitted when the link loses focus.                                             | `CustomEvent<void>`   |
-| `gcdsClick` | Emitted when the link has been clicked. Contains the href in the event detail. | `CustomEvent<string>` |
-| `gcdsFocus` | Emitted when the link has focus.                                               | `CustomEvent<void>`   |
+| Property         | Attribute          | Description                                                    | Type      | Default |
+| ---------------- | ------------------ | -------------------------------------------------------------- | --------- | ------- |
+| `hideCanadaLink` | `hide-canada-link` | Defines if the default canada.ca link is displayed or omitted. | `boolean` | `false` |
 
 
 ## Slots
 
-| Slot | Description                              |
-| ---- | ---------------------------------------- |
-|      | Slot for the breadcrumb item link label. |
+| Slot | Description                    |
+| ---- | ------------------------------ |
+|      | Slot for the breadcrumb items. |
 
 
 ## Dependencies
 
-### Used by
-
- - [gcds-breadcrumbs](.)
-
 ### Depends on
 
-- [gcds-link](../gcds-link)
+- [gcds-breadcrumbs-item](../gcds-breadcrumbs-item)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-breadcrumbs --> gcds-breadcrumbs-item
   gcds-breadcrumbs-item --> gcds-link
   gcds-link --> gcds-icon
-  gcds-breadcrumbs --> gcds-breadcrumbs-item
-  style gcds-breadcrumbs-item fill:#26374a,stroke:#333,stroke-width:4px
+  style gcds-breadcrumbs fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
