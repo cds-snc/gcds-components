@@ -1,4 +1,7 @@
-import { langProp } from '../../../utils/storybook/component-properties';
+import {
+  langProp,
+  eventProp,
+} from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Search',
@@ -46,6 +49,28 @@ export default {
       },
     },
     ...langProp,
+
+    // Events
+    gcdsChange: {
+      action: 'change',
+      ...eventProp,
+    },
+    gcdsInput: {
+      action: 'input',
+      ...eventProp,
+    },
+    gcdsFocus: {
+      action: 'focus',
+      ...eventProp,
+    },
+    gcdsBlur: {
+      action: 'blur',
+      ...eventProp,
+    },
+    gcdsSubmit: {
+      action: 'submit',
+      ...eventProp,
+    },
   },
 };
 
