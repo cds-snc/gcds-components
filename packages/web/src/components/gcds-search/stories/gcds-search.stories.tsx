@@ -24,6 +24,14 @@ export default {
         defaultValue: { summary: 'q' },
       },
     },
+    value: {
+      name: 'value',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+    },
     placeholder: {
       name: 'placeholder',
       control: 'text',
@@ -85,6 +93,7 @@ const Template = args =>
     args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null
   }
   ${args.searchId != 'search' ? `search-id="${args.searchId}"` : null}
+  ${args.value ? `value="${args.value}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-search>
@@ -98,6 +107,7 @@ const Template = args =>
     args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null
   }
   ${args.searchId != 'search' ? `searchId="${args.searchId}"` : null}
+  ${args.value ? `value="${args.value}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsSearch>
@@ -112,6 +122,7 @@ const TemplatePlayground = args => `
     args.placeholder != 'Canada.ca' ? `placeholder="${args.placeholder}"` : null
   }
   ${args.searchId != 'search' ? `search-id="${args.searchId}"` : null}
+  ${args.value ? `value="${args.value}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </gcds-search>
@@ -126,6 +137,7 @@ Default.args = {
   name: 'q',
   placeholder: 'Canada.ca',
   searchId: 'search',
+  value: '',
   lang: 'en',
 };
 
@@ -138,6 +150,7 @@ French.args = {
   name: 'q',
   placeholder: 'Canada.ca',
   searchId: 'search',
+  value: '',
   lang: 'fr',
 };
 
@@ -150,6 +163,20 @@ Custom.args = {
   name: 'search',
   placeholder: 'sitename',
   searchId: 'searchform',
+  value: '',
+  lang: 'en',
+};
+
+// ------ Search default ------
+
+export const Value = Template.bind({});
+Value.args = {
+  action: 'search.html',
+  method: 'post',
+  name: 'search',
+  placeholder: 'sitename',
+  searchId: 'searchform',
+  value: 'Design system',
   lang: 'en',
 };
 
@@ -162,6 +189,7 @@ Props.args = {
   name: 'q',
   placeholder: 'Canada.ca',
   searchId: 'search',
+  value: '',
   lang: 'en',
 };
 
@@ -174,5 +202,6 @@ Playground.args = {
   name: 'q',
   placeholder: 'Canada.ca',
   searchId: 'search',
+  value: '',
   lang: 'en',
 };
