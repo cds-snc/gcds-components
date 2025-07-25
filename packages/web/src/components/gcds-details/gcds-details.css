@@ -72,7 +72,13 @@
       }
 
       &[aria-expanded='false'] + .details__panel {
-        display: none;
+        clip-path: inset(100%);
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
       }
 
       &[aria-expanded='true']:before {
@@ -84,6 +90,10 @@
       position: relative;
       margin: var(--gcds-details-panel-margin);
       padding: var(--gcds-details-panel-padding);
+
+      summary {
+        display: none;
+      }
 
       &:before {
         position: absolute;

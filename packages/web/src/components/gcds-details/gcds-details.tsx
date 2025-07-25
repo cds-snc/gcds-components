@@ -18,6 +18,8 @@ import { emitEvent } from '../../utils/utils';
 export class GcdsDetails {
   @Element() el: HTMLElement;
 
+  private detailsElement?: HTMLDetailsElement;
+
   /**
    * Props
    */
@@ -61,7 +63,16 @@ export class GcdsDetails {
   @Method()
   async toggle() {
     this.open = !this.open;
+    this.detailsElement.open = this.open;
   }
+
+  /*
+   * Handle the details being toggled by other means (e.g., ctrl+f)
+   */
+  private handleToggle = (ev: Event) => {
+    this.open = !this.open;
+    this.open = (ev.target as HTMLDetailsElement).open;
+  };
 
   render() {
     const { detailsTitle, open } = this;
@@ -85,13 +96,19 @@ export class GcdsDetails {
           >
             {detailsTitle}
           </button>
-          <div
+          <details
+            open={open}
             id="details__panel"
             class="details__panel"
             aria-labelledby="details__summary"
+            onToggle={ev => this.handleToggle(ev)}
+            ref={element =>
+              (this.detailsElement = element as HTMLDetailsElement)
+            }
           >
+            <summary>{detailsTitle}</summary>
             <slot></slot>
-          </div>
+          </details>
         </div>
       </Host>
     );
