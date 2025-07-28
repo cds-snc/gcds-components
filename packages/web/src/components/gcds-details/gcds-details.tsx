@@ -6,6 +6,7 @@ import {
   Method,
   Event,
   EventEmitter,
+  Listen,
   h,
 } from '@stencil/core';
 import { emitEvent } from '../../utils/utils';
@@ -52,6 +53,26 @@ export class GcdsDetails {
    * Emitted when the details has been clicked.
    */
   @Event() gcdsClick!: EventEmitter<void>;
+
+  /**
+   * Listen to beforeprint and afterprint events to handle details state
+   * when printing. This ensures that the details are open when printing,
+   * and closed after printing if they were closed before.
+   */
+  @Listen('beforeprint', { target: 'window' })
+  handleBeforePrint() {
+    if (!this.open) {
+      this.toggle();
+      this.detailsElement.setAttribute('data-was-closed', 'true');
+    }
+  }
+  @Listen('afterprint', { target: 'window' })
+  handleAfterPrint() {
+    if (this.detailsElement?.getAttribute('data-was-closed') === 'true') {
+      this.toggle();
+      this.detailsElement.removeAttribute('data-was-closed');
+    }
+  }
 
   /**
    * Methods

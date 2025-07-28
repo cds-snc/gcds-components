@@ -178,6 +178,13 @@
       }
 
       .details__panel {
+        clip-path: none;
+        clip: auto;
+        height: auto;
+        overflow: visible;
+        position: static;
+        white-space: normal;
+        width: auto;
         display: block;
         /* Note: Logical properties are not yet supported in print */
         border-left: var(--gcds-details-panel-border-width) solid
