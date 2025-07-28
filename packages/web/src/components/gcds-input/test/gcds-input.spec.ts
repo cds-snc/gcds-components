@@ -125,6 +125,30 @@ describe('gcds-input', () => {
     `);
   });
 
+  it('renders type tel', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input type="tel" label="Label" input-id="type-tel" name="type-tel-name"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input type="tel" label="Label" input-id="type-tel" name="type-tel-name">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="type-tel" label="Label" lang="en"></gcds-label>
+            <input
+              type="tel"
+              id="type-tel"
+              name="type-tel-name"
+              part="input"
+              aria-labelledby="label-for-type-tel"
+              aria-invalid="false"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
   it('renders type text', async () => {
     const { root } = await newSpecPage({
       components: [GcdsInput],
