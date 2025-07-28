@@ -51,6 +51,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot        | Description                         |
+| ----------- | ----------------------------------- |
+| `"default"` | Slot for options and option groups. |
+
+
 ## Dependencies
 
 ### Used by

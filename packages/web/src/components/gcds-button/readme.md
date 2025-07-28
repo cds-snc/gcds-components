@@ -35,9 +35,9 @@ The button is an interactive object that emphasizes an action.
 
 ## Slots
 
-| Slot | Description                     |
-| ---- | ------------------------------- |
-|      | Slot for the button/link label. |
+| Slot        | Description                     |
+| ----------- | ------------------------------- |
+| `"default"` | Slot for the button/link label. |
 
 
 ## Dependencies

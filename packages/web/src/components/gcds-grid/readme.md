@@ -34,9 +34,9 @@ A grid is a responsive, flexible column layout to position elements on a page.
 
 ## Slots
 
-| Slot | Description                            |
-| ---- | -------------------------------------- |
-|      | Slot for the main content of the grid. |
+| Slot        | Description                            |
+| ----------- | -------------------------------------- |
+| `"default"` | Slot for the main content of the grid. |
 
 
 ## Dependencies

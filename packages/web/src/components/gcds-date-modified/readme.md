@@ -18,9 +18,9 @@ Date modified is an indicator of the last update to a webpage or application.
 
 ## Slots
 
-| Slot | Description                       |
-| ---- | --------------------------------- |
-|      | Slot for the date/version number. |
+| Slot        | Description                       |
+| ----------- | --------------------------------- |
+| `"default"` | Slot for the date/version number. |
 
 
 ## Dependencies

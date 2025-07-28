@@ -18,9 +18,9 @@ Breadcrumbs is a path to the current page from each preceding level of the site'
 
 ## Slots
 
-| Slot | Description                    |
-| ---- | ------------------------------ |
-|      | Slot for the breadcrumb items. |
+| Slot        | Description                    |
+| ----------- | ------------------------------ |
+| `"default"` | Slot for the breadcrumb items. |
 
 
 ## Dependencies

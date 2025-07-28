@@ -5,7 +5,7 @@ import i18n from './i18n/i18n';
 /**
  * Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
  *
- * @slot - Slot for the breadcrumb items.
+ * @slot default - Slot for the breadcrumb items.
  */
 @Component({
   tag: 'gcds-breadcrumbs',

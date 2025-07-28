@@ -18,9 +18,9 @@ The screenreader-only component is text information only accessible with assisti
 
 ## Slots
 
-| Slot | Description                             |
-| ---- | --------------------------------------- |
-|      | Slot for the hidden accessible content. |
+| Slot        | Description                             |
+| ----------- | --------------------------------------- |
+| `"default"` | Slot for the hidden accessible content. |
 
 
 ## Dependencies

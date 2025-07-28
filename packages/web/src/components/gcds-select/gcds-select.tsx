@@ -28,6 +28,8 @@ import {
 
 /**
  * A select provides a large list of options for single selection.
+ *
+ * @slot default - Slot for options and option groups.
  */
 @Component({
   tag: 'gcds-select',

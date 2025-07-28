@@ -23,9 +23,9 @@ Text is a styled and formatted paragraph that displays written content in an acc
 
 ## Slots
 
-| Slot | Description                               |
-| ---- | ----------------------------------------- |
-|      | Slot for the content of the text element. |
+| Slot        | Description                               |
+| ----------- | ----------------------------------------- |
+| `"default"` | Slot for the content of the text element. |
 
 
 ## Shadow Parts

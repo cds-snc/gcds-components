@@ -41,9 +41,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot | Description                                     |
-| ---- | ----------------------------------------------- |
-|      | Slot for the main content of the details panel. |
+| Slot        | Description                                     |
+| ----------- | ----------------------------------------------- |
+| `"default"` | Slot for the main content of the details panel. |
 
 
 ----------------------------------------------

@@ -4,7 +4,7 @@ import { SpacingValues, SpacingArray } from '../../utils/types/spacing';
 /**
  * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
  *
- * @slot - Slot for the heading content
+ * @slot default - Slot for the heading content
  */
 @Component({
   tag: 'gcds-heading',

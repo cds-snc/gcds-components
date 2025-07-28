@@ -5,7 +5,7 @@ import i18n from './i18n/i18n';
 /**
  * Date modified is an indicator of the last update to a webpage or application.
  *
- * @slot - Slot for the date/version number.
+ * @slot default - Slot for the date/version number.
  */
 @Component({
   tag: 'gcds-date-modified',

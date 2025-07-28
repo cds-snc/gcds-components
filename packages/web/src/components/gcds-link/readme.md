@@ -35,9 +35,9 @@ A link is a navigational element that brings a person to a new page, website, fi
 
 ## Slots
 
-| Slot | Description                |
-| ---- | -------------------------- |
-|      | Slot for the link content. |
+| Slot        | Description                |
+| ----------- | -------------------------- |
+| `"default"` | Slot for the link content. |
 
 
 ## Dependencies

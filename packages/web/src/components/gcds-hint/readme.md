@@ -18,9 +18,9 @@
 
 ## Slots
 
-| Slot | Description                |
-| ---- | -------------------------- |
-|      | Slot for the hint content. |
+| Slot        | Description                |
+| ----------- | -------------------------- |
+| `"default"` | Slot for the hint content. |
 
 
 ## Shadow Parts

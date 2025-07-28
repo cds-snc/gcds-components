@@ -4,7 +4,7 @@ import { SpacingValues, SpacingArray } from '../../utils/types/spacing';
 /**
  * Text is a styled and formatted paragraph that displays written content in an accessible way.
  *
- * @slot - Slot for the content of the text element.
+ * @slot default - Slot for the content of the text element.
  */
 @Component({
   tag: 'gcds-text',

@@ -30,9 +30,9 @@
 
 ## Slots
 
-| Slot | Description                             |
-| ---- | --------------------------------------- |
-|      | Slot for the main content of the alert. |
+| Slot        | Description                             |
+| ----------- | --------------------------------------- |
+| `"default"` | Slot for the main content of the alert. |
 
 
 ## Dependencies

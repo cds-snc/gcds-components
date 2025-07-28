@@ -5,7 +5,7 @@ import i18n from './i18n/i18n';
 /**
  * A fieldset is a group of multiple form components or elements.
  *
- * @slot - Slot for the form elements.
+ * @slot default - Slot for the form elements.
  */
 @Component({
   tag: 'gcds-fieldset',

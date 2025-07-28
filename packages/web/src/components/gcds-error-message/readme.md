@@ -18,9 +18,9 @@ An error message is a description of a problem blocking a user goal.
 
 ## Slots
 
-| Slot | Description                         |
-| ---- | ----------------------------------- |
-|      | Slot for the error message content. |
+| Slot        | Description                         |
+| ----------- | ----------------------------------- |
+| `"default"` | Slot for the error message content. |
 
 
 ## Dependencies

@@ -20,9 +20,9 @@ The notice is a short, prominent message that’s part of the page content.
 
 ## Slots
 
-| Slot | Description                              |
-| ---- | ---------------------------------------- |
-|      | Slot for the main content of the notice. |
+| Slot        | Description                              |
+| ----------- | ---------------------------------------- |
+| `"default"` | Slot for the main content of the notice. |
 
 
 ## Dependencies

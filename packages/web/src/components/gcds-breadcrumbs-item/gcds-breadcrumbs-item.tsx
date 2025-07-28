@@ -11,7 +11,7 @@ import {
 /**
  * Breadcrumbs item represents a single link in the breadcrumbs navigation.
  *
- * @slot - Slot for the breadcrumb item link label.
+ * @slot default - Slot for the breadcrumb item link label.
  */
 @Component({
   tag: 'gcds-breadcrumbs-item',

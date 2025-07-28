@@ -20,9 +20,9 @@ A fieldset is a group of multiple form components or elements.
 
 ## Slots
 
-| Slot | Description                 |
-| ---- | --------------------------- |
-|      | Slot for the form elements. |
+| Slot        | Description                 |
+| ----------- | --------------------------- |
+| `"default"` | Slot for the form elements. |
 
 
 ## Dependencies

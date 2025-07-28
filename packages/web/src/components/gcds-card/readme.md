@@ -31,9 +31,9 @@ A card is a box containing structured, actionable content on a single topic.
 
 ## Slots
 
-| Slot | Description                                                                |
-| ---- | -------------------------------------------------------------------------- |
-|      | Slot for the card description. Will ovewrite the description prop if used. |
+| Slot        | Description                                                                |
+| ----------- | -------------------------------------------------------------------------- |
+| `"default"` | Slot for the card description. Will ovewrite the description prop if used. |
 
 
 ## Dependencies

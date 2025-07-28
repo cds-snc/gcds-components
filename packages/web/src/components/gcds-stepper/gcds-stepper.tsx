@@ -5,7 +5,7 @@ import i18n from './i18n/i18n';
 /**
  * A stepper is a progress tracker for a multi-step process.
  *
- * @slot - Slot for the heading content.
+ * @slot default - Slot for the heading content.
  */
 @Component({
   tag: 'gcds-stepper',

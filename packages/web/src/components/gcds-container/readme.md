@@ -24,9 +24,9 @@ A container is a basic box layout with a set width for its contents.
 
 ## Slots
 
-| Slot | Description                                 |
-| ---- | ------------------------------------------- |
-|      | Slot for the main content of the container. |
+| Slot        | Description                                 |
+| ----------- | ------------------------------------------- |
+| `"default"` | Slot for the main content of the container. |
 
 
 ## Dependencies

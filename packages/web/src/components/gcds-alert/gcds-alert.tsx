@@ -14,7 +14,7 @@ import i18n from './i18n/i18n';
 /**
  * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
  *
- * @slot - Slot for the main content of the alert.
+ * @slot default - Slot for the main content of the alert.
  */
 @Component({
   tag: 'gcds-alert',

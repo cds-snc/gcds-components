@@ -20,9 +20,9 @@ A stepper is a progress tracker for a multi-step process.
 
 ## Slots
 
-| Slot | Description                   |
-| ---- | ----------------------------- |
-|      | Slot for the heading content. |
+| Slot        | Description                   |
+| ----------- | ----------------------------- |
+| `"default"` | Slot for the heading content. |
 
 
 ## Dependencies

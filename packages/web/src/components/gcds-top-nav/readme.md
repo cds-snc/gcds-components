@@ -65,9 +65,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot | Description                                          |
-| ---- | ---------------------------------------------------- |
-|      | Slot for the navigation groups and navigation links. |
+| Slot        | Description                                          |
+| ----------- | ---------------------------------------------------- |
+| `"default"` | Slot for the navigation groups and navigation links. |
 
 
 ## Dependencies

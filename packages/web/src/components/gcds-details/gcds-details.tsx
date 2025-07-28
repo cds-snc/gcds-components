@@ -13,7 +13,7 @@ import { emitEvent } from '../../utils/utils';
 /**
  * Details is an interactive switch for a person to expand or collapse content.
  *
- * @slot - Slot for the main content of the details panel.
+ * @slot default - Slot for the main content of the details panel.
  */
 @Component({
   tag: 'gcds-details',

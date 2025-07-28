@@ -20,9 +20,9 @@ A grid column is a single column in a grid layout, allowing for flexible content
 
 ## Slots
 
-| Slot | Description                                    |
-| ---- | ---------------------------------------------- |
-|      | Slot for the main content of the grid coloumn. |
+| Slot        | Description                                    |
+| ----------- | ---------------------------------------------- |
+| `"default"` | Slot for the main content of the grid coloumn. |
 
 
 ----------------------------------------------

@@ -41,9 +41,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot | Description                           |
-| ---- | ------------------------------------- |
-|      | Slot for the navigation link content. |
+| Slot        | Description                           |
+| ----------- | ------------------------------------- |
+| `"default"` | Slot for the navigation link content. |
 
 
 ----------------------------------------------

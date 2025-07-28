@@ -50,7 +50,7 @@ const GridGapArray = [
 /**
  * A grid is a responsive, flexible column layout to position elements on a page.
  *
- * @slot - Slot for the main content of the grid.
+ * @slot default - Slot for the main content of the grid.
  */
 @Component({
   tag: 'gcds-grid',

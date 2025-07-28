@@ -15,7 +15,7 @@ import I18N from './i18n/i18n';
 /**
  * A top navigation is a horizontal list of page links.
  *
- * @slot - Slot for the navigation groups and navigation links.
+ * @slot default - Slot for the navigation groups and navigation links.
  */
 @Component({
   tag: 'gcds-top-nav',
