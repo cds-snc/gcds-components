@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.40.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.39.0...gcds-components-v0.40.0) (2025-07-28)
+
+
+### :rocket: New Features
+
+* **gcds-input:** add type "tel" to input ([#912](https://github.com/cds-snc/gcds-components/issues/912)) ([00d3efd](https://github.com/cds-snc/gcds-components/commit/00d3efd252172e3280a788e43bc6cbab5ed84aef))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-details:** Ability to search into details panel ([#913](https://github.com/cds-snc/gcds-components/issues/913)) ([6e8ffa2](https://github.com/cds-snc/gcds-components/commit/6e8ffa2e2d51f27cab4ac79cf039030ccd45156a))
+* Set form value on manual value update ([#914](https://github.com/cds-snc/gcds-components/issues/914)) ([411553b](https://github.com/cds-snc/gcds-components/commit/411553b8d16201baf789b58c6a05afbbeaeb89a9))
+
 ## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.38.0...gcds-components-v0.39.0) (2025-07-16)
 
 
