@@ -90,6 +90,11 @@ export class GcdsSelect {
    */
   @Prop({ mutable: true }) value?: string;
 
+  @Watch('value')
+  watchValue(val) {
+    this.internals.setFormValue(val ? val : null);
+  }
+
   /**
    * Error message for an invalid select element.
    */
@@ -262,6 +267,7 @@ export class GcdsSelect {
 
     if (option.hasAttribute('selected')) {
       this.value = value;
+      this.internals.setFormValue(value);
       this.initialValue = this.value ? this.value : null;
     }
   }
