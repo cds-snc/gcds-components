@@ -56,7 +56,7 @@ export default {
     },
     type: {
       control: { type: 'select' },
-      options: ['email', 'number', 'password', 'search', 'text', 'url'],
+      options: ['email', 'number', 'password', 'search', 'tel', 'text', 'url'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'text' },
@@ -462,6 +462,28 @@ Search.args = {
   inputId: 'input-search',
   name: 'example-search',
   type: 'search',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  autocomplete: '',
+  validateOn: 'blur',
+  autofocus: false,
+  form: '',
+  max: '',
+  maxlength: '',
+  min: '',
+  minlength: '',
+  pattern: '',
+  step: '',
+  readonly: false,
+};
+
+export const Tel = Template.bind({});
+Tel.args = {
+  inputId: 'input-tel',
+  name: 'example-tel',
+  type: 'tel',
   label: 'Label',
   hint: 'Hint / example message.',
   disabled: false,
