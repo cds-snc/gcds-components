@@ -90,6 +90,22 @@ export class GcdsSelect {
    */
   @Prop({ mutable: true }) value?: string;
 
+  @Watch('value')
+  watchValue(val) {
+    this.internals.setFormValue(val ? val : null);
+    this.options.forEach(option => {
+      if (option.nodeName === 'OPTION') {
+        this.checkValueOrSelected(option);
+      } else if (option.nodeName === 'OPTGROUP') {
+        const subOptions = Array.from(option.children);
+
+        subOptions.map(sub => {
+          this.checkValueOrSelected(sub);
+        });
+      }
+    });
+  }
+
   /**
    * Error message for an invalid select element.
    */
@@ -262,6 +278,7 @@ export class GcdsSelect {
 
     if (option.hasAttribute('selected')) {
       this.value = value;
+      this.internals.setFormValue(value);
       this.initialValue = this.value ? this.value : null;
     }
   }
