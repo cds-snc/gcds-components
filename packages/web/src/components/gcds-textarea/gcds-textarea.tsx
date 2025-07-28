@@ -134,6 +134,7 @@ export class GcdsTextarea {
   @Watch('value')
   watchValue(val) {
     this.shadowElement.value = val;
+    this.internals.setFormValue(val ? val : null);
   }
 
   /**

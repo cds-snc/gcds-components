@@ -132,6 +132,11 @@ export class GcdsInput {
    */
   @Prop({ mutable: true }) value?: string;
 
+  @Watch('value')
+  watchValue(val) {
+    this.internals.setFormValue(val ? val : null);
+  }
+
   /**
    * String to have autocomplete enabled.
    */

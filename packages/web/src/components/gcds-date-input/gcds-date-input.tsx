@@ -94,12 +94,17 @@ export class GcdsDateInput {
   validateValue() {
     if (this.value && !isValidDate(this.value)) {
       this.errors.push('value');
-      this.value = '';
+      this.value = null;
       console.error(
         `${i18n['en'].valueError}${i18n['en'][`valueFormat${this.format}`]} | ${i18n['fr'].valueError}${i18n['fr'][`valueFormat${this.format}`]}`,
       );
     } else if (this.errors.includes('value')) {
       this.errors.splice(this.errors.indexOf('value'), 1);
+    }
+
+    if (this.value) {
+      this.splitFormValue();
+      this.internals.setFormValue(this.value);
     }
   }
 
