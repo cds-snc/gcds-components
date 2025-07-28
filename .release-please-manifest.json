@@ -3,5 +3,5 @@
   "packages/react": "0.40.0",
   "packages/vue": "0.40.0",
   "packages/web": "0.40.0",
-  "packages/react-ssr": "0.40.0"
+  "packages/react-ssr": "0.40.0-canary.0"
 }
