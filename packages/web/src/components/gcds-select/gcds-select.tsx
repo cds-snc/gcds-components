@@ -93,17 +93,6 @@ export class GcdsSelect {
   @Watch('value')
   watchValue(val) {
     this.internals.setFormValue(val ? val : null);
-    this.options.forEach(option => {
-      if (option.nodeName === 'OPTION') {
-        this.checkValueOrSelected(option);
-      } else if (option.nodeName === 'OPTGROUP') {
-        const subOptions = Array.from(option.children);
-
-        subOptions.map(sub => {
-          this.checkValueOrSelected(sub);
-        });
-      }
-    });
   }
 
   /**
