@@ -13,7 +13,9 @@
     "start-storybook": "npm run storybook -w @cdssnc/gcds-components",
     "patch:stenciljs": "npx --yes patch-package",
     "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'",
-    "start": "npm run start -w @cdssnc/gcds-components"
+    "start": "npm run start -w @cdssnc/gcds-components",
+    "lint": "npm run lint --workspace=packages/web",
+    "lint-and-fix": "npm run lint-and-fix --workspace=packages/web"
   },
   "dependencies": {
     "@angular/animations": "^19.0.0",
