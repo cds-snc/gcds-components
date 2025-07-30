@@ -1,5 +1,6 @@
 import { EventEmitter } from '@stencil/core';
 import { ValidatorReturn } from '../validators';
+import I18N from './i18n/i18n.js';
 
 export function format(label: string): string {
   return label ? ` ${label}` : 'Fallback Button Label';
@@ -276,4 +277,52 @@ export function handleValidationResult(
   }
 
   return errors;
+}
+
+/**
+ * Format HTML error message based off assigned attributes
+ * This lets us assign custom error messages
+ *
+ * @param error - the HTML validation error type
+ * @param lang - the current language
+ * @param el - the gcds form element that is being validated
+ */
+export function formatHTMLErrorMessage(error, lang, el) {
+  switch (error) {
+    case 'valueMissing':
+      return I18N[lang][error];
+    case 'typeMismatch':
+      if (el.type === 'url' || el.type === 'email') {
+        return I18N[lang][error][el.type];
+      } else {
+        return I18N[lang][error];
+      }
+    case 'tooLong':
+      return I18N[lang][error]
+        .replace('{max}', el.maxlength || el.characterCount)
+        .replace('{current}', el.value.length);
+    case 'tooShort':
+      return I18N[lang][error]
+        .replace('{min}', el.minlength)
+        .replace('{current}', el.value.length);
+    case 'rangeUnderflow':
+      return I18N[lang][error].replace('{min}', el.min);
+    case 'rangeOverflow':
+      return I18N[lang][error].replace('{max}', el.max);
+    case 'stepMismatch':
+      return I18N[lang][error]
+        .replace(
+          '{lower}',
+          Math.floor(Number(el.value) / Number(el.step)) * Number(el.step),
+        )
+        .replace(
+          '{upper}',
+          Math.floor(Number(el.value) / Number(el.step)) * Number(el.step) +
+            Number(el.step),
+        );
+    case 'badInput':
+    case 'patternMismatch':
+    default:
+      return I18N[lang][error];
+  }
 }

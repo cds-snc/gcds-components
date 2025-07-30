@@ -1151,9 +1151,17 @@ export namespace Components {
     }
     interface GcdsTextarea {
         /**
+          * If true, the input will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
           * Sets the maxlength attribute for the textarea element.
          */
         "characterCount"?: number;
+        /**
+          * Check the validity of gcds-textarea
+         */
+        "checkValidity": () => Promise<boolean>;
         /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
@@ -1168,6 +1176,10 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * Get validationMessage of gcds-textarea
+         */
+        "getValidationMessage": () => Promise<string>;
+        /**
           * Specifies if the label is hidden or not.
           * @default false
          */
@@ -1180,6 +1192,10 @@ export namespace Components {
           * Form field label
          */
         "label": string;
+        /**
+          * The minimum number of characters that the input field can accept.
+         */
+        "minlength"?: number;
         /**
           * Name attribute for a textarea element.
          */
@@ -1213,6 +1229,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Default value for an input element.
          */
@@ -3204,6 +3225,10 @@ declare namespace LocalJSX {
     }
     interface GcdsTextarea {
         /**
+          * If true, the input will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * Sets the maxlength attribute for the textarea element.
          */
         "characterCount"?: number;
@@ -3233,6 +3258,10 @@ declare namespace LocalJSX {
           * Form field label
          */
         "label": string;
+        /**
+          * The minimum number of characters that the input field can accept.
+         */
+        "minlength"?: number;
         /**
           * Name attribute for a textarea element.
          */
@@ -3286,6 +3315,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Default value for an input element.
          */
