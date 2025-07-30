@@ -3,7 +3,7 @@ const { AxeBuilder } = require('@axe-core/playwright');
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
-import I18N from '../i18n/i18n.js';
+import I18N from '../../../utils/i18n/i18n.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/components/gcds-input/test/gcds-input.e2e.html');

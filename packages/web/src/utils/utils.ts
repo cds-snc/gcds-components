@@ -313,11 +313,11 @@ export function formatHTMLErrorMessage(error, lang, el) {
       return I18N[lang][error]
         .replace(
           '{lower}',
-          Math.floor(Number(this.value) / Number(this.step)) * Number(el.step),
+          Math.floor(Number(el.value) / Number(el.step)) * Number(el.step),
         )
         .replace(
           '{upper}',
-          Math.floor(Number(this.value) / Number(this.step)) * Number(el.step) +
+          Math.floor(Number(el.value) / Number(el.step)) * Number(el.step) +
             Number(el.step),
         );
     case 'badInput':
