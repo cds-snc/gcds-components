@@ -17,6 +17,7 @@ import {
   handleValidationResult,
   inheritAttributes,
   observerConfig,
+  formatHTMLErrorMessage,
 } from '../../utils/utils';
 import {
   Validator,
@@ -26,7 +27,6 @@ import {
   requiredValidator,
 } from '../../validators';
 import i18n from './i18n/i18n';
-
 @Component({
   tag: 'gcds-textarea',
   styleUrl: 'gcds-textarea.css',
@@ -43,6 +43,11 @@ export class GcdsTextarea {
 
   private shadowElement?: HTMLTextAreaElement;
 
+  // Array to store which native HTML errors are happening on the textarea
+  private htmlValidationErrors = [];
+
+  private textareaTitle: string = '';
+
   _validator: Validator<string> = defaultValidator;
 
   /**
@@ -50,9 +55,19 @@ export class GcdsTextarea {
    */
 
   /**
+   * If true, the input will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
    * Sets the maxlength attribute for the textarea element.
    */
   @Prop() characterCount?: number;
+
+  /**
+   * The minimum number of characters that the input field can accept.
+   */
+  @Prop({ reflect: true }) minlength?: number;
 
   /**
    * Defines width for textarea cols (the min-width for textarea's is 50%).
@@ -152,6 +167,14 @@ export class GcdsTextarea {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
+   * Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in.
+   */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
+  }
+
+  /**
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
@@ -213,6 +236,8 @@ export class GcdsTextarea {
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
+    } else {
+      this.updateValidity();
     }
 
     customEvent.emit(this.value);
@@ -231,6 +256,37 @@ export class GcdsTextarea {
       this.gcdsValid,
       this.lang,
     );
+
+    // Native HTML validation
+    if (
+      (this.required && !this.internals.checkValidity()) ||
+      !this.internals.checkValidity()
+    ) {
+      if (!this.internals.validity.valueMissing) {
+        this.errorMessage = formatHTMLErrorMessage(
+          this.htmlValidationErrors[0],
+          this.lang,
+          this.el,
+        );
+        this.textareaTitle = this.errorMessage;
+      }
+    }
+  }
+
+  /**
+   * Check the validity of gcds-textarea
+   */
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  /**
+   * Get validationMessage of gcds-textarea
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   /**
@@ -272,6 +328,48 @@ export class GcdsTextarea {
     this.value = state;
   }
 
+  /**
+   * Update gcds-textarea's validity using internal textarea validity
+   */
+  private updateValidity(override?) {
+    const validity = this.shadowElement.validity;
+    this.htmlValidationErrors = [];
+
+    for (const key in validity) {
+      // Do not include valid or missingValue keys
+      if (validity[key] === true && key !== 'valid') {
+        this.htmlValidationErrors.push(key);
+      }
+    }
+
+    // Add override values to HTML errors array
+    for (const key in override) {
+      this.htmlValidationErrors.push(key);
+    }
+
+    const validityState = override
+      ? { ...this.shadowElement.validity, ...override }
+      : this.shadowElement.validity;
+
+    let validationMessage = null;
+    if (this.htmlValidationErrors.length > 0) {
+      validationMessage = formatHTMLErrorMessage(
+        this.htmlValidationErrors[0],
+        this.lang,
+        this.el,
+      );
+    }
+
+    this.internals.setValidity(
+      validityState,
+      validationMessage,
+      this.shadowElement,
+    );
+
+    // Set textarea title when HTML error occruring
+    this.textareaTitle = validationMessage;
+  }
+
   /*
    * Observe lang attribute change
    */
@@ -307,8 +405,33 @@ export class GcdsTextarea {
     this.initialValue = this.value ? this.value : null;
   }
 
+  componentDidLoad() {
+    let lengthValidity;
+    // maxlength/minlength validation on load
+    if (this.value && (this.minlength || this.characterCount)) {
+      if (this.minlength && this.value.length < this.minlength) {
+        lengthValidity = { tooShort: true };
+      } else if (
+        this.characterCount &&
+        this.value.length > this.characterCount
+      ) {
+        lengthValidity = { tooLong: true };
+      }
+    }
+
+    this.updateValidity(lengthValidity);
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement?.focus();
+      });
+    }
+  }
+
   render() {
     const {
+      autofocus,
       characterCount,
       cols,
       disabled,
@@ -316,6 +439,7 @@ export class GcdsTextarea {
       hideLabel,
       hint,
       label,
+      minlength,
       required,
       rows,
       textareaId,
@@ -324,6 +448,7 @@ export class GcdsTextarea {
       inheritedAttributes,
       lang,
       name,
+      textareaTitle,
     } = this;
 
     // Use max-width instead of cols attribute to keep field responsive
@@ -338,9 +463,12 @@ export class GcdsTextarea {
 
     const attrsTextarea = {
       name,
+      autofocus,
       disabled,
+      minlength,
       required,
       rows,
+      title: textareaTitle,
       ...inheritedAttributes,
     };
 
