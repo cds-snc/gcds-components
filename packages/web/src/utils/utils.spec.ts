@@ -11,12 +11,6 @@ import {
 } from './utils';
 
 import I18N from './i18n/i18n.js';
-import {
-  Email,
-  Step,
-  Url,
-} from '../components/gcds-input/stories/gcds-input.stories';
-import { type } from '../../../../utils/angular-output-target/dist/index';
 
 describe('format', () => {
   it('returns Fallback Button Label', () => {
