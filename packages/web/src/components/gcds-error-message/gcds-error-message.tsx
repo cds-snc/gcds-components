@@ -1,5 +1,10 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
+/**
+ * An error message is a description of a problem blocking a user goal.
+ *
+ * @slot default - Slot for the error message content.
+ */
 @Component({
   tag: 'gcds-error-message',
   styleUrl: 'gcds-error-message.css',

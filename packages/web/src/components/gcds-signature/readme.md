@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The signature is the Government of Canada landmark identifier found in the header or footer.
+
 ## Properties
 
 | Property  | Attribute  | Description                                      | Type                        | Default       |
@@ -26,7 +30,7 @@
 graph TD;
   gcds-footer --> gcds-signature
   gcds-header --> gcds-signature
-  style gcds-signature fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-signature fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

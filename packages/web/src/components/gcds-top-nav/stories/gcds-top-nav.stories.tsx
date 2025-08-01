@@ -45,6 +45,16 @@ export default {
         category: 'Slots | Fentes',
       },
     },
+    default: {
+      control: {
+        type: 'text',
+      },
+      description:
+        'Customize the content or include additional elements. | Personnalisez le contenu ou ajoutez des éléments supplémentaires.',
+      table: {
+        category: 'Slots | Fentes',
+      },
+    },
   },
 };
 
@@ -61,6 +71,9 @@ const Template = args =>
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
   }
+  ${
+    args.default ||
+    `<gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
   <gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
 
   <gcds-nav-group  open-trigger="Features" menu-label="Features">
@@ -70,7 +83,8 @@ const Template = args =>
     <gcds-nav-link href="#">Send messages automatically</gcds-nav-link>
   </gcds-nav-group>
 
-  <gcds-nav-link href="#">Contact us</gcds-nav-link>
+  <gcds-nav-link href="#">Contact us</gcds-nav-link>`
+  }
 </gcds-top-nav>
 
 <!-- React code -->
@@ -84,6 +98,9 @@ const Template = args =>
       ? `<GcdsNavLink href="#home" slot="home">${args.home}</GcdsNavLink> `
       : null
   }
+  ${
+    args.default ||
+    `<GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
   <GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
 
   <GcdsNavGroup  openTrigger="Features" menuLabel="Features">
@@ -93,7 +110,8 @@ const Template = args =>
     <GcdsNavLink href="#">Send messages automatically</GcdsNavLink>
   </GcdsNavGroup>
 
-  <GcdsNavLink href="#">Contact us</GcdsNavLink>
+  <GcdsNavLink href="#">Contact us</GcdsNavLink>`
+  }
 </GcdsTopNav>
 `.replace(/\s\snull\n/g, '');
 
@@ -110,6 +128,9 @@ const TemplatePlayground = args =>
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
   }
+  ${
+    args.default ||
+    `<gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-group  open-trigger="Nav group label" menu-label="Nav group label">
     <gcds-nav-link href="#">Nav link</gcds-nav-link>
@@ -118,6 +139,8 @@ const TemplatePlayground = args =>
   </gcds-nav-group>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
+  `
+  }
 </gcds-top-nav>
 `.replace(/\s\snull\n/g, '');
 
@@ -127,6 +150,7 @@ Default.args = {
   alignment: 'right',
   home: 'GC Notify',
   lang: 'en',
+  default: '',
 };
 
 export const Home = Template.bind({});
@@ -135,6 +159,7 @@ Home.args = {
   alignment: 'right',
   home: 'GC Notify',
   lang: 'en',
+  default: '',
 };
 
 export const Right = Template.bind({});
@@ -143,6 +168,7 @@ Right.args = {
   alignment: 'right',
   home: '',
   lang: 'en',
+  default: '',
 };
 
 export const Center = Template.bind({});
@@ -151,6 +177,7 @@ Center.args = {
   alignment: 'center',
   home: '',
   lang: 'en',
+  default: '',
 };
 
 export const Left = Template.bind({});
@@ -159,6 +186,7 @@ Left.args = {
   alignment: 'left',
   home: '',
   lang: 'en',
+  default: '',
 };
 
 export const Props = Template.bind({});
@@ -167,6 +195,7 @@ Props.args = {
   alignment: 'right',
   home: 'GC Notify',
   lang: 'en',
+  default: '',
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -175,4 +204,5 @@ Playground.args = {
   alignment: 'right',
   home: 'GC Notify',
   lang: 'en',
+  default: '',
 };

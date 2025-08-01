@@ -11,6 +11,11 @@ import {
 } from '@stencil/core';
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 
+/**
+ * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+ *
+ * @slot default - Slot for the navigation link content.
+ */
 @Component({
   tag: 'gcds-nav-link',
   styleUrl: 'gcds-nav-link.css',
@@ -34,7 +39,7 @@ export class GcdsNavLink {
   /**
    * Emitted when the link has been clicked.
    */
-  @Event() gcdsClick!: EventEmitter<void>;
+  @Event() gcdsClick!: EventEmitter<string>;
 
   /**
    * Emitted when the link has focus.

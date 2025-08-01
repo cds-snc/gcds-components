@@ -28,6 +28,9 @@ import {
 } from '../../validators';
 import i18n from './i18n/i18n';
 
+/**
+ * A date input is a space to enter a known date.
+ */
 @Component({
   tag: 'gcds-date-input',
   styleUrl: 'gcds-date-input.css',
@@ -185,12 +188,12 @@ export class GcdsDateInput {
    */
 
   /**
-   * Emitted when an element has focus.
+   * Emitted when an date-input has focus.
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
   /**
-   * Emitted when an element loses focus.
+   * Emitted when an date-input loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
@@ -201,22 +204,22 @@ export class GcdsDateInput {
   };
 
   /**
-   * Emitted when the element has received input.
+   * Emitted when the date-input has received input. Contains the new value in the event detail.
    */
-  @Event() gcdsInput: EventEmitter;
+  @Event() gcdsInput: EventEmitter<string>;
 
   /**
-   * Emitted when an element has changed.
+   * Emitted when an date-input has changed. Contains the new value in the event detail.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter<string>;
 
   /**
-   * Emitted when an element has a validation error.
+   * Emitted when an date-input has a validation error.
    */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-   * Emitted when an element has validated.
+   * Emitted when an date-input has validated.
    */
   @Event() gcdsValid!: EventEmitter<object>;
 

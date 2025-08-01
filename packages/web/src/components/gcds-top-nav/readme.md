@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A top navigation is a horizontal list of page links.
+
 ## Properties
 
 | Property             | Attribute   | Description                   | Type                            | Default     |
@@ -59,6 +63,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot        | Description                                          |
+| ----------- | ---------------------------------------------------- |
+| `"default"` | Slot for the navigation groups and navigation links. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -70,7 +81,7 @@ Type: `Promise<void>`
 graph TD;
   gcds-top-nav --> gcds-nav-group
   gcds-nav-group --> gcds-icon
-  style gcds-top-nav fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-top-nav fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -1,5 +1,10 @@
 import { Component, Host, Watch, h, Prop } from '@stencil/core';
 
+/**
+ * The screenreader-only component is text information only accessible with assistive technologies.
+ *
+ * @slot default - Slot for the hidden accessible content.
+ */
 @Component({
   tag: 'gcds-sr-only',
   styleUrl: 'gcds-sr-only.css',

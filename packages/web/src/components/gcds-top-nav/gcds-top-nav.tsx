@@ -12,6 +12,11 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 import I18N from './i18n/i18n';
 
+/**
+ * A top navigation is a horizontal list of page links.
+ *
+ * @slot default - Slot for the navigation groups and navigation links.
+ */
 @Component({
   tag: 'gcds-top-nav',
   styleUrl: 'gcds-top-nav.css',

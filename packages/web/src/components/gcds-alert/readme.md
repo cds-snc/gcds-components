@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Alert displays an alert message with an optional heading, icon, and close button.
+
 ## Properties
 
 | Property               | Attribute        | Description                                              | Type                                             | Default     |
@@ -24,6 +28,13 @@
 | `gcdsDismiss` | Events      | `CustomEvent<void>` |
 
 
+## Slots
+
+| Slot        | Description                             |
+| ----------- | --------------------------------------- |
+| `"default"` | Slot for the main content of the alert. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -36,7 +47,7 @@
 graph TD;
   gcds-alert --> gcds-container
   gcds-alert --> gcds-icon
-  style gcds-alert fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-alert fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

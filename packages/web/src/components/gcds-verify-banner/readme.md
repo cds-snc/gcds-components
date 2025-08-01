@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
+
 ## Properties
 
 | Property    | Attribute   | Description                                              | Type                                             | Default |
@@ -24,7 +28,7 @@
 graph TD;
   gcds-verify-banner --> gcds-grid
   gcds-grid --> gcds-container
-  style gcds-verify-banner fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-verify-banner fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

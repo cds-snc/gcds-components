@@ -68,7 +68,14 @@ export const GcdsBreadcrumbs: StencilVueComponent<JSX.GcdsBreadcrumbs> = /*@__PU
 
 
 export const GcdsBreadcrumbsItem: StencilVueComponent<JSX.GcdsBreadcrumbsItem> = /*@__PURE__*/ defineContainer<JSX.GcdsBreadcrumbsItem>('gcds-breadcrumbs-item', defineGcdsBreadcrumbsItem, [
-  'href'
+  'href',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
@@ -207,7 +214,14 @@ export const GcdsErrorMessage: StencilVueComponent<JSX.GcdsErrorMessage> = /*@__
 export const GcdsErrorSummary: StencilVueComponent<JSX.GcdsErrorSummary> = /*@__PURE__*/ defineContainer<JSX.GcdsErrorSummary>('gcds-error-summary', defineGcdsErrorSummary, [
   'heading',
   'listen',
-  'errorLinks'
+  'errorLinks',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
@@ -256,7 +270,14 @@ export const GcdsFooter: StencilVueComponent<JSX.GcdsFooter> = /*@__PURE__*/ def
   'wordmarkVariant',
   'contextualHeading',
   'contextualLinks',
-  'subLinks'
+  'subLinks',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
@@ -292,7 +313,14 @@ export const GcdsHeader: StencilVueComponent<JSX.GcdsHeader> = /*@__PURE__*/ def
   'langHref',
   'signatureVariant',
   'signatureHasLink',
-  'skipToHref'
+  'skipToHref',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 
@@ -369,7 +397,14 @@ export const GcdsLabel: StencilVueComponent<JSX.GcdsLabel> = /*@__PURE__*/ defin
 
 
 export const GcdsLangToggle: StencilVueComponent<JSX.GcdsLangToggle> = /*@__PURE__*/ defineContainer<JSX.GcdsLangToggle>('gcds-lang-toggle', defineGcdsLangToggle, [
-  'href'
+  'href',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
+], [
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsClick'
 ]);
 
 

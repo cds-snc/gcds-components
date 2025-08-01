@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
+
 ## Properties
 
 | Property         | Attribute         | Description                                                                                                         | Type                                                                                                                                                                                                                                                                                   | Default     |
@@ -15,6 +19,13 @@
 | `marginTop`      | `margin-top`      | Adds margin above the text.                                                                                         | `"0" \| "25" \| "50" \| "75" \| "100" \| "125" \| "150" \| "175" \| "200" \| "225" \| "250" \| "300" \| "350" \| "400" \| "450" \| "500" \| "550" \| "600" \| "650" \| "700" \| "750" \| "800" \| "850" \| "900" \| "950" \| "1000" \| "1050" \| "1100" \| "1150" \| "1200" \| "1250"` | `'0'`       |
 | `size`           | `size`            | Sets the appropriate HTML tags for the selected size.                                                               | `"body" \| "small"`                                                                                                                                                                                                                                                                    | `'body'`    |
 | `textRole`       | `text-role`       | Sets the main style of the text.                                                                                    | `"light" \| "primary" \| "secondary"`                                                                                                                                                                                                                                                  | `'primary'` |
+
+
+## Slots
+
+| Slot        | Description                               |
+| ----------- | ----------------------------------------- |
+| `"default"` | Slot for the content of the text element. |
 
 
 ## Shadow Parts
@@ -44,7 +55,7 @@ graph TD;
   gcds-file-uploader --> gcds-text
   gcds-hint --> gcds-text
   gcds-textarea --> gcds-text
-  style gcds-text fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-text fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

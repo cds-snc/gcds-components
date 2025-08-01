@@ -2,6 +2,11 @@ import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * The notice is a short, prominent message that’s part of the page content.
+ *
+ * @slot default - Slot for the main content of the notice.
+ */
 @Component({
   tag: 'gcds-notice',
   styleUrl: 'gcds-notice.css',
@@ -113,7 +118,7 @@ export class GcdsNotice {
 
     this.updateLang();
 
-    let valid = this.validateRequiredProps();
+    const valid = this.validateRequiredProps();
 
     if (!valid) {
       logError('gcds-notice', this.errors);

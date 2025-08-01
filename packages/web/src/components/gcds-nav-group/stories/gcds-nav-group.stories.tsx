@@ -1,4 +1,7 @@
-import { langProp } from '../../../utils/storybook/component-properties';
+import {
+  langProp,
+  eventProp,
+} from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Navigation group',
@@ -45,6 +48,32 @@ export default {
       },
     },
     ...langProp,
+
+    // Slots
+    default: {
+      control: {
+        type: 'text',
+      },
+      description:
+        'Customize the content or include additional elements. | Personnalisez le contenu ou ajoutez des éléments supplémentaires.',
+      table: {
+        category: 'Slots | Fentes',
+      },
+    },
+
+    // Events
+    gcdsClick: {
+      action: 'click',
+      ...eventProp,
+    },
+    gcdsFocus: {
+      action: 'focus',
+      ...eventProp,
+    },
+    gcdsBlur: {
+      action: 'blur',
+      ...eventProp,
+    },
   },
 };
 

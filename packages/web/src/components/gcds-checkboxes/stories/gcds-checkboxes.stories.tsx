@@ -102,12 +102,24 @@ export default {
       action: 'input',
       ...eventProp,
     },
+    gcdsChange: {
+      action: 'change',
+      ...eventProp,
+    },
     gcdsFocus: {
       action: 'focus',
       ...eventProp,
     },
     gcdsBlur: {
       action: 'blur',
+      ...eventProp,
+    },
+    gcdsError: {
+      action: 'invalid',
+      ...eventProp,
+    },
+    gcdsValid: {
+      action: 'valid',
       ...eventProp,
     },
   },

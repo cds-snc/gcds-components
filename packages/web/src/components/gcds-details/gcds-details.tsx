@@ -11,6 +11,11 @@ import {
 } from '@stencil/core';
 import { emitEvent } from '../../utils/utils';
 
+/**
+ * Details is an interactive switch for a person to expand or collapse content.
+ *
+ * @slot default - Slot for the main content of the details panel.
+ */
 @Component({
   tag: 'gcds-details',
   styleUrl: 'gcds-details.css',

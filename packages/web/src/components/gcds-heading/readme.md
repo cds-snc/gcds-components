@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.
+
 ## Properties
 
 | Property           | Attribute         | Description                                                                                                                                | Type                                                                                                                                                                                                                                                                                   | Default     |
@@ -13,6 +17,13 @@
 | `marginBottom`     | `margin-bottom`   | Adds margin below the heading. The default margin-botttom is 300.                                                                          | `"0" \| "25" \| "50" \| "75" \| "100" \| "125" \| "150" \| "175" \| "200" \| "225" \| "250" \| "300" \| "350" \| "400" \| "450" \| "500" \| "550" \| "600" \| "650" \| "700" \| "750" \| "800" \| "850" \| "900" \| "950" \| "1000" \| "1050" \| "1100" \| "1150" \| "1200" \| "1250"` | `'300'`     |
 | `marginTop`        | `margin-top`      | Adds margin above the heading. The default margin-top for h1 is set to 0, while for h2 to h6 headings, it's 600.                           | `"0" \| "25" \| "50" \| "75" \| "100" \| "125" \| "150" \| "175" \| "200" \| "225" \| "250" \| "300" \| "350" \| "400" \| "450" \| "500" \| "550" \| "600" \| "650" \| "700" \| "750" \| "800" \| "850" \| "900" \| "950" \| "1000" \| "1050" \| "1100" \| "1150" \| "1200" \| "1250"` | `undefined` |
 | `tag` _(required)_ | `tag`             | Sets the appropriate HTML tag for the selected level.                                                                                      | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"`                                                                                                                                                                                                                                         | `undefined` |
+
+
+## Slots
+
+| Slot        | Description                  |
+| ----------- | ---------------------------- |
+| `"default"` | Slot for the heading content |
 
 
 ## Dependencies
@@ -29,7 +40,7 @@ graph TD;
   gcds-error-summary --> gcds-heading
   gcds-notice --> gcds-heading
   gcds-stepper --> gcds-heading
-  style gcds-heading fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-heading fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -1,3 +1,8 @@
+import {
+  eventProp,
+  langProp,
+} from '../../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Link',
 
@@ -77,6 +82,7 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    ...langProp,
 
     // Slots
     default: {
@@ -88,6 +94,20 @@ export default {
       table: {
         category: 'Slots | Fentes',
       },
+    },
+
+    // Events
+    gcdsClick: {
+      action: 'click',
+      ...eventProp,
+    },
+    gcdsFocus: {
+      action: 'focus',
+      ...eventProp,
+    },
+    gcdsBlur: {
+      action: 'blur',
+      ...eventProp,
     },
   },
 };
@@ -104,7 +124,8 @@ This is an example of
     args.size != 'inherit' && args.size ? `size="${args.size}"` : null
   } ${args.external ? `external` : null} ${
     args.download ? `download="${args.download}"` : null
-  } ${args.type ? `type="${args.type}"` : null}>${args.default}</gcds-link>
+  } ${args.type ? `type="${args.type}"` : null} 
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}>${args.default}</gcds-link>
 
 <!-- React code -->
 <GcdsLink ${args.display != 'inline' ? `display="${args.display}"` : null} ${
@@ -115,7 +136,8 @@ This is an example of
     args.size != 'inherit' && args.size ? `size="${args.size}"` : null
   } ${args.external ? `external` : null} ${
     args.download ? `download="${args.download}"` : null
-  } ${args.type ? `type="${args.type}"` : null}>${args.default}</GcdsLink>
+  } ${args.type ? `type="${args.type}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}>${args.default}</GcdsLink>
 link.
 `.replace(/ null/g, '');
 
@@ -150,7 +172,8 @@ const TemplatePlayground = args => `
   args.size != 'inherit' && args.size ? `size="${args.size}"` : null
 } ${args.external ? `external` : null} ${
   args.download ? `download="${args.download}"` : null
-} ${args.type ? `type="${args.type}"` : null}>  ${args.default}
+} ${args.type ? `type="${args.type}"` : null}
+  ${args.lang != 'en' ? `lang="${args.lang}"` : null}>  ${args.default}
 </gcds-link>
 `;
 
@@ -168,6 +191,7 @@ Default.args = {
   download: '',
   type: '',
   default: 'a GCDS Link component',
+  lang: 'en',
 };
 
 // ------ Link with icon ------
@@ -184,6 +208,7 @@ External.args = {
   download: '',
   type: '',
   default: 'an external',
+  lang: 'en',
 };
 
 export const Download = Template.bind({});
@@ -196,6 +221,7 @@ Download.args = {
   download: 'file.pdf',
   type: 'application/pdf',
   default: 'a file download (PDF, 1.5 MB)',
+  lang: 'en',
 };
 
 export const Email = Template.bind({});
@@ -206,6 +232,7 @@ Email.args = {
   size: 'inherit',
   href: 'mailto:test@test.com?subject=Test%20Email',
   default: 'an email address',
+  lang: 'en',
 };
 
 export const Phone = Template.bind({});
@@ -216,6 +243,7 @@ Phone.args = {
   size: 'inherit',
   href: 'tel:1234567890',
   default: 'a phone number',
+  lang: 'en',
 };
 
 // ------ Link sizes ------
@@ -232,6 +260,7 @@ SizesSmall.args = {
   download: '',
   type: '',
   default: 'a size small',
+  lang: 'en',
 };
 
 export const SizesRegular = Template.bind({});
@@ -246,6 +275,7 @@ SizesRegular.args = {
   download: '',
   type: '',
   default: 'a size regular',
+  lang: 'en',
 };
 
 export const SizesInherit = TemplateSizeInherit.bind({});
@@ -260,6 +290,7 @@ SizesInherit.args = {
   download: '',
   type: '',
   default: 'a size inherit',
+  lang: 'en',
 };
 
 // ------ Link roles ------
@@ -290,6 +321,7 @@ Props.args = {
   download: '',
   type: '',
   default: 'a GCDS Link component',
+  lang: 'en',
 };
 
 // ------ Link playground ------
@@ -306,4 +338,5 @@ Playground.args = {
   download: '',
   type: '',
   default: 'This is an example link.',
+  lang: 'en',
 };

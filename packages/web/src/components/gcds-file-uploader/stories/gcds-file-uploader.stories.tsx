@@ -105,6 +105,10 @@ export default {
     ...langProp,
 
     // Events
+    gcdsInput: {
+      action: 'input',
+      ...eventProp,
+    },
     gcdsChange: {
       action: 'change',
       ...eventProp,
@@ -115,6 +119,14 @@ export default {
     },
     gcdsBlur: {
       action: 'blur',
+      ...eventProp,
+    },
+    gcdsError: {
+      action: 'invalid',
+      ...eventProp,
+    },
+    gcdsValid: {
+      action: 'valid',
       ...eventProp,
     },
   },

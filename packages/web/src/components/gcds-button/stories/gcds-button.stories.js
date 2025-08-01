@@ -119,10 +119,6 @@ export default {
       action: 'click',
       ...eventProp,
     },
-    gcdsChange: {
-      action: 'change',
-      ...eventProp,
-    },
     gcdsFocus: {
       action: 'focus',
       ...eventProp,

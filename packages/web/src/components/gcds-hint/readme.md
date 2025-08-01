@@ -5,11 +5,22 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Hint provides additional information or context to help users understand the content or functionality of a related element.
+
 ## Properties
 
 | Property | Attribute | Description                | Type     | Default     |
 | -------- | --------- | -------------------------- | -------- | ----------- |
 | `hintId` | `hint-id` | Id attribute for the hint. | `string` | `undefined` |
+
+
+## Slots
+
+| Slot        | Description                |
+| ----------- | -------------------------- |
+| `"default"` | Slot for the hint content. |
 
 
 ## Shadow Parts
@@ -48,7 +59,7 @@ graph TD;
   gcds-radios --> gcds-hint
   gcds-select --> gcds-hint
   gcds-textarea --> gcds-hint
-  style gcds-hint fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-hint fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
