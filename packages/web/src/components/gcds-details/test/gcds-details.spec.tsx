@@ -14,9 +14,10 @@ describe('gcds-details', () => {
             <button id="details__summary" class="details__summary" aria-expanded="false" aria-controls="details__panel">
               Learn more about this topic
             </button>
-            <div id="details__panel" class="details__panel" aria-labelledby="details__summary">
+            <details id="details__panel" class="details__panel" aria-labelledby="details__summary">
+              <summary>Learn more about this topic</summary>
               <slot></slot>
-            </div>
+            </details>
           </div>
         </mock:shadow-root>
       </gcds-details>
@@ -35,9 +36,10 @@ describe('gcds-details', () => {
             <button id="details__summary" class="details__summary" aria-expanded="true" aria-controls="details__panel">
               Learn more about this topic
             </button>
-            <div id="details__panel" class="details__panel" aria-labelledby="details__summary">
+            <details id="details__panel" class="details__panel" aria-labelledby="details__summary" open="">
+              <summary>Learn more about this topic</summary>
               <slot></slot>
-            </div>
+            </details>
           </div>
         </mock:shadow-root>
       </gcds-details>

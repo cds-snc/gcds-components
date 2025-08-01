@@ -781,7 +781,7 @@ export namespace Components {
           * Set Input types
           * @default 'text'
          */
-        "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+        "type"?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
         /**
           * Call any active validators
          */
@@ -3130,7 +3130,7 @@ declare namespace LocalJSX {
           * Set Input types
           * @default 'text'
          */
-        "type"?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url';
+        "type"?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
         /**
           * Set event to call validator
           * @default 'blur'

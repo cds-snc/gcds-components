@@ -125,7 +125,7 @@ export class GcdsInput {
    * Set Input types
    */
   // prettier-ignore
-  @Prop() type?: 'email' | 'number' | 'password' | 'search' | 'text' | 'url' = 'text';
+  @Prop() type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' = 'text';
 
   /**
    * Default value for an input element.
