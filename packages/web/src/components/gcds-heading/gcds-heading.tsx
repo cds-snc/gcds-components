@@ -2,7 +2,7 @@ import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 import { SpacingValues, SpacingArray } from '../../utils/types/spacing';
 
 /**
- * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+ * A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.
  *
  * @slot default - Slot for the heading content
  */

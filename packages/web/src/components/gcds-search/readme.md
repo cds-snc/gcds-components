@@ -24,13 +24,13 @@ Search is a space for entering keywords to find relevant information.
 
 ## Events
 
-| Event        | Description                                           | Type                  |
-| ------------ | ----------------------------------------------------- | --------------------- |
-| `gcdsBlur`   | Emitted when the search input has lost focus.         | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when the search input value has changed.      | `CustomEvent<string>` |
-| `gcdsFocus`  | Emitted when the search input value has gained focus. | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the search element has recieved input.   | `CustomEvent<string>` |
-| `gcdsSubmit` | Emitted when the search form has submitted.           | `CustomEvent<string>` |
+| Event        | Description                                         | Type                  |
+| ------------ | --------------------------------------------------- | --------------------- |
+| `gcdsBlur`   | Emitted when the search input has lost focus.       | `CustomEvent<void>`   |
+| `gcdsChange` | Emitted when the search input value has changed.    | `CustomEvent<string>` |
+| `gcdsFocus`  | Emitted when the search input has gained focus.     | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the search element has received input. | `CustomEvent<string>` |
+| `gcdsSubmit` | Emitted when the search form has submitted.         | `CustomEvent<string>` |
 
 
 ## Dependencies

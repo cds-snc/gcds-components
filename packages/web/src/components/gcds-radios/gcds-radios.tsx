@@ -109,7 +109,7 @@ export class GcdsRadios {
   }
 
   /**
-   * The `name` attribute for the <gcds-radios>, used to group radio elements together
+   * The `name` attribute for the radios, used to group radio elements together
    */
   @Prop({ reflect: true, mutable: false }) name!: string;
 
@@ -138,7 +138,7 @@ export class GcdsRadios {
   @Prop({ reflect: true, mutable: false }) hint: string;
 
   /**
-   * Set this to display an error message for invalid <gcds-radios>
+   * Set this to display an error message for invalid radios
    */
   @Prop({ reflect: false, mutable: true }) errorMessage: string;
   @Watch('errorMessage')
@@ -235,22 +235,22 @@ export class GcdsRadios {
    */
 
   /**
-   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
+   * Emitted when radios has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
    */
   @Event() gcdsInput!: EventEmitter<string>;
 
   /**
-   * Emitted when a <gcds-radios> option is checked (but not when unchecked). Contains new value in event detail
+   * Emitted when a radios option is checked (but not when unchecked). Contains new value in event detail
    */
   @Event() gcdsChange!: EventEmitter<string>;
 
   /**
-   * Emitted when <gcds-radios> has received focus
+   * Emitted when radios has received focus
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
   /**
-   * Emitted when the <gcds-radios> has lost focus
+   * Emitted when the radios has lost focus
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
@@ -267,12 +267,12 @@ export class GcdsRadios {
   };
 
   /**
-   * Emitted when <gcds-radios> has passed validation
+   * Emitted when radios has passed validation
    */
   @Event() gcdsValid!: EventEmitter<void>;
 
   /**
-   * Emitted when <gcds-radios> has a validation error
+   * Emitted when radios has a validation error
    */
   @Event() gcdsError!: EventEmitter<object>;
 

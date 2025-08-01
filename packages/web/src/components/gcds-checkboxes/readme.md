@@ -27,15 +27,15 @@ Checkboxes provide a set of options for multiple responses.
 
 ## Events
 
-| Event        | Description                                                                             | Type                    |
-| ------------ | --------------------------------------------------------------------------------------- | ----------------------- |
-| `gcdsBlur`   | Emitted when the checkbox loses focus.                                                  | `CustomEvent<void>`     |
-| `gcdsChange` | Emmitted when a checkbox has been changed. Contains the new value in the event detail.  | `CustomEvent<string[]>` |
-| `gcdsClick`  | Emitted when the checkbox has been clicked.                                             | `CustomEvent<void>`     |
-| `gcdsError`  | Emitted when the input has a validation error.                                          | `CustomEvent<object>`   |
-| `gcdsFocus`  | Emitted when the checkbox has focus.                                                    | `CustomEvent<void>`     |
-| `gcdsInput`  | Emmitted when a checkbox has been inputted. Contains the new value in the event detail. | `CustomEvent<string[]>` |
-| `gcdsValid`  | Emitted when the input has a validation error.                                          | `CustomEvent<object>`   |
+| Event        | Description                                                                            | Type                    |
+| ------------ | -------------------------------------------------------------------------------------- | ----------------------- |
+| `gcdsBlur`   | Emitted when the checkbox loses focus.                                                 | `CustomEvent<void>`     |
+| `gcdsChange` | Emitted when a checkbox has been changed. Contains the new value in the event detail.  | `CustomEvent<string[]>` |
+| `gcdsClick`  | Emitted when the checkbox has been clicked.                                            | `CustomEvent<void>`     |
+| `gcdsError`  | Emitted when the checkbox has a validation error.                                      | `CustomEvent<object>`   |
+| `gcdsFocus`  | Emitted when the checkbox has focus.                                                   | `CustomEvent<void>`     |
+| `gcdsInput`  | Emitted when a checkbox has been inputted. Contains the new value in the event detail. | `CustomEvent<string[]>` |
+| `gcdsValid`  | Emitted when the checkbox has a validation error.                                      | `CustomEvent<object>`   |
 
 
 ## Methods

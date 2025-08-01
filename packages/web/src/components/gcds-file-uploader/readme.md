@@ -32,11 +32,11 @@ A file uploader is a space to select and add supporting documentation.
 | ---------------- | -------------------------------------------------------------------------------------------- | ----------------------- |
 | `gcdsBlur`       | Emitted when the uploader loses focus.                                                       | `CustomEvent<void>`     |
 | `gcdsChange`     | Emitted when the user has made a file selection. Contains the new value in the event detail. | `CustomEvent<string[]>` |
-| `gcdsError`      | Emitted when the input has a validation error.                                               | `CustomEvent<object>`   |
+| `gcdsError`      | Emitted when the uploader has a validation error.                                            | `CustomEvent<object>`   |
 | `gcdsFocus`      | Emitted when the uploader has focus.                                                         | `CustomEvent<void>`     |
 | `gcdsInput`      | Emitted when the user has uploaded a file. Contains the new value in the event detail.       | `CustomEvent<string[]>` |
 | `gcdsRemoveFile` | Remove file and update value.                                                                | `CustomEvent<any>`      |
-| `gcdsValid`      | Emitted when the input has a validation error.                                               | `CustomEvent<object>`   |
+| `gcdsValid`      | Emitted when the uploader has a validation error.                                            | `CustomEvent<object>`   |
 
 
 ## Methods

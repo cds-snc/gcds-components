@@ -27,14 +27,14 @@ A date input is a space to enter a known date.
 
 ## Events
 
-| Event        | Description                                                                              | Type                  |
-| ------------ | ---------------------------------------------------------------------------------------- | --------------------- |
-| `gcdsBlur`   | Emitted when an element loses focus.                                                     | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when an element has changed. Contains the new value in the event detail.         | `CustomEvent<string>` |
-| `gcdsError`  | Emitted when an element has a validation error.                                          | `CustomEvent<object>` |
-| `gcdsFocus`  | Emitted when an element has focus.                                                       | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the element has received input. Contains the new value in the event detail. | `CustomEvent<string>` |
-| `gcdsValid`  | Emitted when an element has validated.                                                   | `CustomEvent<object>` |
+| Event        | Description                                                                                 | Type                  |
+| ------------ | ------------------------------------------------------------------------------------------- | --------------------- |
+| `gcdsBlur`   | Emitted when an date-input loses focus.                                                     | `CustomEvent<void>`   |
+| `gcdsChange` | Emitted when an date-input has changed. Contains the new value in the event detail.         | `CustomEvent<string>` |
+| `gcdsError`  | Emitted when an date-input has a validation error.                                          | `CustomEvent<object>` |
+| `gcdsFocus`  | Emitted when an date-input has focus.                                                       | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the date-input has received input. Contains the new value in the event detail. | `CustomEvent<string>` |
+| `gcdsValid`  | Emitted when an date-input has validated.                                                   | `CustomEvent<object>` |
 
 
 ## Methods

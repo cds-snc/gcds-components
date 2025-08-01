@@ -362,19 +362,19 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emmitted when a checkbox has been inputted. Contains the new value in the event detail.
+   * Emitted when a checkbox has been inputted. Contains the new value in the event detail.
    */
   gcdsInput: EventEmitter<CustomEvent<string[]>>;
   /**
-   * Emmitted when a checkbox has been changed. Contains the new value in the event detail.
+   * Emitted when a checkbox has been changed. Contains the new value in the event detail.
    */
   gcdsChange: EventEmitter<CustomEvent<string[]>>;
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the checkbox has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the checkbox has a validation error.
    */
   gcdsValid: EventEmitter<CustomEvent<object>>;
 }
@@ -500,27 +500,27 @@ export class GcdsDateInput {
 
 export declare interface GcdsDateInput extends Components.GcdsDateInput {
   /**
-   * Emitted when an element has focus.
+   * Emitted when an date-input has focus.
    */
   gcdsFocus: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when an element loses focus.
+   * Emitted when an date-input loses focus.
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the element has received input. Contains the new value in the event detail.
+   * Emitted when the date-input has received input. Contains the new value in the event detail.
    */
   gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when an element has changed. Contains the new value in the event detail.
+   * Emitted when an date-input has changed. Contains the new value in the event detail.
    */
   gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when an element has a validation error.
+   * Emitted when an date-input has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
   /**
-   * Emitted when an element has validated.
+   * Emitted when an date-input has validated.
    */
   gcdsValid: EventEmitter<CustomEvent<object>>;
 }
@@ -812,11 +812,11 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
    */
   gcdsRemoveFile: EventEmitter<CustomEvent<any>>;
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the uploader has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the uploader has a validation error.
    */
   gcdsValid: EventEmitter<CustomEvent<object>>;
 }
@@ -1773,7 +1773,7 @@ export class GcdsRadios {
    */
   set options(_: Components.GcdsRadios['options']) {};
     /**
-   * The `name` attribute for the <gcds-radios>, used to group radio elements together
+   * The `name` attribute for the radios, used to group radio elements together
    */
   set name(_: Components.GcdsRadios['name']) {};
     /**
@@ -1789,7 +1789,7 @@ export class GcdsRadios {
    */
   set hint(_: Components.GcdsRadios['hint']) {};
     /**
-   * Set this to display an error message for invalid <gcds-radios>
+   * Set this to display an error message for invalid radios
    */
   set errorMessage(_: Components.GcdsRadios['errorMessage']) {};
     /**
@@ -1818,27 +1818,27 @@ export class GcdsRadios {
 
 export declare interface GcdsRadios extends Components.GcdsRadios {
   /**
-   * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
+   * Emitted when radios has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
    */
   gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when a <gcds-radios> option is checked (but not when unchecked). Contains new value in event detail
+   * Emitted when a radios option is checked (but not when unchecked). Contains new value in event detail
    */
   gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when <gcds-radios> has received focus
+   * Emitted when radios has received focus
    */
   gcdsFocus: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when the <gcds-radios> has lost focus
+   * Emitted when the radios has lost focus
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when <gcds-radios> has passed validation
+   * Emitted when radios has passed validation
    */
   gcdsValid: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when <gcds-radios> has a validation error
+   * Emitted when radios has a validation error
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
 }
@@ -1897,7 +1897,7 @@ export class GcdsSearch {
 
 export declare interface GcdsSearch extends Components.GcdsSearch {
   /**
-   * Emitted when the search element has recieved input.
+   * Emitted when the search element has received input.
    */
   gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
@@ -1905,7 +1905,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
    */
   gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when the search input value has gained focus.
+   * Emitted when the search input has gained focus.
    */
   gcdsFocus: EventEmitter<CustomEvent<void>>;
   /**

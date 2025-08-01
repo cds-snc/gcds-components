@@ -18,7 +18,7 @@ import {
 } from '../../utils/utils';
 
 /**
- * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+ * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
  *
  * @slot default - Slot for the list of navigation links.
  */

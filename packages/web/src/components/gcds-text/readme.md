@@ -7,7 +7,7 @@
 
 ## Overview
 
-Text is a styled and formatted paragraph that displays written content in an accessible way.
+Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
 
 ## Properties
 

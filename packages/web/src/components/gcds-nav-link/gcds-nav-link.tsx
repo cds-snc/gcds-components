@@ -12,7 +12,7 @@ import {
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 
 /**
- * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+ * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
  *
  * @slot default - Slot for the navigation link content.
  */

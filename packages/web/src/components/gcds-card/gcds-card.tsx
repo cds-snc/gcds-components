@@ -15,7 +15,7 @@ import i18n from './i18n/i18n';
 /**
  * A card is a box containing structured, actionable content on a single topic.
  *
- * @slot default - Slot for the card description. Will ovewrite the description prop if used.
+ * @slot default - Slot for the card description. Will overwrite the description prop if used.
  */
 @Component({
   tag: 'gcds-card',

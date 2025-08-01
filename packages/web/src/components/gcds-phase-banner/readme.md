@@ -7,7 +7,7 @@
 
 ## Overview
 
-`<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
 
 ## Properties
 

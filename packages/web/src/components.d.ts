@@ -17,7 +17,7 @@ export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { RadioObject } from "./components/gcds-radios/radio";
 export namespace Components {
     /**
-     * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+     * Alert displays an alert message with an optional heading, icon, and close button.
      */
     interface GcdsAlert {
         /**
@@ -608,7 +608,7 @@ export namespace Components {
         "skipToHref": string;
     }
     /**
-     * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+     * A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.
      */
     interface GcdsHeading {
         /**
@@ -631,7 +631,7 @@ export namespace Components {
         "tag": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     /**
-     * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+     * Hint provides additional information or context to help users understand the content or functionality of a related element.
      */
     interface GcdsHint {
         /**
@@ -808,7 +808,7 @@ export namespace Components {
         "value"?: string;
     }
     /**
-     * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+     * Label for form fields, providing accessibility and context for users.
      */
     interface GcdsLabel {
         /**
@@ -884,7 +884,7 @@ export namespace Components {
         "variant"?: 'default' | 'light';
     }
     /**
-     * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
      */
     interface GcdsNavGroup {
         /**
@@ -914,7 +914,7 @@ export namespace Components {
         "toggleNav": () => Promise<void>;
     }
     /**
-     * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
      */
     interface GcdsNavLink {
         /**
@@ -990,7 +990,7 @@ export namespace Components {
         "url": string | object;
     }
     /**
-     * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
      */
     interface GcdsPhaseBanner {
         /**
@@ -1017,7 +1017,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Set this to display an error message for invalid <gcds-radios>
+          * Set this to display an error message for invalid radios
          */
         "errorMessage": string;
         /**
@@ -1029,7 +1029,7 @@ export namespace Components {
          */
         "legend": string;
         /**
-          * The `name` attribute for the <gcds-radios>, used to group radio elements together
+          * The `name` attribute for the radios, used to group radio elements together
          */
         "name": string;
         /**
@@ -1224,7 +1224,7 @@ export namespace Components {
         "totalSteps": number;
     }
     /**
-     * Text is a styled and formatted paragraph that displays written content in an accessible way.
+     * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
     interface GcdsText {
         /**
@@ -1377,7 +1377,7 @@ export namespace Components {
         "updateNavSize": (size: any) => Promise<void>;
     }
     /**
-     * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
      */
     interface GcdsVerifyBanner {
         /**
@@ -1481,7 +1481,7 @@ declare global {
         "gcdsDismiss": void;
     }
     /**
-     * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+     * Alert displays an alert message with an optional heading, icon, and close button.
      */
     interface HTMLGcdsAlertElement extends Components.GcdsAlert, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsAlertElementEventMap>(type: K, listener: (this: HTMLGcdsAlertElement, ev: GcdsAlertCustomEvent<HTMLGcdsAlertElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1792,7 +1792,7 @@ declare global {
         new (): HTMLGcdsHeaderElement;
     };
     /**
-     * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+     * A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.
      */
     interface HTMLGcdsHeadingElement extends Components.GcdsHeading, HTMLStencilElement {
     }
@@ -1801,7 +1801,7 @@ declare global {
         new (): HTMLGcdsHeadingElement;
     };
     /**
-     * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+     * Hint provides additional information or context to help users understand the content or functionality of a related element.
      */
     interface HTMLGcdsHintElement extends Components.GcdsHint, HTMLStencilElement {
     }
@@ -1844,7 +1844,7 @@ declare global {
         new (): HTMLGcdsInputElement;
     };
     /**
-     * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+     * Label for form fields, providing accessibility and context for users.
      */
     interface HTMLGcdsLabelElement extends Components.GcdsLabel, HTMLStencilElement {
     }
@@ -1902,7 +1902,7 @@ declare global {
         "gcdsBlur": void;
     }
     /**
-     * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
      */
     interface HTMLGcdsNavGroupElement extends Components.GcdsNavGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsNavGroupElementEventMap>(type: K, listener: (this: HTMLGcdsNavGroupElement, ev: GcdsNavGroupCustomEvent<HTMLGcdsNavGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1924,7 +1924,7 @@ declare global {
         "gcdsBlur": void;
     }
     /**
-     * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
      */
     interface HTMLGcdsNavLinkElement extends Components.GcdsNavLink, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsNavLinkElementEventMap>(type: K, listener: (this: HTMLGcdsNavLinkElement, ev: GcdsNavLinkCustomEvent<HTMLGcdsNavLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1972,7 +1972,7 @@ declare global {
         new (): HTMLGcdsPaginationElement;
     };
     /**
-     * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
      */
     interface HTMLGcdsPhaseBannerElement extends Components.GcdsPhaseBanner, HTMLStencilElement {
     }
@@ -2091,7 +2091,7 @@ declare global {
         new (): HTMLGcdsStepperElement;
     };
     /**
-     * Text is a styled and formatted paragraph that displays written content in an accessible way.
+     * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
     interface HTMLGcdsTextElement extends Components.GcdsText, HTMLStencilElement {
     }
@@ -2143,7 +2143,7 @@ declare global {
         new (): HTMLGcdsTopicMenuElement;
     };
     /**
-     * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
      */
     interface HTMLGcdsVerifyBannerElement extends Components.GcdsVerifyBanner, HTMLStencilElement {
     }
@@ -2198,7 +2198,7 @@ declare global {
 }
 declare namespace LocalJSX {
     /**
-     * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+     * Alert displays an alert message with an optional heading, icon, and close button.
      */
     interface GcdsAlert {
         /**
@@ -2408,7 +2408,7 @@ declare namespace LocalJSX {
          */
         "onGcdsBlur"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
         /**
-          * Emmitted when a checkbox has been changed. Contains the new value in the event detail.
+          * Emitted when a checkbox has been changed. Contains the new value in the event detail.
          */
         "onGcdsChange"?: (event: GcdsCheckboxesCustomEvent<string[]>) => void;
         /**
@@ -2416,7 +2416,7 @@ declare namespace LocalJSX {
          */
         "onGcdsClick"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the checkbox has a validation error.
          */
         "onGcdsError"?: (event: GcdsCheckboxesCustomEvent<object>) => void;
         /**
@@ -2424,11 +2424,11 @@ declare namespace LocalJSX {
          */
         "onGcdsFocus"?: (event: GcdsCheckboxesCustomEvent<void>) => void;
         /**
-          * Emmitted when a checkbox has been inputted. Contains the new value in the event detail.
+          * Emitted when a checkbox has been inputted. Contains the new value in the event detail.
          */
         "onGcdsInput"?: (event: GcdsCheckboxesCustomEvent<string[]>) => void;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the checkbox has a validation error.
          */
         "onGcdsValid"?: (event: GcdsCheckboxesCustomEvent<object>) => void;
         /**
@@ -2524,27 +2524,27 @@ declare namespace LocalJSX {
          */
         "name": string;
         /**
-          * Emitted when an element loses focus.
+          * Emitted when an date-input loses focus.
          */
         "onGcdsBlur"?: (event: GcdsDateInputCustomEvent<void>) => void;
         /**
-          * Emitted when an element has changed. Contains the new value in the event detail.
+          * Emitted when an date-input has changed. Contains the new value in the event detail.
          */
         "onGcdsChange"?: (event: GcdsDateInputCustomEvent<string>) => void;
         /**
-          * Emitted when an element has a validation error.
+          * Emitted when an date-input has a validation error.
          */
         "onGcdsError"?: (event: GcdsDateInputCustomEvent<object>) => void;
         /**
-          * Emitted when an element has focus.
+          * Emitted when an date-input has focus.
          */
         "onGcdsFocus"?: (event: GcdsDateInputCustomEvent<void>) => void;
         /**
-          * Emitted when the element has received input. Contains the new value in the event detail.
+          * Emitted when the date-input has received input. Contains the new value in the event detail.
          */
         "onGcdsInput"?: (event: GcdsDateInputCustomEvent<string>) => void;
         /**
-          * Emitted when an element has validated.
+          * Emitted when an date-input has validated.
          */
         "onGcdsValid"?: (event: GcdsDateInputCustomEvent<object>) => void;
         /**
@@ -2706,7 +2706,7 @@ declare namespace LocalJSX {
          */
         "onGcdsChange"?: (event: GcdsFileUploaderCustomEvent<string[]>) => void;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the uploader has a validation error.
          */
         "onGcdsError"?: (event: GcdsFileUploaderCustomEvent<object>) => void;
         /**
@@ -2722,7 +2722,7 @@ declare namespace LocalJSX {
          */
         "onGcdsRemoveFile"?: (event: GcdsFileUploaderCustomEvent<any>) => void;
         /**
-          * Emitted when the input has a validation error.
+          * Emitted when the uploader has a validation error.
          */
         "onGcdsValid"?: (event: GcdsFileUploaderCustomEvent<object>) => void;
         /**
@@ -2941,7 +2941,7 @@ declare namespace LocalJSX {
         "skipToHref": string;
     }
     /**
-     * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+     * A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.
      */
     interface GcdsHeading {
         /**
@@ -2964,7 +2964,7 @@ declare namespace LocalJSX {
         "tag": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     /**
-     * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+     * Hint provides additional information or context to help users understand the content or functionality of a related element.
      */
     interface GcdsHint {
         /**
@@ -3153,7 +3153,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
-     * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+     * Label for form fields, providing accessibility and context for users.
      */
     interface GcdsLabel {
         /**
@@ -3253,7 +3253,7 @@ declare namespace LocalJSX {
         "variant"?: 'default' | 'light';
     }
     /**
-     * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
      */
     interface GcdsNavGroup {
         /**
@@ -3287,7 +3287,7 @@ declare namespace LocalJSX {
         "openTrigger": string;
     }
     /**
-     * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
      */
     interface GcdsNavLink {
         /**
@@ -3383,7 +3383,7 @@ declare namespace LocalJSX {
         "url"?: string | object;
     }
     /**
-     * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
      */
     interface GcdsPhaseBanner {
         /**
@@ -3410,7 +3410,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Set this to display an error message for invalid <gcds-radios>
+          * Set this to display an error message for invalid radios
          */
         "errorMessage"?: string;
         /**
@@ -3422,31 +3422,31 @@ declare namespace LocalJSX {
          */
         "legend": string;
         /**
-          * The `name` attribute for the <gcds-radios>, used to group radio elements together
+          * The `name` attribute for the radios, used to group radio elements together
          */
         "name": string;
         /**
-          * Emitted when the <gcds-radios> has lost focus
+          * Emitted when the radios has lost focus
          */
         "onGcdsBlur"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
-          * Emitted when a <gcds-radios> option is checked (but not when unchecked). Contains new value in event detail
+          * Emitted when a radios option is checked (but not when unchecked). Contains new value in event detail
          */
         "onGcdsChange"?: (event: GcdsRadiosCustomEvent<string>) => void;
         /**
-          * Emitted when <gcds-radios> has a validation error
+          * Emitted when radios has a validation error
          */
         "onGcdsError"?: (event: GcdsRadiosCustomEvent<object>) => void;
         /**
-          * Emitted when <gcds-radios> has received focus
+          * Emitted when radios has received focus
          */
         "onGcdsFocus"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
-          * Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
+          * Emitted when radios has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail
          */
         "onGcdsInput"?: (event: GcdsRadiosCustomEvent<string>) => void;
         /**
-          * Emitted when <gcds-radios> has passed validation
+          * Emitted when radios has passed validation
          */
         "onGcdsValid"?: (event: GcdsRadiosCustomEvent<void>) => void;
         /**
@@ -3501,11 +3501,11 @@ declare namespace LocalJSX {
          */
         "onGcdsChange"?: (event: GcdsSearchCustomEvent<string>) => void;
         /**
-          * Emitted when the search input value has gained focus.
+          * Emitted when the search input has gained focus.
          */
         "onGcdsFocus"?: (event: GcdsSearchCustomEvent<void>) => void;
         /**
-          * Emitted when the search element has recieved input.
+          * Emitted when the search element has received input.
          */
         "onGcdsInput"?: (event: GcdsSearchCustomEvent<string>) => void;
         /**
@@ -3674,7 +3674,7 @@ declare namespace LocalJSX {
         "totalSteps": number;
     }
     /**
-     * Text is a styled and formatted paragraph that displays written content in an accessible way.
+     * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
     interface GcdsText {
         /**
@@ -3830,7 +3830,7 @@ declare namespace LocalJSX {
         "home"?: boolean;
     }
     /**
-     * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
      */
     interface GcdsVerifyBanner {
         /**
@@ -3894,7 +3894,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             /**
-             * `<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.
+             * Alert displays an alert message with an optional heading, icon, and close button.
              */
             "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
             /**
@@ -3966,11 +3966,11 @@ declare module "@stencil/core" {
              */
             "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
             /**
-             * A heading is a title that establishes levels of hierarchy to organize page content into a structure.
+             * A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.
              */
             "gcds-heading": LocalJSX.GcdsHeading & JSXBase.HTMLAttributes<HTMLGcdsHeadingElement>;
             /**
-             * `<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.
+             * Hint provides additional information or context to help users understand the content or functionality of a related element.
              */
             "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
             /**
@@ -3982,7 +3982,7 @@ declare module "@stencil/core" {
              */
             "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             /**
-             * `<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+             * Label for form fields, providing accessibility and context for users.
              */
             "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             /**
@@ -3994,11 +3994,11 @@ declare module "@stencil/core" {
              */
             "gcds-link": LocalJSX.GcdsLink & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
             /**
-             * `<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+             * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
              */
             "gcds-nav-group": LocalJSX.GcdsNavGroup & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
             /**
-             * `<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+             * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
              */
             "gcds-nav-link": LocalJSX.GcdsNavLink & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
             /**
@@ -4010,7 +4010,7 @@ declare module "@stencil/core" {
              */
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             /**
-             * `<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
+             * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
              */
             "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             /**
@@ -4042,7 +4042,7 @@ declare module "@stencil/core" {
              */
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             /**
-             * Text is a styled and formatted paragraph that displays written content in an accessible way.
+             * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
              */
             "gcds-text": LocalJSX.GcdsText & JSXBase.HTMLAttributes<HTMLGcdsTextElement>;
             /**
@@ -4058,7 +4058,7 @@ declare module "@stencil/core" {
              */
             "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
             /**
-             * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+             * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
              */
             "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }

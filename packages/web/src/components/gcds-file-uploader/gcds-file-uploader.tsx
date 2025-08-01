@@ -284,12 +284,12 @@ export class GcdsFileUploader {
   }
 
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the uploader has a validation error.
    */
   @StencilEvent() gcdsError!: EventEmitter<object>;
 
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the uploader has a validation error.
    */
   @StencilEvent() gcdsValid!: EventEmitter<object>;
 

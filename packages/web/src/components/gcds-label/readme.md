@@ -7,7 +7,7 @@
 
 ## Overview
 
-`<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.
+Label for form fields, providing accessibility and context for users.
 
 ## Properties
 

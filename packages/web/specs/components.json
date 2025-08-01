@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-28T18:31:18",
+  "timestamp": "2025-08-01T13:38:37",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.35.1",
@@ -11,7 +11,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-alert",
       "readme": "# gcds-alert\n\n\n",
-      "docs": "`<gcds-alert>` is a component that displays an alert message with an optional heading, icon, and close button.",
+      "docs": "Alert displays an alert message with an optional heading, icon, and close button.",
       "docsTags": [
         {
           "name": "slot",
@@ -837,7 +837,7 @@
       "docsTags": [
         {
           "name": "slot",
-          "text": "default - Slot for the card description. Will ovewrite the description prop if used."
+          "text": "default - Slot for the card description. Will overwrite the description prop if used."
         }
       ],
       "usage": {},
@@ -1077,7 +1077,7 @@
       "slots": [
         {
           "name": "default",
-          "docs": "Slot for the card description. Will ovewrite the description prop if used."
+          "docs": "Slot for the card description. Will overwrite the description prop if used."
         }
       ],
       "parts": [],
@@ -1455,7 +1455,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emmitted when a checkbox has been changed. Contains the new value in the event detail.",
+          "docs": "Emitted when a checkbox has been changed. Contains the new value in the event detail.",
           "docsTags": []
         },
         {
@@ -1483,7 +1483,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the input has a validation error.",
+          "docs": "Emitted when the checkbox has a validation error.",
           "docsTags": []
         },
         {
@@ -1511,7 +1511,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emmitted when a checkbox has been inputted. Contains the new value in the event detail.",
+          "docs": "Emitted when a checkbox has been inputted. Contains the new value in the event detail.",
           "docsTags": []
         },
         {
@@ -1525,7 +1525,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the input has a validation error.",
+          "docs": "Emitted when the checkbox has a validation error.",
           "docsTags": []
         }
       ],
@@ -2410,7 +2410,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an element loses focus.",
+          "docs": "Emitted when an date-input loses focus.",
           "docsTags": []
         },
         {
@@ -2424,7 +2424,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an element has changed. Contains the new value in the event detail.",
+          "docs": "Emitted when an date-input has changed. Contains the new value in the event detail.",
           "docsTags": []
         },
         {
@@ -2438,7 +2438,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an element has a validation error.",
+          "docs": "Emitted when an date-input has a validation error.",
           "docsTags": []
         },
         {
@@ -2452,7 +2452,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an element has focus.",
+          "docs": "Emitted when an date-input has focus.",
           "docsTags": []
         },
         {
@@ -2466,7 +2466,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the element has received input. Contains the new value in the event detail.",
+          "docs": "Emitted when the date-input has received input. Contains the new value in the event detail.",
           "docsTags": []
         },
         {
@@ -2480,7 +2480,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an element has validated.",
+          "docs": "Emitted when an date-input has validated.",
           "docsTags": []
         }
       ],
@@ -3578,7 +3578,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the input has a validation error.",
+          "docs": "Emitted when the uploader has a validation error.",
           "docsTags": []
         },
         {
@@ -3634,7 +3634,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the input has a validation error.",
+          "docs": "Emitted when the uploader has a validation error.",
           "docsTags": []
         }
       ],
@@ -5170,7 +5170,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-heading",
       "readme": "# gcds-heading\n\n\n",
-      "docs": "A heading is a title that establishes levels of hierarchy to organize page content into a structure.",
+      "docs": "A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.",
       "docsTags": [
         {
           "name": "slot",
@@ -5593,7 +5593,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-hint",
       "readme": "# gcds-hint\n\n\n",
-      "docs": "`<gcds-hint>` is a component that provides additional information or context to help users understand the content or functionality of a related element.",
+      "docs": "Hint provides additional information or context to help users understand the content or functionality of a related element.",
       "docsTags": [
         {
           "name": "slot",
@@ -7077,7 +7077,7 @@
       "encapsulation": "none",
       "tag": "gcds-label",
       "readme": "# gcds-label\n\n\n",
-      "docs": "`<gcds-label>` is a component that defines a label for form fields, providing accessibility and context for users.",
+      "docs": "Label for form fields, providing accessibility and context for users.",
       "docsTags": [
         {
           "name": "slot",
@@ -7691,7 +7691,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-nav-group",
       "readme": "# gcds-nav-group\n\n\n",
-      "docs": "`<gcds-nav-group>` is a component that creates a navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.",
+      "docs": "Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.",
       "docsTags": [
         {
           "name": "slot",
@@ -7933,7 +7933,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-nav-link",
       "readme": "# gcds-nav-link\n\n\n",
-      "docs": "`<gcds-nav-link>` is a component that represents a navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.",
+      "docs": "Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.",
       "docsTags": [
         {
           "name": "slot",
@@ -8500,7 +8500,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-phase-banner",
       "readme": "# gcds-phase-banner\n\n\n",
-      "docs": "`<gcds-phase-banner>` is a component that displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.",
+      "docs": "Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.",
       "docsTags": [
         {
           "name": "slot",
@@ -8705,7 +8705,7 @@
           "mutable": true,
           "attr": "error-message",
           "reflectToAttr": false,
-          "docs": "Set this to display an error message for invalid <gcds-radios>",
+          "docs": "Set this to display an error message for invalid radios",
           "docsTags": [],
           "values": [
             {
@@ -8774,7 +8774,7 @@
           "mutable": false,
           "attr": "name",
           "reflectToAttr": true,
-          "docs": "The `name` attribute for the <gcds-radios>, used to group radio elements together",
+          "docs": "The `name` attribute for the radios, used to group radio elements together",
           "docsTags": [],
           "values": [
             {
@@ -8991,7 +8991,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the <gcds-radios> has lost focus",
+          "docs": "Emitted when the radios has lost focus",
           "docsTags": []
         },
         {
@@ -9005,7 +9005,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when a <gcds-radios> option is checked (but not when unchecked). Contains new value in event detail",
+          "docs": "Emitted when a radios option is checked (but not when unchecked). Contains new value in event detail",
           "docsTags": []
         },
         {
@@ -9019,7 +9019,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when <gcds-radios> has a validation error",
+          "docs": "Emitted when radios has a validation error",
           "docsTags": []
         },
         {
@@ -9033,7 +9033,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when <gcds-radios> has received focus",
+          "docs": "Emitted when radios has received focus",
           "docsTags": []
         },
         {
@@ -9047,7 +9047,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when <gcds-radios> has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail",
+          "docs": "Emitted when radios has been changed as a direct result of a user action (a radio option has been selected). Contains new value in event detail",
           "docsTags": []
         },
         {
@@ -9061,7 +9061,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when <gcds-radios> has passed validation",
+          "docs": "Emitted when radios has passed validation",
           "docsTags": []
         }
       ],
@@ -9349,7 +9349,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the search input value has gained focus.",
+          "docs": "Emitted when the search input has gained focus.",
           "docsTags": []
         },
         {
@@ -9363,7 +9363,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the search element has recieved input.",
+          "docs": "Emitted when the search element has received input.",
           "docsTags": []
         },
         {
@@ -10440,7 +10440,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-text",
       "readme": "# gcds-text\n\n\n",
-      "docs": "Text is a styled and formatted paragraph that displays written content in an accessible way.",
+      "docs": "Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.",
       "docsTags": [
         {
           "name": "slot",
@@ -11933,7 +11933,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-verify-banner",
       "readme": "# gcds-verify-banner\n\n\n",
-      "docs": "`<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.",
+      "docs": "Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.",
       "docsTags": [],
       "usage": {},
       "props": [

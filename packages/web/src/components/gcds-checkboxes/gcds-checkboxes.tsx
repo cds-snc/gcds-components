@@ -248,22 +248,22 @@ export class GcdsCheckboxes {
   };
 
   /**
-   * Emmitted when a checkbox has been inputted. Contains the new value in the event detail.
+   * Emitted when a checkbox has been inputted. Contains the new value in the event detail.
    */
   @Event() gcdsInput: EventEmitter<string[]>;
 
   /**
-   * Emmitted when a checkbox has been changed. Contains the new value in the event detail.
+   * Emitted when a checkbox has been changed. Contains the new value in the event detail.
    */
   @Event() gcdsChange: EventEmitter<string[]>;
 
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the checkbox has a validation error.
    */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the checkbox has a validation error.
    */
   @Event() gcdsValid!: EventEmitter<object>;
 

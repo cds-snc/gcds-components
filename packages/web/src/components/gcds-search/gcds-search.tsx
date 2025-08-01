@@ -62,7 +62,7 @@ export class GcdsSearch {
    */
 
   /**
-   * Emitted when the search element has recieved input.
+   * Emitted when the search element has received input.
    */
   @Event() gcdsInput!: EventEmitter<string>;
 
@@ -72,7 +72,7 @@ export class GcdsSearch {
   @Event() gcdsChange!: EventEmitter<string>;
 
   /**
-   * Emitted when the search input value has gained focus.
+   * Emitted when the search input has gained focus.
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 

@@ -6,7 +6,7 @@ import CanadaFlag from './assets/canada-flag.svg';
 import ContentToggleArrow from './assets/content-toggle-arrow.svg';
 
 /**
- * `<gcds-verify-banner>` is a component that displays a banner with information about the Government of Canada's Digital Standards.
+ * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
  */
 @Component({
   tag: 'gcds-verify-banner',
