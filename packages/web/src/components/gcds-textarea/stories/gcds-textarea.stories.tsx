@@ -110,6 +110,21 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    minlength: {
+      control: 'text',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '-' },
+      },
+    },
+    autofocus: {
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
     ...validatorProps,
     ...langProp,
 
@@ -142,8 +157,10 @@ const Template = args =>
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.characterCount ? `character-count="${args.characterCount}"` : null}
+  ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
   ${args.hideLabel ? `hide-label` : null}
+  ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -160,8 +177,10 @@ const Template = args =>
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.characterCount ? `characterCount="${args.characterCount}"` : null}
+  ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
   ${args.hideLabel ? `hideLabel` : null}
+  ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -181,8 +200,10 @@ const TemplatePlayground = args => `
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.characterCount ? `character-count="${args.characterCount}"` : null}
+  ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
   ${args.hideLabel ? `hide-label` : null}
+  ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -249,6 +270,19 @@ Character.args = {
   validateOn: 'blur',
   lang: 'en',
 };
+// ------ Textarea character count ------
+
+export const Minlength = Template.bind({});
+Minlength.args = {
+  textareaId: 'textarea-minlength',
+  label: 'Label',
+  name: 'textarea-name',
+  hint: 'Hint / Example message.',
+  minlength: 5,
+  required: true,
+  validateOn: 'blur',
+  lang: 'en',
+};
 
 // ------ Textarea rows ------
 
@@ -272,12 +306,14 @@ Props.args = {
   name: 'textarea-name',
   hint: 'Hint / Example message.',
   characterCount: '',
+  minlength: '',
   errorMessage: '',
   required: false,
   disabled: false,
   rows: '',
   value: '',
   hideLabel: false,
+  autofocus: false,
   validateOn: 'blur',
   lang: 'en',
 };
@@ -291,12 +327,14 @@ Playground.args = {
   name: 'textarea-name',
   hint: 'Hint / Example message.',
   characterCount: '',
+  minlength: '',
   errorMessage: '',
   required: false,
   disabled: false,
   rows: '',
   value: '',
   hideLabel: false,
+  autofocus: false,
   validateOn: 'blur',
   lang: 'en',
 };

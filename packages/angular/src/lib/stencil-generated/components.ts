@@ -2107,8 +2107,8 @@ export declare interface GcdsText extends Components.GcdsText {}
 
 
 @ProxyCmp({
-  inputs: ['characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['autofocus', 'characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -2116,16 +2116,24 @@ export declare interface GcdsText extends Components.GcdsText {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'value'],
+  inputs: ['autofocus', 'characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
 export class GcdsTextarea {
   protected el: HTMLGcdsTextareaElement;
     /**
+   * If true, the input will be focused on component render
+   */
+  set autofocus(_: Components.GcdsTextarea['autofocus']) {};
+    /**
    * Sets the maxlength attribute for the textarea element.
    */
   set characterCount(_: Components.GcdsTextarea['characterCount']) {};
+    /**
+   * The minimum number of characters that the input field can accept.
+   */
+  set minlength(_: Components.GcdsTextarea['minlength']) {};
     /**
    * Defines width for textarea cols (the min-width for textarea's is 50%).
    */
@@ -2178,6 +2186,10 @@ export class GcdsTextarea {
    * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsTextarea['validateOn']) {};
+    /**
+   * Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsTextarea['validity']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
