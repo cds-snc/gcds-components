@@ -2,6 +2,9 @@ import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 import { SpacingValues } from '../../utils/types/spacing';
 import i18n from './i18n/i18n';
 
+/**
+ * An icon is a symbol that visually represents an action or idea.
+ */
 @Component({
   tag: 'gcds-icon',
   styleUrl: 'gcds-icon.scss',

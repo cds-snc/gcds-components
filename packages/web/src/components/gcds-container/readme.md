@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A container is a basic box layout with a set width for its contents.
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                                                                                                                                                       | Type                                                                                                                                                                                                                                                                                   | Default     |
@@ -16,6 +20,13 @@
 | `padding`       | `padding`        | Defines the container's padding.                                                                                                                                                                                  | `"0" \| "25" \| "50" \| "75" \| "100" \| "125" \| "150" \| "175" \| "200" \| "225" \| "250" \| "300" \| "350" \| "400" \| "450" \| "500" \| "550" \| "600" \| "650" \| "700" \| "750" \| "800" \| "850" \| "900" \| "950" \| "1000" \| "1050" \| "1100" \| "1150" \| "1200" \| "1250"` | `undefined` |
 | `size`          | `size`           | Defines container size.                                                                                                                                                                                           | `"full" \| "lg" \| "md" \| "sm" \| "xl" \| "xs"`                                                                                                                                                                                                                                       | `'full'`    |
 | `tag`           | `tag`            | Set tag for container.                                                                                                                                                                                            | `string`                                                                                                                                                                                                                                                                               | `'div'`     |
+
+
+## Slots
+
+| Slot        | Description                                 |
+| ----------- | ------------------------------------------- |
+| `"default"` | Slot for the main content of the container. |
 
 
 ## Dependencies
@@ -32,7 +43,7 @@ graph TD;
   gcds-alert --> gcds-container
   gcds-grid --> gcds-container
   gcds-phase-banner --> gcds-container
-  style gcds-container fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-container fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

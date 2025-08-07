@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Search is a space for entering keywords to find relevant information.
+
 ## Properties
 
 | Property      | Attribute     | Description                                                                        | Type              | Default          |
@@ -20,13 +24,13 @@
 
 ## Events
 
-| Event        | Description                                           | Type                  |
-| ------------ | ----------------------------------------------------- | --------------------- |
-| `gcdsBlur`   | Emitted when the search input has lost focus.         | `CustomEvent<object>` |
-| `gcdsChange` | Emitted when the search input value has changed.      | `CustomEvent<string>` |
-| `gcdsFocus`  | Emitted when the search input value has gained focus. | `CustomEvent<object>` |
-| `gcdsInput`  | Emitted when the search element has recieved input.   | `CustomEvent<string>` |
-| `gcdsSubmit` | Emitted when the search form has submitted.           | `CustomEvent<object>` |
+| Event        | Description                                         | Type                  |
+| ------------ | --------------------------------------------------- | --------------------- |
+| `gcdsBlur`   | Emitted when the search input has lost focus.       | `CustomEvent<void>`   |
+| `gcdsChange` | Emitted when the search input value has changed.    | `CustomEvent<string>` |
+| `gcdsFocus`  | Emitted when the search input has gained focus.     | `CustomEvent<void>`   |
+| `gcdsInput`  | Emitted when the search element has received input. | `CustomEvent<string>` |
+| `gcdsSubmit` | Emitted when the search form has submitted.         | `CustomEvent<string>` |
 
 
 ## Dependencies
@@ -46,7 +50,7 @@ graph TD;
   gcds-search --> gcds-button
   gcds-search --> gcds-icon
   gcds-button --> gcds-icon
-  style gcds-search fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-search fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

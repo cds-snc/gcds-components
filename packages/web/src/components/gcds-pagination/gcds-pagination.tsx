@@ -14,6 +14,9 @@ import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import { constructHref, constructClasses } from './utils/render';
 
+/**
+ * Pagination is a division of content into multiple linked pages.
+ */
 @Component({
   tag: 'gcds-pagination',
   styleUrl: 'gcds-pagination.css',
@@ -121,9 +124,10 @@ export class GcdsPagination {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   /**
-   * Emitted when the link has been clicked.
+   * Emitted when the link has been clicked. Contains the href in event detail when using simple display,
+   * or an object with page and href when using list display.
    */
-  @Event() gcdsClick!: EventEmitter<void>;
+  @Event() gcdsClick!: EventEmitter<object | string>;
 
   /**
    * Function to constuct <li> and <a> tags for display="list" pagination
@@ -403,7 +407,10 @@ export class GcdsPagination {
                     onFocus={() => this.gcdsFocus.emit()}
                     onClick={e => emitEvent(e, this.gcdsClick, previousHref)}
                   >
-                    <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
+                    <gcds-icon
+                      margin-right="150"
+                      name="chevron-left"
+                    ></gcds-icon>
                     <div class="gcds-pagination-simple-text">
                       {I18N[lang].previous}
                     </div>
@@ -427,7 +434,10 @@ export class GcdsPagination {
                       {I18N[lang].next}
                     </div>
                     <span>{nextLabel}</span>
-                    <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
+                    <gcds-icon
+                      margin-left="150"
+                      name="chevron-right"
+                    ></gcds-icon>
                   </a>
                 </li>
               )}

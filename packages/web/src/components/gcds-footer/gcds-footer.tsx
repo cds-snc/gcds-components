@@ -1,7 +1,20 @@
-import { Component, Host, Element, Watch, Prop, State, h } from '@stencil/core';
+import {
+  Component,
+  Host,
+  Element,
+  Watch,
+  Prop,
+  State,
+  Event,
+  EventEmitter,
+  h,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
 
+/**
+ * The footer is the responsive Government of Canada branded footer landmark.
+ */
 @Component({
   tag: 'gcds-footer',
   styleUrl: 'gcds-footer.css',
@@ -67,6 +80,25 @@ export class GcdsFooter {
       this.subLinksObject = newSubLinks;
     }
   }
+
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when the link has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link has been clicked. Contains the href in the event detail.
+   */
+  @Event() gcdsClick!: EventEmitter<string>;
 
   /**
    * Language of rendered component

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A link is a navigational element that brings a person to a new page, website, file, or section on the current page.
+
 ## Properties
 
 | Property            | Attribute  | Description                                                                                                                                        | Type                                | Default     |
@@ -22,18 +26,25 @@
 
 ## Events
 
-| Event       | Description                             | Type                |
-| ----------- | --------------------------------------- | ------------------- |
-| `gcdsBlur`  | Emitted when the link loses focus.      | `CustomEvent<void>` |
-| `gcdsClick` | Emitted when the link has been clicked. | `CustomEvent<void>` |
-| `gcdsFocus` | Emitted when the link has focus.        | `CustomEvent<void>` |
+| Event       | Description                                                                    | Type                  |
+| ----------- | ------------------------------------------------------------------------------ | --------------------- |
+| `gcdsBlur`  | Emitted when the link loses focus.                                             | `CustomEvent<void>`   |
+| `gcdsClick` | Emitted when the link has been clicked. Contains the href in the event detail. | `CustomEvent<string>` |
+| `gcdsFocus` | Emitted when the link has focus.                                               | `CustomEvent<void>`   |
+
+
+## Slots
+
+| Slot        | Description                |
+| ----------- | -------------------------- |
+| `"default"` | Slot for the link content. |
 
 
 ## Dependencies
 
 ### Used by
 
- - [gcds-breadcrumbs-item](../gcds-breadcrumbs)
+ - [gcds-breadcrumbs-item](../gcds-breadcrumbs-item)
  - [gcds-card](../gcds-card)
  - [gcds-error-summary](../gcds-error-summary)
  - [gcds-footer](../gcds-footer)
@@ -54,7 +65,7 @@ graph TD;
   gcds-footer --> gcds-link
   gcds-header --> gcds-link
   gcds-lang-toggle --> gcds-link
-  style gcds-link fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-link fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

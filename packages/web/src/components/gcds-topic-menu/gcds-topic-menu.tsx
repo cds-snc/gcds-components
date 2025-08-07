@@ -13,6 +13,9 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import backup from './backup/backup.min';
 
+/**
+ * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
+ */
 @Component({
   tag: 'gcds-topic-menu',
   styleUrl: 'gcds-topic-menu.css',

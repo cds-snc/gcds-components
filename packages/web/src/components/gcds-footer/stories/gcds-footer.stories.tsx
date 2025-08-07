@@ -1,4 +1,7 @@
-import { langProp } from '../../../utils/storybook/component-properties';
+import {
+  langProp,
+  eventProp,
+} from '../../../utils/storybook/component-properties';
 
 export default {
   title: 'Components/Footer',
@@ -40,6 +43,20 @@ export default {
       },
     },
     ...langProp,
+
+    // Events
+    gcdsClick: {
+      action: 'click',
+      ...eventProp,
+    },
+    gcdsFocus: {
+      action: 'focus',
+      ...eventProp,
+    },
+    gcdsBlur: {
+      action: 'blur',
+      ...eventProp,
+    },
   },
 };
 
