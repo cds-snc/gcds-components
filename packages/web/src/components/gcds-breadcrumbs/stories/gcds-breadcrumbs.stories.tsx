@@ -21,9 +21,10 @@ export default {
       control: {
         type: 'text',
       },
+      description:
+        'Customize the content or include additional elements. | Personnalisez le contenu ou ajoutez des éléments supplémentaires.',
       table: {
         category: 'Slots | Fentes',
-        disable: true,
       },
     },
   },
@@ -35,16 +36,22 @@ const Template = args =>
 <gcds-breadcrumbs ${args.hideCanadaLink ? `hide-canada-link` : null} ${
     args.lang != 'en' ? `lang="${args.lang}"` : null
   }>
-  <gcds-breadcrumbs-item href="#">Home page</gcds-breadcrumbs-item>
-  <gcds-breadcrumbs-item href="#">Parent page link</gcds-breadcrumbs-item>
+  ${
+    args.default ||
+    `<gcds-breadcrumbs-item href="#">Home page</gcds-breadcrumbs-item>
+  <gcds-breadcrumbs-item href="#">Parent page link</gcds-breadcrumbs-item>`
+  }
 </gcds-breadcrumbs>
 
 <!-- React code -->
 <GcdsBreadcrumbs ${args.hideCanadaLink ? `hideCanadaLink` : null} ${
     args.lang != 'en' ? `lang="${args.lang}"` : null
   }>
-  <GcdsBreadcrumbsItem href="#">Home page</GcdsBreadcrumbsItem>
-  <GcdsBreadcrumbsItem href="#">Parent page link</GcdsBreadcrumbsItem>
+  ${
+    args.default ||
+    `<GcdsBreadcrumbsItem href="#">Home page</GcdsBreadcrumbsItem>
+  <GcdsBreadcrumbsItem href="#">Parent page link</GcdsBreadcrumbsItem>`
+  }
 </GcdsBreadcrumbs>
 `.replace(/ null/g, '');
 
@@ -53,8 +60,11 @@ const TemplatePlayground = args => `
   ${args.hideCanadaLink ? `hide-canada-link` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  <gcds-breadcrumbs-item href="#">Home page</gcds-breadcrumbs-item>
-  <gcds-breadcrumbs-item href="#">Parent page link</gcds-breadcrumbs-item>
+  ${
+    args.default ||
+    `<gcds-breadcrumbs-item href="#">Home page</gcds-breadcrumbs-item>
+  <gcds-breadcrumbs-item href="#">Parent page link</gcds-breadcrumbs-item>`
+  }
 </gcds-breadcrumbs>
 `;
 

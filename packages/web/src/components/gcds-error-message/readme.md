@@ -5,11 +5,22 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+An error message is a description of a problem blocking a user goal.
+
 ## Properties
 
 | Property                 | Attribute    | Description                         | Type     | Default     |
 | ------------------------ | ------------ | ----------------------------------- | -------- | ----------- |
 | `messageId` _(required)_ | `message-id` | Id attribute for the error message. | `string` | `undefined` |
+
+
+## Slots
+
+| Slot        | Description                         |
+| ----------- | ----------------------------------- |
+| `"default"` | Slot for the error message content. |
 
 
 ## Dependencies
@@ -41,7 +52,7 @@ graph TD;
   gcds-radios --> gcds-error-message
   gcds-select --> gcds-error-message
   gcds-textarea --> gcds-error-message
-  style gcds-error-message fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-error-message fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

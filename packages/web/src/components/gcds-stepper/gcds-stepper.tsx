@@ -2,6 +2,11 @@ import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * A stepper is a progress tracker for a multi-step process.
+ *
+ * @slot default - Slot for the heading content.
+ */
 @Component({
   tag: 'gcds-stepper',
   styleUrl: 'gcds-stepper.css',
@@ -105,7 +110,7 @@ export class GcdsStepper {
 
     this.updateLang();
 
-    let valid = this.validateRequiredProps();
+    const valid = this.validateRequiredProps();
 
     if (!valid) {
       logError('gcds-stepper', this.errors);

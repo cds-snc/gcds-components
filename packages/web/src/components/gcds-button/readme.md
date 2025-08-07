@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+The button is an interactive object that emphasizes an action.
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                                                                                        | Type                                              | Default     |
@@ -22,11 +26,18 @@
 
 ## Events
 
-| Event       | Description                               | Type                |
-| ----------- | ----------------------------------------- | ------------------- |
-| `gcdsBlur`  | Emitted when the button loses focus.      | `CustomEvent<void>` |
-| `gcdsClick` | Emitted when the button has been clicked. | `CustomEvent<void>` |
-| `gcdsFocus` | Emitted when the button has focus.        | `CustomEvent<void>` |
+| Event       | Description                                                                               | Type                          |
+| ----------- | ----------------------------------------------------------------------------------------- | ----------------------------- |
+| `gcdsBlur`  | Emitted when the button loses focus.                                                      | `CustomEvent<void>`           |
+| `gcdsClick` | Emitted when the button has been clicked. Contains the value or href in the event detail. | `CustomEvent<string \| void>` |
+| `gcdsFocus` | Emitted when the button has focus.                                                        | `CustomEvent<void>`           |
+
+
+## Slots
+
+| Slot        | Description                     |
+| ----------- | ------------------------------- |
+| `"default"` | Slot for the button/link label. |
 
 
 ## Dependencies
@@ -44,7 +55,7 @@
 graph TD;
   gcds-button --> gcds-icon
   gcds-search --> gcds-button
-  style gcds-button fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-button fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

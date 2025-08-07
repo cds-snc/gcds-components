@@ -17,6 +17,11 @@ import {
   closestElement,
 } from '../../utils/utils';
 
+/**
+ * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+ *
+ * @slot default - Slot for the list of navigation links.
+ */
 @Component({
   tag: 'gcds-nav-group',
   styleUrl: 'gcds-nav-group.css',

@@ -13,6 +13,11 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * The button is an interactive object that emphasizes an action.
+ *
+ * @slot default - Slot for the button/link label.
+ */
 @Component({
   tag: 'gcds-button',
   styleUrl: 'gcds-button.css',
@@ -141,9 +146,9 @@ export class GcdsButton {
    */
 
   /**
-   * Emitted when the button has been clicked.
+   * Emitted when the button has been clicked. Contains the value or href in the event detail.
    */
-  @Event() gcdsClick!: EventEmitter<void>;
+  @Event() gcdsClick!: EventEmitter<string | void>;
 
   /**
    * Emitted when the button has focus.
@@ -183,8 +188,13 @@ export class GcdsButton {
   }
 
   private handleClick = (e: Event) => {
-    // Check button type, only emit value if type is "submit"
-    const emitValue = this.type === 'submit' ? this.value : undefined;
+    // Check button type, emit value with submit button and href with link.
+    const emitValue =
+      this.type === 'submit'
+        ? this.value
+        : this.type === 'link'
+          ? this.href
+          : undefined;
     const event = emitEvent(e, this.gcdsClick, emitValue);
 
     if (event) {

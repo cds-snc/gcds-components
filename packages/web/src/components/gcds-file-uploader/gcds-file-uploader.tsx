@@ -27,6 +27,9 @@ import {
 } from '../../validators';
 import i18n from './i18n/i18n';
 
+/**
+ * A file uploader is a space to select and add supporting documentation.
+ */
 @Component({
   tag: 'gcds-file-uploader',
   styleUrl: 'gcds-file-uploader.css',
@@ -192,14 +195,14 @@ export class GcdsFileUploader {
   };
 
   /**
-   * Emitted when the user has made a file selection.
+   * Emitted when the user has made a file selection. Contains the new value in the event detail.
    */
-  @StencilEvent() gcdsChange: EventEmitter;
+  @StencilEvent() gcdsChange: EventEmitter<string[]>;
 
   /**
-   * Emitted when the user has uploaded a file.
+   * Emitted when the user has uploaded a file. Contains the new value in the event detail.
    */
-  @StencilEvent() gcdsInput: EventEmitter;
+  @StencilEvent() gcdsInput: EventEmitter<string[]>;
 
   private handleInput = (e, customEvent) => {
     const filesContainer: string[] = [];
@@ -281,12 +284,12 @@ export class GcdsFileUploader {
   }
 
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the uploader has a validation error.
    */
   @StencilEvent() gcdsError!: EventEmitter<object>;
 
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the uploader has a validation error.
    */
   @StencilEvent() gcdsValid!: EventEmitter<object>;
 

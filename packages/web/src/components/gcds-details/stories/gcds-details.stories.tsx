@@ -1,3 +1,5 @@
+import { eventProp } from '../../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Details',
 
@@ -33,6 +35,20 @@ export default {
       table: {
         category: 'Slots | Fentes',
       },
+    },
+
+    // Events
+    gcdsClick: {
+      action: 'click',
+      ...eventProp,
+    },
+    gcdsFocus: {
+      action: 'focus',
+      ...eventProp,
+    },
+    gcdsBlur: {
+      action: 'blur',
+      ...eventProp,
     },
   },
 };

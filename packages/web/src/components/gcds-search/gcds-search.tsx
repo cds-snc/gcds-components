@@ -11,6 +11,9 @@ import {
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import I18N from './i18n/I18N';
 
+/**
+ * Search is a space for entering keywords to find relevant information.
+ */
 @Component({
   tag: 'gcds-search',
   styleUrl: 'gcds-search.css',
@@ -59,7 +62,7 @@ export class GcdsSearch {
    */
 
   /**
-   * Emitted when the search element has recieved input.
+   * Emitted when the search element has received input.
    */
   @Event() gcdsInput!: EventEmitter<string>;
 
@@ -69,19 +72,19 @@ export class GcdsSearch {
   @Event() gcdsChange!: EventEmitter<string>;
 
   /**
-   * Emitted when the search input value has gained focus.
+   * Emitted when the search input has gained focus.
    */
-  @Event() gcdsFocus!: EventEmitter<object>;
+  @Event() gcdsFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the search input has lost focus.
    */
-  @Event() gcdsBlur!: EventEmitter<object>;
+  @Event() gcdsBlur!: EventEmitter<void>;
 
   /**
    * Emitted when the search form has submitted.
    */
-  @Event() gcdsSubmit!: EventEmitter<object>;
+  @Event() gcdsSubmit!: EventEmitter<string>;
 
   /**
    * Language of rendered component
