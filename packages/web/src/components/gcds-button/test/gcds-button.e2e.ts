@@ -3,46 +3,6 @@ const { AxeBuilder } = require('@axe-core/playwright');
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
-// test.beforeEach(async ({ page }) => {
-//   // Start JavaScript coverage
-//   // await Promise.all([
-//   //   page.coverage.startJSCoverage(),
-//   //   page.coverage.startCSSCoverage(),
-//   // ]);
-
-//   await page.goto('/components/gcds-button/test/gcds-button.e2e.html');
-
-//   await page.waitForFunction(() => {
-//     const host = document.querySelector('gcds-button');
-//     return host && host.shadowRoot;
-//   });
-// });
-
-// test.afterEach(async ({ page }) => {
-//   // Stop coverage collection
-//   const [jsCoverage, cssCoverage] = await Promise.all([
-//     page.coverage.stopJSCoverage(),
-//     page.coverage.stopCSSCoverage(),
-//   ]);
-
-//   // Save coverage result
-//   const fs = require('fs');
-//   const path = require('path');
-
-//   const coveragePath = path.join(__dirname, 'coverage');
-//   if (!fs.existsSync(coveragePath)) fs.mkdirSync(coveragePath);
-
-//   fs.writeFileSync(
-//     path.join(coveragePath, 'js-coverage.json'),
-//     JSON.stringify(jsCoverage),
-//   );
-
-//   fs.writeFileSync(
-//     path.join(coveragePath, 'css-coverage.json'),
-//     JSON.stringify(cssCoverage),
-//   );
-// });
-
 test.describe('gcds-button', () => {
   test('renders', async ({ page }) => {
     const buttons = await page.locator('gcds-button');
