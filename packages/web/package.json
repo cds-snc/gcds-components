@@ -29,7 +29,7 @@
     "test.spec": "stencil test --spec",
     "test.e2e": "npx playwright test",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "test.coverage": "npx stencil test --spec --coverage --coverageDirectory=./coverage/spec && npx playwright test",
+    "test.coverage": "npx stencil test --spec --coverage --coverageDirectory=./coverage/spec && PW_COVERAGE=1 npx playwright test",
     "generate": "stencil generate",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o ./../../docs",

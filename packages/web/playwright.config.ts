@@ -5,6 +5,8 @@ import * as path from 'path';
 
 expect.extend(matchers);
 
+const isCoverageEnabled = process.env['PW_COVERAGE'] === '1';
+
 export default createConfig({
   // You can override Playwright config options here
   retries: 3,
@@ -24,7 +26,9 @@ export default createConfig({
       defineCoverageReporterConfig({
         sourceRoot: __dirname,
         resultDir: path.join(__dirname, 'coverage/e2e'),
-        reports: [['html'], ['lcovonly', { file: 'coverage.lcov' }]],
+        reports: isCoverageEnabled
+          ? [['html'], ['lcovonly', { file: 'coverage.lcov' }]]
+          : ['none'],
         exclude: ['web', 'web/@stencil/core'],
       }),
     ],
