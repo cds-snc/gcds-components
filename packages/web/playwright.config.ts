@@ -1,5 +1,7 @@
 import { expect } from '@playwright/test';
 import { matchers, createConfig } from '@stencil/playwright';
+import { defineCoverageReporterConfig } from '@bgotink/playwright-coverage';
+import * as path from 'path';
 
 expect.extend(matchers);
 
@@ -15,4 +17,16 @@ export default createConfig({
   webServer: {
     url: 'http://localhost:3333/',
   },
+  reporter: [
+    ['list'],
+    [
+      '@bgotink/playwright-coverage',
+      defineCoverageReporterConfig({
+        sourceRoot: __dirname,
+        resultDir: path.join(__dirname, 'coverage/e2e'),
+        reports: [['html'], ['lcovonly', { file: 'coverage.lcov' }]],
+        exclude: ['web', 'web/@stencil/core'],
+      }),
+    ],
+  ],
 });
