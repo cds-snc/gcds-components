@@ -1,18 +1,7 @@
 const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto(
-    '/components/gcds-lang-toggle/test/gcds-lang-toggle.e2e.html',
-  );
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-lang-toggle');
-    return host && host.shadowRoot;
-  });
-});
+import { test } from '../../../../tests/base';
 
 test.describe('gcds-lang-toggle', () => {
   test('renders', async ({ page }) => {

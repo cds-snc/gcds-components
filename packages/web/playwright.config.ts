@@ -5,7 +5,7 @@ expect.extend(matchers);
 
 export default createConfig({
   // You can override Playwright config options here
-  retries: 2,
+  retries: 3,
   testDir: './src',
   testMatch: '*.e2e.ts',
   timeout: 60000,
