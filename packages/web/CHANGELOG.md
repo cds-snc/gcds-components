@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.40.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.40.0...gcds-components-v0.40.1) (2025-08-08)
+
+
+### :pencil: Documentation
+
+* Add generated guidance for slots and events ([#910](https://github.com/cds-snc/gcds-components/issues/910)) ([3ec7b96](https://github.com/cds-snc/gcds-components/commit/3ec7b96de2f7b55b03f6d067566d936048332c83))
+
 ## [0.40.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.39.0...gcds-components-v0.40.0) (2025-07-28)
 
 
