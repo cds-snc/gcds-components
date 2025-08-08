@@ -1,18 +1,9 @@
 const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { test } from '../../../../tests/base';
 
 import { dateInputErrorMessage } from '../../../validators/input-validators/input-validators';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('/components/gcds-date-input/test/gcds-date-input.e2e.html');
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-date-input');
-    return host && host.shadowRoot;
-  });
-});
 
 test.describe('gcds-date-input', () => {
   test('renders', async ({ page }) => {

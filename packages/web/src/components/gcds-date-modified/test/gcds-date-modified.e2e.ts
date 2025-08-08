@@ -1,18 +1,7 @@
 const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto(
-    '/components/gcds-date-modified/test/gcds-date-modified.e2e.html',
-  );
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-date-modified');
-    return host && host.shadowRoot;
-  });
-});
+import { test } from '../../../../tests/base';
 
 test.describe('gcds-date-modified', () => {
   test('renders', async ({ page }) => {

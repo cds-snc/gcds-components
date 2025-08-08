@@ -1,18 +1,7 @@
 const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto(
-    '/components/gcds-verify-banner/test/gcds-verify-banner.e2e.html',
-  );
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-verify-banner');
-    return host && host.shadowRoot;
-  });
-});
+import { test } from '../../../../tests/base';
 
 test.describe('gcds-verify-banner', () => {
   test('renders', async ({ page }) => {

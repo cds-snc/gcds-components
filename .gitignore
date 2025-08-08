@@ -6,6 +6,7 @@ hydrate/
 /out-tsc
 /bazel-out
 docs/
+coverage/
 
 *~
 *.sw[mnpcod]

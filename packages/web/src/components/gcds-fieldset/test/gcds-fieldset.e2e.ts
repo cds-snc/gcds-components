@@ -1,16 +1,7 @@
 const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('/components/gcds-fieldset/test/gcds-fieldset.e2e.html');
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-fieldset');
-    return host && host.shadowRoot;
-  });
-});
+import { test } from '../../../../tests/base';
 
 test.describe('gcds-fieldset', () => {
   test('renders', async ({ page }) => {
