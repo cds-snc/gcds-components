@@ -83,7 +83,7 @@ test.describe('gcds-error-summary', () => {
   });
 });
 
-test.describe('gcds-input a11y tests', () => {
+test.describe('gcds-error-summary a11y tests', () => {
   /**
    * Colour contrast test
    */
