@@ -157,7 +157,7 @@
 
 @layer compact {
   /* Mobile specific style */
-  @media only screen and (width < 45em) {
+  @media only screen and (width < 48em) {
     :host {
       .gcds-footer__contextual,
       .gcds-footer__main,
