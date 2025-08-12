@@ -19,7 +19,7 @@ export default {
     errorLinks: {
       name: 'error-links',
       control: 'text',
-      description: '{ "error-href": "error message" }',
+      description: '{ "#error-href": "error message" }',
       table: {
         type: { summary: 'string/object' },
         defaultValue: { summary: '-' },
@@ -84,9 +84,9 @@ export const Default = Template.bind({});
 Default.args = {
   listen: true,
   errorLinks: `{
-    "error-href-1": "Error summary item.",
-    "error-href-2": "Error summary item.",
-    "error-href-3": "Error summary item."
+    "#error-href-1": "Error summary item.",
+    "#error-href-2": "Error summary item.",
+    "#error-href-3": "Error summary item."
   }`,
   heading: '',
   lang: 'en',
@@ -98,9 +98,9 @@ export const Props = Template.bind({});
 Props.args = {
   listen: true,
   errorLinks: `{
-    "error-href-1": "Error summary item.",
-    "error-href-2": "Error summary item.",
-    "error-href-3": "Error summary item."
+    "#error-href-1": "Error summary item.",
+    "#error-href-2": "Error summary item.",
+    "#error-href-3": "Error summary item."
   }`,
   heading: '',
   lang: 'en',
@@ -112,9 +112,9 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   listen: true,
   errorLinks: `{
-    "error-href-1": "Error summary item.",
-    "error-href-2": "Error summary item.",
-    "error-href-3": "Error summary item."
+    "#error-href-1": "Error summary item.",
+    "#error-href-2": "Error summary item.",
+    "#error-href-3": "Error summary item."
   }`,
   heading: '',
   lang: 'en',
