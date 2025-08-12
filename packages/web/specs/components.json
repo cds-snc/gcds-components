@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-01T13:38:37",
+  "timestamp": "2025-08-12T15:02:09",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.35.1",
@@ -2733,7 +2733,20 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
+      "listeners": [
+        {
+          "event": "beforeprint",
+          "target": "window",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "afterprint",
+          "target": "window",
+          "capture": false,
+          "passive": false
+        }
+      ],
       "styles": [],
       "slots": [
         {
@@ -6684,10 +6697,10 @@
         },
         {
           "name": "type",
-          "type": "\"email\" | \"number\" | \"password\" | \"search\" | \"text\" | \"url\"",
+          "type": "\"email\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"url\"",
           "complexType": {
-            "original": "'email' | 'number' | 'password' | 'search' | 'text' | 'url'",
-            "resolved": "\"email\" | \"number\" | \"password\" | \"search\" | \"text\" | \"url\"",
+            "original": "'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url'",
+            "resolved": "\"email\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"url\"",
             "references": {}
           },
           "mutable": false,
@@ -6716,6 +6729,10 @@
             },
             {
               "value": "search",
+              "type": "string"
+            },
+            {
+              "value": "tel",
               "type": "string"
             },
             {
