@@ -1,18 +1,9 @@
 const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { test } from '../../../../tests/base';
 
 import I18N from '../../../utils/i18n/i18n.js';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('/components/gcds-input/test/gcds-input.e2e.html');
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-input');
-    return host && host.shadowRoot;
-  });
-});
 
 test.describe('gcds-input', () => {
   test('renders', async ({ page }) => {
