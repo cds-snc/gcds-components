@@ -10,6 +10,21 @@ Released on 2025-08-13
 ### :rocket: New Features
 
 - **gcds-textarea:** Add native HTML attributes and validation ([#917](https://github.com/cds-snc/gcds-components/issues/917)) ([9a36e40](https://github.com/cds-snc/gcds-components/commit/9a36e402d2f8383bd1b1f1fb0a329f8f53bc5a33))
+  
+#### New gcds-textarea properties
+
+| Property               | Attribute       | Description                                                                                                                                                             | Type                                                               | Default     |
+| ---------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
+| `autofocus`               | `autofocus`       | If true, the input will be focused on component render                                                                     | `boolean`                                           | `undefined` |
+| `minlength`               | `minlength`       | The minimum number of characters that the input field can accept.                                                          | `number`                                            | `undefined` |
+| `validity`                | `validity`        | Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+
+#### New methods
+
+| Name    | Description | Returns |
+| -------- | ------- | ------- |
+| checkValidity()  | Check the validity of gcds-textarea   |  boolean |
+| getValidationMessage() | Get validationMessage of gcds-textarea     |  string  |
 
 
 ### :pencil: Documentation
