@@ -71,6 +71,11 @@ export const config: Config = {
       type: 'docs-readme',
     },
     {
+      type: 'docs-json',
+      file: 'specs/components.json',
+      strict: true,
+    },
+    {
       type: 'dist-hydrate-script',
     },
     {
@@ -79,6 +84,13 @@ export const config: Config = {
       copy: [{ src: '**/*.e2e.html' }],
     },
   ],
+  docs: {
+    markdown: {
+      targetComponent: {
+        background: '#26374a',
+      },
+    },
+  },
   plugins: [
     postcss({
       plugins: [require('postcss-nested'), require('cssnano')],
@@ -97,6 +109,6 @@ export const config: Config = {
     enableImportInjection: true,
     experimentalScopedSlotChanges: true,
     experimentalSlotFixes: true,
-    addGlobalStyleToComponents: true,
+    addGlobalStyleToComponents: false,
   },
 };

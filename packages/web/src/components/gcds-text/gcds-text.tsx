@@ -1,6 +1,11 @@
 import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 import { SpacingValues, SpacingArray } from '../../utils/types/spacing';
 
+/**
+ * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
+ *
+ * @slot default - Slot for the content of the text element.
+ */
 @Component({
   tag: 'gcds-text',
   styleUrl: 'gcds-text.css',

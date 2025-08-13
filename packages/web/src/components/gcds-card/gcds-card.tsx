@@ -12,6 +12,11 @@ import {
 import { assignLanguage, observerConfig, logError } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * A card is a box containing structured, actionable content on a single topic.
+ *
+ * @slot default - Slot for the card description. Will overwrite the description prop if used.
+ */
 @Component({
   tag: 'gcds-card',
   styleUrl: 'gcds-card.css',
@@ -108,9 +113,9 @@ export class GcdsCard {
   @Event() gcdsBlur!: EventEmitter<void>;
 
   /**
-   * Emitted when the card has been clicked.
+   * Emitted when the card has been clicked. Contains the href in the event detail.
    */
-  @Event() gcdsClick!: EventEmitter<void>;
+  @Event() gcdsClick!: EventEmitter<string>;
 
   /*
    * Observe lang attribute change
@@ -146,7 +151,7 @@ export class GcdsCard {
 
     this.validateBadge();
 
-    let valid = this.validateRequiredProps();
+    const valid = this.validateRequiredProps();
 
     if (!valid) {
       logError('gcds-card', this.errors, ['badge']);
@@ -155,9 +160,17 @@ export class GcdsCard {
 
   private get renderDescription() {
     if (this.el.innerHTML.trim() != '') {
-      return <div class="gcds-card__description"><slot></slot></div>;
+      return (
+        <div class="gcds-card__description">
+          <slot></slot>
+        </div>
+      );
     } else if (this.description) {
-      return <div class="gcds-card__description"><gcds-text margin-bottom='0'>{this.description}</gcds-text></div>;
+      return (
+        <div class="gcds-card__description">
+          <gcds-text margin-bottom="0">{this.description}</gcds-text>
+        </div>
+      );
     } else {
       return null;
     }

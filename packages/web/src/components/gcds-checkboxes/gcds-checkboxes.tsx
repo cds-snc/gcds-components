@@ -35,6 +35,9 @@ import {
   validateOptionsArray,
 } from './checkbox';
 
+/**
+ * Checkboxes provide a set of options for multiple responses.
+ */
 @Component({
   tag: 'gcds-checkboxes',
   styleUrl: 'gcds-checkboxes.css',
@@ -245,22 +248,22 @@ export class GcdsCheckboxes {
   };
 
   /**
-   * Emmitted when a checkbox has been inputted.
+   * Emitted when a checkbox has been inputted. Contains the new value in the event detail.
    */
-  @Event() gcdsInput: EventEmitter;
+  @Event() gcdsInput: EventEmitter<string[]>;
 
   /**
-   * Emmitted when a checkbox has been changed.
+   * Emitted when a checkbox has been changed. Contains the new value in the event detail.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter<string[]>;
 
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the checkbox has a validation error.
    */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-   * Emitted when the input has a validation error.
+   * Emitted when the checkbox has a validation error.
    */
   @Event() gcdsValid!: EventEmitter<object>;
 

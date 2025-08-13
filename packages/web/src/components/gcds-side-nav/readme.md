@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A side navigation is a vertical list of page links on the left side of the screen.
+
 ## Properties
 
 | Property             | Attribute | Description                   | Type     | Default     |
@@ -58,6 +62,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot        | Description                                          |
+| ----------- | ---------------------------------------------------- |
+| `"default"` | Slot for the navigation groups and navigation links. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -69,7 +80,7 @@ Type: `Promise<void>`
 graph TD;
   gcds-side-nav --> gcds-nav-group
   gcds-nav-group --> gcds-icon
-  style gcds-side-nav fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-side-nav fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

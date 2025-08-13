@@ -1,3 +1,5 @@
+import { eventProp } from '../../../utils/storybook/component-properties';
+
 export default {
   title: 'Components/Navigation link',
 
@@ -34,6 +36,20 @@ export default {
       table: {
         category: 'Slots | Fentes',
       },
+    },
+
+    // Events
+    gcdsClick: {
+      action: 'click',
+      ...eventProp,
+    },
+    gcdsFocus: {
+      action: 'focus',
+      ...eventProp,
+    },
+    gcdsBlur: {
+      action: 'blur',
+      ...eventProp,
     },
   },
 };

@@ -28,6 +28,9 @@ import {
   ValidatorOld,
 } from '../../validators';
 
+/**
+ * An input is a space to enter short-form information in response to a question or instruction.
+ */
 @Component({
   tag: 'gcds-input',
   styleUrl: 'gcds-input.css',
@@ -271,7 +274,7 @@ export class GcdsInput {
   /**
    * Emitted when the element has received input.
    */
-  @Event() gcdsInput: EventEmitter;
+  @Event() gcdsInput: EventEmitter<string>;
 
   /**
    * Handling input and change events on input
@@ -294,7 +297,7 @@ export class GcdsInput {
   /**
    * Emitted when the input has changed.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter<string>;
 
   /**
    * Call any active validators

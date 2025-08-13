@@ -101,7 +101,11 @@ export default {
 
     // Events
     gcdsChange: {
-      action: 'RadioChange',
+      action: 'change',
+      ...eventProp,
+    },
+    gcdsInput: {
+      action: 'input',
       ...eventProp,
     },
     gcdsFocus: {
@@ -110,6 +114,14 @@ export default {
     },
     gcdsBlur: {
       action: 'blur',
+      ...eventProp,
+    },
+    gcdsError: {
+      action: 'invalid',
+      ...eventProp,
+    },
+    gcdsValid: {
+      action: 'valid',
       ...eventProp,
     },
   },

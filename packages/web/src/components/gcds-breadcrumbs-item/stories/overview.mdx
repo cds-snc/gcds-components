@@ -1,0 +1,35 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as BreadcrumbsItem from './gcds-breadcrumbs-item.stories';
+
+<Meta of={BreadcrumbsItem} name="Overview" />
+
+# Breadcrumbs<br/>`<gcds-breadcrumbs>`
+
+_Also called: breadcrumb trail._
+
+A path to the current page from each preceding level of the site’s hierarchy.
+
+<Canvas of={BreadcrumbsItem.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+### Default
+
+<Canvas of={BreadcrumbsItem.Default} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul className="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://design-system.alpha.canada.ca/en/components/breadcrumbs/" target="_blank">Guidance</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-breadcrumbs-item" target="_blank">Github</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://www.figma.com/file/mh2maMG2NBtk41k1O1UGHV/Canadian-Digital-Service%E2%80%A8---GC-Design-System?type=design&node-id=2353-7848&mode=design&t=T8d1v7eOtr5Bf32O-0" target="_blank">Figma</gcds-link>
+  </li>
+</ul>

@@ -26,6 +26,11 @@ import {
   requiredValidator,
 } from '../../validators';
 
+/**
+ * A select provides a large list of options for single selection.
+ *
+ * @slot default - Slot for options and option groups.
+ */
 @Component({
   tag: 'gcds-select',
   styleUrl: 'gcds-select.css',
@@ -177,12 +182,12 @@ export class GcdsSelect {
   /**
    * Emitted when the select value has changed.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter<string>;
 
   /**
    * Emitted when the select has received input.
    */
-  @Event() gcdsInput: EventEmitter;
+  @Event() gcdsInput: EventEmitter<string>;
 
   private handleInput = (e, customEvent) => {
     const val = e.target && e.target.value;

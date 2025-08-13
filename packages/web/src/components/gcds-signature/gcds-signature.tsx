@@ -1,12 +1,4 @@
-import {
-  Component,
-  Host,
-  Element,
-  Watch,
-  State,
-  Prop,
-  h,
-} from '@stencil/core';
+import { Component, Host, Element, Watch, State, Prop, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -15,6 +7,9 @@ import SignatureFr from './assets/sig-blk-fr.svg';
 import WordmarkEn from './assets/wmms-spl-en.svg';
 import WordmarkFr from './assets/wmms-spl-fr.svg';
 
+/**
+ * The signature is the Government of Canada landmark identifier found in the header or footer.
+ */
 @Component({
   tag: 'gcds-signature',
   styleUrl: 'gcds-signature.css',

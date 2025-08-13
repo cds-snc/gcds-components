@@ -1,7 +1,27 @@
-import { Component, Element, Host, Prop, h, State } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Host,
+  Prop,
+  h,
+  State,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * The header is the responsive Government of Canada branded header landmark.
+ *
+ * @slot banner - Slot to add a banner across the top of the header.
+ * @slot breadcrumb - Slot to add breadcrumbs at the bottom of the header.
+ * @slot menu - Slot to add a menu below the divider line.
+ * @slot search - Slot to add a search field to the right of the header.
+ * @slot skip-to-nav - Slot to add a hidden skip to content navigation at the top of the header.
+ * @slot signature - Slot to replace Government of Canada signature.
+ * @slot toggle - Slot to add a custom language toggle in the top-right of the header.
+ */
 @Component({
   tag: 'gcds-header',
   styleUrl: 'gcds-header.css',
@@ -34,6 +54,25 @@ export class GcdsHeader {
    * Top navigation - Skip to content href
    */
   @Prop({ reflect: false, mutable: false }) skipToHref!: string;
+
+  /**
+   * Events
+   */
+
+  /**
+   * Emitted when the link has focus.
+   */
+  @Event() gcdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link loses focus.
+   */
+  @Event() gcdsBlur!: EventEmitter<void>;
+
+  /**
+   * Emitted when the link has been clicked. Contains the href in the event detail.
+   */
+  @Event() gcdsClick!: EventEmitter<string>;
 
   /**
    * Language of rendered component

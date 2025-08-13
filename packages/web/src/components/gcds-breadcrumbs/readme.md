@@ -5,30 +5,37 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
+
 ## Properties
 
-| Property            | Attribute | Description                                | Type     | Default     |
-| ------------------- | --------- | ------------------------------------------ | -------- | ----------- |
-| `href` _(required)_ | `href`    | Specifies the href of the breadcrumb item. | `string` | `undefined` |
+| Property         | Attribute          | Description                                                    | Type      | Default |
+| ---------------- | ------------------ | -------------------------------------------------------------- | --------- | ------- |
+| `hideCanadaLink` | `hide-canada-link` | Defines if the default canada.ca link is displayed or omitted. | `boolean` | `false` |
+
+
+## Slots
+
+| Slot        | Description                    |
+| ----------- | ------------------------------ |
+| `"default"` | Slot for the breadcrumb items. |
 
 
 ## Dependencies
 
-### Used by
-
- - [gcds-breadcrumbs](.)
-
 ### Depends on
 
-- [gcds-link](../gcds-link)
+- [gcds-breadcrumbs-item](../gcds-breadcrumbs-item)
 
 ### Graph
 ```mermaid
 graph TD;
+  gcds-breadcrumbs --> gcds-breadcrumbs-item
   gcds-breadcrumbs-item --> gcds-link
   gcds-link --> gcds-icon
-  gcds-breadcrumbs --> gcds-breadcrumbs-item
-  style gcds-breadcrumbs-item fill:#f9f,stroke:#333,stroke-width:4px
+  style gcds-breadcrumbs fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

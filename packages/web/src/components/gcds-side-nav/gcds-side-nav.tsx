@@ -12,6 +12,11 @@ import { assignLanguage, observerConfig } from '../../utils/utils';
 import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 import I18N from './i18n/i18n';
 
+/**
+ * A side navigation is a vertical list of page links on the left side of the screen.
+ *
+ * @slot default - Slot for the navigation groups and navigation links.
+ */
 @Component({
   tag: 'gcds-side-nav',
   styleUrl: 'gcds-side-nav.css',

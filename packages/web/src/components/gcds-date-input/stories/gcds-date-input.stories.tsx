@@ -101,6 +101,14 @@ export default {
       action: 'blur',
       ...eventProp,
     },
+    gcdsError: {
+      action: 'invalid',
+      ...eventProp,
+    },
+    gcdsValid: {
+      action: 'valid',
+      ...eventProp,
+    },
   },
 };
 
@@ -327,4 +335,3 @@ Playground.args = {
   lang: 'en',
   validateOn: '',
 };
-

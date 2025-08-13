@@ -2,6 +2,11 @@ import { Component, Element, Host, Prop, State, h } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
+/**
+ * Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
+ *
+ * @slot default - Slot for the breadcrumb items.
+ */
 @Component({
   tag: 'gcds-breadcrumbs',
   styleUrl: 'gcds-breadcrumbs.css',

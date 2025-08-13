@@ -27,6 +27,10 @@ import {
   requiredValidator,
 } from '../../validators';
 import i18n from './i18n/i18n';
+
+/**
+ * A text area is a space to enter long-form information in response to a question or instruction.
+ */
 @Component({
   tag: 'gcds-textarea',
   styleUrl: 'gcds-textarea.css',
@@ -220,12 +224,12 @@ export class GcdsTextarea {
   /**
    * Emitted when the textarea has changed.
    */
-  @Event() gcdsChange: EventEmitter;
+  @Event() gcdsChange: EventEmitter<string>;
 
   /**
    * Emitted when the textarea has received input.
    */
-  @Event() gcdsInput: EventEmitter;
+  @Event() gcdsInput: EventEmitter<string>;
 
   private handleInput = (e, customEvent) => {
     const val = e.target && e.target.value;
