@@ -1,14 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('/components/gcds-sr-only/test/gcds-sr-only.e2e.html');
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-sr-only');
-    return host && host.shadowRoot;
-  });
-});
+import { test } from '../../../../tests/base';
 
 test.describe('gcds-sr-only', () => {
   test('renders', async ({ page }) => {

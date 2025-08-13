@@ -1,11 +1,15 @@
 import { expect } from '@playwright/test';
 import { matchers, createConfig } from '@stencil/playwright';
+import { defineCoverageReporterConfig } from '@bgotink/playwright-coverage';
+import * as path from 'path';
 
 expect.extend(matchers);
 
+const isCoverageEnabled = process.env['PW_COVERAGE'] === '1';
+
 export default createConfig({
   // You can override Playwright config options here
-  retries: 2,
+  retries: 3,
   testDir: './src',
   testMatch: '*.e2e.ts',
   timeout: 60000,
@@ -15,4 +19,18 @@ export default createConfig({
   webServer: {
     url: 'http://localhost:3333/',
   },
+  reporter: [
+    ['list'],
+    [
+      '@bgotink/playwright-coverage',
+      defineCoverageReporterConfig({
+        sourceRoot: __dirname,
+        resultDir: path.join(__dirname, 'coverage/e2e'),
+        reports: isCoverageEnabled
+          ? [['html'], ['lcovonly', { file: 'coverage.lcov' }]]
+          : ['none'],
+        exclude: ['web', 'web/@stencil/core'],
+      }),
+    ],
+  ],
 });

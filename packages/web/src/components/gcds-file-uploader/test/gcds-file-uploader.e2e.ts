@@ -1,19 +1,8 @@
 const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { test } from '../../../../tests/base';
 import path from 'path';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto(
-    '/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
-  );
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-file-uploader');
-    return host && host.shadowRoot;
-  });
-});
 
 test.describe('gcds-file-uploader', () => {
   test('renders', async ({ page }) => {
