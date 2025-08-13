@@ -1,16 +1,7 @@
 const { AxeBuilder } = require('@axe-core/playwright');
 
 import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('/components/gcds-button/test/gcds-button.e2e.html');
-
-  await page.waitForFunction(() => {
-    const host = document.querySelector('gcds-button');
-    return host && host.shadowRoot;
-  });
-});
+import { test } from '../../../../tests/base';
 
 test.describe('gcds-button', () => {
   test('renders', async ({ page }) => {
