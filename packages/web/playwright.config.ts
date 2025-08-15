@@ -29,7 +29,7 @@ export default createConfig({
         reports: isCoverageEnabled
           ? [['html'], ['lcovonly', { file: 'coverage.lcov' }]]
           : ['none'],
-        exclude: ['web', 'web/@stencil/core'],
+        exclude: ['web', 'web/@stencil/core', '**/i18n.js', '**/I18N.js'],
       }),
     ],
   ],
