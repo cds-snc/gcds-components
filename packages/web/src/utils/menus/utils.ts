@@ -24,6 +24,9 @@ export async function handleKeyDownNav(event, nav, queue) {
       } else {
         await focusNavItem(currentIndex + 1, queue);
       }
+      setTimeout(() => {
+        nav.updateNavItemQueue(nav);
+      }, 200);
       break;
 
     // Up arrow
@@ -36,6 +39,9 @@ export async function handleKeyDownNav(event, nav, queue) {
       } else {
         await focusNavItem(currentIndex - 1, queue);
       }
+      setTimeout(() => {
+        nav.updateNavItemQueue(nav);
+      }, 200);
       break;
 
     // Right arrow
@@ -92,6 +98,9 @@ export async function handleKeyDownNav(event, nav, queue) {
           }
         }
       }
+      setTimeout(() => {
+        nav.updateNavItemQueue(nav);
+      }, 200);
       break;
 
     // ENTER || SPACEBAR
