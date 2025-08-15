@@ -2,6 +2,41 @@
 
 # Changelog
 
+## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.40.0...gcds-components-v0.41.0)
+
+Released on 2025-08-13
+
+
+### :rocket: New Features
+
+- **gcds-textarea:** Add native HTML attributes and validation ([#917](https://github.com/cds-snc/gcds-components/issues/917)) ([9a36e40](https://github.com/cds-snc/gcds-components/commit/9a36e402d2f8383bd1b1f1fb0a329f8f53bc5a33))
+  
+#### New gcds-textarea properties
+
+| Property               | Attribute       | Description                                                                                                                                                             | Type                                                               | Default     |
+| ---------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
+| `autofocus`               | `autofocus`       | If true, the input will be focused on component render                                                                     | `boolean`                                           | `undefined` |
+| `minlength`               | `minlength`       | The minimum number of characters that the input field can accept.                                                          | `number`                                            | `undefined` |
+| `validity`                | `validity`        | Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+
+#### New methods
+
+| Name    | Description | Returns |
+| -------- | ------- | ------- |
+| checkValidity()  | Check the validity of gcds-textarea   |  boolean |
+| getValidationMessage() | Get validationMessage of gcds-textarea     |  string  |
+
+
+### :pencil: Documentation
+
+- Add generated guidance for slots and events ([#910](https://github.com/cds-snc/gcds-components/issues/910)) ([3ec7b96](https://github.com/cds-snc/gcds-components/commit/3ec7b96de2f7b55b03f6d067566d936048332c83))
+
+
+### :art: Styles
+
+- **gcds-footer:** update footer media query to match global media queries ([#923](https://github.com/cds-snc/gcds-components/issues/923)) ([1471b27](https://github.com/cds-snc/gcds-components/commit/1471b27ae7e828a727d1305db25c9d7cbd62cfc3))
+
+
 ## [0.40.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.39.0...gcds-components-v0.40.0)
 
 Released on 2025-07-28

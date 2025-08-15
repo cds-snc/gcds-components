@@ -3,7 +3,7 @@ const { AxeBuilder } = require('@axe-core/playwright');
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
-import I18N from '../i18n/i18n.js';
+import I18N from '../../../utils/i18n/i18n.js';
 
 test.describe('gcds-input', () => {
   test('renders', async ({ page }) => {
