@@ -3,6 +3,8 @@ const { AxeBuilder } = require('@axe-core/playwright');
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
+import I18N from '../../../utils/i18n/i18n.js';
+
 test.describe('gcds-textarea', () => {
   test('renders', async ({ page }) => {
     const element = await page.locator('gcds-textarea');
@@ -148,6 +150,85 @@ test.describe('gcds-textarea', () => {
     );
 
     await element.locator('textarea').fill('123');
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('HTML attribute validation - minlength', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsTextareaElement).minlength = 6;
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('textarea').fill('short');
+
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(
+      I18N.en.tooShort.replace('{min}', 6).replace('{current}', 5),
+    );
+
+    await element.locator('textarea').fill('long enough');
+
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
+
+    errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('');
+  });
+
+  test('HTML attribute validation - maxlength/character-count', async ({
+    page,
+  }) => {
+    const element = await page.locator('gcds-textarea');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsTextareaElement).value = 'too long value';
+      (el as HTMLGcdsTextareaElement).characterCount = 7;
+    });
+
+    await page.waitForChanges();
+
+    await element.locator('textarea').focus();
+
+    await page.keyboard.press('Backspace');
+
+    await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
+
+    let errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsTextareaElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(
+      I18N.en.tooLong.replace('{max}', 7).replace('{current}', 13),
+    );
+
+    await element.locator('textarea').fill('perfect');
+
     await element.evaluate(el => (el as HTMLGcdsTextareaElement).validate());
 
     errorMessage = await element.evaluate(

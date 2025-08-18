@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       - name: Setup Node
         uses: actions/setup-node@5e2628c959b9ade56971c0afcebbe5332d44b398
@@ -89,7 +89,7 @@ jobs:
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       - name: Setup Node
         uses: actions/setup-node@5e2628c959b9ade56971c0afcebbe5332d44b398

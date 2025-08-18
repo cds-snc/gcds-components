@@ -7,7 +7,10 @@ import {
   isValidDate,
   handleValidationResult,
   handleErrors,
+  formatHTMLErrorMessage,
 } from './utils';
+
+import I18N from './i18n/i18n.js';
 
 describe('format', () => {
   it('returns Fallback Button Label', () => {
@@ -306,5 +309,216 @@ describe('handleErrors', () => {
     expect(
       handleErrors(['property1', 'property2'], 'property1', 'value'),
     ).toEqual(['property2']);
+  });
+
+  describe('formatHTMLErrorMessage', () => {
+    const Input = document.createElement('gcds-input');
+    const EmailInput = Object.assign(document.createElement('gcds-input'), {
+      type: 'email',
+      value: 'invalid-email',
+    });
+    const UrlInput = Object.assign(document.createElement('gcds-input'), {
+      type: 'url',
+      value: 'invalid-url',
+    });
+    const MaxlengthInput = Object.assign(document.createElement('gcds-input'), {
+      maxlength: 5,
+      value: '2345678',
+    });
+    const MinlengthInput = Object.assign(document.createElement('gcds-input'), {
+      minlength: 5,
+      value: '234',
+    });
+    const MinInput = Object.assign(document.createElement('gcds-input'), {
+      min: 5,
+      type: 'number',
+      value: '234',
+    });
+    const MaxInput = Object.assign(document.createElement('gcds-input'), {
+      max: 5,
+      type: 'number',
+      value: '234',
+    });
+    const StepInput = Object.assign(document.createElement('gcds-input'), {
+      step: 5,
+      type: 'number',
+      value: '7',
+    });
+    const results: Array<{
+      error: string;
+      element: HTMLGcdsInputElement;
+      lang: string;
+      res: string;
+    }> = [
+      {
+        error: 'valueMissing',
+        element: Input,
+        lang: 'en',
+        res: I18N['en'].valueMissing,
+      },
+      {
+        error: 'valueMissing',
+        element: Input,
+        lang: 'fr',
+        res: I18N['fr'].valueMissing,
+      },
+      {
+        error: 'patternMismatch',
+        element: Input,
+        lang: 'en',
+        res: I18N['en'].patternMismatch,
+      },
+      {
+        error: 'patternMismatch',
+        element: Input,
+        lang: 'fr',
+        res: I18N['fr'].patternMismatch,
+      },
+      {
+        error: 'badInput',
+        element: Input,
+        lang: 'en',
+        res: I18N['en'].badInput,
+      },
+      {
+        error: 'badInput',
+        element: Input,
+        lang: 'fr',
+        res: I18N['fr'].badInput,
+      },
+      {
+        error: 'valueMissing',
+        element: Input,
+        lang: 'en',
+        res: I18N['en'].valueMissing,
+      },
+      {
+        error: 'valueMissing',
+        element: Input,
+        lang: 'fr',
+        res: I18N['fr'].valueMissing,
+      },
+      {
+        error: 'typeMismatch',
+        element: EmailInput,
+        lang: 'en',
+        res: I18N['en'].typeMismatch.email,
+      },
+      {
+        error: 'typeMismatch',
+        element: EmailInput,
+        lang: 'fr',
+        res: I18N['fr'].typeMismatch.email,
+      },
+      {
+        error: 'typeMismatch',
+        element: UrlInput,
+        lang: 'en',
+        res: I18N['en'].typeMismatch.url,
+      },
+      {
+        error: 'typeMismatch',
+        element: UrlInput,
+        lang: 'fr',
+        res: I18N['fr'].typeMismatch.url,
+      },
+      {
+        error: 'tooLong',
+        element: MaxlengthInput,
+        lang: 'en',
+        res: I18N['en'].tooLong
+          .replace('{max}', MaxlengthInput.maxlength)
+          .replace('{current}', MaxlengthInput.value.length),
+      },
+      {
+        error: 'tooLong',
+        element: MaxlengthInput,
+        lang: 'fr',
+        res: I18N['fr'].tooLong
+          .replace('{max}', MaxlengthInput.maxlength)
+          .replace('{current}', MaxlengthInput.value.length),
+      },
+      {
+        error: 'tooShort',
+        element: MinlengthInput,
+        lang: 'en',
+        res: I18N['en'].tooShort
+          .replace('{min}', MinlengthInput.minlength)
+          .replace('{current}', MinlengthInput.value.length),
+      },
+      {
+        error: 'tooShort',
+        element: MinlengthInput,
+        lang: 'fr',
+        res: I18N['fr'].tooShort
+          .replace('{min}', MinlengthInput.minlength)
+          .replace('{current}', MinlengthInput.value.length),
+      },
+      {
+        error: 'rangeUnderflow',
+        element: MinInput,
+        lang: 'en',
+        res: I18N['en'].rangeUnderflow.replace('{min}', MinInput.min),
+      },
+      {
+        error: 'rangeUnderflow',
+        element: MinInput,
+        lang: 'fr',
+        res: I18N['fr'].rangeUnderflow.replace('{min}', MinInput.min),
+      },
+      {
+        error: 'rangeOverflow',
+        element: MaxInput,
+        lang: 'en',
+        res: I18N['en'].rangeOverflow.replace('{max}', MaxInput.max),
+      },
+      {
+        error: 'rangeOverflow',
+        element: MaxInput,
+        lang: 'fr',
+        res: I18N['fr'].rangeOverflow.replace('{max}', MaxInput.max),
+      },
+      {
+        error: 'stepMismatch',
+        element: StepInput,
+        lang: 'en',
+        res: I18N['en'].stepMismatch
+          .replace(
+            '{lower}',
+            Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
+              Number(StepInput.step),
+          )
+          .replace(
+            '{upper}',
+            Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
+              Number(StepInput.step) +
+              Number(StepInput.step),
+          ),
+      },
+      {
+        error: 'stepMismatch',
+        element: StepInput,
+        lang: 'fr',
+        res: I18N['fr'].stepMismatch
+          .replace(
+            '{lower}',
+            Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
+              Number(StepInput.step),
+          )
+          .replace(
+            '{upper}',
+            Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
+              Number(StepInput.step) +
+              Number(StepInput.step),
+          ),
+      },
+    ];
+    results.forEach(i =>
+      it(`Should return "${i.res}" for ${i.error}`, () => {
+        expect(formatHTMLErrorMessage(i.error, i.lang, i.element)).toEqual(
+          i.res,
+        );
+      }),
+    );
   });
 });
