@@ -1,4 +1,4 @@
-[La version française suit.](#composants-de-système-de-design-gc--react)
+[La version française suit.](#composants-de-système-de-design-gc--vue)
 
 # GC Design System Components – Vue
 
