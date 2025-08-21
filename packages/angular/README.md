@@ -2,25 +2,33 @@
 
 # GC Design System Components – Angular
 
-GC Design System Components – Angular provides the [GC Design System Components](https://github.com/cds-snc/gcds-components/tree/main/packages/web) within a Angular wrapper to ease integration of the components into Angular apps.
+To make it easier to integrate [GC Design System web components](https://github.com/cds-snc/gcds-components/tree/main/packages/web) into Angular projects, the [gcds-components-angular](https://www.npmjs.com/package/@cdssnc/gcds-components-angular) package provides Angular wrappers.
+
+These wrappers make it easier to work with web components in the Angular ecosystem by preventing unnecessary repaints through detached change detection, and enabling form controls to work with `ngModel` and reactive forms.
+
+The web components inherit native properties and interoperability.
 
 ## Documentation
 
 You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
 
-## Installation
+## Angular installation instructions
 
-### Install from npm
+Follow these steps to install and use GC Design System components in your Angular project.
 
-Navigate to the root folder of your project and run:
+### 1. Install the package
 
-``` js
+Navigate to your project’s root folder and run the following command:
+
+```js
 npm install @cdssnc/gcds-components @cdssnc/gcds-components-angular
 ```
 
-Place the following code in the `app.module.ts` file of your app.
+### 2. Import GC Design System
 
-``` ts
+Place the following code in the `app.module.ts` file of your app:
+
+```ts
 import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
 
 @NgModule({
@@ -37,11 +45,15 @@ import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
 export class AppModule { }
 ```
 
-Place the following code in the `styles.scss` file of your app.
+Place the following code in the `styles.scss` file of your app to import GC Design System styles:
 
-``` css
+```css
 @import '../node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css';
 ```
+
+### 3. Start building
+
+Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
 
 ## Using GC Design System components with `RouterLink`
 
@@ -52,28 +64,23 @@ To use `routerLink` with GC Design System components simply add the `routerLink`
 #### RouterLink example
 
 ```html
-  <gcds-link
-    href="/home"
-    routerLink="/home"
-  >
-    Home
-  </gcds-link>
+<gcds-link href="/home" routerLink="/home"> Home </gcds-link>
 ```
 
 #### GcdsRouterLink example
 
 ```html
-  <!-- GCDS Router link example -->
-  <gcds-pagination
-    display="simple"
-    label="Pagination"
-    previous-href="/page1"
-    previous-label="Page 1"
-    next-href="/page3"
-    next-label="Page 3"
-    gcdsRouterLink
-  >
-  </gcds-pagination>
+<!-- GCDS Router link example -->
+<gcds-pagination
+  display="simple"
+  label="Pagination"
+  previous-href="/page1"
+  previous-label="Page 1"
+  next-href="/page3"
+  next-label="Page 3"
+  gcdsRouterLink
+>
+</gcds-pagination>
 ```
 
 ## How to contribute
@@ -84,29 +91,37 @@ If you are interested in contributing to GC Design System Components, please rea
 
 Code released under the [MIT License](https://github.com/cds-snc/gcds-components/blob/main/LICENSE).
 
---------
+---
 
 # Composants de Système de design GC — Angular
 
-Composants de Système de design GC — Angular fournit des [composants de Système de design GC](../web/README.md) dans un encapsulateur Angular afin de faciliter l’intégration dans les applications Angular.
+Afin de faciliter l'intégration des [composants Web de Système de design GC](https://github.com/cds-snc/gcds-components/tree/main/packages/web) à vos projets Angular, le paquet [gcds-components-angular](https://www.npmjs.com/package/@cdssnc/gcds-components-angular) propose des enveloppes Angular.
+
+Ces enveloppes faciltent le travail avec les composants Web dans l'écosystème Angular en empêchant l'actualisation inutile du rendu grâce à une détection des changements découplée, et en permettant aux contrôles de formulaire de fonctionner avec `ngModel` et les formulaires réactifs.
+
+Les composants Web héritent les propriétés et l'interopérabilité natives.
 
 ## Documentation
 
 Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
 
-## Installation
+## Instructions d’installation dans Angular
 
-### Installation à l'aide de npm
+Suivez ces étapes pour installer et utiliser les composants de Système de design GC dans votre projet Angular.
 
-Naviguez jusqu'au dossier racine de votre projet et exécutez :
+### 1. Installer le paquet
 
-``` js
+Naviguez vers le dossier racine de votre projet et exécutez la commande suivante :
+
+```js
 npm install @cdssnc/gcds-components @cdssnc/gcds-components-angular
 ```
 
-Insérez le code suivant dans le fichier app.module.ts de votre application :
+### 2. Importer Système de design GC
 
-``` js
+Insérez le code suivant dans le fichier `app.module.ts` de votre application :
+
+```js
 import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
 
 @NgModule({
@@ -124,11 +139,15 @@ import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
 export class AppModule { }
 ```
 
-Insérez le code suivant dans le fichier `styles.scss` de votre application :
+Pour importer les styles de Système de design GC, insérez le code suivant dans le fichier `styles.scss` de votre application :
 
-``` css
+```css
 @import '../node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css';
 ```
+
+### 3. Commencez à créer
+
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet..
 
 ## Utilisation des composants du Système de design GC avec `RouterLink`
 
@@ -139,27 +158,22 @@ Pour utiliser `routerLink` avec les composants du système de design GC, ajoutez
 #### Exemple de RouterLink
 
 ```html
-  <gcds-link
-    href="/accueil"
-    routerLink="/accueil"
-  >
-    Accueil
-  </gcds-link>
+<gcds-link href="/accueil" routerLink="/accueil"> Accueil </gcds-link>
 ```
 
 #### Exemple de GcdsRouterLink
 
 ```html
-  <gcds-pagination
-    display="simple"
-    label="Pagination"
-    previous-href="/page1"
-    previous-label="Page 1"
-    next-href="/page3"
-    next-label="Page 3"
-    gcdsRouterLink
-  >
-  </gcds-pagination>
+<gcds-pagination
+  display="simple"
+  label="Pagination"
+  previous-href="/page1"
+  previous-label="Page 1"
+  next-href="/page3"
+  next-label="Page 3"
+  gcdsRouterLink
+>
+</gcds-pagination>
 ```
 
 ## Apportez votre contribution
