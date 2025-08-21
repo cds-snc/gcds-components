@@ -349,4 +349,58 @@ describe('gcds-textarea', () => {
       </gcds-textarea>
     `);
   });
+
+  /**
+   * Textarea autofocus test
+   */
+  it('renders textarea autofocus', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="textarea-with-autofocus" name="textarea-with-autofocus-name" autofocus/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea label="Label" textarea-id="textarea-with-autofocus" name="textarea-with-autofocus-name" autofocus>
+        <mock:shadow-root>
+          <div class="gcds-textarea-wrapper">
+            <gcds-label label-for="textarea-with-autofocus" label="Label" lang="en"></gcds-label>
+            <textarea
+              id="textarea-with-autofocus"
+              name="textarea-with-autofocus-name"
+              aria-labelledby="label-for-textarea-with-autofocus"
+              aria-invalid="false"
+              rows="5"
+              autofocus
+            ></textarea>
+          </div>
+        </mock:shadow-root>
+      </gcds-textarea>
+    `);
+  });
+
+  /**
+   * Textarea minlength test
+   */
+  it('renders textarea minlength', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="textarea-with-minlength" name="textarea-with-minlength-name" minlength="5"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea label="Label" textarea-id="textarea-with-minlength" name="textarea-with-minlength-name" minlength="5">
+        <mock:shadow-root>
+          <div class="gcds-textarea-wrapper">
+            <gcds-label label-for="textarea-with-minlength" label="Label" lang="en"></gcds-label>
+            <textarea
+              id="textarea-with-minlength"
+              name="textarea-with-minlength-name"
+              aria-labelledby="label-for-textarea-with-minlength"
+              aria-invalid="false"
+              rows="5"
+              minlength="5"
+            ></textarea>
+          </div>
+        </mock:shadow-root>
+      </gcds-textarea>
+    `);
+  });
 });

@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.40.0...gcds-components-vue-v0.41.0) (2025-08-13)
+
+
+### :rocket: New Features
+
+* **gcds-textarea:** Add native HTML attributes and validation ([#917](https://github.com/cds-snc/gcds-components/issues/917)) ([9a36e40](https://github.com/cds-snc/gcds-components/commit/9a36e402d2f8383bd1b1f1fb0a329f8f53bc5a33))
+
+
+### :pencil: Documentation
+
+* Add generated guidance for slots and events ([#910](https://github.com/cds-snc/gcds-components/issues/910)) ([3ec7b96](https://github.com/cds-snc/gcds-components/commit/3ec7b96de2f7b55b03f6d067566d936048332c83))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.40.0 to ^0.41.0
+
 ## [0.40.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.39.0...gcds-components-vue-v0.40.0) (2025-07-28)
 
 
