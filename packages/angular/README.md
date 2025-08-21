@@ -147,7 +147,7 @@ Pour importer les styles de Système de design GC, insérez le code suivant dans
 
 ### 3. Commencez à créer
 
-Une fois le système de design installé, commencez à créer! Parcourez nos [composants](systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet..
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet..
 
 ## Utilisation des composants du Système de design GC avec `RouterLink`
 
