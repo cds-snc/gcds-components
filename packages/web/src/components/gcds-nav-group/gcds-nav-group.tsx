@@ -88,7 +88,7 @@ export class GcdsNavGroup {
     if (
       (e.target === this.el || this.el.contains(e.target)) &&
       !this.el.contains(e.relatedTarget) &&
-      this.navStyle === 'dropdown' &&
+      this.navStyle.includes('dropdown') &&
       this.open &&
       window.innerWidth >= 1024
     ) {
