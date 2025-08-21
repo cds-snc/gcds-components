@@ -956,7 +956,7 @@ export namespace Components {
          */
         "currentPage": number;
         /**
-          * Navigation element label
+          * Determines the pagination display style.
           * @default 'list'
          */
         "display": 'list' | 'simple';
@@ -2524,19 +2524,19 @@ declare namespace LocalJSX {
          */
         "name": string;
         /**
-          * Emitted when an date-input loses focus.
+          * Emitted when a date-input loses focus.
          */
         "onGcdsBlur"?: (event: GcdsDateInputCustomEvent<void>) => void;
         /**
-          * Emitted when an date-input has changed. Contains the new value in the event detail.
+          * Emitted when a date-input has changed. Contains the new value in the event detail.
          */
         "onGcdsChange"?: (event: GcdsDateInputCustomEvent<string>) => void;
         /**
-          * Emitted when an date-input has a validation error.
+          * Emitted when a date-input has a validation error.
          */
         "onGcdsError"?: (event: GcdsDateInputCustomEvent<object>) => void;
         /**
-          * Emitted when an date-input has focus.
+          * Emitted when a date-input has focus.
          */
         "onGcdsFocus"?: (event: GcdsDateInputCustomEvent<void>) => void;
         /**
@@ -2544,7 +2544,7 @@ declare namespace LocalJSX {
          */
         "onGcdsInput"?: (event: GcdsDateInputCustomEvent<string>) => void;
         /**
-          * Emitted when an date-input has validated.
+          * Emitted when a date-input has validated.
          */
         "onGcdsValid"?: (event: GcdsDateInputCustomEvent<object>) => void;
         /**
@@ -3337,7 +3337,7 @@ declare namespace LocalJSX {
          */
         "currentPage"?: number;
         /**
-          * Navigation element label
+          * Determines the pagination display style.
           * @default 'list'
          */
         "display"?: 'list' | 'simple';

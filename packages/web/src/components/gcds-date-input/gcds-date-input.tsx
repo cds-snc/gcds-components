@@ -188,12 +188,12 @@ export class GcdsDateInput {
    */
 
   /**
-   * Emitted when an date-input has focus.
+   * Emitted when a date-input has focus.
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
   /**
-   * Emitted when an date-input loses focus.
+   * Emitted when a date-input loses focus.
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
@@ -209,17 +209,17 @@ export class GcdsDateInput {
   @Event() gcdsInput: EventEmitter<string>;
 
   /**
-   * Emitted when an date-input has changed. Contains the new value in the event detail.
+   * Emitted when a date-input has changed. Contains the new value in the event detail.
    */
   @Event() gcdsChange: EventEmitter<string>;
 
   /**
-   * Emitted when an date-input has a validation error.
+   * Emitted when a date-input has a validation error.
    */
   @Event() gcdsError!: EventEmitter<object>;
 
   /**
-   * Emitted when an date-input has validated.
+   * Emitted when a date-input has validated.
    */
   @Event() gcdsValid!: EventEmitter<object>;
 

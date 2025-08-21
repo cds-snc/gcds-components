@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-01T13:38:37",
+  "timestamp": "2025-08-21T22:52:12",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.35.1",
@@ -2410,7 +2410,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input loses focus.",
+          "docs": "Emitted when a date-input loses focus.",
           "docsTags": []
         },
         {
@@ -2424,7 +2424,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input has changed. Contains the new value in the event detail.",
+          "docs": "Emitted when a date-input has changed. Contains the new value in the event detail.",
           "docsTags": []
         },
         {
@@ -2438,7 +2438,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input has a validation error.",
+          "docs": "Emitted when a date-input has a validation error.",
           "docsTags": []
         },
         {
@@ -2452,7 +2452,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input has focus.",
+          "docs": "Emitted when a date-input has focus.",
           "docsTags": []
         },
         {
@@ -2480,7 +2480,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input has validated.",
+          "docs": "Emitted when a date-input has validated.",
           "docsTags": []
         }
       ],
@@ -2733,7 +2733,20 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
+      "listeners": [
+        {
+          "event": "beforeprint",
+          "target": "window",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "afterprint",
+          "target": "window",
+          "capture": false,
+          "passive": false
+        }
+      ],
       "styles": [],
       "slots": [
         {
@@ -3912,7 +3925,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/Users/melanie.boeckmann/Projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -4211,7 +4224,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/Users/melanie.boeckmann/Projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4307,7 +4320,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/Users/melanie.boeckmann/Projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4397,7 +4410,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/Users/melanie.boeckmann/Projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4487,7 +4500,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/Users/melanie.boeckmann/Projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -4577,7 +4590,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/Users/melanie.boeckmann/Projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -6684,10 +6697,10 @@
         },
         {
           "name": "type",
-          "type": "\"email\" | \"number\" | \"password\" | \"search\" | \"text\" | \"url\"",
+          "type": "\"email\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"url\"",
           "complexType": {
-            "original": "'email' | 'number' | 'password' | 'search' | 'text' | 'url'",
-            "resolved": "\"email\" | \"number\" | \"password\" | \"search\" | \"text\" | \"url\"",
+            "original": "'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url'",
+            "resolved": "\"email\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"url\"",
             "references": {}
           },
           "mutable": false,
@@ -6716,6 +6729,10 @@
             },
             {
               "value": "search",
+              "type": "string"
+            },
+            {
+              "value": "tel",
               "type": "string"
             },
             {
@@ -8248,7 +8265,7 @@
           "mutable": false,
           "attr": "display",
           "reflectToAttr": false,
-          "docs": "Navigation element label",
+          "docs": "Determines the pagination display style.",
           "docsTags": [
             {
               "name": "default",
