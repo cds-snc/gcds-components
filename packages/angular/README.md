@@ -2,7 +2,7 @@
 
 # GC Design System Components – Angular
 
-To make it easier to integrate [GC Design System web components](https://github.com/cds-snc/gcds-components/tree/main/packages/web) into Angular projects, the [gcds-components-angular](https://www.npmjs.com/package/@cdssnc/gcds-components-angular) package provides Angular wrappers.
+To make it easier to integrate [GC Design System web components](../web/README.md) into Angular projects, the [gcds-components-angular](https://www.npmjs.com/package/@cdssnc/gcds-components-angular) package provides Angular wrappers.
 
 These wrappers make it easier to work with web components in the Angular ecosystem by preventing unnecessary repaints through detached change detection, and enabling form controls to work with `ngModel` and reactive forms.
 
@@ -95,7 +95,7 @@ Code released under the [MIT License](https://github.com/cds-snc/gcds-components
 
 # Composants de Système de design GC — Angular
 
-Afin de faciliter l'intégration des [composants Web de Système de design GC](https://github.com/cds-snc/gcds-components/tree/main/packages/web) à vos projets Angular, le paquet [gcds-components-angular](https://www.npmjs.com/package/@cdssnc/gcds-components-angular) propose des enveloppes Angular.
+Afin de faciliter l'intégration des [composants Web de Système de design GC](../web/README.md) à vos projets Angular, le paquet [gcds-components-angular](https://www.npmjs.com/package/@cdssnc/gcds-components-angular) propose des enveloppes Angular.
 
 Ces enveloppes faciltent le travail avec les composants Web dans l'écosystème Angular en empêchant l'actualisation inutile du rendu grâce à une détection des changements découplée, et en permettant aux contrôles de formulaire de fonctionner avec `ngModel` et les formulaires réactifs.
 

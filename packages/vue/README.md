@@ -2,7 +2,7 @@
 
 # GC Design System Components – Vue
 
-To make it easier to integrate [GC Design System web components](https://github.com/cds-snc/gcds-components/tree/main/packages/web) into Vue projects, the [gcds-components-vue](https://www.npmjs.com/package/@cdssnc/gcds-components-vue) package provides Vue wrappers.
+To make it easier to integrate [GC Design System web components](../web/README.md) into Vue projects, the [gcds-components-vue](https://www.npmjs.com/package/@cdssnc/gcds-components-vue) package provides Vue wrappers.
 
 These wrappers make it easier to work with web components in the Vue ecosystem by enabling type checking, integration with `Vue Router`, and support for `v-model` with form controls.
 
@@ -60,7 +60,7 @@ b. Import the styles to your `App.vue` using the HTML style tag:
 
 Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
 
-### Using Vite
+## Using Vite
 
 If using [Vite](https://vitejs.dev/), additional configuration will need to be added to `vite.config.ts` to prevent Vue from logging a warning about failing to resolve components (e.g. "Failed to resolve component: gcds-header").
 
@@ -149,7 +149,7 @@ b. Importez les styles dans fichier `App.vue` en utilisant la balise HTML `style
 
 Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
 
-### Utilisation de Vite
+## Utilisation de Vite
 
 Si vous utilisez [Vite](https://vitejs.dev/), il faudra ajouter une configuration additionnelle à 'vite.config.ts' afin d’empêcher que Vue ne signale un avertissement d’échec pour la résolution de composants (p. ex. « Failed to resolve component: gcds-header » [Échec de la résolution du composant : gcds-header]).
 
