@@ -55,8 +55,8 @@ Once you've installed the design system, start building! Browse our available [c
 
 You have two options to receive updates from the CDN:
 
-- Use pinned version for stability (recommended).
-- Use `@latest` to get automatic updates.
+a) Use pinned version for stability (recommended).
+b) Use `@latest` to get automatic updates.
 
 #### a. Use pinned version (recommended)
 
