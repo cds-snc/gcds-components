@@ -55,8 +55,10 @@ Once you've installed the design system, start building! Browse our available [c
 
 You have two options to receive updates from the CDN:
 
-a) Use pinned version for stability (recommended).
-b) Use `@latest` to get automatic updates.
+<ol type="a">
+  <li>Use pinned version for stability (recommended).</li>
+  <li>Use `@latest` to get automatic updates.</li>
+</ol>
 
 #### a. Use pinned version (recommended)
 
@@ -175,8 +177,10 @@ Une fois le système de design installé, commencez à créer! Parcourez nos [co
 
 Vous avez deux options pour recevoir des mises à jour du CDN :
 
-- Utiliser la version épinglée pour la stabilité (recommandé).
-- Utiliser `@latest` pour obtenir des mises à jour automatiques.
+<ol type="a">
+  <li>Utiliser la version épinglée pour la stabilité (recommandé).</li>
+  <li>Utiliser `@latest` pour obtenir des mises à jour automatiques.</li>
+</ol>
 
 #### a. Utiliser la version épinglée (recommandé)
 
