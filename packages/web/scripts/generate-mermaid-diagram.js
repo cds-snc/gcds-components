@@ -87,11 +87,44 @@ direction BT
   return header + classDefinitions + '\n' + relationships;
 }
 
+// Generate GitHub-friendly markdown with Mermaid diagram
+function generateGitHubMarkdown() {
+  const diagram = generateMermaidDiagram();
+  
+  return `# GCDS Components Diagram
+
+This diagram shows the component structure and relationships for the GCDS (Government of Canada Design System) components.
+
+## Component Class Diagram
+
+\`\`\`mermaid
+${diagram}
+\`\`\`
+
+## How to Use
+
+This diagram is automatically generated from the build output. To regenerate it:
+
+\`\`\`bash
+npm run docs:diagram
+\`\`\`
+
+## Components Included
+
+The diagram includes all GCDS components with their properties and dependencies as defined in the source code.
+`;
+}
+
 // Generate and output the diagram
 const diagram = generateMermaidDiagram();
-// console.log(diagram);
+const githubMarkdown = generateGitHubMarkdown();
 
-// Save the MermaidJS diagram
+// Save the original MermaidJS diagram
 const outputPath = path.join(__dirname, '../specs/gcds-components-diagram.md');
 fs.writeFileSync(outputPath, diagram);
-console.log(`\nDiagram saved to: ${outputPath}`);
+console.log(`\Diagram saved to: ${outputPath}`);
+
+// Save the GitHub-friendly preview markdown
+const previewPath = path.join(__dirname, '../specs/gcds-components-diagram-preview.md');
+fs.writeFileSync(previewPath, githubMarkdown);
+console.log(`\nGitHub preview saved to: ${previewPath}`);
