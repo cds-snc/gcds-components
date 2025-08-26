@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-01T13:38:37",
+  "timestamp": "2025-08-26T21:45:34",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.35.1",
@@ -2733,7 +2733,20 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
+      "listeners": [
+        {
+          "event": "beforeprint",
+          "target": "window",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "afterprint",
+          "target": "window",
+          "capture": false,
+          "passive": false
+        }
+      ],
       "styles": [],
       "slots": [
         {
@@ -3912,7 +3925,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -4211,7 +4224,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4307,7 +4320,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4397,7 +4410,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4487,7 +4500,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -4577,7 +4590,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -6684,10 +6697,10 @@
         },
         {
           "name": "type",
-          "type": "\"email\" | \"number\" | \"password\" | \"search\" | \"text\" | \"url\"",
+          "type": "\"email\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"url\"",
           "complexType": {
-            "original": "'email' | 'number' | 'password' | 'search' | 'text' | 'url'",
-            "resolved": "\"email\" | \"number\" | \"password\" | \"search\" | \"text\" | \"url\"",
+            "original": "'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url'",
+            "resolved": "\"email\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"url\"",
             "references": {}
           },
           "mutable": false,
@@ -6716,6 +6729,10 @@
             },
             {
               "value": "search",
+              "type": "string"
+            },
+            {
+              "value": "tel",
               "type": "string"
             },
             {
@@ -10969,6 +10986,29 @@
       "usage": {},
       "props": [
         {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": true,
+          "docs": "If true, the input will be focused on component render",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "characterCount",
           "type": "number",
           "complexType": {
@@ -11138,6 +11178,29 @@
           ],
           "optional": false,
           "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "minlength",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "minlength",
+          "reflectToAttr": true,
+          "docs": "The minimum number of characters that the input field can accept.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false,
           "getter": false,
           "setter": false
         },
@@ -11328,6 +11391,39 @@
           "setter": false
         },
         {
+          "name": "validity",
+          "type": "ValidityState",
+          "complexType": {
+            "original": "ValidityState",
+            "resolved": "ValidityState",
+            "references": {
+              "ValidityState": {
+                "location": "global",
+                "id": "global::ValidityState"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "validity",
+          "reflectToAttr": false,
+          "docs": "Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in.",
+          "docsTags": [
+            {
+              "name": "readonly",
+              "text": ""
+            }
+          ],
+          "values": [
+            {
+              "type": "ValidityState"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": true,
+          "setter": false
+        },
+        {
           "name": "value",
           "type": "string",
           "complexType": {
@@ -11352,6 +11448,50 @@
         }
       ],
       "methods": [
+        {
+          "name": "checkValidity",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "checkValidity() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Check the validity of gcds-textarea",
+          "docsTags": []
+        },
+        {
+          "name": "getValidationMessage",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<string>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<string>"
+          },
+          "signature": "getValidationMessage() => Promise<string>",
+          "parameters": [],
+          "docs": "Get validationMessage of gcds-textarea",
+          "docsTags": []
+        },
         {
           "name": "validate",
           "returns": {
