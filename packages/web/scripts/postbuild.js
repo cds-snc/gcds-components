@@ -7,37 +7,68 @@ fs.copyFileSync('./dist/gcds/gcds.css', '../react/gcds.css');
 fs.copyFileSync('./dist/gcds/gcds.css', '../vue/gcds.css');
 fs.copyFileSync('./dist/gcds/gcds.css', '../react-ssr/gcds.css');
 
-// Sanitize paths in components.json to remove personal directory information
-try {
-  const componentsPath = path.join(__dirname, '../specs/components.json');
-  if (fs.existsSync(componentsPath)) {
-    const components = JSON.parse(fs.readFileSync(componentsPath, 'utf8'));
-    const workspaceRoot = path.resolve(__dirname, '../..');
-    
-    components.components.forEach(component => {
-      // Handle top-level paths
-      if (component.filePath) component.filePath = component.filePath.replace(workspaceRoot, '');
-      if (component.dirPath) component.dirPath = component.dirPath.replace(workspaceRoot, '');
-      if (component.readmePath) component.readmePath = component.readmePath.replace(workspaceRoot, '');
-      if (component.usagesDir) component.usagesDir = component.usagesDir.replace(workspaceRoot, '');
-      
-      // Handle nested paths in complexType.references
-      if (component.props) {
-        component.props.forEach(prop => {
-          if (prop.complexType && prop.complexType.references) {
-            Object.values(prop.complexType.references).forEach(ref => {
-              if (ref.path) {
-                ref.path = ref.path.replace(workspaceRoot, '');
-              }
-            });
-          }
-        });
-      }
+// ============================================================================
+// COMPONENTS.JSON PATH SANITIZATION
+// ============================================================================
+// Removes personal directory paths from components.json for portability
+
+const COMPONENTS_FILE = '../specs/components.json';
+const WORKSPACE_ROOT = path.resolve(__dirname, '../..');
+
+// Paths that need sanitization
+const PATH_FIELDS = ['filePath', 'dirPath', 'readmePath', 'usagesDir'];
+
+// Sanitize a single path by removing workspace root
+function sanitizePath(filePath) {
+  return filePath?.replace(WORKSPACE_ROOT, '') || filePath;
+}
+
+// Sanitize all component paths
+function sanitizeComponentPaths(components) {
+  components.forEach(component => {
+    // Sanitize top-level paths
+    PATH_FIELDS.forEach(field => {
+      component[field] = sanitizePath(component[field]);
     });
     
-    fs.writeFileSync(componentsPath, JSON.stringify(components, null, 2));
-    console.log('✅ Paths sanitized in components.json');
+    // Sanitize nested paths in complexType.references
+    component.props?.forEach(prop => {
+      prop.complexType?.references && 
+        Object.values(prop.complexType.references).forEach(ref => {
+          ref.path = sanitizePath(ref.path);
+        });
+    });
+  });
+}
+
+// Main sanitization function
+function sanitizeComponentsFile() {
+  const componentsPath = path.join(__dirname, COMPONENTS_FILE);
+  
+  if (!fs.existsSync(componentsPath)) {
+    console.log('⚠️  components.json not found, skipping sanitization');
+    return;
   }
+
+  try {
+    const components = JSON.parse(fs.readFileSync(componentsPath, 'utf8'));
+    
+    if (!components.components?.length) {
+      throw new Error('Invalid components.json structure');
+    }
+    
+    sanitizeComponentPaths(components.components);
+    fs.writeFileSync(componentsPath, JSON.stringify(components, null, 2));
+    
+    console.log('✅ Paths sanitized in components.json');
+  } catch (error) {
+    throw new Error(`Sanitization failed: ${error.message}`);
+  }
+}
+
+// Sanitize paths in components.json to remove personal directory information
+try {
+  sanitizeComponentsFile();
 } catch (error) {
   console.error('❌ Error sanitizing paths:', error.message);
 }

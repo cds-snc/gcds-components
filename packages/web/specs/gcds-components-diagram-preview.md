@@ -336,7 +336,6 @@ direction BT
 	    string container
 	    boolean isFixed
     }
-
     gcds_alert --> gcds_container : uses
     gcds_alert --> gcds_icon : uses
     gcds_breadcrumbs --> gcds_breadcrumbs_item : uses
@@ -405,7 +404,6 @@ direction BT
     gcds_topic_menu --> gcds_sr_only : uses
     gcds_topic_menu --> gcds_icon : uses
     gcds_verify_banner --> gcds_grid : uses
-
 ```
 
 ## How to Use

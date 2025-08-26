@@ -328,7 +328,6 @@ direction BT
 	    string container
 	    boolean isFixed
     }
-
     gcds_alert --> gcds_container : uses
     gcds_alert --> gcds_icon : uses
     gcds_breadcrumbs --> gcds_breadcrumbs_item : uses
