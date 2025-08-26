@@ -1,6 +1,7 @@
 # GCDS Components Diagram
 
 This diagram shows the component structure and relationships for the GCDS (Government of Canada Design System) components.
+A dedicated Mermaid file ([gcds-components-diagram.md](./gcds-components-diagram.md)) is available for optimal and interactive visualization of the component relationships. For convenience, a quick GitHub-friendly preview is provided below.
 
 ## Component Class Diagram
 
