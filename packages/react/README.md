@@ -2,27 +2,39 @@
 
 # GC Design System Components – React
 
-GC Design System Components – React provides the [GC Design System Components](https://github.com/cds-snc/gcds-components/tree/main/packages/web) within a React wrapper to ease integration of the components into React apps.
+To make it easier to integrate [GC Design System web components](../web/README.md) into React projects, the [gcds-components-react](https://www.npmjs.com/package/@cdssnc/gcds-components-react) package provides React wrappers.
+
+These wrappers make it easier to work with web components in the React ecosystem. They offer JSX bindings for properties and custom events, auto-completion, and type safety.
+
+The web components inherit native properties and interoperability.
 
 ## Documentation
 
 You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
 
-## Installation
+## React installation instructions
 
-### Install from npm
+Follow these steps to install and use GC Design System components in your React project.
 
-Navigate to the root folder of your project and run:
+### 1. Install the package
 
-``` js
+Navigate to your project’s root folder and run the following command:
+
+```js
 npm install @cdssnc/gcds-components @cdssnc/gcds-components-react
 ```
 
-Place the following code in the `index.js` file of your app.
+### 2. Import GC Design System
 
-``` jsx
-import '@cdssnc/gcds-components-react/gcds.css'
+Place the following code in the `index.js` file of your app to import GC Design System styles:
+
+```jsx
+import '@cdssnc/gcds-components-react/gcds.css';
 ```
+
+### 3. Start building
+
+Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
 
 ## How to contribute
 
@@ -32,31 +44,43 @@ If you are interested in contributing to GC Design System Components, please rea
 
 Code released under the [MIT License](https://github.com/cds-snc/gcds-components/blob/main/LICENSE).
 
---------
+---
 
 # Composants de Système de design GC — React
 
-Composants de Système de design GC — React fournit des [composants de Système de design GC](../web/README.md) dans un encapsulateur React afin de faciliter l’intégration dans les applications React.
+Pour faciliter l’intégration des [composants Web de Système de design GC](../web/README.md) dans les projets React, le paquet [gcds-components-react](https://www.npmjs.com/package/@cdssnc/gcds-components-react) propose différentes enveloppes React.
+
+Ces enveloppes facilitent le travail avec les composants Web dans l’écosystème React. Elles offrent des liaisons JSX pour les propriétés et les événements personnalisés, la saisie automatique et la sécurité de type.
+
+Les composants Web héritent les propriétés et l’interopérabilité natives.
 
 ## Documentation
 
 Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
 
-## Installation
+## Instructions d’installation dans React
 
-### Installer le paquet avec npm
+Suivez ces étapes pour installer et utiliser les composants de Système de design GC dans votre projet React.
 
-Naviguez jusqu'au dossier racine de votre projet et exécutez :
+### 1. Installer le paquet
 
-``` js
+Naviguez vers le dossier racine de votre projet et exécutez la commande suivante :
+
+```js
 npm install @cdssnc/gcds-components @cdssnc/gcds-components-react
 ```
 
-Insérez le code qui suit dans le fichier `index.js` de votre application.
+### 2. Importer Système de design GC
 
-``` jsx
-import '@cdssnc/gcds-components-react/gcds.css'
+Pour importer les styles de Système de design GC, insérez le code suivant dans le fichier `index.js` de votre application :
+
+```jsx
+import '@cdssnc/gcds-components-react/gcds.css';
 ```
+
+### 3. Commencez à créer
+
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
 
 ## Apportez votre contribution
 
