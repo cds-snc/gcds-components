@@ -1,89 +1,76 @@
 # Changelog
 
-## [0.42.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.41.0...gcds-components-angular-v0.42.0-canary.0) (2025-08-27)
-
+## [0.42.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.41.0...gcds-components-angular-v0.42.0) (2025-08-27)
 
 ### :pencil: Documentation
 
-* update README installation instructions to match docs site ([#934](https://github.com/cds-snc/gcds-components/issues/934)) ([8431c4a](https://github.com/cds-snc/gcds-components/commit/8431c4a9bbdddcfcacb7d995eabb3db273abc032))
-* update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
-
+- update README installation instructions to match docs site ([#934](https://github.com/cds-snc/gcds-components/issues/934)) ([8431c4a](https://github.com/cds-snc/gcds-components/commit/8431c4a9bbdddcfcacb7d995eabb3db273abc032))
+- update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * peerDependencies
-    * @cdssnc/gcds-components bumped from ^0.41.0 to ^0.42.0-canary.0
+- The following workspace dependencies were updated
+  - peerDependencies
+    - @cdssnc/gcds-components bumped from ^0.41.0 to ^0.42.0
 
 ## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.40.0...gcds-components-angular-v0.41.0) (2025-08-13)
 
-
 ### :rocket: New Features
 
-* **gcds-textarea:** Add native HTML attributes and validation ([#917](https://github.com/cds-snc/gcds-components/issues/917)) ([9a36e40](https://github.com/cds-snc/gcds-components/commit/9a36e402d2f8383bd1b1f1fb0a329f8f53bc5a33))
-
+- **gcds-textarea:** Add native HTML attributes and validation ([#917](https://github.com/cds-snc/gcds-components/issues/917)) ([9a36e40](https://github.com/cds-snc/gcds-components/commit/9a36e402d2f8383bd1b1f1fb0a329f8f53bc5a33))
 
 ### :pencil: Documentation
 
-* Add generated guidance for slots and events ([#910](https://github.com/cds-snc/gcds-components/issues/910)) ([3ec7b96](https://github.com/cds-snc/gcds-components/commit/3ec7b96de2f7b55b03f6d067566d936048332c83))
-
+- Add generated guidance for slots and events ([#910](https://github.com/cds-snc/gcds-components/issues/910)) ([3ec7b96](https://github.com/cds-snc/gcds-components/commit/3ec7b96de2f7b55b03f6d067566d936048332c83))
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * peerDependencies
-    * @cdssnc/gcds-components bumped from ^0.40.0 to ^0.41.0
+- The following workspace dependencies were updated
+  - peerDependencies
+    - @cdssnc/gcds-components bumped from ^0.40.0 to ^0.41.0
 
 ## [0.40.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.39.0...gcds-components-angular-v0.40.0) (2025-07-28)
 
-
 ### Patch
 
-* **gcds-components-angular:** Synchronize GCDS Components versions
-
+- **gcds-components-angular:** Synchronize GCDS Components versions
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * peerDependencies
-    * @cdssnc/gcds-components bumped from ^0.39.0 to ^0.40.0
+- The following workspace dependencies were updated
+  - peerDependencies
+    - @cdssnc/gcds-components bumped from ^0.39.0 to ^0.40.0
 
 ## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.38.0...gcds-components-angular-v0.39.0) (2025-07-16)
 
-
 ### :rocket: New Features
 
-* **gcds-input:** Add native HTML attributes and validation ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
-
+- **gcds-input:** Add native HTML attributes and validation ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * peerDependencies
-    * @cdssnc/gcds-components bumped from ^0.38.0 to ^0.39.0
+- The following workspace dependencies were updated
+  - peerDependencies
+    - @cdssnc/gcds-components bumped from ^0.38.0 to ^0.39.0
 
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.37.0...gcds-components-angular-v0.38.0) (2025-07-09)
 
-
 ### Patch
 
-* **gcds-components-angular:** Synchronize GCDS Components versions
-
+- **gcds-components-angular:** Synchronize GCDS Components versions
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * peerDependencies
-    * @cdssnc/gcds-components bumped from ^0.37.0 to ^0.38.0
+- The following workspace dependencies were updated
+  - peerDependencies
+    - @cdssnc/gcds-components bumped from ^0.37.0 to ^0.38.0
 
 ## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.36.0...gcds-components-angular-v0.37.0) (2025-06-26)
-
 
 ### :rocket: New Features
 
 - support for data binding and routerLink ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
 - update stencil and stencil output targets ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
-
 
 ### Dependencies
 
