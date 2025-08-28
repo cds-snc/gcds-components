@@ -500,11 +500,11 @@ export class GcdsDateInput {
 
 export declare interface GcdsDateInput extends Components.GcdsDateInput {
   /**
-   * Emitted when an date-input has focus.
+   * Emitted when a date-input has focus.
    */
   gcdsFocus: EventEmitter<CustomEvent<void>>;
   /**
-   * Emitted when an date-input loses focus.
+   * Emitted when a date-input loses focus.
    */
   gcdsBlur: EventEmitter<CustomEvent<void>>;
   /**
@@ -512,15 +512,15 @@ export declare interface GcdsDateInput extends Components.GcdsDateInput {
    */
   gcdsInput: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when an date-input has changed. Contains the new value in the event detail.
+   * Emitted when a date-input has changed. Contains the new value in the event detail.
    */
   gcdsChange: EventEmitter<CustomEvent<string>>;
   /**
-   * Emitted when an date-input has a validation error.
+   * Emitted when a date-input has a validation error.
    */
   gcdsError: EventEmitter<CustomEvent<object>>;
   /**
-   * Emitted when an date-input has validated.
+   * Emitted when a date-input has validated.
    */
   gcdsValid: EventEmitter<CustomEvent<object>>;
 }
@@ -1657,7 +1657,7 @@ export declare interface GcdsNotice extends Components.GcdsNotice {}
 export class GcdsPagination {
   protected el: HTMLGcdsPaginationElement;
     /**
-   * Navigation element label @default 'list'
+   * Determines the pagination display style. @default 'list'
    */
   set display(_: Components.GcdsPagination['display']) {};
     /**

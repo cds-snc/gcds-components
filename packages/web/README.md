@@ -2,53 +2,36 @@
 
 # GC Design System Components
 
-GC Design System Components are encapsulated reusable custom elements to use within your web sites/apps built using the [GC Design System Tokens](https://github.com/cds-snc/gcds-tokens).
+Use GC Design System web components directly in HTML. These components are framework-agnostic and behave similarly to native HTML elements.
+
+Use this option for:
+
+- Static sites
+- CMS platforms
+- Node.js
+- Java
+- Svelte
+- .NET
+
+If you’re using React, Angular, or Vue frameworks, browse the [installation page](https://design-system.alpha.canada.ca/en/get-started/develop/) for framework-specific options.
 
 ## Documentation
 
 You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
 
-## Installation
+## Npm installation instructions
 
-### Install from npm
+### 1. Install the package
+
+Navigate to your project’s root folder and run the following command:
 
 ```js
 npm install @cdssnc/gcds-components
 ```
 
-### Install with CDN
+### 2. Include GC Design System in your project
 
-#### Add the code
-
-Use the latest version of GC Design System. Pinned versions provide stability and predictability because the code will remain consistent and won't change unexpectedly, which can be crucial for maintaining the stability of an application. However, it requires manual updating of the CDN links whenever a newer version of GC Design System is released.
-
-Place the following code in the `<head>` element of your site. Replace `<version-number>` with the latest version number to receive corresponding updates.
-
-```html
-<!-- GC Design System -->
-<link
-  rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.css"
-/>
-<script
-  type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
-></script>
-```
-
-Note: `<script type="module">` requires a server to load properly, if developing locally, please use `<script nomodule>`.
-
-#### Automatic updates using `@latest`
-
-Use the `@latest` version of GC Design System to receive automatic updates whenever a new version is released. **While it removes the need to manually update the CDN links, it adds the risk of introducing breaking changes to the codebase as new versions are automatically applied**.
-
-## Supported frameworks
-
-The gcds-component library works in multiple frameworks.
-
-### Javascript
-
-Place the following code in the `<head>` element of your site.
+Add the following `link` tags inside the `head` tag of your `HTML` files to load GC Design System:
 
 ```html
 <!-- GC Design System -->
@@ -62,7 +45,60 @@ Place the following code in the `<head>` element of your site.
 ></script>
 ```
 
-All gcds-components should now be ready to use in your site.
+### 3. Start building
+
+Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
+
+## CDN installation instructions
+
+### 1. Select how to receive updates
+
+You have two options to receive updates from the CDN:
+
+<ol type="a">
+  <li>Use pinned version for stability (recommended).</li>
+  <li>Use `@latest` to get automatic updates.</li>
+</ol>
+
+#### a. Use pinned version (recommended)
+
+It’s highly recommended to use this option to ensure stability and predictability in your project.
+
+Add the following code to the `head` tag of your `HTML` files to load GC Design System. Make sure the current version is listed.
+
+```html
+<!-- GC Design System -->
+<link
+  rel="stylesheet"
+  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
+></script>
+```
+
+Note: `<script type="module">` requires a server to load properly. If developing locally, use `<script nomodule>`.
+
+##### Going forward
+
+The code will remain unchanged until you manually update the version in the CDN URLs. This is ideal for production environments.
+
+Check for new [GC Design System versions](https://github.com/cds-snc/gcds-components/blob/main/CHANGELOG.md) regularly to update the latest pinned version.
+
+#### Use `@latest` version
+
+Use the `@latest` tag to pull the most recent version of GC Design System into your project. Put this tag in place of the version number.
+
+While it removes the need to manually update versions, it adds the risk of introducing breaking changes to the codebase as new versions are automatically applied.
+
+### 2. Start building
+
+Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
+
+## Supported frameworks
+
+The gcds-component library works in multiple frameworks.
 
 ### React
 
@@ -74,21 +110,7 @@ Please reference [GC Design System Components – Angular](../angular/README.md)
 
 ### Vue
 
-Place the following code in the `main.js` file of your app.
-
-```js
-import {
-  applyPolyfills,
-  defineCustomElements,
-} from '@cdssnc/gcds-components/loader';
-import '@cdssnc/gcds-components/dist/gcds/gcds.css';
-
-applyPolyfills().then(() => {
-  defineCustomElements();
-});
-```
-
-All gcds-components should now be ready to use in your Vue app.
+Please reference [GC Design System Components – Vue](../vue/README.md)
 
 ## How to contribute
 
@@ -102,27 +124,69 @@ Code released under the [MIT License](https://github.com/cds-snc/gcds-components
 
 # Composants de Système de design GC
 
-Composants de Système de design GC fournit des éléments personnalisables, encapsulés et réutilisables. Ils peuvent être employés dans vos sites et applications Web créés à l’aide des [unités de style de Système de design GC](https://github.com/cds-snc/gcds-tokens).
+Utilisez les composants Web de Système de design GC directement dans un projet HTML. Ces composants s’adaptent à tout cadriciel et ont un comportement similaire aux éléments HTML natifs.
+
+Utilisez cette option pour les situations suivantes :
+
+- Sites statiques
+- Plateformes CMS
+- Node.js
+- Java
+- Svelte
+- .NET
+
+Si vous utilisez les cadres React, Angular ou Vue, consultez la [page d’installation](https://systeme-design.alpha.canada.ca/fr/demarrer/developpement/) pour connaître les options propres à chaque cadre.
 
 ## Documentation
 
 Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
 
-## Installation
+## Instructions d’installation avec npm
 
-### Installer le paquet avec npm
+### 1. Installer le paquet
+
+Naviguez vers le dossier racine de votre projet et exécutez la commande suivante :
 
 ```js
 npm install @cdssnc/gcds-components
 ```
 
-### Installer le paquet avec CDN
+### 2. Inclure Système de design GC dans votre projet
 
-#### Ajoutez le code
+Ajoutez les balises `link` suivantes à l’intérieur de la balise `head` de vos fichiers `HTML` pour charger Système de design GC :
 
-Utilisez la version la plus récente de Système de design GC. Les versions épinglées offrent stabilité et prévisibilité parce que le code ne changera pas de manière inattendue, ce qui peut être crucial pour maintenir la stabilité d'une application. Toutefois, il faut mettre à jour manuellement les liens CDN chaque fois qu'une version plus récente de Système de design GC est publiée.
+```html
+<!-- GC Design System -->
+<link
+  rel="stylesheet"
+  href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
+></script>
+```
 
-Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site. Remplacez `<version-number>` par le numéro de version le plus récent pour recevoir les mises à jour correspondantes.
+### 3. Commencez à créer
+
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
+
+## Instructions d’installation avec CDN
+
+### 1. Sélectionner comment recevoir des mises à jour
+
+Vous avez deux options pour recevoir des mises à jour du CDN :
+
+<ol type="a">
+  <li>Utiliser la version épinglée pour la stabilité (recommandé).</li>
+  <li>Utiliser `@latest` pour obtenir des mises à jour automatiques.</li>
+</ol>
+
+#### a. Utiliser la version épinglée (recommandé)
+
+Il est fortement recommandé d’utiliser cette option pour garantir la stabilité et la prévisibilité de votre projet.
+
+Ajoutez le code suivant à la balise `head` de vos fichiers `HTML` pour charger Système de design GC. Assurez-vous d’indiquer la version actuelle.
 
 ```html
 <!-- GC Système de design -->
@@ -136,30 +200,27 @@ Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site. R
 ></script>
 ```
 
-Remarque : Il faut un serveur pour que `<script type="module">` se charge correctement. Si vous développez localement, utilisez plutôt `<script nomodule>`.
+Remarque : `<script type="module">` doit être chargé depuis un serveur. Pour le développement local, utilisez `<script nomodule>`.
 
-#### Mises à jour automatiques grâce à `@latest`
+##### Étapes suivantes
 
-Utilisez la version `@latest` de Système de design GC pour recevoir des mises à jour automatiques chaque fois qu'une nouvelle version est publiée. **Bien que cette approche vous évite la mise à jour manuelle des liens CDN, elle court le risque d'introduire des modifications qui entraînent une rupture de compatibilité avec le code base à mesure que les nouvelles versions sont automatiquement appliquées**.
+Le code restera inchangé jusqu’à ce que vous mettiez à jour manuellement la version dans les URL CDN, ce qui est idéal pour les environnements de production.
+
+Vérifiez régulièrement s’il y a des [nouvelles versions de Système de design GC](https://github.com/cds-snc/gcds-components/blob/main/CHANGELOG.md#journal-des-modifications) afin de mettre à jour la dernière version épinglée.
+
+#### b. Utiliser la version `@latest` (la dernière version)
+
+Utilisez la balise `@latest` pour insérer la plus récente version de Système de design GC dans votre projet. Remplacez le numéro de version par cette balise.
+
+Bien que cette approche vous évite la mise à jour manuelle des versions, elle court le risque d’introduire des modifications qui entraînent une rupture de compatibilité avec le code base à mesure que les nouvelles versions sont automatiquement appliquées.
+
+### 2. Commencez à créer
+
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
 
 ## Cadres d'application pris en charge
 
 La bibliothèque gcds-components fonctionne sous plusieurs cadres d'application.
-
-### JavaScript
-
-Insérez le code qui suit à l'intérieur de la balise `<head>` de votre site.
-
-```html
-<!-- GC Système de design -->
-<link
-  rel="stylesheet"
-  href="/node_modules/gcds-components/dist/gcds/gcds.css"
-/>
-<script type="module" src="/components/dist/gcds/gcds.esm.js"></script>
-```
-
-Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components sur votre site.
 
 ### React
 
@@ -171,24 +232,11 @@ Veuillez faire référence [Composants de Système de design GC – Angular](../
 
 ### Vue
 
-Insérez le code qui suit dans le fichier `main.js` de votre application.
-
-```js
-import { applyPolyfills, defineCustomElements } from 'gcds-components/loader';
-import 'gcds-components/dist/gcds/gcds.css';
-
-applyPolyfills().then(() => {
-  defineCustomElements();
-});
-```
-
-Vous devriez maintenant pouvoir utiliser tous les composants de gcds-components dans votre application Vue.
+Veuillez faire référence [Composants de Système de design GC – Vue](../vue/README.md)
 
 ## Apportez votre contribution
 
 Si vous souhaitez contribuer aux unités de style de Système de design GC, veuillez lire nos [lignes directrices sur la contribution](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
-<br/>
-<br/>
 
 ## Licence
 

@@ -1,68 +1,70 @@
 # Changelog
 
-## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.40.0...gcds-components-react-v0.41.0) (2025-08-13)
+## [0.42.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.41.0...gcds-components-react-v0.42.0) (2025-08-27)
 
+### :pencil: Documentation
 
-### Patch
-
-* **gcds-components-react:** Synchronize GCDS Components versions
-
+- update README installation instructions to match docs site ([#934](https://github.com/cds-snc/gcds-components/issues/934)) ([8431c4a](https://github.com/cds-snc/gcds-components/commit/8431c4a9bbdddcfcacb7d995eabb3db273abc032))
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @cdssnc/gcds-components bumped from ^0.40.0 to ^0.41.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.41.0 to ^0.42.0
+
+## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.40.0...gcds-components-react-v0.41.0) (2025-08-13)
+
+### Patch
+
+- **gcds-components-react:** Synchronize GCDS Components versions
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.40.0 to ^0.41.0
 
 ## [0.40.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.39.0...gcds-components-react-v0.40.0) (2025-07-28)
 
-
 ### Patch
 
-* **gcds-components-react:** Synchronize GCDS Components versions
-
+- **gcds-components-react:** Synchronize GCDS Components versions
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @cdssnc/gcds-components bumped from ^0.39.0 to ^0.40.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.39.0 to ^0.40.0
 
 ## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.38.0...gcds-components-react-v0.39.0) (2025-07-16)
 
-
 ### :bug: :wrench: Bug Fixes
 
-* React output package.json configuration ([#901](https://github.com/cds-snc/gcds-components/issues/901)) ([1ee8332](https://github.com/cds-snc/gcds-components/commit/1ee8332aa7b88cd28011f57e0179a75aede18f6e))
-
+- React output package.json configuration ([#901](https://github.com/cds-snc/gcds-components/issues/901)) ([1ee8332](https://github.com/cds-snc/gcds-components/commit/1ee8332aa7b88cd28011f57e0179a75aede18f6e))
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @cdssnc/gcds-components bumped from ^0.38.0 to ^0.39.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.38.0 to ^0.39.0
 
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.37.0...gcds-components-react-v0.38.0) (2025-07-09)
 
-
 ### Patch
 
-* **gcds-components-react:** Synchronize GCDS Components versions
-
+- **gcds-components-react:** Synchronize GCDS Components versions
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @cdssnc/gcds-components bumped from ^0.37.0 to ^0.38.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @cdssnc/gcds-components bumped from ^0.37.0 to ^0.38.0
 
 ## [0.37.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-react-v0.36.0...gcds-components-react-v0.37.0) (2025-06-26)
-
 
 ### :rocket: New Features
 
 - update stencil and stencil output targets ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
-
 
 ### Dependencies
 

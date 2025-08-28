@@ -29,12 +29,12 @@ A date input is a space to enter a known date.
 
 | Event        | Description                                                                                 | Type                  |
 | ------------ | ------------------------------------------------------------------------------------------- | --------------------- |
-| `gcdsBlur`   | Emitted when an date-input loses focus.                                                     | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when an date-input has changed. Contains the new value in the event detail.         | `CustomEvent<string>` |
-| `gcdsError`  | Emitted when an date-input has a validation error.                                          | `CustomEvent<object>` |
-| `gcdsFocus`  | Emitted when an date-input has focus.                                                       | `CustomEvent<void>`   |
+| `gcdsBlur`   | Emitted when a date-input loses focus.                                                      | `CustomEvent<void>`   |
+| `gcdsChange` | Emitted when a date-input has changed. Contains the new value in the event detail.          | `CustomEvent<string>` |
+| `gcdsError`  | Emitted when a date-input has a validation error.                                           | `CustomEvent<object>` |
+| `gcdsFocus`  | Emitted when a date-input has focus.                                                        | `CustomEvent<void>`   |
 | `gcdsInput`  | Emitted when the date-input has received input. Contains the new value in the event detail. | `CustomEvent<string>` |
-| `gcdsValid`  | Emitted when an date-input has validated.                                                   | `CustomEvent<object>` |
+| `gcdsValid`  | Emitted when a date-input has validated.                                                    | `CustomEvent<object>` |
 
 
 ## Methods

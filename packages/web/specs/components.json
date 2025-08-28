@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-26T22:23:25",
+  "timestamp": "2025-08-28T18:42:24",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.35.1",
@@ -2410,7 +2410,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input loses focus.",
+          "docs": "Emitted when a date-input loses focus.",
           "docsTags": []
         },
         {
@@ -2424,7 +2424,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input has changed. Contains the new value in the event detail.",
+          "docs": "Emitted when a date-input has changed. Contains the new value in the event detail.",
           "docsTags": []
         },
         {
@@ -2438,7 +2438,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input has a validation error.",
+          "docs": "Emitted when a date-input has a validation error.",
           "docsTags": []
         },
         {
@@ -2452,7 +2452,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input has focus.",
+          "docs": "Emitted when a date-input has focus.",
           "docsTags": []
         },
         {
@@ -2480,7 +2480,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when an date-input has validated.",
+          "docs": "Emitted when a date-input has validated.",
           "docsTags": []
         }
       ],
@@ -8265,7 +8265,7 @@
           "mutable": false,
           "attr": "display",
           "reflectToAttr": false,
-          "docs": "Navigation element label",
+          "docs": "Determines the pagination display style.",
           "docsTags": [
             {
               "name": "default",
