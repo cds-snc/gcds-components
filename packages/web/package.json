@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "stencil build --docs",
-    "postbuild": "node ./scripts/copyCSSFile.js",
+    "postbuild": "node ./scripts/postbuild.js",
     "start": "stencil build --dev --watch --serve",
     "pretest": "cd ../.. && npm run patch:stenciljs && npm run build",
     "test": "npm run test.spec && npm run test.e2e",
@@ -34,7 +34,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o ./../../docs",
     "lint": "eslint .",
-    "lint-and-fix": "eslint . --fix"
+    "lint-and-fix": "eslint . --fix",
+    "docs:diagram": "node ./scripts/generate-mermaid-diagram.js"
   },
   "dependencies": {
     "@stencil/core": "4.35.1",

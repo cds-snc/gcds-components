@@ -13,7 +13,8 @@
     "start-storybook": "npm run storybook -w @cdssnc/gcds-components",
     "patch:stenciljs": "npx --yes patch-package",
     "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'",
-    "start": "npm run start -w @cdssnc/gcds-components"
+    "start": "npm run start -w @cdssnc/gcds-components",
+    "docs:diagram": "npm run docs:diagram -w @cdssnc/gcds-components"
   },
   "dependencies": {
     "@angular/animations": "^19.0.0",
