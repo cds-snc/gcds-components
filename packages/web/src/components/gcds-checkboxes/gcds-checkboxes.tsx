@@ -143,7 +143,7 @@ export class GcdsCheckboxes {
     if (!Array.isArray(newValue)) {
       try {
         this.value = JSON.parse(newValue);
-      } catch (e) {
+      } catch {
         logError('gcds-checkboxes', ['Invalid array for value']);
         this.value = [];
       }
@@ -446,7 +446,7 @@ export class GcdsCheckboxes {
           this.optionsArr = null;
           invalidOptions = true;
         }
-      } catch (e) {
+      } catch {
         logError('gcds-checkboxes', ['Invalid JSON string for options']);
         this.options = null;
         invalidOptions = true;
