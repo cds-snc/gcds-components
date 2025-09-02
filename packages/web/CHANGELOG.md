@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.42.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.0...gcds-components-v0.42.1) (2025-09-02)
+
+
+### :pencil: Documentation
+
+* add components diagram ([#940](https://github.com/cds-snc/gcds-components/issues/940)) ([abe9cc5](https://github.com/cds-snc/gcds-components/commit/abe9cc56941c52827b33eadae792f76714827a8e))
+
 ## [0.42.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.41.0...gcds-components-v0.42.0) (2025-08-27)
 
 ### :bug: :wrench: Bug Fixes
