@@ -1,41 +1,46 @@
 # Changelog
 
-## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.40.0...gcds-components-v0.41.0) (2025-08-13)
-
-
-### :rocket: New Features
-
-* **gcds-textarea:** Add native HTML attributes and validation ([#917](https://github.com/cds-snc/gcds-components/issues/917)) ([9a36e40](https://github.com/cds-snc/gcds-components/commit/9a36e402d2f8383bd1b1f1fb0a329f8f53bc5a33))
-
-
-### :pencil: Documentation
-
-* Add generated guidance for slots and events ([#910](https://github.com/cds-snc/gcds-components/issues/910)) ([3ec7b96](https://github.com/cds-snc/gcds-components/commit/3ec7b96de2f7b55b03f6d067566d936048332c83))
-
-
-### :art: Styles
-
-* **gcds-footer:** update footer media query to match global media queries ([#923](https://github.com/cds-snc/gcds-components/issues/923)) ([1471b27](https://github.com/cds-snc/gcds-components/commit/1471b27ae7e828a727d1305db25c9d7cbd62cfc3))
-
-## [0.40.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.39.0...gcds-components-v0.40.0) (2025-07-28)
-
-
-### :rocket: New Features
-
-* **gcds-input:** add type "tel" to input ([#912](https://github.com/cds-snc/gcds-components/issues/912)) ([00d3efd](https://github.com/cds-snc/gcds-components/commit/00d3efd252172e3280a788e43bc6cbab5ed84aef))
-
+## [0.42.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.41.0...gcds-components-v0.42.0) (2025-08-27)
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-details:** Ability to search into details panel ([#913](https://github.com/cds-snc/gcds-components/issues/913)) ([6e8ffa2](https://github.com/cds-snc/gcds-components/commit/6e8ffa2e2d51f27cab4ac79cf039030ccd45156a))
-* Set form value on manual value update ([#914](https://github.com/cds-snc/gcds-components/issues/914)) ([411553b](https://github.com/cds-snc/gcds-components/commit/411553b8d16201baf789b58c6a05afbbeaeb89a9))
+- **gcds-nav-group:** Focusout logic to close open dropdowns ([#930](https://github.com/cds-snc/gcds-components/issues/930)) ([2b5f829](https://github.com/cds-snc/gcds-components/commit/2b5f8292322066a9ca4bce0095d1c37767b8b617))
 
-## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.38.0...gcds-components-v0.39.0) (2025-07-16)
+### :pencil: Documentation
 
+- update README installation instructions to match docs site ([#934](https://github.com/cds-snc/gcds-components/issues/934)) ([8431c4a](https://github.com/cds-snc/gcds-components/commit/8431c4a9bbdddcfcacb7d995eabb3db273abc032))
+- update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
+
+## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.40.0...gcds-components-v0.41.0) (2025-08-13)
 
 ### :rocket: New Features
 
-* **gcds-input:** Add native HTML attributes and validation ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
+- **gcds-textarea:** Add native HTML attributes and validation ([#917](https://github.com/cds-snc/gcds-components/issues/917)) ([9a36e40](https://github.com/cds-snc/gcds-components/commit/9a36e402d2f8383bd1b1f1fb0a329f8f53bc5a33))
+
+### :pencil: Documentation
+
+- Add generated guidance for slots and events ([#910](https://github.com/cds-snc/gcds-components/issues/910)) ([3ec7b96](https://github.com/cds-snc/gcds-components/commit/3ec7b96de2f7b55b03f6d067566d936048332c83))
+
+### :art: Styles
+
+- **gcds-footer:** update footer media query to match global media queries ([#923](https://github.com/cds-snc/gcds-components/issues/923)) ([1471b27](https://github.com/cds-snc/gcds-components/commit/1471b27ae7e828a727d1305db25c9d7cbd62cfc3))
+
+## [0.40.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.39.0...gcds-components-v0.40.0) (2025-07-28)
+
+### :rocket: New Features
+
+- **gcds-input:** add type "tel" to input ([#912](https://github.com/cds-snc/gcds-components/issues/912)) ([00d3efd](https://github.com/cds-snc/gcds-components/commit/00d3efd252172e3280a788e43bc6cbab5ed84aef))
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-details:** Ability to search into details panel ([#913](https://github.com/cds-snc/gcds-components/issues/913)) ([6e8ffa2](https://github.com/cds-snc/gcds-components/commit/6e8ffa2e2d51f27cab4ac79cf039030ccd45156a))
+- Set form value on manual value update ([#914](https://github.com/cds-snc/gcds-components/issues/914)) ([411553b](https://github.com/cds-snc/gcds-components/commit/411553b8d16201baf789b58c6a05afbbeaeb89a9))
+
+## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.38.0...gcds-components-v0.39.0) (2025-07-16)
+
+### :rocket: New Features
+
+- **gcds-input:** Add native HTML attributes and validation ([#893](https://github.com/cds-snc/gcds-components/issues/893)) ([ffa332e](https://github.com/cds-snc/gcds-components/commit/ffa332e3e166244f62f86feea58bdbeeefd1431d))
 
 ## [0.38.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.37.0...gcds-components-v0.38.0) (2025-07-09)
 

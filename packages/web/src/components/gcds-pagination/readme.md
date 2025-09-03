@@ -14,7 +14,7 @@ Pagination is a division of content into multiple linked pages.
 | Property             | Attribute        | Description                                                             | Type                 | Default     |
 | -------------------- | ---------------- | ----------------------------------------------------------------------- | -------------------- | ----------- |
 | `currentPage`        | `current-page`   | List display - Current page number                                      | `number`             | `undefined` |
-| `display`            | `display`        | Navigation element label                                                | `"list" \| "simple"` | `'list'`    |
+| `display`            | `display`        | Determines the pagination display style.                                | `"list" \| "simple"` | `'list'`    |
 | `label` _(required)_ | `label`          | Navigation element label                                                | `string`             | `undefined` |
 | `nextHref`           | `next-href`      | Simple display - href for next link                                     | `string`             | `undefined` |
 | `nextLabel`          | `next-label`     | Simple display - lable for next link                                    | `string`             | `undefined` |

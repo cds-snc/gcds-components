@@ -33,7 +33,7 @@ export class GcdsPagination {
    */
 
   /**
-   * Navigation element label
+   * Determines the pagination display style.
    */
   @Prop() display: 'list' | 'simple' = 'list';
 

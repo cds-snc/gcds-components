@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       - name: Setup Node
-        uses: actions/setup-node@5e2628c959b9ade56971c0afcebbe5332d44b398
+        uses: actions/setup-node@d7a11313b581b306c961b506cfc8971208bb03f6
         with:
           node-version: 18
 
@@ -92,7 +92,7 @@ jobs:
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       - name: Setup Node
-        uses: actions/setup-node@5e2628c959b9ade56971c0afcebbe5332d44b398
+        uses: actions/setup-node@d7a11313b581b306c961b506cfc8971208bb03f6
         with:
           node-version: 18
 
