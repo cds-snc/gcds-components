@@ -403,4 +403,40 @@ describe('gcds-textarea', () => {
       </gcds-textarea>
     `);
   });
+
+  it('should update shadowElement value when it exists', async () => {
+    const page = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="test-id" name="test-name"></gcds-textarea>',
+    });
+
+    const component = page.rootInstance;
+    // Mock the shadowElement
+    component.shadowElement = { value: '' };
+    component.internals = { setFormValue: jest.fn() };
+
+    // Call the watchValue method
+    component.watchValue('new value');
+
+    expect(component.shadowElement.value).toBe('new value');
+    expect(component.internals.setFormValue).toHaveBeenCalledWith('new value');
+  });
+
+  it('should handle null shadowElement gracefully', async () => {
+    const page = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="test-id" name="test-name"></gcds-textarea>',
+    });
+
+    const component = page.rootInstance;
+    // Explicitly set shadowElement to null
+    component.shadowElement = null;
+    component.internals = { setFormValue: jest.fn() };
+
+    // Call the watchValue method - should not throw
+    component.watchValue('new value');
+
+    // Only check that form value is set
+    expect(component.internals.setFormValue).toHaveBeenCalledWith('new value');
+  });
 });
