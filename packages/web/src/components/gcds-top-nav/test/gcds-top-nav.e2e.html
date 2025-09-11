@@ -28,7 +28,14 @@
 
   <body>
     <gcds-top-nav label="Top nav label" alignment="right">
-      <gcds-nav-link href="#">Nav link</gcds-nav-link>
+      <gcds-nav-link href="#" slot="home">GC Design System</gcds-nav-link>
+      <gcds-nav-link href="#">Components</gcds-nav-link>
+      <gcds-nav-link href="#">Get started</gcds-nav-link>
+      <gcds-nav-group menu-label="Sub-menu" open-trigger="Contact">
+        <gcds-nav-link href="#">Contact us</gcds-nav-link>
+        <gcds-nav-link href="#">Get involved</gcds-nav-link>
+        <gcds-nav-link href="#">Find a demo</gcds-nav-link>
+      </gcds-nav-group>
     </gcds-top-nav>
   </body>
 </html>
