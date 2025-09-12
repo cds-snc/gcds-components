@@ -11,6 +11,7 @@ fs.copyFileSync('./dist/gcds/gcds.css', '../react-ssr/gcds.css');
 // COMPONENTS.JSON PATH SANITIZATION
 // ============================================================================
 // Removes personal directory paths from components.json for portability
+// Also removes the timestamp to avoid unnecessary changes in git
 
 const COMPONENTS_FILE = '../specs/components.json';
 const WORKSPACE_ROOT = path.resolve(__dirname, '../..');
@@ -30,10 +31,10 @@ function sanitizeComponentPaths(components) {
     PATH_FIELDS.forEach(field => {
       component[field] = sanitizePath(component[field]);
     });
-    
+
     // Sanitize nested paths in complexType.references
     component.props?.forEach(prop => {
-      prop.complexType?.references && 
+      prop.complexType?.references &&
         Object.values(prop.complexType.references).forEach(ref => {
           ref.path = sanitizePath(ref.path);
         });
@@ -44,7 +45,7 @@ function sanitizeComponentPaths(components) {
 // Main sanitization function
 function sanitizeComponentsFile() {
   const componentsPath = path.join(__dirname, COMPONENTS_FILE);
-  
+
   if (!fs.existsSync(componentsPath)) {
     console.log('⚠️  components.json not found, skipping sanitization');
     return;
@@ -52,15 +53,17 @@ function sanitizeComponentsFile() {
 
   try {
     const components = JSON.parse(fs.readFileSync(componentsPath, 'utf8'));
-    
+
     if (!components.components?.length) {
       throw new Error('Invalid components.json structure');
     }
-    
+
+    delete components.timestamp;
+
     sanitizeComponentPaths(components.components);
     fs.writeFileSync(componentsPath, JSON.stringify(components, null, 2));
-    
-    console.log('✅ Paths sanitized in components.json');
+
+    console.log('✅ Paths sanitized and timestamp removed in components.json');
   } catch (error) {
     throw new Error(`Sanitization failed: ${error.message}`);
   }
