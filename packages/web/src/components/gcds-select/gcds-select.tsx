@@ -448,7 +448,7 @@ export class GcdsSelect {
 
                 return (
                   <option value={opt.getAttribute('value')} {...selected}>
-                    {opt.innerHTML}
+                    {opt.textContent}
                   </option>
                 );
               } else if (opt.nodeName === 'OPTGROUP') {
@@ -459,7 +459,7 @@ export class GcdsSelect {
 
                   return (
                     <option value={sub.getAttribute('value')} {...selected}>
-                      {sub.innerHTML}
+                      {sub.textContent}
                     </option>
                   );
                 });
