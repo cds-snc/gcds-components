@@ -216,4 +216,34 @@ describe('gcds-select', () => {
       </gcds-select>
     `);
   });
+
+  /**
+   * Select with special characters
+   */
+  it('renders special character', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `
+        <gcds-select label="select" select-id="select" name="select">
+        <option value="1">This is option 1 & option 1.1</option>
+        <option value="2">& also option 2</option>
+        </gcds-select>
+      `,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" name="select" label="select">
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select" part="select" aria-invalid="false">
+              <option value="1">This is option 1 & option 1.1</option>
+              <option value="2">& also option 2</option>
+            </select>
+          </div>
+        </mock:shadow-root>
+        <option value="1">This is option 1 & option 1.1</option>
+        <option value="2">& also option 2</option>
+      </gcds-select>
+    `);
+  });
 });
