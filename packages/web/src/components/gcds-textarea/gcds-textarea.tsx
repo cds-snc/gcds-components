@@ -149,10 +149,14 @@ export class GcdsTextarea {
    */
   @Watch('value')
   watchValue(val) {
-    this.shadowElement.value = val;
-    this.internals.setFormValue(val ? val : null);
-  }
+    // Update DOM textarea if it exists
+    if (this.shadowElement) {
+      this.shadowElement.value = val || '';
+    }
 
+    // Update form value for form association
+    this.internals.setFormValue(val || null);
+  }
   /**
    * Array of validators
    */
@@ -320,10 +324,17 @@ export class GcdsTextarea {
    * Form internal functions
    */
   formResetCallback() {
-    if (this.value != this.initialValue) {
-      this.internals.setFormValue(this.initialValue);
+    if (this.value !== this.initialValue) {
+      // Update all relevant values to initialValue
       this.value = this.initialValue;
-      this.shadowElement.value = this.initialValue;
+
+      // Update DOM element if available
+      if (this.shadowElement) {
+        this.shadowElement.value = this.initialValue || '';
+      }
+
+      // Update form value
+      this.internals.setFormValue(this.initialValue || null);
     }
   }
 
