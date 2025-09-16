@@ -532,4 +532,46 @@ describe('gcds-checkbox', () => {
       </gcds-checkboxes>
     `);
   });
+  it('emits events with value in detail property', async () => {
+    // Create the component
+    const page = await newSpecPage({
+      components: [GcdsCheckboxes],
+      html: `
+      <gcds-checkboxes
+        legend="Test Events"
+        name="test-events"
+        options='[{"label": "Option 1", "id": "option1", "value": "option1"}]'
+      ></gcds-checkboxes>
+    `,
+    });
+
+    // Set up event listeners with spies
+    const inputSpy = jest.fn();
+    const changeSpy = jest.fn();
+    page.root.addEventListener('gcdsInput', inputSpy);
+    page.root.addEventListener('gcdsChange', changeSpy);
+
+    // Simulate checking the checkbox directly via component's handleInput method
+    const component = page.rootInstance;
+    const mockEvent = {
+      target: { checked: true, value: 'option1' },
+      type: 'input',
+    };
+
+    // Trigger input event
+    component.handleInput(mockEvent, component.gcdsInput);
+    await page.waitForChanges();
+
+    // Trigger change event
+    mockEvent.type = 'change';
+    component.handleInput(mockEvent, component.gcdsChange);
+    await page.waitForChanges();
+
+    // Verify both events emitted the correct value in their detail
+    expect(inputSpy).toHaveBeenCalled();
+    expect(inputSpy.mock.calls[0][0].detail).toEqual(['option1']);
+
+    expect(changeSpy).toHaveBeenCalled();
+    expect(changeSpy.mock.calls[0][0].detail).toEqual(['option1']);
+  });
 });
