@@ -119,7 +119,7 @@ export async function handleKeyDownNav(event, nav, queue) {
  * @param {Number} index
  * @param {any[]} queue
  */
-async function focusNavItem(index, queue) {
+export async function focusNavItem(index, queue) {
   if (queue[index].nodeName == 'GCDS-NAV-LINK') {
     (queue[index] as HTMLGcdsNavLinkElement).focusLink();
   } else if (queue[index].nodeName == 'GCDS-NAV-GROUP') {
@@ -132,7 +132,7 @@ async function focusNavItem(index, queue) {
  * @param {Element} group
  * @param {Element} nav
  */
-async function toggleNavGroup(group, nav) {
+export async function toggleNavGroup(group, nav) {
   const navGroup = group as HTMLGcdsNavGroupElement;
 
   // Close nav group
