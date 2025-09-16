@@ -1,0 +1,3396 @@
+{
+  "timestamp": "2025-08-27T18:05:31.703Z",
+  "figmaFile": "mh2maMG2NBtk41k1O1UGHV",
+  "componentSets": [
+    {
+      "rawName": "Slide-up menu",
+      "figmaName": "Slide-up menu",
+      "norm": "slideupmenu",
+      "nodeId": "27170:157701",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Title#10350:17",
+          "type": "string",
+          "defaults": [
+            "Popup header"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Title#10350:17",
+              "type": "TEXT",
+              "defaultValue": "Popup header"
+            }
+          ]
+        },
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "Title & close"
+          ],
+          "values": [
+            "Title & close",
+            "2"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "Title & close",
+              "variantOptions": [
+                "Title & close",
+                "2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Tab grouping (desktop)",
+      "figmaName": "Tab grouping (desktop)",
+      "norm": "tabgroupingdesktop",
+      "nodeId": "3910:10343",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "# of links",
+          "type": "variant",
+          "defaults": [
+            "1"
+          ],
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "raw": [
+            {
+              "propName": "# of links",
+              "type": "VARIANT",
+              "defaultValue": "1",
+              "variantOptions": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Wordmark",
+      "figmaName": "Wordmark",
+      "norm": "wordmark",
+      "nodeId": "2319:8210",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Size",
+          "type": "variant",
+          "defaults": [
+            "Large"
+          ],
+          "values": [
+            "Small",
+            "Large"
+          ],
+          "raw": [
+            {
+              "propName": "Size",
+              "type": "VARIANT",
+              "defaultValue": "Large",
+              "variantOptions": [
+                "Small",
+                "Large"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Desktop sort filter container",
+      "figmaName": "Desktop sort filter container",
+      "norm": "desktopsortfiltercontainer",
+      "nodeId": "27170:158169",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Filters",
+          "type": "variant",
+          "defaults": [
+            "0"
+          ],
+          "values": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "raw": [
+            {
+              "propName": "Filters",
+              "type": "VARIANT",
+              "defaultValue": "0",
+              "variantOptions": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Screenreader-only",
+      "figmaName": "Screenreader-only",
+      "norm": "screenreaderonly",
+      "nodeId": "21772:150",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Text#21772:1",
+          "type": "string",
+          "defaults": [
+            "Text"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Text#21772:1",
+              "type": "TEXT",
+              "defaultValue": "Text"
+            }
+          ]
+        },
+        {
+          "name": "Point",
+          "type": "variant",
+          "defaults": [
+            "None"
+          ],
+          "values": [
+            "Left",
+            "Right",
+            "Up",
+            "Down",
+            "None"
+          ],
+          "raw": [
+            {
+              "propName": "Point",
+              "type": "VARIANT",
+              "defaultValue": "None",
+              "variantOptions": [
+                "Left",
+                "Right",
+                "Up",
+                "Down",
+                "None"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Table",
+      "figmaName": "Table",
+      "norm": "table",
+      "nodeId": "12121:12381",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Columns",
+          "type": "variant",
+          "defaults": [
+            "2"
+          ],
+          "values": [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "raw": [
+            {
+              "propName": "Columns",
+              "type": "VARIANT",
+              "defaultValue": "2",
+              "variantOptions": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rows",
+          "type": "variant",
+          "defaults": [
+            "1"
+          ],
+          "values": [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "1"
+          ],
+          "raw": [
+            {
+              "propName": "Rows",
+              "type": "VARIANT",
+              "defaultValue": "1",
+              "variantOptions": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "1"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Emphasis",
+          "type": "variant",
+          "defaults": [
+            "Rows"
+          ],
+          "values": [
+            "Rows",
+            "Columns"
+          ],
+          "raw": [
+            {
+              "propName": "Emphasis",
+              "type": "VARIANT",
+              "defaultValue": "Rows",
+              "variantOptions": [
+                "Rows",
+                "Columns"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Has stripes",
+          "type": "variant",
+          "defaults": [
+            "False"
+          ],
+          "values": [
+            "False",
+            "True"
+          ],
+          "raw": [
+            {
+              "propName": "Has stripes",
+              "type": "VARIANT",
+              "defaultValue": "False",
+              "variantOptions": [
+                "False",
+                "True"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Align data",
+          "type": "variant",
+          "defaults": [
+            "Left"
+          ],
+          "values": [
+            "Left",
+            "Right"
+          ],
+          "raw": [
+            {
+              "propName": "Align data",
+              "type": "VARIANT",
+              "defaultValue": "Left",
+              "variantOptions": [
+                "Left",
+                "Right"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Row",
+      "figmaName": "Row",
+      "norm": "row",
+      "nodeId": "10960:9116",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Has select#10960:0",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Has select#10960:0",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "Data row"
+          ],
+          "values": [
+            "Data row",
+            "Header row"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "Data row",
+              "variantOptions": [
+                "Data row",
+                "Header row"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Columns",
+          "type": "variant",
+          "defaults": [
+            "1"
+          ],
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "raw": [
+            {
+              "propName": "Columns",
+              "type": "VARIANT",
+              "defaultValue": "1",
+              "variantOptions": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Rest"
+          ],
+          "values": [
+            "Rest"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Rest",
+              "variantOptions": [
+                "Rest"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Size",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Emphasis",
+          "type": "variant",
+          "defaults": [
+            "Row"
+          ],
+          "values": [
+            "Row",
+            "Column",
+            "None"
+          ],
+          "raw": [
+            {
+              "propName": "Emphasis",
+              "type": "VARIANT",
+              "defaultValue": "Row",
+              "variantOptions": [
+                "Row",
+                "Column",
+                "None"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Is striped row",
+          "type": "variant",
+          "defaults": [
+            "False"
+          ],
+          "values": [
+            "False",
+            "True"
+          ],
+          "raw": [
+            {
+              "propName": "Is striped row",
+              "type": "VARIANT",
+              "defaultValue": "False",
+              "variantOptions": [
+                "False",
+                "True"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Align values",
+          "type": "variant",
+          "defaults": [
+            "Left"
+          ],
+          "values": [
+            "Left",
+            "Right"
+          ],
+          "raw": [
+            {
+              "propName": "Align values",
+              "type": "VARIANT",
+              "defaultValue": "Left",
+              "variantOptions": [
+                "Left",
+                "Right"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Text area",
+      "figmaName": "Text area",
+      "norm": "textarea",
+      "nodeId": "21038:9606",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Filters",
+      "figmaName": "Filters",
+      "norm": "filters",
+      "nodeId": "27170:157613",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Property 1",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Variant2"
+          ],
+          "raw": [
+            {
+              "propName": "Property 1",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Variant2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Filter pill",
+      "figmaName": "Filter pill",
+      "norm": "filterpill",
+      "nodeId": "27170:157607",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Text#10309:14",
+          "type": "string",
+          "defaults": [
+            "Filter pill"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Text#10309:14",
+              "type": "TEXT",
+              "defaultValue": "Filter pill"
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Selected"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Selected"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Desktop filter",
+      "figmaName": "Desktop filter",
+      "norm": "desktopfilter",
+      "nodeId": "27170:158030",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Icon#10530:1",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Icon#10530:1",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Text#10563:0",
+          "type": "string",
+          "defaults": [
+            "Selected"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Text#10563:0",
+              "type": "TEXT",
+              "defaultValue": "Selected"
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Selected"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Selected"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Text",
+      "figmaName": "Text",
+      "norm": "text",
+      "nodeId": "10053:504",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Text#9935:1",
+          "type": "string",
+          "defaults": [
+            "This is the text component. It has properties to adjust the size, style, and weight of the text."
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Text#9935:1",
+              "type": "TEXT",
+              "defaultValue": "This is the text component. It has properties to adjust the size, style, and weight of the text."
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "type": "variant",
+          "defaults": [
+            "Body"
+          ],
+          "values": [
+            "Body",
+            "Small"
+          ],
+          "raw": [
+            {
+              "propName": "Size",
+              "type": "VARIANT",
+              "defaultValue": "Body",
+              "variantOptions": [
+                "Body",
+                "Small"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Style",
+          "type": "variant",
+          "defaults": [
+            "Normal"
+          ],
+          "values": [
+            "Italic",
+            "Normal"
+          ],
+          "raw": [
+            {
+              "propName": "Style",
+              "type": "VARIANT",
+              "defaultValue": "Normal",
+              "variantOptions": [
+                "Italic",
+                "Normal"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Weight",
+          "type": "variant",
+          "defaults": [
+            "Regular"
+          ],
+          "values": [
+            "Bold",
+            "Regular"
+          ],
+          "raw": [
+            {
+              "propName": "Weight",
+              "type": "VARIANT",
+              "defaultValue": "Regular",
+              "variantOptions": [
+                "Bold",
+                "Regular"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Default margins?",
+          "type": "variant",
+          "defaults": [
+            "true"
+          ],
+          "values": [
+            "false",
+            "true"
+          ],
+          "raw": [
+            {
+              "propName": "Default margins?",
+              "type": "VARIANT",
+              "defaultValue": "true",
+              "variantOptions": [
+                "false",
+                "true"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Header cell",
+      "figmaName": "Header cell",
+      "norm": "headercell",
+      "nodeId": "10474:4620",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Sort icon#10474:2",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Sort icon#10474:2",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Column name#10474:3",
+          "type": "string",
+          "defaults": [
+            "Col Header"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Column name#10474:3",
+              "type": "TEXT",
+              "defaultValue": "Col Header"
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Hover"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Hover"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Size",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Border",
+          "type": "variant",
+          "defaults": [
+            "Bottom"
+          ],
+          "values": [
+            "Bottom",
+            "Right",
+            "Bottom & right",
+            "None"
+          ],
+          "raw": [
+            {
+              "propName": "Border",
+              "type": "VARIANT",
+              "defaultValue": "Bottom",
+              "variantOptions": [
+                "Bottom",
+                "Right",
+                "Bottom & right",
+                "None"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Filter panel",
+      "figmaName": "Filter panel",
+      "norm": "filterpanel",
+      "nodeId": "27170:158116",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "All filters"
+          ],
+          "values": [
+            "All filters",
+            "Single filter"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "All filters",
+              "variantOptions": [
+                "All filters",
+                "Single filter"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Container",
+      "figmaName": "Container",
+      "norm": "container",
+      "nodeId": "7904:1214",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Size",
+          "type": "variant",
+          "defaults": [
+            "Full"
+          ],
+          "values": [
+            "Full",
+            "XL",
+            "LG",
+            "MD",
+            "SM",
+            "XS"
+          ],
+          "raw": [
+            {
+              "propName": "Size",
+              "type": "VARIANT",
+              "defaultValue": "Full",
+              "variantOptions": [
+                "Full",
+                "XL",
+                "LG",
+                "MD",
+                "SM",
+                "XS"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Padding",
+          "type": "variant",
+          "defaults": [
+            "0"
+          ],
+          "values": [
+            "0",
+            "50",
+            "100",
+            "150",
+            "200",
+            "250",
+            "300",
+            "400",
+            "450",
+            "500",
+            "550",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000",
+            "25",
+            "75",
+            "125",
+            "175",
+            "225",
+            "350",
+            "650",
+            "750",
+            "850",
+            "950",
+            "1050",
+            "1100",
+            "1150",
+            "1200",
+            "1250"
+          ],
+          "raw": [
+            {
+              "propName": "Padding",
+              "type": "VARIANT",
+              "defaultValue": "0",
+              "variantOptions": [
+                "0",
+                "50",
+                "100",
+                "150",
+                "200",
+                "250",
+                "300",
+                "400",
+                "450",
+                "500",
+                "550",
+                "600",
+                "700",
+                "800",
+                "900",
+                "1000",
+                "25",
+                "75",
+                "125",
+                "175",
+                "225",
+                "350",
+                "650",
+                "750",
+                "850",
+                "950",
+                "1050",
+                "1100",
+                "1150",
+                "1200",
+                "1250"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Show border",
+          "type": "variant",
+          "defaults": [
+            "True"
+          ],
+          "values": [
+            "True",
+            "False"
+          ],
+          "raw": [
+            {
+              "propName": "Show border",
+              "type": "VARIANT",
+              "defaultValue": "True",
+              "variantOptions": [
+                "True",
+                "False"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Search",
+      "figmaName": "Search",
+      "norm": "search",
+      "nodeId": "7371:223",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Active + Focus (button)",
+            "Focus (button)",
+            "Focus (input)",
+            "Default",
+            "Hover (button"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Active + Focus (button)",
+                "Focus (button)",
+                "Focus (input)",
+                "Default",
+                "Hover (button"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Mobile"
+          ],
+          "values": [
+            "Mobile",
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Mobile",
+              "variantOptions": [
+                "Mobile",
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Date Modified",
+      "figmaName": "Date Modified",
+      "norm": "datemodified",
+      "nodeId": "7063:18044",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Date#7063:0",
+          "type": "string",
+          "defaults": [
+            "2023-01-30"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Date#7063:0",
+              "type": "TEXT",
+              "defaultValue": "2023-01-30"
+            }
+          ]
+        },
+        {
+          "name": "Version number#7171:0",
+          "type": "string",
+          "defaults": [
+            "1.0.0"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Version number#7171:0",
+              "type": "TEXT",
+              "defaultValue": "1.0.0"
+            }
+          ]
+        },
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "Date modified"
+          ],
+          "values": [
+            "Date modified",
+            "Version"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "Date modified",
+              "variantOptions": [
+                "Date modified",
+                "Version"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Mobile",
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Mobile",
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Signature",
+      "figmaName": "Signature",
+      "norm": "signature",
+      "nodeId": "2319:8211",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Lang",
+          "type": "variant",
+          "defaults": [
+            "EN"
+          ],
+          "values": [
+            "EN",
+            "FR"
+          ],
+          "raw": [
+            {
+              "propName": "Lang",
+              "type": "VARIANT",
+              "defaultValue": "EN",
+              "variantOptions": [
+                "EN",
+                "FR"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Large"
+          ],
+          "values": [
+            "Small",
+            "Large"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Large",
+              "variantOptions": [
+                "Small",
+                "Large"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Input",
+      "figmaName": "Input",
+      "norm": "input",
+      "nodeId": "20821:2040",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Row select slot",
+      "figmaName": "Row select slot",
+      "norm": "rowselectslot",
+      "nodeId": "10210:1165",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "Row"
+          ],
+          "values": [
+            "Row",
+            "Type3"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "Row",
+              "variantOptions": [
+                "Row",
+                "Type3"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Size",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Row title container",
+      "figmaName": "Row title container",
+      "norm": "rowtitlecontainer",
+      "nodeId": "27170:158565",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Title#11107:0",
+          "type": "string",
+          "defaults": [
+            "Key attribute"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Title#11107:0",
+              "type": "TEXT",
+              "defaultValue": "Key attribute"
+            }
+          ]
+        },
+        {
+          "name": "Show select box#11107:1",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Show select box#11107:1",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Has subhead#11107:2",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Has subhead#11107:2",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Secondary text#11107:5",
+          "type": "string",
+          "defaults": [
+            "Secondary text"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Secondary text#11107:5",
+              "type": "TEXT",
+              "defaultValue": "Secondary text"
+            }
+          ]
+        },
+        {
+          "name": "Secondary",
+          "type": "variant",
+          "defaults": [
+            "Below"
+          ],
+          "values": [
+            "Below",
+            "Above"
+          ],
+          "raw": [
+            {
+              "propName": "Secondary",
+              "type": "VARIANT",
+              "defaultValue": "Below",
+              "variantOptions": [
+                "Below",
+                "Above"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Radios",
+      "figmaName": "Radios",
+      "norm": "radios",
+      "nodeId": "818:3759",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Error?#21536:0",
+          "type": "boolean",
+          "defaults": [
+            "false"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Error?#21536:0",
+              "type": "BOOLEAN",
+              "defaultValue": false
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Mobile",
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Mobile",
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Pagination",
+      "figmaName": "Pagination",
+      "norm": "pagination",
+      "nodeId": "1431:5269",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Breadcrumbs ",
+      "figmaName": "Breadcrumbs ",
+      "norm": "breadcrumbs",
+      "nodeId": "16263:1505",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Trail length",
+          "type": "variant",
+          "defaults": [
+            "1"
+          ],
+          "values": [
+            "1",
+            "2",
+            "4",
+            "5",
+            "6",
+            "3"
+          ],
+          "raw": [
+            {
+              "propName": "Trail length",
+              "type": "VARIANT",
+              "defaultValue": "1",
+              "variantOptions": [
+                "1",
+                "2",
+                "4",
+                "5",
+                "6",
+                "3"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Root",
+          "type": "variant",
+          "defaults": [
+            "Canada.ca"
+          ],
+          "values": [
+            "Canada.ca",
+            "Custom"
+          ],
+          "raw": [
+            {
+              "propName": "Root",
+              "type": "VARIANT",
+              "defaultValue": "Canada.ca",
+              "variantOptions": [
+                "Canada.ca",
+                "Custom"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Mobile",
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Mobile",
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Card",
+      "figmaName": "Card",
+      "norm": "card",
+      "nodeId": "6322:16439",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Image?#6322:0",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Image?#6322:0",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Description?#6323:0",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Description?#6323:0",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Description#6323:3",
+          "type": "string",
+          "defaults": [
+            "Description or supporting text relating to the headline. "
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Description#6323:3",
+              "type": "TEXT",
+              "defaultValue": "Description or supporting text relating to the headline. "
+            }
+          ]
+        },
+        {
+          "name": "Badge?#23967:0",
+          "type": "boolean",
+          "defaults": [
+            "false"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Badge?#23967:0",
+              "type": "BOOLEAN",
+              "defaultValue": false
+            }
+          ]
+        },
+        {
+          "name": "Title#24363:20",
+          "type": "string",
+          "defaults": [
+            "Headline"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Title#24363:20",
+              "type": "TEXT",
+              "defaultValue": "Headline"
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Rest"
+          ],
+          "values": [
+            "Hover",
+            "Focus",
+            "Rest"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Rest",
+              "variantOptions": [
+                "Hover",
+                "Focus",
+                "Rest"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop (4 columns)"
+          ],
+          "values": [
+            "Desktop (4 columns)",
+            "Desktop (6 columns)",
+            "Mobile (1 column)"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop (4 columns)",
+              "variantOptions": [
+                "Desktop (4 columns)",
+                "Desktop (6 columns)",
+                "Mobile (1 column)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Date input",
+      "figmaName": "Date input",
+      "norm": "dateinput",
+      "nodeId": "14384:4733",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Error?#29557:0",
+          "type": "boolean",
+          "defaults": [
+            "false"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Error?#29557:0",
+              "type": "BOOLEAN",
+              "defaultValue": false
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Locale",
+          "type": "variant",
+          "defaults": [
+            "EN"
+          ],
+          "values": [
+            "EN",
+            "FR"
+          ],
+          "raw": [
+            {
+              "propName": "Locale",
+              "type": "VARIANT",
+              "defaultValue": "EN",
+              "variantOptions": [
+                "EN",
+                "FR"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "M/D/Y"
+          ],
+          "values": [
+            "M/D/Y",
+            "M/Y",
+            "D/M/Y"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "M/D/Y",
+              "variantOptions": [
+                "M/D/Y",
+                "M/Y",
+                "D/M/Y"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Details",
+      "figmaName": "Details",
+      "norm": "details",
+      "nodeId": "8000:362812",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Summary Content#2754:0",
+          "type": "string",
+          "defaults": [
+            "Additional information"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Summary Content#2754:0",
+              "type": "TEXT",
+              "defaultValue": "Additional information"
+            }
+          ]
+        },
+        {
+          "name": "Details Content#25812:0",
+          "type": "string",
+          "defaults": [
+            "Learn more about this topic"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Details Content#25812:0",
+              "type": "TEXT",
+              "defaultValue": "Learn more about this topic"
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Focus",
+            "Hover"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Focus",
+                "Hover"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Open?",
+          "type": "variant",
+          "defaults": [
+            "false"
+          ],
+          "values": [
+            "false",
+            "true"
+          ],
+          "raw": [
+            {
+              "propName": "Open?",
+              "type": "VARIANT",
+              "defaultValue": "false",
+              "variantOptions": [
+                "false",
+                "true"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Topic menu",
+      "figmaName": "Topic menu",
+      "norm": "topicmenu",
+      "nodeId": "8168:18817",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Language",
+          "type": "variant",
+          "defaults": [
+            "EN"
+          ],
+          "values": [
+            "EN",
+            "FR"
+          ],
+          "raw": [
+            {
+              "propName": "Language",
+              "type": "VARIANT",
+              "defaultValue": "EN",
+              "variantOptions": [
+                "EN",
+                "FR"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Mobile",
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Mobile",
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Error Summary",
+      "figmaName": "Error Summary",
+      "norm": "errorsummary",
+      "nodeId": "953:2237",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Heading#2402:4",
+          "type": "string",
+          "defaults": [
+            "There was a problem"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Heading#2402:4",
+              "type": "TEXT",
+              "defaultValue": "There was a problem"
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Error Message",
+      "figmaName": "Error Message",
+      "norm": "errormessage",
+      "nodeId": "479:317",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Error message#2687:21",
+          "type": "string",
+          "defaults": [
+            "Error message."
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Error message#2687:21",
+              "type": "TEXT",
+              "defaultValue": "Error message."
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Sort order",
+      "figmaName": "Sort order",
+      "norm": "sortorder",
+      "nodeId": "27170:157479",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "Asc-Des"
+          ],
+          "values": [
+            "Asc-Des",
+            "Alphabetical",
+            "Greatest-least",
+            "High-low"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "Asc-Des",
+              "variantOptions": [
+                "Asc-Des",
+                "Alphabetical",
+                "Greatest-least",
+                "High-low"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Stepper",
+      "figmaName": "Stepper",
+      "norm": "stepper",
+      "nodeId": "24469:2476",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Total steps#24469:0",
+          "type": "string",
+          "defaults": [
+            "4"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Total steps#24469:0",
+              "type": "TEXT",
+              "defaultValue": "4"
+            }
+          ]
+        },
+        {
+          "name": "Current step#24469:1",
+          "type": "string",
+          "defaults": [
+            "1"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Current step#24469:1",
+              "type": "TEXT",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "name": "Step title#27027:0",
+          "type": "string",
+          "defaults": [
+            "Step title"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Step title#27027:0",
+              "type": "TEXT",
+              "defaultValue": "Step title"
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Heading level",
+          "type": "variant",
+          "defaults": [
+            "H2"
+          ],
+          "values": [
+            "H2",
+            "H3",
+            "H1"
+          ],
+          "raw": [
+            {
+              "propName": "Heading level",
+              "type": "VARIANT",
+              "defaultValue": "H2",
+              "variantOptions": [
+                "H2",
+                "H3",
+                "H1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Language toggle",
+      "figmaName": "Language toggle",
+      "norm": "languagetoggle",
+      "nodeId": "1792:4992",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Hover",
+            "Focus",
+            "Visited"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Hover",
+                "Focus",
+                "Visited"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Mobile"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Mobile",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Footer",
+      "figmaName": "Footer",
+      "norm": "footer",
+      "nodeId": "16853:177802",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Base Band#16853:0",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Base Band#16853:0",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Main Band#16853:1",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Main Band#16853:1",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Contextual Navigation Band#16853:2",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Contextual Navigation Band#16853:2",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Mobile"
+          ],
+          "values": [
+            "Mobile",
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Mobile",
+              "variantOptions": [
+                "Mobile",
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Notice",
+      "figmaName": "Notice",
+      "norm": "notice",
+      "nodeId": "33105:831",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Message#33105:2",
+          "type": "string",
+          "defaults": [
+            "Message "
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Message#33105:2",
+              "type": "TEXT",
+              "defaultValue": "Message "
+            }
+          ]
+        },
+        {
+          "name": "Title#33105:3",
+          "type": "string",
+          "defaults": [
+            "Title"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Title#33105:3",
+              "type": "TEXT",
+              "defaultValue": "Title"
+            }
+          ]
+        },
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "Danger"
+          ],
+          "values": [
+            "Danger",
+            "Warning",
+            "Info",
+            "Success"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "Danger",
+              "variantOptions": [
+                "Danger",
+                "Warning",
+                "Info",
+                "Success"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Heading",
+      "figmaName": "Heading",
+      "norm": "heading",
+      "nodeId": "9439:684",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Text#26888:16",
+          "type": "string",
+          "defaults": [
+            "Heading"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Text#26888:16",
+              "type": "TEXT",
+              "defaultValue": "Heading"
+            }
+          ]
+        },
+        {
+          "name": "Tag",
+          "type": "variant",
+          "defaults": [
+            "h1"
+          ],
+          "values": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "raw": [
+            {
+              "propName": "Tag",
+              "type": "VARIANT",
+              "defaultValue": "h1",
+              "variantOptions": [
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Default margins?",
+          "type": "variant",
+          "defaults": [
+            "true"
+          ],
+          "values": [
+            "true",
+            "false"
+          ],
+          "raw": [
+            {
+              "propName": "Default margins?",
+              "type": "VARIANT",
+              "defaultValue": "true",
+              "variantOptions": [
+                "true",
+                "false"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Top-nav",
+      "figmaName": "Top-nav",
+      "norm": "topnav",
+      "nodeId": "4738:10760",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Viewport",
+          "type": "variant",
+          "defaults": [
+            "Small"
+          ],
+          "values": [
+            "Large",
+            "Small"
+          ],
+          "raw": [
+            {
+              "propName": "Viewport",
+              "type": "VARIANT",
+              "defaultValue": "Small",
+              "variantOptions": [
+                "Large",
+                "Small"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Menu-alignment",
+          "type": "variant",
+          "defaults": [
+            "Left"
+          ],
+          "values": [
+            "Left",
+            "Right"
+          ],
+          "raw": [
+            {
+              "propName": "Menu-alignment",
+              "type": "VARIANT",
+              "defaultValue": "Left",
+              "variantOptions": [
+                "Left",
+                "Right"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Sidenav component",
+      "figmaName": "Sidenav component",
+      "norm": "sidenavcomponent",
+      "nodeId": "27155:153702",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Header",
+      "figmaName": "Header",
+      "norm": "header",
+      "nodeId": "2928:13680",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Navigation?#2928:2",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Navigation?#2928:2",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Skip to main content?#3031:0",
+          "type": "boolean",
+          "defaults": [
+            "false"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Skip to main content?#3031:0",
+              "type": "BOOLEAN",
+              "defaultValue": false
+            }
+          ]
+        },
+        {
+          "name": "Breadcrumbs?#20036:0",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Breadcrumbs?#20036:0",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Search?#20036:5",
+          "type": "boolean",
+          "defaults": [
+            "true"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Search?#20036:5",
+              "type": "BOOLEAN",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Mobile"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Mobile",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Button",
+      "figmaName": "Button",
+      "norm": "button",
+      "nodeId": "7795:7785",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Button label#2934:0",
+          "type": "string",
+          "defaults": [
+            "Button label"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Button label#2934:0",
+              "type": "TEXT",
+              "defaultValue": "Button label"
+            }
+          ]
+        },
+        {
+          "name": "buttonRole",
+          "type": "variant",
+          "defaults": [
+            "Primary"
+          ],
+          "values": [
+            "Start",
+            "Primary",
+            "Secondary",
+            "Danger",
+            "Small - Danger",
+            "Small - Primary",
+            "Small - Secondary"
+          ],
+          "raw": [
+            {
+              "propName": "buttonRole",
+              "type": "VARIANT",
+              "defaultValue": "Primary",
+              "variantOptions": [
+                "Start",
+                "Primary",
+                "Secondary",
+                "Danger",
+                "Small - Danger",
+                "Small - Primary",
+                "Small - Secondary"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Rest"
+          ],
+          "values": [
+            "Rest",
+            "Hover",
+            "Focus",
+            "Active + Focus",
+            "Disabled"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Rest",
+              "variantOptions": [
+                "Rest",
+                "Hover",
+                "Focus",
+                "Active + Focus",
+                "Disabled"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Link",
+      "figmaName": "Link",
+      "norm": "link",
+      "nodeId": "9557:58",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Link text#9502:1",
+          "type": "string",
+          "defaults": [
+            "Link"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Link text#9502:1",
+              "type": "TEXT",
+              "defaultValue": "Link"
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Hover",
+            "Focus",
+            "Visited"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Hover",
+                "Focus",
+                "Visited"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Type",
+          "type": "variant",
+          "defaults": [
+            "Standard"
+          ],
+          "values": [
+            "Download",
+            "External",
+            "Email",
+            "Telephone",
+            "Standard"
+          ],
+          "raw": [
+            {
+              "propName": "Type",
+              "type": "VARIANT",
+              "defaultValue": "Standard",
+              "variantOptions": [
+                "Download",
+                "External",
+                "Email",
+                "Telephone",
+                "Standard"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Vertical space",
+      "figmaName": "Vertical space",
+      "norm": "verticalspace",
+      "nodeId": "30677:203",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Value",
+          "type": "variant",
+          "defaults": [
+            "25 | 2px"
+          ],
+          "values": [
+            "25 | 2px",
+            "50 | 4px",
+            "75 | 6px",
+            "100 | 8px",
+            "125 | 10px",
+            "150 | 12px",
+            "175 | 14px",
+            "200 | 16px",
+            "225 | 18px",
+            "250 | 20px",
+            "300 | 24px",
+            "350 | 28px",
+            "400 | 32px",
+            "450 | 36px",
+            "500 | 40px",
+            "550 | 44px",
+            "600 | 48px",
+            "650 | 52px",
+            "700 | 56px",
+            "750 | 60px",
+            "800 | 64px",
+            "850 | 68px",
+            "900 | 72px",
+            "950 | 76px",
+            "1000 | 80px",
+            "1050 | 84px",
+            "1100 | 88px",
+            "1150 | 92px",
+            "1200 | 96px",
+            "1250 | 100px"
+          ],
+          "raw": [
+            {
+              "propName": "Value",
+              "type": "VARIANT",
+              "defaultValue": "25 | 2px",
+              "variantOptions": [
+                "25 | 2px",
+                "50 | 4px",
+                "75 | 6px",
+                "100 | 8px",
+                "125 | 10px",
+                "150 | 12px",
+                "175 | 14px",
+                "200 | 16px",
+                "225 | 18px",
+                "250 | 20px",
+                "300 | 24px",
+                "350 | 28px",
+                "400 | 32px",
+                "450 | 36px",
+                "500 | 40px",
+                "550 | 44px",
+                "600 | 48px",
+                "650 | 52px",
+                "700 | 56px",
+                "750 | 60px",
+                "800 | 64px",
+                "850 | 68px",
+                "900 | 72px",
+                "950 | 76px",
+                "1000 | 80px",
+                "1050 | 84px",
+                "1100 | 88px",
+                "1150 | 92px",
+                "1200 | 96px",
+                "1250 | 100px"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Icon",
+      "figmaName": "Icon",
+      "norm": "icon",
+      "nodeId": "10194:3107",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Size",
+          "type": "variant",
+          "defaults": [
+            "h1"
+          ],
+          "values": [
+            "text (140%)",
+            "text (160%)",
+            "h3",
+            "h2",
+            "text small",
+            "h5",
+            "h6",
+            "h4",
+            "h1"
+          ],
+          "raw": [
+            {
+              "propName": "Size",
+              "type": "VARIANT",
+              "defaultValue": "h1",
+              "variantOptions": [
+                "text (140%)",
+                "text (160%)",
+                "h3",
+                "h2",
+                "text small",
+                "h5",
+                "h6",
+                "h4",
+                "h1"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Name",
+          "type": "variant",
+          "defaults": [
+            "<info-circle>"
+          ],
+          "values": [
+            "<checkmark-circle>",
+            "<chevron-down>",
+            "<chevron-left>",
+            "<chevron-right>",
+            "<chevron-up>",
+            "<close>",
+            "<download>",
+            "<email>",
+            "<exclamation-circle>",
+            "<external>",
+            "<info-circle>",
+            "<phone>",
+            "<search>",
+            "<warning-triangle>"
+          ],
+          "raw": [
+            {
+              "propName": "Name",
+              "type": "VARIANT",
+              "defaultValue": "<info-circle>",
+              "variantOptions": [
+                "<checkmark-circle>",
+                "<chevron-down>",
+                "<chevron-left>",
+                "<chevron-right>",
+                "<chevron-up>",
+                "<close>",
+                "<download>",
+                "<email>",
+                "<exclamation-circle>",
+                "<external>",
+                "<info-circle>",
+                "<phone>",
+                "<search>",
+                "<warning-triangle>"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Mobile",
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Mobile",
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Navigation tabs (desktop)",
+      "figmaName": "Navigation tabs (desktop)",
+      "norm": "navigationtabsdesktop",
+      "nodeId": "3907:10428",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Hover",
+            "Focus"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Hover",
+                "Focus"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Mobile navigation",
+      "figmaName": "Mobile navigation",
+      "norm": "mobilenavigation",
+      "nodeId": "27638:5426",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Condition",
+          "type": "variant",
+          "defaults": [
+            "Open"
+          ],
+          "values": [
+            "Open",
+            "Closed"
+          ],
+          "raw": [
+            {
+              "propName": "Condition",
+              "type": "VARIANT",
+              "defaultValue": "Open",
+              "variantOptions": [
+                "Open",
+                "Closed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Select",
+      "figmaName": "Select",
+      "norm": "select",
+      "nodeId": "856:2826",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Mobile",
+            "Desktop"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Mobile",
+                "Desktop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "File Uploader",
+      "figmaName": "File Uploader",
+      "norm": "fileuploader",
+      "nodeId": "963:2472",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "State",
+          "type": "variant",
+          "defaults": [
+            "Default"
+          ],
+          "values": [
+            "Default",
+            "Disabled",
+            "Error",
+            "Error + Focus",
+            "Focus",
+            "Focus file",
+            "Error + Focus file"
+          ],
+          "raw": [
+            {
+              "propName": "State",
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Disabled",
+                "Error",
+                "Error + Focus",
+                "Focus",
+                "Focus file",
+                "Error + Focus file"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "File uploaded",
+          "type": "variant",
+          "defaults": [
+            "False"
+          ],
+          "values": [
+            "False",
+            "true"
+          ],
+          "raw": [
+            {
+              "propName": "File uploaded",
+              "type": "VARIANT",
+              "defaultValue": "False",
+              "variantOptions": [
+                "False",
+                "true"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rawName": "Checkboxes",
+      "figmaName": "Checkboxes",
+      "norm": "checkboxes",
+      "nodeId": "2760:8318",
+      "variantGroups": {},
+      "properties": [
+        {
+          "name": "Error?#21388:0",
+          "type": "boolean",
+          "defaults": [
+            "false"
+          ],
+          "values": [],
+          "raw": [
+            {
+              "propName": "Error?#21388:0",
+              "type": "BOOLEAN",
+              "defaultValue": false
+            }
+          ]
+        },
+        {
+          "name": "Device",
+          "type": "variant",
+          "defaults": [
+            "Desktop"
+          ],
+          "values": [
+            "Desktop",
+            "Mobile"
+          ],
+          "raw": [
+            {
+              "propName": "Device",
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": [
+                "Desktop",
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
