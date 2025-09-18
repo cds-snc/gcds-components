@@ -532,4 +532,68 @@ describe('gcds-checkbox', () => {
       </gcds-checkboxes>
     `);
   });
+
+  it('emits gcdsInput and gcdsChange on user clicks (add and remove selections) and detail obj to contain new value(s)', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCheckboxes],
+      html: `
+      <gcds-checkboxes
+        legend="Click Events"
+        name="click-events"
+        options='[
+          {"label": "Option 1", "id": "option1", "value": "option1"},
+          {"label": "Option 2", "id": "option2", "value": "option2"},
+          {"label": "Option 3", "id": "option3", "value": "option3"}
+        ]'
+      ></gcds-checkboxes>
+    `,
+    });
+
+    const inputSpy = jest.fn();
+    const changeSpy = jest.fn();
+    page.root.addEventListener('gcdsInput', inputSpy);
+    page.root.addEventListener('gcdsChange', changeSpy);
+
+    const [opt1, opt2] = Array.from(
+      page.root.shadowRoot.querySelectorAll<HTMLInputElement>('input[type="checkbox"]'),
+    );
+
+    const fire = (el: HTMLInputElement, nextChecked: boolean) => {
+      el.checked = nextChecked;
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    };
+
+    // Select option 1
+    fire(opt1, true);
+    await page.waitForChanges();
+    expect(inputSpy).toHaveBeenCalledTimes(1);
+    expect(changeSpy).toHaveBeenCalledTimes(1);
+    expect(inputSpy.mock.calls[0][0].detail).toEqual(['option1']);
+    expect(changeSpy.mock.calls[0][0].detail).toEqual(['option1']);
+
+    // Select option 2
+    fire(opt2, true);
+    await page.waitForChanges();
+    expect(inputSpy).toHaveBeenCalledTimes(2);
+    expect(changeSpy).toHaveBeenCalledTimes(2);
+    expect(inputSpy.mock.calls[1][0].detail).toEqual(['option1', 'option2']);
+    expect(changeSpy.mock.calls[1][0].detail).toEqual(['option1', 'option2']);
+
+    // Unselect option 1
+    fire(opt1, false);
+    await page.waitForChanges();
+    expect(inputSpy).toHaveBeenCalledTimes(3);
+    expect(changeSpy).toHaveBeenCalledTimes(3);
+    expect(inputSpy.mock.calls[2][0].detail).toEqual(['option2']);
+    expect(changeSpy.mock.calls[2][0].detail).toEqual(['option2']);
+
+    // Unselect option 2
+    fire(opt2, false);
+    await page.waitForChanges();
+    expect(inputSpy).toHaveBeenCalledTimes(4);
+    expect(changeSpy).toHaveBeenCalledTimes(4);
+    expect(inputSpy.mock.calls[3][0].detail).toEqual([]);
+    expect(changeSpy.mock.calls[3][0].detail).toEqual([]);
+  });
 });
