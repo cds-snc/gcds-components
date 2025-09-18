@@ -137,6 +137,7 @@ export class GcdsCheckboxes {
    * Value for checkboxes component.
    */
   @Prop({ reflect: true, mutable: true }) value: string | Array<string> = [];
+
   @Watch('value')
   validateValue(newValue) {
     // Convert string to array
@@ -162,6 +163,7 @@ export class GcdsCheckboxes {
    * Set this to display an error message for invalid <gcds-checkboxes>
    */
   @Prop({ reflect: true, mutable: true }) errorMessage: string;
+
   @Watch('errorMessage')
   validateErrorMessage() {
     if (this.disabled) {
@@ -202,6 +204,7 @@ export class GcdsCheckboxes {
    * Specifies if the checkbox is invalid.
    */
   @State() hasError: boolean;
+
   @Watch('hasError')
   validateHasError() {
     if (this.disabled) {
@@ -394,37 +397,38 @@ export class GcdsCheckboxes {
     }
   }
 
+  // Handle input and change events
   private handleInput = (e, customEvent) => {
-    if (e.target.checked) {
-      this.value = [...(this.value as Array<string>), e.target.value];
-    } else {
-      // Modify options to prevent adding prechecked values when unchecking option
-      this.options = (
-        typeof this.options === 'string'
-          ? JSON.parse(this.options as string)
-          : (this.options as CheckboxObject[])
-      ).map(check =>
-        check.value === e.target.value ? { ...check, checked: false } : check,
-      );
+    const isInputEvent = e.type === 'input';
+    if (isInputEvent) {
+      const target = e.target as HTMLInputElement;
+      if (target.checked) {
+        this.value = [...(this.value as Array<string>), target.value];
+      } else {
+        // Modify options to prevent re-adding prechecked values when user unchecks
+        this.options = (
+          typeof this.options === 'string'
+            ? JSON.parse(this.options as string)
+            : (this.options as CheckboxObject[])
+        ).map(check =>
+          check.value === target.value ? { ...check, checked: false } : check,
+        );
 
-      // Remove value from value array
-      this.value = (this.value as Array<string>).filter(
-        item => item !== e.target.value,
-      );
+        // Remove item from value array when unchecked
+        this.value = (this.value as Array<string>).filter(
+          item => item !== target.value,
+        );
+      }
+
+      // Keep form-associated value in sync
+      if ((this.value as string[]).length > 0) {
+        this.internals.setFormValue(this.value.toString());
+      } else {
+        this.internals.setFormValue(null);
+      }
     }
 
-    if ((this.value as string[]).length > 0) {
-      this.internals.setFormValue(this.value.toString());
-    } else {
-      this.internals.setFormValue(null);
-    }
-
-    if (e.type === 'change') {
-      const changeEvt = new e.constructor(e.type, e);
-      this.el.dispatchEvent(changeEvt);
-    }
-
-    customEvent.emit(this.value);
+    customEvent.emit([...(this.value as string[])]);
   };
 
   /*
