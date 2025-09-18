@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.43.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.1...gcds-components-v0.43.0-canary.0) (2025-09-18)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-checkboxes:** handle onChange events and emit values ([#956](https://github.com/cds-snc/gcds-components/issues/956)) ([4964a89](https://github.com/cds-snc/gcds-components/commit/4964a89e288938e37e22088be9fbc8e72d6d3f45))
+
 ## [0.42.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.0...gcds-components-v0.42.1) (2025-09-16)
 
 
