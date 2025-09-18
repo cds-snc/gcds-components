@@ -1,6 +1,19 @@
 ([Français](#journal-des-modifications))
 
 # Changelog
+## [0.42.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.0...gcds-components-v0.42.1)
+Released on: 2025-09-16
+
+
+### :bug: :wrench: Bug Fixes
+
+* **select:** prevent double-escaping of special characters in select options ([#952](https://github.com/cds-snc/gcds-components/issues/952)) ([ab85c1d](https://github.com/cds-snc/gcds-components/commit/ab85c1d0e09661280bb57660b24da78fa9c3fdd3))
+* **text-area:** add null check in watchValue for shadowElement ([#950](https://github.com/cds-snc/gcds-components/issues/950)) ([67951a6](https://github.com/cds-snc/gcds-components/commit/67951a630deeb23baa5b129136c145ae69af783e))
+
+
+### :pencil: Documentation
+
+* add components diagram ([#940](https://github.com/cds-snc/gcds-components/issues/940)) ([abe9cc5](https://github.com/cds-snc/gcds-components/commit/abe9cc56941c52827b33eadae792f76714827a8e))
 
 ## [0.42.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.41.0...gcds-components-v0.42.0)
 
