@@ -19,17 +19,13 @@
       display: flex;
       align-items: center;
       width: 100%;
-      font: var(--gcds-nav-group-trigger-font);
+      font: var(--gcds-nav-group-font);
       text-align: left;
       padding: var(--gcds-nav-group-trigger-padding);
       background: transparent;
       color: var(--gcds-nav-group-trigger-text);
       border: 0;
       cursor: pointer;
-
-      @media only screen and (width < 64em) {
-        font: var(--gcds-nav-group-mobile-trigger-font);
-      }
 
       &[aria-expanded='false'] + .gcds-nav-group__list {
         display: none;
@@ -59,7 +55,6 @@
 
 @layer topNav {
   :host .gcds-trigger--dropdown {
-    font: var(--gcds-nav-group-top-nav-font);
     padding: var(--gcds-nav-group-top-nav-trigger-padding);
     text-decoration: underline solid currentColor
       var(--gcds-nav-group-top-nav-trigger-decoration-thickness);
@@ -87,7 +82,6 @@
     width: 100%;
 
     .gcds-trigger--expandable {
-      font: var(--gcds-nav-group-mobile-trigger-font);
       text-align: center;
       flex-direction: row-reverse;
       justify-content: center;
