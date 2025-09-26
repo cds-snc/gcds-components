@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       - name: Setup Node
-        uses: actions/setup-node@cd2651c46231bc0d6f48d6b34433b845331235fe
+        uses: actions/setup-node@89d709d423dc495668cd762a18dd4a070611be3f
         with:
           node-version: 18
 
@@ -39,7 +39,7 @@ jobs:
         run: npm run build
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@b6b0bb6ebf081acc55469774087b431d6034e6d7
+        uses: JS-DevTools/npm-publish@7f8fe47b3bea1be0c3aec2b717c5ec1f3e03410b
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -92,7 +92,7 @@ jobs:
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       - name: Setup Node
-        uses: actions/setup-node@cd2651c46231bc0d6f48d6b34433b845331235fe
+        uses: actions/setup-node@89d709d423dc495668cd762a18dd4a070611be3f
         with:
           node-version: 18
 
@@ -103,7 +103,7 @@ jobs:
         run: npm run build
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@b6b0bb6ebf081acc55469774087b431d6034e6d7
+        uses: JS-DevTools/npm-publish@7f8fe47b3bea1be0c3aec2b717c5ec1f3e03410b
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
