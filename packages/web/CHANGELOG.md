@@ -1,29 +1,25 @@
 # Changelog
 
-## [0.43.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.1...gcds-components-v0.43.0-canary.0) (2025-10-01)
-
+## [0.43.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.1...gcds-components-v0.43.0) (2025-10-01)
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-checkboxes:** handle onChange events and emit values ([#956](https://github.com/cds-snc/gcds-components/issues/956)) ([4964a89](https://github.com/cds-snc/gcds-components/commit/4964a89e288938e37e22088be9fbc8e72d6d3f45))
-
+- **gcds-checkboxes:** handle onChange events and emit values ([#956](https://github.com/cds-snc/gcds-components/issues/956)) ([4964a89](https://github.com/cds-snc/gcds-components/commit/4964a89e288938e37e22088be9fbc8e72d6d3f45))
 
 ### :art: Styles
 
-* **gcds-side-nav:** Smaller font size + chevron direction change ([#959](https://github.com/cds-snc/gcds-components/issues/959)) ([8d9afc7](https://github.com/cds-snc/gcds-components/commit/8d9afc7703abfa2dfd34a9f9679b6c9820f862c7))
+- **gcds-side-nav:** Smaller font size + chevron direction change ([#959](https://github.com/cds-snc/gcds-components/issues/959)) ([8d9afc7](https://github.com/cds-snc/gcds-components/commit/8d9afc7703abfa2dfd34a9f9679b6c9820f862c7))
 
 ## [0.42.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.0...gcds-components-v0.42.1) (2025-09-16)
 
-
 ### :bug: :wrench: Bug Fixes
 
-* **select:** prevent double-escaping of special characters in select options ([#952](https://github.com/cds-snc/gcds-components/issues/952)) ([ab85c1d](https://github.com/cds-snc/gcds-components/commit/ab85c1d0e09661280bb57660b24da78fa9c3fdd3))
-* **text-area:** add null check in watchValue for shadowElement ([#950](https://github.com/cds-snc/gcds-components/issues/950)) ([67951a6](https://github.com/cds-snc/gcds-components/commit/67951a630deeb23baa5b129136c145ae69af783e))
-
+- **select:** prevent double-escaping of special characters in select options ([#952](https://github.com/cds-snc/gcds-components/issues/952)) ([ab85c1d](https://github.com/cds-snc/gcds-components/commit/ab85c1d0e09661280bb57660b24da78fa9c3fdd3))
+- **text-area:** add null check in watchValue for shadowElement ([#950](https://github.com/cds-snc/gcds-components/issues/950)) ([67951a6](https://github.com/cds-snc/gcds-components/commit/67951a630deeb23baa5b129136c145ae69af783e))
 
 ### :pencil: Documentation
 
-* add components diagram ([#940](https://github.com/cds-snc/gcds-components/issues/940)) ([abe9cc5](https://github.com/cds-snc/gcds-components/commit/abe9cc56941c52827b33eadae792f76714827a8e))
+- add components diagram ([#940](https://github.com/cds-snc/gcds-components/issues/940)) ([abe9cc5](https://github.com/cds-snc/gcds-components/commit/abe9cc56941c52827b33eadae792f76714827a8e))
 
 ## [0.42.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.41.0...gcds-components-v0.42.0) (2025-08-27)
 
