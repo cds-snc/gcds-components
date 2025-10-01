@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.43.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.1...gcds-components-v0.43.0-canary.0) (2025-10-01)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-checkboxes:** handle onChange events and emit values ([#956](https://github.com/cds-snc/gcds-components/issues/956)) ([4964a89](https://github.com/cds-snc/gcds-components/commit/4964a89e288938e37e22088be9fbc8e72d6d3f45))
+
+
+### :art: Styles
+
+* **gcds-side-nav:** Smaller font size + chevron direction change ([#959](https://github.com/cds-snc/gcds-components/issues/959)) ([8d9afc7](https://github.com/cds-snc/gcds-components/commit/8d9afc7703abfa2dfd34a9f9679b6c9820f862c7))
+
 ## [0.42.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.0...gcds-components-v0.42.1) (2025-09-16)
 
 
