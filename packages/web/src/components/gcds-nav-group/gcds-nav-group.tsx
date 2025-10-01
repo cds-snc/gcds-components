@@ -213,7 +213,17 @@ export class GcdsNavGroup {
             }
           }}
         >
-          <gcds-icon name={open ? 'chevron-up' : 'chevron-down'}></gcds-icon>
+          <gcds-icon
+            name={
+              this.navStyle === 'expandable'
+                ? open
+                  ? 'chevron-down'
+                  : 'chevron-right'
+                : open
+                  ? 'chevron-up'
+                  : 'chevron-down'
+            }
+          ></gcds-icon>
           {closeTrigger && open ? closeTrigger : openTrigger}
         </button>
         <ul
