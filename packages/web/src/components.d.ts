@@ -9,11 +9,13 @@ import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
+import { DataListOptionObject } from "./components/gcds-input/datalist-option";
 import { RadioObject } from "./components/gcds-radios/radio";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
+export { DataListOptionObject } from "./components/gcds-input/datalist-option";
 export { RadioObject } from "./components/gcds-radios/radio";
 export namespace Components {
     /**
@@ -777,6 +779,10 @@ export namespace Components {
           * A number that specifies the granularity that the value must adhere to. Valid for number type. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
          */
         "step"?: number | 'any';
+        /**
+          * Array of suggestions
+         */
+        "suggestions"?: string | Array<DataListOptionObject>;
         /**
           * Set Input types
           * @default 'text'
@@ -1843,6 +1849,7 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsInput": string;
+        "gcdsDatalistSelected": string;
         "gcdsChange": string;
         "gcdsError": object;
         "gcdsValid": object;
@@ -3111,6 +3118,10 @@ declare namespace LocalJSX {
          */
         "onGcdsChange"?: (event: GcdsInputCustomEvent<string>) => void;
         /**
+          * Emitted when a datalist item is selected.
+         */
+        "onGcdsDatalistSelected"?: (event: GcdsInputCustomEvent<string>) => void;
+        /**
           * Emitted when the input has a validation error.
          */
         "onGcdsError"?: (event: GcdsInputCustomEvent<object>) => void;
@@ -3147,6 +3158,10 @@ declare namespace LocalJSX {
           * A number that specifies the granularity that the value must adhere to. Valid for number type. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
          */
         "step"?: number | 'any';
+        /**
+          * Array of suggestions
+         */
+        "suggestions"?: string | Array<DataListOptionObject>;
         /**
           * Set Input types
           * @default 'text'
