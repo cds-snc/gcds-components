@@ -18,6 +18,8 @@ import {
   inheritAttributes,
   observerConfig,
   formatHTMLErrorMessage,
+  logError,
+  handleErrors,
 } from '../../utils/utils';
 import {
   Validator,
@@ -27,6 +29,7 @@ import {
   requiredValidator,
   ValidatorOld,
 } from '../../validators';
+import { DataListOptionObject, isDataListObject } from './datalist-option';
 
 /**
  * An input is a space to enter short-form information in response to a question or instruction.
@@ -51,6 +54,7 @@ export class GcdsInput {
   private htmlValidationErrors = [];
 
   private inputTitle: string = '';
+  private suggestionsArr;
 
   _validator: Validator<string> | ValidatorOld<string> = defaultValidator;
 
@@ -217,6 +221,57 @@ export class GcdsInput {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
+   * Array of suggestions
+   */
+  @Prop({ mutable: true }) suggestions?: string | Array<DataListOptionObject>;
+  @Watch('suggestions')
+  validateSuggestions() {
+    if (this.suggestions == null) {
+      return;
+    }
+
+    let invalidObject = false;
+    // Assign optionsArr from passed options string or array
+    if (
+      typeof this.suggestions === 'string' &&
+      this.suggestions.trim() !== ''
+    ) {
+      try {
+        this.suggestions = JSON.parse(this.suggestions as string);
+      } catch (e) {
+        logError('gcds-input', ['Invalid JSON string for suggestions']);
+        this.suggestions = null;
+      }
+    }
+
+    if (Array.isArray(this.suggestions)) {
+      this.suggestionsArr = this.suggestions;
+    } else {
+      this.suggestionsArr = null;
+    }
+
+    // Validate options has type DataListOptionObject, we allow an empty array to be used.
+    if (this.suggestionsArr) {
+      invalidObject = this.suggestionsArr.some(
+        dlObject => !isDataListObject(dlObject),
+      );
+    } else {
+      invalidObject = true;
+    }
+
+    // Log error if no or invalid optionsObject
+    const errors = handleErrors(
+      [],
+      'suggestions',
+      this.suggestionsArr,
+      invalidObject,
+    );
+    if (errors.length > 0) {
+      logError('gcds-input', errors);
+    }
+  }
+
+  /**
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
@@ -277,6 +332,11 @@ export class GcdsInput {
   @Event() gcdsInput: EventEmitter<string>;
 
   /**
+   * Emitted when a datalist item is selected.
+   */
+  @Event() gcdsDatalistSelected: EventEmitter<string>;
+
+  /**
    * Handling input and change events on input
    */
   private handleInput = (e, customEvent) => {
@@ -285,6 +345,15 @@ export class GcdsInput {
     this.internals.setFormValue(val ? val : null);
 
     if (e.type === 'change') {
+      if (
+        this.suggestionsArr &&
+        this.suggestionsArr.some(
+          (suggestion: DataListOptionObject) =>
+            val == (suggestion.value ?? suggestion.label),
+        )
+      ) {
+        this.gcdsDatalistSelected.emit(this.value);
+      }
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
     } else {
@@ -455,6 +524,7 @@ export class GcdsInput {
 
     this.updateLang();
 
+    this.validateSuggestions();
     this.validateDisabledInput();
     this.validateHasError();
     this.validateErrorMessage();
@@ -600,9 +670,26 @@ export class GcdsInput {
             }
             size={size}
             style={size ? style : null}
+            list={
+              this.suggestionsArr && this.suggestionsArr.length > 0
+                ? `datalist-for-${inputId}`
+                : null
+            }
             part="input"
             ref={element => (this.shadowElement = element)}
           />
+
+          {this.suggestionsArr && this.suggestionsArr.length > 0 ? (
+            <datalist id={`datalist-for-${inputId}`}>
+              {this.suggestionsArr.map(
+                (datalistOption: DataListOptionObject) => (
+                  <option value={datalistOption.value ?? datalistOption.label}>
+                    {datalistOption.label}
+                  </option>
+                ),
+              )}
+            </datalist>
+          ) : null}
         </div>
       </Host>
     );
