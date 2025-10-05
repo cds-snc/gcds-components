@@ -4,6 +4,13 @@ on:
   schedule:
     - cron: "20 7 * * *"
 
+permissions:
+  id-token: write
+  contents: read
+  issues: read
+  pull-requests: read
+  security-events: read
+
 jobs:
   export-data:
     runs-on: ubuntu-latest
@@ -15,11 +22,19 @@ jobs:
           DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
           DNS_PROXY_LOGANALYTICSSHAREDKEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4.3.1
+        with:
+          role-to-assume: arn:aws:iam::739275439843:role/data-lake-github-data-export
+          role-session-name: GithubDataExport
+          aws-region: ca-central-1
       - name: Export Data
-        uses: cds-snc/github-repository-metadata-exporter@7f8f3eccaf3e15675fc70611e913ec1458510540
+        uses: cds-snc/github-repository-metadata-exporter@93237c56fbba5f9cbfd38587e85a5017048a6ec5
         with:
           github-app-id: ${{ secrets.SRE_BOT_RO_APP_ID }}
           github-app-installation-id: ${{ secrets.SRE_BOT_RO_INSTALLATION_ID }}
           github-app-private-key: ${{ secrets.SRE_BOT_RO_PRIVATE_KEY }}
           log-analytics-workspace-id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
           log-analytics-workspace-key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+          s3-bucket: ${{ secrets.DATA_LAKE_GITHUB_METADATA_EXPORT_S3_BUCKET }}
+          aws-region: ${{ secrets.DATA_LAKE_GITHUB_METADATA_EXPORT_AWS_REGION }}
