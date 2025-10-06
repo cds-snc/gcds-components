@@ -19,6 +19,9 @@ jobs:
       - name: Install gcds-components
         run: npm ci
 
+      - name: Lint repo
+        run: npm run lint
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
