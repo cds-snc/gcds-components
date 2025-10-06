@@ -39,7 +39,7 @@ jobs:
         run: npm run build
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@7f8fe47b3bea1be0c3aec2b717c5ec1f3e03410b
+        uses: JS-DevTools/npm-publish@e6cc16d2d37d6c24b542679f7b14ca20ba56d40a
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -103,7 +103,7 @@ jobs:
         run: npm run build
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@7f8fe47b3bea1be0c3aec2b717c5ec1f3e03410b
+        uses: JS-DevTools/npm-publish@e6cc16d2d37d6c24b542679f7b14ca20ba56d40a
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}

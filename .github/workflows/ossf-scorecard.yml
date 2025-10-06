@@ -8,15 +8,17 @@ on:
     branches:
       - main
 
-permissions: read-all
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+  checks: read
+  actions: read
 
 jobs:
   analysis:
     name: Scorecards analysis
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
 
     steps:
       - name: "Checkout code"
