@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Run Backstage Catalog Info Helper
         uses: cds-snc/backstage-catalog-info-helper-action@cc75afc29a0ade6c41400132ff9e1222f8916ba6 # v0.3.1
         with:
