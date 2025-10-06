@@ -10,7 +10,7 @@
 
 ### :art: Styles
 
-* fix topic menu link background on hover ([#965](https://github.com/cds-snc/gcds-components/issues/965)) ([cb5b29b](https://github.com/cds-snc/gcds-components/commit/cb5b29bc25c1afdecbcca8d6b47bff4239010873))
+* **gcds-topic-menu:** fix topic menu link background on hover ([#965](https://github.com/cds-snc/gcds-components/issues/965)) ([cb5b29b](https://github.com/cds-snc/gcds-components/commit/cb5b29bc25c1afdecbcca8d6b47bff4239010873))
 * **gcds-input + gcds-textarea:** add mobile font size to input & textarea ([#975](https://github.com/cds-snc/gcds-components/issues/975)) ([322944b](https://github.com/cds-snc/gcds-components/commit/322944b6db3be85f55eb6bf5b5bb5c2daefca580))
 
 ## [0.43.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.1...gcds-components-v0.43.0) (2025-10-01)
