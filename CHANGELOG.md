@@ -2,6 +2,19 @@
 
 # Changelog
 
+## [0.43.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.0...gcds-components-v0.43.1)
+
+Released on: 2025-10-06
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-radios:** Fix focus when radios has an error ([#968](https://github.com/cds-snc/gcds-components/issues/968)) ([5fcce47](https://github.com/cds-snc/gcds-components/commit/5fcce473b4cde8237866f1dbe6408f2b707a34de))
+
+### :art: Styles
+
+- **gcds-topic-menu:** fix topic menu link background on hover ([#965](https://github.com/cds-snc/gcds-components/issues/965)) ([cb5b29b](https://github.com/cds-snc/gcds-components/commit/cb5b29bc25c1afdecbcca8d6b47bff4239010873))
+- **gcds-input + gcds-textarea:** add mobile font size to input & textarea ([#975](https://github.com/cds-snc/gcds-components/issues/975)) ([322944b](https://github.com/cds-snc/gcds-components/commit/322944b6db3be85f55eb6bf5b5bb5c2daefca580))
+
 ## [0.43.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.1...gcds-components-v0.43.0)
 
 Released on: 2025-10-01
