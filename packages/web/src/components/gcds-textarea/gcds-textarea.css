@@ -20,9 +20,13 @@
   :host .gcds-textarea-wrapper {
     width: 100%;
     max-width: 75ch;
-    font: var(--gcds-textarea-font);
+    font: var(--gcds-textarea-font-desktop);
     color: var(--gcds-textarea-default-text);
     transition: color ease-in-out 0.15s;
+
+    @media only screen and (width < 48em) {
+      font: var(--gcds-textarea-font-mobile);
+    }
 
     textarea {
       display: block;
