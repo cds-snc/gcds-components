@@ -11,7 +11,8 @@ const path = require('path');
 // Configuration
 const FIGMA_ACCESS_TOKEN = process.env.FIGMA_ACCESS_TOKEN;
 const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY; // Your GCDS Figma file key
-const OUTPUT_FILE = '../specs/figma-components.json';
+const FIGMA_OUTPUT_FILE = '../specs/figma-components.json';
+const FIGMA_CODE_COMPARISON_FILE = '../specs/figma-comparison-report.md';
 const CODE_SPECS_FILE = '../specs/components.json';
 
 // If you're on Node < 18, uncomment these 2 lines:
@@ -25,26 +26,36 @@ function normalizeName(str = '') {
   return String(str)
     .toLowerCase()
     .trim()
-    .replace(/^gcds-/, '')   // drop code prefix
+    .replace(/^gcds-/, '') // drop code prefix
     .replace(/&/g, 'and')
     .replace(/[^a-z0-9]/g, '');
 }
+
 function normalizePropName(str = '') {
-  return String(str).toLowerCase().trim().replace(/[^a-z0-9]/g, '');
+  return String(str)
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]/g, '');
 }
+
 function chunk(arr, size) {
   const out = [];
   for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
   return out;
 }
+
 function displayFigmaName(c) {
   return c?.figmaName || c?.rawName || c?.name || c?.node?.name || '(unnamed)';
 }
+
 function displayCodeTag(c) {
   return c?.tag || c?.rawTag || c?.name || '(unlabeled)';
 }
+
 // ---- value/type helpers ----
-const unique = (arr) => [...new Set((arr || []).filter(v => v !== undefined && v !== null))];
+const unique = arr => [
+  ...new Set((arr || []).filter(v => v !== undefined && v !== null)),
+];
 
 function normalizeSimpleType(t) {
   const s = String(t || '').toLowerCase();
@@ -84,11 +95,13 @@ function mdEscape(s) {
     .replace(/>/g, '&gt;')
     .replace(/\r?\n/g, '<br>');
 }
+
 function cell(val, { code = false } = {}) {
   if (val === undefined || val === null || val === '') return '—';
   const s = mdEscape(val);
   return code ? `\`${s}\`` : s;
 }
+
 function arrCell(arr, { code = false } = {}) {
   const a = (arr || []).filter(v => v !== undefined && v !== null && v !== '');
   if (!a.length) return '—';
@@ -108,9 +121,9 @@ function stripOuterQuotes(s) {
 function pickDisplay(v) {
   if (v == null) return '';
   if (typeof v !== 'object') return v;
-  if ('value' in v && v.value != null) return v.value;   // { value: "h3" }
-  if ('name' in v && v.name != null) return v.name;      // { name: "Desktop" }
-  if ('label' in v && v.label != null) return v.label;   // { label: "Foo" }
+  if ('value' in v && v.value != null) return v.value; // { value: "h3" }
+  if ('name' in v && v.name != null) return v.name; // { name: "Desktop" }
+  if ('label' in v && v.label != null) return v.label; // { label: "Foo" }
   // Ignore bare objects like { type: "string" } that don't represent a concrete value
   return '';
 }
@@ -118,19 +131,23 @@ function pickDisplay(v) {
 // ------------------------ API fetchers ------------------------
 async function fetchFigmaComponentSets() {
   if (!FIGMA_ACCESS_TOKEN || !FIGMA_FILE_KEY) {
-    throw new Error('Missing FIGMA_ACCESS_TOKEN or FIGMA_FILE_KEY environment variables');
+    throw new Error(
+      'Missing FIGMA_ACCESS_TOKEN or FIGMA_FILE_KEY environment variables',
+    );
   }
   const url = `${FIGMA_API_BASE}/files/${FIGMA_FILE_KEY}/component_sets`;
   const res = await fetch(url, {
     method: 'GET',
     headers: {
       'X-Figma-Token': FIGMA_ACCESS_TOKEN,
-      'Accept': 'application/json'
-    }
+      'Accept': 'application/json',
+    },
   });
   if (!res.ok) {
     const body = await res.text().catch(() => '');
-    throw new Error(`Figma API error: ${res.status} ${res.statusText}\n${body}`);
+    throw new Error(
+      `Figma API error: ${res.status} ${res.statusText}\n${body}`,
+    );
   }
   return res.json(); // -> { meta: { component_sets: [ {name, node_id, ...}, ... ] } }
 }
@@ -144,12 +161,14 @@ async function fetchFigmaNodesByIds(fileKey, nodeIds = []) {
       method: 'GET',
       headers: {
         'X-Figma-Token': FIGMA_ACCESS_TOKEN,
-        'Accept': 'application/json'
-      }
+        'Accept': 'application/json',
+      },
     });
     if (!res.ok) {
       const body = await res.text().catch(() => '');
-      throw new Error(`Figma API error (nodes): ${res.status} ${res.statusText}\n${body}`);
+      throw new Error(
+        `Figma API error (nodes): ${res.status} ${res.statusText}\n${body}`,
+      );
     }
     const json = await res.json();
     Object.assign(results, json.nodes || {}); // { [nodeId]: { document, ... } }
@@ -162,7 +181,7 @@ function aggregatePropertiesFromSetNode(setDocNode) {
   const variantGroups = setDocNode.variantGroupProperties || {};
   const propMap = new Map(); // normName -> { name, type, defaults:Set, values:Set, raw: [] }
 
-  const mergeDefs = (defs) => {
+  const mergeDefs = defs => {
     if (!defs) return;
     for (const [propName, def] of Object.entries(defs)) {
       const norm = normalizePropName(propName);
@@ -172,13 +191,18 @@ function aggregatePropertiesFromSetNode(setDocNode) {
         type,
         defaults: new Set(),
         values: new Set(),
-        raw: []
+        raw: [],
       };
 
-      if (def.defaultValue != null) entry.defaults.add(String(def.defaultValue));
+      if (def.defaultValue != null)
+        entry.defaults.add(String(def.defaultValue));
 
-      const variantOpts = Array.isArray(def.variantOptions) ? def.variantOptions : [];
-      const preferred = Array.isArray(def.preferredValues) ? def.preferredValues : [];
+      const variantOpts = Array.isArray(def.variantOptions)
+        ? def.variantOptions
+        : [];
+      const preferred = Array.isArray(def.preferredValues)
+        ? def.preferredValues
+        : [];
       variantOpts.forEach(v => entry.values.add(String(v)));
       preferred.forEach(v => entry.values.add(String(v)));
 
@@ -188,10 +212,14 @@ function aggregatePropertiesFromSetNode(setDocNode) {
   };
 
   // 1) Set-level component properties (when “Apply to all variants” is used)
-  mergeDefs(setDocNode.componentPropertyDefinitions || setDocNode.componentProperties);
+  mergeDefs(
+    setDocNode.componentPropertyDefinitions || setDocNode.componentProperties,
+  );
 
   // 2) Child component definitions
-  const children = Array.isArray(setDocNode.children) ? setDocNode.children : [];
+  const children = Array.isArray(setDocNode.children)
+    ? setDocNode.children
+    : [];
   for (const child of children) {
     if (child.type !== 'COMPONENT') continue;
     mergeDefs(child.componentPropertyDefinitions || child.componentProperties);
@@ -202,7 +230,8 @@ function aggregatePropertiesFromSetNode(setDocNode) {
     const norm = normalizePropName(groupName);
     const existing = propMap.get(norm);
     const values = Array.isArray(info?.values) ? info.values : [];
-    const inferredDefault = firstChildVariantValue(setDocNode, groupName) ?? (values[0] ?? null);
+    const inferredDefault =
+      firstChildVariantValue(setDocNode, groupName) ?? values[0] ?? null;
 
     if (!existing) {
       const entry = {
@@ -210,7 +239,7 @@ function aggregatePropertiesFromSetNode(setDocNode) {
         type: 'VARIANT',
         defaults: new Set(),
         values: new Set(),
-        raw: []
+        raw: [],
       };
       if (inferredDefault != null) entry.defaults.add(String(inferredDefault));
       values.forEach(v => entry.values.add(String(v)));
@@ -218,7 +247,8 @@ function aggregatePropertiesFromSetNode(setDocNode) {
     } else {
       // If there’s also a component property of same name, prefer variant semantics
       existing.type = 'VARIANT';
-      if (inferredDefault != null) existing.defaults.add(String(inferredDefault));
+      if (inferredDefault != null)
+        existing.defaults.add(String(inferredDefault));
       values.forEach(v => existing.values.add(String(v)));
       propMap.set(norm, existing);
     }
@@ -230,7 +260,7 @@ function aggregatePropertiesFromSetNode(setDocNode) {
     type: normalizeSimpleType(e.type),
     defaults: [...e.defaults].map(stripOuterQuotes),
     values: [...e.values].map(stripOuterQuotes),
-    raw: e.raw
+    raw: e.raw,
   }));
 
   return { variantGroups, properties };
@@ -250,19 +280,20 @@ function buildFigmaEntries(componentSetsMeta = [], nodesById = {}) {
         norm: normalizeName(meta.name),
         nodeId: nodeId || null,
         variantGroups: {},
-        properties: []
+        properties: [],
       });
       continue;
     }
 
-    const { variantGroups, properties } = aggregatePropertiesFromSetNode(docNode);
+    const { variantGroups, properties } =
+      aggregatePropertiesFromSetNode(docNode);
     entries.push({
       rawName: meta.name,
       figmaName: meta.name,
       norm: normalizeName(meta.name),
       nodeId,
       variantGroups,
-      properties
+      properties,
     });
   }
   return entries; // [{ figmaName, norm, properties:[{name,type,...}], variantGroups: {...} }]
@@ -272,8 +303,12 @@ function buildFigmaEntries(componentSetsMeta = [], nodesById = {}) {
 
 function figmaPropToStd(p) {
   const type = normalizeSimpleType(p.type);
-  let defaults = unique((p.defaults || []).map(String).filter(Boolean)).map(stripOuterQuotes);
-  let values = unique((p.values || []).map(pickDisplay).map(String).filter(Boolean)).map(stripOuterQuotes);
+  let defaults = unique((p.defaults || []).map(String).filter(Boolean)).map(
+    stripOuterQuotes,
+  );
+  let values = unique(
+    (p.values || []).map(pickDisplay).map(String).filter(Boolean),
+  ).map(stripOuterQuotes);
   return { name: p.name, type, defaults, values };
 }
 
@@ -312,20 +347,21 @@ function setEqual(a = [], b = []) {
 function typesEquivalent(figmaType, codeType, valuesMatch) {
   if ((figmaType || '') === (codeType || '')) return true;
   // Treat Figma "variant" ≈ Code "string" when allowed values match
-  if ((figmaType === 'variant') && (codeType === 'string') && valuesMatch) return true;
+  if (figmaType === 'variant' && codeType === 'string' && valuesMatch)
+    return true;
   return false;
 }
 
 function comparePropertiesDetailed(figmaPropsArray, codeProps) {
   // Build indexes by normalized name
   const fIndex = new Map();
-  for (const fp of (figmaPropsArray || [])) {
+  for (const fp of figmaPropsArray || []) {
     const norm = normalizePropName(fp.name);
     fIndex.set(norm, figmaPropToStd(fp));
   }
 
   const cIndex = new Map();
-  for (const cp of (codeProps || [])) {
+  for (const cp of codeProps || []) {
     const norm = normalizePropName(cp.name);
     // keep the first; if duplicates exist, you could merge
     if (!cIndex.has(norm)) cIndex.set(norm, codePropToStd(cp));
@@ -341,20 +377,32 @@ function comparePropertiesDetailed(figmaPropsArray, codeProps) {
     if (!f && c) {
       rows.push({
         name: c.name,
-        figmaType: '—', codeType: c.type, typeMatch: false,
-        figmaDefaults: [], codeDefaults: c.defaults, defaultMatch: false,
-        figmaValues: [], codeValues: c.values, valuesMatch: false,
-        status: 'code-only'
+        figmaType: '—',
+        codeType: c.type,
+        typeMatch: false,
+        figmaDefaults: [],
+        codeDefaults: c.defaults,
+        defaultMatch: false,
+        figmaValues: [],
+        codeValues: c.values,
+        valuesMatch: false,
+        status: 'code-only',
       });
       continue;
     }
     if (f && !c) {
       rows.push({
         name: f.name,
-        figmaType: f.type, codeType: '—', typeMatch: false,
-        figmaDefaults: f.defaults, codeDefaults: [], defaultMatch: false,
-        figmaValues: f.values, codeValues: [], valuesMatch: false,
-        status: 'figma-only'
+        figmaType: f.type,
+        codeType: '—',
+        typeMatch: false,
+        figmaDefaults: f.defaults,
+        codeDefaults: [],
+        defaultMatch: false,
+        figmaValues: f.values,
+        codeValues: [],
+        valuesMatch: false,
+        status: 'figma-only',
       });
       continue;
     }
@@ -366,10 +414,16 @@ function comparePropertiesDetailed(figmaPropsArray, codeProps) {
 
     rows.push({
       name: f.name, // prefer Figma casing
-      figmaType: f.type, codeType: c.type, typeMatch,
-      figmaDefaults: f.defaults, codeDefaults: c.defaults, defaultMatch,
-      figmaValues: f.values, codeValues: c.values, valuesMatch,
-      status: (typeMatch && defaultMatch && valuesMatch) ? 'match' : 'diff'
+      figmaType: f.type,
+      codeType: c.type,
+      typeMatch,
+      figmaDefaults: f.defaults,
+      codeDefaults: c.defaults,
+      defaultMatch,
+      figmaValues: f.values,
+      codeValues: c.values,
+      valuesMatch,
+      status: typeMatch && defaultMatch && valuesMatch ? 'match' : 'diff',
     });
   }
 
@@ -381,15 +435,22 @@ function comparePropertiesDetailed(figmaPropsArray, codeProps) {
     matching: rows.filter(r => r.status === 'match').map(r => r.name),
     figmaOnly: rows.filter(r => r.status === 'figma-only').map(r => r.name),
     codeOnly: rows.filter(r => r.status === 'code-only').map(r => r.name),
-    typeMismatches: rows.filter(r => r.status === 'diff' && !r.typeMatch).map(r => r.name),
-    defaultMismatches: rows.filter(r => r.status === 'diff' && !r.defaultMatch).map(r => r.name),
-    valuesMismatches: rows.filter(r => r.status === 'diff' && !r.valuesMatch).map(r => r.name),
+    typeMismatches: rows
+      .filter(r => r.status === 'diff' && !r.typeMatch)
+      .map(r => r.name),
+    defaultMismatches: rows
+      .filter(r => r.status === 'diff' && !r.defaultMatch)
+      .map(r => r.name),
+    valuesMismatches: rows
+      .filter(r => r.status === 'diff' && !r.valuesMatch)
+      .map(r => r.name),
   };
 }
 
 function summarizeVariantGroups(vg = {}) {
   return Object.entries(vg).map(([group, info]) => ({
-    group, values: Array.isArray(info?.values) ? info.values : []
+    group,
+    values: Array.isArray(info?.values) ? info.values : [],
   }));
 }
 
@@ -400,13 +461,13 @@ function compareComponents(figmaEntries, codeComponents) {
     matches: [],
     figmaOnly: [],
     codeOnly: [],
-    differences: []
+    differences: [],
   };
 
   const codeEntries = codeComponents.map(c => ({
     rawTag: c.tag,
     norm: normalizeName(c.tag),
-    node: c
+    node: c,
   }));
 
   const codeByNorm = new Map();
@@ -423,7 +484,10 @@ function compareComponents(figmaEntries, codeComponents) {
       const c = candidates[0];
       matchedCode.add(c);
 
-      const propComparison = comparePropertiesDetailed(f.properties || [], c.node.props);
+      const propComparison = comparePropertiesDetailed(
+        f.properties || [],
+        c.node.props,
+      );
       const variantSummary = summarizeVariantGroups(f.variantGroups);
 
       comparison.matches.push({
@@ -432,7 +496,7 @@ function compareComponents(figmaEntries, codeComponents) {
         figma: f,
         code: c.node,
         propertyComparison: propComparison,
-        figmaVariants: variantSummary
+        figmaVariants: variantSummary,
       });
     } else {
       comparison.figmaOnly.push(f);
@@ -447,7 +511,9 @@ function compareComponents(figmaEntries, codeComponents) {
 }
 
 // ------------------------ report ------------------------
-function pill(ok) { return ok ? '✅' : '❌'; }
+function pill(ok) {
+  return ok ? '✅' : '❌';
+}
 
 function generateReport(comparison) {
   const header = `# Figma vs Code Components Comparison
@@ -462,35 +528,55 @@ Generated on: ${new Date().toISOString()}
 - **Code Only**: ${comparison.codeOnly.length}
 `;
 
-  const figmaOnlyList = comparison.figmaOnly.map(comp => `- ${displayFigmaName(comp)}`).join('\n') || '—';
-  const codeOnlyList = comparison.codeOnly.map(comp => `- ${displayCodeTag(comp)}`).join('\n') || '—';
-
-  const perComponentTables = comparison.matches.map(m => {
-    const rows = (m.propertyComparison.rows || [])
-      .sort((a, b) => {
-        const order = v => v === 'figma-only' ? 0 : v === 'code-only' ? 1 : v === 'diff' ? 2 : 3;
-        const oA = order(a.status), oB = order(b.status);
-        return oA - oB || a.name.localeCompare(b.name);
-      })
-      .map(r => {
-        return `| ${cell(r.name, { code: true })} `
-          + `| ${cell(r.figmaType, { code: true })} `
-          + `| ${cell(r.codeType, { code: true })} `
-          + `| ${pill(r.typeMatch)} `
-          + `| ${arrCell(r.figmaDefaults, { code: true })} `
-          + `| ${arrCell(r.codeDefaults, { code: true })} `
-          + `| ${pill(r.defaultMatch)} `
-          + `| ${arrCell(r.figmaValues, { code: true })} `
-          + `| ${arrCell(r.codeValues, { code: true })} `
-          + `| ${pill(r.valuesMatch)} |`;
-      })
-      .join('\n');
-
-    const variants = (m.figmaVariants || [])
-      .map(v => `- **${mdEscape(v.group)}**: ${arrCell(v.values, { code: true })}`)
+  const figmaOnlyList =
+    comparison.figmaOnly
+      .map(comp => `- ${displayFigmaName(comp)}`)
       .join('\n') || '—';
+  const codeOnlyList =
+    comparison.codeOnly.map(comp => `- ${displayCodeTag(comp)}`).join('\n') ||
+    '—';
 
-    return `
+  const perComponentTables = comparison.matches
+    .map(m => {
+      const rows = (m.propertyComparison.rows || [])
+        .sort((a, b) => {
+          const order = v =>
+            v === 'figma-only'
+              ? 0
+              : v === 'code-only'
+                ? 1
+                : v === 'diff'
+                  ? 2
+                  : 3;
+          const oA = order(a.status),
+            oB = order(b.status);
+          return oA - oB || a.name.localeCompare(b.name);
+        })
+        .map(r => {
+          return (
+            `| ${cell(r.name, { code: true })} ` +
+            `| ${cell(r.figmaType, { code: true })} ` +
+            `| ${cell(r.codeType, { code: true })} ` +
+            `| ${pill(r.typeMatch)} ` +
+            `| ${arrCell(r.figmaDefaults, { code: true })} ` +
+            `| ${arrCell(r.codeDefaults, { code: true })} ` +
+            `| ${pill(r.defaultMatch)} ` +
+            `| ${arrCell(r.figmaValues, { code: true })} ` +
+            `| ${arrCell(r.codeValues, { code: true })} ` +
+            `| ${pill(r.valuesMatch)} |`
+          );
+        })
+        .join('\n');
+
+      const variants =
+        (m.figmaVariants || [])
+          .map(
+            v =>
+              `- **${mdEscape(v.group)}**: ${arrCell(v.values, { code: true })}`,
+          )
+          .join('\n') || '—';
+
+      return `
 ## ${displayFigmaName(m.figma)} ↔ ${displayCodeTag(m.code)}
 
 **Variant groups (Figma):**
@@ -503,7 +589,8 @@ ${variants}
 ${rows || '| — | — | — | — | — | — | — | — | — | — |'}
 
 `;
-  }).join('\n');
+    })
+    .join('\n');
 
   return `${header}
 
@@ -546,25 +633,34 @@ async function main() {
     fs.mkdirSync(path.join(__dirname, '../specs'), { recursive: true });
 
     // Save enriched Figma dump
-    const outputPath = path.join(__dirname, OUTPUT_FILE);
-    fs.writeFileSync(outputPath, JSON.stringify({
-      timestamp: new Date().toISOString(),
-      figmaFile: FIGMA_FILE_KEY,
-      componentSets: figmaEntries
-    }, null, 2));
+    const outputPath = path.join(__dirname, FIGMA_OUTPUT_FILE);
+    fs.writeFileSync(
+      outputPath,
+      JSON.stringify(
+        {
+          timestamp: new Date().toISOString(),
+          figmaFile: FIGMA_FILE_KEY,
+          componentSets: figmaEntries,
+        },
+        null,
+        2,
+      ),
+    );
 
     // Save report
-    const reportPath = path.join(__dirname, '../specs/figma-comparison-report.md');
+    const reportPath = path.join(
+      __dirname,
+      FIGMA_CODE_COMPARISON_FILE
+    );
     const report = generateReport(comparison);
     fs.writeFileSync(reportPath, report);
 
-    console.log(`✅ Figma component sets saved to: ${OUTPUT_FILE}`);
+    console.log(`✅ Figma component sets saved to: ${FIGMA_OUTPUT_FILE}`);
     console.log(`✅ Comparison report saved to: figma-comparison-report.md`);
     console.log('\n📊 Comparison Summary:');
     console.log(`   Matching: ${comparison.matches.length}`);
     console.log(`   Figma Only: ${comparison.figmaOnly.length}`);
     console.log(`   Code Only: ${comparison.codeOnly.length}`);
-
   } catch (error) {
     console.error('❌ Error:', error.message);
     process.exit(1);
@@ -582,5 +678,5 @@ module.exports = {
   buildFigmaEntries,
   compareComponents,
   comparePropertiesDetailed,
-  generateReport
+  generateReport,
 };
