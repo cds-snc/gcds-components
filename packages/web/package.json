@@ -35,7 +35,8 @@
     "build-storybook": "storybook build -o ./../../docs",
     "lint": "eslint .",
     "lint-and-fix": "eslint . --fix",
-    "docs:diagram": "node ./scripts/generate-mermaid-diagram.js"
+    "docs:diagram": "node ./scripts/generate-mermaid-diagram.js",
+    "docs:figma": "node ./scripts/get-compare-figma-components.js"
   },
   "dependencies": {
     "@stencil/core": "4.35.1",
