@@ -9,8 +9,8 @@ const path = require('path');
 // ============================================================================
 
 // Configuration
-const FIGMA_ACCESS_TOKEN = process.env.FIGMA_ACCESS_TOKEN;
-const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY; // Your GCDS Figma file key
+const FIGMA_ACCESS_TOKEN = process.env.FIGMA_ACCESS_TOKEN || '<your_token_here>';
+const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY || 'mh2maMG2NBtk41k1O1UGHV'; // Your GCDS Figma file key
 const FIGMA_OUTPUT_FILE = '../specs/figma-components.json';
 const FIGMA_CODE_COMPARISON_FILE = '../specs/figma-comparison-report.md';
 const CODE_SPECS_FILE = '../specs/components.json';
@@ -613,8 +613,10 @@ async function main() {
     console.log(`✅ Found ${figmaSets.length} Figma component sets`);
 
     const nodeIds = figmaSets.map(s => s.node_id).filter(Boolean);
+    console.log(`   Fetching ${nodeIds.length} nodes...`);
     const nodesById = await fetchFigmaNodesByIds(FIGMA_FILE_KEY, nodeIds);
 
+    console.log('   Building entries with properties/variants resolved from nodes...');
     // Build entries with properties/variants resolved from nodes
     const figmaEntries = buildFigmaEntries(figmaSets, nodesById);
 
