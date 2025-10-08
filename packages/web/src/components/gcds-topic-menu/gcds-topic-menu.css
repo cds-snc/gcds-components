@@ -258,7 +258,7 @@
 
       [role='menuitem'][aria-haspopup='true'][aria-expanded='false'][aria-controls]:not(
           [aria-controls*='sub']
-        ) {
+        ):not(:hover) {
         background-color: var(--gcds-topic-menu-themelist-background);
       }
     }

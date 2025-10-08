@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components",
-  "version": "0.42.0",
+  "version": "0.43.1",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Web components for the GCDS",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -52,8 +52,8 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
     "@bgotink/playwright-coverage": "^0.3.2",
-    "@cdssnc/gcds-fonts": "^0.2.2",
-    "@cdssnc/gcds-tokens": "^2.12.0",
+    "@gcds-core/fonts": "^1.0.0",
+    "@cdssnc/gcds-tokens": "^2.13.1",
     "@playwright/test": "^1.52.0",
     "@stencil/angular-output-target": "file:../../utils/angular-output-target",
     "@stencil/playwright": "^0.2.1",

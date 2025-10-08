@@ -20,9 +20,13 @@
   :host .gcds-input-wrapper {
     max-width: 75ch;
     width: 100%;
-    font: var(--gcds-input-font);
+    font: var(--gcds-input-font-desktop);
     color: var(--gcds-input-default-text);
     transition: color ease-in-out 0.15s;
+
+    @media only screen and (width < 48em) {
+      font: var(--gcds-input-font-mobile);
+    }
 
     input {
       display: block;

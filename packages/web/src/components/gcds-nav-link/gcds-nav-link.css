@@ -17,7 +17,9 @@
     text-decoration-style: solid;
     text-decoration-line: underline;
     text-decoration-color: currentColor;
-    text-decoration-thickness: var(--gcds-nav-link-default-decoration-thickness);
+    text-decoration-thickness: var(
+      --gcds-nav-link-default-decoration-thickness
+    );
     text-underline-offset: var(--gcds-nav-link-default-underline-offset);
     color: var(--gcds-nav-link-default-text);
     margin-block-end: var(--gcds-nav-link-margin);
@@ -45,7 +47,6 @@
   /* Top-nav: styles for larger screens */
   @media only screen and (width >= 64em) {
     :host > .gcds-nav-link--topnav.gcds-nav-link {
-      font: var(--gcds-nav-link-top-nav-font);
       color: var(--gcds-nav-link-top-nav-text);
       margin: var(--gcds-nav-link-top-nav-margin);
       padding: var(--gcds-nav-link-top-nav-padding);
@@ -58,7 +59,7 @@
     }
 
     /* Home link styles  */
-    :host([slot=home]) > .gcds-nav-link {
+    :host([slot='home']) > .gcds-nav-link {
       font: var(--gcds-nav-link-top-nav-home-font);
       padding: var(--gcds-nav-link-top-nav-home-padding);
     }

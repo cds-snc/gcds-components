@@ -2,6 +2,44 @@
 
 # Changelog
 
+## [0.43.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.0...gcds-components-v0.43.1)
+
+Released on: 2025-10-06
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-radios:** Fix focus when radios has an error ([#968](https://github.com/cds-snc/gcds-components/issues/968)) ([5fcce47](https://github.com/cds-snc/gcds-components/commit/5fcce473b4cde8237866f1dbe6408f2b707a34de))
+
+### :art: Styles
+
+- **gcds-topic-menu:** fix topic menu link background on hover ([#965](https://github.com/cds-snc/gcds-components/issues/965)) ([cb5b29b](https://github.com/cds-snc/gcds-components/commit/cb5b29bc25c1afdecbcca8d6b47bff4239010873))
+- **gcds-input + gcds-textarea:** add mobile font size to input & textarea ([#975](https://github.com/cds-snc/gcds-components/issues/975)) ([322944b](https://github.com/cds-snc/gcds-components/commit/322944b6db3be85f55eb6bf5b5bb5c2daefca580))
+
+## [0.43.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.1...gcds-components-v0.43.0)
+
+Released on: 2025-10-01
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-checkboxes:** handle onChange events and emit values ([#956](https://github.com/cds-snc/gcds-components/issues/956)) ([4964a89](https://github.com/cds-snc/gcds-components/commit/4964a89e288938e37e22088be9fbc8e72d6d3f45))
+
+### :art: Styles
+
+- **gcds-side-nav:** Smaller font size + chevron direction change ([#959](https://github.com/cds-snc/gcds-components/issues/959)) ([8d9afc7](https://github.com/cds-snc/gcds-components/commit/8d9afc7703abfa2dfd34a9f9679b6c9820f862c7))
+
+## [0.42.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.0...gcds-components-v0.42.1)
+
+Released on: 2025-09-16
+
+### :bug: :wrench: Bug Fixes
+
+- **select:** prevent double-escaping of special characters in select options ([#952](https://github.com/cds-snc/gcds-components/issues/952)) ([ab85c1d](https://github.com/cds-snc/gcds-components/commit/ab85c1d0e09661280bb57660b24da78fa9c3fdd3))
+- **text-area:** add null check in watchValue for shadowElement ([#950](https://github.com/cds-snc/gcds-components/issues/950)) ([67951a6](https://github.com/cds-snc/gcds-components/commit/67951a630deeb23baa5b129136c145ae69af783e))
+
+### :pencil: Documentation
+
+- add components diagram ([#940](https://github.com/cds-snc/gcds-components/issues/940)) ([abe9cc5](https://github.com/cds-snc/gcds-components/commit/abe9cc56941c52827b33eadae792f76714827a8e))
+
 ## [0.42.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.41.0...gcds-components-v0.42.0)
 
 Released on: 2025-08-27

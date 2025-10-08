@@ -145,11 +145,9 @@ describe('gcds-radios', () => {
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
             </legend>
-            <div>
-              <gcds-error-message id="radios-error" messageid="radios">
-                Error message
-              </gcds-error-message>
-            </div>
+            <gcds-error-message id="radios-error" messageid="radios">
+              Error message
+            </gcds-error-message>
             <div class="gcds-radio gcds-radio--error">
               <input aria-description="Error message" aria-invalid="true" id="radio1" name="radio" type="radio" value="radio1">
               <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>

@@ -412,11 +412,9 @@ export class GcdsRadios {
             ) : null}
 
             {errorMessage ? (
-              <div>
-                <gcds-error-message id="radios-error" messageId="radios">
-                  {errorMessage}
-                </gcds-error-message>
-              </div>
+              <gcds-error-message id="radios-error" messageId="radios">
+                {errorMessage}
+              </gcds-error-message>
             ) : null}
 
             {this.optionsArr &&
@@ -432,11 +430,10 @@ export class GcdsRadios {
 
                 if (radio.hint) {
                   const hintID = radio.hint ? `hint-${radio.id} ` : '';
-                  attrsInput['aria-describedby'] = `${hintID}${
-                    attrsInput['aria-describedby']
-                      ? `${attrsInput['aria-describedby']}`
-                      : ''
-                  }`;
+                  attrsInput['aria-describedby'] = `${hintID}${attrsInput['aria-describedby']
+                    ? `${attrsInput['aria-describedby']}`
+                    : ''
+                    }`;
                 }
 
                 if (hasError) {
@@ -446,9 +443,8 @@ export class GcdsRadios {
 
                 return (
                   <div
-                    class={`gcds-radio ${
-                      disabled ? 'gcds-radio--disabled' : ''
-                    } ${hasError ? 'gcds-radio--error' : ''}`}
+                    class={`gcds-radio ${disabled ? 'gcds-radio--disabled' : ''
+                      } ${hasError ? 'gcds-radio--error' : ''}`}
                   >
                     <input
                       id={radio.id}
