@@ -34,7 +34,7 @@ import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
       <gcds-button
         type="link"
         href="{{ path }}"
-        routerLink="/{{ path }}"
+        routerLink="{{ path }}"
         routerLinkActive="active"
       >
         Button component
