@@ -28,6 +28,6 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.1"
+    "@playwright/test": "^1.52.0"
   }
 }
