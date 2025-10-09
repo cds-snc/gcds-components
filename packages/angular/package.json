@@ -20,8 +20,8 @@
     "test": "npx playwright test"
   },
   "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
+    "@angular/common": "^19.0.0 || ^20.0.0",
+    "@angular/core": "^19.0.0 || ^20.0.0",
     "@cdssnc/gcds-components": "^0.43.1"
   },
   "dependencies": {
