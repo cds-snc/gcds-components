@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.44.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.1...gcds-components-v0.44.0) (2025-10-09)
+
+
+### Patch
+
+* **gcds-components:** Synchronize GCDS Components versions
+
 ## [0.43.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.0...gcds-components-v0.43.1) (2025-10-06)
 
 
