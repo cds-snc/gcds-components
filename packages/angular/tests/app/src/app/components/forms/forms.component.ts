@@ -36,14 +36,12 @@ import { FormsModule } from '@angular/forms';
         [(ngModel)]="number"
       ></gcds-input>
 
-      <div>
-        <p>
-          You entered: <span id="input-name">{{ name }}</span>
-        </p>
-        <p>
-          You entered: <span id="input-number">{{ number }}</span>
-        </p>
-      </div>
+      <p>
+        You entered: <span id="input-name">{{ name }}</span>
+      </p>
+      <p>
+        You entered: <span id="input-number">{{ number }}</span>
+      </p>
     </section>
 
     <section class="b-solid p-300 mb-300" id="textarea">
@@ -56,11 +54,9 @@ import { FormsModule } from '@angular/forms';
         [(ngModel)]="message"
       ></gcds-textarea>
 
-      <div>
-        <p>
-          You entered: <span id="input-message">{{ message }}</span>
-        </p>
-      </div>
+      <p>
+        You entered: <span id="input-message">{{ message }}</span>
+      </p>
     </section>
 
     <section class="b-solid p-300 mb-300" id="date-input">
@@ -104,11 +100,9 @@ import { FormsModule } from '@angular/forms';
         <option value="4">4</option>
       </gcds-select>
 
-      <div>
-        <p>
-          You entered: <span id="input-select">{{ select }}</span>
-        </p>
-      </div>
+      <p>
+        You entered: <span id="input-select">{{ select }}</span>
+      </p>
     </section>
 
     <section class="b-solid p-300 mb-300" id="radios">
@@ -125,11 +119,9 @@ import { FormsModule } from '@angular/forms';
         [(ngModel)]="radio"
       ></gcds-radios>
 
-      <div>
-        <p>
-          You entered: <span id="input-radios">{{ radio }}</span>
-        </p>
-      </div>
+      <p>
+        You entered: <span id="input-radios">{{ radio }}</span>
+      </p>
     </section>
 
     <section class="b-solid p-300 mb-300" id="checkboxes">
@@ -146,11 +138,9 @@ import { FormsModule } from '@angular/forms';
         [(ngModel)]="check"
       ></gcds-checkboxes>
 
-      <div>
-        <p>
-          You entered: <span id="input-check">{{ check }}</span>
-        </p>
-      </div>
+      <p>
+        You entered: <span id="input-check">{{ check }}</span>
+      </p>
     </section>
   </div> `,
 })
