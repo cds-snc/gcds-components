@@ -3118,7 +3118,7 @@ declare namespace LocalJSX {
          */
         "onGcdsChange"?: (event: GcdsInputCustomEvent<string>) => void;
         /**
-          * Emitted when a datalist item is selected.
+          * Emitted when a suggestion is selected.
          */
         "onGcdsDatalistSelected"?: (event: GcdsInputCustomEvent<string>) => void;
         /**

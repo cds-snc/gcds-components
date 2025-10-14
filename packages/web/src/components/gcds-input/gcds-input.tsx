@@ -332,7 +332,7 @@ export class GcdsInput {
   @Event() gcdsInput: EventEmitter<string>;
 
   /**
-   * Emitted when a datalist item is selected.
+   * Emitted when a suggestion is selected.
    */
   @Event() gcdsDatalistSelected: EventEmitter<string>;
 
