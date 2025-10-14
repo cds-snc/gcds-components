@@ -46,7 +46,7 @@ An input is a space to enter short-form information in response to a question or
 | ---------------------- | ---------------------------------------------- | --------------------- |
 | `gcdsBlur`             | Emitted when the input loses focus.            | `CustomEvent<void>`   |
 | `gcdsChange`           | Emitted when the input has changed.            | `CustomEvent<string>` |
-| `gcdsDatalistSelected` | Emitted when a datalist item is selected.      | `CustomEvent<string>` |
+| `gcdsDatalistSelected` | Emitted when a suggestion is selected.         | `CustomEvent<string>` |
 | `gcdsError`            | Emitted when the input has a validation error. | `CustomEvent<object>` |
 | `gcdsFocus`            | Emitted when the input has focus.              | `CustomEvent<void>`   |
 | `gcdsInput`            | Emitted when the element has received input.   | `CustomEvent<string>` |
