@@ -182,11 +182,30 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    suggestions: {
+      control: 'text',
+      table: {
+        type: {
+          summary: `
+        {
+          label: string;
+          value?: string;
+        }
+        string | object[]
+        `,
+        },
+        defaultValue: { summary: '-' },
+      },
+    },
     ...validatorProps,
     ...langProp,
 
     // Events
     gcdsChange: {
+      action: 'change',
+      ...eventProp,
+    },
+    gcdsDatalistSelected: {
       action: 'change',
       ...eventProp,
     },
@@ -238,6 +257,7 @@ const Template = args =>
   ${args.autofocus ? `autofocus` : null}
   ${args.readonly ? `readonly` : null}
   ${args.hideLabel ? `hide-label` : null}
+  ${args.suggestions ? `suggestions='${args.suggestions}'` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -266,6 +286,7 @@ const Template = args =>
   ${args.autofocus ? `autofocus` : null}
   ${args.readonly ? `readonly` : null}
   ${args.hideLabel ? ` hideLabel` : null}
+  ${args.suggestions ? `suggestions='${args.suggestions}'` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -295,6 +316,7 @@ const TemplatePlayground = args => `
   ${args.autofocus ? `autofocus` : null}
   ${args.readonly ? `readonly` : null}
   ${args.hideLabel ? `hide-label` : null}
+  ${args.suggestions ? `suggestions='${args.suggestions}'` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -327,6 +349,7 @@ Default.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -351,6 +374,7 @@ Disabled.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -374,6 +398,7 @@ Error.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -395,6 +420,8 @@ Required.args = {
   min: '',
   minlength: '',
   pattern: '',
+  step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -419,6 +446,7 @@ Email.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -440,6 +468,7 @@ Number.args = {
   min: '',
   minlength: '',
   pattern: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -462,6 +491,7 @@ Password.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -484,6 +514,7 @@ Search.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -506,6 +537,7 @@ Tel.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -528,6 +560,7 @@ Text.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -550,6 +583,7 @@ Url.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -572,6 +606,7 @@ Autocomplete.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -594,6 +629,7 @@ Autofocus.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -616,6 +652,7 @@ Form.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -638,6 +675,7 @@ Max.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -660,6 +698,7 @@ Min.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -682,6 +721,7 @@ Maxlength.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -704,6 +744,7 @@ Minlength.args = {
   minlength: '5',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -726,6 +767,7 @@ Pattern.args = {
   minlength: '',
   pattern: '[A-Z]+',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -748,6 +790,7 @@ Step.args = {
   minlength: '',
   pattern: '',
   step: '10',
+  suggestions: '',
   readonly: false,
 };
 
@@ -771,7 +814,35 @@ Readonly.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: true,
+};
+
+export const Suggestions = Template.bind({});
+Suggestions.args = {
+  inputId: 'input-suggestions',
+  name: 'example-suggestions',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  autocomplete: '',
+  validateOn: 'blur',
+  autofocus: false,
+  form: '',
+  max: '',
+  maxlength: '',
+  min: '',
+  minlength: '',
+  pattern: '',
+  step: '',
+  suggestions: `[
+    { "label": "Suggestion A"},
+    { "label": "Suggestion B"},
+    { "label": "Suggestion C"}
+  ]`,
+  readonly: false,
 };
 
 // ------ Input events & props ------
@@ -800,6 +871,7 @@ Props.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -829,5 +901,6 @@ Playground.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
