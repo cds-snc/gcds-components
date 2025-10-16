@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [CommonModule, GcdsComponentsModule],
+  imports: [CommonModule, GcdsComponentsModule, RouterModule],
   template: `
     <gcds-breadcrumbs [hideCanadaLink]="true">
       <gcds-breadcrumbs-item href="/home" routerLink="/home">
@@ -70,6 +70,16 @@ import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
       <gcds-nav-link href="{{ path }}" routerLink="{{ path }}">
         Nav link component
       </gcds-nav-link>
+    </section>
+
+    <section id="link-component-query-params" class="mb-400">
+      <gcds-link
+        href="{{ path }}"
+        routerLink="{{ path }}"
+        [queryParams]="{ ref: '1234' }"
+      >
+        Link component with queryParams
+      </gcds-link>
     </section>
   `,
 })

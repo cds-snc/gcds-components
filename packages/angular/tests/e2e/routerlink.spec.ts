@@ -38,4 +38,12 @@ test('routerLink with GCDS components', async ({ page }) => {
   const navLinkComponent = page.locator('#nav-link-component gcds-nav-link a');
   await navLinkComponent.click({ force: true });
   await expect(page).toHaveURL(`http://localhost:4200${pathOne}`);
+
+  // Link component with queryParams
+  // Currently won't pass query parameters to new page
+  const linkComponentParams = page.locator(
+    '#link-component-query-params gcds-link a',
+  );
+  await linkComponentParams.click({ force: true });
+  await expect(page).toHaveURL(`http://localhost:4200${pathTwo}`);
 });
