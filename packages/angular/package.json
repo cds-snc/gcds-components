@@ -15,7 +15,9 @@
     "url": "https://github.com/cds-snc/gcds-components"
   },
   "scripts": {
-    "build": "cd ../.. && ng build @cdssnc/gcds-components-angular"
+    "build": "cd ../.. && ng build @cdssnc/gcds-components-angular",
+    "pretest": "cd tests/app && npm i && cd ../../../web && npm run build",
+    "test": "npx playwright test"
   },
   "peerDependencies": {
     "@angular/common": "^19.0.0 || ^20.0.0",
@@ -24,5 +26,8 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0"
   }
 }

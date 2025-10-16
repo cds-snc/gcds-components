@@ -35,7 +35,7 @@
     "@stencil/vue-output-target": "^0.10.8"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.1",
+    "@playwright/test": "^1.52.0",
     "@types/node": "^20.14.2",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/compiler-dom": "^3.4.26",
