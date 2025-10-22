@@ -1,34 +1,9 @@
 <script setup>
-const name = defineModel('name')
-const number = defineModel('number', { default: 0, type: Number })
-const message = defineModel('message')
-const dateFull = defineModel('dateFull')
-const dateCompact = defineModel('dateCompact')
-const select = defineModel('select')
-const radio = defineModel('radio')
-const check = defineModel('check', { default: () => [] , type: Array })
+import { useFormStore } from '../stores/formData.js'
+import { storeToRefs } from 'pinia'
 
-function assignAll() {
-  name.value = 'John Doe'
-  number.value = 23
-  message.value = 'This is a message showing v-model working correctly.'
-  dateFull.value = '2024-12-25'
-  dateCompact.value = '2024-12'
-  select.value = '3'
-  radio.value = 'radio2'
-  check.value = ['check2', 'check1']
-}
-
-function reset() {
-  name.value = ''
-  number.value = 0
-  message.value = ''
-  dateFull.value = ''
-  dateCompact.value = ''
-  select.value = ''
-  radio.value = ''
-  check.value = []
-}
+const formStore = useFormStore()
+const formData = storeToRefs(formStore).formData;
 </script>
 
 <template>
@@ -38,7 +13,7 @@ function reset() {
       </gcds-breadcrumbs-item>
     </gcds-breadcrumbs>
 
-    <gcds-heading tag="h1">Form components</gcds-heading>
+    <gcds-heading tag="h1">Form components with state</gcds-heading>
 
     <form>
       <section class="b-solid p-300 mb-300" id="input">
@@ -50,7 +25,7 @@ function reset() {
           input-id="name"
           name="name"
           label="Full name"
-          v-model="name"
+          v-model="formData.name"
         ></gcds-input>
 
         <gcds-input
@@ -58,14 +33,14 @@ function reset() {
           input-id="number"
           name="number"
           label="Number"
-          v-model="number"
+          v-model="formData.number"
         ></gcds-input>
 
         <p>
-          You entered: <span id="input-name">{{ name }}</span>
+          You entered: <span id="input-name">{{ formData.name }}</span>
         </p>
         <p>
-          You entered: <span id="input-number">{{ number }}</span>
+          You entered: <span id="input-number">{{ formData.number }}</span>
         </p>
       </section>
 
@@ -76,11 +51,11 @@ function reset() {
           label="Message"
           textarea-id="message"
           name="message"
-          v-model="message"
+          v-model="formData.message"
         ></gcds-textarea>
 
         <p>
-          You entered: <span id="input-message">{{ message }}</span>
+          You entered: <span id="input-message">{{ formData.message }}</span>
         </p>
       </section>
 
@@ -92,22 +67,22 @@ function reset() {
           legend="Full date"
           name="date-full"
           format="full"
-          v-model="dateFull"
+          v-model="formData.dateFull"
         ></gcds-date-input>
 
         <gcds-date-input
           legend="Compact date"
           name="date-compact"
           format="compact"
-          v-model="dateCompact"
+          v-model="formData.dateCompact"
         ></gcds-date-input>
 
         <div>
           <p>
-            You entered: <span id="input-date-full">{{ dateFull }}</span>
+            You entered: <span id="input-date-full">{{ formData.dateFull }}</span>
           </p>
           <p>
-            You entered: <span id="input-date-compact">{{ dateCompact }}</span>
+            You entered: <span id="input-date-compact">{{ formData.dateCompact }}</span>
           </p>
         </div>
       </section>
@@ -120,7 +95,7 @@ function reset() {
           select-id="select"
           name="select"
           default-value="Select an option"
-          v-model="select"
+          v-model="formData.select"
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -129,7 +104,7 @@ function reset() {
         </gcds-select>
 
         <p>
-          You entered: <span id="input-select">{{ select }}</span>
+          You entered: <span id="input-select">{{ formData.select }}</span>
         </p>
       </section>
 
@@ -144,11 +119,11 @@ function reset() {
           { "label": "Label for radio 2", "id": "radio2", "value": "radio2"},
           { "label": "Label for radio 3", "id": "radio3", "value": "radio3"}
         ]'
-          v-model="radio"
+          v-model="formData.radio"
         ></gcds-radios>
 
         <p>
-          You entered: <span id="input-radios">{{ radio }}</span>
+          You entered: <span id="input-radios">{{ formData.radio }}</span>
         </p>
       </section>
 
@@ -163,11 +138,11 @@ function reset() {
             { "label": "Label for checkbox 2", "id": "check2", "value": "check2"},
             { "label": "Label for checkbox 3", "id": "check3", "value": "check3"}
           ]'
-          v-model="check"
+          v-model="formData.check"
         ></gcds-checkboxes>
 
         <p>
-          You entered: <span id="input-check">{{ check.toString() }}</span>
+          You entered: <span id="input-check">{{ formData.check.toString() }}</span>
         </p>
       </section>
 
@@ -175,7 +150,7 @@ function reset() {
         type="button"
         button-role="primary"
         id="assignAll"
-        @click="assignAll()"
+        @click="formStore.assignAll()"
       >
         Assign all form fields
       </gcds-button>
@@ -183,7 +158,7 @@ function reset() {
         type="reset"
         button-role="danger"
         id="reset"
-        @click="reset()"
+        @click="formStore.$reset()"
       >
         Reset
       </gcds-button>

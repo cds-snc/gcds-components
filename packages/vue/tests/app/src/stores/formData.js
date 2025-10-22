@@ -13,4 +13,20 @@ export const useFormStore = defineStore('form', {
       check: [],
     },
   }),
+  actions: {
+    assignAll() {
+      const assignData = {
+        name: 'John Doe',
+        number: 23,
+        message: 'This is a message showing v-model working correctly.',
+        select: '3',
+        dateFull: '2024-12-25',
+        dateCompact: '2024-12',
+        radio: 'radio2',
+        check: ['check2', 'check1'],
+      };
+
+      this.formData = { ...assignData };
+    },
+  },
 });
