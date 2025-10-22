@@ -72,7 +72,7 @@ const Forms = () => {
       radio: '',
       check: []
     };
-    // setTick(t => t + 1);
+    setTick(t => t + 1);
   }
   return (
     <>
