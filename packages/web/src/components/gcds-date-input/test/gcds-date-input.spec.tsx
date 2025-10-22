@@ -475,7 +475,7 @@ describe('gcds-date-input', () => {
             <legend id="date-input-legend">
               Date input
             </legend>
-            <gcds-select aria-invalid="false" class="gcds-date-input__month" defaultvalue="Select a month" label="Month" name="month" selectid="month" value="">
+            <gcds-select aria-invalid="false" class="gcds-date-input__month" defaultvalue="Select a month" label="Month" name="month" selectid="month" value="03">
               <option value="01">
                 January
               </option>
@@ -513,8 +513,8 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" value=""></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" value="015"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" value="1991"></gcds-input>
           </fieldset>
         </mock:shadow-root>
       </gcds-date-input>
@@ -533,7 +533,7 @@ describe('gcds-date-input', () => {
             <legend id="date-input-legend">
               Date input
             </legend>
-            <gcds-select aria-invalid="false" class="gcds-date-input__month" defaultvalue="Select a month" label="Month" name="month" selectid="month" value="">
+            <gcds-select aria-invalid="false" class="gcds-date-input__month" defaultvalue="Select a month" label="Month" name="month" selectid="month" value="15">
               <option value="01">
                 January
               </option>
@@ -571,7 +571,7 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" value="1991"></gcds-input>
           </fieldset>
         </mock:shadow-root>
       </gcds-date-input>
