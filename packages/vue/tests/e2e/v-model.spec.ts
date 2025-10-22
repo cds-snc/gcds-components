@@ -154,7 +154,6 @@ for (const { name, url } of urls) {
     await expect(
       page.locator('gcds-checkboxes input[value="check3"]'),
     ).not.toBeChecked();
-    await expect(page.locator('#input-check')).toHaveText('check2,check1');
 
     await page.locator('#reset').click();
 
@@ -166,6 +165,66 @@ for (const { name, url } of urls) {
     await expect(page.locator('#input-select')).toHaveText('');
     await expect(page.locator('#input-radios')).toHaveText('');
     await expect(page.locator('#input-check')).toHaveText('');
+  });
+
+  // Assign invalid values to v-model/state and expect defaults to be shown
+  test(`Invalid values - ${name}`, async ({ page }) => {
+    await page.goto(url);
+
+    await expect(page.locator('#input-number')).toHaveText('0');
+    await expect(page.locator('#input-date-full')).toHaveText('');
+    await expect(page.locator('#input-date-compact')).toHaveText('');
+    await expect(page.locator('#input-select')).toHaveText('');
+    await expect(page.locator('#input-radios')).toHaveText('');
+    await expect(page.locator('#input-check')).toHaveText('');
+
+    await page.locator('#invalid').click();
+
+    await expect(page.locator('input[name="number"]')).toHaveValue('');
+    await expect(page.locator('#input-number')).toHaveText('red');
+
+    await expect(page.locator('#input-date-full')).toHaveText('20sd-12s-25s');
+    await expect(
+      page.locator('gcds-date-input[name="date-full"] input[name="day"]'),
+    ).toHaveValue('');
+    await expect(
+      page.locator('gcds-date-input[name="date-full"] select[name="month"]'),
+    ).toHaveValue('');
+    await expect(
+      page.locator('gcds-date-input[name="date-full"] input[name="year"]'),
+    ).toHaveValue('');
+
+    await expect(page.locator('#input-date-compact')).toHaveText('2e4-12');
+    await expect(
+      page.locator('gcds-date-input[name="date-compact"] select[name="month"]'),
+    ).toHaveValue('');
+    await expect(
+      page.locator('gcds-date-input[name="date-compact"] input[name="year"]'),
+    ).toHaveValue('');
+
+    await expect(page.locator('#input-select')).toHaveText('5');
+    await expect(page.locator('gcds-select select[name="select"]')).toHaveValue(
+      '',
+    );
+
+    await expect(page.locator('#input-radios')).toHaveText('radio5');
+    await expect(
+      page.locator('gcds-radios input[value="radio2"]'),
+    ).not.toBeChecked();
+    await expect(
+      page.locator('gcds-radios input[value="radio1"]'),
+    ).not.toBeChecked();
+
+    await expect(page.locator('#input-check')).toHaveText('check5');
+    await expect(
+      page.locator('gcds-checkboxes input[value="check2"]'),
+    ).not.toBeChecked();
+    await expect(
+      page.locator('gcds-checkboxes input[value="check1"]'),
+    ).not.toBeChecked();
+    await expect(
+      page.locator('gcds-checkboxes input[value="check3"]'),
+    ).not.toBeChecked();
   });
 }
 

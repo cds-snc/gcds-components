@@ -19,6 +19,15 @@ function assignAll() {
   check.value = ['check2', 'check1']
 }
 
+function assignInvalidValues() {
+  number.value = 'red'
+  dateFull.value = '20sd-12s-25s'
+  dateCompact.value = '2e4-12'
+  select.value = '5'
+  radio.value = 'radio5'
+  check.value = 'check5'
+}
+
 function reset() {
   name.value = ''
   number.value = 0
@@ -178,6 +187,14 @@ function reset() {
         @click="assignAll()"
       >
         Assign all form fields
+      </gcds-button>
+      <gcds-button
+        type="button"
+        button-role="secondary"
+        id="invalid"
+        @click="assignInvalidValues()"
+      >
+        Assign invalid values
       </gcds-button>
       <gcds-button
         type="reset"

@@ -155,6 +155,14 @@ const formData = storeToRefs(formStore).formData;
         Assign all form fields
       </gcds-button>
       <gcds-button
+        type="button"
+        button-role="secondary"
+        id="invalid"
+        @click="formStore.assignInvalidValues()"
+      >
+        Assign invalid values
+      </gcds-button>
+      <gcds-button
         type="reset"
         button-role="danger"
         id="reset"
