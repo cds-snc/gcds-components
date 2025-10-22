@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import {
   GcdsHeading,
@@ -25,7 +25,8 @@ const Forms = () => {
     check: string[];
   };
 
-  const [formData, setFormData] = useState<FormData>({
+  // useRef holds the form data; a small state tick forces re-renders when needed
+  const formRef = useRef<FormData>({
     name: '',
     number: 0,
     message: '',
@@ -35,18 +36,19 @@ const Forms = () => {
     radio: '',
     check: []
   });
+  const [, setTick] = useState(0);
 
-  // Handle form inputs to set into state
+  // Handle form inputs to set into ref and force update
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
 
-    console.log(`Input changed: ${name} = ${value}`);
-
-    setFormData({ ...formData, [name]: value });
+    // mutate ref and trigger a re-render
+    (formRef.current as any)[name] = value;
+    setTick(t => t + 1);
   };
 
   const assignAll = () => {
-    setFormData({
+    formRef.current = {
       name: 'John Doe',
       number: 23,
       message: 'This is a message showing state working correctly.',
@@ -55,11 +57,12 @@ const Forms = () => {
       select: '3',
       radio: 'radio2',
       check: ['check2', 'check1']
-    });
+    };
+    setTick(t => t + 1);
   }
 
   const reset = () => {
-    setFormData({
+    formRef.current = {
       name: '',
       number: 0,
       message: '',
@@ -68,7 +71,8 @@ const Forms = () => {
       select: '',
       radio: '',
       check: []
-    });
+    };
+    // setTick(t => t + 1);
   }
   return (
     <>
@@ -91,7 +95,7 @@ const Forms = () => {
             inputId="name"
             name="name"
             label="Full name"
-            value={formData.name}
+            value={formRef.current.name}
             onGcdsInput={event => handleInputChange(event)}
           />
 
@@ -100,15 +104,15 @@ const Forms = () => {
             inputId="number"
             name="number"
             label="Number"
-            value={formData.number.toString()}
+            value={formRef.current.number.toString()}
             onGcdsInput={event => handleInputChange(event)}
           />
 
           <p>
-            You entered: <span id="input-name">{formData.name}</span>
+            You entered: <span id="input-name">{formRef.current.name}</span>
           </p>
           <p>
-            You entered: <span id="input-number">{formData.number}</span>
+            You entered: <span id="input-number">{formRef.current.number}</span>
           </p>
         </section>
 
@@ -121,12 +125,12 @@ const Forms = () => {
             label="Message"
             textareaId="message"
             name="message"
-            value={formData.message}
+            value={formRef.current.message}
             onGcdsInput={event => handleInputChange(event)}
           />
 
           <p>
-            You entered: <span id="input-message">{formData.message}</span>
+            You entered: <span id="input-message">{formRef.current.message}</span>
           </p>
         </section>
 
@@ -141,7 +145,7 @@ const Forms = () => {
             legend="Full date"
             name="dateFull"
             format="full"
-            value={formData.dateFull}
+            value={formRef.current.dateFull}
             onInput={event => handleInputChange(event)}
           />
 
@@ -149,15 +153,15 @@ const Forms = () => {
             legend="Compact date"
             name="dateCompact"
             format="compact"
-            value={formData.dateCompact}
+            value={formRef.current.dateCompact}
             onInput={event => handleInputChange(event)}
           />
 
           <p>
-            You entered: <span id="input-date-full">{formData.dateFull}</span>
+            You entered: <span id="input-date-full">{formRef.current.dateFull}</span>
           </p>
           <p>
-            You entered: <span id="input-date-compact">{formData.dateCompact}</span>
+            You entered: <span id="input-date-compact">{formRef.current.dateCompact}</span>
           </p>
         </section>
 
@@ -170,7 +174,7 @@ const Forms = () => {
             label="Select"
             selectId="select"
             name="select"
-            value={formData.select}
+            value={formRef.current.select}
             onGcdsInput={event => handleInputChange(event)}
           >
             <option value="">Select an option</option>
@@ -181,7 +185,7 @@ const Forms = () => {
           </GcdsSelect>
 
           <p>
-            You entered: <span id="input-select">{formData.select}</span>
+            You entered: <span id="input-select">{formRef.current.select}</span>
           </p>
         </section>
 
@@ -198,12 +202,12 @@ const Forms = () => {
               { label: "Label for radio 2", id: "radio2", value: "radio2" },
               { label: "Label for radio 3", id: "radio3", value: "radio3" }
             ]}
-            value={formData.radio}
+            value={formRef.current.radio}
             onGcdsInput={event => handleInputChange(event)}
           />
 
           <p>
-            You entered: <span id="input-radios">{formData.radio}</span>
+            You entered: <span id="input-radios">{formRef.current.radio}</span>
           </p>
         </section>
 
@@ -220,12 +224,12 @@ const Forms = () => {
               { label: "Label for checkbox 2", id: "check2", value: "check2" },
               { label: "Label for checkbox 3", id: "check3", value: "check3" }
             ]}
-            value={formData.check}
+            value={formRef.current.check}
             onGcdsInput={event => handleInputChange(event)}
           />
 
           <p>
-            You entered: <span id="input-check">{formData.check.toString()}</span>
+            You entered: <span id="input-check">{formRef.current.check.toString()}</span>
           </p>
         </section>
 
