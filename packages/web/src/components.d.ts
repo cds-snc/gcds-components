@@ -315,7 +315,7 @@ export namespace Components {
         /**
           * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
          */
-        "format": 'full' | 'compact';
+        "format": 'full' | 'compact' | 'yyyy-mm-dd';
         /**
           * Get validationMessage of gcds-date-input
          */
@@ -2682,7 +2682,7 @@ declare namespace LocalJSX {
         /**
           * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
          */
-        "format": 'full' | 'compact';
+        "format": 'full' | 'compact' | 'yyyy-mm-dd';
         /**
           * Hint displayed below the legend and above form fields.
          */
