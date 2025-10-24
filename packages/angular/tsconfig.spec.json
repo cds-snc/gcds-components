@@ -4,11 +4,22 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/spec",
     "types": [
-      "jasmine"
+      "jasmine",
+      "node",
+      "jest"
     ]
   },
+  "files": [
+    "tests/test-setup.ts",
+    "tests/setup-jest.ts"
+  ],
   "include": [
-    "**/*.spec.ts",
+    "tests/unit/**/*.spec.ts",
     "**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "tests/app",
+    "tests/e2e"
   ]
 }
