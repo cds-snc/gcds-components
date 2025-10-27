@@ -22,7 +22,7 @@ export default {
     },
     format: {
       control: { type: 'select' },
-      options: ['full', 'compact'],
+      options: ['full', 'compact', 'yyyy-MM-dd'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
@@ -199,6 +199,38 @@ FullFR.args = {
   name: 'FullFR-default',
   legend: 'Date input',
   format: 'full',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'fr',
+  validateOn: '',
+};
+
+// ------ Date input Format yyyy-mm-dd English ------
+
+export const YyyyMMddEn = Template.bind({});
+YyyyMMddEn.args = {
+  name: 'yyyyMMddEN-default',
+  legend: 'Date input',
+  format: 'yyyy-mm-dd',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+};
+
+// ------ Date input Format yyyy-mm-dd French ------
+
+export const YyyyMMddFr = Template.bind({});
+YyyyMMddFr.args = {
+  name: 'yyyyMMddEN-default',
+  legend: 'Date input',
+  format: 'yyyy-mm-dd',
   value: '',
   hint: '',
   errorMessage: '',
