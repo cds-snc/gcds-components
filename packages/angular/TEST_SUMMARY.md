@@ -139,34 +139,6 @@ Example components to test next:
 - GcdsButton
 - GcdsFileUploader
 
-## Dependencies Added
-
-```json
-{
-  "dependencies": {
-    "zone.js": "^0.15.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^19.0.6",
-    "@angular/cli": "^19.0.0",
-    "@angular/compiler-cli": "^19.0.0",
-    "@angular/platform-browser": "^19.0.0",
-    "@angular/platform-browser-dynamic": "^19.0.0",
-    "@types/jasmine": "^5.1.4",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^22.10.2",
-    "jasmine-core": "^5.1.2",
-    "jest": "^29.7.0",
-    "jest-preset-angular": "^14.4.2",
-    "karma": "^6.4.3",
-    "karma-chrome-launcher": "^3.2.0",
-    "karma-coverage": "^2.2.1",
-    "karma-jasmine": "^5.1.0",
-    "karma-jasmine-html-reporter": "^2.1.0",
-    "ts-jest": "^29.2.5"
-  }
-}
-```
 
 ## Coverage Reports
 
