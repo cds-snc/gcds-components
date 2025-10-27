@@ -4,7 +4,7 @@ import { GcdsInput } from '../../src/lib/stencil-generated/components';
 
 // Test host component to properly test the wrapper
 @Component({
-  template: `<gcds-input 
+  template: `<gcds-input
     [type]="inputType"
     [label]="label"
     [inputId]="inputId"
@@ -316,6 +316,20 @@ describe('GcdsInput', () => {
       testHost.value = 'https://example.com/page#section';
       fixture.detectChanges();
       expect(testHost.value).toBe('https://example.com/page#section');
+    });
+  });
+
+  describe('Other Input Types', () => {
+    const otherTypes: Array<'date' | 'time' | 'color' | 'file' | 'hidden' | 'range'> = [
+      'date', 'time', 'color', 'file', 'hidden', 'range'
+    ];
+
+    otherTypes.forEach(type => {
+      it(`should accept ${type} input type`, () => {
+        testHost.inputType = type;
+        fixture.detectChanges();
+        expect(testHost.inputType).toBe(type);
+      });
     });
   });
 
