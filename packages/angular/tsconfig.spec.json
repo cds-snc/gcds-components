@@ -9,7 +9,6 @@
     ]
   },
   "files": [
-    "tests/test-setup.ts",
     "tests/setup-jest.ts"
   ],
   "include": [
