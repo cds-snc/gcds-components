@@ -8,13 +8,11 @@ module.exports = {
     '/tests/app/',
     '/tests/e2e/',
     '/demo-app/',
-    'tests/test-setup.ts',
     'tests/setup-jest.ts'
   ],
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/**/*.spec.ts',
-    '!src/test.ts',
     '!src/**/index.ts'
   ],
   coverageDirectory: '../../coverage/gcds-components-angular',
