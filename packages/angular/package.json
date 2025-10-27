@@ -20,7 +20,8 @@
     "test": "npx playwright test",
     "test:unit": "jest --config=jest.config.js",
     "test:unit:watch": "jest --config=jest.config.js --watch",
-    "test:unit:ci": "jest --config=jest.config.js --coverage --ci"
+    "test:unit:ci": "jest --config=jest.config.js --ci",
+    "test:unit:coverage": "jest --config=jest.config.js --coverage"
   },
   "peerDependencies": {
     "@angular/common": "^19.0.0 || ^20.0.0",
@@ -38,17 +39,10 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@playwright/test": "^1.52.0",
-    "@types/jasmine": "^5.1.4",
     "@types/jest": "^29.5.12",
     "@types/node": "^22.10.2",
-    "jasmine-core": "^5.1.2",
     "jest": "^29.7.0",
     "jest-preset-angular": "^14.4.2",
-    "karma": "^6.4.3",
-    "karma-chrome-launcher": "^3.2.0",
-    "karma-coverage": "^2.2.1",
-    "karma-jasmine": "^5.1.0",
-    "karma-jasmine-html-reporter": "^2.1.0",
     "ts-jest": "^29.2.5"
   }
 }

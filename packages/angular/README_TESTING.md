@@ -13,7 +13,7 @@ npm run test:unit
 # From packages/angular directory  
 npm run test:unit          # Run once
 npm run test:unit:watch    # Watch mode for development
-npm run test:unit:ci       # CI/CD with coverage
+npm run test:unit:ci       # CI/CD mode
 ```
 
 ## Current Test Coverage
@@ -40,8 +40,6 @@ The test suite is ready for CI/CD:
 - run: npm run test:unit:ci
   working-directory: ./packages/angular
 ```
-
-Coverage reports generated at: `coverage/gcds-components-angular/`
 
 ## Next Steps
 

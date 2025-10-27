@@ -78,9 +78,7 @@ npm run test:unit:ci
 
 This command:
 - Runs tests in non-interactive mode
-- Generates code coverage reports
 - Uses the `--ci` flag for CI/CD optimizations
-- Outputs coverage to `../../coverage/gcds-components-angular/`
 
 ## Adding New Component Tests
 
@@ -122,8 +120,6 @@ describe('YourComponent', () => {
 });
 ```
 
-**Note**: Always place test files in `tests/unit/` directory, NOT in `src/lib/stencil-generated/` as that folder is auto-generated.
-
 ## Troubleshooting
 
 ### Tests won't run
@@ -133,8 +129,4 @@ describe('YourComponent', () => {
 ### Tests fail unexpectedly
 - Clear Jest cache: `jest --clearCache`
 - Rebuild the project: `npm run build`
-
-### Coverage not generated
-- Use `npm run test:unit:ci` which includes the `--coverage` flag
-- Check the `../../coverage/gcds-components-angular/` directory for reports
 
