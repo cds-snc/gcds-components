@@ -14,15 +14,6 @@
     "type": "git",
     "url": "https://github.com/cds-snc/gcds-components"
   },
-  "scripts": {
-    "build": "cd ../.. && ng build @cdssnc/gcds-components-angular",
-    "pretest": "cd tests/app && npm i && cd ../../../web && npm run build",
-    "test": "npx playwright test",
-    "test:unit": "jest --config=jest.config.js",
-    "test:unit:watch": "jest --config=jest.config.js --watch",
-    "test:unit:ci": "jest --config=jest.config.js --ci",
-    "test:unit:coverage": "jest --config=jest.config.js --coverage"
-  },
   "peerDependencies": {
     "@angular/common": "^19.0.0 || ^20.0.0",
     "@angular/core": "^19.0.0 || ^20.0.0",
@@ -31,18 +22,5 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^19.2.15",
-    "@angular/cli": "^19.2.15",
-    "@angular/compiler-cli": "^19.2.15",
-    "@angular/platform-browser": "^19.2.15",
-    "@angular/platform-browser-dynamic": "^19.2.15",
-    "@playwright/test": "^1.52.0",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^22.10.2",
-    "jest": "^29.7.0",
-    "jest-preset-angular": "^14.4.2",
-    "ts-jest": "^29.2.5"
   }
 }
