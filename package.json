@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
-    "build": "npm run build:web && npm run build:angular && npm run build:vue",
+    "build": "npm run build --ws",
 
     "build:web": "npm run build -w @cdssnc/gcds-components",
     "build:vue": "npm run build -w @cdssnc/gcds-components-vue",
