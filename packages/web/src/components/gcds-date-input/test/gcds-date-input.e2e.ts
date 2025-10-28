@@ -53,13 +53,13 @@ test.describe('gcds-date-input', () => {
     await page.waitForChanges();
 
     await element.locator('select').selectOption('03');
-    await element.locator('input[name="year"]').fill('12345');
+    await element.locator('input[name="year"]').fill('1234');
 
     const value = await element.evaluate(
       el => (el as HTMLGcdsDateInputElement).value,
     );
 
-    expect(value).toEqual('12345-03');
+    expect(value).toEqual('1234-03');
   });
   /**
    * Invalid value
@@ -97,13 +97,13 @@ test.describe('gcds-date-input', () => {
     await page.waitForChanges();
 
     await element.locator('select').selectOption('03');
-    await element.locator('input[name="year"]').fill('1234');
+    await element.locator('input[name="year"]').fill('12345');
 
     const value = await element.evaluate(
       el => (el as HTMLGcdsDateInputElement).value,
     );
 
-    expect(value).toEqual('1234-03');
+    expect(value).toEqual('12345-03');
   });
   /**
    * Validation
