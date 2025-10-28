@@ -53,6 +53,50 @@ test.describe('gcds-date-input', () => {
     await page.waitForChanges();
 
     await element.locator('select').selectOption('03');
+    await element.locator('input[name="year"]').fill('12345');
+
+    const value = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).value,
+    );
+
+    expect(value).toEqual('12345-03');
+  });
+  /**
+   * Invalid value
+   */
+  test('Format: full - invalid value', async ({ page }) => {
+    const element = await page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.locator('select').selectOption('03');
+    await element.locator('input[name="year"]').fill('12345');
+    await element.locator('input[name="day"]').fill('2e3', { force: true });
+
+    const value = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).value,
+    );
+
+    expect(value).toEqual('12345-03-2e3');
+  });
+  test('Format: compact - invalid value', async ({ page }) => {
+    const element = await page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      el => ((el as HTMLGcdsDateInputElement).format = 'compact'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('select').selectOption('03');
     await element.locator('input[name="year"]').fill('1234');
 
     const value = await element.evaluate(

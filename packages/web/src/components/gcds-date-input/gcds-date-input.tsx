@@ -87,12 +87,11 @@ export class GcdsDateInput {
   }
 
   /**
-   * Default value for the date input element. Format: YYYY-MM-DD
+   * Combined date value from the two/three form elements. Format: YYYY-MM-DD or YYYY-MM
    */
   @Prop({ mutable: true }) value?: string;
   @Watch('value')
-  validateValue() {
-
+  watchValue() {
     if (this.value) {
       this.splitFormValue();
       this.internals.setFormValue(this.value);
@@ -378,7 +377,8 @@ export class GcdsDateInput {
       logError('gcds-date-input', this.errors);
     }
 
-    this.validateValue();
+    this.watchValue();
+
     if (this.value && isValidDate(this.value)) {
       this.splitFormValue();
       this.setValue();
