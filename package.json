@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
+
     "build": "npm run build:angular-output-target && npm run build:web && npm run build:vue && npm run build:angular && npm run build:react && npm run build:react-ssr",
 
     "build:angular-output-target": "npm run build -w utils/angular-output-target",
@@ -15,10 +16,10 @@
     "build:react":"npm run build -w @cdssnc/gcds-components-react",
     "build:react-ssr":"npm run build -w @cdssnc/gcds-components-react-ssr",
 
-
     "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/vue && npm run test:angular",
-    "test:unit": "npm run test:unit --workspace=packages/angular",
+    "test:unit": "npm run test:angular:unit && npm run pretest:web && npm run test:unit --workspace=packages/web",
 
+    "pretest:web": "npm run patch:stenciljs",
     "pretest:angular": "npm i --prefix packages/angular/tests/app && npm run build:web",
     "test:angular": "playwright test -c packages/angular/playwright.config.ts",
     "test:angular:unit": "jest --config=packages/angular/jest.config.js",
