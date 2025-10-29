@@ -299,7 +299,7 @@ export namespace Components {
     string | ValidatorEntry | Validator<string>
   >;
         /**
-          * Default value for the date input element. Format: YYYY-MM-DD
+          * Combined date value from the two/three form elements. Format: YYYY-MM-DD or YYYY-MM
          */
         "value"?: string;
     }
@@ -2585,7 +2585,7 @@ declare namespace LocalJSX {
     string | ValidatorEntry | Validator<string>
   >;
         /**
-          * Default value for the date input element. Format: YYYY-MM-DD
+          * Combined date value from the two/three form elements. Format: YYYY-MM-DD or YYYY-MM
          */
         "value"?: string;
     }

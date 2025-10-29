@@ -22,7 +22,7 @@ A date input is a space to enter a known date.
 | `required`            | `required`      | Specifies if a form field is required or not.                                                                                          | `boolean`                                           | `false`     |
 | `validateOn`          | `validate-on`   | Set event to call validator                                                                                                            | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
 | `validator`           | `validator`     | Array of validators                                                                                                                    | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `value`               | `value`         | Default value for the date input element. Format: YYYY-MM-DD                                                                           | `string`                                            | `undefined` |
+| `value`               | `value`         | Combined date value from the two/three form elements. Format: YYYY-MM-DD or YYYY-MM                                                    | `string`                                            | `undefined` |
 
 
 ## Events
