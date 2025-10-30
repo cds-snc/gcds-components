@@ -729,4 +729,34 @@ describe('gcds-input', () => {
       </gcds-input>
     `);
   });
+
+  it('renders input with suggestions', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-suggestions" name="input-with-suggestions-name" suggestions=\'[{ "label": "Skipper the cat"}, { "label": "Option2", "value": "Dog"}]\' />',
+    });
+
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-suggestions" name="input-with-suggestions-name" suggestions='[{ "label": "Skipper the cat"}, { "label": "Option2", "value": "Dog"}]'>
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-suggestions" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-suggestions"
+              name="input-with-suggestions-name"
+              part="input"
+              aria-labelledby="label-for-input-with-suggestions"
+              aria-invalid="false"
+              list="datalist-for-input-with-suggestions"
+            />
+            <datalist id="datalist-for-input-with-suggestions">
+              <option value="Skipper the cat">Skipper the cat</option>
+              <option value="Dog">Option2</option>
+            </datalist>
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
 });
