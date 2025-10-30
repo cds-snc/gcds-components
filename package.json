@@ -8,7 +8,7 @@
     "compile": "gulp compile",
     "build": "npm run build --ws",
     "pretest": "npm run patch:stenciljs",
-    "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/vue --workspace=packages/angular",
+    "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/react --workspace=packages/vue --workspace=packages/angular",
     "build-storybook": "npm run build-storybook -w @cdssnc/gcds-components",
     "start-storybook": "npm run storybook -w @cdssnc/gcds-components",
     "patch:stenciljs": "npx --yes patch-package",
