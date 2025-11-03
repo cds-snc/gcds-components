@@ -28,7 +28,7 @@
     }
 
     .label--required {
-      font-weight: var(--gcds-label-required-font-weight);
+      font-weight: bold;
       margin: var(--gcds-label-required-margin) !important;
     }
   }

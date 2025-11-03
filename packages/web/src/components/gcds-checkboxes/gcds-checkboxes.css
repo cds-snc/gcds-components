@@ -43,14 +43,14 @@
         margin: var(--gcds-checkbox-legend-margin);
 
         .legend__required {
-          font: var(--gcds-checkbox-legend-required-font-desktop);
+          font: bold;
         }
 
         @media only screen and (width < 48em) {
           font: var(--gcds-checkbox-legend-font-mobile);
 
           .legend__required {
-            font: var(--gcds-checkbox-legend-required-font-mobile);
+            font: bold;
           }
         }
 

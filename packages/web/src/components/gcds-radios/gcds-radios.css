@@ -41,14 +41,14 @@
       margin: var(--gcds-radio-legend-margin);
 
       .legend__required {
-        font: var(--gcds-radio-legend-required-font-desktop);
+        font: bold;
       }
 
       @media only screen and (width < 48em) {
         font: var(--gcds-radio-legend-font-mobile);
 
         .legend__required {
-          font: var(--gcds-radio-legend-required-font-mobile);
+          font: bold;
         }
       }
 

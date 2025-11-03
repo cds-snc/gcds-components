@@ -431,8 +431,8 @@ export class GcdsRadios {
                 if (radio.hint) {
                   const hintID = radio.hint ? `hint-${radio.id} ` : '';
                   attrsInput['aria-describedby'] = `${hintID}${attrsInput['aria-describedby']
-                    ? `${attrsInput['aria-describedby']}`
-                    : ''
+                      ? `${attrsInput['aria-describedby']}`
+                      : ''
                     }`;
                 }
 
