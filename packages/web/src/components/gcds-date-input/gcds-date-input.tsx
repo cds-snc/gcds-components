@@ -74,7 +74,9 @@ export class GcdsDateInput {
   }
 
   private getFullOrCompactDate() {
-    return this.format == 'full' || this.format == 'yyyy-mm-dd' ? 'full' : 'compact'
+    return this.format == 'full' || this.format == 'yyyy-mm-dd'
+      ? 'full'
+      : 'compact';
   }
 
   /**
@@ -83,7 +85,12 @@ export class GcdsDateInput {
   @Prop() format!: 'full' | 'compact' | 'yyyy-mm-dd';
   @Watch('format')
   validateFormat() {
-    if (!this.format || (this.format != 'full' && this.format != 'compact' && this.format != 'yyyy-mm-dd')) {
+    if (
+      !this.format ||
+      (this.format != 'full' &&
+        this.format != 'compact' &&
+        this.format != 'yyyy-mm-dd')
+    ) {
       this.errors.push('format');
     } else if (this.errors.includes('format')) {
       this.errors.splice(this.errors.indexOf('format'), 1);
