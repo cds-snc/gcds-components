@@ -16,5 +16,15 @@
           Form components with state management (Pinia)
         </gcds-link>
       </li>
+      <li>
+        <p>Extra tests:</p>
+        <ul class="list-disc">
+          <li>
+            <gcds-link href="/file-uploader">
+              File uploader
+            </gcds-link>
+          </li>
+        </ul>
+      </li>
     </ul>
 </template>
