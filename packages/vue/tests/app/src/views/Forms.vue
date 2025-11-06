@@ -49,7 +49,8 @@ function reset() {
 
     <gcds-heading tag="h1">Form components</gcds-heading>
 
-    <form>
+    <form novalidate>
+      <gcds-error-summary></gcds-error-summary>
       <section class="b-solid p-300 mb-300" id="input">
         <gcds-heading tag="h2" margin-top="0">Gcds-input</gcds-heading>
         <p>Text input and number input</p>
@@ -60,6 +61,8 @@ function reset() {
           name="name"
           label="Full name"
           v-model="name"
+          required
+          validate-on="submit"
         ></gcds-input>
 
         <gcds-input
@@ -86,6 +89,8 @@ function reset() {
           textarea-id="message"
           name="message"
           v-model="message"
+          required
+          validate-on="submit"
         ></gcds-textarea>
 
         <p>
@@ -102,6 +107,8 @@ function reset() {
           name="date-full"
           format="full"
           v-model="dateFull"
+          required
+          validate-on="submit"
         ></gcds-date-input>
 
         <gcds-date-input
@@ -109,6 +116,8 @@ function reset() {
           name="date-compact"
           format="compact"
           v-model="dateCompact"
+          required
+          validate-on="submit"
         ></gcds-date-input>
 
         <div>
@@ -130,6 +139,8 @@ function reset() {
           name="select"
           default-value="Select an option"
           v-model="select"
+          required
+          validate-on="submit"
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -154,6 +165,8 @@ function reset() {
           { "label": "Label for radio 3", "id": "radio3", "value": "radio3"}
         ]'
           v-model="radio"
+          required
+          validate-on="submit"
         ></gcds-radios>
 
         <p>
@@ -173,6 +186,8 @@ function reset() {
             { "label": "Label for checkbox 3", "id": "check3", "value": "check3"}
           ]'
           v-model="check"
+          required
+          validate-on="submit"
         ></gcds-checkboxes>
 
         <p>
@@ -180,6 +195,13 @@ function reset() {
         </p>
       </section>
 
+      <gcds-button
+        type="submit"
+        button-role="primary"
+        id="submit"
+      >
+        Submit
+      </gcds-button>
       <gcds-button
         type="button"
         button-role="primary"
