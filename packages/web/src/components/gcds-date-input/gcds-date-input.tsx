@@ -87,21 +87,11 @@ export class GcdsDateInput {
   }
 
   /**
-   * Default value for the date input element. Format: YYYY-MM-DD
+   * Combined date value from the two/three form elements. Format: YYYY-MM-DD or YYYY-MM
    */
   @Prop({ mutable: true }) value?: string;
   @Watch('value')
-  validateValue() {
-    if (this.value && !isValidDate(this.value)) {
-      this.errors.push('value');
-      this.value = null;
-      console.error(
-        `${i18n['en'].valueError}${i18n['en'][`valueFormat${this.format}`]} | ${i18n['fr'].valueError}${i18n['fr'][`valueFormat${this.format}`]}`,
-      );
-    } else if (this.errors.includes('value')) {
-      this.errors.splice(this.errors.indexOf('value'), 1);
-    }
-
+  watchValue() {
     if (this.value) {
       this.splitFormValue();
       this.internals.setFormValue(this.value);
@@ -328,35 +318,13 @@ export class GcdsDateInput {
       this.dayValue = dayValue;
     }
 
-    // All form elements have something entered
-    if (yearValue && monthValue && dayValue && format == 'full') {
-      // Is the combined value a valid date
-      if (isValidDate(`${yearValue}-${monthValue}-${dayValue}`, format)) {
-        this.value = `${yearValue}-${monthValue}-${dayValue}`;
-        this.internals.setFormValue(this.value);
-      } else {
-        this.value = null;
-        this.internals.setFormValue(null);
-
-        return false;
-      }
-    } else if (yearValue && monthValue && format == 'compact') {
-      // Is the combined value a valid date
-      if (isValidDate(`${yearValue}-${monthValue}`, format)) {
-        this.value = `${yearValue}-${monthValue}`;
-        this.internals.setFormValue(this.value);
-      } else {
-        this.value = null;
-        this.internals.setFormValue(null);
-
-        return false;
-      }
-    } else {
-      this.value = null;
-      this.internals.setFormValue(null);
-
-      return false;
+    if (format === 'full') {
+      this.value = `${yearValue}-${monthValue}-${dayValue}`;
+    } else if (format === 'compact') {
+      this.value = `${yearValue}-${monthValue}`;
     }
+
+    this.internals.setFormValue(this.value);
 
     return true;
   }
@@ -365,17 +333,15 @@ export class GcdsDateInput {
    * Split value into parts depending on format
    */
   private splitFormValue() {
-    if (this.value && isValidDate(this.value, this.format)) {
-      if (this.format == 'compact') {
-        const splitValue = this.value.split('-');
-        this.yearValue = splitValue[0];
-        this.monthValue = splitValue[1];
-      } else {
-        const splitValue = this.value.split('-');
-        this.yearValue = splitValue[0];
-        this.monthValue = splitValue[1];
-        this.dayValue = splitValue[2];
-      }
+    if (this.format == 'compact') {
+      const splitValue = this.value.split('-');
+      this.yearValue = splitValue[0];
+      this.monthValue = splitValue[1];
+    } else {
+      const splitValue = this.value.split('-');
+      this.yearValue = splitValue[0];
+      this.monthValue = splitValue[1];
+      this.dayValue = splitValue[2];
     }
   }
 
@@ -411,7 +377,8 @@ export class GcdsDateInput {
       logError('gcds-date-input', this.errors);
     }
 
-    this.validateValue();
+    this.watchValue();
+
     if (this.value && isValidDate(this.value)) {
       this.splitFormValue();
       this.setValue();
