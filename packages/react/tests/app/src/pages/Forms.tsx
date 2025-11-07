@@ -10,7 +10,8 @@ import {
   GcdsInput,
   GcdsTextarea,
   GcdsSelect,
-  GcdsRadios
+  GcdsRadios,
+  GcdsErrorSummary
 } from '@cdssnc/gcds-components-react';
 
 const Forms = () => {
@@ -82,7 +83,8 @@ const Forms = () => {
 
       <GcdsHeading tag="h1"> Form components </GcdsHeading>
 
-      <form>
+      <form noValidate>
+        <GcdsErrorSummary></GcdsErrorSummary>
         <section className="b-solid p-300 mb-300" id="input">
           <GcdsHeading tag="h2" marginTop="0">
             Gcds-input
@@ -97,6 +99,8 @@ const Forms = () => {
             label="Full name"
             value={formRef.current.name}
             onGcdsInput={event => handleInputChange(event)}
+            validateOn='submit'
+            required
           />
 
           <GcdsInput
@@ -127,6 +131,8 @@ const Forms = () => {
             name="message"
             value={formRef.current.message}
             onGcdsInput={event => handleInputChange(event)}
+            validateOn='submit'
+            required
           />
 
           <p>
@@ -147,6 +153,8 @@ const Forms = () => {
             format="full"
             value={formRef.current.dateFull}
             onInput={event => handleInputChange(event)}
+            validateOn='submit'
+            required
           />
 
           <GcdsDateInput
@@ -155,6 +163,8 @@ const Forms = () => {
             format="compact"
             value={formRef.current.dateCompact}
             onInput={event => handleInputChange(event)}
+            validateOn='submit'
+            required
           />
 
           <p>
@@ -176,6 +186,8 @@ const Forms = () => {
             name="select"
             value={formRef.current.select}
             onGcdsInput={event => handleInputChange(event)}
+            validateOn='submit'
+            required
           >
             <option value="">Select an option</option>
             <option value="1">1</option>
@@ -204,6 +216,8 @@ const Forms = () => {
             ]}
             value={formRef.current.radio}
             onGcdsInput={event => handleInputChange(event)}
+            validateOn='submit'
+            required
           />
 
           <p>
@@ -226,6 +240,8 @@ const Forms = () => {
             ]}
             value={formRef.current.check}
             onGcdsInput={event => handleInputChange(event)}
+            validateOn='submit'
+            required
           />
 
           <p>
@@ -233,6 +249,13 @@ const Forms = () => {
           </p>
         </section>
 
+        <GcdsButton
+          type="submit"
+          buttonRole="primary"
+          id="submit"
+        >
+          Submit
+        </GcdsButton>
         <GcdsButton
           type="button"
           buttonRole="primary"

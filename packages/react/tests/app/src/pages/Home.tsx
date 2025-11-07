@@ -15,6 +15,16 @@ const Home = () => {
         <li>
           <GcdsLink href="/forms">Form components</GcdsLink>
         </li>
+        <li>
+          <p>Extra tests:</p>
+          <ul className="list-disc">
+            <li>
+              <GcdsLink href="/file-uploader">
+                File uploader
+              </GcdsLink>
+            </li>
+          </ul>
+        </li>
       </ul>
     </>
   )
