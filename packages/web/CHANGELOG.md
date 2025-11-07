@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.44.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.1...gcds-components-v0.44.0) (2025-11-07)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-date-input:** Assign value at all times ([#989](https://github.com/cds-snc/gcds-components/issues/989)) ([cb93c79](https://github.com/cds-snc/gcds-components/commit/cb93c79938ba6ed487f6605122f7e3f2f03ab525))
+
 ## [0.43.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.0...gcds-components-v0.43.1) (2025-10-06)
 
 
