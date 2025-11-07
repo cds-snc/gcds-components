@@ -457,6 +457,7 @@ export class GcdsDateInput {
         onInput={e => this.handleInput(e, 'year')}
         onChange={e => this.handleInput(e, 'year')}
         class={`gcds-date-input__year ${hasError['year'] ? 'gcds-date-input--error' : ''}`}
+        validate-on='other'
         {...requiredAttr}
         aria-invalid={hasError['year'].toString()}
         aria-description={hasError['year'] && errorMessage}
@@ -474,6 +475,7 @@ export class GcdsDateInput {
         value={this.dayValue}
         onInput={e => this.handleInput(e, 'day')}
         onChange={e => this.handleInput(e, 'day')}
+        validate-on='other'
         class={`gcds-date-input__day ${hasError['day'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
         aria-invalid={hasError['day'].toString()}

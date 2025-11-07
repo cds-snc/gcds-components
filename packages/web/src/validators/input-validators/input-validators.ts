@@ -137,7 +137,7 @@ const getDateInputError = (dateValues, format) => {
     errorResponse.reason.fr = dateInputErrorMessage.fr.all;
 
     // No day set
-  } else if (!day && month && year) {
+  } else if (!day && month && year && format === 'full') {
     errorResponse.errors.day = true;
     errorResponse.reason.en = dateInputErrorMessage.en.missingday;
     errorResponse.reason.fr = dateInputErrorMessage.fr.missingday;
