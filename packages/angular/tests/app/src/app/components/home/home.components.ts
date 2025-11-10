@@ -22,6 +22,16 @@ import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
           Navigation components
         </gcds-link>
       </li>
+      <li>
+        <p>Extra tests:</p>
+        <ul class="list-disc">
+          <li>
+            <gcds-link href="/file-uploader" routerLink="/file-uploader">
+              File uploader
+            </gcds-link>
+          </li>
+        </ul>
+      </li>
     </ul>
   `,
 })
