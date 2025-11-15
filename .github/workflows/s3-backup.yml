@@ -5,6 +5,7 @@ on:
     - cron: "0 6 * * *"
 
 permissions:
+  id-token: write
   contents: read
 
 jobs:
@@ -19,22 +20,17 @@ jobs:
         persist-credentials: false
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722 # v4.1.0
+      uses: aws-actions/configure-aws-credentials@00943011d9042930efac3dcd3a170e4273319bc8 # v5.1.0
       with:
-        aws-access-key-id: ${{ secrets.AWS_S3_BACKUP_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_S3_BACKUP_SECRET_ACCESS_KEY }}
+        role-to-assume: ${{ secrets.AWS_S3_BACKUP_IAM_ROLE_ARN }}
+        role-session-name: S3Backup
         aws-region: ca-central-1
 
-    - name: Create ZIP bundle
+    - name: Upload zip to S3 bucket
       run: |
         ZIP_FILE=`basename ${{ github.repository }}`-`date '+%Y-%m-%d'`.zip
         zip -rq "${ZIP_FILE}" .
-        mkdir -p ${{ github.repository }}
-        mv "${ZIP_FILE}" ${{ github.repository }}
-
-    - name: Upload to S3 bucket
-      run: |
-        aws s3 sync . s3://${{ secrets.AWS_S3_BACKUP_BUCKET }} --exclude='*' --include='${{ github.repository }}/*'
+        aws s3 cp "${ZIP_FILE}" s3://${{ secrets.AWS_S3_BACKUP_BUCKET }}/${{ github.repository }}/"${ZIP_FILE}"
 
     - name: Notify Slack channel if this job failed
       if: ${{ failure() }}
