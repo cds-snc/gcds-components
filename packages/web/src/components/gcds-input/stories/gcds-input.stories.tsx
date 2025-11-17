@@ -234,6 +234,7 @@ const Template = args =>
   ${args.step ? `step="${args.step}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.size ? `size="${args.size}"` : null}
+  ${args.inputmode ? `inputmode="${args.inputmode}"` : null}
   ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.readonly ? `readonly` : null}
@@ -262,6 +263,7 @@ const Template = args =>
   ${args.step ? `step="${args.step}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.size ? `size="${args.size}"` : null}
+  ${args.inputmode ? `inputmode="${args.inputmode}"` : null}
   ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.readonly ? `readonly` : null}
@@ -316,6 +318,7 @@ Default.args = {
   size: '',
   value: '',
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',
@@ -341,6 +344,7 @@ Disabled.args = {
   hint: 'Hint / example message.',
   disabled: true,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -364,6 +368,7 @@ Error.args = {
   required: true,
   errorMessage: 'Error message or validation message.',
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -386,6 +391,7 @@ Required.args = {
   hint: 'Hint / example message.',
   required: true,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -409,6 +415,7 @@ Email.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -431,6 +438,7 @@ Number.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -452,6 +460,7 @@ Password.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -474,6 +483,7 @@ Search.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -496,6 +506,7 @@ Tel.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -518,6 +529,7 @@ Text.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -540,6 +552,7 @@ Url.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -562,6 +575,7 @@ Autocomplete.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: 'given-name',
   validateOn: 'blur',
   autofocus: false,
@@ -584,6 +598,7 @@ Autofocus.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: true,
@@ -606,6 +621,7 @@ Form.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -628,6 +644,7 @@ Max.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -650,6 +667,7 @@ Min.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -672,6 +690,7 @@ Maxlength.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -694,6 +713,7 @@ Minlength.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -716,6 +736,7 @@ Pattern.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -738,6 +759,7 @@ Step.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -751,16 +773,40 @@ Step.args = {
   readonly: false,
 };
 
+export const Inputmode = Template.bind({});
+Inputmode.args = {
+  inputId: 'input-inputmode',
+  name: 'example-inputmode',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  inputmode: 'numeric',
+  autocomplete: '',
+  validateOn: 'blur',
+  autofocus: false,
+  form: '',
+  max: '',
+  maxlength: '',
+  min: '',
+  minlength: '',
+  pattern: '',
+  step: '',
+  readonly: false,
+};
+
 export const Readonly = Template.bind({});
 Readonly.args = {
   inputId: 'input-readonly',
   name: 'example-readonly',
-  type: 'number',
+  type: 'text',
   label: 'Label',
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
   value: 'Readonly',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -789,6 +835,7 @@ Props.args = {
   size: null,
   value: '',
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',
@@ -817,6 +864,7 @@ Playground.args = {
   disabled: false,
   size: '',
   value: '',
+  inputmode: '',
   autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',

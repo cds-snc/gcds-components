@@ -126,6 +126,16 @@ export class GcdsInput {
   // prettier-ignore
   @Prop() type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' = 'text';
 
+  @Prop() inputmode?:
+    | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url' = null;
+
   /**
    * Default value for an input element.
    */
@@ -503,6 +513,7 @@ export class GcdsInput {
       required,
       size,
       type,
+      inputmode,
       value,
       hasError,
       autocomplete,
@@ -529,6 +540,7 @@ export class GcdsInput {
       disabled,
       required,
       type,
+      inputmode,
       autocomplete,
       autofocus,
       form,
