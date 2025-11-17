@@ -735,6 +735,17 @@ export namespace Components {
          */
         "inputId": string;
         /**
+          * @default null
+         */
+        "inputmode"?: | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+        /**
           * Form field label
          */
         "label": string;
@@ -3110,6 +3121,17 @@ declare namespace LocalJSX {
           * Id  attribute for an input element.
          */
         "inputId": string;
+        /**
+          * @default null
+         */
+        "inputmode"?: | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
         /**
           * Form field label
          */
