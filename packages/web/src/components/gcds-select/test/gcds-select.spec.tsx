@@ -246,4 +246,67 @@ describe('gcds-select', () => {
       </gcds-select>
     `);
   });
+
+  /**
+   * Select with autocomplete
+   */
+  it('renders with autocomplete', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `<gcds-select label="select" select-id="select" name="select-name" autocomplete="on"></gcds-select>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" autocomplete="on">
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false" autocomplete="on">
+            </select>
+          </div>
+        </mock:shadow-root>
+      </gcds-select>
+    `);
+  });
+
+  /**
+   * Select with form attribute
+   */
+  it('renders with form attribute', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `<gcds-select label="select" select-id="select" name="select-name" form="formID"></gcds-select>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" form="formID">
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false" form="formID">
+            </select>
+          </div>
+        </mock:shadow-root>
+      </gcds-select>
+    `);
+  });
+
+  /**
+   * Select with autofocus
+   */
+  it('renders with autofocus', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `<gcds-select label="select" select-id="select" name="select-name" autofocus></gcds-select>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" autofocus>
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false" autofocus>
+            </select>
+          </div>
+        </mock:shadow-root>
+      </gcds-select>
+    `);
+  });
 });

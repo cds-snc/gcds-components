@@ -391,8 +391,6 @@ export class GcdsSelect {
    */
   private updateValidity(override?) {
     const validity = this.shadowElement.validity;
-    console.log('validity', validity);
-    console.log('value', this.shadowElement.value)
     this.htmlValidationErrors = [];
 
     for (const key in validity) {
