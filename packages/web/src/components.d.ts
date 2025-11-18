@@ -384,6 +384,10 @@ export namespace Components {
          */
         "accept": string;
         /**
+          * Check the validity of gcds-input
+         */
+        "checkValidity": () => Promise<boolean>;
+        /**
           * Specifies if a file uploader element is disabled or not.
           * @default false
          */
@@ -396,6 +400,10 @@ export namespace Components {
           * FileList of uploaded files to input
          */
         "files": FileList;
+        /**
+          * Get validationMessage of gcds-input
+         */
+        "getValidationMessage": () => Promise<string>;
         /**
           * Hint displayed below the label.
          */
@@ -436,6 +444,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string | number | FileList>
   >;
+        /**
+          * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Value for a file uploader element.
           * @default []
@@ -2766,6 +2779,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string | number | FileList>
   >;
+        /**
+          * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Value for a file uploader element.
           * @default []
