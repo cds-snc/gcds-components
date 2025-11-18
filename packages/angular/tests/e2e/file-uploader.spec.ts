@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('Page has loaded and rendered', async ({ page }) => {
+test('File uploader loads and functions', async ({ page }) => {
   await page.goto('http://localhost:4200/file-uploader');
 
   const fileInput = await page.locator('input[type="file"]');
