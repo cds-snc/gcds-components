@@ -96,6 +96,22 @@ export class GcdsSelect {
    */
   @Prop({ reflect: true, mutable: false }) defaultValue?: string;
 
+
+  /**
+   * If true, the select will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The ID of the form that the select field belongs to.
+   */
+  @Prop({ reflect: true }) form?: string;
+
+  /**
+   * String to have autocomplete enabled.
+   */
+  @Prop() autocomplete?: string;
+
   /**
    * Value for a select element.
    */
@@ -447,6 +463,13 @@ export class GcdsSelect {
     this.observeOptions();
 
     this.updateValidity();
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement?.focus();
+      });
+    }
   }
 
   render() {
@@ -464,7 +487,10 @@ export class GcdsSelect {
       hasError,
       name,
       options,
-      selectTitle
+      selectTitle,
+      autofocus,
+      form,
+      autocomplete,
     } = this;
 
     const attrsSelect = {
@@ -473,6 +499,9 @@ export class GcdsSelect {
       required,
       value,
       title: selectTitle,
+      autofocus,
+      form,
+      autocomplete,
       ...inheritedAttributes,
     };
 

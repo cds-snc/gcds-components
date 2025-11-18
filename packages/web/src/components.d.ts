@@ -1103,6 +1103,14 @@ export namespace Components {
      */
     interface GcdsSelect {
         /**
+          * String to have autocomplete enabled.
+         */
+        "autocomplete"?: string;
+        /**
+          * If true, the select will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
           * Check the validity of gcds-select
          */
         "checkValidity": () => Promise<boolean>;
@@ -1119,6 +1127,10 @@ export namespace Components {
           * Error message for an invalid select element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the select field belongs to.
+         */
+        "form"?: string;
         /**
           * Get validationMessage of gcds-select
          */
@@ -3570,6 +3582,14 @@ declare namespace LocalJSX {
      */
     interface GcdsSelect {
         /**
+          * String to have autocomplete enabled.
+         */
+        "autocomplete"?: string;
+        /**
+          * If true, the select will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * The default value is an optional value that gets displayed before the user selects an option.
          */
         "defaultValue"?: string;
@@ -3582,6 +3602,10 @@ declare namespace LocalJSX {
           * Error message for an invalid select element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the select field belongs to.
+         */
+        "form"?: string;
         /**
           * Hint displayed below the label.
          */
