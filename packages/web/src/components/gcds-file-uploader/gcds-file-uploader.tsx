@@ -169,12 +169,22 @@ export class GcdsFileUploader {
   }
 
   /**
-   * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+   * Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.
    */
   @Prop()
   get validity() {
     return this.internals.validity;
   }
+
+  /**
+   * If true, the file uploader will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The ID of the form that the file uploader field belongs to.
+   */
+  @Prop({ reflect: true }) form?: string;
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -316,7 +326,7 @@ export class GcdsFileUploader {
   }
 
   /**
-   * Check the validity of gcds-input
+   * Check the validity of gcds-file-uploader
    */
   @Method()
   public async checkValidity(): Promise<boolean> {
@@ -324,7 +334,7 @@ export class GcdsFileUploader {
   }
 
   /**
-   * Get validationMessage of gcds-input
+   * Get validationMessage of gcds-file-uploader
    */
   @Method()
   public async getValidationMessage(): Promise<string> {
@@ -486,6 +496,13 @@ export class GcdsFileUploader {
 
   async componentDidLoad() {
     this.updateValidity();
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement?.focus();
+      });
+    }
   }
 
   render() {
@@ -503,6 +520,8 @@ export class GcdsFileUploader {
       uploaderId,
       value,
       inputTitle,
+      autofocus,
+      form,
       inheritedAttributes,
     } = this;
 
@@ -514,6 +533,8 @@ export class GcdsFileUploader {
       required,
       value,
       inputTitle,
+      autofocus,
+      form,
       ...inheritedAttributes,
       'aria-describedby': `${inheritedAttributes['aria-describedby']
         ? `${inheritedAttributes['aria-describedby']} `

@@ -715,7 +715,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {}
 
 
 @ProxyCmp({
-  inputs: ['accept', 'disabled', 'errorMessage', 'files', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['accept', 'autofocus', 'disabled', 'errorMessage', 'files', 'form', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']
 })
@@ -724,7 +724,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accept', 'disabled', 'errorMessage', 'files', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['accept', 'autofocus', 'disabled', 'errorMessage', 'files', 'form', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -783,9 +783,17 @@ export class GcdsFileUploader {
    */
   set validateOn(_: Components.GcdsFileUploader['validateOn']) {};
     /**
-   * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   * Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in. @readonly 
    */
   set validity(_: Components.GcdsFileUploader['validity']) {};
+    /**
+   * If true, the file uploader will be focused on component render
+   */
+  set autofocus(_: Components.GcdsFileUploader['autofocus']) {};
+    /**
+   * The ID of the form that the file uploader field belongs to.
+   */
+  set form(_: Components.GcdsFileUploader['form']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;

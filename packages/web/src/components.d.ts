@@ -384,7 +384,11 @@ export namespace Components {
          */
         "accept": string;
         /**
-          * Check the validity of gcds-input
+          * If true, the file uploader will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
+          * Check the validity of gcds-file-uploader
          */
         "checkValidity": () => Promise<boolean>;
         /**
@@ -401,7 +405,11 @@ export namespace Components {
          */
         "files": FileList;
         /**
-          * Get validationMessage of gcds-input
+          * The ID of the form that the file uploader field belongs to.
+         */
+        "form"?: string;
+        /**
+          * Get validationMessage of gcds-file-uploader
          */
         "getValidationMessage": () => Promise<string>;
         /**
@@ -445,7 +453,7 @@ export namespace Components {
     string | ValidatorEntry | Validator<string | number | FileList>
   >;
         /**
-          * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+          * Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.
           * @readonly
          */
         "validity": ValidityState;
@@ -2703,6 +2711,10 @@ declare namespace LocalJSX {
          */
         "accept"?: string;
         /**
+          * If true, the file uploader will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * Specifies if a file uploader element is disabled or not.
           * @default false
          */
@@ -2715,6 +2727,10 @@ declare namespace LocalJSX {
           * FileList of uploaded files to input
          */
         "files"?: FileList;
+        /**
+          * The ID of the form that the file uploader field belongs to.
+         */
+        "form"?: string;
         /**
           * Hint displayed below the label.
          */
@@ -2780,7 +2796,7 @@ declare namespace LocalJSX {
     string | ValidatorEntry | Validator<string | number | FileList>
   >;
         /**
-          * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+          * Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.
           * @readonly
          */
         "validity"?: ValidityState;

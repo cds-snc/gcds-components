@@ -247,6 +247,8 @@ export const GcdsFileUploader: StencilVueComponent<JSX.GcdsFileUploader, JSX.Gcd
   'validator',
   'validateOn',
   'validity',
+  'autofocus',
+  'form',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsChange',
