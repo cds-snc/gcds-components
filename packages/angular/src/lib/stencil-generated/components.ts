@@ -1920,8 +1920,8 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
 
 
 @ProxyCmp({
-  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -1929,7 +1929,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
+  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -1971,6 +1971,10 @@ export class GcdsSelect {
    * Hint displayed below the label.
    */
   set hint(_: Components.GcdsSelect['hint']) {};
+    /**
+   * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsSelect['validity']) {};
     /**
    * Array of validators
    */

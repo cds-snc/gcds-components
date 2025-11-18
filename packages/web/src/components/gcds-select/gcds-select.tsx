@@ -17,6 +17,7 @@ import {
   handleValidationResult,
   inheritAttributes,
   observerConfig,
+  formatHTMLErrorMessage
 } from '../../utils/utils';
 import {
   Validator,
@@ -46,6 +47,11 @@ export class GcdsSelect {
   private initialValue?: string;
 
   private shadowElement?: HTMLSelectElement;
+
+  // Array to store which native HTML errors are happening on the select
+  private htmlValidationErrors = [];
+
+  private selectTitle: string = '';
 
   _validator: Validator<string> = defaultValidator;
 
@@ -119,6 +125,14 @@ export class GcdsSelect {
    * Hint displayed below the label.
    */
   @Prop({ reflect: true, mutable: false }) hint?: string;
+
+  /**
+   * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.
+   */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
+  }
 
   /**
    * Array of validators
@@ -197,6 +211,8 @@ export class GcdsSelect {
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
+    } else {
+      this.updateValidity();
     }
 
     customEvent.emit(this.value);
@@ -233,6 +249,37 @@ export class GcdsSelect {
       this.gcdsValid,
       this.lang,
     );
+
+    // Native HTML validation
+    if (
+      (this.required && !this.internals.checkValidity()) ||
+      !this.internals.checkValidity()
+    ) {
+      if (!this.internals.validity.valueMissing) {
+        this.errorMessage = formatHTMLErrorMessage(
+          this.htmlValidationErrors[0],
+          this.lang,
+          this.el,
+        );
+        this.selectTitle = this.errorMessage;
+      }
+    }
+  }
+
+  /**
+   * Check the validity of gcds-select
+   */
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  /**
+   * Get validationMessage of gcds-select
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   /**
@@ -268,9 +315,7 @@ export class GcdsSelect {
       option.setAttribute('selected', 'true');
       this.internals.setFormValue(value);
       this.initialValue = this.value;
-    }
-
-    if (option.hasAttribute('selected')) {
+    } else if (option.hasAttribute('selected')) {
       this.value = value;
       this.internals.setFormValue(value);
       this.initialValue = this.value ? this.value : null;
@@ -290,6 +335,48 @@ export class GcdsSelect {
   formStateRestoreCallback(state) {
     this.internals.setFormValue(state);
     this.value = state;
+  }
+
+  /**
+   * Update gcds-select's validity using internal select
+   */
+  private updateValidity(override?) {
+    const validity = this.shadowElement.validity;
+    this.htmlValidationErrors = [];
+
+    for (const key in validity) {
+      // Do not include valid or missingValue keys
+      if (validity[key] === true && key !== 'valid') {
+        this.htmlValidationErrors.push(key);
+      }
+    }
+
+    // Add override values to HTML errors array
+    for (const key in override) {
+      this.htmlValidationErrors.push(key);
+    }
+
+    const validityState = override
+      ? { ...this.shadowElement.validity, ...override }
+      : this.shadowElement.validity;
+
+    let validationMessage = null;
+    if (this.htmlValidationErrors.length > 0) {
+      validationMessage = formatHTMLErrorMessage(
+        this.htmlValidationErrors[0],
+        this.lang,
+        this.el,
+      );
+    }
+
+    this.internals.setValidity(
+      validityState,
+      validationMessage,
+      this.shadowElement,
+    );
+
+    // Set select title when HTML error occruring
+    this.selectTitle = validationMessage;
   }
 
   /*
@@ -358,6 +445,8 @@ export class GcdsSelect {
 
   async componentDidLoad() {
     this.observeOptions();
+
+    this.updateValidity();
   }
 
   render() {
@@ -375,6 +464,7 @@ export class GcdsSelect {
       hasError,
       name,
       options,
+      selectTitle
     } = this;
 
     const attrsSelect = {
@@ -382,6 +472,7 @@ export class GcdsSelect {
       disabled,
       required,
       value,
+      title: selectTitle,
       ...inheritedAttributes,
     };
 
@@ -394,19 +485,17 @@ export class GcdsSelect {
       const hintID = hint ? `hint-${selectId} ` : '';
       const errorID = errorMessage ? `error-message-${selectId} ` : '';
 
-      attrsSelect['aria-describedby'] = `${hintID}${errorID}${
-        attrsSelect['aria-describedby']
-          ? `${attrsSelect['aria-describedby']}`
-          : ''
-      }`;
+      attrsSelect['aria-describedby'] = `${hintID}${errorID}${attrsSelect['aria-describedby']
+        ? `${attrsSelect['aria-describedby']}`
+        : ''
+        }`;
     }
 
     return (
       <Host>
         <div
-          class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${
-            hasError ? 'gcds-error' : ''
-          }`}
+          class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''
+            }`}
         >
           <gcds-label {...attrsLabel} label-for={selectId} lang={lang} />
 

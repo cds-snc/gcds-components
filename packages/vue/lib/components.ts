@@ -550,6 +550,7 @@ export const GcdsSelect: StencilVueComponent<JSX.GcdsSelect, JSX.GcdsSelect["val
   'value',
   'errorMessage',
   'hint',
+  'validity',
   'validator',
   'validateOn',
   'gcdsChange',
