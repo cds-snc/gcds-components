@@ -119,7 +119,14 @@ export class GcdsSelect {
 
   @Watch('value')
   watchValue(val) {
-    this.internals.setFormValue(val ? val : null);
+    if (this.checkIfValidValue(val)) {
+      this.internals.setFormValue(val ? val : null);
+      this.shadowElement.value = val;
+      this.updateValidity();
+    } else {
+      this.internals.setFormValue(null);
+      this.value = null;
+    }
   }
 
   /**
@@ -338,6 +345,32 @@ export class GcdsSelect {
     }
   }
 
+  private checkIfValidValue(value: string) {
+    let isValid = false;
+
+    this.options.forEach(option => {
+      if (option.nodeName === 'OPTION') {
+        const optionValue = option.getAttribute('value');
+
+        if (optionValue === value) {
+          isValid = true;
+        }
+      } else if (option.nodeName === 'OPTGROUP') {
+        const subOptions = Array.from(option.children);
+
+        subOptions.map(sub => {
+          const subOptionValue = sub.getAttribute('value');
+
+          if (subOptionValue === value) {
+            isValid = true;
+          }
+        });
+      }
+    });
+
+    return isValid;
+  }
+
   /*
    * Form internal functions
    */
@@ -358,6 +391,8 @@ export class GcdsSelect {
    */
   private updateValidity(override?) {
     const validity = this.shadowElement.validity;
+    console.log('validity', validity);
+    console.log('value', this.shadowElement.value)
     this.htmlValidationErrors = [];
 
     for (const key in validity) {
