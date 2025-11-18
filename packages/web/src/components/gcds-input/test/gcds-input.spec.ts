@@ -703,6 +703,34 @@ describe('gcds-input', () => {
   });
 
   /**
+   * Input inputmode test
+   */
+  it('renders input inputmode', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-inputmode" name="input-with-inputmode" inputmode="numeric" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-inputmode" name="input-with-inputmode" inputmode="numeric">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-inputmode" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-inputmode"
+              name="input-with-inputmode"
+              part="input"
+              aria-labelledby="label-for-input-with-inputmode"
+              aria-invalid="false"
+              inputmode="numeric"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
    * Input readonly test
    */
   it('renders input readonly', async () => {

@@ -357,6 +357,7 @@ export const GcdsInput: StencilVueComponent<JSX.GcdsInput, JSX.GcdsInput["value"
   'required',
   'size',
   'type',
+  'inputmode',
   'value',
   'autocomplete',
   'autofocus',
