@@ -19,7 +19,7 @@ import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
       <section class="b-solid p-300 mb-300" id="file-uploader">
         <gcds-heading tag="h2" margin-top="0">Gcds-file-uploader</gcds-heading>
         <p>
-          Testing whether the file-uploader still functions properly in Vue.
+          Testing whether the file-uploader still functions properly in Angular.
         </p>
 
         <gcds-file-uploader
