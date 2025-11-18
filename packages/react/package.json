@@ -16,7 +16,9 @@
   },
   "scripts": {
     "build": "npm run tsc",
-    "tsc": "tsc -p . --outDir ./dist"
+    "tsc": "tsc -p . --outDir ./dist",
+    "pretest": "cd tests/app && npm i && cd ../../../web && npm run build",
+    "test": "npx playwright test"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -43,6 +45,7 @@
     "@stencil/react-output-target": "^1.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.0",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.0.11",
     "react": "^18.2.0",
