@@ -29,7 +29,7 @@ const FileUploader = () => {
         <section className="b-solid p-300 mb-300" id="file-uploader">
 
           <GcdsHeading tag="h2">Gcds-file-uploader</GcdsHeading>
-          <p>Testing whether the file-uploader still functions properly in Vue.</p>
+          <p>Testing whether the file-uploader still functions properly in React.</p>
 
           <GcdsFileUploader
             name="fileUpload"
