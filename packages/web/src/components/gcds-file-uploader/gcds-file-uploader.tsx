@@ -532,7 +532,7 @@ export class GcdsFileUploader {
       name,
       required,
       value,
-      inputTitle,
+      title: inputTitle,
       autofocus,
       form,
       ...inheritedAttributes,

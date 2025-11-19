@@ -307,6 +307,37 @@ test.describe('gcds-file-uploader', () => {
 
     expect(errorMessage).toEqual('');
   });
+
+  test('HTML validity', async ({ page }) => {
+    const element = await page.locator('gcds-file-uploader');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    let validity = await element.evaluate(el =>
+      (el as HTMLGcdsFileUploaderElement).checkValidity(),
+    );
+
+    expect(validity).toBe(false);
+
+    const fileInput = await page.locator('input[type="file"]');
+
+    fileInput.setInputFiles(
+      path.resolve(
+        './www/components/gcds-file-uploader/test/gcds-file-uploader.e2e.html',
+      ),
+    );
+
+    await page.waitForChanges();
+
+    validity = await element.evaluate(el =>
+      (el as HTMLGcdsFileUploaderElement).checkValidity(),
+    );
+
+    expect(validity).toBe(true);
+  });
 });
 
 /**
