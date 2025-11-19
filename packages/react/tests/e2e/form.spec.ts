@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test('Form component ngModel', async ({ page }) => {
-  await page.goto('http://localhost:4200/forms');
+test('Form component state', async ({ page }) => {
+  await page.goto('http://localhost:5173/forms');
 
   // Change name gcds-input
   await expect(page.locator('#input-name')).toHaveText('');
@@ -17,34 +17,34 @@ test('Form component ngModel', async ({ page }) => {
   await expect(page.locator('#input-message')).toHaveText('');
   await page
     .locator('textarea[name="message"]')
-    .fill('This is a message showing ngModel working correctly.');
+    .fill('This is a message showing state working correctly.');
   await expect(page.locator('#input-message')).toHaveText(
-    'This is a message showing ngModel working correctly.',
+    'This is a message showing state working correctly.',
   );
 
   // Change full gcds-date-input
   await expect(page.locator('#input-date-full')).toHaveText('');
   await page
-    .locator('gcds-date-input[name="date-full"] input[name="day"]')
+    .locator('gcds-date-input[name="dateFull"] input[name="day"]')
     .fill('25');
   await page
-    .locator('gcds-date-input[name="date-full"] select[name="month"]')
+    .locator('gcds-date-input[name="dateFull"] select[name="month"]')
     .selectOption('12');
   await page
-    .locator('gcds-date-input[name="date-full"] input[name="year"]')
+    .locator('gcds-date-input[name="dateFull"] input[name="year"]')
     .fill('2024');
-  await page.locator('gcds-date-input[name="date-full"]').blur();
+  await page.locator('gcds-date-input[name="dateFull"]').blur();
   await expect(page.locator('#input-date-full')).toHaveText('2024-12-25');
 
   // Change compact gcds-date-input
   await expect(page.locator('#input-date-compact')).toHaveText('');
   await page
-    .locator('gcds-date-input[name="date-compact"] select[name="month"]')
+    .locator('gcds-date-input[name="dateCompact"] select[name="month"]')
     .selectOption('12');
   await page
-    .locator('gcds-date-input[name="date-compact"] input[name="year"]')
+    .locator('gcds-date-input[name="dateCompact"] input[name="year"]')
     .fill('2024');
-  await page.locator('gcds-date-input[name="date-compact"]').blur();
+  await page.locator('gcds-date-input[name="dateCompact"]').blur();
   await expect(page.locator('#input-date-compact')).toHaveText('2024-12');
 
   // Change gcds-select
@@ -79,8 +79,8 @@ test('Form component ngModel', async ({ page }) => {
   await expect(page.locator('#input-check')).toHaveText('check1');
 });
 
-test('Form component ngModel - setting programatically', async ({ page }) => {
-  await page.goto('http://localhost:4200/forms');
+test('Form component state - setting programatically', async ({ page }) => {
+  await page.goto('http://localhost:5173/forms');
 
   await expect(page.locator('#input-name')).toHaveText('');
   await expect(page.locator('#input-number')).toHaveText('0');
@@ -100,29 +100,29 @@ test('Form component ngModel - setting programatically', async ({ page }) => {
   await expect(page.locator('input[name="number"]')).toHaveValue('23');
 
   await expect(page.locator('#input-message')).toHaveText(
-    'This is a message showing ngModel working correctly.',
+    'This is a message showing state working correctly.',
   );
   await expect(page.locator('textarea[name="message"]')).toHaveValue(
-    'This is a message showing ngModel working correctly.',
+    'This is a message showing state working correctly.',
   );
 
   await expect(page.locator('#input-date-full')).toHaveText('2024-12-25');
   await expect(
-    page.locator('gcds-date-input[name="date-full"] input[name="day"]'),
+    page.locator('gcds-date-input[name="dateFull"] input[name="day"]'),
   ).toHaveValue('25');
   await expect(
-    page.locator('gcds-date-input[name="date-full"] select[name="month"]'),
+    page.locator('gcds-date-input[name="dateFull"] select[name="month"]'),
   ).toHaveValue('12');
   await expect(
-    page.locator('gcds-date-input[name="date-full"] input[name="year"]'),
+    page.locator('gcds-date-input[name="dateFull"] input[name="year"]'),
   ).toHaveValue('2024');
 
   await expect(page.locator('#input-date-compact')).toHaveText('2024-12');
   await expect(
-    page.locator('gcds-date-input[name="date-compact"] select[name="month"]'),
+    page.locator('gcds-date-input[name="dateCompact"] select[name="month"]'),
   ).toHaveValue('12');
   await expect(
-    page.locator('gcds-date-input[name="date-compact"] input[name="year"]'),
+    page.locator('gcds-date-input[name="dateCompact"] input[name="year"]'),
   ).toHaveValue('2024');
 
   await expect(page.locator('#input-select')).toHaveText('3');
@@ -151,7 +151,7 @@ test('Form component ngModel - setting programatically', async ({ page }) => {
   await page.locator('#reset').click();
 
   await expect(page.locator('#input-name')).toHaveText('');
-  await expect(page.locator('#input-number')).toHaveText('');
+  await expect(page.locator('#input-number')).toHaveText('0');
   await expect(page.locator('#input-message')).toHaveText('');
   await expect(page.locator('#input-date-full')).toHaveText('');
   await expect(page.locator('#input-date-compact')).toHaveText('');
@@ -161,7 +161,7 @@ test('Form component ngModel - setting programatically', async ({ page }) => {
 });
 
 test(`Error summary`, async ({ page }) => {
-  await page.goto('http://localhost:4200/forms');
+  await page.goto('http://localhost:5173/forms');
 
   expect(await page.locator('gcds-error-summary a').count()).toBe(0);
 
@@ -190,7 +190,7 @@ test(`Error summary`, async ({ page }) => {
   await page.locator('textarea[name="message"]').fill('This is a message.');
 
   await errorLinks[2].click();
-  const dateFull = page.locator('gcds-date-input[name="date-full"]');
+  const dateFull = page.locator('gcds-date-input[name="dateFull"]');
 
   await expect(
     await dateFull.evaluate(el => el === document.activeElement),
@@ -198,7 +198,7 @@ test(`Error summary`, async ({ page }) => {
   await dateFull.evaluate(el => el.setAttribute('value', '2024-12-31'));
 
   await errorLinks[3].click();
-  const dateCompact = page.locator('gcds-date-input[name="date-compact"]');
+  const dateCompact = page.locator('gcds-date-input[name="dateCompact"]');
 
   await expect(
     await dateCompact.evaluate(el => el === document.activeElement),
