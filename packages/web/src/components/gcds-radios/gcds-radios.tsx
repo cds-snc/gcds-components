@@ -348,22 +348,24 @@ export class GcdsRadios {
    * Update gcds-input's validity using internal input
    */
   private updateValidity() {
-    const validity = validateRadioCheckboxGroup(this.shadowElement);
+    if (this.shadowElement?.length > 1) {
+      const validity = validateRadioCheckboxGroup(this.shadowElement);
 
-    let validationMessage = null;
+      let validationMessage = null;
 
-    if (validity.valueMissing) {
-      validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
+      if (validity?.valueMissing) {
+        validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
+      }
+
+      this.internals.setValidity(
+        validity,
+        validationMessage,
+        this.shadowElement[0],
+      );
+
+      // Set input title when HTML error occruring
+      this.radioTitle = validationMessage;
     }
-
-    this.internals.setValidity(
-      validity,
-      validationMessage,
-      this.shadowElement[0],
-    );
-
-    // Set input title when HTML error occruring
-    this.radioTitle = validationMessage;
   }
 
   /*

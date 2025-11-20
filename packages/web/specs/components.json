@@ -8688,6 +8688,29 @@
       "usage": {},
       "props": [
         {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": true,
+          "docs": "If true, the input will be focused on component render",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -8729,6 +8752,29 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "form",
+          "reflectToAttr": true,
+          "docs": "The ID of the form that the radios belong to.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false

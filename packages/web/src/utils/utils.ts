@@ -335,21 +335,23 @@ export function formatHTMLErrorMessage(error, lang, el) {
 export function validateRadioCheckboxGroup(
   elements: HTMLInputElement[],
 ): ValidityState {
-  const oneValid = elements.some(r => r.validity.valid);
+  if (elements && elements.length > 0) {
+    const oneValid = elements.some(r => r.validity?.valid);
 
-  const validity: ValidityState = {
-    valueMissing: !oneValid,
-    typeMismatch: false,
-    patternMismatch: false,
-    tooLong: false,
-    tooShort: false,
-    rangeUnderflow: false,
-    rangeOverflow: false,
-    stepMismatch: false,
-    badInput: false,
-    customError: false,
-    valid: oneValid,
-  };
+    const validity: ValidityState = {
+      valueMissing: !oneValid,
+      typeMismatch: false,
+      patternMismatch: false,
+      tooLong: false,
+      tooShort: false,
+      rangeUnderflow: false,
+      rangeOverflow: false,
+      stepMismatch: false,
+      badInput: false,
+      customError: false,
+      valid: oneValid,
+    };
 
-  return validity;
+    return validity;
+  }
 }

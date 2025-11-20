@@ -13,8 +13,10 @@ Radios provide a set of options for a single response.
 
 | Property               | Attribute       | Description                                                                                                             | Type                                                | Default     |
 | ---------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| `autofocus`            | `autofocus`     | If true, the input will be focused on component render                                                                  | `boolean`                                           | `undefined` |
 | `disabled`             | `disabled`      | Specifies if an input element is disabled or not.                                                                       | `boolean`                                           | `undefined` |
 | `errorMessage`         | `error-message` | Set this to display an error message for invalid radios                                                                 | `string`                                            | `undefined` |
+| `form`                 | `form`          | The ID of the form that the radios belong to.                                                                           | `string`                                            | `undefined` |
 | `hint`                 | `hint`          | Hint displayed below the label and above the radio elements                                                             | `string`                                            | `undefined` |
 | `legend` _(required)_  | `legend`        | Label or legend for the group of radio elements                                                                         | `string`                                            | `undefined` |
 | `name` _(required)_    | `name`          | The `name` attribute for the radios, used to group radio elements together                                              | `string`                                            | `undefined` |
