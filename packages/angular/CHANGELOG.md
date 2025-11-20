@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.44.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.43.1...gcds-components-angular-v0.44.0) (2025-11-20)
+
+
+### :rocket: New Features
+
+* **angular:** Update angular dependencies to support v20 ([f215d8f](https://github.com/cds-snc/gcds-components/commit/f215d8fdde13747aa2ad5b86bba09a32d9cd1d05))
+* **angular:** Update angular peer dependencies to support v20 ([#979](https://github.com/cds-snc/gcds-components/issues/979)) ([f215d8f](https://github.com/cds-snc/gcds-components/commit/f215d8fdde13747aa2ad5b86bba09a32d9cd1d05))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-date-input:** Assign value at all times ([#989](https://github.com/cds-snc/gcds-components/issues/989)) ([cb93c79](https://github.com/cds-snc/gcds-components/commit/cb93c79938ba6ed487f6605122f7e3f2f03ab525))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @cdssnc/gcds-components bumped from ^0.43.1 to ^0.44.0
+
 ## [0.43.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.43.0...gcds-components-angular-v0.43.1) (2025-10-06)
 
 
