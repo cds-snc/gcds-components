@@ -47,9 +47,6 @@ export class GcdsSelect {
 
   private shadowElement?: HTMLSelectElement;
 
-  // Array to store which native HTML errors are happening on the select
-  private htmlValidationErrors = [];
-
   private selectTitle: string = '';
 
   _validator: Validator<string> = defaultValidator;
@@ -378,17 +375,9 @@ export class GcdsSelect {
    */
   private updateValidity() {
     const validity = this.shadowElement.validity;
-    this.htmlValidationErrors = [];
-
-    for (const key in validity) {
-      // Do not include valid key
-      if (validity[key] === true && key !== 'valid') {
-        this.htmlValidationErrors.push(key);
-      }
-    }
 
     let validationMessage = null;
-    if (this.htmlValidationErrors.length > 0) {
+    if (validity.valueMissing) {
       validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
     }
 
