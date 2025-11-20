@@ -118,11 +118,12 @@ export class GcdsSelect {
     if (this.checkIfValidValue(val)) {
       this.internals.setFormValue(val ? val : null);
       this.shadowElement.value = val;
-      this.updateValidity();
     } else {
       this.internals.setFormValue(null);
       this.value = null;
     }
+    console.log('value changed to: ', this.value);
+    this.updateValidity();
   }
 
   /**
@@ -377,7 +378,7 @@ export class GcdsSelect {
     const validity = this.shadowElement.validity;
 
     let validationMessage = null;
-    if (validity.valueMissing) {
+    if (validity?.valueMissing) {
       validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
     }
 
