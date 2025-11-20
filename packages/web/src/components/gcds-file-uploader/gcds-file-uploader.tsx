@@ -44,9 +44,6 @@ export class GcdsFileUploader {
 
   private shadowElement?: HTMLInputElement;
 
-  // Array to store which native HTML errors are happening on the input
-  private htmlValidationErrors = [];
-
   private inputTitle: string = '';
 
   _validator: Validator<unknown> = defaultValidator;
@@ -368,17 +365,9 @@ export class GcdsFileUploader {
    */
   private updateValidity() {
     const validity = this.shadowElement.validity;
-    this.htmlValidationErrors = [];
-
-    for (const key in validity) {
-      // Do not include valid key
-      if (validity[key] === true && key !== 'valid') {
-        this.htmlValidationErrors.push(key);
-      }
-    }
 
     let validationMessage = null;
-    if (this.htmlValidationErrors.length > 0) {
+    if (validity.valueMissing) {
       validationMessage = this.lang === 'en' ? 'You must upload a file to continue.' : 'Vous devez téléverser un fichier pour continuer.';
     }
 
