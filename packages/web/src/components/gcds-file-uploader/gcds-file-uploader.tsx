@@ -367,7 +367,7 @@ export class GcdsFileUploader {
     const validity = this.shadowElement.validity;
 
     let validationMessage = null;
-    if (validity.valueMissing) {
+    if (validity?.valueMissing) {
       validationMessage = this.lang === 'en' ? 'You must upload a file to continue.' : 'Vous devez téléverser un fichier pour continuer.';
     }
 
