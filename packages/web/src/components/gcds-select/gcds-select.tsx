@@ -17,7 +17,6 @@ import {
   handleValidationResult,
   inheritAttributes,
   observerConfig,
-  formatHTMLErrorMessage
 } from '../../utils/utils';
 import {
   Validator,
@@ -273,20 +272,8 @@ export class GcdsSelect {
       this.lang,
     );
 
-    // Native HTML validation
-    if (
-      (this.required && !this.internals.checkValidity()) ||
-      !this.internals.checkValidity()
-    ) {
-      if (!this.internals.validity.valueMissing) {
-        this.errorMessage = formatHTMLErrorMessage(
-          this.htmlValidationErrors[0],
-          this.lang,
-          this.el,
-        );
-        this.selectTitle = this.errorMessage;
-      }
-    }
+
+    this.selectTitle = this.errorMessage;
   }
 
   /**
@@ -389,37 +376,24 @@ export class GcdsSelect {
   /**
    * Update gcds-select's validity using internal select
    */
-  private updateValidity(override?) {
+  private updateValidity() {
     const validity = this.shadowElement.validity;
     this.htmlValidationErrors = [];
 
     for (const key in validity) {
-      // Do not include valid or missingValue keys
+      // Do not include valid key
       if (validity[key] === true && key !== 'valid') {
         this.htmlValidationErrors.push(key);
       }
     }
 
-    // Add override values to HTML errors array
-    for (const key in override) {
-      this.htmlValidationErrors.push(key);
-    }
-
-    const validityState = override
-      ? { ...this.shadowElement.validity, ...override }
-      : this.shadowElement.validity;
-
     let validationMessage = null;
     if (this.htmlValidationErrors.length > 0) {
-      validationMessage = formatHTMLErrorMessage(
-        this.htmlValidationErrors[0],
-        this.lang,
-        this.el,
-      );
+      validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
     }
 
     this.internals.setValidity(
-      validityState,
+      validity,
       validationMessage,
       this.shadowElement,
     );
