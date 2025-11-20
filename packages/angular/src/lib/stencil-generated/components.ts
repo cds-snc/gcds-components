@@ -1753,7 +1753,7 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
 })
@@ -1762,7 +1762,7 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError'],
   standalone: false,
 })
@@ -1776,6 +1776,14 @@ export class GcdsRadios {
    * The `name` attribute for the radios, used to group radio elements together
    */
   set name(_: Components.GcdsRadios['name']) {};
+    /**
+   * If true, the input will be focused on component render
+   */
+  set autofocus(_: Components.GcdsRadios['autofocus']) {};
+    /**
+   * The ID of the form that the radios belong to.
+   */
+  set form(_: Components.GcdsRadios['form']) {};
     /**
    * Label or legend for the group of radio elements
    */

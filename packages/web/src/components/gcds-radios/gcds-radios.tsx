@@ -52,9 +52,6 @@ export class GcdsRadios {
 
   private optionsArr;
 
-  // Array to store which native HTML errors are happening on the input
-  private htmlValidationErrors = [];
-
   private radioTitle: string = '';
 
   _validator: Validator<string> = defaultValidator;
@@ -122,6 +119,16 @@ export class GcdsRadios {
   validateName() {
     this.errors = handleErrors(this.errors, 'name', this.name);
   }
+
+  /**
+   * If true, the input will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The ID of the form that the radios belong to.
+   */
+  @Prop({ reflect: true }) form?: string;
 
   /**
    * Label or legend for the group of radio elements
@@ -342,17 +349,10 @@ export class GcdsRadios {
    */
   private updateValidity() {
     const validity = validateRadioCheckboxGroup(this.shadowElement);
-    this.htmlValidationErrors = [];
-
-    for (const key in validity) {
-      // Do not include valid or missingValue keys
-      if (validity[key] === true && key !== 'valid') {
-        this.htmlValidationErrors.push(key);
-      }
-    }
 
     let validationMessage = null;
-    if (this.htmlValidationErrors.length > 0) {
+
+    if (validity.valueMissing) {
       validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
     }
 
@@ -362,7 +362,7 @@ export class GcdsRadios {
       this.shadowElement[0],
     );
 
-    // // Set input title when HTML error occruring
+    // Set input title when HTML error occruring
     this.radioTitle = validationMessage;
   }
 
@@ -435,10 +435,13 @@ export class GcdsRadios {
 
   async componentDidLoad() {
     this.updateValidity();
-    console.log(this.name, this.shadowElement)
-    this.shadowElement.forEach(element => {
-      console.log(element.name, element.validity);
-    });
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement[0].focus();
+      });
+    }
   }
 
   render() {
@@ -453,6 +456,7 @@ export class GcdsRadios {
       disabled,
       hasError,
       radioTitle,
+      form,
       inheritedAttributes,
     } = this;
 
@@ -499,6 +503,7 @@ export class GcdsRadios {
                   value: radio.value,
                   checked: radio.value === value,
                   title: radioTitle,
+                  form: form,
                   ...inheritedAttributes,
                 };
 

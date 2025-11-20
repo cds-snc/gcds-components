@@ -1013,6 +1013,10 @@ export namespace Components {
      */
     interface GcdsRadios {
         /**
+          * If true, the input will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
           * Check the validity of gcds-radios
          */
         "checkValidity": () => Promise<boolean>;
@@ -1024,6 +1028,10 @@ export namespace Components {
           * Set this to display an error message for invalid radios
          */
         "errorMessage": string;
+        /**
+          * The ID of the form that the radios belong to.
+         */
+        "form"?: string;
         /**
           * Get validationMessage of gcds-radios
          */
@@ -3440,6 +3448,10 @@ declare namespace LocalJSX {
      */
     interface GcdsRadios {
         /**
+          * If true, the input will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
@@ -3447,6 +3459,10 @@ declare namespace LocalJSX {
           * Set this to display an error message for invalid radios
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the radios belong to.
+         */
+        "form"?: string;
         /**
           * Hint displayed below the label and above the radio elements
          */
