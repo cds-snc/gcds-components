@@ -8944,6 +8944,39 @@
           "setter": false
         },
         {
+          "name": "validity",
+          "type": "ValidityState",
+          "complexType": {
+            "original": "ValidityState",
+            "resolved": "ValidityState",
+            "references": {
+              "ValidityState": {
+                "location": "global",
+                "id": "global::ValidityState"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "validity",
+          "reflectToAttr": false,
+          "docs": "Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.",
+          "docsTags": [
+            {
+              "name": "readonly",
+              "text": ""
+            }
+          ],
+          "values": [
+            {
+              "type": "ValidityState"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": true,
+          "setter": false
+        },
+        {
           "name": "value",
           "type": "string",
           "complexType": {
@@ -8968,6 +9001,50 @@
         }
       ],
       "methods": [
+        {
+          "name": "checkValidity",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "checkValidity() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Check the validity of gcds-radios",
+          "docsTags": []
+        },
+        {
+          "name": "getValidationMessage",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<string>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<string>"
+          },
+          "signature": "getValidationMessage() => Promise<string>",
+          "parameters": [],
+          "docs": "Get validationMessage of gcds-radios",
+          "docsTags": []
+        },
         {
           "name": "validate",
           "returns": {

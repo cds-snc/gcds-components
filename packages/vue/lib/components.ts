@@ -499,6 +499,7 @@ export const GcdsRadios: StencilVueComponent<JSX.GcdsRadios, JSX.GcdsRadios["val
   'errorMessage',
   'disabled',
   'value',
+  'validity',
   'validator',
   'validateOn',
   'gcdsInput',

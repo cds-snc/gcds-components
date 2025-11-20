@@ -13,14 +13,14 @@ import {
   AttachInternals,
 } from '@stencil/core';
 
-import { RadioObject, isRadioObject } from './radio';
+import { RadioObject, isRadioObject, } from './radio';
 import {
   assignLanguage,
-  inheritAttributes,
   logError,
   handleErrors,
   isValid,
   handleValidationResult,
+  validateRadioCheckboxGroup
 } from '../../utils/utils';
 import {
   Validator,
@@ -46,11 +46,16 @@ export class GcdsRadios {
   @AttachInternals()
   internals: ElementInternals;
 
-  private shadowElement?: HTMLInputElement;
+  private shadowElement?: HTMLInputElement[];
 
   private initialValue?: string;
 
   private optionsArr;
+
+  // Array to store which native HTML errors are happening on the input
+  private htmlValidationErrors = [];
+
+  private radioTitle: string = '';
 
   _validator: Validator<string> = defaultValidator;
 
@@ -174,7 +179,17 @@ export class GcdsRadios {
         this.value = null;
         this.internals.setFormValue(this.value);
       }
+
+      this.updateValidity();
     }
+  }
+
+  /**
+   * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+   */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
   }
 
   /**
@@ -228,6 +243,24 @@ export class GcdsRadios {
       this.gcdsValid,
       this.lang,
     );
+
+    this.radioTitle = this.errorMessage;
+  }
+
+  /**
+   * Check the validity of gcds-radios
+   */
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  /**
+   * Get validationMessage of gcds-radios
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   /**
@@ -304,6 +337,35 @@ export class GcdsRadios {
     this.value = state;
   }
 
+  /**
+   * Update gcds-input's validity using internal input
+   */
+  private updateValidity() {
+    const validity = validateRadioCheckboxGroup(this.shadowElement);
+    this.htmlValidationErrors = [];
+
+    for (const key in validity) {
+      // Do not include valid or missingValue keys
+      if (validity[key] === true && key !== 'valid') {
+        this.htmlValidationErrors.push(key);
+      }
+    }
+
+    let validationMessage = null;
+    if (this.htmlValidationErrors.length > 0) {
+      validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
+    }
+
+    this.internals.setValidity(
+      validity,
+      validationMessage,
+      this.shadowElement[0],
+    );
+
+    // // Set input title when HTML error occruring
+    this.radioTitle = validationMessage;
+  }
+
   /*
    * Observe lang attribute change
    */
@@ -322,6 +384,8 @@ export class GcdsRadios {
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
+    } else {
+      this.updateValidity();
     }
 
     customEvent.emit(this.value);
@@ -350,7 +414,7 @@ export class GcdsRadios {
 
     this.validateValidator();
 
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
+    // this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
     this.initialValue = this.value ? this.value : null;
 
     const valid = this.validateRequiredProps();
@@ -369,6 +433,14 @@ export class GcdsRadios {
     }
   }
 
+  async componentDidLoad() {
+    this.updateValidity();
+    console.log(this.name, this.shadowElement)
+    this.shadowElement.forEach(element => {
+      console.log(element.name, element.validity);
+    });
+  }
+
   render() {
     const {
       lang,
@@ -380,6 +452,7 @@ export class GcdsRadios {
       errorMessage,
       disabled,
       hasError,
+      radioTitle,
       inheritedAttributes,
     } = this;
 
@@ -425,6 +498,7 @@ export class GcdsRadios {
                   required: required,
                   value: radio.value,
                   checked: radio.value === value,
+                  title: radioTitle,
                   ...inheritedAttributes,
                 };
 
@@ -454,6 +528,7 @@ export class GcdsRadios {
                       onChange={e => this.handleInput(e, this.gcdsChange)}
                       onBlur={() => this.onBlur()}
                       onFocus={() => this.gcdsFocus.emit()}
+                      ref={(el) => (this.shadowElement = [...(this.shadowElement || []), el])}
                     />
 
                     <gcds-label
