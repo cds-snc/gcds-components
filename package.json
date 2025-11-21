@@ -6,9 +6,27 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
-    "build": "npm run build --ws",
-    "pretest": "npm run patch:stenciljs",
-    "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/react --workspace=packages/vue --workspace=packages/angular",
+
+    "build": "npm run build:angular-output-target && npm run build:web && npm run build:vue && npm run build:angular && npm run build:react && npm run build:react-ssr",
+
+    "build:angular-output-target": "npm run build -w utils/angular-output-target",
+    "build:web": "npm run build -w @cdssnc/gcds-components",
+    "build:vue": "npm run build -w @cdssnc/gcds-components-vue",
+    "build:angular": "ng build @cdssnc/gcds-components-angular",
+    "build:react":"npm run build -w @cdssnc/gcds-components-react",
+    "build:react-ssr":"npm run build -w @cdssnc/gcds-components-react-ssr",
+
+    "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/vue && npm run test:angular",
+    "test:unit": "npm run test:angular:unit && npm run pretest:web && npm run test:unit --workspace=packages/web",
+
+    "pretest:web": "npm run patch:stenciljs",
+    "pretest:angular": "npm i --prefix packages/angular/tests/app && npm run build:web",
+    "test:angular": "playwright test -c packages/angular/playwright.config.ts",
+    "test:angular:unit": "jest --config=packages/angular/jest.config.js",
+    "test:angular:unit:watch": "jest --config=packages/angular/jest.config.js --watch",
+    "test:angular:unit:ci": "jest --config=packages/angular/jest.config.js --ci",
+    "test:angular:unit:coverage": "jest --config=packages/angular/jest.config.js --coverage",
+
     "build-storybook": "npm run build-storybook -w @cdssnc/gcds-components",
     "start-storybook": "npm run storybook -w @cdssnc/gcds-components",
     "patch:stenciljs": "npx --yes patch-package",
@@ -17,30 +35,38 @@
     "docs:diagram": "npm run docs:diagram -w @cdssnc/gcds-components"
   },
   "dependencies": {
-    "@angular/animations": "^19.0.0",
-    "@angular/common": "^19.0.0",
-    "@angular/compiler": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@angular/forms": "^19.0.0",
-    "@angular/platform-browser": "^19.0.0",
-    "@angular/platform-browser-dynamic": "^19.0.0",
-    "@angular/router": "^19.0.0",
+    "@angular/animations": "^19.2.15",
+    "@angular/common": "^19.2.15",
+    "@angular/compiler": "^19.2.15",
+    "@angular/core": "^19.2.15",
+    "@angular/forms": "^19.2.15",
+    "@angular/platform-browser": "^19.2.15",
+    "@angular/platform-browser-dynamic": "^19.2.15",
+    "@angular/router": "^19.2.15",
     "rxjs": "^7.8.1",
-    "tslib": "^2.6.2",
-    "zone.js": "^0.15.0"
+    "tslib": "^2.6.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.0.1",
-    "@angular/cli": "~19.0.0",
-    "@angular/compiler-cli": "^19.0.0",
-    "@stencil/angular-output-target": "^0.10.0",
-    "@types/node": "^20.11.10",
+    "@angular-devkit/build-angular": "^19.2.15",
+    "@angular/cli": "~19.2.15",
+    "@angular/compiler-cli": "^19.2.15",
     "cssnano": "^6.0.0",
     "ng-packagr": "^19.0.1",
     "nx": "^16.0.0",
     "sass": "^1.43.5",
     "typescript": "~5.6.3",
-    "workbox-build": "^7.0.0"
+    "workbox-build": "^7.0.0",
+
+    "@angular/platform-browser": "^19.2.15",
+    "@angular/platform-browser-dynamic": "^19.2.15",
+    "@playwright/test": "^1.52.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.10.2",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^14.4.2",
+    "ts-jest": "^29.2.5"  },
+  "peerDependencies": {
+    "zone.js": "^0.15.0"
   },
   "workspaces": [
     "utils/angular-output-target",
