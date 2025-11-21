@@ -416,7 +416,6 @@ export class GcdsRadios {
 
     this.validateValidator();
 
-    // this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
     this.initialValue = this.value ? this.value : null;
 
     const valid = this.validateRequiredProps();
