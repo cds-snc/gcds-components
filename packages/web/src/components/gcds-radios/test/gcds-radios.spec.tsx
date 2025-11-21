@@ -192,6 +192,68 @@ describe('gcds-radios', () => {
       </gcds-radios>
     `);
   });
+  it('renders auofocus', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+          autofocus
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios name="radio" legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' autofocus>
+        <mock:shadow-root>
+          <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              Legend
+            </legend>
+            <div class="gcds-radio">
+              <input id="radio1" name="radio" type="radio" value="radio1">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio">
+              <input id="radio2" name="radio" type="radio" value="radio2">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
+  it('renders form attribute', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+          form="form-id"
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios name="radio" legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' form="form-id">
+        <mock:shadow-root>
+          <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              Legend
+            </legend>
+            <div class="gcds-radio">
+              <input id="radio1" name="radio" type="radio" value="radio1" form="form-id">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio">
+              <input id="radio2" name="radio" type="radio" value="radio2" form="form-id">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
   it('does not render - no required attributes', async () => {
     const page = await newSpecPage({
       components: [GcdsRadios],

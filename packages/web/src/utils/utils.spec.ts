@@ -8,6 +8,7 @@ import {
   handleValidationResult,
   handleErrors,
   formatHTMLErrorMessage,
+  validateRadioCheckboxGroup,
 } from './utils';
 
 import I18N from './i18n/i18n.js';
@@ -520,5 +521,123 @@ describe('handleErrors', () => {
         );
       }),
     );
+  });
+});
+
+describe('validateRadioCheckboxGroup', () => {
+  it('returns valid when one element is valid - radio buttons', () => {
+    const elements: HTMLInputElement[] = [
+      Object.assign(document.createElement('input'), {
+        type: 'radio',
+        value: '1',
+        validity: { valid: true } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'radio',
+        value: '2',
+        validity: { valid: false } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'radio',
+        value: '3',
+        validity: { valid: false } as ValidityState,
+      }),
+    ];
+
+    const validity = validateRadioCheckboxGroup(elements);
+    expect(validity.valueMissing).toEqual(false);
+    expect(validity.valid).toEqual(true);
+  });
+  it('returns invalid when all elements are invalid - radio buttons', () => {
+    const elements: HTMLInputElement[] = [
+      Object.assign(document.createElement('input'), {
+        type: 'radio',
+        value: '1',
+        validity: { valid: false } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'radio',
+        value: '2',
+        validity: { valid: false } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'radio',
+        value: '3',
+        validity: { valid: false } as ValidityState,
+      }),
+    ];
+
+    const validity = validateRadioCheckboxGroup(elements);
+    expect(validity.valueMissing).toEqual(true);
+    expect(validity.valid).toEqual(false);
+  });
+  it('returns valid when one element is valid - checkboxes', () => {
+    const elements: HTMLInputElement[] = [
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '1',
+        validity: { valid: true } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '2',
+        validity: { valid: false } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '3',
+        validity: { valid: false } as ValidityState,
+      }),
+    ];
+
+    const validity = validateRadioCheckboxGroup(elements);
+    expect(validity.valueMissing).toEqual(false);
+    expect(validity.valid).toEqual(true);
+  });
+  it('returns valid when more than one element is valid - checkboxes', () => {
+    const elements: HTMLInputElement[] = [
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '1',
+        validity: { valid: true } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '2',
+        validity: { valid: true } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '3',
+        validity: { valid: false } as ValidityState,
+      }),
+    ];
+
+    const validity = validateRadioCheckboxGroup(elements);
+    expect(validity.valueMissing).toEqual(false);
+    expect(validity.valid).toEqual(true);
+  });
+  it('returns invalid when all elements are invalid - checkboxes', () => {
+    const elements: HTMLInputElement[] = [
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '1',
+        validity: { valid: false } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '2',
+        validity: { valid: false } as ValidityState,
+      }),
+      Object.assign(document.createElement('input'), {
+        type: 'checkbox',
+        value: '3',
+        validity: { valid: false } as ValidityState,
+      }),
+    ];
+
+    const validity = validateRadioCheckboxGroup(elements);
+    expect(validity.valueMissing).toEqual(true);
+    expect(validity.valid).toEqual(false);
   });
 });

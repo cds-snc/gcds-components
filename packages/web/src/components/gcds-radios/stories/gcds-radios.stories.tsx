@@ -95,6 +95,21 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
       },
+      autofocus: {
+        control: { type: 'select' },
+        options: [false, true],
+        table: {
+          type: { summary: 'boolean' },
+          defaultValue: { summary: false },
+        },
+      },
+      form: {
+        control: 'text',
+        table: {
+          type: { summary: 'string' },
+          defaultValue: { summary: '-' },
+        },
+      },
     },
     ...langProp,
     ...validatorProps,
@@ -139,6 +154,8 @@ const Template = args =>
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
+  ${args.autofocus ? `autofocus` : null}
+  ${args.form ? `form="${args.form}"` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -154,6 +171,8 @@ const Template = args =>
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
+  ${args.autofocus ? `autofocus` : null}
+  ${args.form ? `form="${args.form}"` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -172,6 +191,8 @@ const TemplatePlayground = args =>
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
+  ${args.autofocus ? `autofocus` : null}
+  ${args.form ? `form="${args.form}"` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -193,6 +214,8 @@ Default.args = {
   value: '',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
 };
 
 export const Hint = Template.bind({});
@@ -210,6 +233,8 @@ Hint.args = {
   value: '',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
 };
 
 export const Required = Template.bind({});
@@ -227,6 +252,8 @@ Required.args = {
   value: '',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
 };
 
 export const Disabled = Template.bind({});
@@ -244,6 +271,8 @@ Disabled.args = {
   value: '',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
 };
 
 export const CheckedProp = Template.bind({});
@@ -261,6 +290,8 @@ CheckedProp.args = {
   value: '',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
 };
 
 export const CheckedValue = Template.bind({});
@@ -278,6 +309,8 @@ CheckedValue.args = {
   value: 'radio1',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
 };
 
 export const Error = Template.bind({});
@@ -295,6 +328,27 @@ Error.args = {
   value: '',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
+};
+
+export const Form = Template.bind({});
+Form.args = {
+  name: 'radioDefault',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+  autofocus: false,
+  form: 'form-id',
 };
 
 export const Props = Template.bind({});
@@ -312,6 +366,8 @@ Props.args = {
   value: '',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -329,4 +385,6 @@ Playground.args = {
   value: '',
   validateOn: 'blur',
   lang: 'en',
+  autofocus: false,
+  form: '',
 };
