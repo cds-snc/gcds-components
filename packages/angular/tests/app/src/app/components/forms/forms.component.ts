@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     <gcds-heading tag="h1">Form components</gcds-heading>
 
     <form>
+      <gcds-error-summary></gcds-error-summary>
       <section class="b-solid p-300 mb-300" id="input">
         <gcds-heading tag="h2" margin-top="0">Gcds-input</gcds-heading>
         <p>Text input and number input</p>
@@ -27,6 +28,8 @@ import { FormsModule } from '@angular/forms';
           name="name"
           label="Full name"
           [(ngModel)]="name"
+          validate-on="submit"
+          [required]="true"
         ></gcds-input>
 
         <gcds-input
@@ -35,6 +38,8 @@ import { FormsModule } from '@angular/forms';
           name="number"
           label="Number"
           [(ngModel)]="number"
+          validate-on="submit"
+          [required]="true"
         ></gcds-input>
 
         <p>
@@ -53,6 +58,8 @@ import { FormsModule } from '@angular/forms';
           textarea-id="message"
           name="message"
           [(ngModel)]="message"
+          validate-on="submit"
+          [required]="true"
         ></gcds-textarea>
 
         <p>
@@ -69,6 +76,8 @@ import { FormsModule } from '@angular/forms';
           name="date-full"
           format="full"
           [(ngModel)]="dateFull"
+          validate-on="submit"
+          [required]="true"
         ></gcds-date-input>
 
         <gcds-date-input
@@ -76,6 +85,8 @@ import { FormsModule } from '@angular/forms';
           name="date-compact"
           format="compact"
           [(ngModel)]="dateCompact"
+          validate-on="submit"
+          [required]="true"
         ></gcds-date-input>
 
         <div>
@@ -97,6 +108,8 @@ import { FormsModule } from '@angular/forms';
           name="select"
           default-value="Select an option"
           [(ngModel)]="select"
+          validate-on="submit"
+          [required]="true"
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -116,11 +129,13 @@ import { FormsModule } from '@angular/forms';
           name="radio"
           legend="Radios"
           options='[
-          { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
-          { "label": "Label for radio 2", "id": "radio2", "value": "radio2"},
-          { "label": "Label for radio 3", "id": "radio3", "value": "radio3"}
-        ]'
+            { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+            { "label": "Label for radio 2", "id": "radio2", "value": "radio2"},
+            { "label": "Label for radio 3", "id": "radio3", "value": "radio3"}
+          ]'
           [(ngModel)]="radio"
+          validate-on="submit"
+          [required]="true"
         ></gcds-radios>
 
         <p>
@@ -140,6 +155,8 @@ import { FormsModule } from '@angular/forms';
             { "label": "Label for checkbox 3", "id": "check3", "value": "check3"}
           ]'
           [(ngModel)]="check"
+          validate-on="submit"
+          [required]="true"
         ></gcds-checkboxes>
 
         <p>
@@ -147,6 +164,9 @@ import { FormsModule } from '@angular/forms';
         </p>
       </section>
 
+      <gcds-button type="submit" button-role="primary" id="submit">
+        Submit
+      </gcds-button>
       <gcds-button
         type="button"
         button-role="primary"
