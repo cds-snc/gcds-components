@@ -163,6 +163,14 @@ export namespace Components {
      */
     interface GcdsCheckboxes {
         /**
+          * If true, the checkobox will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
+          * Check the validity of gcds-checkboxes
+         */
+        "checkValidity": () => Promise<boolean>;
+        /**
           * Specifies if the checkboxes are disabled or not.
          */
         "disabled": boolean;
@@ -170,6 +178,14 @@ export namespace Components {
           * Set this to display an error message for invalid <gcds-checkboxes>
          */
         "errorMessage": string;
+        /**
+          * The ID of the form that the checkboxes belong to.
+         */
+        "form"?: string;
+        /**
+          * Get validationMessage of gcds-checkboxes
+         */
+        "getValidationMessage": () => Promise<string>;
         /**
           * Hint displayed below the label.
          */
@@ -205,6 +221,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Value for checkboxes component.
           * @default []
@@ -2405,6 +2426,10 @@ declare namespace LocalJSX {
      */
     interface GcdsCheckboxes {
         /**
+          * If true, the checkobox will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * Specifies if the checkboxes are disabled or not.
          */
         "disabled"?: boolean;
@@ -2412,6 +2437,10 @@ declare namespace LocalJSX {
           * Set this to display an error message for invalid <gcds-checkboxes>
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the checkboxes belong to.
+         */
+        "form"?: string;
         /**
           * Hint displayed below the label.
          */
@@ -2471,6 +2500,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Value for checkboxes component.
           * @default []
