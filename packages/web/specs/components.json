@@ -3177,6 +3177,29 @@
           "setter": false
         },
         {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": true,
+          "docs": "If true, the file uploader will be focused on component render",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -3252,6 +3275,29 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "form",
+          "reflectToAttr": true,
+          "docs": "The ID of the form that the file uploader field belongs to.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -3493,6 +3539,39 @@
           "setter": false
         },
         {
+          "name": "validity",
+          "type": "ValidityState",
+          "complexType": {
+            "original": "ValidityState",
+            "resolved": "ValidityState",
+            "references": {
+              "ValidityState": {
+                "location": "global",
+                "id": "global::ValidityState"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "validity",
+          "reflectToAttr": false,
+          "docs": "Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.",
+          "docsTags": [
+            {
+              "name": "readonly",
+              "text": ""
+            }
+          ],
+          "values": [
+            {
+              "type": "ValidityState"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": true,
+          "setter": false
+        },
+        {
           "name": "value",
           "type": "string[]",
           "complexType": {
@@ -3523,6 +3602,50 @@
         }
       ],
       "methods": [
+        {
+          "name": "checkValidity",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "checkValidity() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Check the validity of gcds-file-uploader",
+          "docsTags": []
+        },
+        {
+          "name": "getValidationMessage",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<string>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<string>"
+          },
+          "signature": "getValidationMessage() => Promise<string>",
+          "parameters": [],
+          "docs": "Get validationMessage of gcds-file-uploader",
+          "docsTags": []
+        },
         {
           "name": "validate",
           "returns": {

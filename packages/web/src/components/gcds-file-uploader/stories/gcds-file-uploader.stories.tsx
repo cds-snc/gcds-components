@@ -101,6 +101,21 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    autofocus: {
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
+    form: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+    },
     ...validatorProps,
     ...langProp,
 
@@ -146,6 +161,8 @@ const Template = args =>
   ${args.value ? `value="${args.value}"` : null}
   ${args.accept ? `accept="${args.accept}"` : null}
   ${args.multiple ? `multiple` : null}
+  ${args.form ? `form="${args.form}"` : null}
+  ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -163,6 +180,8 @@ const Template = args =>
   ${args.value ? `value="${args.value}"` : null}
   ${args.accept ? `accept="${args.accept}"` : null}
   ${args.multiple ? `multiple` : null}
+  ${args.form ? `form="${args.form}"` : null}
+  ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -181,6 +200,8 @@ const TemplatePlayground = args => `
   value="${args.value}"
   ${args.accept ? `accept="${args.accept}"` : null}
   ${args.multiple ? `multiple` : null}
+  ${args.form ? `form="${args.form}"` : null}
+  ${args.autofocus ? `autofocus` : null}
   validate-on="${args.validateOn}"
   lang="${args.lang}"
 >
@@ -197,6 +218,8 @@ Default.args = {
   hint: 'Hint / Example message.',
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 // ------ File uploader states ------
@@ -210,6 +233,8 @@ Disabled.args = {
   disabled: true,
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 export const Error = Template.bind({});
@@ -222,6 +247,8 @@ Error.args = {
   required: true,
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 export const Required = Template.bind({});
@@ -233,6 +260,20 @@ Required.args = {
   required: true,
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
+};
+
+export const Form = Template.bind({});
+Form.args = {
+  uploaderId: 'uploader-required',
+  name: 'file-uploader',
+  label: 'Label',
+  hint: 'Hint / Example message.',
+  validateOn: 'blur',
+  lang: 'en',
+  form: 'formID',
+  autofocus: '',
 };
 
 // ------ File uploader multiple ------
@@ -246,6 +287,8 @@ Multiple.args = {
   multiple: true,
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 // ------ File uploader accept ------
@@ -259,6 +302,8 @@ AcceptAudio.args = {
   accept: 'audio/*',
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 export const AcceptImages = Template.bind({});
@@ -270,6 +315,8 @@ AcceptImages.args = {
   accept: 'image/*',
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 export const AcceptJpg = Template.bind({});
@@ -281,6 +328,8 @@ AcceptJpg.args = {
   accept: 'image/jpeg',
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 export const AcceptPdf = Template.bind({});
@@ -292,6 +341,8 @@ AcceptPdf.args = {
   accept: 'application/pdf',
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 export const AcceptPng = Template.bind({});
@@ -303,6 +354,8 @@ AcceptPng.args = {
   accept: 'image/png',
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 export const AcceptSvg = Template.bind({});
@@ -314,6 +367,8 @@ AcceptSvg.args = {
   accept: 'image/svg+xml',
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 export const AcceptVideos = Template.bind({});
@@ -325,6 +380,8 @@ AcceptVideos.args = {
   accept: 'video/*',
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 // ------ File uploader events & properties ------
@@ -343,6 +400,8 @@ Props.args = {
   multiple: false,
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
 
 // ------ File uploader playground ------
@@ -361,4 +420,6 @@ Playground.args = {
   multiple: false,
   validateOn: 'blur',
   lang: 'en',
+  form: '',
+  autofocus: '',
 };
