@@ -94,6 +94,8 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
     isGroup,
     lang,
     value,
+    checkboxTitle,
+    form,
     onBlurValidate,
   } = element;
 
@@ -101,8 +103,10 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
     name: name,
     id: checkbox.id,
     disabled: disabled,
-    required: checkbox.required,
+    required: required,
     value: checkbox.value,
+    title: checkboxTitle,
+    form: form,
   };
 
   const labelAttrs = {
@@ -118,9 +122,8 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
 
   if (checkbox.hint) {
     const hintID = `hint-${checkbox.id}`;
-    attrsInput['aria-describedby'] = `${hintID}${
-      attrsInput['aria-describedby'] ? `${attrsInput['aria-describedby']}` : ''
-    }`;
+    attrsInput['aria-describedby'] = `${hintID}${attrsInput['aria-describedby'] ? `${attrsInput['aria-describedby']}` : ''
+      }`;
   }
 
   if (value.includes(checkbox.value)) {
@@ -134,9 +137,8 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
 
   return (
     <div
-      class={`gcds-checkbox ${disabled ? 'gcds-checkbox--disabled' : ''} ${
-        hasError ? 'gcds-checkbox--error' : ''
-      }`}
+      class={`gcds-checkbox ${disabled ? 'gcds-checkbox--disabled' : ''} ${hasError ? 'gcds-checkbox--error' : ''
+        }`}
     >
       <input
         type="checkbox"
@@ -148,6 +150,7 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
         onClick={e =>
           !disabled ? emitEvent(e, gcdsClick) : e.stopImmediatePropagation()
         }
+        ref={(el) => (element.shadowElement = [...(element.shadowElement || []), el])}
       />
 
       <gcds-label

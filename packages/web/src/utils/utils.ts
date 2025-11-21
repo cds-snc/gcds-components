@@ -326,3 +326,32 @@ export function formatHTMLErrorMessage(error, lang, el) {
       return I18N[lang][error];
   }
 }
+
+/**
+ * Compare validity of radio buttons/checkboxes in a group
+ * @param elements - array of HTMLInputElements in the group
+ * @returns vlidity state object
+ */
+export function validateRadioCheckboxGroup(
+  elements: HTMLInputElement[],
+): ValidityState {
+  if (elements && elements.length > 0) {
+    const oneValid = elements.some(r => r.validity?.valid);
+
+    const validity: ValidityState = {
+      valueMissing: !oneValid,
+      typeMismatch: false,
+      patternMismatch: false,
+      tooLong: false,
+      tooShort: false,
+      rangeUnderflow: false,
+      rangeOverflow: false,
+      stepMismatch: false,
+      badInput: false,
+      customError: false,
+      valid: oneValid,
+    };
+
+    return validity;
+  }
+}

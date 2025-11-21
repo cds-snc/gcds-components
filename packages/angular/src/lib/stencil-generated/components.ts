@@ -285,8 +285,8 @@ export declare interface GcdsCard extends Components.GcdsCard {
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -294,7 +294,7 @@ export declare interface GcdsCard extends Components.GcdsCard {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -321,6 +321,14 @@ export class GcdsCheckboxes {
    */
   set disabled(_: Components.GcdsCheckboxes['disabled']) {};
     /**
+   * If true, the checkobox will be focused on component render
+   */
+  set autofocus(_: Components.GcdsCheckboxes['autofocus']) {};
+    /**
+   * The ID of the form that the checkboxes belong to.
+   */
+  set form(_: Components.GcdsCheckboxes['form']) {};
+    /**
    * Value for checkboxes component. @default []
    */
   set value(_: Components.GcdsCheckboxes['value']) {};
@@ -340,6 +348,10 @@ export class GcdsCheckboxes {
    * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsCheckboxes['validateOn']) {};
+    /**
+   * Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsCheckboxes['validity']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;

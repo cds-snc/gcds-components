@@ -15,11 +15,11 @@ import {
 import {
   assignLanguage,
   emitEvent,
-  inheritAttributes,
   logError,
   handleErrors,
   isValid,
   handleValidationResult,
+  validateRadioCheckboxGroup
 } from '../../utils/utils';
 import {
   Validator,
@@ -52,10 +52,13 @@ export class GcdsCheckboxes {
 
   private initialState?: string | string[];
 
-  private shadowElement?: HTMLElement;
+  private shadowElement?: HTMLInputElement[];
 
   private optionsArr;
   private isGroup = false;
+
+  // @ts-ignore - Used by renderCheckbox() to set title on error
+  private checkboxTitle = '';
 
   _validator: Validator<string | string[]> = defaultValidator;
 
@@ -134,6 +137,16 @@ export class GcdsCheckboxes {
   }
 
   /**
+ * If true, the checkobox will be focused on component render
+ */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The ID of the form that the checkboxes belong to.
+   */
+  @Prop({ reflect: true }) form?: string;
+
+  /**
    * Value for checkboxes component.
    */
   @Prop({ reflect: true, mutable: true }) value: string | Array<string> = [];
@@ -157,6 +170,8 @@ export class GcdsCheckboxes {
         this.internals.setFormValue(this.value.toString());
       }
     }
+
+    this.updateValidity();
   }
 
   /**
@@ -194,6 +209,14 @@ export class GcdsCheckboxes {
    * Set event to call validator
    */
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
+
+  /**
+     * Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.
+     */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
+  }
 
   /**
    * Set additional HTML attributes not available in component properties
@@ -283,6 +306,8 @@ export class GcdsCheckboxes {
       this.gcdsValid,
       this.lang,
     );
+
+    this.checkboxTitle = this.errorMessage;
   }
 
   /*
@@ -328,6 +353,46 @@ export class GcdsCheckboxes {
   formStateRestoreCallback(state) {
     this.internals.setFormValue(state);
     this.value = [...state.split(',')];
+  }
+
+  /**
+   * Check the validity of gcds-checkboxes
+   */
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  /**
+   * Get validationMessage of gcds-checkboxes
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
+  }
+
+  /**
+   * Update gcds-checkboxes's validity using internal input
+   */
+  private updateValidity() {
+    if (this.shadowElement?.length > 0) {
+      const validity = validateRadioCheckboxGroup(this.shadowElement);
+
+      let validationMessage = null;
+
+      if (validity?.valueMissing) {
+        validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
+      }
+
+      this.internals.setValidity(
+        validity,
+        validationMessage,
+        this.shadowElement[0],
+      );
+
+      // Set input title when HTML error occruring
+      this.checkboxTitle = validationMessage;
+    }
   }
 
   /*
@@ -385,7 +450,6 @@ export class GcdsCheckboxes {
     }
 
     this.initialState = this.value;
-    this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
   async componentDidUpdate() {
@@ -394,6 +458,17 @@ export class GcdsCheckboxes {
 
     if (!valid) {
       logError('gcds-checkboxes', this.errors);
+    }
+  }
+
+  async componentDidLoad() {
+    this.updateValidity();
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement[0].focus();
+      });
     }
   }
 
@@ -426,6 +501,8 @@ export class GcdsCheckboxes {
       } else {
         this.internals.setFormValue(null);
       }
+
+      this.updateValidity();
     }
 
     customEvent.emit([...(this.value as string[])]);
@@ -474,6 +551,8 @@ export class GcdsCheckboxes {
         `${fieldsetAttrs['aria-labelledby']} ${hintID}`.trim();
     }
 
+    this.shadowElement = [];
+
     if (this.validateRequiredProps()) {
       return (
         <Host onBlur={() => this.isGroup && this.onBlurValidate()}>
@@ -508,7 +587,7 @@ export class GcdsCheckboxes {
                     checkbox,
                     this,
                     emitEvent,
-                    this.handleInput,
+                    this.handleInput
                   );
                 })}
             </fieldset>
@@ -519,7 +598,7 @@ export class GcdsCheckboxes {
               this.optionsArr[0],
               this,
               emitEvent,
-              this.handleInput,
+              this.handleInput
             )
           )}
         </Host>
