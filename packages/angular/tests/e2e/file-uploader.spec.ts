@@ -6,8 +6,10 @@ test('File uploader loads and functions', async ({ page }) => {
   const fileInput = await page.locator('input[type="file"]');
   await expect(fileInput).toBeVisible();
 
+  const pathPrefix = 'packages/angular/';
+
   // Simulate single file upload
-  const filePath = 'tests/e2e/file-uploader.spec.ts';
+  const filePath = pathPrefix + 'tests/e2e/file-uploader.spec.ts';
   await fileInput.setInputFiles(filePath);
 
   await expect(await page.locator('#files')).toHaveText(
@@ -20,8 +22,8 @@ test('File uploader loads and functions', async ({ page }) => {
 
   // Simulate mutliple file upload
   const multipleFilePath = [
-    'tests/e2e/file-uploader.spec.ts',
-    'tests/e2e/app.spec.ts',
+    pathPrefix + 'tests/e2e/file-uploader.spec.ts',
+    pathPrefix + 'tests/e2e/app.spec.ts',
   ];
   await fileInput.setInputFiles(multipleFilePath);
 
