@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-22.04 # latest version 24 has incompatibility issues (playwright)
     steps:
       - name: Git Checkout
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
-      - uses: actions/setup-node@dda4788290998366da86b6a4f497909644397bb2
+      - uses: actions/setup-node@633bb92bc0aabcae06e8ea93b85aecddd374c402
         with:
           node-version: 22
 
