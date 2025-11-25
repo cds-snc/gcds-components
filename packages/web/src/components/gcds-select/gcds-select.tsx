@@ -375,6 +375,8 @@ export class GcdsSelect {
    * Update gcds-select's validity using internal select
    */
   private updateValidity() {
+    if (!this.shadowElement) return;
+    
     const validity = this.shadowElement.validity;
 
     let validationMessage = null;
