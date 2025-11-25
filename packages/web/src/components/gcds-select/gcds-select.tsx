@@ -116,7 +116,7 @@ export class GcdsSelect {
   @Watch('value')
   watchValue(val) {
     if (!this.shadowElement) return;
-    
+
     if (val && this.checkIfValidValue(val)) {
       this.internals.setFormValue(val);
       this.shadowElement.value = val;
@@ -124,7 +124,7 @@ export class GcdsSelect {
       this.internals.setFormValue(null);
       this.value = null;
     }
-    console.log('value changed to: ', this.value);
+
     this.updateValidity();
   }
 
@@ -378,7 +378,7 @@ export class GcdsSelect {
    */
   private updateValidity() {
     if (!this.shadowElement) return;
-    
+
     const validity = this.shadowElement.validity;
 
     let validationMessage = null;
@@ -457,6 +457,7 @@ export class GcdsSelect {
           });
         }
       });
+      this.value = this.checkIfValidValue(this.value) ? this.value : null;
     }
   }
 
