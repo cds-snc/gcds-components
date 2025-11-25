@@ -375,7 +375,7 @@ export const GcdsInput: StencilVueComponent<JSX.GcdsInput, JSX.GcdsInput["value"
   'gcdsFocus',
   'gcdsBlur',
   'gcdsInput',
-  'gcdsDatalistSelected',
+  'gcdsSuggestionSelected',
   'gcdsChange',
   'gcdsError',
   'gcdsValid'
@@ -383,7 +383,7 @@ export const GcdsInput: StencilVueComponent<JSX.GcdsInput, JSX.GcdsInput["value"
   'gcdsFocus',
   'gcdsBlur',
   'gcdsInput',
-  'gcdsDatalistSelected',
+  'gcdsSuggestionSelected',
   'gcdsChange',
   'gcdsError',
   'gcdsValid'

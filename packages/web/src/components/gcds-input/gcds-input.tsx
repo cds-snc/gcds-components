@@ -29,7 +29,7 @@ import {
   requiredValidator,
   ValidatorOld,
 } from '../../validators';
-import { DataListOptionObject, isDataListObject } from './datalist-option';
+import { SuggestionOptionObject, isSuggestionObject } from './suggestion-option';
 
 /**
  * An input is a space to enter short-form information in response to a question or instruction.
@@ -223,7 +223,7 @@ export class GcdsInput {
   /**
    * Array of suggestions
    */
-  @Prop({ mutable: true }) suggestions?: string | Array<DataListOptionObject>;
+  @Prop({ mutable: true }) suggestions?: string | Array<SuggestionOptionObject>;
   @Watch('suggestions')
   validateSuggestions() {
     if (this.suggestions == null) {
@@ -250,10 +250,10 @@ export class GcdsInput {
       this.suggestionsArr = null;
     }
 
-    // Validate options has type DataListOptionObject, we allow an empty array to be used.
+    // Validate options has type SuggestionOptionObject, we allow an empty array to be used.
     if (this.suggestionsArr) {
       invalidObject = this.suggestionsArr.some(
-        dlObject => !isDataListObject(dlObject),
+        dlObject => !isSuggestionObject(dlObject),
       );
     } else {
       invalidObject = true;
@@ -334,7 +334,7 @@ export class GcdsInput {
   /**
    * Emitted when a suggestion is selected.
    */
-  @Event() gcdsDatalistSelected: EventEmitter<string>;
+  @Event() gcdsSuggestionSelected: EventEmitter<string>;
 
   /**
    * Handling input and change events on input
@@ -348,11 +348,11 @@ export class GcdsInput {
       if (
         this.suggestionsArr &&
         this.suggestionsArr.some(
-          (suggestion: DataListOptionObject) =>
+          (suggestion: SuggestionOptionObject) =>
             val == (suggestion.value ?? suggestion.label),
         )
       ) {
-        this.gcdsDatalistSelected.emit(this.value);
+        this.gcdsSuggestionSelected.emit(this.value);
       }
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
@@ -682,9 +682,11 @@ export class GcdsInput {
           {this.suggestionsArr && this.suggestionsArr.length > 0 ? (
             <datalist id={`datalist-for-${inputId}`}>
               {this.suggestionsArr.map(
-                (datalistOption: DataListOptionObject) => (
-                  <option value={datalistOption.value ?? datalistOption.label}>
-                    {datalistOption.label}
+                (suggestionOption: SuggestionOptionObject) => (
+                  <option
+                    value={suggestionOption.value ?? suggestionOption.label}
+                  >
+                    {suggestionOption.label}
                   </option>
                 ),
               )}

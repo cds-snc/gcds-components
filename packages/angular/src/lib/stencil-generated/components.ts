@@ -1192,7 +1192,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 @ProxyCmp({
   inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
-  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsDatalistSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
   selector: 'gcds-input',
@@ -1200,7 +1200,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
-  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsDatalistSelected', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
 export class GcdsInput {
@@ -1314,7 +1314,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsDatalistSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -1335,7 +1335,7 @@ export declare interface GcdsInput extends Components.GcdsInput {
   /**
    * Emitted when a suggestion is selected.
    */
-  gcdsDatalistSelected: EventEmitter<CustomEvent<string>>;
+  gcdsSuggestionSelected: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the input has changed.
    */

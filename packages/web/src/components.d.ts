@@ -9,13 +9,13 @@ import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
-import { DataListOptionObject } from "./components/gcds-input/datalist-option";
+import { SuggestionOptionObject } from "./components/gcds-input/suggestion-option";
 import { RadioObject } from "./components/gcds-radios/radio";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
-export { DataListOptionObject } from "./components/gcds-input/datalist-option";
+export { SuggestionOptionObject } from "./components/gcds-input/suggestion-option";
 export { RadioObject } from "./components/gcds-radios/radio";
 export namespace Components {
     /**
@@ -782,7 +782,7 @@ export namespace Components {
         /**
           * Array of suggestions
          */
-        "suggestions"?: string | Array<DataListOptionObject>;
+        "suggestions"?: string | Array<SuggestionOptionObject>;
         /**
           * Set Input types
           * @default 'text'
@@ -1849,7 +1849,7 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsInput": string;
-        "gcdsDatalistSelected": string;
+        "gcdsSuggestionSelected": string;
         "gcdsChange": string;
         "gcdsError": object;
         "gcdsValid": object;
@@ -3118,10 +3118,6 @@ declare namespace LocalJSX {
          */
         "onGcdsChange"?: (event: GcdsInputCustomEvent<string>) => void;
         /**
-          * Emitted when a suggestion is selected.
-         */
-        "onGcdsDatalistSelected"?: (event: GcdsInputCustomEvent<string>) => void;
-        /**
           * Emitted when the input has a validation error.
          */
         "onGcdsError"?: (event: GcdsInputCustomEvent<object>) => void;
@@ -3133,6 +3129,10 @@ declare namespace LocalJSX {
           * Emitted when the element has received input.
          */
         "onGcdsInput"?: (event: GcdsInputCustomEvent<string>) => void;
+        /**
+          * Emitted when a suggestion is selected.
+         */
+        "onGcdsSuggestionSelected"?: (event: GcdsInputCustomEvent<string>) => void;
         /**
           * Emitted when the input has a validation error.
          */
@@ -3161,7 +3161,7 @@ declare namespace LocalJSX {
         /**
           * Array of suggestions
          */
-        "suggestions"?: string | Array<DataListOptionObject>;
+        "suggestions"?: string | Array<SuggestionOptionObject>;
         /**
           * Set Input types
           * @default 'text'

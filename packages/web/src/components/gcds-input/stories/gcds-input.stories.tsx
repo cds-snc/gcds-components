@@ -205,7 +205,7 @@ export default {
       action: 'change',
       ...eventProp,
     },
-    gcdsDatalistSelected: {
+    gcdsSuggestionSelected: {
       action: 'change',
       ...eventProp,
     },

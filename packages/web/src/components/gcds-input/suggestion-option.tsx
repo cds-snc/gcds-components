@@ -1,9 +1,9 @@
-export type DataListOptionObject = {
+export type SuggestionOptionObject = {
   label: string;
   value?: string;
 };
 
-export function isDataListObject(obj: any): obj is DataListOptionObject {
+export function isSuggestionObject(obj: any): obj is SuggestionOptionObject {
   if (typeof obj !== 'object' || obj === null) return false;
 
   const validKeys = ['value', 'label'];
