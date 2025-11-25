@@ -115,7 +115,9 @@ export class GcdsSelect {
 
   @Watch('value')
   watchValue(val) {
-    if (this.checkIfValidValue(val)) {
+    if (!this.shadowElement) return;
+    
+    if (val && this.checkIfValidValue(val)) {
       this.internals.setFormValue(val);
       this.shadowElement.value = val;
     } else {
