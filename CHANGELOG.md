@@ -4,7 +4,11 @@
 
 ## [0.44.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.1...gcds-components-v0.44.0)
 
-Released on: 2025-11-24
+Released on: 2025-11-25
+
+### :rocket: New Features
+
+* **angular:** Update angular peer dependencies to support v20 ([#979](https://github.com/cds-snc/gcds-components/issues/979)) ([f215d8f](https://github.com/cds-snc/gcds-components/commit/f215d8fdde13747aa2ad5b86bba09a32d9cd1d05))
 
 ### :bug: :wrench: Bug Fixes
 
