@@ -230,6 +230,7 @@ export class GcdsInput {
       this.suggestions == null ||
       (typeof this.suggestions === 'string' && this.suggestions.trim() == '')
     ) {
+      this.suggestionsArr = null;
       return;
     }
 
