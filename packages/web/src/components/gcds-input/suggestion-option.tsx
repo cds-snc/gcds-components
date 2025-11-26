@@ -1,9 +1,9 @@
-export type SuggestionOptionObject = {
+export type SuggestionOption = {
   label: string;
   value?: string;
 };
 
-export function isSuggestionObject(obj: any): obj is SuggestionOptionObject {
+export function isSuggestionObject(obj: any): obj is SuggestionOption {
   if (typeof obj !== 'object' || obj === null) return false;
 
   const validKeys = ['value', 'label'];

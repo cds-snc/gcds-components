@@ -29,7 +29,7 @@ import {
   requiredValidator,
   ValidatorOld,
 } from '../../validators';
-import { SuggestionOptionObject, isSuggestionObject } from './suggestion-option';
+import { SuggestionOption, isSuggestionObject } from './suggestion-option';
 
 /**
  * An input is a space to enter short-form information in response to a question or instruction.
@@ -221,21 +221,21 @@ export class GcdsInput {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
-   * Array of suggestions
+   * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
    */
-  @Prop({ mutable: true }) suggestions?: string | Array<SuggestionOptionObject>;
+  @Prop({ mutable: true }) suggestions?: string | Array<SuggestionOption>;
   @Watch('suggestions')
   validateSuggestions() {
-    if (this.suggestions == null) {
+    if (
+      this.suggestions == null ||
+      (typeof this.suggestions === 'string' && this.suggestions.trim() == '')
+    ) {
       return;
     }
 
     let invalidObject = false;
-    // Assign optionsArr from passed options string or array
-    if (
-      typeof this.suggestions === 'string' &&
-      this.suggestions.trim() !== ''
-    ) {
+    // Assign suggestionsArr from passed options string or array
+    if (typeof this.suggestions === 'string') {
       try {
         this.suggestions = JSON.parse(this.suggestions as string);
       } catch (e) {
@@ -250,7 +250,7 @@ export class GcdsInput {
       this.suggestionsArr = null;
     }
 
-    // Validate options has type SuggestionOptionObject, we allow an empty array to be used.
+    // Validate options has type SuggestionOption, we allow an empty array to be used.
     if (this.suggestionsArr) {
       invalidObject = this.suggestionsArr.some(
         dlObject => !isSuggestionObject(dlObject),
@@ -348,7 +348,7 @@ export class GcdsInput {
       if (
         this.suggestionsArr &&
         this.suggestionsArr.some(
-          (suggestion: SuggestionOptionObject) =>
+          (suggestion: SuggestionOption) =>
             val == (suggestion.value ?? suggestion.label),
         )
       ) {
@@ -681,15 +681,13 @@ export class GcdsInput {
 
           {this.suggestionsArr && this.suggestionsArr.length > 0 ? (
             <datalist id={`datalist-for-${inputId}`}>
-              {this.suggestionsArr.map(
-                (suggestionOption: SuggestionOptionObject) => (
-                  <option
-                    value={suggestionOption.value ?? suggestionOption.label}
-                  >
-                    {suggestionOption.label}
-                  </option>
-                ),
-              )}
+              {this.suggestionsArr.map((suggestionOption: SuggestionOption) => (
+                <option
+                  value={suggestionOption.value ?? suggestionOption.label}
+                >
+                  {suggestionOption.label}
+                </option>
+              ))}
             </datalist>
           ) : null}
         </div>

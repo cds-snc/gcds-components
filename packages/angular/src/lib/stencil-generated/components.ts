@@ -1308,7 +1308,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
    */
   set validateOn(_: Components.GcdsInput['validateOn']) {};
     /**
-   * Array of suggestions
+   * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
    */
   set suggestions(_: Components.GcdsInput['suggestions']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

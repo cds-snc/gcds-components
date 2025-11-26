@@ -9,13 +9,13 @@ import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
-import { SuggestionOptionObject } from "./components/gcds-input/suggestion-option";
+import { SuggestionOption } from "./components/gcds-input/suggestion-option";
 import { RadioObject } from "./components/gcds-radios/radio";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
-export { SuggestionOptionObject } from "./components/gcds-input/suggestion-option";
+export { SuggestionOption } from "./components/gcds-input/suggestion-option";
 export { RadioObject } from "./components/gcds-radios/radio";
 export namespace Components {
     /**
@@ -780,9 +780,9 @@ export namespace Components {
          */
         "step"?: number | 'any';
         /**
-          * Array of suggestions
+          * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
          */
-        "suggestions"?: string | Array<SuggestionOptionObject>;
+        "suggestions"?: string | Array<SuggestionOption>;
         /**
           * Set Input types
           * @default 'text'
@@ -3159,9 +3159,9 @@ declare namespace LocalJSX {
          */
         "step"?: number | 'any';
         /**
-          * Array of suggestions
+          * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
          */
-        "suggestions"?: string | Array<SuggestionOptionObject>;
+        "suggestions"?: string | Array<SuggestionOption>;
         /**
           * Set Input types
           * @default 'text'
