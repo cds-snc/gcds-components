@@ -96,7 +96,7 @@ export class GcdsSelect {
   /**
    * If true, the select will be focused on component render
    */
-  @Prop({ reflect: true }) autofocus: boolean;
+  @Prop({ reflect: true }) autofocus?: boolean;
 
   /**
    * The ID of the form that the select field belongs to.

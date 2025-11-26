@@ -207,7 +207,7 @@ const Template = args =>
   ${args.disabled ? `disabled` : null}
   ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
-  ${args.form ? `form="${args.value}"` : null}
+  ${args.form ? `form="${args.form}"` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -228,7 +228,7 @@ const TemplatePlayground = args => `
   ${args.disabled ? `disabled` : null}
   ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
-  ${args.form ? `form="${args.value}"` : null}
+  ${args.form ? `form="${args.form}"` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
