@@ -364,6 +364,7 @@ export class GcdsFileUploader {
    * Update gcds-file-uploader's validity using internal input
    */
   private updateValidity() {
+    if (!this.shadowElement) return;
     const validity = this.shadowElement.validity;
 
     let validationMessage = null;
