@@ -1190,7 +1190,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
@@ -1199,7 +1199,7 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -1246,6 +1246,10 @@ of the expected text length to the user.
    * Set Input types @default 'text'
    */
   set type(_: Components.GcdsInput['type']) {};
+    /**
+   *  @default null
+   */
+  set inputmode(_: Components.GcdsInput['inputmode']) {};
     /**
    * Default value for an input element.
    */
