@@ -32,6 +32,7 @@ An input is a space to enter short-form information in response to a question or
 | `required`             | `required`      | Specifies if a form field is required or not.                                                                                                                           | `boolean`                                                                   | `false`     |
 | `size`                 | `size`          | Size attribute for an input element to provide a visual indication of the expected text length to the user.                                                             | `number`                                                                    | `undefined` |
 | `step`                 | `step`          | A number that specifies the granularity that the value must adhere to. Valid for number type. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step | `"any" \| number`                                                           | `undefined` |
+| `suggestions`          | `suggestions`   | Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.                     | `SuggestionOption[] \| string`                                              | `undefined` |
 | `type`                 | `type`          | Set Input types                                                                                                                                                         | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"` | `'text'`    |
 | `validateOn`           | `validate-on`   | Set event to call validator                                                                                                                                             | `"blur" \| "other" \| "submit"`                                             | `'blur'`    |
 | `validator`            | `validator`     | Array of validators                                                                                                                                                     | `(string \| ValidatorEntry \| Validator<string>)[]`                         | `undefined` |
@@ -41,14 +42,15 @@ An input is a space to enter short-form information in response to a question or
 
 ## Events
 
-| Event        | Description                                    | Type                  |
-| ------------ | ---------------------------------------------- | --------------------- |
-| `gcdsBlur`   | Emitted when the input loses focus.            | `CustomEvent<void>`   |
-| `gcdsChange` | Emitted when the input has changed.            | `CustomEvent<string>` |
-| `gcdsError`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
-| `gcdsFocus`  | Emitted when the input has focus.              | `CustomEvent<void>`   |
-| `gcdsInput`  | Emitted when the element has received input.   | `CustomEvent<string>` |
-| `gcdsValid`  | Emitted when the input has a validation error. | `CustomEvent<object>` |
+| Event                    | Description                                    | Type                  |
+| ------------------------ | ---------------------------------------------- | --------------------- |
+| `gcdsBlur`               | Emitted when the input loses focus.            | `CustomEvent<void>`   |
+| `gcdsChange`             | Emitted when the input has changed.            | `CustomEvent<string>` |
+| `gcdsError`              | Emitted when the input has a validation error. | `CustomEvent<object>` |
+| `gcdsFocus`              | Emitted when the input has focus.              | `CustomEvent<void>`   |
+| `gcdsInput`              | Emitted when the element has received input.   | `CustomEvent<string>` |
+| `gcdsSuggestionSelected` | Emitted when a suggestion is selected.         | `CustomEvent<string>` |
+| `gcdsValid`              | Emitted when the input has a validation error. | `CustomEvent<object>` |
 
 
 ## Methods
