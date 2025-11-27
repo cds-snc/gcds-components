@@ -330,7 +330,7 @@ export function formatHTMLErrorMessage(error, lang, el) {
 /**
  * Compare validity of radio buttons/checkboxes in a group
  * @param elements - array of HTMLInputElements in the group
- * @returns vlidity state object
+ * @returns validity state object
  */
 export function validateRadioCheckboxGroup(
   elements: HTMLInputElement[],
