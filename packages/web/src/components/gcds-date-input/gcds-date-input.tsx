@@ -73,13 +73,24 @@ export class GcdsDateInput {
     }
   }
 
+  private getFullOrCompactDate() {
+    return this.format == 'full' || this.format == 'yyyy-mm-dd'
+      ? 'full'
+      : 'compact';
+  }
+
   /**
    * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
    */
-  @Prop() format!: 'full' | 'compact';
+  @Prop() format!: 'full' | 'compact' | 'yyyy-mm-dd';
   @Watch('format')
   validateFormat() {
-    if (!this.format || (this.format != 'full' && this.format != 'compact')) {
+    if (
+      !this.format ||
+      (this.format != 'full' &&
+        this.format != 'compact' &&
+        this.format != 'yyyy-mm-dd')
+    ) {
       this.errors.push('format');
     } else if (this.errors.includes('format')) {
       this.errors.splice(this.errors.indexOf('format'), 1);
@@ -221,7 +232,7 @@ export class GcdsDateInput {
     this.hasError = handleValidationResult(
       this.el as HTMLGcdsDateInputElement,
       this._validator.validate(
-        this.format === 'full'
+        this.getFullOrCompactDate() === 'full'
           ? `${this.yearValue}-${this.monthValue}-${this.dayValue}`
           : `${this.yearValue}-${this.monthValue}`,
       ),
@@ -306,7 +317,8 @@ export class GcdsDateInput {
    * Logic to combine all input values together based on format
    */
   private setValue() {
-    const { yearValue, monthValue, format } = this;
+    const { yearValue, monthValue } = this;
+    const format = this.getFullOrCompactDate();
     let { dayValue } = this;
 
     // Logic to make sure the day input is registered correctly
@@ -485,6 +497,16 @@ export class GcdsDateInput {
       ></gcds-input>
     );
 
+    let formatArray : any[]
+
+    if (format === 'yyyy-mm-dd') {
+      formatArray = [year, month, day]
+    } else if (format == 'compact') {
+      formatArray = [month, year]
+    } else if (format == 'full') {
+      formatArray = lang == 'en' ? [month, day, year] : [day, month, year]
+    }
+
     return (
       <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
@@ -510,11 +532,7 @@ export class GcdsDateInput {
                 </gcds-error-message>
               </div>
             ) : null}
-            {format == 'compact'
-              ? [month, year]
-              : lang == 'en'
-                ? [month, day, year]
-                : [day, month, year]}
+            { formatArray }
           </fieldset>
         )}
       </Host>
