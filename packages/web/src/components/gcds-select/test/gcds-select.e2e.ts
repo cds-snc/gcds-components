@@ -134,6 +134,29 @@ test.describe('gcds-select', () => {
 
     expect(errorMessage).toEqual('');
   });
+
+  test('HTML validity', async ({ page }) => {
+    const element = await page.locator('gcds-select');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    let validity = await element.evaluate(el =>
+      (el as HTMLGcdsSelectElement).checkValidity(),
+    );
+
+    expect(validity).toBe(false);
+
+    await element.locator('select').selectOption('2');
+
+    validity = await element.evaluate(el =>
+      (el as HTMLGcdsSelectElement).checkValidity(),
+    );
+
+    expect(validity).toBe(true);
+  });
 });
 
 /**

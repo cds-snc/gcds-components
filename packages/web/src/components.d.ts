@@ -1103,6 +1103,18 @@ export namespace Components {
      */
     interface GcdsSelect {
         /**
+          * String to have autocomplete enabled.
+         */
+        "autocomplete"?: string;
+        /**
+          * If true, the select will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
+          * Check the validity of gcds-select
+         */
+        "checkValidity": () => Promise<boolean>;
+        /**
           * The default value is an optional value that gets displayed before the user selects an option.
          */
         "defaultValue"?: string;
@@ -1115,6 +1127,14 @@ export namespace Components {
           * Error message for an invalid select element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the select field belongs to.
+         */
+        "form"?: string;
+        /**
+          * Get validationMessage of gcds-select
+         */
+        "getValidationMessage": () => Promise<string>;
         /**
           * Hint displayed below the label.
          */
@@ -1151,6 +1171,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Value for a select element.
          */
@@ -3557,6 +3582,14 @@ declare namespace LocalJSX {
      */
     interface GcdsSelect {
         /**
+          * String to have autocomplete enabled.
+         */
+        "autocomplete"?: string;
+        /**
+          * If true, the select will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * The default value is an optional value that gets displayed before the user selects an option.
          */
         "defaultValue"?: string;
@@ -3569,6 +3602,10 @@ declare namespace LocalJSX {
           * Error message for an invalid select element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the select field belongs to.
+         */
+        "form"?: string;
         /**
           * Hint displayed below the label.
          */
@@ -3625,6 +3662,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Value for a select element.
          */
