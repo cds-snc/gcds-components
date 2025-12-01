@@ -386,6 +386,14 @@ export namespace Components {
          */
         "accept": string;
         /**
+          * If true, the file uploader will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
+          * Check the validity of gcds-file-uploader
+         */
+        "checkValidity": () => Promise<boolean>;
+        /**
           * Specifies if a file uploader element is disabled or not.
           * @default false
          */
@@ -398,6 +406,14 @@ export namespace Components {
           * FileList of uploaded files to input
          */
         "files": FileList;
+        /**
+          * The ID of the form that the file uploader field belongs to.
+         */
+        "form"?: string;
+        /**
+          * Get validationMessage of gcds-file-uploader
+         */
+        "getValidationMessage": () => Promise<string>;
         /**
           * Hint displayed below the label.
          */
@@ -438,6 +454,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string | number | FileList>
   >;
+        /**
+          * Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Value for a file uploader element.
           * @default []
@@ -2733,6 +2754,10 @@ declare namespace LocalJSX {
          */
         "accept"?: string;
         /**
+          * If true, the file uploader will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * Specifies if a file uploader element is disabled or not.
           * @default false
          */
@@ -2745,6 +2770,10 @@ declare namespace LocalJSX {
           * FileList of uploaded files to input
          */
         "files"?: FileList;
+        /**
+          * The ID of the form that the file uploader field belongs to.
+         */
+        "form"?: string;
         /**
           * Hint displayed below the label.
          */
@@ -2809,6 +2838,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string | number | FileList>
   >;
+        /**
+          * Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Value for a file uploader element.
           * @default []

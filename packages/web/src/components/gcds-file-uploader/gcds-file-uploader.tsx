@@ -16,7 +16,7 @@ import {
   assignLanguage,
   handleValidationResult,
   inheritAttributes,
-  observerConfig,
+  observerConfig
 } from '../../utils/utils';
 import {
   Validator,
@@ -43,6 +43,8 @@ export class GcdsFileUploader {
   internals: ElementInternals;
 
   private shadowElement?: HTMLInputElement;
+
+  private inputTitle: string = '';
 
   _validator: Validator<unknown> = defaultValidator;
 
@@ -163,6 +165,24 @@ export class GcdsFileUploader {
   }
 
   /**
+   * Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.
+   */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
+  }
+
+  /**
+   * If true, the file uploader will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The ID of the form that the file uploader field belongs to.
+   */
+  @Prop({ reflect: true }) form?: string;
+
+  /**
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
@@ -227,6 +247,8 @@ export class GcdsFileUploader {
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
+    } else {
+      this.updateValidity();
     }
 
     customEvent.emit(this.value);
@@ -266,6 +288,7 @@ export class GcdsFileUploader {
     this.el.dispatchEvent(
       new Event('change', { bubbles: true, composed: true }),
     );
+    this.updateValidity();
   };
 
   /**
@@ -281,6 +304,24 @@ export class GcdsFileUploader {
       this.gcdsValid,
       this.lang,
     );
+
+    this.inputTitle = this.errorMessage;
+  }
+
+  /**
+   * Check the validity of gcds-file-uploader
+   */
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  /**
+   * Get validationMessage of gcds-file-uploader
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   /**
@@ -317,6 +358,28 @@ export class GcdsFileUploader {
   formStateRestoreCallback(state) {
     this.internals.setFormValue(state);
     this.value = state;
+  }
+
+  /**
+   * Update gcds-file-uploader's validity using internal input
+   */
+  private updateValidity() {
+    if (!this.shadowElement) return;
+    const validity = this.shadowElement.validity;
+
+    let validationMessage = null;
+    if (validity?.valueMissing) {
+      validationMessage = this.lang === 'en' ? 'You must upload a file to continue.' : 'Vous devez téléverser un fichier pour continuer.';
+    }
+
+    this.internals.setValidity(
+      validity,
+      validationMessage,
+      this.shadowElement,
+    );
+
+    // Set input title when HTML error occruring
+    this.inputTitle = validationMessage;
   }
 
   /*
@@ -357,6 +420,7 @@ export class GcdsFileUploader {
       this.el.dispatchEvent(
         new Event('change', { bubbles: true, composed: true }),
       );
+      this.updateValidity();
     }
 
     // Focus file input after drop
@@ -393,6 +457,17 @@ export class GcdsFileUploader {
     this.inheritedAttributes = inheritAttributes(this.el, this.shadowElement);
   }
 
+  async componentDidLoad() {
+    this.updateValidity();
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement?.focus();
+      });
+    }
+  }
+
   render() {
     const {
       accept,
@@ -407,6 +482,9 @@ export class GcdsFileUploader {
       required,
       uploaderId,
       value,
+      inputTitle,
+      autofocus,
+      form,
       inheritedAttributes,
     } = this;
 
@@ -417,12 +495,14 @@ export class GcdsFileUploader {
       name,
       required,
       value,
+      title: inputTitle,
+      autofocus,
+      form,
       ...inheritedAttributes,
-      'aria-describedby': `${
-        inheritedAttributes['aria-describedby']
-          ? `${inheritedAttributes['aria-describedby']} `
-          : ''
-      }file-uploader__summary`,
+      'aria-describedby': `${inheritedAttributes['aria-describedby']
+        ? `${inheritedAttributes['aria-describedby']} `
+        : ''
+        }file-uploader__summary`,
     };
 
     const attrsLabel = {
@@ -440,9 +520,8 @@ export class GcdsFileUploader {
     return (
       <Host>
         <div
-          class={`gcds-file-uploader-wrapper ${
-            disabled ? 'gcds-disabled' : ''
-          } ${hasError ? 'gcds-error' : ''}`}
+          class={`gcds-file-uploader-wrapper ${disabled ? 'gcds-disabled' : ''
+            } ${hasError ? 'gcds-error' : ''}`}
         >
           <gcds-label {...attrsLabel} label-for={uploaderId} lang={lang} />
 
@@ -455,9 +534,8 @@ export class GcdsFileUploader {
           ) : null}
 
           <div
-            class={`file-uploader__input ${
-              value.length > 0 ? 'uploaded-files' : ''
-            }`}
+            class={`file-uploader__input ${value.length > 0 ? 'uploaded-files' : ''
+              }`}
             onDrop={e => this.handleDrop(e)}
             onDragOver={e => e.preventDefault()}
           >
@@ -497,17 +575,17 @@ export class GcdsFileUploader {
 
           {value.length > 0
             ? value.map(file => (
-                <div
-                  class="file-uploader__uploaded-file"
-                  aria-label={`${i18n[lang].removeFile} ${file}.`}
-                >
-                  <gcds-text margin-bottom="0">{file}</gcds-text>
-                  <button onClick={e => this.removeFile(e)}>
-                    <span>{i18n[lang].button.remove}</span>
-                    <gcds-icon name="close" size="text" margin-left="150" />
-                  </button>
-                </div>
-              ))
+              <div
+                class="file-uploader__uploaded-file"
+                aria-label={`${i18n[lang].removeFile} ${file}.`}
+              >
+                <gcds-text margin-bottom="0">{file}</gcds-text>
+                <button onClick={e => this.removeFile(e)}>
+                  <span>{i18n[lang].button.remove}</span>
+                  <gcds-icon name="close" size="text" margin-left="150" />
+                </button>
+              </div>
+            ))
             : null}
         </div>
       </Host>
