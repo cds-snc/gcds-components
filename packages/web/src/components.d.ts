@@ -9,11 +9,13 @@ import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
+import { SuggestionOption } from "./components/gcds-input/suggestion-option";
 import { RadioObject } from "./components/gcds-radios/radio";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
+export { SuggestionOption } from "./components/gcds-input/suggestion-option";
 export { RadioObject } from "./components/gcds-radios/radio";
 export namespace Components {
     /**
@@ -733,6 +735,17 @@ export namespace Components {
          */
         "inputId": string;
         /**
+          * @default null
+         */
+        "inputmode"?: | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+        /**
           * Form field label
          */
         "label": string;
@@ -777,6 +790,10 @@ export namespace Components {
           * A number that specifies the granularity that the value must adhere to. Valid for number type. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
          */
         "step"?: number | 'any';
+        /**
+          * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
+         */
+        "suggestions"?: string | Array<SuggestionOption>;
         /**
           * Set Input types
           * @default 'text'
@@ -1103,6 +1120,18 @@ export namespace Components {
      */
     interface GcdsSelect {
         /**
+          * String to have autocomplete enabled.
+         */
+        "autocomplete"?: string;
+        /**
+          * If true, the select will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
+          * Check the validity of gcds-select
+         */
+        "checkValidity": () => Promise<boolean>;
+        /**
           * The default value is an optional value that gets displayed before the user selects an option.
          */
         "defaultValue"?: string;
@@ -1115,6 +1144,14 @@ export namespace Components {
           * Error message for an invalid select element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the select field belongs to.
+         */
+        "form"?: string;
+        /**
+          * Get validationMessage of gcds-select
+         */
+        "getValidationMessage": () => Promise<string>;
         /**
           * Hint displayed below the label.
          */
@@ -1151,6 +1188,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Value for a select element.
          */
@@ -1843,6 +1885,7 @@ declare global {
         "gcdsFocus": void;
         "gcdsBlur": void;
         "gcdsInput": string;
+        "gcdsSuggestionSelected": string;
         "gcdsChange": string;
         "gcdsError": object;
         "gcdsValid": object;
@@ -3079,6 +3122,17 @@ declare namespace LocalJSX {
          */
         "inputId": string;
         /**
+          * @default null
+         */
+        "inputmode"?: | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+        /**
           * Form field label
          */
         "label": string;
@@ -3123,6 +3177,10 @@ declare namespace LocalJSX {
          */
         "onGcdsInput"?: (event: GcdsInputCustomEvent<string>) => void;
         /**
+          * Emitted when a suggestion is selected.
+         */
+        "onGcdsSuggestionSelected"?: (event: GcdsInputCustomEvent<string>) => void;
+        /**
           * Emitted when the input has a validation error.
          */
         "onGcdsValid"?: (event: GcdsInputCustomEvent<object>) => void;
@@ -3147,6 +3205,10 @@ declare namespace LocalJSX {
           * A number that specifies the granularity that the value must adhere to. Valid for number type. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
          */
         "step"?: number | 'any';
+        /**
+          * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
+         */
+        "suggestions"?: string | Array<SuggestionOption>;
         /**
           * Set Input types
           * @default 'text'
@@ -3557,6 +3619,14 @@ declare namespace LocalJSX {
      */
     interface GcdsSelect {
         /**
+          * String to have autocomplete enabled.
+         */
+        "autocomplete"?: string;
+        /**
+          * If true, the select will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * The default value is an optional value that gets displayed before the user selects an option.
          */
         "defaultValue"?: string;
@@ -3569,6 +3639,10 @@ declare namespace LocalJSX {
           * Error message for an invalid select element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the select field belongs to.
+         */
+        "form"?: string;
         /**
           * Hint displayed below the label.
          */
@@ -3625,6 +3699,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Value for a select element.
          */

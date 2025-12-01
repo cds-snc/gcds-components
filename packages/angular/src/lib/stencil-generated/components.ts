@@ -1190,17 +1190,17 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
-  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
   selector: 'gcds-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
-  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
 export class GcdsInput {
@@ -1246,6 +1246,10 @@ of the expected text length to the user.
    * Set Input types @default 'text'
    */
   set type(_: Components.GcdsInput['type']) {};
+    /**
+   *  @default null
+   */
+  set inputmode(_: Components.GcdsInput['inputmode']) {};
     /**
    * Default value for an input element.
    */
@@ -1307,10 +1311,14 @@ See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
    * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsInput['validateOn']) {};
+    /**
+   * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
+   */
+  set suggestions(_: Components.GcdsInput['suggestions']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -1328,6 +1336,10 @@ export declare interface GcdsInput extends Components.GcdsInput {
    * Emitted when the element has received input.
    */
   gcdsInput: EventEmitter<CustomEvent<string>>;
+  /**
+   * Emitted when a suggestion is selected.
+   */
+  gcdsSuggestionSelected: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the input has changed.
    */
@@ -1920,8 +1932,8 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
 
 
 @ProxyCmp({
-  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['autocomplete', 'autofocus', 'defaultValue', 'disabled', 'errorMessage', 'form', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -1929,7 +1941,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'defaultValue', 'disabled', 'errorMessage', 'form', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -1960,6 +1972,18 @@ export class GcdsSelect {
    */
   set defaultValue(_: Components.GcdsSelect['defaultValue']) {};
     /**
+   * If true, the select will be focused on component render
+   */
+  set autofocus(_: Components.GcdsSelect['autofocus']) {};
+    /**
+   * The ID of the form that the select field belongs to.
+   */
+  set form(_: Components.GcdsSelect['form']) {};
+    /**
+   * String to have autocomplete enabled.
+   */
+  set autocomplete(_: Components.GcdsSelect['autocomplete']) {};
+    /**
    * Value for a select element.
    */
   set value(_: Components.GcdsSelect['value']) {};
@@ -1971,6 +1995,10 @@ export class GcdsSelect {
    * Hint displayed below the label.
    */
   set hint(_: Components.GcdsSelect['hint']) {};
+    /**
+   * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsSelect['validity']) {};
     /**
    * Array of validators
    */

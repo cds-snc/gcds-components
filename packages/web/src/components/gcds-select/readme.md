@@ -11,19 +11,23 @@ A select provides a large list of options for single selection.
 
 ## Properties
 
-| Property                | Attribute       | Description                                                                                   | Type                                                | Default     |
-| ----------------------- | --------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
-| `defaultValue`          | `default-value` | The default value is an optional value that gets displayed before the user selects an option. | `string`                                            | `undefined` |
-| `disabled`              | `disabled`      | Specifies if a select element is disabled or not.                                             | `boolean`                                           | `false`     |
-| `errorMessage`          | `error-message` | Error message for an invalid select element.                                                  | `string`                                            | `undefined` |
-| `hint`                  | `hint`          | Hint displayed below the label.                                                               | `string`                                            | `undefined` |
-| `label` _(required)_    | `label`         | Form field label.                                                                             | `string`                                            | `undefined` |
-| `name` _(required)_     | `name`          | Name attribute for select form element.                                                       | `string`                                            | `undefined` |
-| `required`              | `required`      | Specifies if a form field is required or not.                                                 | `boolean`                                           | `false`     |
-| `selectId` _(required)_ | `select-id`     | Id attribute for a select element.                                                            | `string`                                            | `undefined` |
-| `validateOn`            | `validate-on`   | Set event to call validator                                                                   | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
-| `validator`             | `validator`     | Array of validators                                                                           | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `value`                 | `value`         | Value for a select element.                                                                   | `string`                                            | `undefined` |
+| Property                | Attribute       | Description                                                                                                              | Type                                                | Default     |
+| ----------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- | ----------- |
+| `autocomplete`          | `autocomplete`  | String to have autocomplete enabled.                                                                                     | `string`                                            | `undefined` |
+| `autofocus`             | `autofocus`     | If true, the select will be focused on component render                                                                  | `boolean`                                           | `undefined` |
+| `defaultValue`          | `default-value` | The default value is an optional value that gets displayed before the user selects an option.                            | `string`                                            | `undefined` |
+| `disabled`              | `disabled`      | Specifies if a select element is disabled or not.                                                                        | `boolean`                                           | `false`     |
+| `errorMessage`          | `error-message` | Error message for an invalid select element.                                                                             | `string`                                            | `undefined` |
+| `form`                  | `form`          | The ID of the form that the select field belongs to.                                                                     | `string`                                            | `undefined` |
+| `hint`                  | `hint`          | Hint displayed below the label.                                                                                          | `string`                                            | `undefined` |
+| `label` _(required)_    | `label`         | Form field label.                                                                                                        | `string`                                            | `undefined` |
+| `name` _(required)_     | `name`          | Name attribute for select form element.                                                                                  | `string`                                            | `undefined` |
+| `required`              | `required`      | Specifies if a form field is required or not.                                                                            | `boolean`                                           | `false`     |
+| `selectId` _(required)_ | `select-id`     | Id attribute for a select element.                                                                                       | `string`                                            | `undefined` |
+| `validateOn`            | `validate-on`   | Set event to call validator                                                                                              | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
+| `validator`             | `validator`     | Array of validators                                                                                                      | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validity`              | `validity`      | Read-only property of the select, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| `value`                 | `value`         | Value for a select element.                                                                                              | `string`                                            | `undefined` |
 
 
 ## Events
@@ -39,6 +43,26 @@ A select provides a large list of options for single selection.
 
 
 ## Methods
+
+### `checkValidity() => Promise<boolean>`
+
+Check the validity of gcds-select
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+### `getValidationMessage() => Promise<string>`
+
+Get validationMessage of gcds-select
+
+#### Returns
+
+Type: `Promise<string>`
+
+
 
 ### `validate() => Promise<void>`
 

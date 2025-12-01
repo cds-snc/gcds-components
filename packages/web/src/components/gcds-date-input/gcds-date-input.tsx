@@ -451,6 +451,7 @@ export class GcdsDateInput {
         label={i18n[lang].year}
         inputId="year"
         type="number"
+        inputmode="numeric"
         size={4}
         disabled={disabled}
         value={this.yearValue}
@@ -470,6 +471,7 @@ export class GcdsDateInput {
         label={i18n[lang].day}
         inputId="day"
         type="number"
+        inputmode="numeric"
         size={2}
         disabled={disabled}
         value={this.dayValue}
