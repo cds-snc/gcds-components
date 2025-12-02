@@ -101,6 +101,14 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    autofocus: {
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
 
     ...validatorProps,
     ...langProp,
@@ -148,6 +156,7 @@ const Template = args =>
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
+  ${args.autofocus ? `autofocus` : null}
   ${args.validateOn ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -166,6 +175,7 @@ const Template = args =>
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
+  ${args.autofocus ? `autofocus` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsDateInput>
@@ -184,6 +194,7 @@ const TemplatePlayground = args => `
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
+  ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
