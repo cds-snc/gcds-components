@@ -13,15 +13,19 @@ A date input is a space to enter a known date.
 
 | Property              | Attribute       | Description                                                                                                                            | Type                                                | Default     |
 | --------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| `autofocus`           | `autofocus`     | If true, the date-input will be focused on component render                                                                            | `boolean`                                           | `undefined` |
 | `disabled`            | `disabled`      | Specifies if the date input is disabled or not.                                                                                        | `boolean`                                           | `false`     |
 | `errorMessage`        | `error-message` | Error message displayed below the legend and above form fields.                                                                        | `string`                                            | `undefined` |
 | `format` _(required)_ | `format`        | Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements. | `"compact" \| "full"`                               | `undefined` |
 | `hint`                | `hint`          | Hint displayed below the legend and above form fields.                                                                                 | `string`                                            | `undefined` |
 | `legend` _(required)_ | `legend`        | Fieldset legend                                                                                                                        | `string`                                            | `undefined` |
+| `max`                 | `max`           | The maximum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM                                                   | `string`                                            | `undefined` |
+| `min`                 | `min`           | The minimum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM                                                   | `string`                                            | `undefined` |
 | `name` _(required)_   | `name`          | Name attribute for the date input.                                                                                                     | `string`                                            | `undefined` |
 | `required`            | `required`      | Specifies if a form field is required or not.                                                                                          | `boolean`                                           | `false`     |
 | `validateOn`          | `validate-on`   | Set event to call validator                                                                                                            | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
 | `validator`           | `validator`     | Array of validators                                                                                                                    | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validity`            | `validity`      | Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.           | `ValidityState`                                     | `undefined` |
 | `value`               | `value`         | Combined date value from the two/three form elements. Format: YYYY-MM-DD or YYYY-MM                                                    | `string`                                            | `undefined` |
 
 
@@ -38,6 +42,26 @@ A date input is a space to enter a known date.
 
 
 ## Methods
+
+### `checkValidity() => Promise<boolean>`
+
+Check the validity of gcds-date-input
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+### `getValidationMessage() => Promise<string>`
+
+Get validationMessage of gcds-date-input
+
+#### Returns
+
+Type: `Promise<string>`
+
+
 
 ### `validate() => Promise<void>`
 

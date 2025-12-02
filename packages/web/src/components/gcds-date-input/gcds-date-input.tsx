@@ -27,6 +27,7 @@ import {
   requiredValidator,
 } from '../../validators';
 import i18n from './i18n/i18n';
+import { getDateInputError } from '../../validators/input-validators/input-validators';
 
 /**
  * A date input is a space to enter a known date.
@@ -44,6 +45,14 @@ export class GcdsDateInput {
   internals: ElementInternals;
 
   private initialValue?: string;
+
+  private fieldset?: HTMLFieldSetElement;
+  private yearInput?: HTMLGcdsInputElement;
+  private monthSelect?: HTMLGcdsSelectElement;
+  private dayInput?: HTMLGcdsInputElement;
+
+  // Array to store which native HTML errors are happening on the input
+  private htmlValidationErrors = [];
 
   _validator: Validator<string> = defaultValidator;
 
@@ -96,6 +105,7 @@ export class GcdsDateInput {
       this.splitFormValue();
       this.internals.setFormValue(this.value);
     }
+    this.updateValidity();
   }
 
   /**
@@ -117,6 +127,31 @@ export class GcdsDateInput {
    * Specifies if the date input is disabled or not.
    */
   @Prop({ mutable: true }) disabled?: boolean = false;
+
+  /**
+   * If true, the date-input will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The maximum date that the date-input field can accept.
+   * Format: YYYY-MM-DD or YYYY-MM
+   */
+  @Prop({ reflect: true }) max?: string;
+
+  /**
+   * The minimum date that the date-input field can accept.
+   * Format: YYYY-MM-DD or YYYY-MM
+   */
+  @Prop({ reflect: true }) min?: string;
+
+  /**
+   * Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.
+   */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
+  }
 
   /**
    * Array of validators
@@ -231,6 +266,31 @@ export class GcdsDateInput {
       this.lang,
       { day: false, month: false, year: false },
     );
+
+    // Don't use the valueMissing and badInput errors here since they are handled by the validator above
+    if (!this.internals.checkValidity() && !this.internals.validity?.valueMissing && !this.internals.validity?.badInput) {
+      this.errorMessage = this.htmlValidationErrors[0]?.errorMessage;
+      this.hasError = {
+        ...this.hasError,
+        ...this.htmlValidationErrors[0]?.hasError,
+      }
+    }
+  }
+
+  /**
+   * Check the validity of gcds-date-input
+   */
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  /**
+   * Get validationMessage of gcds-date-input
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   /*
@@ -266,6 +326,141 @@ export class GcdsDateInput {
   formStateRestoreCallback(state) {
     this.internals.setFormValue(state);
     this.value = state;
+  }
+
+  /*
+   * Combine validity states of internal form elements and validate
+   * Returns combined ValidityState, array of elements with errors and error message
+   */
+  private checkAndValidateValidity() {
+    // Order elements based on format and language
+    const elements = [this.monthSelect, this.yearInput];
+    if (this.format === 'full') {
+      this.lang === 'en' ? elements.splice(1, 0, this.dayInput) : elements.unshift(this.dayInput);
+    }
+
+    this.htmlValidationErrors = [];
+    let valid = true;
+    let valueMissing = false;
+    let badInput = false;
+    let rangeUnderflow = false;
+    let rangeOverflow = false;
+    let formError = [];
+    let errorMessage = null;
+
+    // Check if required or some value has been entered
+    if (this.required || this.value != null) {
+      elements.forEach(el => {
+        // valueMissing validation
+        if (el.value === '' || el.value == null) {
+          valueMissing = true;
+          valid = false;
+          formError.push(el);
+        }
+      });
+      errorMessage = getDateInputError({
+        day: this.dayInput?.value,
+        month: this.monthSelect?.value,
+        year: this.yearInput?.value
+      }, this.format).reason[this.lang];
+    }
+
+    // Check if any field has bad input
+    if (this.required && !valueMissing) {
+      const badInputError = getDateInputError({
+        day: this.dayInput?.value,
+        month: this.monthSelect?.value,
+        year: this.yearInput?.value
+      }, this.format);
+
+      if (badInputError.reason.en != '') {
+        badInput = true;
+        errorMessage = badInputError.reason[this.lang];
+        formError = elements;
+        this.htmlValidationErrors.push({
+          error: 'badInput',
+          hasError: badInputError.errors,
+          errorMessage
+        });
+      }
+    }
+
+    // Only check min if all values are present and valid
+    if (this.value != null && this.min && !valueMissing && !badInput) {
+      const setDate = new Date(this.value);
+      const minDate = new Date(this.min);
+
+      if (setDate < minDate) {
+        valid = false;
+        rangeUnderflow = true;
+        formError = elements;
+        errorMessage = i18n[this.lang].rangeUnderflow.replace('{{min}}', this.min);
+        this.htmlValidationErrors.push({
+          error: 'rangeUnderflow',
+          hasError: { day: true, month: true, year: true },
+          errorMessage
+        });
+      }
+    }
+
+    // Only check max if all values are present, valid and no min error
+    if (this.value != null && this.max && !valueMissing && !badInput && !rangeUnderflow) {
+      const setDate = new Date(this.value);
+      const maxDate = new Date(this.max);
+
+      if (setDate > maxDate) {
+        valid = false;
+        rangeOverflow = true;
+        errorMessage = i18n[this.lang].rangeOverflow.replace('{{max}}', this.max);
+        this.htmlValidationErrors.push({
+          error: 'rangeOverflow',
+          hasError: { day: true, month: true, year: true },
+          errorMessage
+        });
+        formError = elements;
+      }
+    }
+
+
+    const validity: ValidityState = {
+      valueMissing,
+      typeMismatch: false,
+      patternMismatch: false,
+      tooLong: false,
+      tooShort: false,
+      rangeUnderflow,
+      rangeOverflow,
+      stepMismatch: false,
+      badInput,
+      customError: false,
+      valid,
+    };
+
+    return {
+      validity,
+      formError,
+      errorMessage
+    }
+  }
+
+  /**
+   * Update gcds-date-input's validity using internal form elements
+   */
+  private updateValidity() {
+    if ((this.format === 'full' && (!this.yearInput || !this.monthSelect || !this.dayInput)) || (this.format === 'compact' && (!this.yearInput || !this.monthSelect))) return;
+    const { validity, formError, errorMessage } = this.checkAndValidateValidity();
+    console.log('red')
+
+    let validationMessage = null;
+    if (validity?.valueMissing || validity?.badInput || validity?.rangeUnderflow || validity?.rangeOverflow) {
+      validationMessage = errorMessage;
+    }
+
+    this.internals.setValidity(
+      validity,
+      validationMessage,
+      formError[0],
+    );
   }
 
   /*
@@ -325,6 +520,7 @@ export class GcdsDateInput {
     }
 
     this.internals.setFormValue(this.value);
+    this.updateValidity();
 
     return true;
   }
@@ -387,6 +583,17 @@ export class GcdsDateInput {
     }
   }
 
+  async componentDidLoad() {
+    this.updateValidity();
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.fieldset?.focus();
+      });
+    }
+  }
+
   render() {
     const {
       legend,
@@ -436,6 +643,7 @@ export class GcdsDateInput {
         {...requiredAttr}
         aria-invalid={hasError['month'].toString()}
         aria-description={hasError['month'] && errorMessage}
+        ref={el => (this.monthSelect = el as HTMLGcdsSelectElement)}
       >
         {options.map(option => (
           <option key={option} value={option}>
@@ -462,6 +670,7 @@ export class GcdsDateInput {
         {...requiredAttr}
         aria-invalid={hasError['year'].toString()}
         aria-description={hasError['year'] && errorMessage}
+        ref={el => (this.yearInput = el as HTMLGcdsInputElement)}
       ></gcds-input>
     );
 
@@ -482,13 +691,18 @@ export class GcdsDateInput {
         {...requiredAttr}
         aria-invalid={hasError['day'].toString()}
         aria-description={hasError['day'] && errorMessage}
+        ref={el => (this.dayInput = el as HTMLGcdsInputElement)}
       ></gcds-input>
     );
 
     return (
       <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
-          <fieldset class="gcds-date-input__fieldset" {...fieldsetAttrs}>
+          <fieldset
+            class="gcds-date-input__fieldset"
+            {...fieldsetAttrs}
+            ref={el => (this.fieldset = el as HTMLFieldSetElement)}
+          >
             <legend id="date-input-legend">
               {legend}
               {required ? (
