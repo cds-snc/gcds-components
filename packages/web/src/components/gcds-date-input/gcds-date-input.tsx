@@ -145,6 +145,12 @@ export class GcdsDateInput {
    */
   @Prop({ reflect: true }) min?: string;
 
+
+  /**
+   * The ID of the form that the date-input field belongs to.
+   */
+  @Prop({ reflect: true }) form?: string;
+
   /**
    * Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.
    */
@@ -449,7 +455,6 @@ export class GcdsDateInput {
   private updateValidity() {
     if ((this.format === 'full' && (!this.yearInput || !this.monthSelect || !this.dayInput)) || (this.format === 'compact' && (!this.yearInput || !this.monthSelect))) return;
     const { validity, formError, errorMessage } = this.checkAndValidateValidity();
-    console.log('red')
 
     let validationMessage = null;
     if (validity?.valueMissing || validity?.badInput || validity?.rangeUnderflow || validity?.rangeOverflow) {
@@ -605,6 +610,7 @@ export class GcdsDateInput {
       disabled,
       lang,
       hasError,
+      form,
     } = this;
 
     const requiredAttr = {};
@@ -643,6 +649,7 @@ export class GcdsDateInput {
         {...requiredAttr}
         aria-invalid={hasError['month'].toString()}
         aria-description={hasError['month'] && errorMessage}
+        form={form}
         ref={el => (this.monthSelect = el as HTMLGcdsSelectElement)}
       >
         {options.map(option => (
@@ -670,6 +677,7 @@ export class GcdsDateInput {
         {...requiredAttr}
         aria-invalid={hasError['year'].toString()}
         aria-description={hasError['year'] && errorMessage}
+        form={form}
         ref={el => (this.yearInput = el as HTMLGcdsInputElement)}
       ></gcds-input>
     );
@@ -691,6 +699,7 @@ export class GcdsDateInput {
         {...requiredAttr}
         aria-invalid={hasError['day'].toString()}
         aria-description={hasError['day'] && errorMessage}
+        form={form}
         ref={el => (this.dayInput = el as HTMLGcdsInputElement)}
       ></gcds-input>
     );

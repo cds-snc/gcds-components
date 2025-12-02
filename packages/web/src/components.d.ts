@@ -273,6 +273,10 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * The ID of the form that the date-input field belongs to.
+         */
+        "form"?: string;
+        /**
           * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
          */
         "format": 'full' | 'compact';
@@ -2621,6 +2625,10 @@ declare namespace LocalJSX {
           * Error message displayed below the legend and above form fields.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the date-input field belongs to.
+         */
+        "form"?: string;
         /**
           * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
          */
