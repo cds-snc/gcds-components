@@ -80,6 +80,27 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    form: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+    },
+    max: {
+      control: 'text',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '-' },
+      },
+    },
+    min: {
+      control: 'text',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '-' },
+      },
+    },
 
     ...validatorProps,
     ...langProp,
@@ -124,6 +145,9 @@ const Template = args =>
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.form ? `form="${args.form}"` : null}
+  ${args.max ? `max="${args.max}"` : null}
+  ${args.min ? `min="${args.min}"` : null}
   ${args.validateOn ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -139,6 +163,9 @@ const Template = args =>
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.form ? `form="${args.form}"` : null}
+  ${args.max ? `max="${args.max}"` : null}
+  ${args.min ? `min="${args.min}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
 </GcdsDateInput>
@@ -154,6 +181,9 @@ const TemplatePlayground = args => `
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.form ? `form="${args.form}"` : null}
+  ${args.max ? `max="${args.max}"` : null}
+  ${args.min ? `min="${args.min}"` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -302,6 +332,88 @@ Disabled.args = {
   disabled: true,
   lang: 'en',
   validateOn: '',
+};
+// ------ Date input Format Form ------
+
+export const Form = Template.bind({});
+Form.args = {
+  name: 'form-default',
+  legend: 'Date input',
+  format: 'full',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+  form: 'form-id'
+};
+
+// ------ Date input Format Min - full ------
+
+export const FullMin = Template.bind({});
+FullMin.args = {
+  name: 'min-full-default',
+  legend: 'Date input',
+  format: 'full',
+  value: '',
+  hint: 'The date must be after 2000-01-01',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+  min: '2000-01-01'
+};
+// ------ Date input Format Min - compact ------
+
+export const CompactMin = Template.bind({});
+CompactMin.args = {
+  name: 'min-compact-default',
+  legend: 'Date input',
+  format: 'compact',
+  value: '',
+  hint: 'The date must be after 2000-01',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+  min: '2000-01'
+};
+
+// ------ Date input Format Min - full ------
+
+export const FullMax = Template.bind({});
+FullMax.args = {
+  name: 'max-full-default',
+  legend: 'Date input',
+  format: 'full',
+  value: '',
+  hint: 'The date must be before 2000-01-01',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+  max: '2000-01-01'
+};
+// ------ Date input Format Min - compact ------
+
+export const CompactMax = Template.bind({});
+CompactMax.args = {
+  name: 'max-compact-default',
+  legend: 'Date input',
+  format: 'compact',
+  value: '',
+  hint: 'The date must be before 2000-01',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+  max: '2000-01'
 };
 
 // ------ Date input Format Props ------
