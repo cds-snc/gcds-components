@@ -16,6 +16,15 @@ export default {
 
   argTypes: {
     // Props
+    hideLabel: {
+      name: 'hide-label',
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
     accept: {
       control: 'text',
       table: {
@@ -154,6 +163,7 @@ const Template = args =>
   uploader-id="${args.uploaderId}"
   label="${args.label}"
   name="${args.name}"
+  ${args.hideLabel ? `hide-label` : null}
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
@@ -173,6 +183,7 @@ const Template = args =>
   uploaderId="${args.uploaderId}"
   label="${args.label}"
   name="${args.name}"
+  ${args.hideLabel ? `hideLabel` : null}
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
@@ -198,6 +209,7 @@ const TemplatePlayground = args => `
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   value="${args.value}"
+  ${args.hideLabel ? `hide-label` : null}
   ${args.accept ? `accept="${args.accept}"` : null}
   ${args.multiple ? `multiple` : null}
   ${args.form ? `form="${args.form}"` : null}
@@ -402,6 +414,7 @@ Props.args = {
   lang: 'en',
   form: '',
   autofocus: '',
+  hideLabel: false,
 };
 
 // ------ File uploader playground ------
@@ -422,4 +435,5 @@ Playground.args = {
   lang: 'en',
   form: '',
   autofocus: '',
+  hideLabel: false,
 };
