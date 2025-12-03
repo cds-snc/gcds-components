@@ -256,6 +256,14 @@ export namespace Components {
      */
     interface GcdsDateInput {
         /**
+          * If true, the date-input will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
+          * Check the validity of gcds-date-input
+         */
+        "checkValidity": () => Promise<boolean>;
+        /**
           * Specifies if the date input is disabled or not.
           * @default false
          */
@@ -265,9 +273,17 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * The ID of the form that the date-input field belongs to.
+         */
+        "form"?: string;
+        /**
           * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
          */
         "format": 'full' | 'compact';
+        /**
+          * Get validationMessage of gcds-date-input
+         */
+        "getValidationMessage": () => Promise<string>;
         /**
           * Hint displayed below the legend and above form fields.
          */
@@ -276,6 +292,14 @@ export namespace Components {
           * Fieldset legend
          */
         "legend": string;
+        /**
+          * The maximum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM
+         */
+        "max"?: string;
+        /**
+          * The minimum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM
+         */
+        "min"?: string;
         /**
           * Name attribute for the date input.
          */
@@ -300,6 +324,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Combined date value from the two/three form elements. Format: YYYY-MM-DD or YYYY-MM
          */
@@ -2584,6 +2613,10 @@ declare namespace LocalJSX {
      */
     interface GcdsDateInput {
         /**
+          * If true, the date-input will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * Specifies if the date input is disabled or not.
           * @default false
          */
@@ -2592,6 +2625,10 @@ declare namespace LocalJSX {
           * Error message displayed below the legend and above form fields.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the date-input field belongs to.
+         */
+        "form"?: string;
         /**
           * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
          */
@@ -2604,6 +2641,14 @@ declare namespace LocalJSX {
           * Fieldset legend
          */
         "legend": string;
+        /**
+          * The maximum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM
+         */
+        "max"?: string;
+        /**
+          * The minimum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM
+         */
+        "min"?: string;
         /**
           * Name attribute for the date input.
          */
@@ -2648,6 +2693,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Combined date value from the two/three form elements. Format: YYYY-MM-DD or YYYY-MM
          */

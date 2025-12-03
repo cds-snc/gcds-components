@@ -435,8 +435,8 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'legend', 'name', 'required', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -444,7 +444,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'legend', 'name', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -482,6 +482,28 @@ export class GcdsDateInput {
    * Specifies if the date input is disabled or not. @default false
    */
   set disabled(_: Components.GcdsDateInput['disabled']) {};
+    /**
+   * If true, the date-input will be focused on component render
+   */
+  set autofocus(_: Components.GcdsDateInput['autofocus']) {};
+    /**
+   * The maximum date that the date-input field can accept.
+Format: YYYY-MM-DD or YYYY-MM
+   */
+  set max(_: Components.GcdsDateInput['max']) {};
+    /**
+   * The minimum date that the date-input field can accept.
+Format: YYYY-MM-DD or YYYY-MM
+   */
+  set min(_: Components.GcdsDateInput['min']) {};
+    /**
+   * The ID of the form that the date-input field belongs to.
+   */
+  set form(_: Components.GcdsDateInput['form']) {};
+    /**
+   * Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsDateInput['validity']) {};
     /**
    * Array of validators
    */

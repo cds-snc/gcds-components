@@ -376,6 +376,111 @@ test.describe('gcds-date-input', () => {
 
     expect(errorMessage).toEqual('');
   });
+
+  /**
+   * HTML validity
+   */
+  test('Format: full - valid validity', async ({ page }) => {
+    const element = await page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    let validity = await element.evaluate(el =>
+      (el as HTMLGcdsDateInputElement).checkValidity(),
+    );
+
+    expect(validity).toEqual(false);
+
+    await element.locator('select').selectOption('03');
+    await element.locator('input[name="year"]').fill('1234');
+    await element.locator('input[name="day"]').fill('11');
+
+    validity = await element.evaluate(el =>
+      (el as HTMLGcdsDateInputElement).checkValidity(),
+    );
+
+    expect(validity).toEqual(true);
+  });
+  test('Format: compact - valid validity', async ({ page }) => {
+    const element = await page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      el => ((el as HTMLGcdsDateInputElement).format = 'compact'),
+    );
+
+    await page.waitForChanges();
+
+    let validity = await element.evaluate(el =>
+      (el as HTMLGcdsDateInputElement).checkValidity(),
+    );
+
+    expect(validity).toEqual(false);
+
+    await element.locator('select').selectOption('03');
+    await element.locator('input[name="year"]').fill('1234');
+
+    validity = await element.evaluate(el =>
+      (el as HTMLGcdsDateInputElement).checkValidity(),
+    );
+
+    expect(validity).toEqual(true);
+  });
+  test('Validation - min', async ({ page }) => {
+    const element = await page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      el => ((el as HTMLGcdsDateInputElement).min = '2000-01-01'),
+    );
+
+    await element.locator('select').selectOption('03');
+    await element.locator('input[name="year"]').fill('1234');
+    await element.locator('input[name="day"]').fill('11');
+
+    await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
+
+    const errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('Date must be on or after 2000-01-01.');
+  });
+  test('Validation - max', async ({ page }) => {
+    const element = await page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      el => ((el as HTMLGcdsDateInputElement).max = '2000-01-01'),
+    );
+
+    await element.locator('select').selectOption('03');
+    await element.locator('input[name="year"]').fill('2001');
+    await element.locator('input[name="day"]').fill('11');
+
+    await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
+
+    const errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual('Date must be on or before 2000-01-01.');
+  });
 });
 
 /**
