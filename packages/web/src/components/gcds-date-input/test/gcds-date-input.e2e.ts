@@ -106,6 +106,70 @@ test.describe('gcds-date-input', () => {
     expect(value).toEqual('12345-03');
   });
   /**
+   * Unset value
+   */
+  test('Format: full - unset value', async ({ page }) => {
+    const element = await page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.locator('select').selectOption('03');
+    await element.locator('input[name="year"]').fill('2000');
+    await element.locator('input[name="day"]').fill('23', { force: true });
+
+    let value = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).value,
+    );
+
+    expect(value).toEqual('2000-03-23');
+
+    await element.evaluate(el => ((el as HTMLGcdsDateInputElement).value = ''));
+
+    await page.waitForChanges();
+
+    value = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).value,
+    );
+
+    expect(value).toEqual('');
+  });
+  test('Format: compact - unset value', async ({ page }) => {
+    const element = await page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      el => ((el as HTMLGcdsDateInputElement).format = 'compact'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('select').selectOption('03');
+    await element.locator('input[name="year"]').fill('2000');
+
+    let value = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).value,
+    );
+
+    expect(value).toEqual('2000-03');
+
+    await element.evaluate(el => ((el as HTMLGcdsDateInputElement).value = ''));
+
+    await page.waitForChanges();
+
+    value = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).value,
+    );
+
+    expect(value).toEqual('');
+  });
+  /**
    * Validation
    */
   test('Validation - Missing all fields', async ({ page }) => {

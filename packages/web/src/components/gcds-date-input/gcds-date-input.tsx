@@ -103,8 +103,12 @@ export class GcdsDateInput {
   watchValue() {
     if (this.value) {
       this.splitFormValue();
-      this.internals.setFormValue(this.value);
+    } else {
+      this.yearValue = '';
+      this.monthValue = '';
+      this.dayValue = '';
     }
+    this.internals.setFormValue(this.value);
     this.updateValidity();
   }
 
