@@ -16,6 +16,15 @@ export default {
 
   argTypes: {
     // Props
+    hideLabel: {
+      name: 'hide-label',
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
     selectId: {
       name: 'select-id',
       control: 'text',
@@ -179,6 +188,7 @@ const Template = args =>
   select-id="${args.selectId}"
   label="${args.label}"
   name="${args.name}"
+  ${args.hideLabel ? `hide-label` : null}
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.defaultValue ? `default-value="${args.defaultValue}"` : null}
@@ -199,6 +209,7 @@ const Template = args =>
   selectId="${args.selectId}"
   label="${args.label}"
   name="${args.name}"
+  ${args.hideLabel ? `hideLabel` : null}
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.defaultValue ? `defaultValue="${args.defaultValue}"` : null}
@@ -220,6 +231,7 @@ const TemplatePlayground = args => `
   select-id="${args.selectId}"
   label="${args.label}"
   name="${args.name}"
+  ${args.hideLabel ? `hide-label` : null}
   ${args.hint ? `hint="${args.hint}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.defaultValue ? `default-value="${args.defaultValue}"` : null}
@@ -375,6 +387,7 @@ Props.args = {
   autofocus: false,
   autocomplete: '',
   form: '',
+  hideLabel: false,
 };
 
 // ------ Select playground ------
@@ -396,4 +409,5 @@ Playground.args = {
   autofocus: false,
   autocomplete: '',
   form: '',
+  hideLabel: false,
 };

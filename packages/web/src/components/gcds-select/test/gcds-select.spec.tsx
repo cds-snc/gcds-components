@@ -130,6 +130,27 @@ describe('gcds-select', () => {
   });
 
   /**
+   * Select hide label test
+   */
+  it('renders with hidden label when hide-label is set', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `<gcds-select label="select" select-id="select" name="select-name" hide-label></gcds-select>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" hide-label>
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label hide-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false">
+            </select>
+          </div>
+        </mock:shadow-root>
+      </gcds-select>
+    `);
+  });
+
+  /**
    * Select required test
    */
   it('renders required', async () => {

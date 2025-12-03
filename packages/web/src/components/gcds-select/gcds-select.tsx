@@ -66,6 +66,11 @@ export class GcdsSelect {
   @Prop({ reflect: true, mutable: false }) label!: string;
 
   /**
+   * Specifies if the label is hidden or not.
+   */
+  @Prop() hideLabel?: boolean = false;
+
+  /**
    * Name attribute for select form element.
    */
   @Prop({ reflect: true, mutable: false }) name!: string;
@@ -479,6 +484,7 @@ export class GcdsSelect {
       lang,
       selectId,
       label,
+      hideLabel,
       required,
       disabled,
       defaultValue,
@@ -528,7 +534,12 @@ export class GcdsSelect {
           class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''
             }`}
         >
-          <gcds-label {...attrsLabel} label-for={selectId} lang={lang} />
+          <gcds-label
+            {...attrsLabel}
+            hide-label={hideLabel}
+            label-for={selectId}
+            lang={lang}
+          />
 
           {hint ? <gcds-hint hint-id={selectId}>{hint}</gcds-hint> : null}
 

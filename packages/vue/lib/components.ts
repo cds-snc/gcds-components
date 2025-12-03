@@ -550,6 +550,7 @@ export const GcdsSearch: StencilVueComponent<JSX.GcdsSearch> = /*@__PURE__*/ def
 export const GcdsSelect: StencilVueComponent<JSX.GcdsSelect, JSX.GcdsSelect["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsSelect, JSX.GcdsSelect["value"]>('gcds-select', defineGcdsSelect, [
   'selectId',
   'label',
+  'hideLabel',
   'name',
   'required',
   'disabled',
