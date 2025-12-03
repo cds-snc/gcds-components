@@ -23,6 +23,8 @@ const I18N = {
     valueFormatfull: 'YYYY-MM-DD',
     valueFormatcompact: 'YYYY-MM',
     required: ' (required)',
+    rangeUnderflow: 'Date must be on or after {{min}}.',
+    rangeOverflow: 'Date must be on or before {{max}}.',
   },
   fr: {
     year: 'Année',
@@ -48,6 +50,8 @@ const I18N = {
     valueFormatfull: 'YYYY-MM-DD',
     valueFormatcompact: 'YYYY-MM',
     required: ' (obligatoire)',
+    rangeUnderflow: 'La date doit être le {{min}} ou après.',
+    rangeOverflow: 'La date doit être le {{max}} ou avant.',
   },
 };
 
