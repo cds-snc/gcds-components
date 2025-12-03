@@ -1080,6 +1080,14 @@ export namespace Components {
      */
     interface GcdsRadios {
         /**
+          * If true, the input will be focused on component render
+         */
+        "autofocus": boolean;
+        /**
+          * Check the validity of gcds-radios
+         */
+        "checkValidity": () => Promise<boolean>;
+        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled": boolean;
@@ -1087,6 +1095,14 @@ export namespace Components {
           * Set this to display an error message for invalid radios
          */
         "errorMessage": string;
+        /**
+          * The ID of the form that the radios belong to.
+         */
+        "form"?: string;
+        /**
+          * Get validationMessage of gcds-radios
+         */
+        "getValidationMessage": () => Promise<string>;
         /**
           * Hint displayed below the label and above the radio elements
          */
@@ -1122,6 +1138,11 @@ export namespace Components {
         "validator": Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
         /**
           * Default value for the element
          */
@@ -3573,6 +3594,10 @@ declare namespace LocalJSX {
      */
     interface GcdsRadios {
         /**
+          * If true, the input will be focused on component render
+         */
+        "autofocus"?: boolean;
+        /**
           * Specifies if an input element is disabled or not.
          */
         "disabled"?: boolean;
@@ -3580,6 +3605,10 @@ declare namespace LocalJSX {
           * Set this to display an error message for invalid radios
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the radios belong to.
+         */
+        "form"?: string;
         /**
           * Hint displayed below the label and above the radio elements
          */
@@ -3635,6 +3664,11 @@ declare namespace LocalJSX {
         "validator"?: Array<
     string | ValidatorEntry | Validator<string>
   >;
+        /**
+          * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
         /**
           * Default value for the element
          */
