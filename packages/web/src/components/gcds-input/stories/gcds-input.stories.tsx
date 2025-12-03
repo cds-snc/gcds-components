@@ -182,11 +182,30 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    suggestions: {
+      control: 'text',
+      table: {
+        type: {
+          summary: `
+        {
+          label: string;
+          value?: string;
+        }
+        string | object[]
+        `,
+        },
+        defaultValue: { summary: '-' },
+      },
+    },
     ...validatorProps,
     ...langProp,
 
     // Events
     gcdsChange: {
+      action: 'change',
+      ...eventProp,
+    },
+    gcdsSuggestionSelected: {
       action: 'change',
       ...eventProp,
     },
@@ -234,10 +253,12 @@ const Template = args =>
   ${args.step ? `step="${args.step}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.size ? `size="${args.size}"` : null}
+  ${args.inputmode ? `inputmode="${args.inputmode}"` : null}
   ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.readonly ? `readonly` : null}
   ${args.hideLabel ? `hide-label` : null}
+  ${args.suggestions ? `suggestions='${args.suggestions}'` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -262,10 +283,12 @@ const Template = args =>
   ${args.step ? `step="${args.step}"` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.size ? `size="${args.size}"` : null}
+  ${args.inputmode ? `inputmode="${args.inputmode}"` : null}
   ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.readonly ? `readonly` : null}
   ${args.hideLabel ? ` hideLabel` : null}
+  ${args.suggestions ? `suggestions='${args.suggestions}'` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -295,6 +318,7 @@ const TemplatePlayground = args => `
   ${args.autofocus ? `autofocus` : null}
   ${args.readonly ? `readonly` : null}
   ${args.hideLabel ? `hide-label` : null}
+  ${args.suggestions ? `suggestions='${args.suggestions}'` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -316,6 +340,7 @@ Default.args = {
   size: '',
   value: '',
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',
@@ -327,6 +352,7 @@ Default.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -341,6 +367,7 @@ Disabled.args = {
   hint: 'Hint / example message.',
   disabled: true,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -351,6 +378,7 @@ Disabled.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -364,6 +392,7 @@ Error.args = {
   required: true,
   errorMessage: 'Error message or validation message.',
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -374,6 +403,7 @@ Error.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -386,6 +416,7 @@ Required.args = {
   hint: 'Hint / example message.',
   required: true,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -395,6 +426,8 @@ Required.args = {
   min: '',
   minlength: '',
   pattern: '',
+  step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -409,6 +442,7 @@ Email.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -419,6 +453,7 @@ Email.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -431,6 +466,7 @@ Number.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -440,6 +476,7 @@ Number.args = {
   min: '',
   minlength: '',
   pattern: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -452,6 +489,7 @@ Password.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -462,6 +500,7 @@ Password.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -474,6 +513,7 @@ Search.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -484,6 +524,7 @@ Search.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -496,6 +537,7 @@ Tel.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -506,6 +548,7 @@ Tel.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -518,6 +561,7 @@ Text.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -528,6 +572,7 @@ Text.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -540,6 +585,7 @@ Url.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -550,6 +596,7 @@ Url.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -562,6 +609,7 @@ Autocomplete.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: 'given-name',
   validateOn: 'blur',
   autofocus: false,
@@ -572,6 +620,7 @@ Autocomplete.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -584,6 +633,7 @@ Autofocus.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: true,
@@ -594,6 +644,7 @@ Autofocus.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -606,6 +657,7 @@ Form.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -616,6 +668,7 @@ Form.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -628,6 +681,7 @@ Max.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -638,6 +692,7 @@ Max.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -650,6 +705,7 @@ Min.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -660,6 +716,7 @@ Min.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -672,6 +729,7 @@ Maxlength.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -682,6 +740,7 @@ Maxlength.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -694,6 +753,7 @@ Minlength.args = {
   hint: 'Hint / example message.',
   disabled: false,
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   validateOn: 'blur',
   autofocus: false,
@@ -704,6 +764,7 @@ Minlength.args = {
   minlength: '5',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -711,6 +772,102 @@ export const Pattern = Template.bind({});
 Pattern.args = {
   inputId: 'input-pattern',
   name: 'example-pattern',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  inputmode: '',
+  autocomplete: '',
+  validateOn: 'blur',
+  autofocus: false,
+  form: '',
+  max: '',
+  maxlength: '',
+  min: '',
+  minlength: '',
+  pattern: '[A-Z]+',
+  step: '',
+  suggestions: '',
+  readonly: false,
+};
+
+export const Step = Template.bind({});
+Step.args = {
+  inputId: 'input-step',
+  name: 'example-step',
+  type: 'number',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  inputmode: '',
+  autocomplete: '',
+  validateOn: 'blur',
+  autofocus: false,
+  form: '',
+  max: '',
+  maxlength: '',
+  min: '',
+  minlength: '',
+  pattern: '',
+  step: '10',
+  suggestions: '',
+  readonly: false,
+};
+
+export const Inputmode = Template.bind({});
+Inputmode.args = {
+  inputId: 'input-inputmode',
+  name: 'example-inputmode',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  inputmode: 'numeric',
+  autocomplete: '',
+  validateOn: 'blur',
+  autofocus: false,
+  form: '',
+  max: '',
+  maxlength: '',
+  min: '',
+  minlength: '',
+  pattern: '',
+  step: '',
+  readonly: false,
+};
+
+export const Readonly = Template.bind({});
+Readonly.args = {
+  inputId: 'input-readonly',
+  name: 'example-readonly',
+  type: 'text',
+  label: 'Label',
+  hint: 'Hint / example message.',
+  disabled: false,
+  lang: 'en',
+  value: 'Readonly',
+  inputmode: '',
+  autocomplete: '',
+  validateOn: 'blur',
+  autofocus: false,
+  form: '',
+  max: '',
+  maxlength: '',
+  min: '',
+  minlength: '',
+  pattern: '',
+  step: '',
+  suggestions: '',
+  readonly: true,
+};
+
+export const Suggestions = Template.bind({});
+Suggestions.args = {
+  inputId: 'input-suggestions',
+  name: 'example-suggestions',
   type: 'text',
   label: 'Label',
   hint: 'Hint / example message.',
@@ -724,54 +881,14 @@ Pattern.args = {
   maxlength: '',
   min: '',
   minlength: '',
-  pattern: '[A-Z]+',
-  step: '',
-  readonly: false,
-};
-
-export const Step = Template.bind({});
-Step.args = {
-  inputId: 'input-step',
-  name: 'example-step',
-  type: 'number',
-  label: 'Label',
-  hint: 'Hint / example message.',
-  disabled: false,
-  lang: 'en',
-  autocomplete: '',
-  validateOn: 'blur',
-  autofocus: false,
-  form: '',
-  max: '',
-  maxlength: '',
-  min: '',
-  minlength: '',
-  pattern: '',
-  step: '10',
-  readonly: false,
-};
-
-export const Readonly = Template.bind({});
-Readonly.args = {
-  inputId: 'input-readonly',
-  name: 'example-readonly',
-  type: 'number',
-  label: 'Label',
-  hint: 'Hint / example message.',
-  disabled: false,
-  lang: 'en',
-  value: 'Readonly',
-  autocomplete: '',
-  validateOn: 'blur',
-  autofocus: false,
-  form: '',
-  max: '',
-  maxlength: '',
-  min: '',
-  minlength: '',
   pattern: '',
   step: '',
-  readonly: true,
+  suggestions: `[
+    { "label": "Suggestion A"},
+    { "label": "Suggestion B"},
+    { "label": "Suggestion C"}
+  ]`,
+  readonly: false,
 };
 
 // ------ Input events & props ------
@@ -789,6 +906,7 @@ Props.args = {
   size: null,
   value: '',
   lang: 'en',
+  inputmode: '',
   autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',
@@ -800,6 +918,7 @@ Props.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };
 
@@ -817,6 +936,7 @@ Playground.args = {
   disabled: false,
   size: '',
   value: '',
+  inputmode: '',
   autocomplete: '',
   hideLabel: false,
   validateOn: 'blur',
@@ -829,5 +949,6 @@ Playground.args = {
   minlength: '',
   pattern: '',
   step: '',
+  suggestions: '',
   readonly: false,
 };

@@ -703,6 +703,34 @@ describe('gcds-input', () => {
   });
 
   /**
+   * Input inputmode test
+   */
+  it('renders input inputmode', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-inputmode" name="input-with-inputmode" inputmode="numeric" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-inputmode" name="input-with-inputmode" inputmode="numeric">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-inputmode" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-inputmode"
+              name="input-with-inputmode"
+              part="input"
+              aria-labelledby="label-for-input-with-inputmode"
+              aria-invalid="false"
+              inputmode="numeric"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+  });
+
+  /**
    * Input readonly test
    */
   it('renders input readonly', async () => {
@@ -728,5 +756,103 @@ describe('gcds-input', () => {
         </mock:shadow-root>
       </gcds-input>
     `);
+  });
+
+  it('renders input with suggestions', async () => {
+    const errorSpy = jest.spyOn(console, 'error');
+
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-suggestions" name="input-with-suggestions-name" suggestions=\'[{ "label": "Skipper the cat"}, { "label": "Option2", "value": "Dog"}]\' />',
+    });
+
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-suggestions" name="input-with-suggestions-name" suggestions='[{ "label": "Skipper the cat"}, { "label": "Option2", "value": "Dog"}]'>
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-suggestions" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-suggestions"
+              name="input-with-suggestions-name"
+              part="input"
+              aria-labelledby="label-for-input-with-suggestions"
+              aria-invalid="false"
+              list="datalist-for-input-with-suggestions"
+            />
+            <datalist id="datalist-for-input-with-suggestions">
+              <option value="Skipper the cat">Skipper the cat</option>
+              <option value="Dog">Option2</option>
+            </datalist>
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+
+    expect(errorSpy).not.toBeCalled();
+  });
+
+  it('renders input with empty string suggestions', async () => {
+    const errorSpy = jest.spyOn(console, 'error');
+
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-suggestions" name="input-with-suggestions-name" suggestions="" />',
+    });
+
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-suggestions" name="input-with-suggestions-name" suggestions="">
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-suggestions" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-suggestions"
+              name="input-with-suggestions-name"
+              part="input"
+              aria-labelledby="label-for-input-with-suggestions"
+              aria-invalid="false"
+            />
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+
+    expect(errorSpy).not.toBeCalled();
+  });
+
+  it('renders input with invalid suggestions', async () => {
+    const errorSpy = jest.spyOn(console, 'error');
+    const { root } = await newSpecPage({
+      components: [GcdsInput],
+      html: '<gcds-input label="Label" input-id="input-with-invalid-suggestions" name="input-with-invalid-suggestions-name" suggestions=\'[{ "fake": "Skipper the cat"}, { "menu": "apple", "value": "maples"}]\' />',
+    });
+
+    expect(root).toEqualHtml(`
+      <gcds-input label="Label" input-id="input-with-invalid-suggestions" name="input-with-invalid-suggestions-name" suggestions='[{ "fake": "Skipper the cat"}, { "menu": "apple", "value": "maples"}]'>
+        <mock:shadow-root>
+          <div class="gcds-input-wrapper">
+            <gcds-label label-for="input-with-invalid-suggestions" label="Label" lang="en"></gcds-label>
+            <input
+              type="text"
+              id="input-with-invalid-suggestions"
+              list="datalist-for-input-with-invalid-suggestions"
+              name="input-with-invalid-suggestions-name"
+              part="input"
+              aria-labelledby="label-for-input-with-invalid-suggestions"
+              aria-invalid="false"
+            />
+            <datalist id="datalist-for-input-with-invalid-suggestions">
+             <option></option>
+             <option value="maples"></option>
+           </datalist>
+          </div>
+        </mock:shadow-root>
+      </gcds-input>
+    `);
+
+    expect(errorSpy).toHaveBeenCalledWith(
+      'gcds-input: Render error, please check required properties. (suggestions) | gcds-input: Erreur de rendu, veuillez vérifier les propriétés requises. (suggestions)',
+    );
   });
 });

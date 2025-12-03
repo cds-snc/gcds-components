@@ -18,6 +18,8 @@ import {
   inheritAttributes,
   observerConfig,
   formatHTMLErrorMessage,
+  logError,
+  handleErrors,
 } from '../../utils/utils';
 import {
   Validator,
@@ -27,6 +29,7 @@ import {
   requiredValidator,
   ValidatorOld,
 } from '../../validators';
+import { SuggestionOption, isSuggestionObject } from './suggestion-option';
 
 /**
  * An input is a space to enter short-form information in response to a question or instruction.
@@ -51,6 +54,7 @@ export class GcdsInput {
   private htmlValidationErrors = [];
 
   private inputTitle: string = '';
+  private suggestionsArr;
 
   _validator: Validator<string> | ValidatorOld<string> = defaultValidator;
 
@@ -125,6 +129,16 @@ export class GcdsInput {
    */
   // prettier-ignore
   @Prop() type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' = 'text';
+
+  @Prop() inputmode?:
+    | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url' = null;
 
   /**
    * Default value for an input element.
@@ -217,6 +231,58 @@ export class GcdsInput {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
+   * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
+   */
+  @Prop({ mutable: true }) suggestions?: string | Array<SuggestionOption>;
+  @Watch('suggestions')
+  validateSuggestions() {
+    if (
+      this.suggestions == null ||
+      (typeof this.suggestions === 'string' && this.suggestions.trim() == '')
+    ) {
+      this.suggestionsArr = null;
+      return;
+    }
+
+    let invalidObject = false;
+    // Assign suggestionsArr from passed options string or array
+    if (typeof this.suggestions === 'string') {
+      try {
+        this.suggestions = JSON.parse(this.suggestions as string);
+      } catch (e) {
+        logError('gcds-input', ['Invalid JSON string for suggestions']);
+        this.suggestions = null;
+      }
+    }
+
+    if (Array.isArray(this.suggestions)) {
+      this.suggestionsArr = this.suggestions;
+    } else {
+      this.suggestionsArr = null;
+    }
+
+    // Validate options has type SuggestionOption, we allow an empty array to be used.
+    if (this.suggestionsArr) {
+      invalidObject = this.suggestionsArr.some(
+        dlObject => !isSuggestionObject(dlObject),
+      );
+    } else {
+      invalidObject = true;
+    }
+
+    // Log error if no or invalid optionsObject
+    const errors = handleErrors(
+      [],
+      'suggestions',
+      this.suggestionsArr,
+      invalidObject,
+    );
+    if (errors.length > 0) {
+      logError('gcds-input', errors);
+    }
+  }
+
+  /**
    * Set additional HTML attributes not available in component properties
    */
   @State() inheritedAttributes: Object = {};
@@ -277,6 +343,11 @@ export class GcdsInput {
   @Event() gcdsInput: EventEmitter<string>;
 
   /**
+   * Emitted when a suggestion is selected.
+   */
+  @Event() gcdsSuggestionSelected: EventEmitter<string>;
+
+  /**
    * Handling input and change events on input
    */
   private handleInput = (e, customEvent) => {
@@ -285,6 +356,15 @@ export class GcdsInput {
     this.internals.setFormValue(val ? val : null);
 
     if (e.type === 'change') {
+      if (
+        this.suggestionsArr &&
+        this.suggestionsArr.some(
+          (suggestion: SuggestionOption) =>
+            val == (suggestion.value ?? suggestion.label),
+        )
+      ) {
+        this.gcdsSuggestionSelected.emit(this.value);
+      }
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
     } else {
@@ -455,6 +535,7 @@ export class GcdsInput {
 
     this.updateLang();
 
+    this.validateSuggestions();
     this.validateDisabledInput();
     this.validateHasError();
     this.validateErrorMessage();
@@ -503,6 +584,7 @@ export class GcdsInput {
       required,
       size,
       type,
+      inputmode,
       value,
       hasError,
       autocomplete,
@@ -529,6 +611,7 @@ export class GcdsInput {
       disabled,
       required,
       type,
+      inputmode,
       autocomplete,
       autofocus,
       form,
@@ -600,9 +683,26 @@ export class GcdsInput {
             }
             size={size}
             style={size ? style : null}
+            list={
+              this.suggestionsArr && this.suggestionsArr.length > 0
+                ? `datalist-for-${inputId}`
+                : null
+            }
             part="input"
             ref={element => (this.shadowElement = element)}
           />
+
+          {this.suggestionsArr && this.suggestionsArr.length > 0 ? (
+            <datalist id={`datalist-for-${inputId}`}>
+              {this.suggestionsArr.map((suggestionOption: SuggestionOption) => (
+                <option
+                  value={suggestionOption.value ?? suggestionOption.label}
+                >
+                  {suggestionOption.label}
+                </option>
+              ))}
+            </datalist>
+          ) : null}
         </div>
       </Host>
     );

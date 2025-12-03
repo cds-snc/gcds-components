@@ -5,6 +5,7 @@ import {
   logError,
   isValid,
   isValidDate,
+  isValidDay,
   handleValidationResult,
   handleErrors,
   formatHTMLErrorMessage,
@@ -117,6 +118,39 @@ describe('isValidDate', () => {
   it('returns false - compact format - force full', () => {
     expect(isValidDate('1991-03', 'full')).toEqual(false);
   });
+});
+
+describe('isValidDay', () => {
+  const results: Array<{
+    date: string;
+    res: boolean;
+  }> = [
+    {
+      date: '1990-04-30',
+      res: true,
+    },
+    {
+      date: '1990-04',
+      res: true,
+    },
+    {
+      date: '2020-02-29',
+      res: true,
+    },
+    {
+      date: '2021-02-29',
+      res: false,
+    },
+    {
+      date: '2021-04-31',
+      res: false,
+    },
+  ];
+  results.forEach(i =>
+    it(`Should return "${i.res}" for ${i.date}`, () => {
+      expect(isValidDay(i.date)).toBe(i.res);
+    }),
+  );
 });
 
 describe('handleValidationResult', () => {

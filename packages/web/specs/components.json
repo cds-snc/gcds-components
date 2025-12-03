@@ -2086,6 +2086,29 @@
       "usage": {},
       "props": [
         {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": true,
+          "docs": "If true, the date-input will be focused on component render",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -2126,6 +2149,29 @@
           "attr": "error-message",
           "reflectToAttr": false,
           "docs": "Error message displayed below the legend and above form fields.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "form",
+          "reflectToAttr": true,
+          "docs": "The ID of the form that the date-input field belongs to.",
           "docsTags": [],
           "values": [
             {
@@ -2208,6 +2254,52 @@
           ],
           "optional": false,
           "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "max",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max",
+          "reflectToAttr": true,
+          "docs": "The maximum date that the date-input field can accept.\nFormat: YYYY-MM-DD or YYYY-MM",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "min",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "min",
+          "reflectToAttr": true,
+          "docs": "The minimum date that the date-input field can accept.\nFormat: YYYY-MM-DD or YYYY-MM",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
           "getter": false,
           "setter": false
         },
@@ -2346,6 +2438,39 @@
           "setter": false
         },
         {
+          "name": "validity",
+          "type": "ValidityState",
+          "complexType": {
+            "original": "ValidityState",
+            "resolved": "ValidityState",
+            "references": {
+              "ValidityState": {
+                "location": "global",
+                "id": "global::ValidityState"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "validity",
+          "reflectToAttr": false,
+          "docs": "Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.",
+          "docsTags": [
+            {
+              "name": "readonly",
+              "text": ""
+            }
+          ],
+          "values": [
+            {
+              "type": "ValidityState"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": true,
+          "setter": false
+        },
+        {
           "name": "value",
           "type": "string",
           "complexType": {
@@ -2370,6 +2495,50 @@
         }
       ],
       "methods": [
+        {
+          "name": "checkValidity",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "checkValidity() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Check the validity of gcds-date-input",
+          "docsTags": []
+        },
+        {
+          "name": "getValidationMessage",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<string>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<string>"
+          },
+          "signature": "getValidationMessage() => Promise<string>",
+          "parameters": [],
+          "docs": "Get validationMessage of gcds-date-input",
+          "docsTags": []
+        },
         {
           "name": "validate",
           "returns": {
@@ -3177,6 +3346,29 @@
           "setter": false
         },
         {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": true,
+          "docs": "If true, the file uploader will be focused on component render",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -3252,6 +3444,29 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "form",
+          "reflectToAttr": true,
+          "docs": "The ID of the form that the file uploader field belongs to.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -3493,6 +3708,39 @@
           "setter": false
         },
         {
+          "name": "validity",
+          "type": "ValidityState",
+          "complexType": {
+            "original": "ValidityState",
+            "resolved": "ValidityState",
+            "references": {
+              "ValidityState": {
+                "location": "global",
+                "id": "global::ValidityState"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "validity",
+          "reflectToAttr": false,
+          "docs": "Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.",
+          "docsTags": [
+            {
+              "name": "readonly",
+              "text": ""
+            }
+          ],
+          "values": [
+            {
+              "type": "ValidityState"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": true,
+          "setter": false
+        },
+        {
           "name": "value",
           "type": "string[]",
           "complexType": {
@@ -3523,6 +3771,50 @@
         }
       ],
       "methods": [
+        {
+          "name": "checkValidity",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "checkValidity() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Check the validity of gcds-file-uploader",
+          "docsTags": []
+        },
+        {
+          "name": "getValidationMessage",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<string>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<string>"
+          },
+          "signature": "getValidationMessage() => Promise<string>",
+          "parameters": [],
+          "docs": "Get validationMessage of gcds-file-uploader",
+          "docsTags": []
+        },
         {
           "name": "validate",
           "returns": {
@@ -6426,6 +6718,64 @@
           "setter": false
         },
         {
+          "name": "inputmode",
+          "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
+          "complexType": {
+            "original": "| 'none'\n    | 'text'\n    | 'decimal'\n    | 'numeric'\n    | 'tel'\n    | 'search'\n    | 'email'\n    | 'url'",
+            "resolved": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "inputmode",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "null"
+            }
+          ],
+          "default": "null",
+          "values": [
+            {
+              "value": "decimal",
+              "type": "string"
+            },
+            {
+              "value": "email",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "value": "numeric",
+              "type": "string"
+            },
+            {
+              "value": "search",
+              "type": "string"
+            },
+            {
+              "value": "tel",
+              "type": "string"
+            },
+            {
+              "value": "text",
+              "type": "string"
+            },
+            {
+              "value": "url",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "label",
           "type": "string",
           "complexType": {
@@ -6687,6 +7037,42 @@
             },
             {
               "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "suggestions",
+          "type": "SuggestionOption[] | string",
+          "complexType": {
+            "original": "string | Array<SuggestionOption>",
+            "resolved": "SuggestionOption[] | string",
+            "references": {
+              "Array": {
+                "location": "global",
+                "id": "global::Array"
+              },
+              "SuggestionOption": {
+                "location": "import",
+                "path": "./suggestion-option",
+                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "suggestions",
+          "reflectToAttr": false,
+          "docs": "Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "SuggestionOption[]"
+            },
+            {
+              "type": "string"
             }
           ],
           "optional": true,
@@ -7028,6 +7414,20 @@
           "cancelable": true,
           "composed": true,
           "docs": "Emitted when the element has received input.",
+          "docsTags": []
+        },
+        {
+          "event": "gcdsSuggestionSelected",
+          "detail": "string",
+          "bubbles": true,
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a suggestion is selected.",
           "docsTags": []
         },
         {
@@ -9558,6 +9958,52 @@
       "usage": {},
       "props": [
         {
+          "name": "autocomplete",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autocomplete",
+          "reflectToAttr": false,
+          "docs": "String to have autocomplete enabled.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": true,
+          "docs": "If true, the select will be focused on component render",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "defaultValue",
           "type": "string",
           "complexType": {
@@ -9621,6 +10067,29 @@
           "attr": "error-message",
           "reflectToAttr": true,
           "docs": "Error message for an invalid select element.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "form",
+          "reflectToAttr": true,
+          "docs": "The ID of the form that the select field belongs to.",
           "docsTags": [],
           "values": [
             {
@@ -9836,6 +10305,39 @@
           "setter": false
         },
         {
+          "name": "validity",
+          "type": "ValidityState",
+          "complexType": {
+            "original": "ValidityState",
+            "resolved": "ValidityState",
+            "references": {
+              "ValidityState": {
+                "location": "global",
+                "id": "global::ValidityState"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "validity",
+          "reflectToAttr": false,
+          "docs": "Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.",
+          "docsTags": [
+            {
+              "name": "readonly",
+              "text": ""
+            }
+          ],
+          "values": [
+            {
+              "type": "ValidityState"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": true,
+          "setter": false
+        },
+        {
           "name": "value",
           "type": "string",
           "complexType": {
@@ -9860,6 +10362,50 @@
         }
       ],
       "methods": [
+        {
+          "name": "checkValidity",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "checkValidity() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Check the validity of gcds-select",
+          "docsTags": []
+        },
+        {
+          "name": "getValidationMessage",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<string>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<string>"
+          },
+          "signature": "getValidationMessage() => Promise<string>",
+          "parameters": [],
+          "docs": "Get validationMessage of gcds-select",
+          "docsTags": []
+        },
         {
           "name": "validate",
           "returns": {
@@ -12329,6 +12875,11 @@
       "declaration": "export type SpacingValues =\n  | '0'\n  | '25'\n  | '50'\n  | '75'\n  | '100'\n  | '125'\n  | '150'\n  | '175'\n  | '200'\n  | '225'\n  | '250'\n  | '300'\n  | '350'\n  | '400'\n  | '450'\n  | '500'\n  | '550'\n  | '600'\n  | '650'\n  | '700'\n  | '750'\n  | '800'\n  | '850'\n  | '900'\n  | '950'\n  | '1000'\n  | '1050'\n  | '1100'\n  | '1150'\n  | '1200'\n  | '1250';",
       "docstring": "",
       "path": "src/utils/types/spacing.tsx"
+    },
+    "src/components/gcds-input/suggestion-option.tsx::SuggestionOption": {
+      "declaration": "{\n  label: string;\n  value?: string;\n}",
+      "docstring": "",
+      "path": "src/components/gcds-input/suggestion-option.tsx"
     },
     "src/components/gcds-radios/radio.tsx::RadioObject": {
       "declaration": "{\n  id: string;\n  label: string;\n  value: string;\n  hint?: string;\n  checked?: boolean;\n}",

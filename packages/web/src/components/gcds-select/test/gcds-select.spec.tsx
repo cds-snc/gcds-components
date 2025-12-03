@@ -246,4 +246,172 @@ describe('gcds-select', () => {
       </gcds-select>
     `);
   });
+
+  /**
+   * Select with autocomplete
+   */
+  it('renders with autocomplete', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `<gcds-select label="select" select-id="select" name="select-name" autocomplete="on"></gcds-select>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" autocomplete="on">
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false" autocomplete="on">
+            </select>
+          </div>
+        </mock:shadow-root>
+      </gcds-select>
+    `);
+  });
+
+  /**
+   * Select with form attribute
+   */
+  it('renders with form attribute', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `<gcds-select label="select" select-id="select" name="select-name" form="formID"></gcds-select>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" form="formID">
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false" form="formID">
+            </select>
+          </div>
+        </mock:shadow-root>
+      </gcds-select>
+    `);
+  });
+
+  /**
+   * Select with autofocus
+   */
+  it('renders with autofocus', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `<gcds-select label="select" select-id="select" name="select-name" autofocus></gcds-select>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" autofocus>
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false" autofocus>
+            </select>
+          </div>
+        </mock:shadow-root>
+      </gcds-select>
+    `);
+  });
+
+  /**
+ * Select with assigned value attribute
+ */
+  it('renders select with value attribute', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `
+        <gcds-select label="select" select-id="select" name="select-name" value="2">
+          <option value="1">This is option 1</option>
+          <option value="2">This is option 2</option>
+          <option value="3">This is option 3</option>
+        </gcds-select>
+      `,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" value="2">
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false" value="2">
+              <option value="1">This is option 1</option>
+              <option value="2" selected="">This is option 2</option>
+              <option value="3">This is option 3</option>
+            </select>
+          </div>
+        </mock:shadow-root>
+        <option value="1">This is option 1</option>
+        <option value="2" selected="true">This is option 2</option>
+        <option value="3">This is option 3</option>
+      </gcds-select>
+    `);
+    ;
+    expect(page.root.value).toBe('2');
+  });
+
+  /**
+ * Select with selected option
+ */
+  it('renders select with selected option', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `
+        <gcds-select label="select" select-id="select" name="select-name">
+          <option value="1">This is option 1</option>
+          <option value="2" selected="">This is option 2</option>
+          <option value="3">This is option 3</option>
+        </gcds-select>
+      `,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name">
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false" value="2">
+              <option value="1">This is option 1</option>
+              <option value="2" selected="">This is option 2</option>
+              <option value="3">This is option 3</option>
+            </select>
+          </div>
+        </mock:shadow-root>
+        <option value="1">This is option 1</option>
+        <option value="2" selected="">This is option 2</option>
+        <option value="3">This is option 3</option>
+      </gcds-select>
+    `);
+    ;
+    expect(page.root.value).toBe('2');
+  });
+
+  /**
+ * Select with invalid assigned value
+ */
+  it('renders select with invalid assigned value', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSelect],
+      html: `
+        <gcds-select label="select" select-id="select" name="select-name" value="5">
+          <option value="1">This is option 1</option>
+          <option value="2">This is option 2</option>
+          <option value="3">This is option 3</option>
+        </gcds-select>
+      `,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-select select-id="select" label="select" name="select-name" value="5">
+        <mock:shadow-root>
+          <div class="gcds-select-wrapper">
+            <gcds-label label="select" label-for="select" lang="en"></gcds-label>
+            <select id="select" name="select-name" part="select" aria-invalid="false">
+              <option value="1">This is option 1</option>
+              <option value="2">This is option 2</option>
+              <option value="3">This is option 3</option>
+            </select>
+          </div>
+        </mock:shadow-root>
+        <option value="1">This is option 1</option>
+        <option value="2">This is option 2</option>
+        <option value="3">This is option 3</option>
+      </gcds-select>
+    `);
+    ;
+    expect(page.root.value).toBeNull();
+  });
 });

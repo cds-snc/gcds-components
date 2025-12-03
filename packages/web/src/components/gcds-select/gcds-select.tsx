@@ -47,6 +47,8 @@ export class GcdsSelect {
 
   private shadowElement?: HTMLSelectElement;
 
+  private selectTitle: string = '';
+
   _validator: Validator<string> = defaultValidator;
 
   /**
@@ -90,6 +92,22 @@ export class GcdsSelect {
    */
   @Prop({ reflect: true, mutable: false }) defaultValue?: string;
 
+
+  /**
+   * If true, the select will be focused on component render
+   */
+  @Prop({ reflect: true }) autofocus: boolean;
+
+  /**
+   * The ID of the form that the select field belongs to.
+   */
+  @Prop({ reflect: true }) form?: string;
+
+  /**
+   * String to have autocomplete enabled.
+   */
+  @Prop() autocomplete?: string;
+
   /**
    * Value for a select element.
    */
@@ -97,7 +115,17 @@ export class GcdsSelect {
 
   @Watch('value')
   watchValue(val) {
-    this.internals.setFormValue(val ? val : null);
+    if (!this.shadowElement) return;
+
+    if (val && this.checkIfValidValue(val)) {
+      this.internals.setFormValue(val);
+      this.shadowElement.value = val;
+    } else {
+      this.internals.setFormValue(null);
+      this.value = null;
+    }
+
+    this.updateValidity();
   }
 
   /**
@@ -119,6 +147,14 @@ export class GcdsSelect {
    * Hint displayed below the label.
    */
   @Prop({ reflect: true, mutable: false }) hint?: string;
+
+  /**
+   * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.
+   */
+  @Prop()
+  get validity() {
+    return this.internals.validity;
+  }
 
   /**
    * Array of validators
@@ -197,6 +233,8 @@ export class GcdsSelect {
     if (e.type === 'change') {
       const changeEvt = new e.constructor(e.type, e);
       this.el.dispatchEvent(changeEvt);
+    } else {
+      this.updateValidity();
     }
 
     customEvent.emit(this.value);
@@ -233,6 +271,25 @@ export class GcdsSelect {
       this.gcdsValid,
       this.lang,
     );
+
+
+    this.selectTitle = this.errorMessage;
+  }
+
+  /**
+   * Check the validity of gcds-select
+   */
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  /**
+   * Get validationMessage of gcds-select
+   */
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   /**
@@ -268,13 +325,37 @@ export class GcdsSelect {
       option.setAttribute('selected', 'true');
       this.internals.setFormValue(value);
       this.initialValue = this.value;
-    }
-
-    if (option.hasAttribute('selected')) {
+    } else if (option.hasAttribute('selected')) {
       this.value = value;
       this.internals.setFormValue(value);
       this.initialValue = this.value ? this.value : null;
     }
+  }
+
+  private checkIfValidValue(value: string) {
+    let isValid = false;
+
+    this.options.forEach(option => {
+      if (option.nodeName === 'OPTION') {
+        const optionValue = option.getAttribute('value');
+
+        if (optionValue === value) {
+          isValid = true;
+        }
+      } else if (option.nodeName === 'OPTGROUP') {
+        const subOptions = Array.from(option.children);
+
+        subOptions.map(sub => {
+          const subOptionValue = sub.getAttribute('value');
+
+          if (subOptionValue === value) {
+            isValid = true;
+          }
+        });
+      }
+    });
+
+    return isValid;
   }
 
   /*
@@ -290,6 +371,29 @@ export class GcdsSelect {
   formStateRestoreCallback(state) {
     this.internals.setFormValue(state);
     this.value = state;
+  }
+
+  /**
+   * Update gcds-select's validity using internal select
+   */
+  private updateValidity() {
+    if (!this.shadowElement) return;
+
+    const validity = this.shadowElement.validity;
+
+    let validationMessage = null;
+    if (validity?.valueMissing) {
+      validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
+    }
+
+    this.internals.setValidity(
+      validity,
+      validationMessage,
+      this.shadowElement,
+    );
+
+    // Set select title when HTML error occruring
+    this.selectTitle = validationMessage;
   }
 
   /*
@@ -353,11 +457,21 @@ export class GcdsSelect {
           });
         }
       });
+      this.value = this.checkIfValidValue(this.value) ? this.value : null;
     }
   }
 
   async componentDidLoad() {
     this.observeOptions();
+
+    this.updateValidity();
+
+    // Logic to enable autofocus
+    if (this.autofocus) {
+      requestAnimationFrame(() => {
+        this.shadowElement?.focus();
+      });
+    }
   }
 
   render() {
@@ -375,6 +489,10 @@ export class GcdsSelect {
       hasError,
       name,
       options,
+      selectTitle,
+      autofocus,
+      form,
+      autocomplete,
     } = this;
 
     const attrsSelect = {
@@ -382,6 +500,10 @@ export class GcdsSelect {
       disabled,
       required,
       value,
+      title: selectTitle,
+      autofocus,
+      form,
+      autocomplete,
       ...inheritedAttributes,
     };
 
@@ -394,19 +516,17 @@ export class GcdsSelect {
       const hintID = hint ? `hint-${selectId} ` : '';
       const errorID = errorMessage ? `error-message-${selectId} ` : '';
 
-      attrsSelect['aria-describedby'] = `${hintID}${errorID}${
-        attrsSelect['aria-describedby']
-          ? `${attrsSelect['aria-describedby']}`
-          : ''
-      }`;
+      attrsSelect['aria-describedby'] = `${hintID}${errorID}${attrsSelect['aria-describedby']
+        ? `${attrsSelect['aria-describedby']}`
+        : ''
+        }`;
     }
 
     return (
       <Host>
         <div
-          class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${
-            hasError ? 'gcds-error' : ''
-          }`}
+          class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''
+            }`}
         >
           <gcds-label {...attrsLabel} label-for={selectId} lang={lang} />
 
