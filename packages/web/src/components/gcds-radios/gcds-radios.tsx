@@ -13,7 +13,7 @@ import {
   AttachInternals,
 } from '@stencil/core';
 
-import { RadioObject, isRadioObject, } from './radio';
+import { RadioObject, isRadioObject } from './radio';
 import {
   assignLanguage,
   logError,
