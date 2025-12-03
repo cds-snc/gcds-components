@@ -241,6 +241,7 @@ export const GcdsFileUploader: StencilVueComponent<JSX.GcdsFileUploader, JSX.Gcd
   'uploaderId',
   'name',
   'label',
+  'hideLabel',
   'required',
   'disabled',
   'value',

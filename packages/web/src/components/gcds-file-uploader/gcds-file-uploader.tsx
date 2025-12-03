@@ -68,6 +68,11 @@ export class GcdsFileUploader {
   @Prop({ reflect: true, mutable: false }) label!: string;
 
   /**
+   * Specifies if the label is hidden or not.
+   */
+  @Prop() hideLabel?: boolean = false;
+
+  /**
    * Specifies if a form field is required or not.
    */
   @Prop({ reflect: true, mutable: false }) required: boolean = false;
@@ -476,6 +481,7 @@ export class GcdsFileUploader {
       hasError,
       hint,
       label,
+      hideLabel,
       lang,
       multiple,
       name,
@@ -523,7 +529,12 @@ export class GcdsFileUploader {
           class={`gcds-file-uploader-wrapper ${disabled ? 'gcds-disabled' : ''
             } ${hasError ? 'gcds-error' : ''}`}
         >
-          <gcds-label {...attrsLabel} label-for={uploaderId} lang={lang} />
+          <gcds-label
+            {...attrsLabel}
+            hide-label={hideLabel}
+            label-for={uploaderId}
+            lang={lang}
+          />
 
           {hint ? <gcds-hint hint-id={uploaderId}>{hint}</gcds-hint> : null}
 
