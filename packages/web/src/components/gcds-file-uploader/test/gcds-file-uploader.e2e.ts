@@ -405,6 +405,6 @@ test.describe('gcds-file-uploader a11y tests', () => {
 
     await page.waitForChanges();
 
-    expect(page.locator('input')).toHaveAttribute('aria-invalid', 'true')
+    await expect(page.locator('input')).toHaveAttribute('aria-invalid', 'true')
   });
 });
