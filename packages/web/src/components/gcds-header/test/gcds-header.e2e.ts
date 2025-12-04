@@ -31,7 +31,7 @@ test.describe('gcds-header a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['landmark-banner-is-top-level'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -44,7 +44,7 @@ test.describe('gcds-header a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['image-alt'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }

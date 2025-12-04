@@ -44,8 +44,8 @@ test.describe('gcds-breadcrumbs-item', () => {
 
     await page.locator('text=Components').click();
 
-    expect(gcdsClick.events.length).toBe(1);
-    expect(click.events.length).toBe(1);
+    expect(gcdsClick.events).toHaveLength(1);
+    expect(click.events).toHaveLength(1);
   });
 });
 
@@ -66,7 +66,7 @@ test.describe('gcds-breadcrumbs-item a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['color-contrast'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -78,7 +78,7 @@ test.describe('gcds-breadcrumbs-item a11y tests', () => {
         .withRules(['list'])
         .analyze();
 
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -90,7 +90,7 @@ test.describe('gcds-breadcrumbs-item a11y tests', () => {
         .withRules(['link-name'])
         .analyze();
 
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
