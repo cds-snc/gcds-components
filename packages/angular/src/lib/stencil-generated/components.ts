@@ -1994,7 +1994,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autofocus', 'defaultValue', 'disabled', 'errorMessage', 'form', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'defaultValue', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']
 })
@@ -2003,7 +2003,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autofocus', 'defaultValue', 'disabled', 'errorMessage', 'form', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'defaultValue', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -2017,6 +2017,10 @@ export class GcdsSelect {
    * Form field label.
    */
   set label(_: Components.GcdsSelect['label']) {};
+    /**
+   * Specifies if the label is hidden or not. @default false
+   */
+  set hideLabel(_: Components.GcdsSelect['hideLabel']) {};
     /**
    * Name attribute for select form element.
    */

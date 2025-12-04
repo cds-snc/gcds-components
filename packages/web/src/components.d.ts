@@ -1245,6 +1245,11 @@ export namespace Components {
          */
         "getValidationMessage": () => Promise<string>;
         /**
+          * Specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -3795,6 +3800,11 @@ declare namespace LocalJSX {
           * The ID of the form that the select field belongs to.
          */
         "form"?: string;
+        /**
+          * Specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
         /**
           * Hint displayed below the label.
          */
