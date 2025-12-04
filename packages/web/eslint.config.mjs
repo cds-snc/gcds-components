@@ -4,6 +4,7 @@ import eslintjsx from 'eslint-plugin-jsx-a11y'
 // import eslintprettier from 'eslint-plugin-prettier/recommended'
 import eslintstorybook from 'eslint-plugin-storybook'
 import tseslint from 'typescript-eslint'
+import eslintplaywright from 'eslint-plugin-playwright'
 // import eslintn from 'eslint-plugin-n'
 import { defineConfig } from "eslint/config";
 
@@ -12,7 +13,11 @@ export default defineConfig([
     ignores: [
       'node_modules/',
       'dist/',
-      'loader/'
+      'loader/',
+      'www/',
+      'test-results/',
+      'hydrate/',
+      'stencil/'
     ]
   },
   eslintjs.configs.recommended,
@@ -60,7 +65,7 @@ export default defineConfig([
     // extends: [
     //   eslintn.configs['flat/recommended'],
     // ],
-    
+
     plugins: {
       tseslint
     },
@@ -91,6 +96,7 @@ export default defineConfig([
   },
   {
     files: ['src/**/*.e2e.ts', 'src/*.e2e.ts'],
+    extends: [eslintplaywright.configs['flat/recommended']],
     plugins: {
       eslintjs,
       tseslint
