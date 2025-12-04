@@ -447,8 +447,8 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'legend', 'name', 'required', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -456,7 +456,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'format', 'hint', 'legend', 'name', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -494,6 +494,28 @@ export class GcdsDateInput {
    * Specifies if the date input is disabled or not. @default false
    */
   set disabled(_: Components.GcdsDateInput['disabled']) {};
+    /**
+   * If true, the date-input will be focused on component render
+   */
+  set autofocus(_: Components.GcdsDateInput['autofocus']) {};
+    /**
+   * The maximum date that the date-input field can accept.
+Format: YYYY-MM-DD or YYYY-MM
+   */
+  set max(_: Components.GcdsDateInput['max']) {};
+    /**
+   * The minimum date that the date-input field can accept.
+Format: YYYY-MM-DD or YYYY-MM
+   */
+  set min(_: Components.GcdsDateInput['min']) {};
+    /**
+   * The ID of the form that the date-input field belongs to.
+   */
+  set form(_: Components.GcdsDateInput['form']) {};
+    /**
+   * Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsDateInput['validity']) {};
     /**
    * Array of validators
    */
@@ -727,8 +749,8 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {}
 
 
 @ProxyCmp({
-  inputs: ['accept', 'disabled', 'errorMessage', 'files', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['accept', 'autofocus', 'disabled', 'errorMessage', 'files', 'form', 'hideLabel', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -736,7 +758,7 @@ export declare interface GcdsFieldset extends Components.GcdsFieldset {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accept', 'disabled', 'errorMessage', 'files', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'value'],
+  inputs: ['accept', 'autofocus', 'disabled', 'errorMessage', 'files', 'form', 'hideLabel', 'hint', 'label', 'multiple', 'name', 'required', 'uploaderId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsRemoveFile', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -754,6 +776,10 @@ export class GcdsFileUploader {
    * Form field label.
    */
   set label(_: Components.GcdsFileUploader['label']) {};
+    /**
+   * Specifies if the label is hidden or not. @default false
+   */
+  set hideLabel(_: Components.GcdsFileUploader['hideLabel']) {};
     /**
    * Specifies if a form field is required or not. @default false
    */
@@ -794,6 +820,18 @@ export class GcdsFileUploader {
    * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsFileUploader['validateOn']) {};
+    /**
+   * Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsFileUploader['validity']) {};
+    /**
+   * If true, the file uploader will be focused on component render
+   */
+  set autofocus(_: Components.GcdsFileUploader['autofocus']) {};
+    /**
+   * The ID of the form that the file uploader field belongs to.
+   */
+  set form(_: Components.GcdsFileUploader['form']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1202,17 +1240,17 @@ export declare interface GcdsIcon extends Components.GcdsIcon {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
-  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
 @Component({
   selector: 'gcds-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'type', 'validateOn', 'validator', 'validity', 'value'],
-  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'readonly', 'required', 'size', 'step', 'suggestions', 'type', 'validateOn', 'validator', 'validity', 'value'],
+  outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
 export class GcdsInput {
@@ -1258,6 +1296,10 @@ of the expected text length to the user.
    * Set Input types @default 'text'
    */
   set type(_: Components.GcdsInput['type']) {};
+    /**
+   *  @default null
+   */
+  set inputmode(_: Components.GcdsInput['inputmode']) {};
     /**
    * Default value for an input element.
    */
@@ -1319,10 +1361,14 @@ See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
    * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsInput['validateOn']) {};
+    /**
+   * Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.
+   */
+  set suggestions(_: Components.GcdsInput['suggestions']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']);
+    proxyOutputs(this, ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsSuggestionSelected', 'gcdsChange', 'gcdsError', 'gcdsValid']);
   }
 }
 
@@ -1340,6 +1386,10 @@ export declare interface GcdsInput extends Components.GcdsInput {
    * Emitted when the element has received input.
    */
   gcdsInput: EventEmitter<CustomEvent<string>>;
+  /**
+   * Emitted when a suggestion is selected.
+   */
+  gcdsSuggestionSelected: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the input has changed.
    */
@@ -1765,8 +1815,8 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
 })
 @Component({
@@ -1774,7 +1824,7 @@ export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorMessage', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError'],
   standalone: false,
 })
@@ -1788,6 +1838,14 @@ export class GcdsRadios {
    * The `name` attribute for the radios, used to group radio elements together
    */
   set name(_: Components.GcdsRadios['name']) {};
+    /**
+   * If true, the input will be focused on component render
+   */
+  set autofocus(_: Components.GcdsRadios['autofocus']) {};
+    /**
+   * The ID of the form that the radios belong to.
+   */
+  set form(_: Components.GcdsRadios['form']) {};
     /**
    * Label or legend for the group of radio elements
    */
@@ -1812,6 +1870,10 @@ export class GcdsRadios {
    * Default value for the element
    */
   set value(_: Components.GcdsRadios['value']) {};
+    /**
+   * Read-only property of the input, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsRadios['validity']) {};
     /**
    * Array of validators
    */
@@ -1932,8 +1994,8 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
 
 
 @ProxyCmp({
-  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
-  methods: ['validate'],
+  inputs: ['autocomplete', 'autofocus', 'defaultValue', 'disabled', 'errorMessage', 'form', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']
 })
 @Component({
@@ -1941,7 +2003,7 @@ export declare interface GcdsSearch extends Components.GcdsSearch {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['defaultValue', 'disabled', 'errorMessage', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'defaultValue', 'disabled', 'errorMessage', 'form', 'hint', 'label', 'name', 'required', 'selectId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -1972,6 +2034,18 @@ export class GcdsSelect {
    */
   set defaultValue(_: Components.GcdsSelect['defaultValue']) {};
     /**
+   * If true, the select will be focused on component render
+   */
+  set autofocus(_: Components.GcdsSelect['autofocus']) {};
+    /**
+   * The ID of the form that the select field belongs to.
+   */
+  set form(_: Components.GcdsSelect['form']) {};
+    /**
+   * String to have autocomplete enabled.
+   */
+  set autocomplete(_: Components.GcdsSelect['autocomplete']) {};
+    /**
    * Value for a select element.
    */
   set value(_: Components.GcdsSelect['value']) {};
@@ -1983,6 +2057,10 @@ export class GcdsSelect {
    * Hint displayed below the label.
    */
   set hint(_: Components.GcdsSelect['hint']) {};
+    /**
+   * Read-only property of the select, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsSelect['validity']) {};
     /**
    * Array of validators
    */

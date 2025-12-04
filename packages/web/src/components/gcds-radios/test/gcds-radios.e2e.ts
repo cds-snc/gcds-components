@@ -268,6 +268,30 @@ test.describe('gcds-radios', () => {
 
     expect(errorMessage).toEqual('');
   });
+  test('HTML validity', async ({ page }) => {
+    const element = await page.locator('gcds-radios');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    let validity = await element.evaluate(el =>
+      (el as HTMLGcdsRadiosElement).checkValidity(),
+    );
+
+    expect(validity).toBe(false);
+
+    await element.locator('input').nth(0).click({ force: true });
+
+    await page.waitForChanges();
+
+    validity = await element.evaluate(el =>
+      (el as HTMLGcdsRadiosElement).checkValidity(),
+    );
+
+    expect(validity).toBe(true);
+  });
 });
 
 /**

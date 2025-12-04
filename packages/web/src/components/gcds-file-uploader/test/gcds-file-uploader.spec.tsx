@@ -160,6 +160,32 @@ describe('gcds-file-uploader', () => {
   });
 
   /**
+   * File uploader hide-label test
+   */
+  it('renders file-uploader with hidden label when hide-label is set', async () => {
+    const page = await newSpecPage({
+      components: [GcdsFileUploader],
+      html: `<gcds-file-uploader label="file-uploader" uploader-id="file-uploader" name="file-uploader-name" hide-label></gcds-file-uploader>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" hide-label>
+        <mock:shadow-root>
+          <div class="gcds-file-uploader-wrapper">
+            <gcds-label hide-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
+            <div class="file-uploader__input">
+              <button type="button" tabindex="-1">
+                Choose file
+              </button>
+              <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" />
+              <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-file-uploader>
+    `);
+  });
+
+  /**
    * File uploader required test
    */
   it('renders file-uploader id', async () => {
@@ -177,6 +203,58 @@ describe('gcds-file-uploader', () => {
                 Choose file
               </button>
               <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" required="" />
+              <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-file-uploader>
+    `);
+  });
+
+  /**
+   * File uploader autofocus test
+   */
+  it('renders file-uploader autofocus', async () => {
+    const page = await newSpecPage({
+      components: [GcdsFileUploader],
+      html: `<gcds-file-uploader label="file-uploader" uploader-id="file-uploader" name="file-uploader-name" autofocus></gcds-file-uploader>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" autofocus>
+        <mock:shadow-root>
+          <div class="gcds-file-uploader-wrapper">
+            <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
+            <div class="file-uploader__input">
+              <button type="button" tabindex="-1">
+                Choose file
+              </button>
+              <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" autofocus/>
+              <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </gcds-file-uploader>
+    `);
+  });
+
+  /**
+   * File uploader form test
+   */
+  it('renders file-uploader form', async () => {
+    const page = await newSpecPage({
+      components: [GcdsFileUploader],
+      html: `<gcds-file-uploader label="file-uploader" uploader-id="file-uploader" name="file-uploader-name" form="formID"></gcds-file-uploader>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" form="formID">
+        <mock:shadow-root>
+          <div class="gcds-file-uploader-wrapper">
+            <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
+            <div class="file-uploader__input">
+              <button type="button" tabindex="-1">
+                Choose file
+              </button>
+              <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" form="formID"/>
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
             </div>
           </div>
