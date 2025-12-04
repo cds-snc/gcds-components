@@ -52,7 +52,7 @@ test.describe('gcds-alert a11y tests', () => {
         .withRules(['color-contrast'])
         .analyze();
 
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     });
   });
 });

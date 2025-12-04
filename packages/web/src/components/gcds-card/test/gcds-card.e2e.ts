@@ -24,8 +24,8 @@ test.describe('gcds-card', () => {
 
     await page.locator('a').click();
 
-    expect(gcdsClick.events.length).toBe(1);
-    expect(click.events.length).toBe(1);
+    expect(gcdsClick.events).toHaveLength(1);
+    expect(click.events).toHaveLength(1);
   });
 });
 
@@ -40,7 +40,7 @@ test.describe('gcds-card a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['color-contrast'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -51,7 +51,7 @@ test.describe('gcds-card a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['link-name'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -78,7 +78,7 @@ test.describe('gcds-card a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['image-alt'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -95,7 +95,7 @@ test.describe('gcds-card a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['image-alt'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }

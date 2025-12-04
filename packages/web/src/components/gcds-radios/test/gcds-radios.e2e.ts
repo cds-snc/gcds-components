@@ -308,7 +308,7 @@ test.describe('gcds-radios a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['color-contrast'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -321,7 +321,7 @@ test.describe('gcds-radios a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['label'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }

@@ -354,7 +354,7 @@ test.describe('gcds-file-uploader a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['color-contrast'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -367,7 +367,7 @@ test.describe('gcds-file-uploader a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['label'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -405,8 +405,6 @@ test.describe('gcds-file-uploader a11y tests', () => {
 
     await page.waitForChanges();
 
-    expect(await page.locator('input').getAttribute('aria-invalid')).toEqual(
-      'true',
-    );
+    await expect(page.locator('input')).toHaveAttribute('aria-invalid', 'true')
   });
 });

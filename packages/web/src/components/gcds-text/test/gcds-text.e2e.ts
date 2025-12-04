@@ -32,7 +32,7 @@ test.describe('gcds-text a11y tests', () => {
       .withRules(['color-contrast'])
       .analyze();
 
-    expect(results.violations.length).toBe(0);
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Colour contrast - secondary text', async ({ page }) => {
@@ -44,7 +44,7 @@ test.describe('gcds-text a11y tests', () => {
       .withRules(['color-contrast'])
       .analyze();
 
-    expect(results.violations.length).toBe(0);
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Colour contrast - light text', async ({ page }) => {
@@ -56,6 +56,6 @@ test.describe('gcds-text a11y tests', () => {
       .withRules(['color-contrast'])
       .analyze();
 
-    expect(results.violations.length).toBe(0);
+    expect(results.violations).toHaveLength(0);
   });
 });

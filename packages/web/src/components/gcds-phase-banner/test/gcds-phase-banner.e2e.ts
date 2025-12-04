@@ -53,7 +53,7 @@ test.describe('gcds-phase-banner a11y tests', () => {
         .withRules(['color-contrast'])
         .analyze();
 
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     });
   });
 });

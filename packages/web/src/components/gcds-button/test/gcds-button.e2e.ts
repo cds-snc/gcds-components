@@ -27,8 +27,8 @@ test.describe('gcds-button', () => {
 
     await page.locator('button').first().click();
 
-    expect(gcdsClick.events.length).toBe(1);
-    expect(click.events.length).toBe(1);
+    expect(gcdsClick.events).toHaveLength(1);
+    expect(click.events).toHaveLength(1);
   });
 
   test('disabled - will not fire gcdsClick and click event', async ({
@@ -74,7 +74,7 @@ test.describe('gcds-button a11y tests', () => {
       const results = await new AxeBuilder({ page })
         .withRules(['color-contrast'])
         .analyze();
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -89,7 +89,7 @@ test.describe('gcds-button a11y tests', () => {
         .withRules(['link-name'])
         .analyze();
 
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
@@ -101,7 +101,7 @@ test.describe('gcds-button a11y tests', () => {
         .withRules(['button-name'])
         .analyze();
 
-      expect(results.violations.length).toBe(0);
+      expect(results.violations).toHaveLength(0);
     } catch (e) {
       console.error(e);
     }
