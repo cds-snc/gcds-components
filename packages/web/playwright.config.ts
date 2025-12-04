@@ -15,6 +15,7 @@ export default createConfig({
   timeout: 60000,
   use: {
     baseURL: 'http://localhost:3333/',
+    // headless: false,
   },
   webServer: {
     url: 'http://localhost:3333/',

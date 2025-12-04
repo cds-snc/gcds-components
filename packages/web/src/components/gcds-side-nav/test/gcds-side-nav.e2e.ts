@@ -1,7 +1,6 @@
-const { AxeBuilder } = require('@axe-core/playwright');
-
+import { AxeBuilder } from '@axe-core/playwright';
 import { expect } from '@playwright/test';
-import { test } from '../../../../tests/base';
+import { test, testMobile, testTablet } from '../../../../tests/base';
 
 test.describe('gcds-side-nav', () => {
   test('renders', async ({ page }) => {
@@ -19,6 +18,43 @@ test.describe('gcds-side-nav', () => {
     const firstItem = await page.locator('gcds-nav-link').first();
     await expect(firstItem).toHaveRole('listitem');
   });
+
+    testMobile('renders mobile', async ({ page }) => {
+    const element = page.locator('gcds-side-nav');
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+
+    await expect(element.locator('gcds-nav-link').first()).toBeHidden();
+
+    // open menu
+    await element.locator('.gcds-trigger--expandable').first().click()
+
+    await expect(element.locator('gcds-nav-link').first()).toBeVisible();
+  })
+
+  testTablet('renders tablet', async ({ page }) => {
+    const element = page.locator('gcds-side-nav');
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+
+    await expect(element.locator('gcds-nav-link').first()).toBeHidden();
+
+    // open menu
+    await element.locator('.gcds-trigger--expandable').first().click()
+
+    await expect(element.locator('gcds-nav-link').first()).toBeVisible();
+  })
+
   test('keyboard controls', async ({ page }) => {
     const element = await page.locator('gcds-side-nav');
 
@@ -151,4 +187,36 @@ test.describe('gcds-side-nav a11y tests', () => {
       console.error(e);
     }
   });
+
+  testMobile('Mobile a11y test', async ({ page}) => {
+    const element = page.locator('gcds-side-nav');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.locator('.gcds-trigger--expandable').first().click()
+
+    const results = await new AxeBuilder({ page })
+      .include('gcds-side-nav')
+      .analyze();
+    expect(results.violations).toHaveLength(0);
+  });
+
+  testTablet('Tablet a11y test', async ({ page}) => {
+    const element = page.locator('gcds-side-nav');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.locator('.gcds-trigger--expandable').first().click()
+
+    const results = await new AxeBuilder({ page })
+      .include('gcds-side-nav')
+      .analyze();
+    expect(results.violations).toHaveLength(0);
+  })
 });
