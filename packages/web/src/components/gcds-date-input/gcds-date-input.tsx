@@ -104,6 +104,11 @@ export class GcdsDateInput {
     if (this.value) {
       this.splitFormValue();
       this.internals.setFormValue(this.value);
+    } else {
+      this.yearValue = '';
+      this.monthValue = '';
+      this.dayValue = '';
+      this.internals.setFormValue(null);
     }
     this.updateValidity();
   }

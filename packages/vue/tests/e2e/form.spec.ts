@@ -393,20 +393,29 @@ test(`Error summary`, async ({ page }) => {
   await page.locator('textarea[name="message"]').fill('This is a message.');
 
   await errorLinks[2].click();
-  const dateFull = page.locator('gcds-date-input[name="date-full"]');
-
   await expect(
-    await dateFull.evaluate(el => el === document.activeElement),
-  ).toBe(true);
-  await dateFull.evaluate(el => el.setAttribute('value', '2024-12-31'));
+    page.locator('gcds-date-input[name="date-full"] fieldset'),
+  ).toBeFocused();
+  await page
+    .locator('gcds-date-input[name="date-full"] input[name="day"]')
+    .fill('25');
+  await page
+    .locator('gcds-date-input[name="date-full"] select[name="month"]')
+    .selectOption('12');
+  await page
+    .locator('gcds-date-input[name="date-full"] input[name="year"]')
+    .fill('2024');
 
   await errorLinks[3].click();
-  const dateCompact = page.locator('gcds-date-input[name="date-compact"]');
-
   await expect(
-    await dateCompact.evaluate(el => el === document.activeElement),
-  ).toBe(true);
-  await dateCompact.evaluate(el => el.setAttribute('value', '2024-12'));
+    page.locator('gcds-date-input[name="date-compact"] fieldset'),
+  ).toBeFocused();
+  await page
+    .locator('gcds-date-input[name="date-compact"] select[name="month"]')
+    .selectOption('12');
+  await page
+    .locator('gcds-date-input[name="date-compact"] input[name="year"]')
+    .fill('2024');
 
   await errorLinks[4].click();
   await expect(page.locator('gcds-select select[name="select"]')).toBeFocused();
