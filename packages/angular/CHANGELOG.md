@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.45.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.44.0...gcds-components-angular-v0.45.0) (2025-12-04)
+
+
+### :rocket: New Features
+
+* **file-uploader:** add new property `hideLabel` ([#1036](https://github.com/cds-snc/gcds-components/issues/1036)) ([5d37e43](https://github.com/cds-snc/gcds-components/commit/5d37e4369355fa01d9ebf6cbdea8835694ed2edc))
+* **gcds-checkboxes:** Add native HTML attributes and validation ([#1020](https://github.com/cds-snc/gcds-components/issues/1020)) ([c91936e](https://github.com/cds-snc/gcds-components/commit/c91936ebdbfdae443e5d3ad3a89471bd2683142f))
+* **gcds-date-input:** Add native HTML attributes and validation ([#1034](https://github.com/cds-snc/gcds-components/issues/1034)) ([f39c46d](https://github.com/cds-snc/gcds-components/commit/f39c46dcd21ded06af063679a859404ca438186f))
+* **gcds-file-uploader:** Add native HTML attributes and validation ([#1016](https://github.com/cds-snc/gcds-components/issues/1016)) ([0b867f9](https://github.com/cds-snc/gcds-components/commit/0b867f92dd3bd422cc702eea6e4f2e601be93a50))
+* **gcds-radios:** Add native HTML attributes and validation ([#1019](https://github.com/cds-snc/gcds-components/issues/1019)) ([c66ff4a](https://github.com/cds-snc/gcds-components/commit/c66ff4a0acc05053bbc7e3f6c844b55e0001379c))
+* **gcds-select:** Add native HTML attributes and validation ([#1013](https://github.com/cds-snc/gcds-components/issues/1013)) ([0a2a5f1](https://github.com/cds-snc/gcds-components/commit/0a2a5f1f113d48c7bfa89f388080cc9edfef7eda))
+* **input:** add `inputmode` HTML prop ([#1010](https://github.com/cds-snc/gcds-components/issues/1010)) ([442666b](https://github.com/cds-snc/gcds-components/commit/442666bb956a7e5f1e160024bfedad2344ae958f))
+* **input:** add new prop `suggestions` for datalist support ([#970](https://github.com/cds-snc/gcds-components/issues/970)) ([56dfbc3](https://github.com/cds-snc/gcds-components/commit/56dfbc3dcd8895faee57d977e39d2360a8567a6d))
+* **select:** add new property `hideLabel` ([#1035](https://github.com/cds-snc/gcds-components/issues/1035)) ([d5d96ff](https://github.com/cds-snc/gcds-components/commit/d5d96ffdc14c617dc7cf63000af8af78201c8c39))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @cdssnc/gcds-components bumped from ^0.44.0 to ^0.45.0
+
 ## [0.44.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.43.1...gcds-components-angular-v0.44.0) (2025-11-20)
 
 
