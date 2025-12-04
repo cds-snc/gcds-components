@@ -20,11 +20,13 @@
     }
 
     &.label--hidden {
+      clip-path: inset(100%);
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px;
       overflow: hidden;
-      opacity: 0;
-      width: 0;
-      height: 0;
-      margin: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
     }
 
     .label--required {
