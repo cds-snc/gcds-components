@@ -13,7 +13,7 @@ const config = {
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     '@storybook/addon-webpack5-compiler-babel',
-    '@chromatic-com/storybook',
+    // '@chromatic-com/storybook',
   ],
   framework: {
     name: getAbsolutePath('@storybook/html-webpack5'),

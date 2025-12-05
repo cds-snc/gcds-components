@@ -32,7 +32,9 @@
     "patch:stenciljs": "npx --yes patch-package",
     "unpatch:stenciljs": "npx --yes -p patch-package -c 'patch-package --reverse'",
     "start": "npm run start -w @cdssnc/gcds-components",
-    "docs:diagram": "npm run docs:diagram -w @cdssnc/gcds-components"
+    "docs:diagram": "npm run docs:diagram -w @cdssnc/gcds-components",
+    "lint": "npm run lint --workspace=packages/web",
+    "lint-and-fix": "npm run lint-and-fix --workspace=packages/web"
   },
   "dependencies": {
     "@angular/animations": "^19.2.15",
