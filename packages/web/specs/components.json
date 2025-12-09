@@ -3595,6 +3595,35 @@
           "setter": false
         },
         {
+          "name": "hideLabel",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-label",
+          "reflectToAttr": false,
+          "docs": "Specifies if the label is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hint",
           "type": "string",
           "complexType": {
@@ -10225,6 +10254,35 @@
           "setter": false
         },
         {
+          "name": "hideLabel",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-label",
+          "reflectToAttr": false,
+          "docs": "Specifies if the label is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hint",
           "type": "string",
           "complexType": {
@@ -12446,10 +12504,10 @@
       "props": [
         {
           "name": "alignment",
-          "type": "\"center\" | \"left\" | \"right\"",
+          "type": "\"left\" | \"right\"",
           "complexType": {
-            "original": "'left' | 'center' | 'right'",
-            "resolved": "\"center\" | \"left\" | \"right\"",
+            "original": "'left' | 'right'",
+            "resolved": "\"left\" | \"right\"",
             "references": {}
           },
           "mutable": false,
@@ -12464,10 +12522,6 @@
           ],
           "default": "'left'",
           "values": [
-            {
-              "value": "center",
-              "type": "string"
-            },
             {
               "value": "left",
               "type": "string"
