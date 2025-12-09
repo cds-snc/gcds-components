@@ -110,6 +110,13 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    maxlength: {
+      control: 'text',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '-' },
+      },
+    },
     minlength: {
       control: 'text',
       table: {
@@ -118,6 +125,15 @@ export default {
       },
     },
     autofocus: {
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
+    hideLimit: {
+      name: 'hide-limit',
       control: { type: 'select' },
       options: [false, true],
       table: {
@@ -169,8 +185,10 @@ const Template = args =>
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.characterCount ? `character-count="${args.characterCount}"` : null}
+  ${args.maxlength ? `maxlength="${args.maxlength}"` : null}
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
+  ${args.hideLimit ? `hide-limit` : null}
   ${args.hideLabel ? `hide-label` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
@@ -189,8 +207,10 @@ const Template = args =>
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.characterCount ? `characterCount="${args.characterCount}"` : null}
+  ${args.maxlength ? `maxlength="${args.maxlength}"` : null}maxlength
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
+  ${args.hideLimit ? `hideLimit` : null}
   ${args.hideLabel ? `hideLabel` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
@@ -212,8 +232,10 @@ const TemplatePlayground = args => `
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
   ${args.characterCount ? `character-count="${args.characterCount}"` : null}
+  ${args.maxlength ? `maxlength="${args.maxlength}"` : null}
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
+  ${args.hideLimit ? `hide-limit` : null}
   ${args.hideLabel ? `hide-label` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
@@ -270,19 +292,35 @@ Required.args = {
   lang: 'en',
 };
 
-// ------ Textarea character count ------
+// ------ Textarea maxlength ------
 
-export const Character = Template.bind({});
-Character.args = {
-  textareaId: 'textarea-character',
+export const Maxlength = Template.bind({});
+Maxlength.args = {
+  textareaId: 'textarea-minlength',
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
-  characterCount: 200,
+  maxlength: 20,
+  required: true,
   validateOn: 'blur',
   lang: 'en',
 };
-// ------ Textarea character count ------
+// ------ Textarea hide limit ------
+
+export const HideLimit = Template.bind({});
+HideLimit.args = {
+  textareaId: 'textarea-minlength',
+  label: 'Label',
+  name: 'textarea-name',
+  hint: 'Hint / Example message.',
+  maxlength: 20,
+  required: true,
+  validateOn: 'blur',
+  hideLimit: true,
+  lang: 'en',
+};
+
+// ------ Textarea minlength ------
 
 export const Minlength = Template.bind({});
 Minlength.args = {

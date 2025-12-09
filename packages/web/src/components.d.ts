@@ -465,6 +465,11 @@ export namespace Components {
          */
         "getValidationMessage": () => Promise<string>;
         /**
+          * Specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -1407,13 +1412,9 @@ export namespace Components {
      */
     interface GcdsTextarea {
         /**
-          * If true, the input will be focused on component render
+          * If true, the textarea will be focused on component render.
          */
         "autofocus": boolean;
-        /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "characterCount"?: number;
         /**
           * Check the validity of gcds-textarea
          */
@@ -1441,6 +1442,11 @@ export namespace Components {
          */
         "hideLabel"?: boolean;
         /**
+          * If true, character limt counter will not be displayed under the textarea.
+          * @default false
+         */
+        "hideLimit"?: boolean;
+        /**
           * Hint displayed below the label and above the textarea field.
          */
         "hint"?: string;
@@ -1449,7 +1455,11 @@ export namespace Components {
          */
         "label": string;
         /**
-          * The minimum number of characters that the input field can accept.
+          * The maximum number of characters that the textarea field can accept.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum number of characters that the textarea field can accept.
          */
         "minlength"?: number;
         /**
@@ -2885,6 +2895,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * Specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -3980,13 +3995,9 @@ declare namespace LocalJSX {
      */
     interface GcdsTextarea {
         /**
-          * If true, the input will be focused on component render
+          * If true, the textarea will be focused on component render.
          */
         "autofocus"?: boolean;
-        /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "characterCount"?: number;
         /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
@@ -4006,6 +4017,11 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: boolean;
         /**
+          * If true, character limt counter will not be displayed under the textarea.
+          * @default false
+         */
+        "hideLimit"?: boolean;
+        /**
           * Hint displayed below the label and above the textarea field.
          */
         "hint"?: string;
@@ -4014,7 +4030,11 @@ declare namespace LocalJSX {
          */
         "label": string;
         /**
-          * The minimum number of characters that the input field can accept.
+          * The maximum number of characters that the textarea field can accept.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum number of characters that the textarea field can accept.
          */
         "minlength"?: number;
         /**
