@@ -1513,7 +1513,7 @@ export namespace Components {
           * Nav alignment
           * @default 'left'
          */
-        "alignment": 'left' | 'center' | 'right';
+        "alignment": 'left' | 'right';
         "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
@@ -4108,7 +4108,7 @@ declare namespace LocalJSX {
           * Nav alignment
           * @default 'left'
          */
-        "alignment"?: 'left' | 'center' | 'right';
+        "alignment"?: 'left' | 'right';
         /**
           * Label for navigation landmark
          */

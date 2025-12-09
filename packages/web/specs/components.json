@@ -12533,10 +12533,10 @@
       "props": [
         {
           "name": "alignment",
-          "type": "\"center\" | \"left\" | \"right\"",
+          "type": "\"left\" | \"right\"",
           "complexType": {
-            "original": "'left' | 'center' | 'right'",
-            "resolved": "\"center\" | \"left\" | \"right\"",
+            "original": "'left' | 'right'",
+            "resolved": "\"left\" | \"right\"",
             "references": {}
           },
           "mutable": false,
@@ -12551,10 +12551,6 @@
           ],
           "default": "'left'",
           "values": [
-            {
-              "value": "center",
-              "type": "string"
-            },
             {
               "value": "left",
               "type": "string"
