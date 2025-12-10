@@ -11845,7 +11845,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the input will be focused on component render",
+          "docs": "If true, the textarea will be focused on component render.",
           "docsTags": [],
           "values": [
             {
@@ -11853,29 +11853,6 @@
             }
           ],
           "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "characterCount",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "character-count",
-          "reflectToAttr": false,
-          "docs": "Sets the maxlength attribute for the textarea element.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -11985,6 +11962,35 @@
           "setter": false
         },
         {
+          "name": "hideLimit",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-limit",
+          "reflectToAttr": false,
+          "docs": "If true, character limt counter will not be displayed under the textarea.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hint",
           "type": "string",
           "complexType": {
@@ -12031,6 +12037,29 @@
           "setter": false
         },
         {
+          "name": "maxlength",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "maxlength",
+          "reflectToAttr": true,
+          "docs": "The maximum number of characters that the textarea field can accept.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "minlength",
           "type": "number",
           "complexType": {
@@ -12041,7 +12070,7 @@
           "mutable": false,
           "attr": "minlength",
           "reflectToAttr": true,
-          "docs": "The minimum number of characters that the input field can accept.",
+          "docs": "The minimum number of characters that the textarea field can accept.",
           "docsTags": [],
           "values": [
             {

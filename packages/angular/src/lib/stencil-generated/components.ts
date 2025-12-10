@@ -2282,7 +2282,7 @@ export declare interface GcdsText extends Components.GcdsText {}
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']
 })
@@ -2291,22 +2291,26 @@ export declare interface GcdsText extends Components.GcdsText {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autofocus', 'characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
 export class GcdsTextarea {
   protected el: HTMLGcdsTextareaElement;
     /**
-   * If true, the input will be focused on component render
+   * If true, the textarea will be focused on component render.
    */
   set autofocus(_: Components.GcdsTextarea['autofocus']) {};
     /**
-   * Sets the maxlength attribute for the textarea element.
+   * If true, character limt counter will not be displayed under the textarea. @default false
    */
-  set characterCount(_: Components.GcdsTextarea['characterCount']) {};
+  set hideLimit(_: Components.GcdsTextarea['hideLimit']) {};
     /**
-   * The minimum number of characters that the input field can accept.
+   * The maximum number of characters that the textarea field can accept.
+   */
+  set maxlength(_: Components.GcdsTextarea['maxlength']) {};
+    /**
+   * The minimum number of characters that the textarea field can accept.
    */
   set minlength(_: Components.GcdsTextarea['minlength']) {};
     /**

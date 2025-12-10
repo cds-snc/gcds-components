@@ -26,15 +26,15 @@ describe('gcds-textarea', () => {
   });
 
   /**
-   * Character count
+   * Maxlength
    */
-  it('renders textarea with character count in EN', async () => {
+  it('renders textarea with maxlength and character count in EN', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
-      html: '<gcds-textarea label="Label" textarea-id="character-count" value="Value Test" character-count="22" name="character-count-name"/>',
+      html: '<gcds-textarea label="Label" textarea-id="character-count" value="Value Test" maxlength="22" name="character-count-name"/>',
     });
     expect(root).toEqualHtml(`
-      <gcds-textarea label="Label" textarea-id="character-count" value="Value Test" character-count="22" name="character-count-name">
+      <gcds-textarea label="Label" textarea-id="character-count" value="Value Test" maxlength="22" name="character-count-name">
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper">
             <gcds-label label-for="character-count" label="Label" lang="en"></gcds-label>
@@ -54,13 +54,13 @@ describe('gcds-textarea', () => {
     `);
   });
 
-  it('renders textarea with character count in FR', async () => {
+  it('renders textarea with maxlength and character count in FR', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
-      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" character-count="22" name="character-count-name"/>',
+      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" maxlength="22" name="character-count-name"/>',
     });
     expect(root).toEqualHtml(`
-      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" character-count="22" name="character-count-name">
+      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" maxlength="22" name="character-count-name">
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper">
             <gcds-label label-for="character-count" label="Label" lang="fr"></gcds-label>
@@ -74,6 +74,53 @@ describe('gcds-textarea', () => {
               maxlength="22"
             >Value Test</textarea>
             <gcds-text id="textarea__count-character-count" aria-live="polite">12 caractères restants</gcds-text>
+          </div>
+        </mock:shadow-root>
+      </gcds-textarea>
+    `);
+  });
+  it('renders textarea with maxlength and hide limit in EN', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="character-count" value="Value Test" maxlength="22" hide-limit name="character-count-name"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea label="Label" textarea-id="character-count" value="Value Test" maxlength="22" hide-limit name="character-count-name">
+        <mock:shadow-root>
+          <div class="gcds-textarea-wrapper">
+            <gcds-label label-for="character-count" label="Label" lang="en"></gcds-label>
+            <textarea
+              id="character-count"
+              name="character-count-name"
+              aria-labelledby="label-for-character-count"
+              aria-invalid="false"
+              rows="5"
+              maxlength="22"
+            >Value Test</textarea>
+          </div>
+        </mock:shadow-root>
+      </gcds-textarea>
+    `);
+  });
+
+  it('renders textarea with maxlength and hide limit in FR', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" maxlength="22" hide-limit name="character-count-name"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" maxlength="22" hide-limit name="character-count-name">
+        <mock:shadow-root>
+          <div class="gcds-textarea-wrapper">
+            <gcds-label label-for="character-count" label="Label" lang="fr"></gcds-label>
+            <textarea
+              id="character-count"
+              name="character-count-name"
+              aria-labelledby="label-for-character-count"
+              aria-invalid="false"
+              rows="5"
+              maxlength="22"
+            >Value Test</textarea>
           </div>
         </mock:shadow-root>
       </gcds-textarea>
