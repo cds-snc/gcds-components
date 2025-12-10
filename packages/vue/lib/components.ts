@@ -127,6 +127,8 @@ export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes, JSX.GcdsChe
   'disabled',
   'autofocus',
   'form',
+  'hideLabel',
+  'hideLegend',
   'value',
   'errorMessage',
   'hint',

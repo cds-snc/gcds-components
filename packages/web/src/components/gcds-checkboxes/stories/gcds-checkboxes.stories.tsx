@@ -109,6 +109,24 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    hideLabel: {
+      name: 'hide-label',
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
+    hideLegend: {
+      name: 'hide-legend',
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
     ...validatorProps,
     ...langProp,
 
@@ -154,6 +172,8 @@ const Template = args =>
   ${args.value ? `value='${args.value}'` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.form ? `form="${args.form}"` : null}
+  ${args.hideLabel ? `hide-label` : null}
+  ${args.hideLegend ? `hide-legend` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -171,6 +191,8 @@ const Template = args =>
   ${args.value ? `value='${args.value}'` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.form ? `form="${args.form}"` : null}
+  ${args.hideLabel ? `hideLabel` : null}
+  ${args.hideLegend ? `hideLegend` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -191,6 +213,8 @@ const TemplatePlayground = args =>
   ${args.value ? `value='${args.value}'` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.form ? `form="${args.form}"` : null}
+  ${args.hideLabel ? `hide-label` : null}
+  ${args.hideLegend ? `hide-legend` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -450,6 +474,43 @@ FormSingle.args = {
   lang: 'en',
   autofocus: false,
   form: 'form-id',
+};
+
+export const HiddenLegend = Template.bind({});
+HiddenLegend.args = {
+  legend: 'Legend',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"},
+    { "label": "Label for checkbox 2", "id": "checkbox2", "value": "checkbox2"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+  autofocus: false,
+  hideLegend: true,
+};
+
+export const HiddenLabel = Template.bind({});
+HiddenLabel.args = {
+  legend: '',
+  name: 'checkbox',
+  options: `[
+    { "label": "Label for checkbox 1", "id": "checkbox1", "value": "checkbox1"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+  autofocus: false,
+  hideLabel: true,
 };
 
 export const Props = Template.bind({});

@@ -189,6 +189,16 @@ export namespace Components {
          */
         "getValidationMessage": () => Promise<string>;
         /**
+          * For single checkbox, specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
+          * For checkbox groups, specifies if the legend is hidden or not.
+          * @default false
+         */
+        "hideLegend"?: boolean;
+        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -464,6 +474,11 @@ export namespace Components {
           * Get validationMessage of gcds-file-uploader
          */
         "getValidationMessage": () => Promise<string>;
+        /**
+          * Specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
         /**
           * Hint displayed below the label.
          */
@@ -2561,6 +2576,16 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * For single checkbox, specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
+          * For checkbox groups, specifies if the legend is hidden or not.
+          * @default false
+         */
+        "hideLegend"?: boolean;
+        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -2884,6 +2909,11 @@ declare namespace LocalJSX {
           * The ID of the form that the file uploader field belongs to.
          */
         "form"?: string;
+        /**
+          * Specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
         /**
           * Hint displayed below the label.
          */

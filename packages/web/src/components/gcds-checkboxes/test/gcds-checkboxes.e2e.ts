@@ -323,6 +323,36 @@ test.describe('gcds-checkboxes a11y tests', () => {
       console.error(e);
     }
   });
+  test('Proper labels - hidden label', async ({ page }) => {
+    const element = await page.locator('gcds-checkboxes');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsCheckboxesElement).options = [
+        {
+          label: 'Single checkbox',
+          id: 'single-checkbox',
+          value: 'single',
+        },
+      ];
+      (el as HTMLGcdsCheckboxesElement).hideLabel = true;
+    });
+
+    await page.waitForChanges();
+
+    try {
+      const results = await new AxeBuilder({ page })
+        .withRules(['label'])
+        .analyze();
+      expect(results.violations).toHaveLength(0);
+    } catch (e) {
+      console.error(e);
+    }
+  });
   /**
    * Keyboard focus
    */
