@@ -47,14 +47,6 @@ export default {
         required: true,
       },
     },
-    characterCount: {
-      name: 'character-count',
-      control: 'number',
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '-' },
-      },
-    },
     rows: {
       control: 'number',
       table: {
@@ -184,7 +176,6 @@ const Template = args =>
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
-  ${args.characterCount ? `character-count="${args.characterCount}"` : null}
   ${args.maxlength ? `maxlength="${args.maxlength}"` : null}
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
@@ -206,7 +197,6 @@ const Template = args =>
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
-  ${args.characterCount ? `characterCount="${args.characterCount}"` : null}
   ${args.maxlength ? `maxlength="${args.maxlength}"` : null}maxlength
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
@@ -231,7 +221,6 @@ const TemplatePlayground = args => `
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
-  ${args.characterCount ? `character-count="${args.characterCount}"` : null}
   ${args.maxlength ? `maxlength="${args.maxlength}"` : null}
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
@@ -355,7 +344,6 @@ Props.args = {
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
-  characterCount: '',
   minlength: '',
   errorMessage: '',
   required: false,
@@ -376,7 +364,6 @@ Playground.args = {
   label: 'Label',
   name: 'textarea-name',
   hint: 'Hint / Example message.',
-  characterCount: '',
   minlength: '',
   errorMessage: '',
   required: false,
