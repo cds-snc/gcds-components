@@ -541,10 +541,6 @@ export namespace Components {
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
         "subLinks": string | object;
-        /**
-          * GcdsSignature - The variant of the Government of Canada wordmark
-         */
-        "wordmarkVariant": 'colour' | 'white';
     }
     /**
      * A grid is a responsive, flexible column layout to position elements on a page.
@@ -3002,10 +2998,6 @@ declare namespace LocalJSX {
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
         "subLinks"?: string | object;
-        /**
-          * GcdsSignature - The variant of the Government of Canada wordmark
-         */
-        "wordmarkVariant"?: 'colour' | 'white';
     }
     /**
      * A grid is a responsive, flexible column layout to position elements on a page.

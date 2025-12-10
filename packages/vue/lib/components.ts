@@ -279,7 +279,6 @@ export const GcdsFileUploader: StencilVueComponent<JSX.GcdsFileUploader, JSX.Gcd
 
 export const GcdsFooter: StencilVueComponent<JSX.GcdsFooter> = /*@__PURE__*/ defineContainer<JSX.GcdsFooter>('gcds-footer', defineGcdsFooter, [
   'display',
-  'wordmarkVariant',
   'contextualHeading',
   'contextualLinks',
   'subLinks',
