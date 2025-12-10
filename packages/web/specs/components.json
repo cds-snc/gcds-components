@@ -5188,18 +5188,13 @@
         }
       ],
       "parts": [],
-      "dependents": [
-        "gcds-verify-banner"
-      ],
+      "dependents": [],
       "dependencies": [
         "gcds-container"
       ],
       "dependencyGraph": {
         "gcds-grid": [
           "gcds-container"
-        ],
-        "gcds-verify-banner": [
-          "gcds-grid"
         ]
       }
     },
@@ -12939,114 +12934,6 @@
         "gcds-topic-menu": [
           "gcds-sr-only",
           "gcds-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/gcds-verify-banner/gcds-verify-banner.tsx",
-      "encapsulation": "shadow",
-      "tag": "gcds-verify-banner",
-      "readme": "# gcds-verify-banner\n\n\n",
-      "docs": "Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "container",
-          "type": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-          "complexType": {
-            "original": "'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'",
-            "resolved": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "container",
-          "reflectToAttr": false,
-          "docs": "Defines the container width of the verify banner content",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'xl'"
-            }
-          ],
-          "default": "'xl'",
-          "values": [
-            {
-              "value": "full",
-              "type": "string"
-            },
-            {
-              "value": "lg",
-              "type": "string"
-            },
-            {
-              "value": "md",
-              "type": "string"
-            },
-            {
-              "value": "sm",
-              "type": "string"
-            },
-            {
-              "value": "xl",
-              "type": "string"
-            },
-            {
-              "value": "xs",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "isFixed",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "is-fixed",
-          "reflectToAttr": false,
-          "docs": "Defines if the banner's position is fixed.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "gcds-grid"
-      ],
-      "dependencyGraph": {
-        "gcds-verify-banner": [
-          "gcds-grid"
-        ],
-        "gcds-grid": [
-          "gcds-container"
         ]
       }
     }

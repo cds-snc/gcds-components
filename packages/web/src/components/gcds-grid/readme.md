@@ -41,10 +41,6 @@ A grid is a responsive, flexible column layout to position elements on a page.
 
 ## Dependencies
 
-### Used by
-
- - [gcds-verify-banner](../gcds-verify-banner)
-
 ### Depends on
 
 - [gcds-container](../gcds-container)
@@ -53,7 +49,6 @@ A grid is a responsive, flexible column layout to position elements on a page.
 ```mermaid
 graph TD;
   gcds-grid --> gcds-container
-  gcds-verify-banner --> gcds-grid
   style gcds-grid fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
