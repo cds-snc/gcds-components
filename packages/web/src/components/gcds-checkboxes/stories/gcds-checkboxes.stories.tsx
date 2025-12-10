@@ -530,6 +530,8 @@ Props.args = {
   lang: 'en',
   autofocus: false,
   form: '',
+  hideLabel: false,
+  hideLegend: false,
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -549,4 +551,6 @@ Playground.args = {
   lang: 'en',
   autofocus: false,
   form: '',
+  hideLabel: false,
+  hideLegend: false,
 };
