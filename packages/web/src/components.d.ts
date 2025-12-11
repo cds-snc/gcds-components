@@ -1523,21 +1523,6 @@ export namespace Components {
         "updateNavItemQueue": (parent: any) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
     }
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface GcdsVerifyBanner {
-        /**
-          * Defines the container width of the verify banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-          * @default false
-         */
-        "isFixed"?: boolean;
-    }
 }
 export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2281,15 +2266,6 @@ declare global {
         prototype: HTMLGcdsTopicMenuElement;
         new (): HTMLGcdsTopicMenuElement;
     };
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface HTMLGcdsVerifyBannerElement extends Components.GcdsVerifyBanner, HTMLStencilElement {
-    }
-    var HTMLGcdsVerifyBannerElement: {
-        prototype: HTMLGcdsVerifyBannerElement;
-        new (): HTMLGcdsVerifyBannerElement;
-    };
     interface HTMLElementTagNameMap {
         "gcds-alert": HTMLGcdsAlertElement;
         "gcds-breadcrumbs": HTMLGcdsBreadcrumbsElement;
@@ -2331,7 +2307,6 @@ declare global {
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
         "gcds-topic-menu": HTMLGcdsTopicMenuElement;
-        "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
     }
 }
 declare namespace LocalJSX {
@@ -4068,21 +4043,6 @@ declare namespace LocalJSX {
          */
         "home"?: boolean;
     }
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface GcdsVerifyBanner {
-        /**
-          * Defines the container width of the verify banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-          * @default false
-         */
-        "isFixed"?: boolean;
-    }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;
         "gcds-breadcrumbs": GcdsBreadcrumbs;
@@ -4124,7 +4084,6 @@ declare namespace LocalJSX {
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
         "gcds-topic-menu": GcdsTopicMenu;
-        "gcds-verify-banner": GcdsVerifyBanner;
     }
 }
 export { LocalJSX as JSX };
@@ -4291,10 +4250,6 @@ declare module "@stencil/core" {
              * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
              */
             "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
-            /**
-             * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-             */
-            "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }
     }
 }

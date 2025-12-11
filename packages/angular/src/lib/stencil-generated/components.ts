@@ -2426,34 +2426,3 @@ export class GcdsTopicMenu {
 export declare interface GcdsTopicMenu extends Components.GcdsTopicMenu {}
 
 
-@ProxyCmp({
-  inputs: ['container', 'isFixed']
-})
-@Component({
-  selector: 'gcds-verify-banner',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['container', 'isFixed'],
-  standalone: false,
-})
-export class GcdsVerifyBanner {
-  protected el: HTMLGcdsVerifyBannerElement;
-    /**
-   * Defines the container width of the verify banner content @default 'xl'
-   */
-  set container(_: Components.GcdsVerifyBanner['container']) {};
-    /**
-   * Defines if the banner's position is fixed. @default false
-   */
-  set isFixed(_: Components.GcdsVerifyBanner['isFixed']) {};
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsVerifyBanner extends Components.GcdsVerifyBanner {}
-
-

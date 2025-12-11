@@ -41,6 +41,5 @@ export const DIRECTIVES = [
   d.GcdsText,
   d.GcdsTextarea,
   d.GcdsTopNav,
-  d.GcdsTopicMenu,
-  d.GcdsVerifyBanner
+  d.GcdsTopicMenu
 ];
