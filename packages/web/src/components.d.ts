@@ -551,10 +551,6 @@ export namespace Components {
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
         "subLinks": string | object;
-        /**
-          * GcdsSignature - The variant of the Government of Canada wordmark
-         */
-        "wordmarkVariant": 'colour' | 'white';
     }
     /**
      * A grid is a responsive, flexible column layout to position elements on a page.
@@ -1093,25 +1089,6 @@ export namespace Components {
         "url": string | object;
     }
     /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface GcdsPhaseBanner {
-        /**
-          * Defines banner role.
-          * @default 'primary'
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines the container width of the phase banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "isFixed"?: boolean;
-    }
-    /**
      * Radios provide a set of options for a single response.
      */
     interface GcdsRadios {
@@ -1422,13 +1399,9 @@ export namespace Components {
      */
     interface GcdsTextarea {
         /**
-          * If true, the input will be focused on component render
+          * If true, the textarea will be focused on component render.
          */
         "autofocus": boolean;
-        /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "characterCount"?: number;
         /**
           * Check the validity of gcds-textarea
          */
@@ -1456,6 +1429,11 @@ export namespace Components {
          */
         "hideLabel"?: boolean;
         /**
+          * If true, character limt counter will not be displayed under the textarea.
+          * @default false
+         */
+        "hideLimit"?: boolean;
+        /**
           * Hint displayed below the label and above the textarea field.
          */
         "hint"?: string;
@@ -1464,7 +1442,11 @@ export namespace Components {
          */
         "label": string;
         /**
-          * The minimum number of characters that the input field can accept.
+          * The maximum number of characters that the textarea field can accept.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum number of characters that the textarea field can accept.
          */
         "minlength"?: number;
         /**
@@ -1518,7 +1500,7 @@ export namespace Components {
           * Nav alignment
           * @default 'left'
          */
-        "alignment": 'left' | 'center' | 'right';
+        "alignment": 'left' | 'right';
         "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
@@ -1550,21 +1532,6 @@ export namespace Components {
          */
         "updateNavItemQueue": (parent: any) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
-    }
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface GcdsVerifyBanner {
-        /**
-          * Defines the container width of the verify banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-          * @default false
-         */
-        "isFixed"?: boolean;
     }
 }
 export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
@@ -2147,15 +2114,6 @@ declare global {
         prototype: HTMLGcdsPaginationElement;
         new (): HTMLGcdsPaginationElement;
     };
-    /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface HTMLGcdsPhaseBannerElement extends Components.GcdsPhaseBanner, HTMLStencilElement {
-    }
-    var HTMLGcdsPhaseBannerElement: {
-        prototype: HTMLGcdsPhaseBannerElement;
-        new (): HTMLGcdsPhaseBannerElement;
-    };
     interface HTMLGcdsRadiosElementEventMap {
         "gcdsInput": string;
         "gcdsChange": string;
@@ -2318,15 +2276,6 @@ declare global {
         prototype: HTMLGcdsTopicMenuElement;
         new (): HTMLGcdsTopicMenuElement;
     };
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface HTMLGcdsVerifyBannerElement extends Components.GcdsVerifyBanner, HTMLStencilElement {
-    }
-    var HTMLGcdsVerifyBannerElement: {
-        prototype: HTMLGcdsVerifyBannerElement;
-        new (): HTMLGcdsVerifyBannerElement;
-    };
     interface HTMLElementTagNameMap {
         "gcds-alert": HTMLGcdsAlertElement;
         "gcds-breadcrumbs": HTMLGcdsBreadcrumbsElement;
@@ -2357,7 +2306,6 @@ declare global {
         "gcds-nav-link": HTMLGcdsNavLinkElement;
         "gcds-notice": HTMLGcdsNoticeElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
-        "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radios": HTMLGcdsRadiosElement;
         "gcds-search": HTMLGcdsSearchElement;
         "gcds-select": HTMLGcdsSelectElement;
@@ -2369,7 +2317,6 @@ declare global {
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
         "gcds-topic-menu": HTMLGcdsTopicMenuElement;
-        "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
     }
 }
 declare namespace LocalJSX {
@@ -3022,10 +2969,6 @@ declare namespace LocalJSX {
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
         "subLinks"?: string | object;
-        /**
-          * GcdsSignature - The variant of the Government of Canada wordmark
-         */
-        "wordmarkVariant"?: 'colour' | 'white';
     }
     /**
      * A grid is a responsive, flexible column layout to position elements on a page.
@@ -3640,25 +3583,6 @@ declare namespace LocalJSX {
         "url"?: string | object;
     }
     /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface GcdsPhaseBanner {
-        /**
-          * Defines banner role.
-          * @default 'primary'
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines the container width of the phase banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "isFixed"?: boolean;
-    }
-    /**
      * Radios provide a set of options for a single response.
      */
     interface GcdsRadios {
@@ -4010,13 +3934,9 @@ declare namespace LocalJSX {
      */
     interface GcdsTextarea {
         /**
-          * If true, the input will be focused on component render
+          * If true, the textarea will be focused on component render.
          */
         "autofocus"?: boolean;
-        /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "characterCount"?: number;
         /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
@@ -4036,6 +3956,11 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: boolean;
         /**
+          * If true, character limt counter will not be displayed under the textarea.
+          * @default false
+         */
+        "hideLimit"?: boolean;
+        /**
           * Hint displayed below the label and above the textarea field.
          */
         "hint"?: string;
@@ -4044,7 +3969,11 @@ declare namespace LocalJSX {
          */
         "label": string;
         /**
-          * The minimum number of characters that the input field can accept.
+          * The maximum number of characters that the textarea field can accept.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum number of characters that the textarea field can accept.
          */
         "minlength"?: number;
         /**
@@ -4118,7 +4047,7 @@ declare namespace LocalJSX {
           * Nav alignment
           * @default 'left'
          */
-        "alignment"?: 'left' | 'center' | 'right';
+        "alignment"?: 'left' | 'right';
         /**
           * Label for navigation landmark
          */
@@ -4133,21 +4062,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "home"?: boolean;
-    }
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface GcdsVerifyBanner {
-        /**
-          * Defines the container width of the verify banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-          * @default false
-         */
-        "isFixed"?: boolean;
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;
@@ -4179,7 +4093,6 @@ declare namespace LocalJSX {
         "gcds-nav-link": GcdsNavLink;
         "gcds-notice": GcdsNotice;
         "gcds-pagination": GcdsPagination;
-        "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radios": GcdsRadios;
         "gcds-search": GcdsSearch;
         "gcds-select": GcdsSelect;
@@ -4191,7 +4104,6 @@ declare namespace LocalJSX {
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
         "gcds-topic-menu": GcdsTopicMenu;
-        "gcds-verify-banner": GcdsVerifyBanner;
     }
 }
 export { LocalJSX as JSX };
@@ -4315,10 +4227,6 @@ declare module "@stencil/core" {
              */
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             /**
-             * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-             */
-            "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
-            /**
              * Radios provide a set of options for a single response.
              */
             "gcds-radios": LocalJSX.GcdsRadios & JSXBase.HTMLAttributes<HTMLGcdsRadiosElement>;
@@ -4362,10 +4270,6 @@ declare module "@stencil/core" {
              * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
              */
             "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
-            /**
-             * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-             */
-            "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }
     }
 }
