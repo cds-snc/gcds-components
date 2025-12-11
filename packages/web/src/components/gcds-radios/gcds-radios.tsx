@@ -218,7 +218,7 @@ export class GcdsRadios {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
-   * Sspecifies if the legend is hidden or not.
+   * Specifies if the legend is hidden or not.
    */
   @Prop() hideLegend?: boolean = false;
 
