@@ -2183,8 +2183,7 @@
       "parts": [],
       "dependents": [
         "gcds-alert",
-        "gcds-grid",
-        "gcds-phase-banner"
+        "gcds-grid"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -2192,9 +2191,6 @@
           "gcds-container"
         ],
         "gcds-grid": [
-          "gcds-container"
-        ],
-        "gcds-phase-banner": [
           "gcds-container"
         ]
       }
@@ -9060,173 +9056,6 @@
       "dependencyGraph": {
         "gcds-pagination": [
           "gcds-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/gcds-phase-banner/gcds-phase-banner.tsx",
-      "encapsulation": "shadow",
-      "tag": "gcds-phase-banner",
-      "readme": "# gcds-phase-banner\n\n\n",
-      "docs": "Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.",
-      "docsTags": [
-        {
-          "name": "slot",
-          "text": "banner-cta - Slot for the call-to-action element in the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-icon-left - Slot for displaying an icon/image on the left of the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-icon-right - Slot for displaying an icon/image on the right of the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-text - Slot for the main content of the banner."
-        }
-      ],
-      "usage": {},
-      "props": [
-        {
-          "name": "bannerRole",
-          "type": "\"primary\" | \"secondary\"",
-          "complexType": {
-            "original": "'primary' | 'secondary'",
-            "resolved": "\"primary\" | \"secondary\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "banner-role",
-          "reflectToAttr": false,
-          "docs": "Defines banner role.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'primary'"
-            }
-          ],
-          "default": "'primary'",
-          "values": [
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "secondary",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "container",
-          "type": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-          "complexType": {
-            "original": "'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'",
-            "resolved": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "container",
-          "reflectToAttr": false,
-          "docs": "Defines the container width of the phase banner content",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'xl'"
-            }
-          ],
-          "default": "'xl'",
-          "values": [
-            {
-              "value": "full",
-              "type": "string"
-            },
-            {
-              "value": "lg",
-              "type": "string"
-            },
-            {
-              "value": "md",
-              "type": "string"
-            },
-            {
-              "value": "sm",
-              "type": "string"
-            },
-            {
-              "value": "xl",
-              "type": "string"
-            },
-            {
-              "value": "xs",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "isFixed",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "is-fixed",
-          "reflectToAttr": false,
-          "docs": "Defines if the banner's position is fixed.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [
-        {
-          "name": "banner-cta",
-          "docs": "Slot for the call-to-action element in the banner."
-        },
-        {
-          "name": "banner-icon-left",
-          "docs": "Slot for displaying an icon/image on the left of the banner."
-        },
-        {
-          "name": "banner-icon-right",
-          "docs": "Slot for displaying an icon/image on the right of the banner."
-        },
-        {
-          "name": "banner-text",
-          "docs": "Slot for the main content of the banner."
-        }
-      ],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "gcds-container"
-      ],
-      "dependencyGraph": {
-        "gcds-phase-banner": [
-          "gcds-container"
         ]
       }
     },

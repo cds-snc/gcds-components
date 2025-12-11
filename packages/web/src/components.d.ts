@@ -1079,25 +1079,6 @@ export namespace Components {
         "url": string | object;
     }
     /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface GcdsPhaseBanner {
-        /**
-          * Defines banner role.
-          * @default 'primary'
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines the container width of the phase banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "isFixed"?: boolean;
-    }
-    /**
      * Radios provide a set of options for a single response.
      */
     interface GcdsRadios {
@@ -2138,15 +2119,6 @@ declare global {
         prototype: HTMLGcdsPaginationElement;
         new (): HTMLGcdsPaginationElement;
     };
-    /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface HTMLGcdsPhaseBannerElement extends Components.GcdsPhaseBanner, HTMLStencilElement {
-    }
-    var HTMLGcdsPhaseBannerElement: {
-        prototype: HTMLGcdsPhaseBannerElement;
-        new (): HTMLGcdsPhaseBannerElement;
-    };
     interface HTMLGcdsRadiosElementEventMap {
         "gcdsInput": string;
         "gcdsChange": string;
@@ -2348,7 +2320,6 @@ declare global {
         "gcds-nav-link": HTMLGcdsNavLinkElement;
         "gcds-notice": HTMLGcdsNoticeElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
-        "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radios": HTMLGcdsRadiosElement;
         "gcds-search": HTMLGcdsSearchElement;
         "gcds-select": HTMLGcdsSelectElement;
@@ -3617,25 +3588,6 @@ declare namespace LocalJSX {
         "url"?: string | object;
     }
     /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface GcdsPhaseBanner {
-        /**
-          * Defines banner role.
-          * @default 'primary'
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines the container width of the phase banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "isFixed"?: boolean;
-    }
-    /**
      * Radios provide a set of options for a single response.
      */
     interface GcdsRadios {
@@ -4161,7 +4113,6 @@ declare namespace LocalJSX {
         "gcds-nav-link": GcdsNavLink;
         "gcds-notice": GcdsNotice;
         "gcds-pagination": GcdsPagination;
-        "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radios": GcdsRadios;
         "gcds-search": GcdsSearch;
         "gcds-select": GcdsSelect;
@@ -4296,10 +4247,6 @@ declare module "@stencil/core" {
              * Pagination is a division of content into multiple linked pages.
              */
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
-            /**
-             * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-             */
-            "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
             /**
              * Radios provide a set of options for a single response.
              */

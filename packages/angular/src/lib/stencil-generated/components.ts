@@ -1776,41 +1776,6 @@ or an object with page and href when using list display.
 
 
 @ProxyCmp({
-  inputs: ['bannerRole', 'container', 'isFixed']
-})
-@Component({
-  selector: 'gcds-phase-banner',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['bannerRole', 'container', 'isFixed'],
-  standalone: false,
-})
-export class GcdsPhaseBanner {
-  protected el: HTMLGcdsPhaseBannerElement;
-    /**
-   * Defines banner role. @default 'primary'
-   */
-  set bannerRole(_: Components.GcdsPhaseBanner['bannerRole']) {};
-    /**
-   * Defines the container width of the phase banner content @default 'xl'
-   */
-  set container(_: Components.GcdsPhaseBanner['container']) {};
-    /**
-   * Defines if the banner's position is fixed.
-   */
-  set isFixed(_: Components.GcdsPhaseBanner['isFixed']) {};
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
-
-
-@ProxyCmp({
   inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']

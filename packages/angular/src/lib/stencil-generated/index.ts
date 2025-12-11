@@ -31,7 +31,6 @@ export const DIRECTIVES = [
   d.GcdsNavLink,
   d.GcdsNotice,
   d.GcdsPagination,
-  d.GcdsPhaseBanner,
   d.GcdsRadios,
   d.GcdsSearch,
   d.GcdsSelect,
