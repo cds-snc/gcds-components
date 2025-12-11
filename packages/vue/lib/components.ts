@@ -522,6 +522,7 @@ export const GcdsRadios: StencilVueComponent<JSX.GcdsRadios, JSX.GcdsRadios["val
   'validity',
   'validator',
   'validateOn',
+  'hideLegend',
   'gcdsInput',
   'gcdsChange',
   'gcdsFocus',

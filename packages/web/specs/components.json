@@ -9392,6 +9392,35 @@
           "setter": false
         },
         {
+          "name": "hideLegend",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-legend",
+          "reflectToAttr": false,
+          "docs": "Sspecifies if the legend is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hint",
           "type": "string",
           "complexType": {
@@ -9829,12 +9858,14 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
+        "gcds-sr-only",
         "gcds-hint",
         "gcds-error-message",
         "gcds-label"
       ],
       "dependencyGraph": {
         "gcds-radios": [
+          "gcds-sr-only",
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
@@ -11208,6 +11239,7 @@
         "gcds-footer",
         "gcds-lang-toggle",
         "gcds-notice",
+        "gcds-radios",
         "gcds-search",
         "gcds-stepper",
         "gcds-topic-menu"
@@ -11230,6 +11262,9 @@
           "gcds-sr-only"
         ],
         "gcds-notice": [
+          "gcds-sr-only"
+        ],
+        "gcds-radios": [
           "gcds-sr-only"
         ],
         "gcds-search": [

@@ -1140,6 +1140,11 @@ export namespace Components {
          */
         "getValidationMessage": () => Promise<string>;
         /**
+          * Sspecifies if the legend is hidden or not.
+          * @default false
+         */
+        "hideLegend"?: boolean;
+        /**
           * Hint displayed below the label and above the radio elements
          */
         "hint": string;
@@ -3678,6 +3683,11 @@ declare namespace LocalJSX {
           * The ID of the form that the radios belong to.
          */
         "form"?: string;
+        /**
+          * Sspecifies if the legend is hidden or not.
+          * @default false
+         */
+        "hideLegend"?: boolean;
         /**
           * Hint displayed below the label and above the radio elements
          */

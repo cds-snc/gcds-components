@@ -9,6 +9,7 @@ import {
   Listen,
   Method,
   Host,
+  Fragment,
   h,
   AttachInternals,
 } from '@stencil/core';
@@ -215,6 +216,11 @@ export class GcdsRadios {
    * Set event to call validator
    */
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
+
+  /**
+   * Specifies if the legend is hidden or not.
+   */
+  @Prop() hideLegend?: boolean = false;
 
   /**
    * Specifies if the radio is invalid.
@@ -477,10 +483,17 @@ export class GcdsRadios {
         <Host onBlur={() => this.onBlurValidate()}>
           <fieldset class="gcds-radios__fieldset" {...fieldsetAttrs}>
             <legend id="radios-legend" class="gcds-radios__legend">
-              {legend}
-              {required ? (
-                <span class="legend__required">{i18n[lang].required}</span>
-              ) : null}
+              {this.hideLegend ? (
+                <gcds-sr-only tag="span">
+                  {legend}
+                  {required && <span class="legend__required">{i18n[lang].required}</span>}
+                </gcds-sr-only>
+              ) : (
+                <Fragment>
+                  {legend}
+                  {required && <span class="legend__required">{i18n[lang].required}</span>}
+                </Fragment>
+              )}
             </legend>
 
             {hint ? (
