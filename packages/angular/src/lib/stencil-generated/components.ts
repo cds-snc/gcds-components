@@ -873,7 +873,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
 
 
 @ProxyCmp({
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -881,7 +881,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -891,10 +891,6 @@ export class GcdsFooter {
    * Display mode of the footer @default 'compact'
    */
   set display(_: Components.GcdsFooter['display']) {};
-    /**
-   * GcdsSignature - The variant of the Government of Canada wordmark
-   */
-  set wordmarkVariant(_: Components.GcdsFooter['wordmarkVariant']) {};
     /**
    * Heading for contextual slot and nav landmark
    */
