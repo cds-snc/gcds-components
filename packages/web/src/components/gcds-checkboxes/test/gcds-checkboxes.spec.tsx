@@ -355,6 +355,42 @@ describe('gcds-checkbox', () => {
       </gcds-checkboxes>
     `);
   });
+  it('renders: group hidden legend', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCheckboxes],
+      html: `<gcds-checkboxes
+          legend="Group of checkboxes"
+          name="checkgroup"
+          options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'
+          hide-legend
+        ></gcds-checkboxes>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]' hide-legend>
+        <mock:shadow-root>
+          <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
+            <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
+              <gcds-sr-only tag="span">
+                Group of checkboxes
+              </gcds-sr-only>
+            </legend>
+            <div class="gcds-checkbox">
+              <input id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
+              <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-checkbox">
+              <input id="checkbox2" name="checkgroup" type="checkbox" value="checkbox2">
+              <gcds-label label="Checkbox 2 label" label-for="checkbox2" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-checkbox">
+              <input id="checkbox3" name="checkgroup" type="checkbox" value="checkbox3">
+              <gcds-label label="Checkbox 3 label" label-for="checkbox3" lang="en"></gcds-label>
+            </div>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-checkboxes>
+    `);
+  });
 
   // ------- Single checkbox ------- //
 
@@ -546,6 +582,27 @@ describe('gcds-checkbox', () => {
           <div class="gcds-checkbox">
             <input id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
+          </div>
+        </mock:shadow-root>
+      </gcds-checkboxes>
+    `);
+  });
+  it('renders: single hidden label', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCheckboxes],
+      html: `<gcds-checkboxes
+          legend="Group of checkboxes"
+          name="checkgroup"
+          options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]'
+          hide-label
+        ></gcds-checkboxes>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]' hide-label>
+        <mock:shadow-root>
+          <div class="gcds-checkbox">
+            <input id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
+            <gcds-label label="Checkbox 1 label" label-for="checkbox1" hide-label lang="en"></gcds-label>
           </div>
         </mock:shadow-root>
       </gcds-checkboxes>

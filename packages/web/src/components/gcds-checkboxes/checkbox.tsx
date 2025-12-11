@@ -96,6 +96,7 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
     value,
     checkboxTitle,
     form,
+    hideLabel,
     onBlurValidate,
   } = element;
 
@@ -118,6 +119,10 @@ export const renderCheckbox = (checkbox, element, emitEvent, handleInput) => {
   if (!isGroup && required) {
     labelAttrs['required'] = required;
     attrsInput['required'] = required;
+  }
+
+  if (!isGroup && hideLabel) {
+    labelAttrs['hide-label'] = hideLabel;
   }
 
   if (checkbox.hint) {
