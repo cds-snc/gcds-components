@@ -465,6 +465,11 @@ export namespace Components {
          */
         "getValidationMessage": () => Promise<string>;
         /**
+          * Specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
           * Hint displayed below the label.
          */
         "hint": string;
@@ -1124,6 +1129,11 @@ export namespace Components {
           * Get validationMessage of gcds-radios
          */
         "getValidationMessage": () => Promise<string>;
+        /**
+          * Sspecifies if the legend is hidden or not.
+          * @default false
+         */
+        "hideLegend"?: boolean;
         /**
           * Hint displayed below the label and above the radio elements
          */
@@ -2885,6 +2895,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * Specifies if the label is hidden or not.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
           * Hint displayed below the label.
          */
         "hint"?: string;
@@ -3648,6 +3663,11 @@ declare namespace LocalJSX {
           * The ID of the form that the radios belong to.
          */
         "form"?: string;
+        /**
+          * Sspecifies if the legend is hidden or not.
+          * @default false
+         */
+        "hideLegend"?: boolean;
         /**
           * Hint displayed below the label and above the radio elements
          */

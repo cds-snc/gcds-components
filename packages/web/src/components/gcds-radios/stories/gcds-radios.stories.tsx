@@ -110,6 +110,15 @@ export default {
           defaultValue: { summary: '-' },
         },
       },
+      hideLegend: {
+        name: 'hide-legend',
+        control: { type: 'select' },
+        options: [false, true],
+        table: {
+          type: { summary: 'boolean' },
+          defaultValue: { summary: false },
+        },
+      },
     },
     ...langProp,
     ...validatorProps,
@@ -156,6 +165,7 @@ const Template = args =>
   ${args.value ? `value="${args.value}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.form ? `form="${args.form}"` : null}
+  ${args.hideLegend ? `hide-legend` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -173,6 +183,7 @@ const Template = args =>
   ${args.value ? `value="${args.value}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.form ? `form="${args.form}"` : null}
+  ${args.hideLegend ? `hideLegend` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -193,6 +204,7 @@ const TemplatePlayground = args =>
   ${args.value ? `value="${args.value}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.form ? `form="${args.form}"` : null}
+  ${args.hideLegend ? `hide-legend` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -351,6 +363,25 @@ Form.args = {
   form: 'form-id',
 };
 
+export const HideLegend = Template.bind({});
+HideLegend.args = {
+  name: 'radioDefault',
+  legend: 'Legend',
+  options: `[
+    { "label": "Label for radio 1", "id": "radio1", "value": "radio1"},
+    { "label": "Label for radio 2", "id": "radio2", "value": "radio2"}
+  ]`,
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  value: '',
+  validateOn: 'blur',
+  lang: 'en',
+  autofocus: false,
+  hideLegend: true,
+};
+
 export const Props = Template.bind({});
 Props.args = {
   name: 'radio',
@@ -368,6 +399,7 @@ Props.args = {
   lang: 'en',
   autofocus: false,
   form: '',
+  hideLegend: false,
 };
 
 export const Playground = TemplatePlayground.bind({});
@@ -387,4 +419,5 @@ Playground.args = {
   lang: 'en',
   autofocus: false,
   form: '',
+  hideLegend: false,
 };

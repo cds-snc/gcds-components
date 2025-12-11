@@ -17,6 +17,7 @@ Radios provide a set of options for a single response.
 | `disabled`             | `disabled`      | Specifies if an input element is disabled or not.                                                                       | `boolean`                                           | `undefined` |
 | `errorMessage`         | `error-message` | Set this to display an error message for invalid radios                                                                 | `string`                                            | `undefined` |
 | `form`                 | `form`          | The ID of the form that the radios belong to.                                                                           | `string`                                            | `undefined` |
+| `hideLegend`           | `hide-legend`   | Sspecifies if the legend is hidden or not.                                                                              | `boolean`                                           | `false`     |
 | `hint`                 | `hint`          | Hint displayed below the label and above the radio elements                                                             | `string`                                            | `undefined` |
 | `legend` _(required)_  | `legend`        | Label or legend for the group of radio elements                                                                         | `string`                                            | `undefined` |
 | `name` _(required)_    | `name`          | The `name` attribute for the radios, used to group radio elements together                                              | `string`                                            | `undefined` |
@@ -77,6 +78,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-hint](../gcds-hint)
 - [gcds-error-message](../gcds-error-message)
 - [gcds-label](../gcds-label)
@@ -84,6 +86,7 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
+  gcds-radios --> gcds-sr-only
   gcds-radios --> gcds-hint
   gcds-radios --> gcds-error-message
   gcds-radios --> gcds-label
