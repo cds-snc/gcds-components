@@ -35,6 +35,7 @@ import {
   renderCheckbox,
   validateOptionsArray,
 } from './checkbox';
+import i18n from './i18n/i18n';
 
 /**
  * Checkboxes provide a set of options for multiple responses.
@@ -573,12 +574,12 @@ export class GcdsCheckboxes {
                 {this.hideLegend ? (
                   <gcds-sr-only tag="span">
                     {legend}
-                    {required && <span class="legend__required"> (required)</span>}
+                    {required && <span class="legend__required">{i18n[this.lang].required}</span>}
                   </gcds-sr-only>
                 ) : (
                   <Fragment>
                     {legend}
-                    {required && <span class="legend__required"> (required)</span>}
+                    {required && <span class="legend__required">{i18n[this.lang].required}</span>}
                   </Fragment>
                 )}
               </legend>
