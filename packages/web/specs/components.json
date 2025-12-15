@@ -1024,6 +1024,52 @@
           "required": false,
           "getter": false,
           "setter": false
+        },
+        {
+          "name": "rel",
+          "type": "string",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "rel",
+          "reflectToAttr": false,
+          "docs": "The rel attribute specifies the relationship between the current document and the linked document",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "target",
+          "reflectToAttr": false,
+          "docs": "The target attribute specifies where to open the linked document",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -9402,7 +9448,7 @@
           "mutable": false,
           "attr": "hide-legend",
           "reflectToAttr": false,
-          "docs": "Sspecifies if the legend is hidden or not.",
+          "docs": "Specifies if the legend is hidden or not.",
           "docsTags": [
             {
               "name": "default",

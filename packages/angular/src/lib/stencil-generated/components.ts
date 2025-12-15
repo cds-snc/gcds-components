@@ -216,7 +216,7 @@ export declare interface GcdsButton extends Components.GcdsButton {
 
 
 @ProxyCmp({
-  inputs: ['badge', 'cardTitle', 'cardTitleTag', 'description', 'href', 'imgAlt', 'imgSrc'],
+  inputs: ['badge', 'cardTitle', 'cardTitleTag', 'description', 'href', 'imgAlt', 'imgSrc', 'rel', 'target'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -224,7 +224,7 @@ export declare interface GcdsButton extends Components.GcdsButton {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['badge', 'cardTitle', 'cardTitleTag', 'description', 'href', 'imgAlt', 'imgSrc'],
+  inputs: ['badge', 'cardTitle', 'cardTitleTag', 'description', 'href', 'imgAlt', 'imgSrc', 'rel', 'target'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -260,6 +260,14 @@ in order to maintain heading hierarchy and accessibility for assistive technolog
    * The img alt attribute specifies the alt text for the image provided, if none, image will be decorative
    */
   set imgAlt(_: Components.GcdsCard['imgAlt']) {};
+    /**
+   * The rel attribute specifies the relationship between the current document and the linked document
+   */
+  set rel(_: Components.GcdsCard['rel']) {};
+    /**
+   * The target attribute specifies where to open the linked document
+   */
+  set target(_: Components.GcdsCard['target']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1891,7 +1899,7 @@ export class GcdsRadios {
    */
   set validateOn(_: Components.GcdsRadios['validateOn']) {};
     /**
-   * Sspecifies if the legend is hidden or not. @default false
+   * Specifies if the legend is hidden or not. @default false
    */
   set hideLegend(_: Components.GcdsRadios['hideLegend']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
