@@ -241,7 +241,7 @@ export class GcdsCard {
     /**
    * The card title tag property specifies the HTML heading element for the title.
 This property does not modify the font size. It is used to assign the heading level
-in order to maintain heading hierarchy and accessibility for assistive technologies. @default 'a'
+in order to maintain heading hierarchy and accessibility for assistive technologies.
    */
   set cardTitleTag(_: Components.GcdsCard['cardTitleTag']) {};
     /**

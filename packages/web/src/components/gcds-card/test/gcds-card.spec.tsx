@@ -159,8 +159,8 @@ describe('gcds-card', () => {
       components: [GcdsCard],
       html: `<gcds-card
         card-title="Card"
-        href="#card"
         card-title-tag="h3"
+        href="#card"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
@@ -184,8 +184,8 @@ describe('gcds-card', () => {
       components: [GcdsCard],
       html: `<gcds-card
         card-title="Card"
-        href="#card"
         card-title-tag="h4"
+        href="#card"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
@@ -209,8 +209,8 @@ describe('gcds-card', () => {
       components: [GcdsCard],
       html: `<gcds-card
         card-title="Card"
-        href="#card"
         card-title-tag="h5"
+        href="#card"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
@@ -234,8 +234,8 @@ describe('gcds-card', () => {
       components: [GcdsCard],
       html: `<gcds-card
         card-title="Card"
-        href="#card"
         card-title-tag="h6"
+        href="#card"
       ></gcds-card>`,
     });
     expect(page.root).toEqualHtml(`
