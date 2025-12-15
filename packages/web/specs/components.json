@@ -1199,6 +1199,64 @@
           "setter": false
         },
         {
+          "name": "hideLabel",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-label",
+          "reflectToAttr": false,
+          "docs": "For single checkbox, specifies if the label is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLegend",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-legend",
+          "reflectToAttr": false,
+          "docs": "For checkbox groups, specifies if the legend is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hint",
           "type": "string",
           "complexType": {
@@ -1670,12 +1728,14 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
+        "gcds-sr-only",
         "gcds-hint",
         "gcds-error-message",
         "gcds-label"
       ],
       "dependencyGraph": {
         "gcds-checkboxes": [
+          "gcds-sr-only",
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
@@ -9156,6 +9216,35 @@
           "setter": false
         },
         {
+          "name": "hideLegend",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-legend",
+          "reflectToAttr": false,
+          "docs": "Sspecifies if the legend is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hint",
           "type": "string",
           "complexType": {
@@ -9593,12 +9682,14 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
+        "gcds-sr-only",
         "gcds-hint",
         "gcds-error-message",
         "gcds-label"
       ],
       "dependencyGraph": {
         "gcds-radios": [
+          "gcds-sr-only",
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
@@ -10967,10 +11058,12 @@
       "parts": [],
       "dependents": [
         "gcds-card",
+        "gcds-checkboxes",
         "gcds-file-uploader",
         "gcds-footer",
         "gcds-lang-toggle",
         "gcds-notice",
+        "gcds-radios",
         "gcds-search",
         "gcds-stepper",
         "gcds-topic-menu"
@@ -10978,6 +11071,9 @@
       "dependencies": [],
       "dependencyGraph": {
         "gcds-card": [
+          "gcds-sr-only"
+        ],
+        "gcds-checkboxes": [
           "gcds-sr-only"
         ],
         "gcds-file-uploader": [
@@ -10990,6 +11086,9 @@
           "gcds-sr-only"
         ],
         "gcds-notice": [
+          "gcds-sr-only"
+        ],
+        "gcds-radios": [
           "gcds-sr-only"
         ],
         "gcds-search": [

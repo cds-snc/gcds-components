@@ -3,6 +3,7 @@ import {
   Element,
   Event,
   EventEmitter,
+  Fragment,
   Listen,
   Method,
   State,
@@ -34,6 +35,7 @@ import {
   renderCheckbox,
   validateOptionsArray,
 } from './checkbox';
+import i18n from './i18n/i18n';
 
 /**
  * Checkboxes provide a set of options for multiple responses.
@@ -145,6 +147,16 @@ export class GcdsCheckboxes {
    * The ID of the form that the checkboxes belong to.
    */
   @Prop({ reflect: true }) form?: string;
+
+  /**
+   * For single checkbox, specifies if the label is hidden or not.
+   */
+  @Prop() hideLabel?: boolean = false;
+
+  /**
+   * For checkbox groups, specifies if the legend is hidden or not.
+   */
+  @Prop() hideLegend?: boolean = false;
 
   /**
    * Value for checkboxes component.
@@ -559,10 +571,17 @@ export class GcdsCheckboxes {
           {this.isGroup ? (
             <fieldset class="gcds-checkboxes__fieldset" {...fieldsetAttrs}>
               <legend id="checkboxes-legend" class="gcds-checkboxes__legend">
-                {legend}
-                {required ? (
-                  <span class="legend__required"> (required)</span>
-                ) : null}
+                {this.hideLegend ? (
+                  <gcds-sr-only tag="span">
+                    {legend}
+                    {required && <span class="legend__required">{i18n[this.lang].required}</span>}
+                  </gcds-sr-only>
+                ) : (
+                  <Fragment>
+                    {legend}
+                    {required && <span class="legend__required">{i18n[this.lang].required}</span>}
+                  </Fragment>
+                )}
               </legend>
               {hint ? (
                 <gcds-hint id="checkboxes-hint" hint-id="checkboxes">

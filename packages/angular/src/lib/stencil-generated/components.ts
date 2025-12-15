@@ -285,7 +285,7 @@ export declare interface GcdsCard extends Components.GcdsCard {
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hideLegend', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
@@ -294,7 +294,7 @@ export declare interface GcdsCard extends Components.GcdsCard {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hideLegend', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -328,6 +328,14 @@ export class GcdsCheckboxes {
    * The ID of the form that the checkboxes belong to.
    */
   set form(_: Components.GcdsCheckboxes['form']) {};
+    /**
+   * For single checkbox, specifies if the label is hidden or not. @default false
+   */
+  set hideLabel(_: Components.GcdsCheckboxes['hideLabel']) {};
+    /**
+   * For checkbox groups, specifies if the legend is hidden or not. @default false
+   */
+  set hideLegend(_: Components.GcdsCheckboxes['hideLegend']) {};
     /**
    * Value for checkboxes component. @default []
    */
@@ -1785,7 +1793,7 @@ or an object with page and href when using list display.
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hideLegend', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError'],
   standalone: false,
 })
@@ -1843,6 +1851,10 @@ export class GcdsRadios {
    * Set event to call validator @default 'blur'
    */
   set validateOn(_: Components.GcdsRadios['validateOn']) {};
+    /**
+   * Sspecifies if the legend is hidden or not. @default false
+   */
+  set hideLegend(_: Components.GcdsRadios['hideLegend']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
