@@ -1140,7 +1140,7 @@ export namespace Components {
          */
         "getValidationMessage": () => Promise<string>;
         /**
-          * Sspecifies if the legend is hidden or not.
+          * Specifies if the legend is hidden or not.
           * @default false
          */
         "hideLegend"?: boolean;
@@ -3684,7 +3684,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Sspecifies if the legend is hidden or not.
+          * Specifies if the legend is hidden or not.
           * @default false
          */
         "hideLegend"?: boolean;

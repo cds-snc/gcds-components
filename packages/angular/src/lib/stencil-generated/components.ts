@@ -1891,7 +1891,7 @@ export class GcdsRadios {
    */
   set validateOn(_: Components.GcdsRadios['validateOn']) {};
     /**
-   * Sspecifies if the legend is hidden or not. @default false
+   * Specifies if the legend is hidden or not. @default false
    */
   set hideLegend(_: Components.GcdsRadios['hideLegend']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

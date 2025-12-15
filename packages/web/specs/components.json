@@ -9402,7 +9402,7 @@
           "mutable": false,
           "attr": "hide-legend",
           "reflectToAttr": false,
-          "docs": "Sspecifies if the legend is hidden or not.",
+          "docs": "Specifies if the legend is hidden or not.",
           "docsTags": [
             {
               "name": "default",
