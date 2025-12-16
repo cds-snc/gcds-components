@@ -159,6 +159,14 @@ export namespace Components {
           * The img src attribute specifies the path to the image
          */
         "imgSrc": string;
+        /**
+          * The rel attribute specifies the relationship between the current document and the linked document
+         */
+        "rel"?: string | undefined;
+        /**
+          * The target attribute specifies where to open the linked document
+         */
+        "target"?: string;
     }
     /**
      * Checkboxes provide a set of options for multiple responses.
@@ -1140,7 +1148,7 @@ export namespace Components {
          */
         "getValidationMessage": () => Promise<string>;
         /**
-          * Sspecifies if the legend is hidden or not.
+          * Specifies if the legend is hidden or not.
           * @default false
          */
         "hideLegend"?: boolean;
@@ -2559,6 +2567,14 @@ declare namespace LocalJSX {
           * Emitted when the card has focus.
          */
         "onGcdsFocus"?: (event: GcdsCardCustomEvent<void>) => void;
+        /**
+          * The rel attribute specifies the relationship between the current document and the linked document
+         */
+        "rel"?: string | undefined;
+        /**
+          * The target attribute specifies where to open the linked document
+         */
+        "target"?: string;
     }
     /**
      * Checkboxes provide a set of options for multiple responses.
@@ -3684,7 +3700,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Sspecifies if the legend is hidden or not.
+          * Specifies if the legend is hidden or not.
           * @default false
          */
         "hideLegend"?: boolean;
