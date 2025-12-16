@@ -208,7 +208,7 @@ test.describe('gcds-textarea', () => {
 
     await element.evaluate(el => {
       (el as HTMLGcdsTextareaElement).value = 'too long value';
-      (el as HTMLGcdsTextareaElement).characterCount = 7;
+      (el as HTMLGcdsTextareaElement).maxlength = 7;
     });
 
     await page.waitForChanges();

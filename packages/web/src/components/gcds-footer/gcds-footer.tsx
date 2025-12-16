@@ -34,11 +34,6 @@ export class GcdsFooter {
     'compact';
 
   /**
-   * GcdsSignature - The variant of the Government of Canada wordmark
-   */
-  @Prop({ reflect: false, mutable: false }) wordmarkVariant: 'colour' | 'white';
-
-  /**
    * Heading for contextual slot and nav landmark
    */
   @Prop({ reflect: false, mutable: false }) contextualHeading: string;
@@ -140,18 +135,12 @@ export class GcdsFooter {
   }
 
   private get renderSignature() {
-    const signVariant = this.wordmarkVariant ? this.wordmarkVariant : 'colour';
-
     if (this.el.querySelector('[slot="signature"]')) {
       return <slot name="wordmark"></slot>;
     } else {
       return (
         <div class="sub__wordmark">
-          <gcds-signature
-            type="wordmark"
-            variant={signVariant}
-            lang={this.lang}
-          ></gcds-signature>
+          <gcds-signature type="wordmark" lang={this.lang}></gcds-signature>
         </div>
       );
     }

@@ -889,7 +889,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
 
 
 @ProxyCmp({
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -897,7 +897,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -907,10 +907,6 @@ export class GcdsFooter {
    * Display mode of the footer @default 'compact'
    */
   set display(_: Components.GcdsFooter['display']) {};
-    /**
-   * GcdsSignature - The variant of the Government of Canada wordmark
-   */
-  set wordmarkVariant(_: Components.GcdsFooter['wordmarkVariant']) {};
     /**
    * Heading for contextual slot and nav landmark
    */
@@ -1796,42 +1792,7 @@ or an object with page and href when using list display.
 
 
 @ProxyCmp({
-  inputs: ['bannerRole', 'container', 'isFixed']
-})
-@Component({
-  selector: 'gcds-phase-banner',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['bannerRole', 'container', 'isFixed'],
-  standalone: false,
-})
-export class GcdsPhaseBanner {
-  protected el: HTMLGcdsPhaseBannerElement;
-    /**
-   * Defines banner role. @default 'primary'
-   */
-  set bannerRole(_: Components.GcdsPhaseBanner['bannerRole']) {};
-    /**
-   * Defines the container width of the phase banner content @default 'xl'
-   */
-  set container(_: Components.GcdsPhaseBanner['container']) {};
-    /**
-   * Defines if the banner's position is fixed.
-   */
-  set isFixed(_: Components.GcdsPhaseBanner['isFixed']) {};
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
-
-
-@ProxyCmp({
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hideLegend', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
 })
@@ -2302,7 +2263,7 @@ export declare interface GcdsText extends Components.GcdsText {}
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']
 })
@@ -2311,22 +2272,26 @@ export declare interface GcdsText extends Components.GcdsText {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autofocus', 'characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
 export class GcdsTextarea {
   protected el: HTMLGcdsTextareaElement;
     /**
-   * If true, the input will be focused on component render
+   * If true, the textarea will be focused on component render.
    */
   set autofocus(_: Components.GcdsTextarea['autofocus']) {};
     /**
-   * Sets the maxlength attribute for the textarea element.
+   * If true, character limt counter will not be displayed under the textarea. @default false
    */
-  set characterCount(_: Components.GcdsTextarea['characterCount']) {};
+  set hideLimit(_: Components.GcdsTextarea['hideLimit']) {};
     /**
-   * The minimum number of characters that the input field can accept.
+   * The maximum number of characters that the textarea field can accept.
+   */
+  set maxlength(_: Components.GcdsTextarea['maxlength']) {};
+    /**
+   * The minimum number of characters that the textarea field can accept.
    */
   set minlength(_: Components.GcdsTextarea['minlength']) {};
     /**
@@ -2479,36 +2444,5 @@ export class GcdsTopicMenu {
 
 
 export declare interface GcdsTopicMenu extends Components.GcdsTopicMenu {}
-
-
-@ProxyCmp({
-  inputs: ['container', 'isFixed']
-})
-@Component({
-  selector: 'gcds-verify-banner',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['container', 'isFixed'],
-  standalone: false,
-})
-export class GcdsVerifyBanner {
-  protected el: HTMLGcdsVerifyBannerElement;
-    /**
-   * Defines the container width of the verify banner content @default 'xl'
-   */
-  set container(_: Components.GcdsVerifyBanner['container']) {};
-    /**
-   * Defines if the banner's position is fixed. @default false
-   */
-  set isFixed(_: Components.GcdsVerifyBanner['isFixed']) {};
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsVerifyBanner extends Components.GcdsVerifyBanner {}
 
 

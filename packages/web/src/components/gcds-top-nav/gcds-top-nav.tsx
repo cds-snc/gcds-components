@@ -35,7 +35,7 @@ export class GcdsTopNav {
   /**
    * Nav alignment
    */
-  @Prop() alignment: 'left' | 'center' | 'right' = 'left';
+  @Prop() alignment: 'left' | 'right' = 'left';
 
   /**
    * Sticky navigation flag

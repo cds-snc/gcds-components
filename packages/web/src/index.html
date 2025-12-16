@@ -65,10 +65,6 @@
   </head>
 
   <body style="margin: 0">
-    <!-- ------------- Verify banner ------------- -->
-
-    <gcds-verify-banner></gcds-verify-banner>
-
     <!-- ------------- Header ------------- -->
 
     <gcds-header
@@ -342,7 +338,8 @@
           textarea-id="form-message"
           label="Message"
           hint="This is a hint."
-          character-count="400"
+          maxlength="400"
+          name="message"
           required
         ></gcds-textarea>
 
@@ -877,16 +874,6 @@
         next-href="#"
         next-label="Next page"
       ></gcds-pagination>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Phase Banner ------------- -->
-
-      <gcds-heading tag="h2">Phase banner</gcds-heading>
-      <gcds-phase-banner banner-role="primary">
-        <gcds-icon name="info-circle" slot="banner-icon-left"></gcds-icon>
-        <p slot="banner-text">Exciting announcement.</p>
-      </gcds-phase-banner>
 
       <hr class="my-550" />
 

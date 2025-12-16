@@ -35,14 +35,12 @@ A container is a basic box layout with a set width for its contents.
 
  - [gcds-alert](../gcds-alert)
  - [gcds-grid](../gcds-grid)
- - [gcds-phase-banner](../gcds-phase-banner)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-alert --> gcds-container
   gcds-grid --> gcds-container
-  gcds-phase-banner --> gcds-container
   style gcds-container fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

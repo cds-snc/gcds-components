@@ -18,7 +18,7 @@ export default {
     },
     alignment: {
       control: { type: 'select' },
-      options: ['right', 'left', 'center'],
+      options: ['right', 'left'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'right' },
@@ -66,13 +66,11 @@ const Template = args =>
   alignment="${args.alignment}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${
-    args.home
+  ${args.home
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
-  }
-  ${
-    args.default ||
+    }
+  ${args.default ||
     `<gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
   <gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
 
@@ -84,7 +82,7 @@ const Template = args =>
   </gcds-nav-group>
 
   <gcds-nav-link href="#">Contact us</gcds-nav-link>`
-  }
+    }
 </gcds-top-nav>
 
 <!-- React code -->
@@ -93,13 +91,11 @@ const Template = args =>
   alignment="${args.alignment}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${
-    args.home
+  ${args.home
       ? `<GcdsNavLink href="#home" slot="home">${args.home}</GcdsNavLink> `
       : null
-  }
-  ${
-    args.default ||
+    }
+  ${args.default ||
     `<GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
   <GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
 
@@ -111,7 +107,7 @@ const Template = args =>
   </GcdsNavGroup>
 
   <GcdsNavLink href="#">Contact us</GcdsNavLink>`
-  }
+    }
 </GcdsTopNav>
 `.replace(/\s\snull\n/g, '');
 
@@ -123,13 +119,11 @@ const TemplatePlayground = args =>
   alignment="${args.alignment}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${
-    args.home
+  ${args.home
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
-  }
-  ${
-    args.default ||
+    }
+  ${args.default ||
     `<gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-group  open-trigger="Nav group label" menu-label="Nav group label">
@@ -140,7 +134,7 @@ const TemplatePlayground = args =>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   `
-  }
+    }
 </gcds-top-nav>
 `.replace(/\s\snull\n/g, '');
 
@@ -166,15 +160,6 @@ export const Right = Template.bind({});
 Right.args = {
   label: 'Top navigation',
   alignment: 'right',
-  home: '',
-  lang: 'en',
-  default: '',
-};
-
-export const Center = Template.bind({});
-Center.args = {
-  label: 'Top navigation',
-  alignment: 'center',
   home: '',
   lang: 'en',
   default: '',
