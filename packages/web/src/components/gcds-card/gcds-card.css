@@ -42,6 +42,7 @@
     }
 
     .gcds-card__image {
+      display: block;
       width: 100%;
       margin: var(--gcds-card-image-margin);
     }
