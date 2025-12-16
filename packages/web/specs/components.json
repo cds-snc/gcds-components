@@ -889,28 +889,18 @@
         },
         {
           "name": "cardTitleTag",
-          "type": "\"a\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+          "type": "\"h3\" | \"h4\" | \"h5\" | \"h6\"",
           "complexType": {
-            "original": "'h3' | 'h4' | 'h5' | 'h6' | 'a'",
-            "resolved": "\"a\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+            "original": "'h3' | 'h4' | 'h5' | 'h6'",
+            "resolved": "\"h3\" | \"h4\" | \"h5\" | \"h6\"",
             "references": {}
           },
           "mutable": false,
           "attr": "card-title-tag",
           "reflectToAttr": false,
           "docs": "The card title tag property specifies the HTML heading element for the title.\nThis property does not modify the font size. It is used to assign the heading level\nin order to maintain heading hierarchy and accessibility for assistive technologies.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'a'"
-            }
-          ],
-          "default": "'a'",
+          "docsTags": [],
           "values": [
-            {
-              "value": "a",
-              "type": "string"
-            },
             {
               "value": "h3",
               "type": "string"
@@ -928,7 +918,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -4298,34 +4288,6 @@
               "type": "object"
             },
             {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "wordmarkVariant",
-          "type": "\"colour\" | \"white\"",
-          "complexType": {
-            "original": "'colour' | 'white'",
-            "resolved": "\"colour\" | \"white\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "wordmark-variant",
-          "reflectToAttr": false,
-          "docs": "GcdsSignature - The variant of the Government of Canada wordmark",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "colour",
-              "type": "string"
-            },
-            {
-              "value": "white",
               "type": "string"
             }
           ],

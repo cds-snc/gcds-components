@@ -56,7 +56,7 @@ export class GcdsCard {
    * This property does not modify the font size. It is used to assign the heading level
    * in order to maintain heading hierarchy and accessibility for assistive technologies.
    */
-  @Prop() cardTitleTag: 'h3' | 'h4' | 'h5' | 'h6' | 'a' = 'a';
+  @Prop() cardTitleTag?: 'h3' | 'h4' | 'h5' | 'h6';
 
   /**
    * The description attribute specifies the body of text that appears on the card
@@ -222,7 +222,7 @@ export class GcdsCard {
                 class="gcds-card__image"
               />
             )}
-            {Element != 'a' ? (
+            {Element ? (
               <Element class="gcds-card__title" {...taggedAttr}>
                 <gcds-link href={href}>{cardTitle}</gcds-link>
               </Element>
