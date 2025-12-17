@@ -88,12 +88,13 @@ jobs:
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
 
       - name: Setup Node
-        uses: actions/setup-node@dda4788290998366da86b6a4f497909644397bb2
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: 18
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install monorepo (web, react, angular, vue)
         run: npm install
@@ -102,11 +103,9 @@ jobs:
         run: npm run build
 
       - name: Publish ${{ matrix.name }}
-        uses: JS-DevTools/npm-publish@e6cc16d2d37d6c24b542679f7b14ca20ba56d40a
         id: publish
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ${{ matrix.dist }}
+        working-directory: ${{ matrix.dist }}
+        run: npm publish --ignore-scripts --access public
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
