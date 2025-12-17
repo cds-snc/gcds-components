@@ -1,0 +1,19 @@
+name: Issue opened
+
+on:
+  issues:
+    types: 
+      - opened
+
+permissions:
+  contents: read
+
+jobs:
+  notify-external:
+    uses: cds-snc/design-gc-conception/.github/workflows/issue-notify-external.yml@5da7ce886ccf3f9b02f755c11dcd2bc40e977db0
+    secrets: inherit
+    with:
+      issue_creator: ${{ github.event.issue.user.login }}
+      issue_title: ${{ github.event.issue.title }}
+      issue_url: ${{ github.event.issue.html_url }}
+      issue_number: ${{ github.event.issue.number }}
