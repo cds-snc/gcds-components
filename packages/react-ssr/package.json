@@ -6,6 +6,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cds-snc/gcds-components"
+  },
   "bugs": {
     "url": "https://github.com/cds-snc/gcds-components/issues"
   },
