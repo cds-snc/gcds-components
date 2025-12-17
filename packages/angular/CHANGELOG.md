@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.47.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.46.0...gcds-components-angular-v0.47.0-canary.0) (2025-12-17)
+
+
+### Patch
+
+* **gcds-components-angular:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @cdssnc/gcds-components bumped from ^0.46.0 to ^0.47.0-canary.0
+
 ## [0.46.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.45.0...gcds-components-angular-v0.46.0) (2025-12-16)
 
 
