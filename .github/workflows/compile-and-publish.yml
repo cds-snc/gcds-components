@@ -85,6 +85,7 @@ jobs:
           - name: "@cdssnc/gcds-components-react-ssr"
             package: "./packages/react-ssr"
             dist: "./packages/react-ssr"
+            tag: canary
 
     steps:
       - name: Git Checkout
@@ -105,7 +106,7 @@ jobs:
       - name: Publish ${{ matrix.name }}
         id: publish
         working-directory: ${{ matrix.dist }}
-        run: npm publish --ignore-scripts --access public
+        run: npm publish --ignore-scripts --access public --tag ${{ matrix.tag || 'latest' }}
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
