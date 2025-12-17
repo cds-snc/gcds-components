@@ -14,10 +14,6 @@
     "dist",
     "gcds.css"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cds-snc/gcds-components.git"
-  },
   "scripts": {
     "build": "npm run tsc",
     "pretest": "cd tests/app && npm i && cd ../../../web && npm run build",
@@ -29,6 +25,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cds-snc/gcds-components"
   },
   "dependencies": {
     "@cdssnc/gcds-components": "^0.46.0",
