@@ -1,48 +1,55 @@
 # Changelog
 
-## [0.45.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.44.0...gcds-components-v0.45.0) (2025-12-04)
-
+## [0.46.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.45.0...gcds-components-v0.46.0) (2025-12-16)
 
 ### :rocket: New Features
 
-* **file-uploader:** add new property `hideLabel` ([#1036](https://github.com/cds-snc/gcds-components/issues/1036)) ([5d37e43](https://github.com/cds-snc/gcds-components/commit/5d37e4369355fa01d9ebf6cbdea8835694ed2edc))
-* **gcds-checkboxes:** Add native HTML attributes and validation ([#1020](https://github.com/cds-snc/gcds-components/issues/1020)) ([c91936e](https://github.com/cds-snc/gcds-components/commit/c91936ebdbfdae443e5d3ad3a89471bd2683142f))
-* **gcds-date-input:** Add native HTML attributes and validation ([#1034](https://github.com/cds-snc/gcds-components/issues/1034)) ([f39c46d](https://github.com/cds-snc/gcds-components/commit/f39c46dcd21ded06af063679a859404ca438186f))
-* **gcds-file-uploader:** Add native HTML attributes and validation ([#1016](https://github.com/cds-snc/gcds-components/issues/1016)) ([0b867f9](https://github.com/cds-snc/gcds-components/commit/0b867f92dd3bd422cc702eea6e4f2e601be93a50))
-* **gcds-radios:** Add native HTML attributes and validation ([#1019](https://github.com/cds-snc/gcds-components/issues/1019)) ([c66ff4a](https://github.com/cds-snc/gcds-components/commit/c66ff4a0acc05053bbc7e3f6c844b55e0001379c))
-* **gcds-select:** Add native HTML attributes and validation ([#1013](https://github.com/cds-snc/gcds-components/issues/1013)) ([0a2a5f1](https://github.com/cds-snc/gcds-components/commit/0a2a5f1f113d48c7bfa89f388080cc9edfef7eda))
-* **input:** add `inputmode` HTML prop ([#1010](https://github.com/cds-snc/gcds-components/issues/1010)) ([442666b](https://github.com/cds-snc/gcds-components/commit/442666bb956a7e5f1e160024bfedad2344ae958f))
-* **input:** add new prop `suggestions` for datalist support ([#970](https://github.com/cds-snc/gcds-components/issues/970)) ([56dfbc3](https://github.com/cds-snc/gcds-components/commit/56dfbc3dcd8895faee57d977e39d2360a8567a6d))
-* **select:** add new property `hideLabel` ([#1035](https://github.com/cds-snc/gcds-components/issues/1035)) ([d5d96ff](https://github.com/cds-snc/gcds-components/commit/d5d96ffdc14c617dc7cf63000af8af78201c8c39))
-
-
-### :bug: :wrench: Bug Fixes
-
-* **gcds-date-input:** programmatically clear/reset value ([#1037](https://github.com/cds-snc/gcds-components/issues/1037)) ([3e51c55](https://github.com/cds-snc/gcds-components/commit/3e51c55fa391304a08c50591db207174d9b33202))
-* **gcds-label:** align with WCAG technique C7 when `hide-label` is true ([#1039](https://github.com/cds-snc/gcds-components/issues/1039)) ([03d3957](https://github.com/cds-snc/gcds-components/commit/03d395764274009101d82f2f9202dd8b53ce22c1))
-* **gcds-top-nav/gcds-side-nav:** Issues with mobile menu closing ([#1029](https://github.com/cds-snc/gcds-components/issues/1029)) ([a18305a](https://github.com/cds-snc/gcds-components/commit/a18305a407d21510987fcc900068825d6e142671))
-
-## [0.44.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.1...gcds-components-v0.44.0) (2025-11-20)
-
-
-### :bug: :wrench: Bug Fixes
-
-* compact date-input validation ([#1006](https://github.com/cds-snc/gcds-components/issues/1006)) ([1069e08](https://github.com/cds-snc/gcds-components/commit/1069e08a04270c87d954d00f3a19a2e0c58ae94e))
-* compact date-input validation error message ([1069e08](https://github.com/cds-snc/gcds-components/commit/1069e08a04270c87d954d00f3a19a2e0c58ae94e))
-* **gcds-date-input:** Assign value at all times ([#989](https://github.com/cds-snc/gcds-components/issues/989)) ([cb93c79](https://github.com/cds-snc/gcds-components/commit/cb93c79938ba6ed487f6605122f7e3f2f03ab525))
-
-## [0.43.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.0...gcds-components-v0.43.1) (2025-10-06)
-
-
-### :bug: :wrench: Bug Fixes
-
-* **gcds-radios:** Fix focus when radios has an error ([#968](https://github.com/cds-snc/gcds-components/issues/968)) ([5fcce47](https://github.com/cds-snc/gcds-components/commit/5fcce473b4cde8237866f1dbe6408f2b707a34de))
-
+- **gcds-card:** Add rel and target attributes ([#1055](https://github.com/cds-snc/gcds-components/issues/1055)) ([71a5e7a](https://github.com/cds-snc/gcds-components/commit/71a5e7adf498a626a957e64b02e6fb02445819bf))
+- **gcds-checkboxes:** New attributes to hide the label or legend ([#1048](https://github.com/cds-snc/gcds-components/issues/1048)) ([8a82d39](https://github.com/cds-snc/gcds-components/commit/8a82d39f18787abdd28a433a82348b9cacaa9b29))
+- **gcds-radios:** Add hide-legend attribute ([#1052](https://github.com/cds-snc/gcds-components/issues/1052)) ([cc01614](https://github.com/cds-snc/gcds-components/commit/cc01614ae802dc95e266535bf082079fe9c626e0))
 
 ### :art: Styles
 
-* **gcds-topic-menu:** fix topic menu link background on hover ([#965](https://github.com/cds-snc/gcds-components/issues/965)) ([cb5b29b](https://github.com/cds-snc/gcds-components/commit/cb5b29bc25c1afdecbcca8d6b47bff4239010873))
-* **gcds-input + gcds-textarea:** add mobile font size to input & textarea ([#975](https://github.com/cds-snc/gcds-components/issues/975)) ([322944b](https://github.com/cds-snc/gcds-components/commit/322944b6db3be85f55eb6bf5b5bb5c2daefca580))
+- **gcds-card:** Improve img alt text and card title alignment ([#1058](https://github.com/cds-snc/gcds-components/issues/1058)) ([f78db5d](https://github.com/cds-snc/gcds-components/commit/f78db5d1a2ecc172a2fa1c05532672d4f9351022))
+
+## [0.45.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.44.0...gcds-components-v0.45.0) (2025-12-04)
+
+### :rocket: New Features
+
+- **file-uploader:** add new property `hideLabel` ([#1036](https://github.com/cds-snc/gcds-components/issues/1036)) ([5d37e43](https://github.com/cds-snc/gcds-components/commit/5d37e4369355fa01d9ebf6cbdea8835694ed2edc))
+- **gcds-checkboxes:** Add native HTML attributes and validation ([#1020](https://github.com/cds-snc/gcds-components/issues/1020)) ([c91936e](https://github.com/cds-snc/gcds-components/commit/c91936ebdbfdae443e5d3ad3a89471bd2683142f))
+- **gcds-date-input:** Add native HTML attributes and validation ([#1034](https://github.com/cds-snc/gcds-components/issues/1034)) ([f39c46d](https://github.com/cds-snc/gcds-components/commit/f39c46dcd21ded06af063679a859404ca438186f))
+- **gcds-file-uploader:** Add native HTML attributes and validation ([#1016](https://github.com/cds-snc/gcds-components/issues/1016)) ([0b867f9](https://github.com/cds-snc/gcds-components/commit/0b867f92dd3bd422cc702eea6e4f2e601be93a50))
+- **gcds-radios:** Add native HTML attributes and validation ([#1019](https://github.com/cds-snc/gcds-components/issues/1019)) ([c66ff4a](https://github.com/cds-snc/gcds-components/commit/c66ff4a0acc05053bbc7e3f6c844b55e0001379c))
+- **gcds-select:** Add native HTML attributes and validation ([#1013](https://github.com/cds-snc/gcds-components/issues/1013)) ([0a2a5f1](https://github.com/cds-snc/gcds-components/commit/0a2a5f1f113d48c7bfa89f388080cc9edfef7eda))
+- **input:** add `inputmode` HTML prop ([#1010](https://github.com/cds-snc/gcds-components/issues/1010)) ([442666b](https://github.com/cds-snc/gcds-components/commit/442666bb956a7e5f1e160024bfedad2344ae958f))
+- **input:** add new prop `suggestions` for datalist support ([#970](https://github.com/cds-snc/gcds-components/issues/970)) ([56dfbc3](https://github.com/cds-snc/gcds-components/commit/56dfbc3dcd8895faee57d977e39d2360a8567a6d))
+- **select:** add new property `hideLabel` ([#1035](https://github.com/cds-snc/gcds-components/issues/1035)) ([d5d96ff](https://github.com/cds-snc/gcds-components/commit/d5d96ffdc14c617dc7cf63000af8af78201c8c39))
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-date-input:** programmatically clear/reset value ([#1037](https://github.com/cds-snc/gcds-components/issues/1037)) ([3e51c55](https://github.com/cds-snc/gcds-components/commit/3e51c55fa391304a08c50591db207174d9b33202))
+- **gcds-label:** align with WCAG technique C7 when `hide-label` is true ([#1039](https://github.com/cds-snc/gcds-components/issues/1039)) ([03d3957](https://github.com/cds-snc/gcds-components/commit/03d395764274009101d82f2f9202dd8b53ce22c1))
+- **gcds-top-nav/gcds-side-nav:** Issues with mobile menu closing ([#1029](https://github.com/cds-snc/gcds-components/issues/1029)) ([a18305a](https://github.com/cds-snc/gcds-components/commit/a18305a407d21510987fcc900068825d6e142671))
+
+## [0.44.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.1...gcds-components-v0.44.0) (2025-11-20)
+
+### :bug: :wrench: Bug Fixes
+
+- compact date-input validation ([#1006](https://github.com/cds-snc/gcds-components/issues/1006)) ([1069e08](https://github.com/cds-snc/gcds-components/commit/1069e08a04270c87d954d00f3a19a2e0c58ae94e))
+- compact date-input validation error message ([1069e08](https://github.com/cds-snc/gcds-components/commit/1069e08a04270c87d954d00f3a19a2e0c58ae94e))
+- **gcds-date-input:** Assign value at all times ([#989](https://github.com/cds-snc/gcds-components/issues/989)) ([cb93c79](https://github.com/cds-snc/gcds-components/commit/cb93c79938ba6ed487f6605122f7e3f2f03ab525))
+
+## [0.43.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.0...gcds-components-v0.43.1) (2025-10-06)
+
+### :bug: :wrench: Bug Fixes
+
+- **gcds-radios:** Fix focus when radios has an error ([#968](https://github.com/cds-snc/gcds-components/issues/968)) ([5fcce47](https://github.com/cds-snc/gcds-components/commit/5fcce473b4cde8237866f1dbe6408f2b707a34de))
+
+### :art: Styles
+
+- **gcds-topic-menu:** fix topic menu link background on hover ([#965](https://github.com/cds-snc/gcds-components/issues/965)) ([cb5b29b](https://github.com/cds-snc/gcds-components/commit/cb5b29bc25c1afdecbcca8d6b47bff4239010873))
+- **gcds-input + gcds-textarea:** add mobile font size to input & textarea ([#975](https://github.com/cds-snc/gcds-components/issues/975)) ([322944b](https://github.com/cds-snc/gcds-components/commit/322944b6db3be85f55eb6bf5b5bb5c2daefca580))
 
 ## [0.43.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.42.1...gcds-components-v0.43.0) (2025-10-01)
 
