@@ -20,6 +20,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cds-snc/gcds-components"
+  },
   "scripts": {
     "build": "stencil build --docs",
     "postbuild": "node ./scripts/postbuild.js",
