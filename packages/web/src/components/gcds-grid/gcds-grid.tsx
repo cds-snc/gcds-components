@@ -298,7 +298,10 @@ export class GcdsGrid {
     return (
       <Host>
         {container ? (
-          <gcds-container size={container} centered={centered}>
+          <gcds-container
+            size={container}
+            align={centered ? 'center' : undefined}
+          >
             <Tag class={classNames} style={handleGridStyles()}>
               <slot />
             </Tag>
