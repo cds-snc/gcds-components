@@ -112,7 +112,7 @@
       </gcds-breadcrumbs> -->
     </gcds-header>
 
-    <gcds-container size="xl" main-container centered tag="main">
+    <gcds-container layout="page" tag="main">
       <gcds-heading tag="h1">GC Design System</gcds-heading>
 
       <hr class="my-550" />
@@ -253,8 +253,22 @@
         </p>
       </gcds-container>
       <br />
-      <gcds-container size="lg" centered border padding="400">
+      <gcds-container size="lg" align="start" border padding="400">
+        <p>
+          I'm a large container, aligned at the start of my parent container. My
+          max size is 64rem (1024px).
+        </p>
+      </gcds-container>
+      <br />
+      <gcds-container size="lg" align="center" border padding="400">
         <p>I'm a large, centred container. My max size is 64rem (1024px).</p>
+      </gcds-container>
+      <br />
+      <gcds-container size="lg" align="end" border padding="400">
+        <p>
+          I'm a large container, aligned at the end of my parent container. My
+          max size is 64rem (1024px).
+        </p>
       </gcds-container>
       <br />
       <gcds-container size="xs" border padding="400">
