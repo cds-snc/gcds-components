@@ -89,7 +89,7 @@
     "lit-html": "^2.6.1",
     "postcss-nested": "^6.0.0",
     "prettier": "^3.5.3",
-    "puppeteer": "^24.9.0",
+    "puppeteer": "^24.10.0",
     "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.43.5",
     "serve": "^14.2.4",
