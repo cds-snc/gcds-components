@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.46.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.45.0...gcds-components-vue-v0.46.0) (2025-12-16)
+
+
+### :rocket: New Features
+
+* **gcds-card:** Add rel and target attributes ([#1055](https://github.com/cds-snc/gcds-components/issues/1055)) ([71a5e7a](https://github.com/cds-snc/gcds-components/commit/71a5e7adf498a626a957e64b02e6fb02445819bf))
+* **gcds-checkboxes:** New attributes to hide the label or legend ([#1048](https://github.com/cds-snc/gcds-components/issues/1048)) ([8a82d39](https://github.com/cds-snc/gcds-components/commit/8a82d39f18787abdd28a433a82348b9cacaa9b29))
+* **gcds-radios:** Add hide-legend attribute ([#1052](https://github.com/cds-snc/gcds-components/issues/1052)) ([cc01614](https://github.com/cds-snc/gcds-components/commit/cc01614ae802dc95e266535bf082079fe9c626e0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.45.0 to ^0.46.0
+
 ## [0.45.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.44.0...gcds-components-vue-v0.45.0) (2025-12-04)
 
 

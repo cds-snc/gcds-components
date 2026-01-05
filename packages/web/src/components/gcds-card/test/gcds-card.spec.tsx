@@ -275,6 +275,50 @@ describe('gcds-card', () => {
     `);
   });
 
+  it('renders w/ rel', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        card-title="Card"
+        href="#card"
+        rel="noopener noreferrer"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" rel="noopener noreferrer">
+      <mock:shadow-root>
+        <div class="gcds-card">
+          <gcds-link class="gcds-card__title" href="#card" rel="noopener noreferrer">
+            Card
+          </gcds-link>
+        </div>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
+
+  it('renders w/ target', async () => {
+    const page = await newSpecPage({
+      components: [GcdsCard],
+      html: `<gcds-card
+        card-title="Card"
+        href="#card"
+        target="_blank"
+      ></gcds-card>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <gcds-card card-title="Card" href="#card" target="_blank">
+      <mock:shadow-root>
+        <div class="gcds-card">
+          <gcds-link class="gcds-card__title" href="#card" target="_blank">
+            Card
+          </gcds-link>
+        </div>
+      </mock:shadow-root>
+    </gcds-card
+    `);
+  });
+
   it('does not render - no href attribute', async () => {
     const page = await newSpecPage({
       components: [GcdsCard],

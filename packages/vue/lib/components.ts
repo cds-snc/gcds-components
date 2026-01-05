@@ -107,6 +107,8 @@ export const GcdsCard: StencilVueComponent<JSX.GcdsCard> = /*@__PURE__*/ defineC
   'badge',
   'imgSrc',
   'imgAlt',
+  'rel',
+  'target',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'

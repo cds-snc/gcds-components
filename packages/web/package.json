@@ -1,6 +1,6 @@
 {
   "name": "@cdssnc/gcds-components",
-  "version": "0.45.0",
+  "version": "0.46.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Web components for the GCDS",
   "homepage": "https://design-system.alpha.canada.ca/",
@@ -19,6 +19,10 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cds-snc/gcds-components"
   },
   "scripts": {
     "build": "stencil build --docs",

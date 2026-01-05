@@ -88,6 +88,16 @@ export class GcdsCard {
   @Prop({ reflect: true }) imgAlt: string;
 
   /**
+   * The rel attribute specifies the relationship between the current document and the linked document
+   */
+  @Prop() rel?: string | undefined;
+
+  /**
+   * The target attribute specifies where to open the linked document
+   */
+  @Prop() target?: string;
+
+  /**
    * Language of rendered component
    */
   @State() lang: string;
@@ -184,6 +194,8 @@ export class GcdsCard {
       badge,
       imgSrc,
       imgAlt,
+      rel,
+      target,
       renderDescription,
       lang,
       errors,
@@ -227,7 +239,13 @@ export class GcdsCard {
                 <gcds-link href={href}>{cardTitle}</gcds-link>
               </Element>
             ) : (
-              <gcds-link href={href} class="gcds-card__title" {...taggedAttr}>
+              <gcds-link
+                href={href}
+                class="gcds-card__title"
+                rel={rel}
+                target={target}
+                {...taggedAttr}
+              >
                 {cardTitle}
               </gcds-link>
             )}

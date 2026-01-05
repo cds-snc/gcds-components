@@ -2,72 +2,84 @@
 
 # Changelog
 
+## [0.46.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.45.0...gcds-components-v0.46.0) (2025-12-16)
+
+### :rocket: New Features
+
+- **gcds-card:** Add rel and target attributes ([#1055](https://github.com/cds-snc/gcds-components/issues/1055)) ([71a5e7a](https://github.com/cds-snc/gcds-components/commit/71a5e7adf498a626a957e64b02e6fb02445819bf))
+- **gcds-checkboxes:** New attributes to hide the label or legend ([#1048](https://github.com/cds-snc/gcds-components/issues/1048)) ([8a82d39](https://github.com/cds-snc/gcds-components/commit/8a82d39f18787abdd28a433a82348b9cacaa9b29))
+- **gcds-radios:** Add hide-legend attribute ([#1052](https://github.com/cds-snc/gcds-components/issues/1052)) ([cc01614](https://github.com/cds-snc/gcds-components/commit/cc01614ae802dc95e266535bf082079fe9c626e0))
+
+### :art: Styles
+
+- **gcds-card:** Improve img alt text and card title alignment ([#1058](https://github.com/cds-snc/gcds-components/issues/1058)) ([f78db5d](https://github.com/cds-snc/gcds-components/commit/f78db5d1a2ecc172a2fa1c05532672d4f9351022))
+
 ## [0.45.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.44.0...gcds-components-v0.45.0)
-  
+
 Released on: 2025-12-09
 
 ### :rocket: New Features
 
-* **file-uploader:** add new property `hideLabel` ([#1036](https://github.com/cds-snc/gcds-components/issues/1036)) ([5d37e43](https://github.com/cds-snc/gcds-components/commit/5d37e4369355fa01d9ebf6cbdea8835694ed2edc))
-* **gcds-checkboxes:** Add native HTML attributes and validation ([#1020](https://github.com/cds-snc/gcds-components/issues/1020)) ([c91936e](https://github.com/cds-snc/gcds-components/commit/c91936ebdbfdae443e5d3ad3a89471bd2683142f))
-* **gcds-date-input:** Add native HTML attributes and validation ([#1034](https://github.com/cds-snc/gcds-components/issues/1034)) ([f39c46d](https://github.com/cds-snc/gcds-components/commit/f39c46dcd21ded06af063679a859404ca438186f))
-* **gcds-file-uploader:** Add native HTML attributes and validation ([#1016](https://github.com/cds-snc/gcds-components/issues/1016)) ([0b867f9](https://github.com/cds-snc/gcds-components/commit/0b867f92dd3bd422cc702eea6e4f2e601be93a50))
-* **gcds-radios:** Add native HTML attributes and validation ([#1019](https://github.com/cds-snc/gcds-components/issues/1019)) ([c66ff4a](https://github.com/cds-snc/gcds-components/commit/c66ff4a0acc05053bbc7e3f6c844b55e0001379c))
-* **gcds-select:** Add native HTML attributes and validation ([#1013](https://github.com/cds-snc/gcds-components/issues/1013)) ([0a2a5f1](https://github.com/cds-snc/gcds-components/commit/0a2a5f1f113d48c7bfa89f388080cc9edfef7eda))
-* **input:** add `inputmode` HTML prop ([#1010](https://github.com/cds-snc/gcds-components/issues/1010)) ([442666b](https://github.com/cds-snc/gcds-components/commit/442666bb956a7e5f1e160024bfedad2344ae958f))
-* **input:** add new prop `suggestions` for datalist support ([#970](https://github.com/cds-snc/gcds-components/issues/970)) ([56dfbc3](https://github.com/cds-snc/gcds-components/commit/56dfbc3dcd8895faee57d977e39d2360a8567a6d))
-* **select:** add new property `hideLabel` ([#1035](https://github.com/cds-snc/gcds-components/issues/1035)) ([d5d96ff](https://github.com/cds-snc/gcds-components/commit/d5d96ffdc14c617dc7cf63000af8af78201c8c39))
+- **file-uploader:** add new property `hideLabel` ([#1036](https://github.com/cds-snc/gcds-components/issues/1036)) ([5d37e43](https://github.com/cds-snc/gcds-components/commit/5d37e4369355fa01d9ebf6cbdea8835694ed2edc))
+- **gcds-checkboxes:** Add native HTML attributes and validation ([#1020](https://github.com/cds-snc/gcds-components/issues/1020)) ([c91936e](https://github.com/cds-snc/gcds-components/commit/c91936ebdbfdae443e5d3ad3a89471bd2683142f))
+- **gcds-date-input:** Add native HTML attributes and validation ([#1034](https://github.com/cds-snc/gcds-components/issues/1034)) ([f39c46d](https://github.com/cds-snc/gcds-components/commit/f39c46dcd21ded06af063679a859404ca438186f))
+- **gcds-file-uploader:** Add native HTML attributes and validation ([#1016](https://github.com/cds-snc/gcds-components/issues/1016)) ([0b867f9](https://github.com/cds-snc/gcds-components/commit/0b867f92dd3bd422cc702eea6e4f2e601be93a50))
+- **gcds-radios:** Add native HTML attributes and validation ([#1019](https://github.com/cds-snc/gcds-components/issues/1019)) ([c66ff4a](https://github.com/cds-snc/gcds-components/commit/c66ff4a0acc05053bbc7e3f6c844b55e0001379c))
+- **gcds-select:** Add native HTML attributes and validation ([#1013](https://github.com/cds-snc/gcds-components/issues/1013)) ([0a2a5f1](https://github.com/cds-snc/gcds-components/commit/0a2a5f1f113d48c7bfa89f388080cc9edfef7eda))
+- **input:** add `inputmode` HTML prop ([#1010](https://github.com/cds-snc/gcds-components/issues/1010)) ([442666b](https://github.com/cds-snc/gcds-components/commit/442666bb956a7e5f1e160024bfedad2344ae958f))
+- **input:** add new prop `suggestions` for datalist support ([#970](https://github.com/cds-snc/gcds-components/issues/970)) ([56dfbc3](https://github.com/cds-snc/gcds-components/commit/56dfbc3dcd8895faee57d977e39d2360a8567a6d))
+- **select:** add new property `hideLabel` ([#1035](https://github.com/cds-snc/gcds-components/issues/1035)) ([d5d96ff](https://github.com/cds-snc/gcds-components/commit/d5d96ffdc14c617dc7cf63000af8af78201c8c39))
 
 ### New attributes (`gcds-input`)
 
-| Property               | Attribute       | Description   | Type   | Default     |
-| ---------------------- | ---------- | ------------- | ----------- | ----------- |
-| `inputmode`            | `inputmode`     |                                                                                                                                                                         | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url"` | `null`      |
-| `suggestions`          | `suggestions`   | Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.                     | `SuggestionOption[] \| string`                                                        | `undefined` |
+| Property      | Attribute     | Description                                                                                                                                         | Type                                                                                  | Default     |
+| ------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------- |
+| `inputmode`   | `inputmode`   |                                                                                                                                                     | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url"` | `null`      |
+| `suggestions` | `suggestions` | Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from. | `SuggestionOption[] \| string`                                                        | `undefined` |
 
 ### New attributes (`gcds-checkboxes`)
 
-| Property               | Attribute       | Description   | Type   | Default     |
-| ---------------------- | ---------- | ------------- | ----------- | ----------- |
-| `autofocus`            | `autofocus`     | If true, the checkbox will be focused on component render                                                                   | `boolean`                                           | `undefined` |
-| `form`                 | `form`          | The ID of the form that the checkboxes belong to.                                                                            | `string`                                            | `undefined` |
-| `validity`             | `validity`      | Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| Property    | Attribute   | Description                                                                                                                  | Type            | Default     |
+| ----------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------- |
+| `autofocus` | `autofocus` | If true, the checkbox will be focused on component render                                                                    | `boolean`       | `undefined` |
+| `form`      | `form`      | The ID of the form that the checkboxes belong to.                                                                            | `string`        | `undefined` |
+| `validity`  | `validity`  | Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. | `ValidityState` | `undefined` |
 
 ### New attributes (`gcds-date-input`)
 
-| Property               | Attribute       | Description   | Type   | Default     |
-| ---------------------- | ---------- | ------------- | ----------- | ----------- |
-| `autofocus`            | `autofocus`     | If true, the date-input will be focused on component render                                                                   | `boolean`                                           | `undefined` |
-| `form`                 | `form`          | The ID of the form that the date-input belongs to.                                                                            | `string`                                            | `undefined` |
-| `max`                 | `max`           | The maximum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM                                                   | `string`                                            | `undefined` |
-| `min`                 | `min`           | The minimum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM                                                   | `string`                                            | `undefined` |
-| `validity`             | `validity`      | Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| Property    | Attribute   | Description                                                                                                                  | Type            | Default     |
+| ----------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------- |
+| `autofocus` | `autofocus` | If true, the date-input will be focused on component render                                                                  | `boolean`       | `undefined` |
+| `form`      | `form`      | The ID of the form that the date-input belongs to.                                                                           | `string`        | `undefined` |
+| `max`       | `max`       | The maximum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM                                         | `string`        | `undefined` |
+| `min`       | `min`       | The minimum date that the date-input field can accept. Format: YYYY-MM-DD or YYYY-MM                                         | `string`        | `undefined` |
+| `validity`  | `validity`  | Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in. | `ValidityState` | `undefined` |
 
 ### New attributes (`gcds-file-uploader`)
 
-| Property               | Attribute       | Description   | Type   | Default     |
-| ---------------------- | ---------- | ------------- | ----------- | ----------- |
-| `autofocus`            | `autofocus`     | If true, the file-uploader will be focused on component render                                                                   | `boolean`                                           | `undefined` |
-| `form`                 | `form`          | The ID of the form that the file-uploader belongs to.                                                                            | `string`                                            | `undefined` |
-| `hideLabel`               | `hide-label`    | Specifies if the label is hidden or not.                                                                                        | `boolean`                                                                 | `false`     |
-| `validity`             | `validity`      | Read-only property of the file-uploader, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| Property    | Attribute    | Description                                                                                                                     | Type            | Default     |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------- |
+| `autofocus` | `autofocus`  | If true, the file-uploader will be focused on component render                                                                  | `boolean`       | `undefined` |
+| `form`      | `form`       | The ID of the form that the file-uploader belongs to.                                                                           | `string`        | `undefined` |
+| `hideLabel` | `hide-label` | Specifies if the label is hidden or not.                                                                                        | `boolean`       | `false`     |
+| `validity`  | `validity`   | Read-only property of the file-uploader, returns a ValidityState object that represents the validity states this element is in. | `ValidityState` | `undefined` |
 
 ### New attributes (`gcds-select`)
 
-| Property               | Attribute       | Description   | Type   | Default     |
-| ---------------------- | ---------- | ------------- | ----------- | ----------- |
-| `autofocus`            | `autofocus`     | If true, the select will be focused on component render                                                                                                                  | `boolean`                                                          | `undefined` |
-| `form`                 | `form`          | The ID of the form that the select field belongs to.                                                                                                                     | `string`                                                           | `undefined` |
-| `hideLabel`             | `hide-label`    | Specifies if the label is hidden or not.                                                                                 | `boolean`                                           | `false`     |
-| `validity`             | `validity`      | Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.                                                 | `ValidityState`                                                    | `undefined` |
+| Property    | Attribute    | Description                                                                                                              | Type            | Default     |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------ | --------------- | ----------- |
+| `autofocus` | `autofocus`  | If true, the select will be focused on component render                                                                  | `boolean`       | `undefined` |
+| `form`      | `form`       | The ID of the form that the select field belongs to.                                                                     | `string`        | `undefined` |
+| `hideLabel` | `hide-label` | Specifies if the label is hidden or not.                                                                                 | `boolean`       | `false`     |
+| `validity`  | `validity`   | Read-only property of the select, returns a ValidityState object that represents the validity states this element is in. | `ValidityState` | `undefined` |
 
 ### New attributes (`gcds-radios`)
 
-| Property               | Attribute       | Description   | Type   | Default     |
-| ---------------------- | ---------- | ------------- | ----------- | ----------- |
-| `autofocus`            | `autofocus`     | If true, the radios will be focused on component render                                                                                                                  | `boolean`                                                          | `undefined` |
-| `form`                 | `form`          | The ID of the form that the radios field belongs to.                                                                                                                     | `string`                                                           | `undefined` |
-| `validity`             | `validity`      | Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.                                                 | `ValidityState`                                                    | `undefined` |
+| Property    | Attribute   | Description                                                                                                              | Type            | Default     |
+| ----------- | ----------- | ------------------------------------------------------------------------------------------------------------------------ | --------------- | ----------- |
+| `autofocus` | `autofocus` | If true, the radios will be focused on component render                                                                  | `boolean`       | `undefined` |
+| `form`      | `form`      | The ID of the form that the radios field belongs to.                                                                     | `string`        | `undefined` |
+| `validity`  | `validity`  | Read-only property of the select, returns a ValidityState object that represents the validity states this element is in. | `ValidityState` | `undefined` |
 
 ### Form methods
 
@@ -75,9 +87,9 @@ All form components now have access to the `checkValidity()` method.
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-date-input:** programmatically clear/reset value ([#1037](https://github.com/cds-snc/gcds-components/issues/1037)) ([3e51c55](https://github.com/cds-snc/gcds-components/commit/3e51c55fa391304a08c50591db207174d9b33202))
-* **gcds-label:** align with WCAG technique C7 when `hide-label` is true ([#1039](https://github.com/cds-snc/gcds-components/issues/1039)) ([03d3957](https://github.com/cds-snc/gcds-components/commit/03d395764274009101d82f2f9202dd8b53ce22c1))
-* **gcds-top-nav/gcds-side-nav:** Issues with mobile menu closing ([#1029](https://github.com/cds-snc/gcds-components/issues/1029)) ([a18305a](https://github.com/cds-snc/gcds-components/commit/a18305a407d21510987fcc900068825d6e142671))
+- **gcds-date-input:** programmatically clear/reset value ([#1037](https://github.com/cds-snc/gcds-components/issues/1037)) ([3e51c55](https://github.com/cds-snc/gcds-components/commit/3e51c55fa391304a08c50591db207174d9b33202))
+- **gcds-label:** align with WCAG technique C7 when `hide-label` is true ([#1039](https://github.com/cds-snc/gcds-components/issues/1039)) ([03d3957](https://github.com/cds-snc/gcds-components/commit/03d395764274009101d82f2f9202dd8b53ce22c1))
+- **gcds-top-nav/gcds-side-nav:** Issues with mobile menu closing ([#1029](https://github.com/cds-snc/gcds-components/issues/1029)) ([a18305a](https://github.com/cds-snc/gcds-components/commit/a18305a407d21510987fcc900068825d6e142671))
 
 ## [0.44.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.1...gcds-components-v0.44.0)
 
@@ -85,12 +97,12 @@ Released on: 2025-11-25
 
 ### :rocket: New Features
 
-* **angular:** Update angular peer dependencies to support v20 ([#979](https://github.com/cds-snc/gcds-components/issues/979)) ([f215d8f](https://github.com/cds-snc/gcds-components/commit/f215d8fdde13747aa2ad5b86bba09a32d9cd1d05))
+- **angular:** Update angular peer dependencies to support v20 ([#979](https://github.com/cds-snc/gcds-components/issues/979)) ([f215d8f](https://github.com/cds-snc/gcds-components/commit/f215d8fdde13747aa2ad5b86bba09a32d9cd1d05))
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-date-input:** `format="compact"` validation error message ([#1006](https://github.com/cds-snc/gcds-components/issues/1006)) ([1069e08](https://github.com/cds-snc/gcds-components/commit/1069e08a04270c87d954d00f3a19a2e0c58ae94e))
-* **gcds-date-input:** Assign value at all times ([#989](https://github.com/cds-snc/gcds-components/issues/989)) ([cb93c79](https://github.com/cds-snc/gcds-components/commit/cb93c79938ba6ed487f6605122f7e3f2f03ab525))
+- **gcds-date-input:** `format="compact"` validation error message ([#1006](https://github.com/cds-snc/gcds-components/issues/1006)) ([1069e08](https://github.com/cds-snc/gcds-components/commit/1069e08a04270c87d954d00f3a19a2e0c58ae94e))
+- **gcds-date-input:** Assign value at all times ([#989](https://github.com/cds-snc/gcds-components/issues/989)) ([cb93c79](https://github.com/cds-snc/gcds-components/commit/cb93c79938ba6ed487f6605122f7e3f2f03ab525))
 
 ## [0.43.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.43.0...gcds-components-v0.43.1)
 
@@ -252,16 +264,13 @@ Released on: 2025-07-02
   **Changes**
 
   Vue package:
-
   - Configure componentModels in output to ensure v-model works as it should
 
   Angular package
-
   - Fix two-way binding issue. Form components should now be able to correctly use ngModel.
   - Fix routerLink issue. Navigation components should now be able to navigate using Angular's built in router.
 
   React package
-
   - React components are now functional components instead of class components.
 
 - Added support for data binding and `routerLink` in Angular ([#880](https://github.com/cds-snc/gcds-components/issues/880)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
@@ -1280,7 +1289,6 @@ Released on: 2024-02-22
 ### :rocket: New features
 
 - Grid functionality
-
   - Ability to add individually sized grid columns to grids as well as allowing to set equal height rows.
 
 - https://github.com/cds-snc/gcds-components/pull/358 - [34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0) - Add light variant to link component
@@ -1385,7 +1393,6 @@ Released on: 2024-02-22
 ### :rotating_light: Breaking changes
 
 - Site menu component (`gcds-site-menu`)
-
   - `gcds-site-menu` has been removed from the component library, replaced with `gcds-top-nav`
 
 - https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - `sub-heading` prop has been removed from the `gcds-error-summary` component
@@ -2230,7 +2237,6 @@ Version publiée le : 2024-02-22
 ### :rocket: Nouvelles fonctionnalités
 
 - Fonctionnalité pour le composant grille
-
   - Possibilité d’ajouter des colonnes de grille dont la taille est individuellement définie et de définir des lignes de hauteur égale.
 
 - https://github.com/cds-snc/gcds-components/pull/358 - [34b392d](https://github.com/cds-snc/gcds-components/commit/34b392d39f2ca0158fd608e46dcfc0509bbc69c0) — Ajout de la variante Light au composant lien
@@ -2335,7 +2341,6 @@ Version publiée le : 2024-02-22
 ### :rotating_light: Changements de ruptures de code
 
 - Composant menu de navigation globale (`gcds-site-menu`)
-
   - Composant `gcds-site-menu` retiré de la bibliothèque de composant et remplacé par `gcds-top-nav`
 
 - https://github.com/cds-snc/gcds-components/pull/203 - [2f0915e](https://github.com/cds-snc/gcds-components/commit/2f0915ecb7d9426062b423e27529ee38667cc1b9) - Propriété `sub-heading` (sous-titre) supprimée du composant `gcds-error-summary`
