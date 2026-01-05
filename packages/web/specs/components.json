@@ -10086,23 +10086,21 @@
         },
         {
           "name": "suggested",
-          "type": "string[]",
+          "type": "string | string[]",
           "complexType": {
-            "original": "Array<string>",
-            "resolved": "string[]",
-            "references": {
-              "Array": {
-                "location": "global",
-                "id": "global::Array"
-              }
-            }
+            "original": "string[] | string",
+            "resolved": "string | string[]",
+            "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "suggested",
           "reflectToAttr": false,
           "docs": "Set a list of predefined search terms",
           "docsTags": [],
           "values": [
+            {
+              "type": "string"
+            },
             {
               "type": "string[]"
             }
