@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   notify-external:
-    uses: cds-snc/design-gc-conception/.github/workflows/issue-notify-external.yml@5da7ce886ccf3f9b02f755c11dcd2bc40e977db0
+    uses: cds-snc/design-gc-conception/.github/workflows/issue-notify-external.yml@588544a40798b8a6202b435eeaa03bbcd8fc61d3
     secrets: inherit
     with:
       issue_creator: ${{ github.event.issue.user.login }}
