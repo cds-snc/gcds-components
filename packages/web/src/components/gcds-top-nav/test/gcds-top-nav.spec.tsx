@@ -17,8 +17,8 @@ describe('gcds-top-nav', () => {
               <ul class="gcds-top-nav__container">
                 <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en">
                   <slot name="home"></slot>
-                  <li class="nav-container__list nav-list--left">
-                    <ul class="nav-container__list nav-list--left">
+                  <li class="nav-container__list nav-list--start">
+                    <ul class="nav-container__list nav-list--start">
                       <slot></slot>
                     </ul>
                   </li>
@@ -43,8 +43,8 @@ describe('gcds-top-nav', () => {
               <ul class="gcds-top-nav__container">
                 <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" menuLabel="Menu" closeTrigger="Fermer" openTrigger="Menu" lang="fr">
                   <slot name="home"></slot>
-                  <li class="nav-container__list nav-list--left">
-                    <ul class="nav-container__list nav-list--left">
+                  <li class="nav-container__list nav-list--start">
+                    <ul class="nav-container__list nav-list--start">
                       <slot></slot>
                     </ul>
                   </li>
@@ -56,21 +56,21 @@ describe('gcds-top-nav', () => {
       </gcds-top-nav>
     `);
   });
-  it('renders w/ alignment="right"', async () => {
+  it('renders w/ align="end"', async () => {
     const page = await newSpecPage({
       components: [GcdsTopNav],
-      html: `<gcds-top-nav label="top-nav" alignment="right"></gcds-top-nav>`,
+      html: `<gcds-top-nav label="top-nav" align="end"></gcds-top-nav>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-top-nav label="top-nav" alignment="right">
+      <gcds-top-nav label="top-nav" align="end">
         <mock:shadow-root>
           <div class="gcds-top-nav">
             <nav aria-label="top-nav - Use the enter key to select a menu item and travel to its page. Use the left and right arrow keys to navigate between menu and submenu items. Use the right arrow key to open submenus when they are available. Use the left arrow or escape keys to close a menu.">
               <ul class="gcds-top-nav__container">
                 <gcds-nav-group class="gcds-mobile-nav gcds-mobile-nav-topnav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en">
                   <slot name="home"></slot>
-                  <li class="nav-container__list nav-list--right">
-                    <ul class="nav-container__list nav-list--right">
+                  <li class="nav-container__list nav-list--end">
+                    <ul class="nav-container__list nav-list--end">
                       <slot></slot>
                     </ul>
                   </li>

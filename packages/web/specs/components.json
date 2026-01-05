@@ -12463,31 +12463,31 @@
       "usage": {},
       "props": [
         {
-          "name": "alignment",
-          "type": "\"left\" | \"right\"",
+          "name": "align",
+          "type": "\"end\" | \"start\"",
           "complexType": {
-            "original": "'left' | 'right'",
-            "resolved": "\"left\" | \"right\"",
+            "original": "'start' | 'end'",
+            "resolved": "\"end\" | \"start\"",
             "references": {}
           },
           "mutable": false,
-          "attr": "alignment",
+          "attr": "align",
           "reflectToAttr": false,
-          "docs": "Nav alignment",
+          "docs": "Nav align",
           "docsTags": [
             {
               "name": "default",
-              "text": "'left'"
+              "text": "'start'"
             }
           ],
-          "default": "'left'",
+          "default": "'start'",
           "values": [
             {
-              "value": "left",
+              "value": "end",
               "type": "string"
             },
             {
-              "value": "right",
+              "value": "start",
               "type": "string"
             }
           ],

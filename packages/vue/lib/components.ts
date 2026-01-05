@@ -660,7 +660,7 @@ export const GcdsTextarea: StencilVueComponent<JSX.GcdsTextarea, JSX.GcdsTextare
 
 export const GcdsTopNav: StencilVueComponent<JSX.GcdsTopNav> = /*@__PURE__*/ defineContainer<JSX.GcdsTopNav>('gcds-top-nav', defineGcdsTopNav, [
   'label',
-  'alignment'
+  'align'
 ]);
 
 

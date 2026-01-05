@@ -1792,7 +1792,7 @@ or an object with page and href when using list display.
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hideLegend', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
 })
@@ -2387,7 +2387,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
 
 
 @ProxyCmp({
-  inputs: ['alignment', 'label'],
+  inputs: ['align', 'label'],
   methods: ['getNavSize', 'updateNavSize', 'updateNavItemQueue']
 })
 @Component({
@@ -2395,7 +2395,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignment', 'label'],
+  inputs: ['align', 'label'],
   standalone: false,
 })
 export class GcdsTopNav {
@@ -2405,9 +2405,9 @@ export class GcdsTopNav {
    */
   set label(_: Components.GcdsTopNav['label']) {};
     /**
-   * Nav alignment @default 'left'
+   * Nav align @default 'start'
    */
-  set alignment(_: Components.GcdsTopNav['alignment']) {};
+  set align(_: Components.GcdsTopNav['align']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
