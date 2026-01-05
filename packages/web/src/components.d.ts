@@ -966,6 +966,11 @@ export namespace Components {
          */
         "href": string;
         /**
+          * Sets the main style of the link.
+          * @default 'default'
+         */
+        "linkRole"?: 'default' | 'light';
+        /**
           * The rel attribute specifies the relationship between the current document and the linked document
          */
         "rel"?: string | undefined;
@@ -983,11 +988,6 @@ export namespace Components {
           * The type specifies the media type of the linked document
          */
         "type"?: string | undefined;
-        /**
-          * Sets the main style of the link.
-          * @default 'default'
-         */
-        "variant"?: 'default' | 'light';
     }
     /**
      * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
@@ -3436,6 +3436,11 @@ declare namespace LocalJSX {
          */
         "href": string;
         /**
+          * Sets the main style of the link.
+          * @default 'default'
+         */
+        "linkRole"?: 'default' | 'light';
+        /**
           * Emitted when the link loses focus.
          */
         "onGcdsBlur"?: (event: GcdsLinkCustomEvent<void>) => void;
@@ -3465,11 +3470,6 @@ declare namespace LocalJSX {
           * The type specifies the media type of the linked document
          */
         "type"?: string | undefined;
-        /**
-          * Sets the main style of the link.
-          * @default 'default'
-         */
-        "variant"?: 'default' | 'light';
     }
     /**
      * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.

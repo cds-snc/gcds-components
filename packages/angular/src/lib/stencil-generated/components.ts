@@ -1500,7 +1500,7 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {
 
 
 @ProxyCmp({
-  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type', 'variant'],
+  inputs: ['display', 'download', 'external', 'href', 'linkRole', 'rel', 'size', 'target', 'type'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -1508,7 +1508,7 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type', 'variant'],
+  inputs: ['display', 'download', 'external', 'href', 'linkRole', 'rel', 'size', 'target', 'type'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -1517,7 +1517,7 @@ export class GcdsLink {
     /**
    * Sets the main style of the link. @default 'default'
    */
-  set variant(_: Components.GcdsLink['variant']) {};
+  set linkRole(_: Components.GcdsLink['linkRole']) {};
     /**
    * Set the link size @default 'inherit'
    */
@@ -1792,7 +1792,7 @@ or an object with page and href when using list display.
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hideLegend', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
 })

@@ -426,7 +426,7 @@ export const GcdsLangToggle: StencilVueComponent<JSX.GcdsLangToggle> = /*@__PURE
 
 
 export const GcdsLink: StencilVueComponent<JSX.GcdsLink> = /*@__PURE__*/ defineContainer<JSX.GcdsLink>('gcds-link', defineGcdsLink, [
-  'variant',
+  'linkRole',
   'size',
   'display',
   'href',

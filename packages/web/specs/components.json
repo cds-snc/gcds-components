@@ -8077,6 +8077,40 @@
           "setter": false
         },
         {
+          "name": "linkRole",
+          "type": "\"default\" | \"light\"",
+          "complexType": {
+            "original": "'default' | 'light'",
+            "resolved": "\"default\" | \"light\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "link-role",
+          "reflectToAttr": false,
+          "docs": "Sets the main style of the link.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'default'"
+            }
+          ],
+          "default": "'default'",
+          "values": [
+            {
+              "value": "default",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "rel",
           "type": "string",
           "complexType": {
@@ -8181,40 +8215,6 @@
           "docsTags": [],
           "values": [
             {
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "variant",
-          "type": "\"default\" | \"light\"",
-          "complexType": {
-            "original": "'default' | 'light'",
-            "resolved": "\"default\" | \"light\"",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "variant",
-          "reflectToAttr": false,
-          "docs": "Sets the main style of the link.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'default'"
-            }
-          ],
-          "default": "'default'",
-          "values": [
-            {
-              "value": "default",
-              "type": "string"
-            },
-            {
-              "value": "light",
               "type": "string"
             }
           ],
