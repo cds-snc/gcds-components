@@ -20,14 +20,14 @@ export class GcdsNotice {
    */
 
   /**
-   * Set notice type.
+   * The notice role property specifies the style of notice to be displayed.
    */
-  @Prop() type!: 'danger' | 'info' | 'success' | 'warning';
-  validateType() {
-    if (!this.type) {
-      this.errors.push('type');
-    } else if (this.errors.includes('type')) {
-      this.errors.splice(this.errors.indexOf('type'), 1);
+  @Prop() noticeRole!: 'danger' | 'info' | 'success' | 'warning';
+  validateNoticeRole() {
+    if (!this.noticeRole) {
+      this.errors.push('noticeRole');
+    } else if (this.errors.includes('noticeRole')) {
+      this.errors.splice(this.errors.indexOf('noticeRole'), 1);
     }
   }
 
@@ -97,12 +97,12 @@ export class GcdsNotice {
 
   private validateRequiredProps() {
     this.validateNoticeTitle();
-    this.validateType();
+    this.validateNoticeRole();
     this.validateNoticeTitleTag();
     this.validateChildren();
 
     if (
-      this.errors.includes('type') ||
+      this.errors.includes('noticeRole') ||
       this.errors.includes('noticeTitle') ||
       this.errors.includes('noticeTitleTag') ||
       this.errors.includes('children')
@@ -126,14 +126,14 @@ export class GcdsNotice {
   }
 
   render() {
-    const { type, noticeTitle, noticeTitleTag } = this;
+    const { noticeRole, noticeTitle, noticeTitleTag } = this;
 
-    const iconTypes: {
+    const iconRoles: {
       [key in 'danger' | 'info' | 'success' | 'warning']:
-        | 'exclamation-circle'
-        | 'info-circle'
-        | 'checkmark-circle'
-        | 'warning-triangle';
+      | 'exclamation-circle'
+      | 'info-circle'
+      | 'checkmark-circle'
+      | 'warning-triangle';
     } = {
       danger: 'exclamation-circle',
       info: 'info-circle',
@@ -144,16 +144,16 @@ export class GcdsNotice {
     return (
       <Host>
         {this.validateRequiredProps() && (
-          <section class={`gcds-notice notice--type-${type}`}>
+          <section class={`gcds-notice notice--role-${noticeRole}`}>
             <gcds-icon
               class="notice__icon"
               size="h4"
               name={
-                iconTypes[type] as
-                  | 'exclamation-circle'
-                  | 'info-circle'
-                  | 'checkmark-circle'
-                  | 'warning-triangle'
+                iconRoles[noticeRole] as
+                | 'exclamation-circle'
+                | 'info-circle'
+                | 'checkmark-circle'
+                | 'warning-triangle'
               }
             />
             <div>
@@ -163,7 +163,7 @@ export class GcdsNotice {
                 margin-bottom="100"
                 class="notice__heading"
               >
-                <gcds-sr-only tag="span">{i18n[this.lang][type]}</gcds-sr-only>
+                <gcds-sr-only tag="span">{i18n[this.lang][noticeRole]}</gcds-sr-only>
                 {noticeTitle}
               </gcds-heading>
               <slot></slot>

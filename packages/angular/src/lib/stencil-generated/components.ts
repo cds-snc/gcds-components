@@ -1683,22 +1683,22 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
 
 
 @ProxyCmp({
-  inputs: ['noticeTitle', 'noticeTitleTag', 'type']
+  inputs: ['noticeRole', 'noticeTitle', 'noticeTitleTag']
 })
 @Component({
   selector: 'gcds-notice',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['noticeTitle', 'noticeTitleTag', 'type'],
+  inputs: ['noticeRole', 'noticeTitle', 'noticeTitleTag'],
   standalone: false,
 })
 export class GcdsNotice {
   protected el: HTMLGcdsNoticeElement;
     /**
-   * Set notice type.
+   * The notice role property specifies the style of notice to be displayed.
    */
-  set type(_: Components.GcdsNotice['type']) {};
+  set noticeRole(_: Components.GcdsNotice['noticeRole']) {};
     /**
    * Set the notice title.
    */

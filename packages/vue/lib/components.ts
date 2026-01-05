@@ -477,7 +477,7 @@ export const GcdsNavLink: StencilVueComponent<JSX.GcdsNavLink> = /*@__PURE__*/ d
 
 
 export const GcdsNotice: StencilVueComponent<JSX.GcdsNotice> = /*@__PURE__*/ defineContainer<JSX.GcdsNotice>('gcds-notice', defineGcdsNotice, [
-  'type',
+  'noticeRole',
   'noticeTitle',
   'noticeTitleTag'
 ]);
