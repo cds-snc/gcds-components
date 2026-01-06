@@ -562,6 +562,10 @@ export namespace Components {
      */
     interface GcdsGrid {
         /**
+          * Defines the grid's alignment if the grid containers size is smaller than the parent's size.
+         */
+        "align"?: 'start' | 'center' | 'end';
+        /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
          */
         "alignContent"?: ContentValues;
@@ -569,11 +573,6 @@ export namespace Components {
           * Aligns grid items along the block (column) axis
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
-        /**
-          * Defines if grid container is centered or not
-          * @default false
-         */
-        "centered"?: boolean;
         /**
           * Defines the default number of grid columns for all viewports if columns-tablet and columns-desktop are not defined. Option to set different layouts for desktop with columns-desktop and for tablet with columns-tablet.
          */
@@ -2990,6 +2989,10 @@ declare namespace LocalJSX {
      */
     interface GcdsGrid {
         /**
+          * Defines the grid's alignment if the grid containers size is smaller than the parent's size.
+         */
+        "align"?: 'start' | 'center' | 'end';
+        /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
          */
         "alignContent"?: ContentValues;
@@ -2997,11 +3000,6 @@ declare namespace LocalJSX {
           * Aligns grid items along the block (column) axis
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
-        /**
-          * Defines if grid container is centered or not
-          * @default false
-         */
-        "centered"?: boolean;
         /**
           * Defines the default number of grid columns for all viewports if columns-tablet and columns-desktop are not defined. Option to set different layouts for desktop with columns-desktop and for tablet with columns-tablet.
          */
