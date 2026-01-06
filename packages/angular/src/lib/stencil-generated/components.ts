@@ -950,14 +950,14 @@ export declare interface GcdsFooter extends Components.GcdsFooter {
 
 
 @ProxyCmp({
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
+  inputs: ['align', 'alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
+  inputs: ['align', 'alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
   standalone: false,
 })
 export class GcdsGrid {
@@ -982,10 +982,6 @@ number of columns for desktop as well.
    * Defines grid container size
    */
   set container(_: Components.GcdsGrid['container']) {};
-    /**
-   * Defines if grid container is centered or not @default false
-   */
-  set centered(_: Components.GcdsGrid['centered']) {};
     /**
    * Defines element as grid or inline-grid container @default 'grid'
    */
@@ -1017,6 +1013,11 @@ in a grid container for desktop screens.
    * Set tag for grid container @default 'div'
    */
   set tag(_: Components.GcdsGrid['tag']) {};
+    /**
+   * Defines the grid's alignment if the grid containers
+size is smaller than the parent's size.
+   */
+  set align(_: Components.GcdsGrid['align']) {};
     /**
    * If total grid size is less than the size of its grid container,
 this property aligns the grid along the block (column) axis

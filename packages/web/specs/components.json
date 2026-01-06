@@ -4426,6 +4426,38 @@
       "usage": {},
       "props": [
         {
+          "name": "align",
+          "type": "\"center\" | \"end\" | \"start\"",
+          "complexType": {
+            "original": "'start' | 'center' | 'end'",
+            "resolved": "\"center\" | \"end\" | \"start\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "align",
+          "reflectToAttr": false,
+          "docs": "Defines the grid's alignment if the grid containers\nsize is smaller than the parent's size.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "alignContent",
           "type": "\"center\" | \"end\" | \"space-around\" | \"space-between\" | \"space-evenly\" | \"start\" | \"stretch\"",
           "complexType": {
@@ -4512,35 +4544,6 @@
             {
               "value": "stretch",
               "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "centered",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "centered",
-          "reflectToAttr": false,
-          "docs": "Defines if grid container is centered or not",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
             }
           ],
           "optional": true,

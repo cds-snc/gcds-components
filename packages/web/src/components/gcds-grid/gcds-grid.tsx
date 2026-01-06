@@ -89,11 +89,6 @@ export class GcdsGrid {
   @Prop() container?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 
   /**
-   * Defines if grid container is centered or not
-   */
-  @Prop() centered?: boolean = false;
-
-  /**
    * Defines element as grid or inline-grid container
    */
   @Prop() display?: 'grid' | 'inline-grid' = 'grid';
@@ -192,6 +187,12 @@ export class GcdsGrid {
   }
 
   /**
+   * Defines the grid's alignment if the grid containers
+   * size is smaller than the parent's size.
+   */
+  @Prop() align?: 'start' | 'center' | 'end';
+
+  /**
    * If total grid size is less than the size of its grid container,
    * this property aligns the grid along the block (column) axis
    */
@@ -233,13 +234,13 @@ export class GcdsGrid {
 
   render() {
     const {
+      align,
       alignContent,
       alignItems,
       columns,
       columnsDesktop,
       columnsTablet,
       container,
-      centered,
       display,
       equalRowHeight,
       gap,
@@ -298,10 +299,7 @@ export class GcdsGrid {
     return (
       <Host>
         {container ? (
-          <gcds-container
-            size={container}
-            align={centered ? 'center' : undefined}
-          >
+          <gcds-container size={container} align={align}>
             <Tag class={classNames} style={handleGridStyles()}>
               <slot />
             </Tag>
