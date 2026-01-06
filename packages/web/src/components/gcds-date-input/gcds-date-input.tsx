@@ -511,8 +511,8 @@ export class GcdsDateInput {
    * Logic to combine all input values together based on format
    */
   private setValue() {
-    const { yearValue, monthValue, format } = this;
-    let { dayValue } = this;
+    const { monthValue, format } = this;
+    let { yearValue, dayValue } = this;
 
     // Logic to make sure the day input is registered correctly
     if (dayValue && dayValue.length === 1 && dayValue != '0') {
@@ -522,6 +522,10 @@ export class GcdsDateInput {
       dayValue = dayValue.substring(1);
       this.dayValue = dayValue;
     }
+
+    // Clean up year and day values by removing any e, E or - characters
+    dayValue = dayValue?.replace(/[eE-]/g, '');
+    yearValue = yearValue?.replace(/[eE-]/g, '');
 
     if (format === 'full') {
       this.value = `${yearValue}-${monthValue}-${dayValue}`;
@@ -673,6 +677,7 @@ export class GcdsDateInput {
         type="number"
         inputmode="numeric"
         size={4}
+        min={0}
         disabled={disabled}
         value={this.yearValue}
         onInput={e => this.handleInput(e, 'year')}
@@ -695,6 +700,7 @@ export class GcdsDateInput {
         type="number"
         inputmode="numeric"
         size={2}
+        min={0}
         disabled={disabled}
         value={this.dayValue}
         onInput={e => this.handleInput(e, 'day')}
