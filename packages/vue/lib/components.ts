@@ -155,9 +155,9 @@ export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes, JSX.GcdsChe
 
 
 export const GcdsContainer: StencilVueComponent<JSX.GcdsContainer> = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', defineGcdsContainer, [
+  'align',
   'border',
-  'centered',
-  'mainContainer',
+  'layout',
   'margin',
   'padding',
   'size',

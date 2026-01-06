@@ -256,22 +256,20 @@ export namespace Components {
      */
     interface GcdsContainer {
         /**
+          * Defines the container's alignment. This property is ignored when `layout` is set to `page`, as the page layout has higher priority.
+         */
+        "align"?: 'start' | 'center' | 'end';
+        /**
           * Defines if the container has a border.
           * @default false
          */
         "border"?: boolean;
         /**
-          * Defines if the container is centered.
-          * @default false
+          * Controls how the container aligns with the page layout. When set to `page`, the container uses a max width of 1140px and switches to 90% width on smaller screens to scale consistently with core page layout components such as the header and footer. When set to `full`, the container spans the full width (100%) of its parent.
          */
-        "centered"?: boolean;
+        "layout"?: 'full' | 'page';
         /**
-          * Defines if the container is the main page container. When true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
-          * @default false
-         */
-        "mainContainer"?: boolean;
-        /**
-          * Container margin. Left and right margins won't be applied if the container is centered.
+          * Container margin. Horizontal margins (left and right) are not applied if the container’s align property is defined, since alignment has higher priority.
          */
         "margin"?: SpacingValues;
         /**
@@ -2626,22 +2624,20 @@ declare namespace LocalJSX {
      */
     interface GcdsContainer {
         /**
+          * Defines the container's alignment. This property is ignored when `layout` is set to `page`, as the page layout has higher priority.
+         */
+        "align"?: 'start' | 'center' | 'end';
+        /**
           * Defines if the container has a border.
           * @default false
          */
         "border"?: boolean;
         /**
-          * Defines if the container is centered.
-          * @default false
+          * Controls how the container aligns with the page layout. When set to `page`, the container uses a max width of 1140px and switches to 90% width on smaller screens to scale consistently with core page layout components such as the header and footer. When set to `full`, the container spans the full width (100%) of its parent.
          */
-        "centered"?: boolean;
+        "layout"?: 'full' | 'page';
         /**
-          * Defines if the container is the main page container. When true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
-          * @default false
-         */
-        "mainContainer"?: boolean;
-        /**
-          * Container margin. Left and right margins won't be applied if the container is centered.
+          * Container margin. Horizontal margins (left and right) are not applied if the container’s align property is defined, since alignment has higher priority.
          */
         "margin"?: SpacingValues;
         /**

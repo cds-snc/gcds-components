@@ -409,35 +409,41 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
 
 
 @ProxyCmp({
-  inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag']
+  inputs: ['align', 'border', 'layout', 'margin', 'padding', 'size', 'tag']
 })
 @Component({
   selector: 'gcds-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag'],
+  inputs: ['align', 'border', 'layout', 'margin', 'padding', 'size', 'tag'],
   standalone: false,
 })
 export class GcdsContainer {
   protected el: HTMLGcdsContainerElement;
     /**
+   * Defines the container's alignment.
+This property is ignored when `layout` is set to `page`,
+as the page layout has higher priority.
+   */
+  set align(_: Components.GcdsContainer['align']) {};
+    /**
    * Defines if the container has a border. @default false
    */
   set border(_: Components.GcdsContainer['border']) {};
     /**
-   * Defines if the container is centered. @default false
+   * Controls how the container aligns with the page layout.
+When set to `page`, the container uses a max width of 1140px and
+switches to 90% width on smaller screens to scale consistently with
+core page layout components such as the header and footer.
+When set to `full`, the container spans the full width (100%)
+of its parent.
    */
-  set centered(_: Components.GcdsContainer['centered']) {};
+  set layout(_: Components.GcdsContainer['layout']) {};
     /**
-   * Defines if the container is the main page container. When true,
-the width will be set to 90% for smaller screens to ensure consistency
-with the responsiveness of other core layout components (header + footer). @default false
-   */
-  set mainContainer(_: Components.GcdsContainer['mainContainer']) {};
-    /**
-   * Container margin. Left and right margins won't be applied
-if the container is centered.
+   * Container margin. Horizontal margins (left and right) are not
+applied if the container’s align property is defined, since
+alignment has higher priority.
    */
   set margin(_: Components.GcdsContainer['margin']) {};
     /**
@@ -1792,7 +1798,7 @@ or an object with page and href when using list display.
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'hideLegend', 'hint', 'legend', 'name', 'options', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsInput', 'gcdsChange', 'gcdsFocus', 'gcdsBlur', 'gcdsValid', 'gcdsError']
 })
