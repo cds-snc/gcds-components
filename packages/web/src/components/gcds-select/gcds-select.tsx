@@ -413,8 +413,6 @@ export class GcdsSelect {
     };
     const observer = new MutationObserver(() => {
       this.options = Array.from(this.el.children);
-      // Reset value to null to prevent unwanted selection
-      this.value = null;
     });
     observer.observe(this.el, config);
   }
