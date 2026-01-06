@@ -7,6 +7,7 @@ import {
   Event,
   EventEmitter,
   h,
+  Watch,
 } from '@stencil/core';
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import I18N from './i18n/I18N';
@@ -55,7 +56,29 @@ export class GcdsSearch {
   /**
    * Set a list of predefined search terms
    */
-  @Prop() suggested: Array<string>;
+  @Prop({ mutable: true }) suggested: string[] | string;
+  @Watch('suggested')
+  watchSuggestedHandler() {
+    if (this.suggested == null || this.suggested.length === 0) {
+      this.suggestedArray = null;
+      return;
+    }
+
+    if (typeof this.suggested === 'string') {
+      try {
+        this.suggested = JSON.parse(this.suggested as string);
+      } catch (e) {
+        console.error(
+          'gcds-search: suggested prop is not valid JSON string',
+          e,
+        );
+        this.suggestedArray = null;
+        return;
+      }
+    }
+
+    this.suggestedArray = this.suggested as string[];
+  }
 
   /**
    * Events
@@ -91,6 +114,11 @@ export class GcdsSearch {
    */
   @State() lang: string;
 
+  /**
+   * Array of suggested search terms
+   */
+  @State() suggestedArray: string[] = null;
+
   private handleInput = (e, customEvent) => {
     const input = e.target as HTMLInputElement;
     this.value = input.value;
@@ -113,6 +141,11 @@ export class GcdsSearch {
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+
+    this.watchSuggestedHandler();
+
+    // Observe lang attribute changes
+    this.updateLang();
   }
 
   render() {
@@ -124,7 +157,7 @@ export class GcdsSearch {
       value,
       lang,
       searchId,
-      suggested,
+      suggestedArray,
     } = this;
 
     const labelText = `${I18N[lang].searchLabel.replace('{$}', placeholder)}`;
@@ -158,7 +191,7 @@ export class GcdsSearch {
             <input
               type="search"
               id={searchId}
-              {...(suggested ? { list: 'search-list' } : {})}
+              {...(suggestedArray ? { list: 'search-list' } : {})}
               size={34}
               maxLength={170}
               onInput={e => this.handleInput(e, this.gcdsInput)}
@@ -170,9 +203,9 @@ export class GcdsSearch {
               value={value}
             ></input>
 
-            {suggested && (
+            {suggestedArray && (
               <datalist id="search-list">
-                {suggested.map((k, v) => (
+                {suggestedArray.map((k, v) => (
                   <option value={k} key={v} />
                 ))}
               </datalist>

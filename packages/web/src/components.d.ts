@@ -1205,7 +1205,7 @@ export namespace Components {
         /**
           * Set a list of predefined search terms
          */
-        "suggested": Array<string>;
+        "suggested": string[] | string;
         /**
           * Set the value of the search input
          */
@@ -3743,7 +3743,7 @@ declare namespace LocalJSX {
         /**
           * Set a list of predefined search terms
          */
-        "suggested"?: Array<string>;
+        "suggested"?: string[] | string;
         /**
           * Set the value of the search input
          */

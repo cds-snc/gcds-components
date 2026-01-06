@@ -80,4 +80,33 @@ describe('gcds-search', () => {
       </gcds-search>
     `);
   });
+  it('renders w/ suggested', async () => {
+    const page = await newSpecPage({
+      components: [GcdsSearch],
+      html: `<gcds-search suggested='["red", "green", "blue"]'></gcds-search>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-search suggested='["red", "green", "blue"]'>
+        <mock:shadow-root>
+          <section class="gcds-search">
+            <gcds-sr-only tag="h2">
+              Search
+            </gcds-sr-only>
+            <form action="https://www.canada.ca/en/sr/srb.html" class="gcds-search__form" method="get" role="search">
+              <gcds-label hide-label="" label="Search Canada.ca" label-for="search"></gcds-label>
+              <input class="gcds-search__input" id="search" list="search-list" maxlength="170" name="q" placeholder="Search Canada.ca" size="34" type="search">
+              <datalist id="search-list">
+                <option value="red"></option>
+                <option value="green"></option>
+                <option value="blue"></option>
+              </datalist>
+              <gcds-button class="gcds-search__button" exportparts="button" type="submit">
+                <gcds-icon label="Search" name="search" size="h3"></gcds-icon>
+              </gcds-button>
+            </form>
+          </section>
+        </mock:shadowroot>
+      </gcds-search>
+    `);
+  });
 });
