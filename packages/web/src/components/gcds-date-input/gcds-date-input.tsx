@@ -486,6 +486,28 @@ export class GcdsDateInput {
   }
 
   /*
+   * Block non-numeric keys in year and day inputs
+   * This replicates how a number input would function
+   */
+  private blockInvalidKeys = (ev: KeyboardEvent) => {
+    const allowed = [
+      'Backspace',
+      'Delete',
+      'ArrowLeft',
+      'ArrowRight',
+      'Tab',
+      'Home',
+      'End',
+    ];
+
+    if (allowed.includes(ev.key)) return;
+
+    if (!/^\d$/.test(ev.key)) {
+      ev.preventDefault();
+    }
+  };
+
+  /*
    * Handle input event to update state
    */
   private handleInput = (e, type) => {
@@ -674,14 +696,14 @@ export class GcdsDateInput {
         name="year"
         label={i18n[lang].year}
         inputId="year"
-        type="number"
+        type="text"
         inputmode="numeric"
         size={4}
-        min={0}
         disabled={disabled}
         value={this.yearValue}
         onInput={e => this.handleInput(e, 'year')}
         onChange={e => this.handleInput(e, 'year')}
+        onKeyDown={this.blockInvalidKeys}
         class={`gcds-date-input__year ${hasError['year'] ? 'gcds-date-input--error' : ''}`}
         validate-on='other'
         {...requiredAttr}
@@ -697,14 +719,14 @@ export class GcdsDateInput {
         name="day"
         label={i18n[lang].day}
         inputId="day"
-        type="number"
+        type="text"
         inputmode="numeric"
         size={2}
-        min={0}
         disabled={disabled}
         value={this.dayValue}
         onInput={e => this.handleInput(e, 'day')}
         onChange={e => this.handleInput(e, 'day')}
+        onKeyDown={this.blockInvalidKeys}
         validate-on='other'
         class={`gcds-date-input__day ${hasError['day'] ? 'gcds-date-input--error' : ''}`}
         {...requiredAttr}
