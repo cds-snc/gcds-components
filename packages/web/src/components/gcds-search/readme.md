@@ -11,15 +11,15 @@ Search is a space for entering keywords to find relevant information.
 
 ## Properties
 
-| Property      | Attribute     | Description                                                                        | Type              | Default          |
-| ------------- | ------------- | ---------------------------------------------------------------------------------- | ----------------- | ---------------- |
-| `action`      | `action`      | Sets the action for the search form. Default will be canada.ca global search       | `string`          | `'/sr/srb.html'` |
-| `method`      | `method`      | Set the form method of the search form                                             | `"get" \| "post"` | `'get'`          |
-| `name`        | `name`        | Set the name of the search input                                                   | `string`          | `'q'`            |
-| `placeholder` | `placeholder` | Set the placeholder and label for the search input. Becomes "Search [placeholder]" | `string`          | `'Canada.ca'`    |
-| `searchId`    | `search-id`   | Set the id of the search input                                                     | `string`          | `'search'`       |
-| `suggested`   | `suggested`   | Set a list of predefined search terms                                              | `string[]`        | `undefined`      |
-| `value`       | `value`       | Set the value of the search input                                                  | `string`          | `undefined`      |
+| Property      | Attribute     | Description                                                                        | Type                 | Default          |
+| ------------- | ------------- | ---------------------------------------------------------------------------------- | -------------------- | ---------------- |
+| `action`      | `action`      | Sets the action for the search form. Default will be canada.ca global search       | `string`             | `'/sr/srb.html'` |
+| `method`      | `method`      | Set the form method of the search form                                             | `"get" \| "post"`    | `'get'`          |
+| `name`        | `name`        | Set the name of the search input                                                   | `string`             | `'q'`            |
+| `placeholder` | `placeholder` | Set the placeholder and label for the search input. Becomes "Search [placeholder]" | `string`             | `'Canada.ca'`    |
+| `searchId`    | `search-id`   | Set the id of the search input                                                     | `string`             | `'search'`       |
+| `suggested`   | `suggested`   | Set a list of predefined search terms                                              | `string \| string[]` | `undefined`      |
+| `value`       | `value`       | Set the value of the search input                                                  | `string`             | `undefined`      |
 
 
 ## Events

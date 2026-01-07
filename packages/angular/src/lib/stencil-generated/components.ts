@@ -409,35 +409,41 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
 
 
 @ProxyCmp({
-  inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag']
+  inputs: ['align', 'border', 'layout', 'margin', 'padding', 'size', 'tag']
 })
 @Component({
   selector: 'gcds-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag'],
+  inputs: ['align', 'border', 'layout', 'margin', 'padding', 'size', 'tag'],
   standalone: false,
 })
 export class GcdsContainer {
   protected el: HTMLGcdsContainerElement;
     /**
+   * Defines the container's alignment.
+This property is ignored when `layout` is set to `page`,
+as the page layout has higher priority.
+   */
+  set align(_: Components.GcdsContainer['align']) {};
+    /**
    * Defines if the container has a border. @default false
    */
   set border(_: Components.GcdsContainer['border']) {};
     /**
-   * Defines if the container is centered. @default false
+   * Controls how the container aligns with the page layout.
+When set to `page`, the container uses a max width of 1140px and
+switches to 90% width on smaller screens to scale consistently with
+core page layout components such as the header and footer.
+When set to `full`, the container spans the full width (100%)
+of its parent.
    */
-  set centered(_: Components.GcdsContainer['centered']) {};
+  set layout(_: Components.GcdsContainer['layout']) {};
     /**
-   * Defines if the container is the main page container. When true,
-the width will be set to 90% for smaller screens to ensure consistency
-with the responsiveness of other core layout components (header + footer). @default false
-   */
-  set mainContainer(_: Components.GcdsContainer['mainContainer']) {};
-    /**
-   * Container margin. Left and right margins won't be applied
-if the container is centered.
+   * Container margin. Horizontal margins (left and right) are not
+applied if the container’s align property is defined, since
+alignment has higher priority.
    */
   set margin(_: Components.GcdsContainer['margin']) {};
     /**
@@ -944,14 +950,14 @@ export declare interface GcdsFooter extends Components.GcdsFooter {
 
 
 @ProxyCmp({
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
+  inputs: ['align', 'alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
+  inputs: ['align', 'alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
   standalone: false,
 })
 export class GcdsGrid {
@@ -976,10 +982,6 @@ number of columns for desktop as well.
    * Defines grid container size
    */
   set container(_: Components.GcdsGrid['container']) {};
-    /**
-   * Defines if grid container is centered or not @default false
-   */
-  set centered(_: Components.GcdsGrid['centered']) {};
     /**
    * Defines element as grid or inline-grid container @default 'grid'
    */
@@ -1011,6 +1013,11 @@ in a grid container for desktop screens.
    * Set tag for grid container @default 'div'
    */
   set tag(_: Components.GcdsGrid['tag']) {};
+    /**
+   * Defines the grid's alignment if the grid containers
+size is smaller than the parent's size.
+   */
+  set align(_: Components.GcdsGrid['align']) {};
     /**
    * If total grid size is less than the size of its grid container,
 this property aligns the grid along the block (column) axis

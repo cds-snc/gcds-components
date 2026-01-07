@@ -155,9 +155,9 @@ export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes, JSX.GcdsChe
 
 
 export const GcdsContainer: StencilVueComponent<JSX.GcdsContainer> = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', defineGcdsContainer, [
+  'align',
   'border',
-  'centered',
-  'mainContainer',
+  'layout',
   'margin',
   'padding',
   'size',
@@ -299,13 +299,13 @@ export const GcdsGrid: StencilVueComponent<JSX.GcdsGrid> = /*@__PURE__*/ defineC
   'columnsTablet',
   'columnsDesktop',
   'container',
-  'centered',
   'display',
   'equalRowHeight',
   'gap',
   'gapTablet',
   'gapDesktop',
   'tag',
+  'align',
   'alignContent',
   'justifyContent',
   'placeContent',
