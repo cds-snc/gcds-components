@@ -183,24 +183,24 @@ for (const { name, url } of urls) {
     await expect(page.locator('input[name="number"]')).toHaveValue('');
     await expect(page.locator('#input-number')).toHaveText('red');
 
-    await expect(page.locator('#input-date-full')).toHaveText('20sd-12s-25s');
+    await expect(page.locator('#input-date-full')).toHaveText('20222-123-253');
     await expect(
       page.locator('gcds-date-input[name="date-full"] input[name="day"]'),
-    ).toHaveValue('');
+    ).toHaveValue('253');
     await expect(
       page.locator('gcds-date-input[name="date-full"] select[name="month"]'),
     ).toHaveValue('');
     await expect(
       page.locator('gcds-date-input[name="date-full"] input[name="year"]'),
-    ).toHaveValue('');
+    ).toHaveValue('20222');
 
-    await expect(page.locator('#input-date-compact')).toHaveText('2e4-12');
+    await expect(page.locator('#input-date-compact')).toHaveText('245-12');
     await expect(
       page.locator('gcds-date-input[name="date-compact"] select[name="month"]'),
     ).toHaveValue('12');
     await expect(
       page.locator('gcds-date-input[name="date-compact"] input[name="year"]'),
-    ).toHaveValue('2e4');
+    ).toHaveValue('245');
 
     await expect(page.locator('#input-select')).toHaveText('5');
     await expect(page.locator('gcds-select select[name="select"]')).toHaveValue(

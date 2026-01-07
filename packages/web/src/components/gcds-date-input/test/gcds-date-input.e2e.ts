@@ -74,13 +74,13 @@ test.describe('gcds-date-input', () => {
 
     await element.locator('select').selectOption('03');
     await element.locator('input[name="year"]').fill('12345');
-    await element.locator('input[name="day"]').fill('2e3', { force: true });
+    await element.locator('input[name="day"]').fill('223', { force: true });
 
     const value = await element.evaluate(
       el => (el as HTMLGcdsDateInputElement).value,
     );
 
-    expect(value).toEqual('12345-03-2e3');
+    expect(value).toEqual('12345-03-223');
   });
   test('Format: compact - invalid value', async ({ page }) => {
     const element = await page.locator('gcds-date-input');
