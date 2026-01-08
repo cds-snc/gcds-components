@@ -153,7 +153,7 @@ Released on: 2025-08-27
 ### :pencil: Documentation
 
 - update README installation instructions to match docs site ([#934](https://github.com/cds-snc/gcds-components/issues/934)) ([8431c4a](https://github.com/cds-snc/gcds-components/commit/8431c4a9bbdddcfcacb7d995eabb3db273abc032))
-- **gcds-date-input** and **gcds-pagination**:update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
+- **gcds-date-input** and **gcds-pagination:** update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
 
 ## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.40.0...gcds-components-v0.41.0)
 
@@ -277,8 +277,7 @@ Released on: 2025-07-02
 
 ### :bug: :wrench: Bug Fixes
 
-- Fixed top-nav `alignment=left` for the nav-group dropdown ([#886](https://github.com/cds-snc/gcds-components/issues/886)) ([af84659](https://github.com/cds-snc/gcds-components/commit/af846591126f649ddc8d84d7c2f6963abf63fa36))
-- update installation instructions to remove outdated file ([9c7d76c](https://github.com/cds-snc/gcds-components/commit/9c7d76c37fcc3772f70bd6f4dc6e3354122adaa1))
+- **gcds-nav-group:** Fixed top-nav `alignment=left` for the nav-group dropdown ([#886](https://github.com/cds-snc/gcds-components/issues/886)) ([af84659](https://github.com/cds-snc/gcds-components/commit/af846591126f649ddc8d84d7c2f6963abf63fa36))
 
 ## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0)
 
