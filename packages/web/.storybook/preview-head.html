@@ -400,7 +400,7 @@
   }
 
   /* gcds-link */
-  .sbdocs-preview .docs-story #story--components-link--variant-light {
+  .sbdocs-preview .docs-story #story--components-link--link-role-light {
     background: var(--gcds-color-grayscale-900);
     padding: var(--gcds-spacing-450);
   }
@@ -428,7 +428,7 @@
   const url = new URLSearchParams(window.location.search);
 
   if (url.get('externalLinks')) {
-    document.addEventListener('gcdsClick', (ev) => {
+    document.addEventListener('gcdsClick', ev => {
       if (ev.detail && ev.detail.includes('https://')) {
         top.window.location.href = ev.detail;
       }
@@ -588,10 +588,10 @@
             const slotDesc = tableCell.children[0].querySelector('span');
             const langStrings = slotDesc.innerText.split(' | ');
             slotDesc.setAttribute('lang', lang);
-            slotDesc.innerText = lang === "en" ? langStrings[0] : langStrings[1];
+            slotDesc.innerText =
+              lang === 'en' ? langStrings[0] : langStrings[1];
           }
         }
-
 
         // Format third cell
         // Add hidden text to default value
@@ -646,7 +646,10 @@
   function createCopyBtn(toggleCode, startString, endString, textEn, textFr) {
     const toggleCodeBtnParent = toggleCode.closest('.css-25bv1u');
 
-    if (toggleCodeBtnParent && toggleCodeBtnParent.querySelectorAll('.copy-code-btn').length < 2) {
+    if (
+      toggleCodeBtnParent &&
+      toggleCodeBtnParent.querySelectorAll('.copy-code-btn').length < 2
+    ) {
       const copyBtn = document.createElement('button');
       const langFr = url.get('lang') && url.get('lang') === 'fr';
       const defaultBtnContent = langFr ? `Copier ${textFr}` : `Copy ${textEn}`;
@@ -726,7 +729,9 @@
       createCopyBtn(toggleCode, stringReact, '', 'React', 'React');
     } else {
       // If not expanded, remove existing copy buttons
-      const copyBtns = toggleCode.closest('.css-25bv1u').querySelectorAll('.copy-code-btn');
+      const copyBtns = toggleCode
+        .closest('.css-25bv1u')
+        .querySelectorAll('.copy-code-btn');
       copyBtns.forEach(btn => btn.remove());
     }
   }
@@ -755,7 +760,10 @@
   const frameSize = setInterval(() => {
     const docsStory = document.querySelector('[data-name="Props"]');
     if (docsStory && docsStory.clientHeight > 0) {
-      docsStory.setAttribute('style', `min-height: ${docsStory.clientHeight}px;`);
+      docsStory.setAttribute(
+        'style',
+        `min-height: ${docsStory.clientHeight}px;`,
+      );
       clearInterval(frameSize);
     }
   }, 200);
