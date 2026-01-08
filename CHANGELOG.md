@@ -153,7 +153,7 @@ Released on: 2025-08-27
 ### :pencil: Documentation
 
 - update README installation instructions to match docs site ([#934](https://github.com/cds-snc/gcds-components/issues/934)) ([8431c4a](https://github.com/cds-snc/gcds-components/commit/8431c4a9bbdddcfcacb7d995eabb3db273abc032))
-- update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
+- **gcds-date-input** and **gcds-pagination**:update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
 
 ## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.40.0...gcds-components-v0.41.0)
 
@@ -197,7 +197,7 @@ Released on: 2025-07-28
 ### :bug: :wrench: Bug Fixes
 
 - **gcds-details:** Ability to search into details panel ([#913](https://github.com/cds-snc/gcds-components/issues/913)) ([6e8ffa2](https://github.com/cds-snc/gcds-components/commit/6e8ffa2e2d51f27cab4ac79cf039030ccd45156a))
-- Set form value on manual value update ([#914](https://github.com/cds-snc/gcds-components/issues/914)) ([411553b](https://github.com/cds-snc/gcds-components/commit/411553b8d16201baf789b58c6a05afbbeaeb89a9))
+- **gcds-date-input**, **gcds-input**, **gcds-select** and **gcds-text-area:** Set form value on manual value update ([#914](https://github.com/cds-snc/gcds-components/issues/914)) ([411553b](https://github.com/cds-snc/gcds-components/commit/411553b8d16201baf789b58c6a05afbbeaeb89a9))
 
 ## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.38.0...gcds-components-v0.39.0)
 
