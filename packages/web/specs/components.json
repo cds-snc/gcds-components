@@ -8717,6 +8717,42 @@
       "usage": {},
       "props": [
         {
+          "name": "noticeRole",
+          "type": "\"danger\" | \"info\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "'danger' | 'info' | 'success' | 'warning'",
+            "resolved": "\"danger\" | \"info\" | \"success\" | \"warning\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "notice-role",
+          "reflectToAttr": false,
+          "docs": "The notice role property specifies the style of notice to be displayed.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "noticeTitle",
           "type": "string",
           "complexType": {
@@ -8767,42 +8803,6 @@
             },
             {
               "value": "h5",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "type",
-          "type": "\"danger\" | \"info\" | \"success\" | \"warning\"",
-          "complexType": {
-            "original": "'danger' | 'info' | 'success' | 'warning'",
-            "resolved": "\"danger\" | \"info\" | \"success\" | \"warning\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "type",
-          "reflectToAttr": false,
-          "docs": "Set notice type.",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "info",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
               "type": "string"
             }
           ],

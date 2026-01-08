@@ -1038,6 +1038,10 @@ export namespace Components {
      */
     interface GcdsNotice {
         /**
+          * The notice role property specifies the style of notice to be displayed.
+         */
+        "noticeRole": 'danger' | 'info' | 'success' | 'warning';
+        /**
           * Set the notice title.
          */
         "noticeTitle": string;
@@ -1045,10 +1049,6 @@ export namespace Components {
           * The notice title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
          */
         "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
-        /**
-          * Set notice type.
-         */
-        "type": 'danger' | 'info' | 'success' | 'warning';
     }
     /**
      * Pagination is a division of content into multiple linked pages.
@@ -3529,6 +3529,10 @@ declare namespace LocalJSX {
      */
     interface GcdsNotice {
         /**
+          * The notice role property specifies the style of notice to be displayed.
+         */
+        "noticeRole": 'danger' | 'info' | 'success' | 'warning';
+        /**
           * Set the notice title.
          */
         "noticeTitle": string;
@@ -3536,10 +3540,6 @@ declare namespace LocalJSX {
           * The notice title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
          */
         "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
-        /**
-          * Set notice type.
-         */
-        "type": 'danger' | 'info' | 'success' | 'warning';
     }
     /**
      * Pagination is a division of content into multiple linked pages.
