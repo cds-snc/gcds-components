@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.47.0-canary.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.46.0...gcds-components-v0.47.0-canary.0) (2026-01-08)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-date-input:** prevent invalid characters ([#1082](https://github.com/cds-snc/gcds-components/issues/1082)) ([ff5c2cb](https://github.com/cds-snc/gcds-components/commit/ff5c2cb333ac56b1a70d1e15895eac88b7810bcc))
+* **gcds-search:** Suggested attribute ([20a70ae](https://github.com/cds-snc/gcds-components/commit/20a70aebdd1dc819bd55ee85605cb22d7cdad0c4))
+* **gcds-search:** Suggested attribute assignment ([#1074](https://github.com/cds-snc/gcds-components/issues/1074)) ([20a70ae](https://github.com/cds-snc/gcds-components/commit/20a70aebdd1dc819bd55ee85605cb22d7cdad0c4))
+* **gcds-select:** Remove resetting value on options rerender ([#1081](https://github.com/cds-snc/gcds-components/issues/1081)) ([0526a93](https://github.com/cds-snc/gcds-components/commit/0526a939c5546eeaa02d11f07038a9130d6b404c))
+
 ## [0.46.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.45.0...gcds-components-v0.46.0) (2025-12-16)
 
 ### :rocket: New Features
