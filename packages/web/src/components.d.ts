@@ -1506,10 +1506,10 @@ export namespace Components {
      */
     interface GcdsTopNav {
         /**
-          * Nav alignment
-          * @default 'left'
+          * Nav align
+          * @default 'start'
          */
-        "alignment": 'left' | 'right';
+        "align": 'start' | 'end';
         "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
@@ -4062,10 +4062,10 @@ declare namespace LocalJSX {
      */
     interface GcdsTopNav {
         /**
-          * Nav alignment
-          * @default 'left'
+          * Nav align
+          * @default 'start'
          */
-        "alignment"?: 'left' | 'right';
+        "align"?: 'start' | 'end';
         /**
           * Label for navigation landmark
          */

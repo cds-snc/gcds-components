@@ -16,12 +16,12 @@ export default {
         required: true,
       },
     },
-    alignment: {
+    align: {
       control: { type: 'select' },
-      options: ['right', 'left'],
+      options: ['end', 'start'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'right' },
+        defaultValue: { summary: 'start' },
       },
     },
     // position: {
@@ -63,7 +63,7 @@ const Template = args =>
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-top-nav
   label="${args.label}"
-  alignment="${args.alignment}"
+  align="${args.align}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.home
@@ -88,7 +88,7 @@ const Template = args =>
 <!-- React code -->
 <GcdsTopNav
   label="${args.label}"
-  alignment="${args.alignment}"
+  align="${args.align}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.home
@@ -116,7 +116,7 @@ const TemplatePlayground = args =>
 <!-- Web component code (Angular, Vue) -->
 <gcds-top-nav
   label="${args.label}"
-  alignment="${args.alignment}"
+  align="${args.align}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.home
@@ -141,7 +141,7 @@ const TemplatePlayground = args =>
 export const Default = Template.bind({});
 Default.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
@@ -150,25 +150,25 @@ Default.args = {
 export const Home = Template.bind({});
 Home.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
 };
 
-export const Right = Template.bind({});
-Right.args = {
+export const End = Template.bind({});
+End.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: '',
   lang: 'en',
   default: '',
 };
 
-export const Left = Template.bind({});
-Left.args = {
+export const Start = Template.bind({});
+Start.args = {
   label: 'Top navigation',
-  alignment: 'left',
+  align: 'start',
   home: '',
   lang: 'en',
   default: '',
@@ -177,7 +177,7 @@ Left.args = {
 export const Props = Template.bind({});
 Props.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
@@ -186,7 +186,7 @@ Props.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
