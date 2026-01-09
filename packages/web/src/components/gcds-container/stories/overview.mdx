@@ -41,15 +41,33 @@ A box to group content by limiting the width.
 
 <Canvas of={Container.SizeXs} story={{ inline: true }} />
 
-### Centered
+### Align
 
-<Canvas of={Container.Centered} story={{ inline: true }} />
+#### Align start
 
-### Main page container
+<Canvas of={Container.AlignStart} story={{ inline: true }} />
 
-Defines if the container is the main page container or not. If set to true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
+#### Align center
 
-<Canvas of={Container.MainContainer} story={{ inline: true }} />
+<Canvas of={Container.AlignCenter} story={{ inline: true }} />
+
+#### Align end
+
+<Canvas of={Container.AlignEnd} story={{ inline: true }} />
+
+### Layout
+
+Controls how the container aligns with the page layout.
+
+When set to `page`, the container uses a max width of 1140px and switches to 90% width on smaller screens to scale consistently with core page layout components such as the header and footer. When set to `full`, the container spans the full width (100%) of its parent.
+
+#### Layout full
+
+<Canvas of={Container.LayoutFull} story={{ inline: true }} />
+
+#### Layout page
+
+<Canvas of={Container.LayoutPage} story={{ inline: true }} />
 
 ### Margin
 

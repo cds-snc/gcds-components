@@ -35,14 +35,14 @@ export class GcdsLink {
   /**
    * Sets the main style of the link.
    */
-  @Prop({ mutable: true }) variant?: 'default' | 'light' = 'default';
+  @Prop({ mutable: true }) linkRole?: 'default' | 'light' = 'default';
 
-  @Watch('variant')
-  validateVariant(newValue: string) {
+  @Watch('linkRole')
+  validateLinkRole(newValue: string) {
     const values = ['default', 'light'];
 
     if (!values.includes(newValue)) {
-      this.variant = 'default';
+      this.linkRole = 'default';
     }
   }
 
@@ -144,7 +144,7 @@ export class GcdsLink {
 
   componentWillLoad() {
     // Validate attributes and set defaults
-    this.validateVariant(this.variant);
+    this.validateLinkRole(this.linkRole);
     this.validateSize(this.size);
     this.validateDisplay(this.display);
 
@@ -170,7 +170,7 @@ export class GcdsLink {
       download,
       type,
       inheritedAttributes,
-      variant,
+      linkRole,
     } = this;
 
     const attrs = {
@@ -191,7 +191,7 @@ export class GcdsLink {
           {...attrs}
           class={`gcds-link link--${size} ${
             display != 'inline' ? `d-${display}` : ''
-          } ${variant != 'default' ? `variant-${variant}` : ''}`}
+          } ${linkRole != 'default' ? `role-${linkRole}` : ''}`}
           ref={element => (this.shadowElement = element as HTMLElement)}
           target={isExternal ? '_blank' : target}
           rel={isExternal ? 'noopener noreferrer' : rel}

@@ -1,4 +1,4 @@
-@layer reset, default, display, size, variant, hover, visited, focus;
+@layer reset, default, display, size, roles, hover, visited, focus;
 
 @layer reset {
   :host {
@@ -52,8 +52,8 @@
   }
 }
 
-@layer variant {
-  :host .gcds-link.variant-light {
+@layer roles {
+  :host .gcds-link.role-light {
     color: var(--gcds-link-light);
   }
 }
@@ -63,7 +63,7 @@
     :host .gcds-link:hover {
       text-decoration-thickness: var(--gcds-link-hover-decoration-thickness);
 
-      &:not(.variant-light) {
+      &:not(.role-light) {
         color: var(--gcds-link-hover);
       }
     }
@@ -71,7 +71,7 @@
 }
 
 @layer visited {
-  :host .gcds-link:not(.variant-light):visited {
+  :host .gcds-link:not(.role-light):visited {
     color: var(--gcds-link-visited);
   }
 }

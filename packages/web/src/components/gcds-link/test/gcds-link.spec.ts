@@ -255,15 +255,15 @@ describe('gcds-link', () => {
     `);
   });
 
-  it('renders a light link variant', async () => {
+  it('renders a light link role', async () => {
     const { root } = await newSpecPage({
       components: [GcdsLink],
-      html: '<gcds-link href="#" variant="light">Link text</gcds-link>',
+      html: '<gcds-link href="#" link-role="light">Link text</gcds-link>',
     });
     expect(root).toEqualHtml(`
-      <gcds-link href="#" variant="light">
+      <gcds-link href="#" link-role="light">
         <mock:shadow-root>
-          <a class="gcds-link link--inherit variant-light" part="link" href="#" tabindex="0" target="_self">
+          <a class="gcds-link link--inherit role-light" part="link" href="#" tabindex="0" target="_self">
             <slot></slot>
           </a>
         </mock:shadow-root>
