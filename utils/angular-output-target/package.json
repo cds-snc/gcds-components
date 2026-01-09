@@ -41,7 +41,7 @@
     "url": "https://github.com/ionic-team/stencil-ds-output-targets/issues"
   },
   "devDependencies": {
-    "@angular/core": "^19.2.15",
+    "@angular/core": "^19.2.18",
     "@angular/forms": "^19.2.15",
     "@types/node": "^18.0.0",
     "npm-run-all2": "^6.2.4",
