@@ -16,7 +16,7 @@
   },
   "peerDependencies": {
     "@angular/common": "^19.0.0 || ^20.0.0",
-    "@angular/core": "^19.0.0 || ^20.0.0",
+    "@angular/core": "^19.2.18 ^19.2.18",
     "@cdssnc/gcds-components": "^0.46.0"
   },
   "dependencies": {
