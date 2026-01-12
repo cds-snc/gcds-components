@@ -140,9 +140,8 @@ export namespace Components {
         "cardTitle": string;
         /**
           * The card title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
-          * @default 'a'
          */
-        "cardTitleTag": 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+        "cardTitleTag"?: 'h3' | 'h4' | 'h5' | 'h6';
         /**
           * The description attribute specifies the body of text that appears on the card
          */
@@ -257,22 +256,20 @@ export namespace Components {
      */
     interface GcdsContainer {
         /**
+          * Defines the container's alignment. This property is ignored when `layout` is set to `page`, as the page layout has higher priority.
+         */
+        "align"?: 'start' | 'center' | 'end';
+        /**
           * Defines if the container has a border.
           * @default false
          */
         "border"?: boolean;
         /**
-          * Defines if the container is centered.
-          * @default false
+          * Controls how the container aligns with the page layout. When set to `page`, the container uses a max width of 1140px and switches to 90% width on smaller screens to scale consistently with core page layout components such as the header and footer. When set to `full`, the container spans the full width (100%) of its parent.
          */
-        "centered"?: boolean;
+        "layout"?: 'full' | 'page';
         /**
-          * Defines if the container is the main page container. When true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
-          * @default false
-         */
-        "mainContainer"?: boolean;
-        /**
-          * Container margin. Left and right margins won't be applied if the container is centered.
+          * Container margin. Horizontal margins (left and right) are not applied if the container’s align property is defined, since alignment has higher priority.
          */
         "margin"?: SpacingValues;
         /**
@@ -559,15 +556,15 @@ export namespace Components {
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
         "subLinks": string | object;
-        /**
-          * GcdsSignature - The variant of the Government of Canada wordmark
-         */
-        "wordmarkVariant": 'colour' | 'white';
     }
     /**
      * A grid is a responsive, flexible column layout to position elements on a page.
      */
     interface GcdsGrid {
+        /**
+          * Defines the grid's alignment if the grid containers size is smaller than the parent's size.
+         */
+        "align"?: 'start' | 'center' | 'end';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
          */
@@ -576,11 +573,6 @@ export namespace Components {
           * Aligns grid items along the block (column) axis
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
-        /**
-          * Defines if grid container is centered or not
-          * @default false
-         */
-        "centered"?: boolean;
         /**
           * Defines the default number of grid columns for all viewports if columns-tablet and columns-desktop are not defined. Option to set different layouts for desktop with columns-desktop and for tablet with columns-tablet.
          */
@@ -966,6 +958,11 @@ export namespace Components {
          */
         "href": string;
         /**
+          * Sets the main style of the link.
+          * @default 'default'
+         */
+        "linkRole"?: 'default' | 'light';
+        /**
           * The rel attribute specifies the relationship between the current document and the linked document
          */
         "rel"?: string | undefined;
@@ -983,11 +980,6 @@ export namespace Components {
           * The type specifies the media type of the linked document
          */
         "type"?: string | undefined;
-        /**
-          * Sets the main style of the link.
-          * @default 'default'
-         */
-        "variant"?: 'default' | 'light';
     }
     /**
      * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
@@ -1041,6 +1033,10 @@ export namespace Components {
      */
     interface GcdsNotice {
         /**
+          * The notice role property specifies the style of notice to be displayed.
+         */
+        "noticeRole": 'danger' | 'info' | 'success' | 'warning';
+        /**
           * Set the notice title.
          */
         "noticeTitle": string;
@@ -1048,10 +1044,6 @@ export namespace Components {
           * The notice title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
          */
         "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
-        /**
-          * Set notice type.
-         */
-        "type": 'danger' | 'info' | 'success' | 'warning';
     }
     /**
      * Pagination is a division of content into multiple linked pages.
@@ -1094,25 +1086,6 @@ export namespace Components {
           * List display - URL object to create query strings and fragment on links
          */
         "url": string | object;
-    }
-    /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface GcdsPhaseBanner {
-        /**
-          * Defines banner role.
-          * @default 'primary'
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines the container width of the phase banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "isFixed"?: boolean;
     }
     /**
      * Radios provide a set of options for a single response.
@@ -1430,13 +1403,9 @@ export namespace Components {
      */
     interface GcdsTextarea {
         /**
-          * If true, the input will be focused on component render
+          * If true, the textarea will be focused on component render.
          */
         "autofocus": boolean;
-        /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "characterCount"?: number;
         /**
           * Check the validity of gcds-textarea
          */
@@ -1464,6 +1433,11 @@ export namespace Components {
          */
         "hideLabel"?: boolean;
         /**
+          * If true, character limt counter will not be displayed under the textarea.
+          * @default false
+         */
+        "hideLimit"?: boolean;
+        /**
           * Hint displayed below the label and above the textarea field.
          */
         "hint"?: string;
@@ -1472,7 +1446,11 @@ export namespace Components {
          */
         "label": string;
         /**
-          * The minimum number of characters that the input field can accept.
+          * The maximum number of characters that the textarea field can accept.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum number of characters that the textarea field can accept.
          */
         "minlength"?: number;
         /**
@@ -1523,10 +1501,10 @@ export namespace Components {
      */
     interface GcdsTopNav {
         /**
-          * Nav alignment
-          * @default 'left'
+          * Nav align
+          * @default 'start'
          */
-        "alignment": 'left' | 'center' | 'right';
+        "align": 'start' | 'end';
         "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
@@ -1558,21 +1536,6 @@ export namespace Components {
          */
         "updateNavItemQueue": (parent: any) => Promise<void>;
         "updateNavSize": (size: any) => Promise<void>;
-    }
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface GcdsVerifyBanner {
-        /**
-          * Defines the container width of the verify banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-          * @default false
-         */
-        "isFixed"?: boolean;
     }
 }
 export interface GcdsAlertCustomEvent<T> extends CustomEvent<T> {
@@ -2155,15 +2118,6 @@ declare global {
         prototype: HTMLGcdsPaginationElement;
         new (): HTMLGcdsPaginationElement;
     };
-    /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface HTMLGcdsPhaseBannerElement extends Components.GcdsPhaseBanner, HTMLStencilElement {
-    }
-    var HTMLGcdsPhaseBannerElement: {
-        prototype: HTMLGcdsPhaseBannerElement;
-        new (): HTMLGcdsPhaseBannerElement;
-    };
     interface HTMLGcdsRadiosElementEventMap {
         "gcdsInput": string;
         "gcdsChange": string;
@@ -2326,15 +2280,6 @@ declare global {
         prototype: HTMLGcdsTopicMenuElement;
         new (): HTMLGcdsTopicMenuElement;
     };
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface HTMLGcdsVerifyBannerElement extends Components.GcdsVerifyBanner, HTMLStencilElement {
-    }
-    var HTMLGcdsVerifyBannerElement: {
-        prototype: HTMLGcdsVerifyBannerElement;
-        new (): HTMLGcdsVerifyBannerElement;
-    };
     interface HTMLElementTagNameMap {
         "gcds-alert": HTMLGcdsAlertElement;
         "gcds-breadcrumbs": HTMLGcdsBreadcrumbsElement;
@@ -2365,7 +2310,6 @@ declare global {
         "gcds-nav-link": HTMLGcdsNavLinkElement;
         "gcds-notice": HTMLGcdsNoticeElement;
         "gcds-pagination": HTMLGcdsPaginationElement;
-        "gcds-phase-banner": HTMLGcdsPhaseBannerElement;
         "gcds-radios": HTMLGcdsRadiosElement;
         "gcds-search": HTMLGcdsSearchElement;
         "gcds-select": HTMLGcdsSelectElement;
@@ -2377,7 +2321,6 @@ declare global {
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
         "gcds-topic-menu": HTMLGcdsTopicMenuElement;
-        "gcds-verify-banner": HTMLGcdsVerifyBannerElement;
     }
 }
 declare namespace LocalJSX {
@@ -2531,9 +2474,8 @@ declare namespace LocalJSX {
         "cardTitle": string;
         /**
           * The card title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
-          * @default 'a'
          */
-        "cardTitleTag"?: 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+        "cardTitleTag"?: 'h3' | 'h4' | 'h5' | 'h6';
         /**
           * The description attribute specifies the body of text that appears on the card
          */
@@ -2676,22 +2618,20 @@ declare namespace LocalJSX {
      */
     interface GcdsContainer {
         /**
+          * Defines the container's alignment. This property is ignored when `layout` is set to `page`, as the page layout has higher priority.
+         */
+        "align"?: 'start' | 'center' | 'end';
+        /**
           * Defines if the container has a border.
           * @default false
          */
         "border"?: boolean;
         /**
-          * Defines if the container is centered.
-          * @default false
+          * Controls how the container aligns with the page layout. When set to `page`, the container uses a max width of 1140px and switches to 90% width on smaller screens to scale consistently with core page layout components such as the header and footer. When set to `full`, the container spans the full width (100%) of its parent.
          */
-        "centered"?: boolean;
+        "layout"?: 'full' | 'page';
         /**
-          * Defines if the container is the main page container. When true, the width will be set to 90% for smaller screens to ensure consistency with the responsiveness of other core layout components (header + footer).
-          * @default false
-         */
-        "mainContainer"?: boolean;
-        /**
-          * Container margin. Left and right margins won't be applied if the container is centered.
+          * Container margin. Horizontal margins (left and right) are not applied if the container’s align property is defined, since alignment has higher priority.
          */
         "margin"?: SpacingValues;
         /**
@@ -3038,15 +2978,15 @@ declare namespace LocalJSX {
           * Object of list items for sub-footer. Format: { link-label: link-href }
          */
         "subLinks"?: string | object;
-        /**
-          * GcdsSignature - The variant of the Government of Canada wordmark
-         */
-        "wordmarkVariant"?: 'colour' | 'white';
     }
     /**
      * A grid is a responsive, flexible column layout to position elements on a page.
      */
     interface GcdsGrid {
+        /**
+          * Defines the grid's alignment if the grid containers size is smaller than the parent's size.
+         */
+        "align"?: 'start' | 'center' | 'end';
         /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
          */
@@ -3055,11 +2995,6 @@ declare namespace LocalJSX {
           * Aligns grid items along the block (column) axis
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
-        /**
-          * Defines if grid container is centered or not
-          * @default false
-         */
-        "centered"?: boolean;
         /**
           * Defines the default number of grid columns for all viewports if columns-tablet and columns-desktop are not defined. Option to set different layouts for desktop with columns-desktop and for tablet with columns-tablet.
          */
@@ -3485,6 +3420,11 @@ declare namespace LocalJSX {
          */
         "href": string;
         /**
+          * Sets the main style of the link.
+          * @default 'default'
+         */
+        "linkRole"?: 'default' | 'light';
+        /**
           * Emitted when the link loses focus.
          */
         "onGcdsBlur"?: (event: GcdsLinkCustomEvent<void>) => void;
@@ -3514,11 +3454,6 @@ declare namespace LocalJSX {
           * The type specifies the media type of the linked document
          */
         "type"?: string | undefined;
-        /**
-          * Sets the main style of the link.
-          * @default 'default'
-         */
-        "variant"?: 'default' | 'light';
     }
     /**
      * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
@@ -3584,6 +3519,10 @@ declare namespace LocalJSX {
      */
     interface GcdsNotice {
         /**
+          * The notice role property specifies the style of notice to be displayed.
+         */
+        "noticeRole": 'danger' | 'info' | 'success' | 'warning';
+        /**
           * Set the notice title.
          */
         "noticeTitle": string;
@@ -3591,10 +3530,6 @@ declare namespace LocalJSX {
           * The notice title tag property specifies the HTML heading element for the title. This property does not modify the font size. It is used to assign the heading level in order to maintain heading hierarchy and accessibility for assistive technologies.
          */
         "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
-        /**
-          * Set notice type.
-         */
-        "type": 'danger' | 'info' | 'success' | 'warning';
     }
     /**
      * Pagination is a division of content into multiple linked pages.
@@ -3649,25 +3584,6 @@ declare namespace LocalJSX {
           * List display - URL object to create query strings and fragment on links
          */
         "url"?: string | object;
-    }
-    /**
-     * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-     */
-    interface GcdsPhaseBanner {
-        /**
-          * Defines banner role.
-          * @default 'primary'
-         */
-        "bannerRole"?: 'primary' | 'secondary';
-        /**
-          * Defines the container width of the phase banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-         */
-        "isFixed"?: boolean;
     }
     /**
      * Radios provide a set of options for a single response.
@@ -4026,13 +3942,9 @@ declare namespace LocalJSX {
      */
     interface GcdsTextarea {
         /**
-          * If true, the input will be focused on component render
+          * If true, the textarea will be focused on component render.
          */
         "autofocus"?: boolean;
-        /**
-          * Sets the maxlength attribute for the textarea element.
-         */
-        "characterCount"?: number;
         /**
           * Defines width for textarea cols (the min-width for textarea's is 50%).
          */
@@ -4052,6 +3964,11 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: boolean;
         /**
+          * If true, character limt counter will not be displayed under the textarea.
+          * @default false
+         */
+        "hideLimit"?: boolean;
+        /**
           * Hint displayed below the label and above the textarea field.
          */
         "hint"?: string;
@@ -4060,7 +3977,11 @@ declare namespace LocalJSX {
          */
         "label": string;
         /**
-          * The minimum number of characters that the input field can accept.
+          * The maximum number of characters that the textarea field can accept.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum number of characters that the textarea field can accept.
          */
         "minlength"?: number;
         /**
@@ -4131,10 +4052,10 @@ declare namespace LocalJSX {
      */
     interface GcdsTopNav {
         /**
-          * Nav alignment
-          * @default 'left'
+          * Nav align
+          * @default 'start'
          */
-        "alignment"?: 'left' | 'center' | 'right';
+        "align"?: 'start' | 'end';
         /**
           * Label for navigation landmark
          */
@@ -4149,21 +4070,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "home"?: boolean;
-    }
-    /**
-     * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-     */
-    interface GcdsVerifyBanner {
-        /**
-          * Defines the container width of the verify banner content
-          * @default 'xl'
-         */
-        "container"?: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-        /**
-          * Defines if the banner's position is fixed.
-          * @default false
-         */
-        "isFixed"?: boolean;
     }
     interface IntrinsicElements {
         "gcds-alert": GcdsAlert;
@@ -4195,7 +4101,6 @@ declare namespace LocalJSX {
         "gcds-nav-link": GcdsNavLink;
         "gcds-notice": GcdsNotice;
         "gcds-pagination": GcdsPagination;
-        "gcds-phase-banner": GcdsPhaseBanner;
         "gcds-radios": GcdsRadios;
         "gcds-search": GcdsSearch;
         "gcds-select": GcdsSelect;
@@ -4207,7 +4112,6 @@ declare namespace LocalJSX {
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
         "gcds-topic-menu": GcdsTopicMenu;
-        "gcds-verify-banner": GcdsVerifyBanner;
     }
 }
 export { LocalJSX as JSX };
@@ -4331,10 +4235,6 @@ declare module "@stencil/core" {
              */
             "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             /**
-             * Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.
-             */
-            "gcds-phase-banner": LocalJSX.GcdsPhaseBanner & JSXBase.HTMLAttributes<HTMLGcdsPhaseBannerElement>;
-            /**
              * Radios provide a set of options for a single response.
              */
             "gcds-radios": LocalJSX.GcdsRadios & JSXBase.HTMLAttributes<HTMLGcdsRadiosElement>;
@@ -4378,10 +4278,6 @@ declare module "@stencil/core" {
              * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
              */
             "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
-            /**
-             * Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.
-             */
-            "gcds-verify-banner": LocalJSX.GcdsVerifyBanner & JSXBase.HTMLAttributes<HTMLGcdsVerifyBannerElement>;
         }
     }
 }

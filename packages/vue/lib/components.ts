@@ -34,7 +34,6 @@ import { defineCustomElement as defineGcdsNavGroup } from '@cdssnc/gcds-componen
 import { defineCustomElement as defineGcdsNavLink } from '@cdssnc/gcds-components/dist/components/gcds-nav-link.js';
 import { defineCustomElement as defineGcdsNotice } from '@cdssnc/gcds-components/dist/components/gcds-notice.js';
 import { defineCustomElement as defineGcdsPagination } from '@cdssnc/gcds-components/dist/components/gcds-pagination.js';
-import { defineCustomElement as defineGcdsPhaseBanner } from '@cdssnc/gcds-components/dist/components/gcds-phase-banner.js';
 import { defineCustomElement as defineGcdsRadios } from '@cdssnc/gcds-components/dist/components/gcds-radios.js';
 import { defineCustomElement as defineGcdsSearch } from '@cdssnc/gcds-components/dist/components/gcds-search.js';
 import { defineCustomElement as defineGcdsSelect } from '@cdssnc/gcds-components/dist/components/gcds-select.js';
@@ -46,7 +45,6 @@ import { defineCustomElement as defineGcdsText } from '@cdssnc/gcds-components/d
 import { defineCustomElement as defineGcdsTextarea } from '@cdssnc/gcds-components/dist/components/gcds-textarea.js';
 import { defineCustomElement as defineGcdsTopNav } from '@cdssnc/gcds-components/dist/components/gcds-top-nav.js';
 import { defineCustomElement as defineGcdsTopicMenu } from '@cdssnc/gcds-components/dist/components/gcds-topic-menu.js';
-import { defineCustomElement as defineGcdsVerifyBanner } from '@cdssnc/gcds-components/dist/components/gcds-verify-banner.js';
 
 
 export const GcdsAlert: StencilVueComponent<JSX.GcdsAlert> = /*@__PURE__*/ defineContainer<JSX.GcdsAlert>('gcds-alert', defineGcdsAlert, [
@@ -157,9 +155,9 @@ export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes, JSX.GcdsChe
 
 
 export const GcdsContainer: StencilVueComponent<JSX.GcdsContainer> = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', defineGcdsContainer, [
+  'align',
   'border',
-  'centered',
-  'mainContainer',
+  'layout',
   'margin',
   'padding',
   'size',
@@ -283,7 +281,6 @@ export const GcdsFileUploader: StencilVueComponent<JSX.GcdsFileUploader, JSX.Gcd
 
 export const GcdsFooter: StencilVueComponent<JSX.GcdsFooter> = /*@__PURE__*/ defineContainer<JSX.GcdsFooter>('gcds-footer', defineGcdsFooter, [
   'display',
-  'wordmarkVariant',
   'contextualHeading',
   'contextualLinks',
   'subLinks',
@@ -302,13 +299,13 @@ export const GcdsGrid: StencilVueComponent<JSX.GcdsGrid> = /*@__PURE__*/ defineC
   'columnsTablet',
   'columnsDesktop',
   'container',
-  'centered',
   'display',
   'equalRowHeight',
   'gap',
   'gapTablet',
   'gapDesktop',
   'tag',
+  'align',
   'alignContent',
   'justifyContent',
   'placeContent',
@@ -428,7 +425,7 @@ export const GcdsLangToggle: StencilVueComponent<JSX.GcdsLangToggle> = /*@__PURE
 
 
 export const GcdsLink: StencilVueComponent<JSX.GcdsLink> = /*@__PURE__*/ defineContainer<JSX.GcdsLink>('gcds-link', defineGcdsLink, [
-  'variant',
+  'linkRole',
   'size',
   'display',
   'href',
@@ -476,7 +473,7 @@ export const GcdsNavLink: StencilVueComponent<JSX.GcdsNavLink> = /*@__PURE__*/ d
 
 
 export const GcdsNotice: StencilVueComponent<JSX.GcdsNotice> = /*@__PURE__*/ defineContainer<JSX.GcdsNotice>('gcds-notice', defineGcdsNotice, [
-  'type',
+  'noticeRole',
   'noticeTitle',
   'noticeTitleTag'
 ]);
@@ -499,13 +496,6 @@ export const GcdsPagination: StencilVueComponent<JSX.GcdsPagination> = /*@__PURE
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'
-]);
-
-
-export const GcdsPhaseBanner: StencilVueComponent<JSX.GcdsPhaseBanner> = /*@__PURE__*/ defineContainer<JSX.GcdsPhaseBanner>('gcds-phase-banner', defineGcdsPhaseBanner, [
-  'bannerRole',
-  'container',
-  'isFixed'
 ]);
 
 
@@ -633,7 +623,8 @@ export const GcdsText: StencilVueComponent<JSX.GcdsText> = /*@__PURE__*/ defineC
 
 export const GcdsTextarea: StencilVueComponent<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]>('gcds-textarea', defineGcdsTextarea, [
   'autofocus',
-  'characterCount',
+  'hideLimit',
+  'maxlength',
   'minlength',
   'cols',
   'disabled',
@@ -668,17 +659,11 @@ export const GcdsTextarea: StencilVueComponent<JSX.GcdsTextarea, JSX.GcdsTextare
 
 export const GcdsTopNav: StencilVueComponent<JSX.GcdsTopNav> = /*@__PURE__*/ defineContainer<JSX.GcdsTopNav>('gcds-top-nav', defineGcdsTopNav, [
   'label',
-  'alignment'
+  'align'
 ]);
 
 
 export const GcdsTopicMenu: StencilVueComponent<JSX.GcdsTopicMenu> = /*@__PURE__*/ defineContainer<JSX.GcdsTopicMenu>('gcds-topic-menu', defineGcdsTopicMenu, [
   'home'
-]);
-
-
-export const GcdsVerifyBanner: StencilVueComponent<JSX.GcdsVerifyBanner> = /*@__PURE__*/ defineContainer<JSX.GcdsVerifyBanner>('gcds-verify-banner', defineGcdsVerifyBanner, [
-  'container',
-  'isFixed'
 ]);
 

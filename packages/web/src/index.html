@@ -6,42 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
-    <title>Stencil Component Starter</title>
+    <title>GC Design System Components Test</title>
 
-    <!-- Utility framework -->
+    <!-- GC Design System CSS Shortcuts -->
     <link
       rel="stylesheet"
-      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-utility@latest/dist/gcds-utility.min.css"
+      href="https://cdn.design-system.alpha.canada.ca/@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css"
     />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Font awesome 6 kit for this demo page. Anyone can create a free kit for open source. -->
-    <script
-      src="https://kit.fontawesome.com/892cb27850.js"
-      crossorigin="anonymous"
-    ></script>
 
     <!-- Local components -->
     <link rel="stylesheet" href="./build/gcds.css" />
@@ -65,10 +36,6 @@
   </head>
 
   <body style="margin: 0">
-    <!-- ------------- Verify banner ------------- -->
-
-    <gcds-verify-banner></gcds-verify-banner>
-
     <!-- ------------- Header ------------- -->
 
     <gcds-header
@@ -83,7 +50,7 @@
 
       <!-- ------------- Top nav ------------- -->
 
-      <gcds-top-nav slot="menu" label="Top navigation" alignment="right">
+      <gcds-top-nav slot="menu" label="Top navigation" align="end">
         <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
         <gcds-nav-link href="#">Nav link</gcds-nav-link>
 
@@ -116,7 +83,7 @@
       </gcds-breadcrumbs> -->
     </gcds-header>
 
-    <gcds-container size="xl" main-container centered tag="main">
+    <gcds-container layout="page" tag="main">
       <gcds-heading tag="h1">GC Design System</gcds-heading>
 
       <hr class="my-550" />
@@ -202,7 +169,7 @@
       >
         <gcds-card
           card-title="Link card number 1"
-          title-element="h4"
+          card-title-tag="h3"
           href="#red"
           description="This is a card"
           badge="New"
@@ -212,27 +179,25 @@
         </gcds-card>
         <gcds-card
           card-title="Link card number 2"
-          title-element="h4"
+          card-title-tag="h4"
           href="#red"
           badge="New"
           img-src="https://picsum.photos/480/270"
           img-alt="Random image from picsum"
         >
         </gcds-card>
-
         <gcds-card
           card-title="Link card number 3 with a really long title for some reason"
-          title-element="h4"
+          card-title-tag="h5"
           href="#red"
           description="This is a card with an img and possibly more"
           img-src="https://picsum.photos/480/270"
           img-alt="Random image from picsum"
         >
         </gcds-card>
-
         <gcds-card
           card-title="Link card number 4"
-          title-element="h4"
+          card-title-tag="h6"
           href="#red"
           badge="Card with badge that is too long"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
@@ -263,8 +228,22 @@
         </p>
       </gcds-container>
       <br />
-      <gcds-container size="lg" centered border padding="400">
+      <gcds-container size="lg" align="start" border padding="400">
+        <p>
+          I'm a large container, aligned at the start of my parent container. My
+          max size is 64rem (1024px).
+        </p>
+      </gcds-container>
+      <br />
+      <gcds-container size="lg" align="center" border padding="400">
         <p>I'm a large, centred container. My max size is 64rem (1024px).</p>
+      </gcds-container>
+      <br />
+      <gcds-container size="lg" align="end" border padding="400">
+        <p>
+          I'm a large container, aligned at the end of my parent container. My
+          max size is 64rem (1024px).
+        </p>
       </gcds-container>
       <br />
       <gcds-container size="xs" border padding="400">
@@ -342,7 +321,8 @@
           textarea-id="form-message"
           label="Message"
           hint="This is a hint."
-          character-count="400"
+          maxlength="400"
+          name="message"
           required
         ></gcds-textarea>
 
@@ -497,7 +477,11 @@
         In this example each grid column has a minimum width of 100px and a
         maximum width of 300px.
       </gcds-text>
-      <gcds-grid columns="repeat(auto-fit, minmax(100px, 300px))">
+      <gcds-grid
+        align="center"
+        container="md"
+        columns="repeat(auto-fit, minmax(100px, 300px))"
+      >
         <p class="bg-primary text-light p-300">
           This is some example content to display the grid component.
         </p>
@@ -596,7 +580,11 @@
 
       <gcds-heading tag="h2">Notices</gcds-heading>
 
-      <gcds-notice notice-title-tag="h3" type="info" notice-title="Info notice">
+      <gcds-notice
+        notice-title-tag="h3"
+        notice-role="info"
+        notice-title="Info notice"
+      >
         <gcds-text>Please pay attention to this notice.</gcds-text>
         <ul class="mb-400 list-disc">
           <li>Information 1</li>
@@ -605,7 +593,7 @@
       </gcds-notice>
       <gcds-notice
         notice-title-tag="h3"
-        type="success"
+        notice-role="success"
         notice-title="Success notice"
       >
         <gcds-text>Please pay attention to this notice.</gcds-text>
@@ -616,7 +604,7 @@
       </gcds-notice>
       <gcds-notice
         notice-title-tag="h3"
-        type="danger"
+        notice-role="danger"
         notice-title="Danger notice"
       >
         <gcds-text>Please pay attention to this notice.</gcds-text>
@@ -624,7 +612,7 @@
       </gcds-notice>
       <gcds-notice
         notice-title-tag="h3"
-        type="warning"
+        notice-role="warning"
         notice-title="Warning notice"
       >
         <gcds-text>Please pay attention to this notice.</gcds-text>
@@ -850,7 +838,7 @@
         </gcds-link>
       </p>
       <div class="bg-dark mb-300 p-150">
-        <gcds-link variant="light" href="/">
+        <gcds-link link-role="light" href="/">
           This is a link using the light link role.
         </gcds-link>
       </div>
@@ -877,16 +865,6 @@
         next-href="#"
         next-label="Next page"
       ></gcds-pagination>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Phase Banner ------------- -->
-
-      <gcds-heading tag="h2">Phase banner</gcds-heading>
-      <gcds-phase-banner banner-role="primary">
-        <gcds-icon name="info-circle" slot="banner-icon-left"></gcds-icon>
-        <p slot="banner-text">Exciting announcement.</p>
-      </gcds-phase-banner>
 
       <hr class="my-550" />
 
@@ -926,7 +904,7 @@
       <!-- ------------- Top nav ------------- -->
 
       <gcds-heading tag="h2">Top navigation</gcds-heading>
-      <gcds-top-nav label="topbar" alignment="right" lang="en">
+      <gcds-top-nav label="topbar" align="start" lang="en">
         <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
         <gcds-nav-link href="#install">Installation</gcds-nav-link>
         <gcds-nav-link href="#foundations">Foundations</gcds-nav-link>

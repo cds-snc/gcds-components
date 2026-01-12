@@ -33,9 +33,9 @@ export class GcdsTopNav {
   @Prop() label!: string;
 
   /**
-   * Nav alignment
+   * Nav align
    */
-  @Prop() alignment: 'left' | 'center' | 'right' = 'left';
+  @Prop() align: 'start' | 'end' = 'start';
 
   /**
    * Sticky navigation flag
@@ -192,7 +192,7 @@ export class GcdsTopNav {
   }
 
   render() {
-    const { label, alignment, lang } = this;
+    const { label, align, lang } = this;
 
     return (
       <Host>
@@ -210,8 +210,8 @@ export class GcdsTopNav {
                 lang={lang}
               >
                 <slot name="home"></slot>
-                <li class={`nav-container__list nav-list--${alignment}`}>
-                  <ul class={`nav-container__list nav-list--${alignment}`}>
+                <li class={`nav-container__list nav-list--${align}`}>
+                  <ul class={`nav-container__list nav-list--${align}`}>
                     <slot></slot>
                   </ul>
                 </li>
