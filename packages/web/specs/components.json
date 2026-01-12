@@ -5771,6 +5771,44 @@
           "setter": false
         },
         {
+          "name": "headingRole",
+          "type": "\"light\" | \"primary\" | \"secondary\"",
+          "complexType": {
+            "original": "'light' | 'primary' | 'secondary'",
+            "resolved": "\"light\" | \"primary\" | \"secondary\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "heading-role",
+          "reflectToAttr": false,
+          "docs": "Sets the main style of the heading.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "marginBottom",
           "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
           "complexType": {
