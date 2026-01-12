@@ -545,7 +545,7 @@ export class GcdsTextarea {
 
           {maxlength && !hideLimit ? (
             <gcds-text id={`textarea__count-${textareaId}`} aria-live="polite">
-              {i18n[lang].characters.left}{' '}
+              {i18n[lang].characters.left}
               {value == undefined ? maxlength : maxlength - value.length}
             </gcds-text>
           ) : null}
