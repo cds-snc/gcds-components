@@ -153,7 +153,7 @@ Released on: 2025-08-27
 ### :pencil: Documentation
 
 - update README installation instructions to match docs site ([#934](https://github.com/cds-snc/gcds-components/issues/934)) ([8431c4a](https://github.com/cds-snc/gcds-components/commit/8431c4a9bbdddcfcacb7d995eabb3db273abc032))
-- update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
+- **gcds-date-input** and **gcds-pagination:** update small documentation typos ([#933](https://github.com/cds-snc/gcds-components/issues/933)) ([f363887](https://github.com/cds-snc/gcds-components/commit/f3638870adeda8d7401888117ab4ff8c40874c24))
 
 ## [0.41.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.40.0...gcds-components-v0.41.0)
 
@@ -197,7 +197,7 @@ Released on: 2025-07-28
 ### :bug: :wrench: Bug Fixes
 
 - **gcds-details:** Ability to search into details panel ([#913](https://github.com/cds-snc/gcds-components/issues/913)) ([6e8ffa2](https://github.com/cds-snc/gcds-components/commit/6e8ffa2e2d51f27cab4ac79cf039030ccd45156a))
-- Set form value on manual value update ([#914](https://github.com/cds-snc/gcds-components/issues/914)) ([411553b](https://github.com/cds-snc/gcds-components/commit/411553b8d16201baf789b58c6a05afbbeaeb89a9))
+- **gcds-date-input**, **gcds-input**, **gcds-select** and **gcds-text-area:** Set form value on manual value update ([#914](https://github.com/cds-snc/gcds-components/issues/914)) ([411553b](https://github.com/cds-snc/gcds-components/commit/411553b8d16201baf789b58c6a05afbbeaeb89a9))
 
 ## [0.39.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.38.0...gcds-components-v0.39.0)
 
@@ -277,8 +277,7 @@ Released on: 2025-07-02
 
 ### :bug: :wrench: Bug Fixes
 
-- Fixed top-nav `alignment=left` for the nav-group dropdown ([#886](https://github.com/cds-snc/gcds-components/issues/886)) ([af84659](https://github.com/cds-snc/gcds-components/commit/af846591126f649ddc8d84d7c2f6963abf63fa36))
-- update installation instructions to remove outdated file ([9c7d76c](https://github.com/cds-snc/gcds-components/commit/9c7d76c37fcc3772f70bd6f4dc6e3354122adaa1))
+- **gcds-nav-group:** Fixed top-nav `alignment=left` for the nav-group dropdown ([#886](https://github.com/cds-snc/gcds-components/issues/886)) ([af84659](https://github.com/cds-snc/gcds-components/commit/af846591126f649ddc8d84d7c2f6963abf63fa36))
 
 ## [0.36.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.35.0...gcds-components-v0.36.0)
 
@@ -689,12 +688,13 @@ Or, if you’d like to use your defined variables in a JS framework like React f
 
 ### :rocket: New Features
 
-- Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
+- **gcds-fieldset:** Updated and changed functionality to function closest to a native fieldset by grouping components
+- **gcds-radios** and **gcds-checkboxes:** new components meant to replace gcds-radio-group and gcds-checkbox ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
 
 ### :bug: :wrench: Bug Fixes
 
-- align structural markup for link and search with GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
-- SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
+- **gcds-link** and **gcds-search:** align structural markup with GCWeb ([#859](https://github.com/cds-snc/gcds-components/issues/859)) ([183d77d](https://github.com/cds-snc/gcds-components/commit/183d77d4f3b91fad8a2c7115b234dc5709742beb))
+- **gcds-signature:** SVG aria labels ([#850](https://github.com/cds-snc/gcds-components/issues/850)) ([936fb72](https://github.com/cds-snc/gcds-components/commit/936fb72caf3a6e4137f552ede13629ce6bd79c3b))
 - update installation instructions to remove outdated file ([e8bee81](https://github.com/cds-snc/gcds-components/commit/e8bee8145d9f08ad0c493e21f0e2b31065e5d78b))
 
 ### :no_entry: Remove
@@ -707,8 +707,8 @@ Released on: 2025-05-07
 
 ### :art: Styles
 
-- fix details list spacing ([#839](https://github.com/cds-snc/gcds-components/issues/839)) ([57e3a71](https://github.com/cds-snc/gcds-components/commit/57e3a71c23d2ea4e99c08b3504b8d575711457f9))
-- fix inconsistent text scaling across desktop + mobile styles for multiple components ([#838](https://github.com/cds-snc/gcds-components/issues/838)) ([d6ff2d0](https://github.com/cds-snc/gcds-components/commit/d6ff2d00fc2194ccf9d63bbd0966ed274d64be90))
+- **gcds-details:** fix list spacing ([#839](https://github.com/cds-snc/gcds-components/issues/839)) ([57e3a71](https://github.com/cds-snc/gcds-components/commit/57e3a71c23d2ea4e99c08b3504b8d575711457f9))
+- **gcds-file-uploader**, **gcds-pagination**, **gcds-select**, and **gcds-topic-menu:** fix inconsistent text scaling across desktop + mobile styles for multiple components ([#838](https://github.com/cds-snc/gcds-components/issues/838)) ([d6ff2d0](https://github.com/cds-snc/gcds-components/commit/d6ff2d00fc2194ccf9d63bbd0966ed274d64be90))
 
 ## [0.34.2](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.1...gcds-components-v0.34.2)
 
@@ -717,12 +717,12 @@ Released on: 2025-04-29
 ### :bug: :wrench: Bug Fixes
 
 - **gcds-card:** Ensure shadow dom are structuraly valid according to spec ([#821](https://github.com/cds-snc/gcds-components/issues/821)) ([fe67947](https://github.com/cds-snc/gcds-components/commit/fe6794729de41224945cb7d53fd8785367044214))
-- Prevent click event on disabled button ([#829](https://github.com/cds-snc/gcds-components/issues/829)) ([4c69273](https://github.com/cds-snc/gcds-components/commit/4c692736eff6f5153dad640df9d5ce38008a1134))
+- **gcds-button:** Prevent click event on disabled button ([#829](https://github.com/cds-snc/gcds-components/issues/829)) ([4c69273](https://github.com/cds-snc/gcds-components/commit/4c692736eff6f5153dad640df9d5ce38008a1134))
 
 ### :art: Styles
 
-- Add background colour to checkboxes and radios ([#828](https://github.com/cds-snc/gcds-components/issues/828)) ([91233af](https://github.com/cds-snc/gcds-components/commit/91233afb4e1f2bb32a3f156a8c008ab9d31d9f23))
-- update top-nav design ([#822](https://github.com/cds-snc/gcds-components/issues/822)) ([9d01580](https://github.com/cds-snc/gcds-components/commit/9d01580c4fcf8afe2ee105d1dbc0c874259cb92e))
+- **gcds-radio-group** and **gcds-checkbox:** Add background colour to checkboxes and radios ([#828](https://github.com/cds-snc/gcds-components/issues/828)) ([91233af](https://github.com/cds-snc/gcds-components/commit/91233afb4e1f2bb32a3f156a8c008ab9d31d9f23))
+- **gcds-top-nav:** update design ([#822](https://github.com/cds-snc/gcds-components/issues/822)) ([9d01580](https://github.com/cds-snc/gcds-components/commit/9d01580c4fcf8afe2ee105d1dbc0c874259cb92e))
 
 ## [0.34.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.34.0...gcds-components-v0.34.1)
 
@@ -774,15 +774,15 @@ You will be able to remove any existing FontAwesome dependencies (such as CDN li
 
 - **gcds-file-uploader:** ability to drag and drop files onto file input ([#801](https://github.com/cds-snc/gcds-components/issues/801)) ([159f347](https://github.com/cds-snc/gcds-components/commit/159f347abec31490c7734043a2c14e845c17096e))
 - improve layout shift for components ([#798](https://github.com/cds-snc/gcds-components/issues/798)) ([00c0bbb](https://github.com/cds-snc/gcds-components/commit/00c0bbbde169986423c154c17f35e595370d1c23))
-- update spacing between links and small typo in footer sub band ([#805](https://github.com/cds-snc/gcds-components/issues/805)) ([a4e1c2a](https://github.com/cds-snc/gcds-components/commit/a4e1c2a3273e9744143590d47ff7ee2b40671a43))
+- **gcds-footer:** update spacing between links and small typo in footer sub band ([#805](https://github.com/cds-snc/gcds-components/issues/805)) ([a4e1c2a](https://github.com/cds-snc/gcds-components/commit/a4e1c2a3273e9744143590d47ff7ee2b40671a43))
 
 ## [0.33.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.33.0...gcds-components-v0.33.1) (2025-04-02)
 
 ### :bug: :wrench: Bug Fixes
 
-- GC signature cut off on mobile devices ([#796](https://github.com/cds-snc/gcds-components/issues/796)) ([1603172](https://github.com/cds-snc/gcds-components/commit/1603172413d6427b7f1a34f96a990461a33c5c7d))
-- mandatory elements issues ([#793](https://github.com/cds-snc/gcds-components/issues/793)) ([3fbd544](https://github.com/cds-snc/gcds-components/commit/3fbd54469d1634890a814a972e255fc4717405cf))
-- Mobile top-nav menu closing in Safari ([#785](https://github.com/cds-snc/gcds-components/issues/785)) ([913eb3c](https://github.com/cds-snc/gcds-components/commit/913eb3c6ed82a5b02161a792470e465f3068bd33))
+- **gcds-signature:** GC signature cut off on mobile devices ([#796](https://github.com/cds-snc/gcds-components/issues/796)) ([1603172](https://github.com/cds-snc/gcds-components/commit/1603172413d6427b7f1a34f96a990461a33c5c7d))
+- **gcds-footer** and **gcds-search:** mandatory elements issues ([#793](https://github.com/cds-snc/gcds-components/issues/793)) ([3fbd544](https://github.com/cds-snc/gcds-components/commit/3fbd54469d1634890a814a972e255fc4717405cf))
+- **gcds-top-nav:** Mobile top-nav menu closing in Safari ([#785](https://github.com/cds-snc/gcds-components/issues/785)) ([913eb3c](https://github.com/cds-snc/gcds-components/commit/913eb3c6ed82a5b02161a792470e465f3068bd33))
 
 ## [0.33.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.32.0...gcds-components-v0.33.0)
 
@@ -794,7 +794,7 @@ Released on 2025-03-18
 
 ### :art: Styles
 
-- update header spacing and border colour + width ([#776](https://github.com/cds-snc/gcds-components/issues/776)) ([bfc184e](https://github.com/cds-snc/gcds-components/commit/bfc184eea624aa39e5966285b433e6399286a030))
+- **gcds-header:** update header spacing and border colour + width ([#776](https://github.com/cds-snc/gcds-components/issues/776)) ([bfc184e](https://github.com/cds-snc/gcds-components/commit/bfc184eea624aa39e5966285b433e6399286a030))
 
 ## [0.32.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.31.0...gcds-components-v0.32.0)
 
@@ -802,23 +802,23 @@ Released on: 2025-02-19
 
 ### :bug: :wrench: Bug Fixes
 
-- Navigation components (`gcds-top-nav`, `gcds-nav-group`) display and interaction issues ([#748](https://github.com/cds-snc/gcds-components/issues/748)) ([0169b14](https://github.com/cds-snc/gcds-components/commit/0169b14bd17c1e65f1531b7df0df9e062776f30b))
-- Remove gcds-fieldset dependancy from gcds-date-input ([#746](https://github.com/cds-snc/gcds-components/issues/746)) ([3e103ee](https://github.com/cds-snc/gcds-components/commit/3e103eecccf045862865b3b20cc4390a9942bd28))
+- **gcds-top-nav** and **gcds-nav-group:** Navigation components display and interaction issues ([#748](https://github.com/cds-snc/gcds-components/issues/748)) ([0169b14](https://github.com/cds-snc/gcds-components/commit/0169b14bd17c1e65f1531b7df0df9e062776f30b))
+- **gcds-date-input:** Remove gcds-fieldset dependancy ([#746](https://github.com/cds-snc/gcds-components/issues/746)) ([3e103ee](https://github.com/cds-snc/gcds-components/commit/3e103eecccf045862865b3b20cc4390a9942bd28))
 
 ### :pencil: Documentation
 
-- We've updated the property descriptions of `card-title-tag` for `gcds-card` and `notice-title-tag` for `gcds-notice` to provide a better and clearer explanation of how it works ([#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
+- **gcds-card** and **gcds-notice:** We've updated the property descriptions of `card-title-tag` for `gcds-card` and `notice-title-tag` for `gcds-notice` to provide a better and clearer explanation of how it works ([#745](https://github.com/cds-snc/gcds-components/issues/745)) ([96341ed](https://github.com/cds-snc/gcds-components/commit/96341ed5dc388991235eee49564625b7719d717f))
 
 ### :art: Styles
 
 We've done some work to align our styles with Canada.ca:
 
-- Updated the paddings for `gcds-footer` ([#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
-- Updated `gcds-footer` styles ([#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
-- Updated `gcds-breadcrumb-item` font size ([#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
-- Updated `date-modified` font size ([#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
-- Updated `gcds-lang-toggle` font size ([#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
-- Updated `gcds-search` styles ([#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
+- **gcds-footer:** Updated the paddings ([#755](https://github.com/cds-snc/gcds-components/issues/755)) ([890c216](https://github.com/cds-snc/gcds-components/commit/890c2160333ef5bba5f668ca7bf59f831c57a403))
+- **gcds-footer:** Updated styles ([#754](https://github.com/cds-snc/gcds-components/issues/754)) ([1cf8a6f](https://github.com/cds-snc/gcds-components/commit/1cf8a6fefb0245f173d0f562db80945ff43508a4))
+- **gcds-breadcrumb-item:** Updated font size ([#742](https://github.com/cds-snc/gcds-components/issues/742)) ([adf4260](https://github.com/cds-snc/gcds-components/commit/adf4260b94e19b0ef939d32e90a7f374d5d3e7d0))
+- **gcds-date-modified:** Updated font size ([#751](https://github.com/cds-snc/gcds-components/issues/751)) ([a403b7d](https://github.com/cds-snc/gcds-components/commit/a403b7d95c69019a48828949d964249b93a1b61b))
+- **gcds-lang-toggle:** Updated font size ([#741](https://github.com/cds-snc/gcds-components/issues/741)) ([c7b7c21](https://github.com/cds-snc/gcds-components/commit/c7b7c211d62dec5d7d603fe894f50da4e5bf64fe))
+- **gcds-search:** Updated styles ([#743](https://github.com/cds-snc/gcds-components/issues/743)) ([3697498](https://github.com/cds-snc/gcds-components/commit/369749807db05e0e0ac3235e1ac05c50568665a5))
 
 ## [0.31.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.30.0...gcds-components-v0.31.0)
 
@@ -826,7 +826,7 @@ Released on: 2025-01-22
 
 ### :rocket: New Features
 
-- add grid gap property for more flexibility ([#732](https://github.com/cds-snc/gcds-components/issues/732)) ([2af7915](https://github.com/cds-snc/gcds-components/commit/2af7915306f0a32f6af32a24336857ce300756d8))
+- **gcds-grid:** add grid gap property for more flexibility ([#732](https://github.com/cds-snc/gcds-components/issues/732)) ([2af7915](https://github.com/cds-snc/gcds-components/commit/2af7915306f0a32f6af32a24336857ce300756d8))
 - update installation instructions to match documentation site ([#718](https://github.com/cds-snc/gcds-components/issues/718)) ([e5c3bee](https://github.com/cds-snc/gcds-components/commit/e5c3bee5c724f85db9afe6970b3acee83e5c3d33))
 
 ### :bug: :wrench: Bug Fixes
@@ -836,12 +836,12 @@ Released on: 2025-01-22
 - **gcds-notice:** Add accessible labels to identify notice type ([#721](https://github.com/cds-snc/gcds-components/issues/721)) ([450d182](https://github.com/cds-snc/gcds-components/commit/450d18215ee15c33cdcd6991defc764f65e236e7))
 - **gcds-pagination:** Add tabindex="0" to &lt;a&gt; tags to function in webkit browsers ([#723](https://github.com/cds-snc/gcds-components/issues/723)) ([7256590](https://github.com/cds-snc/gcds-components/commit/7256590d0f5517e87fb7e1d10439a7d3b9f7e579))
 - **gcds-textarea:** Properly set value in shadow-root textarea ([#730](https://github.com/cds-snc/gcds-components/issues/730)) ([c3f18e6](https://github.com/cds-snc/gcds-components/commit/c3f18e612e091b7d06c1802d8af99da9efd77460))
-- input size property description ([#728](https://github.com/cds-snc/gcds-components/issues/728)) ([f6fa41b](https://github.com/cds-snc/gcds-components/commit/f6fa41b64653160493cc8857e0fb1933234a5050))
+- **gcds-input:** size property description ([#728](https://github.com/cds-snc/gcds-components/issues/728)) ([f6fa41b](https://github.com/cds-snc/gcds-components/commit/f6fa41b64653160493cc8857e0fb1933234a5050))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-- remove mobile stacking from breadcrumbs ([#729](https://github.com/cds-snc/gcds-components/issues/729)) ([cf70cf6](https://github.com/cds-snc/gcds-components/commit/cf70cf6afea17bc7a3ba745fe4851b95306e280e))
-- update component spacing + pagination arrows ([#726](https://github.com/cds-snc/gcds-components/issues/726)) ([a00e60d](https://github.com/cds-snc/gcds-components/commit/a00e60dcb389d4577af4c6f5e450718a35574391))
+- **gcds-breadcrumbs:** remove mobile stacking from breadcrumbs ([#729](https://github.com/cds-snc/gcds-components/issues/729)) ([cf70cf6](https://github.com/cds-snc/gcds-components/commit/cf70cf6afea17bc7a3ba745fe4851b95306e280e))
+- **gcds-pagination:** update component spacing + pagination arrows ([#726](https://github.com/cds-snc/gcds-components/issues/726)) ([a00e60d](https://github.com/cds-snc/gcds-components/commit/a00e60dcb389d4577af4c6f5e450718a35574391))
 
 ## [0.30.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.1...gcds-components-v0.30.0)
 
@@ -853,11 +853,11 @@ Released on: 2024-12-17
 
 ### :art: Styles
 
-- improve print design for details component ([#711](https://github.com/cds-snc/gcds-components/issues/711)) ([e68a3bf](https://github.com/cds-snc/gcds-components/commit/e68a3bf78a4a50fe8836cec64ca30557d5298871))
+- **gcds-details:** improve print design for details component ([#711](https://github.com/cds-snc/gcds-components/issues/711)) ([e68a3bf](https://github.com/cds-snc/gcds-components/commit/e68a3bf78a4a50fe8836cec64ca30557d5298871))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-- adjust form element spacing ([#707](https://github.com/cds-snc/gcds-components/issues/707)) ([4393412](https://github.com/cds-snc/gcds-components/commit/43934122d91718cd73881c03a12c4c570dca5862))
+- **gcds-error-message:** adjust form element spacing ([#707](https://github.com/cds-snc/gcds-components/issues/707)) ([4393412](https://github.com/cds-snc/gcds-components/commit/43934122d91718cd73881c03a12c4c570dca5862))
 
 ## [0.29.1](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.29.0...gcds-components-v0.29.1)
 
@@ -865,7 +865,7 @@ Released on: 2024-12-11
 
 ### :bug: :wrench: Bug Fixes
 
-- breadcrumbs item arrow display ([#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
+- **gcds-breadcrumbs:** item arrow display ([#706](https://github.com/cds-snc/gcds-components/issues/706)) ([f455e4d](https://github.com/cds-snc/gcds-components/commit/f455e4dd38263cb9bea787f2d2c207ddf0df95b3))
 
 ## [0.29.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.28.0...gcds-components-v0.29.0)
 
@@ -873,11 +873,11 @@ Released on: 2024-12-11
 
 ### :rocket: New Features
 
-- New gcds-notice component ([#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
+- **gcds-notice:** New component ([#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
 
 ### :arrows_counterclockwise: Code Refactoring
 
-- adjust breadcrumbs margin ([#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
+- **gcds-breadcrumbs:** adjust breadcrumbs margin ([#701](https://github.com/cds-snc/gcds-components/issues/701)) ([9ea1447](https://github.com/cds-snc/gcds-components/commit/9ea1447f1f78eb60901bba4d38765dbc25df264c))
 
 ## [0.28.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-v0.27.0...gcds-components-v0.28.0)
 
