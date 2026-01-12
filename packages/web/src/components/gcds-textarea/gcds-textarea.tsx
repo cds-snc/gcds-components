@@ -431,10 +431,7 @@ export class GcdsTextarea {
     if (this.value && (this.minlength || this.maxlength)) {
       if (this.minlength && this.value.length < this.minlength) {
         lengthValidity = { tooShort: true };
-      } else if (
-        this.maxlength &&
-        this.value.length > this.maxlength
-      ) {
+      } else if (this.maxlength && this.value.length > this.maxlength) {
         lengthValidity = { tooLong: true };
       }
     }
@@ -497,18 +494,21 @@ export class GcdsTextarea {
     if (hint || errorMessage || (maxlength && !hideLimit)) {
       const hintID = hint ? `hint-${textareaId} ` : '';
       const errorID = errorMessage ? `error-message-${textareaId} ` : '';
-      const countID = maxlength && !hideLimit ? `textarea__count-${textareaId} ` : '';
-      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${attrsTextarea['aria-describedby']
-        ? `${attrsTextarea['aria-describedby']}`
-        : ''
-        }`;
+      const countID =
+        maxlength && !hideLimit ? `textarea__count-${textareaId} ` : '';
+      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${
+        attrsTextarea['aria-describedby']
+          ? `${attrsTextarea['aria-describedby']}`
+          : ''
+      }`;
     }
 
     return (
       <Host>
         <div
-          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''
-            }`}
+          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${
+            hasError ? 'gcds-error' : ''
+          }`}
         >
           <gcds-label
             {...attrsLabel}
@@ -545,10 +545,8 @@ export class GcdsTextarea {
 
           {maxlength && !hideLimit ? (
             <gcds-text id={`textarea__count-${textareaId}`} aria-live="polite">
-              {value == undefined
-                ? `${maxlength} ${i18n[lang].characters.allowed}`
-                : `${maxlength - value.length} ${i18n[lang].characters.left
-                }`}
+              {i18n[lang].characters.left}{' '}
+              {value == undefined ? maxlength : maxlength - value.length}
             </gcds-text>
           ) : null}
         </div>
