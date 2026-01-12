@@ -20,9 +20,9 @@ describe('gcds-pagination', () => {
         <mock:shadow-root>
           <div class="gcds-pagination">
             <ul class="gcds-pagination-simple">
-              <li class="gcds-pagination-simple-previous">
+              <li class="gcds-pagination-simple-listitem">
                 <a aria-label="Previous page: Previous label" href="#previous" tabindex="0">
-                  <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
+                  <gcds-icon margin-right="150" name="chevron-left" size="h6"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Previous
                   </div>
@@ -31,15 +31,15 @@ describe('gcds-pagination', () => {
                   </span>
                 </a>
               </li>
-              <li class="gcds-pagination-simple-next">
+              <li class="gcds-pagination-simple-listitem">
                 <a aria-label="Next page: Next label" href="#next" tabindex="0">
+                  <gcds-icon margin-right="150" name="chevron-right" size="h6"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Next
                   </div>
                   <span>
                     Next label
                   </span>
-                  <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                 </a>
               </li>
             </ul>
@@ -65,9 +65,9 @@ describe('gcds-pagination', () => {
         <mock:shadow-root>
           <div class="gcds-pagination">
             <ul class="gcds-pagination-simple">
-              <li class="gcds-pagination-simple-previous">
+              <li class="gcds-pagination-simple-listitem">
                 <a aria-label="Previous page" href="#previous" tabindex="0">
-                  <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
+                  <gcds-icon margin-right="150" name="chevron-left" size="h6"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Previous
                   </div>
@@ -75,14 +75,14 @@ describe('gcds-pagination', () => {
                   </span>
                 </a>
               </li>
-              <li class="gcds-pagination-simple-next">
+              <li class="gcds-pagination-simple-listitem">
                 <a aria-label="Next page" href="#next" tabindex="0">
+                  <gcds-icon margin-right="150" name="chevron-right" size="h6"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Next
                   </div>
                   <span>
                   </span>
-                  <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                 </a>
               </li>
             </ul>
@@ -110,9 +110,9 @@ describe('gcds-pagination', () => {
         <mock:shadow-root>
           <div class="gcds-pagination">
             <ul class="gcds-pagination-simple">
-              <li class="gcds-pagination-simple-previous">
+              <li class="gcds-pagination-simple-listitem">
                 <a aria-label="Page précédente: Previous label" href="#previous" tabindex="0">
-                  <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
+                  <gcds-icon margin-right="150" name="chevron-left" size="h6"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                   Précédent
                   </div>
@@ -121,15 +121,15 @@ describe('gcds-pagination', () => {
                   </span>
                 </a>
               </li>
-              <li class="gcds-pagination-simple-next">
+              <li class="gcds-pagination-simple-listitem">
                 <a aria-label="Page suivante: Next label" href="#next" tabindex="0">
+                  <gcds-icon margin-right="150" name="chevron-right" size="h6"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Suivante
                   </div>
                   <span>
                     Next label
                   </span>
-                  <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                 </a>
               </li>
             </ul>
@@ -155,9 +155,9 @@ describe('gcds-pagination', () => {
         <mock:shadow-root>
           <div class="gcds-pagination">
             <ul class="gcds-pagination-simple">
-              <li class="gcds-pagination-simple-previous">
+              <li class="gcds-pagination-simple-listitem">
                 <a aria-label="Page précédente" href="#previous" tabindex="0">
-                  <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
+                  <gcds-icon margin-right="150" name="chevron-left" size="h6"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Précédent
                   </div>
@@ -165,14 +165,14 @@ describe('gcds-pagination', () => {
                   </span>
                 </a>
               </li>
-              <li class="gcds-pagination-simple-next">
+              <li class="gcds-pagination-simple-listitem">
                 <a aria-label="Page suivante" href="#next" tabindex="0">
+                  <gcds-icon margin-right="150" name="chevron-right" size="h6"></gcds-icon>
                   <div class="gcds-pagination-simple-text">
                     Suivante
                   </div>
                   <span>
                   </span>
-                  <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                 </a>
               </li>
             </ul>

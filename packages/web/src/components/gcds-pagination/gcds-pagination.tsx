@@ -145,18 +145,18 @@ export class GcdsPagination {
       'tabindex': 0,
       'aria-label': !end
         ? I18N[this.lang].pageNumberOf
-            .replace('{#}', page)
-            .replace('{total}', this.totalPages)
-            .replace('{label}', this.label)
+          .replace('{#}', page)
+          .replace('{total}', this.totalPages)
+          .replace('{label}', this.label)
         : end == 'next'
           ? `${I18N[this.lang].nextPage}: ${I18N[this.lang].pageNumberOf
-              .replace('{#}', ++page)
-              .replace('{total}', this.totalPages)
-              .replace('{label}', this.label)}`
+            .replace('{#}', ++page)
+            .replace('{total}', this.totalPages)
+            .replace('{label}', this.label)}`
           : `${I18N[this.lang].previousPage}: ${I18N[this.lang].pageNumberOf
-              .replace('{#}', --page)
-              .replace('{total}', this.totalPages)
-              .replace('{label}', this.label)}`,
+            .replace('{#}', --page)
+            .replace('{total}', this.totalPages)
+            .replace('{label}', this.label)}`,
       'onBlur': () => this.gcdsBlur.emit(),
       'onFocus': () => this.gcdsFocus.emit(),
       'onClick': e => emitEvent(e, this.gcdsClick, { page: page, href }),
@@ -396,13 +396,12 @@ export class GcdsPagination {
           ) : (
             <ul class="gcds-pagination-simple">
               {previousHref && (
-                <li class="gcds-pagination-simple-previous">
+                <li class="gcds-pagination-simple-listitem">
                   <a
                     href={previousHref}
                     tabindex={0}
-                    aria-label={`${I18N[lang].previousPage}${
-                      previousLabel ? `: ${previousLabel}` : ''
-                    }`}
+                    aria-label={`${I18N[lang].previousPage}${previousLabel ? `: ${previousLabel}` : ''
+                      }`}
                     onBlur={() => this.gcdsBlur.emit()}
                     onFocus={() => this.gcdsFocus.emit()}
                     onClick={e => emitEvent(e, this.gcdsClick, previousHref)}
@@ -410,6 +409,7 @@ export class GcdsPagination {
                     <gcds-icon
                       margin-right="150"
                       name="chevron-left"
+                      size="h6"
                     ></gcds-icon>
                     <div class="gcds-pagination-simple-text">
                       {I18N[lang].previous}
@@ -419,25 +419,26 @@ export class GcdsPagination {
                 </li>
               )}
               {nextHref && (
-                <li class="gcds-pagination-simple-next">
+                <li class="gcds-pagination-simple-listitem">
                   <a
                     href={nextHref}
                     tabindex={0}
-                    aria-label={`${I18N[lang].nextPage}${
-                      nextLabel ? `: ${nextLabel}` : ''
-                    }`}
+                    aria-label={`${I18N[lang].nextPage}${nextLabel ? `: ${nextLabel}` : ''
+                      }`}
                     onBlur={() => this.gcdsBlur.emit()}
                     onFocus={() => this.gcdsFocus.emit()}
                     onClick={e => emitEvent(e, this.gcdsClick, nextHref)}
                   >
+                    <gcds-icon
+                      margin-right="150"
+                      name="chevron-right"
+                      size="h6"
+                    ></gcds-icon>
                     <div class="gcds-pagination-simple-text">
                       {I18N[lang].next}
                     </div>
                     <span>{nextLabel}</span>
-                    <gcds-icon
-                      margin-left="150"
-                      name="chevron-right"
-                    ></gcds-icon>
+
                   </a>
                 </li>
               )}
