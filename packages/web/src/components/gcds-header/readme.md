@@ -56,6 +56,7 @@ graph TD;
   gcds-link --> gcds-icon
   gcds-lang-toggle --> gcds-sr-only
   gcds-lang-toggle --> gcds-link
+  gcds-signature --> gcds-sr-only
   style gcds-header fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
