@@ -407,7 +407,7 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Page précédente: Page 4 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    <span>Précédent</span>
+                    <span>Préc.</span>
                   </a>
                 </li>
                 <li>
@@ -467,7 +467,7 @@ describe('gcds-pagination', () => {
                 </li>
                 <li>
                   <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
-                    <span>Suivante</span>
+                    <span>Suiv.</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -481,7 +481,7 @@ describe('gcds-pagination', () => {
                 </li>
                 <li>
                   <a aria-label="Page suivante: Page 6 sur 9 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
-                    <span>Suivante</span>
+                    <span>Suiv.</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -514,7 +514,7 @@ describe('gcds-pagination', () => {
                 <li>
                   <a aria-label="Page précédente: Page 9 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
                     <gcds-icon margin-right="150" name="chevron-left"></gcds-icon>
-                    <span>Précédent</span>
+                    <span>Préc.</span>
                   </a>
                 </li>
                 <li>
@@ -564,7 +564,7 @@ describe('gcds-pagination', () => {
                 </li>
                 <li>
                   <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button" href="javascript:void(0)" tabindex="0">
-                    <span>Suivante</span>
+                    <span>Suiv.</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>
@@ -578,7 +578,7 @@ describe('gcds-pagination', () => {
                 </li>
                 <li>
                   <a aria-label="Page suivante: Page 11 sur 20 des Search results" class="gcds-pagination-end-button-mobile" href="javascript:void(0)" tabindex="0">
-                    <span>Suivante</span>
+                    <span>Suiv.</span>
                     <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
                   </a>
                 </li>

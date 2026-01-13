@@ -178,7 +178,7 @@ export class GcdsPagination {
                   : 'gcds-pagination-end-button-mobile'
               }
             >
-              <span>{I18N[this.lang].next}</span>
+              <span>{I18N[this.lang].listNext}</span>
               <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
             </a>
           ) : (
@@ -194,7 +194,7 @@ export class GcdsPagination {
               <span>
                 {mobile
                   ? I18N[this.lang].previousMobile
-                  : I18N[this.lang].previous}
+                  : I18N[this.lang].listPrevious}
               </span>
             </a>
           )}

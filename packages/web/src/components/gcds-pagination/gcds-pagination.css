@@ -76,6 +76,10 @@
       display: flex;
       margin: var(--gcds-pagination-mobile-list-prevnext-margin);
     }
+
+    & > div {
+      width: fit-content;
+    }
   }
 }
 
