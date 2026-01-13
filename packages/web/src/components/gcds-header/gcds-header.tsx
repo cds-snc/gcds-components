@@ -40,12 +40,6 @@ export class GcdsHeader {
   @Prop({ reflect: true, mutable: false }) langHref!: string;
 
   /**
-   * GcdsSignature - The variant of the Government of Canada signature
-   */
-  @Prop({ reflect: false, mutable: false }) signatureVariant:
-    | 'colour'
-    | 'white';
-  /**
    * GcdsSignature - GCDS signature links to Canada.ca
    */
   @Prop({ reflect: false, mutable: false }) signatureHasLink: boolean = true;
@@ -133,10 +127,6 @@ export class GcdsHeader {
   }
 
   private get renderSignature() {
-    const signVariant = this.signatureVariant
-      ? this.signatureVariant
-      : 'colour';
-
     if (this.el.querySelector('[slot="signature"]')) {
       return <slot name="signature"></slot>;
     } else {
@@ -144,7 +134,6 @@ export class GcdsHeader {
         <div class="brand__signature">
           <gcds-signature
             type="signature"
-            variant={signVariant}
             has-link={this.signatureHasLink}
             lang={this.lang}
           ></gcds-signature>

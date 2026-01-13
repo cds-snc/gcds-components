@@ -686,11 +686,6 @@ export namespace Components {
          */
         "signatureHasLink": boolean;
         /**
-          * GcdsSignature - The variant of the Government of Canada signature
-         */
-        "signatureVariant": | 'colour'
-    | 'white';
-        /**
           * Top navigation - Skip to content href
          */
         "skipToHref": string;
@@ -3124,11 +3119,6 @@ declare namespace LocalJSX {
           * @default true
          */
         "signatureHasLink"?: boolean;
-        /**
-          * GcdsSignature - The variant of the Government of Canada signature
-         */
-        "signatureVariant"?: | 'colour'
-    | 'white';
         /**
           * Top navigation - Skip to content href
          */

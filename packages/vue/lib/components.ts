@@ -324,7 +324,6 @@ export const GcdsGridCol: StencilVueComponent<JSX.GcdsGridCol> = /*@__PURE__*/ d
 
 export const GcdsHeader: StencilVueComponent<JSX.GcdsHeader> = /*@__PURE__*/ defineContainer<JSX.GcdsHeader>('gcds-header', defineGcdsHeader, [
   'langHref',
-  'signatureVariant',
   'signatureHasLink',
   'skipToHref',
   'gcdsFocus',

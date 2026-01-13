@@ -13,7 +13,7 @@ describe('gcds-header', () => {
           <div class="gcds-header__brand">
             <div class="brand__container container--simple">
               <div class="brand__signature">
-                <gcds-signature has-link="" lang="en" type="signature" variant="colour"></gcds-signature>
+                <gcds-signature has-link="" lang="en" type="signature"></gcds-signature>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@ describe('gcds-header', () => {
                 <gcds-lang-toggle href="/fr/" lang="en"></gcds-lang-toggle>
               </section>
               <div class="brand__signature">
-                <gcds-signature has-link="" lang="en" type="signature" variant="colour"></gcds-signature>
+                <gcds-signature has-link="" lang="en" type="signature"></gcds-signature>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ describe('gcds-header', () => {
           <div class="gcds-header__brand">
             <div class="brand__container">
               <div class="brand__signature">
-                <gcds-signature has-link="" lang="en" type="signature" variant="colour"></gcds-signature>
+                <gcds-signature has-link="" lang="en" type="signature"></gcds-signature>
               </div>
               <div class="brand__search">
                 <slot name="search"></slot>

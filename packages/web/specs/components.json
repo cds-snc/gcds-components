@@ -5535,34 +5535,6 @@
           "setter": false
         },
         {
-          "name": "signatureVariant",
-          "type": "\"colour\" | \"white\"",
-          "complexType": {
-            "original": "| 'colour'\n    | 'white'",
-            "resolved": "\"colour\" | \"white\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "signature-variant",
-          "reflectToAttr": false,
-          "docs": "GcdsSignature - The variant of the Government of Canada signature",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "colour",
-              "type": "string"
-            },
-            {
-              "value": "white",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "skipToHref",
           "type": "string",
           "complexType": {

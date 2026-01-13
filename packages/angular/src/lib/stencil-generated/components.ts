@@ -1093,7 +1093,7 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
 
 
 @ProxyCmp({
-  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
+  inputs: ['langHref', 'signatureHasLink', 'skipToHref'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -1101,7 +1101,7 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
+  inputs: ['langHref', 'signatureHasLink', 'skipToHref'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -1111,10 +1111,6 @@ export class GcdsHeader {
    * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
    */
   set langHref(_: Components.GcdsHeader['langHref']) {};
-    /**
-   * GcdsSignature - The variant of the Government of Canada signature
-   */
-  set signatureVariant(_: Components.GcdsHeader['signatureVariant']) {};
     /**
    * GcdsSignature - GCDS signature links to Canada.ca @default true
    */
