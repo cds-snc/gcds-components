@@ -168,10 +168,10 @@ export class GcdsNavGroup {
 
       // Get the alignment value from the parent + append the corresponding class
       const alignment = (this.el.parentNode as HTMLElement).getAttribute(
-        'alignment',
+        'align',
       );
 
-      if (alignment === 'right') {
+      if (alignment === 'end') {
         this.navStyle += ' dropdown-right';
       }
 

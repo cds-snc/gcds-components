@@ -16,12 +16,12 @@ export default {
         required: true,
       },
     },
-    alignment: {
+    align: {
       control: { type: 'select' },
-      options: ['right', 'left', 'center'],
+      options: ['end', 'start'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'right' },
+        defaultValue: { summary: 'start' },
       },
     },
     // position: {
@@ -63,16 +63,14 @@ const Template = args =>
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-top-nav
   label="${args.label}"
-  alignment="${args.alignment}"
+  align="${args.align}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${
-    args.home
+  ${args.home
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
-  }
-  ${
-    args.default ||
+    }
+  ${args.default ||
     `<gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
   <gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
 
@@ -84,22 +82,20 @@ const Template = args =>
   </gcds-nav-group>
 
   <gcds-nav-link href="#">Contact us</gcds-nav-link>`
-  }
+    }
 </gcds-top-nav>
 
 <!-- React code -->
 <GcdsTopNav
   label="${args.label}"
-  alignment="${args.alignment}"
+  align="${args.align}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${
-    args.home
+  ${args.home
       ? `<GcdsNavLink href="#home" slot="home">${args.home}</GcdsNavLink> `
       : null
-  }
-  ${
-    args.default ||
+    }
+  ${args.default ||
     `<GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
   <GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
 
@@ -111,7 +107,7 @@ const Template = args =>
   </GcdsNavGroup>
 
   <GcdsNavLink href="#">Contact us</GcdsNavLink>`
-  }
+    }
 </GcdsTopNav>
 `.replace(/\s\snull\n/g, '');
 
@@ -120,16 +116,14 @@ const TemplatePlayground = args =>
 <!-- Web component code (Angular, Vue) -->
 <gcds-top-nav
   label="${args.label}"
-  alignment="${args.alignment}"
+  align="${args.align}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${
-    args.home
+  ${args.home
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
-  }
-  ${
-    args.default ||
+    }
+  ${args.default ||
     `<gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-group  open-trigger="Nav group label" menu-label="Nav group label">
@@ -140,14 +134,14 @@ const TemplatePlayground = args =>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   `
-  }
+    }
 </gcds-top-nav>
 `.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
@@ -156,34 +150,25 @@ Default.args = {
 export const Home = Template.bind({});
 Home.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
 };
 
-export const Right = Template.bind({});
-Right.args = {
+export const End = Template.bind({});
+End.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: '',
   lang: 'en',
   default: '',
 };
 
-export const Center = Template.bind({});
-Center.args = {
+export const Start = Template.bind({});
+Start.args = {
   label: 'Top navigation',
-  alignment: 'center',
-  home: '',
-  lang: 'en',
-  default: '',
-};
-
-export const Left = Template.bind({});
-Left.args = {
-  label: 'Top navigation',
-  alignment: 'left',
+  align: 'start',
   home: '',
   lang: 'en',
   default: '',
@@ -192,7 +177,7 @@ Left.args = {
 export const Props = Template.bind({});
 Props.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
@@ -201,7 +186,7 @@ Props.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   label: 'Top navigation',
-  alignment: 'right',
+  align: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
