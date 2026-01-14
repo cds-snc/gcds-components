@@ -94,7 +94,7 @@
 
       &:has(+ li) {
         margin-block-end: var(--gcds-pagination-simple-listitem-divider-margin);
-        border-bottom: var(--gcds-pagination-simple-listitem-divider-border);
+        border-block-end: var(--gcds-pagination-simple-listitem-divider-border);
         padding: var(--gcds-pagination-simple-listitem-divider-padding);
       }
 
