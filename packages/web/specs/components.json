@@ -4446,6 +4446,9 @@
           "gcds-sr-only",
           "gcds-link"
         ],
+        "gcds-signature": [
+          "gcds-sr-only"
+        ],
         "gcds-link": [
           "gcds-icon"
         ]
@@ -5724,6 +5727,9 @@
         "gcds-lang-toggle": [
           "gcds-sr-only",
           "gcds-link"
+        ],
+        "gcds-signature": [
+          "gcds-sr-only"
         ]
       }
     },
@@ -11182,8 +11188,13 @@
         "gcds-footer",
         "gcds-header"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "gcds-sr-only"
+      ],
       "dependencyGraph": {
+        "gcds-signature": [
+          "gcds-sr-only"
+        ],
         "gcds-footer": [
           "gcds-signature"
         ],
@@ -11285,6 +11296,7 @@
         "gcds-notice",
         "gcds-radios",
         "gcds-search",
+        "gcds-signature",
         "gcds-stepper",
         "gcds-topic-menu"
       ],
@@ -11312,6 +11324,9 @@
           "gcds-sr-only"
         ],
         "gcds-search": [
+          "gcds-sr-only"
+        ],
+        "gcds-signature": [
           "gcds-sr-only"
         ],
         "gcds-stepper": [
