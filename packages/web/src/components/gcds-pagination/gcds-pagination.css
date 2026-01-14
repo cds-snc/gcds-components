@@ -93,7 +93,7 @@
       margin: var(--gcds-pagination-simple-listitem-margin);
 
       &:has(+ li) {
-        margin-bottom: var(--gcds-pagination-simple-listitem-divider-margin);
+        margin-block-end: var(--gcds-pagination-simple-listitem-divider-margin);
         border-bottom: var(--gcds-pagination-simple-listitem-divider-border);
         padding: var(--gcds-pagination-simple-listitem-divider-padding);
       }
