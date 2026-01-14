@@ -152,7 +152,7 @@ const Template = args =>
   >
   ${args.default}
 </GcdsHeading>
-`.replace(/ null/g, '');
+`.replace(/\s\snull\n/g, '');
 
 const TemplatePlayground = args => `
 <gcds-heading
@@ -173,6 +173,7 @@ Default.args = {
   tag: 'h2',
   characterLimit: true,
   default: 'Heading',
+  headingRole: 'primary',
 };
 
 // ------ Heading level ------
