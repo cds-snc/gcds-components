@@ -713,6 +713,11 @@ export namespace Components {
          */
         "characterLimit"?: boolean;
         /**
+          * Sets the main style of the heading.
+          * @default 'primary'
+         */
+        "headingRole"?: 'light' | 'primary' | 'secondary';
+        /**
           * Adds margin below the heading. The default margin-botttom is 300.
           * @default '300'
          */
@@ -3208,6 +3213,11 @@ declare namespace LocalJSX {
           * @default true
          */
         "characterLimit"?: boolean;
+        /**
+          * Sets the main style of the heading.
+          * @default 'primary'
+         */
+        "headingRole"?: 'light' | 'primary' | 'secondary';
         /**
           * Adds margin below the heading. The default margin-botttom is 300.
           * @default '300'
