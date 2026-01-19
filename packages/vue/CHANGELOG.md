@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.47.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.46.0...gcds-components-vue-v0.47.0) (2026-01-19)
+
+
+### :rocket: New Features
+
+* **gcds-heading:** Add new heading-role attribute ([#1097](https://github.com/cds-snc/gcds-components/issues/1097)) ([cdab317](https://github.com/cds-snc/gcds-components/commit/cdab31771ef176fdcc6d9ddcedde15f41e6a931a))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-date-input:** prevent invalid characters ([#1082](https://github.com/cds-snc/gcds-components/issues/1082)) ([ff5c2cb](https://github.com/cds-snc/gcds-components/commit/ff5c2cb333ac56b1a70d1e15895eac88b7810bcc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @cdssnc/gcds-components bumped from ^0.46.0 to ^0.47.0
+
 ## [0.46.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-vue-v0.45.0...gcds-components-vue-v0.46.0) (2025-12-16)
 
 
