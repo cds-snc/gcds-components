@@ -1144,14 +1144,14 @@ export declare interface GcdsHeader extends Components.GcdsHeader {
 
 
 @ProxyCmp({
-  inputs: ['characterLimit', 'marginBottom', 'marginTop', 'tag']
+  inputs: ['characterLimit', 'headingRole', 'marginBottom', 'marginTop', 'tag']
 })
 @Component({
   selector: 'gcds-heading',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['characterLimit', 'marginBottom', 'marginTop', 'tag'],
+  inputs: ['characterLimit', 'headingRole', 'marginBottom', 'marginTop', 'tag'],
   standalone: false,
 })
 export class GcdsHeading {
@@ -1160,6 +1160,10 @@ export class GcdsHeading {
    * Sets the appropriate HTML tag for the selected level.
    */
   set tag(_: Components.GcdsHeading['tag']) {};
+    /**
+   * Sets the main style of the heading. @default 'primary'
+   */
+  set headingRole(_: Components.GcdsHeading['headingRole']) {};
     /**
    * Sets the line length to a maximum amount of characters per line for
 each heading level, ensuring a comfortable, accessible reading length. @default true

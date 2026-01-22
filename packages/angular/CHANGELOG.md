@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.47.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.46.0...gcds-components-angular-v0.47.0) (2026-01-19)
+
+
+### :rocket: New Features
+
+* **gcds-heading:** Add new heading-role attribute ([#1097](https://github.com/cds-snc/gcds-components/issues/1097)) ([cdab317](https://github.com/cds-snc/gcds-components/commit/cdab31771ef176fdcc6d9ddcedde15f41e6a931a))
+
+
+### :art: Styles
+
+* **gcds-pagination:** Update simple pagination design ([#1096](https://github.com/cds-snc/gcds-components/issues/1096)) ([1549745](https://github.com/cds-snc/gcds-components/commit/1549745f715ab4bb034ee19b7755b4bc807d86a8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @cdssnc/gcds-components bumped from ^0.46.0 to ^0.47.0
+
 ## [0.46.0](https://github.com/cds-snc/gcds-components/compare/gcds-components-angular-v0.45.0...gcds-components-angular-v0.46.0) (2025-12-16)
 
 

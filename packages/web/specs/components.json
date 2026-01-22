@@ -4406,6 +4406,9 @@
           "gcds-sr-only",
           "gcds-link"
         ],
+        "gcds-signature": [
+          "gcds-sr-only"
+        ],
         "gcds-link": [
           "gcds-icon"
         ]
@@ -5654,6 +5657,9 @@
         "gcds-lang-toggle": [
           "gcds-sr-only",
           "gcds-link"
+        ],
+        "gcds-signature": [
+          "gcds-sr-only"
         ]
       }
     },
@@ -5693,6 +5699,44 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "headingRole",
+          "type": "\"light\" | \"primary\" | \"secondary\"",
+          "complexType": {
+            "original": "'light' | 'primary' | 'secondary'",
+            "resolved": "\"light\" | \"primary\" | \"secondary\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "heading-role",
+          "reflectToAttr": false,
+          "docs": "Sets the main style of the heading.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
             }
           ],
           "optional": true,
@@ -10945,8 +10989,13 @@
         "gcds-footer",
         "gcds-header"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "gcds-sr-only"
+      ],
       "dependencyGraph": {
+        "gcds-signature": [
+          "gcds-sr-only"
+        ],
         "gcds-footer": [
           "gcds-signature"
         ],
@@ -11048,6 +11097,7 @@
         "gcds-notice",
         "gcds-radios",
         "gcds-search",
+        "gcds-signature",
         "gcds-stepper",
         "gcds-topic-menu"
       ],
@@ -11075,6 +11125,9 @@
           "gcds-sr-only"
         ],
         "gcds-search": [
+          "gcds-sr-only"
+        ],
+        "gcds-signature": [
           "gcds-sr-only"
         ],
         "gcds-stepper": [
