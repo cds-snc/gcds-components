@@ -16,8 +16,6 @@
     container: component pagination / inline-size;
 
     li {
-      margin: var(--gcds-pagination-listitem-margin);
-
       a {
         color: var(--gcds-pagination-default-text);
         font: var(--gcds-pagination-font-desktop);
@@ -36,10 +34,12 @@
     :is(.gcds-pagination-list, .gcds-pagination-list-mobile-prevnext) {
       display: flex;
       flex-direction: row;
-      margin: 0 auto;
+      margin: 0;
       width: fit-content;
 
       li {
+        margin: var(--gcds-pagination-listitem-margin);
+
         a,
         & > span.gcds-pagination-list-ellipses {
           height: 3rem;
@@ -76,6 +76,10 @@
       display: flex;
       margin: var(--gcds-pagination-mobile-list-prevnext-margin);
     }
+
+    & > div {
+      width: fit-content;
+    }
   }
 }
 
@@ -86,10 +90,13 @@
     justify-content: space-between;
 
     li {
-      display: inline-block;
       margin: var(--gcds-pagination-simple-listitem-margin);
-      justify-content: space-between;
-      width: fit-content;
+
+      &:has(+ li) {
+        margin-block-end: var(--gcds-pagination-simple-listitem-divider-margin);
+        border-block-end: var(--gcds-pagination-simple-listitem-divider-border);
+        padding: var(--gcds-pagination-simple-listitem-divider-padding);
+      }
 
       a {
         display: grid;
@@ -111,8 +118,7 @@
       }
     }
 
-    .gcds-pagination-simple-previous a,
-    .gcds-pagination-simple-next a {
+    .gcds-pagination-simple-listitem a {
       text-decoration: none;
 
       .gcds-pagination-simple-text,
@@ -121,18 +127,11 @@
       }
     }
 
-    .gcds-pagination-simple-previous a {
+    .gcds-pagination-simple-listitem a {
       grid-template-areas:
         'icon text'
         'icon label';
-      grid-template-columns: 0.25fr 1fr;
-    }
-
-    .gcds-pagination-simple-next a {
-      grid-template-areas:
-        'text icon'
-        'label icon';
-      grid-template-columns: 1fr 0.25fr;
+      grid-template-columns: 2rem 6fr;
     }
   }
 }
@@ -142,17 +141,6 @@
   @container pagination (width > 44em) {
     :host .gcds-pagination-list-mobile-prevnext {
       display: none;
-    }
-  }
-
-  /* List display: simple */
-  @container pagination (width > 20em) {
-    :host .gcds-pagination-simple {
-      flex-direction: row;
-
-      .gcds-pagination-simple-next {
-        margin-left: auto;
-      }
     }
   }
 }

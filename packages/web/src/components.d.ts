@@ -686,11 +686,6 @@ export namespace Components {
          */
         "signatureHasLink": boolean;
         /**
-          * GcdsSignature - The variant of the Government of Canada signature
-         */
-        "signatureVariant": | 'colour'
-    | 'white';
-        /**
           * Top navigation - Skip to content href
          */
         "skipToHref": string;
@@ -704,6 +699,11 @@ export namespace Components {
           * @default true
          */
         "characterLimit"?: boolean;
+        /**
+          * Sets the main style of the heading.
+          * @default 'primary'
+         */
+        "headingRole"?: 'light' | 'primary' | 'secondary';
         /**
           * Adds margin below the heading. The default margin-botttom is 300.
           * @default '300'
@@ -3125,11 +3125,6 @@ declare namespace LocalJSX {
          */
         "signatureHasLink"?: boolean;
         /**
-          * GcdsSignature - The variant of the Government of Canada signature
-         */
-        "signatureVariant"?: | 'colour'
-    | 'white';
-        /**
           * Top navigation - Skip to content href
          */
         "skipToHref": string;
@@ -3143,6 +3138,11 @@ declare namespace LocalJSX {
           * @default true
          */
         "characterLimit"?: boolean;
+        /**
+          * Sets the main style of the heading.
+          * @default 'primary'
+         */
+        "headingRole"?: 'light' | 'primary' | 'secondary';
         /**
           * Adds margin below the heading. The default margin-botttom is 300.
           * @default '300'

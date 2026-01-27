@@ -21,8 +21,8 @@ function assignAll() {
 
 function assignInvalidValues() {
   number.value = 'red'
-  dateFull.value = '20sd-12s-25s'
-  dateCompact.value = '2e4-12'
+  dateFull.value = '20222-123-253'
+  dateCompact.value = '245-12'
   select.value = '5'
   radio.value = 'radio5'
   check.value = 'check5'

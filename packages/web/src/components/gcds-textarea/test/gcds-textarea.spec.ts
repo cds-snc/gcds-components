@@ -47,7 +47,7 @@ describe('gcds-textarea', () => {
               rows="5"
               maxlength="22"
             >Value Test</textarea>
-            <gcds-text id="textarea__count-character-count" aria-live="polite">12 characters left</gcds-text>
+            <gcds-text id="textarea__count-character-count" aria-live="polite">Characters left: 12</gcds-text>
           </div>
         </mock:shadow-root>
       </gcds-textarea>
@@ -73,7 +73,7 @@ describe('gcds-textarea', () => {
               rows="5"
               maxlength="22"
             >Value Test</textarea>
-            <gcds-text id="textarea__count-character-count" aria-live="polite">12 caractères restants</gcds-text>
+            <gcds-text id="textarea__count-character-count" aria-live="polite">Caractères restants&nbsp;: 12</gcds-text>
           </div>
         </mock:shadow-root>
       </gcds-textarea>

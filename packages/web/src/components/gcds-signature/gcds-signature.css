@@ -1,4 +1,4 @@
-@layer reset, default, type.signature, type.wordmark, variant.colour, variant.white, desktop;
+@layer reset, default, type.signature, type.wordmark, variant.colour, variant.white, desktop, highcontrast;
 
 @layer reset {
   :host {
@@ -58,6 +58,17 @@
   :host(:not([type='wordmark'])) svg {
     @media screen and (width >= 64em) {
       height: var(--gcds-signature-signature-height-desktop);
+    }
+  }
+}
+
+@layer highcontrast {
+  :host svg .fip_text {
+    @media (prefers-color-scheme: light) {
+      fill: var(--gcds-signature-color-text);
+    }
+    @media (prefers-color-scheme: dark) {
+      fill: var(--gcds-signature-white-default);
     }
   }
 }

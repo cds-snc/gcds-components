@@ -1,6 +1,6 @@
 {
-  "packages/angular": "0.46.0",
-  "packages/react": "0.46.0",
-  "packages/vue": "0.46.0",
-  "packages/web": "0.46.0"
+  "packages/angular": "0.47.0",
+  "packages/react": "0.47.0",
+  "packages/vue": "0.47.0",
+  "packages/web": "0.47.0"
 }
