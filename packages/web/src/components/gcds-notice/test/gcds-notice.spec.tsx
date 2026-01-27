@@ -2,17 +2,17 @@ import { newSpecPage } from '@stencil/core/testing';
 import { GcdsNotice } from '../gcds-notice';
 
 describe('gcds-notice', () => {
-  it('renders - success type', async () => {
+  it('renders - success role', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="success">
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="success">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="success">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="success">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-success">
+        <section class="gcds-notice notice--role-success">
           <gcds-icon class="notice__icon" name="checkmark-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
@@ -30,17 +30,17 @@ describe('gcds-notice', () => {
     `);
   });
 
-  it('renders - success type - french', async () => {
+  it('renders - success role - french', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="success" lang="fr">
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="success" lang="fr">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="success" lang="fr">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="success" lang="fr">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-success">
+        <section class="gcds-notice notice--role-success">
           <gcds-icon class="notice__icon" name="checkmark-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
@@ -58,17 +58,17 @@ describe('gcds-notice', () => {
     `);
   });
 
-  it('renders - danger type', async () => {
+  it('renders - danger role', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="danger">
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="danger">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="danger">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="danger">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-danger">
+        <section class="gcds-notice notice--role-danger">
           <gcds-icon class="notice__icon" name="exclamation-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
@@ -86,17 +86,17 @@ describe('gcds-notice', () => {
     `);
   });
 
-  it('renders - danger type - french', async () => {
+  it('renders - danger role - french', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="danger" lang="fr">
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="danger" lang="fr">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="danger" lang="fr">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="danger" lang="fr">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-danger">
+        <section class="gcds-notice notice--role-danger">
           <gcds-icon class="notice__icon" name="exclamation-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
@@ -114,17 +114,17 @@ describe('gcds-notice', () => {
     `);
   });
 
-  it('renders - info type', async () => {
+  it('renders - info role', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="info">
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="info">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="info">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="info">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-info">
+        <section class="gcds-notice notice--role-info">
           <gcds-icon class="notice__icon" name="info-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
@@ -142,17 +142,17 @@ describe('gcds-notice', () => {
     `);
   });
 
-  it('renders - info type - french', async () => {
+  it('renders - info role - french', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="info" lang="fr">
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="info" lang="fr">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="info" lang="fr">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="info" lang="fr">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-info">
+        <section class="gcds-notice notice--role-info">
           <gcds-icon class="notice__icon" name="info-circle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
@@ -170,17 +170,17 @@ describe('gcds-notice', () => {
     `);
   });
 
-  it('renders - warning type', async () => {
+  it('renders - warning role', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="warning">
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="warning">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="warning">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="warning">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-warning">
+        <section class="gcds-notice notice--role-warning">
           <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
@@ -198,17 +198,17 @@ describe('gcds-notice', () => {
     `);
   });
 
-  it('renders - warning type - french', async () => {
+  it('renders - warning role - french', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="warning" lang="fr">
+      html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="warning" lang="fr">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" type="warning" lang="fr">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice" notice-role="warning" lang="fr">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-warning">
+        <section class="gcds-notice notice--role-warning">
           <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h2">
@@ -229,14 +229,14 @@ describe('gcds-notice', () => {
   it('renders - title tag h3', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h3" notice-title="GC Design System notice" type="warning">
+      html: `<gcds-notice notice-title-tag="h3" notice-title="GC Design System notice" notice-role="warning">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h3" notice-title="GC Design System notice" type="warning">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h3" notice-title="GC Design System notice" notice-role="warning">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-warning">
+        <section class="gcds-notice notice--role-warning">
           <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h3">
@@ -257,14 +257,14 @@ describe('gcds-notice', () => {
   it('renders - title tag h4', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h4" notice-title="GC Design System notice" type="warning">
+      html: `<gcds-notice notice-title-tag="h4" notice-title="GC Design System notice" notice-role="warning">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h4" notice-title="GC Design System notice" type="warning">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h4" notice-title="GC Design System notice" notice-role="warning">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-warning">
+        <section class="gcds-notice notice--role-warning">
           <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h4">
@@ -285,14 +285,14 @@ describe('gcds-notice', () => {
   it('renders - title tag h5', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" type="warning">
+      html: `<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" notice-role="warning">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" type="warning">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" notice-role="warning">
       <mock:shadow-root>
-        <section class="gcds-notice notice--type-warning">
+        <section class="gcds-notice notice--role-warning">
           <gcds-icon class="notice__icon" name="warning-triangle" size="h4"></gcds-icon>
           <div>
             <gcds-heading class="notice__heading" margin-top="0" margin-bottom="100" tag="h5">
@@ -310,7 +310,7 @@ describe('gcds-notice', () => {
     `);
   });
 
-  it('does not render - no type', async () => {
+  it('does not render - no role', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
       html: `<gcds-notice notice-title-tag="h2" notice-title="GC Design System notice">
@@ -331,11 +331,11 @@ describe('gcds-notice', () => {
   it('does not render - no notice title', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h2" type="danger">
+      html: `<gcds-notice notice-title-tag="h2" notice-role="danger">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
-    expect(page.root).toEqualHtml(`<gcds-notice notice-title-tag="h2" type="danger">
+    expect(page.root).toEqualHtml(`<gcds-notice notice-title-tag="h2" notice-role="danger">
       <mock:shadow-root>
       </mock:shadow-root>
       <gcds-text>
@@ -348,11 +348,11 @@ describe('gcds-notice', () => {
   it('does not render - no passed message', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" type="danger">
+      html: `<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" notice-role="danger">
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" type="danger">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h5" notice-title="GC Design System notice" notice-role="danger">
       <mock:shadow-root>
       </mock:shadow-root>
     </gcds-notice>
@@ -362,12 +362,12 @@ describe('gcds-notice', () => {
   it('does not render - no notice title tag', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title="GC Design System notice" type="danger">
+      html: `<gcds-notice notice-title="GC Design System notice" notice-role="danger">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" type="danger">
+      .toEqualHtml(`<gcds-notice notice-title="GC Design System notice" notice-role="danger">
       <mock:shadow-root>
       </mock:shadow-root>
       <gcds-text>
@@ -380,12 +380,12 @@ describe('gcds-notice', () => {
   it('does not render - invalid notice title tag value', async () => {
     const page = await newSpecPage({
       components: [GcdsNotice],
-      html: `<gcds-notice notice-title-tag="h1" notice-title="GC Design System notice" type="info">
+      html: `<gcds-notice notice-title-tag="h1" notice-title="GC Design System notice" notice-role="info">
         <gcds-text>Provide additonal information</gcds-text>
       </gcds-notice>`,
     });
     expect(page.root)
-      .toEqualHtml(`<gcds-notice notice-title-tag="h1" notice-title="GC Design System notice" type="info">
+      .toEqualHtml(`<gcds-notice notice-title-tag="h1" notice-title="GC Design System notice" notice-role="info">
       <mock:shadow-root>
       </mock:shadow-root>
       <gcds-text>

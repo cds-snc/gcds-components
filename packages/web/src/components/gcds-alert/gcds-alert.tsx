@@ -129,7 +129,7 @@ export class GcdsAlert {
                       : null
             }
           >
-            <gcds-container size={isFixed ? container : 'full'} centered>
+            <gcds-container size={isFixed ? container : 'full'} align="center">
               <div class="alert__container">
                 {!hideRoleIcon && (
                   <gcds-icon

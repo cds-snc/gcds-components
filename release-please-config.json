@@ -24,10 +24,6 @@
     "packages/web": {
       "component": "gcds-components",
       "changelog-path": ""
-    },
-    "packages/react-ssr": {
-      "component": "gcds-components-react-ssr",
-      "changelog-path": ""
     }
   },
   "changelog-sections": [
@@ -60,7 +56,6 @@
       "components": [
         "gcds-components-angular",
         "gcds-components-react",
-        "gcds-components-react-ssr",
         "gcds-components-vue",
         "gcds-components"
       ]
@@ -71,7 +66,6 @@
         "gcds-components",
         "gcds-components-angular",
         "gcds-components-react",
-        "gcds-components-react-ssr",
         "gcds-components-vue"
       ]
     }

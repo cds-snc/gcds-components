@@ -20,6 +20,7 @@
       font: var(--gcds-side-nav-heading-font);
       margin-block-end: var(--gcds-side-nav-heading-margin);
       padding: var(--gcds-side-nav-heading-padding);
+      color: var(--gcds-side-nav-heading-color);
     }
   }
 }

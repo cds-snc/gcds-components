@@ -59,17 +59,22 @@ export class GcdsTextarea {
    */
 
   /**
-   * If true, the input will be focused on component render
+   * If true, the textarea will be focused on component render.
    */
   @Prop({ reflect: true }) autofocus: boolean;
 
   /**
-   * Sets the maxlength attribute for the textarea element.
+   * If true, character limt counter will not be displayed under the textarea.
    */
-  @Prop() characterCount?: number;
+  @Prop() hideLimit?: boolean = false;
 
   /**
-   * The minimum number of characters that the input field can accept.
+   * The maximum number of characters that the textarea field can accept.
+   */
+  @Prop({ reflect: true }) maxlength?: number;
+
+  /**
+   * The minimum number of characters that the textarea field can accept.
    */
   @Prop({ reflect: true }) minlength?: number;
 
@@ -423,13 +428,10 @@ export class GcdsTextarea {
   componentDidLoad() {
     let lengthValidity;
     // maxlength/minlength validation on load
-    if (this.value && (this.minlength || this.characterCount)) {
+    if (this.value && (this.minlength || this.maxlength)) {
       if (this.minlength && this.value.length < this.minlength) {
         lengthValidity = { tooShort: true };
-      } else if (
-        this.characterCount &&
-        this.value.length > this.characterCount
-      ) {
+      } else if (this.maxlength && this.value.length > this.maxlength) {
         lengthValidity = { tooLong: true };
       }
     }
@@ -447,13 +449,14 @@ export class GcdsTextarea {
   render() {
     const {
       autofocus,
-      characterCount,
       cols,
       disabled,
       errorMessage,
       hideLabel,
+      hideLimit,
       hint,
       label,
+      maxlength,
       minlength,
       required,
       rows,
@@ -480,6 +483,7 @@ export class GcdsTextarea {
       name,
       autofocus,
       disabled,
+      maxlength,
       minlength,
       required,
       rows,
@@ -487,10 +491,11 @@ export class GcdsTextarea {
       ...inheritedAttributes,
     };
 
-    if (hint || errorMessage || characterCount) {
+    if (hint || errorMessage || (maxlength && !hideLimit)) {
       const hintID = hint ? `hint-${textareaId} ` : '';
       const errorID = errorMessage ? `error-message-${textareaId} ` : '';
-      const countID = characterCount ? `textarea__count-${textareaId} ` : '';
+      const countID =
+        maxlength && !hideLimit ? `textarea__count-${textareaId} ` : '';
       attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${
         attrsTextarea['aria-describedby']
           ? `${attrsTextarea['aria-describedby']}`
@@ -530,7 +535,6 @@ export class GcdsTextarea {
             onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${textareaId}`}
             aria-invalid={errorMessage ? 'true' : 'false'}
-            maxlength={characterCount ? characterCount : null}
             style={cols ? style : null}
             ref={element =>
               (this.shadowElement = element as HTMLTextAreaElement)
@@ -539,13 +543,10 @@ export class GcdsTextarea {
             {value}
           </textarea>
 
-          {characterCount ? (
+          {maxlength && !hideLimit ? (
             <gcds-text id={`textarea__count-${textareaId}`} aria-live="polite">
-              {value == undefined
-                ? `${characterCount} ${i18n[lang].characters.allowed}`
-                : `${characterCount - value.length} ${
-                    i18n[lang].characters.left
-                  }`}
+              {i18n[lang].characters.left}
+              {value == undefined ? maxlength : maxlength - value.length}
             </gcds-text>
           ) : null}
         </div>

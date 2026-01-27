@@ -6,13 +6,12 @@
   "scripts": {
     "ng": "ng",
     "compile": "gulp compile",
-    "build": "npm run build:angular-output-target && npm run build:web && npm run build:vue && npm run build:angular && npm run build:react && npm run build:react-ssr",
+    "build": "npm run build:angular-output-target && npm run build:web && npm run build:vue && npm run build:angular && npm run build:react",
     "build:angular-output-target": "npm run build -w utils/angular-output-target",
     "build:web": "npm run build -w @cdssnc/gcds-components",
     "build:vue": "npm run build -w @cdssnc/gcds-components-vue",
     "build:angular": "ng build @cdssnc/gcds-components-angular",
     "build:react": "npm run build -w @cdssnc/gcds-components-react",
-    "build:react-ssr": "npm run build -w @cdssnc/gcds-components-react-ssr",
     "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/vue && npm run test:angular",
     "test:unit": "npm run test:angular:unit && npm run pretest:web && npm run test:unit --workspace=packages/web",
     "pretest:web": "npm run patch:stenciljs",
@@ -68,8 +67,7 @@
     "packages/web",
     "packages/react",
     "packages/vue",
-    "packages/angular",
-    "packages/react-ssr"
+    "packages/angular"
   ],
   "license": "MIT"
 }

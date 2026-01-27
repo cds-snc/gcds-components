@@ -42,12 +42,8 @@
         align-items: flex-end;
         width: fit-content;
 
-        &.nav-list--right {
+        &.nav-list--end {
           margin-inline-start: auto;
-        }
-
-        &.nav-list--center {
-          margin-inline: auto;
         }
       }
     }
