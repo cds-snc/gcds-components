@@ -2,6 +2,5 @@
   "packages/angular": "0.47.0",
   "packages/react": "0.47.0",
   "packages/vue": "0.47.0",
-  "packages/web": "0.47.0",
-  "packages/react-ssr": "0.47.0-canary.0"
+  "packages/web": "0.47.0"
 }

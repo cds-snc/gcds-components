@@ -43,7 +43,6 @@ In the root directory, run `npm run build`. All five packages will be compiled.
 | [@cdssnc/gcds-components-react](packages/react/)           | GC Design System Components – React | [Docs](packages/react/README.md) |
 | [@cdssnc/gcds-components-angular](packages/angular/)           | GC Design System Components – Angular  | [Docs](packages/angular/README.md) |
 | [@cdssnc/gcds-components-vue](packages/vue/)           | GC Design System Components – Vue  | [Docs](packages/vue/README.md) |
-| [@cdssnc/gcds-components-react-ssr](packages/react-ssr/)           | GC Design System Components – React SSR | [Docs](packages/react-ssr/README.md) |
 
 ## How to contribute
 
@@ -102,7 +101,6 @@ Dans le répertoire racine, exécutez `npm run build`. Les cinq paquets seront a
 | [@cdssnc/gcds-components-react](packages/react/)           | Composants de Système de design GC — React | [Docs](packages/react/README.md) |
 | [@cdssnc/gcds-components-angular](packages/angular/)           | Composants de Système de design GC — Angular  | [Docs](packages/angular/README.md) |
 | [@cdssnc/gcds-components-vue](packages/vue/)           | Composants de Système de design GC — Vue  | [Docs](packages/vue/README.md) |
-| [@cdssnc/gcds-components-react-ssr](packages/react-ssr/)           | Composants de Système de design GC – React SSR | [Docs](packages/react-ssr/README.md) |
 
 ## Apportez votre contribution
 
