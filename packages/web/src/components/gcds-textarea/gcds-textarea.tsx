@@ -11,6 +11,7 @@ import {
   h,
   Listen,
   AttachInternals,
+  Fragment,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -251,6 +252,14 @@ export class GcdsTextarea {
       this.el.dispatchEvent(changeEvt);
     } else {
       this.updateValidity();
+
+      if (this.maxlength) {
+        console.log('has max length')
+        setTimeout(() => {
+          console.log('help')
+          this.el.shadowRoot.querySelector(`#textarea__sr-count-${this.textareaId}`).textContent = `${i18n[this.lang].characters.left}${this.value == undefined ? this.maxlength : this.maxlength - this.value.length}`
+        }, 1500)
+      }
     }
 
     customEvent.emit(this.value);
@@ -491,24 +500,22 @@ export class GcdsTextarea {
       ...inheritedAttributes,
     };
 
-    if (hint || errorMessage || (maxlength && !hideLimit)) {
+    if (hint || errorMessage || maxlength) {
       const hintID = hint ? `hint-${textareaId} ` : '';
       const errorID = errorMessage ? `error-message-${textareaId} ` : '';
       const countID =
-        maxlength && !hideLimit ? `textarea__count-${textareaId} ` : '';
-      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${
-        attrsTextarea['aria-describedby']
-          ? `${attrsTextarea['aria-describedby']}`
-          : ''
-      }`;
+        maxlength ? `textarea__count-${textareaId} ` : '';
+      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${attrsTextarea['aria-describedby']
+        ? `${attrsTextarea['aria-describedby']}`
+        : ''
+        }`;
     }
 
     return (
       <Host>
         <div
-          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${
-            hasError ? 'gcds-error' : ''
-          }`}
+          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''
+            }`}
         >
           <gcds-label
             {...attrsLabel}
@@ -543,11 +550,21 @@ export class GcdsTextarea {
             {value}
           </textarea>
 
-          {maxlength && !hideLimit ? (
-            <gcds-text id={`textarea__count-${textareaId}`} aria-live="polite">
-              {i18n[lang].characters.left}
-              {value == undefined ? maxlength : maxlength - value.length}
-            </gcds-text>
+          {maxlength ? (
+            <Fragment>
+              <gcds-sr-only tag="span" id={`textarea__count-${textareaId}`}>
+                {i18n[lang].characters.maxlength.replace('{{num}}', maxlength)}
+              </gcds-sr-only>
+              {!hideLimit &&
+                <gcds-text id={`textarea__visual-count-${textareaId}`} aria-hidden="true">
+                  {i18n[lang].characters.left}
+                  {value == undefined ? maxlength : maxlength - value.length}
+                </gcds-text>
+              }
+              <gcds-sr-only tag="span">
+                <span id={`textarea__sr-count-${textareaId}`} role="status" aria-atomic="true"></span>
+              </gcds-sr-only>
+            </Fragment>
           ) : null}
         </div>
       </Host>
