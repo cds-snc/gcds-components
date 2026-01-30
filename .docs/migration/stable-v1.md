@@ -1,13 +1,21 @@
-# Migrating from `@cdssnc/gcds-compoments` to `@gcds-core/components`
+# Migrating from `@cdssnc/gcds-components` to `@gcds-core/components`
 
-Version 0.47.0 to 1.0.0
---------------------------------
-This guide will help you migrate from the old alpha package `@cdssnc/gcds-components` to the new stable package `@gcds-core/components`. Please follow the steps below to ensure a smooth transition.
+Version migration guide
+-----------------------
+This document helps you migrate from older versions of `@cdssnc/gcds-components` to the stable `@gcds-core/components` package. Each migration path is listed below. Follow the section that matches your current version.
 
+## Migration paths
 
-# Migration path: `0.47.0` → `1.0.0`
+| From version | To version | Section                                       |
+|--------------|------------|-----------------------------------------------|
+| 0.47.0       | 1.0.0      | [0.47.0 → 1.0.0](#migrating-from-0470-to-100) |
+| 0.48.0       | 1.0.0      | _(coming soon)_                               |
 
-This migration covers the breaking changes introduced as part of the **component API alignment work** leading to the **stable `v1.0.0` release**.
+---
+
+# Migrating from 0.47.0 to 1.0.0
+
+This section covers the breaking changes introduced as part of the **component API alignment work** leading to the **stable `v1.0.0` release**.
 
 The changes are grouped into the following categories:
 1. API renames and replacements  
@@ -78,7 +86,7 @@ These changes modify **how a component behaves**, not just its API surface.
 **Before**
 ```html
 <gcds-textarea character-count="200"></gcds-textarea>
-````
+```
 
 **After**
 
@@ -169,7 +177,7 @@ This change **only affects teams using React with server-side rendering**.
 See the dedicated guide:
 
 **Using GCDS with React and Next.js (SSR)**
-*(link to new documentation page)*
+*[Click here for instructions](../v1-nextjs.md)*
 
 This guide covers:
 
@@ -205,3 +213,9 @@ Once on `1.0.0`, the API is considered stable:
 
 * No breaking changes in minor or patch releases
 * Full alignment between design and code
+
+---
+
+# [Placeholder] Migrating from 0.48.0 to 1.0.0
+
+_(Add migration notes here if/when needed)_
