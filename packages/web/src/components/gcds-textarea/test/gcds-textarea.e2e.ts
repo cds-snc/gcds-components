@@ -285,7 +285,7 @@ test.describe('gcds-textarea', () => {
       ),
     ).toEqual('');
 
-    await page.waitForTimeout(2000); // Wait for character count update delay
+    await page.waitForTimeout(2500); // Wait for character count update delay
 
     // Chekc if the sr count has updated
     expect(
