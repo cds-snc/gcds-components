@@ -11,6 +11,7 @@ import {
   h,
   Listen,
   AttachInternals,
+  Fragment,
 } from '@stencil/core';
 import {
   assignLanguage,
@@ -51,6 +52,11 @@ export class GcdsTextarea {
   private htmlValidationErrors = [];
 
   private textareaTitle: string = '';
+
+  // For accurate character count updates
+  private lastInputTimeStamp: number | null = null;
+  private lastInputValue: string = '';
+  private valueChecker: number | null = null;
 
   _validator: Validator<string> = defaultValidator;
 
@@ -217,6 +223,20 @@ export class GcdsTextarea {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
+  private onFocus = () => {
+    this.gcdsFocus.emit();
+
+    // Start value checking on input
+    this.valueChecker = window.setInterval(() => {
+      if (
+        !this.lastInputTimeStamp ||
+        Date.now() - 500 >= this.lastInputTimeStamp
+      ) {
+        this.updateIfValueChanged()
+      }
+    }, 1000)
+  }
+
   /**
    * Emitted when the textarea loses focus.
    */
@@ -228,6 +248,11 @@ export class GcdsTextarea {
     }
 
     this.gcdsBlur.emit();
+
+    // Cancel value checking on blur
+    if (this.valueChecker) {
+      window.clearInterval(this.valueChecker)
+    }
   };
 
   /**
@@ -240,6 +265,18 @@ export class GcdsTextarea {
    */
   @Event() gcdsInput: EventEmitter<string>;
 
+  /**
+   * Update character count if value has changed
+   */
+  private updateIfValueChanged() {
+    if (this.shadowElement.value !== this.lastInputValue) {
+      this.lastInputValue = this.shadowElement.value
+      setTimeout(() => {
+        this.el.shadowRoot.querySelector(`#textarea__sr-count-${this.textareaId}`).textContent = `${i18n[this.lang].characters.left}${this.value == undefined ? this.maxlength : this.maxlength - this.value.length}`
+      }, 1500)
+    }
+  }
+
   private handleInput = (e, customEvent) => {
     const val = e.target && e.target.value;
     this.value = val;
@@ -251,6 +288,10 @@ export class GcdsTextarea {
       this.el.dispatchEvent(changeEvt);
     } else {
       this.updateValidity();
+
+      if (this.maxlength) {
+        this.lastInputTimeStamp = Date.now()
+      }
     }
 
     customEvent.emit(this.value);
@@ -423,6 +464,7 @@ export class GcdsTextarea {
 
     this.internals.setFormValue(this.value ? this.value : null);
     this.initialValue = this.value ? this.value : null;
+    this.lastInputValue = this.value ? this.value : '';
   }
 
   componentDidLoad() {
@@ -491,24 +533,22 @@ export class GcdsTextarea {
       ...inheritedAttributes,
     };
 
-    if (hint || errorMessage || (maxlength && !hideLimit)) {
+    if (hint || errorMessage || maxlength) {
       const hintID = hint ? `hint-${textareaId} ` : '';
       const errorID = errorMessage ? `error-message-${textareaId} ` : '';
       const countID =
-        maxlength && !hideLimit ? `textarea__count-${textareaId} ` : '';
-      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${
-        attrsTextarea['aria-describedby']
-          ? `${attrsTextarea['aria-describedby']}`
-          : ''
-      }`;
+        maxlength ? `textarea__count-${textareaId} ` : '';
+      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${attrsTextarea['aria-describedby']
+        ? `${attrsTextarea['aria-describedby']}`
+        : ''
+        }`;
     }
 
     return (
       <Host>
         <div
-          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${
-            hasError ? 'gcds-error' : ''
-          }`}
+          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''
+            }`}
         >
           <gcds-label
             {...attrsLabel}
@@ -530,7 +570,7 @@ export class GcdsTextarea {
             class={hasError ? 'gcds-error' : null}
             id={textareaId}
             onBlur={() => this.onBlur()}
-            onFocus={() => this.gcdsFocus.emit()}
+            onFocus={() => this.onFocus()}
             onInput={e => this.handleInput(e, this.gcdsInput)}
             onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${textareaId}`}
@@ -543,11 +583,23 @@ export class GcdsTextarea {
             {value}
           </textarea>
 
-          {maxlength && !hideLimit ? (
-            <gcds-text id={`textarea__count-${textareaId}`} aria-live="polite">
-              {i18n[lang].characters.left}
-              {value == undefined ? maxlength : maxlength - value.length}
-            </gcds-text>
+          {maxlength ? (
+            <Fragment>
+              <gcds-sr-only tag="span" id={`textarea__count-${textareaId}`}>
+                {i18n[lang].characters.maxlength.replace('{{num}}', maxlength)}
+              </gcds-sr-only>
+              {!hideLimit &&
+                <gcds-text id={`textarea__visual-count-${textareaId}`} aria-hidden="true">
+                  {i18n[lang].characters.left}
+                  {value == undefined ? maxlength : maxlength - value.length}
+                </gcds-text>
+              }
+              <gcds-sr-only tag="span">
+                <span id={`textarea__sr-count-${textareaId}`}
+                  role="status" aria-atomic="true">
+                </span>
+              </gcds-sr-only>
+            </Fragment>
           ) : null}
         </div>
       </Host>

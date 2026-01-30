@@ -31,10 +31,10 @@ describe('gcds-textarea', () => {
   it('renders textarea with maxlength and character count in EN', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
-      html: '<gcds-textarea label="Label" textarea-id="character-count" value="Value Test" maxlength="22" name="character-count-name"/>',
+      html: '<gcds-textarea label="Label" textarea-id="character-count" maxlength="22" name="character-count-name"/>',
     });
     expect(root).toEqualHtml(`
-      <gcds-textarea label="Label" textarea-id="character-count" value="Value Test" maxlength="22" name="character-count-name">
+      <gcds-textarea label="Label" textarea-id="character-count" maxlength="22" name="character-count-name">
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper">
             <gcds-label label-for="character-count" label="Label" lang="en"></gcds-label>
@@ -46,8 +46,16 @@ describe('gcds-textarea', () => {
               aria-invalid="false"
               rows="5"
               maxlength="22"
-            >Value Test</textarea>
-            <gcds-text id="textarea__count-character-count" aria-live="polite">Characters left: 12</gcds-text>
+            ></textarea>
+            <gcds-sr-only id="textarea__count-character-count" tag="span">
+              You can enter up to 22 characters
+            </gcds-sr-only>
+            <gcds-text aria-hidden="true" id="textarea__visual-count-character-count">
+              Characters left: 22
+            </gcds-text>
+            <gcds-sr-only tag="span">
+              <span aria-atomic="true" id="textarea__sr-count-character-count" role="status"></span>
+            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-textarea>
@@ -57,10 +65,10 @@ describe('gcds-textarea', () => {
   it('renders textarea with maxlength and character count in FR', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
-      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" maxlength="22" name="character-count-name"/>',
+      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" maxlength="22" name="character-count-name"/>',
     });
     expect(root).toEqualHtml(`
-      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" maxlength="22" name="character-count-name">
+      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" maxlength="22" name="character-count-name">
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper">
             <gcds-label label-for="character-count" label="Label" lang="fr"></gcds-label>
@@ -72,8 +80,16 @@ describe('gcds-textarea', () => {
               aria-invalid="false"
               rows="5"
               maxlength="22"
-            >Value Test</textarea>
-            <gcds-text id="textarea__count-character-count" aria-live="polite">Caractères restants&nbsp;: 12</gcds-text>
+            ></textarea>
+            <gcds-sr-only id="textarea__count-character-count" tag="span">
+              Vous pouvez saisir jusqu'à 22 caractères
+            </gcds-sr-only>
+            <gcds-text aria-hidden="true" id="textarea__visual-count-character-count">
+              Caractères restants&nbsp;: 22
+            </gcds-text>
+            <gcds-sr-only tag="span">
+              <span aria-atomic="true" id="textarea__sr-count-character-count" role="status"></span>
+            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-textarea>
@@ -93,10 +109,17 @@ describe('gcds-textarea', () => {
               id="character-count"
               name="character-count-name"
               aria-labelledby="label-for-character-count"
+              aria-describedby="textarea__count-character-count "
               aria-invalid="false"
               rows="5"
               maxlength="22"
             >Value Test</textarea>
+            <gcds-sr-only id="textarea__count-character-count" tag="span">
+              You can enter up to 22 characters
+            </gcds-sr-only>
+            <gcds-sr-only tag="span">
+              <span aria-atomic="true" id="textarea__sr-count-character-count" role="status"></span>
+            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-textarea>
@@ -117,10 +140,17 @@ describe('gcds-textarea', () => {
               id="character-count"
               name="character-count-name"
               aria-labelledby="label-for-character-count"
+              aria-describedby="textarea__count-character-count "
               aria-invalid="false"
               rows="5"
               maxlength="22"
             >Value Test</textarea>
+            <gcds-sr-only id="textarea__count-character-count" tag="span">
+              Vous pouvez saisir jusqu'à 22 caractères
+            </gcds-sr-only>
+            <gcds-sr-only tag="span">
+              <span aria-atomic="true" id="textarea__sr-count-character-count" role="status"></span>
+            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-textarea>

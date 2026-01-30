@@ -85,6 +85,7 @@ Type: `Promise<void>`
 - [gcds-label](../gcds-label)
 - [gcds-hint](../gcds-hint)
 - [gcds-error-message](../gcds-error-message)
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-text](../gcds-text)
 
 ### Graph
@@ -93,6 +94,7 @@ graph TD;
   gcds-textarea --> gcds-label
   gcds-textarea --> gcds-hint
   gcds-textarea --> gcds-error-message
+  gcds-textarea --> gcds-sr-only
   gcds-textarea --> gcds-text
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
