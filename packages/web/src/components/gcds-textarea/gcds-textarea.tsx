@@ -254,7 +254,6 @@ export class GcdsTextarea {
       this.updateValidity();
 
       if (this.maxlength) {
-        console.log('has max length')
         setTimeout(() => {
           this.el.shadowRoot.querySelector(`#textarea__sr-count-${this.textareaId}`).textContent = `${i18n[this.lang].characters.left}${this.value == undefined ? this.maxlength : this.maxlength - this.value.length}`
         }, 1500)
