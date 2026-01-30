@@ -11099,6 +11099,7 @@
         "gcds-search",
         "gcds-signature",
         "gcds-stepper",
+        "gcds-textarea",
         "gcds-topic-menu"
       ],
       "dependencies": [],
@@ -11131,6 +11132,9 @@
           "gcds-sr-only"
         ],
         "gcds-stepper": [
+          "gcds-sr-only"
+        ],
+        "gcds-textarea": [
           "gcds-sr-only"
         ],
         "gcds-topic-menu": [
@@ -12458,6 +12462,7 @@
         "gcds-label",
         "gcds-hint",
         "gcds-error-message",
+        "gcds-sr-only",
         "gcds-text"
       ],
       "dependencyGraph": {
@@ -12465,6 +12470,7 @@
           "gcds-label",
           "gcds-hint",
           "gcds-error-message",
+          "gcds-sr-only",
           "gcds-text"
         ],
         "gcds-hint": [

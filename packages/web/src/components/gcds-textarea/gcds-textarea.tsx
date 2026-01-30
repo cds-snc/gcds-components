@@ -53,6 +53,11 @@ export class GcdsTextarea {
 
   private textareaTitle: string = '';
 
+  // For accurate character count updates
+  private lastInputTimeStamp: number | null = null;
+  private lastInputValue: string = '';
+  private valueChecker: number | null = null;
+
   _validator: Validator<string> = defaultValidator;
 
   /**
@@ -218,6 +223,20 @@ export class GcdsTextarea {
    */
   @Event() gcdsFocus!: EventEmitter<void>;
 
+  private onFocus = () => {
+    this.gcdsFocus.emit();
+
+    // Start value checking on input
+    this.valueChecker = window.setInterval(() => {
+      if (
+        !this.lastInputTimeStamp ||
+        Date.now() - 500 >= this.lastInputTimeStamp
+      ) {
+        this.updateIfValueChanged()
+      }
+    }, 1000)
+  }
+
   /**
    * Emitted when the textarea loses focus.
    */
@@ -229,6 +248,11 @@ export class GcdsTextarea {
     }
 
     this.gcdsBlur.emit();
+
+    // Cancel value checking on blur
+    if (this.valueChecker) {
+      window.clearInterval(this.valueChecker)
+    }
   };
 
   /**
@@ -240,6 +264,18 @@ export class GcdsTextarea {
    * Emitted when the textarea has received input.
    */
   @Event() gcdsInput: EventEmitter<string>;
+
+  /**
+   * Update character count if value has changed
+   */
+  private updateIfValueChanged() {
+    if (this.shadowElement.value !== this.lastInputValue) {
+      this.lastInputValue = this.shadowElement.value
+      setTimeout(() => {
+        this.el.shadowRoot.querySelector(`#textarea__sr-count-${this.textareaId}`).textContent = `${i18n[this.lang].characters.left}${this.value == undefined ? this.maxlength : this.maxlength - this.value.length}`
+      }, 1500)
+    }
+  }
 
   private handleInput = (e, customEvent) => {
     const val = e.target && e.target.value;
@@ -254,9 +290,7 @@ export class GcdsTextarea {
       this.updateValidity();
 
       if (this.maxlength) {
-        setTimeout(() => {
-          this.el.shadowRoot.querySelector(`#textarea__sr-count-${this.textareaId}`).textContent = `${i18n[this.lang].characters.left}${this.value == undefined ? this.maxlength : this.maxlength - this.value.length}`
-        }, 1500)
+        this.lastInputTimeStamp = Date.now()
       }
     }
 
@@ -430,6 +464,7 @@ export class GcdsTextarea {
 
     this.internals.setFormValue(this.value ? this.value : null);
     this.initialValue = this.value ? this.value : null;
+    this.lastInputValue = this.value ? this.value : '';
   }
 
   componentDidLoad() {
@@ -535,7 +570,7 @@ export class GcdsTextarea {
             class={hasError ? 'gcds-error' : null}
             id={textareaId}
             onBlur={() => this.onBlur()}
-            onFocus={() => this.gcdsFocus.emit()}
+            onFocus={() => this.onFocus()}
             onInput={e => this.handleInput(e, this.gcdsInput)}
             onChange={e => this.handleInput(e, this.gcdsChange)}
             aria-labelledby={`label-for-${textareaId}`}
@@ -560,7 +595,9 @@ export class GcdsTextarea {
                 </gcds-text>
               }
               <gcds-sr-only tag="span">
-                <span id={`textarea__sr-count-${textareaId}`} role="status" aria-atomic="true"></span>
+                <span id={`textarea__sr-count-${textareaId}`}
+                  role="status" aria-atomic="true">
+                </span>
               </gcds-sr-only>
             </Fragment>
           ) : null}
