@@ -64,11 +64,8 @@
 
 @layer highcontrast {
   :host svg .fip_text {
-    @media (prefers-color-scheme: light) {
-      fill: var(--gcds-signature-color-text);
-    }
-    @media (prefers-color-scheme: dark) {
-      fill: var(--gcds-signature-white-default);
+    @media (forced-colors: active) {
+      fill: CanvasText;
     }
   }
 }
