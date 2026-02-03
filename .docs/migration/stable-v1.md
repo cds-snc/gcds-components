@@ -16,6 +16,7 @@ This document helps you migrate from older versions of `@cdssnc/gcds-components`
 ---
 
 # Migrating from 0.39.0 or higher to 1.0.0
+[Français](./fr/migration/stable-v1.md#migration-de-0390-ou-plus-haut-vers-100)
 
 This section covers the breaking changes introduced as part of the **component API alignment work** leading to the **stable `v1.0.0` release**.
 
