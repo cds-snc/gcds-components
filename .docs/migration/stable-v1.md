@@ -5,7 +5,7 @@ Version migration guide
 This document helps you migrate from older versions of `@cdssnc/gcds-components` to the stable `@gcds-core/components` package. Each migration path is listed below. Follow the section that matches your current version.
 
 ## Migration paths
-- :star: [0.39.0 or higher → 1.0.0](#migrating-from-0390-or-higher-to-100)
+- [0.39.0 or higher → 1.0.0](#migrating-from-0390-or-higher-to-100):star:
 - [0.38.0 → 1.0.0](#migrating-from-0380-to-100)
 - [0.34.0 → 1.0.0](#migrating-from-0340-to-100)
 - [0.27.0 → 1.0.0](#migration-from-0270-to-100)
