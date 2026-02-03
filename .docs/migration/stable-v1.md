@@ -30,19 +30,19 @@ The changes are grouped into the following categories:
 > [!IMPORTANT]
 > This section lists all breaking changes and removed APIs. Review each component's changes carefully and update your codebase accordingly.
 
-| Component (HTML / Angular / Vue)                 |                                | What's changed (removed)       | Type      |
-|--------------------------------------------------|--------------------------------|--------------------------------|-----------|
-| [Card](#card-gcds-card)                          | [React](#react-card-gcds-card) | `a` value for `card-title-tag` | Value     |
-| [Container](#container-gcds-container)           | [React](#react-container-gcds-container)                          | `centered`, `main-container`   | Property  |
-| [Footer](#footer-gcds-footer)                    | [React](#react-footer-gcds-footer)                          | `wordmark-variant`             | Property  |
-| [Grid](#grid-gcds-grid)                          | [React](#react-grid-gcds-grid)                          | `centered`                     | Property  |
-| [Header](#header-gcds-header)                    | [React](#react-header-gcds-header)                          | `signature-variant`            | Property  |
-| [Link](#link-gcds-link)                          | [React](#react-link-gcds-link)                          | `variant`                      | Property  |
-| [Notice](#notice-gcds-notice)                    | [React](#react-notice-gcds-notice)                          | `type`                         | Property  |
-| [PhaseBanner](#phasebanner-gcds-phase-banner)    | [React](#react-phasebanner-gcds-phase-banner)                          | `<gcds-phase-banner>`          | Component |
-| [Textarea](#textarea-gcds-textarea)              | [React](#react-textarea-gcds-textarea)                          | `character-vount`              | Property  |
-| [TopNav](#topnav-gcds-top-nav)                   | [React](#react-topnav-gcds-top-nav)                          | `alignment`                    | Property  |
-| [VerifyBanner](#verifybanner-gcds-verify-banner) | [React](#react-verifybanner-gcds-verify-banner)                          | `<gcds-verify-banner>`         | Component |
+| Component (HTML / Angular / Vue)                 |                                    | What's changed (removed)       | Type      |
+|--------------------------------------------------|------------------------------------|--------------------------------|-----------|
+| [Card](#card-gcds-card)                          | [React](#card-gcdscard)            | `a` value for `card-title-tag` | Value     |
+| [Container](#container-gcds-container)           | [React](#container-gcdscontainer)  | `centered`, `main-container`   | Property  |
+| [Footer](#footer-gcds-footer)                    | [React](#footer-gcdsfooter)        | `wordmark-variant`             | Property  |
+| [Grid](#grid-gcds-grid)                          | [React](#grid-gcdsgrid)            | `centered`                     | Property  |
+| [Header](#header-gcds-header)                    | [React](#header-gcdsheader)        | `signature-variant`            | Property  |
+| [Link](#link-gcds-link)                          | [React](#link-gcdslink)            | `variant`                      | Property  |
+| [Notice](#notice-gcds-notice)                    | [React](#notice-gcdsnotice)        | `type`                         | Property  |
+| [PhaseBanner](#phasebanner-gcds-phase-banner)    | [React](#phasebanner-gcdsphasebanner) | `<gcds-phase-banner>`          | Component |
+| [Textarea](#textarea-gcds-textarea)              | [React](#textarea-gcdstextarea)    | `character-vount`              | Property  |
+| [TopNav](#topnav-gcds-top-nav)                   | [React](#topnav-gcdstopnav)        | `alignment`                    | Property  |
+| [VerifyBanner](#verifybanner-gcds-verify-banner) | [React](#verifybanner-gcdsverifybanner) | `<gcds-verify-banner>`         | Component |
 
 ---
 
@@ -50,46 +50,35 @@ The changes are grouped into the following categories:
 **❌ Removed value:** `a` value for the `card-title-tag` property
 
 **👉 Action required:**
-- **HTML / Angular / Vue**: 
-  - Remove `card-title-tag="a"` from all `<gcds-card>` components.
-    - By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
-- **React**: Remove `cardTitleTag="a"` from all `<GcdsCard>` components.
+- Remove `card-title-tag="a"` from all `<gcds-card>` components.
+  - By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
+
 ---
 
 ### Container `<gcds-container>`
 **❌ Removed properties:** `centered`, `main-container`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `centered` → replace with `align="center"`
-  - `main-container` **or** `size="xl" main-container` → replace with `layout="page"`
-    - Additionally, add `tag="main"` if this is the main content container.
-- **React**: 
-  - `centered` → replace with `align="center"`
-  - `mainContainer={true}` **or** `size="xl" mainContainer={true}` → replace with `layout="page"`
-    - Additionally, add `tag="main"` if this is the main content container.
+- `centered` → replace with `align="center"`
+- `main-container` **or** `size="xl" main-container` → replace with `layout="page"`
+  - Additionally, add `tag="main"` if this is the main content container.
+
 ---
 
 ### Footer `<gcds-footer>`
 **❌ Removed properties:** `wordmark-variant`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - Remove the `wordmark-variant` attribute from all `<gcds-footer>` components.
-    - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-footer</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>gcds-signature</code> component ensures a better built-in accessibility for the <code>gcds-footer</code> component.
-- **React**:
-  - Remove the `wordmarkVariant` prop from all `<GcdsFooter>` components.
-    - Using the <code>white</code> variant of the <code>GcdsSignature</code> component within the <code>GcdsFooter</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>GcdsSignature</code> component ensures a better built-in accessibility for the <code>GcdsFooter</code> component.
+- Remove the `wordmark-variant` attribute from all `<gcds-footer>` components.
+  - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-footer</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>gcds-signature</code> component ensures a better built-in accessibility for the <code>gcds-footer</code> component.
+
 ---
 
 ### Grid `<gcds-grid>`
 **❌ Removed properties:** `centered`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `centered` → replace with `align="center"`
-- **React**:
-  - `centered={true}` → replace with `align="center"`
+- `centered` → replace with `align="center"`
 
 ---
 
@@ -97,32 +86,24 @@ The changes are grouped into the following categories:
 **❌ Removed properties:** `signature-variant`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - Remove the `signature-variant` attribute from all `<gcds-header>` components.
-    - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-header</code> component renders the <code>gcds-signature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> slot.
-- **React**:
-  - Remove the `signatureVariant` prop from all `<GcdsHeader>` components.
-    - Using the <code>white</code> variant of the <code>GcdsSignature</code> component within the <code>GcdsHeader</code> component renders the <code>GcdsSignature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> prop.
+- Remove the `signature-variant` attribute from all `<gcds-header>` components.
+  - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-header</code> component renders the <code>gcds-signature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> slot.
+
 ---
 
 ### Link `<gcds-link>`
 **❌ Removed properties:** `variant`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `variant` → replace with `link-role`
-- **React**:
-  - `variant` → replace with `linkRole`
+- `variant` → replace with `link-role`
+
 ---
 
 ### Notice `<gcds-notice>`
 **❌ Removed properties:** `type`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `type` → replace with `notice-role`
-- **React**:
-  - `type` → replace with `noticeRole`
+- `type` → replace with `notice-role`
 
 ---
 
@@ -130,35 +111,28 @@ The changes are grouped into the following categories:
 **❌ Removed component:** `<gcds-phase-banner>`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - Remove all usage of `<gcds-phase-banner>` from your codebase.
-    - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
-- **React**:
-  - Remove all usage of `<GcdsPhaseBanner>` from your codebase.
-    - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
+- Remove all usage of `<gcds-phase-banner>` from your codebase.
+  - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
+
 ---
 
 ### Textarea `<gcds-textarea>`
 **❌ Removed properties:** `character-count`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `character-count` → replace with `maxlength`
-    - Additionally, add the `hide-limit` attribute if you want to hide the character counter.
-- **React**:
-  - `characterCount` → replace with `maxLength`
-    - Additionally, add the `hideLimit` prop if you want to hide the character counter.
+- `character-count` → replace with `maxlength`
+  - Additionally, add the `hide-limit` attribute if you want to hide the character counter.
+
 ---
 
 ### TopNav `<gcds-top-nav>`
 **❌ Removed properties:** `alignment`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `alignment="left"` → use `align="end"`
-  - `alignment="right"` → use `align="start"`
-  - `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
-    - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
+- `alignment="left"` → use `align="end"`
+- `alignment="right"` → use `align="start"`
+- `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
+  - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
 
 ---
 
@@ -166,128 +140,97 @@ The changes are grouped into the following categories:
 **❌ Removed component:** `<gcds-verify-banner>`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - Remove all usage of `<gcds-verify-banner>` from your codebase.
-    - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
+- Remove all usage of `<gcds-verify-banner>` from your codebase.
+  - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 
 
 ---
-### Card `<gcds-card>`
-**❌ Removed value:** `a` value for the `card-title-tag` property
+### Card `<GcdsCard>`
+**❌ Removed value:** `a` value for the `cardTitleTag` property
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - Remove `card-title-tag="a"` from all `<gcds-card>` components.
-    - By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
-- **React**: Remove `cardTitleTag="a"` from all `<GcdsCard>` components.
+- Remove `cardTitleTag="a"` from all `<GcdsCard>` components.
+  - By default, the Card component uses an anchor tag (`<GcdsLink>`) so it is not necessary to set this property.
 ---
 
-### Container `<gcds-container>`
-**❌ Removed properties:** `centered`, `main-container`
+### Container `<GcdsContainer>`
+**❌ Removed properties:** `centered`, `mainContainer`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `centered` → replace with `align="center"`
-  - `main-container` **or** `size="xl" main-container` → replace with `layout="page"`
-    - Additionally, add `tag="main"` if this is the main content container.
-- **React**:
-  - `centered` → replace with `align="center"`
-  - `mainContainer={true}` **or** `size="xl" mainContainer={true}` → replace with `layout="page"`
-    - Additionally, add `tag="main"` if this is the main content container.
+- `centered` → replace with `align="center"`
+- `mainContainer={true}` **or** `size="xl" mainContainer={true}` → replace with `layout="page"`
+  - Additionally, add `tag="main"` if this is the main content container.
+  - 
 ---
 
-### Footer `<gcds-footer>`
-**❌ Removed properties:** `wordmark-variant`
+### Footer `<GcdsFooter>`
+**❌ Removed properties:** `wordmarkVariant`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - Remove the `wordmark-variant` attribute from all `<gcds-footer>` components.
-    - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-footer</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>gcds-signature</code> component ensures a better built-in accessibility for the <code>gcds-footer</code> component.
-- **React**:
-  - Remove the `wordmarkVariant` prop from all `<GcdsFooter>` components.
-    - Using the <code>white</code> variant of the <code>GcdsSignature</code> component within the <code>GcdsFooter</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>GcdsSignature</code> component ensures a better built-in accessibility for the <code>GcdsFooter</code> component.
+- Remove the `wordmarkVariant` prop from all `<GcdsFooter>` components.
+  - Using the <code>white</code> variant of the <code>GcdsSignature</code> component within the <code>GcdsFooter</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>GcdsSignature</code> component ensures a better built-in accessibility for the <code>GcdsFooter</code> component.
+
 ---
 
-### Grid `<gcds-grid>`
+### Grid `<GcdsGrid>`
 **❌ Removed properties:** `centered`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `centered` → replace with `align="center"`
-- **React**:
-  - `centered={true}` → replace with `align="center"`
+- `centered={true}` → replace with `align="center"`
 
 ---
 
-### Header `<gcds-header>`
-**❌ Removed properties:** `signature-variant`
+### Header `<GcdsHeader>`
+**❌ Removed properties:** `signatureVariant`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - Remove the `signature-variant` attribute from all `<gcds-header>` components.
-    - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-header</code> component renders the <code>gcds-signature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> slot.
-- **React**:
-  - Remove the `signatureVariant` prop from all `<GcdsHeader>` components.
-    - Using the <code>white</code> variant of the <code>GcdsSignature</code> component within the <code>GcdsHeader</code> component renders the <code>GcdsSignature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> prop.
+- Remove the `signatureVariant` prop from all `<GcdsHeader>` components.
+  - Using the <code>white</code> variant of the <code>GcdsSignature</code> component within the <code>GcdsHeader</code> component renders the <code>GcdsSignature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> prop.
 ---
 
-### Link `<gcds-link>`
+### Link `<GcdsLink>`
 **❌ Removed properties:** `variant`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `variant` → replace with `link-role`
-- **React**:
-  - `variant` → replace with `linkRole`
+- `variant` → replace with `linkRole`
 ---
 
-### Notice `<gcds-notice>`
+### Notice `<GcdsNotice>`
 **❌ Removed properties:** `type`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `type` → replace with `notice-role`
-- **React**:
-  - `type` → replace with `noticeRole`
+- `type` → replace with `noticeRole`
 
 ---
 
-### PhaseBanner `<gcds-phase-banner>`
-**❌ Removed component:** `<gcds-phase-banner>`
+### PhaseBanner `<GcdsPhaseBanner>`
+**❌ Removed component:** `<GcdsPhaseBanner>`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - Remove all usage of `<gcds-phase-banner>` from your codebase.
-    - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
-- **React**:
-  - Remove all usage of `<GcdsPhaseBanner>` from your codebase.
-    - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
+- Remove all usage of `<GcdsPhaseBanner>` from your codebase.
+  - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 ---
 
-### Textarea `<gcds-textarea>`
-**❌ Removed properties:** `character-count`
+### Textarea `<GcdsTextarea>`
+**❌ Removed properties:** `characterCount`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `character-count` → replace with `maxlength`
-    - Additionally, add the `hide-limit` attribute if you want to hide the character counter.
-- **React**:
-  - `characterCount` → replace with `maxLength`
-    - Additionally, add the `hideLimit` prop if you want to hide the character counter.
+- `characterCount` → replace with `maxLength`
+  - Additionally, add the `hideLimit` prop if you want to hide the character counter.
+
 ---
 
-### TopNav `<gcds-top-nav>`
+### TopNav `<GcdsTopNav>`
 **❌ Removed properties:** `alignment`
 
 **👉 Action required:**
-- **HTML / Angular / Vue**:
-  - `alignment="left"` → use `align="end"`
-  - `alignment="right"` → use `align="start"`
-  - `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
-    - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
+- `alignment="left"` → use `align="end"`
+- `alignment="right"` → use `align="start"`
+- `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
+  - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
 
 ---
-<a anchor id="react-verifybanner-gcdsverifybanner"></a>
+
 ### VerifyBanner `<GcdsVerifyBanner>`
 **❌ Removed component:** `<GcdsVerifyBanner>`
 
