@@ -26,27 +26,27 @@ The changes are grouped into the following categories:
 
 This table is an index of all API removals and breaking changes. Click a component to jump to its detailed migration instructions.
 
-| Component         | Removed API/Prop/Feature                             |
-|-------------------|------------------------------------------------------|
-| [Card](#card)              | `a` value for `cardTitleTag`                         |
-| [Container](#container)         | `centered`, `mainContainer` |
-| [Footer](#footer)            | `wordmarkVariant`                                    |
-| [Grid](#grid)              | `centered`                                           |
-| [Header](#header)            | `signatureVariant`                                   |
-| [Link](#link)              | `variant`                                            |
-| [Notice](#notice)            | `type`                                               |
-| [PhaseBanner](#phasebanner)       | `<gcds-phase-banner>`                                |
-| [Textarea](#textarea)          | `characterCount`                                     |
-| [TopNav](#topnav)            | `alignment`                                          |
-| [VerifyBanner](#verifybanner)      | `<gcds-verify-banner>`                               |
+| Component                     | Removed API/Prop/Feature                             |
+|-------------------------------|------------------------------------------------------|
+| [Card](#card-gcds-card)       | `a` value for `cardTitleTag`                         |
+| [Container](#container)       | `centered`, `mainContainer` |
+| [Footer](#footer)             | `wordmarkVariant`                                    |
+| [Grid](#grid)                 | `centered`                                           |
+| [Header](#header)             | `signatureVariant`                                   |
+| [Link](#link)                 | `variant`                                            |
+| [Notice](#notice)             | `type`                                               |
+| [PhaseBanner](#phasebanner)   | `<gcds-phase-banner>`                                |
+| [Textarea](#textarea)         | `characterCount`                                     |
+| [TopNav](#topnav)             | `alignment`                                          |
+| [VerifyBanner](#verifybanner) | `<gcds-verify-banner>`                               |
 
 ---
 
-### Card
+### Card `<gcds-card>`
 **Removed:** `a` value for the `cardTitleTag` property
 - Remove `cardTitleTag="a"` from all `<gcds-card>` components. By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
 
-### Container
+### Container `<gcds-container>`
 **Removed:** `centered`, `mainContainer`
 
 If you are using:
@@ -54,47 +54,47 @@ If you are using:
 - `mainContainer` **or** `size="xl" main-container` → replace with `layout="page"`
   - Additionally, add `tag="main"` if this is the main content container.
 
-### Footer
+### Footer `<gcds-footer>`
 **Removed:** `wordmarkVariant`
 - Remove the `wordmarkVariant` attribute from all `<gcds-footer>` components.
   - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-footer</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>gcds-signature</code> component ensures a better built-in accessibility for the <code>gcds-footer</code> component.
 
 
-### Grid
+### Grid `<gcds-grid>`
 **Removed:** `centered`
 
 If you are using:
 - `centered` → replace with `align="center"`
 
-### Header
+### Header `<gcds-header>`
 **Removed:** `signatureVariant`
 - Remove the `signatureVariant` attribute from all `<gcds-header>` components.
   - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-header</code> component renders the <code>gcds-signature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> slot.
 
-### Link
+### Link `<gcds-link>`
 **Removed:** `variant`
 
 If you are using:
 - `variant` → replace with `linkRole`
 
-### Notice
+### Notice `<gcds-notice>`
 **Removed:** `type`
 
 If you are using:
 - `type` → replace with `noticeRole`
 
-### PhaseBanner
+### PhaseBanner `<gcds-phase-banner>`
 **Removed:** `<gcds-phase-banner>`
 - Remove all usage of `<gcds-phase-banner>` from your codebase.
   - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 
-### Textarea
+### Textarea `<gcds-textarea>`
 **Removed:** `characterCount`
 If you are using:
 - `characterCount` → replace with `maxlength`
   - Additionally, add the `hideLimit` attribute if you want to hide the character counter.
 
-### TopNav
+### TopNav `<gcds-top-nav>`
 **Removed:** `alignment`
 
 If you are using:
@@ -103,7 +103,7 @@ If you are using:
 - `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
   - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
 
-### VerifyBanner
+### VerifyBanner `<gcds-verify-banner>`
 **Removed:** `<gcds-verify-banner>`
 
 - Remove all usage of `<gcds-verify-banner>` from your codebase.
@@ -116,72 +116,72 @@ If you are using:
 
 This table is an index of all new properties and features. Click a component to jump to its detailed migration instructions.
 
-| Component         | New API/Prop/Feature                             |
-|-------------------|--------------------------------------------------|
-| [Card](#card-new-properties)              | `target`, `rel`                                 |
-| [Checkboxes](#checkboxes-new-properties)       | `form`, `validity`, `hideLegend`          |
-| [DateInput](#dateinput-new-properties)         | `max`, `min`, `validity`, `<component>-id`              |
-| [FileUploader](#fileuploader-new-properties)       | `hideLabel`, `form`, `validity`                       |
-| [Heading](#heading-new-properties)           | `headingRole`                                 |
-| [Radios](#radios-new-properties)             | `form`, `validity`, `hideLegend`, `<component>-id`            |
-| [Select](#select-new-properties)              | `hideLabel`, `form`, `validity`                        |
-| [Textarea](#textarea-new-properties)           | `hideLimit`, `form`, `readonly`, `validity`                     |
+| Component                       | New API/Prop/Feature                             |
+|---------------------------------|--------------------------------------------------|
+| [Card](#card-1)                 | `target`, `rel`                                 |
+| [Checkboxes](#checkboxes-1)     | `form`, `validity`, `hideLegend`          |
+| [DateInput](#dateinput-1)       | `max`, `min`, `validity`, `<component>-id`              |
+| [FileUploader](#fileuploader-1) | `hideLabel`, `form`, `validity`                       |
+| [Heading](#heading-1)           | `headingRole`                                 |
+| [Radios](#radios-1)             | `form`, `validity`, `hideLegend`, `<component>-id`            |
+| [Select](#select-1)             | `hideLabel`, `form`, `validity`                        |
+| [Textarea](#textarea-1)         | `hideLimit`, `form`, `readonly`, `validity`                     |
 
-### Card {#card-new-properties}
+### Card `<gcds-card>`
 | Property | Attribute | Description | Type | Default |
 |----------|-----------|-------------|------|---------|
-| target   | target    | Specifies where to open the linked document (e.g., `_blank`, `_self`). | string | _none_ |
-| rel      | rel       | Specifies the relationship of the target object to the link (e.g., `noopener`, `noreferrer`). | string | _none_ |
+| `target`   | `target`    | Specifies where to open the linked document (e.g., `_blank`, `_self`). | string | _none_ |
+| `rel`      | `rel`       | Specifies the relationship of the target object to the link (e.g., `noopener`, `noreferrer`). | string | _none_ |
 
-### Checkboxes {#checkboxes-new-properties}
+### Checkboxes `<gcds-checkboxes>`
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
-| form       | form        | Associates the component with a form        | string  | _none_  |
-| validity   | validity    | Sets the validity state                     | string  | _none_  |
-| hideLegend | hide-legend | Hides the legend visually                   | boolean | false   |
+| `form`       | `form`        | Associates the component with a form        | string  | _none_  |
+| `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
+| `hideLegend` | `hide-legend` | Hides the legend visually                   | boolean | false   |
 
-### DateInput {#dateinput-new-properties}
+### DateInput `<gcds-date-input>`
 | Property         | Attribute         | Description                                 | Type    | Default |
 |------------------|------------------|---------------------------------------------|---------|---------|
-| max              | max              | Maximum allowed date                        | string  | _none_  |
-| min              | min              | Minimum allowed date                        | string  | _none_  |
-| validity         | validity         | Sets the validity state                     | string  | _none_  |
-| dateInputId      | date-input-id    | Sets a unique id for the component          | string  | _none_  |
+| `max`              | `max`              | Maximum allowed date                        | string  | _none_  |
+| `min`              | `min`              | Minimum allowed date                        | string  | _none_  |
+| `validity`         | `validity`         | Sets the validity state                     | string  | _none_  |
+| `dateInputId`      | `date-input-id`    | Sets a unique id for the component          | string  | _none_  |
 
-### FileUploader {#fileuploader-new-properties}
+### FileUploader `<gcds-file-uploader>`
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
-| hideLabel  | hide-label  | Hides the label visually                    | boolean | false   |
-| form       | form        | Associates the component with a form        | string  | _none_  |
-| validity   | validity    | Sets the validity state                     | string  | _none_  |
+| `hideLabel`  | `hide-label`  | Hides the label visually                    | boolean | false   |
+| `form`       | `form`        | Associates the component with a form        | string  | _none_  |
+| `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
 
-### Heading {#heading-new-properties}
+### Heading `<gcds-heading>`
 | Property     | Attribute     | Description                                 | Type    | Default |
 |--------------|--------------|---------------------------------------------|---------|---------|
-| headingRole  | heading-role | Sets the ARIA role for the heading          | string  | _none_  |
+| `headingRole`  | `heading-role` | Sets the ARIA role for the heading          | string  | _none_  |
 
-### Radios {#radios-new-properties}
+### Radios `<gcds-radios>`
 | Property         | Attribute         | Description                                 | Type    | Default |
 |------------------|------------------|---------------------------------------------|---------|---------|
-| form             | form             | Associates the component with a form        | string  | _none_  |
-| validity         | validity         | Sets the validity state                     | string  | _none_  |
-| hideLegend       | hide-legend      | Hides the legend visually                   | boolean | false   |
-| radiosId         | radios-id        | Sets a unique id for the component          | string  | _none_  |
+| `form`             | `form`             | Associates the component with a form        | string  | _none_  |
+| `validity`         | `validity`         | Sets the validity state                     | string  | _none_  |
+| `hideLegend`       | `hide-legend`      | Hides the legend visually                   | boolean | false   |
+| `radiosId`         | `radios-id`        | Sets a unique id for the component          | string  | _none_  |
 
-### Select {#select-new-properties}
+### Select `<gcds-select>`
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
-| hideLabel  | hide-label  | Hides the label visually                    | boolean | false   |
-| form       | form        | Associates the component with a form        | string  | _none_  |
-| validity   | validity    | Sets the validity state                     | string  | _none_  |
+| `hideLabel`  | `hide-label`  | Hides the label visually                    | boolean | false   |
+| `form`       | `form`        | Associates the component with a form        | string  | _none_  |
+| `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
 
-### Textarea {#textarea-new-properties}
+### Textarea `<gcds-textarea>`
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
-| hideLimit  | hide-limit  | Hides the character counter                 | boolean | false   |
-| form       | form        | Associates the component with a form        | string  | _none_  |
-| readonly   | readonly    | Makes the textarea read-only                | boolean | false   |
-| validity   | validity    | Sets the validity state                     | string  | _none_  |
+| `hideLimit`  | `hide-limit`  | Hides the character counter                 | boolean | false   |
+| `form`       | `form`        | Associates the component with a form        | string  | _none_  |
+| `readonly`   | `readonly`    | Makes the textarea read-only                | boolean | false   |
+| `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
 
 
 ---
