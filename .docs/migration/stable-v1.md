@@ -24,8 +24,8 @@ The changes are grouped into the following categories:
 
 ## Component API Removals and Breaking Changes
 
-[!IMPORTANT]
-This section lists all breaking changes and removed APIs. Please review each component's changes carefully and update your codebase accordingly.
+> [!IMPORTANT]
+> This section lists all breaking changes and removed APIs. Please review each component's changes carefully and update your codebase accordingly.
 
 | Component                                        | What's changed (removed)       | Type      |
 |--------------------------------------------------|--------------------------------|-----------|
