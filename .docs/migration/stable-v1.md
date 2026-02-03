@@ -26,42 +26,42 @@ The changes are grouped into the following categories:
 
 This table is an index of all API removals and breaking changes. Click a component to jump to its detailed migration instructions.
 
-| Component                                        | What's changed (removed)     | Type      |
-|--------------------------------------------------|------------------------------|-----------|
-| [Card](#card-gcds-card)                          | `a` value for `cardTitleTag` | Value     |
-| [Container](#container-gcds-container)           | `centered`, `mainContainer`  | Property  |
-| [Footer](#footer-gcds-footer)                    | `wordmarkVariant`            | Property  |
-| [Grid](#grid-gcds-grid)                          | `centered`                   | Property  |
-| [Header](#header-gcds-header)                    | `signatureVariant`           | Property  |
-| [Link](#link-gcds-link)                          | `variant`                    | Property  |
-| [Notice](#notice-gcds-notice)                    | `type`                       | Property  |
-| [PhaseBanner](#phasebanner-gcds-phase-banner)    | `<gcds-phase-banner>`        | Component |
-| [Textarea](#textarea-gcds-textarea)              | `characterCount`             | Property  |
-| [TopNav](#topnav-gcds-top-nav)                   | `alignment`                  | Property  |
-| [VerifyBanner](#verifybanner-gcds-verify-banner) | `<gcds-verify-banner>`       | Component  |
+| Component                                        | What's changed (removed)       | Type      |
+|--------------------------------------------------|--------------------------------|-----------|
+| [Card](#card-gcds-card)                          | `a` value for `card-title-tag` | Value     |
+| [Container](#container-gcds-container)           | `centered`, `main-container`   | Property  |
+| [Footer](#footer-gcds-footer)                    | `wordmark-variant`             | Property  |
+| [Grid](#grid-gcds-grid)                          | `centered`                     | Property  |
+| [Header](#header-gcds-header)                    | `signature-variant`            | Property  |
+| [Link](#link-gcds-link)                          | `variant`                      | Property  |
+| [Notice](#notice-gcds-notice)                    | `type`                         | Property  |
+| [PhaseBanner](#phasebanner-gcds-phase-banner)    | `<gcds-phase-banner>`          | Component |
+| [Textarea](#textarea-gcds-textarea)              | `character-vount`              | Property  |
+| [TopNav](#topnav-gcds-top-nav)                   | `alignment`                    | Property  |
+| [VerifyBanner](#verifybanner-gcds-verify-banner) | `<gcds-verify-banner>`         | Component  |
 
 ---
 
 ### Card `<gcds-card>`
-**Removed value:** `a` value for the `cardTitleTag` property
+**Removed value:** `a` value for the `card-title-tag` property
 
 **Action required:**
-- Remove `cardTitleTag="a"` from all `<gcds-card>` components.
+- Remove `card-title-tag="a"` from all `<gcds-card>` components.
   - By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
 
 ### Container `<gcds-container>`
-**Removed properties:** `centered`, `mainContainer`
+**Removed properties:** `centered`, `main-container`
 
 **Action required:**
 - `centered` → replace with `align="center"`
-- `mainContainer` **or** `size="xl" main-container` → replace with `layout="page"`
+- `main-container` **or** `size="xl" main-container` → replace with `layout="page"`
   - Additionally, add `tag="main"` if this is the main content container.
 
 ### Footer `<gcds-footer>`
-**Removed properties:** `wordmarkVariant`
+**Removed properties:** `wordmark-variant`
 
 **Action required:**
-- Remove the `wordmarkVariant` attribute from all `<gcds-footer>` components.
+- Remove the `wordmark-variant` attribute from all `<gcds-footer>` components.
   - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-footer</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>gcds-signature</code> component ensures a better built-in accessibility for the <code>gcds-footer</code> component.
 
 
@@ -72,23 +72,23 @@ This table is an index of all API removals and breaking changes. Click a compone
 - `centered` → replace with `align="center"`
 
 ### Header `<gcds-header>`
-**Removed properties:** `signatureVariant`
+**Removed properties:** `signature-variant`
 
 **Action required:**
-- Remove the `signatureVariant` attribute from all `<gcds-header>` components.
+- Remove the `signature-variant` attribute from all `<gcds-header>` components.
   - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-header</code> component renders the <code>gcds-signature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> slot.
 
 ### Link `<gcds-link>`
 **Removed properties:** `variant`
 
 **Action required:**
-- `variant` → replace with `linkRole`
+- `variant` → replace with `link-role`
 
 ### Notice `<gcds-notice>`
 **Removed properties:** `type`
 
 **Action required:**
-- `type` → replace with `noticeRole`
+- `type` → replace with `notice-role`
 
 ### PhaseBanner `<gcds-phase-banner>`
 **Removed component:** `<gcds-phase-banner>`
@@ -98,11 +98,11 @@ This table is an index of all API removals and breaking changes. Click a compone
   - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 
 ### Textarea `<gcds-textarea>`
-**Removed properties:** `characterCount`
+**Removed properties:** `character-count`
 
 **Action required:**
-- `characterCount` → replace with `maxlength`
-  - Additionally, add the `hideLimit` attribute if you want to hide the character counter.
+- `character-count` → replace with `maxlength`
+  - Additionally, add the `hide-limit` attribute if you want to hide the character counter.
 
 ### TopNav `<gcds-top-nav>`
 **Removed properties:** `alignment`
