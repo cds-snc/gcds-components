@@ -624,6 +624,7 @@ export const GcdsText: StencilVueComponent<JSX.GcdsText> = /*@__PURE__*/ defineC
 
 export const GcdsTextarea: StencilVueComponent<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]> = /*@__PURE__*/ defineContainer<JSX.GcdsTextarea, JSX.GcdsTextarea["value"]>('gcds-textarea', defineGcdsTextarea, [
   'autofocus',
+  'form',
   'hideLimit',
   'maxlength',
   'minlength',

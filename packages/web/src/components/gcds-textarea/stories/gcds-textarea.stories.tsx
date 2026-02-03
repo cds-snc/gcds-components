@@ -70,6 +70,13 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    form: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+    },
     hint: {
       control: 'text',
       table: {
@@ -182,6 +189,7 @@ const Template = args =>
   ${args.hideLimit ? `hide-limit` : null}
   ${args.hideLabel ? `hide-label` : null}
   ${args.autofocus ? `autofocus` : null}
+  ${args.form ? `form="${args.form}"` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -197,12 +205,13 @@ const Template = args =>
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
   ${args.value ? `value="${args.value}"` : null}
-  ${args.maxlength ? `maxlength="${args.maxlength}"` : null}maxlength
+  ${args.maxlength ? `maxlength="${args.maxlength}"` : null}
   ${args.minlength ? `minlength="${args.minlength}"` : null}
   ${args.rows ? `rows="${args.rows}"` : null}
   ${args.hideLimit ? `hideLimit` : null}
   ${args.hideLabel ? `hideLabel` : null}
   ${args.autofocus ? `autofocus` : null}
+  ${args.form ? `form="${args.form}"` : null}
   ${args.validateOn != 'blur' ? `validateOn="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -227,6 +236,7 @@ const TemplatePlayground = args => `
   ${args.hideLimit ? `hide-limit` : null}
   ${args.hideLabel ? `hide-label` : null}
   ${args.autofocus ? `autofocus` : null}
+  ${args.form ? `form="${args.form}"` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -294,6 +304,7 @@ Maxlength.args = {
   validateOn: 'blur',
   lang: 'en',
 };
+
 // ------ Textarea hide limit ------
 
 export const HideLimit = Template.bind({});
@@ -307,6 +318,21 @@ HideLimit.args = {
   validateOn: 'blur',
   hideLimit: true,
   lang: 'en',
+};
+
+// ------ Textarea form ------
+
+export const Form = Template.bind({});
+Form.args = {
+  textareaId: 'textarea-minlength',
+  label: 'Label',
+  name: 'textarea-name',
+  hint: 'Hint / Example message.',
+  maxlength: 20,
+  required: true,
+  validateOn: 'blur',
+  lang: 'en',
+  form: 'formID',
 };
 
 // ------ Textarea minlength ------
@@ -347,6 +373,7 @@ Props.args = {
   maxlength: '',
   minlength: '',
   errorMessage: '',
+  form: '',
   required: false,
   disabled: false,
   rows: '',
@@ -369,6 +396,7 @@ Playground.args = {
   minlength: '',
   maxlength: '',
   errorMessage: '',
+  form: '',
   required: false,
   disabled: false,
   rows: '',

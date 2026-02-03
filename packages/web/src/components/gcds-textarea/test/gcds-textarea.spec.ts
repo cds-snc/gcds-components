@@ -95,6 +95,7 @@ describe('gcds-textarea', () => {
       </gcds-textarea>
     `);
   });
+
   it('renders textarea with maxlength and hide limit in EN', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
@@ -474,6 +475,33 @@ describe('gcds-textarea', () => {
               aria-invalid="false"
               rows="5"
               minlength="5"
+            ></textarea>
+          </div>
+        </mock:shadow-root>
+      </gcds-textarea>
+    `);
+  });
+
+  /**
+   * Textarea form attribute test
+   */
+  it('renders textarea with form attribute', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="textarea-form" name="textarea-form-name" form="formID" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea label="Label" textarea-id="textarea-form" name="textarea-form-name" form="formID">
+        <mock:shadow-root>
+          <div class="gcds-textarea-wrapper">
+            <gcds-label label-for="textarea-form" label="Label" lang="en"></gcds-label>
+            <textarea
+              id="textarea-form"
+              name="textarea-form-name"
+              aria-labelledby="label-for-textarea-form"
+              aria-invalid="false"
+              rows="5"
+              form="formID"
             ></textarea>
           </div>
         </mock:shadow-root>
