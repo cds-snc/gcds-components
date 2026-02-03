@@ -246,22 +246,20 @@ To migrate from 0.38.0, you need to upgrade to at least 0.39.0 first.
 Address the breaking change in 0.39.0, which is detailed in the [0.39 release notes](../../archived/CHANGELOG.md#0390).
 A property (`placeholder`) was removed from the `<gcds-input>` component.
 
-**Next steps**: follow the [0.40.0 or higher → 1.0.0](#migrating-from-0400-or-higher-to-100) section above for further instructions.
+**Next steps**: follow the [0.39.0 or higher → 1.0.0](#migrating-from-0390-or-higher-to-100) section above for further instructions.
 
 # Migrating from 0.34.0 to 1.0.0
 
 To migrate from 0.34.0, you need to upgrade to at least 0.35.0 first.
 Address the breaking change in 0.35.0, which is detailed in the [0.35 release notes](../../archived/CHANGELOG.md#0350).
 
-**Next steps**: follow the [0.38.0 or higher → 1.0.0](#migrating-from-0380-or-higher-to-100) section above for further instructions.
+**Next steps**: follow the [0.38.0 or higher → 1.0.0](#migrating-from-0380-to-100) section above for further instructions.
 
 # Migration from 0.27.0 to 1.0.0
 To migrate from 0.27.0, you need to upgrade to at least 0.28.0 first.
 Address the breaking change in 0.28.0, which is detailed in the [0.28 release notes](../../archived/CHANGELOG.md#0280).
 
-**Next steps**: follow the [0.34.0 or higher → 1.0.0](#migrating-from-0340-or-higher-to-100) section above for further instructions.
+**Next steps**: follow the [0.34.0 or higher → 1.0.0](#migrating-from-0340-to-100) section above for further instructions.
 
 # Versions older than 0.27.0
 For a complete list of changes in each version, please refer to the archived [CHANGELOG](../../archived/CHANGELOG.md) file.
-
-**Next steps**: follow the [0.27.0 → 1.0.0](#migration-from-0270-to-100) section above for further instructions.
