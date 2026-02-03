@@ -214,7 +214,16 @@ This table is an index of all new properties and features. Click a component to 
 | `readonly`   | `readonly`    | Makes the textarea read-only                | boolean | false   |
 | `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
 
+---
 
+## React SSR package removal
+
+> [!IMPORTANT] If you are using React with server-side rendering (SSR), please read this section carefully.
+
+In the alpha phase, we provided a dedicated package for React SSR integration: `@cdssnc/gcds-components-react-ssr`. Due to its experimental nature and maintenance challenges, we have decided to remove this package in the stable release.
+
+StencilJS, the underlying technology for GCDS components, offers built-in SSR support. We recommend using Stencil's native SSR capabilities for React applications. Visit this [guide](../v1-nextjs.md) for detailed instructions on integrating GCDS components with React and Next.js.
+ 
 ---
 
 # Migrating from 0.47.0 to 1.0.0
