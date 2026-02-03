@@ -1,8 +1,6 @@
-# Migrating from `@cdssnc/gcds-components` to `@gcds-core/components`
+# Migrating from alpha to stable v1
 [Français](./fr/migration/stable-v1.md#migration-vers-la-version-stable-v1)
 
-Version migration guide
------------------------
 This document helps you migrate from older versions of `@cdssnc/gcds-components` to the stable `@gcds-core/components` package. Each migration path is listed below. Follow the section that matches your current version.
 
 ## Migration paths
@@ -336,10 +334,10 @@ New properties:
 
 ---
 
-## React SSR package removal
+## React SSR package removal (if using)
 
 > [!IMPORTANT] 
-> If you are using React with server-side rendering (SSR), read this section carefully.
+> If you are using the React SSR package (@cdssnc/gcds-components-react-ssr), read this section carefully.
 
 In the alpha phase, we provided a dedicated package for React SSR integration: `@cdssnc/gcds-components-react-ssr`. Due to its experimental nature and maintenance challenges, we have decided to remove this package in the stable release.
 
@@ -349,12 +347,14 @@ Stencil, the underlying technology for GCDS components, offers built-in SSR supp
 - Remove the `@cdssnc/gcds-components-react-ssr` package from your project dependencies.
   - There is no replacement at this time, but we are actively working on improving SSR support in future releases.
 
+---
+
 ### Base font import (if not using CSS Shortcuts)
 
-If you don't use CSS Shortcuts, you previously needed to manually include Google Fonts in your project to ensure correct typography. With the removal of the React SSR package, we have added a base Google Fonts import directly into the components package.
+If you don't use CSS Shortcuts, you previously needed to manually include Google Fonts in your project to ensure correct typography. We have added a base Google Fonts import directly into the components package.
 
 **👉 Action required:**
-- Remove any manual Google Fonts imports from your project if you were using the React SSR package.
+- Remove any manual Google Fonts imports from your project.
 
 # Migrating from 0.38.0 to 1.0.0
 
