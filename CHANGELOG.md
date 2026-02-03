@@ -95,7 +95,7 @@ Reportez-vous au guide de migration pour en savoir plus sur les changements à l
 Si vous utilisez actuellement **`@cdssnc/gcds-components`**, vous devrez migrer vers la nouvelle version pour continuer à recevoir des mises à jour et des améliorations.
 
 👉 **Suivez le guide de migration :**  
-\*\*\[Migration de @cdssnc/gcds-components vers @gcds-core/components](.docs/migration/stable-v1.md)**
+**[Migration de @cdssnc/gcds-components vers @gcds-core/components](.docs/migration/stable-v1.md)**
 
 **Remarque&nbsp;:** Comme les composants de Système de design GC avaient été publiés auparavant en tant que produit alpha (`@cdssnc/gcds-components`), nous avons conservé une version archivée du journal des modifications. Vous pouvez y accéder [ici](archived/CHANGELOG.md).
 
