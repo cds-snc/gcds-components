@@ -13,7 +13,16 @@ This document helps you migrate from older versions of `@cdssnc/gcds-components`
 
 ---
 
-## API Removals and Breaking Changes
+# Migrating from 0.47.0 to 1.0.0
+
+This section covers the breaking changes introduced as part of the **component API alignment work** leading to the **stable `v1.0.0` release**.
+
+The changes are grouped into the following categories:
+1. [Component API Removals and Breaking Changes](#component-api-removals-and-breaking-changes)
+2. [New properties and features](#new-properties-and-features)
+3. [React SSR package removal](#react-ssr-package-removal)
+
+## Component API Removals and Breaking Changes
 
 This table is an index of all API removals and breaking changes. Click a component to jump to its detailed migration instructions.
 
@@ -35,7 +44,7 @@ This table is an index of all API removals and breaking changes. Click a compone
 
 ### Card
 **Removed:** `a` value for the `cardTitleTag` property
-- Remove all instances of `cardTitleTag="a"` from all `<gcds-card>` components. By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
+- Remove `cardTitleTag="a"` from all `<gcds-card>` components. By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
 
 ### Container
 **Removed:** `centered`, `mainContainer`
@@ -53,84 +62,178 @@ If you are using:
 
 ### Grid
 **Removed:** `centered`
-- If you used `centered`, replace with `align="center"`.
+
+If you are using:
+- `centered` → replace with `align="center"`
 
 ### Header
 **Removed:** `signatureVariant`
 - Remove the `signatureVariant` attribute from all `<gcds-header>` components.
-- Validate branding and contrast to ensure compliance with new standards.
+  - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-header</code> component renders the <code>gcds-signature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> slot.
 
 ### Link
 **Removed:** `variant`
-- Replace the `variant` attribute with `linkRole` on all `<gcds-link>` components.
+
+If you are using:
+- `variant` → replace with `linkRole`
 
 ### Notice
 **Removed:** `type`
-- Replace the `type` attribute with `noticeRole` on all `<gcds-notice>` components.
+
+If you are using:
+- `type` → replace with `noticeRole`
 
 ### PhaseBanner
 **Removed:** `<gcds-phase-banner>`
 - Remove all usage of `<gcds-phase-banner>` from your codebase.
+  - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 
 ### Textarea
 **Removed:** `characterCount`
-- Replace the `characterCount` attribute with `maxlength` on all `<gcds-textarea>` components.
-- Use the `hideLimit` attribute if you want to hide the character counter.
+If you are using:
+- `characterCount` → replace with `maxlength`
+  - Additionally, add the `hideLimit` attribute if you want to hide the character counter.
 
 ### TopNav
 **Removed:** `alignment`
+
 If you are using:
 - `alignment="left"` → use `align="end"`
 - `alignment="right"` → use `align="start"`
 - `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
+  - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
 
 ### VerifyBanner
 **Removed:** `<gcds-verify-banner>`
+
 - Remove all usage of `<gcds-verify-banner>` from your codebase.
+  - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
+
 
 ---
 
-### Migration Instructions for Breaking Changes
+## New properties and features
 
-#### PhaseBanner
-- Remove all usage of `<gcds-phase-banner>` from your codebase.
+This table is an index of all new properties and features. Click a component to jump to its detailed migration instructions.
+| Component         | New API/Prop/Feature                             |
+|-------------------|--------------------------------------------------|
+| [Card](#card-new)              | `target`, `rel`                                 |
+| [Checkboxes](#checkboxes-new)       | `form`, `validity`, `hideLegend`          |
+| [DateInput](#dateinput-new)         | `max`, `min`, `validity`, `<component>-id`              |
+| [FileUploader](#fileuploader-new)       | `hideLabel`, `form`, `validity`                       |
+| [Heading](#heading-new)           | `headingRole`                                 |
+| [Radios](#radios-new)             | `form`, `validity`, `hideLegend`, `<component>-id`            |
+| [Select](#select-new)              | `hideLabel`, `form`, `validity`                        |
+| [Textarea](#textarea-new)           | `hideLimit`, `form`, `readonly`, `validity`                     | 
+|-------------------|--------------------------------------------------|
 
-#### VerifyBanner
-- Remove all usage of `<gcds-verify-banner>` from your codebase.
+### Card new
 
-#### Footer
-- Remove the `wordmarkVariant` attribute from all `<gcds-footer>` components.
-- Validate branding and contrast to ensure compliance with new standards.
+**New properties:** `target`, `rel`
+- You can now set the `target` and `rel` properties on `<gcds-card>` components to control link behaviour and security.
+- Example:
+```html
+<gcds-card
+  card-title="Example Card"
+  href="https://example.com"
+  target="_blank"
+  rel="noopener noreferrer"
+></gcds-card>
+```
 
-#### Header
-- Remove the `signatureVariant` attribute from all `<gcds-header>` components.
-- Validate branding and contrast to ensure compliance with new standards.
+### Checkboxes new
+**New properties:** `form`, `validity`, `hideLegend`
+- You can now set the `form`, `validity`, and `hideLegend` properties on `<gcds-checkboxes>` components.
+- Example:
+```html
+<gcds-checkboxes
+  legend="Select options"
+  form="myForm"
+  validity="invalid"
+  hide-legend
+></gcds-checkboxes>
+```
 
-#### Card
-- Remove the `cardTitleTag="a"` attribute from all `<gcds-card>` components.
-- Use a `<gcds-link>` inside the card title if you need a link.
+### DateInput new
+**New properties:** `max`, `min`, `validity`, `<component>-id`
+- You can now set the `max`, `min`, `validity`, and `<component>-id` properties on `<gcds-date-input>` components.
+- Example:
+```html
+<gcds-date-input
+  label="Select a date"
+  max="2024-12-31"
+  min="2024-01-01"
+  validity="valid"
+  date-input-id="dateInput1"
+></gcds-date-input>
+```
 
-#### TopNav
-- If you used `alignment="left"`, replace with `align="end"`.
-- If you used `alignment="right"`, replace with `align="start"`.
-- If you used `alignment="center"`, remove the attribute (center is no longer supported; default is left-aligned).
+### FileUploader new
+**New properties:** `hideLabel`, `form`, `validity`
+- You can now set the `hideLabel`, `form`, and `validity` properties on `<gcds-file-uploader>` components.
+- Example:
+```html
+<gcds-file-uploader
+  label="Upload your file"
+  hide-label
+  form="uploadForm"
+  validity="valid"
+></gcds-file-uploader>
+```
 
-#### Container
-- If you used `centered`, replace with `align="center"`.
-- If you used `mainContainer` or `size="xl" main-container`, replace with `layout="page"` and add `tag="main"` if this is the main content container.
+### Heading new
+**New property:** `headingRole`
+- You can now set the `headingRole` property on `<gcds-heading>` components.
+- Example:
+```html
+<gcds-heading
+  level="2"
+  heading-role="section-title"
+>Section Title</gcds-heading>
+``` 
 
-#### Grid
-- If you used `centered`, replace with `align="center"`.
+### Radios new
+**New properties:** `form`, `validity`, `hideLegend`, `<component>-id`
+- You can now set the `form`, `validity`, `hideLegend`, and `<component>-id` properties on `<gcds-radios>` components.
+- Example:
+```html
+<gcds-radios
+  legend="Choose an option"
+  form="optionsForm"
+  validity="invalid"
+  hide-legend
+  radios-id="radios1"
+  options="[{ label: 'Option 1', value: '1' }, { label: 'Option 2', value: '2' }]"
+></gcds-radios>
+```
 
-#### Link
-- Replace the `variant` attribute with `linkRole` on all `<gcds-link>` components.
+### Select new
+**New properties:** `hideLabel`, `form`, `validity`
+- You can now set the `hideLabel`, `form`, and `validity` properties
+- Example:
+```html
+<gcds-select
+  label="Choose an option"
+  hide-label
+  form="selectForm"
+  validity="valid"
+></gcds-select>
+``` 
 
-#### Notice
-- Replace the `type` attribute with `noticeRole` on all `<gcds-notice>` components.
+### Textarea new
+**New properties:** `hideLimit`, `form`, `readonly`, `validity`
+- You can now set the `hideLimit`, `form`, `readonly`, and `validity` properties on `<gcds-textarea>` components.
+- Example:
+```html
+<gcds-textarea
+  label="Your message"
+  hide-limit
+  form="messageForm"
+  readonly
+  validity="valid"
+></gcds-textarea>
+```
 
-#### Textarea
-- Replace the `characterCount` attribute with `maxlength` on all `<gcds-textarea>` components.
-- Use the `hideLimit` attribute if you want to hide the character counter.
 
 ---
 
