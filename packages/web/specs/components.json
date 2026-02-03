@@ -5481,6 +5481,10 @@
         {
           "name": "slot",
           "text": "toggle - Slot to add a custom language toggle in the top-right of the header."
+        },
+        {
+          "name": "slot",
+          "text": "account - Slot to add a custom account link in the bottom-right of the header."
         }
       ],
       "usage": {},
@@ -5609,6 +5613,10 @@
       "listeners": [],
       "styles": [],
       "slots": [
+        {
+          "name": "account",
+          "docs": "Slot to add a custom account link in the bottom-right of the header."
+        },
         {
           "name": "banner",
           "docs": "Slot to add a banner across the top of the header."

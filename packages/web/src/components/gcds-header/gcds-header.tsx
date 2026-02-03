@@ -21,6 +21,7 @@ import i18n from './i18n/i18n';
  * @slot skip-to-nav - Slot to add a hidden skip to content navigation at the top of the header.
  * @slot signature - Slot to replace Government of Canada signature.
  * @slot toggle - Slot to add a custom language toggle in the top-right of the header.
+ * @slot account - Slot to add a custom account link in the bottom-right of the header.
  */
 @Component({
   tag: 'gcds-header',
@@ -166,6 +167,14 @@ export class GcdsHeader {
     return !!this.el.querySelector('[slot="breadcrumb"]');
   }
 
+  private get hasAccount() {
+    return !!this.el.querySelector('[slot="account"]');
+  }
+
+  private get hasThemeTopicMenu() {
+    return !!this.el.querySelector('gcds-topic-menu[slot="menu"]');
+  }
+
   render() {
     const {
       renderSkipToNav,
@@ -175,6 +184,8 @@ export class GcdsHeader {
       hasSearch,
       hasBanner,
       hasBreadcrumb,
+      hasAccount,
+      hasThemeTopicMenu,
     } = this;
     return (
       <Host role="banner">
@@ -189,10 +200,18 @@ export class GcdsHeader {
             {renderSearch}
           </div>
         </div>
-        <slot name="menu"></slot>
+
+        {hasThemeTopicMenu || hasAccount ? (
+          <div class="gcds-header__container--menu">
+            {hasThemeTopicMenu ? <slot name="menu"></slot> : null}
+            {hasAccount ? <slot name="account"></slot> : null}
+          </div>
+        ) : <slot name="menu"></slot>}
+
         {hasBreadcrumb ? (
-          <div class="gcds-header__container">
+          <div class="gcds-header__container--breadcrumbs">
             <slot name="breadcrumb"></slot>
+            {hasAccount && !hasThemeTopicMenu ? <slot name="account"></slot> : null}
           </div>
         ) : null}
       </Host>

@@ -61,6 +61,7 @@ describe('gcds-header', () => {
         <form slot="search"></form>
         <ul slot="menu"></ul>
         <ul slot="breadcrumbs"></ul>
+        <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
       </gcds-header>`,
     });
     expect(page.root).toEqualHtml(`
@@ -78,11 +79,18 @@ describe('gcds-header', () => {
             </div>
           </div>
           <slot name="menu"></slot>
+          <div class="gcds-header__container--breadcrumbs">
+            <slot name="breadcrumb"></slot>
+            <slot name="account"></slot>
+          </div>
         </mock:shadow-root>
         <div slot="banner"></div>
         <form slot="search"></form>
         <ul slot="menu"></ul>
         <ul slot="breadcrumbs"></ul>
+        <gcds-button href="#" slot="account" type="link">
+          Sign In
+        </gcds-button>
       </gcds-header>
     `);
   });
@@ -99,6 +107,7 @@ describe('gcds-header', () => {
         <form slot="search"></form>
         <ul slot="menu"></ul>
         <ul slot="breadcrumbs"></ul>
+        <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
       </gcds-header>`,
     });
     expect(page.root).toEqualHtml(`
@@ -116,6 +125,10 @@ describe('gcds-header', () => {
             </div>
           </div>
           <slot name="menu"></slot>
+          <div class="gcds-header__container--breadcrumbs">
+            <slot name="breadcrumb"></slot>
+            <slot name="account"></slot>
+          </div>
         </mock:shadow-root>
         <ul slot="skip-to-nav"></ul>
         <div slot="banner"></div>
@@ -126,6 +139,9 @@ describe('gcds-header', () => {
         <form slot="search"></form>
         <ul slot="menu"></ul>
         <ul slot="breadcrumbs"></ul>
+        <gcds-button href="#" slot="account" type="link">
+          Sign In
+        </gcds-button>
       </gcds-header>
     `);
   });
