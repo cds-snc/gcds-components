@@ -17,39 +17,39 @@ This document helps you migrate from older versions of `@cdssnc/gcds-components`
 
 This table is an index of all API removals and breaking changes. Click a component to jump to its detailed migration instructions.
 
-| Component         | Removed API/Prop/Feature         |
-|-------------------|----------------------------------|
-| [Card](#card)              | `cardTitleTag="a"`               |
-| [Container](#container)         | `centered`, `mainContainer`, `size="xl" main-container` |
-| [Footer](#footer)            | `wordmarkVariant`                |
-| [Grid](#grid)              | `centered`                       |
-| [Header](#header)            | `signatureVariant`               |
-| [Link](#link)              | `variant`                        |
-| [Notice](#notice)            | `type`                           |
-| [PhaseBanner](#phasebanner)       | `<gcds-phase-banner>`            |
-| [Textarea](#textarea)          | `characterCount`                 |
-| [TopNav](#topnav)            | `alignment`                      |
-| [VerifyBanner](#verifybanner)      | `<gcds-verify-banner>`           |
+| Component         | Removed API/Prop/Feature                             |
+|-------------------|------------------------------------------------------|
+| [Card](#card)              | `a` value for `cardTitleTag`                         |
+| [Container](#container)         | `centered`, `mainContainer` |
+| [Footer](#footer)            | `wordmarkVariant`                                    |
+| [Grid](#grid)              | `centered`                                           |
+| [Header](#header)            | `signatureVariant`                                   |
+| [Link](#link)              | `variant`                                            |
+| [Notice](#notice)            | `type`                                               |
+| [PhaseBanner](#phasebanner)       | `<gcds-phase-banner>`                                |
+| [Textarea](#textarea)          | `characterCount`                                     |
+| [TopNav](#topnav)            | `alignment`                                          |
+| [VerifyBanner](#verifybanner)      | `<gcds-verify-banner>`                               |
 
 ---
 
 ### Card
-**Removed:** `cardTitleTag="a"`
-- Remove the `cardTitleTag="a"` attribute from all `<gcds-card>` components.
-- Use a `<gcds-link>` inside the card title if you need a link.
+**Removed:** `a` value for the `cardTitleTag` property
+- Remove all instances of `cardTitleTag="a"` from all `<gcds-card>` components. By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
 
 ### Container
-**Removed:** `centered`, `mainContainer`, `size="xl" main-container`
+**Removed:** `centered`, `mainContainer`
+
 If you are using:
-- `centered` → use `align="center"`
-- `mainContainer` **or** `size="xl" main-container` →
-  - use `layout="page"`
-  - add `tag="main"` if this is the main content container
+- `centered` → replace with `align="center"`
+- `mainContainer` **or** `size="xl" main-container` → replace with `layout="page"`
+  - Additionally, add `tag="main"` if this is the main content container.
 
 ### Footer
 **Removed:** `wordmarkVariant`
 - Remove the `wordmarkVariant` attribute from all `<gcds-footer>` components.
-- Validate branding and contrast to ensure compliance with new standards.
+  - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-footer</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>gcds-signature</code> component ensures a better built-in accessibility for the <code>gcds-footer</code> component.
+
 
 ### Grid
 **Removed:** `centered`
