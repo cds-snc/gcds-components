@@ -143,6 +143,13 @@ The changes are grouped into the following categories:
 - Remove all usage of `<gcds-verify-banner>` from your codebase.
   - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 
+---
+
+> **Skip to** [New properties and features](#new-properties-and-features)
+
+--- 
+
+#### React `<Gcds-*>` components
 
 ---
 ### Card `<GcdsCard>`
