@@ -246,7 +246,7 @@ Stencil, the underlying technology for GCDS components, offers built-in SSR supp
 
 **👉 Action required:**
 - Remove the `@cdssnc/gcds-components-react-ssr` package from your project dependencies.
-- Update your SSR implementation to use Stencil's built-in SSR support. Refer to the [Next.js integration guide](../v1-nextjs.md) for assistance.
+  - There is no replacement at this time, but we are actively working on improving SSR support in future releases.
 
 ### Base font import (if not using CSS Shortcuts)
 
