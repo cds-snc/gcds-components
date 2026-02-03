@@ -26,31 +26,31 @@ The changes are grouped into the following categories:
 
 This table is an index of all API removals and breaking changes. Click a component to jump to its detailed migration instructions.
 
-| Component                                        | Removed API/Prop/Feature                             |
-|--------------------------------------------------|------------------------------------------------------|
-| [Card](#card-gcds-card)                          | `a` value for `cardTitleTag`                         |
-| [Container](#container-gcds-container)           | `centered`, `mainContainer` |
-| [Footer](#footer-gcds-footer)                    | `wordmarkVariant`                                    |
-| [Grid](#grid-gcds-grid)                          | `centered`                                           |
-| [Header](#header-gcds-header)                    | `signatureVariant`                                   |
-| [Link](#link-gcds-link)                          | `variant`                                            |
-| [Notice](#notice-gcds-notice)                    | `type`                                               |
-| [PhaseBanner](#phasebanner-gcds-phase-banner)    | `<gcds-phase-banner>`                                |
-| [Textarea](#textarea-gcds-textarea)              | `characterCount`                                     |
-| [TopNav](#topnav-gcds-top-nav)                   | `alignment`                                          |
-| [VerifyBanner](#verifybanner-gcds-verify-banner) | `<gcds-verify-banner>`                               |
+| Component                                        | What's changed (removed)     | Type      |
+|--------------------------------------------------|------------------------------|-----------|
+| [Card](#card-gcds-card)                          | `a` value for `cardTitleTag` | Value     |
+| [Container](#container-gcds-container)           | `centered`, `mainContainer`  | Property  |
+| [Footer](#footer-gcds-footer)                    | `wordmarkVariant`            | Property  |
+| [Grid](#grid-gcds-grid)                          | `centered`                   | Property  |
+| [Header](#header-gcds-header)                    | `signatureVariant`           | Property  |
+| [Link](#link-gcds-link)                          | `variant`                    | Property  |
+| [Notice](#notice-gcds-notice)                    | `type`                       | Property  |
+| [PhaseBanner](#phasebanner-gcds-phase-banner)    | `<gcds-phase-banner>`        | Component |
+| [Textarea](#textarea-gcds-textarea)              | `characterCount`             | Property  |
+| [TopNav](#topnav-gcds-top-nav)                   | `alignment`                  | Property  |
+| [VerifyBanner](#verifybanner-gcds-verify-banner) | `<gcds-verify-banner>`       | Component  |
 
 ---
 
 ### Card `<gcds-card>`
-**Removed:** `a` value for the `cardTitleTag` property
+**Removed value:** `a` value for the `cardTitleTag` property
 
 **Action required:**
 - Remove `cardTitleTag="a"` from all `<gcds-card>` components.
   - By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
 
 ### Container `<gcds-container>`
-**Removed:** `centered`, `mainContainer`
+**Removed properties:** `centered`, `mainContainer`
 
 **Action required:**
 - `centered` → replace with `align="center"`
@@ -58,7 +58,7 @@ This table is an index of all API removals and breaking changes. Click a compone
   - Additionally, add `tag="main"` if this is the main content container.
 
 ### Footer `<gcds-footer>`
-**Removed:** `wordmarkVariant`
+**Removed properties:** `wordmarkVariant`
 
 **Action required:**
 - Remove the `wordmarkVariant` attribute from all `<gcds-footer>` components.
@@ -66,46 +66,46 @@ This table is an index of all API removals and breaking changes. Click a compone
 
 
 ### Grid `<gcds-grid>`
-**Removed:** `centered`
+**Removed properties:** `centered`
 
 **Action required:**
 - `centered` → replace with `align="center"`
 
 ### Header `<gcds-header>`
-**Removed:** `signatureVariant`
+**Removed properties:** `signatureVariant`
 
 **Action required:**
 - Remove the `signatureVariant` attribute from all `<gcds-header>` components.
   - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-header</code> component renders the <code>gcds-signature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> slot.
 
 ### Link `<gcds-link>`
-**Removed:** `variant`
+**Removed properties:** `variant`
 
 **Action required:**
 - `variant` → replace with `linkRole`
 
 ### Notice `<gcds-notice>`
-**Removed:** `type`
+**Removed properties:** `type`
 
 **Action required:**
 - `type` → replace with `noticeRole`
 
 ### PhaseBanner `<gcds-phase-banner>`
-**Removed:** `<gcds-phase-banner>`
+**Removed component:** `<gcds-phase-banner>`
 
 **Action required:**
 - Remove all usage of `<gcds-phase-banner>` from your codebase.
   - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 
 ### Textarea `<gcds-textarea>`
-**Removed:** `characterCount`
+**Removed properties:** `characterCount`
 
 **Action required:**
 - `characterCount` → replace with `maxlength`
   - Additionally, add the `hideLimit` attribute if you want to hide the character counter.
 
 ### TopNav `<gcds-top-nav>`
-**Removed:** `alignment`
+**Removed properties:** `alignment`
 
 **Action required:**
 - `alignment="left"` → use `align="end"`
@@ -114,7 +114,7 @@ This table is an index of all API removals and breaking changes. Click a compone
   - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
 
 ### VerifyBanner `<gcds-verify-banner>`
-**Removed:** `<gcds-verify-banner>`
+**Removed component:** `<gcds-verify-banner>`
 
 **Action required:**
 - Remove all usage of `<gcds-verify-banner>` from your codebase.
