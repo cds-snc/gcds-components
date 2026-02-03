@@ -6,14 +6,14 @@ This document helps you migrate from older versions of `@cdssnc/gcds-components`
 
 ## Migration paths
 
-| From version | To version | Section                                        |
-|--------------|------------|------------------------------------------------|
-| 0.40.0+      | 1.0.0      | [0.40.0+ → 1.0.0]((#migrating-from-0400-to-100)) |
-| 0.39.0       | 1.0.0      | _(coming soon)_                                |
+| From version | To version | Section                                                             |
+|--------------|------------|---------------------------------------------------------------------|
+| 0.40.0+      | 1.0.0      | [0.40.0 or higher → 1.0.0]((#migrating-from-0400-or-higher-to-100)) |
+| 0.39.0       | 1.0.0      | _(coming soon)_                                                     |
 
 ---
 
-# Migrating from 0.40.0+ to 1.0.0
+# Migrating from 0.40.0 or higher to 1.0.0
 
 This section covers the breaking changes introduced as part of the **component API alignment work** leading to the **stable `v1.0.0` release**.
 
