@@ -6,14 +6,16 @@ This document helps you migrate from older versions of `@cdssnc/gcds-components`
 
 ## Migration paths
 
-| From version | To version | Section                                                             |
-|--------------|------------|---------------------------------------------------------------------|
-| 0.40.0+      | 1.0.0      | [0.40.0 or higher → 1.0.0]((#migrating-from-0400-or-higher-to-100)) |
-| 0.39.0       | 1.0.0      | _(coming soon)_                                                     |
-
+| From version     | To version | Section                                                           |
+|------------------|------------|-------------------------------------------------------------------|
+| 0.39.0 or higher | 1.0.0      | [0.39.0 or higher → 1.0.0](#migrating-from-0390-or-higher-to-100) |
+| 0.38.0           | 1.0.0      | [0.38.0 → 1.0.0](#migrating-from-0380-to-100)                     |
+| 0.34.0           | 1.0.0      | [0.34.0 → 1.0.0](#migrating-from-0340-to-100)                     |
+| 0.27.0           | 1.0.0      | [0.27.0 → 1.0.0](#migration-from-0270-to-100)                     |
+| Older than 0.27.0| 1.0.0      | [Older than 0.27.0 → 1.0.0](#versions-older-than-0270)             |
 ---
 
-# Migrating from 0.40.0 or higher to 1.0.0
+# Migrating from 0.39.0 or higher to 1.0.0
 
 This section covers the breaking changes introduced as part of the **component API alignment work** leading to the **stable `v1.0.0` release**.
 
@@ -237,3 +239,24 @@ If you don't use CSS Shortcuts, you previously needed to manually include Google
 **👉 Action required:**
 - Remove any manual Google Fonts imports from your project if you were using the React SSR package.
 
+# Migrating from 0.38.0 to 1.0.0
+
+To migrate from 0.38.0, you need to upgrade to at least 0.39.0 first.
+
+Address the breaking change in 0.39.0, which is detailed in the [0.39 release notes](../../archived/CHANGELOG.md#0390).
+A property (`placeholder`) was removed from the `<gcds-input>` component.
+
+**Next steps**: follow the [0.40.0 or higher → 1.0.0](#migrating-from-0400-or-higher-to-100) section for further instructions.
+
+# Migrating from 0.34.0 to 1.0.0
+
+To migrate from 0.34.0, you need to upgrade to at least 0.35.0 first.
+Address the breaking change in 0.35.0, which is detailed in the [0.35 release notes](../../archived/CHANGELOG.md#0350).
+
+
+# Migration from 0.27.0 to 1.0.0
+To migrate from 0.27.0, you need to upgrade to at least 0.28.0 first.
+Address the breaking change in 0.28.0, which is detailed in the [0.28 release notes](../../archived/CHANGELOG.md#0280).
+
+# Versions older than 0.27.0
+For a complete list of changes in each version, please refer to the archived [CHANGELOG](../../archived/CHANGELOG.md) file.
