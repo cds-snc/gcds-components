@@ -26,10 +26,10 @@ describe('gcds-header', () => {
   it('renders interfaced components', async () => {
     const page = await newSpecPage({
       components: [GcdsHeader],
-      html: `<gcds-header lang-href="/fr/" skip-to-href="#main" signature-variant="colour" signature-has-link="true"></gcds-header>`,
+      html: `<gcds-header lang-href="/fr/" skip-to-href="#main" signature-variant="colour" signature-has-link="true" sign-in-href="#" sign-in-label="Sign in button"></gcds-header>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-header lang-href="/fr/" role="banner" signature-has-link="true" signature-variant="colour" skip-to-href="#main">
+      <gcds-header lang-href="/fr/" role="banner" signature-has-link="true" signature-variant="colour" skip-to-href="#main" sign-in-href="#" sign-in-label="Sign in button">
         <mock:shadow-root>
           <nav class="gcds-header__skip-to-nav" aria-label="Skip to">
             <gcds-link href="#main">
@@ -47,6 +47,10 @@ describe('gcds-header', () => {
             </div>
           </div>
           <slot name="menu"></slot>
+          <div class="gcds-header__container-bottom">
+            <slot name="breadcrumb"></slot>
+            <gcds-button class="gcds-header__sign-in" href="#" type="link">Sign in button</gcds-button>
+          </div>
         </mock:shadow-root>
       </gcds-header>
     `);
