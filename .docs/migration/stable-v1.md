@@ -24,7 +24,8 @@ The changes are grouped into the following categories:
 
 ## Component API Removals and Breaking Changes
 
-This table is an index of all API removals and breaking changes. Click a component to jump to its detailed migration instructions.
+[!IMPORTANT]
+This section lists all breaking changes and removed APIs. Please review each component's changes carefully and update your codebase accordingly.
 
 | Component                                        | What's changed (removed)       | Type      |
 |--------------------------------------------------|--------------------------------|-----------|
@@ -43,80 +44,99 @@ This table is an index of all API removals and breaking changes. Click a compone
 ---
 
 ### Card `<gcds-card>`
-**Removed value:** `a` value for the `card-title-tag` property
+**❌ Removed value:** `a` value for the `card-title-tag` property
 
-**Action required:**
+**👉 Action required:**
 - Remove `card-title-tag="a"` from all `<gcds-card>` components.
   - By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
 
-### Container `<gcds-container>`
-**Removed properties:** `centered`, `main-container`
+---
 
-**Action required:**
+### Container `<gcds-container>`
+**❌ Removed properties:** `centered`, `main-container`
+
+**👉 Action required:**
 - `centered` → replace with `align="center"`
 - `main-container` **or** `size="xl" main-container` → replace with `layout="page"`
   - Additionally, add `tag="main"` if this is the main content container.
 
-### Footer `<gcds-footer>`
-**Removed properties:** `wordmark-variant`
+---
 
-**Action required:**
+### Footer `<gcds-footer>`
+**❌ Removed properties:** `wordmark-variant`
+
+**👉 Action required:**
 - Remove the `wordmark-variant` attribute from all `<gcds-footer>` components.
   - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-footer</code> component creates colour contrast problems. Removing the option to use the <code>white</code> variant of the <code>gcds-signature</code> component ensures a better built-in accessibility for the <code>gcds-footer</code> component.
 
+---
 
 ### Grid `<gcds-grid>`
-**Removed properties:** `centered`
+**❌ Removed properties:** `centered`
 
-**Action required:**
+**👉 Action required:**
 - `centered` → replace with `align="center"`
 
-### Header `<gcds-header>`
-**Removed properties:** `signature-variant`
+---
 
-**Action required:**
+### Header `<gcds-header>`
+**❌ Removed properties:** `signature-variant`
+
+**👉 Action required:**
 - Remove the `signature-variant` attribute from all `<gcds-header>` components.
   - Using the <code>white</code> variant of the <code>gcds-signature</code> component within the <code>gcds-header</code> component renders the <code>gcds-signature</code> in white while leaving the rest of the built in elements in their normal colour scheme. This creates a disconnect between the signature and the rest of the components. If a developer needs to use a <code>white</code> signature, the signature can still be passed in the <code>signature</code> slot.
 
-### Link `<gcds-link>`
-**Removed properties:** `variant`
+---
 
-**Action required:**
+### Link `<gcds-link>`
+**❌ Removed properties:** `variant`
+
+**👉 Action required:**
 - `variant` → replace with `link-role`
 
-### Notice `<gcds-notice>`
-**Removed properties:** `type`
+---
 
-**Action required:**
+### Notice `<gcds-notice>`
+**❌ Removed properties:** `type`
+
+**👉 Action required:**
 - `type` → replace with `notice-role`
 
-### PhaseBanner `<gcds-phase-banner>`
-**Removed component:** `<gcds-phase-banner>`
+---
 
-**Action required:**
+### PhaseBanner `<gcds-phase-banner>`
+**❌ Removed component:** `<gcds-phase-banner>`
+
+**👉 Action required:**
 - Remove all usage of `<gcds-phase-banner>` from your codebase.
   - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 
-### Textarea `<gcds-textarea>`
-**Removed properties:** `character-count`
+---
 
-**Action required:**
+### Textarea `<gcds-textarea>`
+**❌ Removed properties:** `character-count`
+
+**👉 Action required:**
 - `character-count` → replace with `maxlength`
   - Additionally, add the `hide-limit` attribute if you want to hide the character counter.
 
-### TopNav `<gcds-top-nav>`
-**Removed properties:** `alignment`
+---
 
-**Action required:**
+### TopNav `<gcds-top-nav>`
+**❌ Removed properties:** `alignment`
+
+**👉 Action required:**
 - `alignment="left"` → use `align="end"`
 - `alignment="right"` → use `align="start"`
 - `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
   - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
 
-### VerifyBanner `<gcds-verify-banner>`
-**Removed component:** `<gcds-verify-banner>`
+---
 
-**Action required:**
+### VerifyBanner `<gcds-verify-banner>`
+**❌ Removed component:** `<gcds-verify-banner>`
+
+**👉 Action required:**
 - Remove all usage of `<gcds-verify-banner>` from your codebase.
   - This component was never officially documented. Its removal helps clarify the codebase, preventing any potential confusion or accidental use moving forward.
 
