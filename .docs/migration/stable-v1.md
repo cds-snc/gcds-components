@@ -115,124 +115,73 @@ If you are using:
 ## New properties and features
 
 This table is an index of all new properties and features. Click a component to jump to its detailed migration instructions.
+
 | Component         | New API/Prop/Feature                             |
 |-------------------|--------------------------------------------------|
-| [Card](#card-new)              | `target`, `rel`                                 |
-| [Checkboxes](#checkboxes-new)       | `form`, `validity`, `hideLegend`          |
-| [DateInput](#dateinput-new)         | `max`, `min`, `validity`, `<component>-id`              |
-| [FileUploader](#fileuploader-new)       | `hideLabel`, `form`, `validity`                       |
-| [Heading](#heading-new)           | `headingRole`                                 |
-| [Radios](#radios-new)             | `form`, `validity`, `hideLegend`, `<component>-id`            |
-| [Select](#select-new)              | `hideLabel`, `form`, `validity`                        |
-| [Textarea](#textarea-new)           | `hideLimit`, `form`, `readonly`, `validity`                     | 
-|-------------------|--------------------------------------------------|
+| [Card](#card-new-properties)              | `target`, `rel`                                 |
+| [Checkboxes](#checkboxes-new-properties)       | `form`, `validity`, `hideLegend`          |
+| [DateInput](#dateinput-new-properties)         | `max`, `min`, `validity`, `<component>-id`              |
+| [FileUploader](#fileuploader-new-properties)       | `hideLabel`, `form`, `validity`                       |
+| [Heading](#heading-new-properties)           | `headingRole`                                 |
+| [Radios](#radios-new-properties)             | `form`, `validity`, `hideLegend`, `<component>-id`            |
+| [Select](#select-new-properties)              | `hideLabel`, `form`, `validity`                        |
+| [Textarea](#textarea-new-properties)           | `hideLimit`, `form`, `readonly`, `validity`                     |
 
-### Card new
+### Card {#card-new-properties}
+| Property | Attribute | Description | Type | Default |
+|----------|-----------|-------------|------|---------|
+| target   | target    | Specifies where to open the linked document (e.g., `_blank`, `_self`). | string | _none_ |
+| rel      | rel       | Specifies the relationship of the target object to the link (e.g., `noopener`, `noreferrer`). | string | _none_ |
 
-**New properties:** `target`, `rel`
-- You can now set the `target` and `rel` properties on `<gcds-card>` components to control link behaviour and security.
-- Example:
-```html
-<gcds-card
-  card-title="Example Card"
-  href="https://example.com"
-  target="_blank"
-  rel="noopener noreferrer"
-></gcds-card>
-```
+### Checkboxes {#checkboxes-new-properties}
+| Property   | Attribute   | Description                                 | Type    | Default |
+|------------|-------------|---------------------------------------------|---------|---------|
+| form       | form        | Associates the component with a form        | string  | _none_  |
+| validity   | validity    | Sets the validity state                     | string  | _none_  |
+| hideLegend | hide-legend | Hides the legend visually                   | boolean | false   |
 
-### Checkboxes new
-**New properties:** `form`, `validity`, `hideLegend`
-- You can now set the `form`, `validity`, and `hideLegend` properties on `<gcds-checkboxes>` components.
-- Example:
-```html
-<gcds-checkboxes
-  legend="Select options"
-  form="myForm"
-  validity="invalid"
-  hide-legend
-></gcds-checkboxes>
-```
+### DateInput {#dateinput-new-properties}
+| Property         | Attribute         | Description                                 | Type    | Default |
+|------------------|------------------|---------------------------------------------|---------|---------|
+| max              | max              | Maximum allowed date                        | string  | _none_  |
+| min              | min              | Minimum allowed date                        | string  | _none_  |
+| validity         | validity         | Sets the validity state                     | string  | _none_  |
+| dateInputId      | date-input-id    | Sets a unique id for the component          | string  | _none_  |
 
-### DateInput new
-**New properties:** `max`, `min`, `validity`, `<component>-id`
-- You can now set the `max`, `min`, `validity`, and `<component>-id` properties on `<gcds-date-input>` components.
-- Example:
-```html
-<gcds-date-input
-  label="Select a date"
-  max="2024-12-31"
-  min="2024-01-01"
-  validity="valid"
-  date-input-id="dateInput1"
-></gcds-date-input>
-```
+### FileUploader {#fileuploader-new-properties}
+| Property   | Attribute   | Description                                 | Type    | Default |
+|------------|-------------|---------------------------------------------|---------|---------|
+| hideLabel  | hide-label  | Hides the label visually                    | boolean | false   |
+| form       | form        | Associates the component with a form        | string  | _none_  |
+| validity   | validity    | Sets the validity state                     | string  | _none_  |
 
-### FileUploader new
-**New properties:** `hideLabel`, `form`, `validity`
-- You can now set the `hideLabel`, `form`, and `validity` properties on `<gcds-file-uploader>` components.
-- Example:
-```html
-<gcds-file-uploader
-  label="Upload your file"
-  hide-label
-  form="uploadForm"
-  validity="valid"
-></gcds-file-uploader>
-```
+### Heading {#heading-new-properties}
+| Property     | Attribute     | Description                                 | Type    | Default |
+|--------------|--------------|---------------------------------------------|---------|---------|
+| headingRole  | heading-role | Sets the ARIA role for the heading          | string  | _none_  |
 
-### Heading new
-**New property:** `headingRole`
-- You can now set the `headingRole` property on `<gcds-heading>` components.
-- Example:
-```html
-<gcds-heading
-  level="2"
-  heading-role="section-title"
->Section Title</gcds-heading>
-``` 
+### Radios {#radios-new-properties}
+| Property         | Attribute         | Description                                 | Type    | Default |
+|------------------|------------------|---------------------------------------------|---------|---------|
+| form             | form             | Associates the component with a form        | string  | _none_  |
+| validity         | validity         | Sets the validity state                     | string  | _none_  |
+| hideLegend       | hide-legend      | Hides the legend visually                   | boolean | false   |
+| radiosId         | radios-id        | Sets a unique id for the component          | string  | _none_  |
 
-### Radios new
-**New properties:** `form`, `validity`, `hideLegend`, `<component>-id`
-- You can now set the `form`, `validity`, `hideLegend`, and `<component>-id` properties on `<gcds-radios>` components.
-- Example:
-```html
-<gcds-radios
-  legend="Choose an option"
-  form="optionsForm"
-  validity="invalid"
-  hide-legend
-  radios-id="radios1"
-  options="[{ label: 'Option 1', value: '1' }, { label: 'Option 2', value: '2' }]"
-></gcds-radios>
-```
+### Select {#select-new-properties}
+| Property   | Attribute   | Description                                 | Type    | Default |
+|------------|-------------|---------------------------------------------|---------|---------|
+| hideLabel  | hide-label  | Hides the label visually                    | boolean | false   |
+| form       | form        | Associates the component with a form        | string  | _none_  |
+| validity   | validity    | Sets the validity state                     | string  | _none_  |
 
-### Select new
-**New properties:** `hideLabel`, `form`, `validity`
-- You can now set the `hideLabel`, `form`, and `validity` properties
-- Example:
-```html
-<gcds-select
-  label="Choose an option"
-  hide-label
-  form="selectForm"
-  validity="valid"
-></gcds-select>
-``` 
-
-### Textarea new
-**New properties:** `hideLimit`, `form`, `readonly`, `validity`
-- You can now set the `hideLimit`, `form`, `readonly`, and `validity` properties on `<gcds-textarea>` components.
-- Example:
-```html
-<gcds-textarea
-  label="Your message"
-  hide-limit
-  form="messageForm"
-  readonly
-  validity="valid"
-></gcds-textarea>
-```
+### Textarea {#textarea-new-properties}
+| Property   | Attribute   | Description                                 | Type    | Default |
+|------------|-------------|---------------------------------------------|---------|---------|
+| hideLimit  | hide-limit  | Hides the character counter                 | boolean | false   |
+| form       | form        | Associates the component with a form        | string  | _none_  |
+| readonly   | readonly    | Makes the textarea read-only                | boolean | false   |
+| validity   | validity    | Sets the validity state                     | string  | _none_  |
 
 
 ---
