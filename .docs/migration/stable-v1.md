@@ -26,19 +26,19 @@ The changes are grouped into the following categories:
 
 This table is an index of all API removals and breaking changes. Click a component to jump to its detailed migration instructions.
 
-| Component                     | Removed API/Prop/Feature                             |
-|-------------------------------|------------------------------------------------------|
-| [Card](#card-gcds-card)       | `a` value for `cardTitleTag`                         |
-| [Container](#container)       | `centered`, `mainContainer` |
-| [Footer](#footer)             | `wordmarkVariant`                                    |
-| [Grid](#grid)                 | `centered`                                           |
-| [Header](#header)             | `signatureVariant`                                   |
-| [Link](#link)                 | `variant`                                            |
-| [Notice](#notice)             | `type`                                               |
-| [PhaseBanner](#phasebanner)   | `<gcds-phase-banner>`                                |
-| [Textarea](#textarea)         | `characterCount`                                     |
-| [TopNav](#topnav)             | `alignment`                                          |
-| [VerifyBanner](#verifybanner) | `<gcds-verify-banner>`                               |
+| Component                                        | Removed API/Prop/Feature                             |
+|--------------------------------------------------|------------------------------------------------------|
+| [Card](#card-gcds-card)                          | `a` value for `cardTitleTag`                         |
+| [Container](#container-gcds-container)           | `centered`, `mainContainer` |
+| [Footer](#footer-gcds-footer)                    | `wordmarkVariant`                                    |
+| [Grid](#grid-gcds-grid)                          | `centered`                                           |
+| [Header](#header-gcds-header)                    | `signatureVariant`                                   |
+| [Link](#link-gcds-link)                          | `variant`                                            |
+| [Notice](#notice-gcds-notice)                    | `type`                                               |
+| [PhaseBanner](#phasebanner-gcds-phase-banner)    | `<gcds-phase-banner>`                                |
+| [Textarea](#textarea-gcds-textarea)              | `characterCount`                                     |
+| [TopNav](#topnav-gcds-top-nav)                   | `alignment`                                          |
+| [VerifyBanner](#verifybanner-gcds-verify-banner) | `<gcds-verify-banner>`                               |
 
 ---
 
