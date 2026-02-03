@@ -330,6 +330,8 @@ export const GcdsHeader: StencilVueComponent<JSX.GcdsHeader> = /*@__PURE__*/ def
   'signatureVariant',
   'signatureHasLink',
   'skipToHref',
+  'signInHref',
+  'signInLabel',
   'gcdsFocus',
   'gcdsBlur',
   'gcdsClick'

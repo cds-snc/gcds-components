@@ -14,11 +14,29 @@
   :host {
     margin: var(--gcds-header-margin) !important;
 
-    .gcds-header__container {
+    .gcds-header__container-top {
+      width: 90%;
+      max-width: var(--gcds-header-container-max-width);
+      margin: 0 auto;
+      position: relative;
+
+      .gcds-header__sign-in {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .gcds-header__container-bottom {
       justify-content: space-between;
       width: 90%;
       max-width: var(--gcds-header-container-max-width);
       margin: 0 auto;
+      display: flex;
+
+      .gcds-header__sign-in {
+        flex-shrink: 0;
+      }
     }
 
     .gcds-header__skip-to-nav {
@@ -42,6 +60,13 @@
           clip: rect(0, 0, 0, 0);
         }
       }
+    }
+
+    gcds-button.gcds-header__sign-in::part(button) {
+      border-radius: 0;
+      font-size: 1rem;
+      margin-top: var(--gcds-spacing-50);
+      padding: var(--gcds-spacing-100) var(--gcds-spacing-200);
     }
   }
 }
