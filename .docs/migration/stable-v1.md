@@ -162,12 +162,16 @@ This table is an index of all new properties and features. Click a component to 
 | [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`, `form`, `readonly`, `validity`        |
 
 ### Card `<gcds-card>`
+New properties:
+
 | Property | Attribute | Description | Type | Default |
 |----------|-----------|-------------|------|---------|
 | `target`   | `target`    | Specifies where to open the linked document (e.g., `_blank`, `_self`). | string | _none_ |
 | `rel`      | `rel`       | Specifies the relationship of the target object to the link (e.g., `noopener`, `noreferrer`). | string | _none_ |
 
 ### Checkboxes `<gcds-checkboxes>`
+New properties:
+
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
 | `form`       | `form`        | Associates the component with a form        | string  | _none_  |
@@ -175,6 +179,8 @@ This table is an index of all new properties and features. Click a component to 
 | `hideLegend` | `hide-legend` | Hides the legend visually                   | boolean | false   |
 
 ### DateInput `<gcds-date-input>`
+New properties:
+
 | Property         | Attribute         | Description                                 | Type    | Default |
 |------------------|------------------|---------------------------------------------|---------|---------|
 | `max`              | `max`              | Maximum allowed date                        | string  | _none_  |
@@ -183,6 +189,8 @@ This table is an index of all new properties and features. Click a component to 
 | `dateInputId`      | `date-input-id`    | Sets a unique id for the component          | string  | _none_  |
 
 ### FileUploader `<gcds-file-uploader>`
+New properties:
+
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
 | `hideLabel`  | `hide-label`  | Hides the label visually                    | boolean | false   |
@@ -190,11 +198,15 @@ This table is an index of all new properties and features. Click a component to 
 | `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
 
 ### Heading `<gcds-heading>`
+New properties:
+
 | Property     | Attribute     | Description                                 | Type    | Default |
 |--------------|--------------|---------------------------------------------|---------|---------|
 | `headingRole`  | `heading-role` | Sets the ARIA role for the heading          | string  | _none_  |
 
 ### Radios `<gcds-radios>`
+New properties:
+
 | Property         | Attribute         | Description                                 | Type    | Default |
 |------------------|------------------|---------------------------------------------|---------|---------|
 | `form`             | `form`             | Associates the component with a form        | string  | _none_  |
@@ -203,6 +215,8 @@ This table is an index of all new properties and features. Click a component to 
 | `radiosId`         | `radios-id`        | Sets a unique id for the component          | string  | _none_  |
 
 ### Select `<gcds-select>`
+New properties:
+
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
 | `hideLabel`  | `hide-label`  | Hides the label visually                    | boolean | false   |
@@ -210,6 +224,8 @@ This table is an index of all new properties and features. Click a component to 
 | `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
 
 ### Textarea `<gcds-textarea>`
+New properties:
+
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
 | `hideLimit`  | `hide-limit`  | Hides the character counter                 | boolean | false   |
