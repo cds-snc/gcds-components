@@ -52,7 +52,7 @@ The changes are grouped into the following categories:
 **👉 Action required:**
 - Remove `card-title-tag="a"` from all `<gcds-card>` components.
   - By default, the Card component uses an anchor tag (`<gcds-link>`) so it is not necessary to set this property.
-
+- **React**: Remove `cardTitleTag="a"` from all `<GcdsCard>` components.
 ---
 
 ### Container `<gcds-container>`
@@ -62,7 +62,10 @@ The changes are grouped into the following categories:
 - `centered` → replace with `align="center"`
 - `main-container` **or** `size="xl" main-container` → replace with `layout="page"`
   - Additionally, add `tag="main"` if this is the main content container.
-
+- **React**: 
+  - `centered` → replace with `align="center"`
+  - `mainContainer={true}` **or** `size="xl" mainContainer={true}` → replace with `layout="page"`
+    - Additionally, add `tag="main"` if this is the main content container.
 ---
 
 ### Footer `<gcds-footer>`
