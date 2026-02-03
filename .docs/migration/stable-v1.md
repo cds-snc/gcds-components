@@ -28,7 +28,7 @@ The changes are grouped into the following categories:
 ## Component API Removals and Breaking Changes
 
 > [!IMPORTANT]
-> This section lists all breaking changes and removed APIs. Please review each component's changes carefully and update your codebase accordingly.
+> This section lists all breaking changes and removed APIs. Review each component's changes carefully and update your codebase accordingly.
 
 | Component                                        | What's changed (removed)       | Type      |
 |--------------------------------------------------|--------------------------------|-----------|
@@ -150,16 +150,16 @@ The changes are grouped into the following categories:
 
 This table is an index of all new properties and features. Click a component to jump to its detailed migration instructions.
 
-| Component                       | New API/Prop/Feature                             |
-|---------------------------------|--------------------------------------------------|
-| [Card](#card-1)                 | `target`, `rel`                                 |
-| [Checkboxes](#checkboxes-1)     | `form`, `validity`, `hideLegend`          |
-| [DateInput](#dateinput-1)       | `max`, `min`, `validity`, `<component>-id`              |
-| [FileUploader](#fileuploader-1) | `hideLabel`, `form`, `validity`                       |
-| [Heading](#heading-1)           | `headingRole`                                 |
-| [Radios](#radios-1)             | `form`, `validity`, `hideLegend`, `<component>-id`            |
-| [Select](#select-1)             | `hideLabel`, `form`, `validity`                        |
-| [Textarea](#textarea-1)         | `hideLimit`, `form`, `readonly`, `validity`                     |
+| Component                                          | New API/Prop/Feature                               |
+|----------------------------------------------------|----------------------------------------------------|
+| [Card](#card-gcds-card-1)                          | `target`, `rel`                                    |
+| [Checkboxes](#checkboxes-gcds-checkboxes-1)        | `form`, `validity`, `hideLegend`                   |
+| [DateInput](#dateinput-gcds-date-input-1)          | `max`, `min`, `validity`, `<component>-id`         |
+| [FileUploader](#fileuploader-gcds-file-uploader-1) | `hideLabel`, `form`, `validity`                    |
+| [Heading](#heading-gcds-heading-1)                 | `headingRole`                                      |
+| [Radios](#radios-gcds-radios-1)                    | `form`, `validity`, `hideLegend`, `<component>-id` |
+| [Select](#select-gcds-select-1)                    | `hideLabel`, `form`, `validity`                    |
+| [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`, `form`, `readonly`, `validity`        |
 
 ### Card `<gcds-card>`
 | Property | Attribute | Description | Type | Default |
@@ -222,7 +222,7 @@ This table is an index of all new properties and features. Click a component to 
 ## React SSR package removal
 
 > [!IMPORTANT] 
-> If you are using React with server-side rendering (SSR), please read this section carefully.
+> If you are using React with server-side rendering (SSR), read this section carefully.
 
 In the alpha phase, we provided a dedicated package for React SSR integration: `@cdssnc/gcds-components-react-ssr`. Due to its experimental nature and maintenance challenges, we have decided to remove this package in the stable release.
 
@@ -262,4 +262,4 @@ Address the breaking change in 0.28.0, which is detailed in the [0.28 release no
 **Next steps**: follow the [0.34.0 or higher → 1.0.0](#migrating-from-0340-to-100) section above for further instructions.
 
 # Versions older than 0.27.0
-For a complete list of changes in each version, please refer to the archived [CHANGELOG](../../archived/CHANGELOG.md) file.
+For a complete list of changes in each version, refer to the archived [CHANGELOG](../../archived/CHANGELOG.md) file.
