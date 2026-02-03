@@ -37,7 +37,7 @@ The changes are grouped into the following categories:
 | [Link](#link-gcds-link)                          | [React](#link-gcdslink)            | `variant`                      | Property  |
 | [Notice](#notice-gcds-notice)                    | [React](#notice-gcdsnotice)        | `type`                         | Property  |
 | [PhaseBanner](#phasebanner-gcds-phase-banner)    | [React](#phasebanner-gcdsphasebanner) | `<gcds-phase-banner>`          | Component |
-| [Textarea](#textarea-gcds-textarea)              | [React](#textarea-gcdstextarea)    | `character-vount`              | Property  |
+| [Textarea](#textarea-gcds-textarea)              | [React](#textarea-gcdstextarea)    | `character-count`              | Property  |
 | [TopNav](#topnav-gcds-top-nav)                   | [React](#topnav-gcdstopnav)        | `alignment`                    | Property  |
 | [VerifyBanner](#verifybanner-gcds-verify-banner) | [React](#verifybanner-gcdsverifybanner) | `<gcds-verify-banner>`         | Component |
 
@@ -249,16 +249,16 @@ The changes are grouped into the following categories:
 
 This table is an index of all new properties and features. Click a component to jump to its detailed migration instructions.
 
-| Component                                          | New API/Prop/Feature                               |
-|----------------------------------------------------|----------------------------------------------------|
-| [Card](#card-gcds-card-1)                          | `target`, `rel`                                    |
-| [Checkboxes](#checkboxes-gcds-checkboxes-1)        | `form`, `validity`, `hideLegend`                   |
-| [DateInput](#dateinput-gcds-date-input-1)          | `max`, `min`, `validity`, `<component>-id`         |
-| [FileUploader](#fileuploader-gcds-file-uploader-1) | `hideLabel`, `form`, `validity`                    |
-| [Heading](#heading-gcds-heading-1)                 | `headingRole`                                      |
-| [Radios](#radios-gcds-radios-1)                    | `form`, `validity`, `hideLegend`, `<component>-id` |
-| [Select](#select-gcds-select-1)                    | `hideLabel`, `form`, `validity`                    |
-| [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`, `form`, `readonly`, `validity`        |
+| Component                                          | New API/Prop/Feature                                      |
+|----------------------------------------------------|-----------------------------------------------------------|
+| [Card](#card-gcds-card-1)                          | `target`, `rel`                                           |
+| [Checkboxes](#checkboxes-gcds-checkboxes-1)        | `autofocus`, `form`, `hideLabel`, `hideLegend`, `validity` |
+| [DateInput](#dateinput-gcds-date-input-1)          | `autofocus`, `form`, `max`, `min`, `validity`, `<component>-id` |
+| [FileUploader](#fileuploader-gcds-file-uploader-1) | `autofocus`, `form`, `hideLabel`, `form`, `validity`      |
+| [Heading](#heading-gcds-heading-1)                 | `headingRole`                                             |
+| [Radios](#radios-gcds-radios-1)                    | `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id` |
+| [Select](#select-gcds-select-1)                    | `autofocus`, `form`, `hideLabel`, `validity`              |
+| [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`                       |
 
 ### Card `<gcds-card>`
 New properties:
@@ -271,21 +271,25 @@ New properties:
 ### Checkboxes `<gcds-checkboxes>`
 New properties:
 
-| Property   | Attribute   | Description                                 | Type    | Default |
-|------------|-------------|---------------------------------------------|---------|---------|
-| `form`       | `form`        | Associates the component with a form        | string  | _none_  |
-| `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
-| `hideLegend` | `hide-legend` | Hides the legend visually                   | boolean | false   |
+| Property     | Attribute     | Description                                                            | Type    | Default |
+|--------------|---------------|------------------------------------------------------------------------|---------|---------|
+| `autofocus`            | `autofocus`     | If true, the checkbox will be focused on component render                                                                   | `boolean`                                           | `undefined` |
+| `form`       | `form`        | Associates the component with a form                                   | string  | _none_  |
+| `hideLabel`  | `hide-label`  | For single checkbox, specifies if the label is visually hidden or not. | boolean | false   |
+| `hideLegend` | `hide-legend` | For checkbox groups, specifies if the legend is visually hidden or not | boolean | false   |
+| `validity`   | `validity`    | Sets the validity state                                                | string  | _none_  |
 
 ### DateInput `<gcds-date-input>`
 New properties:
 
-| Property         | Attribute         | Description                                 | Type    | Default |
-|------------------|------------------|---------------------------------------------|---------|---------|
-| `max`              | `max`              | Maximum allowed date                        | string  | _none_  |
-| `min`              | `min`              | Minimum allowed date                        | string  | _none_  |
-| `validity`         | `validity`         | Sets the validity state                     | string  | _none_  |
-| `dateInputId`      | `date-input-id`    | Sets a unique id for the component          | string  | _none_  |
+| Property         | Attribute         | Description                                                 | Type    | Default |
+|------------------|------------------|-------------------------------------------------------------|---------|---------|
+| `autofocus`            | `autofocus`     | If true, the file uploader will be focused on component render | `boolean`                                           | `undefined` |
+| `form`       | `form`        | Associates the component with a form                                   | string  | _none_  |
+| `max`              | `max`              | Maximum allowed date                                        | string  | _none_  |
+| `min`              | `min`              | Minimum allowed date                                        | string  | _none_  |
+| `validity`         | `validity`         | Sets the validity state                                     | string  | _none_  |
+| `dateInputId`      | `date-input-id`    | Sets a unique id for the component                          | string  | _none_  |
 
 ### FileUploader `<gcds-file-uploader>`
 New properties:
@@ -308,9 +312,10 @@ New properties:
 
 | Property         | Attribute         | Description                                 | Type    | Default |
 |------------------|------------------|---------------------------------------------|---------|---------|
+| `autofocus`            | `autofocus`     | If true, the input will be focused on component render                                                                  | `boolean`                                           | `undefined` |
 | `form`             | `form`             | Associates the component with a form        | string  | _none_  |
-| `validity`         | `validity`         | Sets the validity state                     | string  | _none_  |
 | `hideLegend`       | `hide-legend`      | Hides the legend visually                   | boolean | false   |
+| `validity`         | `validity`         | Sets the validity state                     | string  | _none_  |
 | `radiosId`         | `radios-id`        | Sets a unique id for the component          | string  | _none_  |
 
 ### Select `<gcds-select>`
@@ -318,8 +323,9 @@ New properties:
 
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
-| `hideLabel`  | `hide-label`  | Hides the label visually                    | boolean | false   |
+| `autofocus`             | `autofocus`     | If true, the select will be focused on component render                                                                  | `boolean`                                           | `undefined` |
 | `form`       | `form`        | Associates the component with a form        | string  | _none_  |
+| `hideLabel`  | `hide-label`  | Hides the label visually                    | boolean | false   |
 | `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
 
 ### Textarea `<gcds-textarea>`
@@ -328,9 +334,6 @@ New properties:
 | Property   | Attribute   | Description                                 | Type    | Default |
 |------------|-------------|---------------------------------------------|---------|---------|
 | `hideLimit`  | `hide-limit`  | Hides the character counter                 | boolean | false   |
-| `form`       | `form`        | Associates the component with a form        | string  | _none_  |
-| `readonly`   | `readonly`    | Makes the textarea read-only                | boolean | false   |
-| `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
 
 ---
 
