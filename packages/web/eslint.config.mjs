@@ -102,7 +102,9 @@ export default defineConfig([
       tseslint
     },
     rules: {
-      '@typescript-eslint/no-require-imports': 'off'
+      '@typescript-eslint/no-require-imports': 'off',
+      'playwright/no-standalone-expect': 'off',
+      'playwright/no-unused-locators': 'warn',
     }
   },
   // eslintprettier
