@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-radios', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -19,7 +19,7 @@ test.describe('gcds-radios', () => {
    * Events
    */
   test('Emit gcds custom events', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -43,7 +43,7 @@ test.describe('gcds-radios', () => {
     expect(gcdsFocus).toHaveReceivedEvent();
   });
   test('Disabled - no events', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -71,7 +71,7 @@ test.describe('gcds-radios', () => {
    * JS manipulation
    */
   test('Using JS - assign options', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -109,7 +109,7 @@ test.describe('gcds-radios', () => {
     ).toBe('red');
   });
   test('Using JS - assign value', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -140,7 +140,7 @@ test.describe('gcds-radios', () => {
    * Validation
    */
   test('Validation', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -168,7 +168,7 @@ test.describe('gcds-radios', () => {
     expect(errorMessage).toEqual('');
   });
   test('Validation - custom validation', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -220,7 +220,7 @@ test.describe('gcds-radios', () => {
     expect(errorMessage).toEqual('');
   });
   test('Validation - custom validation old format', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -269,7 +269,7 @@ test.describe('gcds-radios', () => {
     expect(errorMessage).toEqual('');
   });
   test('HTML validity', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -322,7 +322,7 @@ test.describe('gcds-radios a11y tests', () => {
    * Keyboard focus
    */
   test('Keyboard focus', async ({ page }) => {
-    const element = await page.locator('gcds-radios');
+    const element = page.locator('gcds-radios');
     await expect(element).toHaveClass('hydrated');
 
     await page.keyboard.press('Tab');

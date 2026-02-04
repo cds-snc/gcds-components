@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-nav-group', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-nav-group');
+    const element = page.locator('gcds-nav-group');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -16,7 +16,7 @@ test.describe('gcds-nav-group', () => {
     await expect(element).toHaveClass('hydrated');
 
     // Check first nav link item role
-    const firstItem = await page.locator('gcds-nav-link').first();
+    const firstItem = page.locator('gcds-nav-link').first();
     await expect(firstItem).toHaveRole('listitem');
   });
 });

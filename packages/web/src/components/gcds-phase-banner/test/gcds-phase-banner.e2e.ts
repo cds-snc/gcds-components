@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-phase-banner', () => {
   test('renders', async ({ page }) => {
-    const banners = await page.locator('gcds-phase-banner');
+    const banners = page.locator('gcds-phase-banner');
     const count = await banners.count();
 
     for (let i = 0; i < count; i++) {

@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-fieldset', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-fieldset');
+    const element = page.locator('gcds-fieldset');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });

@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-lang-toggle', () => {
   test('renders', async ({ page }) => {
-    const langToggles = await page.locator('gcds-lang-toggle');
+    const langToggles = page.locator('gcds-lang-toggle');
     const count = await langToggles.count();
 
     for (let i = 0; i < count; i++) {

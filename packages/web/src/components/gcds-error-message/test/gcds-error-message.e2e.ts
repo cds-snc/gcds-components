@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-error-message', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-error-message');
+    const element = page.locator('gcds-error-message');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });

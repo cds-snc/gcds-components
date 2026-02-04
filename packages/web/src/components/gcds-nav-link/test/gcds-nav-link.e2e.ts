@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-nav-link', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-nav-link');
+    const element = page.locator('gcds-nav-link');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });

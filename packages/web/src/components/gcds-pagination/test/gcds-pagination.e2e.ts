@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-pagination', () => {
   test('renders', async ({ page }) => {
-    const paginations = await page.locator('gcds-pagination');
+    const paginations = page.locator('gcds-pagination');
     const count = await paginations.count();
 
     for (let i = 0; i < count; i++) {

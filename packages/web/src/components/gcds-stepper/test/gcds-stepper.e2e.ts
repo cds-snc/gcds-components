@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-stepper', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-stepper');
+    const element = page.locator('gcds-stepper');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });

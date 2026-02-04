@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-icon', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-icon');
+    const element = page.locator('gcds-icon');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -36,7 +36,7 @@ test.describe('gcds-icon a11y tests', () => {
    * Image alt text
    */
   test('Image alt text', async ({ page }) => {
-    const element = await page.locator('gcds-icon');
+    const element = page.locator('gcds-icon');
     await element.waitFor({ timeout: 10000 });
 
     await element.evaluate(
