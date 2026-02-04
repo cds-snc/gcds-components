@@ -27,26 +27,18 @@ test.describe('gcds-date-modified a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Definition list proper format
    */
   test('Definition list', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['definition-list'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['definition-list'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

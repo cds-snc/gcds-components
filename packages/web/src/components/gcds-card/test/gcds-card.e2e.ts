@@ -36,25 +36,17 @@ test.describe('gcds-card', () => {
 
 test.describe('gcds-card a11y tests', () => {
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Link name', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Keyboard focus', async ({ page }) => {
@@ -74,14 +66,10 @@ test.describe('gcds-card a11y tests', () => {
   });
 
   test('Alt text - no alt text', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['image-alt'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['image-alt'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Alt text w/ img-alt prop', async ({ page }) => {
@@ -91,13 +79,9 @@ test.describe('gcds-card a11y tests', () => {
 
     await page.waitForChanges();
 
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['image-alt'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['image-alt'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

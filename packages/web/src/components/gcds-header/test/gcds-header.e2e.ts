@@ -27,26 +27,18 @@ test.describe('gcds-header a11y tests', () => {
    * Banner is top level
    */
   test('Top level banner', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['landmark-banner-is-top-level'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['landmark-banner-is-top-level'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Image alt text
    */
   test('Alt text', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['image-alt'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['image-alt'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

@@ -153,40 +153,28 @@ test.describe('gcds-top-nav a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Landmark labels
    */
   test('Landmark labels', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['landmark-unique'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['landmark-unique'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Link text
    */
   test('Proper link text', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   testMobile('Mobile a11y test', async ({ page}) => {
