@@ -73,18 +73,18 @@ to
 > [!IMPORTANT]
 > This section lists all breaking changes and removed APIs. Review each component's changes carefully and update your codebase accordingly.
 
-| Component (HTML / Angular / Vue)                 |                                    | What's changed (removed)       | Type      |
-|--------------------------------------------------|------------------------------------|--------------------------------|-----------|
-| [Card](#card-gcds-card)                          | [React](#card-gcdscard)            | `a` value for `card-title-tag` | Value     |
-| [Container](#container-gcds-container)           | [React](#container-gcdscontainer)  | `centered`, `main-container`   | Property  |
-| [Footer](#footer-gcds-footer)                    | [React](#footer-gcdsfooter)        | `wordmark-variant`             | Property  |
-| [Grid](#grid-gcds-grid)                          | [React](#grid-gcdsgrid)            | `centered`                     | Property  |
-| [Header](#header-gcds-header)                    | [React](#header-gcdsheader)        | `signature-variant`            | Property  |
-| [Link](#link-gcds-link)                          | [React](#link-gcdslink)            | `variant`                      | Property  |
-| [Notice](#notice-gcds-notice)                    | [React](#notice-gcdsnotice)        | `type`                         | Property  |
-| [PhaseBanner](#phasebanner-gcds-phase-banner)    | [React](#phasebanner-gcdsphasebanner) | `<gcds-phase-banner>`          | Component |
-| [Textarea](#textarea-gcds-textarea)              | [React](#textarea-gcdstextarea)    | `character-count`              | Property  |
-| [TopNav](#topnav-gcds-top-nav)                   | [React](#topnav-gcdstopnav)        | `alignment`                    | Property  |
+| Component (HTML / Angular / Vue)                 |                                         | What's changed (removed)       | Type      |
+|--------------------------------------------------|-----------------------------------------|--------------------------------|-----------|
+| [Card](#card-gcds-card)                          | [React](#card-gcdscard)                 | `a` value for `card-title-tag` | Value     |
+| [Container](#container-gcds-container)           | [React](#container-gcdscontainer)       | `centered`, `main-container`   | Property  |
+| [Footer](#footer-gcds-footer)                    | [React](#footer-gcdsfooter)             | `wordmark-variant`             | Property  |
+| [Grid](#grid-gcds-grid)                          | [React](#grid-gcdsgrid)                 | `centered`                     | Property  |
+| [Header](#header-gcds-header)                    | [React](#header-gcdsheader)             | `signature-variant`            | Property  |
+| [Link](#link-gcds-link)                          | [React](#link-gcdslink)                 | `variant`                      | Property  |
+| [Notice](#notice-gcds-notice)                    | [React](#notice-gcdsnotice)             | `type`                         | Property  |
+| [PhaseBanner](#phasebanner-gcds-phase-banner)    | [React](#phasebanner-gcdsphasebanner)   | `<gcds-phase-banner>`          | Component |
+| [Textarea](#textarea-gcds-textarea)              | [React](#textarea-gcdstextarea)         | `character-count`              | Property  |
+| [TopNav](#topnav-gcds-top-nav)                   | [React](#topnav-gcdstopnav)             | `alignment`                    | Property  |
 | [VerifyBanner](#verifybanner-gcds-verify-banner) | [React](#verifybanner-gcdsverifybanner) | `<gcds-verify-banner>`         | Component |
 
 ---
@@ -295,47 +295,47 @@ to
 
 This table is an index of all new properties and features. Click a component to jump to its detailed migration instructions.
 
-| Component                                          | New API/Prop/Feature                                      |
-|----------------------------------------------------|-----------------------------------------------------------|
-| [Card](#card-gcds-card-1)                          | `target`, `rel`                                           |
-| [Checkboxes](#checkboxes-gcds-checkboxes-1)        | `autofocus`, `form`, `hideLabel`, `hideLegend`, `validity` |
+| Component                                          | New API/Prop/Feature                                            |
+|----------------------------------------------------|-----------------------------------------------------------------|
+| [Card](#card-gcds-card-1)                          | `target`, `rel`                                                 |
+| [Checkboxes](#checkboxes-gcds-checkboxes-1)        | `autofocus`, `form`, `hideLabel`, `hideLegend`, `validity`      |
 | [DateInput](#dateinput-gcds-date-input-1)          | `autofocus`, `form`, `max`, `min`, `validity`, `<component>-id` |
-| [FileUploader](#fileuploader-gcds-file-uploader-1) | `autofocus`, `form`, `hideLabel`, `form`, `validity`      |
-| [Heading](#heading-gcds-heading-1)                 | `headingRole`                                             |
+| [FileUploader](#fileuploader-gcds-file-uploader-1) | `autofocus`, `form`, `hideLabel`, `form`, `validity`            |
+| [Heading](#heading-gcds-heading-1)                 | `headingRole`                                                   |
 | [Radios](#radios-gcds-radios-1)                    | `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id` |
-| [Select](#select-gcds-select-1)                    | `autofocus`, `form`, `hideLabel`, `validity`              |
-| [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`                       |
+| [Select](#select-gcds-select-1)                    | `autofocus`, `form`, `hideLabel`, `validity`                    |
+| [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`                                                     |
 
 ### Card `<gcds-card>`
 New properties:
 
-| Property | Attribute | Description | Type | Default |
-|----------|-----------|-------------|------|---------|
-| `target`   | `target`    | Specifies where to open the linked document (e.g., `_blank`, `_self`). | string | _none_ |
-| `rel`      | `rel`       | Specifies the relationship of the target object to the link (e.g., `noopener`, `noreferrer`). | string | _none_ |
+| Property | Attribute | Description                                                                                   | Type   | Default |
+|----------|-----------|-----------------------------------------------------------------------------------------------|--------|---------|
+| `target` | `target`  | Specifies where to open the linked document (e.g., `_blank`, `_self`).                        | string | _none_  |
+| `rel`    | `rel`     | Specifies the relationship of the target object to the link (e.g., `noopener`, `noreferrer`). | string | _none_  |
 
 ### Checkboxes `<gcds-checkboxes>`
 New properties:
 
-| Property     | Attribute     | Description                                                            | Type    | Default |
-|--------------|---------------|------------------------------------------------------------------------|---------|---------|
-| `autofocus`            | `autofocus`     | If true, the checkbox will be focused on component render                                                                   | `boolean`                                           | `undefined` |
-| `form`       | `form`        | Associates the component with a form                                   | string  | _none_  |
-| `hideLabel`  | `hide-label`  | For single checkbox, specifies if the label is visually hidden or not. | boolean | false   |
-| `hideLegend` | `hide-legend` | For checkbox groups, specifies if the legend is visually hidden or not | boolean | false   |
-| `validity`   | `validity`    | Sets the validity state                                                | string  | _none_  |
+| Property     | Attribute     | Description                                                            | Type      | Default     |
+|--------------|---------------|------------------------------------------------------------------------|-----------|-------------|
+| `autofocus`  | `autofocus`   | If true, the checkbox will be focused on component render              | `boolean` | `undefined` |
+| `form`       | `form`        | Associates the component with a form                                   | string    | _none_      |
+| `hideLabel`  | `hide-label`  | For single checkbox, specifies if the label is visually hidden or not. | boolean   | false       |
+| `hideLegend` | `hide-legend` | For checkbox groups, specifies if the legend is visually hidden or not | boolean   | false       |
+| `validity`   | `validity`    | Sets the validity state                                                | string    | _none_      |
 
 ### DateInput `<gcds-date-input>`
 New properties:
 
-| Property         | Attribute         | Description                                                 | Type    | Default |
-|------------------|------------------|-------------------------------------------------------------|---------|---------|
-| `autofocus`            | `autofocus`     | If true, the file uploader will be focused on component render | `boolean`                                           | `undefined` |
-| `form`       | `form`        | Associates the component with a form                                   | string  | _none_  |
-| `max`              | `max`              | Maximum allowed date                                        | string  | _none_  |
-| `min`              | `min`              | Minimum allowed date                                        | string  | _none_  |
-| `validity`         | `validity`         | Sets the validity state                                     | string  | _none_  |
-| `dateInputId`      | `date-input-id`    | Sets a unique id for the component                          | string  | _none_  |
+| Property      | Attribute       | Description                                                    | Type      | Default     |
+|---------------|-----------------|----------------------------------------------------------------|-----------|-------------|
+| `autofocus`   | `autofocus`     | If true, the file uploader will be focused on component render | `boolean` | `undefined` |
+| `form`        | `form`          | Associates the component with a form                           | string    | _none_      |
+| `max`         | `max`           | Maximum allowed date                                           | string    | _none_      |
+| `min`         | `min`           | Minimum allowed date                                           | string    | _none_      |
+| `validity`    | `validity`      | Sets the validity state                                        | string    | _none_      |
+| `dateInputId` | `date-input-id` | Sets a unique id for the component                             | string    | _none_      |
 
 ### FileUploader `<gcds-file-uploader>`
 New properties:
@@ -356,30 +356,30 @@ New properties:
 ### Radios `<gcds-radios>`
 New properties:
 
-| Property         | Attribute         | Description                                 | Type    | Default |
-|------------------|------------------|---------------------------------------------|---------|---------|
-| `autofocus`            | `autofocus`     | If true, the input will be focused on component render                                                                  | `boolean`                                           | `undefined` |
-| `form`             | `form`             | Associates the component with a form        | string  | _none_  |
-| `hideLegend`       | `hide-legend`      | Hides the legend visually                   | boolean | false   |
-| `validity`         | `validity`         | Sets the validity state                     | string  | _none_  |
-| `radiosId`         | `radios-id`        | Sets a unique id for the component          | string  | _none_  |
+| Property     | Attribute     | Description                                            | Type      | Default     |
+|--------------|---------------|--------------------------------------------------------|-----------|-------------|
+| `autofocus`  | `autofocus`   | If true, the input will be focused on component render | `boolean` | `undefined` |
+| `form`       | `form`        | Associates the component with a form                   | string    | _none_      |
+| `hideLegend` | `hide-legend` | Hides the legend visually                              | boolean   | false       |
+| `validity`   | `validity`    | Sets the validity state                                | string    | _none_      |
+| `radiosId`   | `radios-id`   | Sets a unique id for the component                     | string    | _none_      |
 
 ### Select `<gcds-select>`
 New properties:
 
-| Property   | Attribute   | Description                                 | Type    | Default |
-|------------|-------------|---------------------------------------------|---------|---------|
-| `autofocus`             | `autofocus`     | If true, the select will be focused on component render                                                                  | `boolean`                                           | `undefined` |
-| `form`       | `form`        | Associates the component with a form        | string  | _none_  |
-| `hideLabel`  | `hide-label`  | Hides the label visually                    | boolean | false   |
-| `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
+| Property    | Attribute    | Description                                             | Type      | Default     |
+|-------------|--------------|---------------------------------------------------------|-----------|-------------|
+| `autofocus` | `autofocus`  | If true, the select will be focused on component render | `boolean` | `undefined` |
+| `form`      | `form`       | Associates the component with a form                    | string    | _none_      |
+| `hideLabel` | `hide-label` | Hides the label visually                                | boolean   | false       |
+| `validity`  | `validity`   | Sets the validity state                                 | string    | _none_      |
 
 ### Textarea `<gcds-textarea>`
 New properties:
 
-| Property   | Attribute   | Description                                 | Type    | Default |
-|------------|-------------|---------------------------------------------|---------|---------|
-| `hideLimit`  | `hide-limit`  | Hides the character counter                 | boolean | false   |
+| Property    | Attribute    | Description                 | Type    | Default |
+|-------------|--------------|-----------------------------|---------|---------|
+| `hideLimit` | `hide-limit` | Hides the character counter | boolean | false   |
 
 ---
 
@@ -464,13 +464,13 @@ Les changements sont regroupés dans les catégories suivantes :
 
 Vous devrez mettre à jour vos dépendances de projet pour utiliser les nouveaux paquets stables. Désinstallez les anciens paquets et installez les nouveaux.
 
-| Ancien paquet| Nouveau paquet                                          |
-|----------|---------------------------------------------------------|
-| `@cdssnc/gcds-components`| `@gcds-core/components`                                 |
-| `@cdssnc/gcds-components-react`| `@gcds-core/components-react`                           |
-| `@cdssnc/gcds-components-vue`| `@gcds-core/components-vue`                             |
-| `@cdssnc/gcds-components-react-ssr`| *Supprimé* (voir [À supprimer : paquet SSR React](#à-supprimer--paquet-react-ssr-le-cas-échéant) ) |
-| `@cdssnc/gcds-components-angular`| `@gcds-core/components-angular`                         |
+| Ancien paquet                       | Nouveau paquet                                                                                     |
+|-------------------------------------|----------------------------------------------------------------------------------------------------|
+| `@cdssnc/gcds-components`           | `@gcds-core/components`                                                                            |
+| `@cdssnc/gcds-components-react`     | `@gcds-core/components-react`                                                                      |
+| `@cdssnc/gcds-components-vue`       | `@gcds-core/components-vue`                                                                        |
+| `@cdssnc/gcds-components-react-ssr` | *Supprimé* (voir [À supprimer : paquet SSR React](#à-supprimer--paquet-react-ssr-le-cas-échéant) ) |
+| `@cdssnc/gcds-components-angular`   | `@gcds-core/components-angular`                                                                    |
 
 > [!IMPORTANT] Vous devrez mettre à jour toutes les références aux anciens noms de paquet dans votre code base avec les nouveaux noms de paquet indiqués ci-dessus. Remplacez tous les chemins d’accès `@cdssnc/gcds-components*` par les chemins correspondants `@gcds-core/components*`. Assurez-vous d’examiner votre code base en entier afin de cerner toute autre référence aux anciens noms de paquet et les mettre à jour au besoin.
 
@@ -802,26 +802,26 @@ Nouvelles propriétés&nbsp;:
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété    | Attribut      | Description                                                                               | Type      | Curseur par défaut |
-|--------------|---------------|-------------------------------------------------------------------------------------------|-----------|--------------------|
-| `autofocus`  | `autofocus`   | Si `true`, la case à cocher sera ciblée lors du rendu du composant.                       | `boolean` | `undefined`        |
-| `form`       | `form`        | Associe le composant à un formulaire.                                                     | chaîne    | _aucune_           |
-| `hideLabel`  | `hide-label`  | Pour une seule case à cocher, indique si l’étiquette est masquée visuellement ou non.     | booléen   | false              |
+| Propriété    | Attribut      | Description                                                                                | Type      | Curseur par défaut |
+|--------------|---------------|--------------------------------------------------------------------------------------------|-----------|--------------------|
+| `autofocus`  | `autofocus`   | Si `true`, la case à cocher sera ciblée lors du rendu du composant.                        | `boolean` | `undefined`        |
+| `form`       | `form`        | Associe le composant à un formulaire.                                                      | chaîne    | _aucune_           |
+| `hideLabel`  | `hide-label`  | Pour une seule case à cocher, indique si l’étiquette est masquée visuellement ou non.      | booléen   | false              |
 | `hideLegend` | `hide-legend` | Pour les groupes de cases à cocher, indique si la légende est masquée visuellement ou non. | booléen   | false              |
-| `validity`   | `validity`    | Définit l’état de validité                                                                | chaîne    | _aucune_           |
+| `validity`   | `validity`    | Définit l’état de validité                                                                 | chaîne    | _aucune_           |
 
 ### Champ de date `<gcds-date-input>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété     | Attribut        | Description                                                                  | Type      | Curseur par défaut |
-|---------------|-----------------|------------------------------------------------------------------------------|-----------|--------------------|
+| Propriété     | Attribut        | Description                                                                 | Type      | Curseur par défaut |
+|---------------|-----------------|-----------------------------------------------------------------------------|-----------|--------------------|
 | `autofocus`   | `autofocus`     | Si `true`, le téléverseur de fichier sera ciblé lors du rendu du composant. | `boolean` | `undefined`        |
-| `form`        | `form`          | Associe le composant à un formulaire.                                        | chaîne    | _aucune_           |
-| `max`         | `max`           | Date maximale possible                                                       | chaîne    | _aucune_           |
-| `min`         | `min`           | Date minimale possible                                                       | chaîne    | _aucune_           |
-| `validity`    | `validity`      | Définit l’état de validité                                                   | chaîne    | _aucune_           |
-| `dateInputId` | `date-input-id` | Définit un ID unique pour le composant                                       | chaîne    | _aucune_           |
+| `form`        | `form`          | Associe le composant à un formulaire.                                       | chaîne    | _aucune_           |
+| `max`         | `max`           | Date maximale possible                                                      | chaîne    | _aucune_           |
+| `min`         | `min`           | Date minimale possible                                                      | chaîne    | _aucune_           |
+| `validity`    | `validity`      | Définit l’état de validité                                                  | chaîne    | _aucune_           |
+| `dateInputId` | `date-input-id` | Définit un ID unique pour le composant                                      | chaîne    | _aucune_           |
 
 ### Téléverseur de fichiers `<gcds-file-uploader>`
 
@@ -845,24 +845,24 @@ Nouvelles propriétés&nbsp;:
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété    | Attribut      | Description                                                         | Type      | Curseur par défaut |
-|--------------|---------------|---------------------------------------------------------------------|-----------|--------------------|
+| Propriété    | Attribut      | Description                                                          | Type      | Curseur par défaut |
+|--------------|---------------|----------------------------------------------------------------------|-----------|--------------------|
 | `autofocus`  | `autofocus`   | Si `true`, le champ de saisie sera ciblé lors du rendu du composant. | `boolean` | `undefined`        |
-| `form`       | `form`        | Associe le composant à un formulaire.                               | chaîne    | _aucune_           |
-| `hideLegend` | `hide-legend` | Masque visuellement la légende                                      | booléen   | false              |
-| `validity`   | `validity`    | Définit l’état de validité                                          | chaîne    | _aucune_           |
-| `radiosId`   | `radios-id`   | Définit un ID unique pour le composant                              | chaîne    | _aucune_           |
+| `form`       | `form`        | Associe le composant à un formulaire.                                | chaîne    | _aucune_           |
+| `hideLegend` | `hide-legend` | Masque visuellement la légende                                       | booléen   | false              |
+| `validity`   | `validity`    | Définit l’état de validité                                           | chaîne    | _aucune_           |
+| `radiosId`   | `radios-id`   | Définit un ID unique pour le composant                               | chaîne    | _aucune_           |
 
 ### Sélection `<gcds-select>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété   | Attribut     | Description                                                    | Type      | Curseur par défaut |
-|-------------|--------------|----------------------------------------------------------------|-----------|--------------------|
+| Propriété   | Attribut     | Description                                                     | Type      | Curseur par défaut |
+|-------------|--------------|-----------------------------------------------------------------|-----------|--------------------|
 | `autofocus` | `autofocus`  | Si `true`, la sélection sera ciblée lors du rendu du composant. | `boolean` | `undefined`        |
-| `form`      | `form`       | Associe le composant à un formulaire.                          | chaîne    | _aucune_           |
-| `hideLabel` | `hide-label` | Masque visuellement l’étiquette                                | booléen   | false              |
-| `validity`  | `validity`   | Définit l’état de validité                                     | chaîne    | _aucune_           |
+| `form`      | `form`       | Associe le composant à un formulaire.                           | chaîne    | _aucune_           |
+| `hideLabel` | `hide-label` | Masque visuellement l’étiquette                                 | booléen   | false              |
+| `validity`  | `validity`   | Définit l’état de validité                                      | chaîne    | _aucune_           |
 
 ### Zone de texte `<gcds-textarea>`
 
