@@ -20,7 +20,7 @@ The changes are grouped into the following categories:
 1. [Update your packages and paths](#update-your-packages-and-paths)
 2. [Component API Removals and Breaking Changes](#component-api-removals-and-breaking-changes)
 3. [New properties and features](#new-properties-and-features)
-4. [React SSR package removal](#react-ssr-package-removal)
+4. [React SSR package removal](#react-ssr-package-removal-if-using)
 5. [Base font import (if not using CSS Shortcuts)](#base-font-import-if-not-using-css-shortcuts)
 
 ## Update your packages and paths
@@ -28,13 +28,13 @@ The changes are grouped into the following categories:
 You'll need to update your project dependencies to use the new stable packages.
 Uninstall the old packages and install the new ones.
 
-| Old Package                         | New Package                                                             |
-|-------------------------------------|-------------------------------------------------------------------------|
-| `@cdssnc/gcds-components`           | `@gcds-core/components`                                                 |
-| `@cdssnc/gcds-components-react`     | `@gcds-core/components-react`                                           |
-| `@cdssnc/gcds-components-vue`       | `@gcds-core/components-vue`                                             |
-| `@cdssnc/gcds-components-react-ssr` | *Removed* (see [React SSR package removal](#react-ssr-package-removal)) |
-| `@cdssnc/gcds-components-angular`   | `@gcds-core/components-angular`                                         |
+| Old Package                         | New Package                                                                      |
+|-------------------------------------|----------------------------------------------------------------------------------|
+| `@cdssnc/gcds-components`           | `@gcds-core/components`                                                          |
+| `@cdssnc/gcds-components-react`     | `@gcds-core/components-react`                                                    |
+| `@cdssnc/gcds-components-vue`       | `@gcds-core/components-vue`                                                      |
+| `@cdssnc/gcds-components-react-ssr` | *Removed* (see [React SSR package removal](#react-ssr-package-removal-if-using)) |
+| `@cdssnc/gcds-components-angular`   | `@gcds-core/components-angular`                                                  |
 
 
 > [!IMPORTANT]
@@ -386,7 +386,7 @@ New properties:
 ## React SSR package removal (if using)
 
 > [!IMPORTANT] 
-> If you are using the React SSR package (@cdssnc/gcds-components-react-ssr), read this section carefully.
+> If you are using the React SSR package (`@cdssnc/gcds-components-react-ssr`), read this section carefully.
 
 In the alpha phase, we provided a dedicated package for React SSR integration: `@cdssnc/gcds-components-react-ssr`. Due to its experimental nature and maintenance challenges, we have decided to remove this package in the stable release.
 
@@ -878,7 +878,7 @@ Nouvelles propriétés&nbsp;:
 ## À supprimer : paquet React SSR (le cas échéant)
 
 > [!IMPORTANT] 
-> Si vous utilisez le paquet React SSR (@cdssnc/gcds-Components-react-ssr), lisez attentivement cette section.
+> Si vous utilisez le paquet React SSR (`@cdssnc/gcds-Components-react-ssr`), lisez attentivement cette section.
 
 Dans la phase alpha, nous avons fourni un paquet consacré à l’intégration de React SSR : `@cdssnc/gcds-components-react-ssr`. En raison de sa nature expérimentale et des difficultés liées à sa maintenance, nous avons décidé de retirer ce paquet de la version stable.
 
