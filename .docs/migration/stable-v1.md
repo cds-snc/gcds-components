@@ -17,10 +17,56 @@ This document helps you migrate from older versions of `@cdssnc/gcds-components`
 This section covers the breaking changes introduced as part of the **component API alignment work** leading to the **stable `v1.0.0` release**.
 
 The changes are grouped into the following categories:
-1. [Component API Removals and Breaking Changes](#component-api-removals-and-breaking-changes)
-2. [New properties and features](#new-properties-and-features)
-3. [React SSR package removal](#react-ssr-package-removal)
-4. [Base font import (if not using CSS Shortcuts)](#base-font-import-if-not-using-css-shortcuts)
+1. [Update your packages and paths](#update-your-packages-and-paths)
+2. [Component API Removals and Breaking Changes](#component-api-removals-and-breaking-changes)
+3. [New properties and features](#new-properties-and-features)
+4. [React SSR package removal](#react-ssr-package-removal)
+5. [Base font import (if not using CSS Shortcuts)](#base-font-import-if-not-using-css-shortcuts)
+
+## Update your packages and paths
+
+You'll need to update your project dependencies to use the new stable packages.
+Uninstall the old packages and install the new ones.
+
+| Old Package                         | New Package                                                             |
+|-------------------------------------|-------------------------------------------------------------------------|
+| `@cdssnc/gcds-components`           | `@gcds-core/components`                                                 |
+| `@cdssnc/gcds-components-react`     | `@gcds-core/components-react`                                           |
+| `@cdssnc/gcds-components-vue`       | `@gcds-core/components-vue`                                             |
+| `@cdssnc/gcds-components-react-ssr` | *Removed* (see [React SSR package removal](#react-ssr-package-removal)) |
+| `@cdssnc/gcds-components-angular`   | `@gcds-core/components-angular`                                         |
+
+
+> [!IMPORTANT]
+> You'll need to update all references to the old package names in your codebase to the new package names listed above.
+> Replace all `@cdssnc/gcds-components*` paths with the corresponding `@gcds-core/components*` paths.
+> Make sure to review your entire codebase for any other references to the old package names and update them accordingly.
+
+To start, change your style and script imports to the new package paths.
+```html
+<!-- GC Design System -->
+<link
+  rel="stylesheet"
+  href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
+></script>
+```
+
+to
+```html
+<!-- GC Design System -->
+<link
+  rel="stylesheet"
+  href="/node_modules/@gcds-core/components/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="/node_modules/@gcds-core/components/dist/gcds/gcds.esm.js"
+></script>
+```
 
 ## Component API Removals and Breaking Changes
 
