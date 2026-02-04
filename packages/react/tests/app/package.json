@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cdssnc/gcds-components": "file:../../../web",
-    "@cdssnc/gcds-components-react": "file:../..",
+    "@gcds-core/components": "file:../../../web",
+    "@gcds-core/components-react": "file:../..",
     "@gcds-core/css-shortcuts": "^1.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

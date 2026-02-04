@@ -2,7 +2,7 @@
 
 # GC Design System Components – React
 
-To make it easier to integrate [GC Design System web components](../web/README.md) into React projects, the [gcds-components-react](https://www.npmjs.com/package/@cdssnc/gcds-components-react) package provides React wrappers.
+To make it easier to integrate [GC Design System web components](../web/README.md) into React projects, the [@gcds-core/components-react](https://www.npmjs.com/package/@gcds-core/components-react) package provides React wrappers.
 
 These wrappers make it easier to work with web components in the React ecosystem. They offer JSX bindings for properties and custom events, auto-completion, and type safety.
 
@@ -21,7 +21,7 @@ Follow these steps to install and use GC Design System components in your React 
 Navigate to your project’s root folder and run the following command:
 
 ```js
-npm install @cdssnc/gcds-components @cdssnc/gcds-components-react
+npm install @gcds-core/components @gcds-core/components-react
 ```
 
 ### 2. Import GC Design System
@@ -29,7 +29,7 @@ npm install @cdssnc/gcds-components @cdssnc/gcds-components-react
 Place the following code in the `index.js` file of your app to import GC Design System styles:
 
 ```jsx
-import '@cdssnc/gcds-components-react/gcds.css';
+import '@gcds-core/components-react/gcds.css';
 ```
 
 ### 3. Start building
@@ -48,7 +48,7 @@ Code released under the [MIT License](https://github.com/cds-snc/gcds-components
 
 # Composants de Système de design GC — React
 
-Pour faciliter l’intégration des [composants Web de Système de design GC](../web/README.md) dans les projets React, le paquet [gcds-components-react](https://www.npmjs.com/package/@cdssnc/gcds-components-react) propose différentes enveloppes React.
+Pour faciliter l’intégration des [composants Web de Système de design GC](../web/README.md) dans les projets React, le paquet [@gcds-core/components-react](https://www.npmjs.com/package/@gcds-core/components-react) propose différentes enveloppes React.
 
 Ces enveloppes facilitent le travail avec les composants Web dans l’écosystème React. Elles offrent des liaisons JSX pour les propriétés et les événements personnalisés, la saisie automatique et la sécurité de type.
 
@@ -67,7 +67,7 @@ Suivez ces étapes pour installer et utiliser les composants de Système de desi
 Naviguez vers le dossier racine de votre projet et exécutez la commande suivante :
 
 ```js
-npm install @cdssnc/gcds-components @cdssnc/gcds-components-react
+npm install @gcds-core/components @gcds-core/components-react
 ```
 
 ### 2. Importer Système de design GC
@@ -75,7 +75,7 @@ npm install @cdssnc/gcds-components @cdssnc/gcds-components-react
 Pour importer les styles de Système de design GC, insérez le code suivant dans le fichier `index.js` de votre application :
 
 ```jsx
-import '@cdssnc/gcds-components-react/gcds.css';
+import '@gcds-core/components-react/gcds.css';
 ```
 
 ### 3. Commencez à créer

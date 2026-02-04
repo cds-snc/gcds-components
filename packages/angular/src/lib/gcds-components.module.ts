@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DIRECTIVES } from './stencil-generated';
-import { defineCustomElements } from '@cdssnc/gcds-components/loader';
+import { defineCustomElements } from '@gcds-core/components/loader';
 
 import { SelectValueAccessor } from './stencil-generated/select-value-accessor';
 import { TextValueAccessor } from './stencil-generated/text-value-accessor';

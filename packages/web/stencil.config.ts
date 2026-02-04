@@ -21,30 +21,30 @@ export const config: Config = {
       outDir: '../react/lib/',
       customElementsDir,
     }),
-    // TODO: Configure a SSR friendly react output within @cdssnc/gcds-components-react
+    // TODO: Configure a SSR friendly react output within @gcds-core/components-react
     // reactOutputTarget({
     //   outDir: '../react/ssr/',
-    //   hydrateModule: '@cdssnc/gcds-components/hydrate',
+    //   hydrateModule: '@gcds-core/components/hydrate',
     //   customElementsDir,
     // }),
-    // TODO: Configure a standalone output within @cdssnc/gcds-components-angular
+    // TODO: Configure a standalone output within @gcds-core/components-angular
     angularOutputTarget({
       // outputType should be set to 'component' for Stencil projects using the dist output. Otherwise if using the custom elements output, outputType should be set to 'scam' or 'standalone'.
       outputType: 'component',
-      componentCorePackage: '@cdssnc/gcds-components',
+      componentCorePackage: '@gcds-core/components',
       directivesProxyFile: '../angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular/src/lib/stencil-generated/index.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
       inlineProperties: true,
     }),
     vueOutputTarget({
-      componentCorePackage: '@cdssnc/gcds-components',
+      componentCorePackage: '@gcds-core/components',
       proxiesFile: '../vue/lib/components.ts',
       includeImportCustomElements: true,
       includePolyfills: false,
       includeDefineCustomElements: false,
       // TODO: Configure the vue package to work in SSR environments
-      // hydrateModule: '@cdssnc/gcds-components/hydrate',
+      // hydrateModule: '@gcds-core/components/hydrate',
       componentModels: vueComponentModels,
       customElementsDir,
     }),

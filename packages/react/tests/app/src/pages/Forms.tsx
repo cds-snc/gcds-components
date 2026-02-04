@@ -12,7 +12,7 @@ import {
   GcdsSelect,
   GcdsRadios,
   GcdsErrorSummary
-} from '@cdssnc/gcds-components-react';
+} from '@gcds-core/components-react';
 
 const Forms = () => {
   type FormData = {

@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 import router from './router';
 import { createPinia } from 'pinia';
-import { GcdsComponents } from '@cdssnc/gcds-components-vue';
+import { GcdsComponents } from '@gcds-core/components-vue';
 
-import '@cdssnc/gcds-components-vue/gcds.css';
+import '@gcds-core/components-vue/gcds.css';
 import App from './App.vue';
 
 const app = createApp(App);

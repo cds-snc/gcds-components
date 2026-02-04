@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
+import { GcdsComponentsModule } from '@gcds-core/components-angular';
 
 @Component({
   selector: 'app-root',
