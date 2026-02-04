@@ -37,24 +37,16 @@ test.describe('gcds-details a11y tests', () => {
    * Colour contrast test
    */
   test('colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('button name', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['button-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['button-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

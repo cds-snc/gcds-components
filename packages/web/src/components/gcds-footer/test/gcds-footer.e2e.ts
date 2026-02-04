@@ -24,23 +24,15 @@ test.describe('gcds-footer', () => {
 
 test.describe('gcds-footer a11y tests', () => {
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   test('Footer landmark is top level', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['landmark-contentinfo-is-top-level'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['landmark-contentinfo-is-top-level'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

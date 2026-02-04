@@ -62,37 +62,25 @@ test.describe('gcds-breadcrumbs-item a11y tests', () => {
       .first()
       .evaluate(el => ((el as HTMLElement).innerText = 'Colour contrast'));
 
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Proper list structure', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['list'])
-        .analyze();
+    const results = await new AxeBuilder({ page })
+      .withRules(['list'])
+      .analyze();
 
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Proper link names', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
 
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    expect(results.violations).toHaveLength(0);
   });
 });

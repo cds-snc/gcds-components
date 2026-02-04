@@ -557,27 +557,19 @@ test.describe('gcds-date-input a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Labels
    */
   test('Proper labels', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['label'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['label'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Keyboard focus
