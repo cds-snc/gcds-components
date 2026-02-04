@@ -507,7 +507,6 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 > [!IMPORTANT] 
 > Cette section répertorie tous les changements non rétrocompatibles et les API supprimées. Examinez attentivement les modifications apportées à chaque composant et mettez à jour votre code base en conséquence.
-[Link](#bannière-de-vérification-gcds-verify-banner)
 
 | Composant (HTML/Angular/Vue)                                                   |                                                     | Ce qui a changé (supprimé)       | Type      |
 |--------------------------------------------------------------------------------|-----------------------------------------------------|----------------------------------|-----------|
