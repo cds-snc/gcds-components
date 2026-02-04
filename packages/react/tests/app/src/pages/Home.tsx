@@ -1,4 +1,4 @@
-import { GcdsHeading, GcdsText, GcdsLink } from '@cdssnc/gcds-components-react';
+import { GcdsHeading, GcdsText, GcdsLink } from '@gcds-core/components-react';
 
 const Home = () => {
   return (

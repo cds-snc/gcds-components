@@ -18,6 +18,19 @@ Anyone can contribute to GC Design System. Whether it's submitting a bug, helpin
 
 First-time contributor? We’re here to help guide you through a successful contribution. We review all contributions before merging them into the GC Design System. Beyond pull requests, we’ve also created forms to ease with the submission of feature requests, contributions, and reporting bugs.  If you’re unsure about anything, don’t hesitate to [Contact us](https://design-system.alpha.canada.ca/en/contact/).
 
+#### Local installation
+
+- Clone the repo `git clone https://github.com/cds-snc/gcds-components`.
+- Run `npm install` to install all Node.js dependencies.
+- Run `npm run build` to compile all three packages (web components, react and angular).
+
+You can test the Angular and React packages locally as this repository is setup using [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`.
+
+
+#### Compiling all packages
+
+In the root directory, run `npm run build`. All five packages will be compiled.
+
 ### Submitting contributions to “next priorities”
 
 In the [Get Involved](https://design-system.alpha.canada.ca/en/get-involved/) page of our site, we'll be posting about our “next priorities”.  These will typically be the components or patterns that we’ve identified as priorities in our roadmap to work on next. Before developing them, we want to ensure that the community has an opportunity to submit contributions that can accelerate and inform design and delivery.
@@ -121,6 +134,20 @@ Système de design GC s’engage à créer une culture sans harcèlement où rè
 Tout le monde peut contribuer à Système de design GC. Qu’il s’agisse de signaler un bogue, de nous aider vis-à-vis de nos « prochaines priorités » ou de faire des demandes, nous accueillons vos idées sur la façon d’améliorer Système de design GC.
 
 Vous contribuez pour la première fois? Nous sommes là pour vous guider dans la réussite de votre contribution. Nous examinons toutes les contributions avant de les fusionner dans Système de design GC. En plus de faire des demandes de tirage (pull requests), vous pouvez utiliser les formulaires que nous avons créés pour faciliter la soumission des demandes de fonctionnalités, des contributions et des rapports de bogue. Si vous doutez de la manière de vous y prendre, n’hésitez pas à [nous contacter](https://systeme-design.alpha.canada.ca/fr/contactez/).
+
+## Installation locale
+
+- Copiez le référentiel `git clone https://github.com/cds-snc/gcds-components`.
+- Exécutez ensuite `npm install` pour installer toutes les dépendances Node.js.
+- Finalement, exécutez `npm run build` pour compiler les trois paquets (composants Web, React et Angular).
+
+Vous pouvez tester localement les paquets Angular et React puisque ce référentiel est configuré à l’aide de [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces gère automatiquement la liaison de paquets dépendants à l’exécution de `npm install`, donc nul besoin d’exécuter manuellement `npm link`.
+
+<
+
+### Compilation de tous les paquets
+
+Dans le répertoire racine, exécutez `npm run build`. Les cinq paquets seront alors compilés.
 
 ### Contribuer aux « prochaines priorités »
 

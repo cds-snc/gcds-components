@@ -4,7 +4,7 @@ import {
   GcdsHeader,
   GcdsFooter,
   GcdsContainer,
-} from '@cdssnc/gcds-components-react';
+} from '@gcds-core/components-react';
 
 function App() {
   return (

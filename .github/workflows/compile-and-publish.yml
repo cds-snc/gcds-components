@@ -13,13 +13,13 @@ permissions:
 
 jobs:
   publish-web:
-    name: Publish @cdssnc/gcds-components
+    name: Publish @gcds-core/components
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         include:
-          - name: "@cdssnc/gcds-components"
+          - name: "@gcds-core/components"
             package: "./packages/web"
             dist: "./packages/web"
 
@@ -63,22 +63,22 @@ jobs:
           curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK_OPS }}
 
   publish-react-angular-vue-ssr:
-    name: Publish @cdssnc/gcds-components-react, @cdssnc/gcds-components-angular, @cdssnc/gcds-components-vue, @cdssnc/gcds-components-react-ssr
+    name: Publish @gcds-core/components-react, @gcds-core/components-angular, @gcds-core/components-vue
     needs: publish-web
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         include:
-          - name: "@cdssnc/gcds-components-react"
+          - name: "@gcds-core/components-react"
             package: "./packages/react"
             dist: "./packages/react"
 
-          - name: "@cdssnc/gcds-components-angular"
+          - name: "@gcds-core/components-angular"
             package: "./packages/angular"
             dist: "./packages/angular/dist"
 
-          - name: "@cdssnc/gcds-components-vue"
+          - name: "@gcds-core/components-vue"
             package: "./packages/vue"
             dist: "./packages/vue"
 

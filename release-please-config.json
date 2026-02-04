@@ -10,19 +10,19 @@
   "include-component-in-tag": true,
   "packages": {
     "packages/angular": {
-      "component": "gcds-components-angular",
+      "component": "@gcds-core/components-angular",
       "changelog-path": ""
     },
     "packages/react": {
-      "component": "gcds-components-react",
+      "component": "@gcds-core/components-react",
       "changelog-path": ""
     },
     "packages/vue": {
-      "component": "gcds-components-vue",
+      "component": "@gcds-core/components-vue",
       "changelog-path": ""
     },
     "packages/web": {
-      "component": "gcds-components",
+      "component": "@gcds-core/components",
       "changelog-path": ""
     }
   },
@@ -54,19 +54,19 @@
       "type": "linked-versions",
       "groupName": "GCDS Components",
       "components": [
-        "gcds-components-angular",
-        "gcds-components-react",
-        "gcds-components-vue",
-        "gcds-components"
+        "@gcds-core/components-angular",
+        "@gcds-core/components-react",
+        "@gcds-core/components-vue",
+        "@gcds-core/components"
       ]
     },
     {
       "type": "group-priority",
       "groups": [
-        "gcds-components",
-        "gcds-components-angular",
-        "gcds-components-react",
-        "gcds-components-vue"
+        "@gcds-core/components",
+        "@gcds-core/components-angular",
+        "@gcds-core/components-react",
+        "@gcds-core/components-vue"
       ]
     }
   ],

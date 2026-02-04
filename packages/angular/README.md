@@ -2,7 +2,7 @@
 
 # GC Design System Components – Angular
 
-To make it easier to integrate [GC Design System web components](../web/README.md) into Angular projects, the [gcds-components-angular](https://www.npmjs.com/package/@cdssnc/gcds-components-angular) package provides Angular wrappers.
+To make it easier to integrate [GC Design System web components](../web/README.md) into Angular projects, the [@gcds-core/components-angular](https://www.npmjs.com/package/@gcds-core/components-angular) package provides Angular wrappers.
 
 These wrappers make it easier to work with web components in the Angular ecosystem by preventing unnecessary repaints through detached change detection, and enabling form controls to work with `ngModel` and reactive forms.
 
@@ -21,7 +21,7 @@ Follow these steps to install and use GC Design System components in your Angula
 Navigate to your project’s root folder and run the following command:
 
 ```js
-npm install @cdssnc/gcds-components @cdssnc/gcds-components-angular
+npm install @gcds-core/components @gcds-core/components-angular
 ```
 
 ### 2. Import GC Design System
@@ -29,7 +29,7 @@ npm install @cdssnc/gcds-components @cdssnc/gcds-components-angular
 Place the following code in the `app.module.ts` file of your app:
 
 ```ts
-import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
+import { GcdsComponentsModule } from '@gcds-core/components-angular';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ export class AppModule { }
 Place the following code in the `styles.scss` file of your app to import GC Design System styles:
 
 ```css
-@import '../node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css';
+@import '../node_modules/@gcds-core/components/dist/gcds/gcds.css';
 ```
 
 ### 3. Start building
@@ -95,7 +95,7 @@ Code released under the [MIT License](https://github.com/cds-snc/gcds-components
 
 # Composants de Système de design GC — Angular
 
-Afin de faciliter l'intégration des [composants Web de Système de design GC](../web/README.md) à vos projets Angular, le paquet [gcds-components-angular](https://www.npmjs.com/package/@cdssnc/gcds-components-angular) propose des enveloppes Angular.
+Afin de faciliter l'intégration des [composants Web de Système de design GC](../web/README.md) à vos projets Angular, le paquet [@gcds-core/components-angular](https://www.npmjs.com/package/@gcds-core/components-angular) propose des enveloppes Angular.
 
 Ces enveloppes faciltent le travail avec les composants Web dans l'écosystème Angular en empêchant l'actualisation inutile du rendu grâce à une détection des changements découplée, et en permettant aux contrôles de formulaire de fonctionner avec `ngModel` et les formulaires réactifs.
 
@@ -114,7 +114,7 @@ Suivez ces étapes pour installer et utiliser les composants de Système de desi
 Naviguez vers le dossier racine de votre projet et exécutez la commande suivante :
 
 ```js
-npm install @cdssnc/gcds-components @cdssnc/gcds-components-angular
+npm install @gcds-core/components @gcds-core/components-angular
 ```
 
 ### 2. Importer Système de design GC
@@ -122,7 +122,7 @@ npm install @cdssnc/gcds-components @cdssnc/gcds-components-angular
 Insérez le code suivant dans le fichier `app.module.ts` de votre application :
 
 ```js
-import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
+import { GcdsComponentsModule } from '@gcds-core/components-angular';
 
 @NgModule({
   declarations: [
@@ -142,7 +142,7 @@ export class AppModule { }
 Pour importer les styles de Système de design GC, insérez le code suivant dans le fichier `styles.scss` de votre application :
 
 ```css
-@import '../node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css';
+@import '../node_modules/@gcds-core/components/dist/gcds/gcds.css';
 ```
 
 ### 3. Commencez à créer
