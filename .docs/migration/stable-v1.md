@@ -146,7 +146,7 @@ The changes are grouped into the following categories:
 
 --- 
 
-#### React `<Gcds-*>` components
+#### React `<Gcds*>` components
 
 ---
 ### Card `<GcdsCard>`
