@@ -56,7 +56,7 @@
     "@babel/preset-typescript": "^7.21.0",
     "@bgotink/playwright-coverage": "^0.3.2",
     "@gcds-core/fonts": "^1.0.0",
-    "@gcds-core/tokens": "^1.0.0",
+    "@gcds-core/tokens": "^1.0.1",
     "@playwright/test": "^1.56.0",
     "@stencil/angular-outputtarget": "file:../../utils/angular-output-target",
     "@stencil/playwright": "^0.2.1",
