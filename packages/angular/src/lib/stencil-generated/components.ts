@@ -2270,7 +2270,7 @@ export declare interface GcdsText extends Components.GcdsText {}
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']
 })
@@ -2279,7 +2279,7 @@ export declare interface GcdsText extends Components.GcdsText {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -2289,6 +2289,10 @@ export class GcdsTextarea {
    * If true, the textarea will be focused on component render.
    */
   set autofocus(_: Components.GcdsTextarea['autofocus']) {};
+    /**
+   * The ID of the form that the textarea belongs to.
+   */
+  set form(_: Components.GcdsTextarea['form']) {};
     /**
    * If true, character limt counter will not be displayed under the textarea. @default false
    */

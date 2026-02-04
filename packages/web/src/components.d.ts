@@ -1429,6 +1429,10 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * The ID of the form that the textarea belongs to.
+         */
+        "form"?: string;
+        /**
           * Get validationMessage of gcds-textarea
          */
         "getValidationMessage": () => Promise<string>;
@@ -3968,6 +3972,10 @@ declare namespace LocalJSX {
           * Error message for an invalid textarea element.
          */
         "errorMessage"?: string;
+        /**
+          * The ID of the form that the textarea belongs to.
+         */
+        "form"?: string;
         /**
           * Specifies if the label is hidden or not.
           * @default false

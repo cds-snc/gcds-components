@@ -70,6 +70,11 @@ export class GcdsTextarea {
   @Prop({ reflect: true }) autofocus: boolean;
 
   /**
+   * The ID of the form that the textarea belongs to.
+   */
+  @Prop({ reflect: true }) form?: string;
+
+  /**
    * If true, character limt counter will not be displayed under the textarea.
    */
   @Prop() hideLimit?: boolean = false;
@@ -232,10 +237,10 @@ export class GcdsTextarea {
         !this.lastInputTimeStamp ||
         Date.now() - 500 >= this.lastInputTimeStamp
       ) {
-        this.updateIfValueChanged()
+        this.updateIfValueChanged();
       }
-    }, 1000)
-  }
+    }, 1000);
+  };
 
   /**
    * Emitted when the textarea loses focus.
@@ -251,7 +256,7 @@ export class GcdsTextarea {
 
     // Cancel value checking on blur
     if (this.valueChecker) {
-      window.clearInterval(this.valueChecker)
+      window.clearInterval(this.valueChecker);
     }
   };
 
@@ -270,10 +275,13 @@ export class GcdsTextarea {
    */
   private updateIfValueChanged() {
     if (this.shadowElement.value !== this.lastInputValue) {
-      this.lastInputValue = this.shadowElement.value
+      this.lastInputValue = this.shadowElement.value;
       setTimeout(() => {
-        this.el.shadowRoot.querySelector(`#textarea__sr-count-${this.textareaId}`).textContent = `${i18n[this.lang].characters.left}${this.value == undefined ? this.maxlength : this.maxlength - this.value.length}`
-      }, 1500)
+        this.el.shadowRoot.querySelector(
+          `#textarea__sr-count-${this.textareaId}`,
+        ).textContent =
+          `${i18n[this.lang].characters.left}${this.value == undefined ? this.maxlength : this.maxlength - this.value.length}`;
+      }, 1500);
     }
   }
 
@@ -290,7 +298,7 @@ export class GcdsTextarea {
       this.updateValidity();
 
       if (this.maxlength) {
-        this.lastInputTimeStamp = Date.now()
+        this.lastInputTimeStamp = Date.now();
       }
     }
 
@@ -494,6 +502,7 @@ export class GcdsTextarea {
       cols,
       disabled,
       errorMessage,
+      form,
       hideLabel,
       hideLimit,
       hint,
@@ -525,6 +534,7 @@ export class GcdsTextarea {
       name,
       autofocus,
       disabled,
+      form,
       maxlength,
       minlength,
       required,
@@ -536,19 +546,20 @@ export class GcdsTextarea {
     if (hint || errorMessage || maxlength) {
       const hintID = hint ? `hint-${textareaId} ` : '';
       const errorID = errorMessage ? `error-message-${textareaId} ` : '';
-      const countID =
-        maxlength ? `textarea__count-${textareaId} ` : '';
-      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${attrsTextarea['aria-describedby']
-        ? `${attrsTextarea['aria-describedby']}`
-        : ''
-        }`;
+      const countID = maxlength ? `textarea__count-${textareaId} ` : '';
+      attrsTextarea['aria-describedby'] = `${hintID}${errorID}${countID}${
+        attrsTextarea['aria-describedby']
+          ? `${attrsTextarea['aria-describedby']}`
+          : ''
+      }`;
     }
 
     return (
       <Host>
         <div
-          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''
-            }`}
+          class={`gcds-textarea-wrapper ${disabled ? 'gcds-disabled' : ''} ${
+            hasError ? 'gcds-error' : ''
+          }`}
         >
           <gcds-label
             {...attrsLabel}
@@ -588,16 +599,21 @@ export class GcdsTextarea {
               <gcds-sr-only tag="span" id={`textarea__count-${textareaId}`}>
                 {i18n[lang].characters.maxlength.replace('{{num}}', maxlength)}
               </gcds-sr-only>
-              {!hideLimit &&
-                <gcds-text id={`textarea__visual-count-${textareaId}`} aria-hidden="true">
+              {!hideLimit && (
+                <gcds-text
+                  id={`textarea__visual-count-${textareaId}`}
+                  aria-hidden="true"
+                >
                   {i18n[lang].characters.left}
                   {value == undefined ? maxlength : maxlength - value.length}
                 </gcds-text>
-              }
+              )}
               <gcds-sr-only tag="span">
-                <span id={`textarea__sr-count-${textareaId}`}
-                  role="status" aria-atomic="true">
-                </span>
+                <span
+                  id={`textarea__sr-count-${textareaId}`}
+                  role="status"
+                  aria-atomic="true"
+                ></span>
               </gcds-sr-only>
             </Fragment>
           ) : null}
