@@ -905,19 +905,19 @@ Pour migrer à partir de la version 0.38.0, vous devez d’abord effectuer une m
 
 Prenez en charge le changement non rétrocompatible dans la version 0.39.0, décrit dans les [notes de version 0.39](../../archived/CHANGELOG.md#0390-1). Une propriété (`placeholder`) a été supprimée du composant `<gcds-input>`.
 
-**Prochaines étapes**: suivez la section[0.39.0 ou ultérieure → 1.0.0](#migration-de-la-version-0390-ou-dune-version-ultérieure-vers-la-version-100) ci-dessus pour plus d’instructions.
+**Prochaines étapes**: suivez la section [0.39.0 ou ultérieure → 1.0.0](#migration-de-la-version-0390-ou-dune-version-ultérieure-vers-la-version-100) ci-dessus pour plus d’instructions.
 
 # Migration de la version 0.34.0 à 1.0.0
 
-Pour migrer à partir de la version 0.34.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.35.0. Prenez en charge le changement non rétrocompatible dans la version 0.35.0, décrit dans les [notes de version 0.35](../../archived/CHANGELOG.md#0350).
+Pour migrer à partir de la version 0.34.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.35.0. Prenez en charge le changement non rétrocompatible dans la version 0.35.0, décrit dans les [notes de version 0.35](../../archived/CHANGELOG.md#0350-1).
 
-**Prochaines étapes**: suivez la section[0.38.0 ou ultérieure → 1.0.0](#migration-de-la-version-0380-à-100) ci-dessus pour plus d’instructions.
+**Prochaines étapes**: suivez la section [0.38.0 ou ultérieure → 1.0.0](#migration-de-la-version-0380-à-100) ci-dessus pour plus d’instructions.
 
 # Migration de la version 0.27.0 à 1.0.0
 
-Pour migrer à partir de la version 0.27.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.28.0. Prenez en charge le changement non rétrocompatible dans la version 0.28.0, décrit dans les [notes de version 0.28](../../archived/CHANGELOG.md#0280).
+Pour migrer à partir de la version 0.27.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.28.0. Prenez en charge le changement non rétrocompatible dans la version 0.28.0, décrit dans les [notes de version 0.28](../../archived/CHANGELOG.md#0280-1).
 
-**Prochaines étapes**: suivez la section[0.34.0 ou ultérieure → 1.0.0](#migration-de-la-version-0340-à-100) ci-dessus pour plus d’instructions.
+**Prochaines étapes**: suivez la section [0.34.0 ou ultérieure → 1.0.0](#migration-de-la-version-0340-à-100) ci-dessus pour plus d’instructions.
 
 # Versions antérieures à 0.27.0
 
