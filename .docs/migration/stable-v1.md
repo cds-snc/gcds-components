@@ -511,7 +511,7 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 | Composant (HTML/Angular/Vue)                                                   |                                                     | Ce qui a changé (supprimé)       | Type      |
 |--------------------------------------------------------------------------------|-----------------------------------------------------|----------------------------------|-----------|
 | [Carte](#carte-gcds-card)                                                      | [React](#carte-gcdscard)                            | Valeur `a` pour `card-title-tag` | Valeur    |
-| [Conteneur](#conteneur-gcds-container)                                         | [React](#container-gcdscontainer)                   | `centered`, `main-container`     | Propriété |
+| [Conteneur](#conteneur-gcds-container)                                         | [React](#conteneur-gcdscontainer)                   | `centered`, `main-container`     | Propriété |
 | [Pied de page](#pied-de-page-gcds-footer)                                      | [React](#pied-de-page-gcdsfooter)                   | `wordmark-variant`               | Propriété |
 | [Grille](#grille-gcds-grid)                                                    | [React](#grille-gcdsgrid)                           | `centered`                       | Propriété |
 | [En-tête](#en-tête-gcds-header)                                                | [React](#en-tête-gcdsheader)                        | `signature-variant`              | Propriété |
@@ -779,16 +779,16 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 Ce tableau est un index de toutes les nouvelles propriétés et fonctionnalités. Cliquez sur un composant pour accéder aux instructions de migration détaillées.
 
-| Composant                                                                                   | Nouvelle API/propriété/fonctionnalité                           |
-|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| [Carte](#carte-gcds-card-1)                                                                 | `target`, `rel`                                                 |
-| [Cases à cocher](#cases-à-cocher-gcds-checkboxes-1)                                         | `autofocus`, `form`, `hideLabel`, `hideLegend`, `validity`      |
-| [Champ de date](#champ-de-date-gcds-date-input-1)                                           | `autofocus`, `form`, `max`, `min`, `validity`, `<component>-id` |
-| [Téléverseur de fichiers](#téléverseur-de-fichiers-gcds-file-uploader-gcds-file-uploader-1) | `autofocus`, `form`, `hideLabel`, `form`, `validity`            |
-| [Titre](#titre-gcds-heading-1)                                                              | `headingRole`                                                   |
-| [Boutons radio](#boutons-radio-gcds-radios-1)                                               | `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id` |
-| [Sélection](#sélection-gcds-select-1)                                                       | `autofocus`, `form`, `hideLabel`, `validity`                    |
-| [Zone de texte](#zone-de-texte-gcds-textarea-1)                                             | `hideLimit`                                                     |
+| Composant                                                              | Nouvelle API/propriété/fonctionnalité                           |
+|------------------------------------------------------------------------|-----------------------------------------------------------------|
+| [Carte](#carte-gcds-card-1)                                            | `target`, `rel`                                                 |
+| [Cases à cocher](#cases-à-cocher-gcds-checkboxes)                      | `autofocus`, `form`, `hideLabel`, `hideLegend`, `validity`      |
+| [Champ de date](#champ-de-date-gcds-date-input)                        | `autofocus`, `form`, `max`, `min`, `validity`, `<component>-id` |
+| [Téléverseur de fichiers](#téléverseur-de-fichiers-gcds-file-uploader) | `autofocus`, `form`, `hideLabel`, `form`, `validity`            |
+| [Titre](#titre-gcds-heading)                                           | `headingRole`                                                   |
+| [Boutons radio](#boutons-radio-gcds-radios)                            | `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id` |
+| [Sélection](#sélection-gcds-select)                                    | `autofocus`, `form`, `hideLabel`, `validity`                    |
+| [Zone de texte](#zone-de-texte-gcds-textarea-1)                        | `hideLimit`                                                     |
 
 ### Carte `<gcds-card>`
 
