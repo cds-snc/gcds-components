@@ -192,7 +192,7 @@ to
 
 --- 
 
-#### React `<Gcds*>` components
+### React `<Gcds*>` components
 
 ---
 ### Card `<GcdsCard>`
@@ -440,11 +440,11 @@ Ce document vous aidera à migrer des versions antérieures de `@cdssnc/gcds-com
 
 ## Parcours de migration
 
-- **[0.39.0 ou ultérieure → 1.0.0](#migrating-from-0390-or-higher-to-100)** :star:
-- [0.38.0 → 1.0.0](#migrating-from-0380-to-100)
-- [0.34.0 → 1.0.0](#migrating-from-0340-to-100)
-- [0.27.0 → 1.0.0](#migration-from-0270-to-100)
-- [Versions antérieures à 0.27.0 → 1.0.0](#versions-older-than-0270)
+- **[0.39.0 ou ultérieure → 1.0.0](#migration-de-la-version-0390-ou-dune-version-ultérieure-vers-la-version-100)** :star:
+- [0.38.0 → 1.0.0](#migration-de-la-version-0380-à-100)
+- [0.34.0 → 1.0.0](#migration-de-la-version-0340-à-100)
+- [0.27.0 → 1.0.0](#migration-de-la-version-0270-à-100)
+- [Versions antérieures à 0.27.0 → 1.0.0](#versions-antérieures-à-0270)
 
 ---
 
@@ -454,23 +454,23 @@ Cette section traite des changements non rétrocompatibles introduits dans le ca
 
 Les changements sont regroupés dans les catégories suivantes :
 
-1. [Mettre à jour les paquets et chemins d’accès](#update-your-packages-and-paths)
-2. [Éléments supprimés et changements non rétrocompatibles aux API de composants](#component-api-removals-and-breaking-changes)
-3. [Nouvelles propriétés et fonctionnalités](#new-properties-and-features)
-4. [À supprimer : paquet SSR React](#react-ssr-package-removal)
-5. [Importation des polices de base (si vous n’utilisez pas les raccourcis CSS)](#base-font-import-if-not-using-css-shortcuts)
+1. [Mettre à jour les paquets et chemins d’accès](#mettre-à-jour-les-paquets-et-chemins-daccès)
+2. [Éléments supprimés et changements non rétrocompatibles aux API de composants](#éléments-supprimés-et-changements-non-rétrocompatibles-aux-api-de-composants)
+3. [Nouvelles propriétés et fonctionnalités](#nouvelles-propriétés-et-fonctionnalités)
+4. [À supprimer : paquet SSR React](#à-supprimer--paquet-react-ssr-le-cas-échéant)
+5. [Importation des polices de base (si vous n’utilisez pas les raccourcis CSS)](#importation-des-polices-de-base-si-vous-nutilisez-pas-les-raccourcis-css)
 
 ## Mettre à jour les paquets et chemins d’accès
 
 Vous devrez mettre à jour vos dépendances de projet pour utiliser les nouveaux paquets stables. Désinstallez les anciens paquets et installez les nouveaux.
 
-| Ancien paquet| Nouveau paquet|
-|----------|----------|
-| `@cdssnc/gcds-components`| `@gcds-core/components`|
-| `@cdssnc/gcds-components-react`| `@gcds-core/components-react`|
-| `@cdssnc/gcds-components-vue`| `@gcds-core/components-vue`|
-| `@cdssnc/gcds-components-react-ssr`| *Supprimé* (voir [À supprimer : paquet SSR React](#react-ssr-package-removal) )|
-| `@cdssnc/gcds-components-angular`| `@gcds-core/components-angular`|
+| Ancien paquet| Nouveau paquet                                          |
+|----------|---------------------------------------------------------|
+| `@cdssnc/gcds-components`| `@gcds-core/components`                                 |
+| `@cdssnc/gcds-components-react`| `@gcds-core/components-react`                           |
+| `@cdssnc/gcds-components-vue`| `@gcds-core/components-vue`                             |
+| `@cdssnc/gcds-components-react-ssr`| *Supprimé* (voir [À supprimer : paquet SSR React](#à-supprimer--paquet-react-ssr-le-cas-échéant) ) |
+| `@cdssnc/gcds-components-angular`| `@gcds-core/components-angular`                         |
 
 > [!IMPORTANT] Vous devrez mettre à jour toutes les références aux anciens noms de paquet dans votre code base avec les nouveaux noms de paquet indiqués ci-dessus. Remplacez tous les chemins d’accès `@cdssnc/gcds-components*` par les chemins correspondants `@gcds-core/components*`. Assurez-vous d’examiner votre code base en entier afin de cerner toute autre référence aux anciens noms de paquet et les mettre à jour au besoin.
 
@@ -505,20 +505,21 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 ## Éléments supprimés et changements non rétrocompatibles aux API de composants
 
 > [!IMPORTANT] Cette section répertorie tous les changements non rétrocompatibles et les API supprimées. Examinez attentivement les modifications apportées à chaque composant et mettez à jour votre code base en conséquence.
+[Link](#bannière-de-vérification-gcds-verify-banner)
 
-| Composant (HTML/Angular/Vue)| | Ce qui a changé (supprimé)| Type|
-|----------|----------|----------|----------|
-| [Carte](#card-gcds-card)| [React](#card-gcdscard)| Valeur `a` pour `card-title-tag`| Valeur|
-| [Conteneur](#container-gcds-container)| [React](#container-gcdscontainer)| `centered`, `main-container`| Propriété|
-| [Pied de page](#footer-gcds-footer)| [React](#footer-gcdsfooter)| `wordmark-variant`| Propriété|
-| [Grille](#grid-gcds-grid)| [React](#grid-gcdsgrid)| `centered`| Propriété|
-| [En-tête](#header-gcds-header)| [React](#header-gcdsheader)| `signature-variant`| Propriété|
-| [Lien](#link-gcds-link)| [React](#link-gcdslink)| `variant`| Propriété|
-| [Avis](#notice-gcds-notice)| [React](#notice-gcdsnotice)| `type`| Propriété|
-| [Bannière de phase](#phasebanner-gcds-phase-banner)| [React](#phasebanner-gcdsphasebanner)| `<gcds-phase-banner>`| Composant|
-| [Zone de texte](#textarea-gcds-textarea)| [React](#textarea-gcdstextarea)| `character-count`| Propriété|
-| [Barre de navigation supérieure](#topnav-gcds-top-nav)| [React](#topnav-gcdstopnav)| `alignment`| Propriété|
-| [Bannière de vérification](#verifybanner-gcds-verify-banner)| [React](#verifybanner-gcdsverifybanner)| `<gcds-verify-banner>`| Composant|
+| Composant (HTML/Angular/Vue)                                                   |                                                     | Ce qui a changé (supprimé)       | Type      |
+|--------------------------------------------------------------------------------|-----------------------------------------------------|----------------------------------|-----------|
+| [Carte](#carte-gcds-card)                                                      | [React](#carte-gcdscard)                            | Valeur `a` pour `card-title-tag` | Valeur    |
+| [Conteneur](#conteneur-gcds-container)                                         | [React](#container-gcdscontainer)                   | `centered`, `main-container`     | Propriété |
+| [Pied de page](#pied-de-page-gcds-footer)                                      | [React](#pied-de-page-gcdsfooter)                   | `wordmark-variant`               | Propriété |
+| [Grille](#grille-gcds-grid)                                                    | [React](#grille-gcdsgrid)                           | `centered`                       | Propriété |
+| [En-tête](#en-tête-gcds-header)                                                | [React](#en-tête-gcdsheader)                        | `signature-variant`              | Propriété |
+| [Lien](#lien-gcds-link)                                                        | [React](#lien-gcdslink)                             | `variant`                        | Propriété |
+| [Avis](#avis-gcds-notice)                                                      | [React](#avis-gcdsnotice)                           | `type`                           | Propriété |
+| [Bannière de phase](#bannière-de-phase-gcds-phase-banner)                      | [React](#bannière-de-phase-gcdsphasebanner)         | `<gcds-phase-banner>`            | Composant |
+| [Zone de texte](#zone-de-texte-gcds-textarea)                                  | [React](#zone-de-texte-gcdstextarea)                | `character-count`                | Propriété |
+| [Barre de navigation supérieure](#barre-de-navigation-supérieure-gcds-top-nav) | [React](#barre-de-navigation-supérieure-gcdstopnav) | `alignment`                      | Propriété |
+| [Bannière de vérification](#bannière-de-vérification-gcds-verify-banner)       | [React](#bannière-de-vérification-gcdsverifybanner) | `<gcds-verify-banner>`           | Composant |
 
 ---
 
@@ -643,11 +644,11 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 ---
 
-> **Passer à** [Nouvelles propriétés et fonctionnalités](#new-properties-and-features)
+> **Passer à** [Nouvelles propriétés et fonctionnalités](#nouvelles-propriétés-et-fonctionnalités)
 
 ---
 
-#### Composants React \<Gcds*>
+### Composants React `<Gcds*>`
 
 ---
 
@@ -777,99 +778,99 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 Ce tableau est un index de toutes les nouvelles propriétés et fonctionnalités. Cliquez sur un composant pour accéder aux instructions de migration détaillées.
 
-| Composant| Nouvelle API/propriété/fonctionnalité|
-|----------|----------|
-| [Carte](#card-gcds-card-1)| `target`, `rel`|
-| [Cases à cocher](#checkboxes-gcds-checkboxes-1)| `autofocus`, `form`, `hideLabel`, `hideLegend`, `validity`|
-| [Champ de date](#dateinput-gcds-date-input-1)| `autofocus`, `form`, `max`, `min`, `validity`, `<component>-id`|
-| [Téléverseur de fichiers](#fileuploader-gcds-file-uploader-1)| `autofocus`, `form`, `hideLabel`, `form`, `validity`|
-| [Titre](#heading-gcds-heading-1)| `headingRole`|
-| [Boutons radio](#radios-gcds-radios-1)| `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id`|
-| [Sélection](#select-gcds-select-1)| `autofocus`, `form`, `hideLabel`, `validity`|
-| [Zone de texte](#textarea-gcds-textarea-1)| `hideLimit`|
+| Composant                                                                                   | Nouvelle API/propriété/fonctionnalité                           |
+|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| [Carte](#carte-gcds-card-1)                                                                 | `target`, `rel`                                                 |
+| [Cases à cocher](#cases-à-cocher-gcds-checkboxes-1)                                         | `autofocus`, `form`, `hideLabel`, `hideLegend`, `validity`      |
+| [Champ de date](#champ-de-date-gcds-date-input-1)                                           | `autofocus`, `form`, `max`, `min`, `validity`, `<component>-id` |
+| [Téléverseur de fichiers](#téléverseur-de-fichiers-gcds-file-uploader-gcds-file-uploader-1) | `autofocus`, `form`, `hideLabel`, `form`, `validity`            |
+| [Titre](#titre-gcds-heading-1)                                                              | `headingRole`                                                   |
+| [Boutons radio](#boutons-radio-gcds-radios-1)                                               | `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id` |
+| [Sélection](#sélection-gcds-select-1)                                                       | `autofocus`, `form`, `hideLabel`, `validity`                    |
+| [Zone de texte](#zone-de-texte-gcds-textarea-1)                                             | `hideLimit`                                                     |
 
 ### Carte `<gcds-card>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété| Attribut| Description| Type| Curseur par défaut|
-|----------|----------|----------|----------|----------|
-| `target`| `target`| Indique où ouvrir le document lié (p. ex., `_blank`, `_self`)| chaîne| _aucune_|
-| `rel`| `rel`| Indique la relation entre l’objet cible et le lien (p. ex., `noopener`, `noreferrer`).| chaîne| _aucune_|
+| Propriété | Attribut | Description                                                                            | Type   | Curseur par défaut |
+|-----------|----------|----------------------------------------------------------------------------------------|--------|--------------------|
+| `target`  | `target` | Indique où ouvrir le document lié (p. ex., `_blank`, `_self`)                          | chaîne | _aucune_           |
+| `rel`     | `rel`    | Indique la relation entre l’objet cible et le lien (p. ex., `noopener`, `noreferrer`). | chaîne | _aucune_           |
 
 ### Cases à cocher `<gcds-checkboxes>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété| Attribut| Description| Type| Curseur par défaut|
-|----------|----------|----------|----------|----------|
-| `autofocus`| `autofocus`| Si \<true>, la case à cocher sera ciblée lors du rendu du composant.| `boolean`| `undefined`|
-| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
-| `hideLabel`| `hide-label`| Pour une seule case à cocher, indique si l’étiquette est masquée visuellement ou non.| booléen| false|
-| `hideLegend`| `hide-legend`| Pour les groupes de cases à cocher, indique si la légende est masquée visuellement ou non.| booléen| false|
-| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
+| Propriété    | Attribut      | Description                                                                               | Type      | Curseur par défaut |
+|--------------|---------------|-------------------------------------------------------------------------------------------|-----------|--------------------|
+| `autofocus`  | `autofocus`   | Si `true`, la case à cocher sera ciblée lors du rendu du composant.                       | `boolean` | `undefined`        |
+| `form`       | `form`        | Associe le composant à un formulaire.                                                     | chaîne    | _aucune_           |
+| `hideLabel`  | `hide-label`  | Pour une seule case à cocher, indique si l’étiquette est masquée visuellement ou non.     | booléen   | false              |
+| `hideLegend` | `hide-legend` | Pour les groupes de cases à cocher, indique si la légende est masquée visuellement ou non. | booléen   | false              |
+| `validity`   | `validity`    | Définit l’état de validité                                                                | chaîne    | _aucune_           |
 
 ### Champ de date `<gcds-date-input>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété| Attribut| Description| Type| Curseur par défaut|
-|----------|----------|----------|----------|----------|
-| `autofocus`| `autofocus`| Si \<true>, le téléverseur de fichier sera ciblé lors du rendu du composant.| `boolean`| `undefined`|
-| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
-| `max`| `max`| Date maximale possible| chaîne| _aucune_|
-| `min`| `min`| Date minimale possible| chaîne| _aucune_|
-| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
-| `dateInputId`| `date-input-id`| Définit un ID unique pour le composant| chaîne| _aucune_|
+| Propriété     | Attribut        | Description                                                                  | Type      | Curseur par défaut |
+|---------------|-----------------|------------------------------------------------------------------------------|-----------|--------------------|
+| `autofocus`   | `autofocus`     | Si `true`, le téléverseur de fichier sera ciblé lors du rendu du composant. | `boolean` | `undefined`        |
+| `form`        | `form`          | Associe le composant à un formulaire.                                        | chaîne    | _aucune_           |
+| `max`         | `max`           | Date maximale possible                                                       | chaîne    | _aucune_           |
+| `min`         | `min`           | Date minimale possible                                                       | chaîne    | _aucune_           |
+| `validity`    | `validity`      | Définit l’état de validité                                                   | chaîne    | _aucune_           |
+| `dateInputId` | `date-input-id` | Définit un ID unique pour le composant                                       | chaîne    | _aucune_           |
 
 ### Téléverseur de fichiers `<gcds-file-uploader>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété| Attribut| Description| Type| Curseur par défaut|
-|----------|----------|----------|----------|----------|
-| `hideLabel`| `hide-label`| Masque visuellement l’étiquette| booléen| false|
-| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
-| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
+| Propriété   | Attribut     | Description                           | Type    | Curseur par défaut |
+|-------------|--------------|---------------------------------------|---------|--------------------|
+| `hideLabel` | `hide-label` | Masque visuellement l’étiquette       | booléen | false              |
+| `form`      | `form`       | Associe le composant à un formulaire. | chaîne  | _aucune_           |
+| `validity`  | `validity`   | Définit l’état de validité            | chaîne  | _aucune_           |
 
 ### Titre `<gcds-heading>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété| Attribut| Description| Type| Curseur par défaut|
-|----------|----------|----------|----------|----------|
-| `headingRole`| `heading-role`| Définit le rôle ARIA pour le titre| chaîne| _aucune_|
+| Propriété     | Attribut       | Description                        | Type   | Curseur par défaut |
+|---------------|----------------|------------------------------------|--------|--------------------|
+| `headingRole` | `heading-role` | Définit le rôle ARIA pour le titre | chaîne | _aucune_           |
 
 ### Boutons radio `<gcds-radios>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété| Attribut| Description| Type| Curseur par défaut|
-|----------|----------|----------|----------|----------|
-| `autofocus`| `autofocus`| Si \<true>, le champ de saisie sera ciblé lors du rendu du composant.| `boolean`| `undefined`|
-| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
-| `hideLegend`| `hide-legend`| Masque visuellement la légende| booléen| false|
-| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
-| `radiosId`| `radios-id`| Définit un ID unique pour le composant| chaîne| _aucune_|
+| Propriété    | Attribut      | Description                                                         | Type      | Curseur par défaut |
+|--------------|---------------|---------------------------------------------------------------------|-----------|--------------------|
+| `autofocus`  | `autofocus`   | Si `true`, le champ de saisie sera ciblé lors du rendu du composant. | `boolean` | `undefined`        |
+| `form`       | `form`        | Associe le composant à un formulaire.                               | chaîne    | _aucune_           |
+| `hideLegend` | `hide-legend` | Masque visuellement la légende                                      | booléen   | false              |
+| `validity`   | `validity`    | Définit l’état de validité                                          | chaîne    | _aucune_           |
+| `radiosId`   | `radios-id`   | Définit un ID unique pour le composant                              | chaîne    | _aucune_           |
 
 ### Sélection `<gcds-select>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété| Attribut| Description| Type| Curseur par défaut|
-|----------|----------|----------|----------|----------|
-| `autofocus`| `autofocus`| Si \<true>, la sélection sera ciblée lors du rendu du composant.| `boolean`| `undefined`|
-| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
-| `hideLabel`| `hide-label`| Masque visuellement l’étiquette| booléen| false|
-| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
+| Propriété   | Attribut     | Description                                                    | Type      | Curseur par défaut |
+|-------------|--------------|----------------------------------------------------------------|-----------|--------------------|
+| `autofocus` | `autofocus`  | Si `true`, la sélection sera ciblée lors du rendu du composant. | `boolean` | `undefined`        |
+| `form`      | `form`       | Associe le composant à un formulaire.                          | chaîne    | _aucune_           |
+| `hideLabel` | `hide-label` | Masque visuellement l’étiquette                                | booléen   | false              |
+| `validity`  | `validity`   | Définit l’état de validité                                     | chaîne    | _aucune_           |
 
 ### Zone de texte `<gcds-textarea>`
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété| Attribut| Description| Type| Curseur par défaut|
-|----------|----------|----------|----------|----------|
-| `hideLimit`| `hide-limit`| Masque le compteur de caractères| booléen| false|
+| Propriété   | Attribut     | Description                      | Type    | Curseur par défaut |
+|-------------|--------------|----------------------------------|---------|--------------------|
+| `hideLimit` | `hide-limit` | Masque le compteur de caractères | booléen | false              |
 
 ---
 
@@ -900,22 +901,22 @@ Si vous n’utilisez pas les raccourcis CSS, vous deviez auparavant inclure manu
 
 Pour migrer à partir de la version 0.38.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.39.0.
 
-Prenez en charge le changement non rétrocompatible dans la version 0.39.0, décrit dans les [notes de version 0.39](../../archived/CHANGELOG.md#0390). Une propriété (`placeholder`) a été supprimée du composant `<gcds-input>`.
+Prenez en charge le changement non rétrocompatible dans la version 0.39.0, décrit dans les [notes de version 0.39](../../archived/CHANGELOG.md#0390-1). Une propriété (`placeholder`) a été supprimée du composant `<gcds-input>`.
 
-**Prochaines étapes**: suivez la section[0.39.0 ou ultérieure → 1.0.0](#migrating-from-0390-or-higher-to-100) ci-dessus pour plus d’instructions.
+**Prochaines étapes**: suivez la section[0.39.0 ou ultérieure → 1.0.0](#migration-de-la-version-0390-ou-dune-version-ultérieure-vers-la-version-100) ci-dessus pour plus d’instructions.
 
 # Migration de la version 0.34.0 à 1.0.0
 
 Pour migrer à partir de la version 0.34.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.35.0. Prenez en charge le changement non rétrocompatible dans la version 0.35.0, décrit dans les [notes de version 0.35](../../archived/CHANGELOG.md#0350).
 
-**Prochaines étapes**: suivez la section[0.38.0 ou ultérieure → 1.0.0](#migrating-from-0380-to-100) ci-dessus pour plus d’instructions.
+**Prochaines étapes**: suivez la section[0.38.0 ou ultérieure → 1.0.0](#migration-de-la-version-0380-à-100) ci-dessus pour plus d’instructions.
 
 # Migration de la version 0.27.0 à 1.0.0
 
 Pour migrer à partir de la version 0.27.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.28.0. Prenez en charge le changement non rétrocompatible dans la version 0.28.0, décrit dans les [notes de version 0.28](../../archived/CHANGELOG.md#0280).
 
-**Prochaines étapes**: suivez la section[0.34.0 ou ultérieure → 1.0.0](#migrating-from-0340-to-100) ci-dessus pour plus d’instructions.
+**Prochaines étapes**: suivez la section[0.34.0 ou ultérieure → 1.0.0](#migration-de-la-version-0340-à-100) ci-dessus pour plus d’instructions.
 
 # Versions antérieures à 0.27.0
 
-Pour obtenir une liste complète des changements dans chaque version, reportez-vous au fichier [CHANGELOG](../../archived/CHANGELOG.md) archivé.
+Pour obtenir une liste complète des changements dans chaque version, reportez-vous au fichier [CHANGELOG](../../archived/CHANGELOG.md#journal-des-modifications) archivé.
