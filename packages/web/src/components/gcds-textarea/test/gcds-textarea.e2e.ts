@@ -7,7 +7,7 @@ import I18N from '../../../utils/i18n/i18n.js';
 
 test.describe('gcds-textarea', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -22,7 +22,7 @@ test.describe('gcds-textarea', () => {
    * Validation
    */
   test('Validation', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -49,7 +49,7 @@ test.describe('gcds-textarea', () => {
   });
 
   test('Validation - custom validation', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -104,7 +104,7 @@ test.describe('gcds-textarea', () => {
   });
 
   test('Validation - custom validation old format', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -160,7 +160,7 @@ test.describe('gcds-textarea', () => {
   });
 
   test('HTML attribute validation - minlength', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -199,7 +199,7 @@ test.describe('gcds-textarea', () => {
   test('HTML attribute validation - maxlength/character-count', async ({
     page,
   }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -309,7 +309,7 @@ test.describe('gcds-textarea a11y tests', () => {
    * Aria-invalid true if error test
    */
   test('aria-invalid', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     await element.evaluate(el => {
       el.setAttribute('error-message', 'Field required');
@@ -334,7 +334,7 @@ test.describe('gcds-textarea a11y tests', () => {
    * Textarea keyboard focus
    */
   test('textarea keyboard focus', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
     await expect(element).toHaveClass('hydrated');
 
     const textareaField = await page
@@ -355,7 +355,7 @@ test.describe('gcds-textarea a11y tests', () => {
    * Textarea label test
    */
   test('textarea contains label', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     await expect(element).toHaveClass('hydrated');
 
@@ -364,7 +364,7 @@ test.describe('gcds-textarea a11y tests', () => {
   });
 
   test('textarea has aria-labelledby for label', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     await expect(element).toHaveClass('hydrated');
 

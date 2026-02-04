@@ -7,7 +7,7 @@ import I18N from '../../../utils/i18n/i18n.js';
 
 test.describe('gcds-input', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -22,7 +22,7 @@ test.describe('gcds-input', () => {
    * Validation
    */
   test('Validation', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -49,7 +49,7 @@ test.describe('gcds-input', () => {
   });
 
   test('Validation - custom validation', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -105,7 +105,7 @@ test.describe('gcds-input', () => {
   });
 
   test('Validation - custom validation old format', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -164,7 +164,7 @@ test.describe('gcds-input', () => {
    * HTML attribute validation
    */
   test('HTML attribute validation - min/max', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -211,7 +211,7 @@ test.describe('gcds-input', () => {
   });
 
   test('HTML attribute validation - step', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -249,7 +249,7 @@ test.describe('gcds-input', () => {
   });
 
   test('HTML attribute validation - pattern', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -284,7 +284,7 @@ test.describe('gcds-input', () => {
   });
 
   test('HTML attribute validation - minlength', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -321,7 +321,7 @@ test.describe('gcds-input', () => {
   });
 
   test('HTML attribute validation - maxlength', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -364,7 +364,7 @@ test.describe('gcds-input', () => {
    * HTML validity
    */
   test('HTML validity', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -419,7 +419,7 @@ test.describe('gcds-input a11y tests', () => {
    * Aria-invalid true if error test
    */
   test('aria-invalid', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     await element.evaluate(el => {
       el.setAttribute('error-message', 'Field required');
@@ -444,7 +444,7 @@ test.describe('gcds-input a11y tests', () => {
    * Input keyboard focus
    */
   test('input keyboard focus', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
     await expect(element).toHaveClass('hydrated');
 
     const inputField = await page
@@ -465,7 +465,7 @@ test.describe('gcds-input a11y tests', () => {
    * Input label test
    */
   test('input contains label', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     await expect(element).toHaveClass('hydrated');
 
@@ -474,7 +474,7 @@ test.describe('gcds-input a11y tests', () => {
   });
 
   test('input has aria-labelledby for label', async ({ page }) => {
-    const element = await page.locator('gcds-input');
+    const element = page.locator('gcds-input');
 
     await expect(element).toHaveClass('hydrated');
 

@@ -4,7 +4,7 @@ import { test, testMobile, testTablet } from '../../../../tests/base';
 
 test.describe('gcds-side-nav', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-side-nav');
+    const element = page.locator('gcds-side-nav');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -15,7 +15,7 @@ test.describe('gcds-side-nav', () => {
     await expect(element).toHaveClass('hydrated');
 
     // Check first nav link item role
-    const firstItem = await page.locator('gcds-nav-link').first();
+    const firstItem = page.locator('gcds-nav-link').first();
     await expect(firstItem).toHaveRole('listitem');
   });
 
@@ -56,7 +56,7 @@ test.describe('gcds-side-nav', () => {
   })
 
   test('keyboard controls', async ({ page }) => {
-    const element = await page.locator('gcds-side-nav');
+    const element = page.locator('gcds-side-nav');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });

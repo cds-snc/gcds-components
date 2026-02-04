@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-card', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-card');
+    const element = page.locator('gcds-card');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -50,9 +50,7 @@ test.describe('gcds-card a11y tests', () => {
   });
 
   test('Keyboard focus', async ({ page }) => {
-    const linkText = await (
-      await page.locator('.gcds-card__title')
-    ).innerText();
+    const linkText = await page.locator('.gcds-card__title').innerText();
 
     await page.keyboard.press('Tab');
 

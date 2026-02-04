@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-alert', () => {
   test('renders', async ({ page }) => {
-    const alerts = await page.locator('gcds-alert');
+    const alerts = page.locator('gcds-alert');
     const count = await alerts.count();
 
     for (let i = 0; i < count; i++) {

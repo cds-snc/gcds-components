@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-button', () => {
   test('renders', async ({ page }) => {
-    const buttons = await page.locator('gcds-button');
+    const buttons = page.locator('gcds-button');
     const count = await buttons.count();
 
     for (let i = 0; i < count; i++) {
@@ -62,7 +62,7 @@ test.describe('gcds-button a11y tests', () => {
       .first()
       .evaluate(el => ((el as HTMLElement).innerText = 'Colour contrast'));
 
-    const buttons = await page.locator('button');
+    const buttons = page.locator('button');
 
     for (let i = 0; i < (await buttons.count()); i++) {
       buttons

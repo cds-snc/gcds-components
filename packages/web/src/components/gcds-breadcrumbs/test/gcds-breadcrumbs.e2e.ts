@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-breadcrumbs', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-breadcrumbs');
+    const element = page.locator('gcds-breadcrumbs');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -16,7 +16,7 @@ test.describe('gcds-breadcrumbs', () => {
     await expect(element).toHaveClass('hydrated');
 
     // Check first breadcrumb item role
-    const firstItem = await page.locator('gcds-breadcrumbs-item').first();
+    const firstItem = page.locator('gcds-breadcrumbs-item').first();
     await expect(firstItem).toHaveRole('listitem');
   });
 });

@@ -4,7 +4,7 @@ import { test, testMobile, testTablet } from '../../../../tests/base';
 
 test.describe('gcds-top-nav', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-top-nav');
+    const element = page.locator('gcds-top-nav');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -52,7 +52,7 @@ test.describe('gcds-top-nav', () => {
   })
 
   test('keyboard controls', async ({ page }) => {
-    const element = await page.locator('gcds-top-nav');
+    const element = page.locator('gcds-top-nav');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });

@@ -5,7 +5,7 @@ import { test } from '../../../../tests/base';
 
 test.describe('gcds-link', () => {
   test('renders', async ({ page }) => {
-    const links = await page.locator('gcds-link');
+    const links = page.locator('gcds-link');
     const count = await links.count();
 
     for (let i = 0; i < count; i++) {
