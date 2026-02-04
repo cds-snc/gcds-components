@@ -409,14 +409,14 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
 
 
 @ProxyCmp({
-  inputs: ['align', 'border', 'layout', 'margin', 'padding', 'size', 'tag']
+  inputs: ['alignment', 'border', 'layout', 'margin', 'padding', 'size', 'tag']
 })
 @Component({
   selector: 'gcds-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['align', 'border', 'layout', 'margin', 'padding', 'size', 'tag'],
+  inputs: ['alignment', 'border', 'layout', 'margin', 'padding', 'size', 'tag'],
   standalone: false,
 })
 export class GcdsContainer {
@@ -426,7 +426,7 @@ export class GcdsContainer {
 This property is ignored when `layout` is set to `page`,
 as the page layout has higher priority.
    */
-  set align(_: Components.GcdsContainer['align']) {};
+  set alignment(_: Components.GcdsContainer['alignment']) {};
     /**
    * Defines if the container has a border. @default false
    */
@@ -442,7 +442,7 @@ of its parent.
   set layout(_: Components.GcdsContainer['layout']) {};
     /**
    * Container margin. Horizontal margins (left and right) are not
-applied if the container’s align property is defined, since
+applied if the container’s alignment property is defined, since
 alignment has higher priority.
    */
   set margin(_: Components.GcdsContainer['margin']) {};
@@ -950,14 +950,14 @@ export declare interface GcdsFooter extends Components.GcdsFooter {
 
 
 @ProxyCmp({
-  inputs: ['align', 'alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
+  inputs: ['alignContent', 'alignItems', 'alignment', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['align', 'alignContent', 'alignItems', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
+  inputs: ['alignContent', 'alignItems', 'alignment', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
   standalone: false,
 })
 export class GcdsGrid {
@@ -1017,7 +1017,7 @@ in a grid container for desktop screens.
    * Defines the grid's alignment if the grid containers
 size is smaller than the parent's size.
    */
-  set align(_: Components.GcdsGrid['align']) {};
+  set alignment(_: Components.GcdsGrid['alignment']) {};
     /**
    * If total grid size is less than the size of its grid container,
 this property aligns the grid along the block (column) axis
@@ -2398,7 +2398,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
 
 
 @ProxyCmp({
-  inputs: ['align', 'label'],
+  inputs: ['alignment', 'label'],
   methods: ['getNavSize', 'updateNavSize', 'updateNavItemQueue']
 })
 @Component({
@@ -2406,7 +2406,7 @@ export declare interface GcdsTextarea extends Components.GcdsTextarea {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['align', 'label'],
+  inputs: ['alignment', 'label'],
   standalone: false,
 })
 export class GcdsTopNav {
@@ -2416,9 +2416,9 @@ export class GcdsTopNav {
    */
   set label(_: Components.GcdsTopNav['label']) {};
     /**
-   * Nav align @default 'start'
+   * Nav alignment @default 'start'
    */
-  set align(_: Components.GcdsTopNav['align']) {};
+  set alignment(_: Components.GcdsTopNav['alignment']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;

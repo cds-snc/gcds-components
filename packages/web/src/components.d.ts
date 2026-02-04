@@ -258,7 +258,7 @@ export namespace Components {
         /**
           * Defines the container's alignment. This property is ignored when `layout` is set to `page`, as the page layout has higher priority.
          */
-        "align"?: 'start' | 'center' | 'end';
+        "alignment"?: 'start' | 'center' | 'end';
         /**
           * Defines if the container has a border.
           * @default false
@@ -269,7 +269,7 @@ export namespace Components {
          */
         "layout"?: 'full' | 'page';
         /**
-          * Container margin. Horizontal margins (left and right) are not applied if the container’s align property is defined, since alignment has higher priority.
+          * Container margin. Horizontal margins (left and right) are not applied if the container’s alignment property is defined, since alignment has higher priority.
          */
         "margin"?: SpacingValues;
         /**
@@ -562,10 +562,6 @@ export namespace Components {
      */
     interface GcdsGrid {
         /**
-          * Defines the grid's alignment if the grid containers size is smaller than the parent's size.
-         */
-        "align"?: 'start' | 'center' | 'end';
-        /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
          */
         "alignContent"?: ContentValues;
@@ -573,6 +569,10 @@ export namespace Components {
           * Aligns grid items along the block (column) axis
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Defines the grid's alignment if the grid containers size is smaller than the parent's size.
+         */
+        "alignment"?: 'start' | 'center' | 'end';
         /**
           * Defines the default number of grid columns for all viewports if columns-tablet and columns-desktop are not defined. Option to set different layouts for desktop with columns-desktop and for tablet with columns-tablet.
          */
@@ -1510,10 +1510,10 @@ export namespace Components {
      */
     interface GcdsTopNav {
         /**
-          * Nav align
+          * Nav alignment
           * @default 'start'
          */
-        "align": 'start' | 'end';
+        "alignment": 'start' | 'end';
         "getNavSize": () => Promise<"desktop" | "mobile">;
         /**
           * Label for navigation landmark
@@ -2629,7 +2629,7 @@ declare namespace LocalJSX {
         /**
           * Defines the container's alignment. This property is ignored when `layout` is set to `page`, as the page layout has higher priority.
          */
-        "align"?: 'start' | 'center' | 'end';
+        "alignment"?: 'start' | 'center' | 'end';
         /**
           * Defines if the container has a border.
           * @default false
@@ -2640,7 +2640,7 @@ declare namespace LocalJSX {
          */
         "layout"?: 'full' | 'page';
         /**
-          * Container margin. Horizontal margins (left and right) are not applied if the container’s align property is defined, since alignment has higher priority.
+          * Container margin. Horizontal margins (left and right) are not applied if the container’s alignment property is defined, since alignment has higher priority.
          */
         "margin"?: SpacingValues;
         /**
@@ -2993,10 +2993,6 @@ declare namespace LocalJSX {
      */
     interface GcdsGrid {
         /**
-          * Defines the grid's alignment if the grid containers size is smaller than the parent's size.
-         */
-        "align"?: 'start' | 'center' | 'end';
-        /**
           * If total grid size is less than the size of its grid container, this property aligns the grid along the block (column) axis
          */
         "alignContent"?: ContentValues;
@@ -3004,6 +3000,10 @@ declare namespace LocalJSX {
           * Aligns grid items along the block (column) axis
          */
         "alignItems"?: 'baseline' | 'center' | 'end' | 'start' | 'stretch';
+        /**
+          * Defines the grid's alignment if the grid containers size is smaller than the parent's size.
+         */
+        "alignment"?: 'start' | 'center' | 'end';
         /**
           * Defines the default number of grid columns for all viewports if columns-tablet and columns-desktop are not defined. Option to set different layouts for desktop with columns-desktop and for tablet with columns-tablet.
          */
@@ -4070,10 +4070,10 @@ declare namespace LocalJSX {
      */
     interface GcdsTopNav {
         /**
-          * Nav align
+          * Nav alignment
           * @default 'start'
          */
-        "align"?: 'start' | 'end';
+        "alignment"?: 'start' | 'end';
         /**
           * Label for navigation landmark
          */

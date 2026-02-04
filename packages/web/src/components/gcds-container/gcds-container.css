@@ -1,4 +1,4 @@
-@layer reset, default, border, margin, padding, align, size, layout;
+@layer reset, default, border, margin, padding, alignment, size, layout;
 
 @layer reset {
   :host {
@@ -285,16 +285,16 @@
   }
 }
 
-@layer align {
-  :host .gcds-container.align-start {
+@layer alignment {
+  :host .gcds-container.alignment-start {
     margin-inline-start: 0 !important;
   }
 
-  :host .gcds-container.align-center {
+  :host .gcds-container.alignment-center {
     margin-inline: auto !important;
   }
 
-  :host .gcds-container.align-end {
+  :host .gcds-container.alignment-end {
     margin-inline-start: auto !important;
     margin-inline-end: 0 !important;
   }

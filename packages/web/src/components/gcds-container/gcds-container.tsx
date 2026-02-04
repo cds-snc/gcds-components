@@ -23,7 +23,7 @@ export class GcdsContainer {
    * This property is ignored when `layout` is set to `page`,
    * as the page layout has higher priority.
    */
-  @Prop() align?: 'start' | 'center' | 'end';
+  @Prop() alignment?: 'start' | 'center' | 'end';
 
   /**
    * Defines if the container has a border.
@@ -42,7 +42,7 @@ export class GcdsContainer {
 
   /**
    * Container margin. Horizontal margins (left and right) are not
-   * applied if the container’s align property is defined, since
+   * applied if the container’s alignment property is defined, since
    * alignment has higher priority.
    */
   @Prop() margin?: SpacingValues;
@@ -63,7 +63,7 @@ export class GcdsContainer {
   @Prop() tag?: string = 'div';
 
   render() {
-    const { align, border, layout, margin, padding, size, tag } = this;
+    const { alignment, border, layout, margin, padding, size, tag } = this;
 
     const Tag = tag;
 
@@ -73,7 +73,7 @@ export class GcdsContainer {
           class={`
             gcds-container
             ${border ? 'container-border' : ''}
-            ${align && layout != 'page' ? `align-${align}` : ''}
+            ${alignment && layout != 'page' ? `alignment-${alignment}` : ''}
             ${layout ? `layout-${layout}` : ''}
             ${margin ? `m-${margin}` : ''}
             ${padding ? `p-${padding}` : ''}

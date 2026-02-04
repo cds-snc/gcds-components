@@ -33,9 +33,9 @@ export class GcdsTopNav {
   @Prop() label!: string;
 
   /**
-   * Nav align
+   * Nav alignment
    */
-  @Prop() align: 'start' | 'end' = 'start';
+  @Prop() alignment: 'start' | 'end' = 'start';
 
   /**
    * Sticky navigation flag
@@ -102,7 +102,11 @@ export class GcdsTopNav {
 
   @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
-    if (e.relatedTarget !== null && e.relatedTarget !== this.el && !this.el.contains(e.relatedTarget)) {
+    if (
+      e.relatedTarget !== null &&
+      e.relatedTarget !== this.el &&
+      !this.el.contains(e.relatedTarget)
+    ) {
       if (this.navSize == 'mobile') {
         if (this.mobile.hasAttribute('open')) {
           await this.mobile.toggleNav();
@@ -115,7 +119,11 @@ export class GcdsTopNav {
   async keyDownListener(e) {
     if (this.el.contains(document.activeElement)) {
       handleKeyDownNav(e, this.el, this.navItems);
-    } else if (this.navSize == 'mobile' && this.mobile.open == true && e.key == 'Escape') {
+    } else if (
+      this.navSize == 'mobile' &&
+      this.mobile.open == true &&
+      e.key == 'Escape'
+    ) {
       // Close mobile nav on ESC
       await this.mobile.toggleNav();
     }
@@ -192,7 +200,7 @@ export class GcdsTopNav {
   }
 
   render() {
-    const { label, align, lang } = this;
+    const { label, alignment, lang } = this;
 
     return (
       <Host>
@@ -210,8 +218,8 @@ export class GcdsTopNav {
                 lang={lang}
               >
                 <slot name="home"></slot>
-                <li class={`nav-container__list nav-list--${align}`}>
-                  <ul class={`nav-container__list nav-list--${align}`}>
+                <li class={`nav-container__list nav-list--${alignment}`}>
+                  <ul class={`nav-container__list nav-list--${alignment}`}>
                     <slot></slot>
                   </ul>
                 </li>

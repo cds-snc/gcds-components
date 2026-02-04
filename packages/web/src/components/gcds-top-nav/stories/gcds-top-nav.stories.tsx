@@ -16,7 +16,7 @@ export default {
         required: true,
       },
     },
-    align: {
+    alignment: {
       control: { type: 'select' },
       options: ['end', 'start'],
       table: {
@@ -63,14 +63,16 @@ const Template = args =>
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-top-nav
   label="${args.label}"
-  align="${args.align}"
+  alignment="${args.alignment}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${args.home
+  ${
+    args.home
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
-    }
-  ${args.default ||
+  }
+  ${
+    args.default ||
     `<gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
   <gcds-nav-link href="#">Why GC Notify</gcds-nav-link>
 
@@ -82,20 +84,22 @@ const Template = args =>
   </gcds-nav-group>
 
   <gcds-nav-link href="#">Contact us</gcds-nav-link>`
-    }
+  }
 </gcds-top-nav>
 
 <!-- React code -->
 <GcdsTopNav
   label="${args.label}"
-  align="${args.align}"
+  alignment="${args.alignment}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${args.home
+  ${
+    args.home
       ? `<GcdsNavLink href="#home" slot="home">${args.home}</GcdsNavLink> `
       : null
-    }
-  ${args.default ||
+  }
+  ${
+    args.default ||
     `<GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
   <GcdsNavLink href="#">Why GC Notify</GcdsNavLink>
 
@@ -107,7 +111,7 @@ const Template = args =>
   </GcdsNavGroup>
 
   <GcdsNavLink href="#">Contact us</GcdsNavLink>`
-    }
+  }
 </GcdsTopNav>
 `.replace(/\s\snull\n/g, '');
 
@@ -116,14 +120,16 @@ const TemplatePlayground = args =>
 <!-- Web component code (Angular, Vue) -->
 <gcds-top-nav
   label="${args.label}"
-  align="${args.align}"
+  alignment="${args.alignment}"
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
-  ${args.home
+  ${
+    args.home
       ? `<gcds-nav-link href="#home" slot="home">${args.home}</gcds-nav-link> `
       : null
-    }
-  ${args.default ||
+  }
+  ${
+    args.default ||
     `<gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-group  open-trigger="Nav group label" menu-label="Nav group label">
@@ -134,14 +140,14 @@ const TemplatePlayground = args =>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   <gcds-nav-link href="#">Nav link</gcds-nav-link>
   `
-    }
+  }
 </gcds-top-nav>
 `.replace(/\s\snull\n/g, '');
 
 export const Default = Template.bind({});
 Default.args = {
   label: 'Top navigation',
-  align: 'end',
+  alignment: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
@@ -150,7 +156,7 @@ Default.args = {
 export const Home = Template.bind({});
 Home.args = {
   label: 'Top navigation',
-  align: 'end',
+  alignment: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
@@ -159,7 +165,7 @@ Home.args = {
 export const End = Template.bind({});
 End.args = {
   label: 'Top navigation',
-  align: 'end',
+  alignment: 'end',
   home: '',
   lang: 'en',
   default: '',
@@ -168,7 +174,7 @@ End.args = {
 export const Start = Template.bind({});
 Start.args = {
   label: 'Top navigation',
-  align: 'start',
+  alignment: 'start',
   home: '',
   lang: 'en',
   default: '',
@@ -177,7 +183,7 @@ Start.args = {
 export const Props = Template.bind({});
 Props.args = {
   label: 'Top navigation',
-  align: 'end',
+  alignment: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',
@@ -186,7 +192,7 @@ Props.args = {
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   label: 'Top navigation',
-  align: 'end',
+  alignment: 'end',
   home: 'GC Notify',
   lang: 'en',
   default: '',

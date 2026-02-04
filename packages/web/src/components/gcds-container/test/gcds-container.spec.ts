@@ -111,20 +111,20 @@ describe('gcds-container', () => {
   });
 
   /**
-   * Align tests
+   * Alignment tests
    */
 
-  it('renders container aligned start', async () => {
+  it('renders container alignment start', async () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container size="lg" align="start" />
+        <gcds-container size="lg" alignment="start" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container size="lg" align="start">
+      <gcds-container size="lg" alignment="start">
         <mock:shadow-root>
-          <div class="gcds-container size-lg align-start">
+          <div class="gcds-container size-lg alignment-start">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -132,17 +132,17 @@ describe('gcds-container', () => {
     `);
   });
 
-  it('renders container aligned center', async () => {
+  it('renders container alignment center', async () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container size="lg" align="center" />
+        <gcds-container size="lg" alignment="center" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container size="lg" align="center">
+      <gcds-container size="lg" alignment="center">
         <mock:shadow-root>
-          <div class="gcds-container size-lg align-center">
+          <div class="gcds-container size-lg alignment-center">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -150,17 +150,17 @@ describe('gcds-container', () => {
     `);
   });
 
-  it('renders container aligned end', async () => {
+  it('renders container alignment end', async () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container size="lg" align="end" />
+        <gcds-container size="lg" alignment="end" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container size="lg" align="end">
+      <gcds-container size="lg" alignment="end">
         <mock:shadow-root>
-          <div class="gcds-container size-lg align-end">
+          <div class="gcds-container size-lg alignment-end">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -267,15 +267,15 @@ describe('gcds-container', () => {
     `);
   });
 
-  it('renders container layout and ignores align', async () => {
+  it('renders container layout and ignores alignment', async () => {
     const { root } = await newSpecPage({
       components: [GcdsContainer],
       html: `
-        <gcds-container layout="page" align="center" />
+        <gcds-container layout="page" alignment="center" />
       `,
     });
     expect(root).toEqualHtml(`
-      <gcds-container layout="page" align="center">
+      <gcds-container layout="page" alignment="center">
         <mock:shadow-root>
           <div class="gcds-container size-full layout-page">
             <slot></slot>
