@@ -472,7 +472,8 @@ Vous devrez mettre à jour vos dépendances de projet pour utiliser les nouveaux
 | `@cdssnc/gcds-components-react-ssr` | *Supprimé* (voir [À supprimer : paquet SSR React](#à-supprimer--paquet-react-ssr-le-cas-échéant) ) |
 | `@cdssnc/gcds-components-angular`   | `@gcds-core/components-angular`                                                                    |
 
-> [!IMPORTANT] Vous devrez mettre à jour toutes les références aux anciens noms de paquet dans votre code base avec les nouveaux noms de paquet indiqués ci-dessus. Remplacez tous les chemins d’accès `@cdssnc/gcds-components*` par les chemins correspondants `@gcds-core/components*`. Assurez-vous d’examiner votre code base en entier afin de cerner toute autre référence aux anciens noms de paquet et les mettre à jour au besoin.
+> [!IMPORTANT] 
+> Vous devrez mettre à jour toutes les références aux anciens noms de paquet dans votre code base avec les nouveaux noms de paquet indiqués ci-dessus. Remplacez tous les chemins d’accès `@cdssnc/gcds-components*` par les chemins correspondants `@gcds-core/components*`. Assurez-vous d’examiner votre code base en entier afin de cerner toute autre référence aux anciens noms de paquet et les mettre à jour au besoin.
 
 Pour commencer, modifiez vos importations de style et de scripts afin qu’elle vise les nouveaux chemins d’accès des paquets.
 
@@ -504,7 +505,8 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 ## Éléments supprimés et changements non rétrocompatibles aux API de composants
 
-> [!IMPORTANT] Cette section répertorie tous les changements non rétrocompatibles et les API supprimées. Examinez attentivement les modifications apportées à chaque composant et mettez à jour votre code base en conséquence.
+> [!IMPORTANT] 
+> Cette section répertorie tous les changements non rétrocompatibles et les API supprimées. Examinez attentivement les modifications apportées à chaque composant et mettez à jour votre code base en conséquence.
 [Link](#bannière-de-vérification-gcds-verify-banner)
 
 | Composant (HTML/Angular/Vue)                                                   |                                                     | Ce qui a changé (supprimé)       | Type      |
@@ -876,7 +878,8 @@ Nouvelles propriétés&nbsp;:
 
 ## À supprimer : paquet React SSR (le cas échéant)
 
-> [!IMPORTANT] Si vous utilisez le paquet React SSR (@cdssnc/gcds-Components-react-ssr), lisez attentivement cette section.
+> [!IMPORTANT] 
+> Si vous utilisez le paquet React SSR (@cdssnc/gcds-Components-react-ssr), lisez attentivement cette section.
 
 Dans la phase alpha, nous avons fourni un paquet consacré à l’intégration de React SSR : `@cdssnc/gcds-components-react-ssr`. En raison de sa nature expérimentale et des difficultés liées à sa maintenance, nous avons décidé de retirer ce paquet de la version stable.
 
