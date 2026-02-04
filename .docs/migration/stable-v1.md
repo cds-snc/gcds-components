@@ -1,5 +1,5 @@
 # Migrating from alpha to stable v1
-[Français](./fr/migration/stable-v1.md#migration-vers-la-version-stable-v1)
+[Français](#migration-de-la-version-alpha-à-la-v1-stable)
 
 This document helps you migrate from older versions of `@cdssnc/gcds-components` to the stable `@gcds-core/components` package. Each migration path is listed below. Follow the section that matches your current version.
 
@@ -429,3 +429,493 @@ Address the breaking change in 0.28.0, which is detailed in the [0.28 release no
 
 # Versions older than 0.27.0
 For a complete list of changes in each version, refer to the archived [CHANGELOG](../../archived/CHANGELOG.md) file.
+
+---
+
+# Migration de la version alpha à la v1 stable
+
+[English](#migrating-from-alpha-to-stable-v1)
+
+Ce document vous aidera à migrer des versions antérieures de `@cdssnc/gcds-components` vers le paquet stable `@gcds-core/components`. Chaque parcours de migration est indiqué ci-dessous. Suivez la section qui correspond à votre version actuelle.
+
+## Parcours de migration
+
+- **[0.39.0 ou ultérieure → 1.0.0](#migrating-from-0390-or-higher-to-100)** :star:
+- [0.38.0 → 1.0.0](#migrating-from-0380-to-100)
+- [0.34.0 → 1.0.0](#migrating-from-0340-to-100)
+- [0.27.0 → 1.0.0](#migration-from-0270-to-100)
+- [Versions antérieures à 0.27.0 → 1.0.0](#versions-older-than-0270)
+
+---
+
+# Migration de la version 0.39.0 ou d’une version ultérieure vers la version 1.0.0
+
+Cette section traite des changements non rétrocompatibles introduits dans le cadre **du travail d’harmonisation des API de composants** en vue de publier la **version stable `v1.0.0`**.
+
+Les changements sont regroupés dans les catégories suivantes :
+
+1. [Mettre à jour les paquets et chemins d’accès](#update-your-packages-and-paths)
+2. [Éléments supprimés et changements non rétrocompatibles aux API de composants](#component-api-removals-and-breaking-changes)
+3. [Nouvelles propriétés et fonctionnalités](#new-properties-and-features)
+4. [À supprimer : paquet SSR React](#react-ssr-package-removal)
+5. [Importation des polices de base (si vous n’utilisez pas les raccourcis CSS)](#base-font-import-if-not-using-css-shortcuts)
+
+## Mettre à jour les paquets et chemins d’accès
+
+Vous devrez mettre à jour vos dépendances de projet pour utiliser les nouveaux paquets stables. Désinstallez les anciens paquets et installez les nouveaux.
+
+| Ancien paquet| Nouveau paquet|
+|----------|----------|
+| `@cdssnc/gcds-components`| `@gcds-core/components`|
+| `@cdssnc/gcds-components-react`| `@gcds-core/components-react`|
+| `@cdssnc/gcds-components-vue`| `@gcds-core/components-vue`|
+| `@cdssnc/gcds-components-react-ssr`| *Supprimé* (voir [À supprimer : paquet SSR React](#react-ssr-package-removal) )|
+| `@cdssnc/gcds-components-angular`| `@gcds-core/components-angular`|
+
+> [!IMPORTANT] Vous devrez mettre à jour toutes les références aux anciens noms de paquet dans votre code base avec les nouveaux noms de paquet indiqués ci-dessus. Remplacez tous les chemins d’accès `@cdssnc/gcds-components*` par les chemins correspondants `@gcds-core/components*`. Assurez-vous d’examiner votre code base en entier afin de cerner toute autre référence aux anciens noms de paquet et les mettre à jour au besoin.
+
+Pour commencer, modifiez vos importations de style et de scripts afin qu’elle vise les nouveaux chemins d’accès des paquets.
+
+```html
+<!-- GC Design System -->
+<link
+  rel="stylesheet"
+  href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
+></script>
+```
+
+à
+
+```html
+<!-- GC Design System -->
+<link
+  rel="stylesheet"
+  href="/node_modules/@gcds-core/components/dist/gcds/gcds.css"
+/>
+<script
+  type="module"
+  src="/node_modules/@gcds-core/components/dist/gcds/gcds.esm.js"
+></script>
+```
+
+## Éléments supprimés et changements non rétrocompatibles aux API de composants
+
+> [!IMPORTANT] Cette section répertorie tous les changements non rétrocompatibles et les API supprimées. Examinez attentivement les modifications apportées à chaque composant et mettez à jour votre code base en conséquence.
+
+| Composant (HTML/Angular/Vue)| | Ce qui a changé (supprimé)| Type|
+|----------|----------|----------|----------|
+| [Carte](#card-gcds-card)| [React](#card-gcdscard)| Valeur `a` pour `card-title-tag`| Valeur|
+| [Conteneur](#container-gcds-container)| [React](#container-gcdscontainer)| `centered`, `main-container`| Propriété|
+| [Pied de page](#footer-gcds-footer)| [React](#footer-gcdsfooter)| `wordmark-variant`| Propriété|
+| [Grille](#grid-gcds-grid)| [React](#grid-gcdsgrid)| `centered`| Propriété|
+| [En-tête](#header-gcds-header)| [React](#header-gcdsheader)| `signature-variant`| Propriété|
+| [Lien](#link-gcds-link)| [React](#link-gcdslink)| `variant`| Propriété|
+| [Avis](#notice-gcds-notice)| [React](#notice-gcdsnotice)| `type`| Propriété|
+| [Bannière de phase](#phasebanner-gcds-phase-banner)| [React](#phasebanner-gcdsphasebanner)| `<gcds-phase-banner>`| Composant|
+| [Zone de texte](#textarea-gcds-textarea)| [React](#textarea-gcdstextarea)| `character-count`| Propriété|
+| [Barre de navigation supérieure](#topnav-gcds-top-nav)| [React](#topnav-gcdstopnav)| `alignment`| Propriété|
+| [Bannière de vérification](#verifybanner-gcds-verify-banner)| [React](#verifybanner-gcdsverifybanner)| `<gcds-verify-banner>`| Composant|
+
+---
+
+### Carte `<gcds-card>`
+
+**❌ Valeur supprimée :** valeur `a` de la propriété `card-title-tag`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Retirer `card-title-tag="a"` de tous les composants `<gcds-card>`.
+  - Par défaut, le composant Carte utilise une balise d’ancrage (`<gcds-link>`). Il n’est donc pas nécessaire de définir cette propriété.
+
+---
+
+### Conteneur `<gcds-container>`
+
+**❌ Propriétés supprimées :** `centered`, `main-container`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `centered` → à remplacer par `align="center"`
+- `main-container` **ou** `size="xl" main-container` → à remplacer par `layout="page"`
+  - De plus, ajoutez `tag="main"` s’il s’agit du conteneur de contenu principal.
+
+---
+
+### Pied de page `<gcds-footer>`
+
+**❌ Propriétés supprimées :** `wordmark-variant`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez l’attribut `wordmark-variant` de tous les composants `<gcds-footer>`.
+  - L’utilisation de la variante <code>white</code> du composant <code>gcds-signature</code> à l’intérieur du composant <code>gcds-footer</code> crée des problèmes de contraste des couleurs. Retirer l’option d’utiliser la variante <code>white</code> du composant <code>gcds-signature</code> assure une meilleure accessibilité intégrée pour le composant <code>gcds-footer</code>.
+
+---
+
+### Grille `<gcds-grid>`
+
+**❌ Propriétés supprimées :** `centered`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `centered` → à remplacer par `align="center"`
+
+---
+
+### En-tête `<gcds-header>`
+
+**❌ Propriétés supprimées :** `signature-variant`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez l’attribut `signature-variant` de tous les composants `<gcds-header>`.
+  - L’utilisation de la variante <code>white</code> du composant <code>gcds-signature</code> à l’intérieur du composant <code>gcds-header</code> affiche le composant <code>gcds-signature</code> en blanc tout en affichant le reste des éléments intégrés dans leur palette de couleurs normale. Cela crée une divergence entre la signature et le reste des composants. Si un développeur ou une développeuse doit utiliser une signature <code>white</code>, la signature peut quand même être passée dans l’emplacement de la <code>signature</code>.
+
+---
+
+### Lien `<gcds-link>`
+
+**❌ Propriétés supprimées :** `variant`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `variant` → à remplacer par `link-role`
+
+---
+
+### Avis `<gcds-notice>`
+
+**❌ Propriétés supprimées :** `type`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `type` → à remplacer par `notice-role`
+
+---
+
+### Bannière de phase `<gcds-phase-banner>`
+
+**❌ Composant supprimé :** `<gcds-phase-banner>`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez toute utilisation de `<gcds-phase-banner>` dans votre code base.
+  - Ce composant n’a jamais été officiellement documenté. Le supprimer aide à clarifier le code base , évitant ainsi toute confusion potentielle ou utilisation accidentelle à l’avenir.
+
+---
+
+### Zone de texte `<gcds-textarea>`
+
+**❌ Propriétés supprimées :** `character-count`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `character-count` → à remplacer par `maxlength`
+  - De plus, ajoutez l’attribut `hide-limit` si vous souhaitez masquer le compteur de caractères.
+
+---
+
+### Barre de navigation supérieure `<gcds-top-nav>`
+
+**❌ Propriétés supprimées :** `alignment`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `alignment="left"` → utilisez `align="end"`
+- `alignment="right"` → utilisez `align="start"`
+- `alignment="center"`  → supprimez l’attribut (la valeur *center* n’est plus prise en charge; la valeur par défaut est *left-aligned*)
+  - Les en-têtes centrés créent des problèmes d’utilisabilité et de conception. Ils ajoutent un troisième point focal visuel, s’appuient sur une symétrie parfaite difficile à maintenir—en particulier avec de longs titres ou des fenêtres rétrécissantes—et offrent des avantages incertains. Le fait de ne fournir que des options alignées à gauche ou à droite permet de maintenir des conventions de conception cohérentes et recherchées dans l’ensemble du GC , tandis que l’ajout d’une troisième option introduit une fragmentation inutile.
+
+---
+
+### Bannière de vérification `<gcds-verify-banner>`
+
+**❌ Composant supprimé :** `<gcds-verify-banner>`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez toute utilisation de `<gcds-verify-banner>` dans votre code base.
+  - Ce composant n’a jamais été officiellement documenté. Le supprimer aide à clarifier le code base, évitant ainsi toute confusion potentielle ou utilisation accidentelle à l’avenir.
+
+---
+
+> **Passer à** [Nouvelles propriétés et fonctionnalités](#new-properties-and-features)
+
+---
+
+#### Composants React \<Gcds*>
+
+---
+
+### Carte `<GcdsCard>`
+
+**❌ Valeur supprimée :** valeur `a` de la propriété `cardTitleTag`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Retirer `cardTitleTag="a"` de tous les composants `<GcdsCard>`.
+  - Par défaut, le composant Carte utilise une balise d’ancrage (`<GcdsLink>`). Il n’est donc pas nécessaire de définir cette propriété.
+
+---
+
+### Conteneur `<GcdsContainer>`
+
+**❌ Propriétés supprimées :** `centered`, `mainContainer`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `centered` → à remplacer par `align="center"`
+- `mainContainer={true}` **ou** `size="xl" mainContainer={true}` → à remplacer par `layout="page"`
+  - De plus, ajoutez `tag="main"` s’il s’agit du conteneur de contenu principal.
+  -
+
+---
+
+### Pied de page `<GcdsFooter>`
+
+**❌ Propriétés supprimées :** `wordmarkVariant`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez l’attribut `wordmarkVariant` de tous les composants `<GcdsFooter>`.
+  - L’utilisation de la variante <code>white</code> du composant <code>GcdsSignature</code> à l’intérieur du composant <code>GcdsFooter</code> crée des problèmes de contraste des couleurs. Retirer l’option d’utiliser la variante <code>white</code> du composant <code>GcdsSignature</code> assure une meilleure accessibilité intégrée pour le composant <code>GcdsFooter</code>.
+
+---
+
+### Grille `<GcdsGrid>`
+
+**❌ Propriétés supprimées :** `centered`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `centered={true}` → à remplacer par `align="center"`
+
+---
+
+### En-tête `<GcdsHeader>`
+
+**❌ Propriétés supprimées :** `signatureVariant`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez l’attribut `signatureVariant` de tous les composants `<GcdsHeader>`.
+  - L’utilisation de la variante <code>white</code> du composant <code>GcdsSignature</code> à l’intérieur du composant <code>GcdsHeader</code> affiche le composant <code>GcdsSignature</code> en blanc tout en affichant le reste des éléments intégrés dans leur palette de couleurs normale. Cela crée une divergence entre la signature et le reste des composants. Si un développeur ou une développeuse doit utiliser une signature <code>white</code>, la signature peut quand même être passée dans la propriété <code>signature</code>.
+
+---
+
+### Lien `<GcdsLink>`
+
+**❌ Propriétés supprimées :** `variant`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `variant` → à remplacer par `linkRole`
+
+---
+
+### Avis `<GcdsNotice>`
+
+**❌ Propriétés supprimées :** `type`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `type` → à remplacer par `noticeRole`
+
+---
+
+### Bannière de phase `<GcdsPhaseBanner>`
+
+**❌ Composant supprimé :** `<GcdsPhaseBanner>`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez toute utilisation de `<GcdsPhaseBanner>` dans votre code base.
+  - Ce composant n’a jamais été officiellement documenté. Le supprimer aide à clarifier le code base , évitant ainsi toute confusion potentielle ou utilisation accidentelle à l’avenir.
+
+---
+
+### Zone de texte `<GcdsTextarea>`
+
+**❌ Propriétés supprimées :** `characterCount`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `characterCount` → à remplacer par `maxLength`
+  - De plus, ajoutez la propriété `hideLimit` si vous souhaitez masquer le compteur de caractères.
+
+---
+
+### Barre de navigation supérieure `<GcdsTopNav>`
+
+**❌ Propriétés supprimées :** `alignment`
+
+**👉Mesures à prendre&nbsp;:**
+
+- `alignment="left"` → utilisez `align="end"`
+- `alignment="right"` → utilisez `align="start"`
+- `alignment="center"`  → supprimez l’attribut (la valeur *center* n’est plus prise en charge; la valeur par défaut est *left-aligned*)
+  - Les en-têtes centrés créent des problèmes d’utilisabilité et de conception. Ils ajoutent un troisième point focal visuel, s’appuient sur une symétrie parfaite difficile à maintenir—en particulier avec de longs titres ou des fenêtres rétrécissantes—et offrent des avantages incertains. Le fait de ne fournir que des options alignées à gauche ou à droite permet de maintenir des conventions de conception cohérentes et recherchées dans l’ensemble du GC , tandis que l’ajout d’une troisième option introduit une fragmentation inutile.
+
+---
+
+### Bannière de vérification `<GcdsVerifyBanner>`
+
+**❌ Composant supprimé :** `<GcdsVerifyBanner>`
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez toute utilisation de `<GcdsVerifyBanner>` dans votre code base.
+  - Ce composant n’a jamais été officiellement documenté. Le supprimer aide à clarifier le code base, évitant ainsi toute confusion potentielle ou utilisation accidentelle à l’avenir.
+
+---
+
+## Nouvelles propriétés et fonctionnalités
+
+Ce tableau est un index de toutes les nouvelles propriétés et fonctionnalités. Cliquez sur un composant pour accéder aux instructions de migration détaillées.
+
+| Composant| Nouvelle API/propriété/fonctionnalité|
+|----------|----------|
+| [Carte](#card-gcds-card-1)| `target`, `rel`|
+| [Cases à cocher](#checkboxes-gcds-checkboxes-1)| `autofocus`, `form`, `hideLabel`, `hideLegend`, `validity`|
+| [Champ de date](#dateinput-gcds-date-input-1)| `autofocus`, `form`, `max`, `min`, `validity`, `<component>-id`|
+| [Téléverseur de fichiers](#fileuploader-gcds-file-uploader-1)| `autofocus`, `form`, `hideLabel`, `form`, `validity`|
+| [Titre](#heading-gcds-heading-1)| `headingRole`|
+| [Boutons radio](#radios-gcds-radios-1)| `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id`|
+| [Sélection](#select-gcds-select-1)| `autofocus`, `form`, `hideLabel`, `validity`|
+| [Zone de texte](#textarea-gcds-textarea-1)| `hideLimit`|
+
+### Carte `<gcds-card>`
+
+Nouvelles propriétés&nbsp;:
+
+| Propriété| Attribut| Description| Type| Curseur par défaut|
+|----------|----------|----------|----------|----------|
+| `target`| `target`| Indique où ouvrir le document lié (p. ex., `_blank`, `_self`)| chaîne| _aucune_|
+| `rel`| `rel`| Indique la relation entre l’objet cible et le lien (p. ex., `noopener`, `noreferrer`).| chaîne| _aucune_|
+
+### Cases à cocher `<gcds-checkboxes>`
+
+Nouvelles propriétés&nbsp;:
+
+| Propriété| Attribut| Description| Type| Curseur par défaut|
+|----------|----------|----------|----------|----------|
+| `autofocus`| `autofocus`| Si \<true>, la case à cocher sera ciblée lors du rendu du composant.| `boolean`| `undefined`|
+| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
+| `hideLabel`| `hide-label`| Pour une seule case à cocher, indique si l’étiquette est masquée visuellement ou non.| booléen| false|
+| `hideLegend`| `hide-legend`| Pour les groupes de cases à cocher, indique si la légende est masquée visuellement ou non.| booléen| false|
+| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
+
+### Champ de date `<gcds-date-input>`
+
+Nouvelles propriétés&nbsp;:
+
+| Propriété| Attribut| Description| Type| Curseur par défaut|
+|----------|----------|----------|----------|----------|
+| `autofocus`| `autofocus`| Si \<true>, le téléverseur de fichier sera ciblé lors du rendu du composant.| `boolean`| `undefined`|
+| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
+| `max`| `max`| Date maximale possible| chaîne| _aucune_|
+| `min`| `min`| Date minimale possible| chaîne| _aucune_|
+| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
+| `dateInputId`| `date-input-id`| Définit un ID unique pour le composant| chaîne| _aucune_|
+
+### Téléverseur de fichiers `<gcds-file-uploader>`
+
+Nouvelles propriétés&nbsp;:
+
+| Propriété| Attribut| Description| Type| Curseur par défaut|
+|----------|----------|----------|----------|----------|
+| `hideLabel`| `hide-label`| Masque visuellement l’étiquette| booléen| false|
+| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
+| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
+
+### Titre `<gcds-heading>`
+
+Nouvelles propriétés&nbsp;:
+
+| Propriété| Attribut| Description| Type| Curseur par défaut|
+|----------|----------|----------|----------|----------|
+| `headingRole`| `heading-role`| Définit le rôle ARIA pour le titre| chaîne| _aucune_|
+
+### Boutons radio `<gcds-radios>`
+
+Nouvelles propriétés&nbsp;:
+
+| Propriété| Attribut| Description| Type| Curseur par défaut|
+|----------|----------|----------|----------|----------|
+| `autofocus`| `autofocus`| Si \<true>, le champ de saisie sera ciblé lors du rendu du composant.| `boolean`| `undefined`|
+| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
+| `hideLegend`| `hide-legend`| Masque visuellement la légende| booléen| false|
+| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
+| `radiosId`| `radios-id`| Définit un ID unique pour le composant| chaîne| _aucune_|
+
+### Sélection `<gcds-select>`
+
+Nouvelles propriétés&nbsp;:
+
+| Propriété| Attribut| Description| Type| Curseur par défaut|
+|----------|----------|----------|----------|----------|
+| `autofocus`| `autofocus`| Si \<true>, la sélection sera ciblée lors du rendu du composant.| `boolean`| `undefined`|
+| `form`| `form`| Associe le composant à un formulaire.| chaîne| _aucune_|
+| `hideLabel`| `hide-label`| Masque visuellement l’étiquette| booléen| false|
+| `validity`| `validity`| Définit l’état de validité| chaîne| _aucune_|
+
+### Zone de texte `<gcds-textarea>`
+
+Nouvelles propriétés&nbsp;:
+
+| Propriété| Attribut| Description| Type| Curseur par défaut|
+|----------|----------|----------|----------|----------|
+| `hideLimit`| `hide-limit`| Masque le compteur de caractères| booléen| false|
+
+---
+
+## À supprimer : paquet React SSR (le cas échéant)
+
+> [!IMPORTANT] Si vous utilisez le paquet React SSR (@cdssnc/gcds-Components-react-ssr), lisez attentivement cette section.
+
+Dans la phase alpha, nous avons fourni un paquet consacré à l’intégration de React SSR : `@cdssnc/gcds-components-react-ssr`. En raison de sa nature expérimentale et des difficultés liées à sa maintenance, nous avons décidé de retirer ce paquet de la version stable.
+
+Stencil, la technologie sous-jacente des composants de Système de design GC, prend en charge SSR de façon native. Nous recommandons d’utiliser les capacités SSR natives de Stencil pour les applications React.
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez le paquet `@cdssnc/gcds-components-react-ssr` de vos dépendances de projet.
+  - Il n’y a pas de solution de rechange pour l’instant, mais nous travaillons activement à améliorer la prise en charge de SSR dans les prochaines versions.
+
+---
+
+### Importation des polices de base (si vous n’utilisez pas les raccourcis CSS)
+
+Si vous n’utilisez pas les raccourcis CSS, vous deviez auparavant inclure manuellement les polices Google dans votre projet pour garantir une typographie correcte. Nous avons ajouté l’importation des polices Google de base directement dans le paquet de composantes.
+
+**👉Mesures à prendre&nbsp;:**
+
+- Supprimez toute importation manuelle des polices Google de votre projet.
+
+# Migration de la version 0.38.0 à 1.0.0
+
+Pour migrer à partir de la version 0.38.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.39.0.
+
+Prenez en charge le changement non rétrocompatible dans la version 0.39.0, décrit dans les [notes de version 0.39](../../archived/CHANGELOG.md#0390). Une propriété (`placeholder`) a été supprimée du composant `<gcds-input>`.
+
+**Prochaines étapes**: suivez la section[0.39.0 ou ultérieure → 1.0.0](#migrating-from-0390-or-higher-to-100) ci-dessus pour plus d’instructions.
+
+# Migration de la version 0.34.0 à 1.0.0
+
+Pour migrer à partir de la version 0.34.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.35.0. Prenez en charge le changement non rétrocompatible dans la version 0.35.0, décrit dans les [notes de version 0.35](../../archived/CHANGELOG.md#0350).
+
+**Prochaines étapes**: suivez la section[0.38.0 ou ultérieure → 1.0.0](#migrating-from-0380-to-100) ci-dessus pour plus d’instructions.
+
+# Migration de la version 0.27.0 à 1.0.0
+
+Pour migrer à partir de la version 0.27.0, vous devez d’abord effectuer une mise à niveau vers au moins la version 0.28.0. Prenez en charge le changement non rétrocompatible dans la version 0.28.0, décrit dans les [notes de version 0.28](../../archived/CHANGELOG.md#0280).
+
+**Prochaines étapes**: suivez la section[0.34.0 ou ultérieure → 1.0.0](#migrating-from-0340-to-100) ci-dessus pour plus d’instructions.
+
+# Versions antérieures à 0.27.0
+
+Pour obtenir une liste complète des changements dans chaque version, reportez-vous au fichier [CHANGELOG](../../archived/CHANGELOG.md) archivé.
