@@ -277,10 +277,12 @@ export class GcdsTextarea {
     if (this.shadowElement.value !== this.lastInputValue) {
       this.lastInputValue = this.shadowElement.value;
       setTimeout(() => {
-        this.el.shadowRoot.querySelector(
+        const srCount = this.el.shadowRoot.querySelector(
           `#textarea__sr-count-${this.textareaId}`,
-        ).textContent =
-          `${i18n[this.lang].characters.left}${this.value == undefined ? this.maxlength : this.maxlength - this.value.length}`;
+        );
+        if (srCount) {
+          srCount.textContent = `${i18n[this.lang].characters.left}${this.value === undefined ? this.maxlength : this.maxlength - this.value.length}`;
+        }
       }, 1500);
     }
   }
