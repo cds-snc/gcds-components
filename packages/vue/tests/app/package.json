@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@gcds-core/components-vue": "file:../../../vue",
-    "@gcds-core/css-shortcuts": "^1.0.1",
+    "@gcds-core/css-shortcuts": "^1.1.0",
     "vue": "^3.4.21",
     "vue-router": "^4.6.3"
   },
