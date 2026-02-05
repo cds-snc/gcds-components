@@ -1,20 +1,70 @@
 name: Publish packages
 on:
   workflow_dispatch:
+    inputs:
+      job_to_run:
+        description: 'Which job to run'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - publish-web
+          - publish-react-angular-vue-ssr
   push:
-    branches:
-      - main
-    paths:
-      - '.release-please-manifest.json'
+    tags:
+      - '@gcds-core/components-*'
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
+  check-version-exists:
+    name: Check if web component version exists on NPM
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.job_to_run == 'publish-react-angular-vue-ssr')
+    outputs:
+      version-exists: ${{ steps.check.outputs.exists }}
+      version: ${{ steps.get-version.outputs.version }}
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Get package version
+        id: get-version
+        working-directory: ./packages/web
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Package version: $VERSION"
+
+      - name: Check if version exists on NPM
+        id: check
+        run: |
+          VERSION="${{ steps.get-version.outputs.version }}"
+          if npm view @gcds-core/components@$VERSION version > /dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Version $VERSION already exists on NPM"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Version $VERSION does not exist on NPM"
+          fi
+
   publish-web:
     name: Publish @gcds-core/components
     runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_dispatch' && (github.event.inputs.job_to_run == 'all' || github.event.inputs.job_to_run == 'publish-web'))
     strategy:
       fail-fast: false
       matrix:
@@ -64,8 +114,14 @@ jobs:
 
   publish-react-angular-vue-ssr:
     name: Publish @gcds-core/components-react, @gcds-core/components-angular, @gcds-core/components-vue
-    needs: publish-web
     runs-on: ubuntu-latest
+    needs: [publish-web, check-version-exists]
+    if: |
+      always() && needs.publish-web.result != 'failure' && (
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.job_to_run == 'publish-react-angular-vue-ssr' && needs.check-version-exists.outputs.version-exists == 'true') ||
+        (github.event_name == 'push' && needs.publish-web.result == 'success') ||
+        (github.event_name == 'push' && needs.publish-web.result == 'skipped' && needs.check-version-exists.outputs.version-exists == 'true')
+      )
     strategy:
       fail-fast: false
       matrix:
