@@ -84,7 +84,7 @@ to
 | [Notice](#notice-gcds-notice)                    | [React](#notice-gcdsnotice)             | `type`                         | Property  |
 | [PhaseBanner](#phasebanner-gcds-phase-banner)    | [React](#phasebanner-gcdsphasebanner)   | `<gcds-phase-banner>`          | Component |
 | [Textarea](#textarea-gcds-textarea)              | [React](#textarea-gcdstextarea)         | `character-count`              | Property  |
-| [TopNav](#topnav-gcds-top-nav)                   | [React](#topnav-gcdstopnav)             | `alignment`                    | Property  |
+| [TopNav](#topnav-gcds-top-nav)                   | [React](#topnav-gcdstopnav)             | values for `alignment`         | Value     |
 | [VerifyBanner](#verifybanner-gcds-verify-banner) | [React](#verifybanner-gcdsverifybanner) | `<gcds-verify-banner>`         | Component |
 
 ---
@@ -102,7 +102,7 @@ to
 **❌ Removed properties:** `centered`, `main-container`
 
 **👉 Action required:**
-- `centered` → replace with `align="center"`
+- `centered` → replace with `alignment="center"`
 - `main-container` **or** `size="xl" main-container` → replace with `layout="page"`
   - Additionally, add `tag="main"` if this is the main content container.
 
@@ -121,7 +121,7 @@ to
 **❌ Removed properties:** `centered`
 
 **👉 Action required:**
-- `centered` → replace with `align="center"`
+- `centered` → replace with `alignment="center"`
 
 ---
 
@@ -169,11 +169,11 @@ to
 ---
 
 ### TopNav `<gcds-top-nav>`
-**❌ Removed properties:** `alignment`
+**❌ Removed property values for alignment:** `left` | `right` | `center`
 
 **👉 Action required:**
-- `alignment="left"` → use `align="end"`
-- `alignment="right"` → use `align="start"`
+- `alignment="left"` → use `alignment="start"`
+- `alignment="right"` → use `alignment="end"`
 - `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
   - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
 
@@ -207,7 +207,7 @@ to
 **❌ Removed properties:** `centered`, `mainContainer`
 
 **👉 Action required:**
-- `centered` → replace with `align="center"`
+- `centered` → replace with `alignment="center"`
 - `mainContainer={true}` **or** `size="xl" mainContainer={true}` → replace with `layout="page"`
   - Additionally, add `tag="main"` if this is the main content container.
   - 
@@ -226,7 +226,7 @@ to
 **❌ Removed properties:** `centered`
 
 **👉 Action required:**
-- `centered={true}` → replace with `align="center"`
+- `centered={true}` → replace with `alignment="center"`
 
 ---
 
@@ -274,8 +274,8 @@ to
 **❌ Removed properties:** `alignment`
 
 **👉 Action required:**
-- `alignment="left"` → use `align="end"`
-- `alignment="right"` → use `align="start"`
+- `alignment="left"` → use `alignment="start"`
+- `alignment="right"` → use `alignment="end"`
 - `alignment="center"` → remove the attribute (center is no longer supported; default is left-aligned)
   - Center-aligned headers create usability and design issues. They add a third visual focal point, rely on perfect symmetry that’s difficult to maintain—especially with long titles or shrinking viewports—and offer unclear benefits. Providing only left- or right-aligned options helps maintain consistent, opinionated design conventions across the GC, while adding a third option introduces unnecessary fragmentation.
 
@@ -541,7 +541,7 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 **👉Mesures à prendre&nbsp;:**
 
-- `centered` → à remplacer par `align="center"`
+- `centered` → à remplacer par `alignment="center"`
 - `main-container` **ou** `size="xl" main-container` → à remplacer par `layout="page"`
   - De plus, ajoutez `tag="main"` s’il s’agit du conteneur de contenu principal.
 
@@ -564,7 +564,7 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 **👉Mesures à prendre&nbsp;:**
 
-- `centered` → à remplacer par `align="center"`
+- `centered` → à remplacer par `alignment="center"`
 
 ---
 
@@ -627,8 +627,8 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 **👉Mesures à prendre&nbsp;:**
 
-- `alignment="left"` → utilisez `align="end"`
-- `alignment="right"` → utilisez `align="start"`
+- `alignment="left"` → utilisez `alignment="start"`
+- `alignment="right"` → utilisez `alignment="end"`
 - `alignment="center"`  → supprimez l’attribut (la valeur *center* n’est plus prise en charge; la valeur par défaut est *left-aligned*)
   - Les en-têtes centrés créent des problèmes d’utilisabilité et de conception. Ils ajoutent un troisième point focal visuel, s’appuient sur une symétrie parfaite difficile à maintenir—en particulier avec de longs titres ou des fenêtres rétrécissantes—et offrent des avantages incertains. Le fait de ne fournir que des options alignées à gauche ou à droite permet de maintenir des conventions de conception cohérentes et recherchées dans l’ensemble du GC , tandis que l’ajout d’une troisième option introduit une fragmentation inutile.
 
@@ -670,7 +670,7 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 **👉Mesures à prendre&nbsp;:**
 
-- `centered` → à remplacer par `align="center"`
+- `centered` → à remplacer par `alignment="center"`
 - `mainContainer={true}` **ou** `size="xl" mainContainer={true}` → à remplacer par `layout="page"`
   - De plus, ajoutez `tag="main"` s’il s’agit du conteneur de contenu principal.
   -
@@ -694,7 +694,7 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 **👉Mesures à prendre&nbsp;:**
 
-- `centered={true}` → à remplacer par `align="center"`
+- `centered={true}` → à remplacer par `alignment="center"`
 
 ---
 
@@ -757,8 +757,8 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 **👉Mesures à prendre&nbsp;:**
 
-- `alignment="left"` → utilisez `align="end"`
-- `alignment="right"` → utilisez `align="start"`
+- `alignment="left"` → utilisez `alignment="start"`
+- `alignment="right"` → utilisez `alignment="end"`
 - `alignment="center"`  → supprimez l’attribut (la valeur *center* n’est plus prise en charge; la valeur par défaut est *left-aligned*)
   - Les en-têtes centrés créent des problèmes d’utilisabilité et de conception. Ils ajoutent un troisième point focal visuel, s’appuient sur une symétrie parfaite difficile à maintenir—en particulier avec de longs titres ou des fenêtres rétrécissantes—et offrent des avantages incertains. Le fait de ne fournir que des options alignées à gauche ou à droite permet de maintenir des conventions de conception cohérentes et recherchées dans l’ensemble du GC , tandis que l’ajout d’une troisième option introduit une fragmentation inutile.
 
