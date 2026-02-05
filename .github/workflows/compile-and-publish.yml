@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '.release-please-manifest.json'
 
 permissions:
   id-token: write
