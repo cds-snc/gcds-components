@@ -1,11 +1,17 @@
+/* Import GC Fonts (Lato + Noto Sans) */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+Mono:wght@100..900&display=swap');
+
 /* Import GC Design System Tokens */
-@import '~@cdssnc/gcds-tokens/build/web/css/tokens.css';
+@import '~@gcds-core/tokens/build/web/css/tokens.css';
 
 /* Import GC Design System Icon Font */
 @font-face {
   font-family: 'gcds-icons';
-  src: url("https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-fonts@0.2.2/icons/gcds-icons.ttf") format("truetype"),
-        url("https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-fonts@0.2.2/icons/gcds-icons.woff") format("woff");
+  src:
+    url('https://cdn.design-system.alpha.canada.ca/@gcds-core/fonts@1.0.0/icons/gcds-icons.ttf')
+      format('truetype'),
+    url('https://cdn.design-system.alpha.canada.ca/@gcds-core/fonts@1.0.0/icons/gcds-icons.woff')
+      format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;

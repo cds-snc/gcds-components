@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from '@cdssnc/gcds-components';
+import { Components } from '@gcds-core/components';
 
 
 @ProxyCmp({
@@ -241,7 +241,7 @@ export class GcdsCard {
     /**
    * The card title tag property specifies the HTML heading element for the title.
 This property does not modify the font size. It is used to assign the heading level
-in order to maintain heading hierarchy and accessibility for assistive technologies. @default 'a'
+in order to maintain heading hierarchy and accessibility for assistive technologies.
    */
   set cardTitleTag(_: Components.GcdsCard['cardTitleTag']) {};
     /**
@@ -409,35 +409,41 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
 
 
 @ProxyCmp({
-  inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag']
+  inputs: ['alignment', 'border', 'layout', 'margin', 'padding', 'size', 'tag']
 })
 @Component({
   selector: 'gcds-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['border', 'centered', 'mainContainer', 'margin', 'padding', 'size', 'tag'],
+  inputs: ['alignment', 'border', 'layout', 'margin', 'padding', 'size', 'tag'],
   standalone: false,
 })
 export class GcdsContainer {
   protected el: HTMLGcdsContainerElement;
     /**
+   * Defines the container's alignment.
+This property is ignored when `layout` is set to `page`,
+as the page layout has higher priority.
+   */
+  set alignment(_: Components.GcdsContainer['alignment']) {};
+    /**
    * Defines if the container has a border. @default false
    */
   set border(_: Components.GcdsContainer['border']) {};
     /**
-   * Defines if the container is centered. @default false
+   * Controls how the container aligns with the page layout.
+When set to `page`, the container uses a max width of 1140px and
+switches to 90% width on smaller screens to scale consistently with
+core page layout components such as the header and footer.
+When set to `full`, the container spans the full width (100%)
+of its parent.
    */
-  set centered(_: Components.GcdsContainer['centered']) {};
+  set layout(_: Components.GcdsContainer['layout']) {};
     /**
-   * Defines if the container is the main page container. When true,
-the width will be set to 90% for smaller screens to ensure consistency
-with the responsiveness of other core layout components (header + footer). @default false
-   */
-  set mainContainer(_: Components.GcdsContainer['mainContainer']) {};
-    /**
-   * Container margin. Left and right margins won't be applied
-if the container is centered.
+   * Container margin. Horizontal margins (left and right) are not
+applied if the container’s alignment property is defined, since
+alignment has higher priority.
    */
   set margin(_: Components.GcdsContainer['margin']) {};
     /**
@@ -889,7 +895,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
 
 
 @ProxyCmp({
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -897,7 +903,7 @@ export declare interface GcdsFileUploader extends Components.GcdsFileUploader {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks', 'wordmarkVariant'],
+  inputs: ['contextualHeading', 'contextualLinks', 'display', 'subLinks'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -907,10 +913,6 @@ export class GcdsFooter {
    * Display mode of the footer @default 'compact'
    */
   set display(_: Components.GcdsFooter['display']) {};
-    /**
-   * GcdsSignature - The variant of the Government of Canada wordmark
-   */
-  set wordmarkVariant(_: Components.GcdsFooter['wordmarkVariant']) {};
     /**
    * Heading for contextual slot and nav landmark
    */
@@ -948,14 +950,14 @@ export declare interface GcdsFooter extends Components.GcdsFooter {
 
 
 @ProxyCmp({
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
+  inputs: ['alignContent', 'alignItems', 'alignment', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag']
 })
 @Component({
   selector: 'gcds-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['alignContent', 'alignItems', 'centered', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
+  inputs: ['alignContent', 'alignItems', 'alignment', 'columns', 'columnsDesktop', 'columnsTablet', 'container', 'display', 'equalRowHeight', 'gap', 'gapDesktop', 'gapTablet', 'justifyContent', 'justifyItems', 'placeContent', 'placeItems', 'tag'],
   standalone: false,
 })
 export class GcdsGrid {
@@ -980,10 +982,6 @@ number of columns for desktop as well.
    * Defines grid container size
    */
   set container(_: Components.GcdsGrid['container']) {};
-    /**
-   * Defines if grid container is centered or not @default false
-   */
-  set centered(_: Components.GcdsGrid['centered']) {};
     /**
    * Defines element as grid or inline-grid container @default 'grid'
    */
@@ -1015,6 +1013,11 @@ in a grid container for desktop screens.
    * Set tag for grid container @default 'div'
    */
   set tag(_: Components.GcdsGrid['tag']) {};
+    /**
+   * Defines the grid's alignment if the grid containers
+size is smaller than the parent's size.
+   */
+  set alignment(_: Components.GcdsGrid['alignment']) {};
     /**
    * If total grid size is less than the size of its grid container,
 this property aligns the grid along the block (column) axis
@@ -1090,7 +1093,7 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
 
 
 @ProxyCmp({
-  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
+  inputs: ['langHref', 'signatureHasLink', 'skipToHref'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -1098,7 +1101,7 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
+  inputs: ['langHref', 'signatureHasLink', 'skipToHref'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -1108,10 +1111,6 @@ export class GcdsHeader {
    * GcdsLangToggle - The href attribute specifies the URL of the opposite language page
    */
   set langHref(_: Components.GcdsHeader['langHref']) {};
-    /**
-   * GcdsSignature - The variant of the Government of Canada signature
-   */
-  set signatureVariant(_: Components.GcdsHeader['signatureVariant']) {};
     /**
    * GcdsSignature - GCDS signature links to Canada.ca @default true
    */
@@ -1508,7 +1507,7 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {
 
 
 @ProxyCmp({
-  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type', 'variant'],
+  inputs: ['display', 'download', 'external', 'href', 'linkRole', 'rel', 'size', 'target', 'type'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -1516,7 +1515,7 @@ export declare interface GcdsLangToggle extends Components.GcdsLangToggle {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['display', 'download', 'external', 'href', 'rel', 'size', 'target', 'type', 'variant'],
+  inputs: ['display', 'download', 'external', 'href', 'linkRole', 'rel', 'size', 'target', 'type'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -1525,7 +1524,7 @@ export class GcdsLink {
     /**
    * Sets the main style of the link. @default 'default'
    */
-  set variant(_: Components.GcdsLink['variant']) {};
+  set linkRole(_: Components.GcdsLink['linkRole']) {};
     /**
    * Set the link size @default 'inherit'
    */
@@ -1687,22 +1686,22 @@ export declare interface GcdsNavLink extends Components.GcdsNavLink {
 
 
 @ProxyCmp({
-  inputs: ['noticeTitle', 'noticeTitleTag', 'type']
+  inputs: ['noticeRole', 'noticeTitle', 'noticeTitleTag']
 })
 @Component({
   selector: 'gcds-notice',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['noticeTitle', 'noticeTitleTag', 'type'],
+  inputs: ['noticeRole', 'noticeTitle', 'noticeTitleTag'],
   standalone: false,
 })
 export class GcdsNotice {
   protected el: HTMLGcdsNoticeElement;
     /**
-   * Set notice type.
+   * The notice role property specifies the style of notice to be displayed.
    */
-  set type(_: Components.GcdsNotice['type']) {};
+  set noticeRole(_: Components.GcdsNotice['noticeRole']) {};
     /**
    * Set the notice title.
    */
@@ -1797,41 +1796,6 @@ or an object with page and href when using list display.
    */
   gcdsClick: EventEmitter<CustomEvent<object | string>>;
 }
-
-
-@ProxyCmp({
-  inputs: ['bannerRole', 'container', 'isFixed']
-})
-@Component({
-  selector: 'gcds-phase-banner',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['bannerRole', 'container', 'isFixed'],
-  standalone: false,
-})
-export class GcdsPhaseBanner {
-  protected el: HTMLGcdsPhaseBannerElement;
-    /**
-   * Defines banner role. @default 'primary'
-   */
-  set bannerRole(_: Components.GcdsPhaseBanner['bannerRole']) {};
-    /**
-   * Defines the container width of the phase banner content @default 'xl'
-   */
-  set container(_: Components.GcdsPhaseBanner['container']) {};
-    /**
-   * Defines if the banner's position is fixed.
-   */
-  set isFixed(_: Components.GcdsPhaseBanner['isFixed']) {};
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsPhaseBanner extends Components.GcdsPhaseBanner {}
 
 
 @ProxyCmp({
@@ -2306,7 +2270,7 @@ export declare interface GcdsText extends Components.GcdsText {}
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid']
 })
@@ -2315,22 +2279,30 @@ export declare interface GcdsText extends Components.GcdsText {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autofocus', 'characterCount', 'cols', 'disabled', 'errorMessage', 'hideLabel', 'hint', 'label', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autofocus', 'cols', 'disabled', 'errorMessage', 'form', 'hideLabel', 'hideLimit', 'hint', 'label', 'maxlength', 'minlength', 'name', 'required', 'rows', 'textareaId', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsChange', 'gcdsInput', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
 export class GcdsTextarea {
   protected el: HTMLGcdsTextareaElement;
     /**
-   * If true, the input will be focused on component render
+   * If true, the textarea will be focused on component render.
    */
   set autofocus(_: Components.GcdsTextarea['autofocus']) {};
     /**
-   * Sets the maxlength attribute for the textarea element.
+   * The ID of the form that the textarea belongs to.
    */
-  set characterCount(_: Components.GcdsTextarea['characterCount']) {};
+  set form(_: Components.GcdsTextarea['form']) {};
     /**
-   * The minimum number of characters that the input field can accept.
+   * If true, character limit counter will not be displayed under the textarea. @default false
+   */
+  set hideLimit(_: Components.GcdsTextarea['hideLimit']) {};
+    /**
+   * The maximum number of characters that the textarea field can accept.
+   */
+  set maxlength(_: Components.GcdsTextarea['maxlength']) {};
+    /**
+   * The minimum number of characters that the textarea field can accept.
    */
   set minlength(_: Components.GcdsTextarea['minlength']) {};
     /**
@@ -2444,7 +2416,7 @@ export class GcdsTopNav {
    */
   set label(_: Components.GcdsTopNav['label']) {};
     /**
-   * Nav alignment @default 'left'
+   * Nav alignment @default 'start'
    */
   set alignment(_: Components.GcdsTopNav['alignment']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -2483,36 +2455,5 @@ export class GcdsTopicMenu {
 
 
 export declare interface GcdsTopicMenu extends Components.GcdsTopicMenu {}
-
-
-@ProxyCmp({
-  inputs: ['container', 'isFixed']
-})
-@Component({
-  selector: 'gcds-verify-banner',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['container', 'isFixed'],
-  standalone: false,
-})
-export class GcdsVerifyBanner {
-  protected el: HTMLGcdsVerifyBannerElement;
-    /**
-   * Defines the container width of the verify banner content @default 'xl'
-   */
-  set container(_: Components.GcdsVerifyBanner['container']) {};
-    /**
-   * Defines if the banner's position is fixed. @default false
-   */
-  set isFixed(_: Components.GcdsVerifyBanner['isFixed']) {};
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface GcdsVerifyBanner extends Components.GcdsVerifyBanner {}
 
 

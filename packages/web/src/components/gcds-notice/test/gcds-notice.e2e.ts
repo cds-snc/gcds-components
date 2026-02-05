@@ -26,16 +26,16 @@ test.describe('gcds-notice', () => {
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
-const types = ['danger', 'info', 'success', 'warning'];
+const roles = ['danger', 'info', 'success', 'warning'];
 
 test.describe('gcds-notice a11y tests', () => {
   /**
    * Colour contrast test
    */
-  types.forEach(type => {
-    test(`colour contrast ${type} notice`, async ({ page }) => {
+  roles.forEach(role => {
+    test(`colour contrast ${role} notice`, async ({ page }) => {
       await page.setContent(`
-        <gcds-notice notice-title="Title" notice-title-tag="h2" type="${type}">
+        <gcds-notice notice-title="Title" notice-title-tag="h2" notice-role="${role}">
           <p>Testing slot content.</p>
         </gcds-notice>
       `);

@@ -37,19 +37,19 @@ jobs:
       matrix:
         include:
           - name: "web"
-            package: "@cdssnc/gcds-components"
+            package: "@gcds-core/components"
             dist: "./packages/web"
 
           - name: "react"
-            package: "@cdssnc/gcds-components-react"
+            package: "@gcds-core/components-react"
             dist: "./packages/react"
 
           - name: "angular"
-            package: "@cdssnc/gcds-components-angular"
+            package: "@gcds-core/components-angular"
             dist: "./packages/angular/dist"
 
           - name: "vue"
-            package: "@cdssnc/gcds-components-vue"
+            package: "@gcds-core/components-vue"
             dist: "./packages/vue"
 
     steps:

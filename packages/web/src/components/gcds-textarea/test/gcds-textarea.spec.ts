@@ -26,15 +26,83 @@ describe('gcds-textarea', () => {
   });
 
   /**
-   * Character count
+   * Maxlength
    */
-  it('renders textarea with character count in EN', async () => {
+  it('renders textarea with maxlength and character count in EN', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
-      html: '<gcds-textarea label="Label" textarea-id="character-count" value="Value Test" character-count="22" name="character-count-name"/>',
+      html: '<gcds-textarea label="Label" textarea-id="character-count" maxlength="22" name="character-count-name"/>',
     });
     expect(root).toEqualHtml(`
-      <gcds-textarea label="Label" textarea-id="character-count" value="Value Test" character-count="22" name="character-count-name">
+      <gcds-textarea label="Label" textarea-id="character-count" maxlength="22" name="character-count-name">
+        <mock:shadow-root>
+          <div class="gcds-textarea-wrapper">
+            <gcds-label label-for="character-count" label="Label" lang="en"></gcds-label>
+            <textarea
+              id="character-count"
+              name="character-count-name"
+              aria-labelledby="label-for-character-count"
+              aria-describedby="textarea__count-character-count "
+              aria-invalid="false"
+              rows="5"
+              maxlength="22"
+            ></textarea>
+            <gcds-sr-only id="textarea__count-character-count" tag="span">
+              You can enter up to 22 characters
+            </gcds-sr-only>
+            <gcds-text aria-hidden="true" id="textarea__visual-count-character-count">
+              Characters left: 22
+            </gcds-text>
+            <gcds-sr-only tag="span">
+              <span aria-atomic="true" id="textarea__sr-count-character-count" role="status"></span>
+            </gcds-sr-only>
+          </div>
+        </mock:shadow-root>
+      </gcds-textarea>
+    `);
+  });
+
+  it('renders textarea with maxlength and character count in FR', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" maxlength="22" name="character-count-name"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" maxlength="22" name="character-count-name">
+        <mock:shadow-root>
+          <div class="gcds-textarea-wrapper">
+            <gcds-label label-for="character-count" label="Label" lang="fr"></gcds-label>
+            <textarea
+              id="character-count"
+              name="character-count-name"
+              aria-labelledby="label-for-character-count"
+              aria-describedby="textarea__count-character-count "
+              aria-invalid="false"
+              rows="5"
+              maxlength="22"
+            ></textarea>
+            <gcds-sr-only id="textarea__count-character-count" tag="span">
+              Vous pouvez saisir jusqu'à 22 caractères
+            </gcds-sr-only>
+            <gcds-text aria-hidden="true" id="textarea__visual-count-character-count">
+              Caractères restants&nbsp;: 22
+            </gcds-text>
+            <gcds-sr-only tag="span">
+              <span aria-atomic="true" id="textarea__sr-count-character-count" role="status"></span>
+            </gcds-sr-only>
+          </div>
+        </mock:shadow-root>
+      </gcds-textarea>
+    `);
+  });
+
+  it('renders textarea with maxlength and hide limit in EN', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="character-count" value="Value Test" maxlength="22" hide-limit name="character-count-name"/>',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea label="Label" textarea-id="character-count" value="Value Test" maxlength="22" hide-limit name="character-count-name">
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper">
             <gcds-label label-for="character-count" label="Label" lang="en"></gcds-label>
@@ -47,20 +115,25 @@ describe('gcds-textarea', () => {
               rows="5"
               maxlength="22"
             >Value Test</textarea>
-            <gcds-text id="textarea__count-character-count" aria-live="polite">12 characters left</gcds-text>
+            <gcds-sr-only id="textarea__count-character-count" tag="span">
+              You can enter up to 22 characters
+            </gcds-sr-only>
+            <gcds-sr-only tag="span">
+              <span aria-atomic="true" id="textarea__sr-count-character-count" role="status"></span>
+            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-textarea>
     `);
   });
 
-  it('renders textarea with character count in FR', async () => {
+  it('renders textarea with maxlength and hide limit in FR', async () => {
     const { root } = await newSpecPage({
       components: [GcdsTextarea],
-      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" character-count="22" name="character-count-name"/>',
+      html: '<gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" maxlength="22" hide-limit name="character-count-name"/>',
     });
     expect(root).toEqualHtml(`
-      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" character-count="22" name="character-count-name">
+      <gcds-textarea lang="fr" label="Label" textarea-id="character-count" value="Value Test" maxlength="22" hide-limit name="character-count-name">
         <mock:shadow-root>
           <div class="gcds-textarea-wrapper">
             <gcds-label label-for="character-count" label="Label" lang="fr"></gcds-label>
@@ -73,7 +146,12 @@ describe('gcds-textarea', () => {
               rows="5"
               maxlength="22"
             >Value Test</textarea>
-            <gcds-text id="textarea__count-character-count" aria-live="polite">12 caractères restants</gcds-text>
+            <gcds-sr-only id="textarea__count-character-count" tag="span">
+              Vous pouvez saisir jusqu'à 22 caractères
+            </gcds-sr-only>
+            <gcds-sr-only tag="span">
+              <span aria-atomic="true" id="textarea__sr-count-character-count" role="status"></span>
+            </gcds-sr-only>
           </div>
         </mock:shadow-root>
       </gcds-textarea>
@@ -397,6 +475,33 @@ describe('gcds-textarea', () => {
               aria-invalid="false"
               rows="5"
               minlength="5"
+            ></textarea>
+          </div>
+        </mock:shadow-root>
+      </gcds-textarea>
+    `);
+  });
+
+  /**
+   * Textarea form attribute test
+   */
+  it('renders textarea with form attribute', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsTextarea],
+      html: '<gcds-textarea label="Label" textarea-id="textarea-form" name="textarea-form-name" form="formID" />',
+    });
+    expect(root).toEqualHtml(`
+      <gcds-textarea label="Label" textarea-id="textarea-form" name="textarea-form-name" form="formID">
+        <mock:shadow-root>
+          <div class="gcds-textarea-wrapper">
+            <gcds-label label-for="textarea-form" label="Label" lang="en"></gcds-label>
+            <textarea
+              id="textarea-form"
+              name="textarea-form-name"
+              aria-labelledby="label-for-textarea-form"
+              aria-invalid="false"
+              rows="5"
+              form="formID"
             ></textarea>
           </div>
         </mock:shadow-root>
