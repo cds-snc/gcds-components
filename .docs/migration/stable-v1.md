@@ -304,7 +304,7 @@ This table is an index of all new properties and features. Click a component to 
 | [Heading](#heading-gcds-heading-1)                 | `headingRole`                                                   |
 | [Radios](#radios-gcds-radios-1)                    | `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id` |
 | [Select](#select-gcds-select-1)                    | `autofocus`, `form`, `hideLabel`, `validity`                    |
-| [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`, `form`                                                     |
+| [Textarea](#textarea-gcds-textarea-1)              | `form`, `hideLimit`                                             |
 
 ### Card `<gcds-card>`
 New properties:
@@ -340,18 +340,18 @@ New properties:
 ### FileUploader `<gcds-file-uploader>`
 New properties:
 
-| Property   | Attribute   | Description                                 | Type    | Default |
-|------------|-------------|---------------------------------------------|---------|---------|
-| `hideLabel`  | `hide-label`  | Hides the label visually                    | boolean | false   |
-| `form`       | `form`        | Associates the component with a form        | string  | _none_  |
-| `validity`   | `validity`    | Sets the validity state                     | string  | _none_  |
+| Property    | Attribute    | Description                          | Type    | Default |
+|-------------|--------------|--------------------------------------|---------|---------|
+| `hideLabel` | `hide-label` | Hides the label visually             | boolean | false   |
+| `form`      | `form`       | Associates the component with a form | string  | _none_  |
+| `validity`  | `validity`   | Sets the validity state              | string  | _none_  |
 
 ### Heading `<gcds-heading>`
 New properties:
 
-| Property     | Attribute     | Description                                 | Type    | Default |
-|--------------|--------------|---------------------------------------------|---------|---------|
-| `headingRole`  | `heading-role` | Sets the ARIA role for the heading          | string  | _none_  |
+| Property      | Attribute      | Description                        | Type   | Default |
+|---------------|----------------|------------------------------------|--------|---------|
+| `headingRole` | `heading-role` | Sets the ARIA role for the heading | string | _none_  |
 
 ### Radios `<gcds-radios>`
 New properties:
@@ -377,9 +377,10 @@ New properties:
 ### Textarea `<gcds-textarea>`
 New properties:
 
-| Property    | Attribute    | Description                 | Type    | Default |
-|-------------|--------------|-----------------------------|---------|---------|
-| `hideLimit` | `hide-limit` | Hides the character counter | boolean | false   |
+| Property    | Attribute    | Description                          | Type    | Default |
+|-------------|--------------|--------------------------------------|---------|---------|
+| `form`      | `form`       | Associates the component with a form | string  | _none_  |
+| `hideLimit` | `hide-limit` | Hides the character counter          | boolean | false   |
 
 ---
 
@@ -398,7 +399,7 @@ Stencil, the underlying technology for GCDS components, offers built-in SSR supp
 
 ---
 
-### Base font import (if not using CSS Shortcuts)
+## Base font import (if not using CSS Shortcuts)
 
 If you don't use CSS Shortcuts, you previously needed to manually include Google Fonts in your project to ensure correct typography. We have added a base Google Fonts import directly into the components package.
 
@@ -788,7 +789,7 @@ Ce tableau est un index de toutes les nouvelles propriétés et fonctionnalités
 | [Titre](#titre-gcds-heading)                                           | `headingRole`                                                   |
 | [Boutons radio](#boutons-radio-gcds-radios)                            | `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id` |
 | [Sélection](#sélection-gcds-select)                                    | `autofocus`, `form`, `hideLabel`, `validity`                    |
-| [Zone de texte](#zone-de-texte-gcds-textarea-1)                        | `hideLimit`                                                     |
+| [Zone de texte](#zone-de-texte-gcds-textarea-1)                        | `form`, `hideLimit`                                             |
 
 ### Carte `<gcds-card>`
 
@@ -869,9 +870,10 @@ Nouvelles propriétés&nbsp;:
 
 Nouvelles propriétés&nbsp;:
 
-| Propriété   | Attribut     | Description                      | Type    | Curseur par défaut |
-|-------------|--------------|----------------------------------|---------|--------------------|
-| `hideLimit` | `hide-limit` | Masque le compteur de caractères | booléen | false              |
+| Propriété   | Attribut     | Description                           | Type    | Curseur par défaut |
+|-------------|--------------|---------------------------------------|---------|--------------------|
+| `form`      | `form`       | Associe le composant à un formulaire. | chaîne  | _aucune_           |
+| `hideLimit` | `hide-limit` | Masque le compteur de caractères      | booléen | false              |
 
 ---
 
@@ -891,7 +893,7 @@ Stencil, la technologie sous-jacente des composants de Système de design GC, pr
 
 ---
 
-### Importation des polices de base (si vous n’utilisez pas les raccourcis CSS)
+## Importation des polices de base (si vous n’utilisez pas les raccourcis CSS)
 
 Si vous n’utilisez pas les raccourcis CSS, vous deviez auparavant inclure manuellement les polices Google dans votre projet pour garantir une typographie correcte. Nous avons ajouté l’importation des polices Google de base directement dans le paquet de composantes.
 
