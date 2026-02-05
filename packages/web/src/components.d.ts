@@ -689,6 +689,14 @@ export namespace Components {
          */
         "langHref": string;
         /**
+          * Contextual Sign In - Link to sign in page for institutions
+         */
+        "signInHref": string;
+        /**
+          * Contextual Sign In - Label for the sign in link
+         */
+        "signInLabel": string;
+        /**
           * GcdsSignature - GCDS signature links to Canada.ca
           * @default true
          */
@@ -3189,6 +3197,14 @@ declare namespace LocalJSX {
           * Emitted when the link has focus.
          */
         "onGcdsFocus"?: (event: GcdsHeaderCustomEvent<void>) => void;
+        /**
+          * Contextual Sign In - Link to sign in page for institutions
+         */
+        "signInHref"?: string;
+        /**
+          * Contextual Sign In - Label for the sign in link
+         */
+        "signInLabel"?: string;
         /**
           * GcdsSignature - GCDS signature links to Canada.ca
           * @default true

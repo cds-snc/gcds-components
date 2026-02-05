@@ -1090,7 +1090,7 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
 
 
 @ProxyCmp({
-  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
+  inputs: ['langHref', 'signInHref', 'signInLabel', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick']
 })
 @Component({
@@ -1098,7 +1098,7 @@ export declare interface GcdsGridCol extends Components.GcdsGridCol {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['langHref', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
+  inputs: ['langHref', 'signInHref', 'signInLabel', 'signatureHasLink', 'signatureVariant', 'skipToHref'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsClick'],
   standalone: false,
 })
@@ -1120,6 +1120,14 @@ export class GcdsHeader {
    * Top navigation - Skip to content href
    */
   set skipToHref(_: Components.GcdsHeader['skipToHref']) {};
+    /**
+   * Contextual Sign In - Link to sign in page for institutions
+   */
+  set signInHref(_: Components.GcdsHeader['signInHref']) {};
+    /**
+   * Contextual Sign In - Label for the sign in link
+   */
+  set signInLabel(_: Components.GcdsHeader['signInLabel']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
