@@ -168,7 +168,7 @@ export class GcdsNavGroup {
 
       // Get the alignment value from the parent + append the corresponding class
       const alignment = (this.el.parentNode as HTMLElement).getAttribute(
-        'align',
+        'alignment',
       );
 
       if (alignment === 'end') {

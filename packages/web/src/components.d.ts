@@ -1442,7 +1442,7 @@ export namespace Components {
          */
         "hideLabel"?: boolean;
         /**
-          * If true, character limt counter will not be displayed under the textarea.
+          * If true, character limit counter will not be displayed under the textarea.
           * @default false
          */
         "hideLimit"?: boolean;
@@ -3982,7 +3982,7 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: boolean;
         /**
-          * If true, character limt counter will not be displayed under the textarea.
+          * If true, character limit counter will not be displayed under the textarea.
           * @default false
          */
         "hideLimit"?: boolean;
