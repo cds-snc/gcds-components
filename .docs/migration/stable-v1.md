@@ -304,7 +304,7 @@ This table is an index of all new properties and features. Click a component to 
 | [Heading](#heading-gcds-heading-1)                 | `headingRole`                                                   |
 | [Radios](#radios-gcds-radios-1)                    | `autofocus`, `form`, `hideLegend`, `validity`, `<component>-id` |
 | [Select](#select-gcds-select-1)                    | `autofocus`, `form`, `hideLabel`, `validity`                    |
-| [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`                                                     |
+| [Textarea](#textarea-gcds-textarea-1)              | `hideLimit`, `form`                                                     |
 
 ### Card `<gcds-card>`
 New properties:
