@@ -889,28 +889,18 @@
         },
         {
           "name": "cardTitleTag",
-          "type": "\"a\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+          "type": "\"h3\" | \"h4\" | \"h5\" | \"h6\"",
           "complexType": {
-            "original": "'h3' | 'h4' | 'h5' | 'h6' | 'a'",
-            "resolved": "\"a\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+            "original": "'h3' | 'h4' | 'h5' | 'h6'",
+            "resolved": "\"h3\" | \"h4\" | \"h5\" | \"h6\"",
             "references": {}
           },
           "mutable": false,
           "attr": "card-title-tag",
           "reflectToAttr": false,
           "docs": "The card title tag property specifies the HTML heading element for the title.\nThis property does not modify the font size. It is used to assign the heading level\nin order to maintain heading hierarchy and accessibility for assistive technologies.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'a'"
-            }
-          ],
-          "default": "'a'",
+          "docsTags": [],
           "values": [
-            {
-              "value": "a",
-              "type": "string"
-            },
             {
               "value": "h3",
               "type": "string"
@@ -928,7 +918,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1810,6 +1800,38 @@
       "usage": {},
       "props": [
         {
+          "name": "alignment",
+          "type": "\"center\" | \"end\" | \"start\"",
+          "complexType": {
+            "original": "'start' | 'center' | 'end'",
+            "resolved": "\"center\" | \"end\" | \"start\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "alignment",
+          "reflectToAttr": false,
+          "docs": "Defines the container's alignment.\nThis property is ignored when `layout` is set to `page`,\nas the page layout has higher priority.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "border",
           "type": "boolean",
           "complexType": {
@@ -1839,56 +1861,26 @@
           "setter": false
         },
         {
-          "name": "centered",
-          "type": "boolean",
+          "name": "layout",
+          "type": "\"full\" | \"page\"",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
+            "original": "'full' | 'page'",
+            "resolved": "\"full\" | \"page\"",
             "references": {}
           },
           "mutable": false,
-          "attr": "centered",
+          "attr": "layout",
           "reflectToAttr": false,
-          "docs": "Defines if the container is centered.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
+          "docs": "Controls how the container aligns with the page layout.\nWhen set to `page`, the container uses a max width of 1140px and\nswitches to 90% width on smaller screens to scale consistently with\ncore page layout components such as the header and footer.\nWhen set to `full`, the container spans the full width (100%)\nof its parent.",
+          "docsTags": [],
           "values": [
             {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "mainContainer",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "main-container",
-          "reflectToAttr": false,
-          "docs": "Defines if the container is the main page container. When true,\nthe width will be set to 90% for smaller screens to ensure consistency\nwith the responsiveness of other core layout components (header + footer).",
-          "docsTags": [
+              "value": "full",
+              "type": "string"
+            },
             {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
+              "value": "page",
+              "type": "string"
             }
           ],
           "optional": true,
@@ -1913,7 +1905,7 @@
           "mutable": false,
           "attr": "margin",
           "reflectToAttr": false,
-          "docs": "Container margin. Left and right margins won't be applied\nif the container is centered.",
+          "docs": "Container margin. Horizontal margins (left and right) are not\napplied if the container’s alignment property is defined, since\nalignment has higher priority.",
           "docsTags": [],
           "values": [
             {
@@ -2289,8 +2281,7 @@
       "parts": [],
       "dependents": [
         "gcds-alert",
-        "gcds-grid",
-        "gcds-phase-banner"
+        "gcds-grid"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -2298,9 +2289,6 @@
           "gcds-container"
         ],
         "gcds-grid": [
-          "gcds-container"
-        ],
-        "gcds-phase-banner": [
           "gcds-container"
         ]
       }
@@ -4355,34 +4343,6 @@
           "required": false,
           "getter": false,
           "setter": false
-        },
-        {
-          "name": "wordmarkVariant",
-          "type": "\"colour\" | \"white\"",
-          "complexType": {
-            "original": "'colour' | 'white'",
-            "resolved": "\"colour\" | \"white\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "wordmark-variant",
-          "reflectToAttr": false,
-          "docs": "GcdsSignature - The variant of the Government of Canada wordmark",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "colour",
-              "type": "string"
-            },
-            {
-              "value": "white",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
         }
       ],
       "methods": [],
@@ -4563,27 +4523,30 @@
           "setter": false
         },
         {
-          "name": "centered",
-          "type": "boolean",
+          "name": "alignment",
+          "type": "\"center\" | \"end\" | \"start\"",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
+            "original": "'start' | 'center' | 'end'",
+            "resolved": "\"center\" | \"end\" | \"start\"",
             "references": {}
           },
           "mutable": false,
-          "attr": "centered",
+          "attr": "alignment",
           "reflectToAttr": false,
-          "docs": "Defines if grid container is centered or not",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
+          "docs": "Defines the grid's alignment if the grid containers\nsize is smaller than the parent's size.",
+          "docsTags": [],
           "values": [
             {
-              "type": "boolean"
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
             }
           ],
           "optional": true,
@@ -5297,18 +5260,13 @@
         }
       ],
       "parts": [],
-      "dependents": [
-        "gcds-verify-banner"
-      ],
+      "dependents": [],
       "dependencies": [
         "gcds-container"
       ],
       "dependencyGraph": {
         "gcds-grid": [
           "gcds-container"
-        ],
-        "gcds-verify-banner": [
-          "gcds-grid"
         ]
       }
     },
@@ -5572,34 +5530,6 @@
           "values": [
             {
               "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "signatureVariant",
-          "type": "\"colour\" | \"white\"",
-          "complexType": {
-            "original": "| 'colour'\n    | 'white'",
-            "resolved": "\"colour\" | \"white\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "signature-variant",
-          "reflectToAttr": false,
-          "docs": "GcdsSignature - The variant of the Government of Canada signature",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "colour",
-              "type": "string"
-            },
-            {
-              "value": "white",
-              "type": "string"
             }
           ],
           "optional": false,
@@ -8168,6 +8098,40 @@
           "setter": false
         },
         {
+          "name": "linkRole",
+          "type": "\"default\" | \"light\"",
+          "complexType": {
+            "original": "'default' | 'light'",
+            "resolved": "\"default\" | \"light\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "link-role",
+          "reflectToAttr": false,
+          "docs": "Sets the main style of the link.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'default'"
+            }
+          ],
+          "default": "'default'",
+          "values": [
+            {
+              "value": "default",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "rel",
           "type": "string",
           "complexType": {
@@ -8272,40 +8236,6 @@
           "docsTags": [],
           "values": [
             {
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "variant",
-          "type": "\"default\" | \"light\"",
-          "complexType": {
-            "original": "'default' | 'light'",
-            "resolved": "\"default\" | \"light\"",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "variant",
-          "reflectToAttr": false,
-          "docs": "Sets the main style of the link.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'default'"
-            }
-          ],
-          "default": "'default'",
-          "values": [
-            {
-              "value": "default",
-              "type": "string"
-            },
-            {
-              "value": "light",
               "type": "string"
             }
           ],
@@ -8803,6 +8733,42 @@
       "usage": {},
       "props": [
         {
+          "name": "noticeRole",
+          "type": "\"danger\" | \"info\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "'danger' | 'info' | 'success' | 'warning'",
+            "resolved": "\"danger\" | \"info\" | \"success\" | \"warning\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "notice-role",
+          "reflectToAttr": false,
+          "docs": "The notice role property specifies the style of notice to be displayed.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "noticeTitle",
           "type": "string",
           "complexType": {
@@ -8853,42 +8819,6 @@
             },
             {
               "value": "h5",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "type",
-          "type": "\"danger\" | \"info\" | \"success\" | \"warning\"",
-          "complexType": {
-            "original": "'danger' | 'info' | 'success' | 'warning'",
-            "resolved": "\"danger\" | \"info\" | \"success\" | \"warning\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "type",
-          "reflectToAttr": false,
-          "docs": "Set notice type.",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "info",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
               "type": "string"
             }
           ],
@@ -9210,173 +9140,6 @@
       "dependencyGraph": {
         "gcds-pagination": [
           "gcds-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/gcds-phase-banner/gcds-phase-banner.tsx",
-      "encapsulation": "shadow",
-      "tag": "gcds-phase-banner",
-      "readme": "# gcds-phase-banner\n\n\n",
-      "docs": "Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.",
-      "docsTags": [
-        {
-          "name": "slot",
-          "text": "banner-cta - Slot for the call-to-action element in the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-icon-left - Slot for displaying an icon/image on the left of the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-icon-right - Slot for displaying an icon/image on the right of the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-text - Slot for the main content of the banner."
-        }
-      ],
-      "usage": {},
-      "props": [
-        {
-          "name": "bannerRole",
-          "type": "\"primary\" | \"secondary\"",
-          "complexType": {
-            "original": "'primary' | 'secondary'",
-            "resolved": "\"primary\" | \"secondary\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "banner-role",
-          "reflectToAttr": false,
-          "docs": "Defines banner role.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'primary'"
-            }
-          ],
-          "default": "'primary'",
-          "values": [
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "secondary",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "container",
-          "type": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-          "complexType": {
-            "original": "'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'",
-            "resolved": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "container",
-          "reflectToAttr": false,
-          "docs": "Defines the container width of the phase banner content",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'xl'"
-            }
-          ],
-          "default": "'xl'",
-          "values": [
-            {
-              "value": "full",
-              "type": "string"
-            },
-            {
-              "value": "lg",
-              "type": "string"
-            },
-            {
-              "value": "md",
-              "type": "string"
-            },
-            {
-              "value": "sm",
-              "type": "string"
-            },
-            {
-              "value": "xl",
-              "type": "string"
-            },
-            {
-              "value": "xs",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "isFixed",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "is-fixed",
-          "reflectToAttr": false,
-          "docs": "Defines if the banner's position is fixed.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [
-        {
-          "name": "banner-cta",
-          "docs": "Slot for the call-to-action element in the banner."
-        },
-        {
-          "name": "banner-icon-left",
-          "docs": "Slot for displaying an icon/image on the left of the banner."
-        },
-        {
-          "name": "banner-icon-right",
-          "docs": "Slot for displaying an icon/image on the right of the banner."
-        },
-        {
-          "name": "banner-text",
-          "docs": "Slot for the main content of the banner."
-        }
-      ],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "gcds-container"
-      ],
-      "dependencyGraph": {
-        "gcds-phase-banner": [
-          "gcds-container"
         ]
       }
     },
@@ -11336,6 +11099,7 @@
         "gcds-search",
         "gcds-signature",
         "gcds-stepper",
+        "gcds-textarea",
         "gcds-topic-menu"
       ],
       "dependencies": [],
@@ -11368,6 +11132,9 @@
           "gcds-sr-only"
         ],
         "gcds-stepper": [
+          "gcds-sr-only"
+        ],
+        "gcds-textarea": [
           "gcds-sr-only"
         ],
         "gcds-topic-menu": [
@@ -12041,7 +11808,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the input will be focused on component render",
+          "docs": "If true, the textarea will be focused on component render.",
           "docsTags": [],
           "values": [
             {
@@ -12049,29 +11816,6 @@
             }
           ],
           "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "characterCount",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "character-count",
-          "reflectToAttr": false,
-          "docs": "Sets the maxlength attribute for the textarea element.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -12152,6 +11896,29 @@
           "setter": false
         },
         {
+          "name": "form",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "form",
+          "reflectToAttr": true,
+          "docs": "The ID of the form that the textarea belongs to.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hideLabel",
           "type": "boolean",
           "complexType": {
@@ -12163,6 +11930,35 @@
           "attr": "hide-label",
           "reflectToAttr": false,
           "docs": "Specifies if the label is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLimit",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-limit",
+          "reflectToAttr": false,
+          "docs": "If true, character limt counter will not be displayed under the textarea.",
           "docsTags": [
             {
               "name": "default",
@@ -12227,6 +12023,29 @@
           "setter": false
         },
         {
+          "name": "maxlength",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "maxlength",
+          "reflectToAttr": true,
+          "docs": "The maximum number of characters that the textarea field can accept.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "minlength",
           "type": "number",
           "complexType": {
@@ -12237,7 +12056,7 @@
           "mutable": false,
           "attr": "minlength",
           "reflectToAttr": true,
-          "docs": "The minimum number of characters that the input field can accept.",
+          "docs": "The minimum number of characters that the textarea field can accept.",
           "docsTags": [],
           "values": [
             {
@@ -12666,6 +12485,7 @@
         "gcds-label",
         "gcds-hint",
         "gcds-error-message",
+        "gcds-sr-only",
         "gcds-text"
       ],
       "dependencyGraph": {
@@ -12673,6 +12493,7 @@
           "gcds-label",
           "gcds-hint",
           "gcds-error-message",
+          "gcds-sr-only",
           "gcds-text"
         ],
         "gcds-hint": [
@@ -12700,10 +12521,10 @@
       "props": [
         {
           "name": "alignment",
-          "type": "\"center\" | \"left\" | \"right\"",
+          "type": "\"end\" | \"start\"",
           "complexType": {
-            "original": "'left' | 'center' | 'right'",
-            "resolved": "\"center\" | \"left\" | \"right\"",
+            "original": "'start' | 'end'",
+            "resolved": "\"end\" | \"start\"",
             "references": {}
           },
           "mutable": false,
@@ -12713,21 +12534,17 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'left'"
+              "text": "'start'"
             }
           ],
-          "default": "'left'",
+          "default": "'start'",
           "values": [
             {
-              "value": "center",
+              "value": "end",
               "type": "string"
             },
             {
-              "value": "left",
-              "type": "string"
-            },
-            {
-              "value": "right",
+              "value": "start",
               "type": "string"
             }
           ],
@@ -13110,114 +12927,6 @@
         "gcds-topic-menu": [
           "gcds-sr-only",
           "gcds-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/gcds-verify-banner/gcds-verify-banner.tsx",
-      "encapsulation": "shadow",
-      "tag": "gcds-verify-banner",
-      "readme": "# gcds-verify-banner\n\n\n",
-      "docs": "Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "container",
-          "type": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-          "complexType": {
-            "original": "'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'",
-            "resolved": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "container",
-          "reflectToAttr": false,
-          "docs": "Defines the container width of the verify banner content",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'xl'"
-            }
-          ],
-          "default": "'xl'",
-          "values": [
-            {
-              "value": "full",
-              "type": "string"
-            },
-            {
-              "value": "lg",
-              "type": "string"
-            },
-            {
-              "value": "md",
-              "type": "string"
-            },
-            {
-              "value": "sm",
-              "type": "string"
-            },
-            {
-              "value": "xl",
-              "type": "string"
-            },
-            {
-              "value": "xs",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "isFixed",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "is-fixed",
-          "reflectToAttr": false,
-          "docs": "Defines if the banner's position is fixed.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "gcds-grid"
-      ],
-      "dependencyGraph": {
-        "gcds-verify-banner": [
-          "gcds-grid"
-        ],
-        "gcds-grid": [
-          "gcds-container"
         ]
       }
     }

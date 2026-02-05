@@ -109,7 +109,7 @@ const Template = args =>
 const TemplateTopNav = args =>
   `
 <!-- Web component code (Angular, Vue) -->
-<gcds-top-nav label="Top nav example" alignment="right">
+<gcds-top-nav label="Top nav example" alignment="end">
   <gcds-nav-group
     menu-label="${args.menuLabel}"
     open-trigger="${args.openTrigger}"
@@ -124,7 +124,7 @@ const TemplateTopNav = args =>
 </gcds-top-nav>
 
 <!-- React code -->
-<GcdsTopNav label="Top nav example" alignment="right">
+<GcdsTopNav label="Top nav example" alignment="end">
   <GcdsNavGroup
     menuLabel="${args.menuLabel}"
     openTrigger="${args.openTrigger}"

@@ -26,7 +26,7 @@ You can find the full documentation for GC Design System Components on [https://
 Navigate to your project’s root folder and run the following command:
 
 ```js
-npm install @cdssnc/gcds-components
+npm install @gcds-core/components
 ```
 
 ### 2. Include GC Design System in your project
@@ -37,11 +37,11 @@ Add the following `link` tags inside the `head` tag of your `HTML` files to load
 <!-- GC Design System -->
 <link
   rel="stylesheet"
-  href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css"
+  href="/node_modules/@gcds-core/components/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
+  src="/node_modules/@gcds-core/components/dist/gcds/gcds.esm.js"
 ></script>
 ```
 
@@ -70,11 +70,11 @@ Add the following code to the `head` tag of your `HTML` files to load GC Design 
 <!-- GC Design System -->
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.css"
+  href="https://cdn.design-system.alpha.canada.ca/@gcds-core/components@<version-number>/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
+  src="https://cdn.design-system.alpha.canada.ca/@gcds-core/components@<version-number>/dist/gcds/gcds.esm.js"
 ></script>
 ```
 
@@ -148,7 +148,7 @@ Toute la documentation sur les composants de Système de design GC est accessibl
 Naviguez vers le dossier racine de votre projet et exécutez la commande suivante :
 
 ```js
-npm install @cdssnc/gcds-components
+npm install @gcds-core/components
 ```
 
 ### 2. Inclure Système de design GC dans votre projet
@@ -159,11 +159,11 @@ Ajoutez les balises `link` suivantes à l’intérieur de la balise `head` de vo
 <!-- GC Design System -->
 <link
   rel="stylesheet"
-  href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css"
+  href="/node_modules/@gcds-core/components/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
+  src="/node_modules/@gcds-core/components/dist/gcds/gcds.esm.js"
 ></script>
 ```
 
@@ -192,11 +192,11 @@ Ajoutez le code suivant à la balise `head` de vos fichiers `HTML` pour charger 
 <!-- GC Système de design -->
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.css"
+  href="https://cdn.design-system.alpha.canada.ca/@gcds-core/components@<version-number>/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
+  src="https://cdn.design-system.alpha.canada.ca/@gcds-core/components@<version-number>/dist/gcds/gcds.esm.js"
 ></script>
 ```
 

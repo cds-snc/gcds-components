@@ -1,4 +1,4 @@
-@layer reset, default, border, centered, main, margin, padding, size;
+@layer reset, default, border, margin, padding, alignment, size, layout;
 
 @layer reset {
   :host {
@@ -26,18 +26,6 @@
 @layer border {
   :host .gcds-container.container-border {
     border: var(--gcds-container-border);
-  }
-}
-
-@layer centered {
-  :host .gcds-container.container-centered {
-    margin-inline: auto !important;
-  }
-}
-
-@layer main {
-  :host .gcds-container.container-main:not(.size-full) {
-    width: 90%;
   }
 }
 
@@ -297,6 +285,21 @@
   }
 }
 
+@layer alignment {
+  :host .gcds-container.alignment-start {
+    margin-inline-start: 0 !important;
+  }
+
+  :host .gcds-container.alignment-center {
+    margin-inline: auto !important;
+  }
+
+  :host .gcds-container.alignment-end {
+    margin-inline-start: auto !important;
+    margin-inline-end: 0 !important;
+  }
+}
+
 @layer size {
   :host .gcds-container {
     &.size-xl {
@@ -318,5 +321,17 @@
     &.size-xs {
       max-width: var(--gcds-container-size-xs);
     }
+  }
+}
+
+@layer layout {
+  :host .gcds-container.layout-full {
+    max-width: 100% !important;
+  }
+
+  :host .gcds-container.layout-page {
+    width: var(--gcds-container-size-xl) !important;
+    max-width: 90% !important;
+    margin-inline: auto !important;
   }
 }

@@ -35,7 +35,7 @@ export class GcdsTopNav {
   /**
    * Nav alignment
    */
-  @Prop() alignment: 'left' | 'center' | 'right' = 'left';
+  @Prop() alignment: 'start' | 'end' = 'start';
 
   /**
    * Sticky navigation flag
@@ -102,7 +102,11 @@ export class GcdsTopNav {
 
   @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
-    if (e.relatedTarget !== null && e.relatedTarget !== this.el && !this.el.contains(e.relatedTarget)) {
+    if (
+      e.relatedTarget !== null &&
+      e.relatedTarget !== this.el &&
+      !this.el.contains(e.relatedTarget)
+    ) {
       if (this.navSize == 'mobile') {
         if (this.mobile.hasAttribute('open')) {
           await this.mobile.toggleNav();
@@ -115,7 +119,11 @@ export class GcdsTopNav {
   async keyDownListener(e) {
     if (this.el.contains(document.activeElement)) {
       handleKeyDownNav(e, this.el, this.navItems);
-    } else if (this.navSize == 'mobile' && this.mobile.open == true && e.key == 'Escape') {
+    } else if (
+      this.navSize == 'mobile' &&
+      this.mobile.open == true &&
+      e.key == 'Escape'
+    ) {
       // Close mobile nav on ESC
       await this.mobile.toggleNav();
     }
