@@ -75,7 +75,7 @@ export class GcdsTextarea {
   @Prop({ reflect: true }) form?: string;
 
   /**
-   * If true, character limt counter will not be displayed under the textarea.
+   * If true, character limit counter will not be displayed under the textarea.
    */
   @Prop() hideLimit?: boolean = false;
 
