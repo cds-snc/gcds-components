@@ -519,7 +519,7 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 | [Avis](#avis-gcds-notice)                                                      | [React](#avis-gcdsnotice)                           | `type`                                                 | Propriété |
 | [Bannière de phase](#bannière-de-phase-gcds-phase-banner)                      | [React](#bannière-de-phase-gcdsphasebanner)         | `<gcds-phase-banner>`                                  | Composant |
 | [Zone de texte](#zone-de-texte-gcds-textarea)                                  | [React](#zone-de-texte-gcdstextarea)                | `character-count`                                      | Propriété |
-| [Barre de navigation supérieure](#barre-de-navigation-supérieure-gcds-top-nav) | [React](#barre-de-navigation-supérieure-gcdstopnav) | Valeurs `left` \| `center` \| `right` pour `alignment` | Propriété |
+| [Barre de navigation supérieure](#barre-de-navigation-supérieure-gcds-top-nav) | [React](#barre-de-navigation-supérieure-gcdstopnav) | Valeurs `left` \| `center` \| `right` pour `alignment` | Valeur    |
 | [Bannière de vérification](#bannière-de-vérification-gcds-verify-banner)       | [React](#bannière-de-vérification-gcdsverifybanner) | `<gcds-verify-banner>`                                 | Composant |
 
 ---
