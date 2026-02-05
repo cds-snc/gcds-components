@@ -508,19 +508,19 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 > [!IMPORTANT] 
 > Cette section répertorie tous les changements non rétrocompatibles et les API supprimées. Examinez attentivement les modifications apportées à chaque composant et mettez à jour votre code base en conséquence.
 
-| Composant (HTML/Angular/Vue)                                                   |                                                     | Ce qui a changé (supprimé)       | Type      |
-|--------------------------------------------------------------------------------|-----------------------------------------------------|----------------------------------|-----------|
-| [Carte](#carte-gcds-card)                                                      | [React](#carte-gcdscard)                            | Valeur `a` pour `card-title-tag` | Valeur    |
-| [Conteneur](#conteneur-gcds-container)                                         | [React](#conteneur-gcdscontainer)                   | `centered`, `main-container`     | Propriété |
-| [Pied de page](#pied-de-page-gcds-footer)                                      | [React](#pied-de-page-gcdsfooter)                   | `wordmark-variant`               | Propriété |
-| [Grille](#grille-gcds-grid)                                                    | [React](#grille-gcdsgrid)                           | `centered`                       | Propriété |
-| [En-tête](#en-tête-gcds-header)                                                | [React](#en-tête-gcdsheader)                        | `signature-variant`              | Propriété |
-| [Lien](#lien-gcds-link)                                                        | [React](#lien-gcdslink)                             | `variant`                        | Propriété |
-| [Avis](#avis-gcds-notice)                                                      | [React](#avis-gcdsnotice)                           | `type`                           | Propriété |
-| [Bannière de phase](#bannière-de-phase-gcds-phase-banner)                      | [React](#bannière-de-phase-gcdsphasebanner)         | `<gcds-phase-banner>`            | Composant |
-| [Zone de texte](#zone-de-texte-gcds-textarea)                                  | [React](#zone-de-texte-gcdstextarea)                | `character-count`                | Propriété |
-| [Barre de navigation supérieure](#barre-de-navigation-supérieure-gcds-top-nav) | [React](#barre-de-navigation-supérieure-gcdstopnav) | `alignment`                      | Propriété |
-| [Bannière de vérification](#bannière-de-vérification-gcds-verify-banner)       | [React](#bannière-de-vérification-gcdsverifybanner) | `<gcds-verify-banner>`           | Composant |
+| Composant (HTML/Angular/Vue)                                                   |                                                     | Ce qui a changé (supprimé)                             | Type      |
+|--------------------------------------------------------------------------------|-----------------------------------------------------|--------------------------------------------------------|-----------|
+| [Carte](#carte-gcds-card)                                                      | [React](#carte-gcdscard)                            | Valeur `a` pour `card-title-tag`                       | Valeur    |
+| [Conteneur](#conteneur-gcds-container)                                         | [React](#conteneur-gcdscontainer)                   | `centered`, `main-container`                           | Propriété |
+| [Pied de page](#pied-de-page-gcds-footer)                                      | [React](#pied-de-page-gcdsfooter)                   | `wordmark-variant`                                     | Propriété |
+| [Grille](#grille-gcds-grid)                                                    | [React](#grille-gcdsgrid)                           | `centered`                                             | Propriété |
+| [En-tête](#en-tête-gcds-header)                                                | [React](#en-tête-gcdsheader)                        | `signature-variant`                                    | Propriété |
+| [Lien](#lien-gcds-link)                                                        | [React](#lien-gcdslink)                             | `variant`                                              | Propriété |
+| [Avis](#avis-gcds-notice)                                                      | [React](#avis-gcdsnotice)                           | `type`                                                 | Propriété |
+| [Bannière de phase](#bannière-de-phase-gcds-phase-banner)                      | [React](#bannière-de-phase-gcdsphasebanner)         | `<gcds-phase-banner>`                                  | Composant |
+| [Zone de texte](#zone-de-texte-gcds-textarea)                                  | [React](#zone-de-texte-gcdstextarea)                | `character-count`                                      | Propriété |
+| [Barre de navigation supérieure](#barre-de-navigation-supérieure-gcds-top-nav) | [React](#barre-de-navigation-supérieure-gcdstopnav) | Valeurs `left` \| `center` \| `right` pour `alignment` | Propriété |
+| [Bannière de vérification](#bannière-de-vérification-gcds-verify-banner)       | [React](#bannière-de-vérification-gcdsverifybanner) | `<gcds-verify-banner>`                                 | Composant |
 
 ---
 
