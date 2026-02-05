@@ -144,7 +144,7 @@ export default {
         defaultValue: { summary: 'div' },
       },
     },
-    align: {
+    alignment: {
       control: { type: 'select' },
       options: ['center', 'end', 'start'],
       table: {
@@ -254,7 +254,7 @@ const Template = args =>
     args.columnsDesktop ? `columns-desktop="${args.columnsDesktop}"` : null
   } ${args.columnsTablet ? `columns-tablet="${args.columnsTablet}"` : null} ${
     args.columns ? `columns="${args.columns}"` : null
-  } ${args.align ? `align="${args.align}"` : null} ${args.alignContent ? `align-content="${args.alignContent}"` : null} ${
+  } ${args.alignment ? `alignment="${args.alignment}"` : null} ${args.alignContent ? `align-content="${args.alignContent}"` : null} ${
     args.justifyContent ? `justify-content="${args.justifyContent}"` : null
   } ${args.placeContent ? `place-content="${args.placeContent}"` : null} ${
     args.alignItems ? `align-items="${args.alignItems}"` : null
@@ -273,7 +273,7 @@ const Template = args =>
     args.container != 'full' ? `container="${args.container}"` : null
   } ${args.columnsDesktop ? `columnsDesktop="${args.columnsDesktop}"` : null} ${
     args.columnsTablet ? `columnsTablet="${args.columnsTablet}"` : null
-  } ${args.columns ? `columns="${args.columns}"` : null} ${args.align ? `align="${args.align}"` : null} ${
+  } ${args.columns ? `columns="${args.columns}"` : null} ${args.alignment ? `alignment="${args.alignment}"` : null} ${
     args.alignContent ? `alignContent="${args.alignContent}"` : null
   } ${args.justifyContent ? `justifyContent="${args.justifyContent}"` : null} ${
     args.placeContent ? `placeContent="${args.placeContent}"` : null
@@ -318,7 +318,7 @@ const TemplatePlayground = args => `
   ${args.columnsDesktop ? `columns-desktop="${args.columnsDesktop}"` : null}
   ${args.columnsTablet ? `columns-tablet="${args.columnsTablet}"` : null}
   ${args.columns ? `columns="${args.columns}"` : null}
-  ${args.align ? `align="${args.align}"` : null}
+  ${args.alignment ? `alignment="${args.alignment}"` : null}
   ${args.alignContent ? `align-content="${args.alignContent}"` : null}
   ${args.justifyContent ? `justify-content="${args.justifyContent}"` : null}
   ${args.placeContent ? `place-content="${args.placeContent}"` : null}
@@ -493,15 +493,15 @@ Tag.args = {
   <p>This is some example content to display the grid component.</p>`,
 };
 
-// ------ Grid align ------
+// ------ Grid alignment ------
 
-export const AlignStart = Template.bind({});
-AlignStart.args = {
+export const AlignmentStart = Template.bind({});
+AlignmentStart.args = {
   columnsDesktop: '1fr 1fr 1fr 1fr',
   columnsTablet: '1fr 1fr',
   columns: '1fr',
   container: 'md',
-  align: 'start',
+  alignment: 'start',
   gap: '300',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
@@ -510,13 +510,13 @@ AlignStart.args = {
   <p>This is some example content to display the grid component.</p>`,
 };
 
-export const AlignCenter = Template.bind({});
-AlignCenter.args = {
+export const AlignmentCenter = Template.bind({});
+AlignmentCenter.args = {
   columnsDesktop: '1fr 1fr 1fr 1fr',
   columnsTablet: '1fr 1fr',
   columns: '1fr',
   container: 'md',
-  align: 'center',
+  alignment: 'center',
   gap: '300',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>
@@ -525,13 +525,13 @@ AlignCenter.args = {
   <p>This is some example content to display the grid component.</p>`,
 };
 
-export const AlignEnd = Template.bind({});
-AlignEnd.args = {
+export const AlignmentEnd = Template.bind({});
+AlignmentEnd.args = {
   columnsDesktop: '1fr 1fr 1fr 1fr',
   columnsTablet: '1fr 1fr',
   columns: '1fr',
   container: 'md',
-  align: 'end',
+  alignment: 'end',
   gap: '300',
   tag: 'div',
   default: `<p>This is some example content to display the grid component.</p>

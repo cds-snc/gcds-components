@@ -56,13 +56,13 @@ describe('gcds-top-nav', () => {
       </gcds-top-nav>
     `);
   });
-  it('renders w/ align="end"', async () => {
+  it('renders w/ alignment="end"', async () => {
     const page = await newSpecPage({
       components: [GcdsTopNav],
-      html: `<gcds-top-nav label="top-nav" align="end"></gcds-top-nav>`,
+      html: `<gcds-top-nav label="top-nav" alignment="end"></gcds-top-nav>`,
     });
     expect(page.root).toEqualHtml(`
-      <gcds-top-nav label="top-nav" align="end">
+      <gcds-top-nav label="top-nav" alignment="end">
         <mock:shadow-root>
           <div class="gcds-top-nav">
             <nav aria-label="top-nav - Use the enter key to select a menu item and travel to its page. Use the left and right arrow keys to navigate between menu and submenu items. Use the right arrow key to open submenus when they are available. Use the left arrow or escape keys to close a menu.">

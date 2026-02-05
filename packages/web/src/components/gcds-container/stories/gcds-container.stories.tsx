@@ -3,7 +3,7 @@ export default {
 
   argTypes: {
     // Props
-    align: {
+    alignment: {
       control: { type: 'select' },
       options: ['start', 'center', 'end'],
       table: {
@@ -142,7 +142,7 @@ const Template = args =>
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-container ${args.size != 'full' ? `size="${args.size}"` : null} ${
     args.border ? 'border' : null
-  } ${args.align ? `align="${args.align}"` : null} ${
+  } ${args.alignment ? `alignment="${args.alignment}"` : null} ${
     args.tag != 'div' ? `tag="${args.tag}"` : null
   } ${
     args.layout ? `layout="${args.layout}"` : null
@@ -155,7 +155,7 @@ const Template = args =>
 <!-- React code -->
 <GcdsContainer ${args.size != 'full' ? `size="${args.size}"` : null} ${
     args.border ? 'border' : null
-  } ${args.align ? `align="${args.align}"` : null} ${
+  } ${args.alignment ? `alignment="${args.alignment}"` : null} ${
     args.tag != 'div' ? `tag="${args.tag}"` : null
   } ${
     args.layout ? `layout="${args.layout}"` : null
@@ -308,7 +308,7 @@ const TemplatePlayground = args => `
 <gcds-container
   ${args.size != 'full' ? `size="${args.size}"` : null}
   ${args.border ? 'border' : null}
-  ${args.align ? `align="${args.align}"` : null}
+  ${args.alignment ? `alignment="${args.alignment}"` : null}
   ${args.tag != 'div' ? `tag="${args.tag}"` : null}
   ${args.layout ? `layout="${args.layout}"` : null}
   ${args.margin ? `margin="${args.margin}"` : null}
@@ -392,33 +392,33 @@ SizeXs.args = {
     '<p>This is a responsive container, the size is set to "xs". You can replace this text with any content or other components.</p>',
 };
 
-// ------ Container align ------
+// ------ Container alignment ------
 
-export const AlignStart = Template.bind({});
-AlignStart.args = {
+export const AlignmentStart = Template.bind({});
+AlignmentStart.args = {
   size: 'sm',
   border: true,
-  align: 'start',
+  alignment: 'start',
   tag: 'div',
   padding: '300',
   default: '<p>This container is aligned to the start.</p>',
 };
 
-export const AlignCenter = Template.bind({});
-AlignCenter.args = {
+export const AlignmentCenter = Template.bind({});
+AlignmentCenter.args = {
   size: 'sm',
   border: true,
-  align: 'center',
+  alignment: 'center',
   tag: 'div',
   padding: '300',
   default: '<p>This container is aligned to the center.</p>',
 };
 
-export const AlignEnd = Template.bind({});
-AlignEnd.args = {
+export const AlignmentEnd = Template.bind({});
+AlignmentEnd.args = {
   size: 'sm',
   border: true,
-  align: 'end',
+  alignment: 'end',
   tag: 'div',
   padding: '300',
   default: '<p>This container is aligned to the end.</p>',
@@ -476,7 +476,7 @@ Playground.args = {
   size: 'full',
   tag: 'div',
   padding: '300',
-  align: 'start',
+  alignment: 'start',
   border: true,
   default:
     '<p>This is a responsive container, you can replace this text with any content or other components.</p>',

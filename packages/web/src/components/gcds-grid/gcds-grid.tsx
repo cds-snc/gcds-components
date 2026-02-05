@@ -190,7 +190,7 @@ export class GcdsGrid {
    * Defines the grid's alignment if the grid containers
    * size is smaller than the parent's size.
    */
-  @Prop() align?: 'start' | 'center' | 'end';
+  @Prop() alignment?: 'start' | 'center' | 'end';
 
   /**
    * If total grid size is less than the size of its grid container,
@@ -234,7 +234,7 @@ export class GcdsGrid {
 
   render() {
     const {
-      align,
+      alignment,
       alignContent,
       alignItems,
       columns,
@@ -299,7 +299,7 @@ export class GcdsGrid {
     return (
       <Host>
         {container ? (
-          <gcds-container size={container} align={align}>
+          <gcds-container size={container} alignment={alignment}>
             <Tag class={classNames} style={handleGridStyles()}>
               <slot />
             </Tag>
