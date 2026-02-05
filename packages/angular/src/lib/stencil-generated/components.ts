@@ -2294,7 +2294,7 @@ export class GcdsTextarea {
    */
   set form(_: Components.GcdsTextarea['form']) {};
     /**
-   * If true, character limt counter will not be displayed under the textarea. @default false
+   * If true, character limit counter will not be displayed under the textarea. @default false
    */
   set hideLimit(_: Components.GcdsTextarea['hideLimit']) {};
     /**
