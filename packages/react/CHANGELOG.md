@@ -1,67 +1,102 @@
+([Français](#journal-des-modifications))
 # Changelog
 
-## [1.0.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v0.47.0...@gcds-core/components-react-v1.0.0) (2026-02-05)
+## v1.0.0
+Released on: 2026-02-05
 
+## 🎉 GCDS Components v1.0.0 is now available
 
-### ⚠ BREAKING CHANGES
+**GCDS Components** are reusable user interface building blocks designed to support a range of user objectives across the GC Design System. Each component is provided with production-ready code, best-practice guidance, and built-in accessibility considerations to ensure consistent, inclusive implementations across design and development.
 
-* release stable v1 @gcds-core/components@v1.0.0 ([#1046](https://github.com/cds-snc/gcds-components/issues/1046))
+This release marks the **official stable release** of GCDS Components and confirms that the package is **fully production-ready**.
 
-### :rocket: New Features
+---
 
-* Add gcds-date-input component ([#607](https://github.com/cds-snc/gcds-components/issues/607)) ([ce0b4cc](https://github.com/cds-snc/gcds-components/commit/ce0b4ccdbcc9b25ebd8fb8e5b5ca03f4d49332a5))
-* add native form attribute to textarea ([a2a283a](https://github.com/cds-snc/gcds-components/commit/a2a283a541023614f3ec722bee8874c42b862213))
-* Component rewrites (form-associated, gcds-radio-group, CSS rewrites)  ([#486](https://github.com/cds-snc/gcds-components/issues/486)) ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* lerna monorepo config ([#388](https://github.com/cds-snc/gcds-components/issues/388)) ([424b138](https://github.com/cds-snc/gcds-components/commit/424b138d6ebf8e3df77b2e265ff386bf1e39d7cf))
-* New gcds-notice component ([#627](https://github.com/cds-snc/gcds-components/issues/627)) ([bb98233](https://github.com/cds-snc/gcds-components/commit/bb98233f361fd9b6f02ee3be908cf4225f34bcf7))
-* release stable v1 @gcds-core/components@v1.0.0 ([#1046](https://github.com/cds-snc/gcds-components/issues/1046)) ([a2a283a](https://github.com/cds-snc/gcds-components/commit/a2a283a541023614f3ec722bee8874c42b862213))
-* Rework fieldset and new gcds-radios and gcds-checkboxes components ([#845](https://github.com/cds-snc/gcds-components/issues/845)) ([44339cc](https://github.com/cds-snc/gcds-components/commit/44339ccc9b05b3ea5a66ef599b1b7bff63974ea5))
-* update stencil and stencil output targets ([#851](https://github.com/cds-snc/gcds-components/issues/851)) ([0bf3ab4](https://github.com/cds-snc/gcds-components/commit/0bf3ab4eadd38705a03211638a9968bdea958a19))
+## 🚀 From alpha to stable
 
+This product was previously released as an **alpha package** under the name **`@cdssnc/gcds-components`**.
 
-### :bug: :wrench: Bug Fixes
+It has now been **republished as a stable package** under a new name and namespace: **`@gcds-core/components`**.
 
-* fix storybook spacing in component preview ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* invalid path for types ([#471](https://github.com/cds-snc/gcds-components/issues/471)) ([f859d43](https://github.com/cds-snc/gcds-components/commit/f859d438e9a79184d83157b92a97f855376777ac))
-* React output package.json configuration ([#901](https://github.com/cds-snc/gcds-components/issues/901)) ([1ee8332](https://github.com/cds-snc/gcds-components/commit/1ee8332aa7b88cd28011f57e0179a75aede18f6e))
+With this release:
 
+- The package is now considered **stable, production-ready, and supported for long-term use**
+- The API has been intentionally reviewed and aligned with design to establish a **clear, reliable contract**
+- Future updates will follow **semantic versioning guarantees**
 
-### :pencil: Documentation
+> **Breaking changes will only occur in major releases**, not in minor updates or patches.
 
-* update README installation instructions to match docs site ([#934](https://github.com/cds-snc/gcds-components/issues/934)) ([8431c4a](https://github.com/cds-snc/gcds-components/commit/8431c4a9bbdddcfcacb7d995eabb3db273abc032))
+---
 
+## 🎨 API Stabilization
 
-### :arrows_counterclockwise: Code Refactoring
+As part of the v1.0.0 release, we undertook a comprehensive review of the Components API to ensure it is **intentional, consistent, and aligned with design guidance**.
 
-* css rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* css rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* css rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* css rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* CSS rewrite ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
-* replace gcds-button skip-to-href with gcds-link component ([ae05841](https://github.com/cds-snc/gcds-components/commit/ae0584172bb2219f907074c48235ae8b4f8719f5))
+This work allows us to confidently guarantee API stability within the `1.x` release line, so teams can adopt GCDS Components knowing that **minor and patch releases will not introduce breaking changes**.
 
+Refer to the migration guide for details on the API changes and alignment work completed as part of this release.
 
-### :no_entry: Remove
+---
 
-* **gcds-radio-group + gcds-checkbox:** Remove old radio group and checkbox components ([#860](https://github.com/cds-snc/gcds-components/issues/860)) ([8e3025f](https://github.com/cds-snc/gcds-components/commit/8e3025f58744f25192195aae2fac04b567df7584))
+## 🔀 Migration required (from `@cdssnc/gcds-components`)
+
+If you're currently using **`@cdssnc/gcds-components`**, you’ll need to migrate to continue receiving updates, fixes, and future improvements.
+
+👉 **Follow the migration guide:**  
+**[Migrating from @cdssnc/gcds-components to @gcds-core/components](.docs/migration/stable-v1.md)**
+
+**Note**: Since GCDS Components was previously released as an alpha product (`@cdssnc/gcds-components`), we’ve kept an archived version of the CHANGELOG, which can be found [here](archived/CHANGELOG.md).
+
+The `@cdssnc/gcds-components` package has been deprecated on npm and will no longer receive updates or bug fixes. We strongly recommend migrating to `@gcds-core/components` to continue benefiting from future releases.
+
+---
+
+# Journal des modifications
+
+## v1.0.0
+
+Version publiée le&nbsp;: 2026-02-05
+
+## 🎉 Les composants du Système de design GC (SDGC) v1.0.0 sont maintenant disponibles
+**Les composants de Système de design GC** sont des éléments d’interface utilisateur réutilisables conçus pour répondre à divers objectifs de conception dans le cadre de Système de design GC. Chaque composant est fourni avec du code prêt pour la production, des conseils sur les meilleures pratiques et des considérations d’accessibilité intégrées pour assurer une mise en œuvre cohérente et inclusive tout au long de la conception et du développement.
+
+Cette version marque la publication d’une **version officielle stable** des composants de Système de design GC et confirme que le paquet est **entièrement prêt pour la production**.
+
+---
+
+## 🚀 De la phase alpha à l’état stable
+
+Ce produit avait déjà été publié sous forme de **paquet alpha** portant le nom : **`@cdssnc/gcds-components`**.
+
+Il a été **publié à nouveau en tant que paquet stable** sous un nouveau nom et un nouvel espace de nommage :  **`@gcds-core/components`**.
+
+Dans cette version :
+
+- Le paquet est maintenant considéré comme **stable, prêt pour la production et pris en charge pour une utilisation à long terme**
+- L’API a été intentionnellement examinée et harmonisée avec la conception afin d’établir un **contrat clair et fiable**
+- Les changements futurs suivront les **garanties du contrôle des versions sémantique**
+
+> **Les changements non rétrocompatibles n’auront lieu que dans les versions majeures**, et non dans les mises à jour ou correctifs mineurs.
+
+---
+
+## 🎨 Stabilisation de l’API
+
+Dans le cadre de la version v1.0.0, nous avons entrepris un examen complet de l’API des composants pour nous assurer qu’elle est **intentionnelle, cohérente et conforme aux directives de conception**.
+
+Ce travail nous permet de garantir en toute confiance la stabilité de l’API au sein de la série de versions `1.x`, de sorte que les équipes peuvent adopter les composants de Système de design GC en sachant que **les versions mineures et les correctifs n’introduiront pas de changements majeurs**.
+
+Reportez-vous au guide de migration pour en savoir plus sur les changements à l’API et les travaux d’harmonisation effectués dans le cadre de cette version.
+
+---
+
+## 🔀 Migration requise (depuis `@cdssnc/gcds-components`)
+
+Si vous utilisez actuellement **`@cdssnc/gcds-components`**, vous devrez migrer vers la nouvelle version pour continuer à recevoir des mises à jour et des améliorations.
+
+👉 **Suivez le guide de migration :**  
+**[Migration de @cdssnc/gcds-components vers @gcds-core/components](.docs/migration/stable-v1.md)**
+
+**Remarque&nbsp;:** Comme les composants de Système de design GC avaient été publiés auparavant en tant que produit alpha (`@cdssnc/gcds-components`), nous avons conservé une version archivée du journal des modifications. Vous pouvez y accéder [ici](archived/CHANGELOG.md).
+
+Le paquet `@cdssnc/gcds-components` a été mis hors service dans npm et ne recevra plus de mises à jour ni de corrections de bogues. Nous vous recommandons fortement de migrer vers `@gcds-core/components` pour continuer à profiter des prochaines versions.

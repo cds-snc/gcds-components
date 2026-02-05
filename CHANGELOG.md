@@ -2,7 +2,7 @@
 # Changelog
 
 ## v1.0.0
-Released on: 2026-xx-xx
+Released on: 2026-02-05
 
 ## 🎉 GCDS Components v1.0.0 is now available
 
@@ -55,7 +55,7 @@ The `@cdssnc/gcds-components` package has been deprecated on npm and will no lon
 
 ## v1.0.0
 
-Version publiée le&nbsp;: 2026-xx-xx
+Version publiée le&nbsp;: 2026-02-05
 
 ## 🎉 Les composants du Système de design GC (SDGC) v1.0.0 sont maintenant disponibles
 **Les composants de Système de design GC** sont des éléments d’interface utilisateur réutilisables conçus pour répondre à divers objectifs de conception dans le cadre de Système de design GC. Chaque composant est fourni avec du code prêt pour la production, des conseils sur les meilleures pratiques et des considérations d’accessibilité intégrées pour assurer une mise en œuvre cohérente et inclusive tout au long de la conception et du développement.
