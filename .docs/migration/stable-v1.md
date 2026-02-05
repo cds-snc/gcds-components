@@ -73,19 +73,19 @@ to
 > [!IMPORTANT]
 > This section lists all breaking changes and removed APIs. Review each component's changes carefully and update your codebase accordingly.
 
-| Component (HTML / Angular / Vue)                 |                                         | What's changed (removed)       | Type      |
-|--------------------------------------------------|-----------------------------------------|--------------------------------|-----------|
-| [Card](#card-gcds-card)                          | [React](#card-gcdscard)                 | `a` value for `card-title-tag` | Value     |
-| [Container](#container-gcds-container)           | [React](#container-gcdscontainer)       | `centered`, `main-container`   | Property  |
-| [Footer](#footer-gcds-footer)                    | [React](#footer-gcdsfooter)             | `wordmark-variant`             | Property  |
-| [Grid](#grid-gcds-grid)                          | [React](#grid-gcdsgrid)                 | `centered`                     | Property  |
-| [Header](#header-gcds-header)                    | [React](#header-gcdsheader)             | `signature-variant`            | Property  |
-| [Link](#link-gcds-link)                          | [React](#link-gcdslink)                 | `variant`                      | Property  |
-| [Notice](#notice-gcds-notice)                    | [React](#notice-gcdsnotice)             | `type`                         | Property  |
-| [PhaseBanner](#phasebanner-gcds-phase-banner)    | [React](#phasebanner-gcdsphasebanner)   | `<gcds-phase-banner>`          | Component |
-| [Textarea](#textarea-gcds-textarea)              | [React](#textarea-gcdstextarea)         | `character-count`              | Property  |
-| [TopNav](#topnav-gcds-top-nav)                   | [React](#topnav-gcdstopnav)             | values for `alignment`         | Value     |
-| [VerifyBanner](#verifybanner-gcds-verify-banner) | [React](#verifybanner-gcdsverifybanner) | `<gcds-verify-banner>`         | Component |
+| Component (HTML / Angular / Vue)                 |                                         | What's changed (removed)                             | Type      |
+|--------------------------------------------------|-----------------------------------------|------------------------------------------------------|-----------|
+| [Card](#card-gcds-card)                          | [React](#card-gcdscard)                 | `a` value for `card-title-tag`                       | Value     |
+| [Container](#container-gcds-container)           | [React](#container-gcdscontainer)       | `centered`, `main-container`                         | Property  |
+| [Footer](#footer-gcds-footer)                    | [React](#footer-gcdsfooter)             | `wordmark-variant`                                   | Property  |
+| [Grid](#grid-gcds-grid)                          | [React](#grid-gcdsgrid)                 | `centered`                                           | Property  |
+| [Header](#header-gcds-header)                    | [React](#header-gcdsheader)             | `signature-variant`                                  | Property  |
+| [Link](#link-gcds-link)                          | [React](#link-gcdslink)                 | `variant`                                            | Property  |
+| [Notice](#notice-gcds-notice)                    | [React](#notice-gcdsnotice)             | `type`                                               | Property  |
+| [PhaseBanner](#phasebanner-gcds-phase-banner)    | [React](#phasebanner-gcdsphasebanner)   | `<gcds-phase-banner>`                                | Component |
+| [Textarea](#textarea-gcds-textarea)              | [React](#textarea-gcdstextarea)         | `character-count`                                    | Property  |
+| [TopNav](#topnav-gcds-top-nav)                   | [React](#topnav-gcdstopnav)             | `left` \| `center` \| `right` values for `alignment` | Value     |
+| [VerifyBanner](#verifybanner-gcds-verify-banner) | [React](#verifybanner-gcdsverifybanner) | `<gcds-verify-banner>`                               | Component |
 
 ---
 
@@ -169,7 +169,7 @@ to
 ---
 
 ### TopNav `<gcds-top-nav>`
-**❌ Removed property values for alignment:** `left` | `right` | `center`
+**❌ Removed values:** `left` | `right` | `center` values for the `alignment` property
 
 **👉 Action required:**
 - `alignment="left"` → use `alignment="start"`
@@ -271,7 +271,7 @@ to
 ---
 
 ### TopNav `<GcdsTopNav>`
-**❌ Removed properties:** `alignment`
+**❌ Removed values:** `left` | `right` | `center` values for the `alignment` property
 
 **👉 Action required:**
 - `alignment="left"` → use `alignment="start"`
@@ -623,7 +623,7 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 ### Barre de navigation supérieure `<gcds-top-nav>`
 
-**❌ Propriétés supprimées :** `alignment`
+**❌ Valeurs supprimées :** valeurs `left` | `right` | `center` de la propriété `alignment`
 
 **👉Mesures à prendre&nbsp;:**
 
@@ -753,7 +753,7 @@ Pour commencer, modifiez vos importations de style et de scripts afin qu’elle 
 
 ### Barre de navigation supérieure `<GcdsTopNav>`
 
-**❌ Propriétés supprimées :** `alignment`
+**❌ Valeurs supprimées :** valeurs `left` | `right` | `center` de la propriété `alignment`
 
 **👉Mesures à prendre&nbsp;:**
 
