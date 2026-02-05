@@ -2,8 +2,8 @@ name: Publish packages
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - '@gcds-core/components-*'
 
 permissions:
   id-token: write
