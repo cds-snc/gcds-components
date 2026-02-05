@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-notice', () => {
   test('renders', async ({ page }) => {
-    const notices = await page.locator('gcds-notice');
+    const notices = page.locator('gcds-notice');
     const count = await notices.count();
 
     for (let i = 0; i < count; i++) {
