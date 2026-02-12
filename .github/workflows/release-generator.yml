@@ -34,7 +34,12 @@ jobs:
           set -euo pipefail
 
           # Default label release-please applies to the open PR
-          PR_JSON=$(gh pr list --state open --label "autorelease: pending" --json number,headRefName --limit 1)
+          PR_JSON=$(gh pr list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --label "autorelease: pending" \
+            --json number,headRefName \
+            --limit 1)
 
           if [ "$(echo "$PR_JSON" | jq 'length')" -eq 0 ]; then
             echo "No open release PR found (label: autorelease: pending)."
@@ -44,8 +49,8 @@ jobs:
           PR_BRANCH=$(echo "$PR_JSON" | jq -r '.[0].headRefName')
           PR_NUM=$(echo "$PR_JSON" | jq -r '.[0].number')
 
-          echo "branch=$PR_BRANCH" >> $GITHUB_OUTPUT
-          echo "number=$PR_NUM" >> $GITHUB_OUTPUT
+          echo "branch=$PR_BRANCH" >> "$GITHUB_OUTPUT"
+          echo "number=$PR_NUM" >> "$GITHUB_OUTPUT"
 
       # --- Checkout the release PR branch ---
       - name: Checkout release PR branch
