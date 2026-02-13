@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Vue wrapper for GC Design System components",
   "author": "Government of Canada / Gouvernement du Canada",
-  "homepage": "https://design-system.alpha.canada.ca/",
+  "homepage": "https://design-system.canada.ca/",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

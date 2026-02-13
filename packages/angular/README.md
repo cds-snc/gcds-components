@@ -10,7 +10,7 @@ The web components inherit native properties and interoperability.
 
 ## Documentation
 
-You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
+You can find the full documentation for GC Design System Components on [https://design-system.canada.ca/](https://design-system.canada.ca/).
 
 ## Angular installation instructions
 
@@ -53,7 +53,7 @@ Place the following code in the `styles.scss` file of your app to import GC Desi
 
 ### 3. Start building
 
-Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
+Once you've installed the design system, start building! Browse our available [components](https://design-system.canada.ca/en/components/) and [templates](https://design-system.canada.ca/en/page-templates/) to pull the code you need into your project.
 
 ## Using GC Design System components with `RouterLink`
 
@@ -103,7 +103,7 @@ Les composants Web héritent les propriétés et l'interopérabilité natives.
 
 ## Documentation
 
-Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
+Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.canada.ca/](https://systeme-design.canada.ca/).
 
 ## Instructions d’installation dans Angular
 
@@ -147,7 +147,7 @@ Pour importer les styles de Système de design GC, insérez le code suivant dans
 
 ### 3. Commencez à créer
 
-Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.canada.ca/fr/composants/) et [modèles](https://systeme-design.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
 
 ## Utilisation des composants du Système de design GC avec `RouterLink`
 
