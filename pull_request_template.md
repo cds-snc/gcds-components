@@ -51,11 +51,17 @@ For PRs that are complex, in lieu of a simple approval or an "LGTM" ✅, paste t
 - [ ] I have reviewed the code for clarity, maintainability and potential issues.
 
 **Design checklist (if needed)**
+
+For designers, include the following info with your approval:
+
 - [ ] I have tested the changes and functionality using the test instructions.
 - [ ] The changes meet design expectations and align with the design system.
 - [ ] Any design inconsistencies have been raised on slack or tracked via an issue.
 
 **Content checklist (if needed)**
+
+For content, include the following info with your approval:
+
 - [ ] I understand the context and intent of the content changes.
 - [ ] I have reviewed all content for clarity, readability, and tone.
 - [ ] I have reviewed English and French content for accuracy and parity.
