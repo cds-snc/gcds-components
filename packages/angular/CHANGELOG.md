@@ -43,7 +43,7 @@ Refer to the migration guide for details on the API changes and alignment work c
 If you're currently using **`@cdssnc/gcds-components`**, you’ll need to migrate to continue receiving updates, fixes, and future improvements.
 
 👉 **Follow the migration guide:**  
-**[Migrating from @cdssnc/gcds-components to @gcds-core/components](.docs/migration/stable-v1.md)**
+**[Migrating from @cdssnc/gcds-components to @gcds-core/components](/.docs/migration/stable-v1.md)**
 
 **Note**: Since GCDS Components was previously released as an alpha product (`@cdssnc/gcds-components`), we’ve kept an archived version of the CHANGELOG, which can be found [here](archived/CHANGELOG.md).
 
@@ -95,7 +95,7 @@ Reportez-vous au guide de migration pour en savoir plus sur les changements à l
 Si vous utilisez actuellement **`@cdssnc/gcds-components`**, vous devrez migrer vers la nouvelle version pour continuer à recevoir des mises à jour et des améliorations.
 
 👉 **Suivez le guide de migration :**  
-**[Migration de @cdssnc/gcds-components vers @gcds-core/components](.docs/migration/stable-v1.md)**
+**[Migration de @cdssnc/gcds-components vers @gcds-core/components](/.docs/migration/stable-v1.md)**
 
 **Remarque&nbsp;:** Comme les composants de Système de design GC avaient été publiés auparavant en tant que produit alpha (`@cdssnc/gcds-components`), nous avons conservé une version archivée du journal des modifications. Vous pouvez y accéder [ici](archived/CHANGELOG.md).
 
