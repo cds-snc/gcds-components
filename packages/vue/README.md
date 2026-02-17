@@ -10,7 +10,7 @@ The web components inherit native properties and interoperability.
 
 ## Documentation
 
-You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
+You can find the full documentation for GC Design System Components on [https://design-system.canada.ca/](https://design-system.canada.ca/).
 
 ## Vue installation instructions
 
@@ -58,7 +58,7 @@ b. Import the styles to your `App.vue` using the HTML style tag:
 
 ### 4. Start building
 
-Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
+Once you've installed the design system, start building! Browse our available [components](https://design-system.canada.ca/en/components/) and [templates](https://design-system.canada.ca/en/page-templates/) to pull the code you need into your project.
 
 ## Using Vite
 
@@ -99,7 +99,7 @@ Les composants Web héritent les propriétés et l’interopérabilité natives.
 
 ## Documentation
 
-Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
+Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.canada.ca/](https://systeme-design.canada.ca/).
 
 ## Instructions d’installation dans Vue
 
@@ -147,7 +147,7 @@ b. Importez les styles dans fichier `App.vue` en utilisant la balise HTML `style
 
 ### 4. Commencez à créer
 
-Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.canada.ca/fr/composants/) et [modèles](https://systeme-design.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
 
 ## Utilisation de Vite
 
