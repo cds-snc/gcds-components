@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.15",
-    "@angular/cli": "~19.2.15",
+    "@angular/cli": "~21.1.4",
     "@angular/compiler-cli": "^19.2.15",
     "@angular/platform-browser": "^19.2.15",
     "@angular/platform-browser-dynamic": "^19.2.15",
