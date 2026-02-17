@@ -1078,7 +1078,7 @@ We’re dropping support for the `footer` slot (`slot="footer"`). We’re removi
 
 **New (required)**: The stepper will now require text or an element passed into the `slot` to display the heading element. It’s a required property and the component will not render without it.
 
-If you experience issues with the change, ‌‌[contact us](https://design-system.alpha.canada.ca/en/contact/).
+If you experience issues with the change, ‌‌[contact us](https://design-system.canada.ca/en/contact/).
 
 ##### Old implementation
 
@@ -2026,7 +2026,7 @@ Arrêt du support pour (`slot="footer"`) car nous n'avons pas observé d'utilit�
 
 **Nouveau (obligatoire)**: Le composant requiert maintenant du texte ou un élément dans le `slot` afin d'afficher l'élément d'en-tête. C'est une propriété obligatoire et le composant ne sera pas généré sans elle.
 
-Si vous avez des problèmes avec le changement, ‌‌[contactez-nous](https://design-system.alpha.canada.ca/en/contact/).
+Si vous avez des problèmes avec le changement, ‌‌[contactez-nous](https://design-system.canada.ca/en/contact/).
 
 ##### Vieille implémentation
 
