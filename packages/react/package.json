@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "React wrapper for gcds-components",
-  "homepage": "https://design-system.alpha.canada.ca/",
+  "homepage": "https://design-system.canada.ca/",
   "bugs": {
     "url": "https://github.com/cds-snc/gcds-components/issues"
   },

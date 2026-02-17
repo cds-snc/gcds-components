@@ -208,7 +208,7 @@ Default.args = {
 export const External = Template.bind({});
 External.args = {
   display: 'inline',
-  href: 'http://design-system.alpha.canada.ca',
+  href: 'http://design-system.canada.ca',
   linkRole: 'default',
   rel: '',
   target: '_blank',

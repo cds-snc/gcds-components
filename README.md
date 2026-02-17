@@ -11,7 +11,7 @@ We are using [Stencil.js](https://stenciljs.com/) to build our web components.
 
 ## Documentation
 
-You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
+You can find the full documentation for GC Design System Components on [https://design-system.canada.ca/](https://design-system.canada.ca/).
 
 
 
@@ -49,7 +49,7 @@ Nous utilisons [Stencil.js](https://stenciljs.com/) pour créer nos composants W
 
 ## Documentation
 
-Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
+Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.canada.ca/](https://systeme-design.canada.ca/).
 
 ## Paquets
 
