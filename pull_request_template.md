@@ -13,7 +13,35 @@ _TODO: Link to related issue(s) that this PR addresses or fixes, i.e. "Closes #1
 
 ## 🧪 Test instructions | Instructions pour tester la modification
 
-_TODO: Fill in test instructions for the reviewer. Describe any steps needed to verify the change(s) work as expected._
+_TODO: Replace the instructions below as needed. Describe any steps needed to verify the change(s) work as expected._
+
+1) Check the current behaviour
+- [ ] Checkout the `main` branch
+- [ ] Open the `index.html` test file
+- [ ] Add the following test code inside the `<body>`:
+  ```html
+  // add code here
+  ```
+- [ ] Confirm the following behaviour:
+    - [ ] TODO (add current behaviour)
+- [ ] (Optional) Confirm the behaviour in angular, react and vue
+
+2) Validate the change
+- [ ] Checkout this branch
+- [ ] Run `npm install` (if needed)
+- [ ] Open the `index.html` test file
+- [ ] Use the exact same test code as above
+- [ ] Confirm the following behaviour:
+    - [ ] TODO (describe changed behaviour)
+- [ ] Confirm change in angular wrapper
+  - [ ] Update the `packages/angular/tests/app/src/app/components/home/home.components.ts` file and add the test code
+  - [ ] On `packages/angular/` run `npm run install && ng serve
+- [ ] Confirm change in react wrapper
+  - [ ] Update the `packages/react/tests/app/src/pages/Home.tsx` file and add the test code
+  - [ ] On `packages/angular/` run `npm run install && npm run dev
+- [ ] Confirm change in vue wrapper
+  - [ ] Update the `packages/vue/tests/app/src/view/Home.vue` file and add the test code
+  - [ ] On `packages/angular/` run `npm run install && npm run dev
 
 ## ✍️ Author checklist | Liste de vérification de l'auteur
 
