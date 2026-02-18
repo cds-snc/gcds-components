@@ -33,6 +33,7 @@ function sanitizeComponentPaths(components) {
 
     // Sanitize nested paths in complexType.references
     component.props?.forEach(prop => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       prop.complexType?.references &&
         Object.values(prop.complexType.references).forEach(ref => {
           ref.path = sanitizePath(ref.path);
