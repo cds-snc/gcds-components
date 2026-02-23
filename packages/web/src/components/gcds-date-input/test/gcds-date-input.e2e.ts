@@ -1,4 +1,4 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
@@ -7,7 +7,7 @@ import { dateInputErrorMessage } from '../../../validators/input-validators/inpu
 
 test.describe('gcds-date-input', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -21,7 +21,7 @@ test.describe('gcds-date-input', () => {
    * Value
    */
   test('Format: full - value', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -39,7 +39,7 @@ test.describe('gcds-date-input', () => {
     expect(value).toEqual('1234-03-11');
   });
   test('Format: compact - value', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -65,7 +65,7 @@ test.describe('gcds-date-input', () => {
    * Invalid value
    */
   test('Format: full - invalid value', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -83,7 +83,7 @@ test.describe('gcds-date-input', () => {
     expect(value).toEqual('12345-03-223');
   });
   test('Format: compact - invalid value', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -109,7 +109,7 @@ test.describe('gcds-date-input', () => {
    * Unset value
    */
   test('Format: full - unset value', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -137,7 +137,7 @@ test.describe('gcds-date-input', () => {
     expect(value).toEqual('');
   });
   test('Format: compact - unset value', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -173,7 +173,7 @@ test.describe('gcds-date-input', () => {
    * Validation
    */
   test('Validation - Missing all fields', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -189,7 +189,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.all);
   });
   test('Validation - Missing day', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -208,7 +208,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.missingday);
   });
   test('Validation - Missing year', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -227,7 +227,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.missingyear);
   });
   test('Validation - Missing month', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -246,7 +246,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonth);
   });
   test('Validation - Missing month and day', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -264,7 +264,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthday);
   });
   test('Validation - Missing day and year', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -282,7 +282,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.missingdayyear);
   });
   test('Validation - Missing month and year', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -300,7 +300,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthyear);
   });
   test('Validation - Year length', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -320,7 +320,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.invalidyearlength);
   });
   test('Validation - Invalid day', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -340,7 +340,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual(dateInputErrorMessage.en.invalidday);
   });
   test('Validation - Custom validation', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -391,7 +391,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual('');
   });
   test('Validation - Custom validation old format', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -445,7 +445,7 @@ test.describe('gcds-date-input', () => {
    * HTML validity
    */
   test('Format: full - valid validity', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -469,7 +469,7 @@ test.describe('gcds-date-input', () => {
     expect(validity).toEqual(true);
   });
   test('Format: compact - valid validity', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -498,7 +498,7 @@ test.describe('gcds-date-input', () => {
     expect(validity).toEqual(true);
   });
   test('Validation - min', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -522,7 +522,7 @@ test.describe('gcds-date-input', () => {
     expect(errorMessage).toEqual('Date must be on or after 2000-01-01.');
   });
   test('Validation - max', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -557,33 +557,25 @@ test.describe('gcds-date-input a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Labels
    */
   test('Proper labels', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['label'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['label'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Keyboard focus
    */
   test('Keyboard focus', async ({ page }) => {
-    const element = await page.locator('gcds-date-input');
+    const element = page.locator('gcds-date-input');
     await expect(element).toHaveClass('hydrated');
 
     await page.keyboard.press('Tab');
