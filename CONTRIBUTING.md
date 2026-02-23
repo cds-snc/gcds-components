@@ -16,11 +16,24 @@ GC Design System is committed to building a safe, welcoming, harassment-free cul
 
 Anyone can contribute to GC Design System. Whether it's submitting a bug, helping us with our “next priorities” or making requests, we welcome your ideas on how to improve GC Design System.
 
-First-time contributor? We’re here to help guide you through a successful contribution. We review all contributions before merging them into the GC Design System. Beyond pull requests, we’ve also created forms to ease with the submission of feature requests, contributions, and reporting bugs.  If you’re unsure about anything, don’t hesitate to [Contact us](https://design-system.alpha.canada.ca/en/contact/).
+First-time contributor? We’re here to help guide you through a successful contribution. We review all contributions before merging them into the GC Design System. Beyond pull requests, we’ve also created forms to ease with the submission of feature requests, contributions, and reporting bugs.  If you’re unsure about anything, don’t hesitate to [Contact us](https://design-system.canada.ca/en/contact/).
+
+#### Local installation
+
+- Clone the repo `git clone https://github.com/cds-snc/gcds-components`.
+- Run `npm install` to install all Node.js dependencies.
+- Run `npm run build` to compile all three packages (web components, react and angular).
+
+You can test the Angular and React packages locally as this repository is setup using [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`.
+
+
+#### Compiling all packages
+
+In the root directory, run `npm run build`. All five packages will be compiled.
 
 ### Submitting contributions to “next priorities”
 
-In the [Get Involved](https://design-system.alpha.canada.ca/en/get-involved/) page of our site, we'll be posting about our “next priorities”.  These will typically be the components or patterns that we’ve identified as priorities in our roadmap to work on next. Before developing them, we want to ensure that the community has an opportunity to submit contributions that can accelerate and inform design and delivery.
+In the [Get Involved](https://design-system.canada.ca/en/get-involved/) page of our site, we'll be posting about our “next priorities”.  These will typically be the components or patterns that we’ve identified as priorities in our roadmap to work on next. Before developing them, we want to ensure that the community has an opportunity to submit contributions that can accelerate and inform design and delivery.
 
 The types of contributions we'll be looking for:
 
@@ -34,7 +47,7 @@ Submit these contributions directly in [Github](https://github.com/cds-snc/gcds-
 
 ### Volunteer as a research participant for GC Design System
 
-We're always looking for new volunteers to help us continue to iterate and improve GC Design System. [Contact us](https://design-system.alpha.canada.ca/en/contact/) to sign up for usability and accessibility testing. You'll be added to our volunteer list and a GC Design System team member will reach out with opportunities to participate. 
+We're always looking for new volunteers to help us continue to iterate and improve GC Design System. [Contact us](https://design-system.canada.ca/en/contact/) to sign up for usability and accessibility testing. You'll be added to our volunteer list and a GC Design System team member will reach out with opportunities to participate. 
 
 ### Submitting bugs and issues 
 
@@ -62,7 +75,7 @@ Feel free to propose changes by creating [pull requests](https://docs.github.com
 
 If this is your first time using Github - follow these [instructions](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) to create your account.  
 
-Github is our preferred channel for contributions. However, if you are having any difficulties or prefer to submit a contribution via a different channel, submit via our [Contact us](https://design-system.alpha.canada.ca/en/contact/) page.
+Github is our preferred channel for contributions. However, if you are having any difficulties or prefer to submit a contribution via a different channel, submit via our [Contact us](https://design-system.canada.ca/en/contact/) page.
 
 ### Security
 
@@ -120,11 +133,25 @@ Système de design GC s’engage à créer une culture sans harcèlement où rè
 
 Tout le monde peut contribuer à Système de design GC. Qu’il s’agisse de signaler un bogue, de nous aider vis-à-vis de nos « prochaines priorités » ou de faire des demandes, nous accueillons vos idées sur la façon d’améliorer Système de design GC.
 
-Vous contribuez pour la première fois? Nous sommes là pour vous guider dans la réussite de votre contribution. Nous examinons toutes les contributions avant de les fusionner dans Système de design GC. En plus de faire des demandes de tirage (pull requests), vous pouvez utiliser les formulaires que nous avons créés pour faciliter la soumission des demandes de fonctionnalités, des contributions et des rapports de bogue. Si vous doutez de la manière de vous y prendre, n’hésitez pas à [nous contacter](https://systeme-design.alpha.canada.ca/fr/contactez/).
+Vous contribuez pour la première fois? Nous sommes là pour vous guider dans la réussite de votre contribution. Nous examinons toutes les contributions avant de les fusionner dans Système de design GC. En plus de faire des demandes de tirage (pull requests), vous pouvez utiliser les formulaires que nous avons créés pour faciliter la soumission des demandes de fonctionnalités, des contributions et des rapports de bogue. Si vous doutez de la manière de vous y prendre, n’hésitez pas à [nous contacter](https://systeme-design.canada.ca/fr/contactez/).
+
+## Installation locale
+
+- Copiez le référentiel `git clone https://github.com/cds-snc/gcds-components`.
+- Exécutez ensuite `npm install` pour installer toutes les dépendances Node.js.
+- Finalement, exécutez `npm run build` pour compiler les trois paquets (composants Web, React et Angular).
+
+Vous pouvez tester localement les paquets Angular et React puisque ce référentiel est configuré à l’aide de [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces gère automatiquement la liaison de paquets dépendants à l’exécution de `npm install`, donc nul besoin d’exécuter manuellement `npm link`.
+
+<
+
+### Compilation de tous les paquets
+
+Dans le répertoire racine, exécutez `npm run build`. Les cinq paquets seront alors compilés.
 
 ### Contribuer aux « prochaines priorités »
 
-Nous publions la nature de nos « prochaines priorités » dans la page [« S’impliquer »](https://systeme-design.alpha.canada.ca/fr/simpliquer/) de notre site Web. Il s’agit généralement des composants ou des modèles que nous avons marqués comme prioritaires dans notre feuille de route. Avant de les développer, nous voulons nous assurer que la communauté a la possibilité de soumettre des contributions qui peuvent en accélérer et en éclairer la conception et la mise en œuvre. 
+Nous publions la nature de nos « prochaines priorités » dans la page [« S’impliquer »](https://systeme-design.canada.ca/fr/simpliquer/) de notre site Web. Il s’agit généralement des composants ou des modèles que nous avons marqués comme prioritaires dans notre feuille de route. Avant de les développer, nous voulons nous assurer que la communauté a la possibilité de soumettre des contributions qui peuvent en accélérer et en éclairer la conception et la mise en œuvre. 
 
 Voici les types de contribution que nous recherchons :
 
@@ -138,7 +165,7 @@ Soumettez ces contributions directement dans [Github](https://github.com/cds-snc
 
 ### Se porter volontaire pour participer à nos études
 
-Nous sommes toujours à la recherche de nouvelles personnes pour nous aider à continuer d’itérer et d’améliorer Système de design GC. [Contactez-nous](https://systeme-design.alpha.canada.ca/fr/contactez/) pour vous inscrire aux tests d’utilisabilité et d’accessibilité. Vous faites désormais partie de notre liste de volontaires. Un membre de l’équipe de Système de design GC vous contactera lorsqu’une occasion de participer se présentera. 
+Nous sommes toujours à la recherche de nouvelles personnes pour nous aider à continuer d’itérer et d’améliorer Système de design GC. [Contactez-nous](https://systeme-design.canada.ca/fr/contactez/) pour vous inscrire aux tests d’utilisabilité et d’accessibilité. Vous faites désormais partie de notre liste de volontaires. Un membre de l’équipe de Système de design GC vous contactera lorsqu’une occasion de participer se présentera. 
 
 ### Rapporter des bogues et des problèmes 
 
@@ -166,7 +193,7 @@ N’hésitez pas à proposer des modifications en créant une [demande de tirage
 
 Si c’est la première fois que vous utilisez GitHub, suivez ces [instructions](https://docs.github.com/fr/get-started/start-your-journey/creating-an-account-on-github) pour créer votre compte. 
 
-GitHub est le canal que nous préférons pour les contributions. Cependant, si vous rencontrez des difficultés ou préférez soumettre une contribution via un autre canal, utilisez notre page [Contactez-nous](https://systeme-design.alpha.canada.ca/fr/contactez/).
+GitHub est le canal que nous préférons pour les contributions. Cependant, si vous rencontrez des difficultés ou préférez soumettre une contribution via un autre canal, utilisez notre page [Contactez-nous](https://systeme-design.canada.ca/fr/contactez/).
 
 
 ### Sécurité

@@ -8,7 +8,7 @@ import Forms from './pages/Forms.tsx';
 import FileUploader from './pages/FileUploader.tsx';
 
 import '@gcds-core/css-shortcuts/dist/gcds-css-shortcuts.min.css';
-import '@cdssnc/gcds-components-react/gcds.css';
+import '@gcds-core/components-react/gcds.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

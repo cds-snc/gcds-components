@@ -115,6 +115,14 @@ export class GcdsSignature {
         {type === 'signature' ? (
           <Tag {...sigAttrs}>
             <div innerHTML={selectSVG}></div>
+            <gcds-sr-only
+              tag="span"
+              lang={lang === 'en' ? 'fr' : 'en'}>
+              {lang === 'en'
+                ? `/ ${i18n.fr.gc}`
+                : `/ ${i18n.en.gc}`
+              }
+            </gcds-sr-only>
           </Tag>
         ) : (
           <div class="gcds-signature" innerHTML={selectSVG}></div>
