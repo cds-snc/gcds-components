@@ -15,7 +15,7 @@
     "url": "https://github.com/cds-snc/gcds-components"
   },
   "peerDependencies": {
-    "@angular/common": "^19.0.0 || ^20.0.0",
+    "@angular/common": "^20.3.14 ^20.3.14",
     "@angular/core": "^19.0.0 || ^20.0.0",
     "@gcds-core/components": "^1.0.0"
   },
