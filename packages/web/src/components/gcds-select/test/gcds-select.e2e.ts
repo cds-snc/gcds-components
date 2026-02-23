@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-select', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-select');
+    const element = page.locator('gcds-select');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -20,7 +20,7 @@ test.describe('gcds-select', () => {
    * Validation
    */
   test('Validation', async ({ page }) => {
-    const element = await page.locator('gcds-select');
+    const element = page.locator('gcds-select');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -45,7 +45,7 @@ test.describe('gcds-select', () => {
   });
 
   test('Validation - custom validation', async ({ page }) => {
-    const element = await page.locator('gcds-select');
+    const element = page.locator('gcds-select');
 
     // Wait for element to attach and become visible
     await element.waitFor({ state: 'attached' });
@@ -90,7 +90,7 @@ test.describe('gcds-select', () => {
   });
 
   test('Validation - custom validation (old format)', async ({ page }) => {
-    const element = await page.locator('gcds-select');
+    const element = page.locator('gcds-select');
 
     // Wait for element to attach and become visible
     await element.waitFor({ state: 'attached' });
@@ -136,7 +136,7 @@ test.describe('gcds-select', () => {
   });
 
   test('HTML validity', async ({ page }) => {
-    const element = await page.locator('gcds-select');
+    const element = page.locator('gcds-select');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -169,7 +169,7 @@ test.describe('gcds-select a11y tests', () => {
    * Aria-invalid true if error test
    */
   test('aria-invalid', async ({ page }) => {
-    const element = await page.locator('gcds-select');
+    const element = page.locator('gcds-select');
 
     await element.evaluate(el => {
       el.setAttribute('error-message', 'Field required');
@@ -184,21 +184,17 @@ test.describe('gcds-select a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   /**
    * Select keyboard focus
    */
   test('select keyboard focus', async ({ page }) => {
-    const element = await page.locator('gcds-select');
+    const element = page.locator('gcds-select');
     await expect(element).toHaveClass('hydrated');
 
     const select = element.locator('select');
@@ -217,7 +213,7 @@ test.describe('gcds-select a11y tests', () => {
    * Select label test
    */
   test('select contains label', async ({ page }) => {
-    const element = await page.locator('gcds-select');
+    const element = page.locator('gcds-select');
 
     await expect(element).toHaveClass('hydrated');
 

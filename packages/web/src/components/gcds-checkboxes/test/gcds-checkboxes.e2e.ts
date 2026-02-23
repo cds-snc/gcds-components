@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-checkboxes', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -19,7 +19,7 @@ test.describe('gcds-checkboxes', () => {
    * Events
    */
   test('Emit gcds custom events', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -43,7 +43,7 @@ test.describe('gcds-checkboxes', () => {
     expect(gcdsFocus).toHaveReceivedEvent();
   });
   test('Disabled - no events', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -71,7 +71,7 @@ test.describe('gcds-checkboxes', () => {
    * JS manipulation
    */
   test('Using JS - assign options', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -109,7 +109,7 @@ test.describe('gcds-checkboxes', () => {
     ).toBe('red');
   });
   test('Using JS - assign value', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -140,7 +140,7 @@ test.describe('gcds-checkboxes', () => {
    * Validation
    */
   test('Validation', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -168,7 +168,7 @@ test.describe('gcds-checkboxes', () => {
     expect(errorMessage).toEqual('');
   });
   test('Validation - custom validation', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -218,7 +218,7 @@ test.describe('gcds-checkboxes', () => {
     expect(errorMessage).toEqual('');
   });
   test('Validation - custom validation old format', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -266,7 +266,7 @@ test.describe('gcds-checkboxes', () => {
     expect(errorMessage).toEqual('');
   });
   test('HTML validity', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -301,30 +301,22 @@ test.describe('gcds-checkboxes a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Labels
    */
   test('Proper labels', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['label'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['label'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   test('Proper labels - hidden label', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -344,20 +336,16 @@ test.describe('gcds-checkboxes a11y tests', () => {
 
     await page.waitForChanges();
 
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['label'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['label'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Keyboard focus
    */
   test('Keyboard focus', async ({ page }) => {
-    const element = await page.locator('gcds-checkboxes');
+    const element = page.locator('gcds-checkboxes');
     await expect(element).toHaveClass('hydrated');
 
     await page.keyboard.press('Tab');

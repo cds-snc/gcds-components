@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-error-summary', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-error-summary');
+    const element = page.locator('gcds-error-summary');
 
     // Wait for element state
     await element.waitFor({ state: 'hidden' });
@@ -15,7 +15,7 @@ test.describe('gcds-error-summary', () => {
   });
 
   test('renders from listen', async ({ page }) => {
-    const form = await page.locator('form');
+    const form = page.locator('form');
     await form.waitFor({ state: 'hidden' });
 
     await form.evaluate(el => {
@@ -57,7 +57,7 @@ test.describe('gcds-error-summary', () => {
 
     await page.waitForChanges();
 
-    const submitButton = await page.locator('button[type="submit"]');
+    const submitButton = page.locator('button[type="submit"]');
     await submitButton.waitFor();
 
     await submitButton.click();
@@ -88,7 +88,7 @@ test.describe('gcds-error-summary a11y tests', () => {
    * Colour contrast test
    */
   test('colour contrast', async ({ page }) => {
-    const element = await page.locator('gcds-error-summary');
+    const element = page.locator('gcds-error-summary');
     await element.waitFor({ state: 'hidden' });
 
     element.evaluate(
@@ -99,20 +99,16 @@ test.describe('gcds-error-summary a11y tests', () => {
 
     await page.waitForChanges();
 
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Links have discernible text
    */
   test('Link name', async ({ page }) => {
-    const form = await page.locator('form');
+    const form = page.locator('form');
     await form.waitFor({ state: 'hidden' });
 
     await form.evaluate(el => {
@@ -132,20 +128,16 @@ test.describe('gcds-error-summary a11y tests', () => {
 
     await page.waitForChanges();
 
-    const submitButton = await page.locator('button');
+    const submitButton = page.locator('button');
     await submitButton.waitFor();
 
     await submitButton.click();
 
     await page.waitForChanges();
 
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });
