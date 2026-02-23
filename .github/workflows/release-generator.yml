@@ -19,7 +19,64 @@ jobs:
           app-id: ${{ secrets.CDS_RELEASE_BOT_APP_ID }}
           private-key: ${{ secrets.CDS_RELEASE_BOT_PRIVATE_KEY }}
 
+      # --- Run release please to open a release PR ---
       - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
         id: release
         with:
           token: ${{ steps.sre_app_token.outputs.token }}
+
+      # --- Find the open release PR created/updated by release-please ---
+      - name: Find release PR branch
+        id: rp_pr
+        env:
+          GH_TOKEN: ${{ steps.sre_app_token.outputs.token }}
+        run: |
+          set -euo pipefail
+
+          # Default label release-please applies to the open PR
+          PR_JSON=$(gh pr list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --label "autorelease: pending" \
+            --json number,headRefName \
+            --limit 1)
+
+          if [ "$(echo "$PR_JSON" | jq 'length')" -eq 0 ]; then
+            echo "No open release PR found (label: autorelease: pending)."
+            exit 0
+          fi
+
+          PR_BRANCH=$(echo "$PR_JSON" | jq -r '.[0].headRefName')
+          PR_NUM=$(echo "$PR_JSON" | jq -r '.[0].number')
+
+          echo "branch=$PR_BRANCH" >> "$GITHUB_OUTPUT"
+          echo "number=$PR_NUM" >> "$GITHUB_OUTPUT"
+
+      # --- Checkout the release PR branch ---
+      - name: Checkout release PR branch
+        if: ${{ steps.rp_pr.outputs.branch != '' }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.rp_pr.outputs.branch }}
+          fetch-depth: 0
+          token: ${{ steps.sre_app_token.outputs.token }}
+
+      # --- Copy changelog and commit into the same PR branch ---
+      - name: Sync root CHANGELOG.md from packages/web/CHANGELOG.md
+        if: ${{ steps.rp_pr.outputs.branch != '' }}
+        run: |
+          set -euo pipefail
+
+          cp packages/web/CHANGELOG.md CHANGELOG.md
+
+          if git diff --quiet -- CHANGELOG.md; then
+            echo "Root CHANGELOG.md already matches packages/web/CHANGELOG.md"
+            exit 0
+          fi
+
+          git config user.name "cds-release-bot[bot]"
+          git config user.email "cds-release-bot[bot]@users.noreply.github.com"
+
+          git add CHANGELOG.md
+          git commit -m "chore(changelog): sync root CHANGELOG.md"
+          git push

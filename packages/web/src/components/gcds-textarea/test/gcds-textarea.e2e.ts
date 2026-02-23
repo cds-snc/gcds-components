@@ -208,7 +208,7 @@ test.describe('gcds-textarea', () => {
 
     await element.evaluate(el => {
       (el as HTMLGcdsTextareaElement).value = 'too long value';
-      (el as HTMLGcdsTextareaElement).characterCount = 7;
+      (el as HTMLGcdsTextareaElement).maxlength = 7;
     });
 
     await page.waitForChanges();
@@ -236,6 +236,66 @@ test.describe('gcds-textarea', () => {
     );
 
     expect(errorMessage).toEqual('');
+  });
+
+  test('Character count updating', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsTextareaElement).maxlength = 20;
+    });
+
+    await page.waitForChanges();
+
+    expect(
+      await element.evaluate(
+        el =>
+          (el as HTMLGcdsTextareaElement).shadowRoot.getElementById(
+            'textarea__count-textarea-default',
+          ).textContent,
+      ),
+    ).toEqual('You can enter up to 20 characters');
+
+    await element.locator('textarea').fill('maxlength');
+
+    await page.waitForChanges();
+
+    // Check if visual count has updated
+    expect(
+      await element.evaluate(
+        el =>
+          (el as HTMLGcdsTextareaElement).shadowRoot.getElementById(
+            'textarea__visual-count-textarea-default',
+          ).textContent,
+      ),
+    ).toEqual('Characters left: 11');
+
+    // Check that the sr count hasn't updated yet
+    expect(
+      await element.evaluate(
+        el =>
+          (el as HTMLGcdsTextareaElement).shadowRoot.getElementById(
+            'textarea__sr-count-textarea-default',
+          ).textContent,
+      ),
+    ).toEqual('');
+
+    await page.waitForTimeout(2500); // Wait for character count update delay
+
+    // Check if the sr count has updated
+    expect(
+      await element.evaluate(
+        el =>
+          (el as HTMLGcdsTextareaElement).shadowRoot.getElementById(
+            'textarea__sr-count-textarea-default',
+          ).textContent,
+      ),
+    ).toEqual('Characters left: 11');
   });
 });
 

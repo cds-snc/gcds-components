@@ -1,9 +1,9 @@
 {
-  "name": "@cdssnc/gcds-components-react",
-  "version": "0.46.0",
+  "name": "@gcds-core/components-react",
+  "version": "1.0.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "React wrapper for gcds-components",
-  "homepage": "https://design-system.alpha.canada.ca/",
+  "homepage": "https://design-system.canada.ca/",
   "bugs": {
     "url": "https://github.com/cds-snc/gcds-components/issues"
   },
@@ -41,7 +41,7 @@
     "gcds.css"
   ],
   "dependencies": {
-    "@cdssnc/gcds-components": "^0.46.0",
+    "@gcds-core/components": "^1.0.0",
     "@stencil/react-output-target": "^1.1.0"
   },
   "devDependencies": {

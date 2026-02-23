@@ -62,6 +62,7 @@
     :host([slot='home']) > .gcds-nav-link {
       font: var(--gcds-nav-link-top-nav-home-font);
       padding: var(--gcds-nav-link-top-nav-home-padding);
+      color: var(--gcds-nav-link-top-nav-text-primary);
     }
   }
 
@@ -105,8 +106,8 @@
   :host > .gcds-nav-link--topnav.gcds-nav-link[aria-current='page'] {
     @media only screen and (width >= 64em) {
       background-color: transparent;
-      color: var(--gcds-nav-link-top-nav-text);
-      border-block-end-color: var(--gcds-nav-link-active-border-color);
+      color: var(--gcds-nav-link-top-nav-text-primary);
+      border-block-end-color: currentColor;
     }
   }
 

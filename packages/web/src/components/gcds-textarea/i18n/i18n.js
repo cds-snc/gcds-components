@@ -1,14 +1,14 @@
 const I18N = {
   en: {
     characters: {
-      allowed: 'characters allowed',
-      left: 'characters left',
+      left: 'Characters left: ',
+      maxlength: 'You can enter up to {{num}} characters',
     },
   },
   fr: {
     characters: {
-      allowed: 'caractères maximum',
-      left: 'caractères restants',
+      left: 'Caractères restants\u00A0: ',
+      maxlength: "Vous pouvez saisir jusqu'à {{num}} caractères",
     },
   },
 };

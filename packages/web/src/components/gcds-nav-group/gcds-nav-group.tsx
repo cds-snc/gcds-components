@@ -171,7 +171,7 @@ export class GcdsNavGroup {
         'alignment',
       );
 
-      if (alignment === 'right') {
+      if (alignment === 'end') {
         this.navStyle += ' dropdown-right';
       }
 
