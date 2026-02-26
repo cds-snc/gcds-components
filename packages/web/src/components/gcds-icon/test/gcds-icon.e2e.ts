@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-icon', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-icon');
+    const element = page.locator('gcds-icon');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -27,20 +27,16 @@ test.describe('gcds-icon a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Image alt text
    */
   test('Image alt text', async ({ page }) => {
-    const element = await page.locator('gcds-icon');
+    const element = page.locator('gcds-icon');
     await element.waitFor({ timeout: 10000 });
 
     await element.evaluate(
@@ -49,13 +45,9 @@ test.describe('gcds-icon a11y tests', () => {
 
     await page.waitForChanges();
 
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['image-alt'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['image-alt'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });
