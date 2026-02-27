@@ -50,6 +50,16 @@ export class GcdsHeader {
   @Prop({ reflect: false, mutable: false }) skipToHref!: string;
 
   /**
+   * Contextual Sign In - Link to sign in page for institutions
+   */
+  @Prop({ reflect: false, mutable: false }) signInHref: string;
+
+  /**
+   * Contextual Sign In - Label for the sign in link
+   */
+  @Prop({ reflect: false, mutable: false }) signInLabel: string;
+
+  /**
    * Events
    */
 
@@ -166,15 +176,38 @@ export class GcdsHeader {
     return !!this.el.querySelector('[slot="breadcrumb"]');
   }
 
+  private get hasSignIn() {
+    return !!this.signInHref;
+  }
+
+  private get hasThemeTopicMenu() {
+    return !!this.el.querySelector('gcds-topic-menu[slot="menu"]');
+  }
+
+  private get renderSignIn() {
+    if (this.signInHref) {
+      return (
+        <gcds-button class="gcds-header__sign-in" type="link" href={this.signInHref}>
+          {this.signInLabel ? this.signInLabel : i18n[this.lang].signIn}
+        </gcds-button>
+      );
+    } else {
+      return;
+    }
+  }
+
   render() {
     const {
       renderSkipToNav,
       renderToggle,
       renderSignature,
       renderSearch,
+      renderSignIn,
       hasSearch,
       hasBanner,
       hasBreadcrumb,
+      hasSignIn,
+      hasThemeTopicMenu,
     } = this;
     return (
       <Host role="banner">
@@ -189,10 +222,18 @@ export class GcdsHeader {
             {renderSearch}
           </div>
         </div>
-        <slot name="menu"></slot>
-        {hasBreadcrumb ? (
-          <div class="gcds-header__container">
+
+        {hasThemeTopicMenu ? (
+          <div class="gcds-header__container-top">
+            <slot name="menu"></slot>
+            {renderSignIn}
+          </div>
+        ) : <slot name="menu"></slot>}
+
+        {hasBreadcrumb || (hasSignIn && !hasThemeTopicMenu) ? (
+          <div class="gcds-header__container-bottom">
             <slot name="breadcrumb"></slot>
+            {!hasThemeTopicMenu ? renderSignIn : null}
           </div>
         ) : null}
       </Host>
