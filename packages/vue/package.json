@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@gcds-core/components": "^1.0.0",
-    "@stencil/vue-output-target": "^0.10.8"
+    "@stencil/vue-output-target": "^0.13.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",
