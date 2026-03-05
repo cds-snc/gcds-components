@@ -328,6 +328,31 @@ test.describe('gcds-date-input', () => {
 
     expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonth);
   });
+  test('Validation - iso - Missing month', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('input[name="year"]').fill('1234');
+    await element.locator('input[name="day"]').fill('11');
+
+    await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
+
+    const errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonth);
+  });
   test('Validation - Missing month and day', async ({ page }) => {
     const element = page.locator('gcds-date-input');
 
@@ -413,6 +438,32 @@ test.describe('gcds-date-input', () => {
     await element.locator('select').selectOption('03');
     await element.locator('input[name="year"]').fill('1234');
     await element.locator('input[name="day"]').fill('113');
+
+    await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
+
+    const errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(dateInputErrorMessage.en.invalidday);
+  });
+  test('Validation - iso - Invalid month', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('input[name="year"]').fill('1234');
+    await element.locator('input[name="month"]').fill('20');
+    await element.locator('input[name="day"]').fill('12');
 
     await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
 
