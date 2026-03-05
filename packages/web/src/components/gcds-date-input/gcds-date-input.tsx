@@ -82,12 +82,6 @@ export class GcdsDateInput {
     }
   }
 
-  private getFullOrCompactDate() {
-    return this.format == 'full' || this.format == 'iso'
-      ? 'full'
-      : 'compact';
-  }
-
   /**
    * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
    */
@@ -278,7 +272,7 @@ export class GcdsDateInput {
     this.hasError = handleValidationResult(
       this.el as HTMLGcdsDateInputElement,
       this._validator.validate(
-        this.getFullOrCompactDate() === 'full'
+        this.format === 'full' || this.format == 'iso'
           ? `${this.yearValue}-${this.monthValue}-${this.dayValue}`
           : `${this.yearValue}-${this.monthValue}`,
       ),
@@ -356,9 +350,11 @@ export class GcdsDateInput {
    */
   private checkAndValidateValidity() {
     // Order elements based on format and language
-    const elements = [this.monthInput, this.yearInput];
+    let elements = [this.monthInput, this.yearInput];
     if (this.format === 'full') {
       this.lang === 'en' ? elements.splice(1, 0, this.dayInput) : elements.unshift(this.dayInput);
+    } else if (this.format === 'iso') {
+      elements = [this.yearInput, this.monthInput, this.dayInput];
     }
 
     this.htmlValidationErrors = [];
@@ -469,7 +465,12 @@ export class GcdsDateInput {
    * Update gcds-date-input's validity using internal form elements
    */
   private updateValidity() {
-    if ((this.format === 'full' && (!this.yearInput || !this.monthInput || !this.dayInput)) || (this.format === 'compact' && (!this.yearInput || !this.monthInput))) return;
+    if (
+      ((this.format === 'full' || this.format === 'iso') &&
+        (!this.yearInput || !this.monthInput || !this.dayInput)) ||
+      (this.format === 'compact' && (!this.yearInput || !this.monthInput))
+    )
+      return;
     const { validity, formError, errorMessage } = this.checkAndValidateValidity();
 
     let validationMessage = null;
@@ -477,11 +478,7 @@ export class GcdsDateInput {
       validationMessage = errorMessage;
     }
 
-    this.internals.setValidity(
-      validity,
-      validationMessage,
-      formError[0],
-    );
+    this.internals.setValidity(validity, validationMessage, formError[0]);
   }
 
   /*
