@@ -249,13 +249,13 @@ FullFR.args = {
   validateOn: '',
 };
 
-// ------ Date input Format yyyy-mm-dd English ------
+// ------ Date input Format ISO English ------
 
-export const YyyyMMddEn = Template.bind({});
-YyyyMMddEn.args = {
-  name: 'yyyyMMddEN-default',
+export const isoEn = Template.bind({});
+isoEn.args = {
+  name: 'isoEN-default',
   legend: 'Date input',
-  format: 'yyyy-mm-dd',
+  format: 'iso',
   value: '',
   hint: '',
   errorMessage: '',
@@ -265,13 +265,13 @@ YyyyMMddEn.args = {
   validateOn: '',
 };
 
-// ------ Date input Format yyyy-mm-dd French ------
+// ------ Date input FormatISO French ------
 
-export const YyyyMMddFr = Template.bind({});
-YyyyMMddFr.args = {
-  name: 'yyyyMMddEN-default',
+export const isoFr = Template.bind({});
+isoFr.args = {
+  name: 'isoFR-default',
   legend: 'Date input',
-  format: 'yyyy-mm-dd',
+  format: 'iso',
   value: '',
   hint: '',
   errorMessage: '',
