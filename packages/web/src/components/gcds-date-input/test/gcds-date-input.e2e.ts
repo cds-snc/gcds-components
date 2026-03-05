@@ -234,13 +234,13 @@ test.describe('gcds-date-input', () => {
 
     await page.waitForChanges();
 
-    let value = await element.evaluate(
-      (el: HTMLGcdsDateInputElement) => el.value,
-    );
-
     await element.locator('input[name="year"]').fill('2000');
     await element.locator('input[name="month"]').fill('03');
     await element.locator('input[name="day"]').fill('23', { force: true });
+
+    let value = await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => el.value,
+    );
 
     expect(value).toEqual('2000-03-23');
 
