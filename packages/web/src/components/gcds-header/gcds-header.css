@@ -82,6 +82,10 @@
         grid-area: search;
         max-width: 100%;
         display: block;
+
+        & ::slotted(gcds-search) {
+          --gcds-search-input-width: 35ch;
+        }
       }
     }
   }
@@ -89,7 +93,9 @@
 
 @layer menu {
   :host {
-    --gcds-nav-group-mobile-trigger-margin: var(--gcds-header-menu-top-nav-mobile-trigger-margin);
+    --gcds-nav-group-mobile-trigger-margin: var(
+      --gcds-header-menu-top-nav-mobile-trigger-margin
+    );
   }
 }
 
