@@ -204,7 +204,7 @@ export class GcdsSideNav {
               lang={lang}
             >
               <slot name="home">
-                <span class="gcds-side-nav__heading">{label}</span>
+                <li class="gcds-side-nav__heading">{label}</li>
               </slot>
               <slot></slot>
             </gcds-nav-group>

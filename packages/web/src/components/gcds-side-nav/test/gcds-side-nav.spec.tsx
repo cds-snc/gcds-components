@@ -16,9 +16,9 @@ describe('gcds-side-nav', () => {
             <ul>
               <gcds-nav-group class="gcds-mobile-nav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en">
                 <slot name="home">
-                  <span class="gcds-side-nav__heading">
+                  <li class="gcds-side-nav__heading">
                     Side-nav
-                  </span>
+                  </li>
                 </slot>
                 <slot></slot>
               </gcds-nav-group>
@@ -41,9 +41,9 @@ describe('gcds-side-nav', () => {
             <ul>
               <gcds-nav-group class="gcds-mobile-nav" menuLabel="Menu" closeTrigger="Fermer" openTrigger="Menu" lang="fr">
                 <slot name="home">
-                  <span class="gcds-side-nav__heading">
+                  <li class="gcds-side-nav__heading">
                     Side-nav
-                  </span>
+                  </li>
                 </slot>
                 <slot></slot>
               </gcds-nav-group>
@@ -70,9 +70,9 @@ describe('gcds-side-nav', () => {
             <ul>
               <gcds-nav-group class="gcds-mobile-nav" menuLabel="Menu" closeTrigger="Close" openTrigger="Menu" lang="en">
                 <slot name="home">
-                  <span class="gcds-side-nav__heading">
+                  <li class="gcds-side-nav__heading">
                     Side-nav
-                  </span>
+                  </li>
                 </slot>
                 <slot></slot>
               </gcds-nav-group>
