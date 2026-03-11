@@ -49,7 +49,8 @@ const Template = args =>
 >
   ${
     args.default ||
-    `<gcds-nav-link href="#">Why GC Forms</gcds-nav-link>
+    `<gcds-nav-link slot="home" href="#">GC Forms</gcds-nav-link>
+  <gcds-nav-link href="#">Why GC Forms</gcds-nav-link>
 
   <gcds-nav-group open-trigger="Features" menu-label="Features">
     <gcds-nav-group open-trigger="Build and manage forms yourself" menu-label="Build and manage forms yourself sublevel">
@@ -77,7 +78,7 @@ const Template = args =>
 >
   ${
     args.default ||
-    `<GcdsNavLink href="#">Why GC Forms</GcdsNavLink>
+    `<GcdsNavLink slot="home" href="#">GC Forms</GcdsNavLink>
   <GcdsNavLink href="#">Why GC Forms</GcdsNavLink>
 
   <GcdsNavGroup openTrigger="Features" menuLabel="Features">
@@ -109,7 +110,7 @@ const TemplatePlayground = args =>
 >
   ${
     args.default ||
-    `<gcds-nav-link href="#">Why GC Forms</gcds-nav-link>
+    `<gcds-nav-link slot="home" href="#">GC Forms</gcds-nav-link>
   <gcds-nav-link href="#">Why GC Forms</gcds-nav-link>
 
   <gcds-nav-group open-trigger="Features" menu-label="Features">
@@ -134,21 +135,21 @@ const TemplatePlayground = args =>
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'GC Forms',
+  label: 'GC Forms navigation',
   lang: 'en',
   default: '',
 };
 
 export const Props = Template.bind({});
 Props.args = {
-  label: 'GC Forms',
+  label: 'GC Forms navigation',
   lang: 'en',
   default: '',
 };
 
 export const Playground = TemplatePlayground.bind({});
 Playground.args = {
-  label: 'GC Forms',
+  label: 'GC Forms navigation',
   lang: 'en',
   default: '',
 };

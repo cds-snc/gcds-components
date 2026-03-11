@@ -59,7 +59,7 @@
     }
 
     /* Home link styles  */
-    :host([slot='home']) > .gcds-nav-link {
+    :host([slot='home']) > .gcds-nav-link--topnav.gcds-nav-link {
       font: var(--gcds-nav-link-top-nav-home-font);
       padding: var(--gcds-nav-link-top-nav-home-padding);
       color: var(--gcds-nav-link-top-nav-text-primary);
@@ -69,6 +69,16 @@
   /* Side-nav: nav link styles */
   :host > .gcds-nav-link--sidenav.gcds-nav-link {
     padding: var(--gcds-nav-link-side-nav-padding);
+  }
+
+  /* Side-nav: home styles for larger screens */
+  @media only screen and (width >= 64em) {
+    :host([slot='home']) > .gcds-nav-link--sidenav.gcds-nav-link {
+      font: var(--gcds-side-nav-heading-font);
+      margin-block-end: var(--gcds-side-nav-heading-margin);
+      padding: var(--gcds-side-nav-heading-padding);
+      color: var(--gcds-side-nav-heading-color);
+    }
   }
 }
 
