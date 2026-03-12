@@ -1,6 +1,13 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.0.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.0.0...@gcds-core/components-v1.0.1) (2026-03-11)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-search:** align search input width across browsers ([#1167](https://github.com/cds-snc/gcds-components/issues/1167)) ([b4ce841](https://github.com/cds-snc/gcds-components/commit/b4ce841c8b6cedb91dba421f64b74fbb825b3058))
+
 ## v1.0.0
 Released on: 2026-02-05
 

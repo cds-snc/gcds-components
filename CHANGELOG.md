@@ -1,6 +1,13 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.0.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.0.0...@gcds-core/components-v1.0.1) (2026-03-11)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-search:** align search input width across browsers ([#1167](https://github.com/cds-snc/gcds-components/issues/1167)) ([b4ce841](https://github.com/cds-snc/gcds-components/commit/b4ce841c8b6cedb91dba421f64b74fbb825b3058))
+
 ## v1.0.0
 Released on: 2026-02-05
 
@@ -43,7 +50,7 @@ Refer to the migration guide for details on the API changes and alignment work c
 If you're currently using **`@cdssnc/gcds-components`**, you’ll need to migrate to continue receiving updates, fixes, and future improvements.
 
 👉 **Follow the migration guide:**  
-**[Migrating from @cdssnc/gcds-components to @gcds-core/components](.docs/migration/stable-v1.md)**
+**[Migrating from @cdssnc/gcds-components to @gcds-core/components](/.docs/migration/stable-v1.md)**
 
 **Note**: Since GCDS Components was previously released as an alpha product (`@cdssnc/gcds-components`), we’ve kept an archived version of the CHANGELOG, which can be found [here](archived/CHANGELOG.md).
 
@@ -95,7 +102,7 @@ Reportez-vous au guide de migration pour en savoir plus sur les changements à l
 Si vous utilisez actuellement **`@cdssnc/gcds-components`**, vous devrez migrer vers la nouvelle version pour continuer à recevoir des mises à jour et des améliorations.
 
 👉 **Suivez le guide de migration :**  
-**[Migration de @cdssnc/gcds-components vers @gcds-core/components](.docs/migration/stable-v1.md)**
+**[Migration de @cdssnc/gcds-components vers @gcds-core/components](/.docs/migration/stable-v1.md)**
 
 **Remarque&nbsp;:** Comme les composants de Système de design GC avaient été publiés auparavant en tant que produit alpha (`@cdssnc/gcds-components`), nous avons conservé une version archivée du journal des modifications. Vous pouvez y accéder [ici](archived/CHANGELOG.md).
 
