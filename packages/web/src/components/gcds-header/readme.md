@@ -12,6 +12,8 @@ The header is the responsive Government of Canada branded header landmark.
 | Property                  | Attribute            | Description                                                                         | Type      | Default     |
 | ------------------------- | -------------------- | ----------------------------------------------------------------------------------- | --------- | ----------- |
 | `langHref` _(required)_   | `lang-href`          | GcdsLangToggle - The href attribute specifies the URL of the opposite language page | `string`  | `undefined` |
+| `signInHref`              | `sign-in-href`       | Contextual Sign In - Link to sign in page for institutions                          | `string`  | `undefined` |
+| `signInLabel`             | `sign-in-label`      | Contextual Sign In - Label for the sign in link                                     | `string`  | `undefined` |
 | `signatureHasLink`        | `signature-has-link` | GcdsSignature - GCDS signature links to Canada.ca                                   | `boolean` | `true`      |
 | `skipToHref` _(required)_ | `skip-to-href`       | Top navigation - Skip to content href                                               | `string`  | `undefined` |
 
@@ -45,6 +47,7 @@ The header is the responsive Government of Canada branded header landmark.
 - [gcds-link](../gcds-link)
 - [gcds-lang-toggle](../gcds-lang-toggle)
 - [gcds-signature](../gcds-signature)
+- [gcds-button](../gcds-button)
 
 ### Graph
 ```mermaid
@@ -52,10 +55,12 @@ graph TD;
   gcds-header --> gcds-link
   gcds-header --> gcds-lang-toggle
   gcds-header --> gcds-signature
+  gcds-header --> gcds-button
   gcds-link --> gcds-icon
   gcds-lang-toggle --> gcds-sr-only
   gcds-lang-toggle --> gcds-link
   gcds-signature --> gcds-sr-only
+  gcds-button --> gcds-icon
   style gcds-header fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

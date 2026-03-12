@@ -813,6 +813,7 @@
       ],
       "parts": [],
       "dependents": [
+        "gcds-header",
         "gcds-search"
       ],
       "dependencies": [
@@ -821,6 +822,9 @@
       "dependencyGraph": {
         "gcds-button": [
           "gcds-icon"
+        ],
+        "gcds-header": [
+          "gcds-button"
         ],
         "gcds-search": [
           "gcds-button"
@@ -5509,6 +5513,52 @@
           "setter": false
         },
         {
+          "name": "signInHref",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "sign-in-href",
+          "reflectToAttr": false,
+          "docs": "Contextual Sign In - Link to sign in page for institutions",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "signInLabel",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "sign-in-label",
+          "reflectToAttr": false,
+          "docs": "Contextual Sign In - Label for the sign in link",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "signatureHasLink",
           "type": "boolean",
           "complexType": {
@@ -5643,13 +5693,15 @@
       "dependencies": [
         "gcds-link",
         "gcds-lang-toggle",
-        "gcds-signature"
+        "gcds-signature",
+        "gcds-button"
       ],
       "dependencyGraph": {
         "gcds-header": [
           "gcds-link",
           "gcds-lang-toggle",
-          "gcds-signature"
+          "gcds-signature",
+          "gcds-button"
         ],
         "gcds-link": [
           "gcds-icon"
@@ -5660,6 +5712,9 @@
         ],
         "gcds-signature": [
           "gcds-sr-only"
+        ],
+        "gcds-button": [
+          "gcds-icon"
         ]
       }
     },
@@ -11958,7 +12013,7 @@
           "mutable": false,
           "attr": "hide-limit",
           "reflectToAttr": false,
-          "docs": "If true, character limt counter will not be displayed under the textarea.",
+          "docs": "If true, character limit counter will not be displayed under the textarea.",
           "docsTags": [
             {
               "name": "default",
