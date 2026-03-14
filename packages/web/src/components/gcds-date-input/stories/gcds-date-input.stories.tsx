@@ -22,7 +22,7 @@ export default {
     },
     format: {
       control: { type: 'select' },
-      options: ['full', 'compact', 'yyyy-MM-dd'],
+      options: ['full', 'compact', 'iso'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },

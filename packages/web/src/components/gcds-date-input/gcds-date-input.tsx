@@ -557,6 +557,18 @@ export class GcdsDateInput {
     dayValue = dayValue?.replace(/[eE-]/g, '');
 
     if (format === 'iso') {
+      // Logic to make sure the month input is registered correctly
+      if (monthValue && monthValue.length === 1 && monthValue != '0') {
+        monthValue = '0' + monthValue;
+        this.monthValue = monthValue;
+      } else if (
+        monthValue &&
+        monthValue.length == 3 &&
+        monthValue[0] === '0'
+      ) {
+        monthValue = monthValue.substring(1);
+        this.monthValue = monthValue;
+      }
       monthValue = monthValue?.replace(/[eE-]/g, '');
     }
 
