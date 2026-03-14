@@ -61,6 +61,38 @@ test.describe('gcds-date-input', () => {
 
     expect(value).toEqual('1234-03');
   });
+
+  for (const { year, month, day, expected } of [
+    { year: '2023', month: '3', day: '1', expected: '2023-03-01' },
+    { year: '2021', month: '05', day: '2', expected: '2021-05-02' },
+    { year: '1600', month: '2', day: '11', expected: '1600-02-11' },
+    { year: '1234', month: '03', day: '11', expected: '1234-03-11' },
+  ]) {
+    test(`Format: iso - value - ${year}-${month}-${day}`, async ({ page }) => {
+      const element = page.locator('gcds-date-input');
+
+      // Wait for element to attach and become visible, allowing up to 10s
+      await element.waitFor({ state: 'attached' });
+      await element.waitFor({ state: 'visible' });
+      await element.waitFor({ timeout: 10000 });
+
+      await element.evaluate(
+        (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+      );
+
+      await page.waitForChanges();
+
+      await element.locator('input[name="year"]').fill(year);
+      await element.locator('input[name="month"]').fill(month);
+      await element.locator('input[name="day"]').fill(day);
+
+      const value = await element.evaluate(
+        (el: HTMLGcdsDateInputElement) => el.value,
+      );
+
+      expect(value).toEqual(expected);
+    });
+  }
   /**
    * Invalid value
    */
@@ -104,6 +136,31 @@ test.describe('gcds-date-input', () => {
     );
 
     expect(value).toEqual('12345-03');
+  });
+
+  test('Format: iso - invalid value', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('input[name="year"]').fill('12345');
+    await element.locator('input[name="month"]').fill('03');
+    await element.locator('input[name="day"]').fill('223', { force: true });
+
+    const value = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).value,
+    );
+
+    expect(value).toEqual('12345-03-223');
   });
   /**
    * Unset value
@@ -167,6 +224,39 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).value,
     );
 
+    expect(value).toEqual('');
+  });
+
+  test('Format: iso - unset value', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('input[name="year"]').fill('2000');
+    await element.locator('input[name="month"]').fill('03');
+    await element.locator('input[name="day"]').fill('23', { force: true });
+
+    let value = await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => el.value,
+    );
+
+    expect(value).toEqual('2000-03-23');
+
+    await element.evaluate((el: HTMLGcdsDateInputElement) => (el.value = ''));
+
+    await page.waitForChanges();
+
+    value = await element.evaluate((el: HTMLGcdsDateInputElement) => el.value);
+    console.log(value);
     expect(value).toEqual('');
   });
   /**
@@ -233,6 +323,31 @@ test.describe('gcds-date-input', () => {
     await element.waitFor({ state: 'attached' });
     await element.waitFor({ state: 'visible' });
     await element.waitFor({ timeout: 10000 });
+
+    await element.locator('input[name="year"]').fill('1234');
+    await element.locator('input[name="day"]').fill('11');
+
+    await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
+
+    const errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonth);
+  });
+  test('Validation - iso - Missing month', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
 
     await element.locator('input[name="year"]').fill('1234');
     await element.locator('input[name="day"]').fill('11');
@@ -338,6 +453,32 @@ test.describe('gcds-date-input', () => {
     );
 
     expect(errorMessage).toEqual(dateInputErrorMessage.en.invalidday);
+  });
+  test('Validation - iso - Invalid month', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('input[name="year"]').fill('1234');
+    await element.locator('input[name="month"]').fill('20');
+    await element.locator('input[name="day"]').fill('12');
+
+    await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
+
+    const errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthinput);
   });
   test('Validation - Custom validation', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -497,6 +638,36 @@ test.describe('gcds-date-input', () => {
 
     expect(validity).toEqual(true);
   });
+  test('Format: iso - valid validity', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    let validity = await element.evaluate(el =>
+      (el as HTMLGcdsDateInputElement).checkValidity(),
+    );
+
+    expect(validity).toEqual(false);
+
+    await element.locator('input[name="year"]').fill('1234');
+    await element.locator('input[name="month"]').fill('03');
+    await element.locator('input[name="day"]').fill('11');
+
+    validity = await element.evaluate((el: HTMLGcdsDateInputElement) =>
+      el.checkValidity(),
+    );
+
+    expect(validity).toEqual(true);
+  });
   test('Validation - min', async ({ page }) => {
     const element = page.locator('gcds-date-input');
 
@@ -601,5 +772,27 @@ test.describe('gcds-date-input a11y tests', () => {
         () => window.document.activeElement.shadowRoot.activeElement.nodeName,
       ),
     ).toEqual('GCDS-INPUT');
+  });
+  /**
+   * ISO format
+   */
+  test('ISO format', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    const results = await new AxeBuilder({ page })
+      .include('gcds-date-input')
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

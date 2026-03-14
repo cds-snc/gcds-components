@@ -48,7 +48,7 @@ export class GcdsDateInput {
 
   private fieldset?: HTMLFieldSetElement;
   private yearInput?: HTMLGcdsInputElement;
-  private monthSelect?: HTMLGcdsSelectElement;
+  private monthInput?: HTMLGcdsSelectElement | HTMLGcdsInputElement;
   private dayInput?: HTMLGcdsInputElement;
 
   // Array to store which native HTML errors are happening on the input
@@ -85,10 +85,15 @@ export class GcdsDateInput {
   /**
    * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
    */
-  @Prop() format!: 'full' | 'compact';
+  @Prop() format!: 'full' | 'compact' | 'iso';
   @Watch('format')
   validateFormat() {
-    if (!this.format || (this.format != 'full' && this.format != 'compact')) {
+    if (
+      !this.format ||
+      (this.format != 'full' &&
+        this.format != 'compact' &&
+        this.format != 'iso')
+    ) {
       this.errors.push('format');
     } else if (this.errors.includes('format')) {
       this.errors.splice(this.errors.indexOf('format'), 1);
@@ -267,7 +272,7 @@ export class GcdsDateInput {
     this.hasError = handleValidationResult(
       this.el as HTMLGcdsDateInputElement,
       this._validator.validate(
-        this.format === 'full'
+        this.format === 'full' || this.format == 'iso'
           ? `${this.yearValue}-${this.monthValue}-${this.dayValue}`
           : `${this.yearValue}-${this.monthValue}`,
       ),
@@ -345,9 +350,11 @@ export class GcdsDateInput {
    */
   private checkAndValidateValidity() {
     // Order elements based on format and language
-    const elements = [this.monthSelect, this.yearInput];
+    let elements = [this.monthInput, this.yearInput];
     if (this.format === 'full') {
       this.lang === 'en' ? elements.splice(1, 0, this.dayInput) : elements.unshift(this.dayInput);
+    } else if (this.format === 'iso') {
+      elements = [this.yearInput, this.monthInput, this.dayInput];
     }
 
     this.htmlValidationErrors = [];
@@ -371,7 +378,7 @@ export class GcdsDateInput {
       });
       errorMessage = getDateInputError({
         day: this.dayInput?.value,
-        month: this.monthSelect?.value,
+        month: this.monthInput?.value,
         year: this.yearInput?.value
       }, this.format).reason[this.lang];
     }
@@ -380,7 +387,7 @@ export class GcdsDateInput {
     if (this.required && !valueMissing) {
       const badInputError = getDateInputError({
         day: this.dayInput?.value,
-        month: this.monthSelect?.value,
+        month: this.monthInput?.value,
         year: this.yearInput?.value
       }, this.format);
 
@@ -458,7 +465,12 @@ export class GcdsDateInput {
    * Update gcds-date-input's validity using internal form elements
    */
   private updateValidity() {
-    if ((this.format === 'full' && (!this.yearInput || !this.monthSelect || !this.dayInput)) || (this.format === 'compact' && (!this.yearInput || !this.monthSelect))) return;
+    if (
+      ((this.format === 'full' || this.format === 'iso') &&
+        (!this.yearInput || !this.monthInput || !this.dayInput)) ||
+      (this.format === 'compact' && (!this.yearInput || !this.monthInput))
+    )
+      return;
     const { validity, formError, errorMessage } = this.checkAndValidateValidity();
 
     let validationMessage = null;
@@ -466,11 +478,7 @@ export class GcdsDateInput {
       validationMessage = errorMessage;
     }
 
-    this.internals.setValidity(
-      validity,
-      validationMessage,
-      formError[0],
-    );
+    this.internals.setValidity(validity, validationMessage, formError[0]);
   }
 
   /*
@@ -510,7 +518,7 @@ export class GcdsDateInput {
   /*
    * Handle input event to update state
    */
-  private handleInput = (e, type) => {
+  private handleInput = (e, type : 'year' | 'month' | 'day') => {
     const val = e.target && e.target.value;
 
     if (type === 'year') {
@@ -533,8 +541,8 @@ export class GcdsDateInput {
    * Logic to combine all input values together based on format
    */
   private setValue() {
-    const { monthValue, format } = this;
-    let { yearValue, dayValue } = this;
+    const { format } = this;
+    let { yearValue, monthValue, dayValue } = this;
 
     // Logic to make sure the day input is registered correctly
     if (dayValue && dayValue.length === 1 && dayValue != '0') {
@@ -547,9 +555,26 @@ export class GcdsDateInput {
 
     // Clean up year and day values by removing any e, E or - characters
     dayValue = dayValue?.replace(/[eE-]/g, '');
+
+    if (format === 'iso') {
+      // Logic to make sure the month input is registered correctly
+      if (monthValue && monthValue.length === 1 && monthValue != '0') {
+        monthValue = '0' + monthValue;
+        this.monthValue = monthValue;
+      } else if (
+        monthValue &&
+        monthValue.length == 3 &&
+        monthValue[0] === '0'
+      ) {
+        monthValue = monthValue.substring(1);
+        this.monthValue = monthValue;
+      }
+      monthValue = monthValue?.replace(/[eE-]/g, '');
+    }
+
     yearValue = yearValue?.replace(/[eE-]/g, '');
 
-    if (format === 'full') {
+    if (format === 'full' || format == 'iso') {
       this.value = `${yearValue}-${monthValue}-${dayValue}`;
     } else if (format === 'compact') {
       this.value = `${yearValue}-${monthValue}`;
@@ -666,7 +691,7 @@ export class GcdsDateInput {
       i + 1 < 10 ? `0${i + 1}` : `${i + 1}`,
     );
 
-    const month = (
+    const month = this.format != 'iso' ? (
       <gcds-select
         label={i18n[lang].month}
         selectId="month"
@@ -681,7 +706,7 @@ export class GcdsDateInput {
         aria-invalid={hasError['month'].toString()}
         aria-description={hasError['month'] && errorMessage}
         form={form}
-        ref={el => (this.monthSelect = el as HTMLGcdsSelectElement)}
+        ref={el => (this.monthInput = el as HTMLGcdsSelectElement)}
       >
         {options.map(option => (
           <option key={option} value={option}>
@@ -689,6 +714,27 @@ export class GcdsDateInput {
           </option>
         ))}
       </gcds-select>
+    ) : (
+      <gcds-input
+        name="month"
+        label={i18n[lang].month}
+        inputId="month"
+        type="text"
+        inputmode="numeric"
+        size={2}
+        disabled={disabled}
+        value={this.monthValue}
+        onInput={e => this.handleInput(e, 'month')}
+        onChange={e => this.handleInput(e, 'month')}
+        onKeyDown={this.blockInvalidKeys}
+        class={`gcds-date-input__month ${hasError['month'] ? 'gcds-date-input--error' : ''}`}
+        validate-on='other'
+        {...requiredAttr}
+        aria-invalid={hasError['month'].toString()}
+        aria-description={hasError['month'] && errorMessage}
+        form={form}
+        ref={el => (this.monthInput = el as HTMLGcdsInputElement)}
+      ></gcds-input>
     );
 
     const year = (
@@ -737,6 +783,16 @@ export class GcdsDateInput {
       ></gcds-input>
     );
 
+    let formatArray : any[]
+
+    if (format === 'iso') {
+      formatArray = [year, month, day]
+    } else if (format == 'compact') {
+      formatArray = [month, year]
+    } else if (format == 'full') {
+      formatArray = lang == 'en' ? [month, day, year] : [day, month, year]
+    }
+
     return (
       <Host name={name} onBlur={() => this.onBlur()}>
         {this.validateRequiredProps() && (
@@ -766,11 +822,7 @@ export class GcdsDateInput {
                 </gcds-error-message>
               </div>
             ) : null}
-            {format == 'compact'
-              ? [month, year]
-              : lang == 'en'
-                ? [month, day, year]
-                : [day, month, year]}
+            { formatArray }
           </fieldset>
         )}
       </Host>

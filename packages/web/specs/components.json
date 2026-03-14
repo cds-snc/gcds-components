@@ -2402,10 +2402,10 @@
         },
         {
           "name": "format",
-          "type": "\"compact\" | \"full\"",
+          "type": "\"compact\" | \"full\" | \"iso\"",
           "complexType": {
-            "original": "'full' | 'compact'",
-            "resolved": "\"compact\" | \"full\"",
+            "original": "'full' | 'compact' | 'iso'",
+            "resolved": "\"compact\" | \"full\" | \"iso\"",
             "references": {}
           },
           "mutable": false,
@@ -2420,6 +2420,10 @@
             },
             {
               "value": "full",
+              "type": "string"
+            },
+            {
+              "value": "iso",
               "type": "string"
             }
           ],
@@ -11958,7 +11962,7 @@
           "mutable": false,
           "attr": "hide-limit",
           "reflectToAttr": false,
-          "docs": "If true, character limt counter will not be displayed under the textarea.",
+          "docs": "If true, character limit counter will not be displayed under the textarea.",
           "docsTags": [
             {
               "name": "default",
