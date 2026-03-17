@@ -94,7 +94,7 @@
     "sass": "^1.43.5",
     "serve": "^14.2.4",
     "stencil-inline-svg": "^1.1.0",
-    "storybook": "^8.6.15",
+    "storybook": "^8.6.17",
     "workbox-build": "^7.0.0"
   },
   "license": "MIT"
