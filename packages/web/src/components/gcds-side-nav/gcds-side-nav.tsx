@@ -105,9 +105,9 @@ export class GcdsSideNav {
       handleKeyDownNav(e, this.el, this.navItems);
     }
     if (
-      this.navSize == 'mobile' &&
-      this.mobile.open == true &&
-      e.key == 'Escape'
+      this.navSize === 'mobile' &&
+      this.mobile?.open &&
+      e.key === 'Escape'
     ) {
       // Close mobile nav on ESC
       await this.mobile.toggleNav();
