@@ -24,7 +24,7 @@
     height: 100%;
     color: var(--gcds-card-color);
     position: relative;
-    box-shadow: var(--gcds-card-box-shadow);
+    border: var(--gcds-card-border);
     overflow: hidden;
     max-width: var(--gcds-card-max-width);
 
