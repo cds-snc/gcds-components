@@ -46,7 +46,8 @@
     "@storybook/addon-a11y": "^8.0.9",
     "@storybook/addons": "^7.6.17",
     "@storybook/test": "^8.0.9",
-    "@storybook/theming": "^8.0.9"
+    "@storybook/theming": "^8.0.9",
+    "@tanstack/table-core": "^8.21.3"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
