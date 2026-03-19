@@ -67,6 +67,13 @@ export class GcdsPagination {
    */
   @Prop() totalPages: number;
 
+  @Watch('totalPages')
+  watchTotalPages() {
+    if (this.display == 'list') {
+      this.configureListPagination();
+    }
+  }
+
   /**
    * List display - Current page number
    */

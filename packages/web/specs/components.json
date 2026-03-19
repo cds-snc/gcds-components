@@ -7695,7 +7695,8 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "gcds-date-input"
+        "gcds-date-input",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-label",
@@ -7716,6 +7717,9 @@
           "gcds-icon"
         ],
         "gcds-date-input": [
+          "gcds-input"
+        ],
+        "gcds-table": [
           "gcds-input"
         ]
       }
@@ -9133,13 +9137,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "gcds-table"
+      ],
       "dependencies": [
         "gcds-icon"
       ],
       "dependencyGraph": {
         "gcds-pagination": [
           "gcds-icon"
+        ],
+        "gcds-table": [
+          "gcds-pagination"
         ]
       }
     },
@@ -10659,7 +10668,8 @@
       ],
       "parts": [],
       "dependents": [
-        "gcds-date-input"
+        "gcds-date-input",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-label",
@@ -10680,6 +10690,9 @@
           "gcds-icon"
         ],
         "gcds-date-input": [
+          "gcds-select"
+        ],
+        "gcds-table": [
           "gcds-select"
         ]
       }
@@ -11261,6 +11274,328 @@
         "gcds-stepper": [
           "gcds-heading",
           "gcds-sr-only"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/gcds-table/gcds-table.tsx",
+      "encapsulation": "shadow",
+      "tag": "gcds-table",
+      "readme": "# gcds-table\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "columns",
+          "type": "TableColumn[]",
+          "complexType": {
+            "original": "TableColumn[]",
+            "resolved": "TableColumn[]",
+            "references": {
+              "TableColumn": {
+                "location": "local",
+                "path": "/web/src/components/gcds-table/gcds-table.tsx",
+                "id": "src/components/gcds-table/gcds-table.tsx::TableColumn"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "columns",
+          "reflectToAttr": false,
+          "docs": "Column definitions",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "TableColumn[]"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "data",
+          "type": "Record<string, unknown>[]",
+          "complexType": {
+            "original": "Record<string, unknown>[]",
+            "resolved": "Record<string, unknown>[]",
+            "references": {
+              "Record": {
+                "location": "global",
+                "id": "global::Record"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "data",
+          "reflectToAttr": false,
+          "docs": "Row data",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "Record<string, unknown>[]"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "Enable pagination",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationCurrentPage",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-current-page",
+          "reflectToAttr": false,
+          "docs": "Current page index",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSize",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size",
+          "reflectToAttr": false,
+          "docs": "Number of rows per page",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "10"
+            }
+          ],
+          "default": "10",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSizeOptions",
+          "type": "number[]",
+          "complexType": {
+            "original": "number[]",
+            "resolved": "number[]",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pagination-size-options",
+          "reflectToAttr": false,
+          "docs": "Available page-size options.\nUse 0 to represent \"All rows\".",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[10, 25, 50, 0]"
+            }
+          ],
+          "default": "[10, 25, 50, 0]",
+          "values": [
+            {
+              "type": "number[]"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "search",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "search",
+          "reflectToAttr": false,
+          "docs": "Enable global search / filter",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "searchValue",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "search-value",
+          "reflectToAttr": false,
+          "docs": "Current search string",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "sort",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "sort",
+          "reflectToAttr": false,
+          "docs": "Enable global column sorting (can be overridden per column)",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "gcds-input",
+        "gcds-select",
+        "gcds-pagination"
+      ],
+      "dependencyGraph": {
+        "gcds-table": [
+          "gcds-input",
+          "gcds-select",
+          "gcds-pagination"
+        ],
+        "gcds-input": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
+        ],
+        "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-error-message": [
+          "gcds-text",
+          "gcds-icon"
+        ],
+        "gcds-select": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
+        ],
+        "gcds-pagination": [
+          "gcds-icon"
         ]
       }
     },
@@ -11958,7 +12293,7 @@
           "mutable": false,
           "attr": "hide-limit",
           "reflectToAttr": false,
-          "docs": "If true, character limt counter will not be displayed under the textarea.",
+          "docs": "If true, character limit counter will not be displayed under the textarea.",
           "docsTags": [
             {
               "name": "default",
@@ -12941,6 +13276,11 @@
       "declaration": "export type ContentValues =\n  | 'center'\n  | 'end'\n  | 'space-around'\n  | 'space-between'\n  | 'space-evenly'\n  | 'start'\n  | 'stretch';",
       "docstring": "",
       "path": "src/components/gcds-grid/gcds-grid.tsx"
+    },
+    "src/components/gcds-table/gcds-table.tsx::TableColumn": {
+      "declaration": "export interface TableColumn {\n  field: string;\n  header: string;\n  sortable?: boolean;\n  activeSorting?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n}",
+      "docstring": "",
+      "path": "src/components/gcds-table/gcds-table.tsx"
     },
     "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject": {
       "declaration": "{\n  id: string;\n  label: string;\n  value?: string;\n  hint?: string;\n  checked?: boolean | string;\n}",
