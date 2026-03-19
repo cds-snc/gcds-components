@@ -120,7 +120,11 @@ export const requiredDateInput: Validator<string> = {
 };
 
 export const getDateInputError = (
-  dateValues: { day: string; month: string; year: string },
+  dateValues: {
+    day: string | undefined;
+    month: string | undefined;
+    year: string | undefined;
+  },
   format: 'full' | 'compact' | 'iso',
 ) => {
   const { day, month, year } = dateValues;
@@ -147,7 +151,7 @@ export const getDateInputError = (
     errorResponse.reason.fr = dateInputErrorMessage.fr.all;
 
     // No day set
-  } else if (!day && month && year && format === 'full') {
+  } else if (!day && month && year && (format === 'full' || format === 'iso')) {
     errorResponse.errors.day = true;
     errorResponse.reason.en = dateInputErrorMessage.en.missingday;
     errorResponse.reason.fr = dateInputErrorMessage.fr.missingday;
@@ -208,13 +212,13 @@ export const getDateInputError = (
     }
 
     // Year is formatted incorrectly
-  } else if (year.length != 4) {
+  } else if (year.toString().length != 4) {
     errorResponse.errors.year = true;
     errorResponse.reason.en = dateInputErrorMessage.en.invalidyearlength;
     errorResponse.reason.fr = dateInputErrorMessage.fr.invalidyearlength;
 
     // Year format
-  } else if (year < 0 || year > 9999) {
+  } else if (Number(year) < 0 || Number(year) > 9999) {
     errorResponse.errors.year = true;
     errorResponse.reason.en = dateInputErrorMessage.en.invalidyear;
     errorResponse.reason.fr = dateInputErrorMessage.fr.invalidyear;
