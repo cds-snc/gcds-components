@@ -90,9 +90,9 @@ export class GcdsDateInput {
   validateFormat() {
     if (
       !this.format ||
-      (this.format != 'full' &&
-        this.format != 'compact' &&
-        this.format != 'iso')
+      (this.format !== 'full' &&
+        this.format !== 'compact' &&
+        this.format !== 'iso')
     ) {
       this.errors.push('format');
     } else if (this.errors.includes('format')) {
@@ -272,7 +272,7 @@ export class GcdsDateInput {
     this.hasError = handleValidationResult(
       this.el as HTMLGcdsDateInputElement,
       this._validator.validate(
-        this.format === 'full' || this.format == 'iso'
+        this.format === 'full' || this.format === 'iso'
           ? `${this.yearValue}-${this.monthValue}-${this.dayValue}`
           : `${this.yearValue}-${this.monthValue}`,
       ),
@@ -544,37 +544,24 @@ export class GcdsDateInput {
     const { format } = this;
     let { yearValue, monthValue, dayValue } = this;
 
-    // Logic to make sure the day input is registered correctly
-    if (dayValue && dayValue.length === 1 && dayValue != '0') {
-      dayValue = '0' + dayValue;
-      this.dayValue = dayValue;
-    } else if (dayValue && dayValue.length == 3 && dayValue[0] === '0') {
-      dayValue = dayValue.substring(1);
-      this.dayValue = dayValue;
-    }
+    // Sanitizes a numeric date value, optionally normalizing to two digits with padding
+    const sanitizeValue = (value: string, pad = true): string => {
+      if (!value) return value;
+      // Normalize to two digits if possible, e.g. '3' -> '03'
+      if (pad) value = String(parseInt(value, 10)).padStart(2, '0');
+      return value.replace(/[eE-]/g, '');
+    };
 
-    // Clean up year and day values by removing any e, E or - characters
-    dayValue = dayValue?.replace(/[eE-]/g, '');
-
+    dayValue = sanitizeValue(dayValue);
+    this.dayValue = dayValue;
     if (format === 'iso') {
-      // Logic to make sure the month input is registered correctly
-      if (monthValue && monthValue.length === 1 && monthValue != '0') {
-        monthValue = '0' + monthValue;
-        this.monthValue = monthValue;
-      } else if (
-        monthValue &&
-        monthValue.length == 3 &&
-        monthValue[0] === '0'
-      ) {
-        monthValue = monthValue.substring(1);
-        this.monthValue = monthValue;
-      }
-      monthValue = monthValue?.replace(/[eE-]/g, '');
+      monthValue = sanitizeValue(monthValue);
+      this.monthValue = monthValue;
     }
+    yearValue = sanitizeValue(yearValue, false);
+    this.yearValue = yearValue;
 
-    yearValue = yearValue?.replace(/[eE-]/g, '');
-
-    if (format === 'full' || format == 'iso') {
+    if (format === 'full' || format === 'iso') {
       this.value = `${yearValue}-${monthValue}-${dayValue}`;
     } else if (format === 'compact') {
       this.value = `${yearValue}-${monthValue}`;
@@ -590,7 +577,7 @@ export class GcdsDateInput {
    * Split value into parts depending on format
    */
   private splitFormValue() {
-    if (this.format == 'compact') {
+    if (this.format === 'compact') {
       const splitValue = this.value.split('-');
       this.yearValue = splitValue[0];
       this.monthValue = splitValue[1];
@@ -691,7 +678,7 @@ export class GcdsDateInput {
       i + 1 < 10 ? `0${i + 1}` : `${i + 1}`,
     );
 
-    const month = this.format != 'iso' ? (
+    const month = this.format !== 'iso' ? (
       <gcds-select
         label={i18n[lang].month}
         selectId="month"
@@ -783,14 +770,14 @@ export class GcdsDateInput {
       ></gcds-input>
     );
 
-    let formatArray : any[]
+    let formatArray: any[];
 
     if (format === 'iso') {
-      formatArray = [year, month, day]
-    } else if (format == 'compact') {
-      formatArray = [month, year]
-    } else if (format == 'full') {
-      formatArray = lang == 'en' ? [month, day, year] : [day, month, year]
+      formatArray = [year, month, day];
+    } else if (format === 'compact') {
+      formatArray = [month, year];
+    } else if (format === 'full') {
+      formatArray = lang === 'en' ? [month, day, year] : [day, month, year];
     }
 
     return (
