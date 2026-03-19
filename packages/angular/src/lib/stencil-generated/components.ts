@@ -2223,6 +2223,70 @@ export declare interface GcdsStepper extends Components.GcdsStepper {}
 
 
 @ProxyCmp({
+  inputs: ['caption', 'columns', 'data', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'search', 'searchValue', 'sort']
+})
+@Component({
+  selector: 'gcds-table',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'columns', 'data', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'search', 'searchValue', 'sort'],
+  standalone: false,
+})
+export class GcdsTable {
+  protected el: HTMLGcdsTableElement;
+    /**
+   * Table caption
+   */
+  set caption(_: Components.GcdsTable['caption']) {};
+    /**
+   * Column definitions @default []
+   */
+  set columns(_: Components.GcdsTable['columns']) {};
+    /**
+   * Row data @default []
+   */
+  set data(_: Components.GcdsTable['data']) {};
+    /**
+   * Enable global column sorting (can be overridden per column) @default false
+   */
+  set sort(_: Components.GcdsTable['sort']) {};
+    /**
+   * Enable pagination @default false
+   */
+  set pagination(_: Components.GcdsTable['pagination']) {};
+    /**
+   * Current page index @default 1
+   */
+  set paginationCurrentPage(_: Components.GcdsTable['paginationCurrentPage']) {};
+    /**
+   * Number of rows per page @default 10
+   */
+  set paginationSize(_: Components.GcdsTable['paginationSize']) {};
+    /**
+   * Available page-size options.
+Use 0 to represent "All rows". @default [10, 25, 50, 0]
+   */
+  set paginationSizeOptions(_: Components.GcdsTable['paginationSizeOptions']) {};
+    /**
+   * Enable global search / filter @default false
+   */
+  set search(_: Components.GcdsTable['search']) {};
+    /**
+   * Current search string @default ''
+   */
+  set searchValue(_: Components.GcdsTable['searchValue']) {};
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsTable extends Components.GcdsTable {}
+
+
+@ProxyCmp({
   inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole']
 })
 @Component({
