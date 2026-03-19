@@ -119,7 +119,10 @@ export const requiredDateInput: Validator<string> = {
   },
 };
 
-export const getDateInputError = (dateValues, format) => {
+export const getDateInputError = (
+  dateValues: { day: string; month: string; year: string },
+  format: 'full' | 'compact' | 'iso',
+) => {
   const { day, month, year } = dateValues;
 
   const errorResponse = {
@@ -155,8 +158,13 @@ export const getDateInputError = (dateValues, format) => {
     (!day && !month && year && format === 'compact')
   ) {
     errorResponse.errors.month = true;
-    errorResponse.reason.en = dateInputErrorMessage.en.missingmonth;
-    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonth;
+    if (format === 'iso') {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthinput;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthinput;
+    } else {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonth;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonth;
+    }
 
     // No year set
   } else if (
@@ -171,8 +179,13 @@ export const getDateInputError = (dateValues, format) => {
   } else if (!day && !month && year) {
     errorResponse.errors.day = true;
     errorResponse.errors.month = true;
-    errorResponse.reason.en = dateInputErrorMessage.en.missingmonthday;
-    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthday;
+    if (format === 'iso') {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthinputday;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthinputday;
+    } else {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthday;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthday;
+    }
 
     // No day and year set
   } else if (!day && month && !year) {
@@ -185,8 +198,14 @@ export const getDateInputError = (dateValues, format) => {
   } else if (day && !month && !year) {
     errorResponse.errors.year = true;
     errorResponse.errors.month = true;
-    errorResponse.reason.en = dateInputErrorMessage.en.missingmonthyear;
-    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthyear;
+
+    if (format === 'iso') {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthinputyear;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthinputyear;
+    } else {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthyear;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthyear;
+    }
 
     // Year is formatted incorrectly
   } else if (year.length != 4) {
