@@ -256,7 +256,6 @@ test.describe('gcds-date-input', () => {
     await page.waitForChanges();
 
     value = await element.evaluate((el: HTMLGcdsDateInputElement) => el.value);
-    console.log(value);
     expect(value).toEqual('');
   });
   /**
