@@ -16,6 +16,7 @@ export default createConfig({
   use: {
     baseURL: 'http://localhost:3333/',
     // headless: false,
+    // trace: 'retain-on-failure',
   },
   webServer: {
     url: 'http://localhost:3333/',
