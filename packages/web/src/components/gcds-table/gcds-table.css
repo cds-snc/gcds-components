@@ -10,6 +10,15 @@
   th {
     border: 1px solid #ddd;
     padding: 8px;
+
+    & > button {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      color: currentColor;
+    }
   }
 
   tr:nth-child(even) {
@@ -20,7 +29,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04aa6d;
-    color: white;
+    background-color: var(--gcds-bg-light);
+    color: #333;
   }
 }
