@@ -201,6 +201,7 @@ export class GcdsTable {
       renderFallbackValue: null,
       // Sorting
       enableSorting: this.sortEnabled(),
+      sortDescFirst: false,
       manualSorting: false,
       onSortingChange: updater => {
         this.sorting =
@@ -306,6 +307,19 @@ export class GcdsTable {
     return `align-${colDef.align}`;
   }
 
+  private getSortTitle(column) {
+    let sortText = '';
+    if (column.getIsSorted() === 'asc') {
+      sortText = 'activate for descending sort';
+    } else if (column.getIsSorted() === 'desc') {
+      sortText = 'activate to remove sorting';
+    } else if (column.getIsSorted() === false) {
+      sortText = 'activate for ascending sort';
+    }
+
+    return `${column.columnDef.header as string}: ${sortText}`;
+  }
+
   // ─── Render ───────────────────────────────────────────────────────────────
 
   render() {
@@ -353,7 +367,7 @@ export class GcdsTable {
               </gcds-select>
 
               {/* Page info */}
-              <span class="gcds-table__page-info">
+              <span class="gcds-table__page-info" role="status" aria-live="polite">
                 Showing {currentPageIndex * this.paginationSize + 1} to {Math.min((currentPageIndex + 1) * this.paginationSize, totalRows)} of {totalRows} entries
               </span>
             </div>
@@ -398,8 +412,10 @@ export class GcdsTable {
                         {canSort ?
                           <button
                             onClick={() => this.handleSortToggle(header.id)}
+                            title={this.getSortTitle(header.column)}
                           >
                             {header.column.columnDef.header as string}
+                            {/* Replace icons with something better */}
                             <span
                               class="gcds-table__sort-icon"
                               aria-hidden="true"
