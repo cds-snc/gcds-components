@@ -9,6 +9,7 @@
 
 | Property                | Attribute                 | Description                                                 | Type                        | Default           |
 | ----------------------- | ------------------------- | ----------------------------------------------------------- | --------------------------- | ----------------- |
+| `caption`               | `caption`                 | Table caption                                               | `string`                    | `undefined`       |
 | `columns`               | `columns`                 | Column definitions                                          | `TableColumn[]`             | `[]`              |
 | `data`                  | `data`                    | Row data                                                    | `Record<string, unknown>[]` | `[]`              |
 | `pagination`            | `pagination`              | Enable pagination                                           | `boolean`                   | `false`           |
