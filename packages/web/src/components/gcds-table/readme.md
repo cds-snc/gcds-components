@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property                | Attribute                 | Description                                                 | Type                        | Default           |
-| ----------------------- | ------------------------- | ----------------------------------------------------------- | --------------------------- | ----------------- |
-| `caption`               | `caption`                 | Table caption                                               | `string`                    | `undefined`       |
-| `columns`               | `columns`                 | Column definitions                                          | `TableColumn[]`             | `[]`              |
-| `data`                  | `data`                    | Row data                                                    | `Record<string, unknown>[]` | `[]`              |
-| `pagination`            | `pagination`              | Enable pagination                                           | `boolean`                   | `false`           |
-| `paginationCurrentPage` | `pagination-current-page` | Current page index                                          | `number`                    | `1`               |
-| `paginationSize`        | `pagination-size`         | Number of rows per page                                     | `number`                    | `10`              |
-| `paginationSizeOptions` | `pagination-size-options` | Available page-size options. Use 0 to represent "All rows". | `number[]`                  | `[10, 25, 50, 0]` |
-| `search`                | `search`                  | Enable global search / filter                               | `boolean`                   | `false`           |
-| `searchValue`           | `search-value`            | Current search string                                       | `string`                    | `''`              |
-| `sort`                  | `sort`                    | Enable global column sorting (can be overridden per column) | `boolean`                   | `false`           |
+| Property                | Attribute                 | Description                                                 | Type                      | Default           |
+| ----------------------- | ------------------------- | ----------------------------------------------------------- | ------------------------- | ----------------- |
+| `caption`               | `caption`                 | Table caption                                               | `string`                  | `undefined`       |
+| `columns`               | `columns`                 | Column definitions                                          | `TableColumn[] \| string` | `[]`              |
+| `data`                  | `data`                    | Row data                                                    | `object[] \| string`      | `[]`              |
+| `pagination`            | `pagination`              | Enable pagination                                           | `boolean`                 | `false`           |
+| `paginationCurrentPage` | `pagination-current-page` | Current page index                                          | `number`                  | `1`               |
+| `paginationSize`        | `pagination-size`         | Number of rows per page                                     | `number`                  | `10`              |
+| `paginationSizeOptions` | `pagination-size-options` | Available page-size options. Use 0 to represent "All rows". | `number[] \| string`      | `[10, 25, 50, 0]` |
+| `search`                | `search`                  | Enable global search / filter                               | `boolean`                 | `false`           |
+| `searchValue`           | `search-value`            | Current search string                                       | `string`                  | `''`              |
+| `sort`                  | `sort`                    | Enable global column sorting (can be overridden per column) | `boolean`                 | `false`           |
 
 
 ## Dependencies

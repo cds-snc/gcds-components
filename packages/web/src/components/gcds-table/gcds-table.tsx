@@ -45,10 +45,10 @@ export class GcdsTable {
   @Prop() caption: string;
 
   /** Column definitions */
-  @Prop() columns: TableColumn[] = [];
+  @Prop({ mutable: true }) columns: string | TableColumn[] = [];
 
   /** Row data */
-  @Prop() data: Record<string, unknown>[] = [];
+  @Prop({ mutable: true }) data: string | object[] = [];
 
   /** Enable global column sorting (can be overridden per column) */
   @Prop() sort: boolean = false;
@@ -66,7 +66,7 @@ export class GcdsTable {
    * Available page-size options.
    * Use 0 to represent "All rows".
    */
-  @Prop() paginationSizeOptions: number[] = [10, 25, 50, 0];
+  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [10, 25, 50, 0];
 
   /** Enable global search / filter */
   @Prop() search: boolean = false;
@@ -90,10 +90,16 @@ export class GcdsTable {
   // ─── Lifecycle ────────────────────────────────────────────────────────────
 
   componentWillLoad() {
-    this.paginationState = {
-      pageIndex: Math.max(0, this.paginationCurrentPage - 1),
-      pageSize: this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
-    };
+    if (this.pagination) {
+      this.paginationState = {
+        pageIndex: Math.max(0, this.paginationCurrentPage - 1),
+        pageSize: this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
+      };
+    }
+
+    // Validate if information is being passed as JSON strings and parse it
+    this.onColumnsChange(this.columns);
+    this.onDataChange(this.data);
 
     // Seed initial sort from activeSorting column definitions
     this.sorting = this.buildInitialSorting();
@@ -104,26 +110,41 @@ export class GcdsTable {
   // ─── Watchers ─────────────────────────────────────────────────────────────
 
   @Watch('columns')
-  @Watch('data')
-  onDataChange() {
-    if (this.table) {
-      this.table.setOptions(prev => ({
-        ...prev,
-        ...this.buildTableOptions(),
-      }));
-      // Force re-render by touching a @State property
-      this.sorting = [...this.sorting];
+  onColumnsChange(newVal: string | TableColumn[]) {
+    if (typeof newVal === 'string') {
+      console.log('Parsing columns from JSON string:', newVal);
+      console.log(JSON.parse(newVal));
+      try {
+        this.columns = JSON.parse(newVal);
+      } catch (e) {
+        console.error('[gcds-table] Invalid JSON in column-data:', e);
+      }
     }
+    this.updateTableOptions();
+  }
+
+  @Watch('data')
+  onDataChange(newVal: string | object[]) {
+    if (typeof newVal === 'string') {
+      console.log('Parsing data from JSON string:', newVal);
+      console.log(JSON.parse(newVal));
+      try {
+        this.data = JSON.parse(newVal);
+      } catch (e) {
+        console.error('[gcds-table] Invalid JSON in column-data:', e);
+      }
+    }
+    this.updateTableOptions();
   }
 
   @Watch('sort')
   onSortableChange() {
-    this.onDataChange();
+    this.onDataChange(this.data);
   }
 
   @Watch('pagination')
   onPaginationChange() {
-    this.onDataChange();
+    this.onDataChange(this.data);
   }
 
   @Watch('paginationCurrentPage')
@@ -163,7 +184,7 @@ export class GcdsTable {
   // ─── Helpers ──────────────────────────────────────────────────────────────
 
   private buildInitialSorting(): SortingState {
-    return (this.columns ?? [])
+    return ((this.columns ?? []) as TableColumn[])
       .filter(col => col.activeSorting)
       .map(col => ({
         id: col.field,
@@ -172,7 +193,7 @@ export class GcdsTable {
   }
 
   private buildColumnDefs(): ColumnDef<Record<string, unknown>>[] {
-    return (this.columns ?? []).map(col => ({
+    return ((this.columns ?? []) as TableColumn[]).map(col => ({
       id: col.field,
       accessorKey: col.field,
       header: col.header,
@@ -182,12 +203,23 @@ export class GcdsTable {
   }
 
   private sortEnabled(): boolean {
-    return this.sort || (this.columns ?? []).some(col => col.sortable);
+    return this.sort || ((this.columns ?? []) as TableColumn[]).some(col => col.sortable);
+  }
+
+  private updateTableOptions() {
+    if (this.table) {
+      this.table.setOptions(prev => ({
+        ...prev,
+        ...this.buildTableOptions(),
+      }));
+      // Force re-render by touching a @State property
+      this.sorting = [...this.sorting];
+    }
   }
 
   private buildTableOptions(): TableOptionsResolved<Record<string, unknown>> {
     return {
-      data: this.data ?? [],
+      data: (this.data ?? []) as Record<string, unknown>[],
       columns: this.buildColumnDefs(),
       state: {
         sorting: this.sorting,
@@ -302,7 +334,7 @@ export class GcdsTable {
   }
 
   private getAlignClass(field: string): string {
-    const colDef = (this.columns ?? []).find(c => c.field === field);
+    const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === field);
     if (!colDef?.align) return '';
     return `align-${colDef.align}`;
   }
@@ -359,7 +391,7 @@ export class GcdsTable {
                 value={this.paginationSize.toString()}
                 onChange={e => this.handlePageSizeSelect(e)}
               >
-                {(this.paginationSizeOptions ?? [10, 25, 50, 0]).map(opt => (
+                {(this.paginationSizeOptions as number[]).map(opt => (
                   <option key={opt} value={opt}>
                     {opt === 0 ? 'All' : opt}
                   </option>
@@ -387,7 +419,7 @@ export class GcdsTable {
               {headerGroups.map(hg => (
                 <tr key={hg.id}>
                   {hg.headers.map(header => {
-                    const colDef = (this.columns ?? []).find(
+                    const colDef = ((this.columns ?? []) as TableColumn[]).find(
                       c => c.field === header.id,
                     );
                     const canSort = header.column.getCanSort();

@@ -11287,11 +11287,34 @@
       "usage": {},
       "props": [
         {
-          "name": "columns",
-          "type": "TableColumn[]",
+          "name": "caption",
+          "type": "string",
           "complexType": {
-            "original": "TableColumn[]",
-            "resolved": "TableColumn[]",
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "caption",
+          "reflectToAttr": false,
+          "docs": "Table caption",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "columns",
+          "type": "TableColumn[] | string",
+          "complexType": {
+            "original": "string | TableColumn[]",
+            "resolved": "TableColumn[] | string",
             "references": {
               "TableColumn": {
                 "location": "local",
@@ -11300,7 +11323,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "columns",
           "reflectToAttr": false,
           "docs": "Column definitions",
@@ -11314,6 +11337,9 @@
           "values": [
             {
               "type": "TableColumn[]"
+            },
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -11323,18 +11349,13 @@
         },
         {
           "name": "data",
-          "type": "Record<string, unknown>[]",
+          "type": "object[] | string",
           "complexType": {
-            "original": "Record<string, unknown>[]",
-            "resolved": "Record<string, unknown>[]",
-            "references": {
-              "Record": {
-                "location": "global",
-                "id": "global::Record"
-              }
-            }
+            "original": "string | object[]",
+            "resolved": "object[] | string",
+            "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "data",
           "reflectToAttr": false,
           "docs": "Row data",
@@ -11347,7 +11368,10 @@
           "default": "[]",
           "values": [
             {
-              "type": "Record<string, unknown>[]"
+              "type": "object[]"
+            },
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -11444,13 +11468,13 @@
         },
         {
           "name": "paginationSizeOptions",
-          "type": "number[]",
+          "type": "number[] | string",
           "complexType": {
-            "original": "number[]",
-            "resolved": "number[]",
+            "original": "string | number[]",
+            "resolved": "number[] | string",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "pagination-size-options",
           "reflectToAttr": false,
           "docs": "Available page-size options.\nUse 0 to represent \"All rows\".",
@@ -11464,6 +11488,9 @@
           "values": [
             {
               "type": "number[]"
+            },
+            {
+              "type": "string"
             }
           ],
           "optional": false,

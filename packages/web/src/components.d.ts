@@ -1374,12 +1374,12 @@ export namespace Components {
           * Column definitions
           * @default []
          */
-        "columns": TableColumn[];
+        "columns": string | TableColumn[];
         /**
           * Row data
           * @default []
          */
-        "data": Record<string, unknown>[];
+        "data": string | object[];
         /**
           * Enable pagination
           * @default false
@@ -1399,7 +1399,7 @@ export namespace Components {
           * Available page-size options. Use 0 to represent "All rows".
           * @default [10, 25, 50, 0]
          */
-        "paginationSizeOptions": number[];
+        "paginationSizeOptions": string | number[];
         /**
           * Enable global search / filter
           * @default false
@@ -3980,12 +3980,12 @@ declare namespace LocalJSX {
           * Column definitions
           * @default []
          */
-        "columns"?: TableColumn[];
+        "columns"?: string | TableColumn[];
         /**
           * Row data
           * @default []
          */
-        "data"?: Record<string, unknown>[];
+        "data"?: string | object[];
         /**
           * Enable pagination
           * @default false
@@ -4005,7 +4005,7 @@ declare namespace LocalJSX {
           * Available page-size options. Use 0 to represent "All rows".
           * @default [10, 25, 50, 0]
          */
-        "paginationSizeOptions"?: number[];
+        "paginationSizeOptions"?: string | number[];
         /**
           * Enable global search / filter
           * @default false
