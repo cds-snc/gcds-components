@@ -11,7 +11,7 @@ export default {
       options: ['success', 'danger', 'info', 'warning'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+        defaultValue: { summary: 'info' },
       },
       type: {
         required: true,
@@ -23,7 +23,7 @@ export default {
       options: ['full', 'xl', 'lg', 'md', 'sm', 'xs'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '-' },
+        defaultValue: { summary: 'full' },
       },
       type: {
         required: true,
@@ -93,17 +93,17 @@ export default {
 };
 
 class GcdsAlertArg {
-  alertRole: 'success' | 'danger' | 'info' | 'warning'
-  container: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
-  heading: string
-  hideRoleIcon: boolean
-  isFixed: boolean
-  hideCloseBtn: boolean
-  default: string
-  lang: 'en' | 'fr'
+  alertRole: 'success' | 'danger' | 'info' | 'warning' = 'info';
+  container: 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' = 'full';
+  heading: string;
+  hideRoleIcon: boolean = false;
+  isFixed: boolean = false;
+  hideCloseBtn: boolean = false;
+  default: string;
+  lang: 'en' | 'fr';
 }
 
-const Template = (args : GcdsAlertArg) =>
+const Template = (args: GcdsAlertArg) =>
   `
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-alert alert-role="${args.alertRole}" container="${args.container}" heading="${args.heading}" hide-close-btn="${args.hideCloseBtn}" hide-role-icon="${args.hideRoleIcon}" is-fixed="${args.isFixed}" ${args.lang != 'en' ? `lang="${args.lang}"` : null}>
@@ -116,7 +116,7 @@ const Template = (args : GcdsAlertArg) =>
 </GcdsAlert>
 `.replace(/ null/g, '');
 
-const TemplatePlayground = (args : GcdsAlertArg) => `
+const TemplatePlayground = (args: GcdsAlertArg) => `
 <gcds-alert alert-role="${args.alertRole}" container="${args.container}" heading="${args.heading}" hide-close-btn="${args.hideCloseBtn}" hide-role-icon="${args.hideRoleIcon}" is-fixed="${args.isFixed}" ${args.lang != 'en' ? `lang="${args.lang}"` : null}>
     ${args.default.trim() != '' ? `${args.default}` : null}
 </gcds-alert>
@@ -125,7 +125,7 @@ const TemplatePlayground = (args : GcdsAlertArg) => `
 // ------ Alert default ------
 
 //
-export const Default : {args: GcdsAlertArg} = Template.bind({});
+export const Default: { args: GcdsAlertArg } = Template.bind({});
 Default.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -139,7 +139,7 @@ Default.args = {
 
 // ------ Alert success ------
 
-export const Success : {args: GcdsAlertArg} = Template.bind({});
+export const Success: { args: GcdsAlertArg } = Template.bind({});
 Success.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -153,7 +153,7 @@ Success.args = {
 
 // ------ Alert danger ------
 
-export const Danger : {args: GcdsAlertArg} = Template.bind({});
+export const Danger: { args: GcdsAlertArg } = Template.bind({});
 Danger.args = {
   alertRole: 'danger',
   heading: 'Title',
@@ -167,7 +167,7 @@ Danger.args = {
 
 // ------ Alert info ------
 
-export const Info : {args: GcdsAlertArg} = Template.bind({});
+export const Info: { args: GcdsAlertArg } = Template.bind({});
 Info.args = {
   alertRole: 'info',
   heading: 'Title',
@@ -181,7 +181,7 @@ Info.args = {
 
 // ------ Alert warning ------
 
-export const Warning : {args: GcdsAlertArg} = Template.bind({});
+export const Warning: { args: GcdsAlertArg } = Template.bind({});
 Warning.args = {
   alertRole: 'warning',
   heading: 'Title',
@@ -195,7 +195,7 @@ Warning.args = {
 
 // ------ Container Full ------
 
-export const ContainerFull : {args: GcdsAlertArg} = Template.bind({});
+export const ContainerFull: { args: GcdsAlertArg } = Template.bind({});
 ContainerFull.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -209,7 +209,7 @@ ContainerFull.args = {
 
 // ------ Container XL ------
 
-export const ContainerXl : {args: GcdsAlertArg} = Template.bind({});
+export const ContainerXl: { args: GcdsAlertArg } = Template.bind({});
 ContainerXl.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -223,7 +223,7 @@ ContainerXl.args = {
 
 // ------ Container LG ------
 
-export const ContainerLg : {args: GcdsAlertArg} = Template.bind({});
+export const ContainerLg: { args: GcdsAlertArg } = Template.bind({});
 ContainerLg.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -237,7 +237,7 @@ ContainerLg.args = {
 
 // ------ Container MD ------
 
-export const ContainerMd : {args: GcdsAlertArg} = Template.bind({});
+export const ContainerMd: { args: GcdsAlertArg } = Template.bind({});
 ContainerMd.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -251,7 +251,7 @@ ContainerMd.args = {
 
 // ------ Container SM ------
 
-export const ContainerSm : {args: GcdsAlertArg} = Template.bind({});
+export const ContainerSm: { args: GcdsAlertArg } = Template.bind({});
 ContainerSm.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -265,7 +265,7 @@ ContainerSm.args = {
 
 // ------ Container XS ------
 
-export const ContainerXs : {args: GcdsAlertArg} = Template.bind({});
+export const ContainerXs: { args: GcdsAlertArg } = Template.bind({});
 ContainerXs.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -279,7 +279,7 @@ ContainerXs.args = {
 
 // ------ HideCloseBtn ------
 
-export const HideCloseBtn : {args: GcdsAlertArg} = Template.bind({});
+export const HideCloseBtn: { args: GcdsAlertArg } = Template.bind({});
 HideCloseBtn.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -293,7 +293,7 @@ HideCloseBtn.args = {
 
 // ------ HideCloseBtn ------
 
-export const HideRoleIcon : {args: GcdsAlertArg} = Template.bind({});
+export const HideRoleIcon: { args: GcdsAlertArg } = Template.bind({});
 HideRoleIcon.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -305,10 +305,9 @@ HideRoleIcon.args = {
   lang: 'en',
 };
 
-
 // ------ Alert events & props ------
 
-export const Props : {args: GcdsAlertArg} = Template.bind({});
+export const Props: { args: GcdsAlertArg } = Template.bind({});
 Props.args = {
   alertRole: 'success',
   heading: 'Title',
@@ -322,7 +321,7 @@ Props.args = {
 
 // ------ Alert playground ------
 
-export const Playground : {args: GcdsAlertArg} = TemplatePlayground.bind({});
+export const Playground: { args: GcdsAlertArg } = TemplatePlayground.bind({});
 Playground.args = {
   alertRole: 'success',
   heading: 'Title',
