@@ -13,9 +13,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'info' },
       },
-      type: {
-        required: true,
-      },
     },
     container: {
       name: 'container',
@@ -24,9 +21,6 @@ export default {
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'full' },
-      },
-      type: {
-        required: true,
       },
     },
     heading: {
@@ -48,9 +42,6 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
       },
-      type: {
-        required: true,
-      },
     },
     hideRoleIcon: {
       name: 'hide-role-icon',
@@ -60,9 +51,6 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
       },
-      type: {
-        required: true,
-      },
     },
     isFixed: {
       name: 'is-fixed',
@@ -71,9 +59,6 @@ export default {
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
-      },
-      type: {
-        required: true,
       },
     },
     ...langProp,
