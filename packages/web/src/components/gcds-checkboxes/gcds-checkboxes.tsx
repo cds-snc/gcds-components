@@ -59,7 +59,7 @@ export class GcdsCheckboxes {
   private optionsArr;
   private isGroup = false;
 
-  // @ts-ignore - Used by renderCheckbox() to set title on error
+  // @ts-expect-error - Used by renderCheckbox() to set title on error
   private checkboxTitle = '';
 
   _validator: Validator<string | string[]> = defaultValidator;
