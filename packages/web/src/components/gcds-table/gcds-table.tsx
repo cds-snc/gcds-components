@@ -28,6 +28,7 @@ export interface TableColumn {
   sortable?: boolean;
   activeSorting?: 'asc' | 'desc';
   align?: 'start' | 'center' | 'end';
+  renderCell?: (value: unknown, row: Record<string, unknown>) => any;
 }
 
 @Component({
@@ -112,8 +113,6 @@ export class GcdsTable {
   @Watch('columns')
   onColumnsChange(newVal: string | TableColumn[]) {
     if (typeof newVal === 'string') {
-      console.log('Parsing columns from JSON string:', newVal);
-      console.log(JSON.parse(newVal));
       try {
         this.columns = JSON.parse(newVal);
       } catch (e) {
@@ -126,8 +125,6 @@ export class GcdsTable {
   @Watch('data')
   onDataChange(newVal: string | object[]) {
     if (typeof newVal === 'string') {
-      console.log('Parsing data from JSON string:', newVal);
-      console.log(JSON.parse(newVal));
       try {
         this.data = JSON.parse(newVal);
       } catch (e) {
@@ -446,7 +443,7 @@ export class GcdsTable {
                             onClick={() => this.handleSortToggle(header.id)}
                             title={this.getSortTitle(header.column)}
                           >
-                            {header.column.columnDef.header as string}
+                            {colDef.header}
                             {/* Replace icons with something better */}
                             <span
                               class="gcds-table__sort-icon"
@@ -456,7 +453,7 @@ export class GcdsTable {
                             </span>
                           </button>
                           :
-                          header.column.columnDef.header as string
+                          colDef.header
                         }
                       </th>
                     );
@@ -477,14 +474,45 @@ export class GcdsTable {
               ) : (
                 rows.map(row => (
                   <tr key={row.id} class="gcds-table__row">
-                    {row.getVisibleCells().map(cell => (
-                      <td
-                        key={cell.id}
-                        class={`gcds-table__td ${this.getAlignClass(cell.column.id)}`}
-                      >
-                        {cell.getValue() as any}
-                      </td>
-                    ))}
+                    {row.getVisibleCells().map(cell => {
+                      const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === cell.column.id);
+
+                      let cellContent: any;
+
+                      if (colDef?.renderCell) {
+                        const rendered = colDef.renderCell(cell.getValue(), row.original);
+
+                        if (rendered instanceof HTMLElement) {
+                          // Use a ref to manually append the DOM node after the host element mounts.
+                          // Returning nothing as children avoids the vNode type error.
+                          cellContent = (
+                            <span
+                              ref={el => {
+                                if (el) {
+                                  el.innerHTML = '';
+                                  el.appendChild(rendered);
+                                }
+                              }}
+                            />
+                          );
+                        } else if (rendered !== null && rendered !== undefined) {
+                          // Primitive (string, number) or JSX — safe to render directly
+                          cellContent = rendered;
+                        }
+                      } else {
+                        cellContent = cell.getValue() as any;
+                      }
+
+                      return (
+                        <td
+                          key={cell.id}
+                          class={`gcds-table__td ${this.getAlignClass(cell.column.id)}`}
+                          data-column={colDef.header}
+                        >
+                          {cellContent}
+                        </td>
+                      )
+                    })}
                   </tr>
                 ))
               )}
