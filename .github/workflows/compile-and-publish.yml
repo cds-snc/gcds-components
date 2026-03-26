@@ -99,7 +99,7 @@ jobs:
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
-        uses: cds-snc/sentinel-forward-data-action@main
+        uses: cds-snc/sentinel-forward-data-action@0c349852373284a1130f87f8b91896132b0fc138 # main
         with:
           input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
           log_type: CDS_Product_Deployment_Data
@@ -161,7 +161,7 @@ jobs:
 
       - name: Report deployment to Sentinel
         if: steps.publish.outputs.id != ''
-        uses: cds-snc/sentinel-forward-data-action@main
+        uses: cds-snc/sentinel-forward-data-action@0c349852373284a1130f87f8b91896132b0fc138 # main
         with:
           input_data: '{"product": "design-system", "sha": "${{ github.sha }}", "version": "${{steps.publish.outputs.id}}", "repository": "${{ github.repository }}", "environment": "production", "status": "${{ job.status }}"}'
           log_type: CDS_Product_Deployment_Data
