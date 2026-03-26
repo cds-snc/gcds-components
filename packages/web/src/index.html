@@ -96,7 +96,6 @@
         pagination-size="10"
         search="true"
         caption="Table of the best Pokémon (first generation)"
-        pagination-size-options="[1, 3, 5, 10, 25, 50, 0]"
         columns='[
           {
             "field": "number",
@@ -182,28 +181,41 @@
         const table = document.getElementById('my-table');
 
         // Populate the table columns
-        // table.columns = [
-        //   {
-        //     field: 'number',
-        //     header: 'Pokédex',
-        //     align: 'end',
-        //     activeSorting: 'asc',
-        //   },
-        //   {
-        //     field: 'name',
-        //     header: 'Name',
-        //   },
-        //   { field: 'height', header: 'Height', align: 'end' },
-        //   { field: 'weight', header: 'Weight', align: 'end' },
-        //   {
-        //     field: 'base_experience',
-        //     header: 'Base experience',
-        //     sortable: false,
-        //     align: 'end',
-        //   },
-        // ];
+        table.columns = [
+          {
+            field: 'number',
+            header: 'Pokédex',
+            align: 'end',
+            activeSorting: 'asc',
+          },
+          {
+            field: 'name',
+            header: 'Name',
+          },
+          {
+            field: 'sprite',
+            header: 'Sprite',
+            align: 'center',
+            renderCell: (value, row) => {
+              const img = document.createElement('img');
+              img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`;
+              img.alt = row.name;
+              img.width = 150;
+              img.height = 150;
+              return img;
+            },
+          },
+          { field: 'height', header: 'Height', align: 'end' },
+          { field: 'weight', header: 'Weight', align: 'end' },
+          {
+            field: 'base_experience',
+            header: 'Base experience',
+            sortable: false,
+            align: 'end',
+          },
+        ];
 
-        // table.paginationSizeOptions = [1, 3, 5, 10, 25, 50, 0];
+        table.paginationSizeOptions = [1, 3, 5, 10, 25, 50, 0];
 
         // Populate the table rows with results from API
         getFirst151Pokemon().then(pokemon => {
