@@ -25,10 +25,11 @@ import {
 export interface TableColumn {
   field: string;
   header: string;
-  sortable?: boolean;
   activeSorting?: 'asc' | 'desc';
   align?: 'start' | 'center' | 'end';
+  sortable?: boolean;
   renderCell?: (value: unknown, row: Record<string, unknown>) => any;
+  rowHeader?: boolean;
 }
 
 @Component({
@@ -529,6 +530,9 @@ export class GcdsTable {
 
                       let cellContent: any;
 
+                      // Check if row table header
+                      const Tag = colDef?.rowHeader ? 'th' : 'td';
+
                       if (colDef?.renderCell) {
                         const rendered = colDef.renderCell(cell.getValue(), row.original);
 
@@ -554,13 +558,13 @@ export class GcdsTable {
                       }
 
                       return (
-                        <td
+                        <Tag
                           key={cell.id}
                           class={`gcds-table__td ${this.getAlignClass(cell.column.id)}`}
                           data-column={colDef.header}
                         >
                           {cellContent}
-                        </td>
+                        </Tag>
                       )
                     })}
                   </tr>
