@@ -39,6 +39,7 @@ export interface TableColumn {
 export class GcdsTable {
   @Element() el: HTMLElement;
   private shadowElement: HTMLTableElement;
+  private filterSortModal: HTMLDialogElement;
 
   // ─── Props ────────────────────────────────────────────────────────────────
 
@@ -365,6 +366,55 @@ export class GcdsTable {
     return (
       <Host>
         <section class="gcds-table">
+          {(this.sort || this.search) && (
+            <div>
+              <gcds-button
+                size="small"
+                onClick={() => this.filterSortModal.showModal()}
+              >
+                Filter and sort
+              </gcds-button>
+
+              <dialog
+                class="gcds-table__modal"
+                aria-modal="true"
+                aria-labelledby="gcds-table__modal-heading"
+                ref={el => (this.filterSortModal = el)}
+              >
+                <gcds-heading
+                  tag="h2"
+                  id="gcds-table__modal-heading"
+                >
+                  Filter and sort
+                </gcds-heading>
+
+                {this.search && (
+                  <div class="gcds-table__toolbar">
+                    <gcds-input
+                      type="search"
+                      label="Search table"
+                      name="search"
+                      inputId="gcds-table-search"
+                      value={this.searchValue}
+                      onInput={e => this.handleSearchInput(e)} />
+                  </div>
+                )}
+
+                {this.sort && (
+                  <gcds-text>This is a placeholder for the future filter/sort modal implementation.</gcds-text>
+                )}
+
+                <gcds-button
+                  size="small"
+                  button-role="secondary"
+                  onClick={() => this.filterSortModal.close()}
+                >
+                  Close
+                </gcds-button>
+              </dialog>
+            </div>
+          )}
+
           {/* ── Search bar ─────────────────────────── */}
           {this.search && (
             <div class="gcds-table__toolbar">
@@ -378,6 +428,11 @@ export class GcdsTable {
               />
             </div>
           )}
+
+          {/* Table status */}
+          <span class="gcds-table__page-info" role="status" aria-live="polite">
+            Showing {currentPageIndex * this.paginationSize + 1} to {Math.min((currentPageIndex + 1) * this.paginationSize, totalRows)} of {totalRows} entries
+          </span>
 
           {this.pagination && (
             <div class="gcds-table__page-size">
@@ -394,11 +449,6 @@ export class GcdsTable {
                   </option>
                 ))}
               </gcds-select>
-
-              {/* Page info */}
-              <span class="gcds-table__page-info" role="status" aria-live="polite">
-                Showing {currentPageIndex * this.paginationSize + 1} to {Math.min((currentPageIndex + 1) * this.paginationSize, totalRows)} of {totalRows} entries
-              </span>
             </div>
           )}
 
