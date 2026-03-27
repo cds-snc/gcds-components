@@ -479,6 +479,7 @@ export class GcdsTable {
                       <th
                         key={header.id}
                         class={`gcds-table__th ${alignClass}`}
+                        scope="col"
                         aria-sort={
                           header.column.getIsSorted() === 'asc'
                             ? 'ascending'
@@ -529,16 +530,21 @@ export class GcdsTable {
                       const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === cell.column.id);
 
                       let cellContent: any;
+                      let Tag = 'td';
+                      let scope = {};
 
-                      // Check if row table header
-                      const Tag = colDef?.rowHeader ? 'th' : 'td';
+                      // Check if table header in row
+                      if (colDef?.rowHeader) {
+                        Tag = 'th';
+                        scope = {
+                          scope: 'row',
+                        }
+                      }
 
                       if (colDef?.renderCell) {
                         const rendered = colDef.renderCell(cell.getValue(), row.original);
 
                         if (rendered instanceof HTMLElement) {
-                          // Use a ref to manually append the DOM node after the host element mounts.
-                          // Returning nothing as children avoids the vNode type error.
                           cellContent = (
                             <span
                               ref={el => {
@@ -550,7 +556,6 @@ export class GcdsTable {
                             />
                           );
                         } else if (rendered !== null && rendered !== undefined) {
-                          // Primitive (string, number) or JSX — safe to render directly
                           cellContent = rendered;
                         }
                       } else {
@@ -562,6 +567,7 @@ export class GcdsTable {
                           key={cell.id}
                           class={`gcds-table__td ${this.getAlignClass(cell.column.id)}`}
                           data-column={colDef.header}
+                          {...scope}
                         >
                           {cellContent}
                         </Tag>
