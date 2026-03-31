@@ -2223,14 +2223,14 @@ export declare interface GcdsStepper extends Components.GcdsStepper {}
 
 
 @ProxyCmp({
-  inputs: ['caption', 'columns', 'data', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'search', 'searchValue', 'sort']
+  inputs: ['caption', 'columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort']
 })
 @Component({
   selector: 'gcds-table',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'columns', 'data', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'search', 'searchValue', 'sort'],
+  inputs: ['caption', 'columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort'],
   standalone: false,
 })
 export class GcdsTable {
@@ -2269,13 +2269,13 @@ Use 0 to represent "All rows". @default [10, 25, 50, 0]
    */
   set paginationSizeOptions(_: Components.GcdsTable['paginationSizeOptions']) {};
     /**
-   * Enable global search / filter @default false
+   * Enable global filter @default false
    */
-  set search(_: Components.GcdsTable['search']) {};
+  set filter(_: Components.GcdsTable['filter']) {};
     /**
-   * Current search string @default ''
+   * Current filter string @default ''
    */
-  set searchValue(_: Components.GcdsTable['searchValue']) {};
+  set filterValue(_: Components.GcdsTable['filterValue']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
