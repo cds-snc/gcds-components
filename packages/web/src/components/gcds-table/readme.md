@@ -29,7 +29,6 @@
 - [gcds-button](../gcds-button)
 - [gcds-heading](../gcds-heading)
 - [gcds-input](../gcds-input)
-- [gcds-text](../gcds-text)
 - [gcds-select](../gcds-select)
 - [gcds-pagination](../gcds-pagination)
 
@@ -40,7 +39,6 @@ graph TD;
   gcds-table --> gcds-button
   gcds-table --> gcds-heading
   gcds-table --> gcds-input
-  gcds-table --> gcds-text
   gcds-table --> gcds-select
   gcds-table --> gcds-pagination
   gcds-radios --> gcds-sr-only

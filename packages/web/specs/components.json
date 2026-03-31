@@ -11611,7 +11611,6 @@
         "gcds-button",
         "gcds-heading",
         "gcds-input",
-        "gcds-text",
         "gcds-select",
         "gcds-pagination"
       ],
@@ -11621,7 +11620,6 @@
           "gcds-button",
           "gcds-heading",
           "gcds-input",
-          "gcds-text",
           "gcds-select",
           "gcds-pagination"
         ],
@@ -12156,7 +12154,6 @@
         "gcds-error-message",
         "gcds-file-uploader",
         "gcds-hint",
-        "gcds-table",
         "gcds-textarea"
       ],
       "dependencies": [],
@@ -12174,9 +12171,6 @@
           "gcds-text"
         ],
         "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-table": [
           "gcds-text"
         ],
         "gcds-textarea": [
