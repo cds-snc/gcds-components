@@ -22,6 +22,9 @@ import {
   type TableOptionsResolved,
 } from '@tanstack/table-core';
 
+import { assignLanguage } from '../../utils/utils';
+import I18N from './i18n/i18n';
+
 export interface TableColumn {
   field: string;
   header: string;
@@ -88,6 +91,7 @@ export class GcdsTable {
     pageIndex: 0,
     pageSize: 10,
   };
+  @State() lang: string;
 
   // TanStack table instance (not reactive – mutations trigger re-renders via @State)
   private table: Table<Record<string, unknown>> | null = null;
@@ -95,6 +99,9 @@ export class GcdsTable {
   // ─── Lifecycle ────────────────────────────────────────────────────────────
 
   componentWillLoad() {
+    // Define lang attribute
+    this.lang = assignLanguage(this.el);
+
     if (this.pagination) {
       this.paginationState = {
         pageIndex: Math.max(0, this.paginationCurrentPage - 1),
@@ -184,6 +191,11 @@ export class GcdsTable {
       ...prev,
       state: { ...prev.state, globalFilter: this.globalFilter },
     }));
+  }
+
+  @Watch('lang')
+  onLangChange(newVal: string) {
+    this.lang = newVal;
   }
 
   // ─── Helpers ──────────────────────────────────────────────────────────────
@@ -317,6 +329,7 @@ export class GcdsTable {
 
     // focus table here to ensure keyboard users can navigate from pagination controls to table rows
     this.shadowElement.focus();
+    this.shadowElement.scrollIntoView({ block: "start", behavior: "smooth" });
   }
 
   // ─── Render helpers ───────────────────────────────────────────────────────
@@ -339,20 +352,20 @@ export class GcdsTable {
   private getSortTitle(column) {
     let sortText = '';
     if (column.getIsSorted() === 'asc') {
-      sortText = 'activate for descending sort';
+      sortText = I18N[this.lang].headingActivateDesc;
     } else if (column.getIsSorted() === 'desc') {
-      sortText = 'activate to remove sorting';
+      sortText = I18N[this.lang].headingRemoveSort;
     } else if (column.getIsSorted() === false) {
-      sortText = 'activate for ascending sort';
+      sortText = I18N[this.lang].headingActivateAsc;
     }
 
-    return `${column.columnDef.header as string}: ${sortText}`;
+    return `${column.columnDef.header as string} ${sortText}`;
   }
 
   private renderActivewBadge() {
     const activeCount = (this.filterValue ? 1 : 0) + this.sorting.length;
     return (
-      <span class="gcds-table__active-count" aria-label={`${activeCount} active filters/sorts`}>
+      <span class="gcds-table__active-count" aria-label={`${I18N[this.lang].activeBadgeLabel.replace('{count}', activeCount)}`}>
         {activeCount}
       </span>
     );
@@ -364,14 +377,27 @@ export class GcdsTable {
     const filteredRows = this.table.getFilteredRowModel().rows.length;
     const paginationSize = this.paginationSize;
 
+    // Filtered results with multiple pages
     if (this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
-      return `Showing ${currentPageIndex * paginationSize + 1} to ${Math.min((currentPageIndex + 1) * paginationSize, totalRows)} of ${filteredRows} matches.`;
+      return I18N[this.lang].showingMatchesPagination
+        .replace('{start}', currentPageIndex * paginationSize + 1)
+        .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
+        .replace('{filtered}', filteredRows);
+
+      // Filtered results on singular page
     } else if (this.filterValue && (this.pagination && this.table.getPageCount() === 1)) {
-      return `Showing ${filteredRows} matches.`
+      return I18N[this.lang].showingMatches.replace('{matchNumber}', filteredRows);
+
+      // Rows across multiple pages
     } else if (!this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
-      return `Showing ${currentPageIndex * paginationSize + 1} to ${Math.min((currentPageIndex + 1) * paginationSize, totalRows)} of ${totalRows} rows.`
+      return I18N[this.lang].showingPages
+        .replace('{start}', currentPageIndex * paginationSize + 1)
+        .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
+        .replace('{total}', totalRows);
+
+      // Rows on one page
     } else {
-      return `Showing ${totalRows} rows.`
+      return I18N[this.lang].showingAllRows.replace('{total}', totalRows);
     }
   }
 
@@ -399,15 +425,15 @@ export class GcdsTable {
 
     radioOptions.push(
       {
-        id: 'none',
-        label: 'None',
+        id: 'nosort',
+        label: I18N[this.lang].radioLabelNoSort,
         value: 'null',
       }
     );
 
     return (
       <gcds-radios
-        legend="Sort"
+        legend={I18N[this.lang].sort}
         hideLegend
         name="sort"
         autoFocus
@@ -437,7 +463,7 @@ export class GcdsTable {
                 size="small"
                 onClick={() => this.filterSortModal.showModal()}
               >
-                Filter and sort
+                {I18N[this.lang].filterAndSort}
                 {(this.filterValue || this.sorting.length > 0) && this.renderActivewBadge()
                 }
               </gcds-button>
@@ -454,7 +480,7 @@ export class GcdsTable {
                     id="gcds-table__modal-heading"
                     marginTop='0'
                   >
-                    Filter and sort
+                    {I18N[this.lang].filterAndSort}
                   </gcds-heading>
                 </div>
 
@@ -463,7 +489,7 @@ export class GcdsTable {
                   button-role="secondary"
                   onClick={() => this.filterSortModal.close()}
                 >
-                  Close
+                  {I18N[this.lang].modalClose}
                 </gcds-button>
 
                 <form
@@ -492,7 +518,7 @@ export class GcdsTable {
                   {this.filter && (
                     <gcds-input
                       type="search"
-                      label="Filter items"
+                      label={I18N[this.lang].modalFilterLabel}
                       name="filter"
                       inputId="gcds-table-filter"
                       autoFocus
@@ -504,7 +530,7 @@ export class GcdsTable {
                   {this.sortEnabled() && (
                     <div>
                       {/* This will be an expand button to hide the radios */}
-                      <gcds-text>Sort</gcds-text>
+                      <button>{I18N[this.lang].sort}</button>
 
                       {this.renderSortRadios()}
                     </div>
@@ -516,7 +542,7 @@ export class GcdsTable {
                       button-role="primary"
                       type="submit"
                     >
-                      Apply
+                      {I18N[this.lang].modalApplyButton}
                     </gcds-button>
                     <gcds-button
                       button-role="secondary"
@@ -526,7 +552,7 @@ export class GcdsTable {
                         this.sortRadios.value = 'null';
                       }}
                     >
-                      Clear all
+                      {I18N[this.lang].modalClearButton}
                     </gcds-button>
                   </div>
                 </form>
@@ -541,9 +567,9 @@ export class GcdsTable {
             {this.filterValue && (
               <button
                 onClick={() => this.filterValue = ''}
-                title="Click to remove filter"
+                title={I18N[this.lang].pillRemoveFilter}
               >
-                Filter: {this.filterValue}
+                {I18N[this.lang].pillFilter} {this.filterValue}
                 <span aria-hidden="true"> ×</span>
               </button>
             )}
@@ -560,9 +586,9 @@ export class GcdsTable {
                     this.sorting = this.sorting.filter(s => s.id !== sort.id);
                     this.updateTableOptions();
                   }}
-                  title="Click to remove sorting"
+                  title={I18N[this.lang].pillRemoveSort}
                 >
-                  Sorted by: {header} ({direction})
+                  {I18N[this.lang].pillSort} {header} ({<abbr title={I18N[this.lang][`${direction}ending`]}>{I18N[this.lang][direction]}</abbr>})
                   <span aria-hidden="true"> ×</span>
                 </button>
               );
@@ -577,7 +603,7 @@ export class GcdsTable {
           {this.pagination && (
             <div class="gcds-table__page-size">
               <gcds-select
-                label="Rows per page"
+                label={I18N[this.lang].rowsPerPage}
                 name="page-size"
                 selectId="gcds-table-page-size"
                 value={this.paginationSize.toString()}
@@ -659,7 +685,7 @@ export class GcdsTable {
                     class="gcds-table__empty"
                     colSpan={(this.columns ?? []).length}
                   >
-                    No data available.
+                    {I18N[this.lang].noData}
                   </td>
                 </tr>
               ) : (
@@ -724,7 +750,7 @@ export class GcdsTable {
               display="list"
               totalPages={this.table.getPageCount()}
               currentPage={this.paginationState.pageIndex + 1}
-              label="table pagination"
+              label={I18N[this.lang].paginationLabel}
               onGcdsClick={(e) => this.handlePaginationClick(e)}
             />
           )}
