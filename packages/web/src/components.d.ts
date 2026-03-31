@@ -1387,6 +1387,16 @@ export namespace Components {
          */
         "data": string | object[];
         /**
+          * Enable global filter
+          * @default false
+         */
+        "filter": boolean;
+        /**
+          * Current filter string
+          * @default ''
+         */
+        "filterValue": string;
+        /**
           * Enable pagination
           * @default false
          */
@@ -1406,16 +1416,6 @@ export namespace Components {
           * @default [10, 25, 50, 0]
          */
         "paginationSizeOptions": string | number[];
-        /**
-          * Enable global search / filter
-          * @default false
-         */
-        "search": boolean;
-        /**
-          * Current search string
-          * @default ''
-         */
-        "searchValue": string;
         /**
           * Enable global column sorting (can be overridden per column)
           * @default false
@@ -3999,6 +3999,16 @@ declare namespace LocalJSX {
          */
         "data"?: string | object[];
         /**
+          * Enable global filter
+          * @default false
+         */
+        "filter"?: boolean;
+        /**
+          * Current filter string
+          * @default ''
+         */
+        "filterValue"?: string;
+        /**
           * Enable pagination
           * @default false
          */
@@ -4018,16 +4028,6 @@ declare namespace LocalJSX {
           * @default [10, 25, 50, 0]
          */
         "paginationSizeOptions"?: string | number[];
-        /**
-          * Enable global search / filter
-          * @default false
-         */
-        "search"?: boolean;
-        /**
-          * Current search string
-          * @default ''
-         */
-        "searchValue"?: string;
         /**
           * Enable global column sorting (can be overridden per column)
           * @default false

@@ -73,11 +73,11 @@ export class GcdsTable {
    */
   @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [10, 25, 50, 0];
 
-  /** Enable global search / filter */
-  @Prop() search: boolean = false;
+  /** Enable global filter */
+  @Prop() filter: boolean = false;
 
-  /** Current search string */
-  @Prop({ mutable: true }) searchValue: string = '';
+  /** Current filter string */
+  @Prop({ mutable: true }) filterValue: string = '';
 
   // ─── Internal state ───────────────────────────────────────────────────────
 
@@ -245,7 +245,7 @@ export class GcdsTable {
         }));
       },
       // Filtering
-      enableFilters: this.search,
+      enableFilters: this.filter,
       onGlobalFilterChange: updater => {
         this.globalFilter =
           typeof updater === 'function'
@@ -274,7 +274,7 @@ export class GcdsTable {
       getPaginationRowModel: this.pagination
         ? getPaginationRowModel()
         : undefined,
-      getFilteredRowModel: this.search ? getFilteredRowModel() : undefined,
+      getFilteredRowModel: this.filter ? getFilteredRowModel() : undefined,
       // Keep pagination active even when disabled so state is consistent
       autoResetPageIndex: true,
     };
@@ -346,7 +346,7 @@ export class GcdsTable {
   }
 
   private renderActivewBadge() {
-    const activeCount = (this.searchValue ? 1 : 0) + this.sorting.length;
+    const activeCount = (this.filterValue ? 1 : 0) + this.sorting.length;
     return (
       <span class="gcds-table__active-count" aria-label={`${activeCount} active filters/sorts`}>
         {activeCount}
@@ -413,14 +413,14 @@ export class GcdsTable {
     return (
       <Host>
         <section class="gcds-table">
-          {(this.sortEnabled() || this.search) && (
+          {(this.sortEnabled() || this.filter) && (
             <div>
               <gcds-button
                 size="small"
                 onClick={() => this.filterSortModal.showModal()}
               >
                 Filter and sort
-                {(this.searchValue || this.sorting.length > 0) && this.renderActivewBadge()
+                {(this.filterValue || this.sorting.length > 0) && this.renderActivewBadge()
                 }
               </gcds-button>
 
@@ -453,7 +453,7 @@ export class GcdsTable {
                   onSubmit={ev => {
                     ev.preventDefault();
 
-                    this.searchValue = this.filterInput.value;
+                    this.filterValue = this.filterInput.value;
 
                     const sortValue = this.sortRadios.value;
                     if (sortValue === 'null') {
@@ -471,14 +471,14 @@ export class GcdsTable {
                     this.filterSortModal.close();
                   }}
                 >
-                  {this.search && (
+                  {this.filter && (
                     <gcds-input
                       type="search"
                       label="Filter items"
                       name="filter"
                       inputId="gcds-table-filter"
                       autoFocus
-                      value={this.searchValue}
+                      value={this.filterValue}
                       ref={el => (this.filterInput = el)}
                     />
                   )}
@@ -520,12 +520,12 @@ export class GcdsTable {
 
           {/* Active section */}
           <div class="gcds-table__active-filters">
-            {this.searchValue && (
+            {this.filterValue && (
               <button
-                onClick={() => this.searchValue = ''}
+                onClick={() => this.filterValue = ''}
                 title="Click to remove filter"
               >
-                Filter: {this.searchValue}
+                Filter: {this.filterValue}
                 <span aria-hidden="true"> ×</span>
               </button>
             )}
