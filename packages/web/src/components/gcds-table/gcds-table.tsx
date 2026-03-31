@@ -173,8 +173,8 @@ export class GcdsTable {
     }));
   }
 
-  @Watch('searchValue')
-  onSearchValueChange(newVal: string) {
+  @Watch('filterValue')
+  onFilterValueChange(newVal: string) {
     this.globalFilter = newVal;
     this.table?.setOptions(prev => ({
       ...prev,
