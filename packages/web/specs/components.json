@@ -813,7 +813,8 @@
       ],
       "parts": [],
       "dependents": [
-        "gcds-search"
+        "gcds-search",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-icon"
@@ -823,6 +824,9 @@
           "gcds-icon"
         ],
         "gcds-search": [
+          "gcds-button"
+        ],
+        "gcds-table": [
           "gcds-button"
         ]
       }
@@ -6109,7 +6113,8 @@
       "dependents": [
         "gcds-error-summary",
         "gcds-notice",
-        "gcds-stepper"
+        "gcds-stepper",
+        "gcds-table"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -6120,6 +6125,9 @@
           "gcds-heading"
         ],
         "gcds-stepper": [
+          "gcds-heading"
+        ],
+        "gcds-table": [
           "gcds-heading"
         ]
       }
@@ -9718,7 +9726,9 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "gcds-table"
+      ],
       "dependencies": [
         "gcds-sr-only",
         "gcds-hint",
@@ -9738,6 +9748,9 @@
         "gcds-error-message": [
           "gcds-text",
           "gcds-icon"
+        ],
+        "gcds-table": [
+          "gcds-radios"
         ]
       }
     },
@@ -11380,6 +11393,64 @@
           "setter": false
         },
         {
+          "name": "filter",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "filter",
+          "reflectToAttr": false,
+          "docs": "Enable global filter",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filterValue",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "filter-value",
+          "reflectToAttr": false,
+          "docs": "Current filter string",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "pagination",
           "type": "boolean",
           "complexType": {
@@ -11499,64 +11570,6 @@
           "setter": false
         },
         {
-          "name": "search",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "search",
-          "reflectToAttr": false,
-          "docs": "Enable global search / filter",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "searchValue",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "search-value",
-          "reflectToAttr": false,
-          "docs": "Current search string",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "sort",
           "type": "boolean",
           "complexType": {
@@ -11594,20 +11607,29 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
+        "gcds-radios",
+        "gcds-button",
+        "gcds-heading",
         "gcds-input",
+        "gcds-text",
         "gcds-select",
         "gcds-pagination"
       ],
       "dependencyGraph": {
         "gcds-table": [
+          "gcds-radios",
+          "gcds-button",
+          "gcds-heading",
           "gcds-input",
+          "gcds-text",
           "gcds-select",
           "gcds-pagination"
         ],
-        "gcds-input": [
-          "gcds-label",
+        "gcds-radios": [
+          "gcds-sr-only",
           "gcds-hint",
-          "gcds-error-message"
+          "gcds-error-message",
+          "gcds-label"
         ],
         "gcds-hint": [
           "gcds-text"
@@ -11615,6 +11637,14 @@
         "gcds-error-message": [
           "gcds-text",
           "gcds-icon"
+        ],
+        "gcds-button": [
+          "gcds-icon"
+        ],
+        "gcds-input": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
         ],
         "gcds-select": [
           "gcds-label",
@@ -12126,6 +12156,7 @@
         "gcds-error-message",
         "gcds-file-uploader",
         "gcds-hint",
+        "gcds-table",
         "gcds-textarea"
       ],
       "dependencies": [],
@@ -12143,6 +12174,9 @@
           "gcds-text"
         ],
         "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-table": [
           "gcds-text"
         ],
         "gcds-textarea": [
@@ -13305,7 +13339,7 @@
       "path": "src/components/gcds-grid/gcds-grid.tsx"
     },
     "src/components/gcds-table/gcds-table.tsx::TableColumn": {
-      "declaration": "export interface TableColumn {\n  field: string;\n  header: string;\n  sortable?: boolean;\n  activeSorting?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n}",
+      "declaration": "export interface TableColumn {\n  field: string;\n  header: string;\n  activeSorting?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n  sortable?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n}",
       "docstring": "",
       "path": "src/components/gcds-table/gcds-table.tsx"
     },

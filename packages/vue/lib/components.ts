@@ -622,8 +622,8 @@ export const GcdsTable: StencilVueComponent<JSX.GcdsTable> = /*@__PURE__*/ defin
   'paginationCurrentPage',
   'paginationSize',
   'paginationSizeOptions',
-  'search',
-  'searchValue'
+  'filter',
+  'filterValue'
 ]);
 
 

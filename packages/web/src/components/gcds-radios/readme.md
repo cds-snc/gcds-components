@@ -76,6 +76,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [gcds-table](../gcds-table)
+
 ### Depends on
 
 - [gcds-sr-only](../gcds-sr-only)
@@ -93,6 +97,7 @@ graph TD;
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
+  gcds-table --> gcds-radios
   style gcds-radios fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
