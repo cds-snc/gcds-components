@@ -106,6 +106,10 @@ export class GcdsTable {
     this.onColumnsChange(this.columns);
     this.onDataChange(this.data);
 
+    if (this.filterValue) {
+      this.globalFilter = this.filterValue;
+    }
+
     // Seed initial sort from activeSorting column definitions
     this.sorting = this.buildInitialSorting();
 
@@ -354,6 +358,23 @@ export class GcdsTable {
     );
   }
 
+  private renderTableStatus() {
+    const currentPageIndex = this.paginationState?.pageIndex;
+    const totalRows = this.table.getPreFilteredRowModel().rows.length;
+    const filteredRows = this.table.getFilteredRowModel().rows.length;
+    const paginationSize = this.paginationSize;
+
+    if (this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
+      return `Showing ${currentPageIndex * paginationSize + 1} to ${Math.min((currentPageIndex + 1) * paginationSize, totalRows)} of ${filteredRows} matches.`;
+    } else if (this.filterValue && (this.pagination && this.table.getPageCount() === 1)) {
+      return `Showing ${filteredRows} matches.`
+    } else if (!this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
+      return `Showing ${currentPageIndex * paginationSize + 1} to ${Math.min((currentPageIndex + 1) * paginationSize, totalRows)} of ${totalRows} rows.`
+    } else {
+      return `Showing ${totalRows} rows.`
+    }
+  }
+
   private renderSortRadios() {
     const radioOptions = [];
     let isSorted = 'null';
@@ -402,13 +423,10 @@ export class GcdsTable {
   render() {
     if (!this.table) return null;
 
-    const totalRows = this.table.getPreFilteredRowModel().rows.length;
-
     const headerGroups = this.table.getHeaderGroups();
     const rows = this.pagination
       ? this.table.getPaginationRowModel().rows
       : this.table.getRowModel().rows;
-    const currentPageIndex = this.paginationState.pageIndex;
 
     return (
       <Host>
@@ -544,7 +562,7 @@ export class GcdsTable {
                   }}
                   title="Click to remove sorting"
                 >
-                  Sort: {header} ({direction})
+                  Sorted by: {header} ({direction})
                   <span aria-hidden="true"> ×</span>
                 </button>
               );
@@ -553,7 +571,7 @@ export class GcdsTable {
 
           {/* Table status */}
           <span class="gcds-table__page-info" role="status" aria-live="polite">
-            Showing {currentPageIndex * this.paginationSize + 1} to {Math.min((currentPageIndex + 1) * this.paginationSize, totalRows)} of {totalRows} entries
+            {this.renderTableStatus()}
           </span>
 
           {this.pagination && (
