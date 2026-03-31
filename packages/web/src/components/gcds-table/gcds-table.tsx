@@ -40,6 +40,8 @@ export interface TableColumn {
 export class GcdsTable {
   @Element() el: HTMLElement;
   private shadowElement: HTMLTableElement;
+  private filterInput: HTMLGcdsInputElement;
+  private sortRadios: HTMLGcdsRadiosElement;
   private filterSortModal: HTMLDialogElement;
 
   // ─── Props ────────────────────────────────────────────────────────────────
@@ -294,14 +296,6 @@ export class GcdsTable {
   }
 
   /*
-    * Handle search input by updating table state
-   */
-  private handleSearchInput(e: Event) {
-    const input = e.target as HTMLInputElement;
-    this.searchValue = input.value;
-  }
-
-  /*
     * Handle page size selection by updating table state and focusing the table
    */
   private handlePageSizeSelect(e: Event) {
@@ -351,6 +345,58 @@ export class GcdsTable {
     return `${column.columnDef.header as string}: ${sortText}`;
   }
 
+  private renderActivewBadge() {
+    const activeCount = (this.searchValue ? 1 : 0) + this.sorting.length;
+    return (
+      <span class="gcds-table__active-count" aria-label={`${activeCount} active filters/sorts`}>
+        {activeCount}
+      </span>
+    );
+  }
+
+  private renderSortRadios() {
+    const radioOptions = [];
+    let isSorted = 'null';
+
+    ((this.columns ?? []) as TableColumn[]).filter(col => col.sortable !== false).map(col => {
+      if (this.table?.getColumn(col.field)?.getIsSorted()) {
+        isSorted = this.table?.getColumn(col.field)?.getIsSorted() === 'asc' ? `asc-${col.field}` : `desc-${col.field}`;
+      }
+
+      radioOptions.push({
+        id: `asc-${col.field}`,
+        label: `${col.header} (asc)`,
+        value: `asc-${col.field}`,
+      });
+
+      radioOptions.push({
+        id: `desc-${col.field}`,
+        label: `${col.header} (desc)`,
+        value: `desc-${col.field}`,
+      });
+    });
+
+    radioOptions.push(
+      {
+        id: 'none',
+        label: 'None',
+        value: 'null',
+      }
+    );
+
+    return (
+      <gcds-radios
+        legend="Sort"
+        hideLegend
+        name="sort"
+        autoFocus
+        options={radioOptions}
+        value={isSorted}
+        ref={el => (this.sortRadios = el)}
+      />
+    )
+  }
+
   // ─── Render ───────────────────────────────────────────────────────────────
 
   render() {
@@ -367,13 +413,15 @@ export class GcdsTable {
     return (
       <Host>
         <section class="gcds-table">
-          {(this.sort || this.search) && (
+          {(this.sortEnabled() || this.search) && (
             <div>
               <gcds-button
                 size="small"
                 onClick={() => this.filterSortModal.showModal()}
               >
                 Filter and sort
+                {(this.searchValue || this.sorting.length > 0) && this.renderActivewBadge()
+                }
               </gcds-button>
 
               <dialog
@@ -382,28 +430,15 @@ export class GcdsTable {
                 aria-labelledby="gcds-table__modal-heading"
                 ref={el => (this.filterSortModal = el)}
               >
-                <gcds-heading
-                  tag="h2"
-                  id="gcds-table__modal-heading"
-                >
-                  Filter and sort
-                </gcds-heading>
-
-                {this.search && (
-                  <div class="gcds-table__toolbar">
-                    <gcds-input
-                      type="search"
-                      label="Search table"
-                      name="search"
-                      inputId="gcds-table-search"
-                      value={this.searchValue}
-                      onInput={e => this.handleSearchInput(e)} />
-                  </div>
-                )}
-
-                {this.sort && (
-                  <gcds-text>This is a placeholder for the future filter/sort modal implementation.</gcds-text>
-                )}
+                <div>
+                  <gcds-heading
+                    tag="h1"
+                    id="gcds-table__modal-heading"
+                    marginTop='0'
+                  >
+                    Filter and sort
+                  </gcds-heading>
+                </div>
 
                 <gcds-button
                   size="small"
@@ -412,23 +447,109 @@ export class GcdsTable {
                 >
                   Close
                 </gcds-button>
+
+                <form
+                  class="gcds-table__modal-body"
+                  onSubmit={ev => {
+                    ev.preventDefault();
+
+                    this.searchValue = this.filterInput.value;
+
+                    const sortValue = this.sortRadios.value;
+                    if (sortValue === 'null') {
+                      this.sorting = [];
+                    } else {
+                      const [direction, field] = sortValue.split('-');
+                      this.sorting = [{
+                        id: field,
+                        desc: direction === 'desc',
+                      }];
+                    }
+
+                    this.updateTableOptions();
+
+                    this.filterSortModal.close();
+                  }}
+                >
+                  {this.search && (
+                    <gcds-input
+                      type="search"
+                      label="Filter items"
+                      name="filter"
+                      inputId="gcds-table-filter"
+                      autoFocus
+                      value={this.searchValue}
+                      ref={el => (this.filterInput = el)}
+                    />
+                  )}
+
+                  {this.sortEnabled() && (
+                    <div>
+                      {/* This will be an expand button to hide the radios */}
+                      <gcds-text>Sort</gcds-text>
+
+                      {this.renderSortRadios()}
+                    </div>
+                  )}
+
+                  <div class="gcds-table__modal-footer">
+
+                    <gcds-button
+                      button-role="primary"
+                      type="submit"
+                    >
+                      Apply
+                    </gcds-button>
+                    <gcds-button
+                      button-role="secondary"
+                      onGcdsClick={ev => {
+                        ev.preventDefault();
+                        this.filterInput.value = '';
+                        this.sortRadios.value = 'null';
+                      }}
+                    >
+                      Clear all
+                    </gcds-button>
+                  </div>
+                </form>
               </dialog>
             </div>
           )}
 
-          {/* ── Search bar ─────────────────────────── */}
-          {this.search && (
-            <div class="gcds-table__toolbar">
-              <gcds-input
-                type="search"
-                label="Search table"
-                name="search"
-                inputId="gcds-table-search"
-                value={this.searchValue}
-                onInput={e => this.handleSearchInput(e)}
-              />
-            </div>
-          )}
+          <hr />
+
+          {/* Active section */}
+          <div class="gcds-table__active-filters">
+            {this.searchValue && (
+              <button
+                onClick={() => this.searchValue = ''}
+                title="Click to remove filter"
+              >
+                Filter: {this.searchValue}
+                <span aria-hidden="true"> ×</span>
+              </button>
+            )}
+
+            {this.sorting.map(sort => {
+              const col = this.table?.getColumn(sort.id);
+              if (!col) return null;
+              const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === sort.id);
+              const header = colDef?.header || sort.id;
+              const direction = sort.desc ? 'desc' : 'asc';
+              return (
+                <button
+                  onClick={() => {
+                    this.sorting = this.sorting.filter(s => s.id !== sort.id);
+                    this.updateTableOptions();
+                  }}
+                  title="Click to remove sorting"
+                >
+                  Sort: {header} ({direction})
+                  <span aria-hidden="true"> ×</span>
+                </button>
+              );
+            })}
+          </div>
 
           {/* Table status */}
           <span class="gcds-table__page-info" role="status" aria-live="polite">
