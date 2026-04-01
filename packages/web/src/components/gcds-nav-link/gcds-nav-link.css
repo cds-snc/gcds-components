@@ -46,7 +46,10 @@
   @media only screen and (width >= 64em) {
     :host([slot='home']) > .gcds-nav-link {
       font: var(--gcds-nav-link-home-font);
-      color: var(--gcds-nav-link-home-text) !important;
+
+      &:not(:hover) {
+        color: var(--gcds-nav-link-home-text) !important;
+      }
     }
   }
 }
@@ -95,17 +98,9 @@
       color: var(--gcds-nav-link-hover-text);
     }
 
-    :host > .gcds-nav-link--sidenav.gcds-nav-link:hover,
-    :host > .gcds-nav-link--dropdown.gcds-nav-link:hover {
-      color: var(--gcds-nav-link-hover-text);
-    }
-
-    :host > .gcds-nav-link--sidenav.gcds-nav-link:hover {
+    :host(:not([slot='home'])) .gcds-nav-link:hover {
       background-color: var(--gcds-nav-link-side-nav-hover-background);
-    }
-
-    :host > .gcds-nav-link--dropdown.gcds-nav-link:hover {
-      background-color: var(--gcds-nav-link-top-nav-hover-background);
+      color: var(--gcds-nav-link-hover-text);
     }
   }
 }
