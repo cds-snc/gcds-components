@@ -47,7 +47,7 @@
     :host([slot='home']) > .gcds-nav-link {
       font: var(--gcds-nav-link-home-font);
 
-      &:not(:hover) {
+      &:not(:hover):not(:focus) {
         color: var(--gcds-nav-link-home-text) !important;
       }
     }
