@@ -28,9 +28,9 @@ import I18N from './i18n/i18n';
 export interface TableColumn {
   field: string;
   header: string;
-  activeSorting?: 'asc' | 'desc';
+  sortDirection?: 'asc' | 'desc';
   align?: 'start' | 'center' | 'end';
-  sortable?: boolean;
+  sort?: boolean;
   renderCell?: (value: unknown, row: Record<string, unknown>) => any;
   rowHeader?: boolean;
 }
@@ -117,7 +117,7 @@ export class GcdsTable {
       this.globalFilter = this.filterValue;
     }
 
-    // Seed initial sort from activeSorting column definitions
+    // Seed initial sort from sortDirection column definitions
     this.sorting = this.buildInitialSorting();
 
     this.initTable();
@@ -150,7 +150,7 @@ export class GcdsTable {
   }
 
   @Watch('sort')
-  onSortableChange() {
+  onsortChange() {
     this.onDataChange(this.data);
   }
 
@@ -202,10 +202,10 @@ export class GcdsTable {
 
   private buildInitialSorting(): SortingState {
     return ((this.columns ?? []) as TableColumn[])
-      .filter(col => col.activeSorting)
+      .filter(col => col.sortDirection)
       .map(col => ({
         id: col.field,
-        desc: col.activeSorting === 'desc',
+        desc: col.sortDirection === 'desc',
       }));
   }
 
@@ -214,13 +214,13 @@ export class GcdsTable {
       id: col.field,
       accessorKey: col.field,
       header: col.header,
-      // Per-column sortable: falls back to global `sortable` prop
-      enableSorting: col.sortable !== undefined ? col.sortable : this.sort,
+      // Per-column sort: falls back to global `sort` prop
+      enableSorting: col.sort !== undefined ? col.sort : this.sort,
     }));
   }
 
   private sortEnabled(): boolean {
-    return this.sort || ((this.columns ?? []) as TableColumn[]).some(col => col.sortable);
+    return this.sort || ((this.columns ?? []) as TableColumn[]).some(col => col.sort);
   }
 
   private updateTableOptions() {
@@ -405,7 +405,7 @@ export class GcdsTable {
     const radioOptions = [];
     let isSorted = 'null';
 
-    ((this.columns ?? []) as TableColumn[]).filter(col => col.sortable !== false).map(col => {
+    ((this.columns ?? []) as TableColumn[]).filter(col => col.sort !== false).map(col => {
       if (this.table?.getColumn(col.field)?.getIsSorted()) {
         isSorted = this.table?.getColumn(col.field)?.getIsSorted() === 'asc' ? `asc-${col.field}` : `desc-${col.field}`;
       }
