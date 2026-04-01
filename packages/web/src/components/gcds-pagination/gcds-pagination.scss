@@ -1,0 +1,420 @@
+@layer reset, default, list, simple, wide, compact, hover, active, focus;
+
+@layer reset {
+  :host {
+    display: block;
+
+    .gcds-pagination ul {
+      padding: 0;
+      list-style: none;
+    }
+  }
+}
+
+@layer default {
+  :host .gcds-pagination {
+    container: component pagination / inline-size;
+
+    li {
+      a {
+        color: var(--gcds-pagination-default-text);
+        font: var(--gcds-pagination-font-desktop);
+        border-radius: var(--gcds-pagination-border-radius);
+
+        @media only screen and (width < 48em) {
+          font: var(--gcds-pagination-font-mobile);
+        }
+      }
+    }
+  }
+}
+
+@layer list {
+  :host .gcds-pagination {
+    :is(.gcds-pagination-list, .gcds-pagination-list-mobile-prevnext) {
+      display: flex;
+      flex-direction: row;
+      margin: 0;
+      max-width: 100%;
+
+      li {
+        margin: var(--gcds-pagination-listitem-margin);
+
+        a,
+        & > span.gcds-pagination-list-ellipses {
+          height: 3rem;
+          min-width: 3rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &.gcds-pagination-end-button,
+          &.gcds-pagination-end-button-mobile {
+            padding: var(--gcds-pagination-list-end-button-padding);
+            width: auto;
+            min-width: auto;
+            height: auto;
+            text-decoration: none;
+
+            span {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        &.gcds-pagination-mobile-prevnext {
+          display: none;
+        }
+
+        &.gcds-pagination-list-mobile-ellipses {
+          display: none;
+        }
+      }
+    }
+
+    .gcds-pagination-list-mobile-prevnext {
+      margin: var(--gcds-pagination-mobile-list-prevnext-margin);
+    }
+  }
+}
+
+@layer simple {
+  :host .gcds-pagination-simple {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    li {
+      margin: var(--gcds-pagination-simple-listitem-margin);
+
+      &:has(+ li) {
+        margin-block-end: var(--gcds-pagination-simple-listitem-divider-margin);
+        border-block-end: var(--gcds-pagination-simple-listitem-divider-border);
+        padding: var(--gcds-pagination-simple-listitem-divider-padding);
+      }
+
+      a {
+        display: grid;
+        padding: var(--gcds-pagination-simple-padding);
+
+        & > gcds-icon {
+          grid-area: icon;
+        }
+
+        & > .gcds-pagination-simple-text {
+          grid-area: text;
+          margin: var(--gcds-pagination-simple-listitem-text-margin);
+        }
+
+        & > span {
+          grid-area: label;
+          font-weight: var(--gcds-pagination-simple-label-font-weight);
+        }
+      }
+    }
+
+    .gcds-pagination-simple-listitem a {
+      text-decoration: none;
+
+      .gcds-pagination-simple-text,
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    .gcds-pagination-simple-listitem a {
+      grid-template-areas:
+        'icon text'
+        'icon label';
+      grid-template-columns: 2rem 6fr;
+    }
+  }
+}
+
+@layer wide {
+  /* List display: list */
+  :host .gcds-pagination-list-mobile-prevnext {
+    display: none;
+  }
+
+  :host .gcds-pagination-list {
+    li:first-child {
+      margin-inline-start: 0 !important;
+    }
+
+    li:last-child {
+      margin-inline-end: 0 !important;
+    }
+  }
+}
+
+@layer compact {
+  /*
+    Pagination responsiveness logic
+    ----------------------------
+    This layer progressively reduces pagination UI based on:
+    - Container width.
+    - Number of items.
+    - "Collapse" helper classes.
+  */
+
+  /* ---------- Ellipsis replacement for collapsed items ---------- */
+  $directions: left, right;
+  $groups: 1, 2, 3;
+
+  /*
+    Handle "collapsed" pagination items for smaller viewports.
+    This logic loops over left/right groups (1-3) and:
+    - Targets the last item in a collapsed group that doesn't already have an ellipsis.
+    - Replaces the link with a single ellipsis (…) for compact display.
+  */
+  @container pagination (width <= 39em) {
+    :host .gcds-pagination .gcds-pagination-list {
+      @each $dir in $directions {
+        @each $grp in $groups {
+          &:has(.collapse-#{$dir}-#{$grp}):not(
+              :has(.collapse-#{$dir}-#{($grp + 1)})
+            ):not(:has(.list-ellipsis-#{$dir})) {
+            /* Target last item in the collapse group */
+            .collapse-#{$dir}-#{$grp}:not(:has(+ .collapse-#{$dir}-#{$grp})) {
+              position: relative;
+              display: block;
+              min-width: 3rem;
+
+              @media only screen and (width < 31em) {
+                min-width: 1rem;
+              }
+
+              &:after {
+                content: '…';
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+
+              /* Hide original link to avoid duplication */
+              a {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ---------- Base adjustments ---------- */
+
+  /*
+    Minor layout tweaks for smaller containers:
+    - Reduces spacing.
+  */
+  @container pagination (width <= 34em) {
+    :host .gcds-pagination .gcds-pagination-list {
+      li {
+        margin: var(--gcds-pagination-mobile-list-item-margin);
+      }
+    }
+  }
+
+  /* ---------- Pagination with 3 collapse groups ---------- */
+
+  /*
+    Most compressed pagination state.
+    - Hide deeper collapse groups first.
+    - Remove more items when prev/next buttons are present.
+  */
+  :host .gcds-pagination .gcds-pagination-list {
+    &:has(.collapse-right-3),
+    &:has(.collapse-left-3) {
+      @container pagination (width <= 39em) {
+        .collapse-left-3,
+        .collapse-right-3,
+        .collapse-left-2,
+        .collapse-right-2 {
+          display: none;
+        }
+
+        /* Extra reduction when both prev + next exist */
+        &:has(.list-btn-prev ~ .list-btn-next) {
+          .collapse-left-1,
+          .collapse-right-1 {
+            display: none;
+          }
+        }
+      }
+
+      /* No prev/next → delay full collapse */
+      @container pagination (width <= 22em) {
+        .collapse-left-1,
+        .collapse-right-1 {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /* ---------- Pagination with 2 collapse groups ---------- */
+
+  /*
+    Medium compression state.
+    - Remove all collapsed items at smaller widths.
+  */
+  :host .gcds-pagination .gcds-pagination-list {
+    &:has(.collapse-right-2):not(:has(.collapse-right-3)),
+    &:has(.collapse-left-2):not(:has(.collapse-left-3)) {
+      @container pagination (width <= 39em) {
+        .collapse-left-2,
+        .collapse-right-2,
+        .collapse-left-1,
+        .collapse-right-1 {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /* ---------- Pagination with 1 collapse groups ---------- */
+
+  /*
+    Light compression state.
+    - Only nearest overflow items are hidden.
+  */
+  :host .gcds-pagination .gcds-pagination-list {
+    &:has(.collapse-right-1):not(:has(.collapse-right-2)),
+    &:has(.collapse-left-1):not(:has(.collapse-left-2)) {
+      @container pagination (width <= 39em) {
+        .collapse-left-1,
+        .collapse-right-1 {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /* ---------- Prev/next button collapse helper ---------- */
+
+  /*
+    Moves prev/next buttons below the pagination list
+    when container width is too small.
+  */
+  @mixin pagination-collapse($width) {
+    @container pagination (width <= #{$width}) {
+      .gcds-pagination-list .gcds-pagination-end-button {
+        display: none;
+      }
+
+      .gcds-pagination-list-mobile-prevnext {
+        display: flex;
+      }
+    }
+  }
+
+  /*
+    Controls when full pagination switches to compact mode.
+    - Number of list items.
+    - Presence of "collapse" helper classes.
+    - Presence of prev/next buttons.
+    - Container width.
+  */
+  :host .gcds-pagination {
+    /* Full pagination (prev + next button present) */
+    &:has(.gcds-pagination-list .list-btn-prev)
+      :has(.gcds-pagination-list .list-btn-next) {
+      &:has(li:nth-child(8)) {
+        /*
+          Largest layout allowed:
+          Only when no collapse-3 + no adjacent collapse-2 pairs.
+        */
+        &:not(:has(.collapse-left-3, .collapse-right-3)):not(
+            :has(
+              .collapse-left-2 + .collapse-left-2,
+              .collapse-right-2 + .collapse-right-2
+            )
+          ) {
+          @include pagination-collapse(29em);
+        }
+
+        &:not(:has(.collapse-left-3, .collapse-right-3)) {
+          @include pagination-collapse(26em);
+        }
+      }
+
+      /* Progressive tightening as item count decreases */
+      &:has(li:nth-child(7)) {
+        @include pagination-collapse(23em);
+      }
+
+      &:has(li:nth-child(6)) {
+        @include pagination-collapse(22em);
+      }
+
+      &:has(li:nth-child(5)) {
+        @include pagination-collapse(18em);
+      }
+    }
+
+    /* Most collapsed pagination with collapse-3 classes */
+    &:has(
+      .gcds-pagination-list .collapse-left-3,
+      .gcds-pagination-list .collapse-right-3
+    ) {
+      @include pagination-collapse(16em);
+    }
+  }
+
+  /* ---------- Mobile specific styles ---------- */
+  @media only screen and (width < 31em) {
+    :host .gcds-pagination {
+      :is(.gcds-pagination-list, .gcds-pagination-list-mobile-prevnext) li {
+        a {
+          border: var(--gcds-pagination-border-width) solid currentColor;
+        }
+
+        & > span.gcds-pagination-list-ellipses {
+          min-width: auto;
+        }
+
+        a.gcds-pagination-end-button {
+          height: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@layer hover {
+  @media (hover: hover) {
+    :host .gcds-pagination ul li a:hover {
+      background: var(--gcds-pagination-hover-background);
+      color: var(--gcds-pagination-hover-text);
+    }
+  }
+}
+
+@layer active {
+  :host .gcds-pagination ul li a {
+    &:active:not(:focus),
+    &[aria-current*='page']:not(:focus) {
+      color: var(--gcds-pagination-active-text);
+      background: var(--gcds-pagination-active-background);
+      border-color: var(--gcds-pagination-active-background);
+      text-decoration: none;
+    }
+  }
+}
+
+@layer focus {
+  :host .gcds-pagination ul li a:focus {
+    color: var(--gcds-pagination-focus-text);
+    background-color: var(--gcds-pagination-focus-background);
+    outline: var(--gcds-pagination-focus-outline-width) solid
+      var(--gcds-pagination-focus-background);
+    outline-offset: var(--gcds-pagination-border-width);
+    box-shadow: var(--gcds-pagination-focus-box-shadow);
+    text-decoration: none;
+    border-color: var(--gcds-pagination-focus-background);
+  }
+}
