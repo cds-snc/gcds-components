@@ -60,7 +60,7 @@
     "workbox-build": "^7.0.0"
   },
   "peerDependencies": {
-    "zone.js": "^0.15.0"
+    "zone.js": "^0.15.0 || ^0.16.0"
   },
   "workspaces": [
     "utils/angular-output-target",
