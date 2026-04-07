@@ -59,7 +59,7 @@ export class GcdsCheckboxes {
   private optionsArr;
   private isGroup = false;
 
-  // @ts-ignore - Used by renderCheckbox() to set title on error
+  // @ts-expect-error - Used by renderCheckbox() to set title on error
   private checkboxTitle = '';
 
   _validator: Validator<string | string[]> = defaultValidator;
@@ -169,7 +169,7 @@ export class GcdsCheckboxes {
     if (!Array.isArray(newValue)) {
       try {
         this.value = JSON.parse(newValue);
-      } catch (e) {
+      } catch {
         logError('gcds-checkboxes', ['Invalid array for value']);
         this.value = [];
       }
@@ -539,7 +539,7 @@ export class GcdsCheckboxes {
           this.optionsArr = null;
           invalidOptions = true;
         }
-      } catch (e) {
+      } catch {
         logError('gcds-checkboxes', ['Invalid JSON string for options']);
         this.options = null;
         invalidOptions = true;
