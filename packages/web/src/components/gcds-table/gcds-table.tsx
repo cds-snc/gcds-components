@@ -6,6 +6,7 @@ import {
   Watch,
   h,
   Element,
+  Fragment,
 } from '@stencil/core';
 
 import {
@@ -24,16 +25,7 @@ import {
 
 import { assignLanguage } from '../../utils/utils';
 import I18N from './i18n/i18n';
-
-export interface TableColumn {
-  field: string;
-  header: string;
-  sortDirection?: 'asc' | 'desc';
-  align?: 'start' | 'center' | 'end';
-  sort?: boolean;
-  renderCell?: (value: unknown, row: Record<string, unknown>) => any;
-  rowHeader?: boolean;
-}
+import { TableColumn, getSortIcon } from './utils/utils';
 
 @Component({
   tag: 'gcds-table',
@@ -43,7 +35,6 @@ export interface TableColumn {
 export class GcdsTable {
   @Element() el: HTMLElement;
   private shadowElement: HTMLTableElement;
-  private filterInput: HTMLGcdsInputElement;
   private sortRadios: HTMLGcdsRadiosElement;
   private filterSortModal: HTMLDialogElement;
 
@@ -332,22 +323,30 @@ export class GcdsTable {
     this.shadowElement.scrollIntoView({ block: "start", behavior: "smooth" });
   }
 
+  /*
+  * Handle search input by updating table state
+ */
+  private handleSearchInput(e: Event) {
+    const input = e.target as HTMLInputElement;
+    this.filterValue = input.value;
+  }
+
   // ─── Render helpers ───────────────────────────────────────────────────────
 
-  private getSortIcon(columnId: string): string {
-    const col = this.table?.getColumn(columnId);
-    if (!col?.getCanSort()) return '';
-    const sorted = col.getIsSorted();
-    if (sorted === 'asc') return ' ▲';
-    if (sorted === 'desc') return ' ▼';
-    return ' ⇅';
-  }
+  // private getSortIcon(columnId: string): string {
+  //   const col = this.table?.getColumn(columnId);
+  //   if (!col?.getCanSort()) return '';
+  //   const sorted = col.getIsSorted();
+  //   if (sorted === 'asc') return ' ▲';
+  //   if (sorted === 'desc') return ' ▼';
+  //   return ' ⇅';
+  // }
 
-  private getAlignClass(field: string): string {
-    const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === field);
-    if (!colDef?.align) return '';
-    return `align-${colDef.align}`;
-  }
+  // private getAlignClass(field: string): string {
+  //   const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === field);
+  //   if (!colDef?.align) return '';
+  //   return `align-${colDef.align}`;
+  // }
 
   private getSortTitle(column) {
     let sortText = '';
@@ -362,8 +361,8 @@ export class GcdsTable {
     return `${column.columnDef.header as string} ${sortText}`;
   }
 
-  private renderActivewBadge() {
-    const activeCount = (this.filterValue ? 1 : 0) + this.sorting.length;
+  private renderActiveBadge() {
+    const activeCount = this.sorting.length;
     return (
       <span class="gcds-table__active-count" aria-label={`${I18N[this.lang].activeBadgeLabel.replace('{count}', activeCount)}`}>
         {activeCount}
@@ -457,14 +456,35 @@ export class GcdsTable {
     return (
       <Host>
         <section class="gcds-table">
-          {(this.sortEnabled() || this.filter) && (
+          {this.filter && (
+            <gcds-input
+              type="search"
+              label={I18N[this.lang].filterLabel}
+              name="filter"
+              inputId="gcds-table-filter"
+              size={12}
+              value={this.filterValue}
+              onInput={e => this.handleSearchInput(e)}
+            />
+          )}
+
+          {(this.sortEnabled()) && (
             <div>
               <gcds-button
                 size="small"
+                buttonRole='secondary'
                 onClick={() => this.filterSortModal.showModal()}
               >
-                {I18N[this.lang].filterAndSort}
-                {(this.filterValue || this.sorting.length > 0) && this.renderActivewBadge()
+                {I18N[this.lang].sort}
+
+                {(this.sorting.length > 0) && (
+                  <Fragment>
+                    <gcds-sr-only tag='span'>
+                      :
+                    </gcds-sr-only>
+                    {this.renderActiveBadge()}
+                  </Fragment>
+                )
                 }
               </gcds-button>
 
@@ -497,8 +517,6 @@ export class GcdsTable {
                   onSubmit={ev => {
                     ev.preventDefault();
 
-                    this.filterValue = this.filterInput.value;
-
                     const sortValue = this.sortRadios.value;
                     if (sortValue === 'null') {
                       this.sorting = [];
@@ -515,23 +533,9 @@ export class GcdsTable {
                     this.filterSortModal.close();
                   }}
                 >
-                  {this.filter && (
-                    <gcds-input
-                      type="search"
-                      label={I18N[this.lang].modalFilterLabel}
-                      name="filter"
-                      inputId="gcds-table-filter"
-                      autoFocus
-                      value={this.filterValue}
-                      ref={el => (this.filterInput = el)}
-                    />
-                  )}
 
                   {this.sortEnabled() && (
                     <div>
-                      {/* This will be an expand button to hide the radios */}
-                      <button>{I18N[this.lang].sort}</button>
-
                       {this.renderSortRadios()}
                     </div>
                   )}
@@ -544,16 +548,6 @@ export class GcdsTable {
                     >
                       {I18N[this.lang].modalApplyButton}
                     </gcds-button>
-                    <gcds-button
-                      button-role="secondary"
-                      onGcdsClick={ev => {
-                        ev.preventDefault();
-                        this.filterInput.value = '';
-                        this.sortRadios.value = 'null';
-                      }}
-                    >
-                      {I18N[this.lang].modalClearButton}
-                    </gcds-button>
                   </div>
                 </form>
               </dialog>
@@ -563,17 +557,7 @@ export class GcdsTable {
           <hr />
 
           {/* Active section */}
-          <div class="gcds-table__active-filters">
-            {this.filterValue && (
-              <button
-                onClick={() => this.filterValue = ''}
-                title={I18N[this.lang].pillRemoveFilter}
-              >
-                {I18N[this.lang].pillFilter} {this.filterValue}
-                <span aria-hidden="true"> ×</span>
-              </button>
-            )}
-
+          <div class="gcds-table__active-sorts">
             {this.sorting.map(sort => {
               const col = this.table?.getColumn(sort.id);
               if (!col) return null;
@@ -581,16 +565,19 @@ export class GcdsTable {
               const header = colDef?.header || sort.id;
               const direction = sort.desc ? 'desc' : 'asc';
               return (
-                <button
-                  onClick={() => {
-                    this.sorting = this.sorting.filter(s => s.id !== sort.id);
-                    this.updateTableOptions();
-                  }}
-                  title={I18N[this.lang].pillRemoveSort}
-                >
-                  {I18N[this.lang].pillSort} {header} ({<abbr title={I18N[this.lang][`${direction}ending`]}>{I18N[this.lang][direction]}</abbr>})
-                  <span aria-hidden="true"> ×</span>
-                </button>
+                <Fragment>
+                  <span>{I18N[this.lang].pillSort}</span>
+                  <button
+                    onClick={() => {
+                      this.sorting = this.sorting.filter(s => s.id !== sort.id);
+                      this.updateTableOptions();
+                    }}
+                    title={I18N[this.lang].pillRemoveSort}
+                  >
+                    {header} ({<abbr title={I18N[this.lang][`${direction}ending`]}>{I18N[this.lang][direction]}</abbr>})
+                    <span aria-hidden="true"> ×</span>
+                  </button>
+                </Fragment>
               );
             })}
           </div>
@@ -666,7 +653,7 @@ export class GcdsTable {
                               class="gcds-table__sort-icon"
                               aria-hidden="true"
                             >
-                              {this.getSortIcon(header.id)}
+                              {getSortIcon(header.column)}
                             </span>
                           </button>
                           :
@@ -730,7 +717,7 @@ export class GcdsTable {
                       return (
                         <Tag
                           key={cell.id}
-                          class={`gcds-table__td ${this.getAlignClass(cell.column.id)}`}
+                          class={`gcds-table__td${colDef?.align ? ` align-${colDef.align}` : ''}`}
                           data-column={colDef.header}
                           {...scope}
                         >
