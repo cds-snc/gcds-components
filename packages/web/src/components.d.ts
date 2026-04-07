@@ -11,14 +11,14 @@ import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { SuggestionOption } from "./components/gcds-input/suggestion-option";
 import { RadioObject } from "./components/gcds-radios/radio";
-import { TableColumn } from "./components/gcds-table/gcds-table";
+import { TableColumn } from "./components/gcds-table/utils/utils";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { SuggestionOption } from "./components/gcds-input/suggestion-option";
 export { RadioObject } from "./components/gcds-radios/radio";
-export { TableColumn } from "./components/gcds-table/gcds-table";
+export { TableColumn } from "./components/gcds-table/utils/utils";
 export namespace Components {
     /**
      * Alert displays an alert message with an optional heading, icon, and close button.

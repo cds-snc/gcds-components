@@ -26,9 +26,10 @@
 ### Depends on
 
 - [gcds-radios](../gcds-radios)
-- [gcds-button](../gcds-button)
-- [gcds-heading](../gcds-heading)
 - [gcds-input](../gcds-input)
+- [gcds-button](../gcds-button)
+- [gcds-sr-only](../gcds-sr-only)
+- [gcds-heading](../gcds-heading)
 - [gcds-select](../gcds-select)
 - [gcds-pagination](../gcds-pagination)
 
@@ -36,9 +37,10 @@
 ```mermaid
 graph TD;
   gcds-table --> gcds-radios
-  gcds-table --> gcds-button
-  gcds-table --> gcds-heading
   gcds-table --> gcds-input
+  gcds-table --> gcds-button
+  gcds-table --> gcds-sr-only
+  gcds-table --> gcds-heading
   gcds-table --> gcds-select
   gcds-table --> gcds-pagination
   gcds-radios --> gcds-sr-only
@@ -48,10 +50,10 @@ graph TD;
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
-  gcds-button --> gcds-icon
   gcds-input --> gcds-label
   gcds-input --> gcds-hint
   gcds-input --> gcds-error-message
+  gcds-button --> gcds-icon
   gcds-select --> gcds-label
   gcds-select --> gcds-hint
   gcds-select --> gcds-error-message

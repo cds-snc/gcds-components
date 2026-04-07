@@ -11125,6 +11125,7 @@
         "gcds-search",
         "gcds-signature",
         "gcds-stepper",
+        "gcds-table",
         "gcds-textarea",
         "gcds-topic-menu"
       ],
@@ -11158,6 +11159,9 @@
           "gcds-sr-only"
         ],
         "gcds-stepper": [
+          "gcds-sr-only"
+        ],
+        "gcds-table": [
           "gcds-sr-only"
         ],
         "gcds-textarea": [
@@ -11330,9 +11334,9 @@
             "resolved": "TableColumn[] | string",
             "references": {
               "TableColumn": {
-                "location": "local",
-                "path": "/web/src/components/gcds-table/gcds-table.tsx",
-                "id": "src/components/gcds-table/gcds-table.tsx::TableColumn"
+                "location": "import",
+                "path": "./utils/utils",
+                "id": "src/components/gcds-table/utils/utils.ts::TableColumn"
               }
             }
           },
@@ -11608,18 +11612,20 @@
       "dependents": [],
       "dependencies": [
         "gcds-radios",
-        "gcds-button",
-        "gcds-heading",
         "gcds-input",
+        "gcds-button",
+        "gcds-sr-only",
+        "gcds-heading",
         "gcds-select",
         "gcds-pagination"
       ],
       "dependencyGraph": {
         "gcds-table": [
           "gcds-radios",
-          "gcds-button",
-          "gcds-heading",
           "gcds-input",
+          "gcds-button",
+          "gcds-sr-only",
+          "gcds-heading",
           "gcds-select",
           "gcds-pagination"
         ],
@@ -11636,13 +11642,13 @@
           "gcds-text",
           "gcds-icon"
         ],
-        "gcds-button": [
-          "gcds-icon"
-        ],
         "gcds-input": [
           "gcds-label",
           "gcds-hint",
           "gcds-error-message"
+        ],
+        "gcds-button": [
+          "gcds-icon"
         ],
         "gcds-select": [
           "gcds-label",
@@ -13332,11 +13338,6 @@
       "docstring": "",
       "path": "src/components/gcds-grid/gcds-grid.tsx"
     },
-    "src/components/gcds-table/gcds-table.tsx::TableColumn": {
-      "declaration": "export interface TableColumn {\n  field: string;\n  header: string;\n  activeSorting?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n  sortable?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n}",
-      "docstring": "",
-      "path": "src/components/gcds-table/gcds-table.tsx"
-    },
     "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject": {
       "declaration": "{\n  id: string;\n  label: string;\n  value?: string;\n  hint?: string;\n  checked?: boolean | string;\n}",
       "docstring": "",
@@ -13366,6 +13367,11 @@
       "declaration": "{\n  id: string;\n  label: string;\n  value: string;\n  hint?: string;\n  checked?: boolean;\n}",
       "docstring": "",
       "path": "src/components/gcds-radios/radio.tsx"
+    },
+    "src/components/gcds-table/utils/utils.ts::TableColumn": {
+      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n}",
+      "docstring": "Table column definition",
+      "path": "src/components/gcds-table/utils/utils.ts"
     }
   }
 }

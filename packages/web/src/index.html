@@ -112,7 +112,7 @@
           {
             "field": "base_experience",
             "header": "Base experience",
-            "sortable": false,
+            "sort": false,
             "align": "end"
           }
         ]'
@@ -196,7 +196,7 @@
             field: 'sprite',
             header: 'Sprite',
             align: 'center',
-            sortable: false,
+            sort: false,
             renderCell: (value, row) => {
               const img = document.createElement('img');
               img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`;
@@ -211,14 +211,14 @@
           {
             field: 'base_experience',
             header: 'Base experience',
-            sortable: false,
+            sort: false,
             align: 'end',
           },
           {
             field: 'actions',
             header: 'Actions',
             align: 'center',
-            sortable: false,
+            sort: false,
             renderCell: (value, row) => {
               const button = document.createElement('gcds-button');
               button.setAttribute('button-role', 'secondary');
