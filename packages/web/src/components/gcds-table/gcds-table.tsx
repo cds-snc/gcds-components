@@ -25,7 +25,13 @@ import {
 
 import { assignLanguage } from '../../utils/utils';
 import I18N from './i18n/i18n';
-import { TableColumn, getSortIcon } from './utils/utils';
+import {
+  TableColumn,
+  getSortIcon,
+  getSortTitle,
+  renderTableStatus,
+  renderSortRadios,
+} from './utils/utils';
 
 @Component({
   tag: 'gcds-table',
@@ -33,7 +39,7 @@ import { TableColumn, getSortIcon } from './utils/utils';
   shadow: true,
 })
 export class GcdsTable {
-  @Element() el: HTMLElement;
+  @Element() el: HTMLGcdsTableElement;
   private shadowElement: HTMLTableElement;
   private sortRadios: HTMLGcdsRadiosElement;
   private filterSortModal: HTMLDialogElement;
@@ -348,100 +354,100 @@ export class GcdsTable {
   //   return `align-${colDef.align}`;
   // }
 
-  private getSortTitle(column) {
-    let sortText = '';
-    if (column.getIsSorted() === 'asc') {
-      sortText = I18N[this.lang].headingActivateDesc;
-    } else if (column.getIsSorted() === 'desc') {
-      sortText = I18N[this.lang].headingRemoveSort;
-    } else if (column.getIsSorted() === false) {
-      sortText = I18N[this.lang].headingActivateAsc;
-    }
+  // private getSortTitle(column) {
+  //   let sortText = '';
+  //   if (column.getIsSorted() === 'asc') {
+  //     sortText = I18N[this.lang].headingActivateDesc;
+  //   } else if (column.getIsSorted() === 'desc') {
+  //     sortText = I18N[this.lang].headingRemoveSort;
+  //   } else if (column.getIsSorted() === false) {
+  //     sortText = I18N[this.lang].headingActivateAsc;
+  //   }
 
-    return `${column.columnDef.header as string} ${sortText}`;
-  }
+  //   return `${column.columnDef.header as string} ${sortText}`;
+  // }
 
-  private renderActiveBadge() {
-    const activeCount = this.sorting.length;
-    return (
-      <span class="gcds-table__active-count" aria-label={`${I18N[this.lang].activeBadgeLabel.replace('{count}', activeCount)}`}>
-        {activeCount}
-      </span>
-    );
-  }
+  // private renderActiveBadge() {
+  //   const activeCount = this.sorting.length;
+  //   return (
+  //     <span class="gcds-table__active-count" aria-label={`${I18N[this.lang].activeBadgeLabel.replace('{count}', activeCount)}`}>
+  //       {activeCount}
+  //     </span>
+  //   );
+  // }
 
-  private renderTableStatus() {
-    const currentPageIndex = this.paginationState?.pageIndex;
-    const totalRows = this.table.getPreFilteredRowModel().rows.length;
-    const filteredRows = this.table.getFilteredRowModel().rows.length;
-    const paginationSize = this.paginationSize;
+  // private renderTableStatus() {
+  //   const currentPageIndex = this.paginationState?.pageIndex;
+  //   const totalRows = this.table.getPreFilteredRowModel().rows.length;
+  //   const filteredRows = this.table.getFilteredRowModel().rows.length;
+  //   const paginationSize = this.paginationSize;
 
-    // Filtered results with multiple pages
-    if (this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
-      return I18N[this.lang].showingMatchesPagination
-        .replace('{start}', currentPageIndex * paginationSize + 1)
-        .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
-        .replace('{filtered}', filteredRows);
+  //   // Filtered results with multiple pages
+  //   if (this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
+  //     return I18N[this.lang].showingMatchesPagination
+  //       .replace('{start}', currentPageIndex * paginationSize + 1)
+  //       .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
+  //       .replace('{filtered}', filteredRows);
 
-      // Filtered results on singular page
-    } else if (this.filterValue && (this.pagination && this.table.getPageCount() === 1)) {
-      return I18N[this.lang].showingMatches.replace('{matchNumber}', filteredRows);
+  //     // Filtered results on singular page
+  //   } else if (this.filterValue && (this.pagination && this.table.getPageCount() === 1)) {
+  //     return I18N[this.lang].showingMatches.replace('{matchNumber}', filteredRows);
 
-      // Rows across multiple pages
-    } else if (!this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
-      return I18N[this.lang].showingPages
-        .replace('{start}', currentPageIndex * paginationSize + 1)
-        .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
-        .replace('{total}', totalRows);
+  //     // Rows across multiple pages
+  //   } else if (!this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
+  //     return I18N[this.lang].showingPages
+  //       .replace('{start}', currentPageIndex * paginationSize + 1)
+  //       .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
+  //       .replace('{total}', totalRows);
 
-      // Rows on one page
-    } else {
-      return I18N[this.lang].showingAllRows.replace('{total}', totalRows);
-    }
-  }
+  //     // Rows on one page
+  //   } else {
+  //     return I18N[this.lang].showingAllRows.replace('{total}', totalRows);
+  //   }
+  // }
 
-  private renderSortRadios() {
-    const radioOptions = [];
-    let isSorted = 'null';
+  // private renderSortRadios() {
+  //   const radioOptions = [];
+  //   let isSorted = 'null';
 
-    ((this.columns ?? []) as TableColumn[]).filter(col => col.sort !== false).map(col => {
-      if (this.table?.getColumn(col.field)?.getIsSorted()) {
-        isSorted = this.table?.getColumn(col.field)?.getIsSorted() === 'asc' ? `asc-${col.field}` : `desc-${col.field}`;
-      }
+  //   ((this.columns ?? []) as TableColumn[]).filter(col => col.sort !== false).map(col => {
+  //     if (this.table?.getColumn(col.field)?.getIsSorted()) {
+  //       isSorted = this.table?.getColumn(col.field)?.getIsSorted() === 'asc' ? `asc-${col.field}` : `desc-${col.field}`;
+  //     }
 
-      radioOptions.push({
-        id: `asc-${col.field}`,
-        label: `${col.header} (asc)`,
-        value: `asc-${col.field}`,
-      });
+  //     radioOptions.push({
+  //       id: `asc-${col.field}`,
+  //       label: `${col.header} (asc)`,
+  //       value: `asc-${col.field}`,
+  //     });
 
-      radioOptions.push({
-        id: `desc-${col.field}`,
-        label: `${col.header} (desc)`,
-        value: `desc-${col.field}`,
-      });
-    });
+  //     radioOptions.push({
+  //       id: `desc-${col.field}`,
+  //       label: `${col.header} (desc)`,
+  //       value: `desc-${col.field}`,
+  //     });
+  //   });
 
-    radioOptions.push(
-      {
-        id: 'nosort',
-        label: I18N[this.lang].radioLabelNoSort,
-        value: 'null',
-      }
-    );
+  //   radioOptions.push(
+  //     {
+  //       id: 'nosort',
+  //       label: I18N[this.lang].radioLabelNoSort,
+  //       value: 'null',
+  //     }
+  //   );
 
-    return (
-      <gcds-radios
-        legend={I18N[this.lang].sort}
-        hideLegend
-        name="sort"
-        autoFocus
-        options={radioOptions}
-        value={isSorted}
-        ref={el => (this.sortRadios = el)}
-      />
-    )
-  }
+  //   return (
+  //     <gcds-radios
+  //       legend={I18N[this.lang].sort}
+  //       hideLegend
+  //       name="sort"
+  //       autoFocus
+  //       options={radioOptions}
+  //       value={isSorted}
+  //       ref={el => (this.sortRadios = el)}
+  //     />
+  //   )
+  // }
 
   // ─── Render ───────────────────────────────────────────────────────────────
 
@@ -482,7 +488,9 @@ export class GcdsTable {
                     <gcds-sr-only tag='span'>
                       :
                     </gcds-sr-only>
-                    {this.renderActiveBadge()}
+                    <span class="gcds-table__active-count" aria-label={`${I18N[this.lang].activeBadgeLabel.replace('{count}', this.sorting.length)}`}>
+                      {this.sorting.length}
+                    </span>
                   </Fragment>
                 )
                 }
@@ -536,7 +544,7 @@ export class GcdsTable {
 
                   {this.sortEnabled() && (
                     <div>
-                      {this.renderSortRadios()}
+                      {renderSortRadios(this.el, this.table, this.lang)}
                     </div>
                   )}
 
@@ -584,9 +592,10 @@ export class GcdsTable {
 
           {/* Table status */}
           <span class="gcds-table__page-info" role="status" aria-live="polite">
-            {this.renderTableStatus()}
+            {renderTableStatus(this.el, this.table, this.paginationState, this.lang)}
           </span>
 
+          {/* Pagination size selector */}
           {this.pagination && (
             <div class="gcds-table__page-size">
               <gcds-select
@@ -645,7 +654,7 @@ export class GcdsTable {
                         {canSort ?
                           <button
                             onClick={() => this.handleSortToggle(header.id)}
-                            title={this.getSortTitle(header.column)}
+                            title={getSortTitle(header.column, this.lang)}
                           >
                             {colDef.header}
                             {/* Replace icons with something better */}
