@@ -11336,7 +11336,7 @@
               "TableColumn": {
                 "location": "import",
                 "path": "./utils/utils",
-                "id": "src/components/gcds-table/utils/utils.ts::TableColumn"
+                "id": "src/components/gcds-table/utils/utils.tsx::TableColumn"
               }
             }
           },
@@ -11611,29 +11611,28 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
-        "gcds-radios",
         "gcds-input",
         "gcds-button",
         "gcds-sr-only",
         "gcds-heading",
         "gcds-select",
-        "gcds-pagination"
+        "gcds-pagination",
+        "gcds-radios"
       ],
       "dependencyGraph": {
         "gcds-table": [
-          "gcds-radios",
           "gcds-input",
           "gcds-button",
           "gcds-sr-only",
           "gcds-heading",
           "gcds-select",
-          "gcds-pagination"
+          "gcds-pagination",
+          "gcds-radios"
         ],
-        "gcds-radios": [
-          "gcds-sr-only",
+        "gcds-input": [
+          "gcds-label",
           "gcds-hint",
-          "gcds-error-message",
-          "gcds-label"
+          "gcds-error-message"
         ],
         "gcds-hint": [
           "gcds-text"
@@ -11641,11 +11640,6 @@
         "gcds-error-message": [
           "gcds-text",
           "gcds-icon"
-        ],
-        "gcds-input": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
         ],
         "gcds-button": [
           "gcds-icon"
@@ -11657,6 +11651,12 @@
         ],
         "gcds-pagination": [
           "gcds-icon"
+        ],
+        "gcds-radios": [
+          "gcds-sr-only",
+          "gcds-hint",
+          "gcds-error-message",
+          "gcds-label"
         ]
       }
     },
@@ -13368,10 +13368,10 @@
       "docstring": "",
       "path": "src/components/gcds-radios/radio.tsx"
     },
-    "src/components/gcds-table/utils/utils.ts::TableColumn": {
+    "src/components/gcds-table/utils/utils.tsx::TableColumn": {
       "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n}",
       "docstring": "Table column definition",
-      "path": "src/components/gcds-table/utils/utils.ts"
+      "path": "src/components/gcds-table/utils/utils.tsx"
     }
   }
 }
