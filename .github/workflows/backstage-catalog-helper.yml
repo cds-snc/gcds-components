@@ -10,6 +10,12 @@ jobs:
   update-catalog-info:
     runs-on: ubuntu-latest
     steps:
+      - name: Audit DNS requests
+        uses: cds-snc/dns-proxy-action@f0796e7f3d6bec5d40aecb0321ed8012f5602f84 # v1.0.2
+        env:
+          DNS_PROXY_FORWARDTOSENTINEL: "true"
+          DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+          DNS_PROXY_LOGANALYTICSSHAREDKEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
       - name: Checkout Actions
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:

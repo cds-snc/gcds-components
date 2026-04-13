@@ -10723,6 +10723,10 @@
       "docsTags": [
         {
           "name": "slot",
+          "text": "home - Slot for the home link or site title."
+        },
+        {
+          "name": "slot",
           "text": "default - Slot for the navigation groups and navigation links."
         }
       ],
@@ -10886,6 +10890,10 @@
         {
           "name": "default",
           "docs": "Slot for the navigation groups and navigation links."
+        },
+        {
+          "name": "home",
+          "docs": "Slot for the home link or site title."
         }
       ],
       "parts": [],
@@ -12916,6 +12924,10 @@
       "docsTags": [
         {
           "name": "slot",
+          "text": "home - Slot for the home link or site title."
+        },
+        {
+          "name": "slot",
           "text": "default - Slot for the navigation groups and navigation links."
         }
       ],
@@ -13113,6 +13125,10 @@
         {
           "name": "default",
           "docs": "Slot for the navigation groups and navigation links."
+        },
+        {
+          "name": "home",
+          "docs": "Slot for the home link or site title."
         }
       ],
       "parts": [],

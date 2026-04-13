@@ -158,10 +158,36 @@ export class GcdsLink {
     this.updateLang();
   }
 
+  /**
+   * Returns the correct icon for the link, if applicable.
+   * If none of these conditions match, no icon is rendered.
+   */
+  private getIcon() {
+    const { href, target, external, download, lang } = this;
+    const isExternal = target === '_blank' || external;
+
+    if (isExternal) {
+      return <gcds-icon name="external" label={i18n[lang].external} />;
+    }
+
+    if (download !== undefined) {
+      return <gcds-icon name="download" label={i18n[lang].download} />;
+    }
+
+    if (href?.toLowerCase().startsWith('mailto:')) {
+      return <gcds-icon name="email" label={i18n[lang].email} />;
+    }
+
+    if (href?.toLowerCase().startsWith('tel:')) {
+      return <gcds-icon name="phone" label={i18n[lang].phone} />;
+    }
+
+    return null;
+  }
+
   render() {
     const {
       size,
-      lang,
       display,
       href,
       rel,
@@ -202,29 +228,8 @@ export class GcdsLink {
           onClick={e => emitEvent(e, this.gcdsClick, href)}
         >
           <slot></slot>
-          {target === '_blank' || external ? (
-            <gcds-icon
-              name="external"
-              label={i18n[lang].external}
-              margin-left="75"
-            />
-          ) : download !== undefined ? (
-            <gcds-icon
-              name="download"
-              label={i18n[lang].download}
-              margin-left="75"
-            />
-          ) : href && href.toLowerCase().startsWith('mailto:') ? (
-            <gcds-icon name="email" label={i18n[lang].email} margin-left="75" />
-          ) : (
-            href &&
-            href.toLowerCase().startsWith('tel:') && (
-              <gcds-icon
-                name="phone"
-                label={i18n[lang].phone}
-                margin-left="75"
-              />
-            )
+          {this.getIcon() && (
+            <span class="text-icon-group">&nbsp;{this.getIcon()}</span>
           )}
         </a>
       </Host>

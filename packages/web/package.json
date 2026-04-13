@@ -1,6 +1,6 @@
 {
   "name": "@gcds-core/components",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Web components for the GCDS",
   "homepage": "https://design-system.canada.ca/",
@@ -57,7 +57,7 @@
     "@babel/preset-typescript": "^7.21.0",
     "@bgotink/playwright-coverage": "^0.3.2",
     "@gcds-core/fonts": "^1.0.0",
-    "@gcds-core/tokens": "^1.1.0",
+    "@gcds-core/tokens": "^1.2.0",
     "@playwright/test": "^1.56.0",
     "@stencil/angular-outputtarget": "file:../../utils/angular-output-target",
     "@stencil/playwright": "^0.2.1",
@@ -95,7 +95,7 @@
     "sass": "^1.43.5",
     "serve": "^14.2.4",
     "stencil-inline-svg": "^1.1.0",
-    "storybook": "^8.6.15",
+    "storybook": "^8.6.17",
     "workbox-build": "^7.0.0"
   },
   "license": "MIT"

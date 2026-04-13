@@ -1,6 +1,27 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.1.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.0.0...@gcds-core/components-v1.1.0) 
+
+Released on: 2026-04-01
+
+
+### :rocket: New Features
+
+* **gcds-card:** replace box-shadow with border for improved accessibility ([#1178](https://github.com/cds-snc/gcds-components/issues/1178)) ([89255e7](https://github.com/cds-snc/gcds-components/commit/89255e7bb3690f0304991f422ae2e2cee92b09a0))
+* **gcds-pagination:** improve responsive behaviour ([#1197](https://github.com/cds-snc/gcds-components/issues/1197)) ([2906d62](https://github.com/cds-snc/gcds-components/commit/2906d6265d633f59ddc33c6d8d8adde3a1a3a8c1))
+* **gcds-side-nav:** replace h2 with neutral text and add home slot for site link ([#1177](https://github.com/cds-snc/gcds-components/issues/1177)) ([37f1557](https://github.com/cds-snc/gcds-components/commit/37f15571e40087d126c6d6ef3413232887d4f811))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-search:** align search input width across browsers ([#1167](https://github.com/cds-snc/gcds-components/issues/1167)) ([b4ce841](https://github.com/cds-snc/gcds-components/commit/b4ce841c8b6cedb91dba421f64b74fbb825b3058))
+
+
+### :art: Styles
+
+* **gcds-nav-link:** small update to the nav-link home slot hover styling ([#1198](https://github.com/cds-snc/gcds-components/issues/1198)) ([0bd11e0](https://github.com/cds-snc/gcds-components/commit/0bd11e00b9454ddc58647ef8d20ee943f0874259))
+
 ## v1.0.0
 Released on: 2026-02-05
 
