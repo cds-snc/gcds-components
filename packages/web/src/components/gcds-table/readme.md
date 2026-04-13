@@ -25,39 +25,41 @@
 
 ### Depends on
 
-- [gcds-input](../gcds-input)
-- [gcds-button](../gcds-button)
-- [gcds-sr-only](../gcds-sr-only)
-- [gcds-heading](../gcds-heading)
+- [gcds-icon](../gcds-icon)
 - [gcds-select](../gcds-select)
 - [gcds-pagination](../gcds-pagination)
 - [gcds-radios](../gcds-radios)
+- [gcds-button](../gcds-button)
+- [gcds-sr-only](../gcds-sr-only)
+- [gcds-heading](../gcds-heading)
+- [gcds-input](../gcds-input)
 
 ### Graph
 ```mermaid
 graph TD;
-  gcds-table --> gcds-input
-  gcds-table --> gcds-button
-  gcds-table --> gcds-sr-only
-  gcds-table --> gcds-heading
+  gcds-table --> gcds-icon
   gcds-table --> gcds-select
   gcds-table --> gcds-pagination
   gcds-table --> gcds-radios
-  gcds-input --> gcds-label
-  gcds-input --> gcds-hint
-  gcds-input --> gcds-error-message
-  gcds-hint --> gcds-text
-  gcds-error-message --> gcds-text
-  gcds-error-message --> gcds-icon
-  gcds-button --> gcds-icon
+  gcds-table --> gcds-button
+  gcds-table --> gcds-sr-only
+  gcds-table --> gcds-heading
+  gcds-table --> gcds-input
   gcds-select --> gcds-label
   gcds-select --> gcds-hint
   gcds-select --> gcds-error-message
+  gcds-hint --> gcds-text
+  gcds-error-message --> gcds-text
+  gcds-error-message --> gcds-icon
   gcds-pagination --> gcds-icon
   gcds-radios --> gcds-sr-only
   gcds-radios --> gcds-hint
   gcds-radios --> gcds-error-message
   gcds-radios --> gcds-label
+  gcds-button --> gcds-icon
+  gcds-input --> gcds-label
+  gcds-input --> gcds-hint
+  gcds-input --> gcds-error-message
   style gcds-table fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

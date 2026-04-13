@@ -1,6 +1,6 @@
 const I18N = {
   en: {
-    activeBadgeLabel: '{count} active',
+    activeBadgeLabel: '{count} filter active',
     asc: 'asc',
     ascending: 'Ascending',
     desc: 'desc',
@@ -11,7 +11,7 @@ const I18N = {
     headingActivateDesc: ': activate for descending sort',
     headingRemoveSort: ': activate to remove sorting',
     modalApplyButton: 'Apply',
-    modalClearButton: 'Clear all',
+    modalResetAllButton: 'Reset all',
     modalClose: 'Close',
     noData: 'No data available',
     paginationLabel: 'Table pagination',
@@ -19,7 +19,7 @@ const I18N = {
     pillRemoveFilter: 'Click to remove filter',
     pillRemoveSort: 'Click to remove sorting',
     pillSort: 'Sorted by:',
-    radioLabelNoSort: 'No sorting',
+    radioLabelNoSort: 'None (default)',
     rowsPerPage: 'Rows per page',
     showingMatchesPagination: 'Showing {start} to {end} of {filtered} matches.',
     showingMatches: 'Showing {matchNumber} matches.',
@@ -28,7 +28,7 @@ const I18N = {
     sort: 'Sort',
   },
   fr: {
-    activeBadgeLabel: '{count} active',
+    activeBadgeLabel: '{count} filter active',
     asc: 'asc',
     ascending: 'Ascending',
     desc: 'desc',
@@ -39,7 +39,7 @@ const I18N = {
     headingActivateDesc: ': activate for descending sort',
     headingRemoveSort: ': activate to remove sorting',
     modalApplyButton: 'Apply',
-    modalClearButton: 'Clear all',
+    modalResetAllButton: 'Reset all',
     modalClose: 'Close',
     noData: 'No data available',
     paginationLabel: 'Table pagination',

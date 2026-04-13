@@ -6716,6 +6716,7 @@
         "gcds-notice",
         "gcds-pagination",
         "gcds-search",
+        "gcds-table",
         "gcds-topic-menu"
       ],
       "dependencies": [],
@@ -6745,6 +6746,9 @@
           "gcds-icon"
         ],
         "gcds-search": [
+          "gcds-icon"
+        ],
+        "gcds-table": [
           "gcds-icon"
         ],
         "gcds-topic-menu": [
@@ -11611,25 +11615,27 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
-        "gcds-input",
+        "gcds-icon",
+        "gcds-select",
+        "gcds-pagination",
+        "gcds-radios",
         "gcds-button",
         "gcds-sr-only",
         "gcds-heading",
-        "gcds-select",
-        "gcds-pagination",
-        "gcds-radios"
+        "gcds-input"
       ],
       "dependencyGraph": {
         "gcds-table": [
-          "gcds-input",
+          "gcds-icon",
+          "gcds-select",
+          "gcds-pagination",
+          "gcds-radios",
           "gcds-button",
           "gcds-sr-only",
           "gcds-heading",
-          "gcds-select",
-          "gcds-pagination",
-          "gcds-radios"
+          "gcds-input"
         ],
-        "gcds-input": [
+        "gcds-select": [
           "gcds-label",
           "gcds-hint",
           "gcds-error-message"
@@ -11641,14 +11647,6 @@
           "gcds-text",
           "gcds-icon"
         ],
-        "gcds-button": [
-          "gcds-icon"
-        ],
-        "gcds-select": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ],
         "gcds-pagination": [
           "gcds-icon"
         ],
@@ -11657,6 +11655,14 @@
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
+        ],
+        "gcds-button": [
+          "gcds-icon"
+        ],
+        "gcds-input": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
         ]
       }
     },
