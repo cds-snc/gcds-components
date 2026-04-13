@@ -25,12 +25,13 @@ import {
 
 import { assignLanguage } from '../../utils/utils';
 import I18N from './i18n/i18n';
+
 import {
   TableColumn,
   getSortIcon,
   getSortTitle,
   renderTableStatus,
-  renderSortRadios,
+  renderFilterSortModal,
 } from './utils/utils';
 
 @Component({
@@ -40,8 +41,13 @@ import {
 })
 export class GcdsTable {
   @Element() el: HTMLGcdsTableElement;
-  private shadowElement: HTMLTableElement;
+  private shadowElement: HTMLTableElement | undefined;
+
+  // @ts-ignore - these are assigned in renderFilterSortModal and used in event handlers
   private sortRadios: HTMLGcdsRadiosElement;
+  // @ts-ignore - these are assigned in renderFilterSortModal and used in event handlers
+  private filterInput: HTMLGcdsInputElement;
+  // @ts-ignore - these are assigned in renderFilterSortModal and used in event handlers
   private filterSortModal: HTMLDialogElement;
 
   // ─── Props ────────────────────────────────────────────────────────────────
@@ -83,15 +89,21 @@ export class GcdsTable {
 
   @State() private sorting: SortingState = [];
   @State() private columnFilters: ColumnFiltersState = [];
-  @State() private globalFilter: string = '';
+  @State() private globalFilter: string = this.filterValue;
   @State() private paginationState: PaginationState = {
-    pageIndex: 0,
-    pageSize: 10,
+    pageIndex: Math.max(0, this.paginationCurrentPage - 1),
+    pageSize: this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
   };
   @State() lang: string;
 
   // TanStack table instance (not reactive – mutations trigger re-renders via @State)
   private table: Table<Record<string, unknown>> | null = null;
+
+  // Store initial values to determine if they have been changed by the user
+  // @ts-ignore - these are used in event handlers to reset filter/sort state
+  private initialFilter = this.filterValue;
+  // @ts-ignore - these are used in event handlers to reset filter/sort state
+  private initialSorting: SortingState = [];
 
   // ─── Lifecycle ────────────────────────────────────────────────────────────
 
@@ -99,23 +111,13 @@ export class GcdsTable {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    if (this.pagination) {
-      this.paginationState = {
-        pageIndex: Math.max(0, this.paginationCurrentPage - 1),
-        pageSize: this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
-      };
-    }
-
     // Validate if information is being passed as JSON strings and parse it
     this.onColumnsChange(this.columns);
     this.onDataChange(this.data);
 
-    if (this.filterValue) {
-      this.globalFilter = this.filterValue;
-    }
-
     // Seed initial sort from sortDirection column definitions
     this.sorting = this.buildInitialSorting();
+    this.initialSorting = this.sorting;
 
     this.initTable();
   }
@@ -320,134 +322,14 @@ export class GcdsTable {
   /*
     * Handle pagination control clicks by updating table state and focusing the table
     */
-  private handlePaginationClick(e) {
+  private handlePaginationClick(e: CustomEvent) {
     this.table?.setPageIndex(e.detail.page - 1);
     this.paginationCurrentPage = e.detail.page;
 
     // focus table here to ensure keyboard users can navigate from pagination controls to table rows
-    this.shadowElement.focus();
-    this.shadowElement.scrollIntoView({ block: "start", behavior: "smooth" });
+    this.shadowElement?.focus();
+    this.shadowElement?.scrollIntoView({ block: "start", behavior: "smooth" });
   }
-
-  /*
-  * Handle search input by updating table state
- */
-  private handleSearchInput(e: Event) {
-    const input = e.target as HTMLInputElement;
-    this.filterValue = input.value;
-  }
-
-  // ─── Render helpers ───────────────────────────────────────────────────────
-
-  // private getSortIcon(columnId: string): string {
-  //   const col = this.table?.getColumn(columnId);
-  //   if (!col?.getCanSort()) return '';
-  //   const sorted = col.getIsSorted();
-  //   if (sorted === 'asc') return ' ▲';
-  //   if (sorted === 'desc') return ' ▼';
-  //   return ' ⇅';
-  // }
-
-  // private getAlignClass(field: string): string {
-  //   const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === field);
-  //   if (!colDef?.align) return '';
-  //   return `align-${colDef.align}`;
-  // }
-
-  // private getSortTitle(column) {
-  //   let sortText = '';
-  //   if (column.getIsSorted() === 'asc') {
-  //     sortText = I18N[this.lang].headingActivateDesc;
-  //   } else if (column.getIsSorted() === 'desc') {
-  //     sortText = I18N[this.lang].headingRemoveSort;
-  //   } else if (column.getIsSorted() === false) {
-  //     sortText = I18N[this.lang].headingActivateAsc;
-  //   }
-
-  //   return `${column.columnDef.header as string} ${sortText}`;
-  // }
-
-  // private renderActiveBadge() {
-  //   const activeCount = this.sorting.length;
-  //   return (
-  //     <span class="gcds-table__active-count" aria-label={`${I18N[this.lang].activeBadgeLabel.replace('{count}', activeCount)}`}>
-  //       {activeCount}
-  //     </span>
-  //   );
-  // }
-
-  // private renderTableStatus() {
-  //   const currentPageIndex = this.paginationState?.pageIndex;
-  //   const totalRows = this.table.getPreFilteredRowModel().rows.length;
-  //   const filteredRows = this.table.getFilteredRowModel().rows.length;
-  //   const paginationSize = this.paginationSize;
-
-  //   // Filtered results with multiple pages
-  //   if (this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
-  //     return I18N[this.lang].showingMatchesPagination
-  //       .replace('{start}', currentPageIndex * paginationSize + 1)
-  //       .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
-  //       .replace('{filtered}', filteredRows);
-
-  //     // Filtered results on singular page
-  //   } else if (this.filterValue && (this.pagination && this.table.getPageCount() === 1)) {
-  //     return I18N[this.lang].showingMatches.replace('{matchNumber}', filteredRows);
-
-  //     // Rows across multiple pages
-  //   } else if (!this.filterValue && (this.pagination && this.table.getPageCount() > 1)) {
-  //     return I18N[this.lang].showingPages
-  //       .replace('{start}', currentPageIndex * paginationSize + 1)
-  //       .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
-  //       .replace('{total}', totalRows);
-
-  //     // Rows on one page
-  //   } else {
-  //     return I18N[this.lang].showingAllRows.replace('{total}', totalRows);
-  //   }
-  // }
-
-  // private renderSortRadios() {
-  //   const radioOptions = [];
-  //   let isSorted = 'null';
-
-  //   ((this.columns ?? []) as TableColumn[]).filter(col => col.sort !== false).map(col => {
-  //     if (this.table?.getColumn(col.field)?.getIsSorted()) {
-  //       isSorted = this.table?.getColumn(col.field)?.getIsSorted() === 'asc' ? `asc-${col.field}` : `desc-${col.field}`;
-  //     }
-
-  //     radioOptions.push({
-  //       id: `asc-${col.field}`,
-  //       label: `${col.header} (asc)`,
-  //       value: `asc-${col.field}`,
-  //     });
-
-  //     radioOptions.push({
-  //       id: `desc-${col.field}`,
-  //       label: `${col.header} (desc)`,
-  //       value: `desc-${col.field}`,
-  //     });
-  //   });
-
-  //   radioOptions.push(
-  //     {
-  //       id: 'nosort',
-  //       label: I18N[this.lang].radioLabelNoSort,
-  //       value: 'null',
-  //     }
-  //   );
-
-  //   return (
-  //     <gcds-radios
-  //       legend={I18N[this.lang].sort}
-  //       hideLegend
-  //       name="sort"
-  //       autoFocus
-  //       options={radioOptions}
-  //       value={isSorted}
-  //       ref={el => (this.sortRadios = el)}
-  //     />
-  //   )
-  // }
 
   // ─── Render ───────────────────────────────────────────────────────────────
 
@@ -462,138 +344,57 @@ export class GcdsTable {
     return (
       <Host>
         <section class="gcds-table">
-          {this.filter && (
-            <gcds-input
-              type="search"
-              label={I18N[this.lang].filterLabel}
-              name="filter"
-              inputId="gcds-table-filter"
-              size={12}
-              value={this.filterValue}
-              onInput={e => this.handleSearchInput(e)}
-            />
-          )}
 
-          {(this.sortEnabled()) && (
-            <div>
-              <gcds-button
-                size="small"
-                buttonRole='secondary'
-                onClick={() => this.filterSortModal.showModal()}
-              >
-                {I18N[this.lang].sort}
-
-                {(this.sorting.length > 0) && (
-                  <Fragment>
-                    <gcds-sr-only tag='span'>
-                      :
-                    </gcds-sr-only>
-                    <span class="gcds-table__active-count" aria-label={`${I18N[this.lang].activeBadgeLabel.replace('{count}', this.sorting.length)}`}>
-                      {this.sorting.length}
-                    </span>
-                  </Fragment>
-                )
-                }
-              </gcds-button>
-
-              <dialog
-                class="gcds-table__modal"
-                aria-modal="true"
-                aria-labelledby="gcds-table__modal-heading"
-                ref={el => (this.filterSortModal = el)}
-              >
-                <div>
-                  <gcds-heading
-                    tag="h1"
-                    id="gcds-table__modal-heading"
-                    marginTop='0'
-                  >
-                    {I18N[this.lang].filterAndSort}
-                  </gcds-heading>
-                </div>
-
-                <gcds-button
-                  size="small"
-                  button-role="secondary"
-                  onClick={() => this.filterSortModal.close()}
-                >
-                  {I18N[this.lang].modalClose}
-                </gcds-button>
-
-                <form
-                  class="gcds-table__modal-body"
-                  onSubmit={ev => {
-                    ev.preventDefault();
-
-                    const sortValue = this.sortRadios.value;
-                    if (sortValue === 'null') {
-                      this.sorting = [];
-                    } else {
-                      const [direction, field] = sortValue.split('-');
-                      this.sorting = [{
-                        id: field,
-                        desc: direction === 'desc',
-                      }];
-                    }
-
-                    this.updateTableOptions();
-
-                    this.filterSortModal.close();
-                  }}
-                >
-
-                  {this.sortEnabled() && (
-                    <div>
-                      {renderSortRadios(this.el, this.table, this.lang)}
-                    </div>
-                  )}
-
-                  <div class="gcds-table__modal-footer">
-
-                    <gcds-button
-                      button-role="primary"
-                      type="submit"
-                    >
-                      {I18N[this.lang].modalApplyButton}
-                    </gcds-button>
-                  </div>
-                </form>
-              </dialog>
-            </div>
-          )}
+          {/* Filter and sort controls */}
+          {(this.filter || this.sortEnabled()) && renderFilterSortModal(this)}
 
           <hr />
 
-          {/* Active section */}
-          <div class="gcds-table__active-sorts">
-            {this.sorting.map(sort => {
-              const col = this.table?.getColumn(sort.id);
-              if (!col) return null;
-              const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === sort.id);
-              const header = colDef?.header || sort.id;
-              const direction = sort.desc ? 'desc' : 'asc';
-              return (
+          {/* Active chips section */}
+          <div class="gcds-table__active-chips">
+            <div class="gcds-table__active-filter">
+              {this.filterValue && (
                 <Fragment>
-                  <span>{I18N[this.lang].pillSort}</span>
+                  <span>{I18N[this.lang].pillFilter}</span>
                   <button
                     onClick={() => {
-                      this.sorting = this.sorting.filter(s => s.id !== sort.id);
+                      this.filterValue = '';
                       this.updateTableOptions();
                     }}
-                    title={I18N[this.lang].pillRemoveSort}
+                    title={I18N[this.lang].pillRemoveFilter}
                   >
-                    {header} ({<abbr title={I18N[this.lang][`${direction}ending`]}>{I18N[this.lang][direction]}</abbr>})
-                    <span aria-hidden="true"> ×</span>
+                    {this.filterValue}
+                    <gcds-icon name="close" size="text"></gcds-icon>
                   </button>
                 </Fragment>
-              );
-            })}
-          </div>
+              )}
+            </div>
 
-          {/* Table status */}
-          <span class="gcds-table__page-info" role="status" aria-live="polite">
-            {renderTableStatus(this.el, this.table, this.paginationState, this.lang)}
-          </span>
+            <div class="gcds-table__active-sorting">
+              {this.sorting.map(sort => {
+                const col = this.table?.getColumn(sort.id);
+                if (!col) return null;
+                const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === sort.id);
+                const header = colDef?.header || sort.id;
+                const direction = sort.desc ? 'desc' : 'asc';
+                return (
+                  <Fragment>
+                    <span>{I18N[this.lang].pillSort}</span>
+                    <button
+                      onClick={() => {
+                        this.sorting = this.sorting.filter(s => s.id !== sort.id);
+                        this.updateTableOptions();
+                      }}
+                      title={I18N[this.lang].pillRemoveSort}
+                    >
+                      {header} ({<abbr title={I18N[this.lang][`${direction}ending`]}>{I18N[this.lang][direction]}</abbr>})
+                      <gcds-icon name="close" size="text"></gcds-icon>
+                    </button>
+                  </Fragment>
+                );
+              })}
+            </div>
+          </div>
 
           {/* Pagination size selector */}
           {this.pagination && (
@@ -614,8 +415,13 @@ export class GcdsTable {
             </div>
           )}
 
+          {/* Table status */}
+          <span class="gcds-table__page-info" role="status" aria-live="polite">
+            {renderTableStatus(this.el, this.table, this.paginationState, this.lang)}
+          </span>
+
           {/* ── Table ──────────────────────────────── */}
-          <table class="gcds-table__table" tabindex="-1" ref={el => (this.shadowElement = el)}>
+          <table class="gcds-table__table" tabindex="-1" ref={el => { if (el) this.shadowElement = el; }}>
             {/* Caption slot has higher priority than caption prop */}
             {this.el.querySelector('[slot="caption"]') || this.caption ? (
               <caption>
@@ -656,7 +462,7 @@ export class GcdsTable {
                             onClick={() => this.handleSortToggle(header.id)}
                             title={getSortTitle(header.column, this.lang)}
                           >
-                            {colDef.header}
+                            {colDef?.header}
                             {/* Replace icons with something better */}
                             <span
                               class="gcds-table__sort-icon"
@@ -666,7 +472,7 @@ export class GcdsTable {
                             </span>
                           </button>
                           :
-                          colDef.header
+                          colDef?.header
                         }
                       </th>
                     );
@@ -727,7 +533,7 @@ export class GcdsTable {
                         <Tag
                           key={cell.id}
                           class={`gcds-table__td${colDef?.align ? ` align-${colDef.align}` : ''}`}
-                          data-column={colDef.header}
+                          data-column={colDef?.header}
                           {...scope}
                         >
                           {cellContent}
@@ -751,7 +557,7 @@ export class GcdsTable {
             />
           )}
         </section>
-      </Host>
+      </Host >
     );
   }
 }
