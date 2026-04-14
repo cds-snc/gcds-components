@@ -6,27 +6,8 @@ import {
   type SortingState,
 } from '@tanstack/table-core';
 
+import { TableColumn } from './table-helpers';
 import I18N from '../i18n/i18n';
-
-/** Table column definition
- * @interface TableColumn
- * @property {string} field - The key of the data object to display in this column.
- * @property {string} header - The text to display in the column header.
- * @property {'asc' | 'desc'} [sortDirection] - The current sort direction of the column on load.
- * @property {'start' | 'center' | 'end'} [align] - The alignment of the cell content.
- * @property {boolean} [sort] - Whether the column is sortable.
- * @property {(value: unknown, row: Record<string, unknown>) => any} [renderCell] - A function to customize cell rendering.
- * @property {boolean} [rowHeader] - Whether this column should be treated as a row header (for accessibility).
- */
-interface TableColumn {
-  field: string;
-  header: string;
-  sortDirection?: 'asc' | 'desc';
-  align?: 'start' | 'center' | 'end';
-  sort?: boolean;
-  renderCell?: (value: unknown, row: Record<string, unknown>) => any;
-  rowHeader?: boolean;
-}
 
 // ─── Render helpers ───────────────────────────────────────────────────────
 
@@ -119,7 +100,7 @@ const renderTableStatus = (
   }
 }
 
-const renderSortRadios = element => {
+const renderSortRadios = (element: { initialSorting?: SortingState; sortRadios?: HTMLGcdsRadiosElement; el?: HTMLGcdsTableElement; table?: Table<Record<string, unknown>>; lang?: string; }) => {
   const { el, table, lang } = element;
   const radioOptions = [{
     id: 'nosort',
@@ -128,7 +109,7 @@ const renderSortRadios = element => {
   }];
   let isSorted = 'null';
 
-  ((el.columns ?? []) as TableColumn[]).filter(col => col.sort !== false).map(col => {
+  ((el?.columns ?? []) as TableColumn[]).filter(col => col.sort !== false).map(col => {
     if (table?.getColumn(col.field)?.getIsSorted()) {
       isSorted = table?.getColumn(col.field)?.getIsSorted() === 'asc' ? `asc-${col.field}` : `desc-${col.field}`;
     }
@@ -337,7 +318,6 @@ const renderSortPills = (sorting: SortingState, table: Table<Record<string, unkn
 }
 
 export {
-  TableColumn,
   getSortIcon,
   getSortTitle,
   renderActiveBadge,

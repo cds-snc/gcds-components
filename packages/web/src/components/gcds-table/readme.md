@@ -9,7 +9,6 @@
 
 | Property                | Attribute                 | Description                                                 | Type                      | Default           |
 | ----------------------- | ------------------------- | ----------------------------------------------------------- | ------------------------- | ----------------- |
-| `caption`               | `caption`                 | Table caption                                               | `string`                  | `undefined`       |
 | `columns`               | `columns`                 | Column definitions                                          | `TableColumn[] \| string` | `[]`              |
 | `data`                  | `data`                    | Row data                                                    | `object[] \| string`      | `[]`              |
 | `filter`                | `filter`                  | Enable global filter                                        | `boolean`                 | `false`           |
@@ -25,7 +24,6 @@
 
 ### Depends on
 
-- [gcds-icon](../gcds-icon)
 - [gcds-select](../gcds-select)
 - [gcds-pagination](../gcds-pagination)
 - [gcds-radios](../gcds-radios)
@@ -33,11 +31,11 @@
 - [gcds-sr-only](../gcds-sr-only)
 - [gcds-heading](../gcds-heading)
 - [gcds-input](../gcds-input)
+- [gcds-icon](../gcds-icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  gcds-table --> gcds-icon
   gcds-table --> gcds-select
   gcds-table --> gcds-pagination
   gcds-table --> gcds-radios
@@ -45,6 +43,7 @@ graph TD;
   gcds-table --> gcds-sr-only
   gcds-table --> gcds-heading
   gcds-table --> gcds-input
+  gcds-table --> gcds-icon
   gcds-select --> gcds-label
   gcds-select --> gcds-hint
   gcds-select --> gcds-error-message

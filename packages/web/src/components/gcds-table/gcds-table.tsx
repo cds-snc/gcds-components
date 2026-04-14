@@ -10,12 +10,7 @@ import {
 
 import {
   createTable,
-  getCoreRowModel,
-  getSortedRowModel,
-  getPaginationRowModel,
-  getFilteredRowModel,
   type Table,
-  type ColumnDef,
   type SortingState,
   type ColumnFiltersState,
   type PaginationState,
@@ -27,13 +22,18 @@ import I18N from './i18n/i18n';
 
 import {
   TableColumn,
+  buildInitialSorting,
+  buildTableOptions,
+  updateTableOptions,
+} from './utils/table-helpers';
+import {
   getSortIcon,
   getSortTitle,
   renderTableStatus,
   renderFilterSortModal,
   renderFilterPills,
   renderSortPills,
-} from './utils/utils';
+} from './utils/render-helpers';
 
 @Component({
   tag: 'gcds-table',
@@ -86,6 +86,7 @@ export class GcdsTable {
   // ─── Internal state ───────────────────────────────────────────────────────
 
   @State() private sorting: SortingState = [];
+  // @ts-ignore - this is used in building table options
   @State() private columnFilters: ColumnFiltersState = [];
   @State() private globalFilter: string = this.filterValue;
   @State() private paginationState: PaginationState = {
@@ -114,7 +115,7 @@ export class GcdsTable {
         console.error('[gcds-table] Invalid JSON in column-data:', e);
       }
     }
-    this.updateTableOptions();
+    updateTableOptions(this);
   }
 
   @Watch('data')
@@ -126,7 +127,7 @@ export class GcdsTable {
         console.error('[gcds-table] Invalid JSON in column-data:', e);
       }
     }
-    this.updateTableOptions();
+    updateTableOptions(this);
   }
 
   @Watch('sort')
@@ -180,103 +181,12 @@ export class GcdsTable {
 
   // ─── Helpers ──────────────────────────────────────────────────────────────
 
-  private buildInitialSorting(): SortingState {
-    return ((this.columns ?? []) as TableColumn[])
-      .filter(col => col.sortDirection)
-      .map(col => ({
-        id: col.field,
-        desc: col.sortDirection === 'desc',
-      }));
-  }
-
-  private buildColumnDefs(): ColumnDef<Record<string, unknown>>[] {
-    return ((this.columns ?? []) as TableColumn[]).map(col => ({
-      id: col.field,
-      accessorKey: col.field,
-      header: col.header,
-      // Per-column sort: falls back to global `sort` prop
-      enableSorting: col.sort !== undefined ? col.sort : this.sort,
-    }));
+  private initTable() {
+    this.table = createTable(buildTableOptions(this) as TableOptionsResolved<Record<string, unknown>>);
   }
 
   private sortEnabled(): boolean {
     return this.sort || ((this.columns ?? []) as TableColumn[]).some(col => col.sort);
-  }
-
-  private updateTableOptions() {
-    if (this.table) {
-      this.table.setOptions(prev => ({
-        ...prev,
-        ...this.buildTableOptions(),
-      }));
-      // Force re-render by touching a @State property
-      this.sorting = [...this.sorting];
-    }
-  }
-
-  private buildTableOptions(): TableOptionsResolved<Record<string, unknown>> {
-    return {
-      data: (this.data ?? []) as Record<string, unknown>[],
-      columns: this.buildColumnDefs(),
-      state: {
-        sorting: this.sorting,
-        columnFilters: this.columnFilters,
-        globalFilter: this.globalFilter,
-        pagination: this.paginationState,
-        columnPinning: {},
-      },
-      onStateChange: () => { },
-      renderFallbackValue: null,
-      // Sorting
-      enableSorting: this.sortEnabled(),
-      sortDescFirst: false,
-      manualSorting: false,
-      onSortingChange: updater => {
-        this.sorting =
-          typeof updater === 'function' ? updater(this.sorting) : updater;
-        this.table?.setOptions(prev => ({
-          ...prev,
-          state: { ...prev.state, sorting: this.sorting },
-        }));
-      },
-      // Filtering
-      enableFilters: this.filter,
-      onGlobalFilterChange: updater => {
-        this.globalFilter =
-          typeof updater === 'function'
-            ? updater(this.globalFilter)
-            : updater;
-        this.table?.setOptions(prev => ({
-          ...prev,
-          state: { ...prev.state, globalFilter: this.globalFilter },
-        }));
-      },
-      // Pagination
-      manualPagination: false,
-      onPaginationChange: updater => {
-        this.paginationState =
-          typeof updater === 'function'
-            ? updater(this.paginationState)
-            : updater;
-        this.paginationCurrentPage = this.paginationState.pageIndex + 1;
-        this.table?.setOptions(prev => ({
-          ...prev,
-          state: { ...prev.state, pagination: this.paginationState },
-        }));
-      },
-      getCoreRowModel: getCoreRowModel(),
-      getSortedRowModel: getSortedRowModel(),
-      getPaginationRowModel: this.pagination
-        ? getPaginationRowModel()
-        : undefined,
-      getFilteredRowModel: this.filter ? getFilteredRowModel() : undefined,
-      // Keep pagination active even when disabled so state is consistent
-      autoResetPageIndex: true,
-    };
-  }
-
-  private initTable() {
-    this.table = createTable(this.buildTableOptions());
   }
 
   // ─── Event handlers ───────────────────────────────────────────────────────
@@ -322,7 +232,7 @@ export class GcdsTable {
     this.onDataChange(this.data);
 
     // Seed initial sort from sortDirection column definitions
-    this.sorting = this.buildInitialSorting();
+    this.sorting = buildInitialSorting(this.columns as TableColumn[]);
     this.initialSorting = this.sorting;
 
     this.initTable();
@@ -352,13 +262,13 @@ export class GcdsTable {
             {/* Filter pills */}
             {renderFilterPills(this.filterValue, this.lang, () => {
               this.filterValue = '';
-              this.updateTableOptions();
+              updateTableOptions(this);
             })}
 
             {/* Sort pills */}
             {renderSortPills(this.sorting, this.table, this.lang, (columnId: string) => {
               this.sorting = this.sorting.filter(s => s.id !== columnId);
-              this.updateTableOptions();
+              updateTableOptions(this);
             })}
           </div>
 

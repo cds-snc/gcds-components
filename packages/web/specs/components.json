@@ -11316,29 +11316,6 @@
       "usage": {},
       "props": [
         {
-          "name": "caption",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "caption",
-          "reflectToAttr": false,
-          "docs": "Table caption",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "columns",
           "type": "TableColumn[] | string",
           "complexType": {
@@ -11347,8 +11324,8 @@
             "references": {
               "TableColumn": {
                 "location": "import",
-                "path": "./utils/utils",
-                "id": "src/components/gcds-table/utils/utils.tsx::TableColumn"
+                "path": "./utils/table-helpers",
+                "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumn"
               }
             }
           },
@@ -11623,25 +11600,25 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
-        "gcds-icon",
         "gcds-select",
         "gcds-pagination",
         "gcds-radios",
         "gcds-button",
         "gcds-sr-only",
         "gcds-heading",
-        "gcds-input"
+        "gcds-input",
+        "gcds-icon"
       ],
       "dependencyGraph": {
         "gcds-table": [
-          "gcds-icon",
           "gcds-select",
           "gcds-pagination",
           "gcds-radios",
           "gcds-button",
           "gcds-sr-only",
           "gcds-heading",
-          "gcds-input"
+          "gcds-input",
+          "gcds-icon"
         ],
         "gcds-select": [
           "gcds-label",
@@ -13390,10 +13367,10 @@
       "docstring": "",
       "path": "src/components/gcds-radios/radio.tsx"
     },
-    "src/components/gcds-table/utils/utils.tsx::TableColumn": {
+    "src/components/gcds-table/utils/table-helpers.ts::TableColumn": {
       "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n}",
       "docstring": "Table column definition",
-      "path": "src/components/gcds-table/utils/utils.tsx"
+      "path": "src/components/gcds-table/utils/table-helpers.ts"
     }
   }
 }
