@@ -1367,10 +1367,6 @@ export namespace Components {
     }
     interface GcdsTable {
         /**
-          * Table caption
-         */
-        "caption": string;
-        /**
           * Column definitions
           * @default []
          */
@@ -3972,10 +3968,6 @@ declare namespace LocalJSX {
         "totalSteps": number;
     }
     interface GcdsTable {
-        /**
-          * Table caption
-         */
-        "caption"?: string;
         /**
           * Column definitions
           * @default []

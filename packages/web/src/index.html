@@ -101,7 +101,7 @@
             "field": "number",
             "header": "Pokédex",
             "align": "end",
-            "activeSorting": "asc"
+            "sortDirection": "asc"
           },
           {
             "field": "name",
@@ -140,9 +140,9 @@
           }
         ]'
       >
-        <div slot="">
-          Table of the best Pokémon (first generation) but sloted in the caption
-          slot instead of using the caption prop.
+        <div slot="caption">
+          <h2>Pokémon</h2>
+          Table of the best Pokémon (first generation).
         </div>
       </gcds-table>
 

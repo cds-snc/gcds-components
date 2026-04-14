@@ -86,10 +86,10 @@ const renderTableStatus = (
   paginationState: PaginationState | undefined,
   lang: string
 ): string => {
-  const currentPageIndex = paginationState?.pageIndex;
+  const currentPageIndex = paginationState?.pageIndex ?? 0;
   const totalRows = table.getPreFilteredRowModel().rows.length;
   const filteredRows = table.getFilteredRowModel().rows.length;
-  const paginationSize = paginationState?.pageSize;
+  const paginationSize = paginationState?.pageSize ?? 0;
 
   // Filtered results with multiple pages
   if (el.filterValue && (el.pagination && table.getPageCount() > 1)) {
@@ -101,6 +101,10 @@ const renderTableStatus = (
     // Filtered results on singular page
   } else if (el.filterValue && (el.pagination && table.getPageCount() === 1)) {
     return I18N[lang].showingMatches.replace('{matchNumber}', filteredRows);
+
+    // No results match filter
+  } else if (el.filterValue && filteredRows === 0) {
+    return I18N[lang].showingNoMatches;
 
     // Rows across multiple pages
   } else if (!el.filterValue && (el.pagination && table.getPageCount() > 1)) {
@@ -119,7 +123,7 @@ const renderSortRadios = element => {
   const { el, table, lang } = element;
   const radioOptions = [{
     id: 'nosort',
-    label: I18N[lang].radioLabelNoSort,
+    label: `${I18N[lang].radioLabelNoSort}${!element.initialSorting ? ` (${I18N[lang].default})` : ''}`,
     value: 'null',
   }];
   let isSorted = 'null';
@@ -129,15 +133,26 @@ const renderSortRadios = element => {
       isSorted = table?.getColumn(col.field)?.getIsSorted() === 'asc' ? `asc-${col.field}` : `desc-${col.field}`;
     }
 
+    let ascDefaultLabel = '';
+    let descDefaultLabel = '';
+
+    if (element.initialSorting?.[0]?.id === col.field) {
+      if (element.initialSorting[0].desc) {
+        descDefaultLabel = ` (${I18N[lang].default})`;
+      } else {
+        ascDefaultLabel = ` (${I18N[lang].default})`;
+      }
+    }
+
     radioOptions.push({
       id: `asc-${col.field}`,
-      label: `${col.header} (asc)`,
+      label: `${col.header} (${I18N[lang].ascending})${ascDefaultLabel}`,
       value: `asc-${col.field}`,
     });
 
     radioOptions.push({
       id: `desc-${col.field}`,
-      label: `${col.header} (desc)`,
+      label: `${col.header} (${I18N[lang].descending})${descDefaultLabel}`,
       value: `desc-${col.field}`,
     });
   });
@@ -279,6 +294,48 @@ const renderFilterSortModal = element => {
   );
 }
 
+const renderFilterPills = (filterValue: string, lang: string, onRemove: () => void) => {
+  if (!filterValue) return null;
+
+  return (
+    <div class="gcds-table__active-filter">
+      <button
+        onClick={onRemove}
+        title={I18N[lang].pillRemoveFilter}
+      >
+        <gcds-sr-only tag='span'>{I18N[lang].pillFilter}</gcds-sr-only>
+        {filterValue}
+        <gcds-icon name="close" size="text"></gcds-icon>
+      </button>
+    </div>
+  );
+}
+
+const renderSortPills = (sorting: SortingState, table: Table<Record<string, unknown>>, lang: string, onRemove: (columnId: string) => void) => {
+  if (sorting?.length === 0) return null;
+
+  return (
+    <div class="gcds-table__active-sorting">
+      {I18N[lang].pillSort}
+      {sorting?.map(sort => {
+        const column = table.getColumn(sort.id);
+        if (!column) return null;
+
+        return (
+          <button
+            onClick={() => onRemove(column.id)}
+            title={I18N[lang].pillRemoveSort}
+          >
+            {/* We want to put an icon beside the column header name */}
+            {`${column.columnDef.header as string} (${sort.desc ? I18N[lang].descending : I18N[lang].ascending})`}
+            <gcds-icon name="close" size="text"></gcds-icon>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export {
   TableColumn,
   getSortIcon,
@@ -287,4 +344,6 @@ export {
   renderTableStatus,
   renderSortRadios,
   renderFilterSortModal,
+  renderFilterPills,
+  renderSortPills,
 };
