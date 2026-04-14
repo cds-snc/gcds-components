@@ -2223,22 +2223,18 @@ export declare interface GcdsStepper extends Components.GcdsStepper {}
 
 
 @ProxyCmp({
-  inputs: ['caption', 'columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort']
+  inputs: ['columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort']
 })
 @Component({
   selector: 'gcds-table',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort'],
+  inputs: ['columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort'],
   standalone: false,
 })
 export class GcdsTable {
   protected el: HTMLGcdsTableElement;
-    /**
-   * Table caption
-   */
-  set caption(_: Components.GcdsTable['caption']) {};
     /**
    * Column definitions @default []
    */

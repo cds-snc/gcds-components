@@ -614,7 +614,6 @@ export const GcdsStepper: StencilVueComponent<JSX.GcdsStepper> = /*@__PURE__*/ d
 
 
 export const GcdsTable: StencilVueComponent<JSX.GcdsTable> = /*@__PURE__*/ defineContainer<JSX.GcdsTable>('gcds-table', defineGcdsTable, [
-  'caption',
   'columns',
   'data',
   'sort',

@@ -6,7 +6,6 @@ import {
   Watch,
   h,
   Element,
-  Fragment,
 } from '@stencil/core';
 
 import {
@@ -32,6 +31,8 @@ import {
   getSortTitle,
   renderTableStatus,
   renderFilterSortModal,
+  renderFilterPills,
+  renderSortPills,
 } from './utils/utils';
 
 @Component({
@@ -51,9 +52,6 @@ export class GcdsTable {
   private filterSortModal: HTMLDialogElement;
 
   // ─── Props ────────────────────────────────────────────────────────────────
-
-  /** Table caption */
-  @Prop() caption: string;
 
   /** Column definitions */
   @Prop({ mutable: true }) columns: string | TableColumn[] = [];
@@ -104,23 +102,6 @@ export class GcdsTable {
   private initialFilter = this.filterValue;
   // @ts-ignore - these are used in event handlers to reset filter/sort state
   private initialSorting: SortingState = [];
-
-  // ─── Lifecycle ────────────────────────────────────────────────────────────
-
-  componentWillLoad() {
-    // Define lang attribute
-    this.lang = assignLanguage(this.el);
-
-    // Validate if information is being passed as JSON strings and parse it
-    this.onColumnsChange(this.columns);
-    this.onDataChange(this.data);
-
-    // Seed initial sort from sortDirection column definitions
-    this.sorting = this.buildInitialSorting();
-    this.initialSorting = this.sorting;
-
-    this.initTable();
-  }
 
   // ─── Watchers ─────────────────────────────────────────────────────────────
 
@@ -173,7 +154,7 @@ export class GcdsTable {
   @Watch('paginationSize')
   onPageSizeChange(newSize: number) {
     this.paginationState = {
-      pageIndex: this.paginationState.pageIndex + 1 > Math.ceil(this.table?.getPreFilteredRowModel().rows.length / newSize) ? 0
+      pageIndex: this.paginationState.pageIndex + 1 > Math.ceil((this.table?.getPreFilteredRowModel()?.rows.length ?? 0) / newSize) ? 0
         : this.paginationState.pageIndex,
       pageSize: newSize === 0 ? Number.MAX_SAFE_INTEGER : newSize,
     };
@@ -244,7 +225,6 @@ export class GcdsTable {
         pagination: this.paginationState,
         columnPinning: {},
       },
-      // Required by TableOptionsResolved – framework adapters normally inject these
       onStateChange: () => { },
       renderFallbackValue: null,
       // Sorting
@@ -331,6 +311,23 @@ export class GcdsTable {
     this.shadowElement?.scrollIntoView({ block: "start", behavior: "smooth" });
   }
 
+  // ─── Lifecycle ────────────────────────────────────────────────────────────
+
+  componentWillLoad() {
+    // Define lang attribute
+    this.lang = assignLanguage(this.el);
+
+    // Validate if information is being passed as JSON strings and parse it
+    this.onColumnsChange(this.columns);
+    this.onDataChange(this.data);
+
+    // Seed initial sort from sortDirection column definitions
+    this.sorting = this.buildInitialSorting();
+    this.initialSorting = this.sorting;
+
+    this.initTable();
+  }
+
   // ─── Render ───────────────────────────────────────────────────────────────
 
   render() {
@@ -350,50 +347,19 @@ export class GcdsTable {
 
           <hr />
 
-          {/* Active chips section */}
-          <div class="gcds-table__active-chips">
-            <div class="gcds-table__active-filter">
-              {this.filterValue && (
-                <Fragment>
-                  <span>{I18N[this.lang].pillFilter}</span>
-                  <button
-                    onClick={() => {
-                      this.filterValue = '';
-                      this.updateTableOptions();
-                    }}
-                    title={I18N[this.lang].pillRemoveFilter}
-                  >
-                    {this.filterValue}
-                    <gcds-icon name="close" size="text"></gcds-icon>
-                  </button>
-                </Fragment>
-              )}
-            </div>
+          {/* Active pills section */}
+          <div class="gcds-table__active-pills">
+            {/* Filter pills */}
+            {renderFilterPills(this.filterValue, this.lang, () => {
+              this.filterValue = '';
+              this.updateTableOptions();
+            })}
 
-            <div class="gcds-table__active-sorting">
-              {this.sorting.map(sort => {
-                const col = this.table?.getColumn(sort.id);
-                if (!col) return null;
-                const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === sort.id);
-                const header = colDef?.header || sort.id;
-                const direction = sort.desc ? 'desc' : 'asc';
-                return (
-                  <Fragment>
-                    <span>{I18N[this.lang].pillSort}</span>
-                    <button
-                      onClick={() => {
-                        this.sorting = this.sorting.filter(s => s.id !== sort.id);
-                        this.updateTableOptions();
-                      }}
-                      title={I18N[this.lang].pillRemoveSort}
-                    >
-                      {header} ({<abbr title={I18N[this.lang][`${direction}ending`]}>{I18N[this.lang][direction]}</abbr>})
-                      <gcds-icon name="close" size="text"></gcds-icon>
-                    </button>
-                  </Fragment>
-                );
-              })}
-            </div>
+            {/* Sort pills */}
+            {renderSortPills(this.sorting, this.table, this.lang, (columnId: string) => {
+              this.sorting = this.sorting.filter(s => s.id !== columnId);
+              this.updateTableOptions();
+            })}
           </div>
 
           {/* Pagination size selector */}
@@ -422,14 +388,12 @@ export class GcdsTable {
 
           {/* ── Table ──────────────────────────────── */}
           <table class="gcds-table__table" tabindex="-1" ref={el => { if (el) this.shadowElement = el; }}>
-            {/* Caption slot has higher priority than caption prop */}
-            {this.el.querySelector('[slot="caption"]') || this.caption ? (
+            {this.el.querySelector('[slot="caption"]') && (
               <caption>
                 <slot name="caption">
-                  {this.caption}
                 </slot>
               </caption>
-            ) : null}
+            )}
             <thead>
               {headerGroups.map(hg => (
                 <tr key={hg.id}>
