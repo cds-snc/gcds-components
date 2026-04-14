@@ -119,9 +119,9 @@ const renderSortRadios = (element: { initialSorting?: SortingState; sortRadios?:
 
     if (element.initialSorting?.[0]?.id === col.field) {
       if (element.initialSorting[0].desc) {
-        descDefaultLabel = ` (${I18N[lang].default})`;
+        descDefaultLabel = ` — ${I18N[lang].default}`;
       } else {
-        ascDefaultLabel = ` (${I18N[lang].default})`;
+        ascDefaultLabel = ` — ${I18N[lang].default}`;
       }
     }
 
