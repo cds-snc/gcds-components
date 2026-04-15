@@ -103,9 +103,19 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    overflow-y: scroll;
-    background-color: var(--gcds-nav-group-mobile-background);
-    padding: var(--gcds-nav-group-mobile-padding) !important;
+    background-color: var(--gcds-nav-group-mobile-overlay-background);
+
+    .gcds-nav-group__container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: var(--gcds-nav-group-mobile-height);
+      overflow-y: scroll;
+      background-color: var(--gcds-nav-group-mobile-background);
+      padding: var(--gcds-nav-group-mobile-padding) !important;
+      border-radius: var(--gcds-nav-group-mobile-border-radius);
+    }
   }
 }
 
@@ -141,7 +151,7 @@
     }
 
     :host(.gcds-mobile-nav) {
-      > .gcds-nav--expandable {
+      .gcds-nav-group__container > .gcds-nav--expandable {
         display: block;
         padding: 0;
       }
@@ -151,7 +161,9 @@
       }
     }
 
-    :host(.gcds-mobile-nav-topnav) > .gcds-nav--expandable {
+    :host(.gcds-mobile-nav-topnav)
+      > .gcds-nav-group__container
+      > .gcds-nav--expandable {
       display: flex;
     }
   }
@@ -160,7 +172,9 @@
 /* Note: viewport specific style decision */
 @layer mobile {
   @media only screen and (width < 64em) {
-    :host(.gcds-mobile-nav) > .gcds-nav--expandable {
+    :host(.gcds-mobile-nav)
+      > .gcds-nav-group__container
+      > .gcds-nav--expandable {
       margin: var(--gcds-nav-group-mobile-list-margin);
     }
 

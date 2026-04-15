@@ -43,6 +43,12 @@
         }
       }
     }
+
+    /*
+      Header uses a constrained width for the top-nav.
+      This overrides the default top-nav width within header scope only.
+    */
+    --gcds-top-nav-width-full: var(--gcds-top-nav-width-constrained);
   }
 }
 
@@ -100,7 +106,7 @@
 }
 
 @layer wide {
-  @container brand (width >= 51em) {
+  @container brand (width >= 51.2em) {
     :host .gcds-header__brand .brand__container {
       grid-template-areas:
         'toggle toggle'
