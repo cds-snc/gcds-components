@@ -46,7 +46,7 @@
       text-decoration-thickness: var(
         --gcds-details-default-decoration-thickness
       );
-      text-underline-offset: 0.2em;
+      text-underline-offset: var(--gcds-details-summary-underline-offset);
       transition:
         background-color 0.15s ease-in-out,
         color 0.15s ease-in-out;
