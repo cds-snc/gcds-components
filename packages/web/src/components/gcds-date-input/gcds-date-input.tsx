@@ -546,7 +546,7 @@ export class GcdsDateInput {
 
     // Sanitizes a numeric date value, optionally normalizing to two digits with padding
     const sanitizeValue = (value: string, pad = true): string => {
-      if (!value) return value;
+      if (!value || value === '0') return value;
       // Normalize to two digits if possible, e.g. '3' -> '03'
       if (pad) value = String(parseInt(value, 10)).padStart(2, '0');
       return value.replace(/[eE-]/g, '');
