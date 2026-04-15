@@ -72,6 +72,7 @@ export const dateInputErrorMessage = {
     missingdayyear: 'Enter the day and year.',
     invalidyearlength: 'Year must be 4 digits.',
     invalidyear: 'Enter a valid year.',
+    invalidmonth: 'Enter a valid month.',
     invalidday: 'Enter a valid day.',
   },
   fr: {
@@ -87,6 +88,7 @@ export const dateInputErrorMessage = {
     missingdayyear: "Saisissez le jour et l'année.",
     invalidyearlength: "L'année doit inclure 4 chiffres.",
     invalidyear: 'Entrez une année valide.',
+    invalidmonth: 'Saisissez un mois valide',
     invalidday: 'Saisissez un jour valide.',
   },
 };
@@ -222,6 +224,12 @@ export const getDateInputError = (
     errorResponse.errors.year = true;
     errorResponse.reason.en = dateInputErrorMessage.en.invalidyear;
     errorResponse.reason.fr = dateInputErrorMessage.fr.invalidyear;
+
+    // Invalid month
+  } else if (Number(month) < 1 || Number(month) > 12) {
+    errorResponse.errors.month = true;
+    errorResponse.reason.en = dateInputErrorMessage.en.invalidmonth;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.invalidmonth;
 
     // Invalid day
   } else if (!isValidDay(`${year}-${month}-${day}`)) {

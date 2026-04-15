@@ -357,7 +357,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonth);
+    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthinput);
   });
   test('Validation - Missing month and day', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -477,7 +477,57 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthinput);
+    expect(errorMessage).toEqual(dateInputErrorMessage.en.invalidmonth);
+  });
+  test('Validation - iso - Missing month & day', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('input[name="year"]').fill('1234');
+
+    await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
+
+    const errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthinputday);
+  });
+  test('Validation - iso - Missing month & year', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(
+      (el: HTMLGcdsDateInputElement) => (el.format = 'iso'),
+    );
+
+    await page.waitForChanges();
+
+    await element.locator('input[name="day"]').fill('25');
+
+    await element.evaluate(el => (el as HTMLGcdsDateInputElement).validate());
+
+    const errorMessage = await element.evaluate(
+      el => (el as HTMLGcdsDateInputElement).errorMessage,
+    );
+
+    expect(errorMessage).toEqual(
+      dateInputErrorMessage.en.missingmonthinputyear,
+    );
   });
   test('Validation - Custom validation', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -490,8 +540,8 @@ test.describe('gcds-date-input', () => {
     await element.evaluate(el => {
       const expectYear = (year: string) => {
         return {
-          validate: (value: string) => {
-            const dates = value.split('-');
+          validate: ({ date }: { date: string; }) => {
+            const dates = date.split('-');
             return {
               valid: dates[0] === year,
               reason: {
@@ -541,8 +591,8 @@ test.describe('gcds-date-input', () => {
     await element.evaluate(el => {
       const expectYear = (year: string) => {
         return {
-          validate: (value: string) => {
-            const dates = value.split('-');
+          validate: ({ date }: { date: string }) => {
+            const dates = date.split('-');
             return dates[0] === year;
           },
           errorMessage: {

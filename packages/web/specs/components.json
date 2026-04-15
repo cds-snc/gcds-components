@@ -2616,10 +2616,10 @@
         },
         {
           "name": "validator",
-          "type": "(string | ValidatorEntry | Validator<string>)[]",
+          "type": "(string | ValidatorEntry | Validator<{ date: string; format: string; }>)[]",
           "complexType": {
-            "original": "Array<\n    string | ValidatorEntry | Validator<string>\n  >",
-            "resolved": "(string | ValidatorEntry | Validator<string>)[]",
+            "original": "Array<\n    string | ValidatorEntry | Validator<{date: string, format: string}>\n  >",
+            "resolved": "(string | ValidatorEntry | Validator<{ date: string; format: string; }>)[]",
             "references": {
               "Array": {
                 "location": "global",
@@ -2650,7 +2650,7 @@
               "type": "ValidatorEntry"
             },
             {
-              "type": "Validator<string>)[]"
+              "type": "Validator<{ date: string; format: string; }>)[]"
             }
           ],
           "optional": false,

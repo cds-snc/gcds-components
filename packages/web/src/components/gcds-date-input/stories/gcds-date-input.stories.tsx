@@ -281,6 +281,22 @@ isoFr.args = {
   validateOn: '',
 };
 
+// ------ Date input ISO Format Required ------
+
+export const IsoRequired = Template.bind({});
+IsoRequired.args = {
+  name: 'required-default',
+  legend: 'Date input',
+  format: 'iso',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: true,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+};
+
 // ------ Date input Format Compact English ------
 
 export const CompactEN = Template.bind({});
