@@ -332,4 +332,19 @@ describe('Required date input validator', () => {
       expect(requiredDateInput.validate(i.value)).toEqual(i.res);
     }),
   );
+
+  it('Uses context params format when provided', () => {
+    expect(
+      requiredDateInput.validate('1991-13', {
+        params: { format: 'full' },
+      }),
+    ).toEqual({
+      valid: false,
+      errors: { day: true, month: false, year: false },
+      reason: {
+        en: dateInputErrorMessage.en.missingday,
+        fr: dateInputErrorMessage.fr.missingday,
+      },
+    });
+  });
 });
