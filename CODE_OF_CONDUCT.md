@@ -1,6 +1,6 @@
 # Contributor Covenant Code of Conduct for the `GC Design System Product Team` projects
 
-([Français](#code-de-conduite-pour-les-projets-de-l-equipe-de-produit-du-systeme-de-conception))
+([Français](#code-de-conduite-pour-les-projets-de-léquipe-de-produit-du-système-de-conception))
 
 Contributors to repositories hosted in [`CDS-SNC`](https://github.com/cds-snc/) are expected to follow the Contributor Covenant Code of Conduct, and those working within Government are also expected to follow the Values and Ethics Code for the Public Sector
 
