@@ -332,4 +332,59 @@ describe('Required date input validator', () => {
       expect(requiredDateInput.validate(i.value)).toEqual(i.res);
     }),
   );
+
+  it('Uses context params format when provided', () => {
+    expect(
+      requiredDateInput.validate('1991-13', {
+        params: { format: 'full' },
+      }),
+    ).toEqual({
+      valid: false,
+      errors: { day: true, month: false, year: false },
+      reason: {
+        en: dateInputErrorMessage.en.missingday,
+        fr: dateInputErrorMessage.fr.missingday,
+      },
+    });
+
+    // Also test for trailing -
+    expect(
+      requiredDateInput.validate('1991-13-', {
+        params: { format: 'full' },
+      }),
+    ).toEqual({
+      valid: false,
+      errors: { day: true, month: false, year: false },
+      reason: {
+        en: dateInputErrorMessage.en.missingday,
+        fr: dateInputErrorMessage.fr.missingday,
+      },
+    });
+
+    expect(
+      requiredDateInput.validate('1991-', {
+        params: { format: 'compact' },
+      }),
+    ).toEqual({
+      valid: false,
+      errors: { day: false, month: true, year: false },
+      reason: {
+        en: dateInputErrorMessage.en.missingmonth,
+        fr: dateInputErrorMessage.fr.missingmonth,
+      },
+    });
+
+    expect(
+      requiredDateInput.validate('1111', {
+        params: { format: 'compact' },
+      }),
+    ).toEqual({
+      valid: false,
+      errors: { day: false, month: true, year: false },
+      reason: {
+        en: dateInputErrorMessage.en.missingmonth,
+        fr: dateInputErrorMessage.fr.missingmonth,
+      },
+    });
+  });
 });
