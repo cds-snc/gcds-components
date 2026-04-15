@@ -540,7 +540,7 @@ test.describe('gcds-date-input', () => {
     await element.evaluate(el => {
       const expectYear = (year: string) => {
         return {
-          validate: ({ date }: { date: string; }) => {
+          validate: (date: string) => {
             const dates = date.split('-');
             return {
               valid: dates[0] === year,
@@ -591,7 +591,7 @@ test.describe('gcds-date-input', () => {
     await element.evaluate(el => {
       const expectYear = (year: string) => {
         return {
-          validate: ({ date }: { date: string }) => {
+          validate: (date: string) => {
             const dates = date.split('-');
             return dates[0] === year;
           },

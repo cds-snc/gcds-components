@@ -54,7 +54,7 @@ export class GcdsDateInput {
   // Array to store which native HTML errors are happening on the input
   private htmlValidationErrors = [];
 
-  _validator: Validator<{date: string, format: string}> = defaultValidator;
+  _validator: Validator<string> = defaultValidator;
 
   /**
    * Name attribute for the date input.
@@ -173,7 +173,7 @@ export class GcdsDateInput {
    * Array of validators
    */
   @Prop({ mutable: true }) validator: Array<
-    string | ValidatorEntry | Validator<{date: string, format: string}>
+    string | ValidatorEntry | Validator<string>
   >;
   @Watch('validator')
   validateValidator() {
@@ -277,11 +277,7 @@ export class GcdsDateInput {
     this.hasError = handleValidationResult(
       this.el as HTMLGcdsDateInputElement,
 
-      this._validator.validate({
-          date: value,
-          format: format,
-        }
-      ),
+      this._validator.validate(value, { params: { format } }),
       this.legend,
       this.gcdsError,
       this.gcdsValid,

@@ -358,7 +358,7 @@ export namespace Components {
           * Array of validators
          */
         "validator": Array<
-    string | ValidatorEntry | Validator<{date: string, format: string}>
+    string | ValidatorEntry | Validator<string>
   >;
         /**
           * Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.
@@ -2741,7 +2741,7 @@ declare namespace LocalJSX {
           * Array of validators
          */
         "validator"?: Array<
-    string | ValidatorEntry | Validator<{date: string, format: string}>
+    string | ValidatorEntry | Validator<string>
   >;
         /**
           * Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.

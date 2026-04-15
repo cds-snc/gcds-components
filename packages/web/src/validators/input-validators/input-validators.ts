@@ -115,7 +115,9 @@ export const requiredDateInput: Validator<string> = {
     // Backwards compatibility if params.format is not supplied
     const inferredFormat = splitDate.length === 3 ? 'full' : 'compact';
 
-    const format = context?.params?.format ?? inferredFormat;
+    const format =
+      (context?.params?.format as 'full' | 'compact' | 'iso' | null) ??
+      inferredFormat;
 
     return getDateInputError(dateObject, format);
   },

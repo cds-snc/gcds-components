@@ -170,49 +170,22 @@ describe('Required checkbox single validator', () => {
 describe('Required date input validator', () => {
   const results: Array<{
     value: string;
-    format: 'iso' | 'full' | 'compact';
     res: ValidatorReturn;
   }> = [
     {
       value: '1991-03-04',
-      format: 'full',
       res: { valid: true, reason: { en: '', fr: '' } },
     },
     {
       value: '1992-02-29',
-      format: 'full',
-      res: { valid: true, reason: { en: '', fr: '' } },
-    },
-    {
-      value: '1991-03-04',
-      format: 'iso',
-      res: { valid: true, reason: { en: '', fr: '' } },
-    },
-    {
-      value: '1992-02-29',
-      format: 'iso',
       res: { valid: true, reason: { en: '', fr: '' } },
     },
     {
       value: '1991-03',
-      format: 'compact',
       res: { valid: true, reason: { en: '', fr: '' } },
     },
     {
       value: '--',
-      format: 'full',
-      res: {
-        valid: false,
-        errors: { day: true, month: true, year: true },
-        reason: {
-          en: dateInputErrorMessage.en.all,
-          fr: dateInputErrorMessage.fr.all,
-        },
-      },
-    },
-    {
-      value: '--',
-      format: 'iso',
       res: {
         valid: false,
         errors: { day: true, month: true, year: true },
@@ -224,7 +197,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '-',
-      format: 'compact',
       res: {
         valid: false,
         errors: { day: true, month: true, year: true },
@@ -236,7 +208,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '1991-03-',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: true, month: false, year: false },
@@ -248,7 +219,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '1991--04',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: false, month: true, year: false },
@@ -260,7 +230,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '1991-',
-      format: 'compact',
       res: {
         valid: false,
         errors: { day: false, month: true, year: false },
@@ -272,7 +241,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '-03-04',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: false, month: false, year: true },
@@ -284,7 +252,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '-03',
-      format: 'compact',
       res: {
         valid: false,
         errors: { day: false, month: false, year: true },
@@ -296,7 +263,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '1991--',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: true, month: true, year: false },
@@ -308,7 +274,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '-03-',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: true, month: false, year: true },
@@ -320,7 +285,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '--04',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: false, month: true, year: true },
@@ -332,7 +296,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '19991-03-04',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: false, month: false, year: true },
@@ -344,7 +307,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '-991-03-04',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: false, month: false, year: true },
@@ -356,7 +318,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '1991-35-04',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: false, month: true, year: false },
@@ -368,7 +329,6 @@ describe('Required date input validator', () => {
     },
     {
       value: '1991-03-34',
-      format: 'full',
       res: {
         valid: false,
         errors: { day: true, month: false, year: false },
@@ -378,48 +338,10 @@ describe('Required date input validator', () => {
         },
       },
     },
-    {
-      value: '1991--04',
-      format: 'iso',
-      res: {
-        valid: false,
-        errors: { day: false, month: true, year: false },
-        reason: {
-          en: dateInputErrorMessage.en.missingmonthinput,
-          fr: dateInputErrorMessage.fr.missingmonthinput,
-        },
-      },
-    },
-    {
-      value: '1991--',
-      format: 'iso',
-      res: {
-        valid: false,
-        errors: { day: true, month: true, year: false },
-        reason: {
-          en: dateInputErrorMessage.en.missingmonthinputday,
-          fr: dateInputErrorMessage.fr.missingmonthinputday,
-        },
-      },
-    },
-    {
-      value: '--04',
-      format: 'iso',
-      res: {
-        valid: false,
-        errors: { day: false, month: true, year: true },
-        reason: {
-          en: dateInputErrorMessage.en.missingmonthinputyear,
-          fr: dateInputErrorMessage.fr.missingmonthinputyear,
-        },
-      },
-    },
   ];
   results.forEach(i =>
-    it(`Should return ${i.res.valid} for ${i.value} - format ${i.format}`, () => {
-      expect(
-        requiredDateInput.validate({ date: i.value, format: i.format }),
-      ).toEqual(i.res);
+    it(`Should return ${i.res.valid} for ${i.value}`, () => {
+      expect(requiredDateInput.validate(i.value)).toEqual(i.res);
     }),
   );
 
@@ -475,6 +397,70 @@ describe('Required date input validator', () => {
         en: dateInputErrorMessage.en.missingmonth,
         fr: dateInputErrorMessage.fr.missingmonth,
       },
+    });
+
+    const isoResults: Array<{
+      value: string;
+      res: ValidatorReturn;
+    }> = [
+      {
+        value: '1991-03-04',
+        res: { valid: true, reason: { en: '', fr: '' } },
+      },
+      {
+        value: '1992-02-29',
+        res: { valid: true, reason: { en: '', fr: '' } },
+      },
+      {
+        value: '1991--04',
+        res: {
+          valid: false,
+          errors: { day: false, month: true, year: false },
+          reason: {
+            en: dateInputErrorMessage.en.missingmonthinput,
+            fr: dateInputErrorMessage.fr.missingmonthinput,
+          },
+        },
+      },
+      {
+        value: '1991--',
+        res: {
+          valid: false,
+          errors: { day: true, month: true, year: false },
+          reason: {
+            en: dateInputErrorMessage.en.missingmonthinputday,
+            fr: dateInputErrorMessage.fr.missingmonthinputday,
+          },
+        },
+      },
+      {
+        value: '--04',
+        res: {
+          valid: false,
+          errors: { day: false, month: true, year: true },
+          reason: {
+            en: dateInputErrorMessage.en.missingmonthinputyear,
+            fr: dateInputErrorMessage.fr.missingmonthinputyear,
+          },
+        },
+      },
+      {
+        value: '--',
+        res: {
+          valid: false,
+          errors: { day: true, month: true, year: true },
+          reason: {
+            en: dateInputErrorMessage.en.all,
+            fr: dateInputErrorMessage.fr.all,
+          },
+        },
+      },
+    ];
+
+    isoResults.forEach(i => {
+      expect(
+        requiredDateInput.validate(i.value, { params: { format: 'iso' } }),
+      ).toEqual(i.res);
     });
   });
 });
