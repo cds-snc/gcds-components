@@ -1,4 +1,4 @@
-import { Validator } from '../validator';
+import { ValidationContext, Validator } from '../validator';
 import { isValidDate, isValidDay } from '../../utils/utils';
 
 const emailPattern =
@@ -86,7 +86,7 @@ export const dateInputErrorMessage = {
 };
 
 export const requiredDateInput: Validator<string> = {
-  validate: (date: string) => {
+  validate: (date: string, context?: ValidationContext) => {
     if (isValidDate(date)) {
       return {
         valid: true,
@@ -104,11 +104,12 @@ export const requiredDateInput: Validator<string> = {
       year: splitDate[0],
     };
 
-    const format = splitDate.length === 3 ? 'full' : 'compact';
+    // Backwards compatibility if params.format is not supplied
+    const inferredFormat = splitDate.length === 3 ? 'full' : 'compact';
 
-    const error = getDateInputError(dateObject, format);
+    const format = context?.params?.format ?? inferredFormat;
 
-    return error;
+    return getDateInputError(dateObject, format);
   },
 };
 
