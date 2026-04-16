@@ -6,7 +6,8 @@ import {
   type SortingState,
 } from '@tanstack/table-core';
 
-import { TableColumn } from './table-helpers';
+
+import { TableColumn, updateTableOptions } from './table-helpers';
 import I18N from '../i18n/i18n';
 
 // ─── Render helpers ───────────────────────────────────────────────────────
@@ -104,7 +105,7 @@ const renderSortRadios = (element: { initialSorting?: SortingState; sortRadios?:
   const { el, table, lang } = element;
   const radioOptions = [{
     id: 'nosort',
-    label: `${I18N[lang].radioLabelNoSort}${!element.initialSorting ? ` (${I18N[lang].default})` : ''}`,
+    label: `${I18N[lang].radioLabelNoSort}${element.initialSorting?.length === 0 ? ` — ${I18N[lang].default}` : ''}`,
     value: 'null',
   }];
   let isSorted = 'null';
@@ -228,7 +229,7 @@ const renderFilterSortModal = element => {
               }];
             }
 
-            element.updateTableOptions();
+            updateTableOptions(element);
 
             element.filterSortModal.close();
           }}
