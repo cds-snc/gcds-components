@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.1.0...@gcds-core/components-angular-v1.2.0) (2026-04-16)
+
+
+### :rocket: New Features
+
+* **angular:** Update angular peer dependencies to support v21 ([#1212](https://github.com/cds-snc/gcds-components/issues/1212)) ([86d3e19](https://github.com/cds-snc/gcds-components/commit/86d3e19b16981ca6a1dafe83bb8d44db8a00906c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @gcds-core/components bumped from ^1.1.0 to ^1.2.0
+
 ## [1.1.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.0.0...@gcds-core/components-angular-v1.1.0) (2026-04-01)
 
 
