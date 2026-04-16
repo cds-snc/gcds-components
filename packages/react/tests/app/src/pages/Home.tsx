@@ -23,6 +23,11 @@ const Home = () => {
                 File uploader
               </GcdsLink>
             </li>
+            <li>
+              <GcdsLink href="/table">
+                Table
+              </GcdsLink>
+            </li>
           </ul>
         </li>
       </ul>
