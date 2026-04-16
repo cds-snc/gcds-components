@@ -55,7 +55,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -133,7 +134,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" class="gcds-date-input__month" inputid="month" label="Month" name="month" size="2" inputmode="numeric" type="text" validate-on="other" value=""></gcds-input>
             <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" inputmode="numeric" type="text" validate-on="other" type="text" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -210,7 +212,8 @@ describe('gcds-date-input', () => {
             </gcds-select>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -327,7 +330,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" aria-required="true" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
             <gcds-input aria-invalid="false" aria-required="true" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -387,7 +391,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -444,7 +449,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="15" validate-on="other"></gcds-input>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -500,7 +506,8 @@ describe('gcds-date-input', () => {
             </gcds-select>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -720,7 +727,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="red" validate-on="other"></gcds-input>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="222f" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -776,7 +784,8 @@ describe('gcds-date-input', () => {
             </gcds-select>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="222f" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -833,7 +842,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
   it('render - compact - form attribute', async () => {
@@ -888,7 +898,8 @@ describe('gcds-date-input', () => {
             </gcds-select>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -945,7 +956,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
   it('render - compact - min attribute', async () => {
@@ -1000,7 +1012,8 @@ describe('gcds-date-input', () => {
             </gcds-select>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -1057,7 +1070,8 @@ describe('gcds-date-input', () => {
             <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
   it('render - compact - max attribute', async () => {
@@ -1112,7 +1126,8 @@ describe('gcds-date-input', () => {
             </gcds-select>
             <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 });

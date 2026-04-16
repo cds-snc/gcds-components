@@ -83,7 +83,7 @@ export class GcdsDateInput {
   }
 
   /**
-   * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
+   * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.
    */
   @Prop() format!: 'full' | 'compact' | 'iso';
   @Watch('format')
@@ -549,9 +549,11 @@ export class GcdsDateInput {
     // Sanitizes a numeric date value, optionally normalizing to two digits with padding
     const sanitizeValue = (value: string, pad = true): string => {
       if (!value || value === '0') return value;
+
+      let sanitizedValue = value.replace(/[eE-]/g, '');
       // Normalize to two digits if possible, e.g. '3' -> '03'
-      if (pad) value = String(parseInt(value, 10)).padStart(2, '0');
-      return value.replace(/[eE-]/g, '');
+      if (pad) sanitizedValue = String(parseInt(sanitizedValue, 10)).padStart(2, '0');
+      return sanitizedValue;
     };
 
     dayValue = sanitizeValue(dayValue);

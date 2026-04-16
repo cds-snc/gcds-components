@@ -251,9 +251,9 @@ FullFR.args = {
 
 // ------ Date input Format ISO English ------
 
-export const isoEn = Template.bind({});
-isoEn.args = {
-  name: 'isoEN-default',
+export const IsoEn = Template.bind({});
+IsoEn.args = {
+  name: 'IsoEn-default',
   legend: 'Date input',
   format: 'iso',
   value: '',
@@ -267,9 +267,9 @@ isoEn.args = {
 
 // ------ Date input FormatISO French ------
 
-export const isoFr = Template.bind({});
-isoFr.args = {
-  name: 'isoFR-default',
+export const IsoFr = Template.bind({});
+IsoFr.args = {
+  name: 'IsoFr-default',
   legend: 'Date input',
   format: 'iso',
   value: '',

@@ -88,7 +88,7 @@ export const dateInputErrorMessage = {
     missingdayyear: "Saisissez le jour et l'année.",
     invalidyearlength: "L'année doit inclure 4 chiffres.",
     invalidyear: 'Entrez une année valide.',
-    invalidmonth: 'Saisissez un mois valide',
+    invalidmonth: 'Saisissez un mois valide.',
     invalidday: 'Saisissez un jour valide.',
   },
 };

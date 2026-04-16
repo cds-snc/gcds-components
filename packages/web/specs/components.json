@@ -2411,7 +2411,7 @@
           "mutable": false,
           "attr": "format",
           "reflectToAttr": false,
-          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.",
+          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.",
           "docsTags": [],
           "values": [
             {
