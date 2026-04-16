@@ -61,26 +61,34 @@ export const requiredSelectField: Validator<string> = {
 export const dateInputErrorMessage = {
   en: {
     all: 'Enter the date.',
+    missingmonthinput: 'Enter the month.',
     missingmonth: 'Select the month.',
     missingyear: 'Enter the year.',
     missingday: 'Enter the day.',
     missingmonthday: 'Select the month and enter the day.',
     missingmonthyear: 'Select the month and enter the year.',
+    missingmonthinputday: 'Enter the month and day.',
+    missingmonthinputyear: 'Enter the year and month.',
     missingdayyear: 'Enter the day and year.',
     invalidyearlength: 'Year must be 4 digits.',
     invalidyear: 'Enter a valid year.',
+    invalidmonth: 'Enter a valid month.',
     invalidday: 'Enter a valid day.',
   },
   fr: {
     all: 'Saisissez la date.',
+    missingmonthinput: 'Saisissez le mois.',
     missingmonth: 'Sélectionnez un mois.',
     missingyear: "Saisissez l'année.",
     missingday: 'Saisissez le jour.',
     missingmonthday: 'Saisissez le jour et sélectionnez un mois.',
     missingmonthyear: "Sélectionnez un mois et saisissez l'année.",
+    missingmonthinputday: 'Saisissez le mois et le jour.',
+    missingmonthinputyear: "Saisissez l'année et le mois.",
     missingdayyear: "Saisissez le jour et l'année.",
     invalidyearlength: "L'année doit inclure 4 chiffres.",
     invalidyear: 'Entrez une année valide.',
+    invalidmonth: 'Saisissez un mois valide.',
     invalidday: 'Saisissez un jour valide.',
   },
 };
@@ -107,13 +115,22 @@ export const requiredDateInput: Validator<string> = {
     // Backwards compatibility if params.format is not supplied
     const inferredFormat = splitDate.length === 3 ? 'full' : 'compact';
 
-    const format = context?.params?.format ?? inferredFormat;
+    const format =
+      (context?.params?.format as 'full' | 'compact' | 'iso' | null) ??
+      inferredFormat;
 
     return getDateInputError(dateObject, format);
   },
 };
 
-export const getDateInputError = (dateValues, format) => {
+export const getDateInputError = (
+  dateValues: {
+    day: string | undefined;
+    month: string | undefined;
+    year: string | undefined;
+  },
+  format: 'full' | 'compact' | 'iso',
+) => {
   const { day, month, year } = dateValues;
 
   const errorResponse = {
@@ -138,7 +155,7 @@ export const getDateInputError = (dateValues, format) => {
     errorResponse.reason.fr = dateInputErrorMessage.fr.all;
 
     // No day set
-  } else if (!day && month && year && format === 'full') {
+  } else if (!day && month && year && (format === 'full' || format === 'iso')) {
     errorResponse.errors.day = true;
     errorResponse.reason.en = dateInputErrorMessage.en.missingday;
     errorResponse.reason.fr = dateInputErrorMessage.fr.missingday;
@@ -149,8 +166,13 @@ export const getDateInputError = (dateValues, format) => {
     (!day && !month && year && format === 'compact')
   ) {
     errorResponse.errors.month = true;
-    errorResponse.reason.en = dateInputErrorMessage.en.missingmonth;
-    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonth;
+    if (format === 'iso') {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthinput;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthinput;
+    } else {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonth;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonth;
+    }
 
     // No year set
   } else if (
@@ -165,8 +187,13 @@ export const getDateInputError = (dateValues, format) => {
   } else if (!day && !month && year) {
     errorResponse.errors.day = true;
     errorResponse.errors.month = true;
-    errorResponse.reason.en = dateInputErrorMessage.en.missingmonthday;
-    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthday;
+    if (format === 'iso') {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthinputday;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthinputday;
+    } else {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthday;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthday;
+    }
 
     // No day and year set
   } else if (!day && month && !year) {
@@ -179,20 +206,32 @@ export const getDateInputError = (dateValues, format) => {
   } else if (day && !month && !year) {
     errorResponse.errors.year = true;
     errorResponse.errors.month = true;
-    errorResponse.reason.en = dateInputErrorMessage.en.missingmonthyear;
-    errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthyear;
+
+    if (format === 'iso') {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthinputyear;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthinputyear;
+    } else {
+      errorResponse.reason.en = dateInputErrorMessage.en.missingmonthyear;
+      errorResponse.reason.fr = dateInputErrorMessage.fr.missingmonthyear;
+    }
 
     // Year is formatted incorrectly
-  } else if (year.length != 4) {
+  } else if (year.toString().length != 4) {
     errorResponse.errors.year = true;
     errorResponse.reason.en = dateInputErrorMessage.en.invalidyearlength;
     errorResponse.reason.fr = dateInputErrorMessage.fr.invalidyearlength;
 
     // Year format
-  } else if (year < 0 || year > 9999) {
+  } else if (Number(year) < 0 || Number(year) > 9999) {
     errorResponse.errors.year = true;
     errorResponse.reason.en = dateInputErrorMessage.en.invalidyear;
     errorResponse.reason.fr = dateInputErrorMessage.fr.invalidyear;
+
+    // Invalid month
+  } else if (Number(month) < 1 || Number(month) > 12) {
+    errorResponse.errors.month = true;
+    errorResponse.reason.en = dateInputErrorMessage.en.invalidmonth;
+    errorResponse.reason.fr = dateInputErrorMessage.fr.invalidmonth;
 
     // Invalid day
   } else if (!isValidDay(`${year}-${month}-${day}`)) {
