@@ -47,6 +47,10 @@
     :host([slot='home']) > .gcds-nav-link {
       font: var(--gcds-nav-link-home-font);
 
+      &:not(:hover) {
+        text-decoration-color: transparent;
+      }
+
       &:not(:hover):not(:focus) {
         color: var(--gcds-nav-link-home-text) !important;
       }
@@ -63,10 +67,6 @@
       padding: var(--gcds-nav-link-top-nav-padding);
       border-inline: 0;
       border-block: var(--gcds-nav-link-border-width) solid transparent;
-
-      &:not(:hover) {
-        text-decoration-color: transparent;
-      }
     }
 
     /* Home link styles  */
