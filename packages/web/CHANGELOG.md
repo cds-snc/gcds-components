@@ -1,6 +1,24 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.1.0...@gcds-core/components-v1.2.0) (2026-04-16)
+
+
+### :rocket: New Features
+
+* **validator:** add ValidationContext type and support optional context in validate() ([#1222](https://github.com/cds-snc/gcds-components/issues/1222)) ([ea8bf51](https://github.com/cds-snc/gcds-components/commit/ea8bf51f5b40a6b4b240209adb7910e38209d589))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-card:** prevent card link from blocking abbr hover ([#1214](https://github.com/cds-snc/gcds-components/issues/1214)) ([12e4a15](https://github.com/cds-snc/gcds-components/commit/12e4a15ceec98e7e4e2707ecf30ef8c1e95549df))
+* **gcds-link:** prevent external link icon from wrapping onto a new line ([#1211](https://github.com/cds-snc/gcds-components/issues/1211)) ([afde106](https://github.com/cds-snc/gcds-components/commit/afde10676fd1dd263e7c37396af0dde932ff6b87))
+
+
+### :art: Styles
+
+* **gcds-nav-link:** Align side-nav home link styling with top-nav ([#1225](https://github.com/cds-snc/gcds-components/issues/1225)) ([608d7e5](https://github.com/cds-snc/gcds-components/commit/608d7e58a841aa10fc102a2b45e977e535a049bc))
+
 ## [1.1.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.0.0...@gcds-core/components-v1.1.0) 
 
 Released on: 2026-04-01
