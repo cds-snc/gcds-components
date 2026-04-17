@@ -2223,6 +2223,66 @@ export declare interface GcdsStepper extends Components.GcdsStepper {}
 
 
 @ProxyCmp({
+  inputs: ['columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort']
+})
+@Component({
+  selector: 'gcds-table',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort'],
+  standalone: false,
+})
+export class GcdsTable {
+  protected el: HTMLGcdsTableElement;
+    /**
+   * Column definitions @default []
+   */
+  set columns(_: Components.GcdsTable['columns']) {};
+    /**
+   * Row data @default []
+   */
+  set data(_: Components.GcdsTable['data']) {};
+    /**
+   * Enable global column sorting (can be overridden per column) @default false
+   */
+  set sort(_: Components.GcdsTable['sort']) {};
+    /**
+   * Enable pagination @default false
+   */
+  set pagination(_: Components.GcdsTable['pagination']) {};
+    /**
+   * Current page index @default 1
+   */
+  set paginationCurrentPage(_: Components.GcdsTable['paginationCurrentPage']) {};
+    /**
+   * Number of rows per page @default 10
+   */
+  set paginationSize(_: Components.GcdsTable['paginationSize']) {};
+    /**
+   * Available page-size options.
+Use 0 to represent "All rows". @default [10, 25, 50, 0]
+   */
+  set paginationSizeOptions(_: Components.GcdsTable['paginationSizeOptions']) {};
+    /**
+   * Enable global filter @default false
+   */
+  set filter(_: Components.GcdsTable['filter']) {};
+    /**
+   * Current filter string @default ''
+   */
+  set filterValue(_: Components.GcdsTable['filterValue']) {};
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsTable extends Components.GcdsTable {}
+
+
+@ProxyCmp({
   inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole']
 })
 @Component({

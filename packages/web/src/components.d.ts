@@ -11,12 +11,14 @@ import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { SuggestionOption } from "./components/gcds-input/suggestion-option";
 import { RadioObject } from "./components/gcds-radios/radio";
+import { TableColumn } from "./components/gcds-table/utils/table-helpers";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { SuggestionOption } from "./components/gcds-input/suggestion-option";
 export { RadioObject } from "./components/gcds-radios/radio";
+export { TableColumn } from "./components/gcds-table/utils/table-helpers";
 export namespace Components {
     /**
      * Alert displays an alert message with an optional heading, icon, and close button.
@@ -1363,6 +1365,53 @@ export namespace Components {
          */
         "totalSteps": number;
     }
+    interface GcdsTable {
+        /**
+          * Column definitions
+          * @default []
+         */
+        "columns": string | TableColumn[];
+        /**
+          * Row data
+          * @default []
+         */
+        "data": string | object[];
+        /**
+          * Enable global filter
+          * @default false
+         */
+        "filter": boolean;
+        /**
+          * Current filter string
+          * @default ''
+         */
+        "filterValue": string;
+        /**
+          * Enable pagination
+          * @default false
+         */
+        "pagination": boolean;
+        /**
+          * Current page index
+          * @default 1
+         */
+        "paginationCurrentPage": number;
+        /**
+          * Number of rows per page
+          * @default 10
+         */
+        "paginationSize": number;
+        /**
+          * Available page-size options. Use 0 to represent "All rows".
+          * @default [10, 25, 50, 0]
+         */
+        "paginationSizeOptions": string | number[];
+        /**
+          * Enable global column sorting (can be overridden per column)
+          * @default false
+         */
+        "sort": boolean;
+    }
     /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
@@ -2237,6 +2286,12 @@ declare global {
         prototype: HTMLGcdsStepperElement;
         new (): HTMLGcdsStepperElement;
     };
+    interface HTMLGcdsTableElement extends Components.GcdsTable, HTMLStencilElement {
+    }
+    var HTMLGcdsTableElement: {
+        prototype: HTMLGcdsTableElement;
+        new (): HTMLGcdsTableElement;
+    };
     /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
@@ -2326,6 +2381,7 @@ declare global {
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-sr-only": HTMLGcdsSrOnlyElement;
         "gcds-stepper": HTMLGcdsStepperElement;
+        "gcds-table": HTMLGcdsTableElement;
         "gcds-text": HTMLGcdsTextElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
@@ -3911,6 +3967,53 @@ declare namespace LocalJSX {
          */
         "totalSteps": number;
     }
+    interface GcdsTable {
+        /**
+          * Column definitions
+          * @default []
+         */
+        "columns"?: string | TableColumn[];
+        /**
+          * Row data
+          * @default []
+         */
+        "data"?: string | object[];
+        /**
+          * Enable global filter
+          * @default false
+         */
+        "filter"?: boolean;
+        /**
+          * Current filter string
+          * @default ''
+         */
+        "filterValue"?: string;
+        /**
+          * Enable pagination
+          * @default false
+         */
+        "pagination"?: boolean;
+        /**
+          * Current page index
+          * @default 1
+         */
+        "paginationCurrentPage"?: number;
+        /**
+          * Number of rows per page
+          * @default 10
+         */
+        "paginationSize"?: number;
+        /**
+          * Available page-size options. Use 0 to represent "All rows".
+          * @default [10, 25, 50, 0]
+         */
+        "paginationSizeOptions"?: string | number[];
+        /**
+          * Enable global column sorting (can be overridden per column)
+          * @default false
+         */
+        "sort"?: boolean;
+    }
     /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
@@ -4126,6 +4229,7 @@ declare namespace LocalJSX {
         "gcds-signature": GcdsSignature;
         "gcds-sr-only": GcdsSrOnly;
         "gcds-stepper": GcdsStepper;
+        "gcds-table": GcdsTable;
         "gcds-text": GcdsText;
         "gcds-textarea": GcdsTextarea;
         "gcds-top-nav": GcdsTopNav;
@@ -4280,6 +4384,7 @@ declare module "@stencil/core" {
              * A stepper is a progress tracker for a multi-step process.
              */
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
+            "gcds-table": LocalJSX.GcdsTable & JSXBase.HTMLAttributes<HTMLGcdsTableElement>;
             /**
              * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
              */

@@ -246,17 +246,17 @@ export class GcdsButton {
     const attrs =
       Tag === 'button'
         ? {
-            type: type,
-            ariaDisabled: disabled,
-            name,
-            value,
-          }
+          type: type,
+          ariaDisabled: disabled,
+          name,
+          value,
+        }
         : {
-            href,
-            rel,
-            target,
-            download,
-          };
+          href,
+          rel,
+          target,
+          download,
+        };
 
     return (
       <Host>
