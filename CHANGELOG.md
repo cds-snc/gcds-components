@@ -11,7 +11,7 @@ Released on: 2026-04-21
 * **gcds-date-input:** add new format option: `iso`([#996](https://github.com/cds-snc/gcds-components/issues/996)) ([bd8b5e5](https://github.com/cds-snc/gcds-components/commit/bd8b5e5c07bd03ea0e3a77f3945f4fb33d792a26))
 * **gcds-header, gcds-nav-group, gcds-top-nav:** Update mobile navigation structure and overlay behaviour ([#1224](https://github.com/cds-snc/gcds-components/issues/1224)) ([749c64a](https://github.com/cds-snc/gcds-components/commit/749c64a942e473e518bef9f3639389b918e3025c))
 * **validator:** custom validators can now access an optional ValidationContext in `validate()` for more flexible validation logic ([#1222](https://github.com/cds-snc/gcds-components/issues/1222)) ([ea8bf51](https://github.com/cds-snc/gcds-components/commit/ea8bf51f5b40a6b4b240209adb7910e38209d589))
-
+* **angular:** Update angular peer dependencies to support v21 ([#1212](https://github.com/cds-snc/gcds-components/issues/1212)) ([86d3e19](https://github.com/cds-snc/gcds-components/commit/86d3e19b16981ca6a1dafe83bb8d44db8a00906c))
 
 ### :bug: :wrench: Bug Fixes
 
