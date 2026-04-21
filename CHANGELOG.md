@@ -1,7 +1,9 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
-## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.1.0...@gcds-core/components-v1.2.0) (2026-04-21)
+## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.1.0...@gcds-core/components-v1.2.0)
+
+Released on: 2026-04-21
 
 
 ### :rocket: New Features
