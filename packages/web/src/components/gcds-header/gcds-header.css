@@ -43,6 +43,12 @@
         }
       }
     }
+
+    /*
+      Header uses a constrained width for the top-nav.
+      This overrides the default top-nav width within header scope only.
+    */
+    --gcds-top-nav-width-full: var(--gcds-top-nav-width-constrained);
   }
 }
 
@@ -82,6 +88,10 @@
         grid-area: search;
         max-width: 100%;
         display: block;
+
+        & ::slotted(gcds-search) {
+          --gcds-search-input-width: 35ch;
+        }
       }
     }
   }
@@ -89,12 +99,14 @@
 
 @layer menu {
   :host {
-    --gcds-nav-group-mobile-trigger-margin: var(--gcds-header-menu-top-nav-mobile-trigger-margin);
+    --gcds-nav-group-mobile-trigger-margin: var(
+      --gcds-header-menu-top-nav-mobile-trigger-margin
+    );
   }
 }
 
 @layer wide {
-  @container brand (width >= 51em) {
+  @container brand (width >= 51.2em) {
     :host .gcds-header__brand .brand__container {
       grid-template-areas:
         'toggle toggle'

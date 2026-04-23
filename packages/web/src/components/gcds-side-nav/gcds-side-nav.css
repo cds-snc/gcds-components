@@ -17,6 +17,7 @@
     width: 100%;
 
     .gcds-side-nav__heading {
+      display: block;
       font: var(--gcds-side-nav-heading-font);
       margin-block-end: var(--gcds-side-nav-heading-margin);
       padding: var(--gcds-side-nav-heading-padding);

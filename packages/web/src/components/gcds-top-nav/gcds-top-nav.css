@@ -19,7 +19,7 @@
   :host .gcds-top-nav .gcds-top-nav__container {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: var(--gcds-top-nav-width-full);
     max-width: var(--gcds-top-nav-max-width);
     margin-inline: auto;
   }
@@ -33,6 +33,7 @@
         var(--gcds-top-nav-border-color);
 
       .gcds-top-nav__container {
+        width: var(--gcds-top-nav-width-constrained);
         flex-direction: row;
         align-items: flex-end;
       }

@@ -22,9 +22,9 @@ First-time contributor? We’re here to help guide you through a successful cont
 
 - Clone the repo `git clone https://github.com/cds-snc/gcds-components`.
 - Run `npm install` to install all Node.js dependencies.
-- Run `npm run build` to compile all three packages (web components, react and angular).
+- Run `npm run build` to compile all four packages (web components, react, vue and angular).
 
-You can test the Angular and React packages locally as this repository is setup using [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`.
+You can test the Angular, Vue and React packages locally as this repository is setup using [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces automatically handles the linking of dependent packages on `npm install` so there is no need to manually use `npm link`.
 
 
 #### Compiling all packages
@@ -41,7 +41,7 @@ The types of contributions we'll be looking for:
 - research findings: tell or show us your discovery, your use case, or how your relevant prototype or service has been tested with people using the service
 - code: prototype code or production code; share your implementations of the relevant component or pattern in services
 
-Submit these contributions directly in [Github](https://github.com/cds-snc/gcds-components/issues/new?assignees=&labels=&projects=&template=contributions.yml&title=contribution%3A+). Include all relevant documents or links in your submission. A GC Design System core team member may reach out to you to learn more about your submission.
+Submit these contributions directly in [GitHub](https://github.com/cds-snc/gcds-components/issues/new?assignees=&labels=&projects=&template=contributions.yml&title=contribution%3A+). Include all relevant documents or links in your submission. A GC Design System core team member may reach out to you to learn more about your submission.
 
 *Note: We are not currently accepting contributions related to new components, patterns, or features that are not identified in our “next priorities”. Our team is developing our roadmap based on components and patterns that most GC teams can use. Each component requires carefully constructed design, documentation, and code that follows the consistency and standards of the GC Design System and that are backed by research. Please follow our mailing list and “Get Involved” page to learn more about opportunities to collaborate and contribute.* 
 
@@ -125,7 +125,7 @@ C’est un plaisir de savoir que vous envisagez de contribuer à Système de des
 
 ## Code de conduite
 
-Système de design GC s’engage à créer une culture sans harcèlement où règnent sécurité et bienveillance. Reportez-vous à notre [code de conduite](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md) lorsque vous soumettez une contribution et échangez avec la communauté. 
+Système de design GC s’engage à créer une culture sans harcèlement où règnent sécurité et bienveillance. Reportez-vous à notre [code de conduite](https://github.com/cds-snc/gcds-components/blob/main/CODE_OF_CONDUCT.md#code-de-conduite-pour-les-projets-de-l%C3%A9quipe-de-produit-du-syst%C3%A8me-de-conception) lorsque vous soumettez une contribution et échangez avec la communauté. 
 
 ## Comment contribuer
 
@@ -139,9 +139,9 @@ Vous contribuez pour la première fois? Nous sommes là pour vous guider dans la
 
 - Copiez le référentiel `git clone https://github.com/cds-snc/gcds-components`.
 - Exécutez ensuite `npm install` pour installer toutes les dépendances Node.js.
-- Finalement, exécutez `npm run build` pour compiler les trois paquets (composants Web, React et Angular).
+- Finalement, exécutez `npm run build` pour compiler les quatre paquets (composants Web, React, Vue et Angular).
 
-Vous pouvez tester localement les paquets Angular et React puisque ce référentiel est configuré à l’aide de [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces gère automatiquement la liaison de paquets dépendants à l’exécution de `npm install`, donc nul besoin d’exécuter manuellement `npm link`.
+Vous pouvez tester localement les paquets Angular, Vue et React puisque ce référentiel est configuré à l’aide de [`npm workspaces`](https://docs.npmjs.com/cli/v10/using-npm/workspaces). Npm workspaces gère automatiquement la liaison de paquets dépendants à l’exécution de `npm install`, donc nul besoin d’exécuter manuellement `npm link`.
 
 <
 
@@ -159,7 +159,7 @@ Voici les types de contribution que nous recherchons :
 - Résultats de recherche : description ou présentation de votre recherche exploratoire, de votre cas d’utilisation ou de la façon dont votre prototype ou service a été testé auprès de personnes.
 - Code : code de prototype ou de production; implémentations du composant ou du modèle en question au sein de services.
 
-Soumettez ces contributions directement dans [Github](https://github.com/cds-snc/gcds-components/issues/new?assignees=&labels=&projects=&template=contributions.yml&title=contribution%3A+). Incluez tout document ou lien pertinent dans votre soumission. Un membre de l’équipe principale de Système de design GC pourrait communiquer avec vous pour en savoir plus sur votre soumission.
+Soumettez ces contributions directement dans [GitHub](https://github.com/cds-snc/gcds-components/issues/new?assignees=&labels=&projects=&template=contributions.yml&title=contribution%3A+). Incluez tout document ou lien pertinent dans votre soumission. Un membre de l’équipe principale de Système de design GC pourrait communiquer avec vous pour en savoir plus sur votre soumission.
 
 *Remarque : À l’heure actuelle, nous n’acceptons pas de contributions liées à de nouveaux composants, modèles ou fonctionnalités qui ne sont pas répertoriés dans nos « prochaines priorités ». Notre équipe élabore notre feuille de route en fonction des composants et des modèles que la plupart des équipes du GC peuvent utiliser. Pour chaque composant, il faut une conception, une documentation et un code soigneusement élaborés qui respectent la cohérence et les normes de Système de design GC et qui sont étayés par des travaux de recherche. Inscrivez-vous à notre liste d’envoi ou suivez notre page « S’impliquer » pour en savoir plus sur les possibilités de collaboration et de contribution.*
 
@@ -198,7 +198,7 @@ GitHub est le canal que nous préférons pour les contributions. Cependant, si v
 
 ### Sécurité
 
-**Ne publiez aucun problème de sécurité sur le dépôt publique!** Voir [SECURITY.md](SECURITY.md)
+**Ne publiez aucun problème de sécurité sur le dépôt publique!** Voir [SECURITY.md](SECURITY.md#sécurité)
 
 ## Comment nous établissons nos priorités
 

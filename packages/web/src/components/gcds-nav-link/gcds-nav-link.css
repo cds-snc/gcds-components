@@ -27,6 +27,11 @@
     border-inline: var(--gcds-nav-link-border-width) solid transparent;
     transition: all 0.25s ease-in-out;
 
+    &[aria-current='page'] {
+      text-decoration: none;
+      pointer-events: none;
+    }
+
     @media only screen and (width < 64em) {
       font: var(--gcds-nav-link-font-mobile);
       min-width: 50%;
@@ -35,10 +40,20 @@
     @media only screen and (width > 48em) {
       max-width: var(--gcds-nav-link-default-max-width);
     }
+  }
 
-    &[aria-current='page'] {
-      text-decoration: none;
-      pointer-events: none;
+  /* Home styles for larger screens */
+  @media only screen and (width >= 64em) {
+    :host([slot='home']) > .gcds-nav-link {
+      font: var(--gcds-nav-link-home-font);
+
+      &:not(:hover) {
+        text-decoration-color: transparent;
+      }
+
+      &:not(:hover):not(:focus) {
+        color: var(--gcds-nav-link-home-text) !important;
+      }
     }
   }
 }
@@ -52,23 +67,25 @@
       padding: var(--gcds-nav-link-top-nav-padding);
       border-inline: 0;
       border-block: var(--gcds-nav-link-border-width) solid transparent;
-
-      &:not(:hover) {
-        text-decoration-color: transparent;
-      }
     }
 
     /* Home link styles  */
-    :host([slot='home']) > .gcds-nav-link {
-      font: var(--gcds-nav-link-top-nav-home-font);
+    :host([slot='home']) > .gcds-nav-link--topnav.gcds-nav-link {
       padding: var(--gcds-nav-link-top-nav-home-padding);
-      color: var(--gcds-nav-link-top-nav-text-primary);
     }
   }
 
   /* Side-nav: nav link styles */
   :host > .gcds-nav-link--sidenav.gcds-nav-link {
     padding: var(--gcds-nav-link-side-nav-padding);
+  }
+
+  /* Side-nav: home styles for larger screens */
+  @media only screen and (width >= 64em) {
+    :host([slot='home']) > .gcds-nav-link--sidenav.gcds-nav-link {
+      margin-block-end: var(--gcds-side-nav-heading-margin);
+      padding: var(--gcds-side-nav-heading-padding);
+    }
   }
 }
 
@@ -81,17 +98,9 @@
       color: var(--gcds-nav-link-hover-text);
     }
 
-    :host > .gcds-nav-link--sidenav.gcds-nav-link:hover,
-    :host > .gcds-nav-link--dropdown.gcds-nav-link:hover {
-      color: var(--gcds-nav-link-hover-text);
-    }
-
-    :host > .gcds-nav-link--sidenav.gcds-nav-link:hover {
+    :host(:not([slot='home'])) .gcds-nav-link:hover {
       background-color: var(--gcds-nav-link-side-nav-hover-background);
-    }
-
-    :host > .gcds-nav-link--dropdown.gcds-nav-link:hover {
-      background-color: var(--gcds-nav-link-top-nav-hover-background);
+      color: var(--gcds-nav-link-hover-text);
     }
   }
 }
@@ -106,7 +115,7 @@
   :host > .gcds-nav-link--topnav.gcds-nav-link[aria-current='page'] {
     @media only screen and (width >= 64em) {
       background-color: transparent;
-      color: var(--gcds-nav-link-top-nav-text-primary);
+      color: var(--gcds-nav-link-home-text);
       border-block-end-color: currentColor;
     }
   }

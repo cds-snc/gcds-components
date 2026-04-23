@@ -68,6 +68,7 @@ Type: `Promise<void>`
 | Slot        | Description                                          |
 | ----------- | ---------------------------------------------------- |
 | `"default"` | Slot for the navigation groups and navigation links. |
+| `"home"`    | Slot for the home link or site title.                |
 
 
 ## Dependencies

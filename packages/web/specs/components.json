@@ -2402,16 +2402,16 @@
         },
         {
           "name": "format",
-          "type": "\"compact\" | \"full\"",
+          "type": "\"compact\" | \"full\" | \"iso\"",
           "complexType": {
-            "original": "'full' | 'compact'",
-            "resolved": "\"compact\" | \"full\"",
+            "original": "'full' | 'compact' | 'iso'",
+            "resolved": "\"compact\" | \"full\" | \"iso\"",
             "references": {}
           },
           "mutable": false,
           "attr": "format",
           "reflectToAttr": false,
-          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.",
+          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.",
           "docsTags": [],
           "values": [
             {
@@ -2420,6 +2420,10 @@
             },
             {
               "value": "full",
+              "type": "string"
+            },
+            {
+              "value": "iso",
               "type": "string"
             }
           ],
@@ -10693,6 +10697,10 @@
       "docsTags": [
         {
           "name": "slot",
+          "text": "home - Slot for the home link or site title."
+        },
+        {
+          "name": "slot",
           "text": "default - Slot for the navigation groups and navigation links."
         }
       ],
@@ -10856,6 +10864,10 @@
         {
           "name": "default",
           "docs": "Slot for the navigation groups and navigation links."
+        },
+        {
+          "name": "home",
+          "docs": "Slot for the home link or site title."
         }
       ],
       "parts": [],
@@ -11958,7 +11970,7 @@
           "mutable": false,
           "attr": "hide-limit",
           "reflectToAttr": false,
-          "docs": "If true, character limt counter will not be displayed under the textarea.",
+          "docs": "If true, character limit counter will not be displayed under the textarea.",
           "docsTags": [
             {
               "name": "default",
@@ -12514,6 +12526,10 @@
       "docsTags": [
         {
           "name": "slot",
+          "text": "home - Slot for the home link or site title."
+        },
+        {
+          "name": "slot",
           "text": "default - Slot for the navigation groups and navigation links."
         }
       ],
@@ -12711,6 +12727,10 @@
         {
           "name": "default",
           "docs": "Slot for the navigation groups and navigation links."
+        },
+        {
+          "name": "home",
+          "docs": "Slot for the home link or site title."
         }
       ],
       "parts": [],

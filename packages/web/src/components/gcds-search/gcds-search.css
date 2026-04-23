@@ -35,13 +35,15 @@
     input {
       box-sizing: border-box;
       border-radius: 0;
-      width: 100%;
+      width: var(--gcds-search-input-width, 100%);
+      max-width: 100%;
       max-height: var(--gcds-search-max-height);
       font: var(--gcds-search-font);
       padding: var(--gcds-search-padding) !important;
       background-color: var(--gcds-search-default-background);
       color: var(--gcds-search-default-text);
-      border: var(--gcds-search-border-width) solid var(--gcds-search-border-color);
+      border: var(--gcds-search-border-width) solid
+        var(--gcds-search-border-color);
       border-right: 0 solid transparent;
       transition:
         border-color ease-in-out 0.15s,
