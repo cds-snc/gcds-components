@@ -29,6 +29,35 @@ describe('gcds-table', () => {
     jest.restoreAllMocks();
   });
 
+  it('renders', async()=>{
+    const page = await setup();
+    expect(page.root).toEqualHtml(`
+      <gcds-table>
+        <mock:shadow-root>
+            <section class="gcds-table">
+              <hr>
+              <div class="gcds-table__active-pills"></div>
+            <span aria-live="polite" class="gcds-table__page-info" role="status">
+              Showing 0 rows.
+            </span>
+            <table class="gcds-table__table" tabindex="-1">
+              <thead>
+                <tr></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="gcds-table__empty" colspan="0">
+                    No data available
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </mock:shadow-root>
+      </gcds-table>
+    `);
+  })
+
   it('renders basic structure', async () => {
     const page = await setup();
     expect(page.root?.shadowRoot?.querySelector('table')).not.toBeNull();
