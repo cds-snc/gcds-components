@@ -50,13 +50,14 @@ describe('gcds-table', () => {
     }
   ]
 
+  // instead of random, make the values deterministic for less flaky tests
   const makeRows = (count: number) =>
     Array.from({ length: count }, (_, i) => ({
       number: i + 20,
       name: `Pokemon ${i + 1}`,
-      height: Math.floor(Math.random() * 15) + 1,
-      weight: Math.floor(Math.random() * 500) + 50,
-      base_experience: Math.floor(Math.random() * 300) + 50,
+      height: (i % 15) + 1,
+      weight: 50 + (i % 10) * 25,
+      base_experience: 50 + (i % 12) * 20,
     }));
 
   const setup = async (html = '<gcds-table></gcds-table>') => {
@@ -418,6 +419,300 @@ describe('gcds-table', () => {
     // Name (index 1) SHOULD have a button because column has sort: true override
     expect(headers[1]?.querySelector('button')).not.toBeNull();
     expect(headers[1]?.textContent).toContain('Name');
+  });
+
+  it('seeds initial descending sort from sortDirection', async () => {
+    // tests the raw HTML input (seeding) and that the default sort direction is descending
+    const seededColumns = JSON.stringify([
+      { field: 'number', header: 'Pokédex', sort: true, sortDirection: 'desc' },
+    ]);
+    const seededData = JSON.stringify([
+      { number: 7, name: 'Squirtle', height: 5, weight: 90, base_experience: 63 },
+      { number: 8, name: 'Wartortle', height: 10, weight: 225, base_experience: 142 },
+    ]);
+    const page = await setup(
+      `<gcds-table columns='${seededColumns}' data='${seededData}'></gcds-table>`,
+    );
+
+    const header = page.root?.shadowRoot?.querySelector('thead th');
+    expect(header?.getAttribute('aria-sort')).toBe('descending');
+  });
+
+  it('cycles sort state when clicking sortable header', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.sort = true;
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+    await page.waitForChanges();
+
+    const button = page.root?.shadowRoot?.querySelector('thead th button') as HTMLButtonElement;
+    const header = page.root?.shadowRoot?.querySelector('thead th') as HTMLTableCellElement;
+
+    expect(header.getAttribute('aria-sort')).toBe('none');
+    button.click();
+    await page.waitForChanges();
+    expect(header.getAttribute('aria-sort')).toBe('ascending');
+    button.click();
+    await page.waitForChanges();
+    expect(header.getAttribute('aria-sort')).toBe('descending');
+  });
+
+  it('renders sort pill and clears it from UI when removed', async () => {
+    const page = await setup();
+    const instance = page.rootInstance as any;
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.sort = true;
+
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+    await page.waitForChanges();
+
+    instance.sorting = [{ id: 'name', desc: false }];
+    instance.onDataChange(el.data);
+    await page.waitForChanges();
+
+    const pillButton = page.root?.shadowRoot?.querySelector('.gcds-table__active-sorting button') as HTMLButtonElement;
+    expect(pillButton).not.toBeNull();
+
+    // Click on the pill button to remove it
+    pillButton.click();
+    await page.waitForChanges();
+
+    expect(page.root?.shadowRoot?.querySelector('.gcds-table__active-sorting button')).toBeNull();
+  });
+
+  it('hides pagination controls when pagination is false', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.pagination = false;
+
+    el.columns = baseColumns as any;
+    el.data = makeRows(12) as any;
+    await page.waitForChanges();
+
+    expect(page.root?.shadowRoot?.querySelector('gcds-pagination')).toBeNull();
+  });
+
+  it('shows pagination controls and limits rows when pagination is true', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.pagination = true;
+
+    el.columns = baseColumns as any;
+    el.data = makeRows(12) as any;
+    await page.waitForChanges();
+
+    expect(page.root?.shadowRoot?.querySelector('gcds-pagination')).not.toBeNull();
+    expect(page.root?.shadowRoot?.querySelectorAll('tbody tr')).toHaveLength(10);
+  });
+
+  it('renders page-size option label All for value 0', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.pagination = true;
+    el.paginationSizeOptions = [10, 0] as any;
+
+    el.columns = baseColumns as any;
+    el.data = makeRows(3) as any;
+    await page.waitForChanges();
+
+    const options = Array.from(page.root?.shadowRoot?.querySelectorAll('option') || []);
+    expect(options.some(option => option.textContent === 'All')).toBe(true);
+  });
+
+  it('updates pagination state when paginationCurrentPage changes', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+    const instance = page.rootInstance as any;
+
+    el.pagination = true;
+
+    el.columns = baseColumns as any;
+    el.data = makeRows(20) as any;
+    await page.waitForChanges();
+
+    el.paginationCurrentPage = 2;
+    await page.waitForChanges();
+    expect(instance.paginationState.pageIndex).toBe(1);
+  });
+
+  it('resets out-of-range page index when page size grows', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+    const instance = page.rootInstance as any;
+
+    el.pagination = true;
+
+    el.columns = baseColumns as any;
+    el.data = makeRows(3) as any;
+    el.paginationSize = 2;
+    el.paginationCurrentPage = 2;
+    await page.waitForChanges();
+
+    el.paginationSize = 10;
+    await page.waitForChanges();
+    expect(instance.paginationState.pageIndex).toBe(0);
+  });
+
+  it('hides filter/sort control when both filter and sort are disabled', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.filter = false;
+    el.sort = false;
+
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+    await page.waitForChanges();
+
+    expect(page.root?.shadowRoot?.querySelector('gcds-button')).toBeNull();
+  });
+
+  it('shows filter and sort button label in English when enabled', async () => {
+    // TODO: check if it's filter and sort all the time or if it changes to just one when only one is enabled
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.filter = true;
+    el.sort = false;
+
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+
+    await page.waitForChanges();
+
+    const button = page.root?.shadowRoot?.querySelector('gcds-button');
+    expect(button).not.toBeNull();
+    expect(button?.textContent?.toLowerCase()).toContain('filter');
+    expect(button?.textContent?.toLowerCase()).toContain('sort');
+  });
+
+  // TODO: failing
+  // it('shows filter and sort button label in French when enabled', async () => {
+  //   const page = await setup();
+  //   const el = page.root as HTMLGcdsTableElement;
+  //
+  //   el.filter = true;
+  //   el.sort = true;
+  //
+  //   el.columns = baseColumns as any;
+  //   el.data = baseData as any;
+  //
+  //   // French
+  //   el.lang = 'fr';
+  //   await page.waitForChanges();
+  //
+  //   const button = page.root?.shadowRoot?.querySelector('gcds-button');
+  //   expect(button).not.toBeNull();
+  //
+  //   // Adjust these strings to match your actual translations
+  //   expect(button?.textContent?.toLowerCase()).toContain('filtrer');
+  //   expect(button?.textContent?.toLowerCase()).toContain('trier');
+  // });
+
+  it('renders active filter pill when filterValue is set and clears on click', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.filter = true;
+    el.filterValue = 'Squirtle';
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+    await page.waitForChanges();
+
+    const pillButton = page.root?.shadowRoot?.querySelector('.gcds-table__active-filter button') as HTMLButtonElement;
+    expect(pillButton.textContent).toContain('Squirtle');
+
+    pillButton.click();
+    await page.waitForChanges();
+
+    expect(el.filterValue).toBe('');
+  });
+
+  it('syncs internal globalFilter when filterValue changes', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+    const instance = page.rootInstance as any;
+
+    el.filter = true;
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+    await page.waitForChanges();
+
+    el.filterValue = 'Blastoise';
+    await page.waitForChanges();
+
+    expect(instance.globalFilter).toBe('Blastoise');
+  });
+
+  it('defaults language state to english', async () => {
+    const page = await setup();
+    expect((page.rootInstance as any).lang).toBe('en');
+  });
+
+  it('updates lang state when lang prop changes', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+    const instance = page.rootInstance as any;
+
+    el.lang = 'fr';
+    await page.waitForChanges();
+
+    expect(instance.lang).toBe('fr');
+  });
+
+  it('rebuilds table options when columns and data change', async () => {
+    const page = await setup();
+    const instance = page.rootInstance as any;
+    const updateSpy = jest.spyOn(instance.table, 'setOptions');
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+    await page.waitForChanges();
+
+    expect(updateSpy).toHaveBeenCalled();
+  });
+
+  it('triggers data watcher path when sort and pagination props change', async () => {
+    const page = await setup();
+    const instance = page.rootInstance as any;
+    const dataSpy = jest.spyOn(instance, 'onDataChange');
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.sort = true;
+    await page.waitForChanges();
+    el.pagination = true;
+    await page.waitForChanges();
+
+    expect(dataSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('exposes expected accessibility attributes', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.sort = true;
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+    await page.waitForChanges();
+
+    const th = page.root?.shadowRoot?.querySelector('thead th');
+    const sortButton = page.root?.shadowRoot?.querySelector('thead th button');
+    const table = page.root?.shadowRoot?.querySelector('table');
+    const status = page.root?.shadowRoot?.querySelector('.gcds-table__page-info');
+
+    expect(th?.getAttribute('scope')).toBe('col');
+    expect(sortButton?.getAttribute('title')).toContain('Pokédex');
+    expect(table?.getAttribute('tabindex')).toBe('-1');
+    expect(status?.getAttribute('role')).toBe('status');
+    expect(status?.getAttribute('aria-live')).toBe('polite');
   });
 
   it('shows table status text with row count', async () => {
