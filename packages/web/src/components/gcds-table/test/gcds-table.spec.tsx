@@ -50,8 +50,14 @@ describe('gcds-table', () => {
     }
   ]
 
-  // const makeRows = (count: number) =>
-  //   Array.from({ length: count }, (_, i) => ({ name: `Person ${i + 1}`, age: i + 1 }));
+  const makeRows = (count: number) =>
+    Array.from({ length: count }, (_, i) => ({
+      number: i + 20,
+      name: `Pokemon ${i + 1}`,
+      height: Math.floor(Math.random() * 15) + 1,
+      weight: Math.floor(Math.random() * 500) + 50,
+      base_experience: Math.floor(Math.random() * 300) + 50,
+    }));
 
   const setup = async (html = '<gcds-table></gcds-table>') => {
     return newSpecPage({
@@ -414,5 +420,34 @@ describe('gcds-table', () => {
     expect(headers[1]?.textContent).toContain('Name');
   });
 
+  it('shows table status text with row count', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.columns = baseColumns as any;
+    el.data = baseData as any;
+    await page.waitForChanges();
+
+    const status = page.root?.shadowRoot?.querySelector('.gcds-table__page-info')?.textContent || '';
+    expect(status).toContain('Showing 3 rows');
+  });
+
+  it('sets gcds-pagination props from current table state', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.pagination = true;
+    el.columns = baseColumns as any;
+    el.data = makeRows(12) as any;
+    await page.waitForChanges();
+
+    // In spec-page context child custom-element props are reflected on the instance
+    const paginationEl = page.root?.shadowRoot?.querySelector('gcds-pagination');
+    expect(paginationEl).not.toBeNull();
+    // totalPages should be 2 for 12 rows with default page size 10
+    const instance = page.rootInstance as any;
+    expect(instance.table.getPageCount()).toBe(2);
+    expect(instance.paginationState.pageIndex).toBe(0);
+  });
 
 });
