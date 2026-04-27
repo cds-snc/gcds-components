@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
-describe('gcds-table', () => {
+test.describe('gcds-table', () => {
   test('renders', async ({ page }) => {
     const element = page.locator('gcds-table');
 
