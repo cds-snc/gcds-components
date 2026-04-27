@@ -3,12 +3,14 @@ import { HomeComponent } from './components/home/home.components';
 import { FormsComponent } from './components/forms/forms.component';
 import { NavComponent } from './components/navigation/navigation.components';
 import { FileUploaderComponent } from './components/fileuploader/file-uploader.component';
+import { TableComponent } from './components/table/table.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'file-uploader', component: FileUploaderComponent },
+  { path: 'table', component: TableComponent },
   {
     path: 'nav-one',
     component: NavComponent,

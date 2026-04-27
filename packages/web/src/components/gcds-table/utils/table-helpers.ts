@@ -25,6 +25,30 @@ interface TableColumn {
   sort?: boolean;
   renderCell?: (value: unknown, row: Record<string, unknown>) => any;
   rowHeader?: boolean;
+  slotted?: boolean;
+}
+interface TableColumnSlots {
+  field: string;
+  header: string;
+  sortDirection?: 'asc' | 'desc';
+  align?: 'start' | 'center' | 'end';
+  sort?: boolean;
+  rowHeader?: boolean;
+  slotted?: boolean;
+  managed?: boolean;
+}
+
+export interface GcdsTableStateChange {
+  visibleRows: Array<{
+    rowId: string; // stable TanStack row id — does not change with sort/filter
+    rowIndex: number; // current visible position in the table
+    original: unknown; // the original data object for this row
+  }>;
+  page: number;
+  pageSize: number;
+  filterValue: string;
+  sortKey: string | null;
+  sortDirection: 'asc' | 'desc' | false;
 }
 
 const buildInitialSorting = (
@@ -128,6 +152,7 @@ const updateTableOptions = (GcdsTable: any) => {
 
 export {
   TableColumn,
+  TableColumnSlots,
   buildInitialSorting,
   buildColumnDefs,
   buildTableOptions,
