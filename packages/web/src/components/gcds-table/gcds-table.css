@@ -1,35 +1,349 @@
-:host {
-  display: block;
+@layer reset, default, controls, pagination, overwrites, modal;
 
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
+@layer reset {
+  :host {
+    display: block;
 
-  td,
-  th {
-    border: 1px solid #ddd;
-    padding: 8px;
-
-    & > button {
-      background: none;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      color: currentColor;
+    slot {
+      display: initial;
     }
   }
+}
 
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
+@layer default {
+  :host .gcds-table {
+    font: var(--gcds-table-font);
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-block-start: var(--gcds-table-border-width) solid
+        var(--gcds-table-outer-border-color);
+      color: var(--gcds-table-text);
+      margin-block-start: var(--gcds-table-margin);
+
+      /* Visually hide caption but keep it accessible to screen readers */
+      caption {
+        clip-path: inset(100%);
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      td,
+      th {
+        padding: var(--gcds-table-cell-padding-desktop);
+      }
+
+      th {
+        font-weight: var(--gcds-table-header-cell-font-weight);
+        text-align: left;
+        color: var(--gcds-table-header-cell-text);
+        border-block-end: var(--gcds-table-header-cell-border-width) solid
+          var(--gcds-table-header-cell-border-color);
+
+        /* Header sorting interaction buttons */
+        & > button {
+          all: unset;
+          cursor: pointer;
+        }
+      }
+
+      tbody {
+        tr,
+        th {
+          border-block-end: var(--gcds-table-border-width) solid
+            var(--gcds-table-cell-border-color);
+        }
+      }
+
+      /* If tbody contains row headers (th), add a vertical divider after the first column */
+      @media only screen and (width >= 48em) {
+        &:has(tbody th) thead th:first-child,
+        tbody th {
+          border-inline-end: var(--gcds-table-header-cell-border-width) solid
+            var(--gcds-table-header-cell-border-color);
+        }
+      }
+
+      @media only screen and (width < 48em) {
+        th,
+        td {
+          display: block;
+          font-weight: var(--gcds-table-font-weight-mobile);
+          padding: var(--gcds-table-cell-padding-mobile);
+
+          &:before {
+            display: block;
+            content: attr(data-column);
+            font-size: var(--gcds-table-font-size-small);
+            color: var(--gcds-table-label-mobile);
+          }
+
+          &:first-of-type {
+            padding-block-start: var(
+              --gcds-table-cell-padding-mobile-first-last
+            );
+          }
+
+          &:last-of-type {
+            padding-block-end: var(--gcds-table-cell-padding-mobile-first-last);
+          }
+        }
+
+        thead th {
+          position: absolute;
+          clip: rect(0 0 0 0);
+        }
+
+        tbody th {
+          border: 0;
+        }
+      }
+    }
   }
+}
 
-  th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: var(--gcds-bg-light);
-    color: #333;
+@layer controls {
+  :host .gcds-table {
+    .gcds-table__filters {
+      padding-block-end: var(--gcds-table-filters-padding);
+      margin-block-end: var(--gcds-table-filters-margin);
+      border-block-end: var(--gcds-table-filters-border-width) solid
+        var(--gcds-table-filters-border-color);
+
+      .gcds-table__active-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--gcds-table-font-size-small);
+        line-height: var(--gcds-table-filters-count-line-height);
+        background: var(--gcds-table-filters-count-background);
+        color: var(--gcds-table-filters-count-text);
+        border-radius: var(--gcds-table-filters-count-border-radius);
+        margin-inline-start: var(--gcds-table-filters-count-margin);
+        padding: var(--gcds-table-filters-count-padding);
+      }
+    }
+
+    .gcds-table__active-pills {
+      display: flex;
+      gap: var(--gcds-table-gap);
+
+      @media only screen and (width < 48em) {
+        flex-direction: column;
+      }
+
+      /* Only add spacing when pills exist */
+      &:not(:empty) {
+        margin-block-end: var(--gcds-table-active-pills-margin);
+      }
+
+      .gcds-table__pill {
+        display: inline-flex;
+        align-items: center;
+        font: inherit;
+        background-color: var(--gcds-table-pill-background);
+        color: var(--gcds-table-pill-text);
+        border: 0;
+        border-radius: var(--gcds-table-pill-border-radius);
+        padding: var(--gcds-table-pill-padding);
+        cursor: pointer;
+
+        gcds-icon {
+          width: var(--gcds-table-pill-icon-size);
+          height: var(--gcds-table-pill-icon-size);
+          margin-inline-start: var(--gcds-table-pill-icon-margin);
+        }
+      }
+
+      .gcds-table__active-sorting {
+        .gcds-table__sort-label {
+          display: inline-block;
+          margin-inline-end: var(--gcds-table-active-sorting-margin);
+        }
+      }
+
+      .gcds-table__active-filter + .gcds-table__active-sorting {
+        @media only screen and (width >= 48em) {
+          padding-inline-start: var(--gcds-table-active-sorting-padding);
+          border-inline-start: var(--gcds-table-active-sorting-border-width)
+            solid var(--gcds-table-active-sorting-border-color);
+        }
+      }
+    }
+
+    .gcds-table__row-management {
+      display: flex;
+      gap: var(--gcds-table-gap);
+
+      @media only screen and (width >= 30em) {
+        align-items: center;
+      }
+
+      @media only screen and (width < 30em) {
+        flex-direction: column;
+      }
+
+      /* Align select styles with table typography and spacing */
+      --gcds-label-font-desktop: var(--gcds-table-font);
+      --gcds-label-margin: 0;
+      --gcds-select-margin: 0;
+      --gcds-select-padding: var(--gcds-table-select-padding);
+
+      gcds-select::part(wrapper) {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--gcds-table-gap);
+      }
+
+      gcds-select::part(select) {
+        font: var(--gcds-table-font);
+        line-height: 1;
+        min-height: auto;
+      }
+
+      .gcds-table__page-size + .gcds-table__page-info {
+        @media only screen and (width >= 30em) {
+          padding-inline-start: var(--gcds-table-page-info-padding);
+          border-inline-start: var(--gcds-table-page-info-border-width) solid
+            var(--gcds-table-page-info-border-color);
+        }
+      }
+    }
+  }
+}
+
+@layer pagination {
+  :host .gcds-table {
+    gcds-pagination {
+      margin-block-start: var(--gcds-table-pagination-margin);
+    }
+  }
+}
+
+@layer overwrites {
+  :host .gcds-table {
+    /* Normalize gcds-button styles to match table typography and spacing. */
+    gcds-button {
+      --gcds-button-mobile-width: auto;
+      --gcds-button-font-desktop: var(--gcds-table-font);
+      --gcds-button-font-mobile: var(--gcds-table-font);
+      --gcds-button-small-font-desktop: var(--gcds-table-font);
+      --gcds-button-small-font-mobile: var(--gcds-table-font);
+      --gcds-button-start-font-desktop: var(--gcds-table-font);
+      --gcds-button-start-font-mobile: var(--gcds-table-font);
+      --gcds-button-padding: var(--gcds-table-button-padding);
+      --gcds-button-small-padding: var(--gcds-table-button-padding);
+      --gcds-button-start-padding: var(--gcds-table-button-padding);
+    }
+  }
+}
+
+@layer modal {
+  :host .gcds-table .gcds-table__modal {
+    width: var(--gcds-table-modal-width);
+    max-width: var(--gcds-table-modal-max-width);
+    max-height: var(--gcds-table-modal-max-height-desktop);
+    border: 0;
+    background: var(--gcds-table-modal-background);
+    border-radius: var(--gcds-table-modal-border-radius-desktop);
+    box-shadow: var(--gcds-table-modal-box-shadow);
+    padding: var(--gcds-table-modal-padding);
+
+    &[open] {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &::backdrop {
+      background-color: var(--gcds-table-modal-backdrop-background);
+    }
+
+    @media only screen and (width < 48em) {
+      height: var(--gcds-table-modal-height-mobile);
+      max-height: auto;
+      margin-block-start: var(--gcds-table-modal-margin-mobile);
+      overflow-y: scroll;
+      border-radius: var(--gcds-table-modal-border-radius-mobile);
+    }
+
+    .gcds-table__modal-header {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: space-between;
+      margin-block-end: var(--gcds-table-modal-spacing);
+      padding: var(--gcds-table-modal-header-padding);
+      border-block-end: var(--gcds-table-modal-border);
+
+      --gcds-heading-h2-desktop: var(--gcds-table-modal-header-heading);
+      --gcds-heading-h2-mobile: var(--gcds-table-modal-header-heading);
+    }
+
+    .gcds-table__modal-body {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      min-height: 0; /* Important for overflow */
+    }
+
+    .gcds-table__modal-content,
+    .gcds-table__modal-footer {
+      padding-inline: var(--gcds-table-modal-spacing);
+    }
+
+    .gcds-table__modal-content {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      min-height: 0;
+
+      .gcds-table__modal-filter + .gcds-table__modal-sort {
+        border-block-start: var(--gcds-table-modal-border);
+        margin-block-start: var(--gcds-table-modal-spacing);
+        padding-block-start: var(--gcds-table-modal-spacing);
+      }
+
+      /* Normalize gcds-input label styles to match table typography and spacing. */
+      gcds-input {
+        --gcds-label-font-desktop: var(--gcds-table-modal-body-font-bold);
+        --gcds-label-font-mobile: var(--gcds-table-modal-body-font-bold);
+      }
+
+      /* Normalize gcds-radios legend + label styles to match table typography and spacing. */
+      gcds-radios {
+        --gcds-radio-legend-font-desktop: var(
+          --gcds-table-modal-body-font-bold
+        );
+        --gcds-radio-legend-font-mobile: var(--gcds-table-modal-body-font-bold);
+        --gcds-radio-label-font-desktop: var(
+          --gcds-table-modal-body-font-medium
+        );
+        --gcds-radio-label-font-mobile: var(
+          --gcds-table-modal-body-font-medium
+        );
+      }
+    }
+
+    .gcds-table__modal-footer {
+      display: flex;
+      flex: 0 0 auto;
+      gap: var(--gcds-table-modal-spacing);
+      background-color: var(--gcds-table-modal-background);
+      box-shadow: var(--gcds-table-modal-footer-box-shadow);
+      padding-block-start: var(--gcds-table-modal-footer-padding);
+
+      gcds-button {
+        flex: 1;
+
+        &::part(button) {
+          width: var(--gcds-table-modal-footer-button-width);
+          padding: var(--gcds-table-modal-footer-button-padding);
+        }
+      }
+    }
   }
 }

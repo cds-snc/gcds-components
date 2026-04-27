@@ -10711,7 +10711,12 @@
           "docs": "Slot for options and option groups."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "wrapper",
+          "docs": ""
+        }
+      ],
       "dependents": [
         "gcds-date-input",
         "gcds-table",
@@ -11581,10 +11586,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "[10, 25, 50, 0]"
+              "text": "[\n    10, 25, 50, 0,\n  ]"
             }
           ],
-          "default": "[10, 25, 50, 0]",
+          "default": "[\n    10, 25, 50, 0,\n  ]",
           "values": [
             {
               "type": "number[]"

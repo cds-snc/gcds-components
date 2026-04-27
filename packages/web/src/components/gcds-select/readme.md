@@ -83,6 +83,13 @@ Type: `Promise<void>`
 | `"default"` | Slot for options and option groups. |
 
 
+## Shadow Parts
+
+| Part        | Description |
+| ----------- | ----------- |
+| `"wrapper"` |             |
+
+
 ## Dependencies
 
 ### Used by

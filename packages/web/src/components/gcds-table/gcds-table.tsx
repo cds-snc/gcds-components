@@ -1,12 +1,4 @@
-import {
-  Component,
-  Host,
-  Prop,
-  State,
-  Watch,
-  h,
-  Element,
-} from '@stencil/core';
+import { Component, Host, Prop, State, Watch, h, Element } from '@stencil/core';
 
 import {
   createTable,
@@ -75,7 +67,9 @@ export class GcdsTable {
    * Available page-size options.
    * Use 0 to represent "All rows".
    */
-  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [10, 25, 50, 0];
+  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [
+    10, 25, 50, 0,
+  ];
 
   /** Enable global filter */
   @Prop() filter: boolean = false;
@@ -91,7 +85,8 @@ export class GcdsTable {
   @State() private globalFilter: string = this.filterValue;
   @State() private paginationState: PaginationState = {
     pageIndex: Math.max(0, this.paginationCurrentPage - 1),
-    pageSize: this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
+    pageSize:
+      this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
   };
   @State() lang: string;
 
@@ -155,8 +150,13 @@ export class GcdsTable {
   @Watch('paginationSize')
   onPageSizeChange(newSize: number) {
     this.paginationState = {
-      pageIndex: this.paginationState.pageIndex + 1 > Math.ceil((this.table?.getPreFilteredRowModel()?.rows.length ?? 0) / newSize) ? 0
-        : this.paginationState.pageIndex,
+      pageIndex:
+        this.paginationState.pageIndex + 1 >
+        Math.ceil(
+          (this.table?.getPreFilteredRowModel()?.rows.length ?? 0) / newSize,
+        )
+          ? 0
+          : this.paginationState.pageIndex,
       pageSize: newSize === 0 ? Number.MAX_SAFE_INTEGER : newSize,
     };
     this.table?.setOptions(prev => ({
@@ -182,17 +182,21 @@ export class GcdsTable {
   // ─── Helpers ──────────────────────────────────────────────────────────────
 
   private initTable() {
-    this.table = createTable(buildTableOptions(this) as TableOptionsResolved<Record<string, unknown>>);
+    this.table = createTable(
+      buildTableOptions(this) as TableOptionsResolved<Record<string, unknown>>,
+    );
   }
 
   private sortEnabled(): boolean {
-    return this.sort || ((this.columns ?? []) as TableColumn[]).some(col => col.sort);
+    return (
+      this.sort || ((this.columns ?? []) as TableColumn[]).some(col => col.sort)
+    );
   }
 
   // ─── Event handlers ───────────────────────────────────────────────────────
 
   /*
-    * Handle sort toggling by updating table state
+   * Handle sort toggling by updating table state
    */
   private handleSortToggle(columnId: string) {
     const col = this.table?.getColumn(columnId);
@@ -201,7 +205,7 @@ export class GcdsTable {
   }
 
   /*
-    * Handle page size selection by updating table state and focusing the table
+   * Handle page size selection by updating table state and focusing the table
    */
   private handlePageSizeSelect(e: Event) {
     const select = e.target as HTMLSelectElement;
@@ -210,15 +214,15 @@ export class GcdsTable {
   }
 
   /*
-    * Handle pagination control clicks by updating table state and focusing the table
-    */
+   * Handle pagination control clicks by updating table state and focusing the table
+   */
   private handlePaginationClick(e: CustomEvent) {
     this.table?.setPageIndex(e.detail.page - 1);
     this.paginationCurrentPage = e.detail.page;
 
     // focus table here to ensure keyboard users can navigate from pagination controls to table rows
     this.shadowElement?.focus();
-    this.shadowElement?.scrollIntoView({ block: "start", behavior: "smooth" });
+    this.shadowElement?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   // ─── Lifecycle ────────────────────────────────────────────────────────────
@@ -253,11 +257,8 @@ export class GcdsTable {
     return (
       <Host>
         <section class="gcds-table">
-
           {/* Filter and sort controls */}
           {(this.filter || this.sortEnabled()) && renderFilterSortModal(this)}
-
-          <hr />
 
           {/* Active pills section */}
           <div class="gcds-table__active-pills">
@@ -268,42 +269,63 @@ export class GcdsTable {
             })}
 
             {/* Sort pills */}
-            {renderSortPills(this.sorting, this.table, this.lang, (columnId: string) => {
-              this.sorting = this.sorting.filter(s => s.id !== columnId);
-              updateTableOptions(this);
-            })}
+            {renderSortPills(
+              this.sorting,
+              this.table,
+              this.lang,
+              (columnId: string) => {
+                this.sorting = this.sorting.filter(s => s.id !== columnId);
+                updateTableOptions(this);
+              },
+            )}
           </div>
 
-          {/* Pagination size selector */}
-          {this.pagination && (
-            <div class="gcds-table__page-size">
-              <gcds-select
-                label={I18N[this.lang].rowsPerPage}
-                name="page-size"
-                selectId="gcds-table-page-size"
-                value={this.paginationSize.toString()}
-                onChange={e => this.handlePageSizeSelect(e)}
-              >
-                {(this.paginationSizeOptions as number[]).map(opt => (
-                  <option key={opt} value={opt}>
-                    {opt === 0 ? 'All' : opt}
-                  </option>
-                ))}
-              </gcds-select>
-            </div>
-          )}
+          <div class="gcds-table__row-management">
+            {/* Pagination size selector */}
+            {this.pagination && (
+              <div class="gcds-table__page-size">
+                <gcds-select
+                  label={I18N[this.lang].rowsPerPage}
+                  name="page-size"
+                  selectId="gcds-table-page-size"
+                  value={this.paginationSize.toString()}
+                  onChange={e => this.handlePageSizeSelect(e)}
+                >
+                  {(this.paginationSizeOptions as number[]).map(opt => (
+                    <option key={opt} value={opt}>
+                      {opt === 0 ? 'All' : opt}
+                    </option>
+                  ))}
+                </gcds-select>
+              </div>
+            )}
 
-          {/* Table status */}
-          <span class="gcds-table__page-info" role="status" aria-live="polite">
-            {renderTableStatus(this.el, this.table, this.paginationState, this.lang)}
-          </span>
+            {/* Table status */}
+            <span
+              class="gcds-table__page-info"
+              role="status"
+              aria-live="polite"
+            >
+              {renderTableStatus(
+                this.el,
+                this.table,
+                this.paginationState,
+                this.lang,
+              )}
+            </span>
+          </div>
 
           {/* ── Table ──────────────────────────────── */}
-          <table class="gcds-table__table" tabindex="-1" ref={el => { if (el) this.shadowElement = el; }}>
+          <table
+            class="gcds-table__table"
+            tabindex="-1"
+            ref={el => {
+              if (el) this.shadowElement = el;
+            }}
+          >
             {this.el.querySelector('[slot="caption"]') && (
               <caption>
-                <slot name="caption">
-                </slot>
+                <slot name="caption"></slot>
               </caption>
             )}
             <thead>
@@ -333,7 +355,7 @@ export class GcdsTable {
                                 : undefined
                         }
                       >
-                        {canSort ?
+                        {canSort ? (
                           <button
                             onClick={() => this.handleSortToggle(header.id)}
                             title={getSortTitle(header.column, this.lang)}
@@ -347,9 +369,9 @@ export class GcdsTable {
                               {getSortIcon(header.column)}
                             </span>
                           </button>
-                          :
+                        ) : (
                           colDef?.header
-                        }
+                        )}
                       </th>
                     );
                   })}
@@ -370,7 +392,9 @@ export class GcdsTable {
                 rows.map(row => (
                   <tr key={row.id} class="gcds-table__row">
                     {row.getVisibleCells().map(cell => {
-                      const colDef = ((this.columns ?? []) as TableColumn[]).find(c => c.field === cell.column.id);
+                      const colDef = (
+                        (this.columns ?? []) as TableColumn[]
+                      ).find(c => c.field === cell.column.id);
 
                       let cellContent: any;
                       let Tag = 'td';
@@ -381,11 +405,14 @@ export class GcdsTable {
                         Tag = 'th';
                         scope = {
                           scope: 'row',
-                        }
+                        };
                       }
 
                       if (colDef?.renderCell) {
-                        const rendered = colDef.renderCell(cell.getValue(), row.original);
+                        const rendered = colDef.renderCell(
+                          cell.getValue(),
+                          row.original,
+                        );
 
                         if (rendered instanceof HTMLElement) {
                           cellContent = (
@@ -398,7 +425,10 @@ export class GcdsTable {
                               }}
                             />
                           );
-                        } else if (rendered !== null && rendered !== undefined) {
+                        } else if (
+                          rendered !== null &&
+                          rendered !== undefined
+                        ) {
                           cellContent = rendered;
                         }
                       } else {
@@ -414,7 +444,7 @@ export class GcdsTable {
                         >
                           {cellContent}
                         </Tag>
-                      )
+                      );
                     })}
                   </tr>
                 ))
@@ -429,11 +459,11 @@ export class GcdsTable {
               currentPage={this.paginationState.pageIndex + 1}
               totalPages={this.table.getPageCount()}
               label={I18N[this.lang].paginationLabel}
-              onGcdsClick={(e) => this.handlePaginationClick(e)}
+              onGcdsClick={e => this.handlePaginationClick(e)}
             />
           )}
         </section>
-      </Host >
+      </Host>
     );
   }
 }
