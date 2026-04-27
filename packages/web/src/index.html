@@ -33,6 +33,12 @@
         animation: fade 0.05s normal forwards ease-in-out;
       }
     </style>
+
+    <script>
+      document.addEventListener('gcdsTableStateChange', event => {
+        console.log('Table state changed:', event.detail);
+      });
+    </script>
   </head>
 
   <body style="margin: 0">
@@ -87,6 +93,40 @@
       <gcds-heading tag="h1">GC Design System</gcds-heading>
 
       <hr class="my-550" />
+
+      <gcds-table-slots
+        id="my-table-slots"
+        sort="false"
+        pagination="true"
+        pagination-current-page="1"
+        pagination-size="10"
+        filter="true"
+        caption="Table of the best Pokémon (first generation)"
+      >
+        <div slot="caption">
+          <h2>Pokémon - Slots</h2>
+          Table of the best Pokémon (first generation).
+        </div>
+        <template slot="cell:sprite">
+          <img
+            data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
+            data-bind-alt="name"
+            src=""
+            alt=""
+            width="150"
+            height="150"
+          />
+        </template>
+        <template slot="cell:actions">
+          <gcds-button
+            button-role="secondary"
+            size="small"
+            onclick="console.log(this.rowData)"
+          >
+            Console log row data
+          </gcds-button>
+        </template>
+      </gcds-table-slots>
 
       <gcds-table
         id="my-table"
@@ -179,8 +219,45 @@
         }
 
         const table = document.getElementById('my-table');
+        const tableSlots = document.getElementById('my-table-slots');
 
         // Populate the table columns
+        tableSlots.columns = [
+          {
+            field: 'number',
+            header: 'Pokédex',
+            align: 'end',
+            rowHeader: true,
+          },
+          {
+            field: 'name',
+            header: 'Name',
+            sortDirection: 'asc',
+          },
+          {
+            field: 'sprite',
+            header: 'Sprite',
+            align: 'center',
+            sort: false,
+            slotted: true,
+          },
+          { field: 'height', header: 'Height', align: 'end' },
+          { field: 'weight', header: 'Weight', align: 'end' },
+          {
+            field: 'base_experience',
+            header: 'Base experience',
+            sort: false,
+            align: 'end',
+          },
+          {
+            field: 'actions',
+            header: 'Actions',
+            align: 'center',
+            sort: false,
+            slotted: true,
+          },
+        ];
+
         table.columns = [
           {
             field: 'number',
@@ -241,6 +318,7 @@
         // Populate the table rows with results from API
         getFirst151Pokemon().then(pokemon => {
           table.data = pokemon;
+          tableSlots.data = pokemon;
         });
       </script>
 

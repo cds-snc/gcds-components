@@ -34,6 +34,7 @@ An icon is a symbol that visually represents an action or idea.
  - [gcds-pagination](../gcds-pagination)
  - [gcds-search](../gcds-search)
  - [gcds-table](../gcds-table)
+ - [gcds-table-slots](../gcds-table-slots)
  - [gcds-topic-menu](../gcds-topic-menu)
 
 ### Graph
@@ -49,6 +50,7 @@ graph TD;
   gcds-pagination --> gcds-icon
   gcds-search --> gcds-icon
   gcds-table --> gcds-icon
+  gcds-table-slots --> gcds-icon
   gcds-topic-menu --> gcds-icon
   style gcds-icon fill:#26374a,stroke:#333,stroke-width:4px
 ```

@@ -30,6 +30,9 @@ import { GcdsComponentsModule } from '@gcds-core/components-angular';
               File uploader
             </gcds-link>
           </li>
+          <li>
+            <gcds-link href="/table" routerLink="/table"> Table </gcds-link>
+          </li>
         </ul>
       </li>
     </ul>

@@ -2283,6 +2283,75 @@ export declare interface GcdsTable extends Components.GcdsTable {}
 
 
 @ProxyCmp({
+  inputs: ['columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort'],
+  methods: ['getVisibleRows'],
+  outputs: ['gcdsTableStateChange']
+})
+@Component({
+  selector: 'gcds-table-slots',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['columns', 'data', 'filter', 'filterValue', 'pagination', 'paginationCurrentPage', 'paginationSize', 'paginationSizeOptions', 'sort'],
+  outputs: ['gcdsTableStateChange'],
+  standalone: false,
+})
+export class GcdsTableSlots {
+  protected el: HTMLGcdsTableSlotsElement;
+    /**
+   * Column definitions @default []
+   */
+  set columns(_: Components.GcdsTableSlots['columns']) {};
+    /**
+   * Row data @default []
+   */
+  set data(_: Components.GcdsTableSlots['data']) {};
+    /**
+   * Enable global column sorting (can be overridden per column) @default false
+   */
+  set sort(_: Components.GcdsTableSlots['sort']) {};
+    /**
+   * Enable pagination @default false
+   */
+  set pagination(_: Components.GcdsTableSlots['pagination']) {};
+    /**
+   * Current page index @default 1
+   */
+  set paginationCurrentPage(_: Components.GcdsTableSlots['paginationCurrentPage']) {};
+    /**
+   * Number of rows per page @default 10
+   */
+  set paginationSize(_: Components.GcdsTableSlots['paginationSize']) {};
+    /**
+   * Available page-size options.
+Use 0 to represent "All rows". @default [10, 25, 50, 0]
+   */
+  set paginationSizeOptions(_: Components.GcdsTableSlots['paginationSizeOptions']) {};
+    /**
+   * Enable global filter @default false
+   */
+  set filter(_: Components.GcdsTableSlots['filter']) {};
+    /**
+   * Current filter string @default ''
+   */
+  set filterValue(_: Components.GcdsTableSlots['filterValue']) {};
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsTableStateChange']);
+  }
+}
+
+
+import type { GcdsTableStateChange as IGcdsTableSlotsGcdsTableStateChange } from '@gcds-core/components';
+
+export declare interface GcdsTableSlots extends Components.GcdsTableSlots {
+
+  gcdsTableStateChange: EventEmitter<CustomEvent<IGcdsTableSlotsGcdsTableStateChange>>;
+}
+
+
+@ProxyCmp({
   inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole']
 })
 @Component({

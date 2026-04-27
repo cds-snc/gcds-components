@@ -42,6 +42,7 @@ import { defineCustomElement as defineGcdsSignature } from '@gcds-core/component
 import { defineCustomElement as defineGcdsSrOnly } from '@gcds-core/components/dist/components/gcds-sr-only.js';
 import { defineCustomElement as defineGcdsStepper } from '@gcds-core/components/dist/components/gcds-stepper.js';
 import { defineCustomElement as defineGcdsTable } from '@gcds-core/components/dist/components/gcds-table.js';
+import { defineCustomElement as defineGcdsTableSlots } from '@gcds-core/components/dist/components/gcds-table-slots.js';
 import { defineCustomElement as defineGcdsText } from '@gcds-core/components/dist/components/gcds-text.js';
 import { defineCustomElement as defineGcdsTextarea } from '@gcds-core/components/dist/components/gcds-textarea.js';
 import { defineCustomElement as defineGcdsTopNav } from '@gcds-core/components/dist/components/gcds-top-nav.js';
@@ -623,6 +624,22 @@ export const GcdsTable: StencilVueComponent<JSX.GcdsTable> = /*@__PURE__*/ defin
   'paginationSizeOptions',
   'filter',
   'filterValue'
+]);
+
+
+export const GcdsTableSlots: StencilVueComponent<JSX.GcdsTableSlots> = /*@__PURE__*/ defineContainer<JSX.GcdsTableSlots>('gcds-table-slots', defineGcdsTableSlots, [
+  'columns',
+  'data',
+  'sort',
+  'pagination',
+  'paginationCurrentPage',
+  'paginationSize',
+  'paginationSizeOptions',
+  'filter',
+  'filterValue',
+  'gcdsTableStateChange'
+], [
+  'gcdsTableStateChange'
 ]);
 
 
