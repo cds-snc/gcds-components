@@ -2402,16 +2402,16 @@
         },
         {
           "name": "format",
-          "type": "\"compact\" | \"full\"",
+          "type": "\"compact\" | \"full\" | \"iso\"",
           "complexType": {
-            "original": "'full' | 'compact'",
-            "resolved": "\"compact\" | \"full\"",
+            "original": "'full' | 'compact' | 'iso'",
+            "resolved": "\"compact\" | \"full\" | \"iso\"",
             "references": {}
           },
           "mutable": false,
           "attr": "format",
           "reflectToAttr": false,
-          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.",
+          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.",
           "docsTags": [],
           "values": [
             {
@@ -2420,6 +2420,10 @@
             },
             {
               "value": "full",
+              "type": "string"
+            },
+            {
+              "value": "iso",
               "type": "string"
             }
           ],

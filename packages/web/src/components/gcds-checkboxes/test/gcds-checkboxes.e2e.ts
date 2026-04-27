@@ -190,7 +190,7 @@ test.describe('gcds-checkboxes', () => {
         };
       };
 
-      (el as HTMLGcdsDateInputElement).validator = [selectAll()];
+      (el as HTMLGcdsCheckboxesElement).validator = [selectAll()];
     });
 
     await page.waitForChanges();
@@ -238,7 +238,7 @@ test.describe('gcds-checkboxes', () => {
       };
 
       // @ts-expect-error Old format of validator is different than new format. Will still run in JS environments
-      (el as HTMLGcdsDateInputElement).validator = [selectAll()];
+      (el as HTMLGcdsCheckboxesElement).validator = [selectAll()];
     });
 
     await page.waitForChanges();

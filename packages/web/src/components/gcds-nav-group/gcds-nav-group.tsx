@@ -137,8 +137,10 @@ export class GcdsNavGroup {
       if (this.open) {
         this.navPosiiton = window.scrollY;
         document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
       } else {
         document.body.style.removeProperty('position');
+        document.body.style.removeProperty('width');
         window.scrollTo(0, this.navPosiiton);
       }
     }
@@ -198,40 +200,42 @@ export class GcdsNavGroup {
 
     return (
       <Host role="listitem" open={open}>
-        <button
-          aria-haspopup="true"
-          tabIndex={0}
-          aria-expanded={open.toString()}
-          ref={element => (this.triggerElement = element as HTMLElement)}
-          class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
-          onBlur={() => this.gcdsBlur.emit()}
-          onFocus={() => this.gcdsFocus.emit()}
-          onClick={e => {
-            const event = emitEvent(e, this.gcdsClick);
-            if (event) {
-              this.toggleNav();
-            }
-          }}
-        >
-          <gcds-icon
-            name={
-              this.navStyle === 'expandable'
-                ? open
-                  ? 'chevron-down'
-                  : 'chevron-right'
-                : open
-                  ? 'chevron-up'
-                  : 'chevron-down'
-            }
-          ></gcds-icon>
-          {closeTrigger && open ? closeTrigger : openTrigger}
-        </button>
-        <ul
-          aria-label={menuLabel}
-          class={`gcds-nav-group__list gcds-nav--${this.navStyle}`}
-        >
-          <slot></slot>
-        </ul>
+        <div class="gcds-nav-group__container">
+          <button
+            aria-haspopup="true"
+            tabIndex={0}
+            aria-expanded={open.toString()}
+            ref={element => (this.triggerElement = element as HTMLElement)}
+            class={`gcds-nav-group__trigger gcds-trigger--${this.navStyle}`}
+            onBlur={() => this.gcdsBlur.emit()}
+            onFocus={() => this.gcdsFocus.emit()}
+            onClick={e => {
+              const event = emitEvent(e, this.gcdsClick);
+              if (event) {
+                this.toggleNav();
+              }
+            }}
+          >
+            <gcds-icon
+              name={
+                this.navStyle === 'expandable'
+                  ? open
+                    ? 'chevron-down'
+                    : 'chevron-right'
+                  : open
+                    ? 'chevron-up'
+                    : 'chevron-down'
+              }
+            ></gcds-icon>
+            {closeTrigger && open ? closeTrigger : openTrigger}
+          </button>
+          <ul
+            aria-label={menuLabel}
+            class={`gcds-nav-group__list gcds-nav--${this.navStyle}`}
+          >
+            <slot></slot>
+          </ul>
+        </div>
       </Host>
     );
   }
