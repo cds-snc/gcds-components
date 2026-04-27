@@ -39,6 +39,7 @@ export const DIRECTIVES = [
   d.GcdsSrOnly,
   d.GcdsStepper,
   d.GcdsTable,
+  d.GcdsTableSlots,
   d.GcdsText,
   d.GcdsTextarea,
   d.GcdsTopNav,
