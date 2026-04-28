@@ -232,7 +232,9 @@ export class GcdsTable {
     this.onDataChange(this.data);
 
     // Seed initial sort from sortDirection column definitions
-    this.sorting = buildInitialSorting(this.columns as TableColumn[]);
+    if (this.sortEnabled()) {
+      this.sorting = buildInitialSorting(this.columns as TableColumn[]);
+    }
     this.initialSorting = this.sorting;
 
     this.initTable();
