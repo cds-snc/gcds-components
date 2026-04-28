@@ -423,11 +423,11 @@ export class GcdsTable {
           </table>
 
           {/* ── Pagination ─────────────────────────── */}
-          {this.pagination && (
+          {this.paginationState && this.paginationSize !== 0 && (
             <gcds-pagination
               display="list"
-              totalPages={this.table.getPageCount()}
               currentPage={this.paginationState.pageIndex + 1}
+              totalPages={this.table.getPageCount()}
               label={I18N[this.lang].paginationLabel}
               onGcdsClick={(e) => this.handlePaginationClick(e)}
             />

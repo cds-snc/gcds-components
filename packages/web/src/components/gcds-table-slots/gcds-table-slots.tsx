@@ -349,7 +349,6 @@ export class GcdsTableSlots {
     * Handle pagination control clicks by updating table state and focusing the table
     */
   private handlePaginationClick(e: CustomEvent) {
-    this.table?.setPageIndex(e.detail.page - 1);
     this.paginationCurrentPage = e.detail.page;
 
     // focus table here to ensure keyboard users can navigate from pagination controls to table rows
@@ -569,11 +568,11 @@ export class GcdsTableSlots {
           </table>
 
           {/* ── Pagination ─────────────────────────── */}
-          {this.pagination && (
+          {this.paginationState && this.paginationSize !== 0 && (
             <gcds-pagination
               display="list"
-              totalPages={this.table.getPageCount()}
               currentPage={this.paginationState.pageIndex + 1}
+              totalPages={this.table.getPageCount()}
               label={I18N[this.lang].paginationLabel}
               onGcdsClick={(e) => this.handlePaginationClick(e)}
             />

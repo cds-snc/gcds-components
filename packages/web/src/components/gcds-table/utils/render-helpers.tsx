@@ -204,8 +204,12 @@ const renderFilterSortModal = element => {
           button-role="secondary"
           onClick={() => {
             element.filterSortModal.close();
-            element.filterInput.value = element.filterValue;
-            element.sortRadios.value = getSortValue(element.sorting);
+            if (element.filter) {
+              element.filterInput.value = element.initialFilter;
+            }
+            if (element.sortEnabled()) {
+              element.sortRadios.value = getSortValue(element.initialSorting);
+            }
           }}
         >
           {I18N[lang].modalClose}
@@ -261,8 +265,12 @@ const renderFilterSortModal = element => {
             <gcds-button
               button-role="secondary"
               onClick={() => {
-                element.filterInput.value = element.initialFilter;
-                element.sortRadios.value = getSortValue(element.initialSorting);
+                if (element.filter) {
+                  element.filterInput.value = element.initialFilter;
+                }
+                if (element.sortEnabled()) {
+                  element.sortRadios.value = getSortValue(element.initialSorting);
+                }
               }}
             >
               {I18N[lang].modalResetAllButton}
