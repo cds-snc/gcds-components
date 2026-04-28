@@ -124,7 +124,6 @@ export class GcdsTableSlots {
       }
     }
     updateTableOptions(this);
-    // this.emitStateChange();
   }
 
   @Watch('data')
@@ -137,7 +136,6 @@ export class GcdsTableSlots {
       }
     }
     updateTableOptions(this);
-    // this.emitStateChange();
   }
 
   @Watch('sort')
@@ -160,7 +158,6 @@ export class GcdsTableSlots {
       ...prev,
       state: { ...prev.state, pagination: this.paginationState },
     }));
-    // this.emitStateChange();
   }
 
   @Watch('paginationSize')
@@ -174,7 +171,6 @@ export class GcdsTableSlots {
       ...prev,
       state: { ...prev.state, pagination: this.paginationState },
     }));
-    // this.emitStateChange();
   }
 
   @Watch('filterValue')
@@ -184,7 +180,6 @@ export class GcdsTableSlots {
       ...prev,
       state: { ...prev.state, globalFilter: this.globalFilter },
     }));
-    // this.emitStateChange();
   }
 
   @Watch('lang')
@@ -247,15 +242,12 @@ export class GcdsTableSlots {
       let value: unknown;
 
       if (binding.name.startsWith('data-bind-template-')) {
-        // data-bind-template-src="/avatars/{id}.png"
-        // Replaces {fieldName} tokens with the corresponding row values
         prop = binding.name.replace('data-bind-template-', '');
         value = binding.value.replace(
           /\{(\w+)\}/g,
           (_, field) => String(row[field] ?? '')
         );
       } else {
-        // data-bind-src="avatarUrl" — existing direct mapping
         prop = binding.name.replace('data-bind-', '');
         value = row[binding.value];
       }
