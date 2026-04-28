@@ -249,15 +249,9 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-container",
-        "gcds-icon"
-      ],
+      "dependencies": ["gcds-container", "gcds-icon"],
       "dependencyGraph": {
-        "gcds-alert": [
-          "gcds-container",
-          "gcds-icon"
-        ]
+        "gcds-alert": ["gcds-container", "gcds-icon"]
       }
     },
     {
@@ -316,19 +310,11 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-breadcrumbs-item"
-      ],
+      "dependencies": ["gcds-breadcrumbs-item"],
       "dependencyGraph": {
-        "gcds-breadcrumbs": [
-          "gcds-breadcrumbs-item"
-        ],
-        "gcds-breadcrumbs-item": [
-          "gcds-link"
-        ],
-        "gcds-link": [
-          "gcds-icon"
-        ]
+        "gcds-breadcrumbs": ["gcds-breadcrumbs-item"],
+        "gcds-breadcrumbs-item": ["gcds-link"],
+        "gcds-link": ["gcds-icon"]
       }
     },
     {
@@ -423,22 +409,12 @@
         }
       ],
       "parts": [],
-      "dependents": [
-        "gcds-breadcrumbs"
-      ],
-      "dependencies": [
-        "gcds-link"
-      ],
+      "dependents": ["gcds-breadcrumbs"],
+      "dependencies": ["gcds-link"],
       "dependencyGraph": {
-        "gcds-breadcrumbs-item": [
-          "gcds-link"
-        ],
-        "gcds-link": [
-          "gcds-icon"
-        ],
-        "gcds-breadcrumbs": [
-          "gcds-breadcrumbs-item"
-        ]
+        "gcds-breadcrumbs-item": ["gcds-link"],
+        "gcds-link": ["gcds-icon"],
+        "gcds-breadcrumbs": ["gcds-breadcrumbs-item"]
       }
     },
     {
@@ -812,27 +788,13 @@
         }
       ],
       "parts": [],
-      "dependents": [
-        "gcds-search",
-        "gcds-table",
-        "gcds-table-slots"
-      ],
-      "dependencies": [
-        "gcds-icon"
-      ],
+      "dependents": ["gcds-search", "gcds-table", "gcds-table-slots"],
+      "dependencies": ["gcds-icon"],
       "dependencyGraph": {
-        "gcds-button": [
-          "gcds-icon"
-        ],
-        "gcds-search": [
-          "gcds-button"
-        ],
-        "gcds-table": [
-          "gcds-button"
-        ],
-        "gcds-table-slots": [
-          "gcds-button"
-        ]
+        "gcds-button": ["gcds-icon"],
+        "gcds-search": ["gcds-button"],
+        "gcds-table": ["gcds-button"],
+        "gcds-table-slots": ["gcds-button"]
       }
     },
     {
@@ -1125,20 +1087,10 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-text",
-        "gcds-sr-only",
-        "gcds-link"
-      ],
+      "dependencies": ["gcds-text", "gcds-sr-only", "gcds-link"],
       "dependencyGraph": {
-        "gcds-card": [
-          "gcds-text",
-          "gcds-sr-only",
-          "gcds-link"
-        ],
-        "gcds-link": [
-          "gcds-icon"
-        ]
+        "gcds-card": ["gcds-text", "gcds-sr-only", "gcds-link"],
+        "gcds-link": ["gcds-icon"]
       }
     },
     {
@@ -1784,13 +1736,8 @@
           "gcds-error-message",
           "gcds-label"
         ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ]
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"]
       }
     },
     {
@@ -2287,18 +2234,11 @@
         }
       ],
       "parts": [],
-      "dependents": [
-        "gcds-alert",
-        "gcds-grid"
-      ],
+      "dependents": ["gcds-alert", "gcds-grid"],
       "dependencies": [],
       "dependencyGraph": {
-        "gcds-alert": [
-          "gcds-container"
-        ],
-        "gcds-grid": [
-          "gcds-container"
-        ]
+        "gcds-alert": ["gcds-container"],
+        "gcds-grid": ["gcds-container"]
       }
     },
     {
@@ -2906,23 +2846,10 @@
           "gcds-hint",
           "gcds-error-message"
         ],
-        "gcds-select": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ],
-        "gcds-input": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ]
+        "gcds-select": ["gcds-label", "gcds-hint", "gcds-error-message"],
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"],
+        "gcds-input": ["gcds-label", "gcds-hint", "gcds-error-message"]
       }
     },
     {
@@ -2986,13 +2913,9 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-text"
-      ],
+      "dependencies": ["gcds-text"],
       "dependencyGraph": {
-        "gcds-date-modified": [
-          "gcds-text"
-        ]
+        "gcds-date-modified": ["gcds-text"]
       }
     },
     {
@@ -3214,36 +3137,16 @@
         "gcds-select",
         "gcds-textarea"
       ],
-      "dependencies": [
-        "gcds-text",
-        "gcds-icon"
-      ],
+      "dependencies": ["gcds-text", "gcds-icon"],
       "dependencyGraph": {
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ],
-        "gcds-checkboxes": [
-          "gcds-error-message"
-        ],
-        "gcds-date-input": [
-          "gcds-error-message"
-        ],
-        "gcds-file-uploader": [
-          "gcds-error-message"
-        ],
-        "gcds-input": [
-          "gcds-error-message"
-        ],
-        "gcds-radios": [
-          "gcds-error-message"
-        ],
-        "gcds-select": [
-          "gcds-error-message"
-        ],
-        "gcds-textarea": [
-          "gcds-error-message"
-        ]
+        "gcds-error-message": ["gcds-text", "gcds-icon"],
+        "gcds-checkboxes": ["gcds-error-message"],
+        "gcds-date-input": ["gcds-error-message"],
+        "gcds-file-uploader": ["gcds-error-message"],
+        "gcds-input": ["gcds-error-message"],
+        "gcds-radios": ["gcds-error-message"],
+        "gcds-select": ["gcds-error-message"],
+        "gcds-textarea": ["gcds-error-message"]
       }
     },
     {
@@ -3403,18 +3306,10 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-heading",
-        "gcds-link"
-      ],
+      "dependencies": ["gcds-heading", "gcds-link"],
       "dependencyGraph": {
-        "gcds-error-summary": [
-          "gcds-heading",
-          "gcds-link"
-        ],
-        "gcds-link": [
-          "gcds-icon"
-        ]
+        "gcds-error-summary": ["gcds-heading", "gcds-link"],
+        "gcds-link": ["gcds-icon"]
       }
     },
     {
@@ -3530,16 +3425,10 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-hint"
-      ],
+      "dependencies": ["gcds-hint"],
       "dependencyGraph": {
-        "gcds-fieldset": [
-          "gcds-hint"
-        ],
-        "gcds-hint": [
-          "gcds-text"
-        ]
+        "gcds-fieldset": ["gcds-hint"],
+        "gcds-hint": ["gcds-text"]
       }
     },
     {
@@ -4229,13 +4118,8 @@
           "gcds-text",
           "gcds-icon"
         ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ]
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"]
       }
     },
     {
@@ -4407,23 +4291,11 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-signature",
-        "gcds-sr-only",
-        "gcds-link"
-      ],
+      "dependencies": ["gcds-signature", "gcds-sr-only", "gcds-link"],
       "dependencyGraph": {
-        "gcds-footer": [
-          "gcds-signature",
-          "gcds-sr-only",
-          "gcds-link"
-        ],
-        "gcds-signature": [
-          "gcds-sr-only"
-        ],
-        "gcds-link": [
-          "gcds-icon"
-        ]
+        "gcds-footer": ["gcds-signature", "gcds-sr-only", "gcds-link"],
+        "gcds-signature": ["gcds-sr-only"],
+        "gcds-link": ["gcds-icon"]
       }
     },
     {
@@ -5273,13 +5145,9 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-container"
-      ],
+      "dependencies": ["gcds-container"],
       "dependencyGraph": {
-        "gcds-grid": [
-          "gcds-container"
-        ]
+        "gcds-grid": ["gcds-container"]
       }
     },
     {
@@ -5652,27 +5520,12 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-link",
-        "gcds-lang-toggle",
-        "gcds-signature"
-      ],
+      "dependencies": ["gcds-link", "gcds-lang-toggle", "gcds-signature"],
       "dependencyGraph": {
-        "gcds-header": [
-          "gcds-link",
-          "gcds-lang-toggle",
-          "gcds-signature"
-        ],
-        "gcds-link": [
-          "gcds-icon"
-        ],
-        "gcds-lang-toggle": [
-          "gcds-sr-only",
-          "gcds-link"
-        ],
-        "gcds-signature": [
-          "gcds-sr-only"
-        ]
+        "gcds-header": ["gcds-link", "gcds-lang-toggle", "gcds-signature"],
+        "gcds-link": ["gcds-icon"],
+        "gcds-lang-toggle": ["gcds-sr-only", "gcds-link"],
+        "gcds-signature": ["gcds-sr-only"]
       }
     },
     {
@@ -6127,21 +5980,11 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "gcds-error-summary": [
-          "gcds-heading"
-        ],
-        "gcds-notice": [
-          "gcds-heading"
-        ],
-        "gcds-stepper": [
-          "gcds-heading"
-        ],
-        "gcds-table": [
-          "gcds-heading"
-        ],
-        "gcds-table-slots": [
-          "gcds-heading"
-        ]
+        "gcds-error-summary": ["gcds-heading"],
+        "gcds-notice": ["gcds-heading"],
+        "gcds-stepper": ["gcds-heading"],
+        "gcds-table": ["gcds-heading"],
+        "gcds-table-slots": ["gcds-heading"]
       }
     },
     {
@@ -6208,37 +6051,17 @@
         "gcds-select",
         "gcds-textarea"
       ],
-      "dependencies": [
-        "gcds-text"
-      ],
+      "dependencies": ["gcds-text"],
       "dependencyGraph": {
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-checkboxes": [
-          "gcds-hint"
-        ],
-        "gcds-date-input": [
-          "gcds-hint"
-        ],
-        "gcds-fieldset": [
-          "gcds-hint"
-        ],
-        "gcds-file-uploader": [
-          "gcds-hint"
-        ],
-        "gcds-input": [
-          "gcds-hint"
-        ],
-        "gcds-radios": [
-          "gcds-hint"
-        ],
-        "gcds-select": [
-          "gcds-hint"
-        ],
-        "gcds-textarea": [
-          "gcds-hint"
-        ]
+        "gcds-hint": ["gcds-text"],
+        "gcds-checkboxes": ["gcds-hint"],
+        "gcds-date-input": ["gcds-hint"],
+        "gcds-fieldset": ["gcds-hint"],
+        "gcds-file-uploader": ["gcds-hint"],
+        "gcds-input": ["gcds-hint"],
+        "gcds-radios": ["gcds-hint"],
+        "gcds-select": ["gcds-hint"],
+        "gcds-textarea": ["gcds-hint"]
       }
     },
     {
@@ -6734,42 +6557,18 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "gcds-alert": [
-          "gcds-icon"
-        ],
-        "gcds-button": [
-          "gcds-icon"
-        ],
-        "gcds-error-message": [
-          "gcds-icon"
-        ],
-        "gcds-file-uploader": [
-          "gcds-icon"
-        ],
-        "gcds-link": [
-          "gcds-icon"
-        ],
-        "gcds-nav-group": [
-          "gcds-icon"
-        ],
-        "gcds-notice": [
-          "gcds-icon"
-        ],
-        "gcds-pagination": [
-          "gcds-icon"
-        ],
-        "gcds-search": [
-          "gcds-icon"
-        ],
-        "gcds-table": [
-          "gcds-icon"
-        ],
-        "gcds-table-slots": [
-          "gcds-icon"
-        ],
-        "gcds-topic-menu": [
-          "gcds-icon"
-        ]
+        "gcds-alert": ["gcds-icon"],
+        "gcds-button": ["gcds-icon"],
+        "gcds-error-message": ["gcds-icon"],
+        "gcds-file-uploader": ["gcds-icon"],
+        "gcds-link": ["gcds-icon"],
+        "gcds-nav-group": ["gcds-icon"],
+        "gcds-notice": ["gcds-icon"],
+        "gcds-pagination": ["gcds-icon"],
+        "gcds-search": ["gcds-icon"],
+        "gcds-table": ["gcds-icon"],
+        "gcds-table-slots": ["gcds-icon"],
+        "gcds-topic-menu": ["gcds-icon"]
       }
     },
     {
@@ -7722,38 +7521,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "gcds-date-input",
-        "gcds-table",
-        "gcds-table-slots"
-      ],
-      "dependencies": [
-        "gcds-label",
-        "gcds-hint",
-        "gcds-error-message"
-      ],
+      "dependents": ["gcds-date-input", "gcds-table", "gcds-table-slots"],
+      "dependencies": ["gcds-label", "gcds-hint", "gcds-error-message"],
       "dependencyGraph": {
-        "gcds-input": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ],
-        "gcds-date-input": [
-          "gcds-input"
-        ],
-        "gcds-table": [
-          "gcds-input"
-        ],
-        "gcds-table-slots": [
-          "gcds-input"
-        ]
+        "gcds-input": ["gcds-label", "gcds-hint", "gcds-error-message"],
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"],
+        "gcds-date-input": ["gcds-input"],
+        "gcds-table": ["gcds-input"],
+        "gcds-table-slots": ["gcds-input"]
       }
     },
     {
@@ -7885,27 +7661,13 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "gcds-checkboxes": [
-          "gcds-label"
-        ],
-        "gcds-file-uploader": [
-          "gcds-label"
-        ],
-        "gcds-input": [
-          "gcds-label"
-        ],
-        "gcds-radios": [
-          "gcds-label"
-        ],
-        "gcds-search": [
-          "gcds-label"
-        ],
-        "gcds-select": [
-          "gcds-label"
-        ],
-        "gcds-textarea": [
-          "gcds-label"
-        ]
+        "gcds-checkboxes": ["gcds-label"],
+        "gcds-file-uploader": ["gcds-label"],
+        "gcds-input": ["gcds-label"],
+        "gcds-radios": ["gcds-label"],
+        "gcds-search": ["gcds-label"],
+        "gcds-select": ["gcds-label"],
+        "gcds-textarea": ["gcds-label"]
       }
     },
     {
@@ -7990,24 +7752,12 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "gcds-header"
-      ],
-      "dependencies": [
-        "gcds-sr-only",
-        "gcds-link"
-      ],
+      "dependents": ["gcds-header"],
+      "dependencies": ["gcds-sr-only", "gcds-link"],
       "dependencyGraph": {
-        "gcds-lang-toggle": [
-          "gcds-sr-only",
-          "gcds-link"
-        ],
-        "gcds-link": [
-          "gcds-icon"
-        ],
-        "gcds-header": [
-          "gcds-lang-toggle"
-        ]
+        "gcds-lang-toggle": ["gcds-sr-only", "gcds-link"],
+        "gcds-link": ["gcds-icon"],
+        "gcds-header": ["gcds-lang-toggle"]
       }
     },
     {
@@ -8343,31 +8093,15 @@
         "gcds-header",
         "gcds-lang-toggle"
       ],
-      "dependencies": [
-        "gcds-icon"
-      ],
+      "dependencies": ["gcds-icon"],
       "dependencyGraph": {
-        "gcds-link": [
-          "gcds-icon"
-        ],
-        "gcds-breadcrumbs-item": [
-          "gcds-link"
-        ],
-        "gcds-card": [
-          "gcds-link"
-        ],
-        "gcds-error-summary": [
-          "gcds-link"
-        ],
-        "gcds-footer": [
-          "gcds-link"
-        ],
-        "gcds-header": [
-          "gcds-link"
-        ],
-        "gcds-lang-toggle": [
-          "gcds-link"
-        ]
+        "gcds-link": ["gcds-icon"],
+        "gcds-breadcrumbs-item": ["gcds-link"],
+        "gcds-card": ["gcds-link"],
+        "gcds-error-summary": ["gcds-link"],
+        "gcds-footer": ["gcds-link"],
+        "gcds-header": ["gcds-link"],
+        "gcds-lang-toggle": ["gcds-link"]
       }
     },
     {
@@ -8593,23 +8327,12 @@
         }
       ],
       "parts": [],
-      "dependents": [
-        "gcds-side-nav",
-        "gcds-top-nav"
-      ],
-      "dependencies": [
-        "gcds-icon"
-      ],
+      "dependents": ["gcds-side-nav", "gcds-top-nav"],
+      "dependencies": ["gcds-icon"],
       "dependencyGraph": {
-        "gcds-nav-group": [
-          "gcds-icon"
-        ],
-        "gcds-side-nav": [
-          "gcds-nav-group"
-        ],
-        "gcds-top-nav": [
-          "gcds-nav-group"
-        ]
+        "gcds-nav-group": ["gcds-icon"],
+        "gcds-side-nav": ["gcds-nav-group"],
+        "gcds-top-nav": ["gcds-nav-group"]
       }
     },
     {
@@ -8876,17 +8599,9 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-icon",
-        "gcds-heading",
-        "gcds-sr-only"
-      ],
+      "dependencies": ["gcds-icon", "gcds-heading", "gcds-sr-only"],
       "dependencyGraph": {
-        "gcds-notice": [
-          "gcds-icon",
-          "gcds-heading",
-          "gcds-sr-only"
-        ]
+        "gcds-notice": ["gcds-icon", "gcds-heading", "gcds-sr-only"]
       }
     },
     {
@@ -9169,23 +8884,12 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "gcds-table",
-        "gcds-table-slots"
-      ],
-      "dependencies": [
-        "gcds-icon"
-      ],
+      "dependents": ["gcds-table", "gcds-table-slots"],
+      "dependencies": ["gcds-icon"],
       "dependencyGraph": {
-        "gcds-pagination": [
-          "gcds-icon"
-        ],
-        "gcds-table": [
-          "gcds-pagination"
-        ],
-        "gcds-table-slots": [
-          "gcds-pagination"
-        ]
+        "gcds-pagination": ["gcds-icon"],
+        "gcds-table": ["gcds-pagination"],
+        "gcds-table-slots": ["gcds-pagination"]
       }
     },
     {
@@ -9754,10 +9458,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "gcds-table",
-        "gcds-table-slots"
-      ],
+      "dependents": ["gcds-table", "gcds-table-slots"],
       "dependencies": [
         "gcds-sr-only",
         "gcds-hint",
@@ -9771,19 +9472,10 @@
           "gcds-error-message",
           "gcds-label"
         ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ],
-        "gcds-table": [
-          "gcds-radios"
-        ],
-        "gcds-table-slots": [
-          "gcds-radios"
-        ]
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"],
+        "gcds-table": ["gcds-radios"],
+        "gcds-table-slots": ["gcds-radios"]
       }
     },
     {
@@ -10086,9 +9778,7 @@
           "gcds-button",
           "gcds-icon"
         ],
-        "gcds-button": [
-          "gcds-icon"
-        ]
+        "gcds-button": ["gcds-icon"]
       }
     },
     {
@@ -10717,38 +10407,15 @@
           "docs": ""
         }
       ],
-      "dependents": [
-        "gcds-date-input",
-        "gcds-table",
-        "gcds-table-slots"
-      ],
-      "dependencies": [
-        "gcds-label",
-        "gcds-hint",
-        "gcds-error-message"
-      ],
+      "dependents": ["gcds-date-input", "gcds-table", "gcds-table-slots"],
+      "dependencies": ["gcds-label", "gcds-hint", "gcds-error-message"],
       "dependencyGraph": {
-        "gcds-select": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ],
-        "gcds-date-input": [
-          "gcds-select"
-        ],
-        "gcds-table": [
-          "gcds-select"
-        ],
-        "gcds-table-slots": [
-          "gcds-select"
-        ]
+        "gcds-select": ["gcds-label", "gcds-hint", "gcds-error-message"],
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"],
+        "gcds-date-input": ["gcds-select"],
+        "gcds-table": ["gcds-select"],
+        "gcds-table-slots": ["gcds-select"]
       }
     },
     {
@@ -10935,16 +10602,10 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-nav-group"
-      ],
+      "dependencies": ["gcds-nav-group"],
       "dependencyGraph": {
-        "gcds-side-nav": [
-          "gcds-nav-group"
-        ],
-        "gcds-nav-group": [
-          "gcds-icon"
-        ]
+        "gcds-side-nav": ["gcds-nav-group"],
+        "gcds-nav-group": ["gcds-icon"]
       }
     },
     {
@@ -11060,23 +10721,12 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "gcds-footer",
-        "gcds-header"
-      ],
-      "dependencies": [
-        "gcds-sr-only"
-      ],
+      "dependents": ["gcds-footer", "gcds-header"],
+      "dependencies": ["gcds-sr-only"],
       "dependencyGraph": {
-        "gcds-signature": [
-          "gcds-sr-only"
-        ],
-        "gcds-footer": [
-          "gcds-signature"
-        ],
-        "gcds-header": [
-          "gcds-signature"
-        ]
+        "gcds-signature": ["gcds-sr-only"],
+        "gcds-footer": ["gcds-signature"],
+        "gcds-header": ["gcds-signature"]
       }
     },
     {
@@ -11181,48 +10831,20 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "gcds-card": [
-          "gcds-sr-only"
-        ],
-        "gcds-checkboxes": [
-          "gcds-sr-only"
-        ],
-        "gcds-file-uploader": [
-          "gcds-sr-only"
-        ],
-        "gcds-footer": [
-          "gcds-sr-only"
-        ],
-        "gcds-lang-toggle": [
-          "gcds-sr-only"
-        ],
-        "gcds-notice": [
-          "gcds-sr-only"
-        ],
-        "gcds-radios": [
-          "gcds-sr-only"
-        ],
-        "gcds-search": [
-          "gcds-sr-only"
-        ],
-        "gcds-signature": [
-          "gcds-sr-only"
-        ],
-        "gcds-stepper": [
-          "gcds-sr-only"
-        ],
-        "gcds-table": [
-          "gcds-sr-only"
-        ],
-        "gcds-table-slots": [
-          "gcds-sr-only"
-        ],
-        "gcds-textarea": [
-          "gcds-sr-only"
-        ],
-        "gcds-topic-menu": [
-          "gcds-sr-only"
-        ]
+        "gcds-card": ["gcds-sr-only"],
+        "gcds-checkboxes": ["gcds-sr-only"],
+        "gcds-file-uploader": ["gcds-sr-only"],
+        "gcds-footer": ["gcds-sr-only"],
+        "gcds-lang-toggle": ["gcds-sr-only"],
+        "gcds-notice": ["gcds-sr-only"],
+        "gcds-radios": ["gcds-sr-only"],
+        "gcds-search": ["gcds-sr-only"],
+        "gcds-signature": ["gcds-sr-only"],
+        "gcds-stepper": ["gcds-sr-only"],
+        "gcds-table": ["gcds-sr-only"],
+        "gcds-table-slots": ["gcds-sr-only"],
+        "gcds-textarea": ["gcds-sr-only"],
+        "gcds-topic-menu": ["gcds-sr-only"]
       }
     },
     {
@@ -11336,15 +10958,9 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-heading",
-        "gcds-sr-only"
-      ],
+      "dependencies": ["gcds-heading", "gcds-sr-only"],
       "dependencyGraph": {
-        "gcds-stepper": [
-          "gcds-heading",
-          "gcds-sr-only"
-        ]
+        "gcds-stepper": ["gcds-heading", "gcds-sr-only"]
       }
     },
     {
@@ -11661,35 +11277,18 @@
           "gcds-input",
           "gcds-icon"
         ],
-        "gcds-select": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ],
-        "gcds-pagination": [
-          "gcds-icon"
-        ],
+        "gcds-select": ["gcds-label", "gcds-hint", "gcds-error-message"],
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"],
+        "gcds-pagination": ["gcds-icon"],
         "gcds-radios": [
           "gcds-sr-only",
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
         ],
-        "gcds-button": [
-          "gcds-icon"
-        ],
-        "gcds-input": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ]
+        "gcds-button": ["gcds-icon"],
+        "gcds-input": ["gcds-label", "gcds-hint", "gcds-error-message"]
       }
     },
     {
@@ -12054,35 +11653,18 @@
           "gcds-input",
           "gcds-icon"
         ],
-        "gcds-select": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ],
-        "gcds-pagination": [
-          "gcds-icon"
-        ],
+        "gcds-select": ["gcds-label", "gcds-hint", "gcds-error-message"],
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"],
+        "gcds-pagination": ["gcds-icon"],
         "gcds-radios": [
           "gcds-sr-only",
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
         ],
-        "gcds-button": [
-          "gcds-icon"
-        ],
-        "gcds-input": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ]
+        "gcds-button": ["gcds-icon"],
+        "gcds-input": ["gcds-label", "gcds-hint", "gcds-error-message"]
       }
     },
     {
@@ -12589,24 +12171,12 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "gcds-card": [
-          "gcds-text"
-        ],
-        "gcds-date-modified": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text"
-        ],
-        "gcds-file-uploader": [
-          "gcds-text"
-        ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-textarea": [
-          "gcds-text"
-        ]
+        "gcds-card": ["gcds-text"],
+        "gcds-date-modified": ["gcds-text"],
+        "gcds-error-message": ["gcds-text"],
+        "gcds-file-uploader": ["gcds-text"],
+        "gcds-hint": ["gcds-text"],
+        "gcds-textarea": ["gcds-text"]
       }
     },
     {
@@ -13317,13 +12887,8 @@
           "gcds-sr-only",
           "gcds-text"
         ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ]
+        "gcds-hint": ["gcds-text"],
+        "gcds-error-message": ["gcds-text", "gcds-icon"]
       }
     },
     {
@@ -13544,16 +13109,10 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-nav-group"
-      ],
+      "dependencies": ["gcds-nav-group"],
       "dependencyGraph": {
-        "gcds-top-nav": [
-          "gcds-nav-group"
-        ],
-        "gcds-nav-group": [
-          "gcds-icon"
-        ]
+        "gcds-top-nav": ["gcds-nav-group"],
+        "gcds-nav-group": ["gcds-icon"]
       }
     },
     {
@@ -13748,15 +13307,9 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "gcds-sr-only",
-        "gcds-icon"
-      ],
+      "dependencies": ["gcds-sr-only", "gcds-icon"],
       "dependencyGraph": {
-        "gcds-topic-menu": [
-          "gcds-sr-only",
-          "gcds-icon"
-        ]
+        "gcds-topic-menu": ["gcds-sr-only", "gcds-icon"]
       }
     }
   ],
@@ -13802,7 +13355,7 @@
       "path": "src/components/gcds-radios/radio.tsx"
     },
     "src/components/gcds-table/utils/table-helpers.ts::TableColumn": {
-      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n  slotted?: boolean;\n}",
+      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n}",
       "docstring": "Table column definition",
       "path": "src/components/gcds-table/utils/table-helpers.ts"
     },

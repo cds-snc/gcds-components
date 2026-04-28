@@ -336,14 +336,14 @@ export class GcdsTable {
                       c => c.field === header.id,
                     );
                     const canSort = header.column.getCanSort();
-                    const alignClass = colDef?.align
-                      ? `align-${colDef.align}`
+                    const alignmentClass = colDef?.alignment
+                      ? `alignment-${colDef.alignment}`
                       : '';
 
                     return (
                       <th
                         key={header.id}
-                        class={`gcds-table__th ${alignClass}`}
+                        class={`gcds-table__th ${alignmentClass}`}
                         scope="col"
                         aria-sort={
                           header.column.getIsSorted() === 'asc'
@@ -438,7 +438,7 @@ export class GcdsTable {
                       return (
                         <Tag
                           key={cell.id}
-                          class={`gcds-table__td${colDef?.align ? ` align-${colDef.align}` : ''}`}
+                          class={`gcds-table__td${colDef?.alignment ? ` alignment-${colDef.alignment}` : ''}`}
                           data-column={colDef?.header}
                           {...scope}
                         >

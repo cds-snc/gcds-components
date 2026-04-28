@@ -1,4 +1,4 @@
-@layer reset, default, controls, pagination, overwrites, modal;
+@layer reset, default, controls, pagination, overwrites, modal, alignment;
 
 @layer reset {
   :host {
@@ -228,7 +228,8 @@
 @layer overwrites {
   :host .gcds-table {
     /* Normalize gcds-button styles to match table typography and spacing. */
-    gcds-button {
+    .gcds-table__filters > gcds-button,
+    .gcds-table__table gcds-button {
       --gcds-button-mobile-width: auto;
       --gcds-button-font-desktop: var(--gcds-table-font);
       --gcds-button-font-mobile: var(--gcds-table-font);
@@ -345,5 +346,19 @@
         }
       }
     }
+  }
+}
+
+@layer alignment {
+  :host .gcds-table .alignment-start {
+    text-align: left;
+  }
+
+  :host .gcds-table .alignment-center {
+    text-align: center;
+  }
+
+  :host .gcds-table .alignment-end {
+    text-align: right;
   }
 }

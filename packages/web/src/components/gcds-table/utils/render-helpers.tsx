@@ -286,9 +286,6 @@ const renderFilterSortModal = element => {
           </div>
 
           <div class="gcds-table__modal-footer">
-            <gcds-button button-role="primary" type="submit">
-              {I18N[lang].modalApplyButton}
-            </gcds-button>
             <gcds-button
               button-role="secondary"
               onClick={() => {
@@ -303,6 +300,9 @@ const renderFilterSortModal = element => {
               }}
             >
               {I18N[lang].modalResetAllButton}
+            </gcds-button>
+            <gcds-button button-role="primary" type="submit">
+              {I18N[lang].modalApplyButton}
             </gcds-button>
           </div>
         </form>
