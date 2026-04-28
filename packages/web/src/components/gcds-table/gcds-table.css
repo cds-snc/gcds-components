@@ -253,7 +253,7 @@
     background: var(--gcds-table-modal-background);
     border-radius: var(--gcds-table-modal-border-radius-desktop);
     box-shadow: var(--gcds-table-modal-box-shadow);
-    padding: var(--gcds-table-modal-padding);
+    padding: 0;
 
     &[open] {
       display: flex;
@@ -265,11 +265,17 @@
     }
 
     @media only screen and (width < 48em) {
-      height: var(--gcds-table-modal-height-mobile);
-      max-height: auto;
-      margin-block-start: var(--gcds-table-modal-margin-mobile);
-      overflow-y: scroll;
-      border-radius: var(--gcds-table-modal-border-radius-mobile);
+      &:modal {
+        inset: unset;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: var(--gcds-table-modal-height-mobile);
+        max-height: var(--gcds-table-modal-height-mobile);
+        margin: 0;
+        overflow-y: scroll;
+        border-radius: var(--gcds-table-modal-border-radius-mobile);
+      }
     }
 
     .gcds-table__modal-header {
@@ -277,8 +283,7 @@
       flex: 0 0 auto;
       align-items: center;
       justify-content: space-between;
-      margin-block-end: var(--gcds-table-modal-spacing);
-      padding: var(--gcds-table-modal-header-padding);
+      padding: var(--gcds-table-modal-spacing);
       border-block-end: var(--gcds-table-modal-border);
 
       --gcds-heading-h2-desktop: var(--gcds-table-modal-header-heading);
@@ -294,7 +299,7 @@
 
     .gcds-table__modal-content,
     .gcds-table__modal-footer {
-      padding-inline: var(--gcds-table-modal-spacing);
+      padding: var(--gcds-table-modal-spacing);
     }
 
     .gcds-table__modal-content {
@@ -335,7 +340,10 @@
       gap: var(--gcds-table-modal-spacing);
       background-color: var(--gcds-table-modal-background);
       box-shadow: var(--gcds-table-modal-footer-box-shadow);
-      padding-block-start: var(--gcds-table-modal-footer-padding);
+
+      @media only screen and (width < 48em) {
+        flex-direction: column;
+      }
 
       gcds-button {
         flex: 1;
@@ -360,5 +368,15 @@
 
   :host .gcds-table .alignment-end {
     text-align: right;
+  }
+
+  /* Ensure table cells are always left-aligned on small screens */
+  @media only screen and (width < 48em) {
+    :host .gcds-table table {
+      th,
+      td {
+        text-align: left !important;
+      }
+    }
   }
 }

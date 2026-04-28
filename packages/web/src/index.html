@@ -114,24 +114,17 @@
         );
         --gcds-table-modal-background: var(--gcds-bg-white);
         --gcds-table-modal-backdrop-background: rgba(0, 0, 0, 0.25);
-        --gcds-table-modal-spacing: var(--gcds-spacing-300);
+        --gcds-table-modal-spacing: var(--gcds-spacing-200);
         --gcds-table-modal-border: var(--gcds-border-width-sm) solid
           var(--gcds-border-default);
-        --gcds-table-modal-border-radius-desktop: var(
-          --gcds-table-modal-spacing
-        );
+        --gcds-table-modal-border-radius-desktop: var(--gcds-spacing-300);
         --gcds-table-modal-border-radius-mobile: var(--gcds-spacing-175)
           var(--gcds-spacing-175) 0 0;
         --gcds-table-modal-box-shadow: 0 var(--gcds-spacing-25)
           var(--gcds-spacing-200) var(--gcds-spacing-50) rgba(0, 0, 0, 0.2);
-        --gcds-table-modal-margin-mobile: var(--gcds-spacing-700);
-        --gcds-table-modal-padding: var(--gcds-table-modal-spacing) 0;
 
-        --gcds-table-modal-header-padding: 0 var(--gcds-table-modal-spacing)
-          var(--gcds-table-modal-spacing);
         --gcds-table-modal-header-heading:
           700 20px/32px 'Noto Sans', sans-serif;
-
         --gcds-table-modal-body-font-bold:
           700 18px/25px 'Noto Sans', sans-serif;
         --gcds-table-modal-body-font-medium:
@@ -139,7 +132,6 @@
 
         --gcds-table-modal-footer-box-shadow: 0 -4px 12px -2px
           rgba(0, 0, 0, 0.1);
-        --gcds-table-modal-footer-padding: var(--gcds-spacing-200);
         --gcds-table-modal-footer-button-width: 100%;
         --gcds-table-modal-footer-button-padding: var(--gcds-spacing-125)
           var(--gcds-spacing-200);
@@ -200,7 +192,6 @@
 
       <hr class="my-550" />
 
-
       <gcds-table-slots
         id="my-table-slots"
         sort="true"
@@ -247,20 +238,20 @@
           {
             "field": "number",
             "header": "Pokédex",
-            "align": "end",
+            "alignment": "end",
             "sortDirection": "asc"
           },
           {
             "field": "name",
             "header": "Name"
           },
-          { "field": "height", "header": "Height", "align": "end" },
-          { "field": "weight", "header": "Weight", "align": "end" },
+          { "field": "height", "header": "Height", "alignment": "end" },
+          { "field": "weight", "header": "Weight", "alignment": "end" },
           {
             "field": "base_experience",
             "header": "Base experience",
             "sort": false,
-            "align": "end"
+            "alignment": "end"
           }
         ]'
         data='[
