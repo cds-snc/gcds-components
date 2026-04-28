@@ -31,7 +31,7 @@ interface TableColumnSlots {
   field: string;
   header: string;
   sortDirection?: 'asc' | 'desc';
-  align?: 'start' | 'center' | 'end';
+  alignment?: 'start' | 'center' | 'end';
   sort?: boolean;
   rowHeader?: boolean;
   slotted?: boolean;
