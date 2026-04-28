@@ -172,7 +172,7 @@ export namespace Components {
      */
     interface GcdsCheckboxes {
         /**
-          * If true, the checkobox will be focused on component render
+          * If true, the checkbox will be focused on component render
          */
         "autofocus": boolean;
         /**
@@ -2527,7 +2527,7 @@ declare namespace LocalJSX {
      */
     interface GcdsCheckboxes {
         /**
-          * If true, the checkobox will be focused on component render
+          * If true, the checkbox will be focused on component render
          */
         "autofocus"?: boolean;
         /**
