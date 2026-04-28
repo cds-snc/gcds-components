@@ -216,17 +216,21 @@ const renderFilterSortModal = element => {
           onSubmit={ev => {
             ev.preventDefault();
 
-            element.filterValue = element.filterInput.value;
+            if (element.filter) {
+              element.filterValue = element.filterInput.value;
+            }
 
-            const sortValue = element.sortRadios.value;
-            if (sortValue === 'null') {
-              element.sorting = [];
-            } else {
-              const [direction, field] = sortValue.split('-');
-              element.sorting = [{
-                id: field,
-                desc: direction === 'desc',
-              }];
+            if (element.sortEnabled()) {
+              const sortValue = element.sortRadios.value;
+              if (sortValue === 'null') {
+                element.sorting = [];
+              } else {
+                const [direction, field] = sortValue.split('-');
+                element.sorting = [{
+                  id: field,
+                  desc: direction === 'desc',
+                }];
+              }
             }
 
             updateTableOptions(element);

@@ -1161,7 +1161,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the checkobox will be focused on component render",
+          "docs": "If true, the checkbox will be focused on component render",
           "docsTags": [],
           "values": [
             {

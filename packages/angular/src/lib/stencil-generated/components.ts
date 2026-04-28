@@ -329,7 +329,7 @@ export class GcdsCheckboxes {
    */
   set disabled(_: Components.GcdsCheckboxes['disabled']) {};
     /**
-   * If true, the checkobox will be focused on component render
+   * If true, the checkbox will be focused on component render
    */
   set autofocus(_: Components.GcdsCheckboxes['autofocus']) {};
     /**
