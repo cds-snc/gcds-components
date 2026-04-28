@@ -75,13 +75,13 @@ describe('gcds-table', () => {
     expect(page.root).toEqualHtml(`
       <gcds-table>
         <mock:shadow-root>
-          <section class="gcds-table">
-            <div class="gcds-table__active-pills"></div>
-            <div class="gcds-table__row-management">
-              <span aria-live="polite" class="gcds-table__page-info" role="status">
-                Showing 0 rows.
-              </span>
-            </div>
+            <section class="gcds-table">
+              <div class="gcds-table__active-pills"></div>
+              <div class="gcds-table__row-management">
+                <span aria-live="polite" class="gcds-table__page-info" role="status">
+                  Showing 0 rows.
+                </span>
+              </div>
             <table class="gcds-table__table" tabindex="-1">
               <thead>
                 <tr></tr>

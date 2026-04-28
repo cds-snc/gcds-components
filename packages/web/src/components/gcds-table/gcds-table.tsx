@@ -453,15 +453,17 @@ export class GcdsTable {
           </table>
 
           {/* ── Pagination ─────────────────────────── */}
-          {this.paginationState && this.paginationSize !== 0 && (
-            <gcds-pagination
-              display="list"
-              currentPage={this.paginationState.pageIndex + 1}
-              totalPages={this.table.getPageCount()}
-              label={I18N[this.lang].paginationLabel}
-              onGcdsClick={e => this.handlePaginationClick(e)}
-            />
-          )}
+          {this.pagination &&
+            this.paginationState &&
+            this.paginationSize !== 0 && (
+              <gcds-pagination
+                display="list"
+                currentPage={this.paginationState.pageIndex + 1}
+                totalPages={this.table.getPageCount()}
+                label={I18N[this.lang].paginationLabel}
+                onGcdsClick={e => this.handlePaginationClick(e)}
+              />
+            )}
         </section>
       </Host>
     );
