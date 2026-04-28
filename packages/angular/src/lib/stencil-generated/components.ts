@@ -493,7 +493,7 @@ export class GcdsDateInput {
    */
   set legend(_: Components.GcdsDateInput['legend']) {};
     /**
-   * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.
+   * Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.
    */
   set format(_: Components.GcdsDateInput['format']) {};
     /**

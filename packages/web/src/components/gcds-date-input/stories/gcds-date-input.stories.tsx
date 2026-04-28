@@ -22,7 +22,7 @@ export default {
     },
     format: {
       control: { type: 'select' },
-      options: ['full', 'compact'],
+      options: ['full', 'compact', 'iso'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
@@ -246,6 +246,54 @@ FullFR.args = {
   required: false,
   disabled: false,
   lang: 'fr',
+  validateOn: '',
+};
+
+// ------ Date input Format ISO English ------
+
+export const IsoEn = Template.bind({});
+IsoEn.args = {
+  name: 'IsoEn-default',
+  legend: 'Date input',
+  format: 'iso',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+};
+
+// ------ Date input FormatISO French ------
+
+export const IsoFr = Template.bind({});
+IsoFr.args = {
+  name: 'IsoFr-default',
+  legend: 'Date input',
+  format: 'iso',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'fr',
+  validateOn: '',
+};
+
+// ------ Date input ISO Format Required ------
+
+export const IsoRequired = Template.bind({});
+IsoRequired.args = {
+  name: 'required-default',
+  legend: 'Date input',
+  format: 'iso',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: true,
+  disabled: false,
+  lang: 'en',
   validateOn: '',
 };
 

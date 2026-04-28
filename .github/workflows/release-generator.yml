@@ -20,7 +20,7 @@ jobs:
           private-key: ${{ secrets.CDS_RELEASE_BOT_PRIVATE_KEY }}
 
       # --- Run release please to open a release PR ---
-      - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
+      - uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4.4.1
         id: release
         with:
           token: ${{ steps.sre_app_token.outputs.token }}
