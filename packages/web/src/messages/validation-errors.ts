@@ -2,43 +2,24 @@
  * Centralized validation error messages.
  *
  * Single source of truth for all validation error messages used by the
- * input validators. Each entry exposes both English (`en`) and French (`fr`)
- * copy so it can be consumed directly by the validator return shape.
+ * input validators. Messages are grouped by language (`en`, `fr`) at the top
+ * level, then by validator key. For validators that expose multiple message
+ * variants (e.g. `dateInput`), the value is a nested object keyed by variant.
  *
  * To add or update a validation message, edit it here and reference it from
  * the validators rather than hard-coding strings.
  */
 export const validationErrors = {
-  required: {
-    en: 'Enter information to continue.',
-    fr: 'Saisissez des renseignements pour continuer.',
-  },
-  requiredEmail: {
-    en: 'Enter a valid email address to continue. Use a standard format. Example: name@address.ca.',
-    fr: 'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
-  },
-  requiredFile: {
-    en: 'You must upload a file to continue.',
-    fr: 'Vous devez téléverser un fichier pour continuer.',
-  },
-  requiredSelect: {
-    en: 'Choose an option to continue.',
-    fr: 'Choisissez une option pour continuer.',
-  },
-  requiredRadio: {
-    en: 'Choose an option to continue.',
-    fr: 'Choisissez une option pour continuer.',
-  },
-  requiredCheckboxGroup: {
-    en: 'Choose an option to continue.',
-    fr: 'Choisissez une option pour continuer.',
-  },
-  requiredCheckboxSingle: {
-    en: 'You must check the box to continue.',
-    fr: 'Vous devez cocher la case pour continuer.',
-  },
-  dateInput: {
-    en: {
+  en: {
+    required: 'Enter information to continue.',
+    requiredEmail:
+      'Enter a valid email address to continue. Use a standard format. Example: name@address.ca.',
+    requiredFile: 'You must upload a file to continue.',
+    requiredSelect: 'Choose an option to continue.',
+    requiredRadio: 'Choose an option to continue.',
+    requiredCheckboxGroup: 'Choose an option to continue.',
+    requiredCheckboxSingle: 'You must check the box to continue.',
+    dateInput: {
       all: 'Enter the date.',
       missingmonthinput: 'Enter the month.',
       missingmonth: 'Select the month.',
@@ -54,7 +35,17 @@ export const validationErrors = {
       invalidmonth: 'Enter a valid month.',
       invalidday: 'Enter a valid day.',
     },
-    fr: {
+  },
+  fr: {
+    required: 'Saisissez des renseignements pour continuer.',
+    requiredEmail:
+      'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
+    requiredFile: 'Vous devez téléverser un fichier pour continuer.',
+    requiredSelect: 'Choisissez une option pour continuer.',
+    requiredRadio: 'Choisissez une option pour continuer.',
+    requiredCheckboxGroup: 'Choisissez une option pour continuer.',
+    requiredCheckboxSingle: 'Vous devez cocher la case pour continuer.',
+    dateInput: {
       all: 'Saisissez la date.',
       missingmonthinput: 'Saisissez le mois.',
       missingmonth: 'Sélectionnez un mois.',
