@@ -83,11 +83,20 @@ Type: `Promise<void>`
 | `"default"` | Slot for options and option groups. |
 
 
+## Shadow Parts
+
+| Part        | Description |
+| ----------- | ----------- |
+| `"wrapper"` |             |
+
+
 ## Dependencies
 
 ### Used by
 
  - [gcds-date-input](../gcds-date-input)
+ - [gcds-table](../gcds-table)
+ - [gcds-table-slots](../gcds-table-slots)
 
 ### Depends on
 
@@ -105,6 +114,8 @@ graph TD;
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
   gcds-date-input --> gcds-select
+  gcds-table --> gcds-select
+  gcds-table-slots --> gcds-select
   style gcds-select fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

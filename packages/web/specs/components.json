@@ -813,7 +813,9 @@
       ],
       "parts": [],
       "dependents": [
-        "gcds-search"
+        "gcds-search",
+        "gcds-table",
+        "gcds-table-slots"
       ],
       "dependencies": [
         "gcds-icon"
@@ -823,6 +825,12 @@
           "gcds-icon"
         ],
         "gcds-search": [
+          "gcds-button"
+        ],
+        "gcds-table": [
+          "gcds-button"
+        ],
+        "gcds-table-slots": [
           "gcds-button"
         ]
       }
@@ -1153,7 +1161,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the checkobox will be focused on component render",
+          "docs": "If true, the checkbox will be focused on component render",
           "docsTags": [],
           "values": [
             {
@@ -6113,7 +6121,9 @@
       "dependents": [
         "gcds-error-summary",
         "gcds-notice",
-        "gcds-stepper"
+        "gcds-stepper",
+        "gcds-table",
+        "gcds-table-slots"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -6124,6 +6134,12 @@
           "gcds-heading"
         ],
         "gcds-stepper": [
+          "gcds-heading"
+        ],
+        "gcds-table": [
+          "gcds-heading"
+        ],
+        "gcds-table-slots": [
           "gcds-heading"
         ]
       }
@@ -6712,6 +6728,8 @@
         "gcds-notice",
         "gcds-pagination",
         "gcds-search",
+        "gcds-table",
+        "gcds-table-slots",
         "gcds-topic-menu"
       ],
       "dependencies": [],
@@ -6741,6 +6759,12 @@
           "gcds-icon"
         ],
         "gcds-search": [
+          "gcds-icon"
+        ],
+        "gcds-table": [
+          "gcds-icon"
+        ],
+        "gcds-table-slots": [
           "gcds-icon"
         ],
         "gcds-topic-menu": [
@@ -7699,7 +7723,9 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "gcds-date-input"
+        "gcds-date-input",
+        "gcds-table",
+        "gcds-table-slots"
       ],
       "dependencies": [
         "gcds-label",
@@ -7720,6 +7746,12 @@
           "gcds-icon"
         ],
         "gcds-date-input": [
+          "gcds-input"
+        ],
+        "gcds-table": [
+          "gcds-input"
+        ],
+        "gcds-table-slots": [
           "gcds-input"
         ]
       }
@@ -9137,13 +9169,22 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "gcds-table",
+        "gcds-table-slots"
+      ],
       "dependencies": [
         "gcds-icon"
       ],
       "dependencyGraph": {
         "gcds-pagination": [
           "gcds-icon"
+        ],
+        "gcds-table": [
+          "gcds-pagination"
+        ],
+        "gcds-table-slots": [
+          "gcds-pagination"
         ]
       }
     },
@@ -9713,7 +9754,10 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "gcds-table",
+        "gcds-table-slots"
+      ],
       "dependencies": [
         "gcds-sr-only",
         "gcds-hint",
@@ -9733,6 +9777,12 @@
         "gcds-error-message": [
           "gcds-text",
           "gcds-icon"
+        ],
+        "gcds-table": [
+          "gcds-radios"
+        ],
+        "gcds-table-slots": [
+          "gcds-radios"
         ]
       }
     },
@@ -10661,9 +10711,16 @@
           "docs": "Slot for options and option groups."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "wrapper",
+          "docs": ""
+        }
+      ],
       "dependents": [
-        "gcds-date-input"
+        "gcds-date-input",
+        "gcds-table",
+        "gcds-table-slots"
       ],
       "dependencies": [
         "gcds-label",
@@ -10684,6 +10741,12 @@
           "gcds-icon"
         ],
         "gcds-date-input": [
+          "gcds-select"
+        ],
+        "gcds-table": [
+          "gcds-select"
+        ],
+        "gcds-table-slots": [
           "gcds-select"
         ]
       }
@@ -11111,6 +11174,8 @@
         "gcds-search",
         "gcds-signature",
         "gcds-stepper",
+        "gcds-table",
+        "gcds-table-slots",
         "gcds-textarea",
         "gcds-topic-menu"
       ],
@@ -11144,6 +11209,12 @@
           "gcds-sr-only"
         ],
         "gcds-stepper": [
+          "gcds-sr-only"
+        ],
+        "gcds-table": [
+          "gcds-sr-only"
+        ],
+        "gcds-table-slots": [
           "gcds-sr-only"
         ],
         "gcds-textarea": [
@@ -11273,6 +11344,744 @@
         "gcds-stepper": [
           "gcds-heading",
           "gcds-sr-only"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/gcds-table/gcds-table.tsx",
+      "encapsulation": "shadow",
+      "tag": "gcds-table",
+      "readme": "# gcds-table\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "columns",
+          "type": "TableColumn[] | string",
+          "complexType": {
+            "original": "string | TableColumn[]",
+            "resolved": "TableColumn[] | string",
+            "references": {
+              "TableColumn": {
+                "location": "import",
+                "path": "./utils/table-helpers",
+                "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumn"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "columns",
+          "reflectToAttr": false,
+          "docs": "Column definitions",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "TableColumn[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "data",
+          "type": "object[] | string",
+          "complexType": {
+            "original": "string | object[]",
+            "resolved": "object[] | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "data",
+          "reflectToAttr": false,
+          "docs": "Row data",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "object[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filter",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "filter",
+          "reflectToAttr": false,
+          "docs": "Enable global filter",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filterValue",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "filter-value",
+          "reflectToAttr": false,
+          "docs": "Current filter string",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "Enable pagination",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationCurrentPage",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-current-page",
+          "reflectToAttr": false,
+          "docs": "Current page index",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSize",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size",
+          "reflectToAttr": false,
+          "docs": "Number of rows per page",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "10"
+            }
+          ],
+          "default": "10",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSizeOptions",
+          "type": "number[] | string",
+          "complexType": {
+            "original": "string | number[]",
+            "resolved": "number[] | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size-options",
+          "reflectToAttr": false,
+          "docs": "Available page-size options.\nUse 0 to represent \"All rows\".",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[\n    10, 25, 50, 0,\n  ]"
+            }
+          ],
+          "default": "[\n    10, 25, 50, 0,\n  ]",
+          "values": [
+            {
+              "type": "number[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "sort",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "sort",
+          "reflectToAttr": false,
+          "docs": "Enable global column sorting (can be overridden per column)",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "gcds-select",
+        "gcds-pagination",
+        "gcds-radios",
+        "gcds-button",
+        "gcds-sr-only",
+        "gcds-heading",
+        "gcds-input",
+        "gcds-icon"
+      ],
+      "dependencyGraph": {
+        "gcds-table": [
+          "gcds-select",
+          "gcds-pagination",
+          "gcds-radios",
+          "gcds-button",
+          "gcds-sr-only",
+          "gcds-heading",
+          "gcds-input",
+          "gcds-icon"
+        ],
+        "gcds-select": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
+        ],
+        "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-error-message": [
+          "gcds-text",
+          "gcds-icon"
+        ],
+        "gcds-pagination": [
+          "gcds-icon"
+        ],
+        "gcds-radios": [
+          "gcds-sr-only",
+          "gcds-hint",
+          "gcds-error-message",
+          "gcds-label"
+        ],
+        "gcds-button": [
+          "gcds-icon"
+        ],
+        "gcds-input": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/gcds-table-slots/gcds-table-slots.tsx",
+      "encapsulation": "shadow",
+      "tag": "gcds-table-slots",
+      "readme": "# gcds-table-slots\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "columns",
+          "type": "TableColumnSlots[] | string",
+          "complexType": {
+            "original": "string | TableColumnSlots[]",
+            "resolved": "TableColumnSlots[] | string",
+            "references": {
+              "TableColumnSlots": {
+                "location": "import",
+                "path": "../gcds-table/utils/table-helpers",
+                "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumnSlots"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "columns",
+          "reflectToAttr": false,
+          "docs": "Column definitions",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "TableColumnSlots[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "data",
+          "type": "object[] | string",
+          "complexType": {
+            "original": "string | object[]",
+            "resolved": "object[] | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "data",
+          "reflectToAttr": false,
+          "docs": "Row data",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "object[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filter",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "filter",
+          "reflectToAttr": false,
+          "docs": "Enable global filter",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filterValue",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "filter-value",
+          "reflectToAttr": false,
+          "docs": "Current filter string",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "Enable pagination",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationCurrentPage",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-current-page",
+          "reflectToAttr": false,
+          "docs": "Current page index",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSize",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size",
+          "reflectToAttr": false,
+          "docs": "Number of rows per page",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "10"
+            }
+          ],
+          "default": "10",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSizeOptions",
+          "type": "number[] | string",
+          "complexType": {
+            "original": "string | number[]",
+            "resolved": "number[] | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size-options",
+          "reflectToAttr": false,
+          "docs": "Available page-size options.\nUse 0 to represent \"All rows\".",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[\n    10, 25, 50, 0,\n  ]"
+            }
+          ],
+          "default": "[\n    10, 25, 50, 0,\n  ]",
+          "values": [
+            {
+              "type": "number[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "sort",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "sort",
+          "reflectToAttr": false,
+          "docs": "Enable global column sorting (can be overridden per column)",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getVisibleRows",
+          "returns": {
+            "type": "Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "Record": {
+                "location": "global",
+                "id": "global::Record"
+              }
+            },
+            "return": "Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>"
+          },
+          "signature": "getVisibleRows() => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "gcdsTableStateChange",
+          "detail": "GcdsTableStateChange",
+          "bubbles": true,
+          "complexType": {
+            "original": "GcdsTableStateChange",
+            "resolved": "GcdsTableStateChange",
+            "references": {
+              "GcdsTableStateChange": {
+                "location": "import",
+                "path": "../gcds-table/utils/table-helpers",
+                "id": "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "gcds-select",
+        "gcds-pagination",
+        "gcds-radios",
+        "gcds-button",
+        "gcds-sr-only",
+        "gcds-heading",
+        "gcds-input",
+        "gcds-icon"
+      ],
+      "dependencyGraph": {
+        "gcds-table-slots": [
+          "gcds-select",
+          "gcds-pagination",
+          "gcds-radios",
+          "gcds-button",
+          "gcds-sr-only",
+          "gcds-heading",
+          "gcds-input",
+          "gcds-icon"
+        ],
+        "gcds-select": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
+        ],
+        "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-error-message": [
+          "gcds-text",
+          "gcds-icon"
+        ],
+        "gcds-pagination": [
+          "gcds-icon"
+        ],
+        "gcds-radios": [
+          "gcds-sr-only",
+          "gcds-hint",
+          "gcds-error-message",
+          "gcds-label"
+        ],
+        "gcds-button": [
+          "gcds-icon"
+        ],
+        "gcds-input": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
         ]
       }
     },
@@ -12991,6 +13800,21 @@
       "declaration": "{\n  id: string;\n  label: string;\n  value: string;\n  hint?: string;\n  checked?: boolean;\n}",
       "docstring": "",
       "path": "src/components/gcds-radios/radio.tsx"
+    },
+    "src/components/gcds-table/utils/table-helpers.ts::TableColumn": {
+      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n  slotted?: boolean;\n}",
+      "docstring": "Table column definition",
+      "path": "src/components/gcds-table/utils/table-helpers.ts"
+    },
+    "src/components/gcds-table/utils/table-helpers.ts::TableColumnSlots": {
+      "declaration": "interface TableColumnSlots {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  rowHeader?: boolean;\n  slotted?: boolean;\n  managed?: boolean;\n}",
+      "docstring": "",
+      "path": "src/components/gcds-table/utils/table-helpers.ts"
+    },
+    "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange": {
+      "declaration": "export interface GcdsTableStateChange {\n  visibleRows: Array<{\n    rowId: string; // stable TanStack row id — does not change with sort/filter\n    rowIndex: number; // current visible position in the table\n    original: unknown; // the original data object for this row\n  }>;\n  page: number;\n  pageSize: number;\n  filterValue: string;\n  sortKey: string | null;\n  sortDirection: 'asc' | 'desc' | false;\n}",
+      "docstring": "",
+      "path": "src/components/gcds-table/utils/table-helpers.ts"
     }
   }
 }

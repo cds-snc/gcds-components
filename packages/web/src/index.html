@@ -32,6 +32,110 @@
         margin: 0;
         animation: fade 0.05s normal forwards ease-in-out;
       }
+
+      /* !!! TODO: Remove + replace with new tokens package */
+      :root {
+        /* table */
+        --gcds-table-font: var(--gcds-font-text-small-mobile);
+        --gcds-table-font-size-small: 0.875rem;
+        --gcds-table-font-weight-mobile: var(--gcds-font-weights-regular);
+        --gcds-table-text: var(--gcds-text-primary);
+        --gcds-table-label-mobile: var(--gcds-text-secondary);
+        --gcds-table-border-width: var(--gcds-border-width-sm);
+        --gcds-table-outer-border-color: var(--gcds-color-grayscale-150);
+        --gcds-table-margin: var(--gcds-spacing-200);
+        --gcds-table-gap: var(--gcds-spacing-100);
+
+        --gcds-table-header-cell-border-width: var(--gcds-border-width-md);
+        --gcds-table-header-cell-border-color: var(--gcds-color-grayscale-850);
+        --gcds-table-header-cell-text: var(--gcds-color-grayscale-900);
+        --gcds-table-header-cell-font-weight: var(--gcds-font-weights-bold);
+
+        --gcds-table-cell-padding-desktop: var(--gcds-spacing-150)
+          var(--gcds-spacing-100);
+        --gcds-table-cell-padding-mobile: var(--gcds-spacing-75) 0;
+        --gcds-table-cell-padding-mobile-first-last: var(--gcds-spacing-150);
+        --gcds-table-cell-border-color: var(--gcds-border-default);
+
+        /* table button  */
+        --gcds-table-button-padding: var(--gcds-spacing-50)
+          var(--gcds-spacing-75);
+
+        /* table pagination */
+        --gcds-table-pagination-margin: var(--gcds-spacing-125);
+
+        /* table sort etc */
+        --gcds-table-filters-padding: var(--gcds-spacing-200);
+        --gcds-table-filters-margin: var(--gcds-spacing-200);
+        --gcds-table-filters-border-width: var(--gcds-border-width-sm);
+        --gcds-table-filters-border-color: var(--gcds-color-grayscale-150);
+
+        --gcds-table-filters-count-background: var(--gcds-color-blue-100);
+        --gcds-table-filters-count-text: var(--gcds-color-blue-muted);
+        --gcds-table-filters-count-line-height: 100%;
+        --gcds-table-filters-count-border-radius: var(--gcds-spacing-75);
+        --gcds-table-filters-count-margin: var(--gcds-spacing-50);
+        --gcds-table-filters-count-padding: var(--gcds-spacing-50)
+          var(--gcds-spacing-100);
+
+        /* table pill */
+        --gcds-table-active-pills-margin: var(--gcds-spacing-200);
+
+        --gcds-table-active-sorting-margin: var(--gcds-spacing-50);
+        --gcds-table-active-sorting-padding: var(--gcds-spacing-100);
+        --gcds-table-active-sorting-border-width: var(--gcds-border-width-sm);
+        --gcds-table-active-sorting-border-color: var(
+          --gcds-color-grayscale-300
+        );
+
+        --gcds-table-pill-background: var(--gcds-color-grayscale-100);
+        --gcds-table-pill-text: var(--gcds-text-secondary);
+        --gcds-table-pill-border-radius: var(--gcds-spacing-250);
+        --gcds-table-pill-padding: var(--gcds-spacing-25) var(--gcds-spacing-50)
+          var(--gcds-spacing-25) var(--gcds-spacing-125);
+
+        --gcds-table-pill-icon-size: var(--gcds-spacing-300);
+        --gcds-table-pill-icon-margin: var(--gcds-spacing-25);
+
+        /* table - row management */
+        --gcds-table-select-padding: var(--gcds-spacing-50)
+          var(--gcds-spacing-750) var(--gcds-spacing-50) var(--gcds-spacing-50);
+
+        --gcds-table-page-info-padding: var(--gcds-spacing-100);
+        --gcds-table-page-info-border-width: var(--gcds-border-width-sm);
+        --gcds-table-page-info-border-color: var(--gcds-color-grayscale-300);
+
+        /* table modal */
+        --gcds-table-modal-width: 100%;
+        --gcds-table-modal-max-width: 48.5rem;
+        --gcds-table-modal-max-height-desktop: calc(100dvh - 256px);
+        --gcds-table-modal-height-mobile: calc(
+          100dvh - var(--gcds-spacing-700)
+        );
+        --gcds-table-modal-background: var(--gcds-bg-white);
+        --gcds-table-modal-backdrop-background: rgba(0, 0, 0, 0.25);
+        --gcds-table-modal-spacing: var(--gcds-spacing-200);
+        --gcds-table-modal-border: var(--gcds-border-width-sm) solid
+          var(--gcds-border-default);
+        --gcds-table-modal-border-radius-desktop: var(--gcds-spacing-300);
+        --gcds-table-modal-border-radius-mobile: var(--gcds-spacing-175)
+          var(--gcds-spacing-175) 0 0;
+        --gcds-table-modal-box-shadow: 0 var(--gcds-spacing-25)
+          var(--gcds-spacing-200) var(--gcds-spacing-50) rgba(0, 0, 0, 0.2);
+
+        --gcds-table-modal-header-heading:
+          700 20px/32px 'Noto Sans', sans-serif;
+        --gcds-table-modal-body-font-bold:
+          700 18px/25px 'Noto Sans', sans-serif;
+        --gcds-table-modal-body-font-medium:
+          500 18px/25px 'Noto Sans', sans-serif;
+
+        --gcds-table-modal-footer-box-shadow: 0 -4px 12px -2px
+          rgba(0, 0, 0, 0.1);
+        --gcds-table-modal-footer-button-width: 100%;
+        --gcds-table-modal-footer-button-padding: var(--gcds-spacing-125)
+          var(--gcds-spacing-200);
+      }
     </style>
   </head>
 
@@ -87,6 +191,234 @@
       <gcds-heading tag="h1">GC Design System</gcds-heading>
 
       <hr class="my-550" />
+
+      <gcds-table-slots
+        id="my-table-slots"
+        sort="true"
+        pagination="true"
+        pagination-current-page="1"
+        pagination-size="10"
+        filter="true"
+        caption="Table of the best Pokémon (first generation)"
+      >
+        <div slot="caption">
+          <h2>Pokémon - Slots</h2>
+          Table of the best Pokémon (first generation).
+        </div>
+        <template slot="cell:sprite">
+          <img
+            data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
+            data-bind-alt="name"
+            src=""
+            alt=""
+            width="150"
+            height="150"
+          />
+        </template>
+        <template slot="cell:actions">
+          <gcds-button
+            button-role="secondary"
+            size="small"
+            onclick="console.log(this.rowData)"
+          >
+            Console log row data
+          </gcds-button>
+        </template>
+      </gcds-table-slots>
+
+      <gcds-table
+        id="my-table"
+        sort="true"
+        pagination="true"
+        pagination-current-page="1"
+        pagination-size="10"
+        filter="true"
+        caption="Table of the best Pokémon (first generation)"
+        columns='[
+          {
+            "field": "number",
+            "header": "Pokédex",
+            "alignment": "end",
+            "sortDirection": "asc"
+          },
+          {
+            "field": "name",
+            "header": "Name"
+          },
+          { "field": "height", "header": "Height", "alignment": "end" },
+          { "field": "weight", "header": "Weight", "alignment": "end" },
+          {
+            "field": "base_experience",
+            "header": "Base experience",
+            "sort": false,
+            "alignment": "end"
+          }
+        ]'
+        data='[
+          {
+            "number": 7,
+            "name": "squirtle",
+            "height": 5,
+            "weight": 90,
+            "base_experience": 63
+          },
+          {
+            "number": 8,
+            "name": "wartortle",
+            "height": 10,
+            "weight": 225,
+            "base_experience": 142
+          },
+          {
+            "number": 9,
+            "name": "blastoise",
+            "height": 16,
+            "weight": 855,
+            "base_experience": 239
+          }
+        ]'
+      >
+        <div slot="caption">
+          <h2>Pokémon</h2>
+          Table of the best Pokémon (first generation).
+        </div>
+      </gcds-table>
+
+      <script>
+        // Load the first 151 pokemon by API
+        async function getFirst151Pokemon() {
+          try {
+            // Step 1: Get the first 151 Pokémon (just names + URLs)
+            const listResponse = await fetch(
+              'https://pokeapi.co/api/v2/pokemon?limit=151',
+            );
+            const listData = await listResponse.json();
+
+            // Step 2: Fetch full details for each Pokémon
+            const pokemonDetails = await Promise.all(
+              listData.results.map(async pokemon => {
+                const res = await fetch(pokemon.url);
+                const data = await res.json();
+
+                return {
+                  number: data.id,
+                  name: data.name,
+                  height: data.height,
+                  weight: data.weight,
+                  base_experience: data.base_experience,
+                };
+              }),
+            );
+
+            return pokemonDetails;
+          } catch (error) {
+            console.error('Error fetching Pokémon:', error);
+          }
+        }
+
+        const table = document.getElementById('my-table');
+        const tableSlots = document.getElementById('my-table-slots');
+
+        // Populate the table columns
+        tableSlots.columns = [
+          {
+            field: 'number',
+            header: 'Pokédex',
+            alignment: 'end',
+            rowHeader: true,
+          },
+          {
+            field: 'name',
+            header: 'Name',
+            sortDirection: 'desc',
+          },
+          {
+            field: 'sprite',
+            header: 'Sprite',
+            alignment: 'center',
+            sort: false,
+            slotted: true,
+          },
+          { field: 'height', header: 'Height', alignment: 'end' },
+          { field: 'weight', header: 'Weight', alignment: 'end' },
+          {
+            field: 'base_experience',
+            header: 'Base experience',
+            sort: false,
+            alignment: 'end',
+          },
+          {
+            field: 'actions',
+            header: 'Actions',
+            alignment: 'center',
+            sort: false,
+            slotted: true,
+          },
+        ];
+
+        table.columns = [
+          {
+            field: 'number',
+            header: 'Pokédex',
+            alignment: 'end',
+            rowHeader: true,
+          },
+          {
+            field: 'name',
+            header: 'Name',
+            sortDirection: 'asc',
+          },
+          {
+            field: 'sprite',
+            header: 'Sprite',
+            alignment: 'center',
+            sort: false,
+            renderCell: (value, row) => {
+              const img = document.createElement('img');
+              img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`;
+              img.alt = row.name;
+              img.width = 150;
+              img.height = 150;
+              return img;
+            },
+          },
+          { field: 'height', header: 'Height', alignment: 'end' },
+          { field: 'weight', header: 'Weight', alignment: 'end' },
+          {
+            field: 'base_experience',
+            header: 'Base experience',
+            sort: false,
+            alignment: 'end',
+          },
+          {
+            field: 'actions',
+            header: 'Actions',
+            alignment: 'center',
+            sort: false,
+            renderCell: (value, row) => {
+              const button = document.createElement('gcds-button');
+              button.setAttribute('button-role', 'secondary');
+              button.textContent = 'Alert name';
+              button.addEventListener('click', () => {
+                if (row.number === 7) {
+                  alert(`You clicked on ${row.name}! The best Pokémon!`);
+                } else {
+                  alert(`This is ${row.name}, not Squirtle!`);
+                }
+              });
+              return button;
+            },
+          },
+        ];
+
+        table.paginationSizeOptions = [1, 3, 5, 10, 25, 50, 0];
+
+        // Populate the table rows with results from API
+        getFirst151Pokemon().then(pokemon => {
+          table.data = pokemon;
+          tableSlots.data = pokemon;
+        });
+      </script>
 
       <!-- ------------- Alerts ------------- -->
 

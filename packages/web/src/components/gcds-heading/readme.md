@@ -34,6 +34,8 @@ A heading is a title that establishes levels of hierarchy to organize page conte
  - [gcds-error-summary](../gcds-error-summary)
  - [gcds-notice](../gcds-notice)
  - [gcds-stepper](../gcds-stepper)
+ - [gcds-table](../gcds-table)
+ - [gcds-table-slots](../gcds-table-slots)
 
 ### Graph
 ```mermaid
@@ -41,6 +43,8 @@ graph TD;
   gcds-error-summary --> gcds-heading
   gcds-notice --> gcds-heading
   gcds-stepper --> gcds-heading
+  gcds-table --> gcds-heading
+  gcds-table-slots --> gcds-heading
   style gcds-heading fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

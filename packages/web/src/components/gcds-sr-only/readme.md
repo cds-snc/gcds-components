@@ -37,6 +37,8 @@ The screenreader-only component is text information only accessible with assisti
  - [gcds-search](../gcds-search)
  - [gcds-signature](../gcds-signature)
  - [gcds-stepper](../gcds-stepper)
+ - [gcds-table](../gcds-table)
+ - [gcds-table-slots](../gcds-table-slots)
  - [gcds-textarea](../gcds-textarea)
  - [gcds-topic-menu](../gcds-topic-menu)
 
@@ -53,6 +55,8 @@ graph TD;
   gcds-search --> gcds-sr-only
   gcds-signature --> gcds-sr-only
   gcds-stepper --> gcds-sr-only
+  gcds-table --> gcds-sr-only
+  gcds-table-slots --> gcds-sr-only
   gcds-textarea --> gcds-sr-only
   gcds-topic-menu --> gcds-sr-only
   style gcds-sr-only fill:#26374a,stroke:#333,stroke-width:4px
