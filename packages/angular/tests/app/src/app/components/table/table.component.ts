@@ -78,10 +78,7 @@ async function getFirst151Pokemon() {
           />
         </ng-template>
         <ng-template gcdsCell="actions" let-row let-rowIndex="rowIndex">
-        <gcds-button
-            button-role="secondary"
-            (click)="logRow(row)"
-          >
+          <gcds-button button-role="secondary" (click)="logRow(row)">
             Console log row data
           </gcds-button>
         </ng-template>
@@ -117,7 +114,7 @@ export class TableComponent {
       {
         field: 'number',
         header: 'Pokédex',
-        align: 'end',
+        alignment: 'end',
         rowHeader: true,
       },
       {
@@ -127,7 +124,7 @@ export class TableComponent {
       {
         field: 'sprite',
         header: 'Sprite',
-        align: 'center',
+        alignment: 'center',
         sort: false,
         renderCell: (value: any, row: any) => {
           const img = document.createElement('img');
@@ -138,18 +135,18 @@ export class TableComponent {
           return img;
         },
       },
-      { field: 'height', header: 'Height', align: 'end' },
-      { field: 'weight', header: 'Weight', align: 'end' },
+      { field: 'height', header: 'Height', alignment: 'end' },
+      { field: 'weight', header: 'Weight', alignment: 'end' },
       {
         field: 'base_experience',
         header: 'Base experience',
         sort: false,
-        align: 'end',
+        alignment: 'end',
       },
       {
         field: 'actions',
         header: 'Actions',
-        align: 'center',
+        alignment: 'center',
         sort: false,
         renderCell: (value: any, row: any) => {
           const button = document.createElement('gcds-button');
@@ -177,7 +174,7 @@ export class TableComponent {
       {
         field: 'number',
         header: 'Pokédex',
-        align: 'end',
+        alignment: 'end',
         rowHeader: true,
       },
       {
@@ -187,22 +184,22 @@ export class TableComponent {
       {
         field: 'sprite',
         header: 'Sprite',
-        align: 'center',
+        alignment: 'center',
         sort: false,
         slotted: true,
       },
-      { field: 'height', header: 'Height', align: 'end' },
-      { field: 'weight', header: 'Weight', align: 'end' },
+      { field: 'height', header: 'Height', alignment: 'end' },
+      { field: 'weight', header: 'Weight', alignment: 'end' },
       {
         field: 'base_experience',
         header: 'Base experience',
         sort: false,
-        align: 'end',
+        alignment: 'end',
       },
       {
         field: 'actions',
         header: 'Actions',
-        align: 'center',
+        alignment: 'center',
         sort: false,
         slotted: true,
       },
