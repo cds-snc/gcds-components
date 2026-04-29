@@ -97,7 +97,6 @@ export class GcdsSelect {
    */
   @Prop({ reflect: true, mutable: false }) defaultValue?: string;
 
-
   /**
    * If true, the select will be focused on component render
    */
@@ -277,7 +276,6 @@ export class GcdsSelect {
       this.lang,
     );
 
-
     this.selectTitle = this.errorMessage;
   }
 
@@ -388,14 +386,13 @@ export class GcdsSelect {
 
     let validationMessage = null;
     if (validity?.valueMissing) {
-      validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
+      validationMessage =
+        this.lang === 'en'
+          ? 'Choose an option to continue.'
+          : 'Choisissez une option pour continuer.';
     }
 
-    this.internals.setValidity(
-      validity,
-      validationMessage,
-      this.shadowElement,
-    );
+    this.internals.setValidity(validity, validationMessage, this.shadowElement);
 
     // Set select title when HTML error occruring
     this.selectTitle = validationMessage;
@@ -520,17 +517,20 @@ export class GcdsSelect {
       const hintID = hint ? `hint-${selectId} ` : '';
       const errorID = errorMessage ? `error-message-${selectId} ` : '';
 
-      attrsSelect['aria-describedby'] = `${hintID}${errorID}${attrsSelect['aria-describedby']
-        ? `${attrsSelect['aria-describedby']}`
-        : ''
-        }`;
+      attrsSelect['aria-describedby'] = `${hintID}${errorID}${
+        attrsSelect['aria-describedby']
+          ? `${attrsSelect['aria-describedby']}`
+          : ''
+      }`;
     }
 
     return (
       <Host>
         <div
-          class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${hasError ? 'gcds-error' : ''
-            }`}
+          class={`gcds-select-wrapper ${disabled ? 'gcds-disabled' : ''} ${
+            hasError ? 'gcds-error' : ''
+          }`}
+          part="wrapper"
         >
           <gcds-label
             {...attrsLabel}

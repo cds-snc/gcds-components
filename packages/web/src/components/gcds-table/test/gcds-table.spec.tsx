@@ -6,49 +6,48 @@ import { GcdsTable } from '../gcds-table';
 describe('gcds-table', () => {
   const baseColumns = [
     {
-      field: "number",
-      header: "Pokédex",
-      align: "end",
-      sortDirection: "asc"
+      field: 'number',
+      header: 'Pokédex',
+      alignment: 'end',
+      sortDirection: 'asc',
     },
     {
-      field: "name",
-      header: "Name"
+      field: 'name',
+      header: 'Name',
     },
-    { field: "height", header: "Height", align: "end" },
-    { field: "weight", header: "Weight", align: "end" },
+    { field: 'height', header: 'Height', alignment: 'end' },
+    { field: 'weight', header: 'Weight', alignment: 'end' },
     {
-      field: "base_experience",
-      header: "Base experience",
+      field: 'base_experience',
+      header: 'Base experience',
       sort: false,
-      align: "end"
-    }
+      alignment: 'end',
+    },
   ];
-
 
   const baseData = [
     {
       number: 7,
-      name: "Squirtle",
+      name: 'Squirtle',
       height: 5,
       weight: 90,
-      base_experience: 63
+      base_experience: 63,
     },
     {
       number: 8,
-      name: "Wartortle",
+      name: 'Wartortle',
       height: 10,
       weight: 225,
-      base_experience: 142
+      base_experience: 142,
     },
     {
       number: 9,
-      name: "Blastoise",
+      name: 'Blastoise',
       height: 16,
       weight: 855,
-      base_experience: 239
-    }
-  ]
+      base_experience: 239,
+    },
+  ];
 
   // instead of random, make the values deterministic for less flaky tests
   const makeRows = (count: number) =>
@@ -71,17 +70,18 @@ describe('gcds-table', () => {
     jest.restoreAllMocks();
   });
 
-  it('renders', async()=>{
+  it('renders', async () => {
     const page = await setup();
     expect(page.root).toEqualHtml(`
       <gcds-table>
         <mock:shadow-root>
             <section class="gcds-table">
-              <hr>
               <div class="gcds-table__active-pills"></div>
-            <span aria-live="polite" class="gcds-table__page-info" role="status">
-              Showing 0 rows.
-            </span>
+              <div class="gcds-table__row-management">
+                <span aria-live="polite" class="gcds-table__page-info" role="status">
+                  Showing 0 rows.
+                </span>
+              </div>
             <table class="gcds-table__table" tabindex="-1">
               <thead>
                 <tr></tr>
@@ -98,7 +98,7 @@ describe('gcds-table', () => {
         </mock:shadow-root>
       </gcds-table>
     `);
-  })
+  });
 
   it('renders basic structure', async () => {
     const page = await setup();
@@ -110,12 +110,14 @@ describe('gcds-table', () => {
   it('renders caption slot content', async () => {
     const page = await setup(
       '<gcds-table><span slot="caption">' +
-      '<h2>Pokémon</h2>' +
-      'Table of the best Pokémon (first generation).' +
-      '</span></gcds-table>',
+        '<h2>Pokémon</h2>' +
+        'Table of the best Pokémon (first generation).' +
+        '</span></gcds-table>',
     );
 
-    expect(page.root?.shadowRoot?.querySelector('caption slot[name="caption"]')).not.toBeNull();
+    expect(
+      page.root?.shadowRoot?.querySelector('caption slot[name="caption"]'),
+    ).not.toBeNull();
   });
 
   it('parses columns and data JSON strings', async () => {
@@ -191,9 +193,13 @@ describe('gcds-table', () => {
     ] as any;
 
     await page.waitForChanges();
-    const firstCell = page.root?.shadowRoot?.querySelector('tbody tr td[data-column="Name"]');
+    const firstCell = page.root?.shadowRoot?.querySelector(
+      'tbody tr td[data-column="Name"]',
+    );
     expect(firstCell?.innerHTML).not.toContain('<script>');
-    expect(page.root?.shadowRoot?.querySelector('tbody tr td[data-column="Name"]')).toEqualHtml(`
+    expect(
+      page.root?.shadowRoot?.querySelector('tbody tr td[data-column="Name"]'),
+    ).toEqualHtml(`
     <td class="gcds-table__td" data-column="Name">
       &lt;script&gt;alert('XSS attack');&lt;/script&gt;
     </td>
@@ -223,7 +229,7 @@ describe('gcds-table', () => {
     expect(firstRowCells[4]?.textContent?.trim()).toBe('63');
   });
 
-  it('applies align classes to headers and cells', async () => {
+  it('applies alignment classes to headers and cells', async () => {
     const page = await setup();
     const el = page.root as HTMLGcdsTableElement;
 
@@ -232,10 +238,12 @@ describe('gcds-table', () => {
     await page.waitForChanges();
 
     const headerBaseXP = page.root?.shadowRoot?.querySelectorAll('thead th')[4];
-    const cellBaseXP = page.root?.shadowRoot?.querySelectorAll('tbody tr td[data-column="Base experience"]')[0];
+    const cellBaseXP = page.root?.shadowRoot?.querySelectorAll(
+      'tbody tr td[data-column="Base experience"]',
+    )[0];
 
-    expect(headerBaseXP?.className).toContain('align-end');
-    expect(cellBaseXP?.className).toContain('align-end');
+    expect(headerBaseXP?.className).toContain('alignment-end');
+    expect(cellBaseXP?.className).toContain('alignment-end');
   });
 
   it('renders row header cells as th with scope row', async () => {
@@ -299,7 +307,8 @@ describe('gcds-table', () => {
     el.data = [] as any;
     await page.waitForChanges();
 
-    const emptyCell = page.root?.shadowRoot?.querySelector('.gcds-table__empty');
+    const emptyCell =
+      page.root?.shadowRoot?.querySelector('.gcds-table__empty');
     expect(emptyCell?.textContent).toContain('No data available');
   });
 
@@ -342,7 +351,6 @@ describe('gcds-table', () => {
     expect(rows[1]?.textContent).toContain('133');
   });
 
-
   it('hides sortable header button when sort is disabled', async () => {
     const page = await setup();
     const el = page.root as HTMLGcdsTableElement;
@@ -353,7 +361,8 @@ describe('gcds-table', () => {
 
     await page.waitForChanges();
 
-    const headerButtons = page.root?.shadowRoot?.querySelectorAll('thead th button') || [];
+    const headerButtons =
+      page.root?.shadowRoot?.querySelectorAll('thead th button') || [];
     const headers = page.root?.shadowRoot?.querySelectorAll('thead th') || [];
 
     expect(headerButtons).toHaveLength(0);
@@ -405,7 +414,7 @@ describe('gcds-table', () => {
 
     el.sort = false;
     el.columns = [
-      { field: 'number', header: 'Pokédex', align: 'end' },
+      { field: 'number', header: 'Pokédex', alignment: 'end' },
       { field: 'name', header: 'Name', sort: true },
     ] as any;
     el.data = baseData as any;
@@ -427,8 +436,20 @@ describe('gcds-table', () => {
       { field: 'number', header: 'Pokédex', sort: true, sortDirection: 'desc' },
     ]);
     const seededData = JSON.stringify([
-      { number: 7, name: 'Squirtle', height: 5, weight: 90, base_experience: 63 },
-      { number: 8, name: 'Wartortle', height: 10, weight: 225, base_experience: 142 },
+      {
+        number: 7,
+        name: 'Squirtle',
+        height: 5,
+        weight: 90,
+        base_experience: 63,
+      },
+      {
+        number: 8,
+        name: 'Wartortle',
+        height: 10,
+        weight: 225,
+        base_experience: 142,
+      },
     ]);
     const page = await setup(
       `<gcds-table columns='${seededColumns}' data='${seededData}'></gcds-table>`,
@@ -447,8 +468,12 @@ describe('gcds-table', () => {
     el.data = baseData as any;
     await page.waitForChanges();
 
-    const button = page.root?.shadowRoot?.querySelector('thead th button') as HTMLButtonElement;
-    const header = page.root?.shadowRoot?.querySelector('thead th') as HTMLTableCellElement;
+    const button = page.root?.shadowRoot?.querySelector(
+      'thead th button',
+    ) as HTMLButtonElement;
+    const header = page.root?.shadowRoot?.querySelector(
+      'thead th',
+    ) as HTMLTableCellElement;
 
     expect(header.getAttribute('aria-sort')).toBe('none');
     button.click();
@@ -474,14 +499,20 @@ describe('gcds-table', () => {
     instance.onDataChange(el.data);
     await page.waitForChanges();
 
-    const pillButton = page.root?.shadowRoot?.querySelector('.gcds-table__active-sorting button') as HTMLButtonElement;
+    const pillButton = page.root?.shadowRoot?.querySelector(
+      '.gcds-table__active-sorting button',
+    ) as HTMLButtonElement;
     expect(pillButton).not.toBeNull();
 
     // Click on the pill button to remove it
     pillButton.click();
     await page.waitForChanges();
 
-    expect(page.root?.shadowRoot?.querySelector('.gcds-table__active-sorting button')).toBeNull();
+    expect(
+      page.root?.shadowRoot?.querySelector(
+        '.gcds-table__active-sorting button',
+      ),
+    ).toBeNull();
   });
 
   it('hides pagination controls when pagination is false', async () => {
@@ -507,8 +538,12 @@ describe('gcds-table', () => {
     el.data = makeRows(12) as any;
     await page.waitForChanges();
 
-    expect(page.root?.shadowRoot?.querySelector('gcds-pagination')).not.toBeNull();
-    expect(page.root?.shadowRoot?.querySelectorAll('tbody tr')).toHaveLength(10);
+    expect(
+      page.root?.shadowRoot?.querySelector('gcds-pagination'),
+    ).not.toBeNull();
+    expect(page.root?.shadowRoot?.querySelectorAll('tbody tr')).toHaveLength(
+      10,
+    );
   });
 
   it('renders page-size option label All for value 0', async () => {
@@ -522,7 +557,9 @@ describe('gcds-table', () => {
     el.data = makeRows(3) as any;
     await page.waitForChanges();
 
-    const options = Array.from(page.root?.shadowRoot?.querySelectorAll('option') || []);
+    const options = Array.from(
+      page.root?.shadowRoot?.querySelectorAll('option') || [],
+    );
     expect(options.some(option => option.textContent === 'All')).toBe(true);
   });
 
@@ -626,7 +663,9 @@ describe('gcds-table', () => {
     el.data = baseData as any;
     await page.waitForChanges();
 
-    const pillButton = page.root?.shadowRoot?.querySelector('.gcds-table__active-filter button') as HTMLButtonElement;
+    const pillButton = page.root?.shadowRoot?.querySelector(
+      '.gcds-table__active-filter button',
+    ) as HTMLButtonElement;
     expect(pillButton.textContent).toContain('Squirtle');
 
     pillButton.click();
@@ -706,7 +745,9 @@ describe('gcds-table', () => {
     const th = page.root?.shadowRoot?.querySelector('thead th');
     const sortButton = page.root?.shadowRoot?.querySelector('thead th button');
     const table = page.root?.shadowRoot?.querySelector('table');
-    const status = page.root?.shadowRoot?.querySelector('.gcds-table__page-info');
+    const status = page.root?.shadowRoot?.querySelector(
+      '.gcds-table__page-info',
+    );
 
     expect(th?.getAttribute('scope')).toBe('col');
     expect(sortButton?.getAttribute('title')).toContain('Pokédex');
@@ -723,7 +764,9 @@ describe('gcds-table', () => {
     el.data = baseData as any;
     await page.waitForChanges();
 
-    const status = page.root?.shadowRoot?.querySelector('.gcds-table__page-info')?.textContent || '';
+    const status =
+      page.root?.shadowRoot?.querySelector('.gcds-table__page-info')
+        ?.textContent || '';
     expect(status).toContain('Showing 3 rows');
   });
 
@@ -737,12 +780,12 @@ describe('gcds-table', () => {
     await page.waitForChanges();
 
     // In spec-page context child custom-element props are reflected on the instance
-    const paginationEl = page.root?.shadowRoot?.querySelector('gcds-pagination');
+    const paginationEl =
+      page.root?.shadowRoot?.querySelector('gcds-pagination');
     expect(paginationEl).not.toBeNull();
     // totalPages should be 2 for 12 rows with default page size 10
     const instance = page.rootInstance as any;
     expect(instance.table.getPageCount()).toBe(2);
     expect(instance.paginationState.pageIndex).toBe(0);
   });
-
 });

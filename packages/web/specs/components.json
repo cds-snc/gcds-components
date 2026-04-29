@@ -10711,7 +10711,12 @@
           "docs": "Slot for options and option groups."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "wrapper",
+          "docs": ""
+        }
+      ],
       "dependents": [
         "gcds-date-input",
         "gcds-table",
@@ -11581,10 +11586,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "[10, 25, 50, 0]"
+              "text": "[\n    10, 25, 50, 0,\n  ]"
             }
           ],
-          "default": "[10, 25, 50, 0]",
+          "default": "[\n    10, 25, 50, 0,\n  ]",
           "values": [
             {
               "type": "number[]"
@@ -11926,10 +11931,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "[10, 25, 50, 0]"
+              "text": "[\n    10, 25, 50, 0,\n  ]"
             }
           ],
-          "default": "[10, 25, 50, 0]",
+          "default": "[\n    10, 25, 50, 0,\n  ]",
           "values": [
             {
               "type": "number[]"
@@ -13797,12 +13802,12 @@
       "path": "src/components/gcds-radios/radio.tsx"
     },
     "src/components/gcds-table/utils/table-helpers.ts::TableColumn": {
-      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n  slotted?: boolean;\n}",
+      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n  slotted?: boolean;\n}",
       "docstring": "Table column definition",
       "path": "src/components/gcds-table/utils/table-helpers.ts"
     },
     "src/components/gcds-table/utils/table-helpers.ts::TableColumnSlots": {
-      "declaration": "interface TableColumnSlots {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  align?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  rowHeader?: boolean;\n  slotted?: boolean;\n  managed?: boolean;\n}",
+      "declaration": "interface TableColumnSlots {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  rowHeader?: boolean;\n  slotted?: boolean;\n  managed?: boolean;\n}",
       "docstring": "",
       "path": "src/components/gcds-table/utils/table-helpers.ts"
     },

@@ -1,11 +1,16 @@
-// import { newE2EPage } from '@stencil/core/testing';
-//
-// describe('gcds-table', () => {
-//   it('renders', async () => {
-//     const page = await newE2EPage();
-//     await page.setContent('<gcds-table></gcds-table>');
-//
-//     const element = await page.find('gcds-table');
-//     expect(element).toHaveClass('hydrated');
-//   });
-// });
+import { expect } from '@playwright/test';
+import { test } from '../../../../tests/base';
+
+test.describe('gcds-table', () => {
+  test('renders', async ({ page }) => {
+    const element = page.locator('gcds-table');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    // Check if it has the 'hydrated' class
+    await expect(element).toHaveClass('hydrated');
+  });
+});
