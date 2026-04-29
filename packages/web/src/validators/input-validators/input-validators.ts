@@ -1,6 +1,6 @@
 import { ValidationContext, Validator } from '../validator';
 import { isValidDate, isValidDay } from '../../utils/utils';
-import { validationErrors } from '../../messages/validation-errors';
+import { validationErrors } from '../../utils/i18n/validation-errors';
 
 const emailPattern =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -59,14 +59,11 @@ export const requiredSelectField: Validator<string> = {
 /*
  * Date input validators
  *
- * Re-exported from the centralized validation messages file to preserve
- * the existing public API. Prefer importing from
- * `../../messages/validation-errors` (`validationErrors.en.dateInput` / `validationErrors.fr.dateInput`) in new code.
+ * Date input error messages live in the centralized
+ * `utils/i18n/validation-errors.ts` file. Import `validationErrors` from
+ * there and reference `validationErrors.en.dateInput` /
+ * `validationErrors.fr.dateInput`.
  */
-export const dateInputErrorMessage = {
-  en: validationErrors.en.dateInput,
-  fr: validationErrors.fr.dateInput,
-};
 
 export const requiredDateInput: Validator<string> = {
   validate: (date: string, context?: ValidationContext) => {

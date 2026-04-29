@@ -12,7 +12,7 @@ import {
   validateRadioCheckboxGroup,
 } from './utils';
 
-import I18N from './i18n/i18n.js';
+import { validationErrors as I18N } from './i18n/validation-errors';
 
 describe('format', () => {
   it('returns Fallback Button Label', () => {
