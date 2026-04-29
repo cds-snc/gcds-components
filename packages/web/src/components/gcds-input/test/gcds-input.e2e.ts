@@ -187,7 +187,7 @@ test.describe('gcds-input', () => {
       el => (el as HTMLGcdsInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(I18N.en.rangeUnderflow.replace('{min}', 5));
+    expect(errorMessage).toEqual(I18N.en.rangeUnderflow.replace('{min}', '5'));
 
     await element.locator('input').fill('123');
 
@@ -197,7 +197,7 @@ test.describe('gcds-input', () => {
       el => (el as HTMLGcdsInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(I18N.en.rangeOverflow.replace('{max}', 100));
+    expect(errorMessage).toEqual(I18N.en.rangeOverflow.replace('{max}', '100'));
 
     await element.locator('input').fill('87');
 
@@ -234,7 +234,7 @@ test.describe('gcds-input', () => {
     );
 
     expect(errorMessage).toEqual(
-      I18N.en.stepMismatch.replace('{lower}', 10).replace('{upper}', 20),
+      I18N.en.stepMismatch.replace('{lower}', '10').replace('{upper}', '20'),
     );
 
     await element.locator('input').fill('20');
@@ -306,7 +306,7 @@ test.describe('gcds-input', () => {
     );
 
     expect(errorMessage).toEqual(
-      I18N.en.tooShort.replace('{min}', 6).replace('{current}', 5),
+      I18N.en.tooShort.replace('{min}', '6').replace('{current}', '5'),
     );
 
     await element.locator('input').fill('long enough');
@@ -346,7 +346,7 @@ test.describe('gcds-input', () => {
     );
 
     expect(errorMessage).toEqual(
-      I18N.en.tooLong.replace('{max}', 7).replace('{current}', 13),
+      I18N.en.tooLong.replace('{max}', '7').replace('{current}', '13'),
     );
 
     await element.locator('input').fill('perfect');
@@ -390,7 +390,7 @@ test.describe('gcds-input', () => {
     );
 
     expect(validationMessage).toEqual(
-      I18N.en.tooShort.replace('{min}', 6).replace('{current}', 5),
+      I18N.en.tooShort.replace('{min}', '6').replace('{current}', '5'),
     );
 
     await element.locator('input').fill('long enough');

@@ -357,25 +357,25 @@ describe('handleErrors', () => {
       value: 'invalid-url',
     });
     const MaxlengthInput = Object.assign(document.createElement('gcds-input'), {
-      maxlength: 5,
+      maxlength: '5',
       value: '2345678',
     });
     const MinlengthInput = Object.assign(document.createElement('gcds-input'), {
-      minlength: 5,
+      minlength: '5',
       value: '234',
     });
     const MinInput = Object.assign(document.createElement('gcds-input'), {
-      min: 5,
+      min: '5',
       type: 'number',
       value: '234',
     });
     const MaxInput = Object.assign(document.createElement('gcds-input'), {
-      max: 5,
+      max: '5',
       type: 'number',
       value: '234',
     });
     const StepInput = Object.assign(document.createElement('gcds-input'), {
-      step: 5,
+      step: '5',
       type: 'number',
       value: '7',
     });
@@ -462,32 +462,32 @@ describe('handleErrors', () => {
         element: MaxlengthInput,
         lang: 'en',
         res: I18N['en'].tooLong
-          .replace('{max}', MaxlengthInput.maxlength)
-          .replace('{current}', MaxlengthInput.value.length),
+          .replace('{max}', String(MaxlengthInput.maxlength))
+          .replace('{current}', String(MaxlengthInput.value.length)),
       },
       {
         error: 'tooLong',
         element: MaxlengthInput,
         lang: 'fr',
         res: I18N['fr'].tooLong
-          .replace('{max}', MaxlengthInput.maxlength)
-          .replace('{current}', MaxlengthInput.value.length),
+          .replace('{max}', String(MaxlengthInput.maxlength))
+          .replace('{current}', String(MaxlengthInput.value.length)),
       },
       {
         error: 'tooShort',
         element: MinlengthInput,
         lang: 'en',
         res: I18N['en'].tooShort
-          .replace('{min}', MinlengthInput.minlength)
-          .replace('{current}', MinlengthInput.value.length),
+          .replace('{min}', String(MinlengthInput.minlength))
+          .replace('{current}', String(MinlengthInput.value.length)),
       },
       {
         error: 'tooShort',
         element: MinlengthInput,
         lang: 'fr',
         res: I18N['fr'].tooShort
-          .replace('{min}', MinlengthInput.minlength)
-          .replace('{current}', MinlengthInput.value.length),
+          .replace('{min}', String(MinlengthInput.minlength))
+          .replace('{current}', String(MinlengthInput.value.length)),
       },
       {
         error: 'rangeUnderflow',
@@ -520,14 +520,18 @@ describe('handleErrors', () => {
         res: I18N['en'].stepMismatch
           .replace(
             '{lower}',
-            Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
-              Number(StepInput.step),
+            String(
+              Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
+                Number(StepInput.step),
+            ),
           )
           .replace(
             '{upper}',
-            Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
-              Number(StepInput.step) +
-              Number(StepInput.step),
+            String(
+              Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
+                Number(StepInput.step) +
+                Number(StepInput.step),
+            ),
           ),
       },
       {
@@ -537,14 +541,18 @@ describe('handleErrors', () => {
         res: I18N['fr'].stepMismatch
           .replace(
             '{lower}',
-            Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
-              Number(StepInput.step),
+            String(
+              Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
+                Number(StepInput.step),
+            ),
           )
           .replace(
             '{upper}',
-            Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
-              Number(StepInput.step) +
-              Number(StepInput.step),
+            String(
+              Math.floor(Number(StepInput.value) / Number(StepInput.step)) *
+                Number(StepInput.step) +
+                Number(StepInput.step),
+            ),
           ),
       },
     ];

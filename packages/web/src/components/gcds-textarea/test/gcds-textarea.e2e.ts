@@ -182,7 +182,7 @@ test.describe('gcds-textarea', () => {
     );
 
     expect(errorMessage).toEqual(
-      I18N.en.tooShort.replace('{min}', 6).replace('{current}', 5),
+      I18N.en.tooShort.replace('{min}', '6').replace('{current}', '5'),
     );
 
     await element.locator('textarea').fill('long enough');
@@ -224,7 +224,7 @@ test.describe('gcds-textarea', () => {
     );
 
     expect(errorMessage).toEqual(
-      I18N.en.tooLong.replace('{max}', 7).replace('{current}', 13),
+      I18N.en.tooLong.replace('{max}', '7').replace('{current}', '13'),
     );
 
     await element.locator('textarea').fill('perfect');
