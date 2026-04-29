@@ -223,7 +223,6 @@ const renderFilterSortModal = element => {
             {I18N[lang].filterAndSort}
           </gcds-heading>
           <gcds-button
-            size="small"
             button-role="secondary"
             onClick={() => {
               element.filterSortModal.close();

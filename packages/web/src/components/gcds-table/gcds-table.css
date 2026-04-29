@@ -278,6 +278,11 @@
       }
     }
 
+    /* Reduce gcds-button desktop font size to match table typography and spacing. */
+    gcds-button {
+      --gcds-button-font-desktop: var(--gcds-button-font-mobile);
+    }
+
     .gcds-table__modal-header {
       display: flex;
       flex: 0 0 auto;
