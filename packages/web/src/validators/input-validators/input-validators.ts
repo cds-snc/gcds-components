@@ -56,15 +56,6 @@ export const requiredSelectField: Validator<string> = {
   },
 };
 
-/*
- * Date input validators
- *
- * Date input error messages live in the centralized
- * `utils/i18n/validation-errors.ts` file. Import `validationErrors` from
- * there and reference `validationErrors.en.dateInput` /
- * `validationErrors.fr.dateInput`.
- */
-
 export const requiredDateInput: Validator<string> = {
   validate: (date: string, context?: ValidationContext) => {
     if (isValidDate(date)) {

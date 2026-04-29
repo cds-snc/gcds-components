@@ -1,12 +1,8 @@
 /**
  * Centralized validation error messages.
  *
- * Single source of truth for all validation error messages used across
- * the web components — both the HTML constraint validation messages
- * (`valueMissing`, `typeMismatch`, `tooLong`, `rangeUnderflow`, etc.)
- * consumed by `formatHTMLErrorMessage` in `utils.ts`, and the custom
- * required-field messages used by the validators in
- * `validators/input-validators/input-validators.ts`.
+ * Single source of truth for all validation error messages used 
+ * across components 
  *
  * Messages are grouped by language (`en`, `fr`) at the top level. For
  * keys that expose multiple message variants (e.g. `typeMismatch`,
@@ -17,7 +13,6 @@
  */
 export const validationErrors = {
   en: {
-    // HTML constraint validation messages (consumed by formatHTMLErrorMessage)
     valueMissing: 'Enter information to continue.',
     typeMismatch: {
       email:
@@ -35,7 +30,6 @@ export const validationErrors = {
       'Enter a number from the specified options to continue. The closest numbers to what you entered are {lower} and {upper}. ',
     badInput: 'Enter a number to continue.',
 
-    // Custom required-field validators
     required: 'Enter information to continue.',
     requiredEmail:
       'Enter a valid email address to continue. Use a standard format. Example: name@address.ca.',
@@ -45,7 +39,6 @@ export const validationErrors = {
     requiredCheckboxGroup: 'Choose an option to continue.',
     requiredCheckboxSingle: 'You must check the box to continue.',
 
-    // Date input variants
     dateInput: {
       all: 'Enter the date.',
       missingmonthinput: 'Enter the month.',
@@ -64,7 +57,6 @@ export const validationErrors = {
     },
   },
   fr: {
-    // HTML constraint validation messages (consumed by formatHTMLErrorMessage)
     valueMissing: 'Saisissez des renseignements pour continuer.',
     typeMismatch: {
       email:
@@ -84,7 +76,6 @@ export const validationErrors = {
       'Entrez un nombre parmi les options spécifiées pour continuer. Les nombres les plus proches de votre entrée sont {lower} et {upper}.',
     badInput: 'Entrez un nombre pour continuer.',
 
-    // Custom required-field validators
     required: 'Saisissez des renseignements pour continuer.',
     requiredEmail:
       'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
@@ -94,7 +85,6 @@ export const validationErrors = {
     requiredCheckboxGroup: 'Choisissez une option pour continuer.',
     requiredCheckboxSingle: 'Vous devez cocher la case pour continuer.',
 
-    // Date input variants
     dateInput: {
       all: 'Saisissez la date.',
       missingmonthinput: 'Saisissez le mois.',
