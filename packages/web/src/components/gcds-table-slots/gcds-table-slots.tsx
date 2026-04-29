@@ -79,7 +79,9 @@ export class GcdsTableSlots {
    * Available page-size options.
    * Use 0 to represent "All rows".
    */
-  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [10, 25, 50, 0];
+  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [
+    10, 25, 50, 0,
+  ];
 
   /** Enable global filter */
   @Prop() filter: boolean = false;
@@ -95,7 +97,8 @@ export class GcdsTableSlots {
   @State() private globalFilter: string = this.filterValue;
   @State() private paginationState: PaginationState = {
     pageIndex: Math.max(0, this.paginationCurrentPage - 1),
-    pageSize: this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
+    pageSize:
+      this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
   };
   @State() lang: string;
 
@@ -163,8 +166,13 @@ export class GcdsTableSlots {
   @Watch('paginationSize')
   onPageSizeChange(newSize: number) {
     this.paginationState = {
-      pageIndex: this.paginationState.pageIndex + 1 > Math.ceil((this.table?.getPreFilteredRowModel()?.rows.length ?? 0) / newSize) ? 0
-        : this.paginationState.pageIndex,
+      pageIndex:
+        this.paginationState.pageIndex + 1 >
+        Math.ceil(
+          (this.table?.getPreFilteredRowModel()?.rows.length ?? 0) / newSize,
+        )
+          ? 0
+          : this.paginationState.pageIndex,
       pageSize: newSize === 0 ? Number.MAX_SAFE_INTEGER : newSize,
     };
     this.table?.setOptions(prev => ({
@@ -187,18 +195,19 @@ export class GcdsTableSlots {
     this.lang = newVal;
   }
 
-
   // ─── Helpers ──────────────────────────────────────────────────────────────
 
   private initTable() {
-    this.table = createTable(buildTableOptions(this) as TableOptionsResolved<Record<string, unknown>>);
+    this.table = createTable(
+      buildTableOptions(this) as TableOptionsResolved<Record<string, unknown>>,
+    );
   }
 
   private emitStateChangeIfDirty(): void {
     const rows = this.table?.getRowModel().rows ?? [];
 
     // Compute a stable fingerprint of the current visible row set
-    const rowIdFingerprint = rows.map((r) => r.id).join(',');
+    const rowIdFingerprint = rows.map(r => r.id).join(',');
 
     // Only emit if the visible rows have actually changed
     if (rowIdFingerprint === this.lastEmittedRowIds) return;
@@ -220,21 +229,21 @@ export class GcdsTableSlots {
   }
 
   private sortEnabled(): boolean {
-    return this.sort || ((this.columns ?? []) as TableColumnSlots[]).some(col => col.sort);
+    return (
+      this.sort ||
+      ((this.columns ?? []) as TableColumnSlots[]).some(col => col.sort)
+    );
   }
 
   private getTemplate(columnKey: string): HTMLTemplateElement | null {
     return this.el.querySelector<HTMLTemplateElement>(
-      `template[slot="cell:${columnKey}"]`
+      `template[slot="cell:${columnKey}"]`,
     );
   }
 
-  private applyBindings(
-    el: HTMLElement,
-    row: Record<string, unknown>
-  ): void {
-    const bindings = Array.from(el.attributes).filter((attr) =>
-      attr.name.startsWith('data-bind-')
+  private applyBindings(el: HTMLElement, row: Record<string, unknown>): void {
+    const bindings = Array.from(el.attributes).filter(attr =>
+      attr.name.startsWith('data-bind-'),
     );
 
     for (const binding of bindings) {
@@ -243,9 +252,8 @@ export class GcdsTableSlots {
 
       if (binding.name.startsWith('data-bind-template-')) {
         prop = binding.name.replace('data-bind-template-', '');
-        value = binding.value.replace(
-          /\{(\w+)\}/g,
-          (_, field) => String(row[field] ?? '')
+        value = binding.value.replace(/\{(\w+)\}/g, (_, field) =>
+          String(row[field] ?? ''),
         );
       } else {
         prop = binding.name.replace('data-bind-', '');
@@ -263,10 +271,10 @@ export class GcdsTableSlots {
   private applyListeners(
     el: HTMLElement,
     row: Record<string, unknown>,
-    rowId: string
+    rowId: string,
   ): void {
-    const listeners = Array.from(el.attributes).filter((attr) =>
-      attr.name.startsWith('data-on-')
+    const listeners = Array.from(el.attributes).filter(attr =>
+      attr.name.startsWith('data-on-'),
     );
     for (const listener of listeners) {
       const eventName = listener.name.replace('data-on-', '');
@@ -277,7 +285,7 @@ export class GcdsTableSlots {
             bubbles: true,
             composed: true,
             detail: { row, rowId },
-          })
+          }),
         );
       });
     }
@@ -286,7 +294,7 @@ export class GcdsTableSlots {
   private cloneAndInject(
     columnKey: string,
     row: Record<string, unknown>,
-    rowId: number
+    rowId: number,
   ): HTMLElement | null {
     const template = this.getTemplate(columnKey);
     if (!template) return null;
@@ -317,7 +325,7 @@ export class GcdsTableSlots {
     tdEl: HTMLElement | null,
     columnKey: string,
     row: Record<string, unknown>,
-    rowId: number
+    rowId: number,
   ): void {
     if (!tdEl) return;
     tdEl.innerHTML = '';
@@ -328,7 +336,7 @@ export class GcdsTableSlots {
   // ─── Event handlers ───────────────────────────────────────────────────────
 
   /*
-    * Handle sort toggling by updating table state
+   * Handle sort toggling by updating table state
    */
   private handleSortToggle(columnId: string) {
     const col = this.table?.getColumn(columnId);
@@ -337,7 +345,7 @@ export class GcdsTableSlots {
   }
 
   /*
-    * Handle page size selection by updating table state and focusing the table
+   * Handle page size selection by updating table state and focusing the table
    */
   private handlePageSizeSelect(e: Event) {
     const select = e.target as HTMLSelectElement;
@@ -346,25 +354,27 @@ export class GcdsTableSlots {
   }
 
   /*
-    * Handle pagination control clicks by updating table state and focusing the table
-    */
+   * Handle pagination control clicks by updating table state and focusing the table
+   */
   private handlePaginationClick(e: CustomEvent) {
     this.paginationCurrentPage = e.detail.page;
 
     // focus table here to ensure keyboard users can navigate from pagination controls to table rows
     this.shadowElement?.focus();
-    this.shadowElement?.scrollIntoView({ block: "start", behavior: "smooth" });
+    this.shadowElement?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   // ─── Methods ────────────────────────────────────────────────────────────
 
   @Method()
   async getVisibleRows() {
-    return this.table?.getRowModel().rows.map(row => ({
-      rowId: row.id,
-      rowIndex: row.index,
-      original: row.original,
-    })) ?? [];
+    return (
+      this.table?.getRowModel().rows.map(row => ({
+        rowId: row.id,
+        rowIndex: row.index,
+        original: row.original,
+      })) ?? []
+    );
   }
 
   // ─── Lifecycle ────────────────────────────────────────────────────────────
@@ -403,11 +413,8 @@ export class GcdsTableSlots {
     return (
       <Host>
         <section class="gcds-table">
-
           {/* Filter and sort controls */}
           {(this.filter || this.sortEnabled()) && renderFilterSortModal(this)}
-
-          <hr />
 
           {/* Active pills section */}
           <div class="gcds-table__active-pills">
@@ -418,60 +425,81 @@ export class GcdsTableSlots {
             })}
 
             {/* Sort pills */}
-            {renderSortPills(this.sorting, this.table, this.lang, (columnId: string) => {
-              this.sorting = this.sorting.filter(s => s.id !== columnId);
-              updateTableOptions(this);
-            })}
+            {renderSortPills(
+              this.sorting,
+              this.table,
+              this.lang,
+              (columnId: string) => {
+                this.sorting = this.sorting.filter(s => s.id !== columnId);
+                updateTableOptions(this);
+              },
+            )}
           </div>
 
-          {/* Pagination size selector */}
-          {this.pagination && (
-            <div class="gcds-table__page-size">
-              <gcds-select
-                label={I18N[this.lang].rowsPerPage}
-                name="page-size"
-                selectId="gcds-table-page-size"
-                value={this.paginationSize.toString()}
-                onChange={e => this.handlePageSizeSelect(e)}
-              >
-                {(this.paginationSizeOptions as number[]).map(opt => (
-                  <option key={opt} value={opt}>
-                    {opt === 0 ? 'All' : opt}
-                  </option>
-                ))}
-              </gcds-select>
-            </div>
-          )}
+          <div class="gcds-table__row-management">
+            {/* Pagination size selector */}
+            {this.pagination && (
+              <div class="gcds-table__page-size">
+                <gcds-select
+                  label={I18N[this.lang].rowsPerPage}
+                  name="page-size"
+                  selectId="gcds-table-page-size"
+                  value={this.paginationSize.toString()}
+                  onChange={e => this.handlePageSizeSelect(e)}
+                >
+                  {(this.paginationSizeOptions as number[]).map(opt => (
+                    <option key={opt} value={opt}>
+                      {opt === 0 ? 'All' : opt}
+                    </option>
+                  ))}
+                </gcds-select>
+              </div>
+            )}
 
-          {/* Table status */}
-          <span class="gcds-table__page-info" role="status" aria-live="polite">
-            {renderTableStatus(this.el, this.table, this.paginationState, this.lang)}
-          </span>
+            {/* Table status */}
+            <span
+              class="gcds-table__page-info"
+              role="status"
+              aria-live="polite"
+            >
+              {renderTableStatus(
+                this.el,
+                this.table,
+                this.paginationState,
+                this.lang,
+              )}
+            </span>
+          </div>
 
           {/* ── Table ──────────────────────────────── */}
-          <table class="gcds-table__table" tabindex="-1" ref={el => { if (el) this.shadowElement = el; }}>
+          <table
+            class="gcds-table__table"
+            tabindex="-1"
+            ref={el => {
+              if (el) this.shadowElement = el;
+            }}
+          >
             {this.el.querySelector('[slot="caption"]') && (
               <caption>
-                <slot name="caption">
-                </slot>
+                <slot name="caption"></slot>
               </caption>
             )}
             <thead>
               {headerGroups.map(hg => (
                 <tr key={hg.id}>
                   {hg.headers.map(header => {
-                    const colDef = ((this.columns ?? []) as TableColumnSlots[]).find(
-                      c => c.field === header.id,
-                    );
+                    const colDef = (
+                      (this.columns ?? []) as TableColumnSlots[]
+                    ).find(c => c.field === header.id);
                     const canSort = header.column.getCanSort();
-                    const alignClass = colDef?.align
-                      ? `align-${colDef.align}`
+                    const alignmentClass = colDef?.alignment
+                      ? `alignment-${colDef.alignment}`
                       : '';
 
                     return (
                       <th
                         key={header.id}
-                        class={`gcds-table__th ${alignClass}`}
+                        class={`gcds-table__th ${alignmentClass}`}
                         scope="col"
                         aria-sort={
                           header.column.getIsSorted() === 'asc'
@@ -483,7 +511,7 @@ export class GcdsTableSlots {
                                 : undefined
                         }
                       >
-                        {canSort ?
+                        {canSort ? (
                           <button
                             onClick={() => this.handleSortToggle(header.id)}
                             title={getSortTitle(header.column, this.lang)}
@@ -497,9 +525,9 @@ export class GcdsTableSlots {
                               {getSortIcon(header.column)}
                             </span>
                           </button>
-                          :
+                        ) : (
                           colDef?.header
-                        }
+                        )}
                       </th>
                     );
                   })}
@@ -517,10 +545,12 @@ export class GcdsTableSlots {
                   </td>
                 </tr>
               ) : (
-                rows.map((row) => (
+                rows.map(row => (
                   <tr key={row.id} class="gcds-table__row">
                     {row.getVisibleCells().map(cell => {
-                      const colDef = ((this.columns ?? []) as TableColumnSlots[]).find(c => c.field === cell.column.id);
+                      const colDef = (
+                        (this.columns ?? []) as TableColumnSlots[]
+                      ).find(c => c.field === cell.column.id);
                       const isSlotted = colDef?.slotted;
                       const isManaged = colDef?.managed;
 
@@ -533,33 +563,35 @@ export class GcdsTableSlots {
                         Tag = 'th';
                         scope = {
                           scope: 'row',
-                        }
+                        };
                       }
 
-                      cellContent = !isSlotted ? String(cell.getValue() ?? '') : null;
+                      cellContent = !isSlotted
+                        ? String(cell.getValue() ?? '')
+                        : null;
 
                       return (
                         <Tag
                           key={cell.id}
-                          class={`gcds-table__td${colDef?.align ? ` align-${colDef.align}` : ''}`}
+                          class={`gcds-table__td${colDef?.alignment ? ` alignment-${colDef.alignment}` : ''}`}
                           data-column={colDef?.header}
                           data-cell={`${cell.column.id}-${row.id}`}
                           ref={
                             isSlotted && !isManaged
-                              ? (tdEl) =>
-                                this.mountSlottedCell(
-                                  tdEl,
-                                  cell.column.id,
-                                  row.original,
-                                  Number(row.id)
-                                )
+                              ? tdEl =>
+                                  this.mountSlottedCell(
+                                    tdEl,
+                                    cell.column.id,
+                                    row.original,
+                                    Number(row.id),
+                                  )
                               : undefined
                           }
                           {...scope}
                         >
                           {cellContent}
                         </Tag>
-                      )
+                      );
                     })}
                   </tr>
                 ))
@@ -574,12 +606,12 @@ export class GcdsTableSlots {
               currentPage={this.paginationState.pageIndex + 1}
               totalPages={this.table.getPageCount()}
               label={I18N[this.lang].paginationLabel}
-              onGcdsClick={(e) => this.handlePaginationClick(e)}
+              onGcdsClick={e => this.handlePaginationClick(e)}
             />
           )}
         </section>
         <slot />
-      </Host >
+      </Host>
     );
   }
 }
