@@ -20,6 +20,26 @@
 | `sort`                  | `sort`                    | Enable global column sorting (can be overridden per column) | `boolean`                 | `false`                    |
 
 
+## Events
+
+| Event                  | Description | Type                                |
+| ---------------------- | ----------- | ----------------------------------- |
+| `gcdsTableStateChange` |             | `CustomEvent<GcdsTableStateChange>` |
+
+
+## Methods
+
+### `getVisibleRows() => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>`
+
+
+
+#### Returns
+
+Type: `Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>`
+
+
+
+
 ## Dependencies
 
 ### Depends on
