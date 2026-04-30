@@ -9,7 +9,7 @@ import {
   requiredRadio,
 } from '../input-validators';
 import { Blob } from 'buffer';
-import { dateInputErrorMessage } from '../input-validators';
+import { validationErrors } from '../../../utils/i18n/validation-errors';
 import { ValidatorReturn } from '../../validator';
 
 interface MockFile {
@@ -190,8 +190,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: true, month: true, year: true },
         reason: {
-          en: dateInputErrorMessage.en.all,
-          fr: dateInputErrorMessage.fr.all,
+          en: validationErrors.en.dateInput.all,
+          fr: validationErrors.fr.dateInput.all,
         },
       },
     },
@@ -201,8 +201,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: true, month: true, year: true },
         reason: {
-          en: dateInputErrorMessage.en.all,
-          fr: dateInputErrorMessage.fr.all,
+          en: validationErrors.en.dateInput.all,
+          fr: validationErrors.fr.dateInput.all,
         },
       },
     },
@@ -212,8 +212,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: true, month: false, year: false },
         reason: {
-          en: dateInputErrorMessage.en.missingday,
-          fr: dateInputErrorMessage.fr.missingday,
+          en: validationErrors.en.dateInput.missingday,
+          fr: validationErrors.fr.dateInput.missingday,
         },
       },
     },
@@ -223,8 +223,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: false, month: true, year: false },
         reason: {
-          en: dateInputErrorMessage.en.missingmonth,
-          fr: dateInputErrorMessage.fr.missingmonth,
+          en: validationErrors.en.dateInput.missingmonth,
+          fr: validationErrors.fr.dateInput.missingmonth,
         },
       },
     },
@@ -234,8 +234,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: false, month: true, year: false },
         reason: {
-          en: dateInputErrorMessage.en.missingmonth,
-          fr: dateInputErrorMessage.fr.missingmonth,
+          en: validationErrors.en.dateInput.missingmonth,
+          fr: validationErrors.fr.dateInput.missingmonth,
         },
       },
     },
@@ -245,8 +245,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: false, month: false, year: true },
         reason: {
-          en: dateInputErrorMessage.en.missingyear,
-          fr: dateInputErrorMessage.fr.missingyear,
+          en: validationErrors.en.dateInput.missingyear,
+          fr: validationErrors.fr.dateInput.missingyear,
         },
       },
     },
@@ -256,8 +256,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: false, month: false, year: true },
         reason: {
-          en: dateInputErrorMessage.en.missingyear,
-          fr: dateInputErrorMessage.fr.missingyear,
+          en: validationErrors.en.dateInput.missingyear,
+          fr: validationErrors.fr.dateInput.missingyear,
         },
       },
     },
@@ -267,8 +267,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: true, month: true, year: false },
         reason: {
-          en: dateInputErrorMessage.en.missingmonthday,
-          fr: dateInputErrorMessage.fr.missingmonthday,
+          en: validationErrors.en.dateInput.missingmonthday,
+          fr: validationErrors.fr.dateInput.missingmonthday,
         },
       },
     },
@@ -278,8 +278,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: true, month: false, year: true },
         reason: {
-          en: dateInputErrorMessage.en.missingdayyear,
-          fr: dateInputErrorMessage.fr.missingdayyear,
+          en: validationErrors.en.dateInput.missingdayyear,
+          fr: validationErrors.fr.dateInput.missingdayyear,
         },
       },
     },
@@ -289,8 +289,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: false, month: true, year: true },
         reason: {
-          en: dateInputErrorMessage.en.missingmonthyear,
-          fr: dateInputErrorMessage.fr.missingmonthyear,
+          en: validationErrors.en.dateInput.missingmonthyear,
+          fr: validationErrors.fr.dateInput.missingmonthyear,
         },
       },
     },
@@ -300,8 +300,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: false, month: false, year: true },
         reason: {
-          en: dateInputErrorMessage.en.invalidyearlength,
-          fr: dateInputErrorMessage.fr.invalidyearlength,
+          en: validationErrors.en.dateInput.invalidyearlength,
+          fr: validationErrors.fr.dateInput.invalidyearlength,
         },
       },
     },
@@ -311,8 +311,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: false, month: false, year: true },
         reason: {
-          en: dateInputErrorMessage.en.missingyear,
-          fr: dateInputErrorMessage.fr.missingyear,
+          en: validationErrors.en.dateInput.missingyear,
+          fr: validationErrors.fr.dateInput.missingyear,
         },
       },
     },
@@ -322,8 +322,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: false, month: true, year: false },
         reason: {
-          en: dateInputErrorMessage.en.invalidmonth,
-          fr: dateInputErrorMessage.fr.invalidmonth,
+          en: validationErrors.en.dateInput.invalidmonth,
+          fr: validationErrors.fr.dateInput.invalidmonth,
         },
       },
     },
@@ -333,8 +333,8 @@ describe('Required date input validator', () => {
         valid: false,
         errors: { day: true, month: false, year: false },
         reason: {
-          en: dateInputErrorMessage.en.invalidday,
-          fr: dateInputErrorMessage.fr.invalidday,
+          en: validationErrors.en.dateInput.invalidday,
+          fr: validationErrors.fr.dateInput.invalidday,
         },
       },
     },
@@ -354,8 +354,8 @@ describe('Required date input validator', () => {
       valid: false,
       errors: { day: true, month: false, year: false },
       reason: {
-        en: dateInputErrorMessage.en.missingday,
-        fr: dateInputErrorMessage.fr.missingday,
+        en: validationErrors.en.dateInput.missingday,
+        fr: validationErrors.fr.dateInput.missingday,
       },
     });
 
@@ -368,8 +368,8 @@ describe('Required date input validator', () => {
       valid: false,
       errors: { day: true, month: false, year: false },
       reason: {
-        en: dateInputErrorMessage.en.missingday,
-        fr: dateInputErrorMessage.fr.missingday,
+        en: validationErrors.en.dateInput.missingday,
+        fr: validationErrors.fr.dateInput.missingday,
       },
     });
 
@@ -381,8 +381,8 @@ describe('Required date input validator', () => {
       valid: false,
       errors: { day: false, month: true, year: false },
       reason: {
-        en: dateInputErrorMessage.en.missingmonth,
-        fr: dateInputErrorMessage.fr.missingmonth,
+        en: validationErrors.en.dateInput.missingmonth,
+        fr: validationErrors.fr.dateInput.missingmonth,
       },
     });
 
@@ -394,8 +394,8 @@ describe('Required date input validator', () => {
       valid: false,
       errors: { day: false, month: true, year: false },
       reason: {
-        en: dateInputErrorMessage.en.missingmonth,
-        fr: dateInputErrorMessage.fr.missingmonth,
+        en: validationErrors.en.dateInput.missingmonth,
+        fr: validationErrors.fr.dateInput.missingmonth,
       },
     });
 
@@ -417,8 +417,8 @@ describe('Required date input validator', () => {
           valid: false,
           errors: { day: false, month: true, year: false },
           reason: {
-            en: dateInputErrorMessage.en.missingmonthinput,
-            fr: dateInputErrorMessage.fr.missingmonthinput,
+            en: validationErrors.en.dateInput.missingmonthinput,
+            fr: validationErrors.fr.dateInput.missingmonthinput,
           },
         },
       },
@@ -428,8 +428,8 @@ describe('Required date input validator', () => {
           valid: false,
           errors: { day: true, month: true, year: false },
           reason: {
-            en: dateInputErrorMessage.en.missingmonthinputday,
-            fr: dateInputErrorMessage.fr.missingmonthinputday,
+            en: validationErrors.en.dateInput.missingmonthinputday,
+            fr: validationErrors.fr.dateInput.missingmonthinputday,
           },
         },
       },
@@ -439,8 +439,8 @@ describe('Required date input validator', () => {
           valid: false,
           errors: { day: false, month: true, year: true },
           reason: {
-            en: dateInputErrorMessage.en.missingmonthinputyear,
-            fr: dateInputErrorMessage.fr.missingmonthinputyear,
+            en: validationErrors.en.dateInput.missingmonthinputyear,
+            fr: validationErrors.fr.dateInput.missingmonthinputyear,
           },
         },
       },
@@ -450,8 +450,8 @@ describe('Required date input validator', () => {
           valid: false,
           errors: { day: true, month: true, year: true },
           reason: {
-            en: dateInputErrorMessage.en.all,
-            fr: dateInputErrorMessage.fr.all,
+            en: validationErrors.en.dateInput.all,
+            fr: validationErrors.fr.dateInput.all,
           },
         },
       },

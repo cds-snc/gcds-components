@@ -1,6 +1,6 @@
 import { EventEmitter } from '@stencil/core';
 import { ValidatorReturn } from '../validators';
-import I18N from './i18n/i18n.js';
+import { validationErrors } from './i18n/validation-errors';
 
 export function format(label: string): string {
   return label ? ` ${label}` : 'Fallback Button Label';
@@ -293,27 +293,27 @@ export function handleValidationResult(
 export function formatHTMLErrorMessage(error, lang, el) {
   switch (error) {
     case 'valueMissing':
-      return I18N[lang][error];
+      return validationErrors[lang][error];
     case 'typeMismatch':
       if (el.type === 'url' || el.type === 'email') {
-        return I18N[lang][error][el.type];
+        return validationErrors[lang][error][el.type];
       } else {
-        return I18N[lang][error];
+        return validationErrors[lang][error];
       }
     case 'tooLong':
-      return I18N[lang][error]
+      return validationErrors[lang][error]
         .replace('{max}', el.maxlength || el.characterCount)
         .replace('{current}', el.value.length);
     case 'tooShort':
-      return I18N[lang][error]
+      return validationErrors[lang][error]
         .replace('{min}', el.minlength)
         .replace('{current}', el.value.length);
     case 'rangeUnderflow':
-      return I18N[lang][error].replace('{min}', el.min);
+      return validationErrors[lang][error].replace('{min}', el.min);
     case 'rangeOverflow':
-      return I18N[lang][error].replace('{max}', el.max);
+      return validationErrors[lang][error].replace('{max}', el.max);
     case 'stepMismatch':
-      return I18N[lang][error]
+      return validationErrors[lang][error]
         .replace(
           '{lower}',
           Math.floor(Number(el.value) / Number(el.step)) * Number(el.step),
@@ -326,7 +326,7 @@ export function formatHTMLErrorMessage(error, lang, el) {
     case 'badInput':
     case 'patternMismatch':
     default:
-      return I18N[lang][error];
+      return validationErrors[lang][error];
   }
 }
 
