@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.2.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.2.0...@gcds-core/components-react-v1.2.1) (2026-04-30)
+
+
+### Patch
+
+* **@gcds-core/components-react:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.2.0 to ^1.2.1
+
 ## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.1.0...@gcds-core/components-react-v1.2.0) (2026-04-21)
 
 

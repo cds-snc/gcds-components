@@ -1,6 +1,13 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.2.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.2.1) (2026-04-30)
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* **form validation:** centralize validation error messages ([#1237](https://github.com/cds-snc/gcds-components/issues/1237)) ([fb5f390](https://github.com/cds-snc/gcds-components/commit/fb5f390aa968351da2f5e9124a6410cde16851af))
+
 ## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.1.0...@gcds-core/components-v1.2.0)
 
 Released on: 2026-04-21
