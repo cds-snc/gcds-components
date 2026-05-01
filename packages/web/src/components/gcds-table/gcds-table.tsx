@@ -41,7 +41,7 @@ import {
 
 @Component({
   tag: 'gcds-table',
-  styleUrl: '../gcds-table/gcds-table.css',
+  styleUrl: './gcds-table.css',
   shadow: true,
 })
 export class GcdsTable {
@@ -413,6 +413,11 @@ export class GcdsTable {
     return (
       <Host>
         <section class="gcds-table">
+          {this.el.querySelector('[slot="caption"]') && (
+            <div id="gcds-table-caption" class="gcds-table__caption">
+              <slot name="caption"></slot>
+            </div>
+          )}
           {/* Filter and sort controls */}
           {(this.filter || this.sortEnabled()) && renderFilterSortModal(this)}
 
@@ -475,15 +480,11 @@ export class GcdsTable {
           <table
             class="gcds-table__table"
             tabindex="-1"
+            aria-labelledby={this.el.querySelector('[slot="caption"]') ? 'gcds-table-caption' : undefined}
             ref={el => {
               if (el) this.shadowElement = el;
             }}
           >
-            {this.el.querySelector('[slot="caption"]') && (
-              <caption>
-                <slot name="caption"></slot>
-              </caption>
-            )}
             <thead>
               {headerGroups.map(hg => (
                 <tr key={hg.id}>
