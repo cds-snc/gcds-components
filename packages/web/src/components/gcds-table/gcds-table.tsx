@@ -165,16 +165,24 @@ export class GcdsTable {
 
   @Watch('paginationSize')
   onPageSizeChange(newSize: number) {
-    this.paginationState = {
-      pageIndex:
-        this.paginationState.pageIndex + 1 >
-          Math.ceil(
-            (this.table?.getPreFilteredRowModel()?.rows.length ?? 0) / newSize,
-          )
-          ? 0
-          : this.paginationState.pageIndex,
-      pageSize: newSize === 0 ? Number.MAX_SAFE_INTEGER : newSize,
-    };
+    const totalRows = this.table?.getPreFilteredRowModel()?.rows.length ?? 0;
+
+    if (newSize === 0) {
+      this.paginationState = {
+        pageIndex: 0,
+        pageSize: totalRows === 0 ? 1 : totalRows,
+      };
+    } else {
+      this.paginationState = {
+        pageIndex:
+          this.paginationState.pageIndex + 1 >
+            Math.ceil(totalRows / newSize)
+            ? 0
+            : this.paginationState.pageIndex,
+        pageSize: newSize === 0 ? totalRows : newSize,
+      };
+    }
+
     this.table?.setOptions(prev => ({
       ...prev,
       state: { ...prev.state, pagination: this.paginationState },
