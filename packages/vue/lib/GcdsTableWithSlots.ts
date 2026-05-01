@@ -8,18 +8,15 @@ import {
   render,
   type PropType,
 } from 'vue';
-import { GcdsTableSlots as GcdsTableBase } from './components';
-import type {
-  TableColumnSlots,
-  GcdsTableStateChange,
-} from '@gcds-core/components';
+import { GcdsTable as GcdsTableBase } from './components';
+import type { TableColumn, GcdsTableStateChange } from '@gcds-core/components';
 
 export const GcdsTableWithSlots = defineComponent({
   name: 'GcdsTableWithSlots',
 
   props: {
     columns: {
-      type: Array as PropType<TableColumnSlots[]>,
+      type: Array as PropType<TableColumn[]>,
       default: () => [],
     },
     data: {
@@ -43,15 +40,15 @@ export const GcdsTableWithSlots = defineComponent({
     const mountedContainers = ref(new Map<string, HTMLElement>());
     let observer: MutationObserver | null = null;
 
-    const wcColumns = computed<TableColumnSlots[]>(() =>
-      props.columns.map((col) => ({
+    const wcColumns = computed<TableColumn[]>(() =>
+      props.columns.map(col => ({
         ...col,
         managed: col.slotted ? true : undefined,
-      }))
+      })),
     );
 
     const slottedColumns = computed(() =>
-      props.columns.filter((col) => col.slotted)
+      props.columns.filter(col => col.slotted),
     );
 
     function resolveEl(): HTMLElement | null {
@@ -75,9 +72,9 @@ export const GcdsTableWithSlots = defineComponent({
 
     function waitForCells(
       shadowRoot: ShadowRoot,
-      selector: string
+      selector: string,
     ): Promise<void> {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         if (shadowRoot.querySelector(selector)) {
           resolve();
           return;
@@ -98,7 +95,7 @@ export const GcdsTableWithSlots = defineComponent({
     }
 
     async function mountCells(
-      visibleRows: GcdsTableStateChange['visibleRows']
+      visibleRows: GcdsTableStateChange['visibleRows'],
     ): Promise<void> {
       const tableEl = resolvedEl.value;
       if (!tableEl) return;
@@ -106,7 +103,7 @@ export const GcdsTableWithSlots = defineComponent({
       const shadowRoot = tableEl.shadowRoot;
       if (!shadowRoot) return;
 
-      const visibleRowIds = new Set(visibleRows.map((r) => r.rowId));
+      const visibleRowIds = new Set(visibleRows.map(r => r.rowId));
       removeStaleContainers(visibleRowIds);
 
       if (!visibleRows.length || !slottedColumns.value.length) return;
@@ -116,13 +113,13 @@ export const GcdsTableWithSlots = defineComponent({
       await waitForCells(shadowRoot, firstSelector);
 
       visibleRows.forEach(({ rowId, original }) => {
-        slottedColumns.value.forEach((col) => {
+        slottedColumns.value.forEach(col => {
           const slotFn = slots[`cell:${col.field}`];
           if (!slotFn) return;
 
           const key = `${col.field}||${rowId}`;
           const td = shadowRoot.querySelector(
-            `[data-cell="${col.field}-${rowId}"]`
+            `[data-cell="${col.field}-${rowId}"]`,
           );
           if (!td) return;
 
@@ -152,7 +149,7 @@ export const GcdsTableWithSlots = defineComponent({
       const rawEl = resolveEl();
       if (!rawEl) return;
 
-      customElements.whenDefined('gcds-table-slots').then(async () => {
+      customElements.whenDefined('gcds-table').then(async () => {
         await (rawEl as any).componentOnReady?.();
 
         // Cache after ready — mountCells uses this ref, never calls componentOnReady
@@ -172,27 +169,26 @@ export const GcdsTableWithSlots = defineComponent({
       tableEl?.removeEventListener('gcdsTableStateChange', handleStateChange);
       observer?.disconnect();
       observer = null;
-      mountedContainers.value.forEach((container) =>
-        unmountContainer(container)
-      );
+      mountedContainers.value.forEach(container => unmountContainer(container));
       mountedContainers.value.clear();
     });
 
     return () =>
-      h(GcdsTableBase,
+      h(
+        GcdsTableBase,
         {
-        ref: tableRef,
-        columns: wcColumns.value,
-        data: props.data,
-        filter: props.filter,
-        filterValue: props.filterValue,
-        pagination: props.pagination,
-        paginationCurrentPage: props.paginationCurrentPage,
-        paginationSize: props.paginationSize,
-        paginationSizeOptions: props.paginationSizeOptions,
-        sort: props.sort,
-      },
-    slots
-  );
+          ref: tableRef,
+          columns: wcColumns.value,
+          data: props.data,
+          filter: props.filter,
+          filterValue: props.filterValue,
+          pagination: props.pagination,
+          paginationCurrentPage: props.paginationCurrentPage,
+          paginationSize: props.paginationSize,
+          paginationSizeOptions: props.paginationSizeOptions,
+          sort: props.sort,
+        },
+        slots,
+      );
   },
 });

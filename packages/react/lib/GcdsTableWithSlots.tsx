@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useMemo, useCallback } from 'react';
 import ReactDOM from 'react-dom/client';
-import { GcdsTableSlots as GcdsTableBase } from './components';
+import { GcdsTable as GcdsTableBase } from './components';
 import type {
-  TableColumnSlots,
+  TableColumn,
   GcdsTableStateChange,
 } from '@gcds-core/components';
 
@@ -10,7 +10,7 @@ type GcdsTableElement = React.ElementRef<typeof GcdsTableBase>;
 type CellRenderer<T> = (row: T, rowId: string) => React.ReactNode;
 
 export interface ReactTableColumn<T = Record<string, unknown>>
-  extends TableColumnSlots {
+  extends TableColumn {
   renderCell?: CellRenderer<T>;
 }
 
@@ -51,7 +51,7 @@ export function GcdsTableWithSlots<T extends Record<string, unknown>>({
     return val?.$el ?? (val as HTMLElement) ?? null;
   }
 
-  const wcColumns = useMemo<TableColumnSlots[]>(
+  const wcColumns = useMemo<TableColumn[]>(
     () =>
       columns.map(({ renderCell, ...col }) => ({
         ...col,
@@ -165,7 +165,7 @@ export function GcdsTableWithSlots<T extends Record<string, unknown>>({
       mountCells((e as CustomEvent<GcdsTableStateChange>).detail.visibleRows);
     };
 
-    customElements.whenDefined('gcds-table-slots').then(async () => {
+    customElements.whenDefined('gcds-table').then(async () => {
       await (rawEl as any).componentOnReady?.();
 
       resolvedElRef.current = rawEl;

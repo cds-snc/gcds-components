@@ -13,13 +13,10 @@ import {
   ContentChildren,
   AfterContentInit,
 } from '@angular/core';
-import type {
-  TableColumnSlots,
-  GcdsTableStateChange,
-} from '@gcds-core/components';
+import type { TableColumn, GcdsTableStateChange } from '@gcds-core/components';
 import { GcdsCellDirective } from './directives/gcds-cell.directive';
 
-export interface AngularTableColumn extends TableColumnSlots {
+export interface AngularTableColumn extends TableColumn {
   cellTemplate?: TemplateRef<{ $implicit: unknown; rowId: string }>;
 }
 
@@ -27,7 +24,7 @@ export interface AngularTableColumn extends TableColumnSlots {
   selector: 'gcds-table-ng',
   standalone: false,
   template: `
-    <gcds-table-slots
+    <gcds-table
       #tableEl
       [columns]="wcColumns"
       [data]="data"
@@ -40,7 +37,7 @@ export interface AngularTableColumn extends TableColumnSlots {
       [sort]="sort"
     >
       <ng-content></ng-content>
-    </gcds-table-slots>
+    </gcds-table>
   `,
 })
 export class GcdsTableWithSlotsComponent
@@ -68,7 +65,7 @@ export class GcdsTableWithSlotsComponent
 
   constructor(
     private vcr: ViewContainerRef,
-    private zone: NgZone
+    private zone: NgZone,
   ) {}
 
   private getRawEl(): HTMLElement | null {
@@ -76,22 +73,20 @@ export class GcdsTableWithSlotsComponent
   }
 
   private get templateMap(): Map<string, TemplateRef<any>> {
-    return new Map(
-      this.cellTemplates.map((d) => [d.field, d.template])
-    );
+    return new Map(this.cellTemplates.map(d => [d.field, d.template]));
   }
 
-  get wcColumns(): TableColumnSlots[] {
+  get wcColumns(): TableColumn[] {
     const templateMap = this.templateMap;
 
-    return this.columns.map((col) => ({
+    return this.columns.map(col => ({
       ...col,
       managed: templateMap.has(col.field) ? true : undefined,
     }));
   }
 
   get slottedColumns(): { field: string; template: TemplateRef<any> }[] {
-    return this.cellTemplates.map((d) => ({
+    return this.cellTemplates.map(d => ({
       field: d.field,
       template: d.template,
     }));
@@ -108,7 +103,7 @@ export class GcdsTableWithSlotsComponent
     if (!rawEl) return;
 
     this.zone.runOutsideAngular(() => {
-      customElements.whenDefined('gcds-table-slots').then(async () => {
+      customElements.whenDefined('gcds-table').then(async () => {
         await (rawEl as any).componentOnReady?.();
         this.resolvedEl = rawEl;
 
@@ -119,7 +114,7 @@ export class GcdsTableWithSlotsComponent
 
         this.resolvedEl.addEventListener(
           'gcdsTableStateChange',
-          this.stateChangeListener
+          this.stateChangeListener,
         );
 
         const visibleRows = await (this.resolvedEl as any).getVisibleRows();
@@ -134,11 +129,11 @@ export class GcdsTableWithSlotsComponent
     if (this.resolvedEl && this.stateChangeListener) {
       this.resolvedEl.removeEventListener(
         'gcdsTableStateChange',
-        this.stateChangeListener
+        this.stateChangeListener,
       );
     }
 
-    this.embeddedViews.forEach((v) => v.destroy());
+    this.embeddedViews.forEach(v => v.destroy());
     this.embeddedViews.clear();
   }
 
@@ -163,7 +158,7 @@ export class GcdsTableWithSlotsComponent
   }
 
   private async mountCells(
-    visibleRows: GcdsTableStateChange['visibleRows']
+    visibleRows: GcdsTableStateChange['visibleRows'],
   ): Promise<void> {
     const tableEl = this.resolvedEl;
     if (!tableEl) return;
@@ -172,7 +167,7 @@ export class GcdsTableWithSlotsComponent
     if (!shadowRoot) return;
 
     const templateMap = this.templateMap;
-    const visibleRowIds = new Set(visibleRows.map((r) => r.rowId));
+    const visibleRowIds = new Set(visibleRows.map(r => r.rowId));
 
     this.zone.run(() => {
       this.removeStaleViews(visibleRowIds);
@@ -182,14 +177,14 @@ export class GcdsTableWithSlotsComponent
           const key = `${field}||${rowId}`;
 
           const td = shadowRoot.querySelector(
-            `[data-cell="${field}-${rowId}"]`
+            `[data-cell="${field}-${rowId}"]`,
           ) as HTMLElement | null;
 
           if (!td) return;
 
           // Create or reuse a dedicated container
           let container = td.querySelector(
-            '[data-angular-cell]'
+            '[data-angular-cell]',
           ) as HTMLElement | null;
 
           if (!container) {
@@ -212,7 +207,7 @@ export class GcdsTableWithSlotsComponent
 
           view.detectChanges();
 
-          view.rootNodes.forEach((node) => {
+          view.rootNodes.forEach(node => {
             container!.appendChild(node);
           });
 

@@ -1,4 +1,15 @@
-import { Component, Host, Prop, State, Watch, h, Element } from '@stencil/core';
+import {
+  Component,
+  Host,
+  Prop,
+  State,
+  Watch,
+  h,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+} from '@stencil/core';
 
 import {
   createTable,
@@ -14,6 +25,7 @@ import I18N from './i18n/i18n';
 
 import {
   TableColumn,
+  GcdsTableStateChange,
   buildInitialSorting,
   buildTableOptions,
   updateTableOptions,
@@ -29,7 +41,7 @@ import {
 
 @Component({
   tag: 'gcds-table',
-  styleUrl: 'gcds-table.css',
+  styleUrl: './gcds-table.css',
   shadow: true,
 })
 export class GcdsTable {
@@ -90,8 +102,12 @@ export class GcdsTable {
   };
   @State() lang: string;
 
+  @Event() gcdsTableStateChange: EventEmitter<GcdsTableStateChange>;
+
   // TanStack table instance (not reactive – mutations trigger re-renders via @State)
   private table: Table<Record<string, unknown>> | null = null;
+
+  private lastEmittedRowIds: string = '';
 
   // Store initial values to determine if they have been changed by the user
   // @ts-ignore - these are used in event handlers to reset filter/sort state
@@ -149,16 +165,24 @@ export class GcdsTable {
 
   @Watch('paginationSize')
   onPageSizeChange(newSize: number) {
-    this.paginationState = {
-      pageIndex:
-        this.paginationState.pageIndex + 1 >
-        Math.ceil(
-          (this.table?.getPreFilteredRowModel()?.rows.length ?? 0) / newSize,
-        )
-          ? 0
-          : this.paginationState.pageIndex,
-      pageSize: newSize === 0 ? Number.MAX_SAFE_INTEGER : newSize,
-    };
+    const totalRows = this.table?.getPreFilteredRowModel()?.rows.length ?? 0;
+
+    if (newSize === 0) {
+      this.paginationState = {
+        pageIndex: 0,
+        pageSize: totalRows === 0 ? 1 : totalRows,
+      };
+    } else {
+      this.paginationState = {
+        pageIndex:
+          this.paginationState.pageIndex + 1 >
+            Math.ceil(totalRows / newSize)
+            ? 0
+            : this.paginationState.pageIndex,
+        pageSize: newSize === 0 ? totalRows : newSize,
+      };
+    }
+
     this.table?.setOptions(prev => ({
       ...prev,
       state: { ...prev.state, pagination: this.paginationState },
@@ -187,10 +211,134 @@ export class GcdsTable {
     );
   }
 
+  private emitStateChangeIfDirty(): void {
+    const rows = this.table?.getRowModel().rows ?? [];
+
+    // Compute a stable fingerprint of the current visible row set
+    const rowIdFingerprint = rows.map(r => r.id).join(',');
+
+    // Only emit if the visible rows have actually changed
+    if (rowIdFingerprint === this.lastEmittedRowIds) return;
+
+    this.lastEmittedRowIds = rowIdFingerprint;
+
+    this.gcdsTableStateChange.emit({
+      visibleRows: rows.map((row, rowIndex) => ({
+        rowId: row.id,
+        rowIndex,
+        original: row.original,
+      })),
+      page: this.paginationState.pageIndex + 1,
+      pageSize: this.paginationSize,
+      filterValue: this.filterValue,
+      sortKey: this.sorting[0]?.id ?? null,
+      sortDirection: this.sorting[0]?.desc ? 'desc' : 'asc',
+    });
+  }
+
   private sortEnabled(): boolean {
     return (
-      this.sort || ((this.columns ?? []) as TableColumn[]).some(col => col.sort)
+      this.sort ||
+      ((this.columns ?? []) as TableColumn[]).some(col => col.sort)
     );
+  }
+
+  private getTemplate(columnKey: string): HTMLTemplateElement | null {
+    return this.el.querySelector<HTMLTemplateElement>(
+      `template[slot="cell:${columnKey}"]`,
+    );
+  }
+
+  private applyBindings(el: HTMLElement, row: Record<string, unknown>): void {
+    const bindings = Array.from(el.attributes).filter(attr =>
+      attr.name.startsWith('data-bind-'),
+    );
+
+    for (const binding of bindings) {
+      let prop: string;
+      let value: unknown;
+
+      if (binding.name.startsWith('data-bind-template-')) {
+        prop = binding.name.replace('data-bind-template-', '');
+        value = binding.value.replace(/\{(\w+)\}/g, (_, field) =>
+          String(row[field] ?? ''),
+        );
+      } else {
+        prop = binding.name.replace('data-bind-', '');
+        value = row[binding.value];
+      }
+
+      if (prop in el) {
+        (el as any)[prop] = value;
+      } else {
+        el.setAttribute(prop, String(value ?? ''));
+      }
+    }
+  }
+
+  private applyListeners(
+    el: HTMLElement,
+    row: Record<string, unknown>,
+    rowId: string,
+  ): void {
+    const listeners = Array.from(el.attributes).filter(attr =>
+      attr.name.startsWith('data-on-'),
+    );
+    for (const listener of listeners) {
+      const eventName = listener.name.replace('data-on-', '');
+      const dispatchName = listener.value;
+      el.addEventListener(eventName, () => {
+        this.el.dispatchEvent(
+          new CustomEvent(dispatchName, {
+            bubbles: true,
+            composed: true,
+            detail: { row, rowId },
+          }),
+        );
+      });
+    }
+  }
+
+  private cloneAndInject(
+    columnKey: string,
+    row: Record<string, unknown>,
+    rowId: number,
+  ): HTMLElement | null {
+    const template = this.getTemplate(columnKey);
+    if (!template) return null;
+
+    const fragment = template.content.cloneNode(true) as DocumentFragment;
+    const wrapper = document.createElement('div');
+    wrapper.appendChild(fragment);
+    const child = wrapper.firstElementChild as HTMLElement;
+
+    if (child) {
+      if (child.tagName.includes('-')) {
+        this.applyBindings(child, row);
+        this.applyListeners(child, row, String(rowId));
+        (child as any).rowData = row;
+        (child as any).columnKey = columnKey;
+        (child as any).rowId = rowId;
+      } else {
+        this.applyBindings(child, row);
+        this.applyListeners(child, row, String(rowId));
+        child.dataset.rowId = String(rowId);
+        child.dataset.columnKey = columnKey;
+      }
+    }
+    return wrapper;
+  }
+
+  private mountSlottedCell(
+    tdEl: HTMLElement | null,
+    columnKey: string,
+    row: Record<string, unknown>,
+    rowId: number,
+  ): void {
+    if (!tdEl) return;
+    tdEl.innerHTML = '';
+    const clone = this.cloneAndInject(columnKey, row, rowId);
+    if (clone) tdEl.appendChild(clone);
   }
 
   // ─── Event handlers ───────────────────────────────────────────────────────
@@ -217,12 +365,24 @@ export class GcdsTable {
    * Handle pagination control clicks by updating table state and focusing the table
    */
   private handlePaginationClick(e: CustomEvent) {
-    this.table?.setPageIndex(e.detail.page - 1);
     this.paginationCurrentPage = e.detail.page;
 
     // focus table here to ensure keyboard users can navigate from pagination controls to table rows
     this.shadowElement?.focus();
     this.shadowElement?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
+  // ─── Methods ────────────────────────────────────────────────────────────
+
+  @Method()
+  async getVisibleRows() {
+    return (
+      this.table?.getRowModel().rows.map(row => ({
+        rowId: row.id,
+        rowIndex: row.index,
+        original: row.original,
+      })) ?? []
+    );
   }
 
   // ─── Lifecycle ────────────────────────────────────────────────────────────
@@ -242,6 +402,10 @@ export class GcdsTable {
     this.initialSorting = this.sorting;
 
     this.initTable();
+  }
+
+  componentDidRender() {
+    this.emitStateChangeIfDirty();
   }
 
   // ─── Render ───────────────────────────────────────────────────────────────
@@ -332,9 +496,9 @@ export class GcdsTable {
               {headerGroups.map(hg => (
                 <tr key={hg.id}>
                   {hg.headers.map(header => {
-                    const colDef = ((this.columns ?? []) as TableColumn[]).find(
-                      c => c.field === header.id,
-                    );
+                    const colDef = (
+                      (this.columns ?? []) as TableColumn[]
+                    ).find(c => c.field === header.id);
                     const canSort = header.column.getCanSort();
                     const alignmentClass = colDef?.alignment
                       ? `alignment-${colDef.alignment}`
@@ -395,6 +559,8 @@ export class GcdsTable {
                       const colDef = (
                         (this.columns ?? []) as TableColumn[]
                       ).find(c => c.field === cell.column.id);
+                      const isSlotted = colDef?.slotted;
+                      const isManaged = colDef?.managed;
 
                       let cellContent: any;
                       let Tag = 'td';
@@ -408,38 +574,27 @@ export class GcdsTable {
                         };
                       }
 
-                      if (colDef?.renderCell) {
-                        const rendered = colDef.renderCell(
-                          cell.getValue(),
-                          row.original,
-                        );
-
-                        if (rendered instanceof HTMLElement) {
-                          cellContent = (
-                            <span
-                              ref={el => {
-                                if (el) {
-                                  el.innerHTML = '';
-                                  el.appendChild(rendered);
-                                }
-                              }}
-                            />
-                          );
-                        } else if (
-                          rendered !== null &&
-                          rendered !== undefined
-                        ) {
-                          cellContent = rendered;
-                        }
-                      } else {
-                        cellContent = cell.getValue() as any;
-                      }
+                      cellContent = !isSlotted
+                        ? String(cell.getValue() ?? '')
+                        : null;
 
                       return (
                         <Tag
                           key={cell.id}
                           class={`gcds-table__td${colDef?.alignment ? ` alignment-${colDef.alignment}` : ''}`}
                           data-column={colDef?.header}
+                          data-cell={`${cell.column.id}-${row.id}`}
+                          ref={
+                            isSlotted && !isManaged
+                              ? tdEl =>
+                                this.mountSlottedCell(
+                                  tdEl,
+                                  cell.column.id,
+                                  row.original,
+                                  Number(row.id),
+                                )
+                              : undefined
+                          }
                           {...scope}
                         >
                           {cellContent}
@@ -453,18 +608,17 @@ export class GcdsTable {
           </table>
 
           {/* ── Pagination ─────────────────────────── */}
-          {this.pagination &&
-            this.paginationState &&
-            this.paginationSize !== 0 && (
-              <gcds-pagination
-                display="list"
-                currentPage={this.paginationState.pageIndex + 1}
-                totalPages={this.table.getPageCount()}
-                label={I18N[this.lang].paginationLabel}
-                onGcdsClick={e => this.handlePaginationClick(e)}
-              />
-            )}
+          {this.pagination && this.paginationSize !== 0 && (
+            <gcds-pagination
+              display="list"
+              currentPage={this.paginationState.pageIndex + 1}
+              totalPages={this.table.getPageCount()}
+              label={I18N[this.lang].paginationLabel}
+              onGcdsClick={e => this.handlePaginationClick(e)}
+            />
+          )}
         </section>
+        <slot />
       </Host>
     );
   }

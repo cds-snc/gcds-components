@@ -38,7 +38,6 @@ Pagination is a division of content into multiple linked pages.
 ### Used by
 
  - [gcds-table](../gcds-table)
- - [gcds-table-slots](../gcds-table-slots)
 
 ### Depends on
 
@@ -49,7 +48,6 @@ Pagination is a division of content into multiple linked pages.
 graph TD;
   gcds-pagination --> gcds-icon
   gcds-table --> gcds-pagination
-  gcds-table-slots --> gcds-pagination
   style gcds-pagination fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
