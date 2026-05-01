@@ -67,7 +67,7 @@ onMounted(async () => {
           {
             field: 'number',
             header: 'Pokédex',
-            align: 'end',
+            alignment: 'end',
             rowHeader: true,
           },
           {
@@ -77,22 +77,22 @@ onMounted(async () => {
           {
             field: 'sprite',
             header: 'Sprite',
-            align: 'center',
+            alignment: 'center',
             sort: false,
             slotted: true,
           },
-          { field: 'height', header: 'Height', align: 'end' },
-          { field: 'weight', header: 'Weight', align: 'end' },
+          { field: 'height', header: 'Height', alignment: 'end' },
+          { field: 'weight', header: 'Weight', alignment: 'end' },
           {
             field: 'base_experience',
             header: 'Base experience',
             sort: false,
-            align: 'end',
+            alignment: 'end',
           },
           {
             field: 'actions',
             header: 'Actions',
-            align: 'center',
+            alignment: 'center',
             sort: false,
             slotted: true,
           },
