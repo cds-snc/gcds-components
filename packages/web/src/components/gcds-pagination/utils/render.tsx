@@ -1,5 +1,5 @@
 /**
- * Function to constuct href attribute from url object
+ * Function to construct href attribute from url object
  * Also looks for ::offset and ::match to increment query string values
  */
 function constructHref(url, page: number, end?: 'next' | 'previous' | null) {
