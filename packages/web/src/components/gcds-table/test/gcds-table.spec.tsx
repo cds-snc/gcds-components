@@ -788,4 +788,61 @@ describe('gcds-table', () => {
     expect(instance.table.getPageCount()).toBe(2);
     expect(instance.paginationState.pageIndex).toBe(0);
   });
+
+  it('renders custom paginationSizeOptions and updates rows per page', async () => {
+    const page = await setup();
+    const el = page.root as HTMLGcdsTableElement;
+
+    el.pagination = true;
+    el.columns = baseColumns as any;
+    el.data = makeRows(12) as any;
+    el.paginationSizeOptions = [1, 3, 5, 10] as any;
+    await page.waitForChanges();
+
+    // Find the gcds-select element
+    const gcdsSelect = page.root?.shadowRoot?.querySelector('gcds-select');
+    expect(gcdsSelect).not.toBeNull();
+    // The options are direct children of gcds-select in the test environment
+    const options = Array.from(gcdsSelect.children)
+      .filter(child => child.tagName === 'OPTION')
+      .map(opt => Number(opt.getAttribute('value')));
+    expect(options).toEqual([1, 3, 5, 10]);
+
+    // Change page size to 3 and check row count
+    gcdsSelect.value = '3';
+    gcdsSelect.dispatchEvent(new Event('change'));
+    await page.waitForChanges();
+    let rows = page.root?.shadowRoot?.querySelectorAll('tbody tr') || [];
+    expect(rows).toHaveLength(3);
+    // Assert page count is 4 (12 rows / 3 per page)
+    const instance = page.rootInstance as any;
+    expect(instance.table.getPageCount()).toBe(4);
+
+    // Change page size to 5 and check row count
+    gcdsSelect.value = '5';
+    gcdsSelect.dispatchEvent(new Event('change'));
+    await page.waitForChanges();
+    rows = page.root?.shadowRoot?.querySelectorAll('tbody tr') || [];
+    expect(rows).toHaveLength(5);
+    // Assert page count is 3 (12 rows / 5 per page)
+    expect(instance.table.getPageCount()).toBe(3);
+
+    // Change page size to 10 and check row count
+    gcdsSelect.value = '10';
+    gcdsSelect.dispatchEvent(new Event('change'));
+    await page.waitForChanges();
+    rows = page.root?.shadowRoot?.querySelectorAll('tbody tr') || [];
+    expect(rows).toHaveLength(10);
+    // Assert page count is 2 (12 rows / 10 per page)
+    expect(instance.table.getPageCount()).toBe(2);
+
+    // Change page size to 1 and check row count
+    gcdsSelect.value = '1';
+    gcdsSelect.dispatchEvent(new Event('change'));
+    await page.waitForChanges();
+    rows = page.root?.shadowRoot?.querySelectorAll('tbody tr') || [];
+    expect(rows).toHaveLength(1);
+    // Assert page count is 12 (12 rows / 1 per page)
+    expect(instance.table.getPageCount()).toBe(12);
+  });
 });
