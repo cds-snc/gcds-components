@@ -117,7 +117,7 @@ describe('gcds-table', () => {
     );
 
     expect(
-      page.root?.shadowRoot?.querySelector('caption slot[name="caption"]'),
+      page.root?.shadowRoot?.querySelector('#gcds-table__caption'),
     ).not.toBeNull();
   });
 
