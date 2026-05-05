@@ -11554,10 +11554,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "[\n    10, 25, 50, 0,\n  ]"
+              "text": "[10, 25, 50, 0]"
             }
           ],
-          "default": "[\n    10, 25, 50, 0,\n  ]",
+          "default": "[10, 25, 50, 0]",
           "values": [
             {
               "type": "number[]"

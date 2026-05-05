@@ -79,9 +79,7 @@ export class GcdsTable {
    * Available page-size options.
    * Use 0 to represent "All rows".
    */
-  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [
-    10, 25, 50, 0,
-  ];
+  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [10, 25, 50, 0];
 
   /** Enable global filter */
   @Prop() filter: boolean = false;
@@ -147,7 +145,19 @@ export class GcdsTable {
   }
 
   @Watch('pagination')
-  onPaginationChange() {
+  onPaginationChange(newVal: boolean) {
+    if (newVal) {
+      this.paginationState = {
+        pageIndex: Math.max(0, this.paginationCurrentPage - 1),
+        pageSize:
+          this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
+      };
+    } else {
+      this.paginationState = {
+        pageIndex: Math.max(0, this.paginationCurrentPage - 1),
+        pageSize: Number.MAX_SAFE_INTEGER,
+      };
+    }
     this.onDataChange(this.data);
   }
 
@@ -187,6 +197,16 @@ export class GcdsTable {
       ...prev,
       state: { ...prev.state, pagination: this.paginationState },
     }));
+  }
+
+  @Watch('paginationSizeOptions')
+  onSizeOptionsChange(newVal: number[]) {
+    if (Array.isArray(newVal)) {
+      updateTableOptions(this);
+    } else {
+      this.paginationSizeOptions = [10, 25, 50, 0];
+    }
+    console.log(this.paginationState)
   }
 
   @Watch('filterValue')
