@@ -206,7 +206,6 @@ export class GcdsTable {
     } else {
       this.paginationSizeOptions = [10, 25, 50, 0];
     }
-    console.log(this.paginationState)
   }
 
   @Watch('filterValue')
