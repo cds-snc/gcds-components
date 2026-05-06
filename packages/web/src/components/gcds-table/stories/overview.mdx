@@ -1,0 +1,74 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Table from './gcds-table.stories';
+
+<Meta of={Table} name="Overview" />
+
+# Table<br/>`<gcds-table>`
+
+_Also called: data table._
+
+
+<Canvas of={Table.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+## Default
+
+<Canvas of={Table.Default} story={{ inline: true }} />
+
+## Properties
+
+### Filter
+
+<Canvas of={Table.Filter} story={{ inline: true }} />
+
+### Filter value
+
+<Canvas of={Table.FilterValue} story={{ inline: true }} />
+
+### Pagination
+
+<Canvas of={Table.Pagination} story={{ inline: true }} />
+
+### Pagination current page
+
+<Canvas of={Table.PaginationCurrentPage} story={{ inline: true }} />
+
+### Pagination size
+
+<Canvas of={Table.PaginationSize} story={{ inline: true }} />
+
+### Pagination size options
+
+<Canvas of={Table.PaginationSizeOptions} story={{ inline: true }} />
+
+### Sort
+
+<Canvas of={Table.Sort} story={{ inline: true }} />
+
+## Column configuration
+
+### sortDirection
+
+<Canvas of={Table.ColumnsSort} story={{ inline: true }} />
+
+### rowHeader
+
+<Canvas of={Table.ColumnsRowHeader} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul className="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://design-system.canada.ca/en/components/table/" target="_blank">Guidance</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-table" target="_blank">Github</gcds-link>
+  </li>
+  <li>
+    <gcds-link size="regular" href="#" target="_blank">Figma</gcds-link>
+  </li>
+</ul>
