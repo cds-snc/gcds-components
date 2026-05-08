@@ -14,11 +14,25 @@
   :host {
     margin: var(--gcds-header-margin) !important;
 
-    .gcds-header__container {
+    .gcds-header__container--menu {
+      width: 90%;
+      max-width: var(--gcds-header-container-max-width);
+      margin: 0 auto;
+      position: relative;
+
+      :is(slot[name='account']) {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .gcds-header__container--breadcrumbs {
       justify-content: space-between;
       width: 90%;
       max-width: var(--gcds-header-container-max-width);
       margin: 0 auto;
+      display: flex;
     }
 
     .gcds-header__skip-to-nav {
@@ -49,6 +63,23 @@
       This overrides the default top-nav width within header scope only.
     */
     --gcds-top-nav-width-full: var(--gcds-top-nav-width-constrained);
+
+    /*
+      Account button styles
+    */
+    :is(slot[name='account']) {
+      flex-shrink: 0;
+      margin-left: auto;
+      margin-top: var(--gcds-spacing-50);
+    }
+
+    & ::slotted(gcds-button[slot='account']) {
+      --gcds-button-border-radius: var(--gcds-spacing-0);
+      --gcds-button-font-desktop: var(--gcds-text-size-small-mobile);
+      --gcds-button-font-mobile: var(--gcds-text-size-small-mobile);
+      --gcds-button-mobile-margin: var(--gcds-spacing-0);
+      --gcds-button-padding: var(--gcds-spacing-100) var(--gcds-spacing-200);
+    }
   }
 }
 
