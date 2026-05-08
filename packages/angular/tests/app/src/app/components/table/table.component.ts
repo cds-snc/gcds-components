@@ -91,48 +91,47 @@ export class TableComponent {
   @ViewChild('actionsCell') actionsCell!: TemplateRef<unknown>;
   pokemonData: any[] = [];
 
+  columns: AngularTableColumn[] = [
+    {
+      field: 'number',
+      header: 'Pokédex',
+      alignment: 'end',
+      rowHeader: true,
+    },
+    {
+      field: 'name',
+      header: 'Name',
+    },
+    {
+      field: 'sprite',
+      header: 'Sprite',
+      alignment: 'center',
+      sort: false,
+      slotted: true,
+    },
+    { field: 'height', header: 'Height', alignment: 'end' },
+    { field: 'weight', header: 'Weight', alignment: 'end' },
+    {
+      field: 'base_experience',
+      header: 'Base experience',
+      sort: false,
+      alignment: 'end',
+    },
+    {
+      field: 'actions',
+      header: 'Actions',
+      alignment: 'center',
+      sort: false,
+      slotted: true,
+    },
+  ];
+
   async ngOnInit() {
     const data = await getFirst151Pokemon();
 
     if (data) {
       this.pokemonData = data;
     }
-  }
-  get columns(): AngularTableColumn[] {
-    return [
-      {
-        field: 'number',
-        header: 'Pokédex',
-        alignment: 'end',
-        rowHeader: true,
-      },
-      {
-        field: 'name',
-        header: 'Name',
-      },
-      {
-        field: 'sprite',
-        header: 'Sprite',
-        alignment: 'center',
-        sort: false,
-        slotted: true,
-      },
-      { field: 'height', header: 'Height', alignment: 'end' },
-      { field: 'weight', header: 'Weight', alignment: 'end' },
-      {
-        field: 'base_experience',
-        header: 'Base experience',
-        sort: false,
-        alignment: 'end',
-      },
-      {
-        field: 'actions',
-        header: 'Actions',
-        alignment: 'center',
-        sort: false,
-        slotted: true,
-      },
-    ];
   }
 
   get data() {

@@ -1,19 +1,13 @@
 import {
   Component,
   Input,
-  AfterViewInit,
-  OnDestroy,
-  ViewChild,
-  ElementRef,
   TemplateRef,
-  ViewContainerRef,
-  EmbeddedViewRef,
-  NgZone,
   QueryList,
   ContentChildren,
   AfterContentInit,
+  OnChanges,
 } from '@angular/core';
-import type { TableColumn, GcdsTableStateChange } from '@gcds-core/components';
+import type { TableColumn } from '@gcds-core/components';
 import { GcdsCellDirective } from './directives/gcds-cell.directive';
 
 export interface AngularTableColumn extends TableColumn {
@@ -25,7 +19,6 @@ export interface AngularTableColumn extends TableColumn {
   standalone: false,
   template: `
     <gcds-table
-      #tableEl
       [columns]="wcColumns"
       [data]="data"
       [filter]="filter"
@@ -36,12 +29,34 @@ export interface AngularTableColumn extends TableColumn {
       [paginationSizeOptions]="paginationSizeOptions"
       [sort]="sort"
     >
+      <ng-content select="[slot='caption']"></ng-content>
+
+      <ng-container *ngFor="let row of data; let rowIndex = index">
+        <ng-container *ngFor="let column of columns">
+          <span
+            *ngIf="getTemplate(column.field) as template"
+            [attr.slot]="getSlotName(row, column, rowIndex)"
+          >
+            <ng-container
+              [ngTemplateOutlet]="template"
+              [ngTemplateOutletContext]="{
+                $implicit: row,
+                row: row,
+                rowIndex: rowIndex,
+                column: column,
+                value: getCellValue(row, column.field),
+              }"
+            ></ng-container>
+          </span>
+        </ng-container>
+      </ng-container>
+
       <ng-content></ng-content>
     </gcds-table>
   `,
 })
 export class GcdsTableWithSlotsComponent
-  implements AfterViewInit, AfterContentInit, OnDestroy
+  implements AfterContentInit, OnChanges
 {
   @Input() columns: AngularTableColumn[] = [];
   @Input() data: Record<string, unknown>[] = [];
@@ -50,34 +65,36 @@ export class GcdsTableWithSlotsComponent
   @Input() pagination = false;
   @Input() paginationCurrentPage = 1;
   @Input() paginationSize = 10;
-  @Input() paginationSizeOptions: number[] = [10, 25, 50];
+  @Input() paginationSizeOptions: number[] = [10, 25, 50, 0];
   @Input() sort = false;
-
-  @ViewChild('tableEl', { read: ElementRef })
-  tableElRef!: ElementRef<HTMLElement>;
 
   @ContentChildren(GcdsCellDirective)
   cellTemplates!: QueryList<GcdsCellDirective>;
 
-  private resolvedEl: HTMLElement | null = null;
-  private embeddedViews = new Map<string, EmbeddedViewRef<unknown>>();
-  private stateChangeListener: ((e: Event) => void) | null = null;
-
-  constructor(
-    private vcr: ViewContainerRef,
-    private zone: NgZone,
-  ) {}
-
-  private getRawEl(): HTMLElement | null {
-    return this.tableElRef?.nativeElement ?? null;
-  }
-
-  private get templateMap(): Map<string, TemplateRef<any>> {
-    return new Map(this.cellTemplates.map(d => [d.field, d.template]));
-  }
+  private _wcColumns: TableColumn[] = [];
 
   get wcColumns(): TableColumn[] {
-    const templateMap = this.templateMap;
+    return this._wcColumns;
+  }
+
+  ngAfterContentInit(): void {
+    this._wcColumns = this.computeWcColumns();
+
+    this.cellTemplates.changes.subscribe(() => {
+      this._wcColumns = this.computeWcColumns();
+    });
+  }
+
+  ngOnChanges(): void {
+    if (this.cellTemplates) {
+      this._wcColumns = this.computeWcColumns();
+    }
+  }
+
+  private computeWcColumns(): TableColumn[] {
+    const templateMap = new Map(
+      this.cellTemplates.map(d => [d.field, d.template]),
+    );
 
     return this.columns.map(col => ({
       ...col,
@@ -92,128 +109,33 @@ export class GcdsTableWithSlotsComponent
     }));
   }
 
-  ngAfterContentInit(): void {
-    this.cellTemplates.changes.subscribe(() => {
-      this.remountAllVisible();
-    });
+  private get templateMap(): Map<string, TemplateRef<any>> {
+    return new Map(this.cellTemplates.map(d => [d.field, d.template]));
   }
 
-  ngAfterViewInit(): void {
-    const rawEl = this.getRawEl();
-    if (!rawEl) return;
-
-    this.zone.runOutsideAngular(() => {
-      customElements.whenDefined('gcds-table').then(async () => {
-        await (rawEl as any).componentOnReady?.();
-        this.resolvedEl = rawEl;
-
-        this.stateChangeListener = (e: Event) => {
-          const detail = (e as CustomEvent<GcdsTableStateChange>).detail;
-          this.mountCells(detail.visibleRows);
-        };
-
-        this.resolvedEl.addEventListener(
-          'gcdsTableStateChange',
-          this.stateChangeListener,
-        );
-
-        const visibleRows = await (this.resolvedEl as any).getVisibleRows();
-        if (visibleRows?.length) {
-          this.mountCells(visibleRows);
-        }
-      });
-    });
+  getTemplate(field: string): TemplateRef<any> | null {
+    return this.templateMap.get(field) ?? null;
   }
 
-  ngOnDestroy(): void {
-    if (this.resolvedEl && this.stateChangeListener) {
-      this.resolvedEl.removeEventListener(
-        'gcdsTableStateChange',
-        this.stateChangeListener,
-      );
+  getCellValue(row: Record<string, unknown>, field: string): unknown {
+    return row?.[field as keyof typeof row];
+  }
+
+  getRowKey(row: Record<string, unknown>, rowIndex: number): string {
+    const candidate = row?.['id'];
+
+    if (candidate === null || candidate === undefined || candidate === '') {
+      return String(rowIndex);
     }
 
-    this.embeddedViews.forEach(v => v.destroy());
-    this.embeddedViews.clear();
+    return String(candidate);
   }
 
-  private remountAllVisible(): void {
-    if (!this.resolvedEl) return;
-
-    (this.resolvedEl as any).getVisibleRows?.().then((rows: any[]) => {
-      if (rows?.length) {
-        this.mountCells(rows);
-      }
-    });
-  }
-
-  private removeStaleViews(visibleRowIds: Set<string>): void {
-    this.embeddedViews.forEach((view, key) => {
-      const rowId = key.split('||')[1];
-      if (!visibleRowIds.has(rowId)) {
-        view.destroy();
-        this.embeddedViews.delete(key);
-      }
-    });
-  }
-
-  private async mountCells(
-    visibleRows: GcdsTableStateChange['visibleRows'],
-  ): Promise<void> {
-    const tableEl = this.resolvedEl;
-    if (!tableEl) return;
-
-    const shadowRoot = tableEl.shadowRoot;
-    if (!shadowRoot) return;
-
-    const templateMap = this.templateMap;
-    const visibleRowIds = new Set(visibleRows.map(r => r.rowId));
-
-    this.zone.run(() => {
-      this.removeStaleViews(visibleRowIds);
-
-      visibleRows.forEach(({ rowId, original }) => {
-        templateMap.forEach((template, field) => {
-          const key = `${field}||${rowId}`;
-
-          const td = shadowRoot.querySelector(
-            `[data-cell="${field}-${rowId}"]`,
-          ) as HTMLElement | null;
-
-          if (!td) return;
-
-          // Create or reuse a dedicated container
-          let container = td.querySelector(
-            '[data-angular-cell]',
-          ) as HTMLElement | null;
-
-          if (!container) {
-            container = document.createElement('div');
-            container.setAttribute('data-angular-cell', '');
-            td.appendChild(container);
-          }
-
-          // Clean previous render
-          if (this.embeddedViews.has(key)) {
-            this.embeddedViews.get(key)!.destroy();
-            this.embeddedViews.delete(key);
-            container.innerHTML = '';
-          }
-
-          const view = this.vcr.createEmbeddedView(template, {
-            $implicit: original,
-            rowId,
-          });
-
-          view.detectChanges();
-
-          view.rootNodes.forEach(node => {
-            container!.appendChild(node);
-          });
-
-          this.embeddedViews.set(key, view);
-        });
-      });
-    });
+  getSlotName(
+    row: Record<string, unknown>,
+    column: AngularTableColumn,
+    rowIndex: number,
+  ): string {
+    return `cell-${this.getRowKey(row, rowIndex)}-${column.field}`;
   }
 }

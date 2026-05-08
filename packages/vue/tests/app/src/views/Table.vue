@@ -102,7 +102,7 @@ onMounted(async () => {
           <gcds-heading tag="h3">Pokémon</gcds-heading>
           Table of the best Pokémon (first generation).
         </div>
-        <template #cell:sprite="{ row }">
+        <template #sprite="{ row }">
           <img
             :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`"
             :alt="row.name"
@@ -111,7 +111,7 @@ onMounted(async () => {
             height="150"
           />
         </template>
-        <template #cell:actions="{ row }">
+        <template #actions="{ row }">
           <gcds-button
             button-role="secondary"
             @click="() => {

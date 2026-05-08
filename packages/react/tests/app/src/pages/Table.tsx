@@ -66,6 +66,7 @@ const Table = () => {
           pagination={true}
           filter={true}
           sort={true}
+          paginationSizeOptions={[10, 25, 50, 0]}
           columns={[
             {
               field: 'number',
@@ -83,7 +84,7 @@ const Table = () => {
               alignment: 'center',
               sort: false,
               slotted: true,
-              renderCell: (row: any) => {
+              renderCell: ({ row }) => {
                 return (
                   <img
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`}
@@ -108,7 +109,7 @@ const Table = () => {
               alignment: 'center',
               sort: false,
               slotted: true,
-              renderCell: (row: any) => {
+              renderCell: ({ row }) => {
                 return (
                   <GcdsButton
                     buttonRole="secondary"
@@ -120,7 +121,7 @@ const Table = () => {
               }
             },
           ]}
-          data={pokemonData}
+          data={pokemonData as Record<string, unknown>[]}
         >
           <div slot="caption">
             <GcdsHeading tag="h3">Pokémon</GcdsHeading>

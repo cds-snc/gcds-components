@@ -391,6 +391,26 @@ export class GcdsTable {
     this.shadowElement?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
+  // private getResolvedRowKey(
+  //   row: Record<string, unknown>,
+  //   fallbackRowId: string,
+  // ): string {
+  //   const candidate = row?.id;
+
+  //   if (candidate === null || candidate === undefined || candidate === '') {
+  //     return String(fallbackRowId);
+  //   }
+
+  //   return String(candidate);
+  // }
+
+  private getManagedSlotName(
+    row: string,
+    columnField: string,
+  ): string {
+    return `cell-${row}-${columnField}`;
+  }
+
   // ─── Methods ────────────────────────────────────────────────────────────
 
   @Method()
@@ -575,7 +595,7 @@ export class GcdsTable {
                 </tr>
               ) : (
                 rows.map(row => (
-                  <tr key={row.id} class="gcds-table__row">
+                  <tr key={row.id} data-test={row.id} class="gcds-table__row">
                     {row.getVisibleCells().map(cell => {
                       const colDef = (
                         (this.columns ?? []) as TableColumn[]
@@ -595,9 +615,22 @@ export class GcdsTable {
                         };
                       }
 
+                      const fallbackValue = String(cell.getValue() ?? '');
+
                       cellContent = !isSlotted
-                        ? String(cell.getValue() ?? '')
-                        : null;
+                        ? fallbackValue
+                        : isManaged
+                          ? (
+                            <slot
+                              name={this.getManagedSlotName(
+                                row.id,
+                                cell.column.id,
+                              )}
+                            >
+                              {fallbackValue}
+                            </slot>
+                          )
+                          : null;
 
                       return (
                         <Tag
