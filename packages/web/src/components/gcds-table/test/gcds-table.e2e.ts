@@ -63,5 +63,84 @@ test.describe('gcds-table', () => {
     // Should show 10 rows (page size) since pagination is enabled
     expect(rowCount).toBe(10);
 
+    // // Verify no freezing - subsequent page navigation is responsive
+    // const pageSize = await element.evaluate((el) => {
+    //   const pagination = (el as any).paginationState;
+    //   return pagination.pageSize;
+    // });
+
+    // expect(pageSize).toBe(10);
+
+    // // Verify total row count is correct
+    // const totalRows = await element.evaluate((el) => {
+    //   const table = (el as any).table;
+    //   return table.getPreFilteredRowModel().rows.length;
+    // });
+    //
+    // expect(totalRows).toBe(500);
+  });
+
+  test('sort direction cycles on Pokédex header: asc -> desc -> none -> asc', async ({ page }) => {
+    const element = page.locator('gcds-table');
+
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+
+    await element.evaluate(el => {
+      const table = el as any;
+      table.sort = true;
+      table.columns = [
+        { field: 'number', header: 'Pokédex', align: 'end', rowHeader: true },
+        { field: 'name', header: 'Name' },
+        { field: 'height', header: 'Height', align: 'end' },
+      ];
+      table.data = [
+        { number: 8, name: 'Wartortle', height: 10 },
+        { number: 7, name: 'Squirtle', height: 5 },
+        { number: 9, name: 'Blastoise', height: 16 },
+      ];
+    });
+
+    await page.waitForChanges();
+
+    const pokedexHeader = element.locator('thead th').first();
+    const pokedexSortButton = pokedexHeader.locator('button');
+
+    const getPokedexValues = async () => {
+      const cells = element.locator('tbody tr [data-column="Pokédex"]');
+      const count = await cells.count();
+      const values: number[] = [];
+
+      for (let i = 0; i < count; i++) {
+        const text = (await cells.nth(i).innerText()).trim();
+        values.push(Number(text));
+      }
+
+      return values;
+    };
+
+    // 1st click: ascending
+    await pokedexSortButton.click();
+    await page.waitForChanges();
+    await expect(pokedexHeader).toHaveAttribute('aria-sort', 'ascending');
+    await expect.poll(getPokedexValues).toEqual([7, 8, 9]);
+
+    // 2nd click: descending
+    await pokedexSortButton.click();
+    await page.waitForChanges();
+    await expect(pokedexHeader).toHaveAttribute('aria-sort', 'descending');
+    await expect.poll(getPokedexValues).toEqual([9, 8, 7]);
+
+    // 3rd click: none
+    await pokedexSortButton.click();
+    await page.waitForChanges();
+    await expect(pokedexHeader).toHaveAttribute('aria-sort', 'none');
+    await expect.poll(getPokedexValues).toEqual([8, 7, 9]);
+
+    // 4th click: ascending again
+    await pokedexSortButton.click();
+    await page.waitForChanges();
+    await expect(pokedexHeader).toHaveAttribute('aria-sort', 'ascending');
+    await expect.poll(getPokedexValues).toEqual([7, 8, 9]);
   });
 });
