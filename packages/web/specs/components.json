@@ -1153,7 +1153,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the checkobox will be focused on component render",
+          "docs": "If true, the checkbox will be focused on component render",
           "docsTags": [],
           "values": [
             {
@@ -5263,7 +5263,16 @@
           "docs": "Slot for the main content of the grid."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "container",
+          "docs": ""
+        },
+        {
+          "name": "grid",
+          "docs": ""
+        }
+      ],
       "dependents": [],
       "dependencies": [
         "gcds-container"

@@ -12,7 +12,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns-desktop="1fr 1fr 1fr 1fr" columns-tablet="1fr 1fr" columns="1fr" tag="ul">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-columns-tablet: 1fr 1fr; --gcds-grid-columns-desktop: 1fr 1fr 1fr 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-columns-tablet: 1fr 1fr; --gcds-grid-columns-desktop: 1fr 1fr 1fr 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -30,7 +30,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns-tablet="1fr 1fr" columns="1fr" tag="ul">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-columns-tablet: 1fr 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-columns-tablet: 1fr 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -48,7 +48,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="ul">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -66,7 +66,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="p">
         <mock:shadow-root>
-          <div class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
+          <div class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
             <slot></slot>
           </div>
         </mock:shadow-root>
@@ -85,7 +85,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="ul">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -103,7 +103,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="ul" gap="500">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-500);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-500);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -121,7 +121,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="ul" gap="222">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -139,7 +139,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="ul" gap-tablet="500">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300); --gcds-grid-gap-tablet: var(--gcds-grid-gap-500);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300); --gcds-grid-gap-tablet: var(--gcds-grid-gap-500);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -157,7 +157,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="ul" gap-tablet="222">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -175,7 +175,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="ul" gap-desktop="500">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300); --gcds-grid-gap-desktop: var(--gcds-grid-gap-500);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300); --gcds-grid-gap-desktop: var(--gcds-grid-gap-500);">
             <slot></slot>
           </ul>
         </mock:shadow-root>
@@ -193,7 +193,7 @@ describe('gcds-grid', () => {
     expect(root).toEqualHtml(`
       <gcds-grid columns="1fr" tag="ul" gap-desktop="222">
         <mock:shadow-root>
-          <ul class="display-grid gcds-grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
+          <ul class="display-grid gcds-grid" part="grid" style="--gcds-grid-columns: 1fr; --gcds-grid-gap: var(--gcds-grid-gap-300);">
             <slot></slot>
           </ul>
         </mock:shadow-root>

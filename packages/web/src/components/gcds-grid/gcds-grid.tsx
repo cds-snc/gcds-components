@@ -299,13 +299,17 @@ export class GcdsGrid {
     return (
       <Host>
         {container ? (
-          <gcds-container size={container} alignment={alignment}>
+          <gcds-container
+            size={container}
+            alignment={alignment}
+            part="container"
+          >
             <Tag class={classNames} style={handleGridStyles()}>
               <slot />
             </Tag>
           </gcds-container>
         ) : (
-          <Tag class={classNames} style={handleGridStyles()}>
+          <Tag class={classNames} style={handleGridStyles()} part="grid">
             <slot />
           </Tag>
         )}
