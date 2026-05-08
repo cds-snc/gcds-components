@@ -303,10 +303,6 @@ export class GcdsTable {
   private createSlottedElements() {
     const slottedColumns = (this.columns as TableColumn[]).filter(s => s.slotted && !s.managed);
 
-    if (slottedColumns.length === 0) {
-      return;
-    }
-
     const rows = this.table?.getCoreRowModel().rows;
 
     rows?.forEach(row => {
@@ -337,6 +333,12 @@ export class GcdsTable {
   }
 
   private syncSlottedElements() {
+    const slottedColumns = (this.columns as TableColumn[]).filter(s => s.slotted && !s.managed);
+
+    if (slottedColumns.length === 0) {
+      return;
+    }
+
     this.el
       .querySelectorAll('[slot^="cell-"]')
       .forEach(el => el.remove());
