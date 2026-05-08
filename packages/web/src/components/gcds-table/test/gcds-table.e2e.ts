@@ -2,10 +2,7 @@ import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-table', () => {
-  /**
-   * Rendering & Hydration Tests
-   */
-  test('Hydration Status', async ({ page }) => {
+  test('renders', async ({ page }) => {
     const element = page.locator('gcds-table');
 
     // Wait for element to attach and become visible, allowing up to 10s
@@ -13,6 +10,7 @@ test.describe('gcds-table', () => {
     await element.waitFor({ state: 'visible' });
     await element.waitFor({ timeout: 10000 });
 
+    // Check if it has the 'hydrated' class
     // Verify component hydrates successfully in real browser
     await expect(element).toHaveClass('hydrated');
   });
