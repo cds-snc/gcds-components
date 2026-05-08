@@ -125,6 +125,7 @@ export class GcdsTable {
       }
     }
     updateTableOptions(this);
+    this.syncSlottedElements();
   }
 
   @Watch('data')
@@ -137,6 +138,7 @@ export class GcdsTable {
       }
     }
     updateTableOptions(this);
+    this.syncSlottedElements();
   }
 
   @Watch('sort')
@@ -318,7 +320,7 @@ export class GcdsTable {
           wrapper.setAttribute('slot', this.getManagedSlotName(row.id, column.field));
           wrapper.appendChild(clone);
 
-          const child = wrapper.firstElementChild as HTMLElement;
+          const child = wrapper.querySelector('*') as HTMLElement;
 
           if (child) {
             this.applyBindings(child, row.original);
@@ -332,6 +334,14 @@ export class GcdsTable {
         }
       })
     });
+  }
+
+  private syncSlottedElements() {
+    this.el
+      .querySelectorAll('[slot^="cell-"]')
+      .forEach(el => el.remove());
+
+    this.createSlottedElements();
   }
 
   // ─── Event handlers ───────────────────────────────────────────────────────
