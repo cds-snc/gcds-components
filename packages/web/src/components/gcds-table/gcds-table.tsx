@@ -295,69 +295,43 @@ export class GcdsTable {
     }
   }
 
-  private applyListeners(
-    el: HTMLElement,
-    row: Record<string, unknown>,
-    rowId: string,
-  ): void {
-    const listeners = Array.from(el.attributes).filter(attr =>
-      attr.name.startsWith('data-on-'),
-    );
-    for (const listener of listeners) {
-      const eventName = listener.name.replace('data-on-', '');
-      const dispatchName = listener.value;
-      el.addEventListener(eventName, () => {
-        this.el.dispatchEvent(
-          new CustomEvent(dispatchName, {
-            bubbles: true,
-            composed: true,
-            detail: { row, rowId },
-          }),
-        );
-      });
+  /*
+   * Clone elements from templates to use in slots
+   */
+  private createSlottedElements() {
+    const slottedColumns = (this.columns as TableColumn[]).filter(s => s.slotted && !s.managed);
+
+    if (slottedColumns.length === 0) {
+      return;
     }
-  }
 
-  private cloneAndInject(
-    columnKey: string,
-    row: Record<string, unknown>,
-    rowId: number,
-  ): HTMLElement | null {
-    const template = this.getTemplate(columnKey);
-    if (!template) return null;
+    const rows = this.table?.getCoreRowModel().rows;
 
-    const fragment = template.content.cloneNode(true) as DocumentFragment;
-    const wrapper = document.createElement('div');
-    wrapper.appendChild(fragment);
-    const child = wrapper.firstElementChild as HTMLElement;
+    rows?.forEach(row => {
+      slottedColumns.forEach(column => {
+        const template = this.getTemplate(column.field);
 
-    if (child) {
-      if (child.tagName.includes('-')) {
-        this.applyBindings(child, row);
-        this.applyListeners(child, row, String(rowId));
-        (child as any).rowData = row;
-        (child as any).columnKey = columnKey;
-        (child as any).rowId = rowId;
-      } else {
-        this.applyBindings(child, row);
-        this.applyListeners(child, row, String(rowId));
-        child.dataset.rowId = String(rowId);
-        child.dataset.columnKey = columnKey;
-      }
-    }
-    return wrapper;
-  }
+        const clone = template?.content.cloneNode(true) as DocumentFragment;
 
-  private mountSlottedCell(
-    tdEl: HTMLElement | null,
-    columnKey: string,
-    row: Record<string, unknown>,
-    rowId: number,
-  ): void {
-    if (!tdEl) return;
-    tdEl.innerHTML = '';
-    const clone = this.cloneAndInject(columnKey, row, rowId);
-    if (clone) tdEl.appendChild(clone);
+        if (clone) {
+          const wrapper = document.createElement('span');
+          wrapper.setAttribute('slot', this.getManagedSlotName(row.id, column.field));
+          wrapper.appendChild(clone);
+
+          const child = wrapper.firstElementChild as HTMLElement;
+
+          if (child) {
+            this.applyBindings(child, row.original);
+            (child as any).row = row.original;
+            (child as any).column = column;
+            (child as any).rowIndex = row.index;
+            (child as any).value = row.getValue(column.field);
+          }
+
+          this.el.appendChild(wrapper);
+        }
+      })
+    });
   }
 
   // ─── Event handlers ───────────────────────────────────────────────────────
@@ -390,19 +364,6 @@ export class GcdsTable {
     this.shadowElement?.focus();
     this.shadowElement?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
-
-  // private getResolvedRowKey(
-  //   row: Record<string, unknown>,
-  //   fallbackRowId: string,
-  // ): string {
-  //   const candidate = row?.id;
-
-  //   if (candidate === null || candidate === undefined || candidate === '') {
-  //     return String(fallbackRowId);
-  //   }
-
-  //   return String(candidate);
-  // }
 
   private getManagedSlotName(
     row: string,
@@ -441,6 +402,10 @@ export class GcdsTable {
     this.initialSorting = this.sorting;
 
     this.initTable();
+
+    if (this.table) {
+      this.createSlottedElements();
+    }
   }
 
   componentDidRender() {
@@ -601,7 +566,6 @@ export class GcdsTable {
                         (this.columns ?? []) as TableColumn[]
                       ).find(c => c.field === cell.column.id);
                       const isSlotted = colDef?.slotted;
-                      const isManaged = colDef?.managed;
 
                       let cellContent: any;
                       let Tag = 'td';
@@ -619,18 +583,16 @@ export class GcdsTable {
 
                       cellContent = !isSlotted
                         ? fallbackValue
-                        : isManaged
-                          ? (
-                            <slot
-                              name={this.getManagedSlotName(
-                                row.id,
-                                cell.column.id,
-                              )}
-                            >
-                              {fallbackValue}
-                            </slot>
-                          )
-                          : null;
+                        : (
+                          <slot
+                            name={this.getManagedSlotName(
+                              row.id,
+                              cell.column.id,
+                            )}
+                          >
+                            {fallbackValue}
+                          </slot>
+                        );
 
                       return (
                         <Tag
@@ -638,17 +600,6 @@ export class GcdsTable {
                           class={`gcds-table__td${colDef?.alignment ? ` alignment-${colDef.alignment}` : ''}`}
                           data-column={colDef?.header}
                           data-cell={`${cell.column.id}-${row.id}`}
-                          ref={
-                            isSlotted && !isManaged
-                              ? tdEl =>
-                                this.mountSlottedCell(
-                                  tdEl,
-                                  cell.column.id,
-                                  row.original,
-                                  Number(row.id),
-                                )
-                              : undefined
-                          }
                           {...scope}
                         >
                           {cellContent}

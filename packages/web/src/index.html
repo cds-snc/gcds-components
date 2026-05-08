@@ -219,7 +219,7 @@
           <gcds-button
             button-role="secondary"
             size="small"
-            onclick="console.log(this.rowData)"
+            onclick="console.log(this.row)"
           >
             Console log row data
           </gcds-button>
@@ -245,6 +245,7 @@
                 return {
                   number: data.id,
                   name: data.name,
+                  sprite: 'random',
                   height: data.height,
                   weight: data.weight,
                   base_experience: data.base_experience,
