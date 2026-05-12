@@ -79,7 +79,7 @@ describe('gcds-table', () => {
               <div class="gcds-table__active-pills"></div>
               <div class="gcds-table__row-management">
                 <span aria-live="polite" class="gcds-table__page-info" role="status">
-                  Showing 0 rows.
+                  No rows to show
                 </span>
               </div>
             <table class="gcds-table__table" tabindex="-1">
@@ -593,7 +593,6 @@ describe('gcds-table', () => {
   });
 
   it('shows filter and sort button label in English when enabled', async () => {
-    // TODO: check if it's filter and sort all the time or if it changes to just one when only one is enabled
     const page = await setup();
     const el = page.root as HTMLGcdsTableElement;
 
@@ -606,6 +605,22 @@ describe('gcds-table', () => {
     await page.waitForChanges();
 
     const button = page.root?.shadowRoot?.querySelector('gcds-button');
+    expect(button).not.toBeNull();
+    expect(button?.textContent?.toLowerCase()).toContain('filter');
+
+    el.filter = false;
+    el.sort = true;
+
+    await page.waitForChanges();
+
+    expect(button).not.toBeNull();
+    expect(button?.textContent?.toLowerCase()).toContain('sort');
+
+    el.filter = true;
+    el.sort = true;
+
+    await page.waitForChanges();
+
     expect(button).not.toBeNull();
     expect(button?.textContent?.toLowerCase()).toContain('filter');
     expect(button?.textContent?.toLowerCase()).toContain('sort');
