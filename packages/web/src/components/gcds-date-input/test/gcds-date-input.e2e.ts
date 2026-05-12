@@ -3,7 +3,7 @@ import { AxeBuilder } from '@axe-core/playwright';
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
-import { dateInputErrorMessage } from '../../../validators/input-validators/input-validators';
+import { validationErrors } from '../../../utils/i18n/validation-errors';
 
 test.describe('gcds-date-input', () => {
   test('renders', async ({ page }) => {
@@ -275,7 +275,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.all);
+    expect(errorMessage).toEqual(validationErrors.en.dateInput.all);
   });
   test('Validation - Missing day', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -294,7 +294,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingday);
+    expect(errorMessage).toEqual(validationErrors.en.dateInput.missingday);
   });
   test('Validation - Missing year', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -313,7 +313,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingyear);
+    expect(errorMessage).toEqual(validationErrors.en.dateInput.missingyear);
   });
   test('Validation - Missing month', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -332,7 +332,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonth);
+    expect(errorMessage).toEqual(validationErrors.en.dateInput.missingmonth);
   });
   test('Validation - iso - Missing month', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -357,7 +357,9 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthinput);
+    expect(errorMessage).toEqual(
+      validationErrors.en.dateInput.missingmonthinput,
+    );
   });
   test('Validation - Missing month and day', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -375,7 +377,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthday);
+    expect(errorMessage).toEqual(validationErrors.en.dateInput.missingmonthday);
   });
   test('Validation - Missing day and year', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -393,7 +395,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingdayyear);
+    expect(errorMessage).toEqual(validationErrors.en.dateInput.missingdayyear);
   });
   test('Validation - Missing month and year', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -411,7 +413,9 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthyear);
+    expect(errorMessage).toEqual(
+      validationErrors.en.dateInput.missingmonthyear,
+    );
   });
   test('Validation - Year length', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -431,7 +435,9 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.invalidyearlength);
+    expect(errorMessage).toEqual(
+      validationErrors.en.dateInput.invalidyearlength,
+    );
   });
   test('Validation - Invalid day', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -451,7 +457,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.invalidday);
+    expect(errorMessage).toEqual(validationErrors.en.dateInput.invalidday);
   });
   test('Validation - iso - Invalid month', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -477,7 +483,7 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.invalidmonth);
+    expect(errorMessage).toEqual(validationErrors.en.dateInput.invalidmonth);
   });
   test('Validation - iso - Missing month & day', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -501,7 +507,9 @@ test.describe('gcds-date-input', () => {
       el => (el as HTMLGcdsDateInputElement).errorMessage,
     );
 
-    expect(errorMessage).toEqual(dateInputErrorMessage.en.missingmonthinputday);
+    expect(errorMessage).toEqual(
+      validationErrors.en.dateInput.missingmonthinputday,
+    );
   });
   test('Validation - iso - Missing month & year', async ({ page }) => {
     const element = page.locator('gcds-date-input');
@@ -526,7 +534,7 @@ test.describe('gcds-date-input', () => {
     );
 
     expect(errorMessage).toEqual(
-      dateInputErrorMessage.en.missingmonthinputyear,
+      validationErrors.en.dateInput.missingmonthinputyear,
     );
   });
   test('Validation - Custom validation', async ({ page }) => {
