@@ -1,3 +1,3 @@
 export * from './components';
 export * from './plugin';
-export { GcdsTableWithSlots } from './GcdsTableWithSlots';
+export { GcdsTableWithSlots as GcdsTable } from './GcdsTableWithSlots';

@@ -83,21 +83,6 @@ async function getFirst151Pokemon() {
           </gcds-button>
         </ng-template>
       </gcds-table-ng>
-
-      <gcds-heading tag="h3" margin-top="0">With renderCell</gcds-heading>
-
-      <gcds-table
-        id="my-table"
-        ref="table"
-        [sort]="true"
-        [pagination]="true"
-        [filter]="true"
-      >
-        <div slot="caption">
-          <gcds-heading tag="h4">Pokémon</gcds-heading>
-          Table of the best Pokémon (first generation).
-        </div>
-      </gcds-table>
     </section>
   `,
 })
@@ -106,104 +91,47 @@ export class TableComponent {
   @ViewChild('actionsCell') actionsCell!: TemplateRef<unknown>;
   pokemonData: any[] = [];
 
-  async ngOnInit() {
-    const table = document.querySelector('#my-table') as any;
-    const data = await getFirst151Pokemon();
+  columns: AngularTableColumn[] = [
+    {
+      field: 'number',
+      header: 'Pokédex',
+      alignment: 'end',
+      rowHeader: true,
+    },
+    {
+      field: 'name',
+      header: 'Name',
+    },
+    {
+      field: 'sprite',
+      header: 'Sprite',
+      alignment: 'center',
+      sort: false,
+      slotted: true,
+    },
+    { field: 'height', header: 'Height', alignment: 'end' },
+    { field: 'weight', header: 'Weight', alignment: 'end' },
+    {
+      field: 'base_experience',
+      header: 'Base experience',
+      sort: false,
+      alignment: 'end',
+    },
+    {
+      field: 'actions',
+      header: 'Actions',
+      alignment: 'center',
+      sort: false,
+      slotted: true,
+    },
+  ];
 
-    table.columns = [
-      {
-        field: 'number',
-        header: 'Pokédex',
-        alignment: 'end',
-        rowHeader: true,
-      },
-      {
-        field: 'name',
-        header: 'Name',
-      },
-      {
-        field: 'sprite',
-        header: 'Sprite',
-        alignment: 'center',
-        sort: false,
-        renderCell: (value: any, row: any) => {
-          const img = document.createElement('img');
-          img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`;
-          img.alt = row.name;
-          img.width = 150;
-          img.height = 150;
-          return img;
-        },
-      },
-      { field: 'height', header: 'Height', alignment: 'end' },
-      { field: 'weight', header: 'Weight', alignment: 'end' },
-      {
-        field: 'base_experience',
-        header: 'Base experience',
-        sort: false,
-        alignment: 'end',
-      },
-      {
-        field: 'actions',
-        header: 'Actions',
-        alignment: 'center',
-        sort: false,
-        renderCell: (value: any, row: any) => {
-          const button = document.createElement('gcds-button');
-          button.setAttribute('button-role', 'secondary');
-          button.textContent = 'Alert name';
-          button.addEventListener('click', () => {
-            if (row.number === 7) {
-              alert(`You clicked on ${row.name}! The best Pokémon!`);
-            } else {
-              alert(`This is ${row.name}, not Squirtle!`);
-            }
-          });
-          return button;
-        },
-      },
-    ];
+  async ngOnInit() {
+    const data = await getFirst151Pokemon();
 
     if (data) {
       this.pokemonData = data;
-      table.data = data;
     }
-  }
-  get columns(): AngularTableColumn[] {
-    return [
-      {
-        field: 'number',
-        header: 'Pokédex',
-        alignment: 'end',
-        rowHeader: true,
-      },
-      {
-        field: 'name',
-        header: 'Name',
-      },
-      {
-        field: 'sprite',
-        header: 'Sprite',
-        alignment: 'center',
-        sort: false,
-        slotted: true,
-      },
-      { field: 'height', header: 'Height', alignment: 'end' },
-      { field: 'weight', header: 'Weight', alignment: 'end' },
-      {
-        field: 'base_experience',
-        header: 'Base experience',
-        sort: false,
-        alignment: 'end',
-      },
-      {
-        field: 'actions',
-        header: 'Actions',
-        alignment: 'center',
-        sort: false,
-        slotted: true,
-      },
-    ];
   }
 
   get data() {

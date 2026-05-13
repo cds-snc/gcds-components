@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { DIRECTIVES } from './stencil-generated';
 import { defineCustomElements } from '@gcds-core/components/loader';
 
@@ -21,6 +22,7 @@ const DECLARATIONS = [
 defineCustomElements(window);
 
 @NgModule({
+  imports: [CommonModule],
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
 })

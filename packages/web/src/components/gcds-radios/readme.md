@@ -79,7 +79,6 @@ Type: `Promise<void>`
 ### Used by
 
  - [gcds-table](../gcds-table)
- - [gcds-table-slots](../gcds-table-slots)
 
 ### Depends on
 
@@ -99,7 +98,6 @@ graph TD;
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
   gcds-table --> gcds-radios
-  gcds-table-slots --> gcds-radios
   style gcds-radios fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
