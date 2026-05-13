@@ -197,8 +197,8 @@
 
       <hr class="my-550" />
 
-      <gcds-table-slots
-        id="my-table-slots"
+      <gcds-table
+        id="my-table"
         sort="true"
         pagination="true"
         pagination-current-page="1"
@@ -224,69 +224,11 @@
           <gcds-button
             button-role="secondary"
             size="small"
-            onclick="console.log(this.rowData)"
+            onclick="console.log(this.row)"
           >
             Console log row data
           </gcds-button>
         </template>
-      </gcds-table-slots>
-
-      <gcds-table
-        id="my-table"
-        sort="true"
-        pagination="true"
-        pagination-current-page="1"
-        pagination-size="10"
-        filter="true"
-        caption="Table of the best Pokémon (first generation)"
-        columns='[
-          {
-            "field": "number",
-            "header": "Pokédex",
-            "alignment": "end",
-            "sortDirection": "asc"
-          },
-          {
-            "field": "name",
-            "header": "Name"
-          },
-          { "field": "height", "header": "Height", "alignment": "end" },
-          { "field": "weight", "header": "Weight", "alignment": "end" },
-          {
-            "field": "base_experience",
-            "header": "Base experience",
-            "sort": false,
-            "alignment": "end"
-          }
-        ]'
-        data='[
-          {
-            "number": 7,
-            "name": "squirtle",
-            "height": 5,
-            "weight": 90,
-            "base_experience": 63
-          },
-          {
-            "number": 8,
-            "name": "wartortle",
-            "height": 10,
-            "weight": 225,
-            "base_experience": 142
-          },
-          {
-            "number": 9,
-            "name": "blastoise",
-            "height": 16,
-            "weight": 855,
-            "base_experience": 239
-          }
-        ]'
-      >
-        <div slot="caption">
-          <h2>Pokémon</h2>
-          Table of the best Pokémon (first generation).
-        </div>
       </gcds-table>
 
       <script>
@@ -308,6 +250,7 @@
                 return {
                   number: data.id,
                   name: data.name,
+                  sprite: 'random',
                   height: data.height,
                   weight: data.weight,
                   base_experience: data.base_experience,
@@ -320,9 +263,7 @@
             console.error('Error fetching Pokémon:', error);
           }
         }
-
-        const table = document.getElementById('my-table');
-        const tableSlots = document.getElementById('my-table-slots');
+        const tableSlots = document.getElementById('my-table');
 
         // Populate the table columns
         tableSlots.columns = [
@@ -361,66 +302,8 @@
           },
         ];
 
-        table.columns = [
-          {
-            field: 'number',
-            header: 'Pokédex',
-            alignment: 'end',
-            rowHeader: true,
-          },
-          {
-            field: 'name',
-            header: 'Name',
-            sortDirection: 'asc',
-          },
-          {
-            field: 'sprite',
-            header: 'Sprite',
-            alignment: 'center',
-            sort: false,
-            renderCell: (value, row) => {
-              const img = document.createElement('img');
-              img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`;
-              img.alt = row.name;
-              img.width = 150;
-              img.height = 150;
-              return img;
-            },
-          },
-          { field: 'height', header: 'Height', alignment: 'end' },
-          { field: 'weight', header: 'Weight', alignment: 'end' },
-          {
-            field: 'base_experience',
-            header: 'Base experience',
-            sort: false,
-            alignment: 'end',
-          },
-          {
-            field: 'actions',
-            header: 'Actions',
-            alignment: 'center',
-            sort: false,
-            renderCell: (value, row) => {
-              const button = document.createElement('gcds-button');
-              button.setAttribute('button-role', 'secondary');
-              button.textContent = 'Alert name';
-              button.addEventListener('click', () => {
-                if (row.number === 7) {
-                  alert(`You clicked on ${row.name}! The best Pokémon!`);
-                } else {
-                  alert(`This is ${row.name}, not Squirtle!`);
-                }
-              });
-              return button;
-            },
-          },
-        ];
-
-        table.paginationSizeOptions = [1, 3, 5, 10, 25, 50, 0];
-
         // Populate the table rows with results from API
         getFirst151Pokemon().then(pokemon => {
-          table.data = pokemon;
           tableSlots.data = pokemon;
         });
       </script>

@@ -814,8 +814,7 @@
       "parts": [],
       "dependents": [
         "gcds-search",
-        "gcds-table",
-        "gcds-table-slots"
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-icon"
@@ -828,9 +827,6 @@
           "gcds-button"
         ],
         "gcds-table": [
-          "gcds-button"
-        ],
-        "gcds-table-slots": [
           "gcds-button"
         ]
       }
@@ -6130,8 +6126,7 @@
         "gcds-error-summary",
         "gcds-notice",
         "gcds-stepper",
-        "gcds-table",
-        "gcds-table-slots"
+        "gcds-table"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -6145,9 +6140,6 @@
           "gcds-heading"
         ],
         "gcds-table": [
-          "gcds-heading"
-        ],
-        "gcds-table-slots": [
           "gcds-heading"
         ]
       }
@@ -6737,7 +6729,6 @@
         "gcds-pagination",
         "gcds-search",
         "gcds-table",
-        "gcds-table-slots",
         "gcds-topic-menu"
       ],
       "dependencies": [],
@@ -6770,9 +6761,6 @@
           "gcds-icon"
         ],
         "gcds-table": [
-          "gcds-icon"
-        ],
-        "gcds-table-slots": [
           "gcds-icon"
         ],
         "gcds-topic-menu": [
@@ -7732,8 +7720,7 @@
       "parts": [],
       "dependents": [
         "gcds-date-input",
-        "gcds-table",
-        "gcds-table-slots"
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-label",
@@ -7757,9 +7744,6 @@
           "gcds-input"
         ],
         "gcds-table": [
-          "gcds-input"
-        ],
-        "gcds-table-slots": [
           "gcds-input"
         ]
       }
@@ -9178,8 +9162,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "gcds-table",
-        "gcds-table-slots"
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-icon"
@@ -9189,9 +9172,6 @@
           "gcds-icon"
         ],
         "gcds-table": [
-          "gcds-pagination"
-        ],
-        "gcds-table-slots": [
           "gcds-pagination"
         ]
       }
@@ -9763,8 +9743,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "gcds-table",
-        "gcds-table-slots"
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-sr-only",
@@ -9787,9 +9766,6 @@
           "gcds-icon"
         ],
         "gcds-table": [
-          "gcds-radios"
-        ],
-        "gcds-table-slots": [
           "gcds-radios"
         ]
       }
@@ -10727,8 +10703,7 @@
       ],
       "dependents": [
         "gcds-date-input",
-        "gcds-table",
-        "gcds-table-slots"
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-label",
@@ -10752,9 +10727,6 @@
           "gcds-select"
         ],
         "gcds-table": [
-          "gcds-select"
-        ],
-        "gcds-table-slots": [
           "gcds-select"
         ]
       }
@@ -11183,7 +11155,6 @@
         "gcds-signature",
         "gcds-stepper",
         "gcds-table",
-        "gcds-table-slots",
         "gcds-textarea",
         "gcds-topic-menu"
       ],
@@ -11220,9 +11191,6 @@
           "gcds-sr-only"
         ],
         "gcds-table": [
-          "gcds-sr-only"
-        ],
-        "gcds-table-slots": [
           "gcds-sr-only"
         ],
         "gcds-textarea": [
@@ -11594,355 +11562,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "[\n    10, 25, 50, 0,\n  ]"
+              "text": "[10, 25, 50, 0]"
             }
           ],
-          "default": "[\n    10, 25, 50, 0,\n  ]",
-          "values": [
-            {
-              "type": "number[]"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "sort",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "sort",
-          "reflectToAttr": false,
-          "docs": "Enable global column sorting (can be overridden per column)",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "gcds-select",
-        "gcds-pagination",
-        "gcds-radios",
-        "gcds-button",
-        "gcds-sr-only",
-        "gcds-heading",
-        "gcds-input",
-        "gcds-icon"
-      ],
-      "dependencyGraph": {
-        "gcds-table": [
-          "gcds-select",
-          "gcds-pagination",
-          "gcds-radios",
-          "gcds-button",
-          "gcds-sr-only",
-          "gcds-heading",
-          "gcds-input",
-          "gcds-icon"
-        ],
-        "gcds-select": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ],
-        "gcds-hint": [
-          "gcds-text"
-        ],
-        "gcds-error-message": [
-          "gcds-text",
-          "gcds-icon"
-        ],
-        "gcds-pagination": [
-          "gcds-icon"
-        ],
-        "gcds-radios": [
-          "gcds-sr-only",
-          "gcds-hint",
-          "gcds-error-message",
-          "gcds-label"
-        ],
-        "gcds-button": [
-          "gcds-icon"
-        ],
-        "gcds-input": [
-          "gcds-label",
-          "gcds-hint",
-          "gcds-error-message"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/gcds-table-slots/gcds-table-slots.tsx",
-      "encapsulation": "shadow",
-      "tag": "gcds-table-slots",
-      "readme": "# gcds-table-slots\n\n\n",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "columns",
-          "type": "TableColumnSlots[] | string",
-          "complexType": {
-            "original": "string | TableColumnSlots[]",
-            "resolved": "TableColumnSlots[] | string",
-            "references": {
-              "TableColumnSlots": {
-                "location": "import",
-                "path": "../gcds-table/utils/table-helpers",
-                "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumnSlots"
-              }
-            }
-          },
-          "mutable": true,
-          "attr": "columns",
-          "reflectToAttr": false,
-          "docs": "Column definitions",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "[]"
-            }
-          ],
-          "default": "[]",
-          "values": [
-            {
-              "type": "TableColumnSlots[]"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "data",
-          "type": "object[] | string",
-          "complexType": {
-            "original": "string | object[]",
-            "resolved": "object[] | string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "data",
-          "reflectToAttr": false,
-          "docs": "Row data",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "[]"
-            }
-          ],
-          "default": "[]",
-          "values": [
-            {
-              "type": "object[]"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "filter",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "filter",
-          "reflectToAttr": false,
-          "docs": "Enable global filter",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "filterValue",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "filter-value",
-          "reflectToAttr": false,
-          "docs": "Current filter string",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "pagination",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "pagination",
-          "reflectToAttr": false,
-          "docs": "Enable pagination",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "paginationCurrentPage",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "pagination-current-page",
-          "reflectToAttr": false,
-          "docs": "Current page index",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "1"
-            }
-          ],
-          "default": "1",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "paginationSize",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "pagination-size",
-          "reflectToAttr": false,
-          "docs": "Number of rows per page",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "10"
-            }
-          ],
-          "default": "10",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "paginationSizeOptions",
-          "type": "number[] | string",
-          "complexType": {
-            "original": "string | number[]",
-            "resolved": "number[] | string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "pagination-size-options",
-          "reflectToAttr": false,
-          "docs": "Available page-size options.\nUse 0 to represent \"All rows\".",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "[\n    10, 25, 50, 0,\n  ]"
-            }
-          ],
-          "default": "[\n    10, 25, 50, 0,\n  ]",
+          "default": "[10, 25, 50, 0]",
           "values": [
             {
               "type": "number[]"
@@ -12025,7 +11648,7 @@
             "references": {
               "GcdsTableStateChange": {
                 "location": "import",
-                "path": "../gcds-table/utils/table-helpers",
+                "path": "./utils/table-helpers",
                 "id": "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange"
               }
             }
@@ -12052,7 +11675,7 @@
         "gcds-icon"
       ],
       "dependencyGraph": {
-        "gcds-table-slots": [
+        "gcds-table": [
           "gcds-select",
           "gcds-pagination",
           "gcds-radios",
@@ -13810,13 +13433,8 @@
       "path": "src/components/gcds-radios/radio.tsx"
     },
     "src/components/gcds-table/utils/table-helpers.ts::TableColumn": {
-      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  renderCell?: (value: unknown, row: Record<string, unknown>) => any;\n  rowHeader?: boolean;\n  slotted?: boolean;\n}",
+      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  rowHeader?: boolean;\n  slotted?: boolean;\n  managed?: boolean;\n}",
       "docstring": "Table column definition",
-      "path": "src/components/gcds-table/utils/table-helpers.ts"
-    },
-    "src/components/gcds-table/utils/table-helpers.ts::TableColumnSlots": {
-      "declaration": "interface TableColumnSlots {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  rowHeader?: boolean;\n  slotted?: boolean;\n  managed?: boolean;\n}",
-      "docstring": "",
       "path": "src/components/gcds-table/utils/table-helpers.ts"
     },
     "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange": {
