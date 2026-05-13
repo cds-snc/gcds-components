@@ -95,8 +95,9 @@ export class GcdsTable {
   @State() private globalFilter: string = this.filterValue;
   @State() private paginationState: PaginationState = {
     pageIndex: Math.max(0, this.paginationCurrentPage - 1),
-    pageSize:
-      this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
+    pageSize: this.pagination
+      ? (this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize)
+      : Number.MAX_SAFE_INTEGER,
   };
   @State() lang: string;
 
@@ -106,6 +107,10 @@ export class GcdsTable {
   private table: Table<Record<string, unknown>> | null = null;
 
   private lastEmittedRowIds: string = '';
+
+  // Flags to help stop multiple rendering on first load
+  private isInitializing = true;
+  private hasRenderedOnce = false;
 
   // Store initial values to determine if they have been changed by the user
   // @ts-ignore - these are used in event handlers to reset filter/sort state
@@ -117,6 +122,7 @@ export class GcdsTable {
 
   @Watch('columns')
   onColumnsChange(newVal: string | TableColumn[]) {
+    if (this.isInitializing) return;
     if (typeof newVal === 'string') {
       try {
         this.columns = JSON.parse(newVal);
@@ -125,10 +131,12 @@ export class GcdsTable {
       }
     }
     updateTableOptions(this);
+    this.syncSlottedElements();
   }
 
   @Watch('data')
   onDataChange(newVal: string | object[]) {
+    if (this.isInitializing) return;
     if (typeof newVal === 'string') {
       try {
         this.data = JSON.parse(newVal);
@@ -137,15 +145,18 @@ export class GcdsTable {
       }
     }
     updateTableOptions(this);
+    this.syncSlottedElements();
   }
 
   @Watch('sort')
-  onsortChange() {
+  onSortChange() {
+    if (this.isInitializing) return;
     this.onDataChange(this.data);
   }
 
   @Watch('pagination')
   onPaginationChange(newVal: boolean) {
+    if (this.isInitializing) return;
     if (newVal) {
       this.paginationState = {
         pageIndex: Math.max(0, this.paginationCurrentPage - 1),
@@ -163,6 +174,7 @@ export class GcdsTable {
 
   @Watch('paginationCurrentPage')
   onPageChange(newPage: number) {
+    if (this.isInitializing) return;
     this.paginationState = {
       ...this.paginationState,
       pageIndex: Math.max(0, newPage - 1),
@@ -175,6 +187,7 @@ export class GcdsTable {
 
   @Watch('paginationSize')
   onPageSizeChange(newSize: number) {
+    if (this.isInitializing) return;
     const totalRows = this.table?.getPreFilteredRowModel()?.rows.length ?? 0;
 
     if (newSize === 0) {
@@ -201,15 +214,17 @@ export class GcdsTable {
 
   @Watch('paginationSizeOptions')
   onSizeOptionsChange(newVal: number[]) {
-    if (Array.isArray(newVal)) {
-      updateTableOptions(this);
-    } else {
+    if (this.isInitializing) return;
+    if (!Array.isArray(newVal)) {
       this.paginationSizeOptions = [10, 25, 50, 0];
+      return;
     }
+    updateTableOptions(this);
   }
 
   @Watch('filterValue')
   onFilterValueChange(newVal: string) {
+    if (this.isInitializing) return;
     this.globalFilter = newVal;
     this.table?.setOptions(prev => ({
       ...prev,
@@ -219,6 +234,7 @@ export class GcdsTable {
 
   @Watch('lang')
   onLangChange(newVal: string) {
+    if (this.isInitializing) return;
     this.lang = newVal;
   }
 
@@ -295,69 +311,98 @@ export class GcdsTable {
     }
   }
 
-  private applyListeners(
-    el: HTMLElement,
-    row: Record<string, unknown>,
-    rowId: string,
-  ): void {
-    const listeners = Array.from(el.attributes).filter(attr =>
-      attr.name.startsWith('data-on-'),
+  /*
+   * Clone elements from templates to use in slots
+   */
+  private createSlottedElements() {
+    const slottedColumns = (this.columns as TableColumn[]).filter(
+      s => s.slotted && !s.managed
     );
-    for (const listener of listeners) {
-      const eventName = listener.name.replace('data-on-', '');
-      const dispatchName = listener.value;
-      el.addEventListener(eventName, () => {
-        this.el.dispatchEvent(
-          new CustomEvent(dispatchName, {
-            bubbles: true,
-            composed: true,
-            detail: { row, rowId },
-          }),
-        );
+    const rows = this.table?.getCoreRowModel().rows ?? [];
+
+    rows.forEach(row => {
+      slottedColumns.forEach(column => {
+        const slotName = this.getManagedSlotName(row.id, column.field);
+        const template = this.getTemplate(column.field);
+        if (!template) return;
+
+        const clone = template.content.cloneNode(true) as DocumentFragment;
+        const wrapper = document.createElement('span');
+        wrapper.setAttribute('slot', slotName);
+        wrapper.appendChild(clone);
+
+        const child = wrapper.querySelector('*') as HTMLElement | null;
+        if (child) {
+          this.applyBindings(child, row.original);
+          (child as any).row = row.original;
+          (child as any).column = column;
+          (child as any).rowIndex = row.index;
+          (child as any).value = row.getValue(column.field);
+        }
+
+        this.el.appendChild(wrapper);
       });
-    }
+    });
   }
 
-  private cloneAndInject(
-    columnKey: string,
-    row: Record<string, unknown>,
-    rowId: number,
-  ): HTMLElement | null {
-    const template = this.getTemplate(columnKey);
-    if (!template) return null;
+  private syncSlottedElements() {
+    const slottedColumns = (this.columns as TableColumn[]).filter(
+      s => s.slotted && !s.managed
+    );
+    if (slottedColumns.length === 0) return;
 
-    const fragment = template.content.cloneNode(true) as DocumentFragment;
-    const wrapper = document.createElement('div');
-    wrapper.appendChild(fragment);
-    const child = wrapper.firstElementChild as HTMLElement;
+    const rows = this.table?.getCoreRowModel().rows ?? [];
 
-    if (child) {
-      if (child.tagName.includes('-')) {
-        this.applyBindings(child, row);
-        this.applyListeners(child, row, String(rowId));
-        (child as any).rowData = row;
-        (child as any).columnKey = columnKey;
-        (child as any).rowId = rowId;
-      } else {
-        this.applyBindings(child, row);
-        this.applyListeners(child, row, String(rowId));
-        child.dataset.rowId = String(rowId);
-        child.dataset.columnKey = columnKey;
-      }
-    }
-    return wrapper;
-  }
+    // Index slotted elements
+    const existingMap = new Map<string, Element>();
+    this.el.querySelectorAll('[slot^="cell-"]').forEach(el => {
+      existingMap.set(el.getAttribute('slot')!, el);
+    });
 
-  private mountSlottedCell(
-    tdEl: HTMLElement | null,
-    columnKey: string,
-    row: Record<string, unknown>,
-    rowId: number,
-  ): void {
-    if (!tdEl) return;
-    tdEl.innerHTML = '';
-    const clone = this.cloneAndInject(columnKey, row, rowId);
-    if (clone) tdEl.appendChild(clone);
+    // Check if slotted elements already exist or need to be created based on rows
+    rows.forEach(row => {
+      slottedColumns.forEach(column => {
+        const slotName = this.getManagedSlotName(row.id, column.field);
+        const existing = existingMap.get(slotName);
+
+        if (existing) {
+          // Slot already in the DOM — just refresh its bindings.
+          const child = existing.querySelector('*') as HTMLElement | null;
+          if (child) {
+            this.applyBindings(child, row.original);
+            (child as any).row = row.original;
+            (child as any).column = column;
+            (child as any).rowIndex = row.index;
+            (child as any).value = row.getValue(column.field);
+          }
+          // Mark as handled so it isn't removed below.
+          existingMap.delete(slotName);
+        } else {
+          // New row/column combination — create from scratch.
+          const template = this.getTemplate(column.field);
+          if (!template) return;
+
+          const clone = template.content.cloneNode(true) as DocumentFragment;
+          const wrapper = document.createElement('span');
+          wrapper.setAttribute('slot', slotName);
+          wrapper.appendChild(clone);
+
+          const child = wrapper.querySelector('*') as HTMLElement | null;
+          if (child) {
+            this.applyBindings(child, row.original);
+            (child as any).row = row.original;
+            (child as any).column = column;
+            (child as any).rowIndex = row.index;
+            (child as any).value = row.getValue(column.field);
+          }
+
+          this.el.appendChild(wrapper);
+        }
+      });
+    });
+
+    // Remove stale slotted elements
+    existingMap.forEach(el => el.remove());
   }
 
   // ─── Event handlers ───────────────────────────────────────────────────────
@@ -391,6 +436,13 @@ export class GcdsTable {
     this.shadowElement?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
+  private getManagedSlotName(
+    row: string,
+    columnField: string,
+  ): string {
+    return `cell-${row}-${columnField}`;
+  }
+
   // ─── Methods ────────────────────────────────────────────────────────────
 
   @Method()
@@ -407,12 +459,17 @@ export class GcdsTable {
   // ─── Lifecycle ────────────────────────────────────────────────────────────
 
   componentWillLoad() {
+    this.isInitializing = true;
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     // Validate if information is being passed as JSON strings and parse it
-    this.onColumnsChange(this.columns);
-    this.onDataChange(this.data);
+    if (typeof this.columns === 'string') {
+      try { this.columns = JSON.parse(this.columns); } catch (e) { console.error(e); }
+    }
+    if (typeof this.data === 'string') {
+      try { this.data = JSON.parse(this.data); } catch (e) { console.error(e); }
+    }
 
     // Seed initial sort from sortDirection column definitions
     if (this.sortEnabled()) {
@@ -421,9 +478,19 @@ export class GcdsTable {
     this.initialSorting = this.sorting;
 
     this.initTable();
+
+    if (this.table) {
+      this.createSlottedElements();
+    }
+
+    this.isInitializing = false;
   }
 
   componentDidRender() {
+    if (!this.hasRenderedOnce) {
+      this.hasRenderedOnce = true;
+      return;
+    }
     this.emitStateChangeIfDirty();
   }
 
@@ -575,13 +642,12 @@ export class GcdsTable {
                 </tr>
               ) : (
                 rows.map(row => (
-                  <tr key={row.id} class="gcds-table__row">
+                  <tr key={row.id} data-test={row.id} class="gcds-table__row">
                     {row.getVisibleCells().map(cell => {
                       const colDef = (
                         (this.columns ?? []) as TableColumn[]
                       ).find(c => c.field === cell.column.id);
                       const isSlotted = colDef?.slotted;
-                      const isManaged = colDef?.managed;
 
                       let cellContent: any;
                       let Tag = 'td';
@@ -595,9 +661,20 @@ export class GcdsTable {
                         };
                       }
 
+                      const fallbackValue = String(cell.getValue() ?? '');
+
                       cellContent = !isSlotted
-                        ? String(cell.getValue() ?? '')
-                        : null;
+                        ? fallbackValue
+                        : (
+                          <slot
+                            name={this.getManagedSlotName(
+                              row.id,
+                              cell.column.id,
+                            )}
+                          >
+                            {fallbackValue}
+                          </slot>
+                        );
 
                       return (
                         <Tag
@@ -605,17 +682,6 @@ export class GcdsTable {
                           class={`gcds-table__td${colDef?.alignment ? ` alignment-${colDef.alignment}` : ''}`}
                           data-column={colDef?.header}
                           data-cell={`${cell.column.id}-${row.id}`}
-                          ref={
-                            isSlotted && !isManaged
-                              ? tdEl =>
-                                this.mountSlottedCell(
-                                  tdEl,
-                                  cell.column.id,
-                                  row.original,
-                                  Number(row.id),
-                                )
-                              : undefined
-                          }
                           {...scope}
                         >
                           {cellContent}

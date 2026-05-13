@@ -79,7 +79,7 @@ describe('gcds-table', () => {
               <div class="gcds-table__active-pills"></div>
               <div class="gcds-table__row-management">
                 <span aria-live="polite" class="gcds-table__page-info" role="status">
-                  Showing 0 rows.
+                  No rows to show
                 </span>
               </div>
             <table class="gcds-table__table" tabindex="-1">
@@ -593,7 +593,6 @@ describe('gcds-table', () => {
   });
 
   it('shows filter and sort button label in English when enabled', async () => {
-    // TODO: check if it's filter and sort all the time or if it changes to just one when only one is enabled
     const page = await setup();
     const el = page.root as HTMLGcdsTableElement;
 
@@ -606,6 +605,22 @@ describe('gcds-table', () => {
     await page.waitForChanges();
 
     const button = page.root?.shadowRoot?.querySelector('gcds-button');
+    expect(button).not.toBeNull();
+    expect(button?.textContent?.toLowerCase()).toContain('filter');
+
+    el.filter = false;
+    el.sort = true;
+
+    await page.waitForChanges();
+
+    expect(button).not.toBeNull();
+    expect(button?.textContent?.toLowerCase()).toContain('sort');
+
+    el.filter = true;
+    el.sort = true;
+
+    await page.waitForChanges();
+
     expect(button).not.toBeNull();
     expect(button?.textContent?.toLowerCase()).toContain('filter');
     expect(button?.textContent?.toLowerCase()).toContain('sort');
@@ -770,7 +785,7 @@ describe('gcds-table', () => {
     expect(instance.paginationState.pageIndex).toBe(0);
   });
 
-  it('renders slotted element', async () => {
+  it('renders slotted element + slot', async () => {
     const page = await setup();
     const el = page.root as HTMLGcdsTableElement;
 
@@ -801,6 +816,7 @@ describe('gcds-table', () => {
     const headers = page.root?.shadowRoot?.querySelectorAll('thead th') || [];
     const rows = page.root?.shadowRoot?.querySelectorAll('tbody tr') || [];
     const firstRowCells = rows[0]?.querySelectorAll('td') || [];
+    const slot = page.root?.querySelector('span[slot="cell-0-sprite"]');
 
     expect(headers).toHaveLength(6);
     expect(headers[0].textContent).toContain('Pokédex');
@@ -812,10 +828,11 @@ describe('gcds-table', () => {
     expect(firstRowCells[3]?.textContent?.trim()).toBe('90');
     expect(firstRowCells[4]?.textContent?.trim()).toBe('63');
     expect(firstRowCells[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-0" data-column="Sprite">
-        <div>
-          <img data-column-key="sprite" data-row-id="0" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle sprite">
-        </div>
+        <slot name="cell-0-sprite"></slot>
       </td>`);
+    expect(slot).toEqualHtml(`<span slot="cell-0-sprite">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle sprite">
+      </span>`);
   });
 
   it('renders slotted element with data-bind-* attributes', async () => {
@@ -852,44 +869,39 @@ describe('gcds-table', () => {
 
     expect(headers).toHaveLength(6);
     expect(rows).toHaveLength(3);
-
     expect(rows[0]?.querySelectorAll('td')[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-0" data-column="Sprite">
-        <div>
-          <img
-            data-column-key="sprite"
-            data-bind-alt="name"
-            data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
-            data-row-id="0"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
-            alt="Squirtle"
-          />
-        </div>
+        <slot name="cell-0-sprite"></slot>
       </td>`);
-
     expect(rows[1]?.querySelectorAll('td')[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-1" data-column="Sprite">
-        <div>
-          <img
-            data-column-key="sprite"
-            data-bind-alt="name"
-            data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
-            data-row-id="1"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
-            alt="Wartortle"
-          />
-        </div>
+        <slot name="cell-1-sprite"></slot>
+      </td>`);
+    expect(rows[2]?.querySelectorAll('td')[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-2" data-column="Sprite">
+        <slot name="cell-2-sprite"></slot>
       </td>`);
 
-    expect(rows[2]?.querySelectorAll('td')[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-2" data-column="Sprite">
-        <div>
-          <img
-            data-column-key="sprite"
-            data-bind-alt="name"
-            data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
-            data-row-id="2"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
-            alt="Blastoise"
-          />
-        </div>
-      </td>`);
+    expect(page.root?.querySelector('span[slot=cell-0-sprite]')).toEqualHtml(`<span slot="cell-0-sprite">
+        <img
+          data-bind-alt="name"
+          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+          alt="Squirtle"
+        />
+      </span>`);
+    expect(page.root?.querySelector('span[slot=cell-1-sprite]')).toEqualHtml(`<span slot="cell-1-sprite">
+        <img
+          data-bind-alt="name"
+          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
+          alt="Wartortle"
+        />
+      </span>`);
+    expect(page.root?.querySelector('span[slot=cell-2-sprite]')).toEqualHtml(`<span slot="cell-2-sprite">
+        <img
+          data-bind-alt="name"
+          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
+          alt="Blastoise"
+        />
+      </span>`);
   });
 });
