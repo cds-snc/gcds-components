@@ -16,7 +16,7 @@ export interface CellSlotProps<T = Record<string, unknown>> {
   value: unknown;
 }
 
-export interface GcdsTableProps {
+export interface GcdsTableProps extends React.HTMLAttributes<HTMLElement> {
   columns?: ReactTableColumn[];
   data?: Record<string, unknown>[];
   filter?: boolean;
@@ -61,6 +61,7 @@ export function GcdsTableWithSlots({
   paginationSizeOptions = [10, 25, 50, 0],
   sort = false,
   children,
+  ...rest
 }: GcdsTableProps) {
   const wcColumns = useMemo(() =>
     columns.map(({ renderCell, ...col }) => ({
@@ -93,6 +94,7 @@ export function GcdsTableWithSlots({
 
   return (
     <GcdsTableBase
+      {...rest}
       columns={wcColumns}
       data={data}
       filter={filter}

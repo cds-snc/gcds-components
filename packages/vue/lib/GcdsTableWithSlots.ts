@@ -1,9 +1,9 @@
-import { computed, defineComponent, h } from 'vue';
+import { computed, defineComponent, h, useAttrs } from 'vue';
 import type { TableColumn } from '@gcds-core/components';
 
 export const GcdsTableWithSlots = defineComponent({
   name: 'GcdsTable',
-
+  inheritAttrs: false,
   props: {
     columns: {
       type: Array as () => TableColumn[],
@@ -44,6 +44,7 @@ export const GcdsTableWithSlots = defineComponent({
   },
 
   setup(props, { slots }) {
+    const attrs = useAttrs();
     function hasSlot(field: string): boolean {
       return !!slots[field];
     }
@@ -99,6 +100,7 @@ export const GcdsTableWithSlots = defineComponent({
       return h(
         'gcds-table',
         {
+          ...attrs,
           columns: wcColumns.value,
           data: props.data,
           filter: props.filter,

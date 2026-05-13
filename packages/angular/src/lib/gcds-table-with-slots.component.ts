@@ -5,7 +5,11 @@ import {
   QueryList,
   ContentChildren,
   AfterContentInit,
+  AfterViewInit,
   OnChanges,
+  ElementRef,
+  Renderer2,
+  ViewChild,
 } from '@angular/core';
 import type { TableColumn } from '@gcds-core/components';
 import { GcdsCellDirective } from './directives/gcds-cell.directive';
@@ -14,11 +18,25 @@ export interface AngularTableColumn extends TableColumn {
   cellTemplate?: TemplateRef<{ $implicit: unknown; rowId: string }>;
 }
 
+// Attrs your @Inputs already own — don't forward these to avoid doubling up
+const COMPONENT_INPUTS = new Set([
+  'columns',
+  'data',
+  'filter',
+  'filtervalue',
+  'pagination',
+  'paginationcurrentpage',
+  'paginationsize',
+  'paginationsizeoptions',
+  'sort',
+]);
+
 @Component({
   selector: 'gcds-table-ng',
   standalone: false,
   template: `
     <gcds-table
+      #gcdsTable
       [columns]="wcColumns"
       [data]="data"
       [filter]="filter"
@@ -56,7 +74,7 @@ export interface AngularTableColumn extends TableColumn {
   `,
 })
 export class GcdsTableWithSlotsComponent
-  implements AfterContentInit, OnChanges
+  implements AfterContentInit, AfterViewInit, OnChanges
 {
   @Input() columns: AngularTableColumn[] = [];
   @Input() data: Record<string, unknown>[] = [];
@@ -71,10 +89,22 @@ export class GcdsTableWithSlotsComponent
   @ContentChildren(GcdsCellDirective)
   cellTemplates!: QueryList<GcdsCellDirective>;
 
+  @ViewChild('gcdsTable', { read: ElementRef })
+  gcdsTableEl!: ElementRef<HTMLElement>;
+
   private _wcColumns: TableColumn[] = [];
 
   get wcColumns(): TableColumn[] {
     return this._wcColumns;
+  }
+
+  constructor(
+    private host: ElementRef<HTMLElement>,
+    private renderer: Renderer2,
+  ) {}
+
+  ngAfterViewInit(): void {
+    this.forwardHostAttrs();
   }
 
   ngAfterContentInit(): void {
@@ -88,6 +118,26 @@ export class GcdsTableWithSlotsComponent
   ngOnChanges(): void {
     if (this.cellTemplates) {
       this._wcColumns = this.computeWcColumns();
+    }
+  }
+
+  private forwardHostAttrs(): void {
+    const hostAttrs = this.host.nativeElement.attributes;
+
+    for (let i = 0; i < hostAttrs.length; i++) {
+      const { name, value } = hostAttrs[i];
+
+      // Skip Angular internals and anything owned by @Input
+      if (
+        name.startsWith('_ng') ||
+        name.startsWith('ng-') ||
+        COMPONENT_INPUTS.has(name.toLowerCase())
+      ) {
+        continue;
+      }
+
+      this.renderer.setAttribute(this.gcdsTableEl.nativeElement, name, value);
+      this.renderer.removeAttribute(this.host.nativeElement, name);
     }
   }
 

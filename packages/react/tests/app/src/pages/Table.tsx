@@ -63,6 +63,7 @@ const Table = () => {
         <p>Testing whether the table still functions properly in React.</p>
 
         <GcdsTable
+          id="red"
           pagination={true}
           filter={true}
           sort={true}
