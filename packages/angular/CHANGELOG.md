@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.2.0...@gcds-core/components-angular-v1.3.0) (2026-05-13)
+
+
+### :rocket: New Features
+
+* **gcds-header:** add sign in button ([#1120](https://github.com/cds-snc/gcds-components/issues/1120)) ([07d7d66](https://github.com/cds-snc/gcds-components/commit/07d7d6625cee321c60f68debc437fe9ab538d6ac))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @gcds-core/components bumped from ^1.2.0 to ^1.3.0
+
 ## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.1.0...@gcds-core/components-angular-v1.2.0) (2026-04-21)
 
 

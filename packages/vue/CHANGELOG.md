@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.2.0...@gcds-core/components-vue-v1.3.0) (2026-05-13)
+
+
+### Patch
+
+* **@gcds-core/components-vue:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.2.0 to ^1.3.0
+
 ## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.1.0...@gcds-core/components-vue-v1.2.0) (2026-04-21)
 
 
