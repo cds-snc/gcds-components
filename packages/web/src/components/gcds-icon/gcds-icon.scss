@@ -28,60 +28,84 @@
 
 @layer names {
   :host .gcds-icon {
+    &-arrow-down:before {
+      content: '\f013';
+    }
+
+    &-arrow-up:before {
+      content: '\f011';
+    }
+
+    &-arrow-up-down:before {
+      content: '\f012';
+    }
+
     &-checkmark-circle:before {
-      content: "\e908";
+      content: '\f010';
     }
 
     &-chevron-down:before {
-      content: "\e900";
+      content: '\f00f';
     }
 
     &-chevron-left:before {
-      content: "\e901";
+      content: '\f00e';
     }
 
     &-chevron-right:before {
-      content: "\e902";
+      content: '\f00d';
     }
 
     &-chevron-up:before {
-      content: "\e903";
+      content: '\f00c';
     }
 
     &-close:before {
-      content: "\e90b";
+      content: '\f00b';
     }
 
     &-download:before {
-      content: "\e906";
+      content: '\f00a';
     }
 
     &-email:before {
-      content: "\e905";
+      content: '\f009';
     }
 
     &-exclamation-circle:before {
-      content: "\e909";
+      content: '\f008';
     }
 
     &-external:before {
-      content: "\e904";
+      content: '\f006';
+    }
+
+    &-filter:before {
+      content: '\f005';
     }
 
     &-info-circle:before {
-      content: "\e90a";
+      content: '\f004';
     }
 
     &-phone:before {
-      content: "\e90c";
+      content: '\f003';
     }
 
     &-search:before {
-      content: "\e907";
+      content: '\f002';
+    }
+
+    &-sort:before {
+      content: '\f001';
+    }
+
+    &-tune:before {
+      content: '\f000';
     }
 
     &-warning-triangle:before {
-      content: "\e90d";
+      content: '\f007';
     }
   }
 }

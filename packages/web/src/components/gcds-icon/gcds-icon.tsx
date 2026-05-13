@@ -36,6 +36,9 @@ export class GcdsIcon {
    * Name of the icon.
    */
   @Prop({ mutable: true }) name!:
+    | 'arrow-down'
+    | 'arrow-up'
+    | 'arrow-up-down'
     | 'checkmark-circle'
     | 'chevron-down'
     | 'chevron-left'
@@ -46,14 +49,20 @@ export class GcdsIcon {
     | 'email'
     | 'exclamation-circle'
     | 'external'
+    | 'filter'
     | 'info-circle'
     | 'phone'
     | 'search'
+    | 'sort'
+    | 'tune'
     | 'warning-triangle';
 
   @Watch('name')
   validateName(newValue: string) {
     const values = [
+      'arrow-down',
+      'arrow-up',
+      'arrow-up-down',
       'checkmark-circle',
       'chevron-down',
       'chevron-left',
@@ -64,9 +73,12 @@ export class GcdsIcon {
       'email',
       'exclamation-circle',
       'external',
+      'filter',
       'info-circle',
       'phone',
       'search',
+      'sort',
+      'tune',
       'warning-triangle',
     ];
 

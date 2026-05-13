@@ -1153,7 +1153,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the checkobox will be focused on component render",
+          "docs": "If true, the checkbox will be focused on component render",
           "docsTags": [],
           "values": [
             {
@@ -6567,10 +6567,10 @@
         },
         {
           "name": "name",
-          "type": "\"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"info-circle\" | \"phone\" | \"search\" | \"warning-triangle\"",
+          "type": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
           "complexType": {
-            "original": "| 'checkmark-circle'\n    | 'chevron-down'\n    | 'chevron-left'\n    | 'chevron-right'\n    | 'chevron-up'\n    | 'close'\n    | 'download'\n    | 'email'\n    | 'exclamation-circle'\n    | 'external'\n    | 'info-circle'\n    | 'phone'\n    | 'search'\n    | 'warning-triangle'",
-            "resolved": "\"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"info-circle\" | \"phone\" | \"search\" | \"warning-triangle\"",
+            "original": "| 'arrow-down'\n    | 'arrow-up'\n    | 'arrow-up-down'\n    | 'checkmark-circle'\n    | 'chevron-down'\n    | 'chevron-left'\n    | 'chevron-right'\n    | 'chevron-up'\n    | 'close'\n    | 'download'\n    | 'email'\n    | 'exclamation-circle'\n    | 'external'\n    | 'filter'\n    | 'info-circle'\n    | 'phone'\n    | 'search'\n    | 'sort'\n    | 'tune'\n    | 'warning-triangle'",
+            "resolved": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
             "references": {}
           },
           "mutable": true,
@@ -6579,6 +6579,18 @@
           "docs": "Name of the icon.",
           "docsTags": [],
           "values": [
+            {
+              "value": "arrow-down",
+              "type": "string"
+            },
+            {
+              "value": "arrow-up",
+              "type": "string"
+            },
+            {
+              "value": "arrow-up-down",
+              "type": "string"
+            },
             {
               "value": "checkmark-circle",
               "type": "string"
@@ -6620,6 +6632,10 @@
               "type": "string"
             },
             {
+              "value": "filter",
+              "type": "string"
+            },
+            {
               "value": "info-circle",
               "type": "string"
             },
@@ -6629,6 +6645,14 @@
             },
             {
               "value": "search",
+              "type": "string"
+            },
+            {
+              "value": "sort",
+              "type": "string"
+            },
+            {
+              "value": "tune",
               "type": "string"
             },
             {
