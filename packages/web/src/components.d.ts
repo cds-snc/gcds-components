@@ -746,7 +746,10 @@ export namespace Components {
         /**
           * Name of the icon.
          */
-        "name": | 'checkmark-circle'
+        "name": | 'arrow-down'
+    | 'arrow-up'
+    | 'arrow-up-down'
+    | 'checkmark-circle'
     | 'chevron-down'
     | 'chevron-left'
     | 'chevron-right'
@@ -756,9 +759,12 @@ export namespace Components {
     | 'email'
     | 'exclamation-circle'
     | 'external'
+    | 'filter'
     | 'info-circle'
     | 'phone'
     | 'search'
+    | 'sort'
+    | 'tune'
     | 'warning-triangle';
         /**
           * Defines the size of the icon.
@@ -3189,7 +3195,10 @@ declare namespace LocalJSX {
         /**
           * Name of the icon.
          */
-        "name": | 'checkmark-circle'
+        "name": | 'arrow-down'
+    | 'arrow-up'
+    | 'arrow-up-down'
+    | 'checkmark-circle'
     | 'chevron-down'
     | 'chevron-left'
     | 'chevron-right'
@@ -3199,9 +3208,12 @@ declare namespace LocalJSX {
     | 'email'
     | 'exclamation-circle'
     | 'external'
+    | 'filter'
     | 'info-circle'
     | 'phone'
     | 'search'
+    | 'sort'
+    | 'tune'
     | 'warning-triangle';
         /**
           * Defines the size of the icon.
