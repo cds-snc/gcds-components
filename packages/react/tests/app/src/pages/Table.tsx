@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
   GcdsTable,
-  GcdsTableWithSlots,
   GcdsHeading,
   GcdsBreadcrumbs,
   GcdsBreadcrumbsItem,
@@ -63,17 +62,17 @@ const Table = () => {
         <GcdsHeading tag="h2">Gcds-table</GcdsHeading>
         <p>Testing whether the table still functions properly in React.</p>
 
-        <GcdsHeading tag="h3">With slots</GcdsHeading>
-
-        <GcdsTableWithSlots
+        <GcdsTable
+          id="red"
           pagination={true}
           filter={true}
           sort={true}
+          paginationSizeOptions={[10, 25, 50, 0]}
           columns={[
             {
               field: 'number',
               header: 'Pokédex',
-              align: 'end',
+              alignment: 'end',
               rowHeader: true,
             },
             {
@@ -83,10 +82,10 @@ const Table = () => {
             {
               field: 'sprite',
               header: 'Sprite',
-              align: 'center',
+              alignment: 'center',
               sort: false,
               slotted: true,
-              renderCell: (row: any) => {
+              renderCell: ({ row }) => {
                 return (
                   <img
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`}
@@ -97,21 +96,21 @@ const Table = () => {
                 );
               },
             },
-            { field: 'height', header: 'Height', align: 'end' },
-            { field: 'weight', header: 'Weight', align: 'end' },
+            { field: 'height', header: 'Height', alignment: 'end' },
+            { field: 'weight', header: 'Weight', alignment: 'end' },
             {
               field: 'base_experience',
               header: 'Base experience',
               sort: false,
-              align: 'end',
+              alignment: 'end',
             },
             {
               field: 'actions',
               header: 'Actions',
-              align: 'center',
+              alignment: 'center',
               sort: false,
               slotted: true,
-              renderCell: (row: any) => {
+              renderCell: ({ row }) => {
                 return (
                   <GcdsButton
                     buttonRole="secondary"
@@ -123,96 +122,10 @@ const Table = () => {
               }
             },
           ]}
-          data={pokemonData}
+          data={pokemonData as Record<string, unknown>[]}
         >
           <div slot="caption">
-            <GcdsHeading tag="h4">Pokémon - slots</GcdsHeading>
-            Table of the best Pokémon (first generation).
-          </div>
-        </GcdsTableWithSlots>
-        
-        <GcdsHeading tag="h3">With renderCell</GcdsHeading>
-
-        <GcdsTable
-          sort={true}
-          pagination={true}
-          filter={true}
-          columns={[
-            {
-              field: 'number',
-              header: 'Pokédex',
-              align: 'end',
-              rowHeader: true,
-            },
-            {
-              field: 'name',
-              header: 'Name',
-              sortDirection: 'asc',
-            },
-            {
-              field: 'sprite',
-              header: 'Sprite',
-              align: 'center',
-              sort: false,
-              renderCell: (_, row) => {
-                const img = document.createElement('img');
-                img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${row.number}.png`;
-                img.alt = row.name as string;
-                img.width = 150;
-                img.height = 150;
-                return img;
-              },
-            },
-            { field: 'height', header: 'Height', align: 'end' },
-            { field: 'weight', header: 'Weight', align: 'end' },
-            {
-              field: 'base_experience',
-              header: 'Base experience',
-              sort: false,
-              align: 'end',
-            },
-            {
-              field: 'actions',
-              header: 'Actions',
-              align: 'center',
-              sort: false,
-              // This won't work in React
-              // renderCell: (_, row) => {
-              //   return (
-              //     <GcdsButton
-              //       buttonRole="secondary"
-              //       onClick={() => {
-              //         if (row.number === 7) {
-              //           alert(`You clicked on ${row.name}! The best Pokémon!`);
-              //         } else {
-              //           alert(`This is ${row.name}, not Squirtle!`);
-              //         }
-              //       }}
-              //     >
-              //       Alert name
-              //     </GcdsButton>
-              //   );
-              // },
-
-              renderCell: (_, row) => {
-                const button = document.createElement('gcds-button');
-                button.setAttribute('button-role', 'secondary');
-                button.textContent = 'Alert name';
-                button.addEventListener('click', () => {
-                  if (row.number === 7) {
-                    alert(`You clicked on ${row.name}! The best Pokémon!`);
-                  } else {
-                    alert(`This is ${row.name}, not Squirtle!`);
-                  }
-                });
-                return button;
-              },
-            },
-          ]}
-          data={pokemonData}
-        >
-          <div slot="caption">
-            <h2>Pokémon</h2>
+            <GcdsHeading tag="h3">Pokémon</GcdsHeading>
             Table of the best Pokémon (first generation).
           </div>
         </GcdsTable>

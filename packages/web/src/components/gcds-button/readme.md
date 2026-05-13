@@ -46,7 +46,6 @@ The button is an interactive object that emphasizes an action.
 
  - [gcds-search](../gcds-search)
  - [gcds-table](../gcds-table)
- - [gcds-table-slots](../gcds-table-slots)
 
 ### Depends on
 
@@ -58,7 +57,6 @@ graph TD;
   gcds-button --> gcds-icon
   gcds-search --> gcds-button
   gcds-table --> gcds-button
-  gcds-table-slots --> gcds-button
   style gcds-button fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

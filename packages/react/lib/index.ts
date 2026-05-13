@@ -1,3 +1,3 @@
 export * from './components';
-export { GcdsTableWithSlots } from './GcdsTableWithSlots';
+export { GcdsTableWithSlots as GcdsTable } from './GcdsTableWithSlots';
 export type { ReactTableColumn } from './GcdsTableWithSlots';

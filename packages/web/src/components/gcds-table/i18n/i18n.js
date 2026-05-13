@@ -6,6 +6,7 @@ const I18N = {
     default: 'default',
     desc: 'desc',
     descending: 'Descending',
+    filter: 'Filter',
     filterAndSort: 'Filter and sort',
     filterLabel: 'Filter items',
     headingActivateAsc: ': activate for ascending sort',
@@ -27,6 +28,7 @@ const I18N = {
     showingNoMatches: 'No matches found.',
     showingPages: 'Showing {start} to {end} of {total} rows.',
     showingAllRows: 'Showing {total} rows.',
+    showingNoRows: 'No rows to show',
     sort: 'Sort',
   },
   fr: {
@@ -36,6 +38,7 @@ const I18N = {
     default: 'default',
     desc: 'desc',
     descending: 'Descending',
+    filter: 'Filter',
     filterAndSort: 'Filter and sort',
     filterLabel: 'Filter items',
     headingActivateAsc: ': activate for ascending sort',
@@ -57,6 +60,7 @@ const I18N = {
     showingNoMatches: 'No matches found.',
     showingPages: 'Showing {start} to {end} of {total} rows.',
     showingAllRows: 'Showing {total} rows.',
+    showingNoRows: 'No rows to show',
     sort: 'Sort',
   },
 };

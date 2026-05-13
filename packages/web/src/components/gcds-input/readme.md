@@ -93,7 +93,6 @@ Type: `Promise<void>`
 
  - [gcds-date-input](../gcds-date-input)
  - [gcds-table](../gcds-table)
- - [gcds-table-slots](../gcds-table-slots)
 
 ### Depends on
 
@@ -112,7 +111,6 @@ graph TD;
   gcds-error-message --> gcds-icon
   gcds-date-input --> gcds-input
   gcds-table --> gcds-input
-  gcds-table-slots --> gcds-input
   style gcds-input fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

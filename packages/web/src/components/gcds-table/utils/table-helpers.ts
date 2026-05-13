@@ -23,16 +23,6 @@ interface TableColumn {
   sortDirection?: 'asc' | 'desc';
   alignment?: 'start' | 'center' | 'end';
   sort?: boolean;
-  renderCell?: (value: unknown, row: Record<string, unknown>) => any;
-  rowHeader?: boolean;
-  slotted?: boolean;
-}
-interface TableColumnSlots {
-  field: string;
-  header: string;
-  sortDirection?: 'asc' | 'desc';
-  alignment?: 'start' | 'center' | 'end';
-  sort?: boolean;
   rowHeader?: boolean;
   slotted?: boolean;
   managed?: boolean;
@@ -152,7 +142,6 @@ const updateTableOptions = (GcdsTable: any) => {
 
 export {
   TableColumn,
-  TableColumnSlots,
   buildInitialSorting,
   buildColumnDefs,
   buildTableOptions,
