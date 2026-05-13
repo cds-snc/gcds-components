@@ -1,6 +1,18 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) (2026-05-13)
+
+
+### :rocket: New Features
+
+* **gcds-header:** add sign in button ([#1120](https://github.com/cds-snc/gcds-components/issues/1120)) ([07d7d66](https://github.com/cds-snc/gcds-components/commit/07d7d6625cee321c60f68debc437fe9ab538d6ac))
+
+
+### :arrows_counterclockwise: Code Refactoring
+
+* **form validation:** centralize validation error messages ([#1237](https://github.com/cds-snc/gcds-components/issues/1237)) ([fb5f390](https://github.com/cds-snc/gcds-components/commit/fb5f390aa968351da2f5e9124a6410cde16851af))
+
 ## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.1.0...@gcds-core/components-v1.2.0)
 
 Released on: 2026-04-21
