@@ -21,6 +21,12 @@ test.describe('gcds-table', () => {
       weight: 100 + i,
     }));
 
+  const pokemonRows = [
+    { number: 7, name: 'Squirtle', height: 5, weight: 90 },
+    { number: 8, name: 'Wartortle', height: 10, weight: 225 },
+    { number: 9, name: 'Blastoise', height: 16, weight: 855 },
+  ];
+
   const getVisiblePokedexValues = async (element: Locator) => {
     const cells = element.locator('tbody tr [data-column="Pokédex"]');
     const count = await cells.count();
@@ -50,7 +56,7 @@ test.describe('gcds-table', () => {
   /**
    * Data & Column Rendering Tests - Performance
    */
-  test('Large Dataset Rendering Performance', async ({ page }) => {
+  test('large Dataset Rendering Performance', async ({ page }) => {
     const element = page.locator('gcds-table');
 
     // Wait for element to attach and become visible
@@ -231,7 +237,7 @@ test.describe('gcds-table', () => {
     await expect(element.locator('tbody tr')).toHaveCount(10);
   });
 
-  test('All rows option shows all rows and hides pagination controls', async ({
+  test('all rows option shows all rows and hides pagination controls', async ({
     page,
   }) => {
     const element = page.locator('gcds-table');
@@ -317,9 +323,7 @@ test.describe('gcds-table', () => {
     await expect(
       element.locator('gcds-pagination a[aria-current="page"]'),
     ).toHaveText('3');
-    await expect
-      .poll(() => getVisiblePokedexValues(element))
-      .toEqual([11, 12]);
+    await expect.poll(() => getVisiblePokedexValues(element)).toEqual([11, 12]);
 
     // Next does not go past the last page
     await expect(
@@ -383,5 +387,150 @@ test.describe('gcds-table', () => {
     await expect(
       element.locator('gcds-pagination a[aria-current="page"]'),
     ).toHaveText('2');
+  });
+
+  test('filter input availability: shows filter button and opens filter modal', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+
+    await element.evaluate(
+      (el, payload) => {
+        const table = el as HTMLGcdsTableElement;
+        table.filter = true;
+        table.sort = false;
+        table.pagination = false;
+        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
+        table.data = payload.rows;
+      },
+      {
+        columns: tableColumns,
+        rows: pokemonRows,
+      },
+    );
+
+    await page.waitForChanges();
+
+    const filterButton = element.locator(
+      '.gcds-table__filters > gcds-button button',
+    );
+    const filterModal = element.locator('dialog.gcds-table__modal');
+    const filterInput = element.locator('gcds-input input#gcds-table-filter');
+
+    await expect(filterButton).toBeVisible();
+    await filterButton.click();
+
+    await expect(filterModal).toHaveAttribute('open', '');
+    await expect(filterInput).toBeVisible();
+  });
+
+  test('filter text input: narrows to Squirtle and clears back to all rows', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+
+    await element.evaluate(
+      (el, payload) => {
+        const table = el as HTMLGcdsTableElement;
+        table.filter = true;
+        table.sort = false;
+        table.pagination = false;
+        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
+        table.data = payload.rows;
+      },
+      {
+        columns: tableColumns,
+        rows: pokemonRows,
+      },
+    );
+
+    await page.waitForChanges();
+
+    const filterButton = element.locator(
+      '.gcds-table__filters > gcds-button button',
+    );
+    const filterInput = element.locator('gcds-input input#gcds-table-filter');
+    const applyButton = element.locator(
+      '.gcds-table__modal-footer gcds-button button[type="submit"]',
+    );
+
+    await filterButton.click();
+    await expect(filterInput).toBeVisible();
+    await filterInput.fill('Squirtle');
+    await applyButton.click();
+    await page.waitForChanges();
+
+    await expect(element.locator('tbody tr')).toHaveCount(1);
+    await expect.poll(() => getVisiblePokedexValues(element)).toEqual([7]);
+
+    await filterButton.click();
+    await filterInput.fill('');
+    await applyButton.click();
+    await page.waitForChanges();
+
+    await expect(element.locator('tbody tr')).toHaveCount(3);
+    await expect
+      .poll(() => getVisiblePokedexValues(element))
+      .toEqual([7, 8, 9]);
+  });
+
+  test('filter case sensitivity: matches Squirtle with lower and upper case input', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+
+    await element.evaluate(
+      (el, payload) => {
+        const table = el as HTMLGcdsTableElement;
+        table.filter = true;
+        table.sort = false;
+        table.pagination = false;
+        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
+        table.data = payload.rows;
+      },
+      {
+        columns: tableColumns,
+        rows: pokemonRows,
+      },
+    );
+
+    await page.waitForChanges();
+
+    const filterButton = element.locator(
+      '.gcds-table__filters > gcds-button button',
+    );
+    const filterInput = element.locator('gcds-input input#gcds-table-filter');
+    const applyButton = element.locator(
+      '.gcds-table__modal-footer gcds-button button[type="submit"]',
+    );
+
+    await filterButton.click();
+    await filterInput.fill('squirtle');
+    await applyButton.click();
+    await page.waitForChanges();
+
+    await expect(element.locator('tbody tr')).toHaveCount(1);
+    await expect(
+      element.locator('tbody tr [data-column="Name"]').first(),
+    ).toHaveText('Squirtle');
+
+    await filterButton.click();
+    await filterInput.fill('SQUIRTLE');
+    await applyButton.click();
+    await page.waitForChanges();
+
+    await expect(element.locator('tbody tr')).toHaveCount(1);
+    await expect(
+      element.locator('tbody tr [data-column="Name"]').first(),
+    ).toHaveText('Squirtle');
   });
 });
