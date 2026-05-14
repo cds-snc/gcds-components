@@ -189,7 +189,7 @@ const tableColumns = [
     field: 'status',
     header: 'Status',
   },
-]
+];
 
 const statuses = ["Approved", "Pending review", "Under review", "Rejected"];
 
