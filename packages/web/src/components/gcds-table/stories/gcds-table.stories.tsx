@@ -211,7 +211,7 @@ const defaultTableProperties = {
   paginationSize: 10,
   paginationSizeOptions: `[10, 25, 50, 0,]`,
   caption: '',
-}
+};
 
 // ------ Table default ------
 
