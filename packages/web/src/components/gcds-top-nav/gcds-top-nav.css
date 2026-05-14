@@ -27,7 +27,7 @@
 
 @layer desktop {
   /* Note: viewport specific style decisions */
-  @media only screen and (width >= 64em) {
+  @media only screen and (width >= 48em) {
     :host .gcds-top-nav {
       border-block-end: var(--gcds-top-nav-border-width) solid
         var(--gcds-top-nav-border-color);

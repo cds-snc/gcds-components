@@ -121,7 +121,7 @@
 
 /* Note: viewport specific style decision */
 @layer desktop {
-  @media only screen and (width >= 64em) {
+  @media only screen and (width >= 48em) {
     :host {
       .gcds-nav-group__trigger {
         max-width: var(--gcds-nav-group-trigger-max-width);
@@ -171,7 +171,7 @@
 
 /* Note: viewport specific style decision */
 @layer mobile {
-  @media only screen and (width < 64em) {
+  @media only screen and (width < 48em) {
     :host(.gcds-mobile-nav)
       > .gcds-nav-group__container
       > .gcds-nav--expandable {
@@ -180,13 +180,6 @@
 
     :host([open]:not(.gcds-mobile-nav)) .gcds-nav-group__list {
       padding-inline-start: var(--gcds-nav-group-side-nav-dropdown-padding);
-    }
-  }
-
-  @media only screen and (48em < width < 64em) {
-    :host(.gcds-mobile-nav) .gcds-trigger--expandable {
-      width: auto;
-      align-self: flex-start;
     }
   }
 }
