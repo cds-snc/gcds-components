@@ -881,24 +881,18 @@ describe('gcds-table', () => {
 
     expect(page.root?.querySelector('span[slot=cell-0-sprite]')).toEqualHtml(`<span slot="cell-0-sprite">
         <img
-          data-bind-alt="name"
-          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
           alt="Squirtle"
         />
       </span>`);
     expect(page.root?.querySelector('span[slot=cell-1-sprite]')).toEqualHtml(`<span slot="cell-1-sprite">
         <img
-          data-bind-alt="name"
-          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
           alt="Wartortle"
         />
       </span>`);
     expect(page.root?.querySelector('span[slot=cell-2-sprite]')).toEqualHtml(`<span slot="cell-2-sprite">
         <img
-          data-bind-alt="name"
-          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
           alt="Blastoise"
         />
