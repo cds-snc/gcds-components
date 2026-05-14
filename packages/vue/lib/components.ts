@@ -463,6 +463,7 @@ export const GcdsNavGroup: StencilVueComponent<JSX.GcdsNavGroup> = /*@__PURE__*/
 export const GcdsNavLink: StencilVueComponent<JSX.GcdsNavLink> = /*@__PURE__*/ defineContainer<JSX.GcdsNavLink>('gcds-nav-link', defineGcdsNavLink, [
   'href',
   'current',
+  'external',
   'gcdsClick',
   'gcdsFocus',
   'gcdsBlur'
