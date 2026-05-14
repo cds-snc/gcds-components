@@ -10,7 +10,7 @@ import {
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
-import i18n from '../gcds-link/i18n/i18n'
+import gcdsLinkI18n from '../gcds-link/i18n/i18n'
 
 /**
  * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
@@ -113,7 +113,7 @@ export class GcdsNavLink {
     const isExternal = external;
 
     if (isExternal) {
-      return <gcds-icon name="external" label={i18n[lang].external} />;
+      return <gcds-icon name="external" label={gcdsLinkI18n[lang].external} />;
     }
 
     return null;
