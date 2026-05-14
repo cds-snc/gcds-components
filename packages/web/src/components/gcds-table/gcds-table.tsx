@@ -637,7 +637,30 @@ export class GcdsTable {
                     class="gcds-table__empty"
                     colSpan={(this.columns ?? []).length}
                   >
-                    {I18N[this.lang].noData}
+                    {this.filter && this.filterValue !== '' ?
+                      <div>
+                        <gcds-heading tag="h3" heading-role='secondary'>
+                          {I18N[this.lang].noResultsHeading}
+                        </gcds-heading>
+                        <gcds-text text-role='secondary'>
+                          {I18N[this.lang].noResultsText}
+                        </gcds-text>
+                        <gcds-button
+                          onClick={() => this.filterValue = this.initialFilter}
+                        >
+                          {I18N[this.lang].noResultsClearFilter}
+                        </gcds-button>
+                      </div>
+                      :
+                      <div>
+                        <gcds-heading tag="h3" heading-role='secondary'>
+                          {I18N[this.lang].noDataHeading}
+                        </gcds-heading>
+                        <gcds-text text-role='secondary'>
+                          {I18N[this.lang].noDataText}
+                        </gcds-text>
+                      </div>
+                    }
                   </td>
                 </tr>
               ) : (

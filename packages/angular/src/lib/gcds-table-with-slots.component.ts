@@ -18,7 +18,6 @@ export interface AngularTableColumn extends TableColumn {
   cellTemplate?: TemplateRef<{ $implicit: unknown; rowId: string }>;
 }
 
-// Attrs your @Inputs already own — don't forward these to avoid doubling up
 const COMPONENT_INPUTS = new Set([
   'columns',
   'data',

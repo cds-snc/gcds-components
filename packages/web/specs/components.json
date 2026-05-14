@@ -11666,22 +11666,24 @@
       "dependents": [],
       "dependencies": [
         "gcds-select",
+        "gcds-heading",
+        "gcds-text",
+        "gcds-button",
         "gcds-pagination",
         "gcds-radios",
-        "gcds-button",
         "gcds-sr-only",
-        "gcds-heading",
         "gcds-input",
         "gcds-icon"
       ],
       "dependencyGraph": {
         "gcds-table": [
           "gcds-select",
+          "gcds-heading",
+          "gcds-text",
+          "gcds-button",
           "gcds-pagination",
           "gcds-radios",
-          "gcds-button",
           "gcds-sr-only",
-          "gcds-heading",
           "gcds-input",
           "gcds-icon"
         ],
@@ -11697,6 +11699,9 @@
           "gcds-text",
           "gcds-icon"
         ],
+        "gcds-button": [
+          "gcds-icon"
+        ],
         "gcds-pagination": [
           "gcds-icon"
         ],
@@ -11705,9 +11710,6 @@
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
-        ],
-        "gcds-button": [
-          "gcds-icon"
         ],
         "gcds-input": [
           "gcds-label",
@@ -12216,6 +12218,7 @@
         "gcds-error-message",
         "gcds-file-uploader",
         "gcds-hint",
+        "gcds-table",
         "gcds-textarea"
       ],
       "dependencies": [],
@@ -12233,6 +12236,9 @@
           "gcds-text"
         ],
         "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-table": [
           "gcds-text"
         ],
         "gcds-textarea": [
