@@ -286,14 +286,22 @@ export class GcdsTable {
 
   private applyBindings(el: HTMLElement, row: Record<string, unknown>): void {
     const bindings = Array.from(el.attributes).filter(attr =>
-      attr.name.startsWith('data-bind-'),
+      attr.name.startsWith('data-bind'),
     );
 
     for (const binding of bindings) {
       let prop: string;
       let value: unknown;
+      if (binding.name === 'data-bind-template') {
+        prop = 'textContent';
 
-      if (binding.name.startsWith('data-bind-template-')) {
+        value = binding.value.replace(/\{(\w+)\}/g, (_, field) =>
+          String(row[field] ?? ''),
+        );
+      } else if (binding.name === 'data-bind') {
+        prop = 'textContent';
+        value = row[binding.value];
+      } else if (binding.name.startsWith('data-bind-template-')) {
         prop = binding.name.replace('data-bind-template-', '');
         value = binding.value.replace(/\{(\w+)\}/g, (_, field) =>
           String(row[field] ?? ''),
@@ -308,6 +316,9 @@ export class GcdsTable {
       } else {
         el.setAttribute(prop, String(value ?? ''));
       }
+
+      // remove data-bind- attribute from final element
+      el.removeAttribute(binding.name);
     }
   }
 
@@ -549,7 +560,7 @@ export class GcdsTable {
                 >
                   {(this.paginationSizeOptions as number[]).map(opt => (
                     <option key={opt} value={opt}>
-                      {opt === 0 ? 'All' : opt}
+                      {opt === 0 ? I18N[this.lang].all : opt}
                     </option>
                   ))}
                 </gcds-select>
