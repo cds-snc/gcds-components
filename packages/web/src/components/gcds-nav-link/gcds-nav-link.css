@@ -33,7 +33,6 @@
     }
 
     @media only screen and (width < 64em) {
-      font: var(--gcds-nav-link-font-mobile);
       min-width: 50%;
     }
 
@@ -43,7 +42,7 @@
   }
 
   /* Home styles for larger screens */
-  @media only screen and (width >= 64em) {
+  @media only screen and (width >= 48em) {
     :host([slot='home']) > .gcds-nav-link {
       font: var(--gcds-nav-link-home-font);
 
@@ -60,7 +59,7 @@
 
 @layer variants {
   /* Top-nav: styles for larger screens */
-  @media only screen and (width >= 64em) {
+  @media only screen and (width >= 48em) {
     :host > .gcds-nav-link--topnav.gcds-nav-link {
       color: var(--gcds-nav-link-top-nav-text);
       margin: var(--gcds-nav-link-top-nav-margin);
@@ -81,7 +80,7 @@
   }
 
   /* Side-nav: home styles for larger screens */
-  @media only screen and (width >= 64em) {
+  @media only screen and (width >= 48em) {
     :host([slot='home']) > .gcds-nav-link--sidenav.gcds-nav-link {
       margin-block-end: var(--gcds-side-nav-heading-margin);
       padding: var(--gcds-side-nav-heading-padding);
