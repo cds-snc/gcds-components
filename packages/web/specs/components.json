@@ -11352,8 +11352,17 @@
       "encapsulation": "shadow",
       "tag": "gcds-table",
       "readme": "# gcds-table\n\n\n",
-      "docs": "",
-      "docsTags": [],
+      "docs": "A table is a structured layout of related data in rows and columns.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "caption - Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it."
+        },
+        {
+          "name": "slot",
+          "text": "cell:<field> - Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition."
+        }
+      ],
       "usage": {},
       "props": [
         {
@@ -11685,7 +11694,16 @@
       ],
       "listeners": [],
       "styles": [],
-      "slots": [],
+      "slots": [
+        {
+          "name": "caption",
+          "docs": "Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it."
+        },
+        {
+          "name": "cell:<field>",
+          "docs": "Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition."
+        }
+      ],
       "parts": [],
       "dependents": [],
       "dependencies": [
