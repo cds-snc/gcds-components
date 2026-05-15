@@ -1,14 +1,34 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import { test } from '../../../../tests/base';
+
+type TestPage = {
+  waitForChanges: () => Promise<void>;
+};
+
+type TableSetupOptions = {
+  columns?: HTMLGcdsTableElement['columns'];
+  rows?: object[];
+  sort?: boolean;
+  filter?: boolean;
+  pagination?: boolean;
+  paginationSize?: number;
+  paginationSizeOptions?: number[];
+};
 
 test.describe('gcds-table', () => {
   const tableColumns = [
-    { field: 'number', header: 'Pokédex', rowHeader: true, sort: true },
+    { field: 'number', header: 'Pokédex', rowHeader: true },
     {
       field: 'name',
       header: 'Name',
-      sort: true,
     },
+    { field: 'height', header: 'Height' },
+    { field: 'weight', header: 'Weight' },
+  ];
+
+  const sortableTableColumns = [
+    { field: 'number', header: 'Pokédex', rowHeader: true, sort: true },
+    { field: 'name', header: 'Name', sort: true },
     { field: 'height', header: 'Height', sort: true },
     { field: 'weight', header: 'Weight', sort: true },
   ];
@@ -40,8 +60,20 @@ test.describe('gcds-table', () => {
     return values;
   };
 
-  // ─── Page Object for Filter Tests ───────────────────────────────────────
-  class GcdsTableFilterPage {
+  const getVisibleColumnTexts = async (element: Locator, columnLabel: string) => {
+    const cells = element.locator(`tbody tr [data-column="${columnLabel}"]`);
+    const count = await cells.count();
+    const values: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+      values.push((await cells.nth(i).innerText()).trim());
+    }
+
+    return values;
+  };
+
+  // ─── Page Object for Tests ───────────────────────────────────────
+  class GcdsTablePage {
     readonly filterButton: Locator;
     readonly filterInput: Locator;
     readonly applyButton: Locator;
@@ -50,7 +82,7 @@ test.describe('gcds-table', () => {
 
     constructor(
       private element: Locator,
-      private page: Page,
+      private page: TestPage,
     ) {
       this.filterButton = element.locator('.gcds-table__filters > gcds-button button');
       this.filterInput = element.locator('gcds-input input#gcds-table-filter');
@@ -61,20 +93,44 @@ test.describe('gcds-table', () => {
       this.emptyCell = element.locator('tbody td.gcds-table__empty');
     }
 
-    async setup(rows = pokemonRows) {
+    async setup(options: TableSetupOptions = {}) {
+      const {
+        columns = tableColumns as HTMLGcdsTableElement['columns'],
+        rows = pokemonRows,
+        sort = false,
+        filter = true,
+        pagination = false,
+        paginationSize,
+        paginationSizeOptions,
+      } = options;
+
       await this.element.waitFor({ state: 'attached' });
       await this.element.waitFor({ state: 'visible' });
 
       await this.element.evaluate(
         (el, payload) => {
           const table = el as HTMLGcdsTableElement;
-          table.filter = true;
-          table.sort = false;
-          table.pagination = false;
+          table.filter = payload.filter;
+          table.sort = payload.sort;
+          table.pagination = payload.pagination;
+          if (payload.paginationSize !== undefined) {
+            table.paginationSize = payload.paginationSize;
+          }
+          if (payload.paginationSizeOptions !== undefined) {
+            table.paginationSizeOptions = payload.paginationSizeOptions;
+          }
           table.columns = payload.columns as HTMLGcdsTableElement['columns'];
           table.data = payload.rows;
         },
-        { columns: tableColumns, rows },
+        {
+          columns,
+          rows,
+          sort,
+          filter,
+          pagination,
+          paginationSize,
+          paginationSizeOptions,
+        },
       );
 
       await this.page.waitForChanges();
@@ -84,15 +140,16 @@ test.describe('gcds-table', () => {
       await this.filterButton.click();
       await expect(this.filterInput).toBeVisible();
       await this.filterInput.fill(text);
-      await this.applyButton.click();
+
+      // Trigger submit without pointer coordinates to avoid viewport-related click flake.
+      await this.applyButton.evaluate(button => {
+        (button as HTMLButtonElement).click();
+      });
       await this.page.waitForChanges();
     }
 
     async clearFilterViaModal() {
-      await this.filterButton.click();
-      await this.filterInput.fill('');
-      await this.applyButton.click();
-      await this.page.waitForChanges();
+      await this.applyFilter('');
     }
 
     async openFilterModal() {
@@ -123,6 +180,7 @@ test.describe('gcds-table', () => {
    */
   test('large Dataset Rendering Performance', async ({ page }) => {
     const element = page.locator('gcds-table');
+    const tablePage = new GcdsTablePage(element, page);
 
     // Wait for element to attach and become visible
     await element.waitFor({ state: 'attached' });
@@ -138,15 +196,13 @@ test.describe('gcds-table', () => {
       base_experience: 50 + (i % 150),
     }));
 
-    // Assign large dataset to table with pagination enabled
-    await element.evaluate((el, data) => {
-      const table = el as HTMLGcdsTableElement;
-      table.pagination = true;
-      table.paginationSize = 10;
-      table.data = data;
-    }, largeDataset);
-
-    await page.waitForChanges();
+    await tablePage.setup({
+      filter: false,
+      sort: false,
+      pagination: true,
+      paginationSize: 10,
+      rows: largeDataset,
+    });
 
     // Verify table renders without freezing (measure render time)
     const startTime = Date.now();
@@ -187,14 +243,13 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
+    const tablePage = new GcdsTablePage(element, page);
 
-    await element.waitFor({ state: 'attached' });
-    await element.waitFor({ state: 'visible' });
-
-    await element.evaluate(el => {
-      const table = el as HTMLGcdsTableElement;
-      table.sort = true;
-      table.columns = [
+    await tablePage.setup({
+      sort: true,
+      filter: false,
+      pagination: false,
+      columns: [
         {
           field: 'number',
           header: 'Pokédex',
@@ -206,8 +261,8 @@ test.describe('gcds-table', () => {
           header: 'Name',
         },
         { field: 'height', header: 'Height', alignment: 'end' },
-      ];
-      table.data = [
+      ] as HTMLGcdsTableElement['columns'],
+      rows: [
         { number: 8, name: 'Wartortle', height: 10 },
         {
           number: 7,
@@ -215,10 +270,8 @@ test.describe('gcds-table', () => {
           height: 5,
         },
         { number: 9, name: 'Blastoise', height: 16 },
-      ];
+      ],
     });
-
-    await page.waitForChanges();
 
     const pokedexHeader = element.locator('thead th').first();
     const pokedexSortButton = pokedexHeader.locator('button');
@@ -258,26 +311,16 @@ test.describe('gcds-table', () => {
 
   test('page size selection updates visible row count', async ({ page }) => {
     const element = page.locator('gcds-table');
+    const tablePage = new GcdsTablePage(element, page);
     const rows = makeRows(12);
 
-    await element.waitFor({ state: 'attached' });
-    await element.waitFor({ state: 'visible' });
-
-    await element.evaluate(
-      (el, payload) => {
-        const table = el as HTMLGcdsTableElement;
-        table.pagination = true;
-        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
-        table.paginationSizeOptions = [1, 3, 5, 10];
-        table.data = payload.rows;
-      },
-      {
-        columns: tableColumns,
-        rows,
-      },
-    );
-
-    await page.waitForChanges();
+    await tablePage.setup({
+      filter: false,
+      sort: false,
+      pagination: true,
+      paginationSizeOptions: [1, 3, 5, 10],
+      rows,
+    });
 
     const pageSizeSelect = element.locator('gcds-select select');
     await expect(pageSizeSelect).toBeVisible();
@@ -306,26 +349,16 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
+    const tablePage = new GcdsTablePage(element, page);
     const rows = makeRows(12);
 
-    await element.waitFor({ state: 'attached' });
-    await element.waitFor({ state: 'visible' });
-
-    await element.evaluate(
-      (el, payload) => {
-        const table = el as HTMLGcdsTableElement;
-        table.pagination = true;
-        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
-        table.paginationSizeOptions = [1, 3, 5, 10, 0];
-        table.data = payload.rows;
-      },
-      {
-        columns: tableColumns,
-        rows,
-      },
-    );
-
-    await page.waitForChanges();
+    await tablePage.setup({
+      filter: false,
+      sort: false,
+      pagination: true,
+      paginationSizeOptions: [1, 3, 5, 10, 0],
+      rows,
+    });
 
     // Select all
     const pageSizeSelect = element.locator('gcds-select select');
@@ -340,26 +373,16 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
+    const tablePage = new GcdsTablePage(element, page);
     const rows = makeRows(12);
 
-    await element.waitFor({ state: 'attached' });
-    await element.waitFor({ state: 'visible' });
-
-    await element.evaluate(
-      (el, payload) => {
-        const table = el as HTMLGcdsTableElement;
-        table.pagination = true;
-        table.paginationSize = 5;
-        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
-        table.data = payload.rows;
-      },
-      {
-        columns: tableColumns,
-        rows,
-      },
-    );
-
-    await page.waitForChanges();
+    await tablePage.setup({
+      filter: false,
+      sort: false,
+      pagination: true,
+      paginationSize: 5,
+      rows,
+    });
 
     // Starts on page 1
     await expect(
@@ -408,26 +431,16 @@ test.describe('gcds-table', () => {
 
   test('table auto-scrolls into view when page changes', async ({ page }) => {
     const element = page.locator('gcds-table');
+    const tablePage = new GcdsTablePage(element, page);
     const rows = makeRows(12);
 
-    await element.waitFor({ state: 'attached' });
-    await element.waitFor({ state: 'visible' });
-
-    await element.evaluate(
-      (el, payload) => {
-        const table = el as HTMLGcdsTableElement;
-        table.pagination = true;
-        table.paginationSize = 5;
-        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
-        table.data = payload.rows;
-      },
-      {
-        columns: tableColumns,
-        rows,
-      },
-    );
-
-    await page.waitForChanges();
+    await tablePage.setup({
+      filter: false,
+      sort: false,
+      pagination: true,
+      paginationSize: 5,
+      rows,
+    });
 
     await element.evaluate(el => {
       const table = el.shadowRoot?.querySelector('table');
@@ -458,9 +471,9 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
-    const filterPage = new GcdsTableFilterPage(element, page);
+    const filterPage = new GcdsTablePage(element, page);
 
-    await filterPage.setup();
+    await filterPage.setup({ filter: true, sort: false, pagination: false });
 
     const filterModal = element.locator('dialog.gcds-table__modal');
 
@@ -475,9 +488,9 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
-    const filterPage = new GcdsTableFilterPage(element, page);
+    const filterPage = new GcdsTablePage(element, page);
 
-    await filterPage.setup();
+    await filterPage.setup({ filter: true, sort: false, pagination: false });
 
     await filterPage.applyFilter('Squirtle');
     await expect(element.locator('tbody tr')).toHaveCount(1);
@@ -494,9 +507,9 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
-    const filterPage = new GcdsTableFilterPage(element, page);
+    const filterPage = new GcdsTablePage(element, page);
 
-    await filterPage.setup();
+    await filterPage.setup({ filter: true, sort: false, pagination: false });
 
     await filterPage.applyFilter('squirtle');
     await expect(element.locator('tbody tr')).toHaveCount(1);
@@ -516,9 +529,9 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
-    const filterPage = new GcdsTableFilterPage(element, page);
+    const filterPage = new GcdsTablePage(element, page);
 
-    await filterPage.setup();
+    await filterPage.setup({ filter: true, sort: false, pagination: false });
 
     await filterPage.applyFilter('Squirtle');
     await expect(filterPage.filterPill).toBeVisible();
@@ -539,9 +552,9 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
-    const filterPage = new GcdsTableFilterPage(element, page);
+    const filterPage = new GcdsTablePage(element, page);
 
-    await filterPage.setup();
+    await filterPage.setup({ filter: true, sort: false, pagination: false });
 
     await filterPage.applyFilter('XYZ');
     await expect(filterPage.emptyCell).toHaveText('No data available');
@@ -551,5 +564,233 @@ test.describe('gcds-table', () => {
     await expect(filterPage.filterButton).toBeVisible();
     await filterPage.openFilterModal();
     await expect(filterPage.filterInput).toBeVisible();
+  });
+
+  test('combined: filter + pagination reflects filtered row count across pages', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+    const filterPage = new GcdsTablePage(element, page);
+
+    const rows = [
+      ...Array.from({ length: 9 }, (_, i) => ({
+        number: i + 1,
+        name: `Squirt ${i + 1}`,
+        height: i + 1,
+        weight: 100 + i,
+      })),
+      { number: 10, name: 'Pikachu', height: 4, weight: 60 },
+      { number: 11, name: 'Charmander', height: 6, weight: 85 },
+      { number: 12, name: 'Bulbasaur', height: 7, weight: 69 },
+    ];
+
+    await filterPage.setup({
+      filter: true,
+      sort: false,
+      pagination: true,
+      paginationSize: 10,
+      paginationSizeOptions: [3, 10],
+      rows,
+    });
+
+    await filterPage.applyFilter('Squirt');
+
+    const pageSizeSelect = element.locator('gcds-select select');
+    await pageSizeSelect.selectOption('3');
+    await page.waitForChanges();
+
+    await expect(element.locator('tbody tr')).toHaveCount(3);
+    await expect
+      .poll(() =>
+        element
+          .locator('gcds-pagination a')
+          .filter({ hasText: /^[1-9]\d*$/ })
+          .count(),
+      )
+      .toBe(3);
+
+    await element
+      .locator('gcds-pagination a')
+      .filter({ hasText: /^2$/ })
+      .click();
+    await page.waitForChanges();
+    await expect
+      .poll(() => getVisiblePokedexValues(element))
+      .toEqual([4, 5, 6]);
+
+    await element
+      .locator('gcds-pagination a')
+      .filter({ hasText: /^3$/ })
+      .click();
+    await page.waitForChanges();
+    await expect
+      .poll(() => getVisiblePokedexValues(element))
+      .toEqual([7, 8, 9]);
+  });
+
+  test('combined: filter + sort sorts filtered rows by height ascending', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+    const filterPage = new GcdsTablePage(element, page);
+
+    await filterPage.setup({
+      filter: true,
+      sort: true,
+      pagination: false,
+      columns: sortableTableColumns as HTMLGcdsTableElement['columns'],
+      rows: [
+        { number: 8, name: 'Wartortle', height: 10, weight: 225 },
+        { number: 7, name: 'Squirtle', height: 5, weight: 90 },
+        { number: 25, name: 'Pikachu', height: 4, weight: 60 },
+      ],
+    });
+
+    await filterPage.applyFilter('rtle');
+
+    await element.locator('thead th button', { hasText: 'Height' }).click();
+    await page.waitForChanges();
+
+    await expect
+      .poll(() => getVisibleColumnTexts(element, 'Height'))
+      .toEqual(['5', '10']);
+    await expect
+      .poll(() => getVisibleColumnTexts(element, 'Name'))
+      .toEqual(['Squirtle', 'Wartortle']);
+  });
+
+  test('combined: sort + filter + pagination compose and persist while paging', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+    const filterPage = new GcdsTablePage(element, page);
+
+    await filterPage.setup({
+      filter: true,
+      sort: true,
+      pagination: true,
+      paginationSize: 10,
+      paginationSizeOptions: [1, 10],
+      columns: sortableTableColumns as HTMLGcdsTableElement['columns'],
+      rows: [
+        { number: 1, name: 'Squirtle A', height: 5, weight: 90 },
+        { number: 2, name: 'Squirtle B', height: 8, weight: 95 },
+        { number: 3, name: 'Pikachu', height: 4, weight: 60 },
+      ],
+    });
+
+    await filterPage.applyFilter('Squirt');
+
+    const heightHeader = element.locator('thead th', { hasText: 'Height' }).first();
+    const heightSortButton = element.locator('thead th button', { hasText: 'Height' });
+
+    // none -> asc -> desc
+    await heightSortButton.click();
+    await page.waitForChanges();
+    await heightSortButton.click();
+    await page.waitForChanges();
+    await expect(heightHeader).toHaveAttribute('aria-sort', 'descending');
+
+    const pageSizeSelect = element.locator('gcds-select select');
+    await pageSizeSelect.selectOption('1');
+    await page.waitForChanges();
+
+    await expect(element.locator('tbody tr')).toHaveCount(1);
+    await expect
+      .poll(() => getVisibleColumnTexts(element, 'Height'))
+      .toEqual(['8']);
+
+    await element
+      .locator('gcds-pagination a')
+      .filter({ hasText: /^2$/ })
+      .click();
+    await page.waitForChanges();
+
+    await expect(
+      element.locator('gcds-pagination a[aria-current="page"]'),
+    ).toHaveText('2');
+    await expect
+      .poll(() => getVisibleColumnTexts(element, 'Height'))
+      .toEqual(['5']);
+    await expect(filterPage.filterPill).toContainText('Squirt');
+  });
+
+  test('combined: state persistence across page size, paging, and sort changes', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+    const filterPage = new GcdsTablePage(element, page);
+
+    await filterPage.setup({
+      filter: true,
+      sort: true,
+      pagination: true,
+      paginationSize: 10,
+      paginationSizeOptions: [2, 10],
+      columns: sortableTableColumns as HTMLGcdsTableElement['columns'],
+      rows: [
+        { number: 1, name: 'Z Squirt', height: 7, weight: 101 },
+        { number: 2, name: 'A Squirt', height: 5, weight: 102 },
+        { number: 3, name: 'Pikachu', height: 4, weight: 60 },
+        { number: 4, name: 'M Squirt', height: 9, weight: 103 },
+        { number: 5, name: 'B Squirt', height: 6, weight: 104 },
+        { number: 6, name: 'Eevee', height: 3, weight: 65 },
+      ],
+    });
+
+    await filterPage.applyFilter('Squirt');
+
+    const nameSortButton = element.locator('thead th button', { hasText: 'Name' });
+
+    await nameSortButton.click();
+    await page.waitForChanges();
+
+    // Ensure Name sort is ascending before asserting order.
+    const nameSortDirection = await element
+      .locator('thead th', { hasText: 'Name' })
+      .first()
+      .getAttribute('aria-sort');
+    if (nameSortDirection !== 'ascending') {
+      await nameSortButton.click();
+      await page.waitForChanges();
+    }
+
+    const pageSizeSelect = element.locator('gcds-select select');
+    await pageSizeSelect.selectOption('2');
+    await page.waitForChanges();
+
+    await expect(element.locator('tbody tr')).toHaveCount(2);
+    await expect
+      .poll(async () => {
+        const names = await getVisibleColumnTexts(element, 'Name');
+        return names.every(name => name.includes('Squirt'));
+      })
+      .toBe(true);
+
+    await element
+      .locator('gcds-pagination a')
+      .filter({ hasText: /^2$/ })
+      .click();
+    await page.waitForChanges();
+
+    await expect(element.locator('tbody tr')).toHaveCount(2);
+    await expect
+      .poll(async () => {
+        const names = await getVisibleColumnTexts(element, 'Name');
+        return names.every(name => name.includes('Squirt'));
+      })
+      .toBe(true);
+
+    await element.locator('thead th button', { hasText: 'Height' }).click();
+    await page.waitForChanges();
+
+    await expect(filterPage.filterPill).toContainText('Squirt');
+    await expect(element.locator('tbody tr')).toHaveCount(2);
+    await expect
+      .poll(async () => {
+        const names = await getVisibleColumnTexts(element, 'Name');
+        return names.every(name => name.includes('Squirt'));
+      })
+      .toBe(true);
   });
 });
