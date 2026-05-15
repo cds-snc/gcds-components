@@ -582,7 +582,7 @@ test.describe('gcds-table', () => {
     await filterPage.setup({ filter: true, sort: false, pagination: false });
 
     await filterPage.applyFilter('XYZ');
-    await expect(filterPage.emptyCell).toHaveText('No data available');
+    await expect(filterPage.emptyCell).toContainText('No results match');
     await expect(element.locator('tbody tr')).toHaveCount(1);
 
     // Controls remain usable after an empty result set.
