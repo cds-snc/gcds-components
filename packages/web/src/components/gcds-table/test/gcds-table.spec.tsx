@@ -90,6 +90,14 @@ describe('gcds-table', () => {
                 <tr>
                   <td class="gcds-table__empty" colspan="0">
                     No data available
+                    <div>
+                     <gcds-heading heading-role="secondary" tag="h3">
+                       No data to display
+                     </gcds-heading>
+                     <gcds-text text-role="secondary">
+                       There's currently no data available for this table.
+                     </gcds-text>
+                   </div>
                   </td>
                 </tr>
               </tbody>
