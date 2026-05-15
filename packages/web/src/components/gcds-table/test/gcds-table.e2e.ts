@@ -137,7 +137,7 @@ test.describe('gcds-table', () => {
     }
 
     async applyFilter(text: string) {
-      await this.filterButton.click();
+      await this.clickAndWait(this.filterButton);
       await expect(this.filterInput).toBeVisible();
       await this.filterInput.fill(text);
 
@@ -153,12 +153,29 @@ test.describe('gcds-table', () => {
     }
 
     async openFilterModal() {
-      await this.filterButton.click();
+      await this.clickAndWait(this.filterButton);
     }
 
     async removePill() {
-      await this.filterPill.click();
+      await this.clickAndWait(this.filterPill);
+    }
+
+    async clickAndWait(locator: Locator) {
+      await this.suppressDevServerModal();
+      // DOM click avoids pointer interception from Stencil dev-server diagnostics overlay.
+      await locator.evaluate(node => {
+        (node as HTMLElement).click();
+      });
       await this.page.waitForChanges();
+    }
+
+    private async suppressDevServerModal() {
+      await this.element.evaluate(el => {
+        const modal = el.ownerDocument.querySelector('#dev-server-modal') as HTMLElement | null;
+        if (!modal) return;
+
+        modal.style.pointerEvents = 'none';
+      });
     }
   }
 
@@ -277,32 +294,28 @@ test.describe('gcds-table', () => {
     const pokedexSortButton = pokedexHeader.locator('button');
 
     // 1st click: ascending
-    await pokedexSortButton.click();
-    await page.waitForChanges();
+    await tablePage.clickAndWait(pokedexSortButton);
     await expect(pokedexHeader).toHaveAttribute('aria-sort', 'ascending');
     await expect
       .poll(() => getVisiblePokedexValues(element))
       .toEqual([7, 8, 9]);
 
     // 2nd click: descending
-    await pokedexSortButton.click();
-    await page.waitForChanges();
+    await tablePage.clickAndWait(pokedexSortButton);
     await expect(pokedexHeader).toHaveAttribute('aria-sort', 'descending');
     await expect
       .poll(() => getVisiblePokedexValues(element))
       .toEqual([9, 8, 7]);
 
     // 3rd click: none
-    await pokedexSortButton.click();
-    await page.waitForChanges();
+    await tablePage.clickAndWait(pokedexSortButton);
     await expect(pokedexHeader).toHaveAttribute('aria-sort', 'none');
     await expect
       .poll(() => getVisiblePokedexValues(element))
       .toEqual([8, 7, 9]);
 
     // 4th click: ascending again
-    await pokedexSortButton.click();
-    await page.waitForChanges();
+    await tablePage.clickAndWait(pokedexSortButton);
     await expect(pokedexHeader).toHaveAttribute('aria-sort', 'ascending');
     await expect
       .poll(() => getVisiblePokedexValues(element))
@@ -393,8 +406,9 @@ test.describe('gcds-table', () => {
       .toEqual([1, 2, 3, 4, 5]);
 
     // Next from page 1 -> page 2
-    await element.locator('gcds-pagination .list-btn-next a').first().click();
-    await page.waitForChanges();
+    await tablePage.clickAndWait(
+      element.locator('gcds-pagination .list-btn-next a').first(),
+    );
     await expect(
       element.locator('gcds-pagination a[aria-current="page"]'),
     ).toHaveText('2');
@@ -403,11 +417,11 @@ test.describe('gcds-table', () => {
       .toEqual([6, 7, 8, 9, 10]);
 
     // Go to page 3
-    await element
-      .locator('gcds-pagination a')
-      .filter({ hasText: /^3$/ })
-      .click();
-    await page.waitForChanges();
+    await tablePage.clickAndWait(
+      element
+        .locator('gcds-pagination a')
+        .filter({ hasText: /^3$/ }),
+    );
     await expect(
       element.locator('gcds-pagination a[aria-current="page"]'),
     ).toHaveText('3');
@@ -419,8 +433,9 @@ test.describe('gcds-table', () => {
     ).toHaveCount(0);
 
     // Previous from page 3 -> page 2
-    await element.locator('gcds-pagination .list-btn-prev a').first().click();
-    await page.waitForChanges();
+    await tablePage.clickAndWait(
+      element.locator('gcds-pagination .list-btn-prev a').first(),
+    );
     await expect(
       element.locator('gcds-pagination a[aria-current="page"]'),
     ).toHaveText('2');
