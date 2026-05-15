@@ -6,6 +6,7 @@ import App from './App.tsx'
 import Home from './pages/Home.tsx';
 import Forms from './pages/Forms.tsx';
 import FileUploader from './pages/FileUploader.tsx';
+import Table from './pages/Table.tsx';
 
 import '@gcds-core/css-shortcuts/dist/gcds-css-shortcuts.min.css';
 import '@gcds-core/components-react/gcds.css';
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')!).render(
           <Route index element={<Home />} />
           <Route path="forms" element={<Forms />} />
           <Route path="file-uploader" element={<FileUploader />} />
+          <Route path="table" element={<Table />} />
         </Route>
       </Routes>
     </BrowserRouter>

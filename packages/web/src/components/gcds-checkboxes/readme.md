@@ -13,7 +13,7 @@ Checkboxes provide a set of options for multiple responses.
 
 | Property               | Attribute       | Description                                                                                                                  | Type                                                | Default     |
 | ---------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
-| `autofocus`            | `autofocus`     | If true, the checkobox will be focused on component render                                                                   | `boolean`                                           | `undefined` |
+| `autofocus`            | `autofocus`     | If true, the checkbox will be focused on component render                                                                    | `boolean`                                           | `undefined` |
 | `disabled`             | `disabled`      | Specifies if the checkboxes are disabled or not.                                                                             | `boolean`                                           | `undefined` |
 | `errorMessage`         | `error-message` | Set this to display an error message for invalid <gcds-checkboxes>                                                           | `string`                                            | `undefined` |
 | `form`                 | `form`          | The ID of the form that the checkboxes belong to.                                                                            | `string`                                            | `undefined` |
