@@ -1,4 +1,5 @@
 import { expect, type Locator } from '@playwright/test';
+import { AxeBuilder } from '@axe-core/playwright';
 import { test } from '../../../../tests/base';
 
 type TestPage = {
@@ -60,7 +61,10 @@ test.describe('gcds-table', () => {
     return values;
   };
 
-  const getVisibleColumnTexts = async (element: Locator, columnLabel: string) => {
+  const getVisibleColumnTexts = async (
+    element: Locator,
+    columnLabel: string,
+  ) => {
     const cells = element.locator(`tbody tr [data-column="${columnLabel}"]`);
     const count = await cells.count();
     const values: string[] = [];
@@ -84,12 +88,16 @@ test.describe('gcds-table', () => {
       private element: Locator,
       private page: TestPage,
     ) {
-      this.filterButton = element.locator('.gcds-table__filters > gcds-button button');
+      this.filterButton = element.locator(
+        '.gcds-table__filters > gcds-button button',
+      );
       this.filterInput = element.locator('gcds-input input#gcds-table-filter');
       this.applyButton = element.locator(
         '.gcds-table__modal-footer gcds-button button[type="submit"]',
       );
-      this.filterPill = element.locator('.gcds-table__active-filter .gcds-table__pill');
+      this.filterPill = element.locator(
+        '.gcds-table__active-filter .gcds-table__pill',
+      );
       this.emptyCell = element.locator('tbody td.gcds-table__empty');
     }
 
@@ -171,7 +179,9 @@ test.describe('gcds-table', () => {
 
     private async suppressDevServerModal() {
       await this.element.evaluate(el => {
-        const modal = el.ownerDocument.querySelector('#dev-server-modal') as HTMLElement | null;
+        const modal = el.ownerDocument.querySelector(
+          '#dev-server-modal',
+        ) as HTMLElement | null;
         if (!modal) return;
 
         modal.style.pointerEvents = 'none';
@@ -418,9 +428,7 @@ test.describe('gcds-table', () => {
 
     // Go to page 3
     await tablePage.clickAndWait(
-      element
-        .locator('gcds-pagination a')
-        .filter({ hasText: /^3$/ }),
+      element.locator('gcds-pagination a').filter({ hasText: /^3$/ }),
     );
     await expect(
       element.locator('gcds-pagination a[aria-current="page"]'),
@@ -473,7 +481,9 @@ test.describe('gcds-table', () => {
     await element
       .locator('gcds-pagination a')
       .filter({ hasText: /^2$/ })
-      .click();
+      .evaluate(node => {
+        (node as HTMLElement).click();
+      });
     await page.waitForChanges();
 
     await expect(element).toHaveAttribute('data-scroll-calls', '1');
@@ -528,16 +538,16 @@ test.describe('gcds-table', () => {
 
     await filterPage.applyFilter('squirtle');
     await expect(element.locator('tbody tr')).toHaveCount(1);
-    await expect(element.locator('tbody tr [data-column="Name"]').first()).toHaveText(
-      'Squirtle',
-    );
+    await expect(
+      element.locator('tbody tr [data-column="Name"]').first(),
+    ).toHaveText('Squirtle');
 
     await filterPage.clearFilterViaModal();
     await filterPage.applyFilter('SQUIRTLE');
     await expect(element.locator('tbody tr')).toHaveCount(1);
-    await expect(element.locator('tbody tr [data-column="Name"]').first()).toHaveText(
-      'Squirtle',
-    );
+    await expect(
+      element.locator('tbody tr [data-column="Name"]').first(),
+    ).toHaveText('Squirtle');
   });
 
   test('filter pill creation and removal: applying Squirtle creates pill and removing it restores all rows', async ({
@@ -554,9 +564,9 @@ test.describe('gcds-table', () => {
     await expect(element.locator('tbody tr')).toHaveCount(1);
 
     await filterPage.removePill();
-    await expect(element.locator('.gcds-table__active-filter .gcds-table__pill')).toHaveCount(
-      0,
-    );
+    await expect(
+      element.locator('.gcds-table__active-filter .gcds-table__pill'),
+    ).toHaveCount(0);
     await expect(element.locator('tbody tr')).toHaveCount(3);
     await expect
       .poll(() => getVisiblePokedexValues(element))
@@ -624,20 +634,16 @@ test.describe('gcds-table', () => {
       )
       .toBe(3);
 
-    await element
-      .locator('gcds-pagination a')
-      .filter({ hasText: /^2$/ })
-      .click();
-    await page.waitForChanges();
+    await filterPage.clickAndWait(
+      element.locator('gcds-pagination a').filter({ hasText: /^2$/ }),
+    );
     await expect
       .poll(() => getVisiblePokedexValues(element))
       .toEqual([4, 5, 6]);
 
-    await element
-      .locator('gcds-pagination a')
-      .filter({ hasText: /^3$/ })
-      .click();
-    await page.waitForChanges();
+    await filterPage.clickAndWait(
+      element.locator('gcds-pagination a').filter({ hasText: /^3$/ }),
+    );
     await expect
       .poll(() => getVisiblePokedexValues(element))
       .toEqual([7, 8, 9]);
@@ -696,8 +702,12 @@ test.describe('gcds-table', () => {
 
     await filterPage.applyFilter('Squirt');
 
-    const heightHeader = element.locator('thead th', { hasText: 'Height' }).first();
-    const heightSortButton = element.locator('thead th button', { hasText: 'Height' });
+    const heightHeader = element
+      .locator('thead th', { hasText: 'Height' })
+      .first();
+    const heightSortButton = element.locator('thead th button', {
+      hasText: 'Height',
+    });
 
     // none -> asc -> desc
     await heightSortButton.click();
@@ -755,7 +765,9 @@ test.describe('gcds-table', () => {
 
     await filterPage.applyFilter('Squirt');
 
-    const nameSortButton = element.locator('thead th button', { hasText: 'Name' });
+    const nameSortButton = element.locator('thead th button', {
+      hasText: 'Name',
+    });
 
     await nameSortButton.click();
     await page.waitForChanges();
@@ -807,5 +819,193 @@ test.describe('gcds-table', () => {
         return names.every(name => name.includes('Squirt'));
       })
       .toBe(true);
+  });
+
+  /**
+   * Accessibility tests
+   * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
+   */
+  test.describe('gcds-table accessibility (a11y) - WCAG 2 Compliance', () => {
+    test('axe-core compliance: zero violations at WCAG 2 level across interactive states', async ({
+      page,
+    }) => {
+      const element = page.locator('gcds-table');
+      const tablePage = new GcdsTablePage(element, page);
+
+      // Set up table with all features active so every interactive element is
+      // present in the DOM during the scan.
+      await tablePage.setup({
+        sort: true,
+        filter: true,
+        pagination: true,
+        paginationSize: 5,
+        paginationSizeOptions: [3, 5, 10],
+        columns: sortableTableColumns as HTMLGcdsTableElement['columns'],
+        rows: [
+          { number: 7, name: 'Squirtle', height: 5, weight: 90 },
+          { number: 8, name: 'Wartortle', height: 10, weight: 225 },
+          { number: 9, name: 'Blastoise', height: 16, weight: 855 },
+          { number: 1, name: 'Bulbasaur', height: 7, weight: 69 },
+          { number: 4, name: 'Charmander', height: 6, weight: 85 },
+          { number: 25, name: 'Pikachu', height: 4, weight: 60 },
+        ],
+      });
+
+      // ── State 1: default (unsorted, unfiltered, page 1) ─────────────────────
+      const defaultResults = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa'])
+        .analyze();
+
+      expect(
+        defaultResults.violations,
+        `WCAG 2 violations in default state:\n${JSON.stringify(defaultResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+
+      // ── State 2: column sorted ascending ────────────────────────────────────
+      const nameSortButton = element.locator('thead th button', {
+        hasText: 'Name',
+      });
+      await tablePage.clickAndWait(nameSortButton);
+
+      const sortedResults = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa'])
+        .analyze();
+
+      expect(
+        sortedResults.violations,
+        `WCAG 2 violations in sorted state:\n${JSON.stringify(sortedResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+
+      // ── State 3: filter modal open ───────────────────────────────────────────
+      await tablePage.openFilterModal();
+
+      const filterOpenResults = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa'])
+        .analyze();
+
+      expect(
+        filterOpenResults.violations,
+        `WCAG 2 violations with filter modal open:\n${JSON.stringify(filterOpenResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+
+      // ── State 4: filter applied (pill visible) ───────────────────────────────
+      await tablePage.applyFilter('Squirtle');
+
+      const filteredResults = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa'])
+        .analyze();
+
+      expect(
+        filteredResults.violations,
+        `WCAG 2 violations with active filter pill:\n${JSON.stringify(filteredResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+    });
+
+    /**
+     * Test: Color Contrast
+     *
+     * Purpose: Verify text and UI components meet a11y contrast ratios.
+     *   - Normal text:      ratio ≥ 7:1  (color-contrast-enhanced rule)
+     *   - UI components:    ratio ≥ 4.5:1 (color-contrast rule, sort icons etc.)
+     *   - Focus indicators: visibly distinguishable in keyboard focus states
+     *
+     * Strategy: run targeted axe rules against each discrete UI state so that
+     * pagination controls, sort buttons, filter modal, and active pills are each
+     * reachable at least once.
+     */
+    test('color contrast: table text, headers, pagination, sort icons, filter modal, and pills meet ratios', async ({
+      page,
+    }) => {
+      const element = page.locator('gcds-table');
+      const tablePage = new GcdsTablePage(element, page);
+
+      // Contrast rules used:
+      //   color-contrast          → AA  (4.5:1 for normal text, 3:1 for large/UI)
+      //   color-contrast-enhanced → AAA (7:1 for normal text, 4.5:1 for large)
+      const contrastRules = ['color-contrast', 'color-contrast-enhanced'];
+
+      await tablePage.setup({
+        sort: true,
+        filter: true,
+        pagination: true,
+        paginationSize: 3,
+        paginationSizeOptions: [3, 5, 10],
+        columns: sortableTableColumns as HTMLGcdsTableElement['columns'],
+        rows: [
+          { number: 7, name: 'Squirtle', height: 5, weight: 90 },
+          { number: 8, name: 'Wartortle', height: 10, weight: 225 },
+          { number: 9, name: 'Blastoise', height: 16, weight: 855 },
+          { number: 1, name: 'Bulbasaur', height: 7, weight: 69 },
+          { number: 4, name: 'Charmander', height: 6, weight: 85 },
+          { number: 25, name: 'Pikachu', height: 4, weight: 60 },
+        ],
+      });
+
+      // ── Check 1: table text and column headers ───────────────────────────────
+      const tableResults = await new AxeBuilder({ page })
+        .withRules(contrastRules)
+        .include('gcds-table')
+        .analyze();
+
+      expect(
+        tableResults.violations,
+        `Found color contrast issues in table text and headers. Details:\n${JSON.stringify(tableResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+
+      // ── Check 2: pagination controls ─────────────────────────────────────────
+      // Navigate to page 2 so prev + next buttons are rendered.
+      await tablePage.clickAndWait(
+        element.locator('gcds-pagination a').filter({ hasText: /^2$/ }),
+      );
+      await expect(element.locator('gcds-pagination')).toBeVisible();
+
+      const paginationResults = await new AxeBuilder({ page })
+        .withRules(contrastRules)
+        .include('gcds-table')
+        .analyze();
+
+      expect(
+        paginationResults.violations,
+        `Color contrast violations on pagination controls:\n${JSON.stringify(paginationResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+
+      // ── Check 3: sort buttons (icons / text) ─────────────────────────────────
+      await expect(element.locator('thead')).toBeVisible();
+      const sortedResults = await new AxeBuilder({ page })
+        .withRules(contrastRules)
+        .include('gcds-table')
+        .analyze();
+
+      expect(
+        sortedResults.violations,
+        `Color contrast violations on sort button icons/text:\n${JSON.stringify(sortedResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+
+      // ── Check 4: filter modal ────────────────────────────────────────────────
+      await tablePage.openFilterModal();
+
+      const filterModalResults = await new AxeBuilder({ page })
+        .withRules(contrastRules)
+        .analyze();
+
+      expect(
+        filterModalResults.violations,
+        `Color contrast violations in filter modal:\n${JSON.stringify(filterModalResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+
+      // ── Check 5: active filter pill ──────────────────────────────────────────
+      await tablePage.applyFilter('Squirtle');
+      await expect(element.locator('.gcds-table__active-filter')).toBeVisible();
+
+      const pillResults = await new AxeBuilder({ page })
+        .withRules(contrastRules)
+        .include('gcds-table')
+        .analyze();
+
+      expect(
+        pillResults.violations,
+        `Color contrast violations on active filter pill:\n${JSON.stringify(pillResults.violations, null, 2)}`,
+      ).toHaveLength(0);
+    });
   });
 });
