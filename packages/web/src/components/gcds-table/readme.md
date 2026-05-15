@@ -7,17 +7,37 @@
 
 ## Properties
 
-| Property                | Attribute                 | Description                                                 | Type                      | Default                    |
-| ----------------------- | ------------------------- | ----------------------------------------------------------- | ------------------------- | -------------------------- |
-| `columns`               | `columns`                 | Column definitions                                          | `TableColumn[] \| string` | `[]`                       |
-| `data`                  | `data`                    | Row data                                                    | `object[] \| string`      | `[]`                       |
-| `filter`                | `filter`                  | Enable global filter                                        | `boolean`                 | `false`                    |
-| `filterValue`           | `filter-value`            | Current filter string                                       | `string`                  | `''`                       |
-| `pagination`            | `pagination`              | Enable pagination                                           | `boolean`                 | `false`                    |
-| `paginationCurrentPage` | `pagination-current-page` | Current page index                                          | `number`                  | `1`                        |
-| `paginationSize`        | `pagination-size`         | Number of rows per page                                     | `number`                  | `10`                       |
-| `paginationSizeOptions` | `pagination-size-options` | Available page-size options. Use 0 to represent "All rows". | `number[] \| string`      | `[     10, 25, 50, 0,   ]` |
-| `sort`                  | `sort`                    | Enable global column sorting (can be overridden per column) | `boolean`                 | `false`                    |
+| Property                | Attribute                 | Description                                                 | Type                      | Default           |
+| ----------------------- | ------------------------- | ----------------------------------------------------------- | ------------------------- | ----------------- |
+| `columns`               | `columns`                 | Column definitions                                          | `TableColumn[] \| string` | `[]`              |
+| `data`                  | `data`                    | Row data                                                    | `object[] \| string`      | `[]`              |
+| `filter`                | `filter`                  | Enable global filter                                        | `boolean`                 | `false`           |
+| `filterValue`           | `filter-value`            | Current filter string                                       | `string`                  | `''`              |
+| `pagination`            | `pagination`              | Enable pagination                                           | `boolean`                 | `false`           |
+| `paginationCurrentPage` | `pagination-current-page` | Current page index                                          | `number`                  | `1`               |
+| `paginationSize`        | `pagination-size`         | Number of rows per page                                     | `number`                  | `10`              |
+| `paginationSizeOptions` | `pagination-size-options` | Available page-size options. Use 0 to represent "All rows". | `number[] \| string`      | `[10, 25, 50, 0]` |
+| `sort`                  | `sort`                    | Enable global column sorting (can be overridden per column) | `boolean`                 | `false`           |
+
+
+## Events
+
+| Event                  | Description | Type                                |
+| ---------------------- | ----------- | ----------------------------------- |
+| `gcdsTableStateChange` |             | `CustomEvent<GcdsTableStateChange>` |
+
+
+## Methods
+
+### `getVisibleRows() => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>`
+
+
+
+#### Returns
+
+Type: `Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>`
+
+
 
 
 ## Dependencies
@@ -25,11 +45,12 @@
 ### Depends on
 
 - [gcds-select](../gcds-select)
+- [gcds-heading](../gcds-heading)
+- [gcds-text](../gcds-text)
+- [gcds-button](../gcds-button)
 - [gcds-pagination](../gcds-pagination)
 - [gcds-radios](../gcds-radios)
-- [gcds-button](../gcds-button)
 - [gcds-sr-only](../gcds-sr-only)
-- [gcds-heading](../gcds-heading)
 - [gcds-input](../gcds-input)
 - [gcds-icon](../gcds-icon)
 
@@ -37,11 +58,12 @@
 ```mermaid
 graph TD;
   gcds-table --> gcds-select
+  gcds-table --> gcds-heading
+  gcds-table --> gcds-text
+  gcds-table --> gcds-button
   gcds-table --> gcds-pagination
   gcds-table --> gcds-radios
-  gcds-table --> gcds-button
   gcds-table --> gcds-sr-only
-  gcds-table --> gcds-heading
   gcds-table --> gcds-input
   gcds-table --> gcds-icon
   gcds-select --> gcds-label
@@ -50,12 +72,12 @@ graph TD;
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
+  gcds-button --> gcds-icon
   gcds-pagination --> gcds-icon
   gcds-radios --> gcds-sr-only
   gcds-radios --> gcds-hint
   gcds-radios --> gcds-error-message
   gcds-radios --> gcds-label
-  gcds-button --> gcds-icon
   gcds-input --> gcds-label
   gcds-input --> gcds-hint
   gcds-input --> gcds-error-message

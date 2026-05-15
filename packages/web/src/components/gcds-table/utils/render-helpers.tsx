@@ -106,6 +106,9 @@ const renderTableStatus = (
       )
       .replace('{total}', totalRows);
 
+    // No rows avalable
+  } else if (table.getRowCount() === 0) {
+    return I18N[lang].showingNoRows;
     // Rows on one page
   } else {
     return I18N[lang].showingAllRows.replace('{total}', totalRows);
@@ -191,7 +194,16 @@ const renderFilterSortModal = element => {
         buttonRole="primary"
         onClick={() => element.filterSortModal.showModal()}
       >
-        {I18N[lang].filterAndSort}
+        {element.filter && element.sortEnabled()
+          ?
+          I18N[lang].filterAndSort
+          :
+          element.filter ?
+            I18N[lang].filter
+            :
+            I18N[lang].sort
+        }
+
 
         {/* Currently only shows one when filter is active, will need to be expanded when filter queries are expanded */}
         {filterValue && (
@@ -272,7 +284,7 @@ const renderFilterSortModal = element => {
               <gcds-input
                 class="gcds-table__modal-filter"
                 type="search"
-                label={I18N[lang].filterLabel}
+                label={I18N[lang].filter}
                 name="filter"
                 inputId="gcds-table-filter"
                 autoFocus
