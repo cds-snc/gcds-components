@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A table is a structured layout of related data in rows and columns.
+
 ## Properties
 
 | Property                | Attribute                 | Description                                                 | Type                      | Default           |
@@ -38,6 +42,14 @@
 Type: `Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>`
 
 
+
+
+## Slots
+
+| Slot             | Description                                                                                                            |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `"caption"`      | Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it.          |
+| `"cell:<field>"` | Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition. |
 
 
 ## Dependencies

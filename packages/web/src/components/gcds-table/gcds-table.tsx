@@ -39,6 +39,12 @@ import {
   renderSortPills,
 } from './utils/render-helpers';
 
+/**
+ * A table is a structured layout of related data in rows and columns.
+ *
+ * @slot caption - Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it.
+ * @slot cell:<field> - Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition.
+ */
 @Component({
   tag: 'gcds-table',
   styleUrl: './gcds-table.css',
@@ -739,7 +745,6 @@ export class GcdsTable {
             />
           )}
         </section>
-        <slot />
       </Host>
     );
   }
