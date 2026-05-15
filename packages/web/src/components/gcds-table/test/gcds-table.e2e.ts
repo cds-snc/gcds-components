@@ -1,4 +1,4 @@
-import { expect, type Locator } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-table', () => {
@@ -39,6 +39,71 @@ test.describe('gcds-table', () => {
 
     return values;
   };
+
+  // ─── Page Object for Filter Tests ───────────────────────────────────────
+  class GcdsTableFilterPage {
+    readonly filterButton: Locator;
+    readonly filterInput: Locator;
+    readonly applyButton: Locator;
+    readonly filterPill: Locator;
+    readonly emptyCell: Locator;
+
+    constructor(
+      private element: Locator,
+      private page: Page,
+    ) {
+      this.filterButton = element.locator('.gcds-table__filters > gcds-button button');
+      this.filterInput = element.locator('gcds-input input#gcds-table-filter');
+      this.applyButton = element.locator(
+        '.gcds-table__modal-footer gcds-button button[type="submit"]',
+      );
+      this.filterPill = element.locator('.gcds-table__active-filter .gcds-table__pill');
+      this.emptyCell = element.locator('tbody td.gcds-table__empty');
+    }
+
+    async setup(rows = pokemonRows) {
+      await this.element.waitFor({ state: 'attached' });
+      await this.element.waitFor({ state: 'visible' });
+
+      await this.element.evaluate(
+        (el, payload) => {
+          const table = el as HTMLGcdsTableElement;
+          table.filter = true;
+          table.sort = false;
+          table.pagination = false;
+          table.columns = payload.columns as HTMLGcdsTableElement['columns'];
+          table.data = payload.rows;
+        },
+        { columns: tableColumns, rows },
+      );
+
+      await this.page.waitForChanges();
+    }
+
+    async applyFilter(text: string) {
+      await this.filterButton.click();
+      await expect(this.filterInput).toBeVisible();
+      await this.filterInput.fill(text);
+      await this.applyButton.click();
+      await this.page.waitForChanges();
+    }
+
+    async clearFilterViaModal() {
+      await this.filterButton.click();
+      await this.filterInput.fill('');
+      await this.applyButton.click();
+      await this.page.waitForChanges();
+    }
+
+    async openFilterModal() {
+      await this.filterButton.click();
+    }
+
+    async removePill() {
+      await this.filterPill.click();
+      await this.page.waitForChanges();
+    }
+  }
 
   test('renders', async ({ page }) => {
     const element = page.locator('gcds-table');
@@ -393,87 +458,32 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
+    const filterPage = new GcdsTableFilterPage(element, page);
 
-    await element.waitFor({ state: 'attached' });
-    await element.waitFor({ state: 'visible' });
+    await filterPage.setup();
 
-    await element.evaluate(
-      (el, payload) => {
-        const table = el as HTMLGcdsTableElement;
-        table.filter = true;
-        table.sort = false;
-        table.pagination = false;
-        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
-        table.data = payload.rows;
-      },
-      {
-        columns: tableColumns,
-        rows: pokemonRows,
-      },
-    );
-
-    await page.waitForChanges();
-
-    const filterButton = element.locator(
-      '.gcds-table__filters > gcds-button button',
-    );
     const filterModal = element.locator('dialog.gcds-table__modal');
-    const filterInput = element.locator('gcds-input input#gcds-table-filter');
 
-    await expect(filterButton).toBeVisible();
-    await filterButton.click();
+    await expect(filterPage.filterButton).toBeVisible();
+    await filterPage.openFilterModal();
 
     await expect(filterModal).toHaveAttribute('open', '');
-    await expect(filterInput).toBeVisible();
+    await expect(filterPage.filterInput).toBeVisible();
   });
 
   test('filter text input: narrows to Squirtle and clears back to all rows', async ({
     page,
   }) => {
     const element = page.locator('gcds-table');
+    const filterPage = new GcdsTableFilterPage(element, page);
 
-    await element.waitFor({ state: 'attached' });
-    await element.waitFor({ state: 'visible' });
+    await filterPage.setup();
 
-    await element.evaluate(
-      (el, payload) => {
-        const table = el as HTMLGcdsTableElement;
-        table.filter = true;
-        table.sort = false;
-        table.pagination = false;
-        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
-        table.data = payload.rows;
-      },
-      {
-        columns: tableColumns,
-        rows: pokemonRows,
-      },
-    );
-
-    await page.waitForChanges();
-
-    const filterButton = element.locator(
-      '.gcds-table__filters > gcds-button button',
-    );
-    const filterInput = element.locator('gcds-input input#gcds-table-filter');
-    const applyButton = element.locator(
-      '.gcds-table__modal-footer gcds-button button[type="submit"]',
-    );
-
-    await filterButton.click();
-    await expect(filterInput).toBeVisible();
-    await filterInput.fill('Squirtle');
-    await applyButton.click();
-    await page.waitForChanges();
-
+    await filterPage.applyFilter('Squirtle');
     await expect(element.locator('tbody tr')).toHaveCount(1);
     await expect.poll(() => getVisiblePokedexValues(element)).toEqual([7]);
 
-    await filterButton.click();
-    await filterInput.fill('');
-    await applyButton.click();
-    await page.waitForChanges();
-
+    await filterPage.clearFilterViaModal();
     await expect(element.locator('tbody tr')).toHaveCount(3);
     await expect
       .poll(() => getVisiblePokedexValues(element))
@@ -484,53 +494,62 @@ test.describe('gcds-table', () => {
     page,
   }) => {
     const element = page.locator('gcds-table');
+    const filterPage = new GcdsTableFilterPage(element, page);
 
-    await element.waitFor({ state: 'attached' });
-    await element.waitFor({ state: 'visible' });
+    await filterPage.setup();
 
-    await element.evaluate(
-      (el, payload) => {
-        const table = el as HTMLGcdsTableElement;
-        table.filter = true;
-        table.sort = false;
-        table.pagination = false;
-        table.columns = payload.columns as HTMLGcdsTableElement['columns'];
-        table.data = payload.rows;
-      },
-      {
-        columns: tableColumns,
-        rows: pokemonRows,
-      },
-    );
-
-    await page.waitForChanges();
-
-    const filterButton = element.locator(
-      '.gcds-table__filters > gcds-button button',
-    );
-    const filterInput = element.locator('gcds-input input#gcds-table-filter');
-    const applyButton = element.locator(
-      '.gcds-table__modal-footer gcds-button button[type="submit"]',
-    );
-
-    await filterButton.click();
-    await filterInput.fill('squirtle');
-    await applyButton.click();
-    await page.waitForChanges();
-
+    await filterPage.applyFilter('squirtle');
     await expect(element.locator('tbody tr')).toHaveCount(1);
-    await expect(
-      element.locator('tbody tr [data-column="Name"]').first(),
-    ).toHaveText('Squirtle');
+    await expect(element.locator('tbody tr [data-column="Name"]').first()).toHaveText(
+      'Squirtle',
+    );
 
-    await filterButton.click();
-    await filterInput.fill('SQUIRTLE');
-    await applyButton.click();
-    await page.waitForChanges();
-
+    await filterPage.clearFilterViaModal();
+    await filterPage.applyFilter('SQUIRTLE');
     await expect(element.locator('tbody tr')).toHaveCount(1);
-    await expect(
-      element.locator('tbody tr [data-column="Name"]').first(),
-    ).toHaveText('Squirtle');
+    await expect(element.locator('tbody tr [data-column="Name"]').first()).toHaveText(
+      'Squirtle',
+    );
+  });
+
+  test('filter pill creation and removal: applying Squirtle creates pill and removing it restores all rows', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+    const filterPage = new GcdsTableFilterPage(element, page);
+
+    await filterPage.setup();
+
+    await filterPage.applyFilter('Squirtle');
+    await expect(filterPage.filterPill).toBeVisible();
+    await expect(filterPage.filterPill).toContainText('Squirtle');
+    await expect(element.locator('tbody tr')).toHaveCount(1);
+
+    await filterPage.removePill();
+    await expect(element.locator('.gcds-table__active-filter .gcds-table__pill')).toHaveCount(
+      0,
+    );
+    await expect(element.locator('tbody tr')).toHaveCount(3);
+    await expect
+      .poll(() => getVisiblePokedexValues(element))
+      .toEqual([7, 8, 9]);
+  });
+
+  test('filter with no results: shows empty state and keeps controls accessible', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+    const filterPage = new GcdsTableFilterPage(element, page);
+
+    await filterPage.setup();
+
+    await filterPage.applyFilter('XYZ');
+    await expect(filterPage.emptyCell).toHaveText('No data available');
+    await expect(element.locator('tbody tr')).toHaveCount(1);
+
+    // Controls remain usable after an empty result set.
+    await expect(filterPage.filterButton).toBeVisible();
+    await filterPage.openFilterModal();
+    await expect(filterPage.filterInput).toBeVisible();
   });
 });
