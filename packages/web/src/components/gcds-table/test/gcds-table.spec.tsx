@@ -90,19 +90,18 @@ describe('gcds-table', () => {
                 <tr>
                   <td class="gcds-table__empty" colspan="0">
                     <div>
-                     <gcds-heading heading-role="secondary" tag="h3">
-                       No data to display
-                     </gcds-heading>
-                     <gcds-text text-role="secondary">
-                       There's currently no data available for this table.
-                     </gcds-text>
-                   </div>
+                      <gcds-heading heading-role="secondary" tag="h3">
+                        No data to display
+                      </gcds-heading>
+                      <gcds-text text-role="secondary">
+                        There's currently no data available for this table.
+                      </gcds-text>
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
-          <slot></slot>
         </mock:shadow-root>
       </gcds-table>
     `);
@@ -304,7 +303,7 @@ describe('gcds-table', () => {
 
     const emptyCell =
       page.root?.shadowRoot?.querySelector('.gcds-table__empty');
-    expect(emptyCell?.textContent).toContain('No data to display');
+    expect(emptyCell?.textContent).toContain('No data to displayThere\'s currently no data available for this table.');
   });
 
   it('re-renders rows when data prop is updated', async () => {
