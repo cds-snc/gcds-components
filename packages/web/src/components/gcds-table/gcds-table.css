@@ -1,4 +1,4 @@
-@layer reset, default, controls, pagination, overwrites, modal, alignment;
+@layer reset, default, empty, controls, pagination, overwrites, modal, alignment;
 
 @layer reset {
   :host {
@@ -33,11 +33,6 @@
         width: 1px;
       }
 
-      td,
-      th {
-        padding: var(--gcds-table-cell-padding-desktop);
-      }
-
       th {
         font-weight: var(--gcds-table-header-cell-font-weight);
         text-align: left;
@@ -49,6 +44,37 @@
         & > button {
           all: unset;
           cursor: pointer;
+
+          &:hover {
+            background: var(--gcds-table-header-cell-hover-background);
+          }
+
+          &:focus {
+            background-color: var(--gcds-table-header-cell-focus-background);
+            color: var(--gcds-table-header-cell-focus-text);
+            outline: var(--gcds-table-header-cell-focus-outline-width) solid
+              var(--gcds-table-header-cell-focus-background);
+            outline-offset: var(--gcds-table-header-cell-focus-outline-offset);
+            border-color: var(--gcds-table-header-cell-focus-background);
+            box-shadow: var(--gcds-table-header-cell-focus-box-shadow);
+          }
+        }
+
+        & > button,
+        &:not(:has(> button)) {
+          @media only screen and (width >= 48em) {
+            padding: var(--gcds-table-cell-padding-desktop);
+          }
+        }
+
+        &[aria-sort='none'] > button {
+          /* Hide sort icons in default state */
+          /* !!! TODO: Replace with new table icons */
+          &:not(:hover):not(:focus):not(:active) {
+            .gcds-table__sort-icon {
+              opacity: 0;
+            }
+          }
         }
       }
 
@@ -57,6 +83,12 @@
         th {
           border-block-end: var(--gcds-table-border-width) solid
             var(--gcds-table-cell-border-color);
+        }
+
+        td {
+          @media only screen and (width >= 48em) {
+            padding: var(--gcds-table-cell-padding-desktop);
+          }
         }
       }
 
@@ -102,6 +134,18 @@
         tbody th {
           border: 0;
         }
+      }
+    }
+  }
+}
+
+@layer empty {
+  :host .gcds-table {
+    .gcds-table__empty {
+      padding: var(--gcds-table-empty-padding-desktop);
+
+      @media only screen and (width < 48em) {
+        padding: var(--gcds-table-empty-padding-mobile);
       }
     }
   }
