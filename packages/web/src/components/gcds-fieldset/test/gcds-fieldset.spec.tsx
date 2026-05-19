@@ -9,7 +9,7 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset legend="Fieldset legend" legend-size="h2">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset class="gcds-fieldset" aria-labelledby="fieldset-legend" tabindex="-1">
             <legend id="fieldset-legend" class="size-h2">
               Fieldset legend
@@ -27,7 +27,7 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset legend="Fieldset legend" legend-size="h2">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset class="gcds-fieldset" aria-labelledby="fieldset-legend" tabindex="-1">
             <legend id="fieldset-legend" class="size-h2">
               Fieldset legend
@@ -45,7 +45,7 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset legend="Fieldset legend" legend-size="h3">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset class="gcds-fieldset" aria-labelledby="fieldset-legend" tabindex="-1">
             <legend id="fieldset-legend" class="size-h3">
               Fieldset legend
@@ -63,7 +63,7 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset legend="Fieldset legend" legend-size="h4">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset class="gcds-fieldset" aria-labelledby="fieldset-legend" tabindex="-1">
             <legend id="fieldset-legend" class="size-h4">
               Fieldset legend
@@ -81,7 +81,7 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset legend="Fieldset legend" legend-size="h5">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset class="gcds-fieldset" aria-labelledby="fieldset-legend" tabindex="-1">
             <legend id="fieldset-legend" class="size-h5">
               Fieldset legend
@@ -99,7 +99,7 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset legend="Fieldset legend" legend-size="h6">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset class="gcds-fieldset" aria-labelledby="fieldset-legend" tabindex="-1">
             <legend id="fieldset-legend" class="size-h6">
               Fieldset legend
@@ -117,7 +117,7 @@ describe('gcds-fieldset', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-fieldset legend="Fieldset legend" legend-size="h2" hint="Fieldset hint">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset class="gcds-fieldset" aria-labelledby="fieldset-legend fieldset-hint" tabindex="-1">
             <legend id="fieldset-legend" class="size-h2">
               Fieldset legend

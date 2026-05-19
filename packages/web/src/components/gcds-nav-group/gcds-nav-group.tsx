@@ -16,6 +16,7 @@ import {
   emitEvent,
   closestElement,
 } from '../../utils/utils';
+import { IconNames } from '../gcds-icon/gcds-icon';
 
 /**
  * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
@@ -218,13 +219,13 @@ export class GcdsNavGroup {
           >
             <gcds-icon
               name={
-                this.navStyle === 'expandable'
+                (this.navStyle === 'expandable'
                   ? open
                     ? 'chevron-down'
                     : 'chevron-right'
                   : open
                     ? 'chevron-up'
-                    : 'chevron-down'
+                    : 'chevron-down') as IconNames
               }
             ></gcds-icon>
             {closeTrigger && open ? closeTrigger : openTrigger}

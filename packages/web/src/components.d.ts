@@ -9,12 +9,14 @@ import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 import { Validator, ValidatorEntry } from "./validators";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
+import { IconNames } from "./components/gcds-icon/gcds-icon";
 import { SuggestionOption } from "./components/gcds-input/suggestion-option";
 import { RadioObject } from "./components/gcds-radios/radio";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
+export { IconNames } from "./components/gcds-icon/gcds-icon";
 export { SuggestionOption } from "./components/gcds-input/suggestion-option";
 export { RadioObject } from "./components/gcds-radios/radio";
 export namespace Components {
@@ -746,20 +748,7 @@ export namespace Components {
         /**
           * Name of the icon.
          */
-        "name": | 'checkmark-circle'
-    | 'chevron-down'
-    | 'chevron-left'
-    | 'chevron-right'
-    | 'chevron-up'
-    | 'close'
-    | 'download'
-    | 'email'
-    | 'exclamation-circle'
-    | 'external'
-    | 'info-circle'
-    | 'phone'
-    | 'search'
-    | 'warning-triangle';
+        "name": IconNames;
         /**
           * Defines the size of the icon.
           * @default 'inherit'
@@ -2333,6 +2322,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
+
     /**
      * Alert displays an alert message with an optional heading, icon, and close button.
      */
@@ -3189,20 +3180,7 @@ declare namespace LocalJSX {
         /**
           * Name of the icon.
          */
-        "name": | 'checkmark-circle'
-    | 'chevron-down'
-    | 'chevron-left'
-    | 'chevron-right'
-    | 'chevron-up'
-    | 'close'
-    | 'download'
-    | 'email'
-    | 'exclamation-circle'
-    | 'external'
-    | 'info-circle'
-    | 'phone'
-    | 'search'
-    | 'warning-triangle';
+        "name": IconNames;
         /**
           * Defines the size of the icon.
           * @default 'inherit'
@@ -4089,47 +4067,423 @@ declare namespace LocalJSX {
          */
         "home"?: boolean;
     }
+
+    interface GcdsAlertAttributes {
+        "alertRole": 'danger' | 'info' | 'success' | 'warning';
+        "container": 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        "heading": string;
+        "hideCloseBtn": boolean;
+        "hideRoleIcon": boolean;
+        "isFixed": boolean;
+    }
+    interface GcdsBreadcrumbsAttributes {
+        "hideCanadaLink": boolean;
+    }
+    interface GcdsBreadcrumbsItemAttributes {
+        "href": string | undefined;
+    }
+    interface GcdsButtonAttributes {
+        "type": 'submit' | 'reset' | 'button' | 'link';
+        "buttonRole": | 'start'
+    | 'primary'
+    | 'secondary'
+    | 'danger';
+        "size": 'regular' | 'small';
+        "buttonId": string;
+        "name": string | undefined;
+        "disabled": boolean;
+        "value": string;
+        "href": string | undefined;
+        "rel": string | undefined;
+        "target": string | undefined;
+        "download": string | undefined;
+    }
+    interface GcdsCardAttributes {
+        "cardTitle": string;
+        "href": string;
+        "cardTitleTag": 'h3' | 'h4' | 'h5' | 'h6';
+        "description": string;
+        "badge": string;
+        "imgSrc": string;
+        "imgAlt": string;
+        "rel": string | undefined;
+        "target": string;
+    }
+    interface GcdsCheckboxesAttributes {
+        "name": string;
+        "legend": string;
+        "options": string | Array<CheckboxObject>;
+        "required": boolean;
+        "disabled": boolean;
+        "autofocus": boolean;
+        "form": string;
+        "hideLabel": boolean;
+        "hideLegend": boolean;
+        "value": string | Array<string>;
+        "errorMessage": string;
+        "hint": string;
+        "validateOn": 'blur' | 'submit' | 'other';
+    }
+    interface GcdsContainerAttributes {
+        "alignment": 'start' | 'center' | 'end';
+        "border": boolean;
+        "layout": 'full' | 'page';
+        "margin": SpacingValues;
+        "padding": SpacingValues;
+        "size": 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        "tag": string;
+    }
+    interface GcdsDateInputAttributes {
+        "name": string;
+        "legend": string;
+        "format": 'full' | 'compact' | 'iso';
+        "value": string;
+        "required": boolean;
+        "hint": string;
+        "errorMessage": string;
+        "disabled": boolean;
+        "autofocus": boolean;
+        "max": string;
+        "min": string;
+        "form": string;
+        "validateOn": 'blur' | 'submit' | 'other';
+    }
+    interface GcdsDateModifiedAttributes {
+        "type": 'date' | 'version';
+    }
+    interface GcdsDetailsAttributes {
+        "detailsTitle": string;
+        "open": boolean;
+    }
+    interface GcdsErrorMessageAttributes {
+        "messageId": string;
+    }
+    interface GcdsErrorSummaryAttributes {
+        "heading": string;
+        "listen": boolean;
+        "errorLinks": string | object;
+    }
+    interface GcdsFieldsetAttributes {
+        "hint": string;
+        "legend": string;
+        "legendSize": 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    }
+    interface GcdsFileUploaderAttributes {
+        "uploaderId": string;
+        "name": string;
+        "label": string;
+        "hideLabel": boolean;
+        "required": boolean;
+        "disabled": boolean;
+        "accept": string;
+        "multiple": boolean;
+        "errorMessage": string;
+        "hint": string;
+        "validateOn": 'blur' | 'submit' | 'other';
+        "autofocus": boolean;
+        "form": string;
+    }
+    interface GcdsFooterAttributes {
+        "display": 'compact' | 'full';
+        "contextualHeading": string;
+        "contextualLinks": string | object;
+        "subLinks": string | object;
+    }
+    interface GcdsGridAttributes {
+        "columns": string;
+        "columnsTablet": string;
+        "columnsDesktop": string;
+        "container": 'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+        "display": 'grid' | 'inline-grid';
+        "equalRowHeight": boolean;
+        "gap": GridGapValues;
+        "gapTablet": GridGapValues;
+        "gapDesktop": GridGapValues;
+        "tag": | 'article'
+    | 'aside'
+    | 'div'
+    | 'dl'
+    | 'main'
+    | 'nav'
+    | 'ol'
+    | 'section'
+    | 'ul';
+        "alignment": 'start' | 'center' | 'end';
+        "alignContent": ContentValues;
+        "justifyContent": ContentValues;
+        "placeContent": ContentValues;
+        "alignItems": 'baseline' | 'center' | 'end' | 'start' | 'stretch';
+        "justifyItems": 'center' | 'end' | 'start' | 'stretch';
+        "placeItems": 'center' | 'end' | 'start' | 'stretch';
+    }
+    interface GcdsGridColAttributes {
+        "tag": string;
+        "tablet": 1 | 2 | 3 | 4 | 5 | 6;
+        "desktop": | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12;
+    }
+    interface GcdsHeaderAttributes {
+        "langHref": string;
+        "signatureHasLink": boolean;
+        "skipToHref": string;
+    }
+    interface GcdsHeadingAttributes {
+        "tag": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "headingRole": 'light' | 'primary' | 'secondary';
+        "characterLimit": boolean;
+        "marginTop": SpacingValues;
+        "marginBottom": SpacingValues;
+    }
+    interface GcdsHintAttributes {
+        "hintId": string;
+    }
+    interface GcdsIconAttributes {
+        "label": string;
+        "marginLeft": SpacingValues;
+        "marginRight": SpacingValues;
+        "name": IconNames;
+        "size": | 'inherit'
+    | 'text-small'
+    | 'text'
+    | 'h6'
+    | 'h5'
+    | 'h4'
+    | 'h3'
+    | 'h2'
+    | 'h1';
+    }
+    interface GcdsInputAttributes {
+        "disabled": boolean;
+        "errorMessage": string;
+        "hideLabel": boolean;
+        "hint": string;
+        "inputId": string;
+        "name": string;
+        "label": string;
+        "required": boolean;
+        "size": number;
+        "type": 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        "inputmode": | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+        "value": string;
+        "autocomplete": string;
+        "autofocus": boolean;
+        "form": string;
+        "max": string;
+        "maxlength": number;
+        "min": string;
+        "minlength": number;
+        "pattern": string;
+        "readonly": boolean;
+        "step": string;
+        "validateOn": 'blur' | 'submit' | 'other';
+        "suggestions": string | Array<SuggestionOption>;
+    }
+    interface GcdsLabelAttributes {
+        "hideLabel": boolean;
+        "label": string;
+        "labelFor": string;
+        "required": boolean;
+    }
+    interface GcdsLangToggleAttributes {
+        "href": string;
+    }
+    interface GcdsLinkAttributes {
+        "linkRole": 'default' | 'light';
+        "size": 'regular' | 'small' | 'inherit';
+        "display": 'block' | 'inline';
+        "href": string;
+        "rel": string | undefined;
+        "target": string;
+        "external": boolean;
+        "download": string | undefined;
+        "type": string | undefined;
+    }
+    interface GcdsNavGroupAttributes {
+        "closeTrigger": string;
+        "menuLabel": string;
+        "openTrigger": string;
+        "open": boolean;
+    }
+    interface GcdsNavLinkAttributes {
+        "href": string;
+        "current": boolean;
+    }
+    interface GcdsNoticeAttributes {
+        "noticeRole": 'danger' | 'info' | 'success' | 'warning';
+        "noticeTitle": string;
+        "noticeTitleTag": 'h2' | 'h3' | 'h4' | 'h5';
+    }
+    interface GcdsPaginationAttributes {
+        "display": 'list' | 'simple';
+        "label": string;
+        "previousHref": string;
+        "previousLabel": string;
+        "nextHref": string;
+        "nextLabel": string;
+        "totalPages": number;
+        "currentPage": number;
+        "url": string | object;
+    }
+    interface GcdsRadiosAttributes {
+        "options": string | Array<RadioObject>;
+        "name": string;
+        "autofocus": boolean;
+        "form": string;
+        "legend": string;
+        "required": boolean;
+        "hint": string;
+        "errorMessage": string;
+        "disabled": boolean;
+        "value": string;
+        "validateOn": 'blur' | 'submit' | 'other';
+        "hideLegend": boolean;
+    }
+    interface GcdsSearchAttributes {
+        "placeholder": string;
+        "action": string;
+        "method": 'get' | 'post';
+        "name": string;
+        "searchId": string;
+        "value": string;
+        "suggested": string[] | string;
+    }
+    interface GcdsSelectAttributes {
+        "selectId": string;
+        "label": string;
+        "hideLabel": boolean;
+        "name": string;
+        "required": boolean;
+        "disabled": boolean;
+        "defaultValue": string;
+        "autofocus": boolean;
+        "form": string;
+        "autocomplete": string;
+        "value": string;
+        "errorMessage": string;
+        "hint": string;
+        "validateOn": 'blur' | 'submit' | 'other';
+    }
+    interface GcdsSideNavAttributes {
+        "label": string;
+    }
+    interface GcdsSignatureAttributes {
+        "type": 'signature' | 'wordmark';
+        "variant": 'colour' | 'white';
+        "hasLink": boolean;
+    }
+    interface GcdsSrOnlyAttributes {
+        "tag": | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'p'
+    | 'span';
+    }
+    interface GcdsStepperAttributes {
+        "currentStep": number;
+        "totalSteps": number;
+        "tag": 'h1' | 'h2' | 'h3';
+    }
+    interface GcdsTextAttributes {
+        "textRole": 'light' | 'primary' | 'secondary';
+        "characterLimit": boolean;
+        "display": | 'block'
+    | 'flex'
+    | 'inline'
+    | 'inline-block'
+    | 'inline-flex'
+    | 'none';
+        "marginTop": SpacingValues;
+        "marginBottom": SpacingValues;
+        "size": 'body' | 'small';
+    }
+    interface GcdsTextareaAttributes {
+        "autofocus": boolean;
+        "form": string;
+        "hideLimit": boolean;
+        "maxlength": number;
+        "minlength": number;
+        "cols": number;
+        "disabled": boolean;
+        "errorMessage": string;
+        "hideLabel": boolean;
+        "hint": string;
+        "label": string;
+        "name": string;
+        "required": boolean;
+        "rows": number;
+        "textareaId": string;
+        "value": string;
+        "validateOn": 'blur' | 'submit' | 'other';
+    }
+    interface GcdsTopNavAttributes {
+        "label": string;
+        "alignment": 'start' | 'end';
+    }
+    interface GcdsTopicMenuAttributes {
+        "home": boolean;
+    }
+
     interface IntrinsicElements {
-        "gcds-alert": GcdsAlert;
-        "gcds-breadcrumbs": GcdsBreadcrumbs;
-        "gcds-breadcrumbs-item": GcdsBreadcrumbsItem;
-        "gcds-button": GcdsButton;
-        "gcds-card": GcdsCard;
-        "gcds-checkboxes": GcdsCheckboxes;
-        "gcds-container": GcdsContainer;
-        "gcds-date-input": GcdsDateInput;
-        "gcds-date-modified": GcdsDateModified;
-        "gcds-details": GcdsDetails;
-        "gcds-error-message": GcdsErrorMessage;
-        "gcds-error-summary": GcdsErrorSummary;
-        "gcds-fieldset": GcdsFieldset;
-        "gcds-file-uploader": GcdsFileUploader;
-        "gcds-footer": GcdsFooter;
-        "gcds-grid": GcdsGrid;
-        "gcds-grid-col": GcdsGridCol;
-        "gcds-header": GcdsHeader;
-        "gcds-heading": GcdsHeading;
-        "gcds-hint": GcdsHint;
-        "gcds-icon": GcdsIcon;
-        "gcds-input": GcdsInput;
-        "gcds-label": GcdsLabel;
-        "gcds-lang-toggle": GcdsLangToggle;
-        "gcds-link": GcdsLink;
-        "gcds-nav-group": GcdsNavGroup;
-        "gcds-nav-link": GcdsNavLink;
-        "gcds-notice": GcdsNotice;
-        "gcds-pagination": GcdsPagination;
-        "gcds-radios": GcdsRadios;
-        "gcds-search": GcdsSearch;
-        "gcds-select": GcdsSelect;
-        "gcds-side-nav": GcdsSideNav;
-        "gcds-signature": GcdsSignature;
-        "gcds-sr-only": GcdsSrOnly;
-        "gcds-stepper": GcdsStepper;
-        "gcds-text": GcdsText;
-        "gcds-textarea": GcdsTextarea;
-        "gcds-top-nav": GcdsTopNav;
-        "gcds-topic-menu": GcdsTopicMenu;
+        "gcds-alert": Omit<GcdsAlert, keyof GcdsAlertAttributes> & { [K in keyof GcdsAlert & keyof GcdsAlertAttributes]?: GcdsAlert[K] } & { [K in keyof GcdsAlert & keyof GcdsAlertAttributes as `attr:${K}`]?: GcdsAlertAttributes[K] } & { [K in keyof GcdsAlert & keyof GcdsAlertAttributes as `prop:${K}`]?: GcdsAlert[K] } & OneOf<"heading", GcdsAlert["heading"], GcdsAlertAttributes["heading"]>;
+        "gcds-breadcrumbs": Omit<GcdsBreadcrumbs, keyof GcdsBreadcrumbsAttributes> & { [K in keyof GcdsBreadcrumbs & keyof GcdsBreadcrumbsAttributes]?: GcdsBreadcrumbs[K] } & { [K in keyof GcdsBreadcrumbs & keyof GcdsBreadcrumbsAttributes as `attr:${K}`]?: GcdsBreadcrumbsAttributes[K] } & { [K in keyof GcdsBreadcrumbs & keyof GcdsBreadcrumbsAttributes as `prop:${K}`]?: GcdsBreadcrumbs[K] };
+        "gcds-breadcrumbs-item": Omit<GcdsBreadcrumbsItem, keyof GcdsBreadcrumbsItemAttributes> & { [K in keyof GcdsBreadcrumbsItem & keyof GcdsBreadcrumbsItemAttributes]?: GcdsBreadcrumbsItem[K] } & { [K in keyof GcdsBreadcrumbsItem & keyof GcdsBreadcrumbsItemAttributes as `attr:${K}`]?: GcdsBreadcrumbsItemAttributes[K] } & { [K in keyof GcdsBreadcrumbsItem & keyof GcdsBreadcrumbsItemAttributes as `prop:${K}`]?: GcdsBreadcrumbsItem[K] } & OneOf<"href", GcdsBreadcrumbsItem["href"], GcdsBreadcrumbsItemAttributes["href"]>;
+        "gcds-button": Omit<GcdsButton, keyof GcdsButtonAttributes> & { [K in keyof GcdsButton & keyof GcdsButtonAttributes]?: GcdsButton[K] } & { [K in keyof GcdsButton & keyof GcdsButtonAttributes as `attr:${K}`]?: GcdsButtonAttributes[K] } & { [K in keyof GcdsButton & keyof GcdsButtonAttributes as `prop:${K}`]?: GcdsButton[K] };
+        "gcds-card": Omit<GcdsCard, keyof GcdsCardAttributes> & { [K in keyof GcdsCard & keyof GcdsCardAttributes]?: GcdsCard[K] } & { [K in keyof GcdsCard & keyof GcdsCardAttributes as `attr:${K}`]?: GcdsCardAttributes[K] } & { [K in keyof GcdsCard & keyof GcdsCardAttributes as `prop:${K}`]?: GcdsCard[K] } & OneOf<"cardTitle", GcdsCard["cardTitle"], GcdsCardAttributes["cardTitle"]> & OneOf<"href", GcdsCard["href"], GcdsCardAttributes["href"]>;
+        "gcds-checkboxes": Omit<GcdsCheckboxes, keyof GcdsCheckboxesAttributes> & { [K in keyof GcdsCheckboxes & keyof GcdsCheckboxesAttributes]?: GcdsCheckboxes[K] } & { [K in keyof GcdsCheckboxes & keyof GcdsCheckboxesAttributes as `attr:${K}`]?: GcdsCheckboxesAttributes[K] } & { [K in keyof GcdsCheckboxes & keyof GcdsCheckboxesAttributes as `prop:${K}`]?: GcdsCheckboxes[K] } & OneOf<"name", GcdsCheckboxes["name"], GcdsCheckboxesAttributes["name"]> & OneOf<"options", GcdsCheckboxes["options"], GcdsCheckboxesAttributes["options"]>;
+        "gcds-container": Omit<GcdsContainer, keyof GcdsContainerAttributes> & { [K in keyof GcdsContainer & keyof GcdsContainerAttributes]?: GcdsContainer[K] } & { [K in keyof GcdsContainer & keyof GcdsContainerAttributes as `attr:${K}`]?: GcdsContainerAttributes[K] } & { [K in keyof GcdsContainer & keyof GcdsContainerAttributes as `prop:${K}`]?: GcdsContainer[K] };
+        "gcds-date-input": Omit<GcdsDateInput, keyof GcdsDateInputAttributes> & { [K in keyof GcdsDateInput & keyof GcdsDateInputAttributes]?: GcdsDateInput[K] } & { [K in keyof GcdsDateInput & keyof GcdsDateInputAttributes as `attr:${K}`]?: GcdsDateInputAttributes[K] } & { [K in keyof GcdsDateInput & keyof GcdsDateInputAttributes as `prop:${K}`]?: GcdsDateInput[K] } & OneOf<"name", GcdsDateInput["name"], GcdsDateInputAttributes["name"]> & OneOf<"legend", GcdsDateInput["legend"], GcdsDateInputAttributes["legend"]> & OneOf<"format", GcdsDateInput["format"], GcdsDateInputAttributes["format"]>;
+        "gcds-date-modified": Omit<GcdsDateModified, keyof GcdsDateModifiedAttributes> & { [K in keyof GcdsDateModified & keyof GcdsDateModifiedAttributes]?: GcdsDateModified[K] } & { [K in keyof GcdsDateModified & keyof GcdsDateModifiedAttributes as `attr:${K}`]?: GcdsDateModifiedAttributes[K] } & { [K in keyof GcdsDateModified & keyof GcdsDateModifiedAttributes as `prop:${K}`]?: GcdsDateModified[K] };
+        "gcds-details": Omit<GcdsDetails, keyof GcdsDetailsAttributes> & { [K in keyof GcdsDetails & keyof GcdsDetailsAttributes]?: GcdsDetails[K] } & { [K in keyof GcdsDetails & keyof GcdsDetailsAttributes as `attr:${K}`]?: GcdsDetailsAttributes[K] } & { [K in keyof GcdsDetails & keyof GcdsDetailsAttributes as `prop:${K}`]?: GcdsDetails[K] } & OneOf<"detailsTitle", GcdsDetails["detailsTitle"], GcdsDetailsAttributes["detailsTitle"]>;
+        "gcds-error-message": Omit<GcdsErrorMessage, keyof GcdsErrorMessageAttributes> & { [K in keyof GcdsErrorMessage & keyof GcdsErrorMessageAttributes]?: GcdsErrorMessage[K] } & { [K in keyof GcdsErrorMessage & keyof GcdsErrorMessageAttributes as `attr:${K}`]?: GcdsErrorMessageAttributes[K] } & { [K in keyof GcdsErrorMessage & keyof GcdsErrorMessageAttributes as `prop:${K}`]?: GcdsErrorMessage[K] } & OneOf<"messageId", GcdsErrorMessage["messageId"], GcdsErrorMessageAttributes["messageId"]>;
+        "gcds-error-summary": Omit<GcdsErrorSummary, keyof GcdsErrorSummaryAttributes> & { [K in keyof GcdsErrorSummary & keyof GcdsErrorSummaryAttributes]?: GcdsErrorSummary[K] } & { [K in keyof GcdsErrorSummary & keyof GcdsErrorSummaryAttributes as `attr:${K}`]?: GcdsErrorSummaryAttributes[K] } & { [K in keyof GcdsErrorSummary & keyof GcdsErrorSummaryAttributes as `prop:${K}`]?: GcdsErrorSummary[K] };
+        "gcds-fieldset": Omit<GcdsFieldset, keyof GcdsFieldsetAttributes> & { [K in keyof GcdsFieldset & keyof GcdsFieldsetAttributes]?: GcdsFieldset[K] } & { [K in keyof GcdsFieldset & keyof GcdsFieldsetAttributes as `attr:${K}`]?: GcdsFieldsetAttributes[K] } & { [K in keyof GcdsFieldset & keyof GcdsFieldsetAttributes as `prop:${K}`]?: GcdsFieldset[K] } & OneOf<"legend", GcdsFieldset["legend"], GcdsFieldsetAttributes["legend"]> & OneOf<"legendSize", GcdsFieldset["legendSize"], GcdsFieldsetAttributes["legendSize"]>;
+        "gcds-file-uploader": Omit<GcdsFileUploader, keyof GcdsFileUploaderAttributes> & { [K in keyof GcdsFileUploader & keyof GcdsFileUploaderAttributes]?: GcdsFileUploader[K] } & { [K in keyof GcdsFileUploader & keyof GcdsFileUploaderAttributes as `attr:${K}`]?: GcdsFileUploaderAttributes[K] } & { [K in keyof GcdsFileUploader & keyof GcdsFileUploaderAttributes as `prop:${K}`]?: GcdsFileUploader[K] } & OneOf<"uploaderId", GcdsFileUploader["uploaderId"], GcdsFileUploaderAttributes["uploaderId"]> & OneOf<"name", GcdsFileUploader["name"], GcdsFileUploaderAttributes["name"]> & OneOf<"label", GcdsFileUploader["label"], GcdsFileUploaderAttributes["label"]>;
+        "gcds-footer": Omit<GcdsFooter, keyof GcdsFooterAttributes> & { [K in keyof GcdsFooter & keyof GcdsFooterAttributes]?: GcdsFooter[K] } & { [K in keyof GcdsFooter & keyof GcdsFooterAttributes as `attr:${K}`]?: GcdsFooterAttributes[K] } & { [K in keyof GcdsFooter & keyof GcdsFooterAttributes as `prop:${K}`]?: GcdsFooter[K] };
+        "gcds-grid": Omit<GcdsGrid, keyof GcdsGridAttributes> & { [K in keyof GcdsGrid & keyof GcdsGridAttributes]?: GcdsGrid[K] } & { [K in keyof GcdsGrid & keyof GcdsGridAttributes as `attr:${K}`]?: GcdsGridAttributes[K] } & { [K in keyof GcdsGrid & keyof GcdsGridAttributes as `prop:${K}`]?: GcdsGrid[K] };
+        "gcds-grid-col": Omit<GcdsGridCol, keyof GcdsGridColAttributes> & { [K in keyof GcdsGridCol & keyof GcdsGridColAttributes]?: GcdsGridCol[K] } & { [K in keyof GcdsGridCol & keyof GcdsGridColAttributes as `attr:${K}`]?: GcdsGridColAttributes[K] } & { [K in keyof GcdsGridCol & keyof GcdsGridColAttributes as `prop:${K}`]?: GcdsGridCol[K] };
+        "gcds-header": Omit<GcdsHeader, keyof GcdsHeaderAttributes> & { [K in keyof GcdsHeader & keyof GcdsHeaderAttributes]?: GcdsHeader[K] } & { [K in keyof GcdsHeader & keyof GcdsHeaderAttributes as `attr:${K}`]?: GcdsHeaderAttributes[K] } & { [K in keyof GcdsHeader & keyof GcdsHeaderAttributes as `prop:${K}`]?: GcdsHeader[K] } & OneOf<"langHref", GcdsHeader["langHref"], GcdsHeaderAttributes["langHref"]> & OneOf<"skipToHref", GcdsHeader["skipToHref"], GcdsHeaderAttributes["skipToHref"]>;
+        "gcds-heading": Omit<GcdsHeading, keyof GcdsHeadingAttributes> & { [K in keyof GcdsHeading & keyof GcdsHeadingAttributes]?: GcdsHeading[K] } & { [K in keyof GcdsHeading & keyof GcdsHeadingAttributes as `attr:${K}`]?: GcdsHeadingAttributes[K] } & { [K in keyof GcdsHeading & keyof GcdsHeadingAttributes as `prop:${K}`]?: GcdsHeading[K] } & OneOf<"tag", GcdsHeading["tag"], GcdsHeadingAttributes["tag"]>;
+        "gcds-hint": Omit<GcdsHint, keyof GcdsHintAttributes> & { [K in keyof GcdsHint & keyof GcdsHintAttributes]?: GcdsHint[K] } & { [K in keyof GcdsHint & keyof GcdsHintAttributes as `attr:${K}`]?: GcdsHintAttributes[K] } & { [K in keyof GcdsHint & keyof GcdsHintAttributes as `prop:${K}`]?: GcdsHint[K] };
+        "gcds-icon": Omit<GcdsIcon, keyof GcdsIconAttributes> & { [K in keyof GcdsIcon & keyof GcdsIconAttributes]?: GcdsIcon[K] } & { [K in keyof GcdsIcon & keyof GcdsIconAttributes as `attr:${K}`]?: GcdsIconAttributes[K] } & { [K in keyof GcdsIcon & keyof GcdsIconAttributes as `prop:${K}`]?: GcdsIcon[K] } & OneOf<"name", GcdsIcon["name"], GcdsIconAttributes["name"]>;
+        "gcds-input": Omit<GcdsInput, keyof GcdsInputAttributes> & { [K in keyof GcdsInput & keyof GcdsInputAttributes]?: GcdsInput[K] } & { [K in keyof GcdsInput & keyof GcdsInputAttributes as `attr:${K}`]?: GcdsInputAttributes[K] } & { [K in keyof GcdsInput & keyof GcdsInputAttributes as `prop:${K}`]?: GcdsInput[K] } & OneOf<"inputId", GcdsInput["inputId"], GcdsInputAttributes["inputId"]> & OneOf<"name", GcdsInput["name"], GcdsInputAttributes["name"]> & OneOf<"label", GcdsInput["label"], GcdsInputAttributes["label"]>;
+        "gcds-label": Omit<GcdsLabel, keyof GcdsLabelAttributes> & { [K in keyof GcdsLabel & keyof GcdsLabelAttributes]?: GcdsLabel[K] } & { [K in keyof GcdsLabel & keyof GcdsLabelAttributes as `attr:${K}`]?: GcdsLabelAttributes[K] } & { [K in keyof GcdsLabel & keyof GcdsLabelAttributes as `prop:${K}`]?: GcdsLabel[K] };
+        "gcds-lang-toggle": Omit<GcdsLangToggle, keyof GcdsLangToggleAttributes> & { [K in keyof GcdsLangToggle & keyof GcdsLangToggleAttributes]?: GcdsLangToggle[K] } & { [K in keyof GcdsLangToggle & keyof GcdsLangToggleAttributes as `attr:${K}`]?: GcdsLangToggleAttributes[K] } & { [K in keyof GcdsLangToggle & keyof GcdsLangToggleAttributes as `prop:${K}`]?: GcdsLangToggle[K] } & OneOf<"href", GcdsLangToggle["href"], GcdsLangToggleAttributes["href"]>;
+        "gcds-link": Omit<GcdsLink, keyof GcdsLinkAttributes> & { [K in keyof GcdsLink & keyof GcdsLinkAttributes]?: GcdsLink[K] } & { [K in keyof GcdsLink & keyof GcdsLinkAttributes as `attr:${K}`]?: GcdsLinkAttributes[K] } & { [K in keyof GcdsLink & keyof GcdsLinkAttributes as `prop:${K}`]?: GcdsLink[K] } & OneOf<"href", GcdsLink["href"], GcdsLinkAttributes["href"]>;
+        "gcds-nav-group": Omit<GcdsNavGroup, keyof GcdsNavGroupAttributes> & { [K in keyof GcdsNavGroup & keyof GcdsNavGroupAttributes]?: GcdsNavGroup[K] } & { [K in keyof GcdsNavGroup & keyof GcdsNavGroupAttributes as `attr:${K}`]?: GcdsNavGroupAttributes[K] } & { [K in keyof GcdsNavGroup & keyof GcdsNavGroupAttributes as `prop:${K}`]?: GcdsNavGroup[K] } & OneOf<"menuLabel", GcdsNavGroup["menuLabel"], GcdsNavGroupAttributes["menuLabel"]> & OneOf<"openTrigger", GcdsNavGroup["openTrigger"], GcdsNavGroupAttributes["openTrigger"]>;
+        "gcds-nav-link": Omit<GcdsNavLink, keyof GcdsNavLinkAttributes> & { [K in keyof GcdsNavLink & keyof GcdsNavLinkAttributes]?: GcdsNavLink[K] } & { [K in keyof GcdsNavLink & keyof GcdsNavLinkAttributes as `attr:${K}`]?: GcdsNavLinkAttributes[K] } & { [K in keyof GcdsNavLink & keyof GcdsNavLinkAttributes as `prop:${K}`]?: GcdsNavLink[K] } & OneOf<"href", GcdsNavLink["href"], GcdsNavLinkAttributes["href"]>;
+        "gcds-notice": Omit<GcdsNotice, keyof GcdsNoticeAttributes> & { [K in keyof GcdsNotice & keyof GcdsNoticeAttributes]?: GcdsNotice[K] } & { [K in keyof GcdsNotice & keyof GcdsNoticeAttributes as `attr:${K}`]?: GcdsNoticeAttributes[K] } & { [K in keyof GcdsNotice & keyof GcdsNoticeAttributes as `prop:${K}`]?: GcdsNotice[K] } & OneOf<"noticeRole", GcdsNotice["noticeRole"], GcdsNoticeAttributes["noticeRole"]> & OneOf<"noticeTitle", GcdsNotice["noticeTitle"], GcdsNoticeAttributes["noticeTitle"]> & OneOf<"noticeTitleTag", GcdsNotice["noticeTitleTag"], GcdsNoticeAttributes["noticeTitleTag"]>;
+        "gcds-pagination": Omit<GcdsPagination, keyof GcdsPaginationAttributes> & { [K in keyof GcdsPagination & keyof GcdsPaginationAttributes]?: GcdsPagination[K] } & { [K in keyof GcdsPagination & keyof GcdsPaginationAttributes as `attr:${K}`]?: GcdsPaginationAttributes[K] } & { [K in keyof GcdsPagination & keyof GcdsPaginationAttributes as `prop:${K}`]?: GcdsPagination[K] } & OneOf<"label", GcdsPagination["label"], GcdsPaginationAttributes["label"]>;
+        "gcds-radios": Omit<GcdsRadios, keyof GcdsRadiosAttributes> & { [K in keyof GcdsRadios & keyof GcdsRadiosAttributes]?: GcdsRadios[K] } & { [K in keyof GcdsRadios & keyof GcdsRadiosAttributes as `attr:${K}`]?: GcdsRadiosAttributes[K] } & { [K in keyof GcdsRadios & keyof GcdsRadiosAttributes as `prop:${K}`]?: GcdsRadios[K] } & OneOf<"options", GcdsRadios["options"], GcdsRadiosAttributes["options"]> & OneOf<"name", GcdsRadios["name"], GcdsRadiosAttributes["name"]> & OneOf<"legend", GcdsRadios["legend"], GcdsRadiosAttributes["legend"]>;
+        "gcds-search": Omit<GcdsSearch, keyof GcdsSearchAttributes> & { [K in keyof GcdsSearch & keyof GcdsSearchAttributes]?: GcdsSearch[K] } & { [K in keyof GcdsSearch & keyof GcdsSearchAttributes as `attr:${K}`]?: GcdsSearchAttributes[K] } & { [K in keyof GcdsSearch & keyof GcdsSearchAttributes as `prop:${K}`]?: GcdsSearch[K] };
+        "gcds-select": Omit<GcdsSelect, keyof GcdsSelectAttributes> & { [K in keyof GcdsSelect & keyof GcdsSelectAttributes]?: GcdsSelect[K] } & { [K in keyof GcdsSelect & keyof GcdsSelectAttributes as `attr:${K}`]?: GcdsSelectAttributes[K] } & { [K in keyof GcdsSelect & keyof GcdsSelectAttributes as `prop:${K}`]?: GcdsSelect[K] } & OneOf<"selectId", GcdsSelect["selectId"], GcdsSelectAttributes["selectId"]> & OneOf<"label", GcdsSelect["label"], GcdsSelectAttributes["label"]> & OneOf<"name", GcdsSelect["name"], GcdsSelectAttributes["name"]>;
+        "gcds-side-nav": Omit<GcdsSideNav, keyof GcdsSideNavAttributes> & { [K in keyof GcdsSideNav & keyof GcdsSideNavAttributes]?: GcdsSideNav[K] } & { [K in keyof GcdsSideNav & keyof GcdsSideNavAttributes as `attr:${K}`]?: GcdsSideNavAttributes[K] } & { [K in keyof GcdsSideNav & keyof GcdsSideNavAttributes as `prop:${K}`]?: GcdsSideNav[K] } & OneOf<"label", GcdsSideNav["label"], GcdsSideNavAttributes["label"]>;
+        "gcds-signature": Omit<GcdsSignature, keyof GcdsSignatureAttributes> & { [K in keyof GcdsSignature & keyof GcdsSignatureAttributes]?: GcdsSignature[K] } & { [K in keyof GcdsSignature & keyof GcdsSignatureAttributes as `attr:${K}`]?: GcdsSignatureAttributes[K] } & { [K in keyof GcdsSignature & keyof GcdsSignatureAttributes as `prop:${K}`]?: GcdsSignature[K] };
+        "gcds-sr-only": Omit<GcdsSrOnly, keyof GcdsSrOnlyAttributes> & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes]?: GcdsSrOnly[K] } & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes as `attr:${K}`]?: GcdsSrOnlyAttributes[K] } & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes as `prop:${K}`]?: GcdsSrOnly[K] };
+        "gcds-stepper": Omit<GcdsStepper, keyof GcdsStepperAttributes> & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes]?: GcdsStepper[K] } & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes as `attr:${K}`]?: GcdsStepperAttributes[K] } & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes as `prop:${K}`]?: GcdsStepper[K] } & OneOf<"currentStep", GcdsStepper["currentStep"], GcdsStepperAttributes["currentStep"]> & OneOf<"totalSteps", GcdsStepper["totalSteps"], GcdsStepperAttributes["totalSteps"]>;
+        "gcds-text": Omit<GcdsText, keyof GcdsTextAttributes> & { [K in keyof GcdsText & keyof GcdsTextAttributes]?: GcdsText[K] } & { [K in keyof GcdsText & keyof GcdsTextAttributes as `attr:${K}`]?: GcdsTextAttributes[K] } & { [K in keyof GcdsText & keyof GcdsTextAttributes as `prop:${K}`]?: GcdsText[K] };
+        "gcds-textarea": Omit<GcdsTextarea, keyof GcdsTextareaAttributes> & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes]?: GcdsTextarea[K] } & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes as `attr:${K}`]?: GcdsTextareaAttributes[K] } & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes as `prop:${K}`]?: GcdsTextarea[K] } & OneOf<"label", GcdsTextarea["label"], GcdsTextareaAttributes["label"]> & OneOf<"name", GcdsTextarea["name"], GcdsTextareaAttributes["name"]> & OneOf<"textareaId", GcdsTextarea["textareaId"], GcdsTextareaAttributes["textareaId"]>;
+        "gcds-top-nav": Omit<GcdsTopNav, keyof GcdsTopNavAttributes> & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes]?: GcdsTopNav[K] } & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes as `attr:${K}`]?: GcdsTopNavAttributes[K] } & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes as `prop:${K}`]?: GcdsTopNav[K] } & OneOf<"label", GcdsTopNav["label"], GcdsTopNavAttributes["label"]>;
+        "gcds-topic-menu": Omit<GcdsTopicMenu, keyof GcdsTopicMenuAttributes> & { [K in keyof GcdsTopicMenu & keyof GcdsTopicMenuAttributes]?: GcdsTopicMenu[K] } & { [K in keyof GcdsTopicMenu & keyof GcdsTopicMenuAttributes as `attr:${K}`]?: GcdsTopicMenuAttributes[K] } & { [K in keyof GcdsTopicMenu & keyof GcdsTopicMenuAttributes as `prop:${K}`]?: GcdsTopicMenu[K] };
     }
 }
 export { LocalJSX as JSX };
@@ -4139,163 +4493,163 @@ declare module "@stencil/core" {
             /**
              * Alert displays an alert message with an optional heading, icon, and close button.
              */
-            "gcds-alert": LocalJSX.GcdsAlert & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
+            "gcds-alert": LocalJSX.IntrinsicElements["gcds-alert"] & JSXBase.HTMLAttributes<HTMLGcdsAlertElement>;
             /**
              * Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.
              */
-            "gcds-breadcrumbs": LocalJSX.GcdsBreadcrumbs & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsElement>;
+            "gcds-breadcrumbs": LocalJSX.IntrinsicElements["gcds-breadcrumbs"] & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsElement>;
             /**
              * Breadcrumbs item represents a single link in the breadcrumbs navigation.
              */
-            "gcds-breadcrumbs-item": LocalJSX.GcdsBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsItemElement>;
+            "gcds-breadcrumbs-item": LocalJSX.IntrinsicElements["gcds-breadcrumbs-item"] & JSXBase.HTMLAttributes<HTMLGcdsBreadcrumbsItemElement>;
             /**
              * The button is an interactive object that emphasizes an action.
              */
-            "gcds-button": LocalJSX.GcdsButton & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
+            "gcds-button": LocalJSX.IntrinsicElements["gcds-button"] & JSXBase.HTMLAttributes<HTMLGcdsButtonElement>;
             /**
              * A card is a box containing structured, actionable content on a single topic.
              */
-            "gcds-card": LocalJSX.GcdsCard & JSXBase.HTMLAttributes<HTMLGcdsCardElement>;
+            "gcds-card": LocalJSX.IntrinsicElements["gcds-card"] & JSXBase.HTMLAttributes<HTMLGcdsCardElement>;
             /**
              * Checkboxes provide a set of options for multiple responses.
              */
-            "gcds-checkboxes": LocalJSX.GcdsCheckboxes & JSXBase.HTMLAttributes<HTMLGcdsCheckboxesElement>;
+            "gcds-checkboxes": LocalJSX.IntrinsicElements["gcds-checkboxes"] & JSXBase.HTMLAttributes<HTMLGcdsCheckboxesElement>;
             /**
              * A container is a basic box layout with a set width for its contents.
              */
-            "gcds-container": LocalJSX.GcdsContainer & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
+            "gcds-container": LocalJSX.IntrinsicElements["gcds-container"] & JSXBase.HTMLAttributes<HTMLGcdsContainerElement>;
             /**
              * A date input is a space to enter a known date.
              */
-            "gcds-date-input": LocalJSX.GcdsDateInput & JSXBase.HTMLAttributes<HTMLGcdsDateInputElement>;
+            "gcds-date-input": LocalJSX.IntrinsicElements["gcds-date-input"] & JSXBase.HTMLAttributes<HTMLGcdsDateInputElement>;
             /**
              * Date modified is an indicator of the last update to a webpage or application.
              */
-            "gcds-date-modified": LocalJSX.GcdsDateModified & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
+            "gcds-date-modified": LocalJSX.IntrinsicElements["gcds-date-modified"] & JSXBase.HTMLAttributes<HTMLGcdsDateModifiedElement>;
             /**
              * Details is an interactive switch for a person to expand or collapse content.
              */
-            "gcds-details": LocalJSX.GcdsDetails & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
+            "gcds-details": LocalJSX.IntrinsicElements["gcds-details"] & JSXBase.HTMLAttributes<HTMLGcdsDetailsElement>;
             /**
              * An error message is a description of a problem blocking a user goal.
              */
-            "gcds-error-message": LocalJSX.GcdsErrorMessage & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
+            "gcds-error-message": LocalJSX.IntrinsicElements["gcds-error-message"] & JSXBase.HTMLAttributes<HTMLGcdsErrorMessageElement>;
             /**
              * An error summary is a list of user errors in a form.
              */
-            "gcds-error-summary": LocalJSX.GcdsErrorSummary & JSXBase.HTMLAttributes<HTMLGcdsErrorSummaryElement>;
+            "gcds-error-summary": LocalJSX.IntrinsicElements["gcds-error-summary"] & JSXBase.HTMLAttributes<HTMLGcdsErrorSummaryElement>;
             /**
              * A fieldset is a group of multiple form components or elements.
              */
-            "gcds-fieldset": LocalJSX.GcdsFieldset & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
+            "gcds-fieldset": LocalJSX.IntrinsicElements["gcds-fieldset"] & JSXBase.HTMLAttributes<HTMLGcdsFieldsetElement>;
             /**
              * A file uploader is a space to select and add supporting documentation.
              */
-            "gcds-file-uploader": LocalJSX.GcdsFileUploader & JSXBase.HTMLAttributes<HTMLGcdsFileUploaderElement>;
+            "gcds-file-uploader": LocalJSX.IntrinsicElements["gcds-file-uploader"] & JSXBase.HTMLAttributes<HTMLGcdsFileUploaderElement>;
             /**
              * The footer is the responsive Government of Canada branded footer landmark.
              */
-            "gcds-footer": LocalJSX.GcdsFooter & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
+            "gcds-footer": LocalJSX.IntrinsicElements["gcds-footer"] & JSXBase.HTMLAttributes<HTMLGcdsFooterElement>;
             /**
              * A grid is a responsive, flexible column layout to position elements on a page.
              */
-            "gcds-grid": LocalJSX.GcdsGrid & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
+            "gcds-grid": LocalJSX.IntrinsicElements["gcds-grid"] & JSXBase.HTMLAttributes<HTMLGcdsGridElement>;
             /**
              * A grid column is a single column in a grid layout, allowing for flexible content arrangement.
              */
-            "gcds-grid-col": LocalJSX.GcdsGridCol & JSXBase.HTMLAttributes<HTMLGcdsGridColElement>;
+            "gcds-grid-col": LocalJSX.IntrinsicElements["gcds-grid-col"] & JSXBase.HTMLAttributes<HTMLGcdsGridColElement>;
             /**
              * The header is the responsive Government of Canada branded header landmark.
              */
-            "gcds-header": LocalJSX.GcdsHeader & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
+            "gcds-header": LocalJSX.IntrinsicElements["gcds-header"] & JSXBase.HTMLAttributes<HTMLGcdsHeaderElement>;
             /**
              * A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.
              */
-            "gcds-heading": LocalJSX.GcdsHeading & JSXBase.HTMLAttributes<HTMLGcdsHeadingElement>;
+            "gcds-heading": LocalJSX.IntrinsicElements["gcds-heading"] & JSXBase.HTMLAttributes<HTMLGcdsHeadingElement>;
             /**
              * Hint provides additional information or context to help users understand the content or functionality of a related element.
              */
-            "gcds-hint": LocalJSX.GcdsHint & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
+            "gcds-hint": LocalJSX.IntrinsicElements["gcds-hint"] & JSXBase.HTMLAttributes<HTMLGcdsHintElement>;
             /**
              * An icon is a symbol that visually represents an action or idea.
              */
-            "gcds-icon": LocalJSX.GcdsIcon & JSXBase.HTMLAttributes<HTMLGcdsIconElement>;
+            "gcds-icon": LocalJSX.IntrinsicElements["gcds-icon"] & JSXBase.HTMLAttributes<HTMLGcdsIconElement>;
             /**
              * An input is a space to enter short-form information in response to a question or instruction.
              */
-            "gcds-input": LocalJSX.GcdsInput & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
+            "gcds-input": LocalJSX.IntrinsicElements["gcds-input"] & JSXBase.HTMLAttributes<HTMLGcdsInputElement>;
             /**
              * Label for form fields, providing accessibility and context for users.
              */
-            "gcds-label": LocalJSX.GcdsLabel & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
+            "gcds-label": LocalJSX.IntrinsicElements["gcds-label"] & JSXBase.HTMLAttributes<HTMLGcdsLabelElement>;
             /**
              * The language toggle is a link to the same content in the other Official Language.
              */
-            "gcds-lang-toggle": LocalJSX.GcdsLangToggle & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
+            "gcds-lang-toggle": LocalJSX.IntrinsicElements["gcds-lang-toggle"] & JSXBase.HTMLAttributes<HTMLGcdsLangToggleElement>;
             /**
              * A link is a navigational element that brings a person to a new page, website, file, or section on the current page.
              */
-            "gcds-link": LocalJSX.GcdsLink & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
+            "gcds-link": LocalJSX.IntrinsicElements["gcds-link"] & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
             /**
              * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
              */
-            "gcds-nav-group": LocalJSX.GcdsNavGroup & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
+            "gcds-nav-group": LocalJSX.IntrinsicElements["gcds-nav-group"] & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
             /**
              * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
              */
-            "gcds-nav-link": LocalJSX.GcdsNavLink & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
+            "gcds-nav-link": LocalJSX.IntrinsicElements["gcds-nav-link"] & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
             /**
              * The notice is a short, prominent message that’s part of the page content.
              */
-            "gcds-notice": LocalJSX.GcdsNotice & JSXBase.HTMLAttributes<HTMLGcdsNoticeElement>;
+            "gcds-notice": LocalJSX.IntrinsicElements["gcds-notice"] & JSXBase.HTMLAttributes<HTMLGcdsNoticeElement>;
             /**
              * Pagination is a division of content into multiple linked pages.
              */
-            "gcds-pagination": LocalJSX.GcdsPagination & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
+            "gcds-pagination": LocalJSX.IntrinsicElements["gcds-pagination"] & JSXBase.HTMLAttributes<HTMLGcdsPaginationElement>;
             /**
              * Radios provide a set of options for a single response.
              */
-            "gcds-radios": LocalJSX.GcdsRadios & JSXBase.HTMLAttributes<HTMLGcdsRadiosElement>;
+            "gcds-radios": LocalJSX.IntrinsicElements["gcds-radios"] & JSXBase.HTMLAttributes<HTMLGcdsRadiosElement>;
             /**
              * Search is a space for entering keywords to find relevant information.
              */
-            "gcds-search": LocalJSX.GcdsSearch & JSXBase.HTMLAttributes<HTMLGcdsSearchElement>;
+            "gcds-search": LocalJSX.IntrinsicElements["gcds-search"] & JSXBase.HTMLAttributes<HTMLGcdsSearchElement>;
             /**
              * A select provides a large list of options for single selection.
              */
-            "gcds-select": LocalJSX.GcdsSelect & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
+            "gcds-select": LocalJSX.IntrinsicElements["gcds-select"] & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             /**
              * A side navigation is a vertical list of page links on the left side of the screen.
              */
-            "gcds-side-nav": LocalJSX.GcdsSideNav & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
+            "gcds-side-nav": LocalJSX.IntrinsicElements["gcds-side-nav"] & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
             /**
              * The signature is the Government of Canada landmark identifier found in the header or footer.
              */
-            "gcds-signature": LocalJSX.GcdsSignature & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
+            "gcds-signature": LocalJSX.IntrinsicElements["gcds-signature"] & JSXBase.HTMLAttributes<HTMLGcdsSignatureElement>;
             /**
              * The screenreader-only component is text information only accessible with assistive technologies.
              */
-            "gcds-sr-only": LocalJSX.GcdsSrOnly & JSXBase.HTMLAttributes<HTMLGcdsSrOnlyElement>;
+            "gcds-sr-only": LocalJSX.IntrinsicElements["gcds-sr-only"] & JSXBase.HTMLAttributes<HTMLGcdsSrOnlyElement>;
             /**
              * A stepper is a progress tracker for a multi-step process.
              */
-            "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
+            "gcds-stepper": LocalJSX.IntrinsicElements["gcds-stepper"] & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
             /**
              * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
              */
-            "gcds-text": LocalJSX.GcdsText & JSXBase.HTMLAttributes<HTMLGcdsTextElement>;
+            "gcds-text": LocalJSX.IntrinsicElements["gcds-text"] & JSXBase.HTMLAttributes<HTMLGcdsTextElement>;
             /**
              * A text area is a space to enter long-form information in response to a question or instruction.
              */
-            "gcds-textarea": LocalJSX.GcdsTextarea & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
+            "gcds-textarea": LocalJSX.IntrinsicElements["gcds-textarea"] & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             /**
              * A top navigation is a horizontal list of page links.
              */
-            "gcds-top-nav": LocalJSX.GcdsTopNav & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;
+            "gcds-top-nav": LocalJSX.IntrinsicElements["gcds-top-nav"] & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;
             /**
              * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
              */
-            "gcds-topic-menu": LocalJSX.GcdsTopicMenu & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
+            "gcds-topic-menu": LocalJSX.IntrinsicElements["gcds-topic-menu"] & JSXBase.HTMLAttributes<HTMLGcdsTopicMenuElement>;
         }
     }
 }
