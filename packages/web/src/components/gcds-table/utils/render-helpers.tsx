@@ -15,12 +15,17 @@ import I18N from '../i18n/i18n';
  * @param column - the column to get the sort icon for
  * Returns an empty string if the column is not sortable, an up arrow if sorted ascending, a down arrow if sorted descending, and a generic sort icon if sortable but not currently sorted.
  */
-const getSortIcon = (column: Column<Record<string, unknown>>): string => {
+const getSortIcon = (
+  column: Column<Record<string, unknown>>,
+): 'arrow-up' | 'arrow-down' | 'arrow-up-down' | '' => {
   if (!column?.getCanSort()) return '';
+
   const sorted = column.getIsSorted();
-  if (sorted === 'asc') return ' ▲';
-  if (sorted === 'desc') return ' ▼';
-  return ' ⇅';
+
+  if (sorted === 'asc') return 'arrow-up';
+  if (sorted === 'desc') return 'arrow-down';
+
+  return 'arrow-up-down';
 };
 
 /* Get appropriate sort button title based on column's sort state
@@ -167,15 +172,21 @@ const renderSortRadios = (element: {
     });
 
   return (
-    <gcds-radios
-      class="gcds-table__modal-sort"
-      legend={I18N[lang].sort}
-      name="sort"
-      autoFocus
-      options={radioOptions}
-      value={isSorted}
-      ref={el => (element.sortRadios = el)}
-    />
+    <div class="gcds-table__modal-sort">
+      <gcds-heading tag="h3" margin-top="0" margin-bottom="0">
+        <gcds-icon name="sort" margin-right="100" aria-hidden="true" />
+        {I18N[lang].sort}
+      </gcds-heading>
+      <gcds-radios
+        legend={I18N[lang].sort}
+        hide-legend
+        name="sort"
+        autoFocus
+        options={radioOptions}
+        value={isSorted}
+        ref={el => (element.sortRadios = el)}
+      />
+    </div>
   );
 };
 
@@ -194,29 +205,33 @@ const renderFilterSortModal = element => {
         buttonRole="primary"
         onClick={() => element.filterSortModal.showModal()}
       >
-        {element.filter && element.sortEnabled()
-          ?
-          I18N[lang].filterAndSort
-          :
-          element.filter ?
-            I18N[lang].filter
-            :
-            I18N[lang].sort
-        }
+        <div>
+          {element.filter && element.sortEnabled() ? (
+            <gcds-icon name="tune" size="h5" margin-right="50" />
+          ) : element.filter ? (
+            <gcds-icon name="filter" size="h5" margin-right="50" />
+          ) : (
+            <gcds-icon name="arrow-up-down" size="h5" margin-right="50" />
+          )}
 
-
-        {/* Currently only shows one when filter is active, will need to be expanded when filter queries are expanded */}
-        {filterValue && (
-          <Fragment>
-            <gcds-sr-only tag="span">:</gcds-sr-only>
-            <span
-              class="gcds-table__active-count"
-              aria-label={`${I18N[lang].activeBadgeLabel.replace('{count}', 1)}`}
-            >
-              1
-            </span>
-          </Fragment>
-        )}
+          {element.filter && element.sortEnabled()
+            ? I18N[lang].filterAndSort
+            : element.filter
+              ? I18N[lang].filter
+              : I18N[lang].sort}
+          {/* Currently only shows one when filter is active, will need to be expanded when filter queries are expanded */}
+          {filterValue && (
+            <Fragment>
+              <gcds-sr-only tag="span">:</gcds-sr-only>
+              <span
+                class="gcds-table__active-count"
+                aria-label={`${I18N[lang].activeBadgeLabel.replace('{count}', 1)}`}
+              >
+                1
+              </span>
+            </Fragment>
+          )}
+        </div>
       </gcds-button>
 
       <dialog
