@@ -85,6 +85,7 @@ export class GcdsTable {
    * Available page-size options.
    * Use 0 to represent "All rows".
    */
+  // prettier-ignore
   @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [10, 25, 50, 0];
 
   /** Enable global filter */
@@ -102,7 +103,9 @@ export class GcdsTable {
   @State() private paginationState: PaginationState = {
     pageIndex: Math.max(0, this.paginationCurrentPage - 1),
     pageSize: this.pagination
-      ? (this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize)
+      ? this.paginationSize === 0
+        ? Number.MAX_SAFE_INTEGER
+        : this.paginationSize
       : Number.MAX_SAFE_INTEGER,
   };
   @State() lang: string;
@@ -167,7 +170,9 @@ export class GcdsTable {
       this.paginationState = {
         pageIndex: Math.max(0, this.paginationCurrentPage - 1),
         pageSize:
-          this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
+          this.paginationSize === 0
+            ? Number.MAX_SAFE_INTEGER
+            : this.paginationSize,
       };
     } else {
       this.paginationState = {
@@ -204,8 +209,7 @@ export class GcdsTable {
     } else {
       this.paginationState = {
         pageIndex:
-          this.paginationState.pageIndex + 1 >
-            Math.ceil(totalRows / newSize)
+          this.paginationState.pageIndex + 1 > Math.ceil(totalRows / newSize)
             ? 0
             : this.paginationState.pageIndex,
         pageSize: newSize === 0 ? totalRows : newSize,
@@ -279,8 +283,7 @@ export class GcdsTable {
 
   private sortEnabled(): boolean {
     return (
-      this.sort ||
-      ((this.columns ?? []) as TableColumn[]).some(col => col.sort)
+      this.sort || ((this.columns ?? []) as TableColumn[]).some(col => col.sort)
     );
   }
 
@@ -333,7 +336,7 @@ export class GcdsTable {
    */
   private createSlottedElements() {
     const slottedColumns = (this.columns as TableColumn[]).filter(
-      s => s.slotted && !s.managed
+      s => s.slotted && !s.managed,
     );
     const rows = this.table?.getCoreRowModel().rows ?? [];
 
@@ -364,7 +367,7 @@ export class GcdsTable {
 
   private syncSlottedElements() {
     const slottedColumns = (this.columns as TableColumn[]).filter(
-      s => s.slotted && !s.managed
+      s => s.slotted && !s.managed,
     );
     if (slottedColumns.length === 0) return;
 
@@ -453,10 +456,7 @@ export class GcdsTable {
     this.shadowElement?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
-  private getManagedSlotName(
-    row: string,
-    columnField: string,
-  ): string {
+  private getManagedSlotName(row: string, columnField: string): string {
     return `cell-${row}-${columnField}`;
   }
 
@@ -482,10 +482,18 @@ export class GcdsTable {
 
     // Validate if information is being passed as JSON strings and parse it
     if (typeof this.columns === 'string') {
-      try { this.columns = JSON.parse(this.columns); } catch (e) { console.error(e); }
+      try {
+        this.columns = JSON.parse(this.columns);
+      } catch (e) {
+        console.error(e);
+      }
     }
     if (typeof this.data === 'string') {
-      try { this.data = JSON.parse(this.data); } catch (e) { console.error(e); }
+      try {
+        this.data = JSON.parse(this.data);
+      } catch (e) {
+        console.error(e);
+      }
     }
 
     // Seed initial sort from sortDirection column definitions
@@ -592,7 +600,11 @@ export class GcdsTable {
           <table
             class="gcds-table__table"
             tabindex="-1"
-            aria-labelledby={this.el.querySelector('[slot="caption"]') ? 'gcds-table__caption' : undefined}
+            aria-labelledby={
+              this.el.querySelector('[slot="caption"]')
+                ? 'gcds-table__caption'
+                : undefined
+            }
             ref={el => {
               if (el) this.shadowElement = el;
             }}
@@ -601,9 +613,9 @@ export class GcdsTable {
               {headerGroups.map(hg => (
                 <tr key={hg.id}>
                   {hg.headers.map(header => {
-                    const colDef = (
-                      (this.columns ?? []) as TableColumn[]
-                    ).find(c => c.field === header.id);
+                    const colDef = ((this.columns ?? []) as TableColumn[]).find(
+                      c => c.field === header.id,
+                    );
                     const canSort = header.column.getCanSort();
                     const alignmentClass = colDef?.alignment
                       ? `alignment-${colDef.alignment}`
@@ -654,30 +666,42 @@ export class GcdsTable {
                     class="gcds-table__empty"
                     colSpan={(this.columns ?? []).length}
                   >
-                    {this.filter && this.filterValue !== '' ?
+                    {this.filter && this.filterValue !== '' ? (
                       <div>
-                        <gcds-heading tag="h3" heading-role='secondary'>
+                        <gcds-heading
+                          tag="h3"
+                          heading-role="secondary"
+                          margin-top="0"
+                          margin-bottom="100"
+                        >
                           {I18N[this.lang].noResultsHeading}
                         </gcds-heading>
-                        <gcds-text text-role='secondary'>
+                        <gcds-text text-role="secondary" margin-bottom="200">
                           {I18N[this.lang].noResultsText}
                         </gcds-text>
                         <gcds-button
-                          onClick={() => this.filterValue = this.initialFilter}
+                          onClick={() =>
+                            (this.filterValue = this.initialFilter)
+                          }
                         >
                           {I18N[this.lang].noResultsClearFilter}
                         </gcds-button>
                       </div>
-                      :
+                    ) : (
                       <div>
-                        <gcds-heading tag="h3" heading-role='secondary'>
+                        <gcds-heading
+                          tag="h3"
+                          heading-role="secondary"
+                          margin-top="0"
+                          margin-bottom="100"
+                        >
                           {I18N[this.lang].noDataHeading}
                         </gcds-heading>
-                        <gcds-text text-role='secondary'>
+                        <gcds-text text-role="secondary" margin-bottom="0">
                           {I18N[this.lang].noDataText}
                         </gcds-text>
                       </div>
-                    }
+                    )}
                   </td>
                 </tr>
               ) : (
@@ -703,18 +727,15 @@ export class GcdsTable {
 
                       const fallbackValue = String(cell.getValue() ?? '');
 
-                      cellContent = !isSlotted
-                        ? fallbackValue
-                        : (
-                          <slot
-                            name={this.getManagedSlotName(
-                              row.id,
-                              cell.column.id,
-                            )}
-                          >
-                            {fallbackValue}
-                          </slot>
-                        );
+                      cellContent = !isSlotted ? (
+                        fallbackValue
+                      ) : (
+                        <slot
+                          name={this.getManagedSlotName(row.id, cell.column.id)}
+                        >
+                          {fallbackValue}
+                        </slot>
+                      );
 
                       return (
                         <Tag
