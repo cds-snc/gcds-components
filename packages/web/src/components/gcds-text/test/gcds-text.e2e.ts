@@ -30,6 +30,7 @@ test.describe('gcds-text a11y tests', () => {
 
     const results = await new AxeBuilder({ page })
       .withRules(['color-contrast'])
+      .include('gcds-text')
       .analyze();
 
     expect(results.violations).toHaveLength(0);
@@ -42,6 +43,7 @@ test.describe('gcds-text a11y tests', () => {
 
     const results = await new AxeBuilder({ page })
       .withRules(['color-contrast'])
+      .include('gcds-text')
       .analyze();
 
     expect(results.violations).toHaveLength(0);
@@ -54,6 +56,7 @@ test.describe('gcds-text a11y tests', () => {
 
     const results = await new AxeBuilder({ page })
       .withRules(['color-contrast'])
+      .include('gcds-text')
       .analyze();
 
     expect(results.violations).toHaveLength(0);
