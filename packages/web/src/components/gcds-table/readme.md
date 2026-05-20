@@ -57,6 +57,7 @@ Type: `Promise<{ rowId: string; rowIndex: number; original: Record<string, unkno
 ### Depends on
 
 - [gcds-select](../gcds-select)
+- [gcds-icon](../gcds-icon)
 - [gcds-heading](../gcds-heading)
 - [gcds-text](../gcds-text)
 - [gcds-button](../gcds-button)
@@ -64,12 +65,12 @@ Type: `Promise<{ rowId: string; rowIndex: number; original: Record<string, unkno
 - [gcds-radios](../gcds-radios)
 - [gcds-sr-only](../gcds-sr-only)
 - [gcds-input](../gcds-input)
-- [gcds-icon](../gcds-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-table --> gcds-select
+  gcds-table --> gcds-icon
   gcds-table --> gcds-heading
   gcds-table --> gcds-text
   gcds-table --> gcds-button
@@ -77,7 +78,6 @@ graph TD;
   gcds-table --> gcds-radios
   gcds-table --> gcds-sr-only
   gcds-table --> gcds-input
-  gcds-table --> gcds-icon
   gcds-select --> gcds-label
   gcds-select --> gcds-hint
   gcds-select --> gcds-error-message

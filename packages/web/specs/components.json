@@ -11708,26 +11708,26 @@
       "dependents": [],
       "dependencies": [
         "gcds-select",
+        "gcds-icon",
         "gcds-heading",
         "gcds-text",
         "gcds-button",
         "gcds-pagination",
         "gcds-radios",
         "gcds-sr-only",
-        "gcds-input",
-        "gcds-icon"
+        "gcds-input"
       ],
       "dependencyGraph": {
         "gcds-table": [
           "gcds-select",
+          "gcds-icon",
           "gcds-heading",
           "gcds-text",
           "gcds-button",
           "gcds-pagination",
           "gcds-radios",
           "gcds-sr-only",
-          "gcds-input",
-          "gcds-icon"
+          "gcds-input"
         ],
         "gcds-select": [
           "gcds-label",

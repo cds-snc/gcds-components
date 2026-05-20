@@ -620,6 +620,7 @@ export class GcdsTable {
                     const alignmentClass = colDef?.alignment
                       ? `alignment-${colDef.alignment}`
                       : '';
+                    const iconName = getSortIcon(header.column);
 
                     return (
                       <th
@@ -642,13 +643,13 @@ export class GcdsTable {
                             title={getSortTitle(header.column, this.lang)}
                           >
                             {colDef?.header}
-                            {/* Replace icons with something better */}
-                            <span
-                              class="gcds-table__sort-icon"
-                              aria-hidden="true"
-                            >
-                              {getSortIcon(header.column)}
-                            </span>
+                            {iconName && (
+                              <gcds-icon
+                                name={iconName}
+                                class="gcds-table__sort-icon"
+                                aria-hidden="true"
+                              />
+                            )}
                           </button>
                         ) : (
                           colDef?.header

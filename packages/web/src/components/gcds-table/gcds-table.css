@@ -69,7 +69,6 @@
 
         &[aria-sort='none'] > button {
           /* Hide sort icons in default state */
-          /* !!! TODO: Replace with new table icons */
           &:not(:hover):not(:focus):not(:active) {
             .gcds-table__sort-icon {
               opacity: 0;
@@ -158,6 +157,11 @@
       margin-block-end: var(--gcds-table-filters-margin);
       border-block-end: var(--gcds-table-filters-border-width) solid
         var(--gcds-table-filters-border-color);
+
+      gcds-button div {
+        display: flex;
+        align-items: center;
+      }
 
       .gcds-table__active-count {
         display: inline-flex;
@@ -360,6 +364,11 @@
         border-block-start: var(--gcds-table-modal-border);
         margin-block-start: var(--gcds-table-modal-spacing);
         padding-block-start: var(--gcds-table-modal-spacing);
+      }
+
+      .gcds-table__modal-sort {
+        --gcds-heading-h3-desktop: var(--gcds-radio-legend-font-desktop);
+        --gcds-heading-h3-mobile: var(--gcds-radio-legend-font-mobile);
       }
 
       /* Normalize gcds-input label styles to match table typography and spacing. */
