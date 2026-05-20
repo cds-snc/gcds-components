@@ -2264,9 +2264,7 @@ export class GcdsTable {
   set paginationSize(_: Components.GcdsTable['paginationSize']) {};
     /**
    * Available page-size options.
-Use 0 to represent "All rows". @default [
-    10, 25, 50, 0,
-  ]
+Use 0 to represent "All rows". @default [10, 25, 50, 0]
    */
   set paginationSizeOptions(_: Components.GcdsTable['paginationSizeOptions']) {};
     /**

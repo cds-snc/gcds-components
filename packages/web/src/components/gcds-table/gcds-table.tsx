@@ -85,9 +85,8 @@ export class GcdsTable {
    * Available page-size options.
    * Use 0 to represent "All rows".
    */
-  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [
-    10, 25, 50, 0,
-  ];
+  // prettier-ignore
+  @Prop({ mutable: true }) paginationSizeOptions: string | number[] = [10, 25, 50, 0];
 
   /** Enable global filter */
   @Prop() filter: boolean = false;

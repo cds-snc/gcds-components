@@ -1407,7 +1407,7 @@ export namespace Components {
         "paginationSize": number;
         /**
           * Available page-size options. Use 0 to represent "All rows".
-          * @default [     10, 25, 50, 0,   ]
+          * @default [10, 25, 50, 0]
          */
         "paginationSizeOptions": string | number[];
         /**
@@ -4031,7 +4031,7 @@ declare namespace LocalJSX {
         "paginationSize"?: number;
         /**
           * Available page-size options. Use 0 to represent "All rows".
-          * @default [     10, 25, 50, 0,   ]
+          * @default [10, 25, 50, 0]
          */
         "paginationSizeOptions"?: string | number[];
         /**
