@@ -90,10 +90,10 @@ describe('gcds-table', () => {
                 <tr>
                   <td class="gcds-table__empty" colspan="0">
                     <div>
-                      <gcds-heading heading-role="secondary" tag="h3">
+                      <gcds-heading heading-role="secondary" margin-bottom="100" margin-top="0" tag="h3">
                         No data to display
                       </gcds-heading>
-                      <gcds-text text-role="secondary">
+                      <gcds-text text-role="secondary" margin-bottom="0">
                         There's currently no data available for this table.
                       </gcds-text>
                     </div>
@@ -117,9 +117,9 @@ describe('gcds-table', () => {
   it('renders caption slot content', async () => {
     const page = await setup(
       '<gcds-table><span slot="caption">' +
-      '<h2>Pokémon</h2>' +
-      'Table of the best Pokémon (first generation).' +
-      '</span></gcds-table>',
+        '<h2>Pokémon</h2>' +
+        'Table of the best Pokémon (first generation).' +
+        '</span></gcds-table>',
     );
 
     expect(
@@ -177,10 +177,10 @@ describe('gcds-table', () => {
           <tr>
             <td class="gcds-table__empty" colspan="0">
               <div>
-                <gcds-heading heading-role="secondary" tag="h3">
+                <gcds-heading heading-role="secondary" margin-bottom="100" margin-top="0" tag="h3">
                   No data to display
                 </gcds-heading>
-                <gcds-text text-role="secondary">
+                <gcds-text text-role="secondary" margin-bottom="0">
                   There's currently no data available for this table.
                 </gcds-text>
               </div>
@@ -303,7 +303,9 @@ describe('gcds-table', () => {
 
     const emptyCell =
       page.root?.shadowRoot?.querySelector('.gcds-table__empty');
-    expect(emptyCell?.textContent).toContain('No data to displayThere\'s currently no data available for this table.');
+    expect(emptyCell?.textContent).toContain(
+      "No data to displayThere's currently no data available for this table.",
+    );
   });
 
   it('re-renders rows when data prop is updated', async () => {
@@ -816,7 +818,10 @@ describe('gcds-table', () => {
     templateElement.setAttribute('slot', 'cell:sprite');
 
     const img = document.createElement('img');
-    img.setAttribute('src', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png');
+    img.setAttribute(
+      'src',
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png',
+    );
     img.setAttribute('alt', 'Squirtle sprite');
     templateElement.content.appendChild(img);
 
@@ -840,7 +845,8 @@ describe('gcds-table', () => {
     expect(firstRowCells[2]?.textContent?.trim()).toBe('5');
     expect(firstRowCells[3]?.textContent?.trim()).toBe('90');
     expect(firstRowCells[4]?.textContent?.trim()).toBe('63');
-    expect(firstRowCells[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-0" data-column="Sprite">
+    expect(firstRowCells[5])
+      .toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-0" data-column="Sprite">
         <slot name="cell-0-sprite"></slot>
       </td>`);
     expect(slot).toEqualHtml(`<span slot="cell-0-sprite">
@@ -867,7 +873,10 @@ describe('gcds-table', () => {
     templateElement.setAttribute('slot', 'cell:sprite');
 
     const img = document.createElement('img');
-    img.setAttribute('data-bind-template-src', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png');
+    img.setAttribute(
+      'data-bind-template-src',
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png',
+    );
     img.setAttribute('data-bind-alt', 'name');
     templateElement.content.appendChild(img);
 
@@ -882,29 +891,35 @@ describe('gcds-table', () => {
 
     expect(headers).toHaveLength(6);
     expect(rows).toHaveLength(3);
-    expect(rows[0]?.querySelectorAll('td')[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-0" data-column="Sprite">
+    expect(rows[0]?.querySelectorAll('td')[5])
+      .toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-0" data-column="Sprite">
         <slot name="cell-0-sprite"></slot>
       </td>`);
-    expect(rows[1]?.querySelectorAll('td')[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-1" data-column="Sprite">
+    expect(rows[1]?.querySelectorAll('td')[5])
+      .toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-1" data-column="Sprite">
         <slot name="cell-1-sprite"></slot>
       </td>`);
-    expect(rows[2]?.querySelectorAll('td')[5]).toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-2" data-column="Sprite">
+    expect(rows[2]?.querySelectorAll('td')[5])
+      .toEqualHtml(`<td class="gcds-table__td" data-cell="sprite-2" data-column="Sprite">
         <slot name="cell-2-sprite"></slot>
       </td>`);
 
-    expect(page.root?.querySelector('span[slot=cell-0-sprite]')).toEqualHtml(`<span slot="cell-0-sprite">
+    expect(page.root?.querySelector('span[slot=cell-0-sprite]'))
+      .toEqualHtml(`<span slot="cell-0-sprite">
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
           alt="Squirtle"
         />
       </span>`);
-    expect(page.root?.querySelector('span[slot=cell-1-sprite]')).toEqualHtml(`<span slot="cell-1-sprite">
+    expect(page.root?.querySelector('span[slot=cell-1-sprite]'))
+      .toEqualHtml(`<span slot="cell-1-sprite">
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
           alt="Wartortle"
         />
       </span>`);
-    expect(page.root?.querySelector('span[slot=cell-2-sprite]')).toEqualHtml(`<span slot="cell-2-sprite">
+    expect(page.root?.querySelector('span[slot=cell-2-sprite]'))
+      .toEqualHtml(`<span slot="cell-2-sprite">
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
           alt="Blastoise"
