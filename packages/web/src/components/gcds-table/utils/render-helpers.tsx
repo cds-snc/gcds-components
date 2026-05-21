@@ -84,7 +84,12 @@ const renderTableStatus = (
   const paginationSize = paginationState?.pageSize ?? 0;
 
   // Filtered results with multiple pages
-  if (el.filter && el.filterValue && el.pagination && table.getPageCount() > 1) {
+  if (
+    el.filter &&
+    el.filterValue &&
+    el.pagination &&
+    table.getPageCount() > 1
+  ) {
     return I18N[lang].showingMatchesPagination
       .replace('{start}', currentPageIndex * paginationSize + 1)
       .replace(
@@ -94,7 +99,12 @@ const renderTableStatus = (
       .replace('{filtered}', filteredRows);
 
     // Filtered results on singular page
-  } else if (el.filter && el.filterValue && el.pagination && table.getPageCount() === 1) {
+  } else if (
+    el.filter &&
+    el.filterValue &&
+    el.pagination &&
+    table.getPageCount() === 1
+  ) {
     return I18N[lang].showingMatches.replace('{matchNumber}', filteredRows);
 
     // No results match filter
@@ -211,7 +221,7 @@ const renderFilterSortModal = element => {
           ) : element.filter ? (
             <gcds-icon name="filter" size="h5" margin-right="50" />
           ) : (
-            <gcds-icon name="arrow-up-down" size="h5" margin-right="50" />
+            <gcds-icon name="sort" size="h5" margin-right="50" />
           )}
 
           {element.filter && element.sortEnabled()
