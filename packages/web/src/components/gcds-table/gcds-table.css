@@ -370,6 +370,10 @@
       .gcds-table__modal-sort {
         --gcds-heading-h3-desktop: var(--gcds-radio-legend-font-desktop);
         --gcds-heading-h3-mobile: var(--gcds-radio-legend-font-mobile);
+
+        div {
+          display: flex;
+        }
       }
 
       /* Normalize gcds-input label styles to match table typography and spacing. */

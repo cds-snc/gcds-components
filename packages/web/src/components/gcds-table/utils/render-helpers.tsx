@@ -184,8 +184,15 @@ const renderSortRadios = (element: {
   return (
     <div class="gcds-table__modal-sort">
       <gcds-heading tag="h3" margin-top="0" margin-bottom="0">
-        <gcds-icon name="sort" margin-right="100" aria-hidden="true" />
-        {I18N[lang].sort}
+        <div>
+          <gcds-icon
+            name="sort"
+            size="h6"
+            margin-right="100"
+            aria-hidden="true"
+          />
+          {I18N[lang].sort}
+        </div>
       </gcds-heading>
       <gcds-radios
         legend={I18N[lang].sort}
