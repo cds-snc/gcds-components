@@ -763,7 +763,7 @@ export class GcdsTable {
           </table>
 
           {/* ── Pagination ─────────────────────────── */}
-          {this.pagination && this.paginationSize !== 0 && (
+          {this.pagination && this.paginationSize !== 0 && rows.length != 0 && (
             <gcds-pagination
               display="list"
               currentPage={this.paginationState.pageIndex + 1}
