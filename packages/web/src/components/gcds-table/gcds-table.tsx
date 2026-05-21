@@ -186,6 +186,7 @@ export class GcdsTable {
   @Watch('paginationCurrentPage')
   onPageChange(newPage: number) {
     if (this.isInitializing) return;
+    newPage = Math.round(newPage);
     this.paginationState = {
       ...this.paginationState,
       pageIndex: Math.max(0, newPage - 1),
@@ -199,6 +200,7 @@ export class GcdsTable {
   @Watch('paginationSize')
   onPageSizeChange(newSize: number) {
     if (this.isInitializing) return;
+    newSize = Math.round(newSize);
     const totalRows = this.table?.getPreFilteredRowModel()?.rows.length ?? 0;
 
     if (newSize === 0) {
@@ -235,6 +237,10 @@ export class GcdsTable {
   @Watch('filterValue')
   onFilterValueChange(newVal: string) {
     if (this.isInitializing) return;
+    if (!this.filter && newVal !== '') {
+      this.filterValue = '';
+      return;
+    }
     this.globalFilter = newVal;
     this.table?.setOptions(prev => ({
       ...prev,
@@ -544,7 +550,7 @@ export class GcdsTable {
           {/* Active pills section */}
           <div class="gcds-table__active-pills">
             {/* Filter pills */}
-            {renderFilterPills(this.filterValue, this.lang, () => {
+            {this.filter && renderFilterPills(this.filterValue, this.lang, () => {
               this.filterValue = '';
               updateTableOptions(this);
             })}
@@ -764,6 +770,7 @@ export class GcdsTable {
               totalPages={this.table.getPageCount()}
               label={I18N[this.lang].paginationLabel}
               onGcdsClick={e => this.handlePaginationClick(e)}
+              lang={this.lang}
             />
           )}
         </section>

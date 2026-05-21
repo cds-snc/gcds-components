@@ -84,7 +84,7 @@ const renderTableStatus = (
   const paginationSize = paginationState?.pageSize ?? 0;
 
   // Filtered results with multiple pages
-  if (el.filterValue && el.pagination && table.getPageCount() > 1) {
+  if (el.filter && el.filterValue && el.pagination && table.getPageCount() > 1) {
     return I18N[lang].showingMatchesPagination
       .replace('{start}', currentPageIndex * paginationSize + 1)
       .replace(
@@ -94,11 +94,11 @@ const renderTableStatus = (
       .replace('{filtered}', filteredRows);
 
     // Filtered results on singular page
-  } else if (el.filterValue && el.pagination && table.getPageCount() === 1) {
+  } else if (el.filter && el.filterValue && el.pagination && table.getPageCount() === 1) {
     return I18N[lang].showingMatches.replace('{matchNumber}', filteredRows);
 
     // No results match filter
-  } else if (el.filterValue && filteredRows === 0) {
+  } else if (el.filter && el.filterValue && filteredRows === 0) {
     return I18N[lang].showingNoMatches;
 
     // Rows across multiple pages
@@ -197,7 +197,7 @@ const getSortValue = (sort: SortingState) => {
 };
 
 const renderFilterSortModal = element => {
-  const { filterValue, lang } = element;
+  const { filter, filterValue, lang } = element;
   return (
     <div class="gcds-table__filters">
       <gcds-button
@@ -220,7 +220,7 @@ const renderFilterSortModal = element => {
               ? I18N[lang].filter
               : I18N[lang].sort}
           {/* Currently only shows one when filter is active, will need to be expanded when filter queries are expanded */}
-          {filterValue && (
+          {filter && filterValue && (
             <Fragment>
               <gcds-sr-only tag="span">:</gcds-sr-only>
               <span
