@@ -291,6 +291,13 @@ export function handleValidationResult(
  * @param el - the gcds form element that is being validated
  */
 export function formatHTMLErrorMessage(error, lang, el) {
+  console.log('step', el.step);
+  console.log('min', el.min);
+  console.log('low', (Number(el.value) / Number(el.step)) * Number(el.step));
+  console.log(
+    'high',
+    (Number(el.value) / Number(el.step)) * Number(el.step) + Number(el.step),
+  );
   switch (error) {
     case 'valueMissing':
       return validationErrors[lang][error];
@@ -313,16 +320,17 @@ export function formatHTMLErrorMessage(error, lang, el) {
     case 'rangeOverflow':
       return validationErrors[lang][error].replace('{max}', el.max);
     case 'stepMismatch':
+      const value = Number(el.value);
+      const step = el.step === 'any' ? 0 : Number(el.step || 1);
+      const base = el.min !== undefined && el.min !== null ? Number(el.min) : 0;
+      const offset = (value - base) / step;
+
+      const lower = base + Math.floor(offset) * step;
+      const upper = base + Math.ceil(offset) * step;
+
       return validationErrors[lang][error]
-        .replace(
-          '{lower}',
-          Math.floor(Number(el.value) / Number(el.step)) * Number(el.step),
-        )
-        .replace(
-          '{upper}',
-          Math.floor(Number(el.value) / Number(el.step)) * Number(el.step) +
-            Number(el.step),
-        );
+        .replace('{lower}', lower)
+        .replace('{upper}', upper);
     case 'badInput':
     case 'patternMismatch':
     default:
