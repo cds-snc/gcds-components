@@ -291,13 +291,6 @@ export function handleValidationResult(
  * @param el - the gcds form element that is being validated
  */
 export function formatHTMLErrorMessage(error, lang, el) {
-  console.log('step', el.step);
-  console.log('min', el.min);
-  console.log('low', (Number(el.value) / Number(el.step)) * Number(el.step));
-  console.log(
-    'high',
-    (Number(el.value) / Number(el.step)) * Number(el.step) + Number(el.step),
-  );
   switch (error) {
     case 'valueMissing':
       return validationErrors[lang][error];
