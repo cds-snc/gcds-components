@@ -207,6 +207,21 @@
           height: var(--gcds-table-pill-icon-size);
           margin-inline-start: var(--gcds-table-pill-icon-margin);
         }
+
+        &:hover:not(:focus) {
+          background-color: var(--gcds-table-pill-hover-background);
+          color: var(--gcds-table-pill-hover-text);
+        }
+
+        &:focus {
+          background-color: var(--gcds-table-pill-focus-background);
+          color: var(--gcds-table-pill-focus-text);
+          outline: var(--gcds-table-pill-focus-outline-width) solid
+            var(--gcds-table-pill-focus-background);
+          outline-offset: var(--gcds-table-pill-focus-outline-offset);
+          border-color: var(--gcds-table-pill-focus-background);
+          box-shadow: var(--gcds-table-pill-focus-box-shadow);
+        }
       }
 
       .gcds-table__active-sorting {
