@@ -29,8 +29,8 @@ A text area is a space to enter long-form information in response to a question 
 | `rows`                    | `rows`          | Default value for textarea rows.                                                                                           | `number`                                            | `5`         |
 | `textareaId` _(required)_ | `textarea-id`   | Id attribute for a textarea element.                                                                                       | `string`                                            | `undefined` |
 | `validateOn`              | `validate-on`   | Set event to call validator                                                                                                | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
-| `validator`               | --              | Array of validators                                                                                                        | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `validity`                | --              | Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| `validator`               | `validator`     | Array of validators                                                                                                        | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validity`                | `validity`      | Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
 | `value`                   | `value`         | Default value for an input element.                                                                                        | `string`                                            | `undefined` |
 
 

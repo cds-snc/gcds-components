@@ -25,8 +25,8 @@ Checkboxes provide a set of options for multiple responses.
 | `options` _(required)_ | `options`       | Options to render checkboxes buttons                                                                                         | `CheckboxObject[] \| string`                        | `undefined` |
 | `required`             | `required`      | Specifies if the checkboxes are required or not.                                                                             | `boolean`                                           | `undefined` |
 | `validateOn`           | `validate-on`   | Set event to call validator                                                                                                  | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
-| `validator`            | --              | Array of validators                                                                                                          | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `validity`             | --              | Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| `validator`            | `validator`     | Array of validators                                                                                                          | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validity`             | `validity`      | Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
 | `value`                | `value`         | Value for checkboxes component.                                                                                              | `string \| string[]`                                | `[]`        |
 
 

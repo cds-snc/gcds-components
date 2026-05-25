@@ -3,6 +3,9 @@ import { SpacingValues } from '../../utils/types/spacing';
 import i18n from './i18n/i18n';
 
 export type IconNames =
+  | 'arrow-down'
+  | 'arrow-up'
+  | 'arrow-up-down'
   | 'checkmark-circle'
   | 'chevron-down'
   | 'chevron-left'
@@ -13,9 +16,12 @@ export type IconNames =
   | 'email'
   | 'exclamation-circle'
   | 'external'
+  | 'filter'
   | 'info-circle'
   | 'phone'
   | 'search'
+  | 'sort'
+  | 'tune'
   | 'warning-triangle';
 
 /**
@@ -56,6 +62,9 @@ export class GcdsIcon {
   @Watch('name')
   validateName(newValue: string) {
     const values = [
+      'arrow-down',
+      'arrow-up',
+      'arrow-up-down',
       'checkmark-circle',
       'chevron-down',
       'chevron-left',
@@ -66,9 +75,12 @@ export class GcdsIcon {
       'email',
       'exclamation-circle',
       'external',
+      'filter',
       'info-circle',
       'phone',
       'search',
+      'sort',
+      'tune',
       'warning-triangle',
     ];
 
