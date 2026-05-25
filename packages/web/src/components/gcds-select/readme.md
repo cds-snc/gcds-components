@@ -26,8 +26,8 @@ A select provides a large list of options for single selection.
 | `required`              | `required`      | Specifies if a form field is required or not.                                                                            | `boolean`                                           | `false`     |
 | `selectId` _(required)_ | `select-id`     | Id attribute for a select element.                                                                                       | `string`                                            | `undefined` |
 | `validateOn`            | `validate-on`   | Set event to call validator                                                                                              | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
-| `validator`             | `validator`     | Array of validators                                                                                                      | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `validity`              | `validity`      | Read-only property of the select, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| `validator`             | --              | Array of validators                                                                                                      | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validity`              | --              | Read-only property of the select, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
 | `value`                 | `value`         | Value for a select element.                                                                                              | `string`                                            | `undefined` |
 
 

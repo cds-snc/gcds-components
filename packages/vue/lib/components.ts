@@ -47,6 +47,7 @@ import { defineCustomElement as defineGcdsTopNav } from '@gcds-core/components/d
 import { defineCustomElement as defineGcdsTopicMenu } from '@gcds-core/components/dist/components/gcds-topic-menu.js';
 
 
+
 export const GcdsAlert: StencilVueComponent<JSX.GcdsAlert> = /*@__PURE__*/ defineContainer<JSX.GcdsAlert>('gcds-alert', defineGcdsAlert, [
   'alertRole',
   'container',
@@ -151,7 +152,7 @@ export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes, JSX.GcdsChe
   'gcdsError',
   'gcdsValid'
 ],
-'value', 'gcdsChange');
+'value', 'gcdsChange', undefined);
 
 
 export const GcdsContainer: StencilVueComponent<JSX.GcdsContainer> = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', defineGcdsContainer, [
@@ -195,7 +196,7 @@ export const GcdsDateInput: StencilVueComponent<JSX.GcdsDateInput, JSX.GcdsDateI
   'gcdsError',
   'gcdsValid'
 ],
-'value', 'gcdsChange');
+'value', 'gcdsChange', undefined);
 
 
 export const GcdsDateModified: StencilVueComponent<JSX.GcdsDateModified> = /*@__PURE__*/ defineContainer<JSX.GcdsDateModified>('gcds-date-modified', defineGcdsDateModified, [
@@ -276,7 +277,7 @@ export const GcdsFileUploader: StencilVueComponent<JSX.GcdsFileUploader, JSX.Gcd
   'gcdsError',
   'gcdsValid'
 ],
-'value', 'gcdsChange');
+'value', 'gcdsChange', undefined);
 
 
 export const GcdsFooter: StencilVueComponent<JSX.GcdsFooter> = /*@__PURE__*/ defineContainer<JSX.GcdsFooter>('gcds-footer', defineGcdsFooter, [
@@ -402,7 +403,7 @@ export const GcdsInput: StencilVueComponent<JSX.GcdsInput, JSX.GcdsInput["value"
   'gcdsError',
   'gcdsValid'
 ],
-'value', 'gcdsChange');
+'value', 'gcdsChange', undefined);
 
 
 export const GcdsLabel: StencilVueComponent<JSX.GcdsLabel> = /*@__PURE__*/ defineContainer<JSX.GcdsLabel>('gcds-label', defineGcdsLabel, [
@@ -529,7 +530,7 @@ export const GcdsRadios: StencilVueComponent<JSX.GcdsRadios, JSX.GcdsRadios["val
   'gcdsValid',
   'gcdsError'
 ],
-'value', 'gcdsChange');
+'value', 'gcdsChange', undefined);
 
 
 export const GcdsSearch: StencilVueComponent<JSX.GcdsSearch> = /*@__PURE__*/ defineContainer<JSX.GcdsSearch>('gcds-search', defineGcdsSearch, [
@@ -585,7 +586,7 @@ export const GcdsSelect: StencilVueComponent<JSX.GcdsSelect, JSX.GcdsSelect["val
   'gcdsError',
   'gcdsValid'
 ],
-'value', 'gcdsChange');
+'value', 'gcdsChange', undefined);
 
 
 export const GcdsSideNav: StencilVueComponent<JSX.GcdsSideNav> = /*@__PURE__*/ defineContainer<JSX.GcdsSideNav>('gcds-side-nav', defineGcdsSideNav, [
@@ -656,7 +657,7 @@ export const GcdsTextarea: StencilVueComponent<JSX.GcdsTextarea, JSX.GcdsTextare
   'gcdsError',
   'gcdsValid'
 ],
-'value', 'gcdsChange');
+'value', 'gcdsChange', undefined);
 
 
 export const GcdsTopNav: StencilVueComponent<JSX.GcdsTopNav> = /*@__PURE__*/ defineContainer<JSX.GcdsTopNav>('gcds-top-nav', defineGcdsTopNav, [
@@ -668,4 +669,5 @@ export const GcdsTopNav: StencilVueComponent<JSX.GcdsTopNav> = /*@__PURE__*/ def
 export const GcdsTopicMenu: StencilVueComponent<JSX.GcdsTopicMenu> = /*@__PURE__*/ defineContainer<JSX.GcdsTopicMenu>('gcds-topic-menu', defineGcdsTopicMenu, [
   'home'
 ]);
+
 
