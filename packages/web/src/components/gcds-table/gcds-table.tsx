@@ -282,8 +282,7 @@ export class GcdsTable {
       page: this.paginationState.pageIndex + 1,
       pageSize: this.paginationSize,
       filterValue: this.filterValue,
-      sortKey: this.sorting[0]?.id ?? null,
-      sortDirection: this.sorting[0]?.desc ? 'desc' : 'asc',
+      sorting: this.sorting.length > 0 ? this.sorting : null,
     });
   }
 

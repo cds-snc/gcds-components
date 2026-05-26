@@ -13549,7 +13549,7 @@
       "path": "src/components/gcds-table/utils/table-helpers.ts"
     },
     "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange": {
-      "declaration": "export interface GcdsTableStateChange {\n  visibleRows: Array<{\n    rowId: string; // stable TanStack row id — does not change with sort/filter\n    rowIndex: number; // current visible position in the table\n    original: unknown; // the original data object for this row\n  }>;\n  page: number;\n  pageSize: number;\n  filterValue: string;\n  sortKey: string | null;\n  sortDirection: 'asc' | 'desc' | false;\n}",
+      "declaration": "export interface GcdsTableStateChange {\n  visibleRows: Array<{\n    rowId: string; // stable TanStack row id — does not change with sort/filter\n    rowIndex: number; // current visible position in the table\n    original: unknown; // the original data object for this row\n  }>;\n  page: number;\n  pageSize: number;\n  filterValue: string;\n  sorting: SortingState | null;\n}",
       "docstring": "",
       "path": "src/components/gcds-table/utils/table-helpers.ts"
     }

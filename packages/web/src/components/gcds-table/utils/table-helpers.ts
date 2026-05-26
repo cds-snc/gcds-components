@@ -37,8 +37,7 @@ export interface GcdsTableStateChange {
   page: number;
   pageSize: number;
   filterValue: string;
-  sortKey: string | null;
-  sortDirection: 'asc' | 'desc' | false;
+  sorting: SortingState | null;
 }
 
 const buildInitialSorting = (
