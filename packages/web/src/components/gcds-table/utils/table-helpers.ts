@@ -163,8 +163,8 @@ const parseSizeOptions = (options: string | number[]): number[] => {
       return defaultValue;
     }
   } else if (
-    Array.isArray(options) ||
-    !(options as number[]).every(v => typeof v === 'number')
+    Array.isArray(options) &&
+    options.every(v => typeof v === 'number')
   ) {
     return options;
   } else {

@@ -67,7 +67,7 @@ const Table = () => {
           pagination={true}
           filter={true}
           sort={true}
-          paginationSizeOptions={[10, 25, 50, 0]}
+          paginationSizeOptions={[1, 2, 10, 25, 50, 0]}
           columns={[
             {
               field: 'number',
