@@ -26,15 +26,15 @@ const createFileFromMockFile = (file: MockFile): File => {
 };
 
 const createMockFileList = (files: MockFile[]) => {
-  const fileList: FileList = {
+  const fileList = {
     length: files.length,
     item(index: number): File {
       return fileList[index];
     },
-    [Symbol.iterator]: function (): IterableIterator<File> {
-      throw new Error('Function not implemented.');
+    [Symbol.iterator](): ArrayIterator<File> {
+      return Array.prototype[Symbol.iterator].call(this as unknown as FileList) as ArrayIterator<File>;
     },
-  };
+  } as unknown as FileList;
   files.forEach(
     (file, index) => (fileList[index] = createFileFromMockFile(file)),
   );
@@ -172,173 +172,173 @@ describe('Required date input validator', () => {
     value: string;
     res: ValidatorReturn;
   }> = [
-    {
-      value: '1991-03-04',
-      res: { valid: true, reason: { en: '', fr: '' } },
-    },
-    {
-      value: '1992-02-29',
-      res: { valid: true, reason: { en: '', fr: '' } },
-    },
-    {
-      value: '1991-03',
-      res: { valid: true, reason: { en: '', fr: '' } },
-    },
-    {
-      value: '--',
-      res: {
-        valid: false,
-        errors: { day: true, month: true, year: true },
-        reason: {
-          en: validationErrors.en.dateInput.all,
-          fr: validationErrors.fr.dateInput.all,
+      {
+        value: '1991-03-04',
+        res: { valid: true, reason: { en: '', fr: '' } },
+      },
+      {
+        value: '1992-02-29',
+        res: { valid: true, reason: { en: '', fr: '' } },
+      },
+      {
+        value: '1991-03',
+        res: { valid: true, reason: { en: '', fr: '' } },
+      },
+      {
+        value: '--',
+        res: {
+          valid: false,
+          errors: { day: true, month: true, year: true },
+          reason: {
+            en: validationErrors.en.dateInput.all,
+            fr: validationErrors.fr.dateInput.all,
+          },
         },
       },
-    },
-    {
-      value: '-',
-      res: {
-        valid: false,
-        errors: { day: true, month: true, year: true },
-        reason: {
-          en: validationErrors.en.dateInput.all,
-          fr: validationErrors.fr.dateInput.all,
+      {
+        value: '-',
+        res: {
+          valid: false,
+          errors: { day: true, month: true, year: true },
+          reason: {
+            en: validationErrors.en.dateInput.all,
+            fr: validationErrors.fr.dateInput.all,
+          },
         },
       },
-    },
-    {
-      value: '1991-03-',
-      res: {
-        valid: false,
-        errors: { day: true, month: false, year: false },
-        reason: {
-          en: validationErrors.en.dateInput.missingday,
-          fr: validationErrors.fr.dateInput.missingday,
+      {
+        value: '1991-03-',
+        res: {
+          valid: false,
+          errors: { day: true, month: false, year: false },
+          reason: {
+            en: validationErrors.en.dateInput.missingday,
+            fr: validationErrors.fr.dateInput.missingday,
+          },
         },
       },
-    },
-    {
-      value: '1991--04',
-      res: {
-        valid: false,
-        errors: { day: false, month: true, year: false },
-        reason: {
-          en: validationErrors.en.dateInput.missingmonth,
-          fr: validationErrors.fr.dateInput.missingmonth,
+      {
+        value: '1991--04',
+        res: {
+          valid: false,
+          errors: { day: false, month: true, year: false },
+          reason: {
+            en: validationErrors.en.dateInput.missingmonth,
+            fr: validationErrors.fr.dateInput.missingmonth,
+          },
         },
       },
-    },
-    {
-      value: '1991-',
-      res: {
-        valid: false,
-        errors: { day: false, month: true, year: false },
-        reason: {
-          en: validationErrors.en.dateInput.missingmonth,
-          fr: validationErrors.fr.dateInput.missingmonth,
+      {
+        value: '1991-',
+        res: {
+          valid: false,
+          errors: { day: false, month: true, year: false },
+          reason: {
+            en: validationErrors.en.dateInput.missingmonth,
+            fr: validationErrors.fr.dateInput.missingmonth,
+          },
         },
       },
-    },
-    {
-      value: '-03-04',
-      res: {
-        valid: false,
-        errors: { day: false, month: false, year: true },
-        reason: {
-          en: validationErrors.en.dateInput.missingyear,
-          fr: validationErrors.fr.dateInput.missingyear,
+      {
+        value: '-03-04',
+        res: {
+          valid: false,
+          errors: { day: false, month: false, year: true },
+          reason: {
+            en: validationErrors.en.dateInput.missingyear,
+            fr: validationErrors.fr.dateInput.missingyear,
+          },
         },
       },
-    },
-    {
-      value: '-03',
-      res: {
-        valid: false,
-        errors: { day: false, month: false, year: true },
-        reason: {
-          en: validationErrors.en.dateInput.missingyear,
-          fr: validationErrors.fr.dateInput.missingyear,
+      {
+        value: '-03',
+        res: {
+          valid: false,
+          errors: { day: false, month: false, year: true },
+          reason: {
+            en: validationErrors.en.dateInput.missingyear,
+            fr: validationErrors.fr.dateInput.missingyear,
+          },
         },
       },
-    },
-    {
-      value: '1991--',
-      res: {
-        valid: false,
-        errors: { day: true, month: true, year: false },
-        reason: {
-          en: validationErrors.en.dateInput.missingmonthday,
-          fr: validationErrors.fr.dateInput.missingmonthday,
+      {
+        value: '1991--',
+        res: {
+          valid: false,
+          errors: { day: true, month: true, year: false },
+          reason: {
+            en: validationErrors.en.dateInput.missingmonthday,
+            fr: validationErrors.fr.dateInput.missingmonthday,
+          },
         },
       },
-    },
-    {
-      value: '-03-',
-      res: {
-        valid: false,
-        errors: { day: true, month: false, year: true },
-        reason: {
-          en: validationErrors.en.dateInput.missingdayyear,
-          fr: validationErrors.fr.dateInput.missingdayyear,
+      {
+        value: '-03-',
+        res: {
+          valid: false,
+          errors: { day: true, month: false, year: true },
+          reason: {
+            en: validationErrors.en.dateInput.missingdayyear,
+            fr: validationErrors.fr.dateInput.missingdayyear,
+          },
         },
       },
-    },
-    {
-      value: '--04',
-      res: {
-        valid: false,
-        errors: { day: false, month: true, year: true },
-        reason: {
-          en: validationErrors.en.dateInput.missingmonthyear,
-          fr: validationErrors.fr.dateInput.missingmonthyear,
+      {
+        value: '--04',
+        res: {
+          valid: false,
+          errors: { day: false, month: true, year: true },
+          reason: {
+            en: validationErrors.en.dateInput.missingmonthyear,
+            fr: validationErrors.fr.dateInput.missingmonthyear,
+          },
         },
       },
-    },
-    {
-      value: '19991-03-04',
-      res: {
-        valid: false,
-        errors: { day: false, month: false, year: true },
-        reason: {
-          en: validationErrors.en.dateInput.invalidyearlength,
-          fr: validationErrors.fr.dateInput.invalidyearlength,
+      {
+        value: '19991-03-04',
+        res: {
+          valid: false,
+          errors: { day: false, month: false, year: true },
+          reason: {
+            en: validationErrors.en.dateInput.invalidyearlength,
+            fr: validationErrors.fr.dateInput.invalidyearlength,
+          },
         },
       },
-    },
-    {
-      value: '-991-03-04',
-      res: {
-        valid: false,
-        errors: { day: false, month: false, year: true },
-        reason: {
-          en: validationErrors.en.dateInput.missingyear,
-          fr: validationErrors.fr.dateInput.missingyear,
+      {
+        value: '-991-03-04',
+        res: {
+          valid: false,
+          errors: { day: false, month: false, year: true },
+          reason: {
+            en: validationErrors.en.dateInput.missingyear,
+            fr: validationErrors.fr.dateInput.missingyear,
+          },
         },
       },
-    },
-    {
-      value: '1991-35-04',
-      res: {
-        valid: false,
-        errors: { day: false, month: true, year: false },
-        reason: {
-          en: validationErrors.en.dateInput.invalidmonth,
-          fr: validationErrors.fr.dateInput.invalidmonth,
+      {
+        value: '1991-35-04',
+        res: {
+          valid: false,
+          errors: { day: false, month: true, year: false },
+          reason: {
+            en: validationErrors.en.dateInput.invalidmonth,
+            fr: validationErrors.fr.dateInput.invalidmonth,
+          },
         },
       },
-    },
-    {
-      value: '1991-03-34',
-      res: {
-        valid: false,
-        errors: { day: true, month: false, year: false },
-        reason: {
-          en: validationErrors.en.dateInput.invalidday,
-          fr: validationErrors.fr.dateInput.invalidday,
+      {
+        value: '1991-03-34',
+        res: {
+          valid: false,
+          errors: { day: true, month: false, year: false },
+          reason: {
+            en: validationErrors.en.dateInput.invalidday,
+            fr: validationErrors.fr.dateInput.invalidday,
+          },
         },
       },
-    },
-  ];
+    ];
   results.forEach(i =>
     it(`Should return ${i.res.valid} for ${i.value}`, () => {
       expect(requiredDateInput.validate(i.value)).toEqual(i.res);
@@ -403,59 +403,59 @@ describe('Required date input validator', () => {
       value: string;
       res: ValidatorReturn;
     }> = [
-      {
-        value: '1991-03-04',
-        res: { valid: true, reason: { en: '', fr: '' } },
-      },
-      {
-        value: '1992-02-29',
-        res: { valid: true, reason: { en: '', fr: '' } },
-      },
-      {
-        value: '1991--04',
-        res: {
-          valid: false,
-          errors: { day: false, month: true, year: false },
-          reason: {
-            en: validationErrors.en.dateInput.missingmonthinput,
-            fr: validationErrors.fr.dateInput.missingmonthinput,
+        {
+          value: '1991-03-04',
+          res: { valid: true, reason: { en: '', fr: '' } },
+        },
+        {
+          value: '1992-02-29',
+          res: { valid: true, reason: { en: '', fr: '' } },
+        },
+        {
+          value: '1991--04',
+          res: {
+            valid: false,
+            errors: { day: false, month: true, year: false },
+            reason: {
+              en: validationErrors.en.dateInput.missingmonthinput,
+              fr: validationErrors.fr.dateInput.missingmonthinput,
+            },
           },
         },
-      },
-      {
-        value: '1991--',
-        res: {
-          valid: false,
-          errors: { day: true, month: true, year: false },
-          reason: {
-            en: validationErrors.en.dateInput.missingmonthinputday,
-            fr: validationErrors.fr.dateInput.missingmonthinputday,
+        {
+          value: '1991--',
+          res: {
+            valid: false,
+            errors: { day: true, month: true, year: false },
+            reason: {
+              en: validationErrors.en.dateInput.missingmonthinputday,
+              fr: validationErrors.fr.dateInput.missingmonthinputday,
+            },
           },
         },
-      },
-      {
-        value: '--04',
-        res: {
-          valid: false,
-          errors: { day: false, month: true, year: true },
-          reason: {
-            en: validationErrors.en.dateInput.missingmonthinputyear,
-            fr: validationErrors.fr.dateInput.missingmonthinputyear,
+        {
+          value: '--04',
+          res: {
+            valid: false,
+            errors: { day: false, month: true, year: true },
+            reason: {
+              en: validationErrors.en.dateInput.missingmonthinputyear,
+              fr: validationErrors.fr.dateInput.missingmonthinputyear,
+            },
           },
         },
-      },
-      {
-        value: '--',
-        res: {
-          valid: false,
-          errors: { day: true, month: true, year: true },
-          reason: {
-            en: validationErrors.en.dateInput.all,
-            fr: validationErrors.fr.dateInput.all,
+        {
+          value: '--',
+          res: {
+            valid: false,
+            errors: { day: true, month: true, year: true },
+            reason: {
+              en: validationErrors.en.dateInput.all,
+              fr: validationErrors.fr.dateInput.all,
+            },
           },
         },
-      },
-    ];
+      ];
 
     isoResults.forEach(i => {
       expect(

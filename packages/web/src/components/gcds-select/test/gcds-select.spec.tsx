@@ -9,7 +9,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false">
@@ -30,7 +30,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" disabled error-message="">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper gcds-disabled">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false" disabled>
@@ -51,7 +51,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" error-message="This is an error message.">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper gcds-error">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <gcds-error-message messageId="select">
@@ -75,7 +75,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" hint="This is a hint.">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <gcds-hint hint-id="select">This is a hint.</gcds-hint>
@@ -97,7 +97,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" name="select-name" label="select">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false">
@@ -118,7 +118,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false">
@@ -139,7 +139,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" hide-label>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label hide-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false">
@@ -160,7 +160,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" required>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en" required=""></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false" required="">
@@ -187,7 +187,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false">
@@ -220,7 +220,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" name="select" label="select" default-value="Please select one">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select" part="select" aria-invalid="false">
@@ -253,7 +253,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" name="select" label="select">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select" part="select" aria-invalid="false">
@@ -278,7 +278,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" autocomplete="on">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false" autocomplete="on">
@@ -299,7 +299,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" form="formID">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false" form="formID">
@@ -320,7 +320,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" autofocus>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false" autofocus>
@@ -347,7 +347,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" value="2">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false" value="2">
@@ -382,7 +382,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false" value="2">
@@ -417,7 +417,7 @@ describe('gcds-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" value="5">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-select-wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false">

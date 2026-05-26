@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "@gcds-core/components": "^1.2.0",
-    "@stencil/react-output-target": "^1.1.0"
+    "@stencil/react-output-target": "^1.5.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",
