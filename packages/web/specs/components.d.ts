@@ -38,6 +38,17 @@ interface ComponentCompilerTypeReference {
    * An ID for this type which is unique within a Stencil project.
    */
   id: string;
+  /**
+   * Whether this type was imported as a default import (e.g., `import MyEnum from './my-enum'`)
+   * vs a named import (e.g., `import { MyType } from './my-type'`)
+   */
+  isDefault?: boolean;
+  /**
+   * The name used in the import statement (before any user-defined alias).
+   * For `import { XAxisOption as moo }`, this would be "XAxisOption".
+   * This is the name exported by the source module.
+   */
+  referenceLocation?: string;
 }
 interface ComponentCompilerReferencedType {
   /**
@@ -196,6 +207,10 @@ export interface JsonDocsComponent {
    * Array of component Parts information, generate from `@part` tags
    */
   parts: JsonDocsPart[];
+  /**
+   * Array of custom states defined via @AttachInternals({ states: {...} })
+   */
+  customStates: JsonDocsCustomState[];
   /**
    * Array of metadata describing where the current component is used
    */
@@ -410,6 +425,28 @@ export interface JsonDocsPart {
   name: string;
   /**
    * A textual description of the Shadow part.
+   */
+  docs: string;
+}
+/**
+ * A descriptor for a Custom State defined via @AttachInternals({ states: {...} })
+ *
+ * Custom states are exposed via the ElementInternals.states CustomStateSet
+ * and can be targeted with the CSS `:state()` pseudo-class.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet
+ */
+export interface JsonDocsCustomState {
+  /**
+   * The name of the custom state (without dashes)
+   */
+  name: string;
+  /**
+   * The initial/default value of the state
+   */
+  initialValue: boolean;
+  /**
+   * A textual description of the custom state
    */
   docs: string;
 }

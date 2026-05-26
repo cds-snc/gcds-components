@@ -15,7 +15,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -49,7 +49,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes required legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -86,7 +86,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]' value='["checkbox1"]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -119,7 +119,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1", "checked": true}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -153,7 +153,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" hint="Hint for checkboxes" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend checkboxes-hint" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -189,7 +189,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1", "hint": "First option"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -226,7 +226,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" error-message="Choose an option to continue." options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -265,7 +265,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" disabled error-message="" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -299,7 +299,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" form="form-id" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]' form="form-id">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -333,7 +333,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" autofocus options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               Group of checkboxes
@@ -367,7 +367,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]' hide-legend>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="checkboxes-legend" class="gcds-checkboxes__fieldset" tabindex="-1">
             <legend class="gcds-checkboxes__legend" id="checkboxes-legend">
               <gcds-sr-only tag="span">
@@ -405,7 +405,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox">
             <input id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -426,7 +426,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes required legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox">
             <input id="checkbox1" name="checkgroup" type="checkbox" required="" value="checkbox1">
             <gcds-label required label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -447,7 +447,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]' value='["checkbox1"]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox">
             <input checked="" id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -467,7 +467,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1", "checked": true}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox">
             <input checked="" id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -488,7 +488,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]' hint="Only one checkbox">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox">
             <input id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -512,7 +512,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]' error-message="You must check the box to continue.">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox gcds-checkbox--error">
             <input aria-description="You must check the box to continue." aria-invalid="true" id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -536,7 +536,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" error-message="" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]' disabled>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox gcds-checkbox--disabled">
             <input disabled="" id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -557,7 +557,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]' form="form-id">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox">
             <input id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1" form="form-id">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -578,7 +578,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]' autofocus>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox">
             <input id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" lang="en"></gcds-label>
@@ -599,7 +599,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}]' hide-label>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-checkbox">
             <input id="checkbox1" name="checkgroup" type="checkbox" value="checkbox1">
             <gcds-label label="Checkbox 1 label" label-for="checkbox1" hide-label lang="en"></gcds-label>
@@ -617,7 +617,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-checkboxes>
     `);
@@ -632,7 +632,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes name="checkgroup" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-checkboxes>
     `);
@@ -647,7 +647,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" options='[{ "label": "Checkbox 1 label", "id": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "id": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "id": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-checkboxes>
     `);
@@ -662,7 +662,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-checkboxes>
     `);
@@ -678,7 +678,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-checkboxes>
     `);
@@ -694,7 +694,7 @@ describe('gcds-checkbox', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-checkboxes legend="Group of checkboxes" name="checkgroup" options='[{ "label": "Checkbox 1 label", "ids": "checkbox1", "value": "checkbox1"}, { "label": "Checkbox 2 label", "ids": "checkbox2", "value": "checkbox2"}, { "label": "Checkbox 3 label", "ids": "checkbox3", "value": "checkbox3"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-checkboxes>
     `);
