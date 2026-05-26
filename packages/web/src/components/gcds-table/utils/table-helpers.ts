@@ -141,9 +141,7 @@ const updateTableOptions = (GcdsTable: any) => {
 
 const parseSizeOptions = (options: string | number[]): number[] => {
   const defaultValue = [10, 25, 50, 0];
-  if (options === defaultValue) {
-    return defaultValue;
-  }
+
   if (typeof options === 'string') {
     try {
       const parsed = JSON.parse(options);
@@ -162,17 +160,16 @@ const parseSizeOptions = (options: string | number[]): number[] => {
       console.error('[gcds-table] Error parsing pagination-size-options:', e);
       return defaultValue;
     }
-  } else if (
-    Array.isArray(options) &&
-    options.every(v => typeof v === 'number')
-  ) {
-    return options;
-  } else {
-    console.error(
-      '[gcds-table] Invalid pagination-size-options type. Expected string or array of numbers.',
-    );
-    return defaultValue;
   }
+
+  if (Array.isArray(options) && options.every(v => typeof v === 'number')) {
+    return options;
+  }
+
+  console.error(
+    '[gcds-table] Invalid pagination-size-options type. Expected string or array of numbers.',
+  );
+  return defaultValue;
 };
 
 export {
