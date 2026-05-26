@@ -9225,6 +9225,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-table"
       ],
@@ -9807,6 +9808,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-table"
       ],
@@ -10767,6 +10769,7 @@
           "docs": ""
         }
       ],
+      "states": [],
       "dependents": [
         "gcds-date-input",
         "gcds-table"
@@ -11421,7 +11424,8 @@
               "TableColumn": {
                 "location": "import",
                 "path": "./utils/table-helpers",
-                "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumn"
+                "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumn",
+                "referenceLocation": "TableColumn"
               }
             }
           },
@@ -11728,7 +11732,8 @@
               "GcdsTableStateChange": {
                 "location": "import",
                 "path": "./utils/table-helpers",
-                "id": "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange"
+                "id": "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange",
+                "referenceLocation": "GcdsTableStateChange"
               }
             }
           },
@@ -11751,6 +11756,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-select",

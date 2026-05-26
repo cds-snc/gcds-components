@@ -98,11 +98,11 @@ export function GcdsTableWithSlots({
       columns={wcColumns}
       data={data}
       filter={filter}
-      filter-value={filterValue}
+      filterValue={filterValue}
       pagination={pagination}
-      pagination-current-page={paginationCurrentPage}
-      pagination-size={paginationSize}
-      pagination-size-options={JSON.stringify(paginationSizeOptions)}
+      paginationCurrentPage={paginationCurrentPage}
+      paginationSize={paginationSize}
+      paginationSizeOptions={paginationSizeOptions}
       sort={sort}
     >
       {children}

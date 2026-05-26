@@ -219,7 +219,7 @@ const renderFilterSortModal = element => {
     <div class="gcds-table__filters">
       <gcds-button
         size="small"
-        buttonRole="primary"
+        button-role="primary"
         onClick={() => element.filterSortModal.showModal()}
       >
         <div>

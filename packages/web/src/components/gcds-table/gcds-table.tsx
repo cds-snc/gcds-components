@@ -29,6 +29,7 @@ import {
   buildInitialSorting,
   buildTableOptions,
   updateTableOptions,
+  parseSizeOptions,
 } from './utils/table-helpers';
 import {
   getSortIcon,
@@ -150,7 +151,7 @@ export class GcdsTable {
       try {
         this.data = JSON.parse(newVal);
       } catch (e) {
-        console.error('[gcds-table] Invalid JSON in column-data:', e);
+        console.error('[gcds-table] Invalid JSON in data property:', e);
       }
     }
     updateTableOptions(this);
@@ -225,12 +226,11 @@ export class GcdsTable {
   }
 
   @Watch('paginationSizeOptions')
-  onSizeOptionsChange(newVal: number[]) {
+  onSizeOptionsChange(newVal: string | number[]) {
     if (this.isInitializing) return;
-    if (!Array.isArray(newVal)) {
-      this.paginationSizeOptions = [10, 25, 50, 0];
-      return;
-    }
+
+    this.paginationSizeOptions = parseSizeOptions(newVal);
+
     updateTableOptions(this);
   }
 
@@ -331,9 +331,6 @@ export class GcdsTable {
       } else {
         el.setAttribute(prop, String(value ?? ''));
       }
-
-      // remove data-bind- attribute from final element
-      el.removeAttribute(binding.name);
     }
   }
 
@@ -501,6 +498,8 @@ export class GcdsTable {
         console.error(e);
       }
     }
+
+    this.paginationSizeOptions = parseSizeOptions(this.paginationSizeOptions);
 
     // Seed initial sort from sortDirection column definitions
     if (this.sortEnabled()) {

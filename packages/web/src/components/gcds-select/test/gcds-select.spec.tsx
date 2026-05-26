@@ -10,7 +10,7 @@ describe('gcds-select', () => {
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name">
         <mock:shadow-root shadowrootdelegatesfocus>
-          <div class="gcds-select-wrapper" part="wrapper>
+          <div class="gcds-select-wrapper" part="wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false">
             </select>
@@ -31,7 +31,7 @@ describe('gcds-select', () => {
     expect(page.root).toEqualHtml(`
       <gcds-select select-id="select" label="select" name="select-name" disabled error-message="">
         <mock:shadow-root shadowrootdelegatesfocus>
-          <div class="gcds-select-wrapper" part="wrapper>
+          <div class="gcds-disabled gcds-select-wrapper" part="wrapper">
             <gcds-label label="select" label-for="select" lang="en"></gcds-label>
             <select id="select" name="select-name" part="select" aria-invalid="false" disabled>
             </select>

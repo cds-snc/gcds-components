@@ -117,9 +117,9 @@ describe('gcds-table', () => {
   it('renders caption slot content', async () => {
     const page = await setup(
       '<gcds-table><span slot="caption">' +
-        '<h2>Pokémon</h2>' +
-        'Table of the best Pokémon (first generation).' +
-        '</span></gcds-table>',
+      '<h2>Pokémon</h2>' +
+      'Table of the best Pokémon (first generation).' +
+      '</span></gcds-table>',
     );
 
     expect(
@@ -907,6 +907,8 @@ describe('gcds-table', () => {
     expect(page.root?.querySelector('span[slot=cell-0-sprite]'))
       .toEqualHtml(`<span slot="cell-0-sprite">
         <img
+          data-bind-alt="name"
+          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
           alt="Squirtle"
         />
@@ -914,6 +916,8 @@ describe('gcds-table', () => {
     expect(page.root?.querySelector('span[slot=cell-1-sprite]'))
       .toEqualHtml(`<span slot="cell-1-sprite">
         <img
+          data-bind-alt="name"
+          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"  
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
           alt="Wartortle"
         />
@@ -921,6 +925,8 @@ describe('gcds-table', () => {
     expect(page.root?.querySelector('span[slot=cell-2-sprite]'))
       .toEqualHtml(`<span slot="cell-2-sprite">
         <img
+          data-bind-alt="name"
+          data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
           alt="Blastoise"
         />

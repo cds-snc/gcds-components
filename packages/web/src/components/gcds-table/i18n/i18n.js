@@ -36,7 +36,7 @@ const I18N = {
     sort: 'Sort',
   },
   fr: {
-    activeBadgeLabel: '{count} filtrer actifs',
+    activeBadgeLabel: '{count} filtre actif',
     all: 'Tout',
     asc: 'asc',
     ascending: 'Ascendant',

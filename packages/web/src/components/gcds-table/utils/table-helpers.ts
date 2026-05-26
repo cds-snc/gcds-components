@@ -14,8 +14,8 @@ import {
  * @property {'asc' | 'desc'} [sortDirection] - The current sort direction of the column on load.
  * @property {'start' | 'center' | 'end'} [alignment] - The alignment of the cell content.
  * @property {boolean} [sort] - Whether the column is sortable.
- * @property {(value: unknown, row: Record<string, unknown>) => any} [renderCell] - A function to customize cell rendering.
  * @property {boolean} [rowHeader] - Whether GcdsTable column should be treated as a row header (for accessibility).
+ * @property {boolean} [slotted] - Whether the column content is provided via a named slot instead of the data prop.
  */
 interface TableColumn {
   field: string;
@@ -140,10 +140,47 @@ const updateTableOptions = (GcdsTable: any) => {
   }
 };
 
+const parseSizeOptions = (options: string | number[]): number[] => {
+  const defaultValue = [10, 25, 50, 0];
+  if (options === defaultValue) {
+    return defaultValue;
+  }
+  if (typeof options === 'string') {
+    try {
+      const parsed = JSON.parse(options);
+      if (
+        Array.isArray(parsed) &&
+        parsed.every(opt => typeof opt === 'number')
+      ) {
+        return parsed;
+      } else {
+        console.error(
+          '[gcds-table] Invalid pagination-size-options format. Expected JSON array of numbers.',
+        );
+        return defaultValue;
+      }
+    } catch (e) {
+      console.error('[gcds-table] Error parsing pagination-size-options:', e);
+      return defaultValue;
+    }
+  } else if (
+    Array.isArray(options) ||
+    !(options as number[]).every(v => typeof v === 'number')
+  ) {
+    return options;
+  } else {
+    console.error(
+      '[gcds-table] Invalid pagination-size-options type. Expected string or array of numbers.',
+    );
+    return defaultValue;
+  }
+};
+
 export {
   TableColumn,
   buildInitialSorting,
   buildColumnDefs,
   buildTableOptions,
   updateTableOptions,
+  parseSizeOptions,
 };
