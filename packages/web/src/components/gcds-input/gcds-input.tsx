@@ -249,7 +249,7 @@ export class GcdsInput {
     if (typeof this.suggestions === 'string') {
       try {
         this.suggestions = JSON.parse(this.suggestions as string);
-      } catch (e) {
+      } catch {
         logError('gcds-input', ['Invalid JSON string for suggestions']);
         this.suggestions = null;
       }
