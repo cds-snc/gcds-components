@@ -1,14 +1,44 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
-## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) (2026-05-27)
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
+Released on: 2026-05-27
 
 
 ### :rocket: New Features
 
-* Add gcds-table component ([#1218](https://github.com/cds-snc/gcds-components/issues/1218)) ([86e3bb2](https://github.com/cds-snc/gcds-components/commit/86e3bb271cc0076fee00e20839ce3f5134e5f47f))
-* **gcds-header:** add sign in button ([#1120](https://github.com/cds-snc/gcds-components/issues/1120)) ([07d7d66](https://github.com/cds-snc/gcds-components/commit/07d7d6625cee321c60f68debc437fe9ab538d6ac))
-* **gcds-icon:** add new table icons to icon component ([#1252](https://github.com/cds-snc/gcds-components/issues/1252)) ([2361d03](https://github.com/cds-snc/gcds-components/commit/2361d034f79ab8f6b5c4d3b65a66cfea656da6d8))
+* **gcds-table:** **_NEW_** The `gcds-table` component is now live and available to use. `gcds-table` includes built-in sorting, global filtering, pagination, and flexible slot support for custom HTML content and cell rendering.
+
+  Features include:
+  - Global filtering
+  - Client-side pagination
+  - Column sorting
+  - Dynamic slots for custom table cell content
+  - Configurable pagination sizes and controls
+
+  Here's an example code of how to use it, more examples and full API specs will be available on our documentation website soon.
+  ```html
+  <gcds-table
+    columns=""
+    data=""
+
+    sort="false"
+
+    pagination="false"
+    pagination-current-page="1"
+    pagination-size="10"
+    pagination-size-options=[10, 25, 50, 0]
+
+    filter="false"
+    filter-value=""
+  >
+    <slot name="caption"></slot>
+    <slot name="cell:<field>"></slot>
+  </gcds-table>
+  ```
+
+* **gcds-header:** add new account slot support for sign in and account-related actions ([#1120](https://github.com/cds-snc/gcds-components/issues/1120)) ([07d7d66](https://github.com/cds-snc/gcds-components/commit/07d7d6625cee321c60f68debc437fe9ab538d6ac))
+* **gcds-icon:** add new table-related icons to support sorting, filtering, and pagination interactions used in the new `gcds-table` component ([#1252](https://github.com/cds-snc/gcds-components/issues/1252)) ([2361d03](https://github.com/cds-snc/gcds-components/commit/2361d034f79ab8f6b5c4d3b65a66cfea656da6d8))
 
 
 ### :bug: :wrench: Bug Fixes
@@ -120,6 +150,53 @@ The `@cdssnc/gcds-components` package has been deprecated on npm and will no lon
 ---
 
 # Journal des modifications
+## [v1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
+
+Version publiée le&nbsp;: 2026-05-27
+
+* **gcds-table&nbsp;:** **_NOUVEAUTÉ_** Le composant `gcds-table` est maintenant en production et prêt à être utilisé. `gcds-table` comprend des fonctions intégrées de tri, de filtrage global, de pagination et de prise en charge des emplacements flexibles pour le contenu HTML personnalisé et le rendu des cellules.
+  
+  Fonctionnalités&nbsp;:
+  
+  - Filtrage global
+  - Pagination côté client
+  - Tri des colonnes
+  - Emplacements dynamiques pour le contenu personnalisé des cellules de tableau
+  - Tailles et commandes de pagination configurables
+  
+  Voici un exemple de code du composant en action, d’autres exemples et la spécification complète de l’API seront bientôt accessibles sur notre site Web de documentation.
+  
+  ```html
+  <gcds-table
+    columns=“”
+    data=“”
+  
+    sort=“false”
+  
+    pagination=“false”
+    pagination-current-page=“1”
+    pagination-size=“10”
+    pagination-size-options=[10, 25, 50, 0]
+  
+    filter=“false”
+    filter-value=“”
+  >
+    <slot name=“caption”></slot>
+    <slot name=“cell:<field>”></slot>
+  </gcds-table>
+  ```
+
+* **gcds-header&nbsp;:** prise en charge des emplacements de compte pour l’ouverture de session et les actions liées au compte ([#1120](https://github.com/cds-snc/gcds-components/issues/1120)) ([07d7d66](https://github.com/cds-snc/gcds-components/commit/07d7d6625cee321c60f68debc437fe9ab538d6ac))
+
+* **gcds-icon&nbsp;:** ajout de nouvelles icônes relatives aux tableaux pour appuyer les interactions de tri, de filtrage et de pagination utilisées dans le nouveau composant `gcds-table` ([#1252](https://github.com/cds-snc/gcds-components/issues/1252)) ([2361d03](https://github.com/cds-snc/gcds-components/commit/2361d034f79ab8f6b5c4d3b65a66cfea656da6d8))
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-input:** erreurs « stepMismatch » avec des nombres décimaux ([#1271](https://github.com/cds-snc/gcds-components/issues/1271)) ([5b14383](https://github.com/cds-snc/gcds-components/commit/5b14383daa0f9584b03b8d16f969111894c76605))
+
+### 🎨 Styles
+
+* **gcds-side-nav, gcds-top-nav, gcds-nav-group, gcds-nav-link&nbsp;:** ajustement des points d’arrêt pour améliorer le comportement réactif ([#1255](https://github.com/cds-snc/gcds-components/issues/1255)) ([c89e14b](https://github.com/cds-snc/gcds-components/commit/c89e14bf7ad38ab835ba92fe2b410268d6b0d215))
 
 ## v1.0.0
 
