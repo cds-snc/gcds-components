@@ -192,7 +192,7 @@ Version publiée le&nbsp;: 2026-05-27
 
 ### :bug: :wrench: Corrections de bogues
 
-* **gcds-input:** erreurs « stepMismatch » avec des nombres décimaux ([#1271](https://github.com/cds-snc/gcds-components/issues/1271)) ([5b14383](https://github.com/cds-snc/gcds-components/commit/5b14383daa0f9584b03b8d16f969111894c76605))
+* **gcds-input:** erreurs `stepMismatch` avec des nombres décimaux ([#1271](https://github.com/cds-snc/gcds-components/issues/1271)) ([5b14383](https://github.com/cds-snc/gcds-components/commit/5b14383daa0f9584b03b8d16f969111894c76605))
 
 ### 🎨 Styles
 
