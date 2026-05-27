@@ -12,6 +12,7 @@ import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { IconNames } from "./components/gcds-icon/gcds-icon";
 import { SuggestionOption } from "./components/gcds-input/suggestion-option";
 import { RadioObject } from "./components/gcds-radios/radio";
+import { GcdsTableStateChange, TableColumn } from "./components/gcds-table/utils/table-helpers";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
 export { SpacingValues } from "./utils/types/spacing";
@@ -19,6 +20,7 @@ export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { IconNames } from "./components/gcds-icon/gcds-icon";
 export { SuggestionOption } from "./components/gcds-input/suggestion-option";
 export { RadioObject } from "./components/gcds-radios/radio";
+export { GcdsTableStateChange, TableColumn } from "./components/gcds-table/utils/table-helpers";
 export namespace Components {
     /**
      * Alert displays an alert message with an optional heading, icon, and close button.
@@ -1353,6 +1355,57 @@ export namespace Components {
         "totalSteps": number;
     }
     /**
+     * A table is a structured layout of related data in rows and columns.
+     */
+    interface GcdsTable {
+        /**
+          * Column definitions
+          * @default []
+         */
+        "columns": string | TableColumn[];
+        /**
+          * Row data
+          * @default []
+         */
+        "data": string | object[];
+        /**
+          * Enable global filter
+          * @default false
+         */
+        "filter": boolean;
+        /**
+          * Current filter string
+          * @default ''
+         */
+        "filterValue": string;
+        "getVisibleRows": () => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>;
+        /**
+          * Enable pagination
+          * @default false
+         */
+        "pagination": boolean;
+        /**
+          * Current page index
+          * @default 1
+         */
+        "paginationCurrentPage": number;
+        /**
+          * Number of rows per page
+          * @default 10
+         */
+        "paginationSize": number;
+        /**
+          * Available page-size options. Use 0 to represent "All rows".
+          * @default [10, 25, 50, 0]
+         */
+        "paginationSizeOptions": string | number[];
+        /**
+          * Enable global column sorting (can be overridden per column)
+          * @default false
+         */
+        "sort": boolean;
+    }
+    /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
     interface GcdsText {
@@ -1615,6 +1668,10 @@ export interface GcdsSearchCustomEvent<T> extends CustomEvent<T> {
 export interface GcdsSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsSelectElement;
+}
+export interface GcdsTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsTableElement;
 }
 export interface GcdsTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2226,6 +2283,26 @@ declare global {
         prototype: HTMLGcdsStepperElement;
         new (): HTMLGcdsStepperElement;
     };
+    interface HTMLGcdsTableElementEventMap {
+        "gcdsTableStateChange": GcdsTableStateChange;
+    }
+    /**
+     * A table is a structured layout of related data in rows and columns.
+     */
+    interface HTMLGcdsTableElement extends Components.GcdsTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsTableElementEventMap>(type: K, listener: (this: HTMLGcdsTableElement, ev: GcdsTableCustomEvent<HTMLGcdsTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsTableElementEventMap>(type: K, listener: (this: HTMLGcdsTableElement, ev: GcdsTableCustomEvent<HTMLGcdsTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsTableElement: {
+        prototype: HTMLGcdsTableElement;
+        new (): HTMLGcdsTableElement;
+    };
     /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
@@ -2315,6 +2392,7 @@ declare global {
         "gcds-signature": HTMLGcdsSignatureElement;
         "gcds-sr-only": HTMLGcdsSrOnlyElement;
         "gcds-stepper": HTMLGcdsStepperElement;
+        "gcds-table": HTMLGcdsTableElement;
         "gcds-text": HTMLGcdsTextElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
@@ -3890,6 +3968,57 @@ declare namespace LocalJSX {
         "totalSteps": number;
     }
     /**
+     * A table is a structured layout of related data in rows and columns.
+     */
+    interface GcdsTable {
+        /**
+          * Column definitions
+          * @default []
+         */
+        "columns"?: string | TableColumn[];
+        /**
+          * Row data
+          * @default []
+         */
+        "data"?: string | object[];
+        /**
+          * Enable global filter
+          * @default false
+         */
+        "filter"?: boolean;
+        /**
+          * Current filter string
+          * @default ''
+         */
+        "filterValue"?: string;
+        "onGcdsTableStateChange"?: (event: GcdsTableCustomEvent<GcdsTableStateChange>) => void;
+        /**
+          * Enable pagination
+          * @default false
+         */
+        "pagination"?: boolean;
+        /**
+          * Current page index
+          * @default 1
+         */
+        "paginationCurrentPage"?: number;
+        /**
+          * Number of rows per page
+          * @default 10
+         */
+        "paginationSize"?: number;
+        /**
+          * Available page-size options. Use 0 to represent "All rows".
+          * @default [10, 25, 50, 0]
+         */
+        "paginationSizeOptions"?: string | number[];
+        /**
+          * Enable global column sorting (can be overridden per column)
+          * @default false
+         */
+        "sort"?: boolean;
+    }
+    /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
     interface GcdsText {
@@ -4403,6 +4532,17 @@ declare namespace LocalJSX {
         "totalSteps": number;
         "tag": 'h1' | 'h2' | 'h3';
     }
+    interface GcdsTableAttributes {
+        "columns": string | TableColumn[];
+        "data": string | object[];
+        "sort": boolean;
+        "pagination": boolean;
+        "paginationCurrentPage": number;
+        "paginationSize": number;
+        "paginationSizeOptions": string | number[];
+        "filter": boolean;
+        "filterValue": string;
+    }
     interface GcdsTextAttributes {
         "textRole": 'light' | 'primary' | 'secondary';
         "characterLimit": boolean;
@@ -4480,6 +4620,7 @@ declare namespace LocalJSX {
         "gcds-signature": Omit<GcdsSignature, keyof GcdsSignatureAttributes> & { [K in keyof GcdsSignature & keyof GcdsSignatureAttributes]?: GcdsSignature[K] } & { [K in keyof GcdsSignature & keyof GcdsSignatureAttributes as `attr:${K}`]?: GcdsSignatureAttributes[K] } & { [K in keyof GcdsSignature & keyof GcdsSignatureAttributes as `prop:${K}`]?: GcdsSignature[K] };
         "gcds-sr-only": Omit<GcdsSrOnly, keyof GcdsSrOnlyAttributes> & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes]?: GcdsSrOnly[K] } & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes as `attr:${K}`]?: GcdsSrOnlyAttributes[K] } & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes as `prop:${K}`]?: GcdsSrOnly[K] };
         "gcds-stepper": Omit<GcdsStepper, keyof GcdsStepperAttributes> & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes]?: GcdsStepper[K] } & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes as `attr:${K}`]?: GcdsStepperAttributes[K] } & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes as `prop:${K}`]?: GcdsStepper[K] } & OneOf<"currentStep", GcdsStepper["currentStep"], GcdsStepperAttributes["currentStep"]> & OneOf<"totalSteps", GcdsStepper["totalSteps"], GcdsStepperAttributes["totalSteps"]>;
+        "gcds-table": Omit<GcdsTable, keyof GcdsTableAttributes> & { [K in keyof GcdsTable & keyof GcdsTableAttributes]?: GcdsTable[K] } & { [K in keyof GcdsTable & keyof GcdsTableAttributes as `attr:${K}`]?: GcdsTableAttributes[K] } & { [K in keyof GcdsTable & keyof GcdsTableAttributes as `prop:${K}`]?: GcdsTable[K] };
         "gcds-text": Omit<GcdsText, keyof GcdsTextAttributes> & { [K in keyof GcdsText & keyof GcdsTextAttributes]?: GcdsText[K] } & { [K in keyof GcdsText & keyof GcdsTextAttributes as `attr:${K}`]?: GcdsTextAttributes[K] } & { [K in keyof GcdsText & keyof GcdsTextAttributes as `prop:${K}`]?: GcdsText[K] };
         "gcds-textarea": Omit<GcdsTextarea, keyof GcdsTextareaAttributes> & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes]?: GcdsTextarea[K] } & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes as `attr:${K}`]?: GcdsTextareaAttributes[K] } & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes as `prop:${K}`]?: GcdsTextarea[K] } & OneOf<"label", GcdsTextarea["label"], GcdsTextareaAttributes["label"]> & OneOf<"name", GcdsTextarea["name"], GcdsTextareaAttributes["name"]> & OneOf<"textareaId", GcdsTextarea["textareaId"], GcdsTextareaAttributes["textareaId"]>;
         "gcds-top-nav": Omit<GcdsTopNav, keyof GcdsTopNavAttributes> & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes]?: GcdsTopNav[K] } & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes as `attr:${K}`]?: GcdsTopNavAttributes[K] } & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes as `prop:${K}`]?: GcdsTopNav[K] } & OneOf<"label", GcdsTopNav["label"], GcdsTopNavAttributes["label"]>;
@@ -4634,6 +4775,10 @@ declare module "@stencil/core" {
              * A stepper is a progress tracker for a multi-step process.
              */
             "gcds-stepper": LocalJSX.IntrinsicElements["gcds-stepper"] & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
+            /**
+             * A table is a structured layout of related data in rows and columns.
+             */
+            "gcds-table": LocalJSX.IntrinsicElements["gcds-table"] & JSXBase.HTMLAttributes<HTMLGcdsTableElement>;
             /**
              * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
              */
