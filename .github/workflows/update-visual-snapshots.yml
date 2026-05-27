@@ -43,7 +43,7 @@ jobs:
       - name: Commit updated baselines
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add packages/web/src/components/**/tests/__screenshots__
           # Only commit if there are actual changes
           git diff --staged --quiet || git commit -m "chore(visual): update snapshot baselines [skip ci]"
