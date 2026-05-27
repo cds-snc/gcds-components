@@ -150,6 +150,7 @@ The `@cdssnc/gcds-components` package has been deprecated on npm and will no lon
 ---
 
 # Journal des modifications
+
 ## [v1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
 
 Version publiée le&nbsp;: 2026-05-27
@@ -197,6 +198,45 @@ Version publiée le&nbsp;: 2026-05-27
 ### 🎨 Styles
 
 * **gcds-side-nav, gcds-top-nav, gcds-nav-group, gcds-nav-link&nbsp;:** ajustement des points d’arrêt pour améliorer le comportement réactif ([#1255](https://github.com/cds-snc/gcds-components/issues/1255)) ([c89e14b](https://github.com/cds-snc/gcds-components/commit/c89e14bf7ad38ab835ba92fe2b410268d6b0d215))
+
+## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.1.0...@gcds-core/components-v1.2.0)
+
+Version publiée le&nbsp;: 2026-04-21
+
+### :rocket: Nouvelles fonctionnalités
+
+* **gcds-date-input&nbsp;:** ajout d’une nouvelle option de format&nbsp;: `iso`([#996](https://github.com/cds-snc/gcds-components/issues/996)) ([bd8b5e5](https://github.com/cds-snc/gcds-components/commit/bd8b5e5c07bd03ea0e3a77f3945f4fb33d792a26))
+* **gcds-header, gcds-nav-group, gcds-top-nav&nbsp;:** Mise à jour de la structure de navigation mobile et du comportement de superposition ([#1224](https://github.com/cds-snc/gcds-components/issues/1224)) ([749c64a](https://github.com/cds-snc/gcds-components/commit/749c64a942e473e518bef9f3639389b918e3025c))
+* **validator&nbsp;:** les valideurs personnalisés peuvent désormais accéder à une validation optionnelle dans `validate()` pour une logique de validation plus flexible ([#1222](https://github.com/cds-snc/gcds-components/issues/1222)) ([ea8bf51](https://github.com/cds-snc/gcds-components/commit/ea8bf51f5b40a6b4b240209adb7910e38209d589))
+* **angular&nbsp;:** Mise à jour des dépendances angular vers la v21 ([#1212](https://github.com/cds-snc/gcds-components/issues/1212)) ([86d3e19](https://github.com/cds-snc/gcds-components/commit/86d3e19b16981ca6a1dafe83bb8d44db8a00906c))
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-card&nbsp;:** le lien de la carte ne bloque plus le survol abbr ([#1214](https://github.com/cds-snc/gcds-components/issues/1214)) ([12e4a15](https://github.com/cds-snc/gcds-components/commit/12e4a15ceec98e7e4e2707ecf30ef8c1e95549df))
+* **gcds-link&nbsp;:** l’icône de lien externe ne renvoie plus sur une nouvelle ligne ([#1211](https://github.com/cds-snc/gcds-components/issues/1211)) ([afde106](https://github.com/cds-snc/gcds-components/commit/afde10676fd1dd263e7c37396af0dde932ff6b87))
+
+### :art: Styles
+
+* **gcds-details&nbsp;:** Mise à jour du décalage de soulignement sommaire pour utiliser la valeur de décalage de liaison ([#1223](https://github.com/cds-snc/gcds-components/issues/1223)) ([49e8249](https://github.com/cds-snc/gcds-components/commit/49e8249e1a29efdae390f6d9a72307826b73603d))
+* **gcds-nav-link&nbsp;:** Harmonisation du style du lien d’accueil de navigation latérale avec celui de navigation supérieure ([#1225](https://github.com/cds-snc/gcds-components/issues/1225)) ([608d7e5](https://github.com/cds-snc/gcds-components/commit/608d7e58a841aa10fc102a2b45e977e535a049bc))
+
+## [1.1.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.0.0...@gcds-core/components-v1.1.0)
+
+Version publiée le&nbsp;: 2026-04-01
+
+### :rocket: Nouvelles fonctionnalités
+
+* **gcds-card&nbsp;:** la boîte-ombre a été remplacée par une bordure pour une meilleure accessibilité ([#1178](https://github.com/cds-snc/gcds-components/issues/1178)) ([89255e7](https://github.com/cds-snc/gcds-components/commit/89255e7bb3690f0304991f422ae2e2cee92b09a0))
+* **gcds-pagination&nbsp;:** amélioration du comportement réactif ([#1197](https://github.com/cds-snc/gcds-components/issues/1197)) ([2906d62](https://github.com/cds-snc/gcds-components/commit/2906d6265d633f59ddc33c6d8d8adde3a1a3a8c1))
+* **gcds-side-nav&nbsp;:** h2 remplacé par du texte neutre et ajout de l’emplacement principal pour le lien du site ([#1177](https://github.com/cds-snc/gcds-components/issues/1177)) ([37f1557](https://github.com/cds-snc/gcds-components/commit/37f15571e40087d126c6d6ef3413232887d4f811))
+
+## :bug: :wrench: Corrections de bogues
+
+* **gcds-search&nbsp;:** harmonisation de la largeur du champ de recherche dans tous les navigateurs ([#1167](https://github.com/cds-snc/gcds-components/issues/1167)) ([b4ce841](https://github.com/cds-snc/gcds-components/commit/b4ce841c8b6cedb91dba421f64b74fbb825b3058))
+
+### :art: Styles
+
+* **gcds-nav-link&nbsp;:** petite mise à jour du style survol pour l’emplacement nav-link home ([#1198](https://github.com/cds-snc/gcds-components/issues/1198)) ([0bd11e0](https://github.com/cds-snc/gcds-components/commit/0bd11e00b9454ddc58647ef8d20ee943f0874259))
 
 ## v1.0.0
 
