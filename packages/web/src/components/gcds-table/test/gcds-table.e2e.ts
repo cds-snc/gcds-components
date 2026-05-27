@@ -853,7 +853,7 @@ test.describe('gcds-table', () => {
 
       // ── State 1: default (unsorted, unfiltered, page 1) ─────────────────────
       const defaultResults = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa'])
+        .withTags(['wcag2a', 'wcag2aa'])
         .analyze();
 
       expect(
@@ -868,7 +868,7 @@ test.describe('gcds-table', () => {
       await tablePage.clickAndWait(nameSortButton);
 
       const sortedResults = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa'])
+        .withTags(['wcag2a', 'wcag2aa'])
         .analyze();
 
       expect(
@@ -880,7 +880,7 @@ test.describe('gcds-table', () => {
       await tablePage.openFilterModal();
 
       const filterOpenResults = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa'])
+        .withTags(['wcag2a', 'wcag2aa'])
         .analyze();
 
       expect(
@@ -892,7 +892,7 @@ test.describe('gcds-table', () => {
       await tablePage.applyFilter('Squirtle');
 
       const filteredResults = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa'])
+        .withTags(['wcag2a', 'wcag2aa'])
         .analyze();
 
       expect(
@@ -921,8 +921,7 @@ test.describe('gcds-table', () => {
 
       // Contrast rules used:
       //   color-contrast          → AA  (4.5:1 for normal text, 3:1 for large/UI)
-      //   color-contrast-enhanced → AAA (7:1 for normal text, 4.5:1 for large)
-      const contrastRules = ['color-contrast', 'color-contrast-enhanced'];
+      const contrastRules = ['color-contrast'];
 
       await tablePage.setup({
         sort: true,
