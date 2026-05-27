@@ -21,7 +21,9 @@ export default createConfig({
   },
 
   webServer: {
+    command: 'npx serve ./www -p 3333',
     url: 'http://localhost:3333/',
+    reuseExistingServer: !process.env['CI'],
   },
 
   expect: {

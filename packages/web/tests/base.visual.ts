@@ -1,8 +1,8 @@
-import { test as base } from '@playwright/test';
+import { test as base, type Page } from '@playwright/test';
 import path from 'path';
 
-export const test = base.extend<{ page: (typeof base.prototype)['page'] }>({
-  page: async ({ page }, use, testInfo) => {
+export const test = base.extend({
+  page: async ({ page }: { page: Page }, use, testInfo) => {
     const filePath = testInfo.file;
     const baseFileName = path
       .basename(filePath)
@@ -13,10 +13,19 @@ export const test = base.extend<{ page: (typeof base.prototype)['page'] }>({
       waitUntil: 'domcontentloaded',
     });
 
-    // Wait for test component to be hydrated
-    await page.waitForSelector(`${componentName}.hydrated`, {
-      timeout: 30000,
-    });
+    // Wait for all instances of the component to be hydrated,
+    // since the visual page renders multiple variants
+    await page.waitForFunction(
+      name => {
+        const els = document.querySelectorAll(name);
+        return (
+          els.length > 0 &&
+          Array.from(els).every(el => el.classList.contains('hydrated'))
+        );
+      },
+      componentName,
+      { timeout: 30000 },
+    );
 
     await use(page);
   },
