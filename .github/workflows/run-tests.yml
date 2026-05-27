@@ -4,6 +4,10 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
+permissions:
+  contents: read
+  actions: read
+
 jobs:
   test:
     name: Run Tests
