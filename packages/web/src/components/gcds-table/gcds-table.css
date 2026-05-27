@@ -44,6 +44,8 @@
         /* Header sorting interaction buttons */
         & > button {
           all: unset;
+          position: relative;
+          z-index: 1;
           cursor: pointer;
           display: block;
           width: 100%;
@@ -151,6 +153,13 @@
     .gcds-table__empty {
       background-color: var(--gcds-table-empty-background);
       padding: var(--gcds-table-empty-padding-desktop);
+
+      /* Set h3 size to mobile h3 size for all viewports */
+      --gcds-heading-h3-desktop: var(--gcds-heading-h3-mobile);
+
+      /* Set text to table font size */
+      --gcds-text-size-body-desktop: var(--gcds-table-font);
+      --gcds-text-size-body-mobile: var(--gcds-table-font);
 
       @media only screen and (width < 48em) {
         padding: var(--gcds-table-empty-padding-mobile);
