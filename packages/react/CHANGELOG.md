@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.2.0...@gcds-core/components-react-v1.3.0) (2026-05-27)
+
+
+### :rocket: New Features
+
+* Add gcds-table component ([#1218](https://github.com/cds-snc/gcds-components/issues/1218)) ([86e3bb2](https://github.com/cds-snc/gcds-components/commit/86e3bb271cc0076fee00e20839ce3f5134e5f47f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.2.0 to ^1.3.0
+
 ## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.1.0...@gcds-core/components-react-v1.2.0) (2026-04-21)
 
 
