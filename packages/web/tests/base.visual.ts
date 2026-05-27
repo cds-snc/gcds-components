@@ -9,20 +9,13 @@ export const test = base.extend<{ page: (typeof base.prototype)['page'] }>({
       .replace('.visual.ts', '.visual.html');
     const componentName = path.basename(filePath).replace('.visual.ts', '');
 
-    // networkidle ensures Google Fonts have loaded — critical for font-sensitive diffs
     await page.goto(`/components/${componentName}/test/${baseFileName}`, {
-      waitUntil: 'networkidle',
+      waitUntil: 'domcontentloaded',
     });
 
-    // Wait for Stencil hydration
-    await page.waitForFunction(() => {
-      const customEls = Array.from(document.querySelectorAll('*')).filter(el =>
-        el.tagName.includes('-'),
-      );
-      return (
-        customEls.length > 0 &&
-        customEls.every(el => el.classList.contains('hydrated'))
-      );
+    // Wait for test component to be hydrated
+    await page.waitForSelector(`${componentName}.hydrated`, {
+      timeout: 30000,
     });
 
     await use(page);
