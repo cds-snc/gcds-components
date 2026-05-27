@@ -44,6 +44,7 @@ Text is a styled and formatted paragraph that displays written content in an acc
  - [gcds-error-message](../gcds-error-message)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-hint](../gcds-hint)
+ - [gcds-table](../gcds-table)
  - [gcds-textarea](../gcds-textarea)
 
 ### Graph
@@ -54,6 +55,7 @@ graph TD;
   gcds-error-message --> gcds-text
   gcds-file-uploader --> gcds-text
   gcds-hint --> gcds-text
+  gcds-table --> gcds-text
   gcds-textarea --> gcds-text
   style gcds-text fill:#26374a,stroke:#333,stroke-width:4px
 ```
