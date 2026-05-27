@@ -39,11 +39,15 @@
         color: var(--gcds-table-header-cell-text);
         border-block-end: var(--gcds-table-header-cell-border-width) solid
           var(--gcds-table-header-cell-border-color);
+        padding: 0;
 
         /* Header sorting interaction buttons */
         & > button {
           all: unset;
           cursor: pointer;
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
 
           &:hover {
             background: var(--gcds-table-header-cell-hover-background);
@@ -75,6 +79,10 @@
             }
           }
         }
+      }
+
+      thead th {
+        vertical-align: top;
       }
 
       tbody {
