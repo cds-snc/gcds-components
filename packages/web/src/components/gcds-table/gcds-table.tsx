@@ -761,16 +761,18 @@ export class GcdsTable {
           </table>
 
           {/* ── Pagination ─────────────────────────── */}
-          {this.pagination && this.paginationSize !== 0 && rows.length != 0 && (
-            <gcds-pagination
-              display="list"
-              currentPage={this.paginationState.pageIndex + 1}
-              totalPages={this.table.getPageCount()}
-              label={I18N[this.lang].paginationLabel}
-              onGcdsClick={e => this.handlePaginationClick(e)}
-              lang={this.lang}
-            />
-          )}
+          {(this.pagination && this.paginationSize !== 0 && rows.length != 0) &&
+            (this.table.getFilteredRowModel().rows.length > this.paginationSize) &&
+            (
+              <gcds-pagination
+                display="list"
+                currentPage={this.paginationState.pageIndex + 1}
+                totalPages={this.table.getPageCount()}
+                label={I18N[this.lang].paginationLabel}
+                onGcdsClick={e => this.handlePaginationClick(e)}
+                lang={this.lang}
+              />
+            )}
         </section>
       </Host>
     );
