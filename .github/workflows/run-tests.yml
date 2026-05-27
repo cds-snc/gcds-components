@@ -27,3 +27,51 @@ jobs:
 
       - name: Run tests
         run: npm run test
+
+  visual-tests:
+    name: Visual regression tests
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: actions/setup-node@dda4788290998366da86b6a4f497909644397bb2
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+        working-directory: packages/web
+
+      - name: Build repo
+        run: npm run build
+
+      - name: Run visual regression tests
+        id: visual
+        run: npm run test:visual
+        working-directory: packages/web
+
+      # On failure: upload HTML report.
+      # Download artifact, open index.html — it shows actual / expected / diff
+      # side-by-side for every failed test.
+      - name: Upload visual test report
+        uses: actions/upload-artifact@v4
+        if: failure() && steps.visual.outcome == 'failure'
+        with:
+          name: visual-regression-report-${{ github.run_number }}
+          path: packages/web/visual-report/
+          retention-days: 30
+
+      - name: Post failure summary
+        if: failure() && steps.visual.outcome == 'failure'
+        run: |
+          echo "## 🖼 Visual regression tests failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Screenshots differ from the committed baselines." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**To review:** Download the \`visual-regression-report-${{ github.run_number }}\` artifact from this run. Open \`index.html\` to see a side-by-side diff of every failing screenshot." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**If the change is intentional:** trigger the [Update visual snapshots](../actions/workflows/update-visual-snapshots.yml) workflow on branch \`${{ github.head_ref }}\` to update the baselines and re-run this check." >> $GITHUB_STEP_SUMMARY
