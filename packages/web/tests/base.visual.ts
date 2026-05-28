@@ -13,17 +13,20 @@ export const test = base.extend({
       waitUntil: 'domcontentloaded',
     });
 
-    // Wait for all instances of the component to be hydrated,
-    // since the visual page renders multiple variants
+    // Wait for fonts to finish loading to avoid fallback-font flakiness
+    await page.waitForFunction(() => document.fonts.ready.then(() => true));
+
+    // Wait for all GCDS components inside the preview to hydrate
     await page.waitForFunction(
-      name => {
-        const els = document.querySelectorAll(name);
+      () => {
+        const gcdsEls = Array.from(
+          document.querySelectorAll('.preview-component *'),
+        ).filter(el => el.tagName.toLowerCase().startsWith('gcds-'));
         return (
-          els.length > 0 &&
-          Array.from(els).every(el => el.classList.contains('hydrated'))
+          gcdsEls.length > 0 &&
+          gcdsEls.every(el => el.classList.contains('hydrated'))
         );
       },
-      componentName,
       { timeout: 30000 },
     );
 
