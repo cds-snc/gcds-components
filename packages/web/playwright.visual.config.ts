@@ -11,7 +11,7 @@ export default createConfig({
 
   // Store baselines next to the test file so diffs are easy to find in PRs
   snapshotPathTemplate:
-    '{testFileDir}/__screenshots__/{testFileName}/{arg}{ext}',
+    'src/{testFileDir}/__screenshots__/{testFileName}/{arg}{ext}',
 
   use: {
     baseURL: 'http://localhost:3333/',
