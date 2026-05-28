@@ -10,6 +10,11 @@ import { test } from '../../../../tests/base.visual';
  */
 test.describe('gcds-details', () => {
   test('default', async ({ page }) => {
+    // TEMP debug
+    await page
+      .locator('[data-variant="default"] .preview-component')
+      .screenshot({ path: 'default-debug.png' });
+
     // Screenshot just the component, not the surrounding preview chrome
     await expect(
       page.locator('[data-variant="default"] .preview-component'),
