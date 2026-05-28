@@ -169,21 +169,21 @@ Version publiée le&nbsp;: 2026-05-27
   
   ```html
   <gcds-table
-    columns=“”
-    data=“”
-  
-    sort=“false”
-  
-    pagination=“false”
-    pagination-current-page=“1”
-    pagination-size=“10”
+    columns=""
+    data=""
+
+    sort="false"
+
+    pagination="false"
+    pagination-current-page="1"
+    pagination-size="10"
     pagination-size-options=[10, 25, 50, 0]
-  
-    filter=“false”
-    filter-value=“”
+
+    filter="false"
+    filter-value=""
   >
-    <slot name=“caption”></slot>
-    <slot name=“cell:<field>”></slot>
+    <slot name="caption"></slot>
+    <slot name="cell:<field>"></slot>
   </gcds-table>
   ```
 
@@ -193,7 +193,7 @@ Version publiée le&nbsp;: 2026-05-27
 
 ### :bug: :wrench: Corrections de bogues
 
-* **gcds-input:** erreurs `stepMismatch` avec des nombres décimaux ([#1271](https://github.com/cds-snc/gcds-components/issues/1271)) ([5b14383](https://github.com/cds-snc/gcds-components/commit/5b14383daa0f9584b03b8d16f969111894c76605))
+* **gcds-input&nbsp;:** erreurs `stepMismatch` avec les nombres décimaux ([#1271](https://github.com/cds-snc/gcds-components/issues/1271)) ([5b14383](https://github.com/cds-snc/gcds-components/commit/5b14383daa0f9584b03b8d16f969111894c76605))
 
 ### 🎨 Styles
 
