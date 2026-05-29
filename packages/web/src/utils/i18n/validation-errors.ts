@@ -63,7 +63,7 @@ export const validationErrors = {
         'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
       url: 'Saisissez une adresse Web dans le format indiqué pour continuer.',
     },
-    patternMismatch: 'Utilisez le format spécifié pour continuer.',
+    patternMismatch: 'Utilisez le format indiqué pour continuer.',
     tooLong:
       'Saisissez {max} caractères ou moins pour continuer. Vous avez saisi {current} caractères.',
     tooShort:
