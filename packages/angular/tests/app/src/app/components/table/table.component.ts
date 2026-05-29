@@ -62,7 +62,7 @@ async function getFirst151Pokemon() {
         [sort]="true"
       >
         <div slot="caption">
-          <gcds-heading tag="h4">Pokémon - slots</gcds-heading>
+          <gcds-heading tag="h4">Pokémon</gcds-heading>
           Table of the best Pokémon (first generation).
         </div>
         <ng-template gcdsCell="sprite" let-row let-rowIndex="rowIndex">
