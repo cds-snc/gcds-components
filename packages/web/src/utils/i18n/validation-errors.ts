@@ -61,19 +61,19 @@ export const validationErrors = {
     typeMismatch: {
       email:
         'Saisissez votre adresse courriel pour continuer. Utilisez un format standard. Exemple: nom@adresse.ca.',
-      url: 'Entrez une adresse Web en utilisant le format spécifié pour continuer.',
+      url: 'Saisissez une adresse Web dans le format indiqué pour continuer.',
     },
     patternMismatch: 'Utilisez le format spécifié pour continuer.',
     tooLong:
-      'Entrez {max} caractères ou moins pour continuer. Vous en avez présentement {current}.',
+      'Saisissez {max} caractères ou moins pour continuer. Vous avez saisi {current} caractères.',
     tooShort:
-      'Entrez au moins {min} caractères pour continuer. Vous en avez présentement {current}.',
+      'Saisissez au moins {min} caractères pour continuer. Vous avez saisi {current} caractères.',
     rangeUnderflow:
-      'Entrez un nombre plus grand ou égal à {min} pour continuer.',
+      'Saisissez un nombre égal ou supérieur à {min} pour continuer.',
     rangeOverflow:
-      'Entrez un nombre plus petit ou égal à {max} pour continuer.',
+      'Saisissez un nombre égal ou inférieur à {max} pour continuer.',
     stepMismatch:
-      'Entrez un nombre parmi les options spécifiées pour continuer. Les nombres les plus proches de votre entrée sont {lower} et {upper}.',
+      'Saisissez un nombre parmi les options disponibles pour continuer. Les nombres les plus proches de celui que vous avez saisi sont {lower} et {upper}.',
     badInput: 'Entrez un nombre pour continuer.',
 
     required: 'Saisissez des renseignements pour continuer.',
@@ -97,7 +97,7 @@ export const validationErrors = {
       missingmonthinputyear: "Saisissez l'année et le mois.",
       missingdayyear: "Saisissez le jour et l'année.",
       invalidyearlength: "L'année doit inclure 4 chiffres.",
-      invalidyear: 'Entrez une année valide.',
+      invalidyear: 'Saisissez une année valide.',
       invalidmonth: 'Saisissez un mois valide.',
       invalidday: 'Saisissez un jour valide.',
     },
