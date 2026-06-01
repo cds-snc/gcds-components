@@ -102,7 +102,6 @@ const renderTableStatus = (
   } else if (
     el.filter &&
     el.filterValue &&
-    el.pagination &&
     table.getPageCount() === 1
   ) {
     return I18N[lang].showingMatches.replace('{matchNumber}', filteredRows);
