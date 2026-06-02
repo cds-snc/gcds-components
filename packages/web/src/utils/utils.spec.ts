@@ -10,6 +10,7 @@ import {
   handleErrors,
   formatHTMLErrorMessage,
   validateRadioCheckboxGroup,
+  assignLanguage,
 } from './utils';
 
 import { validationErrors as I18N } from './i18n/validation-errors';
@@ -681,5 +682,51 @@ describe('validateRadioCheckboxGroup', () => {
     const validity = validateRadioCheckboxGroup(elements);
     expect(validity.valueMissing).toEqual(true);
     expect(validity.valid).toEqual(false);
+  });
+});
+
+describe('assignLanguage', () => {
+  it('assigns language based on element lang attribute - French', () => {
+    const element = document.createElement('div');
+    element.setAttribute('lang', 'fr');
+
+    expect(assignLanguage(element)).toEqual('fr');
+
+    // Generalize fr-CA to fr
+    element.setAttribute('lang', 'fr-CA');
+
+    expect(assignLanguage(element)).toEqual('fr');
+  });
+
+  it('assigns language based on element lang attribute - English', () => {
+    const element = document.createElement('div');
+    element.setAttribute('lang', 'en');
+
+    expect(assignLanguage(element)).toEqual('en');
+
+    // Generalize en-CA to en
+    element.setAttribute('lang', 'en-CA');
+
+    expect(assignLanguage(element)).toEqual('en');
+  });
+
+  it('assigns language based on closest parent lang attribute', () => {
+    const parentElement = document.createElement('div');
+    parentElement.setAttribute('lang', 'fr');
+
+    const childElement = document.createElement('div');
+    parentElement.appendChild(childElement);
+
+    expect(assignLanguage(childElement)).toEqual('fr');
+
+    parentElement.setAttribute('lang', 'en');
+
+    expect(assignLanguage(childElement)).toEqual('en');
+  });
+
+  it('defaults to English when no lang attribute is found', () => {
+    const element = document.createElement('div');
+
+    expect(assignLanguage(element)).toEqual('en');
   });
 });

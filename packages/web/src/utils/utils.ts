@@ -41,24 +41,20 @@ export const inheritAttributes = (
   return attributeObject;
 };
 
-export const assignLanguage = (el: HTMLElement) => {
-  let lang = '';
-  if (!el.getAttribute('lang')) {
-    const closestLangAttribute = closestElement('[lang]', el)?.getAttribute(
-      'lang',
-    );
-    if (closestLangAttribute == 'en' || !closestLangAttribute) {
-      lang = 'en';
-    } else {
-      lang = 'fr';
-    }
-  } else if (el.getAttribute('lang') == 'en') {
-    lang = 'en';
-  } else {
-    lang = 'fr';
-  }
+/*
+ * Get language to use for component based on the following priority:
+ * 1. lang attribute on component
+ * 2. lang attribute on closest parent with a lang attribute
+ * 3. default to English
+ */
+export const assignLanguage = (el: HTMLElement): string => {
+  const rawLang =
+    el.lang ||
+    el.getAttribute('lang') ||
+    closestElement('[lang]', el)?.getAttribute('lang') ||
+    'en';
 
-  return lang;
+  return rawLang.toLowerCase().startsWith('fr') ? 'fr' : 'en';
 };
 
 // Allows use of closest() function across shadow boundaries
