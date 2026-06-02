@@ -6,7 +6,7 @@ on:
 
 permissions:
   contents: read
-  actions: read
+  pull-requests: write
 
 jobs:
   test:
@@ -80,3 +80,25 @@ jobs:
           echo "**To review:** Download the \`visual-regression-report-${{ github.run_number }}\` artifact from this run. Open \`index.html\` to see a side-by-side diff of every failing screenshot." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**If the change is intentional:** trigger the [Update visual snapshots](../actions/workflows/update-visual-snapshots.yml) workflow on branch \`${{ github.head_ref }}\` to update the baselines and re-run this check." >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment on PR with diff report link
+        if: failure() && steps.visual.outcome == 'failure' && github.event_name == 'pull_request'
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              '## :frame_with_picture: Visual regression tests failed',
+              '',
+              `**[→ Download the diff report](${runUrl}#artifacts)**`,
+              '',
+              'Scroll to the bottom of the run page, download the `visual-regression-report-' + context.runNumber + '` artifact, unzip it, and open `index.html` to see side-by-side comparisons of every failing screenshot.',
+              '',
+              '**If the change is intentional:** trigger the [Update visual snapshots](' + context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/workflows/update-visual-snapshots.yml) workflow on branch `' + context.payload.pull_request.head.ref + '` to update the baselines.',
+            ].join('\n');
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body,
+            });
