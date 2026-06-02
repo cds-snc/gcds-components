@@ -29,7 +29,7 @@ export default createConfig({
       animations: 'disabled',
       // 2% pixel tolerance handles sub-pixel anti-aliasing differences
       // without letting real changes through
-      maxDiffPixelRatio: 0.02,
+      maxDiffPixels: 100,
     },
   },
 
