@@ -81,7 +81,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
-      copy: [{ src: '**/*.e2e.html' }],
+      copy: [{ src: '**/*.e2e.html' }, { src: '**/*.visual.html' }],
     },
   ],
   docs: {

@@ -14,6 +14,7 @@
     "build:react": "npm run build -w @gcds-core/components-react",
     "test": "npm run test --workspace=utils/angular-output-target --workspace=packages/web --workspace=packages/vue && npm run test:angular",
     "test:unit": "npm run test:angular:unit && npm run pretest:web && npm run test:unit --workspace=packages/web",
+    "test:visual": "npm run test:visual -w @gcds-core/components",
     "pretest:web": "npm run patch:stenciljs",
     "pretest:angular": "npm i --prefix packages/angular/tests/app && npm run build:web",
     "test:web:unit": "npm run test:unit --workspace=packages/web",
