@@ -283,6 +283,18 @@ const renderFilterSortModal = element => {
 
         <form
           class="gcds-table__modal-body"
+          onKeyUp={ev => {
+            if (ev.key === 'Enter') {
+              if (document.activeElement?.shadowRoot?.activeElement === element.filterInput ||
+                document.activeElement?.shadowRoot?.activeElement === element.sortRadios
+              ) {
+                ev.preventDefault();
+                element.filterSortModal.querySelector('form')?.dispatchEvent(
+                  new Event('submit', { cancelable: true, bubbles: true }),
+                );
+              }
+            }
+          }}
           onSubmit={ev => {
             ev.preventDefault();
 
