@@ -308,6 +308,7 @@ const renderFilterSortModal = element => {
             updateTableOptions(element);
 
             element.filterSortModal.close();
+            element.shadowElement?.focus();
           }}
         >
           <div class="gcds-table__modal-content">
