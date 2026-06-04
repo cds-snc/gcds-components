@@ -32,6 +32,8 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "stencil test --spec",
     "test:e2e": "npx playwright test",
+    "test:visual": "npx playwright test --config=playwright.visual.config.ts",
+    "test:visual:update": "npx playwright test --config=playwright.visual.config.ts --update-snapshots",
     "test:watch": "stencil test --spec --e2e --watchAll",
     "test:coverage": "npx stencil test --spec --coverage --coverageDirectory=./coverage/spec && PW_COVERAGE=1 npx playwright test",
     "generate": "stencil generate",
