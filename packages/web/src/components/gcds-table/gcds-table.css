@@ -23,11 +23,11 @@
       margin-block-start: var(--gcds-table-margin);
 
       &:focus {
-        outline: var(--gcds-table-header-cell-focus-outline-width) solid
-          var(--gcds-table-header-cell-focus-background);
-        outline-offset: var(--gcds-table-header-cell-focus-outline-offset);
-        border-color: var(--gcds-table-header-cell-focus-background);
-        box-shadow: var(--gcds-table-header-cell-focus-box-shadow);
+        outline: var(--gcds-table-focus-outline-width) solid
+          var(--gcds-table-focus-background);
+        outline-offset: var(--gcds-table-focus-outline-offset);
+        border-color: var(--gcds-table-focus-background);
+        box-shadow: var(--gcds-table-focus-box-shadow);
       }
 
       /* Visually hide caption but keep it accessible to screen readers */
