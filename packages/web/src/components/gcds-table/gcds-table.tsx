@@ -506,6 +506,15 @@ export class GcdsTable {
     }
     this.initialSorting = this.sorting;
 
+    this.paginationState = {
+      pageIndex: Math.max(0, this.paginationCurrentPage - 1),
+      pageSize: this.pagination
+        ? this.paginationSize === 0
+          ? Number.MAX_SAFE_INTEGER
+          : this.paginationSize
+        : Number.MAX_SAFE_INTEGER,
+    };
+
     this.initTable();
 
     if (this.table) {
