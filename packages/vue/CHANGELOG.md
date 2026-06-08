@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.3.0...@gcds-core/components-vue-v1.3.1) (2026-06-08)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-table:** focus, interaction and display issues ([#1295](https://github.com/cds-snc/gcds-components/issues/1295)) ([3fc8e31](https://github.com/cds-snc/gcds-components/commit/3fc8e31aeae2b843f072f48980260ab4a51d53b0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.3.0 to ^1.3.1
+
 ## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.2.0...@gcds-core/components-vue-v1.3.0) (2026-05-27)
 
 
