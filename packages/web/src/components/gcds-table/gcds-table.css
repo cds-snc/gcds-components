@@ -22,6 +22,14 @@
       color: var(--gcds-table-text);
       margin-block-start: var(--gcds-table-margin);
 
+      &:focus {
+        outline: var(--gcds-table-focus-outline-width) solid
+          var(--gcds-table-focus-background);
+        outline-offset: var(--gcds-table-focus-outline-offset);
+        border-color: var(--gcds-table-focus-background);
+        box-shadow: var(--gcds-table-focus-box-shadow);
+      }
+
       /* Visually hide caption but keep it accessible to screen readers */
       caption {
         clip-path: inset(100%);
@@ -330,6 +338,7 @@
     width: var(--gcds-table-modal-width);
     max-width: var(--gcds-table-modal-max-width);
     max-height: var(--gcds-table-modal-max-height-desktop);
+    min-height: var(--gcds-table-modal-min-height);
     border: 0;
     background: var(--gcds-table-modal-background);
     border-radius: var(--gcds-table-modal-border-radius-desktop);

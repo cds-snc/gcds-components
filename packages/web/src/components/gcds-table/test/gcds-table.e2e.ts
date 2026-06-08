@@ -156,6 +156,16 @@ test.describe('gcds-table', () => {
       await this.page.waitForChanges();
     }
 
+    async applyFilterEnter(text: string) {
+      await this.clickAndWait(this.filterButton);
+      await expect(this.filterInput).toBeVisible();
+      await this.filterInput.fill(text);
+
+      // Trigger submit with 'Enter' key to test keyboard submission path.
+      await this.filterInput.press('Enter');
+      await this.page.waitForChanges();
+    }
+
     async clearFilterViaModal() {
       await this.applyFilter('');
     }
@@ -526,6 +536,23 @@ test.describe('gcds-table', () => {
     await expect
       .poll(() => getVisiblePokedexValues(element))
       .toEqual([7, 8, 9]);
+  });
+
+  test('filter text input: enter submits modal, applies filter and focuses table', async ({
+    page,
+  }) => {
+    const element = page.locator('gcds-table');
+    const filterPage = new GcdsTablePage(element, page);
+
+    await filterPage.setup({ filter: true, sort: false, pagination: false });
+
+    await filterPage.applyFilterEnter('Squirtle');
+    await expect(element.locator('tbody tr')).toHaveCount(1);
+    await expect.poll(() => getVisiblePokedexValues(element)).toEqual([7]);
+
+    // Verify modal is closed and focus returns to table after submission.
+    await expect(element.locator('dialog.gcds-table__modal')).not.toHaveAttribute('open', '');
+    await expect(element.locator('table')).toBeFocused();
   });
 
   test('filter case sensitivity: matches Squirtle with lower and upper case input', async ({

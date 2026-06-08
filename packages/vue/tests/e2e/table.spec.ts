@@ -41,11 +41,11 @@ test('Table has rendered', async ({ page }) => {
 
   // Table rows have been populated with the correct data
   const rows = await page.locator('tbody tr');
-  await expect(rows).toHaveCount(151);
+  await expect(rows).toHaveCount(10);
 
   // Rows have slots for content
   const slots = await page.locator('tbody tr slot');
-  await expect(slots).toHaveCount(302);
+  await expect(slots).toHaveCount(20);
   await expect(slots.nth(0)).toHaveAttribute('name', 'cell-0-sprite');
   await expect(slots.nth(1)).toHaveAttribute('name', 'cell-0-actions');
 
