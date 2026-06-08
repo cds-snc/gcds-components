@@ -2,7 +2,7 @@ name: Issue opened
 
 on:
   issues:
-    types: 
+    types:
       - opened
 
 permissions:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   notify-external:
-    uses: cds-snc/design-gc-conception/.github/workflows/issue-notify-external.yml@588544a40798b8a6202b435eeaa03bbcd8fc61d3
+    uses: cds-snc/design-gc-conception/.github/workflows/issue-notify-external.yml@6e9f6fc5d14a6e23f770103a9dbbc8a351b5c09a
     secrets: inherit
     with:
       issue_creator: ${{ github.event.issue.user.login }}
