@@ -10,8 +10,28 @@ permissions:
 
 jobs:
   test:
-    name: Run Tests
+    name: Tests
     runs-on: ubuntu-22.04 # latest version 24 has incompatibility issues (playwright)
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "@gcds-core/components : Unit tests"
+            script: "npm run test:web:unit"
+
+          - name: "@gcds-core/components : E2E tests"
+            script: "npm run test:web:e2e"
+
+          - name: "@gcds-core/components-angular"
+            script: "npm run test:angular"
+
+          - name: "@gcds-core/components-react"
+            script: "npm run test:react"
+
+          - name: "@gcds-core/components-vue"
+            script: "npm run test:vue"
+    
     steps:
       - name: Git Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
@@ -29,8 +49,8 @@ jobs:
       - name: Build repo
         run: npm run build
 
-      - name: Run tests
-        run: npm run test
+      - name: Run tests for ${{ matrix.name }}
+        run: ${{ matrix.script }}
 
   visual-tests:
     name: Visual regression tests
