@@ -167,7 +167,7 @@ describe('gcds-date-input', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <gcds-date-input format="iso" legend="Date input" name="date">
+      <gcds-date-input format="iso" legend="Date input" autocomplete="off" name="date">
         <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
@@ -189,7 +189,7 @@ describe('gcds-date-input', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <gcds-date-input format="iso" legend="Date input" name="date">
+      <gcds-date-input format="iso" legend="Date input" autocomplete="on" name="date">
         <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
@@ -211,7 +211,7 @@ describe('gcds-date-input', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <gcds-date-input format="iso" legend="Date input" name="date">
+      <gcds-date-input format="iso" autocomplete="bday" legend="Date input" name="date">
         <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
