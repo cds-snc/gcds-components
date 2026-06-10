@@ -296,6 +296,10 @@ export namespace Components {
      */
     interface GcdsDateInput {
         /**
+          * String to have autocomplete enabled.
+         */
+        "autocomplete"?: string;
+        /**
           * If true, the date-input will be focused on component render
          */
         "autofocus": boolean;
@@ -2732,6 +2736,10 @@ declare namespace LocalJSX {
      */
     interface GcdsDateInput {
         /**
+          * String to have autocomplete enabled.
+         */
+        "autocomplete"?: string;
+        /**
           * If true, the date-input will be focused on component render
          */
         "autofocus"?: boolean;
@@ -4271,6 +4279,7 @@ declare namespace LocalJSX {
         "hint": string;
         "errorMessage": string;
         "disabled": boolean;
+        "autocomplete": string;
         "autofocus": boolean;
         "max": string;
         "min": string;
