@@ -469,7 +469,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
 
 
 @ProxyCmp({
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
@@ -478,7 +478,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -516,6 +516,10 @@ export class GcdsDateInput {
    * Specifies if the date input is disabled or not. @default false
    */
   set disabled(_: Components.GcdsDateInput['disabled']) {};
+    /**
+   * String to have autocomplete enabled.
+   */
+  set autocomplete(_: Components.GcdsDateInput['autocomplete']) {};
     /**
    * If true, the date-input will be focused on component render
    */
