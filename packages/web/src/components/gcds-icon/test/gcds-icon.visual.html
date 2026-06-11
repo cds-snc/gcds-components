@@ -1,0 +1,99 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Component preview: gcds-icon</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GCDS build -->
+    <link rel="stylesheet" href="/build/gcds.css" />
+    <script type="module" src="/build/gcds.esm.js"></script>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        background-color: var(--gcds-bg-white);
+        color: var(--gcds-text-primary);
+        font-family: var(--gcds-font-families-body), sans-serif;
+        font-size: var(--gcds-font-sizes-text);
+        line-height: var(--gcds-line-heights-text);
+        margin: 0;
+        padding: 0;
+      }
+
+      .preview-variant {
+        margin-bottom: var(--gcds-spacing-600);
+      }
+
+      .preview-component {
+        padding: var(--gcds-spacing-300);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <gcds-heading tag="h1">gcds-icon</gcds-heading>
+
+      <section data-variant="default" class="preview-variant">
+        <gcds-heading tag="h2">Default</gcds-heading>
+        <div class="preview-component">
+          <gcds-icon name="close"></gcds-icon>
+        </div>
+      </section>
+
+      <section data-variant="margin-left" class="preview-variant">
+        <gcds-heading tag="h2">Margin left</gcds-heading>
+        <div class="preview-component">
+          <gcds-icon name="close" margin-left="400"></gcds-icon>
+        </div>
+      </section>
+
+      <section data-variant="margin-right" class="preview-variant">
+        <gcds-heading tag="h2">Margin right</gcds-heading>
+        <div class="preview-component">
+          <gcds-icon name="close" margin-right="400"></gcds-icon>
+        </div>
+      </section>
+
+      <section data-variant="size-h1" class="preview-variant">
+        <gcds-heading tag="h2">Size: h1</gcds-heading>
+        <div class="preview-component">
+          <gcds-icon name="close" size="h1"></gcds-icon>
+        </div>
+      </section>
+
+      <section data-variant="size-text-small" class="preview-variant">
+        <gcds-heading tag="h2">Size: text-small</gcds-heading>
+        <div class="preview-component">
+          <gcds-icon name="close" size="text-small"></gcds-icon>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

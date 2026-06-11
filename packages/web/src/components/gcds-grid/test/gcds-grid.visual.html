@@ -1,0 +1,113 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Component preview: gcds-grid</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GCDS build -->
+    <link rel="stylesheet" href="/build/gcds.css" />
+    <script type="module" src="/build/gcds.esm.js"></script>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        background-color: var(--gcds-bg-white);
+        color: var(--gcds-text-primary);
+        font-family: var(--gcds-font-families-body), sans-serif;
+        font-size: var(--gcds-font-sizes-text);
+        line-height: var(--gcds-line-heights-text);
+        margin: 0;
+        padding: 0;
+      }
+
+      .preview-variant {
+        margin-bottom: var(--gcds-spacing-600);
+      }
+
+      .preview-component {
+        padding: var(--gcds-spacing-300);
+      }
+
+      gcds-text {
+        border: var(--gcds-border-width-sm) solid var(--gcds-border-default);
+        padding: var(--gcds-spacing-150);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <gcds-heading tag="h1">gcds-grid</gcds-heading>
+
+      <section data-variant="default" class="preview-variant">
+        <gcds-heading tag="h2">Default</gcds-heading>
+        <div class="preview-component">
+          <gcds-grid columns="repeat(3, 1fr)">
+            <gcds-text margin-bottom="0">Item one</gcds-text>
+            <gcds-text margin-bottom="0">Item two</gcds-text>
+            <gcds-text margin-bottom="0">Item three</gcds-text>
+          </gcds-grid>
+        </div>
+      </section>
+
+      <section data-variant="columns" class="preview-variant">
+        <gcds-heading tag="h2">Columns</gcds-heading>
+        <div class="preview-component">
+          <gcds-grid columns="2fr 1fr">
+            <gcds-text margin-bottom="0">Item one</gcds-text>
+            <gcds-text margin-bottom="0">Item two</gcds-text>
+          </gcds-grid>
+        </div>
+      </section>
+
+      <section data-variant="equal-row-height" class="preview-variant">
+        <gcds-heading tag="h2">Equal row height</gcds-heading>
+        <div class="preview-component">
+          <gcds-grid columns="repeat(2, 1fr)" equal-row-height>
+            <gcds-text margin-bottom="0">
+              Item one with more content to grow taller than its neighbour.
+            </gcds-text>
+            <gcds-text margin-bottom="0">Item two</gcds-text>
+          </gcds-grid>
+        </div>
+      </section>
+
+      <section data-variant="gap" class="preview-variant">
+        <gcds-heading tag="h2">Gap</gcds-heading>
+        <div class="preview-component">
+          <gcds-grid columns="repeat(3, 1fr)" gap="600">
+            <gcds-text margin-bottom="0">Item one</gcds-text>
+            <gcds-text margin-bottom="0">Item two</gcds-text>
+            <gcds-text margin-bottom="0">Item three</gcds-text>
+          </gcds-grid>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
