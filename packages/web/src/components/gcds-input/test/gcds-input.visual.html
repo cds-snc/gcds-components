@@ -1,0 +1,171 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Component preview: gcds-input</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GCDS build -->
+    <link rel="stylesheet" href="/build/gcds.css" />
+    <script type="module" src="/build/gcds.esm.js"></script>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        background-color: var(--gcds-bg-white);
+        color: var(--gcds-text-primary);
+        font-family: var(--gcds-font-families-body), sans-serif;
+        font-size: var(--gcds-font-sizes-text);
+        line-height: var(--gcds-line-heights-text);
+        margin: 0;
+        padding: 0;
+      }
+
+      .preview-variant {
+        margin-bottom: var(--gcds-spacing-600);
+      }
+
+      .preview-component {
+        padding: var(--gcds-spacing-300);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <gcds-heading tag="h1">gcds-input</gcds-heading>
+
+      <section data-variant="default" class="preview-variant">
+        <gcds-heading tag="h2">Default</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="default"
+            name="default"
+            label="Label"
+          ></gcds-input>
+        </div>
+      </section>
+
+      <section data-variant="disabled" class="preview-variant">
+        <gcds-heading tag="h2">Disabled</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="disabled"
+            name="disabled"
+            label="Label"
+            disabled
+          ></gcds-input>
+        </div>
+      </section>
+
+      <section data-variant="error-message" class="preview-variant">
+        <gcds-heading tag="h2">Error message</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="error-message"
+            name="error-message"
+            label="Label"
+            error-message="Example error message."
+          ></gcds-input>
+        </div>
+      </section>
+
+      <section data-variant="hide-label" class="preview-variant">
+        <gcds-heading tag="h2">Hidden label</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="hide-label"
+            name="hide-label"
+            label="Label"
+            hide-label
+          ></gcds-input>
+        </div>
+      </section>
+
+      <section data-variant="hint" class="preview-variant">
+        <gcds-heading tag="h2">Hint</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="hint"
+            name="hint"
+            label="Label"
+            hint="Example hint text."
+          ></gcds-input>
+        </div>
+      </section>
+
+      <section data-variant="readonly" class="preview-variant">
+        <gcds-heading tag="h2">Read-only</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="readonly"
+            name="readonly"
+            label="Label"
+            readonly
+          ></gcds-input>
+        </div>
+      </section>
+
+      <section data-variant="required" class="preview-variant">
+        <gcds-heading tag="h2">Required</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="required"
+            name="required"
+            label="Label"
+            required
+          ></gcds-input>
+        </div>
+      </section>
+
+      <section data-variant="size" class="preview-variant">
+        <gcds-heading tag="h2">Size</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="size"
+            name="size"
+            label="Label"
+            size="10"
+          ></gcds-input>
+        </div>
+      </section>
+
+      <section data-variant="value" class="preview-variant">
+        <gcds-heading tag="h2">Value</gcds-heading>
+        <div class="preview-component">
+          <gcds-input
+            input-id="value"
+            name="value"
+            label="Label"
+            value="Example value"
+          ></gcds-input>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
