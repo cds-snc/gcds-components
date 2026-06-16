@@ -9,7 +9,7 @@
       "filePath": "src/components/gcds-alert/gcds-alert.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-alert",
-      "readme": "# gcds-alert\n\n\n",
+      "readme": "# gcds-alert\r\n\r\n\r\n\r",
       "docs": "Alert displays an alert message with an optional heading, icon, and close button.",
       "docsTags": [
         {
@@ -265,7 +265,7 @@
       "filePath": "src/components/gcds-breadcrumbs/gcds-breadcrumbs.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-breadcrumbs",
-      "readme": "# gcds-breadcrumbs\n\n\n",
+      "readme": "# gcds-breadcrumbs\r\n\r\n\r\n\r",
       "docs": "Breadcrumbs is a path to the current page from each preceding level of the site's hierarchy.",
       "docsTags": [
         {
@@ -337,7 +337,7 @@
       "filePath": "src/components/gcds-breadcrumbs-item/gcds-breadcrumbs-item.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-breadcrumbs-item",
-      "readme": "# gcds-breadcrumbs\n\n\n",
+      "readme": "# gcds-breadcrumbs\r\n\r\n\r\n\r",
       "docs": "Breadcrumbs item represents a single link in the breadcrumbs navigation.",
       "docsTags": [
         {
@@ -448,7 +448,7 @@
       "filePath": "src/components/gcds-button/gcds-button.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-button",
-      "readme": "# gcds-button\n",
+      "readme": "# gcds-button\r\n\r",
       "docs": "The button is an interactive object that emphasizes an action.",
       "docsTags": [
         {
@@ -485,7 +485,7 @@
           "name": "buttonRole",
           "type": "\"danger\" | \"primary\" | \"secondary\" | \"start\"",
           "complexType": {
-            "original": "| 'start'\n    | 'primary'\n    | 'secondary'\n    | 'danger'",
+            "original": "| 'start'\r\n    | 'primary'\r\n    | 'secondary'\r\n    | 'danger'",
             "resolved": "\"danger\" | \"primary\" | \"secondary\" | \"start\"",
             "references": {}
           },
@@ -839,7 +839,7 @@
       "filePath": "src/components/gcds-card/gcds-card.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-card",
-      "readme": "# gcds-card\n",
+      "readme": "# gcds-card\r\n\r",
       "docs": "A card is a box containing structured, actionable content on a single topic.",
       "docsTags": [
         {
@@ -906,7 +906,7 @@
           "mutable": false,
           "attr": "card-title-tag",
           "reflectToAttr": false,
-          "docs": "The card title tag property specifies the HTML heading element for the title.\nThis property does not modify the font size. It is used to assign the heading level\nin order to maintain heading hierarchy and accessibility for assistive technologies.",
+          "docs": "The card title tag property specifies the HTML heading element for the title.\r\nThis property does not modify the font size. It is used to assign the heading level\r\nin order to maintain heading hierarchy and accessibility for assistive technologies.",
           "docsTags": [],
           "values": [
             {
@@ -1146,7 +1146,7 @@
       "filePath": "src/components/gcds-checkboxes/gcds-checkboxes.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-checkboxes",
-      "readme": "# gcds-checkbox\n\n\n",
+      "readme": "# gcds-checkbox\r\n\r\n\r\n\r",
       "docs": "Checkboxes provide a set of options for multiple responses.",
       "docsTags": [],
       "usage": {},
@@ -1472,7 +1472,7 @@
           "name": "validator",
           "type": "(string | ValidatorEntry | Validator<string>)[]",
           "complexType": {
-            "original": "Array<\n    string | ValidatorEntry | Validator<string>\n  >",
+            "original": "Array<\r\n    string | ValidatorEntry | Validator<string>\r\n  >",
             "resolved": "(string | ValidatorEntry | Validator<string>)[]",
             "references": {
               "Array": {
@@ -1800,7 +1800,7 @@
       "filePath": "src/components/gcds-container/gcds-container.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-container",
-      "readme": "# gcds-container\n\n\n",
+      "readme": "# gcds-container\r\n\r\n\r\n\r",
       "docs": "A container is a basic box layout with a set width for its contents.",
       "docsTags": [
         {
@@ -1821,7 +1821,7 @@
           "mutable": false,
           "attr": "alignment",
           "reflectToAttr": false,
-          "docs": "Defines the container's alignment.\nThis property is ignored when `layout` is set to `page`,\nas the page layout has higher priority.",
+          "docs": "Defines the container's alignment.\r\nThis property is ignored when `layout` is set to `page`,\r\nas the page layout has higher priority.",
           "docsTags": [],
           "values": [
             {
@@ -1882,7 +1882,7 @@
           "mutable": false,
           "attr": "layout",
           "reflectToAttr": false,
-          "docs": "Controls how the container aligns with the page layout.\nWhen set to `page`, the container uses a max width of 1140px and\nswitches to 90% width on smaller screens to scale consistently with\ncore page layout components such as the header and footer.\nWhen set to `full`, the container spans the full width (100%)\nof its parent.",
+          "docs": "Controls how the container aligns with the page layout.\r\nWhen set to `page`, the container uses a max width of 1140px and\r\nswitches to 90% width on smaller screens to scale consistently with\r\ncore page layout components such as the header and footer.\r\nWhen set to `full`, the container spans the full width (100%)\r\nof its parent.",
           "docsTags": [],
           "values": [
             {
@@ -1917,7 +1917,7 @@
           "mutable": false,
           "attr": "margin",
           "reflectToAttr": false,
-          "docs": "Container margin. Horizontal margins (left and right) are not\napplied if the container’s alignment property is defined, since\nalignment has higher priority.",
+          "docs": "Container margin. Horizontal margins (left and right) are not\r\napplied if the container’s alignment property is defined, since\r\nalignment has higher priority.",
           "docsTags": [],
           "values": [
             {
@@ -2311,7 +2311,7 @@
       "filePath": "src/components/gcds-date-input/gcds-date-input.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-date-input",
-      "readme": "# gcds-date-input\n\n\n",
+      "readme": "# gcds-date-input\r\n\r\n\r\n\r",
       "docs": "A date input is a space to enter a known date.",
       "docsTags": [],
       "usage": {},
@@ -2503,7 +2503,7 @@
           "mutable": false,
           "attr": "max",
           "reflectToAttr": true,
-          "docs": "The maximum date that the date-input field can accept.\nFormat: YYYY-MM-DD or YYYY-MM",
+          "docs": "The maximum date that the date-input field can accept.\r\nFormat: YYYY-MM-DD or YYYY-MM",
           "docsTags": [],
           "values": [
             {
@@ -2526,7 +2526,7 @@
           "mutable": false,
           "attr": "min",
           "reflectToAttr": true,
-          "docs": "The minimum date that the date-input field can accept.\nFormat: YYYY-MM-DD or YYYY-MM",
+          "docs": "The minimum date that the date-input field can accept.\r\nFormat: YYYY-MM-DD or YYYY-MM",
           "docsTags": [],
           "values": [
             {
@@ -2632,7 +2632,7 @@
           "name": "validator",
           "type": "(string | ValidatorEntry | Validator<string>)[]",
           "complexType": {
-            "original": "Array<\n    string | ValidatorEntry | Validator<string>\n  >",
+            "original": "Array<\r\n    string | ValidatorEntry | Validator<string>\r\n  >",
             "resolved": "(string | ValidatorEntry | Validator<string>)[]",
             "references": {
               "Array": {
@@ -2936,7 +2936,7 @@
       "filePath": "src/components/gcds-date-modified/gcds-date-modified.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-date-modified",
-      "readme": "# gcds-date-modified\n\n\n",
+      "readme": "# gcds-date-modified\r\n\r\n\r\n\r",
       "docs": "Date modified is an indicator of the last update to a webpage or application.",
       "docsTags": [
         {
@@ -3007,7 +3007,7 @@
       "filePath": "src/components/gcds-details/gcds-details.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-details",
-      "readme": "# gcds-details\n\n\n",
+      "readme": "# gcds-details\r\n\r\n\r\n\r",
       "docs": "Details is an interactive switch for a person to expand or collapse content.",
       "docsTags": [
         {
@@ -3169,7 +3169,7 @@
       "filePath": "src/components/gcds-error-message/gcds-error-message.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-error-message",
-      "readme": "# gcds-error-message\n\n\n",
+      "readme": "# gcds-error-message\r\n\r\n\r\n\r",
       "docs": "An error message is a description of a problem blocking a user goal.",
       "docsTags": [
         {
@@ -3260,7 +3260,7 @@
       "filePath": "src/components/gcds-error-summary/gcds-error-summary.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-error-summary",
-      "readme": "# gcds-error-summary\n\n\n",
+      "readme": "# gcds-error-summary\r\n\r\n\r\n\r",
       "docs": "An error summary is a list of user errors in a form.",
       "docsTags": [],
       "usage": {},
@@ -3432,7 +3432,7 @@
       "filePath": "src/components/gcds-fieldset/gcds-fieldset.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-fieldset",
-      "readme": "# gcds-fieldset\n\n\n",
+      "readme": "# gcds-fieldset\r\n\r\n\r\n\r",
       "docs": "A fieldset is a group of multiple form components or elements.",
       "docsTags": [
         {
@@ -3558,7 +3558,7 @@
       "filePath": "src/components/gcds-file-uploader/gcds-file-uploader.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-file-uploader",
-      "readme": "# gcds-file-uploader\n",
+      "readme": "# gcds-file-uploader\r\n\r",
       "docs": "A file uploader is a space to select and add supporting documentation.",
       "docsTags": [],
       "usage": {},
@@ -3926,7 +3926,7 @@
           "name": "validator",
           "type": "(string | ValidatorEntry | Validator<string | number | FileList>)[]",
           "complexType": {
-            "original": "Array<\n    string | ValidatorEntry | Validator<string | number | FileList>\n  >",
+            "original": "Array<\r\n    string | ValidatorEntry | Validator<string | number | FileList>\r\n  >",
             "resolved": "(string | ValidatorEntry | Validator<string | number | FileList>)[]",
             "references": {
               "Array": {
@@ -4253,7 +4253,7 @@
       "filePath": "src/components/gcds-footer/gcds-footer.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-footer",
-      "readme": "# gcds-footer\n",
+      "readme": "# gcds-footer\r\n\r",
       "docs": "The footer is the responsive Government of Canada branded footer landmark.",
       "docsTags": [],
       "usage": {},
@@ -4442,7 +4442,7 @@
       "filePath": "src/components/gcds-grid/gcds-grid.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-grid",
-      "readme": "# gcds-grid\n\n\n",
+      "readme": "# gcds-grid\r\n\r\n\r\n\r",
       "docs": "A grid is a responsive, flexible column layout to position elements on a page.",
       "docsTags": [
         {
@@ -4461,7 +4461,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "C:/Users/maryanne.moyana/Documents/projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -4469,7 +4469,7 @@
           "mutable": false,
           "attr": "align-content",
           "reflectToAttr": false,
-          "docs": "If total grid size is less than the size of its grid container,\nthis property aligns the grid along the block (column) axis",
+          "docs": "If total grid size is less than the size of its grid container,\r\nthis property aligns the grid along the block (column) axis",
           "docsTags": [],
           "values": [
             {
@@ -4557,7 +4557,7 @@
           "mutable": false,
           "attr": "alignment",
           "reflectToAttr": false,
-          "docs": "Defines the grid's alignment if the grid containers\nsize is smaller than the parent's size.",
+          "docs": "Defines the grid's alignment if the grid containers\r\nsize is smaller than the parent's size.",
           "docsTags": [],
           "values": [
             {
@@ -4589,7 +4589,7 @@
           "mutable": false,
           "attr": "columns",
           "reflectToAttr": false,
-          "docs": "Defines the default number of grid columns for all viewports if columns-tablet\nand columns-desktop are not defined. Option to set different layouts for\ndesktop with columns-desktop and for tablet with columns-tablet.",
+          "docs": "Defines the default number of grid columns for all viewports if columns-tablet\r\nand columns-desktop are not defined. Option to set different layouts for\r\ndesktop with columns-desktop and for tablet with columns-tablet.",
           "docsTags": [],
           "values": [
             {
@@ -4635,7 +4635,7 @@
           "mutable": false,
           "attr": "columns-tablet",
           "reflectToAttr": false,
-          "docs": "Provides option to set a different number of grid columns for tablet screens.\nIf columns-desktop is not defined, columns-tablet will be used to define the\nnumber of columns for desktop as well.",
+          "docs": "Provides option to set a different number of grid columns for tablet screens.\r\nIf columns-desktop is not defined, columns-tablet will be used to define the\r\nnumber of columns for desktop as well.",
           "docsTags": [],
           "values": [
             {
@@ -4736,7 +4736,7 @@
           "mutable": false,
           "attr": "equal-row-height",
           "reflectToAttr": false,
-          "docs": "Sets all grid items to have an equal height,\nbased on the tallest item.",
+          "docs": "Sets all grid items to have an equal height,\r\nbased on the tallest item.",
           "docsTags": [
             {
               "name": "default",
@@ -4763,7 +4763,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "C:/Users/maryanne.moyana/Documents/projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4771,7 +4771,7 @@
           "mutable": true,
           "attr": "gap",
           "reflectToAttr": false,
-          "docs": "Defines the horizontal and vertical spacing between items in\na grid container for all viewports if gap-tablet and gap-desktop\nare not defined. Option to set different spacing for desktop\nwith gap-desktop and for tablet with gap-tablet.",
+          "docs": "Defines the horizontal and vertical spacing between items in\r\na grid container for all viewports if gap-tablet and gap-desktop\r\nare not defined. Option to set different spacing for desktop\r\nwith gap-desktop and for tablet with gap-tablet.",
           "docsTags": [
             {
               "name": "default",
@@ -4859,7 +4859,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "C:/Users/maryanne.moyana/Documents/projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4867,7 +4867,7 @@
           "mutable": true,
           "attr": "gap-desktop",
           "reflectToAttr": false,
-          "docs": "Provides option to set horizontal and vertical spacing between items\nin a grid container for desktop screens.",
+          "docs": "Provides option to set horizontal and vertical spacing between items\r\nin a grid container for desktop screens.",
           "docsTags": [],
           "values": [
             {
@@ -4949,7 +4949,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "C:/Users/maryanne.moyana/Documents/projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4957,7 +4957,7 @@
           "mutable": true,
           "attr": "gap-tablet",
           "reflectToAttr": false,
-          "docs": "Provides option to set horizontal and vertical spacing between items in a\ngrid container for tablet screens. If gap-desktop is not defined, gap-tablet\nwill be used to define the spacing for desktop screens as well.",
+          "docs": "Provides option to set horizontal and vertical spacing between items in a\r\ngrid container for tablet screens. If gap-desktop is not defined, gap-tablet\r\nwill be used to define the spacing for desktop screens as well.",
           "docsTags": [],
           "values": [
             {
@@ -5039,7 +5039,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "C:/Users/maryanne.moyana/Documents/projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -5047,7 +5047,7 @@
           "mutable": false,
           "attr": "justify-content",
           "reflectToAttr": false,
-          "docs": "If total grid size is less than the size of its grid container,\nthis property aligns the grid along the inline (row) axis",
+          "docs": "If total grid size is less than the size of its grid container,\r\nthis property aligns the grid along the inline (row) axis",
           "docsTags": [],
           "values": [
             {
@@ -5129,7 +5129,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "C:/Users/maryanne.moyana/Documents/projects/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -5214,7 +5214,7 @@
           "name": "tag",
           "type": "\"article\" | \"aside\" | \"div\" | \"dl\" | \"main\" | \"nav\" | \"ol\" | \"section\" | \"ul\"",
           "complexType": {
-            "original": "| 'article'\n    | 'aside'\n    | 'div'\n    | 'dl'\n    | 'main'\n    | 'nav'\n    | 'ol'\n    | 'section'\n    | 'ul'",
+            "original": "| 'article'\r\n    | 'aside'\r\n    | 'div'\r\n    | 'dl'\r\n    | 'main'\r\n    | 'nav'\r\n    | 'ol'\r\n    | 'section'\r\n    | 'ul'",
             "resolved": "\"article\" | \"aside\" | \"div\" | \"dl\" | \"main\" | \"nav\" | \"ol\" | \"section\" | \"ul\"",
             "references": {}
           },
@@ -5299,7 +5299,7 @@
       "filePath": "src/components/gcds-grid-col/gcds-grid-col.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-grid-col",
-      "readme": "# gcds-grid-col\n\n\n",
+      "readme": "# gcds-grid-col\r\n\r\n\r\n\r",
       "docs": "A grid column is a single column in a grid layout, allowing for flexible content arrangement.",
       "docsTags": [
         {
@@ -5313,14 +5313,14 @@
           "name": "desktop",
           "type": "1 | 10 | 11 | 12 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9",
           "complexType": {
-            "original": "| 1\n    | 2\n    | 3\n    | 4\n    | 5\n    | 6\n    | 7\n    | 8\n    | 9\n    | 10\n    | 11\n    | 12",
+            "original": "| 1\r\n    | 2\r\n    | 3\r\n    | 4\r\n    | 5\r\n    | 6\r\n    | 7\r\n    | 8\r\n    | 9\r\n    | 10\r\n    | 11\r\n    | 12",
             "resolved": "1 | 10 | 11 | 12 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9",
             "references": {}
           },
           "mutable": true,
           "attr": "desktop",
           "reflectToAttr": false,
-          "docs": "Optimize grid column size for desktop (1024px and above).\nDesktop grid column sizes are based on a 12 column grid.",
+          "docs": "Optimize grid column size for desktop (1024px and above).\r\nDesktop grid column sizes are based on a 12 column grid.",
           "docsTags": [],
           "values": [
             {
@@ -5388,7 +5388,7 @@
           "mutable": true,
           "attr": "tablet",
           "reflectToAttr": false,
-          "docs": "Optimize grid column size for tablet (768px - 1023px).\nTablet grid column sizes are based on a 6 column grid.\nThe tablet size will also be used for desktop, if desktop is undefined.",
+          "docs": "Optimize grid column size for tablet (768px - 1023px).\r\nTablet grid column sizes are based on a 6 column grid.\r\nThe tablet size will also be used for desktop, if desktop is undefined.",
           "docsTags": [
             {
               "name": "default",
@@ -5477,7 +5477,7 @@
       "filePath": "src/components/gcds-header/gcds-header.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-header",
-      "readme": "# gcds-header\n",
+      "readme": "# gcds-header\r\n\r",
       "docs": "The header is the responsive Government of Canada branded header landmark.",
       "docsTags": [
         {
@@ -5702,7 +5702,7 @@
       "filePath": "src/components/gcds-heading/gcds-heading.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-heading",
-      "readme": "# gcds-heading\n\n\n",
+      "readme": "# gcds-heading\r\n\r\n\r\n\r",
       "docs": "A heading is a title that establishes levels of hierarchy to organize page content into a structure and matches Canada.ca typography styles.",
       "docsTags": [
         {
@@ -5723,7 +5723,7 @@
           "mutable": false,
           "attr": "character-limit",
           "reflectToAttr": false,
-          "docs": "Sets the line length to a maximum amount of characters per line for\neach heading level, ensuring a comfortable, accessible reading length.",
+          "docs": "Sets the line length to a maximum amount of characters per line for\r\neach heading level, ensuring a comfortable, accessible reading length.",
           "docsTags": [
             {
               "name": "default",
@@ -5954,7 +5954,7 @@
           "mutable": true,
           "attr": "margin-top",
           "reflectToAttr": false,
-          "docs": "Adds margin above the heading. The default margin-top for h1 is set to 0,\nwhile for h2 to h6 headings, it's 600.",
+          "docs": "Adds margin above the heading. The default margin-top for h1 is set to 0,\r\nwhile for h2 to h6 headings, it's 600.",
           "docsTags": [],
           "values": [
             {
@@ -6170,7 +6170,7 @@
       "filePath": "src/components/gcds-hint/gcds-hint.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-hint",
-      "readme": "# gcds-hint\n\n\n",
+      "readme": "# gcds-hint\r\n\r\n\r\n\r",
       "docs": "Hint provides additional information or context to help users understand the content or functionality of a related element.",
       "docsTags": [
         {
@@ -6268,7 +6268,7 @@
       "filePath": "src/components/gcds-icon/gcds-icon.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-icon",
-      "readme": "# gcds-icon\n\n\n",
+      "readme": "# gcds-icon\r\n\r\n\r\n\r",
       "docs": "An icon is a symbol that visually represents an action or idea.",
       "docsTags": [],
       "usage": {},
@@ -6607,7 +6607,7 @@
             "references": {
               "IconNames": {
                 "location": "local",
-                "path": "/web/src/components/gcds-icon/gcds-icon.tsx",
+                "path": "C:/Users/maryanne.moyana/Documents/projects/gcds-components/packages/web/src/components/gcds-icon/gcds-icon.tsx",
                 "id": "src/components/gcds-icon/gcds-icon.tsx::IconNames"
               }
             }
@@ -6708,7 +6708,7 @@
           "name": "size",
           "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"inherit\" | \"text\" | \"text-small\"",
           "complexType": {
-            "original": "| 'inherit'\n    | 'text-small'\n    | 'text'\n    | 'h6'\n    | 'h5'\n    | 'h4'\n    | 'h3'\n    | 'h2'\n    | 'h1'",
+            "original": "| 'inherit'\r\n    | 'text-small'\r\n    | 'text'\r\n    | 'h6'\r\n    | 'h5'\r\n    | 'h4'\r\n    | 'h3'\r\n    | 'h2'\r\n    | 'h1'",
             "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"inherit\" | \"text\" | \"text-small\"",
             "references": {}
           },
@@ -6828,7 +6828,7 @@
       "filePath": "src/components/gcds-input/gcds-input.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-input",
-      "readme": "# gcds-input\n\n\n",
+      "readme": "# gcds-input\r\n\r\n\r\n\r",
       "docs": "An input is a space to enter short-form information in response to a question or instruction.",
       "docsTags": [],
       "usage": {},
@@ -7033,7 +7033,7 @@
           "name": "inputmode",
           "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
           "complexType": {
-            "original": "| 'none'\n    | 'text'\n    | 'decimal'\n    | 'numeric'\n    | 'tel'\n    | 'search'\n    | 'email'\n    | 'url'",
+            "original": "| 'none'\r\n    | 'text'\r\n    | 'decimal'\r\n    | 'numeric'\r\n    | 'tel'\r\n    | 'search'\r\n    | 'email'\r\n    | 'url'",
             "resolved": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
             "references": {}
           },
@@ -7121,7 +7121,7 @@
           "mutable": false,
           "attr": "max",
           "reflectToAttr": true,
-          "docs": "The maximum value that the input field can accept.\nOnly applies to number input type.",
+          "docs": "The maximum value that the input field can accept.\r\nOnly applies to number input type.",
           "docsTags": [],
           "values": [
             {
@@ -7170,7 +7170,7 @@
           "mutable": false,
           "attr": "min",
           "reflectToAttr": true,
-          "docs": "The minimum value that the input field can accept.\nOnly applies to number input type.",
+          "docs": "The minimum value that the input field can accept.\r\nOnly applies to number input type.",
           "docsTags": [],
           "values": [
             {
@@ -7242,7 +7242,7 @@
           "mutable": false,
           "attr": "pattern",
           "reflectToAttr": true,
-          "docs": "Specifies a regular expression the form control's value should match.\nSee: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern",
+          "docs": "Specifies a regular expression the form control's value should match.\r\nSee: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern",
           "docsTags": [],
           "values": [
             {
@@ -7317,7 +7317,7 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
-          "docs": "Size attribute for an input element to provide a visual indication\nof the expected text length to the user.",
+          "docs": "Size attribute for an input element to provide a visual indication\r\nof the expected text length to the user.",
           "docsTags": [],
           "values": [
             {
@@ -7340,7 +7340,7 @@
           "mutable": false,
           "attr": "step",
           "reflectToAttr": true,
-          "docs": "A number that specifies the granularity that the value must adhere to.\nValid for number type.\nSee: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step",
+          "docs": "A number that specifies the granularity that the value must adhere to.\r\nValid for number type.\r\nSee: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step",
           "docsTags": [],
           "values": [
             {
@@ -7489,7 +7489,7 @@
           "name": "validator",
           "type": "(string | ValidatorEntry | Validator<string>)[]",
           "complexType": {
-            "original": "Array<\n    string | ValidatorEntry | Validator<string>\n  >",
+            "original": "Array<\r\n    string | ValidatorEntry | Validator<string>\r\n  >",
             "resolved": "(string | ValidatorEntry | Validator<string>)[]",
             "references": {
               "Array": {
@@ -7810,7 +7810,7 @@
       "filePath": "src/components/gcds-label/gcds-label.tsx",
       "encapsulation": "none",
       "tag": "gcds-label",
-      "readme": "# gcds-label\n\n\n",
+      "readme": "# gcds-label\r\n\r\n\r\n\r",
       "docs": "Label for form fields, providing accessibility and context for users.",
       "docsTags": [
         {
@@ -7963,7 +7963,7 @@
       "filePath": "src/components/gcds-lang-toggle/gcds-lang-toggle.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-lang-toggle",
-      "readme": "# gcds-lang-toggle\n",
+      "readme": "# gcds-lang-toggle\r\n\r",
       "docs": "The language toggle is a link to the same content in the other Official Language.",
       "docsTags": [],
       "usage": {},
@@ -8066,7 +8066,7 @@
       "filePath": "src/components/gcds-link/gcds-link.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-link",
-      "readme": "# gcds-link\n\n\n",
+      "readme": "# gcds-link\r\n\r\n\r\n\r",
       "docs": "A link is a navigational element that brings a person to a new page, website, file, or section on the current page.",
       "docsTags": [
         {
@@ -8427,7 +8427,7 @@
       "filePath": "src/components/gcds-nav-group/gcds-nav-group.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-nav-group",
-      "readme": "# gcds-nav-group\n\n\n",
+      "readme": "# gcds-nav-group\r\n\r\n\r\n\r",
       "docs": "Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.",
       "docsTags": [
         {
@@ -8670,7 +8670,7 @@
       "filePath": "src/components/gcds-nav-link/gcds-nav-link.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-nav-link",
-      "readme": "# gcds-nav-link\n\n\n",
+      "readme": "# gcds-nav-link\r\n\r\n\r\n\r",
       "docs": "Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.",
       "docsTags": [
         {
@@ -8813,7 +8813,7 @@
       "filePath": "src/components/gcds-notice/gcds-notice.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-notice",
-      "readme": "# gcds-notice\n\n\n",
+      "readme": "# gcds-notice\r\n\r\n\r\n\r",
       "docs": "The notice is a short, prominent message that’s part of the page content.",
       "docsTags": [
         {
@@ -8893,7 +8893,7 @@
           "mutable": false,
           "attr": "notice-title-tag",
           "reflectToAttr": false,
-          "docs": "The notice title tag property specifies the HTML heading element for the title.\nThis property does not modify the font size. It is used to assign the heading level\nin order to maintain heading hierarchy and accessibility for assistive technologies.",
+          "docs": "The notice title tag property specifies the HTML heading element for the title.\r\nThis property does not modify the font size. It is used to assign the heading level\r\nin order to maintain heading hierarchy and accessibility for assistive technologies.",
           "docsTags": [],
           "values": [
             {
@@ -8949,7 +8949,7 @@
       "filePath": "src/components/gcds-pagination/gcds-pagination.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-pagination",
-      "readme": "# gcds-pagination\n\n\n",
+      "readme": "# gcds-pagination\r\n\r\n\r\n\r",
       "docs": "Pagination is a division of content into multiple linked pages.",
       "docsTags": [],
       "usage": {},
@@ -9203,7 +9203,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the link has been clicked. Contains the href in event detail when using simple display,\nor an object with page and href when using list display.",
+          "docs": "Emitted when the link has been clicked. Contains the href in event detail when using simple display,\r\nor an object with page and href when using list display.",
           "docsTags": []
         },
         {
@@ -9245,7 +9245,7 @@
       "filePath": "src/components/gcds-radios/gcds-radios.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-radios",
-      "readme": "# gcds-radio\n\n\n",
+      "readme": "# gcds-radio\r\n\r\n\r\n\r",
       "docs": "Radios provide a set of options for a single response.",
       "docsTags": [],
       "usage": {},
@@ -9542,7 +9542,7 @@
           "name": "validator",
           "type": "(string | ValidatorEntry | Validator<string>)[]",
           "complexType": {
-            "original": "Array<\n    string | ValidatorEntry | Validator<string>\n  >",
+            "original": "Array<\r\n    string | ValidatorEntry | Validator<string>\r\n  >",
             "resolved": "(string | ValidatorEntry | Validator<string>)[]",
             "references": {
               "Array": {
@@ -9841,7 +9841,7 @@
       "filePath": "src/components/gcds-search/gcds-search.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-search",
-      "readme": "# gcds-search\n\n\n",
+      "readme": "# gcds-search\r\n\r\n\r\n\r",
       "docs": "Search is a space for entering keywords to find relevant information.",
       "docsTags": [],
       "usage": {},
@@ -10147,7 +10147,7 @@
       "filePath": "src/components/gcds-select/gcds-select.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-select",
-      "readme": "# gcds-select\n\n\n",
+      "readme": "# gcds-select\r\n\r\n\r\n\r",
       "docs": "A select provides a large list of options for single selection.",
       "docsTags": [
         {
@@ -10493,7 +10493,7 @@
           "name": "validator",
           "type": "(string | ValidatorEntry | Validator<string>)[]",
           "complexType": {
-            "original": "Array<\n    string | ValidatorEntry | Validator<string>\n  >",
+            "original": "Array<\r\n    string | ValidatorEntry | Validator<string>\r\n  >",
             "resolved": "(string | ValidatorEntry | Validator<string>)[]",
             "references": {
               "Array": {
@@ -10804,7 +10804,7 @@
       "filePath": "src/components/gcds-side-nav/gcds-side-nav.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-side-nav",
-      "readme": "# gcds-side-nav\n\n\n",
+      "readme": "# gcds-side-nav\r\n\r\n\r\n\r",
       "docs": "A side navigation is a vertical list of page links on the left side of the screen.",
       "docsTags": [
         {
@@ -11001,7 +11001,7 @@
       "filePath": "src/components/gcds-signature/gcds-signature.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-signature",
-      "readme": "# gcds-signature\n\n\n",
+      "readme": "# gcds-signature\r\n\r\n\r\n\r",
       "docs": "The signature is the Government of Canada landmark identifier found in the header or footer.",
       "docsTags": [],
       "usage": {},
@@ -11134,7 +11134,7 @@
       "filePath": "src/components/gcds-sr-only/gcds-sr-only.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-sr-only",
-      "readme": "# gcds-sr-only\n\n\n",
+      "readme": "# gcds-sr-only\r\n\r\n\r\n\r",
       "docs": "The screenreader-only component is text information only accessible with assistive technologies.",
       "docsTags": [
         {
@@ -11148,7 +11148,7 @@
           "name": "tag",
           "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"p\" | \"span\"",
           "complexType": {
-            "original": "| 'h1'\n    | 'h2'\n    | 'h3'\n    | 'h4'\n    | 'h5'\n    | 'h6'\n    | 'p'\n    | 'span'",
+            "original": "| 'h1'\r\n    | 'h2'\r\n    | 'h3'\r\n    | 'h4'\r\n    | 'h5'\r\n    | 'h6'\r\n    | 'p'\r\n    | 'span'",
             "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"p\" | \"span\"",
             "references": {}
           },
@@ -11277,7 +11277,7 @@
       "filePath": "src/components/gcds-stepper/gcds-stepper.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-stepper",
-      "readme": "# gcds-stepper\n\n\n",
+      "readme": "# gcds-stepper\r\n\r\n\r\n\r",
       "docs": "A stepper is a progress tracker for a multi-step process.",
       "docsTags": [
         {
@@ -11400,7 +11400,7 @@
       "filePath": "src/components/gcds-table/gcds-table.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-table",
-      "readme": "# gcds-table\n\n\n",
+      "readme": "# gcds-table\r\n\r\n\r\n\r",
       "docs": "A table is a structured layout of related data in rows and columns.",
       "docsTags": [
         {
@@ -11641,7 +11641,7 @@
           "mutable": true,
           "attr": "pagination-size-options",
           "reflectToAttr": false,
-          "docs": "Available page-size options.\nUse 0 to represent \"All rows\".",
+          "docs": "Available page-size options.\r\nUse 0 to represent \"All rows\".",
           "docsTags": [
             {
               "name": "default",
@@ -11816,7 +11816,7 @@
       "filePath": "src/components/gcds-text/gcds-text.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-text",
-      "readme": "# gcds-text\n\n\n",
+      "readme": "# gcds-text\r\n\r\n\r\n\r",
       "docs": "Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.",
       "docsTags": [
         {
@@ -11859,7 +11859,7 @@
           "name": "display",
           "type": "\"block\" | \"flex\" | \"inline\" | \"inline-block\" | \"inline-flex\" | \"none\"",
           "complexType": {
-            "original": "| 'block'\n    | 'flex'\n    | 'inline'\n    | 'inline-block'\n    | 'inline-flex'\n    | 'none'",
+            "original": "| 'block'\r\n    | 'flex'\r\n    | 'inline'\r\n    | 'inline-block'\r\n    | 'inline-flex'\r\n    | 'none'",
             "resolved": "\"block\" | \"flex\" | \"inline\" | \"inline-block\" | \"inline-flex\" | \"none\"",
             "references": {}
           },
@@ -12347,7 +12347,7 @@
       "filePath": "src/components/gcds-textarea/gcds-textarea.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-textarea",
-      "readme": "# gcds-textarea\n\n\n",
+      "readme": "# gcds-textarea\r\n\r\n\r\n\r",
       "docs": "A text area is a space to enter long-form information in response to a question or instruction.",
       "docsTags": [],
       "usage": {},
@@ -12769,7 +12769,7 @@
           "name": "validator",
           "type": "(string | ValidatorEntry | Validator<string>)[]",
           "complexType": {
-            "original": "Array<\n    string | ValidatorEntry | Validator<string>\n  >",
+            "original": "Array<\r\n    string | ValidatorEntry | Validator<string>\r\n  >",
             "resolved": "(string | ValidatorEntry | Validator<string>)[]",
             "references": {
               "Array": {
@@ -13065,7 +13065,7 @@
       "filePath": "src/components/gcds-top-nav/gcds-top-nav.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-top-nav",
-      "readme": "# gcds-top-nav\n\n\n",
+      "readme": "# gcds-top-nav\r\n\r\n\r\n\r",
       "docs": "A top navigation is a horizontal list of page links.",
       "docsTags": [
         {
@@ -13296,7 +13296,7 @@
       "filePath": "src/components/gcds-topic-menu/gcds-topic-menu.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-topic-menu",
-      "readme": "# gcds-topic-menu\n\n\n",
+      "readme": "# gcds-topic-menu\r\n\r\n\r\n\r",
       "docs": "The theme and topic menu is a navigation to the top tasks of Government of Canada websites.",
       "docsTags": [],
       "usage": {},
@@ -13499,27 +13499,27 @@
   ],
   "typeLibrary": {
     "src/components/gcds-grid/gcds-grid.tsx::GridGapValues": {
-      "declaration": "export type GridGapValues =\n  | '150'\n  | '175'\n  | '200'\n  | '225'\n  | '250'\n  | '300'\n  | '350'\n  | '400'\n  | '450'\n  | '500'\n  | '550'\n  | '600'\n  | '650'\n  | '700'\n  | '750'\n  | '800';",
+      "declaration": "export type GridGapValues =\r\n  | '150'\r\n  | '175'\r\n  | '200'\r\n  | '225'\r\n  | '250'\r\n  | '300'\r\n  | '350'\r\n  | '400'\r\n  | '450'\r\n  | '500'\r\n  | '550'\r\n  | '600'\r\n  | '650'\r\n  | '700'\r\n  | '750'\r\n  | '800';",
       "docstring": "",
       "path": "src/components/gcds-grid/gcds-grid.tsx"
     },
     "src/components/gcds-grid/gcds-grid.tsx::ContentValues": {
-      "declaration": "export type ContentValues =\n  | 'center'\n  | 'end'\n  | 'space-around'\n  | 'space-between'\n  | 'space-evenly'\n  | 'start'\n  | 'stretch';",
+      "declaration": "export type ContentValues =\r\n  | 'center'\r\n  | 'end'\r\n  | 'space-around'\r\n  | 'space-between'\r\n  | 'space-evenly'\r\n  | 'start'\r\n  | 'stretch';",
       "docstring": "",
       "path": "src/components/gcds-grid/gcds-grid.tsx"
     },
     "src/utils/types/spacing.tsx::SpacingValues": {
-      "declaration": "export type SpacingValues =\n  | '0'\n  | '25'\n  | '50'\n  | '75'\n  | '100'\n  | '125'\n  | '150'\n  | '175'\n  | '200'\n  | '225'\n  | '250'\n  | '300'\n  | '350'\n  | '400'\n  | '450'\n  | '500'\n  | '550'\n  | '600'\n  | '650'\n  | '700'\n  | '750'\n  | '800'\n  | '850'\n  | '900'\n  | '950'\n  | '1000'\n  | '1050'\n  | '1100'\n  | '1150'\n  | '1200'\n  | '1250';",
+      "declaration": "export type SpacingValues =\r\n  | '0'\r\n  | '25'\r\n  | '50'\r\n  | '75'\r\n  | '100'\r\n  | '125'\r\n  | '150'\r\n  | '175'\r\n  | '200'\r\n  | '225'\r\n  | '250'\r\n  | '300'\r\n  | '350'\r\n  | '400'\r\n  | '450'\r\n  | '500'\r\n  | '550'\r\n  | '600'\r\n  | '650'\r\n  | '700'\r\n  | '750'\r\n  | '800'\r\n  | '850'\r\n  | '900'\r\n  | '950'\r\n  | '1000'\r\n  | '1050'\r\n  | '1100'\r\n  | '1150'\r\n  | '1200'\r\n  | '1250';",
       "docstring": "",
       "path": "src/utils/types/spacing.tsx"
     },
     "src/components/gcds-icon/gcds-icon.tsx::IconNames": {
-      "declaration": "export type IconNames =\n  | 'arrow-down'\n  | 'arrow-up'\n  | 'arrow-up-down'\n  | 'checkmark-circle'\n  | 'chevron-down'\n  | 'chevron-left'\n  | 'chevron-right'\n  | 'chevron-up'\n  | 'close'\n  | 'download'\n  | 'email'\n  | 'exclamation-circle'\n  | 'external'\n  | 'filter'\n  | 'info-circle'\n  | 'phone'\n  | 'search'\n  | 'sort'\n  | 'tune'\n  | 'warning-triangle';",
+      "declaration": "export type IconNames =\r\n  | 'arrow-down'\r\n  | 'arrow-up'\r\n  | 'arrow-up-down'\r\n  | 'checkmark-circle'\r\n  | 'chevron-down'\r\n  | 'chevron-left'\r\n  | 'chevron-right'\r\n  | 'chevron-up'\r\n  | 'close'\r\n  | 'download'\r\n  | 'email'\r\n  | 'exclamation-circle'\r\n  | 'external'\r\n  | 'filter'\r\n  | 'info-circle'\r\n  | 'phone'\r\n  | 'search'\r\n  | 'sort'\r\n  | 'tune'\r\n  | 'warning-triangle';",
       "docstring": "",
       "path": "src/components/gcds-icon/gcds-icon.tsx"
     },
     "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject": {
-      "declaration": "{\n  id: string;\n  label: string;\n  value?: string;\n  hint?: string;\n  checked?: boolean | string;\n}",
+      "declaration": "{\r\n  id: string;\r\n  label: string;\r\n  value?: string;\r\n  hint?: string;\r\n  checked?: boolean | string;\r\n}",
       "docstring": "",
       "path": "src/components/gcds-checkboxes/checkbox.tsx"
     },
@@ -13534,22 +13534,22 @@
       "path": "src/validators/index.ts"
     },
     "src/components/gcds-input/suggestion-option.tsx::SuggestionOption": {
-      "declaration": "{\n  label: string;\n  value?: string;\n}",
+      "declaration": "{\r\n  label: string;\r\n  value?: string;\r\n}",
       "docstring": "",
       "path": "src/components/gcds-input/suggestion-option.tsx"
     },
     "src/components/gcds-radios/radio.tsx::RadioObject": {
-      "declaration": "{\n  id: string;\n  label: string;\n  value: string;\n  hint?: string;\n  checked?: boolean;\n}",
+      "declaration": "{\r\n  id: string;\r\n  label: string;\r\n  value: string;\r\n  hint?: string;\r\n  checked?: boolean;\r\n}",
       "docstring": "",
       "path": "src/components/gcds-radios/radio.tsx"
     },
     "src/components/gcds-table/utils/table-helpers.ts::TableColumn": {
-      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  rowHeader?: boolean;\n  slotted?: boolean;\n  managed?: boolean;\n}",
+      "declaration": "interface TableColumn {\r\n  field: string;\r\n  header: string;\r\n  sortDirection?: 'asc' | 'desc';\r\n  alignment?: 'start' | 'center' | 'end';\r\n  sort?: boolean;\r\n  rowHeader?: boolean;\r\n  slotted?: boolean;\r\n  managed?: boolean;\r\n}",
       "docstring": "Table column definition",
       "path": "src/components/gcds-table/utils/table-helpers.ts"
     },
     "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange": {
-      "declaration": "export interface GcdsTableStateChange {\n  visibleRows: Array<{\n    rowId: string; // stable TanStack row id — does not change with sort/filter\n    rowIndex: number; // current visible position in the table\n    original: unknown; // the original data object for this row\n  }>;\n  page: number;\n  pageSize: number;\n  filterValue: string;\n  sorting: SortingState | null;\n}",
+      "declaration": "export interface GcdsTableStateChange {\r\n  visibleRows: Array<{\r\n    rowId: string; // stable TanStack row id — does not change with sort/filter\r\n    rowIndex: number; // current visible position in the table\r\n    original: unknown; // the original data object for this row\r\n  }>;\r\n  page: number;\r\n  pageSize: number;\r\n  filterValue: string;\r\n  sorting: SortingState | null;\r\n}",
       "docstring": "",
       "path": "src/components/gcds-table/utils/table-helpers.ts"
     }
