@@ -3,11 +3,12 @@ import eslintjs from '@eslint/js';
 import eslintjsx from 'eslint-plugin-jsx-a11y';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import eslintprettier from 'eslint-plugin-prettier/recommended';
-import eslintstorybook from 'eslint-plugin-storybook';
+// todo: re-enable when storybook gets updated so we can use a newer version of the eslint package
+// import eslintstorybook from 'eslint-plugin-storybook';
 import tseslint from 'typescript-eslint';
 import eslintplaywright from 'eslint-plugin-playwright';
 import eslintn from 'eslint-plugin-n';
-import stylistic from '@stylistic/eslint-plugin';
+import eslintstylistic from '@stylistic/eslint-plugin';
 import { defineConfig } from 'eslint/config';
 
 // todo: change some warnings to errors once fixed
@@ -26,7 +27,7 @@ export default defineConfig([
   eslintjs.configs.recommended,
   ...tseslint.configs.recommended,
   eslintjsx.flatConfigs.recommended,
-  stylistic.configs.recommended,
+  eslintstylistic.configs.recommended,
   {
     files: ['src/*.{tsx,js,ts}', 'src/**/*.{tsx,js,ts}', 'eslint.config.mjs'],
     languageOptions: {
@@ -65,6 +66,7 @@ export default defineConfig([
       '@stylistic/lines-between-class-members': 'warn',
       '@stylistic/quotes': ['warn', 'single'],
       '@stylistic/comma-dangle': 'warn',
+      'no-useless-assignment': 'warn',
     },
   },
   {
@@ -87,9 +89,10 @@ export default defineConfig([
       'n/no-missing-import': 'warn',
       'n/no-process-exit': 'warn',
       'n/hashbang': 'warn',
+      'preserve-caught-error': 'warn',
     },
   },
-  ...eslintstorybook.configs['flat/recommended'],
+  // ...eslintstorybook.configs['flat/recommended'],
   {
     files: ['.storybook/*.js'],
     languageOptions: {
@@ -98,7 +101,7 @@ export default defineConfig([
       },
     },
     rules: {
-      'storybook/no-uninstalled-addons': 'warn',
+      // 'storybook/no-uninstalled-addons': 'warn',
     },
   },
   {
