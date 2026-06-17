@@ -13,8 +13,13 @@ export const test = base.extend({
       waitUntil: 'domcontentloaded',
     });
 
-    // Wait for fonts to finish loading to avoid fallback-font flakiness
-    await page.waitForFunction(() => document.fonts.ready.then(() => true));
+    // Wait for fonts, but don't hang the test if a font request stalls
+    await page.evaluate(() =>
+      Promise.race([
+        document.fonts.ready,
+        new Promise(resolve => setTimeout(resolve, 10000)),
+      ]),
+    );
 
     // Wait for all GCDS components inside the preview regions to hydrate
     await page.waitForFunction(
