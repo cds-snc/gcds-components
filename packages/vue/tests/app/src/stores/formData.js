@@ -32,8 +32,8 @@ export const useFormStore = defineStore('form', {
       const invalidData = {
         number: 'red',
         select: '5',
-        dateFull: '20sd-12s-25s',
-        dateCompact: '2e4-12',
+        dateFull: '20222-123-253',
+        dateCompact: '245-12',
         radio: 'radio5',
         check: 'check5',
       };

@@ -14,7 +14,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
@@ -44,7 +44,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios legend="Legend" name="radio" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1", "checked": true},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' value="radio1">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
@@ -75,7 +75,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios legend="Legend" name="radio" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1", "checked": true},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' value="radio1">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
@@ -106,7 +106,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" hint="Hint text" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="radios-legend radios-hint" class="gcds-radios__fieldset" tabindex="-1">
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
@@ -140,7 +140,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" error-message="Error message" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
@@ -174,7 +174,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' disabled>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
@@ -205,7 +205,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' autofocus>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
@@ -236,7 +236,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' form="form-id">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
             <legend class="gcds-radios__legend" id="radios-legend">
               Legend
@@ -254,6 +254,39 @@ describe('gcds-radios', () => {
       </gcds-radios>
     `);
   });
+  it('renders checked w/ hide-legend', async () => {
+    const page = await newSpecPage({
+      components: [GcdsRadios],
+      html: `<gcds-radios
+          name="radio"
+          legend="Legend"
+          options='[{ "label": "Label 1", "id": "radio1", "value": "radio1", "checked": true},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'
+          hide-legend
+        >
+        </gcds-radios>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-radios legend="Legend" name="radio" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1", "checked": true},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]' value="radio1" hide-legend>
+        <mock:shadow-root shadowrootdelegatesfocus>
+          <fieldset aria-labelledby="radios-legend" class="gcds-radios__fieldset" tabindex="-1">
+            <legend class="gcds-radios__legend" id="radios-legend">
+              <gcds-sr-only tag="span">
+                Legend
+              </gcds-sr-only>
+            </legend>
+            <div class="gcds-radio">
+              <input id="radio1" name="radio" type="radio" value="radio1" checked="">
+              <gcds-label label="Label 1" label-for="radio1" lang="en"></gcds-label>
+            </div>
+            <div class="gcds-radio">
+              <input id="radio2" name="radio" type="radio" value="radio2">
+              <gcds-label label="Label 2" label-for="radio2" lang="en"></gcds-label>
+            </div>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-radios>
+    `);
+  });
   it('does not render - no required attributes', async () => {
     const page = await newSpecPage({
       components: [GcdsRadios],
@@ -261,7 +294,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-radios>
     `);
@@ -277,7 +310,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios legend="Legend" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-radios>
     `);
@@ -294,7 +327,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" options='[{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-radios>
     `);
@@ -310,7 +343,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-radios>
     `);
@@ -327,7 +360,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" options='[]'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-radios>
     `);
@@ -344,7 +377,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" options=''>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-radios>
     `);
@@ -361,7 +394,7 @@ describe('gcds-radios', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-radios name="radio" legend="Legend" options='{{ "label": "Label 1", "id": "radio1", "value": "radio1"},{ "label": "Label 2", "id": "radio2", "value": "radio2"}}'>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
         </mock:shadow-root>
       </gcds-radios>
     `);

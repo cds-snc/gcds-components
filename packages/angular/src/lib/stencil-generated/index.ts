@@ -31,7 +31,6 @@ export const DIRECTIVES = [
   d.GcdsNavLink,
   d.GcdsNotice,
   d.GcdsPagination,
-  d.GcdsPhaseBanner,
   d.GcdsRadios,
   d.GcdsSearch,
   d.GcdsSelect,
@@ -39,9 +38,9 @@ export const DIRECTIVES = [
   d.GcdsSignature,
   d.GcdsSrOnly,
   d.GcdsStepper,
+  d.GcdsTable,
   d.GcdsText,
   d.GcdsTextarea,
   d.GcdsTopNav,
-  d.GcdsTopicMenu,
-  d.GcdsVerifyBanner
+  d.GcdsTopicMenu
 ];

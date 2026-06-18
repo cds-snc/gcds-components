@@ -33,7 +33,7 @@
     }
 
     button {
-      border-radius: var(--gcds-file-uploader-file-button-border-radius);
+      border-radius: var(--gcds-file-uploader-button-border-radius);
       transition: all 0.15s ease-in-out;
     }
   }
@@ -193,7 +193,7 @@
     .file-uploader__uploaded-file button:focus {
       background-color: var(--gcds-file-uploader-focus-button-background);
       color: var(--gcds-file-uploader-focus-button-text);
-      outline: var(--gcds-file-uploader-button-outline-width) solid
+      outline: var(--gcds-file-uploader-focus-button-outline-width) solid
         var(--gcds-file-uploader-focus-button-background);
       outline-offset: var(--gcds-file-uploader-focus-button-outline-offset);
       border-color: var(--gcds-file-uploader-focus-button-background);

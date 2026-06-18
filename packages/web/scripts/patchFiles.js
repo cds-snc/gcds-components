@@ -1,6 +1,6 @@
 /**
  * This is a script to prevent typescript from identifying previously valid typescript code as an error by adding '// @ts-expect-error' before each line with an error.
- * This error prevents the @cdssnc/gcds-components-react package from building.
+ * This error prevents the @gcds-core/components-react package from building.
  *
  * This script will only be required as long as we use @stencil/react-output-target@0.5.3.
  * Once we chose to update to a newer version the react output target will no longer have need of the files causing issues.

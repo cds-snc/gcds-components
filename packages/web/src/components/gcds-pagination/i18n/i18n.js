@@ -1,7 +1,9 @@
 const I18N = {
   en: {
     next: 'Next',
+    listNext: 'Next',
     previous: 'Previous',
+    listPrevious: 'Previous',
     previousMobile: 'Prev',
     nextPage: 'Next page',
     previousPage: 'Previous page',
@@ -9,8 +11,10 @@ const I18N = {
     pageNumberOf: 'Page {#} of {total} of {label}',
   },
   fr: {
-    next: 'Suivante',
+    next: 'Suivant',
+    listNext: 'Suiv.',
     previous: 'Précédent',
+    listPrevious: 'Préc.',
     previousMobile: 'Préc.',
     nextPage: 'Page suivante',
     previousPage: 'Page précédente',

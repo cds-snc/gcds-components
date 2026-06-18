@@ -3,6 +3,7 @@ import {
   Element,
   Event,
   EventEmitter,
+  Fragment,
   Listen,
   Method,
   State,
@@ -19,7 +20,7 @@ import {
   handleErrors,
   isValid,
   handleValidationResult,
-  validateRadioCheckboxGroup
+  validateRadioCheckboxGroup,
 } from '../../utils/utils';
 import {
   Validator,
@@ -34,6 +35,7 @@ import {
   renderCheckbox,
   validateOptionsArray,
 } from './checkbox';
+import i18n from './i18n/i18n';
 
 /**
  * Checkboxes provide a set of options for multiple responses.
@@ -137,14 +139,24 @@ export class GcdsCheckboxes {
   }
 
   /**
- * If true, the checkobox will be focused on component render
- */
+   * If true, the checkbox will be focused on component render
+   */
   @Prop({ reflect: true }) autofocus: boolean;
 
   /**
    * The ID of the form that the checkboxes belong to.
    */
   @Prop({ reflect: true }) form?: string;
+
+  /**
+   * For single checkbox, specifies if the label is hidden or not.
+   */
+  @Prop() hideLabel?: boolean = false;
+
+  /**
+   * For checkbox groups, specifies if the legend is hidden or not.
+   */
+  @Prop() hideLegend?: boolean = false;
 
   /**
    * Value for checkboxes component.
@@ -211,8 +223,8 @@ export class GcdsCheckboxes {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
-     * Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.
-     */
+   * Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.
+   */
   @Prop()
   get validity() {
     return this.internals.validity;
@@ -381,7 +393,10 @@ export class GcdsCheckboxes {
       let validationMessage = null;
 
       if (validity?.valueMissing) {
-        validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
+        validationMessage =
+          this.lang === 'en'
+            ? 'Choose an option to continue.'
+            : 'Choisissez une option pour continuer.';
       }
 
       this.internals.setValidity(
@@ -559,10 +574,25 @@ export class GcdsCheckboxes {
           {this.isGroup ? (
             <fieldset class="gcds-checkboxes__fieldset" {...fieldsetAttrs}>
               <legend id="checkboxes-legend" class="gcds-checkboxes__legend">
-                {legend}
-                {required ? (
-                  <span class="legend__required"> (required)</span>
-                ) : null}
+                {this.hideLegend ? (
+                  <gcds-sr-only tag="span">
+                    {legend}
+                    {required && (
+                      <span class="legend__required">
+                        {i18n[this.lang].required}
+                      </span>
+                    )}
+                  </gcds-sr-only>
+                ) : (
+                  <Fragment>
+                    {legend}
+                    {required && (
+                      <span class="legend__required">
+                        {i18n[this.lang].required}
+                      </span>
+                    )}
+                  </Fragment>
+                )}
               </legend>
               {hint ? (
                 <gcds-hint id="checkboxes-hint" hint-id="checkboxes">
@@ -587,7 +617,7 @@ export class GcdsCheckboxes {
                     checkbox,
                     this,
                     emitEvent,
-                    this.handleInput
+                    this.handleInput,
                   );
                 })}
             </fieldset>
@@ -598,7 +628,7 @@ export class GcdsCheckboxes {
               this.optionsArr[0],
               this,
               emitEvent,
-              this.handleInput
+              this.handleInput,
             )
           )}
         </Host>

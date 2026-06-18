@@ -21,6 +21,7 @@ import i18n from './i18n/i18n';
  * @slot skip-to-nav - Slot to add a hidden skip to content navigation at the top of the header.
  * @slot signature - Slot to replace Government of Canada signature.
  * @slot toggle - Slot to add a custom language toggle in the top-right of the header.
+ * @slot account - Slot to add a custom account link in the bottom-right of the header.
  */
 @Component({
   tag: 'gcds-header',
@@ -39,12 +40,6 @@ export class GcdsHeader {
    */
   @Prop({ reflect: true, mutable: false }) langHref!: string;
 
-  /**
-   * GcdsSignature - The variant of the Government of Canada signature
-   */
-  @Prop({ reflect: false, mutable: false }) signatureVariant:
-    | 'colour'
-    | 'white';
   /**
    * GcdsSignature - GCDS signature links to Canada.ca
    */
@@ -133,10 +128,6 @@ export class GcdsHeader {
   }
 
   private get renderSignature() {
-    const signVariant = this.signatureVariant
-      ? this.signatureVariant
-      : 'colour';
-
     if (this.el.querySelector('[slot="signature"]')) {
       return <slot name="signature"></slot>;
     } else {
@@ -144,7 +135,6 @@ export class GcdsHeader {
         <div class="brand__signature">
           <gcds-signature
             type="signature"
-            variant={signVariant}
             has-link={this.signatureHasLink}
             lang={this.lang}
           ></gcds-signature>
@@ -177,6 +167,14 @@ export class GcdsHeader {
     return !!this.el.querySelector('[slot="breadcrumb"]');
   }
 
+  private get hasAccount() {
+    return !!this.el.querySelector('[slot="account"]');
+  }
+
+  private get hasThemeTopicMenu() {
+    return !!this.el.querySelector('gcds-topic-menu[slot="menu"]');
+  }
+
   render() {
     const {
       renderSkipToNav,
@@ -186,6 +184,8 @@ export class GcdsHeader {
       hasSearch,
       hasBanner,
       hasBreadcrumb,
+      hasAccount,
+      hasThemeTopicMenu,
     } = this;
     return (
       <Host role="banner">
@@ -200,10 +200,18 @@ export class GcdsHeader {
             {renderSearch}
           </div>
         </div>
-        <slot name="menu"></slot>
-        {hasBreadcrumb ? (
-          <div class="gcds-header__container">
-            <slot name="breadcrumb"></slot>
+
+        {hasThemeTopicMenu ? (
+          <div class="gcds-header__container--menu">
+            <slot name="menu"></slot>
+            {hasAccount ? <slot name="account"></slot> : null}
+          </div>
+        ) : <slot name="menu"></slot>}
+
+        {hasBreadcrumb || (!hasBreadcrumb && !hasThemeTopicMenu && hasAccount) ? (
+          <div class="gcds-header__container--breadcrumbs">
+            {hasBreadcrumb ? <slot name="breadcrumb"></slot> : null}
+            {hasAccount && !hasThemeTopicMenu ? <slot name="account"></slot> : null}
           </div>
         ) : null}
       </Host>

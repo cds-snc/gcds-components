@@ -19,7 +19,7 @@ import { constructHref, constructClasses } from './utils/render';
  */
 @Component({
   tag: 'gcds-pagination',
-  styleUrl: 'gcds-pagination.css',
+  styleUrl: 'gcds-pagination.scss',
   shadow: true,
 })
 export class GcdsPagination {
@@ -66,6 +66,13 @@ export class GcdsPagination {
    * List display - Total number of pages
    */
   @Prop() totalPages: number;
+
+  @Watch('totalPages')
+  watchTotalPages() {
+    if (this.display == 'list') {
+      this.configureListPagination();
+    }
+  }
 
   /**
    * List display - Current page number
@@ -168,7 +175,7 @@ export class GcdsPagination {
 
     if (end) {
       return (
-        <li>
+        <li class={`list-btn-${end === 'next' ? 'next' : 'prev'}`}>
           {end === 'next' ? (
             <a
               {...linkAttrs}
@@ -178,7 +185,7 @@ export class GcdsPagination {
                   : 'gcds-pagination-end-button-mobile'
               }
             >
-              <span>{I18N[this.lang].next}</span>
+              <span>{I18N[this.lang].listNext}</span>
               <gcds-icon margin-left="150" name="chevron-right"></gcds-icon>
             </a>
           ) : (
@@ -194,7 +201,7 @@ export class GcdsPagination {
               <span>
                 {mobile
                   ? I18N[this.lang].previousMobile
-                  : I18N[this.lang].previous}
+                  : I18N[this.lang].listPrevious}
               </span>
             </a>
           )}
@@ -222,6 +229,7 @@ export class GcdsPagination {
     this.listitems = [];
     this.mobilePrevNext = [];
 
+    // Add "previous" button if not on first page
     if (this.currentPage != 1) {
       this.listitems.push(
         this.configurePaginationStep(this.currentPage, 'previous'),
@@ -231,102 +239,90 @@ export class GcdsPagination {
       );
     }
 
-    // Flags to see if ellipses already rendered
+    // Flags to see if ellipses have been rendered
     let previousEllipses = false;
     let nextEllipses = false;
 
     for (let i = 1; i <= this.totalPages; i++) {
-      // Left side mobile ellipses
-      if (
-        i == 2 &&
-        this.currentPage < 6 &&
-        this.currentPage > 3 &&
-        this.totalPages > 9
-      ) {
-        this.listitems.push(
-          <li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true">
-            <span class="gcds-pagination-list-ellipses">...</span>
-          </li>,
-        );
-      } else if (
-        i == 2 &&
-        this.totalPages < 10 &&
-        this.totalPages > 5 &&
-        this.currentPage > 3
-      ) {
-        this.listitems.push(
-          <li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true">
-            <span class="gcds-pagination-list-ellipses">...</span>
-          </li>,
-        );
-      }
-
-      if (
-        i == this.currentPage ||
-        i == 1 ||
-        i == this.totalPages ||
+      // === Conditions for showing page numbers ===
+      const alwaysRender =
+        i === 1 ||
+        i === this.totalPages ||
+        i === this.currentPage ||
         (i >= this.currentPage - 2 && i <= this.currentPage + 2) ||
-        this.totalPages < 10
-      ) {
-        this.listitems.push(this.configurePaginationStep(i));
-      } else if (
+        this.totalPages < 10;
+
+      // Special cases for first few or last few pages
+      const edgeRender =
         (this.currentPage <= 5 && i <= 7) ||
-        (this.currentPage >= this.totalPages - 4 && i >= this.totalPages - 6)
-      ) {
-        this.listitems.push(this.configurePaginationStep(i));
-      } else if (
-        (this.currentPage == 5 && i == 2) ||
-        (this.currentPage == this.totalPages - 4 && i == this.totalPages - 1)
-      ) {
-        this.listitems.push(this.configurePaginationStep(i));
-      } else if (!previousEllipses && i < this.currentPage - 2) {
-        this.listitems.push(
-          <li aria-hidden="true">
-            <span class="gcds-pagination-list-ellipses">...</span>
-          </li>,
-        );
+        (this.currentPage >= this.totalPages - 4 && i >= this.totalPages - 6) ||
+        (this.currentPage === 5 && i === 2) ||
+        (this.currentPage === this.totalPages - 4 && i === this.totalPages - 1);
 
-        previousEllipses = true;
-      } else if (
-        !nextEllipses &&
-        i > this.currentPage + 2 &&
-        i < this.totalPages
-      ) {
-        this.listitems.push(
-          <li aria-hidden="true">
-            <span class="gcds-pagination-list-ellipses">...</span>
-          </li>,
-        );
-
-        nextEllipses = true;
+      if (alwaysRender || edgeRender) {
+        this.listitems.push(this.configurePaginationStep(i));
+        continue;
       }
 
-      // Right side mobile ellipses
-      if (
-        i == this.totalPages - 1 &&
-        this.currentPage > this.totalPages - 5 &&
-        this.currentPage < this.totalPages - 2 &&
-        this.totalPages > 9
-      ) {
+      // === Left ellipsis ===
+      if (!previousEllipses && i < this.currentPage - 2) {
         this.listitems.push(
-          <li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true">
-            <span class="gcds-pagination-list-ellipses">...</span>
+          <li class="list-ellipsis-left" aria-hidden="true">
+            <span class="gcds-pagination-list-ellipses">…</span>
           </li>,
         );
-      } else if (
-        i == this.totalPages - 1 &&
-        this.totalPages < 10 &&
-        this.totalPages > 5 &&
-        this.currentPage < this.totalPages - 2
+        previousEllipses = true;
+        continue;
+      }
+
+      // === Right ellipsis ===
+      if (!nextEllipses && i > this.currentPage + 2 && i < this.totalPages) {
+        this.listitems.push(
+          <li class="list-ellipsis-right" aria-hidden="true">
+            <span class="gcds-pagination-list-ellipses">…</span>
+          </li>,
+        );
+        nextEllipses = true;
+        continue;
+      }
+
+      // === Mobile-specific ellipses ===
+      if (
+        (i === 2 &&
+          this.currentPage < 6 &&
+          this.currentPage > 3 &&
+          this.totalPages > 9) ||
+        (i === 2 &&
+          this.totalPages < 10 &&
+          this.totalPages > 5 &&
+          this.currentPage > 3)
       ) {
         this.listitems.push(
-          <li class={`gcds-pagination-list-mobile-ellipses`} aria-hidden="true">
-            <span class="gcds-pagination-list-ellipses">...</span>
+          <li class="gcds-pagination-list-mobile-ellipses" aria-hidden="true">
+            <span class="gcds-pagination-list-ellipses">…</span>
+          </li>,
+        );
+      }
+
+      if (
+        (i === this.totalPages - 1 &&
+          this.currentPage > this.totalPages - 5 &&
+          this.currentPage < this.totalPages - 2 &&
+          this.totalPages > 9) ||
+        (i === this.totalPages - 1 &&
+          this.totalPages < 10 &&
+          this.totalPages > 5 &&
+          this.currentPage < this.totalPages - 2)
+      ) {
+        this.listitems.push(
+          <li class="gcds-pagination-list-mobile-ellipses" aria-hidden="true">
+            <span class="gcds-pagination-list-ellipses">…</span>
           </li>,
         );
       }
     }
 
+    // Add "next" button if not on last page
     if (this.currentPage != this.totalPages) {
       this.listitems.push(
         this.configurePaginationStep(this.currentPage, 'next'),
@@ -396,7 +392,7 @@ export class GcdsPagination {
           ) : (
             <ul class="gcds-pagination-simple">
               {previousHref && (
-                <li class="gcds-pagination-simple-previous">
+                <li class="gcds-pagination-simple-listitem">
                   <a
                     href={previousHref}
                     tabindex={0}
@@ -410,6 +406,7 @@ export class GcdsPagination {
                     <gcds-icon
                       margin-right="150"
                       name="chevron-left"
+                      size="h6"
                     ></gcds-icon>
                     <div class="gcds-pagination-simple-text">
                       {I18N[lang].previous}
@@ -419,7 +416,7 @@ export class GcdsPagination {
                 </li>
               )}
               {nextHref && (
-                <li class="gcds-pagination-simple-next">
+                <li class="gcds-pagination-simple-listitem">
                   <a
                     href={nextHref}
                     tabindex={0}
@@ -430,14 +427,15 @@ export class GcdsPagination {
                     onFocus={() => this.gcdsFocus.emit()}
                     onClick={e => emitEvent(e, this.gcdsClick, nextHref)}
                   >
+                    <gcds-icon
+                      margin-right="150"
+                      name="chevron-right"
+                      size="h6"
+                    ></gcds-icon>
                     <div class="gcds-pagination-simple-text">
                       {I18N[lang].next}
                     </div>
                     <span>{nextLabel}</span>
-                    <gcds-icon
-                      margin-left="150"
-                      name="chevron-right"
-                    ></gcds-icon>
                   </a>
                 </li>
               )}

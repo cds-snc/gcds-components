@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-pagination', () => {
   test('renders', async ({ page }) => {
-    const paginations = await page.locator('gcds-pagination');
+    const paginations = page.locator('gcds-pagination');
     const count = await paginations.count();
 
     for (let i = 0; i < count; i++) {
@@ -32,26 +32,18 @@ test.describe('gcds-pagination a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Link text
    */
   test('Proper link text', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

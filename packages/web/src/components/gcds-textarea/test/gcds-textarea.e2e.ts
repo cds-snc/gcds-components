@@ -1,13 +1,13 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
-import I18N from '../../../utils/i18n/i18n.js';
+import { validationErrors as I18N } from '../../../utils/i18n/validation-errors';
 
 test.describe('gcds-textarea', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -22,7 +22,7 @@ test.describe('gcds-textarea', () => {
    * Validation
    */
   test('Validation', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -49,7 +49,7 @@ test.describe('gcds-textarea', () => {
   });
 
   test('Validation - custom validation', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -104,7 +104,7 @@ test.describe('gcds-textarea', () => {
   });
 
   test('Validation - custom validation old format', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -160,7 +160,7 @@ test.describe('gcds-textarea', () => {
   });
 
   test('HTML attribute validation - minlength', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -182,7 +182,7 @@ test.describe('gcds-textarea', () => {
     );
 
     expect(errorMessage).toEqual(
-      I18N.en.tooShort.replace('{min}', 6).replace('{current}', 5),
+      I18N.en.tooShort.replace('{min}', '6').replace('{current}', '5'),
     );
 
     await element.locator('textarea').fill('long enough');
@@ -199,7 +199,7 @@ test.describe('gcds-textarea', () => {
   test('HTML attribute validation - maxlength/character-count', async ({
     page,
   }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -208,7 +208,7 @@ test.describe('gcds-textarea', () => {
 
     await element.evaluate(el => {
       (el as HTMLGcdsTextareaElement).value = 'too long value';
-      (el as HTMLGcdsTextareaElement).characterCount = 7;
+      (el as HTMLGcdsTextareaElement).maxlength = 7;
     });
 
     await page.waitForChanges();
@@ -224,7 +224,7 @@ test.describe('gcds-textarea', () => {
     );
 
     expect(errorMessage).toEqual(
-      I18N.en.tooLong.replace('{max}', 7).replace('{current}', 13),
+      I18N.en.tooLong.replace('{max}', '7').replace('{current}', '13'),
     );
 
     await element.locator('textarea').fill('perfect');
@@ -236,6 +236,66 @@ test.describe('gcds-textarea', () => {
     );
 
     expect(errorMessage).toEqual('');
+  });
+
+  test('Character count updating', async ({ page }) => {
+    const element = await page.locator('gcds-textarea');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    await element.evaluate(el => {
+      (el as HTMLGcdsTextareaElement).maxlength = 20;
+    });
+
+    await page.waitForChanges();
+
+    expect(
+      await element.evaluate(
+        el =>
+          (el as HTMLGcdsTextareaElement).shadowRoot.getElementById(
+            'textarea__count-textarea-default',
+          ).textContent,
+      ),
+    ).toEqual('You can enter up to 20 characters');
+
+    await element.locator('textarea').fill('maxlength');
+
+    await page.waitForChanges();
+
+    // Check if visual count has updated
+    expect(
+      await element.evaluate(
+        el =>
+          (el as HTMLGcdsTextareaElement).shadowRoot.getElementById(
+            'textarea__visual-count-textarea-default',
+          ).textContent,
+      ),
+    ).toEqual('Characters left: 11');
+
+    // Check that the sr count hasn't updated yet
+    expect(
+      await element.evaluate(
+        el =>
+          (el as HTMLGcdsTextareaElement).shadowRoot.getElementById(
+            'textarea__sr-count-textarea-default',
+          ).textContent,
+      ),
+    ).toEqual('');
+
+    await page.waitForTimeout(2500); // Wait for character count update delay
+
+    // Check if the sr count has updated
+    expect(
+      await element.evaluate(
+        el =>
+          (el as HTMLGcdsTextareaElement).shadowRoot.getElementById(
+            'textarea__sr-count-textarea-default',
+          ).textContent,
+      ),
+    ).toEqual('Characters left: 11');
   });
 });
 
@@ -249,7 +309,7 @@ test.describe('gcds-textarea a11y tests', () => {
    * Aria-invalid true if error test
    */
   test('aria-invalid', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     await element.evaluate(el => {
       el.setAttribute('error-message', 'Field required');
@@ -264,21 +324,17 @@ test.describe('gcds-textarea a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   /**
    * Textarea keyboard focus
    */
   test('textarea keyboard focus', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
     await expect(element).toHaveClass('hydrated');
 
     const textareaField = await page
@@ -299,7 +355,7 @@ test.describe('gcds-textarea a11y tests', () => {
    * Textarea label test
    */
   test('textarea contains label', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     await expect(element).toHaveClass('hydrated');
 
@@ -308,7 +364,7 @@ test.describe('gcds-textarea a11y tests', () => {
   });
 
   test('textarea has aria-labelledby for label', async ({ page }) => {
-    const element = await page.locator('gcds-textarea');
+    const element = page.locator('gcds-textarea');
 
     await expect(element).toHaveClass('hydrated');
 

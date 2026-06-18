@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
+import { GcdsComponentsModule } from '@gcds-core/components-angular';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +29,9 @@ import { GcdsComponentsModule } from '@cdssnc/gcds-components-angular';
             <gcds-link href="/file-uploader" routerLink="/file-uploader">
               File uploader
             </gcds-link>
+          </li>
+          <li>
+            <gcds-link href="/table" routerLink="/table"> Table </gcds-link>
           </li>
         </ul>
       </li>

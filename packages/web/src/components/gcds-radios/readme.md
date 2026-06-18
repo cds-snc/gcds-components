@@ -17,14 +17,15 @@ Radios provide a set of options for a single response.
 | `disabled`             | `disabled`      | Specifies if an input element is disabled or not.                                                                       | `boolean`                                           | `undefined` |
 | `errorMessage`         | `error-message` | Set this to display an error message for invalid radios                                                                 | `string`                                            | `undefined` |
 | `form`                 | `form`          | The ID of the form that the radios belong to.                                                                           | `string`                                            | `undefined` |
+| `hideLegend`           | `hide-legend`   | Specifies if the legend is hidden or not.                                                                               | `boolean`                                           | `false`     |
 | `hint`                 | `hint`          | Hint displayed below the label and above the radio elements                                                             | `string`                                            | `undefined` |
 | `legend` _(required)_  | `legend`        | Label or legend for the group of radio elements                                                                         | `string`                                            | `undefined` |
 | `name` _(required)_    | `name`          | The `name` attribute for the radios, used to group radio elements together                                              | `string`                                            | `undefined` |
 | `options` _(required)_ | `options`       | Options to render radio buttons                                                                                         | `RadioObject[] \| string`                           | `undefined` |
 | `required`             | `required`      | Specifies if a form field is required or not.                                                                           | `boolean`                                           | `undefined` |
 | `validateOn`           | `validate-on`   | Set event to call validator                                                                                             | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
-| `validator`            | `validator`     | Array of validators                                                                                                     | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `validity`             | `validity`      | Read-only property of the input, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| `validator`            | --              | Array of validators                                                                                                     | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validity`             | --              | Read-only property of the input, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
 | `value`                | `value`         | Default value for the element                                                                                           | `string`                                            | `undefined` |
 
 
@@ -75,8 +76,13 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [gcds-table](../gcds-table)
+
 ### Depends on
 
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-hint](../gcds-hint)
 - [gcds-error-message](../gcds-error-message)
 - [gcds-label](../gcds-label)
@@ -84,12 +90,14 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
+  gcds-radios --> gcds-sr-only
   gcds-radios --> gcds-hint
   gcds-radios --> gcds-error-message
   gcds-radios --> gcds-label
   gcds-hint --> gcds-text
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
+  gcds-table --> gcds-radios
   style gcds-radios fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

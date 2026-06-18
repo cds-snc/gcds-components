@@ -1,4 +1,4 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
@@ -16,7 +16,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('gcds-breadcrumbs-item', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-breadcrumbs');
+    const element = page.locator('gcds-breadcrumbs');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -27,7 +27,7 @@ test.describe('gcds-breadcrumbs-item', () => {
     await expect(element).toHaveClass('hydrated');
 
     // Check first breadcrumb item role
-    const firstItem = await page.locator('gcds-breadcrumbs-item').first();
+    const firstItem = page.locator('gcds-breadcrumbs-item').first();
     await expect(firstItem).toHaveRole('listitem');
   });
 
@@ -35,7 +35,7 @@ test.describe('gcds-breadcrumbs-item', () => {
     const gcdsClick = await page.spyOnEvent('gcdsClick');
     const click = await page.spyOnEvent('click');
 
-    const element = await page.locator('gcds-breadcrumbs-item').last();
+    const element = page.locator('gcds-breadcrumbs-item').last();
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -62,37 +62,25 @@ test.describe('gcds-breadcrumbs-item a11y tests', () => {
       .first()
       .evaluate(el => ((el as HTMLElement).innerText = 'Colour contrast'));
 
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Proper list structure', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['list'])
-        .analyze();
+    const results = await new AxeBuilder({ page })
+      .withRules(['list'])
+      .analyze();
 
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Proper link names', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
 
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    expect(results.violations).toHaveLength(0);
   });
 });

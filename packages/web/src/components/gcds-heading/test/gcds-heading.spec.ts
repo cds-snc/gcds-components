@@ -12,7 +12,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h1">
         <mock:shadow-root>
-          <h1 class="gcds-heading limit mt-0 mb-300">
+          <h1 class="gcds-heading role-primary limit mt-0 mb-300">
             <slot></slot>
           </h1>
         </mock:shadow-root>
@@ -31,7 +31,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit mt-600 mb-300">
+          <h2 class="gcds-heading role-primary limit mt-600 mb-300">
             <slot></slot>
           </h2>
         </mock:shadow-root>
@@ -50,7 +50,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h3">
         <mock:shadow-root>
-          <h3 class="gcds-heading limit mt-600 mb-300">
+          <h3 class="gcds-heading role-primary limit mt-600 mb-300">
             <slot></slot>
           </h3>
         </mock:shadow-root>
@@ -69,7 +69,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h4">
         <mock:shadow-root>
-          <h4 class="gcds-heading limit mt-600 mb-300">
+          <h4 class="gcds-heading role-primary limit mt-600 mb-300">
             <slot></slot>
           </h4>
         </mock:shadow-root>
@@ -88,7 +88,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h5">
         <mock:shadow-root>
-          <h5 class="gcds-heading limit mt-600 mb-300">
+          <h5 class="gcds-heading role-primary limit mt-600 mb-300">
             <slot></slot>
           </h5>
         </mock:shadow-root>
@@ -107,11 +107,69 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h6">
         <mock:shadow-root>
-          <h6 class="gcds-heading limit mt-600 mb-300">
+          <h6 class="gcds-heading role-primary limit mt-600 mb-300">
             <slot></slot>
           </h6>
         </mock:shadow-root>
         Heading level 6
+      </gcds-heading>
+    `);
+  });
+
+  /**
+   * Heading role tests
+   */
+  it('renders primary heading role', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsHeading],
+      html: `
+        <gcds-heading tag="h2" heading-role="primary">Primary heading role</gcds-heading>
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-heading tag="h2" heading-role="primary">
+        <mock:shadow-root>
+          <h2 class="gcds-heading role-primary limit mt-600 mb-300">
+            <slot></slot>
+          </h2>
+        </mock:shadow-root>
+        Primary heading role
+      </gcds-heading>
+    `);
+  });
+  it('renders secondary heading role', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsHeading],
+      html: `
+        <gcds-heading tag="h2" heading-role="secondary">Secondary heading role</gcds-heading>
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-heading tag="h2" heading-role="secondary">
+        <mock:shadow-root>
+          <h2 class="gcds-heading role-secondary limit mt-600 mb-300">
+            <slot></slot>
+          </h2>
+        </mock:shadow-root>
+        Secondary heading role
+      </gcds-heading>
+    `);
+  });
+  it('renders light heading role', async () => {
+    const { root } = await newSpecPage({
+      components: [GcdsHeading],
+      html: `
+        <gcds-heading tag="h2" heading-role="light">Light heading role</gcds-heading>
+      `,
+    });
+    expect(root).toEqualHtml(`
+      <gcds-heading tag="h2" heading-role="light">
+        <mock:shadow-root>
+          <h2 class="gcds-heading role-light limit mt-600 mb-300">
+            <slot></slot>
+          </h2>
+        </mock:shadow-root>
+        Light heading role
       </gcds-heading>
     `);
   });
@@ -129,7 +187,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2" margin-top="400">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit mt-400 mb-300">
+          <h2 class="gcds-heading role-primary limit mt-400 mb-300">
             <slot></slot>
           </h2>
         </mock:shadow-root>
@@ -148,7 +206,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2" margin-top="22">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit mt-600 mb-300">
+          <h2 class="gcds-heading role-primary limit mt-600 mb-300">
             <slot></slot>
           </h2>
         </mock:shadow-root>
@@ -167,7 +225,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h1" margin-top="22">
         <mock:shadow-root>
-          <h1 class="gcds-heading limit mt-0 mb-300">
+          <h1 class="gcds-heading role-primary limit mt-0 mb-300">
             <slot></slot>
           </h1>
         </mock:shadow-root>
@@ -186,7 +244,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2" margin-bottom="200">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit mt-600 mb-200">
+          <h2 class="gcds-heading role-primary limit mt-600 mb-200">
             <slot></slot>
           </h2>
         </mock:shadow-root>
@@ -205,7 +263,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2" margin-bottom="22">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit mt-600 mb-300">
+          <h2 class="gcds-heading role-primary limit mt-600 mb-300">
             <slot></slot>
           </h2>
         </mock:shadow-root>
@@ -227,7 +285,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2">
         <mock:shadow-root>
-          <h2 class="gcds-heading limit mt-600 mb-300">
+          <h2 class="gcds-heading role-primary limit mt-600 mb-300">
             <slot></slot>
           </h2>
         </mock:shadow-root>
@@ -246,7 +304,7 @@ describe('gcds-heading', () => {
     expect(root).toEqualHtml(`
       <gcds-heading tag="h2" character-limit="false">
         <mock:shadow-root>
-          <h2 class="gcds-heading mt-600 mb-300">
+          <h2 class="gcds-heading role-primary mt-600 mb-300">
             <slot></slot>
           </h2>
         </mock:shadow-root>

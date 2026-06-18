@@ -19,7 +19,7 @@
   :host .gcds-top-nav .gcds-top-nav__container {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: var(--gcds-top-nav-width-full);
     max-width: var(--gcds-top-nav-max-width);
     margin-inline: auto;
   }
@@ -27,12 +27,13 @@
 
 @layer desktop {
   /* Note: viewport specific style decisions */
-  @media only screen and (width >= 64em) {
+  @media only screen and (width >= 48em) {
     :host .gcds-top-nav {
       border-block-end: var(--gcds-top-nav-border-width) solid
         var(--gcds-top-nav-border-color);
 
       .gcds-top-nav__container {
+        width: var(--gcds-top-nav-width-constrained);
         flex-direction: row;
         align-items: flex-end;
       }
@@ -42,12 +43,8 @@
         align-items: flex-end;
         width: fit-content;
 
-        &.nav-list--right {
+        &.nav-list--end {
           margin-inline-start: auto;
-        }
-
-        &.nav-list--center {
-          margin-inline: auto;
         }
       }
     }

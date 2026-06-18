@@ -2,7 +2,7 @@
 
 # GC Design System Components – Vue
 
-To make it easier to integrate [GC Design System web components](../web/README.md) into Vue projects, the [gcds-components-vue](https://www.npmjs.com/package/@cdssnc/gcds-components-vue) package provides Vue wrappers.
+To make it easier to integrate [GC Design System web components](../web/README.md) into Vue projects, the [@gcds-core/components-vue](https://www.npmjs.com/package/@gcds-core/components-vue) package provides Vue wrappers.
 
 These wrappers make it easier to work with web components in the Vue ecosystem by enabling type checking, integration with `Vue Router`, and support for `v-model` with form controls.
 
@@ -10,7 +10,7 @@ The web components inherit native properties and interoperability.
 
 ## Documentation
 
-You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
+You can find the full documentation for GC Design System Components on [https://design-system.canada.ca/](https://design-system.canada.ca/).
 
 ## Vue installation instructions
 
@@ -21,7 +21,7 @@ Follow these steps to install and use GC Design System components in your Vue pr
 Navigate to your project’s root folder and run the following command:
 
 ```js
-npm install @cdssnc/gcds-components-vue
+npm install @gcds-core/components-vue
 ```
 
 ### 2. Import GC Design System
@@ -29,7 +29,7 @@ npm install @cdssnc/gcds-components-vue
 In your `main.js` file, import the GC Design System components plugin and use it:
 
 ```js
-import { GcdsComponents } from '@cdssnc/gcds-components-vue';
+import { GcdsComponents } from '@gcds-core/components-vue';
 
 createApp(App).use(GcdsComponents).mount('#app');
 ```
@@ -44,21 +44,21 @@ There are 2 ways to do this:
 a. Import the styles to your `main.js` file, alongside your `style.css`:
 
 ```js
-import '@cdssnc/gcds-components-vue/gcds.css';
+import '@gcds-core/components-vue/gcds.css';
 import './style.css';
 ```
 
 b. Import the styles to your `App.vue` using the HTML style tag:
 
 ```html
-<style src="@cdssnc/gcds-components-vue/gcds.css">
+<style src="@gcds-core/components-vue/gcds.css">
   /* global styles */
 </style>
 ```
 
 ### 4. Start building
 
-Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
+Once you've installed the design system, start building! Browse our available [components](https://design-system.canada.ca/en/components/) and [templates](https://design-system.canada.ca/en/page-templates/) to pull the code you need into your project.
 
 ## Using Vite
 
@@ -91,7 +91,7 @@ Code released under the [MIT License](https://github.com/cds-snc/gcds-components
 
 # Composants de Système de design GC — Vue
 
-Pour faciliter l’intégration des [composants Web de Système de design GC](../web/README.md) dans les projets Vue, le paquet [gcds-components-vue](https://www.npmjs.com/package/@cdssnc/gcds-components-vue) propose différentes enveloppes Vue.
+Pour faciliter l’intégration des [composants Web de Système de design GC](../web/README.md) dans les projets Vue, le paquet [@gcds-core/components-vue](https://www.npmjs.com/package/@gcds-core/components-vue) propose différentes enveloppes Vue.
 
 Ces enveloppes facilitent le travail avec les composants Web dans l’écosystème Vue en permettant la vérification des types, l’intégration avec `Vue Router`, et la prise en charge de la fonction `v-model` avec les contrôles de formulaire.
 
@@ -99,7 +99,7 @@ Les composants Web héritent les propriétés et l’interopérabilité natives.
 
 ## Documentation
 
-Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
+Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.canada.ca/](https://systeme-design.canada.ca/).
 
 ## Instructions d’installation dans Vue
 
@@ -110,7 +110,7 @@ Suivez ces étapes pour installer et utiliser les composants de Système de desi
 Naviguez vers le dossier racine de votre projet et exécutez la commande suivante :
 
 ```js
-npm install @cdssnc/gcds-components-vue
+npm install @gcds-core/components-vue
 ```
 
 ### 2. Importer Système de design GC
@@ -118,7 +118,7 @@ npm install @cdssnc/gcds-components-vue
 Dans votre fichier `main.js`, importez le plugiciel des composants de Système de design GC et utilisez-le :
 
 ```js
-import { GcdsComponents } from '@cdssnc/gcds-components-vue';
+import { GcdsComponents } from '@gcds-core/components-vue';
 
 createApp(App).use(GcdsComponents).mount('#app');
 ```
@@ -133,21 +133,21 @@ Il y a 2 façons de le faire :
 a. Importez les styles dans votre fichier `main.js`, à côté de votre `style.css`:
 
 ```js
-import '@cdssnc/gcds-components-vue/gcds.css';
+import '@gcds-core/components-vue/gcds.css';
 import './style.css';
 ```
 
 b. Importez les styles dans fichier `App.vue` en utilisant la balise HTML `style` :
 
 ```html
-<style src="@cdssnc/gcds-components-vue/gcds.css">
+<style src="@gcds-core/components-vue/gcds.css">
   /* global styles */
 </style>
 ```
 
 ### 4. Commencez à créer
 
-Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.canada.ca/fr/composants/) et [modèles](https://systeme-design.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
 
 ## Utilisation de Vite
 

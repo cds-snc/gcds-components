@@ -35,10 +35,14 @@
         --gcds-notice-content-heading-font-desktop
       );
       --gcds-heading-h5-mobile: var(--gcds-notice-content-heading-font-mobile);
-      margin-block-start: var(--gcds-notice-content-heading-margin-block-start-desktop);
+      margin-block-start: var(
+        --gcds-notice-content-heading-margin-block-start-desktop
+      );
 
       @media only screen and (width < 48em) {
-        margin-block-start: var(--gcds-notice-content-heading-margin-block-start-mobile);
+        margin-block-start: var(
+          --gcds-notice-content-heading-margin-block-start-mobile
+        );
       }
     }
 
@@ -91,19 +95,19 @@
 
 @layer type {
   :host .gcds-notice {
-    &.notice--type-danger .notice__icon {
+    &.notice--role-danger .notice__icon {
       color: var(--gcds-notice-danger-text);
     }
 
-    &.notice--type-info .notice__icon {
+    &.notice--role-info .notice__icon {
       color: var(--gcds-notice-info-text);
     }
 
-    &.notice--type-success .notice__icon {
+    &.notice--role-success .notice__icon {
       color: var(--gcds-notice-success-text);
     }
 
-    &.notice--type-warning .notice__icon {
+    &.notice--role-warning .notice__icon {
       color: var(--gcds-notice-warning-text);
     }
   }

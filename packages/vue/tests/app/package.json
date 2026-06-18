@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cdssnc/gcds-components-vue": "file:../../../vue",
-    "@cdssnc/gcds-utility": "^1.2.1",
+    "@gcds-core/components-vue": "file:../../../vue",
+    "@gcds-core/css-shortcuts": "^1.1.0",
     "vue": "^3.4.21",
     "vue-router": "^4.6.3"
   },

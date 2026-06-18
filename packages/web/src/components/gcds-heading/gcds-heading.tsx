@@ -33,6 +33,21 @@ export class GcdsHeading {
   }
 
   /**
+   * Sets the main style of the heading.
+   */
+  @Prop({ mutable: true }) headingRole?: 'light' | 'primary' | 'secondary' =
+    'primary';
+
+  @Watch('headingRole')
+  validateHeadingRole(newValue: string) {
+    const values = ['light', 'primary', 'secondary'];
+
+    if (!values.includes(newValue)) {
+      this.headingRole = 'primary';
+    }
+  }
+
+  /**
    * Sets the line length to a maximum amount of characters per line for
    * each heading level, ensuring a comfortable, accessible reading length.
    */
@@ -77,7 +92,13 @@ export class GcdsHeading {
   }
 
   render() {
-    const { characterLimit, marginTop, marginBottom, tag } = this;
+    const {
+      characterLimit,
+      marginTop,
+      marginBottom,
+      tag,
+      headingRole
+    } = this;
 
     const Tag = tag;
 
@@ -86,6 +107,7 @@ export class GcdsHeading {
         <Tag
           class={`
             gcds-heading
+            ${headingRole ? `role-${headingRole}` : ''}
             ${characterLimit ? 'limit' : ''}
             ${marginTop ? `mt-${marginTop}` : ''}
             ${marginBottom ? `mb-${marginBottom}` : ''}

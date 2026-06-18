@@ -5,7 +5,7 @@ import {
   GcdsHeading,
   GcdsBreadcrumbs,
   GcdsBreadcrumbsItem,
-} from '@cdssnc/gcds-components-react';
+} from '@gcds-core/components-react';
 
 const FileUploader = () => {
   const [files, setFiles] = useState('');

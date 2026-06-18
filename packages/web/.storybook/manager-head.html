@@ -1,7 +1,7 @@
 <!-- Load GCDS tokens -->
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css"
+  href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css"
 />
 <style>
   /* ----- SIDEBAR ----- */
@@ -198,6 +198,14 @@
   .sidebar-item svg,
   .sidebar-item div {
     display: none !important;
+  }
+
+  .sidebar-item[data-parent-id='components'] {
+    border-block: var(--gcds-border-width-sm) solid rgba(255, 255, 255, 0.15) !important;
+  }
+
+  .sidebar-item[data-parent-id='components'] > button {
+    padding-inline: 0;
   }
 
   button.sidebar-item {

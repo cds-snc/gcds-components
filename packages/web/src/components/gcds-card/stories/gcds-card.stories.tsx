@@ -62,10 +62,23 @@ export default {
     cardTitleTag: {
       name: 'card-title-tag',
       control: 'select',
-      options: ['h3', 'h4', 'h5', 'h6', 'a'],
+      options: ['h3', 'h4', 'h5', 'h6'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'a' },
+      },
+    },
+    rel: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+    },
+    target: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '_self' },
       },
     },
     ...langProp,
@@ -103,12 +116,14 @@ const Template = args =>
 <!-- Web component code (HTML, Angular, Vue) -->
 <gcds-card
   card-title="${args.cardTitle}"
+  ${args.cardTitleTag ? `card-title-tag="${args.cardTitleTag}"` : null}
   ${args.href ? `href="${args.href}"` : null}
-  ${args.cardTitleTag != 'a' ? `card-title-tag="${args.cardTitleTag}"` : null}
   ${args.badge ? `badge="${args.badge}"` : null}
   ${args.description ? `description="${args.description}"` : null}
   ${args.imgSrc ? `img-src="${args.imgSrc}"` : null}
   ${args.imgAlt ? `img-alt="${args.imgAlt}"` : null}
+  ${args.rel ? `rel="${args.rel}"` : null}
+  ${args.target && args.target != '_self' ? `target="${args.target}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.default ? `<gcds-text>${args.default}</gcds-text>` : null}
@@ -117,12 +132,14 @@ const Template = args =>
 <!-- React code -->
 <GcdsCard
   cardTitle="${args.cardTitle}"
+  ${args.cardTitleTag ? `cardTitleTag="${args.cardTitleTag}"` : null}
   ${args.href ? `href="${args.href}"` : null}
-  ${args.cardTitleTag != 'a' ? `cardTitleTag="${args.cardTitleTag}"` : null}
   ${args.badge ? `badge="${args.badge}"` : null}
   ${args.description ? `description="${args.description}"` : null}
   ${args.imgSrc ? `imgSrc="${args.imgSrc}"` : null}
   ${args.imgAlt ? `imgAlt="${args.imgAlt}"` : null}
+  ${args.rel ? `rel="${args.rel}"` : null}
+  ${args.target && args.target != '_self' ? `target="${args.target}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.default ? `<GcdsText>${args.default}</GcdsText>` : null}
@@ -134,12 +151,14 @@ const TemplatePlayground = args =>
 <!-- Web component code (Angular, Vue) -->
 <gcds-card
   card-title="${args.cardTitle}"
-  ${args.href ? `href="${args.href}"` : null}
   ${args.cardTitleTag != 'a' ? `card-title-tag="${args.cardTitleTag}"` : null}
+  ${args.href ? `href="${args.href}"` : null}
   ${args.badge ? `badge="${args.badge}"` : null}
   ${args.description ? `description="${args.description}"` : null}
   ${args.imgSrc ? `img-src="${args.imgSrc}"` : null}
   ${args.imgAlt ? `img-alt="${args.imgAlt}"` : null}
+  ${args.rel ? `rel="${args.rel}"` : null}
+  ${args.target && args.target != '_self' ? `target="${args.target}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.default ? `<gcds-text>${args.default}</gcds-text>` : null}
@@ -150,8 +169,20 @@ export const Default = Template.bind({});
 Default.args = {
   cardTitle: 'Card title link',
   href: '#',
-  cardTitleTag: 'a',
   badge: 'badge',
+  description: 'Description or supporting text relating to the headline.',
+  imgSrc: '',
+  imgAlt: '',
+  default: '',
+  lang: 'en',
+};
+
+export const CardTitleTag = Template.bind({});
+CardTitleTag.args = {
+  cardTitle: 'Card title link',
+  cardTitleTag: 'h3',
+  href: '#',
+  badge: '',
   description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
   imgAlt: '',
@@ -163,7 +194,6 @@ export const Description = Template.bind({});
 Description.args = {
   cardTitle: 'Card title link',
   href: '#',
-  cardTitleTag: 'a',
   badge: '',
   description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
@@ -176,7 +206,6 @@ export const Slot = Template.bind({});
 Slot.args = {
   cardTitle: 'Card title link',
   href: '#',
-  cardTitleTag: 'a',
   badge: '',
   description: '',
   imgSrc: '',
@@ -189,7 +218,6 @@ export const Badge = Template.bind({});
 Badge.args = {
   cardTitle: 'Card title link',
   href: '#',
-  cardTitleTag: 'a',
   badge: 'Badge',
   description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
@@ -202,7 +230,6 @@ export const Image = Template.bind({});
 Image.args = {
   cardTitle: 'Card title link',
   href: '#',
-  cardTitleTag: 'a',
   badge: '',
   description: 'Description or supporting text relating to the headline.',
   imgSrc: 'https://picsum.photos/480/270',
@@ -211,8 +238,8 @@ Image.args = {
   lang: 'en',
 };
 
-export const Props = Template.bind({});
-Props.args = {
+export const Rel = Template.bind({});
+Rel.args = {
   cardTitle: 'Card title link',
   href: '#',
   cardTitleTag: 'a',
@@ -221,6 +248,35 @@ Props.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  rel: 'noopener noreferrer',
+  lang: 'en',
+};
+
+export const Target = Template.bind({});
+Target.args = {
+  cardTitle: 'Card title link',
+  href: '#',
+  cardTitleTag: 'a',
+  badge: 'badge',
+  description: 'Description or supporting text relating to the headline.',
+  imgSrc: '',
+  imgAlt: '',
+  default: '',
+  target: '_blank',
+  lang: 'en',
+};
+
+export const Props = Template.bind({});
+Props.args = {
+  cardTitle: 'Card title link',
+  href: '#',
+  badge: 'badge',
+  description: 'Description or supporting text relating to the headline.',
+  imgSrc: '',
+  imgAlt: '',
+  default: '',
+  rel: '',
+  target: '_self',
   lang: 'en',
 };
 
@@ -228,11 +284,12 @@ export const Playground = TemplatePlayground.bind({});
 Playground.args = {
   cardTitle: 'Card title link',
   href: '#',
-  cardTitleTag: 'a',
   badge: '',
   description: 'Description or supporting text relating to the headline.',
   imgSrc: '',
   imgAlt: '',
   default: '',
+  rel: '',
+  target: '_self',
   lang: 'en',
 };

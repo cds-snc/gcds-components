@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "packages",
   "projects": {
-    "@cdssnc/gcds-components-angular": {
+    "@gcds-core/components-angular": {
       "projectType": "library",
       "root": "packages/angular",
       "sourceRoot": "packages/angular/src",

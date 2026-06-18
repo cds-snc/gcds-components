@@ -29,7 +29,7 @@ jobs:
           role-session-name: GithubDataExport
           aws-region: ca-central-1
       - name: Export Data
-        uses: cds-snc/github-repository-metadata-exporter@531ae86f67b4c0aa1a40229571211ef73109bda2
+        uses: cds-snc/github-repository-metadata-exporter@fe65ed89fcabde7d0ea0d1fe022ea85825b6f6f8
         with:
           github-app-id: ${{ secrets.SRE_BOT_RO_APP_ID }}
           github-app-installation-id: ${{ secrets.SRE_BOT_RO_INSTALLATION_ID }}

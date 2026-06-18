@@ -9,7 +9,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -52,10 +52,11 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -66,12 +67,12 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" lang="fr" legend="Date input" name="date">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
             </legend>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Jour" name="day" size="2" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Jour" name="day" size="2" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
             <gcds-select aria-invalid="false" class="gcds-date-input__month" defaultvalue="Sélectionnez un mois" label="Mois" name="month" selectid="month" value="">
               <option value="01">
                 janvier
@@ -110,7 +111,49 @@ describe('gcds-date-input', () => {
                 décembre
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Année" name="year" size="4" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Année" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-date-input>
+    `);
+  });
+
+  it('renders - iso', async () => {
+    const page = await newSpecPage({
+      components: [GcdsDateInput],
+      html: `<gcds-date-input legend="Date input" name="date" format="iso"></gcds-date-input>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-date-input format="iso" legend="Date input" name="date">
+        <mock:shadow-root shadowrootdelegatesfocus>
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
+            <legend id="date-input-legend">
+              Date input
+            </legend>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" inputmode="numeric" type="text" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__month" inputid="month" label="Month" name="month" size="2" inputmode="numeric" type="text" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" inputmode="numeric" type="text" validate-on="other" type="text" value=""></gcds-input>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-date-input>
+    `);
+  });
+
+  it('renders - iso - french', async () => {
+    const page = await newSpecPage({
+      components: [GcdsDateInput],
+      html: `<gcds-date-input legend="Date input" name="date" format="iso" lang="fr"></gcds-date-input>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <gcds-date-input format="iso" lang="fr" legend="Date input" name="date">
+        <mock:shadow-root shadowrootdelegatesfocus>
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
+            <legend id="date-input-legend">
+              Date input
+            </legend>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Année" name="year" size="4" inputmode="numeric" type="text" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__month" inputid="month" label="Mois" name="month" size="2" inputmode="numeric" type="text" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Jour" name="day" size="2" inputmode="numeric" type="text" validate-on="other" value=""></gcds-input>
           </fieldset>
         </mock:shadow-root>
       </gcds-date-input>
@@ -124,7 +167,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -167,9 +210,10 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -180,7 +224,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" lang="fr" legend="Date input" name="date">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -223,7 +267,7 @@ describe('gcds-date-input', () => {
                 décembre
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Année" name="year" size="4" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Année" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
         </mock:shadow-root>
       </gcds-date-input>
@@ -237,7 +281,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" required>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -283,10 +327,11 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" aria-required="true" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
-            <gcds-input aria-invalid="false" aria-required="true" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" aria-required="true" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" aria-required="true" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -297,7 +342,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" hint="This is a hint">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend date-input-hint" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -343,10 +388,11 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -357,7 +403,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" value="1991-03-15">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -400,10 +446,11 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" value="15" validate-on="other"></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="15" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -414,7 +461,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date" value="1991-03">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -457,9 +504,10 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -470,7 +518,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" value="1991-03-015">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -513,8 +561,8 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" value="015" validate-on="other"></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="015" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
           </fieldset>
         </mock:shadow-root>
       </gcds-date-input>
@@ -528,7 +576,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date" value="1991-15">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -571,7 +619,7 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="1991" validate-on="other"></gcds-input>
           </fieldset>
         </mock:shadow-root>
       </gcds-date-input>
@@ -585,7 +633,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
       </gcds-date-input>
     `);
   });
@@ -597,7 +645,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input legend="Date input" name="date">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
       </gcds-date-input>
     `);
   });
@@ -609,7 +657,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input legend="Date input" format="full">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
       </gcds-date-input>
     `);
   });
@@ -621,7 +669,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input name="date" format="full">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
       </gcds-date-input>
     `);
   });
@@ -633,7 +681,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" value="222f-23-red">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -676,10 +724,11 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" value="red" validate-on="other"></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="222f" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" value="red" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="222f" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -690,7 +739,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date" value="222f-23-red">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -733,9 +782,10 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" value="222f" validate-on="other"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" value="222f" validate-on="other"></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -746,7 +796,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" form="form-id">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -789,10 +839,11 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
   it('render - compact - form attribute', async () => {
@@ -802,7 +853,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date" form="form-id">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -845,9 +896,10 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" form="form-id" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -858,7 +910,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" min="1991-04-25">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -901,10 +953,11 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" validate-on="other" value=""></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
   it('render - compact - min attribute', async () => {
@@ -914,7 +967,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date" min="1991-04-25">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -957,9 +1010,10 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 
@@ -970,7 +1024,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="full" legend="Date input" name="date" max="1991-04-25">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -1013,10 +1067,11 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="number" inputmode="numeric" validate-on="other" value=""></gcds-input>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
   it('render - compact - max attribute', async () => {
@@ -1026,7 +1081,7 @@ describe('gcds-date-input', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-date-input format="compact" legend="Date input" name="date" max="1991-04-25">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
             <legend id="date-input-legend">
               Date input
@@ -1069,9 +1124,10 @@ describe('gcds-date-input', () => {
                 December
               </option>
             </gcds-select>
-            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="number" inputmode="numeric" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" type="text" inputmode="numeric" validate-on="other" value=""></gcds-input>
           </fieldset>
-        </gcds-date-input>
+        </mock:shadow-root>
+      </gcds-date-input>
     `);
   });
 });

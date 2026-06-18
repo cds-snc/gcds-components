@@ -14,11 +14,25 @@
   :host {
     margin: var(--gcds-header-margin) !important;
 
-    .gcds-header__container {
+    .gcds-header__container--menu {
+      width: 90%;
+      max-width: var(--gcds-header-container-max-width);
+      margin: 0 auto;
+      position: relative;
+
+      :is(slot[name='account']) {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .gcds-header__container--breadcrumbs {
       justify-content: space-between;
       width: 90%;
       max-width: var(--gcds-header-container-max-width);
       margin: 0 auto;
+      display: flex;
     }
 
     .gcds-header__skip-to-nav {
@@ -42,6 +56,29 @@
           clip: rect(0, 0, 0, 0);
         }
       }
+    }
+
+    /*
+      Header uses a constrained width for the top-nav.
+      This overrides the default top-nav width within header scope only.
+    */
+    --gcds-top-nav-width-full: var(--gcds-top-nav-width-constrained);
+
+    /*
+      Account button styles
+    */
+    :is(slot[name='account']) {
+      flex-shrink: 0;
+      margin-left: auto;
+      margin-top: var(--gcds-spacing-50);
+    }
+
+    & ::slotted(gcds-button[slot='account']) {
+      --gcds-button-border-radius: var(--gcds-spacing-0);
+      --gcds-button-font-desktop: var(--gcds-text-size-small-mobile);
+      --gcds-button-font-mobile: var(--gcds-text-size-small-mobile);
+      --gcds-button-mobile-margin: var(--gcds-spacing-0);
+      --gcds-button-padding: var(--gcds-spacing-100) var(--gcds-spacing-200);
     }
   }
 }
@@ -82,6 +119,10 @@
         grid-area: search;
         max-width: 100%;
         display: block;
+
+        & ::slotted(gcds-search) {
+          --gcds-search-input-width: 35ch;
+        }
       }
     }
   }
@@ -89,12 +130,14 @@
 
 @layer menu {
   :host {
-    --gcds-nav-group-mobile-trigger-margin: var(--gcds-header-menu-top-nav-mobile-trigger-margin);
+    --gcds-nav-group-mobile-trigger-margin: var(
+      --gcds-header-menu-top-nav-mobile-trigger-margin
+    );
   }
 }
 
 @layer wide {
-  @container brand (width >= 51em) {
+  @container brand (width >= 51.2em) {
     :host .gcds-header__brand .brand__container {
       grid-template-areas:
         'toggle toggle'

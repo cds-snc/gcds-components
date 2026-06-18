@@ -1,8 +1,8 @@
 {
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.35.1",
-    "typescriptVersion": "5.5.4"
+    "version": "4.43.4",
+    "typescriptVersion": "5.8.3"
   },
   "components": [
     {
@@ -248,6 +248,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-container",
@@ -315,6 +316,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-breadcrumbs-item"
@@ -423,6 +425,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-breadcrumbs"
       ],
@@ -812,8 +815,10 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
-        "gcds-search"
+        "gcds-search",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-icon"
@@ -823,6 +828,9 @@
           "gcds-icon"
         ],
         "gcds-search": [
+          "gcds-button"
+        ],
+        "gcds-table": [
           "gcds-button"
         ]
       }
@@ -889,28 +897,18 @@
         },
         {
           "name": "cardTitleTag",
-          "type": "\"a\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+          "type": "\"h3\" | \"h4\" | \"h5\" | \"h6\"",
           "complexType": {
-            "original": "'h3' | 'h4' | 'h5' | 'h6' | 'a'",
-            "resolved": "\"a\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+            "original": "'h3' | 'h4' | 'h5' | 'h6'",
+            "resolved": "\"h3\" | \"h4\" | \"h5\" | \"h6\"",
             "references": {}
           },
           "mutable": false,
           "attr": "card-title-tag",
           "reflectToAttr": false,
           "docs": "The card title tag property specifies the HTML heading element for the title.\nThis property does not modify the font size. It is used to assign the heading level\nin order to maintain heading hierarchy and accessibility for assistive technologies.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'a'"
-            }
-          ],
-          "default": "'a'",
+          "docsTags": [],
           "values": [
-            {
-              "value": "a",
-              "type": "string"
-            },
             {
               "value": "h3",
               "type": "string"
@@ -928,7 +926,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1024,6 +1022,52 @@
           "required": false,
           "getter": false,
           "setter": false
+        },
+        {
+          "name": "rel",
+          "type": "string",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "rel",
+          "reflectToAttr": false,
+          "docs": "The rel attribute specifies the relationship between the current document and the linked document",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "target",
+          "reflectToAttr": false,
+          "docs": "The target attribute specifies where to open the linked document",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -1080,6 +1124,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-text",
@@ -1117,7 +1162,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the checkobox will be focused on component render",
+          "docs": "If true, the checkbox will be focused on component render",
           "docsTags": [],
           "values": [
             {
@@ -1191,6 +1236,64 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLabel",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-label",
+          "reflectToAttr": false,
+          "docs": "For single checkbox, specifies if the label is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLegend",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-legend",
+          "reflectToAttr": false,
+          "docs": "For checkbox groups, specifies if the legend is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": true,
@@ -1281,7 +1384,8 @@
               "CheckboxObject": {
                 "location": "import",
                 "path": "./checkbox",
-                "id": "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject"
+                "id": "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject",
+                "referenceLocation": "CheckboxObject"
               }
             }
           },
@@ -1378,17 +1482,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -1422,7 +1527,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -1668,14 +1772,17 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
+        "gcds-sr-only",
         "gcds-hint",
         "gcds-error-message",
         "gcds-label"
       ],
       "dependencyGraph": {
         "gcds-checkboxes": [
+          "gcds-sr-only",
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
@@ -1703,6 +1810,38 @@
       ],
       "usage": {},
       "props": [
+        {
+          "name": "alignment",
+          "type": "\"center\" | \"end\" | \"start\"",
+          "complexType": {
+            "original": "'start' | 'center' | 'end'",
+            "resolved": "\"center\" | \"end\" | \"start\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "alignment",
+          "reflectToAttr": false,
+          "docs": "Defines the container's alignment.\nThis property is ignored when `layout` is set to `page`,\nas the page layout has higher priority.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
         {
           "name": "border",
           "type": "boolean",
@@ -1733,56 +1872,26 @@
           "setter": false
         },
         {
-          "name": "centered",
-          "type": "boolean",
+          "name": "layout",
+          "type": "\"full\" | \"page\"",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
+            "original": "'full' | 'page'",
+            "resolved": "\"full\" | \"page\"",
             "references": {}
           },
           "mutable": false,
-          "attr": "centered",
+          "attr": "layout",
           "reflectToAttr": false,
-          "docs": "Defines if the container is centered.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
+          "docs": "Controls how the container aligns with the page layout.\nWhen set to `page`, the container uses a max width of 1140px and\nswitches to 90% width on smaller screens to scale consistently with\ncore page layout components such as the header and footer.\nWhen set to `full`, the container spans the full width (100%)\nof its parent.",
+          "docsTags": [],
           "values": [
             {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "mainContainer",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "main-container",
-          "reflectToAttr": false,
-          "docs": "Defines if the container is the main page container. When true,\nthe width will be set to 90% for smaller screens to ensure consistency\nwith the responsiveness of other core layout components (header + footer).",
-          "docsTags": [
+              "value": "full",
+              "type": "string"
+            },
             {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
+              "value": "page",
+              "type": "string"
             }
           ],
           "optional": true,
@@ -1792,22 +1901,23 @@
         },
         {
           "name": "margin",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
           "mutable": false,
           "attr": "margin",
           "reflectToAttr": false,
-          "docs": "Container margin. Left and right margins won't be applied\nif the container is centered.",
+          "docs": "Container margin. Horizontal margins (left and right) are not\napplied if the container’s alignment property is defined, since\nalignment has higher priority.",
           "docsTags": [],
           "values": [
             {
@@ -1815,99 +1925,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -1931,7 +1949,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -1942,15 +2052,16 @@
         },
         {
           "name": "padding",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -1965,99 +2076,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -2081,7 +2100,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -2181,10 +2292,10 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-alert",
-        "gcds-grid",
-        "gcds-phase-banner"
+        "gcds-grid"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -2192,9 +2303,6 @@
           "gcds-container"
         ],
         "gcds-grid": [
-          "gcds-container"
-        ],
-        "gcds-phase-banner": [
           "gcds-container"
         ]
       }
@@ -2308,16 +2416,16 @@
         },
         {
           "name": "format",
-          "type": "\"compact\" | \"full\"",
+          "type": "\"compact\" | \"full\" | \"iso\"",
           "complexType": {
-            "original": "'full' | 'compact'",
-            "resolved": "\"compact\" | \"full\"",
+            "original": "'full' | 'compact' | 'iso'",
+            "resolved": "\"compact\" | \"full\" | \"iso\"",
             "references": {}
           },
           "mutable": false,
           "attr": "format",
           "reflectToAttr": false,
-          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.",
+          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.",
           "docsTags": [],
           "values": [
             {
@@ -2326,6 +2434,10 @@
             },
             {
               "value": "full",
+              "type": "string"
+            },
+            {
+              "value": "iso",
               "type": "string"
             }
           ],
@@ -2530,17 +2642,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -2574,7 +2687,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -2786,6 +2898,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-select",
@@ -2879,6 +2992,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-text"
@@ -3046,6 +3160,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -3099,6 +3214,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-checkboxes",
         "gcds-date-input",
@@ -3296,6 +3412,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-heading",
@@ -3423,6 +3540,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-hint"
@@ -3557,7 +3675,6 @@
             }
           },
           "mutable": true,
-          "attr": "files",
           "reflectToAttr": false,
           "docs": "FileList of uploaded files to input",
           "docsTags": [],
@@ -3587,6 +3704,35 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLabel",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-label",
+          "reflectToAttr": false,
+          "docs": "Specifies if the label is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": true,
@@ -3790,12 +3936,14 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               },
               "FileList": {
                 "location": "global",
@@ -3804,7 +3952,6 @@
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -3844,7 +3991,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -3872,7 +4018,6 @@
             "references": {}
           },
           "mutable": true,
-          "attr": "value",
           "reflectToAttr": false,
           "docs": "Value for a file uploader element.",
           "docsTags": [
@@ -4076,6 +4221,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-label",
@@ -4220,34 +4366,6 @@
           "required": false,
           "getter": false,
           "setter": false
-        },
-        {
-          "name": "wordmarkVariant",
-          "type": "\"colour\" | \"white\"",
-          "complexType": {
-            "original": "'colour' | 'white'",
-            "resolved": "\"colour\" | \"white\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "wordmark-variant",
-          "reflectToAttr": false,
-          "docs": "GcdsSignature - The variant of the Government of Canada wordmark",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "colour",
-              "type": "string"
-            },
-            {
-              "value": "white",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
         }
       ],
       "methods": [],
@@ -4299,6 +4417,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-signature",
@@ -4310,6 +4429,9 @@
           "gcds-signature",
           "gcds-sr-only",
           "gcds-link"
+        ],
+        "gcds-signature": [
+          "gcds-sr-only"
         ],
         "gcds-link": [
           "gcds-icon"
@@ -4425,27 +4547,30 @@
           "setter": false
         },
         {
-          "name": "centered",
-          "type": "boolean",
+          "name": "alignment",
+          "type": "\"center\" | \"end\" | \"start\"",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
+            "original": "'start' | 'center' | 'end'",
+            "resolved": "\"center\" | \"end\" | \"start\"",
             "references": {}
           },
           "mutable": false,
-          "attr": "centered",
+          "attr": "alignment",
           "reflectToAttr": false,
-          "docs": "Defines if grid container is centered or not",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
+          "docs": "Defines the grid's alignment if the grid containers\nsize is smaller than the parent's size.",
+          "docsTags": [],
           "values": [
             {
-              "type": "boolean"
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
             }
           ],
           "optional": true,
@@ -5159,18 +5284,14 @@
         }
       ],
       "parts": [],
-      "dependents": [
-        "gcds-verify-banner"
-      ],
+      "states": [],
+      "dependents": [],
       "dependencies": [
         "gcds-container"
       ],
       "dependencyGraph": {
         "gcds-grid": [
           "gcds-container"
-        ],
-        "gcds-verify-banner": [
-          "gcds-grid"
         ]
       }
     },
@@ -5347,6 +5468,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -5385,6 +5507,10 @@
         {
           "name": "slot",
           "text": "toggle - Slot to add a custom language toggle in the top-right of the header."
+        },
+        {
+          "name": "slot",
+          "text": "account - Slot to add a custom account link in the bottom-right of the header."
         }
       ],
       "usage": {},
@@ -5434,34 +5560,6 @@
           "values": [
             {
               "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "signatureVariant",
-          "type": "\"colour\" | \"white\"",
-          "complexType": {
-            "original": "| 'colour'\n    | 'white'",
-            "resolved": "\"colour\" | \"white\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "signature-variant",
-          "reflectToAttr": false,
-          "docs": "GcdsSignature - The variant of the Government of Canada signature",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "colour",
-              "type": "string"
-            },
-            {
-              "value": "white",
-              "type": "string"
             }
           ],
           "optional": false,
@@ -5542,6 +5640,10 @@
       "styles": [],
       "slots": [
         {
+          "name": "account",
+          "docs": "Slot to add a custom account link in the bottom-right of the header."
+        },
+        {
           "name": "banner",
           "docs": "Slot to add a banner across the top of the header."
         },
@@ -5571,6 +5673,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-link",
@@ -5589,6 +5692,9 @@
         "gcds-lang-toggle": [
           "gcds-sr-only",
           "gcds-link"
+        ],
+        "gcds-signature": [
+          "gcds-sr-only"
         ]
       }
     },
@@ -5636,16 +5742,55 @@
           "setter": false
         },
         {
+          "name": "headingRole",
+          "type": "\"light\" | \"primary\" | \"secondary\"",
+          "complexType": {
+            "original": "'light' | 'primary' | 'secondary'",
+            "resolved": "\"light\" | \"primary\" | \"secondary\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "heading-role",
+          "reflectToAttr": false,
+          "docs": "Sets the main style of the heading.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "marginBottom",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -5666,99 +5811,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -5782,7 +5835,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -5793,15 +5938,16 @@
         },
         {
           "name": "marginTop",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -5816,99 +5962,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -5932,7 +5986,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -5997,10 +6143,12 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-error-summary",
         "gcds-notice",
-        "gcds-stepper"
+        "gcds-stepper",
+        "gcds-table"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -6011,6 +6159,9 @@
           "gcds-heading"
         ],
         "gcds-stepper": [
+          "gcds-heading"
+        ],
+        "gcds-table": [
           "gcds-heading"
         ]
       }
@@ -6069,6 +6220,7 @@
           "docs": ""
         }
       ],
+      "states": [],
       "dependents": [
         "gcds-checkboxes",
         "gcds-date-input",
@@ -6146,15 +6298,16 @@
         },
         {
           "name": "marginLeft",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -6169,99 +6322,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -6285,7 +6346,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -6296,15 +6449,16 @@
         },
         {
           "name": "marginRight",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -6319,99 +6473,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -6435,7 +6497,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -6446,11 +6600,17 @@
         },
         {
           "name": "name",
-          "type": "\"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"info-circle\" | \"phone\" | \"search\" | \"warning-triangle\"",
+          "type": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
           "complexType": {
-            "original": "| 'checkmark-circle'\n    | 'chevron-down'\n    | 'chevron-left'\n    | 'chevron-right'\n    | 'chevron-up'\n    | 'close'\n    | 'download'\n    | 'email'\n    | 'exclamation-circle'\n    | 'external'\n    | 'info-circle'\n    | 'phone'\n    | 'search'\n    | 'warning-triangle'",
-            "resolved": "\"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"info-circle\" | \"phone\" | \"search\" | \"warning-triangle\"",
-            "references": {}
+            "original": "IconNames",
+            "resolved": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
+            "references": {
+              "IconNames": {
+                "location": "local",
+                "path": "/web/src/components/gcds-icon/gcds-icon.tsx",
+                "id": "src/components/gcds-icon/gcds-icon.tsx::IconNames"
+              }
+            }
           },
           "mutable": true,
           "attr": "name",
@@ -6458,6 +6618,18 @@
           "docs": "Name of the icon.",
           "docsTags": [],
           "values": [
+            {
+              "value": "arrow-down",
+              "type": "string"
+            },
+            {
+              "value": "arrow-up",
+              "type": "string"
+            },
+            {
+              "value": "arrow-up-down",
+              "type": "string"
+            },
             {
               "value": "checkmark-circle",
               "type": "string"
@@ -6499,6 +6671,10 @@
               "type": "string"
             },
             {
+              "value": "filter",
+              "type": "string"
+            },
+            {
               "value": "info-circle",
               "type": "string"
             },
@@ -6508,6 +6684,14 @@
             },
             {
               "value": "search",
+              "type": "string"
+            },
+            {
+              "value": "sort",
+              "type": "string"
+            },
+            {
+              "value": "tune",
               "type": "string"
             },
             {
@@ -6589,6 +6773,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-alert",
         "gcds-button",
@@ -6599,6 +6784,7 @@
         "gcds-notice",
         "gcds-pagination",
         "gcds-search",
+        "gcds-table",
         "gcds-topic-menu"
       ],
       "dependencies": [],
@@ -6628,6 +6814,9 @@
           "gcds-icon"
         ],
         "gcds-search": [
+          "gcds-icon"
+        ],
+        "gcds-table": [
           "gcds-icon"
         ],
         "gcds-topic-menu": [
@@ -7181,7 +7370,8 @@
               "SuggestionOption": {
                 "location": "import",
                 "path": "./suggestion-option",
-                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption"
+                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption",
+                "referenceLocation": "SuggestionOption"
               }
             }
           },
@@ -7309,17 +7499,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -7353,7 +7544,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -7585,8 +7775,10 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
-        "gcds-date-input"
+        "gcds-date-input",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-label",
@@ -7607,6 +7799,9 @@
           "gcds-icon"
         ],
         "gcds-date-input": [
+          "gcds-input"
+        ],
+        "gcds-table": [
           "gcds-input"
         ]
       }
@@ -7729,6 +7924,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-checkboxes",
         "gcds-file-uploader",
@@ -7845,6 +8041,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-header"
       ],
@@ -7989,6 +8186,40 @@
           "setter": false
         },
         {
+          "name": "linkRole",
+          "type": "\"default\" | \"light\"",
+          "complexType": {
+            "original": "'default' | 'light'",
+            "resolved": "\"default\" | \"light\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "link-role",
+          "reflectToAttr": false,
+          "docs": "Sets the main style of the link.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'default'"
+            }
+          ],
+          "default": "'default'",
+          "values": [
+            {
+              "value": "default",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "rel",
           "type": "string",
           "complexType": {
@@ -8100,40 +8331,6 @@
           "required": false,
           "getter": false,
           "setter": false
-        },
-        {
-          "name": "variant",
-          "type": "\"default\" | \"light\"",
-          "complexType": {
-            "original": "'default' | 'light'",
-            "resolved": "\"default\" | \"light\"",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "variant",
-          "reflectToAttr": false,
-          "docs": "Sets the main style of the link.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'default'"
-            }
-          ],
-          "default": "'default'",
-          "values": [
-            {
-              "value": "default",
-              "type": "string"
-            },
-            {
-              "value": "light",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
         }
       ],
       "methods": [],
@@ -8190,6 +8387,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-breadcrumbs-item",
         "gcds-card",
@@ -8448,6 +8646,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-side-nav",
         "gcds-top-nav"
@@ -8605,6 +8804,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -8623,6 +8823,42 @@
       ],
       "usage": {},
       "props": [
+        {
+          "name": "noticeRole",
+          "type": "\"danger\" | \"info\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "'danger' | 'info' | 'success' | 'warning'",
+            "resolved": "\"danger\" | \"info\" | \"success\" | \"warning\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "notice-role",
+          "reflectToAttr": false,
+          "docs": "The notice role property specifies the style of notice to be displayed.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
         {
           "name": "noticeTitle",
           "type": "string",
@@ -8681,42 +8917,6 @@
           "required": true,
           "getter": false,
           "setter": false
-        },
-        {
-          "name": "type",
-          "type": "\"danger\" | \"info\" | \"success\" | \"warning\"",
-          "complexType": {
-            "original": "'danger' | 'info' | 'success' | 'warning'",
-            "resolved": "\"danger\" | \"info\" | \"success\" | \"warning\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "type",
-          "reflectToAttr": false,
-          "docs": "Set notice type.",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "info",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true,
-          "getter": false,
-          "setter": false
         }
       ],
       "methods": [],
@@ -8730,6 +8930,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-icon",
@@ -9024,180 +9225,19 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "states": [],
+      "dependents": [
+        "gcds-table"
+      ],
       "dependencies": [
         "gcds-icon"
       ],
       "dependencyGraph": {
         "gcds-pagination": [
           "gcds-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/gcds-phase-banner/gcds-phase-banner.tsx",
-      "encapsulation": "shadow",
-      "tag": "gcds-phase-banner",
-      "readme": "# gcds-phase-banner\n\n\n",
-      "docs": "Phase banner displays a banner indicating the current phase of a project or feature, with optional icons and call-to-action elements.",
-      "docsTags": [
-        {
-          "name": "slot",
-          "text": "banner-cta - Slot for the call-to-action element in the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-icon-left - Slot for displaying an icon/image on the left of the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-icon-right - Slot for displaying an icon/image on the right of the banner."
-        },
-        {
-          "name": "slot",
-          "text": "banner-text - Slot for the main content of the banner."
-        }
-      ],
-      "usage": {},
-      "props": [
-        {
-          "name": "bannerRole",
-          "type": "\"primary\" | \"secondary\"",
-          "complexType": {
-            "original": "'primary' | 'secondary'",
-            "resolved": "\"primary\" | \"secondary\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "banner-role",
-          "reflectToAttr": false,
-          "docs": "Defines banner role.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'primary'"
-            }
-          ],
-          "default": "'primary'",
-          "values": [
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "secondary",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "container",
-          "type": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-          "complexType": {
-            "original": "'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'",
-            "resolved": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "container",
-          "reflectToAttr": false,
-          "docs": "Defines the container width of the phase banner content",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'xl'"
-            }
-          ],
-          "default": "'xl'",
-          "values": [
-            {
-              "value": "full",
-              "type": "string"
-            },
-            {
-              "value": "lg",
-              "type": "string"
-            },
-            {
-              "value": "md",
-              "type": "string"
-            },
-            {
-              "value": "sm",
-              "type": "string"
-            },
-            {
-              "value": "xl",
-              "type": "string"
-            },
-            {
-              "value": "xs",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "isFixed",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "is-fixed",
-          "reflectToAttr": false,
-          "docs": "Defines if the banner's position is fixed.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [
-        {
-          "name": "banner-cta",
-          "docs": "Slot for the call-to-action element in the banner."
-        },
-        {
-          "name": "banner-icon-left",
-          "docs": "Slot for displaying an icon/image on the left of the banner."
-        },
-        {
-          "name": "banner-icon-right",
-          "docs": "Slot for displaying an icon/image on the right of the banner."
-        },
-        {
-          "name": "banner-text",
-          "docs": "Slot for the main content of the banner."
-        }
-      ],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "gcds-container"
-      ],
-      "dependencyGraph": {
-        "gcds-phase-banner": [
-          "gcds-container"
+        ],
+        "gcds-table": [
+          "gcds-pagination"
         ]
       }
     },
@@ -9303,6 +9343,35 @@
           "setter": false
         },
         {
+          "name": "hideLegend",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-legend",
+          "reflectToAttr": false,
+          "docs": "Specifies if the legend is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hint",
           "type": "string",
           "complexType": {
@@ -9385,7 +9454,8 @@
               "RadioObject": {
                 "location": "import",
                 "path": "./radio",
-                "id": "src/components/gcds-radios/radio.tsx::RadioObject"
+                "id": "src/components/gcds-radios/radio.tsx::RadioObject",
+                "referenceLocation": "RadioObject"
               }
             }
           },
@@ -9482,17 +9552,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -9526,7 +9597,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -9738,14 +9808,19 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "states": [],
+      "dependents": [
+        "gcds-table"
+      ],
       "dependencies": [
+        "gcds-sr-only",
         "gcds-hint",
         "gcds-error-message",
         "gcds-label"
       ],
       "dependencyGraph": {
         "gcds-radios": [
+          "gcds-sr-only",
           "gcds-hint",
           "gcds-error-message",
           "gcds-label"
@@ -9756,6 +9831,9 @@
         "gcds-error-message": [
           "gcds-text",
           "gcds-icon"
+        ],
+        "gcds-table": [
+          "gcds-radios"
         ]
       }
     },
@@ -9920,23 +9998,21 @@
         },
         {
           "name": "suggested",
-          "type": "string[]",
+          "type": "string | string[]",
           "complexType": {
-            "original": "Array<string>",
-            "resolved": "string[]",
-            "references": {
-              "Array": {
-                "location": "global",
-                "id": "global::Array"
-              }
-            }
+            "original": "string[] | string",
+            "resolved": "string | string[]",
+            "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "suggested",
           "reflectToAttr": false,
           "docs": "Set a list of predefined search terms",
           "docsTags": [],
           "values": [
+            {
+              "type": "string"
+            },
             {
               "type": "string[]"
             }
@@ -10047,6 +10123,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-sr-only",
@@ -10217,6 +10294,35 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLabel",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-label",
+          "reflectToAttr": false,
+          "docs": "Specifies if the label is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": true,
@@ -10397,17 +10503,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -10441,7 +10548,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -10657,9 +10763,16 @@
           "docs": "Slot for options and option groups."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "wrapper",
+          "docs": ""
+        }
+      ],
+      "states": [],
       "dependents": [
-        "gcds-date-input"
+        "gcds-date-input",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-label",
@@ -10681,6 +10794,9 @@
         ],
         "gcds-date-input": [
           "gcds-select"
+        ],
+        "gcds-table": [
+          "gcds-select"
         ]
       }
     },
@@ -10691,6 +10807,10 @@
       "readme": "# gcds-side-nav\n\n\n",
       "docs": "A side navigation is a vertical list of page links on the left side of the screen.",
       "docsTags": [
+        {
+          "name": "slot",
+          "text": "home - Slot for the home link or site title."
+        },
         {
           "name": "slot",
           "text": "default - Slot for the navigation groups and navigation links."
@@ -10856,9 +10976,14 @@
         {
           "name": "default",
           "docs": "Slot for the navigation groups and navigation links."
+        },
+        {
+          "name": "home",
+          "docs": "Slot for the home link or site title."
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-nav-group"
@@ -10985,12 +11110,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-footer",
         "gcds-header"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "gcds-sr-only"
+      ],
       "dependencyGraph": {
+        "gcds-signature": [
+          "gcds-sr-only"
+        ],
         "gcds-footer": [
           "gcds-signature"
         ],
@@ -11083,19 +11214,28 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-card",
+        "gcds-checkboxes",
         "gcds-file-uploader",
         "gcds-footer",
         "gcds-lang-toggle",
         "gcds-notice",
+        "gcds-radios",
         "gcds-search",
+        "gcds-signature",
         "gcds-stepper",
+        "gcds-table",
+        "gcds-textarea",
         "gcds-topic-menu"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "gcds-card": [
+          "gcds-sr-only"
+        ],
+        "gcds-checkboxes": [
           "gcds-sr-only"
         ],
         "gcds-file-uploader": [
@@ -11110,10 +11250,22 @@
         "gcds-notice": [
           "gcds-sr-only"
         ],
+        "gcds-radios": [
+          "gcds-sr-only"
+        ],
         "gcds-search": [
           "gcds-sr-only"
         ],
+        "gcds-signature": [
+          "gcds-sr-only"
+        ],
         "gcds-stepper": [
+          "gcds-sr-only"
+        ],
+        "gcds-table": [
+          "gcds-sr-only"
+        ],
+        "gcds-textarea": [
           "gcds-sr-only"
         ],
         "gcds-topic-menu": [
@@ -11231,6 +11383,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-heading",
@@ -11240,6 +11393,422 @@
         "gcds-stepper": [
           "gcds-heading",
           "gcds-sr-only"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/gcds-table/gcds-table.tsx",
+      "encapsulation": "shadow",
+      "tag": "gcds-table",
+      "readme": "# gcds-table\n\n\n",
+      "docs": "A table is a structured layout of related data in rows and columns.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "caption - Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it."
+        },
+        {
+          "name": "slot",
+          "text": "cell:<field> - Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition."
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "columns",
+          "type": "TableColumn[] | string",
+          "complexType": {
+            "original": "string | TableColumn[]",
+            "resolved": "TableColumn[] | string",
+            "references": {
+              "TableColumn": {
+                "location": "import",
+                "path": "./utils/table-helpers",
+                "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumn",
+                "referenceLocation": "TableColumn"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "columns",
+          "reflectToAttr": false,
+          "docs": "Column definitions",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "TableColumn[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "data",
+          "type": "object[] | string",
+          "complexType": {
+            "original": "string | object[]",
+            "resolved": "object[] | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "data",
+          "reflectToAttr": false,
+          "docs": "Row data",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "object[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filter",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "filter",
+          "reflectToAttr": false,
+          "docs": "Enable global filter",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filterValue",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "filter-value",
+          "reflectToAttr": false,
+          "docs": "Current filter string",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "Enable pagination",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationCurrentPage",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-current-page",
+          "reflectToAttr": false,
+          "docs": "Current page index",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSize",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size",
+          "reflectToAttr": false,
+          "docs": "Number of rows per page",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "10"
+            }
+          ],
+          "default": "10",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSizeOptions",
+          "type": "number[] | string",
+          "complexType": {
+            "original": "string | number[]",
+            "resolved": "number[] | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size-options",
+          "reflectToAttr": false,
+          "docs": "Available page-size options.\nUse 0 to represent \"All rows\".",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[10, 25, 50, 0]"
+            }
+          ],
+          "default": "[10, 25, 50, 0]",
+          "values": [
+            {
+              "type": "number[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "sort",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "sort",
+          "reflectToAttr": false,
+          "docs": "Enable global column sorting (can be overridden per column)",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getVisibleRows",
+          "returns": {
+            "type": "Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "Record": {
+                "location": "global",
+                "id": "global::Record"
+              }
+            },
+            "return": "Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>"
+          },
+          "signature": "getVisibleRows() => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "gcdsTableStateChange",
+          "detail": "GcdsTableStateChange",
+          "bubbles": true,
+          "complexType": {
+            "original": "GcdsTableStateChange",
+            "resolved": "GcdsTableStateChange",
+            "references": {
+              "GcdsTableStateChange": {
+                "location": "import",
+                "path": "./utils/table-helpers",
+                "id": "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange",
+                "referenceLocation": "GcdsTableStateChange"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "caption",
+          "docs": "Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it."
+        },
+        {
+          "name": "cell:<field>",
+          "docs": "Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition."
+        }
+      ],
+      "parts": [],
+      "states": [],
+      "dependents": [],
+      "dependencies": [
+        "gcds-select",
+        "gcds-icon",
+        "gcds-heading",
+        "gcds-text",
+        "gcds-button",
+        "gcds-pagination",
+        "gcds-radios",
+        "gcds-sr-only",
+        "gcds-input"
+      ],
+      "dependencyGraph": {
+        "gcds-table": [
+          "gcds-select",
+          "gcds-icon",
+          "gcds-heading",
+          "gcds-text",
+          "gcds-button",
+          "gcds-pagination",
+          "gcds-radios",
+          "gcds-sr-only",
+          "gcds-input"
+        ],
+        "gcds-select": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
+        ],
+        "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-error-message": [
+          "gcds-text",
+          "gcds-icon"
+        ],
+        "gcds-button": [
+          "gcds-icon"
+        ],
+        "gcds-pagination": [
+          "gcds-icon"
+        ],
+        "gcds-radios": [
+          "gcds-sr-only",
+          "gcds-hint",
+          "gcds-error-message",
+          "gcds-label"
+        ],
+        "gcds-input": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
         ]
       }
     },
@@ -11338,15 +11907,16 @@
         },
         {
           "name": "marginBottom",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -11367,99 +11937,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -11483,7 +11961,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -11494,15 +12064,16 @@
         },
         {
           "name": "marginTop",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -11523,99 +12094,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -11639,7 +12118,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -11737,12 +12308,14 @@
           "docs": ""
         }
       ],
+      "states": [],
       "dependents": [
         "gcds-card",
         "gcds-date-modified",
         "gcds-error-message",
         "gcds-file-uploader",
         "gcds-hint",
+        "gcds-table",
         "gcds-textarea"
       ],
       "dependencies": [],
@@ -11760,6 +12333,9 @@
           "gcds-text"
         ],
         "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-table": [
           "gcds-text"
         ],
         "gcds-textarea": [
@@ -11787,7 +12363,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the input will be focused on component render",
+          "docs": "If true, the textarea will be focused on component render.",
           "docsTags": [],
           "values": [
             {
@@ -11795,29 +12371,6 @@
             }
           ],
           "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "characterCount",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "character-count",
-          "reflectToAttr": false,
-          "docs": "Sets the maxlength attribute for the textarea element.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -11898,6 +12451,29 @@
           "setter": false
         },
         {
+          "name": "form",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "form",
+          "reflectToAttr": true,
+          "docs": "The ID of the form that the textarea belongs to.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "hideLabel",
           "type": "boolean",
           "complexType": {
@@ -11909,6 +12485,35 @@
           "attr": "hide-label",
           "reflectToAttr": false,
           "docs": "Specifies if the label is hidden or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLimit",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-limit",
+          "reflectToAttr": false,
+          "docs": "If true, character limit counter will not be displayed under the textarea.",
           "docsTags": [
             {
               "name": "default",
@@ -11973,6 +12578,29 @@
           "setter": false
         },
         {
+          "name": "maxlength",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "maxlength",
+          "reflectToAttr": true,
+          "docs": "The maximum number of characters that the textarea field can accept.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "minlength",
           "type": "number",
           "complexType": {
@@ -11983,7 +12611,7 @@
           "mutable": false,
           "attr": "minlength",
           "reflectToAttr": true,
-          "docs": "The minimum number of characters that the input field can accept.",
+          "docs": "The minimum number of characters that the textarea field can accept.",
           "docsTags": [],
           "values": [
             {
@@ -12151,17 +12779,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -12195,7 +12824,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -12407,11 +13035,13 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-label",
         "gcds-hint",
         "gcds-error-message",
+        "gcds-sr-only",
         "gcds-text"
       ],
       "dependencyGraph": {
@@ -12419,6 +13049,7 @@
           "gcds-label",
           "gcds-hint",
           "gcds-error-message",
+          "gcds-sr-only",
           "gcds-text"
         ],
         "gcds-hint": [
@@ -12439,6 +13070,10 @@
       "docsTags": [
         {
           "name": "slot",
+          "text": "home - Slot for the home link or site title."
+        },
+        {
+          "name": "slot",
           "text": "default - Slot for the navigation groups and navigation links."
         }
       ],
@@ -12446,10 +13081,10 @@
       "props": [
         {
           "name": "alignment",
-          "type": "\"center\" | \"left\" | \"right\"",
+          "type": "\"end\" | \"start\"",
           "complexType": {
-            "original": "'left' | 'center' | 'right'",
-            "resolved": "\"center\" | \"left\" | \"right\"",
+            "original": "'start' | 'end'",
+            "resolved": "\"end\" | \"start\"",
             "references": {}
           },
           "mutable": false,
@@ -12459,21 +13094,17 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'left'"
+              "text": "'start'"
             }
           ],
-          "default": "'left'",
+          "default": "'start'",
           "values": [
             {
-              "value": "center",
+              "value": "end",
               "type": "string"
             },
             {
-              "value": "left",
-              "type": "string"
-            },
-            {
-              "value": "right",
+              "value": "start",
               "type": "string"
             }
           ],
@@ -12640,9 +13271,14 @@
         {
           "name": "default",
           "docs": "Slot for the navigation groups and navigation links."
+        },
+        {
+          "name": "home",
+          "docs": "Slot for the home link or site title."
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-nav-group"
@@ -12847,6 +13483,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-sr-only",
@@ -12856,114 +13493,6 @@
         "gcds-topic-menu": [
           "gcds-sr-only",
           "gcds-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/gcds-verify-banner/gcds-verify-banner.tsx",
-      "encapsulation": "shadow",
-      "tag": "gcds-verify-banner",
-      "readme": "# gcds-verify-banner\n\n\n",
-      "docs": "Verify banner helps users verify they are on an official Government of Canada website by providing clear information on how to recognize legitimate Government of Canada domains and secure connections.",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "container",
-          "type": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-          "complexType": {
-            "original": "'full' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'",
-            "resolved": "\"full\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "container",
-          "reflectToAttr": false,
-          "docs": "Defines the container width of the verify banner content",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'xl'"
-            }
-          ],
-          "default": "'xl'",
-          "values": [
-            {
-              "value": "full",
-              "type": "string"
-            },
-            {
-              "value": "lg",
-              "type": "string"
-            },
-            {
-              "value": "md",
-              "type": "string"
-            },
-            {
-              "value": "sm",
-              "type": "string"
-            },
-            {
-              "value": "xl",
-              "type": "string"
-            },
-            {
-              "value": "xs",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "isFixed",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "is-fixed",
-          "reflectToAttr": false,
-          "docs": "Defines if the banner's position is fixed.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "gcds-grid"
-      ],
-      "dependencyGraph": {
-        "gcds-verify-banner": [
-          "gcds-grid"
-        ],
-        "gcds-grid": [
-          "gcds-container"
         ]
       }
     }
@@ -12978,6 +13507,16 @@
       "declaration": "export type ContentValues =\n  | 'center'\n  | 'end'\n  | 'space-around'\n  | 'space-between'\n  | 'space-evenly'\n  | 'start'\n  | 'stretch';",
       "docstring": "",
       "path": "src/components/gcds-grid/gcds-grid.tsx"
+    },
+    "src/utils/types/spacing.tsx::SpacingValues": {
+      "declaration": "export type SpacingValues =\n  | '0'\n  | '25'\n  | '50'\n  | '75'\n  | '100'\n  | '125'\n  | '150'\n  | '175'\n  | '200'\n  | '225'\n  | '250'\n  | '300'\n  | '350'\n  | '400'\n  | '450'\n  | '500'\n  | '550'\n  | '600'\n  | '650'\n  | '700'\n  | '750'\n  | '800'\n  | '850'\n  | '900'\n  | '950'\n  | '1000'\n  | '1050'\n  | '1100'\n  | '1150'\n  | '1200'\n  | '1250';",
+      "docstring": "",
+      "path": "src/utils/types/spacing.tsx"
+    },
+    "src/components/gcds-icon/gcds-icon.tsx::IconNames": {
+      "declaration": "export type IconNames =\n  | 'arrow-down'\n  | 'arrow-up'\n  | 'arrow-up-down'\n  | 'checkmark-circle'\n  | 'chevron-down'\n  | 'chevron-left'\n  | 'chevron-right'\n  | 'chevron-up'\n  | 'close'\n  | 'download'\n  | 'email'\n  | 'exclamation-circle'\n  | 'external'\n  | 'filter'\n  | 'info-circle'\n  | 'phone'\n  | 'search'\n  | 'sort'\n  | 'tune'\n  | 'warning-triangle';",
+      "docstring": "",
+      "path": "src/components/gcds-icon/gcds-icon.tsx"
     },
     "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject": {
       "declaration": "{\n  id: string;\n  label: string;\n  value?: string;\n  hint?: string;\n  checked?: boolean | string;\n}",
@@ -12994,11 +13533,6 @@
       "docstring": "",
       "path": "src/validators/index.ts"
     },
-    "src/utils/types/spacing.tsx::SpacingValues": {
-      "declaration": "export type SpacingValues =\n  | '0'\n  | '25'\n  | '50'\n  | '75'\n  | '100'\n  | '125'\n  | '150'\n  | '175'\n  | '200'\n  | '225'\n  | '250'\n  | '300'\n  | '350'\n  | '400'\n  | '450'\n  | '500'\n  | '550'\n  | '600'\n  | '650'\n  | '700'\n  | '750'\n  | '800'\n  | '850'\n  | '900'\n  | '950'\n  | '1000'\n  | '1050'\n  | '1100'\n  | '1150'\n  | '1200'\n  | '1250';",
-      "docstring": "",
-      "path": "src/utils/types/spacing.tsx"
-    },
     "src/components/gcds-input/suggestion-option.tsx::SuggestionOption": {
       "declaration": "{\n  label: string;\n  value?: string;\n}",
       "docstring": "",
@@ -13008,6 +13542,16 @@
       "declaration": "{\n  id: string;\n  label: string;\n  value: string;\n  hint?: string;\n  checked?: boolean;\n}",
       "docstring": "",
       "path": "src/components/gcds-radios/radio.tsx"
+    },
+    "src/components/gcds-table/utils/table-helpers.ts::TableColumn": {
+      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  rowHeader?: boolean;\n  slotted?: boolean;\n  managed?: boolean;\n}",
+      "docstring": "Table column definition",
+      "path": "src/components/gcds-table/utils/table-helpers.ts"
+    },
+    "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange": {
+      "declaration": "export interface GcdsTableStateChange {\n  visibleRows: Array<{\n    rowId: string; // stable TanStack row id — does not change with sort/filter\n    rowIndex: number; // current visible position in the table\n    original: unknown; // the original data object for this row\n  }>;\n  page: number;\n  pageSize: number;\n  filterValue: string;\n  sorting: SortingState | null;\n}",
+      "docstring": "",
+      "path": "src/components/gcds-table/utils/table-helpers.ts"
     }
   }
 }

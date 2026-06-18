@@ -1,23 +1,21 @@
 import { Outlet } from 'react-router-dom';
 
-import { GcdsHeader, GcdsFooter, GcdsContainer } from '@cdssnc/gcds-components-react';
+import {
+  GcdsHeader,
+  GcdsFooter,
+  GcdsContainer,
+} from '@gcds-core/components-react';
 
 function App() {
   return (
     <>
       <GcdsHeader></GcdsHeader>
-      <GcdsContainer
-        size='xl'
-        tag='main'
-        centered={true}
-        mainContainer={true}
-        className='mb-400'
-      >
+      <GcdsContainer tag="main" layout="page" className="mb-400">
         <Outlet />
       </GcdsContainer>
       <GcdsFooter></GcdsFooter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

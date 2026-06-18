@@ -11,10 +11,10 @@ A top navigation is a horizontal list of page links.
 
 ## Properties
 
-| Property             | Attribute   | Description                   | Type                            | Default     |
-| -------------------- | ----------- | ----------------------------- | ------------------------------- | ----------- |
-| `alignment`          | `alignment` | Nav alignment                 | `"center" \| "left" \| "right"` | `'left'`    |
-| `label` _(required)_ | `label`     | Label for navigation landmark | `string`                        | `undefined` |
+| Property             | Attribute   | Description                   | Type               | Default     |
+| -------------------- | ----------- | ----------------------------- | ------------------ | ----------- |
+| `alignment`          | `alignment` | Nav alignment                 | `"end" \| "start"` | `'start'`   |
+| `label` _(required)_ | `label`     | Label for navigation landmark | `string`           | `undefined` |
 
 
 ## Methods
@@ -68,6 +68,7 @@ Type: `Promise<void>`
 | Slot        | Description                                          |
 | ----------- | ---------------------------------------------------- |
 | `"default"` | Slot for the navigation groups and navigation links. |
+| `"home"`    | Slot for the home link or site title.                |
 
 
 ## Dependencies

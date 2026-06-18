@@ -4,7 +4,7 @@ import { test, testMobile, testTablet } from '../../../../tests/base';
 
 test.describe('gcds-side-nav', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-side-nav');
+    const element = page.locator('gcds-side-nav');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -15,7 +15,7 @@ test.describe('gcds-side-nav', () => {
     await expect(element).toHaveClass('hydrated');
 
     // Check first nav link item role
-    const firstItem = await page.locator('gcds-nav-link').first();
+    const firstItem = page.locator('gcds-nav-link').first();
     await expect(firstItem).toHaveRole('listitem');
   });
 
@@ -56,7 +56,7 @@ test.describe('gcds-side-nav', () => {
   })
 
   test('keyboard controls', async ({ page }) => {
-    const element = await page.locator('gcds-side-nav');
+    const element = page.locator('gcds-side-nav');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -152,43 +152,31 @@ test.describe('gcds-side-nav a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Landmark labels
    */
   test('Landmark labels', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['landmark-unique'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['landmark-unique'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Link text
    */
   test('Proper link text', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
-  testMobile('Mobile a11y test', async ({ page}) => {
+  testMobile('Mobile a11y test', async ({ page }) => {
     const element = page.locator('gcds-side-nav');
 
     // Wait for element to attach and become visible, allowing up to 10s

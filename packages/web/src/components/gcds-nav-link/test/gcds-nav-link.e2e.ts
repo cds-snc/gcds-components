@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-nav-link', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-nav-link');
+    const element = page.locator('gcds-nav-link');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -27,26 +27,18 @@ test.describe('gcds-nav-link a11y tests', () => {
    * Colour contrast
    */
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
   /**
    * Link text
    */
   test('Proper link text', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

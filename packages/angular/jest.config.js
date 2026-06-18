@@ -17,7 +17,7 @@ module.exports = {
   ],
   coverageDirectory: '../../coverage/gcds-components-angular',
   moduleNameMapper: {
-    '^@cdssnc/gcds-components$': '<rootDir>/../../packages/web/dist'
+    '^@gcds-core/components$': '<rootDir>/../../packages/web/dist'
   },
   transform: {
     '^.+\\.(ts|js|html)$': [

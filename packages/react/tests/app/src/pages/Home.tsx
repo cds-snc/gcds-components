@@ -1,4 +1,4 @@
-import { GcdsHeading, GcdsText, GcdsLink } from '@cdssnc/gcds-components-react';
+import { GcdsHeading, GcdsText, GcdsLink } from '@gcds-core/components-react';
 
 const Home = () => {
   return (
@@ -21,6 +21,11 @@ const Home = () => {
             <li>
               <GcdsLink href="/file-uploader">
                 File uploader
+              </GcdsLink>
+            </li>
+            <li>
+              <GcdsLink href="/table">
+                Table
               </GcdsLink>
             </li>
           </ul>

@@ -6,42 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
-    <title>Stencil Component Starter</title>
+    <title>GC Design System Components Test</title>
 
-    <!-- Utility framework -->
+    <!-- GC Design System CSS Shortcuts -->
     <link
       rel="stylesheet"
-      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-utility@latest/dist/gcds-utility.min.css"
+      href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css"
     />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Font awesome 6 kit for this demo page. Anyone can create a free kit for open source. -->
-    <script
-      src="https://kit.fontawesome.com/892cb27850.js"
-      crossorigin="anonymous"
-    ></script>
 
     <!-- Local components -->
     <link rel="stylesheet" href="./build/gcds.css" />
@@ -62,13 +33,77 @@
         animation: fade 0.05s normal forwards ease-in-out;
       }
     </style>
+
+    <style>
+      .pokemon-type {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: #fff;
+      }
+      .normal {
+        background: #6d6d4e;
+      }
+      .fire {
+        background: #b34700;
+      }
+      .water {
+        background: #005bb5;
+      }
+      .electric {
+        background: #8a6d00;
+      }
+      .grass {
+        background: #2f7d32;
+      }
+      .ice {
+        background: #006d75;
+      }
+      .fighting {
+        background: #8b1e1e;
+      }
+      .poison {
+        background: #6a1b75;
+      }
+      .ground {
+        background: #8c5a00;
+      }
+      .flying {
+        background: #4a57a3;
+      }
+      .psychic {
+        background: #ad1457;
+      }
+      .bug {
+        background: #586b00;
+      }
+      .rock {
+        background: #725a00;
+      }
+      .ghost {
+        background: #4b3b8f;
+      }
+      .dragon {
+        background: #4527a0;
+      }
+      .dark {
+        background: #2f2f2f;
+      }
+      .steel {
+        background: #4f5b62;
+      }
+      .fairy {
+        background: #a61e4d;
+      }
+    </style>
   </head>
 
   <body style="margin: 0">
-    <!-- ------------- Verify banner ------------- -->
-
-    <gcds-verify-banner></gcds-verify-banner>
-
     <!-- ------------- Header ------------- -->
 
     <gcds-header
@@ -83,7 +118,7 @@
 
       <!-- ------------- Top nav ------------- -->
 
-      <gcds-top-nav slot="menu" label="Top navigation" alignment="right">
+      <!-- <gcds-top-nav slot="menu" label="Top navigation" alignment="end">
         <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
         <gcds-nav-link href="#">Nav link</gcds-nav-link>
 
@@ -98,7 +133,9 @@
         </gcds-nav-group>
 
         <gcds-nav-link href="#">Nav link</gcds-nav-link>
-      </gcds-top-nav>
+      </gcds-top-nav> -->
+
+      <gcds-topic-menu slot="menu"></gcds-topic-menu>
 
       <!-- ------------- Breadcrumbs ------------- -->
 
@@ -114,9 +151,12 @@
         <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
         <gcds-breadcrumbs-item href="#">Breadcrumb</gcds-breadcrumbs-item>
       </gcds-breadcrumbs> -->
+
+      <!-- ------------- Account ------------- -->
+      <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
     </gcds-header>
 
-    <gcds-container size="xl" main-container centered tag="main">
+    <gcds-container layout="page" tag="main">
       <gcds-heading tag="h1">GC Design System</gcds-heading>
 
       <hr class="my-550" />
@@ -202,38 +242,40 @@
       >
         <gcds-card
           card-title="Link card number 1"
-          title-element="h4"
+          card-title-tag="h3"
           href="#red"
           description="This is a card"
           badge="New"
           img-src="https://picsum.photos/480/270"
+          img-alt="Random image from picsum"
         >
         </gcds-card>
         <gcds-card
           card-title="Link card number 2"
-          title-element="h4"
+          card-title-tag="h4"
           href="#red"
           badge="New"
           img-src="https://picsum.photos/480/270"
+          img-alt="Random image from picsum"
         >
         </gcds-card>
-
         <gcds-card
           card-title="Link card number 3 with a really long title for some reason"
-          title-element="h4"
+          card-title-tag="h5"
           href="#red"
           description="This is a card with an img and possibly more"
           img-src="https://picsum.photos/480/270"
+          img-alt="Random image from picsum"
         >
         </gcds-card>
-
         <gcds-card
           card-title="Link card number 4"
-          title-element="h4"
+          card-title-tag="h6"
           href="#red"
           badge="Card with badge that is too long"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
           img-src="https://picsum.photos/480/270"
+          img-alt="Random image from picsum"
         >
           Text passed by the slot.
         </gcds-card>
@@ -259,8 +301,22 @@
         </p>
       </gcds-container>
       <br />
-      <gcds-container size="lg" centered border padding="400">
+      <gcds-container size="lg" alignment="start" border padding="400">
+        <p>
+          I'm a large container, aligned at the start of my parent container. My
+          max size is 64rem (1024px).
+        </p>
+      </gcds-container>
+      <br />
+      <gcds-container size="lg" alignment="center" border padding="400">
         <p>I'm a large, centred container. My max size is 64rem (1024px).</p>
+      </gcds-container>
+      <br />
+      <gcds-container size="lg" alignment="end" border padding="400">
+        <p>
+          I'm a large container, aligned at the end of my parent container. My
+          max size is 64rem (1024px).
+        </p>
       </gcds-container>
       <br />
       <gcds-container size="xs" border padding="400">
@@ -338,7 +394,8 @@
           textarea-id="form-message"
           label="Message"
           hint="This is a hint."
-          character-count="400"
+          maxlength="400"
+          name="message"
           required
         ></gcds-textarea>
 
@@ -493,7 +550,11 @@
         In this example each grid column has a minimum width of 100px and a
         maximum width of 300px.
       </gcds-text>
-      <gcds-grid columns="repeat(auto-fit, minmax(100px, 300px))">
+      <gcds-grid
+        alignment="center"
+        container="md"
+        columns="repeat(auto-fit, minmax(100px, 300px))"
+      >
         <p class="bg-primary text-light p-300">
           This is some example content to display the grid component.
         </p>
@@ -592,7 +653,11 @@
 
       <gcds-heading tag="h2">Notices</gcds-heading>
 
-      <gcds-notice notice-title-tag="h3" type="info" notice-title="Info notice">
+      <gcds-notice
+        notice-title-tag="h3"
+        notice-role="info"
+        notice-title="Info notice"
+      >
         <gcds-text>Please pay attention to this notice.</gcds-text>
         <ul class="mb-400 list-disc">
           <li>Information 1</li>
@@ -601,7 +666,7 @@
       </gcds-notice>
       <gcds-notice
         notice-title-tag="h3"
-        type="success"
+        notice-role="success"
         notice-title="Success notice"
       >
         <gcds-text>Please pay attention to this notice.</gcds-text>
@@ -612,7 +677,7 @@
       </gcds-notice>
       <gcds-notice
         notice-title-tag="h3"
-        type="danger"
+        notice-role="danger"
         notice-title="Danger notice"
       >
         <gcds-text>Please pay attention to this notice.</gcds-text>
@@ -620,7 +685,7 @@
       </gcds-notice>
       <gcds-notice
         notice-title-tag="h3"
-        type="warning"
+        notice-role="warning"
         notice-title="Warning notice"
       >
         <gcds-text>Please pay attention to this notice.</gcds-text>
@@ -694,6 +759,18 @@
         gap="150"
       >
         <li class="b-sm p-150 list-none text-center">
+          <gcds-icon name="arrow-down" size="h2"></gcds-icon>
+          <p>arrow-down</p>
+        </li>
+        <li class="b-sm p-150 list-none text-center">
+          <gcds-icon name="arrow-up" size="h2"></gcds-icon>
+          <p>arrow-up</p>
+        </li>
+        <li class="b-sm p-150 list-none text-center">
+          <gcds-icon name="arrow-up-down" size="h2"></gcds-icon>
+          <p>arrow-up-down</p>
+        </li>
+        <li class="b-sm p-150 list-none text-center">
           <gcds-icon name="checkmark-circle" size="h2"></gcds-icon>
           <p>checkmark-circle</p>
         </li>
@@ -734,6 +811,10 @@
           <p>external</p>
         </li>
         <li class="b-sm p-150 list-none text-center">
+          <gcds-icon name="filter" size="h2"></gcds-icon>
+          <p>filter</p>
+        </li>
+        <li class="b-sm p-150 list-none text-center">
           <gcds-icon name="info-circle" size="h2"></gcds-icon>
           <p>info-circle</p>
         </li>
@@ -744,6 +825,14 @@
         <li class="b-sm p-150 list-none text-center">
           <gcds-icon name="search" size="h2"></gcds-icon>
           <p>search</p>
+        </li>
+        <li class="b-sm p-150 list-none text-center">
+          <gcds-icon name="sort" size="h2"></gcds-icon>
+          <p>sort</p>
+        </li>
+        <li class="b-sm p-150 list-none text-center">
+          <gcds-icon name="tune" size="h2"></gcds-icon>
+          <p>tune</p>
         </li>
         <li class="b-sm p-150 list-none text-center">
           <gcds-icon name="warning-triangle" size="h2"></gcds-icon>
@@ -846,7 +935,7 @@
         </gcds-link>
       </p>
       <div class="bg-dark mb-300 p-150">
-        <gcds-link variant="light" href="/">
+        <gcds-link link-role="light" href="/">
           This is a link using the light link role.
         </gcds-link>
       </div>
@@ -876,16 +965,6 @@
 
       <hr class="my-550" />
 
-      <!-- ------------- Phase Banner ------------- -->
-
-      <gcds-heading tag="h2">Phase banner</gcds-heading>
-      <gcds-phase-banner banner-role="primary">
-        <gcds-icon name="info-circle" slot="banner-icon-left"></gcds-icon>
-        <p slot="banner-text">Exciting announcement.</p>
-      </gcds-phase-banner>
-
-      <hr class="my-550" />
-
       <!-- ------------- Screen reader only ------------- -->
 
       <gcds-heading tag="h2">Screen reader only</gcds-heading>
@@ -900,6 +979,7 @@
 
       <gcds-heading tag="h2">Side navigation</gcds-heading>
       <gcds-side-nav class="mt-700" label="Sidenav">
+        <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
         <gcds-nav-link href="#installation">Installation</gcds-nav-link>
         <gcds-nav-link href="#foundations" current>Foundations</gcds-nav-link>
         <gcds-nav-link href="#components">Components</gcds-nav-link>
@@ -922,7 +1002,7 @@
       <!-- ------------- Top nav ------------- -->
 
       <gcds-heading tag="h2">Top navigation</gcds-heading>
-      <gcds-top-nav label="topbar" alignment="right" lang="en">
+      <gcds-top-nav label="topbar" alignment="start" lang="en">
         <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
         <gcds-nav-link href="#install">Installation</gcds-nav-link>
         <gcds-nav-link href="#foundations">Foundations</gcds-nav-link>
@@ -936,6 +1016,131 @@
           <gcds-nav-link href="#slack">Slack</gcds-nav-link>
         </gcds-nav-group>
       </gcds-top-nav>
+
+      <hr class="my-550" />
+
+      <!-- ------------- Table ------------- -->
+
+      <gcds-heading tag="h2">Table</gcds-heading>
+
+      <gcds-table
+        id="my-table"
+        sort="true"
+        pagination="true"
+        pagination-current-page="1"
+        pagination-size="5"
+        pagination-size-options="[1, 2, 3, 5, 15, 20, 0]"
+        filter="true"
+      >
+        <div slot="caption">
+          <h3>Pokémon</h3>
+          <p>Table of the best Pokémon (first generation).</p>
+        </div>
+        <template slot="cell:sprite">
+          <img
+            data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
+            data-bind-alt="name"
+            src=""
+            alt=""
+            width="150"
+            height="150"
+          />
+        </template>
+        <template slot="cell:type">
+          <span
+            data-bind="type"
+            data-bind-template-class="pokemon-type {type}"
+          ></span>
+        </template>
+        <template slot="cell:actions">
+          <gcds-button
+            button-role="secondary"
+            size="small"
+            onclick="console.log(this.row)"
+          >
+            Console log row data
+          </gcds-button>
+        </template>
+      </gcds-table>
+
+      <script>
+        // Load the first 151 pokemon by API
+        async function getFirst151Pokemon() {
+          try {
+            // Step 1: Get the first 151 Pokémon (just names + URLs)
+            const listResponse = await fetch(
+              'https://pokeapi.co/api/v2/pokemon?limit=151',
+            );
+            const listData = await listResponse.json();
+
+            // Step 2: Fetch full details for each Pokémon
+            const pokemonDetails = await Promise.all(
+              listData.results.map(async pokemon => {
+                const res = await fetch(pokemon.url);
+                const data = await res.json();
+
+                return {
+                  number: data.id,
+                  name: data.name,
+                  sprite: data.sprites.front_default,
+                  height: data.height,
+                  weight: data.weight,
+                  base_experience: data.base_experience,
+                  type: data.types[0]?.type?.name,
+                };
+              }),
+            );
+
+            return pokemonDetails;
+          } catch (error) {
+            console.error('Error fetching Pokémon:', error);
+          }
+        }
+        const tableSlots = document.getElementById('my-table');
+
+        // Populate the table columns
+        tableSlots.columns = [
+          {
+            field: 'number',
+            header: 'Pokédex',
+            alignment: 'end',
+            rowHeader: true,
+          },
+          {
+            field: 'name',
+            header: 'Name',
+            sortDirection: 'desc',
+          },
+          {
+            field: 'sprite',
+            header: 'Sprite',
+            alignment: 'center',
+            sort: false,
+            slotted: true,
+          },
+          { field: 'type', header: 'Type', slotted: true },
+          { field: 'height', header: 'Height', alignment: 'end' },
+          { field: 'weight', header: 'Weight', alignment: 'end' },
+          {
+            field: 'base_experience',
+            header: 'Base experience',
+            sort: false,
+            alignment: 'end',
+          },
+          {
+            field: 'actions',
+            header: 'Actions',
+            alignment: 'center',
+            sort: false,
+            slotted: true,
+          },
+        ];
+
+        // Populate the table rows with results from API
+        getFirst151Pokemon().then(pokemon => {
+          tableSlots.data = pokemon;
+        });
+      </script>
 
       <hr class="my-550" />
 

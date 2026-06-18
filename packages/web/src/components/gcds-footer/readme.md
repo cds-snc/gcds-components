@@ -15,7 +15,6 @@ The footer is the responsive Government of Canada branded footer landmark.
 | `contextualLinks`   | `contextual-links`   | Object of list items for contextual band. Format: { link-label: link-href } | `object \| string`    | `undefined` |
 | `display`           | `display`            | Display mode of the footer                                                  | `"compact" \| "full"` | `'compact'` |
 | `subLinks`          | `sub-links`          | Object of list items for sub-footer. Format: { link-label: link-href }      | `object \| string`    | `undefined` |
-| `wordmarkVariant`   | `wordmark-variant`   | GcdsSignature - The variant of the Government of Canada wordmark            | `"colour" \| "white"` | `undefined` |
 
 
 ## Events
@@ -41,6 +40,7 @@ graph TD;
   gcds-footer --> gcds-signature
   gcds-footer --> gcds-sr-only
   gcds-footer --> gcds-link
+  gcds-signature --> gcds-sr-only
   gcds-link --> gcds-icon
   style gcds-footer fill:#26374a,stroke:#333,stroke-width:4px
 ```

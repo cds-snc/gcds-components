@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-alert', () => {
   test('renders', async ({ page }) => {
-    const alerts = await page.locator('gcds-alert');
+    const alerts = page.locator('gcds-alert');
     const count = await alerts.count();
 
     for (let i = 0; i < count; i++) {
@@ -50,6 +50,7 @@ test.describe('gcds-alert a11y tests', () => {
 
       const results = await new AxeBuilder({ page })
         .withRules(['color-contrast'])
+        .include('gcds-alert')
         .analyze();
 
       expect(results.violations).toHaveLength(0);

@@ -10,6 +10,7 @@ import {
 } from '@stencil/core';
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
+import { IconNames } from '../gcds-icon/gcds-icon';
 
 /**
  * Alert displays an alert message with an optional heading, icon, and close button.
@@ -113,9 +114,8 @@ export class GcdsAlert {
       <Host>
         {isOpen ? (
           <div
-            class={`gcds-alert alert--role-${alertRole} ${
-              isFixed ? 'alert--is-fixed' : ''
-            }`}
+            class={`gcds-alert alert--role-${alertRole} ${isFixed ? 'alert--is-fixed' : ''
+              }`}
             role="alert"
             aria-label={
               alertRole === 'danger'
@@ -129,7 +129,10 @@ export class GcdsAlert {
                       : null
             }
           >
-            <gcds-container size={isFixed ? container : 'full'} centered>
+            <gcds-container
+              size={isFixed ? container : 'full'}
+              alignment="center"
+            >
               <div class="alert__container">
                 {!hideRoleIcon && (
                   <gcds-icon
@@ -138,7 +141,7 @@ export class GcdsAlert {
                     size="h5"
                     margin-right="175"
                     name={
-                      alertRole === 'danger'
+                      (alertRole === 'danger'
                         ? 'exclamation-circle'
                         : alertRole === 'info'
                           ? 'info-circle'
@@ -146,7 +149,7 @@ export class GcdsAlert {
                             ? 'checkmark-circle'
                             : alertRole === 'warning'
                               ? 'warning-triangle'
-                              : null
+                              : undefined) as IconNames
                     }
                   />
                 )}

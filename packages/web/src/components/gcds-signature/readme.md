@@ -25,9 +25,14 @@ The signature is the Government of Canada landmark identifier found in the heade
  - [gcds-footer](../gcds-footer)
  - [gcds-header](../gcds-header)
 
+### Depends on
+
+- [gcds-sr-only](../gcds-sr-only)
+
 ### Graph
 ```mermaid
 graph TD;
+  gcds-signature --> gcds-sr-only
   gcds-footer --> gcds-signature
   gcds-header --> gcds-signature
   style gcds-signature fill:#26374a,stroke:#333,stroke-width:4px

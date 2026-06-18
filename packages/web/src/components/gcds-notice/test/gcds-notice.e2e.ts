@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-notice', () => {
   test('renders', async ({ page }) => {
-    const notices = await page.locator('gcds-notice');
+    const notices = page.locator('gcds-notice');
     const count = await notices.count();
 
     for (let i = 0; i < count; i++) {
@@ -26,16 +26,16 @@ test.describe('gcds-notice', () => {
  * Accessibility tests
  * Axe-core rules: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-21-level-a--aa-rules
  */
-const types = ['danger', 'info', 'success', 'warning'];
+const roles = ['danger', 'info', 'success', 'warning'];
 
 test.describe('gcds-notice a11y tests', () => {
   /**
    * Colour contrast test
    */
-  types.forEach(type => {
-    test(`colour contrast ${type} notice`, async ({ page }) => {
+  roles.forEach(role => {
+    test(`colour contrast ${role} notice`, async ({ page }) => {
       await page.setContent(`
-        <gcds-notice notice-title="Title" notice-title-tag="h2" type="${type}">
+        <gcds-notice notice-title="Title" notice-title-tag="h2" notice-role="${role}">
           <p>Testing slot content.</p>
         </gcds-notice>
       `);
@@ -50,6 +50,7 @@ test.describe('gcds-notice a11y tests', () => {
 
       const results = await new AxeBuilder({ page })
         .withRules(['color-contrast'])
+        .include('gcds-notice')
         .analyze();
 
       expect(results.violations).toHaveLength(0);

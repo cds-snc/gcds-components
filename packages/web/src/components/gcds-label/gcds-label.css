@@ -19,7 +19,7 @@
       font: var(--gcds-label-font-mobile);
     }
 
-    &.label--hidden {
+    &.label--hidden > span {
       clip-path: inset(100%);
       clip: rect(1px, 1px, 1px, 1px);
       height: 1px;

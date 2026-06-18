@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-error-message', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-error-message');
+    const element = page.locator('gcds-error-message');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -24,13 +24,9 @@ test.describe('gcds-error-message', () => {
 
 test.describe('gcds-error-message a11y tests', () => {
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

@@ -1,4 +1,4 @@
-@layer reset, default, limit, margin;
+@layer reset, default, limit, role, margin;
 
 @layer reset {
   :host {
@@ -361,6 +361,22 @@
       &.mb-1250 {
         margin-block-end: var(--gcds-heading-spacing-1250);
       }
+    }
+  }
+}
+
+@layer role {
+  :host .gcds-heading {
+    &.role-primary {
+      color: var(--gcds-heading-role-primary);
+    }
+
+    &.role-secondary {
+      color: var(--gcds-heading-role-secondary);
+    }
+
+    &.role-light {
+      color: var(--gcds-heading-role-light);
     }
   }
 }

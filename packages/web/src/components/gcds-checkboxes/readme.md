@@ -13,18 +13,20 @@ Checkboxes provide a set of options for multiple responses.
 
 | Property               | Attribute       | Description                                                                                                                  | Type                                                | Default     |
 | ---------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
-| `autofocus`            | `autofocus`     | If true, the checkobox will be focused on component render                                                                   | `boolean`                                           | `undefined` |
+| `autofocus`            | `autofocus`     | If true, the checkbox will be focused on component render                                                                    | `boolean`                                           | `undefined` |
 | `disabled`             | `disabled`      | Specifies if the checkboxes are disabled or not.                                                                             | `boolean`                                           | `undefined` |
 | `errorMessage`         | `error-message` | Set this to display an error message for invalid <gcds-checkboxes>                                                           | `string`                                            | `undefined` |
 | `form`                 | `form`          | The ID of the form that the checkboxes belong to.                                                                            | `string`                                            | `undefined` |
+| `hideLabel`            | `hide-label`    | For single checkbox, specifies if the label is hidden or not.                                                                | `boolean`                                           | `false`     |
+| `hideLegend`           | `hide-legend`   | For checkbox groups, specifies if the legend is hidden or not.                                                               | `boolean`                                           | `false`     |
 | `hint`                 | `hint`          | Hint displayed below the label.                                                                                              | `string`                                            | `undefined` |
 | `legend`               | `legend`        | Set the legend for fieldset form group.                                                                                      | `string`                                            | `undefined` |
 | `name` _(required)_    | `name`          | Name attribute for a checkboxes element.                                                                                     | `string`                                            | `undefined` |
 | `options` _(required)_ | `options`       | Options to render checkboxes buttons                                                                                         | `CheckboxObject[] \| string`                        | `undefined` |
 | `required`             | `required`      | Specifies if the checkboxes are required or not.                                                                             | `boolean`                                           | `undefined` |
 | `validateOn`           | `validate-on`   | Set event to call validator                                                                                                  | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
-| `validator`            | `validator`     | Array of validators                                                                                                          | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `validity`             | `validity`      | Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| `validator`            | --              | Array of validators                                                                                                          | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validity`             | --              | Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
 | `value`                | `value`         | Value for checkboxes component.                                                                                              | `string \| string[]`                                | `[]`        |
 
 
@@ -78,6 +80,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [gcds-sr-only](../gcds-sr-only)
 - [gcds-hint](../gcds-hint)
 - [gcds-error-message](../gcds-error-message)
 - [gcds-label](../gcds-label)
@@ -85,6 +88,7 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
+  gcds-checkboxes --> gcds-sr-only
   gcds-checkboxes --> gcds-hint
   gcds-checkboxes --> gcds-error-message
   gcds-checkboxes --> gcds-label

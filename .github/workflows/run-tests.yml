@@ -4,13 +4,37 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   test:
-    name: Run Tests
+    name: Tests
     runs-on: ubuntu-22.04 # latest version 24 has incompatibility issues (playwright)
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "@gcds-core/components : Unit tests"
+            script: "npm run test:web:unit"
+
+          - name: "@gcds-core/components : E2E tests"
+            script: "npm run test:web:e2e"
+
+          - name: "@gcds-core/components-angular"
+            script: "npm run test:angular"
+
+          - name: "@gcds-core/components-react"
+            script: "npm run test:react"
+
+          - name: "@gcds-core/components-vue"
+            script: "npm run test:vue"
+    
     steps:
       - name: Git Checkout
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - uses: actions/setup-node@dda4788290998366da86b6a4f497909644397bb2
         with:
@@ -25,5 +49,76 @@ jobs:
       - name: Build repo
         run: npm run build
 
-      - name: Run tests
-        run: npm run test
+      - name: Run tests for ${{ matrix.name }}
+        run: ${{ matrix.script }}
+
+  visual-tests:
+    name: Visual regression tests
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: actions/setup-node@dda4788290998366da86b6a4f497909644397bb2
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+        working-directory: packages/web
+
+      - name: Build repo
+        run: npm run build
+
+      - name: Run visual regression tests
+        id: visual
+        run: npm run test:visual
+        working-directory: packages/web
+
+      # On failure: upload HTML report.
+      # Download artifact, open index.html — it shows actual / expected / diff
+      # side-by-side for every failed test.
+      - name: Upload visual test report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        # if: failure() && steps.visual.outcome == 'failure'
+        if: always() # TEMP debug
+        with:
+          name: visual-regression-report-${{ github.run_number }}
+          path: packages/web/visual-report/
+          retention-days: 30
+
+      - name: Post failure summary
+        if: failure() && steps.visual.outcome == 'failure'
+        run: |
+          echo "## 🖼 Visual regression tests failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Screenshots differ from the committed baselines." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**To review:** Download the \`visual-regression-report-${{ github.run_number }}\` artifact from this run. Open \`index.html\` to see a side-by-side diff of every failing screenshot." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**If the change is intentional:** trigger the [Update visual snapshots](../actions/workflows/update-visual-snapshots.yml) workflow on branch \`${{ github.head_ref }}\` to update the baselines and re-run this check." >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment on PR with diff report link
+        if: failure() && steps.visual.outcome == 'failure' && github.event_name == 'pull_request'
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
+        with:
+          script: |
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              '## 🖼 Visual regression tests failed',
+              '',
+              `**[→ Download the diff report](${runUrl}#artifacts)**`,
+              '',
+              'Scroll to the bottom of the run page, download the `visual-regression-report-' + context.runNumber + '` artifact, unzip it, and open `index.html` to see side-by-side comparisons of every failing screenshot.',
+              '',
+              '**If the change is intentional:** trigger the [Update visual snapshots](' + context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/workflows/update-visual-snapshots.yml) workflow on branch `' + context.payload.pull_request.head.ref + '` to update the baselines.',
+            ].join('\n');
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body,
+            });

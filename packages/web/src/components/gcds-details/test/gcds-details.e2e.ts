@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-details', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-details');
+    const element = page.locator('gcds-details');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -37,24 +37,16 @@ test.describe('gcds-details a11y tests', () => {
    * Colour contrast test
    */
   test('colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('button name', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['button-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['button-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

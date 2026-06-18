@@ -1,11 +1,11 @@
-const { AxeBuilder } = require('@axe-core/playwright');
+import { AxeBuilder } from '@axe-core/playwright';
 
 import { expect } from '@playwright/test';
 import { test } from '../../../../tests/base';
 
 test.describe('gcds-card', () => {
   test('renders', async ({ page }) => {
-    const element = await page.locator('gcds-card');
+    const element = page.locator('gcds-card');
 
     // Wait for element to attach and become visible, allowing up to 10s
     await element.waitFor({ state: 'attached' });
@@ -36,31 +36,21 @@ test.describe('gcds-card', () => {
 
 test.describe('gcds-card a11y tests', () => {
   test('Colour contrast', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['color-contrast'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Link name', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['link-name'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['link-name'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Keyboard focus', async ({ page }) => {
-    const linkText = await (
-      await page.locator('.gcds-card__title')
-    ).innerText();
+    const linkText = await page.locator('.gcds-card__title').innerText();
 
     await page.keyboard.press('Tab');
 
@@ -74,14 +64,10 @@ test.describe('gcds-card a11y tests', () => {
   });
 
   test('Alt text - no alt text', async ({ page }) => {
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['image-alt'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['image-alt'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 
   test('Alt text w/ img-alt prop', async ({ page }) => {
@@ -91,13 +77,9 @@ test.describe('gcds-card a11y tests', () => {
 
     await page.waitForChanges();
 
-    try {
-      const results = await new AxeBuilder({ page })
-        .withRules(['image-alt'])
-        .analyze();
-      expect(results.violations).toHaveLength(0);
-    } catch (e) {
-      console.error(e);
-    }
+    const results = await new AxeBuilder({ page })
+      .withRules(['image-alt'])
+      .analyze();
+    expect(results.violations).toHaveLength(0);
   });
 });

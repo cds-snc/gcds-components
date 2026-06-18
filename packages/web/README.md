@@ -13,11 +13,11 @@ Use this option for:
 - Svelte
 - .NET
 
-If you’re using React, Angular, or Vue frameworks, browse the [installation page](https://design-system.alpha.canada.ca/en/get-started/develop/) for framework-specific options.
+If you’re using React, Angular, or Vue frameworks, browse the [installation page](https://design-system.canada.ca/en/get-started/develop/) for framework-specific options.
 
 ## Documentation
 
-You can find the full documentation for GC Design System Components on [https://design-system.alpha.canada.ca/](https://design-system.alpha.canada.ca/).
+You can find the full documentation for GC Design System Components on [https://design-system.canada.ca/](https://design-system.canada.ca/).
 
 ## Npm installation instructions
 
@@ -26,7 +26,7 @@ You can find the full documentation for GC Design System Components on [https://
 Navigate to your project’s root folder and run the following command:
 
 ```js
-npm install @cdssnc/gcds-components
+npm install @gcds-core/components
 ```
 
 ### 2. Include GC Design System in your project
@@ -37,17 +37,17 @@ Add the following `link` tags inside the `head` tag of your `HTML` files to load
 <!-- GC Design System -->
 <link
   rel="stylesheet"
-  href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css"
+  href="/node_modules/@gcds-core/components/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
+  src="/node_modules/@gcds-core/components/dist/gcds/gcds.esm.js"
 ></script>
 ```
 
 ### 3. Start building
 
-Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
+Once you've installed the design system, start building! Browse our available [components](https://design-system.canada.ca/en/components/) and [templates](https://design-system.canada.ca/en/page-templates/) to pull the code you need into your project.
 
 ## CDN installation instructions
 
@@ -70,11 +70,11 @@ Add the following code to the `head` tag of your `HTML` files to load GC Design 
 <!-- GC Design System -->
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.css"
+  href="https://cdn.design-system.canada.ca/@gcds-core/components@<version-number>/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
+  src="https://cdn.design-system.canada.ca/@gcds-core/components@<version-number>/dist/gcds/gcds.esm.js"
 ></script>
 ```
 
@@ -94,7 +94,7 @@ While it removes the need to manually update versions, it adds the risk of intro
 
 ### 2. Start building
 
-Once you've installed the design system, start building! Browse our available [components](https://design-system.alpha.canada.ca/en/components/) and [templates](https://design-system.alpha.canada.ca/en/page-templates/) to pull the code you need into your project.
+Once you've installed the design system, start building! Browse our available [components](https://design-system.canada.ca/en/components/) and [templates](https://design-system.canada.ca/en/page-templates/) to pull the code you need into your project.
 
 ## Supported frameworks
 
@@ -135,11 +135,11 @@ Utilisez cette option pour les situations suivantes :
 - Svelte
 - .NET
 
-Si vous utilisez les cadres React, Angular ou Vue, consultez la [page d’installation](https://systeme-design.alpha.canada.ca/fr/demarrer/developpement/) pour connaître les options propres à chaque cadre.
+Si vous utilisez les cadres React, Angular ou Vue, consultez la [page d’installation](https://systeme-design.canada.ca/fr/demarrer/developpement/) pour connaître les options propres à chaque cadre.
 
 ## Documentation
 
-Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.alpha.canada.ca/](https://systeme-design.alpha.canada.ca/).
+Toute la documentation sur les composants de Système de design GC est accessible à l’adresse [https://systeme-design.canada.ca/](https://systeme-design.canada.ca/).
 
 ## Instructions d’installation avec npm
 
@@ -148,7 +148,7 @@ Toute la documentation sur les composants de Système de design GC est accessibl
 Naviguez vers le dossier racine de votre projet et exécutez la commande suivante :
 
 ```js
-npm install @cdssnc/gcds-components
+npm install @gcds-core/components
 ```
 
 ### 2. Inclure Système de design GC dans votre projet
@@ -159,17 +159,17 @@ Ajoutez les balises `link` suivantes à l’intérieur de la balise `head` de vo
 <!-- GC Design System -->
 <link
   rel="stylesheet"
-  href="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.css"
+  href="/node_modules/@gcds-core/components/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="/node_modules/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"
+  src="/node_modules/@gcds-core/components/dist/gcds/gcds.esm.js"
 ></script>
 ```
 
 ### 3. Commencez à créer
 
-Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.canada.ca/fr/composants/) et [modèles](https://systeme-design.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
 
 ## Instructions d’installation avec CDN
 
@@ -192,11 +192,11 @@ Ajoutez le code suivant à la balise `head` de vos fichiers `HTML` pour charger 
 <!-- GC Système de design -->
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.css"
+  href="https://cdn.design-system.canada.ca/@gcds-core/components@<version-number>/dist/gcds/gcds.css"
 />
 <script
   type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@<version-number>/dist/gcds/gcds.esm.js"
+  src="https://cdn.design-system.canada.ca/@gcds-core/components@<version-number>/dist/gcds/gcds.esm.js"
 ></script>
 ```
 
@@ -216,7 +216,7 @@ Bien que cette approche vous évite la mise à jour manuelle des versions, elle 
 
 ### 2. Commencez à créer
 
-Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.alpha.canada.ca/fr/composants/) et [modèles](https://systeme-design.alpha.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
+Une fois le système de design installé, commencez à créer! Parcourez nos [composants](https://systeme-design.canada.ca/fr/composants/) et [modèles](https://systeme-design.canada.ca/fr/modeles-de-page/) pour y trouver le code dont vous avez besoin pour votre projet.
 
 ## Cadres d'application pris en charge
 

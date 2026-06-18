@@ -46,7 +46,7 @@ describe('gcds-footer', () => {
                 </ul>
               </nav>
               <div class="sub__wordmark">
-                <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
+                <gcds-signature lang="en" type="wordmark"></gcds-signature>
               </div>
             </div>
           </div>
@@ -227,7 +227,7 @@ describe('gcds-footer', () => {
                 </ul>
               </nav>
               <div class="sub__wordmark">
-                <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
+                <gcds-signature lang="en" type="wordmark"></gcds-signature>
               </div>
             </div>
           </div>
@@ -280,7 +280,7 @@ describe('gcds-footer', () => {
                 </ul>
               </nav>
               <div class="sub__wordmark">
-                <gcds-signature lang="fr" type="wordmark" variant="colour"></gcds-signature>
+                <gcds-signature lang="fr" type="wordmark"></gcds-signature>
               </div>
             </div>
           </div>
@@ -461,7 +461,7 @@ describe('gcds-footer', () => {
                 </ul>
               </nav>
               <div class="sub__wordmark">
-                <gcds-signature lang="fr" type="wordmark" variant="colour"></gcds-signature>
+                <gcds-signature lang="fr" type="wordmark"></gcds-signature>
               </div>
             </div>
           </div>
@@ -673,7 +673,7 @@ describe('gcds-footer', () => {
                 </ul>
               </nav>
               <div class="sub__wordmark">
-                <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
+                <gcds-signature lang="en" type="wordmark"></gcds-signature>
               </div>
             </div>
           </div>
@@ -720,7 +720,7 @@ describe('gcds-footer', () => {
                 </ul>
               </nav>
               <div class="sub__wordmark">
-                <gcds-signature lang="en" type="wordmark" variant="colour"></gcds-signature>
+                <gcds-signature lang="en" type="wordmark"></gcds-signature>
               </div>
             </div>
           </div>
