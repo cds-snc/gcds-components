@@ -1,8 +1,8 @@
 {
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.35.1",
-    "typescriptVersion": "5.5.4"
+    "version": "4.43.4",
+    "typescriptVersion": "5.8.3"
   },
   "components": [
     {
@@ -248,6 +248,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-container",
@@ -315,6 +316,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-breadcrumbs-item"
@@ -423,6 +425,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-breadcrumbs"
       ],
@@ -812,8 +815,10 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
-        "gcds-search"
+        "gcds-search",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-icon"
@@ -823,6 +828,9 @@
           "gcds-icon"
         ],
         "gcds-search": [
+          "gcds-button"
+        ],
+        "gcds-table": [
           "gcds-button"
         ]
       }
@@ -1116,6 +1124,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-text",
@@ -1153,7 +1162,7 @@
           "mutable": false,
           "attr": "autofocus",
           "reflectToAttr": true,
-          "docs": "If true, the checkobox will be focused on component render",
+          "docs": "If true, the checkbox will be focused on component render",
           "docsTags": [],
           "values": [
             {
@@ -1375,7 +1384,8 @@
               "CheckboxObject": {
                 "location": "import",
                 "path": "./checkbox",
-                "id": "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject"
+                "id": "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject",
+                "referenceLocation": "CheckboxObject"
               }
             }
           },
@@ -1472,17 +1482,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -1516,7 +1527,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -1762,6 +1772,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-sr-only",
@@ -1890,15 +1901,16 @@
         },
         {
           "name": "margin",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -1913,99 +1925,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -2029,7 +1949,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -2040,15 +2052,16 @@
         },
         {
           "name": "padding",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -2063,99 +2076,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -2179,7 +2100,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -2279,6 +2292,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-alert",
         "gcds-grid"
@@ -2402,16 +2416,16 @@
         },
         {
           "name": "format",
-          "type": "\"compact\" | \"full\"",
+          "type": "\"compact\" | \"full\" | \"iso\"",
           "complexType": {
-            "original": "'full' | 'compact'",
-            "resolved": "\"compact\" | \"full\"",
+            "original": "'full' | 'compact' | 'iso'",
+            "resolved": "\"compact\" | \"full\" | \"iso\"",
             "references": {}
           },
           "mutable": false,
           "attr": "format",
           "reflectToAttr": false,
-          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.",
+          "docs": "Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.",
           "docsTags": [],
           "values": [
             {
@@ -2420,6 +2434,10 @@
             },
             {
               "value": "full",
+              "type": "string"
+            },
+            {
+              "value": "iso",
               "type": "string"
             }
           ],
@@ -2624,17 +2642,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -2668,7 +2687,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the date-input, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -2880,6 +2898,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-select",
@@ -2973,6 +2992,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-text"
@@ -3140,6 +3160,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -3193,6 +3214,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-checkboxes",
         "gcds-date-input",
@@ -3390,6 +3412,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-heading",
@@ -3517,6 +3540,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-hint"
@@ -3651,7 +3675,6 @@
             }
           },
           "mutable": true,
-          "attr": "files",
           "reflectToAttr": false,
           "docs": "FileList of uploaded files to input",
           "docsTags": [],
@@ -3913,12 +3936,14 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               },
               "FileList": {
                 "location": "global",
@@ -3927,7 +3952,6 @@
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -3967,7 +3991,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the file uploader, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -3995,7 +4018,6 @@
             "references": {}
           },
           "mutable": true,
-          "attr": "value",
           "reflectToAttr": false,
           "docs": "Value for a file uploader element.",
           "docsTags": [
@@ -4199,6 +4221,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-label",
@@ -4394,6 +4417,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-signature",
@@ -5260,6 +5284,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-container"
@@ -5443,6 +5468,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -5481,6 +5507,10 @@
         {
           "name": "slot",
           "text": "toggle - Slot to add a custom language toggle in the top-right of the header."
+        },
+        {
+          "name": "slot",
+          "text": "account - Slot to add a custom account link in the bottom-right of the header."
         }
       ],
       "usage": {},
@@ -5610,6 +5640,10 @@
       "styles": [],
       "slots": [
         {
+          "name": "account",
+          "docs": "Slot to add a custom account link in the bottom-right of the header."
+        },
+        {
           "name": "banner",
           "docs": "Slot to add a banner across the top of the header."
         },
@@ -5639,6 +5673,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-link",
@@ -5746,15 +5781,16 @@
         },
         {
           "name": "marginBottom",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -5775,99 +5811,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -5891,7 +5835,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -5902,15 +5938,16 @@
         },
         {
           "name": "marginTop",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -5925,99 +5962,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -6041,7 +5986,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -6106,10 +6143,12 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-error-summary",
         "gcds-notice",
-        "gcds-stepper"
+        "gcds-stepper",
+        "gcds-table"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -6120,6 +6159,9 @@
           "gcds-heading"
         ],
         "gcds-stepper": [
+          "gcds-heading"
+        ],
+        "gcds-table": [
           "gcds-heading"
         ]
       }
@@ -6178,6 +6220,7 @@
           "docs": ""
         }
       ],
+      "states": [],
       "dependents": [
         "gcds-checkboxes",
         "gcds-date-input",
@@ -6255,15 +6298,16 @@
         },
         {
           "name": "marginLeft",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -6278,99 +6322,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -6394,7 +6346,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -6405,15 +6449,16 @@
         },
         {
           "name": "marginRight",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -6428,99 +6473,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -6544,7 +6497,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -6555,11 +6600,17 @@
         },
         {
           "name": "name",
-          "type": "\"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"info-circle\" | \"phone\" | \"search\" | \"warning-triangle\"",
+          "type": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
           "complexType": {
-            "original": "| 'checkmark-circle'\n    | 'chevron-down'\n    | 'chevron-left'\n    | 'chevron-right'\n    | 'chevron-up'\n    | 'close'\n    | 'download'\n    | 'email'\n    | 'exclamation-circle'\n    | 'external'\n    | 'info-circle'\n    | 'phone'\n    | 'search'\n    | 'warning-triangle'",
-            "resolved": "\"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"info-circle\" | \"phone\" | \"search\" | \"warning-triangle\"",
-            "references": {}
+            "original": "IconNames",
+            "resolved": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
+            "references": {
+              "IconNames": {
+                "location": "local",
+                "path": "/web/src/components/gcds-icon/gcds-icon.tsx",
+                "id": "src/components/gcds-icon/gcds-icon.tsx::IconNames"
+              }
+            }
           },
           "mutable": true,
           "attr": "name",
@@ -6567,6 +6618,18 @@
           "docs": "Name of the icon.",
           "docsTags": [],
           "values": [
+            {
+              "value": "arrow-down",
+              "type": "string"
+            },
+            {
+              "value": "arrow-up",
+              "type": "string"
+            },
+            {
+              "value": "arrow-up-down",
+              "type": "string"
+            },
             {
               "value": "checkmark-circle",
               "type": "string"
@@ -6608,6 +6671,10 @@
               "type": "string"
             },
             {
+              "value": "filter",
+              "type": "string"
+            },
+            {
               "value": "info-circle",
               "type": "string"
             },
@@ -6617,6 +6684,14 @@
             },
             {
               "value": "search",
+              "type": "string"
+            },
+            {
+              "value": "sort",
+              "type": "string"
+            },
+            {
+              "value": "tune",
               "type": "string"
             },
             {
@@ -6698,6 +6773,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-alert",
         "gcds-button",
@@ -6708,6 +6784,7 @@
         "gcds-notice",
         "gcds-pagination",
         "gcds-search",
+        "gcds-table",
         "gcds-topic-menu"
       ],
       "dependencies": [],
@@ -6737,6 +6814,9 @@
           "gcds-icon"
         ],
         "gcds-search": [
+          "gcds-icon"
+        ],
+        "gcds-table": [
           "gcds-icon"
         ],
         "gcds-topic-menu": [
@@ -7290,7 +7370,8 @@
               "SuggestionOption": {
                 "location": "import",
                 "path": "./suggestion-option",
-                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption"
+                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption",
+                "referenceLocation": "SuggestionOption"
               }
             }
           },
@@ -7418,17 +7499,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -7462,7 +7544,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -7694,8 +7775,10 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
-        "gcds-date-input"
+        "gcds-date-input",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-label",
@@ -7716,6 +7799,9 @@
           "gcds-icon"
         ],
         "gcds-date-input": [
+          "gcds-input"
+        ],
+        "gcds-table": [
           "gcds-input"
         ]
       }
@@ -7838,6 +7924,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-checkboxes",
         "gcds-file-uploader",
@@ -7954,6 +8041,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-header"
       ],
@@ -8299,6 +8387,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-breadcrumbs-item",
         "gcds-card",
@@ -8557,6 +8646,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-side-nav",
         "gcds-top-nav"
@@ -8714,6 +8804,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -8839,6 +8930,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-icon",
@@ -9133,13 +9225,19 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "states": [],
+      "dependents": [
+        "gcds-table"
+      ],
       "dependencies": [
         "gcds-icon"
       ],
       "dependencyGraph": {
         "gcds-pagination": [
           "gcds-icon"
+        ],
+        "gcds-table": [
+          "gcds-pagination"
         ]
       }
     },
@@ -9356,7 +9454,8 @@
               "RadioObject": {
                 "location": "import",
                 "path": "./radio",
-                "id": "src/components/gcds-radios/radio.tsx::RadioObject"
+                "id": "src/components/gcds-radios/radio.tsx::RadioObject",
+                "referenceLocation": "RadioObject"
               }
             }
           },
@@ -9453,17 +9552,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -9497,7 +9597,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -9709,7 +9808,10 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "states": [],
+      "dependents": [
+        "gcds-table"
+      ],
       "dependencies": [
         "gcds-sr-only",
         "gcds-hint",
@@ -9729,6 +9831,9 @@
         "gcds-error-message": [
           "gcds-text",
           "gcds-icon"
+        ],
+        "gcds-table": [
+          "gcds-radios"
         ]
       }
     },
@@ -10018,6 +10123,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-sr-only",
@@ -10397,17 +10503,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -10441,7 +10548,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the select, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -10657,9 +10763,16 @@
           "docs": "Slot for options and option groups."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "wrapper",
+          "docs": ""
+        }
+      ],
+      "states": [],
       "dependents": [
-        "gcds-date-input"
+        "gcds-date-input",
+        "gcds-table"
       ],
       "dependencies": [
         "gcds-label",
@@ -10680,6 +10793,9 @@
           "gcds-icon"
         ],
         "gcds-date-input": [
+          "gcds-select"
+        ],
+        "gcds-table": [
           "gcds-select"
         ]
       }
@@ -10867,6 +10983,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-nav-group"
@@ -10993,6 +11110,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-footer",
         "gcds-header"
@@ -11096,6 +11214,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [
         "gcds-card",
         "gcds-checkboxes",
@@ -11107,6 +11226,7 @@
         "gcds-search",
         "gcds-signature",
         "gcds-stepper",
+        "gcds-table",
         "gcds-textarea",
         "gcds-topic-menu"
       ],
@@ -11140,6 +11260,9 @@
           "gcds-sr-only"
         ],
         "gcds-stepper": [
+          "gcds-sr-only"
+        ],
+        "gcds-table": [
           "gcds-sr-only"
         ],
         "gcds-textarea": [
@@ -11260,6 +11383,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-heading",
@@ -11269,6 +11393,422 @@
         "gcds-stepper": [
           "gcds-heading",
           "gcds-sr-only"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/gcds-table/gcds-table.tsx",
+      "encapsulation": "shadow",
+      "tag": "gcds-table",
+      "readme": "# gcds-table\n\n\n",
+      "docs": "A table is a structured layout of related data in rows and columns.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "caption - Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it."
+        },
+        {
+          "name": "slot",
+          "text": "cell:<field> - Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition."
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "columns",
+          "type": "TableColumn[] | string",
+          "complexType": {
+            "original": "string | TableColumn[]",
+            "resolved": "TableColumn[] | string",
+            "references": {
+              "TableColumn": {
+                "location": "import",
+                "path": "./utils/table-helpers",
+                "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumn",
+                "referenceLocation": "TableColumn"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "columns",
+          "reflectToAttr": false,
+          "docs": "Column definitions",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "TableColumn[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "data",
+          "type": "object[] | string",
+          "complexType": {
+            "original": "string | object[]",
+            "resolved": "object[] | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "data",
+          "reflectToAttr": false,
+          "docs": "Row data",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "object[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filter",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "filter",
+          "reflectToAttr": false,
+          "docs": "Enable global filter",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "filterValue",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "filter-value",
+          "reflectToAttr": false,
+          "docs": "Current filter string",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "Enable pagination",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationCurrentPage",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-current-page",
+          "reflectToAttr": false,
+          "docs": "Current page index",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSize",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size",
+          "reflectToAttr": false,
+          "docs": "Number of rows per page",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "10"
+            }
+          ],
+          "default": "10",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "paginationSizeOptions",
+          "type": "number[] | string",
+          "complexType": {
+            "original": "string | number[]",
+            "resolved": "number[] | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "pagination-size-options",
+          "reflectToAttr": false,
+          "docs": "Available page-size options.\nUse 0 to represent \"All rows\".",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[10, 25, 50, 0]"
+            }
+          ],
+          "default": "[10, 25, 50, 0]",
+          "values": [
+            {
+              "type": "number[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "sort",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "sort",
+          "reflectToAttr": false,
+          "docs": "Enable global column sorting (can be overridden per column)",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getVisibleRows",
+          "returns": {
+            "type": "Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "Record": {
+                "location": "global",
+                "id": "global::Record"
+              }
+            },
+            "return": "Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>"
+          },
+          "signature": "getVisibleRows() => Promise<{ rowId: string; rowIndex: number; original: Record<string, unknown>; }[]>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "gcdsTableStateChange",
+          "detail": "GcdsTableStateChange",
+          "bubbles": true,
+          "complexType": {
+            "original": "GcdsTableStateChange",
+            "resolved": "GcdsTableStateChange",
+            "references": {
+              "GcdsTableStateChange": {
+                "location": "import",
+                "path": "./utils/table-helpers",
+                "id": "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange",
+                "referenceLocation": "GcdsTableStateChange"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "caption",
+          "docs": "Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it."
+        },
+        {
+          "name": "cell:<field>",
+          "docs": "Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition."
+        }
+      ],
+      "parts": [],
+      "states": [],
+      "dependents": [],
+      "dependencies": [
+        "gcds-select",
+        "gcds-icon",
+        "gcds-heading",
+        "gcds-text",
+        "gcds-button",
+        "gcds-pagination",
+        "gcds-radios",
+        "gcds-sr-only",
+        "gcds-input"
+      ],
+      "dependencyGraph": {
+        "gcds-table": [
+          "gcds-select",
+          "gcds-icon",
+          "gcds-heading",
+          "gcds-text",
+          "gcds-button",
+          "gcds-pagination",
+          "gcds-radios",
+          "gcds-sr-only",
+          "gcds-input"
+        ],
+        "gcds-select": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
+        ],
+        "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-error-message": [
+          "gcds-text",
+          "gcds-icon"
+        ],
+        "gcds-button": [
+          "gcds-icon"
+        ],
+        "gcds-pagination": [
+          "gcds-icon"
+        ],
+        "gcds-radios": [
+          "gcds-sr-only",
+          "gcds-hint",
+          "gcds-error-message",
+          "gcds-label"
+        ],
+        "gcds-input": [
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
         ]
       }
     },
@@ -11367,15 +11907,16 @@
         },
         {
           "name": "marginBottom",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -11396,99 +11937,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -11512,7 +11961,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -11523,15 +12064,16 @@
         },
         {
           "name": "marginTop",
-          "type": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+          "type": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
           "complexType": {
             "original": "SpacingValues",
-            "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+            "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
             "references": {
               "SpacingValues": {
                 "location": "import",
                 "path": "../../utils/types/spacing",
-                "id": "src/utils/types/spacing.tsx::SpacingValues"
+                "id": "src/utils/types/spacing.tsx::SpacingValues",
+                "referenceLocation": "SpacingValues"
               }
             }
           },
@@ -11552,99 +12094,7 @@
               "type": "string"
             },
             {
-              "value": "25",
-              "type": "string"
-            },
-            {
-              "value": "50",
-              "type": "string"
-            },
-            {
-              "value": "75",
-              "type": "string"
-            },
-            {
               "value": "100",
-              "type": "string"
-            },
-            {
-              "value": "125",
-              "type": "string"
-            },
-            {
-              "value": "150",
-              "type": "string"
-            },
-            {
-              "value": "175",
-              "type": "string"
-            },
-            {
-              "value": "200",
-              "type": "string"
-            },
-            {
-              "value": "225",
-              "type": "string"
-            },
-            {
-              "value": "250",
-              "type": "string"
-            },
-            {
-              "value": "300",
-              "type": "string"
-            },
-            {
-              "value": "350",
-              "type": "string"
-            },
-            {
-              "value": "400",
-              "type": "string"
-            },
-            {
-              "value": "450",
-              "type": "string"
-            },
-            {
-              "value": "500",
-              "type": "string"
-            },
-            {
-              "value": "550",
-              "type": "string"
-            },
-            {
-              "value": "600",
-              "type": "string"
-            },
-            {
-              "value": "650",
-              "type": "string"
-            },
-            {
-              "value": "700",
-              "type": "string"
-            },
-            {
-              "value": "750",
-              "type": "string"
-            },
-            {
-              "value": "800",
-              "type": "string"
-            },
-            {
-              "value": "850",
-              "type": "string"
-            },
-            {
-              "value": "900",
-              "type": "string"
-            },
-            {
-              "value": "950",
               "type": "string"
             },
             {
@@ -11668,7 +12118,99 @@
               "type": "string"
             },
             {
+              "value": "125",
+              "type": "string"
+            },
+            {
               "value": "1250",
+              "type": "string"
+            },
+            {
+              "value": "150",
+              "type": "string"
+            },
+            {
+              "value": "175",
+              "type": "string"
+            },
+            {
+              "value": "200",
+              "type": "string"
+            },
+            {
+              "value": "225",
+              "type": "string"
+            },
+            {
+              "value": "25",
+              "type": "string"
+            },
+            {
+              "value": "250",
+              "type": "string"
+            },
+            {
+              "value": "300",
+              "type": "string"
+            },
+            {
+              "value": "350",
+              "type": "string"
+            },
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "450",
+              "type": "string"
+            },
+            {
+              "value": "50",
+              "type": "string"
+            },
+            {
+              "value": "500",
+              "type": "string"
+            },
+            {
+              "value": "550",
+              "type": "string"
+            },
+            {
+              "value": "600",
+              "type": "string"
+            },
+            {
+              "value": "650",
+              "type": "string"
+            },
+            {
+              "value": "700",
+              "type": "string"
+            },
+            {
+              "value": "75",
+              "type": "string"
+            },
+            {
+              "value": "750",
+              "type": "string"
+            },
+            {
+              "value": "800",
+              "type": "string"
+            },
+            {
+              "value": "850",
+              "type": "string"
+            },
+            {
+              "value": "900",
+              "type": "string"
+            },
+            {
+              "value": "950",
               "type": "string"
             }
           ],
@@ -11766,12 +12308,14 @@
           "docs": ""
         }
       ],
+      "states": [],
       "dependents": [
         "gcds-card",
         "gcds-date-modified",
         "gcds-error-message",
         "gcds-file-uploader",
         "gcds-hint",
+        "gcds-table",
         "gcds-textarea"
       ],
       "dependencies": [],
@@ -11789,6 +12333,9 @@
           "gcds-text"
         ],
         "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-table": [
           "gcds-text"
         ],
         "gcds-textarea": [
@@ -12232,17 +12779,18 @@
               "ValidatorEntry": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::ValidatorEntry"
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
               },
               "Validator": {
                 "location": "import",
                 "path": "../../validators",
-                "id": "src/validators/index.ts::Validator"
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
               }
             }
           },
           "mutable": true,
-          "attr": "validator",
           "reflectToAttr": false,
           "docs": "Array of validators",
           "docsTags": [],
@@ -12276,7 +12824,6 @@
             }
           },
           "mutable": false,
-          "attr": "validity",
           "reflectToAttr": false,
           "docs": "Read-only property of the textarea, returns a ValidityState object that represents the validity states this element is in.",
           "docsTags": [
@@ -12488,6 +13035,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-label",
@@ -12730,6 +13278,7 @@
         }
       ],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-nav-group"
@@ -12934,6 +13483,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "states": [],
       "dependents": [],
       "dependencies": [
         "gcds-sr-only",
@@ -12958,6 +13508,16 @@
       "docstring": "",
       "path": "src/components/gcds-grid/gcds-grid.tsx"
     },
+    "src/utils/types/spacing.tsx::SpacingValues": {
+      "declaration": "export type SpacingValues =\n  | '0'\n  | '25'\n  | '50'\n  | '75'\n  | '100'\n  | '125'\n  | '150'\n  | '175'\n  | '200'\n  | '225'\n  | '250'\n  | '300'\n  | '350'\n  | '400'\n  | '450'\n  | '500'\n  | '550'\n  | '600'\n  | '650'\n  | '700'\n  | '750'\n  | '800'\n  | '850'\n  | '900'\n  | '950'\n  | '1000'\n  | '1050'\n  | '1100'\n  | '1150'\n  | '1200'\n  | '1250';",
+      "docstring": "",
+      "path": "src/utils/types/spacing.tsx"
+    },
+    "src/components/gcds-icon/gcds-icon.tsx::IconNames": {
+      "declaration": "export type IconNames =\n  | 'arrow-down'\n  | 'arrow-up'\n  | 'arrow-up-down'\n  | 'checkmark-circle'\n  | 'chevron-down'\n  | 'chevron-left'\n  | 'chevron-right'\n  | 'chevron-up'\n  | 'close'\n  | 'download'\n  | 'email'\n  | 'exclamation-circle'\n  | 'external'\n  | 'filter'\n  | 'info-circle'\n  | 'phone'\n  | 'search'\n  | 'sort'\n  | 'tune'\n  | 'warning-triangle';",
+      "docstring": "",
+      "path": "src/components/gcds-icon/gcds-icon.tsx"
+    },
     "src/components/gcds-checkboxes/checkbox.tsx::CheckboxObject": {
       "declaration": "{\n  id: string;\n  label: string;\n  value?: string;\n  hint?: string;\n  checked?: boolean | string;\n}",
       "docstring": "",
@@ -12973,11 +13533,6 @@
       "docstring": "",
       "path": "src/validators/index.ts"
     },
-    "src/utils/types/spacing.tsx::SpacingValues": {
-      "declaration": "export type SpacingValues =\n  | '0'\n  | '25'\n  | '50'\n  | '75'\n  | '100'\n  | '125'\n  | '150'\n  | '175'\n  | '200'\n  | '225'\n  | '250'\n  | '300'\n  | '350'\n  | '400'\n  | '450'\n  | '500'\n  | '550'\n  | '600'\n  | '650'\n  | '700'\n  | '750'\n  | '800'\n  | '850'\n  | '900'\n  | '950'\n  | '1000'\n  | '1050'\n  | '1100'\n  | '1150'\n  | '1200'\n  | '1250';",
-      "docstring": "",
-      "path": "src/utils/types/spacing.tsx"
-    },
     "src/components/gcds-input/suggestion-option.tsx::SuggestionOption": {
       "declaration": "{\n  label: string;\n  value?: string;\n}",
       "docstring": "",
@@ -12987,6 +13542,16 @@
       "declaration": "{\n  id: string;\n  label: string;\n  value: string;\n  hint?: string;\n  checked?: boolean;\n}",
       "docstring": "",
       "path": "src/components/gcds-radios/radio.tsx"
+    },
+    "src/components/gcds-table/utils/table-helpers.ts::TableColumn": {
+      "declaration": "interface TableColumn {\n  field: string;\n  header: string;\n  sortDirection?: 'asc' | 'desc';\n  alignment?: 'start' | 'center' | 'end';\n  sort?: boolean;\n  rowHeader?: boolean;\n  slotted?: boolean;\n  managed?: boolean;\n}",
+      "docstring": "Table column definition",
+      "path": "src/components/gcds-table/utils/table-helpers.ts"
+    },
+    "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange": {
+      "declaration": "export interface GcdsTableStateChange {\n  visibleRows: Array<{\n    rowId: string; // stable TanStack row id — does not change with sort/filter\n    rowIndex: number; // current visible position in the table\n    original: unknown; // the original data object for this row\n  }>;\n  page: number;\n  pageSize: number;\n  filterValue: string;\n  sorting: SortingState | null;\n}",
+      "docstring": "",
+      "path": "src/components/gcds-table/utils/table-helpers.ts"
     }
   }
 }

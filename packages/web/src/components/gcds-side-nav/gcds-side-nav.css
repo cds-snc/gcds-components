@@ -29,7 +29,7 @@
 /* Note: viewport specific style decision */
 @layer desktop {
   :host .gcds-side-nav {
-    @media only screen and (width >= 64em) {
+    @media only screen and (width >= 48em) {
       max-width: var(--gcds-side-nav-max-width);
     }
   }
@@ -37,7 +37,7 @@
 
 /* Note: viewport specific style decision */
 @layer mobile {
-  @media only screen and (width < 64em) {
+  @media only screen and (width < 48em) {
     :host {
       .gcds-side-nav__heading {
         display: block;

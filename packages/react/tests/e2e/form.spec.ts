@@ -177,7 +177,7 @@ test(`Error summary`, async ({ page }) => {
 
   await page.waitForTimeout(500); // Wait for error summary to render
 
-  let errorLinks = await page.locator('gcds-error-summary a').all();
+  let errorLinks = await page.locator('gcds-error-summary gcds-link').all();
 
   expect(errorLinks.length).toBe(7);
 
@@ -195,7 +195,10 @@ test(`Error summary`, async ({ page }) => {
   await expect(
     await dateFull.evaluate(el => el === document.activeElement),
   ).toBe(true);
-  await dateFull.evaluate(el => el.setAttribute('value', '2024-12-31'));
+
+  await dateFull.locator('input[name="day"]').fill('12');
+  await dateFull.locator('select[name="month"]').selectOption('12');
+  await dateFull.locator('input[name="year"]').fill('2024');
 
   await errorLinks[3].click();
   const dateCompact = page.locator('gcds-date-input[name="dateCompact"]');
@@ -203,7 +206,9 @@ test(`Error summary`, async ({ page }) => {
   await expect(
     await dateCompact.evaluate(el => el === document.activeElement),
   ).toBe(true);
-  await dateCompact.evaluate(el => el.setAttribute('value', '2024-12'));
+
+  await dateCompact.locator('select[name="month"]').selectOption('12');
+  await dateCompact.locator('input[name="year"]').fill('2024');
 
   await errorLinks[4].click();
   await expect(page.locator('gcds-select select[name="select"]')).toBeFocused();
@@ -225,7 +230,7 @@ test(`Error summary`, async ({ page }) => {
 
   await page.waitForTimeout(500); // Wait for error summary to render
 
-  errorLinks = await page.locator('gcds-error-summary a').all();
+  errorLinks = await page.locator('gcds-error-summary gcds-link').all();
 
   expect(errorLinks.length).toBe(0);
 });

@@ -29,6 +29,7 @@ The header is the responsive Government of Canada branded header landmark.
 
 | Slot            | Description                                                               |
 | --------------- | ------------------------------------------------------------------------- |
+| `"account"`     | Slot to add a custom account link in the bottom-right of the header.      |
 | `"banner"`      | Slot to add a banner across the top of the header.                        |
 | `"breadcrumb"`  | Slot to add breadcrumbs at the bottom of the header.                      |
 | `"menu"`        | Slot to add a menu below the divider line.                                |

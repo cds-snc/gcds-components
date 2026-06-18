@@ -1,3 +1,8 @@
+/**
+ * This was for backwards compatibility with 0.35.0
+ * @deprecated This type will be removed in the next major release.
+ * Use `Validator` instead.
+ */
 export interface ValidatorOld<A> {
   validate: (x: A) => any;
   errorMessage?: object;
@@ -12,8 +17,14 @@ export interface ValidatorReturn {
   errors?: object;
 }
 
+export type ValidationContext = {
+  component?: string;
+  lang?: 'en' | 'fr';
+  params?: Record<string, unknown>;
+};
+
 export interface Validator<A> {
-  validate: (x: A) => ValidatorReturn;
+  validate: (x: A, context?: ValidationContext) => ValidatorReturn;
 }
 
 export interface ValidatorEntry {
@@ -43,9 +54,9 @@ export function combineValidators<A>(
   v2: Validator<A> | ValidatorOld<A>,
 ): Validator<A> {
   return {
-    validate: (x: A) => {
-      const res1 = v1.validate(x);
-      const res2 = v2.validate(x);
+    validate: (x: A, context?: ValidationContext) => {
+      const res1 = v1.validate(x, context);
+      const res2 = v2.validate(x, context);
 
       if (
         (typeof res1 === 'object' && !res1.valid) ||

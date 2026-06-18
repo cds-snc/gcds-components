@@ -36,8 +36,8 @@ An input is a space to enter short-form information in response to a question or
 | `suggestions`          | `suggestions`   | Array of suggestion options. This creates a datalist element with options to represent permissible or recommended options available to choose from.                     | `SuggestionOption[] \| string`                                                        | `undefined` |
 | `type`                 | `type`          | Set Input types                                                                                                                                                         | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"`           | `'text'`    |
 | `validateOn`           | `validate-on`   | Set event to call validator                                                                                                                                             | `"blur" \| "other" \| "submit"`                                                       | `'blur'`    |
-| `validator`            | `validator`     | Array of validators                                                                                                                                                     | `(string \| ValidatorEntry \| Validator<string>)[]`                                   | `undefined` |
-| `validity`             | `validity`      | Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.                                                 | `ValidityState`                                                                       | `undefined` |
+| `validator`            | --              | Array of validators                                                                                                                                                     | `(string \| ValidatorEntry \| Validator<string>)[]`                                   | `undefined` |
+| `validity`             | --              | Read-only property of the input, returns a ValidityState object that represents the validity states this element is in.                                                 | `ValidityState`                                                                       | `undefined` |
 | `value`                | `value`         | Default value for an input element.                                                                                                                                     | `string`                                                                              | `undefined` |
 
 
@@ -92,6 +92,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [gcds-date-input](../gcds-date-input)
+ - [gcds-table](../gcds-table)
 
 ### Depends on
 
@@ -109,6 +110,7 @@ graph TD;
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
   gcds-date-input --> gcds-input
+  gcds-table --> gcds-input
   style gcds-input fill:#26374a,stroke:#333,stroke-width:4px
 ```
 

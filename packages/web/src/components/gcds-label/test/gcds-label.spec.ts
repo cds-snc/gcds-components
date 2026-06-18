@@ -9,7 +9,7 @@ describe('gcds-label', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-label id="label-for-input-renders" label="Label" label-for="input-renders">
-        <label class="gcds-label" htmlFor="input-renders">
+        <label class="gcds-label" for="input-renders">
           <span>Label</span>
         </label>
       </gcds-label>
@@ -26,7 +26,7 @@ describe('gcds-label', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-label id="label-for-input-renders" label="Label" label-for="input-renders" hide-label>
-        <label class="gcds-label label--hidden" htmlFor="input-renders">
+        <label class="gcds-label label--hidden" for="input-renders">
           <span>Label</span>
         </label>
       </gcds-label>
@@ -44,7 +44,7 @@ describe('gcds-label', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-label id="label-for-input-renders" label="Label" label-for="input-renders" required="">
-        <label class="gcds-label" htmlFor="input-renders">
+        <label class="gcds-label" for="input-renders">
           <span>Label</span>
           <span aria-hidden="true" class="label--required">(required)</span>
         </label>
@@ -59,7 +59,7 @@ describe('gcds-label', () => {
     });
     expect(root).toEqualHtml(`
       <gcds-label id="label-for-input-renders" label="Label" label-for="input-renders" lang="fr" required="">
-        <label class="gcds-label" htmlFor="input-renders">
+        <label class="gcds-label" for="input-renders">
           <span>Label</span>
           <span aria-hidden="true" class="label--required">(obligatoire)</span>
         </label>

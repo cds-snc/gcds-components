@@ -27,9 +27,6 @@
     }
 
     .gcds-topic-menu {
-      width: 90%;
-      max-width: var(--gcds-topic-menu-max-width);
-      margin-inline: auto;
       position: relative;
       font: var(--gcds-topic-menu-font);
 
