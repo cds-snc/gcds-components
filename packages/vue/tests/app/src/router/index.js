@@ -3,12 +3,14 @@ import Home from '../views/Home.vue';
 import Forms from '../views/Forms.vue';
 import FormsPinia from '../views/FormsPinia.vue';
 import FileUploader from '../views/FileUploader.vue';
+import Table from '../views/Table.vue';
 
 const routes = [
   { path: '/', component: Home },
   { path: '/forms', component: Forms },
   { path: '/forms-state', component: FormsPinia },
   { path: '/file-uploader', component: FileUploader },
+  { path: '/table', component: Table },
 ];
 
 const router = createRouter({

@@ -24,6 +24,11 @@
               File uploader
             </gcds-link>
           </li>
+          <li>
+            <gcds-link href="/table">
+              Table
+            </gcds-link>
+          </li>
         </ul>
       </li>
     </ul>

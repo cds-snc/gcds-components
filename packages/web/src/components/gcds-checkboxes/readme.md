@@ -13,7 +13,7 @@ Checkboxes provide a set of options for multiple responses.
 
 | Property               | Attribute       | Description                                                                                                                  | Type                                                | Default     |
 | ---------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
-| `autofocus`            | `autofocus`     | If true, the checkobox will be focused on component render                                                                   | `boolean`                                           | `undefined` |
+| `autofocus`            | `autofocus`     | If true, the checkbox will be focused on component render                                                                    | `boolean`                                           | `undefined` |
 | `disabled`             | `disabled`      | Specifies if the checkboxes are disabled or not.                                                                             | `boolean`                                           | `undefined` |
 | `errorMessage`         | `error-message` | Set this to display an error message for invalid <gcds-checkboxes>                                                           | `string`                                            | `undefined` |
 | `form`                 | `form`          | The ID of the form that the checkboxes belong to.                                                                            | `string`                                            | `undefined` |
@@ -25,8 +25,8 @@ Checkboxes provide a set of options for multiple responses.
 | `options` _(required)_ | `options`       | Options to render checkboxes buttons                                                                                         | `CheckboxObject[] \| string`                        | `undefined` |
 | `required`             | `required`      | Specifies if the checkboxes are required or not.                                                                             | `boolean`                                           | `undefined` |
 | `validateOn`           | `validate-on`   | Set event to call validator                                                                                                  | `"blur" \| "other" \| "submit"`                     | `'blur'`    |
-| `validator`            | `validator`     | Array of validators                                                                                                          | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
-| `validity`             | `validity`      | Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
+| `validator`            | --              | Array of validators                                                                                                          | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
+| `validity`             | --              | Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in. | `ValidityState`                                     | `undefined` |
 | `value`                | `value`         | Value for checkboxes component.                                                                                              | `string \| string[]`                                | `[]`        |
 
 

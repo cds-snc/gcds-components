@@ -20,7 +20,7 @@ import {
   handleErrors,
   isValid,
   handleValidationResult,
-  validateRadioCheckboxGroup
+  validateRadioCheckboxGroup,
 } from '../../utils/utils';
 import {
   Validator,
@@ -139,8 +139,8 @@ export class GcdsCheckboxes {
   }
 
   /**
- * If true, the checkobox will be focused on component render
- */
+   * If true, the checkbox will be focused on component render
+   */
   @Prop({ reflect: true }) autofocus: boolean;
 
   /**
@@ -223,8 +223,8 @@ export class GcdsCheckboxes {
   @Prop({ mutable: true }) validateOn: 'blur' | 'submit' | 'other' = 'blur';
 
   /**
-     * Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.
-     */
+   * Read-only property of the checkboxes, returns a ValidityState object that represents the validity states this element is in.
+   */
   @Prop()
   get validity() {
     return this.internals.validity;
@@ -393,7 +393,10 @@ export class GcdsCheckboxes {
       let validationMessage = null;
 
       if (validity?.valueMissing) {
-        validationMessage = this.lang === 'en' ? 'Choose an option to continue.' : 'Choisissez une option pour continuer.';
+        validationMessage =
+          this.lang === 'en'
+            ? 'Choose an option to continue.'
+            : 'Choisissez une option pour continuer.';
       }
 
       this.internals.setValidity(
@@ -574,12 +577,20 @@ export class GcdsCheckboxes {
                 {this.hideLegend ? (
                   <gcds-sr-only tag="span">
                     {legend}
-                    {required && <span class="legend__required">{i18n[this.lang].required}</span>}
+                    {required && (
+                      <span class="legend__required">
+                        {i18n[this.lang].required}
+                      </span>
+                    )}
                   </gcds-sr-only>
                 ) : (
                   <Fragment>
                     {legend}
-                    {required && <span class="legend__required">{i18n[this.lang].required}</span>}
+                    {required && (
+                      <span class="legend__required">
+                        {i18n[this.lang].required}
+                      </span>
+                    )}
                   </Fragment>
                 )}
               </legend>
@@ -606,7 +617,7 @@ export class GcdsCheckboxes {
                     checkbox,
                     this,
                     emitEvent,
-                    this.handleInput
+                    this.handleInput,
                   );
                 })}
             </fieldset>
@@ -617,7 +628,7 @@ export class GcdsCheckboxes {
               this.optionsArr[0],
               this,
               emitEvent,
-              this.handleInput
+              this.handleInput,
             )
           )}
         </Host>

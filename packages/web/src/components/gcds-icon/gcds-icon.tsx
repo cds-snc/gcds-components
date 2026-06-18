@@ -2,6 +2,28 @@ import { Component, Element, Host, Watch, Prop, h } from '@stencil/core';
 import { SpacingValues } from '../../utils/types/spacing';
 import i18n from './i18n/i18n';
 
+export type IconNames =
+  | 'arrow-down'
+  | 'arrow-up'
+  | 'arrow-up-down'
+  | 'checkmark-circle'
+  | 'chevron-down'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'chevron-up'
+  | 'close'
+  | 'download'
+  | 'email'
+  | 'exclamation-circle'
+  | 'external'
+  | 'filter'
+  | 'info-circle'
+  | 'phone'
+  | 'search'
+  | 'sort'
+  | 'tune'
+  | 'warning-triangle';
+
 /**
  * An icon is a symbol that visually represents an action or idea.
  */
@@ -35,25 +57,14 @@ export class GcdsIcon {
   /**
    * Name of the icon.
    */
-  @Prop({ mutable: true }) name!:
-    | 'checkmark-circle'
-    | 'chevron-down'
-    | 'chevron-left'
-    | 'chevron-right'
-    | 'chevron-up'
-    | 'close'
-    | 'download'
-    | 'email'
-    | 'exclamation-circle'
-    | 'external'
-    | 'info-circle'
-    | 'phone'
-    | 'search'
-    | 'warning-triangle';
+  @Prop({ mutable: true }) name!: IconNames;
 
   @Watch('name')
   validateName(newValue: string) {
     const values = [
+      'arrow-down',
+      'arrow-up',
+      'arrow-up-down',
       'checkmark-circle',
       'chevron-down',
       'chevron-left',
@@ -64,9 +75,12 @@ export class GcdsIcon {
       'email',
       'exclamation-circle',
       'external',
+      'filter',
       'info-circle',
       'phone',
       'search',
+      'sort',
+      'tune',
       'warning-triangle',
     ];
 

@@ -1,0 +1,77 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Alert from './gcds-alert.stories';
+
+<Meta of={Alert} name="Overview" />
+
+# Alert<br/>`<gcds-alert>`
+
+The alert is a prominent message to draw attention to important information or change.
+
+<Canvas of={Alert.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+### Roles
+
+#### Success
+
+<Canvas of={Alert.Success} story={{ inline: true }} />
+
+#### Danger
+
+<Canvas of={Alert.Danger} story={{ inline: true }} />
+
+#### Info
+
+<Canvas of={Alert.Info} story={{ inline: true }} />
+
+#### Warning
+
+<Canvas of={Alert.Warning} story={{ inline: true }} />
+
+### Containers
+
+#### Full
+
+<Canvas of={Alert.ContainerFull} story={{ inline: true }} />
+
+#### XL
+
+<Canvas of={Alert.ContainerXl} story={{ inline: true }} />
+
+#### LG
+
+<Canvas of={Alert.ContainerLg} story={{ inline: true }} />
+
+#### MD
+
+<Canvas of={Alert.ContainerMd} story={{ inline: true }} />
+
+#### SM
+
+<Canvas of={Alert.ContainerSm} story={{ inline: true }} />
+
+#### XS
+
+<Canvas of={Alert.ContainerXs} story={{ inline: true }} />
+
+### Additional state
+
+#### Hide Close Button
+
+<Canvas of={Alert.HideCloseBtn} story={{ inline: true }} />
+
+#### Hide icon
+
+<Canvas of={Alert.HideRoleIcon} story={{ inline: true }} />
+
+## Resources
+
+{/* prettier-ignore */}
+<ul className="resources-list">
+  <li>
+    <gcds-link size="regular" href="https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-alert" target="_blank">Github</gcds-link>
+  </li>
+</ul>

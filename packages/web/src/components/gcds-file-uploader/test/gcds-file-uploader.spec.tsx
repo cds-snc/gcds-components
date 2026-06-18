@@ -9,7 +9,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
             <div class="file-uploader__input">
@@ -35,7 +35,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" disabled error-message="">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper gcds-disabled">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
             <div class="file-uploader__input">
@@ -61,7 +61,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" error-message="This is an error message.">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper gcds-error">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
             <gcds-error-message messageId="file-uploader">
@@ -90,7 +90,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" hint="This is a hint.">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
             <gcds-hint hint-id="file-uploader">This is a hint.</gcds-hint>
@@ -117,7 +117,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name">
-      <mock:shadow-root>
+      <mock:shadow-root shadowrootdelegatesfocus>
         <div class="gcds-file-uploader-wrapper">
           <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
           <div class="file-uploader__input">
@@ -143,7 +143,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
             <div class="file-uploader__input">
@@ -169,7 +169,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" hide-label>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper">
             <gcds-label hide-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
             <div class="file-uploader__input">
@@ -195,7 +195,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" required>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en" required=""></gcds-label>
             <div class="file-uploader__input">
@@ -221,7 +221,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" autofocus>
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
             <div class="file-uploader__input">
@@ -247,7 +247,7 @@ describe('gcds-file-uploader', () => {
     });
     expect(page.root).toEqualHtml(`
       <gcds-file-uploader uploader-id="file-uploader" label="file-uploader" name="file-uploader-name" form="formID">
-        <mock:shadow-root>
+        <mock:shadow-root shadowrootdelegatesfocus>
           <div class="gcds-file-uploader-wrapper">
             <gcds-label label="file-uploader" label-for="file-uploader" lang="en"></gcds-label>
             <div class="file-uploader__input">

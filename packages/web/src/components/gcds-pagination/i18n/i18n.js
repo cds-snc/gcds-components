@@ -11,7 +11,7 @@ const I18N = {
     pageNumberOf: 'Page {#} of {total} of {label}',
   },
   fr: {
-    next: 'Suivante',
+    next: 'Suivant',
     listNext: 'Suiv.',
     previous: 'Précédent',
     listPrevious: 'Préc.',

@@ -37,6 +37,7 @@
       "type": "refactor",
       "section": ":arrows_counterclockwise: Code Refactoring"
     },
+    { "type": "deprecate", "section": ":warning: Deprecation Notice" },
     { "type": "remove", "section": ":no_entry: Remove" },
     { "type": "revert", "section": "Reverts", "hidden": true },
     { "type": "chore", "section": "Patch", "hidden": true },

@@ -15,6 +15,7 @@ import I18N from './i18n/i18n';
 /**
  * A side navigation is a vertical list of page links on the left side of the screen.
  *
+ * @slot home - Slot for the home link or site title.
  * @slot default - Slot for the navigation groups and navigation links.
  */
 @Component({
@@ -85,7 +86,11 @@ export class GcdsSideNav {
 
   @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
-    if (e.relatedTarget !== null && e.relatedTarget !== this.el && !this.el.contains(e.relatedTarget)) {
+    if (
+      e.relatedTarget !== null &&
+      e.relatedTarget !== this.el &&
+      !this.el.contains(e.relatedTarget)
+    ) {
       if (this.navSize == 'mobile') {
         if (this.mobile.hasAttribute('open')) {
           await this.mobile.toggleNav();
@@ -98,7 +103,12 @@ export class GcdsSideNav {
   async keyDownListener(e) {
     if (this.el.contains(document.activeElement)) {
       handleKeyDownNav(e, this.el, this.navItems);
-    } if (this.navSize == 'mobile' && this.mobile.open == true && e.key == 'Escape') {
+    }
+    if (
+      this.navSize === 'mobile' &&
+      this.mobile?.open &&
+      e.key === 'Escape'
+    ) {
       // Close mobile nav on ESC
       await this.mobile.toggleNav();
     }
@@ -182,7 +192,6 @@ export class GcdsSideNav {
           aria-label={`${label}${I18N[lang].navLabel}`}
           class="gcds-side-nav"
         >
-          <h2 class="gcds-side-nav__heading">{label}</h2>
           <ul>
             <gcds-nav-group
               menuLabel={I18N[lang].menuLabel}
@@ -194,6 +203,9 @@ export class GcdsSideNav {
               }
               lang={lang}
             >
+              <slot name="home">
+                <li class="gcds-side-nav__heading">{label}</li>
+              </slot>
               <slot></slot>
             </gcds-nav-group>
           </ul>

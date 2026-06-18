@@ -192,7 +192,7 @@ export class GcdsSearch {
               type="search"
               id={searchId}
               {...(suggestedArray ? { list: 'search-list' } : {})}
-              size={34}
+              size={35}
               maxLength={170}
               onInput={e => this.handleInput(e, this.gcdsInput)}
               onChange={e => this.handleInput(e, this.gcdsChange)}

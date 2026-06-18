@@ -1,6 +1,6 @@
 import { EventEmitter } from '@stencil/core';
 import { ValidatorReturn } from '../validators';
-import I18N from './i18n/i18n.js';
+import { validationErrors } from './i18n/validation-errors';
 
 export function format(label: string): string {
   return label ? ` ${label}` : 'Fallback Button Label';
@@ -41,24 +41,20 @@ export const inheritAttributes = (
   return attributeObject;
 };
 
-export const assignLanguage = (el: HTMLElement) => {
-  let lang = '';
-  if (!el.getAttribute('lang')) {
-    const closestLangAttribute = closestElement('[lang]', el)?.getAttribute(
-      'lang',
-    );
-    if (closestLangAttribute == 'en' || !closestLangAttribute) {
-      lang = 'en';
-    } else {
-      lang = 'fr';
-    }
-  } else if (el.getAttribute('lang') == 'en') {
-    lang = 'en';
-  } else {
-    lang = 'fr';
-  }
+/*
+ * Get language to use for component based on the following priority:
+ * 1. lang attribute on component
+ * 2. lang attribute on closest parent with a lang attribute
+ * 3. default to English
+ */
+export const assignLanguage = (el: HTMLElement): string => {
+  const rawLang =
+    el.lang ||
+    el.getAttribute('lang') ||
+    closestElement('[lang]', el)?.getAttribute('lang') ||
+    'en';
 
-  return lang;
+  return rawLang.toLowerCase().startsWith('fr') ? 'fr' : 'en';
 };
 
 // Allows use of closest() function across shadow boundaries
@@ -293,40 +289,41 @@ export function handleValidationResult(
 export function formatHTMLErrorMessage(error, lang, el) {
   switch (error) {
     case 'valueMissing':
-      return I18N[lang][error];
+      return validationErrors[lang][error];
     case 'typeMismatch':
       if (el.type === 'url' || el.type === 'email') {
-        return I18N[lang][error][el.type];
+        return validationErrors[lang][error][el.type];
       } else {
-        return I18N[lang][error];
+        return validationErrors[lang][error];
       }
     case 'tooLong':
-      return I18N[lang][error]
+      return validationErrors[lang][error]
         .replace('{max}', el.maxlength || el.characterCount)
         .replace('{current}', el.value.length);
     case 'tooShort':
-      return I18N[lang][error]
+      return validationErrors[lang][error]
         .replace('{min}', el.minlength)
         .replace('{current}', el.value.length);
     case 'rangeUnderflow':
-      return I18N[lang][error].replace('{min}', el.min);
+      return validationErrors[lang][error].replace('{min}', el.min);
     case 'rangeOverflow':
-      return I18N[lang][error].replace('{max}', el.max);
+      return validationErrors[lang][error].replace('{max}', el.max);
     case 'stepMismatch':
-      return I18N[lang][error]
-        .replace(
-          '{lower}',
-          Math.floor(Number(el.value) / Number(el.step)) * Number(el.step),
-        )
-        .replace(
-          '{upper}',
-          Math.floor(Number(el.value) / Number(el.step)) * Number(el.step) +
-            Number(el.step),
-        );
+      const value = Number(el.value);
+      const step = el.step === 'any' ? 0 : Number(el.step || 1);
+      const base = el.min !== undefined && el.min !== null ? Number(el.min) : 0;
+      const offset = (value - base) / step;
+
+      const lower = base + Math.floor(offset) * step;
+      const upper = base + Math.ceil(offset) * step;
+
+      return validationErrors[lang][error]
+        .replace('{lower}', lower)
+        .replace('{upper}', upper);
     case 'badInput':
     case 'patternMismatch':
     default:
-      return I18N[lang][error];
+      return validationErrors[lang][error];
   }
 }
 

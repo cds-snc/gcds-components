@@ -75,43 +75,74 @@ function constructHref(url, page: number, end?: 'next' | 'previous' | null) {
   return href;
 }
 
-/**
- * Function to constuct classes to help with mobile sizing
- */
-function constructClasses(page: number, current: number, total: number) {
-  if (total <= 5) {
+function constructClasses(
+  page: number,
+  current: number,
+  total: number,
+): string {
+  /**
+   * Pages that should always remain visible in the pagination:
+   * - First page.
+   * - Last page.
+   * - Current page.
+   * - Immediate neighbors of the current page.
+   */
+  const alwaysVisibleSet = new Set([
+    1,
+    total,
+    current,
+    current - 1,
+    current + 1,
+  ]);
+
+  const alwaysVisible =
+    page === 1 ||
+    page === total ||
+    page === current ||
+    page === current - 1 ||
+    page === current + 1;
+
+  /**
+   * Pages that should always remain visible in the pagination:
+   * - First page.
+   * - Last page.
+   * - Current page.
+   * - Immediate neighbors of the current page.
+   */
+  if (alwaysVisible) return '';
+
+  const prevVisible = alwaysVisibleSet.has(page - 1);
+  const nextVisible = alwaysVisibleSet.has(page + 1);
+
+  /**
+   * If both neighbors are visible, this page sits between visible pages,
+   * and can't be collapsed.
+   */
+  if (prevVisible && nextVisible) {
     return '';
-  } else if (current == 1 || current == total) {
-    if (current - page == 4 || current - page == -4) {
-      return 'gcds-pagination-list-breakpoint-xxs';
-    } else if (current - page == 5 || current - page == -5) {
-      return 'gcds-pagination-list-breakpoint-xs';
-    } else if (current - page > 5 || current - page < -5) {
-      return 'gcds-pagination-list-breakpoint-sm';
-    }
-  } else if (current == 2 || current == total - 1) {
-    if (current - page == 3 || current - page == -3) {
-      return 'gcds-pagination-list-breakpoint-xxs';
-    } else if (current - page == 4 || current - page == -4) {
-      return 'gcds-pagination-list-breakpoint-xs';
-    } else if (current - page > 4 || current - page < -4) {
-      return 'gcds-pagination-list-breakpoint-sm';
-    }
-  } else if (current > 2 && current < total - 1 && total < 10 && current == 5) {
-    if (current - page == 2 || current - page == -2) {
-      return 'gcds-pagination-list-breakpoint-xs';
-    } else if (current - page >= 3 || current - page <= -3) {
-      return 'gcds-pagination-list-breakpoint-sm';
-    }
-  } else if (current > 2 && current < total - 1) {
-    if (current - page == 2 || current - page == -2) {
-      return 'gcds-pagination-list-breakpoint-xxs';
-    } else if (current - page == 3 || current - page == -3) {
-      return 'gcds-pagination-list-breakpoint-xs';
-    } else if (current - page > 3 || current - page < -3) {
-      return 'gcds-pagination-list-breakpoint-sm';
-    }
   }
+
+  /**
+   * Determine which side of the current page this page is on.
+   * Used for directional collapsing (left vs right).
+   */
+  const side = page < current ? 'left' : 'right';
+
+  /**
+   * Calculate how far this page is from the current page.
+   * Determines how aggressively it should be collapsed.
+   */
+  const distance = Math.abs(page - current);
+
+  /**
+   * Group pages into collapse levels:
+   * - Group 1: closest hidden pages.
+   * - Group 2: further away.
+   * - Group 3: farthest away.
+   */
+  const group = Math.ceil((distance - 1) / 2);
+
+  return `collapse-${side}-${group}`;
 }
 
 export { constructClasses, constructHref };

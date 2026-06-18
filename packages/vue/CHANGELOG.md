@@ -1,6 +1,62 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.3.0...@gcds-core/components-vue-v1.3.1) (2026-06-08)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-table:** focus, interaction and display issues ([#1295](https://github.com/cds-snc/gcds-components/issues/1295)) ([3fc8e31](https://github.com/cds-snc/gcds-components/commit/3fc8e31aeae2b843f072f48980260ab4a51d53b0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.3.0 to ^1.3.1
+
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.2.0...@gcds-core/components-vue-v1.3.0) (2026-05-27)
+
+
+### :rocket: New Features
+
+* Add gcds-table component ([#1218](https://github.com/cds-snc/gcds-components/issues/1218)) ([86e3bb2](https://github.com/cds-snc/gcds-components/commit/86e3bb271cc0076fee00e20839ce3f5134e5f47f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.2.0 to ^1.3.0
+
+## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.1.0...@gcds-core/components-vue-v1.2.0) (2026-04-21)
+
+
+### Patch
+
+* **@gcds-core/components-vue:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.1.0 to ^1.2.0
+
+## [1.1.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.0.0...@gcds-core/components-vue-v1.1.0) (2026-04-01)
+
+
+### Patch
+
+* **@gcds-core/components-vue:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.0.0 to ^1.1.0
+
 ## v1.0.0
 Released on: 2026-02-05
 

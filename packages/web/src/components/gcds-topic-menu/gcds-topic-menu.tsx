@@ -474,19 +474,19 @@ export class GcdsTopicMenu {
             class={home && 'gcds-topic-menu--home'}
           >
             {this.lang == 'en' ? (
-              <>
+              <Fragment>
                 <gcds-sr-only tag="span">
                   {I18N[lang].menuLabelHidden}
                 </gcds-sr-only>
                 {I18N[lang].menuToggle}
-              </>
+              </Fragment>
             ) : (
-              <>
+              <Fragment>
                 {I18N[lang].menuToggle}
                 <gcds-sr-only tag="span">
                   {I18N[lang].menuLabelHidden}
                 </gcds-sr-only>
-              </>
+              </Fragment>
             )}
             <gcds-icon
               name="chevron-down"

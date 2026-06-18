@@ -50,6 +50,7 @@ test.describe('gcds-notice a11y tests', () => {
 
       const results = await new AxeBuilder({ page })
         .withRules(['color-contrast'])
+        .include('gcds-notice')
         .analyze();
 
       expect(results.violations).toHaveLength(0);

@@ -1,6 +1,64 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.3.0...@gcds-core/components-angular-v1.3.1) (2026-06-08)
+
+
+### Patch
+
+* **@gcds-core/components-angular:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @gcds-core/components bumped from ^1.3.0 to ^1.3.1
+
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.2.0...@gcds-core/components-angular-v1.3.0) (2026-05-27)
+
+
+### :rocket: New Features
+
+* Add gcds-table component ([#1218](https://github.com/cds-snc/gcds-components/issues/1218)) ([86e3bb2](https://github.com/cds-snc/gcds-components/commit/86e3bb271cc0076fee00e20839ce3f5134e5f47f))
+* **gcds-header:** add sign in button ([#1120](https://github.com/cds-snc/gcds-components/issues/1120)) ([07d7d66](https://github.com/cds-snc/gcds-components/commit/07d7d6625cee321c60f68debc437fe9ab538d6ac))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @gcds-core/components bumped from ^1.2.0 to ^1.3.0
+
+## [1.2.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.1.0...@gcds-core/components-angular-v1.2.0) (2026-04-21)
+
+
+### :rocket: New Features
+
+* **angular:** Update angular peer dependencies to support v21 ([#1212](https://github.com/cds-snc/gcds-components/issues/1212)) ([86d3e19](https://github.com/cds-snc/gcds-components/commit/86d3e19b16981ca6a1dafe83bb8d44db8a00906c))
+* **gcds-date-input:** add ISO date format ([#996](https://github.com/cds-snc/gcds-components/issues/996)) ([bd8b5e5](https://github.com/cds-snc/gcds-components/commit/bd8b5e5c07bd03ea0e3a77f3945f4fb33d792a26))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @gcds-core/components bumped from ^1.1.0 to ^1.2.0
+
+## [1.1.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.0.0...@gcds-core/components-angular-v1.1.0) (2026-04-01)
+
+
+### Patch
+
+* **@gcds-core/components-angular:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @gcds-core/components bumped from ^1.0.0 to ^1.1.0
+
 ## v1.0.0
 Released on: 2026-02-05
 
