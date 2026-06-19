@@ -1016,6 +1016,11 @@ export namespace Components {
          */
         "current": boolean;
         /**
+          * Whether the link is external or not
+          * @default false
+         */
+        "external"?: boolean;
+        /**
           * Focus the link element
          */
         "focusLink": () => Promise<void>;
@@ -3567,6 +3572,11 @@ declare namespace LocalJSX {
           * Current page flag
          */
         "current"?: boolean;
+        /**
+          * Whether the link is external or not
+          * @default false
+         */
+        "external"?: boolean;
         /**
           * Link href
          */
