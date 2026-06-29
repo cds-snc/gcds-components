@@ -1,0 +1,109 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Component preview: gcds-container</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GCDS build -->
+    <link rel="stylesheet" href="/build/gcds.css" />
+    <script type="module" src="/build/gcds.esm.js"></script>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        background-color: var(--gcds-bg-white);
+        color: var(--gcds-text-primary);
+        font-family: var(--gcds-font-families-body), sans-serif;
+        font-size: var(--gcds-font-sizes-text);
+        line-height: var(--gcds-line-heights-text);
+        margin: 0;
+        padding: 0;
+      }
+
+      .preview-variant {
+        margin-bottom: var(--gcds-spacing-600);
+      }
+
+      .preview-component {
+        padding: var(--gcds-spacing-300);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <gcds-heading tag="h1">gcds-container</gcds-heading>
+
+      <section data-variant="default" class="preview-variant">
+        <gcds-heading tag="h2">Default</gcds-heading>
+        <div class="preview-component">
+          <gcds-container>
+            <gcds-text margin-bottom="0">Container content.</gcds-text>
+          </gcds-container>
+        </div>
+      </section>
+
+      <section data-variant="alignment-center" class="preview-variant">
+        <gcds-heading tag="h2">Alignment: center</gcds-heading>
+        <div class="preview-component">
+          <gcds-container alignment="center" border size="sm">
+            <gcds-text margin-bottom="0">Container content.</gcds-text>
+          </gcds-container>
+        </div>
+      </section>
+
+      <section data-variant="border" class="preview-variant">
+        <gcds-heading tag="h2">Border</gcds-heading>
+        <div class="preview-component">
+          <gcds-container border>
+            <gcds-text margin-bottom="0">Container content.</gcds-text>
+          </gcds-container>
+        </div>
+      </section>
+
+      <section data-variant="padding" class="preview-variant">
+        <gcds-heading tag="h2">Padding</gcds-heading>
+        <div class="preview-component">
+          <gcds-container border padding="400">
+            <gcds-text margin-bottom="0">Container content.</gcds-text>
+          </gcds-container>
+        </div>
+      </section>
+
+      <section data-variant="size-sm" class="preview-variant">
+        <gcds-heading tag="h2">Size: sm</gcds-heading>
+        <div class="preview-component">
+          <gcds-container border size="sm">
+            <gcds-text margin-bottom="0">Container content.</gcds-text>
+          </gcds-container>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

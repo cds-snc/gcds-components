@@ -1,0 +1,106 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Component preview: gcds-link</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GCDS build -->
+    <link rel="stylesheet" href="/build/gcds.css" />
+    <script type="module" src="/build/gcds.esm.js"></script>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        background-color: var(--gcds-bg-white);
+        color: var(--gcds-text-primary);
+        font-family: var(--gcds-font-families-body), sans-serif;
+        font-size: var(--gcds-font-sizes-text);
+        line-height: var(--gcds-line-heights-text);
+        margin: 0;
+        padding: 0;
+      }
+
+      .preview-variant {
+        margin-bottom: var(--gcds-spacing-600);
+      }
+
+      .preview-component {
+        padding: var(--gcds-spacing-300);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <gcds-heading tag="h1">gcds-link</gcds-heading>
+
+      <section data-variant="default" class="preview-variant">
+        <gcds-heading tag="h2">Default</gcds-heading>
+        <div class="preview-component">
+          <gcds-link href="#">Link text</gcds-link>
+        </div>
+      </section>
+
+      <section data-variant="display-block" class="preview-variant">
+        <gcds-heading tag="h2">Display: block</gcds-heading>
+        <div class="preview-component">
+          <gcds-link href="#" display="block">Link text</gcds-link>
+        </div>
+      </section>
+
+      <section data-variant="external" class="preview-variant">
+        <gcds-heading tag="h2">External</gcds-heading>
+        <div class="preview-component">
+          <gcds-link href="#" external>Link text</gcds-link>
+        </div>
+      </section>
+
+      <section data-variant="link-role-light" class="preview-variant">
+        <gcds-heading tag="h2">Link role: light</gcds-heading>
+        <div class="preview-component" style="background: #333">
+          <gcds-link href="#" link-role="light">Link text</gcds-link>
+        </div>
+      </section>
+
+      <section data-variant="size-regular" class="preview-variant">
+        <gcds-heading tag="h2">Size: regular</gcds-heading>
+        <div class="preview-component">
+          <gcds-link href="#" size="regular">Link text</gcds-link>
+        </div>
+      </section>
+
+      <section data-variant="size-small" class="preview-variant">
+        <gcds-heading tag="h2">Size: small</gcds-heading>
+        <div class="preview-component">
+          <gcds-link href="#" size="small">Link text</gcds-link>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
