@@ -31,7 +31,7 @@ jobs:
 
           - name: "@gcds-core/components-vue"
             script: "npm run test:vue"
-    
+
     steps:
       - name: Git Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
@@ -44,6 +44,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright Browsers
+        if: ${{ !contains(matrix.name, 'Unit tests') }}
         run: npx playwright install --with-deps
 
       - name: Build repo
