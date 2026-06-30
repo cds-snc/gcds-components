@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.2](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.3.1...@gcds-core/components-react-v1.3.2) (2026-06-30)
+
+
+### Patch
+
+* **@gcds-core/components-react:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.3.1 to ^1.3.2
+
 ## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.3.0...@gcds-core/components-react-v1.3.1) (2026-06-08)
 
 

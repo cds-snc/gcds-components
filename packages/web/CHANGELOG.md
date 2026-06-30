@@ -1,6 +1,13 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.3.2](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.3.2) (2026-06-30)
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-topic-menu:** update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
+
 ## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) (2026-06-08)
 
 
