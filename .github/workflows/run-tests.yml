@@ -123,3 +123,20 @@ jobs:
               repo: context.repo.repo,
               body,
             });
+
+  lint:
+    name: Run linter
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: actions/setup-node@dda4788290998366da86b6a4f497909644397bb2
+        with:
+          node-version: 22
+
+      - name: Install gcds-components
+        run: npm ci
+
+      - name: Lint repo
+        run: npm run lint
