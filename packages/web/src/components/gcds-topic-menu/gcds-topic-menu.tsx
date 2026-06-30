@@ -465,10 +465,13 @@ export class GcdsTopicMenu {
           <gcds-sr-only id="gcds-topic-menu__heading" tag="h2">
             {I18N[lang].menuLabelFull}
           </gcds-sr-only>
+          <p id="gcds-topic-menu-desc" hidden={true}>
+            {I18N[lang].buttonLabel}
+          </p>
           <button
             aria-haspopup="true"
             aria-expanded={this.open.toString()}
-            aria-label={I18N[lang].buttonLabel}
+            aria-describedby={'gcds-topic-menu-desc'}
             onClick={async () => await this.toggleNav()}
             ref={element => (this.menuButton = element as HTMLElement)}
             class={home && 'gcds-topic-menu--home'}
