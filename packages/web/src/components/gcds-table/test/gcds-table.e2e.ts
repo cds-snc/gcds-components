@@ -157,7 +157,8 @@ test.describe('gcds-table', () => {
     }
 
     async applyFilterEnter(text: string) {
-      await this.clickAndWait(this.filterButton);
+      await this.filterButton.focus();
+      await this.filterButton.press('Enter');
       await expect(this.filterInput).toBeVisible();
       await this.filterInput.fill(text);
 
@@ -551,7 +552,9 @@ test.describe('gcds-table', () => {
     await expect.poll(() => getVisiblePokedexValues(element)).toEqual([7]);
 
     // Verify modal is closed and focus returns to table after submission.
-    await expect(element.locator('dialog.gcds-table__modal')).not.toHaveAttribute('open', '');
+    await expect(
+      element.locator('dialog.gcds-table__modal'),
+    ).not.toHaveAttribute('open', '');
     await expect(element.locator('table')).toBeFocused();
   });
 
